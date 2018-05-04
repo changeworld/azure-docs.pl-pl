@@ -1,28 +1,28 @@
 ---
-title: "Bezpiecznie zapisywanie ustawień tajne aplikacji dla aplikacji sieci web | Dokumentacja firmy Microsoft"
-description: "Jak bezpiecznie zapisać ustawienia tajne aplikacji, takie jak poświadczenia platformy Azure lub innej interfejsu API klucze za pomocą platformy ASP.NET core dostawcy magazynu kluczy, klucz tajny użytkownika lub .NET 4.7.1 konstruktorów konfiguracji"
+title: Bezpiecznie zapisywanie ustawień tajne aplikacji dla aplikacji sieci web | Dokumentacja firmy Microsoft
+description: Jak bezpiecznie zapisać ustawienia tajne aplikacji, takie jak poświadczenia platformy Azure lub innej interfejsu API klucze za pomocą platformy ASP.NET core dostawcy magazynu kluczy, klucz tajny użytkownika lub .NET 4.7.1 konstruktorów konfiguracji
 services: visualstudio
-documentationcenter: 
+documentationcenter: ''
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
-ms.service: 
+editor: ''
+ms.assetid: ''
+ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: eee882dc52ffc37067916dac29324efe0bc95b03
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpiecznie zapisać ustawienia tajne aplikacji dla aplikacji sieci web
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule opisano, jak bezpiecznie zapisać ustawienia konfiguracji tajne aplikacji dla aplikacji platformy Azure.
 
 Tradycyjnie wszystkich sieci web konfigurację aplikacji, które ustawienia są zapisywane w plikach konfiguracji, takich jak plik Web.config. Takie rozwiązanie prowadzi do ewidencjonowanie tajny ustawienia, takie jak chmury poświadczeń dla systemów kontroli źródła publiczny, takich jak Github. W tym samym czasie może być trudne do postępuj zgodnie z zaleceniami dotyczącymi zabezpieczeń ze względu na obciążenie, aby zmienić kod źródłowy i ponownie skonfigurować ustawienia środowiska deweloperskiego.
@@ -145,7 +145,7 @@ Wykonaj instrukcje z platformy ASP.NET core sekcji, aby skonfigurować magazyn k
 
 1. Zainstaluj następujący pakiet NuGet do projektu
 ```
-Microsoft.Configuration.ConfigurationBuilders.Azure.1.0.0-alpha1.nupkg
+Microsoft.Configuration.ConfigurationBuilders.UserSecrets.1.0.0-preview2.nupkg
 ```
 
 2. Zdefiniuj konstruktora konfiguracji magazynu kluczy w pliku Web.config. Umieść w tej sekcji, przed *appSettings* sekcji. Zastąp *vaultName* mieć nazwę klucza magazynu, jeśli magazyn kluczy jest w publicznej Azure lub pełny identyfikator URI, jeśli używasz suwerennych chmury.

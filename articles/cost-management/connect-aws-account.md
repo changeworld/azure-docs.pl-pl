@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/06/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 109235718f085ea2912f601f0657e08230e3e91d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c18fc065ae4d9a9401a8d603f051e9d6236c538
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Połącz konta usług Amazon Web Services
 
@@ -91,7 +91,7 @@ Poniższe sekcje przeprowadzenie Tworzenie użytkownika tylko do odczytu w celu 
 
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>Konfigurowanie dostępu oparte na użytkowniku usług AWS IAM w koszt zarządzania
 
-1. Otwórz Cloudyn portal z portalu Azure lub przejdź do https://azure.cloudyn.com/ i zaloguj się.
+1. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com/ i zaloguj się.
 2. Kliknij koło zębate symbol, a następnie wybierz **kont chmury**.
 3. Zarządzanie kontami wybierz **kont usług AWS** a następnie kliknij pozycję **Dodaj nowy +**.
 4. Aby uzyskać **nazwa konta**, wpisz nazwę konta.

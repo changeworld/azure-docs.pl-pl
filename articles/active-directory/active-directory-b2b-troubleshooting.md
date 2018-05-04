@@ -1,13 +1,13 @@
 ---
-title: "Rozwiązywanie problemów z współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft"
-description: "Środki zaradcze dla typowych problemów z współpracy usługi Azure Active Directory B2B"
+title: Rozwiązywanie problemów z współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft
+description: Środki zaradcze dla typowych problemów z współpracy usługi Azure Active Directory B2B
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 588e154d35fda539ac6ee8803ed96e6cd9a3d1df
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 82c171c59b7f465afd760d50b36d17912ee7c8e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy usługi Azure Active Directory B2B
 
@@ -63,7 +63,7 @@ Aby rozwiązać ten problem, administrator użytkownika zewnętrznego należy zs
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak jest\#", która nie jest zwykle prawidłowym znakiem synchronizacji z usługą Azure AD?
 
-"\#" jest zarezerwowany znak w UPN współpracy B2B usługi Azure AD lub użytkowników zewnętrznych, ponieważ konto zaproszonych user@contoso.com staje się user_contoso.com#EXT@fabrikam.onmicrosoft.com. W związku z tym \# w UPN pochodzące z lokalnymi nie mogą logować się do portalu Azure. 
+"\#" jest zarezerwowany znak w UPN współpracy B2B usługi Azure AD lub użytkowników zewnętrznych, ponieważ konto zaproszonych user@contoso.com staje się user_contoso.com#EXT#@fabrikam.onmicrosoft.com. W związku z tym \# w UPN pochodzące z lokalnymi nie mogą logować się do portalu Azure. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Przy dodawaniu użytkowników zewnętrznych do grupy synchronizowane komunikat o błędzie
 

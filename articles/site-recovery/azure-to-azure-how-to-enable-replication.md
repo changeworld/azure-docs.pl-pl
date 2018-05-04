@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: e5947242295a9c57b1c73e202c061d222cd0842f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4479f7bbe657908d4c1ed94f5eaa00401efcb87e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych platformy Azure do innego regionu systemu Azure
 
@@ -48,7 +48,7 @@ Włącz replikację. Tej procedurze przyjęto założenie, że podstawowy region
 4. W **ustawienia**, można opcjonalnie skonfigurować ustawienia lokacji docelowej:
 
     - **Lokalizacja docelowa**: lokalizacja, gdzie będą replikowane dane źródłowe maszyny wirtualnej. W zależności od lokalizacji wybranych maszyn Site Recovery zapewnia listę regionów odpowiedniego elementu docelowego. Firma Microsoft zaleca zachowanie lokalizacji docelowej takie same jak lokalizacja magazynu usług odzyskiwania.
-    - **Docelowa grupa zasobów**: grupy zasobów, aby wszystkie zreplikowanej maszyny wirtualne należą. Domyślnie usługi Azure Site Recovery tworzy nową grupę zasobów w regionie docelowych z nazwą składającą się z sufiksem "asr". W przypadku grupy zasobów utworzonej za pomocą usługi Azure Site Recovery już istnieje, zostanie on użyty ponownie. Można również dostosować go, jak pokazano w poniższej sekcji.
+    - **Docelowa grupa zasobów**: grupy zasobów, aby wszystkie zreplikowanej maszyny wirtualne należą. Domyślnie usługi Azure Site Recovery tworzy nową grupę zasobów w regionie docelowych z nazwą składającą się z sufiksem "asr". W przypadku grupy zasobów utworzonej za pomocą usługi Azure Site Recovery już istnieje, zostanie on użyty ponownie. Można również dostosować go, jak pokazano w poniższej sekcji. Lokalizacja docelowa grupa zasobów może być dowolny region platformy Azure z wyjątkiem regionu, w którym znajdują się maszyny wirtualne źródła.
     - **Docelowa sieci wirtualnej**: domyślnie Site Recovery tworzy nową sieć wirtualną w regionie docelowych z nazwą składającą się z sufiksem "asr". To jest zamapowana na sieć źródła, a następnie używane do wszelkich przyszłych ochrony. [Dowiedz się więcej](site-recovery-network-mapping-azure-to-azure.md) o mapowania sieci.
     - **Docelowa kont magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z zarządzanego dysków)**: Domyślnie, Usługa Site Recovery tworzy nowe konto magazynu docelowego mimicking konfigurację magazynu maszyny Wirtualnej źródłowego. W przypadku, gdy konto magazynu już istnieje, zostanie on użyty ponownie.
     - **Repliki dyskach zarządzanych (Jeśli źródło maszyny Wirtualnej używa dysków zarządzanych)**: Usługa Site Recovery tworzy nowe dyski replik zarządzanych w region docelowy dublowanego zarządzanych dysków maszyny Wirtualnej źródłowego tego samego typu magazynu (standardowa lub premium) jako źródłowej maszyny Wirtualnej na zarządzany dysku.

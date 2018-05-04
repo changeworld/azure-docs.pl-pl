@@ -1,12 +1,12 @@
 ---
-title: "Azure zalecenia usługi Advisor wydajności | Dokumentacja firmy Microsoft"
-description: "Użyj usługi Advisor w celu zoptymalizowania wydajności wdrożeń platformy Azure."
+title: Azure zalecenia usługi Advisor wydajności | Dokumentacja firmy Microsoft
+description: Użyj usługi Advisor w celu zoptymalizowania wydajności wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: e32723cd3ef13829890a630f4bff308164e17674
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 00abb5aafc6f3aec2e2dd7326a307bee74d97cc1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advisor-performance-recommendations"></a>Zalecenia doradcy w zakresie wydajności
 
@@ -31,11 +31,11 @@ Advisor zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasob�
 > [!NOTE]
 > Aby uzyskać zalecenia, bazy danych musi mieć o tydzień użycia, a w ciągu tygodnia musi być pewne spójnej działania. Doradca bazy danych SQL można zoptymalizować łatwiej wzorców zapytania spójna niż dla losowych seria działań.
 
-Aby uzyskać więcej informacji o usłudze Advisor bazy danych SQL, zobacz [doradcy bazy danych SQL](https://azure.microsoft.com/en-us/documentation/articles/sql-database-advisor/).
+Aby uzyskać więcej informacji o usłudze Advisor bazy danych SQL, zobacz [doradcy bazy danych SQL](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
 ## <a name="improve-redis-cache-performance-and-reliability"></a>Zwiększyć wydajność pamięci podręcznej Redis i niezawodności
 
-Klasyfikator identyfikuje wystąpienia pamięci podręcznej Redis, gdzie mogą być niekorzystny wpływ na wydajność wysokie użycie pamięci, obciążenie serwera, przepustowości sieci lub dużej liczby połączeń klientów. Klasyfikator także najlepsze rozwiązania w zakresie zalecenia, aby uniknąć potencjalnych problemów. Aby uzyskać więcej informacji o pamięci podręcznej Redis, zobacz [Advisor pamięci podręcznej Redis](https://azure.microsoft.com/en-us/documentation/articles/cache-configure/#redis-cache-advisor).
+Klasyfikator identyfikuje wystąpienia pamięci podręcznej Redis, gdzie mogą być niekorzystny wpływ na wydajność wysokie użycie pamięci, obciążenie serwera, przepustowości sieci lub dużej liczby połączeń klientów. Klasyfikator także najlepsze rozwiązania w zakresie zalecenia, aby uniknąć potencjalnych problemów. Aby uzyskać więcej informacji o pamięci podręcznej Redis, zobacz [Advisor pamięci podręcznej Redis](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Zwiększyć wydajność aplikacji usługi i niezawodności
@@ -44,7 +44,7 @@ Klasyfikator Azure integruje się poniżej rekomendowane najlepsze rozwiązania 
 * Wykrywanie wystąpień, w którym na wyczerpaniu pamięci lub zasobów procesora CPU przez środowisk uruchomieniowych aplikacji z opcjami środki zaradcze.
 * Wykrywanie wystąpień, w którym collocating zasoby, takie jak aplikacje sieci web i baz danych można zwiększyć wydajność i tańsze. 
 
-Aby uzyskać więcej informacji na temat zalecenia usługi aplikacji, zobacz [najlepsze rozwiązania dotyczące usługi Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/app-service-best-practices/).
+Aby uzyskać więcej informacji na temat zalecenia usługi aplikacji, zobacz [najlepsze rozwiązania dotyczące usługi Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 
@@ -52,7 +52,7 @@ Aby uzyskać więcej informacji na temat zalecenia usługi aplikacji, zobacz [na
 
 2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **wydajności** kartę.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat zalecenia doradcy w zakresie, zobacz:
 

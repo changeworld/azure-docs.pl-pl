@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48a8f6d35c3ea1266880f05d12ebf4efd855df41
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replikowanie wielowarstwowej aplikacji programu SharePoint przy użyciu usługi Azure Site Recovery odzyskiwania po awarii
 
@@ -53,7 +53,7 @@ Przed rozpoczęciem upewnij się, że należy zrozumieć następujące kwestie:
 
 ## <a name="sharepoint-architecture"></a>Architektura programu SharePoint
 
-Programu SharePoint można wdrożyć na jeden lub więcej serwerów przy użyciu topologii warstwowych i ról serwera do implementowania projektu farmy, spełniającej konkretne cele i cele. Typowy dużych, wysokiej jakości farmy programu SharePoint server obsługującego dużej liczby równoczesnych użytkowników i dużą liczbę elementów zawartości Użyj grupowania usługi w ramach strategii ich skalowalności. Ta metoda polega na uruchamianie usług na dedykowanych serwerach, grupowanie tych usług, a następnie skalowanie w poziomie serwery w grupie. Następujące topologii zilustrowano usługi i grupowanie trzy warstwy farmy serwerów programu SharePoint server. Zobacz dokumentację programu SharePoint i architektury linii produktu szczegółowe wskazówki dotyczące różnych topologiach programu SharePoint. Można znaleźć więcej szczegółów na temat wdrażania programu SharePoint 2013 w [tego dokumentu](https://technet.microsoft.com/en-us/library/cc303422.aspx).
+Programu SharePoint można wdrożyć na jeden lub więcej serwerów przy użyciu topologii warstwowych i ról serwera do implementowania projektu farmy, spełniającej konkretne cele i cele. Typowy dużych, wysokiej jakości farmy programu SharePoint server obsługującego dużej liczby równoczesnych użytkowników i dużą liczbę elementów zawartości Użyj grupowania usługi w ramach strategii ich skalowalności. Ta metoda polega na uruchamianie usług na dedykowanych serwerach, grupowanie tych usług, a następnie skalowanie w poziomie serwery w grupie. Następujące topologii zilustrowano usługi i grupowanie trzy warstwy farmy serwerów programu SharePoint server. Zobacz dokumentację programu SharePoint i architektury linii produktu szczegółowe wskazówki dotyczące różnych topologiach programu SharePoint. Można znaleźć więcej szczegółów na temat wdrażania programu SharePoint 2013 w [tego dokumentu](https://technet.microsoft.com/library/cc303422.aspx).
 
 
 

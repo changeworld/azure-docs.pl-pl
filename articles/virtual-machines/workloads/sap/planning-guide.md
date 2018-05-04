@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c2c3443f014f6c42ba9e8b68b21c2b9d0fdb1549
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -236,7 +236,7 @@ ms.lasthandoff: 04/05/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/05/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -512,7 +512,7 @@ Nie wszystkie innej serii maszyn wirtualnych może być oferowana w poszczególn
 >
 >
 
-### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure Regions
+### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Regiony platformy Azure
 Microsoft umożliwia wdrażanie maszyn wirtualnych do tak zwane *regiony platformy Azure*. Region platformy Azure może być jeden lub wiele centrów danych, które znajdują się w pobliżu. W większości regionów geograficznymi na świecie Microsoft ma co najmniej dwóch regionach platformy Azure. Na przykład w Europie istnieje Region platformy Azure z *Europa Północna, Europa* i jeden z *Europa Zachodnia*. Tych dwóch regionach platformy Azure w obrębie regionu geograficznymi są oddzielone odległość tyle istotne, aby awarii naturalnych i technicznych nie wpływają na obu regionów platformy Azure, w tym samym regionie geograficznymi. Ponieważ Microsoft stopniowo buduje się nowych regionów platformy Azure w różnych regionach geograficznymi globalnie, liczba tych regionów stopniowo rośnie i począwszy od grudnia 2015 maksymalną liczbę 20 regiony platformy Azure z regionami dodatkowe ogłoszenia już. Klientów można wdrożyć systemy SAP do tych regionów, w tym dwóch regionach platformy Azure w Chinach. Dla bieżącego aktualne informacje na temat regiony platformy Azure, zobacz tę witrynę sieci Web: <https://azure.microsoft.com/regions/>
 
 ### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Pojęcie maszyny wirtualnej platformy Microsoft Azure
@@ -607,7 +607,7 @@ Azure Standard storage był typu miejsca do magazynowania IaaS platformy Azure z
 
 Dyski, które są przechowywane na standardowe konta magazynu Azure są naliczane na podstawie na rzeczywiste dane przechowywane, wielkość transakcji magazynowych, transfer danych wychodzących i nadmiarowość opcja wybrana. Można tworzyć wiele dysków na maksymalną 1TB, rozmiar, ale tak długo, jak te pozostać pusta nie bez dodatkowych opłat. Jeśli następnie uzupełnij jeden wirtualny dysk twardy z 100GB, naliczane są opłaty do przechowywania 100GB, a nie nominalny, które utworzono z dysku VHD.
 
-#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Storage
+#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Magazyn w warstwie Premium systemu Azure
 W kwietnia 2015 r. Firma Microsoft wprowadziła Azure Premium Storage. Magazyn w warstwie Premium został wprowadzony w celu zapewnienie:
 
 * Lepsze opóźnienia we/wy.
@@ -966,7 +966,7 @@ W takim przypadku chcemy przekazania dysku VHD, lub bez systemu operacyjnego i z
 
 **PowerShell**
 
-* Zaloguj się do subskrypcji z *Login-AzureRmAccount*
+* Zaloguj się do subskrypcji z *Connect-AzureRmAccount*
 * Ustaw subskrypcji kontekstu za pomocą *Set-AzureRmContext* i parametr identyfikator subskrypcji lub Nazwa subskrypcji — zobacz <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
 * Przekazywanie wirtualnego dysku twardego z *AzureRmVhd Dodaj* do konta magazynu platformy Azure — zobacz <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
 * (Opcjonalnie) Tworzenie dysku zarządzanego z wirtualnego dysku twardego z *New AzureRmDisk* — zobacz <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
@@ -993,7 +993,7 @@ W takim przypadku chcemy przekazania dysku VHD, lub bez systemu operacyjnego i z
 Można przekazać istniejącej maszyny Wirtualnej lub wirtualnego dysku twardego z sieci lokalnej, aby mógł zostać użyty jako obraz maszyny Wirtualnej Azure maszyny Wirtualnej lub wirtualnego dysku twardego muszą spełniać wymagania wymienione w rozdziale [przygotowania do wdrożenia maszyny Wirtualnej z obrazu specyficzne dla programu SAP] [ planning-guide-5.2.2] tego dokumentu.
 
 * Użyj *sysprep* w systemie Windows lub *agenta waagent-deprovision* w systemie Linux w celu uogólnienia maszyny Wirtualnej — zobacz [techniczne dotyczące narzędzia Sysprep](https://technet.microsoft.com/library/cc766049.aspx) dla systemu Windows lub [Przechwytywanie maszyny wirtualnej systemu Linux, aby pełnić rolę szablonu usługi Resource Manager] [ capture-image-linux-step-2-create-vm-image] dla systemu Linux
-* Zaloguj się do subskrypcji z *Login-AzureRmAccount*
+* Zaloguj się do subskrypcji z *Connect-AzureRmAccount*
 * Ustaw subskrypcji kontekstu za pomocą *Set-AzureRmContext* i parametr identyfikator subskrypcji lub Nazwa subskrypcji — zobacz <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
 * Przekazywanie wirtualnego dysku twardego z *AzureRmVhd Dodaj* do konta magazynu platformy Azure — zobacz <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
 * (Opcjonalnie) Tworzenie obrazu dysku zarządzanego z wirtualnego dysku twardego z *New AzureRmImage* — zobacz <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
@@ -1964,7 +1964,7 @@ Poniższej ilustracji przedstawiono tej samej orientacji poziomej za pomocą zar
 
 ![Architektura HA SAP NetWeaver aplikacji z programem SQL Server w IaaS platformy Azure][planning-guide-figure-3201]
 
-##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] HA on Linux
+##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] HA w systemie Linux
 Architektura SAP HA w systemie Linux na platformie Azure jest zasadniczo taki sam, jak w przypadku systemu Windows zgodnie z powyższym opisem. Zapoznaj się Uwaga SAP [1928533] listę rozwiązań obsługiwanych wysokiej dostępności.
 
 ### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Przy użyciu Autostart dla wystąpień SAP

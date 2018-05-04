@@ -1,19 +1,19 @@
 ---
-title: "Szybki start — klaster Azure Docker CE dla systemu Linux"
-description: "Szybka nauka tworzenia klastra Docker CE dla kontenerów systemu Linux w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure."
+title: Szybki start — klaster Azure Docker CE dla systemu Linux
+description: Szybka nauka tworzenia klastra Docker CE dla kontenerów systemu Linux w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: nepeters
-ms.custom: 
-ms.openlocfilehash: 3c06aaa09366df89ad73cb60780511d2087d5994
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.custom: ''
+ms.openlocfilehash: cd52982fc650d5fd3b4edd8513946a721306a451
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-docker-ce-cluster"></a>Wdrażanie klastra Docker CE
 

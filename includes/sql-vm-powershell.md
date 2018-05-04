@@ -7,9 +7,9 @@ Najpierw musisz mieć najnowszej [programu Azure PowerShell](http://msdn.microso
 > 
 > 
 
-Uruchom [ **Add-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) polecenia cmdlet zostanie wyświetlone logowania na ekranie, aby wprowadzić swoje poświadczenia. Użyj tych samych poświadczeń, których używasz do logowania w witrynie Azure Portal.
+Uruchom [ **Connect-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) polecenia cmdlet zostanie wyświetlone logowania na ekranie, aby wprowadzić swoje poświadczenia. Użyj tych samych poświadczeń, których używasz do logowania w witrynie Azure Portal.
 
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
 
 Jeśli masz wiele subskrypcji, użyj [ **Set-AzureRmContext** ](http://msdn.microsoft.com/library/mt619263.aspx) Wybierz subskrypcję, która sesji programu PowerShell należy użyć polecenia cmdlet. Aby sprawdzić, która subskrypcja jest używana w bieżącej sesji programu PowerShell, uruchom polecenie [**Get-AzureRmContext**](http://msdn.microsoft.com/library/mt619265.aspx). Aby wyświetlić wszystkie subskrypcje, uruchom polecenie [**Get-AzureRmSubscription**](http://msdn.microsoft.com/library/mt619284.aspx).
 

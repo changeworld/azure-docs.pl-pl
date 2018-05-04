@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>Aby utworzyć nową usługę
 
-1.  Za pomocą poświadczeń konta Microsoft zaloguj się do witryny Azure Portal pod tym adresem URL: <https://portal.azure.com/>. Jeśli wdrażane urządzenia w portalu dla instytucji rządowych, zaloguj się w: <https://portal.azure.us/>
+1.  Przy użyciu poświadczeń konta Microsoft, zaloguj się do portalu Azure pod tym adresem URL: <https://portal.azure.com/>. Jeśli wdrażane urządzenia w portalu dla instytucji rządowych, zaloguj się na: <https://portal.azure.us/>
 
 2.  W portalu Azure kliknij **+ Utwórz zasób** &gt; **magazynu** &gt; **serii wirtualnego StorSimple**.
 
@@ -18,7 +18,7 @@
 
         -   Jeśli masz istniejące obciążenia na platformie Azure, które również zamierzasz wdrożyć na urządzeniu StorSimple, zalecane jest użycie tego centrum danych.
 
-        -   Magazyn Menedżera urządzeń StorSimple i Azure może być w dwóch różnych lokalizacjach. W takim przypadku należy utworzyć konta usługi Menedżer urządzeń StorSimple i usługi Azure Storage oddzielnie. Aby utworzyć konto usługi Azure Storage, przejdź do usługi Azure Storage w witrynie Azure Portal i postępuj zgodnie z instrukcjami w temacie [Tworzenie konta usługi Azure Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account). Po utworzeniu konta dodaj je do usługi Menedżer urządzeń StorSimple, wykonując czynności w temacie [Configure a new storage account for the service](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service) (Konfigurowanie nowego konta magazynu dla usługi).
+        -   Magazyn Menedżera urządzeń StorSimple i Azure może być w dwóch różnych lokalizacjach. W takim przypadku należy utworzyć konta usługi Menedżer urządzeń StorSimple i usługi Azure Storage oddzielnie. Aby utworzyć konto usługi Azure Storage, przejdź do usługi Azure Storage w witrynie Azure Portal i postępuj zgodnie z instrukcjami w temacie [Tworzenie konta usługi Azure Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account). Po utworzeniu konta dodaj je do usługi Menedżer urządzeń StorSimple, wykonując czynności w temacie [Configure a new storage account for the service](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service) (Konfigurowanie nowego konta magazynu dla usługi).
 
         -   Jeśli wdrażane urządzenia wirtualnego w portalu dla instytucji rządowych, usługi Menedżer StorSimple urządzenia jest dostępny w lokalizacjach nam Iowa i Virginia NAS.
 

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1e85d5f48ce998ebaf4ccaa231bb75449e2bab16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0b8f56266f77724a60253991556b15a923e537f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-factory---samples"></a>Fabryki danych Azure — przykłady
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [przykłady środowiska PowerShell w wersji 2 usługi fabryka danych](../samples-powershell.md) i [przykłady w galerii Azure przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [przykłady środowiska PowerShell w wersji 2 usługi fabryka danych](../samples-powershell.md) i [przykłady w galerii Azure przykłady kodu](https://azure.microsoft.com/resources/samples/?service=data-factory).
 
 
 ## <a name="samples-on-github"></a>Przykłady z witryny GitHub
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 
 | Sample | Opis |
 |:--- |:--- |
-| [ADF Walkthrough](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |W tym przykładzie przedstawiono wskazówki na trasie do przetwarzania plików dziennika przy użyciu fabryki danych Azure, aby włączyć danych z plików dziennika w do szczegółowych danych. <br/><br/>W tym przewodniku potoku fabryki danych zbiera dzienniki próbki, procesów i wzbogaca danych z dzienników przy użyciu danych referencyjnych i przekształcenia danych oceny skuteczności kampanii marketingowych, która została ostatnio uruchomiona. |
+| [Wskazówki ADF](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |W tym przykładzie przedstawiono wskazówki na trasie do przetwarzania plików dziennika przy użyciu fabryki danych Azure, aby włączyć danych z plików dziennika w do szczegółowych danych. <br/><br/>W tym przewodniku potoku fabryki danych zbiera dzienniki próbki, procesów i wzbogaca danych z dzienników przy użyciu danych referencyjnych i przekształcenia danych oceny skuteczności kampanii marketingowych, która została ostatnio uruchomiona. |
 | [Przykłady JSON](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |W tym przykładzie przedstawiono przykłady JSON dla typowych scenariuszy. |
 | [Przykładowe narzędzie do pobierania danych http](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |Ten przykładowy pokazy pobierania danych z punktu końcowego HTTP do magazynu obiektów Blob Azure przy użyciu działań niestandardowych .NET. |
 | [Krzyżowe próbki Net działanie elementu AppDomain kropka](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |W tym przykładzie umożliwia tworzenie niestandardowego działania .NET, który nie jest ograniczona do wersji zestawu używanych przez uruchamianie ADF (na przykład WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x itp.). |

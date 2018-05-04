@@ -24,7 +24,7 @@ Podana zabezpieczeń, ochrony prywatności, przezroczystość i dotyczy zgodnoś
 
 Microsoft Azure oferuje rozwiązania pełnej chmury, który łączy stale rosnącego zbiór usług w chmurze zintegrowane — analytics, machine learning, magazynu, zabezpieczeń, sieci i sieci web — z branży zobowiązań do ochrony i poufność danych. Firmy Microsoft [założono naruszenia](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) strategii używa dedykowana *czerwony zespołu* ekspertów zabezpieczeń oprogramowania, którzy symulować ataków, testowanie Azure możliwość wykrywania, ochronę przed zagrożeniami i odzyskiwanie w przypadku naruszenia. Firmy Microsoft [odpowiedzi na zdarzenia globalne](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity) zespołu działa przez całą dobę w celu złagodzenia skutków ataków złośliwych działań. Zespół wykonuje określone procedury zarządzania zdarzeniami, komunikację i odzyskiwania, a następnie używa interfejsów wykrywalny i przewidywalne partnerom wewnętrznych i zewnętrznych.
 
-Systemy firmy Microsoft zapewniają ciągłego włamań i zapobiegania, zapobieganie atakom usługi regularne penetracji testowania i śledczej narzędzi, które pomagają zidentyfikować i uniknięcie zagrożeń. [Uwierzytelnianie wieloskładnikowe](../articles/multi-factor-authentication/multi-factor-authentication.md) zapewnia dodatkową warstwę zabezpieczeń umożliwiający użytkownikom końcowym dostęp do sieci. I aplikacji i dostawcy hosta, firma Microsoft oferuje kontroli dostępu, monitorowanie przed złośliwym oprogramowaniem, skanowanie luki w zabezpieczeniach, poprawki i zarządzanie konfiguracją.
+Systemy firmy Microsoft zapewniają ciągłego włamań i zapobiegania, zapobieganie atakom usługi regularne penetracji testowania i śledczej narzędzi, które pomagają zidentyfikować i uniknięcie zagrożeń. [Uwierzytelnianie wieloskładnikowe](../articles/active-directory/authentication/multi-factor-authentication.md) zapewnia dodatkową warstwę zabezpieczeń umożliwiający użytkownikom końcowym dostęp do sieci. I aplikacji i dostawcy hosta, firma Microsoft oferuje kontroli dostępu, monitorowanie przed złośliwym oprogramowaniem, skanowanie luki w zabezpieczeniach, poprawki i zarządzanie konfiguracją.
 
 Pakiet IoT Microsoft Azure wykorzystuje bezpieczeństwo i prywatność wbudowanych w platformy Azure oraz SDL i OSA procesów związanych z bezpieczeństwem programowania i działania oprogramowania firmy Microsoft. Te procedury zawierają funkcje tożsamość i zarządzanie podstawowych zabezpieczeń od wszelkich rozwiązań do ochrony infrastruktury, ochrony sieci i.
 
@@ -32,7 +32,7 @@ Pakiet IoT Microsoft Azure wykorzystuje bezpieczeństwo i prywatność wbudowany
 
 Najlepiej komunikację funkcje zabezpieczeń i prywatności wbudowane pakiet IoT Azure, w tym artykule dzieli pakiet na trzy obszary głównej zabezpieczeń.
 
-![Pakiet IoT Azure](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
+![Azure IoT Suite](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Zabezpieczenia, inicjowanie obsługi administracyjnej urządzeń i uwierzytelniania
 

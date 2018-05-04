@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 7b6da166ddd53162ca1177e925f00291ae78de2a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a67edd4372cff70a3948e85033e806749d585eb5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykładów dla platformy Azure Monitor PowerShell szybki start
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji Azure monitora.
@@ -38,7 +38,7 @@ Przykłady w artykule pokazują, jak można użyć poleceń cmdlet Azure monitor
 Po pierwsze Zaloguj się do subskrypcji platformy Azure.
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Zobaczysz ekran logowania, w. Po zalogowaniu się konto dla identyfikatora dzierżawcy, i domyślnego Identyfikatora subskrypcji są wyświetlane. Wszystkie polecenia cmdlet systemu Azure działają w kontekście subskrypcji domyślne. Aby wyświetlić subskrypcje, do których masz dostęp do listy, użyj następującego polecenia:
@@ -150,7 +150,7 @@ W poniższej tabeli opisano parametry i wartości używane do utworzenia alertu 
 | Name (Nazwa) |simpletestdiskwrite |
 | Lokalizacja tę regułę alertów |Wschodnie stany USA |
 | ResourceGroup |montest |
-| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| Element TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | MetricName alertu, który jest tworzony |\Disk \PhysicalDisk (_Total) / s. Zobacz `Get-MetricDefinitions` polecenia cmdlet dotyczące pobrania dokładne metryki nazw |
 | Operator |GreaterThan |
 | Wartość progowa (liczba/s w tym metryki) |1 |

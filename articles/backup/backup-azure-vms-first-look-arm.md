@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: markgal;jimpark
+ms.author: markgal;jimpark;sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6a29e184a47e3b4304f9c4683e76feab3e75dd4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Tworzenie kopii zapasowej maszyn wirtualnych platformy Azure magazyn usług odzyskiwania
 
@@ -39,7 +39,9 @@ Dodatkowe informacje na temat ochrony maszyn wirtualnych usługi Premium Storage
 Aby dowiedzieć się więcej o tym, co można, a czego nie można utworzyć kopii zapasowej, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
 
 > [!NOTE]
-> W tym samouczku zakładamy, że masz już maszynę wirtualną w subskrypcji platformy Azure i zostały podjęte działania umożliwiające usłudze tworzenia kopii zapasowej dostęp do maszyny wirtualnej.
+> Usługa Kopia zapasowa tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej do przechowywania kolekcji punktu przywracania. Nie można zablokować grupy zasobów utworzonej do użycia przez usługę tworzenia kopii zapasowej zalecana klientów.
+Format nazewnictwa grupy zasobów tworzone przez usługę tworzenia kopii zapasowej jest: AzureBackupRG_`<Geo>`_`<number>`
+<br>Przykład: AzureBackupRG_northeurope_1
 >
 >
 

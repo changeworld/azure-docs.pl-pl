@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 3ef946c6c0ab9c111932b3145fd46ae6ef2684cd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Jak stronicować wyniki wyszukiwania w usłudze Azure Search
 Ten artykuł zawiera wskazówki dotyczące sposobu używania interfejsu API REST usługi wyszukiwanie Azure do zaimplementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, sortowania i nawigacji.
 
-W każdym przypadku wymienione poniżej podano związanych ze stronami opcje, które danych lub informacji do strony wyników wyszukiwania za pomocą [wyszukiwania dokumentu](http://msdn.microsoft.com/library/azure/dn798927.aspx) żądania wysyłane do usługi Azure Search. Żądania obejmują polecenie GET, parametry zapytania, które informują usługę, co jest wymagany i ścieżkę oraz sposobu sformułować odpowiedzi.
+W każdym przypadku wymienione poniżej podano związanych ze stronami opcje, które danych lub informacji do strony wyników wyszukiwania za pomocą [wyszukiwania dokumentu](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) żądania wysyłane do usługi Azure Search. Żądania obejmują polecenie GET, parametry zapytania, które informują usługę, co jest wymagany i ścieżkę oraz sposobu sformułować odpowiedzi.
 
 > [!NOTE]
-> Nieprawidłowa żądania zawiera wiele elementów, takich jak adres URL usługi i ścieżkę, Zlecenie HTTP, `api-version`i tak dalej. Jednak firma Microsoft usuwane przykłady, aby wyróżnić składnię związany podział na strony. Zobacz [interfejsu API REST usługi Azure Search](http://msdn.microsoft.com/library/azure/dn798935.aspx) dokumentacji, aby uzyskać więcej informacji o składni żądania.
+> Nieprawidłowa żądania zawiera wiele elementów, takich jak adres URL usługi i ścieżkę, Zlecenie HTTP, `api-version`i tak dalej. Jednak firma Microsoft usuwane przykłady, aby wyróżnić składnię związany podział na strony. Zobacz [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice) dokumentacji, aby uzyskać więcej informacji o składni żądania.
 > 
 > 
 
@@ -59,7 +59,7 @@ Aby przywrócić podzbiór pól dla układzie sąsiadującym:
 
 Obrazów i plików multimedialnych na pliki nie są bezpośrednio można wyszukiwać i powinny być przechowywane w innej platformie magazynu, takie jak magazyn obiektów Blob platformy Azure, aby zmniejszyć koszty. Indeks i dokumenty zdefiniuj pole, które przechowuje adres URL zawartości zewnętrznej. Pole można następnie użyć jako odwołanie do obrazu. Adres URL obrazu, należy w dokumencie.
 
-Do pobrania na stronie opisu produktu **onClick** zdarzenia, użyj [wyszukiwania dokumentu](http://msdn.microsoft.com/library/azure/dn798929.aspx) do przekazania w kluczu dokumentu do pobrania. Typ danych klucza jest `Edm.String`. W tym przykładzie jest *246810*. 
+Do pobrania na stronie opisu produktu **onClick** zdarzenia, użyj [wyszukiwania dokumentu](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) do przekazania w kluczu dokumentu do pobrania. Typ danych klucza jest `Edm.String`. W tym przykładzie jest *246810*. 
 
         GET /indexes/onlineCatalog/docs/246810
 
@@ -81,7 +81,7 @@ Należy utworzyć metodę, która akceptuje opcję sortowania jako dane wejścio
  ![][5]
 
 > [!NOTE]
-> Podczas oceniania domyślne są wystarczające w różnych scenariuszach, firma Microsoft zaleca tworzony istotność na niestandardowego profilu oceniania zamiast tego. Niestandardowy profil oceniania umożliwia zwiększenie wydajności elementów, które są w firmie. Zobacz [Dodaj profil oceniania](http://msdn.microsoft.com/library/azure/dn798928.aspx) Aby uzyskać więcej informacji. 
+> Podczas oceniania domyślne są wystarczające w różnych scenariuszach, firma Microsoft zaleca tworzony istotność na niestandardowego profilu oceniania zamiast tego. Niestandardowy profil oceniania umożliwia zwiększenie wydajności elementów, które są w firmie. Zobacz [Dodaj profil oceniania](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) Aby uzyskać więcej informacji. 
 > 
 > 
 
@@ -95,12 +95,12 @@ Możesz wysłać z lub bez wyrażenia filtru. Na przykład następujące żądan
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-Zobacz [wyszukiwania dokumentów (interfejsu API usługi Azure Search)](http://msdn.microsoft.com/library/azure/dn798927.aspx) uzyskać więcej informacji o `$filter` wyrażenia.
+Zobacz [wyszukiwania dokumentów (interfejsu API usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) uzyskać więcej informacji o `$filter` wyrażenia.
 
 ## <a name="see-also"></a>Zobacz też
-* [Interfejsu API REST usługi Azure Search](http://msdn.microsoft.com/library/azure/dn798935.aspx)
-* [Operacje na indeksie](http://msdn.microsoft.com/library/azure/dn798918.aspx)
-* [Operacje dokumentu](http://msdn.microsoft.com/library/azure/dn800962.aspx)
+* [Interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice)
+* [Operacje na indeksie](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+* [Operacje dokumentu](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
 * [Wideo i samouczki dotyczące usługi Azure Search](search-video-demo-tutorial-list.md)
 * [Nawigacji aspektowej w usłudze Azure Search](search-faceted-navigation.md)
 

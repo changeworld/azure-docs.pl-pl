@@ -1,12 +1,12 @@
 ---
-title: "Zabezpieczanie wdrożenia PaaS | Dokumentacja firmy Microsoft"
+title: Zabezpieczanie wdrożenia PaaS | Dokumentacja firmy Microsoft
 description: " Zrozumieć zalety zabezpieczeń PaaS i inne modele usług w chmurze i Dowiedz się, najważniejsze wskazówki dotyczące zabezpieczania wdrożenia Azure PaaS. "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
 editor: techlake
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 4629e0ab6bbc9554128a923e92b269df79446b18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożenia PaaS
+# <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
 Ten artykuł zawiera informacje ułatwiające:
 
@@ -87,15 +87,15 @@ Poniżej przedstawiono podsumowanie ogólnych najlepszych rozwiązań stosowanyc
 
 - **Nie utrać Twoje klucze lub poświadczenia** zabezpieczania kluczy i poświadczeń jest niezbędne do zabezpieczania wdrożeń typu PaaS. Utraty kluczy i poświadczeń jest to powszechny problem. Jeden dobrym rozwiązaniem jest użycie scentralizowanego rozwiązania, w których kluczy i kluczy tajnych są przechowywane w sprzętowych modułach zabezpieczeń (HSM). Platforma Azure udostępnia w chmurze za pomocą modułu HSM [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
 - **Nie umieszczaj poświadczeń i innych informacji poufnych do kodu źródłowego lub GitHub** jedynym elementem gorsze od utraty Twoje klucze i poświadczeń o nieautoryzowana osoba uzyskać do nich dostęp. Osoby atakujące mogą wykorzystać bot technologie, aby znaleźć kluczy i kluczy tajnych przechowywane w repozytoriach kodów, takich jak usługi GitHub. Nie należy umieszczać kluczy i kluczy tajnych w tych publicznych repozytoriach kodów źródłowych.
-- **Ochrona interfejsów zarządzania maszyny Wirtualnej na hybrydowego usługi PaaS i IaaS** IaaS i PaaS usługi są uruchomione na maszynach wirtualnych (VM). W zależności od typu usługi, są dostępne kilka interfejsów zarządzania tym Włącz te maszyny wirtualne można zdalnie zarządzać bezpośrednio. Zdalne zarządzanie protokołów, takich jak [protokołu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokołu RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), i [zdalnego programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) mogą być używane. Ogólnie rzecz biorąc zaleca się, że nie zostanie włączona bezpośredni dostęp zdalny do maszyn wirtualnych z Internetu. Jeśli to możliwe, należy użyć alternatywnych metod takich jak przy użyciu wirtualnej sieci prywatnej w sieci wirtualnej platformy Azure. Jeśli alternatywnych metod nie są dostępne, a następnie upewnij się, że używasz złożone hasła, a jeśli jest dostępna, uwierzytelnianie dwuskładnikowe (takich jak [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)).
+- **Ochrona interfejsów zarządzania maszyny Wirtualnej na hybrydowego usługi PaaS i IaaS** IaaS i PaaS usługi są uruchomione na maszynach wirtualnych (VM). W zależności od typu usługi, są dostępne kilka interfejsów zarządzania tym Włącz te maszyny wirtualne można zdalnie zarządzać bezpośrednio. Zdalne zarządzanie protokołów, takich jak [protokołu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokołu RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), i [zdalnego programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) mogą być używane. Ogólnie rzecz biorąc zaleca się, że nie zostanie włączona bezpośredni dostęp zdalny do maszyn wirtualnych z Internetu. Jeśli to możliwe, należy użyć alternatywnych metod takich jak przy użyciu wirtualnej sieci prywatnej w sieci wirtualnej platformy Azure. Jeśli alternatywnych metod nie są dostępne, a następnie upewnij się, że używasz złożone hasła, a jeśli jest dostępna, uwierzytelnianie dwuskładnikowe (takich jak [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
 - **Użyj silnego uwierzytelniania i autoryzacji platformy**
 
   - Użyj tożsamości federacyjnych w usłudze Azure AD zamiast magazynów użytkownika niestandardowego. Korzystając z tożsamości federacyjnej, możesz korzystać z platformy opartego i przekazać Zarządzanie tożsamościami autoryzowanych partnerów. Podejście tożsamości federacyjnych jest szczególnie ważne w scenariuszach, gdy pracownicy są zakończone i informacje muszą być uwzględniane w wielu systemów tożsamości oraz autoryzacji.
   - Użyj platformy dostarczona mechanizmy uwierzytelniania i autoryzacji, zamiast kodu niestandardowego. Przyczyną jest to, że opracowywanie uwierzytelniania niestandardowego kodu może być błąd podatnych na błędy. Większość deweloperów nie są ekspertów zabezpieczeń i prawdopodobnie nie należy pamiętać o precyzyjnie oraz najnowsze osiągnięcia w uwierzytelniania i autoryzacji. Komercyjnych kodu (na przykład od firmy Microsoft) jest często często przeglądu zabezpieczeń.
-  - Uwierzytelnianie wieloskładnikowe. Uwierzytelnianie wieloskładnikowe jest obecnie standardowym do uwierzytelniania i autoryzacji, ponieważ pozwala ona na uniknięcie słabych zabezpieczeń związane z nazwy użytkownika i hasła typy uwierzytelniania. Dostęp do interfejsów zarządzania platformy Azure (portal/zdalne programu PowerShell) oraz klientów usługi powinny być zaprojektowane i skonfigurowane do używania [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md).
+  - Uwierzytelnianie wieloskładnikowe. Uwierzytelnianie wieloskładnikowe jest obecnie standardowym do uwierzytelniania i autoryzacji, ponieważ pozwala ona na uniknięcie słabych zabezpieczeń związane z nazwy użytkownika i hasła typy uwierzytelniania. Dostęp do interfejsów zarządzania platformy Azure (portal/zdalne programu PowerShell) oraz klientów usługi powinny być zaprojektowane i skonfigurowane do używania [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md).
   - Użyj standardowych protokołów uwierzytelniania, takich jak OAuth2 i protokołu Kerberos. Te protokoły zostały często dokładnie przeglądane i prawdopodobnie są zaimplementowane jako część bibliotek platformy do uwierzytelniania i autoryzacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule firma Microsoft skupia się na zalet zabezpieczeń wdrożenie Azure PaaS. Następnie Dowiedz się, najważniejsze wskazówki dotyczące zabezpieczania PaaS w sieci web i rozwiązań mobilnych. Zaczniemy usłudze Azure App Service, baza danych SQL Azure i usługi Azure SQL Data Warehouse. Jako artykułów na zaleceń dla innych usług platformy Azure są dostępne, linki będzie świadczona na poniższej liście:
 
 - [Azure App Service](security-paas-applications-using-app-services.md)

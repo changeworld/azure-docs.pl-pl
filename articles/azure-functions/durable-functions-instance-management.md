@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 01a6fefc10dfd83997acc290dbd1c85ba86a4799
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: baea799dbab2625e64140a565064b3c41310b4ad
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Zarządzanie wystąpieniami w funkcjach trwałe (usługi Azure Functions)
 
@@ -77,6 +77,7 @@ module.exports = function (context, input) {
 * **CreatedTime**: czasu, jaką funkcja orchestrator uruchomienia.
 * **LastUpdatedTime**: czas, w którym orchestration ostatnich użyciu.
 * **Wejściowy**: dane wejściowe funkcji jako wartość JSON.
+* **CustomStatus**: stan aranżacji niestandardowe w formacie JSON. 
 * **Dane wyjściowe**: dane wyjściowe funkcji jako wartość JSON (Jeśli funkcja zostało ukończone). Funkcji programu orchestrator nie powiodło się, ta właściwość będzie zawierać szczegóły niepowodzenia. Jeśli funkcja orchestrator zostało zakończone, ta właściwość będzie zawierać podana Przyczyna zakończenia (jeśli istnieje).
 * **RuntimeStatus**: jeden z następujących wartości:
     * **Uruchomiona**: wystąpienie uruchomieniu.

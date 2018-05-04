@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
@@ -145,6 +145,9 @@ Zostanie wygenerowana unikatowa nazwa serwera. Ta nazwa jest używana jako czę�
 Dodaj nazwę użytkownika i hasło administratora. Wymagania dotyczące złożoności hasła opisano w temacie [Password Policy](/sql/relational-databases/security/password-policy) (Zasady haseł).
 
 Zapamiętaj tę nazwę użytkownika i hasło. Będziesz je później potrzebować do zarządzania wystąpieniami serwera logicznego.
+
+> [!IMPORTANT]
+> Mimo że hasło w parametrach połączenia jest maskowane (w programie Visual Studio, a także w usłudze App Service), to fakt jego przechowywania zwiększa obszar aplikacji podatny na ataki. Usługa App Service może używać [tożsamości usługi zarządzanej](app-service-managed-service-identity.md) do wyeliminowania tego ryzyka przez całkowite usunięcie konieczności przechowywania wpisów tajnych w kodzie lub konfiguracji aplikacji. Aby uzyskać więcej informacji, zobacz [Następne kroki](#next-steps).
 
 ![Tworzenie wystąpienia programu SQL Server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
@@ -413,8 +416,6 @@ Domyślnie w portalu jest wyświetlana strona **Przegląd**. Ta strona udostępn
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-<a name="next"></a>
-
 ## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
@@ -427,7 +428,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Strumieniowe przesyłanie dzienników z platformy Azure do terminala
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację internetową.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak łatwo poprawić zabezpieczenia połączenia usługi Azure SQL Database.
 
 > [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure Web Apps (Mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure)](app-service-web-tutorial-custom-domain.md)
+> [Zabezpieczony dostęp do usługi SQL Database przy użyciu tożsamości usługi zarządzanej](app-service-web-tutorial-connect-msi.md)

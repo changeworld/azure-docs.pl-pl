@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -235,32 +235,32 @@ W poniższej tabeli wymieniono nazwy operacji operationName i odpowiadające im 
 | operationName | Polecenie interfejsu API REST |
 | --- | --- |
 | Authentication |Za pośrednictwem punktu końcowego usługi Azure Active Directory |
-| VaultGet |[Pobierz informacje o magazynie kluczy](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
-| VaultPut |[Utwórz lub zaktualizuj magazyn kluczy](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
-| VaultDelete |[Usuń magazyn kluczy](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |
+| VaultGet |[Pobierz informacje o magazynie kluczy](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| VaultPut |[Utwórz lub zaktualizuj magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| VaultDelete |[Usuń magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | VaultPatch |[Zaktualizuj magazyn kluczy](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[Utwórz listę wszystkich magazynów kluczy w grupie zasobów](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx) |
-| KeyCreate |[Utwórz klucz](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx) |
-| KeyGet |[Pobierz informacje o kluczu](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx) |
-| KeyImport |[Importuj klucz do magazynu](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx) |
-| KeyBackup |[Wykonaj kopię zapasową klucza](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx). |
-| KeyDelete |[Usuń klucz](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx) |
-| KeyRestore |[Przywróć klucz](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx) |
-| KeySign |[Podpisz przy użyciu klucza](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx) |
-| KeyVerify |[Weryfikuj za pomocą klucza](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx) |
-| KeyWrap |[Opakuj klucz](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx) |
-| KeyUnwrap |[Odpakuj klucz](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx) |
-| KeyEncrypt |[Szyfruj za pomocą klucza](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
-| KeyDecrypt |[Odszyfruj za pomocą klucza](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
-| KeyUpdate |[Zaktualizuj klucz](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[Utwórz listę kluczy w magazynie](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[Utwórz listę wersji klucza](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
-| SecretSet |[Utwórz klucz tajny](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
-| SecretGet |[Pobierz klucz tajny](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
-| SecretUpdate |[Zaktualizuj klucz tajny](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
-| SecretDelete |[Usuń klucz tajny](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx) |
-| SecretList |[Utwórz listę kluczy tajnych w magazynie](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
-| SecretListVersions |[Utwórz listę wersji klucza tajnego](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
+| VaultList |[Utwórz listę wszystkich magazynów kluczy w grupie zasobów](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| KeyCreate |[Utwórz klucz](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| KeyGet |[Pobierz informacje o kluczu](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| KeyImport |[Importuj klucz do magazynu](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| KeyBackup |[Wykonaj kopię zapasową klucza](https://msdn.microsoft.com/library/azure/dn878058.aspx). |
+| KeyDelete |[Usuń klucz](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| KeyRestore |[Przywróć klucz](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| KeySign |[Podpisz przy użyciu klucza](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| KeyVerify |[Weryfikuj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| KeyWrap |[Opakuj klucz](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| KeyUnwrap |[Odpakuj klucz](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| KeyEncrypt |[Szyfruj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| KeyDecrypt |[Odszyfruj za pomocą klucza](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| KeyUpdate |[Zaktualizuj klucz](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| KeyList |[Utwórz listę kluczy w magazynie](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| KeyListVersions |[Utwórz listę wersji klucza](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| SecretSet |[Utwórz klucz tajny](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| SecretGet |[Pobierz klucz tajny](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| SecretUpdate |[Zaktualizuj klucz tajny](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| SecretDelete |[Usuń klucz tajny](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| SecretList |[Utwórz listę kluczy tajnych w magazynie](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| SecretListVersions |[Utwórz listę wersji klucza tajnego](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>Korzystanie z usługi Log Analytics
 

@@ -1,27 +1,27 @@
 ---
 title: Geograficznie replikowanie rejestru kontenera platformy Azure
-description: "Rozpocznij tworzenie i zarządzanie nimi rejestrów replikacją geograficzną kontenera platformy Azure."
+description: Rozpocznij tworzenie i zarządzanie nimi rejestrów replikacją geograficzną kontenera platformy Azure.
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
 ms.date: 10/24/2017
 ms.author: stevelas
-ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 6b82f49d2bf4ed321f5e847d11780535e01531f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w rejestrze kontenera platformy Azure
+# <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
 Wybierz firmy chcące obecność lokalnych lub gorących kopii zapasowej do uruchamiania usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem umieszczenie rejestru kontenera w każdym regionie, w którym są uruchamiane obrazy zezwala na operacje Zamknij sieci, umożliwiające szybkie, transfer warstwy niezawodnej obrazu.
 
 Replikacja geograficzna umożliwia rejestru kontenera platformy Azure do działania jako pojedynczy rejestru, obsługę wielu regionach z wieloma serwerami głównymi regionalnych rejestrów.
 
 > [!IMPORTANT]
-> Funkcja — replikacja geograficzna rejestru kontenera Azure jest obecnie w **Podgląd**. Podglądy stają się dostępne dla Ciebie pod warunkiem, że zgadzasz się [uzupełniające warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre aspekty tej funkcji może zmienić przed ogólnodostępnej (GA).
+> Funkcja replikacji geograficznej usługi Azure Container Registry jest aktualnie dostępna w **wersji zapoznawczej**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 >
 
 Rejestr replikacją geograficzną zapewnia następujące korzyści:
@@ -59,8 +59,8 @@ Typowych wyzwań związanych z wielu rejestrów obejmują:
 
 Za pomocą funkcji replikacja geograficzna rejestru kontenera platformy Azure, są realizowane następujące korzyści:
 
-* Zarządzanie jednym rejestru we wszystkich regionach:`contoso.azurecr.io`
-* Zarządzanie pojedynczą konfiguracją wdrożenia obrazów, ponieważ wszystkie regiony używany ten sam adres URL obrazu:`contoso.azurecr.io/public/products/web:1.2`
+* Zarządzanie jednym rejestru we wszystkich regionach: `contoso.azurecr.io`
+* Zarządzanie pojedynczą konfiguracją wdrożenia obrazów, ponieważ wszystkie regiony używany ten sam adres URL obrazu: `contoso.azurecr.io/public/products/web:1.2`
 * Wypychanie do pojedynczego rejestru, podczas gdy ACR zarządza replikację geograficzną, w tym regionalnych elementów webhook lokalnego powiadomienia o
 
 ## <a name="configure-geo-replication"></a>Konfigurowanie replikacji geograficznej
@@ -74,11 +74,11 @@ Aby skonfigurować georeplikacji — warstwa Premium rejestru, zaloguj się do p
 
 Przejdź do rejestru kontenera Azure i wybierz **replikacje**:
 
-![Replikacje w rejestrze kontenera portalu Azure, interfejsu użytkownika](media/container-registry-geo-replication/registry-services.png)
+![Replikacje w interfejsie użytkownika rejestru kontenerów w witrynie Azure Portal](media/container-registry-geo-replication/registry-services.png)
 
 Mapy wyświetlane są wyświetlane wszystkie bieżące regiony platformy Azure:
 
- ![Mapa regionów w portalu Azure](media/container-registry-geo-replication/registry-geo-map.png)
+ ![Mapa regionów w witrynie Azure Portal](media/container-registry-geo-replication/registry-geo-map.png)
 
 * Niebieski Sześciokąty reprezentują bieżącej repliki
 * Zielony Sześciokąty reprezentują replik możliwych regionów
@@ -86,7 +86,7 @@ Mapy wyświetlane są wyświetlane wszystkie bieżące regiony platformy Azure:
 
 Aby skonfigurować replikę, wybierz sześciokąt zielony, a następnie wybierz **Utwórz**:
 
- ![Utwórz replikacji interfejsu użytkownika w portalu Azure](media/container-registry-geo-replication/create-replication.png)
+ ![Tworzenie interfejsu użytkownika replikacji w witrynie Azure Portal](media/container-registry-geo-replication/create-replication.png)
 
 Aby skonfigurować dodatkowe replik, wybierz zielony Sześciokąty innych regionów, a następnie kliknij **Utwórz**.
 

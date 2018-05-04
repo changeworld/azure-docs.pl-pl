@@ -1,29 +1,26 @@
 ---
-title: Elementy języka Transact-SQL SQL magazynu danych | Dokumentacja firmy Microsoft
-description: Lista linków do zawartości referencyjnej dla elementy języka Transact-SQL, które są używane dla usługi SQL Data Warehouse.
+title: Elementy języka T-SQL - Azure SQL Data Warehouse | Dokumenty Microsoft
+description: Łączy się z dokumentacją dotyczącą instrukcje T-SQL obsługiwane przez Magazyn danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: ''
-ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: bd7665798e5bf26c0e538deb713ef9696c84338c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="language-elements"></a>Elementy języka
+# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy języka T-SQL obsługiwane przez Magazyn danych SQL Azure
+Łączy się z dokumentacją dotyczącą elementy języka T-SQL obsługiwane przez Magazyn danych SQL Azure.
+
 ## <a name="core-elements"></a>Elementy podstawowe
-* [Konwencje składni](https://msdn.microsoft.com/library/ms177563.aspx)
+* [Konwencje składni](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [reguły nazewnictwa obiektów](https://msdn.microsoft.com/library/ms175874.aspx)
 * [Zastrzeżone słowa kluczowe](https://msdn.microsoft.com/library/ms189822.aspx)
 * [sortowania](https://msdn.microsoft.com/library/ff848763.aspx)
@@ -53,7 +50,7 @@ ms.lasthandoff: 03/28/2018
 * [+ (Ciągów)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [-(Ujemne)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [-(Odejmowanie)](https://msdn.microsoft.com/library/ms189518.aspx)
-* [* (Multiply)](https://msdn.microsoft.com/library/ms176019.aspx)
+* [* (Mnożenia)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (Dzielenie)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
@@ -72,7 +69,7 @@ ms.lasthandoff: 03/28/2018
 * [IS [NOT] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
 * [NP.](https://msdn.microsoft.com/library/ms179859.aspx)
 * [NIE](https://msdn.microsoft.com/library/ms189455.aspx)
-* [OR](https://msdn.microsoft.com/library/ms188361.aspx)
+* [LUB](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Operatory bitowe
 * [& (Iloczynu bitowego AND)](https://msdn.microsoft.com/library/ms174965.aspx)
@@ -108,7 +105,7 @@ ms.lasthandoff: 03/28/2018
 * [COLLATIONPROPERTY](https://msdn.microsoft.com/library/ms190305.aspx)
 * [CONCAT](https://msdn.microsoft.com/library/hh231515.aspx)
 * [COS](https://msdn.microsoft.com/library/ms188919.aspx)
-* [COT](https://msdn.microsoft.com/library/ms188921.aspx)
+* [KOT](https://msdn.microsoft.com/library/ms188921.aspx)
 * [LICZBA](https://msdn.microsoft.com/library/ms175997.aspx)
 * [COUNT_BIG](https://msdn.microsoft.com/library/ms190317.aspx)
 * [CUME_DIST](https://msdn.microsoft.com/library/hh231078.aspx)
@@ -122,12 +119,12 @@ ms.lasthandoff: 03/28/2018
 * [DATENAME](https://msdn.microsoft.com/library/ms174395.aspx)
 * [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)
 * [DATETIME2FROMPARTS](https://msdn.microsoft.com/library/hh213312.aspx)
-* [DATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213233.aspx)
+* [FUNKCJI DATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213233.aspx)
 * [DATETIMEOFFSETFROMPARTS](https://msdn.microsoft.com/library/hh231077.aspx)
 * [DZIEŃ](https://msdn.microsoft.com/library/ms176052.aspx)
 * [DB_ID](https://msdn.microsoft.com/library/ms186274.aspx)
 * [DB_NAME](https://msdn.microsoft.com/library/ms189753.aspx)
-* [DEGREES](https://msdn.microsoft.com/library/ms178566.aspx)
+* [STOPNI](https://msdn.microsoft.com/library/ms178566.aspx)
 * [DENSE_RANK](https://msdn.microsoft.com/library/ms173825.aspx)
 * [RÓŻNICA](https://msdn.microsoft.com/library/ms188753.aspx)
 * [EOMONTH](https://msdn.microsoft.com/library/hh213020.aspx)
@@ -147,7 +144,7 @@ ms.lasthandoff: 03/28/2018
 * [ISDATE](https://msdn.microsoft.com/library/ms187347.aspx)
 * [ISNULL](https://msdn.microsoft.com/library/ms184325.aspx)
 * [ISNUMERIC](https://msdn.microsoft.com/library/ms186272.aspx)
-* [LAG](https://msdn.microsoft.com/library/hh231256.aspx)
+* [OPÓŹNIENIE](https://msdn.microsoft.com/library/hh231256.aspx)
 * [LAST_VALUE](https://msdn.microsoft.com/library/hh231517.aspx)
 * [PROWADZIĆ](https://msdn.microsoft.com/library/hh213125.aspx)
 * [LEFT](https://msdn.microsoft.com/library/ms177601.aspx)
@@ -155,7 +152,7 @@ ms.lasthandoff: 03/28/2018
 * [DZIENNIK](https://msdn.microsoft.com/library/ms190319.aspx)
 * [LOG10](https://msdn.microsoft.com/library/ms175121.aspx)
 * [NIŻSZE](https://msdn.microsoft.com/library/ms174400.aspx)
-* [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
+* [PRZYTP](https://msdn.microsoft.com/library/ms177827.aspx)
 * [MAX](https://msdn.microsoft.com/library/ms187751.aspx)
 * [MIN](https://msdn.microsoft.com/library/ms179916.aspx)
 * [MIESIĄC](https://msdn.microsoft.com/library/ms187813.aspx)
@@ -204,7 +201,7 @@ ms.lasthandoff: 03/28/2018
 * [STR](https://msdn.microsoft.com/library/ms189527.aspx)
 * [STUFF](https://msdn.microsoft.com/library/ms188043.aspx)
 * [SUBSTRING](https://msdn.microsoft.com/library/ms187748.aspx)
-* [SUM](https://msdn.microsoft.com/library/ms187810.aspx)
+* [SUMA](https://msdn.microsoft.com/library/ms187810.aspx)
 * [SUSER_SNAME](https://msdn.microsoft.com/library/ms174427.aspx)
 * [SWITCHOFFSET](https://msdn.microsoft.com/library/bb677244.aspx)
 * [SYSDATETIME](https://msdn.microsoft.com/library/bb630353.aspx)
@@ -265,7 +262,7 @@ ms.lasthandoff: 03/28/2018
 * [ANSI_WARNINGS ZESTAWU](https://msdn.microsoft.com/library/ms190368.aspx)
 * [ARITHABORT ZESTAWU](https://msdn.microsoft.com/library/ms190306.aspx)
 * [ZESTAW ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
-* [SET CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
+* [INSTRUKCJA SET CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
 * [SET DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
 * [SET DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
 * [SET FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
@@ -279,5 +276,5 @@ ms.lasthandoff: 03/28/2018
 * [XACT_ABORT ZESTAWU](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby więcej TSQL informacje, zobacz [instrukcji SQL Data Warehouse T-SQL](sql-data-warehouse-reference-tsql-statements.md).
+Aby uzyskać więcej informacje, zobacz [instrukcje T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), i [widoki systemowe w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne przy użyciu interfejsu API REST
 Przy użyciu języka programowania, który obsługuje wywołania REST, można wykonywać operacje asynchroniczne odświeżanie danych w sieci modele tabelaryczne usług Azure Analysis Services. W tym synchronizacji repliki tylko do odczytu dla zapytania skalowania w poziomie. 
@@ -198,7 +198,7 @@ Oto przykład kodu C# ułatwiające rozpoczęcie pracy, [RestApiSample w serwisi
 1.  Klonuj lub Pobierz repozytorium. Otwórz rozwiązanie RestApiSample.
 2.  Znajdź wiersz **klienta. Właściwość BaseAddress =...** i podaj Twojej [bazowy adres URL](#base-url).
 
-Przykładowy kod można używać logowania interakcyjnego, nazwę użytkownika/hasło lub [nazwy głównej usługi](#service-principle).
+Przykładowy kod można używać logowania interakcyjnego, nazwę użytkownika/hasło lub [nazwy głównej usługi](#service-principal).
 
 #### <a name="interactive-login-or-usernamepassword"></a>Logowania interakcyjnego lub nazwy użytkownika i hasła
 
@@ -235,7 +235,7 @@ Ta forma uwierzytelniania wymaga aplikacji Azure można utworzyć z uprawnieniam
 
 #### <a name="service-principal"></a>Jednostka usługi
 
-Zobacz [Utwórz zasadę usługi - portalu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md) i [Dodaj zasadę usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) Aby uzyskać więcej informacji na temat sposobu ustawiania nazwy głównej usługi i przypisz odpowiednie uprawnienia w Azure AS . Po wykonaniu czynności należy wykonać następujące dodatkowe czynności:
+Zobacz [Utwórz usługę podmiotu zabezpieczeń - portalu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md) i [dodać nazwy głównej usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) Aby uzyskać więcej informacji na temat sposobu ustawiania nazwy głównej usługi i przypisz odpowiednie uprawnienia w Azure AS . Po wykonaniu czynności należy wykonać następujące dodatkowe czynności:
 
 1.  W przykładowym kodzie znaleźć **urzędu string =...** , Zastąp **wspólnej** organizacji dzierżawy identyfikatora.
 2.  Komentarz/usuń znaczniki komentarza, klasa poświadczeń klienta służy do tworzenia wystąpienia obiektu Faktury korygu. Upewnij się, \<identyfikator aplikacji > i \<klucz aplikacji > wartości są dostępne w sposób bezpieczny, lub Użyj uwierzytelniania opartego na certyfikatach dla nazwy główne usług.

@@ -1,13 +1,13 @@
 ---
-title: "Azure dokumentacja dla deweloperów funkcje F # | Dokumentacja firmy Microsoft"
-description: "Zrozumienie sposobu tworzenia usługi Azure Functions przy użyciu języka F #."
+title: 'Azure dokumentacja dla deweloperów funkcje F # | Dokumentacja firmy Microsoft'
+description: 'Zrozumienie sposobu tworzenia usługi Azure Functions przy użyciu języka F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: 
-tags: 
-keywords: "Azure funkcji, funkcji, zdarzenia przetwarzania elementów webhook, dynamiczne obliczeń, niekorzystającą architektury, F #"
+editor: ''
+tags: ''
+keywords: 'Azure funkcji, funkcji, zdarzenia przetwarzania elementów webhook, dynamiczne obliczeń, niekorzystającą architektury, F #'
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c84de3f38a49bc97fda04a7a4eb449a1f7d14bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions dokumentacja dla deweloperów języka F #
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 F # dla usługi Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "funkcji" w chmurze. Przepływy danych w funkcji F # za pomocą argumentów funkcji. Argument nazwy zostały określone w `function.json`, i jest wstępnie zdefiniowanych nazw do uzyskiwania dostępu do elementów, jak funkcja tokenów rejestratora i anulowania.
 

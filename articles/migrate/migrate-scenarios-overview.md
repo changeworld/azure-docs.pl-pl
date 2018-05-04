@@ -4,15 +4,14 @@ description: Przeczytaj oficjalny dokument z omówieniem migrowania lokalnych ce
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 04/08/2018
+ms.topic: conceptual
+ms.date: 04/21/2018
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: be322596da0c3e5ba18aa64285c437cdb823fc4b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 8ba490998ea5f20efca591327716a6e39e9c1ba8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrating-your-on-premises-workloads-to-azure"></a>Migrowanie lokalnych obciążeń na platformę Azure
 
@@ -27,11 +26,11 @@ W tej serii artykułów dotyczących migracji pokazano, jak zaplanować i opraco
 
 **Scenariusz** | **Rozwiązanie** | **Usługi** | **Artykuł** 
 --- | --- | --- | ---
-[Scenariusz 1. Odnajdywanie i ocena](migrate-scenarios-assessment.md) | Odnajdywanie i ocenianie danych oraz aplikacji lokalnych pod kątem migracji na platformę Azure | Data Migration Assistant, usługa Azure Migrate  | Dostępny teraz
-**Scenariusz 2. Migracja metodą „lift-and-shift”** | Ponowne hostowanie aplikacji wewnętrznych na platformie Azure. Optymalizacja na platformie Azure po zakończeniu migracji. | Azure Site Recovery, Azure Database Migration Service, wystąpienie zarządzane Azure SQL | Dostępny teraz
-**Scenariusz 3. Refaktoryzacja i migracja** | Modernizacja i refaktoryzacja lokalnych aplikacji klienta podczas migracji na platformę Azure. | W planowaniu | Planowany
-**Scenariusz 4. Przekształcanie i migracja** | Przekształcanie i migrowanie transakcyjnych witryn internetowych klienta podczas migracji na platformę Azure. | W planowaniu | Planowany
-**Scenariusz 5. Ponowna kompilacja** |Ponowne kompilowanie danych i aplikacji klienta na platformie Azure oraz migrowanie ich na platformę Azure | W planowaniu | Planowany
+[Scenariusz 1. Odnajdywanie i ocena](migrate-scenarios-assessment.md) | Odnajdywanie i oceny lokalnej aplikacji, danych i infrastruktury dla migracji na platformie Azure | Data Migration Assistant, usługa Azure Migrate  | Dostępny teraz
+**[Scenariusz 2: Rehost aplikacji](migrate-scenarios-lift-and-shift.md)** | Podnieś i przesunięcia aplikacji na platformie Azure. | Azure Site Recovery, Azure Database Migration Service, wystąpienie zarządzane Azure SQL | Dostępny teraz
+**Scenariusz 3: Zrefaktoryzuj aplikacji** | Refaktoryzuj aplikacji podczas migracji na platformie Azure. | W planowaniu | Planowany
+**Scenariusz 4: Rearchitect aplikacji** | Rearchitect aplikacji podczas migracji na platformie Azure. | W planowaniu | Planowany
+**Scenariusz 5: Ponowna kompilacja aplikacji** |Odbuduj aplikacji podczas migracji na platformie Azure | W planowaniu | Planowany
 
 
 

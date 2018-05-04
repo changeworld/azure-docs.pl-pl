@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 62ecacb16c891905eb67a6bae08cf81ac2cdb173
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK usługi Application Insights .NET składa się z liczby pakietów NuGet. [Pakiet podstawowy](http://www.nuget.org/packages/Microsoft.ApplicationInsights) udostępnia interfejs API wysyłania danych telemetrycznych do usługi Application Insights. [Dodatkowe pakiety](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) Podaj dane telemetryczne *modułów* i *inicjatory* automatycznie śledzenia dane telemetryczne z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączyć lub wyłączyć inicjatory i moduły danych telemetrycznych i ustaw parametry dla niektórych z nich.
@@ -30,7 +30,7 @@ Nie ma równoważny plik do kontroli [SDK na stronie sieci web][client].
 W tym dokumencie opisano sekcje, które widać w konfiguracji plików i sposobu ich kontrolowania składniki zestawu SDK, i które pakiety NuGet obciążenia tych składników.
 
 > [!NOTE]
-> ApplicationInsights.config i XML instrukcje nie dotyczą zestawu SDK .NET Core. Wprowadzenie zmian w aplikacji platformy .NET Core używamy są zazwyczaj plik appsettings.json. Na przykład można znaleźć w [dokumentacją debugera migawki.](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> ApplicationInsights.config i XML instrukcje nie dotyczą zestawu SDK .NET Core. Wprowadzenie zmian w aplikacji platformy .NET Core używamy są zazwyczaj plik appsettings.json. Na przykład można znaleźć w [dokumentacją debugera migawki.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
 
 ## <a name="telemetry-modules-aspnet"></a>Moduły danych telemetrycznych (ASP.NET)
 Każdy moduł telemetrii zbiera określonego typu danych i wysyła dane przy użyciu core interfejsu API. Moduły są instalowane przez różne pakiety NuGet, które również dodać wymagane wiersze do pliku .config.
@@ -294,7 +294,7 @@ Ten dostawca został dodany do pliku konfiguracji po zainstalowaniu albo [Micros
 
 Ta klasa ma właściwość Opcjonalna `ProfileQueryEndpoint`.
 Domyślnie ta jest równa `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Jeśli musisz skonfigurować serwer proxy dla tej konfiguracji, zalecamy pośredniczenie adres podstawowy i włączając "/ api/profile / {0} / appId". Należy pamiętać, że "{0}" jest zastępowana w czasie wykonywania na żądanie klucza instrumentacji.
+Jeśli musisz skonfigurować serwer proxy dla tej konfiguracji, zalecamy pośredniczenie podstawowym adres i, w tym "/api/profile/{0}/appId". Należy pamiętać, że "{0}" zastępuje w czasie wykonywania na żądanie przy użyciu klucza instrumentacji.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Przykładowa konfiguracja za pomocą ApplicationInsights.config:
 ```xml

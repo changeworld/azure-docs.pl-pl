@@ -1,11 +1,11 @@
 ---
-title: "Dziennika funkcji analizy dla dostawców usług | Dokumentacja firmy Microsoft"
-description: "Analiza dzienników może pomóc zarządzanego dostawcy usług (MSPs) dużych przedsiębiorstw niezależni dostawcy oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w lokalnym przez klienta lub infrastruktury chmury."
+title: Dziennika funkcji analizy dla dostawców usług | Dokumentacja firmy Microsoft
+description: Analiza dzienników może pomóc zarządzanego dostawcy usług (MSPs) dużych przedsiębiorstw niezależni dostawcy oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w lokalnym przez klienta lub infrastruktury chmury.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 3910038e788352df45ab00c0f697d9a5426b3498
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Funkcje analizy dziennika dla dostawców usług
 Analiza dzienników może pomóc dostawców usługi zarządzane (MSPs), dużych przedsiębiorstw niezależnym dostawcom oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w lokalnym przez klienta lub infrastruktury chmury. 
@@ -40,7 +40,7 @@ Jako *Cloud Solution Provider* można wykonywać następujące czynności:
 Aby zalogować się do subskrypcji dzierżawcy, należy określić identyfikator dzierżawy. Identyfikator dzierżawy jest często ostatnia część adres e-mail używany do logowania.
 
 * W portalu OMS dodać `?tenant=contoso.com` w adresie URL portalu. Na przykład: `mms.microsoft.com/?tenant=contoso.com`
-* W programie PowerShell, użyj `-Tenant contoso.com` parametr przy użyciu `Add-AzureRmAccount` polecenia cmdlet
+* W programie PowerShell, użyj `-Tenant contoso.com` parametr przy użyciu `Connect-AzureRmAccount` polecenia cmdlet
 * Identyfikator dzierżawy jest automatycznie dodawane, gdy używasz `OMS portal` łącza z portalu Azure, aby otworzyć i zaloguj się do portalu OMS dla wybranego obszaru roboczego
 
 Jako *klienta* programu Cloud Solution Provider można wykonywać następujące czynności:

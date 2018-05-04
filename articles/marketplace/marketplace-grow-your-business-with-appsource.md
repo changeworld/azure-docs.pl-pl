@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: de7716a540737d4f2cc6f0f495180533ef6aa90a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grow-your-business-with-appsource"></a>Rozwoju firmy z AppSource
 Zarówno w portalu Azure Marketplace, jak i AppSource są uruchamiania punkty dla wspólnych działań przejdź na rynek z firmą Microsoft i zamachowym dla rozwoju firmy. Przy użyciu uruchamiania podwyższania poziomu, generowanie żądanie i wspólnych sprzedaży i marketingu, ofert witryny marketplace można bezpośrednio z aparatu firm chmury. Nie ma żadnych opłat za udział. Klientom firmy Microsoft można znaleźć w naszych rynków chmury każdego dnia można znaleźć prawo aplikacje i usługi, aby zwiększyć ich biznesowych. Naszym celem jest nawiązać połączenia z rozwiązań i usług firmy Microsoft i ekosystemem naszych partnerów organizacji. 
@@ -117,7 +117,7 @@ Dodawanie parametrów do adresu URL AppSource umożliwia przeglądanie skuteczno
 
 #### <a name="marketplace-gtm-benefits"></a>Korzyści GTM Marketplace 
 
-Nowe listy w AppSource mogą otrzymywać korzyści GTM wolnego marketplace. Po liście, zespół marketingu specjalistów dotrzeć do Ciebie i pracować z kontaktów marketingowych do wystartuj te działania. Działania dostarczamy różnią się w zależności od stanu Twoje rozwiązanie w naszej witrynie marketplace. Zwiększ korzyści dla oferty, które pochodzą z środowisko wersji próbnej. Partnerzy firmy Microsoft Gold mogą uzyskiwać dostęp do dodatkowych korzyści. Aby zmaksymalizować wpływu tych działań, firma Microsoft zachęca do ma planu uruchamiania gotowych do wykonania. Możesz korzystać ze strony docelowej dla wielu z tych taktyk. Należy pamiętać, że katalog jednego partnera komercyjnych (OCP) korzyści członków sieci Microsoft Partner Network. Aby uzyskać wskazówki dotyczące sposobu tworzenia strony docelowej dużą, zobacz [tworzenie wspaniałych strona docelowa](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-azure-marketplace#build-a-great-landing-page). Aby uzyskać dodatkową pomoc przejdź na rynek w tym szablony, zawartość sieci web, szkolenia i narzędzia do promowania firmy, odwiedź [ https://www.MicrosoftGoToMarket.com ](https://www.MicrosoftGoToMarket.com). 
+Nowe listy w AppSource mogą otrzymywać korzyści GTM wolnego marketplace. Po liście, zespół marketingu specjalistów dotrzeć do Ciebie i pracować z kontaktów marketingowych do wystartuj te działania. Działania dostarczamy różnią się w zależności od stanu Twoje rozwiązanie w naszej witrynie marketplace. Zwiększ korzyści dla oferty, które pochodzą z środowisko wersji próbnej. Partnerzy firmy Microsoft Gold mogą uzyskiwać dostęp do dodatkowych korzyści. Aby zmaksymalizować wpływu tych działań, firma Microsoft zachęca do ma planu uruchamiania gotowych do wykonania. Możesz korzystać ze strony docelowej dla wielu z tych taktyk. Należy pamiętać, że katalog jednego partnera komercyjnych (OCP) korzyści członków sieci Microsoft Partner Network. Aby uzyskać wskazówki dotyczące sposobu tworzenia strony docelowej dużą, zobacz [tworzenie wspaniałych strona docelowa](https://docs.microsoft.com/azure/marketplace/grow-your-business-azure-marketplace#build-a-great-landing-page). Aby uzyskać dodatkową pomoc przejdź na rynek w tym szablony, zawartość sieci web, szkolenia i narzędzia do promowania firmy, odwiedź [ https://www.MicrosoftGoToMarket.com ](https://www.MicrosoftGoToMarket.com). 
 
 #### <a name="enable-lead-sharing"></a>Włącz udostępnianie potencjalnych klientów 
 Upewnij się, czy realizacji jest włączona funkcja zarządzania w ramach Twojej oferty Marketplace, aby odbierać informacje kontaktowe dotyczące użytkowników biznesowych, które spróbuj aplikacji lub planuje w usługach. Potencjalni klienci stanowią podstawę dla zasięg nurture kampanii, ruchy sprzedaży personel sprzedaży pola, a informacje dotyczące sposobu wykonywania jest Twoją ofertę. Najlepsze rozwiązania dotyczące używania tych potencjalnych klientów obejmują:

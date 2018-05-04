@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 5933448b40a590b39df5ae4cf07fd858bebcd28f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 602f4c9b7108c0116e83e302bd73838e0902a7f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Samoobsługowe Resetowanie w usłudze Azure AD nowości haseł
 
@@ -49,7 +49,7 @@ Strony resetowania odczytu kolejnych kroków, aby dowiedzieć się więcej o log
        * Jeśli nie skonfigurowano żądania użytkownika, użytkownik jest zalecane jest administratora do zresetowania swojego hasła.
      * Jeśli zasady są wymagane dwa problemy, następnie gwarantuje, że użytkownik ma odpowiednie dane zdefiniowane dla co najmniej dwóch wyzwania włączone przez zasady administratora.
        * Jeśli nie skonfigurowano żądania użytkownika, użytkownik jest zalecane jest administratora do zresetowania swojego hasła.
-   * Sprawdza, czy hasło danego użytkownika jest zarządzane lokalnie (federacyjnych lub synchronizacji skrótów haseł).
+   * Sprawdza, czy hasło danego użytkownika jest zarządzane lokalnie (federacyjnych, przekazywanego uwierzytelniania lub synchronizacji skrótów haseł).
      * Jeśli zapisywania zwrotnego jest wdrożony i hasło użytkownika jest zarządzane lokalnie, a następnie użytkownik będzie mógł przejść do uwierzytelniania i resetowania hasła.
      * Jeśli zapisywania zwrotnego nie został wdrożony i hasło użytkownika jest zarządzane lokalnie, użytkownik jest proszony o ich administratora, aby zresetować swoje hasło.
 4. Jeśli okaże się, że użytkownik jest w stanie pomyślnie zresetować swoje hasło, użytkownik jest sterowana przez proces resetowania.
@@ -224,8 +224,8 @@ Ta strona zawiera szybkie stan zapisywania zwrotnego lokalnej klienta jeden z na
 
 Ten formant określa, czy zapisywanie zwrotne haseł jest włączony dla tego katalogu. W przypadku zapisywania zwrotnego na, wskazuje stan lokalną usługą zapisywania zwrotnego. Jest to przydatne, jeśli chcesz tymczasowo wyłączyć funkcję zapisywania zwrotnego haseł, bez konieczności ponownej konfiguracji usługi Azure AD Connect.
 
-* Jeśli przełącznik ma ustawioną wartość **tak**, następnie zapisywania zwrotnego jest włączona i federacyjnych i hasło skrótu synchronizowane użytkownicy będą mogli resetować hasła.
-* Jeśli przełącznik ma ustawioną wartość **nr**, następnie zapisywania zwrotnego jest wyłączona, federacyjnych i użytkowników synchronizacji skrótu hasła nie będą mogli resetować hasła.
+* Jeśli przełącznik ma ustawioną wartość **tak**, następnie zapisywania zwrotnego jest włączona, a federacyjnych, przekazywanego uwierzytelniania lub użytkowników synchronizacji skrótu hasła mogą resetować hasła.
+* Jeśli przełącznik ma ustawioną wartość **nr**, następnie zapisywania zwrotnego jest wyłączona i federacyjnych, przekazywanego uwierzytelniania lub użytkowników synchronizacji skrótu hasła nie będą mogli resetować hasła.
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Zezwalaj użytkownikom na odblokowanie kont bez konieczności zresetowania hasła
 

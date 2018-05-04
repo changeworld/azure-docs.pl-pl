@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 1ba2f2be8db424bddfccdf374704ec7be5691feb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Omówienie usługi Azure monitora
 Ten artykuł zawiera omówienie usługi Azure Monitor w Microsoft Azure. Zawarto informacje, co Azure Monitor i zawiera łącza do dodatkowych informacji na temat korzystania z monitora Azure.  Jeśli wolisz wprowadzenie wideo, zobacz dalej łącza kroki w dolnej części tego artykułu. 
@@ -108,7 +108,7 @@ Przykłady:
 
 ### <a name="store-and-archive"></a>Magazyn i archiwum
 Niektóre dane monitorowania jest już przechowywane i dostępne w monitorze Azure dla określonej ilości czasu. 
-- Metryki są przechowywane przez 30 dni. 
+- Metryki są przechowywane przez 90 dni. 
 - Wpisy dziennika aktywności są przechowywane przez 90 dni. 
 - Dzienniki diagnostyczne nie są przechowywane w ogóle. 
 

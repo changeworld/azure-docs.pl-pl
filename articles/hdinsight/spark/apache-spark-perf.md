@@ -1,27 +1,25 @@
 ---
-title: "Optymalizacja wydajności - Azure HDInsight Spark zadania | Dokumentacja firmy Microsoft"
-description: "Pokazuje typowe strategie, aby uzyskać najlepszą wydajność klastry Spark."
+title: Optymalizacja wydajności - Azure HDInsight Spark zadania | Dokumentacja firmy Microsoft
+description: Pokazuje typowe strategie, aby uzyskać najlepszą wydajność klastry Spark.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 64ddb70f071a9fadc6fef64dcd3506c6d6255481
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 381f9ef2dac2c1dfdada32a917626b17c5969a98
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="optimize-spark-jobs"></a>Optymalizacja zadań Spark
+# <a name="optimize-spark-jobs"></a>Optymalizowanie zadań platformy Spark
 
 Dowiedz się, jak zoptymalizować konfigurację klastra Spark dla określonego obciążenia.  Najbardziej typowe wyzwaniem jest wykorzystania pamięci z powodu nieprawidłowej konfiguracji (szczególnie błąd o rozmiarze z modułów wykonujących) długotrwałe operacje i zadania, które powodują powstanie kartezjańskimi operacji. Można przyspieszyć zadania z buforowaniem odpowiednie, a w celu umożliwienia [zegara danych](#optimize-joins-and-shuffles). Aby uzyskać najlepszą wydajność monitorowanie i badanie wykonania zadania Spark długotrwałe i korzystanie z zasobów.
 
@@ -38,7 +36,7 @@ Platforma Spark jest 1.x używa RDDs abstrakcyjny danych, a następnie Spark 2.x
     * Bezpośredni dostęp do pamięci
     * Narzut mało pamięci (GC)
     * Nie jako przyjazny dla dewelopera jako zestaw danych, ponieważ nie ma żadnych kontroli w czasie kompilacji lub programowania obiektu domeny
-* **Zbiory danych**
+* **Zestawy danych**
     * Dobra w złożonych potoki ETL, których wpływ na wydajność jest dopuszczalne
     * Nie są odpowiednie w agregacji, gdzie może być znaczny wpływ na wydajność
     * Zapewnia optymalizację zapytania za pomocą Catalyst
@@ -67,7 +65,7 @@ Podczas tworzenia nowego klastra Spark, użytkownik może wybrać magazyn obiekt
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standardowa** | Yes | Przejściowa klastra |
 | Azure Data Lake Store | **ADL:**//url/ | **Szybciej** | Yes | Przejściowa klastra |
-| Local HDFS | **hdfs:**//url/ | **Najszybszym** | Nie | Interakcyjne klastra 24/7 |
+| HDFS lokalne | **hdfs:**//url/ | **Najszybszy** | Nie | Interakcyjne klastra 24/7 |
 
 ## <a name="use-the-cache"></a>Użycie pamięci podręcznej
 
@@ -82,7 +80,7 @@ Spark udostępnia własny natywnego buforowania mechanizmy, które mogą być u�
     * Użycie w pamięci i buforowanie dysków SSD.
 
 * Lokalny system plików HDFS (zalecane)
-    * `hdfs://mycluster`Ścieżka.
+    * `hdfs://mycluster` Ścieżka.
     * Używa dysków SSD buforowania.
     * Buforowane dane zostaną utracone po usunięciu klastra, wymagających Odbuduj pamięci podręcznej.
 
@@ -164,9 +162,9 @@ W zależności od obciążenia klastra Spark, może okaże się, że niedomyśln
 
 Poniżej przedstawiono niektóre typowe parametry, które można dostosować:
 
-* `--num-executors`Ustawia odpowiedniej liczby modułów.
-* `--executor-cores`Ustawia liczbę rdzeni dla każdego Moduł wykonujący. Zazwyczaj powinien mieć middle-sized modułów, zgodnie z innymi procesami korzystać z niektórych dostępnej pamięci.
-* `--executor-memory`Określa rozmiar pamięci dla każdego modułu wykonującego Określa rozmiar sterty w ramach platformy YARN. Należy pozostawić pamięci do wykonania czynności.
+* `--num-executors` Ustawia odpowiednią liczbę wykonawców.
+* `--executor-cores` Ustawia liczbę rdzeni dla każdego wykonawcy. Zazwyczaj powinien mieć middle-sized modułów, zgodnie z innymi procesami korzystać z niektórych dostępnej pamięci.
+* `--executor-memory` Ustawia rozmiar pamięci dla każdego wykonawcy, który kontroluje rozmiar sterty na PRZĘDZY. Należy pozostawić pamięci do wykonania czynności.
 
 ### <a name="select-the-correct-executor-size"></a>Wybierz rozmiar poprawne Moduł wykonujący
 
@@ -206,8 +204,8 @@ Monitorować wydajność zapytań, dla wartości odstających lub inne problemy 
 
 Monitorowanie sieci uruchomionych zadań regularnie problemy z wydajnością. Uzyskać lepszy wgląd w niektórych problemów, należy wziąć pod uwagę jedną z następujących profilowania narzędzi wydajności:
 
-* [Narzędzie PAL Intel](https://github.com/intel-hadoop/PAT) monitoruje Procesora, pamięci masowej i wykorzystania przepustowości sieci.
-* [Formant misji Java 8 Oracle](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profile Spark i wykonywania kodu.
+* [Narzędzie PAL Intel](https://github.com/intel-hadoop/PAT) monitoruje Procesora, pamięci masowej i wykorzystanie przepustowości sieci.
+* [Oracle Java 8 Mission Control](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) kod Spark i wykonawcy, profile.
 
 Kluczem do wydajność zapytań Spark 2.x jest aparat wolframu, który jest zależna od generowanie kodu w całości etap. W niektórych przypadkach mogą być wyłączone generowanie kodu w całości etapu. Na przykład, jeśli używasz niemodyfikowalnym typem (`string`) w wyrażeniu agregacji `SortAggregate` pojawia się zamiast `HashAggregate`. Na przykład w celu poprawy wydajności spróbować wykonać następujące czynności, a następnie ponownie Włącz generowanie kodu:
 
@@ -217,9 +215,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Debugowanie zadań Spark uruchomionych w usłudze Azure HDInsight](apache-spark-job-debugging.md)
+* [Program Debug: polecenie Spark zadań uruchamianych w usługi HDInsight](apache-spark-job-debugging.md)
 * [Zarządzanie zasobami klastra Spark w usłudze HDInsight](apache-spark-resource-manager.md)
-* [Za pomocą interfejsu API REST Spark umożliwiają przesyłanie zadań zdalnego do klastra Spark](apache-spark-livy-rest-interface.md)
+* [Użyj interfejsu API usługi REST Spark umożliwiającą przesyłanie zadań zdalnego do klastra Spark](apache-spark-livy-rest-interface.md)
 * [Dostrajanie Spark](https://spark.apache.org/docs/latest/tuning.html)
-* [Jak faktycznie dostrajania programu Spark zadania, dlatego działają](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
-* [Kryo szeregowanie](https://github.com/EsotericSoftware/kryo)
+* [Jak faktycznie strojenie Spark swoje zadania tak działają](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Serializacja Kryo](https://github.com/EsotericSoftware/kryo)

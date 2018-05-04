@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 501364f24e61c29ac0d5909a7dff1df9e93fe6a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące IaaS obciążeń na platformie Azure
 
@@ -52,7 +52,7 @@ W przeszłości w Twojej sieci obwodowej był używany do kontrolowania dostępu
 
 Jedną z najbardziej przydatne czynności, które należy wykonać, aby zabezpieczyć konto jest włączenie uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest sposób uwierzytelniania przy użyciu elementu oprócz hasła. Pomaga ograniczyć ryzyko dostępu przez osobę, która zarządza uzyskanie hasła do kogoś innego.
 
-[Usługa Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) pomaga w zabezpieczaniu dostępu do danych i aplikacji spełniając zapotrzebowanie na prosty proces logowania. Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe — połączenie telefoniczne, wiadomość tekstowa lub powiadomienie aplikacji mobilnej. Użytkownicy wybierają metodę preferowany.
+[Usługa Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) pomaga w zabezpieczaniu dostępu do danych i aplikacji spełniając zapotrzebowanie na prosty proces logowania. Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe — połączenie telefoniczne, wiadomość tekstowa lub powiadomienie aplikacji mobilnej. Użytkownicy wybierają metodę preferowany.
 
 Najprostszym sposobem użycia usługi Multi-Factor Authentication jest aplikacji mobilnej Authenticator firmy Microsoft można używać na urządzeniach przenośnych z systemem Windows, iOS i Android. Najnowsza wersja systemu Windows 10 i integracji lokalnej usługi Active Directory z usługą Azure Active Directory (Azure AD) [Windows Hello dla firm](../active-directory/active-directory-azureadjoin-passport-deployment.md) może służyć do łatwego logowanie jednokrotne do zasobów platformy Azure. W takim przypadku urządzenia z systemem Windows 10 jest używany jako drugi składnik uwierzytelniania.
 
@@ -118,7 +118,7 @@ Alternatywnie można użyć [punkt lokacja](../vpn-gateway/vpn-gateway-howto-poi
 >[!NOTE]
 >Jedną z opcji VPN umożliwia ponownie skonfigurować listy ACL na grup NSG do nie zezwalają na dostęp do punktów końcowych zarządzania z Internetu.
 
-Inną opcją warto rozważane jest [bramy usług pulpitu zdalnego](../multi-factor-authentication/multi-factor-authentication-get-started-server-rdg.md) wdrożenia. To wdrożenie służy do bezpiecznego łączenia się z serwerami usług pulpitu zdalnego za pośrednictwem protokołu HTTPS, podczas stosowania bardziej szczegółowe kontrolek do tych połączeń.
+Inną opcją warto rozważane jest [bramy usług pulpitu zdalnego](../active-directory/authentication/howto-mfaserver-nps-rdg.md) wdrożenia. To wdrożenie służy do bezpiecznego łączenia się z serwerami usług pulpitu zdalnego za pośrednictwem protokołu HTTPS, podczas stosowania bardziej szczegółowe kontrolek do tych połączeń.
 
 Funkcje, które będzie mieć dostęp do uwzględnienia:
 

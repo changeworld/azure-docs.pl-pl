@@ -3,17 +3,17 @@ title: Struktura definicji zasad Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak definicji zasad zasobów jest używany przez zasady usługi Azure do ustanawiania konwencje dla zasobów w organizacji przez opisujące, gdy zasady są wymuszane i jaka akcja ma być.
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
-ms.date: 04/18/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/30/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: c98712b8fb2f8d6a85906b2c78fb678fc0f970b7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 285ee153a86270fe65846dc6a22786e007a8a595
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -70,7 +70,7 @@ Wszystkie próbki szablonu zasad Azure są [szablony zasad Azure](json-samples.m
 * `all`: ocena grup zasobów i wszystkie typy zasobów
 * `indexed`: tylko ocenić typy zasobów, które obsługują tagów i lokalizacja
 
-Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, należy określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartość jego wartość domyślna to `indexed` dla zapewnienia zgodności.
+Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, można określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartość jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w wiersza polecenia platformy Azure, który jest odpowiednikiem `indexed`, dla wstecz zgodności.
 
 `indexed` powinien być używany podczas tworzenia zasad, który będzie wymuszać znaczników lub lokalizacji. Nie jest to wymagane, ale uniemożliwi zasoby, które nie obsługują znaczniki i lokalizacje wyświetlane jako niezgodne w wyniki oceny zgodności. Jedynym wyjątkiem jest **grup zasobów**. Należy ustawić zasady, które próbują wymusić lokalizacji lub tagi dla grupy zasobów **tryb** do `all` , a w szczególności docelowej `Microsoft.Resources/subscriptions/resourceGroup` typu. Na przykład zobacz [wymusić tagi grupy zasobów](scripts/enforce-tag-rg.md).
 

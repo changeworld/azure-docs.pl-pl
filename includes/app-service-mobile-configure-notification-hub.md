@@ -8,4 +8,4 @@ Używa funkcji Mobile Apps w usłudze Azure App Service [usługi Azure Notificat
 Teraz połączyły Centrum powiadomień do projektu zaplecza aplikacji mobilnej. Później można skonfigurować tego Centrum powiadomień, aby połączyć się z systemem powiadomień platformy (PNS) do urządzenia.
 
 [portalu Azure]: https://portal.azure.com/
-[usługi Azure Notification Hubs]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/
+[usługi Azure Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-push-notification-overview/

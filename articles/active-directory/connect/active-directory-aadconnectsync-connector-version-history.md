@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
 ms.author: davidste
-ms.openlocfilehash: 5b13338646abda7eefec44c42dc0159e9338adfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: e46a816b9a0d66991b8f619135b657a0d51ba395
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connector-version-release-history"></a>Historia wersji łącznika
 Łączników programu Forefront Identity Manager (FIM) i Microsoft Identity Manager (MIM) są często aktualizowane.
@@ -34,7 +34,7 @@ Linki pokrewne:
 * [Pobierz najnowsze łączników](http://go.microsoft.com/fwlink/?LinkId=717495)
 * [Ogólny łącznik LDAP](active-directory-aadconnectsync-connector-genericldap.md) odwołania dokumentacji
 * [Ogólny Łącznik usług SQL](active-directory-aadconnectsync-connector-genericsql.md) odwołania dokumentacji
-* [Łącznik usług Web](https://docs.microsoft.com/en-us/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) odwołania dokumentacji
+* [Łącznik usług Web](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) odwołania dokumentacji
 * [Łącznik programu PowerShell](active-directory-aadconnectsync-connector-powershell.md) odwołania dokumentacji
 * [Łącznika programu Lotus Domino](active-directory-aadconnectsync-connector-domino.md) odwołania dokumentacji
 
@@ -103,7 +103,7 @@ Linki pokrewne:
 * Program Lotus Notes:
   * Gdy opcja **Zezwalaj na niestandardowe wydających świadectwa dla jednostki organizacyjnej/organizacji** jest wyłączony łącznik zakończy się niepowodzeniem podczas eksportu (aktualizacja) po przepływu eksportu wszystkie atrybuty zostaną wyeksportowane do Domino, ale w czasie eksportu KeyNotFoundException jest zwracana do synchronizacji. 
     * Dzieje się tak, ponieważ operacja zmiany nazwy nie powiodło się, gdy próbuje zmienić nazwy domeny (atrybut nazwy użytkownika), zmieniając jeden z atrybutów poniżej:  
-      - LastName
+      - Nazwisko
       - Imię
       - MiddleInitial
       - AltFullName
@@ -228,7 +228,7 @@ Przed marca 2016 łączników zostały wydane jako tematy pomocy technicznej.
 * [KB3044896](https://support.microsoft.com/kb/3044896) -1.0.0549, marca 2015 roku
 * [KB3031009](https://support.microsoft.com/kb/3031009) -1.0.0534, stycznia 2015
 * [KB3008177](https://support.microsoft.com/kb/3008177) -1.0.0419, września 2014 r.
-* [KB2936070](https://support.microsoft.com/kb/2936070) - 4.3.1082, 2014 March
+* [KB2936070](https://support.microsoft.com/kb/2936070) -4.3.1082, marca 2014 r.
 
 **WebServices**
 

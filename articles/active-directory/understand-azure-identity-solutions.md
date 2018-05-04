@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Zrozumienie Azure tożsamościach
 Microsoft Azure Active Directory (Azure AD) to rozwiązanie chmury zarządzania tożsamościami i dostępem, który udostępnia usługi katalogowe, Zarządzanie tożsamościami i zarządzania dostępem do aplikacji. Usługi Azure AD szybko [umożliwia logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do 1 000 na wstępnie zintegrowanych aplikacji handlowych i niestandardowych w [galerii aplikacji Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wiele z tych aplikacji prawdopodobnie już używasz usługi Office 365, witryny Salesforce.com, pola, usługi ServiceNow i produktu Workday.
@@ -107,7 +107,7 @@ Poniżej przedstawiono kilka typowych scenariuszy tożsamościami i dostępem za
 Będziemy mieć ogromne dużą zasobów online ułatwiające Dowiedz się wszystkiego o usłudze Azure AD. Poniżej przedstawiono listę artykułów dużą ułatwiających rozpoczęcie pracy:
 
 * [Włączanie katalogu dla hybrydowego zarządzania za pomocą usługi Azure AD Connect](active-directory-aadconnect.md)
-* [Dodatkowe zabezpieczenia kiedykolwiek połączonych świata](../multi-factor-authentication/multi-factor-authentication.md)
+* [Dodatkowe zabezpieczenia kiedykolwiek połączonych świata](authentication/multi-factor-authentication.md)
 * [Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-app-provisioning.md)
 * [Wprowadzenie do raportów usługi Azure AD](active-directory-reporting-getting-started.md)
 * [Zarządzanie haseł z dowolnego miejsca](active-directory-passwords-update-your-own-password.md)

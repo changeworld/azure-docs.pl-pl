@@ -3,8 +3,8 @@ title: Najważniejsze wskazówki dotyczące bezpieczeństwa danych i szyfrowania
 description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące bezpieczeństwa danych i szyfrowania za pomocą wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbalwin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Dobre praktyki dotyczące zabezpieczeń danych platformy Azure i szyfrowania
+
 Jeden z kluczy do ochrony danych w chmurze jest księgowanie możliwe stany, w których może wystąpić danych oraz kontrolki są dostępne dla tego stanu. Danych Azure na potrzeby szyfrowania najlepsze praktyki dotyczące zabezpieczeń i zalecenia będą wokół stanów następujące dane:
 
 * W pozostałych: W tym wszystkie informacje, które typy, statycznie występujących na nośnik fizyczny, kontenerów i obiektów magazynu można go magnetyczne lub optyczne dysku.
@@ -50,6 +51,7 @@ Danych Azure szyfrowania najlepsze praktyki dotyczące zabezpieczeń i omówione
 * Wymuszanie szyfrowania danych na poziomie plików
 
 ## <a name="enforce-multi-factor-authentication"></a>Wymusić uwierzytelnianie wieloskładnikowe
+
 Pierwszym krokiem podczas dostępu do danych i sterowania w programie Microsoft Azure jest do uwierzytelnienia użytkownika. [Usługa Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) jest metodą weryfikacji tożsamości użytkownika przy użyciu innej metody niż tylko nazwę użytkownika i hasło. Tego uwierzytelniania — metoda ułatwia zabezpieczenie dostępu do danych i aplikacji, spełniając zapotrzebowanie na prosty proces logowania.
 
 Przez włączenie usługi Azure MFA dla użytkowników, dodajesz drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. W takim przypadku transakcji może uzyskiwać dostęp do dokumentu znajdującego się na serwerze plików lub w trybie Online programu SharePoint. Usługa Azure MFA ułatwia również IT, aby zmniejszyć prawdopodobieństwo, że przejęciem poświadczeń dostępu do danych organizacji.
@@ -61,6 +63,7 @@ Jeden alternatywą dla organizacji, które mają być zachowane uwierzytelniania
 Aby uzyskać więcej informacji dotyczących usługi Azure MFA, przeczytaj artykuł [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Kontrola dostępu (RBAC) oparta na rolach użycia
+
 Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń. Jest to konieczne w przypadku organizacji, które mają być wymuszać zasady zabezpieczeń dla dostępu do danych. Azure opartej na rolach kontroli dostępu (RBAC) może służyć do przypisywania uprawnień do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji.
 
 Można wykorzystać [wbudowane role RBAC](../role-based-access-control/built-in-roles.md) na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
@@ -70,6 +73,7 @@ Organizacje, które nie wymusić kontrolę dostępu danych dzięki wykorzystaniu
 Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="encrypt-azure-virtual-machines"></a>Szyfrowanie maszyn wirtualnych platformy Azure
+
 W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) jest obowiązkowy krok na drodze suwerenności dane, zgodności i ochrony prywatności danych. Szyfrowanie dysków Azure umożliwia administratorom IT szyfrowanie dysków systemu Windows i Linux IaaS maszyn wirtualnych (VM). Szyfrowanie dysków Azure korzysta z branży funkcje BitLocker standardowych systemu Windows i DM-Crypt systemu Linux w celu zapewnienia szyfrowania woluminów systemu operacyjnego i dysków z danymi.
 
 Można korzystać z szyfrowania dysków Azure, aby chronić i ochrony danych w celu spełnienia zabezpieczeń organizacji i wymagań dotyczących zgodności. Organizacje powinny również należy wziąć pod uwagę przy użyciu szyfrowania w celu zmniejszenia ryzyka danych związanych z nieautoryzowanego dostępu. Zalecane jest również, szyfrowanie dysków przed zapisywania poufnych danych.
@@ -125,6 +129,7 @@ Organizacje, które nie używają szyfrowania na poziomie bazy danych może być
 Użytkownik może dowiedzieć się więcej o funkcji SQL TDE szyfrowania przeczytaj artykuł [przezroczystego szyfrowania danych z bazy danych SQL Azure](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx).
 
 ## <a name="protect-data-in-transit"></a>Ochrona danych podczas przesyłania
+
 Ochrona danych podczas przesyłania powinien być integralną część strategii ochrony danych. Ponieważ dane będą przenoszone i z powrotem w wielu lokalizacjach, ogólne zalecenie jest zawsze używają protokołów SSL/TLS do wymiany danych w różnych lokalizacjach. W niektórych sytuacjach można odizolować kanału całej komunikacji między lokalnymi i w chmurze infrastruktury przy użyciu wirtualnej sieci prywatnej (VPN).
 
 Przenoszenie między lokalną infrastrukturą i Azure danych należy rozważyć odpowiednie zabezpieczenia, takie jak HTTPS lub sieci VPN.
@@ -142,6 +147,7 @@ Organizacje, które się nie powieść, aby chronić przesyłane dane są bardzi
 Możesz można dowiedzieć się więcej o sieci VPN platformy Azure opcja przeczytaj artykuł [planowania i projektowania dla bramy sieci VPN](../vpn-gateway/vpn-gateway-plan-design.md).
 
 ## <a name="enforce-file-level-data-encryption"></a>Wymuszanie szyfrowania danych na poziomie plików
+
 Kolejną warstwę ochrony, która może zwiększyć poziom zabezpieczeń dla danych jest szyfrowanie pliku, bez względu na lokalizację pliku.
 
 [Usługa Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) używa zasad szyfrowania, tożsamości i autoryzacji, aby ułatwić zabezpieczanie plików i wiadomości e-mail. Usługa Azure RMS działa na wielu urządzeniach — telefonach, tablety i komputery, aby chronić w obrębie organizacji i poza organizacją. Ta funkcja jest możliwa, ponieważ usługa Azure RMS dodaje poziom ochrony, która jest powiązana z danymi nawet wtedy, gdy opuszczą teren organizacji.

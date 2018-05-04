@@ -14,18 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 918af6da62e0e3a1409528691bdd460b2ad61a3e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Usługi konsultingowe witrynę Azure Marketplace
 Konsultacji usług w portalu Azure Marketplace udostępnia celem połączenia klientów z usługi do obsługi i rozszerzanie ich użycia usługi Azure partnerów firmy Microsoft. W portalu Azure Marketplace obsługuje listę ofert usługi konsultacji systemu Integrator (SI) partnerów firmy Microsoft. 
 
 Oferta usługi konsultacji są promujących zaangażowanie właściwe dla klienta. Są one ustalone w zakresu i czasu trwania, można stałej cenie lub wolne i mieć zdefiniowany wynik. Kontakt przez partnerów łatwo poprosić potencjalnych klientów. Partnerzy odbierać powiadomienie w ich systemu CRM i staraj się one odpowiadać na żądania w ciągu 48 godzin.
 
-Usługi doradcze w portalu Azure Marketplace vs AppSource sklepu sklepy marketplace są zgodne z odbiorców i produktów w chmurze firmy Microsoft, aby ułatwić klientom znalezienie potrzebnych informacji. Każdy sklepu oferuje specjalne opcje publikowania ułatwiające zmaksymalizowaniu zwrotu z inwestycji publikowania. W poniższej tabeli przedstawiono te opcje:
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Usługi konsultingowe w portalu Azure Marketplace vs AppSource sklepu
+Sklepy marketplace są zgodne z odbiorców i produktów w chmurze firmy Microsoft, aby ułatwić klientom znalezienie potrzebnych informacji. Każdy sklepu oferuje specjalne opcje publikowania ułatwiające zmaksymalizowaniu zwrotu z inwestycji publikowania. W poniższej tabeli przedstawiono te opcje:
 
 |         |Azure Marketplace  |AppSource |
 |---------|---------|---------|

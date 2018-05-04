@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 23bab643a88fe27eb34750f970f962041f8c18f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 204702eee1cf502ac873e0c1f5e3fd257ecce33c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Azure SQL Database vCore na podstawie zakupu limity modelu (wersja zapoznawcza)
 
@@ -40,12 +40,11 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 |Docelowy IOPS|320|640|1280|2560|5120|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 5-7 (Zapisz)
 |Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|3200|
-|Maksymalna liczba współbieżnych logowań|200|400|800|1600|3200|
-|Maksymalny dopuszczalny sesji|3000|3000|3000|3000|3000|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|
-|Uwzględnione magazynu kopii zapasowej|1X DB size|1X DB size|1X DB size|1X DB size|1X DB size|
+|Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||
 
 ### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowa
@@ -63,12 +62,11 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 |Docelowy IOPS|5000|10 000|20000|40000|80000|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|
 |Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|3200|
-|Maksymalna liczba współbieżnych logowań|200|400|800|1600|3200|
-|Maksymalny dopuszczalny sesji|3000|3000|3000|3000|3000|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|
 |Liczba replik|3|3|3|3|3|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|
-|Uwzględnione magazynu kopii zapasowej|1X DB size|1X DB size|1X DB size|1X DB size|1X DB size|
+|Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||
 
 ## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
@@ -117,18 +115,17 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 |Docelowy IOPS|320|640|1280|2560|5120|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|
 |Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|210|420|840|1680|3360|
-|Maksymalna liczba współbieżnych logowań|210|420|840|1680|3360|
-|Maksymalny dopuszczalny sesji|3000|3000|3000|3000|3000|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|
 |Maksymalna liczba gęstość puli|100|200|500|500|500|
-|Kliknij przycisk puli elastycznej min/max zatrzymuje|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|
+|Kliknij przycisk puli elastycznej min/max zatrzymuje|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Liczba replik|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|
-|Uwzględnione magazynu kopii zapasowej|1X DB size|1X DB size|1X DB size|1X DB size|1X DB size|
+|Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||
 
 ### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowa
-|Poziom wydajności|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
+|Poziom wydajności|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
 |:--- | --: |--: |--: |--: |--: |
 |Generowanie H/W|4|4|4|4|4|
 |vCores|1|2|4|8|16|
@@ -142,13 +139,12 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 |Docelowy IOPS|320|640|1280|2560|5120|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|
 |Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|210|420|840|1680|3360|
-|Maksymalna liczba współbieżnych logowań|210|420|840|1680|3360|
-|Maksymalny dopuszczalny sesji|3000|3000|3000|3000|3000|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|
 |Maksymalna liczba gęstość puli|ND|50|100|100|100|
-|Kliknij przycisk puli elastycznej min/max zatrzymuje|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|
+|Kliknij przycisk puli elastycznej min/max zatrzymuje|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|
-|Uwzględnione magazynu kopii zapasowej|1X DB size|1X DB size|1X DB size|1X DB size|1X DB size|
+|Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||
 Jeśli wszystkie vCores elastycznej puli są zajęte, każda baza danych w puli odbiera równa ilości zasobów obliczeniowych do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Udostępnianie sprawiedliwe przydzielanie zasobów dla elastycznej puli zasobów jest oprócz dowolnej liczby zasobów, w przeciwnym razie gwarancji dla każdej bazy danych, gdy minimalna vCore na bazę danych jest ustawiona na wartość inną niż zero.
 

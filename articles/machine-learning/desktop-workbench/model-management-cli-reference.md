@@ -1,6 +1,6 @@
 ---
-title: "Odwołanie do interfejsu wiersza polecenia Azure Machine Learning Model zarządzania | Dokumentacja firmy Microsoft"
-description: "Dokumentacja interfejsu wiersza polecenia Azure Machine Learning Model zarządzania."
+title: Odwołanie do interfejsu wiersza polecenia Azure Machine Learning Model zarządzania | Dokumentacja firmy Microsoft
+description: Dokumentacja interfejsu wiersza polecenia Azure Machine Learning Model zarządzania.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
 ms.openlocfilehash: 27361c5b92a8748a026d457875fadfc1f3529076
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="model-management-command-line-interface-reference"></a>Odwołanie do modelu administracyjnego interfejsu wiersza polecenia
 

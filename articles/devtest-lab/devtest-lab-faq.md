@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: d8b9e48db9e75fb41ecad1958b3aa930a6bce3aa
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 7a65ba691b9cf8b0ce989f0c54bd0b74edd43b85
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -128,9 +128,9 @@ Tak, aby maszyny wirtualne można dołączyć wiele dysków.
 Aby używać obrazów systemu operacyjnego klienta systemu Windows (Windows 7 lub nowszy) dla programowania i testowania na platformie Azure, wykonaj jedną z następujących czynności:
 
 - [Kup subskrypcję MSDN](https://www.visualstudio.com/products/how-to-buy-vs).
-- Jeśli masz umowy Enterprise Agreement, Utwórz subskrypcję platformy Azure z [oferta przedsiębiorstwa i testowania](https://azure.microsoft.com/en-us/offers/ms-azr-0148p).
+- Jeśli masz umowy Enterprise Agreement, Utwórz subskrypcję platformy Azure z [oferta przedsiębiorstwa i testowania](https://azure.microsoft.com/offers/ms-azr-0148p).
 
-Aby uzyskać więcej informacji na temat kredytów systemu Azure dla każdego oferty MSDN, zobacz [Azure miesięczne środki dla subskrybentów programu Visual Studio](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/).
+Aby uzyskać więcej informacji na temat kredytów systemu Azure dla każdego oferty MSDN, zobacz [Azure miesięczne środki dla subskrybentów programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Jak zautomatyzować proces przekazywania plików wirtualnego dysku twardego do tworzenia niestandardowych obrazów?
 Aby zautomatyzować przekazywania plików VHD, Utwórz niestandardowe obrazy, masz dwie opcje:

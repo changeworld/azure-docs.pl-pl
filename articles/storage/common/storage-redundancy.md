@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: bdb9bfaa85f526af0c5e42294a75664fa7137849
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2b105cd05ace9be6ad24d092f2b12c7ad092188e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
 
@@ -46,7 +46,7 @@ Zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/detail
 > Magazyn w warstwie Premium obsługuje magazyn tylko lokalnie nadmiarowy (LRS). Aby uzyskać informacje o magazynie Premium, zobacz [magazyn w warstwie Premium: magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej Azure](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategii replikacji
-Firma Microsoft zezwala na zmianę strategii replikacji konta magazynu przy użyciu [portalu Azure](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z wielu [ Biblioteki klienta usługi Azure](https://docs.microsoft.com/en-us/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie powoduje czas przestoju.
+Firma Microsoft zezwala na zmianę strategii replikacji konta magazynu przy użyciu [portalu Azure](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z wielu [ Biblioteki klienta usługi Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie powoduje czas przestoju.
 
    > [!NOTE]
    > Obecnie nie można użyć portalu lub interfejsu API, aby przekonwertować konta ZRS. Jednak firma Microsoft planuje obsługują migrowania do ZRS LRS, GRS i RA-GRS po ZRS jest ogólnie dostępna. Zobacz [magazyn Strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md) szczegółowe informacje.

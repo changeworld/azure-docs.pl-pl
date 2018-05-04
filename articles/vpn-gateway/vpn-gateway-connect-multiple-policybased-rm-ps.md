@@ -1,13 +1,13 @@
 ---
-title: "Połączenie bramy sieci VPN platformy Azure do wielu urządzeń lokalnych, na podstawie zasad sieci VPN: usługi Azure Resource Manager: programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie usługi Azure opartej na trasach bramy sieci VPN do wielu opartych na zasadach urządzenia sieci VPN za pomocą usługi Azure Resource Manager i programu PowerShell."
+title: 'Połączenie bramy sieci VPN platformy Azure do wielu urządzeń lokalnych, na podstawie zasad sieci VPN: usługi Azure Resource Manager: programu PowerShell | Dokumentacja firmy Microsoft'
+description: Konfigurowanie usługi Azure opartej na trasach bramy sieci VPN do wielu opartych na zasadach urządzenia sieci VPN za pomocą usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 90c855e768f403098e535391afb55e3c78044b0a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dc2dc660262cec892270f8d6e70691fdd169a5c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Połączenie bramy sieci VPN platformy Azure do wielu urządzeń lokalnych, na podstawie zasad sieci VPN przy użyciu programu PowerShell
 
@@ -45,7 +45,7 @@ Obecnie usługa Azure obsługuje oba tryby bramy sieci VPN: opartej na trasach b
 
 |                          | **PolicyBased VPN Gateway** | **Brama sieci VPN z siecią typu RouteBased**               |
 | ---                      | ---                         | ---                                      |
-| **Jednostka SKU bramy Azure**    | Podstawowa                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3 |
+| **Jednostka SKU bramy Azure**    | Podstawowa                       | Basic, Standard, wysokowydajnej, VpnGw1, VpnGw2, VpnGw3 |
 | **Wersja IKE**          | IKEv1                       | IKEv2                                    |
 | **Maks. Połączeń S2S** | **1**                       | Basic/Standard: 10<br> Wysokowydajnej: 30 |
 |                          |                             |                                          |
@@ -113,7 +113,7 @@ Aby używać poleceń cmdlet Menedżera zasobów, upewnij się, że można prze�
 Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```

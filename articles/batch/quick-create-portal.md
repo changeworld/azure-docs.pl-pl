@@ -1,6 +1,6 @@
 ---
-title: "Szybki start na platformie Azure — uruchamianie zadania usługi Batch — portal"
-description: "Szybko naucz się uruchamiać zadanie usługi Batch za pomocą witryny Azure Portal."
+title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — portal
+description: Szybko naucz się uruchamiać zadanie usługi Batch za pomocą witryny Azure Portal.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a00c8ea07c31d2ab4ba2638f2a7e4adcf5ca4a10
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 
@@ -37,7 +37,7 @@ Wykonaj następujące kroki, aby utworzyć przykładowe konto usługi Batch do c
 
 2. Wprowadź wartości w polach **Nazwa konta** i **Grupa zasobów**. Nazwa konta musi być unikatowa w obrębie wybranej **lokalizacji** platformy Azure i musi zawierać od 3 do 24 znaków, przy czym mogą to być tylko małe litery oraz cyfry. 
 
-3. W polu **Konto magazynu** wybierz istniejące konto magazynu ogólnego przeznaczenia lub utwórz nowe.
+3. W polu **Konto magazynu** wybierz istniejące konto magazynu lub utwórz nowe.
 
 4. Pozostaw wartości domyślne pozostałych ustawień, a następnie kliknij przycisk **Utwórz**, aby utworzyć konto.
 

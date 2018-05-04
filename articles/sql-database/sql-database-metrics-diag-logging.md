@@ -10,18 +10,18 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki bazy danych SQL Azure i rejestrowanie danych diagnostycznych 
 Baza danych SQL Azure może emitować metryki i informacji diagnostycznych dzienników łatwiejsze monitorowania. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
 * **Usługa Azure Storage**: dla czasach ogromne ilości danych telemetrycznych dla małych ceny.
 * **Usługa Azure Event Hubs**: używany do integrowania telemetrii bazy danych SQL z niestandardowe rozwiązanie monitorowania lub gorących potoków.
-* **Analiza dzienników Azure**: używany dla poza pole rozwiązanie monitorowania, raportowania, alerty i zmniejszenia możliwości. Jest to funkcja [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
+* **Analiza dzienników Azure**: używany dla poza pole rozwiązanie monitorowania, raportowania, alerty i zmniejszenia możliwości. Jest to funkcja pakietu [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -51,6 +51,7 @@ Można udostępnić nowych zasobów platformy Azure lub wybierz istniejący zas�
 - [Limity czasu](sql-database-metrics-diag-logging.md#time-outs-dataset): zawiera informacje dotyczące limitów czasu, który wystąpił w bazie danych.
 - [Blokowanie](sql-database-metrics-diag-logging.md#blockings-dataset): zawiera informacje o blokowaniu zdarzenia, które wystąpiły w bazie danych.
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): zawiera inteligentnego szczegółowych informacji. [Dowiedz się więcej o inteligentnego Insights](sql-database-intelligent-insights.md).
+- **Inspekcji** / **SQLSecurityAuditEvents**: obecnie niedostępne.
 
 W przypadku wybrania usługi Event Hubs lub konto magazynu, można określić zasady przechowywania. Ta zasada usuwa dane starsze niż w wybranym okresie. Jeśli określisz analizy dzienników, zasad przechowywania zależy od wybranej warstwy cenowej. Aby uzyskać więcej informacji, zobacz [cennik analizy dzienników](https://azure.microsoft.com/pricing/details/log-analytics/). 
 

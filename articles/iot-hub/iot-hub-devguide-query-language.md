@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.openlocfilehash: f1c578b6ebb766f71d6e8b65b02724d91dde3126
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Język zapytań Centrum IoT urządzenia twins, zadań i rozsyłania wiadomości
 
@@ -29,9 +29,9 @@ Centrum IoT zapewnia zaawansowane języka przypominającego SQL, aby pobrać inf
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-twin-queries"></a>Urządzenie dwie zapytań
-[Urządzenie twins] [ lnk-twins] może zawierać dowolne obiekty JSON jako znaczniki i właściwości. Centrum IoT umożliwia twins urządzenia zapytania jako pojedynczego dokumentu JSON zawierający wszystkie informacje dwie urządzenia.
-Przykładowa, na przykład, że Twoje twins urządzenia Centrum IoT ma następującą strukturę:
+## <a name="device-and-module-twin-queries"></a>Urządzenia i moduł dwie zapytań
+[Urządzenie twins] [ lnk-twins] i twins moduł może zawierać dowolne obiekty JSON jako znaczniki i właściwości. Centrum IoT umożliwia twins urządzenia zapytania i twins modułu jako pojedynczego dokumentu JSON zawierający wszystkie informacje dwie.
+Załóżmy na przykład, że Twoje twins urządzenia Centrum IoT ma następującą strukturę (dwie moduł będzie podobny tylko z dodatkowych moduleId):
 
 ```json
 {
@@ -82,6 +82,8 @@ Przykładowa, na przykład, że Twoje twins urządzenia Centrum IoT ma następuj
     }
 }
 ```
+
+### <a name="device-twin-queries"></a>Urządzenie dwie zapytań
 
 Centrum IoT udostępnia twins urządzenia jako kolekcji dokumentów o nazwie **urządzeń**.
 Dlatego poniższe zapytanie pobiera cały zestaw twins urządzenia:
@@ -158,6 +160,26 @@ Kwerend projekcji umożliwiają deweloperom zwracać tylko właściwości, któr
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+```
+
+### <a name="module-twin-queries"></a>Kwerendy dwie modułu
+
+Wykonywanie zapytania na twins modułu jest podobny do zapytania na urządzeniu twins, ale za pomocą różnych kolekcji/przestrzeni nazw, tj. zamiast "z urządzenia" można wysyłać zapytania
+
+```sql
+SELECT * FROM devices.modules
+```
+
+Firma Microsoft nie zezwalaj na sprzężenie między urządzeniami i devices.modules kolekcji. Jeśli chcesz twins modułu zapytania na urządzeniach, to oparte na tagi zrobić. To zapytanie spowoduje zwrócenie wszystkich twins moduł dla wszystkich urządzeń ze stanem skanowania:
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning'
+```
+
+To zapytanie spowoduje zwrócenie wszystkich twins modułu o stanie skanowania, ale tylko w określonym podzestawie urządzeń.
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>Przykład C#
@@ -418,7 +440,7 @@ FROM <from_specification>
 [GROUP BY <group_specification>]
 ```
 
-## <a name="from-clause"></a>Klauzula FROM
+## <a name="from-clause"></a>klauzula FROM
 **z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **z urządzeń** do twins urządzenia zapytania, lub **z devices.jobs** do szczegółów na urządzenie zadania zapytania.
 
 ## <a name="where-clause"></a>Klauzula WHERE
@@ -426,7 +448,7 @@ FROM <from_specification>
 
 Dozwolone warunki opisane w sekcji [wyrażeń i warunki][lnk-query-expressions].
 
-## <a name="select-clause"></a>Klauzula SELECT
+## <a name="select-clause"></a>klauzula SELECT
 **Wybierz < select_list >** jest wymagana i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON ma być używany do generowania nowych obiektów JSON.
 Dla każdego elementu filtrowane (i opcjonalnie grupowanych) podzestaw kolekcji FROM faza projekcji generuje nowy obiekt JSON. Ten obiekt jest tworzony przy użyciu wartości określone w klauzuli SELECT.
 
@@ -456,7 +478,7 @@ SELECT [TOP <max number>] <projection list>
 
 Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w zapytaniach agregacji w twins urządzenia.
 
-## <a name="group-by-clause"></a>Klauzula GROUP BY
+## <a name="group-by-clause"></a>klauzula GROUP BY
 **GROUP BY < group_specification >** klauzuli to krok opcjonalny, który jest wykonywany po określony w klauzuli WHERE, a przed projekcji określonej w polu Wybierz filtr. Grup dokumentów na podstawie wartości atrybutu. Te grupy są używane do generowania wartości zagregowane, jak określono w klauzuli SELECT.
 
 Przykładem zapytanie, używając GROUP BY jest:
@@ -523,7 +545,7 @@ Aby zrozumieć, co oznacza każdy symbol w składni wyrażeń, można skorzysta�
 | --- | --- |
 | attribute_name | Dokument JSON w dowolnej właściwości **FROM** kolekcji. |
 | binary_operator | Wszelkie operatora binarnego na liście [operatory](#operators) sekcji. |
-| function_name| Dowolne funkcje wymienione w [funkcje](#functions) sekcji. |
+| nazwa_funkcji| Dowolne funkcje wymienione w [funkcje](#functions) sekcji. |
 | decimal_literal |Float, wyrażone w notacji dziesiętnej. |
 | hexadecimal_literal |Liczba wyrażona w ciągu '0 x' następuje ciąg cyfr szesnastkowych. |
 | literał |Literały ciągu są reprezentowane przez sekwencję zero lub więcej znaków Unicode lub sekwencji unikowych ciągów Unicode. Literały ciągu są ujęte w apostrofy lub podwójny cudzysłów. Dozwolone specjalne: `\'`, `\"`, `\\`, `\uXXXX` znaków Unicode, zdefiniowane przez 4 cyfr szesnastkowych. |
@@ -585,7 +607,7 @@ Obsługiwane są następujące funkcje ciągów w warunkach trasy:
 | ENDS_WITH (x, y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu kończy się na sekundę. |
 | CONTAINS(x,y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu zawiera drugi. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się, jak wykonywać zapytania w aplikacjach za pomocą [Azure IoT SDK][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: 6b62baf1fdad6e08535b13f2ca461b00156a7f14
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Zarządzane tożsamości usługi (MSI) dla zasobów platformy Azure
 
@@ -32,14 +32,14 @@ Po włączeniu zarządzane tożsamości usługi w usłudze Azure Azure automatyc
 
 Oto przykład działania zarządzane tożsamość usługi z maszyn wirtualnych platformy Azure.
 
-![Przykład MSI maszyny wirtualnej](../media/msi-vm-example.png)
+![Przykład MSI maszyny wirtualnej](../media/msi-vm-imds-example.png)
 
-1. Usługa Azure Resource Manager odbiera wiadomości, aby włączyć MSI w maszynie Wirtualnej.
+1. Usługa Azure Resource Manager odbiera wiadomości, aby włączyć tożsamości usługi zarządzania (MSI) na maszynie Wirtualnej.
 2. Usługa Azure Resource Manager tworzy nazwy głównej usługi w usłudze Azure AD do reprezentowania tożsamości maszyny wirtualnej. Nazwy głównej usługi jest tworzony w dzierżawie usługi Azure AD, który jest zaufany dla tej subskrypcji.
-3. Usługa Azure Resource Manager konfiguruje szczegóły nazwy głównej usługi w pliku MSI rozszerzenia maszyny Wirtualnej maszyny wirtualnej.  Ten krok obejmuje Konfigurowanie identyfikator klienta i certyfikat używany przez rozszerzenie do uzyskania dostępu do tokenów z usługi Azure AD.
-4. Teraz, nosi nazwę główną usługi tożsamość maszyny Wirtualnej, może zostać przydzielony dostęp do zasobów platformy Azure.  Na przykład jeśli kod wymaga wywołań usługi Azure Resource Manager, następnie należy przypisywanej nazwy głównej usługi maszyny Wirtualnej odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD.  Kod musi wywołać Key Vault, czy udzielić kodu dostępu do określonego hasła lub klucza w magazynie kluczy.
-5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token.  Parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu =https://management.azure.com/.
-6. MSI rozszerzenia maszyny Wirtualnej używa Identyfikatora klienta skonfigurowanego i certyfikatu poproś token dostępu z usługi Azure AD.  Usługi Azure AD zwraca token dostępu tokenu Web JSON (JWT).
+3. Usługa Azure Resource Manager konfiguruje szczegóły nazwy głównej usługi dla maszyny Wirtualnej w usłudze Azure wystąpienie metadanych maszyny wirtualnej. Ten krok obejmuje Konfigurowanie identyfikator klienta i certyfikat używany do uzyskania dostępu do tokenów z usługi Azure AD. *Uwaga: Punktu końcowego MSI IMDS zastępuje bieżący punkt końcowy MSI rozszerzenia maszyny Wirtualnej. Aby uzyskać więcej informacji na temat tej zmiany zobacz stronę znane problemy i często zadawane pytania*
+4. Teraz, nosi nazwę główną usługi tożsamość maszyny Wirtualnej, może zostać przydzielony dostęp do zasobów platformy Azure. Na przykład jeśli kod wymaga wywołań usługi Azure Resource Manager, następnie należy przypisywanej nazwy głównej usługi maszyny Wirtualnej odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD.  Kod musi wywołać Key Vault, czy udzielić kodu dostępu do określonego hasła lub klucza w magazynie kluczy.
+5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z punktu końcowego MSI Azure wystąpienie metadanych usługi (IMDS), który jest dostępny tylko z poziomu maszyny Wirtualnej: http://169.254.169.254/metadata/identity/oauth2/token. Parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu =https://management.azure.com/.
+6. Żądania metadanych wystąpienia Azure token dostępu z usługi Azure AD przy użyciu Identyfikatora klienta oraz certyfikat dla maszyny Wirtualnej. Usługi Azure AD zwraca token dostępu tokenu Web JSON (JWT).
 7. Kod wysyła ten token dostępu na wywołanie do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 
 Każdy usługa Azure, która obsługuje zarządzane tożsamości usługi ma własną metodę dla kodu można uzyskać tokenu dostępu. Zapoznaj się z samouczkami dla każdej usługi dowiedzieć się, określonej metody w celu pobrania tokenu.

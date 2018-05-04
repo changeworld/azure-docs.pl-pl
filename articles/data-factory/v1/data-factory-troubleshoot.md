@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Rozwiązywanie problemów z usługą Data Factory
 > [!NOTE]
@@ -34,7 +34,7 @@ Wyświetlenie tego błędu oznacza, że dostawca zasobów usługi Azure Data Fac
 2. Zaloguj się do konta platformy Azure przy użyciu następującego polecenia.
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. Uruchom następujące polecenie, aby zarejestrować dostawcę usługi fabryka danych Azure.
 
@@ -45,7 +45,7 @@ Wyświetlenie tego błędu oznacza, że dostawca zasobów usługi Azure Data Fac
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problem: Nieautoryzowanego błąd podczas uruchamiania polecenia cmdlet usługi fabryka danych
 Przypuszczalnie nie używasz prawidłowego konta lub subskrypcji platformy Azure w programie Azure PowerShell. Użyj następujących poleceń cmdlet, aby wybrać odpowiednie konto i subskrypcję platformy Azure do stosowania w programie Azure PowerShell.
 
-1. Login-AzureRmAccount - Użyj Identyfikatora prawo użytkownika i hasła
+1. Connect-AzureRmAccount - Użyj Identyfikatora prawo użytkownika i hasła
 2. Get-AzureRmSubscription - wyświetlić wszystkie subskrypcje dla konta.
 3. SELECT-AzureRmSubscription &lt;Nazwa subskrypcji&gt; — Wybierz subskrypcję, do prawej. Użyj tego samego umożliwiające tworzenie fabryki danych w portalu Azure.
 

@@ -1,11 +1,11 @@
 ---
 title: Instalowanie adaptera StorSimple dla programu SharePoint | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano, jak zainstalować i skonfigurować lub usunąć kartę StorSimple dla programu SharePoint w farmie serwerów programu SharePoint."
+description: W tym artykule opisano, jak zainstalować i skonfigurować lub usunąć kartę StorSimple dla programu SharePoint w farmie serwerów programu SharePoint.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
 ms.devlang: NA
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalowanie i konfigurowanie karty StorSimple dla programu SharePoint
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Karta StorSimple dla programu SharePoint jest składnikiem, który umożliwia elastyczne magazynu Microsoft Azure StorSimple i ochronę danych na farmach serwerów programu SharePoint. Karta umożliwia przenieść zawartość dużych obiektu binarnego (BLOB) z bazy danych zawartości programu SQL Server do urządzenia magazynującego chmury hybrydowej Microsoft Azure StorSimple.
 
 Karta StorSimple dla programu SharePoint działa jako dostawca magazynu obiektów BLOB zdalnego (SPZ) i korzysta z funkcji zdalnego magazynu obiektów BLOB SQL Server do przechowywania danych zawartości programu SharePoint (w formie obiektów blob) na serwerze plików, który nie jest obsługiwana przez urządzenia StorSimple.
@@ -216,7 +216,7 @@ Zbierz następujące informacje, aby przenieść dane z powrotem do bazy danych 
 ### <a name="move-the-blobs-back-to-the-content-databases"></a>Przenieść obiekty BLOB z powrotem do bazy danych zawartości
 Przed odinstalowaniem karty StorSimple dla oprogramowania SharePoint, należy przeprowadzić migrację wszystkich obiektów blob, które zostały externalized do bazy danych zawartości programu SQL Server. Jeśli odinstalowanie karty StorSimple dla programu SharePoint, aby przeniesieniu wszystkich obiektów blob z powrotem do bazy danych zawartości, pojawi się następujący komunikat ostrzegawczy.
 
-![Komunikat ostrzegawczy](./media/storsimple-adapter-for-sharepoint/sasp1.png)
+![Komunikat ostrzeżenia](./media/storsimple-adapter-for-sharepoint/sasp1.png)
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>Aby przenieść obiekty BLOB z powrotem do bazy danych zawartości
 1. Każdy z obiektów externalized Pobierz.
@@ -252,7 +252,7 @@ Po przeniesieniu obiektów blob z powrotem do bazy danych zawartości programu S
 1. Otwórz Panel sterowania, a następnie kliknij przycisk **programy i funkcje**.
 2. Wybierz **karty StorSimple dla programu SharePoint**, a następnie kliknij przycisk **Odinstaluj**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej o StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
@@ -261,4 +261,4 @@ Po przeniesieniu obiektów blob z powrotem do bazy danych zawartości programu S
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+[8]: https://technet.microsoft.com/library/ff943565.aspx

@@ -9,18 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 0dae04ab3de16e2ef51134ec6979c6c289a6da3f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dbe991ddaa4d85ee3d117dc3c0c246a642b53f2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-dtu-benchmark-overview"></a>Omówienie testów porównawczych jednostek dtu w warstwie bazy danych SQL Azure
 ## <a name="overview"></a>Przegląd
-W podstawie jednostek dtu w warstwie model kupna Microsoft Azure SQL Database oferuje trzy [warstw usług](sql-database-service-tiers.md) wiele poziomów wydajności. Każdy poziom wydajności udostępnia zwiększanie zasobów lub "power" przeznaczona do dostarczania coraz wyższej przepustowości.
+W podstawie jednostek dtu w warstwie model kupna Microsoft Azure SQL Database oferuje trzy [warstw usług](sql-database-service-tiers-dtu.md) wiele poziomów wydajności. Każdy poziom wydajności udostępnia zwiększanie zasobów lub "power" przeznaczona do dostarczania coraz wyższej przepustowości.
 
 > [!IMPORTANT]
-> Baza danych SQL Azure obsługuje teraz również na podstawie vCore model kupna (wersja zapoznawcza). Aby uzyskać informacje, zobacz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
+> Baza danych SQL Azure obsługuje teraz również na podstawie vCore model kupna (wersja zapoznawcza). Aby uzyskać informacje, zobacz [na podstawie vCore model kupna](sql-database-service-tiers-vcore.md).
 
 Jest ważne można było określić, jak zwiększa możliwości każdym poziomie wydajności przekłada się na wydajności zwiększona bazy danych. Aby zrobić to Microsoft opracowała testu wydajności bazy danych SQL Azure (ASDB). Testu porównawczego wykonuje podstawowe operacje, w przypadku wszystkich obciążeń OLTP. Firma Microsoft mierzenia przepływności uzyskuje baz danych uruchomionych w każdym poziomie wydajności.
 
@@ -103,7 +103,7 @@ W poniższej tabeli przedstawiono liczbę użytkowników, w rzeczywistości prze
 | Standard (S2) |50 |7.1 GB |
 | Premium (P1) |100 |14 GB |
 | Premium (P2) |200 |28 GB |
-| Premium (P6) |800 |114 GB |
+| — Warstwa Premium (P6.) |800 |114 GB |
 
 ## <a name="measurement-duration"></a>Czas trwania pomiaru.
 Nieprawidłowa uruchomienia testu porównawczego wymaga pomiaru stabilnego obowiązywania co najmniej jedną godzinę.
@@ -126,6 +126,8 @@ Wzorzec bazy danych SQL Azure mierzy względną wydajność uruchomione w zakres
 ## <a name="resources"></a>Zasoby
 [Wprowadzenie do bazy danych SQL](sql-database-technical-overview.md)
 
-[Warstwy usług i poziomy wydajności](sql-database-service-tiers.md)
+[Warstwy jednostek dtu w warstwie usług i poziomy wydajności](sql-database-service-tiers-dtu.md)
+
+[warstwy usługi opartej na vCore i poziomy wydajności](sql-database-service-tiers-vcore.md)
 
 [Wytyczne dotyczące wydajności dla pojedynczej bazy danych](sql-database-performance-guidance.md)

@@ -1,12 +1,12 @@
 ---
-title: "Monitorowanie i diagnostyka kontenerów systemu Windows w usłudze Azure Service Fabric | Microsoft Docs"
-description: "W ramach tego scenariusza skonfigurujesz monitorowanie i diagnostykę kontenerów systemu Windows zorganizowanych w usłudze Azure Service Fabric."
+title: Monitorowanie i diagnostyka kontenerów systemu Windows w usłudze Azure Service Fabric | Microsoft Docs
+description: W ramach tego scenariusza skonfigurujesz monitorowanie i diagnostykę kontenerów systemu Windows zorganizowanych w usłudze Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,21 +15,21 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 087dafe426b835d447c69a44f6842c41a48cec8c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>Samouczek: monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu pakietu OMS
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Samouczek: monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu usługi Log Analytics
 
-Niniejszy samouczek jest trzecią częścią serii i umożliwia przeprowadzenie konfiguracji pakietu OMS na potrzeby monitorowania kontenerów systemu Windows zorganizowanych w usłudze Service Fabric.
+Niniejszy samouczek jest trzecią częścią serii i umożliwia przeprowadzenie konfiguracji usługi Log Analytics na potrzeby monitorowania kontenerów systemu Windows zorganizowanych w usłudze Service Fabric.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie pakietu OMS dla klastra usługi Service Fabric
-> * Używanie obszaru roboczego pakietu OMS w celu wyświetlania dzienników i wykonywania zapytań względem nich z poziomu kontenerów i węzłów
+> * Konfigurowanie usługi Log Analytics dla klastra usługi Service Fabric
+> * Używanie obszaru roboczego usługi Log Analytics w celu wyświetlania dzienników i wykonywania o nie zapytań z poziomu kontenerów i węzłów
 > * Konfigurowanie agenta pakietu OMS na potrzeby pobierania metryk kontenerów i węzłów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -37,24 +37,24 @@ Przed rozpoczęciem tego samouczka należy:
 - Mieć klaster na platformie Azure lub [utworzyć go za pomocą tego samouczka](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [Wdrożyć w nim konteneryzowaną aplikację](service-fabric-host-app-in-a-container.md)
 
-## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>Konfigurowanie pakietu OMS na potrzeby klastra w szablonie usługi Resource Manager
+## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Konfigurowanie usługi Log Analytics na potrzeby klastra w szablonie usługi Resource Manager
 
-Jeśli używasz [szablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) dostarczonego w pierwszej części tego samouczka, powinien on zawierać następujące dodatki do ogólnego szablonu usługi Azure Resource Manager w ramach usługi Service Fabric. Jeśli masz własny klaster, który chcesz skonfigurować w celu monitorowania kontenerów za pomocą pakietu OMS:
+Jeśli używasz [szablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) dostarczonego w pierwszej części tego samouczka, powinien on zawierać następujące dodatki do ogólnego szablonu usługi Azure Resource Manager w ramach usługi Service Fabric. Jeśli masz własny klaster, który chcesz skonfigurować w celu monitorowania kontenerów za pomocą usługi Log Analytics:
 * Wprowadź następujące zmiany w szablonie usługi Resource Manager.
 * Wdróż je przy użyciu programu PowerShell w celu uaktualnienia klastra przez [wdrożenie szablonu](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Usługa Azure Resource Manager potrafi rozpoznać istniejący zasób, więc wdroży go jako uaktualnienie.
 
-### <a name="adding-oms-to-your-cluster-template"></a>Dodawanie pakietu OMS do szablonu klastra
+### <a name="adding-log-analytics-to-your-cluster-template"></a>Dodawanie usługi Log Analytics do szablonu klastra
 
 Wprowadź następujące zmiany w szablonie *template.json*:
 
-1. Dodaj lokalizację i nazwę obszaru roboczego pakietu OMS w sekcji *parameters*:
+1. Dodaj lokalizację i nazwę obszaru roboczego usługi Log Analytics w sekcji *parameters*:
     
     ```json
     "omsWorkspacename": {
       "type": "string",
       "defaultValue": "[toLower(concat('sf',uniqueString(resourceGroup().id)))]",
       "metadata": {
-        "description": "Name of your OMS Log Analytics Workspace"
+        "description": "Name of your Log Analytics Workspace"
       }
     },
     "omsRegion": {
@@ -66,7 +66,7 @@ Wprowadź następujące zmiany w szablonie *template.json*:
         "Southeast Asia"
       ],
       "metadata": {
-        "description": "Specify the Azure Region for your OMS workspace"
+        "description": "Specify the Azure Region for your Log Analytics workspace"
       }
     }
     ```
@@ -100,7 +100,7 @@ Wprowadź następujące zmiany w szablonie *template.json*:
     },
     ```
 
-4. Dodaj obszar roboczy pakietu OMS jako pojedynczy zasób. W obszarze *resources* po zasobie zestawów skalowania maszyn wirtualnych dodaj następujący kod:
+4. Dodaj obszar roboczy usługi Log Analytics jako pojedynczy zasób. W obszarze *resources* po zasobie zestawów skalowania maszyn wirtualnych dodaj następujący kod:
     
     ```json
     {
@@ -180,17 +180,17 @@ Wprowadź następujące zmiany w szablonie *template.json*:
     },
     ```
 
-[W tym miejscu](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) znajduje się przykładowy szablon (używany w pierwszej części tego samouczka) zawierający wszystkie wprowadzone zmiany, do których można się odwołać w razie potrzeby. Te zmiany spowodują dodanie obszaru roboczego pakietu OMS usługi Log Analytics do grupy zasobów. Obszar roboczy zostanie skonfigurowany w celu korzystania ze zdarzeń platformy usługi Service Fabric z poziomu tabel magazynu skonfigurowanych za pomocą agenta [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). Agent pakietu OMS (Microsoft Monitoring Agent) został również dodany do każdego węzła w klastrze jako rozszerzenie maszyny wirtualnej. Oznacza to, że podczas skalowania klastra agent jest automatycznie konfigurowany na każdej maszynie i podłączany do tego samego obszaru roboczego.
+[W tym miejscu](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) znajduje się przykładowy szablon (używany w pierwszej części tego samouczka) zawierający wszystkie wprowadzone zmiany, do których można się odwołać w razie potrzeby. Te zmiany spowodują dodanie obszaru roboczego usługi Log Analytics do grupy zasobów. Obszar roboczy zostanie skonfigurowany w celu korzystania ze zdarzeń platformy usługi Service Fabric z poziomu tabel magazynu skonfigurowanych za pomocą agenta [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). Agent pakietu OMS (Microsoft Monitoring Agent) został również dodany do każdego węzła w klastrze jako rozszerzenie maszyny wirtualnej. Oznacza to, że podczas skalowania klastra agent jest automatycznie konfigurowany na każdej maszynie i podłączany do tego samego obszaru roboczego.
 
-Wdróż szablon z wprowadzonymi zmianami, aby uaktualnić bieżący klaster. Po zakończeniu w grupie zasobów powinny zostać wyświetlone zasoby pakietu OMS. Gdy klaster będzie gotowy, wdróż w nim konteneryzowaną aplikację. W następnym kroku zostanie skonfigurowane monitorowanie kontenerów.
+Wdróż szablon z wprowadzonymi zmianami, aby uaktualnić bieżący klaster. Po zakończeniu w grupie zasobów powinny zostać wyświetlone zasoby usługi Log Analytics. Gdy klaster będzie gotowy, wdróż w nim konteneryzowaną aplikację. W następnym kroku zostanie skonfigurowane monitorowanie kontenerów.
 
-## <a name="add-the-container-monitoring-solution-to-your-oms-workspace"></a>Dodawanie rozwiązania do monitorowania kontenerów do obszaru roboczego pakietu OMS
+## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>Dodawanie rozwiązania do monitorowania kontenerów do obszaru roboczego usługi Log Analytics
 
 Aby skonfigurować rozwiązanie kontenera w obszarze roboczym, wyszukaj wyrażenie *Rozwiązanie do monitorowania kontenerów* i utwórz zasób kontenerów (w kategorii Monitorowanie + zarządzanie).
 
 ![Dodawanie rozwiązania kontenerów](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Po wyświetleniu monitu o *obszar roboczy pakietu OMS* wybierz obszar roboczy, który został utworzony w grupie zasobów, i kliknij pozycję **Utwórz**. Spowoduje to dodanie *rozwiązania do monitorowania kontenerów* do obszaru roboczego, co wywoła automatyczne zbieranie dzienników i statystyk platformy Docker przez agenta pakietu OMS wdrożonego w ramach szablonu. 
+Po wyświetleniu monitu o *obszar roboczy usługi Log Analytics* wybierz obszar roboczy, który został utworzony w grupie zasobów, i kliknij pozycję **Utwórz**. Spowoduje to dodanie *rozwiązania do monitorowania kontenerów* do obszaru roboczego, co wywoła automatyczne zbieranie dzienników i statystyk platformy Docker przez agenta pakietu OMS wdrożonego w ramach szablonu. 
 
 Przejdź z powrotem do *grupy zasobów*, gdzie powinno zostać wyświetlone nowo dodane rozwiązanie do monitorowania. Po jego kliknięciu na stronie docelowej powinna wyświetlić się liczba uruchomionych obrazów kontenera. 
 
@@ -219,7 +219,7 @@ Kolejną zaletą korzystania z agenta pakietu OMS jest możliwość zmiany liczn
 Spowoduje to przejście do obszaru roboczego w portalu OMS, w którym można wyświetlać rozwiązania, tworzyć niestandardowe pulpity nawigacyjne, a także konfigurować agenta pakietu OMS. 
 * Kliknij **koło zębate** w prawym górnym rogu ekranu, aby otworzyć menu *Ustawienia*.
 * Kliknij pozycję **Połączone źródła** > **Serwery z systemem Windows**, aby upewnić się, że *Połączono komputery z systemem Windows (5)*.
-* Kliknij pozycję **Dane** > **Liczniki wydajności systemu Windows**, aby wyszukać i dodać nowe liczniki wydajności. W tym miejscu zostanie wyświetlona lista zaleceń pakietu OMS dotycząca liczników wydajności, które można zbierać, a także opcję wyszukiwania innych liczników. Kliknij pozycję **Dodaj wybrane liczniki wydajności**, aby rozpocząć zbieranie zalecanych metryk.
+* Kliknij pozycję **Dane** > **Liczniki wydajności systemu Windows**, aby wyszukać i dodać nowe liczniki wydajności. W tym miejscu zostanie wyświetlona lista zaleceń usługi Log Analytics dotyczących liczników wydajności, których dane można zbierać, a także opcja wyszukiwania innych liczników. Kliknij pozycję **Dodaj wybrane liczniki wydajności**, aby rozpocząć zbieranie zalecanych metryk.
 
     ![Liczniki wydajności](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
 
@@ -235,13 +235,13 @@ W witrynie Azure Portal po kilku minutach **odśwież** rozwiązanie do monitoro
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie pakietu OMS dla klastra usługi Service Fabric
-> * Używanie obszaru roboczego pakietu OMS w celu wyświetlania dzienników i wykonywania zapytań względem nich z poziomu kontenerów i węzłów
-> * Konfigurowanie agenta pakietu OMS na potrzeby pobierania metryk kontenerów i węzłów
+> * Konfigurowanie usługi Log Analytics dla klastra usługi Service Fabric
+> * Używanie obszaru roboczego usługi Log Analytics w celu wyświetlania dzienników i wykonywania o nie zapytań z poziomu kontenerów i węzłów
+> * Konfigurowanie agenta usługi Log Analytics na potrzeby pobierania metryk kontenerów i węzłów
 
 Po skonfigurowaniu monitorowania konteneryzowanej aplikacji spróbuj wykonać następujące czynności:
 
-* Skonfiguruj pakiet OMS dla klastra systemu Linux, wykonując czynności podobne do tych opisanych powyżej. Utwórz odwołanie do [tego szablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux), aby wprowadzić zmiany w szablonie usługi Resource Manager.
-* Skonfiguruj pakiet OMS, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
+* Skonfiguruj usługę Log Analytics dla klastra systemu Linux, wykonując kroki podobne do opisanych powyżej. Utwórz odwołanie do [tego szablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux), aby wprowadzić zmiany w szablonie usługi Resource Manager.
+* Skonfiguruj usługę Log Analytics, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
 * Zapoznaj się z listą [zalecanych liczników wydajności](service-fabric-diagnostics-event-generation-perf.md) usługi Service Fabric w celu skonfigurowania ich na potrzeby klastrów.
 * Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań względem nich](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Log Analytics.

@@ -1,6 +1,6 @@
 ---
-title: "Uaktualnij magazynu kopii zapasowych do magazynu usług odzyskiwania | Dokumentacja firmy Microsoft"
-description: "Instrukcje i informacje pomocy technicznej w celu uaktualnienia magazynu usługi Kopia zapasowa Azure do magazynu usług odzyskiwania."
+title: Uaktualnij magazynu kopii zapasowych do magazynu usług odzyskiwania | Dokumentacja firmy Microsoft
+description: Instrukcje i informacje pomocy technicznej w celu uaktualnienia magazynu usługi Kopia zapasowa Azure do magazynu usług odzyskiwania.
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Uaktualnij magazynu kopii zapasowych do magazynu usług odzyskiwania
 
@@ -57,7 +57,7 @@ Skrypty programu PowerShell służą do uaktualnienia programu magazyny kopii za
 
 Użyj następującego skryptu, aby uaktualnić Twoje magazynów. Poniższy przykładowy skrypt zawiera wyjaśnienia dotyczące parametrów.
 
-RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-lokalizacji** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName**`<rgname>`
+RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-lokalizacji** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName** `<rgname>`
 
 **Identyfikator subskrypcji** — identyfikator subskrypcji magazynu, który jest uaktualniany.<br/>
 **VaultName** -nazwę magazynu kopii zapasowych, który jest uaktualniany.<br/>
@@ -84,7 +84,7 @@ Skrypt programu PowerShell wyświetli monit o podanie poświadczeń. Wprowadź s
 ### <a name="pre-requisites-checking"></a>Wstępne sprawdzanie
 Po wprowadzeniu poświadczeń platformy Azure, Azure sprawdza, czy dane środowisko spełnia następujące wymagania wstępne:
 
-- **Wersja agenta minimalna** -magazyny kopii zapasowych magazynów usług odzyskiwania uaktualnianą agenta MARS na co najmniej wersji 2.0.9083.0. Jeśli masz elementy zarejestrowane do magazynu kopii zapasowej z agentem starszych niż 2.0.9083.0 sprawdzanie wymagań wstępnych kończy się niepowodzeniem. Jeśli wymagania wstępne nie powiedzie się, zaktualizuj agenta i ponowić próbę uaktualnienia magazynu. Możesz pobrać najnowszą wersję agenta z [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Wersja agenta minimalna** -magazyny kopii zapasowych magazynów usług odzyskiwania uaktualnianą agenta MARS na co najmniej wersji 2.0.9083.0. Jeśli masz elementy zarejestrowane do magazynu kopii zapasowej z agentem starszych niż 2.0.9083.0 sprawdzanie wymagań wstępnych kończy się niepowodzeniem. Jeśli wymagania wstępne nie powiedzie się, zaktualizuj agenta i ponowić próbę uaktualnienia magazynu. Możesz pobrać najnowszą wersję agenta z [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **Zadania konfiguracji i nieustanne**: Jeśli ktoś konfiguruje zadania dla magazynu kopii zapasowych ustawić do uaktualnienia, rejestrowanie elementu, sprawdzanie wymagań wstępnych kończy się lub. Zakończ konfigurację, lub zakończenie rejestracji elementu, a następnie uruchom proces uaktualniania magazynu.
 - **Oparty na magazynie modelu rozliczeń**: Magazyny usług odzyskiwania obsługują metoda oparta na modelu rozliczeń. Po uruchomieniu uaktualniania magazynu w magazynie kopii zapasowych, który korzysta z magazynu na podstawie modelu rozliczeń monit o uaktualnienie modelu rozliczeń wraz z magazynem. W przeciwnym razie można zaktualizować modelu rozliczeń najpierw, a następnie uruchom Uaktualnianie magazynu.
 - Określ grupę zasobów dla magazynu usług odzyskiwania. Aby móc korzystać z funkcji wdrażania usługi Resource Manager, należy przełączyć magazyn usług odzyskiwania w grupie zasobów. Jeśli nie wiadomo, które grupy zasobów, aby użyć, podaj nazwę i procesu uaktualniania zostanie utworzona grupa zasobów dla Ciebie. Proces uaktualniania powoduje również skojarzenie magazynu z nową grupę zasobów.
@@ -106,7 +106,7 @@ Magazyn usług odzyskiwania obsługują określania informacji o strefie czasowe
 
 ## <a name="enhanced-security"></a>Większe bezpieczeństwo
 
-Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się na niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagają [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji na zwiększonych zabezpieczeń, zobacz artykuł [funkcji zabezpieczeń do ochrony kopii zapasowych hybrydowego](backup-azure-security-feature.md). 
+Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się na niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagają [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji na zwiększonych zabezpieczeń, zobacz artykuł [funkcji zabezpieczeń do ochrony kopii zapasowych hybrydowego](backup-azure-security-feature.md). 
 
 Po włączeniu zwiększonych zabezpieczeń danych jest zachowywana się do 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są rozliczane do przechowywania tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń ma zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager. 
 

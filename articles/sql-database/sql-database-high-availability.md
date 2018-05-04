@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e85db04206927eaf17cf52c11b536c75a47a088e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 839cadffc37a1c4a6ceae77fbe1e01020c28fe1d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Baza danych SQL wysokiej dostępności i platformy Azure
 Od chwili rozpoczęcia oferty PaaS bazy danych SQL Azure firma Microsoft wprowadziła Obietnica jej klientów, które wysokiej dostępności (HA) korzysta z wbudowanej w usługi i klientów nie są wymagane do działania, Dodaj logikę specjalnych lub podejmować decyzje dotyczące wysokiej dostępności. Firma Microsoft udostępnia pełną kontrolę nad HA system konfiguracji i obsłudze, zaoferować klientom umowy dotyczącej poziomu usług. HA umowy SLA stosuje się do bazy danych SQL w regionie i nie zapewnia ochrony w przypadku niepowodzenia obszar całkowity, który jest wystąpiły z przyczyn będących poza kontrolą firmy Microsoft (na przykład klęski żywiołowej, plik war, czynności terroryzmu, zamieszek, akcji dla instytucji rządowych, lub sieci lub na urządzeniu niepowodzenie zewnętrznych w centrach danych firmy Microsoft, w tym klientów w lokacjach lub między lokacjami klienta i centrum danych firmy Microsoft).
@@ -87,9 +87,14 @@ W poniższym diagramie przedstawiono wersja nadmiarowe strefy architektury wysok
 ## <a name="read-scale-out"></a>Przeczytaj skalowalnego w poziomie
 Zgodnie z opisem, krytycznych Business (wersja zapoznawcza) i Premium usługi warstw korzystaj z zestawów kworum i technologii AlwaysON wysokiej dostępności, zarówno w jednej strefie i nadmiarowego konfiguracji strefy. Jedną z zalet AlwasyON jest repliki są zawsze w stanie spójna transakcyjnie. Ponieważ replik mają ten sam poziom wydajności jako podstawowy, aplikację można korzystać z dodatkowych wydajność obsługi obciążenia tylko do odczytu bez dodatkowych kosztów (odczytu skalowalnych w poziomie). W ten sposób zapytania tylko do odczytu zostanie odizolowana od głównego obciążenia zapisu i odczytu i nie będzie miało wpływ na wydajność. Odczytu, które funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie rozdzielane obciążeń tylko do odczytu, takich jak analizy, a w związku z tym można wykorzystać to dodatkowej pojemności bez nawiązywania połączenia z serwerem podstawowym. 
 
-Do korzystania z funkcji odczytu skalowalnego w poziomie z określoną bazę danych, musisz jawnie włączyć go podczas tworzenia bazy danych lub później, zmieniając konfigurację przy użyciu programu PowerShell, wywołując [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [ Nowe AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub przy użyciu interfejsu API usługi Azure Resource Manager REST [baz danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate) metody.
+Do korzystania z funkcji odczytu skalowalnego w poziomie z określoną bazę danych, musisz jawnie aktywować go podczas tworzenia bazy danych lub później, zmieniając konfigurację przy użyciu programu PowerShell, wywołując [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub przy użyciu interfejsu API usługi Azure Resource Manager REST [baz danych — Tworzenie lub aktualizowanie](/rest/api/sql/databases/createorupdate) metody.
 
-Po odczytu skalowalnego w poziomie jest włączona dla bazy danych, aplikacji nawiązywania połączenia z bazą danych zostanie skierowany do repliki do odczytu / zapisu lub tylko do odczytu repliki tej bazy danych zgodnie z `ApplicationIntent` właściwości skonfigurowane w aplikacji Parametry połączenia. Aby uzyskać informacje dotyczące `ApplicationIntent` właściwości, zobacz [określenia przeznaczenia aplikacji](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent) 
+Po odczytu skalowalnego w poziomie jest włączona dla bazy danych, aplikacji nawiązywania połączenia z bazą danych zostanie skierowany do repliki do odczytu / zapisu lub tylko do odczytu repliki tej bazy danych zgodnie z `ApplicationIntent` właściwości skonfigurowane w aplikacji Parametry połączenia. Aby uzyskać informacje dotyczące `ApplicationIntent` właściwości, zobacz [określenia przeznaczenia aplikacji](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
+
+Jeśli odczytu skalowalnego w poziomie jest wyłączona lub ustaw właściwość ReadScale w warstwie usług nieobsługiwany, wszystkie połączenia są kierowane do repliki do odczytu / zapisu, niezależnie od `ApplicationIntent` właściwości.  
+
+> [!NOTE]
+> Istnieje możliwość aktywowania odczytu skalowalnego w poziomie na Standard lub zwykłej bazy danych, mimo że nie spowoduje routingu tylko do odczytu przeznaczone sesji do oddzielnych repliki. Jest to realizowane do obsługi istniejących aplikacji, które skalować w górę i w dół między warstwami cel ogólne/Standard i Premium/biznesowe krytyczne.  
 
 Funkcja skalowania odczytu obsługuje poziomu spójności sesji. Jeśli ponownie nawiąże połączenie sesji tylko do odczytu, po spowodować błąd połączenia przez niedostępności repliki, mogą zostać przekierowane do innego serwera repliki. Gdy jest to mało prawdopodobne, może spowodować przetwarzania zestawu danych, która jest przestarzała. Podobnie jeśli aplikacja zapisuje dane przy użyciu sesji odczytu i zapisu i natychmiast odczytuje go za pomocą sesji tylko do odczytu, jest to możliwe, że nowe dane nie jest od razu widoczne.
 

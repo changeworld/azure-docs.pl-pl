@@ -17,10 +17,10 @@ ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 89a4216a3893892eedd6c216c7e0e5d51cf64749
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zapisu klawisz skrótu dla wdrożenia SAP
 Azure akceleratora zapisu jest funkcje, które jest pierwsze wprowadzanie dla maszyn wirtualnych, M serii wyłącznie. Accelerator zapisu Azure nie jest dostępna z żadnych innych maszyn wirtualnych serii na platformie Azure, z wyjątkiem serii M. Jako nazwa stany, celem funkcji jest zwiększyć czas oczekiwania operacji We/Wy zapisu w usłudze Azure Premium Storage. 

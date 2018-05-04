@@ -3,7 +3,7 @@ title: Azure stos obsługi zasad | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat obsługi zasad i sposobu na utrzymanie zintegrowany system do stanu umożliwiającego stosu Azure.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/18/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 160ba42c5cbdd3e8b999040cba8254d4c87f7c63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure stos obsługi zasad
 W tym artykule opisano zasady obsługi w stosie Azure zintegrowanych systemów i co należy zrobić, aby zapewnić systemu do stanu umożliwiającego. 
@@ -55,6 +55,9 @@ Aby kontynuować uzyskać pomoc techniczną, należy pozostawić wdrożenia stos
 Na przykład, jeśli niedawno dostępny zaktualizowanej wersji, która jest 1805, i poprzednich dwóch pakietów aktualizacji w wersji 1804 i 1803, zarówno 1803 i 1804 pozostają w pomocy technicznej. Jednak 1802 jest obsługiwany. Zasady jest spełniony, gdy istnieje bez zwalniania miesiąca lub dwóch. Na przykład jeśli bieżąca wersja to 1805 i nie było żadnych wersji 1804, poprzednie dwa pakiety aktualizacji 1803 i 1802 pozostają w pomocy technicznej.
 
 Pakiety aktualizacji oprogramowania firmy Microsoft są skumulowanych i wymagają poprzedniego pakietu aktualizacji jako warunek wstępny. Jeśli zdecydujesz się odroczenie co najmniej jednej aktualizacji, należy wziąć pod uwagę ogólną środowiska uruchomieniowego Jeśli chcesz uzyskać dostęp do najnowszej wersji. 
+
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+Stos Azure rozpoczyna ten sam proces obsługi jako platformy Azure. Klienci korporacyjni mogą postępować zgodnie z instrukcjami w [jak utworzyć żądanie pomocy technicznej platformy Azure](/azure/azure-supportability/how-to-create-azure-support-request). Jeśli jesteś klientem z dostawcy usług chmury (CSP), skontaktuj się z dostawca usług Kryptograficznych pomocy technicznej.  Aby uzyskać więcej informacji, zobacz [pomocy technicznej platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/). 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

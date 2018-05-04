@@ -1,14 +1,14 @@
 ---
-title: "Konfigurowanie monitorowania zdarzeń z usługi Azure Event Hubs Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Monitorowanie strumieni danych w celu odbierania zdarzeń i wysyłania zdarzeń z aplikacji logiki przy użyciu usługi Azure Event Hubs"
+title: Konfigurowanie monitorowania zdarzeń z usługi Azure Event Hubs Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Monitorowanie strumieni danych w celu odbierania zdarzeń i wysyłania zdarzeń z aplikacji logiki przy użyciu usługi Azure Event Hubs
 services: logic-apps
-keywords: "strumień danych, monitor zdarzeń, usługa event hubs"
+keywords: strumień danych, monitor zdarzeń, usługa event hubs
 author: ecfan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 076f7dd11ca8c153046727861ecb755e88f32b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8de56cd64f38791fb27d9bcce1e16641fb162c2f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Monitorowanie, odbierania i wysyłania zdarzeń z łącznikiem usługi Event Hubs
 
@@ -30,7 +30,7 @@ Aby skonfigurować monitor zdarzeń, aby aplikację logiki można wykrywać zdar
 
 Zanim będzie możliwe użycie łącznika usługi Event Hubs, musi mieć następujące elementy:
 
-* [Przestrzeni nazw usługi Azure Event Hubs i Centrum zdarzeń](../event-hubs/event-hubs-create.md)
+* [Nazw centra zdarzeń Azure i Centrum zdarzeń](../event-hubs/event-hubs-create.md)
 * A [aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="permissions-connection-string"></a>
@@ -76,11 +76,28 @@ A [ *wyzwalacza* ](../logic-apps/logic-apps-overview.md#logic-app-concepts) jest
 3. Wybierz Centrum zdarzeń, aby monitorować i skonfigurować interwał i częstotliwość czas wyszukiwania Centrum zdarzeń.
 
     ![Określ Centrum zdarzeń lub grupy odbiorców](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
+    
+    > [!NOTE]
+    > Wszystkie wyzwalacze Centrum zdarzeń są *predykcyjnej* wyzwalaczy, co oznacza, że kiedy wyzwalacz zostaje uruchomiony, wyzwalacz przetwarza wszystkie zdarzenia i czeka na 30 sekund dla zdarzeń pojawiają się w przypadku koncentratora.
+    > Jeśli żadne zdarzenia nie są odbierane w ciągu 30 sekund, uruchom wyzwalacz jest pomijany. W przeciwnym razie wyzwalacz kontynuuje czytanie zdarzeń do momentu Centrum zdarzeń jest pusty.
+    > Następny sondowania wyzwalacza jest oparta na interwał cyklu określony we właściwości wyzwalacza.
 
-    > [!TIP]
-    > Opcjonalnie można wybrać grupy odbiorców do odczytywania zdarzeń, wybierz **Pokaż zaawansowane opcje**.
 
-4. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+4. Opcjonalnie wybierz opcje zaawansowane wyzwalacza, wybierz **Pokaż opcje zaawansowane**.
+
+    ![Wyzwalacz, opcje zaawansowane](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
+
+    | Właściwość | Szczegóły |
+    | --- | --- |
+    | Typ zawartości  |Wybierz typ zawartości zdarzenia z listy rozwijanej. Domyślnie jest zaznaczona aplikacja/octet-stream. |
+    | Zawartość schematu |Wprowadź schematu zawartości w formacie JSON, dla zdarzeń, które są odczytywane z Centrum zdarzeń. |
+    | Nazwa grupy konsumentów |Wprowadź Centrum zdarzeń [Nazwa grupy konsumentów](../event-hubs/event-hubs-features.md#consumer-groups) do odczytu zdarzenia. Gdy nie określono nazwy grupy konsumentów, jest używana domyślna grupa konsumentów. |
+    | Klucz partycji minimalne |Wprowadź minimalny [partycji](../event-hubs/event-hubs-features.md#partitions) ID do odczytu. Domyślnie wszystkie partycje są odczytywane. |
+    | Klucz partycji maksymalna |Wprowadź maksymalną [partycji](../event-hubs/event-hubs-features.md#partitions) ID do odczytu. Domyślnie wszystkie partycje są odczytywane. |
+    | Liczba zdarzeń maksymalne |Wprowadź wartość dla maksymalna liczba zdarzeń. Wyzwalacz zwraca się między jednym a liczbą zdarzeń określona przez tę właściwość. |
+    |||
+
+5. Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 Teraz po aplikację logiki sprawdza wybranego Centrum zdarzeń i wyszukuje nowe zdarzenie, wyzwalacz działa akcje w aplikacji logiki znaleziono zdarzenia.
 
@@ -91,7 +108,7 @@ Teraz po aplikację logiki sprawdza wybranego Centrum zdarzeń i wyszukuje nowe 
 1. W Projektancie aplikacji logiki, w obszarze wyzwalacz, wybierz **nowy krok** > **Dodaj akcję**.
 
 2. W polu wyszukiwania wprowadź "event hubs" jako filtr.
-Wybierz tę akcję: **usługi Event Hubs — wysyłanie zdarzeń**
+Wybierz tę akcję: **centra zdarzeń — Zdarzenie wysyłania**
 
    ![Wybierz opcję "Event Hubs — wysyłanie zdarzeń"](./media/connectors-create-api-azure-event-hubs/select-event-hubs-send-event-action.png)
 

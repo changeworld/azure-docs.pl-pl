@@ -1,6 +1,6 @@
 ---
-title: "Przegląd architektury zabezpieczeń | Dokumentacja firmy Microsoft"
-description: "Artykuł zawiera omówienie architektury zabezpieczeń platformy Azure oraz listę wyselekcjonowanych pokrewne artykuły."
+title: Przegląd architektury zabezpieczeń | Dokumentacja firmy Microsoft
+description: Artykuł zawiera omówienie architektury zabezpieczeń platformy Azure oraz listę wyselekcjonowanych pokrewne artykuły.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: e7a46f73cc076ff9efb91da8041c4a785b1d1975
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: a884ec7e1d1366528e1d7d73db997f1bc85cb9a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="security-architecture-overview"></a>Przegląd architektury zabezpieczeń
+
 Silna platforma architektury jest jeden z kluczy, aby wskazywał Powodzenie, po przejściu do zabezpieczania wdrożenia rozwiązania na platformie Azure. Z tej wiedzy możesz lepiej zrozumieć wymagania wiadomo, aby zadać odpowiednie pytania i inne przystosowany do znalezienia prawo odpowiedzi na pytania. Pobieranie prawo odpowiedzi na pytania prawo przechodzi długi sposób kierunku optymalizacji zabezpieczeń wdrożeń.
 
 W tej sekcji zobaczysz artykułów na architekturę zabezpieczeń Azure, która pomoże Ci tworzenie bezpiecznych rozwiązań. Popularne kolekcja najlepszych rozwiązań zabezpieczeń platformy Azure i wzorce jest również uwzględniony. W tym momencie mamy następujące artykuły — upewnij się, że odwiedź naszą witrynę i blog Azure Security Team aktualizacji regularnie:

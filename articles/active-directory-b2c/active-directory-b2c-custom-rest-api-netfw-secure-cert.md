@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fb5c8a48a676a2909cce3c4d126218e48a4c8ce2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpieczanie usługi RESTful przy użyciu certyfikatów klientów
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 W artykule powiązane należy [tworzenia usługi RESTful](active-directory-b2c-custom-rest-api-netfw.md) który współdziała z usługi Azure Active Directory B2C (Azure AD B2C).
 
 W tym artykule możesz dowiedzieć się, jak ograniczyć dostęp do aplikacji sieci web platformy Azure (interfejs API RESTful) przy użyciu certyfikatu klienta. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania TLS, lub *uwierzytelnianie certyfikatu klienta*. Tylko usługi, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C można uzyskać dostęp do usługi.

@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z QPrism | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i QPrism."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i QPrism.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b924ea1df926518ba1d86909f8e6a78deabd5468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Samouczek: Integracji Azure Active Directory z QPrism
 
@@ -37,7 +37,7 @@ Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD,
 Aby skonfigurować integrację usługi Azure AD z QPrism, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- QPrism jednokrotnego włączone subskrypcji
+- QPrism logowanie jednokrotne włączone subskrypcji
 
 Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
 
@@ -103,41 +103,22 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny QPrism pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_url.png)
 
-    a. W **adres URL logowania** wpisz adres URL, który korzysta z następującego wzorca:`https://<customer domain>.qmyzone.com/login`
+    a. W **adres URL logowania** wpisz adres URL, który korzysta z następującego wzorca: `https://<customer domain>.qmyzone.com/login`
 
-    b. W **identyfikator** wpisz adres URL, który korzysta z następującego wzorca:`https://<customer domain>.qmyzone.com/metadata.php`
+    b. W **identyfikator** wpisz adres URL, który korzysta z następującego wzorca: `https://<customer domain>.qmyzone.com/metadata.php`
          
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Zaktualizować te wartości z rzeczywistego identyfikatora i logowania jednokrotnego adresu URL. Skontaktuj się z [zespołem pomocy technicznej klienta QPrism](mailto:qsupport-ce@quatrro.com) uzyskać te wartości. 
 
-4. Aby wygenerować **metadanych** adres URL, wykonaj następujące czynności:
+4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
 
-    a. Wybierz **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji aplikacji rejestracji jednokrotnej](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appregistrations.png)
-   
-    b. Wybierz **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Skonfiguruj końcowy rejestracji jednokrotnej](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpointicon.png)
-
-    c. Wybierz przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adres URL i wklej go do Notatnika.
-    
-    ![Skonfiguruj końcowy rejestracji jednokrotnej](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **QPrism**i skopiuj **identyfikator aplikacji** za pomocą **kopiowania**. Następnie wklej go do Notatnika.
- 
-    ![Konfigurowanie Identyfikatora aplikacji rejestracji jednokrotnej](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 
+     ![Łącze pobierania certyfikatu](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
 5. Wybierz pozycję **Zapisz**.
 
     ![Konfigurowanie rejestracji jednokrotnej przycisk zapisywania](./media/active-directory-saas-qprism-tutorial/tutorial_general_400.png)
     
-6. Aby skonfigurować logowanie jednokrotne w **QPrism** po stronie, Wyślij **adres URL metadanych** do [QPrism zespołem pomocy technicznej](mailto:qsupport-ce@quatrro.com). Zapewniają, że SAML logowania jednokrotnego połączenie jest prawidłowo po obu stronach.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji. Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostępu do osadzonego Dokumentacja za pośrednictwem **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [usługi Azure AD osadzonych dokumentacji]( https://go.microsoft.com/fwlink/?linkid=845985).
+6. Aby skonfigurować logowanie jednokrotne w **QPrism** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [QPrism zespołem pomocy technicznej](mailto:qsupport-ce@quatrro.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -212,7 +193,7 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 W panelu dostępu po wybraniu kafelka QPrism użytkownik powinien pobrać automatycznie zalogować się przy QPrism aplikacji.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

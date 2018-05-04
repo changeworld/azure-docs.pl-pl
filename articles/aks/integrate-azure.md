@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: b1b51b6c36143747a81d1c1fc035ee6d54d34076
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a29a3f27f7c9ab41724d400c9eb787e6888bedc4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 
@@ -21,9 +21,9 @@ Razem z [wykazem usług Kubernetes][kubernetes-service-catalog] usługa Open Ser
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure
 
-* Interfejs wiersza polecenia platformy Azure 2.0: można [lokalnie zainstalować tę funkcję][azure-cli-install] lub korzystać z niej w usłudze [Azure Cloud Shell][azure-cloud-shell].
+* Interfejs wiersza polecenia platformy Azure 2.0: [zainstaluj tę funkcję lokalnie][azure-cli-install] lub użyj jej w usłudze [Azure Cloud Shell][azure-cloud-shell].
 
-* Interfejs wiersza polecenia narzędzia Helm 2.7+: można [lokalnie zainstalować tę usługę][helm-cli-install] lub korzystać z niej w usłudze [Azure Cloud Shell][azure-cloud-shell].
+* Interfejs wiersza polecenia narzędzia Helm 2.7+: [zainstaluj tę funkcję lokalnie][helm-cli-install] lub użyj jej w usłudze [Azure Cloud Shell][azure-cloud-shell].
 
 * Uprawnienia do tworzenia jednostki usługi z rolą współautora w subskrypcji platformy Azure
 

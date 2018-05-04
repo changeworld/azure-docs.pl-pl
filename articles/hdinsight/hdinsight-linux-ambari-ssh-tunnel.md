@@ -11,21 +11,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 05e06d6ed8c2a3bec0d12f81aae6f7022a56b942
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 797538a6d023e1a4b95680057eb0f72489290f40
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Użyj tunelowania SSH, aby uzyskać dostęp do interfejsu użytkownika sieci web Ambari, JobHistory, NameNode, Oozie i innych sieci web UI
 
-Klastry usługi HDInsight opartej na systemie Linux zapewniają dostęp do interfejsu użytkownika sieci web Ambari w Internecie, ale nie są niektóre funkcje interfejsu użytkownika. Na przykład interfejsu użytkownika sieci web dla innych usług, które są udostępniane za pośrednictwem narzędzia Ambari. Aby uzyskać pełną funkcjonalność interfejsu użytkownika sieci web Ambari należy użyć tunelu SSH nagłówek klastra.
+Klastry HDInsight zapewniają dostęp do interfejsu użytkownika sieci web Ambari w Internecie, ale niektóre funkcje wymagają tunelu SSH. Na przykład interfejsu użytkownika sieci web dla usługi Oozie nie są dostępne w Internecie bez tunelu SSh.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Dlaczego warto korzystać z tunelowania SSH
 
-Tylko kilka Ambari menu pracy za pośrednictwem tunelu SSH. Tych menu korzystają z witryny sieci web i usług działających na inne typy węzłów, takich jak węzłów procesu roboczego. Często tych witryn sieci web nie są zabezpieczone, więc nie można bezpiecznie udostępnić je bezpośrednio w Internecie.
+Tylko kilka Ambari menu pracy za pośrednictwem tunelu SSH. Tych menu korzystają z witryny sieci web i usług działających na inne typy węzłów, takich jak węzłów procesu roboczego.
 
 Następujące UI sieci Web wymagają tunelu SSH:
 
@@ -35,14 +35,14 @@ Następujące UI sieci Web wymagają tunelu SSH:
 * Oozie interfejsu użytkownika sieci web
 * Główna baza danych HBase i dzienniki interfejsu użytkownika
 
-Jeśli akcji skryptu można użyć do dostosowania z klastrem, usługi lub narzędzi, które można zainstalować z użyciem interfejsu użytkownika sieci web wymagają tunelu SSH. Na przykład po zainstalowaniu aplikacji Hue za pomocą akcji skryptu, można użyć tunelu SSH dostępu do sieci web aplikacji Hue interfejsu użytkownika.
+Jeśli akcji skryptu można użyć do dostosowania z klastrem, usługi lub narzędzi, które można zainstalować z użyciem usługi sieci web wymagają tunelu SSH. Na przykład po zainstalowaniu aplikacji Hue za pomocą akcji skryptu, można użyć tunelu SSH dostępu do sieci web aplikacji Hue interfejsu użytkownika.
 
 > [!IMPORTANT]
 > Jeśli masz bezpośredni dostęp do usługi HDInsight za pośrednictwem sieci wirtualnej jest konieczne używanie tunelu SSH. Przykład bezpośredni dostęp do usługi HDInsight za pośrednictwem sieci wirtualnej, zobacz [HDInsight połączyć się z siecią lokalną](connect-on-premises-network.md) dokumentu.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Co to jest tunelu SSH
 
-[Secure Shell (SSH) tunelowania](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) kieruje ruch wysyłany do znajdującego się na lokalnej stacji roboczej. Ruch jest kierowany przez połączenie SSH do węzła głównego klastra usługi HDInsight. Żądanie zostanie rozwiązany, tak jakby jego występowania w węźle głównym. Odpowiedź jest następnie kierowane wstecz przez tunel do stacji roboczej.
+[Secure Shell (SSH) tunelowania](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) łączy port na komputerze lokalnym do węzła głównego w usłudze HDInsight. Ruch wysyłany do portu lokalnego jest kierowany przez połączenie SSH do węzła głównego. Żądanie zostanie rozwiązany, tak jakby jego występowania w węźle głównym. Odpowiedź jest następnie kierowane wstecz przez tunel do stacji roboczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,7 +51,7 @@ Jeśli akcji skryptu można użyć do dostosowania z klastrem, usługi lub narz�
 * Przeglądarka sieci web, które mogą być skonfigurowane do korzystania z serwera proxy SOCKS5.
 
     > [!WARNING]
-    > Obsługa serwera proxy SOCKS wbudowanych w system Windows nie obsługuje SOCKS5 i nie działa z kroki opisane w tym dokumencie. Następujące przeglądarki zależą od ustawień serwera proxy systemu Windows i obecnie nie współpracujesz z kroki opisane w tym dokumencie:
+    > Obsługa serwera proxy SOCKS wbudowane ustawień internetowego systemu Windows nie obsługuje SOCKS5 i nie działa z kroki opisane w tym dokumencie. Następujące przeglądarki zależą od ustawień serwera proxy systemu Windows i obecnie nie współpracujesz z kroki opisane w tym dokumencie:
     >
     > * Microsoft Edge
     > * Microsoft Internet Explorer
@@ -60,10 +60,10 @@ Jeśli akcji skryptu można użyć do dostosowania z klastrem, usługi lub narz�
 
 ## <a name="usessh"></a>Tworzenie tunelu przy użyciu polecenia SSH
 
-Użyj tunelowania następujące polecenie, aby utworzyć SSH za pomocą `ssh` polecenia. Zastąp **USERNAME** użytkownika SSH dla klastra usługi HDInsight i Zastąp **CLUSTERNAME** o nazwie z klastrem usługi HDInsight:
+Użyj tunelowania następujące polecenie, aby utworzyć SSH za pomocą `ssh` polecenia. Zastąp **sshuser** użytkownika SSH dla klastra usługi HDInsight i Zastąp **clustername** o nazwie z klastrem usługi HDInsight:
 
 ```bash
-ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
 To polecenie tworzy połączenie kieruje ruchem do portu lokalnego 9876 do klastra za pomocą protokołu SSH. Dostępne opcje to:
@@ -119,10 +119,10 @@ Po zakończeniu działania polecenia ruch wysyłany do portu 9876 na komputerze 
 
 Po ustanowieniu klastra, wykonaj następujące kroki, aby sprawdzić, czy są dostępne usługi sieci web UI sieci Ambari Web:
 
-1. W przeglądarce przejdź do http://headnodehost:8080. `headnodehost` Adres są wysyłane za pośrednictwem tunelu do klastra i Rozwiąż, aby headnode, uruchomionym Ambari. Po wyświetleniu monitu wprowadź nazwę użytkownika admin (Administrator) i hasło dla klastra. Może pojawić się prośba po raz drugi przez interfejs użytkownika sieci web Ambari. Jeśli tak, należy ponownie wprowadzić informacje.
+1. W przeglądarce przejdź do http://headnodehost:8080. `headnodehost` Adres są wysyłane za pośrednictwem tunelu do klastra i rozwiąż do węzła głównego, który Ambari działa na. Po wyświetleniu monitu wprowadź nazwę użytkownika admin (Administrator) i hasło dla klastra. Może pojawić się prośba po raz drugi przez interfejs użytkownika sieci web Ambari. Jeśli tak, należy ponownie wprowadzić informacje.
 
    > [!NOTE]
-   > Korzystając z http://headnodehost:8080 adresów, aby połączyć się z klastrem, jest nawiązywane za pośrednictwem tunelu. Komunikacja jest zabezpieczone przy użyciu tunelu SSH, a nie protokołu HTTPS. Aby połączyć się przez internet przy użyciu protokołu HTTPS, należy użyć https://CLUSTERNAME.azurehdinsight.net, gdzie **CLUSTERNAME** jest nazwą klastra.
+   > Korzystając z http://headnodehost:8080 adresów, aby połączyć się z klastrem, jest nawiązywane za pośrednictwem tunelu. Komunikacja jest zabezpieczone przy użyciu tunelu SSH, a nie protokołu HTTPS. Aby połączyć się przez internet przy użyciu protokołu HTTPS, należy użyć https://clustername.azurehdinsight.net, gdzie **clustername** jest nazwą klastra.
 
 2. Z poziomu interfejsu użytkownika sieci Web Ambari wybierz system plików HDFS z listy po lewej stronie.
 

@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/10/2017
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 6a065454e274abc9c032b0ac69f42dd72f059443
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: a171bdd11cd2de030937927eef34d5ad9e0507af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Magazyn tabel Azure indeksu z usługi Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w magazynie tabel platformy Azure.
@@ -47,7 +47,7 @@ Dla tabeli indeksowania, źródło danych musi mieć następujące właściwośc
 
 Aby utworzyć źródło danych:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -79,7 +79,7 @@ Indeks określa pola w dokumencie, atrybuty i wystąpić inne konstrukcje, któr
 
 Aby utworzyć indeks:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -98,7 +98,7 @@ Indeksator łączy źródła danych z indeksem wyszukiwania docelowych i zapewni
 
 Po utworzeniu indeks i źródło danych, możesz przystąpić do tworzenia indeksatora:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -131,7 +131,7 @@ Podczas konfigurowania uruchamiane zgodnie z harmonogramem indeksatora tabeli re
 
 Aby wskazać, że niektóre dokumenty muszą zostać usunięte z indeksu, używając strategii usuwania nietrwałego. Zamiast usuwać wiersza, Dodaj właściwości, aby wskazać, że został usunięty i skonfigurować zasady usuwania nietrwałego wykrywania w elemencie datasource. Na przykład następujące zasady uzna, że wiersz został usunięty, jeśli wiersz zawiera właściwości `IsDeleted` z wartością `"true"`:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

@@ -1,12 +1,12 @@
 ---
-title: "Obsługa błędów w funkcjach trwałe - Azure"
-description: "Informacje o sposobie obsługi błędów w rozszerzeniu trwałe funkcji dla usługi Azure Functions."
+title: Obsługa błędów w funkcjach trwałe - Azure
+description: Informacje o sposobie obsługi błędów w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ee5362d33bb9dadadb4194457cfd7726f4825f56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 108c6020956b398effb8ba9dd4471190362359d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w funkcjach trwałe (usługi Azure Functions)
 
@@ -26,7 +26,7 @@ Trwałe orchestrations funkcja zaimplementowano w kodzie i skorzystać z możliw
 
 ## <a name="errors-in-activity-functions"></a>Błędy w funkcjach działania
 
-Każdy wyjątek zgłaszany w funkcji działania jest skierowany do funkcji programu orchestrator i zgłoszony jako `TaskFailedException`. Można napisać kod i obsługi kompensacji błąd, który odpowiada Twoim potrzebom w funkcji programu orchestrator.
+Każdy wyjątek zgłaszany w funkcji działania jest skierowany do funkcji programu orchestrator i zgłoszony jako `FunctionFailedException`. Można napisać kod i obsługi kompensacji błąd, który odpowiada Twoim potrzebom w funkcji programu orchestrator.
 
 Rozważmy na przykład następująca funkcja programu orchestrator, który przenosi funduszy z jednego konta:
 
@@ -80,7 +80,7 @@ public static async Task Run(DurableOrchestrationContext context)
         firstRetryInterval: TimeSpan.FromSeconds(5),
         maxNumberOfAttempts: 3);
 
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions);
+    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
     
     // ...
 }
@@ -132,7 +132,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 
 Jeśli funkcja programu orchestrator nie powiedzie się z powodu nieobsługiwanego wyjątku, szczegóły wyjątku są rejestrowane i zakończeniu wystąpienia z `Failed` stanu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak diagnozować problemy](durable-functions-diagnostics.md)

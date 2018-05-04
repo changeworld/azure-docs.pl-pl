@@ -1,12 +1,12 @@
 ---
-title: "Utrwalanie plików w programie PowerShell w powłoce chmury Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące jak powłoki chmury Azure będzie się powtarzał plików."
+title: Utrwalanie plików w programie PowerShell w powłoce chmury Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące jak powłoki chmury Azure będzie się powtarzał plików.
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 74488b85ec524e4ad4c06a639a16ddbfd54b3154
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b87c4a408393e4ae341898e8cfa23e9acbcb4fc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 [!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -26,14 +26,14 @@ ms.lasthandoff: 02/01/2018
 PowerShell w chmurze powłoki (wersja zapoznawcza) będzie się powtarzał plików za pomocą następujących metod: 
 * Instalowanie udziału plików Azure określony jako `clouddrive` w Twojej `$Home` katalogu interakcji bezpośredniego udziału plików.
 
-## <a name="list-cloud-drive-azure-file-shares"></a>Listy udziałów plików w chmurze Azure dysków
-`Get-CloudDrive` Polecenie pobiera informacje o udział plików na platformę Azure obecnie zainstalowanych w wyniku dysku w chmurze w powłoce chmury. <br>
+## <a name="list-clouddrive-azure-file-shares"></a>Lista `clouddrive` udziały plików platformy Azure
+`Get-CloudDrive` Polecenie pobiera informacje o udziałów plików na platformę Azure obecnie zainstalowanych w wyniku `clouddrive` w powłoce chmury. <br>
 ![Running Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
-## <a name="unmount-cloud-drive"></a>Odinstaluj obraz dysku w chmurze
+## <a name="unmount-clouddrive"></a>Odinstaluj `clouddrive`
 Można odinstalować na udział plików na platformę Azure, który jest zainstalowany w chmurze powłoki w dowolnym momencie. Jeśli usunięto udział plików na platformę Azure, wyświetli się monit o utworzy i zainstaluje nowy udział plików na platformę Azure w następnej sesji.
 
-`Dismount-CloudDrive` Polecenia odinstalowuje udziału plików na platformę Azure z bieżącego konta magazynu. Odinstalowywanie dysku w chmurze kończy bieżącej sesji. Użytkownik będzie monitowany o utworzy i zainstaluje nowy udział plików na platformę Azure podczas następnej sesji.
+`Dismount-CloudDrive` Polecenia odinstalowuje udziału plików na platformę Azure z bieżącego konta magazynu. Odinstalowywanie `clouddrive` kończy bieżącej sesji. Użytkownik będzie monitowany o utworzy i zainstaluje nowy udział plików na platformę Azure podczas następnej sesji.
 ![Running Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [features-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]

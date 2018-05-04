@@ -3,8 +3,8 @@ title: Wprowadzenie do zabezpieczeń Microsoft Azure | Dokumentacja firmy Micros
 description: Ten artykuł zawiera omówienie funkcji zabezpieczeń Microsoft Azure oraz Ogólne zagadnienia dotyczące organizacji, które migracji ich zasoby do dostawcy usług w chmurze.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbaldwin
 editor: TomSh
 ms.assetid: 8d8a0088-c85a-48e7-bd04-2bc7b78b0691
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Microsoft Azure
+
 Podczas tworzenia lub migracji zasobów informatycznych do dostawcy usług w chmurze są zależne możliwości Twojej organizacji do ochrony aplikacji i danych z usług i formanty zapewniają do zarządzania zabezpieczeniami elementów zawartości opartej na chmurze.
 
 Infrastruktura platformy Azure została zaprojektowana kompleksowo, począwszy od obiektu po aplikacje hostujące jednocześnie miliony klientów, i zapewnia wiarygodną podstawę zaspokajania potrzeb firm w zakresie bezpieczeństwa. Ponadto platforma Azure oferuje szeroki zakres konfigurowalnych opcji zabezpieczeń oraz możliwość sterowania nimi, co pozwala dostosować zabezpieczenia w taki sposób, aby spełniały unikatowe wymagania realizowanych wdrożeń.
@@ -31,6 +32,7 @@ Ten poglądowy artykuł dotyczący zabezpieczeń platformy Azure koncentruje si�
 * Jak Microsoft zabezpiecza infrastruktury platformy Azure, aby lepiej chronić Twoje dane i aplikacje.
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
+
 Kontrolowanie dostępu do infrastruktury IT, danych i aplikacji ma ogromne znaczenie. Microsoft Azure zapewnia te możliwości przez usługi Azure Active Directory (Azure AD), usługi Azure Storage i pomocy technicznej dla wielu standardów i interfejsów API.
 
 [Usługi Azure AD](../active-directory/active-directory-whatis.md) jest aparatem, który udostępnia uwierzytelniania, autoryzacji i kontroli dostępu dla użytkowników w organizacji, grup i obiekty i repozytorium tożsamości. Ponadto usługa Azure AD oferuje deweloperom efektywną metodę integracji funkcji zarządzania tożsamościami z tworzonymi przez nich aplikacjami. Standardowych protokołów, takich jak [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0), [WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx), i [OpenID Connect](http://openid.net/connect/) odpowiednie możliwości logowania na platformach, takich jak .NET, Java, Node.js i PHP.
@@ -38,6 +40,7 @@ Kontrolowanie dostępu do infrastruktury IT, danych i aplikacji ma ogromne znacz
 Interfejs API Graph oparty na protokole REST pozwala deweloperom na odczyt i zapis w katalogu z dowolnej platformy. Dzięki obsłudze [OAuth 2.0](http://oauth.net/2/), deweloperzy mogą tworzyć przenośnych i aplikacji sieci web, które integrują się z firmy Microsoft i innych firm interfejsów API sieci web oraz tworzenie własnych bezpiecznego interfejsów API w sieci web. Biblioteki klienckie typu „open source” są dostępne dla platformy .Net, Sklepu Windows oraz systemów iOS i Android. Ponadto trwają prace nad dodatkowymi bibliotekami.
 
 ### <a name="how-azure-enables-identity-and-access-management"></a>W jaki sposób platforma Azure umożliwia zarządzanie tożsamościami i dostępem
+
 Usługa Azure AD może służyć jako autonomiczny katalog chmury dla organizacji lub jako rozwiązanie zintegrowane z istniejącą lokalną usługą Active Directory. Funkcje integracji obejmują synchronizację katalogów i logowanie jednokrotne (SSO). Te rozszerzenia zasięgu istniejącej tożsamości lokalnych do chmury i udoskonalanie administratora i użytkownika.
 
 Dostępne są również następujące funkcje zarządzania tożsamościami i dostępem:
@@ -50,6 +53,7 @@ Dostępne są również następujące funkcje zarządzania tożsamościami i dos
 * [Usługa Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) udostępnia usługę zarządzania tożsamości globalnego wysokiej dostępności dla aplikacji dla użytkowników, która może obsłużyć setki milionów tożsamości. Można ją łatwo integrować z platformami mobilnymi i platformami sieci Web. Użytkownicy mogą rejestrować do wszystkich aplikacji za pomocą środowiska można dostosować przy użyciu istniejących kont społecznościowych lub tworząc nowe poświadczenia.
 
 ## <a name="data-access-control-and-encryption"></a>Kontrola dostępu do danych i szyfrowanie
+
 Microsoft stosuje zasady rozdzielania obowiązków i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) we wszystkich operacjach platformy Azure. Dostęp do danych przez personel pomocy technicznej platformy Azure wymaga wyraźnej zgody użytkownika i jest przyznawany na zasadzie „dokładnie na czas”. Oznacza to, że uzyskiwany dostęp jest rejestrowany i podlega inspekcji, a po zakończeniu działań uprawnienie zostaje cofnięte.
 
 Platforma Azure udostępnia również wiele możliwości ochrony przesyłanych i przechowywanych danych. Dotyczy to również szyfrowania danych, plików, aplikacji, usług, komunikację i dysków. Szyfrowanie informacji przed wprowadzeniem go na platformie Azure i przechowywać kluczy w centrach danych z lokalnego.
@@ -57,6 +61,7 @@ Platforma Azure udostępnia również wiele możliwości ochrony przesyłanych i
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-getting-started/sec-azgsfig1.PNG)
 
 ### <a name="azure-encryption-technologies"></a>Technologie szyfrowania na platformie Azure
+
 Szczegółowe informacje dotyczące dostępu administracyjnego do środowiska subskrypcji można gromadzić przy użyciu usługi [Azure AD Reporting](../active-directory/active-directory-reporting-audit-events.md). Można skonfigurować [szyfrowania dysków funkcją BitLocker](https://technet.microsoft.com/library/cc732774.aspx) na wirtualne dyski twarde zawierające informacje poufne na platformie Azure.
 
 Inne możliwości platformy Azure, które pomagają zapewnić bezpieczeństwo danych, obejmują:
@@ -70,6 +75,7 @@ Inne możliwości platformy Azure, które pomagają zapewnić bezpieczeństwo da
 * Azure obsługuje i używa wielu mechanizmów szyfrowania, w tym SSL/TLS, IPsec i AES, w zależności od typów danych, kontenery i transportów.
 
 ## <a name="virtualization"></a>Wirtualizacja
+
 Platforma Azure korzysta ze środowiska zwirtualizowanego. Wystąpienia użytkownika działać jako autonomiczne maszyny wirtualne, które nie mają dostępu do serwera fizycznego hosta i Izolacja jest wymuszana za pomocą fizycznych [poziomy uprawnień procesora (pierścień-0/pierścień-3)](https://en.wikipedia.org/wiki/Protection_ring).
 
 Pierścień 0 to najwyższy poziom uprawnień, a pierścień 3 — najniższy. System operacyjny gościa jest uruchamiany w 1 pierścień mniejszym uprzywilejowanych i aplikacje są uruchamiane w najniższych uprawnieniach 3 pierścień. Ta wirtualizacja zasobów fizycznych prowadzi do wyraźnego rozdzielenia systemu operacyjnego gościa i funkcji hypervisor, co zapewnia dodatkową separację zabezpieczeń.
@@ -79,6 +85,7 @@ Azure funkcji hypervisor działa jak jądra i przekazuje wszystkie żądania dos
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-getting-started/sec-azgsfig2.PNG)
 
 ### <a name="how-azure-implements-virtualization"></a>Implementowanie wirtualizacji na platformie Azure
+
 Platforma Azure korzysta zaporą funkcji hypervisor (filtr pakietów), która jest zaimplementowana w funkcji hypervisor i skonfigurowany przez agenta kontrolera sieci szkieletowej. Pozwala to chronić dzierżawców przed nieautoryzowanym dostępem. Domyślnie cały ruch jest zablokowany, po utworzeniu maszyny wirtualnej, a następnie agent kontrolera sieci szkieletowej konfiguruje filtr pakietów, aby dodać *regułami i wyjątkami* zezwalająca na ruch autoryzowanych.
 
 Istnieją dwie kategorie reguł, które są w tym miejscu programowane:
@@ -87,6 +94,7 @@ Istnieją dwie kategorie reguł, które są w tym miejscu programowane:
 * **Plik konfiguracji roli**: definiuje przychodzących list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy. Na przykład jeśli w przypadku konfigurowania punktu końcowego w modelu [zarządzania usługą systemu Azure](../azure-resource-manager/resource-manager-deployment-model.md) dzierżawca ma fronton sieci Web w porcie 80 określonej maszyny wirtualnej, system Azure otwiera port 80 protokołu TCP dla wszystkich adresów IP. Platforma Azure ma kontroli bezpieczeństwa w miejscu, aby zaimplementować ograniczenia zagrożeń, a także aby pomóc zminimalizować potencjalne zagrożenia w swoich środowiskach klientów.
 
 ## <a name="isolation"></a>Izolacja
+
 Poniższa lista zawiera podsumowanie możliwości ograniczenie zagrożeń oferowanych na platformie Azure:
 
 Azure ochrony przed złośliwym oprogramowaniem](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) jest włączona domyślnie na wszystkich serwerach infrastruktury. Możesz opcjonalnie można udostępnić go w maszynach wirtualnych. W ramach subskrypcji, takie jak zapory aplikacji sieci web z wdrożeniem rozwiązania innych firm zabezpieczeń Barracuda. Zasady przepływu ruchu są implementowane na urządzeniach ochrony brzegowej, które domyślnie nie zezwalają na ruch.
@@ -98,6 +106,7 @@ Do oddzielania ruchu w sieci wewnętrznej od ruchu zewnętrznego służy Transla
 Podejście firmy Microsoft do testowania penetracji obejmuje "zespołu kart interfejsu sieciowego czerwony," który obejmuje specjalistom ds. zabezpieczeń firmy Microsoft do zaatakowania systemów produkcyjnych na żywo (z systemem innym niż klienta) na platformie Azure, aby przetestować ochronę przed rzeczywistych, zaawansowane, zagrożenia. Dozwolone są tylko określone znane protokoły. Listy ACL są spełnione, aby ograniczyć ruch pochodzący z maszyn wirtualnych gościa do innych sieci VLAN, używany do zarządzania. Ponadto ruch filtrowane za pomocą filtrów IP na hoście, który dalsze systemu operacyjnego ogranicza ruch w obu warstwach łącza i sieci danych.
 
 ### <a name="how-azure-implements-isolation"></a>Implementowanie izolacji na platformie Azure
+
 Kontroler sieci szkieletowej Azure jest odpowiedzialny za przydzielanie zasobów infrastruktury do dzierżawy obciążeń i zarządza jednokierunkowe komunikacji między hostem maszyny wirtualnej. Azure funkcji hypervisor wymusza pamięci i procesu separacji między maszynami wirtualnymi i bezpiecznie kieruje ruchem sieciowym dzierżawcom systemu operacyjnego gościa. Azure implementuje również izolacji dzierżawców, magazynu i sieci wirtualnych.
 
 * Każda dzierżawa usługi Azure AD jest logicznie samodzielnie przy użyciu granic zabezpieczeń.
@@ -105,6 +114,7 @@ Kontroler sieci szkieletowej Azure jest odpowiedzialny za przydzielanie zasobów
 * Sieci wirtualne są logicznie odizolowane przy użyciu kombinacji unikatowy prywatnych adresów IP, zapory i listy ACL adresu IP. Moduły równoważenia obciążenia kierują ruch do odpowiednich dzierżawców na podstawie definicji punktów końcowych.
 
 ## <a name="virtual-networks-and-firewalls"></a>Sieci wirtualne i zapór
+
 [Rozproszone i wirtualnych sieciach](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx) w Pomocy usługi Azure upewnij się, że ruchu sieci prywatnej jest logicznie odizolowane od ruchu na innych sieci wirtualnych platformy Azure.
 
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-getting-started/sec-azgsfig4.PNG)
@@ -134,6 +144,7 @@ Następujące technologie sieci wirtualnej platformy Azure umożliwia ułatwić 
 * [**Rozwiązania zabezpieczeń sieciowych oferowane przez partnerów**](https://azure.microsoft.com/marketplace/). Istnieje szereg partnerskich rozwiązań zabezpieczeń sieci, które są dostępne w witrynie Azure Marketplace.
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Jak Azure implementuje sieci wirtualnych i zapór
+
 Azure implementuje filtrowanie pakietów zapór na wszystkich maszynach wirtualnych hosta i gościa domyślnie. Obrazy systemu operacyjnego Windows z portalu Azure Marketplace ma także włączona domyślnie Zapora systemu Windows. Moduły równoważenia obciążenia w obwodzie Azure sieci publicznych kontroli komunikacji na podstawie list ACL adresu IP, zarządzane przez administratorów klienta.
 
 Jeśli dane klienta na platformie Azure są przenoszone w ramach zwykłych operacji lub podczas awarii, odbywa się to za pośrednictwem prywatnych, szyfrowanych kanałów komunikacyjnych. Innych funkcji zastosowane przez platformę Azure do użycia w sieciach wirtualnych i zapory są:
@@ -145,6 +156,7 @@ Jeśli dane klienta na platformie Azure są przenoszone w ramach zwykłych opera
 * **Brama sieci wirtualnej**: [Brama sieci wirtualnej Azure](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) służy jako brama między lokalizacjami obciążeń w sieci wirtualnej Azure nawiązywania połączenia z lokacji lokalnej. Jest wymagany do łączenia się z lokacjami lokalnymi za pośrednictwem [tuneli VPN lokacja lokacja IPsec](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), lub za pomocą [ExpressRoute](../expressroute/expressroute-introduction.md) obwodów. Dla tuneli IPsec i IKE VPN bramy przeprowadzić Uzgodnienia IKE i ustanowienia tuneli IPsec sieci VPN S2S między sieciami wirtualnymi i lokacjami lokalnymi. Bramy sieci wirtualnej również przerwanie [sieci VPN typu punkt lokacja](../vpn-gateway/vpn-gateway-point-to-site-create.md).
 
 ## <a name="secure-remote-access"></a>Bezpieczny dostęp zdalny
+
 Dane przechowywane w chmurze muszą być chronione przy użyciu zabezpieczeń wystarczających do zapobiegania wykorzystywaniu luk oraz zachowania poufności i integralności przesyłanych danych. Obejmują one kontrolki sieci powiązane z mechanizmami zarządzania dostępem i tożsamościami podlegającymi inspekcji w oparciu o zasady.
 
 Wbudowane technologie kryptograficzne umożliwiają szyfrowanie komunikacji w obrębie wdrożeń i między nimi, między regionami świadczenia usługi Azure oraz komunikacji z platformy Azure do lokalnych centrów danych. Dostęp administratora do maszyn wirtualnych za pośrednictwem [sesji pulpitu zdalnego](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json), [zdalnej programu Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx), i portalu Azure są zawsze szyfrowane.
@@ -152,11 +164,13 @@ Wbudowane technologie kryptograficzne umożliwiają szyfrowanie komunikacji w ob
 Bezpieczne rozszerzenie lokalnego centrum danych do chmury, platforma Azure udostępnia zarówno [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) i [sieci VPN typu punkt lokacja](../vpn-gateway/vpn-gateway-point-to-site-create.md), oraz dedykowane łącza o [ExpressRoute](../expressroute/expressroute-introduction.md) (połączenia z siecią wirtualną Azure za pośrednictwem połączenia VPN są szyfrowane).
 
 ### <a name="how-azure-implements-secure-remote-access"></a>Implementowanie bezpiecznego dostępu zdalnego na platformie Azure
+
 Połączeń z portalem Azure zawsze należy uwierzytelnieni, a potrzebują SSL/TLS. Można skonfigurować certyfikaty zarządzania, aby włączyć bezpieczne zarządzanie. Standardowe protokoły, takie jak [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) i [IPsec](https://en.wikipedia.org/wiki/IPsec) są w pełni obsługiwane.
 
 Usługa [Azure ExpressRoute](../expressroute/expressroute-introduction.md) umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure oraz infrastrukturą znajdującą się w lokalizacji lokalnej lub wspólnej. Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Oferują więcej niezawodności, szybkości szybsze niższe opóźnienia i lepsze zabezpieczenia niż typowe łącza internetowego. W niektórych przypadkach transferu danych między lokalnymi lokalizacji i Azure przy użyciu połączeń ExpressRoute również może spowodować znaczne oszczędności.
 
 ## <a name="logging-and-monitoring"></a>Rejestrowanie i monitorowanie
+
 Platforma Azure udostępnia uwierzytelnionego rejestrowania zdarzeń związanych z zabezpieczeniami, które generują dziennik inspekcji i została zaprojektowana jako odporne na próby naruszenia. W tym informacje o systemie, takie jak dzienniki zdarzeń zabezpieczeń infrastruktury platformy Azure, maszyny wirtualne i usługi Azure AD. Monitorowanie zdarzeń zabezpieczeń obejmuje zbierania zdarzeń, takie jak zmiany adresów IP serwera DHCP lub DNS; Próba dostępu do portów, protokoły lub adresy IP, które są blokowane przez projekt; zmiany w ustawieniach zasad lub zapora zabezpieczeń; Tworzenie konta lub grupy; i nieoczekiwane procesy lub instalacja sterownika.
 
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-getting-started/sec-azgsfig5.PNG)
@@ -164,6 +178,7 @@ Platforma Azure udostępnia uwierzytelnionego rejestrowania zdarzeń związanych
 Dzienniki inspekcji rejestrujące dostęp i działania uprawnionych użytkowników, próby uzyskania autoryzowanego i nieautoryzowanego dostępu, wyjątki systemowe i zdarzenia zabezpieczeń danych są przechowywane przez określony okres. Okres przechowywania dzienników jest ustalany przez użytkownika, ponieważ do niego należy konfigurowanie gromadzenia danych w dziennikach i ich przechowywania.
 
 ### <a name="how-azure-implements-logging-and-monitoring"></a>Implementowanie rejestrowania i monitorowania na platformie Azure
+
 Platforma Azure wdraża agentów zarządzania i agentów usługi Azure Security Monitor w każdym zarządzanym węźle obliczeniowym, węźle magazynu lub węźle sieci szkieletowej, tak natywnym, jak i wirtualnym. Każdy agent zarządzania jest skonfigurowany w taki sposób, aby wykonywać uwierzytelnianie na koncie magazynu zespołu usługi przy użyciu certyfikatu uzyskanego z magazynu certyfikatów platformy Azure oraz przekazywać wstępnie skonfigurowane dane diagnostyczne i dane zdarzeń do konta magazynu. Agenci nie są wdrażani na maszynach wirtualnych klientów.
 
 Administratorzy platformy Azure uzyskują dostęp do dzienników za pośrednictwem portalu sieci Web zapewniającego uwierzytelniony i kontrolowany dostęp do dzienników. Administrator może filtrować, korelować i analizować dzienniki. Konta magazynu zespołu usługi Azure przeznaczone dla dzienników są chronione przed bezpośrednim dostępem administratora, aby zapobiegać naruszeniom bezpieczeństwa dziennika.
@@ -173,11 +188,13 @@ Firma Microsoft zbiera dzienniki urządzeń sieciowych przy użyciu protokołu S
 [Diagnostyka Azure](https://msdn.microsoft.com/library/azure/gg433048.aspx) to funkcja platformy Azure, która umożliwia zbieranie danych diagnostycznych z aplikacji uruchomionych w systemie Azure. To są dane diagnostyczne dla debugowania i rozwiązywania problemów, pomiaru wydajności monitorowania użycia zasobów, analizy ruchu, planowanie pojemności i inspekcji. Po zebraniu danych diagnostycznych mogą one zostać przesłane na konto magazynu platformy Azure w celu ich utrwalenia. Transfery albo mogą być planowane lub na żądanie.
 
 ## <a name="threat-mitigation"></a>Ograniczenie zagrożeń
+
 Oprócz izolacji, szyfrowania i filtrowania platforma Azure wykorzystuje szereg mechanizmów i procesów ograniczania zagrożeń mających na celu ochronę infrastruktury i usług. Należą do nich wewnętrzne środki kontroli i technologie używane do wykrywania i korygowania zaawansowanych zagrożeń, takich jak ataki DDoS, eskalacja uprawnień i zagrożenia z listy [OWASP Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
 
 Środki kontroli zabezpieczeń i procesy zarządzania ryzykiem wdrożone przez firmę Microsoft w celu ochrony infrastruktury chmury pozwalają ograniczyć ryzyko wystąpienia zdarzeń naruszenia bezpieczeństwa. W przypadku, gdy wystąpi zdarzenie, zespół zarządzania zdarzeniami zabezpieczeń (SIM) w obrębie zespołu Microsoft Online Services zabezpieczeń i zgodności (OSSC) jest gotowy do odpowiedzi w dowolnym momencie.
 
 ### <a name="how-azure-implements-threat-mitigation"></a>Implementowanie ograniczania zagrożeń na platformie Azure
+
 Platforma Azure ma kontroli bezpieczeństwa w miejscu, aby zaimplementować ograniczenia zagrożeń, a także aby pomóc zminimalizować potencjalne zagrożenia w swoich środowiskach klientów. Poniższa lista zawiera podsumowanie możliwości ograniczenie zagrożeń oferowanych na platformie Azure:
 
 * [Azure ochrony przed złośliwym oprogramowaniem](azure-security-antimalware.md) jest włączona domyślnie na wszystkich serwerach infrastruktury. Możesz opcjonalnie można udostępnić go w maszynach wirtualnych.
@@ -187,6 +204,7 @@ Platforma Azure ma kontroli bezpieczeństwa w miejscu, aby zaimplementować ogra
 * Zintegrowane systemy wdrażania umożliwiają zarządzanie dystrybucją i instalacją poprawek zabezpieczeń na platformie Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Centrum zaufania Azure](https://azure.microsoft.com/support/trust-center/)
 
 [Blog zespołu ds. zabezpieczeń platformy Azure](http://blogs.msdn.com/b/azuresecurity/)

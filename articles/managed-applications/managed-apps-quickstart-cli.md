@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie aplikacji zarządzanej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs"
-description: "Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji."
+title: Tworzenie aplikacji zarządzanej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Tworzenie i wdrażanie aplikacji zarządzanej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -75,7 +75,7 @@ Gdy wykonywanie polecenia zakończy się, będziesz mieć w swojej grupie zasob�
 Niektóre z parametrów użytych w powyższym przykładzie to:
 
 * **resource-group**: nazwa grupy zasobów, w której tworzona jest definicja aplikacji zarządzanej.
-* **lock-level**: typ blokady nałożonej na zarządzaną grupę zasobów. Uniemożliwia klientowi wykonywanie niepożądanych operacji na tej grupie zasobów. Obecnie jedynym obsługiwanym poziomem blokady jest ReadOnly. Gdy zostanie określony poziom ReadOnly, klient może jedynie odczytywać zasoby obecne w zarządzanej grupie zasobów.
+* **lock-level**: typ blokady nałożonej na zarządzaną grupę zasobów. Uniemożliwia klientowi wykonywanie niepożądanych operacji na tej grupie zasobów. Obecnie jedynym obsługiwanym poziomem blokady jest ReadOnly. Gdy zostanie określony poziom ReadOnly, klient może jedynie odczytywać zasoby obecne w zarządzanej grupie zasobów. Tożsamości wydawcy, które mają dostęp do zarządzanej grupy zasobów, są wykluczone z blokady.
 * **authorizations**: opisuje identyfikator podmiotu zabezpieczeń i identyfikator definicji roli, przy użyciu których udzielany jest dostęp do zarządzanej grupy zasobów. Określa się go w formacie `<principalId>:<roleDefinitionId>`. Dla tej właściwości można także określić wiele wartości. Jeśli potrzebnych jest wiele wartości, można je określić w formacie `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Wartości rozdziela się spacją.
 * **package-file-uri**: lokalizacja pakietu zip zawierającego wymagane pliki. Pakiet zawiera co najmniej pliki **mainTemplate.json** i **createUiDefinition.json**. **mainTemplate.json**: określa zasoby platformy Azure, które są aprowizowane w ramach aplikacji zarządzanej. Szablon nie różni się niczym od zwykłego szablonu usługi Resource Manager. **createUiDefinition.json**: generuje interfejs użytkownika dla użytkowników, którzy tworzą aplikację zarządzaną za pośrednictwem portalu.
 

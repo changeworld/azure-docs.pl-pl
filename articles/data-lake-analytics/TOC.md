@@ -24,26 +24,30 @@
 ### [Adjust quota limits (Dostosowywanie limitów przydziału)](data-lake-analytics-quota-limits.md)
 
 ## Pisanie programów w języku U-SQL
-### [Podstawy języka U-SQL](data-lake-analytics-u-sql-get-started.md)
-### [Dokumentacja języka U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
-### [Wykaz języka U-SQL](data-lake-analytics-u-sql-catalog.md)
-### [Definiowane przez użytkownika operatory języka U-SQL](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-### [Rozszerzenia U-SQL dla języka Python](data-lake-analytics-u-sql-python-extensions.md)
-### [Rozszerzenia U-SQL dla języka R](data-lake-analytics-u-sql-r-extensions.md)
-### [Rozszerzenia kognitywne języka U-SQL](data-lake-analytics-u-sql-cognitive.md)
-### [Analizowanie dzienników witryn sieci Web](data-lake-analytics-analyze-weblogs.md)
-### [Niestandardowy kod w języku U-SQL dla programu Visual Studio Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-### [U-SQL for Visual Studio Code (Język U-SQL dla programu Visual Studio Code)](data-lake-analytics-data-lake-tools-for-vscode.md)
-### [Eksportowanie bazy danych U-SQL](data-lake-analytics-data-lake-tools-export-database.md)
 
-## Debugowanie programów w języku U-SQL
-### [Monitorowanie zadań i rozwiązywanie problemów](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-### [Rozwiązywanie problemów z nietypowym zadaniem cyklicznym](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
-### [Debugowanie kodu C# w języku U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
-### [Korzystanie z przeglądarki zadań i widoku zadań](data-lake-analytics-data-lake-tools-view-jobs.md)
-### [Korzystanie z widoku wykonania na poziomie wierzchołka](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
-### [Local run and local debug in VSCode (Lokalne uruchamianie i debugowanie w programie VSCode)](data-lake-tools-for-vscode-local-run-and-debug.md)
-### [U-SQL Programmability Guide (Podręcznik programowania U-SQL)](data-lake-analytics-u-sql-programmability-guide.md)
+### Język U-SQL
+#### [Podstawy języka U-SQL](data-lake-analytics-u-sql-get-started.md)
+#### [Dokumentacja języka U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
+#### [Wykaz języka U-SQL](data-lake-analytics-u-sql-catalog.md)
+#### [Definiowane przez użytkownika operatory języka U-SQL](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+#### [Rozszerzenia U-SQL dla języka Python](data-lake-analytics-u-sql-python-extensions.md)
+#### [Rozszerzenia U-SQL dla języka R](data-lake-analytics-u-sql-r-extensions.md)
+#### [Rozszerzenia kognitywne języka U-SQL](data-lake-analytics-u-sql-cognitive.md)
+#### [U-SQL Programmability Guide (Podręcznik programowania U-SQL)](data-lake-analytics-u-sql-programmability-guide.md)
+#### [Analizowanie dzienników witryn sieci Web](data-lake-analytics-analyze-weblogs.md)
+#### [Monitorowanie zadań i rozwiązywanie problemów](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+### Visual Studio
+#### [Korzystanie z przeglądarki zadań i widoku zadań](data-lake-analytics-data-lake-tools-view-jobs.md)
+#### [Debugowanie kodu C# w języku U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
+#### [Rozwiązywanie problemów z nietypowym zadaniem cyklicznym](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
+#### [Korzystanie z widoku wykonania na poziomie wierzchołka](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+#### [Eksportowanie bazy danych U-SQL](data-lake-analytics-data-lake-tools-export-database.md)
+
+### Visual Studio Code
+#### [U-SQL for Visual Studio Code (Język U-SQL dla programu Visual Studio Code)](data-lake-analytics-data-lake-tools-for-vscode.md)
+#### [Niestandardowy kod w języku U-SQL dla programu Visual Studio Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+#### [Local run and local debug in VSCode (Lokalne uruchamianie i debugowanie w programie VSCode)](data-lake-tools-for-vscode-local-run-and-debug.md)
 
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

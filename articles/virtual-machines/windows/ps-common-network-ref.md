@@ -3,7 +3,7 @@ title: Typowe polecenia programu PowerShell dla sieci wirtualnych Azure | Dokume
 description: Typowe polecenia programu PowerShell ułatwiające rozpoczęcie pracy tworzenia sieci wirtualnej i jej skojarzonych zasobów dla maszyn wirtualnych.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: davidmu
-ms.openlocfilehash: 31c0e558ca87d918d8e662d7aa4c12502961288a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: a5b3f84c27a0a5f6458808940b16a9001097b30b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Typowe polecenia programu PowerShell dla sieci wirtualnych Azure
 
@@ -60,7 +60,7 @@ Niektóre zmienne mogą być przydatne dla Ciebie, jeśli działa więcej niż j
 | Lista modułów równoważenia obciążenia |[Get-AzureRmLoadBalancer](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermloadbalancer) -ResourceGroupName $myResourceGroup<BR><BR>Wyświetla listę wszystkich usług równoważenia obciążenia w grupie zasobów. |
 | Lista interfejsów sieciowych |[Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkinterface) -ResourceGroupName $myResourceGroup<BR><BR>Wyświetla listę wszystkich interfejsów sieciowych w grupie zasobów. |
 | Uzyskiwanie informacji na temat interfejsu sieciowego |Get-AzureRmNetworkInterface -Name "myNIC" -ResourceGroupName $myResourceGroup<BR><BR>Pobiera informacje o w konkretnym interfejsie sieciowym. |
-| Pobierz konfigurację adresu IP interfejsu sieciowego |[Get-AzureRmNetworkInterfaceIPConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkinterfaceipconfig) -Name "myNICIP" -NetworkInterface $nic<BR><BR>Pobiera informacje o konfiguracji IP interfejsu sieciowego określony. Wartość $nic reprezentuje obiekcie zwracanym przez Get AzureRmNetworkInterface. |
+| Pobierz konfigurację adresu IP interfejsu sieciowego |[Get-AzureRmNetworkInterfaceIPConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkinterfaceipconfig) -Name "myNICIP" - interfejsu sieciowego $nic<BR><BR>Pobiera informacje o konfiguracji IP interfejsu sieciowego określony. Wartość $nic reprezentuje obiekcie zwracanym przez Get AzureRmNetworkInterface. |
 
 ## <a name="manage-network-resources"></a>Zarządzanie zasobami sieciowymi
 

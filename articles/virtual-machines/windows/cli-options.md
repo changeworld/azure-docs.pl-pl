@@ -3,7 +3,7 @@ title: W systemie Windows przy użyciu interfejsu wiersza polecenia platformy Az
 description: W systemie Windows przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
-ms.author: nepeters
-ms.openlocfilehash: 6eaad8bc4374cf84ee248e6f4b1be20fd4dfd955
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: e1d611617b72a1fd5134b83bd3a2de59ba668b11
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>W systemie Windows przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -35,7 +35,7 @@ Aby użyć wiersza polecenia platformy Azure w WSL, wykonaj poniższe kroki.
 
 |Zadanie | Instrukcje |
 |---|---|
-| Włącz WSL | [Zainstaluj WSL dokumentacji ](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) |
+| Włącz WSL | [Zainstaluj WSL dokumentacji ](https://msdn.microsoft.com/commandline/wsl/install_guide) |
 | Zainstaluj interfejs wiersza polecenia platformy Azure |[Instalowanie interfejsu wiersza polecenia na WSL/Ubuntu 14.04](https://docs.microsoft.com/cli/azure/install-az-cli2#ubuntu)|
 
 ## <a name="powershell"></a>PowerShell

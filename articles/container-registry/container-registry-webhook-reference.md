@@ -1,18 +1,18 @@
 ---
-title: "Odwołanie do schematu elementu webhook Azure rejestru kontenera"
-description: "Element Webhook żądania JSON ładunku odwołanie do rejestru kontenera platformy Azure."
+title: Odwołanie do schematu elementu webhook Azure rejestru kontenera
+description: Element Webhook żądania JSON ładunku odwołanie do rejestru kontenera platformy Azure.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: 84f0277a7b1a5bd7dfe2178f78f34140b1dd2642
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Informacje dotyczące elementu webhook rejestru kontenera platformy Azure
 
@@ -43,10 +43,10 @@ Element Webhook wyzwalane, gdy obraz kontener jest przypisany do repozytorium.
 |Element|Typ|Opis|
 |-------------|----------|-----------|
 |`id`|Ciąg|Identyfikator zdarzenia, elementu webhook.|
-|`timestamp`|Data/godzina|Czas, o której zostało wyzwolone zdarzeń elementu webhook.|
+|`timestamp`|DateTime|Czas, o której zostało wyzwolone zdarzeń elementu webhook.|
 |`action`|Ciąg|Akcja, który wywołał zdarzenie elementu webhook.|
 |[docelowy](#target)|Typ złożony|Obiekt docelowy zdarzeń, który wywołał zdarzenie elementu webhook.|
-|[żądanie](#request)|Typ złożony|Żądanie, który wygenerował zdarzenie elementu webhook.|
+|[Żądanie](#request)|Typ złożony|Żądanie, który wygenerował zdarzenie elementu webhook.|
 
 ### <a name="target"></a>docelowy
 
@@ -107,12 +107,12 @@ Wyzwalane po usunięciu repozytorium lub manifestu elementu Webhook. Nie są uru
 |Element|Typ|Opis|
 |-------------|----------|-----------|
 |`id`|Ciąg|Identyfikator zdarzenia, elementu webhook.|
-|`timestamp`|Data/godzina|Czas, o której zostało wyzwolone zdarzeń elementu webhook.|
+|`timestamp`|DateTime|Czas, o której zostało wyzwolone zdarzeń elementu webhook.|
 |`action`|Ciąg|Akcja, który wywołał zdarzenie elementu webhook.|
 |[docelowy](#delete_target)|Typ złożony|Obiekt docelowy zdarzeń, który wywołał zdarzenie elementu webhook.|
-|[żądanie](#delete_request)|Typ złożony|Żądanie, który wygenerował zdarzenie elementu webhook.|
+|[Żądanie](#delete_request)|Typ złożony|Żądanie, który wygenerował zdarzenie elementu webhook.|
 
-### <a name="delete_target"></a>docelowy
+### <a name="delete_target"></a> docelowy
 
 |Element|Typ|Opis|
 |------------------|----------|-----------|
@@ -120,7 +120,7 @@ Wyzwalane po usunięciu repozytorium lub manifestu elementu Webhook. Nie są uru
 |`digest`|Ciąg|Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API rejestru V2 HTTP.|
 |`repository`|Ciąg|Nazwa repozytorium.|
 
-### <a name="delete_request"></a>żądanie
+### <a name="delete_request"></a> Żądanie
 
 |Element|Typ|Opis|
 |------------------|----------|-----------|
@@ -160,6 +160,6 @@ az acr repository delete -n MyRegistry --repository MyRepository
 az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Za pomocą elementów webhook rejestru kontenera platformy Azure](container-registry-webhook.md)

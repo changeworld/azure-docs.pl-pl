@@ -9,11 +9,11 @@ ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledzenie zmian w środowisku z rozwiązaniem do śledzenia zmian
 
@@ -23,18 +23,19 @@ Zmiany zainstalowanego oprogramowania, usług systemu Windows, plików i rejestr
 
 ## <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
 
-
 Aby rozpocząć śledzenie zmian, musisz włączyć śledzenie zmian i spisu rozwiązanie dla konta automatyzacji.
 
 1. W portalu Azure przejdź do swojego konta automatyzacji
 1. Wybierz **śledzenie zmian** w obszarze **konfiguracji**.
-2. Wybierz istniejący obszar roboczy analizy dzienników lub **Utwórz nowy obszar roboczy** i kliknij przycisk **włączyć**.
+1. Wybierz istniejący obszar roboczy analizy dzienników lub **Utwórz nowy obszar roboczy** i kliknij przycisk **włączyć**.
 
 Dzięki temu rozwiązania dla Twojego konta automatyzacji. Rozwiązanie może potrwać do 15 minut, aby włączyć. Niebieski transparent powiadamia po włączeniu rozwiązania. Przejdź z powrotem do **śledzenia zmian** strony, aby zarządzać rozwiązania.
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurowanie śledzenia zmian i magazynu
 
-Aby dowiedzieć się, jak dołączyć komputerów do rozwiązania można znaleźć: [rozwiązania Automatyzacja dołączania](automation-onboard-solutions-from-automation-account.md). Po włączeniu nowy plik lub klucz rejestru w celu śledzenia jest włączone śledzenie zmian i spisu.
+Aby dowiedzieć się, jak dołączyć komputerów do rozwiązania można znaleźć: [rozwiązania Automatyzacja dołączania](automation-onboard-solutions-from-automation-account.md). Po utworzeniu dołączania maszyny, dzięki rozwiązaniu do śledzenia zmian i spisu można skonfigurować elementy do śledzenia. Po włączeniu nowy plik lub klucz rejestru w celu śledzenia jest włączone śledzenie zmian i spisu.
+
+Śledzenie zmian w plikach w systemach Windows i Linux, wartości skrótu MD5 pliki są używane. Skróty te są następnie używane do wykrywania, czy zmiany zostały wprowadzone od ostatniej inwentaryzacji.
 
 ### <a name="configure-linux-files-to-track"></a>Konfiguruj pliki Linux do śledzenia
 
@@ -109,6 +110,7 @@ Inne ograniczenia:
 ## <a name="known-issues"></a>Znane problemy
 
 Rozwiązanie śledzenia zmian jest obecnie następujące problemy:
+
 * Poprawki, aktualizacje nie są zbierane dla systemu Windows 10 twórców Update i Windows Server 2016 Core RS3 maszyn.
 
 ## <a name="change-tracking-data-collection-details"></a>Zmień szczegóły kolekcji danych śledzenia
@@ -117,13 +119,13 @@ W poniższej tabeli przedstawiono częstotliwość zbierania danych dla typów z
 
 | **Zmień typ** | **Częstotliwość** |
 | --- | --- |
-| Rejestr systemu Windows | 50 minut | 
-| Plik systemu Windows | 30 minut | 
-| Plik systemu Linux | 15 minut | 
-| Usługi systemu Windows | 30 minut | 
+| Rejestr systemu Windows | 50 minut |
+| Plik systemu Windows | 30 minut |
+| Plik systemu Linux | 15 minut |
+| Usługi systemu Windows | 30 minut |
 | Demonów systemu Linux | 5 minut |
-| Oprogramowanie Windows | 30 minut | 
-| Oprogramowania w systemie Linux | 5 minut | 
+| Oprogramowanie Windows | 30 minut |
+| Oprogramowania w systemie Linux | 5 minut |
 
 ### <a name="registry-key-change-tracking"></a>Śledzenie zmian klucza rejestru
 

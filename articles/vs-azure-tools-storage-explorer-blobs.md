@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Zarządzanie kontenerów obiektów Blob platformy Azure i obiektów blob z Eksploratora usługi Storage (wersja zapoznawcza)
+title: Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage | Dokumentacja firmy Microsoft
+description: Zarządzanie kontenerów obiektów Blob platformy Azure i obiektów blob z Eksploratora usługi Storage
 services: storage
 documentationcenter: na
 author: cawa
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2207bac1ef7cb6393d7dc173f96ddda719bcdfdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage (wersja zapoznawcza)
+# <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage
 ## <a name="overview"></a>Przegląd
 [Magazyn obiektów Blob Azure](storage/blobs/storage-dotnet-how-to-use-blobs.md) to usługa do przechowywania dużych ilości danych bez struktury, takich jak dane tekstowe lub binarne, którego mogą uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS.
-Magazyn obiektów Blob może być użyty do udostępniania danych publicznie lub do przechowywania danych aplikacji prywatnie. W tym artykule dowiesz się, jak używać Eksploratora usługi Storage (wersja zapoznawcza) do pracy z kontenerów obiektów blob i obiektów blob.
+Magazyn obiektów Blob może być użyty do udostępniania danych publicznie lub do przechowywania danych aplikacji prywatnie. W tym artykule dowiesz się, jak pracować z kontenerów obiektów blob i obiektów blob za pomocą Eksploratora usługi Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków opisanych w tym artykule konieczne jest wykonanie kroków znajdujących się w następujących artykułach:
 
-* [Pobieranie i instalowanie Eksploratora usługi Storage (wersja zapoznawcza)](http://www.storageexplorer.com)
+* [Pobieranie i instalowanie Eksploratora usługi Storage](http://www.storageexplorer.com)
 * [Łączenie się z usługą lub kontem magazynu platformy Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
 Wszystkie obiekty BLOB muszą znajdować się w kontenerze obiektów blob to po prostu logiczne grupowanie obiektów blob. Konto może zawierać nieograniczoną liczbę kontenerów, a każdy kontener może przechowywać nieograniczoną liczbę obiektów blob.
 
-Poniższe kroki przedstawiają sposób tworzenia kontenera obiektów blob w ramach Eksploratora usługi Storage (wersja zapoznawcza).
+Poniższe kroki przedstawiają sposób tworzenia kontenera obiektów blob w ramach Eksploratora usługi Storage.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu, w którym chcesz utworzyć kontener obiektów blob.
 3. Kliknij prawym przyciskiem myszy **kontenerów obiektów Blob**i z menu kontekstowego — wybierz pozycję **Tworzenie kontenera obiektów Blob**.
 
@@ -51,9 +51,9 @@ Poniższe kroki przedstawiają sposób tworzenia kontenera obiektów blob w rama
 ## <a name="view-a-blob-containers-contents"></a>Wyświetlanie zawartości kontenera obiektów blob
 Kontenerów obiektów blob zawiera obiekty BLOB i folderów (które może również zawierać obiektów blob).
 
-Następujące kroki ilustrują sposób wyświetlania zawartości kontener obiektów blob w ramach Eksploratora usługi Storage (wersja zapoznawcza):
+Następujące kroki ilustrują sposób wyświetlania zawartości kontener obiektów blob w ramach Eksploratora usługi Storage:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob czy chcesz wyświetlić.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Kliknij prawym przyciskiem myszy kontener obiektów blob chcesz wyświetlić i z menu kontekstowego — wybierz pozycję **Otwórz Edytor kontenera obiektów Blob**.
@@ -67,9 +67,9 @@ Następujące kroki ilustrują sposób wyświetlania zawartości kontener obiekt
 ## <a name="delete-a-blob-container"></a>Usunięcie kontenera obiektów blob
 Kontenerów obiektów blob można łatwo tworzyć i usunięte zgodnie z potrzebami. (Aby zobaczyć, jak usunąć poszczególne obiekty BLOB, zapoznaj się z sekcją [Zarządzanie obiekty BLOB w kontenerze obiektów blob](#managing-blobs-in-a-blob-container).)
 
-Następujące kroki ilustrują sposób usuwania kontenera obiektów blob w ramach Eksploratora usługi Storage (wersja zapoznawcza):
+Następujące kroki ilustrują sposób usuwania kontenera obiektów blob w ramach Eksploratora usługi Storage:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob czy chcesz wyświetlić.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Kliknij prawym przyciskiem myszy kontener obiektów blob chcesz usunąć i z menu kontekstowego — wybierz pozycję **usunąć**.
@@ -81,11 +81,11 @@ Następujące kroki ilustrują sposób usuwania kontenera obiektów blob w ramac
    ![Usuwanie obiektów blob kontenera potwierdzenia][5]
 
 ## <a name="copy-a-blob-container"></a>Skopiuj kontenera obiektów blob
-Eksplorator usługi Storage (wersja zapoznawcza) umożliwia kopiowanie kontenera obiektów blob do Schowka, a następnie wklej kontenera obiektów blob na innym koncie magazynu. (Aby zobaczyć, jak skopiować poszczególne obiekty BLOB, zapoznaj się z sekcją [Zarządzanie obiekty BLOB w kontenerze obiektów blob](#managing-blobs-in-a-blob-container).)
+Eksplorator usługi Storage umożliwia Kopiuj do Schowka kontenera obiektów blob, a następnie wklej kontenera obiektów blob na innym koncie magazynu. (Aby zobaczyć, jak skopiować poszczególne obiekty BLOB, zapoznaj się z sekcją [Zarządzanie obiekty BLOB w kontenerze obiektów blob](#managing-blobs-in-a-blob-container).)
 
 Następujące kroki ilustrują sposób kopiowania kontenera obiektów blob z konta magazynu jednego do drugiego.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob czy chcesz skopiować.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Kliknij prawym przyciskiem myszy kontener obiektów blob chcesz skopiować i — wybierz z menu kontekstowego - **kontenera obiektów Blob kopii**.
@@ -101,7 +101,7 @@ Oznacza to, że możliwe jest przyznanie klientowi ograniczonych uprawnień do o
 
 Następujące kroki ilustrują sposób tworzenia sygnatury dostępu Współdzielonego dla kontenera obiektów blob:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob, dla którego chcesz uzyskać sygnatury dostępu Współdzielonego.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Kliknij prawym przyciskiem myszy kontener żądanego obiektu blob i — wybierz z menu kontekstowego - **Uzyskaj sygnaturę dostępu współdzielonego**.
@@ -120,7 +120,7 @@ Następujące kroki ilustrują sposób tworzenia sygnatury dostępu Współdziel
 ## <a name="manage-access-policies-for-a-blob-container"></a>Zarządzanie zasadami dostępu do kontenera obiektów blob
 Poniższe kroki przedstawiają sposób zarządzania (Dodaj i Usuń) zasady dla kontenera obiektów blob dostępu:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob zasad dostępu, których chcesz zarządzać.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Wybierz żądaną blobcontainer i — wybierz z menu kontekstowego - **Zarządzanie zasadami dostępu**.
@@ -140,7 +140,7 @@ Domyślnie każdy kontener obiektów blob jest ustawiony na "Brak dostępu publi
 
 Poniższe kroki przedstawiają sposób określić poziom dostępu publicznego kontenera obiektów blob.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob zasad dostępu, których chcesz zarządzać.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Wybierz żądaną blobcontainer i — wybierz z menu kontekstowego - **Ustaw poziom dostępu publicznego**.
@@ -156,7 +156,7 @@ Po utworzeniu kontenera obiektów blob możesz przekazać obiekt blob do kontene
 
 Poniższe kroki przedstawiają sposób zarządzania obiektów blob (i foldery) w kontenerze obiektów blob.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające kontenera obiektów blob się, że chcesz zarządzać.
 3. Rozwiń konto magazynu **kontenerów obiektów Blob**.
 4. Kliknij dwukrotnie kontenera obiektów blob, który chcesz wyświetlić.
@@ -212,7 +212,7 @@ Poniższe kroki przedstawiają sposób zarządzania obiektów blob (i foldery) w
      3. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [najnowsze informacje o wersji i filmy wideo dotyczące programu Storage Explorer (wersja zapoznawcza)](http://www.storageexplorer.com).
+* Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](http://www.storageexplorer.com).
 * Dowiedz się, jak [tworzyć aplikacje przy użyciu obiektów Blob, tabel, kolejek i plików platformy Azure](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

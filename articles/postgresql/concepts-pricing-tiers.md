@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 9b182935ad6a328afa4ee25049b3651f62277d45
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Bazy danych platformy Azure dla PostgreSQL warstw cenowych
 
@@ -45,7 +45,7 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 
 | **Region platformy Azure** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| Środkowe stany USA |  | X |
+| Środkowe stany USA | X |  |
 | Wschodnie stany USA | X | X |
 | Wschodnie stany USA 2 | X | X |
 | Środkowo-północne stany USA | X |  |
@@ -56,7 +56,7 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Kanada Wschodnia | X | X |
 | Brazylia Południowa | X | X |
 | Europa Północna | X | X |
-| Europa Zachodnia | X | X |
+| Europa Zachodnia |  | X |
 | Zachodnie Zjednoczone Królestwo |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
 | Azja Wschodnia | X |  |

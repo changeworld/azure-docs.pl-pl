@@ -1,5 +1,5 @@
 ---
-title: Przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przechowywanych w usłudze Azure Storage przy użyciu języków JavaScript i HTML w przeglądarce
+title: Przewodnik Szybki start platformy Azure — tworzenie obiektu blob w magazynie obiektów za pomocą przeglądarki przy użyciu języków JavaScript i HTML
 description: Dowiedz się, jak za pomocą wystąpienia obiektu BlobService przekazywać i usuwać obiekty blob oraz wyświetlać ich listę, korzystając z języka JavaScript na stronie HTML.
 services: storage
 keywords: magazyn, javascript, html
@@ -10,23 +10,18 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 83db6539e6ad8ec8e18d99bf7eedbc037d95509e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-with-azure-storage-using-javascripthtml-in-the-browser"></a>Szybki start: przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przechowywanych w usłudze Azure Storage przy użyciu języków JavaScript/HTML w przeglądarce
-W tym przewodniku Szybki start pokazano, jak zarządzać obiektami blob za pomocą kodu uruchamianego wyłącznie w przeglądarce oraz jak wdrożyć wymagane mechanizmy zabezpieczeń, które zapewniają ochronę dostępu do konta magazynu obiektów blob. Do wykonania kroków tego przewodnika Szybki start jest potrzebna [subskrypcja platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Szybki start: przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przy użyciu języka JavaScript/HTML w przeglądarce
+Ten przewodnik Szybki start opisuje zarządzanie obiektami blob z poziomu kodu uruchamianego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob. Do wykonania kroków tego przewodnika Szybki start jest potrzebna [subskrypcja platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
-### <a name="copy-security-settings"></a>Kopiowanie ustawień zabezpieczeń
-Do wykonania kroków tego przewodnika Szybki start potrzebnych jest kilka wartości związanych z zabezpieczeniami, które umożliwiają utworzenie tokenu zabezpieczającego. W portalu możesz skopiować wartości do edytora tekstu do późniejszego użycia. 
-
-W portalu wybierz konto magazynu i znajdź sekcję **Ustawienia**. W obszarze Ustawienia wybierz pozycję **Klucze dostępu** i zanotuj wartości pól **Nazwa konta magazynu** i **Klucz** pod nagłówkiem **klucz1**. (Aby skopiować tę wartość do schowka, możesz użyć przycisku „Kopiuj” widocznego z prawej strony pola wejściowego).
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Konfigurowanie reguł CORS konta magazynu 
 Aby aplikacja internetowa mogła uzyskać dostęp do magazynu obiektów blob z klienta, na koncie musi być włączone [współużytkowanie zasobów między źródłami](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS, cross-origin resource sharing). 
@@ -55,7 +50,7 @@ Następnie utworzymy token zabezpieczający za pomocą usługi Azure Cloud Shell
 ## <a name="create-a-shared-access-signature"></a>Tworzenie sygnatury dostępu współdzielonego
 Sygnatura dostępu współdzielonego (SAS, Shared Access Signature) jest używana przez kod uruchomiony w przeglądarce do uwierzytelniania żądań w usłudze Blob Storage. Sygnatura dostępu współdzielonego umożliwia uwierzytelnienie klienta bez użycia klucza dostępu do konta magazynu ani parametrów połączenia. Zobacz [Using shared access signatures (SAS) (Używanie sygnatur dostępu współdzielonego)](../common/storage-dotnet-shared-access-signature-part-1.md), aby uzyskać więcej informacji.
 
-Sygnaturę dostępu współdzielonego można utworzyć w usłudze Azure Cloud Shell przy użyciu interfejsu wiersza polecenia platformy Azure. W poniższej tabeli opisano parametry, których wartości musisz podać, aby wygenerować sygnaturę dostępu współdzielonego.
+Sygnaturę dostępu współdzielonego można utworzyć w usłudze Azure Cloud Shell przy użyciu interfejsu wiersza polecenia platformy Azure lub Eksploratora usługi Azure Storage. W poniższej tabeli opisano parametry, których wartości musisz podać, aby wygenerować sygnaturę dostępu współdzielonego za pomocą interfejsu wiersza polecenia.
 
 | Parametr      |Opis  | Symbol zastępczy |
 |----------------|-------------|-------------|
@@ -93,7 +88,7 @@ Po wygenerowaniu sygnatury dostępu współdzielonego skopiuj wartość zwrócon
 ## <a name="implement-the-html-page"></a>Implementowanie strony HTML
 
 ### <a name="set-up-the-web-application"></a>Konfigurowanie aplikacji internetowej
-Biblioteki klienta JavaScript usługi Azure Storage nie działają bezpośrednio z systemu plików i muszą być obsługiwane przez serwer internetowy. Poniższe kroki zawierają szczegółowe instrukcje dotyczące tworzenia prostego, lokalnego serwera internetowego za pomocą języka Node.js.
+Biblioteki klienta JavaScript usługi Azure Storage nie działają bezpośrednio z systemu plików i muszą być obsługiwane przez serwer internetowy. Poniższe kroki zawierają szczegółowe instrukcje dotyczące korzystania z prostego, lokalnego serwera internetowego za pomocą oprogramowania Node.js.
 
 > [!NOTE]
 > W tej sekcji przedstawiono tworzenie lokalnego serwera internetowego, który wymaga zainstalowania języka Node.js na komputerze. Jeśli nie chcesz instalować języka Node.js, możesz uruchomić lokalny serwer internetowy w inny sposób.
@@ -121,7 +116,7 @@ Na koniec w wierszu polecenia wpisz `npm start`, aby uruchomić serwer interneto
 npm start
 ```
 
-### <a name="get-the-blob-storage-client-scripts"></a>Pobieranie skryptów klienta magazynu obiektów blob
+### <a name="get-the-blob-storage-client-library"></a>Pobieranie biblioteki klienta magazynu obiektów blob
 [Pobierz biblioteki klienta JavaScript](https://aka.ms/downloadazurestoragejs), a następnie wyodrębnij zawartość pliku zip i umieść pliki skryptów z folderu *bundle* w folderze *scripts*.
 
 ### <a name="add-the-client-script-reference-to-the-page"></a>Dodawanie odwołania do skryptu klienta do strony
@@ -153,7 +148,7 @@ Ten kod znaczników umożliwia dodanie do strony następujących elementów:
 - element *INPUT* używany do przekazywania pliku;
 - symbol zastępczy dla kodu specyficznego dla magazynu.
 
-### <a name="create-a-blob-service"></a>Tworzenie usługi obiektów blob 
+### <a name="create-an-instance-of-blobservice"></a>Tworzenie wystąpienia usługi BlobService 
 Obiekt [BlobService](https://azure.github.io/azure-storage-node/BlobService.html) udostępnia interfejs do komunikacji z usługą Azure Blob Storage. Aby utworzyć wystąpienie tej usługi, musisz podać nazwę konta magazynu i sygnaturę dostępu współdzielonego wygenerowaną w poprzednim kroku.
 
 ```javascript
@@ -184,7 +179,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>Przesyłanie obiektów blob
-Aby przekazać obiekt blob z formularza HTML, najpierw musisz pobrać odwołanie do wybranego pliku za pośrednictwem tablicy `files` elementu *INPUT*, którego *typ* ustawiono na wartość *plik*.
+Aby przekazać obiekt blob z formularza HTML, uzyskaj odwołanie do wybranego pliku z elementu *INPUT*. Wybrany plik jest dostępny za pośrednictwem tablicy `files` z elementem *type* ustawionym na wartość *file*.
 
 W skrypcie możesz odwołać się do elementu HTML i przekazać wybrany plik do usługi obiektów blob.
 
@@ -227,6 +222,9 @@ document.getElementById('list-button').addEventListener('click', () => {
     
 });
 ```
+
+Metoda *listBlobsSegmented* zwraca kolekcję obiektów blob. Domyślna wielkość kolekcji to 5000 obiektów blob, ale można dostosować tę wartość do własnych potrzeb. [Kontynuacja przykładu](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132) przedstawia sposób pracy z dużą liczbą obiektów blob oraz obsługę stronicowania w bibliotece klienta. 
+
 
 ### <a name="delete-blobs"></a>Usuwanie obiektów blob
 Przekazany obiekt blob możesz usunąć, wywołując metodę [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor).

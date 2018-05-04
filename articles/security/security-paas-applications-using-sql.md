@@ -5,8 +5,8 @@ services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ed15ff750e73179f6979d13e45ab27aeee5c82ab
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 3e7dc4dfba001228a4d11e2b21cdeed8e7af45ac
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-databases-in-azure"></a>Zabezpieczanie PaaS baz danych na platformie Azure
 
@@ -51,7 +51,7 @@ Za pomocą usługi Azure AD authentication zamiast uwierzytelniania SQL zalety:
 - Używa zawarte bazy danych użytkowników do uwierzytelniania tożsamości na poziomie bazy danych.
 - Obsługuje uwierzytelnianie na podstawie tokenu dla aplikacji łączenia z bazą danych SQL.
 - Obsługuje uwierzytelnianie macierzysty użytkownika/hasło lub usług AD FS (Federacja domen) dla lokalnej usługi Azure AD bez synchronizacji domeny.
-- Obsługuje połączenia z programu SQL Server Management Studio, które używają uniwersalnych uwierzytelnianie usługi Active Directory, która obejmuje [Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md). Silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe obejmuje MFA — połączenie telefoniczne, wiadomość tekstowa, karty inteligentne z numeru pin lub powiadomienie aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [SSMS obsługę usługi Azure AD MFA z bazy danych SQL i usługi SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
+- Obsługuje połączenia z programu SQL Server Management Studio, które używają uniwersalnych uwierzytelnianie usługi Active Directory, która obejmuje [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md). Silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe obejmuje MFA — połączenie telefoniczne, wiadomość tekstowa, karty inteligentne z numeru pin lub powiadomienie aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [SSMS obsługę usługi Azure AD MFA z bazy danych SQL i usługi SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Aby dowiedzieć się więcej na temat uwierzytelniania usługi Azure AD, zobacz:
 
@@ -86,7 +86,7 @@ Szyfrowanie na poziomie aplikacji, powinien także służyć do wybranych danych
 
 Dodatkowe środki ostrożności służy do zabezpieczania bazy danych, takich jak projektowania bezpieczny system, szyfrowania poufnych zasobów i konfigurowania zapory wokół serwerów baz danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule wprowadzone do kolekcji z bazy danych SQL i usługi SQL Data Warehouse najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i aplikacji dla urządzeń przenośnych. Aby dowiedzieć się więcej na temat zabezpieczania wdrożeń typu PaaS, zobacz:
 
 - [Zabezpieczanie wdrożeń typu PaaS](security-paas-deployments.md)

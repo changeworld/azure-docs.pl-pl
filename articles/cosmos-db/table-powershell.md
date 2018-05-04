@@ -1,12 +1,12 @@
 ---
-title: "Wykonywanie operacji interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Jak wykonać operacje interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu PowerShell"
+title: Wykonywanie operacji interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Jak wykonać operacje interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu PowerShell
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: d0f835db8a9fbe3833a9c7931ad1d8b4a778f016
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Wykonywanie operacji interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu Azure PowerShell 
 
@@ -55,10 +55,10 @@ Pobierz grupy nazwy i zasobów konta bazy danych z portalu; należy te wartości
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Login-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-table-or-reference-a-table"></a>Utwórz tabelę lub odwołać się do tabeli
@@ -100,7 +100,7 @@ Jeśli utworzono nową grupę zasobów, a następnie utworzyć nowe konto bazy d
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono o typowych operacji interfejsu API tabeli przy użyciu programu PowerShell, w tym jak: 
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8f9eb95f49e0d2bd01d9ead7eda7d13288bfd573
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-token-reference"></a>Odwołania do usługi Azure AD tokenu
-Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających do przetworzenia każdy przepływ uwierzytelniania. Ten dokument zawiera opis format właściwości zabezpieczeń i zawartości każdego typu tokenu.
+Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających do przetworzenia każdy przepływ uwierzytelniania. Ten dokument zawiera opis format właściwości zabezpieczeń i zawartości każdego typu tokenu. 
 
 ## <a name="types-of-tokens"></a>Typy tokenów
 Azure AD obsługuje [protokół OAuth 2.0](active-directory-protocols-oauth-code.md), który wykorzystuje access_tokens i refresh_tokens.  Obsługuje ona również uwierzytelniania i logowania za pomocą [OpenID Connect](active-directory-protocols-openid-connect-code.md), który został wprowadzony trzeci typ tokenu, żądaniu.  Każdy z tych tokenów jest reprezentowany jako "bearer token".
@@ -52,14 +52,15 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 > [!div class="mx-codeBreakAll"]
 | Token JWT oświadczeń | Name (Nazwa) | Opis |
 | --- | --- | --- |
-| `appid` |Identyfikator aplikacji |Identyfikuje aplikację, która używa tokenu dostępu do zasobu. Aplikacja może działać jako sam lub w imieniu użytkownika. Identyfikator aplikacji zazwyczaj reprezentuje obiekt aplikacji, ale może także reprezentować obiekt główny usługi w usłudze Azure AD. <br><br> **Przykładowa wartość JWT**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |Grupy odbiorców |Zamierzonym odbiorcą tokenu. Aplikacja, która odbiera token należy sprawdzić, czy wartość odbiorców jest poprawny i odrzucić wszystkie tokeny przeznaczona dla różnych użytkowników. <br><br> **Przykładowa wartość SAML**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Przykładowa wartość JWT**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |Application Authentication Context Class Reference |Wskazuje, jak klient został uwierzytelniony. Dla publicznych klienta wartość wynosi 0. Jeśli identyfikator klienta i klucz tajny klienta są używane, wartość to 1. <br><br> **Przykładowa wartość JWT**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference |Wskazuje, jak został uwierzytelniony podmiot, w przeciwieństwie do klienta z oświadczeń Application Authentication Context Class Reference. Wartość "0" oznacza, że uwierzytelnianie użytkownika końcowego nie spełnia wymagań z normą ISO/IEC 29115. <br><br> **Przykładowa wartość JWT**: <br> `"acr": "0"` |
 | Błyskawiczne uwierzytelniania |Rejestruje datę i godzinę po przeprowadzeniu uwierzytelnienia. <br><br> **Przykładowa wartość SAML**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |Metoda uwierzytelniania |Określa, jak został uwierzytelniony podmiot tokenu. <br><br> **Przykładowa wartość SAML**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Przykładowa wartość JWT**: `“amr”: ["pwd"]` |
 | `given_name` |Imię |Udostępnia pierwszy lub "" Nazwa użytkownika, zgodnie z ustaleniami na obiekt użytkownika usługi Azure AD. <br><br> **Przykładowa wartość SAML**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **Przykładowa wartość JWT**: <br> `"given_name": "Frank"` |
-| `groups` |Grupy |Zawiera identyfikatory obiektów, które reprezentują członkostwa w grupach podmiotu. Wartości te są unikatowe (patrz obiektu o identyfikatorze) i bezpiecznie umożliwia zarządzanie dostępem, takie jak wymuszanie autoryzacji dostępu do zasobu. Grup objętych oświadczenia grupy są konfigurowane na poszczególnych aplikacji, za pośrednictwem właściwości "groupMembershipClaims" manifest aplikacji. Wartość null powoduje wyłączenie wszystkich grup, wartość "SecurityGroup" będzie zawierać tylko członkostwa grupy zabezpieczeń usługi Active Directory, a wartość "All" będzie zawierać grup zabezpieczeń i listami dystrybucyjnymi usługi Office 365. <br><br> **Przykładowa wartość SAML**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **Przykładowa wartość JWT**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+| `groups` |Grupy |Zawiera identyfikatory obiektów, które reprezentują członkostwa w grupach podmiotu. Wartości te są unikatowe (patrz obiektu o identyfikatorze) i bezpiecznie umożliwia zarządzanie dostępem, takie jak wymuszanie autoryzacji dostępu do zasobu. Grup objętych oświadczenia grupy są konfigurowane na poszczególnych aplikacji, za pośrednictwem właściwości "groupMembershipClaims" manifest aplikacji. Wartość null powoduje wyłączenie wszystkich grup, wartość "SecurityGroup" będzie zawierać tylko członkostwa grupy zabezpieczeń usługi Active Directory, a wartość "All" będzie zawierać grup zabezpieczeń i listami dystrybucyjnymi usługi Office 365. <br><br> **Uwagi dotyczące**: <br> Zobacz `hasgroups` oświadczeń poniżej, aby uzyskać więcej informacji na temat używania `groups` oświadczenie z niejawne Przyznaj.  <br> Dla innych przepływów Jeśli liczba grup, do których użytkownik ma przekracza limit (150 dla SAML, 200 JWT), a następnie nadwyżkowe oświadczenia zostaną dodane źródła oświadczeń wskazującego punkt końcowy wykres zawierający listę grup dla użytkownika. (w. <br><br> **Przykładowa wartość SAML**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **Przykładowa wartość JWT**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+|`hasgroups` | Token JWT przepływu niejawnego grup nadwyżkowe wskaźnika| Jeśli jest obecny, zawsze `true`, określające użytkownika znajduje się w co najmniej jedną grupę.  Użyta zamiast `groups` oświadczenie dla tokenów Jwt przepływów niejawne Przyznaj, jeśli pełna grup oświadczeń może rozszerzyć fragmentu identyfikatora URI poza granicami długość adresu URL (obecnie 6 lub więcej grup).  Wskazuje, że powinien używać klient do wykresu można określić grupy użytkowników (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
+| `groups:src1` <br> `http://schemas.microsoft.com/claims/groups.link` | Wskaźnik nadwyżkowe grup | Token żądań, które nie są ograniczone długość (zobacz `hasgroups` powyżej), ale nadal za duży dla tokenu, łącze do listy grup pełny dla użytkownika będzie uwzględniony.  Dla tokenów Jwt rozproszonej oświadczenia, dla SAML jako nowe oświadczenie zamiast `groups` oświadczeń. <br><br> **Przykładowa wartość SAML**: <br> `<Attribute Name=” http://schemas.microsoft.com/claims/groups.link”>`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` <br><br> **Przykładowa wartość JWT**: <br> `"groups":"src1` <br> `_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
 | `idp` |Dostawca tożsamości |Rejestruje dostawcę tożsamości, który uwierzytelniony podmiot tokenu. Ta wartość jest taka sama jak wartość oświadczenia wystawcy, chyba, że konto użytkownika jest w innej dzierżawie niż wystawcy. <br><br> **Przykładowa wartość SAML**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **Przykładowa wartość JWT**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `iat` |IssuedAt |Przechowuje czasu, jaką token został wystawiony. Często służy do pomiaru świeżości tokenu. <br><br> **Przykładowa wartość SAML**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **Przykładowa wartość JWT**: <br> `"iat": 1390234181` |
 | `iss` |Wystawca |Identyfikuje usługę tokenu zabezpieczającego (STS), które tworzy i zwraca token. W tokenach, które zwraca usługi Azure AD wystawca jest sts.windows.net. Identyfikator GUID w wartości wystawcy oświadczeń jest identyfikator dzierżawcy katalogu usługi Azure AD. Identyfikator dzierżawy jest niezmienne i niezawodne identyfikator katalogu. <br><br> **Przykładowa wartość SAML**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **Przykładowa wartość JWT**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
@@ -145,7 +146,7 @@ Gdy aplikacja odbiera token (żądaniu podczas logowania użytkownika lub token 
 * **Identyfikator jednorazowy** — Aby ograniczyć atak powtórzeń tokenów.
 * i więcej...
 
-Pełną listę operacji sprawdzania poprawności oświadczenia aplikacji należy wykonać tokeny Identyfikatora, można znaleźć w [OpenID Connect specyfikacji](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). Szczegóły oczekiwanych wartości tych oświadczeń są zawarte w poprzednim [sekcji żądaniu](#id-tokens) sekcji.
+Pełną listę operacji sprawdzania poprawności oświadczenia aplikacji należy wykonać tokeny Identyfikatora, można znaleźć w [OpenID Connect specyfikacji](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). Szczegóły oczekiwanych wartości tych oświadczeń są zawarte w poprzednim [żądaniu](#id-tokens) sekcji.
 
 ## <a name="token-revocation"></a>Token odwołania
 
@@ -161,9 +162,8 @@ Odśwież tokeny można unieważnione lub odwołać w dowolnym momencie z różn
   * Niedobrowolnego zmiany hasła: Jeśli administrator wymusza na użytkowniku, aby zmienić swoje hasło lub Ponadto resetuje go, następnie tokeny użytkownika są unieważniona jeśli zostały osiągnięte, przy użyciu hasła.  Zobacz uwagi poniżej, aby wyjątki. 
   * Naruszenie zabezpieczeń: W przypadku naruszenia zabezpieczeń (np. z lokalnym magazynem hasła jest naruszony) Administrator można odwołać wszystkie obecnie wystawione tokeny odświeżania.  Spowoduje to wymuszenie ponownego uwierzytelnienia wszystkim użytkownikom. 
 
-Uwaga: 
-
-Jeśli hasło z systemem innym niż metoda uwierzytelniania używana (Windows Hello, aplikacji uwierzytelniającej, biometrycznych, takich jak twarzy na obrazie lub linii papilarnych) do osiągnięcia token, zmiana hasła nie spowoduje wymuszenie ponownego uwierzytelnienia użytkownika (ale zostanie wymuszone ich aplikacji uwierzytelniania Aby ponownie uwierzytelnić).  Jest to spowodowane uwierzytelniania wybranych danych wejściowych (a krój, np.) nie został zmieniony i w związku z tym można ponownie ponownego uwierzytelnienia.
+> [!NOTE]
+>Jeśli hasło z systemem innym niż metoda uwierzytelniania używana (Windows Hello, aplikacji uwierzytelniającej, biometrycznych, takich jak twarzy na obrazie lub linii papilarnych) do osiągnięcia token, zmiana hasła nie spowoduje wymuszenie ponownego uwierzytelnienia użytkownika (ale zostanie wymuszone ich aplikacji uwierzytelniania Aby ponownie uwierzytelnić).  Jest to spowodowane uwierzytelniania wybranych danych wejściowych (a krój, np.) nie został zmieniony i w związku z tym można ponownie ponownego uwierzytelnienia.
 
 ## <a name="sample-tokens"></a>Tokeny próbki
 

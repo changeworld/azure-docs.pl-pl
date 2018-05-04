@@ -1,25 +1,20 @@
 ---
-title: "Migrowanie schemat do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące migrowania schemat Azure SQL Data Warehouse związane z opracowywaniem rozwiązań."
+title: Migrowanie schemat do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące migrowania schemat Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: 538b60c9-a07f-49bf-9ea3-1082ed6699fb
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 07ca2321852e276502187e768177e7e82bdfd080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: fb1085450a16acb0f9a06a9dea9d91fc5ca23363
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>Migracja z schematów SQL Data Warehouse
 Wskazówki dotyczące migrowania schematy programu SQL do SQL Data Warehouse. 
@@ -61,7 +56,7 @@ Usługa SQL Data Warehouse to system rozproszoną bazę danych. Każda tabela je
 Aby wybrać najlepszą opcją dystrybucji dla każdej tabeli, zobacz [rozproszonych tabel](sql-data-warehouse-tables-distribute.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Gdy schemat bazy danych zostały pomyślnie zmigrowane do magazynu danych SQL, przejdź do jednej z następujących artykułów:
 
 * [Migrowanie danych][Migrate your data]

@@ -1,11 +1,11 @@
 ---
-title: "Znajdź następny przeskok z Azure sieci obserwatora następnego przeskoku - Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak znaleźć, co to jest typ następnego przeskoku i adres ip za pomocą następnego przeskoku przy użyciu wiersza polecenia platformy Azure."
+title: Znajdź następny przeskok z Azure sieci obserwatora następnego przeskoku - Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak znaleźć, co to jest typ następnego przeskoku i adres ip za pomocą następnego przeskoku przy użyciu wiersza polecenia platformy Azure.
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 873bd0f8c98cfa67c77841df8aa53eb2b895cd54
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Sprawdź, jaki typ następnego przeskoku jest przy użyciu funkcji w następnym przeskoku w obserwatora sieciowego Azure używa interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
@@ -82,7 +82,7 @@ Poniższa lista zawiera aktualnie dostępne wartości Typ następnego przeskoku:
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* None
+* Brak
 
 ## <a name="next-steps"></a>Kolejne kroki
 

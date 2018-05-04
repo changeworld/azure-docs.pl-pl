@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3652e26bb775ae6ac1897bea529e7ae69d77cdbd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest wspaniała relacyjnej bazy danych serwerów, pamięci podręcznych średnich i dużych i analizy w pamięci. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -22,8 +22,9 @@ Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokie
 
 * Maszyny wirtualne serii D są zaprojektowane do uruchamiania aplikacji wymagających większej mocy obliczeniowej i wydajności dysków tymczasowych. Maszyny wirtualne serii D zapewniają szybsze procesory, większą ilość pamięci na procesor wirtualny vCPU i dyski półprzewodnikowe (SSD) dla magazynów tymczasowych. Szczegółowe informacje zawiera ogłoszenie [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) (Nowe rozmiary maszyn wirtualnych serii D) w blogu platformy Azure.
 
-* Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Seria Dv2 jest oparta na procesorze najnowszej generacji Intel Xeon® E5-2673 v3 (Haswell) z zegarem 2,4 GHz, który dzięki technologii Intel Turbo Boost 2.0 może osiągnąć częstotliwość 3,1 GHz. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
+* Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jest on oparty na najnowszej generacji 2.4 v3® GHz Intel Xeon E5-2673 2,4 GHz (Haswell) lub E5-2673 procesorów 2.3 GHz (Broadwell) w wersji 4 i 2.0 technologii zwiększanie wyniku Turbo firmy Intel, można przejść do GHz 3.1. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
+* Seria Ev3 funkcje E5 2673 v4 2.3 GHz (Broadwell) procesora w hiperwątkowych konfiguracji, zapewniając lepsze wartości oferty dla większości obciążeń cel i dostosowanie Ev3 do dostosowania ogólnego przeznaczenia maszyn wirtualnych z innych chmur.  Gdy skorygowano limity dysku i sieci na podstawie na core, aby były wyrównane wraz z przejściem do wielowątkowość została rozszerzona pamięci (od 7 GiB/vCPU do 8 GiB/vCPU).  Ev3 jest uzupełnianie rozmiarów maszyn wirtualnych pamięci wysokiej rodzin D/Dv2.
 
 ## <a name="esv3-series-sup1sup"></a>Seria Esv3 <sup>1</sup>
 

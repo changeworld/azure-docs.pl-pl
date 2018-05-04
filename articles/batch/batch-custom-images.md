@@ -1,18 +1,18 @@
 ---
-title: "Zapewnij pule partii zadań Azure z niestandardowymi obrazami | Dokumentacja firmy Microsoft"
-description: "Można utworzyć plik wsadowy puli z niestandardowego obrazu, aby udostępnić obliczeniowe węzłów, które zawierają oprogramowanie i dane potrzebne do aplikacji. Niestandardowe obrazy są wydajnym sposobem konfigurowania węzłów obliczeniowych do uruchamiania obciążeń partii."
+title: Zapewnij pule partii zadań Azure z niestandardowymi obrazami | Dokumentacja firmy Microsoft
+description: Można utworzyć plik wsadowy puli z niestandardowego obrazu, aby udostępnić obliczeniowe węzłów, które zawierają oprogramowanie i dane potrzebne do aplikacji. Niestandardowe obrazy są wydajnym sposobem konfigurowania węzłów obliczeniowych do uruchamiania obciążeń partii.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>Użyj zarządzanego obrazu niestandardowego do utworzenia puli maszyn wirtualnych 
 
@@ -40,7 +40,7 @@ Przy użyciu niestandardowego obrazu skonfigurowany dla danego scenariusza zapew
 
     
 ## <a name="prepare-a-custom-image"></a>Przygotuj obraz niestandardowy
-Można przygotować zarządzanego obrazu z dysku VHD, z maszyny Wirtualnej platformy Azure z dyskami zarządzanych lub migawki maszyny Wirtualnej. 
+Można przygotować zarządzanego obrazu z dysku VHD, z maszyny Wirtualnej platformy Azure z dyskami zarządzanych lub migawki maszyny Wirtualnej. Dla partii zaleca się utworzenie zarządzanego obrazu z maszyny Wirtualnej z dysków zarządzanych lub migawki maszyny Wirtualnej. Zarządzanego obrazu źródłowego zasobu powinny istnieć dla pul na skalowanie w górę i może zostać usunięta po usunięciu puli. 
 
 Podczas przygotowywania obrazu, należy pamiętać następujące kwestie:
 

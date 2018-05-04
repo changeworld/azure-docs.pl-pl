@@ -1,23 +1,19 @@
 ---
-title: "Modelowanie Wielodostępności w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Poznaj typowe wzorce projektowe dla wielodostępnych aplikacji SaaS przy użyciu usługi Azure Search."
-services: search
-manager: jhubbard
+title: Modelowanie Wielodostępności w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Poznaj typowe wzorce projektowe dla wielodostępnych aplikacji SaaS przy użyciu usługi Azure Search.
+manager: jlembicz
 author: ashmaka
-documentationcenter: 
-ms.assetid: 72e9696a-553b-47dc-9e05-a82db0ebf094
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 765f9c4600f762efdd7d57681529751e99c13894
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Projektowanie wzorce dla wielodostępnych aplikacji SaaS i usługi Azure Search
 Wielodostępna aplikacji to taki, który zawiera te same usług i funkcji do dowolnej liczby dzierżawców, którzy nie są wyświetlane ani udostępniać dane z innymi dzierżawami. W tym dokumencie omówiono strategii izolacji dzierżawy dla wielodostępnych aplikacji skompilowanej za pomocą usługi Azure Search.
@@ -41,7 +37,7 @@ Dodawanie i usuwanie partycji i replik o umożliwi pojemność Usługa wyszukiwa
 ### <a name="service-and-index-limits-in-azure-search"></a>Limity usług i indeksu w usłudze Azure Search
 Istnieje kilka różnych [warstw cenowych](https://azure.microsoft.com/pricing/details/search/) w usłudze Azure Search, każdy z warstwy ma inną [limity i przydziały](search-limits-quotas-capacity.md). Niektóre z tych limitów są na poziomie usługi, niektóre są na poziomie indeksu, a niektóre są na poziomie partycji.
 
-|  | Podstawowa | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Podstawowa | Standard1 | Standardowa 2 | Standardowa 3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maksymalna replik dla usługi |3 |12 |12 |12 |12 |
 | Maksymalna partycji dla usługi |1 |12 |12 |12 |3 |
@@ -66,7 +62,7 @@ Aplikacje wielodostępne musi efektywnie dystrybuuje zasobów między dzierżawc
 * *Koszt zasobów w chmurze:* zgodnie z innej aplikacji, rozwiązania w zakresie oprogramowania muszą pozostać koszt konkurencyjnych jako składnik wielodostępnych aplikacji.
 * *Łatwość operacji:* podczas opracowywania architektura wielodostępnej, ważną kwestią jest wpływ na operacje aplikacji i złożoności. Usługa wyszukiwanie Azure ma [SLA 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 * *Globalne zużycie:* wielodostępnych aplikacji może być konieczne efektywnie obsługiwać dzierżawcami, które są rozmieszczone na całym świecie.
-* *Skalowalność:* deweloperzy aplikacji należy wziąć pod uwagę, jak uzgodnienia między utrzymanie wystarczająco niski poziom złożoności aplikacji i projektowania aplikacji do skalowania liczby dzierżawców i rozmiar danych i obciążenie dzierżawców.
+* *Skalowalność:* deweloperzy aplikacji należy wziąć pod uwagę, jak uzgodnienia między utrzymanie wystarczająco niski poziom złożoności aplikacji i projektowania aplikacji do skalowania liczby dzierżawców i rozmiar danych dzierżawców i Obciążenie pracą.
 
 Usługa Azure Search udostępnia kilka granice, które mogą być używane do izolowania danych i obciążenie dzierżawców.
 
@@ -130,7 +126,7 @@ Ta metoda służy do osiągnięcia funkcji oddzielnych kont użytkowników, pozi
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Usługa Azure Search jest atrakcyjnych wybór dla wielu aplikacji [Dowiedz się więcej o możliwości przeprowadzania usługi](http://aka.ms/whatisazsearch). Podczas obliczania różne wzorce projektowe dla wielodostępnych aplikacji, należy wziąć pod uwagę [różnych warstw cenowych](https://azure.microsoft.com/pricing/details/search/) oraz odpowiednie [usługi limity](search-limits-quotas-capacity.md) najlepiej dostosować usługi Azure Search, aby dopasować obciążeń aplikacji i architektur wszystkich rozmiarów.
 
 Pytania dotyczące usługi Azure Search i scenariusze wielodostępnym może zostać skierowany do azuresearch_contact@microsoft.com.

@@ -15,11 +15,11 @@ ms.date: 03/06/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 3b689c6028470021734ad78dd88748f4079c383f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4e413d921390cfb87c27c530c6870945c28c0df8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure
 Azure opartej na rolach kontroli dostępu (RBAC) zawiera następujące role wbudowane przypisane do użytkowników, grup i usług. Nie można zmodyfikować definicje ról wbudowanych. Można jednak utworzyć [niestandardowych ról w Azure RBAC](custom-roles.md) do określonych potrzeb organizacji.
@@ -579,6 +579,7 @@ Tworzenie fabryk danych i zawartych w nich zasobów podrzędnych oraz zarządzan
 | **Akcje** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read | Role odczytu i przypisania roli |
+| Microsoft.DataFactory/factory/* | Utwórz i Zarządzaj fabryki danych i zasoby podrzędne w nich. |
 | Microsoft.DataFactory/dataFactories/* | Utwórz i Zarządzaj fabryki danych i zasoby podrzędne w nich. |
 | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |

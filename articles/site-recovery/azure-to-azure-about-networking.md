@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: b4ccb612314fc1f65be4033bc0d0893d17843a86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure do platformy Azure
 
@@ -58,11 +58,11 @@ login.microsoftonline.com | Wymagane w celu autoryzacji i uwierzytelnianie adres
 Jeśli używasz serwera proxy oparte na protokole IP zapory lub reguły NSG do kontrolowania łączność wychodząca te zakresy IP, musisz zezwolić.
 
 - Wszystkie zakresy adresów IP, odpowiadające kont magazynu w regionie źródła
-    - Należy utworzyć [numer seryjny magazynu](../virtual-network/security-overview.md#service-tags) na podstawie reguły NSG dla regionu źródła.
-    - Musisz zezwolić na te adresy tak, aby dane mogą być zapisywane na koncie magazynu pamięci podręcznej z maszyny Wirtualnej.
+    - Utwórz [numer seryjny magazynu](../virtual-network/security-overview.md#service-tags) na podstawie reguły NSG dla regionu źródła.
+    - Zezwalaj na te adresy tak, aby dane mogą być zapisywane na koncie magazynu pamięci podręcznej z maszyny Wirtualnej.
 - Wszystkie zakresy adresów IP, które odpowiadają usługi Office 365 [uwierzytelnianie i tożsamość punkty końcowe IPv4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-    - Jeśli nowy adres są dodawane do zakresów usługi Office 365 w przyszłości, należy utworzyć nowe reguły NSG.
-- Punkt końcowy usługi odzyskiwania lokacji adresów IP. Są one dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej.
+    - Nowe adresy zostaną dodane do usługi Office 365 zakresów w przyszłości, należy utworzyć nowe reguły NSG.
+- Lokacja odzyskiwania usługi punktu końcowego adresy IP — dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej.
 -  Możesz [pobranie i użycie tego skryptu](https://aka.ms/nsg-rule-script), aby automatycznie utworzyć wymagane zasady w grupie NSG.
 - Zaleca się tworzenie wymaganych reguł NSG na test NSG i sprawdź, czy nie ma żadnych problemów przed utworzeniem reguły produkcyjnych NSG.
 
@@ -138,7 +138,7 @@ Te zasady są niezbędne, dzięki czemu można włączyć replikację z region d
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfiguracja sieci urządzenie wirtualne
 
-Jeśli korzystasz z wirtualnych urządzeń sieciowych (NVAs) do kontroli wychodzącego ruchu sieciowego z maszyn wirtualnych, jeśli cały ruch replikacji przechodzi przez analizę NVA może pobrać ograniczony urządzenia. Firma Microsoft zaleca tworzenie tak, aby ruch związany z replikacją nie przejść do analizę NVA "Magazynu" punkt końcowy usługi sieci w sieci wirtualnej.
+Jeśli korzystasz z wirtualnych urządzeń sieciowych (NVAs) do kontroli wychodzącego ruchu sieciowego z maszyn wirtualnych, jeśli cały ruch replikacji przechodzi przez analizę NVA może pobrać ograniczony urządzenia. Zaleca się utworzenie punkt końcowy usługi sieci w sieci wirtualnej "Magazynu", tak aby ruch związany z replikacją nie przejść do analizę NVA.
 
 ### <a name="create-network-service-endpoint-for-storage"></a>Utwórz punkt końcowy usługi sieci magazynu
 Punkt końcowy usługi sieci w sieci wirtualnej można utworzyć w "Magazyn", aby ruch związany z replikacją nie opuszczają granicy Azure.
@@ -153,42 +153,11 @@ Punkt końcowy usługi sieci w sieci wirtualnej można utworzyć w "Magazyn", ab
 >[!NOTE]
 >Nie ograniczaj dostępu do sieci wirtualnej do kont magazynu używane do automatycznego odzyskiwania systemu. Użytkownik powinien zezwalać na dostęp z "Wszystkie sieci"
 
-## <a name="expressroutevpn"></a>ExpressRoute/VPN
-
-Jeśli masz połączenie ExpressRoute lub sieci VPN między lokalnymi i lokalizacja platformy Azure, postępuj zgodnie z wytycznymi w tej sekcji.
-
 ### <a name="forced-tunneling"></a>Wymuszone tunelowanie
 
-Zazwyczaj należy zdefiniować trasy domyślnej (0.0.0.0/0), która wymusza wychodzący ruch internetowy przepływ lokalizacji lokalnej lub. Firma Microsoft nie jest to zalecane. Ruch związany z replikacją nie opuszczaj Azure granic.
-
-Możesz [Tworzenie punktu końcowego usługi sieciowej](#create-network-service-endpoint-for-storage) w wirtualnej sieci "Magazynu", aby ruch związany z replikacją nie opuszczają granicy Azure.
-
-
-### <a name="connectivity"></a>Łączność
-
-Wykonaj te wytyczne dotyczące połączeń między lokalizacji docelowej i lokalizacji lokalnego:
-- Jeśli aplikacja wymaga połączyć się z komputerami lokalnymi lub w przypadku klientów, którzy łączą się z lokalnymi za pośrednictwem sieci VPN/ExpressRoute, upewnij się, że masz co najmniej [połączenie lokacja lokacja](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) między urządzenie docelowe region platformy Azure i lokalnego centrum danych.
-
-- Jeśli spodziewasz się dużej ilości na ruch między urządzenie docelowe region platformy Azure i lokalnego centrum danych, należy utworzyć inny [połączenia ExpressRoute](../expressroute/expressroute-introduction.md) między docelowy region platformy Azure i lokalnego centrum danych.
-
-- Jeśli chcesz zachować adresów IP dla maszyn wirtualnych, po ich w tryb failover, Zachowaj połączenia lokacja do witryny/ExpressRoute region docelowy w stanie rozłączenia. To jest upewnienie się, nie zakresu konflikt między region źródła zakresów adresów IP i zakresów adresów IP region docelowy nie istnieje.
-
-### <a name="expressroute-configuration"></a>Konfiguracji usługi ExpressRoute
-Wykonaj następujące najlepsze rozwiązania dla konfiguracji usługi ExpressRoute:
-
-- Utworzyć obwodu usługi ExpressRoute w regionach źródłowych i docelowych. Następnie musisz utworzyć połączenie między usługą:
-    - Sieć wirtualna źródła i z sieci lokalnej, za pośrednictwem obwodu usługi expressroute w regionie źródła.
-    - Docelowy sieci wirtualnej i sieci lokalnej, za pośrednictwem obwodu usługi expressroute w docelowym regionie.
-
-
-- W ramach standardowego ExpressRoute możesz utworzyć obwody w tym samym regionie geograficznymi. Aby utworzyć obwody usługi ExpressRoute w różnych regionach geograficznymi, Azure ExpressRoute — wersja Premium jest wymagana, która obejmuje przyrostowe kosztów. (Jeśli już używasz usługi ExpressRoute — wersja Premium, jest nie żadnymi dodatkowymi kosztami.) Aby uzyskać więcej informacji, zobacz [dokumentu lokalizacje ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [cennik usługi ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
-
-- Zalecane jest użycie różnych zakresów IP w regionach źródłowe i docelowe. Obwód usługi expressroute nie można nawiązać połączenia z dwóch sieci wirtualnych platformy Azure z tego samego zakresu adresów IP w tym samym czasie.
-
-- Możesz tworzenie sieci wirtualnych za pomocą tego samego zakresu adresów IP w obu regionach i następnie utwórz obwody usługi ExpressRoute w obu regionach. W przypadku wystąpieniu zdarzenia pracy awaryjnej rozłączyć obwodu źródła sieci wirtualnej, a następnie połącz obwód w docelowej sieci wirtualnej.
-
- >[!IMPORTANT]
- > Jeśli regionu podstawowego całkowicie jest wyłączony, operację rozłączania może zakończyć się niepowodzeniem. Która uniemożliwi docelowej sieci wirtualnej uzyskiwania połączenia ExpressRoute.
+Można zastąpić Azure domyślną systemu trasę dla prefiksu adresu 0.0.0.0/0 z [tras niestandardowych](../virtual-network/virtual-networks-udr-overview.md#custom-routes) odwrócenia ruchu maszyny Wirtualnej do urządzenia wirtualnych sieci lokalnych (NVA), ale ta konfiguracja nie jest zalecana dla usługi Site Recovery Replikacja. Jeśli używasz niestandardowych tras [Tworzenie punktu końcowego usługi sieci wirtualnej](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w wirtualnej sieci "Magazynu", aby ruch związany z replikacją nie opuszczają granicy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Włączyć ochronę obciążeń przez [replikowanie maszyn wirtualnych platformy Azure](site-recovery-azure-to-azure.md).
+- Włączyć ochronę obciążeń przez [replikowanie maszyn wirtualnych platformy Azure](site-recovery-azure-to-azure.md).
+- Dowiedz się więcej o [przechowywania adresów IP](site-recovery-retain-ip-azure-vm-failover.md) dla trybu failover maszyny wirtualnej platformy Azure.
+- Dowiedz się więcej na temat odzyskiwania po awarii [maszyn wirtualnych platformy Azure z ExpressRoute ](azure-vm-disaster-recovery-with-expressroute.md).

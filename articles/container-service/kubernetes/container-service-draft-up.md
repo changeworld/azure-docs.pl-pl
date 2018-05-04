@@ -1,19 +1,19 @@
 ---
-title: "Użyj projekt z usługą kontenera Azure i Azure rejestru kontenera"
-description: "Utwórz klaster ACS Kubernetes i rejestr Azure Container Registry, aby utworzyć swoją pierwszą aplikację na platformie Azure z użyciem narzędzia Draft."
+title: Użyj projekt z usługą kontenera Azure i Azure rejestru kontenera
+description: Utwórz klaster ACS Kubernetes i rejestr Azure Container Registry, aby utworzyć swoją pierwszą aplikację na platformie Azure z użyciem narzędzia Draft.
 services: container-service
 author: squillace
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: de1e8ec1b712aeb5572c7972b22412f2ae90b7b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 68ad44bae0856ff000f2847049a15a946d83c0a3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Użycie narzędzia Draft z usługami Azure Container Service i Azure Container Registry w celu utworzenia i wdrożenia aplikacji w rozwiązaniu Kubernetes
 
@@ -99,7 +99,7 @@ Po utworzeniu klastra można zaimportować poświadczenia za pomocą polecenia [
 ## <a name="install-and-configure-draft"></a>Instalowanie i konfigurowanie narzędzia Draft
 
 
-1. Pobierz wersję roboczą dla danego środowiska na https://github.com/Azure/draft/releases i zainstalować w ŚCIEŻCE, dzięki czemu można użyć polecenia.
+1. Pobieranie projektu dla danego środowiska na https://github.com/Azure/draft/releases i zainstalować w ŚCIEŻCE, dzięki czemu można użyć polecenia.
 2. Pobierz helm dla danego środowiska na https://github.com/kubernetes/helm/releases i [zainstalować w ŚCIEŻCE, dzięki czemu można użyć polecenia](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Skonfiguruj narzędzie Draft do korzystania z Twojego rejestru i tworzenia poddomen dla każdego planu Helm, które to narzędzie utworzy. Aby skonfigurować narzędzie Draft, potrzebne są:
   - nazwa rejestru Azure Container Registry (w tym przykładzie: `draftacsdemo`);
