@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: 5e01ea901f1ba07c0ee5a99720c00c5f03574365
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: cf1842c6abbbfd767184d8f480a5f3a5fd654ed0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Opis alertów w analizy dzienników
 
@@ -67,7 +67,7 @@ Reguły alertów są określone przez następujące informacje:
  
     - **Alerty false**. Czasami alertu zapytania są przeznaczone do identyfikowania braku zdarzeń. Przykładem jest wykrywanie, gdy maszyna wirtualna jest offline przez wyszukiwanie brakujących interwałów pulsu. Jako powyżej, jeśli pulsu nie jest dostępna dla wyszukiwania w oknie alertu następnie alert jest generowany, ponieważ dane pulsu nie została jeszcze można wyszukiwać i w związku z tym nie istnieje. Jest to samo, jakby został legalnie offline maszyny Wirtualnej i nie było żadnych danych pulsu generowane przez nią. Wykonywania zapytania w następnym dniu nad oknem prawidłowego czasu pokazuje, że wystąpiły pulsów i tworzenia alertu nie powiodło się. W rzeczywistości impulsy nie były jeszcze dostępne dla wyszukiwania ponieważ przedział czasu alertów została ustawiona za mały.
 
-- **Częstotliwość**.  Określa, jak często zapytanie powinna być uruchamiana i można wprowadzić bardziej odpowiednie w przypadku normalnych alerty. Wartość może należeć do zakresu od 5 minut do 24 godzin i powinna być równa lub mniejsza niż okno czasu alertu.  Jeśli wartość jest większa niż przedział czasu, istnieje ryzyko rekordów jest pominięte.<br>Jeśli celem jest wiarygodne dla opóźnienia do 30 minut i normalne opóźnienie to 10 minut, przedział czasu musi być jedną godzinę i wartość częstotliwości powinna być 10 minut. To spowoduje wywołanie alertu z danymi, które ma z opóźnieniem 10 minut wprowadzanie od 10 do 20-minut, gdy dane alertu został wygenerowany.<br>Aby uniknąć tworzenia wielu alertów dla tych samych danych, ponieważ przedział czasu jest zbyt szeroki [pomijania alertów](log-analytics-tutorial-response.md#create-alerts) opcji można użyć do pomijania alertów dla co najmniej tak długo, jak przedział czasu.
+- **Częstotliwość**.  Określa, jak często zapytanie powinna być uruchamiana i można wprowadzić bardziej odpowiednie w przypadku normalnych alerty. Wartość może należeć do zakresu od 5 minut do 24 godzin i powinna być równa lub mniejsza niż okno czasu alertu.  Jeśli wartość jest większa niż przedział czasu, istnieje ryzyko rekordów jest pominięte.<br>Jeśli celem jest wiarygodne dla opóźnienia do 30 minut i normalne opóźnienie to 10 minut, przedział czasu musi być jedną godzinę i wartość częstotliwości powinna być 10 minut. To spowoduje wywołanie alertu z danymi, które ma z opóźnieniem 10 minut wprowadzanie od 10 do 20-minut, gdy dane alertu został wygenerowany.<br>Aby uniknąć tworzenia wielu alertów dla tych samych danych, ponieważ przedział czasu jest zbyt długa, opcja pomijania alertów może służyć do pomijania alertów dla co najmniej tak długo, jak przedział czasu.
   
 - **Próg**. Wyniki wyszukiwania dziennika są oszacowywane, aby określić, czy można utworzyć alertu. Próg jest różne dla różnych typów reguł alertów.
 

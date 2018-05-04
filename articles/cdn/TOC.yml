@@ -16,6 +16,8 @@
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurowanie protokołu HTTPS w domenie niestandardowej
       href: cdn-custom-ssl.md
+    - name: Ustawianie reguł buforowania
+      href: cdn-caching-rules-tutorial.md
 - name: Przykłady
   items:
     - name: Przykłady kodu
@@ -156,6 +158,8 @@
           href: cdn-pop-locations.md
         - name: Lokalizacje POP według skrótu
           href: cdn-pop-abbreviations.md
+    - name: Omówienie rozliczania za usługę Azure CDN
+      href: cdn-billing.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Forum MSDN

@@ -69,16 +69,18 @@
               href: backup-mabs-unattended-install.md
         - name: Ochrona obciążeń
           items:
-            - name: Wykonywanie kopii zapasowej serwera VMware przy użyciu usługi Azure Backup Server
+            - name: Serwer VMware
               href: backup-azure-backup-server-vmware.md
-            - name: Używanie usługi Azure Backup Server do tworzenia kopii zapasowej programu Exchange
+            - name: Exchange
               href: backup-azure-exchange-mabs.md
-            - name: Używanie usługi Azure Backup Server do tworzenia kopii zapasowej farmy programu SharePoint
+            - name: Farma programu SharePoint
               href: backup-azure-backup-sharepoint-mabs.md
-            - name: Używanie usługi Azure Backup Server do tworzenia kopii zapasowej bazy danych SQL
+            - name: Oprogramowanie SQL Server
               href: backup-azure-sql-mabs.md
             - name: Ochrona stanu systemu i odzyskiwanie systemu od zera
               href: backup-mabs-system-state-and-bmr.md
+            - name: Pliki i aplikacje w usłudze Azure Stack
+              href: backup-mabs-files-applications-azure-stack.md
         - name: Odzyskiwanie danych z usługi Azure Backup Server
           href: backup-azure-alternate-dpm-server.md
     - name: Udziały plików platformy Azure

@@ -94,6 +94,8 @@
       items:
         - name: Konfigurowanie dostawców tożsamości
           items:
+            - name: Niestandardowy protokół OpenID Connect
+              href: active-directory-b2c-setup-oidc-idp.md
             - name: Konto Microsoft
               href: active-directory-b2c-setup-msa-app.md
             - name: Facebook
@@ -159,6 +161,8 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
+                - name: Wiele dzierżaw
+                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: Konfigurowanie dostawców SAML
               items:
                 - name: ADFS
@@ -195,12 +199,12 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: Włączanie opcji Nie wylogowuj mnie
                   href: active-directory-b2c-reference-kmsi-custom.md
-            - name: Śledzenie zachowania użytkowników
-              href: active-directory-b2c-custom-guide-eventlogger-appins.md
             - name: Rozwiązywanie problemów
               items:
                 - name: Zbieranie dzienników przy użyciu usługi Application Insights
                   href: active-directory-b2c-troubleshoot-custom.md
+                - name: Śledzenie zachowania użytkowników
+                  href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: Dokumentacja
           items:
             - name: Informacje o wersji

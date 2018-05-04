@@ -16,7 +16,7 @@
 ## [Task 2: configure network settings (Zadanie 2. Konfigurowanie ustawień sieciowych)](active-directory-ds-getting-started-network.md)
 ## [Task 3: configure administrator group and enable Azure AD Domain Services (Zadanie 3. Konfigurowanie grupy administratorów i włączanie usługi Azure AD Domain Services)](active-directory-ds-getting-started-admingroup.md)
 ## [Zadanie 4. Aktualizowanie ustawień DNS dla sieci wirtualnej](active-directory-ds-getting-started-dns.md)
-## [Zadanie 5. Włączanie synchronizacji haseł](active-directory-ds-getting-started-password-sync.md)
+## [Zadanie 5. Włączanie synchronizacji skrótów haseł](active-directory-ds-getting-started-password-sync.md)
 
 # Instrukcje
 ## [Sprawdzanie kondycji domeny zarządzanej](active-directory-ds-check-health.md)
@@ -56,7 +56,7 @@
 
 
 # Dokumentacja
-## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Powiązane
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

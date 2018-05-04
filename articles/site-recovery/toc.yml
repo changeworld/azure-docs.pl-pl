@@ -129,6 +129,8 @@
           items:
             - name: Odzyskiwanie po awarii maszyn wirtualnych platformy Azure po migracji na platformę Azure
               href: azure-to-azure-replicate-after-migration.md
+            - name: Odzyskiwanie po awarii maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
+              href: azure-to-azure-powershell.md
         - name: 'Replikacja, tryb failover i powrót po awarii'
           items:
             - name: Włączanie replikacji Azure–Azure

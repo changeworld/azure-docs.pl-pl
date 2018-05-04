@@ -102,6 +102,8 @@
           href: disk-scalability-targets.md
         - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Jak włączyć akcelerator zapisu
+          href: how-to-enable-write-accelerator.md
         - name: Rozwiązywanie problemów z dołączonymi dyskami VHD
           href: troubleshoot-vhds.md
     - name: Networking
@@ -187,6 +189,8 @@
           href: move-vm.md
         - name: Zmiana rozmiaru maszyny wirtualnej
           href: resize-vm.md
+        - name: Przełączanie dysku systemu operacyjnego
+          href: os-disk-swap.md
         - name: Tagowanie maszyny wirtualnej
           href: tag.md
         - name: Uruchamianie skryptów na maszynie wirtualnej

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 501364f24e61c29ac0d5909a7dff1df9e93fe6a5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące IaaS obciążeń na platformie Azure
 
@@ -166,7 +166,7 @@ Wszystkie maszyny wirtualne Azure IaaS powinien wzmocnione zabezpieczenia, dzię
 
 Menedżer zgodności zabezpieczeń to bezpłatne narzędzie. Można ją szybko skonfigurować i Zarządzanie pulpitami, tradycyjnych centrów danych i chmury prywatnej i publicznej za pomocą zasad grupy i System Center Configuration Manager.
 
-Menedżer zgodności zabezpieczeń zawiera gotowe do wdrożenia zasad i zarządzania żądaną konfiguracją pakiety konfiguracyjne, które są sprawdzane pod. Te plany bazowe są oparte na [wskazówki dotyczące zabezpieczeń Microsoft](https://technet.microsoft.com/en-us/library/cc184906.aspx) zaleceń oraz z branży najlepsze rozwiązania. Pomagają odejście konfiguracji, adres wymagania dotyczące zgodności i zmniejsza zagrożenia bezpieczeństwa.
+Menedżer zgodności zabezpieczeń zawiera gotowe do wdrożenia zasad i zarządzania żądaną konfiguracją pakiety konfiguracyjne, które są sprawdzane pod. Te plany bazowe są oparte na [wskazówki dotyczące zabezpieczeń Microsoft](https://technet.microsoft.com/library/cc184906.aspx) zaleceń oraz z branży najlepsze rozwiązania. Pomagają odejście konfiguracji, adres wymagania dotyczące zgodności i zmniejsza zagrożenia bezpieczeństwa.
 
 Menedżer zgodności zabezpieczeń służy do importowania bieżącej konfiguracji komputerów za pomocą dwóch różnych metod. Po pierwsze można zaimportować zasad grupy opartych na usłudze Active Directory. Po drugie, można zaimportować konfigurację "wzorcowe" komputera odniesienia przy użyciu [LocalGPO narzędzia](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) do tworzenia kopii zapasowych lokalnych zasadach grupy. Następnie można zaimportować zasad grupy lokalnej do Menedżera zgodności zabezpieczeń.
 

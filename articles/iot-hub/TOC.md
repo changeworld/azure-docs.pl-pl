@@ -1,7 +1,7 @@
+# [Azure IoT Edge — podstawy](../iot-fundamentals/index.yml)
 # [Dokumentacja usługi IoT Hub](index.md)
 
 # Omówienie
-## [Platforma Azure i Internet rzeczy](iot-hub-what-is-azure-iot.md)
 ## [Co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 ## [Zarządzanie urządzeniami — omówienie](iot-hub-device-management-overview.md)
 
@@ -169,7 +169,7 @@
 ##### [Tworzenie certyfikatów — PowerShell](iot-hub-security-x509-create-certificates.md)
 
 # Dokumentacja
-## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=iot-hub)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/iot)
 ## [.NET (usługa)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (urządzenia)](/dotnet/api/microsoft.azure.devices.client)
@@ -186,11 +186,18 @@
 ## [REST (zadania)](https://docs.microsoft.com/rest/api/iothub/jobapi)
 
 # Powiązane
-## [Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
-## [Usługa Azure IoT Hub Device Provisioning](https://azure.microsoft.com/documentation/services/iot-dps/)
-## [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)
-## [Stream Analytics](https://azure.microsoft.com/documentation/services/stream-analytics/)
-## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
+## Rozwiązania 
+### [Wstępnie skonfigurowane rozwiązania usługi IoT Suite](/azure/iot-suite) 
+### [Centrala IoT](https://docs.microsoft.com/microsoft-iot-central/) 
+## Usługi platformy 
+### [IoT Hub](/azure/iot-hub) 
+### [Usługa IoT Hub Device Provisioning](/azure/iot-dps)
+### [Zestawy SDK usługi IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [Time Series Insights](/azure/time-series-insights) 
+## Brzeg 
+### [IoT Edge](/azure/iot-edge) 
+### [Zestawy SDK urządzeń IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # Zasoby
 ## [Certyfikat platformy Microsoft Azure dla IoT — wykaz urządzeń](https://catalog.azureiotsuite.com/)

@@ -24,6 +24,8 @@
           href: migrate-scenarios-overview.md
         - name: Scenariusz 1 — ocena zasobów lokalnych pod kątem migracji na platformę Azure
           href: migrate-scenarios-assessment.md
+        - name: Scenariusz 2 — migracja metodą „lift-and-shift” na platformę Azure
+          href: migrate-scenarios-lift-and-shift.md
     - name: Odnajdywanie i ocenianie w dużym środowisku
       href: how-to-scale-assessment.md
     - name: Grupowanie maszyn

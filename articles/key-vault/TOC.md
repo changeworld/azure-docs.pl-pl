@@ -1,4 +1,4 @@
-# [Dokumentacja usługi Key Vault](index.md)
+# [Dokumentacja usługi Key Vault](index.yml)
 
 # Omówienie
 ## [Omówienie usługi Key Vault](key-vault-overview.md)
@@ -9,13 +9,13 @@
 ## [Tworzenie magazynu kluczy — Portal](quick-create-portal.md)
 
 # Samouczki
-## [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z magazynu kluczy](tutorial-web-application-keyvault.md)
-# Przykłady
-## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=key-vault)
-# Pojęcia
+## [Odczytywanie wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md)
 ## [Rozpoczęcie pracy z usługą Key Vault](key-vault-get-started.md)
 ## [Konfigurowanie rotacji i inspekcji kluczy](key-vault-key-rotation-log-monitoring.md)
 ## [Korzystanie z usługi Key Vault z poziomu aplikacji sieci Web](key-vault-use-from-web-application.md)
+# Przykłady
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# Pojęcia
 ## [Środowiska zabezpieczeń](key-vault-ovw-security-worlds.md)
 ## [Usuwanie nietrwałe](key-vault-ovw-soft-delete.md)
 ## [Klucze kont magazynu](key-vault-ovw-storage-keys.md)

@@ -246,11 +246,13 @@
       items:
         - name: Omówienie monitorowania
           href: service-fabric-diagnostics-overview.md
-        - name: Zdarzenia klastra
+        - name: Monitorowanie klastrów
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
-            - name: Kanał operacyjny
-              href: service-fabric-diagnostics-event-generation-operational.md
+            - name: Zdarzenia usługi Service Fabric
+              href: service-fabric-diagnostics-events.md
+            - name: Omówienie bazy danych EventStore
+              href: service-fabric-diagnostics-eventstore.md
             - name: Zdarzenia interfejsu Reliable Services
               href: service-fabric-reliable-services-diagnostics.md
             - name: Zdarzenia interfejsu Reliable Actors
@@ -507,6 +509,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure Resource Manager
                   href: service-fabric-cluster-creation-via-arm.md
+                - name: Klaster używający nazwy pospolitej certyfikatu
+                  href: service-fabric-create-cluster-using-cert-cn.md
             - name: Skalowanie
               items:
                 - name: Ręczne
@@ -519,6 +523,10 @@
               href: service-fabric-cluster-security-roles.md
             - name: Otwieranie portu w module równoważenia obciążenia
               href: create-load-balancer-rule.md
+            - name: Zmienianie certyfikatu klastra na nazwę pospolitą
+              href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+            - name: Ręczne przerzucanie certyfikatów klastra
+              href: service-fabric-cluster-rollover-cert-cn.md
             - name: Zarządzanie certyfikatami klastra
               href: service-fabric-cluster-security-update-certs-azure.md
             - name: Usuwanie
@@ -567,6 +575,8 @@
               href: service-fabric-diagnostics-oms-containers.md
         - name: Monitorowanie klastrów
           items:
+            - name: Interfejsy API wykonywania zapytań w bazie danych EventStore
+              href: service-fabric-diagnostics-eventstore-query.md
             - name: Diagnostyka Azure dla systemu Windows
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Diagnostyka Azure dla systemu Linux
@@ -630,6 +640,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Zdarzenia usługi Service Fabric
+      href: service-fabric-diagnostics-event-generation-operational.md
     - name: Konfigurowanie ustawień klastra i zasad uaktualniania sieci szkieletowej
       href: service-fabric-cluster-fabric-settings.md
     - name: Schemat XML modelu usług

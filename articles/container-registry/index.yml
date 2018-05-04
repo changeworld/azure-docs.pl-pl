@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentacja usługi Azure Container Registry
 metadata:
   title: Dokumentacja usługi Azure Container Registry — samouczki | Microsoft Docs
-  description: Usługa Azure Container Registry umożliwia przechowywanie obrazów wdrożeń kontenerów dowolnego typu i zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.
+  description: Usługa Azure Container Registry umożliwia kompilowanie i przechowywanie obrazów wdrożeń kontenerów dowolnego typu oraz zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.
   services: container-registry
   author: czeumault
   manager: carolz
@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: c4b8cc1a9d56f1fcf94e79fbef3c025fa8e51641
-  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.openlocfilehash: 9cb59b1c9a8e3e219346b6dbac98246fc92b2412
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/28/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
-  description: Usługa Azure Container Registry umożliwia przechowywanie obrazów wdrożeń kontenerów dowolnego typu i zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.
+  description: Usługa Azure Container Registry umożliwia kompilowanie i przechowywanie obrazów wdrożeń kontenerów dowolnego typu oraz zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -48,6 +48,7 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
+    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">Kompilowanie obrazów kontenerów przy użyciu kompilacji usługi ACR (wersja zapoznawcza)</a>
     - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Replikacja geograficzna usługi Container Registry (wersja zapoznawcza)</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Usługa Container Registry z usługą Azure Container Instances</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Usługa Container Registry z usługą Azure Container Service (AKS)</a>

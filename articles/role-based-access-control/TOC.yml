@@ -1,0 +1,37 @@
+- name: Omówienie zarządzania dostępem
+  href: manage-access-to-azure-resources.md
+- name: Dostęp do zasobów na platformie Azure
+  href: rbac-and-directory-admin-roles.md
+- name: Kontrola dostępu oparta na rolach (RBAC)
+  href: overview.md
+  items:
+    - name: Zarządzanie przypisaniami ról
+      items:
+        - name: Użytkownik
+          href: role-assignments-users.md
+        - name: Zasób
+          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST
+          href: role-assignments-rest.md
+    - name: Wbudowane role
+      href: built-in-roles.md
+    - name: Role niestandardowe
+      href: custom-roles.md
+    - name: Przypisywanie ról niestandardowych dla użytkowników wewnętrznych i zewnętrznych
+      href: role-assignments-external-users.md
+    - name: Dzienniki aktywności
+      href: change-history-report.md
+    - name: Podniesienie poziomu dostępu administratora dzierżawy
+      href: elevate-access-global-admin.md
+    - name: Rozwiązywanie problemów
+      href: troubleshooting.md
+    - name: Operacje dostawcy zasobów
+      href: resource-provider-operations.md
+- name: Usługa Privileged Identity Management (PIM) dla Kontroli dostępu opartej na rolach
+  href: pim-azure-resource.md
+- name: Dostęp warunkowy do zarządzania platformy Azure
+  href: conditional-access-azure-management.md

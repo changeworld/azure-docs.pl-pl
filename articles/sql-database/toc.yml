@@ -74,8 +74,10 @@
       href: sql-database-servers-databases.md
     - name: Wystąpienie zarządzane
       href: sql-database-managed-instance.md
-    - name: Warstwy usług
-      href: sql-database-service-tiers.md
+    - name: Warstwy usług oparte na jednostkach DTU
+      href: sql-database-service-tiers-dtu.md
+    - name: Warstwy usług oparte na rdzeniach wirtualnych
+      href: sql-database-service-tiers-vcore.md
     - name: Skalowanie odczytu w poziomie
       href: sql-database-read-scale-out.md
     - name: Limity zasobów na podstawie jednostek DTU
@@ -412,8 +414,12 @@
               href: saas-tenancy-schema-management.md
             - name: Raportowanie międzydzierżawowe
               href: saas-tenancy-cross-tenant-reporting.md
-            - name: Proces ETL na potrzeby analizy
-              href: saas-tenancy-tenant-analytics.md
+            - name: Analiza dzierżawy
+              items:
+                - name: Przy użyciu bazy danych SQL
+                  href: saas-tenancy-tenant-analytics.md
+                - name: Przy użyciu magazynu danych SQL
+                  href: saas-tenancy-tenant-analytics-adf.md
             - name: Odzyskiwanie po awarii przy użyciu przywracania geograficznego
               href: saas-dbpertenant-dr-geo-restore.md
             - name: Odzyskiwanie po awarii przy użyciu replikacji geograficznej bazy danych

@@ -67,6 +67,8 @@
           href: insights-alerts-powershell.md
         - name: Akcje elementu webhook dla dziennika alertów
           href: monitor-alerts-unified-log-webhook.md
+        - name: Tworzenie nowszego alertu metryki za pomocą szablonu usługi Resource Manager
+          href: monitoring-create-metric-alerts-with-templates.md
         - name: Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
           href: monitoring-enable-alerts-using-template.md
         - name: Kopiowanie alertów z portalu OMS do witryny Azure Portal

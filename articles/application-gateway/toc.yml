@@ -1,0 +1,127 @@
+- name: Dokumentacja usługi Application Gateway
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Bramy aplikacji — informacje
+      href: overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Bezpośredni ruch internetowy — portal
+      href: quick-create-portal.md
+    - name: Bezpośredni ruch internetowy — PowerShell
+      href: quick-create-powershell.md
+    - name: Bezpośredni ruch internetowy — interfejs wiersza polecenia platformy Azure
+      href: quick-create-cli.md
+- name: Samouczki
+  items:
+    - name: Zarządzanie ruchem internetowym
+      href: tutorial-manage-web-traffic-cli.md
+    - name: Ograniczanie ruchu internetowego
+      href: tutorial-restrict-web-traffic-cli.md
+    - name: Zabezpieczanie przy użyciu protokołu SSL
+      href: tutorial-ssl-cli.md
+    - name: Hostowanie wielu witryn
+      href: tutorial-multiple-sites-cli.md
+    - name: Kierowanie według adresu URL
+      href: tutorial-url-route-cli.md
+    - name: Przekierowywanie ruchu internetowego
+      href: tutorial-url-redirect-cli.md
+- name: Przykłady
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
+- name: Pojęcia
+  items:
+    - name: Zapora aplikacji sieci Web
+      href: waf-overview.md
+    - name: Routing adresów URL
+      href: url-route-overview.md
+    - name: Hosting wielu witryn
+      href: multiple-site-overview.md
+    - name: Kończenie żądań protokołu SSL
+      href: ssl-overview.md
+    - name: Przekierowywanie adresu URL
+      href: redirect-overview.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Tworzenie bramy aplikacji
+      items:
+        - name: Szablon
+          href: create-vmss-template.md
+        - name: Aplikacje internetowe — PowerShell
+          href: create-web-app.md
+    - name: Włączanie kończenia żądań protokołu SSL — portal
+      href: create-ssl-portal.md
+    - name: Hostowanie wielu witryn — portal
+      href: create-multiple-sites-portal.md
+    - name: Przekierowywanie ruchu zewnętrznego
+      items:
+        - name: Azure PowerShell
+          href: redirect-external-site-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: redirect-external-site-cli.md
+    - name: Przekierowywanie protokołu HTTP do HTTPS
+      items:
+        - name: Azure PowerShell
+          href: redirect-http-to-https-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: redirect-http-to-https-cli.md
+    - name: Przekierowywanie ruchu wewnętrznego
+      items:
+        - name: Azure PowerShell
+          href: redirect-internal-site-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: redirect-internal-site-cli.md
+    - name: Ograniczanie ruchu internetowego — portal
+      href: create-waf-portal.md
+    - name: Kierowanie w oparciu o adres URL — portal
+      href: create-url-route-portal.md
+    - name: Zarządzanie ruchem internetowym przy użyciu programu Azure PowerShell
+      href: tutorial-manage-web-traffic-powershell.md
+    - name: Ograniczanie ruchu internetowego przy użyciu programu Azure PowerShell
+      href: tutorial-restrict-web-traffic-powershell.md
+    - name: Kończenie żądań protokołu SSL przy użyciu programu Azure PowerShell
+      href: tutorial-ssl-powershell.md
+    - name: Hostowanie wielu witryn przy użyciu programu Azure PowerShell
+      href: tutorial-multiple-sites-powershell.md
+    - name: Kierowanie ruchu sieciowego przy użyciu programu Azure PowerShell
+      href: tutorial-url-route-powershell.md
+    - name: Przekierowywanie ruchu sieciowego przy użyciu programu Azure PowerShell
+      href: tutorial-url-redirect-powershell.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/network/application-gateway
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/applicationgateway
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Zasoby
+  items:
+    - name: Tworzenie szablonów
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Szablony społeczności
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
+    - name: Często zadawane pytania
+      href: application-gateway-faq.md

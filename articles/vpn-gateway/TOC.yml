@@ -1,0 +1,227 @@
+- name: Dokumentacja usługi VPN Gateway
+  href: index.md
+- name: Omówienie
+  items:
+    - name: VPN Gateway — informacje
+      href: vpn-gateway-about-vpngateways.md
+- name: Samouczki
+  items:
+    - name: Tworzenie bramy VPN Gateway i zarządzanie nią
+      href: vpn-gateway-tutorial-create-gateway-powershell.md
+- name: Przykłady
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: Pojęcia
+  items:
+    - name: Planowanie i projektowanie dla usługi VPN Gateway
+      href: vpn-gateway-plan-design.md
+    - name: Informacje na temat ustawień usługi VPN Gateway
+      href: vpn-gateway-about-vpn-gateway-settings.md
+    - name: Urządzeniach sieci VPN — informacje
+      href: vpn-gateway-about-vpn-devices.md
+    - name: Wymagania kryptograficzne — informacje
+      href: vpn-gateway-about-compliance-crypto.md
+    - name: Protokół BGP i usługa VPN Gateway — informacje
+      href: vpn-gateway-bgp-overview.md
+    - name: Połączenia o wysokiej dostępności — informacje
+      href: vpn-gateway-highlyavailable.md
+    - name: Połączenia typu punkt-lokacja — informacje
+      href: point-to-site-about.md
+    - name: Routing typu punkt-lokacja — informacje
+      href: vpn-gateway-about-point-to-site-routing.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Konfigurowanie połączeń typu lokacja-lokacja
+      items:
+        - name: Azure Portal
+          href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-create-site-to-site-rm-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
+    - name: Pobieranie skryptów konfiguracji urządzenia sieci VPN
+      href: vpn-gateway-download-vpndevicescript.md
+    - name: Konfigurowanie połączeń typu punkt-lokacja — natywne uwierzytelnianie certyfikatu platformy Azure
+      items:
+        - name: Konfigurowanie sieci VPN typu P2S
+          items:
+            - name: Azure Portal
+              href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
+            - name: Azure PowerShell
+              href: vpn-gateway-howto-point-to-site-rm-ps.md
+        - name: Generowanie certyfikatów z podpisem własnym
+          items:
+            - name: Azure PowerShell
+              href: vpn-gateway-certificates-point-to-site.md
+            - name: Makecert
+              href: vpn-gateway-certificates-point-to-site-makecert.md
+        - name: Tworzenie i instalowanie plików konfiguracji klienta sieci VPN
+          href: point-to-site-vpn-client-configuration-azure-cert.md
+        - name: Instalowanie certyfikatów klienta
+          href: point-to-site-how-to-vpn-client-install-azure-cert.md
+    - name: Konfigurowanie połączeń typu punkt-lokacja — uwierzytelnianie usługi RADIUS
+      items:
+        - name: Konfigurowanie sieci VPN typu P2S
+          items:
+            - name: Azure PowerShell
+              href: point-to-site-how-to-radius-ps.md
+        - name: Tworzenie i instalowanie plików konfiguracji klienta sieci VPN
+          href: point-to-site-vpn-client-configuration-radius.md
+        - name: Integrowanie uwierzytelniania RADIUS w sieci VPN typu P2S za pomocą serwera NPS
+          href: vpn-gateway-radiuis-mfa-nsp.md
+    - name: Konfigurowanie połączeń między sieciami wirtualnymi
+      items:
+        - name: Azure Portal
+          href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-vnet-vnet-rm-ps.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: vpn-gateway-howto-vnet-vnet-cli.md
+    - name: Konfigurowanie połączenia sieć wirtualna-sieć wirtualna między modelami wdrażania
+      items:
+        - name: Azure Portal
+          href: vpn-gateway-connect-different-deployment-models-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-connect-different-deployment-models-powershell.md
+    - name: Konfigurowanie połączeń między lokacjami i współistniejących połączeń usługi ExpressRoute
+      items:
+        - name: Azure PowerShell
+          href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Konfigurowanie wielu połączeń typu lokacja-lokacja
+      items:
+        - name: Azure Portal
+          href: vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md
+    - name: Łączenie wielu urządzeń sieci VPN opartej na zasadach
+      items:
+        - name: Azure PowerShell
+          href: vpn-gateway-connect-multiple-policybased-rm-ps.md
+    - name: Konfigurowanie zasad IPsec/IKE dla połączeń
+      items:
+        - name: Azure PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: Konfigurowanie połączeń typu aktywne-aktywne o wysokiej dostępności
+      items:
+        - name: Azure PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
+    - name: 'Routing, protokół BGP i komunikacja równorzędna sieci wirtualnych'
+      items:
+        - name: Konfigurowanie protokołu BGP dla bramy sieci VPN
+          items:
+            - name: Azure PowerShell
+              href: vpn-gateway-bgp-resource-manager-ps.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: bgp-how-to-cli.md
+        - name: Konfigurowanie wymuszonego tunelowania
+          items:
+            - name: Azure PowerShell
+              href: vpn-gateway-forced-tunneling-rm.md
+            - name: Azure PowerShell (wersja klasyczna)
+              href: vpn-gateway-about-forced-tunneling.md
+        - name: Konfigurowanie tranzytu bram na potrzeby sieci komunikacji równorzędnej sieci wirtualnych
+          href: vpn-gateway-peering-gateway-transit.md
+    - name: Modyfikowanie ustawień lokalnej bramy sieci
+      items:
+        - name: Azure Portal
+          href: vpn-gateway-modify-local-network-gateway-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-modify-local-network-gateway.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: vpn-gateway-modify-local-network-gateway-cli.md
+    - name: Tworzenie bramy sieci VPN opartej na trasie
+      items:
+        - name: Azure Portal
+          href: create-routebased-vpn-gateway-portal.md
+        - name: Azure PowerShell
+          href: create-routebased-vpn-gateway-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: create-routebased-vpn-gateway-cli.md
+    - name: Weryfikowanie połączenia z bramą VPN Gateway
+      href: vpn-gateway-verify-connection-resource-manager.md
+    - name: Resetowanie bramy VPN Gateway
+      href: vpn-gateway-resetgw-classic.md
+    - name: Usuwanie bramy VPN Gateway
+      items:
+        - name: Azure Portal
+          href: vpn-gateway-delete-vnet-gateway-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-delete-vnet-gateway-powershell.md
+    - name: Jednostki SKU bramy (starsze)
+      href: vpn-gateway-about-skus-legacy.md
+    - name: Konfigurowanie urządzeń sieci VPN innych firm
+      items:
+        - name: Omówienie i konfiguracja platformy Azure
+          href: vpn-gateway-3rdparty-device-config-overview.md
+        - name: 'Przykład: urządzenie ASA Cisco (IKEv2/bez protokołu BGP)'
+          href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: Rozwiązywanie problemów
+      href: vpn-gateway-troubleshoot.md
+      items:
+        - name: Ustawienia sieci VPN lub urządzenia zapory sugerowane przez społeczność
+          href: vpn-gateway-third-party-settings.md
+        - name: Konfigurowanie i weryfikowanie połączeń sieci wirtualnej lub sieci VPN
+          href: 'https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections'
+        - name: Sprawdzanie przepustowości sieci VPN do sieci wirtualnej
+          href: vpn-gateway-validate-throughput-to-vnet.md
+        - name: Połączenia punkt-lokacja
+          items:
+            - name: Problemy z połączeniem punkt-lokacja
+              href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
+            - name: Problemy z połączeniem punkt-lokacja — klient sieci VPN w systemie Mac OS X
+              href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
+        - name: Problemy dotyczące połączenia lokacja-lokacja
+          items:
+            - name: Połączenia typu lokacja-lokacja
+              href: vpn-gateway-troubleshoot-site-to-site-cannot-connect.md
+            - name: Połączenie lokacja-lokacja jest sporadycznie rozłączane
+              href: vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md
+    - name: Artykuły dotyczące klasycznego modelu wdrażania
+      items:
+        - name: Konfigurowanie połączenia lokacja-lokacja
+          href: vpn-gateway-howto-site-to-site-classic-portal.md
+        - name: Konfigurowanie połączenia punkt-lokacja
+          href: vpn-gateway-howto-point-to-site-classic-azure-portal.md
+        - name: Konfigurowanie połączenia sieć wirtualna-sieć wirtualna
+          href: vpn-gateway-howto-vnet-vnet-portal-classic.md
+        - name: Konfigurowanie wymuszonego tunelowania
+          href: vpn-gateway-about-forced-tunneling.md
+        - name: Usuwanie bramy VPN Gateway
+          href: vpn-gateway-delete-vnet-gateway-classic-powershell.md
+        - name: Konfigurowanie wielu połączeń S2S
+          href: vpn-gateway-multi-site.md
+        - name: Konfigurowanie bramy VPN Gateway
+          href: vpn-gateway-configure-vpn-gateway-mp.md
+        - name: Migracja z modelu klasycznego do usługi Resource Manager
+          href: vpn-gateway-classic-resource-manager-migration.md
+- name: Dokumentacja
+  items:
+    - name: Azure PowerShell
+      href: '/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn'
+    - name: Azure PowerShell (wersja klasyczna)
+      href: '/powershell/module/azure/?view=azuresmps-3.7.0#networking'
+    - name: REST
+      href: /rest/api/network/virtualnetworkgateways
+    - name: REST (klasyczny)
+      href: 'https://msdn.microsoft.com/library/jj154113'
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/network/vnet-gateway
+- name: Zasoby
+  items:
+    - name: Brama sieci VPN — często zadawane pytania
+      href: vpn-gateway-vpn-faq.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Limity usług i subskrypcji
+      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Umowa SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway'

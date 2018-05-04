@@ -45,6 +45,8 @@
       href: container-instances-troubleshooting.md
     - name: Agenci kompilacji usługi Jenkins w usłudze ACI
       href: container-instances-jenkins.md
+    - name: Monitorowanie użycia procesora i pamięci
+      href: container-instances-monitor.md
     - name: Konfigurowanie woluminów danych
       items:
         - name: Azure Files
