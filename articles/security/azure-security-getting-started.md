@@ -1,6 +1,6 @@
 ---
-title: "Wprowadzenie do zabezpieczeń Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie funkcji zabezpieczeń Microsoft Azure oraz Ogólne zagadnienia dotyczące organizacji, które migracji ich zasoby do dostawcy usług w chmurze."
+title: Wprowadzenie do zabezpieczeń Microsoft Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie funkcji zabezpieczeń Microsoft Azure oraz Ogólne zagadnienia dotyczące organizacji, które migracji ich zasoby do dostawcy usług w chmurze.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: e1ee07f2284df925b8bbd9050de7ae40fa66bf65
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Microsoft Azure
 Podczas tworzenia lub migracji zasobów informatycznych do dostawcy usług w chmurze są zależne możliwości Twojej organizacji do ochrony aplikacji i danych z usług i formanty zapewniają do zarządzania zabezpieczeniami elementów zawartości opartej na chmurze.
@@ -45,7 +45,7 @@ Dostępne są również następujące funkcje zarządzania tożsamościami i dos
 * Usługa Azure AD umożliwia [logowanie jednokrotne](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) do aplikacji SaaS, niezależnie od lokalizacji hostowania. Niektóre aplikacje są sfederowane z usługą Azure AD, a inne korzystają z logowania jednokrotnego z użyciem hasła. Aplikacje federacyjne mogą także obsługiwać inicjowanie obsługi administracyjnej użytkowników i przechowywanie haseł.
 * Dostęp do danych w usłudze [Azure Storage](https://azure.microsoft.com/services/storage/) jest kontrolowany za pośrednictwem uwierzytelniania. Każde konto magazynu ma klucza podstawowego ([klucz konta magazynu](https://msdn.microsoft.com/library/azure/ee460785.aspx), lub SAK) i klucz tajny pomocniczy (sygnatury dostępu współdzielonego, lub SAS).
 * Usługa Azure AD zapewnia jako usługi przy użyciu federacji tożsamości za pomocą [Active Directory Federation Services](../active-directory/fundamentals-identity.md), synchronizacji i replikacji z lokalnymi katalogami.
-* [Usługa Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) jest usługą Multi-Factor authentication, która wymaga od użytkowników sprawdzić logowania przy użyciu aplikacji mobilnej, połączenia telefonicznego lub wiadomości SMS. Mogą być używane z usługą Azure AD aby ułatwić bezpieczną lokalną zasobów z serwera usługi Azure Multi-Factor Authentication, a także z niestandardowych aplikacji i katalogów przy użyciu zestawu SDK.
+* [Usługa Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) jest usługą Multi-Factor authentication, która wymaga od użytkowników sprawdzić logowania przy użyciu aplikacji mobilnej, połączenia telefonicznego lub wiadomości SMS. Mogą być używane z usługą Azure AD aby ułatwić bezpieczną lokalną zasobów z serwera usługi Azure Multi-Factor Authentication, a także z niestandardowych aplikacji i katalogów przy użyciu zestawu SDK.
 * [Usługi domenowe Azure AD](https://azure.microsoft.com/services/active-directory-ds/) umożliwia dołączenie maszyn wirtualnych platformy Azure do domeny bez wdrażania kontrolerów domeny. Możesz Zaloguj się do tych maszyn wirtualnych za pomocą firmowych poświadczeń usługi Active Directory i administrować przyłączonych do domeny maszyn wirtualnych za pomocą zasad grupy, aby wymusić plany bazowe zabezpieczeń na wszystkich maszyn wirtualnych platformy Azure.
 * [Usługa Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) udostępnia usługę zarządzania tożsamości globalnego wysokiej dostępności dla aplikacji dla użytkowników, która może obsłużyć setki milionów tożsamości. Można ją łatwo integrować z platformami mobilnymi i platformami sieci Web. Użytkownicy mogą rejestrować do wszystkich aplikacji za pomocą środowiska można dostosować przy użyciu istniejących kont społecznościowych lub tworząc nowe poświadczenia.
 
@@ -84,18 +84,18 @@ Platforma Azure korzysta zaporą funkcji hypervisor (filtr pakietów), która je
 Istnieją dwie kategorie reguł, które są w tym miejscu programowane:
 
 * **Reguły konfiguracji lub infrastruktury maszyny**: Domyślnie cała komunikacja jest zablokowany. Istnieją wyjątki, aby umożliwić maszynę wirtualną do wysyłania i odbierania ruchu DHCP i DNS. Maszyny wirtualne można również wysyłać ruch do Internetu "public" i przesyłają dane do innych maszyn wirtualnych w ramach klastra i Serwer aktywacji systemu operacyjnego. Maszyn wirtualnych dozwolonych lokalizacji docelowych wychodzących nie zawierają Azure routera podsieci, zarządzania platformy Azure, Utwórz kopię zakończenia i inne właściwości firmy Microsoft.
-* **Plik konfiguracji roli**: definiuje przychodzących list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy. Na przykład, jeśli dzierżawcy frontonu sieci Web na porcie 80 na maszynie wirtualnej, następnie Azure otwiera port TCP 80 do wszystkich adresów IP w przypadku konfigurowania punktu końcowego w [Azure klasycznego modelu wdrażania](../azure-resource-manager/resource-manager-deployment-model.md). Jeśli maszyna wirtualna ma wstecz roli zakończenia lub procesu roboczego uruchomiona, zostanie otwarty roli procesu roboczego tylko do maszyny wirtualnej w ramach tej samej dzierżawy.
+* **Plik konfiguracji roli**: definiuje przychodzących list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy. Na przykład jeśli w przypadku konfigurowania punktu końcowego w modelu [zarządzania usługą systemu Azure](../azure-resource-manager/resource-manager-deployment-model.md) dzierżawca ma fronton sieci Web w porcie 80 określonej maszyny wirtualnej, system Azure otwiera port 80 protokołu TCP dla wszystkich adresów IP. Platforma Azure ma kontroli bezpieczeństwa w miejscu, aby zaimplementować ograniczenia zagrożeń, a także aby pomóc zminimalizować potencjalne zagrożenia w swoich środowiskach klientów.
 
 ## <a name="isolation"></a>Izolacja
-Wymaganie dotyczące zabezpieczeń innej chmurze ważne jest separacji, aby uniemożliwić przesyłanie nieautoryzowanych i niezamierzone informacji między wdrożeniami w udostępnionym przypadku architektury wielodostępnej.
+Poniższa lista zawiera podsumowanie możliwości ograniczenie zagrożeń oferowanych na platformie Azure:
 
-Implementuje Azure [kontroli dostępu do sieci](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) i podział poprzez izolowanie od sieci VLAN, listy ACL, obciążenia równoważenia i filtry IP. Ogranicza ona zakres zewnętrznego ruchu przychodzącego porty i protokoły na maszynach wirtualnych w zdefiniowanych przez użytkownika. Azure implementuje filtrowanie, aby zapobiec fałszywych ruchu i ograniczania ruchu przychodzącego i wychodzącego do TPM składników sieciowych. Zasady przepływu ruchu są implementowane na urządzeniach ochrony brzegowej, które domyślnie nie zezwalają na ruch.
+Azure ochrony przed złośliwym oprogramowaniem](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) jest włączona domyślnie na wszystkich serwerach infrastruktury. Możesz opcjonalnie można udostępnić go w maszynach wirtualnych. W ramach subskrypcji, takie jak zapory aplikacji sieci web z wdrożeniem rozwiązania innych firm zabezpieczeń Barracuda. Zasady przepływu ruchu są implementowane na urządzeniach ochrony brzegowej, które domyślnie nie zezwalają na ruch.
 
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-getting-started/sec-azgsfig3.PNG)
 
 Do oddzielania ruchu w sieci wewnętrznej od ruchu zewnętrznego służy Translator adresów sieciowych (NAT, Network Address Translation). Ruch wewnętrzny nie podlega routingowi zewnętrznemu. [Wirtualne adresy IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx), które podlegają routingowi zewnętrznemu, są przekształcane na [wewnętrzne dynamiczne adresy IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx), które podlegają routingowi tylko w obrębie platformy Azure.
 
-Zewnętrznego ruchu do maszyn wirtualnych platformy Azure jest zaporą za pomocą listy kontroli dostępu na routerach, równoważenia obciążenia i przełączniki warstwy 3. Dozwolone są tylko określone znane protokoły. Listy ACL są spełnione, aby ograniczyć ruch pochodzący z maszyn wirtualnych gościa do innych sieci VLAN, używany do zarządzania. Ponadto ruch filtrowane za pomocą filtrów IP na hoście, który dalsze systemu operacyjnego ogranicza ruch w obu warstwach łącza i sieci danych.
+Podejście firmy Microsoft do testowania penetracji obejmuje "zespołu kart interfejsu sieciowego czerwony," który obejmuje specjalistom ds. zabezpieczeń firmy Microsoft do zaatakowania systemów produkcyjnych na żywo (z systemem innym niż klienta) na platformie Azure, aby przetestować ochronę przed rzeczywistych, zaawansowane, zagrożenia. Dozwolone są tylko określone znane protokoły. Listy ACL są spełnione, aby ograniczyć ruch pochodzący z maszyn wirtualnych gościa do innych sieci VLAN, używany do zarządzania. Ponadto ruch filtrowane za pomocą filtrów IP na hoście, który dalsze systemu operacyjnego ogranicza ruch w obu warstwach łącza i sieci danych.
 
 ### <a name="how-azure-implements-isolation"></a>Implementowanie izolacji na platformie Azure
 Kontroler sieci szkieletowej Azure jest odpowiedzialny za przydzielanie zasobów infrastruktury do dzierżawy obciążeń i zarządza jednokierunkowe komunikacji między hostem maszyny wirtualnej. Azure funkcji hypervisor wymusza pamięci i procesu separacji między maszynami wirtualnymi i bezpiecznie kieruje ruchem sieciowym dzierżawcom systemu operacyjnego gościa. Azure implementuje również izolacji dzierżawców, magazynu i sieci wirtualnych.
@@ -111,7 +111,7 @@ Kontroler sieci szkieletowej Azure jest odpowiedzialny za przydzielanie zasobów
 
 Subskrypcji może zawierać wiele izolowane sieci prywatnych (i obejmują zapory, równoważenia obciążenia i translatora adresów sieciowych).
 
-Platforma Azure udostępnia trzy główne poziomy podziału sieci w każdym klastrze Azure służące do logicznego rozdzielania ruchu. [Wirtualne sieci lokalne](https://azure.microsoft.com/services/virtual-network/) (VLAN) jest używany do rozdzielania ruchu klientów od pozostałej części sieci platformy Azure. Dostęp do sieci platformy Azure spoza klastra jest ograniczony za pośrednictwem modułów równoważenia obciążenia.
+Platforma Azure udostępnia trzy główne poziomy podziału sieci w każdym klastrze Azure służące do logicznego rozdzielania ruchu. [Wirtualnych sieci lokalnych](https://azure.microsoft.com/services/virtual-network/) (VLAN) służą do rozdzielania ruchu klientów od pozostałej części sieci Azure. Dostęp do sieci platformy Azure spoza klastra jest ograniczony za pośrednictwem modułów równoważenia obciążenia.
 
 Ruch sieciowy do i z maszyn wirtualnych musi przejść przez przełącznik wirtualny funkcji hypervisor. Składnik filtru IP w katalogu głównym systemu operacyjnego izoluje głównej maszyny wirtualnej z maszyn wirtualnych gościa i maszyn wirtualnych gościa od siebie nawzajem. Wykonuje filtrowania ruchu w celu ograniczenia komunikacji między węzłami dzierżawcy i publiczny Internet (w oparciu konfigurację usługi klienta), ich oddzielenie od pozostałych dzierżawców.
 
@@ -126,11 +126,11 @@ Można umieścić maszyny wirtualne na [sieci wirtualnych platformy Azure](https
 
 Następujące technologie sieci wirtualnej platformy Azure umożliwia ułatwić bezpieczną komunikację w sieci wirtualnej:
 
-* [**Sieciowe grupy zabezpieczeń (NSG)**](../virtual-network/virtual-networks-nsg.md). Można użyć grupy NSG sterujących ruchem do co najmniej jedno wystąpienie maszyny wirtualnej w Twojej sieci wirtualnej. Sieciowa grupa zabezpieczeń zawiera reguły kontroli dostępu, które zezwalają na ruch lub go blokują w oparciu o kierunek ruchu, protokół, adres źródłowy i docelowy oraz port.
-* [**Zdefiniowane przez użytkownika routingu**](../virtual-network/virtual-networks-udr-overview.md). Możesz sterować przekazywaniem pakietów przez urządzenie wirtualne przez tworzenie trasy zdefiniowane przez użytkownika, określające następnego skoku dla pakietów przepływać do określonej podsieci, aby przejść do urządzenia zabezpieczeń sieci wirtualnej.
+* [**Sieć grupy zabezpieczeń (grup zabezpieczeń sieci)**](../virtual-network/virtual-networks-nsg.md). Można użyć grupy NSG sterujących ruchem do co najmniej jedno wystąpienie maszyny wirtualnej w Twojej sieci wirtualnej. Sieciowa grupa zabezpieczeń zawiera reguły kontroli dostępu, które zezwalają na ruch lub go blokują w oparciu o kierunek ruchu, protokół, adres źródłowy i docelowy oraz port.
+* [**Zdefiniowane przez użytkownika routing**](../virtual-network/virtual-networks-udr-overview.md). Możesz sterować przekazywaniem pakietów przez urządzenie wirtualne przez tworzenie trasy zdefiniowane przez użytkownika, określające następnego skoku dla pakietów przepływać do określonej podsieci, aby przejść do urządzenia zabezpieczeń sieci wirtualnej.
 * [**Przekazywanie IP**](../virtual-network/virtual-networks-udr-overview.md). Wirtualne urządzenie zabezpieczeń sieciowych musi umożliwiać odbieranie ruchu przychodzącego, który nie jest do niego adresowany. Aby zezwolić na maszynie wirtualnej odbieranie ruchu kierowanego do innych miejsc docelowych, należy włączyć przesyłanie dalej IP dla maszyny wirtualnej.
 * [**Wymuszane tunelowanie**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md). Umożliwia tunelowania wymuszonego przekierowania lub "force" wszystkie ruch do Internetu generowany przez maszyny wirtualne w sieci wirtualnej z powrotem do lokalizacji lokalnej za pośrednictwem tunelu VPN lokacja lokacja dla inspekcji i inspekcji
-* [**Listy ACL punktu końcowego**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Można kontrolować, komputery, które są dozwolone połączenia przychodzące z Internetu do maszyny wirtualnej w sieci wirtualnej, definiując listy ACL punktu końcowego.
+* [**Punkt końcowy ACL**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Można kontrolować, komputery, które są dozwolone połączenia przychodzące z Internetu do maszyny wirtualnej w sieci wirtualnej, definiując listy ACL punktu końcowego.
 * [**Rozwiązania zabezpieczeń sieciowych oferowane przez partnerów**](https://azure.microsoft.com/marketplace/). Istnieje szereg partnerskich rozwiązań zabezpieczeń sieci, które są dostępne w witrynie Azure Marketplace.
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Jak Azure implementuje sieci wirtualnych i zapór
@@ -180,13 +180,13 @@ Oprócz izolacji, szyfrowania i filtrowania platforma Azure wykorzystuje szereg 
 ### <a name="how-azure-implements-threat-mitigation"></a>Implementowanie ograniczania zagrożeń na platformie Azure
 Platforma Azure ma kontroli bezpieczeństwa w miejscu, aby zaimplementować ograniczenia zagrożeń, a także aby pomóc zminimalizować potencjalne zagrożenia w swoich środowiskach klientów. Poniższa lista zawiera podsumowanie możliwości ograniczenie zagrożeń oferowanych na platformie Azure:
 
-* [Azure ochrony przed złośliwym kodem](azure-security-antimalware.md) jest domyślnie włączone na wszystkich serwerach infrastruktury. Możesz opcjonalnie można udostępnić go w maszynach wirtualnych.
+* [Azure ochrony przed złośliwym oprogramowaniem](azure-security-antimalware.md) jest włączona domyślnie na wszystkich serwerach infrastruktury. Możesz opcjonalnie można udostępnić go w maszynach wirtualnych.
 * Firma Microsoft prowadzi ciągłe monitorowanie serwerów, sieci i aplikacji w celu wykrywania zagrożeń i zapobiegania wykorzystywaniu luk. Zautomatyzowane alerty powiadamiają administratorów o nietypowych zachowaniach, umożliwiając im podejmowanie działań naprawczych w odpowiedzi na zagrożenia wewnętrzne i zewnętrzne.
 * W ramach subskrypcji, takie jak zapory aplikacji sieci web z wdrożeniem rozwiązania innych firm zabezpieczeń [Barracuda](https://techlib.barracuda.com/ng54/deployonazure).
 * Podejście firmy Microsoft do testowania penetracji obejmuje "[zespołu kart interfejsu sieciowego czerwony](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)," który obejmuje specjalistom ds. zabezpieczeń firmy Microsoft do zaatakowania systemów produkcyjnych na żywo (z systemem innym niż klienta) na platformie Azure, aby przetestować ochronę przed rzeczywistych, zaawansowane, zagrożenia.
 * Zintegrowane systemy wdrażania umożliwiają zarządzanie dystrybucją i instalacją poprawek zabezpieczeń na platformie Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Centrum zaufania Azure](https://azure.microsoft.com/support/trust-center/)
 
 [Blog zespołu ds. zabezpieczeń platformy Azure](http://blogs.msdn.com/b/azuresecurity/)

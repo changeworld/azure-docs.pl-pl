@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie lokalnego dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Przewodnik krok po kroku do włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2."
+title: Konfigurowanie lokalnego dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Przewodnik krok po kroku do włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 466cd564f08b07d443db7cb1de59c5778682ed73
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu rejestracji urządzeń usługi Azure Active Directory
 Jeśli wymagane jest użytkownikom Dołącz do miejsca pracy swoje urządzenia osobiste do usługi rejestracji urządzeń usługi Azure Active Directory (Azure AD), urządzeń może być oznaczony znane w organizacji. Poniżej przedstawiono krok po kroku dotyczące włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2.
@@ -89,7 +89,7 @@ Wykonaj kroki opisane na liście kontrolnej, aby włączyć i skonfigurować us�
 | Zakończenie części "Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect." Po zakończeniu pracy, wróć do tego przewodnika. |[Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcjonalnie] Część 4: Włączanie uwierzytelniania wieloskładnikowego
-Zdecydowanie zalecane jest skonfigurowanie jednego z kilku opcji uwierzytelnianie wieloskładnikowe. Jeśli chcesz wymagać uwierzytelniania wieloskładnikowego, zobacz [wybierz rozwiązanie bezpieczeństwa uwierzytelniania wieloskładnikowego](../multi-factor-authentication/multi-factor-authentication-get-started.md). Zawiera opis każdego rozwiązania i łączy ułatwiają konfigurowanie rozwiązania wybranych przez użytkownika.
+Zdecydowanie zalecane jest skonfigurowanie jednego z kilku opcji uwierzytelnianie wieloskładnikowe. Jeśli chcesz wymagać uwierzytelniania wieloskładnikowego, zobacz [wybierz rozwiązanie bezpieczeństwa uwierzytelniania wieloskładnikowego](authentication/concept-mfa-whichversion.md). Zawiera opis każdego rozwiązania i łączy ułatwiają konfigurowanie rozwiązania wybranych przez użytkownika.
 
 ## <a name="part-5-verification"></a>Część 5: Weryfikacja
 Wdrażanie zostało ukończone i można wypróbować niektóre scenariusze. Użyj następujących łączy do eksperymentu w usłudze i zapoznać się z jego funkcji.
@@ -156,7 +156,7 @@ Istnieje wiele różnych sposobów komunikacji ten adres URL dla użytkowników.
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Dołączanie urządzenia Windows 8.1 przy użyciu rejestracji urządzeń usługi Azure Active Directory
 1. Na urządzeniu Windows 8.1, wybierz **ustawienia komputera** > **sieci** > **pracy**.
-2. Wprowadź nazwę użytkownika w formacie nazwy UPN. na przykład  **dan@contoso.com** .
+2. Wprowadź nazwę użytkownika w formacie nazwy UPN. na przykład **dan@contoso.com**.
 3. Wybierz **Join**.
 4. Po wyświetleniu monitu zaloguj się przy użyciu poświadczeń. Urządzenie zostało przyłączone.
 
@@ -186,7 +186,7 @@ Poniższe kroki pokazują, jak wdrożyć ten scenariusz.
 1. Otwórz narzędzie AD FS MMC, a następnie wybierz **usług AD FS** > **relacje zaufania** > **zaufania jednostek uzależnionych**.
 2. Zlokalizuj aplikacji, którego dotyczy ta nowa reguła dostępu. Kliknij prawym przyciskiem myszy aplikację, a następnie wybierz **Edycja reguł oświadczeń**.
 3. Wybierz **reguł autoryzacji wystawiania** , a następnie wybierz **Dodaj regułę**.
-4. Z **reguły oświadczeń** szablonu listy rozwijanej wybierz pozycję **akceptowanie lub odrzucanie użytkowników na podstawie oświadczenia przychodzącego**. Następnie wybierz **dalej**.
+4. Z **reguły oświadczeń** szablonu listy rozwijanej wybierz pozycję **akceptowanie lub odrzucanie użytkowników na podstawie oświadczenia przychodzącego**. Następnie wybierz przycisk **Dalej**.
 5. W **nazwy reguły oświadczeń** wpisz **zezwolenie na dostęp z urządzeń zarejestrowanych**.
 6. Z **typ oświadczenia przychodzącego** listy rozwijanej wybierz **użytkownik jest zarejestrowany**.
 7. W **wartość oświadczenia przychodzącego** wpisz **true**.

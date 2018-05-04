@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 70dff848ce0674461749075e6498741c3eb9a381
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skali maszyny wirtualnej, który używa strefy dostępności
 
@@ -70,15 +70,15 @@ Do korzystania ze stref dostępności, należy utworzyć w zestawie skali [obsł
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Proces tworzenia zestawu skali, który używa strefy dostępności jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-portal.md). Upewnij się, że masz [zarejestrowany dla stref dostępności Podgląd](http://aka.ms/azenroll). Po wybraniu obsługiwanych region platformy Azure można utworzyć skali w jednej ze stref dostępne, jak pokazano w poniższym przykładzie:
+Proces tworzenia zestawu skali, który używa strefy dostępności jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-portal.md). Po wybraniu obsługiwanych region platformy Azure można utworzyć skali w co najmniej jedna strefa dostępne, jak pokazano w poniższym przykładzie:
 
-![Utwórz skali w jednej strefie dostępności](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
+![Utwórz skali w jednej strefie dostępności](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
 Zestaw skali i pomocnicze zasoby, takie jak usługi równoważenia obciążenia Azure i publiczny adres IP, są tworzone w jednej strefie, który określisz.
 
 ## <a name="use-the-azure-cli-20"></a>Użyj Azure CLI 2.0
 
-Proces tworzenia zestawu skali, który używa strefy dostępności jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-cli.md). Do korzystania ze stref dostępności, musisz utworzyć zestaw skali w obsługiwanym regionie Azure i mieć [zarejestrowany dla stref dostępności Podgląd](http://aka.ms/azenroll).
+Proces tworzenia zestawu skali, który używa strefy dostępności jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-cli.md). Do korzystania ze stref dostępność, należy utworzyć na skalę w obsługiwanym regionie Azure.
 
 Dodaj `--zones` parametr [utworzyć az vmss](/cli/azure/vmss#az_vmss_create) polecenia i określić, która strefa do użycia (takich jak strefy *1*, *2*, lub *3*). Poniższy przykład tworzy zestaw o nazwie skalowania pojedynczej strefy *myScaleSet* w strefie *1*:
 

@@ -1,11 +1,11 @@
 ---
-title: "Service Bus z usług .NET i protokołu AMQP 1.0 | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi Azure Service Bus z .NET z protokołu AMQP"
+title: Usługi Azure Service Bus z usług .NET i protokołu AMQP 1.0 | Dokumentacja firmy Microsoft
+description: Za pomocą usługi Azure Service Bus z .NET z protokołu AMQP
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 28b8d7a71f01d8633d020b99fbe6bc5c16f272b4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Usługa Service Bus z .NET za pomocą protokołu AMQP 1.0
 
@@ -71,17 +71,17 @@ W celu ułatwienia współdziałania z klientami z systemem innym niż .NET, nal
 | krótki |krótki |Wartość AMQP |
 | int |int |Wartość AMQP |
 | długa |długa |Wartość AMQP |
-| liczba zmiennoprzecinkowa |liczba zmiennoprzecinkowa |Wartość AMQP |
-| liczba podwójnej precyzji |liczba podwójnej precyzji |Wartość AMQP |
+| Float |Float |Wartość AMQP |
+| double |double |Wartość AMQP |
 | Decimal |decimal128 |Wartość AMQP |
 | char |char |Wartość AMQP |
-| Data/godzina |sygnatura czasowa |Wartość AMQP |
+| DateTime |sygnatura czasowa |Wartość AMQP |
 | Identyfikator GUID |Identyfikator UUID |Wartość AMQP |
-| Byte] |Binarne |Wartość AMQP |
+| byte[] |Binarne |Wartość AMQP |
 | ciąg |ciąg |Wartość AMQP |
 | Interfejs System.Collections.IList |lista |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
 | System.Array |tablica |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
-| System.Collections.IDictionary |mapy |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. Uwaga: obsługiwane są tylko kluczy będących ciągami. |
+| System.Collections.IDictionary |map |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. Uwaga: obsługiwane są tylko kluczy będących ciągami. |
 | Identyfikator URI |Opisane ciąg (patrz poniższa tabela) |Wartość AMQP |
 | DateTimeOffset |Opisane długi (patrz poniższa tabela) |Wartość AMQP |
 | Zakres czasu |Opisane długi (patrz poniżej) |Wartość AMQP |
@@ -94,17 +94,12 @@ W celu ułatwienia współdziałania z klientami z systemem innym niż .NET, nal
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | Zakres czasu |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>Nieobsługiwane funkcje, ograniczenia i różnice funkcjonalne
+## <a name="behavioral-differences"></a>Różnice funkcjonalne
 
-Następujące funkcje interfejsu API usługi Service Bus .NET nie są obecnie obsługiwane, gdy za pomocą protokołu AMQP:
-
-* Transakcje
-* Wyślij za pośrednictwem docelowego transferu
-
-Istnieją również pewne niewielkie różnice w zachowaniu .NET interfejsu API usługi Service Bus, korzystając z protokołu AMQP, w porównaniu z protokołem domyślnym:
+Istnieją pewne niewielkie różnice w zachowaniu interfejsu API usługi Service Bus .NET, korzystając z protokołu AMQP, w porównaniu z protokołem domyślnym:
 
 * [OperationTimeout] [ OperationTimeout] właściwość jest ignorowana.
-* `MessageReceiver.Receive(TimeSpan.Zero)`jest zaimplementowany jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
+* `MessageReceiver.Receive(TimeSpan.Zero)` jest zaimplementowany jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
 * Kończenie wiadomości przez tokeny blokady jest możliwe tylko przez odbiorców wiadomości, które początkowo odebrane wiadomości.
 
 ## <a name="control-amqp-protocol-settings"></a>Ustawienia protokołu AMQP kontroli

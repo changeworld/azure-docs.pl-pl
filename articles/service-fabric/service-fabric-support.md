@@ -1,12 +1,12 @@
 ---
-title: "Więcej informacji na temat opcji obsługi sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Bilety obsługi platformy Azure obsługiwane wersje klastra sieci szkieletowej usług i łącza do pliku"
+title: Więcej informacji na temat opcji obsługi sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Bilety obsługi platformy Azure obsługiwane wersje klastra sieci szkieletowej usług i łącza do pliku
 services: service-fabric
 documentationcenter: .net
 author: pkcsf
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/26/2018
 ms.author: pkc
-ms.openlocfilehash: 970f1ff59560beaf898f22eb4e701088a6d5902a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ec634dd19cf1e944c768e1d368f114f66e9c38a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej usługi Azure Service Fabric
 
@@ -30,7 +30,7 @@ Na zgłaszanie problemów w klastrze usługi sieć szkieletowa wdrożonego na pl
 
 Dowiedz się więcej o:
  
-- [Obsługa firmy Microsoft Azure](https://azure.microsoft.com/en-us/support/plans/?b=16.44).
+- [Obsługa firmy Microsoft Azure](https://azure.microsoft.com/support/plans/?b=16.44).
 - [Premier pomocy technicznej firmy Microsoft](https://support.microsoft.com/en-us/premier).
 
 <a id="getlivesitesupportonprem"></a>
@@ -63,8 +63,8 @@ Upewnij się, że klastra zawsze działa obsługiwana wersja usługi Service Fab
 
 Można znaleźć w następujących dokumentach na więcej informacji na temat zachowania klastra uruchomiona obsługiwana wersja usługi Service Fabric.
 
-- [Uaktualnienie wersji platformy Service Fabric w klastrze platformy Azure](service-fabric-cluster-upgrade.md)
-- [Uaktualnienie wersji platformy Service Fabric w klastrze serwerów autonomicznych systemu windows](service-fabric-cluster-upgrade-windows-server.md)
+- [Uaktualnienie wersji platformy Service Fabric w klastrze platformy Azure ](service-fabric-cluster-upgrade.md)
+- [Uaktualnienie wersji platformy Service Fabric w klastrze serwerów autonomicznych systemu windows ](service-fabric-cluster-upgrade-windows-server.md)
  
 Poniżej przedstawiono listę wersji platformy Service Fabric, które są obsługiwane i ich daty zakończenia wsparcia.
 
@@ -77,7 +77,8 @@ Poniżej przedstawiono listę wersji platformy Service Fabric, które są obsłu
 | 5.6.* | 5.4.164.* |Mniejsze niż w wersji 2.6 |Październik 13,2017   |
 | 5.7.* | 5.4.164.* |Mniejsze niż w wersji 2.7 |Grudnia 15,2017  |
 | 6.0.* | 5.6.205.* |Mniejsze niż wersja 2.8 |Marzec 30,2018     | 
-| 6.1.* | 5.7.221.* |Mniejsze niż w wersji 3.0 |Bieżąca wersja i dlatego bez daty zakończenia |
+| 6.1.* | 5.7.221.* |Mniejsze niż w wersji 3.0 |Czerwca 15,2018      |
+| 6.2. * | 6.0.232.* |Mniejsze niż w wersji 3.1 |Bieżąca wersja i dlatego bez daty zakończenia |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Usługi sieci szkieletowej Podgląd wersje — nieobsługiwany do użytku produkcyjnego.
 Od czasu do czasu firma Microsoft wersji mających znaczących funkcji, którą chcemy udostępnić opinię, które są wydawane jako podglądów. Te wersje preview należy używać tylko do celów testowych. Klastra produkcyjnego zawsze powinna działać obsługiwanych, stabilna wersja sieci szkieletowej usług. Wersja zapoznawcza zawsze zaczyna się od numeru wersji głównej i pomocniczej 255. Na przykład jeśli widzisz usługi sieć szkieletowa wersji 255.255.5703.949 tej wersji jest tylko do użycia w klastrach testu i jest w wersji zapoznawczej. Te wersje zapoznawcze również są ogłaszane na [blog zespołu usługi sieć szkieletowa](https://blogs.msdn.microsoft.com/azureservicefabric) i będą zawierały wszystkie szczegółowe informacje o funkcjach dostępnych.
@@ -86,8 +87,8 @@ Nie ma żadnych opcji płatnej pomocy technicznej dla tych wersji zapoznawczej. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Uaktualnienie wersji sieci szkieletowej usług w klastrze platformy Azure](service-fabric-cluster-upgrade.md)
-- [Uaktualnienie wersji platformy Service Fabric w klastrze serwerów autonomicznych systemu windows](service-fabric-cluster-upgrade-windows-server.md)
+- [Uaktualnienie wersji sieci szkieletowej usług w klastrze platformy Azure ](service-fabric-cluster-upgrade.md)
+- [Uaktualnienie wersji platformy Service Fabric w klastrze serwerów autonomicznych systemu windows ](service-fabric-cluster-upgrade-windows-server.md)
 
 <!--references-->
 [msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric

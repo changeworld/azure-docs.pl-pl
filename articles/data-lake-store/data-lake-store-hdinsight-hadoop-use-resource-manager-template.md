@@ -1,8 +1,8 @@
 ---
-title: "Użyj szablonów platformy Azure, aby utworzyć HDInsight i usługi Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Korzystanie z szablonów usługi Azure Resource Manager do tworzenia i klastry usługi HDInsight za pomocą usługi Azure Data Lake Store"
+title: Użyj szablonów platformy Azure, aby utworzyć HDInsight i usługi Data Lake Store | Dokumentacja firmy Microsoft
+description: Korzystanie z szablonów usługi Azure Resource Manager do tworzenia i klastry usługi HDInsight za pomocą usługi Azure Data Lake Store
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c5afc96cc8101345f00b5d435e9f393d22672de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bc20504865fa59cafc199305f9810fb4c3d99524
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Tworzenie klastra usługi HDInsight z Data Lake Store za pomocą szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Instrukcje w wymienionych powyżej łącze wymagają programu PowerShell. Przed 
 
 ```
 # Log in to your Azure account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List all the subscriptions associated to your account
 Get-AzureRmSubscription
@@ -80,7 +80,7 @@ Aby upewnić się, że jest dostępny z klastra usługi HDInsight przykładowe d
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Uruchom zadania testowe w klastrze usługi HDInsight do użycia usługi Data Lake Store
 Po skonfigurowaniu klastra usługi HDInsight można uruchamiać zadania testowego w klastrze, aby sprawdzić, czy klastra usługi HDInsight można uzyskać dostępu do usługi Data Lake Store. Aby to zrobić, zostanie uruchomiony przykładowe zadania Hive, która tworzy tabelę przy użyciu przykładowych danych, który został wcześniej przekazany do usługi Data Lake Store.
 
-W tej sekcji zostanie SSH do klastra usługi HDInsight w systemie Linux i uruchomić przykładowe zapytanie Hive. Jeśli używasz klienta z systemem Windows, firma Microsoft zaleca używanie **PuTTY**, który można pobrać z [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+W tej sekcji zostanie SSH do klastra usługi HDInsight w systemie Linux i uruchomić przykładowe zapytanie Hive. Jeśli używasz klienta z systemem Windows, firma Microsoft zaleca używanie **PuTTY**, który można pobrać z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Aby uzyskać więcej informacji na temat używania programu PuTTY, zobacz [używanie SSH z opartą na systemie Linux platformą Hadoop w usłudze HDInsight z systemu Windows ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat używania programu PuTTY, zobacz [używ
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>Dostęp Data Lake Store za pomocą poleceń systemu plików HDFS
 Po skonfigurowaniu klastra usługi HDInsight do użycia usługi Data Lake Store służy poleceń powłoki systemu plików HDFS można uzyskać dostępu do magazynu.
 
-W tej sekcji zostanie SSH w systemie Linux usługi HDInsight klastra, a następnie uruchom polecenia systemu plików HDFS. Jeśli używasz klienta z systemem Windows, firma Microsoft zaleca używanie **PuTTY**, który można pobrać z [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+W tej sekcji zostanie SSH w systemie Linux usługi HDInsight klastra, a następnie uruchom polecenia systemu plików HDFS. Jeśli używasz klienta z systemem Windows, firma Microsoft zaleca używanie **PuTTY**, który można pobrać z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Aby uzyskać więcej informacji na temat używania programu PuTTY, zobacz [używanie SSH z opartą na systemie Linux platformą Hadoop w usłudze HDInsight z systemu Windows ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

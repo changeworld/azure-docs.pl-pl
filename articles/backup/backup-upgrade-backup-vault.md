@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Magazyn kopii zapasowych uaktualnione do magazynu usług odzyskiwania
 Ten artykuł zawiera omówienie magazynu usług odzyskiwania, jakie udostępnia, często zadawane pytania na temat uaktualniania istniejącej kopii zapasowej magazynu do magazynu usług odzyskiwania i czynności po uaktualnieniu. Magazyn usług odzyskiwania jest odpowiednikiem usługi Azure Resource Manager w magazynie kopii zapasowej, która przechowuje dane kopii zapasowej. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych, czy lokalnie lub na platformie Azure.
@@ -60,7 +60,7 @@ Drugi ekran pokazuje pomocy łącza może pomóc Ci rozpocząć korzystanie z ma
 Magazyn usług odzyskiwania obsługują określania informacji o strefie czasowej zasad tworzenia kopii zapasowej. Po pomyślnym uaktualnieniu magazynu, przejdź do zasady tworzenia kopii zapasowej z menu ustawień magazynu i zaktualizować informacje o strefie czasowej dla każdej zasady skonfigurowane w magazynie. Ten ekran pokazuje już czas harmonogram tworzenia kopii zapasowych określony na lokalnej strefie czasowej używane podczas tworzenia zasad. 
 
 ## <a name="enhanced-security"></a>Większe bezpieczeństwo
-Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się na niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagają [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji na zwiększonych zabezpieczeń, zobacz artykuł [funkcji zabezpieczeń do ochrony kopii zapasowych hybrydowego](backup-azure-security-feature.md). Po włączeniu zwiększonych zabezpieczeń danych jest zachowywana się do 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są rozliczane do przechowywania tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń ma zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager. 
+Po uaktualnieniu magazynu kopii zapasowych do magazynu usług odzyskiwania, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się na niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagają [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji na zwiększonych zabezpieczeń, zobacz artykuł [funkcji zabezpieczeń do ochrony kopii zapasowych hybrydowego](backup-azure-security-feature.md). Po włączeniu zwiększonych zabezpieczeń danych jest zachowywana się do 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są rozliczane do przechowywania tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń ma zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager. 
 
 ## <a name="gather-data-on-your-vault"></a>Zbieranie danych dotyczących magazynu
 Raz uaktualnienia do magazynu usług odzyskiwania, skonfiguruj raporty dla usługi Kopia zapasowa Azure (dla agenta maszynom wirtualnym IaaS i usług odzyskiwania Microsoft Azure) i umożliwia dostęp do raportów usługi Power BI. Aby uzyskać dodatkowe informacje dotyczące zbierania danych, zobacz artykuł, [raporty skonfigurować kopia zapasowa Azure](backup-azure-configure-reports.md).

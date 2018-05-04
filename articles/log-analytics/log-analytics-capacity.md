@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db38678a05afbc764dec20f2a475e00856a1aeee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V z rozwiązaniem pojemność i wydajność (wersja zapoznawcza)
 
 ![Symbol pojemność i wydajność](./media/log-analytics-capacity/capacity-solution.png)
+
+> [!NOTE]
+> Pojemność i wydajność rozwiązania jest przestarzała.  Klienci, którzy zainstalowali rozwiązania można nadal z niego korzystać, ale pojemność i wydajność, nie można dodać do żadnych nowych obszarów roboczych.
 
 Rozwiązanie pojemność i wydajność w analizy dzienników umożliwia pomaga w zrozumieniu wydajności serwerów funkcji Hyper-V. Rozwiązanie zapewnia wgląd w środowisku funkcji Hyper-V, pokazując całkowitego wykorzystania (Procesora, pamięci i dysku) z hostów i maszyn wirtualnych uruchomionych na tych hostach funkcji Hyper-V. Metryki są zbierane dla Procesora, pamięci i dysków we wszystkich hostów i maszyn wirtualnych uruchomionych na tych.
 

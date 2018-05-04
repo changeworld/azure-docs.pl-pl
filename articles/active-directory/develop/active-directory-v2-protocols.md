@@ -1,29 +1,28 @@
 ---
-title: "Więcej informacji na temat autoryzacji protokoły obsługiwane przez usługę Azure AD w wersji 2.0 | Dokumentacja firmy Microsoft"
-description: "Przewodnik dotyczący protokołów obsługiwanych przez punktu końcowego v2.0 usługi Azure AD."
+title: Więcej informacji na temat autoryzacji protokoły obsługiwane przez usługę Azure AD w wersji 2.0 | Dokumentacja firmy Microsoft
+description: Przewodnik dotyczący protokołów obsługiwanych przez punktu końcowego v2.0 usługi Azure AD.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ce9a7cb14b933da23873d69e1f14a744d012a858
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 29d9e2d9ee05b755ef40179e0e75fb0c8a6b010b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>w wersji 2.0 protokołów - OAuth 2.0 & OpenID Connect
-Punktu końcowego v2.0 można używać usługi Azure AD identity jako — usługa z branży standardowe protokoły OpenID Connect i OAuth 2.0.  Gdy usługa jest zgodny ze standardami, może to mieć niewielkie różnice między dwoma implementacjami tych protokołów.  Informacje w tym miejscu będzie przydatna, jeśli użytkownik chce wpisz swój kod, wysyłając bezpośrednio & obsługiwanie żądań HTTP lub użyj 3rd strona Otwórz źródło biblioteki, a nie przy użyciu jednej z naszych biblioteki typu open source.
-<!-- TODO: Need link to libraries above -->
+Punktu końcowego v2.0 można używać usługi Azure AD identity jako — usługa z branży standardowe protokoły OpenID Connect i OAuth 2.0.  Gdy usługa jest zgodny ze standardami, może to mieć niewielkie różnice między dwoma implementacjami tych protokołów.  Informacje w tym miejscu będą przydatne w przypadku należy napisać kod bezpośrednio wysyłając & obsługi protokołu HTTP żądania lub 3 biblioteki typu open source firmy, a nie przy użyciu jednej z naszych [Otwórz źródło biblioteki](active-directory-v2-libraries.md).
 
 > [!NOTE]
 > Nie wszystkie usługi Azure Active Directory scenariuszy i funkcji obsługiwanych przez punktu końcowego v2.0.  Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj o [ograniczenia v2.0](active-directory-v2-limitations.md).

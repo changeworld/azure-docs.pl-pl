@@ -1,24 +1,19 @@
 ---
 title: Połączenie bazy danych Azure SQL do usługi Azure Search przy użyciu indeksatorów | Dokumentacja firmy Microsoft
 description: Informacje o sposobie pobierania danych z bazy danych SQL Azure do indeksu usługi Azure Search przy użyciu indeksatorów.
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: e9bbf352-dfff-4872-9b17-b1351aae519f
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: a5198cc6e3b019fc6fd241f22c4da088f0839066
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: aa24c3197af28101b2f3a0acda6d0ae81b9e96d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Połączenie bazy danych SQL Azure do usługi Azure Search przy użyciu indeksatorów
 
@@ -66,7 +61,7 @@ W zależności od wielu czynników odnoszących się do danych użycie indeksato
 1. Utwórz źródło danych:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
+    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -85,7 +80,7 @@ W zależności od wielu czynników odnoszących się do danych użycie indeksato
 3. Utwórz indeksator przez nadanie mu nazwy i odwołuje się do danych indeksu źródłowej i docelowej:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -98,7 +93,7 @@ W zależności od wielu czynników odnoszących się do danych użycie indeksato
 
 Utworzone w ten sposób indeksatora nie ma zgodnie z harmonogramem. Automatycznie uruchomiony po po jego utworzeniu. Uruchom go ponownie w dowolnej chwili za pomocą **uruchomić indeksatora** żądania:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
     api-key: admin-key
 
 Można dostosować kilka aspektów zachowanie indeksatora, takich jak rozmiar partii i liczby dokumentów można pominięty zanim wykonywanie indeksatora nie powiedzie się. Aby uzyskać więcej informacji, zobacz [Tworzenie interfejsu API indeksatora](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
@@ -107,7 +102,7 @@ Konieczne może być Zezwalaj usługom platformy Azure do połączenia z bazą d
 
 Aby monitorować historii stanu i wykonywanie indeksatora (liczba elementów indeksowane, błędów, itp.), należy użyć **stan indeksatora** żądania:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2016-09-01
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
     api-key: admin-key
 
 Odpowiedź powinna wyglądać podobnie do poniższej:
@@ -149,7 +144,7 @@ Dodatkowe informacje o odpowiedzi znajduje się w [pobierania stanu indeksatora]
 ## <a name="run-indexers-on-a-schedule"></a>Uruchom indeksatory zgodnie z harmonogramem
 Można także porządkować indeksatora, aby okresowo uruchamiane zgodnie z harmonogramem. Aby to zrobić, należy dodać **harmonogram** właściwości podczas tworzenia lub aktualizowania indeksatora. W poniższym przykładzie pokazano żądanie PUT, aby zaktualizować indeksatora:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2016-09-01
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -306,7 +301,7 @@ Indeksator SQL udostępnia kilka ustawień konfiguracji:
 | Ustawienie | Typ danych | Przeznaczenie | Wartość domyślna |
 | --- | --- | --- | --- |
 | queryTimeout |ciąg |Ustawia limit czasu wykonywania zapytań SQL |5 minut ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |bool |Powoduje, że zapytanie SQL używanego przez zasady znacznik limitu górnego, aby pominąć klauzuli ORDER BY. Zobacz [zasad znacznik limitu górnego](#HighWaterMarkPolicy) |false |
+| disableOrderByHighWaterMarkColumn |wartość logiczna |Powoduje, że zapytanie SQL używanego przez zasady znacznik limitu górnego, aby pominąć klauzuli ORDER BY. Zobacz [zasad znacznik limitu górnego](#HighWaterMarkPolicy) |false |
 
 Te ustawienia są używane w `parameters.configuration` obiektu w definicji indeksatora. Na przykład aby ustawić limit czasu zapytania do 10 minut, utworzyć lub zaktualizować indeksatora przy użyciu następującej konfiguracji:
 

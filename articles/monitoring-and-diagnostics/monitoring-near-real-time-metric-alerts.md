@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6d440a49cb30210d3c0eed7d24e4811cc56925b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Nowsze metryki alerty dla usług Azure w portalu Azure
 Azure Monitor obsługuje teraz metryki nowy typ alertu. Alerty nowszej różnią się od [klasycznego alerty metryki](insights-alerts-portal.md) na kilka sposobów:
@@ -35,7 +35,7 @@ Aby dowiedzieć się, jak utworzyć nowszej alert metryki w portalu Azure, zobac
 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portalu, programu PowerShell, interfejsu wiersza polecenia, REST obsługuje
-Obecnie można tworzyć nowszej metryki alerty tylko w portalu Azure lub interfejsu API REST. Obsługa konfigurowania alertów nowszej przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI 2.0) będzie dostępna wkrótce.
+Obecnie można tworzyć nowszej metryki alerty tylko w portalu Azure [interfejsu API REST](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template) lub [szablonów Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania alertów nowszej przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI 2.0) będzie dostępna wkrótce.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
 Alerty metryki nowszej obsługuje alerty dla metryki, które są używane wymiary. Wymiary służy do filtrowania Twoje metryki na odpowiedni poziom. Wszystkie metryki obsługiwanych wraz z odpowiednich wymiary mogą być zbadane i wizualizowane z [Monitor Azure — Eksploratora metryk (wersja zapoznawcza)](monitoring-metric-charts.md).
@@ -50,13 +50,19 @@ Poniżej przedstawiono pełną listę źródeł metryki Azure monitor obsługiwa
 |Microsoft.Cache/Redis     |    ND     |[Pamięć podręczna Redis](monitoring-supported-metrics.md#microsoftcacheredis)|
 |Microsoft.Compute/virtualMachines     |    ND     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   ND      |[Zestawy skalowania maszyny wirtualnej](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.ContainerInstance/containerGroups | Yes| [Grupy kontenerów](monitoring-supported-metrics.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft.DataFactory/datafactories| Yes| [V1 fabryki danych](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories     |   Yes     |[V2 fabryki danych](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
 |Microsoft.DBforMySQL/servers     |   ND      |[Bazy danych dla programu MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
 |Microsoft.DBforPostgreSQL/servers     |    ND     | [Bazy danych dla PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
 |Microsoft.EventHub/namespaces     |  Yes      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
+|Microsoft.KeyVault/vaults| Nie | [magazynów](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     ND    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
 |Microsoft.Network/applicationGateways     |    ND     | [Bramy aplikacji](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/dnsZones | ND| [Strefy DNS](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
+|Microsoft.Network/loadBalancers (tylko dla jednostki SKU standardowy)| Yes| [Moduły równoważenia obciążenia](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  ND       |[Addreses publicznego adresu IP](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.PowerBIDedicated/capacities | ND | [Możliwości](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   ND      |[Usługi wyszukiwania](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Yes       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    Yes     | [Konta magazynu](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
@@ -112,7 +118,7 @@ Metryki szczegóły  |Wymiary obsługiwane  | Typ dziennika  |
 |    Average_Available wymiany (MB)  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
 |    Average_Page/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
 |    Average_Page/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Pages/sec  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
+|    Average_Pages na sekundę  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
 |    Average_Used obszar wymiany (MB) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
 |    Average_Used pamięć (MB) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
 |    Average_Total bajtów przesłanych    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |

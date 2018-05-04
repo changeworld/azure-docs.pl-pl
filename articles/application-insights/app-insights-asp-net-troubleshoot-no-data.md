@@ -1,6 +1,6 @@
 ---
-title: "Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET"
-description: "Nie można wyświetlać dane w usłudze Azure Application Insights? Spróbuj w tym miejscu."
+title: Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
+description: Nie można wyświetlać dane w usłudze Azure Application Insights? Spróbuj w tym miejscu.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części Moje telemetrii
@@ -65,7 +65,7 @@ Prawdopodobnie wystąpił problem podczas zostały instalacji usługi Applicatio
 
 W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie **usługi Application Insights > Konfiguruj usługę Application Insights**. Okno dialogowe, które umożliwiające logowanie do platformy Azure, zostanie wyświetlony i Utwórz zasobu usługi Application Insights lub ponownego użycia istniejącej.
 
-## <a name="NuGetBuild"></a>"Pakietów NuGet brakuje" na serwerze kompilacji
+## <a name="NuGetBuild"></a> "Pakietów NuGet brakuje" na serwerze kompilacji
 *Wszystko, co tworzy OK I czy debugowanie na moim komputerze programowanie, ale pojawia się błąd NuGet na serwerze kompilacji.*
 
 Zobacz [przywracania pakietów NuGet](http://docs.nuget.org/Consume/Package-Restore) i [automatyczne przywracanie pakietów](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
@@ -124,7 +124,7 @@ Poprawka:
     Brak zobaczysz Niektóre wykresy podsumowania. Możesz kliknąć za pośrednictwem je, aby wyświetlić więcej szczegółów.
 * W programie Visual Studio podczas debugowania kodu aplikacji, kliknij przycisk Application Insights.
 
-## <a name="q03"></a>Brak danych serwera (lub żadne dane na wszystkich)
+## <a name="q03"></a> Brak danych serwera (lub żadne dane na wszystkich)
 *I Moja aplikacja uruchomiono, a potem usługa Application Insights w Microsoft Azure, ale wszystkich schematów Pokaż "Dowiedz się, jak zbierać..." lub "Nie skonfigurowano."* Lub, *tylko dane widoku strony i użytkownika, ale żadne dane z serwera.*
 
 * Uruchom aplikację w trybie debugowania w programie Visual Studio (F5). Za pomocą aplikacji tak, aby wygenerować niektórych telemetrii. Sprawdź, czy można przejrzeć zdarzenia rejestrowane w oknie danych wyjściowych programu Visual Studio. 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -213,8 +213,8 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON |Opis|
 |---------|---------|----------------------|
-| **Typ** | Wymagana — musi być ustawiona `eventGridTrigger`. |
-| **Kierunek** | Wymagana — musi być ustawiona `in`. |
+| **type** | Wymagana — musi być ustawiona `eventGridTrigger`. |
+| **direction** | Wymagana — musi być ustawiona `in`. |
 | **Nazwa** | Wymagana — nazwa zmiennej używane w kodzie funkcji dla parametru, który odbiera dane zdarzenia. |
 
 ## <a name="usage"></a>Sposób użycia
@@ -337,6 +337,9 @@ Alternatywnie możesz wysłać HTTP PUT do samodzielnie określić wartość teg
 
 ## <a name="local-testing-with-requestbin"></a>Testowanie za pomocą RequestBin lokalnego
 
+> [!NOTE]
+> RequestBin lokacji nie jest obecnie dostępna, ale można użyć tej metody z https://hookbin.com zamiast tego. Jeśli w tej lokacji jest wyłączony, możesz użyć [ngrok](#local-testing-with-ngrok).
+
 Aby przetestować wyzwalacz zdarzenia siatki masz lokalnie, pobrać żądań HTTP siatki zdarzenia dostarczone z ich pochodzenia w chmurze na komputerze lokalnym. Jest jednym ze sposobów to zrobić przez Przechwytywanie żądań online i ręcznie wysłać je na komputerze lokalnym:
 
 2. [Tworzenie punktu końcowego RequestBin](#create-a-RequestBin-endpoint).
@@ -348,7 +351,7 @@ Po zakończeniu testowania, możesz użyć tej samej subskrypcji w środowisku p
 
 ### <a name="create-a-requestbin-endpoint"></a>Tworzenie punktu końcowego RequestBin
 
-RequestBin jest narzędziem open source, które akceptuje żądania HTTP i pokazuje treści żądania. http://requestb.in Szczególnego traktowania siatki zdarzeń platformy Azure pobiera adres URL. Aby ułatwić testowanie, siatki zdarzeń wysyła zdarzenia do adresu URL RequestBin bez konieczności poprawne odpowiedzi na żądania weryfikacji subskrypcji. Taki sam sposób podane są dwa inne narzędzia testowania: http://webhookinbox.com i http://hookbin.com.
+RequestBin jest narzędziem open source, które akceptuje żądania HTTP i pokazuje treści żądania. http://requestb.in Szczególnego traktowania siatki zdarzeń platformy Azure pobiera adres URL. Aby ułatwić testowanie, siatki zdarzeń wysyła zdarzenia do adresu URL RequestBin bez konieczności poprawne odpowiedzi na żądania weryfikacji subskrypcji. Jedno narzędzie testowania otrzymuje takie samo traktowanie: http://hookbin.com.
 
 RequestBin nie jest przeznaczony do użycia z wysokiej przepływności. W przypadku wypchnięcia więcej niż jednego zdarzenia w tym samym czasie w narzędziu mogą nie być widoczne wszystkie zdarzenia.
 

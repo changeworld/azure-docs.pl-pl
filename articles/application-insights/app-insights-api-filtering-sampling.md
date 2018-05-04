@@ -1,9 +1,9 @@
 ---
-title: "Filtrowanie i przetwarzania wstępnego w zestawie SDK Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Zapisywanie procesorów Telemetrii oraz inicjatory danych Telemetrycznych zestawu SDK, filtrowanie, lub dodać właściwości do danych przed wysłaniem danych telemetrycznych do portalu usługi Application Insights."
+title: Filtrowanie i przetwarzania wstępnego w zestawie SDK Azure Application Insights | Dokumentacja firmy Microsoft
+description: Zapisywanie procesorów Telemetrii oraz inicjatory danych Telemetrycznych zestawu SDK, filtrowanie, lub dodać właściwości do danych przed wysłaniem danych telemetrycznych do portalu usługi Application Insights.
 services: application-insights
-documentationcenter: 
-author: beckylino
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: borooji;mbullwin
-ms.openlocfilehash: 3f621010c1c36445ad35d81d96a2e5aefc46b10c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin; borooji
+ms.openlocfilehash: 06f116fc5096fe4bda9c8433c3a33726acb67eea
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrowanie i przetwarzania wstępnego telemetrii w zestaw SDK usługi Application Insights
 
@@ -48,7 +48,7 @@ Aby filtrować dane telemetryczne, zapisać procesora telemetrii i zarejestrowan
 >
 
 ### <a name="create-a-telemetry-processor-c"></a>Utwórz procesora telemetrii (C#)
-1. Sprawdź, czy zestaw SDK usługi Application Insights w projekcie wersji 2.0.0 lub nowszej. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań w usłudze Visual Studio i wybierz polecenie Zarządzaj pakietami NuGet. In NuGet package manager, check Microsoft.ApplicationInsights.Web.
+1. Sprawdź, czy zestaw SDK usługi Application Insights w projekcie wersji 2.0.0 lub nowszej. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań w usłudze Visual Studio i wybierz polecenie Zarządzaj pakietami NuGet. W Menedżerze pakietów NuGet Sprawdź Microsoft.ApplicationInsights.Web.
 2. Aby utworzyć filtr, zaimplementuj ITelemetryProcessor. Jest to inny punkt rozszerzalności, takich jak moduł telemetrii, inicjatora telemetrii i kanału danych telemetrycznych.
 
     Zwróć uwagę, że procesorów Telemetrii utworzyć łańcuch przetwarzania. Można utworzyć wystąpienia procesora telemetrii, należy przekazać łącze do następnej procesora w łańcuchu. Gdy punkt danych telemetrycznych jest przekazywany do metody procesu, nie jego pracy i następnie wywołuje dalej procesora Telemetrii w łańcuchu.
@@ -218,7 +218,7 @@ Inicjatory telemetrii używany do definiowania właściwości globalne, które s
 
 Na przykład pakiet sieci Web w usłudze Application Insights zbiera dane telemetryczne dotyczące żądania HTTP. Domyślnie flagi jako zakończony niepowodzeniem, wszystkie żądania z kodem odpowiedzi > = 400. Ale zaliczenie 400 sukcesu, możesz podać inicjatora telemetrii, która ustawia właściwość Powodzenie.
 
-Jeśli podasz inicjatora telemetrii jest wywoływana po każdej zmianie dowolnej z metod Track*() jest wywoływana. Dotyczy to również metody wywołane przez moduły standardowe telemetrii. Konwencja te moduły nie należy ustawiać dowolnej właściwości, która została już ustawiona przez inicjatora.
+Jeśli podasz inicjatora telemetrii jest to zawsze, gdy są nazywane dowolnej z metod Track*(). Dotyczy to również metody wywołane przez moduły standardowe telemetrii. Konwencja te moduły nie należy ustawiać dowolnej właściwości, która została już ustawiona przez inicjatora.
 
 **Zdefiniuj z inicjatora**
 

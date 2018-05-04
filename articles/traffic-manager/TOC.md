@@ -34,7 +34,7 @@
 ### [Rozwiązywanie problemów ze stanem obniżonej wydajności usługi Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 
 # Dokumentacja
-## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=traffic-manager)
 ## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)

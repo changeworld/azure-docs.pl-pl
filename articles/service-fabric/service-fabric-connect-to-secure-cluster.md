@@ -1,11 +1,11 @@
 ---
-title: "Bezpieczne łączenie z klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób uwierzytelniania dostępu klienta do klastra usługi sieć szkieletowa usług oraz sposobem zabezpieczenia komunikacji między klientami i klastra."
+title: Bezpieczne łączenie z klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób uwierzytelniania dostępu klienta do klastra usługi sieć szkieletowa usług oraz sposobem zabezpieczenia komunikacji między klientami i klastra.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 0ce01b62fde690934d97fdefb7720e1be5512f4a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
@@ -89,25 +89,32 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Nawiązać bezpiecznego klastra przy użyciu certyfikatu klienta
-Uruchom następujące polecenie programu PowerShell do nawiązania bezpiecznego klastra, który używa certyfikatów klienta do autoryzowania dostępu administratora. Podaj odcisk palca certyfikatu klastra i odcisk palca certyfikatu klienta, które zostały przyznane uprawnienia do zarządzania klastrem. Szczegóły certyfikatu musi odpowiadać certyfikatu w węzłach klastra.
+Uruchom następujące polecenie programu PowerShell do nawiązania bezpiecznego klastra, który używa certyfikatów klienta do autoryzowania dostępu administratora. 
+
+#### <a name="connect-using-certificate-common-name"></a>Połącz, używając nazwa pospolita certyfikatu
+Podaj klastra Nazwa pospolita certyfikatu i nazwa pospolita certyfikatu klienta, które zostały przyznane uprawnienia do zarządzania klastrem. Szczegóły certyfikatu musi odpowiadać certyfikatu w węzłach klastra.
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName <certificate common name>  `
+    -FindType FindBySubjectName `
+    -FindValue <certificate common name> `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
-
-*ServerCertThumbprint* jest odcisk palca certyfikatu serwera zainstalowanych w węzłach klastra. *FindValue* jest odcisk palca certyfikatu klienta administratora.
-Po wypełnieniu parametry polecenia wygląda następująco: 
-
+*Wartości: ServerCommonName* jest nazwa pospolita certyfikatu serwera zainstalowanych w węzłach klastra. *FindValue* jest nazwa pospolita certyfikatu klienta administratora. Po wypełnieniu parametry polecenia wygląda następująco:
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `
-          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `
-          -StoreLocation CurrentUser -StoreName My
+$ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
+$certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
+
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName $certCN  `
+    -FindType FindBySubjectName `
+    -FindValue $certCN `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Nawiązać bezpiecznego klastra przy użyciu usługi Active Directory systemu Windows

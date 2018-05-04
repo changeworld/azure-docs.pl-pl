@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i do Dynamics 365 (typowe Usługa danych) lub usługi Dynamics CRM przy użyciu fabryki danych Azure
 
@@ -63,14 +63,17 @@ Następujące właściwości są obsługiwane dla połączonej usługi Dynamics.
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną **Dynamics**. | Yes |
 | deploymentType | Typ wdrożenia wystąpienia programu Dynamics. Musi to być **"Online"** dla Dynamics w trybie online. | Yes |
-| organizationName | Nazwa organizacji Dynamics wystąpienia. | Nie, należy określić, jeśli istnieje kilka wystąpień Dynamics skojarzonych z użytkownikiem |
-| authenticationType | Typ uwierzytelniania do nawiązania połączenia z serwerem programu Dynamics. Określ **"Usługi Office 365"** dla Dynamics w trybie online. | Yes |
+| serviceUri | Adres URL usługi programu Dynamics wystąpienia, np. `https://adfdynamics.crm.dynamics.com`. | Yes |
+| Typ authenticationType | Typ uwierzytelniania do nawiązania połączenia z serwerem programu Dynamics. Określ **"Usługi Office 365"** dla Dynamics w trybie online. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
 | hasło | Podaj hasło dla konta użytkownika, który został określony jako nazwy użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Nie źródła, tak dla obiekt sink Jeśli źródło połączona usługa nie ma środowiska uruchomieniowego integracji |
 
 >[!IMPORTANT]
 >Po skopiowaniu danych do programu Dynamics domyślnego środowiska uruchomieniowego integracji Azure nie można wykonać kopiowania. Innymi słowy, jeśli połączone źródła usługa nie ma określonej integracji środowiska uruchomieniowego, jawnie [utworzyć środowiska uruchomieniowego integracji Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją w pobliżu wystąpienia Dynamics. Skojarzyć go w połączonej usłudze Dynamics jak w poniższym przykładzie.
+
+>[!NOTE]
+>Łącznik programu Dynamics, używany do identyfikacji wystąpienia usługi Dynamics CRM/365 Online za pomocą właściwości opcjonalne "nazwa_organizacji". Podczas jego śledzi pracy, są sugerowane aby zamiast tego określ nową właściwość "serviceUri", aby uzyskać lepszą wydajność odnajdywania dla wystąpienia.
 
 **Przykład: Dynamics online przy użyciu uwierzytelniania usługi Office 365**
 
@@ -82,7 +85,7 @@ Następujące właściwości są obsługiwane dla połączonej usługi Dynamics.
         "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
-            "organizationName": "orga02d9c75",
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -106,10 +109,10 @@ Następujące właściwości są obsługiwane dla połączonej usługi Dynamics.
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną **Dynamics**. | Yes |
 | deploymentType | Typ wdrożenia wystąpienia programu Dynamics. Musi to być **"OnPremisesWithIfd"** dla Dynamics lokalnego z IFD.| Yes |
-| hostName | Nazwa hosta serwera Dynamics lokalnego. | Yes |
+| Nazwa hosta | Nazwa hosta serwera Dynamics lokalnego. | Yes |
 | port | Port serwera Dynamics lokalnego. | Nie, domyślną jest 443 |
-| organizationName | Nazwa organizacji Dynamics wystąpienia. | Yes |
-| authenticationType | Typ uwierzytelniania do nawiązania połączenia z serwerem Dynamics. Określ **"Ifd"** dla Dynamics lokalnego z IFD. | Yes |
+| Nazwa_organizacji | Nazwa organizacji Dynamics wystąpienia. | Yes |
+| Typ authenticationType | Typ uwierzytelniania do nawiązania połączenia z serwerem Dynamics. Określ **"Ifd"** dla Dynamics lokalnego z IFD. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie Dynamics. | Yes |
 | hasło | Podaj hasło dla konta użytkownika, który został określony jako nazwy użytkownika. Można wybrać opcję Oznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w ADF lub przechowywania haseł w usłudze Azure Key Vault i umożliwić działanie kopiowania ściągnięcia stamtąd podczas wykonywania kopii danych — Dowiedz się więcej o [przechowywania poświadczeń w magazynie kluczy](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Brak źródła tak dla obiekt sink |
@@ -207,7 +210,7 @@ Aby skopiować dane z programu Dynamics, należy ustawić typ źródła w przypa
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type źródła działania kopiowania **DynamicsSource**. | Yes |
-| query | FetchXML jest język kwerendy zastrzeżonych, który jest używany w Dynamics (online i lokalnego). Zobacz poniższy przykład. Aby dowiedzieć się więcej, zobacz [tworzenia zapytań dotyczących FeachXML](https://msdn.microsoft.com/en-us/library/gg328332.aspx). | Nie (Jeśli określono parametr "Nazwa" w zestawie danych) |
+| query | FetchXML jest język kwerendy zastrzeżonych, który jest używany w Dynamics (online i lokalnego). Zobacz poniższy przykład. Aby dowiedzieć się więcej, zobacz [tworzenia zapytań dotyczących FeachXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nie (Jeśli określono parametr "Nazwa" w zestawie danych) |
 
 **Przykład:**
 

@@ -26,7 +26,7 @@ Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz przeprowadzić akty
 
 Otwórz wiersz polecenia programu PowerShell systemu Azure i zaloguj się do platformy Azure z tego polecenia.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Jeśli masz wiele subskrypcji Azure, można wyświetlić listę subskrypcji platformy Azure za pomocą tego polecenia.
 

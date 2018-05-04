@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 5631fb8df6453cf7a1806947f0e29ab7fff7093e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: df5844ff53d8196eb1143913b420d933ba43920f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa Azure
 Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpowiedzi Center (MSRC) stosowany do systemu operacyjnego gościa Azure. Wyszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczą systemu operacyjnego gościa w przypadku korzystania. Aktualizacje zawsze przeniesieniu dla konkretnej [rodziny] [ family-explain] zostały wprowadzone w.
@@ -32,7 +32,7 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ReL 18-03 | [4074595] |Flash |3.59, 4.52, 5.17 |13 marca 2018 r. |
 | ND | [4074598] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |2.72 |13 lutego 2018 r. |
 | ND | [4074593] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |3.59 |13 lutego 2018 r. |
-| ND | [4074594] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |4.52 |13 lutego 2018 r. |
+| ND | [4074594] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |4,52 |13 lutego 2018 r. |
 | ND | [4074837] |Aktualizacja strefy czasowej |2.72, 3.59, 4.52 |13 lutego 2018 r. |
 
 
@@ -69,7 +69,7 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ReL 17 12 | [4054521], [4054522], [4054523] |Tylko zabezpieczenia systemu Windows |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
 | ReL 17 12 | [4052978] |Internet Explorer |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
 | ReL 17 12 | [4052978] |Flash |3.56, 4.49, 5.14 |12 grudnia 2017 r. |
-| ND | [4048957] |Zbiorcze informacje z systemem innym niż zabezpieczeniach listopada |2.69 |14 listopada 2017 r. |
+| ND | [4048957] |Zbiorcze informacje z systemem innym niż zabezpieczeniach listopada |2,69 |14 listopada 2017 r. |
 | ND | [4048959] |Zbiorcze informacje z systemem innym niż zabezpieczeniach listopada |3.56 |14 listopada 2017 r. |
 | ND | [4048958] |Zbiorcze informacje z systemem innym niż zabezpieczeniach listopada |4.49 |14 listopada 2017 r. |
 | ND | [4049068] |Strefa czasowa grudnia aktualizacji |2.69, 3.56, 4.49 |12 grudnia 2017 r. |
@@ -145,14 +145,14 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 ## <a name="june-guest-os"></a>System operacyjny gościa czerwca
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
-| Rel 17-06 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.8 |9 maja 2017 r. |
-| Rel 17-06 | [4022722] |Tylko zabezpieczenia systemu Windows |2.63 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022717] |Tylko zabezpieczenia systemu Windows |4.43 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022718] |Tylko zabezpieczenia systemu Windows |3.50 |13 czerwca 2017 r. |
-| Rel 17-06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022719], [4022724], [4022726] |Pakiety zbiorcze miesięczne systemu Windows |2.63, 3.50, 4.43 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022730] |Aktualizacja zabezpieczeń dla programu Adobe Flash Player |3.50, 4.43, 5.8 |13 czerwca 2017 r. |
-| Rel 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Nowe wydanie CVE-2017-0167 |4.43, 5.8 |11 kwietnia 2017 r. |
+| ReL 17-06 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.8 |9 maja 2017 r. |
+| ReL 17-06 | [4022722] |Tylko zabezpieczenia systemu Windows |2.63 |13 czerwca 2017 r. |
+| ReL 17-06 | [4022717] |Tylko zabezpieczenia systemu Windows |4.43 |13 czerwca 2017 r. |
+| ReL 17-06 | [4022718] |Tylko zabezpieczenia systemu Windows |3.50 |13 czerwca 2017 r. |
+| ReL 17-06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13 czerwca 2017 r. |
+| ReL 17-06 | [4022719], [4022724], [4022726] |Pakiety zbiorcze miesięczne systemu Windows |2.63, 3.50, 4.43 |13 czerwca 2017 r. |
+| ReL 17-06 | [4022730] |Aktualizacja zabezpieczeń dla programu Adobe Flash Player |3.50, 4.43, 5.8 |13 czerwca 2017 r. |
+| ReL 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Nowe wydanie CVE-2017-0167 |4.43, 5.8 |11 kwietnia 2017 r. |
 | ND | [4023136] |Aktualizacja strefy czasowej  |2.63, 3.50, 4.43 |13 czerwca 2017 r. |
 | ND | [4019264] |Zbiorcze informacje z systemem innym niż zabezpieczeń może |2.63 |13 czerwca 2017 r. |
 | ND | [4014545] |Może zbiorczy-security .NET |2.63 |11 kwietnia 2017 r. |
@@ -173,15 +173,15 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 ## <a name="may-guest-os"></a>Może gościa systemu operacyjnego
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
-| Rel 17-05 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.7 | 9 maja 2017 r. |
-| Rel 17-05 | [4019263] |Tylko zabezpieczenia systemu Windows |2.62 | 9 maja 2017 r. |
-| Rel 17-05 | [4019213] |Tylko zabezpieczenia systemu Windows |4.42 | 9 maja 2017 r. |
-| Rel 17-05 | [4019214] |Tylko zabezpieczenia systemu Windows |3.49 | 9 maja 2017 r. |
-| Rel 17-05 | [4018271] |Zbiorcza aktualizacja zabezpieczeń dla programu Internet Explorer |3.49 | 9 maja 2017 r. |
-| Rel 17-05 | [4010323] |Poradnik SHA1 |2.62, 4.42, 5.7 | 9 maja 2017 r. |
-| Rel 17-05 | [4022344] |Poradnik zabezpieczeń firmy Microsoft |5.7 | 9 maja 2017 r. |
-| Rel 17-05 | [4022345] |Poradnik zabezpieczeń firmy Microsoft |5.7 | 9 maja 2017 r. |
-| Rel 17-05 | [4021279] |Poradnik core /ASP.Net .net |2.62, 3.49, 4.42, 5.7 | 9 maja 2017 r. |
+| ReL 17-05 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.7 | 9 maja 2017 r. |
+| ReL 17-05 | [4019263] |Tylko zabezpieczenia systemu Windows |2.62 | 9 maja 2017 r. |
+| ReL 17-05 | [4019213] |Tylko zabezpieczenia systemu Windows |4.42 | 9 maja 2017 r. |
+| ReL 17-05 | [4019214] |Tylko zabezpieczenia systemu Windows |3.49 | 9 maja 2017 r. |
+| ReL 17-05 | [4018271] |Zbiorcza aktualizacja zabezpieczeń dla programu Internet Explorer |3.49 | 9 maja 2017 r. |
+| ReL 17-05 | [4010323] |Poradnik SHA1 |2.62, 4.42, 5.7 | 9 maja 2017 r. |
+| ReL 17-05 | [4022344] |Poradnik zabezpieczeń firmy Microsoft |5.7 | 9 maja 2017 r. |
+| ReL 17-05 | [4022345] |Poradnik zabezpieczeń firmy Microsoft |5.7 | 9 maja 2017 r. |
+| ReL 17-05 | [4021279] |Poradnik core /ASP.Net .net |2.62, 3.49, 4.42, 5.7 | 9 maja 2017 r. |
 | ND | [4012864] |Aktualizacja strefy czasowej |2.62, 3.49, 4.42 | 9 maja 2017 r. |
 | ND | [4014565] |Zbiorcze informacje z systemem innym niż zabezpieczeniach kwietnia .NET |2.62 | 11 kwietnia 2017 r. |
 | ND | [4014559] |Zbiorcze informacje z systemem innym niż zabezpieczeniach kwietnia .NET |2.62 | 11 kwietnia 2017 r. |
@@ -201,31 +201,31 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 ## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
-| Rel 17-04 |  [4015217]  |Ulepszenia jakości systemu operacyjnego 2016 WS | 5.6 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015546]  |Tylko zabezpieczenia systemu Windows |2.61 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015547]  |Tylko zabezpieczenia systemu Windows |4.41 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015548]  |Tylko zabezpieczenia systemu Windows |3.48 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4014661]  |Program Internet explorer |2.61, 3.48, 4.41 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |Zabezpieczenia programu .NET |4.41 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4014564]; [4014572]; [4014549] |Zabezpieczenia programu .NET |3.48 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4014566]; [4014552]; [4014573]; [4014558]  |Zabezpieczenia programu .NET |2.61 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5.6 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2.61, 3.48, 4.41 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4.41 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0182; CVE-2017-0186; CVE-2017-0191 |2.61, 3.48, 4.41, 5.6 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4015193]  |Zmiany czasu letniego w systemie Windows dla Magallanes (podrzędnej lokacji) |2.61, 3.48, 4.41 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4012215]  |2017 marca miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.61 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4012217]  |2017 marca miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.48 | 11 kwietnia 2017 r. |
-| Rel 17-04 |  [4012216]  |2017 marca miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015217]  |Ulepszenia jakości systemu operacyjnego 2016 WS | 5.6 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015546]  |Tylko zabezpieczenia systemu Windows |2.61 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015547]  |Tylko zabezpieczenia systemu Windows |4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015548]  |Tylko zabezpieczenia systemu Windows |3.48 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4014661]  |Program Internet explorer |2.61, 3.48, 4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |Zabezpieczenia programu .NET |4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4014564]; [4014572]; [4014549] |Zabezpieczenia programu .NET |3.48 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4014566]; [4014552]; [4014573]; [4014558]  |Zabezpieczenia programu .NET |2.61 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5.6 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2.61, 3.48, 4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0182; CVE-2017-0186; CVE-2017-0191 |2.61, 3.48, 4.41, 5.6 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4015193]  |Zmiany czasu letniego w systemie Windows dla Magallanes (podrzędnej lokacji) |2.61, 3.48, 4.41 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4012215]  |2017 marca miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.61 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4012217]  |2017 marca miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.48 | 11 kwietnia 2017 r. |
+| ReL 17-04 |  [4012216]  |2017 marca miesięczne jakości zbiorcze informacje o zabezpieczeniach Windows 8.1 i Windows Server 2012 R2 |4.41 | 11 kwietnia 2017 r. |
 
 ## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
-| Rel 17-03 |  [4013429] |Ulepszeń i poprawek | 5.5 | 14 marca 2017 r. |
-| Rel 17-03 |  [4012212] |2017 marca zabezpieczeń, jakości tylko aktualizacja dla systemu Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.60 |14 marca 2017 r. |
-| Rel 17-03 |  [4012213] |2017 marca zabezpieczeń, jakości tylko aktualizacji dla Windows 8.1 i Windows Server 2012 R2 |4.40 |14 marca 2017 r. |
-| Rel 17-03 |  [4012214] |2017 marca jakości tylko aktualizacji systemu Windows Server 2012|3.47 |14 marca 2017 r. |
-| Rel 17-03 |  [4012204] |Aktualizacja zabezpieczeń programu Internet Explorer |2.60, 3.47, 4.40, 5.5 |14 marca 2017 r. |
+| ReL 17-03 |  [4013429] |Ulepszeń i poprawek | 5.5 | 14 marca 2017 r. |
+| ReL 17-03 |  [4012212] |2017 marca zabezpieczeń, jakości tylko aktualizacja dla systemu Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.60 |14 marca 2017 r. |
+| ReL 17-03 |  [4012213] |2017 marca zabezpieczeń, jakości tylko aktualizacji dla Windows 8.1 i Windows Server 2012 R2 |4.40 |14 marca 2017 r. |
+| ReL 17-03 |  [4012214] |2017 marca jakości tylko aktualizacji systemu Windows Server 2012|3.47 |14 marca 2017 r. |
+| ReL 17-03 |  [4012204] |Aktualizacja zabezpieczeń programu Internet Explorer |2.60, 3.47, 4.40, 5.5 |14 marca 2017 r. |
 | ND |  [4012864] |Zmiany czasu letniego w systemie Windows dla Cypress Północna, Mongolia i regionu Saratowski rosyjski |2.60, 3.47, 4.40 |14 marca 2017 r. |
 | ND |  [3212646] |Stycznia 2017 miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 |2.60 |14 marca 2017 r. |
 | ND |  [3205409] |Grudnia 2016 miesięczne jakości zbiorcze informacje o zabezpieczeniach systemu Windows Server 2012 |3.47 |14 marca 2017 r. |
@@ -790,9 +790,9 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 [4014567]: http://support.microsoft.com/kb/4014567
 [4015550]: http://support.microsoft.com/kb/4015550
 [4013418]: http://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/en-us/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/en-us/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/en-us/library/security/4021279.aspx
+[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
+[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
+[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
 
 
 [4015217]: http://support.microsoft.com/kb/4015217

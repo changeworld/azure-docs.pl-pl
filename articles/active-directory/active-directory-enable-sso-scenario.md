@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Ten artykuł z zalet integracji z lokalnymi, chmurze i aplikacjami SaaS usługi Azure Active Directory."
+title: Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Ten artykuł z zalet integracji z lokalnymi, chmurze i aplikacjami SaaS usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 95b96f10-2d5c-4b78-8af8-d3657a24140f
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: f4035e4c1ef2bc78256ed842bc4b1ac65ecf8b53
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
-ms.translationtype: MT
+ms.openlocfilehash: c6f01a16f5f60193c81a03a7374649f87eeb270a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory
 Poza rzeczywiste przepływu pracy lub zawartości przedsiębiorstwa mają dwa podstawowe wymagania dotyczące wszystkich aplikacji:
@@ -111,5 +111,6 @@ Z usługą Azure AD można zabezpieczyć swoje aplikacje za pomocą zasad dostę
 Aby rozpocząć Integrowanie aplikacji z usługą Azure AD, Przyjrzyjmy się [przewodnik Wprowadzenie do integracji Azure Active Directory z aplikacjami pobierania](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Zobacz także
-[Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
+[Artykuł indeksu do zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
+[planu wdrożenie krok po kroku dla logowania jednokrotnego do aplikacji SaaS](http://aka.ms/ssodeploymentplan)
 

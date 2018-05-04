@@ -8,13 +8,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: bb0b9e3db4637a6b872c7fed9653a16457b848db
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon proste usługi magazynu przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -94,14 +94,14 @@ Aby skopiować dane z usługi Amazon S3, ustaw właściwość Typ zestawu danych
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type zestawu danych: **AmazonS3Object** |Yes |
 | bucketName | Nazwa pakietu S3. |Yes |
-| key | Klucz obiektu S3. Dotyczy tylko, gdy nie jest określony prefiks. |Nie |
-| Prefiks | Prefiks klucza obiektu S3. Wybrano obiektów, w której klucze uruchomienia z tym prefiksem. Dotyczy tylko, gdy nie jest określony klucz. |Nie |
+| key | **Nazwę lub symbol wieloznaczny filtr** klucza obiektu S3 pod określony zasobnik. Dotyczy tylko, gdy nie jest określona właściwość "prefiksu". <br/><br/>Filtr symboli wieloznacznych jest obsługiwana tylko dla część nazwy pliku, ale nie należą do folderu. Dozwolone symbole wieloznaczne są: `*` (wielu znaków) i `?` (pojedynczy znak).<br/>— Przykład 1: `"key": "rootfolder/subfolder/*.csv"`<br/>— Przykład 2: `"key": "rootfolder/subfolder/???20180427.txt"` |Nie |
+| Prefiks | Prefiks klucza obiektu S3. Wybrano obiektów, w której klucze uruchomienia z tym prefiksem. Ma zastosowanie tylko wtedy, gdy nie określono właściwości "key". |Nie |
 | wersja | Wersja obiektu S3, jeśli włączono S3 przechowywania wersji. |Nie |
 | Format | Jeśli chcesz **skopiuj pliki jako — jest** między opartych na plikach magazynów (kopia binarnego), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować lub wygenerować pliki w określonym formacie, obsługiwane są następujące typy plików w formacie: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w formacie do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [formacie tekstowym](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Nie (tylko w przypadku scenariusza kopiowania binarny) |
 | Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Obsługiwane poziomy: **optymalna** i **najszybciej**. |Nie |
 
-> [!NOTE]
-> **bucketName + klawisz** Określa lokalizację obiektu S3, gdzie zasobnika jest nadrzędny kontener dla obiektów S3, a klucz jest pełną ścieżką do obiektu S3.
+>[!TIP]
+>Aby skopiować wszystkie pliki w folderze, określ **bucketName** zasobnika i **prefiks** części folderu.<br>Aby skopiować pojedynczy plik o podanej nazwie, określ **bucketName** zasobnika i **klucza** nazwy folderu części oraz pliku.<br>Aby skopiować podzestaw pliki w folderze, określ **bucketName** zasobnika i **klucza** folderu filtru części oraz symbol wieloznaczny.
 
 **Przykład: użycie prefiksu**
 

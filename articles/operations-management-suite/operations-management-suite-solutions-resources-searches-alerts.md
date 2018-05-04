@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/16/2018
-ms.author: bwren
+ms.date: 04/16/2018
+ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c43e262725bd7b4c4fe5680f514d80112766f991
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie analizy dzienników zapisane wyszukiwania i alerty rozwiązania do zarządzania (wersja zapoznawcza)
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 03/30/2018
 W tym artykule przyjęto założenie, że znasz już jak [tworzenie rozwiązania do zarządzania](operations-management-suite-solutions-creating.md) i struktura [szablonu usługi Resource Manager](../resource-group-authoring-templates.md) i plik rozwiązania.
 
 
-## <a name="log-analytics-workspace"></a>Obszar roboczy analizy dzienników
+## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
 Wszystkie zasoby w analizy dzienników znajdują się w [obszaru roboczego](../log-analytics/log-analytics-manage-access.md).  Zgodnie z opisem w [obszaru roboczego analizy dzienników i konto automatyzacji](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, zainstaluj rozwiązania nie powiedzie się.
 
-Nazwa obszaru roboczego jest nazwy każdego zasobu analizy dzienników.  Ma to rozwiązanie z **obszaru roboczego** parametru, jak w poniższym przykładzie savedsearch zasobu.
+Nazwa obszaru roboczego jest nazwy każdego zasobu analizy dzienników.  Ma to rozwiązanie z **obszaru roboczego** parametru, jak w poniższym przykładzie SavedSearch zasobu.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
@@ -77,7 +77,7 @@ Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md
 
 
 
-Każda właściwość zapisanego kryterium wyszukiwania są opisane w poniższej tabeli. 
+Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższej tabeli. 
 
 | Właściwość | Opis |
 |:--- |:--- |
@@ -86,17 +86,22 @@ Każda właściwość zapisanego kryterium wyszukiwania są opisane w poniższej
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
-> Może być konieczne użycie znaki specjalne w zapytaniu, jeśli zawiera znaki, które mogą być interpretowane jako JSON.  Na przykład, jeśli zapytanie zostało **OperationName:"Microsoft.Compute/virtualMachines/write typu: AzureActivity"**, mają być zapisywane w pliku rozwiązania jako **OperationName typu: AzureActivity:\"Microsoft.Compute/virtualMachines/write\"**.
+> Może być konieczne użycie znaki specjalne w zapytaniu, jeśli zawiera znaki, które mogą być interpretowane jako JSON.  Na przykład, jeśli zapytanie zostało **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, mają być zapisywane w pliku rozwiązania jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerty
 [Rejestrowania alertów Analytics](../log-analytics/log-analytics-alerts.md) są tworzone przez reguły alertów, które uruchomić zapisane wyszukiwanie w regularnych odstępach czasu.  Jeśli wyniki zapytania dopasowania określone kryteria, tworzony jest rekord alertów i są uruchamiane co najmniej jednej akcji.  
+
+> [!NOTE]
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [grupy akcji — szablon Menedżera zasobów Azure](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 Reguły alertów w rozwiązaniu do zarządzania składają się z następujących trzech różnych zasobów.
 
 - **Zapisane wyszukiwanie.**  Definiuje wyszukiwania dziennika, który jest uruchamiany.  Wiele reguł alertów można udostępniać pojedynczy zapisanego kryterium wyszukiwania.
 - **Harmonogram.**  Określa, jak często jest uruchamiany wyszukiwania dziennika.  Każda reguła alertów ma jeden i tylko jeden harmonogram.
-- **Akcja alertu.**  Każda reguła alertów ma jeden zasób akcji z typem **Alert** definiuje szczegóły alertu, takie jak kryteria gdy tworzony jest rekord alertów i ważność alertu.  Zasób akcji zostanie opcjonalnie określić odpowiedź poczty i elementu runbook.
-- **Akcja elementu Webhook (opcjonalnie).**  Reguły alertów wywołania elementu webhook, a następnie go wymaga dodatkowych czynności zasobu o typie **Webhook**.    
+- **Akcja alertu.**  Każda reguła alertów ma jednej akcji grupy zasobów lub akcji zasób (starsze) z typem **Alert** definiuje szczegóły alertu, takie jak kryteria gdy tworzony jest rekord alertów i ważność alertu. [Grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) zasobów może mieć listy skonfigurowane akcje w sytuacji, gdy alert jest uruchamiany — takich jak połączenie głosowe, programu SMS, wiadomości e-mail, webhook, zarządzanie usługami IT — tool, element runbook automatyzacji, aplikację logiki itp.
+ 
+Zasób akcji (starsze) opcjonalnie definiują odpowiedzi poczty i elementu runbook.
+- **Akcja elementu Webhook (starsze).**  Reguły alertów wywołania elementu webhook, a następnie go wymaga dodatkowych czynności zasobu o typie **Webhook**.    
 
 Zapisane wyszukiwania zasobów opisanych powyżej.  Inne zasoby są opisane poniżej.
 
@@ -133,20 +138,25 @@ W poniższej tabeli opisano właściwości planowania zasobów.
 
 Zasób harmonogramu powinien są zależne od zapisanego wyszukiwania, aby przed harmonogram jest tworzona.
 
+> [!NOTE]
+> Nazwa harmonogramu musi być unikatowa w danym obszarze roboczym; dwa harmonogramy nie może mieć ten sam identyfikator, nawet jeśli są one skojarzone z inną zapisanych wyszukiwań. Również nazwę wszystkie zapisane wyszukiwania, harmonogramów i utworzonych przy użyciu interfejsu API analizy dziennika akcji musi być pisane małymi literami.
+
 
 ### <a name="actions"></a>Akcje
-Istnieją dwa typy akcji zasobu określonego przez **typu** właściwości.  Harmonogram wymaga jednego **Alert** akcji, który definiuje szczegóły reguły alertów i jakie akcje są pobierane, gdy tworzony jest alert.  Mogą również obejmować **Webhook** akcji, o ile elementu webhook powinna być wywoływana w alercie.  
+Harmonogram może mieć wiele akcji. Akcja może określić jeden lub więcej procesów do wykonywania takich jak wysyłanie wiadomości e-mail lub uruchamianie elementu runbook lub mogą określić próg określający, jeśli wyniki wyszukiwania zgodny pewne kryteria.  Niektóre akcje definiują zarówno tak, aby procesy są wykonywane po spełnieniu wartość progową.
 
-Zasoby akcji mieć typu `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
+Akcje można zdefiniować przy użyciu zasobów [grupy akcji] lub zasób akcji.
 
-#### <a name="alert-actions"></a>Akcje alertów
+> [!NOTE]
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [grupy akcji — szablon Menedżera zasobów Azure](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
-Każdy harmonogram ma jeden **alertu** akcji.  Określa szczegóły alertu, i opcjonalnie działań powiadomień i korygowania.  Powiadomienie o wysyła wiadomość e-mail do co najmniej jeden adres.  Korygowanie uruchamia element runbook automatyzacji Azure, aby podjąć próbę rozwiązania problemu.
+
+Istnieją dwa typy akcji zasobu określonego przez **typu** właściwości.  Harmonogram wymaga jednego **Alert** akcji, który definiuje szczegóły reguły alertów i jakie akcje są pobierane, gdy tworzony jest alert. Zasoby akcji mieć typu `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
 
 Akcje alertu ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
 
 
-
+```
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -167,20 +177,16 @@ Akcje alertu ma następującą strukturę.  W tym wspólnych zmiennych i paramet
                     "triggerCondition": "[variables('Alert').Threshold.Trigger.Condition]",
                     "operator": "[variables('Alert').Trigger.Operator]",
                     "value": "[variables('Alert').Trigger.Value]"
-                },
-            },
-            "emailNotification": {
-                "recipients": [
-                    "[variables('Alert').Recipients]"
-                ],
-                "subject": "[variables('Alert').Subject]"
-            },
-            "remediation": {
-                "runbookName": "[variables('Alert').Remedition.RunbookName]",
-                "webhookUri": "[variables('Alert').Remedition.WebhookUri]"
-            }
+                  },
+              },
+      "AzNsNotification": {
+        "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+        "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]",
+        "CustomWebhookPayload": "[variables('MyAlert').AzNsNotification.CustomWebhookPayload]"
+        }
         }
     }
+```
 
 W poniższych tabelach opisano właściwości zasobów akcji alertu.
 
@@ -189,17 +195,16 @@ W poniższych tabelach opisano właściwości zasobów akcji alertu.
 | Typ | Yes | Typ akcji.  Jest to **Alert** dla akcje alertu. |
 | Name (Nazwa) | Yes | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguł alertów. |
 | Opis | Nie | Opcjonalny opis alertu. |
-| Ważność | Yes | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informational** |
+| Ważność | Yes | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informational**
 
 
-##### <a name="threshold"></a>Próg
+#### <a name="threshold"></a>Próg
 Ta sekcja jest wymagana.  Definiuje właściwości dla wartości progowej alertu.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większe<br>lt = mniej niż** |
 | Wartość | Yes | Wartość do porównywania wyników. |
-
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Ta sekcja jest opcjonalna.  Uwzględnij czynnik dla alertu metryki pomiaru.
@@ -213,12 +218,33 @@ Ta sekcja jest opcjonalna.  Uwzględnij czynnik dla alertu metryki pomiaru.
 | Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większe<br>lt = mniej niż** |
 | Wartość | Yes | Liczba przypadków, które muszą zostać spełnione kryteria wyzwolenia alertu. |
 
-##### <a name="throttling"></a>Ograniczanie przepływności
+
+#### <a name="throttling"></a>Ograniczanie przepływności
 Ta sekcja jest opcjonalna.  W tej sekcji należy uwzględnić, jeśli chcesz pominąć alertów z tej samej reguły dla niektórych ilość czasu, po utworzeniu alertu.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | DurationInMinutes | Tak, jeśli ograniczanie dołączony — element | Liczba minut do pomijania alertów po utworzeniu z tego samego alertu. |
+
+
+#### <a name="azure-action-group"></a>Grupy akcji Azure
+Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu obsługi akcji. Z grupy akcji można określić czynności użytkownika raz i następnie skojarzyć grupy akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego zadeklarować wielokrotnie te same akcje. Grupy akcji obsługuje wiele działań — w tym wiadomości e-mail, programu SMS, wywołania głosu, zarządzanie usługami IT — połączenie, elementu Runbook automatyzacji, identyfikator URI elementu Webhook i więcej. 
+
+Dla użytkownika, przez który rozszerzono alerty na platformie Azure — harmonogram ma teraz szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alertu. Szczegóły poczty e-mail, adresy URL elementu Webhook szczegóły automatyzacji elementu Runbook i inne akcje, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z monitora Azure](../monitoring-and-diagnostics/monitoring-action-groups.md) w portalu lub użyj [akcji grupy - zasobów szablonu](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+
+| Nazwa elementu | Wymagane | Opis |
+|:--|:--|:--|
+| AzNsNotification | Yes | Identyfikator zasobu grupy Azure akcji, które mają być skojarzone z alertem podejmowania niezbędnych działań po spełnieniu kryteriów alertu. |
+| CustomEmailSubject | Nie | Wiersz tematu niestandardowe wiadomości wysyłane na wszystkie adresy określone w grupy skojarzone z akcją. |
+| CustomWebhookPayload | Nie | Ładunek dostosowane do wysłania do wszystkich webhook punktów końcowych zdefiniowanych w grupie skojarzone z akcją. Format zależy od tego, co elementu webhook oczekuje i powinny być poprawne dane JSON serializacji. |
+
+
+#### <a name="actions-for-oms-legacy"></a>Akcje dla OMS (starsze)
+
+Każdy harmonogram ma jeden **alertu** akcji.  Określa szczegóły alertu, i opcjonalnie działań powiadomień i korygowania.  Powiadomienie o wysyła wiadomość e-mail do co najmniej jeden adres.  Korygowanie uruchamia element runbook automatyzacji Azure, aby podjąć próbę rozwiązania problemu.
+
+> [!NOTE]
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [grupy akcji — szablon Menedżera zasobów Azure](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Ta sekcja jest opcjonalna Dołącz go, jeżeli alert do wysyłania wiadomości e-mail do co najmniej jednego adresata.
@@ -239,7 +265,7 @@ Ta sekcja jest opcjonalna Dołącz ją, jeśli chcesz, aby element runbook możn
 | WebhookUri | Yes | Identyfikator URI elementu webhook dla elementu runbook. |
 | Data wygaśnięcia | Nie | Data i godzina wygaśnięcia korygowania. |
 
-#### <a name="webhook-actions"></a>Akcje elementu Webhook
+##### <a name="webhook-actions"></a>Akcje elementu Webhook
 
 Akcje elementu Webhook uruchomienia procesu podczas wywoływania adresu URL i opcjonalnie podając ładunku do wysłania. Są one podobne do akcji korygowania, z wyjątkiem są przeznaczone dla elementów webhook, które może wywołać procesy inne niż elementy runbook automatyzacji Azure. Zawierają także dodatkowe opcja podania ładunku mają zostać dostarczone do zdalnego procesu.
 
@@ -271,19 +297,17 @@ Właściwości elementu Webhook akcji zasoby są opisane w poniższych tabelach.
 | CustomPayload | Nie | Niestandardowy ładunek do wysłania do elementu webhook. Format zależy od tego, czego oczekuje elementu webhook. |
 
 
-
-
 ## <a name="sample"></a>Sample
 
 Poniżej przedstawiono przykładowe rozwiązanie zawierającą obejmuje następujące zasoby:
 
 - Zapisane wyszukiwanie
 - Harmonogram
-- Akcji alertu
-- Akcja elementu Webhook
+- Grupa akcji
 
 W przykładzie użyto [parametry standardowego rozwiązania](operations-management-suite-solutions-solution-file.md#parameters) zmiennych, które służy zwykle do rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
 
+```
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -294,34 +318,16 @@ W przykładzie użyto [parametry standardowego rozwiązania](operations-manageme
               "Description": "Name of Log Analytics workspace"
             }
           },
-          "accountName": {
-            "type": "string",
-            "metadata": {
-              "Description": "Name of Automation account"
-            }
-          },
           "workspaceregionId": {
             "type": "string",
             "metadata": {
               "Description": "Region of Log Analytics workspace"
             }
           },
-          "regionId": {
+          "actiongroup": {
             "type": "string",
             "metadata": {
-              "Description": "Region of Automation account"
-            }
-          },
-          "pricingTier": {
-            "type": "string",
-            "metadata": {
-              "Description": "Pricing tier of both Log Analytics workspace and Azure Automation account"
-            }
-          },
-          "recipients": {
-            "type": "string",
-            "metadata": {
-              "Description": "List of recipients for the email alert separated by semicolon"
+              "Description": "List of action groups for alert actions separated by semicolon"
             }
           }
         },
@@ -331,7 +337,7 @@ W przykładzie użyto [parametry standardowego rozwiązania](operations-manageme
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-11-01-preview",
+          "LogAnalyticsApiVersion": "2015-03-20",
     
           "MySearch": {
             "displayName": "Error records by hour",
@@ -357,20 +363,11 @@ W przykładzie użyto [parametry standardowego rozwiązania](operations-manageme
               "Value": 3
             },
             "ThrottleMinutes": 60,
-            "Notification": {
-              "Recipients": [
-                "[parameters('recipients')]"
+            "AzNsNotification": {
+              "GroupIds": [
+                "[parameters('actiongroup')]"
               ],
-              "Subject": "Sample alert"
-            },
-            "Remediation": {
-              "RunbookName": "MyRemediationRunbook",
-              "WebhookUri": "https://s1events.azure-automation.net/webhooks?token=TluBFH3GpX4IEAnFoImoAWLTULkjD%2bTS0yscyrr7ogw%3d"
-            },
-            "Webhook": {
-              "Name": "MyWebhook",
-              "Uri": "https://MyService.com/webhook",
-              "Payload": "{\"field1\":\"value1\",\"field2\":\"value2\"}"
+              "CustomEmailSubject": "Sample alert"
             }
           }
         },
@@ -394,8 +391,7 @@ W przykładzie użyto [parametry standardowego rozwiązania](operations-manageme
               "containedResources": [
                 "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
                 "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Webhook.Name)]"
+                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
               ]
             },
             "plan": {
@@ -458,39 +454,18 @@ W przykładzie użyto [parametry standardowego rozwiązania](operations-manageme
               "Throttling": {
                 "DurationInMinutes": "[variables('MyAlert').ThrottleMinutes]"
               },
-              "EmailNotification": {
-                "Recipients": "[variables('MyAlert').Notification.Recipients]",
-                "Subject": "[variables('MyAlert').Notification.Subject]",
-                "Attachment": "None"
-              },
-              "Remediation": {
-                "RunbookName": "[variables('MyAlert').Remediation.RunbookName]",
-                "WebhookUri": "[variables('MyAlert').Remediation.WebhookUri]"
-              }
-            }
-          },
-          {
-            "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name, '/', variables('MyAlert').Webhook.Name)]",
-            "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-            "dependsOn": [
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]",
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name, '/actions/',variables('MyAlert').Name)]"
-            ],
-            "properties": {
-              "etag": "*",
-              "Type": "Webhook",
-              "Name": "[variables('MyAlert').Webhook.Name]",
-              "WebhookUri": "[variables('MyAlert').Webhook.Uri]",
-              "CustomPayload": "[variables('MyAlert').Webhook.Payload]"
+            "AzNsNotification": {
+              "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+              "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]"
+            }             
             }
           }
         ]
     }
-
+```
 
 Następujący plik parametrów zawiera przykłady wartości dla tego rozwiązania.
-
+```
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
@@ -510,12 +485,12 @@ Następujący plik parametrów zawiera przykłady wartości dla tego rozwiązani
             "pricingTier": {
                 "value": "Free"
             },
-            "recipients": {
-                "value": "recipient1@contoso.com;recipient2@contoso.com"
+            "actiongroup": {
+                "value": "/subscriptions/3b540246-808d-4331-99aa-917b808a9166/resourcegroups/myTestGroup/providers/microsoft.insights/actiongroups/sample"
             }
         }
     }
-
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dodawanie widoków](operations-management-suite-solutions-resources-views.md) do rozwiązania do zarządzania.

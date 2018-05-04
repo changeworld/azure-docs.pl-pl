@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 396f1d3d8c69ba3204d16f06d49656fd138a1126
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 07ddf1c2b76230c8d753426d70098603ff14ec4d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klastra sieci szkieletowej usług
 Usługa sieci szkieletowej klastra Resource Manager zapewnia kilka mechanizmów opisujące klastra. W czasie wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usługi działające w klastrze. Wymuszając te reguły ważne również próbuje optymalizacji zużycia zasobów w klastrze.
@@ -39,7 +39,7 @@ Należy pamiętać, że domen błędów są poprawnie skonfigurowane od sieci sz
 > [!WARNING]
 > Jest ważne, że informacje domeny błędów dostarczone do usługi sieci szkieletowej są prawidłowe. Na przykład załóżmy, że węzły klastra usługi sieć szkieletowa działają wewnątrz 10 maszyn wirtualnych na hostach fizycznych pięć. W takim przypadku chociaż występują 10 maszyn wirtualnych, są tylko 5 różnych (najwyższego poziomu) domeny błędów. Udostępnianie tego samego hosta fizycznego powoduje, że maszyny wirtualne na współużytkowanie tej samej domenie błędów głównego, ponieważ maszyn wirtualnych występuje błąd skoordynowany sposób, jeśli ich hosta fizycznego zakończy się niepowodzeniem.  
 >
-> Sieć szkieletowa usług oczekuje domeny błędów węzła nie należy zmieniać. Inne mechanizmy zapewniania wysokiej dostępności maszyn wirtualnych, takie jak [maszyn wirtualnych wysokiej dostępności](https://technet.microsoft.com/en-us/library/cc967323.aspx) może powodować konflikty z sieci szkieletowej usług, ponieważ używają one przezroczysty migracji maszyn wirtualnych z jednego hosta na inny. Te mechanizmy ponowne konfigurowanie lub nie Powiadamiaj uruchomiony kod w ramach maszyny Wirtualnej. Tak, są one **nieobsługiwane** jako środowiska do uruchamiania usługi sieć szkieletowa klastrów. Usługa sieci szkieletowej powinna być stosowanej technologii tylko wysokiej dostępności. Mechanizmy, takie jak migracja maszyny Wirtualnej sieci SAN, lub inne osoby nie są konieczne. Jeśli używany w połączeniu z usługi Service Fabric tych mechanizmów _zmniejszyć_ aplikacji dostępność i niezawodność, ponieważ ich wprowadzenie dodatkowej złożoności, Dodaj scentralizowane źródła błędu i wykorzystania niezawodność i Strategie dostępności, które powodują konflikt z aliasami w sieci szkieletowej usług. 
+> Sieć szkieletowa usług oczekuje domeny błędów węzła nie należy zmieniać. Inne mechanizmy zapewniania wysokiej dostępności maszyn wirtualnych, takie jak [maszyn wirtualnych wysokiej dostępności](https://technet.microsoft.com/library/cc967323.aspx) może powodować konflikty z sieci szkieletowej usług, ponieważ używają one przezroczysty migracji maszyn wirtualnych z jednego hosta na inny. Te mechanizmy ponowne konfigurowanie lub nie Powiadamiaj uruchomiony kod w ramach maszyny Wirtualnej. Tak, są one **nieobsługiwane** jako środowiska do uruchamiania usługi sieć szkieletowa klastrów. Usługa sieci szkieletowej powinna być stosowanej technologii tylko wysokiej dostępności. Mechanizmy, takie jak migracja maszyny Wirtualnej sieci SAN, lub inne osoby nie są konieczne. Jeśli używany w połączeniu z usługi Service Fabric tych mechanizmów _zmniejszyć_ aplikacji dostępność i niezawodność, ponieważ ich wprowadzenie dodatkowej złożoności, Dodaj scentralizowane źródła błędu i wykorzystania niezawodność i Strategie dostępności, które powodują konflikt z aliasami w sieci szkieletowej usług. 
 >
 >
 

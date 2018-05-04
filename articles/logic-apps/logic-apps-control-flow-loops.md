@@ -1,12 +1,12 @@
 ---
-title: "Pętle — tablice procesu lub powtórzeń działania — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Przetwarzanie tablic o \"for each\" pętli lub powtórzeń działania do momentu spełnienia określonych warunków w aplikacjach logiki"
+title: Pętle — tablice procesu lub powtórzeń działania — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Przetwarzanie tablic o "for each" pętli lub powtórzeń działania do momentu spełnienia określonych warunków w aplikacjach logiki
 services: logic-apps
-keywords: "dla każdej pętli"
-documentationcenter: 
+keywords: dla każdej pętli
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: f634b1004fef2eb65c6b8134088ceead47c91890
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Pętle: Przetworzyć tablice lub Powtórz akcje, dopóki spełniony jest warunek
 
@@ -154,9 +154,6 @@ Powtarzaj akcje, dopóki spełniony jest warunek lub niektóre stan został zmie
 * Wywołanie punkt końcowy do momentu uzyskania odpowiedzi, który ma.
 * Utwórz rekord w bazie danych, czekać do momentu określonego pola w tym zatwierdzeniu rekordu i kontynuować przetwarzania. 
 
-> [!NOTE]
-> "Do momentu" pętli nie może zawierać "Foreach" pętli lub inne "pętle do".
-
 Na przykład o 8:00 każdego dnia, ta aplikacja logiki zwiększa zmiennej dopóki wartość zmiennej jest równa 10. Następnie aplikacji logiki wysyła wiadomość e-mail, który potwierdza bieżącą wartość. Chociaż w tym przykładzie użyto programu Outlook pakietu Office 365, możesz użyć dowolnego dostawcy poczty e-mail obsługiwane przez aplikacje logiki ([przeglądu łączniki tutaj](https://docs.microsoft.com/connectors/)). Jeśli korzystasz z innego konta e-mail, ogólne kroki będą takie same, ale interfejs użytkownika może się trochę różnić. 
 
 1. Tworzenia pustej aplikacji logiki. W Projektancie aplikacji logiki, wyszukaj "cyklu", a następnie wybierz tego wyzwalacza: **harmonogram - cyklu** 
@@ -232,8 +229,8 @@ Pętla "Do momentu" ma domyślne limity, które zatrzymuje wykonywanie, jeśli j
 
 | Właściwość | Wartość domyślna | Opis | 
 | -------- | ------------- | ----------- | 
-| **Count** | 60 | Maksymalna liczba pętle uruchamiane przed opuszcza pętlę. Wartość domyślna to 60 cykli. | 
-| **Timeout** | PT1H | Zamyka maksymalną ilość czasu na wykonanie pętli przed pętli. Wartość domyślna to jedna godzina i jest określona w formacie ISO 8601. <p>Wartość limitu czasu jest obliczane dla każdego cyklu pętli. Jeśli dowolnych akcji w pętli trwa dłużej niż limit czasu, Zatrzymaj nie bieżącego cyklu, ale nie uruchamia na następny cykl, ponieważ nie jest spełniony warunek limit. | 
+| **Liczba** | 60 | Maksymalna liczba pętle uruchamiane przed opuszcza pętlę. Wartość domyślna to 60 cykli. | 
+| **Limit czasu** | PT1H | Zamyka maksymalną ilość czasu na wykonanie pętli przed pętli. Wartość domyślna to jedna godzina i jest określona w formacie ISO 8601. <p>Wartość limitu czasu jest obliczane dla każdego cyklu pętli. Jeśli dowolnych akcji w pętli trwa dłużej niż limit czasu, Zatrzymaj nie bieżącego cyklu, ale nie uruchamia na następny cykl, ponieważ nie jest spełniony warunek limit. | 
 |||| 
 
 Aby zmienić te limity domyślne, wybierz **Pokaż zaawansowane opcje** w kształcie akcji pętli.

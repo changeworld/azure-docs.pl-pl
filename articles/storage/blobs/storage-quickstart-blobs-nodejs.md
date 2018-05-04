@@ -1,19 +1,19 @@
 ---
-title: Azure Quickstart — przekazywanie, pobieranie i wyświetlanie listy obiektów blob w usłudze Azure Storage przy użyciu platformy Node.js | Microsoft Docs
-description: W tym przewodniku Szybki start utworzysz konto magazynu i kontener. Następnie przy użyciu biblioteki klienta platformy Node.js przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
+title: Szybki start Azure — tworzenie obiektu blob w magazynie obiektów przy użyciu języka Node.js | Microsoft Docs
+description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie przy użyciu biblioteki klienta platformy Node.js przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 8783b83a1a94caf4a49f9da7a2dd30c9cb52df22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu platformy Node.js
 
@@ -82,7 +82,7 @@ Poniżej przedstawiono funkcje tych modułów:
 - *dotenv* — ładuje zmienne środowiskowe zdefiniowane w pliku *.env* do bieżącego kontekstu wykonania
 - *path* — jest wymagany do określenia ścieżki bezwzględnej do pliku przekazywanego do magazynu obiektów blob
 - *yargs* — udostępnia prosty interfejs umożliwiający dostęp do argumentów wiersza polecenia
-- *azure-storage* jest modułem [zestawu SDK usługi Azure Storage](/nodejs/api/azure-storage) dla środowiska Node.js
+- *azure-storage* jest modułem [zestawu SDK usługi Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage) dla środowiska Node.js
 
 Następnie jest inicjowanych kilka zmiennych:
 
@@ -294,4 +294,4 @@ W tym przewodniku Szybki start przedstawiono metodę przekazywania pliku między
 > [!div class="nextstepaction"]
 > [Instrukcje: Operacje wykonywane w usłudze Blob Storage](storage-nodejs-how-to-use-blob-storage.md)
 
-Aby zapoznać się z dokumentacją języka Node.js dotyczącą usługi Azure Storage, zobacz [pakiet azure-storage](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest).
+Aby zapoznać się z dokumentacją języka Node.js dotyczącą usługi Azure Storage, zobacz [pakiet azure-storage](https://docs.microsoft.com/javascript/api/azure-storage).

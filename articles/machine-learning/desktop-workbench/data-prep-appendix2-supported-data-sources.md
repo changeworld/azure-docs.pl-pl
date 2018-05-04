@@ -1,6 +1,6 @@
 ---
-title: "Obsługiwane źródła danych dostępne z Przygotowanie danych usługi Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera pełną listę obsługiwanych źródeł danych dostępnych w celu przygotowania danych usługi Azure Machine Learning."
+title: Obsługiwane źródła danych dostępne z Przygotowanie danych usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera pełną listę obsługiwanych źródeł danych dostępnych w celu przygotowania danych usługi Azure Machine Learning.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 7b42080ea4bf9a9e49f2695ab8746d9ead7348bd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Obsługiwanych źródeł danych w celu przygotowania danych usługi Azure Machine Learning 
 W tym artykule opisano aktualnie obsługiwanych źródeł danych w celu przygotowania danych usługi Azure Machine Learning.
@@ -49,7 +49,7 @@ Wybierz pojedynczy plik, a następnie go odczytać w przygotowaniu danych. Typ p
 Wybierz katalog lub zestawu plików w katalogu (selektora plików jest multiselect). Albo podejścia przy rozwiązywaniu pliki są odczytywane w jako przepływ danych jednego i dołączony do siebie, nagłówki wycięte w razie potrzeby.
 
 Są obsługiwane typy plików:
-- Delimited (.csv, .tsv, .txt, etc.)
+- Przecinkami (.csv .tsv, txt, itp.)
 - O stałej szerokości
 - Zwykły tekst
 - Plik JSON
@@ -86,7 +86,7 @@ Odczytać Excel pliku jeden arkusz naraz, określając nazwę arkusza lub numer.
 Plik JSON do odczytu z magazynu. Plik jest "spłaszczane" na odczyt.
 
 #### <a name="options"></a>Opcje
-- None
+- Brak
 
 ### <a name="parquet"></a>Parquet
 Przeczytaj Parquet zestawu danych, albo jednym pliku lub folderu.

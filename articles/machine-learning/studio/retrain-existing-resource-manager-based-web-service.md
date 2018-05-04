@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 67d75a28ba65dbdc0a3a105f9e41a1c4f02f2615
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f870bf1a282d7a044bb876e0015962b4f520a15f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Ponownie ucz istniejącej usługi sieci web predykcyjnej
 W tym dokumencie opisano proces ponownego trenowania w następującym scenariuszu:
@@ -26,8 +26,8 @@ W tym dokumencie opisano proces ponownego trenowania w następującym scenariusz
 * Masz eksperyment uczenia i eksperyment predykcyjny, która została wdrożona jako usługi sieci web operationalized.
 * Masz nowe dane, które mają usługi sieci web predykcyjnych, aby wykonać jego oceniania.
 
-> [!NOTE] 
-> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia do subskrypcji, do którego należy wdrożyć usługę sieci web. Aby uzyskać więcej informacji, zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md). 
+> [!NOTE]
+> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia do subskrypcji, do którego należy wdrożyć usługę sieci web. Aby uzyskać więcej informacji, zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md).
 
 Począwszy od istniejącej usługi sieci web, a eksperymentów, musisz wykonaj następujące kroki:
 
@@ -54,7 +54,7 @@ Aby zaktualizować eksperymentu uczenia:
 
 Uruchamianie eksperymentu.
 
-Następnie należy wdrożyć eksperyment uczenia jako usługę sieci web, który spowoduje utworzenie uczonego modelu i wyniki oceny modelu.  
+Następnie należy wdrożyć eksperyment uczenia jako usługę sieci web, który spowoduje utworzenie uczonego modelu i wyniki oceny modelu.
 
 W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **ustawić usługę sieci Web**, a następnie wybierz **wdrażanie usługi sieci Web [New]**. Zostanie otwarty portal usługi sieci Web systemu Azure Machine Learning **wdrażanie usługi sieci Web** strony. Wpisz nazwę usługi sieci web, wybierz plan płatności, a następnie kliknij przycisk **Wdróż**. Metody wykonywania wsadowego usługi można używać tylko do tworzenia modeli przeszkolone.
 
@@ -84,7 +84,7 @@ Zlokalizuj **apikey** deklaracji:
 W **zużycie podstawowe informacje o** sekcji **Consume** strony Znajdź klucz podstawowy i skopiuj go do **apikey** deklaracji.
 
 ### <a name="update-the-azure-storage-information"></a>Zaktualizuj informacje o usłudze Azure Storage
-BES przykładowy kod operacji przekazywania plików z dysku lokalnego (na przykład "C:\temp\CensusIpnput.csv") do usługi Azure Storage, procesy i zapisuje wyniki wstecz do magazynu Azure.  
+BES przykładowy kod operacji przekazywania plików z dysku lokalnego (na przykład "C:\temp\CensusIpnput.csv") do usługi Azure Storage, procesy i zapisuje wyniki wstecz do magazynu Azure.
 
 Po zakończeniu eksperymentu, wynikowy przepływu pracy powinny być podobne do następujących:
 
@@ -126,7 +126,7 @@ Poniżej przedstawiono przykład ponownego trenowania danych wyjściowych:
 ## <a name="evaluate-the-retraining-results"></a>Ocena ponownego trenowania wyników
 Po uruchomieniu aplikacji, danych wyjściowych zawiera adres URL i tokenu sygnatury dostępu współdzielonego, który są niezbędne do uzyskania dostępu wyniki oceny.
 
-Można wyświetlić wyniki wydajności retrained modelu, łącząc *BaseLocation*, *RelativeLocation*, i *SasBlobToken* z wyników danych wyjściowych dla *output2* (jak pokazano w poprzednim ponownego trenowania obrazu wyjściowego) i wklejanie pełny adres URL na pasku adresu przeglądarki.  
+Można wyświetlić wyniki wydajności retrained modelu, łącząc *BaseLocation*, *RelativeLocation*, i *SasBlobToken* z wyników danych wyjściowych dla *output2* (jak pokazano w poprzednim ponownego trenowania obrazu wyjściowego) i wklejanie pełny adres URL na pasku adresu przeglądarki.
 
 Przeanalizuj wyniki do ustalenia, czy nowo trenowanego modelu pełni wystarczająco również zastąpić istniejący.
 
@@ -136,7 +136,7 @@ Kopiuj *BaseLocation*, *RelativeLocation*, i *SasBlobToken* z wyników danych wy
 Gdy retrain nową usługę sieci web, należy zaktualizować definicji usługi predykcyjnej sieci web do odwołania do nowego uczonego modelu. Definicja usługi sieci web jest reprezentacji wewnętrznej trenowanego modelu usługi sieci web, a nie można bezpośrednio modyfikować. Upewnij się, że są pobierania definicji usługi sieci web dla predykcyjnej eksperymentu, a nie eksperyment uczenia.
 
 ## <a name="sign-in-to-azure-resource-manager"></a>Zaloguj się do usługi Azure Resource Manager
-Musisz najpierw zalogować się do konta z platformy Azure w środowisku PowerShell przy użyciu [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) polecenia cmdlet.
+Musisz najpierw zalogować się do konta z platformy Azure w środowisku PowerShell przy użyciu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) polecenia cmdlet.
 
 ## <a name="get-the-web-service-definition-object"></a>Pobierz obiekt definicji usługi sieci Web
 Następnie Pobierz obiekt definicji usługi sieci Web przez wywołanie metody [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) polecenia cmdlet.

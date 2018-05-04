@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management zasobów Azure - Konfigurowanie ustawień roli | Dokumentacja firmy Microsoft
+title: Skonfiguruj ustawienia roli przy użyciu zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób konfigurowania ustawień roli PIM.
 services: active-directory
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 0fe986d8cdace301fde4045b16d299ba8395457d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 05546be87aec3ec2f44b876a97eeab2121383d61
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---configure"></a>Skonfiguruj Zarządzanie tożsamościami uprzywilejowanymi - role zasobów-
+# <a name="configure-role-settings-by-using-for-azure-resources-by-using-privileged-identity-management"></a>Skonfiguruj ustawienia roli przy użyciu zasobów platformy Azure przy użyciu Privileged Identity Management 
 
-Konfigurowanie ustawień roli definiuje ustawienia domyślne stosowane do przypisania w środowisku usługi PIM. Aby zdefiniować te dla zasobu, wybierz kartę Ustawienia roli z nawigacji po lewej stronie, lub przycisk ustawień roli na pasku akcji w każdej roli, aby wyświetlić bieżące opcje.
+Po skonfigurowaniu ustawień roli można zdefiniować ustawienia domyślne, które są stosowane do przypisania w środowisku zarządzania tożsamości uprzywilejowanych (PIM). Aby zdefiniować te ustawienia dla zasobu, wybierz **ustawienia roli** kartę w lewym okienku. Aby wyświetlić bieżące opcje można również wybrać przycisk ustawień roli na pasku akcji (w dowolnej roli).
 
 
 ## <a name="select-a-role"></a>Wybieranie roli
-Wybierz rolę chcesz wprowadzić zmiany. Następnie wybierz pozycję Edytuj, aby wprowadzić zmiany w żadnych istniejących ustawień.
+Wybierz rolę, do której chcesz wprowadzić zmiany. Następnie, aby wprowadzić zmiany, aby wszystkie istniejące ustawienia, wybierz **Edytuj**.

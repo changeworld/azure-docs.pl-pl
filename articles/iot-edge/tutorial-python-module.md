@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d5bad277e6a54b23f0e3ef7321e82d212ae885d3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3c46df85f95377f5740526542ac1baf5a8fd77c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>Tworzenie i wdrażanie modułu Python IoT krawędzi w symulowane urządzenie — w wersji preview
 
@@ -29,7 +29,7 @@ Moduły krawędzi IoT umożliwia wdrażanie kodu, który implementuje logiki biz
 Moduł IoT krawędzi, który możesz utworzyć w tym samouczku filtruje temperatury dane generowane przez urządzenie. Tylko wysyła komunikaty powyżej jeśli temperatura przekracza określoną wartość progową. Ten typ analizy na krawędzi jest przydatne w przypadku zmniejszenie ilości danych przekazane i przechowywane w chmurze. 
 
 > [!IMPORTANT]
-> Obecnie modułu Python mogą być uruchomione w kontenerach Linux amd64. Nie działa w kontenerach systemu Windows lub kontenery opartego na architekturze ARM. 
+> Obecnie modułu Python może być uruchamiany tylko w kontenerach Linux amd64; Nie można uruchomić w kontenerach systemu Windows lub kontenery opartego na architekturze ARM. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,7 +40,7 @@ Moduł IoT krawędzi, który możesz utworzyć w tym samouczku filtruje temperat
 * [Rozszerzenia języka Python dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
 * [Docker](https://docs.docker.com/engine/installation/) na tym samym komputerze, na którym Visual Studio Code. Community Edition (CE) jest wystarczająca dla tego samouczka. 
 * [Python](https://www.python.org/downloads/).
-* [PIP](https://pip.pypa.io/en/stable/installing/#installation) instalowania pakietów języka Python.
+* [PIP](https://pip.pypa.io/en/stable/installing/#installation) instalowania pakietów języka Python (zazwyczaj dołączony do instalacji języka Python).
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 W tym samouczku rozszerzenie usługi Azure IoT Edge dla programu VS Code zostanie użyte do zbudowania modułu i utworzenia **obrazu kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.  
@@ -57,10 +57,10 @@ Na potrzeby tego samouczka możesz użyć dowolnego rejestru zgodnego z platform
 ## <a name="create-an-iot-edge-module-project"></a>Tworzenie projektu modułu krawędzi IoT
 Poniższe kroki pokazują, jak utworzyć moduł Python krawędzi IoT przy użyciu programu Visual Studio Code i rozszerzenie Azure IoT krawędzi.
 1. W programie Visual Studio Code, wybierz **widoku** > **zintegrowane terminali** otworzyć terminal zintegrowane kodzie VS.
-2. W terminalu zintegrowanego, wprowadź następujące polecenie, aby zainstalować (lub zaktualizować) **cookiecutter**:
+2. W terminalu zintegrowanego, wprowadź następujące polecenie, aby zainstalować (lub zaktualizować) **cookiecutter** (zalecamy w ten sposób w środowisku wirtualnym lub jako instalację użytkownika w sposób przedstawiony poniżej):
 
     ```cmd/sh
-    pip install -U cookiecutter
+    pip install --upgrade --user cookiecutter
     ```
 
 3. Utwórz projekt dla nowego modułu. Poniższe polecenie tworzy folder projektu **FilterModule**, z Twoim repozytorium kontenera. Parametr `image_repository` powinien być w formie `<your container registry name>.azurecr.io/filtermodule` Jeśli używasz rejestru kontenera platformy Azure. Wprowadź następujące polecenie w bieżącym folderze roboczym:
@@ -78,11 +78,11 @@ Poniższe kroki pokazują, jak utworzyć moduł Python krawędzi IoT przy użyci
     import json
     ```
 
-8. Dodaj `TEMPERATURE_THRESHOLD` i `TWIN_CALLBACKS` w obszarze globalne liczniki. Próg temperatury ustawia wartość, która może przekraczać zmierzone temperatury dane do wysłania do Centrum IoT.
+8. Dodaj `TEMPERATURE_THRESHOLD`, `RECEIVE_CALLBACKS`, i `TWIN_CALLBACKS` w obszarze globalne liczniki. Próg temperatury ustawia wartość, która może przekraczać zmierzone temperatury dane do wysłania do Centrum IoT.
 
     ```python
     TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = 0
+    TWIN_CALLBACKS = RECEIVE_CALLBACKS = 0
     ```
 
 9. Aktualizacja funkcji `receive_message_callback` z poniżej zawartości.
@@ -97,16 +97,16 @@ Poniższe kroki pokazują, jak utworzyć moduł Python krawędzi IoT przy użyci
         message_buffer = message.get_bytearray()
         size = len(message_buffer)
         message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
+        print("    Data: <<<{}>>> & Size={:d}".format(message_text, size))
         map_properties = message.properties()
         key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
+        print("    Properties: {}".format(key_value_pair))
         RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
+        print("    Total calls received: {:d}".format(RECEIVE_CALLBACKS))
         data = json.loads(message_text)
         if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
             map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+            print("Machine temperature {} exceeds threshold {}".format(data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
         hubManager.forward_event_to_output("output1", message, 0)
         return IoTHubMessageDispositionResult.ACCEPTED
     ```
@@ -118,14 +118,14 @@ Poniższe kroki pokazują, jak utworzyć moduł Python krawędzi IoT przy użyci
     def device_twin_callback(update_state, payload, user_context):
         global TWIN_CALLBACKS
         global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
+        print("\nTwin callback called with:\nupdateStatus = {}\npayload = {}\ncontext = {}".format(update_state, payload, user_context))
         data = json.loads(payload)
         if "desired" in data and "TemperatureThreshold" in data["desired"]:
             TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
         if "TemperatureThreshold" in data:
             TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
         TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+        print("Total calls confirmed: {:d}\n".format(TWIN_CALLBACKS))
     ```
 
 11. W klasie `HubManager`, Dodaj nowy wiersz do `__init__` metodę, aby zainicjować `device_twin_callback` funkcja właśnie został dodany.

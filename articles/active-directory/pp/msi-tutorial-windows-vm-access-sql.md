@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1ac3c341f7ffc1911fc063202c043351e412843f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 682998bb979c9b155b7b1389d8f605018ae135b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Umożliwia dostęp do usługi Azure SQL systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)
 
@@ -39,7 +39,7 @@ Ten samouczek pokazuje, jak używać zarządzane tożsamości usługi (MSI) dla 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do portalu Azure pod adresem [ https://portal.azure.com ](https://portal.azure.com).
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów
 
@@ -101,7 +101,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-Następnie dodaj MSI maszyny Wirtualnej do grupy.  Należy MSI **ObjectId**, który można pobrać użyciu programu Azure PowerShell.  Najpierw pobierz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu `Login-AzureRmAccount`, i uruchom następujące polecenia, aby:
+Następnie dodaj MSI maszyny Wirtualnej do grupy.  Należy MSI **ObjectId**, który można pobrać użyciu programu Azure PowerShell.  Najpierw pobierz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu `Connect-AzureRmAccount`, i uruchom następujące polecenia, aby:
 - Upewnij się, że kontekst sesji ma ustawioną wartość odpowiednią subskrypcji platformy Azure, jeśli masz wiele migawek.
 - Sprawdź w nazw maszyn wirtualnych i grupy zasobów poprawne, wyświetlić listę dostępnych zasobów w Twojej subskrypcji platformy Azure.
 - Pobierz właściwości maszyny Wirtualnej MSI, przy użyciu wartości odpowiednich dla `<RESOURCE-GROUP>` i `<VM-NAME>`.

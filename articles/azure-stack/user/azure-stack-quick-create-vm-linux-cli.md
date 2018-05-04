@@ -12,32 +12,43 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 69036b522b375eced604256340b532ad14a8708e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 90b36183ba32e75e06d434098d26cb10f3736373
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Utwórz maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure w stosie Azure
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Linux serwera przy użyciu wiersza polecenia platformy Azure w stosie Azure
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Interfejs wiersza polecenia platformy Azure jest używana do tworzenia i zarządzania zasobami Azure stosu w wierszu polecenia. Szczegóły tego szybkiego startu do utworzenia maszyny wirtualnej systemu Linux w stosie Azure przy użyciu wiersza polecenia platformy Azure.  Po utworzeniu maszyny Wirtualnej serwera sieci web jest zainstalowana, a port 80 jest otwarty zezwalająca na ruch w sieci web.
+Można utworzyć maszyny wirtualnej systemu Ubuntu Server 16.04 LTS przy użyciu wiersza polecenia platformy Azure. Wykonaj kroki opisane w tym artykule do utworzenia i użycia maszyny wirtualnej. Ten artykuł zawiera także zapoznać się z procedurą:
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+* Połączenie z maszyną wirtualną za pomocą zdalnego klienta.
+* Zainstaluj serwer sieci web NGINX i wyświetlić domyślną stronę główną.
+* Wyczyścić zasoby nieużywane.
 
-* Upewnij się, operatorem Azure stos został dodany obrazu "Ubuntu Server 16.04 LTS" do stosu Azure marketplace. 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Stos Azure wymaga określonej wersji interfejsu wiersza polecenia Azure, aby utworzyć i zarządzać zasobami. Jeśli nie jest skonfigurowany do stosu Azure wiersza polecenia platformy Azure, zaloguj się do [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrzny w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) i wykonaj kroki, aby [zainstalować i Konfigurowanie interfejsu wiersza polecenia Azure](azure-stack-version-profiles-azurecli2.md).
+* **Obraz systemu Linux w stosie Azure marketplace**
 
-* Klucz publiczny SSH o nazwie id_rsa.pub powinny zostać utworzone w katalogu .ssh profilu użytkownika systemu Windows. Aby uzyskać szczegółowe informacje na temat tworzenia kluczy SSH, zobacz [klucze tworzenie SSH w systemie Windows](../../virtual-machines/linux/ssh-from-windows.md). 
+   Domyślnie, stos Azure marketplace nie zawiera obrazu systemu Linux. Pobierz operatora stosu Azure, aby zapewnić **Ubuntu Server 16.04 LTS** obrazu należy. Operator można użyć procedury opisanej w [pobieranie elementów marketplace z platformy Azure do stosu Azure](../azure-stack-download-azure-marketplace-item.md) artykułu.
+
+* Stos Azure wymaga określonej wersji interfejsu wiersza polecenia Azure, aby utworzyć i zarządzać zasobami. Jeśli nie jest skonfigurowany dla usługi Azure stosu interfejsu wiersza polecenia Azure, zaloguj się do [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrzny w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) i wykonaj kroki, aby [ Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure](azure-stack-version-profiles-azurecli2.md).
+
+* Klucz publiczny SSH z id_rsa.pub nazwa zapisany w katalogu .ssh profilu użytkownika systemu Windows. Aby uzyskać szczegółowe informacje na temat tworzenia kluczy SSH, zobacz [klucze tworzenie SSH w systemie Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów jest kontenerem logicznym, do których stosu Azure wdrożone i zarządzane zasoby. Z Twojego zestawu rozwoju lub stos Azure zintegrowany system obsługi [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenie, aby utworzyć grupę zasobów. Firma Microsoft zostały przypisane wartości wszystkich zmiennych w tym dokumencie, można używać ich jest lub przypisać inną wartość. Poniższy przykład tworzy grupę zasobów o nazwie myResourceGroup w lokalizacji lokalnej.
+Grupa zasobów jest kontenerem logicznym, w której można wdrożyć aplikację i zarządzania zasobami Azure stosu. Z Twojego zestawu rozwoju lub stos Azure zintegrowany system obsługi [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenie, aby utworzyć grupę zasobów.
+
+>[!NOTE]
+ Wartości są przypisywane do wszystkich zmiennych w przykładach kodu. Jednak aby można przypisać nowe wartości.
+
+Poniższy przykład tworzy grupę zasobów o nazwie myResourceGroup w lokalizacji lokalnej.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -45,7 +56,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę Wirtualną za pomocą [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create) polecenia. Poniższy przykład tworzy Maszynę wirtualną o nazwie myVM. W tym przykładzie użyto Demouser dla nazwy użytkownika administracyjnego i Demouser@123 jako hasło. Zmień te wartości, aby pasowały do Twojego środowiska. Te wartości są wymagane, gdy połączenie z maszyną wirtualną.
+Utwórz maszynę wirtualną za pomocą [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create) polecenia. Poniższy przykład tworzy Maszynę wirtualną o nazwie myVM. W tym przykładzie użyto Demouser dla nazwy użytkownika administracyjnego i Demouser@123 jako hasło użytkownika. Zmiana tych wartości do zasobu, który jest odpowiedni dla danego środowiska.
 
 ```cli
 az vm create \
@@ -58,29 +69,29 @@ az vm create \
   --location local
 ```
 
-Po zakończeniu polecenia dane wyjściowe obejmują parametry dla maszyny wirtualnej.  Zwróć uwagę na *publicznego adresu IP*, ponieważ umożliwia to połączenie i zarządzanie nimi na komputerze wirtualnym.
+Publiczny adres IP jest zwracany w **publicznego adresu IP** parametru. Zapisz ten adres, ponieważ będzie potrzebny dostęp do maszyny wirtualnej.
 
 ## <a name="open-port-80-for-web-traffic"></a>Otwieranie portu 80 na potrzeby ruchu w sieci Web
 
-Domyślnie dozwolone są tylko połączenia SSH z maszynami wirtualnymi z systemem Linux wdrożonymi na platformie Azure. Jeśli ta maszyna wirtualna ma być serwerem sieci Web, port 80 należy otworzyć z Internetu. Otwórz odpowiedni port za pomocą polecenia [az vm open-port](/cli/azure/vm#open-port).
+Ponieważ ta maszyna wirtualna ma uruchomić serwera sieci web usług IIS, należy otworzyć port 80 na ruch internetowy. Otwórz odpowiedni port za pomocą polecenia [az vm open-port](/cli/azure/vm#open-port).
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="ssh-into-your-vm"></a>Łączenie z maszyną wirtualną za pośrednictwem protokołu SSH
+## <a name="use-ssh-to-connect-to-the-virtual-machine"></a>Używanie protokołu SSH do nawiązania połączenia z maszyną wirtualną
 
-Z poziomu systemu z zainstalowanym protokołem SSH użyj następującego polecenia, aby nawiązać połączenie z maszyną wirtualną. W przypadku korzystania z systemu Windows w celu utworzenia połączenia można użyć programu [Putty](http://www.putty.org/). Upewnij się zastąpić poprawne publiczny adres IP maszyny wirtualnej. W naszym przykładzie powyżej adres IP został 192.168.102.36.
+Z komputera klienckiego przy użyciu protokołu SSH, zainstalowane połączenia z maszyną wirtualną. Jeśli pracujesz w kliencie systemu Windows, użyj [Putty](http://www.putty.org/) do utworzenia połączenia. Aby podłączyć się do maszyny wirtualnej, użyj następującego polecenia:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-## <a name="install-nginx"></a>Instalowanie serwera NGINX
+## <a name="install-the-nginx-web-server"></a>Zainstaluj serwer sieci web NGINX
 
-Użyj poniższego skryptu powłoki systemowej w celu zaktualizowania źródeł pakietów i zainstalowania najnowszego pakietu NGINX. 
+Aby zaktualizować zasoby pakietu i zainstalować najnowszy pakiet NGINX, uruchom następujący skrypt:
 
-```bash 
+```bash
 #!/bin/bash
 
 # update package source
@@ -92,13 +103,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>Wyświetlanie strony powitalnej serwera NGINX
 
-Po zainstalowaniu serwera NGINX i otwarciu portu 80 na maszynie wirtualnej z Internetu możesz użyć wybranej przeglądarki sieci Web, aby wyświetlić domyślną stronę powitalną przeglądarki serwera NGINX. Upewnij się, że w celu odwiedzenia strony domyślnej używasz udokumentowanego powyżej *publicznego adresu IP*. 
+Z NGINX zainstalowane, a port 80 jest otwarty na maszynie wirtualnej można uzyskać dostępu do serwera sieci web przy użyciu publicznego adresu IP maszyny wirtualnej. Otwórz przeglądarkę sieci web i przejdź do ```http://<public IP address>```.
 
-![Domyślna witryna serwera NGINX](./media/azure-stack-quick-create-vm-linux-cli/nginx.png) 
+![Strona powitalna serwera sieci web NGINX](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete).
+Oczyszczanie zasobów, które nie jest już konieczne. Można użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) polecenie, aby usunąć te zasoby. Aby usunąć grupę zasobów i wszystkie jego zasoby, uruchom następujące polecenie:
 
 ```cli
 az group delete --name myResourceGroup
@@ -106,5 +117,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym szybkiego startu wdrożeniu proste maszyny wirtualnej systemu Linux. Aby dowiedzieć się więcej o maszynach wirtualnych Azure stosu, nadal [zagadnienia dotyczące maszyn wirtualnych w stosie Azure](azure-stack-vm-considerations.md).
-
+Ta opcja szybkiego startu wdrożono podstawowego serwera maszyny wirtualnej systemu Linux przez serwer sieci web. Aby dowiedzieć się więcej o maszynach wirtualnych Azure stosu, nadal [zagadnienia dotyczące maszyn wirtualnych w stosie Azure](azure-stack-vm-considerations.md).

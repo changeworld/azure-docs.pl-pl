@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: f1e1c2aa447e35ea483665cc33e4eb6af7a41f51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 090629874e75d75223e018b002cf04a02b1d1bb0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatycznie włączaj ustawień diagnostycznych na tworzenie zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule zostanie przedstawiony sposób korzystania [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych zasobu podczas jego tworzenia. Umożliwia to automatyczne uruchamianie przesyłanych strumieniowo z dzienników diagnostycznych i metryk do usługi Event Hubs, archiwizacji je na koncie magazynu lub wysyłania ich do analizy dzienników po utworzeniu zasobu.
@@ -116,7 +116,7 @@ Dla zasobów obliczeniowych nie należy wykonać dwie czynności:
     ]
     ```
 
-Właściwości obiektu blob dla ustawienie diagnostyczne następuje [opisany w tym artykule](https://docs.microsoft.com/rest/api/monitor/ServiceDiagnosticSettings/CreateOrUpdate). Dodawanie `metrics` właściwości umożliwi to również wysłać metryki zasobów do tych samym dane wyjściowe, pod warunkiem, że [zasób obsługuje metryki Azure Monitor](monitoring-supported-metrics.md).
+Właściwości obiektu blob dla ustawienie diagnostyczne następuje [opisany w tym artykule](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodawanie `metrics` właściwości umożliwi to również wysłać metryki zasobów do tych samym dane wyjściowe, pod warunkiem, że [zasób obsługuje metryki Azure Monitor](monitoring-supported-metrics.md).
 
 W tym miejscu jest pełny przykład, która tworzy aplikację logiki i włącza opcję przesyłania strumieniowego centra zdarzeń i magazynu w ramach konta magazynu.
 
@@ -134,7 +134,7 @@ W tym miejscu jest pełny przykład, która tworzy aplikację logiki i włącza 
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+      "defaultValue": "http://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",

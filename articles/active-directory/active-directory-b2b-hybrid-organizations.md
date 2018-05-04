@@ -10,14 +10,14 @@ tags: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.date: 04/20/2018
+ms.date: 04/26/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 748d5f7497c3ab65a669bf3f205e9486dfcaed92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure współpracy B2B usługi Active Directory dla organizacji hybrydowego
 
@@ -31,8 +31,8 @@ W przypadku aplikacji korzystających z uwierzytelniania opartego na SAML udost�
 
 W przypadku aplikacji używających zintegrowanego uwierzytelniania systemu Windows (IWA) z ograniczonego delegowania protokołu Kerberos (KCD) również użyć do uwierzytelniania serwera Proxy usługi Azure AD. Jednak do autoryzacji do pracy, obiekt użytkownika jest wymagany w lokalnej Windows Server Active Directory. Istnieją dwie metody, w którym można tworzyć obiektów użytkownika lokalnego, które reprezentują użytkownika gościa B2B.
 
-- Można użyć programu Microsoft Identity Manager (MIM) 2016 z dodatkiem SP1 i agenta zarządzania programu MIM dla programu Microsoft Graph. (Wymaga subskrypcji usługi Azure AD Premium 1).
-- Możesz użyć skryptu programu PowerShell. (To rozwiązanie nie wymagają MIM i AD Premium).
+- Można użyć programu Microsoft Identity Manager (MIM) 2016 z dodatkiem SP1 i agenta zarządzania programu MIM dla programu Microsoft Graph.
+- Możesz użyć skryptu programu PowerShell. (To rozwiązanie nie wymaga MIM).
 
 Aby uzyskać więcej informacji dotyczących sposobu wdrażania tych rozwiązań, zobacz [użytkowników Grant B2B w usłudze Azure AD dostęp do aplikacji lokalnych](active-directory-b2b-hybrid-cloud-to-on-premises.md).
 
@@ -40,7 +40,7 @@ Aby uzyskać więcej informacji dotyczących sposobu wdrażania tych rozwiązań
 
 Przed usługi Azure AD organizacje z lokalnych systemów tożsamości tradycyjnie udało partnera kont w ich katalogu lokalnego. Jeśli organizacja ma upewnij się, że partnerów nadal mieć dostęp podczas przenoszenia aplikacji i innych zasobów w chmurze. Najlepiej, jeśli chcesz tych użytkowników, aby użyć tego samego zestawu poświadczeń dostępu do zasobów w chmurze, jak i dla lokalnego. 
 
-Mamy teraz oferta metody, których można użyć Azure AD Connect do synchronizowania tych kont lokalnych do chmury "gości", gdzie kont zachowują się podobnie, takich jak użytkownicy B2B usługi Azure AD. To rozwiązanie działa, nawet jeśli masz system tożsamości lokalnych, umożliwiający partnerów użyć własnych zewnętrzne adresy e-mail jako nazwy logowania.
+Mamy teraz oferta metody, których można użyć Azure AD Connect do synchronizowania tych kont lokalnych do chmury "gości", gdzie kont zachowują się podobnie, takich jak użytkownicy B2B usługi Azure AD.
 
 Aby chronić dane firmy, można kontrolować dostęp do odpowiednich zasobów i konfigurowanie zasad autoryzacji, które traktować te gości inaczej niż pracowników.
 
@@ -49,5 +49,6 @@ Aby uzyskać szczegóły implementacji, zobacz [Grant zarządzane lokalnie partn
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych](active-directory-b2b-hybrid-cloud-to-on-premises.md)
-- [Udziel zarządzane lokalnie partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD](active-directory-b2b-hybrid-on-premises-to-cloud.md).
+- [Udziel zarządzane lokalnie partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 

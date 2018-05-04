@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 14aa0002ff88678bb54a3abed8bf7eeed3b717f4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b0ea0e55653e7b6087e21bd531ba3f6649d4967
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 Utworzenie maszyny wirtualnej (VM) platformy Azure wymaga utworzenia [sieci wirtualnej](../articles/virtual-network/virtual-networks-overview.md) (VNet) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób dostępu do maszyn wirtualnych w sieci wirtualnej. Ważne jest [zaplanowanie tworzenia zasobów](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) i dokładne zapoznanie się z [limitami zasobów sieciowych](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -48,7 +48,7 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia inte
 | Azure Portal | Interfejs sieciowy jest tworzony automatycznie podczas tworzenia maszyny wirtualnej w witrynie Azure Portal (nie można użyć oddzielnie utworzonej karty sieciowej). Maszyna wirtualna utworzona w portalu może mieć tylko jedną kartę sieciową. Jeśli chcesz utworzyć maszynę wirtualną zawierającą więcej niż jedną kartę sieciową, musisz użyć innej metody. |
 | [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | Użyj polecenia [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) z parametrem **-PublicIpAddressId** umożliwiającym podanie identyfikatora wcześniej utworzonego publicznego adresu IP. |
 | [Interfejs wiersza polecenia platformy Azure](../articles/virtual-machines/linux/multiple-nics.md) | Aby podać identyfikator wcześniej utworzonego publicznego adresu IP, użyj polecenia [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) z parametrem **--public-ip-address**. |
-| [Szablon](../articles/virtual-network/virtual-network-deploy-multinic-arm-template.md) | Przewodnik [Interfejs sieciowy w sieci wirtualnej z publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) ułatwia wdrożenie interfejsu sieciowego przy użyciu szablonu. |
+| [Szablon](../articles/virtual-network/template-samples.md) | Przewodnik [Interfejs sieciowy w sieci wirtualnej z publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) ułatwia wdrożenie interfejsu sieciowego przy użyciu szablonu. |
 
 ## <a name="ip-addresses"></a>Adresy IP 
 
@@ -70,7 +70,7 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia adre
 | [Azure Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Domyślnie publiczne adresy IP są dynamiczne, a skojarzone z nimi adresy mogą ulec zmianie po zatrzymaniu lub usunięciu maszyny wirtualnej. Aby mieć pewność, że maszyna wirtualna zawsze używa tego samego publicznego adresu IP, utwórz statyczny publiczny adres IP. Domyślnie podczas tworzenia maszyny wirtualnej w portalu do karty sieciowej jest przypisywany dynamiczny prywatny adres IP. Po utworzeniu maszyny Wirtualnej, można zmienić ten adres IP statyczne.|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | Użyj polecenia [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) z parametrem **-AllocationMethod** jako dynamicznym lub statycznym. |
 | [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | Użyj polecenia [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) z parametrem **--allocation-method** jako dynamicznym lub statycznym. |
-| [Szablon](../articles/virtual-network/virtual-network-deploy-static-pip-arm-template.md) | Przewodnik [Interfejs sieciowy w sieci wirtualnej z publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) ułatwia wdrożenie publicznego adresu IP przy użyciu szablonu. |
+| [Szablon](../articles/virtual-network/template-samples.md) | Przewodnik [Interfejs sieciowy w sieci wirtualnej z publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) ułatwia wdrożenie publicznego adresu IP przy użyciu szablonu. |
 
 Po utworzeniu publicznego adresu IP można skojarzyć go z maszyną wirtualną, przypisując go do karty sieciowej.
 
@@ -90,7 +90,7 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia siec
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/quick-create-portal.md) | Jeśli wybierzesz opcję utworzenia sieci wirtualnej podczas tworzenia maszyny wirtualnej na platformie Azure, nazwa sieci wirtualnej będzie składać się z nazwy grupy zasobów zawierającej sieć wirtualną i ciągu **-vnet**. Przestrzeń adresowa to 10.0.0.0/24, wymagana nazwa podsieci to **domyślna**, a zakres adresów podsieci to 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | Aby utworzyć podsieć i sieć wirtualną, użyj poleceń [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmVirtualNetworkSubnetConfig) i [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmVirtualNetwork). Za pomocą polecenia [AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) możesz również dodać podsieć do istniejącej sieci wirtualnej. |
-| [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/quick-create-cli.md) | Podsieć i sieć wirtualna są tworzone jednocześnie. Użyj polecenia [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) z parametrem**--subnet-name**, podając nazwę podsieci. |
+| [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/quick-create-cli.md) | Podsieć i sieć wirtualna są tworzone jednocześnie. Użyj polecenia [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) z parametrem **--subnet-name**, podając nazwę podsieci. |
 | Szablon | Najprostszym sposobem tworzenia sieci wirtualnej i podsieci jest pobranie istniejącego szablonu, takie jak [sieci wirtualnej z dwoma podsieciami](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)i zmodyfikuj go do potrzeb. |
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
@@ -112,7 +112,7 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia siec
 | [Azure Portal](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md) | Utworzenie maszyny wirtualnej w witrynie Azure Portal obejmuje automatyczne utworzenie sieciowej grupy zabezpieczeń i skojarzenie jej z kartą sieciową. Nazwa sieciowej grupy zabezpieczeń składa się z nazwy maszyny wirtualnej i ciągu **-nsg**. Konfiguracja tej sieciowej grupy zabezpieczeń jest następująca: jedna reguła ruchu przychodzącego z priorytetem 1000, ustawienie usługi — RDP, ustawienie protokołu — TCP, ustawienie portu — 3389 i ustawienie akcji — Zezwalaj. Jeśli chcesz zezwolić na inne rodzaje ruchu przychodzącego do maszyny wirtualnej, musisz dodać dodatkowe reguły do sieciowej grupy zabezpieczeń. |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Użyj polecenia [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig) i podaj wymagane informacje dotyczące reguły. Użyj polecenia [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup), aby utworzyć sieciową grupę zabezpieczeń. Użyj polecenia [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig), aby skonfigurować sieciową grupę zabezpieczeń dla podsieci. Użyj polecenia [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork), aby dodać sieciową grupę zabezpieczeń do sieci wirtualnej. |
 | [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | Użyj polecenia [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create), aby utworzyć początkową sieciową grupę zabezpieczeń. Użyj polecenia [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create), aby dodać reguły do sieciowej grupy zabezpieczeń. Użyj polecenia [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update), aby dodać sieciową grupę zabezpieczeń do podsieci. |
-| [Szablon](../articles/virtual-network/virtual-networks-create-nsg-arm-template.md) | Przewodnik [Tworzenie sieciowej grupy zabezpieczeń](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) ułatwia wdrożenie sieciowej grupy zabezpieczeń przy użyciu szablonu. |
+| [Szablon](../articles/virtual-network/template-samples.md) | Przewodnik [Tworzenie sieciowej grupy zabezpieczeń](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) ułatwia wdrożenie sieciowej grupy zabezpieczeń przy użyciu szablonu. |
 
 ## <a name="load-balancers"></a>Moduły równoważenia obciążenia
 

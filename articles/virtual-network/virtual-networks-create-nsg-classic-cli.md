@@ -3,7 +3,7 @@ title: Utwórz grupę zabezpieczeń sieci (klasyczne) przy użyciu 1.0 interfejs
 description: Dowiedz się, jak utworzyć i wdrożyć grupę zabezpieczeń sieci (klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: ''
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: a9ab1a83366919a2d05da18819ed8167bdadb20a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5468801e56849498d712f51e71cfb31bf068398a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Tworzenie grupy zabezpieczeń sieci (wdrożenia klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie potoku CI/CD na platformie Azure z usługi Team Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć potok Visual Studio Team Services dla ciągłej integracji i dostarczania, która wdraża aplikację sieci web do usług IIS na maszynie Wirtualnej systemu Windows
+title: Samouczek — utworzyć potok CI/CD w platformie Azure za pomocą usługi Team Services | Dokumentacja firmy Microsoft
+description: W tym samouczku Dowiedz się jak utworzyć potok Visual Studio Team Services dla ciągłej integracji i dostarczania, która wdraża aplikację sieci web do usług IIS na maszynie Wirtualnej systemu Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Tworzenie potoku ciągłej integracji z Visual Studio Team Services i IIS
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Samouczek: Tworzenie potoku ciągłej integracji z Visual Studio Team Services i IIS
 Aby zautomatyzować kompilacji, testowe i wdrożenia etapy tworzenia aplikacji, można użyć ciągłej integracji i wdrażania (CI/CD) potoku. W tym samouczku utworzysz potok CI/CD przy użyciu programu Visual Studio Team Services i Windows maszyny wirtualnej (VM) na platformie Azure z uruchomionymi usługami IIS. Omawiane kwestie:
 
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ Aby zautomatyzować kompilacji, testowe i wdrożenia etapy tworzenia aplikacji, 
 > * Utworzyć wersję definicji, aby opublikować nową sieć web wdrażania pakietów do usług IIS
 > * Testowanie potoku CI/CD
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 3.6 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 ## <a name="create-project-in-team-services"></a>Tworzenie projektu na Team Services
@@ -94,29 +94,30 @@ Obejrzyj gdy kompilacja jest zaplanowane na agencie hostowanej, następnie zaczy
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Aby zapewnić platformę do uruchomienia aplikacji sieci web ASP.NET, należy maszyny wirtualnej systemu Windows z uruchomionymi usługami IIS. Usługi Team Services używa agenta do interakcji z wystąpieniem usług IIS Zatwierdź kodu i kompilacji są wyzwalane.
 
-Tworzenie maszyny Wirtualnej systemu Windows Server 2016 przy użyciu [w tym przykładzie skrypt](../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json). Trwa kilka minut, aż skrypt do uruchomienia, a następnie utworzyć maszynę Wirtualną. Po utworzeniu maszyny Wirtualnej, należy otworzyć port 80 dla ruchu w sieci web z [AzureRmNetworkSecurityRuleConfig Dodaj](/powershell/module/azurerm.resources/new-azurermresourcegroup) w następujący sposób:
+Utworzyć Maszynę systemu Windows Server 2016 z [nowe AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* w *wschodnie stany USA* lokalizacji. Grupa zasobów *myResourceGroupVSTS* i dodatkowe zasoby sieciowe również są tworzone. Aby zezwolić na ruch sieci web, TCP port *80* jest otwarty do maszyny Wirtualnej. Po wyświetleniu monitu podaj nazwę użytkownika i hasło do użycia jako poświadczenia logowania dla maszyny Wirtualnej:
 
 ```powershell
-Get-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName $resourceGroup `
-  -Name "myNetworkSecurityGroup" | `
-Add-AzureRmNetworkSecurityRuleConfig `
-  -Name "myNetworkSecurityGroupRuleWeb" `
-  -Protocol "Tcp" `
-  -Direction "Inbound" `
-  -Priority "1001" `
-  -SourceAddressPrefix "*" `
-  -SourcePortRange "*" `
-  -DestinationAddressPrefix "*" `
-  -DestinationPortRange "80" `
-  -Access "Allow" | `
-Set-AzureRmNetworkSecurityGroup
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a virtual machine
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroupVSTS" `
+  -Name "myVM" `
+  -Location "East US" `
+  -ImageName "Win2016Datacenter" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -SecurityGroupName "myNetworkSecurityGroup" `
+  -PublicIpAddressName "myPublicIp" `
+  -Credential $cred `
+  -OpenPorts 80
 ```
 
 Aby nawiązać połączenie z maszyną Wirtualną, należy uzyskać publiczny adres IP z [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) w następujący sposób:
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 ```
 
 Tworzenie sesji usług pulpitu zdalnego do maszyny Wirtualnej:

@@ -1,5 +1,5 @@
 ---
-title: "Jak utworzyć DSVM i HDI jako obliczeniowe elementy docelowe dla uczenie Maszynowe Azure"
+title: Jak utworzyć DSVM i HDI jako obliczeniowe elementy docelowe dla uczenie Maszynowe Azure
 description: Tworzenie klastra DSVM i HDI Spark jako obliczeniowe elementy docelowe eksperymenty uczenie Maszynowe Azure.
 services: machine-learning
 author: hning86
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1229a66ec84b4272337a5dd1e17942e46b25e9a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Tworzenie klastra DSVM i HDI Spark jako obliczeniowe elementy docelowe
 
@@ -148,7 +148,7 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>Zwiększ rozmiar dysku systemu operacyjnego DSVM
-Maszyny Wirtualnej systemu Linux na platformie Azure zazwyczaj pochodzą z dyskiem systemu operacyjnego 30 GB. Gdy jest używany jako obliczeniowe docelowy dla uczenie Maszynowe Azure, go może być spożywany szybko przez aparat Docker ściąganie dół obrazy usługi Docker i tworzenia warstwy conda na nim. Należy dobrze, aby rozszerzyć dysk systemu operacyjnego na większy rozmiar (na przykład 200 GB) w celu uniknięcia "Pełna" błędów podczas pracy w trakcie wykonywania. Odwołanie [sposobu rozszerzania wirtualne dyski twarde na maszynę Wirtualną systemu Linux za pomocą interfejsu wiersza polecenia Azure](../../virtual-machines/linux/expand-disks.md) Aby dowiedzieć się, jak to łatwo zrobić z wiersza polecenia platformy azure. 
+Ubuntu DSVM zawiera dysku systemu operacyjnego 50GB i 100GB danych. Obrazy są przechowywane w docker na dysk z danymi, ponieważ miejsca są dostępne. Używanego jako obliczeniowe docelowy dla usługi Azure ML ten dysk można przez aparat Docker ściąganie dół obrazy usługi Docker i tworzenia warstwy conda na nim. Może być konieczne rozszerzyć dysk dysku na większy rozmiar (na przykład 200 GB), aby uniknąć błędów "dysk jest zapełniony", gdy są w trakcie wykonywania. Odwołanie [sposobu rozszerzania wirtualne dyski twarde na maszynę Wirtualną systemu Linux za pomocą interfejsu wiersza polecenia Azure](../../virtual-machines/linux/expand-disks.md) Aby dowiedzieć się, jak to łatwo zrobić z wiersza polecenia platformy azure. 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Utwórz Apache Spark dla klastra usługi HDInsight Azure w portalu Azure
 

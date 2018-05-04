@@ -1,42 +1,38 @@
 ---
-title: "Projektowanie wskazówek dla tabel rozproszonej - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Zalecenia dotyczące projektowanie tabelach rozpowszechniane skrót i okrężnego w usłudze Azure SQL Data Warehouse."
+title: Tabele rozproszonej projektowania wskazówki - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zalecenia dotyczące projektowania rozpowszechniane skrót i okrężnego rozproszonej tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d65ca91fc4cffa53adf3a7c56c7919e46c5037d9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania rozproszonych tabel w magazynie danych SQL Azure
+Zalecenia dotyczące projektowania rozpowszechniane skrót i okrężnego rozproszonej tabel w usłudze Azure SQL Data Warehouse.
 
-Ten artykuł zawiera zalecenia dotyczące projektowania rozproszonych tabel w usłudze Azure SQL Data Warehouse. Tabele rozpowszechniane skrót poprawić wydajność kwerend w tabelach faktów dużych i koncentrują się na części tego artykułu. Działanie okrężne tabele są przydatne dla poprawy szybkości ładowania. Tych decyzji projektowych mieć znaczący wpływ na poprawę zapytania i ładowanie wydajności.
+W tym artykule przyjęto założenie, że znasz z danych dystrybucji i koncepcje przepływu danych w usłudze SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz [magazyn danych SQL Azure - Massively Parallel Processing () architektura MPP](massively-parallel-processing-mpp-architecture.md). 
 
-## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że znasz z danych dystrybucji i koncepcje przepływu danych w usłudze SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz [architektura](massively-parallel-processing-mpp-architecture.md) artykułu. 
+## <a name="what-is-a-distributed-table"></a>Co to jest tabela rozproszona?
+Tabela rozproszona jest wyświetlany jako pojedynczej tabeli, ale wiersze są przechowywane przez 60 dystrybucji. Wiersze są dystrybuowane za pomocą skrótu lub okrężnego algorytmu.  
+
+**Tabele rozpowszechniane skrót** poprawić wydajność kwerend w tabelach faktów dużych i koncentrują się na części tego artykułu. **Tabele okrężnego** służą do poprawy szybkości ładowania. Tych decyzji projektowych mieć znaczący wpływ na poprawę zapytania i ładowanie wydajności.
+
+Inną opcją magazynu tabeli jest replikowanie małej tabeli na wszystkich węzłów obliczeniowych. Aby uzyskać więcej informacji, zobacz [projekt, wskazówki dotyczące zreplikowanych tabel](design-guidance-for-replicated-tables.md). Aby szybko wybrać spośród trzech opcji, zobacz tabele rozproszonych w [Omówienie tabel](sql-data-warehouse-tables-overview.md). 
 
 W ramach projektowaniu tabel Dowiedz się, jak to możliwe danych i jak danych jest poddawany kwerendzie.  Na przykład wziąć pod uwagę następujące pytania:
 
 - Jak duże jest tabela?   
 - Częstotliwość odświeżania tabeli?   
 - Tabele faktów i wymiarów są dostępne w magazynie danych?   
-
-## <a name="what-is-a-distributed-table"></a>Co to jest tabela rozproszona?
-Tabela rozproszona jest wyświetlany jako pojedynczej tabeli, ale wiersze są przechowywane przez 60 dystrybucji. Wiersze są dystrybuowane za pomocą skrótu lub okrężnego algorytmu. 
-
-Inną opcją magazynu tabeli jest replikowanie małej tabeli na wszystkich węzłów obliczeniowych. Aby uzyskać więcej informacji, zobacz [projekt, wskazówki dotyczące zreplikowanych tabel](design-guidance-for-replicated-tables.md). Aby szybko wybrać spośród trzech opcji, zobacz tabele rozproszonych w [Omówienie tabel](sql-data-warehouse-tables-overview.md). 
 
 
 ### <a name="hash-distributed"></a>Skrót rozproszonych
@@ -67,7 +63,7 @@ Rozważ użycie rozdzielanie dla tej tabeli w następujących scenariuszach:
 - Jeśli sprzężenie jest mniej istotna niż inne sprzężeń w zapytaniu
 - Gdy jest tymczasowe Tabela przemieszczania
 
-Samouczek [podczas ładowania danych z obiektu blob magazynu Azure](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) przedstawiono przykładowy podczas ładowania danych do tabeli tymczasowej okrężnego.
+Samouczek [obciążenia Nowy Jork taxicab danych Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) przedstawiono przykładowy podczas ładowania danych do tabeli tymczasowej okrężnego.
 
 
 ## <a name="choosing-a-distribution-column"></a>Wybieranie kolumn dystrybucji
@@ -91,7 +87,7 @@ WITH
 ;
 ``` 
 
-Wybieranie kolumn dystrybucji jest decyzji projektowych ważne, ponieważ wartości w tej kolumnie określić, jak wiersze są dystrybuowane. Najlepszym rozwiązaniem zależy od wielu czynników i zwykle obejmuje wady i zalety. Jednak jeśli nie wybierzesz najlepsze kolumny po raz pierwszy, można użyć [Tworzenie tabeli jako wybierz (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ponownie utworzyć tabelę z kolumną różnych dystrybucji. 
+Wybieranie kolumn dystrybucji jest decyzji projektowych ważne, ponieważ wartości w tej kolumnie określić, jak wiersze są dystrybuowane. Najlepszym rozwiązaniem zależy od wielu czynników i zwykle obejmuje wady i zalety. Jednak jeśli nie wybierzesz najlepsze kolumny po raz pierwszy, można użyć [Tworzenie tabeli jako wybierz (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ponownie utworzyć tabelę z kolumną różnych dystrybucji. 
 
 ### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Wybierz kolumnę dystrybucji, który nie wymaga aktualizacji
 Nie można zaktualizować kolumn dystrybucji, chyba że w przypadku usunięcia wiersza i wstawić nowy wiersz przez zaktualizowane wartości. W związku z tym wybrać kolumnę o wartości statyczne. 
@@ -129,7 +125,7 @@ Po projektowania tabeli rozpowszechniane skrót, następnym krokiem jest ładowa
 Po załadowaniu danych do tabeli rozproszonych wyznaczania wartości skrótu, należy sprawdzić, jak wiersze są równomiernie na 60 dystrybucji. Liczba wierszy przypadających na dystrybucji może się różnić maksymalnie 10% bez zauważalnego wpływu na wydajność. 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Określa, czy tabela ma pochylanie danych
-Szybkim sposobem sprawdzenia zegara danych jest użycie [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). Poniższy kod SQL zwraca liczbę wierszy tabeli, które są przechowywane w każdym z 60 dystrybucji. Wydajność ze zrównoważonym wierszy w tabeli rozproszonej należy można rozmieszczone równomiernie w obrębie wszystkie dystrybucje.
+Szybkim sposobem sprawdzenia zegara danych jest użycie [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). Poniższy kod SQL zwraca liczbę wierszy tabeli, które są przechowywane w każdym z 60 dystrybucji. Wydajność ze zrównoważonym wierszy w tabeli rozproszonej należy można rozmieszczone równomiernie w obrębie wszystkie dystrybucje.
 
 ```sql
 -- Find data skew for a distributed table

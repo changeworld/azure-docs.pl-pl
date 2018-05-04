@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -67,9 +67,9 @@ W poniższej tabeli przedstawiono kilka właściwości dostępne za pośrednictw
 
 ![Logowanie jednokrotne](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model"></a>na podstawie vCore model kupna
+## <a name="vcore-based-purchasing-model-preview"></a>na podstawie vCore model kupna (wersja zapoznawcza)
 
-Model kupna vCore zapewnia elastyczność, przejrzystości, formantowi i łatwe do tłumaczenia lokalne wymagania obciążenia w chmurze. Ten model umożliwia skalowanie możliwości obliczeniowych, pamięci oraz Magazyn ustalane na podstawie jego potrzeb obciążenia. VCore model również jest uprawniona do się do 30 procent oszczędności za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Na podstawie vCore model kupna (wersja zapoznawcza) zapewnia elastyczność, przejrzystości, formantowi i łatwe do tłumaczenia lokalne wymagania obciążenia w chmurze. Ten model umożliwia skalowanie możliwości obliczeniowych, pamięci oraz Magazyn ustalane na podstawie jego potrzeb obciążenia. VCore model również jest uprawniona do się do 30 procent oszczędności za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu.
 - Logiczne procesory CPU 4. generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) z zegarem 2,4 GHz.
@@ -186,7 +186,7 @@ Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowan
 Metoda migracji wykorzystuje kopii zapasowych SQL do przechowywania obiektów blob platformy Azure. Kopie zapasowe przechowywane w obiekcie blob magazynu Azure może bezpośrednio przywrócony do zarządzanego wystąpienia. Aby przywrócić istniejącej bazy danych SQL do wystąpienia zarządzany, możesz:
 
 - Użyj [usługi migracji danych (DMS)](/sql/dma/dma-overview). Samouczek, zobacz [migracji do wystąpienia zarządzane przy użyciu usługi migracji bazy danych Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) przywrócenie z pliku kopii zapasowej bazy danych
-- Użyj [polecenia T-SQL Przywróć](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+- Użyj [polecenia T-SQL Przywróć](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Samouczek przedstawiający sposób przywracania World Wide Importers — standardowe pliku kopii zapasowej, zobacz [przywrócić pliku kopii zapasowej do wystąpienia zarządzane](sql-database-managed-instance-restore-from-backup-tutorial.md). Ten samouczek pokazuje, że masz przekazywany plik kopii zapasowej do magazynu Azure blogu i bezpieczne przy użyciu klucza sygnatury dostępu Współdzielonego dostępu współużytkowanego.
   - Aby uzyskać informacje dotyczące przywracania z adresu URL, zobacz [natywnego Przywracanie z adresu URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
 - [Importuj z pliku pliku BACPAC](sql-database-import.md)

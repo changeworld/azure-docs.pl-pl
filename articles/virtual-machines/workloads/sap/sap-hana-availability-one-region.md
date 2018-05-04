@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b397d03cbb8fc539eb5f79e183233515bf173a99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 47dba73a6c22d11953485a69435000d3d2fe6f55
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA dostępności w ramach jednego regionu Azure
 W tym artykule opisano kilka scenariuszy dostępności w ramach jednego regionu platformy Azure. Platforma Azure ma wiele regionów, rozprzestrzeniające się na całym świecie. Lista regionów platformy Azure, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/). Do wdrożenia SAP HANA na maszynach wirtualnych w ramach jednego regionu Azure, firma Microsoft oferuje wdrażanie jednej maszyny Wirtualnej przy użyciu wystąpienia HANA. Zwiększona dostępność, można wdrożyć dwóch maszyn wirtualnych z dwoma wystąpieniami HANA w [zestawu dostępności Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) używającą replikacji systemu HANA dostępności. 
@@ -118,5 +118,5 @@ Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania tych konfiguracj
 
 Aby uzyskać więcej informacji na temat dostępności SAP HANA w regionach platformy Azure zobacz:
 
-- [Dostępność SAP HANA w regionach platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
+- [Dostępność SAP HANA w regionach platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
 

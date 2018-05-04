@@ -1,6 +1,6 @@
 ---
-title: "Środowiska PowerShell dla punktów końcowych usługi sieci wirtualnej i zasady w programie SQL | Dokumentacja firmy Microsoft"
-description: "Udostępnia skrypty programu PowerShell do tworzenia i zarządzania punktami końcowymi usług wirtualnych dla Twojej bazy danych SQL Azure."
+title: Środowiska PowerShell dla punktów końcowych usługi sieci wirtualnej i zasady w programie SQL | Dokumentacja firmy Microsoft
+description: Udostępnia skrypty programu PowerShell do tworzenia i zarządzania punktami końcowymi usług wirtualnych dla Twojej bazy danych SQL Azure.
 services: sql-database
 author: MightyPen
 manager: jhubbard
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 489d1044de49c63ac7e1423708cc0638355ab1b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Utworzyć regułę i punkt końcowy usługi wirtualne w bazie danych SQL Azure przy użyciu programu PowerShell
 
@@ -50,6 +50,9 @@ Na poniższej liście przedstawiono sekwencję innych *głównych* poleceń cmdl
 - Możesz już zalogować na platformie Azure, takich jak za pomocą [portalu Azure][http-azure-portal-link-ref-477t].
 - Już może uruchamiać skrypty programu PowerShell.
 
+> [!NOTE]
+> Upewnij się, że punkty końcowe usługi są włączone dla sieci wirtualnej/podsieci, w której mają zostać dodane do serwera w przeciwnym razie tworzenie reguły zapory w sieci wirtualnej zakończą się niepowodzeniem.
+
 #### <a name="one-script-divided-into-four-chunks"></a>Skrypt jest podzielony na cztery fragmentów
 
 Nasze pokaz skryptu programu PowerShell jest podzielona na sekwencję mniejszych skryptów. Podział ułatwia uczenie i zapewnia elastyczność. Skrypty można uruchomić w ich sekwencyjny. Jeśli nie masz teraz czas uruchamiania skryptów, wyjście rzeczywiste testu jest wyświetlany po skryptu 4.
@@ -79,7 +82,7 @@ Ten pierwszy skrypt programu PowerShell przypisuje wartości zmiennych. Kolejne 
 ###########################################################
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 ###########################################################
 ##  Assignments to variables used by the later scripts.  ##
@@ -519,7 +522,7 @@ Jest to środowiska PowerShell skryptu nie żadnych aktualizacji, chyba że odpo
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 # Assignments to variables used by the later scripts.
 # You can EDIT these values, if necessary.

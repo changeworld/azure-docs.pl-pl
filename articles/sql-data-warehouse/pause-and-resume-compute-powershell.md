@@ -1,42 +1,38 @@
 ---
-title: "Szybki Start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse - PowerShell | Dokumentacja firmy Microsoft"
-description: "Zadania programu PowerShell, które wstrzymać obliczeniowe dla magazynu danych SQL Azure w celu ograniczenia kosztów. Wznowić operacje obliczeniowe, gdy wszystko będzie gotowe do użycia w magazynie danych."
+title: 'Szybki Start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse - PowerShell | Dokumentacja firmy Microsoft'
+description: Użyj programu PowerShell do wstrzymania obliczeniowych w magazynie danych SQL Azure w celu ograniczenia kosztów. Wznowić operacje obliczeniowe, gdy wszystko będzie gotowe do użycia w magazynie danych.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/25/2018
-ms.author: barbkess
-ms.openlocfilehash: b1f5c10fe294b44a9853f16e1866b77cf74a1479
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ef341a1528bf759461abfb7cfc6d878fd8a44cb4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-powershell"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeniowe dla usługi Azure SQL Data Warehouse w programie PowerShell
-Za pomocą programu PowerShell wstrzymać obliczeniowe dla magazynu danych SQL Azure w celu ograniczenia kosztów. [Wznowić operacje obliczeniowe](sql-data-warehouse-manage-compute-overview.md) gdy wszystko będzie gotowe do użycia w magazynie danych.
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Szybki Start: Wstrzymywanie i wznawianie obliczeń w usłudze Azure SQL Data Warehouse przy użyciu programu PowerShell
+Użyj programu PowerShell do wstrzymania obliczeniowych w magazynie danych SQL Azure w celu ograniczenia kosztów. [Wznowić operacje obliczeniowe](sql-data-warehouse-manage-compute-overview.md) gdy wszystko będzie gotowe do użycia w magazynie danych.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.1.1 lub nowszym. Uruchom ` Get-Module -ListAvailable AzureRM` można znaleźć wersji masz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps.md). 
+Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.1.1 lub nowszym. Uruchom ` Get-Module -ListAvailable AzureRM` można znaleźć wersji masz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Tego przewodnika Szybki Start założono, że masz już magazyn danych SQL, który można wstrzymywać i wznawiać. Jeśli potrzebujesz go utworzyć, możesz użyć [tworzenie i Connect - portal](create-data-warehouse-portal.md) można utworzyć magazynu danych, nazywane **mySampleDataWarehouse**. 
+Tego przewodnika Szybki Start założono, że masz już magazyn danych SQL, który można wstrzymywać i wznawiać. Jeśli potrzebujesz go utworzyć, możesz użyć [tworzenie i Connect - portal](create-data-warehouse-portal.md) można utworzyć magazynu danych, nazywane **mySampleDataWarehouse**.
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Aby wyświetlić subskrypcji, której używasz, uruchom [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
@@ -53,7 +49,7 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 
 ## <a name="look-up-data-warehouse-information"></a>Wyszukiwanie danych magazynu danych
 
-Znajdź nazwę bazy danych, nazwę serwera i grupy zasobów dla magazynu danych, które mają być wstrzymywać i wznawiać. 
+Znajdź nazwę bazy danych, nazwę serwera i grupy zasobów dla magazynu danych, które mają być wstrzymywać i wznawiać.
 
 Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu danych.
 
@@ -63,12 +59,12 @@ Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu
 
     ![Nazwa i zasobów grupy serwerów](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Zanotuj nazwę magazynu danych, która jest nazwa bazy danych. Również Zanotuj nazwę serwera i grupy zasobów. Użytkownik 
+4. Zanotuj nazwę magazynu danych, która jest nazwa bazy danych. Również Zanotuj nazwę serwera i grupy zasobów. Użytkownik
 5.  te polecenia wstrzymywanie i wznawianie.
 6. Jeśli serwer jest foo.database.windows.net, należy użyć pierwszej części jako nazwę serwera, polecenia cmdlet programu PowerShell. Na poprzedniej ilustracji pełną nazwę serwera jest NowySerwer 20171113.database.windows.net. Usuń sufiks, a następnie użyć **20171113 NowySerwer** jako nazwę serwera w poleceniu cmdlet programu PowerShell.
 
 ## <a name="pause-compute"></a>Wstrzymaj obliczeń
-W celu ograniczenia kosztów, możesz wstrzymywać i wznawiać obliczeń zasobów na żądanie. Na przykład jeśli nie używasz bazy danych w nocy i w weekendy, można wstrzymywać go w tych godzinach i wznawiać go w ciągu dnia. Gdy baza danych została wstrzymana jest bezpłatna dla zasobów obliczeniowych. Jednak nadal naliczane opłaty dotyczące magazynu. 
+W celu ograniczenia kosztów, możesz wstrzymywać i wznawiać obliczeń zasobów na żądanie. Na przykład jeśli nie używasz bazy danych w nocy i w weekendy, można wstrzymywać go w tych godzinach i wznawiać go w ciągu dnia. Gdy baza danych została wstrzymana jest bezpłatna dla zasobów obliczeniowych. Jednak nadal naliczane opłaty dotyczące magazynu.
 
 Aby wstrzymać bazy danych, należy użyć [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) polecenia cmdlet. W następującym przykładzie wstrzymano hurtowni danych o nazwie **mySampleDataWarehouse** znajdującej się na serwerze o nazwie **20171113 NowySerwer**. Serwer jest w grupie zasobów platformy Azure o nazwie **myResourceGroup**.
 
@@ -107,10 +103,10 @@ $resultDatabase
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Płacisz za jednostki magazynu danych i dane przechowywane w Twoim magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno. 
+Płacisz za jednostki magazynu danych i dane przechowywane w Twoim magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno.
 
 - Jeśli chcesz przechowywać dane w magazynie, wstrzymać obliczeń.
-- Aby uniknąć opłat w przyszłości, możesz usunąć magazyn danych. 
+- Aby uniknąć opłat w przyszłości, możesz usunąć magazyn danych.
 
 Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 

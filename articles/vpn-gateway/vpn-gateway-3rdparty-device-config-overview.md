@@ -1,12 +1,12 @@
 ---
-title: "Partnera konfiguracji urządzenia sieci VPN do połączenia bramy sieci VPN platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie konfiguracji urządzenia sieci VPN partnera do połączenia bramy sieci VPN platformy Azure."
+title: Partnera konfiguracji urządzenia sieci VPN do połączenia bramy sieci VPN platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie konfiguracji urządzenia sieci VPN partnera do połączenia bramy sieci VPN platformy Azure.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: b3806d16d3b78347e183ecbd2ab5a463a2142110
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd9ca3937d688170798c42fce45dbcd7711773d1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Przegląd konfiguracji urządzenia sieci VPN partnera
 Ten artykuł zawiera omówienie konfigurowania lokalnego urządzenia sieci VPN do połączenia bramy sieci VPN platformy Azure. A przykładowe sieci wirtualnej platformy Azure i instalacji bramy sieci VPN jest używany jak nawiązać połączenia z konfiguracji urządzenia sieci VPN innej lokalnymi przy użyciu tych samych parametrach.
@@ -48,7 +48,7 @@ W tej sekcji opisano parametry przykłady, które zostały opisane w poprzednich
 | * Lokalnymi BGP ASN         | 65050                        |
 | * IP elementu równorzędnego BGP lokalnej     | 10.52.255.254                |
 
-\*Opcjonalny parametr dla protokołu BGP tylko.
+\* Opcjonalny parametr dla protokołu BGP tylko.
 
 ### <a name="sample-powershell-script"></a>Przykładowy skrypt programu PowerShell
 Ta sekcja zawiera przykładowy skrypt ułatwiających rozpoczęcie pracy. Aby uzyskać szczegółowe instrukcje, zobacz [utworzyć połączenie sieci VPN S2S przy użyciu programu PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md).
@@ -84,7 +84,7 @@ $BGPPeerIP5    = "10.52.255.254"
 
 # Connect to your subscription and create a new resource group
 
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 
@@ -124,7 +124,7 @@ Jeśli urządzenia sieci VPN nie obsługują selektorów dowolny z każdym ruchu
 
 
 Przykładowy skrypt tworzy zasady IPsec i IKE o parametrach i następujących algorytmów:
-* IKEv2: DHGroup24 AES256, SHA384
+* IKEv2: AES256, SHA384, DHGroup24
 * Protokół IPsec: AES256, SHA1, PFS24, skojarzenia zabezpieczeń okres istnienia 7200 sekund i 20,480,000 KB (20 GB)
 
 Skrypt stosuje zasady IPsec i IKE i umożliwia **UsePolicyBasedTrafficSelectors** opcję połączenia.
@@ -153,6 +153,6 @@ Podczas tworzenia połączenia sieci VPN S2S, można opcjonalnie użyć [BGP dla
     New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać instrukcje krok po kroku do skonfigurowania bramy sieci VPN aktywny / aktywny, zobacz [Konfigurowanie aktywny aktywny bram sieci VPN między lokalizacjami i połączeń między wirtualnymi do](vpn-gateway-activeactive-rm-powershell.md).
 

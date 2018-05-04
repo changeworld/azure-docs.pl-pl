@@ -2,17 +2,17 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-network
-author: genli
+author: genlin
 ms.service: virtual-network
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 8476a7dadeaff64e703186396b4505cc307e4d3a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 749cc5a5e5b8417abe602b7e37c103a26cc4dc03
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Tworzenie klasycznej sieci wirtualnej przy użyciu wiersza polecenia platformy Azure
 Interfejsu wiersza polecenia platformy Azure można użyć do zarządzania zasobami Azure z poziomu wiersza polecenia dowolnego komputera z systemem Windows, Linux lub OS X.

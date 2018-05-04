@@ -2,18 +2,19 @@
 title: Klasy zasobów dla obciążenia zarządzania - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące zarządzania współbieżności i obliczeniowe zasobów dla zapytań w usłudze Azure SQL Data Warehouse przy użyciu klasy zasobów.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/11/2018
-ms.author: kevin
-ms.reviewer: jrj
-ms.openlocfilehash: 289281567eff7f2575f26f1ae7ec2f9ee4389461
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/26/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 09fd39865a52767195ebf7dad13f24d883af476a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążenia za pomocą klasy zasobu w magazynie danych SQL Azure
 Wskazówki dotyczące Zarządzanie pamięci i zapytań w magazynie danych SQL Azure za pomocą klasy zasobów.  
@@ -21,29 +22,31 @@ Wskazówki dotyczące Zarządzanie pamięci i zapytań w magazynie danych SQL Az
 ## <a name="what-is-workload-management"></a>Co to jest zarządzanie obciążenie?
 Zarządzanie obciążenie jest możliwość optymalizacji ogólną wydajność wszystkich zapytań. Dobrze Zaczekaj obciążenie działa zapytań i operacji obciążenia wydajnie niezależnie od tego, czy są one obliczeniowych lub intensywnie wykonujących operacje We/Wy.  Usługa SQL Data Warehouse zapewnia funkcje zarządzania obciążenia w środowiskach wielu użytkowników. Magazyn danych nie jest przeznaczony dla wielu dzierżawców obciążeń.
 
-Pojemność wydajności magazynu danych jest określana przez [warstwę wydajności](memory-and-concurrency-limits.md#performance-tiers) i [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
+Pojemność wydajności magazynu danych jest określana przez [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
 
 - Aby wyświetlić limitów pamięci i we wszystkich profilach wydajności, zobacz [limity pamięci i](memory-and-concurrency-limits.md).
 - Aby dostosować wydajności, można [skalować w górę lub w dół](quickstart-scale-compute-portal.md).
 
-Pojemność wydajności zapytania jest określana przez kwerendy klasy zasobów. Ta dalszej części tego artykułu opisano klasy zasobów są oraz dostosować je.
-
+Pojemność wydajności zapytania jest określana przez kwerendy klasy zasobów. W dalszej części tego artykułu opisano klasy zasobów są oraz dostosować je.
 
 ## <a name="what-are-resource-classes"></a>Co to są klasy zasobu?
-Klasy zasobów są wstępnie ustalił, że limity zasobów w usłudze Azure SQL Data Warehouse rządzących zasobów obliczeniowych i współbieżność w celu wykonywania zapytań. Klasy zasobu ułatwia zarządzanie obciążenie przez ustawienie limitów liczby zapytania uruchamiane jednocześnie oraz zasoby obliczeniowe przypisane do każdego zapytania. Brak zależności między pamięci i współbieżności.
+Pojemność wydajności zapytania jest określana przez użytkownika klasy zasobów.  Klasy zasobów są wstępnie ustalił, że limity zasobów w usłudze Azure SQL Data Warehouse rządzących zasobów obliczeniowych i współbieżność w celu wykonywania zapytań. Klasy zasobu ułatwia zarządzanie obciążenie przez ustawienie limitów liczby zapytania uruchamiane jednocześnie oraz zasoby obliczeniowe przypisane do każdego zapytania. Brak handlową poza między pamięci i współbieżność.
 
 - Mniejsze klasy zasobu zmniejszyć maksymalną ilość pamięci na zapytanie, ale zwiększyć współbieżność.
 - Większe grupy zasobów zwiększa maksymalną ilość pamięci na zapytanie, ale zmniejszają. 
 
-Pojemność wydajności zapytania jest określana przez użytkownika klasy zasobów.
+Istnieją dwa typy klas zasobów:
 
-- Aby wyświetlić wykorzystania zasobów dla klas zasobów, zobacz [limity pamięci i](memory-and-concurrency-limits.md#concurrency-maximums).
-- Aby dostosować klasy zasobu, można uruchomić zapytanie pod innego użytkownika lub [Zmiana klasy zasobu bieżącego użytkownika](#change-a-user-s-resource-class) członkostwa. 
+- Klasy statyczne zasoby, które dobrze nadają się do zwiększenia współbieżności na rozmiar zestawu danych, który został rozwiązany.
+- Klasy zasobu dynamicznego, które dobrze nadają się do zestawów danych, które rośnie w rozmiarze i zwiększenie wydajności, zgodnie z poziomu usług jest skalowanie.   
 
 Klasy zasobu używać miejsc współbieżności do mierzenia zużycia zasobów.  [Współbieżność miejsc](#concurrency-slots) opisano szczegółowo w dalszej części tego artykułu. 
 
+- Aby wyświetlić wykorzystania zasobów dla klas zasobów, zobacz [limity pamięci i](memory-and-concurrency-limits.md#concurrency-maximums).
+- Aby dostosować klasy zasobu, można uruchomić zapytanie pod innego użytkownika lub [Zmiana klasy zasobu bieżącego użytkownika](#change-a-users-resource-class) członkostwa. 
+
 ### <a name="static-resource-classes"></a>Klasy statyczne zasobów
-Klasy statyczne zasobów przydzielić tego samego ilość pamięci, niezależnie od tego, bieżący poziom wydajności, która jest mierzona w [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ponieważ zapytania pobierają tego samego alokacji pamięci niezależnie od poziomu wydajności [skalowanie w poziomie magazynu danych](quickstart-scale-compute-portal.md) umożliwia więcej kwerend do uruchomienia w ramach klasy zasobów.
+Klasy statyczne zasobów przydzielić tego samego ilość pamięci, niezależnie od tego, bieżący poziom wydajności, która jest mierzona w [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ponieważ zapytania pobierają tego samego alokacji pamięci niezależnie od poziomu wydajności [skalowanie w poziomie magazynu danych](quickstart-scale-compute-portal.md) umożliwia więcej kwerend do uruchomienia w ramach klasy zasobów.  Klasy statyczne zasobów są idealne, jeśli znane jest ilość danych i stałej.
 
 Klasy statyczne zasobów są implementowane przy użyciu tych ról wstępnie zdefiniowanych bazy danych:
 
@@ -56,19 +59,31 @@ Klasy statyczne zasobów są implementowane przy użyciu tych ról wstępnie zde
 - staticrc70
 - staticrc80
 
-Te klasy zasobów są najlepiej nadaje się do rozwiązania, które zwiększają klasy zasobów, aby uzyskać dodatkowe zasoby obliczeniowe zasobów.
-
 ### <a name="dynamic-resource-classes"></a>Klasy zasobu dynamicznego
-Dynamiczne klasy zasobu przydzielić zmiennej ilość pamięci w zależności od bieżącego poziomu usługi. Skalowanie w górę na większy poziom usługi, kwerend automatycznie Pobierz więcej pamięci. 
+Dynamiczne klasy zasobu przydzielić zmiennej ilość pamięci w zależności od bieżącego poziomu usługi. Klasy statyczne zasobów są przydatne w przypadku woluminów danych statycznych i wyższe współbieżności, klasy zasobu dynamicznego są lepiej dostosowane do rosnących lub zmiennej ilości danych.  Skalowanie w górę na większy poziom usługi, kwerend automatycznie Pobierz więcej pamięci.  
 
 Klasy zasobu dynamicznego są implementowane przy użyciu tych ról wstępnie zdefiniowanych bazy danych:
 
 - smallrc
 - mediumrc
 - largerc
-- xlargerc. 
+- xlargerc 
 
-Te klasy zasobów są najbardziej odpowiednie do skalowania, aby uzyskać dodatkowe zasoby obliczeniowe które wzrost rozwiązań. 
+### <a name="gen2-dynamic-resource-classes-are-truly-dynamic"></a>Klasy zasobu dynamicznego Gen2 są naprawdę dynamiczne
+Gdy digging do szczegółów klasy zasobu dynamicznego na Gen1, istnieją kilka szczegóły, które zwiększenia złożoności dodatkowe poznanie ich zachowania:
+
+- Klasa zasobów smallrc działa z modelu pamięci stałej w klasie statycznej zasobów.  Smallrc zapytania nie są dynamicznie więcej pamięci, zwiększenie poziomu usługi.
+- Jak zmienić poziom usług, współbieżności dostępne zapytania można przejść w górę lub w dół.
+- Skalowanie poziomy usług nie zapewnia proporcjonalne zmiany pamięć przydzielona do tej samej klasy zasobów.
+
+Na **Gen2 tylko**, klasy zasobu dynamicznego są naprawdę dynamiczne adresy punktów wymienionych powyżej.  Nowa reguła jest 3-10-22 — 70 dla pamięci procent alokacji dla klasy zasobu małych — średni — duże xlarge **niezależnie od poziomu usług**.  Poniżej tabeli ma skonsolidowanych szczegóły wartości procentowych alokacji pamięci oraz minimalną liczbę równoczesnych zapytań, które uruchamiane, niezależnie od poziomu usługi.
+
+| Klasa zasobów | Procent pamięci | Zapytania jednoczesne min |
+|:--------------:|:-----------------:|:----------------------:|
+| smallrc        | 3%                | 32                     |
+| mediumrc       | 10%               | 10                     |
+| largerc        | 22%               | 4                      |
+| xlargerc       | 70%               | 1                      |
 
 
 ### <a name="default-resource-class"></a>Domyślna klasa zasobów
@@ -144,10 +159,11 @@ Tylko zapytań dotyczących zasobów postanowieniom zużywać miejsc współbie�
 
 Klasy zasobów są zaimplementowane jako role wstępnie zdefiniowane bazy danych. Istnieją dwa typy klasy zasobu: dynamiczną i statyczną. Aby wyświetlić listę klas zasobów, użyj następującego zapytania:
 
-    ```sql
-    SELECT name FROM sys.database_principals
-    WHERE name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
-    ```
+```sql
+SELECT name 
+FROM   sys.database_principals
+WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+```
 
 ## <a name="change-a-users-resource-class"></a>Zmiana klasy zasobów użytkownika
 
@@ -197,7 +213,7 @@ Do dopasowywania wydajności, należy użyć klasy innego zasobu. Następny zape
 
 ## <a name="example-code-for-finding-the-best-resource-class"></a>Przykładowy kod służący do znajdowania najlepsze klasy zasobów
  
-Poniższe procedury składowanej służy do ustalenia grant współbieżności i pamięć dla każdej klasy zasobu w danym celu SLO i najlepsze najbliższej klasy zasobu operacje o znacznym wykorzystaniu WIK pamięci niepartycjonowany WIK tabeli w klasie zasobu:
+Można użyć następującą procedurę składowaną na **Gen1 tylko** do ustalenia współbieżności i pamięć przyznać według klasy zasobu w danym celu SLO i najlepsze najbliższej klasy zasobu operacje o znacznym wykorzystaniu WIK na niepartycjonowany WIK tabeli w pamięci Klasa zasobu:
 
 W tym miejscu jest celem tej procedury składowanej:  
 1. Aby wyświetlić współbieżności i pamięci przyznać na klasy zasobu w danym celu SLO. Użytkownik musi podać wartości NULL tablename i schematu, jak pokazano w poniższym przykładzie.  
@@ -228,6 +244,10 @@ EXEC dbo.prc_workload_management_by_DWU NULL, 'dbo', 'Table1';
 EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;  
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
+> [!NOTE]
+> Wartości zdefiniowane w tej wersji procedury składowanej dotyczą tylko Gen1.
+>
+>
 
 Poniższa instrukcja tworzy Tabela1, który jest używany w powyższych przykładach.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
@@ -294,7 +314,7 @@ AS
   UNION ALL
     SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
-     SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
     SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
@@ -306,7 +326,7 @@ AS
   UNION ALL
     SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
-   SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
+    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
     SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
 )

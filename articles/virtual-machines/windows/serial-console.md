@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Maszyna wirtualna konsoli szeregowej (wersja zapoznawcza) 
 
@@ -109,7 +109,7 @@ Jeśli musisz włączyć moduł ładujący rozruchu systemu Windows monituje o d
 
 Ta sekcja zawiera przykładowe polecenia do wykonywania typowych zadań w scenariuszach, w których konieczne może być jej umożliwia dostęp do maszyny Wirtualnej, takie jak konieczność Rozwiązywanie problemów z błędami połączenia RDP.
 
-JEJ uwzględniony we wszystkich wersjach systemu Windows, od systemu Windows Server 2003, ale jest domyślnie wyłączona. Zależy od jej `sacdrv.sys` sterownik jądra `Special Administration Console Helper` usługi (`sacsvr`) i `sacsess.exe` procesu. Aby uzyskać więcej informacji, zobacz [narzędzia usług zarządzania awaryjnego i ustawienia](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+JEJ uwzględniony we wszystkich wersjach systemu Windows, od systemu Windows Server 2003, ale jest domyślnie wyłączona. Zależy od jej `sacdrv.sys` sterownik jądra `Special Administration Console Helper` usługi (`sacsvr`) i `sacsess.exe` procesu. Aby uzyskać więcej informacji, zobacz [narzędzia usług zarządzania awaryjnego i ustawienia](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
 JEJ zezwala na łączenie się z systemu operacyjnego za pośrednictwem portu szeregowego. Podczas uruchamiania polecenia CMD z jej, `sacsess.exe` uruchamia `cmd.exe` w ramach Twojego systemu operacyjnego. Widać, że w zadaniu Menedżera Jeśli możesz RDP do maszyny Wirtualnej w tym samym wtedy, gdy są podłączone do jej za pomocą funkcji konsoli szeregowej. CMD dostęp za pośrednictwem jej jest taki sam `cmd.exe` są używane, gdy połączenie za pośrednictwem protokołu RDP. Te same polecenia i narzędzia są dostępne, łącznie z możliwością uruchamiania programu PowerShell z tego wystąpienia CMD. Główna różnica między jej i środowisko odzyskiwania systemu Windows (WinRE) w tym jej jest umożliwienie zarządzania systemu operacyjnego, w którym WinRE jest uruchamiany w innych, minimalny system operacyjny. Gdy maszyny wirtualne platformy Azure nie obsługują możliwość dostępu WinRE, korzystając z funkcji konsoli szeregowej, maszynach wirtualnych platformy Azure mogą być zarządzane za pośrednictwem jej.
 
@@ -266,11 +266,11 @@ W tym przykładzie zwraca wersję pliku wirtualnego sterownika karty Sieciowej, 
 #### <a name="scan-for-system-file-corruption"></a>Skanowanie pod kątem uszkodzenie pliku systemowego
 `sfc /scannow`
 
-Zobacz też [naprawy w obrazie](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Zobacz też [naprawy w obrazie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
 #### <a name="scan-for-system-file-corruption"></a>Skanowanie pod kątem uszkodzenie pliku systemowego
 `dism /online /cleanup-image /scanhealth`
 
-Zobacz też [naprawy w obrazie](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Zobacz też [naprawy w obrazie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
 #### <a name="export-file-permissions-to-text-file"></a>Uprawnienia do pliku eksportu do pliku tekstowego
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 #### <a name="save-file-permissions-to-acl-file"></a>Zapisz uprawnienia do pliku do listy ACL plików
@@ -516,7 +516,7 @@ Metadane wystąpienia platformy Azure z można badać w sieci maszyny Wirtualnej
 
 Zapytanie dotyczące metadanych wystąpienia wymaga łączności sieciowej gościa dobrej kondycji, ponieważ sprawia, że wywołanie interfejsu REST za pośrednictwem hosta platformy Azure z usługą metadanych wystąpienia. Dlatego jeśli można zbadać metadanych wystąpienia, który informuje o gościa jest w stanie komunikować się za pośrednictwem sieci do usługi hostowanej platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [usługi Azure wystąpienie metadanych](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service).
+Aby uzyskać więcej informacji, zobacz [usługi Azure wystąpienie metadanych](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
 
 #### <a name="instance-metadata"></a>Wystąpienie metadanych
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

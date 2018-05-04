@@ -3,7 +3,7 @@ title: Zasady usługi Azure CDN aparat funkcji | Dokumentacja firmy Microsoft
 description: Dokumentacja referencyjna dla usługi Azure CDN zasady funkcje aparatu.
 services: cdn
 documentationcenter: ''
-author: Lichard
+author: dksimpson
 manager: akucer
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
-ms.author: rli
-ms.openlocfilehash: fd670e3b01812b7fa8fc708a02d02210b598ac6a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: v-deasim
+ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Zasady usługi Azure CDN aparat funkcji
 W tym artykule przedstawiono szczegółowe opisy funkcji dostępnych dla Azure Content Delivery Network (CDN) [aparatu reguł](cdn-rules-engine.md).
 
-Trzeci część reguły jest funkcja. Funkcja definiuje typ akcji, która jest stosowana do żądania typu identyfikowane przez zestaw warunków dopasowania.
+Trzeci część reguły jest funkcja. Funkcja definiuje typ akcji, która jest stosowana do żądania typu identyfikowany przez zestaw warunków dopasowania.
 
 ## <a name="access-features"></a>Funkcje dostępu
 
@@ -515,16 +515,16 @@ Informacje o kluczu:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Debugowanie nagłówki odpowiedzi pamięci podręcznej
-**Cel:** Określa, czy odpowiedź może zawierać nagłówek odpowiedzi we-X-Debug, który zawiera informacje dotyczące zasady pamięci podręcznej dla żądanego zasobu.
+**Cel:** Określa, czy odpowiedź może obejmować [nagłówki odpowiedzi we-X-Debug](cdn-http-debug-headers.md), którym znajdują się informacje na temat zasad pamięci podręcznej dla żądanego zasobu.
 
 Debugowanie odpowiedzi pamięci podręcznej, który nagłówki mają być uwzględnieni w odpowiedzi, gdy są spełnione oba poniższe:
 
-- Funkcja debugowania nagłówki odpowiedzi pamięci podręcznej został włączony na odpowiednie żądania.
-- Żądanie powyżej definiuje zestaw debugowania nagłówki odpowiedzi pamięci podręcznej, które zostaną uwzględnione w odpowiedzi.
+- Funkcja debugowania nagłówki odpowiedzi pamięci podręcznej została włączona dla określonego żądania.
+- Określone żądanie definiuje zestaw debugowania nagłówki odpowiedzi pamięci podręcznej, które zostaną uwzględnione w odpowiedzi.
 
-Debugowanie nagłówki może wystąpić przy tym następujący nagłówek i odpowiednie dyrektywy w żądaniu odpowiedzi pamięci podręcznej:
+Debugowanie nagłówki może wystąpić przy tym następujący nagłówek i dyrektywy określony w żądaniu odpowiedzi pamięci podręcznej:
 
-X-WE Debug: _Directive1_,_Directive2_,_DirectiveN_
+`X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
 **Przykład:**
 
@@ -624,7 +624,7 @@ Remove| Zapewnia, że `Expires` nagłówka nie jest dołączony do odpowiedzi na
 ### <a name="external-max-age"></a>Max-Age zewnętrznych
 **Cel:** określa maksymalny wiek interwał przeglądarce ponowna Walidacja buforu POP. Innymi słowy ilość czasu, jaki upłynie przed przeglądarką można sprawdzić nową wersję elementu zawartości z punktu obecności.
 
-Włączenie tej funkcji spowoduje wygenerowanie `Cache-Control: max-age` i `Expires` nagłówków z lokalizacji POP i wysyłać je do klienta HTTP. Domyślnie te nagłówki spowoduje zastąpienie utworzone przez serwer pochodzenia. Jednak traktowania nagłówek Cache-Control i funkcje wygasa traktowania nagłówka pozwala zmienić to zachowanie.
+Włączenie tej funkcji spowoduje wygenerowanie `Cache-Control: max-age` i `Expires` nagłówków z lokalizacji POP i wysyłać je do klienta HTTP. Domyślnie te nagłówki spowoduje zastąpienie tych nagłówków utworzonych przez serwer pochodzenia. Jednak traktowania nagłówek Cache-Control i funkcje wygasa traktowania nagłówka pozwala zmienić to zachowanie.
 
 Informacje o kluczu:
 
@@ -706,7 +706,7 @@ Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone
 Informacje o kluczu:
 
 - Zdefiniuj zestaw dozwolonych rozszerzenia nazw plików H.264 rozdzielonych spacjami w opcji rozszerzenia plików. Opcja rozszerzenia pliku zastępują domyślne zachowanie. Obsługa MP4 i F4V pomocy technicznej przez dołączenie te rozszerzenia nazw plików, ustawiając tę opcję. 
-- Należy uwzględnić okres podczas określania każde rozszerzenie nazwy pliku (na przykład plik MP4 .f4v).
+- Obejmować okres, po określeniu każde rozszerzenie nazwy pliku (na przykład _plik MP4_, _.f4v_).
 
 **Domyślne zachowanie:** pobierania progresywnego HTTP obsługuje nośników MP4 i F4V domyślnie.
 
@@ -727,7 +727,7 @@ Disabled (Wyłączony)|Przywraca domyślne zachowanie. Domyślnym zachowaniem je
 
 Dla całego ruchu w środowisku produkcyjnym zaleca pozostaw tę funkcję w stanie domyślnym wyłączone. W przeciwnym razie pochodzenia serwery będą nie można włączyć osłony użytkowników końcowych, którzy mogą przypadkowo wyzwalać wiele żądań pamięci podręcznej nie podczas odświeżania strony sieci web lub z wielu odtwarzacze multimedialne popularnych, które są zakodowane na wysyłaj nagłówek nie pamięci podręcznej z każdym żądaniem wideo. Niemniej jednak ta funkcja może być przydatne do zastosowania do niektórych nieprodukcyjnych przemieszczania lub testowania katalogów, aby umożliwić nowej zawartości na żądanie pobrania z serwera pochodzenia.
 
-Stan pamięci podręcznej, która będzie zgłaszana dla żądania, który może być przekazywane do serwera pochodzenia z powodu ta funkcja jest TCP_Client_Refresh_Miss. Raport stany pamięci podręcznej, który jest dostępny w podstawowej modułu raportowania, informacje statystyczne według stanu pamięci podręcznej. Dzięki temu można śledzić liczbę i odsetek żądań, które są przesyłane do serwera pochodzenia z powodu tej funkcji.
+Stan pamięci podręcznej, zgłaszany jest żądanie, które mogą być przekazywane do serwera pochodzenia z powodu tej funkcji `TCP_Client_Refresh_Miss`. Raport stany pamięci podręcznej, który jest dostępny w podstawowej modułu raportowania, informacje statystyczne według stanu pamięci podręcznej. Ten raport służy do śledzenia liczbę i odsetek żądań, które są przesyłane do serwera pochodzenia z powodu tej funkcji.
 
 **Domyślne zachowanie:** wyłączone.
 
@@ -858,7 +858,7 @@ Disabled (Wyłączony)|Przywraca domyślne zachowanie. Domyślnym zachowaniem je
 ### <a name="maximum-keep-alive-requests"></a>Maksymalna liczba żądań Keep-Alive
 **Cel:** określa maksymalną liczbę żądań Keep-Alive połączenia przed jego zamknięciem.
 
-Maksymalna liczba żądań niskiej wartości jest zalecane i może spowodować obniżenie wydajności.
+Ustawianie maksymalnej liczby żądań niską wartość jest niezalecane i może spowodować spadek wydajności.
 
 Informacje o kluczu:
 
@@ -884,9 +884,9 @@ W nagłówku żądania można wykonać jedną z następujących czynności:
 
 Opcja|Opis|Przykład
 -|-|-
-Append|Określona wartość zostanie dodany na końcu istniejącą wartość nagłówka żądania.|**Wartość nagłówka (klient) żądania:**wartość1 <br/> **Żądanie wartość nagłówka (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka żądania:** Value1Value2
-Zastąp|Wartość nagłówka żądania zostanie ustawiona na określoną wartość.|**Wartość nagłówka (klient) żądania:**wartość1 <br/>**Żądanie wartość nagłówka (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka żądania:** wartość2 <br/>
-Usuwanie|Usuwa określonego nagłówka żądania.|**Wartość nagłówka (klient) żądania:**wartość1 <br/> **Zmodyfikuj konfigurację nagłówek żądania klienta:** usunąć w nagłówku żądania. <br/>**Wynik:** określonego nagłówka żądania nie zostaną przekazane do serwera pochodzenia.
+Append|Określona wartość zostanie dodany na końcu istniejącą wartość nagłówka żądania.|**Wartość nagłówka (klient) żądania:** wartość1 <br/> **Żądanie wartość nagłówka (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka żądania:** Value1Value2
+Zastąp|Wartość nagłówka żądania zostanie ustawiona na określoną wartość.|**Wartość nagłówka (klient) żądania:** wartość1 <br/>**Żądanie wartość nagłówka (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka żądania:** wartość2 <br/>
+Usuwanie|Usuwa określonego nagłówka żądania.|**Wartość nagłówka (klient) żądania:** wartość1 <br/> **Zmodyfikuj konfigurację nagłówek żądania klienta:** usunąć w nagłówku żądania. <br/>**Wynik:** określonego nagłówka żądania nie zostaną przekazane do serwera pochodzenia.
 
 Informacje o kluczu:
 
@@ -922,8 +922,8 @@ W nagłówku odpowiedzi można wykonać jedną z następujących czynności:
 
 Opcja|Opis|Przykład
 -|-|-
-Append|Określona wartość zostanie dodany na końcu istniejącej wartości nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):**wartość1 <br/> **Wartość nagłówka odpowiedzi (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:** Value1Value2
-Zastąp|Będzie można ustawić wartości nagłówka odpowiedzi na określoną wartość.|**Wartość nagłówka odpowiedzi (klient):**wartość1 <br/>**Wartość nagłówka odpowiedzi (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:** wartość2 <br/>
+Append|Określona wartość zostanie dodany na końcu istniejącej wartości nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):** wartość1 <br/> **Wartość nagłówka odpowiedzi (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:** Value1Value2
+Zastąp|Będzie można ustawić wartości nagłówka odpowiedzi na określoną wartość.|**Wartość nagłówka odpowiedzi (klient):** wartość1 <br/>**Wartość nagłówka odpowiedzi (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:** wartość2 <br/>
 Usuwanie|Usuwa określonego nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):** wartość1 <br/> **Zmodyfikuj konfigurację nagłówka odpowiedzi klienta:** usunąć zagrożona nagłówka odpowiedzi. <br/>**Wynik:** określonego nagłówka odpowiedzi nie zostaną przekazane do zleceniodawcy.
 
 Informacje o kluczu:
@@ -990,12 +990,22 @@ Informacje o kluczu:
 
 ---
 ### <a name="proxy-special-headers"></a>Serwer proxy specjalnych nagłówków
-**Cel:** definiuje zestaw specyficzne dla sieci CDN w warstwie nagłówków żądań, które będą przesyłane z punktu obecności do serwera pochodzenia.
+**Cel:** definiuje zestaw [nagłówków żądań HTTP dotyczące Verizon](cdn-verizon-http-headers.md) którego zostanie przekazane z punktu obecności serwera pochodzenia.
 
 Informacje o kluczu:
 
-- Każdy nagłówek żądania specyficzne dla usługi CDN zdefiniowany w tej funkcji zostanie przekazany do serwera pochodzenia.
-- Nagłówek żądania specyficzne dla usługi CDN uniemożliwić są przekazywane do serwera pochodzenia przez usunięcie go z tej listy.
+- Każdy nagłówek żądania specyficzne dla usługi CDN zdefiniowany w tej funkcji jest przekazywane do serwera pochodzenia. Wykluczone nagłówki nie są przesyłane dalej.
+- Aby zapobiec przesyłane dalej nagłówek żądania specyficzne dla usługi CDN, usuń go z rozdzielonej spacjami listy w polu listy nagłówka.
+
+Następujące nagłówki HTTP znajdują się na domyślnej liście:
+- za pomocą
+- X przekazywane do
+- X-Forwarded-Proto
+- X-Host
+- X Midgress
+- X bramy listy
+- X-WE Name
+- Host
 
 **Domyślne zachowanie:** wszystkie nagłówki żądania specyficzne dla usługi CDN zostaną przekazane do serwera pochodzenia.
 

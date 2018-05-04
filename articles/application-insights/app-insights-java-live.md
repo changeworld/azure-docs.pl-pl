@@ -1,9 +1,9 @@
 ---
-title: "Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo"
-description: "Rozpocznij monitorowanie aplikacji sieci web, która jest już uruchomiona na serwerze"
+title: Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
+description: Rozpocznij monitorowanie aplikacji sieci web, która jest już uruchomiona na serwerze
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 12f3dbb9-915f-4087-87c9-807286030b0b
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 152e21bd9fc6db424c3caff4ce425e54ecab11e2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b8ddd43fb19b3800840180c458268301b5ec26f6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
 
@@ -45,7 +45,7 @@ Potrzebna będzie subskrypcja platformy [Microsoft Azure](https://azure.com).
 
 ## <a name="2-download-the-sdk"></a>2. Pobierz zestaw SDK
 1. Pobierz [Zestaw SDK usługi Application Insights dla środowiska Java](https://aka.ms/aijavasdk). 
-2. Na serwerze Wyodrębnij zawartość zestawu SDK do katalogu, z którego są załadowane dane binarne Twojego projektu. Jeśli używasz Tomcat ten katalog będzie zazwyczaj w obszarze`webapps/<your_app_name>/WEB-INF/lib`
+2. Na serwerze Wyodrębnij zawartość zestawu SDK do katalogu, z którego są załadowane dane binarne Twojego projektu. Jeśli używasz Tomcat ten katalog będzie zazwyczaj w obszarze `webapps/<your_app_name>/WEB-INF/lib`
 
 Należy pamiętać, że trzeba Powtórz te czynności dla każdego wystąpienia serwera, a także dla każdej aplikacji.
 
@@ -131,7 +131,7 @@ Podczas przeglądania właściwości żądania, może uzyskać zdarzenia telemet
 
 [Dowiedz się więcej o metrykach.](app-insights-metrics-explorer.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Dodaj telemetrię do stron sieci web](app-insights-javascript.md) wyświetleń strony monitora i metryki użytkownika.
 * [Ustawianie testów sieci web](app-insights-monitor-web-app-availability.md) aby upewnić się, aplikacja pozostaje na żywo i szybko reagowały.
 * [Śledzenie dziennika](app-insights-java-trace-logs.md)

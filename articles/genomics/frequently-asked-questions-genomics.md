@@ -1,7 +1,7 @@
 ---
-title: "Microsoft Genomics: Często zadawane pytania | Dokumentacja firmy Microsoft"
+title: 'Microsoft Genomics: Często zadawane pytania | Dokumentacja firmy Microsoft'
 titleSuffix: Azure
-description: "Odpowiedzi na typowe pytania klientów poproś o Genomics firmy Microsoft."
+description: Odpowiedzi na typowe pytania klientów poproś o Genomics firmy Microsoft.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -11,15 +11,15 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 2077eeb5177b07c458476ae900f81b72e35f0dc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b3f30dc5d185615370a8273f71554f784d286cd9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="microsoft-genomics-common-questions"></a>Genomics firmy Microsoft: Często zadawane pytania
 
-W tym artykule wymieniono najczęściej używanych zapytania, które mogą mieć dotyczą Genomics firmy Microsoft. Aby uzyskać więcej informacji w usłudze Microsoft Genomics, zobacz [co to jest Microsoft Genomics?](overview-what-is-genomics.md) 
+Ten artykuł zawiera listę Najpopularniejsze kwerendy, może być powiązany Genomics firmy Microsoft. Aby uzyskać więcej informacji dotyczących usługi Microsoft Genomics, zobacz [co to jest Microsoft Genomics?](overview-what-is-genomics.md). Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz nasze [Troubleshooting Guide](troubleshooting-guide-genomics.md). 
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Co to jest umowy SLA dla Genomics firmy Microsoft?
@@ -57,7 +57,7 @@ Klucz konta magazynu jest używany do tworzenia krótkoterminowych tokenów dost
 ## <a name="what-genome-references-can-i-use"></a>Jakie genomu odwołuje się do czego służy?
 
 Odwołania te są obsługiwane:
- |Dokumentacja              | Wartość`-pa/--process-args` |
+ |Informacje ogólne              | Wartość `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -74,13 +74,13 @@ Spacja jest ignorowana.
 
  |Argument wiersza polecenia            | Wiersz w pliku konfiguracji |
  |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://URL*    |
+ |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
  |`-k/--access-key KEY`            | *access_key:key*              |      
  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby zacząć korzystać z Genomics firmy Microsoft, należy korzystać z następujących zasobów:
-- Rozpoczynanie pracy przez uruchomienie pierwszego przepływu pracy za pośrednictwem usługi Microsoft Genomics. [Uruchamianie przepływu pracy za pośrednictwem usługi Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
-- Przesyłanie danych do przetwarzania przez usługę Microsoft Genomics: [sparować FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wiele FASTQ lub BAM](quickstart-input-multiple.md) 
+- Rozpoczynanie pracy przez uruchomienie pierwszego przepływu pracy za pośrednictwem usługi Microsoft Genomics. [Uruchom przepływ pracy za pośrednictwem usługi Microsoft Genomics ](quickstart-run-genomics-workflow-portal.md)
+- Przesyłanie danych do przetwarzania przez usługę Microsoft Genomics: [par skojarzonych FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wiele FASTQ lub BAM](quickstart-input-multiple.md) 
 

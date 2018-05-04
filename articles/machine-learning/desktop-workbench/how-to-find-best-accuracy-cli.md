@@ -1,6 +1,6 @@
 ---
-title: "Znajdź działa z dokładnością najlepszym i najniższego czas trwania w Azure Machine Learning Workbench | Dokumentacja firmy Microsoft"
-description: "Przypadek użycia end-to-end można znaleźć najlepsze dokładność za pośrednictwem interfejsu wiersza polecenia przy użyciu usługi Azure Machine Learning Workbench"
+title: Znajdź działa z dokładnością najlepszym i najniższego czas trwania w Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: Przypadek użycia end-to-end można znaleźć najlepsze dokładność za pośrednictwem interfejsu wiersza polecenia przy użyciu usługi Azure Machine Learning Workbench
 services: machine-learning
 author: totekp
 ms.author: kefzhou
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
 ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Znajdź działa z dokładnością najlepszym i najniższego czas trwania
 Podana wielu uruchomień, jeden przypadek użycia jest znalezienie działa z najlepszym dokładności. Jednym z podejść jest użycie interfejsu wiersza polecenia (CLI) z [JMESPath](http://jmespath.org/) zapytania. Aby uzyskać więcej informacji o sposobie używania JMESPath w wiersza polecenia platformy Azure, zobacz [JMESPath Użyj zapytania z Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). W poniższym przykładzie są tworzone cztery uruchamia dokładność wartości 0, 0,98, 1 lub 1. Uruchamia są filtrowane, jeśli są w zakresie `[MaxAccuracy-Threshold, MaxAccuracy]` gdzie `Threshold = .03`.

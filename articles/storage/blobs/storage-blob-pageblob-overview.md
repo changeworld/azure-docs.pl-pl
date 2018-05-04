@@ -6,13 +6,13 @@ author: anasouma
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/30/2018
 ms.author: wielriac
-ms.openlocfilehash: 5d1ad1555cb1e01e363456af5c50ecd090ce7147
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 79590e1987ee29ca06f9fb103f548518b2c1c57e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Unikatowe funkcje Azure stronicowych obiektów blob
 
@@ -21,9 +21,6 @@ Usługa Azure Storage udostępnia trzy typy magazynu obiektów blob: blokowe obi
 Stronicowe obiekty BLOB są to zbiór stron 512-bajtowych, które oferują możliwość odczytu/zapisu dowolnego zakresów bajtów. W związku z tym stronicowe obiekty BLOB idealnie nadają się do przechowywania struktury opartego na indeksie i rozrzedzone danych, takich jak systemu operacyjnego i dysków z danymi dla maszyn wirtualnych i baz danych. Na przykład bazy danych SQL Azure używa stronicowych obiektów blob jako podstawowej magazynu trwałego dla jej baz danych. Ponadto stronicowe obiekty BLOB są również często używane dla plików z opartej na zakresie aktualizacji.  
 
 Najważniejsze funkcje Azure stronicowe obiekty BLOB są interfejsie REST, trwałości powiązany magazyn oraz możliwości łatwego migracji na platformie Azure. Te funkcje są szczegółowo opisane w następnej sekcji. Ponadto Azure stronicowe obiekty BLOB są obecnie obsługiwane na dwa typy magazynu: Magazyn w warstwie Premium i standardowa magazynu. Magazyn w warstwie Premium jest zaprojektowany specjalnie z myślą obciążeń wymagających wysoką wydajność i małe opóźnienia wprowadzania premium stronicowe obiekty BLOB nadaje się doskonale dla bazy danych magazynu danych wysokiej wydajności.  Standard Storage jest bardziej ekonomiczne dla niezależnych od opóźnienia obciążeniami.
-
-> [!WARNING]
-> Stronicowe obiekty BLOB w warstwie Premium Storage są przeznaczone do użytku jako wirtualne dyski twarde tylko. Firma Microsoft zaleca przechowywanie innych typów danych w stronicowe obiekty BLOB w warstwie Premium Storage, jak koszt może być znacznie większą. Użyj blokowych obiektów blob do przechowywania danych, który nie jest dysku VHD.
 
 ## <a name="sample-use-cases"></a>Przykładowe przypadki użycia
 

@@ -3,17 +3,17 @@ title: Obraz Docker wypychania do prywatnego rejestru Azure
 description: Wypychanie i ściąganie obrazów platformy Docker do prywatnego rejestru kontenerów na platformie Azure za pomocą interfejsu wiersza polecenia platformy Docker
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 40f2d3bde5e92a035709b1a8e49b76d3da079680
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker za pomocą interfejsu wiersza polecenia platformy Docker
 
@@ -61,7 +61,7 @@ Wykonaj następujące [docker Uruchom](https://docs.docker.com/engine/reference/
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Przejdź do [adresem http://localhost: 8080](http://localhost:8080) Aby wyświetlić domyślnej strony sieci web obsługiwane przez Nginx w kontenerze uruchomione. Powinny pojawić się Strona podobny do następującego:
+Przejdź do [ http://localhost:8080 ](http://localhost:8080) Aby wyświetlić domyślnej strony sieci web obsługiwane przez Nginx w kontenerze uruchomione. Powinny pojawić się Strona podobny do następującego:
 
 ![Kontener Nginx na komputerze lokalnym](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -103,7 +103,7 @@ Użyj [docker Uruchom](https://docs.docker.com/engine/reference/run/) polecenie 
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Przejdź do adresu [http://localhost:8080](http://localhost:8080), aby wyświetlić działający kontener.
+Przejdź do [ http://localhost:8080 ](http://localhost:8080) Aby wyświetlić uruchomionych kontenera.
 
 Aby zatrzymać i usunąć kontenera, naciśnij klawisz `Control` + `C`.
 

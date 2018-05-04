@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 76149ce3864811cf2b5648f8dc0aa214e5820d9f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zapewnij bezpośrednich uczenia maszyny wirtualnej na platformie Azure 
 
@@ -44,9 +44,9 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie z głębokiego Learning
       6. **Lokalizacja**: wybierz centrum danych, która jest najbardziej odpowiednia. Zazwyczaj jest centrum danych, która zawiera większość danych lub zbliżony do fizycznej lokalizacji najszybszy dostęp do sieci. 
       
 > [!NOTE]
-> Ponieważ DLVM jest inicjowana na wystąpień maszyny Wirtualnej Azure serii NC procesora GPU, należy wybrać jeden z lokalizacji w platformy Azure, która ma GPU. Obecnie są lokalizacji, które mają GPU maszyn wirtualnych: **wschodnie stany USA, północno-środkowe stany, południowo-środkowe stany, zachodnie stany USA 2 Europa Północna, Europa Zachodnia**. Najbardziej aktualną listę Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/en-us/regions/services/) i poszukaj **NC serii** w obszarze **obliczeniowe**. 
+> DLVM obsługuje wszystkie NC ND serii wystąpień maszyn wirtualnych procesora GPU. Podczas inicjowania obsługi administracyjnej DLVM, należy wybrać jeden z lokalizacji w platformy Azure, która ma GPU. Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) strony dostępne lokalizacje i poszukaj **NC serii**, **serii NCv2**, **NCv3 serii** , lub **serii ND** w obszarze **obliczeniowe**. 
 
-   2. **Ustawienia**: Wybierz jedno z serii NC GPU rozmiar maszyny wirtualnej, który spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Utwórz konto magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **Ustawienia**: Wybierz jedno z serii NC (NC, NCv2, NCv3) lub serii ND GPU rozmiary maszyny wirtualnej, która spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Utwórz konto magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **Podsumowanie**: Sprawdź, czy wszystkie informacje wprowadzone jest poprawna.
    5. **Kup**: kliknij **kupić** uruchomić udostępnianie. Łącze znajduje się na warunki transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczeniowe dla rozmiaru serwera w **rozmiar** kroku. 

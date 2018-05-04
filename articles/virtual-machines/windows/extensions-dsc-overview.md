@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: e23d0a70cdfcc1b37f02d86dd6418aa28c5bbf2c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6bfe48df685952d2b465d9549e2f1c086c1c490
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do obsługi rozszerzenia konfiguracji żądanego stanu usługi Azure
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 Agent maszyny Wirtualnej i skojarzonych rozszerzeń są częścią usługi infrastruktury platformy Microsoft Azure. Rozszerzenia maszyny Wirtualnej są składniki oprogramowania, które rozszerzyć funkcjonalność maszyny Wirtualnej i uproszczenia różne operacje zarządzania maszyny Wirtualnej.
 
-Przypadek użycia serwera podstawowego do rozszerzenia konfiguracji żądanego stanu Azure (DSC) bootstrap maszyny Wirtualnej, aby [usługi Konfiguracja DSC automatyzacji Azure](../../automation/automation-dsc-overview.md). Uruchamianie maszyn wirtualnych zapewnia [korzyści](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#pull-service) zawierające bieżące zarządzanie konfiguracji maszyny Wirtualnej i integracja z innymi narzędziami operacyjne, takie jak monitorowania Azure.
+Przypadek użycia serwera podstawowego do rozszerzenia konfiguracji żądanego stanu Azure (DSC) bootstrap maszyny Wirtualnej, aby [usługi Konfiguracja DSC automatyzacji Azure](../../automation/automation-dsc-overview.md). Uruchamianie maszyn wirtualnych zapewnia [korzyści](https://docs.microsoft.com/powershell/dsc/metaconfig#pull-service) zawierające bieżące zarządzanie konfiguracji maszyny Wirtualnej i integracja z innymi narzędziami operacyjne, takie jak monitorowania Azure.
 
 Można użyć rozszerzenia DSC niezależnie od usługi Konfiguracja DSC automatyzacji. Jednak wymaga pojedynczej akcji, która występuje podczas wdrażania. Stałe raportowania lub Zarządzanie konfiguracją są niedostępne, innych niż lokalnie w maszynie Wirtualnej.
 
@@ -49,7 +49,7 @@ W tym przewodniku założono znajomość następujące kwestie:
 
 ## <a name="architecture"></a>Architektura
 
-Rozszerzenia usługi Konfiguracja DSC Azure używa framework Agent maszyny Wirtualnej do dostarczania, wprowadza i raport o konfiguracji DSC uruchomionych na maszynach wirtualnych platformy Azure. Rozszerzenia DSC akceptuje dokument konfiguracji i zestaw parametrów. Jeśli plik nie zostanie podany, [domyślne skryptu konfiguracji](#default-configuration-script) jest osadzony z rozszerzeniem. Skrypt konfiguracji domyślnej jest używana tylko w celu określenia metadanych [lokalny program Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig).
+Rozszerzenia usługi Konfiguracja DSC Azure używa framework Agent maszyny Wirtualnej do dostarczania, wprowadza i raport o konfiguracji DSC uruchomionych na maszynach wirtualnych platformy Azure. Rozszerzenia DSC akceptuje dokument konfiguracji i zestaw parametrów. Jeśli plik nie zostanie podany, [domyślne skryptu konfiguracji](#default-configuration-script) jest osadzony z rozszerzeniem. Skrypt konfiguracji domyślnej jest używana tylko w celu określenia metadanych [lokalny program Configuration Manager](https://docs.microsoft.com/powershell/dsc/metaconfig).
 
 Jeśli rozszerzenie jest wywoływana po raz pierwszy, instaluje wersję programu WMF za pomocą następujących reguł:
 
@@ -61,7 +61,7 @@ Instalowanie WMF wymaga ponownego uruchomienia. Po ponownym uruchomieniu, rozsze
 
 ### <a name="default-configuration-script"></a>Skrypt konfiguracji domyślnej
 
-Rozszerzenia usługi Konfiguracja DSC Azure obejmuje skrypt konfiguracji domyślnej, który ma być użyta, gdy ci przy dołączeniu do usługi Konfiguracja DSC automatyzacji Azure maszyny Wirtualnej. Parametry skryptu są zgodne z można skonfigurować właściwości [lokalny program Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig). Parametry skryptu, zobacz [domyślne skryptu konfiguracji](extensions-dsc-template.md#default-configuration-script) w [konfiguracji żądanego stanu rozszerzenia przy użyciu szablonów usługi Azure Resource Manager](extensions-dsc-template.md). Pełna skryptu, zobacz [szablonów Szybki Start Azure w serwisie GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Rozszerzenia usługi Konfiguracja DSC Azure obejmuje skrypt konfiguracji domyślnej, który ma być użyta, gdy ci przy dołączeniu do usługi Konfiguracja DSC automatyzacji Azure maszyny Wirtualnej. Parametry skryptu są zgodne z można skonfigurować właściwości [lokalny program Configuration Manager](https://docs.microsoft.com/powershell/dsc/metaconfig). Parametry skryptu, zobacz [domyślne skryptu konfiguracji](extensions-dsc-template.md#default-configuration-script) w [konfiguracji żądanego stanu rozszerzenia przy użyciu szablonów usługi Azure Resource Manager](extensions-dsc-template.md). Pełna skryptu, zobacz [szablonów Szybki Start Azure w serwisie GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenia usługi Konfiguracja DSC w szablonach usługi Resource Manager
 

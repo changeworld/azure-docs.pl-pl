@@ -1,29 +1,27 @@
 ---
-title: "Ładowanie do Apache Phoenix przy użyciu psql - Azure HDInsight zbiorczego | Dokumentacja firmy Microsoft"
-description: "Narzędzie psql załadować do tabel Phoenix danych ładowania zbiorczego."
+title: Ładowanie do Apache Phoenix przy użyciu psql - Azure HDInsight zbiorczego | Dokumentacja firmy Microsoft
+description: Narzędzie psql załadować do tabel Phoenix danych ładowania zbiorczego.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 0a623113ee9f3fe2c0f5f616ecd79b8311a8ffc1
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 2c192707c6cf8f84d2ca1c0307770cadd5cdb8bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="bulk-load-data-into-phoenix-using-psql"></a>Danych ładowania zbiorczego w Phoenix przy użyciu psql
+# <a name="bulk-load-data-into-phoenix-using-psql"></a>Zbiorcze ładowanie danych do oprogramowania Phoenix za pomocą programu psql
 
-[Apache Phoenix](http://phoenix.apache.org/) typu open source, równoległemu oparty na relacyjnej bazy danych jest [HBase](../hbase/apache-hbase-overview.md). Phoenix zapewnia przypominającego SQL zapytań za pośrednictwem HBase. Phoenix używa JDBC sterowniki, aby umożliwić użytkownikom na tworzenie, usuwanie i alter SQL tabel, indeksów, widoków i sekwencji i upsert wierszy indywidualnie i zbiorczo. Phoenix używa natywnej kompilacji noSQL, zamiast używać MapReduce skompilować zapytania, aby tworzyć aplikacje małe opóźnienia w bazie danych HBase. Phoenix dodaje wspólnej procesorów do obsługi uruchamiania kodu dostarczonych przez klienta w przestrzeni adresowej serwera, wykonywanie kodu wspólnie z danymi. Pozwala to zmniejszyć transferu danych klienta i serwera.  Aby pracować z danymi w usłudze HDInsight przy użyciu Phoenix, należy najpierw utworzyć tabel, a następnie ładowanie danych do ich.
+[Apache Phoenix](http://phoenix.apache.org/) jest otwartym przetwarzania równoległego relacyjnej bazy danych, zbudowana na [HBase](../hbase/apache-hbase-overview.md). Phoenix zapewnia przypominającego SQL zapytań za pośrednictwem HBase. Phoenix używa JDBC sterowniki, aby umożliwić użytkownikom na tworzenie, usuwanie i alter SQL tabel, indeksów, widoków i sekwencji i upsert wierszy indywidualnie i zbiorczo. Phoenix używa natywnej kompilacji noSQL, zamiast używać MapReduce skompilować zapytania, aby tworzyć aplikacje małe opóźnienia w bazie danych HBase. Phoenix dodaje wspólnej procesorów do obsługi uruchamiania kodu dostarczonych przez klienta w przestrzeni adresowej serwera, wykonywanie kodu wspólnie z danymi. Pozwala to zmniejszyć transferu danych klienta i serwera.  Aby pracować z danymi w usłudze HDInsight przy użyciu Phoenix, należy najpierw utworzyć tabel, a następnie ładowanie danych do ich.
 
 ## <a name="bulk-loading-with-phoenix"></a>Zbiorcze ładowanie z Phoenix
 
@@ -142,11 +140,11 @@ Do załadowania wyższej przepustowości rozłożone w klastrze, należy użyć 
 
 * Podziel wejściowych plików na fragmenty ~ 10 GB. Ładowanie zbiorcze jest operacją intensywnie magazynu, więc Podziel pliki danych wejściowych na wiele wyników fragmentów lepszą wydajność.
 
-* Unikaj hotspotami serwera regionu. Jeśli klucz wiersza monotonicznie wzrasta, sekwencyjnych zapisów HBase może wywoływać hotspotting serwera regionu. *Solenie* klucz wiersza zmniejsza sekwencyjnych zapisów. Phoenix zapewnia sposób przezroczysty soli klucz wiersza z solenie bajtów dla danej tabeli, zgodnie z informacjami zawartymi poniżej.
+* Unikaj hotspotami serwera regionu. Jeśli klucz wiersza monotonicznie wzrasta, sekwencyjnych zapisów HBase może wywoływać hotspotting serwera regionu. *Solenie* zmniejsza klucza wiersza zapisu sekwencyjnego. Phoenix zapewnia sposób przezroczysty soli klucz wiersza z solenie bajtów dla danej tabeli, zgodnie z informacjami zawartymi poniżej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zbiorcze ładowanie danych ze Apache Phoenix](http://phoenix.apache.org/bulk_dataload.html)
 * [Apache Phoenix za pomocą klastrów HBase opartych na systemie Linux w usłudze HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [Solone tabel](https://phoenix.apache.org/salted.html)
-* [Phoenix gramatyki](http://phoenix.apache.org/language/index.html)
+* [Gramatyka Phoenix](http://phoenix.apache.org/language/index.html)

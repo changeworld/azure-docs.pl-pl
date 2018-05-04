@@ -2,9 +2,8 @@
 title: Wprowadzenie do usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
 description: Zapoznaj się z informacjami na temat usługi Azure Cosmos DB. Ta dostępna w skali światowej, wielomodelowa baza danych zapewnia małe opóźnienia, elastyczną skalowalność i wysoką dostępność.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: a855183f-34d4-49cc-9609-1478e465c3b7
 ms.service: cosmos-db
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/15/2017
-ms.author: mimig
+ms.date: 04/08/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e78480ceb47e472029795848739b4416e0c4256e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 13c6fc8550f6b5bfac6d236a7145039d2622f0ae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -36,7 +35,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
 * **Gotowa do użytku dystrybucja globalna**
     * Możesz [dystrybuować dane](distribute-data-globally.md) w dowolnej liczbie [regionów platformy Azure](https://azure.microsoft.com/regions/) [jednym kliknięciem przycisku](tutorial-global-distribution-sql-api.md). Umożliwia to używanie Twoich danych tam, gdzie znajdują się użytkownicy, co zapewnia najniższe możliwe opóźnienie Twoim klientom. 
     * Za pomocą międzyregionalnych interfejsów API usługi Azure Cosmos DB aplikacja zawsze posiada informacje o tym, gdzie znajduje się najbliższy region, i wysyła żądania do najbliższego centrum danych. Wszystko to jest możliwe bez zmian konfiguracji. Wystarczy ustawić region zapisu i dowolną liczbę regionów odczytu, a pozostałe operacje będą obsługiwane za Ciebie.
-    * W przypadku dodawania regionów do bazy danych usługi Cosmos DB i usuwania ich z niej aplikacja nie musi być ponownie wdrażana i jest stale dostępna dzięki możliwościom międzyregionalnych interfejsów API.
+    * W przypadku dodawania regionów do bazy danych Azure Cosmos DB i usuwania ich z niej aplikacja nie musi być ponownie wdrażana i jest stale wysoce dostępna dzięki możliwościom międzyregionalnych interfejsów API.
 
 * **Wiele modeli danych i popularnych interfejsów API na potrzeby uzyskiwania dostępu do danych i wykonywania względem nich zapytań**
     * Model danych oparty na technologii atom-rekord-sekwencja (ARS, atom-record-sequence), na podstawie którego zbudowana jest usługi Azure Cosmos DB, natywnie obsługuje wiele modeli danych, między innymi rodziny modeli opartych na dokumentach, grafach, parach klucz-wartość i kolumnach.
@@ -44,9 +43,9 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
         * [Interfejs API usługi SQL](sql-api-introduction.md): aparat bazy danych JSON bez schematu z zaawansowanymi możliwościami wysyłania zapytań SQL.
         * [Interfejs API usługi MongoDB](mongodb-introduction.md): wysoce skalowalna *baza danych MongoDB jako usługa* obsługiwana przez platformę Azure Cosmos DB. Zgodny z istniejącymi bibliotekami, sterownikami, narzędziami i aplikacjami MongoDB.
         * [Interfejs API rozwiązania Cassandra](cassandra-introduction.md): globalnie dystrybuowane rozwiązanie Cassandra jako usługa obsługiwane przez platformę Azure Cosmos DB. Zgodny z istniejącymi bibliotekami, sterownikami, narzędziami i aplikacjami [Apache Cassandra](https://cassandra.apache.org/).
-        * [Interfejs API programu Graph (Gremlin)](graph-introduction.md): w pełni zarządzana, skalowalna w poziomie usługa bazy danych programu Graph, która ułatwia tworzenie i uruchamianie aplikacji działających z zestawami danych o wysokim stopniu połączenia, obsługującymi otwarte interfejsy API programu Graph (na podstawie [specyfikacji Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Interfejs API języka Gremlin (program Graph)](graph-introduction.md): w pełni zarządzana, skalowalna w poziomie usługa bazy danych programu Graph, która ułatwia tworzenie i uruchamianie aplikacji działających z zestawami danych o wysokim stopniu połączenia, obsługującymi otwarte interfejsy API programu Graph (na podstawie [specyfikacji Apache TinkerPop](http://tinkerpop.apache.org/) w ramach rozwiązania Apache Gremlin).
         * [Interfejs API tabel](table-introduction.md): usługa bazy danych wartości klucza utworzona w celu zapewnienia funkcji premium (na przykład automatycznego indeksowania, gwarantowanego małego opóźnienia, globalnej dystrybucji) istniejącym aplikacjom usługi Azure Table Storage bez wprowadzania żadnych zmian w aplikacji.
-        * Dodatkowe modele danych będą dostępne wkrótce!
+        * Dodatkowe modele danych i interfejsy API będą dostępne wkrótce!
 
 * **Elastycznie i niezależnie skalowana przepływność i przestrzeń dyskowa na żądanie, na całym świecie**
     * Łatwe skalowanie przepływności bazy danych z [sekundową](request-units.md) dokładnością i możliwość jej zmiany w dowolnym momencie. 
@@ -65,7 +64,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
     * Pięć dobrze zdefiniowanych, praktycznych i intuicyjnych [modeli spójności](consistency-levels.md) zapewnia silną spójność, podobną do spójności SQL, oraz spójność ostateczną, podobną do luźnej spójności NoSQL (i wszystko pomiędzy nimi). 
   
 * **Gwarancja zwrotu pieniędzy**
-    * Wiodące w branży, zabezpieczone finansowo, kompleksowe [umowy dotyczące poziomu usług](https://aka.ms/acdbsla) gwarantujące dostępność, czas oczekiwania, przepływność i spójność kluczowych danych. 
+    * Wiodące w branży, zabezpieczone finansowo, kompleksowe [umowy dotyczące poziomu usług (SLA)](https://aka.ms/acdbsla) gwarantujące dostępność, czas oczekiwania, przepływność i spójność kluczowych danych. 
 
 * **Brak potrzeby zarządzania schematami i indeksami bazy danych**
     * Błyskawiczne tworzenie iteracji schematu aplikacji bez martwienia się o zarządzanie schematem i/lub indeksem bazy danych.
@@ -77,7 +76,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
 
 ## <a name="capability-comparison"></a>Porównanie możliwości
 
-Usługa Azure Cosmos DB zapewnia najlepsze możliwości relacyjnych i nierelacyjnych baz danych.
+Usługa Azure Cosmos DB zapewnia najlepsze możliwości tradycyjnych relacyjnych i nierelacyjnych baz danych.
 
 | Możliwości | Relacyjne bazy danych   | Nierelacyjne bazy danych (NoSQL) |    Azure Cosmos DB |
 | --- | --- | --- | --- |

@@ -1,27 +1,24 @@
 ---
-title: Magazyn danych SQL języka Transact-SQL | Dokumentacja firmy Microsoft
-description: Łącza do zawartości referencyjnej dla tematy języka Transact-SQL używane przez usługi SQL Data Warehouse.
+title: Instrukcje T-SQL - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Łączy się z dokumentacją dotyczącą instrukcje T-SQL obsługiwane przez Magazyn danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: ''
-ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 03/22/2018
-ms.author: kevin;barbkess
-ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: ec708f30b59bbd6af878720c65f9a464224c57a5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="transact-sql-topics"></a>Tematy dotyczące języka Transact-SQL
+# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Instrukcje T-SQL obsługiwane przez Magazyn danych SQL Azure
+Łączy się z dokumentacją dotyczącą instrukcje T-SQL obsługiwane przez Magazyn danych SQL Azure.
+
 ## <a name="data-definition-language-ddl-statements"></a>Instrukcje danych Definition Language (DDL)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [POLECENIA ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
@@ -30,7 +27,7 @@ ms.lasthandoff: 03/28/2018
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
 * [UTWÓRZ INDEKS MAGAZYNU KOLUMN](https://msdn.microsoft.com/library/gg492153.aspx)
 * [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+* [UTWÓRZ BAZĘ DANYCH O ZAKRESIE POŚWIADCZEŃ](https://msdn.microsoft.com/library/mt270260.aspx)
 * [TWORZENIE ZEWNĘTRZNEGO ŹRÓDŁA DANYCH](https://msdn.microsoft.com/library/dn935022.aspx)
 * [CREATE EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/dn935026.aspx)
 * [TWORZENIE TABELI ZEWNĘTRZNEJ](https://msdn.microsoft.com/library/dn935021.aspx)
@@ -70,7 +67,7 @@ ms.lasthandoff: 03/28/2018
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Instrukcje zapytania
-* [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
+* [WYBIERZ](https://msdn.microsoft.com/library/ms189499.aspx)
 * [Z common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [Z wyjątkiem i INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 * [WYJAŚNIĆ](https://msdn.microsoft.com/library/mt631615.aspx)
@@ -113,14 +110,4 @@ ms.lasthandoff: 03/28/2018
 * [OTWÓRZ KLUCZ GŁÓWNY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby więcej TSQL informacje, zobacz [elementy języka T-SQL SQL magazynu danych](sql-data-warehouse-reference-tsql-language-elements.md).
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
+Aby uzyskać więcej informacje, zobacz [elementy języka T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md), i [widoki systemowe w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).

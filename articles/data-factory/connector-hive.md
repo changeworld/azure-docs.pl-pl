@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0b216b334f07a59f7c159bc804116f2190f3bf6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 758da9ceb86e26d373f71e4f89a47d67d1cefe2d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopiowanie danych z gałęzi przy użyciu fabryki danych Azure 
 
@@ -46,10 +46,10 @@ Hive połączone usługi, obsługiwane są następujące właściwości:
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **Hive** | Yes |
 | host | IP adres lub nazwę hosta serwera Hive, rozdzielone znakiem ";" na wielu hostach, (tylko wtedy, gdy serviceDiscoveryMode jest włączona).  | Yes |
-| port | Port TCP używany przez serwer gałęzi do nasłuchiwania dla połączeń klienta.  | Nie |
+| port | Port TCP używany przez serwer gałęzi do nasłuchiwania dla połączeń klienta. Jeśli łączysz się Azure HDInsights, należy określić port jako 443. | Yes |
 | Typ | Typ serwera Hive. <br/>Dozwolone wartości to: **HiveServer1**, **serwera HiveServer2**, **HiveThriftServer** | Nie |
 | thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
-| authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera Hive. <br/>Dozwolone wartości to: **anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| Typ authenticationType | Metoda uwierzytelniania używany do uzyskiwania dostępu do serwera Hive. <br/>Dozwolone wartości to: **anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | serviceDiscoveryMode | wartość true, aby wskazać, przy użyciu usługi dozorcy false nie.  | Nie |
 | zooKeeperNameSpace | Przestrzeń nazw na dozorcy, w których Hive Server 2 dodawania węzłów.  | Nie |
 | useNativeQuery | Określa, czy sterownik używa natywnego zapytania HiveQL lub konwertuje je na równoważne formularza w HiveQL.  | Nie |
@@ -78,8 +78,7 @@ Hive połączone usługi, obsługiwane są następujące właściwości:
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

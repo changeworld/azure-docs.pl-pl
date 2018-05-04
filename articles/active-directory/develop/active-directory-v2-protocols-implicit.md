@@ -1,30 +1,30 @@
 ---
-title: "Zabezpieczanie aplikacji jednej strony przy użyciu niejawnego przepływu v2.0 usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Tworzenie aplikacji sieci web przy użyciu usługi Azure AD w wersji 2.0 implementacji przepływu niejawnego dla aplikacji jednej strony."
+title: Zabezpieczanie aplikacji jednej strony przy użyciu niejawnego przepływu v2.0 usługi Azure AD | Dokumentacja firmy Microsoft
+description: Tworzenie aplikacji sieci web przy użyciu usługi Azure AD w wersji 2.0 implementacji przepływu niejawnego dla aplikacji jednej strony.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7ecc9de6a9eb910ac4c31290710530555441890d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: abd9471ca3f6dd5448eb5d969186f8200023683d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>Protokoły - źródła przy użyciu niejawnego przepływu w wersji 2.0
-Z punktem końcowym v2.0 można zalogować się użytkowników do aplikacji jednej strony z konta osobiste oraz pracy/służbowego firmy Microsoft.  Jednej strony i innych aplikacji JavaScript, które działają głównie w kilka interesujące będzie wymagał uwierzytelniania w przypadku krój przeglądarki:
+Z punktem końcowym v2.0 można zalogować się użytkowników do aplikacji jednej strony z konta osobiste oraz pracy/służbowego firmy Microsoft. Jednej strony i innych aplikacji JavaScript, które działają głównie w kilka interesujące będzie wymagał uwierzytelniania w przypadku krój przeglądarki:
 
-* Właściwości zabezpieczeń te aplikacje są znacznie różni się od tradycyjnych serwera aplikacji sieci web.
+* Właściwości zabezpieczeń te aplikacje są znacznie różni się od tradycyjnych na serwerze sieci web aplikacji.
 * Wiele serwerów autoryzacji & dostawców tożsamości nie obsługują żądania CORS.
 * Przekierowuje przeglądarki całą stronę od aplikacji stają się szczególnie inwazyjne środowiska użytkownika.
 
@@ -40,12 +40,15 @@ Jednak jeśli użytkownik nie chce używać biblioteki w jednej strony aplikacji
 > 
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
-Niejawne całego logowania przepływu wygląda następująco — poszczególne kroki opisano szczegółowo poniżej.
+Cały logowania przepływu niejawnego wygląda następująco — poszczególne kroki opisano szczegółowo poniżej.
 
 ![OpenId Connect ścieżek](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-the-sign-in-request"></a>Wyślij żądanie logowania
 Początkowo zalogowania się użytkownika do aplikacji, możesz wysłać [OpenID Connect](active-directory-v2-protocols-oidc.md) żądania autoryzacji i get `id_token` z punktem końcowym v2.0:
+
+> [!IMPORTANT]
+> Aby pomyślnie żądania tokenu identyfikator rejestracji aplikacji w [portal rejestracji](https://apps.dev.microsoft.com) musi mieć **[niejawne Przyznaj](active-directory-v2-protocols-implicit.md)** włączona dla klienta sieci Web.  Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "podana wartość parametru wejściowego 'response_type' nie jest dozwolona dla tego klienta. Oczekiwana wartość to "code" "
 
 ```
 // Line breaks for legibility only
@@ -62,23 +65,24 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Kliknij poniższe łącze, aby wykonać tego żądania. Po zalogowaniu, przeglądarka powinno nastąpić przekierowanie do `https://localhost/myapp/` z `id_token` na pasku adresu.
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/Authorize...</a>
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Dzierżawy |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości `common`, `organizations`, `consumers`i dzierżawców identyfikatorów.  Aby uzyskać więcej szczegółów, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
+| dzierżawa |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości `common`, `organizations`, `consumers`i dzierżawców identyfikatorów.  Aby uzyskać więcej szczegółów, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
 | client_id |Wymagane |Identyfikator aplikacji który portalu rejestracji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) przypisany do aplikacji. |
 | response_type |Wymagane |Musi zawierać `id_token` OpenID Connect logowaniu.  Mogą również obejmować response_type `token`. Przy użyciu `token` tutaj zezwala aplikacji na odbieranie token dostępu bezpośrednio z punktu końcowego autoryzacji bez konieczności drugie żądanie do punktu końcowego autoryzacji.  Jeśli używasz `token` response_type, `scope` parametr może zawierać wskazująca, którego zasobu należy wystawić token dla zakresu. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania.  Go musi dokładnie pasować redirect_uris, który został zarejestrowany w portalu, z wyjątkiem musi być zakodowane w adresie url. |
-| Zakres |Wymagane |Rozdzieloną spacjami listę zakresów.  Dla protokołu OpenID Connect, musi zawierać zakres `openid`, co przekłada się uprawnienie "Logowanie się w" w zgody interfejsu użytkownika.  Opcjonalnie możesz uwzględnienie `email` lub `profile` [zakresy](active-directory-v2-scopes.md) do uzyskania dostępu do danych użytkownika dodatkowe.  Można również użyć innych zakresów w tym żądaniu żądanych zgodzić się na różnych zasobów. |
+| scope |Wymagane |Rozdzieloną spacjami listę zakresów.  Dla protokołu OpenID Connect, musi zawierać zakres `openid`, co przekłada się uprawnienie "Logowanie się w" w zgody interfejsu użytkownika.  Opcjonalnie możesz uwzględnienie `email` lub `profile` [zakresy](active-directory-v2-scopes.md) do uzyskania dostępu do danych użytkownika dodatkowe.  Można również użyć innych zakresów w tym żądaniu żądanych zgodzić się na różnych zasobów. |
 | response_mode |Zalecane |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do aplikacji.  Powinien być `fragment` dla niejawnego przepływu. |
 | state |Zalecane |Wartość zawarte w żądaniu zwracana w odpowiedzi tokenu.  Można go ciągiem zawartość, która ma.  Losowo generowany unikatową wartość jest zazwyczaj używana w przypadku [zapobieganie fałszerstwie żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12).  Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widok, które były na. |
 | Identyfikator jednorazowy |Wymagane |Wartość zawarte w żądaniu wygenerowany przez aplikację, która zostanie uwzględniona w wynikowej żądaniu jako oświadczenia.  Aplikacja może zweryfikować tę wartość, aby ograniczyć ataków powtórzeń tokenów.  Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
-| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.  W tej chwili jedynymi prawidłowymi wartościami są "login", "none", "wyrazić zgodę".  `prompt=login`Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja jednokrotnego.  `prompt=none`jest to odwrotność wzorca - zapewni, że użytkownik nie zobaczy jakiejkolwiek monitu interakcyjnego.  Jeśli żądanie nie można ukończyć w trybie dyskretnym za pośrednictwem jednokrotnego, punktu końcowego v2.0 spowoduje zwrócenie błędu.  `prompt=consent`wyzwoli okna dialogowego zgoda OAuth, po użytkownik się zaloguje, użytkownikowi uprawnienia do aplikacji. |
+| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.  W tej chwili jedynymi prawidłowymi wartościami są "login", "none", "wyrazić zgodę".  `prompt=login` Spowoduje to wymuszenie użytkownika o wprowadzenie poświadczeń w tym żądaniu Negacja jednokrotnego.  `prompt=none` jest to odwrotność wzorca - zapewni, że użytkownik nie zobaczy jakiejkolwiek monitu interakcyjnego.  Jeśli żądanie nie można ukończyć w trybie dyskretnym za pośrednictwem jednokrotnego, punktu końcowego v2.0 spowoduje zwrócenie błędu.  `prompt=consent` wyzwoli okna dialogowego zgoda OAuth, po użytkownik się zaloguje, użytkownikowi uprawnienia do aplikacji. |
 | login_hint |opcjonalne |Można wstępnie wypełnić pole adresu e-mail/nazwa użytkownika konta na stronie dla użytkownika, jeśli znasz swoją nazwę użytkownika wcześniejsze.  Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania już o wyodrębnić nazwy użytkownika z poprzedniej logowania przy użyciu `preferred_username` oświadczeń. |
-| domain_hint |opcjonalne |Może być jednym z `consumers` lub `organizations`.  Jeśli uwzględniona, pominie proces odnajdowania opartych na poczcie e-mail tego użytkownika odbywa się przez na stronie rejestracji v2.0, co może prowadzić do wymaga nieco więcej udoskonalone środowisko użytkownika.  Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania, wyodrębniając `tid` oświadczeń w żądaniu.  Jeśli `tid` oświadczeń, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`.  W przeciwnym razie użyj `domain_hint=organizations`. |
+| domain_hint |opcjonalne |Może być jednym z `consumers` lub `organizations`.  Jeśli uwzględniona, pominie proces odnajdowania opartych na poczcie e-mail tego użytkownika odbywa się przez na stronie rejestracji v2.0, co może prowadzić do wymaga nieco więcej udoskonalone środowisko użytkownika.  Aplikacje często użyje tego parametru podczas ponownego uwierzytelniania, wyodrębniając `tid` oświadczeń w żądaniu.  Jeśli `tid` oświadczeń, wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft konsumenta dzierżawcy), należy użyć `domain_hint=consumers`.  W przeciwnym razie użyj `domain_hint=organizations`. |
+
 
 W tym momencie użytkownik jest proszony o wprowadzenie poświadczeń i wykonania uwierzytelnienia.  Punktu końcowego v2.0 będzie również upewnij się, że użytkownik zgodził się na uprawnienia wskazanych w `scope` parametr zapytania.  Jeśli użytkownik zgodził się nie do dowolnego z tych uprawnień, poprosi użytkownika o zgodę na wymagane uprawnienia.  Szczegóły [uprawnień, zgody i aplikacje wielodostępne znajdują się w tym miejscu](active-directory-v2-scopes.md).
 
@@ -99,10 +103,10 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parametr | Opis |
 | --- | --- |
-| ' access_token ' |Jeśli uwzględniona `response_type` obejmuje `token`. Token dostępu do tej aplikacji, w tym przypadku dla programu Microsoft Graph.  Token dostępu nie powinna być zdekodowany lub w przeciwnym razie inspekcji, może być traktowana jako ciąg z ogólnym opisem. |
-| token_type |Jeśli uwzględniona `response_type` obejmuje `token`.  Zawsze będzie `Bearer`. |
-| expires_in |Jeśli uwzględniona `response_type` obejmuje `token`.  Określa liczbę sekund, przez które token jest prawidłowy na potrzeby buforowania. |
-| Zakres |Jeśli uwzględniona `response_type` obejmuje `token`.  Wskazuje zakresy, dla którego będzie obowiązywać ' access_token '. |
+| access_token |Jeśli uwzględniona `response_type` obejmuje `token`. Token dostępu do tej aplikacji, w tym przypadku dla programu Microsoft Graph. Token dostępu nie powinna być zdekodowany lub w przeciwnym razie inspekcji, może być traktowana jako ciąg z ogólnym opisem. |
+| token_type |Jeśli uwzględniona `response_type` obejmuje `token`. Zawsze będzie `Bearer`. |
+| expires_in |Jeśli uwzględniona `response_type` obejmuje `token`. Określa liczbę sekund, przez które token jest prawidłowy na potrzeby buforowania. |
+| scope |Jeśli uwzględniona `response_type` obejmuje `token`.  Wskazuje zakresy, dla którego będzie obowiązywać ' access_token '. |
 | żądaniu |Żądaniu, żądany przez aplikację. Żądaniu służy do weryfikacji tożsamości użytkownika i rozpocząć sesję użytkownika.  Więcej informacji na temat id_tokens i ich zawartość znajduje się w [odwołania do tokenu punktu końcowego v2.0](active-directory-v2-tokens.md). |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikacja powinna Sprawdź, czy wartości stan żądania i odpowiedzi są identyczne. |
 
@@ -166,11 +170,11 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Dzierżawy |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości `common`, `organizations`, `consumers`i dzierżawców identyfikatorów.  Aby uzyskać więcej szczegółów, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
-| client_id |Wymagane |Identyfikator aplikacji który portalu rejestracji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) przypisany do aplikacji. |
+| dzierżawa |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości `common`, `organizations`, `consumers`i dzierżawców identyfikatorów.  Aby uzyskać więcej szczegółów, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
+| client_id |Wymagane |Identyfikator aplikacji, która portalu rejestracji ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) przypisany do aplikacji. |
 | response_type |Wymagane |Musi zawierać `id_token` OpenID Connect logowaniu.  Może również obejmować innych response_types, takich jak `code`. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania.  Go musi dokładnie pasować redirect_uris, który został zarejestrowany w portalu, z wyjątkiem musi być zakodowane w adresie url. |
-| Zakres |Wymagane |Rozdzieloną spacjami listę zakresów.  Uzyskiwania tokenów, Uwzględnij wszystkie [zakresy](active-directory-v2-scopes.md) wymagają zasobu zainteresowań. |
+| scope |Wymagane |Rozdzieloną spacjami listę zakresów.  Uzyskiwania tokenów, Uwzględnij wszystkie [zakresy](active-directory-v2-scopes.md) wymagają zasobu zainteresowań. |
 | response_mode |Zalecane |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do aplikacji.  Może być jednym z `query`, `form_post`, lub `fragment`. |
 | state |Zalecane |Wartość zawarte w żądaniu zwracana w odpowiedzi tokenu.  Można go ciągiem zawartość, która ma.  Losowo generowany unikatową wartość jest zwykle używany zapobiegania fałszerstwie żądania międzywitrynowego.  Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widok, które były na. |
 | Identyfikator jednorazowy |Wymagane |Wartość zawarte w żądaniu wygenerowany przez aplikację, która zostanie uwzględniona w wynikowej żądaniu jako oświadczenia.  Aplikacja może zweryfikować tę wartość, aby ograniczyć ataków powtórzeń tokenów.  Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
@@ -194,11 +198,11 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parametr | Opis |
 | --- | --- |
-| ' access_token ' |Token, który żądanej aplikacji. |
+| access_token |Token, który żądanej aplikacji. |
 | token_type |Zawsze będzie `Bearer`. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikacja powinna Sprawdź, czy wartości stan żądania i odpowiedzi są identyczne. |
 | expires_in |Jak długo token dostępu jest nieprawidłowy (w sekundach). |
-| Zakres |Token dostępu jest nieprawidłowy dla zakresów. |
+| scope |Token dostępu jest nieprawidłowy dla zakresów. |
 
 #### <a name="error-response"></a>Odpowiedzi na błąd
 Odpowiedzi na błędy mogą być również wysyłane do `redirect_uri` dzięki aplikacji można je odpowiednią obsługę.  W przypadku liczby `prompt=none`, będzie oczekiwany błąd:
@@ -216,8 +220,18 @@ error=user_authentication_required
 
 Jeśli ten błąd jest wyświetlany w żądaniu iframe, użytkownik interakcyjnie zalogować się ponownie do pobrania nowego tokenu.  Można obsłużyć tego przypadku w dowolnie wybrany sposób sens dla aplikacji.
 
+## <a name="validating-access-tokens"></a>Sprawdzanie poprawności tokenów dostępu
+
+Po otrzymaniu ' access_token ', upewnij się, że sprawdzanie poprawności podpisu tokenu, a także następujące oświadczeń. Można również sprawdzić dodatkowe oświadczeń w danym scenariuszu. 
+
+* **grupy odbiorców** oświadczeń, aby upewnić się, że token jest przeznaczona do aplikacji
+* **Wystawca** oświadczeń, aby sprawdzić, czy token został wystawiony do aplikacji przez punktu końcowego v2.0
+* **nie wcześniej niż** i **czas wygaśnięcia** oświadczeń, aby sprawdzić, czy token nie wygasł
+
+Aby uzyskać więcej informacji na temat oświadczenia w tokenie dostępu, zobacz [tokenu odwołania do punktu końcowego v2.0](active-directory-v2-tokens.md)
+
 ## <a name="refreshing-tokens"></a>Odświeżanie tokenów
-Zarówno `id_token`s i `access_token`s wygaśnie po krótkim czasie, więc aplikacji muszą być przygotowane, aby odświeżyć te tokeny okresowo.  Aby odświeżyć albo typ tokenu, można wykonać tego samego żądania ukryte iframe powyższego przy użyciu `prompt=none` parametr do kontrolowania zachowania usługi Azure AD.  Jeśli chcesz otrzymywać nową `id_token`, należy użyć `response_type=id_token` i `scope=openid`, a także `nonce` parametru.
+Niejawne Przyznaj nie zapewnia tokenów odświeżania.  Zarówno `id_token`s i `access_token`s wygaśnie po krótkim czasie, więc aplikacji muszą być przygotowane, aby odświeżyć te tokeny okresowo.  Aby odświeżyć albo typ tokenu, można wykonać tego samego żądania ukryte iframe powyższego przy użyciu `prompt=none` parametr do kontrolowania zachowania usługi Azure AD.  Jeśli chcesz otrzymywać nową `id_token`, należy użyć `response_type=id_token` i `scope=openid`, a także `nonce` parametru.
 
 ## <a name="send-a-sign-out-request"></a>Wyślij żądanie logowania
 OpenIdConnect `end_session_endpoint` umożliwia aplikacji wysyłanie żądań do punktu końcowego v2.0, aby zakończyć sesję użytkownika i wyczyszczenie plików cookie, ustawione przez punktu końcowego v2.0.  Pełni logowania użytkownika z aplikacji sieci web, aplikacji należy zakończyć sesję użytkownika (zwykle przez wyczyszczenie pamięci podręcznej tokenu lub usunięcie plików cookie), a następnie przekierować przeglądarkę, aby:
@@ -228,5 +242,5 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Dzierżawy |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości `common`, `organizations`, `consumers`i dzierżawców identyfikatorów.  Aby uzyskać więcej szczegółów, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
+| dzierżawa |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości `common`, `organizations`, `consumers`i dzierżawców identyfikatorów.  Aby uzyskać więcej szczegółów, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
 | post_logout_redirect_uri | Zalecane | Adres URL, który użytkownik powinien nastąpić powrót do po zakończeniu Wyloguj. Ta wartość musi pasować przekierowania zarejestrowanych identyfikatorów URI dla aplikacji. Jeśli nie zostanie uwzględniony, zostanie wyświetlony komunikat ogólny przez punkt końcowy w wersji 2.0. |

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 30013c0bd8ded31ccaf3cdc142bbf8dc6b375031
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Informacje o wersji zestawu Azure SDK dla programu .NET 2.9
 
@@ -41,16 +41,16 @@ W tej wersji zostały wprowadzone żadne zmiany podziału Azure SDK 2.9. Nie ma 
  
 ### <a name="windows-server-2016-virtual-machines"></a>Maszyny wirtualne systemu Windows Server 2016
 
-- Program Visual Studio teraz obsługuje wdrażanie usługi w chmurze do maszyn wirtualnych 5 rodziny systemu operacyjnego (Windows Server 2016). Istniejących usług w chmurze można zmienić ustawienia pod kątem nowych rodziny systemów operacyjnych. Podczas tworzenia nowych usług w chmurze, jeśli użytkownik chce utworzyć usługę przy użyciu platformy .net 4.6 lub nowszej, będzie on domyślnej usługi do 5 rodziny systemu operacyjnego.  Aby uzyskać więcej informacji, możesz przejrzeć [rodziny systemów operacyjnych gościa obsługuje tabeli](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/).
+- Program Visual Studio teraz obsługuje wdrażanie usługi w chmurze do maszyn wirtualnych 5 rodziny systemu operacyjnego (Windows Server 2016). Istniejących usług w chmurze można zmienić ustawienia pod kątem nowych rodziny systemów operacyjnych. Podczas tworzenia nowych usług w chmurze, jeśli użytkownik chce utworzyć usługę przy użyciu platformy .net 4.6 lub nowszej, będzie on domyślnej usługi do 5 rodziny systemu operacyjnego.  Aby uzyskać więcej informacji, możesz przejrzeć [rodziny systemów operacyjnych gościa obsługuje tabeli](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/).
 
 #### <a name="known-issues"></a>Znane problemy
 
 - Azure .NET SDK 2.9.6 wprowadzone ograniczeń, która blokuje wdrożenie projektów przy użyciu nieobsługiwanego platformy .NET (np. .NET 4.6) do dowolnego rodziny systemów operacyjnych < 5. Udostępniono obejście [tutaj](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
 
  
-### <a name="azure-in-role-cache"></a>Azure In-Role Cache 
+### <a name="azure-in-role-cache"></a>Pamięć podręczna na roli Azure 
 
-- Obsługa kończy się na roli Azure w pamięci podręcznej w dniu 30 listopada 2016 r. Aby uzyskać więcej informacji, kliknij przycisk [tutaj](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
+- Obsługa kończy się na roli Azure w pamięci podręcznej w dniu 30 listopada 2016 r. Aby uzyskać więcej informacji, kliknij przycisk [tutaj](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
 
 ### <a name="azure-resource-manager-templates-for-azure-stack"></a>Stack — szablony usługi Azure Resource Manager dla platformy Azure
 

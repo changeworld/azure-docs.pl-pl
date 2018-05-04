@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -53,7 +53,7 @@ Pul zaplecza może składać się z kart sieciowych, zestawy skalowania maszyny 
 
 **Q. Jakich regionach jest dostępna w usłudze?**
 
-Brama aplikacji jest dostępna we wszystkich regionach Azure globalnego. Jest również dostępna w [chińskiej wersji platformy Azure](https://www.azure.cn/) i [Azure dla instytucji rządowych](https://azure.microsoft.com/en-us/overview/clouds/government/)
+Brama aplikacji jest dostępna we wszystkich regionach Azure globalnego. Jest również dostępna w [chińskiej wersji platformy Azure](https://www.azure.cn/) i [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/)
 
 **Q. Jest to dedykowane wdrożenia dla mojej subskrypcji lub jest on udostępniony przez klientów?**
 
@@ -178,6 +178,11 @@ Nie, ale brama aplikacji ma Metryka przepływności, który może służyć do a
 **Q. Czy ręczne skalowania w górę/dół Przyczyna Przestój?**
 
 Nie istnieje bez przestojów, wystąpienia są rozproszone na uaktualnienia domen i domen błędów.
+
+**Q. Czy opróżnianie połączenia obsługi bramy aplikacji?**
+
+Tak. Można skonfigurować połączenia opróżnianie zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Pozwoli to istniejących połączeń kontynuować do wysłania do ich poprzedniego miejsca docelowego, dopóki to połączenie jest zamykane albo można skonfigurować limit czasu wygaśnięcia. Należy pamiętać, opróżnianie oczekuje tylko dla bieżącego połączenia locie do ukończenia tego połączenia. Brama aplikacji nie są znane stanu sesji aplikacji.
+
 
 **Q. Czy mogę zmienić rozmiar wystąpienia z nośnika dużych bez zakłóceń**
 
@@ -329,4 +334,4 @@ Najczęstszą przyczyną jest dostęp do wewnętrznej bazy danych jest blokowana
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat bramy aplikacji, skorzystaj [wprowadzenie na bramie aplikacji](application-gateway-introduction.md).
+Aby dowiedzieć się więcej na temat bramy aplikacji, skorzystaj [co to jest brama aplikacji w usłudze Azure?](overview.md)

@@ -1,24 +1,19 @@
 ---
-title: "Indeksowanie magazynu tabel Azure z usługi Azure Search | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak indeksowanie danych przechowywanych w magazynie tabel platformy Azure z usługi Azure Search"
-services: search
-documentationcenter: 
+title: Indeksowanie magazynu tabel Azure z usługi Azure Search | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak indeksowanie danych przechowywanych w magazynie tabel platformy Azure z usługi Azure Search
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 1cc27411-d0cc-40ed-8aed-c7cb9ab402b9
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: eugenesh
-ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 6a065454e274abc9c032b0ac69f42dd72f059443
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Magazyn tabel Azure indeksu z usługi Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danych przechowywanych w magazynie tabel platformy Azure.
@@ -27,7 +22,7 @@ W tym artykule pokazano, jak używać usługi Azure Search do indeksowania danyc
 
 Można skonfigurować indeksator magazynu tabel Azure przy użyciu tych zasobów:
 
-* [Witryna Azure Portal](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Usługa Azure Search [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Usługa Azure Search [zestawu .NET SDK](https://aka.ms/search-sdk)
 

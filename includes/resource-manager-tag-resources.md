@@ -22,3 +22,10 @@
 7. Przypięty tag możesz wybrać z poziomu pulpitu nawigacyjnego, aby zobaczyć oznaczone nim zasoby.
 
      ![Przypinanie tagów do pulpitu nawigacyjnego](./media/resource-manager-tag-resources/show-pinned-tag.png)
+
+
+Do zbiorczego przypisanie tagów do wielu zasobów:
+1. Z dowolnej listy zasobów (np. wszystkich zasobów, zasobów grupy oveview);
+2. Zaznacz pole wyboru dla zasobów, którego chcesz przypisać tagu;
+3. Wybierz opcję tagi Przypisz;
+4. Dodaj nazwy i wartości, a następnie wybierz przypisanie.

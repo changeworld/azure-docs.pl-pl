@@ -1,27 +1,23 @@
 ---
-title: "moreLikeThis w usłudze Azure Search (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Wstępne dokumentacji dla funkcji moreLikeThis (wersja zapoznawcza) w interfejsu API REST usługi Azure Search."
-services: search
-documentationCenter: na
+title: moreLikeThis w usłudze Azure Search (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Wstępne dokumentacji dla funkcji moreLikeThis (wersja zapoznawcza) w interfejsu API REST usługi Azure Search.
 authors: mhko
 manager: jlembicz
-editor: na
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/27/2016
 ms.author: nateko
-ms.openlocfilehash: 20f6a1166d47799f15275cb5b6a9ea4934ae57e2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 29d9a478ca2e91e658d7d0f52e7a193ba694bc16
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="morelikethis-in-azure-search-preview"></a>moreLikeThis w usłudze Azure Search (wersja zapoznawcza)
 
-`moreLikeThis=[key]`to parametr zapytania w [interfejsu API Search](https://docs.microsoft.com/rest/api/searchservice/search-documents). Określając `moreLikeThis` parametru w kwerendzie wyszukiwania, możesz znaleźć dokumenty, które są podobne do dokumentu, określony przez klucz dokumentu. Po wysłaniu żądania wyszukiwania z `moreLikeThis`, zapytanie jest generowany z warunkami wyszukiwania wyodrębnione z danego dokumentu, najlepiej opisujące tego dokumentu. Wygenerowane zapytanie jest następnie używany do przesyłania żądania wyszukiwania. Domyślnie zawartość wszystkich `searchable` pola są traktowane jako, chyba że `searchFields` parametr jest używany do ograniczania pola. `moreLikeThis` Parametru nie można używać z parametrem wyszukiwania `search=[string]`.
+`moreLikeThis=[key]` to parametr zapytania w [interfejsu API Search](https://docs.microsoft.com/rest/api/searchservice/search-documents). Określając `moreLikeThis` parametru w kwerendzie wyszukiwania, możesz znaleźć dokumenty, które są podobne do dokumentu, określony przez klucz dokumentu. Po wysłaniu żądania wyszukiwania z `moreLikeThis`, zapytanie jest generowany z warunkami wyszukiwania wyodrębnione z danego dokumentu, najlepiej opisujące tego dokumentu. Wygenerowane zapytanie jest następnie używany do przesyłania żądania wyszukiwania. Domyślnie zawartość wszystkich `searchable` pola są traktowane jako, chyba że `searchFields` parametr jest używany do ograniczania pola. `moreLikeThis` Parametru nie można używać z parametrem wyszukiwania `search=[string]`.
 
 ## <a name="examples"></a>Przykłady 
 

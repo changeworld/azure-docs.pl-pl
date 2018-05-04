@@ -16,7 +16,7 @@ ms.date: 11/21/2017
 ms.author: bradsev
 ms.openlocfilehash: bcbfac6cfc23ea7b745ddaf95ee267377fe7ee20
 ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
 ---

@@ -1,18 +1,18 @@
 ---
-title: "Zainstalować emptyDir woluminu w wystąpień kontenera platformy Azure"
-description: "Dowiedz się, jak można zainstalować woluminu emptyDir do udostępniania danych między kontenery w grupie kontenera w wystąpień kontenera platformy Azure"
+title: Zainstalować emptyDir woluminu w wystąpień kontenera platformy Azure
+description: Dowiedz się, jak można zainstalować woluminu emptyDir do udostępniania danych między kontenery w grupie kontenera w wystąpień kontenera platformy Azure
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 01b44f357d160a48852ee843cd8bebd138e95dfc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 89289a7a0bb5c486c662d528c5014bdbd8eebaca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Zainstalować emptyDir woluminu w wystąpień kontenera platformy Azure
 
@@ -41,6 +41,7 @@ Najpierw należy wypełnić `volumes` tablicy w grupie kontenera `properties` se
 
 Na przykład następujący szablon usługi Resource Manager tworzy grupę kontenera składające się z dwóch kontenerów, każdy z których instalacji *emptyDir* woluminu:
 
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
 Aby zapoznać się przykładem kontenera wystąpienia wdrożenia z szablonem usługi Azure Resource Manager, zobacz [wdrożenia kontenera wielu grup wystąpień kontenera Azure](container-instances-multi-container-group.md).

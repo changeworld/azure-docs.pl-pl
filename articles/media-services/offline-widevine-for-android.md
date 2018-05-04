@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie konta do trybu offline przesyłania strumieniowego zawartości Widevine chronione - Azure"
-description: "W tym temacie przedstawiono sposób konfigurowania konta usługi Azure Media Services do przesyłania strumieniowego w trybie offline z Widevine chronione zawartości."
+title: Konfigurowanie konta do trybu offline przesyłania strumieniowego zawartości Widevine chronione - Azure
+description: W tym temacie przedstawiono sposób konfigurowania konta usługi Azure Media Services do przesyłania strumieniowego w trybie offline z Widevine chronione zawartości.
 services: media-services
-keywords: "Android trybu Offline, ExoPlayer, Widevine DRM, myślnik"
-documentationcenter: 
+keywords: Android trybu Offline, ExoPlayer, Widevine DRM, myślnik
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b27ffcbf5749d612e63ba08df0adad72f357a83a
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="offline-widevine-streaming-for-android"></a>W trybie offline Widevine przesyłania strumieniowego dla systemu Android
 
@@ -113,7 +113,7 @@ Poniższa lista klas ułatwia trybu offline w zestawie SDK ExoPlayer dla systemu
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
 - library/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
 - library/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
-- library/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
+- Library/Core/src/main/Java/com/Google/android/exoplayer2/offline/Downloader.Java
 - library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
 
 Deweloperzy powinien odwoływać [przewodnik dewelopera ExoPlayer](https://google.github.io/ExoPlayer/guide.html) i odpowiadający mu [Blog deweloperów](https://medium.com/google-exoplayer) podczas tworzenia aplikacji. Google nie została zwolniona kodu pełni udokumentowane odwołania implementacji lub przykładowej aplikacji ExoPlayer obsługi w tej chwili Widevine w trybie offline, więc informacje są ograniczone do przewodnik dla deweloperów i blog. 
@@ -122,7 +122,7 @@ Deweloperzy powinien odwoływać [przewodnik dewelopera ExoPlayer](https://googl
 
 Niektóre starsze urządzeń z systemem Android, należy ustawić wartości dla następujących **policy_overrides** właściwości (zdefiniowany w [szablonu licencji Widevine](media-services-widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**, i **license_duration_seconds**. Alternatywnie można je ustawić na zero, co oznacza, że czas nieskończone/nieokreślony.  
 
-Wartości muszą ustawione w taki sposób, aby uniknąć błędów przepełnienie liczby całkowitej. Aby uzyskać więcej informacje o problemie Zobacz https://github.com/google/ExoPlayer/issues/3150 i https://github.com/google/ExoPlayer/issues/3112. <br/>Jeśli nie należy ustawiać wartości jawnie, bardzo dużej wartości **PlaybackDurationRemaining** i **LicenseDurationRemaining** zostanie przypisana, (na przykład 9223372036854775807, co jest maksymalną wartość dodatnią dla 64-bitowa liczba całkowita). W związku z tym licencji Widevine prawdopodobnie wygasłe i dlatego nie nastąpi odszyfrowywanie. 
+Wartości muszą ustawione w taki sposób, aby uniknąć błędów przepełnienie liczby całkowitej. Aby uzyskać więcej informacje o problemie, zobacz https://github.com/google/ExoPlayer/issues/3150 i https://github.com/google/ExoPlayer/issues/3112. <br/>Jeśli nie należy ustawiać wartości jawnie, bardzo dużej wartości **PlaybackDurationRemaining** i **LicenseDurationRemaining** zostanie przypisana, (na przykład 9223372036854775807, co jest maksymalną wartość dodatnią dla 64-bitowa liczba całkowita). W związku z tym licencji Widevine prawdopodobnie wygasłe i dlatego nie nastąpi odszyfrowywanie. 
 
 Ten problem nie występuje w systemie Android interfejs typu lizak 5.0 lub nowszym od systemu Android 5.0 jest pierwsza wersja systemu Android zostało zaprojektowane do zapewnienia pełnej obsługi ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) i platform 64-bitowym, podczas Android 4.4 KitKat pierwotnie przeznaczony do obsługi ARMv7 i 32-bitowych platform jako innych starszych wersji systemu Android.
 
@@ -148,7 +148,7 @@ Jeśli uaktualnienie przenośnych przeglądarki Chrome v62 (lub nowszej) na tele
 
 Powyżej aplikacja open source PWA został utworzony w środowisku Node.js. Jeśli chcesz udostępniać wersji na serwerze Ubuntu pamiętać następujące typowe problemy napotkano, uniemożliwiające odtwarzania:
 
-1. Problem CORS: Przykładowe wideo w przykładowej aplikacji znajduje się w https://storage.googleapis.com/biograf-video-files/videos/. Google skonfigurował CORS dla wszystkich ich próbki hostowanej w zasobniku Google magazynu w chmurze. Są one obsługiwane z nagłówki CORS, jawne określenie wpis CORS: https://biograf-155113.appspot.com (ich próbki obsługuje domeną, w których google) zapobieganie dostępowi przez inne lokacje. Jeśli spróbujesz, zostanie wyświetlony następujący błąd HTTP: nie można załadować https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Brak nagłówka "Access-Control-Allow-Origin" jest obecny dla żądanego zasobu. W związku z tym pochodzenia "https://13.85.80.81:8080" nie ma mieć dostęp. Jeśli odpowiedź nieprzezroczyste spełnia Twoje potrzeby, ustaw tryb żądania "nie-cors" można pobrać zasobu z CORS wyłączone.
+1. Problem CORS: Przykładowe wideo w przykładowej aplikacji znajduje się w https://storage.googleapis.com/biograf-video-files/videos/. Google skonfigurował CORS dla wszystkich ich próbki hostowanej w zasobniku Google magazynu w chmurze. Są one obsługiwane z nagłówki CORS, jawne określenie wpis CORS: https://biograf-155113.appspot.com (ich próbki obsługuje domeną, w których google) zapobieganie dostępowi przez inne lokacje. Jeśli spróbujesz, zostanie wyświetlony następujący błąd HTTP: nie można załadować https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Brak nagłówka "Access-Control-Allow-Origin" jest obecny dla żądanego zasobu. Pochodzenie "https://13.85.80.81:8080" nie jest w związku z tym prawa dostępu. Jeśli odpowiedź nieprzezroczyste spełnia Twoje potrzeby, ustaw tryb żądania "nie-cors" można pobrać zasobu z CORS wyłączone.
 2. Certyfikat problem: począwszy od programu Chrome v 58, EME dla Widevine wymaga protokołu HTTPS. Dlatego należy do hostowania przykładowej aplikacji przy użyciu protokołu HTTPS z X509 certyfikatu. Certyfikat testowy zwykle nie działa z powodu następujących wymagań: należy uzyskać certyfikat spełnia następujące wymagania minimalne:
     - Chrome i Firefox wymagane ustawienie alternatywna nazwa podmiotu SAN istnieje w certyfikacie
     - Certyfikat musi być zaufany urząd certyfikacji i certyfikat z podpisem programowanie nie działa.
@@ -172,7 +172,7 @@ Oznacza to, że Secure Token Service (STS) musi mieć informacji logiki i klient
 
 ### <a name="question"></a>Pytanie
 
-Widevine poziomów zabezpieczeń, w firmy Google [doc Przegląd architektury Widevine DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentacji definiuje trzech różnych poziomów ochrony. Jednak w [dokumentacja usługi Azure Media Services szablonu licencji Widevine](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview), opisano pięciu różnych poziomów ochrony. Co to jest relacja lub mapowanie między dwoma zestawami różnych poziomów zabezpieczeń?
+Widevine poziomów zabezpieczeń, w firmy Google [doc Przegląd architektury Widevine DRM](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentacji definiuje trzech różnych poziomów ochrony. Jednak w [dokumentacja usługi Azure Media Services szablonu licencji Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), opisano pięciu różnych poziomów ochrony. Co to jest relacja lub mapowanie między dwoma zestawami różnych poziomów zabezpieczeń?
 
 ### <a name="answer"></a>Odpowiedź
 
@@ -182,7 +182,7 @@ W firmy Google [Przegląd architektury Widevine DRM](https://storage.googleapis.
 2.  Poziom zabezpieczeń 2: Wykonuje kryptografii (ale nie wideo przetwarzania) w ramach TEE: odszyfrowane buforów są zwracane do domeny aplikacji i przetwarzane za pomocą oddzielnego wideo sprzętu lub oprogramowania. Na poziomie 2, jednak kryptograficznych informacje są nadal przetwarzane tylko w obrębie TEE.
 3.  Poziom zabezpieczeń 3 nie ma TEE na urządzeniu. Odpowiednie środki mogą chronić informacje kryptograficznych i odszyfrowania zawartości w systemie operacyjnym hosta. Implementacja poziom 3 mogą również obejmować aparatem kryptograficznych sprzętowej, ale który tylko zwiększa wydajność, nie zabezpieczeń.
 
-Jednocześnie, w [dokumentacja usługi Azure Media Services szablonu licencji Widevine](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview), właściwość security_level content_key_specs może mieć następujące pięciu różnych wartości (niezawodności wymagania dotyczące klienta dla odtwarzania):
+Jednocześnie, w [dokumentacja usługi Azure Media Services szablonu licencji Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), właściwość security_level content_key_specs może mieć następujące pięciu różnych wartości (niezawodności wymagania dotyczące klienta dla odtwarzania):
 
 1.  Programowa whitebox kryptograficznego jest wymagana.
 2.  Kryptograficznego oprogramowania i zaciemnionego dekodera jest wymagana.

@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3949b79c3729ecdc2dfdd6297a5f10852e061540
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4282333fc8c6f0835c451b781f70dfaed0697d96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-automation-dsc-overview"></a>Przegląd usługi Konfiguracja DSC automatyzacji Azure
 
@@ -25,7 +25,7 @@ Konfiguracja DSC automatyzacji Azure zapewnia kilka zalet w porównaniu z używa
 
 ### <a name="built-in-pull-server"></a>Serwerem ściągania wbudowane
 
-Udostępnia usługi Automatyzacja Azure [serwera ściągania usługi Konfiguracja DSC](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver) tak, aby węzły docelowe automatycznie otrzymują konfiguracje, dostosowywać się do żądanego stanu i raportować o swojej zgodności.
+Udostępnia usługi Automatyzacja Azure [serwera ściągania usługi Konfiguracja DSC](https://msdn.microsoft.com/powershell/dsc/pullserver) tak, aby węzły docelowe automatycznie otrzymują konfiguracje, dostosowywać się do żądanego stanu i raportować o swojej zgodności.
 Z serwerem ściągania wbudowanych w automatyzacji Azure eliminuje konieczność Konfigurowanie i konserwacja serwera ściągania.
 Automatyzacja Azure można kierować wirtualnych lub fizycznych systemu Windows lub Linux maszyny, w chmurze lub lokalnie.
 

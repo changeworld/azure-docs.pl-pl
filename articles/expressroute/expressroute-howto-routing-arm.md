@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/3/2018
 ms.author: osamaz, jaredr80
-ms.openlocfilehash: 8b16bb057da5aed6229d4228c87e7746ac029333
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d4f8f0e6c8fab5dfb4efcc4f1659ba90336c8bf0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Tworzenie i modyfikowanie komunikacji równorzędnej dla obwodu usługi ExpressRoute, przy użyciu programu PowerShell
 
@@ -86,7 +86,7 @@ Ta sekcja pomoże Ci tworzenie, get, aktualizowanie i usuwanie konfiguracji komu
   Zaloguj się do swojego konta.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Wybierz subskrypcję, aby utworzyć obwodu usługi expressroute.
@@ -104,7 +104,7 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  Odpowiedź jest podobny do poniższego przykładu:
+  Odpowiedź jest podobna do poniższego przykładu:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -213,7 +213,7 @@ Ta sekcja pomoże Ci tworzenie, get, aktualizowanie i usuwanie konfiguracji plat
   Zaloguj się do swojego konta.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Wybierz subskrypcję, aby utworzyć obwodu usługi expressroute.
@@ -231,7 +231,7 @@ Ta sekcja pomoże Ci tworzenie, get, aktualizowanie i usuwanie konfiguracji plat
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  Odpowiedź jest podobny do poniższego przykładu:
+  Odpowiedź jest podobna do poniższego przykładu:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -350,7 +350,7 @@ Ta sekcja pomoże Ci tworzenie, get, aktualizowanie i usuwanie konfiguracji plat
   Zaloguj się do swojego konta.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Wybierz subskrypcję, aby utworzyć obwodu usługi expressroute.
@@ -368,7 +368,7 @@ Ta sekcja pomoże Ci tworzenie, get, aktualizowanie i usuwanie konfiguracji plat
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  Odpowiedź jest podobny do poniższego przykładu:
+  Odpowiedź jest podobna do poniższego przykładu:
 
   ```
   Name                             : ExpressRouteARMCircuit

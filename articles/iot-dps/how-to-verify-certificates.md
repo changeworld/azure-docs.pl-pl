@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: dd54ca5a172bdb65b7781f2fb764b00f50e5df28
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb37ce7e61796494be0a9282afdc620b0ca5886a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak to zrobić dowód z posiadania dla certyfikatów urzędów certyfikacji X.509 przy użyciu usługi inicjowania obsługi urządzeń
 
@@ -58,7 +58,7 @@ Firma Microsoft udostępnia narzędzia i przykłady, które mogą pomóc Ci utwo
 
 - **Zestawu SDK usługi Azure IoT Hub C** zapewnia środowiska PowerShell (Windows) i skrypty powłoki systemowej (Linux), ułatwiające tworzenie urzędu certyfikacji i liścia certyfikatów do tworzenia aplikacji i przeprowadzanie przy użyciu kodu weryfikacyjnego dowód z posiadania. Możesz pobrać [pliki](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) istotne dla systemu do folderu roboczego i postępuj zgodnie z instrukcjami w [readme certyfikatów urzędu certyfikacji zarządzanie](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) do wykonania "dowodu posiadania" w certyfikacie urzędu certyfikacji. 
 - **Azure IoT Hub C# SDK** zawiera [grupy certyfikatu weryfikacji próbki](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), którego można użyć w celu "dowodu posiadania".
-- Możesz wykonać kroki opisane w [skryptów programu PowerShell do zarządzania certyfikatami X.509 podpisany przez urząd certyfikacji](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates) artykułu w dokumentacji Centrum IoT, w szczególności skrypt wymienionych w sekcji [dowodu posiadania programu Certyfikat X.509 urzędu certyfikacji](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
+- Możesz wykonać kroki opisane w [skryptów programu PowerShell do zarządzania certyfikatami X.509 podpisany przez urząd certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates) artykułu w dokumentacji Centrum IoT, w szczególności skrypt wymienionych w sekcji [dowodu posiadania programu Certyfikat X.509 urzędu certyfikacji](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
  
 > [!IMPORTANT]
 > Oprócz przeprowadzania dowód z posiadania, skrypty programu PowerShell i Bash wcześniej odnosiło się również pozwalają tworzyć certyfikaty główne, certyfikaty pośrednie i certyfikaty typu liść, które mogą służyć do uwierzytelniania i udostępnianie urządzeń. Te certyfikaty powinny być używane dla rozwoju tylko. Ich nie mogą być używane w środowisku produkcyjnym. 

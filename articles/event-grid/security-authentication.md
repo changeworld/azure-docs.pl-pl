@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: f97de4e93c9330206ed22c071d8ade0821bf6691
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b9ab8aaef091573d204b8de58115cc03707aa01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Zdarzenie siatki zabezpieczeń i uwierzytelniania 
 
@@ -64,7 +64,7 @@ Aby potwierdzić własność punktu końcowego, odsyłania kodu walidacji we wł
 
 Dodając parametry zapytania do adresu URL elementu webhook podczas tworzenia subskrypcji zdarzeń, można zabezpieczyć punkt końcowy elementu webhook. Wartość dla jednego z tych parametrów zapytania jako klucz tajny, takich jak [token dostępu](https://en.wikipedia.org/wiki/Access_token) którego elementu webhook można użyć do rozpoznania zdarzenia pochodzi od siatki zdarzeń z prawidłowe uprawnienia. Siatka zdarzeń będzie zawierać te parametry zapytań w każdym dostarczania zdarzeń do elementu webhook.
 
-Podczas edytowania subskrypcji zdarzeń, parametry zapytania nie zostanie wyświetlony ani zwracane, chyba że [--obejmują full-— adres url punktu końcowego](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) parametr jest używany w Azure [interfejsu wiersza polecenia](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest).
+Podczas edytowania subskrypcji zdarzeń, parametry zapytania nie zostanie wyświetlony ani zwracane, chyba że [--obejmują full-— adres url punktu końcowego](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) parametr jest używany w Azure [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
 Na koniec jest należy pamiętać, że siatki zdarzeń Azure obsługuje tylko punktów końcowych HTTPS elementu webhook.
 

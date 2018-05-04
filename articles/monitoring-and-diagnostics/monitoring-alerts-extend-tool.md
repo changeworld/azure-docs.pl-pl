@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0de596f454a1e79b1f5540854897bd15f8de88c4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Jak rozszerzyć alerty (Kopiuj) z pakietu OMS na platformie Azure
 Począwszy od **14 maja 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
@@ -221,7 +221,7 @@ I na koniec, jeśli wszystkie alerty w obszarze roboczym określonego już zapla
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów 
-Podczas rozszerzania alerty z usługą OMS na platformie Azure, może być okazjonalne problemy, które zapobiega tworzeniu niezbędne [grupy akcji](monitoring-action-groups.md). W takich przypadkach komunikat o błędzie będzie wyświetlana w portalu OMS za pośrednictwem Baner w sekcji alertów i wywołanie GET gotowe do interfejsu API.
+Podczas rozszerzania alerty z usługą OMS na platformie Azure, może być okazjonalne problem, który uniemożliwia tworzenie niezbędne system [grupy akcji](monitoring-action-groups.md). W takich przypadkach komunikat o błędzie będzie wyświetlana w portalu OMS za pośrednictwem Baner w sekcji alertów i wywołanie GET gotowe do interfejsu API.
 
 Poniżej przedstawiono procedurę korygowania dla każdego błędu:
 1. **Błąd: Subskrypcji nie jest zarejestrowany do korzystania z przestrzeni nazw "w elemencie microsoft.insights"**: ![strony portalu ustawienia alertu OMS komunikat o błędzie rejestracji](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
@@ -236,6 +236,14 @@ Poniżej przedstawiono procedurę korygowania dla każdego błędu:
     a. Gdy zakres blokady jest włączona, ograniczanie żadnych nowych zmian w subskrypcji lub grupy zasobów zawierającej obszaru roboczego analizy dzienników (OMS); system nie może rozszerzyć alerty (Kopiuj) na platformie Azure i tworzenie grup niezbędnych działań.
     
     b. Aby rozwiązać, należy usunąć *tylko do odczytu* blokady w grupie zasobów lub subskrypcji zawierający obszar roboczy; przy użyciu portalu Azure, programu Powershell, interfejsu wiersza polecenia Azure lub interfejsu API. Aby dowiedzieć się więcej, Wyświetl artykuł na [użycia zasobów blokady](../azure-resource-manager/resource-group-lock-resources.md). 
+    
+    c. Po rozpoznaniu zgodnie z harmonogramem kroki przedstawione w artykule, OMS rozszerzenie alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie; bez konieczności żadnej akcji ani inicjowania.
+
+3. **Błąd: Zasady są obecne na poziomie grupy zasobów subskrypcji**: ![strony portalu ustawienia alertu OMS komunikat o błędzie zasad](./media/monitor-alerts-extend/ErrorPolicy.png)
+
+    a. Gdy [zasad usługi Azure](../azure-policy/azure-policy-introduction.md) jest stosowana, ograniczanie wszystkich nowych zasobów w subskrypcji lub grupy zasobów zawierającej obszaru roboczego analizy dzienników (OMS); system nie może rozszerzyć alerty (Kopiuj) na platformie Azure i tworzenie grup niezbędnych działań.
+    
+    b. Aby rozwiązać, należy edytować zasady powodują *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* błąd, który uniemożliwia tworzenie nowych zasobów w grupie zasobów lub subskrypcji zawierający obszar roboczy. Przy użyciu portalu Azure, programu Powershell, interfejsu wiersza polecenia Azure lub interfejsu API; można przeprowadzić inspekcję działań, aby znaleźć odpowiednie zasady, powoduje błąd. Aby dowiedzieć się więcej, Wyświetl artykuł na [wyświetlanie działania dzienników inspekcji akcje](../azure-resource-manager/resource-group-audit.md). 
     
     c. Po rozpoznaniu zgodnie z harmonogramem kroki przedstawione w artykule, OMS rozszerzenie alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie; bez konieczności żadnej akcji ani inicjowania.
 

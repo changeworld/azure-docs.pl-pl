@@ -1,8 +1,8 @@
 ---
-title: "Profil aplikacji sieci web na platformie Azure za pomocą profilera Insights aplikacji | Dokumentacja firmy Microsoft"
-description: "Określ ścieżkę aktywną w kodzie serwera sieci web z profilera niskiego poziomu."
+title: Profil aplikacji sieci web na platformie Azure za pomocą profilera Insights aplikacji | Dokumentacja firmy Microsoft
+description: Określ ścieżkę aktywną w kodzie serwera sieci web z profilera niskiego poziomu.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c65ef9141898369b8fcadd4c52972b767aca7cfe
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a4b1e30f1350a5e5886899069b05b8b87bb7000d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil aplikacji sieci web platformy Azure na żywo za pomocą usługi Application Insights
 
@@ -63,7 +63,7 @@ Aby uzyskać informacje, zobacz [wersji zapoznawczej profilera zasoby obliczenio
 
 ## <a name="view-profiler-data"></a>Wyświetlanie danych profilera
 
-Upewnij się, że aplikacja odbiera ruch. Jeśli przeprowadzasz eksperyment, można wygenerować żądania do używania aplikacji sieci web [test wydajności, Application Insights](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test). Jeśli włączono nowo profilera, można uruchomić testu obciążenia krótkich przez 15 minut, które powinien wygenerować ślady profilera. Gdyby profilera już włączone przez pewien czas uruchamia keep pamiętać, że Profiler losowo uruchamia dwa razy co godzinę i czas trwania dwie minuty każdej aktualizacji. Zalecamy najpierw uruchamiania testu obciążenia przez jedną godzinę do upewnij się, że możesz uzyskać przykładowe ślady profilera.
+Upewnij się, że aplikacja odbiera ruch. Jeśli przeprowadzasz eksperyment, można wygenerować żądania do używania aplikacji sieci web [test wydajności, Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Jeśli włączono nowo profilera, można uruchomić testu obciążenia krótkich przez 15 minut, które powinien wygenerować ślady profilera. Gdyby profilera już włączone przez pewien czas uruchamia keep pamiętać, że Profiler losowo uruchamia dwa razy co godzinę i czas trwania dwie minuty każdej aktualizacji. Zalecamy najpierw uruchamiania testu obciążenia przez jedną godzinę do upewnij się, że możesz uzyskać przykładowe ślady profilera.
 
 Gdy aplikacja otrzyma część ruchu, przejdź do **wydajności** okienku wybierz **wykonać akcje** wyświetlić ślady profilera, a następnie wybierz **ślady profilera** przycisku.
 
@@ -311,7 +311,7 @@ Jednak ta metoda jest stosunkowo prosta, Uwzględnij następujące kwestie:
 
 * Funkcja zadania Web Job aplikacji sieci Web jest unikatowa. Po uruchomieniu zadania sieci web gwarantuje to, że proces ma tego samego zmienne środowiskowe i ustawienia aplikacji, które będą miały witryny sieci Web. Oznacza to, że nie należy do przekazania klucza Instrumentacji z wiersza polecenia profilera. Profiler powinien wybierz klucza instrumentacji ze środowiska. Jednak jeśli chcesz uruchomić profilera z pola deweloperów lub na komputerze poza aplikacje sieci Web, należy podać klucz instrumentacji. Możesz to zrobić, przekazując argument `--ikey <instrumentation-key>`. Ta wartość musi być zgodna klucza Instrumentacji używanej aplikacji. Dane wyjściowe dziennika profilera informuje, które ikey wprowadzenie profilera i czy wykryliśmy działania z tego klucza Instrumentacji podczas możemy zostały profilowania.
 
-* Zadania ręczne wyzwalanych sieci web mogą być wyzwalane za pośrednictwem sieci Web punktu zaczepienia. Ten adres URL można uzyskać przez kliknięcie prawym przyciskiem myszy zadanie sieci web na pulpicie nawigacyjnym, a następnie wyświetlić właściwości. Lub na pasku narzędzi wybierz **właściwości** po wybraniu zadanie sieci web w tabeli. Takie podejście zostanie otwarty nieskończone możliwości, takie jak wyzwalania profilera z planowaną CI/CD (np. programu VSTS) lub przypominać Flow firmy Microsoft (https://flow.microsoft.com/en-us/). Ostatecznie, wybór zależy od sposobu złożonych, która ma być Twojej *run.cmd* pliku (może to również *run.ps1* pliku), ale istnieje już elastyczność.
+* Zadania ręczne wyzwalanych sieci web mogą być wyzwalane za pośrednictwem sieci Web punktu zaczepienia. Ten adres URL można uzyskać przez kliknięcie prawym przyciskiem myszy zadanie sieci web na pulpicie nawigacyjnym, a następnie wyświetlić właściwości. Lub na pasku narzędzi wybierz **właściwości** po wybraniu zadanie sieci web w tabeli. Takie podejście otwiera nieskończone możliwości, takie jak wyzwalania profilera z planowaną CI/CD (np. programu VSTS) lub przypominać Flow firmy Microsoft (https://flow.microsoft.com/en-us/). Ostatecznie, wybór zależy od sposobu złożonych, która ma być Twojej *run.cmd* pliku (może to również *run.ps1* pliku), ale istnieje już elastyczność.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

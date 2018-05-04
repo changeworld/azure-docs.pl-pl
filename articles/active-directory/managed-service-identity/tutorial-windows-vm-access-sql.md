@@ -1,8 +1,8 @@
 ---
-title: "Umożliwia dostęp do usługi Azure SQL MSI maszyny Wirtualnej systemu Windows"
-description: "Samouczek, który przeprowadzi Cię przez proces otwieranie Azure SQL za pomocą systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)."
+title: Umożliwia dostęp do usługi Azure SQL MSI maszyny Wirtualnej systemu Windows
+description: Samouczek, który przeprowadzi Cię przez proces otwieranie Azure SQL za pomocą systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 863054ea8c69206d4068a35f09ec946aec67ea1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5459739e9d3469adc7dbf65c8dcc0de918ea0c73
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Umożliwia dostęp do usługi Azure SQL systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)
 
@@ -55,17 +55,13 @@ W tym samouczku utworzymy nową maszynę Wirtualną systemu Windows.  Można ró
 
 ## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej 
 
-MSI maszyny Wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie MSI informuje Azure w celu utworzenia tożsamości zarządzanego dla maszyny Wirtualnej. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: instalacji rozszerzenia maszyny Wirtualnej MSI w maszynie Wirtualnej, i umożliwia korzystanie z pliku MSI usługi Azure Resource Manager.
+MSI maszyny Wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie MSI informuje Azure w celu utworzenia tożsamości zarządzanego dla maszyny Wirtualnej. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: rejestrów maszyny Wirtualnej z usługi Azure Active Directory do utworzenia zarządzanej tożsamości, a konfiguruje tożsamości na maszynie Wirtualnej.
 
 1.  Wybierz **maszyny wirtualnej** chcesz włączyć MSI.  
 2.  Na pasku nawigacyjnym po lewej stronie kliknij **konfiguracji**. 
 3.  Zostanie wyświetlony **zarządzane tożsamość usługi**. Aby zarejestrować i włączyć MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz opcję nie. 
 4.  Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.  
     ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Jeśli chcesz sprawdzić i sprawdź, które rozszerzenia są na tej maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Jeśli MSI jest włączona, następnie **ManagedIdentityExtensionforWindows** pojawią się na liście.
-
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Przyznać uprawnienia maszyny Wirtualnej do bazy danych na serwerze Azure SQL
 
@@ -100,7 +96,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-Następnie dodaj MSI maszyny Wirtualnej do grupy.  Należy MSI **ObjectId**, który można pobrać użyciu programu Azure PowerShell.  Najpierw pobierz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu `Login-AzureRmAccount`, i uruchom następujące polecenia, aby:
+Następnie dodaj MSI maszyny Wirtualnej do grupy.  Należy MSI **ObjectId**, który można pobrać użyciu programu Azure PowerShell.  Najpierw pobierz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Następnie zaloguj się przy użyciu `Connect-AzureRmAccount`, i uruchom następujące polecenia, aby:
 - Upewnij się, że kontekst sesji ma ustawioną wartość odpowiednią subskrypcji platformy Azure, jeśli masz wiele migawek.
 - Sprawdź w nazw maszyn wirtualnych i grupy zasobów poprawne, wyświetlić listę dostępnych zasobów w Twojej subskrypcji platformy Azure.
 - Pobierz właściwości maszyny Wirtualnej MSI, przy użyciu wartości odpowiednich dla `<RESOURCE-GROUP>` i `<VM-NAME>`.
@@ -182,7 +178,7 @@ Kodu uruchomionego na maszynie wirtualnej można teraz uzyskać token z pliku MS
 
 Azure SQL natywnie obsługuje usługi Azure AD uwierzytelnianie, więc bezpośrednio może akceptować tokeny dostępu uzyskany przy użyciu Instalatora MSI.  Możesz użyć **token dostępu** metody tworzenia połączenia SQL.  To jest częścią usługi Azure SQL integracji z usługą Azure AD i różni się od podawania poświadczeń w parametrach połączenia.
 
-Oto przykład kodu .net otwarcia połączenia SQL przy użyciu tokenu dostępu.  Ten kod należy uruchomić na maszynie Wirtualnej, aby można było uzyskać dostępu do punktu końcowego maszyny Wirtualnej MSI.  **.NET framework 4.6** lub nowszego jest wymagany przy użyciu metody tokenu dostępu.  Zastąp wartości AZURE-SQL-SERVERNAME i bazy danych w związku z tym.  Należy pamiętać, że identyfikator zasobu dla bazy danych SQL Azure jest "https://database.windows.net/".
+Oto przykład kodu .net otwarcia połączenia SQL przy użyciu tokenu dostępu.  Ten kod należy uruchomić na maszynie Wirtualnej, aby można było uzyskać dostępu do punktu końcowego maszyny Wirtualnej MSI.  **.NET framework 4.6** lub nowszego jest wymagany przy użyciu metody tokenu dostępu.  Zastąp wartości AZURE-SQL-SERVERNAME i bazy danych w związku z tym.  Należy zwrócić uwagę identyfikator zasobu Azure SQL jest "https://database.windows.net/".
 
 ```csharp
 using System.Net;
@@ -193,7 +189,7 @@ using System.Web.Script.Serialization;
 //
 // Get an access token for SQL.
 //
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://database.windows.net/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://database.windows.net/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 string accessToken = null;
@@ -234,7 +230,7 @@ Można również szybko Testuj ustawienia pełnego bez konieczności zapisu i wd
 4.  Przy użyciu programu PowerShell w `Invoke-WebRequest`, Utwórz żądanie lokalnego punktu końcowego MSI, aby uzyskać dostęp do tokenu dla bazy danych SQL Azure.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://database.windows.net/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     Konwertuj odpowiedzi z obiektu JSON na obiekt programu PowerShell. 

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 04a8a8970df26638f2c19171864a3c4095ac7769
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b085a75acc4d7744587f0c93482435b5b8c28fc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilowanie konfiguracji DSC automatyzacji Azure
 
@@ -294,7 +294,7 @@ Konfiguracja węzła podpisem jest weryfikowany lokalnie w węźle zarządzanym 
 > [!NOTE]
 > Plik konfiguracji węzła nie może być większe niż 1 MB, aby umożliwić jego do zaimportowania do automatyzacji Azure.
 
-Znajdują się informacje dotyczące podpisywania konfiguracje węzłów w https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
+Znajdują się informacje dotyczące podpisywania konfiguracje węzłów w https://msdn.microsoft.com/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Importowanie konfiguracji węzła, w portalu Azure
 

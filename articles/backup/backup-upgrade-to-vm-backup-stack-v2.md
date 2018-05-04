@@ -1,6 +1,6 @@
 ---
-title: Uaktualnij do stosu kopii zapasowej maszyny Wirtualnej platformy Azure w wersji 2 | Dokumentacja firmy Microsoft
-description: Uaktualnij proces i często zadawane pytania dla stos kopii zapasowej maszyny Wirtualnej w wersji 2
+title: Uaktualnij do modelu wdrażania usługi Azure Resource Manager stosu kopii zapasowej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Uaktualnij proces i często zadawane pytania dla stos kopii zapasowej maszyny Wirtualnej, modelu wdrażania usługi Resource Manager
 services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhk
@@ -13,84 +13,84 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 224cd365e6b3ca4fd963b530dbaa289b763d53ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="upgrade-to-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowej maszyny wirtualnej w wersji 2
-Uaktualnienie kopii zapasowej stosu V2 maszyny wirtualnej (VM) zapewnia następujące udoskonalenia:
-* Zdolność do wyświetlania migawka wykonana w ramach zadania tworzenia kopii zapasowej był dostępny do odzyskiwania bez oczekiwania na zakończenie transferu danych.
-Zmniejszy jego czas oczekiwania na migawki mają być kopiowane do magazynu, aby mogło nastąpić wyzwolenie przywracania. Ponadto wyeliminuje to wymagania dodatkowe miejsce do magazynowania do wykonywania kopii zapasowych maszyn wirtualnych premium z wyjątkiem pierwszej kopii zapasowej.  
+# <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Uaktualnij do modelu wdrażania usługi Azure Resource Manager stosu kopii zapasowej maszyny Wirtualnej Azure
+Model wdrażania Menedżera zasobów dla uaktualnienia do stosu kopii zapasowej maszyny wirtualnej (VM) zapewnia następujące udoskonalenia:
+* Zdolność do wyświetlania migawek wykonanych w ramach zadania kopii zapasowej, który jest dostępny dla tej operacji bez oczekiwania na przesyłanie danych do zakończenia. Zmniejsza czas oczekiwania dla migawek można skopiować do magazynu przed wyzwalanie przywracania. Ponadto dzięki temu nie wymaganie dodatkowy magazyn do wykonywania kopii zapasowych maszyn wirtualnych, premium, z wyjątkiem pierwszej kopii zapasowej.  
 
-* Skrócenie czasu kopii zapasowej i przywracania zachowując migawki lokalnie przez 7 dni. 
+* Skrócenie czasu kopii zapasowej i przywracania zachowując migawki lokalnie na siedem dni.
 
-* Obsługa dysku rozmiarów do 4 TB.  
+* Obsługa dysku rozmiarów do 4 TB.
 
-* Możliwość używania konta magazynu oryginalne (nawet wtedy, gdy maszyna wirtualna ma dysków, które są rozproszone na kontach magazynu) podczas wykonywania przywracania niezarządzane maszyny wirtualnej. Spowoduje to przywrócenie szybciej w wielu różnych konfiguracji maszyny Wirtualnej. 
+* Możliwość użycia niezarządzane wirtualna oryginalnego konta magazynu podczas przywracania. Ta możliwość istnieje nawet wtedy, gdy maszyna wirtualna ma dysków, które są rozproszone na kontach magazynu. Przywraca pozwala szybciej w wielu różnych konfiguracji maszyny Wirtualnej.
     > [!NOTE] 
-    > To nie jest taka sama jak zastępowanie oryginalna maszyna wirtualna. 
-    > 
+    > Ta możliwość nie jest taka sama jak zastępowanie oryginalna maszyna wirtualna. 
     >
 
-## <a name="what-is-changing-in-the-new-stack"></a>Co to jest zmiana w nowego stosu?
-Już dziś zadanie tworzenia kopii zapasowej składa się z dwóch faz:
-1.  Utworzenia migawki maszyny Wirtualnej. 
-2.  Przenoszenie migawki maszyny Wirtualnej do magazynu kopii zapasowej Azure. 
+## <a name="whats-changing-in-the-new-stack"></a>Co to jest zmiana w nowego stosu?
+Obecnie zadanie tworzenia kopii zapasowej składa się z dwóch etapów:
+1.  Tworzenie migawki maszyny Wirtualnej. 
+2.  Przenoszenie migawki maszyny Wirtualnej w magazynie usługi Kopia zapasowa Azure. 
 
-Punkt odzyskiwania jest uważany za tworzone dopiero po zakończeniu fazy 1 i 2. W ramach nowego stosu punkt odzyskiwania jest tworzony natychmiast po ukończeniu tworzenia migawki. Można przywrócić z tego punktu przywracania przy użyciu tego samego przepływu przywracania. Można zidentyfikować tego punktu odzyskiwania w portalu Azure za pomocą "migawki" jako typu punktu odzyskiwania. Po migawki są przesyłane do magazynu, typ punktu odzyskiwania zmieni się na "Migawki i Magazyn". 
+Punkt odzyskiwania jest uważany za tworzone dopiero po zakończeniu fazy 1 i 2. W ramach nowego stosu punkt odzyskiwania jest tworzony zaraz po zakończeniu migawki. Można także przywrócić z tego punktu przywracania przy użyciu tego samego przepływu przywracania. Można zidentyfikować tego punktu odzyskiwania w portalu Azure za pomocą "snapshot" jako typu punktu odzyskiwania. Po przekazaniu migawki do magazynu, typ punktu odzyskiwania zmienia się na "migawki i magazynu." 
 
-![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej w wersji 2](./media/backup-azure-vms/instant-rp-flow.jpg) 
+![Zadanie tworzenia kopii zapasowej w maszyny Wirtualnej kopii zapasowej stosu usługi Resource Manager modelu wdrażania — magazynu i magazynu](./media/backup-azure-vms/instant-rp-flow.jpg) 
 
-Domyślnie migawki zostaną zachowane na siedem dni. Dzięki temu przywracania można wykonać szybciej z migawek skracając czas potrzebny do skopiowania danych z magazynu do konta magazynu klienta. 
+Domyślnie migawki są przechowywane przez 7 dni. Ta funkcja umożliwia przywracanie szybciej zakończenie z migawek. Zmniejsza czas, które są wymagane, aby skopiować dane z magazynu do konta magazynu klienta. 
 
 ## <a name="considerations-before-upgrade"></a>Zagadnienia dotyczące przed uaktualnieniem
-* To uaktualnienie jednokierunkową stos kopii zapasowej maszyny Wirtualnej. Tak wszystkie kopie zapasowe w przyszłości zostaną umieszczone w tym przepływie. Ponieważ **jest włączona na poziomie subskrypcji, wszystkie maszyny wirtualne przechodzą na ten przepływ**. Wszystkie nowe informacje będą funkcji będą oparte na tym samym stosie. Możliwość kontrolowania, które to na poziomie zasad pochodzi w przyszłych wersjach. 
-* Dla maszyn wirtualnych z dysków w warstwie premium, podczas pierwszej kopii zapasowej upewnij się, miejsca do magazynowania odpowiednikiem rozmiar maszyny wirtualnej jest dostępna w ramach konta magazynu, aż do zakończenia pierwszej kopii zapasowej. 
-* Ponieważ migawki są przechowywane lokalnie do zwiększania Tworzenie punktu odzyskiwania, a także aby przyspieszyć przywracania, zobaczysz kosztów magazynowania odpowiadający migawek w ciągu siedmiu dni.
-* Przyrostowe migawki są przechowywane jako stronicowych obiektów blob. Wszystkich klientów przy użyciu niezarządzanych dysków zostanie naliczona opłata za migawki 7 dni przechowywane na koncie magazynu lokalnego klienta. Zgodnie z bieżącym modelu cenowego nie ma żadnych kosztów dla klientów na dyskach zarządzanych.
-* Jeśli przeprowadzasz przywracania z migawki punktu odzyskiwania dla maszyny Wirtualnej — wersja Premium, zobaczysz lokalizacji magazyn tymczasowy używany, gdy maszyna wirtualna jest tworzony jako część przywracania. 
-* W przypadku kont magazynu premium migawki poświęcony natychmiastowe przywrócenie zajmie ilość 10 TB miejsca przydzielonego na koncie magazynu premium.
+* Uaktualnienie stos kopii zapasowej maszyny Wirtualnej jest jednym dwukierunkowego. Dlatego wszystkie kopie zapasowe, przejdź do tego przepływu. Ponieważ jest ona włączona na poziomie subskrypcji, wszystkie maszyny wirtualne przechodzą w tego przepływu. Wszystkie nowe informacje będą funkcji są oparte na tym samym stosie. Możliwość kontrolowania, które to na poziomie zasad pochodzi w przyszłych wersjach.
 
-## <a name="how-to-upgrade"></a>Jak uaktualnić?
+* Dla maszyn wirtualnych z dysków w warstwie premium podczas i do pierwszej kopii zapasowej zakończy, upewnij się, że ma wystarczającej ilości miejsca na koncie magazynu. Powinien być równy rozmiarowi maszyny Wirtualnej.
+
+* Migawki są przechowywane lokalnie do zwiększania Tworzenie punktu odzyskiwania, a także aby przyspieszyć przywracania. W związku z tym zostanie wyświetlony koszty magazynowania, które odpowiadają migawek w ciągu siedmiu dni.
+
+* Przyrostowe migawki są przechowywane jako stronicowych obiektów blob. Wszystkich klientów korzystających z niezarządzanego dyski są naliczane opłaty za siedem dni, które migawki są przechowywane na koncie magazynu lokalnego klienta. Zgodnie z bieżącym modelu cenowego należy nie ma żadnych kosztów dla klientów na dyskach zarządzanych.
+
+* Jeśli wykonaj Przywracanie z migawki punktu odzyskiwania maszyny Wirtualnej — wersja Premium, zobaczysz tymczasowej lokalizacji, która jest używana, gdy maszyna wirtualna zostanie utworzona jako część przywracania.
+
+* Dla kont premium magazynu migawek, które są pobierane dla natychmiastowe przywrócenie zajmują 10 TB przydzielonego miejsca.
+
+## <a name="upgrade"></a>Uaktualnienie
 ### <a name="the-azure-portal"></a>Portalu Azure
-Jeśli używasz przy użyciu portalu Azure zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu powiązane do obsługi dużych dysków i kopii zapasowej i przywracania poprawa prędkości.
+Jeśli używasz portalu Azure, zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu. To powiadomienie odnosi się do obsługi dużych dysków i poprawa prędkości kopii zapasowej i przywracania.
 
-![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej w wersji 2](./media/backup-azure-vms/instant-rp-banner.png) 
+![Zadanie tworzenia kopii zapasowej w modelu wdrażania Menedżera zasobów stosu kopii zapasowej maszyny Wirtualnej — Obsługa powiadomień](./media/backup-azure-vms/instant-rp-banner.png) 
 
 Aby otworzyć ekran uaktualniania do nowego stosu, wybierz banerze. 
 
-![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej w wersji 2](./media/backup-azure-vms/instant-rp.png) 
+![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej modelu wdrażania Menedżera zasobów--uaktualnienia](./media/backup-azure-vms/instant-rp.png) 
 
 ### <a name="powershell"></a>PowerShell
-Wykonaj następujące polecenia cmdlet z terminala PowerShell z podwyższonym poziomem uprawnień:
-1.  Zaloguj się do konta platformy Azure. 
+Uruchom następujące polecenia cmdlet w terminalu PowerShell z podwyższonym poziomem uprawnień:
+1.  Zaloguj się do konta platformy Azure: 
 
-```
-PS C:> Connect-AzureRmAccount
-```
+    ```
+    PS C:> Connect-AzureRmAccount
+    ```
 
 2.  Wybierz subskrypcję, który chcesz zarejestrować podglądu:
 
-```
-PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-```
+    ```
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
 
 3.  Zarejestruj tę subskrypcję w prywatnej wersji zapoznawczej:
 
-```
-PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
-```
+    ```
+    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    ```
 
-## <a name="verify-whether-the-upgrade-is-complete"></a>Sprawdź, czy uaktualnienie zostało ukończone
+## <a name="verify-that-the-upgrade-is-finished"></a>Sprawdzić, czy uaktualnienie jest zakończona
 W terminalu programu PowerShell z podwyższonym poziomem uprawnień uruchom następujące polecenie cmdlet:
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-Informacja zarejestrowane, subskrypcja jest uaktualniany do stos kopii zapasowej maszyny Wirtualnej w wersji 2. 
-
-
-
+Informacja "Zarejestrowanej", subskrypcja jest uaktualniany do modelu wdrażania usługi Resource Manager stosu kopii zapasowej maszyny Wirtualnej.

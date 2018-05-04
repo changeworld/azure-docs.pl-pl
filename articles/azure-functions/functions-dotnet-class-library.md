@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: e5310c59cbfe4080911768f29e1b8f635a611e63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1b04968f83271006240fc0e099175e9017574ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure dokumentacja dla deweloperów funkcje C#
 
@@ -44,7 +44,7 @@ W programie Visual Studio **usługi Azure Functions** szablonu projektu tworzy C
 > [!IMPORTANT]
 > Proces kompilacji tworzy *function.json* plik dla każdej funkcji. To *function.json* plik nie jest przeznaczony do edycji bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączenie tej funkcji, edytując ten plik. Aby wyłączyć funkcję, użyj [wyłączyć](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) atrybutu. Na przykład dodać aplikację logiczną ustawienie MY_TIMER_DISABLED i zastosować `[Disable("MY_TIMER_DISABLED")]` do funkcji. Następnie można włączyć i wyłączyć, zmieniając ustawienia aplikacji.
 
-### <a name="functionname-and-trigger-attributes"></a>Atrybuty FunctionName i wyzwalacza
+## <a name="methods-recognized-as-functions"></a>Metody rozpoznany jako funkcji
 
 W bibliotece klas, funkcja jest metodą statyczną z `FunctionName` i atrybut wyzwalacza, jak pokazano w poniższym przykładzie:
 
@@ -61,13 +61,24 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` Atrybut oznacza metodę jako punktu wejścia funkcji. Nazwa musi być unikatowa wewnątrz projektu.
+`FunctionName` Atrybut oznacza metodę jako punktu wejścia funkcji. Nazwa musi być unikatowa wewnątrz projektu. Szablony projektów często Utwórz metodę o nazwie `Run`, ale nazwa metody może być dowolną prawidłową nazwą metody C#.
 
 Atrybut wyzwalacza Określa typ wyzwalacza i wiąże parametr metody danych wejściowych. Funkcja przykład jest wyzwalany przez komunikatu w kolejce, a komunikat z kolejki jest przekazywany do metody w `myQueueItem` parametru.
 
-### <a name="additional-binding-attributes"></a>Atrybuty dodatkowe powiązania
+## <a name="method-signature-parameters"></a>Parametry podpisu — metoda
 
-Dodatkowe dane wejściowe i wyjściowe, powiązanie atrybuty mogą być używane. Poniższy przykład modyfikuje mieszanego przez dodanie wiązania kolejki danych wyjściowych. Funkcja zapisuje komunikat danych wejściowych w kolejce do nowego komunikatu w kolejce w innej kolejki.
+Podpis metody może zawierać parametrów innego niż ten używany z atrybutem wyzwalacza. Poniżej przedstawiono dodatkowe parametry, które mogą obejmować:
+
+* [Wejście i wyjście powiązania](functions-triggers-bindings.md) oznaczona przez dekoracji ich atrybutów.  
+* `ILogger` Lub `TraceWriter` parametr [rejestrowanie](#logging).
+* A `CancellationToken` parametr [łagodne zamykanie](#cancellation-tokens).
+* [Wyrażenia powiązania](functions-triggers-bindings.md#binding-expressions-and-patterns) parametry, aby przygotować wyzwolenia metadanych.
+
+Kolejność parametrów w sygnaturze funkcji nie ma znaczenia. Na przykład parametry wyzwalacza można umieścić przed lub po innych powiązań i można umieścić parametru rejestratora przed lub po wyzwalacza lub powiązania parametrów.
+
+### <a name="output-binding-example"></a>Przykład powiązania danych wyjściowych
+
+Poniższy przykład modyfikuje mieszanego przez dodanie wiązania kolejki danych wyjściowych. Funkcja zapisuje komunikat z kolejki wyzwala funkcji do nowego komunikatu w kolejce w innej kolejki.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -84,13 +95,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-### <a name="order-of-parameters"></a>Kolejność parametrów
+Artykuły odwołanie powiązania ([magazynu kolejek](functions-bindings-storage-queue.md), na przykład) opisano typy parametrów można używać z wyzwalacza, danych wejściowych lub wyjściowych powiązania atrybutów.
 
-Kolejność parametrów w sygnaturze funkcji nie ma znaczenia. Na przykład parametry wyzwalacza można umieścić przed lub po innych powiązań i można umieścić parametru rejestratora przed lub po wyzwalacza lub powiązania parametrów.
+### <a name="binding-expressions-example"></a>Przykład wyrażenia powiązania
 
-### <a name="binding-expressions"></a>Wyrażenia wiązania
-
-W parametrach konstruktora atrybut i parametry funkcji, można użyć wyrażenia wiązania. Na przykład następujący kod pobiera nazwę kolejki, aby monitorować z ustawień aplikacji i pobiera czas utworzenia kolejki komunikatów `insertionTime` parametru.
+Poniższy kod pobiera nazwę kolejki, aby monitorować z ustawień aplikacji i pobiera czas utworzenia kolejki komunikatów `insertionTime` parametru.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -107,9 +116,7 @@ public static class BindingExpressionsExample
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz **powiązania wyrażeń i wzorce** w [wyzwalaczy i powiązań](functions-triggers-bindings.md#binding-expressions-and-patterns).
-
-### <a name="conversion-to-functionjson"></a>Konwersja do function.json
+## <a name="autogenerated-functionjson"></a>Automatycznie wygenerowany function.json
 
 Proces kompilacji tworzy *function.json* pliku w folderze funkcji w folderze kompilacji. Jak wspomniano wcześniej, ten plik nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączenie tej funkcji, edytując ten plik. 
 
@@ -134,7 +141,7 @@ Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, 
 }
 ```
 
-### <a name="microsoftnetsdkfunctions-nuget-package"></a>Microsoft.NET.Sdk.Functions NuGet package
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 *Function.json* generowania plików jest wykonywane przez pakiet NuGet [Microsoft\.NET\.Sdk\.funkcji](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
@@ -169,7 +176,7 @@ Wśród `Sdk` zależności pakietów są wyzwalaczy i powiązań. Projekt 1.x od
 
 Kod źródłowy `Microsoft.NET.Sdk.Functions` jest dostępny w repozytorium GitHub [azure\-funkcje\-vs\-kompilacji\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
-### <a name="runtime-version"></a>Wersja środowiska uruchomieniowego
+## <a name="runtime-version"></a>Wersja środowiska uruchomieniowego
 
 Visual Studio będzie korzystać [Azure funkcje podstawowe narzędzia](functions-run-local.md#install-the-azure-functions-core-tools) do uruchomienia projektów funkcji. Podstawowe narzędzia jest interfejs wiersza polecenia do obsługi funkcji.
 

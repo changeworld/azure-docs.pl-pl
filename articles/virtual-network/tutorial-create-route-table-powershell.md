@@ -17,31 +17,31 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: f6f3bd2a9683daf5f523cc5cfe43e568fb508694
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2aca1de567dbd4d37daf7f9dd7c407b669396a47
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Kierować ruchem sieciowym z tabelą tras za pomocą programu PowerShell
 
-Azure automatycznie tras ruchu między wszystkich podsieci w sieci wirtualnej, domyślnie. Można utworzyć trasy do przesłonięcia Azure routing domyślny. Możliwość tworzenia niestandardowych tras jest przydatne, jeśli na przykład chcesz kierować ruchem między podsieciami przez urządzenie wirtualne sieci (NVA). W tym artykule dowiesz się, jak:
+Platforma Azure automatycznie domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Możliwość tworzenia niestandardowych tras jest przydatna, jeśli na przykład chcesz kierować ruchem między podsieciami za pomocą wirtualnego urządzenia sieciowego (NVA). W tym artykule omówiono sposób wykonywania następujących zadań:
 
-* Utwórz tabelę tras
-* Utwórz trasę
+* Tworzenie tabeli tras
+* Tworzenie trasy
 * Tworzenie sieci wirtualnej z wieloma podsieciami
-* Skojarz tabelę tras z podsiecią
-* Utwórz NVA, który przekierowuje ruch
-* Wdrażanie maszyn wirtualnych (VM) w różnych podsieciach
-* Kierować ruchem z jednej podsieci do drugiego za pomocą NVA
+* Kojarzenie tabeli tras z podsiecią
+* Tworzenie urządzenia NVA, które kieruje ruchem
+* Wdrażanie maszyn wirtualnych w różnych podsieciach
+* Kierowanie ruchem z jednej podsieci do drugiej za pomocą urządzenia NVA
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli użytkownik chce zainstalować i używać środowiska PowerShell lokalnie, w tym artykule wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
+Jeśli użytkownik chce zainstalować i używać środowiska PowerShell lokalnie, w tym artykule wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
 
-## <a name="create-a-route-table"></a>Utwórz tabelę tras
+## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
 Przed utworzeniem tabelę tras, Utwórz grupę zasobów o [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* dla wszystkich zasobów utworzone w tym artykule. 
 
@@ -58,7 +58,7 @@ $routeTablePublic = New-AzureRmRouteTable `
   -location EastUS
 ```
 
-## <a name="create-a-route"></a>Utwórz trasę
+## <a name="create-a-route"></a>Tworzenie trasy
 
 Tworzona jest trasa, pobierając obiekt tabeli tras z [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable), tworzona jest trasa z [AzureRmRouteConfig Dodaj](/powershell/module/azurerm.network/add-azurermrouteconfig), następnie zapisu konfiguracji tras na tabelę tras z [AzureRmRouteTable zestawu](/powershell/module/azurerm.network/set-azurermroutetable). 
 
@@ -74,7 +74,7 @@ Get-AzureRmRouteTable `
  | Set-AzureRmRouteTable
 ```
 
-## <a name="associate-a-route-table-to-a-subnet"></a>Skojarz tabelę tras z podsiecią
+## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
 Aby móc skojarzyć tabelę tras z podsiecią, należy utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną przy użyciu polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork* z prefiksem adresu *10.0.0.0/16*.
 
@@ -122,9 +122,9 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 Set-AzureRmVirtualNetwork
 ```
 
-## <a name="create-an-nva"></a>Utwórz NVA
+## <a name="create-an-nva"></a>Tworzenie urządzenia NVA
 
-NVA jest maszynę Wirtualną, która pełni funkcję sieci, takich jak routing, zapory lub Optymalizacja sieci WAN.
+Urządzenie NVA jest maszyną wirtualną, która realizuje funkcje sieci, takie jak routing, zapora lub optymalizacja sieci WAN.
 
 Przed utworzeniem maszyny Wirtualnej, Utwórz nowy interfejs sieciowy.
 
@@ -216,9 +216,9 @@ New-AzureRmVm `
   -Name "myVmPrivate"
 ```
 
-Maszyna wirtualna ma kilka minut na utworzenie. Nie Kontynuuj do następnego kroku, dopiero po utworzeniu maszyny Wirtualnej i Azure zwraca dane wyjściowe do programu PowerShell.
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie Kontynuuj do następnego kroku, dopiero po utworzeniu maszyny Wirtualnej i Azure zwraca dane wyjściowe do programu PowerShell.
 
-## <a name="route-traffic-through-an-nva"></a>Kierować ruchem za pośrednictwem NVA
+## <a name="route-traffic-through-an-nva"></a>Kierowanie ruchem za pośrednictwem urządzenia NVA
 
 Użyj [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) do zwrócenia publicznego adresu IP *myVmPrivate* maszyny Wirtualnej. Poniższy przykład zwraca publicznego adresu IP *myVmPrivate* maszyny Wirtualnej:
 
@@ -229,17 +229,17 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-Użyj następującego polecenia, aby utworzyć sesję pulpitu zdalnego z *myVmPrivate* maszyny Wirtualnej z komputera lokalnego. Zastąp `<publicIpAddress>` adres IP zwrócony z poprzednie polecenie.
+Użyj następującego polecenia, aby utworzyć sesję pulpitu zdalnego z *myVmPrivate* maszyny Wirtualnej z komputera lokalnego. Zastąp ciąg `<publicIpAddress>` adresem IP zwróconym w poprzednim poleceniu.
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-Otwórz pobrany plik RDP. Po wyświetleniu monitu wybierz **Connect**.
+Otwórz pobrany plik RDP. Po wyświetleniu monitu wybierz pozycję **Połącz**.
 
-Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny Wirtualnej (musisz wybrać **więcej opcji**, następnie **korzystała z innego konta**, aby określić poświadczenia zostały wprowadzone podczas tworzenia maszyny Wirtualnej), następnie wybierz **OK**. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz **tak** Aby nawiązać połączenie. 
+Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej (może okazać się konieczne wybranie pozycji **Więcej opcji** oraz **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej), a następnie wybierz przycisk **OK**. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz pozycję **Tak**, aby nawiązać połączenie. 
 
-W kolejnym kroku polecenia tracert.exe służy do testowania, routingu. Tracert używa kontrolki komunikat protokołu protokołu ICMP (Internet), której odmówiono przez zaporę systemu Windows. Włączanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie z programu PowerShell *myVmPrivate* maszyny Wirtualnej:
+W kolejnym kroku polecenia tracert.exe służy do testowania, routingu. Tracert używa kontrolki komunikat protokołu protokołu ICMP (Internet), której odmówiono przez zaporę systemu Windows. Wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPrivate*:
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
@@ -247,7 +247,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 Chociaż trasy śledzenia służy do testowania routingu w tym artykule, nie zaleca się stosowanie protokołu ICMP przez zaporę systemu Windows dla wdrożeń produkcyjnych.
 
-Włączone przesyłanie dalej IP w obrębie platformy Azure dla interfejsu sieciowego maszyny Wirtualnej w [fowarding włączyć IP](#enable-ip-forwarding). W ramach maszyny Wirtualnej systemu operacyjnego lub aplikacji działających w Maszynie wirtualnej, musi także do przesyłania dalej ruchu sieciowego. Włącz przesyłanie dalej IP w ramach systemu operacyjnego *myVmNva*.
+Przekazywanie dalej adresu IP w obrębie platformy Azure dla interfejsu sieciowego maszyny wirtualnej zostało włączone w sekcji [Włączanie przekazywania dalej adresu IP](#enable-ip-forwarding). W ramach maszyny wirtualnej system operacyjny lub aplikacja działająca na maszynie wirtualnej musi także móc przekazywać dalej ruch sieciowy. Włącz przesyłanie dalej IP w ramach systemu operacyjnego *myVmNva*.
 
 W wierszu polecenia na *myVmPrivate* pulpitu zdalnego do maszyny Wirtualnej *myVmNva*:
 
@@ -255,33 +255,33 @@ W wierszu polecenia na *myVmPrivate* pulpitu zdalnego do maszyny Wirtualnej *myV
 mstsc /v:myvmnva
 ```
     
-Aby włączyć przesyłanie dalej IP w ramach systemu operacyjnego, wprowadź następujące polecenie w programie PowerShell z *myVmNva* maszyny Wirtualnej:
+Aby włączyć przekazywanie dalej adresu IP w ramach systemu operacyjnego, wprowadź następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmNva*:
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
 ```
     
-Uruchom ponownie *myVmNva* maszynę Wirtualną, co spowoduje także odłączenie sesji usług pulpitu zdalnego.
+Uruchom ponownie maszynę wirtualną *myVmNva*, co spowoduje także odłączenie sesji pulpitu zdalnego.
 
-Podczas nadal połączony *myVmPrivate* maszynę Wirtualną, utwórz sesję pulpitu zdalnego do *myVmPublic* maszyny Wirtualnej, po *myVmNva* ponownego uruchomienia maszyny Wirtualnej:
+Mając nadal połączenie z maszyną wirtualną *myVmPrivate*, utwórz sesję pulpitu zdalnego z maszyną wirtualną *myVmPublic* po ponownym uruchomieniu maszyny wirtualnej *myVmNva*:
 
 ``` 
 mstsc /v:myVmPublic
 ```
     
-Włączanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie z programu PowerShell *myVmPublic* maszyny Wirtualnej:
+Wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPublic*:
 
 ```powershell
 New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
 
-Aby przetestować routingu ruchu sieciowego do *myVmPrivate* maszyny Wirtualnej z *myVmPublic* maszyny Wirtualnej, wprowadź następujące polecenie z programu PowerShell *myVmPublic* maszyny Wirtualnej:
+Aby przetestować routing ruchu sieciowego do maszyny wirtualnej *myVmPrivate* z maszyny wirtualnej *myVmPublic*, wprowadź następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPublic*:
 
 ```
 tracert myVmPrivate
 ```
 
-Odpowiedź jest podobny do poniższego przykładu:
+Odpowiedź jest podobna do poniższego przykładu:
     
 ```
 Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
@@ -293,17 +293,17 @@ over a maximum of 30 hops:
 Trace complete.
 ```
       
-Widać, że pierwszym przeskoku jest 10.0.2.4, czyli NVA prywatnego adresu IP. Drugi przeskok jest 10.0.1.4, prywatnego adresu IP *myVmPrivate* maszyny Wirtualnej. Trasy dodane do *myRouteTablePublic* tabeli tras i powiązanych z *publicznego* podsieci spowodował Azure, aby kierować ruchem przez analizę NVA, a nie bezpośrednio do *prywatnego* podsieci.
+Teraz możesz zobaczyć, że pierwszym przeskokiem jest 10.0.2.4, czyli prywatny adres IP urządzenia NVA. Drugim przeskokiem jest 10.0.1.4, prywatny adres IP maszyny wirtualnej *myVmPrivate*. Trasa dodana do tabeli tras *myRouteTablePublic* i powiązana z podsiecią *Public* spowodowała, że platforma Azure skierowała ruch przez urządzenie NVA, a nie bezpośrednio do podsieci *Private*.
 
-Zamykanie sesji usług pulpitu zdalnego do *myVmPublic* maszyny Wirtualnej, co spowoduje pozostawienie połączenie *myVmPrivate* maszyny Wirtualnej.
+Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPublic*. Połączenie z maszyną wirtualną *myVmPrivate* pozostanie nadal aktywne.
 
-Aby przetestować routingu ruchu sieciowego do *myVmPublic* maszyny Wirtualnej z *myVmPrivate* maszyny Wirtualnej, wprowadź następujące polecenie w wierszu polecenia *myVmPrivate* maszyny Wirtualnej:
+Aby przetestować routing ruchu sieciowego do maszyny wirtualnej *myVmPublic* z maszyny wirtualnej *myVmPrivate*, wprowadź następujące polecenie w wierszu polecenia na maszynie wirtualnej *myVmPrivate*:
 
 ```
 tracert myVmPublic
 ```
 
-Odpowiedź jest podobny do poniższego przykładu:
+Odpowiedź jest podobna do poniższego przykładu:
 
 ```
 Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
@@ -314,9 +314,9 @@ over a maximum of 30 hops:
 Trace complete.
 ```
 
-Widać, że ruch jest kierowany bezpośrednio z *myVmPrivate* maszyny Wirtualnej, aby *myVmPublic* maszyny Wirtualnej. Domyślnie ruch trasy Azure bezpośrednio między podsieciami.
+Widać, że ruch jest kierowany bezpośrednio z maszyny wirtualnej *myVmPrivate* do maszyny wirtualnej *myVmPublic*. Domyślnie platforma Azure kieruje ruch bezpośrednio między podsieciami.
 
-Zamykanie sesji usług pulpitu zdalnego do *myVmPrivate* maszyny Wirtualnej.
+Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -328,6 +328,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule możesz utworzyć tabelę tras i skojarzone go do podsieci. Prosta sieć urządzenie wirtualne, które kierowany ruch z publicznego podsieci do podsieci prywatnej została utworzona. Wdrażanie różnych wstępnie skonfigurowanej sieci wirtualnych urządzeń wykonujących funkcji sieciowych, takich jak zapory i Optymalizacja sieci WAN z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md) i [Zarządzanie tabelę tras](manage-route-table.md).
+W tym artykule możesz utworzyć tabelę tras i skojarzone go do podsieci. Prosta sieć urządzenie wirtualne, które kierowany ruch z publicznego podsieci do podsieci prywatnej została utworzona. Wdrażanie różnych wstępnie skonfigurowanej sieci wirtualnych urządzeń wykonujących funkcji sieciowych, takich jak zapory i Optymalizacja sieci WAN z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Aby dowiedzieć się więcej na temat routingu, zobacz [Routing overview (Omówienie routingu)](virtual-networks-udr-overview.md) i [Manage a route table (Zarządzanie tabelą tras)](manage-route-table.md).
 
-Podczas wdrażania można wielu zasobów platformy Azure w ramach sieci wirtualnej, zasobów w przypadku niektórych usług Azure PaaS nie można wdrożyć w sieci wirtualnej. Możesz nadal ograniczyć dostęp do zasobów pewnych usług Azure PaaS ruch tylko z podsieci sieci wirtualnej jednak. Aby dowiedzieć się więcej, zobacz temat [ograniczenie dostępu do sieci do zasobów PaaS](tutorial-restrict-network-access-to-resources-powershell.md).
+Chociaż możesz wdrożyć wiele zasobów platformy Azure w ramach sieci wirtualnej, zasobów dla niektórych usług PaaS platformy Azure nie można wdrożyć w sieci wirtualnej. Nadal możesz ograniczyć dostęp do zasobów niektórych usług PaaS platformy Azure tylko do ruchu z podsieci sieci wirtualnej. Aby dowiedzieć się więcej, zobacz temat [ograniczenie dostępu do sieci do zasobów PaaS](tutorial-restrict-network-access-to-resources-powershell.md).

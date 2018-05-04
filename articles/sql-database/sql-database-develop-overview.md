@@ -10,11 +10,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-database-application-development-overview"></a>Omówienie tworzenia aplikacji bazy danych SQL
 W tym artykule przedstawiono podstawowe zagadnienia, jakie powinien mieć na uwadze programista podczas pisania kodu nawiązującego połączenie z usługą Azure SQL Database.
@@ -29,12 +29,12 @@ Dostępne są przykłady kodu dla różnych języków programowania i platform p
 * Więcej informacji: [biblioteki połączeń dla bazy danych SQL i programu SQL Server](sql-database-libraries.md).
 
 ## <a name="tools"></a>Narzędzia 
-Możesz skorzystać z narzędzi open source, takich jak [cheetah](https://github.com/wunderlist/cheetah), [sql-cli](https://www.npmjs.com/package/sql-cli), [VS Code](https://code.visualstudio.com/). Ponadto usługa Azure SQL Database współpracuje z narzędziami firmy Microsoft, takimi jak [Visual Studio](https://www.visualstudio.com/downloads/) i [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Większą produktywność możesz osiągnąć, używając portalu zarządzania platformy Azure, programu PowerShell i interfejsów API REST.
+Można korzystać z narzędzia open source, takie jak [domy](https://github.com/wunderlist/cheetah), [interfejsu wiersza polecenia sql](https://www.npmjs.com/package/sql-cli), [kodzie VS](https://code.visualstudio.com/). Ponadto usługa Azure SQL Database współpracuje z narzędziami firmy Microsoft, takimi jak [Visual Studio](https://www.visualstudio.com/downloads/) i [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Większą produktywność możesz osiągnąć, używając portalu zarządzania platformy Azure, programu PowerShell i interfejsów API REST.
 
 ## <a name="resource-limitations"></a>Ograniczenia zasobów
 Usługa Azure SQL Database zarządza zasobami dostępnymi dla bazy danych przy użyciu dwóch różnych mechanizmów: nadzoru nad zasobami i wymuszania limitów.
 
-* Więcej informacji: [limity zasobów bazy danych SQL Azure](sql-database-service-tiers.md).
+* Więcej informacji: [zasobów jednostek DTU bazy danych SQL Azure na podstawie modelu limity](sql-database-dtu-resource-limits.md) i [limity modelu zasobów na podstawie vCore bazy danych SQL Azure (wersja zapoznawcza)](sql-database-vcore-resource-limits.md).
 
 ## <a name="security"></a>Bezpieczeństwo
 Usługa Azure SQL Database udostępnia zasoby na potrzeby ograniczania dostępu, ochrony danych i monitorowania działań w bazie danych SQL Database.

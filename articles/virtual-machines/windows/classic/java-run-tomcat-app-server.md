@@ -1,11 +1,10 @@
 ---
-title: Uruchom serwer aplikacji Java na klasycznej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: "W tym samouczku są używane zasoby utworzone za pomocą klasycznym modelu wdrażania i przedstawiono sposób tworzenia maszyny wirtualnej systemu Windows i jest skonfigurowana do uruchamiania Apache Tomcat serwer aplikacji."
+title: Uruchom serwer aplikacji Java na klasycznej maszyny Wirtualnej Azure
+description: W tym samouczku są używane zasoby utworzone za pomocą klasycznym modelu wdrażania i przedstawiono sposób tworzenia maszyny wirtualnej systemu Windows i jest skonfigurowana do uruchamiania Apache Tomcat serwer aplikacji.
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: erikre
-editor: 
+manager: mbaldwin
 tags: azure-service-management
 ms.assetid: d627aa09-f7d6-4239-8110-f8fc5111b939
 ms.service: virtual-machines-windows
@@ -13,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 04/11/2018
 ms.author: robmcm
-ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e13228a707e7dae4a4c2505154d01215c40b4716
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Jak uruchomić serwer aplikacji Java na maszynie wirtualnej utworzonej przy użyciu klasycznego modelu wdrażania
 > [!IMPORTANT]
@@ -84,7 +83,7 @@ Aby zainstalować w tym samouczku korzysta Tomcat jako serwera aplikacji Java.
 
 Otwieranie wiersza polecenia na maszynie wirtualnej, a następnie uruchamiając polecenie można uruchomić ręcznie Tomcat **net&nbsp;start&nbsp;Tomcat8**.
 
-Po uruchomieniu Tomcat, możesz uzyskać dostęp Tomcat przy użyciu adresu URL <adresem http://localhost: 8080> w przeglądarce maszyny wirtualnej.
+Po uruchomieniu Tomcat, możesz uzyskać dostęp Tomcat przy użyciu adresu URL <http://localhost:8080> w przeglądarce maszyny wirtualnej.
 
 Aby wyświetlić Tomcat uruchomiona z zewnętrznych komputerów, należy utworzyć punktu końcowego i otworzyć port.
 
@@ -113,7 +112,7 @@ Aby wyświetlić Tomcat uruchomiona z zewnętrznych komputerów, należy utworzy
 6. Dla **typ reguły**, wybierz pozycję **portu**, a następnie kliknij przycisk **dalej**.  
    ![Nowy port reguły dla ruchu przychodzącego][NewRulePort]
 7. Na **protokoły i porty** ekranu wybierz **TCP**, określ **8080** jako **określonych portów lokalnych**, a następnie kliknij przycisk **dalej**.  
-  ![Nowej reguły ruchu przychodzącego][NewRuleProtocol]
+  ![Nowej reguły ruchu przychodzącego ][NewRuleProtocol]
 8. Na **akcji** ekranu wybierz **zezwalały na połączenie**, a następnie kliknij przycisk **dalej**.
    ![Nowa akcja reguły dla ruchu przychodzącego][NewRuleAction]
 9. Na **profilu** ekranu, upewnij się, że **domeny**, **prywatnej**, i **publicznego** są zaznaczone, a następnie kliknij przycisk **dalej**.

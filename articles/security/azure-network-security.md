@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cc64ef8d820db6a072b708323eb110d62ed0a83c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
@@ -124,7 +124,7 @@ Platforma Azure udostępnia rozpoznawania nazw wewnętrznych dla maszyn wirtualn
 
 Można zaimplementować wiele sieci wirtualnych w każdym Azure [subskrypcji](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json) i Azure [region](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json). Każda sieć wirtualna jest odizolowana od innych sieci wirtualnych. Dla każdej sieci wirtualnej można:
 
--   Określ niestandardowe prywatnych przestrzeni adresów IP przy użyciu prywatnych i publicznych adresów (RFC 1918). Azure przypisuje zasoby podłączone do sieci wirtualnej prywatnego adresu IP z przestrzeni adresowej, możesz przypisać.
+-   Określenie niestandardowej prywatnej przestrzeni adresowej IP przy użyciu adresów publicznych i prywatnych (RFC 1918). Azure przypisuje zasoby podłączone do sieci wirtualnej prywatnego adresu IP z przestrzeni adresowej, możesz przypisać.
 
 -   Segment sieci wirtualnej do co najmniej jednej podsieci i przydzielić część przestrzeni adresowej sieci wirtualnej dla każdej podsieci.
 
@@ -160,17 +160,17 @@ Sieci wirtualne można podłączyć do [lokalnymi](https://docs.microsoft.com/az
 
 Sieci lokalnej można nawiązać sieć wirtualną przy użyciu dowolnej kombinacji następujących opcji:
 
-- **Punkt lokacja wirtualnej sieci prywatnej (VPN):** między jednym komputerze podłączone do sieci i sieci wirtualnej. Tego typu połączenia jest doskonałym, jeśli tylko rozpoczniesz pracę z platformą Azure, lub dla deweloperów, ponieważ wymaga żadnych zmian w istniejącej sieci. Połączenie korzysta z protokołu SSTP zapewnienie szyfrowaną komunikację przez Internet między Komputerem a sieci wirtualnej. Czas oczekiwania na VPN punkt lokacja jest nieprzewidywalne, ponieważ dane są przesyłane za pośrednictwem Internetu.
+- **Punkt lokacja wirtualnej sieci prywatnej (VPN):** między jednym komputerze podłączone do sieci i sieci wirtualnej. Ten typ połączenia jest świetny, jeśli dopiero rozpoczynasz pracę z platformą Azure. Jest też odpowiedni dla deweloperów, ponieważ wymaga niewielkich zmian w istniejącej sieci lub nie wymaga ich wcale. Połączenie korzysta z protokołu SSTP zapewnienie szyfrowaną komunikację przez Internet między Komputerem a sieci wirtualnej. Czas oczekiwania na VPN punkt lokacja jest nieprzewidywalne, ponieważ dane są przesyłane za pośrednictwem Internetu.
 
 - **Sieć VPN lokacja lokacja:** między urządzenie sieci VPN i bramy sieci VPN platformy Azure. Ten typ połączenia pozwala dowolnego zasobu lokalnego zezwalają na dostęp do sieci wirtualnej. Połączenie jest IPsec i IKE sieci VPN, który zapewnia szyfrowaną komunikację przez Internet między urządzeniem lokalnymi i bramy sieci VPN platformy Azure. Czas oczekiwania na połączenie lokacja lokacja jest nieoczekiwane, ponieważ dane są przesyłane za pośrednictwem Internetu.
 
-- **Usługa Azure ExpressRoute:** ustanowić między siecią a Azure, za pośrednictwem partner usługi ExpressRoute. To połączenie jest prywatne. Ruch nie przechodzą przez Internet. Czas oczekiwania na połączenie ExpressRoute jest przewidywalne, ponieważ ruch nie przechodzenie przez Internet. Aby dowiedzieć się więcej na temat wszystkich poprzednich opcji połączenia, przeczytaj [Diagram topologii połączenia](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Azure ExpressRoute:** połączenie nawiązywane pomiędzy siecią i platformą Azure za pośrednictwem partnera usługi ExpressRoute. To połączenie jest prywatne. Ruch nie przechodzą przez Internet. Czas oczekiwania na połączenie ExpressRoute jest przewidywalne, ponieważ ruch nie przechodzenie przez Internet. Aby dowiedzieć się więcej na temat wszystkich poprzednich opcji połączenia, przeczytaj [Diagram topologii połączenia](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Filtrowanie ruchu**
 
 Wystąpienia roli maszyny Wirtualnej i usługi w chmurze [ruch sieciowy](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) można użyć do filtrowania ruchu przychodzącego i wychodzącego przez źródłowy adres IP i port docelowy adres IP i portu i protokołu.
 
-Można filtrować ruch sieciowy między podsieciami przy użyciu jednego lub obu z następujących opcji:
+Ruch sieciowy pomiędzy podsieciami możesz filtrować przy użyciu jednej lub obu poniższych opcji:
 
 - **Sieciowe grupy zabezpieczeń (NSG):** każda grupa NSG może zawierać wiele reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego umożliwiające filtrować ruch źródłowy i docelowy adres IP, portu i protokołu. Grupy NSG można zastosować do każdej karty Sieciowej na maszynie wirtualnej. Można także zastosować grupy NSG do podsieci karty Sieciowej, lub innych zasobów platformy Azure jest połączona. Aby dowiedzieć się więcej na temat grup NSG, przeczytaj [sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
@@ -180,7 +180,7 @@ Można filtrować ruch sieciowy między podsieciami przy użyciu jednego lub obu
 
 Opcjonalnie można zastąpić domyślne Azure routingu, konfigurowanie własnego trasy lub użyj trasy protokołu BGP za pośrednictwem bramy sieci.
 
-Platforma Azure tworzy tabele tras, które umożliwiają zasoby podłączone do żadnej podsieci w dowolnej sieci wirtualnej do komunikowania się ze sobą, domyślnie. Można zaimplementować jedną lub obie z poniższych opcji, aby zastąpić trasy domyślne, które tworzy Azure:
+Platforma Azure tworzy tabele tras, które umożliwiają zasoby podłączone do żadnej podsieci w dowolnej sieci wirtualnej do komunikowania się ze sobą, domyślnie. Możesz zaimplementować jedną lub obie poniższe opcje, aby zastąpić domyślne trasy tworzone przez platformę Azure:
 
 - **Trasy zdefiniowane przez użytkownika:** tworzenia tabel tras niestandardowych trasy tego formantu, których ruch jest kierowany do dla każdej podsieci. Aby dowiedzieć się więcej na temat trasy zdefiniowane przez użytkownika, przeczytaj [trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 

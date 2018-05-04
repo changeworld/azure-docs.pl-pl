@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: db81baa5df13c8c5ca38e0e1ab2dffda1e31370a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobiegaj nieoczekiwany opłat rozliczenia Azure i kosztów zarządzania
 
@@ -29,7 +29,7 @@ Podczas tworzenia konta platformy Azure, istnieje kilka kwestii, które można w
 
 - Jeśli Twoja subskrypcja jest bezpłatna wersja próbna [programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure Otwórz (AIO) lub BizSpark, subskrypcja jest automatycznie wyłączana, gdy środki zostaną są używane. Dowiedz się więcej o [limitów wydatków](#spending-limit) Aby uniknąć subskrypcją unexpectantly wyłączone.
 
-- Jeśli użytkownik utworzył konto na [bezpłatne konto platformy Azure](https://azure.microsoft.com/en-us/free/), [można korzystać z niektórych najbardziej popularnych usług Azure bezpłatnie przez 12 miesięcy](billing-create-free-services-included-free-account.md). Wraz z zaleceniami wymienione poniżej, zobacz [uniknąć pobieranie opłaty łączone zgodnie z bezpłatne konto](billing-avoid-charges-free-account.md).
+- Jeśli użytkownik utworzył konto na [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/), [można korzystać z niektórych najbardziej popularnych usług Azure bezpłatnie przez 12 miesięcy](billing-create-free-services-included-free-account.md). Wraz z zaleceniami wymienione poniżej, zobacz [uniknąć pobieranie opłaty łączone zgodnie z bezpłatne konto](billing-avoid-charges-free-account.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Pobierz szacowane koszty przed dodaniem usług platformy Azure
 

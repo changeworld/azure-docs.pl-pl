@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: c01d18b17906a2b243a46241a6ec5c4b1d9ab8d9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 90a1a7c836c0cd75adf003e8f7cdad4f90f42f51
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie mapy usługi na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlania serwerów jako traktować ich — jako połączonych systemy, które dostarczają usług krytycznych. Mapy usług zawiera połączeń między serwerami, procesów i portów w dowolnej architekturze połączenia TCP z konfiguracja nie jest wymagane, innego niż instalacji agenta.
@@ -29,7 +29,7 @@ W tym artykule opisano konfigurowanie agentów mapy usługi i przechodzenia do s
 | Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.0 | 4125A88E60650FF168D6254AB4FCD14CDD3CC1C7B4CF168F3F5F3C1AF30895DD  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.1 | 09D56EF43703A350FF586B774900E1F48E72FE3671144B5C99BB1A494C201E9E |
 
 
 ## <a name="connected-sources"></a>Połączone źródła
@@ -120,7 +120,7 @@ Pliki programu Agent zależności są umieszczane w następujących katalogów:
 | Pliki dziennika | /var/OPT/Microsoft/Dependency-Agent/log |
 | Pliki konfiguracji | /etc/opt/microsoft/dependency-agent/config |
 | Pliki wykonywalne usługi | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
-| Pliki binarne magazynu | /var/opt/microsoft/dependency-agent/storage |
+| Pliki binarne magazynu | /var/OPT/Microsoft/Dependency-Agent/Storage |
 
 ## <a name="installation-script-examples"></a>Przykłady skryptów instalacji
 Aby łatwo wdrożyć agenta zależności na wiele serwerów na raz, pomaga za pomocą skryptu. W poniższych przykładach skrypt umożliwia pobranie i zainstalowanie agenta zależności w systemu Windows lub Linux.

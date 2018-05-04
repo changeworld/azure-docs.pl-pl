@@ -1,11 +1,11 @@
 ---
-title: "Znajdź następny przeskok z Azure sieci obserwatora następnego przeskoku - portalu Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak znaleźć, co to jest typ następnego przeskoku i adres ip za pomocą następnego przeskoku przy użyciu portalu Azure"
+title: Znajdź następny przeskok z Azure sieci obserwatora następnego przeskoku - portalu Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak znaleźć, co to jest typ następnego przeskoku i adres ip za pomocą następnego przeskoku przy użyciu portalu Azure
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 7b459dcf-4077-424e-a774-f7bfa34c5975
 ms.service: network-watcher
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 445ec8c7eeb8dd715d3778b44372d16666da7fb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-the-portal"></a>Sprawdź, jaki typ następnego przeskoku jest przy użyciu funkcji w następnym przeskoku w obserwatora sieciowego Azure przy użyciu portalu
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-check-next-hop-portal.md)
+> - [Azure Portal](network-watcher-check-next-hop-portal.md)
 > - [Program PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [Interfejs wiersza polecenia 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [Interfejs wiersza polecenia 2.0](network-watcher-check-next-hop-cli.md)
@@ -70,7 +70,7 @@ Po zakończeniu zadania znajdują się wyniki. Adres IP i typ urządzenia, któr
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* None
+* Brak
 
 Jeśli niestandardowa trasa został użyty do kierowania ten ruch, trasy zdefiniowane przez użytkownika (przez) wyświetlany jest również z wynikami.
 

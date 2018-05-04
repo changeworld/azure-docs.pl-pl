@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie źródeł danych w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Źródła danych do definiowania danych czy zbiera analizy dzienników z agentów i inne połączenie źródeł.  W tym artykule opisano pojęcia jak analizy dzienników korzysta ze źródeł danych, zawiera szczegółowe informacje o sposobach ich konfigurowania i zawiera podsumowanie dostępnych źródeł danych."
+title: Konfigurowanie źródeł danych w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Źródła danych do definiowania danych czy zbiera analizy dzienników z agentów i inne połączenie źródeł.  W tym artykule opisano pojęcia jak analizy dzienników korzysta ze źródeł danych, zawiera szczegółowe informacje o sposobach ich konfigurowania i zawiera podsumowanie dostępnych źródeł danych.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 04/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4237df0934d6191b77ff82c86a66585e72191ac9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-sources-in-log-analytics"></a>Źródła danych w analizy dzienników
 Analiza dzienników zbiera dane z połączonych źródeł i zapisuje go w obszarze roboczym analizy dzienników.  Dane są zbierane z każdej jest zdefiniowany przez źródła danych, które można skonfigurować.  Dane analizy dziennika są przechowywane jako zestaw rekordów.  Dla każdego źródła danych tworzy rekordy określonego typu z każdym typem o własny zestaw właściwości.
@@ -29,16 +29,19 @@ Analiza dzienników zbiera dane z połączonych źródeł i zapisuje go w obszar
 
 
 ## <a name="summary-of-data-sources"></a>Podsumowanie źródeł danych
-W poniższej tabeli wymieniono źródeł danych, które są aktualnie dostępne w analizy dzienników.  Każdy ma łącze do oddzielnym artykule podanie szczegółów dla tego źródła danych.
+W poniższej tabeli wymieniono źródeł danych, które są aktualnie dostępne w analizy dzienników.  Każdy ma łącze do oddzielnym artykule podanie szczegółów dla tego źródła danych.   Zawiera także informacje o ich metody i częstotliwości zbierania danych do analizy dzienników.  Do identyfikowania różnych rozwiązań dostępnych i zrozumieć wymagania przepływu i połączenia danych dla rozwiązań w zakresie zarządzania różnych, można użyć informacje w tym artykule. Wyjaśnień kolumn, zobacz [szczegóły zbierania danych w celu rozwiązania do zarządzania na platformie Azure](../monitoring/monitoring-solutions-inventory.md).
 
-| Źródło danych | Typ zdarzenia | Opis |
-|:--- |:--- |:--- |
-| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) |\<Nazwa_dziennika\>_CL |Pliki tekstowe agentów systemu Windows lub Linux, zawierające informacje w dzienniku. |
-| [Dzienniki zdarzeń systemu Windows](log-analytics-data-sources-windows-events.md) |Wydarzenie |Zdarzenia zebrane z komputerów z systemem Windows logowania zdarzeń. |
-| [Liczniki wydajności systemu Windows](log-analytics-data-sources-performance-counters.md) |Wydajności |Liczniki wydajności są zbierane z komputerów z systemem Windows. |
-| [Liczniki wydajności systemu Linux](log-analytics-data-sources-performance-counters.md) |Wydajności |Liczniki wydajności zebrane z komputerów z systemem Linux. |
-| [Dzienniki usług IIS](log-analytics-data-sources-iis-logs.md) |W3CIISLog |Internetowe usługi informacyjne dzienniki w formacie W3C. |
-| [Dziennik systemu](log-analytics-data-sources-syslog.md) |Dziennik systemu |Zdarzenia dziennika systemowego na komputerach z systemem Windows lub Linux. |
+
+| Źródło danych | Platforma | Agent monitorowania firmy Microsoft | Agent programu Operations Manager | Azure Storage | Wymagane programu Operations Manager? | Danych agenta programu Operations Manager są wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | po przybyciu |
+| [Niestandardowe dzienniki](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | po przybyciu |
+| [Dzienniki usług IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
+| [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |jako zaplanowane, co najmniej 10 sekund |
+| [Liczniki wydajności](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |jako zaplanowane, co najmniej 10 sekund |
+| [Dziennik systemu](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure storage: 10 minut; od agenta: Przy nadejściu |
+| [Dzienniki zdarzeń systemu Windows](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | po przybyciu |
+
 
 ## <a name="configuring-data-sources"></a>Konfigurowanie źródeł danych
 Konfigurowanie źródeł danych z **danych** menu analizy dzienników **Zaawansowane ustawienia**.  Żadnej konfiguracji są dostarczane do wszystkich połączonych źródeł w obszarze roboczym.  Nie można obecnie wykluczyć wszystkich agentów z tej konfiguracji.

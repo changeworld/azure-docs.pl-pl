@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 571c77a0de4bb30f5476f1bc79a7d4bd8d1cd322
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 300ae2a9dd788ea7d0259d9ae9a6f4d52494836e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopiowanie danych z chmury SAP dla klienta (C4C) przy użyciu fabryki danych Azure
 
@@ -45,7 +45,7 @@ Chmury SAP obsługi klientów połączonych obsługiwane są następujące wła�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **SapCloudForCustomer**. | Yes |
-| adres url | Adres URL usługi SAP C4C OData. | Yes |
+| url | Adres URL usługi SAP C4C OData. | Yes |
 | nazwa użytkownika | Określ nazwę użytkownika, aby nawiązać połączenie SAP C4C. | Yes |
 | hasło | Podaj hasło dla konta użytkownika, określone nazwy użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Brak źródła tak dla obiekt sink |
@@ -141,7 +141,7 @@ Przykładowe zapytanie można pobrać danych dla określonego dnia: `"query": "$
         ],
         "typeProperties": {
             "source": {
-                "type": "SAPC4CSource",
+                "type": "SapCloudForCustomerSource",
                 "query": "<custom query e.g. $top=10>"
             },
             "sink": {
@@ -213,14 +213,14 @@ Podczas kopiowania danych z chmury SAP dla odbiorcy, następujące mapowania są
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Podwójnej precyzji |
-| Edm.Single | Kawaler/panna |
+| Edm.Single | Pojedyncze |
 | Edm.Guid | Identyfikator GUID |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Ciąg |
-| Edm.Time | TimeSpan |
+| Edm.Time | Zakres czasu |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Eksplorowanie danych HockeyApp w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Analizowanie użycia i wydajności aplikacji platformy Azure za pomocą usługi Application Insights."
+title: Eksplorowanie danych HockeyApp w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Analizowanie użycia i wydajności aplikacji platformy Azure za pomocą usługi Application Insights.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: bec2b2dc8a29e5c94e3d3c7f2f0333e07bfe3a4f
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: cd185d799be5051340c2bfea44a1d1e69a1eb002
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Eksplorowanie danych HockeyApp w usłudze Application Insights
 
 > [!NOTE]
-> Visual Studio aplikacji Centrum jest teraz zalecane usługi firmy Microsoft do monitorowania nowej aplikacji mobilnych. [Dowiedz się, jak skonfigurować aplikacjami za pomocą Centrum aplikacji i usługi Application Insights](app-insights-mobile-center-quickstart.md).
-> 
-> 
+> HockeyApp nie jest już dostępny dla nowych aplikacji. Istniejące wdrożenia aplikacji HockeyApp będą nadal działać. Visual Studio aplikacji Centrum jest teraz zalecane usługi firmy Microsoft do monitorowania nowej aplikacji mobilnych. [Dowiedz się, jak skonfigurować aplikacjami za pomocą Centrum aplikacji i usługi Application Insights](app-insights-mobile-center-quickstart.md).
 
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) to usługa do monitorowania na żywo aplikacji komputerów stacjonarnych i przenośnych. Z HockeyApp można wysyłać niestandardowych i śledzenia danych telemetrycznych do monitorowania użycia i ułatwić diagnozowanie (oprócz pobierania danych awarii). Ten strumień danych telemetrycznych można zbadać w zaawansowanym [Analytics](app-insights-analytics.md) funkcji [Azure Application Insights](app-insights-overview.md). Ponadto można [eksportowanie niestandardowego i dane telemetryczne śledzenia](app-insights-export-telemetry.md). Aby włączyć te funkcje, należy skonfigurować mostek przekazuje HockeyApp niestandardowe dane do usługi Application Insights.
 
@@ -69,6 +67,6 @@ Eksport ciągły pozwala na wyeksportowanie danych do kontenera magazynu obiekt�
 
 [Dowiedz się więcej o eksportu ciągłego](app-insights-export-telemetry.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Stosowanie Analytics do danych](app-insights-analytics-tour.md)
 

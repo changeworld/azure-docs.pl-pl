@@ -3,8 +3,8 @@ title: Azure tożsamościami i dostępem najlepszych rozwiązań dotyczących za
 description: Ten artykuł zawiera zestaw najlepsze rozwiązania w zakresie zarządzania tożsamościami i kontroli dostępu przy użyciu wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbaldwin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
-ms.author: yurid
-ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Zarządzanie tożsamościami i dostępem kontrolować najlepszych rozwiązań dotyczących zabezpieczeń
+
 Rozważ wiele tożsamości jako nową warstwę granic zabezpieczeń przejęcia tej roli z tradycyjnego perspektywy skoncentrowane sieci. Ten rozwój pivot głównej dla uwagi bezpieczeństwa i inwestycje pochodzą z faktu, że stały się coraz bardziej porowaty strefy sieci i obrony ten obwód nie może być tak skuteczne, jak ich raz zostały przed rozbicie [BYOD ](http://aka.ms/byodcg) urządzenia i aplikacje w chmurze.
 
 W tym artykule omówiono kolekcja zarządzania tożsamość platformy Azure i najlepsze rozwiązania zabezpieczeń kontroli dostępu. Następujące najlepsze rozwiązania są uzyskiwane z wiemy z doświadczenia z [usługi Azure AD](../active-directory/active-directory-whatis.md) i doświadczenia klientów, takich jak samodzielnie.
@@ -47,18 +48,20 @@ Tożsamość platformy Azure zarządzania i dostęp do sterowania najlepsze rozw
 * Aktywne monitorowanie dla podejrzanych działań
 
 ## <a name="centralize-your-identity-management"></a>Scentralizowane zarządzanie tożsamościami
+
 Jeden ważnym krokiem do zabezpieczania tożsamości jest upewnij się, że dział IT zarządzanie kontami z jednej lokalizacji pojedynczego, o której utworzono to konto. Podczas gdy większość przedsiębiorstw IT organizacji konta podstawowego katalogu lokalnych, chmury hybrydowej są rośnie i jest, że rozumiesz, jak zintegrować lokalne i katalogi w chmurze oraz zapewnia bezpośrednie przejście środowisko użytkownika końcowego.
 
 W tym celu [tożsamość hybrydowa](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) scenariuszu zaleca się dwie opcje:
 
 * Synchronizacji katalogu lokalnego z katalogiem chmury, za pomocą programu Azure AD Connect
-* Włącz logowanie jednokrotne z [synchronizacji skrótu hasła](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [uwierzytelniania przekazywanego](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) lub Federację tożsamości lokalnych z katalogu chmurze przy użyciu [usługi Active Directory Usługi federacyjne](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (AD FS)
+* Włącz logowanie jednokrotne z [synchronizacji skrótu hasła](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [uwierzytelniania przekazywanego](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) lub Federację tożsamości lokalnych z katalogu chmurze przy użyciu [usługi Active Directory Usługi federacyjne](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (AD FS)
 
 Organizacje, które nie integrowanie tożsamości lokalnych z ich tożsamość w chmurze występuje zwiększone obciążenie administracyjne w zarządzanie kontami, co zwiększa prawdopodobieństwo wystąpienia błędów i naruszeń zabezpieczeń.
 
 Aby uzyskać więcej informacji na synchronizacji usługi Azure AD, zobacz artykuł [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/active-directory-aadconnect.md).
 
 ## <a name="enable-single-sign-on-sso"></a>Włącz logowanie jednokrotne (SSO)
+
 Jeśli masz wiele katalogów, aby zarządzać staje się on administracyjne problem nie tylko w przypadku IT, ale także dla użytkowników końcowych, które musiał zapamiętywać wiele haseł. Za pomocą [logowania jednokrotnego](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) zapewnić użytkownikom możliwość użycia tego samego zestawu poświadczeń logować się i uzyskać dostęp do zasobów, które potrzebują, bez względu na to w przypadku tego zasobu znajdujących się lokalnie lub w chmurze.
 
 Użyj logowania jednokrotnego, aby umożliwić użytkownikom dostęp do ich [aplikacji SaaS](../active-directory/active-directory-appssoaccess-whatis.md) oparte na swoje konta organizacyjne w usłudze Azure AD. Ma to zastosowanie nie tylko dla aplikacji SaaS firmy Microsoft, ale także inne aplikacje, takie jak [usługi Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) i [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Aplikację można skonfigurować przy użyciu usługi Azure AD jako [tożsamość oparta na SAML](../active-directory/fundamentals-identity.md) dostawcy. Jako formant zabezpieczeń usługi Azure AD nie będzie wystawiać token, dzięki czemu mogą zalogować się do aplikacji, chyba że przyznano im dostęp przy użyciu usługi Azure AD. Możesz udzielić dostępu bezpośrednio lub za pośrednictwem grupy są członkami.
@@ -73,6 +76,7 @@ Organizacji, które nie wymuszają logowania jednokrotnego dla swoich użytkowni
 Możesz można dowiedzieć się więcej o rejestracji Jednokrotnej programu Azure AD przeczytaj artykuł [zarządzania usług AD FS i dostosowywania z programem Azure AD Connect](../active-directory/active-directory-aadconnect-federation-management.md).
 
 ## <a name="deploy-password-management"></a>Wdrażanie zarządzania hasłami
+
 W scenariuszach, w którym masz wielu dzierżawców lub chcesz umożliwić użytkownikom [zresetować swoje hasła](../active-directory/active-directory-passwords-update-your-own-password.md), należy użyć zasad zabezpieczeń odpowiednich aby uniemożliwić nadużycia. Na platformie Azure możesz korzystać z możliwości resetowania hasła samoobsługi i dostosować opcje zabezpieczeń w celu spełnienia wymagań biznesowych.
 
 Należy uzyskać opinie od tych użytkowników i Dowiedz się ze swoimi doświadczeniami jako próby wykonania tych czynności. W oparciu o te funkcje, opracowania planu, aby ograniczyć potencjalne problemy, które mogą wystąpić podczas wdrażania większa grupa. Zalecane jest również, że używasz [raport aktywności rejestracji resetowania haseł](../active-directory/active-directory-passwords-get-insights.md) monitorowanie użytkowników, którzy rejestracji.
@@ -82,6 +86,7 @@ Organizacje, aby uniknąć wywołań obsługi zmiany hasła, które umożliwiaj�
 Dowiedz się więcej o Resetowanie hasła przy przeczytaniu artykułu [wdrażanie Zarządzanie hasłami oraz szkolenie użytkowników, aby użyć go](../active-directory/authentication/howto-sspr-deployment.md).
 
 ## <a name="enforce-multi-factor-authentication-mfa-for-users"></a>Wymusić uwierzytelnianie wieloskładnikowe (MFA) dla użytkowników
+
 W przypadku organizacji, które muszą być zgodne ze standardami branżowymi, takich jak [PCI DSS w wersji 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32), uwierzytelnianie wieloskładnikowe jest koniecznością ma możliwość uwierzytelniania użytkowników. Poza jest zgodny ze standardami branżowymi, wymuszając uwierzytelnianie wieloskładnikowe w celu uwierzytelniania użytkowników może również pomóc organizacji w celu ograniczenia typu kradzieży poświadczeń ataku, takich jak [Pass--Hash (PtH)](http://aka.ms/PtHPaper).
 
 Przez włączenie usługi Azure MFA dla użytkowników, dodajesz drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. W takim przypadku transakcji może uzyskiwać dostęp do dokumentu znajdującego się na serwerze plików lub w trybie Online programu SharePoint. Usługa Azure MFA ułatwia również IT, aby zmniejszyć prawdopodobieństwo, że przejęciem poświadczeń ma dostęp do danych organizacji.
@@ -93,6 +98,7 @@ Jeden alternatywą dla organizacji, które mają być zachowane cały proces uwi
 Aby uzyskać więcej informacji dotyczących usługi Azure MFA, zobacz artykuł [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Za pomocą kontroli dostępu opartej na rolach (RBAC)
+
 Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które mają zostać wymuszone zasady zabezpieczeń dla dostępu do danych. Azure opartej na rolach kontroli dostępu (RBAC) może służyć do przypisywania uprawnień do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji.
 
 Można wykorzystać [wbudowane RBAC](../role-based-access-control/built-in-roles.md) ról na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
@@ -102,6 +108,7 @@ Organizacje, które nie wymusić kontrolę dostępu danych dzięki wykorzystaniu
 Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Lokalizacje kontroli, gdy zasoby są tworzone za pomocą Menedżera zasobów
+
 Ważne jest włączenie operatorom chmury do wykonywania zadań podczas uniemożliwia zasady, które są wymagane do zarządzania zasobami organizacji dzielenia. Organizacje, które chcesz kontrolować lokalizacje, w którym zasoby są tworzone twarde powinny kodu tych lokalizacji.
 
 Aby to osiągnąć, organizacje mogą tworzyć zasady zabezpieczeń, które zawierają definicje, które opisują akcje lub zasobów, które nie są dozwolone. Można przypisać te definicje zasad na żądany zakres, takich jak subskrypcji, grupy zasobów lub pojedynczych zasobów.
@@ -118,6 +125,7 @@ Organizacje, które nie są kontrolowanie sposobu tworzenia zasobów są bardzie
 Dowiedz się więcej na temat tworzenia zasad za pomocą Menedżera zasobów Azure, przeczytaj artykuł [co to jest Azure zasady?](../azure-policy/azure-policy-introduction.md)
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>Przewodnik deweloperów wykorzystać możliwości tożsamości dla aplikacji SaaS
+
 Tożsamość użytkownika jest wykorzystywana w wielu sytuacjach, gdy użytkownicy uzyskują dostęp do [aplikacji SaaS](https://azure.microsoft.com/marketplace/active-directory/all/) którego można zintegrować z lokalnymi lub katalogu w chmurze. Najpierw i, zalecane jest deweloperom użycie bezpiecznego metodologii stworzono te aplikacje, takie jak [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Usługi Azure AD upraszcza uwierzytelniania dla deweloperów, podając tożsamości jako usługa, obsługuje protokoły przemysłowe oraz protokoły takich jak [OAuth 2.0](http://oauth.net/2/) i [OpenID Connect](http://openid.net/connect/), a także jako open source biblioteki dla różnych platform.
 
 Upewnij się zarejestrować każda aplikacja, która outsources uwierzytelniania do usługi Azure AD, jest to procedura obowiązkowe. Przyczyna za to jest, ponieważ wymaga usługi Azure AD do koordynowania komunikacji z aplikacją, gdy obsługa logowania jednokrotnego (SSO) lub wymiana tokenów. Sesja użytkownika wygasa po wygaśnięciu ważności tokenu wystawiony przez usługę Azure AD. Zawsze należy ocenić, jeśli aplikacja powinna używać tej chwili lub ten czas można skrócić. Zmniejszenie okresu istnienia może działać jako zabezpieczenie, które zostanie wymuszone użytkownikom logowanie na podstawie w okresie braku aktywności.
@@ -127,6 +135,7 @@ Organizacje, które nie wymuszają tożsamości kontroli dostępu do aplikacji i
 Użytkownik może dowiedzieć się więcej o scenariusze uwierzytelniania dla aplikacji SaaS odczytując [scenariusze uwierzytelniania dla usługi Azure AD](../active-directory/active-directory-authentication-scenarios.md).
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>Aktywne monitorowanie dla podejrzanych działań
+
 Zgodnie z [raport naruszenia danych 2016 Verizon](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/), przejęcie poświadczeń jest nadal się wzrostu i jedną z najbardziej dochodowe firm dla przez przestępców. Z tego powodu warto mieć system monitor aktywnej tożsamości w miejscu, które można szybko wykrywać podejrzane działania i wywoływać alert dla dalszego postępowania. Usługa Azure AD ma dwa główne możliwości, które pomaga organizacjom monitorować ich tożsamości: Azure AD Premium [raporty anomalii](../active-directory/active-directory-view-access-usage-reports.md) i Azure AD [ochronę tożsamości](../active-directory/active-directory-identityprotection.md) możliwości.
 
 Upewnij się, że umożliwia zidentyfikowanie próbuje zarejestrować się w raportach anomalii [bez śledzone](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md), [siłowych](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md) ataków do określonego konta, próbuje zalogować się w różnych lokalizacjach, należy zalogować się z [ zainfekowanych urządzeń i podejrzane adresy IP. Należy pamiętać, że są one raportów. Innymi słowy musi mieć procesy i procedury w miejscu dla administratorów IT uruchomić te raporty na codziennie lub na żądanie (zazwyczaj w scenariuszu odpowiedzi na zdarzenia).

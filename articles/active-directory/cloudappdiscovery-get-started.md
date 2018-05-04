@@ -1,26 +1,23 @@
 ---
-title: "Konfigurowanie usługi Cloud App Discovery w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Znajdź i Zarządzaj aplikacjami w usłudze Cloud App Discovery o podanie informacji przydatnych wyników na użycie chmury i tle IT."
+title: Konfigurowanie usługi Cloud App Discovery w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Znajdź i Zarządzaj aplikacjami w usłudze Cloud App Discovery o podanie informacji przydatnych wyników na użycie chmury i tle IT.
 services: active-directory
-keywords: "Usługa cloud app discovery, zarządzanie aplikacjami"
-documentationcenter: 
+keywords: Usługa cloud app discovery, zarządzanie aplikacjami
+documentationcenter: ''
 author: curtand
 manager: mtillman
 tags: ignite
-ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 04/25/2018
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: 4a0cb1b7793c846f98ae4e89b99b4bda984cd5e4
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a4ba0e384c17845a1298d283a947a4e04396d6da
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Konfigurowanie Cloud App Discovery w usłudze Azure AD
 
@@ -86,6 +83,7 @@ Aby można było pomyślnie wygenerować raport Cloud App Discovery, dzienników
 * Cisco Meraki — dziennik adresów URL
 * NGFW Clavister (Syslog)
 * Dell Sonicwall
+* Filtr i Arts cyfrowych
 * Fortinet Fortigate
 * Juniper SRX
 * Juniper SSG
@@ -123,7 +121,7 @@ Jeśli dziennik nie jest obsługiwany, wybierz **innych** jako **źródła danyc
 | Juniper SSG                             | Nie             | **Tak**       | Nie       | **Tak**   | **Tak**       | **Tak**        |
 | McAfee SWG                              | **Tak**        | Nie            | Nie       | **Tak**   | **Tak**       | **Tak**        |
 | MS TMG                                  | **Tak**        | Nie            | **Tak**  | **Tak**   | **Tak**       | **Tak**        |
-| Palo Alto Networks                      | **Tak**        | **Tak**       | **Tak**  | **Tak**   | **Tak**       | **Tak**        |
+| Palo Alto Networks                      | Nie             | **Tak**       | **Tak**  | **Tak**   | **Tak**       | **Tak**        |
 | Sophos                                  | **Tak**        | **Tak**       | **Tak**  | **Tak**   | **Tak**       | Nie             |
 | Squid (typowy)                          | **Tak**        | Nie            | **Tak**  | **Tak**   | Nie            | **Tak**        |
 | Squid (natywny)                          | **Tak**        | Nie            | **Tak**  | **Tak**   | Nie            | **Tak**        |
@@ -132,9 +130,9 @@ Jeśli dziennik nie jest obsługiwany, wybierz **innych** jako **źródła danyc
 | Zscaler                                 | **Tak**        | **Tak**       | **Tak**  | **Tak**   | **Tak**       | **Tak**        |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Użyj następujących linków, aby kontynuować konfigurowanie Cloud App Discovery w usłudze Azure AD.
 
 * [Tworzenie raportów migawek](cloudappdiscovery-set-up-snapshots.md)
 * [Konfigurowanie ciągłego raportowania](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-* [Korzystanie z niestandardowego analizatora dziennika](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)
+* [Korzystanie z niestandardowego analizatora dziennika](https://docs.microsoft.com/cloud-app-security/custom-log-parser)

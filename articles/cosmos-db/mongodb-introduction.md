@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: 4baf691268fdb11f769a39144c2b5461ee9c2362
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bebf8b8830255277b5ea492f06e130ee667affa5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Wprowadzenie do platformy Azure rozwiązania Cosmos bazy danych: baza danych MongoDB interfejsu API
 
@@ -73,5 +73,5 @@ Informacje o interfejsie API Azure rozwiązania Cosmos bazy danych MongoDB jest 
 * Postępuj zgodnie z [3T Użyj Studio (MongoChef) z bazy danych Azure rozwiązania Cosmos](mongodb-mongochef.md) samouczkiem, aby dowiedzieć się, jak utworzyć połączenie między usługą Azure DB rozwiązania Cosmos bazy danych i aplikacji bazy danych MongoDB w Studio 3 T.
 * Postępuj zgodnie z [migrowanie danych do bazy danych rozwiązania Cosmos Azure z protokołem obsługuje bazy danych mongodb](mongodb-migrate.md) samouczka w celu zaimportowania danych do interfejsu API dla bazy danych MongoDB.
 * Połączyć z interfejsem API dotyczące korzystania z bazy danych MongoDB konta [Robomongo](mongodb-robomongo.md).
-* Dowiedz się, ile RUs operacji za pomocą [GetLastRequestStatistics polecenia i portalu Azure metryki](request-units.md#GetLastRequestStatistics).
+* Dowiedz się, ile RUs operacji za pomocą [GetLastRequestStatistics polecenia i portalu Azure metryki](set-throughput.md#GetLastRequestStatistics).
 * Dowiedz się, jak [Konfigurowanie preferencji odczytu dla aplikacji rozproszonych globalnie](../cosmos-db/tutorial-global-distribution-mongodb.md).

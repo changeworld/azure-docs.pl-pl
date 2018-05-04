@@ -9,11 +9,11 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b4f8388fdf104253aad07de77e89c30df4e4b128
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizacja wydajności za pomocą technologii w pamięci w bazie danych SQL
 
@@ -22,7 +22,7 @@ Dzięki użyciu technologii w pamięci w bazie danych SQL Azure, można osiągn�
 Poniżej przedstawiono dwa przykłady sposobu pomógł znacznie poprawić wydajność OLTP w pamięci:
 
 - Za pomocą OLTP w pamięci [rozwiązań biznesowych kworum był w stanie dwukrotnie ich obciążenie poprawienie Dtu 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - Oznacza jednostek dtu w warstwie *jednostka transakcji bazy danych*, a także mesurement zużycia zasobów.
+    - Oznacza jednostek dtu w warstwie *jednostka transakcji bazy danych*, i zawiera pomiaru wykorzystania zasobów.
 - Poniżej film wideo przedstawia znaczne ulepszenia w zużycie zasobów z przykładowe obciążenie: [OLTP w pamięci wideo bazy danych SQL Azure](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - Aby uzyskać więcej informacji, zobacz w blogu: [OLTP w pamięci w blogu blogu bazy danych SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -43,7 +43,7 @@ Baza danych SQL Azure zawiera następujące technologie w pamięci:
 
 Zarówno indeksy magazynu kolumn i OLTP w pamięci zostały część produktu SQL Server od 2012 i 2014 r. odpowiednio. Azure SQL Database i programu SQL Server udostępnianie tego samego wykonania technologii w pamięci. Idąc dalej, nowych funkcji do tych technologii są wydawane w bazie danych SQL Azure, przed wprowadzeniem w programie SQL Server.
 
-W tym temacie opisano aspekty indeksy OLTP w pamięci i magazynu kolumn, które są specyficzne dla bazy danych SQL Azure i zawiera również przykłady:
+W tym artykule opisano aspekty indeksy OLTP w pamięci i magazynu kolumn, które są specyficzne dla bazy danych SQL Azure i zawiera również przykłady:
 - Zostanie wyświetlony wpływu tych technologii limity rozmiaru magazynu i danych.
 - Zobaczysz jak zarządzać Przenoszenie baz danych używających tych technologii między różnych warstw cenowych.
 - Zostanie wyświetlone dwa — przykłady ilustrujące stosowania OLTP w pamięci, a także indeksy magazynu kolumn w bazie danych SQL Azure.
@@ -92,7 +92,7 @@ O elastycznych pulach magazynu OLTP w pamięci jest współużytkowana przez wsz
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Rozmiar danych i magazynu dla indeksów magazynu kolumn
 
-Indeksy magazynu kolumn nie są wymagane do mieści się w pamięci. W związku z tym tylko limit na rozmiar indeksów jest maksymalny rozmiar bazy danych ogólnej, które opisano w [warstw usługi SQL Database](sql-database-service-tiers.md) artykułu.
+Indeksy magazynu kolumn nie są wymagane do mieści się w pamięci. W związku z tym tylko limit na rozmiar indeksów jest maksymalny rozmiar bazy danych ogólnej, które opisano w [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) artykułów.
 
 Gdy używasz klastrowane indeksy magazynu kolumn, kolumnowy kompresji jest używane do przechowywania tabeli podstawowej. Kompresja ta może znacznie ograniczyć wpływ magazynu danych użytkownika, co oznacza, że można zmieścić większej ilości danych w bazie danych. I kompresji można go zwiększyć z [kolumnowy kompresji archiwizacji](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Stopień kompresji, które pozwalają osiągnąć zależy od rodzaju dane, ale 10 razy kompresji nie jest nietypowa sytuacja.
 
@@ -223,8 +223,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Jedyną różnicą między dwa *procedur składowanych* Pierwsza procedura używa wersji tabel zoptymalizowanych pod kątem pamięci, a druga procedura wykorzystuje zwykłych tabelach na dysku:
 
-- SalesLT**.**usp_InsertSalesOrder**_inmem**
-- SalesLT**.**usp_InsertSalesOrder**_ondisk**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
+- SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 W tej sekcji, zobacz sposób użycia przydatną **ostress.exe** narzędzie do wykonywania dwóch procedur składowanych na poziomach stressful. Możesz porównać, jak długo trwa dla przebiegów dwóch obciążenia zakończyć.

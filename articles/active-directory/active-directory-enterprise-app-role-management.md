@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 58656e2aa3b052d9bd9aa14edeb6215858d55ea4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: d869a21230661e473ffff6bbdb1ea29b1ea336d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurowanie roli oświadczeń wydanych w tokenie SAML dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 
@@ -52,90 +52,94 @@ Jeśli aplikacja oczekuje role niestandardowe, należy przesłać odpowiedzi SAM
 
     ![Aplikacja w listy wyników](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
-5. Po dodaniu aplikacji, przejdź do **właściwości** strony i skopiuj **identyfikator obiektu:**
+5. Po dodaniu aplikacji, przejdź do **właściwości** strony i skopiuj **obiektu o identyfikatorze**.
 
-    ![Strony właściwości](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
+    ![Strony właściwości](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.PNG)
 
 6. Otwórz [Explorer Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
 
     a. Zaloguj się do witryny Explorer wykresu przy użyciu poświadczeń globalnych Admin/współadministratora dla dzierżawy.
 
-    b. Zmiana wersji na **beta** i pobrać listy nazwy główne usług z dzierżawy przy użyciu następujących zapytań:
+    b. Musisz mieć wystarczające uprawnienia do tworzenia ról. Polecenie **uprawnień do modyfikowania** można uzyskać wymaganych uprawnień. 
+
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
+
+    c. Wybierz następujące uprawnienia z listy (Jeśli te nie mają już) i kliknij polecenie "Modyfikuj uprawnienia" 
+
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    d. Poprosi zalogować się ponownie i zaakceptować zgody. Po zaakceptowaniu zgody, użytkownik jest zalogowany do systemu ponownie.
+
+    e. Zmiana wersji na **beta** i pobrać listy nazwy główne usług z dzierżawy przy użyciu następujących zapytań:
     
      `https://graph.microsoft.com/beta/servicePrincipals`
         
     Jeśli używasz wielu katalogów, następnie należy wykonać tego wzorca `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-    c. Z listy pobranych nazwy główne usług Pobierz ten, który należy zmodyfikować. Ctrl + F umożliwia również wyszukiwanie aplikacji z wszystkich wymienionych ServicePrincipals. Wyszukaj **obiektu o identyfikatorze**, które zostały skopiowane ze strony właściwości i skorzystaj z następujących zapytania get do odpowiednich główną usługi.
+    f. Z listy pobranych nazwy główne usług Pobierz ten, który należy zmodyfikować. Ctrl + F umożliwia również wyszukiwanie aplikacji z wszystkich wymienionych ServicePrincipals. Wyszukaj **obiektu o identyfikatorze**, które zostały skopiowane ze strony właściwości i skorzystaj z następujących zapytania get do odpowiednich główną usługi.
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    d. Wyodrębnij właściwości appRoles z obiekt główny usługi.
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
+    g. Wyodrębnij właściwości appRoles z obiekt główny usługi. 
 
-    e. Należy wygenerować nowe role w aplikacji teraz. Można pobrać roli usługi Azure AD Generator z [tutaj](https://app.box.com/s/jw6m9p9ehmf4ut5jx8xhcw87cu09ml3y).
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
-    f. Otwórz Generator programu Azure AD i wykonaj następujące kroki —
+    > [!Note]
+    > Jeśli używasz niestandardowej aplikacji (z systemem innym niż gallery), zobaczysz dwa domyślne role - msiam_access i użytkownika. W przypadku aplikacji galerii msiam_access jest jedyną rolą domyślne. Nie trzeba wprowadzać żadnych zmian w domyślnych ról.
 
-    ![Generator usługi Azure AD](./media/active-directory-enterprise-app-role-management/azure_ad_role_generator.png)
-    
-    Wprowadź **nazwy roli**, **opis roli**, i **wartość roli**. Kliknij przycisk **Dodaj** Dodaj rolę
-    
-    Po dodaniu wszystkich wymaganych ról, kliknij przycisk **Generowanie**
-    
-    Skopiuj zawartość, klikając **skopiować zawartość**
+    h. Teraz należy wygenerować nowe role w aplikacji. 
 
-    > [!NOTE] 
-    > Upewnij się, że masz **msiam_access** roli użytkownika i identyfikator jest zgodne z wygenerowanym roli.
+    i. Poniżej JSON jest przykładem appRoles obiektu. Utwórz obiekt podobny do dodawania ról, do których chcesz dla aplikacji. 
 
-    g. Powrót do Eksploratora programu Graph. Zmień metodę z **UZYSKAĆ** do **poprawka**. Poprawka obiekt główny usługi, aby mieć pożądane appRoles przez modyfikowanie właściwości appRoles przy użyciu wartości skopiowanych. Kliknij przycisk **kwerenda**.
-
-    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-patch.png)
-
-    > [!NOTE]
-    > Poniżej przedstawiono przykład appRoles obiektu. 
     ```
     {
        "appRoles": [
-    {
-        "allowedMemberTypes": [
-        "User"
-        ],
-        "description": "msiam_access",
-        "displayName": "msiam_access",
-        "id": "7dfd756e-8c27-4472-b2b7-38c17fc5de5e",
-        "isEnabled": true,
-        "origin": "Application",
-        "value": null
-    },
-    {
-        "allowedMemberTypes": [
-        "User"
-        ],
-        "description": "teacher",
-        "displayName": "teacher",
-        "id": "6478ffd2-5dbd-4584-b2ce-137390b09b60",
-        "isEnabled": ,
-        "origin": "ServicePrincipal",
-        "value": "teacher"
+        {
+            "allowedMemberTypes": [
+                "User"
+            ],
+            "description": "msiam_access",
+            "displayName": "msiam_access",
+            "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
+            "isEnabled": true,
+            "origin": "Application",
+            "value": null
+        },
+        {
+            "allowedMemberTypes": [
+                "User"
+            ],
+            "description": "Administrators Only",
+            "displayName": "Admin",
+            "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
+            "isEnabled": true,
+            "origin": "ServicePrincipal",
+            "value": "Administrator"
+        }
+    ],
     }
-    ] 
-    }   
     ```
-7. Po nazwy głównej usługi jest poprawiono więcej ról, firma Microsoft można przypisać użytkowników do odpowiednich ról. Można to zrobić, przechodząc do portalu i przechodząc do odpowiednich aplikacji. Następnie, klikając **użytkowników i grup** kartę w górnej części. Ten proces będzie zawierała listę wszystkich użytkowników lub grup.
+    > [!Note]
+    > Można dodawać tylko nowe role po **msiam_access** dla operacji poprawki. Ponadto można dodać dowolną liczbę ról można dowolnie na potrzeby organizacji. Usługi Azure AD będzie wysyłać **wartość** tych ról jako wartość oświadczenia w odpowiedzi SAML.
+    
+    j. Przejdź wstecz do Eksploratora z wykresu i zmień metodę z **UZYSKAĆ** do **poprawka**. Poprawka obiekt główny usługi do ma pożądane ról przez modyfikowanie właściwości appRoles podobny do przedstawionego powyżej w przykładzie. Kliknij przycisk **Uruchom kwerendę** wykonanie operacji poprawki. Komunikat z potwierdzeniem potwierdza tworzenia roli.
 
-    ![Konfigurowanie rejestracji jednokrotnej Dodaj](./media/active-directory-enterprise-app-role-management/userrole.png)
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-    a. Aby przypisać rolę do dowolnego użytkownika, po prostu wybierz określonego użytkownika lub grupę i kliknij na **przypisać** przycisk w dolnej części strony.
+7. Po nazwy głównej usługi jest poprawiono więcej ról, można przypisać użytkowników do odpowiednich ról. Można to zrobić, przechodząc do portalu i przechodząc do odpowiednich aplikacji. Polecenie **użytkowników i grup** kartę w górnej części. Ta lista zawiera wszystkich użytkowników i grup, które są już przypisane do aplikacji. Można dodawać nowych użytkowników na nową rolę i można również wybrać istniejącego użytkownika i kliknij przycisk **Edytuj** zmiana roli.
 
-    ![Konfigurowanie rejestracji jednokrotnej Dodaj](./media/active-directory-enterprise-app-role-management/userandgroups.png)
+    ![Konfigurowanie rejestracji jednokrotnej Dodaj](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
-    b. Kliknięcie, które powoduje wyświetlenie okienka wyskakującego, wybierz rolę w różnych ról, które są zdefiniowane dla odpowiedniej nazwy głównej usługi.
+     Aby przypisać rolę do dowolnego użytkownika, wybierz nową rolę, a następnie kliknij przycisk na **przypisać** przycisk w dolnej części strony.
 
-    c. Wybierz wymagane role i kliknij przycisk przesyłania.
+    ![Konfigurowanie rejestracji jednokrotnej Dodaj](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
+
+    > [!Note]
+    > Należy pamiętać, trzeba odświeżyć sesję w portalu Azure, aby zobaczyć nowe role.
 
 8. Po przypisaniu ról dla użytkowników, należy zaktualizować **atrybuty** tabeli, aby określić niestandardowe mapowanie **roli** oświadczeń.
 
@@ -151,7 +155,7 @@ Jeśli aplikacja oczekuje role niestandardowe, należy przesłać odpowiedzi SAM
 
     ![Konfigurowanie atrybutów rejestracji jednokrotnej](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b. W **nazwa** tekstowym, wpisz nazwę atrybutu, zgodnie z potrzebami. W tym przykładzie użyliśmy **nazwy roli** jako nazwy oświadczenia.
 
     c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
 
@@ -163,91 +167,93 @@ Jeśli aplikacja oczekuje role niestandardowe, należy przesłać odpowiedzi SAM
 
 ## <a name="update-existing-role"></a>Aktualizuj istniejącą rolę
 
-1. Aby uaktualnić istniejącą rolę, wykonaj następujące kroki —
+Aby uaktualnić istniejącą rolę, wykonaj następujące kroki —
 
-    a. Otwórz [Explorer Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
+1. Otwórz [Eksploratora usługi Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer).
 
-    b. Zaloguj się do witryny Explorer wykresu przy użyciu poświadczeń globalnych Admin/współadministratora dla dzierżawy.
+2. Zaloguj się do witryny Explorer wykresu przy użyciu poświadczeń globalnych Admin/współadministratora dla dzierżawy.
     
-    c. Zmiana wersji na **beta** i pobrać listy nazwy główne usług z dzierżawy przy użyciu następujących zapytań:
+3. Zmiana wersji na **beta** i pobrać listy nazwy główne usług z dzierżawy przy użyciu następujących zapytań:
     
     `https://graph.microsoft.com/beta/servicePrincipals`
-        
+    
     Jeśli używasz wielu katalogów, następnie należy wykonać tego wzorca `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
-    
-    d. Z listy pobranych nazwy główne usług Pobierz ten, który należy zmodyfikować. Ctrl + F umożliwia również wyszukiwanie aplikacji z wszystkich wymienionych ServicePrincipals. Wyszukaj **obiektu o identyfikatorze**, które zostały skopiowane ze strony właściwości i skorzystaj z następujących zapytania get do odpowiednich główną usługi.
+4. Z listy pobranych nazwy główne usług Pobierz ten, który należy zmodyfikować. Ctrl + F umożliwia również wyszukiwanie aplikacji z wszystkich wymienionych ServicePrincipals. Wyszukaj **obiektu o identyfikatorze**, które zostały skopiowane ze strony właściwości i skorzystaj z następujących zapytania get do odpowiednich główną usługi.
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-    e. Wyodrębnij właściwości appRoles z obiekt główny usługi.
+5. Wyodrębnij właściwości appRoles z obiekt główny usługi.
     
-    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
     
-    f. Aby uaktualnić istniejącą rolę, wykonaj następujące czynności:
+6. Aby uaktualnić istniejącą rolę, wykonaj następujące czynności:
 
     ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
     
     * Zmień metodę z **UZYSKAĆ** do **poprawka**.
 
-    * Skopiuj istniejących ról z aplikacji i wklej je do **treść żądania**.
-    
-    * Zaktualizuj wartość roli zastępując **opis roli**, **wartość roli**, i **displayname roli** zgodnie z wymaganiami organizacji.
-    
+    * Istniejące role skopiuj i wklej je do **treść żądania**.
+
+    * Zaktualizuj wartość roli, aktualizując **opis roli**, **wartość roli** lub **displayname roli** zgodnie z potrzebami.
+
     * Po zaktualizowaniu wszystkich wymaganych ról, kliknij przycisk **Uruchom kwerendę**.
         
 ## <a name="delete-existing-role"></a>Usuń istniejącą rolę
 
 Aby usunąć istniejącą rolę, wykonaj następujące kroki:
 
-a. Otwórz [Explorer Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
+1. Otwórz [Explorer Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
 
-b. Zaloguj się do witryny Explorer wykresu przy użyciu poświadczeń globalnych Admin/współadministratora dla dzierżawy.
+2. Zaloguj się do witryny Explorer wykresu przy użyciu poświadczeń globalnych Admin/współadministratora dla dzierżawy.
 
-c. Zmiana wersji na **beta** i pobrać listy nazwy główne usług z dzierżawy przy użyciu następujących zapytań:
+3. Zmiana wersji na **beta** i pobrać listy nazwy główne usług z dzierżawy przy użyciu następujących zapytań:
     
-`https://graph.microsoft.com/beta/servicePrincipals`
+    `https://graph.microsoft.com/beta/servicePrincipals`
     
-Jeśli używasz wielu katalogów, następnie należy wykonać tego wzorca `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Jeśli używasz wielu katalogów, następnie należy wykonać tego wzorca `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-d. Z listy pobranych nazwy główne usług Pobierz ten, który należy zmodyfikować. Ctrl + F umożliwia również wyszukiwanie aplikacji z wszystkich wymienionych ServicePrincipals. Wyszukaj **obiektu o identyfikatorze**, które zostały skopiowane ze strony właściwości i skorzystaj z następujących zapytania get do odpowiednich główną usługi.
+4. Z listy pobranych nazwy główne usług Pobierz ten, który należy zmodyfikować. Ctrl + F umożliwia również wyszukiwanie aplikacji z wszystkich wymienionych ServicePrincipals. Wyszukaj **obiektu o identyfikatorze**, które zostały skopiowane ze strony właściwości i skorzystaj z następujących zapytania get do odpowiednich główną usługi.
      
-`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
-    
-e. Wyodrębnij właściwości appRoles z obiekt główny usługi.
-    
-![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-f. Aby usunąć istniejącą rolę, wykonaj następujące czynności:
-
-![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-patchdelete.png)
-
-Zmień metodę z **UZYSKAĆ** do **poprawka**.
-
-Skopiuj istniejących ról z aplikacji i wklej je w **treść żądania**.
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-Ustaw **IsEnabled** do wartości **false** dla roli, które chcesz usunąć
+5. Wyodrębnij właściwości appRoles z obiekt główny usługi.
+    
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
 
-Kliknij przycisk **kwerenda**.
-    
-> [!NOTE] 
-> Upewnij się, że masz **msiam_access** roli użytkownika i identyfikator jest zgodne z wygenerowanym roli.
-    
-g. Po wykonaniu powyższych procesu, Zachowaj metodę jako **poprawka** i Wklej roli pozostałą zawartość **treść żądania** i kliknij przycisk **Uruchom kwerendę**.
-    
-![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-patchfinal.png)
+6. Aby usunąć istniejącą rolę, wykonaj następujące czynności:
 
-h. Po uruchomieniu kwerendy roli zostaną usunięte.
+    ![Okno dialogowe Eksplorator wykresu](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
+
+    * Zmień metodę z **UZYSKAĆ** do **poprawka**.
+
+    * Skopiuj istniejących ról z aplikacji i wklej je w **treść żądania**.
+        
+    * Ustaw **IsEnabled** do wartości **false** dla roli, które chcesz usunąć
+
+    * Kliknij przycisk **kwerenda**.
     
-> [!NOTE]
-> Rola musi być wyłączona najpierw można było usunąć. 
+    > [!NOTE] 
+    > Upewnij się, że masz **msiam_access** roli użytkownika i identyfikator jest zgodne z wygenerowanym roli.
+    
+7. Po wyłączeniu roli Usuń ten blok roli z sekcji appRoles, należy metodę jako **poprawka** i kliknij przycisk **Uruchom kwerendę**.
+    
+8. Po uruchomieniu kwerendy roli zostaną usunięte.
+    
+    > [!NOTE]
+    > Rola musi być wyłączona najpierw można było usunąć. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [dokumentacji aplikacji ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-tutorial-list) dla dodatkowych kroków.
+Zobacz [dokumentacji aplikacji ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) dla dodatkowych kroków.
 
 <!--Image references-->
 <!--Image references-->

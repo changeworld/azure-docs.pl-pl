@@ -1,13 +1,13 @@
 ---
-title: "Sprawdź poprawność przepływność sieci VPN do sieci wirtualnej Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument ma na celu pomoc użytkownik zweryfikować przepustowość sieci na maszynie wirtualnej platformy Azure z zasobami lokalnymi."
+title: Sprawdź poprawność przepływność sieci VPN do sieci wirtualnej Microsoft Azure | Dokumentacja firmy Microsoft
+description: Ten dokument ma na celu pomoc użytkownik zweryfikować przepustowość sieci na maszynie wirtualnej platformy Azure z zasobami lokalnymi.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: jasmc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cad7719eb077d7aca9c1db5741a5fe1e0ca910a2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Jak można sprawdzić poprawności przepływność sieci VPN do sieci wirtualnej
 
@@ -32,7 +32,7 @@ W tym artykule przedstawiono sposób sprawdzania poprawności przepływność si
 >
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Połączenie bramy sieci VPN obejmuje następujące składniki:
 
@@ -121,7 +121,7 @@ Pobierz [dotyczące programu Iperf;](https://iperf.fr/download/iperf_3.1/iperf-3
 ## <a name="address-slow-file-copy-issues"></a>Rozwiązać problemy kopii pliku powolne
 Mogą wystąpić powolne pliku kopiowanie przy użyciu Eksploratora Windows lub przeciągania i upuszczania za pomocą sesji protokołu RDP. Tego problemu jest zwykle z powodu co najmniej jednej z następujących czynników:
 
-- Podczas kopiowania plików, aplikacji kopiowania plików, takich jak Eksplorator Windows i protokołu RDP, nie należy używać wiele wątków. W celu poprawy wydajności użyj aplikacji kopii pliku wielowątkowych takiego jak [Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx) do kopiowania plików za pomocą wątków 16 lub 32. Aby zmienić liczbę wątków na jedną kopię pliku Richcopy, kliknij przycisk **akcji** > **opcje kopiowania** > **skopiowanie pliku**.<br><br>
+- Podczas kopiowania plików, aplikacji kopiowania plików, takich jak Eksplorator Windows i protokołu RDP, nie należy używać wiele wątków. W celu poprawy wydajności użyj aplikacji kopii pliku wielowątkowych takiego jak [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) do kopiowania plików za pomocą wątków 16 lub 32. Aby zmienić liczbę wątków na jedną kopię pliku Richcopy, kliknij przycisk **akcji** > **opcje kopiowania** > **skopiowanie pliku**.<br><br>
 ![Zagadnienia dotyczące kopiowania plików powolne](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - Za mało szybkość odczytu/zapisu dysku maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z magazynu Azure](../storage/common/storage-e2e-troubleshooting.md).
 
@@ -134,7 +134,7 @@ Tracert do śledzenia do urządzenia Microsoft Azure umożliwia określenie, czy
 Z sieci lokalnej, uruchom *tracert* do adresu IP bramy Azure lub maszyny Wirtualnej. Gdy zostanie wyświetlony tylko * zwrócone, wiadomo, został osiągnięty Azure krawędzi. Po wyświetleniu nazwy DNS, które obejmują "MSN" zwrócił wiadomo, że został osiągnięty szkielet firmy Microsoft.<br><br>
 ![Sprawdzanie opóźnienia](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji lub uzyskać pomoc zapoznaj się następujących łączy:
 
 - [Zoptymalizować przepływność sieci maszyn wirtualnych platformy Azure](../virtual-network/virtual-network-optimize-network-bandwidth.md)

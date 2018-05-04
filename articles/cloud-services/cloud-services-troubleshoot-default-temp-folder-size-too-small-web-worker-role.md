@@ -1,11 +1,11 @@
 ---
-title: "Domyślny rozmiar folderu tymczasowego jest za mały dla roli | Dokumentacja firmy Microsoft"
-description: "Rola usługi chmury ma ograniczoną ilość miejsca do folderu tymczasowego. Ten artykuł zawiera wskazówki dotyczące zapobiegania wyczerpaniu miejsca."
+title: Domyślny rozmiar folderu tymczasowego jest za mały dla roli | Dokumentacja firmy Microsoft
+description: Rola usługi chmury ma ograniczoną ilość miejsca do folderu tymczasowego. Ten artykuł zawiera wskazówki dotyczące zapobiegania wyczerpaniu miejsca.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: ab0a7c43393aab10abbce095f801afc4ebaf6b87
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 177438c4d6b416584f1797ec1ce744fc484ef688
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Domyślny rozmiar folderu tymczasowego jest za mały dla roli sieć web/proces roboczy usługi chmury
 Domyślny katalog tymczasowy roli procesu roboczego lub sieci web usługi chmury ma maksymalny rozmiar 100 MB, co może stać się pełna w pewnym momencie. W tym artykule opisano sposób zapobiega wyczerpaniu się miejsce dla katalogu tymczasowego.
@@ -69,9 +69,9 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj blog, który opisuje [jak zwiększyć rozmiar folderu Azure Web roli ASP.NET tymczasowego](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
-Wyświetl więcej [Rozwiązywanie problemów z artykułów](/?tag=top-support-issue&product=cloud-services) dla usług w chmurze.
+Wyświetl więcej [Rozwiązywanie problemów z artykułów](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) dla usług w chmurze.
 
 Aby dowiedzieć się, jak rozwiązywać problemy roli usługi w chmurze przy użyciu danych diagnostycznych Azure PaaS komputera, Wyświetl [serii blogu Kevina Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

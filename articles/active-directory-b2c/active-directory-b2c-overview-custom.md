@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Usługi Azure Active Directory B2C: Zasady niestandardowe
 
@@ -64,7 +64,7 @@ Usługa Azure AD B2C współdziała z dostawców tożsamości, użytkowników i 
 
 ### <a name="identity-experience-framework"></a>Platforma obsługi tożsamości
 
-Formatuje pełni konfigurowalne, oparte na zasadach, oparte na chmurze platformy Azure, będąca aranżacją relacji zaufania między jednostkami (szeroko dostawców oświadczeń) w standardowego protokołu OpenIDConnect, OAuth, SAML, WSFed i kilka z nich niestandardowych (na przykład REST API-based systemu do systemu oświadczeń wymiany). I2E tworzy przyjazną dla użytkownika, napotyka whitelabelled, który obsługuje HTML, CSS i javascript.  Obecnie Framework obsługi tożsamości jest dostępna tylko w kontekście usługi Azure AD B2C i priorytetową zadania związane z CIAM.
+Formatuje pełni konfigurowalne, oparte na zasadach, oparte na chmurze platformy Azure, będąca aranżacją relacji zaufania między jednostkami (szeroko dostawców oświadczeń) w standardowego protokołu OpenIDConnect, OAuth, SAML, WSFed i kilka z nich niestandardowych (na przykład REST API-based systemu do systemu oświadczeń wymiany). I2E tworzy przyjazny dla użytkownika, z etykietą biały procesów, które obsługują HTML, CSS i javascript.  Obecnie Framework obsługi tożsamości jest dostępna tylko w kontekście usługi Azure AD B2C i priorytetową zadania związane z CIAM.
 
 ### <a name="built-in-policies"></a>Wbudowane zasady
 

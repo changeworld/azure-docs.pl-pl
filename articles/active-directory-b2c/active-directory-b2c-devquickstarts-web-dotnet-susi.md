@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 3f601fbbbb9aab0f942b26da9ad1c8c0a0dc9b16
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 052d81f8170273bb0e40572322349550e7219363
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Tworzenie aplikacji sieci web platformy ASP.NET z usługi Azure Active Directory B2C profilu rejestracji, logowania, edycji i resetowania hasła
 
@@ -28,7 +28,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dzierżawy usługi B2C należy połączyć z kontem platformy Azure. Możesz utworzyć bezpłatne konto platformy Azure [tutaj](https://azure.microsoft.com/en-us/).
+- Dzierżawy usługi B2C należy połączyć z kontem platformy Azure. Możesz utworzyć bezpłatne konto platformy Azure [tutaj](https://azure.microsoft.com/).
 - Należy [programu Microsoft Visual Studio](https://www.visualstudio.com/) lub program podobne do wyświetlania i modyfikowania przykładowy kod.
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>Tworzenie katalogu usługi Azure AD B2C

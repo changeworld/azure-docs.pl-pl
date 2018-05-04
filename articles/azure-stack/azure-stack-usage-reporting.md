@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 9153efb73e84d7b84a732217b92a9c66617e90ae
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Raport danych użycia usługi Azure stosu na platformie Azure 
 
@@ -27,7 +27,7 @@ Dane użycia, nazywany również dane dotyczące zużycia, reprezentuje ilość 
 Azure systemów wielowęzłowego stosu, które używają modelu rozliczeń na podstawie zużycia powinni zgłaszać dane użycia do platformy Azure na potrzeby rozliczeń.  Operatory stosu Azure należy skonfigurować ich wystąpienia stosu Azure raportować dane użycia na platformie Azure.
 
 > [!NOTE]
-> Raportowanie danych użycia jest wymagana dla użytkowników wielowęzłowego stosu Azure licencji, zgodnie z modelem płatności jako — użytkownik użycia. Opcjonalne dla klientów, którzy licencji, zgodnie z modelem pojemności (zobacz [jak kupić strony](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/). Dla użytkowników usługi Azure stosu Development Kit operatory stosu Azure raport danych użycia i przetestować tę funkcję. Jednak użytkownicy nie zostanie obciążona dla bez użycia, które wiążą się. 
+> Raportowanie danych użycia jest wymagana dla użytkowników wielowęzłowego stosu Azure licencji, zgodnie z modelem płatności jako — użytkownik użycia. Opcjonalne dla klientów, którzy licencji, zgodnie z modelem pojemności (zobacz [jak kupić strony](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Dla użytkowników usługi Azure stosu Development Kit operatory stosu Azure raport danych użycia i przetestować tę funkcję. Jednak użytkownicy nie zostanie obciążona dla bez użycia, które wiążą się. 
 
 
 ![Przepływ rozliczeń](media/azure-stack-usage-reporting/billing-flow.png)

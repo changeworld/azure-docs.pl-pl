@@ -1,6 +1,6 @@
 ---
-title: "Macierz obsługi replikacji funkcji Hyper-V do platformy Azure | Dokumentacja firmy Microsoft"
-description: "Podsumowanie obsługiwanych składników oraz wymagania dotyczące replikacji funkcji Hyper-V do platformy Azure z usługą Azure Site Recovery"
+title: Macierz obsługi replikacji funkcji Hyper-V do platformy Azure | Dokumentacja firmy Microsoft
+description: Podsumowanie obsługiwanych składników oraz wymagania dotyczące replikacji funkcji Hyper-V do platformy Azure z usługą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 9078b56ae9c5582aa21201c168974eb6cc7a4ed6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V w systemie Azure
 
@@ -170,7 +170,7 @@ Aby upewnić się, że wdrożenie jest zgodny z ustawieniami w tym artykule, upe
 
 **Nazwa** | **Opis** | **Szczegóły**
 --- | --- | --- | --- | ---
-Dostawca usługi Azure Site Recovery | Współrzędne komunikacji między serwerami lokalnymi i Azure <br/><br/> Funkcja Hyper-V z programu Virtual Machine Manager: zainstalowanych na serwerach programu Virtual Machine Manager<br/><br/> Funkcja Hyper-V bez programu Virtual Machine Manager: zainstalowanych na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w portalu Azure)<br/><br/> [Najnowsze funkcje i poprawki](https://aka.ms/latest_asr_updates)
+Dostawca usługi Azure Site Recovery | Współrzędne komunikacji między serwerami lokalnymi i Azure <br/><br/> Funkcja Hyper-V z programu Virtual Machine Manager: zainstalowanych na serwerach programu Virtual Machine Manager<br/><br/> Funkcja Hyper-V bez programu Virtual Machine Manager: zainstalowanych na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w portalu Azure)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i platformą Azure<br/><br/> Zainstalowane na serwerach funkcji Hyper-V lokalnej (z lub bez programu Virtual Machine Manager) | Najnowsza wersja agenta dostępna z portalu
 
 

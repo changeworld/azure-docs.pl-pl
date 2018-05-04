@@ -1,6 +1,6 @@
 ---
-title: Wywołanie pakietów SSIS przy użyciu fabryki danych Azure - działania dotyczącego procedury składowanej | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak można wywołać z potoku fabryki danych Azure za pomocą działania dotyczącego procedury składowanej pakiet SQL Server Integration Services (SSIS).
+title: Uruchom pakiet SSIS za pomocą działania dotyczącego procedury składowanej w fabryce danych Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) z potoku fabryki danych Azure za pomocą działania dotyczącego procedury składowanej.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 00a4401a9116d8ebbfefa56194fe45802bcf198e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Wywołanie pakietów SSIS za pomocą działania procedury składowanej w fabryce danych Azure
-W tym artykule opisano sposób wywołania pakietów SSIS z potoku fabryki danych Azure za pomocą działania procedury składowanej. 
+# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS za pomocą działania procedury składowanej w fabryce danych Azure
+W tym artykule opisano sposób uruchamiania pakietów SSIS z potoku fabryki danych Azure za pomocą działania procedury składowanej. 
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [pakietów SSIS wywołać przy użyciu działania procedury składowanej w wersji 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
@@ -85,12 +85,13 @@ W tym kroku używasz interfejsu użytkownika z fabryki danych do utworzenia poto
 4. W oknie **Nowa połączona usługa** wykonaj następujące czynności: 
 
     1. Wybierz **baza danych Azure SQL** dla **typu**.
-    2. Wybierz serwer Azure SQL obsługującym bazę danych usług SSIS dla **nazwy serwera** pola.
-    3. Wybierz **SSISDB** dla **Nazwa bazy danych**.
-    4. Aby uzyskać **nazwy użytkownika**, wprowadź nazwę użytkownika, który ma dostęp do bazy danych.
-    5. Aby uzyskać **hasło**, wprowadź hasło użytkownika. 
-    6. Testowanie połączenia z bazą danych, klikając **połączenie testowe** przycisku.
-    7. Zapisz połączonej usługi, klikając **zapisać** przycisku. 
+    2. Wybierz **domyślne** środowiska uruchomieniowego integracji Azure nawiązywania połączenia z bazą danych SQL Azure, który jest hostem `SSISDB` bazy danych.
+    3. Wybierz bazę danych SQL Azure obsługującym bazę danych usług SSIS dla **nazwy serwera** pola.
+    4. Wybierz **SSISDB** dla **Nazwa bazy danych**.
+    5. Aby uzyskać **nazwy użytkownika**, wprowadź nazwę użytkownika, który ma dostęp do bazy danych.
+    6. Aby uzyskać **hasło**, wprowadź hasło użytkownika. 
+    7. Testowanie połączenia z bazą danych, klikając **połączenie testowe** przycisku.
+    8. Zapisz połączonej usługi, klikając **zapisać** przycisku. 
 
         ![Połączona usługa Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. W oknie właściwości, przełącz się do **procedury składowanej** karcie z **konto SQL** , i wykonaj następujące czynności: 
@@ -121,14 +122,18 @@ W tej sekcji wyzwalanie wykonywania potoku, a następnie monitorować go.
 
 1. Aby wyzwolić potoku uruchamiania, kliknij przycisk **wyzwalacza** na pasku narzędzi, a następnie kliknij przycisk **uruchomić teraz**. 
 
-    ![Wyzwól teraz](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    ![Wyzwól teraz](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+
 2. W oknie **Uruchomienie potoku** wybierz pozycję **Zakończ**. 
 3. Przejdź do karty **Monitorowanie** po lewej stronie. Zostanie wyświetlony potoku uruchamiania i jego stan oraz innych informacji (na przykład czas uruchomienia Start). Aby odświeżyć widok, kliknij przycisk **Odśwież**.
 
     ![Uruchomienia potoków](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+
 3. Kliknij link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Użytkownik widzi tylko jedno działanie Uruchom jako potoku ma tylko jedno działanie (działania procedury składowanej).
 
-    ![Uruchomień działania](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png) można uruchomić następujące 4 **zapytania** względem bazy danych SSISDB bazy danych na serwerze Azure SQL, aby sprawdzić, czy pakiet wykonywane. 
+    ![Uruchomienia działania](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+
+4. Można uruchomić następujące **zapytania** względem bazy danych SSISDB bazy danych na serwerze Azure SQL, aby sprawdzić, czy pakiet wykonywane. 
 
     ```sql
     select * from catalog.executions

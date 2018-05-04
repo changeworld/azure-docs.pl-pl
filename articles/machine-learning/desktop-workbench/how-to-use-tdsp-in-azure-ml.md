@@ -1,12 +1,12 @@
 ---
-title: "Struktura projektów z szablonem procesu nauki danych Team | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć wystąpienia zespołu danych nauki procesu (TDSP) szablonów usługi Azure Machine Learning struktury projektów współpracy"
+title: Struktura projektów z szablonem procesu nauki danych Team | Dokumentacja firmy Microsoft
+description: Jak utworzyć wystąpienia zespołu danych nauki procesu (TDSP) szablonów usługi Azure Machine Learning struktury projektów współpracy
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/16/2017
 ms.author: bradsev
 ms.openlocfilehash: 0f7a6d0a58e2dcfd94e20a81ae12b42f238016c8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Struktura projektów z szablonem procesu nauki danych zespołu
 
@@ -68,7 +68,7 @@ Aby utworzyć nowy projekt, otwórz uczenia maszynowego Azure. W obszarze **proj
 ### <a name="create-a-new-tdsp-structured-project"></a>Utwórz nowy projekt strukturę TDSP
    1. Określ parametry i informacje w odpowiednie pole wyboru lub na liście:
 
-      - Nazwa projektu
+      - Project name (Nazwa projektu)
       - Katalog projektu
       - Opis projektu
       - Pusta ścieżka repozytorium Git

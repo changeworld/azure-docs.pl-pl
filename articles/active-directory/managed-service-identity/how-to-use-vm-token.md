@@ -1,11 +1,11 @@
 ---
-title: "Jak używać zarządzane usługi tożsamość Azure maszyny Wirtualnej można uzyskać tokenu dostępu"
-description: "Krok po kroku tokenu dostępu instrukcje i przykłady dotyczące uzyskania OAuth przy użyciu Instalatora MSI maszyny Wirtualnej Azure."
+title: Jak używać zarządzane usługi tożsamość Azure maszyny Wirtualnej można uzyskać tokenu dostępu
+description: Krok po kroku tokenu dostępu instrukcje i przykłady dotyczące uzyskania OAuth przy użyciu Instalatora MSI maszyny Wirtualnej Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 0aec1ed570ba688288be4e7fcd9b74513234ea3d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: MT
+ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Sposób użycia tokenu nabycia Azure VM zarządzane usługi tożsamości (MSI) 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Ten artykuł zawiera różne przykłady kodu i skrypt nabycia token, a także wskazówki dotyczące ważnych tematów, takich jak obsługa wygaśnięcia tokenu i błędów HTTP.
+Ten artykuł zawiera różne przykłady kodu i skrypt nabycia token, a także wskazówki dotyczące ważnych tematów, takich jak obsługa wygaśnięcia tokenu i błędów HTTP. Zalecane jest użycie zarządzane tożsamość usługi z punktem końcowym IMDS jako rozszerzenia punktu końcowego maszyny Wirtualnej zostaną wycofane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,6 +33,9 @@ Jeśli planujesz używać programu Azure PowerShell przykłady w tym artykule, n
 
 > [!IMPORTANT]
 > - Wszystkie próbki kodu skryptu w tym artykule przyjęto założenie, klient jest uruchomiony na maszynie wirtualnej włączone MSI. Funkcja maszyny Wirtualnej "Połącz" w portalu Azure, aby zdalnie nawiązać połączenia z maszyną Wirtualną. Aby uzyskać więcej informacji na temat włączania MSI w maszynie Wirtualnej, zobacz [skonfigurować maszyny Wirtualnej zarządzane usługi tożsamości (MSI) przy użyciu portalu Azure](qs-configure-portal-windows-vm.md), lub jednego z artykułów variant (przy użyciu programu PowerShell, interfejsu wiersza polecenia, szablonu lub zestawu SDK platformy Azure). 
+
+> [!IMPORTANT]
+> - Granica bezpieczeństwa tożsamości zarządzanych, jest zasobem. Wszystkie kodu/skrypty uruchomiona na komputerze z obsługą MSI wirtualnej żądać i pobranie tokenów. 
 
 ## <a name="overview"></a>Przegląd
 
@@ -51,9 +54,23 @@ Aplikacja kliencka mogą żądać MSI [token dostępu tylko do aplikacji](../dev
 
 ## <a name="get-a-token-using-http"></a>Uzyskaj token za pośrednictwem protokołu HTTP 
 
-Podstawowe interfejsu uzyskania tokenu dostępu jest oparta na REST, udostępnienie jej do klienta aplikacji uruchomionych na maszynie Wirtualnej, która może wykonywać wywołania REST protokołu HTTP. Jest to podobne do modelu programowania usługi Azure AD, z wyjątkiem klient używa punktu końcowego localhost na maszynie wirtualnej (vs Azure AD punktu końcowego).
+Podstawowe interfejsu uzyskania tokenu dostępu jest oparta na REST, udostępnienie jej do klienta aplikacji uruchomionych na maszynie Wirtualnej, która może wykonywać wywołania REST protokołu HTTP. Jest to podobne do modelu programowania usługi Azure AD, z wyjątkiem klient używa punktu końcowego na maszynie wirtualnej (vs Azure AD punktu końcowego).
 
-Przykładowe żądanie:
+Przykładowe żądanie przy użyciu punktu końcowego MSI wystąpienie metadanych usługi (IMDS) *(zalecane)*:
+
+```
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
+```
+
+| Element | Opis |
+| ------- | ----------- |
+| `GET` | Zlecenie HTTP wskazująca, że chcesz pobrać dane z punktu końcowego. W takim przypadku tokenu dostępu protokołu OAuth. | 
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Punkt końcowy MSI dla wystąpienia usługi metadanych. |
+| `api-version`  | Parametr ciągu zapytania, wskazujący wersję interfejsu API dla punktu końcowego IMDS. Użyj interfejsu API w wersji `2018-02-01` lub nowszej. |
+| `resource` | Parametr ciągu zapytania, wskazującą aplikację identyfikator URI zasobu docelowego. Jest także wyświetlany w `aud` oświadczeń (odbiorcy) wystawionego tokenu. W tym przykładzie żądania tokenu dostępu usługi Azure Resource Manager, do którego ma identyfikator URI aplikacji z https://management.azure.com/. |
+| `Metadata` | Pola nagłówka żądania HTTP, wymagane przez Instalatora MSI jako ograniczenie przed atakiem serwera po stronie żądania Międzywitrynowego (SSRF). Musi mieć ustawioną wartość "prawda", w małe litery.
+
+Przykładowe żądanie przy użyciu punktu końcowego rozszerzenia maszyny Wirtualnej MSI *(aby przestarzałe)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -64,8 +81,9 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | Zlecenie HTTP wskazująca, że chcesz pobrać dane z punktu końcowego. W takim przypadku tokenu dostępu protokołu OAuth. | 
 | `http://localhost:50342/oauth2/token` | MSI punktu końcowego, gdzie 50342 jest domyślnym portem i można go skonfigurować. |
-| `resource` | Parametr ciągu zapytania, wskazującą aplikację identyfikator URI zasobu docelowego. Jest także wyświetlany w `aud` oświadczeń (odbiorcy) wystawionego tokenu. W tym przykładzie żądania tokenu dostępu usługi Azure Resource Manager, który ma identyfikator URI aplikacji z https://management.azure.com/ do. |
+| `resource` | Parametr ciągu zapytania, wskazującą aplikację identyfikator URI zasobu docelowego. Jest także wyświetlany w `aud` oświadczeń (odbiorcy) wystawionego tokenu. W tym przykładzie żądania tokenu dostępu usługi Azure Resource Manager, do którego ma identyfikator URI aplikacji z https://management.azure.com/. |
 | `Metadata` | Pola nagłówka żądania HTTP, wymagane przez Instalatora MSI jako ograniczenie przed atakiem serwera po stronie żądania Międzywitrynowego (SSRF). Musi mieć ustawioną wartość "prawda", w małe litery.
+
 
 Przykładowa odpowiedź:
 
@@ -103,7 +121,7 @@ using System.Net;
 using System.Web.Script.Serialization; 
 
 // Build request to acquire MSI token
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://management.azure.com/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create(http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 
@@ -153,7 +171,7 @@ func main() {
     
     // Create HTTP request for MSI token to access Azure Resource Manager
     var msi_endpoint *url.URL
-    msi_endpoint, err := url.Parse("http://localhost:50342/oauth2/token")
+    msi_endpoint, err := url.Parse("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01")
     if err != nil {
       fmt.Println("Error creating URL: ", err)
       return 
@@ -212,9 +230,14 @@ W poniższym przykładzie pokazano sposób użycia punkt końcowy MSI REST z kli
 2. Użyj tokenu dostępu wywołania interfejsu REST API usługi Azure Resource Manager w celu uzyskania informacji o maszynie Wirtualnej. Pamiętaj zastąpić Twojego Identyfikatora subskrypcji, nazwa grupy zasobów i nazwy maszyny wirtualnej dla `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`, i `<VM-NAME>`odpowiednio.
 
 ```azurepowershell
+Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
+```
+
+Przykład o tym, jak można przeanalizować tokenu dostępu z odpowiedzi:
+```azurepowershell
 # Get an access token for the MSI
-$response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token `
-                              -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+$response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F `
+                              -Headers @{Metadata="true"}
 $content =$response.Content | ConvertFrom-Json
 $access_token = $content.access_token
 echo "The MSI access token is $access_token"
@@ -229,27 +252,35 @@ echo $vmInfoRest
 ## <a name="get-a-token-using-curl"></a>Uzyskaj token przy użyciu programu CURL
 
 ```bash
-response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s)
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
+```
+
+
+Przykład o tym, jak można przeanalizować tokenu dostępu z odpowiedzi:
+
+```bash
+response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
 echo The MSI access token is $access_token
 ```
 
-## <a name="handling-token-expiration"></a>Obsługa wygaśnięcia tokenu
+## <a name="token-expiration"></a>Wygaśnięcia tokenu 
 
-Podsystemu lokalnego MSI buforuje tokenów. W związku z tym można wywołać ją tyle razy, ile Ci się podoba i powoduje wywołanie w locie do usługi Azure AD tylko wtedy, gdy:
+Buforowanie token kodu użytkownika powinno być przygotowany do obsługi scenariuszy, których zasobu wskazanego wygasł token. 
+
+Uwaga: Ponieważ podsystemu IMDS MSI pamięci podręcznej tokenów, w locie wywołań usługi Azure AD wyniki tylko wtedy, gdy:
 - Chybienia pamięci podręcznej występuje ze względu na nie tokenu w pamięci podręcznej
 - token utracił ważność
 
-Kod w pamięci podręcznej tokenu, powinny być przygotowane do obsługi scenariuszy, w którym zasobu wskazuje, czy token utracił ważność.
-
-## <a name="error-handling"></a>Obsługa błędów 
+## <a name="error-handling"></a>Obsługa błędów
 
 Punkt końcowy MSI sygnały błędów za pomocą kodu stanu pola nagłówka komunikatu odpowiedzi HTTP, jak 4xx lub 5xx błędy:
 
 | Kod stanu | Przyczyny błędu | Sposób obsługi |
 | ----------- | ------------ | ------------- |
+| 429 zbyt wiele żądań. |  Osiągnięto limit przepustnicy IMDS. | Spróbuj ponownie z wykładniczego wycofywania. Zobacz poniższe wskazówki. |
 | Błąd 4xx w żądaniu. | Co najmniej jeden z parametrów żądania jest niepoprawne. | Nie próbuj ponownie.  Sprawdź, czy szczegóły błędu, aby uzyskać więcej informacji.  błędy 4xx są błędy czasu projektowania.|
-| 5xx Błąd przejściowy z usługi. | Podsystem MSI lub Azure Active Directory zwróciła błąd przejściowy. | Jest bezpieczne ponowić próbę po odczekaniu co najmniej 1 sekundę.  Jeśli można ponowić próbę zbyt szybko lub zbyt często, usługi Azure AD mogą zwracać błąd limitu szybkości (429).|
+| 5xx Błąd przejściowy z usługi. | Podsystem MSI lub Azure Active Directory zwróciła błąd przejściowy. | Jest bezpieczne ponowić próbę po odczekaniu co najmniej 1 sekundę.  Możesz ponowić próbę zbyt szybko lub zbyt częstym IMDS i/lub Azure AD mogą zwracać błąd limitu szybkości (429).|
 
 Jeśli wystąpi błąd, odpowiednich treści odpowiedzi HTTP zawiera JSON z szczegóły błędu:
 
@@ -264,7 +295,7 @@ W tej sekcji omówiono odpowiedzi może zawierać błąd. A "200 OK" stan to pom
 
 | Kod stanu | Błąd | Opis błędu | Rozwiązanie |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Niewłaściwe żądanie | invalid_resource | AADSTS50001: Aplikacja o nazwie  *\<URI\>*  nie znaleziono dzierżawy o nazwie  *\<identyfikator DZIERŻAWCY\>*. Może to nastąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub zgodę na każdy użytkownik w dzierżawie. Żądanie uwierzytelniania prawdopodobnie została wysłana do niewłaściwej dzierżawy. \ | (Tylko w systemie Linux) |
+| 400 Niewłaściwe żądanie | invalid_resource | AADSTS50001: Aplikacja o nazwie *\<URI\>* nie znaleziono dzierżawy o nazwie  *\<identyfikator DZIERŻAWCY\>*. Może to nastąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub zgodę na każdy użytkownik w dzierżawie. Żądanie uwierzytelniania prawdopodobnie została wysłana do niewłaściwej dzierżawy. \ | (Tylko w systemie Linux) |
 | 400 Niewłaściwe żądanie | bad_request_102 | Nie określono nagłówka wymagane metadane | Albo `Metadata` pola nagłówka żądania brakuje żądania lub jest niepoprawnie sformatowana. Wartość musi być określona jako `true`, w małe litery. Zobacz sekcję "przykładowe żądanie" w [powyższej sekcji REST](#rest) przykład.|
 | 401 nieautoryzowane | unknown_source | Nieznane źródło  *\<identyfikatora URI\>* | Sprawdź, żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany. `scheme:host/resource-path` Części muszą być określone jako `http://localhost:50342/oauth2/token`. Zobacz sekcję "przykładowe żądanie" w [powyższej sekcji REST](#rest) przykład.|
 |           | invalid_request | Żądania brakuje wymaganego parametru, obejmuje niepoprawna wartość parametru, zawiera więcej niż raz parametr lub w przeciwnym razie jest nieprawidłowo sformułowany. |  |
@@ -273,6 +304,16 @@ W tej sekcji omówiono odpowiedzi może zawierać błąd. A "200 OK" stan to pom
 |           | unsupported_response_type | Serwer autoryzacji nie obsługuje uzyskiwania tokenu dostępu przy użyciu tej metody. |  |
 |           | invalid_scope | Żądany zakres jest nieprawidłowy, nieznany lub źle skonstruowany. |  |
 | 500 Wewnętrzny błąd serwera | nieznane | Nie można pobrać tokenu z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżka pliku\>* | Sprawdź, czy włączono MSI w maszynie Wirtualnej. Zobacz [skonfigurować maszyny Wirtualnej zarządzane usługi tożsamości (MSI) przy użyciu portalu Azure](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy w konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, czy żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowane, szczególnie zasób, którego identyfikator URI określony w ciągu zapytania. Zobacz sekcję "przykładowe żądanie" w [powyższej sekcji REST](#rest) przykład lub [uwierzytelniania pomocy technicznej usługi Azure AD z usług Azure](overview.md#azure-services-that-support-azure-ad-authentication) listę usług i ich odpowiednich identyfikatorów zasobów.
+
+## <a name="throttling-guidance"></a>Wskazówki dotyczące ograniczania przepustowości 
+
+Ograniczenia przepustowości limity mają zastosowanie do liczby wywołań do punktu końcowego MSI IMDS. Po przekroczeniu progu ograniczania przepustowości punktu końcowego MSI IMDS ogranicza żadnych dalszych żądań przepustnicy w czasie działania. W tym okresie punktu końcowego MSI IMDS zwróci kod stanu HTTP 429 ("jest zbyt wiele żądań"), i Niepowodzenie żądania. 
+
+Ponów próbę zalecamy następujących strategii: 
+
+| **Strategia ponawiania prób** | **Ustawienia** | **Wartości** | **Jak to działa** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |Liczba ponownych prób<br />Minimalna liczba wycofań<br />Maksymalna liczba wycofań<br />Różnica w liczbie wycofań<br />Pierwsze szybkie ponowienie |5<br />0 sek.<br />60 sek.<br />2 sek.<br />false |Próba 1 — opóźnienie 0 sek.<br />Próba 2 — opóźnienie ok. 2 sek.<br />Próba 3 — opóźnienie ok. 6 sek.<br />Próba 4 — opóźnienie ok. 14 sek.<br />Próba 5 — opóźnienie ok. 30 sek. |
 
 ## <a name="resource-ids-for-azure-services"></a>Identyfikatory zasobów dla usług Azure
 

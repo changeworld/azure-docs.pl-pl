@@ -1,26 +1,26 @@
 ---
-title: "Przykłady szablonów zasad | Dokumentacja firmy Microsoft"
-description: "Przykłady JSON dla zasad usługi Azure"
+title: Przykłady szablonów zasad | Dokumentacja firmy Microsoft
+description: Przykłady JSON dla zasad usługi Azure
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: azure-policy
 ms.devlang: na
 ms.topic: samples
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 01/17/2018
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3473cb5260773fda0534c4f0aca1db731cce74eb
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="templates-for-azure-policy"></a>Szablony zasad Azure
 
@@ -59,7 +59,7 @@ Poniższa tabela zawiera linki do szablony json dla zasad usługi Azure. Te przy
 | [Użyj zatwierdzonych podsieci maszyny Wirtualnej w interfejsach sieciowych](scripts/use-approved-subnet-vm-nics.md) | Wymaga użycia zatwierdzonych podsieci interfejsów sieciowych. Należy określić identyfikator zatwierdzonych podsieci. |
 | [Użyj zatwierdzonych sieci wirtualnej maszyny Wirtualnej w interfejsach sieciowych](scripts/use-approved-vnet-vm-nics.md) | Wymaga użycia interfejsów sieciowych zatwierdzonych sieci wirtualnej. Należy określić identyfikator zatwierdzonych sieci wirtualnej. |
 |**Tagi**||
-| [Inicjatywy zasad tagi rozliczeń](scripts/billing-tags-policy-init.md) | Wymaga wartości określonego tagu dla Centrum kosztów, nazwa produktu. Używa wbudowanych zasad, aby zastosować i wymuszać wymagane tagi. Możesz określić wymagane wartości tagów.  |
+| [Inicjatywy zasad tagi rozliczeń](scripts/billing-tags-policy-init.md) | Wymaga wartości określonego tagu dla Centrum kosztów, nazwa produktu. Przy użyciu wbudowanych zasad określa wymagane tagi i wymusza ich stosowanie. Wymagane wartości tagów są określane przez Ciebie.  |
 | [Wymuszanie tagu i jej wartość na temat grup zasobów](scripts/enforce-tag-rg.md) | Wymaga tagu i wartość dla grupy zasobów. Należy określić nazwa wymaganego tagu i wartość.  |
 |**SQL**||
 | [Inspekcja poziom bazy danych SQL Inspekcja](scripts/audit-sql-db-audit-setting.md) | Inspekcja ustawienia inspekcji bazy danych SQL, jeśli te ustawienia są niezgodne z określonej wartości. Można określić wartość, która wskazuje, czy ustawienia inspekcji powinny być włączone lub wyłączone.  |
@@ -79,6 +79,9 @@ Poniższa tabela zawiera linki do szablony json dla zasad usługi Azure. Te przy
 | [Typy zasobów dozwolonych](scripts/allowed-res-types.md) | Zapewnia tylko typy zasobów zatwierdzonych są wdrażane. Należy określić tablicę typów zasobów, które są dozwolone.  |
 | [Dozwolone konto magazynu jednostki SKU](scripts/allowed-stor-acct-skus.md) | Wymaga użycia wersji zatwierdzonych kont magazynu. Należy określić tablicę zatwierdzone jednostki SKU. |
 | [Stosuje tag i wartość domyślną](scripts/apply-tag-def-val.md) | Dołącza określonego tagu nazwy i wartości, jeśli nie podano tagu. Można określić nazwy tagu i wartości do zastosowania.  |
+| [Inspekcja szyfrowania bazy danych SQL](scripts/sql-database-encryption-audit.md) | Inspekcje, jeśli baza danych SQL nie ma przezroczystego szyfrowania danych włączone. |
+| [SQL Server audit ustawień inspekcji](scripts/sql-server-audit.md) | Inspekcji oparte na czy są włączone ustawienia inspekcji serwera SQL. |
+| [Wymuszanie szyfrowania usługi Data Lake Store](scripts/enforce-datalakestore-encryption.md) | Odrzuca wszystkie konta usługi Data Lake Store, które nie mają włączone szyfrowanie. |
 | [Wymuszanie tagu i jego wartość](scripts/enforce-tag-val.md) | Wymagana jest nazwa określonego tagu i wartość. Określ jest nazwa tagu i wartości do wymuszania.  |
 | [Niedozwolone typy zasobów](scripts/not-allowed-res-type.md) | Zabrania używania wdrożenia typów określonego zasobu. Należy określić tablicę typów zasobów, aby zablokować.  |
 | [Wymaga programu SQL Server w wersji 12.0](scripts/req-sql-12.md) | Wymaga serwerów SQL w wersji 12.0.  |

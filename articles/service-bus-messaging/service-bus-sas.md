@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
-ms.author: sethm;clemensv
-ms.openlocfilehash: 21e9e0a20842e365e40b71ac96888e7cd2056e52
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: sethm
+ms.openlocfilehash: 420f4573fbe8b5139a4e1e5fa4dea3404c4e099d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -260,7 +260,7 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane przez różne operacje
 | Wyliczanie zasad prywatnych |Zarządzanie |Każdy adres przestrzeni nazw |
 | Rozpoczęcie nasłuchiwania na przestrzeni nazw |Nasłuchuj |Każdy adres przestrzeni nazw |
 | Wysyłanie komunikatów do odbiornika w przestrzeni nazw |Send |Każdy adres przestrzeni nazw |
-| **Queue** | | |
+| **Kolejki** | | |
 | Tworzenie kolejki |Zarządzanie |Każdy adres przestrzeni nazw |
 | Usuwanie kolejki |Zarządzanie |Każdy adres prawidłową kolejką |
 | Wyliczanie kolejek |Zarządzanie |Katalogu zasobów/kolejek |

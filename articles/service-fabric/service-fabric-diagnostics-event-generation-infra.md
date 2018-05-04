@@ -12,21 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1ba02afa775343f496a2b5fec98699e593a330ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>Monitorowanie klastra i platform
 
 Należy monitorować na poziomie platformy, aby ustalić, czy sprzęt i klastra są działa zgodnie z oczekiwaniami. Sieć szkieletowa usług można zachować aplikacje uruchomione podczas awarii sprzętu, ale nadal konieczne zdiagnozować, czy błąd występuje w aplikacji lub podstawowej infrastruktury. Należy również monitorować klastrów lepiej planowania pojemności, pomoc w podejmowaniu decyzji dotyczących dodawania i usuwania sprzętu.
 
-Usługa Service Fabric realizuje następujące dziennika kanały out-of box:
+Usługa sieci szkieletowej udostępnia kilka zdarzeń strukturalnych platformy, jako "[zdarzenia sieci szkieletowej usług](service-fabric-diagnostics-events.md)," za pośrednictwem EventStore i różnymi dziennika kanały out-of--box. 
 
-* **Operacyjne**  
+EventStore umożliwia dostęp do sieci klastra zdarzenia na podstawie na jednostkę (łącznie z klastra, węzłów, aplikacji, usług, partycji, repliki i kontenerów jednostek) i udostępnia je za pośrednictwem interfejsów API REST i biblioteki klienta usługi sieć szkieletowa usług. Umożliwia monitorowanie klastrów i testowania, EventStore i pobrania opis punktu w czasie, stanu klastrów produkcyjnych. Dowiedz się więcej o tym w [omówienie EventStore](service-fabric-diagnostics-eventstore.md).
+
+Usługa sieci szkieletowej znajdują się również dziennika następujące kanały out-of--box do konfigurowania potoku do monitorowania klastrów produkcyjnych:
+
+* [**Operacyjne**](service-fabric-diagnostics-event-generation-operational.md)  
 Ogólne operacje wykonywane przez sieć szkieletowa usług i klastra, w tym zdarzenia dotyczące powtarzający się węzeł, nowej aplikacji wdrażany lub uaktualniania wycofywania itp.
 
 * **Operacyjne — szczegółowy**  

@@ -1,11 +1,11 @@
 ---
-title: "Zbierać dzienniki usługi Azure i metryki dla Log Analytics | Dokumentacja firmy Microsoft"
-description: "Skonfiguruj diagnostyki na zasobów platformy Azure można zapisać dzienników i metryk do analizy dzienników."
+title: Zbierać dzienniki usługi Azure i metryki dla Log Analytics | Dokumentacja firmy Microsoft
+description: Skonfiguruj diagnostyki na zasobów platformy Azure można zapisać dzienników i metryk do analizy dzienników.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Zbieranie dzienników usługi Azure i metryk do użycia w analizy dzienników
 
@@ -34,16 +34,16 @@ Istnieją cztery różne sposoby zbierania dzienników i metryki dla usług Azur
 | Usługa                 | Typ zasobu                           | Dzienniki        | Metryki     | Rozwiązanie |
 | --- | --- | --- | --- | --- |
 | Bramy aplikacji    | Microsoft.Network/applicationGateways   | Diagnostyka | Diagnostyka | [Analiza bramy aplikacji Azure](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
-| Usługa Application insights    |                                         | Łącznik   | Łącznik   | [Application Insights łącznik](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (wersja zapoznawcza) |
+| Application Insights    |                                         | Łącznik   | Łącznik   | [Application Insights łącznik](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (wersja zapoznawcza) |
 | Konta usługi Automation     | Microsoft.Automation/AutomationAccounts | Diagnostyka |             | [Więcej informacji](../automation/automation-manage-send-joblogs-log-analytics.md)|
-| Konta usługi partia zadań          | Microsoft.Batch/batchAccounts           | Diagnostyka | Diagnostyka | |
+| Konta usługi Batch          | Microsoft.Batch/batchAccounts           | Diagnostyka | Diagnostyka | |
 | Usługi w chmurze klasycznego  |                                         | Magazyn     |             | [Więcej informacji](log-analytics-azure-storage-iis-table.md) |
 | Usługi poznawcze      | Microsoft.CognitiveServices/accounts    |             | Diagnostyka | |
 | Data Lake analytics     | Microsoft.DataLakeAnalytics/accounts    | Diagnostyka |             | |
 | Data Lake store         | Microsoft.DataLakeStore/accounts        | Diagnostyka |             | |
-| Przestrzeń nazw Centrum zdarzeń     | Microsoft.EventHub/namespaces           | Diagnostyka | Diagnostyka | |
-| Centra IoT                | Microsoft.Devices/IotHubs               |             | Diagnostyka | |
-| Usługa Key Vault               | Microsoft.KeyVault/vaults               | Diagnostyka |             | [KeyVault analityka](log-analytics-azure-key-vault.md) |
+| Przestrzeń nazw centrum zdarzeń     | Microsoft.EventHub/namespaces           | Diagnostyka | Diagnostyka | |
+| Centra IoT Hub                | Microsoft.Devices/IotHubs               |             | Diagnostyka | |
+| Usługa Key Vault               | Microsoft.KeyVault/vaults               | Diagnostyka |             | [KeyVault Analytics](log-analytics-azure-key-vault.md) |
 | Moduły równoważenia obciążenia          | Microsoft.Network/loadBalancers         | Diagnostyka |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnostyka | Diagnostyka | |
 | Grupy zabezpieczeń sieci | Microsoft.Network/networksecuritygroups | Diagnostyka |             | [Grupy zabezpieczeń sieci Azure analityka](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
@@ -68,6 +68,13 @@ Istnieją cztery różne sposoby zbierania dzienników i metryki dla usług Azur
 Możliwość zapisywania dzienników diagnostycznych są wielu zasobów platformy Azure i metryki bezpośrednio do analizy dzienników i to jest preferowany sposób zbierania danych do analizy. Podczas korzystania z diagnostyki Azure, dane są zapisywane bezpośrednio do analizy dzienników i nie musi najpierw zapisać danych do magazynu.
 
 Zasobów platformy Azure, które obsługują [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) wysłać ich dzienniki i metryki bezpośrednio do analizy dzienników.
+
+> [!NOTE]
+> Wysyłanie metryki wielowymiarowej do analizy dzienników przy użyciu ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
+>
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych metryka jest odzwierciedlona jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+>
+>
 
 * Aby uzyskać szczegółowe informacje dostępne metryki, zapoznaj się [obsługiwane metryki z monitorem Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 * Szczegóły dostępne dzienniki, można znaleźć w [obsługiwanych usług i schematu dla dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
@@ -145,9 +152,9 @@ Dowiedz się więcej o [łącznika usługi Application Insights](https://blogs.t
 
 Dla usług Azure, które nie mają bezpośredniego sposób wysyłania dzienników i metryk do analizy dzienników skryptu automatyzacji Azure służy do zbierania dzienników i metryki. Skrypt może następnie wysyłać dane analizy dzienników przy użyciu [modułów zbierających dane interfejsu API](log-analytics-data-collector-api.md)
 
-Galeria szablonu Azure ma [przykłady użycia usługi Automatyzacja Azure](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) zbierania danych z usług i wysyłania go do analizy dzienników.
+Galeria szablonu Azure ma [przykłady użycia usługi Automatyzacja Azure](https://azure.microsoft.com/resources/templates/?term=OMS) zbierania danych z usług i wysyłania go do analizy dzienników.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Użyj magazynu obiektów blob dla usług IIS i tabeli magazynu dla zdarzeń](log-analytics-azure-storage-iis-table.md) odczytać dzienniki dla tej diagnostyki zapisu w magazynie tabel lub dzienniki programu IIS zapisywane do magazynu obiektów blob usług Azure.
 * [Włącz rozwiązań](log-analytics-add-solutions.md) zapewnienie wglądu w dane.

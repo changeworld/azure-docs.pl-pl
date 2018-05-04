@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie wiadomości urządzenia do chmury Azure IoT Hub | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera - sposobu korzystania z urządzenia do chmury do obsługi komunikatów z Centrum IoT. Zawiera informacje na temat wysyłania danych zarówno dane telemetryczne, jak i z systemem innym niż telemtry i przy użyciu routingu w celu dostarczania komunikatów."
+title: Zrozumienie wiadomości urządzenia do chmury Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera - sposobu korzystania z urządzenia do chmury do obsługi komunikatów z Centrum IoT. Zawiera informacje na temat wysyłania danych zarówno dane telemetryczne, jak i z systemem innym niż telemtry i przy użyciu routingu w celu dostarczania komunikatów.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Wysyłanie komunikatów urządzenia do chmury do Centrum IoT
 
@@ -32,7 +32,7 @@ Wiadomości z Centrum IoT urządzenia do chmury ma następującą charakterystyk
 * Urządzenia do chmury wiadomości są trwałe i zachowanych w Centrum IoT domyślne **wiadomości/zdarzenia** punktu końcowego do siedmiu dni.
 * Komunikaty urządzenia do chmury może mieć maksymalnie 256 KB i można grupować w partiach w celu zoptymalizowania wysyła. Partie może mieć maksymalnie 256 KB.
 * Zgodnie z objaśnieniem w [kontrolować dostęp do Centrum IoT] [ lnk-devguide-security] sekcji Centrum IoT umożliwia na urządzenie uwierzytelniania i kontroli dostępu.
-* Centrum IoT umożliwia tworzenie maksymalnie 10 niestandardowe punkty końcowe. Wiadomości są dostarczane do punktów końcowych oparte na trasach skonfigurowany w Centrum IoT. Aby uzyskać więcej informacji, zobacz [reguły routingu](#routing-rules).
+* Centrum IoT umożliwia tworzenie maksymalnie 10 niestandardowe punkty końcowe. Wiadomości są dostarczane do punktów końcowych oparte na trasach skonfigurowany w Centrum IoT. Aby uzyskać więcej informacji, zobacz [reguły routingu](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
 * Centrum IoT umożliwia miliony równocześnie połączonych urządzeń (zobacz [przydziały i ograniczenia przepustowości][lnk-quotas]).
 * Centrum IoT nie zezwala na dowolne partycjonowania. Urządzenia do chmury wiadomości są dzielone na podstawie ich źródłowych **deviceId**.
 

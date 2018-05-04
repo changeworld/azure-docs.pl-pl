@@ -1,28 +1,26 @@
 ---
 title: Tworzenie potoku uczenia maszynowego Apache Spark - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Biblioteka uczenia maszynowego Apache Spark służy do tworzenia potoki danych."
+description: Biblioteka uczenia maszynowego Apache Spark służy do tworzenia potoki danych.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: maxluk
-ms.openlocfilehash: 238ab5f940fbea836b75e20b015ae16f22eef3e9
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 75fdc427be42ff8895cde8add7c7b0623da6a808
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Utworzyć potok Spark machine learning
+# <a name="create-a-spark-machine-learning-pipeline"></a>Tworzenie potoku uczenia maszynowego platformy Spark
 
 Apache Spark skalowalne machine learning biblioteki (MLlib) zapewnia funkcje modelowania w środowisku rozproszonym. Pakiet Spark [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) to zestaw interfejsów API wysokiego poziomu, oparty na DataFrames. Te interfejsy API ułatwiają tworzenie i dostrajania praktyczne potoki uczenia maszynowego.  *Platforma Spark jest usługa machine learning* odwołuje się do tego na podstawie MLlib DataFrame interfejsu API, nie starsze na podstawie RDD potoku interfejsu API.
 
@@ -36,7 +34,7 @@ Każde wystąpienie bezstanowych transformatora lub narzędzia do szacowania ma 
 
 ## <a name="pipeline-example"></a>Przykład potoku
 
-Aby zademonstrować praktyczne wykorzystanie ML potoku, w tym przykładzie użyto przykładowej `HVAC.csv` pliku danych, który jest wstępnie załadowane na domyślny magazyn dla klastra usługi HDInsight, magazynu Azure lub usługi Data Lake Store. Aby wyświetlić zawartość pliku, przejdź do `/HdiSamples/HdiSamples/SensorSampleData/hvac` katalogu. `HVAC.csv`zawiera zestaw razy z docelowym i rzeczywistego temperatury HVAC (*grzejników, wentylatorów i klimatyzacja*) systemów w różnych budynkach. Celem jest do nauczenia modelu danych i tworzenia prognoz temperatury dla danego tworzenia.
+Aby zademonstrować praktyczne wykorzystanie ML potoku, w tym przykładzie użyto przykładowej `HVAC.csv` pliku danych, który jest wstępnie załadowane na domyślny magazyn dla klastra usługi HDInsight, magazynu Azure lub usługi Data Lake Store. Aby wyświetlić zawartość pliku, przejdź do `/HdiSamples/HdiSamples/SensorSampleData/hvac` katalogu. `HVAC.csv` zawiera zestaw razy z docelowym i rzeczywistego temperatury HVAC (*grzejników, wentylatorów i klimatyzacja*) systemów w różnych budynkach. Celem jest do nauczenia modelu danych i tworzenia prognoz temperatury dla danego tworzenia.
 
 Następujący kod:
 

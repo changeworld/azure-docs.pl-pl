@@ -1,11 +1,11 @@
 ---
-title: "Usługa Azure IoT Hub słownik terminów | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera — słownik terminów wspólnej odnoszących się do Centrum IoT Azure."
+title: Usługa Azure IoT Hub słownik terminów | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — słownik terminów wspólnej odnoszących się do Centrum IoT Azure.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 828489510cea16ebba1944c0e6d1fc88f9375fc7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów Centrum IoT
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach Centrum IoT.
@@ -110,6 +110,9 @@ Dane urządzenia odwołuje się do danych na urządzeniu przechowywanych w Centr
 ## <a name="device-identity"></a>Tożsamość urządzenia
 Tożsamość tego urządzenia jest unikatowy identyfikator przypisany do wszystkich urządzeń zarejestrowanych w [rejestru tożsamości](#identity-registry).
 
+## <a name="module-identity"></a>Moduł tożsamości
+Tożsamość modułu jest unikatowy identyfikator przypisany do każdego modułu, który należy do urządzenia. Moduł tożsamości jest zarejestrowane w [rejestru tożsamości](#identity-registry).
+
 ## <a name="device-management"></a>Zarządzanie urządzeniami
 Zarządzanie urządzeniami obejmuje pełny cykl związane z zarządzaniem urządzeniami w rozwiązania IoT, w tym planowania, inicjowania obsługi administracyjnej, konfigurowania, monitorowania i wycofywania.
 
@@ -125,14 +128,17 @@ Inicjowanie obsługi administracyjnej urządzeń jest proces dodawania początko
 ## <a name="device-twin"></a>Bliźniak urządzenia
 A [dwie urządzenia](iot-hub-devguide-device-twins.md) jest dokumentem JSON, która przechowuje informacje o stanie urządzenia, takie jak metadanych, konfiguracji i warunki. [Centrum IoT](#iot-hub) będzie się powtarzał dwie urządzenia, dla wszystkich urządzeń, których udostępnianie w Centrum IoT. Twins urządzenia umożliwia synchronizowanie [warunki urządzenia](#device-condition) i konfiguracje między urządzeniem i rozwiązanie zaplecza. Umożliwia wysyłanie zapytań twins urządzenia, aby znaleźć określone urządzenia i zbadać stanu długotrwałej operacji.
 
-## <a name="device-twin-queries"></a>Urządzenie dwie zapytań
-[Urządzenie dwie zapytania](iot-hub-devguide-query-language.md) język zapytań SQL przypominającej Centrum IoT umożliwia pobieranie informacji z twins Twojego urządzenia. Można użyć tego samego języka zapytań Centrum IoT można pobrać informacji o [zadania](#job) uruchomiona w Centrum IoT.
+## <a name="module-twin"></a>Dwie modułu
+Podobnie jak dwie urządzenia, dwie modułu jest dokument JSON, która przechowuje informacje o stanie modułu, takich jak metadanych, konfiguracji i warunki. Centrum IoT utrzymuje dwie moduł, dla każdej tożsamości modułu dostarczanym w ramach tożsamości urządzenia w Centrum IoT. Moduł twins umożliwiają synchronizowanie modułu warunków i konfiguracje między modułem i zaplecza rozwiązania. Umożliwia wysyłanie zapytań twins modułu, aby znaleźć określone moduły i zbadać stanu długotrwałej operacji.
+
+## <a name="twin-queries"></a>Dwie zapytań
+[Urządzenia i modułu zapytania dwie](iot-hub-devguide-query-language.md) używać języka kwerend Centrum IoT przypominającego SQL można pobrać informacji z urządzenia twins lub twins modułu. Można użyć tego samego języka zapytań Centrum IoT można pobrać informacji o [zadania](#job) uruchomiona w Centrum IoT.
 
 ## <a name="device-twin-rest-api"></a>Interfejs API REST dwie urządzenia
 Można użyć [interfejsu API REST dwie urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) z rozwiązania serwer wewnętrzny, aby zarządzać twins Twojego urządzenia. Interfejs API umożliwia pobierania i aktualizowania [dwie urządzenia](#device-twin) właściwości i wywoływać [bezpośrednie metody](#direct-method). Zazwyczaj należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) jak pokazano w samouczkach Centrum IoT.
 
-## <a name="device-twin-synchronization"></a>Synchronizacja dwie urządzenia
-Używa urządzenia dwie synchronizacji [żądanego właściwości](#desired-properties) w twins Twojego urządzenia do skonfigurowania urządzeń z systemem i pobierania [zgłosił właściwości](#reported-properties) z urządzeń do przechowywania w dwie urządzenia.
+## <a name="twin-synchronization"></a>Dwie synchronizacji
+Dwie używa synchronizacji [żądanego właściwości](#desired-properties) w twins urządzenia lub twins modułu, aby skonfigurować moduły lub urządzeń i pobrać [zgłosił właściwości](#reported-properties) z nich do przechowywania w dwie.
 
 ## <a name="direct-method"></a>Metoda bezpośrednia
 A [metoda bezpośrednia](iot-hub-devguide-direct-methods.md) sposób można wywołać metodę można wykonać na urządzeniu przez wywołanie interfejsu API w Centrum IoT.
@@ -223,7 +229,7 @@ Możesz skonfigurować [reguły routingu](iot-hub-devguide-messages-read-custom.
 ## <a name="sasl-plain"></a>ZWYKŁY SASL
 ZWYKŁY SASL jest protokołem który [AMQP](#advanced-message-queue-protocol) używa protokołu transferu tokenów zabezpieczających.
 
-## <a name="shared-access-signature"></a>Sygnatura dostępu współdzielonego
+## <a name="shared-access-signature"></a>Sygnatury dostępu współdzielonego
 Udostępniony sygnatur dostępu (SAS) są mechanizmu uwierzytelniania na podstawie bezpiecznego wartości skrótu SHA-256 lub identyfikatorów URI. Uwierzytelniania sygnatury dostępu Współdzielonego ma dwa składniki: _zasad dostępu współużytkowanego_ i _sygnatura dostępu współdzielonego_ (często nazywane token). Urządzenie korzysta SAS do uwierzytelniania za pomocą Centrum IoT. [Aplikacje zaplecza](#back-end-app) również użyć do uwierzytelniania za pomocą usługi połączonej punkty końcowe Centrum IoT sygnatury dostępu Współdzielonego. Zwykle obejmują tokenu sygnatury dostępu Współdzielonego w [ciąg połączenia](#connection-string) że aplikacja używa do ustanowienia połączenia z Centrum IoT.
 
 ## <a name="shared-access-policy"></a>Zasady dostępu współużytkowanego

@@ -17,7 +17,7 @@ ms.author: dadobali
 ms.custom: aaddev
 ms.openlocfilehash: 25a908c542bf8fdd8008841a1865cdfb40d847fc
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
 ---

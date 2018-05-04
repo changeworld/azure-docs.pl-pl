@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1fe162beca258fe8ec3d03ce2844c1abe3176dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Zarządzanie zasobami dla pojedynczej bazy danych w bazie danych SQL Azure
 
@@ -109,6 +109,6 @@ Ustawianie lub zmienianie bazy danych Azure SQL warstwy usług, poziomów wydajn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Więcej informacji na temat warstwy usług, poziomów wydajności i ilości pamięci masowej, zobacz [warstw usług](sql-database-service-tiers.md).
+- Więcej informacji na temat warstwy usług, poziomów wydajności i ilości pamięci masowej, zobacz [[na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
 - Dowiedz się więcej o pule elastyczne, zobacz [pule elastyczne](sql-database-elastic-pool.md).
 - Dowiedz się więcej o [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../azure-subscription-service-limits.md)

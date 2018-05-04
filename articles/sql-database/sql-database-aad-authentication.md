@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory auth - SQL Azure (omówienie) | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu korzystania z usługi Azure Active Directory do uwierzytelniania przy użyciu bazy danych SQL, zarządzane wystąpienia i magazyn danych SQL"
+title: Azure Active Directory auth - SQL Azure (omówienie) | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu korzystania z usługi Azure Active Directory do uwierzytelniania przy użyciu bazy danych SQL, zarządzane wystąpienia i magazyn danych SQL
 services: sql-database
 author: GithubMirek
 manager: craigg
@@ -9,18 +9,18 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: cfad53a3f86450163b2e29d5e4d4ed2726ecb0bc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fe3864c3f765ff4858deede798d5641a55dd8aef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Użyj uwierzytelniania usługi Azure Active Directory do uwierzytelniania przy użyciu bazy danych SQL, zarządzane wystąpienia lub SQL Data Warehouse
 Uwierzytelnianie usługi Active Directory systemu Azure jest mechanizmu nawiązywania połączenia z bazą danych SQL Azure Microsoft i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości w usłudze Azure Active Directory (Azure AD). Przy użyciu uwierzytelniania usługi Azure AD mogą centralnie zarządzać tożsamości użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji. Centralne zarządzanie identyfikator udostępnia jedno miejsce do zarządzania użytkownikami bazy danych i upraszcza zarządzanie uprawnieniami. Następujące korzyści:
 
 * Zapewnia zamiast uwierzytelniania programu SQL Server.
 * Pomaga zatrzymać rozprzestrzenianie tożsamości użytkowników na serwerach bazy danych.
-* Umożliwia obrotu hasła w jednym miejscu
+* Umożliwia obrotu hasła w jednym miejscu.
 * Klienci mogą zarządzać uprawnień do bazy danych przy użyciu grup zewnętrzne (Azure AD).
 * Można go wyeliminować zapisywania haseł przez włączenie zintegrowanego uwierzytelniania systemu Windows i innych metod uwierzytelniania obsługiwanych przez usługę Azure Active Directory.
 * Usługa Azure AD authentication używa użytkowników zawartej bazy danych do uwierzytelniania tożsamości na poziomie bazy danych.
@@ -75,7 +75,7 @@ Azure AD ograniczenia związane z wystąpienia zarządzane:
 - Tylko administrator usługi Azure AD można utworzyć bazy danych, ograniczone do jednej bazy danych użytkowników usługi Azure AD, a nie ma to uprawnienie
 - Własność bazy danych:
   - Azure AD podmiot zabezpieczeń nie można zmienić właściciela bazy danych (ALTER autoryzacji ON DATABASE) i nie można ustawić jako właściciela.
-  - Dla baz danych utworzonych przez administratora usługi Azure AD jest ustawiony nie własność (pole owner_sid w sys.sysdatabases jest 0x1)
+  - Dla baz danych utworzonych przez administratora usługi Azure AD jest ustawiony nie własność (pole owner_sid w sys.sysdatabases jest 0x1).
 - Nie można zarządzać agenta SQL, gdy zalogowany za pomocą usługi Azure AD podmiotów. 
 - Nie można spersonifikować administratora usługi Azure AD przy użyciu EXECUTE AS
 - Połączenie DAC nie jest obsługiwane z podmiotami zabezpieczeń usługi Azure AD. 

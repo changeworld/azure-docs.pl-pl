@@ -1,12 +1,12 @@
 ---
-title: "Wykonywanie operacji na magazynu kolejek Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Jak wykonać operacji na magazynu kolejek Azure przy użyciu programu PowerShell"
+title: Wykonywanie operacji na magazynu kolejek Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Jak wykonać operacji na magazynu kolejek Azure przy użyciu programu PowerShell
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 36eb6db83bb902b35efb8c9666ab06e0c618d602
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bad9f1f3fd5737e865a8f4d1d15ab3d5eb68b4cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonywanie operacji magazynu kolejek Azure przy użyciu programu Azure PowerShell
 
@@ -38,15 +38,15 @@ Nie ma żadnych poleceń cmdlet programu PowerShell dla płaszczyzny danych dla 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Login-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>Pobieranie listy lokalizacji
 
-Jeśli nie znasz lokalizacji, która ma być używany, można wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znaleźć ten, który ma być używany. Użyje tego ćwiczenia **eastus**. Zapisać w zmiennej **lokalizacji** do użytku w przyszłości.
+Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. Użyje tego ćwiczenia **eastus**. Zapisać w zmiennej **lokalizacji** do użytku w przyszłości.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -171,13 +171,13 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć wszystkie zasoby, które zostały utworzone w tym ćwiczeniu, Usuń grupę zasobów. Spowoduje to również usunięcie wszystkie zasoby zawarte w obrębie grupy. W takim przypadku usuwa utworzono konto magazynu i grupy zasobów, do samej siebie.
+Aby usunąć wszystkie zasoby, które zostały utworzone w tym ćwiczeniu, Usuń grupę zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W takim przypadku usuwa utworzono konto magazynu i grupy zasobów, do samej siebie.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono informacje podstawowe zarządzanie magazynem kolejki przy użyciu programu PowerShell, w tym jak:
 
@@ -190,7 +190,7 @@ W tym artykule przedstawiono informacje podstawowe zarządzanie magazynem kolejk
 > * Usuwanie kolejki
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Polecenia cmdlet usługi Magazyn Microsoft Azure PowerShell
-* [Polecenia cmdlet programu PowerShell magazynu](/powershell/module/azurerm.storage#storage)
+* [Polecenia cmdlet programu PowerShell usługi Storage](/powershell/module/azurerm.storage#storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.

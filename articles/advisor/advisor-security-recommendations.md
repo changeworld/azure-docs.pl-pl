@@ -1,12 +1,12 @@
 ---
-title: "Zalecenia dotyczące zabezpieczeń Azure Advisor | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi Azure doradcy poprawić zabezpieczenia wdrożeń platformy Azure."
+title: Zalecenia dotyczące zabezpieczeń Azure Advisor | Dokumentacja firmy Microsoft
+description: Za pomocą usługi Azure doradcy poprawić zabezpieczenia wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: ea6fc67a0f5bdfe09435a00c4d2651f312695d25
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: e8a2350744e7b967cc19d0e73686f32edf980eac
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advisor-security-recommendations"></a>Zalecenia doradcy w zakresie zabezpieczeń
 
@@ -26,7 +26,7 @@ Klasyfikator Azure zapewnia spójne, skonsolidowanego widoku zaleceń dla wszyst
 
 Usługa Security Center ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Ją okresowo analizuje stan zabezpieczeń zasobów platformy Azure. Po znalezieniu potencjalnych luk w zabezpieczeniach usługa Security Center tworzy odpowiednie zalecenia. Zalecenia ułatwiają konfigurowanie kontrolek, które są potrzebne. 
 
-Aby uzyskać więcej informacji o zalecenia dotyczące zabezpieczeń, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](https://azure.microsoft.com/en-us/documentation/articles/security-center-recommendations/).
+Aby uzyskać więcej informacji o zalecenia dotyczące zabezpieczeń, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące zabezpieczeń w programie Azure Advisor
 
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji o zalecenia dotyczące zabezpieczeń, zobacz [Za
 
 2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **zabezpieczeń** kartę.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat zalecenia doradcy w zakresie, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)

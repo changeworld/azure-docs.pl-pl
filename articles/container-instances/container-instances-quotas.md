@@ -3,16 +3,16 @@ title: Limity przydziałów i dostępność regionów dla usługi Azure Containe
 description: Domyślne limity przydziałów i dostępność regionów dla usługi Azure Container Instances.
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 28177e17a15c5e3b92b9af52e05fa2f8e95db95f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 22be921c7ab437e08d8ea5032befb8671dc90ed0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
 
@@ -28,9 +28,9 @@ Usługa Azure Container Instances jest dostępna w następujących regionach z o
 
 | Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |
-| Europa Zachodnia, Zachodnie stany USA, Wschodnie stany USA | Linux | 4 | 14 |
+| Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna | Linux | 4 | 14 |
 | Zachodnie stany USA 2, Azja Południowo-Wschodnia | Linux | 2 | 7 |
-| Europa Zachodnia, Zachodnie stany USA, Wschodnie stany USA | Windows | 4 | 14 |
+| Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna | Windows | 4 | 14 |
 | Zachodnie stany USA 2, Azja Południowo-Wschodnia | Windows | 2 | 3,5 |
 
 Wystąpienia kontenerów utworzone w ramach tych limitów zasobów podlegają dostępności w obrębie regionu wdrożenia. Gdy region jest mocno obciążony, wdrażanie wystąpień może zakończyć się niepowodzeniem. Aby uniknąć niepowodzenia wdrażania, spróbuj wdrożyć wystąpienia z niższymi ustawieniami procesora CPU i pamięci lub spróbuj przeprowadzić wdrożenie w późniejszym terminie.

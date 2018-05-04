@@ -1,11 +1,11 @@
 ---
-title: "Automatyczne inicjowanie obsługi użytkowników aplikacji SaaS w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do wykorzystania usługi Azure AD można automatycznie udostępnić, usuwanie i aktualizowane na bieżąco kont użytkowników dla wielu aplikacji SaaS innych firm."
+title: Automatyczne inicjowanie obsługi użytkowników aplikacji SaaS w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Wprowadzenie do wykorzystania usługi Azure AD można automatycznie udostępnić, usuwanie i aktualizowane na bieżąco kont użytkowników dla wielu aplikacji SaaS innych firm.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 56af1915326429b37f87dbaa397e1c9b832c675a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczne Inicjowanie obsługi użytkowników dla aplikacji SaaS?
@@ -176,7 +176,7 @@ Zadanie inicjowania obsługi administracyjnej zostanie usunięty z kwarantanny p
 
 Wydajność może się różnić w zależności od tego, czy zadanie inicjowania obsługi administracyjnej wykonuje początkowej synchronizacji lub synchronizacji przyrostowej.
 
-W początkowej synchronizacje czas potrzebny na zakończenie będzie bezpośrednio zależne od liczby użytkowników, grup i członków grupy są obecne w systemie źródłowym. Systemów źródłowych bardzo małych setki obiekty mogą przeprowadzać synchronizacje początkową w ciągu kilku minut. Jednak systemów źródłowych z setkami tysięcy lub miliony połączonych obiektów może zająć bardzo dużo czasu.
+W początkowej synchronizacje czas potrzebny na zakończenie będzie bezpośrednio zależne od liczby użytkowników, grup i członków grupy są obecne w systemie źródłowym. Systemów źródłowych bardzo małych setki obiekty mogą przeprowadzać synchronizacje początkową w ciągu kilku minut. Jednak systemów źródłowych z setkami tysięcy lub miliony połączonych obiektów będzie trwać dłużej.
 
 Dla synchronizacje przyrostowe czas, jaki zajmuje zależy wykryto w tym cyklu synchronizacji zmian numerów. Jeśli ma mniej niż 5000 użytkownika lub wykryto zmiany członkostwa grupy, te często można synchronizować w cyklu 40 minut. 
 

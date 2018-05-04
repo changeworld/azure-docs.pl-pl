@@ -1,6 +1,6 @@
 ---
-title: "Użyć transformacji danych w celu przygotowania danych w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera pełną listę przekształceń dostępne w celu przygotowania danych usługi Azure Machine Learning."
+title: Użyć transformacji danych w celu przygotowania danych w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera pełną listę przekształceń dostępne w celu przygotowania danych usługi Azure Machine Learning.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9cd6e6cdf8d8dc2b1872d6f7b76821122fd427fa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Przekształcenia danych użycia w celu przygotowania danych w usłudze Azure Machine Learning
 
@@ -34,7 +34,7 @@ W menu kontekstowym wyświetlane są tylko prawidłowe przekształceń dla typu 
 
 Mały podzbiór kontekstowe transformacji jest dostępna przez kliknięcie prawym przyciskiem myszy komórki. Widoczne mogą podlegać kopiowaniu, Zamień i filtrowania. Są dane typu obsługujący, więc opcje dla numeru kolumny są inne niż dla kolumny typu string.
 
-## <a name="derive-column-by-example"></a>Kolumna przykładzie pochodzi
+## <a name="derive-column-by-example"></a>Tworzenie kolumny pochodnej według przykładu
 Użyj tej transformacji, aby utworzyć nową kolumnę jako pochodną co najmniej jeden z istniejących kolumn. Transformacja analizuje kolumny wejściowe (wybrane) i podanym przykładzie, a następnie określa żądanego wyniku w nowej kolumnie. 
 
 Aby użyć tej transformacji, wybierz co najmniej jedną kolumnę. Dodaj nową kolumnę pochodnych (pusty) przykładzie. Wpisz na przykład mają być wyświetlane w kolumnie pochodnych (przy założeniu, że pochodzi od innych kolumn), a "W przykładzie" technologii próbuje Wypełnij wszystkie komórki w kolumnie. 
@@ -66,7 +66,7 @@ Tej transformacji dodaje nową kolumnę przez połączenie wartości z wielu kol
 Aby uzyskać bardziej szczegółowy opis **łączenie kolumn, na przykład** przekształcenia wraz z większej liczby próbek, zobacz [łączenie kolumn przez odwołanie przykład](data-prep-combine-columns-by-example.md).
 
 
-## <a name="duplicate-column"></a>Duplicate Column
+## <a name="duplicate-column"></a>Zduplikowana kolumna
 Tej transformacji zostanie utworzona kopia dokładnie jeden lub więcej wybranych kolumn oraz zapewnia każda nowa nazwa pochodzi od oryginalnej nazwy kolumny.
 
 ## <a name="text-clustering"></a>Tekst klastra 

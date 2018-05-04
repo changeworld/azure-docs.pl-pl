@@ -1,20 +1,20 @@
 ---
-title: "Dodaj rozszerzoną metryki dla maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł pomaga włączyć i skonfigurować rozszerzone diagnostyki metryki na maszynach wirtualnych platformy Azure."
+title: Dodaj rozszerzoną metryki dla maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł pomaga włączyć i skonfigurować rozszerzone diagnostyki metryki na maszynach wirtualnych platformy Azure.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 91797aaab1dca96e78643f57776eb16d336e894b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: 4b00baba44a4724ce8f6a45a80692f7f566a35ed
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodaj rozszerzoną metryki dla maszyn wirtualnych platformy Azure
 
@@ -31,7 +31,7 @@ Na przykład można monitorować procent użycia procesora CPU i pamięci % masz
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Sprawdź, czy metryki są włączone na maszynach wirtualnych
 
-1. Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+1. Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną, a następnie w obszarze **monitorowanie**, wybierz pozycję **metryki**. Jest wyświetlana lista dostępnych metryk.
 3. Wybierz niektóre metryki, a wykres przedstawia dane dla nich.  
     ![Przykład metryka — host procent Procesora](./media/azure-vm-extended-metrics/metric01.png)

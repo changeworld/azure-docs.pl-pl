@@ -1,6 +1,6 @@
 ---
-title: "Adresy IP używane przez usługę Application Insights i Log Analytics | Dokumentacja firmy Microsoft"
-description: "Wyjątki zapory serwera wymagane przez usługę Application Insights"
+title: Adresy IP używane przez usługę Application Insights i Log Analytics | Dokumentacja firmy Microsoft
+description: Wyjątki zapory serwera wymagane przez usługę Application Insights
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b48b17b214f6ff22c7c68421ba8c89104c8b4b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6ea915ac10314f6304c98e40a50b26e3d1ee79eb
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługę Application Insights i analizy dzienników
 [Azure Application Insights](app-insights-overview.md) usługa używa liczba adresów IP. Może być konieczne, jeśli aplikacja, która monitorowanych znajduje się za zaporą informacje tych adresów.
@@ -48,12 +48,7 @@ Stan monitora konfiguracji — potrzebne tylko podczas wprowadzania zmian.
 | Konfigurowanie |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfigurowanie |`auth.gfx.ms` | |`443` |
 | Konfigurowanie |`login.live.com` | |`443` |
-| Instalacja |`packages.nuget.org` , `nuget.org`, `api.nuget.org` | |`443` |
-
-## <a name="hockeyapp"></a>HockeyApp
-| Przeznaczenie | Adres URL | Adres IP | Porty |
-| --- | --- | --- | --- |
-| Dane dotyczące awarii |gate.hockeyapp.net |104.45.136.42 |80, 443 |
+| Instalacja |`packages.nuget.org` , `nuget.org`, `api.nuget.org`, `az320820.vo.msecnd.net` (NuGet pliki do pobrania) | |`443` |
 
 ## <a name="availability-tests"></a>Testy dostępności
 Jest to lista adresów, z którego [testów sieci web dostępności](app-insights-monitor-web-app-availability.md) są uruchamiane. Jeśli chcesz uruchamiać testy sieci web w aplikacji, ale serwer sieci web jest ograniczone do określonych klientów obsługujących, będzie mieć umożliwić ruch przychodzący z naszych dostępności serwerów testu.
@@ -191,59 +186,59 @@ East US
 | --- | --- | --- | --- |
 | Interfejs API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
 | Dokumentacja interfejsu API |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
-| Wewnętrzny interfejsu API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |dynamic|443 |
+| Wewnętrzny interfejsu API |aigs.aisvc.visualstudio.com<br/>aigs1.aisvc.visualstudio.com<br/>aigs2.aisvc.visualstudio.com<br/>aigs3.aisvc.visualstudio.com<br/>aigs4.aisvc.visualstudio.com<br/>aigs5.aisvc.visualstudio.com<br/>aigs6.aisvc.visualstudio.com |dynamiczne|443 |
 
 ## <a name="log-analytics-api"></a>Interfejs API dziennika analityka
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Interfejs API |api.loganalytics.io<br/>*.api.loganalytics.io |dynamic |80,443 |
-| Dokumentacja interfejsu API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |dynamic |80,443 |
+| Interfejs API |api.loganalytics.io<br/>*.api.loganalytics.io |dynamiczne |80,443 |
+| Dokumentacja interfejsu API |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |dynamiczne |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights analityka
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Portal analityka | analytics.applicationinsights.io | dynamic | 80,443 |
-| CDN | applicationanalytics.azureedge.net | dynamic | 80,443 |
-| Nośnik CDN | applicationanalyticsmedia.azureedge.net | dynamic | 80,443 |
+| Portal analityka | analytics.applicationinsights.io | dynamiczne | 80,443 |
+| CDN | applicationanalytics.azureedge.net | dynamiczne | 80,443 |
+| Nośnik CDN | applicationanalyticsmedia.azureedge.net | dynamiczne | 80,443 |
 
 Uwaga: *. applicationinsights.io domeny należy do zespołu usługi Application Insights.
 
-## <a name="log-analytics-portal"></a>Log Analytics Portal
+## <a name="log-analytics-portal"></a>Portal analityka dziennika
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Portal | portal.loganalytics.io | dynamic | 80,443 |
-| CDN | applicationanalytics.azureedge.net | dynamic | 80,443 |
+| Portal | portal.loganalytics.io | dynamiczne | 80,443 |
+| CDN | applicationanalytics.azureedge.net | dynamiczne | 80,443 |
 
 Uwaga: *. loganalytics.io domeny należy do zespołu analizy dzienników.
 
-## <a name="application-insights-azure-portal-extension"></a>Usługa Application Insights rozszerzenie portalu Azure
+## <a name="application-insights-azure-portal-extension"></a>Portal Insights Azure aplikacji rozszerzenia
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Rozszerzenie usługi Application Insights | stamp2.app.insightsportal.visualstudio.com | dynamic | 80,443 |
-| Rozszerzenie usługi Application Insights CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamic | 80,443 |
+| Rozszerzenie usługi Application Insights | stamp2.app.insightsportal.visualstudio.com | dynamiczne | 80,443 |
+| Rozszerzenie usługi Application Insights CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | dynamiczne | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Application Insights SDK
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Zestaw SDK aplikacji Insights JS CDN | az416426.vo.msecnd.net | dynamic | 80,443 |
-| Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamic | 80,443 |
+| Zestaw SDK aplikacji Insights JS CDN | az416426.vo.msecnd.net | dynamiczne | 80,443 |
+| Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamiczne | 80,443 |
 
 ## <a name="profiler"></a>Profiler
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
-| Portal | gateway.azureserviceprofiler.net | dynamic | 443
-| Magazyn | *.core.windows.net | dynamic | 443
+| Portal | gateway.azureserviceprofiler.net | dynamiczne | 443
+| Magazyn | *.core.windows.net | dynamiczne | 443
 
 ## <a name="snapshot-debugger"></a>Debuger migawek
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
-| Portal | ppe.gateway.azureserviceprofiler.net | dynamic | 443
-| Magazyn | *.core.windows.net | dynamic | 443
+| Portal | ppe.gateway.azureserviceprofiler.net | dynamiczne | 443
+| Magazyn | *.core.windows.net | dynamiczne | 443

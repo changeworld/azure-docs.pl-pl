@@ -154,7 +154,7 @@ Maszyny wirtualne platformy Azure, zestawy skalowania maszyny wirtualnej, partii
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>Kontenery
+### <a name="containers"></a>Containers
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
 * [Container Registry](../articles/container-registry/container-registry-intro.md)
 
@@ -172,7 +172,7 @@ Poniżej przedstawiono przykłady klientów, które zostały rozwiązane problem
 * [MetLife](https://enterprise.microsoft.com/en-us/customer-story/industries/insurance/metlife/)
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
 * [Milliman](https://customers.microsoft.com/story/actuarial-firm-works-to-transform-insurance-industry-w)
-* [Mitsubishi UFJ Securities International](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
+* [Mitsubishi UFJ zabezpieczeń międzynarodowych](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
 * [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 * [Wieże Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 
@@ -181,7 +181,7 @@ Poniżej przedstawiono przykłady klientów, które zostały rozwiązane problem
 * Więcej informacji na temat rozwiązania obliczeniowe Big [inżynierii symulacji](https://simulation.azure.com/), [renderowania](https://simulation.azure.com/), [rynkach bankowości i inwestycyjne](https://finance.azure.com/), i [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
 * Najnowsze informacje można znaleźć na [blogu zespołu Microsoft HPC i usługi Batch](http://blogs.technet.com/b/windowshpc/) oraz [blogu platformy Azure](https://azure.microsoft.com/blog/tag/hpc/).
 
-* Użyj Azure zarządzane i skalowalne [partii](https://azure.microsoft.com/services/batch/) usługi do uruchamiania obciążeń obliczeniowych, bez konieczności zarządzania podstawowej infrastruktury [Dowiedz się więcej](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
+* Użyj Azure zarządzane i skalowalne [partii](https://azure.microsoft.com/services/batch/) usługi do uruchamiania obciążeń obliczeniowych, bez konieczności zarządzania podstawowej infrastruktury [Dowiedz się więcej](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/)
 
 
 

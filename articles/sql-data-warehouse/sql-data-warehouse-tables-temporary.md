@@ -1,41 +1,26 @@
 ---
-title: "Tabele tymczasowe w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do tabel tymczasowych w usłudze Azure SQL Data Warehouse."
+title: Tabele tymczasowe w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Podstawowe wskazówki dotyczące korzystania z tabel tymczasowych i najważniejsze funkcje zasadami poziomu tabel tymczasowych sesji.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a3e06a4074bc7b5cd8612162a624718107a50656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Tabele tymczasowe w usłudze SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Omówienie][Overview]
-> * [Typy danych][Data Types]
-> * [Dystrybuuj][Distribute]
-> * [Indeks][Index]
-> * [Partycji][Partition]
-> * [Statystyki][Statistics]
-> * [Tymczasowe][Temporary]
-> 
-> 
-
-Tabele tymczasowe są przydatne podczas przetwarzania danych — szczególnie podczas transformacji skutkującej przejściowej pośrednich wyników. W usłudze SQL Data Warehouse tabele tymczasowe istnieją na poziomie sesji.  Tylko są widoczne dla sesji, w której zostały utworzone i są automatycznie usuwane po wylogowaniu tej sesji.  Tabele tymczasowe oferują poprawiać wydajność, ponieważ ich wyniki są zapisywane w lokalnym zamiast Magazyn zdalny.  Tabele tymczasowe są nieco inne w usłudze Azure SQL Data Warehouse niż baza danych SQL Azure, ponieważ są one dostępne z dowolnego miejsca w danej sesji, łącznie z wewnątrz oraz poza procedury składowanej.
-
 Ten artykuł zawiera podstawowe wskazówki dotyczące korzystania z tabel tymczasowych i zaznacza zasadami poziomu tabel tymczasowych sesji. Korzystając z informacji w tym artykule może pomóc modularyzacji kodu, poprawy zarówno możliwość ponownego wykorzystania i łatwości obsługi kodu.
+
+## <a name="what-are-temporary-tables"></a>Co to są tabele tymczasowe?
+Tabele tymczasowe są przydatne podczas przetwarzania danych — szczególnie podczas transformacji skutkującej przejściowej pośrednich wyników. W usłudze SQL Data Warehouse tabele tymczasowe istnieją na poziomie sesji.  Tylko są widoczne dla sesji, w której zostały utworzone i są automatycznie usuwane po wylogowaniu tej sesji.  Tabele tymczasowe oferują poprawiać wydajność, ponieważ ich wyniki są zapisywane w lokalnym zamiast Magazyn zdalny.  Tabele tymczasowe są nieco inne w usłudze Azure SQL Data Warehouse niż baza danych SQL Azure, ponieważ są one dostępne z dowolnego miejsca w danej sesji, łącznie z wewnątrz oraz poza procedury składowanej.
 
 ## <a name="create-a-temporary-table"></a>Tworzenie tabeli tymczasowej
 Tabele tymczasowe są tworzone przez prefiksu nazwy tabeli z `#`.  Na przykład:
@@ -112,7 +97,7 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS`polecenie wydajne i ma dodatkową zaletą jest efektywne przy jego użyciu miejsca w dzienniku transakcji. 
+> `CTAS` polecenie wydajne i ma dodatkową zaletą jest efektywne przy jego użyciu miejsca w dzienniku transakcji. 
 > 
 > 
 
@@ -232,20 +217,5 @@ DROP TABLE #stats_ddl;
 Usługa SQL Data Warehouse nakładają kilka ograniczeń podczas implementowania tabel tymczasowych.  Obecnie tylko sesji zakresami tabel tymczasowych są obsługiwane.  Globalne tabele tymczasowe są nieobsługiwane.  Ponadto widoków nie można utworzyć na tabelach tymczasowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej, zobacz artykuły w [omówienie tabeli][Overview], [typy danych tabeli][Data Types], [Dystrybucja tabeli] [ Distribute], [Indeksowania tabeli][Index], [partycjonowania tabeli] [ Partition] i [Utrzymania statystyk tabeli][Statistics].  Aby uzyskać więcej informacji na temat najlepszych rozwiązań, zobacz [najlepsze rozwiązania magazynu danych SQL][SQL Data Warehouse Best Practices].
+Aby dowiedzieć się więcej na temat tworzenia tabel, zobacz [omówienie tabeli](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

@@ -9,18 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Utwórz i Zarządzaj serwerami bazy danych SQL Azure i baz danych
 
 Baza danych SQL oferuje trzy typy baz danych:
 
-- Pojedyncza baza danych utworzona w ciągu [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) ze zdefiniowanym zestawem [zasobów obliczeniowych i magazynu dla różnych obciążeń](sql-database-service-tiers.md). Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
-- Baza danych utworzona w ramach [puli baz danych](sql-database-elastic-pool.md) w [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) ze zdefiniowanym zestawem [zasobów obliczeniowych i magazynu dla różnych obciążeń](sql-database-service-tiers.md) , które są współdzielona przez wszystkie bazy danych w puli. Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
+- Pojedyncza baza danych utworzona w ciągu [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) z [łączyć zestaw zasobów obliczeniowych i przestrzeni dyskowej](sql-database-service-tiers-dtu.md) lub [niezależnie od skalowania zasobów obliczeniowych i przestrzeni dyskowej](sql-database-service-tiers-vcore.md). Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
+- Bazy danych utworzonej w ramach [puli baz danych](sql-database-elastic-pool.md) w [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) z [łączyć zestaw zasobów obliczeniowych i magazynu (w oparciu o jednostek dtu w warstwie)](sql-database-service-tiers-dtu.md) lub [niezależnie od skalowania zasobów obliczeniowych i magazynu (w oparciu o vCore)](sql-database-service-tiers-vcore.md) współdzielenia wszystkie bazy danych w puli. Baza danych Azure SQL jest skojarzony z serwera logicznego bazy danych SQL Azure, który jest tworzony w określonym regionie Azure.
 - [Wystąpienia programu SQL server](sql-database-managed-instance.md) (zarządzane) tworzone wystąpienie w ramach [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) ze zdefiniowanym zestawem zasobów obliczeniowych i magazynu dla wszystkich baz danych w tym wystąpieniu serwera. Zarządzane wystąpienie zawiera systemowych i użytkownika bazy danych. Zarządzane wystąpienia zaprojektowana w celu umożliwienia bazy danych przyrostu i shift do w pełni zarządzane rozwiązanie typu PaaS, bez zmiany projektu aplikacji. Zarządzane wystąpienia zapewnia wysoką zgodność z modelem programowania lokalnego programu SQL Server i obsługuje dużych większość funkcji programu SQL Server i towarzyszące narzędzi i usług.  
 
 Baza danych SQL Azure Microsoft obsługuje danych tabelarycznych (TDS) protokół klienta wersja strumienia 7.3 lub nowszym i zezwala na tylko zaszyfrowanego połączenia TCP/IP.
@@ -78,7 +78,7 @@ Do utworzenia bazy danych Azure SQL przy użyciu [portalu Azure](https://portal.
   ![tworzenie bazy danych 1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> Aby uzyskać informacje dotyczące wybierania warstwy cenowej bazy danych, zobacz [warstw usług](sql-database-service-tiers.md).
+> Aby uzyskać informacje dotyczące wybierania warstwy cenowej bazy danych, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
 
 Aby utworzyć wystąpienie zarządzanych, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -91,11 +91,11 @@ Do zarządzania istniejącą bazę danych, przejdź do **baz danych SQL** i klik
    ![reguła zapory serwera](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> Aby skonfigurować właściwości wydajności bazy danych, zobacz [warstw usług](sql-database-service-tiers.md).
+> Aby skonfigurować właściwości wydajności bazy danych, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
 >
 
 > [!TIP]
-> Samouczek Szybki Start na portalu Azure, zobacz [tworzenie bazy danych Azure SQL w portalu Azure](sql-database-get-started-portal.md).
+> Dla platformy Azure Szybki Start portalu, zobacz [tworzenie bazy danych Azure SQL w portalu Azure](sql-database-get-started-portal.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Zarządzaj serwerami oraz baz danych Azure SQL a zapory przy użyciu programu PowerShell
@@ -120,7 +120,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapory przy użyciu
 | New-AzureRmSqlServerVirtualNetworkRule | Tworzy [ *reguły sieci wirtualnej*](sql-database-vnet-service-endpoint-rule-overview.md), na podstawie podsieci, która jest punkt końcowy usługi sieci wirtualnej. |
 
 > [!TIP]
-> Samouczek Szybki Start programu PowerShell, zobacz [tworzenia pojedynczej bazy danych Azure SQL przy użyciu programu PowerShell](sql-database-get-started-portal.md). Dla programu PowerShell przykładowe skrypty, zobacz [Użyj programu PowerShell do tworzenia pojedynczej bazy danych Azure SQL i skonfigurować regułę zapory](scripts/sql-database-create-and-configure-database-powershell.md) i [monitora i skali pojedynczego SQL bazy danych przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> PowerShell — Szybki Start dla [tworzenia pojedynczej bazy danych Azure SQL przy użyciu programu PowerShell](sql-database-get-started-portal.md). Dla programu PowerShell przykładowe skrypty, zobacz [Użyj programu PowerShell do tworzenia pojedynczej bazy danych Azure SQL i skonfigurować regułę zapory](scripts/sql-database-create-and-configure-database-powershell.md) i [monitora i skali pojedynczego SQL bazy danych przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Zarządzaj serwerami oraz baz danych Azure SQL a zapory przy użyciu wiersza polecenia platformy Azure
@@ -150,7 +150,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapory z [interfejs
 |[Usuwanie reguły zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Usuwa regułę zapory|
 
 > [!TIP]
-> Samouczek Szybki Start wiersza polecenia platformy Azure, zobacz [tworzenia pojedynczej bazy danych Azure SQL przy użyciu interfejsu wiersza polecenia Azure](sql-database-get-started-cli.md). Dla interfejsu wiersza polecenia Azure przykładowe skrypty, zobacz [Użyj interfejsu wiersza polecenia do tworzenia pojedynczej bazy danych Azure SQL i skonfigurować regułę zapory](scripts/sql-database-create-and-configure-database-cli.md) i [Użyj interfejsu wiersza polecenia, aby monitorować i skalowania pojedynczej bazy danych SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Aby uzyskać szybki start wiersza polecenia platformy Azure, zobacz [tworzenia pojedynczej bazy danych Azure SQL przy użyciu interfejsu wiersza polecenia Azure](sql-database-get-started-cli.md). Dla interfejsu wiersza polecenia Azure przykładowe skrypty, zobacz [Użyj interfejsu wiersza polecenia do tworzenia pojedynczej bazy danych Azure SQL i skonfigurować regułę zapory](scripts/sql-database-create-and-configure-database-cli.md) i [Użyj interfejsu wiersza polecenia, aby monitorować i skalowania pojedynczej bazy danych SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Zarządzaj serwerami oraz baz danych Azure SQL a zapory przy użyciu języka Transact-SQL
@@ -181,7 +181,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapór z Transact-S
 
 
 > [!TIP]
-> Samouczek Szybki Start Microsoft Windows za pomocą programu SQL Server Management Studio, zobacz [bazy danych SQL Azure: Użyj SQL Server Management Studio do nawiązywania połączeń i zapytania na danych](sql-database-connect-query-ssms.md). Samouczek Szybki Start za pomocą programu Visual Studio Code na macOS, Linux lub Windows, temacie [bazy danych SQL Azure: Użyj Visual Studio Code do nawiązywania połączeń i zapytania na danych](sql-database-connect-query-vscode.md).
+> Aby uzyskać szybki start Microsoft Windows za pomocą programu SQL Server Management Studio, zobacz [bazy danych SQL Azure: Użyj SQL Server Management Studio do nawiązywania połączeń i zapytania na danych](sql-database-connect-query-ssms.md). Aby uzyskać szybki start za pomocą programu Visual Studio Code na macOS, Linux lub Windows, zobacz [bazy danych SQL Azure: Użyj Visual Studio Code do nawiązywania połączeń i zapytania na danych](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Zarządzaj serwerami oraz baz danych Azure SQL a zapory przy użyciu interfejsu API REST
 

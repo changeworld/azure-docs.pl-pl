@@ -1,32 +1,31 @@
 ---
-title: "Operacje wdrażania z usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób wyświetlania operacje wdrażania usługi Azure Resource Manager z portalu, programu PowerShell, interfejsu wiersza polecenia Azure i interfejsu API REST."
+title: Operacje wdrażania z usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Opisuje sposób wyświetlania operacje wdrażania usługi Azure Resource Manager z portalu, programu PowerShell, interfejsu wiersza polecenia Azure i interfejsu API REST.
 services: azure-resource-manager,virtual-machines
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 01/13/2017
+ms.date: 04/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 26c2c333a97abff75f6b4caefb1e351dea826081
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Operacje wdrażania widoku z usługi Azure Resource Manager
 
-
 Można wyświetlić operacje wdrożenia za pośrednictwem portalu Azure. Może być najbardziej interesujące wyświetlanie operacje, gdy otrzymano wystąpił błąd podczas wdrażania, ten artykuł skupia się na wyświetlanie operacje, które nie powiodły. Portal zawiera interfejs, który umożliwia łatwe znajdowanie błędów i ustalić potencjalne rozwiązania.
 
-Wdrożenia można rozwiązać, analizując dzienniki inspekcji lub operacje wdrażania. W tym temacie przedstawiono obie metody. Aby uzyskać pomoc przy rozwiązywaniu problemów z błędami konkretnego wdrożenia, zobacz [Rozwiąż typowe błędy podczas wdrażania zasobów na platformie Azure za pomocą Menedżera zasobów Azure](resource-manager-common-deployment-errors.md).
+Wdrożenia można rozwiązać, analizując dzienniki inspekcji lub operacje wdrażania. W tym artykule przedstawiono obie metody. Aby uzyskać pomoc przy rozwiązywaniu problemów z błędami konkretnego wdrożenia, zobacz [Rozwiąż typowe błędy podczas wdrażania zasobów na platformie Azure za pomocą Menedżera zasobów Azure](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portal
 Aby wyświetlić operacje wdrażania, użyj następujących kroków:
@@ -136,21 +135,19 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
 1. Ogólny stan wdrożenia z **Pokaż wdrożenia grupy azure** polecenia.
 
   ```azurecli
-  azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-  Jedna z wartości zwracane jest **correlationId**. Ta wartość służy do śledzenia zdarzenia powiązane i mogą być przydatne podczas pracy z pomocą techniczną w celu wdrożenia rozwiązania.
+1. Jedna z wartości zwracane jest **correlationId**. Ta wartość służy do śledzenia zdarzenia powiązane i mogą być przydatne podczas pracy z pomocą techniczną w celu wdrożenia rozwiązania.
 
   ```azurecli
-  "properties": {
-    "provisioningState": "Failed",
-    "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
+  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-2. Aby wyświetlić operacje we wdrożeniu, należy użyć:
+1. Aby wyświetlić operacje we wdrożeniu, należy użyć:
 
   ```azurecli
-  azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
 ## <a name="rest"></a>REST

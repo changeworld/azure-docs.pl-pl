@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f4b1a6e3ee995fb309577fd6df611a705e613041
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
-Azure Monitor to usługa platformy Azure, która zapewnia jedno źródło monitorowania zasobów platformy Azure. Dzięki usłudze Azure Monitor możesz wykonywać wizualizacje i zapytania, ustalać trasy, archiwizować oraz podejmować akcje dotyczące metryk i dzienników pochodzących z zasobów platformy Azure, takich jak usługa API Management. 
+Dzięki usłudze Azure Monitor możesz wykonywać wizualizacje i zapytania, ustalać trasy, archiwizować i podejmować działania dotyczące metryk lub dzienników pochodzących z zasobów platformy Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -43,24 +43,22 @@ W poniższym filmie wideo pokazano, jak monitorować usługę API Management prz
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
 ## <a name="view-metrics-of-your-apis"></a>Wyświetlanie metryk interfejsów API
 
 Usługa API Management emituje metryki co minutę, oferując wgląd w stan i kondycję interfejsów API w czasie zbliżonym do rzeczywistego. Poniżej znajduje się podsumowanie niektórych dostępnych metryk:
 
 * Wydajność (wersja zapoznawcza): ułatwia podejmowanie decyzji dotyczących uaktualniania usług APIM lub ich zmiany na starszą wersję. Metryka jest emitowana co minutę i odzwierciedla pojemność bramy w momencie raportowania. Wartość metryki należy do zakresu od 0 do 100 i jest obliczana w oparciu o zasoby bramy, takie jak wykorzystanie procesora i pamięci.
 * Całkowita liczba żądań bramy: liczba żądań interfejsu API w danym okresie. 
-* Żądania bramy zakończone powodzeniem: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP informujące o powodzeniu, w tym 304, 307 i mniejsze niż 301 (na przykład 200). 
+* Żądania bramy zakończone powodzeniem: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP informujące o powodzeniu, w tym 304, 307 i mniejsze niż 301 (na przykład 200).
 * Żądania bramy zakończone niepowodzeniem: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP informujące o błędzie, w tym 400 i większe niż 500.
-* Nieautoryzowane żądania bramy: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP, w tym 401, 403 i 429. 
+* Nieautoryzowane żądania bramy: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP, w tym 401, 403 i 429.
 * Inne żądania bramy: liczba żądań interfejsu API, które otrzymały kody odpowiedzi HTTP nienależące do żadnej z powyższych kategorii (na przykład 418).
 
 Aby uzyskać dostęp do metryk:
 
 1. Wybierz pozycję **Metryki** w menu w dolnej części strony.
 2. Z listy rozwijanej wybierz interesujące Cię metryki (można dodać wiele metryk). 
-    
+
     Na przykład wybierz pozycje **Całkowita liczba żądań bramy** i **Żądania bramy zakończone niepowodzeniem**  z listy dostępnych metryk.
 3. Wykres przedstawia łączną liczbę wywołań interfejsu API. Pokazuje również liczbę wywołań interfejsu API zakończonych niepowodzeniem. 
 
@@ -80,7 +78,7 @@ Aby skonfigurować alerty:
 4. Wybierz pozycję **Nieautoryzowane żądania bramy** jako metrykę do monitorowania.
 5. Wybierz pozycję **Właściciele, współautorzy i czytelnicy poczty e-mail**.
 6. Naciśnij przycisk **OK**.
-7. Spróbuj wywołać nasz interfejs API konferencji bez klucza API. Jako właściciel tej usługi API Management otrzymasz alert e-mail. 
+7. Spróbuj wywołać interfejs API konferencji bez klucza API. Jako właściciel tej usługi API Management otrzymasz alert e-mail. 
 
     > [!TIP]
     > Wyzwolenie reguły alertu może również spowodować wywołanie elementu webhook lub aplikacji logiki platformy Azure.
@@ -89,7 +87,7 @@ Aby skonfigurować alerty:
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 
-Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do usług API Management. Korzystając z tych dzienników, można określić rodzaj, użytkownika i czas każdej operacji zapisu (PUT, POST, DELETE) wykonanej względem usług API Management. 
+Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do usług API Management. Korzystając z tych dzienników, można określić rodzaj, użytkownika i czas każdej operacji zapisu (PUT, POST, DELETE) wykonanej względem usług API Management.
 
 > [!NOTE]
 > Dzienniki aktywności nie obejmują operacji odczytu (GET) ani operacji wykonywanych w witrynie Azure Portal albo przy użyciu oryginalnych interfejsów API zarządzania.
@@ -103,7 +101,7 @@ Aby wyświetlić dzienniki aktywności:
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
+Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób.
 
 Aby skonfigurować dzienniki diagnostyczne:
 
@@ -116,15 +114,15 @@ Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane
 ```json
 {  
     "isRequestSuccess" : "",
-    "time": "",   
-    "operationName": "",      
-    "category": "",   
-    "durationMs": ,   
-    "callerIpAddress": "",   
-    "correlationId": "",   
-    "location": "",      
-    "httpStatusCodeCategory": "",      
-    "resourceId": "",      
+    "time": "",
+    "operationName": "",
+    "category": "",
+    "durationMs": ,
+    "callerIpAddress": "",
+    "correlationId": "",
+    "location": "",
+    "httpStatusCodeCategory": "",
+    "resourceId": "",
     "properties": {   
         "method": "", 
         "url": "", 
@@ -192,7 +190,7 @@ Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane
 | apimSubscriptionId | ciąg | Identyfikator jednostki subskrypcji dla bieżącego żądania | 
 | backendId | ciąg | Identyfikator jednostki zaplecza dla bieżącego żądania | 
 | LastError | obiekt | Ostatni błąd przetwarzania żądania | 
-| elapsed | liczba całkowita | Liczba milisekund, które upłynęło od momentu odebrania żądania przez bramę do momentu wystąpienia błędu | 
+| elapsed | liczba całkowita | Liczba milisekund, które upłynęły od momentu odebrania żądania przez bramę do momentu wystąpienia błędu | 
 | source | ciąg | Nazwa wewnętrznej procedury obsługi przetwarzania lub zasad, które spowodowały błąd | 
 | scope | ciąg | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
 | section | ciąg | Sekcja dokumentu zasad zawierająca zasady, które spowodowały błąd | 
@@ -206,7 +204,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Wyświetlanie dzienników aktywności
 > * Wyświetlanie dzienników diagnostycznych
-> * Wyświetlanie metryk interfejsu API 
+> * Wyświetlanie metryk interfejsu API
 > * Konfigurowanie reguły alertu, gdy interfejs API odbiera nieautoryzowane wywołania
 
 Przejdź do następnego samouczka:

@@ -1,20 +1,20 @@
 ---
-title: "Często zadawane pytania dotyczące usługi Azure Management koszt | Dokumentacja firmy Microsoft"
-description: "Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Management kosztów."
+title: Często zadawane pytania dotyczące usługi Azure Management koszt | Dokumentacja firmy Microsoft
+description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Management kosztów.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: troubleshooting
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Często zadawane pytania dotyczące usługi Azure Management koszt
 
@@ -89,9 +89,9 @@ Zmiana adresu e-mail w Cloudyn z domyślnym adresem na platformie Azure, Twoje k
 
 Firma Microsoft zaleca utworzenie co najmniej dwóch kont administratora Cloudyn na wypadek, gdyby jedno z kont zostanie zablokowane.
 
-Nie można zalogować się do portalu Cloudyn, upewnij się, logować się do Cloudyn używasz poprawny adres URL zarządzania koszt Azure. Use [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Nie można zalogować się do portalu Cloudyn, upewnij się, logować się do Cloudyn używasz poprawny adres URL zarządzania koszt Azure. Użyj [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Unikaj używania https://app.cloudyn.com Cloudyn bezpośredni adres URL.
+Unikaj używania bezpośredni adres URL Cloudyn https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak aktywować nieaktywowani kont z poświadczeniami Azure?
 
@@ -116,9 +116,9 @@ Aby dodać dodatkowe konta dostawcy usług Kryptograficznych do jednostki, wybie
 
 Może mieć wiele kont platformy Azure przy użyciu różnych waluty. Jednak koszt raportów w Cloudyn nie pokazuj więcej niż jeden typ waluty na raport.
 
-Jeśli masz wiele subskrypcji przy użyciu różnych walut jednostki nadrzędnej i jej podrzędne jednostki waluty są wyświetlane w USD  **$** . Nasze sugerowane najlepszym rozwiązaniem jest aby uniknąć używania różnych waluty w tej samej hierarchii jednostek. Innymi słowy wszystkie subskrypcje strukturę jednostek należy używać tej samej waluty.
+Jeśli masz wiele subskrypcji przy użyciu różnych walut jednostki nadrzędnej i jej podrzędne jednostki waluty są wyświetlane w USD **$**. Nasze sugerowane najlepszym rozwiązaniem jest aby uniknąć używania różnych waluty w tej samej hierarchii jednostek. Innymi słowy wszystkie subskrypcje strukturę jednostek należy używać tej samej waluty.
 
-Cloudyn automatycznie wykrywa walucie subskrypcji Enterprise Agreement i przedstawia on prawidłowo w raportach.  Jednak Cloudyn wyświetlane są tylko USD  **$**  dla konta platformy Azure bezpośrednio w sieci web i dostawcy usług Kryptograficznych.
+Cloudyn automatycznie wykrywa walucie subskrypcji Enterprise Agreement i przedstawia on prawidłowo w raportach.  Jednak Cloudyn wyświetlane są tylko USD **$** dla konta platformy Azure bezpośrednio w sieci web i dostawcy usług Kryptograficznych.
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Co to są dane Cloudyn Odśwież osi czasu?
 

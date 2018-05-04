@@ -1,26 +1,26 @@
 ---
-title: "Monitorowanie klastra usługi Azure Container Service przy użyciu rozwiązania Sysdig"
-description: "Monitorowanie klastra usługi Azure Container Service przy użyciu rozwiązania Sysdig."
+title: Monitorowanie klastra usługi Azure Container Service przy użyciu rozwiązania Sysdig
+description: Monitorowanie klastra usługi Azure Container Service przy użyciu rozwiązania Sysdig.
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Monitorowanie klastra usługi Azure Container Service przy użyciu rozwiązania Sysdig
 
 W tym artykule wdrożymy agentów rozwiązania Sysdig we wszystkich węzłach agentów w klastrze usługi Azure Container Service. Ta konfiguracja wymaga konta z rozwiązaniem Sysdig. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-[Wdróż](container-service-deployment.md) i [połącz](../container-service-connect.md) klaster skonfigurowany przez usługę Azure Container Service. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do witryny [http://app.sysdigcloud.com](http://app.sysdigcloud.com) i skonfiguruj konto chmury Sysdig. 
+[Wdróż](container-service-deployment.md) i [połącz](../container-service-connect.md) klaster skonfigurowany przez usługę Azure Container Service. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do [ http://app.sysdigcloud.com ](http://app.sysdigcloud.com) do konfigurowania konta Sysdig w chmurze. 
 
 ## <a name="sysdig"></a>Sysdig
 Sysdig jest usługą monitorowania, która umożliwia monitorowanie kontenerów w klastrze. Usługa Sysdig pomaga w rozwiązywaniu problemów, a także oferuje podstawowe metryki monitorowania procesora, sieci, pamięci i operacji we/wy. Usługa Sysdig ułatwia sprawdzanie, które kontenery pracują najciężej lub po prostu używają największej części pamięci i mocy procesora. Widok ten jest dostępny w sekcji przeglądu zapewnianej obecnie w wersji beta. 
@@ -30,7 +30,7 @@ Sysdig jest usługą monitorowania, która umożliwia monitorowanie kontenerów 
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Konfigurowanie wdrożenia usługi Sysdig przy użyciu usługi Marathon
 Te kroki przedstawiają metodę konfigurowania i wdrażania aplikacji usługi Sysdig w klastrze przy użyciu usługi Marathon. 
 
-Przejdź do interfejsu użytkownika rozwiązania DC/OS przez stronę [http://localhost:80/](http://localhost:80/). W interfejsie użytkownika rozwiązania DC/OS wybierz pozycję „Universe” (Wszechświat) w lewym dolnym rogu i wyszukaj ciąg „Sysdig”.
+Dostęp za pośrednictwem interfejsu użytkownika DC/OS [ http://localhost:80/ ](http://localhost:80/) raz w Interfejsie użytkownika DC/OS przejdź do "Universe", który znajduje się w lewym dolnym rogu okna, a następnie wyszukaj "Sysdig."
 
 ![Usługa Sysdig we wszechświecie rozwiązania DC/OS](./media/container-service-monitoring-sysdig/sysdig1.png)
 

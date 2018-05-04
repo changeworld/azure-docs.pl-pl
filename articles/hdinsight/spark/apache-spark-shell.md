@@ -1,26 +1,24 @@
 ---
-title: "Użyj powłoki interakcyjne Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Interakcyjne powłoki Spark udostępnia proces odczytu wykonania Drukuj polecenia Spark co w czasie i wyświetlać wyniki."
+title: Użyj powłoki interakcyjne Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Interakcyjne powłoki Spark udostępnia proces odczytu wykonania Drukuj polecenia Spark co w czasie i wyświetlać wyniki.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: maxluk
-ms.openlocfilehash: 55ff40165a1b25949cb202d9a5174e1f52fe4630
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 1d3d9d228e86df2811b92a0fcaa235f9d8c58d3f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Uruchom Spark z poziomu powłoki Spark
 

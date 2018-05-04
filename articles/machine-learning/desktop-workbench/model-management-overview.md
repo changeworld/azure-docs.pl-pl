@@ -1,6 +1,6 @@
 ---
-title: "Omówienie pojęć dotyczących Azure Machine Learning Model zarządzania | Dokumentacja firmy Microsoft"
-description: "W tym dokumencie opisano pojęcia Model zarządzania dla usługi Azure Machine Learning."
+title: Omówienie pojęć dotyczących Azure Machine Learning Model zarządzania | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano pojęcia Model zarządzania dla usługi Azure Machine Learning.
 services: machine-learning
 author: nk773
 ms.author: padou
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
 ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Zarządzanie modelami w usłudze Azure Machine Learning
 

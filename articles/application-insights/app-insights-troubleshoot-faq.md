@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d7abfd1ac6f914c75297ff49462590e5b6169dbd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -254,15 +254,37 @@ Zezwalaj na serwerze sieci web wysłać dane telemetryczne do naszej punktów ko
 
 ### <a name="proxy"></a>Serwer proxy
 
-Kierować ruchem z serwera bramy w sieci intranet, ustawiając to ApplicationInsights.config:
+Kierować ruchem z serwera do bramy w sieci intranet przy overwritting tych ustawień w przykładzie ApplicationInsights.config. Jeśli te właściwości "Punktu końcowego" nie są obecne w pliku config, te klasy będzie używać wartości domyślne pokazano w poniższym przykładzie.
 
-```XML
-<TelemetryChannel>
-    <EndpointAddress>your gateway endpoint</EndpointAddress>
-</TelemetryChannel>
+#### <a name="example-applicationinsightsconfig"></a>Przykład ApplicationInsights.config:
+```xml
+<ApplicationInsights>
+    ...
+    <TelemetryChannel>
+         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+    </TelemetryChannel>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
 ```
 
-Bramy należy kierować ruchem do https://dc.services.visualstudio.com:443/v2/track
+_Uwaga ApplicationIdProvider jest dostępna, począwszy od v2.6.0_
+
+Bramy należy kierować ruchem do https://dc.services.visualstudio.com:443
+
+Zastąp wartości powyżej z: `http://<your.gateway.address>/<relative path>`
+ 
+Przykład: 
+```
+http://<your.gateway.endpoint>/v2/track 
+http://<your.gateway.endpoint>/api/profiles/{0}/apiId
+```
+
+
+
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Na serwerze sieci intranet można uruchomić testów sieci web dostępności?
 

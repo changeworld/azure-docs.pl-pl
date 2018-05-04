@@ -22,7 +22,7 @@
 ### [Wyłączanie bazy danych Stretch Database](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # Dokumentacja
-## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=sql-server-database)
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=sql-server-database)
 
 # Zasoby
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/)

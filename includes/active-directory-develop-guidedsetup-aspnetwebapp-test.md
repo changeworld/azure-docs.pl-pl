@@ -1,3 +1,26 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 7e9518f8a90faa0566b96d58992b01e4b0a642f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="test-your-code"></a>Testowanie kodu
 
 Aby przetestować aplikację w programie Visual Studio, naciśnij klawisz **F5** do uruchomienia projektu. Przeglądarka otworzy http://<span></span>localhost: {port} lokalizacji i zostanie wyświetlony **Zaloguj się przy użyciu Microsoft** przycisku. Wybierz przycisk, aby rozpocząć proces logowania.
@@ -9,7 +32,7 @@ Jeśli wszystko jest gotowe do uruchomienia testu, korzystać z konta Microsoft 
 ![Zaloguj się do swojego konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>Wyświetl wyniki aplikacji
-Po zalogowaniu użytkownik jest przekierowywany do strony głównej witryny sieci Web. Strona główna jest adres URL HTTPS, określonego w aplikacji informacje rejestracyjne w portalu rejestracji aplikacji firmy Microsoft. Strona główna zawiera komunikat powitalny "Hello \<użytkownika >," łącze, aby się wylogować i link do wyświetlenia oświadczenia użytkownika. Łącze do oświadczenia użytkownika przechodzi do **autoryzacji** kontrolera, który został utworzony wcześniej.
+Po zalogowaniu użytkownik jest przekierowywany do strony głównej witryny sieci Web. Strona główna jest adres URL HTTPS, określonego w aplikacji informacje rejestracyjne w portalu rejestracji aplikacji firmy Microsoft. Strona główna zawiera komunikat powitalny *"Hello \<użytkownika >,"* łącze, aby się wylogować i link do wyświetlenia oświadczenia użytkownika. Łącze do oświadczenia użytkownika przechodzi do *oświadczeń* kontrolera, który został utworzony wcześniej.
 
 ### <a name="browse-to-see-the-users-claims"></a>Przeglądaj, aby wyświetlić oświadczenia użytkownika
 Aby wyświetlić oświadczeń użytkownika, wybierz łącze, aby przejść do widoku kontrolera, który jest dostępny tylko dla użytkowników uwierzytelnionych.
@@ -20,7 +43,7 @@ Po przejściu do widoku kontrolera, powinny być widoczne tabeli zawierającej p
 |Właściwość |Wartość |Opis |
 |---|---|---|
 |**Nazwa** |Imię i nazwisko użytkownika | Imię i nazwisko użytkownika.
-|**Nazwa użytkownika** |użytkownika<span>@domain.com</span> | Nazwa użytkownika, która jest używana do identyfikacji użytkownika.
+|**Nazwa użytkownika** |Użytkownika<span>@domain.com</span> | Nazwa użytkownika, która jest używana do identyfikacji użytkownika.
 |**Temat** |Temat |Ciąg, który unikatowo identyfikuje użytkownika sieci web.|
 |**Identyfikator dzierżawy** |Identyfikator GUID | A **guid** który w unikatowy sposób identyfikuje użytkownika usługi Azure AD organizacji.|
 
@@ -28,40 +51,43 @@ Ponadto powinien zostać wyświetlony spis wszystkich oświadczenia, które są 
 
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Testowanie dostępu do metody, która ma atrybut autoryzacji (opcjonalnie)
-Aby przetestować dostęp do **autoryzacji** kontroler oświadczeń użytkownika jako użytkownik anonimowy, wykonaj następujące kroki:
+Aby przetestować dostępu jako użytkownik anonimowy do kontrolera są chronione przy użyciu `Authorize` atrybutu, wykonaj następujące kroki:
 1. Wybierz łącze Wyloguj użytkownika i ukończyć proces wylogowywania.
-2. W przeglądarce, wpisz http://<span></span>localhost: {port} / uwierzytelnionego dostępu kontrolerze, który jest chroniony za pomocą do **autoryzacji** atrybutu.
+2. W przeglądarce, wpisz http://<span></span>localhost: {port} / oświadczeń kontrolerze, który jest chroniony za pomocą dostępu do `Authorize` atrybutu.
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>Oczekiwanych rezultatów po dostęp do chronionych kontrolera
 Zostanie wyświetlony monit o uwierzytelniania w celu użycia widoku chronionego kontrolera.
 
-## <a name="additional-information"></a>Dodatkowe informacje
+## <a name="advanced-options"></a>Opcje zaawansowane
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Ochrona całej witryny sieci Web
-Do ochrony całej witryny sieci Web, w **Global.asax** plików, dodawanie **klasy AuthorizeAttribute** atrybutu **GlobalFilters** Filtruj w **aplikacji _Uruchom** metody:
+Do ochrony całej witryny sieci Web, w **Global.asax** plików, dodawanie `AuthorizeAttribute` atrybutu `GlobalFilters` Filtruj w `Application_Start` metody:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
 <!--end-collapse-->
 
-### <a name="restrict-sign-in-access-to-your-application"></a>Ograniczanie dostępu do logowania do aplikacji
-Domyślnie kont osobistych, takich jak outlook.com, live.com i inne zalogować się do aplikacji. Konta służbowe w organizacji, które są zintegrowane z usługą Azure AD można też zarejestrować się domyślnie.
+### <a name="restrict-who-can-sign-in-to-your-application"></a>Ogranicz, który można zalogować się do aplikacji
+Domyślnie podczas tworzenia aplikacji utworzonych przez ten przewodnik aplikacji będzie akceptować znak ins osobiste konta (w tym outlook.com, live.com i inne), a także pracować kont służbowych z firmy lub organizacji, który jest zintegrowany z Usługa Azure Active Directory. Jest to zalecana opcja dla aplikacji SaaS.
 
-Aby ograniczyć rejestrowania dostępu użytkowników dla aplikacji, dostępnych jest kilka opcji.
+Aby ograniczyć rejestrowania dostępu użytkowników dla aplikacji, jest dostępnych kilka opcji:
 
-#### <a name="restrict-access-to-a-single-organization"></a>Ograniczanie dostępu do jednej organizacji
-Możesz ograniczyć dostęp do logowania w aplikacji tylko konta użytkowników, które znajdują się w pojedynczej organizacji usługi Azure AD:
-1. W **web.config** pliku, zmień wartość atrybutu **dzierżawy** parametru. Zmień wartość **typowe** nazwy dzierżawy w organizacji, takich jak **contoso.onmicrosoft.com**.
-2. W Twojej **uruchamiania OWIN** klasy, ustaw **ValidateIssuer** argument **true**.
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Opcja 1: Ograniczyć użytkownikom możliwość wystąpienia usługi Active Directory tylko jednej z organizacji logować się do aplikacji (pojedynczej dzierżawy)
 
-#### <a name="restrict-access-to-a-list-of-organizations"></a>Ograniczanie dostępu do wykazu organizacji
+Ta opcja jest typowym scenariuszem dla *aplikacji biznesowych*: Jeśli chcesz zaakceptować logowania tylko z kont należących do określonego wystąpienia usługi Azure Active Directory (w tym *konta gościa*tego wystąpienia) wykonaj następujące czynności:
+
+1. W **web.config** pliku, zmień wartość atrybutu `Tenant` parametru z `Common` nazwy dzierżawy w organizacji, takich jak `contoso.onmicrosoft.com`.
+2. W Twojej [klasy początkowej OWIN](#configure-the-authentication-pipeline)ustaw `ValidateIssuer` argument `true`.
+
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>Opcja 2: Ograniczanie dostępu do aplikacji dla użytkowników w określonej listy organizacji
+
 Możesz ograniczyć dostęp do logowania do kont użytkowników tylko, które znajdują się w organizacji usługi Azure AD, która znajduje się na liście dozwolonych organizacji:
-1. W **web.config** plików w sieci **uruchamiania OWIN** klasy, ustaw **ValidateIssuer** argument **true**.
-2. Ustaw wartość **ValidIssuers** parametru do listy dozwolonych organizacji.
+1. W Twojej [klasy początkowej OWIN](#configure-the-authentication-pipeline)ustaw `ValidateIssuer` argument `true`.
+2. Ustaw wartość `ValidIssuers` parametru do listy dozwolonych organizacji.
 
-#### <a name="use-a-custom-method-to-validate-issuers"></a>Umożliwia sprawdzanie poprawności wystawców niestandardowe — metoda
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Opcja 3: Umożliwia sprawdzanie poprawności wystawców niestandardowe — metoda
 Można zaimplementować niestandardowych metodę do sprawdzania poprawności wystawcy przy użyciu **IssuerValidator** parametru. Aby uzyskać więcej informacji na temat używania tego parametru, przeczytaj o [klasy TokenValidationParameters](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx) w witrynie MSDN.
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

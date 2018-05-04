@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: mabrigg
-ms.openlocfilehash: 7a909a36597d9ceb31b6dc9f142c4a9d9d37b464
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 10df87ec6d30e74356b0ff0f44b8745f8c7b8bf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Zarządzanie zasadami Azure za pomocą modułu zasad stosu Azure
 
@@ -41,7 +41,7 @@ Moduł zasad stosu Azure umożliwia skonfigurowanie subskrypcji platformy Azure 
 Polecenie można zastosować zasady domyślne stosu Azure względem subskrypcji platformy Azure. Przed uruchomieniem, Zastąp *Nazwa subskrypcji Azure* z subskrypcją platformy Azure.
 
 ```PowerShell
-Connect-AzureRmAccount
+Add-AzureRmAccount
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -53,7 +53,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 Można stosować zasady w metodzie bardziej szczegółowego.  Na przykład może mieć inne zasoby w tej samej subskrypcji.  Można określić zakres stosowania zasad do określonej grupy zasobów, co umożliwia testowanie aplikacji stosu Azure przy użyciu zasobów platformy Azure. Przed uruchomieniem, Zastąp *Nazwa subskrypcji Azure* nazwą Twojej subskrypcji platformy Azure.
 
 ```PowerShell
-Connect-AzureRmAccount
+Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 60df540d847a1e7422e87bc375220819dac4b25c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Działanie procedury przechowywane programu SQL Server
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -161,7 +161,7 @@ Zwróć uwagę następujące właściwości:
 
 - **Typu** właściwość jest ustawiona na **SqlServerStoredProcedure**. 
 - **StoredProcedureName** w typ właściwości jest równa **sp_sample** (Nazwa procedury składowanej).
-- **StoredProcedureParameters** sekcja zawiera jeden parametr o nazwie **wartości daty i godziny**. Nazwa i wielkość liter w wyrazie parametru w formacie JSON muszą być zgodne, nazwa i wielkość liter w wyrazie parametru w definicji procedury składowanej. Jeśli należy przekazać wartość null dla parametru, należy użyć składni: `"param1": null` (tylko małe litery).
+- **StoredProcedureParameters** sekcja zawiera jeden parametr o nazwie **DateTime**. Nazwa i wielkość liter w wyrazie parametru w formacie JSON muszą być zgodne, nazwa i wielkość liter w wyrazie parametru w definicji procedury składowanej. Jeśli należy przekazać wartość null dla parametru, należy użyć składni: `"param1": null` (tylko małe litery).
  
 1. Kliknij przycisk **... Więcej** na pasku poleceń i kliknij przycisk **nowy potok**.
 2. Skopiuj/Wklej poniższy fragment kodu JSON:   

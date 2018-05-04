@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom w prosty sposób.  Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności.
@@ -96,7 +96,7 @@ Aby rozpocząć przeprowadzanie inspekcji, skorzystaj z poniższej procedury:
 2. Kliknij pozycję Wyświetl dzienniki inspekcji.</br>
 ![Zdarzenie inspekcji](media/active-directory-tou/tou8.png)
 3.  Na ekranie dzienników inspekcji usługi Azure AD można filtrować informacje przy użyciu list rozwijanych, aby uzyskać konkretne dane z dzienników inspekcji.
-![Zdarzenie inspekcji](media/active-directory-tou/tou9.png)
+[Zdarzenie inspekcji](media/active-directory-tou/tou9.png)
 4.  Można również pobrać informacje w pliku csv do użytku lokalnego.
 
 ## 

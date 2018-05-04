@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 84475302-EFC2-4C35-B4CF-60C857A96345
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/30/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 09a774e5dda71d87c3862a6152ff5d2c9468c40c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Profile w wersji interfejsu API za pomocą Przejdź w stosie Azure
 
@@ -35,7 +33,7 @@ Profil jest kombinacją różnych typów zasobów z różnymi wersjami z różny
 W zestawie SDK Przejdź profile są dostępne w obszarze Profile / ścieżki z ich wersji w **RRRR-MM-DD** format. Teraz, najnowsze Azure stosu jest wersja profilu **2017-03-09**. Aby zaimportować danej usługi z profilu, należy zaimportować jego odpowiedniego modułu z profilu. Na przykład, aby zaimportować **obliczeniowe** usługi **2017-03-09** profilu:
 
 ````go
-import "github.com/Azure/azure-sdk-for-go/profi1es/2e17-e3-eg/compute/mgmt/compute" 
+import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
 ## <a name="install-azure-sdk-for-go"></a>Zainstaluj zestaw Azure SDK dla przejdź
@@ -82,7 +80,7 @@ Aby uruchomić przykładowy kod przejdź na stosie Azure:
   ```
 
   3. Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji do użycia później. Aby uzyskać informacje na temat tworzenia subskrypcji, zobacz [tworzyć subskrypcje ofert w stosie Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
-  4. Tworzenie nazwy głównej usługi z zakresem "Subskrypcji" i **właściciela** roli. Zapisz identyfikator i klucz tajny nazwy głównej usługi. Informacje dotyczące tworzenia nazwy głównej usługi dla stosu Azure, zobacz [Tworzenie nazwy głównej usługi](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Konfigurowanie środowiska Azure stosu.
+  4. Tworzenie nazwy głównej usługi z zakresem "Subskrypcji" i **właściciela** roli. Zapisz nazwy główne usług, identyfikator i klucz tajny. Informacje dotyczące tworzenia nazwy głównej usługi dla stosu Azure, zobacz [Tworzenie nazwy głównej usługi](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Konfigurowanie środowiska Azure stosu.
   5. Zaimportuj moduł usługi z profilu SDK Przejdź w kodzie. Bieżąca wersja profilu stosu Azure to **2017-03-09**. Na przykład, aby zaimportować moduł sieci z **2017-03-09** typ profilu: 
 
   ````go
@@ -129,7 +127,7 @@ Obiekt autoryzujący musi być ustawiona jako autoryzujący klienta zasobów. Do
 
 W tej sekcji przedstawiono typowy sposób uzyskać tokeny autoryzujący na stosie Azure przy użyciu poświadczeń klienta:
 
-  1. Jeśli nazwy głównej usługi z rolą właściciela subskrypcji jest dostępna, Pomiń ten krok. W przeciwnym razie tworzenie nazwy głównej usługi [instrukcje]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals) i przypisz go w roli "właściciela" ograniczone do subskrypcji [instrukcje]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Zapisz identyfikator podmiotu zabezpieczeń aplikacji usługi i klucz tajny. 
+  1. Jeśli nazwy głównej usługi z rolą właściciela subskrypcji jest dostępna, Pomiń ten krok. W przeciwnym razie tworzenie nazwy głównej usługi [instrukcje]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) i przypisz go w roli "właściciela" ograniczone do subskrypcji [instrukcje]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Zapisz identyfikator podmiotu zabezpieczeń aplikacji usługi i klucz tajny. 
 
   2. Importuj **adal** pakietu z AutoRest Przejdź w kodzie. 
   

@@ -11,11 +11,11 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: 189f19a3a3f588df8844a552abda73827eb45191
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbb8deeab8368d9c0e6d29c8d7e1e2e0a8805d60
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Inne machine learning produktów i usług firmy Microsoft
 
@@ -77,7 +77,7 @@ Ujednolicony [zestaw narzędzi usług Microsoft Cognitive](https://www.microsoft
 Zestaw narzędzi usług Cognitive pozwala tworzyć modele korzystające z uczenia głębokiego.  Można go używać razem z dowolną z wcześniej wymienionych usług.
 
 ## <a name="azure-cognitive-services"></a>Kognitywnych usług platformy Azure
-[Usług Azure kognitywnych](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) to zbiór około 30 interfejsów API, które pozwalają tworzyć aplikacje korzystające z fizyczną metod komunikacji. Te interfejsy API umożliwiają Zobacz, usłyszeć, głosu, zrozumieć i interpretować potrzeb użytkownika przy użyciu kilku wierszy kodu aplikacji. Można łatwo dodawać do aplikacji inteligentne funkcje, takie jak: 
+[Usług Azure kognitywnych](https://docs.microsoft.com/azure/#pivot=products&panel=ai) to zbiór około 30 interfejsów API, które pozwalają tworzyć aplikacje korzystające z fizyczną metod komunikacji. Te interfejsy API umożliwiają Zobacz, usłyszeć, głosu, zrozumieć i interpretować potrzeb użytkownika przy użyciu kilku wierszy kodu aplikacji. Można łatwo dodawać do aplikacji inteligentne funkcje, takie jak: 
 
 - Wykrywanie emocji i tonacji
 - Rozpoznawanie obrazów i mowy

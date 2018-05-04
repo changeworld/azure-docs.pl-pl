@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów aktywacji maszyny wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Zawiera opis kroków Rozwiązywanie problemów dotyczących ustalania problemy dotyczące aktywacji maszyny wirtualnej systemu Windows na platformie Azure"
+title: Rozwiązywanie problemów aktywacji maszyny wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Zawiera opis kroków Rozwiązywanie problemów dotyczących ustalania problemy dotyczące aktywacji maszyny wirtualnej systemu Windows na platformie Azure
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Rozwiązywanie problemów aktywacji maszyny wirtualnej systemu Windows Azure
 
@@ -30,7 +30,7 @@ Jeśli masz problemy podczas aktywacji maszyny wirtualnej systemu Windows Azure 
 Platforma Azure korzysta różnych punktów końcowych do aktywacji usługi KMS w zależności od regionu chmury, gdzie znajduje się maszyna wirtualna. Podczas korzystania z tego przewodnika dotyczące rozwiązywania problemów, należy użyć odpowiedniego punktu końcowego usługi KMS, który ma zastosowanie do tego regionu.
 
 * Regiony w chmurze publicznej systemu Azure: kms.core.windows.net:1688
-* Azure China national cloud regions: kms.core.chinacloudapi.cn:1688
+* Regiony platformy Azure national cloud Chin: kms.core.chinacloudapi.cn:1688
 * Regiony platformy Azure national cloud Niemcy: kms.core.cloudapi.de:1688
 * Regiony platformy Azure national cloud nam wersji dla instytucji rządowych: kms.core.usgovcloudapi.net:1688
 
@@ -78,7 +78,7 @@ Ten krok nie ma zastosowania do systemu Windows 2012 lub Windows 2008 R2. Używa
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Krok 2 Sprawdź łączność między usługę maszyny Wirtualnej i Azure usługi zarządzania Kluczami
 
-1. Pobierać i wyodrębniać [narzędzia Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) narzędzia do folderu lokalnego na maszynie wirtualnej, która nie uaktywni się. 
+1. Pobierać i wyodrębniać [narzędzia Psping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) narzędzia do folderu lokalnego na maszynie wirtualnej, która nie uaktywni się. 
 
 2. Przejdź do menu Start, wyszukiwania w programie Windows PowerShell, kliknij prawym przyciskiem myszy środowiska Windows PowerShell i wybierz polecenie Uruchom jako administrator.
 
@@ -126,7 +126,7 @@ Tak.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co się stanie, jeśli okres aktywacji systemu Windows? 
  
-Gdy upłynął okres prolongaty i systemu Windows nadal nie włączono, Windows Server 2008 R2 i nowszych wersjach systemu Windows zostanie wyświetlone dodatkowe powiadomienia dotyczące aktywacji. Czarne pozostaje tapety pulpitu i usługi Windows Update zainstaluje zabezpieczeń i tylko aktualizacje krytyczne, ale nie opcjonalne aktualizacje. W sekcji powiadomienia w dolnej części [warunki licencyjne](http://technet.microsoft.com/en-us/library/ff793403.aspx) strony.   
+Gdy upłynął okres prolongaty i systemu Windows nadal nie włączono, Windows Server 2008 R2 i nowszych wersjach systemu Windows zostanie wyświetlone dodatkowe powiadomienia dotyczące aktywacji. Czarne pozostaje tapety pulpitu i usługi Windows Update zainstaluje zabezpieczeń i tylko aktualizacje krytyczne, ale nie opcjonalne aktualizacje. W sekcji powiadomienia w dolnej części [warunki licencyjne](http://technet.microsoft.com/library/ff793403.aspx) strony.   
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.

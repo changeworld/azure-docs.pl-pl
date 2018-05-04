@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 9897a3578ad35376bea81b4821dbc2d84526a736
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu w przypadku wdrożeń hybrydowymi i w chmurze w usłudze Azure AD
 
@@ -240,7 +240,7 @@ Wymagaj przedstawicieli kadry kierowniczej pakiet C, menedżerów ogólny krytyc
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Użyj dedykowanych stacje robocze dla administracji dla usługi Azure AD
 
-Osoby atakujące mogą próbować target uprzywilejowanych kont w celu uzyskania dostępu do danych organizacji i systemów, ich może zakłócać integralności i autentyczności danych przez złośliwy kod, który zmienia logice programu lub snoops wprowadzenie poświadczeń administratora. Uprzywilejowany dostęp do stacji roboczych (łapy) podaj dedykowanego systemu operacyjnego dla poufnych zadań, które jest chronione przed Internet ataków i zagrożeń wektory. Oddzielanie tych ważnych zadań i konta z dziennego korzystania ze stacji roboczej i urządzeń zapewnia bardzo silną ochronę przed wyłudzania, aplikacji i luk w zabezpieczeniach systemu operacyjnego, ataków na różnych personifikacji i ataki kradzieży poświadczeń, takie jak naciśnięcie klawisza Rejestrowanie i Pass--Hash, Pass--Ticket. Wdrażając stacje robocze uprzywilejowanego dostępu, można zmniejszyć ryzyko, że administratorzy wprowadź poświadczenia administratora, z wyjątkiem na środowisko pulpitu, który ma zostać wzmocnione zabezpieczenia. Aby uzyskać więcej informacji, zobacz [uprzywilejowanego dostępu stacje robocze](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Osoby atakujące mogą próbować target uprzywilejowanych kont w celu uzyskania dostępu do danych organizacji i systemów, ich może zakłócać integralności i autentyczności danych przez złośliwy kod, który zmienia logice programu lub snoops wprowadzenie poświadczeń administratora. Uprzywilejowany dostęp do stacji roboczych (łapy) podaj dedykowanego systemu operacyjnego dla poufnych zadań, które jest chronione przed Internet ataków i zagrożeń wektory. Oddzielanie tych ważnych zadań i konta z dziennego korzystania ze stacji roboczej i urządzeń zapewnia bardzo silną ochronę przed wyłudzania, aplikacji i luk w zabezpieczeniach systemu operacyjnego, ataków na różnych personifikacji i ataki kradzieży poświadczeń, takie jak naciśnięcie klawisza Rejestrowanie i Pass--Hash, Pass--Ticket. Wdrażając stacje robocze uprzywilejowanego dostępu, można zmniejszyć ryzyko, że administratorzy wprowadź poświadczenia administratora, z wyjątkiem na środowisko pulpitu, który ma zostać wzmocnione zabezpieczenia. Aby uzyskać więcej informacji, zobacz [uprzywilejowanego dostępu stacje robocze](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Przejrzyj National Institute of Standards i technologii zalecenia dotyczące obsługi zdarzeń 
 

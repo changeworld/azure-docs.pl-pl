@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Usługa Application Insights dla aplikacji ASP.NET Core
 
@@ -187,13 +187,13 @@ Teraz, że zostały wykonane kroki z poprzedniej można przetestować i upewnij 
 
    ![Zrzut ekranu przedstawiający strumień na żywo metryk](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
 
-   (Jeśli skrypt programu PowerShell jest nadal uruchomiona, powinny pojawić się na żywo metryk, jeśli została zatrzymana, uruchom skrypt ponownie z strumień na żywo Otwórz.)
+   (Jeśli programu PowerShell skryptu można nadal działa powinna zostać wyświetlona metryki na żywo, jeśli została zatrzymana, uruchom skrypt ponownie z strumień na żywo Otwórz.)
 
 ## <a name="app-insights-sdk-comparison"></a>Porównanie SDK Insights aplikacji
 
 Twarde Praca grupy produktów usługi Application Insights do osiągnięcia maksymalnie zbliżony parzystość funkcji możliwie między [pełnego zestawu .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) i .net Core SDK. 2.2.0 wydanie [platformy ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) dla usługi Application Insights przede wszystkim zamknął luki funkcji.
 
-Aby dowiedzieć się więcej na temat różnic oraz wady i zalety między [.NET i .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server).
+Aby dowiedzieć się więcej na temat różnic oraz wady i zalety między [.NET i .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
    | Porównanie zestawu SDK | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
@@ -203,7 +203,7 @@ Aby dowiedzieć się więcej na temat różnic oraz wady i zalety między [.NET 
    | **Wywołania zależności SQL**     | **+** |**-** | **+**|
    | **Liczniki wydajności*** | **+** | **-**| **-**|
 
-_Liczniki wydajności_ w tym kontekście odnosi się do [liczniki wydajności po stronie serwera](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) , takich jak procesor, pamięć i użycie dysku.
+_Liczniki wydajności_ w tym kontekście odnosi się do [liczniki wydajności po stronie serwera](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) , takich jak procesor, pamięć i użycie dysku.
 
 ## <a name="open-source-sdk"></a>Zestaw SDK open source
 [Przeczytaj i brać udział w kodzie](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)

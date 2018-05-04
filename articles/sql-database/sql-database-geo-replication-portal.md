@@ -9,11 +9,11 @@ ms.custom: business continuity
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 09672c9f8ba725e46f2cdbb1a13de101137cb718
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 89839d18e90a75f81e78edcb7f54e77a31ea4886
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Skonfiguruj aktywna replikacja geograficzna bazy danych SQL Azure w portalu Azure i zainicjuj tryb failover
 
@@ -33,7 +33,7 @@ Następujące kroki tworzenia nowego pomocniczej bazy danych współpracują —
 
 Aby dodać pomocniczą bazę danych, musi być właścicielem subskrypcji lub współwłaściciel.
 
-Dodatkowej bazy danych ma taką samą nazwę co podstawowa baza danych i ma domyślnie na tym samym poziomie usługi. Dodatkowej bazy danych może być pojedynczą bazę danych lub bazy danych w puli elastycznej. Aby uzyskać więcej informacji, zobacz [warstw usług](sql-database-service-tiers.md).
+Dodatkowej bazy danych ma taką samą nazwę co podstawowa baza danych i ma domyślnie na tym samym poziomie usługi. Dodatkowej bazy danych może być pojedynczą bazę danych lub bazy danych w puli elastycznej. Aby uzyskać więcej informacji, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
 Po utworzeniu i rozpoczęta pomocniczej, danych rozpoczyna replikację z podstawowej bazy danych do nowej dodatkowej bazy danych.
 
 > [!NOTE]

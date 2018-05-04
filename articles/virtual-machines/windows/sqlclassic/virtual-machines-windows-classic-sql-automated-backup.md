@@ -1,11 +1,11 @@
 ---
-title: "Automatyczna usługa Backup dla maszyn wirtualnych serwera SQL (klasyczne) | Dokumentacja firmy Microsoft"
-description: "Zawiera opis funkcji automatycznego tworzenia kopii zapasowej dla programu SQL Server uruchomionego w maszynach wirtualnych platformy Azure za pomocą Menedżera zasobów. "
+title: Automatyczna usługa Backup dla maszyn wirtualnych serwera SQL (klasyczne) | Dokumentacja firmy Microsoft
+description: 'Zawiera opis funkcji automatycznego tworzenia kopii zapasowej dla programu SQL Server uruchomionego w maszynach wirtualnych platformy Azure za pomocą Menedżera zasobów. '
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: 05f5ec690fbf1ea2f4f6a6d927685d7a34ac9273
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bca1c6c357527a32de499ac9207b1bb734dad7b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatyczne kopie zapasowe programu SQL Server na maszynach wirtualnych platformy Azure (klasyczne)
 > [!div class="op_single_selector"]
@@ -48,13 +48,13 @@ Aby korzystać z automatycznego tworzenia kopii zapasowej, należy wziąć pod u
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> Automatyczne kopie zapasowe programu SQL Server 2016 jest obsługiwana na maszynach wirtualnych Menedżera zasobów. Aby uzyskać więcej informacji, zobacz [v2 automatyczna usługa Backup SQL Server 2016 maszyn wirtualnych platformy Azure (Resource Manager)](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
+> Automatyczne kopie zapasowe programu SQL Server 2016 jest obsługiwana na maszynach wirtualnych Menedżera zasobów. Aby uzyskać więcej informacji, zobacz [v2 automatyczna usługa Backup SQL Server 2016 maszyn wirtualnych platformy Azure (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
 
 **Baza danych konfiguracji**:
 
 * Docelowej bazy danych muszą używać modelu odzyskiwania pełnego.
 
-**Azure PowerShell**:
+**Program Azure PowerShell**:
 
 * [Zainstaluj najnowsze poleceń programu PowerShell Azure](/powershell/azure/overview).
 

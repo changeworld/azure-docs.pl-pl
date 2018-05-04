@@ -1,20 +1,20 @@
 ---
-title: "Konto usługi Google Cloud Platform połączyć z usługą Azure koszt Management | Dokumentacja firmy Microsoft"
-description: "Połącz konta usługi Google Cloud Platform, aby wyświetlić kosztów i repots danych użycia w kosztów zarządzania."
+title: Konto usługi Google Cloud Platform połączyć z usługą Azure koszt Management | Dokumentacja firmy Microsoft
+description: Połącz konta usługi Google Cloud Platform, aby wyświetlić kosztów i repots danych użycia w kosztów zarządzania.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: b7141d028c496b75b061c17aa19ad6c73c0588c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Połącz z kontem usługi Google Cloud Platform
 
@@ -24,7 +24,7 @@ Możesz połączyć istniejącego konta usługi Google Cloud Platform do usługi
 
 Należy rozpocząć od zbieranie informacji o projekcie.
 
-1. Zaloguj się do konsoli usługi Google Cloud Platform pod adresem [https://console.cloud.google.com](https://console.cloud.google.com).
+1. Zaloguj się do konsoli usługi Google Cloud Platform pod adresem [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Przejrzyj informacje projektu do których chcesz dołączyć kosztów zarządzania i Uwaga **Nazwa projektu** i **identyfikator projektu**. Zachowaj informacje przydatne do wykonania kolejnych kroków.  
     ![Konsola usługi Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
 3. Jeśli rozliczeń nie jest włączone i połączone z projektu, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
@@ -59,7 +59,7 @@ Aby zebrać informacje o użyciu i zasobów, kosztów wymagania w zakresie zarz�
 
 ## <a name="add-a-google-cloud-account-to-cost-management"></a>Dodaj konto Google Cloud do zarządzania koszt
 
-1. Otwórz Cloudyn portal z portalu Azure lub przejdź do [https://azure.cloudyn.com](https://azure.cloudyn.com/) i zaloguj się.
+1. Otwórz Cloudyn portal z portalu Azure lub przejdź do [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) i zaloguj się.
 2. Kliknij przycisk **ustawienia** (symbol koło zębate), a następnie wybierz **kont chmury**.
 3. W **Zarządzanie kontami**, wybierz pozycję **kont Google** a następnie kliknij pozycję **Dodaj nowy +**.
 4. W **nazwa konta Google**, wprowadź adres e-mail dla konta rozliczeniowego, a następnie kliknij przycisk **dalej**.

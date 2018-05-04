@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie i udostępnianie pulpitów nawigacyjnych danych Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Ten samouczek ułatwia zrozumienie sposobu analizy dzienników pulpitów nawigacyjnych można Wizualizuj wszystkie zapisany dziennik wyszukiwania, umożliwiając pojedynczego obiektyw, aby wyświetlić środowiska."
+title: Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Azure Log Analytics | Microsoft Docs
+description: Ten samouczek ułatwia zrozumienie sposobu wizualizacji wszystkich zapisanych przeszukiwań dzienników w pulpitach nawigacyjnych usługi Log Analytics, co zapewnia jedno miejsce do wglądu w środowisko.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,63 +15,63 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 272945134b534a5ded794379ce5e96b0902a4227
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
-ms.translationtype: MT
+ms.openlocfilehash: f6a70f33b143a5b9354411af9717d2a21e24af0c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-and-share-dashboards-of-log-analytics-data"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych danych analizy dzienników
+# <a name="create-and-share-dashboards-of-log-analytics-data"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics
 
-Analiza dzienników pulpitów nawigacyjnych można zwizualizować wszystkie zapisany dziennik wyszukiwania, dzięki czemu mogą znaleźć, grupowania i udostępnianie danych operacyjnych IT w organizacji.  Ten samouczek obejmuje utworzenie wyszukiwania dziennika, która będzie służyć do obsługi udostępnionych pulpit nawigacyjny, który będzie dostępna przez Twój zespół pomocy technicznej operacji IT.  Omawiane kwestie:
+Pulpity nawigacyjne usługi Log Analytics mogą wizualizować wszystkie zapisane przeszukiwania dzienników, co umożliwia znajdowanie, korelowanie i udostępnianie danych operacyjnych IT w organizacji.  Ten samouczek obejmuje tworzenie przeszukiwania dzienników, które będzie również wspierać udostępniony pulpit nawigacyjny dostępny dla zespołu pomocy technicznej ds. operacji IT.  Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Tworzenie udostępnionego pulpitu nawigacyjnego w portalu Azure
-> * Wizualizuj wyszukiwania dziennika wydajności 
-> * Dodaj wyszukiwanie dziennika do udostępnionego pulpitu nawigacyjnego 
-> * Dostosowywanie kafelka w udostępnionego pulpitu nawigacyjnego
+> * Tworzenie udostępnionego pulpitu nawigacyjnego w witrynie Azure Portal
+> * Wizualizacja przeszukiwania dzienników wydajności 
+> * Dodawanie przeszukiwania dzienników do udostępnionego pulpitu nawigacyjnego 
+> * Dostosowywanie kafelka na udostępnionym pulpicie nawigacyjnym
 
-Aby ukończyć przykład, w tym samouczku, musisz mieć istniejącej maszyny wirtualnej [podłączony do obszaru roboczego analizy dzienników](log-analytics-quick-collect-azurevm.md).  
+Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna [połączona z obszarem roboczym usługi Log Analytics](log-analytics-quick-collect-azurevm.md).  
  
-## <a name="log-in-to-azure-portal"></a>Zaloguj się do portalu Azure
-Zaloguj się do portalu Azure pod adresem [https://portal.azure.com](https://portal.azure.com). 
+## <a name="log-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
+Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-shared-dashboard"></a>Tworzenie udostępnionego pulpitu nawigacyjnego
 
-Najpierw Zobacz po zalogowaniu się do portalu Microsoft Azure jest [pulpitu nawigacyjnego](../azure-portal/azure-portal-dashboards.md).<br> ![Pulpitu nawigacyjnego portalu Azure](media/log-analytics-tutorial-dashboards/log-analytics-portal-dashboard.png)
+Pierwszą rzeczą, jaką zobaczysz po zalogowaniu się do witryny Microsoft Azure Portal, będzie [pulpit nawigacyjny](../azure-portal/azure-portal-dashboards.md).<br> ![Pulpit nawigacyjny witryny Azure Portal](media/log-analytics-tutorial-dashboards/log-analytics-portal-dashboard.png)
 
-W tym miejscu można zebrać razem danych operacyjnych, które najważniejszych IT we wszystkich zasobów platformy Azure, w tym dane telemetryczne z usługi Analiza dzienników Azure.  Zanim firma Microsoft wkroczyć do wizualizacji wyszukiwania dziennika, umożliwia najpierw utworzyć pulpit nawigacyjny i udostępnić go.  Pozwala to uzyskać przeszkadza przed traktujemy naszym przykładzie wydajności dziennik wyszukiwania, co będzie renderowane jako wykres liniowy i dodaj go do pulpitu nawigacyjnego.  
+W tym miejscu możesz zebrać najważniejsze dla działu IT dane operacyjne dotyczące wszystkich zasobów platformy Azure, w tym dane telemetryczne z usługi Azure Log Analytics.  Zanim przejdziemy do wizualizacji przeszukiwania dzienników, utwórzmy pulpit nawigacyjny i udostępnijmy go.  Dzięki temu będziemy mieli to z głowy przed przejściem do przykładowego przeszukiwania dzienników wydajności, które będzie renderowane jako wykres liniowy, oraz dodaniem go do pulpitu nawigacyjnego.  
 
-Aby utworzyć pulpit nawigacyjny, wybierz **nowego pulpitu nawigacyjnego** przycisk Dalej, aby nazwa bieżącego pulpitu nawigacyjnego.<br> ![Tworzenie nowego pulpitu nawigacyjnego w portalu Azure](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-01.png)
+Aby utworzyć pulpit nawigacyjny, wybierz przycisk **Nowy pulpit nawigacyjny** obok nazwy bieżącego pulpitu nawigacyjnego.<br> ![Tworzenie nowego pulpitu nawigacyjnego w witrynie Azure Portal](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-01.png)
 
-Ta akcja tworzy nowy, pusty, prywatne pulpitu nawigacyjnego i umieszcza Tryb dostosowywania, w którym można nazwa pulpitu nawigacyjnego i dodać lub zmienić Kafelki. Edytuj nazwę pulpitu nawigacyjnego i określ *przykładowy pulpit nawigacyjny* dla tego samouczka wybierz **gotowe dostosowywanie**.<br><br> ![Zapisz dostosowanego pulpitu nawigacyjnego platformy Azure](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-02.png)
+Ta akcja tworzy nowy, pusty, prywatny pulpit nawigacyjny i przenosi użytkownika do trybu dostosowania, w którym można nazwać pulpit nawigacyjny oraz dodać kafelki i zmienić ich ułożenie. Edytuj nazwę pulpitu nawigacyjnego i podaj *Przykładowy pulpit nawigacyjny* na potrzeby tego samouczka, a następnie wybierz opcję **Zakończono dostosowywanie**.<br><br> ![Zapisywanie dostosowanego pulpitu nawigacyjnego platformy Azure](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-02.png)
 
-Podczas tworzenia pulpitu nawigacyjnego jest prywatna domyślnie, co oznacza, że jesteś jedyną osobą, która to sprawdzić. Aby umożliwić innym osobom, użyj **udziału** przycisku, który pojawi się równolegle z innymi poleceniami pulpitu nawigacyjnego.<br> ![Udostępnianie nowego pulpitu nawigacyjnego w portalu Azure](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
+Podczas tworzenia pulpitu nawigacyjnego jest on domyślnie prywatny, co oznacza, że użytkownik jest jedyną osobą, która może go zobaczyć. Aby uwidocznić go dla innych osób, użyj przycisku **Udostępnij**, który jest wyświetlany wraz z innymi poleceniami pulpitu nawigacyjnego.<br> ![Udostępnianie nowego pulpitu nawigacyjnego w witrynie Azure Portal](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
 
-Zostanie wyświetlona prośba o wybranie subskrypcji i grupy zasobów dla pulpitu nawigacyjnego do opublikowania dla. Dla wygody portalu do publikowania przewodniki środowisko możesz kierunku wzorzec, gdzie umieścić pulpitów nawigacyjnych w grupie zasobów o nazwie **pulpity nawigacyjne**.  Sprawdź do wybranej subskrypcji i kliknij przycisk **publikowania**.  Dostęp do informacji wyświetlanych na pulpicie nawigacyjnym jest kontrolowany przy użyciu [kontroli dostępu na podstawie zasobów Azure](../active-directory/role-based-access-control-configure.md).   
+Zostanie wyświetlona prośba o wybór subskrypcji i grupy zasobów, dla których zostanie opublikowany pulpit nawigacyjny. Dla wygody środowisko publikowania w portalu skieruje Cię do wzorca, w którym umieszcza się pulpity nawigacyjne w grupie zasobów o nazwie **pulpity nawigacyjne**.  Sprawdź wybraną subskrypcję, a następnie kliknij przycisk **Publikuj**.  Dostęp do informacji wyświetlanych na pulpicie nawigacyjnym jest kontrolowany przy użyciu [Kontroli dostępu opartej na zasobach platformy Azure](../role-based-access-control/role-assignments-portal.md).   
 
-## <a name="visualize-a-log-search"></a>Wizualizuj wyszukiwania dziennika
+## <a name="visualize-a-log-search"></a>Wizualizacja przeszukiwania dzienników
 
-Można utworzyć zapytania podstawowego w jednym wierszu z portalu wyszukiwania dziennika w portalu Azure. Portal dziennik wyszukiwania może być używany bez uruchamiania zewnętrznego portalu i służy do wykonywania różnych funkcji z dziennika wyszukiwania w tym tworzenie reguły alertu, tworzenie grup komputerów i eksportowanie wyników zapytania. 
+Możesz utworzyć podstawowe zapytania w jednym wierszu z portalu przeszukiwania dzienników w witrynie Azure Portal. Portalu przeszukiwania dzienników można używać bez uruchamiania portalu zewnętrznego. Można też użyć go do wykonywania różnych funkcji związanych z przeszukiwaniem dzienników, w tym do tworzenia reguł alertów, tworzenia grup komputerów oraz eksportowania wyników zapytania. 
 
-[Portal analityka zaawansowane](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) to dedykowany portal, który udostępnia zaawansowane funkcje, które nie jest dostępne w portalu wyszukiwania dziennika. Funkcje obejmują możliwość edytowania zapytania w wielu wierszach, selektywnie wykonania kodu, kontekstowej Intellisense i analiza inteligentne. W portalu analityka zaawansowane będzie utworzyć widok wydajności w formie graficznej, zapisz go w przyszłości wyszukiwania i przypiąć go do udostępnionego pulpitu nawigacyjnego utworzonego wcześniej.   
+[Portal analizy zaawansowanej](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) jest specjalnym portalem zapewniającym zaawansowane funkcje, które nie są dostępne w portalu przeszukiwania dzienników. Funkcje obejmują możliwość edytowania zapytania w wielu wierszach, selektywnego wykonywania kodu, kontekstowego używania funkcji IntelliSense oraz korzystania z funkcji analizy inteligentnej. W portalu analizy zaawansowanej utworzysz widok wydajności w formie graficznej, zapiszesz go na potrzeby przyszłego wyszukiwania oraz przypniesz go do wcześniej utworzonego, udostępnionego pulpitu nawigacyjnego.   
 
-Można uruchomić portal analityka Zaawansowane z linku w portalu wyszukiwania dziennika.<br> ![Uruchamianie portal analityka zaawansowane](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
+Portal analizy zaawansowanej można uruchomić prz użyciu linku w portalu przeszukiwania dzienników.<br> ![Uruchamianie portalu analizy zaawansowanej](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 
-W portalu analityka wprowadź następujące zapytanie zwracało tylko procesora rekordów użycia dla komputerów z systemami Windows i Linux, pogrupowane według komputera i TimeGenerated i wyświetlane na wykresie visual:
+W portalu analizy wprowadź następujące zapytanie, aby zwrócić tylko rekordy związane z wykorzystaniem procesora dla komputerów z systemem Windows i Linux, pogrupowane według atrybutów Computer i TimeGenerated oraz wyświetlone na wykresie wizualnym:
 
 ```
 Perf | where CounterName == "% Processor Time" and ObjectName == "Processor" and InstanceName == "_Total" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1m), Computer | render timechart
 ```
 
-Zapisz zapytanie, wybierając **Zapisz zapytanie** przycisk w prawym górnym rogu.<br> ![Zapisz zapytanie z portalu analityka zaawansowane](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-02.png)<br><br> W **Zapisz zapytanie** w Panelu sterowania, podaj nazwę, taki jak *maszynach wirtualnych platformy Azure — użycie procesora* , a następnie kliknij przycisk **zapisać**.  W ten sposób można utworzyć biblioteki wspólne zapytania wyszukiwania z lub zmodyfikuj go bez konieczności ponownego zapisania go całkowicie.  Na koniec przypiąć to do udostępnionego pulpitu nawigacyjnego utworzonego wcześniej, wybierając **wykresu numeru Pin do pulpitu nawigacyjnego Azure** przycisk od środka górnym rogu strony.  
+Zapisz zapytanie, wybierając przycisk **Zapisz zapytanie** w prawym górnym rogu.<br> ![Zapisywanie zapytania z portalu analizy zaawansowanej](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-02.png)<br><br> W panelu sterowania **Zapisz zapytanie** podaj nazwę, np. *Maszyny wirtualne Azure — użycie procesora*, i kliknij przycisk **Zapisz**.  W ten sposób możesz utworzyć bibliotekę typowych zapytań na potrzeby wyszukiwania lub ich modyfikowania bez konieczności ponownego pisania zapytań od początku.  Na koniec przypnij wykres do wcześniej utworzonego udostępnionego pulpitu nawigacyjnego, wybierając przycisk **Przypnij wykres do pulpitu nawigacyjnego platformy Azure** w środkowej części strony po prawej.  
 
-Teraz, gdy mamy kwerendy przypięty do pulpitu nawigacyjnego Zauważ, że ma rodzajowy tytuł i komentarz poniżej.<br> ![Przykładowy pulpit nawigacyjny platformy Azure](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-01.png)<br><br>  Firma Microsoft należy zmienić jego nazwę wpisując tekst opisowy, który można łatwo zrozumiałe dla tych, wyświetlając go.  Kliknij prawym przyciskiem myszy Kafelek i wybierz **kafelka edycji**.  Po zakończeniu Dostosowywanie tytułu i podtytułu kafelka kliknij **aktualizacji**.  Transparent pojawi się monitem o Opublikuj zmiany lub odrzucić.  Kliknij przycisk **Opublikuj zmiany** , a następnie Zamknij **edytowanie kafelka** Panelu sterowania.  
+Teraz, po przypięciu zapytania do pulpitu nawigacyjnego, zauważysz, że ma ogólny tytuł, a pod nim komentarz.<br> ![Przykładowy pulpit nawigacyjny platformy Azure](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-01.png)<br><br>  Zmieńmy tytuł na coś znaczącego, co będzie łatwe do zrozumienia dla osób wyświetlających zapytanie.  Kliknij prawym przyciskiem myszy kafelek i wybierz polecenie **Edytuj tytuł**.  Po zakończeniu dostosowywania tytułu i podtytułu dla kafelka kliknij opcję **Zaktualizuj**.  Zostanie wyświetlony baner z prośbą o opublikowanie lub odrzucenie zmian.  Kliknij przycisk **Opublikuj zmiany**, a następnie zamknij okienko sterowania **Edytuj kafelek**.  
 
-![Ukończono konfigurację przykładowy pulpit nawigacyjny](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-02.png)
+![Ukończona konfiguracja przykładowego pulpitu nawigacyjnego](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-02.png)
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku przedstawiono sposób tworzenia pulpitu nawigacyjnego w portalu Azure i Dodaj do niej wyszukiwania dziennika.  ADVANCE do samouczka dalej, aby dowiedzieć się więcej różnych odpowiedzi, które można zaimplementować oparte na wyniki wyszukiwania dziennika.  
+W tym samouczku omówiliśmy sposób tworzenia pulpitu nawigacyjnego w witrynie Azure Portal oraz dodawania do niego przeszukiwania dzienników.  Przejdź do kolejnego samouczka, aby poznać różne odpowiedzi, które możesz wdrożyć w oparciu o wyniki przeszukiwania dzienników.  
 
 > [!div class="nextstepaction"]
-> [Odpowiadanie na zdarzenia z dziennika analizy alerty](log-analytics-tutorial-response.md)
+> [Odpowiadanie na zdarzenia przy użyciu alertów usługi Log Analytics](log-analytics-tutorial-response.md)

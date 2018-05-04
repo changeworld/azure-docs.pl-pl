@@ -1,41 +1,39 @@
 ---
-title: "Uruchamianie interakcyjnych zapytań w klastrze Spark w usłudze HDInsight Azure | Dokumentacja firmy Microsoft"
-description: "Przewodnik Szybki start platformy HDInsight Spark opisujący sposób tworzenia klastra platformy Apache Spark w usłudze HDInsight."
+title: Uruchamianie interakcyjnych zapytań w klastrze Spark w usłudze HDInsight Azure | Dokumentacja firmy Microsoft
+description: Przewodnik Szybki start platformy HDInsight Spark opisujący sposób tworzenia klastra platformy Apache Spark w usłudze HDInsight.
 keywords: spark quickstart,interactive spark,interactive query,hdinsight spark,azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 78ab44a7afa6523e1e9e4082b3f45b1a28affe77
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 177fb47c72e9abbafcda69416643fbd3848373bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-interactive-queries-on-spark-clusters-in-hdinsight"></a>Uruchamianie interakcyjnych zapytań w klastrze Spark w usłudze HDInsight
 
 Dowiedz się, jak użyć notesu Jupyter do uruchamiania interakcyjnych zapytań Spark SQL w odniesieniu do klastra Spark. 
 
-[Notesu Jupyter](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html) jest oparty na przeglądarce aplikacji, rozszerzający interaktywna opartych na konsoli sieci Web. Platforma Spark w usłudze HDInsight obejmuje również [notesu Zeppelin](apache-spark-zeppelin-notebook.md). Notesu Jupyter jest używana w tym samouczku.
+[Jupyter notebook](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html) jest aplikacji opartych na przeglądarce, która rozszerza opartych na konsoli interaktywna prezentacja w sieci Web. Platforma Spark w usłudze HDInsight obejmuje również [notes Zeppelin](apache-spark-zeppelin-notebook.md). W tym samouczku jest używany notes Jupyter.
 
-Notesów Jupyter w klastrach HDInsight obsługuje trzy jądra - **PySpark**, **PySpark3**, i **Spark**. **PySpark** jądra jest używana w tym samouczku. Aby uzyskać więcej informacji na temat jądra i korzyści wynikające ze stosowania **PySpark**, zobacz [klastrów jądra notesu Jupyter do użycia z platformy Apache Spark w usłudze HDInsight](apache-spark-jupyter-notebook-kernels.md). Aby użyć notesu Zeppelin, zobacz [klastra notesów Zeppelin korzystać z platformy Apache Spark w usłudze Azure HDInsight](./apache-spark-zeppelin-notebook.md).
+Notesy Jupyter w klastrach HDInsight obsługują trzy jądra — **PySpark**, **PySpark3** i **Spark**. W tym samouczku jest używane jądro **PySpark**. Aby uzyskać informacje na temat tych jąder i zalet używania programu **PySpark**, zobacz [Use Jupyter notebooks kernels with Apache Spark clusters in HDInsight](apache-spark-jupyter-notebook-kernels.md) (Używanie jąder notesu Jupyter z klastrami Apache Spark w usłudze HDInsight). Aby użyć notesu Zeppelin, zobacz [klastra notesów Zeppelin korzystać z platformy Apache Spark w usłudze Azure HDInsight](./apache-spark-zeppelin-notebook.md).
 
 W tym samouczku zapytaniu dotyczącym danych w pliku csv. Należy najpierw załadować dane do Spark jako dataframe. Następnie można uruchomić zapytania na dataframe za pomocą notesu Jupyter. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Klaster usługi Azure HDInsight Spark**. Aby uzyskać instrukcje, zobacz [utworzyć klaster Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* **Notesu Jupyter przy użyciu PySpark**. Aby uzyskać instrukcje, zobacz [tworzenie notesu Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+* **Klaster programu Azure HDInsight Spark**. Aby uzyskać instrukcje, zobacz [utworzyć klaster Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* **Program Jupyter notebook za pomocą PySpark**. Aby uzyskać instrukcje, zobacz [tworzenie notesu Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Utwórz dataframe z pliku csv
 
@@ -78,7 +76,7 @@ Element SQLContext aplikacji można utworzyć dataframes z istniejących RDD, z 
     ```
     Poniższy zrzut ekranu przedstawia migawki pliku HVAC.csv. Plik csv zawiera wszystkie klastry HDInsigt Spark. Przechwytywanie danych zmiany temperatury w budynku.
 
-    ![Migawki danych do interaktywnego zapytań Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "migawki danych do interaktywnego zapytań Spark SQL")
+    ![Migawki danych dla kwerendy SQL w iskrowym interaktywne](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "migawkę danych dla kwerendy SQL w iskrowym interaktywne")
 
 ## <a name="run-queries-on-the-dataframe"></a>Uruchamianie kwerend dotyczących dataframe
 
@@ -112,7 +110,7 @@ Po utworzeniu tabeli, możesz uruchomić kwerendę interakcyjne na danych.
 W tym artykule przedstawiono sposób wykonywania interakcyjnych zapytań w łączniku Spark przy użyciu notesu Jupyter. Przejdź do następnego artykuł, aby zobaczyć, jak dane, które są zarejestrowane w Spark można ściągnąć do narzędzia analytics analizy Biznesowej, takich jak Power BI i Tableau. 
 
 > [!div class="nextstepaction"]
->[Platforma Spark BI z usługą Azure HDInsight przy użyciu narzędzi do wizualizacji danych](apache-spark-use-bi-tools.md)
+>[BI Spark, narzędzi do wizualizacji danych za pomocą usługi HDInsight](apache-spark-use-bi-tools.md)
 
 
 

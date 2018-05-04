@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6926ae6c67e3397006e95595a8dc28bab67256da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 29fb74e49ad3fdca0bc54a431da40b02ef24882b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu fabryki danych Azure
 
@@ -45,8 +45,8 @@ Obsługiwane są następujące właściwości usługi ServiceNow połączone:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **ServiceNow** | Yes |
-| endpoint | Punkt końcowy serwera usługi ServiceNow (`http://ServiceNowData.com`).  | Yes |
-| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **podstawowe**, **OAuth2** | Yes |
+| endpoint | Punkt końcowy serwera usługi ServiceNow (`http://<instance>.service-now.com`).  | Yes |
+| Typ authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to: **podstawowe**, **OAuth2** | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem usługi ServiceNow uwierzytelniania Basic i protokołu OAuth2.  | Nie |
 | hasło | Hasło odpowiadający nazwie użytkownika do uwierzytelniania Basic i OAuth2. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | clientId | Identyfikator klienta do uwierzytelniania protokołu OAuth2.  | Nie |
@@ -63,7 +63,7 @@ Obsługiwane są następujące właściwości usługi ServiceNow połączone:
     "properties": {
         "type": "ServiceNow",
         "typeProperties": {
-            "endpoint" : "http://ServiceNowData.com",
+            "endpoint" : "http://<instance>.service-now.com",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

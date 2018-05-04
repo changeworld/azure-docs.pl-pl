@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.openlocfilehash: 4270bf0b8002b5328241c6d31f399511fc38274e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9c2ce75b2bfb4b8ddab11ac94e5a8e50c2fad6ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reliable-services-lifecycle"></a>Cykl życia usług Reliable Services
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Usługi, które nie obsługują prawidłowo anulowania mogą występować proble
 
 Ponieważ usługi są stanowe, również jest prawdopodobne, że usługi używają [niezawodnej kolekcje](service-fabric-reliable-services-reliable-collections.md). W sieci szkieletowej usług podczas obniżania poziomu podstawowego jedną pierwszy co się stanie, jest odebraniu podstawowy stan do zapisu. Prowadzi to do drugiego zestawu problemy, które mogą mieć wpływ na cyklem życia usługi. Kolekcje zwracany wyjątki oparte na czas i czy jest przenoszony repliki lub zamykania. Należy poprawnie obsługę tych wyjątków. 
 
-Wyjątki generowane przez sieć szkieletowa usług są trwałe [(`FabricException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception) lub przejściowego [(`FabricTransientException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception._fabric_transient_exception). Stałe wyjątki powinny być rejestrowane i zgłoszony. Wyjątki przejściowego można ponowić opartych na logice ponów próbę.
+Wyjątki generowane przez sieć szkieletowa usług są trwałe [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) lub przejściowego [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception._fabric_transient_exception). Stałe wyjątki powinny być rejestrowane i zgłoszony. Wyjątki przejściowego można ponowić opartych na logice ponów próbę.
 
 Ważnym elementem przetestowaniu i zweryfikowaniu niezawodne usługi jest obsługi wyjątków, które pochodzą od przy użyciu `ReliableCollections` w połączeniu z zdarzenia cyklu życia usługi. Firma Microsoft zaleca zawsze uruchamiaj usługi pod obciążeniem. Należy również wykonać uaktualnienia i [testowania chaos](service-fabric-controlled-chaos.md) przed wdrożeniem w środowisku produkcyjnym. Te podstawowe kroki pomocy, upewnij się, że usługa jest zaimplementowana poprawnie i poprawnie obsługi zdarzenia cyklu życia.
 

@@ -11,11 +11,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 710d517621cb9d4d9d2e9bf29e4facf7d75ab481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -49,8 +49,8 @@ Możesz również let bazy danych Azure SQL do [automatycznie zoptymalizować wy
 
 ## <a name="improving-database-performance-with-more-resources"></a>Poprawa wydajności bazy danych przy użyciu więcej zasobów
 
-Na koniec Jeśli nie ma żadnych towarów działań, które może poprawić wydajność bazy danych, można zmienić ilość zasobów dostępnych w bazie danych SQL Azure. Można przypisać więcej zasobów, zmieniając [warstwy usług](sql-database-service-tiers.md) autonomiczna baza danych lub zwiększenie wartości Edtu elastycznej puli w dowolnym momencie.
-1. W przypadku autonomicznej bazy danych, możesz [zmiana warstw usług](sql-database-service-tiers.md) na żądanie w celu poprawy wydajności bazy danych.
+Na koniec Jeśli nie ma żadnych towarów działań, które może poprawić wydajność bazy danych, można zmienić ilość zasobów dostępnych w bazie danych SQL Azure. Można przypisać więcej zasobów, zmieniając [DTU warstwy usług](sql-database-service-tiers-dtu.md) autonomiczna baza danych lub zwiększenie wartości Edtu elastycznej puli w dowolnym momencie. Alternatywnie Jeśli używasz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md), można zmienić warstwę usługi lub zwiększ zasoby przydzielone do bazy danych. 
+1. W przypadku autonomicznej bazy danych, możesz [zmiana warstw usług](sql-database-service-tiers-dtu.md) lub [zasoby obliczeniowe](sql-database-service-tiers-vcore.md)na żądanie w celu poprawy wydajności bazy danych.
 2. W przypadku wielu baz danych, rozważ zastosowanie [pule elastyczne](sql-database-elastic-pool-guidance.md) do zasoby są skalowane automatycznie.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Dostrajanie i zrefaktoryzuj aplikacji lub kodu bazy danych

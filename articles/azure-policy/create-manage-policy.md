@@ -1,19 +1,19 @@
 ---
-title: "Tworzenie zasad i zarządzanie nimi za pomocą usługi Azure Policy w celu wymuszania zgodności organizacyjnej | Microsoft Docs"
-description: "Usługa Azure Policy umożliwia wymuszanie standardów, zachowanie zgodności z przepisami, spełnianie wymagań inspekcji, kontrolowanie kosztów, zapewnianie spójności wydajności i zabezpieczeń oraz narzucanie zasad projektowania dla całego przedsiębiorstwa."
+title: Tworzenie zasad i zarządzanie nimi za pomocą usługi Azure Policy w celu wymuszania zgodności organizacyjnej | Microsoft Docs
+description: Usługa Azure Policy umożliwia wymuszanie standardów, zachowanie zgodności z przepisami, spełnianie wymagań inspekcji, kontrolowanie kosztów, zapewnianie spójności wydajności i zabezpieczeń oraz narzucanie zasad projektowania dla całego przedsiębiorstwa.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/18/2018
+ms.date: 04/19/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e50c2330c03e5fc36e608b672fe8390a1f19e99b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
@@ -372,7 +372,7 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Dopuszczanie niezgodnego lub odrzuconego zasobu przy użyciu wykluczenia
 
-W powyższym przykładzie po przypisaniu definicji zasad wymagającej programu SQL Server w wersji 12.0 próba utworzenia programu SQL Server w innej wersji zostałaby odrzucona. W tej sekcji opisano rozwiązywanie problemu z odmową utworzenia programu SQL Server w innej wersji przez żądanie wykluczenia. Wykluczenie zasadniczo zapobiega wymuszaniu zasad. Wykluczenie można zastosować do grupy zasobów lub zawęzić je do pojedynczych zasobów.
+W powyższym przykładzie po przypisaniu definicji zasad wymagającej programu SQL Server w wersji 12.0 próba utworzenia programu SQL Server w innej wersji niż 12.0 zostałaby odrzucona. W tej sekcji opisano rozwiązywanie problemu z odmową utworzenia programu SQL Server przez żądanie wykluczenia określonych zasobów. Wykluczenie zasadniczo zapobiega wymuszaniu zasad. W poniższym przykładzie można użyć dowolnej wersji programu SQL Server. Wykluczenie można zastosować do grupy zasobów lub zawęzić je do pojedynczych zasobów.
 
 1. Wybierz pozycję **Przypisania** w lewym okienku.
 2. Przejrzyj wszystkie przypisania zasad i otwórz przypisanie *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0).
@@ -384,7 +384,7 @@ W powyższym przykładzie po przypisaniu definicji zasad wymagającej programu S
 
 4. Kliknij przycisk **Przypisz**.
 
-W tej sekcji rozwiązano problem z odmową utworzenia programu SQL Server w wersji innej niż 12.0, żądając wykluczenia zasobów.
+W tej sekcji rozwiązano problem z odmową utworzenia programu SQL Server, żądając wykluczenia zasobów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -3,17 +3,17 @@ title: Wdrażanie kontenera wielu grup wystąpień kontenera platformy Azure
 description: Dowiedz się, jak wdrożyć grupę kontenera o wielu kontenerów w wystąpień kontenera platformy Azure.
 services: container-instances
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="deploy-a-container-group"></a>Wdrożenie grupy kontenera
 
@@ -34,7 +34,15 @@ W tym przykładzie grupa kontenera o dwa kontenery publicznego adresu IP i dwa p
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
@@ -43,7 +51,7 @@ W tym przykładzie grupa kontenera o dwa kontenery publicznego adresu IP i dwa p
   },
   "resources": [
     {
-      "name": "myContainerGroup",
+      "name": "[parameters('containerGroupName')]",
       "type": "Microsoft.ContainerInstance/containerGroups",
       "apiVersion": "2018-04-01",
       "location": "[resourceGroup().location]",
@@ -102,13 +110,13 @@ W tym przykładzie grupa kontenera o dwa kontenery publicznego adresu IP i dwa p
   "outputs": {
     "containerIPv4Address": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', 'myContainerGroup')).ipAddress.ip]"
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
     }
   }
 }
 ```
 
-Aby użyć rejestru obrazu Kontener prywatny, należy dodać obiektu do dokumentu JSON o następującym formacie.
+Aby użyć rejestru obrazu Kontener prywatny, należy dodać obiektu do dokumentu JSON o następującym formacie. Na przykład implementacji tej konfiguracji, zobacz [odwołania do szablonu Menedżera zasobów ACI] [ template-reference] dokumentacji.
 
 ```json
 "imageRegistryCredentials": [
@@ -131,10 +139,10 @@ az group create --name myResourceGroup --location eastus
 Wdrażanie szablonu z [Utwórz wdrożenie grupy az] [ az-group-deployment-create] polecenia.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --name myContainerGroup --template-file azuredeploy.json
+az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
-W ciągu kilku sekund wstępnej reakcji powinien zostać wyświetlony z platformy Azure.
+W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure.
 
 ## <a name="view-deployment-state"></a>Wyświetl stan wdrożenia
 
@@ -152,7 +160,7 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld:latest,microsoft/aci-tutorial-sidecar  52.168.26.124:80,8080  1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="view-logs"></a>Wyświetl dzienniki
+## <a name="view-logs"></a>Wyświetlanie dzienników
 
 Wyświetlanie danych wyjściowych dziennika przy użyciu kontenera [dzienniki kontenera az] [ az-container-logs] polecenia. `--container-name` Argument określa kontener, od którego do pobierania dzienników. W tym przykładzie pierwsze kontener jest określony.
 
@@ -210,3 +218,4 @@ W tym artykule opisano kroki niezbędne do wdrożenia wystąpienie kontenerem us
 [az-container-show]: /cli/azure/container#az_container_show
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
+[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

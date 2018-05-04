@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0da6bd56a684657d8275ca8c781847f31f8e05c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Dołączania komputerów do zarządzania przez Konfiguracja DSC automatyzacji Azure
 
@@ -31,7 +31,7 @@ Konfiguracja DSC automatyzacji Azure mogą służyć do zarządzania różnych k
 Ponadto jeśli firma nie jest gotowa do zarządzania konfiguracji komputera z chmury, konfiguracja DSC automatyzacji Azure mogą służyć jako punktu końcowego tylko do raportu. Dzięki temu można ustawić żądaną konfiguracją (push) za pośrednictwem usługi Konfiguracja DSC lokalnego oraz sformatowanego Szczegóły raportowania zgodności węzła z żądanego stanu w automatyzacji Azure.
 
 > [!NOTE]
-> Zarządzanie maszynach wirtualnych platformy Azure w usłudze Konfiguracja DSC jest dołączony bez dodatkowych opłat, jeśli zainstalowane rozszerzenia maszyny wirtualnej DSC jest większa niż 2.70. Zapoznaj się [ **automatyzacji cennikiem** ](https://azure.microsoft.com/en-us/pricing/details/automation/) więcej szczegółów.
+> Zarządzanie maszynach wirtualnych platformy Azure w usłudze Konfiguracja DSC jest dołączony bez dodatkowych opłat, jeśli zainstalowane rozszerzenia maszyny wirtualnej DSC jest większa niż 2.70. Zapoznaj się [ **automatyzacji cennikiem** ](https://azure.microsoft.com/pricing/details/automation/) więcej szczegółów.
 
 
 W poniższych sekcjach opisano, jak można dołączyć każdego typu maszyny do usługi Konfiguracja DSC automatyzacji Azure.
@@ -53,7 +53,7 @@ Aby znaleźć adres URL rejestracji i klucza dla konta usługi Automatyzacja, ab
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
 Add-AzureAccount
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # fill in correct values for your VM/Automation account here
 $VMName = ""
@@ -195,7 +195,7 @@ To polecenie jest uruchamiane maszyny musi mieć najnowszą wersję [platformy W
 
 ## <a name="generating-dsc-metaconfigurations"></a>Trwa generowanie metaconfigurations DSC
 
-Można tu dodać dowolnego komputera do usługi Konfiguracja DSC automatyzacji Azure, [metakonfigurację DSC](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) mogą być generowane, gdy stosowane, informuje DSC agenta na komputerze ściąganie danych z i/lub raportować do usługi Konfiguracja DSC automatyzacji Azure. Metaconfigurations DSC dla konfiguracji DSC automatyzacji Azure mogą być generowane przy użyciu konfiguracji DSC środowiska PowerShell lub polecenia cmdlet programu PowerShell automatyzacji Azure.
+Można tu dodać dowolnego komputera do usługi Konfiguracja DSC automatyzacji Azure, [metakonfigurację DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig) mogą być generowane, gdy stosowane, informuje DSC agenta na komputerze ściąganie danych z i/lub raportować do usługi Konfiguracja DSC automatyzacji Azure. Metaconfigurations DSC dla konfiguracji DSC automatyzacji Azure mogą być generowane przy użyciu konfiguracji DSC środowiska PowerShell lub polecenia cmdlet programu PowerShell automatyzacji Azure.
 
 > [!NOTE]
 > DSC metaconfigurations zawierają kluczy tajnych potrzebne do dołączenia komputera do automatyzacji konto do zarządzania. Upewnij się, że odpowiednio chronić żadnych metaconfigurations DSC utworzone, lub usuń je po użyciu.
@@ -329,7 +329,7 @@ Można tu dodać dowolnego komputera do usługi Konfiguracja DSC automatyzacji A
 Jeśli ustawienia domyślne programu PowerShell DSC lokalny program Configuration Manager są zgodne z przypadek użycia, i chcesz dołączyć maszyn tak, aby mogli zarówno ściąganie danych z i raporty do usługi Konfiguracja DSC automatyzacji Azure, poleceń cmdlet usługi Automatyzacja Azure umożliwiają uproszczony generowania metaconfigurations DSC potrzebne:
 
 1. Otwórz konsolę lub środowisko ISE programu PowerShell jako administrator na maszynie w środowisku lokalnym.
-2. Połącz przy użyciu usługi Azure Resource Manager **Add-AzureRmAccount**
+2. Nawiązywanie połączenia przy użyciu usługi Azure Resource Manager **Connect-AzureRmAccount**
 3. Pobierz metaconfigurations DSC środowiska PowerShell dla maszyn, które mają do dołączenia z konta automatyzacji, do której chcesz dodać węzły:
 
     ```powershell

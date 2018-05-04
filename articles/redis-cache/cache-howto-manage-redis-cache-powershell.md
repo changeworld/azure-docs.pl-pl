@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie pamięć podręczna Azure Redis przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonywać zadania administracyjne dla pamięci podręcznej Redis Azure za pomocą programu Azure PowerShell."
+title: Zarządzanie pamięć podręczna Azure Redis przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykonywać zadania administracyjne dla pamięci podręcznej Redis Azure za pomocą programu Azure PowerShell.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Zarządzanie przy użyciu programu Azure PowerShell pamięć podręczna Azure Redis
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Jeśli użytkownik zainstalował już programu Azure PowerShell, musi mieć prog
 
 Najpierw należy logujesz się na platformie Azure za pomocą tego polecenia.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Określ adres e-mail konta platformy Azure i jego hasło w oknie dialogowym logowania Microsoft Azure.
 
@@ -66,18 +66,18 @@ Na przykład, aby uzyskać pomoc dotyczącą `New-AzureRmRedisCache` polecenia c
     Get-Help New-AzureRmRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>Łączenie z innych chmur
-Domyślnie platformy Azure to środowisko `AzureCloud`, reprezentuje wystąpienie globalne chmury Azure. Aby nawiązać połączenie z innym wystąpieniem, użyj `Add-AzureRmAccount` z `-Environment` lub -`EnvironmentName` przełącznik wiersza polecenia o nazwie środowiska lub wymagane środowisko.
+Domyślnie platformy Azure to środowisko `AzureCloud`, reprezentuje wystąpienie globalne chmury Azure. Aby nawiązać połączenie z innym wystąpieniem, użyj `Connect-AzureRmAccount` z `-Environment` lub -`EnvironmentName` przełącznik wiersza polecenia o nazwie środowiska lub wymagane środowisko.
 
 Aby wyświetlić listę dostępnych środowisk, należy uruchomić `Get-AzureRmEnvironment` polecenia cmdlet.
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Do nawiązania połączenia chmury Azure dla instytucji rządowych
 Aby połączyć do chmury Azure dla instytucji rządowych, użyj jednej z następujących poleceń.
 
-    Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+    Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 lub
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
 Aby utworzyć pamięć podręczną w chmurze Azure dla instytucji rządowych, użyj jednej z następujących lokalizacji.
 
@@ -89,11 +89,11 @@ Aby uzyskać więcej informacji o chmurze platformy Azure dla instytucji rządow
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Do nawiązania połączenia chmury Azure w Chinach
 Aby połączyć się z chmury Azure w Chinach, użyj jednej z następujących poleceń.
 
-    Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+    Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 lub
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
 Aby utworzyć pamięć podręczną w chmurze platformy Azure w Chinach, użyj jednej z następujących lokalizacji.
 
@@ -105,12 +105,12 @@ Aby uzyskać więcej informacji o chmurze Chin platformy Azure, zobacz [AzureChi
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Do nawiązania połączenia platformy Azure w Niemczech firmy Microsoft
 Aby połączyć się Microsoft platformy Azure w Niemczech, użyj jednej z następujących poleceń.
 
-    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+    Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 
 lub
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
 
 Aby utworzyć pamięć podręczną w Microsoft Azure Niemczech, użyj jednej z następujących lokalizacji.
 
@@ -327,7 +327,7 @@ Polecenie aktualizacji pamięci podręcznej Redis, o nazwie myCache maxmemory-po
 <a name="scale"></a>
 
 ## <a name="to-scale-a-redis-cache"></a>Aby skalować pamięci podręcznej Redis
-`Set-AzureRmRedisCache`może służyć do skalowania pamięci podręcznej Azure Redis wystąpienia, kiedy `Size`, `Sku`, lub `ShardCount` są modyfikowane właściwości. 
+`Set-AzureRmRedisCache` może służyć do skalowania pamięci podręcznej Azure Redis wystąpienia, kiedy `Size`, `Sku`, lub `ShardCount` są modyfikowane właściwości. 
 
 > [!NOTE]
 > Skalowanie pamięci podręcznej przy użyciu programu PowerShell podlega tego samego ograniczenia i wytyczne jako skalowanie pamięci podręcznej z portalu Azure. Można skalować do innej warstwy cenowej z następującymi ograniczeniami.

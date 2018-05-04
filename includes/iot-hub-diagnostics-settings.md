@@ -4,20 +4,20 @@
 1. Wybierz **ustawień diagnostycznych**.
 1. Wybierz **Włącz diagnostykę**.
 
-   ![Włącz diagnostykę][1]
+   ![Włączanie diagnostyki][1]
 
 1. Nadaj nazwę ustawienia diagnostyki.
 1. Wybierz gdzie chcesz wysłać dzienniki. Można wybrać dowolną kombinację trzech opcji:
-   * Archiwum do konta magazynu
-   * Strumień do Centrum zdarzeń
-   * Wyślij do analizy dzienników
+   * Zarchiwizuj na koncie magazynu
+   * Przesyłaj strumieniowo do centrum zdarzeń
+   * Wysyłanie do usługi Log Analytics
 1. Wybierz operacje, które chcesz monitorować, a następnie włączyć dzienniki te operacje. Operacje, które będzie mógł zgłosić ustawień diagnostycznych są:
    * Połączenia
    * Telemetrii urządzenia
    * Komunikaty chmury do urządzenia
    * Operacje tożsamości urządzenia
    * Przekazywania plików
-   * Rozsyłanie wiadomości
+   * Kierowanie komunikatów
    * Operacje dwie chmury do urządzenia
    * Operacje dwie urządzenia do chmury
    * Dwie operacje
@@ -27,8 +27,8 @@
 
 Jeśli chcesz włączyć ustawienia diagnostyki przy użyciu programu PowerShell, należy użyć poniższego kodu:
 
-```
-Login-AzureRmAccount
+```azurepowershell
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <subscription that includes your IoT Hub>
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```

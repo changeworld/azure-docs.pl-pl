@@ -1,6 +1,7 @@
-Aby włączyć logowanie w swojej aplikacji, musisz utworzyć zasady logowania. Te zasady opisują procesy, przez które przejdą użytkownicy podczas logowania, i zawartość tokenów, które aplikacja otrzyma po pomyślnych logowaniach.
+Jeśli chcesz włączyć tylko logowania dla aplikacji, możesz użyć **logowania** zasad. Ta zasada opisano procesy, które klienci zostaną umieszczone za pośrednictwem podczas logowania i zawartość tokenów, które otrzymają aplikacji na pomyślne logowania.
 
-[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)] Kliknij pozycję **Zasady logowania**.
+[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
+Kliknij przycisk **zasad logowania**.
 
 Kliknij pozycję **+Dodaj** w górnej części bloku.
 

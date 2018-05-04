@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: abd3ef00148795f4b3e79e2ed64dd35f56946455
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopiowanie danych z programu SAP ECC przy użyciu fabryki danych Azure
 
@@ -57,7 +57,7 @@ Obsługiwane są następujące właściwości dla programu SAP ECC połączone u
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **SapEcc** | Yes |
-| adres url | Adres url usługi SAP ECC OData. | Yes |
+| url | Adres url usługi SAP ECC OData. | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do łączenia się SAP ECC. | Nie |
 | hasło | Hasło w postaci zwykłego tekstu używany do łączenia z SAP ECC. | Nie |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
@@ -124,7 +124,7 @@ Aby skopiować dane z programu SAP ECC, należy ustawić typ źródła w przypad
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **SapEccSource** | Yes |
-| query | Opcje zapytania OData do filtrowania danych. Przykład: "$select = nazwa, opis i $top = 10".<br/><br/>Łącznik SAP ECC kopiuje dane z połączonego adresu URL: (adres url określony w połączonej usłudze) / (określona ścieżka w zestawie danych)? (zapytanie określone w źródle działania kopiowania). Zapoznaj się [składniki adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Yes |
+| query | Opcje zapytania OData do filtrowania danych. Przykład: "$select = nazwa, opis i $top = 10".<br/><br/>Łącznik SAP ECC kopiuje dane z połączonego adresu URL: (adres url określony w połączonej usłudze) / (określona ścieżka w zestawie danych)? (zapytanie określone w źródle działania kopiowania). Zapoznaj się [składniki adresu URL OData](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
 **Przykład:**
 
@@ -170,14 +170,14 @@ Podczas kopiowania danych z programu SAP ECC, następujące mapowania są używa
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Podwójnej precyzji |
-| Edm.Single | Kawaler/panna |
+| Edm.Single | Pojedyncze |
 | Edm.Guid | Ciąg |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Ciąg |
-| Edm.Time | TimeSpan |
+| Edm.Time | Zakres czasu |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

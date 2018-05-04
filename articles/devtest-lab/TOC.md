@@ -86,5 +86,5 @@
 
 
 # Zasoby
-## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
+## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=developer-tools)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)

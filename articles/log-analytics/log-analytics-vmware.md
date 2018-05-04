@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie VMware rozwiązania analizy dzienników | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o tym, jak to rozwiązanie monitorowanie VMware można ułatwić zarządzania dziennikami i monitorować hostach ESXi."
+title: Monitorowanie VMware rozwiązania analizy dzienników | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o tym, jak to rozwiązanie monitorowanie VMware można ułatwić zarządzania dziennikami i monitorować hostach ESXi.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 98969cf2f6604843bc1502990222264e7acc363b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware monitorowania (wersja zapoznawcza) rozwiązania analizy dzienników
 
 ![VMware symbol](./media/log-analytics-vmware/vmware-symbol.png)
+
+> [!NOTE]
+> To rozwiązanie monitorowanie VMware jest przestarzała.  Klienci, którzy zainstalowali rozwiązania można nadal z niego korzystać, ale monitorowania VMware nie można dodać do żadnych nowych obszarów roboczych.
 
 Rozwiązanie monitorowania VMware w analizy dzienników jest rozwiązaniem, które pomaga w utworzeniu centralnego rejestrowania i monitorowania podejście do dużych dzienników VMware. W tym artykule opisano, jak można rozwiązać, przechwytywania i zarządzać hostach ESXi w jednej lokalizacji za pomocą rozwiązania. Dzięki rozwiązaniu można poznać szczegółowe dane na wszystkich hostach ESXi w jednym miejscu. Widać liczby zdarzeń top, stanu i trendów hostów maszyny Wirtualnej i ESXi realizowane za pośrednictwem dzienniki hosta ESXi. Można rozwiązać, wyświetlając i wyszukiwanie scentralizowane dzienniki hosta ESXi. I można tworzyć alerty na podstawie kwerend wyszukiwania dziennika.
 

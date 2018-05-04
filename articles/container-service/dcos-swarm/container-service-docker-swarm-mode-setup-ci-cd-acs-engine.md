@@ -1,19 +1,19 @@
 ---
-title: "CI/CD z aparatem usługi kontenera platformy Azure i tryb Swarm"
-description: "Użyć aparat usługi kontenera platformy Azure z Docker Swarm tryb rejestru kontenera Azure i Visual Studio Team Services w celu dostarczenia stale aplikacji .NET Core wielu kontenera"
+title: CI/CD z aparatem usługi kontenera platformy Azure i tryb Swarm
+description: Użyć aparat usługi kontenera platformy Azure z Docker Swarm tryb rejestru kontenera Azure i Visual Studio Team Services w celu dostarczenia stale aplikacji .NET Core wielu kontenera
 services: container-service
 author: diegomrtnzg
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 6aa690ff7ec0689db78ff1225d36171adb30ee2c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Pełny potok CI/CD do wdrażania aplikacji usługi kontenera w usłudze kontenera platformy Azure z aparatem ACS i Docker Swarm trybie przy użyciu programu Visual Studio Team Services
 
@@ -218,7 +218,7 @@ Wersja przepływ pracy składa się z dwóch zadań, które można dodać.
 
 1. Skonfigurować zadania bezpiecznie skopiować plik Redaguj *wdrażanie* folder w rozwiązaniu Docker Swarm węzła głównego, przy użyciu połączenia SSH został wcześniej skonfigurowany. Zobacz następujący ekran, aby uzyskać szczegółowe informacje.
     
-    Folder źródłowy:```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
+    Folder źródłowy: ```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
 
     ![Visual Studio Team Services - wersja punkt połączenia usługi](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
 
@@ -244,7 +244,7 @@ Wersja przepływ pracy składa się z dwóch zadań, które można dodać.
 
 Teraz, po zakończeniu konfiguracji, nadszedł czas na test ten nowy potok CI/CD. Najprostszym sposobem, aby ją przetestować jest zaktualizuj kod źródłowy i zatwierdzić zmiany do repozytorium GitHub. Kilka sekund po naciśnięciu kodu, zobaczysz nowej kompilacji uruchomionych w Visual Studio Team Services. Po pomyślnym ukończeniu nowej wersji wyzwoleniu i wdrożeniu nowej wersji aplikacji w klastrze usługi kontenera platformy Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby uzyskać więcej informacji na temat CI/CD z Visual Studio Team Services, zobacz [kompilacji programu VSTS omówienie](https://www.visualstudio.com/docs/build/overview).
 * Aby uzyskać więcej informacji na temat aparatu ACS, zobacz [repozytorium GitHub aparat ACS](https://github.com/Azure/acs-engine).

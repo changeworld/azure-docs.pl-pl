@@ -1,6 +1,6 @@
 ---
-title: "Monitorowanie i rozwiązywanie problemów aplikacji magazynu w chmurze na platformie Azure | Microsoft Docs"
-description: "Korzystanie z narzędzi diagnostycznych, metryk i alertów w celu rozwiązywania problemów i monitorowania aplikacji w chmurze."
+title: Monitorowanie i rozwiązywanie problemów aplikacji magazynu w chmurze na platformie Azure | Microsoft Docs
+description: Korzystanie z narzędzi diagnostycznych, metryk i alertów w celu rozwiązywania problemów i monitorowania aplikacji w chmurze.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: a1b3a1d4bb397e19f033b8f3bfe68ca6a63725c4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: eb58104309802125a8424cbbf8a1bef3d1c5e79c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorowanie i rozwiązywanie problemów aplikacji magazynu w chmurze
 
@@ -41,11 +41,11 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
 W menu po lewej stronie wybierz kolejno pozycje **Grupy zasobów** i **myResourceGroup**, a następnie wybierz konto magazynu na liście zasobów.
 
-W obszarze **Diagnostyka** zmień ustawienie **Stan** na **Włączone**. Upewnij się, że **Metryki agregacji obiektów Blob**, **Metryki obiektów Blob na interfejs API** i **Dzienniki obiektów Blob** są włączone.
+W obszarze **Diagnostyka** zmień ustawienie **Stan** na **Włączone**. Upewnij się, że wszystkie opcje w obszarze **Właściwości obiektu blob** są włączone.
 
 Po zakończeniu kliknij przycisk **Zapisz**.
 
-![Okienko diagnostyki](media/storage-monitor-troubleshoot-storage-application/figure1.png)
+![Okienko diagnostyki](media/storage-monitor-troubleshoot-storage-application/contoso.png)
 
 ## <a name="enable-alerts"></a>Włączanie alertów
 

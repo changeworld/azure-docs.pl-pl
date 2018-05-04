@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfiguracja połączenia SSL w bazie danych Azure dla PostgreSQL
 Bazy danych platformy Azure dla PostgreSQL preferowany, połączenie klienta aplikacji w usłudze PostgreSQL przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
@@ -56,7 +56,7 @@ Certyfikat potrzebne do komunikowania się za pośrednictwem protokołu SSL z ba
 ### <a name="download-and-install-openssl-on-your-machine"></a>Pobierz i zainstaluj biblioteki OpenSSL na tym komputerze 
 Zdekodować plik certyfikatu, wymagane bezpieczne połączenie z serwerem bazy danych aplikacji, musisz zainstalować biblioteki OpenSSL na komputerze lokalnym.
 
-#### <a name="for-linux-os-x-or-unix"></a>For Linux, OS X, or Unix
+#### <a name="for-linux-os-x-or-unix"></a>Dla systemu Linux, Unix lub OS X
 Biblioteki OpenSSL znajdują się w kodzie źródłowym bezpośrednio z [Foundation oprogramowania biblioteki OpenSSL](http://www.openssl.org). Poniższe instrukcje pomagają przez kroki niezbędne do zainstalowania biblioteki OpenSSL na komputerze z systemem Linux. W tym artykule używa poleceń znane pracować nad Ubuntu 12.04 i wyższych.
 
 Otwórz sesję terminala i Pobierz biblioteki OpenSSL.
@@ -98,7 +98,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 
 #### <a name="for-windows"></a>Dla systemu Windows
 Instalowanie biblioteki OpenSSL na komputerach z systemem Windows można zrobić w następujący sposób:
-1. **(Zalecane)**  Za pomocą wbudowanych funkcji Bash dla systemu Windows w oknie 10 i nowszych, biblioteki OpenSSL jest instalowany domyślnie. Instrukcje dotyczące włączania funkcji Bash dla systemu Windows w systemie Windows 10 można znaleźć [tutaj](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
+1. **(Zalecane)**  Za pomocą wbudowanych funkcji Bash dla systemu Windows w oknie 10 i nowszych, biblioteki OpenSSL jest instalowany domyślnie. Instrukcje dotyczące włączania funkcji Bash dla systemu Windows w systemie Windows 10 można znaleźć [tutaj](https://msdn.microsoft.com/commandline/wsl/install_guide).
 2. Do pobierania aplikacji Win32/64, dostarczone przez społeczność. Podczas Foundation oprogramowania biblioteki OpenSSL Podaj ani nie zatwierdza wszystkie określone składniki Instalatora Windows, zawierają listę dostępnych instalatorów [tutaj](https://wiki.openssl.org/index.php/Binaries).
 
 ### <a name="decode-your-certificate-file"></a>Dekoduj plik certyfikatu

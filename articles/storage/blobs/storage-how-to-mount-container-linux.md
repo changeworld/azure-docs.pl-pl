@@ -1,6 +1,6 @@
 ---
-title: "Jak zainstalować magazyn obiektów Blob platformy Azure w systemie plików w systemie Linux | Dokumentacja firmy Microsoft"
-description: "Zainstaluj kontenera magazynu obiektów Blob platformy Azure z BEZPIECZNIK w systemie Linux"
+title: Jak zainstalować magazyn obiektów Blob platformy Azure w systemie plików w systemie Linux | Dokumentacja firmy Microsoft
+description: Zainstaluj kontenera magazynu obiektów Blob platformy Azure z BEZPIECZNIK w systemie Linux
 services: storage
 documentationcenter: linux
 author: seguler
@@ -10,11 +10,11 @@ ms.devlang: bash
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: seguler
-ms.openlocfilehash: 299b96c783fb3606347bb448d00d44f0071da429
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 44b0c36ad366d50480212adff9cdb8b10a17db05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>Jak zainstalować magazyn obiektów Blob jako systemu plików z blobfuse (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 W tym przewodniku przedstawiono sposób używania blobfuse i zainstalować kontenera magazynu obiektów Blob na systemu Linux i dostępu do danych. Aby dowiedzieć się więcej na temat blobfuse, przeczytaj szczegółowe informacje w [repozytorium blobfuse](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> Blobfuse nie gwarantuje 100% zgodności POSIX, jak po prostu tłumaczy żądań do [interfejsów API REST Blob](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api). Na przykład niepodzielnych POSIX, ale nie w blobfuse są operacje zmiany nazwy.
+> Blobfuse nie gwarantuje 100% zgodności POSIX, jak po prostu tłumaczy żądań do [interfejsów API REST Blob](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api). Na przykład niepodzielnych POSIX, ale nie w blobfuse są operacje zmiany nazwy.
 > Aby uzyskać pełną listę różnic między macierzysty system plików i blobfuse, odwiedź stronę [repozytorium kodu źródłowego blobfuse](https://github.com/azure/azure-storage-fuse).
 > 
 

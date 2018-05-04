@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="article-top"></a>Migracji istniejącej usługi mobilnej Azure w usłudze Azure App Service
 Z [ogólnej dostępności usługi Azure App Service], lokacji usług Azure Mobile Services można łatwo migracji w miejscu, aby korzystać ze wszystkich funkcji usługi Azure App Service.  W tym dokumencie opisano, czego można oczekiwać podczas migracji lokacji z usług Azure Mobile Services w usłudze Azure App Service.
@@ -372,16 +372,16 @@ Teraz, gdy aplikacja jest migrowana do usługi App Service, istnieją nawet wię
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[Cennik usługi aplikacji]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[Cennik usługi aplikacji]: https://azure.microsoft.com/pricing/details/app-service/
 [usługi Application Insights]: ../application-insights/app-insights-overview.md
 [Automatyczne skalowanie]: ../app-service/web-sites-scale.md
 [usłudze Azure App Service]: ../app-service/app-service-web-overview.md
 [klasycznego portalu Azure]: https://manage.windowsazure.com
 [portalu Azure]: https://portal.azure.com
-[Azure Region]: https://azure.microsoft.com/en-us/regions/
+[Azure Region]: https://azure.microsoft.com/regions/
 [plany harmonogramu Azure]: ../scheduler/scheduler-plans-billing.md
 [stale wdrażanie]: ../app-service/app-service-continuous-deployment.md
-[Konwertuj mieszanych obszary nazw]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Konwertuj mieszanych obszary nazw]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [niestandardowych nazw domen]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: http://www.telerik.com/fiddler

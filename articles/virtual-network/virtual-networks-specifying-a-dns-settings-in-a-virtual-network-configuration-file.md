@@ -3,7 +3,7 @@ title: Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej | Dokumen
 description: Jak zmienić ustawienia serwera DNS w sieci wirtualnej przy użyciu pliku konfiguracji sieci wirtualnej w klasycznym modelu wdrażania
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: 8e6cfc285b3fb23944dfa0189bb492a9b8fa9a88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ed7f02d3e389db3bc772c4fcb00a7b3877d60173
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Określanie ustawień DNS w pliku konfiguracji sieci wirtualnej
 Plik konfiguracji sieci ma dwa elementy, których można użyć do określenia ustawień systemu nazw domen (DNS, Domain Name System): **DnsServers** i **DnsServerRef**. Można dodać listę serwerów DNS, określając ich adresy IP i odwoływać się do nazw do **DnsServers** elementu. Następnie można użyć **DnsServerRef** element, aby określić, które wpisów serwera DNS z elementu DnsServers służą do innej sieci Lokacje w ramach sieci wirtualnej.

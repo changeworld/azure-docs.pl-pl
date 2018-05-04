@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: eb305986982432d7a432204e3fae8a1dff6a5d74
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurowanie wysokiej dostępności portów dla wewnętrznego modułu równoważenia obciążenia
 
@@ -39,12 +39,6 @@ Na ilustracji przedstawiono następującą konfigurację przykład wdrożenia, o
 ![Wysokiej dostępności porty Przykładowe wdrożenie](./media/load-balancer-configure-ha-ports/haports.png)
 
 
-## <a name="preview-sign-up"></a>Podgląd rejestracji
-
-Aby wziąć udział w wersji zapoznawczej funkcji wysokiej dostępności portów w standardowe usługi równoważenia obciążenia Azure zarejestrować subskrypcję, aby uzyskać dostęp za pomocą 2.0 interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Zarejestruj subskrypcję dla [standardowe usługi równoważenia obciążenia w wersji zapoznawczej](https://aka.ms/lbpreview#preview-sign-up).
-
->[!NOTE]
->Rejestracji standardowe Podgląd usługi równoważenia obciążenia może potrwać do godziny.
 
 ## <a name="configure-high-availability-ports"></a>Konfigurowanie wysokiej dostępności portów
 

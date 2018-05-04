@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -39,9 +39,9 @@ Każda trasa zawiera prefiks adresu i typ następnego przeskoku. Gdy ruch opuszc
 |Domyślne|Unikatowy dla sieci wirtualnej                           |Sieć wirtualna|
 |Domyślne|0.0.0.0/0                                               |Internet       |
 |Domyślne|10.0.0.0/8                                              |Brak           |
-|Domyślne|172.16.0.0/12                                           |None           |
+|Domyślne|172.16.0.0/12                                           |Brak           |
 |Domyślne|192.168.0.0/16                                          |Brak           |
-|Domyślne|100.64.0.0/10                                           |None           |
+|Domyślne|100.64.0.0/10                                           |Brak           |
 
 Typy następnego przeskoku wymienione w powyższej tabeli określają sposób, w jaki platforma Azure kieruje ruch przeznaczony dla wymienionego prefiksu adresu. Poniżej znajdują się objaśnienia typów następnego przeskoku:
 
@@ -122,7 +122,9 @@ Brama sieci lokalnej może wymieniać trasy z bramą sieci wirtualnej platformy 
 - **VPN**: opcjonalnie możesz użyć protokołu BGP. Aby uzyskać więcej informacji, zobacz [BGP with site-to-site VPN connections (Protokół BGP przy użyciu połączeń sieci VPN lokacja-lokacja)](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 W przypadku, gdy wymieniasz trasy z platformą Azure przy użyciu protokołu BGP, oddzielna trasa jest dodawana do tabeli tras wszystkich podsieci w sieci wirtualnej dla każdego anonsowanego prefiksu. Trasa jest dodawana z *bramą sieci wirtualnej* wymienioną jako element źródłowy i typ następnego przeskoku. 
- 
+
+Propagację trasy protokołu BGP można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes) z typem następnego przeskoku sieci VPN. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](/manage-route-table#create-a-route-table.md).
+
 ## <a name="how-azure-selects-a-route"></a>Jak platforma Azure wybiera trasę
 
 Po wysłaniu ruchu wychodzącego z podsieci platforma Azure wybiera trasę na podstawie docelowego adresu IP przy użyciu algorytmu dopasowania najdłuższego prefiksu. Na przykład tabela tras ma dwie trasy: jedna trasa określa prefiks adresu 10.0.0.0/24, zaś druga trasa określa prefiks adresu 10.0.0.0/16. Platforma Azure kieruje ruch przeznaczony dla 10.0.0.5 do typu następnego przeskoku określonego dla trasy z prefiksem adresu 10.0.0.0/24, ponieważ prefiks 10.0.0.0/24 jest dłuższym prefiksem niż 10.0.0.0/16, chociaż 10.0.0.5 mieści się w obu prefiksach adresów. Platforma Azure kieruje ruch do 10.0.1.5 do typu następnego przeskoku określonego dla trasy z prefiksem adresu 10.0.0.0/16, ponieważ 10.0.1.5 nie jest zawarty w prefiksie adresu 10.0.0.0/24, w związku z czym trasa z prefiksem adresu 10.0.0.0/16 jest najdłuższym zgodnym prefiksem.
@@ -164,7 +166,7 @@ Gdy zastąpisz prefiks adresu 0.0.0.0/0, oprócz ruchu wychodzącego z podsieci 
         - mieć możliwość translacji i przekazywania dalej adresu sieciowego lub służenia jako serwer proxy ruchu do zasobu docelowego w podsieci, a następnie zwracać ruch z powrotem do Internetu. 
     - **Brama sieci wirtualnej**: w przypadku bramy będącej bramą sieci wirtualnej usługi ExpressRoute lokalne urządzenie połączone z Internetem może dokonywać translacji i przekazywania dalej adresów sieciowych lub służyć jako serwer proxy ruchu do zasobu docelowego w podsieci za pośrednictwem [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) usługi ExpressRoute. 
 
-  Zobacz [DMZ between Azure and your on-premises datacenter (Sieć obwodowa między platformą Azure i lokalnym centrum danych)](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) i [DMZ between Azure and the Internet (Sieć obwodowa między platformą Azure i Internetem)](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json), aby poznać szczegóły implementacji w przypadku używania bram sieci wirtualnej i urządzeń wirtualnych między Internetem a platformą Azure.
+  Zobacz [DMZ between Azure and your on-premises datacenter (Strefa DMZ między platformą Azure i lokalnym centrum danych)](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) i [DMZ between Azure and the Internet (Strefa DMZ między platformą Azure i Internetem)](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json), aby poznać szczegóły implementacji w przypadku używania bram sieci wirtualnej i urządzeń wirtualnych między Internetem a platformą Azure.
 
 ## <a name="routing-example"></a>Przykład routingu
 
@@ -244,7 +246,7 @@ Tabela tras dla podsieci *Subnet2* na ilustracji zawiera następujące trasy:
 |Domyślne |Aktywne |10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych              |                   |
 |Domyślne |Aktywne |10.10.0.0/16        |Brama sieci wirtualnej   |[X.X.X.X]          |
 |Domyślne |Aktywne |0.0.0.0/0           |Internet                  |                   |
-|Domyślne |Aktywne |10.0.0.0/8          |Brak                      |                   |
+|Domyślne |Aktywne |10.0.0.0/8          |None                      |                   |
 |Domyślne |Aktywne |100.64.0.0/10       |Brak                      |                   |
 |Domyślne |Aktywne |172.16.0.0/12       |Brak                      |                   |
 |Domyślne |Aktywne |192.168.0.0/16      |Brak                      |                   |

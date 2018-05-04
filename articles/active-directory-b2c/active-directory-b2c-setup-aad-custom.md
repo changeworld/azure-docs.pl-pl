@@ -1,8 +1,8 @@
 ---
-title: "Usługa Azure Active Directory B2C: Dodawanie dostawcy usługi Azure AD za pomocą niestandardowych zasad | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C"
+title: 'Usługa Azure Active Directory B2C: Dodawanie dostawcy usługi Azure AD za pomocą niestandardowych zasad | Dokumentacja firmy Microsoft'
+description: Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: parakhj
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Usługa Azure Active Directory B2C: Zaloguj się przy użyciu konta usługi Azure AD
 
@@ -46,12 +46,12 @@ Aby włączyć logowanie użytkowników z określonej usługi Azure AD w organiz
 > Używamy "contoso.com" dla organizacji dzierżawy usługi Azure AD i "fabrikamb2c.onmicrosoft.com" jako dzierżawy usługi Azure AD B2C w poniższych instrukcjach.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Na górnym pasku wybierz konto. Z **katalogu** wybierz organizacyjnej dzierżawy usługi Azure AD, które chcesz zarejestrować aplikację (contoso.com).
-1. Wybierz **więcej usług** w okienku po lewej stronie, a następnie wyszukaj "Rejestracji aplikacji".
-1. Wybierz **nowej rejestracji aplikacji**.
-1. Wprowadź nazwę dla aplikacji (na przykład `Azure AD B2C App`).
-1. Wybierz **aplikacji sieci Web / interfejs API** typu aplikacja.
-1. Aby uzyskać **adres URL logowania**, wprowadź następujący adres URL, gdzie `yourtenant` zastępuje nazwę dzierżawy usługi Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+2. Na górnym pasku wybierz konto. Z **katalogu** wybierz organizacyjnej dzierżawy usługi Azure AD, które chcesz zarejestrować aplikację (contoso.com).
+3. Wybierz **więcej usług** w okienku po lewej stronie, a następnie wyszukaj "Rejestracji aplikacji".
+4. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
+5. Wprowadź nazwę dla aplikacji (na przykład `Azure AD B2C App`).
+6. Jako typ aplikacji wybierz pozycję **Interfejs API/aplikacja sieci Web**.
+7. Aby uzyskać **adres URL logowania**, wprowadź następujący adres URL, gdzie `yourtenant` zastępuje nazwę dzierżawy usługi Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
     >Wartość "yourtenant" musi być małych liter w **adres URL logowania**.
@@ -60,10 +60,10 @@ Aby włączyć logowanie użytkowników z określonej usługi Azure AD w organiz
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Zapisz identyfikator aplikacji.
-1. Wybierz nowo utworzonej aplikacji.
-1. W obszarze **ustawienia** bloku, wybierz opcję **klucze**.
-1. Utwórz nowy klucz i zapisz go. Zostanie użyty w krokach w następnej sekcji.
+8. Zapisz identyfikator aplikacji.
+9. Wybierz nowo utworzonej aplikacji.
+10. W obszarze **ustawienia** bloku, wybierz opcję **klucze**.
+11. Wprowadź opis klucza, wybierz czas trwania, a następnie kliknij przycisk **zapisać**. Wyświetlana jest wartość klucza. Skopiuj go, ponieważ zostanie użyty w krokach w następnej sekcji.
 
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Dodawanie klucza usługi Azure AD do usługi Azure AD B2C
 
@@ -219,6 +219,6 @@ Należy teraz zaktualizować jednostki uzależnionej pliku strony (RP), który i
 
 Testowanie zasad niestandardowych, które przekazanym właśnie otwierając jego bloku i klikając pozycję **Uruchom teraz**. Do diagnozowania problemów, przeczytaj o [Rozwiązywanie problemów z](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przekazywania informacji pozwalających na [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).

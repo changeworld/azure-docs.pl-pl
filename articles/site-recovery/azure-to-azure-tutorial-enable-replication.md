@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure (wersja zapoznawcza)
 
@@ -25,7 +22,7 @@ Usługa [Azure Site Recovery](site-recovery-overview.md) wspiera strategię odzy
 W tym samouczku przedstawiono sposób konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym świadczenia usługi Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie magazynu Usług odzyskiwania
+> * Tworzenie magazynu usługi Recovery Services
 > * Sprawdzanie ustawień zasobów docelowych
 > * Konfigurowanie wychodzącego dostępu dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
@@ -77,7 +74,7 @@ Jeśli do sterowania ruchem wychodzącym używasz opartego na adresach URL serwe
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Połączenia ruchu wychodzącego dla zakresów adresów IP
 
-Jeśli sterowanie ruchem wychodzącym odbywa się za pomocą serwera proxy, reguł sieciowej grupy zabezpieczeń lub dowolnej zapory opartej na adresach IP, do listy dozwolonych adresów IP musisz dodać poniższe zakresy adresów IP. Listę zakresów można pobrać, korzystając z następujących linków:
+Jeśli chcesz kontrolować połączenia wychodzące przy użyciu adresów IP zamiast adresów URL, umieść na białej liście odpowiednie zakresy centrum danych, adresy usługi Office 365 oraz adresy punktów końcowych usługi dla zapór protokołu IP, serwerów proxy lub reguł sieciowej grupy zabezpieczeń.
 
   - [Zakresy adresów IP centrum danych platformy Microsoft Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [Zakresy adresów IP centrum danych platformy Windows Azure w Niemczech](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -85,7 +82,7 @@ Jeśli sterowanie ruchem wychodzącym odbywa się za pomocą serwera proxy, regu
   - [Zakresy adresów URL i IP dla usługi Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Adresy IP punktów końcowych usługi Site Recovery](https://aka.ms/site-recovery-public-ips)
 
-Powyższe listy umożliwiają skonfigurowanie mechanizmów kontroli dostępu do sieci. Ten [skrypt](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) ułatwia tworzenie wymaganych reguł sieciowej grupy zabezpieczeń.
+Ten [skrypt](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) ułatwia tworzenie wymaganych reguł sieciowej grupy zabezpieczeń.
 
 ## <a name="verify-azure-vm-certificates"></a>Weryfikowanie certyfikatów maszyn wirtualnych platformy Azure
 
@@ -105,7 +102,7 @@ Usługa Azure Site Recovery udostępnia trzy role wbudowane, umożliwiające kon
 
 - **Czytelnik usługi Site Recovery** — ta rola ma uprawnienia do wyświetlania wszystkich operacji zarządzania usługą Site Recovery. Ta rola jest najbardziej odpowiednia dla członka kadry zarządzającej, który zajmuje się monitorowaniem infrastruktury IT i bieżącego stanu jej ochrony oraz może wysyłać zgłoszenia do pomocy technicznej.
 
-Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../active-directory/role-based-access-built-in-roles.md).
+Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
@@ -144,9 +141,9 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
 
 - **Konta magazynu pamięci podręcznej**: usługa Site Recovery używa konta magazynu w regionie źródłowym. Do tego konta są wysyłane zmiany źródłowych maszyn wirtualnych przed uruchomieniem replikacji do lokalizacji docelowej.
 
-- **Docelowa kont magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z zarządzanego dysków)**: Domyślnie, Usługa Site Recovery tworzy nowe konto magazynu w regionie docelowym dublowanego źródła konta magazynu maszyny Wirtualnej.
+- **Docelowe konta magazynu (jeśli źródłowa maszyna wirtualna nie używa dysków zarządzanych)**: domyślnie usługa Site Recovery tworzy nowe konto magazynu w regionie docelowym w celu zduplikowania konta magazynu źródłowej maszyny wirtualnej.
 
-- **Repliki dyskach zarządzanych (Jeśli źródło maszyny Wirtualnej używa dysków zarządzanych)**: domyślnie Site Recovery tworzy dyski replik zarządzanych w region docelowy dublowanego zarządzanych dysków maszyny Wirtualnej źródłowego tego samego typu magazynu (standardowa lub premium) jako zarządzany źródłowej maszyny Wirtualnej w dysk.
+- **Dyski zarządzane repliki (jeśli źródłowa maszyna wirtualna używa dysków zarządzanych)**: domyślnie usługa Site Recovery tworzy dyski zarządzane repliki w regionie docelowym w celu zdublowania dysków zarządzanych źródłowej maszyny wirtualnej za pomocą tego samego typu magazynu (w warstwie Standardowa lub Premium) jako dysku zarządzanego źródłowej maszyny wirtualnej.
 
 - **Docelowe zestawy dostępności**: domyślnie usługa Site Recovery dodaje sufiks „asr” do zestawu dostępności utworzonego w regionie docelowym. Zestawy dostępności można dodawać tylko wtedy, gdy maszyny wirtualne są częścią zestawu w regionie źródłowym.
 
@@ -176,7 +173,7 @@ Aby zastąpić domyślne ustawienia zasad replikacji, kliknij przycisk **Dostosu
 
 3. W obszarze **Ustawienia** > **Zreplikowane elementy** możesz wyświetlić stan maszyn wirtualnych i początkowy postęp replikacji. Kliknij maszynę wirtualną, aby przejść do jej ustawień.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku skonfigurowano odzyskiwanie po awarii dla maszyny wirtualnej platformy Azure. Następny krok polega na przetestowaniu konfiguracji.
 

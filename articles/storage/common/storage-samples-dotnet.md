@@ -1,12 +1,12 @@
 ---
-title: "Przykładów dla magazynu platformy Azure przy użyciu platformy .NET | Dokumentacja firmy Microsoft"
-description: "Wyświetlanie, Pobierz i uruchom przykładowy kod i aplikacji usługi Azure Storage. Wykryj, wprowadzenie przykłady dla obiektów blob, kolejek, tabel i plików, za pomocą biblioteki klienta magazynu .NET."
+title: Przykładów dla magazynu platformy Azure przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Wyświetlanie, Pobierz i uruchom przykładowy kod i aplikacji usługi Azure Storage. Wykryj, wprowadzenie przykłady dla obiektów blob, kolejek, tabel i plików, za pomocą biblioteki klienta magazynu .NET.
 services: storage
 documentationcenter: na
 author: seguler
 manager: jahogg
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: 74777ed14ebb41ad31657f814e86724ff1e5e62e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e6973f0decc448657d869afb8823dd03c62d272
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-samples-using-net"></a>Przykładów dla magazynu platformy Azure przy użyciu platformy .NET
 
@@ -28,9 +28,9 @@ Poniższa tabela zawiera omówienie naszym repozytorium przykłady i scenariusze
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody> 
 <tr> 
-<td rowspan="16"><b>Obiekt blob</b></td>
+<td rowspan="16"><b>Blob</b></td>
 <td>Dołącz obiektów Blob</td> 
-<td><a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Przykład CloudBlobContainer.GetAppendBlobReference — metoda</a></td> 
+<td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Przykład CloudBlobContainer.GetAppendBlobReference — metoda</a></td> 
 </tr> 
 <tr> 
 <td>Blokowych obiektów Blob</td>
@@ -41,7 +41,7 @@ Poniższa tabela zawiera omówienie naszym repozytorium przykłady i scenariusze
 <td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs">Przykłady szyfrowania obiektów blob</a></td>
 </tr> 
 <tr> 
-<td>Kopiowanie obiektu Blob</td>
+<td>Copy Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Rozpoczynanie pracy z obiektami blob</a></td>
 </tr> 
 <tr> 
@@ -81,7 +81,7 @@ Poniższa tabela zawiera omówienie naszym repozytorium przykłady i scenariusze
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Rozpoczynanie pracy z obiektami blob</a></td>
 </tr>
 <tr> 
-<td>SYGNATURY DOSTĘPU WSPÓŁDZIELONEGO</td>
+<td>SAS</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Rozpoczynanie pracy z obiektami blob</a></td>
 </tr>   
 <tr> 
@@ -164,7 +164,7 @@ Poniższa tabela zawiera omówienie naszym repozytorium przykłady i scenariusze
 </tr> 
 <tr> 
 <td rowspan="7"><b>Tabela</b></td>
-<td>Tworzenie tabeli</td> 
+<td>Utwórz tabelę</td> 
 <td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Zarządzanie za pomocą usługi Azure Storage — Przykładowa aplikacja współbieżności</a></td> 
 </tr> 
 <tr> 
@@ -210,7 +210,7 @@ Zapoznaj się z następujących przewodników, jeśli chcesz, aby uzyskać instr
 * [Wprowadzenie do korzystania z usługi tabeli platformy Azure w .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Wprowadzenie do korzystania z usługi plików na platformę Azure w .NET](../storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać informacje na próbkach dla innych języków:
 

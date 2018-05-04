@@ -6,20 +6,20 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: b4ccb612314fc1f65be4033bc0d0893d17843a86
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure do platformy Azure
 
 >[!NOTE]
 > Replikacja lokacji odzyskiwania maszyn wirtualnych platformy Azure jest obecnie w przeglądzie.
 
-Ten artykuł zawiera wskazówki dotyczące sieci podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego, przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md). 
+Ten artykuł zawiera wskazówki dotyczące sieci podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego, przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -57,19 +57,18 @@ login.microsoftonline.com | Wymagane w celu autoryzacji i uwierzytelnianie adres
 
 Jeśli używasz serwera proxy oparte na protokole IP zapory lub reguły NSG do kontrolowania łączność wychodząca te zakresy IP, musisz zezwolić.
 
-- Wszystkie zakresy adresów IP odpowiadające lokalizacji źródłowej.
-    - Możesz pobrać [zakresów adresów IP](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+- Wszystkie zakresy adresów IP, odpowiadające kont magazynu w regionie źródła
+    - Należy utworzyć [numer seryjny magazynu](../virtual-network/security-overview.md#service-tags) na podstawie reguły NSG dla regionu źródła.
     - Musisz zezwolić na te adresy tak, aby dane mogą być zapisywane na koncie magazynu pamięci podręcznej z maszyny Wirtualnej.
 - Wszystkie zakresy adresów IP, które odpowiadają usługi Office 365 [uwierzytelnianie i tożsamość punkty końcowe IPv4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
     - Jeśli nowy adres są dodawane do zakresów usługi Office 365 w przyszłości, należy utworzyć nowe reguły NSG.
-- Punkt końcowy usługi odzyskiwania lokacji adresów IP. Są one dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips)i zależą od lokalizacji docelowej.
--  Możesz [pobranie i użycie tego skryptu](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702), aby automatycznie utworzyć wymagane zasady w grupie NSG. 
+- Punkt końcowy usługi odzyskiwania lokacji adresów IP. Są one dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej.
+-  Możesz [pobranie i użycie tego skryptu](https://aka.ms/nsg-rule-script), aby automatycznie utworzyć wymagane zasady w grupie NSG.
 - Zaleca się tworzenie wymaganych reguł NSG na test NSG i sprawdź, czy nie ma żadnych problemów przed utworzeniem reguły produkcyjnych NSG.
-- Aby utworzyć wymaganej liczby elementów reguły NSG, upewnij się, że Twoja subskrypcja jest białej. Skontaktuj się z pomocą Azure obsługuje zwiększania limitu reguły NSG w ramach subskrypcji.
 
-Zakresy adresów IP są następujące:
 
->
+Zakresy adresów IP odzyskiwania lokacji są następujące:
+
    **docelowy** | **Odzyskiwanie lokacji IP** |  **Usługa Site Recovery monitorowania IP**
    --- | --- | ---
    Azja Wschodnia | 52.175.17.132 | 13.94.47.61
@@ -99,50 +98,73 @@ Zakresy adresów IP są następujące:
    Północne Zjednoczone Królestwo | 51.142.209.167 | 13.87.102.68
    Korea Środkowa | 52.231.28.253 | 52.231.32.85
    Korea Południowa | 52.231.298.185 | 52.231.200.144
-   
-   
-  
+   Francja Środkowa | 52.143.138.106 | 52.143.136.55
+   Francja Południowa | 52.136.139.227 |52.136.136.62
+
 
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja grupy NSG
 
-Ten przykład przedstawia sposób konfigurowania reguły NSG dla maszyny Wirtualnej do replikacji. 
+Ten przykład przedstawia sposób konfigurowania reguły NSG dla maszyny Wirtualnej do replikacji.
 
-- Jeśli używasz reguły NSG do kontrolowania łączność wychodząca, za pomocą reguł "Zezwalaj HTTPS wychodzącego" dla wszystkich wymaganych zakresy adresów IP.
-- Przykładzie przyjęto założenie, że lokalizacja źródłowa maszyna wirtualna jest "Wschodnie nam" i lokalizacja docelowa jest "środkowe stany USA.
+- Jeśli używasz reguły NSG do kontrolowania łączność wychodząca, za pomocą reguł "Zezwalaj HTTPS wychodzącego" numer portu: 443 dla wszystkich wymaganych zakresy adresów IP.
+- Przykładzie przyjęto założenie, że lokalizacja źródłowa maszyna wirtualna jest "Wschodnie nam" i lokalizacja docelowa jest "Centralnej US".
 
 ### <a name="nsg-rules---east-us"></a>Reguły NSG — wschodnie stany USA
 
-1. Tworzenie reguł, które odpowiadają [Wschodnia nam zakresy adresów](https://www.microsoft.com/download/confirmation.aspx?id=41653). Jest to wymagane, dzięki czemu dane mogą być zapisywane na koncie magazynu pamięci podręcznej z maszyny Wirtualnej.
-2. Tworzenie reguł dla wszystkich zakresów adresów IP, które odpowiadają usługi Office 365 [uwierzytelnianie i tożsamość punkty końcowe IPv4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-3. Tworzenie reguł, które odnoszą się do lokalizacji docelowej:
+1. W "Storage.EastUS" w grupie NSG, jak pokazano na poniższym zrzucie ekranu, należy utworzyć regułę ruchu wychodzącego zabezpieczeń HTTPS (port 443).
+
+      ![tag magazynu](./media/azure-to-azure-about-networking/storage-tag.png)
+
+2. Tworzenie reguły ruchu wychodzącego HTTPS (port 443) dla wszystkich zakresów adresów IP, które odpowiadają usługi Office 365 [uwierzytelnianie i tożsamość punkty końcowe IPv4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+3. Tworzenie reguły ruchu wychodzącego HTTPS (port 443) dla adresów IP odzyskiwania lokacji, który odpowiada lokalizacji docelowej:
 
    **Lokalizacja** | **Adres IP odzyskiwania lokacji** |  **Adres IP monitorowania odzyskiwania lokacji**
     --- | --- | ---
    Środkowe stany USA | 40.69.144.231 | 52.165.34.144
 
-### <a name="nsg-rules---central-us"></a>Reguły NSG - środkowe stany USA 
+### <a name="nsg-rules---central-us"></a>Reguły NSG - środkowe stany USA
 
 Te zasady są niezbędne, dzięki czemu można włączyć replikację z region docelowy do źródła region po pracy w trybie failover:
 
-* Zasady, które odpowiadają [zakresy IP USA centralnej](https://www.microsoft.com/download/confirmation.aspx?id=41653). Te są wymagane do konta magazynu pamięci podręcznej można zapisywać danych z maszyny Wirtualnej.
+1. W "Storage.CentralUS" w grupie NSG, należy utworzyć regułę ruchu wychodzącego zabezpieczeń HTTPS (port 443).
 
-* Zasady dla wszystkich zakresów IP, które odpowiadają usługi Office 365 [uwierzytelnianie i tożsamość punkty końcowe IPv4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Tworzenie reguły ruchu wychodzącego HTTPS (port 443) dla wszystkich zakresów adresów IP, które odpowiadają usługi Office 365 [uwierzytelnianie i tożsamość punkty końcowe IPv4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
 
-* Reguły, które odnoszą się do lokalizacji źródłowej:
-    - Wschodnie stany USA
-    - Adres IP odzyskiwania lokacji: 13.82.88.226
-    - Lokacja odzyskiwania monitorowania adres IP: 104.45.147.24
+3. Tworzenie reguły ruchu wychodzącego HTTPS (port 443) dla adresów IP odzyskiwania lokacji, który odpowiada lokalizacji źródłowej:
 
+   **Lokalizacja** | **Adres IP odzyskiwania lokacji** |  **Adres IP monitorowania odzyskiwania lokacji**
+    --- | --- | ---
+   Środkowe stany USA | 13.82.88.226 | 104.45.147.24
 
-## <a name="expressroutevpn"></a>ExpressRoute/VPN 
+## <a name="network-virtual-appliance-configuration"></a>Konfiguracja sieci urządzenie wirtualne
+
+Jeśli korzystasz z wirtualnych urządzeń sieciowych (NVAs) do kontroli wychodzącego ruchu sieciowego z maszyn wirtualnych, jeśli cały ruch replikacji przechodzi przez analizę NVA może pobrać ograniczony urządzenia. Firma Microsoft zaleca tworzenie tak, aby ruch związany z replikacją nie przejść do analizę NVA "Magazynu" punkt końcowy usługi sieci w sieci wirtualnej.
+
+### <a name="create-network-service-endpoint-for-storage"></a>Utwórz punkt końcowy usługi sieci magazynu
+Punkt końcowy usługi sieci w sieci wirtualnej można utworzyć w "Magazyn", aby ruch związany z replikacją nie opuszczają granicy Azure.
+
+- Wybierz sieci wirtualnej platformy Azure i kliknij polecenie "Punktów końcowych usługi"
+
+    ![punkt końcowy magazynu](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+
+- Kliknij przycisk "Dodaj" i "Dodawanie punktów końcowych usługi" karcie otwiera
+- Wybierz "Microsoft.Storage" w obszarze "Usługa" i podsieci wymagane dla pola "Podsieci", a następnie kliknij przycisk "Dodaj"
+
+>[!NOTE]
+>Nie ograniczaj dostępu do sieci wirtualnej do kont magazynu używane do automatycznego odzyskiwania systemu. Użytkownik powinien zezwalać na dostęp z "Wszystkie sieci"
+
+## <a name="expressroutevpn"></a>ExpressRoute/VPN
 
 Jeśli masz połączenie ExpressRoute lub sieci VPN między lokalnymi i lokalizacja platformy Azure, postępuj zgodnie z wytycznymi w tej sekcji.
 
 ### <a name="forced-tunneling"></a>Wymuszone tunelowanie
 
-Zazwyczaj należy zdefiniować trasy domyślnej (0.0.0.0/0), która wymusza wychodzący ruch internetowy przepływ lokalizacji lokalnej. Firma Microsoft nie jest to zalecane. Ruch związany z replikacją i komunikacji usługi Site Recovery nie opuszczaj Azure granic. Rozwiązanie to dodać trasy zdefiniowane przez użytkownika (Udr) dla [tych zakresów IP](#outbound-connectivity-for-azure-site-recovery-ip-ranges) tak, aby ruch związany z replikacją nie działa lokalnie.
+Zazwyczaj należy zdefiniować trasy domyślnej (0.0.0.0/0), która wymusza wychodzący ruch internetowy przepływ lokalizacji lokalnej lub. Firma Microsoft nie jest to zalecane. Ruch związany z replikacją nie opuszczaj Azure granic.
 
-### <a name="connectivity"></a>Łączność 
+Możesz [Tworzenie punktu końcowego usługi sieciowej](#create-network-service-endpoint-for-storage) w wirtualnej sieci "Magazynu", aby ruch związany z replikacją nie opuszczają granicy Azure.
+
+
+### <a name="connectivity"></a>Łączność
 
 Wykonaj te wytyczne dotyczące połączeń między lokalizacji docelowej i lokalizacji lokalnego:
 - Jeśli aplikacja wymaga połączyć się z komputerami lokalnymi lub w przypadku klientów, którzy łączą się z lokalnymi za pośrednictwem sieci VPN/ExpressRoute, upewnij się, że masz co najmniej [połączenie lokacja lokacja](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) między urządzenie docelowe region platformy Azure i lokalnego centrum danych.

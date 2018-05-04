@@ -11,16 +11,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 800105d29fa284531e02ce80db69eff3a9915652
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Jak używać Azure zarządzanych tożsamości usługi (publicznej wersji zapoznawczej) w aplikacji usługi i usługi Azure Functions
 
 > [!NOTE] 
 > Zarządzane tożsamości usługi dla usługi aplikacji i funkcji platformy Azure jest obecnie w przeglądzie. Usługa aplikacji w systemie Linux i aplikacji sieci Web dla kontenerów nie są obecnie obsługiwane.
+
+
+> [!Important] 
+> Zarządzane tożsamości usługi dla aplikacji usługi i usługi Azure Functions nie będzie działać zgodnie z oczekiwaniami, jeśli aplikacja migrowania między subskrypcjami i dzierżawców. Aplikacja będzie trzeba uzyskać nową tożsamość i istniejącej tożsamości nie można usunąć poprawnie bez usuwania samej lokacji. Musi zostać ponownie utworzone z nową tożsamość aplikacji, a musi mieć zasady dostępu zaktualizowane do używania nowej tożsamości zasoby podrzędne.
+
 
 W tym temacie przedstawiono sposób utworzenia tożsamości zarządzanych aplikacji usługi aplikacji i usługi Azure Functions aplikacje i jak z niego korzystać, aby uzyskać dostęp do innych zasobów. Tożsamość usługi zarządzanej z usługi Azure Active Directory umożliwia aplikacji łatwo uzyskiwać dostęp do innych chronionych AAD zasoby, takie jak usługi Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie trzeba zapewniać ani obrócić żadnych kluczy tajnych. Więcej informacji o zarządzanych tożsamość usługi, zobacz [omówienie zarządzane tożsamość usługi](../active-directory/managed-service-identity/overview.md).
 

@@ -1,19 +1,19 @@
 ---
-title: "Utwórz urządzenie bramy przezroczysty Azure IoT krawędzi | Dokumentacja firmy Microsoft"
-description: "Użyj Azure IoT Edge, aby utworzyć urządzenie bramy przezroczysty, który może przetwarzać informacje dla wielu urządzeń"
+title: Utwórz urządzenie bramy przezroczysty Azure IoT krawędzi | Dokumentacja firmy Microsoft
+description: Użyj Azure IoT Edge, aby utworzyć urządzenie bramy przezroczysty, który może przetwarzać informacje dla wielu urządzeń
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0378cb2964a496a2bfe5a0bc08296cbab462a409
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Utwórz urządzenie brzegowe IoT, który działa jako brama przezroczysty — w wersji preview
 
@@ -73,10 +73,10 @@ Możesz użyć przykładu środowiska Powershell i skrypty powłoki systemowej o
 
 ### <a name="bash"></a>Bash
 
-Utwórz nowy certyfikat urządzenia:
+Utwórz nowy certyfikat urządzenia.  **NIE** nazwa `myGatewayCAName` być taka sama jak nazwa hosta bramy.  W ten sposób spowoduje certyfikatu klienta przed te certyfikaty, aby zakończyć się niepowodzeniem.
 
    ```bash
-   ./certGen.sh create_edge_device_certificate myGateway
+   ./certGen.sh create_edge_device_certificate myGatewayCAName
    ```
 
 Są tworzone nowe pliki:.\certs\new-edge-device.* zawiera klucz publiczny i PFX, a.\private\new-edge-device.key.pem klucza prywatnego na urządzeniu.
@@ -84,6 +84,7 @@ Są tworzone nowe pliki:.\certs\new-edge-device.* zawiera klucz publiczny i PFX,
 W `certs` katalogu, uruchom następujące polecenie, aby uzyskać pełny łańcuch klucza publicznego urządzenia:
 
    ```bash
+   cd ./certs
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
@@ -116,11 +117,11 @@ Podaj informacje urządzenia i certyfikatu do środowiska wykonawczego IoT kraw�
 W systemie Linux przy użyciu Bash dane wyjściowe:
 
    ```bash
-   sudo iotedgectl setup --connection-string {device connection string}
-        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
-        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
-        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem
-        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem
+   sudo iotedgectl setup --connection-string {device connection string} \
+        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com} \
+        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem \
+        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem \
+        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem \
         --owner-ca-cert-file {full path}/certs/azure-iot-test-only.root.ca.cert.pem
    ```
 

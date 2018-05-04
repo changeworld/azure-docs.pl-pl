@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: b732770b2eace07690d112e81c6916b16b2cb5b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN Azure stosu
 
@@ -45,16 +45,13 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 ### <a name="gateway-skus"></a>Jednostki SKU bramy
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać jednostkę SKU bramy do użycia. Wybierz jednostki SKU, które spełniają wymagania, na podstawie typów obciążeń, przepustowości, funkcji i umowy SLA.
 
->[!NOTE]
-> Klasyczne sieci wirtualne powinny nadal używać starych jednostek SKU. Aby uzyskać więcej informacji o starych jednostkach SKU bramy, zobacz artykuł [Working with virtual network gateway SKUs (old)](/azure/vpn-gateway/vpn-gateway-about-skus-legacy) (Praca z jednostkami SKU (starymi) bramy sieci wirtualnej).
-
 Stos Azure oferuje następujące jednostki SKU bramy sieci VPN:
 
 |   | Przepływność bramy sieci VPN |Max tuneli protokołu IPsec bramy sieci VPN |
 |-------|-------|-------|
 |**Podstawowy SKU**  | 100 Mb/s  | 10    |
 |**Standardowy SKU**           | 100 Mb/s  | 10    |
-|**SKU wysokiej wydajności** | 200 Mb/s    | 30    |
+|**SKU wysokiej wydajności** | 200 Mb/s    | 5 |
 
 ### <a name="resizing-gateway-skus"></a>Zmiana rozmiaru jednostki SKU bramy
 Stos Azure nie obsługuje zmiany rozmiaru jednostek magazynowych między obsługiwanych starszej wersji jednostki SKU.
@@ -90,11 +87,11 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 Podczas tworzenia bramy sieci wirtualnej dla konfiguracji bramy sieci VPN, należy określić typ sieci VPN. Możesz wybrać typ sieci VPN zależy od topologii połączenia, który chcesz utworzyć.  Typ sieci VPN można również są zależne od sprzętu, którego używasz. Konfiguracje S2S wymagają urządzenia sieci VPN. Niektóre urządzenia sieci VPN obsługują tylko określonego typu sieci VPN.
 
 > [!IMPORTANT]  
-> W tej chwili stosu Azure obsługuje tylko typ sieci VPN oparte na trasy. Jeśli urządzenie obsługuje tylko sieci VPN oparte na zasadach, połączenia z tych urządzeń z usługi Azure stosu nie są obsługiwane.
+> W tej chwili stosu Azure obsługuje tylko typ sieci VPN oparte na trasy. Jeśli urządzenie obsługuje tylko sieci VPN oparte na zasadach, połączenia z tych urządzeń z usługi Azure stosu nie są obsługiwane.  Ponadto stosu Azure nie obsługuje użycia selektorów ruchu na podstawie zasad dla bramy na podstawie trasy w tej chwili konfiguracje niestandardowe zasady IPSec i IKE nie są jeszcze obsługiwane.
 
 - **PolicyBased**: *(obsługiwane przez platformę Azure, ale nie przez stos Azure)* sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną a stos sieci wirtualnej platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN.
 
-- **RouteBased**: RouteBased VPN używają "tras" IP przekazywania lub tabeli routingu do kierowania pakietów do odpowiednich interfejsów tuneli. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady (lub selektor ruchu) dla sieci VPN z siecią typu RouteBased są skonfigurowane jako dowolny z każdym (lub symbole wieloznaczne). Wartość dla typu RouteBased sieci VPN jest RouteBased.
+- **RouteBased**: RouteBased VPN używają "tras" IP przekazywania lub tabeli routingu do kierowania pakietów do odpowiednich interfejsów tuneli. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady (lub selektor ruchu) dla sieci VPN z siecią typu RouteBased są skonfigurowane jako dowolny z każdym (lub symbole wieloznaczne) przez domyślne i nie można zmienić. Wartość dla typu RouteBased sieci VPN jest RouteBased.
 
 W poniższym przykładzie programu PowerShell określa VpnType — jako RouteBased. Podczas tworzenia bramy musisz upewnić się, że typ -VpnType jest prawidłowy dla danej konfiguracji.
 
@@ -110,7 +107,7 @@ W poniższej tabeli wymieniono wymagania dla bram sieci VPN.
 |--|--|--|--|--|
 | **Połączenie lokacja-lokacja (połączeń S2S)** | Nieobsługiwane | Konfiguracja sieci VPN z siecią typu RouteBased | Konfiguracja sieci VPN z siecią typu RouteBased | Konfiguracja sieci VPN z siecią typu RouteBased |
 | **Metoda uwierzytelniania**  | Nieobsługiwane | Klucz wstępny dla połączeń S2S  | Klucz wstępny dla połączeń S2S  | Klucz wstępny dla połączeń S2S  |   
-| **Maksymalna liczba połączeń S2S**  | Nieobsługiwane | 10 | 10| 30|
+| **Maksymalna liczba połączeń S2S**  | Nieobsługiwane | 10 | 10| 5|
 |**Aktywna Obsługa routingu (BGP)** | Nieobsługiwane | Nieobsługiwane | Obsługiwane | Obsługiwane |
 
 ### <a name="gateway-subnet"></a>Podsieć bramy
@@ -160,7 +157,7 @@ W przeciwieństwie do usługi Azure, który obsługuje wielu ofert jako inicjato
 |Wersja IKE |IKEv2 |
 |Szyfrowania i tworzenia skrótów algorytmy (szyfrowanie)     | GCMAES256|
 |Szyfrowania i tworzenia skrótów algorytmy (uwierzytelnianie) | GCMAES256|
-|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27,700 sekund |
+|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27 000 sekund |
 |Okres istnienia skojarzeń zabezpieczeń (bajty) | 819,200       |
 |Doskonałe utajnienie przekazywania (PFS) |PFS2048 |
 |Wykrywanie nieaktywnych elementów równorzędnych | Obsługiwane|  

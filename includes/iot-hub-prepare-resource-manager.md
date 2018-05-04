@@ -8,7 +8,7 @@ Poniższe kroki pokazują, jak skonfigurować uwierzytelnianie hasła dla aplika
 1. Zaloguj się do subskrypcji platformy Azure przy użyciu następującego polecenia:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Jeśli masz wiele subskrypcji Azure, logowanie do platformy Azure udziela dostępu do subskrypcji platformy Azure skojarzone z poświadczeniami użytkownika. Aby wyświetlić listę dostępnych przy użyciu subskrypcji platformy Azure, użyj następującego polecenia:
@@ -17,7 +17,7 @@ Poniższe kroki pokazują, jak skonfigurować uwierzytelnianie hasła dla aplika
     Get-AzureRMSubscription
     ```
 
-    Użyj następującego polecenia, aby wybrać subskrypcję, która ma być używany do uruchamiania polecenia do zarządzania Centrum IoT. Przy użyciu subskrypcji nazwa lub identyfikator z danych wyjściowych poprzednie polecenie:
+    Użyj następującego polecenia, aby wybrać subskrypcję, która ma być używany do uruchamiania polecenia do zarządzania Centrum IoT. Można użyć nazwy subskrypcji lub identyfikatora z danych wyjściowych poprzedniego polecenia:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -51,7 +51,7 @@ Tworzenie aplikacji usługi Azure AD, która pozwala na uwierzytelnianie z niest
 
 * Dla identyfikatora dzierżawcy
 * SubscriptionId
-* Identyfikator aplikacji
+* ApplicationId
 * Hasło
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx

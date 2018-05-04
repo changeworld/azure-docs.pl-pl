@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie problemów z klastra Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat związane z klastrami Apache Spark w usłudze Azure HDInsight i sposobu obejścia tych problemów."
+title: Rozwiązywanie problemów z klastra Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat związane z klastrami Apache Spark w usłudze Azure HDInsight i sposobu obejścia tych problemów.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,24 +10,22 @@ tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 664c97117de793209007843fa23c98f52c2b079d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Znane problemy dotyczące klastra Apache Spark w usłudze HDInsight
 
 Ten dokument przechowuje informacje o znanych problemów w publicznej wersji zapoznawczej HDInsight Spark.  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy przecieków sesja interaktywna
-Livy ponownego uruchomienia (od Ambari lub z powodu ponownego uruchomienia maszyny wirtualnej headnode 0) z sesji interaktywnej wciąż jest aktywny, przeciek sesji interakcyjne zadania. W związku z tym nowe zadania może zostać zatrzymane w stanie zaakceptowane, a nie może zostać uruchomiona.
+Gdy Livy jest uruchamiany (od systemu Ambari lub z powodu ponownego uruchomienia maszyny wirtualnej headnode 0) z nadal aktywna sesja interakcyjna, sesji interaktywne zadania jest przecieku. W rezultacie nowych miejsc pracy może być zablokowany w stanie zaakceptowane.
 
 **Środki zaradcze:**
 
@@ -54,7 +52,12 @@ Platforma Spark historii serwera nie jest uruchamiana automatycznie po utworzeni
 Ręcznie uruchom serwer historii z narzędzia Ambari.
 
 ## <a name="permission-issue-in-spark-log-directory"></a>Problem uprawnień w katalogu dzienników Spark
-Gdy hdiuser przesyła zadanie o spark-submit, jest java.io.FileNotFoundException błąd: /var/log/spark/sparkdriver_hdiuser.log (odmowa uprawnień) i dziennika sterownik nie jest zapisywany. 
+hdiuser pobiera następujący błąd podczas przesyłania zadania przy użyciu spark składać:
+
+```
+java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
+```
+I żaden sterownik dziennik jest zapisywany. 
 
 **Środki zaradcze:**
 
@@ -65,7 +68,7 @@ Gdy hdiuser przesyła zadanie o spark-submit, jest java.io.FileNotFoundException
 
 ## <a name="spark-phoenix-connector-is-not-supported"></a>Spark Phoenix łącznik nie jest obsługiwany.
 
-Obecnie łącznik Spark Phoenix nie jest obsługiwany z klastra usługi HDInsight Spark.
+Klastry w iskrowym HDInsight nie obsługują złącza Spark Phoenix.
 
 **Środki zaradcze:**
 
@@ -75,10 +78,10 @@ Zamiast tego należy użyć łącznika Spark HBase. Aby uzyskać instrukcje, zob
 Poniżej przedstawiono niektóre znane problemy związane z notesów Jupyter.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Notesów znaków innych niż ASCII w nazwach plików
-Notesów Jupyter, których można użyć w klastrach Spark HDInsight nie powinna mieć znaki spoza zestawu ASCII w nazwach plików. Próba przekazania pliku za pośrednictwem interfejsu użytkownika Jupyter z nazwą innych niż ASCII, niepowodzenia dyskretnie (to znaczy Jupyter nie zezwala na przekazywanie pliku, ale go nie zgłasza błąd widoczne albo). 
+Nie należy używać znaków spoza zestawu ASCII w nazwach plików notebook Jupyter. Jeśli podczas próby przekazania pliku za pośrednictwem interfejsu użytkownika Jupyter, który ma nazwę pliku spoza zestawu ASCII, nie powiedzie się bez żadnego komunikatu o błędzie. Jupyter nie zezwala na przekazywanie pliku, ale go nie zgłosiła błąd widoczne albo.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Wystąpił błąd podczas ładowania notesów o większych rozmiarach
-Można napotkać błąd  **`Error loading notebook`**  podczas ładowania notebooki, które są większe.  
+Można napotkać błąd **`Error loading notebook`** podczas ładowania notebooki, które są większe.  
 
 **Środki zaradcze:**
 
@@ -99,7 +102,7 @@ Pierwsza instrukcja kodu w notesu Jupyter przy użyciu Spark magic może zająć
 Dzieje się tak, ponieważ po uruchomieniu pierwszej komórki kodu. W tle to inicjuje konfigurację sesji, Spark SQL, i są ustawione kontekstów Hive. Po kontekstów te są ustawione, pierwsza instrukcja jest uruchamiane, co powoduje wrażenie który instrukcji przez długi czas do ukończenia.
 
 ### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Limit czasu notesu Jupyter w tworzenia sesji
-Gdy klaster Spark jest za mało zasobów, Spark i PySpark jądra notesu Jupyter będzie limit czasu próby utworzenia sesji. 
+Gdy klaster Spark jest brak zasobów, limit czasu próby utworzenia sesji będzie jądra Spark i PySpark w notesie Jupyter. 
 
 **Środki zaradcze:** 
 

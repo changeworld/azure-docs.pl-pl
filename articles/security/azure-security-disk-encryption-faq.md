@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2018
-ms.author: devtiw
-ms.openlocfilehash: cb523b4fbf6e8abdf5c5158ab041d3485add9b23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/27/2018
+ms.author: barclayn
+ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Szyfrowanie dysków Azure — często zadawane pytania
 
@@ -34,7 +34,7 @@ Azure GA szyfrowania dysku obsługuje szablonów usługi Azure Resource Manager,
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Ile kosztuje szyfrowania dysków Azure?
 
-Jest bezpłatna dla szyfrowania dysków maszyny Wirtualnej przy użyciu szyfrowania dysków Azure.
+Nie jest bezpłatne szyfrowania dysków maszyny Wirtualnej przy użyciu szyfrowania dysków Azure, ale brak opłat skojarzonych z użyciem usługi Azure Key Vault. Aby uzyskać więcej informacji na temat usługi Azure Key Vault kosztów odwoływać się do [cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) strony.
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Warstwy maszyny wirtualnej, które obsługuje szyfrowanie dysków Azure?
 
@@ -68,7 +68,7 @@ Szyfrowanie dysków Azure jest obsługiwane w następujących dystrybucje serwer
 | SLES | Priorytet: 11-SP4 | Dysk z danymi |
 | SLES | 11 SP4 | Dysk z danymi |
 
-*__ADE jest obsługiwana przez RHEL dla dysku danych. Bieżąca implementacja ADE działa dla dysku systemu operacyjnego, ale nie jest aktualnie wspólnie obsługiwane. Zarówno firmy Microsoft, jak i Red Hat pracuje nad rozwiązaniem wspólnie obsługiwane. W międzyczasie możesz odwoływać się w dokumencie ADE do szyfrowania dysku systemu operacyjnego Linux [tutaj](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
+*__ADE jest obsługiwana przez RHEL dla dysku danych. Bieżąca implementacja ADE działa dla dysku systemu operacyjnego, ale nie jest aktualnie wspólnie obsługiwane. Zarówno firmy Microsoft, jak i Red Hat pracuje nad rozwiązaniem wspólnie obsługiwane. W międzyczasie możesz odwoływać się w dokumencie ADE do szyfrowania dysku systemu operacyjnego Linux [tutaj](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak można uruchomić przy użyciu szyfrowania dysków Azure?
 

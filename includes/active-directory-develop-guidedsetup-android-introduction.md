@@ -1,11 +1,33 @@
-
-# <a name="call-the-microsoft-graph-api-from-an-android-app"></a>Wywoływanie Microsoft Graph API z aplikacji systemu Android
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/28/2018
+---
+# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Logowania użytkowników i wszystkie Microsoft interfejsu API programu Graph z aplikacji systemu Android
 
 W tym przewodniku pokazano, jak natywnych aplikacji systemu Android mogą pobrać token dostępu i wywołania interfejsu API programu Graph firmy Microsoft lub innych interfejsów API, które wymagają tokenów dostępu z punktu końcowego usługi Azure Active Directory w wersji 2.
 
 Po zakończeniu przewodnika, aplikacja będzie mogła akceptować logowania konta osobiste (takie jak outlook.com, live.com i inne) oraz kont służbowych z firmy lub organizacji, która używa usługi Azure Active Directory. Aplikacja zostanie następnie wywołać interfejs API, który jest chroniony przez punkt końcowy usługi Azure Active Directory w wersji 2.  
 
-## <a name="how-this-sample-works"></a>Jak działa w tym przykładzie
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa przykładowej aplikacji wygenerowane przez ten przewodnik
 ![Jak działa w tym przykładzie](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
 Przykładowej aplikacji utworzonej za pomocą tego przewodnika opiera się na scenariuszu, w których aplikacja systemu Android służy do interfejsu API sieci Web, który akceptuje tokeny od punktu końcowego usługi Azure Active Directory w wersji 2 (Microsoft Graph API, w tym przypadku). W tym scenariuszu aplikacja dodaje nabytych przez niego token na żądania HTTP za pośrednictwem nagłówek autoryzacji. Biblioteka uwierzytelniania firmy Microsoft (MSAL) obsługuje nabycia tokenu i odnawiania dla Ciebie.

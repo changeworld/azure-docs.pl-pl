@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji Eksploratora magazynu Microsoft Azure
 
@@ -227,7 +227,7 @@ Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Sto
 * Jeśli próbowano otworzyć lub pobieranie obiektu blob o nieprawidłowej nazwie pliku systemu Windows, operacja nie powiedzie się. Eksplorator usługi Storage teraz wykrywania, czy nazwa obiektu blob jest nieprawidłowy i zapytaj, jeśli chcesz kodować je albo pominąć obiektu blob. Eksplorator usługi Storage wykryje również, jeśli nazwa pliku wydaje się być kodowany i pytanie, jeśli chcesz odkodować go przed przekazaniem.
 * Podczas przekazywania obiektów blob edytor dla kontenera obiektów blob docelowego będą czasami nie prawidłowo odświeżenia. Problem został rozwiązany.
 * Uwzględniona obsługę kilku formularzy Parametry połączenia i identyfikatory URI sygnatury dostępu Współdzielonego. Możemy usunąć wszystkie znane problemy, ale jeśli dalsze wystąpią problemy dotyczące Wyślij opinię.
-* Powiadomienie o aktualizacji został przerwany dla niektórych użytkowników w 0.9.0. Ten problem został rozwiązany i tych dotyczy ten błąd, należy ręcznie pobrać najnowszą wersję Eksploratora usługi Storage [tutaj](https://azure.microsoft.com/en-us/features/storage-explorer/).
+* Powiadomienie o aktualizacji został przerwany dla niektórych użytkowników w 0.9.0. Ten problem został rozwiązany i tych dotyczy ten błąd, należy ręcznie pobrać najnowszą wersję Eksploratora usługi Storage [tutaj](https://azure.microsoft.com/features/storage-explorer/).
 
 ### <a name="known-issues"></a>Znane problemy
 * Eksplorator usługi Storage nie obsługuje kont usług AD FS.
@@ -281,7 +281,7 @@ Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Sto
 * Jeśli próbowano otworzyć lub pobieranie obiektu blob o nieprawidłowej nazwie pliku systemu Windows, operacja nie powiedzie się. Eksplorator usługi Storage teraz wykrywania, czy nazwa obiektu blob jest nieprawidłowy i zapytaj, jeśli chcesz kodować je albo pominąć obiektu blob. Eksplorator usługi Storage wykryje również, jeśli nazwa pliku wydaje się być kodowany i pytanie, jeśli chcesz odkodować go przed przekazaniem.
 * Podczas przekazywania obiektów blob edytor dla kontenera obiektów blob docelowego będą czasami nie prawidłowo odświeżenia. Problem został rozwiązany.
 * Uwzględniona obsługę kilku formularzy Parametry połączenia i identyfikatory URI sygnatury dostępu Współdzielonego. Możemy usunąć wszystkie znane problemy, ale jeśli dalsze wystąpią problemy dotyczące Wyślij opinię.
-* Powiadomienie o aktualizacji został przerwany dla niektórych użytkowników w 0.9.0. Ten problem został rozwiązany i tych dotyczy ten błąd, należy ręcznie pobrać najnowszą wersję Eksploratora usługi Storage [tutaj](https://azure.microsoft.com/en-us/features/storage-explorer/)
+* Powiadomienie o aktualizacji został przerwany dla niektórych użytkowników w 0.9.0. Ten problem został rozwiązany i tych dotyczy ten błąd, należy ręcznie pobrać najnowszą wersję Eksploratora usługi Storage [tutaj](https://azure.microsoft.com/features/storage-explorer/)
 
 ### <a name="known-issues"></a>Znane problemy
 * Eksplorator usługi Storage nie obsługuje kont usług AD FS.

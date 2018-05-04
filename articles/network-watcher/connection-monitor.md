@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 242da9a3ce52d9c7d801215cde7b72b7f8fe9a91
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Połączenia sieciowe monitora obserwatora sieciowego Azure przy użyciu portalu Azure
 
@@ -42,7 +42,7 @@ Poniższych kroków spowoduje włączenie monitorowania połączenia w docelowej
 1. Po lewej stronie portalu, wybierz **wszystkie usługi**.
 2. Zacznij pisać *obserwatora sieciowego* w **filtru** pole. Gdy **obserwatora sieciowego** pojawia się w wynikach wyszukiwania, wybierz go.
 3. W obszarze **monitorowanie**, wybierz pozycję **monitor połączenia**.
-4. Wybierz **+ Dodaj**.
+4. Wybierz pozycję **+ Dodaj**.
 5. Wprowadź lub wybierz informacje dotyczące połączenia, chcesz monitorować, a następnie wybierz **Dodaj**. W tym przykładzie przedstawiono na rysunku poniżej połączenie monitorowane jest z *MultiTierApp0* maszyny Wirtualnej, aby *Database0* maszyny Wirtualnej za pośrednictwem portu 80:
 
     ![Dodawanie połączenia monitora](./media/connection-monitor/add-connection-monitor.png)
@@ -69,4 +69,4 @@ Poniższych kroków spowoduje włączenie monitorowania połączenia w docelowej
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Informacje o sposobie przechwytywania pakietów z alertami maszyny Wirtualnej przez automatyzację [tworzenie przechwytywania pakietów wyzwolony alert](network-watcher-alert-triggered-packet-capture.md).
-- Ustalić, czy niektóre ruch jest dozwolony w lub z maszyny Wirtualnej za pomocą [Sprawdź przepływ IP](network-watcher-check-ip-flow-verify-portal.md).
+- Ustalić, czy niektóre ruch jest dozwolony w lub z maszyny Wirtualnej za pomocą [Sprawdź przepływ IP](diagnose-vm-network-traffic-filtering-problem.md).

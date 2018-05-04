@@ -1,6 +1,6 @@
 ---
-title: "Replikowanie maszyn wirtualnych funkcji Hyper-V w chmurach programu Virtual Machine Manager do lokacji dodatkowej przy użyciu programu PowerShell (usługi Azure Resource Manager) | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób replikacja maszyn wirtualnych funkcji Hyper-V w chmurach programu Virtual Machine Manager do lokacji dodatkowej programu Virtual Machine Manager przy użyciu programu PowerShell (Resource Manager)"
+title: Replikowanie maszyn wirtualnych funkcji Hyper-V w chmurach programu Virtual Machine Manager do lokacji dodatkowej przy użyciu programu PowerShell (usługi Azure Resource Manager) | Dokumentacja firmy Microsoft
+description: Opisuje sposób replikacja maszyn wirtualnych funkcji Hyper-V w chmurach programu Virtual Machine Manager do lokacji dodatkowej programu Virtual Machine Manager przy użyciu programu PowerShell (Resource Manager)
 services: site-recovery
 author: sujaytalasila
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: sutalasi
-ms.openlocfilehash: ea4c2ed287619b92dba1b9b966cc0d52e0eb89c5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7c6af1b63d9e7904f5a397200c6950c62df08832
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Replikowanie maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej przy użyciu programu PowerShell (Resource Manager)
 
@@ -58,7 +58,7 @@ Upewnij się, że masz przejść programu Azure PowerShell:
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
-        Login-AzureRmAccount #-Credential $Cred
+        Connect-AzureRmAccount #-Credential $Cred
 2. Pobierz listę subskrypcji z subskrypcją identyfikatorów. Należy pamiętać, identyfikator subskrypcji, w którym chcesz utworzyć magazyn usług odzyskiwania. 
 
         Get-AzureRmSubscription
@@ -66,7 +66,7 @@ Upewnij się, że masz przejść programu Azure PowerShell:
 
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 1. Utwórz grupę zasobów usługi Azure Resource Manager, jeśli nie masz.
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location

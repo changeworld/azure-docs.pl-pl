@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbieraj liczniki wydajności dla aplikacji systemu Linux w analizy dzienników 
 Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [Agent pakietu OMS Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności dla określonych aplikacji.  Aplikacje zawarte w tym artykule są:  
@@ -78,9 +78,9 @@ Poniższa tabela zawiera szczegółowe informacje o składni dla przy użyciu my
 
 | Operacja | Przykład | Opis
 |:--|:--|:--|
-| AutoUpdate *false\|true* | mycimprovauth autoupdate false | Ustawia, czy plik authentication zostanie automatycznie zaktualizowana na ponowne uruchomienie lub zaktualizować. |
+| AutoUpdate *false lub wartość true* | mycimprovauth autoupdate false | Ustawia, czy plik authentication zostanie automatycznie zaktualizowana na ponowne uruchomienie lub zaktualizować. |
 | domyślne *powiązanego adresu nazwa_użytkownika hasło* | pwd głównych domyślnego 127.0.0.1 mycimprovauth | Ustawia domyślnego wystąpienia MySQL OMI plik uwierzytelniania.<br>Pole hasła powinny być wprowadzane w formacie zwykłego tekstu — hasło w pliku authentication MySQL OMI będzie zakodowanych w Base 64. |
-| Usuń *domyślne\|numer_portu* | mycimprovauth 3308 | Usuwa określone wystąpienie albo domyślnie lub numer portu. |
+| Usuń *domyślnej lub numer_portu* | mycimprovauth 3308 | Usuwa określone wystąpienie albo domyślnie lub numer portu. |
 | pomoc | mycimprov pomocy | Drukuje listę poleceń do użycia. |
 | Drukuj | mycimprov drukowania | Drukuje łatwo odczytać pliku uwierzytelniania MySQL OMI. |
 | Zaktualizuj numer_portu *powiązanego adresu nazwa_użytkownika hasło* | mycimprov aktualizacji 3307 127.0.0.1 głównego pwd | Aktualizuje określone wystąpienie lub dodaje wystąpienie, jeśli nie istnieje. |

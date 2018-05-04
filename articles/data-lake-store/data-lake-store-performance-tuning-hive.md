@@ -1,8 +1,8 @@
 ---
-title: "Dostosowywanie wskazówki dotyczące wydajności Hive usługi Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Dostosowywanie wskazówki dotyczące wydajności Hive usługi Azure Data Lake Store"
+title: Dostosowywanie wskazówki dotyczące wydajności Hive usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Dostosowywanie wskazówki dotyczące wydajności Hive usługi Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 57bd8758c2ae24922a959c9ce3893aad90dfe7e1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Wskazówki dotyczące Hive w usłudze HDInsight i usługi Azure Data Lake Store dostrajania wydajności
 
@@ -29,7 +29,7 @@ Aby zapewnić dobrą wydajność w wielu innych przypadków użycia skonfigurowa
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [wprowadzenie do usługi Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Klaster HDInsight Azure** z dostępem do konta usługi Data Lake Store. Zobacz [tworzenia klastra usługi HDInsight z usługą Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
-* **Uruchomiona Hive w usłudze HDInsight**.  Aby dowiedzieć się więcej na temat uruchamiania zadań Hive w usłudze HDInsight, zobacz [używanie Hive w usłudze HDInsight] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Uruchomiona Hive w usłudze HDInsight**.  Aby dowiedzieć się więcej na temat uruchamiania zadań Hive w usłudze HDInsight, zobacz () [używanie Hive w usłudze HDInsight]https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Wytyczne dotyczące ADLS dostrajania wydajności**.  Pojęcia dotyczące ogólnej wydajności, aby zapoznać [Data Lake magazynu dostrajanie wytyczne dotyczące wydajności](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Parametry
@@ -88,6 +88,6 @@ Aby sprawdzić, jeśli użytkownik są pobierania ograniczane, musisz włączyć
 ## <a name="further-information-on-hive-tuning"></a>Więcej informacji na temat dostrajania gałęzi
 
 Poniżej przedstawiono kilka blogi, pomagających dostroić zapytań Hive:
-* [Optymalizacja zapytań programu Hive dla platformy Hadoop w usłudze HDInsight](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Optymalizacja zapytań programu Hive dla platformy Hadoop w usłudze HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
 * [Rozwiązywanie problemów z wydajność zapytań Hive](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 * [Rozmawiać z konferencji Ignite na optymalizowanie Hive w usłudze HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

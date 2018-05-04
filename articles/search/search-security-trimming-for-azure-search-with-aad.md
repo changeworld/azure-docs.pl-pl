@@ -1,18 +1,18 @@
 ---
-title: "Filtry zabezpieczeń przycinania w wynikach wyszukiwania Azure przy użyciu tożsamości usługi Active Directory | Dokumentacja firmy Microsoft"
-description: "Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości usługi Active Directory."
-services: search
+title: Filtry zabezpieczeń przycinania w wynikach wyszukiwania Azure przy użyciu tożsamości usługi Active Directory | Dokumentacja firmy Microsoft
+description: Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości usługi Active Directory.
 author: revitalbarletz
 manager: jlembicz
+services: search
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 7c1723e01c78132169d8975473a0e9f5466a066c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpieczeń do przycinania wyników usługi Azure Search przy użyciu tożsamości usługi Active Directory
 
@@ -97,7 +97,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Pamięci podręcznej identyfikatory grup
-Opcjonalnie w celu zmniejszenia opóźnienia sieci, można buforować skojarzenia grupy użytkowników, aby podczas wystawiania żądania wyszukiwania grup są zwracane z pamięci podręcznej, zapisywanie obie strony do usługi AAD. Można użyć (AAD partii interfejsu API) [https://developer.microsoft.com/graph/docs/concepts/json_batching] Aby wysłać pojedyncze żądanie Http z wieloma użytkownikami i Tworzenie pamięci podręcznej.
+Opcjonalnie w celu zmniejszenia opóźnienia sieci, można buforować skojarzenia grupy użytkowników, aby podczas wystawiania żądania wyszukiwania grup są zwracane z pamięci podręcznej, zapisywanie obie strony do usługi AAD. Możesz użyć (API partii AAD) [https://developer.microsoft.com/graph/docs/concepts/json_batching] Aby wysłać pojedyncze żądanie Http z wieloma użytkownikami i Tworzenie pamięci podręcznej.
 
 Program Microsoft Graph przeznaczony do obsługi dużej liczby żądań. Ewentualnych utrudnione liczba żądań Microsoft Graph kończy się niepowodzeniem z kodem stanu HTTP 429 żądania. Aby uzyskać więcej informacji, zobacz [ograniczania Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
@@ -185,7 +185,7 @@ Odpowiedź zawiera wyfiltrowanej listy dokumentów, składające się z tymi, kt
 
 W tym przewodniku przedstawiono techniki do filtrowania dokumentów w wynikach usługi Azure Search przy użyciu usługi AAD logowania przycinanie wyniki dokumentów, które nie są zgodne z filtru na żądanie.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Kontrola dostępu oparta na tożsamości, za pomocą usługi Azure Search filtrów](search-security-trimming-for-azure-search.md)
 + [Filtry w usłudze Azure Search](search-filters.md)

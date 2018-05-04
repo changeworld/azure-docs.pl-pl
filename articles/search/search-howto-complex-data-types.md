@@ -1,25 +1,19 @@
 ---
-title: "Jak model złożone typy danych w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Zagnieżdżone lub mogą być modelowane struktury hierarchicznej danych do indeksu usługi Azure Search przy użyciu spłaszczoną wierszy i typ danych kolekcji."
-services: search
-documentationcenter: 
-author: LiamCa
-manager: pablocas
-editor: 
+title: Jak model złożone typy danych w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Zagnieżdżone lub mogą być modelowane struktury hierarchicznej danych do indeksu usługi Azure Search przy użyciu spłaszczoną wierszy i typ danych kolekcji.
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
-ms.assetid: e4bf86b4-497a-4179-b09f-c1b56c3c0bb2
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
-ms.author: liamca
-ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 81298bedd43a89ea948753dffc5f80248f5429ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak model złożone typy danych w usłudze Azure Search
 Zewnętrznych zestawów danych używanych do wypełniania indeksu usługi Azure Search czasami to hierarchiczna lub zagnieżdżony struktur podrzędnych, które nie podzielić się starannie na tabelarycznych zestawu wierszy. Przykłady takich konstrukcji może obejmują wiele lokalizacji i numerów telefonów dla jednego klienta, wiele kolorów i rozmiary dla jednej jednostki SKU wielu autorów jednej książce i tak dalej. Modelowanie warunki, można napotkać tych struktur, określany jako *złożone typy danych*, *złożone typy danych*, *złożone typy danych*, lub *agregacji typy danych*, kilka.

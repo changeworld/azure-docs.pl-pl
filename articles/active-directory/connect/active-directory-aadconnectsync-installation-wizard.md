@@ -1,12 +1,12 @@
 ---
 title: Kreator instalacji ponownie uruchomienie programu Azure AD Connect | Dokumentacja firmy Microsoft
-description: "Wyjaśniono sposób działania przez Kreator instalacji drugiego czas uruchomienia."
-keywords: "Kreator instalacji Azure AD Connect umożliwia skonfigurowanie ustawień konserwacji uruchomienia po raz drugi"
+description: Wyjaśniono sposób działania przez Kreator instalacji drugiego czas uruchomienia.
+keywords: Kreator instalacji Azure AD Connect umożliwia skonfigurowanie ustawień konserwacji uruchomienia po raz drugi
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a5a55b15bbffbcfa18e07e251180820e3d9cb6d8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 56cc38275a23eb4529558b876db619768a885a25
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizacja programu Azure AD Connect: uruchomienie Kreatora instalacji po raz drugi
 Podczas pierwszego uruchomienia Kreatora instalacji usługi Azure AD Connect przeprowadza użytkownika przez konfigurowanie instalacji. Jeśli ponownie uruchom Kreatora instalacji, oferuje opcje konserwacji.
@@ -79,7 +79,7 @@ Aby zmienić stan, wybierz tę opcję i zaznacz lub usuń zaznaczenie pola wybor
 ![Opcja, która również jest wyświetlany bieżący stan trybu przejściowego](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Zmień dane logowania użytkownika
-Ta opcja umożliwia zmianę z synchronizacji haseł do Federacji lub odwrotnie. Nie można zmienić **nieskonfigurowane**.
+Ta opcja umożliwia zmianę metody logowania użytkownika do i z synchronizacji skrótów haseł, uwierzytelnianie przekazywane lub federacji. Nie można zmienić **nieskonfigurowane**.
 
 Aby uzyskać więcej informacji na temat tej opcji, zobacz [logowania użytkownika](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method).
 

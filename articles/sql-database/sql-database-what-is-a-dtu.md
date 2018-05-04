@@ -10,14 +10,14 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 178eba46e0d128c8d93f2ba664a4a0916889fbbd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1a40eb8c3ac842976ffb1da42650466725b35e6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Bazy danych (Dtu). jednostki transakcji i jednostek transakcji elastycznej bazy danych (Edtu)
-W tym artykule wyjaśniono jednostki DTU (Database Transaction Unit) i jednostki eDTU (elastic Database Transaction Unit) oraz skutki osiągnięcia maksymalnej liczby jednostek DTU lub eDTU.  
+W tym artykule wyjaśniono jednostki DTU (Database Transaction Unit) i jednostki eDTU (elastic Database Transaction Unit) oraz skutki osiągnięcia maksymalnej liczby jednostek DTU lub eDTU. Aby uzyskać określone informacje o cenach, zobacz [cennik usługi Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
 ## <a name="what-are-database-transaction-units-dtus"></a>Co to są jednostki transakcji bazy danych (Dtu)?
 Dla jednej bazy danych Azure SQL w konkretnego poziomu wydajności w ramach [warstwy usług](sql-database-single-database-resources.md), Microsoft gwarantuje, że pewien poziom zasoby dla tej bazy danych (niezależnie od innych bazy danych w chmurze Azure) i zapewnia przewidywalną poziom wydajności. Ta ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub Dtu i powiązane miary obliczeniowej, magazynu i zasobów we/wy. Stosunek między tymi zasobami pierwotnie został określony poprzez [obciążenia OLTP testu porównawczego](sql-database-benchmark-overview.md) zaprojektowaną do typowe dla obciążeń OLTP rzeczywistych. Gdy obciążenie przekracza ilość żadnego z tych zasobów, przepustowość sieci jest ograniczeniem przepustowości — wynikowe w niska wydajność i przekroczeń limitu czasu. Zasoby używane przez obciążenie będzie mieć wpływu na zasoby dostępne dla innych baz danych w chmurze platformy Azure i zasobów, używany przez inne obciążenia nie wpływają na zasoby dostępne dla Twojej bazy danych SQL.
@@ -32,12 +32,12 @@ Aby uzyskać lepszy wgląd w zużycie zasobów (bazy danych DTU), obciążenia, 
 - Przechodzenie do szczegółów zapytania, Wyświetl tekst i historii wykorzystania zasobów.
 - Dostosowywanie zaleceń, które zawierają akcje wykonywane przez wydajności dostępu [doradcy bazy danych SQL](sql-database-advisor.md).
 
-Możesz [zmienić warstwy usług](sql-database-service-tiers.md) w dowolnym momencie przy minimalnych przestojach w działaniu aplikacji (zwykle poniżej czterech sekund). W przypadku wielu firm i aplikacji możliwość tworzenia baz danych i dostosowywania wydajności na żądanie jest wystarczająca, zwłaszcza jeśli wzorce użycia są względnie przewidywalne. Jednak w przypadku nieprzewidywalnych wzorców zarządzanie kosztami i modelem biznesowym może być trudne. W tym scenariuszu należy użyć puli elastycznej z określonej liczby jednostek Edtu, które są współużytkowane przez wiele bazy danych w puli.
+Możesz zmienić [DTU warstwy usług](sql-database-service-tiers-dtu.md) w dowolnym momencie z minimalnym czasem przestojów w aplikacji (zwykle uśrednianie poniżej cztery sekund). W przypadku wielu firm i aplikacji możliwość tworzenia baz danych i dostosowywania wydajności na żądanie jest wystarczająca, zwłaszcza jeśli wzorce użycia są względnie przewidywalne. Jednak w przypadku nieprzewidywalnych wzorców zarządzanie kosztami i modelem biznesowym może być trudne. W tym scenariuszu należy użyć puli elastycznej z określonej liczby jednostek Edtu, które są współużytkowane przez wiele baz danych w puli.
 
 ![Wprowadzenie do usługi SQL Database: jednostki DTU z jedną bazą danych według warstwy i poziomu.](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>Co to są jednostek transakcji elastycznej bazy danych (Edtu)?
-Raczej nie udostępniają dedykowany zestaw zasobów (Dtu) do bazy danych SQL, która jest zawsze dostępna niezależnie od tego, czy potrzebne nie, możesz umieścić baz danych do [puli elastycznej](sql-database-elastic-pool.md) na serwerze bazy danych SQL, który udostępnia puli zasobów między tymi bazy danych. Udostępnione zasoby w puli elastycznej, mierząc elastycznych jednostkach transakcji bazy danych lub Edtu. Pule elastyczne zapewniają proste i ekonomiczne rozwiązanie umożliwiające zarządzanie celami wydajności dla wielu baz danych o znacznie zróżnicowanych i nieprzewidywalnych wzorcach użycia. W puli elastycznej może zagwarantować nie jedna baza danych używa wszystkich zasobów w puli oraz czy minimalna ilość zasobów jest zawsze dostępny dla bazy danych w puli elastycznej. 
+Raczej nie udostępniają dedykowany zestaw zasobów (Dtu) do bazy danych SQL, która jest zawsze dostępna niezależnie od tego, czy potrzebne nie, możesz umieścić baz danych do [puli elastycznej](sql-database-elastic-pool.md) na serwerze bazy danych SQL, który współużytkuje puli zasobów wśród tych baz danych. Udostępnione zasoby w puli elastycznej, mierząc elastycznych jednostkach transakcji bazy danych lub Edtu. Pule elastyczne zapewniają proste i ekonomiczne rozwiązanie umożliwiające zarządzanie celami wydajności dla wielu baz danych o znacznie zróżnicowanych i nieprzewidywalnych wzorcach użycia. W puli elastycznej może zagwarantować nie jedna baza danych używa wszystkich zasobów w puli oraz czy minimalna ilość zasobów jest zawsze dostępny dla bazy danych w puli elastycznej. 
 
 ![Wprowadzenie do usługi SQL Database: jednostki eDTU według warstwy i poziomu](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -55,6 +55,7 @@ Pule są odpowiednie dla wielu baz danych o określonych wzorcach użycia. Dla d
 Poziomy wydajności są kalibrowane i określane w celu zapewnienia zasobów wymaganych do uruchomienia obciążenia baz danych do maksymalnego limitu dozwolonego dla wybranej warstwy usługi/poziomu wydajności. Jeśli obciążenie powoduje osiągnięcie limitu procesora CPU, operacji we/wy danych lub operacji we/wy dziennika, nadal zapewniane będą zasoby na maksymalnym dozwolonym poziomie, ale mogą wystąpić opóźnienia zapytań. Te limity nie powodują występowania błędów, ale raczej spowalniają działanie obciążenia, o ile obciążenie nie stanie się tak duże, by powodować przekroczenie limitu czasu zapytań. W przypadku osiągnięcia limitów maksymalnej dozwolonej liczby równoczesnych sesji/żądań użytkowników (wątków roboczych) występują jawne błędy. Zobacz [limity zasobów bazy danych SQL Azure]( sql-database-dtu-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) uzyskać informacji o limit zasobów niż procesora CPU, pamięci, we/wy danych i dziennika transakcji, we/wy.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [warstwy usług](sql-database-service-tiers.md) informacji na temat jednostek Dtu a Edtu dostępnych dla pojedynczych baz danych i pul elastycznych, a także ograniczenia dotyczące zasobów niż procesora CPU, pamięci, we/wy danych i dziennika transakcji, we/wy.
+* Zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) informacji na temat jednostek Dtu a Edtu dostępnych dla pojedynczych baz danych i pul elastycznych, a także ograniczenia dotyczące zasobów niż procesora CPU, pamięci, we/wy danych i dziennika transakcji, we/wy.
+* Zobacz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) Aby uzyskać informacje dotyczące zasobów na podstawie vCore warstwy alokacji i usługi. 
 * Zobacz [Szczegółowe informacje o wydajności zapytań usługi SQL Database](sql-database-query-performance.md), aby zrozumieć wykorzystanie jednostek DTU.
 * Zobacz [Omówienie testu porównawczego usługi SQL Database](sql-database-benchmark-overview.md), aby zrozumieć metodologię obciążenia porównawczego OLTP używanego w celu określenia połączonego wskaźnika w postaci jednostek DTU.

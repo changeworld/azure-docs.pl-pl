@@ -11,14 +11,14 @@ ms.assetid: 0c23a079-981a-4079-b3f7-ad147b4609e5
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 04/23/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: cc5d48b881ba59679c19baa3506c3c14c0db8048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fd0daae8289839b64e7b54d97c78719587c18e7d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Analizowanie danych opóźnienie transmitowane przy użyciu usługi Hive w usłudze HDInsight z systemem Linux
 
@@ -34,6 +34,8 @@ Sprawdzanie analizowanie danych opóźnienie transmitowane przy użyciu usługi 
 * **Usługa Azure SQL Database**. Korzystasz z bazy danych Azure SQL jako miejsce docelowe magazynu danych. Jeśli nie masz bazy danych SQL, zobacz [tworzenie bazy danych Azure SQL w portalu Azure](../sql-database/sql-database-get-started.md).
 
 * **Interfejs wiersza polecenia platformy Azure**. Jeśli nie zainstalowano wiersza polecenia platformy Azure, zobacz [zainstalować 1.0 interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) dla większej liczby kroków.
+
+* **Klient SSH**. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Pobierz dane transmitowane
 
@@ -54,24 +56,21 @@ Sprawdzanie analizowanie danych opóźnienie transmitowane przy użyciu usługi 
 
 1. Użyj następującego polecenia, aby przekazać plik zip do węzła głównego klastra usługi HDInsight:
 
-    ```
-    scp FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
+    ```bash
+    scp FILENAME.zip sshuser@clustername-ssh.azurehdinsight.net:
     ```
 
-    Zastąp *FILENAME* z nazwą pliku zip. Zastąp *USERNAME* z logowaniem SSH dla klastra usługi HDInsight. Zastąp *CLUSTERNAME* z nazwą klastra usługi HDInsight.
-
-   > [!NOTE]
-   > Jeśli używasz hasła uwierzytelniania nazwy logowania SSH, zostanie wyświetlony monit o hasło. Jeśli używasz klucza publicznego, być może należy użyć `-i` parametru i określ ścieżkę do odpowiedniego klucza prywatnego. Na przykład `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
+    Zastąp `FILENAME` z nazwą pliku zip. Zastąp `sshuser` z logowaniem SSH dla klastra usługi HDInsight. Zastąp `clustername` z nazwą klastra usługi HDInsight.
 
 2. Po zakończeniu przekazywania, połącz się z klastrem przy użyciu protokołu SSH:
 
-    ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
-
-    Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+    ```bash
+    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ```
 
 3. Użyj następującego polecenia, aby rozpakować plik zip:
 
-    ```
+    ```bash
     unzip FILENAME.zip
     ```
 
@@ -79,7 +78,7 @@ Sprawdzanie analizowanie danych opóźnienie transmitowane przy użyciu usługi 
 
 4. Użyj następującego polecenia, aby utworzyć katalog w magazynie usługi HDInsight, a następnie skopiuj plik do katalogu:
 
-    ```
+    ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
     hdfs dfs -put FILENAME.csv /tutorials/flightdelays/data/
     ```
@@ -90,7 +89,7 @@ Wykonaj następujące kroki, aby zaimportować dane z pliku CSV do tabeli progra
 
 1. Użyj następującego polecenia można tworzyć i edytować nowy plik o nazwie **flightdelays.hql**:
 
-    ```
+    ```bash
     nano flightdelays.hql
     ```
 
@@ -160,13 +159,13 @@ Wykonaj następujące kroki, aby zaimportować dane z pliku CSV do tabeli progra
 
 3. Aby uruchomić Hive i przeprowadzić **flightdelays.hql** plików, użyj następującego polecenia:
 
-    ```
+    ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
 4. Po __flightdelays.hql__ zakończeniu uruchamiania skryptu, użyj następującego polecenia, aby otworzyć sesji interaktywnej Beeline:
 
-    ```
+    ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
@@ -200,13 +199,13 @@ Jeśli nie masz już bazę danych SQL, skorzystaj z informacji w [tworzenie bazy
 
 1. Aby zainstalować protokół FreeTDS, użyj następującego polecenia z połączenia SSH do klastra:
 
-    ```
+    ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
 3. Po zakończeniu instalacji, użyj następującego polecenia, aby połączyć się z serwerem bazy danych SQL. Zastąp **serverName** z nazwą serwera bazy danych SQL. Zastąp **adminLogin** i **adminPassword** z nazwy logowania bazy danych SQL. Zastąp **databaseName** o nazwie bazy danych.
 
-    ```
+    ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
     ```
 
@@ -224,7 +223,7 @@ Jeśli nie masz już bazę danych SQL, skorzystaj z informacji w [tworzenie bazy
 
 4. W `1>` monit, wprowadź następujące wiersze:
 
-    ```
+    ```hiveql
     CREATE TABLE [dbo].[delays](
     [origin_city_name] [nvarchar](50) NOT NULL,
     [weather_delay] float,
@@ -237,7 +236,7 @@ Jeśli nie masz już bazę danych SQL, skorzystaj z informacji w [tworzenie bazy
 
     Użyj następującego zapytania, aby sprawdzić, czy tabela została utworzona:
 
-    ```
+    ```hiveql
     SELECT * FROM information_schema.tables
     GO
     ```
@@ -255,7 +254,7 @@ Jeśli nie masz już bazę danych SQL, skorzystaj z informacji w [tworzenie bazy
 
 1. Aby sprawdzić, czy Sqoop widzą bazy danych SQL, użyj następującego polecenia:
 
-    ```
+    ```bash
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
 
@@ -263,7 +262,7 @@ Jeśli nie masz już bazę danych SQL, skorzystaj z informacji w [tworzenie bazy
 
 2. Eksportowanie danych z hivesampletable do tabeli opóźnienia, użyj następującego polecenia:
 
-    ```
+    ```bash
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
@@ -271,13 +270,13 @@ Jeśli nie masz już bazę danych SQL, skorzystaj z informacji w [tworzenie bazy
 
 3. Po zakończeniu działania polecenia sqoop, należy użyć narzędzia tsql do połączenia z bazą danych:
 
-    ```
+    ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
     Aby sprawdzić, czy dane zostały wyeksportowane do tabeli opóźnienia, należy zastosować następujące instrukcje:
 
-    ```
+    ```sql
     SELECT * FROM delays
     GO
     ```

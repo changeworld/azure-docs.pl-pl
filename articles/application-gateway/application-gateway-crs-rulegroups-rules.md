@@ -1,25 +1,22 @@
 ---
-title: Azure Application Gateway zapory aplikacji sieci web CRS reguły grup i zasad | Dokumentacja firmy Microsoft
+title: Azure Application Gateway zapory aplikacji sieci web CRS reguły grup i reguł
 description: Ta strona zawiera informacje dotyczące grup reguł CRS zapory aplikacji sieci web i zasady.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
+author: vhorne
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/16/2018
+ms.author: victorh
+ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Oferowana listy grup reguł CRS zapory aplikacji sieci web i reguł
 
@@ -27,28 +24,8 @@ Zapora aplikacji sieci web dla aplikacji bramy (WAF) chroni aplikacji sieci web 
 
 Następujące tabele są zasady grupy i reguł, które są dostępne podczas korzystania z bramy aplikacji z zapory aplikacji sieci web.  Każda tabela dotyczy znaleziono w grupie reguły dla określonej wersji CRS reguł.
 
-##<a name="owasp30"></a>OWASP_3.0
+## <a name="owasp30"></a> OWASP_3.0
 
-### <a name="crs910"></a>  <p x-ms-format-detection="none">ŻĄDANIE-910-IP-REPUTACJI</p>
-
-|RuleId|Opis|
-|---|---|
-|910011|Reguła 910011|
-|910012|Reguła 910012|
-|910000|Żądania z znane złośliwe klienta (w oparciu o poprzednim naruszeń ruchu).|
-|910100|Klient IP jest z lokalizacji kraju wysokiego ryzyka.|
-|910120|Reguła 910120|
-|910130|Reguła 910130|
-|910150|Zgodne zabronionych HTTP dla adresu IP aparatu wyszukiwania|
-|910160|Dopasowanie zabronionych HTTP dla adresu IP niechcianych|
-|910170|Dopasowanie zabronionych HTTP dla podejrzanych adresu IP|
-|910180|Dopasowanie zabronionych HTTP dla adresu IP kombajnu|
-|910013|Reguła 910013|
-|910014|Reguła 910014|
-|910015|Reguła 910015|
-|910016|Reguła 910016|
-|910017|Reguła 910017|
-|910018|Reguła 910018|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">ŻĄDANIE 911 — METODA WYMUSZANIA</p>
 
@@ -64,26 +41,6 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |911017|Reguła 911017|
 |911018|Reguła 911018|
 
-### <a name="crs912"></a> <p x-ms-format-detection="none">ŻĄDANIE 912-DOS-OCHRONY</p>
-
-|RuleId|Opis|
-|---|---|
-|912100|Reguła 912100|
-|912012|Reguła 912012|
-|912120|Odmowa usługi (DoS) ataku z % @{tx.real_ip} (% @{tx.dos_block_counter} trafień od czasu ostatniego alert)|
-|912130|Reguła 912130|
-|912140|Reguła 912140|
-|912150|Reguła 912150|
-|912160|Reguła 912160|
-|912170|Potencjalny atak przeprowadzenie ataku typu "odmowa usługi" (DoS) z serwera % @{tx.real_ip} — liczba żądań ulega zapaleniu = % @{ip.dos_burst_counter}|
-|912013|Reguła 912013|
-|912014|Reguła 912014|
-|912019|Reguła 912019|
-|912171|Potencjalny atak przeprowadzenie ataku typu "odmowa usługi" (DoS) z serwera % @{tx.real_ip} — liczba żądań ulega zapaleniu = % @{ip.dos_burst_counter}|
-|912015|Reguła 912015|
-|912016|Reguła 912016|
-|912017|Reguła 912017|
-|912018|Reguła 912018|
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">ŻĄDANIE 913-SKANERA WYKRYWANIA</p>
 
@@ -334,9 +291,9 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |943017|Reguła 943017|
 |943018|Reguła 943018|
 
-##<a name="owasp229"></a>OWASP_2.2.9
+##<a name="owasp229"></a> OWASP_2.2.9
 
-### <a name="crs20"></a>crs_20_protocol_violations
+### <a name="crs20"></a> crs_20_protocol_violations
 
 |RuleId|Opis|
 |---|---|
@@ -362,7 +319,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |960901|Nieprawidłowy znak w żądaniu|
 |960018|Nieprawidłowy znak w żądaniu|
 
-### <a name="crs21"></a>crs_21_protocol_anomalies
+### <a name="crs21"></a> crs_21_protocol_anomalies
 
 |RuleId|Opis|
 |---|---|
@@ -375,7 +332,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |960904|Żądanie zawierające zawartości, ale nagłówek Content-Type Brak|
 |960017|Nagłówek hosta jest adresem IP numeryczne|
 
-### <a name="crs23"></a>crs_23_request_limits
+### <a name="crs23"></a> crs_23_request_limits
 
 |RuleId|Opis|
 |---|---|
@@ -386,7 +343,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |960342|Rozmiar przekazanego pliku jest za duży|
 |960343|Całkowita liczba przekazanych plików jest zbyt duży|
 
-### <a name="crs30"></a>crs_30_http_policy
+### <a name="crs30"></a> crs_30_http_policy
 
 |RuleId|Opis|
 |---|---|
@@ -396,7 +353,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |960035|Rozszerzenie pliku adres URL jest ograniczona przez zasady|
 |960038|Nagłówek HTTP jest ograniczona przez zasady|
 
-### <a name="crs35"></a>crs_35_bad_robots
+### <a name="crs35"></a> crs_35_bad_robots
 
 |RuleId|Opis|
 |---|---|
@@ -405,7 +362,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |990902|Wskazuje żądanie program skanera zabezpieczeń lokacji|
 |990012|Nieautoryzowany przeszukiwarki witryny sieci web|
 
-### <a name="crs40"></a>crs_40_generic_attacks
+### <a name="crs40"></a> crs_40_generic_attacks
 
 |RuleId|Opis|
 |---|---|
@@ -434,7 +391,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |958976|Ataku polegającego na iniekcji PHP|
 |958977|Ataku polegającego na iniekcji PHP|
 
-### <a name="crs41sql"></a>crs_41_sql_injection_attacks
+### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
 |RuleId|Opis|
 |---|---|
@@ -471,7 +428,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |981253|Wykrywa, MySQL, PostgreSQL i przechowywane procedury/funkcji iniekcji|
 |981251|Wykrywa iniekcji MySQL UDF i manipulowania nimi inne struktury danych/prób|
 
-### <a name="crs41xss"></a>crs_41_xss_attacks
+### <a name="crs41xss"></a> crs_41_xss_attacks
 
 |RuleId|Opis|
 |---|---|
@@ -576,13 +533,13 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |973329|Filtry IE XSS - wykryto ataku.|
 |973328|Filtry IE XSS - wykryto ataku.|
 
-### <a name="crs42"></a>crs_42_tight_security
+### <a name="crs42"></a> crs_42_tight_security
 
 |RuleId|Opis|
 |---|---|
 |950103|Ścieżka przechodzenie ataków|
 
-### <a name="crs45"></a>crs_45_trojans
+### <a name="crs45"></a> crs_45_trojans
 
 |RuleId|Opis|
 |---|---|
@@ -590,7 +547,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |950921|Tylne wejście do systemu|
 |950922|Tylne wejście do systemu|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak można wyłączyć reguły zapory aplikacji sieci Web, odwiedzając: [reguły zapory dostosowywania aplikacji sieci Web](application-gateway-customize-waf-rules-portal.md)
 

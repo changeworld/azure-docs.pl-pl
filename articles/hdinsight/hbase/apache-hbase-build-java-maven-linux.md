@@ -1,25 +1,23 @@
 ---
 title: Klient Java HBase - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak używać Apache Maven do tworzenia aplikacji opartych na języku Java bazy danych Apache HBase, a następnie wdrożyć ją do bazy danych HBase w usłudze Azure HDInsight."
+description: Dowiedz się, jak używać Apache Maven do tworzenia aplikacji opartych na języku Java bazy danych Apache HBase, a następnie wdrożyć ją do bazy danych HBase w usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
-editor: 
+editor: ''
 ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/25/2018
+ms.topic: conceptual
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 7f5e4cd36b32ae86bc6f498c81d5a558ca6974d2
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 564bfb9c80fe835bd5defb4321607e0970c9f0aa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Tworzenie aplikacji Java dla bazy danych Apache HBase
 
@@ -43,9 +41,6 @@ Użyj dokumentów z krokami w tym [Maven](http://maven.apache.org/) do tworzenia
 * [Maven](http://maven.apache.org/)
 
 * [Klaster HDInsight Azure opartej na systemie Linux z bazy danych HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
-
-  > [!NOTE]
-  > Kroki opisane w tym dokumencie zostały przetestowane w wersjach klastra usługi HDInsight 3.4 i 3.5. Wartości domyślnych w przykładach są dla klastra usługi HDInsight 3.5.
 
 ## <a name="create-the-project"></a>Tworzenie projektu
 
@@ -576,7 +571,7 @@ Poniższe kroki przekazać JAR do magazynu domyślnego dla klastra HBase przy u�
         $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
         if(-not($sub))
         {
-            throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+            throw "No active Azure subscription found! If you have a subscription, use the Connect-AzureRmAccount cmdlet to login to your subscription."
         }
     }
 

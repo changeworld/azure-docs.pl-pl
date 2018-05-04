@@ -1,13 +1,13 @@
 ---
-title: "Przygotowanie infrastruktury platformy Azure dla programu SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS | Dokumentacja firmy Microsoft"
-description: "Przygotowanie infrastruktury platformy Azure dla programu SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla programu SAP ASCS/SCS wystąpień"
+title: Przygotowanie infrastruktury platformy Azure dla programu SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS | Dokumentacja firmy Microsoft
+description: Przygotowanie infrastruktury platformy Azure dla programu SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla programu SAP ASCS/SCS wystąpień
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f9e2108a7714dcbfd4f2db583cb6ee4b803f65a
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2945f731a71a66d2594eb31afb50d1ae775a2b42
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowanie infrastruktury platformy Azure dla programu SAP wysokiej dostępności dzięki użyciu udziału klastra i plików trybu failover systemu Windows dla programu SAP ASCS/SCS wystąpień
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/16/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności identyfikatora SID multi SAP)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -212,7 +212,7 @@ W tym artykule opisano kroki przygotowania infrastruktury platformy Azure, któr
 
 Przed rozpoczęciem instalacji, przejrzyj następujący artykuł:
 
-* [Przewodnik dotyczący architektury: klastra wystąpień klastra SAP ASCS/SCS na przejściu w tryb failover z systemem Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-shared-disk]
+* [Przewodnik dotyczący architektury: klastra wystąpień klastra SAP ASCS/SCS na przejściu w tryb failover z systemem Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Nazwy hostów i adresów IP
@@ -221,13 +221,13 @@ Przed rozpoczęciem instalacji, przejrzyj następujący artykuł:
 | --- | --- | --- | --- |
 | Pierwszy klaster ASCS/SCS węzła klastra | ascs-1 | 10.0.6.4 | ascs — jako |
 | Drugi klaster ASCS/SCS węzłów klastra | ascs-2 | 10.0.6.5 | ascs — jako |
-| Nazwa sieciowa klastra |ascs cl | 10.0.6.6 | Brak |
-| Nazwa sieciowa klastra PR1 ASCS SAP |PR1 ascs | 10.0.6.7 | Brak |
+| Nazwa sieciowa klastra |ascs cl | 10.0.6.6 | Nie dotyczy |
+| Nazwa sieciowa klastra PR1 ASCS SAP |PR1 ascs | 10.0.6.7 | Nie dotyczy |
 
 
 **Tabela 1**: ASCS/SCS klastra
 
-| SAP \<SID > | SAP ASCS/SCS liczby wystąpień |
+| SAP \<SID &GT; | SAP ASCS/SCS liczby wystąpień |
 | --- | --- |
 | PR1 | 00 |
 
@@ -239,8 +239,8 @@ Przed rozpoczęciem instalacji, przejrzyj następujący artykuł:
 | Pierwszym węźle klastra | sofs-1 | 10.0.6.10 | sofs — jako |
 | Drugi węzeł klastra | sofs-2 | 10.0.6.11 | sofs — jako |
 | Trzeci węzła klastra | sofs 3 | 10.0.6.12 | sofs — jako |
-| Nazwa sieciowa klastra | sofs cl | 10.0.6.13 | Brak |
-| Nazwa hosta globalne SAP | sapglobal | Użyj adresów IP wszystkich węzłów klastra | Brak |
+| Nazwa sieciowa klastra | sofs cl | 10.0.6.13 | Nie dotyczy |
+| Nazwa hosta globalne SAP | sapglobal | Użyj adresów IP wszystkich węzłów klastra | Nie dotyczy |
 
 **Tabela 3**: klastra serwera plików skalowalnego w poziomie
 
@@ -341,6 +341,6 @@ _**Rysunek 2**: ekranu interfejsu użytkownika dla Menedżera zasobów Azure ser
 
 W **typu konta magazynu** wybierz opcję **magazyn w warstwie Premium**. Wszystkie inne ustawienia są takie same jak ustawienia dla dysków zarządzanych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Zainstaluj SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla programu SAP ASCS/SCS wystąpień][sap-high-availability-installation-wsfc-file-share]

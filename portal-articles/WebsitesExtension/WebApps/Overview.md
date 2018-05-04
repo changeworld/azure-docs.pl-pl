@@ -1,6 +1,6 @@
 ---
-title: "Przegląd usługi Web Apps | Microsoft Docs"
-description: "Zawartość pomocy dla omówienia usługi Web Apps w witrynie Azure Portal"
+title: Omówienie usługi App Service | Microsoft Docs
+description: Zawartość pomocy dla omówienia usługi App Service w witrynie Azure Portal
 services: app-service
 author: sewatson
 manager: lwelicki
@@ -8,19 +8,21 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 13709876752dd5df356765ed636c5a7e4a665d4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="web-apps-documentation"></a>Dokumentacja usługi Web Apps
+# <a name="app-service-documentation"></a>Dokumentacja usługi App Service
+Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych w wybranym języku programowania bez zarządzania infrastrukturą, językiem i środowiskiem uruchomieniowym platformy internetowej. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i system Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Visual Studio Team Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
 
-Usługa Azure Web Apps umożliwia tworzenie i hostowanie aplikacji sieci Web w wybranym języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i system Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Visual Studio Team Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure Web Apps, korzystając z przewodników Szybki Start, samouczków i przykładów.
+## <a name="windows-linux-and-docker"></a>Windows, Linux i Docker
+[Web Apps](/app-service/app-service-web-overview) to główna oferta usługi App Service, która służy do tworzenia i hostowania aplikacji internetowych przy użyciu środowisk Windows. Deweloperzy, którzy wolą środowisko Linux, mogą wybrać usługę [App Service for Linux](/app-service/containers/app-service-linux-intro). Deweloperzy mogą także wdrażać obrazy usługi Docker bezpośrednio w usłudze App Service for Linux, aby wdrażać niestandardowe środowiska uruchomieniowego/platformy.
 
 ## <a name="5-minute-quickstarts"></a>5-minutowe przewodniki Szybki start
 
-Dowiedz się, jak wdrożyć pierwszą aplikację w chmurze za pomocą usługi Web Apps:
+Dowiedz się, jak wdrożyć pierwszą aplikację w chmurze za pomocą usługi App Service for Web Apps:
 
 - [.NET](/azure/app-service/app-service-web-get-started-dotnet)
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
@@ -33,7 +35,11 @@ Dowiedz się, jak wdrożyć pierwszą aplikację w chmurze za pomocą usługi We
 
 Dowiedz się, jak wdrażać i monitorować bezpiecznie aplikacje internetowe na platformie Azure i zarządzać nimi.
 
-- Tworzenie aplikacji za pomocą [platformy .NET i usługi Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase) lub [platformy Node.js z usługą MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+- Tworzenie aplikacji za pomocą:
+  - [.NET z Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
+  - [Node.js z MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+  - [Java z MySQL](/app-service/app-service-web-tutorial-java-mysql)
+  - [Python z PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
 - [Mapowanie istniejącej domeny niestandardowej na aplikację](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Powiązywanie istniejącego certyfikatu SSL z aplikacją](/azure/app-service/app-service-web-tutorial-custom-SSL)
 
@@ -51,5 +57,4 @@ Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
 
 ## <a name="more"></a>Więcej
 
-- [Aby uzyskać więcej informacji, zobacz dokumentację](/azure/app-service-web/index)
 - [Informacje o wszystkich usługach platformy Azure](https://aka.ms/j3wr7y)

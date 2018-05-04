@@ -1,11 +1,11 @@
 ---
-title: "Jak używać zestawu JavaScript SDK usługi Azure Mobile Apps"
-description: "Sposób użycia v usługi Azure Mobile Apps"
+title: Jak używać zestawu JavaScript SDK usługi Azure Mobile Apps
+description: Sposób użycia v usługi Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 9494e40a27895def450de856bbf806573daedfdb
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej JavaScript w usłudze Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -72,7 +72,7 @@ Kilka typów aplikacji JavaScript używania możliwości sprzężenia zwrotnego 
 
 Uruchomiony lokalnie może spowodować problemy, ponieważ domyślnie uwierzytelniania usługi aplikacji jest tylko skonfigurowane i umożliwiają dostęp z zaplecza aplikacji mobilnej. Aby zmienić ustawienia usługi aplikacji, aby włączyć uwierzytelnianie podczas uruchamiania lokalnego serwera, wykonaj następujące kroki:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Przejdź do zaplecza aplikacji mobilnej.
 3. Wybierz **Eksploratora zasobów** w **narzędzi PROGRAMISTYCZNYCH** menu.
 4. Kliknij przycisk **Przejdź** można otworzyć w nowej karcie lub w oknie Eksploratora zasobów dla zaplecza aplikacji mobilnej.
@@ -90,7 +90,7 @@ Uruchomiony lokalnie może spowodować problemy, ponieważ domyślnie uwierzytel
 
 Należy również dodać tych samych adresów URL sprzężenia zwrotnego do CORS ustawień listy dozwolonych adresów IP:
 
-1. Przejdź z powrotem do [Azure Portal].
+1. Przejdź z powrotem do [portalu Azure].
 2. Przejdź do zaplecza aplikacji mobilnej.
 3. Kliknij przycisk **CORS** w **interfejsu API** menu.
 4. Wprowadź każdy adres URL w pustej **dozwolone źródła** pola tekstowego.  Utworzono nowe pole tekstowe.
@@ -103,6 +103,6 @@ Po aktualizacji wewnętrznej bazy danych, można korzystać z nowych sprzężeni
 [Rozpoczynanie pracy z uwierzytelnianiem]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Azure Portal]: https://portal.azure.com/
+[portalu Azure]: https://portal.azure.com/
 [JavaScript SDK usługi Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

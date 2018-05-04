@@ -2,23 +2,20 @@
 title: Za pomocą skryptów programu Windows PowerShell do opublikowania dla deweloperów i środowisk testowych | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak za pomocą skryptów środowiska Windows PowerShell z programu Visual Studio do publikowania do programowania i testowania środowisk.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 5fff1301-5469-4d97-be88-c85c30f837c1
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 866575a483e705e1c972a0b56d98f26e9cf0c631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Używanie skryptów programu Windows PowerShell w celu publikowania w środowisku deweloperskim i testowym
 
@@ -323,7 +320,7 @@ Aby uzyskać pomoc dotyczącą funkcje, których można użyć w wierszu polecen
 | Find-AzureVM |Pobiera określonej maszyny wirtualnej platformy Azure. |
 | Format-DevTestMessageWithTime |Dołącza datę i godzinę do wiadomości. Ta funkcja jest przeznaczona dla komunikatów zapisywanych strumienie błąd i pełne. |
 | Get-AzureSQLDatabaseConnectionString |Zbierane parametry połączenia do łączenia z bazą danych Azure SQL. |
-| Get-AzureVMStorage |Zwraca nazwę pierwsze konto magazynu przy użyciu wzorca nazwy "devtest*" (bez uwzględniania wielkości liter) w określonej lokalizacji lub grupie koligacji. Jeśli "devtest*" konta magazynu jest niezgodne lokalizacja lub grupa koligacji, funkcja ignoruje go. Określ lokalizację lub grupę koligacji. |
+| Get-AzureVMStorage |Zwraca nazwę pierwsze konto magazynu przy użyciu wzorca nazwy "devtest *" (bez uwzględniania wielkości liter) w określonej lokalizacji lub grupie koligacji. Jeśli "devtest*" konta magazynu jest niezgodne lokalizacja lub grupa koligacji, funkcja ignoruje go. Określ lokalizację lub grupę koligacji. |
 | Get-MSDeployCmd |Zwraca polecenie do uruchomienia narzędzia MsDeploy.exe. |
 | New-AzureVMEnvironment |Wyszukuje lub tworzy maszynę wirtualną w subskrypcji, która odpowiada wartości w pliku konfiguracji JSON. |
 | Publish-WebPackage |Używa MsDeploy.exe i sieci web publikowania pakietu. Plik zip do wdrażania zasobów do witryny sieci Web. Ta funkcja nie generuje żadnego wyniku. Jeśli wywołanie MSDeploy.exe zakończy się niepowodzeniem, funkcja zwraca wyjątek. Aby uzyskać bardziej szczegółowe dane wyjściowe, należy użyć **-Verbose** opcji. |
@@ -335,7 +332,7 @@ Aby uzyskać pomoc dotyczącą funkcje, których można użyć w wierszu polecen
 | Test-HttpsUrl |Konwertuje wejściowy adres URL do obiektu System.Uri. Zwraca `$True` jest bezwzględny adres URL, jeśli jego schemat jest typu https. Zwraca `$false` adres URL jest względny, jego schematu nie HTTPS, czy ciąg wejściowy nie można przekonwertować na adres URL. |
 | Test-Member |Zwraca `$true` Jeśli właściwość lub metoda jest elementem członkowskim obiektu. W przeciwnym razie zwraca `$false`. |
 | ErrorWithTime zapisu |Zapisuje komunikat o błędzie z prefiksem bieżącego czasu. Ta funkcja wymaga **Format DevTestMessageWithTime** funkcji dołączy czasu przed zapisaniem komunikat do strumienia błędów. |
-| Write-HostWithTime |Zapisuje komunikat w programie hosta (**Write-Host**) i jest poprzedzony prefiksem bieżącego czasu. Efekt zapisywanie w programie hosta może być różna. Większość programów obsługujących środowiska Windows PowerShell zapisu te komunikaty do wyjścia standardowego. |
+| HostWithTime zapisu |Zapisuje komunikat w programie hosta (**Write-Host**) i jest poprzedzony prefiksem bieżącego czasu. Efekt zapisywanie w programie hosta może być różna. Większość programów obsługujących środowiska Windows PowerShell zapisu te komunikaty do wyjścia standardowego. |
 | Write-VerboseWithTime |Zapisuje komunikat trybu informacji pełnej prefiksem bieżącego czasu. Ponieważ wywołuje **Write-Verbose**, komunikat jest wyświetlany tylko wtedy, gdy skrypt jest uruchamiany z **pełne** parametru lub gdy **VerbosePreference** ma ustawioną wartość preferencji **Kontynuuj**. |
 
 **Publish-WebApplication**

@@ -11,11 +11,11 @@ ms.workload: Active
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 37bbbf8ea5a5d8439b300d0740e4f1a048e98e91
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Więcej informacji na temat automatycznego tworzenia kopii zapasowej bazy danych SQL
 
@@ -44,8 +44,11 @@ Kopie zapasowe pełnej bazy danych są wykonywane co tydzień, kopie zapasowe r�
 Replikacja geograficzna magazynu kopii zapasowych występuje na podstawie harmonogramu replikacji usługi Azure Storage.
 
 ## <a name="how-long-do-you-keep-my-backups"></a>Jak długo zachować kopiach zapasowych?
-Każdej kopii zapasowej bazy danych SQL ma okres przechowywania, która jest oparta na [warstwy usług](sql-database-service-tiers.md) bazy danych. Okres przechowywania bazy danych w:
+Każdej kopii zapasowej bazy danych SQL ma okres przechowywania, opiera się na warstwie usług bazy danych, która różni się między [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md). 
 
+
+### <a name="database-retention-for-dtu-based-purchasing-model"></a>Przechowywanie bazy danych na podstawie jednostek dtu w warstwie model kupna
+Okres przechowywania bazy danych w model kupna jednostek dtu w warstwie zależy od warstwy usług. Okres przechowywania dla bazy danych dla:
 
 * Warstwy usług podstawowa wynosi 7 dni.
 * Standardowa usługa warstwa jest 35 dni.
@@ -63,7 +66,13 @@ Usunięcie bazy danych, bazy danych SQL przechowuje kopie zapasowe w taki sam sp
 
 > [!IMPORTANT]
 > Usunięcie serwera Azure SQL hostującym bazy danych SQL, wszystkie bazy danych, które należą do tego serwera, również zostaną usunięte i nie może zostać odzyskany. Nie można przywrócić usuniętego serwera.
-> 
+
+### <a name="database-retention-for-the-vcore-based-purchasing-model-preview"></a>Przechowywanie bazy danych na podstawie vCore model kupna (wersja zapoznawcza)
+
+Magazyn kopii zapasowych bazy danych jest przydzielony do obsługi punktu w czasie przywracania (PITR) i długi okres przechowywania STYLEM możliwościach bazy danych SQL. Ta pamięć masowa jest przydzielony osobno dla każdej bazy danych i rozliczane jako dwa osobne na bazę danych opłat. 
+
+- **PITR**: jedna baza danych, kopie zapasowe są kopiowane do magazynu RA-GRS są automatycznie. Rozmiar magazynu zwiększa dynamicznie w miarę tworzenia nowych kopii zapasowych.  Magazyn jest używany przez tygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe oraz kopie zapasowe dzienników transakcji kopiowane co 5 minut. Użycia magazynu zależy szybkość zmian w bazie danych i okresu przechowywania. Można skonfigurować okres przechowywania osobne dla każdej bazy danych od 7 do 35 dni. Kwota minimalna magazynu równy 1 x rozmiar danych jest dostarczany bez dodatkowych opłat. Dla baz danych ta wartość jest wystarczająca do przechowywania kopii zapasowych 7 dni. Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **Od lewej do prawej**: baza danych SQL udostępnia opcję konfigurowania długoterminowego przechowywania tworzenia pełnych kopii zapasowych maksymalnie 10 lat. Jeśli od lewej do prawej jest włączona, kopie zapasowe te są przechowywane w magazynie RA-GRS automatycznie, ale można kontrolować, jak często kopie zapasowe są kopiowane. Aby spełnić wymagania zgodności różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczne i roczne. Ta konfiguracja określi, ile miejsca do magazynowania, które będą używane do tworzenia kopii zapasowych od lewej do prawej. Kalkulator cen od lewej do prawej służy do szacowania kosztów magazynowania od lewej do prawej. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>Jak rozszerzyć okres przechowywania kopii zapasowej?
 

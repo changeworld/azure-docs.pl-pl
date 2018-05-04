@@ -1,25 +1,25 @@
 ---
-title: "Zrozumienie przepływu kodu uwierzytelniania OpenID Connect w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób użycia wiadomości HTTP do autoryzowania dostępu do aplikacji sieci web i interfejsów API sieci web w dzierżawie przy użyciu usługi Azure Active Directory i OpenID Connect."
+title: Zrozumienie przepływu kodu uwierzytelniania OpenID Connect w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób użycia wiadomości HTTP do autoryzowania dostępu do aplikacji sieci web i interfejsów API sieci web w dzierżawie przy użyciu usługi Azure Active Directory i OpenID Connect.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
-ms.author: dastrock
+ms.date: 04/17/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a813d73dc8a80c46e1b7500ec72ccb2a47bc6d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d9593aad789a9888c32297d634ba19e669bd461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autoryzacja dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect i Azure Active Directory
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) to warstwa proste tożsamości oparty na protokole OAuth 2.0. OAuth 2.0 definiuje mechanizmy do użycia **tokenów dostępu** dostęp do chronionych zasobów, ale nie definiują standardowe metody w celu zapewnienia informacji o tożsamości. OpenID Connect implementuje uwierzytelnianie jako rozszerzenie procesu autoryzacji OAuth 2.0. Zawiera informacje na temat użytkownika końcowego w formie `id_token` weryfikuje tożsamość użytkownika i udostępnia informacje podstawowe profilu użytkownika.
@@ -73,7 +73,7 @@ Dlatego przykładowe żądanie będzie wyglądać następująco:
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=id_token
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&redirect_uri=http%3A%2F%2Flocalhost%3a12345
 &response_mode=form_post
 &scope=openid
 &state=12345
@@ -82,15 +82,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Dzierżawy |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości to identyfikatory dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależny od dzierżawcy |
+| dzierżawa |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości to identyfikatory dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależny od dzierżawcy |
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania z usługą Azure AD. To można znaleźć w portalu Azure. Kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, wybierz aplikację i zlokalizuj identyfikator aplikacji na stronie aplikacji. |
 | response_type |Wymagane |Musi zawierać `id_token` OpenID Connect logowaniu.  Może również obejmować innych response_types, takich jak `code`. |
-| Zakres |Wymagane |Rozdzieloną spacjami listę zakresów.  Dla protokołu OpenID Connect, musi zawierać zakres `openid`, co przekłada się uprawnienie "Logowanie się w" w zgody interfejsu użytkownika.  Można również użyć innych zakresów w tym żądaniu żądanych zgody. |
+| scope |Wymagane |Rozdzieloną spacjami listę zakresów.  Dla protokołu OpenID Connect, musi zawierać zakres `openid`, co przekłada się uprawnienie "Logowanie się w" w zgody interfejsu użytkownika.  Można również użyć innych zakresów w tym żądaniu żądanych zgody. |
 | Identyfikator jednorazowy |Wymagane |Wartość zawarte w żądaniu wygenerowany przez aplikację, który znajduje się w wynikowym `id_token` jako oświadczenia.  Aplikacja może zweryfikować tę wartość, aby ograniczyć ataków powtórzeń tokenów.  Wartość jest zazwyczaj losowy unikatowy ciąg lub identyfikator GUID, który może służyć do identyfikowania pochodzenia żądania. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania.  Go musi dokładnie pasować redirect_uris, który został zarejestrowany w portalu, z wyjątkiem musi być zakodowane w adresie url. |
-| response_mode |Zalecane |Określa metodę, które mają być używane do odesłania wynikowy authorization_code do aplikacji.  Obsługiwane wartości to `form_post` dla *HTTP post formularza* lub `fragment` dla *fragmentu adresu URL*.  Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post` zapewnienie najbardziej bezpieczny transfer tokenów do aplikacji. |
+| response_mode |Zalecane |Określa metodę, które mają być używane do odesłania wynikowy authorization_code do aplikacji.  Obsługiwane wartości to `form_post` dla *HTTP post formularza* i `fragment` dla *fragmentu adresu URL*.  Dla aplikacji sieci web, zaleca się używanie `response_mode=form_post` zapewnienie najbardziej bezpieczny transfer tokenów do aplikacji. Domyślnie, jeśli `response_mode` nie jest dołączana, jest `fragment`.|
 | state |Zalecane |Wartość zawarte w żądaniu, który jest zwracany w odpowiedzi tokenu.  Można go ciągiem zawartość, która ma.  Losowo generowany unikatową wartość jest zazwyczaj używana w przypadku [zapobieganie fałszerstwie żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12).  Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widok, które były na. |
-| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.  Obecnie jedynymi prawidłowymi wartościami są "login", "none", "wyrazić zgodę".  `prompt=login`Wymusza na użytkowniku, aby wprowadzić swoje poświadczenia w tym żądaniu Negacja jednokrotnego.  `prompt=none`jest to odwrotność wzorca - gwarantuje, że użytkownik nie zobaczy jakiejkolwiek monitu interakcyjnego.  Jeśli żądanie nie można ukończyć w trybie dyskretnym za pośrednictwem jednokrotnego, punkt końcowy zwraca błąd.  `prompt=consent`Wyzwalacze uwierzytelniania OAuth zgoda okna dialogowego po użytkownik się zaloguje, użytkownikowi uprawnienia do aplikacji. |
+| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.  Obecnie jedynymi prawidłowymi wartościami są "login", "none", "wyrazić zgodę".  `prompt=login` Wymusza na użytkowniku, aby wprowadzić swoje poświadczenia w tym żądaniu Negacja jednokrotnego.  `prompt=none` jest to odwrotność wzorca - gwarantuje, że użytkownik nie zobaczy jakiejkolwiek monitu interakcyjnego.  Jeśli żądanie nie można ukończyć w trybie dyskretnym za pośrednictwem jednokrotnego, punkt końcowy zwraca błąd.  `prompt=consent` Wyzwalacze uwierzytelniania OAuth zgoda okna dialogowego po użytkownik się zaloguje, użytkownikowi uprawnienia do aplikacji. |
 | login_hint |opcjonalne |Można wstępnie wypełnić pole adresu e-mail/nazwa użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika wcześniejsze.  Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, już o wyodrębnić nazwy użytkownika z poprzedniej logowania przy użyciu `preferred_username` oświadczeń. |
 
 W tym momencie użytkownik jest proszony o wprowadzenie poświadczeń i wykonania uwierzytelnienia.
@@ -99,8 +99,8 @@ W tym momencie użytkownik jest proszony o wprowadzenie poświadczeń i wykonani
 Przykładowa odpowiedź, po uwierzytelnieniu użytkownika, może wyglądać następująco:
 
 ```
-POST /myapp/ HTTP/1.1
-Host: localhost
+POST / HTTP/1.1
+Host: localhost:12345
 Content-Type: application/x-www-form-urlencoded
 
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
@@ -115,8 +115,8 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 Odpowiedzi na błędy mogą być również wysyłane do `redirect_uri` dzięki aplikacji można je odpowiednią obsługę:
 
 ```
-POST /myapp/ HTTP/1.1
-Host: localhost
+POST / HTTP/1.1
+Host: localhost:12345
 Content-Type: application/x-www-form-urlencoded
 
 error=access_denied&error_description=the+user+canceled+the+authentication
@@ -134,7 +134,7 @@ W poniższej tabeli opisano różne kody błędów, które mogą być zwracane w
 | --- | --- | --- |
 | invalid_request |Błąd protokołu, takie jak brak wymaganego parametru. |Usuń i ponownie prześlij żądanie. Jest to błąd programowanie i zwykle zostanie przechwycony podczas testowania początkowej. |
 | unauthorized_client |Aplikacja kliencka nie jest dozwolone przy kod autoryzacji żądania. |Dzieje się tak zazwyczaj, gdy aplikacja kliencka nie jest zarejestrowany w usłudze Azure AD lub nie została dodana do dzierżawy usługi Azure AD przez użytkownika. Aplikację można monitować użytkownika z instrukcji dotyczących instalowania aplikacji i dodanie go do usługi Azure AD. |
-| ACCESS_DENIED |Odmowa zgody właściciel zasobu |Aplikacja kliencka powiadamiać użytkownika, którego nie można kontynuować, chyba że użytkownik zgadza. |
+| access_denied |Odmowa zgody właściciel zasobu |Aplikacja kliencka powiadamiać użytkownika, którego nie można kontynuować, chyba że użytkownik zgadza. |
 | unsupported_response_type |Serwer autoryzacji w żądaniu nie obsługuje typ odpowiedzi. |Usuń i ponownie prześlij żądanie. Jest to błąd programowanie i zwykle zostanie przechwycony podczas testowania początkowej. |
 | server_error |Serwer napotkał nieoczekiwany błąd. |Ponów żądanie. Te błędy może wynikać z tymczasowego warunków. Aplikacja kliencka może wyjaśnić użytkownikowi, że odpowiedzi jest opóźnione z powodu tymczasowy błąd. |
 | temporarily_unavailable |Serwer jest tymczasowo zbyt zajęty, aby obsłużyć żądania. |Ponów żądanie. Aplikacja kliencka może wyjaśnić użytkownikowi, że odpowiedzi jest opóźniony ze względu na tymczasowy warunek. |
@@ -174,10 +174,10 @@ Jeśli przekierowanie użytkownika do `end_session_endpoint`, usługi Azure AD c
 1. Przejdź do [portalu Azure](https://portal.azure.com).
 2. Wybierz usługi Active Directory, klikając na Twoim koncie w prawym górnym rogu strony.
 3. W panelu nawigacyjnym po lewej stronie wybierz opcje **usługi Azure Active Directory**, a następnie wybierz **rejestracji aplikacji** i wybierz aplikację.
-4. Polecenie **właściwości** i Znajdź **adresu URL wylogowania** pola tekstowego. 
+4. Polecenie **ustawienia**, następnie **właściwości** i Znajdź **adresu URL wylogowania** pola tekstowego. 
 
 ## <a name="token-acquisition"></a>Token nabycia
-Wiele aplikacji sieci web należy nie tylko zalogować użytkownika, ale także uzyskać dostęp do usługi sieci web w imieniu użytkownika, że w trybie OAuth. W tym scenariuszu łączy OpenID Connect do uwierzytelniania użytkowników podczas pobierania jednocześnie `authorization_code` można pobrać `access_tokens` przy użyciu przepływu kodu autoryzacji OAuth.
+Wiele aplikacji sieci web należy nie tylko zalogować użytkownika, ale także uzyskać dostęp do usługi sieci web w imieniu użytkownika, że w trybie OAuth. W tym scenariuszu łączy OpenID Connect do uwierzytelniania użytkowników podczas pobierania jednocześnie `authorization_code` można pobrać `access_tokens` przy użyciu [przepływu kodu autoryzacji OAuth](active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).
 
 ## <a name="get-access-tokens"></a>Pobieranie tokenów dostępu
 Uzyskanie tokenów dostępu, należy zmodyfikować żądanie logowania z powyżej:
@@ -188,8 +188,8 @@ Uzyskanie tokenów dostępu, należy zmodyfikować żądanie logowania z powyże
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
 &response_type=id_token+code
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered Redirect Uri, url encoded
-&response_mode=form_post                              // form_post', or 'fragment'
+&redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
+&response_mode=form_post                              // `form_post' or 'fragment'
 &scope=openid
 &resource=https%3A%2F%2Fservice.contoso.com%2F                                     
 &state=12345                                          // Any value, provided by your app
@@ -212,7 +212,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Parametr | Opis |
 | --- | --- |
 | żądaniu |`id_token` Żądany przez aplikację. Można użyć `id_token` do weryfikacji tożsamości użytkownika i rozpocząć sesję użytkownika. |
-| Kod |Authorization_code, żądany przez aplikację. Aplikację można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Authorization_codes są krótkie żyła i zwykle wygaśnie po około 10 minut. |
+| kod |Authorization_code, żądany przez aplikację. Aplikację można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Authorization_codes są krótkie żyła i zwykle wygaśnie po około 10 minut. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikacja powinna Sprawdź, czy wartości stan żądania i odpowiedzi są identyczne. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
@@ -233,4 +233,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Opis swoje działania zalecane klienta i kody błędów można znaleźć [kody błędów dla błędów punktu końcowego autoryzacji](#error-codes-for-authorization-endpoint-errors).
 
-Po ich zaakceptujesz autoryzacji `code` i `id_token`, można zalogować użytkownika i uzyskać tokeny dostępu w ich imieniu.  Aby zalogować się użytkownik, musisz zweryfikować `id_token` dokładnie tak jak opisano powyżej. Aby uzyskać tokenów dostępu, można wykonać kroki opisane w sekcji "Użyj kodu autoryzacji do żądania tokenu dostępu" naszych [dokumentacji protokołu OAuth](active-directory-protocols-oauth-code.md).
+Po ich zaakceptujesz autoryzacji `code` i `id_token`, można zalogować użytkownika i uzyskać tokeny dostępu w ich imieniu.  Aby zalogować się użytkownik, musisz zweryfikować `id_token` dokładnie tak jak opisano powyżej. Aby uzyskać tokenów dostępu, można wykonać kroki opisane w sekcji "Użyj kodu autoryzacji do żądania tokenu dostępu" naszych [dokumentacji protokołu OAuth](active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).

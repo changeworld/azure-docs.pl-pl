@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: b7529b0942cd86b0d9e657d8d0f61313aa7f0a66
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Samouczek: Integracji Azure Active Directory z Clever
 
@@ -110,10 +110,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://clever.com/in/<companyname>`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://clever.com/<companyname>`
+    b. W **identyfikator** tekstowym, wpisz adres URL: `https://clever.com/oauth/saml/metadata.xml`
 
     > [!NOTE]
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) uzyskać te wartości.
+    > Zaloguj się na wartość adresu URL nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) aby zyskać tę wartość.
 
 4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
     
@@ -129,7 +129,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu  | Wartość atrybutu |
     | --------------- | -------------------- |
-    | clever.student.Credentials.District\_nazwy użytkownika  | user.userprincipalname |
+    | clever.Teacher.Credentials.district_username|user.userprincipalname|
+    | clever.student.Credentials.district_username| user.userprincipalname |
     | Imię  | user.givenname |
     | nazwisko  | user.surname |
 
@@ -157,19 +158,22 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Logowania błyskawicznych](./media/active-directory-saas-clever-tutorial/ic798984.png "błyskawicznych logowania")
 
+    > [!NOTE]
+    > Zanim można przetestować logowania jednokrotnego, musisz skontaktować się [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) do włączenia funkcji logowania jednokrotnego Office 365 w wewnętrznej.
+
 10. Na **błyskawicznych logowania** wykonaj następujące czynności:
-      
+    
       ![Logowania błyskawicznych](./media/active-directory-saas-clever-tutorial/ic798985.png "błyskawicznych logowania")
-      
+    
       a. Typ **adres URL logowania**.
-      
+    
       >[!NOTE]
       >**Adres URL logowania** jest niestandardowa wartość. Skontaktuj się z [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) aby zyskać tę wartość.
-      
+    
       b. Jako **systemu tożsamości**, wybierz pozycję **usług AD FS**.
 
       c. W **adres URL metadanych** pole tekstowe, Wklej **adres Url metadanych Federacji aplikacji** wartość, która została skopiowana z portalu Azure.
-      
+    
       d. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD

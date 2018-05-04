@@ -3,7 +3,7 @@ title: Tworzenie sieci wirtualnej platformy Azure (klasyczną) z wieloma podsiec
 description: Dowiedz się, jak utworzyć sieć wirtualną (klasyczne) z wieloma podsieciami na platformie Azure.
 services: virtual-network
 documentationcenter: ''
-author: genli
+author: genlin
 manager: cshepard
 editor: ''
 tags: azure-service-management
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: f9a3788ae13fe198cd40eceed78a407d7f0439a9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c41a1057bb87c70362477d221b69ca3f5137dec4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Tworzenie sieci wirtualnej (wdrożenia klasyczne) z wieloma podsieciami
 
@@ -48,7 +48,7 @@ Można utworzyć sieci wirtualnej (wdrożenia klasyczne) przy użyciu [portalu A
     |---|---|
     |Name (Nazwa)|myVnet|
     |Przestrzeń adresowa|10.0.0.0/16|
-    |Nazwa podsieci|Publiczne|
+    |Nazwa podsieci|Public|
     |Zakres adresów podsieci|10.0.0.0/24|
     |Grupa zasobów|Pozostaw **Utwórz nowy** zaznaczone, a następnie wprowadź **myResourceGroup**.|
     |Subskrypcji i lokalizacji|Wybierz subskrypcji i lokalizacji.

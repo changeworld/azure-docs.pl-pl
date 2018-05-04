@@ -1,30 +1,30 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja usługi Azure Policy"
+title: Dokumentacja usługi Azure Policy
 metadata:
-  title: "Dokumentacja usługi Azure Policy — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-  description: "Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i akcje dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów."
+  title: Dokumentacja usługi Azure Policy — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  description: Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i akcje dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
   services: azure-policy
-  author: czeumault
-  manager: carolz
+  author: DCtheGeek
+  manager: carmonm
   ms.service: azure-policy
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/18/2017
-  ms.author: carolz
-  ms.openlocfilehash: 6082601b46ab4b420575fbc4d04b176c96225f72
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.author: dacoulte
+  ms.openlocfilehash: 0ca9efe0c1c1871265da127acfd76e90126b59ad
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
-  description: "Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i akcje dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów."
+  description: Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i akcje dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure."
+    text: Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.
   - type: list
     style: icon48
     items:
@@ -43,21 +43,21 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure."
+    text: Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/azure-policy/create-manage-policy\">Tworzenie zasad platformy Azure i zarządzanie nimi</a>"
-- title: "Przykłady"
+    - html: <a href="/azure/azure-policy/create-manage-policy">Tworzenie zasad platformy Azure i zarządzanie nimi</a>
+- title: Przykłady
   items:
   - type: paragraph
-    text: "Poniższe przykłady kodu JSON pomogą w tworzeniu definicji zasad na platformie Azure."
+    text: Poniższe przykłady kodu JSON pomogą w tworzeniu definicji zasad na platformie Azure.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
-- title: "Odwołanie"
+- title: Dokumentacja
   items:
   - type: list
     style: cards

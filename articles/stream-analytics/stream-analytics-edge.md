@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9a9608825cf041007c000729becb34e9a3063f92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Usługa Azure Stream Analytics na krawędzi IoT (wersja zapoznawcza)
 
@@ -60,11 +60,10 @@ Możesz wykonać [tego samouczka krok po kroku](https://docs.microsoft.com/azure
 
 
 #### <a name="create-an-asa-edge-job"></a>Utwórz zadanie krawędzi ASA
-1. W portalu Azure należy utworzyć nowe "Zadanie usługi analiza strumienia". [Bezpośredniego łącza do tworzenia nowego zadania ASA tutaj](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
-
 > [!Note]
-> Można tworzyć zadania krawędzi we wszystkich regionach obsługiwane przez ASA, **w regionie "Zachodnie stany USA 2", z wyjątkiem**.
-> To ograniczenie zostanie wkrótce usunięte.
+> Ten samouczek koncentruje się na utworzenie zadania ASA przy użyciu portalu Azure. Możesz również [umożliwiają utworzenie zadania krawędzi ASA dodatku Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+
+1. W portalu Azure należy utworzyć nowe "Zadanie usługi analiza strumienia". [Bezpośredniego łącza do tworzenia nowego zadania ASA tutaj](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
 2. Na ekranie tworzenia wybierz **krawędzi** jako **środowisko macierzyste** (patrz poniżej) ![Tworzenie zadania](media/stream-analytics-edge/ASAEdge_create.png)
 3. Definicji zadania
@@ -147,7 +146,6 @@ Jednak następujące funkcje nie są jeszcze obsługiwane krawędzi zadań:
 * Funkcje uczenia Maszynowego Azure.
 * Przy użyciu więcej niż 14 wartości zagregowanych w jednym kroku.
 * Format AVRO wejścia/wyjścia. W tej chwili obsługiwane są tylko CSV i JSON.
-* Kompresja danych wejściowych JSON.
 * Następujące operatory SQL:
     * AnomalyDetection
     * Operatory dane geograficzne:
@@ -210,6 +208,7 @@ Aby uzyskać dodatkową pomoc, spróbuj [forum usługi Azure Stream Analytics](h
 * [Więcej informacji na temat krawędzi Iot Azure](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA na krawędzi IoT — samouczek](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [Wyślij opinię do zespołu za pomocą tej ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Tworzenie zadania Stream Analytics krawędzi za pomocą narzędzi Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

@@ -1,19 +1,19 @@
 ---
 title: Monitor klastra Azure DC/OS - Dynatrace
-description: "Monitorowanie klastra usługi kontenera platformy Azure DC/OS z Dynatrace. Wdrażanie Dynatrace OneAgent przy użyciu pulpitu nawigacyjnego DC/OS."
+description: Monitorowanie klastra usługi kontenera platformy Azure DC/OS z Dynatrace. Wdrażanie Dynatrace OneAgent przy użyciu pulpitu nawigacyjnego DC/OS.
 services: container-service
 author: MartinGoodwell
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 52a8a05f050017f5062ff986bad7ec2e6a650aa5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3d1bfc3bb61781d487c40831edd5da6fcb5a7df9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Monitor klastra usługi kontenera platformy Azure DC/OS z Dynatrace SaaS/zarządzane
 
@@ -27,12 +27,12 @@ Na poniższej ilustracji przedstawiono Dynatrace interfejsu użytkownika:
 ![Dynatrace interfejsu użytkownika](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
-[Wdrażanie](container-service-deployment.md) i [połączyć](./../container-service-connect.md) klastrowi konfigurowane za pomocą usługi kontenera platformy Azure. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) skonfigurować konto Dynatrace SaaS.  
+[Wdrażanie](container-service-deployment.md) i [połączyć](./../container-service-connect.md) klastrowi konfigurowane za pomocą usługi kontenera platformy Azure. Przegląd [interfejsu użytkownika platformy Marathon](container-service-mesos-marathon-ui.md). Przejdź do [ https://www.dynatrace.com/trial/ ](https://www.dynatrace.com/trial/) skonfigurować konto Dynatrace SaaS.  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Konfigurowanie wdrożenia Dynatrace przy użyciu platformy Marathon
 Te kroki pokazują, jak skonfigurować i wdrożyć aplikacje Dynatrace do klastra przy użyciu platformy Marathon.
 
-1. Dostęp za pośrednictwem interfejsu użytkownika platformy DC/OS [http://localhost:80 /](http://localhost:80/). Raz w Interfejsie użytkownika DC/OS, przejdź do **Universe** karcie, a następnie wyszukaj **Dynatrace**.
+1. Dostęp za pośrednictwem interfejsu użytkownika platformy DC/OS [ http://localhost:80/ ](http://localhost:80/). Raz w Interfejsie użytkownika DC/OS, przejdź do **Universe** karcie, a następnie wyszukaj **Dynatrace**.
 
     ![Dynatrace w Uniwersum DC/OS](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
@@ -52,6 +52,6 @@ Te kroki pokazują, jak skonfigurować i wdrożyć aplikacje Dynatrace do klastr
 
     ![Konfiguracja Dynatrace w DC/OS Universe-wystąpienia](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zainstalowaniu pakietu przejdź z powrotem do pulpitu nawigacyjnego Dynatrace. Metryki użycia różnych kontenerów można sprawdzić w ramach klastra. 

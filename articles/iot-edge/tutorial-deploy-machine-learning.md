@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3d3a271bcdd5c507125b8b1a5482f833607a5a78
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0a508f6430bd97e7c76aee686f4837acf246ad3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako moduł krawędzi IoT — w wersji preview
 
@@ -25,7 +25,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Utwórz moduł usługi Azure Machine Learning
 > * Wypychanie kontener modułu do rejestru kontenera platformy Azure
 > * Wdrażanie usługi Azure Machine Learning module do Twojego urządzenia IoT krawędzi
-> * Widok wygenerowany danych
+> * Wyświetlanie wygenerowanych danych
 
 Moduł usługi Azure Machine Learning, który można utworzyć w tym samouczku odczytuje środowiska dane generowane przez urządzenie i etykiet komunikatów jako anomalia, czy nie. 
 
@@ -33,8 +33,8 @@ Moduł usługi Azure Machine Learning, który można utworzyć w tym samouczku o
 
 * Urządzenie brzegowe IoT Azure utworzoną w pierwszym samouczku lub Szybki Start.
 * Parametry połączenia Centrum IoT Centrum IoT, która łączy się z urządzenia IoT krawędzi.
-* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku. 
-* Moduł zarządzania dla usługi Azure ML na tym komputerze. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami [konfiguracji zarządzania modelu](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration).
+* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku. 
+* Moduł zarządzania dla usługi Azure ML na tym komputerze. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami [konfiguracji zarządzania modelu](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration).
 
 Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM. 
 
@@ -66,9 +66,9 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i przechowywane w rep
 6. Wybierz **machinelearningmodule**
 7. Obecnie masz pełny obraz ścieżka kontenera. Zanotuj tę ścieżkę obrazu w następnej sekcji. Powinien wyglądać następująco: **.azureacr.io/machinelearningmodule:1 < registry_name >**
 
-## <a name="add-registry-credentials-to-your-edge-device"></a>Dodaj rejestru poświadczenia na urządzeniu krawędzi
+## <a name="add-registry-credentials-to-your-edge-device"></a>Dodawanie poświadczeń rejestru na urządzeniu usługi Edge
 
-Dodaj poświadczenia do rejestru do środowiska wykonawczego Edge na komputerze, na którym są uruchomione Twoje urządzenie brzegowe. To polecenie umożliwia dostęp środowiska uruchomieniowego do ściągnięcia kontenera.
+Dodaj poświadczenia dla rejestru do środowiska uruchomieniowego usługi Edge na komputerze, na którym jest uruchomione urządzenie usługi Edge. To polecenie umożliwia dostęp środowiska uruchomieniowego do ściągnięcia kontenera.
 
 Linux:
    ```cmd
@@ -86,17 +86,17 @@ W systemie Windows:
 1. Przejdź do pozycji **IoT Edge (wersja zapoznawcza)** i wybierz urządzenie usługi IoT Edge.
 1. Wybierz opcję **Ustaw moduły**.
 1. Jeśli moduł tempSensor już wcześniej wdrożony na urządzeniu IoT krawędzi, może automatycznego wypełniania. Jeśli nie jest ona już na liście modułów, należy go dodać.
-    1. Wybierz **Dodaj moduł krawędzi IoT**.
-    2. W **nazwa** wprowadź `tempSensor`.
-    3. W **identyfikatora URI obrazu** wprowadź `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
+    1. Wybierz pozycję **Dodaj moduł usługi IoT Edge**.
+    2. W polu **Nazwa** wprowadź wartość `tempSensor`.
+    3. W polu **Identyfikator URI obrazu** wprowadź wartość `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
     4. Wybierz pozycję **Zapisz**.
 1. Dodaj moduł, który został utworzony uczenia maszynowego.
-    1. Wybierz **Dodaj moduł krawędzi IoT**.
+    1. Wybierz pozycję **Dodaj moduł usługi IoT Edge**.
     1. W **nazwa** wprowadź `machinelearningmodule`
     1. W **obrazu** wprowadź swój adres obrazu, na przykład `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Wybierz pozycję **Zapisz**.
 1. W kroku **Dodawanie modułów** wybierz opcję **Dalej**.
-1. W **Określ tras** kroku, skopiuj kod JSON poniżej w polu tekstowym. Pierwszy trasy transportu wiadomości z czujnika temperatury modułu nauczania komputera za pośrednictwem punktu końcowego "amlInput", która jest punkt końcowy, który Użyj wszystkich modułów usługi Azure Machine Learning. Drugi trasy transportu wiadomości z modułu nauczania maszyny do Centrum IoT. W tej trasy punktu końcowego, który umożliwia dane wyjściowe wszystkich modułów usługi Azure Machine Learning jest "amlOutput" i "powyżej$" oznacza Centrum IoT. 
+1. W kroku **Określanie tras** skopiuj poniższe dane JSON do pola tekstowego. Pierwszy trasy transportu wiadomości z czujnika temperatury modułu nauczania komputera za pośrednictwem punktu końcowego "amlInput", która jest punkt końcowy, który Użyj wszystkich modułów usługi Azure Machine Learning. Drugi trasy transportu wiadomości z modułu nauczania maszyny do Centrum IoT. W tej trasy punktu końcowego, który umożliwia dane wyjściowe wszystkich modułów usługi Azure Machine Learning jest "amlOutput" i "powyżej$" oznacza Centrum IoT. 
 
     ```json
     {
@@ -111,7 +111,7 @@ W systemie Windows:
 1. W kroku **Przegląd szablonu** wybierz opcję **Prześlij**. 
 1. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**.  Powinien zostać wyświetlony nowy **machinelearningmodule** uruchomiona wraz z **tempSensor** modułu i modułów środowiska uruchomieniowego IoT krawędzi.
 
-## <a name="view-generated-data"></a>Widok wygenerowany danych
+## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
 Można wyświetlić komunikaty urządzenia do chmury, które urządzenia IoT krawędzi wysyła przy użyciu [explorer Centrum IoT](https://github.com/azure/iothub-explorer) lub rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code. 
 

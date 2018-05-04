@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7c36d2ead9ca9e1ebd08d3d5a9c4901e46d42c00
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza dostępowi do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko raz przy użyciu jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład wpisz hasło) po raz drugi.
@@ -75,7 +75,7 @@ W obu przypadkach poświadczenia są przechowywane w zaszyfrowanej stanu w katal
 Na podstawie hasła logowania jednokrotnego polega na rozszerzenia przeglądarki, aby bezpiecznie uzyskać informacje specyficzne dla użytkownika i aplikacji z usługi Azure AD i zastosować je do usługi. Większość aplikacji SaaS innych firm, które są obsługiwane przez usługę Azure AD obsługuje tę funkcję.
 
 Logowanie Jednokrotne opartego na hasłach można przeglądarki przez użytkownika końcowego:
-* Internet Explorer 8, 9, 10, 11 — w systemie Windows 7 lub nowszy
+* Internet Explorer 11 — w systemie Windows 7 lub nowszy
 * Krawędź w systemie Windows 10 Anniversary Edition lub nowszy 
 * Chrome — W systemie Windows 7 lub nowszy oraz System MacOS x lub nowszych
 * Firefox 26.0 lub później — w systemie Windows XP z dodatkiem SP2 lub nowszy oraz w systemie Mac OS X 10,6 lub nowszy

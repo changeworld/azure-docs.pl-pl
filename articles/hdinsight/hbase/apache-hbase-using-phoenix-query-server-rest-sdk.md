@@ -1,25 +1,23 @@
 ---
-title: "Phoenix kwerendy serwera REST SDK — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: 
+title: Phoenix kwerendy serwera REST SDK — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: ''
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 66ff65a5b74294fe1a8f4373102160a98cd7a8c3
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 4adc0cf81a36307369fa9f4eecd281a93ccba98b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix kwerendy serwera REST SDK
 
@@ -79,12 +77,12 @@ Poniżej przedstawiono niektóre właściwości odsetek:
 
 | Właściwość | Opis |
 | -- | -- |
-| AutoCommit | Wartość logiczna wskazująca czy `autoCommit` jest włączona dla Phoenix transakcji. |
+| Autozatwierdzania | Wartość logiczna wskazująca czy `autoCommit` jest włączona dla Phoenix transakcji. |
 | Tylko do odczytu | Wartość logiczna wskazująca, czy połączenie jest tylko do odczytu. |
 | TransactionIsolation | Liczba całkowita wskazująca poziom izolacji transakcji na specyfikacji JDBC — zobacz poniższą tabelę.|
 | Wykaz | Nazwa katalogu do użycia podczas pobierania właściwości połączenia. |
 | Schemat | Nazwa schematu do użycia podczas pobierania właściwości połączenia. |
-| IsDirty | Wartość logiczna wskazująca, czy właściwości zostały zmienione. |
+| Właściwości IsDirty | Wartość logiczna wskazująca, czy właściwości zostały zmienione. |
 
 Poniżej przedstawiono `TransactionIsolation` wartości:
 

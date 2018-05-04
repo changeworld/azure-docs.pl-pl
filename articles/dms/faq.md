@@ -1,21 +1,21 @@
 ---
-title: "Często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure do przeprowadzania migracji bazy danych."
+title: Często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure do przeprowadzania migracji bazy danych.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure
 W tym artykule wymieniono często zadawane pytania dotyczące korzystania z usługi migracji bazy danych Azure oraz powiązanych odpowiedzi.
@@ -48,11 +48,11 @@ Podczas migracji typowe, prosty bazy danych możesz:
 ### <a name="q-what-are-the-prerequisites-for-using-the-azure-database-migration-service"></a>Q. Jakie są wymagania wstępne dotyczące korzystania z usługi migracji bazy danych Azure?
 Istnieje kilka wymagań wstępnych dotyczących upewnić, że usługa migracji bazy danych Azure przeprowadzane bezproblemowego podczas przeprowadzania migracji bazy danych. Niektóre wymagania wstępne są stosowane we wszystkich scenariuszach (pary źródłowy i docelowy), obsługiwane przez usługę, podczas gdy inne wymagania wstępne są unikatowe dla danego scenariusza.
 Azure wymagania wstępne usługi migracji bazy danych, które są wspólne dla wszystkich obsługiwane scenariusze migracji obejmują konieczność:
-- Tworzenie sieci Wirtualnej dla usługi Azure migracji bazy danych przy użyciu modelu wdrażania usługi Azure Resource Manager, który zapewnia połączenie lokacja lokacja z serwerami lokalnymi źródła przy użyciu [ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Upewnij się, że Twoje Azure (VNET) sieciowej grupy zabezpieczeń sieci wirtualnej reguły blok następujący komunikat porty 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółów na filtrowanie ruchu NSG sieci Wirtualnej Azure, zobacz artykuł [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg).
+- Tworzenie sieci Wirtualnej dla usługi Azure migracji bazy danych przy użyciu modelu wdrażania usługi Azure Resource Manager, który zapewnia połączenie lokacja lokacja z serwerami lokalnymi źródła przy użyciu [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Upewnij się, że Twoje Azure (VNET) sieciowej grupy zabezpieczeń sieci wirtualnej reguły blok następujący komunikat porty 443, 53, 9354, 445, 12000. Aby uzyskać więcej szczegółów na filtrowanie ruchu NSG sieci Wirtualnej Azure, zobacz artykuł [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Podczas korzystania z urządzenia zapory przed baz danych z źródła, może być konieczne dodanie reguły zapory, aby umożliwić dostęp do bazy danych źródłowego do migracji z usługi migracji bazy danych Azure.
  
-Listę wszystkich wymagań wstępnych dotyczących konkurować scenariusze migracji przy użyciu usługi migracji bazy danych Azure, zobacz pokrewne samouczków w usłudze Azure bazy danych migracji [dokumentacji](https://docs.microsoft.com/en-us/azure/dms/dms-overview) na docs.microsoft.com.
+Listę wszystkich wymagań wstępnych dotyczących konkurować scenariusze migracji przy użyciu usługi migracji bazy danych Azure, zobacz pokrewne samouczków w usłudze Azure bazy danych migracji [dokumentacji](https://docs.microsoft.com/azure/dms/dms-overview) na docs.microsoft.com.
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>Q. Jak znaleźć adres IP dla usługi Azure bazy danych migracji, w którym można utworzyć listy dozwolonych dla reguł zapory umożliwiające dostęp do bazy danych źródłowego do migracji?
 Może być konieczne dodanie reguły zapory, dzięki czemu usługa migracji bazy danych Azure na dostęp do bazy danych źródłowego do migracji. Adres IP dla usługi jest dynamiczny, ale jeśli używasz Express Route sieci firmowej przypisano prywatnie ten adres. Najprostszym sposobem zidentyfikować odpowiedniego adresu IP, który jest Szukaj w tej samej grupie zasobów co elastycznie zasobu usługi migracji bazy danych Azure można znaleźć skojarzonego interfejsu sieciowego. Zazwyczaj nazwa zasobu interfejsu sieciowego rozpoczyna się od prefiksu karty Sieciowej i następuje znak unikatowy i numer sekwencji, przykład jj6tnztnmarpsskr82rbndyp karty Sieciowej. Po wybraniu tego zasobu interfejsu sieciowego, znajduje się adres IP, który musi być uwzględniony na liście dozwolonych Przegląd zasobów strony portalu Azure.
@@ -80,7 +80,7 @@ Możesz wykonać kilka rzeczy w celu przyspieszenia migracji bazy danych przy u�
 - Tymczasowo skalowania w górę docelowego wystąpienia bazy danych SQL Azure do warstwy Premium SKU podczas operacji migracji danych, aby zminimalizować ograniczenie, które bazy danych SQL Azure może mieć wpływ działań transferu danych, korzystając z jednostki SKU niższego poziomu.
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>Q. Sposób konfigurowania sieci wirtualnej platformy Azure
-Podczas wielu samouczki firmy Microsoft, które prowadzi użytkownika przez proces konfigurowania sieć Wirtualną platformy Azure, oficjalnej dokumentacji pojawia się w artykule [sieci wirtualnej Azure](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview).
+Podczas wielu samouczki firmy Microsoft, które prowadzi użytkownika przez proces konfigurowania sieć Wirtualną platformy Azure, oficjalnej dokumentacji pojawia się w artykule [sieci wirtualnej Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>Q. Dlaczego jest Moja usługa migracji bazy danych Azure niedostępna lub zatrzymana?
 Jeśli użytkownik jawnie zatrzymuje usługę migracji bazy danych Azure (DMS) lub jeśli usługa jest nieaktywna dla okresu 24 godzin, usługi będą znajdować się w zatrzymana lub auto stan wstrzymania. W każdym przypadku usługa będzie niedostępny i w stan zatrzymania.  Aby wznowić active migracji, należy ponownie uruchomić usługę.

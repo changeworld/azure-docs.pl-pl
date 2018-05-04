@@ -1,25 +1,25 @@
 ---
-title: "Bezpieczne sieci VPN platformy Azure bramy uwierzytelniania RADIUS z serwerem zasad Sieciowych uwierzytelniania wieloskładnikowego | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano integracji Azure bramy uwierzytelniania RADIUS z serwera NPS uwierzytelnianie wieloskładnikowe."
+title: Bezpieczne sieci VPN platformy Azure bramy uwierzytelniania RADIUS z serwerem zasad Sieciowych uwierzytelniania wieloskładnikowego | Dokumentacja firmy Microsoft
+description: W tym artykule opisano integracji Azure bramy uwierzytelniania RADIUS z serwera NPS uwierzytelnianie wieloskładnikowe.
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
 manager: willchen
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: f0d95cc0dabb253a72afdbc1bc518df882c4d861
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 665e1914f44d7c5e650a1b632d8b11c6d8a5931a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure z serwerem zasad Sieciowych uwierzytelnianie wieloskładnikowe 
 
@@ -50,7 +50,7 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkowników musi być w us
  
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2: Konfigurowanie zasad Sieciowych dla usługi Azure MFA
 
-1. Na serwerze NPS [zainstalować rozszerzenie serwera zasad Sieciowych dla usługi Azure MFA](../multi-factor-authentication/multi-factor-authentication-nps-extension.md#install-the-nps-extension).
+1. Na serwerze NPS [zainstalować rozszerzenie serwera zasad Sieciowych dla usługi Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
 2. Otwórz konsolę NSP, kliknij prawym przyciskiem myszy **klientów RADUIS**, a następnie wybierz **nowy**. Tworzenie klienta RADUIS przez określenie następujących ustawień:
 
     - **Przyjazna nazwa**: wpisz dowolną nazwę.
@@ -80,5 +80,5 @@ Aby włączyć uwierzytelnianie wieloskładnikowe, użytkowników musi być w us
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
-- [Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-nps-extension.md)
+- [Uwierzytelnianie wieloskładnikowe platformy Azure](../active-directory/authentication/multi-factor-authentication.md)
+- [Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-nps-extension.md)

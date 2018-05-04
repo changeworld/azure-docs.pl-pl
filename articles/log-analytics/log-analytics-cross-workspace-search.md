@@ -1,24 +1,24 @@
 ---
-title: "Wyszukiwanie w całym zasobów przy użyciu usługi Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak można wykonać zapytanie względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w ramach subskrypcji."
+title: Wyszukiwanie w całym zasobów przy użyciu usługi Azure Log Analytics | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak można wykonać zapytanie względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w ramach subskrypcji.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 5485b1634013c73b58932aafa6e17d636558715d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wyszukiwanie zasobów między dziennika w analizy dzienników  
 
@@ -30,7 +30,7 @@ Teraz można badać nie tylko przez wiele obszarów roboczych usługi Analiza dz
 Aby odwołać się do innego obszaru roboczego w kwerendzie użyć [ *obszaru roboczego* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identyfikator i dla aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identyfikator.  
 
 ### <a name="identifying-workspace-resources"></a>Identyfikowanie zasobów obszaru roboczego
-W poniższych przykładach pokazano zapytań przez obszar roboczy analizy dzienników, aby zwrócić podsumowanie liczby aktualizacje wymagane przez ich klasyfikacji z tabeli aktualizacji z obu bieżący obszar roboczy oraz innego obszaru roboczego o nazwie  *contosoretail it*. 
+W poniższych przykładach pokazano kwerendy między obszarami roboczymi analizy dzienników zwraca podsumowania Licznik aktualizacji z aktualizacja tabeli w obszarze roboczym o nazwie *contosoretail-it*. 
 
 Identyfikowanie obszaru roboczego można zakończonej co kilka sposobów:
 

@@ -1,6 +1,6 @@
 ---
-title: "Dostawca stanu sesji ASP.NET dla pamięci podręcznej | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i przechowywanie stanu sesji ASP.NET przy użyciu pamięci podręcznej Redis Azure"
+title: Dostawca stanu sesji ASP.NET dla pamięci podręcznej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i przechowywanie stanu sesji ASP.NET przy użyciu pamięci podręcznej Redis Azure
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 485375f2f2ffb83b7d0fdeef8daab5880a8bbc27
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: bb0c53433af8a679811f00bfff2efee94d211a24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Dostawca stanu sesji ASP.NET dla usługi Azure Redis Cache
-Pamięć podręczna Redis Azure udostępnia dostawcę stanu sesji, który służy do przechowywania Twojego stanu sesji w pamięci podręcznej zamiast w pamięci lub w bazie danych programu SQL Server. Aby użyć buforowania dostawcę stanu sesji, najpierw skonfigurować pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET dla pamięci podręcznej przy użyciu pakietu NuGet stanu sesji pamięci podręcznej Redis.
+Pamięć podręczna Redis Azure udostępnia dostawcę stanu sesji, który służy do przechowywania Twojego sesji stanu w pamięci z pamięci podręcznej Redis zamiast bazy danych programu SQL Server. Aby użyć buforowania dostawcę stanu sesji, najpierw skonfigurować pamięć podręczną, a następnie skonfiguruj aplikację ASP.NET dla pamięci podręcznej przy użyciu pakietu NuGet stanu sesji pamięci podręcznej Redis.
 
 Często nie jest praktyczne w aplikacji rzeczywistych chmury, aby uniknąć przechowywania jakiegoś stanu dla sesji użytkownika, ale niektóre podejścia mieć wpływ na wydajność i skalowalność więcej niż inne. Jeśli masz przechowywanie stanu, najlepszym rozwiązaniem jest zachowywanie małych rozmiarów ilość stanu i zapisz go w plikach cookie. Jeśli, który nie jest możliwe, dalej najlepszym rozwiązaniem jest użycie stanu sesji ASP.NET u dostawcy dla rozproszonych, w pamięci podręcznej. Najgorszy rozwiązania z punktu widzenia skalowalności i wydajności jest korzystanie z bazy danych kopii dostawcę stanu sesji. W tym temacie znajdują się wskazówki dotyczące przy użyciu dostawcy stanu sesji ASP.NET dla pamięci podręcznej Redis Azure. Aby uzyskać informacje o innych opcjach stanu sesji, zobacz [opcje stanu sesji ASP.NET](#aspnet-session-state-options).
 
@@ -112,7 +112,7 @@ Gdy te kroki są wykonywane, aplikacja jest skonfigurowana do używania dostawcy
 
 ## <a name="aspnet-session-state-options"></a>Opcje stanu sesji ASP.NET
 * Dostawca stanu sesji pamięci — ten dostawca przechowuje stanu sesji w pamięci. Zaletą używania tego dostawcy jest jest proste i szybkie. Jednak nie można skalować aplikacji sieci Web, jeśli używasz w pamięci dostawcy, ponieważ nie będzie on rozpowszechniany.
-* Dostawca stanu sesji SQL Server — ten dostawca przechowuje stanu sesji w programie Sql Server. Użyj tego dostawcy, aby przechowywać dane stanu sesji w trwałych. Można skalować aplikacji sieci Web, ale dla sesji przy użyciu programu Sql Server ma negatywny wpływ na wydajność w aplikacji sieci Web.
+* Dostawca stanu sesji SQL Server — ten dostawca przechowuje stanu sesji w programie Sql Server. Użyj tego dostawcy, aby przechowywać dane stanu sesji w trwałych. Można skalować aplikacji sieci Web, ale dla sesji przy użyciu programu Sql Server ma negatywny wpływ na wydajność w aplikacji sieci Web. Można również użyć tego dostawcy z [konfiguracji OLTP w pamięci](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) w celu zwiększenia wydajności.
 * Rozproszone w pamięci dostawcę stanu sesji takich jak Redis pamięci podręcznej dostawcę stanu sesji — ten dostawca zapewnia najlepsze cechy obu tych środowisk. Aplikacja sieci Web może mieć proste, szybkie i skalowalne dostawcę stanu sesji. Ponieważ ten dostawca przechowuje stanu sesji w pamięci podręcznej, aplikacja musi wziąć pod uwagę w wszystkie charakterystyki skojarzonej po rozmowie z rozproszonych w pamięci podręcznej, takie jak awarie sieci. Najlepsze rozwiązania dotyczące używania pamięci podręcznej, zobacz [buforowanie wskazówki](../best-practices-caching.md) z Microsoft Patterns & rozwiązań [projekt aplikacji w chmurze Azure i wskazówki dotyczące implementacji](https://github.com/mspnp/azure-guidance).
 
 Aby uzyskać więcej informacji o stanie sesji i innych najlepszych rozwiązań, zobacz [Web Development Best Practices (kompilowanie praktyczne aplikacje w chmurze platformy Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).

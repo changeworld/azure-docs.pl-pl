@@ -1,11 +1,11 @@
 ---
-title: "Integracja rozwiązania monitorowania zewnętrznych z stosu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zintegrować stosu Azure z zewnętrznego rozwiązanie monitorowania w centrum danych."
+title: Integracja rozwiązania monitorowania zewnętrznych z stosu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zintegrować stosu Azure z zewnętrznego rozwiązanie monitorowania w centrum danych.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4188d114aa86086821b2c640d7f2d98a78bcbf4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integracja rozwiązania monitorowania zewnętrznych z Azure stosu
 
@@ -80,7 +80,7 @@ Konfigurowanie pliku wtyczki "Azurestack_plugin.py" z następującymi parametram
 | *arm_endpoint* | Punktu końcowego platformy Azure Resource Manager (administrator) |https://adminmanagement.local.azurestack.external |
 | *api_endpoint* | Punktu końcowego platformy Azure Resource Manager (administrator)  | https://adminmanagement.local.azurestack.external |
 | *Tenant_id* | Identyfikator subskrypcji administratora | Pobrać za pomocą portalu administratora lub programu PowerShell |
-| *User_name* | Nazwa użytkownika subskrypcji — operator | operator@myazuredirectory.onmicrosoft.com |
+| *nazwa_użytkownika* | Nazwa użytkownika subskrypcji — operator | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | Hasło subskrypcji — operator | mojehasło |
 | *Client_id* | Klient | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
 | *region* |  Nazwa regionu platformy Azure stosu | lokalne |
@@ -99,7 +99,7 @@ Jeśli nie używasz programu Operations Manager, Nagios lub rozwiązanie oparte 
    ```PowerShell
    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
-   Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+   Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 3. Przejdź do katalogu, w którym zainstalowano [narzędzia Azure stosu](https://github.com/Azure/AzureStack-Tools) w ramach instalacji programu PowerShell, na przykład c:\azurestack-tools-master. Następnie przejdź do katalogu, infrastruktury i uruchom następujące polecenie, aby zaimportować moduł infrastruktury:
 
@@ -145,7 +145,7 @@ Wywołania interfejsu API REST umożliwia uzyskiwanie alertów, Zamknij alerty i
 
 |Argument  |Opis  |
 |---------|---------|
-|armendpoint     |  Punkt końcowy usługi Azure Resource Manager środowiska Azure stosu w format https://adminmanagement. {RegionName}. {Zewnętrznej nazwy FQDN}. Na przykład, jeśli jest zewnętrznych *azurestack.external* i jest nazwa regionu *lokalnego*, to jest punkt końcowy Menedżera zasobów https://adminmanagement.local.azurestack.external.       |
+|armendpoint     |  Punkt końcowy usługi Azure Resource Manager środowiska Azure stosu w formacie https://adminmanagement.{RegionName}.{External FQDN}. Na przykład, jeśli jest zewnętrznych *azurestack.external* i jest nazwa regionu *lokalnego*, to jest punkt końcowy Menedżera zasobów https://adminmanagement.local.azurestack.external.       |
 |subid     |   Identyfikator subskrypcji użytkownika, który jest wywołania. Ten interfejs API w zapytaniu można użyć tylko z użytkownikiem, który ma uprawnienia do subskrypcji dostawcy domyślnego.      |
 |RegionName     |    Nazwa regionu Azure stosu wdrożenia.     |
 |wersja interfejsu API     |  Wersja protokołu, który służy do zgłoszenia tego żądania. Należy użyć 2016-05-01.      |
@@ -206,7 +206,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*id*     |      Unikatowy identyfikator alertu.   |
 |*Nazwa*     |     Wewnętrzna nazwa alertu.   |
-|*Typ*     |     Definicja zasobu.    |
+|*type*     |     Definicja zasobu.    |
 |*location*     |       Nazwa regionu.     |
 |*tagów*     |   Tagi zasobów.     |
 |*closedtimestamp*    |  Czas UTC, kiedy alert został zamknięty.    |
@@ -222,13 +222,13 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*Opis elementu*     |  Opis elementu zarejestrowanych sieci szkieletowej.   |
 |*servicetype*     |   Typ usługi zarejestrowanych sieci szkieletowej.   |
 |*Korygowania*     |   Kroki zalecanych czynności naprawczych.    |
-|*Typ*     |   Typ alertu.    |
+|*type*     |   Typ alertu.    |
 |*resourceRegistrationid*    |     Identyfikator zarejestrowanego zasobu.    |
 |*resourceProviderRegistrationID*   |    Identyfikator zarejestrowanego dostawcy zasobów wykorzystywanych składnika.  |
 |*serviceregistrationid*     |    Identyfikator zarejestrowanej usługi.   |
 |*Ważność*     |     Ważność alertu.  |
 |*state*     |    Stan alertu.   |
-|*title*     |    Tytuł alertu.   |
+|*Tytuł*     |    Tytuł alertu.   |
 |*impactedresourceid*     |     Identyfikator zasobu objęte wpływem.    |
 |*ImpactedresourceDisplayName*     |     Nazwa zasobu objęte wpływem.  |
 |*closedByUserAlias*     |   Użytkownik zamknął alert.      |
@@ -248,7 +248,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 |Argument  |Opis  |
 |---------|---------|
-|*armendpoint*     |   Punkt końcowy Menedżera zasobów środowiska Azure stosu w format https://adminmanagement. {RegionName}. {Zewnętrznej nazwy FQDN}. Na przykład, jeśli jest zewnętrznych *azurestack.external* i jest nazwa regionu *lokalnego*, to jest punkt końcowy Menedżera zasobów https://adminmanagement.local.azurestack.external.      |
+|*armendpoint*     |   Punkt końcowy Menedżera zasobów środowiska Azure stosu w formacie https://adminmanagement.{RegionName}.{External FQDN}. Na przykład, jeśli jest zewnętrznych *azurestack.external* i jest nazwa regionu *lokalnego*, to jest punkt końcowy Menedżera zasobów https://adminmanagement.local.azurestack.external.      |
 |*subid*     |    Identyfikator subskrypcji użytkownika, który jest wywołania. Ten interfejs API w zapytaniu można użyć tylko z użytkownikiem, który ma uprawnienia do subskrypcji dostawcy domyślnego.     |
 |*RegionName*     |   Nazwa regionu Azure stosu wdrożenia.      |
 |*wersja interfejsu API*     |    Wersja protokołu, który służy do zgłoszenia tego żądania. Należy użyć 2016-05-01.     |
@@ -349,7 +349,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |---------|---------|
 |*id*     |      Unikatowy identyfikator alertu.   |
 |*Nazwa*     |     Wewnętrzna nazwa alertu.   |
-|*Typ*     |     Definicja zasobu.    |
+|*type*     |     Definicja zasobu.    |
 |*location*     |       Nazwa regionu.     |
 |*tagów*     |   Tagi zasobów.     |
 |*closedtimestamp*    |  Czas UTC, kiedy alert został zamknięty.    |
@@ -365,13 +365,13 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*Opis elementu*     |  Opis elementu zarejestrowanych sieci szkieletowej.   |
 |*servicetype*     |   Typ usługi zarejestrowanych sieci szkieletowej.   |
 |*Korygowania*     |   Kroki zalecanych czynności naprawczych.    |
-|*Typ*     |   Typ alertu.    |
+|*type*     |   Typ alertu.    |
 |*resourceRegistrationid*    |     Identyfikator zarejestrowanego zasobu.    |
 |*resourceProviderRegistrationID*   |    Identyfikator zarejestrowanego dostawcy zasobów wykorzystywanych składnika.  |
 |*serviceregistrationid*     |    Identyfikator zarejestrowanej usługi.   |
 |*Ważność*     |     Ważność alertu.  |
 |*state*     |    Stan alertu.   |
-|*title*     |    Tytuł alertu.   |
+|*Tytuł*     |    Tytuł alertu.   |
 |*impactedresourceid*     |     Identyfikator zasobu objęte wpływem.    |
 |*ImpactedresourceDisplayName*     |     Nazwa zasobu objęte wpływem.  |
 |*closedByUserAlias*     |   Użytkownik zamknął alert.      |
@@ -393,7 +393,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 
 |Argumenty  |Opis  |
 |---------|---------|
-|*armendpoint*     |    Punkt końcowy Menedżera zasobów środowiska Azure stosu w format https://adminmanagement. {RegionName}. {Zewnętrznej nazwy FQDN}. Na przykład jeśli zewnętrznej nazwy FQDN jest azurestack.external i nazwa regionu jest lokalny, następnie punktu końcowego Menedżera zasobów jest https://adminmanagement.local.azurestack.external.     |
+|*armendpoint*     |    Punkt końcowy Menedżera zasobów środowiska Azure stosu w formacie https://adminmanagement.{RegionName}.{External FQDN}. Na przykład jeśli zewnętrznej nazwy FQDN jest azurestack.external i nazwa regionu jest lokalny, następnie punktu końcowego Menedżera zasobów jest https://adminmanagement.local.azurestack.external.     |
 |*subid*     |     Identyfikator subskrypcji użytkownika, który jest wywołania. Ten interfejs API w zapytaniu można użyć tylko z użytkownikiem, który ma uprawnienia do subskrypcji dostawcy domyślnego.    |
 |*RegionName*     |     Nazwa regionu Azure stosu wdrożenia.    |
 |*wersja interfejsu API*     |   Wersja protokołu, który służy do zgłoszenia tego żądania. Należy użyć 2016-05-01.      |
@@ -435,7 +435,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*Identyfikator*     |   Unikatowy identyfikator alertu.      |
 |*Nazwa*     |  Wewnętrzna nazwa alertu.       |
-|*Typ*     |  Definicja zasobu.       |
+|*type*     |  Definicja zasobu.       |
 |*location*     |  Nazwa regionu.       |
 |*tagów*     |     Tagi zasobów.    |
 |*registrationId*     |   Unikatowy Rejestracja dostawcy zasobów.      |
@@ -462,7 +462,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 |Argumenty  |Opis  |
 |---------|---------|
-|*armendpoint*     |    Punkt końcowy Menedżera zasobów środowiska Azure stosu w format https://adminmanagement. {RegionName}. {Zewnętrznej nazwy FQDN}. Na przykład jeśli zewnętrznej nazwy FQDN jest azurestack.external i nazwa regionu jest lokalny, następnie punktu końcowego Menedżera zasobów jest https://adminmanagement.local.azurestack.external.     |
+|*armendpoint*     |    Punkt końcowy Menedżera zasobów środowiska Azure stosu w formacie https://adminmanagement.{RegionName}.{External FQDN}. Na przykład jeśli zewnętrznej nazwy FQDN jest azurestack.external i nazwa regionu jest lokalny, następnie punktu końcowego Menedżera zasobów jest https://adminmanagement.local.azurestack.external.     |
 |*subid*     |Identyfikator subskrypcji użytkownika, który jest wywołania. Ten interfejs API w zapytaniu można użyć tylko z użytkownikiem, który ma uprawnienia do subskrypcji dostawcy domyślnego.         |
 |*RegionName*     |  Nazwa regionu Azure stosu wdrożenia.       |
 |*wersja interfejsu API*     |  Wersja protokołu, który służy do zgłoszenia tego żądania. Należy użyć 2016-05-01.       |
@@ -503,7 +503,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*Identyfikator*     |   Unikatowy identyfikator alertu.      |
 |*Nazwa*     |  Wewnętrzna nazwa alertu.       |
-|*Typ*     |  Definicja zasobu.       |
+|*type*     |  Definicja zasobu.       |
 |*location*     |  Nazwa regionu.       |
 |*tagów*     |     Tagi zasobów.    |
 |*registrationId*     |   Unikatowy Rejestracja dostawcy zasobów.      |

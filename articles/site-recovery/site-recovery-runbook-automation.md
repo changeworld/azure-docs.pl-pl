@@ -1,11 +1,11 @@
 ---
-title: "Dodaj element runbook usługi Automatyzacja Azure do planów odzyskiwania w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak usługi Azure Site Recovery można rozszerzyć planów odzyskiwania przy użyciu usługi Automatyzacja Azure. Dowiedz się, jak wykonać złożone zadania podczas odzyskiwania do platformy Azure."
+title: Dodaj element runbook usługi Automatyzacja Azure do planów odzyskiwania w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak usługi Azure Site Recovery można rozszerzyć planów odzyskiwania przy użyciu usługi Automatyzacja Azure. Dowiedz się, jak wykonać złożone zadania podczas odzyskiwania do platformy Azure.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: gauravd
-editor: 
+editor: ''
 ms.assetid: ecece14d-5f92-4596-bbaf-5204addb95c2
 ms.service: site-recovery
 ms.devlang: powershell
@@ -14,11 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/09/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 4802215f903eb196afbf05637ad5e38dbbbc09a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 942c7f13c5cb37017f8907c9f0c94493af53d008
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Dodaj element runbook usługi Automatyzacja Azure do planów odzyskiwania
 W tym artykule opisano sposób Azure Site Recovery integruje się z automatyzacji Azure w celu umożliwienie wydłużenia planów odzyskiwania. Plany odzyskiwania można organizować odzyskiwania maszyn wirtualnych, które są chronione za pomocą usługi Site Recovery. Plany odzyskiwania działają zarówno dla replikacji do chmury dodatkowej, jak i dla replikacji do platformy Azure. Plany odzyskiwania również sprawić, że odzyskiwania **spójnie dokładne**, **powtarzalne**, i **automatyczne**. Jeśli w trybie Failover maszyny wirtualne na platformie Azure, integracja z usługi Automatyzacja Azure rozszerza planów odzyskiwania. Służy on do wykonywania elementów runbook, które oferują zaawansowane automatyzacji zadań.
@@ -200,7 +200,7 @@ W poniższym przykładzie, możemy użyć nowe techniki i Utwórz [zmiennej zło
 1. W programie PowerShell należy zalogować się do subskrypcji platformy Azure:
 
     ```
-    login-azurermaccount
+    Connect-AzureRmAccount
     $sub = Get-AzureRmSubscription -Name <SubscriptionName>
     $sub | Select-AzureRmSubscription
     ```

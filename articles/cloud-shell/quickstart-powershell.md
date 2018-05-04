@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3e59395b7066169b8a7863f45a446051b830a71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Szybki Start dla środowiska PowerShell w powłoce chmury Azure (wersja zapoznawcza)
 
@@ -274,13 +274,13 @@ Na potrzeby uwierzytelniania na serwerach lub maszyn wirtualnych przy użyciu pr
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Przy użyciu niestandardowego profilu w celu utrzymania ustawień usługi GIT i SSH
 
-Ponieważ sesje nie zostaną utrwalone po wylogowania, Zapisz z `$env:USERPROFILE\.ssh` do katalogu `CloudDrive` lub utworzyć łącza symbolicznego, gdy uruchamiana pobiera powłoki chmury.
-Dodaj następujący fragment kodu w Twojej profile.ps1 do utworzenia łącza symbolicznego do CloudDrive.
+Ponieważ sesje nie zostaną utrwalone po wylogowania, Zapisz z `$env:USERPROFILE\.ssh` do katalogu `clouddrive` lub utworzyć łącza symbolicznego, gdy uruchamiana pobiera powłoki chmury.
+Dodaj następujący fragment kodu w Twojej profile.ps1 do utworzenia łącza symbolicznego do `clouddrive`.
 
 ``` PowerShell
 # Check if the .ssh directory exists
-if( -not (Test-Path $home\CloudDrive\.ssh)){
-    mkdir $home\CloudDrive\.ssh
+if( -not (Test-Path $home\clouddrive\.ssh)){
+    mkdir $home\clouddrive\.ssh
 }
 
 # .ssh path relative to this script
@@ -347,21 +347,21 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Użyj plików Azure do przechowywania danych
 
-Można utworzyć skrypt, powiedz `helloworld.ps1`i zapisać go do Twojego `CloudDrive` go używać w wielu sesjach powłoki.
+Można utworzyć skrypt, powiedz `helloworld.ps1`i zapisać go do Twojego `clouddrive` go używać w wielu sesjach powłoki.
 
 ``` PowerShell
-cd C:\users\ContainerAdministrator\CloudDrive
-PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
+cd C:\users\ContainerAdministrator\clouddrive
+PS C:\users\ContainerAdministrator\clouddrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
-PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
+PS C:\users\ContainerAdministrator\clouddrive> .\helloworld.ps1
 Hello World!
 ```
 
-Następnym razem, kiedy używać środowiska PowerShell w chmurze powłoki, `helloworld.ps1` pliku będzie istnieć w obszarze `CloudDrive` katalogu, który instaluje na udział plików Azure.
+Następnym razem, kiedy używać środowiska PowerShell w chmurze powłoki, `helloworld.ps1` pliku będzie istnieć w obszarze `clouddrive` katalogu, który instaluje na udział plików Azure.
 
 ## <a name="use-custom-profile"></a>Użyj profilu niestandardowego
 
-Można dostosować środowiska PowerShell, tworząc PowerShell profile - `profile.ps1` lub `Microsoft.PowerShell_profile.ps1`. Zapisz go w obszarze `CloudDrive` , dzięki czemu mogą być ładowane w każdej sesji programu PowerShell podczas uruchamiania powłoki chmury.
+Można dostosować środowiska PowerShell, tworząc PowerShell profile - `profile.ps1` lub `Microsoft.PowerShell_profile.ps1`. Zapisz go w obszarze `clouddrive` , dzięki czemu mogą być ładowane w każdej sesji programu PowerShell podczas uruchamiania powłoki chmury.
 
 Jak utworzyć profil, zapoznaj się [profile o][profile].
 
@@ -373,7 +373,7 @@ Klonowanie repozytorium Git w powłoce chmury, musisz utworzyć [osobisty token 
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-Ponieważ sesje w powłoce chmury nie zostaną utrwalone po wyrejestrowaniu lub limit czasu sesji, nie istnieje w pliku config Git podczas następnego logowania. Aby zachować konfigurację Git, musisz zapisać Twoje .gitconfig do Twojej `CloudDrive` i skopiuj go lub utworzyć łącza symbolicznego, gdy uruchamiana pobiera powłoki chmury. Poniższy fragment kodu w Twojej profile.ps1 używać do tworzenia łącza symbolicznego do `CloudDrive`.
+Ponieważ sesje w powłoce chmury nie zostaną utrwalone po wyrejestrowaniu lub limit czasu sesji, nie istnieje w pliku config Git podczas następnego logowania. Aby zachować konfigurację Git, musisz zapisać Twoje .gitconfig do Twojej `clouddrive` i skopiuj go lub utworzyć łącza symbolicznego, gdy uruchamiana pobiera powłoki chmury. Poniższy fragment kodu w Twojej profile.ps1 używać do tworzenia łącza symbolicznego do `clouddrive`.
 
  ``` PowerShell
  

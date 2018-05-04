@@ -9,11 +9,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak używać przetwarzanie wsadowe, aby zwiększyć wydajność aplikacji bazy danych SQL
 Przetwarzanie wsadowe operacji do bazy danych SQL Azure w znacznie poprawia wydajność i skalowalność aplikacji. Aby zrozumieć korzyści, pierwsza część w tym artykule omówiono niektóre przykładowe wyniki testów, pozwalające porównać wsadów i sekwencyjny żądania do bazy danych SQL. W pozostałej części tego artykułu pokazuje techniki, scenariusze i zagadnienia dotyczące pomogą pomyślnie przetwarzanie wsadowe w aplikacjach platformy Azure.
@@ -32,9 +32,9 @@ Jest jedną z korzyści wynikające ze stosowania bazy danych SQL, że nie trzeb
 Pierwsza część papieru sprawdza różnych technik przetwarzanie wsadowe aplikacji .NET, które używają bazy danych SQL. Ostatnich dwóch sekcjach opisano scenariusze i wskazówki dotyczące łączenia we wsady.
 
 ## <a name="batching-strategies"></a>Przetwarzanie wsadowe strategie
-### <a name="note-about-timing-results-in-this-topic"></a>Należy pamiętać o wynikach czasu, w tym temacie
+### <a name="note-about-timing-results-in-this-article"></a>Należy pamiętać o wynikach czasu, w tym artykule
 > [!NOTE]
-> Wyniki nie są testów porównawczych, ale są przeznaczone do wyświetlenia **względną wydajność**. Czasy są oparte na średnio co najmniej 10 uruchomień testów. Operacje są wstawia do pustej tabeli. Te testy zostały zmierzone pre-V12, a ich nie musi odpowiadać przepływności, które mogą pojawić się w bazie danych w wersji 12 przy użyciu nowego [warstw usług](sql-database-service-tiers.md). Względne korzyści przetwarzanie wsadowe techniki powinny być podobne.
+> Wyniki nie są testów porównawczych, ale są przeznaczone do wyświetlenia **względną wydajność**. Czasy są oparte na średnio co najmniej 10 uruchomień testów. Operacje są wstawia do pustej tabeli. Te testy zostały zmierzone pre-V12, a ich nie musi odpowiadać przepływności, które mogą pojawić się w bazie danych w wersji 12 przy użyciu nowego [DTU warstwy usług](sql-database-service-tiers-dtu.md) lub [warstwy usług vCore](sql-database-service-tiers-vcore.md). Względne korzyści przetwarzanie wsadowe techniki powinny być podobne.
 > 
 > 
 
@@ -209,7 +209,7 @@ Kopiowania zbiorczego SQL jest inny sposób, aby wstawić dużych ilości danych
         }
     }
 
-Istnieją przypadki, gdzie kopiowania zbiorczego jest preferowana przez parametry przechowywanymi w tabeli. Zobacz Tabela porównawcza przechowywanymi w tabeli parametrów lub w temacie BULK INSERT [zwracającej tabelę parametrów](https://msdn.microsoft.com/library/bb510489.aspx).
+Istnieją przypadki, gdzie kopiowania zbiorczego jest preferowana przez parametry przechowywanymi w tabeli. Zobacz Tabela porównawcza przechowywanymi w tabeli parametrów lub BULK INSERT operacji w artykule [zwracającej tabelę parametrów](https://msdn.microsoft.com/library/bb510489.aspx).
 
 Następujące wyniki testu ad hoc Pokaż wydajności przetwarzania wsadowego z **SqlBulkCopy** w milisekundach.
 
@@ -309,7 +309,7 @@ Nasze testy nie było zwykle żadnych dodatkowych zalet fundamentalne dużych pa
 > 
 > 
 
-Widać najlepszą wydajność 1000 wierszy jest przesyłanie ich jednocześnie. W innych testach (nie jest tutaj widoczny) wystąpił są bardziej wydajne małych Podziel partii 10000 wiersza na dwie partie 5000. Ale schemat tabeli dla tych testów jest stosunkowo proste, dlatego należy wykonać na określonych danych i rozmiary partii, aby sprawdzić te wyniki testów.
+Widać najlepszą wydajność 1000 wierszy jest przesyłanie ich jednocześnie. W innych testach (nie jest tutaj widoczny) było bardziej wydajne małych Podziel partii 10000 wiersza na dwie partie 5000. Ale schemat tabeli dla tych testów jest stosunkowo proste, dlatego należy wykonać na określonych danych i rozmiary partii, aby sprawdzić te wyniki testów.
 
 Innym czynnikiem do przeanalizowania jest Jeśli całkowita liczba partii stanie się zbyt duży, baza danych SQL może ograniczyć oraz odmówić można przekazać partii. Aby uzyskać najlepsze wyniki należy przetestować konkretnego scenariusza do określenia, czy rozmiar partii idealne. Rozmiar partii należy można skonfigurować w czasie wykonywania, aby włączyć szybkie dopasowania na podstawie wydajności lub błędy.
 
@@ -592,7 +592,7 @@ Następnie utwórz procedurę składowaną lub pisania kodu, który używa instr
 Aby uzyskać więcej informacji zawiera dokumentacja i przykłady dla instrukcji MERGE. Mimo że taką samą pracę może być wykonana w przechowywane wielu kroku wywołania procedury z oddzielne INSERT, a operacje aktualizacji, instrukcji MERGE jest bardziej wydajny. Kod bazy danych można także konstruować wywołania języka Transact-SQL, które bezpośrednio, bez konieczności dwóch wywołania bazy danych dla INSERT i UPDATE za pomocą instrukcji MERGE.
 
 ## <a name="recommendation-summary"></a>Zalecenie podsumowania
-Poniższa lista zawiera podsumowanie zaleceń przetwarzanie wsadowe omówione w tym temacie:
+Poniższa lista zawiera podsumowanie zaleceń przetwarzanie wsadowe omówione w tym artykule:
 
 * Użyj buforowania i przetwarzanie wsadowe, aby zwiększyć wydajność i skalowalność aplikacji bazy danych SQL.
 * Zrozumienie skutków ubocznych między przetwarzanie wsadowe buforowania i odporność. Podczas awarii roli ryzyko utraty nieprzetworzone partii strategicznych danych biznesowych mogą przeważają korzyści wydajności przetwarzania wsadowego.

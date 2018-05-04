@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Za pomocą techniczną platformy Azure Resource Manager z usługą równoważenia obciążenia Azure
 
@@ -46,7 +46,7 @@ Szablony mogą zawierać definicji dla maszyn wirtualnych, sieci wirtualne zesta
 
 [Dowiedz się więcej na temat szablonów](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[Dowiedz się więcej o zasoby sieciowe](../virtual-network/resource-groups-networking.md)
+[Dowiedz się więcej o zasoby sieciowe](../networking/networking-overview.md)
 
 Dla szablonów Szybki Start przy użyciu usługi równoważenia obciążenia Azure, zobacz [repozytorium GitHub](https://github.com/Azure/azure-quickstart-templates) obsługującego zestaw szablonów społeczności wygenerowany.
 

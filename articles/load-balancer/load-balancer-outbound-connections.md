@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c3d6ed2c011cc6be1098ae5e693ee6d904efaa3b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Połączeń wychodzących na platformie Azure
 
@@ -151,7 +151,7 @@ W poniższej tabeli przedstawiono preallocations portu SNAT warstw rozmiary puli
 | 101-200 | 256 |
 | 201-400 | 128 |
 | 401-800 | 64 |
-| 801-1,000 | 32 |
+| 1000 801 | 32 |
 
 >[!NOTE]
 > Gdy przy użyciu standardowego modułu równoważenia obciążenia z [wiele frontends](load-balancer-multivip-overview.md), [każdego adresu IP frontonu mnoży liczbę dostępnych portów SNAT](#multivipsnat) w poprzedniej tabeli. Na przykład pulę zaplecza 50 maszyny Wirtualnej z 2 reguł równoważenia obciążenia, każdy z adresów IP frontonu oddzielne użyje 2048 (2 x 1024) SNAT portów w każdej konfiguracji adresu IP. Zobacz szczegóły dotyczące [frontends wiele](#multife).
@@ -243,10 +243,11 @@ Jeśli grupy NSG blokuje żądania sondy kondycji z AZURE_LOADBALANCER domyślny
 
 ## <a name="limitations"></a>Ograniczenia
 - DisableOutboundSnat nie jest dostępny jako opcja podczas konfigurowania reguły w portalu równoważenia obciążenia.  Zamiast tego użyj narzędzia REST, szablonu lub klienta.
+- Role pracownika w sieci Web spoza sieci wirtualnej mogą stać się niedostępne po tylko wewnętrzny standardowy moduł równoważenia obciążenia jest używany z powodu efekt uboczny od tego, jak funkcja usług pre-VNet. Użytkownik musi nie korzysta z to co usługa odpowiednich siebie lub podstawowych platform mogą ulec zmianie bez uprzedzenia. Należy zawsze musi założenie, że należy utworzyć łączność wychodząca jawnie w razie potrzeby, używając wewnętrzny standardowy moduł równoważenia obciążenia tylko. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md).
-- Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md).
+- Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 - Dowiedz się więcej o [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md).
 - Dowiedz się więcej o niektóre inne kluczowe [możliwości w zakresie obsługi](../networking/networking-overview.md) na platformie Azure.

@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management zasobów Azure - Przypisz role | Dokumentacja firmy Microsoft
+title: Przypisz role zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
 description: Zawiera opis sposobu przypisywania ról usługi PIM.
 services: active-directory
 documentationcenter: ''
@@ -13,64 +13,64 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 9a9046afe2ee1e578333ff9d29f6fb21e95a0f22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 501f063992d2f5c7769a5c9059b346aa2b5c2bb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---assign"></a>Zarządzanie tożsamościami uprzywilejowanymi - role zasobów - przypisania
+# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Przypisz role zasobów platformy Azure przy użyciu Privileged Identity Management
 
 ## <a name="assign-roles"></a>Przypisz role
 
-Aby przypisać do roli użytkownika lub grupę, wybierz rolę (Jeśli wyświetlanie role), 
+Aby przypisać użytkownika lub grupy do roli, podczas wyświetlania **ról** okienku, wybierz rolę, a następnie wybierz **Dodaj użytkownika**. 
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+![Okienko "Role" przy użyciu przycisku "Dodaj użytkownika"](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
 
-lub kliknij przycisk Dodaj na pasku akcji (jeśli są w widoku elementów członkowskich).
+Możesz też wybrać **Dodaj użytkownika** z **członków** okienka.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+![Okienko "Członkowie" przy użyciu przycisku "Dodaj użytkownika"](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
 
 
-Jeśli Dodawanie użytkownika lub grupy na karcie elementy członkowskie, musisz: 
+Jeśli dodajesz użytkownika lub grupy z **członków** okienka, musisz: 
 
-1. Wybierz z menu Dodaj rolę, zanim będzie można wybrać użytkownika lub grupę.
+1. Wybierz rolę z **wybierz rolę** okienko, aby można było wybrać użytkownika lub grupę.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+   !["Wybierz rolę" okienko](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
 
 2. Wybierz użytkownika lub grupy z katalogu.
 
-3. Wybierz typ odpowiednie przypisanie z menu rozwijanego. 
+3. Wybierz typ odpowiednie przypisanie z menu rozwijanego: 
 
-    - **Tylko w czasie przypisania:** zawiera członków użytkownika lub grupy z kwalifikujących się, ale nie trwały dostęp do roli w określonym przedziale czasu lub nieskończoność (jeśli została skonfigurowana w ustawieniach roli). 
-    - **Bezpośrednie przypisywanie:** nie wymaga użytkownika lub grupę elementów członkowskich aktywować przypisania roli (nazywane trwały dostęp). Firma Microsoft zaleca korzystanie z bezpośredniego przypisania krótkoterminowej Użyj takie jak zmiany na wywołanie lub czas działania poufne, których dostęp nie będzie wymagany po zakończeniu zadania.
+   - **Tylko w czasie**: zapewnia to członkom użytkownika lub grupy z kwalifikujących się, ale nie trwały dostęp do roli w podanym okresie lub nieskończoność (jeśli została skonfigurowana w ustawieniach roli). 
+   - **Bezpośrednie**: nie wymaga użytkownika lub grupę elementów członkowskich aktywować przypisania roli (nazywane trwały dostęp). Zalecamy użycie przypisania bezpośredniego stosowania krótkoterminowej, których dostęp nie będzie wymagany po zakończeniu zadania. Przykłady są zmiany w wywołaniu i zależne od czasu działania.
 
-Pole wyboru poniżej listy rozwijanej Typ przypisania służy do określenia Jeśli przypisanie powinno być stałe (trwale kwalifikuje się do aktywowania tylko w czasie przypisania/trwale active dla przypisania bezpośredniego).
+4. Jeśli ma być przypisania stałego (trwale kwalifikuje się do przypisania w czasie, lub trwale aktywne dla przypisania bezpośredniego), zaznacz pole wyboru poniżej **typ przydziału** pole.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+   ![Okienko "Ustawienia członkostwa" pola "Typ przydziału" i powiązane pole wyboru](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
 
->[!NOTE]
->Pole wyboru może być unmodifiable, jeśli inny administrator ma określone przypisania maksymalny czas trwania dla każdego typu przydziału w ustawieniach roli.
+   >[!NOTE]
+   >Pole wyboru może być unmodifiable, jeśli inny administrator ma określone przypisania maksymalny czas trwania dla każdego typu przydziału w ustawieniach roli.
 
- Aby określić czas trwania danego przydziału, usuń zaznaczenie pola wyboru i zmodyfikować uruchomienia i/lub kończyć pól daty i godziny.
+   Aby określić czas trwania danego przydziału, wyczyść pole wyboru, a następnie zmodyfikować początkowy lub końcowy pola daty i godziny.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+   ![Okienko "Ustawienia członkostwa" z polami Data rozpoczęcia, godzinę rozpoczęcia, Data zakończenia i godzina zakończenia](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
 
 
 ## <a name="manage-role-assignments"></a>Zarządzanie przypisaniami ról
 
-Administratorzy mogą zarządzać przypisań ról, wybierając ról lub elementy członkowskie z lewym pasku nawigacyjnym. Wybieranie ról pozwala administratorom zakres ich zadań zarządzania do konkretnej roli, gdy elementy członkowskie Wyświetla wszystkie przypisania ról użytkowników i grup dla zasobu.
+Administratorzy mogą zarządzać przypisań ról przez wybranie jednej **ról** lub **członków** w lewym okienku. Wybieranie **ról** umożliwia administratorom zakres ich zadań zarządzania do konkretnej roli. Wybieranie **członków** Wyświetla wszystkie przypisania ról użytkowników i grup dla zasobu.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+!["Role"](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+![Okienko "Członkowie"](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
 
 >[!NOTE]
-Jeśli masz roli do czasu aktywacji transparencie powiadomienia jest wyświetlane w górnej części strony, gdy wyświetlanie członkostwa.
+Jeśli masz roli do czasu aktywacji transparencie powiadomienia zostanie wyświetlony w górnej części okienka podczas wyświetlania członkostwa.
 
 
 ## <a name="modify-existing-assignments"></a>Zmodyfikuj istniejące przypisania
 
-Aby zmodyfikować istniejące przypisania z widoku szczegółów użytkownika/grupy, wybierz opcję Zmień ustawienia na pasku akcji w górnej części strony. Zmień typ przypisania tylko w przypisanie czasu lub bezpośredniego przypisania.
+Aby zmodyfikować istniejące przypisania z widoku szczegółów użytkownika/grupy, wybierz opcję **zmienić ustawienia** na pasku akcji. Zmień typ przypisania do **tylko w czasie** lub **bezpośredniego**.
 
-![](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+![Okienko "Szczegóły użytkownika" przycisk "Zmień ustawienia"](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 21f29fc76ada1e081dcddeebdd537aebe308add3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -34,7 +34,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
 Konto logowania na platformie Azure za pomocą musi być przypisany na minimalne, uprawnienia roli współautora sieci dla Twojej subskrypcji. Aby dowiedzieć się więcej na temat Przypisywanie ról i uprawnień do kont, zobacz [wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
@@ -216,7 +216,7 @@ Reguły efektywnym elementem systemu zabezpieczeń dla każdego interfejsu sieci
 4. Wybierz **reguły efektywnym elementem systemu zabezpieczeń** w obszarze **pomocy technicznej i rozwiązywania problemów**.
 5. Zapoznaj się z listą zasady efektywnym elementem systemu zabezpieczeń w celu ustalenia, czy istnieją poprawne reguły dla komunikacji wymagane dla ruchu przychodzącego i wychodzącego. Dowiedz się więcej o tym, co widać na liście w [omówienie grupy zabezpieczeń sieci](security-overview.md).
 
-Przepływ IP Sprawdź, czy funkcja Azure obserwatora sieciowego też pomóc Ci określić, jeśli zasady zabezpieczeń są uniemożliwia komunikację między maszyną wirtualną a punktem końcowym. Aby dowiedzieć się więcej, zobacz [Sprawdź przepływ IP](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Przepływ IP Sprawdź, czy funkcja Azure obserwatora sieciowego też pomóc Ci określić, jeśli zasady zabezpieczeń są uniemożliwia komunikację między maszyną wirtualną a punktem końcowym. Aby dowiedzieć się więcej, zobacz [Sprawdź przepływ IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Polecenia**
 
@@ -233,7 +233,7 @@ Skuteczne trasy dla interfejsów sieciowych podłączonych do maszyny wirtualnej
 4. Wybierz **skuteczne tras** w obszarze **pomocy technicznej i rozwiązywania problemów**.
 5. Zapoznaj się z listą skuteczne tras można stwierdzić, czy poprawne trasy dla komunikacji wymagane dla ruchu przychodzącego i wychodzącego. Dowiedz się więcej o tym, co widać na liście w [Omówienie routingu](virtual-networks-udr-overview.md).
 
-Funkcję następnego przeskoku obserwatora sieci Azure może również pomóc w określeniu, jeśli trasy nie uniemożliwiają komunikacji między maszyną wirtualną a punktem końcowym. Aby dowiedzieć się więcej, zobacz [następnego przeskoku](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Funkcję następnego przeskoku obserwatora sieci Azure może również pomóc w określeniu, jeśli trasy nie uniemożliwiają komunikacji między maszyną wirtualną a punktem końcowym. Aby dowiedzieć się więcej, zobacz [następnego przeskoku](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Polecenia**
 

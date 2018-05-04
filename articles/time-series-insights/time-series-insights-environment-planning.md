@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planowanie środowiska Azure czas serii Insights
 
@@ -87,14 +87,14 @@ Może nie wiedzieć z wyprzedzeniem ilość danych można było się spodziewać
 Aby dowiedzieć się, jak zapobiec ograniczania przepustowości i opóźnień, zobacz [zmniejszyć opóźnienia i ograniczania przepustowości](time-series-insights-environment-mitigate-latency.md). 
 
 ## <a name="shaping-your-events"></a>Kształtowania zdarzeń
-Należy koniecznie upewnij się, jak wysyłać zdarzenia do TSI obsługuje rozmiar środowiska w przypadku udostępniania (z drugiej strony, możesz mapować rozmiar środowiska do liczby zdarzeń odczytuje TSI, a rozmiar każdego zdarzenia).  Podobnie warto pomyśleć o atrybuty, które może zajść potrzeba wycinka i Filtruj według podczas wykonywania zapytań dotyczących danych.  Pamiętając o tym, zaleca się przegląd JSON kształtowania sekcji naszych *wysyłać zdarzenia* dokumentacji [dokumentacji] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events).  Jest w dolnej części strony.  
+Należy koniecznie upewnij się, jak wysyłać zdarzenia do TSI obsługuje rozmiar środowiska w przypadku udostępniania (z drugiej strony, możesz mapować rozmiar środowiska do liczby zdarzeń odczytuje TSI, a rozmiar każdego zdarzenia).  Podobnie warto pomyśleć o atrybuty, które może zajść potrzeba wycinka i Filtruj według podczas wykonywania zapytań dotyczących danych.  Pamiętając o tym, zaleca się przegląd JSON kształtowania sekcji naszych *wysyłać zdarzenia* dokumentacji [dokumentacji] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  Jest w dolnej części strony.  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>Sprawdzając, czy jest odwołanie do danych w miejscu
 Odwołanie do zestawu danych to kolekcja elementów, które rozszerzyć zdarzenia ze źródła zdarzeń. Czas Insights serii wejściowych aparat łączy każdego zdarzenia ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych odwołania. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. Tego sprzężenia jest oparta na kolumny klucza podstawowego zdefiniowany w zestawie danych odwołania.
 
 Uwaga: odwołanie do danych nie jest dołączony Wstecz. Oznacza to, że tylko danych wejściowych aktualnych i przyszłych jest zgodny i dołączony do zestawu odwołania data po jej skonfigurowaniu i przekazać.  Jeśli planujesz do wysyłania dużej ilości danych historycznych do TSI i nie przekazać lub tworzenie danych referencyjnych w TSI pierwszy, konieczne może być ponownie pracy (wskazówki, nie fun).  
 
-Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i zarządzać danymi odwołania w TSI, przejdź do naszego *danych referencyjnych* dokumentacji [dokumentacji] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i zarządzać danymi odwołania w TSI, przejdź do naszego *danych referencyjnych* dokumentacji [dokumentacji] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

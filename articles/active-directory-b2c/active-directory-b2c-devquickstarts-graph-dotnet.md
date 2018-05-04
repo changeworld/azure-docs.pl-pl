@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 731ff24fe9cc1b5dbf0c597139a96ae80b863cc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Usługa Azure AD B2C: Użyj Azure interfejs API Graph usługi AD
 
@@ -29,16 +29,16 @@ Dla dzierżawcy usługi B2C istnieją dwa tryby głównej komunikowania się z i
 * Interaktywny, jednokrotnego uruchamiania zadań powinny działać jako konto administratora w dzierżawie usługi B2C należy wykonać zadania. Ten tryb wymaga administratorem, aby zalogować się przy użyciu poświadczeń, zanim które administrator może wykonać wszelkie wywołania interfejsu API programu Graph.
 * Zautomatyzowane, ciągłe zadania należy używać pewien typ konta usługi, które dostarczają niezbędne uprawnienia do wykonywania zadań zarządzania. W usłudze Azure AD możesz to zrobić, rejestrowanie aplikacji i uwierzytelniania w usłudze Azure AD. Jest to zrobić za pomocą **identyfikator aplikacji** używającą [przyznania poświadczeń klienta OAuth 2.0](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api). W takim przypadku aplikacja działa jako sam nie jako użytkownik, do wywołania interfejsu API programu Graph.
 
-W tym artykule omówiono sposób wykonywania przypadek użycia automatycznego. Aby zademonstrować, możemy utworzyć .NET 4.5 `B2CGraphClient` wykonująca użytkownika tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacji. Klient ma interfejs wiersza polecenia systemu Windows (CLI) umożliwiający różne metody invoke. Jednak kod jest zapisywany zachowują się w sposób nieinteraktywne, automatycznej.
+W tym artykule Dowiedz się jak wykonać w przypadku użycia automatycznego. Będzie kompilacji platformy .NET 4.5 `B2CGraphClient` wykonująca użytkownika tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacji. Klient ma interfejs wiersza polecenia systemu Windows (CLI) umożliwiający różne metody invoke. Jednak kod jest zapisywany zachowują się w sposób nieinteraktywne, automatycznej.
 
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Uzyskiwanie dzierżawy usługi Azure AD B2C
-Przed tworzenia aplikacji lub użytkowników lub w ogóle interakcję z usługą Azure AD, konieczne będzie dzierżawy usługi Azure AD B2C i konto administratora globalnego w dzierżawie. Jeśli nie masz już, dzierżawcy [wprowadzenie do usługi Azure AD B2C](active-directory-b2c-get-started.md).
+Przed utworzeniem aplikacji lub użytkowników, należy dzierżawy usługi Azure AD B2C. Jeśli nie masz już, dzierżawcy [wprowadzenie do usługi Azure AD B2C](active-directory-b2c-get-started.md).
 
 ## <a name="register-your-application-in-your-tenant"></a>Zarejestrować aplikację w dzierżawie
-Po umieszczeniu dzierżawy B2C, należy zarejestrować aplikację za pośrednictwem [Azure Portal](https://portal.azure.com).
+Po umieszczeniu dzierżawy B2C, należy zarejestrować swojej aplikacji za pomocą [portalu Azure](https://portal.azure.com).
 
 > [!IMPORTANT]
-> Aby używać interfejsu API programu Graph z dzierżawy usługi B2C, należy zarejestrować dedykowanej aplikacji przy użyciu ogólnych *rejestracji aplikacji* menu w portalu Azure **nie** usługi Azure AD B2C  *Aplikacje* menu. Nie można użyć ponownie już istniejących aplikacji B2C, zarejestrowanych w usłudze Azure AD B2C *aplikacji* menu.
+> Aby używać interfejsu API programu Graph z dzierżawy usługi B2C, należy zarejestrować aplikację przy użyciu *rejestracji aplikacji* w portalu Azure **nie** usługi Azure AD B2C *aplikacji*menu. Poniższe instrukcje prowadzić do menu masz. Nie można ponownie użyć istniejących aplikacji B2C, które są zarejestrowane w usłudze Azure AD B2C w *aplikacji* menu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz dzierżawy usługi Azure AD B2C, wybierając konto w prawym górnym rogu strony.
@@ -47,7 +47,8 @@ Po umieszczeniu dzierżawy B2C, należy zarejestrować aplikację za pośrednict
     1. Wybierz **aplikacji w sieci Web / interfejs API** jako typ aplikacji.    
     2. Podaj **żadnych adres URL logowania** (np. https://B2CGraphAPI) jako nie jest to potrzebne w tym przykładzie.  
 5. Aplikacja zostanie teraz zostanie wyświetlona lista aplikacji, kliknij przycisk w celu uzyskania **identyfikator aplikacji** (znanej także jako identyfikator klienta). Skopiuj go, ponieważ będzie on potrzebny w dalszej części artykułu.
-6. W menu Ustawienia kliknij **klucze** i Dodaj nowy klucz (znanej także jako klucz tajny klienta). Jest on również kopiowany do użycia w dalszej części artykułu.
+6. W menu Ustawienia kliknij **klucze**.
+7. W **hasła** sekcji, wprowadź opis klucza i wybierz czas trwania, a następnie kliknij **zapisać**. Skopiuj wartość klucza (znanej także jako klucz tajny klienta) do użycia w dalszej części artykułu.
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Skonfiguruj tworzenie, odczytywanie i aktualizowanie uprawnień dla aplikacji
 Teraz musisz skonfigurować aplikację, aby pobrać wszystkie wymagane uprawnienia do tworzenia, odczytu, aktualizacji i usuwania użytkowników.

@@ -1,8 +1,8 @@
 ---
-title: "Dodaj lub Usuń punkt końcowy serwera synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia usługi pliki Azure."
+title: Dodaj lub Usuń punkt końcowy serwera synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia usługi pliki Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Dodaj lub Usuń punkt końcowy serwera synchronizacji plików Azure (wersja zapoznawcza)
 Usługa Azure File Sync (wersja zapoznawcza) umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Jest to realizowane poprzez przekształcanie systemów Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -49,7 +49,7 @@ Następujące informacje są wymagane w obszarze **dodać punkt końcowy serwera
 Wybierz **Utwórz** można dodać punktu końcowego serwera. Pliki znajdujące się w przestrzeni nazw grupy synchronizacji będą teraz przechowywane w synchronizacji. 
 
 ## <a name="remove-a-server-endpoint"></a>Usuwanie punktu końcowego serwera
-Po włączeniu dla serwera punktu końcowego w chmurze będzie warstw *warstwy* plików do sieci udziały plików platformy Azure. Dzięki temu lokalnymi udziały plików do działania jako pamięci podręcznej, zamiast pełną kopię zestawu danych, aby wydajnie korzystać z miejsca na serwerze plików. Jednak jeśli punktu końcowego serwera zostanie usunięty z plikami warstwowych nadal lokalnie na serwerze, pliki staną się można niedostępne. W związku z tym dalsze dostęp do pliku, najpierw odwołać wszystkie pliki warstwowy z plików Azure przed kontynuowaniem wyrejestrowania. 
+Po włączeniu dla serwera punktu końcowego w chmurze będzie warstw *warstwy* plików do sieci udziały plików platformy Azure. Dzięki temu lokalnymi udziały plików do działania jako pamięci podręcznej, zamiast pełną kopię zestawu danych, aby wydajnie korzystać z miejsca na serwerze plików. Jednak **punktu końcowego serwera zostanie usunięty z plikami warstwowych nadal lokalnie na serwerze, pliki staną się niedostępne**. W związku z tym dalsze potrzeby uzyskiwania dostępu do plików w udziałach plików lokalnych, najpierw odwołać wszystkie pliki warstwowy z plików Azure przed kontynuowaniem usuwanie punktu końcowego serwera. 
 
 Można to zrobić za pomocą polecenia cmdlet programu PowerShell w sposób przedstawiony poniżej:
 

@@ -1,11 +1,11 @@
 ---
-title: "Zbieranie danych analizy dzienników z elementem runbook automatyzacji Azure | Dokumentacja firmy Microsoft"
-description: "Samouczek krok po kroku, który przedstawiono tworzenie elementu runbook automatyzacji Azure w celu zbierania danych analizy dzienników do repozytorium OMS do analizy."
+title: Zbieranie danych analizy dzienników z elementem runbook automatyzacji Azure | Dokumentacja firmy Microsoft
+description: Samouczek krok po kroku, który przedstawiono tworzenie elementu runbook automatyzacji Azure w celu zbierania danych analizy dzienników do repozytorium OMS do analizy.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: operations-management-suite
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0784e2317fbc98561b486547654ca27bb30e76c3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Zbieranie danych w analizy dzienników z elementu runbook usługi Automatyzacja Azure
 Można zbierać znaczną ilość danych analizy dzienników z różnych źródeł w tym [źródeł danych](../log-analytics/log-analytics-data-sources.md) na agentach, a także [dane zbierane z platformy Azure](../log-analytics/log-analytics-azure-storage.md).  Chociaż wymagających zbierania danych, która nie jest dostępny za pośrednictwem tych źródeł standardowe są scenariusze.  W takich przypadkach można użyć [interfejsu API modułów zbierających dane HTTP](../log-analytics/log-analytics-data-collector-api.md) można zapisać danych do analizy dzienników za pomocą dowolnego klienta interfejsu API REST.  Częstą metodą do wykonania tej kolekcji danych używa elementu runbook automatyzacji Azure.   
@@ -65,10 +65,10 @@ Galerii programu PowerShell zapewnia jednak szybkie możliwość wdrożenia modu
 
 | Właściwość | Wartość Identyfikatora obszaru roboczego | Wartość klucza obszaru roboczego |
 |:--|:--|:--|
-| Nazwa | WorkspaceId | WorkspaceKey |
+| Name (Nazwa) | WorkspaceId | WorkspaceKey |
 | Typ | Ciąg | Ciąg |
 | Wartość | Wklej identyfikator obszaru roboczego z obszaru roboczego analizy dzienników. | Wklej za pomocą podstawowej lub dodatkowej klucz obszaru roboczego analizy dzienników. |
-| Zaszyfrowane | Nie | Tak |
+| Zaszyfrowane | Nie | Yes |
 
 
 
@@ -97,7 +97,7 @@ Automatyzacja Azure ma edytora w portalu, w którym można edytować i przetestu
         # Code copied from the runbook AzureAutomationTutorial.
         $connectionName = "AzureRunAsConnection"
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -184,10 +184,10 @@ Najczęściej uruchomienia elementu runbook, który służy do zbierania danych 
 
 | Właściwość | Wartość |
 |:--|:--|
-| Nazwa | Co godzinę AutomationJobs |
-| Rozpoczyna się | Wybierz, w przypadku co najmniej pięć minut późniejsza niż bieżąca godzina. |
-| Cykl | Cykliczne |
-| Powtarzanie co | 1 godzina |
+| Name (Nazwa) | Co godzinę AutomationJobs |
+| Początek | Wybierz, w przypadku co najmniej pięć minut późniejsza niż bieżąca godzina. |
+| Cykl | Cyklicznie |
+| Powtarzaj co | 1 godzina |
 | Wygaśnięcie zestawu | Nie |
 
 Po utworzeniu harmonogramu, należy określić wartości parametrów, które będzie używane przy każdym tego harmonogramu uruchamiania elementu runbook.
@@ -210,7 +210,7 @@ Zawsze, gdy element runbook jest uruchamiany, [tworzone jest zadanie](../automat
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Użyj [Widok projektanta](../log-analytics/log-analytics-view-designer.md) utworzyć widok wyświetlanie danych zebranych w repozytorium analizy dzienników.
 - Pakiet w elemencie runbook [rozwiązania do zarządzania](operations-management-suite-solutions-creating.md) do dystrybucji do klientów.
 - Dowiedz się więcej o [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/).

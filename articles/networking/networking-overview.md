@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-networking"></a>Sieć platformy Azure
 
@@ -37,7 +37,7 @@ Platforma Azure oferuje szeroką gamę możliwości sieciowych, które mogą by�
 
 Zasobów platformy Azure, takich jak maszyny wirtualne, usługi w chmurze, zestawy skalowania maszyn wirtualnych i środowiska usługi Azure App Service może komunikować się przez użytkowników ze sobą za pośrednictwem sieci wirtualnej platformy Azure (VNet). Sieci wirtualnej jest logiczną izolacją chmury Azure w wersji dedykowanej do Twojej [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Można zaimplementować wiele sieci wirtualnych w ramach każdej subskrypcji platformy Azure i Azure [region](https://azure.microsoft.com/regions). Każda sieć wirtualna jest odizolowana od innych sieci wirtualnych. Dla każdej sieci wirtualnej można:
 
-- Określ niestandardowe prywatnych przestrzeni adresów IP przy użyciu prywatnych i publicznych adresów (RFC 1918). Przypisuje Azure zasoby podłączone do sieci wirtualnej prywatnego adresu IP z przestrzeń adresów, które można przypisać.
+- Określenie niestandardowej prywatnej przestrzeni adresowej IP przy użyciu adresów publicznych i prywatnych (RFC 1918). Przypisuje Azure zasoby podłączone do sieci wirtualnej prywatnego adresu IP z przestrzeń adresów, które można przypisać.
 - Segment sieci wirtualnej do co najmniej jednej podsieci i przydzielić część przestrzeni adresowej sieci wirtualnej dla każdej podsieci.
 - Użyj rozpoznawania nazw platformy Azure lub Podaj własny serwer DNS do użytku przez zasoby podłączone do sieci wirtualnej.
 
@@ -64,7 +64,7 @@ Na poniższej ilustracji przedstawiono oddzielne punktu połączenia do lokacji 
 
 ![Punkt-lokacja](./media/networking-overview/point-to-site.png)
 
-To połączenie zostanie nawiązane między jednego komputera i sieci wirtualnej. Tego typu połączenia jest doskonałym, jeśli tylko rozpoczniesz pracę z platformą Azure, lub dla deweloperów, ponieważ wymaga żadnych zmian w istniejącej sieci. Istnieje również wygodne, gdy nawiązujesz połączenie z lokalizacji zdalnej, takich jak konferencji lub macierzystego. Połączenia punkt lokacja często są połączone z połączenia lokacja lokacja za pomocą tej samej bramy sieci wirtualnej. Połączenie korzysta z protokołu SSTP zapewnienie szyfrowaną komunikację przez Internet między komputerem a sieci wirtualnej. Opóźnienie dla sieci VPN punkt lokacja jest nieprzewidziany, ponieważ dane są przesyłane za pośrednictwem Internetu.
+To połączenie zostanie nawiązane między jednego komputera i sieci wirtualnej. Ten typ połączenia jest świetny, jeśli dopiero rozpoczynasz pracę z platformą Azure. Jest też odpowiedni dla deweloperów, ponieważ wymaga niewielkich zmian w istniejącej sieci lub nie wymaga ich wcale. Istnieje również wygodne, gdy nawiązujesz połączenie z lokalizacji zdalnej, takich jak konferencji lub macierzystego. Połączenia punkt lokacja często są połączone z połączenia lokacja lokacja za pomocą tej samej bramy sieci wirtualnej. Połączenie korzysta z protokołu SSTP zapewnienie szyfrowaną komunikację przez Internet między komputerem a sieci wirtualnej. Opóźnienie dla sieci VPN punkt lokacja jest nieprzewidziany, ponieważ dane są przesyłane za pośrednictwem Internetu.
 
 **Lokacja lokacja (tunel VPN IPsec i IKE)**
 
@@ -155,7 +155,7 @@ Można wdrożyć i skonfigurować zasoby sieci platformy Azure za pomocą dowoln
 
 ## <a name="pricing"></a>Cennik
 
-Niektóre sieci usług Azure mają opłat, a inne są wolne. Widok [sieci wirtualnej](https://azure.microsoft.com/pricing/details/virtual-network), [bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway), [brama aplikacji w](https://azure.microsoft.com/en-us/pricing/details/application-gateway/), [modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer), [obserwatora sieciowego](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) i [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) cennik strony, aby uzyskać więcej informacji.
+Niektóre sieci usług Azure mają opłat, a inne są wolne. Widok [sieci wirtualnej](https://azure.microsoft.com/pricing/details/virtual-network), [bramy sieci VPN](https://azure.microsoft.com/pricing/details/vpn-gateway), [brama aplikacji w](https://azure.microsoft.com/pricing/details/application-gateway/), [modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer), [obserwatora sieciowego](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) i [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) cennik strony, aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

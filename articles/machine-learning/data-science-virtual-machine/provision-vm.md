@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.openlocfilehash: 34bdbf6e98d5232bf924f3f32a2acb3460a7737f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 445b18dee9efa9561ba1274ef59a9a426332d745
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej nauki danych systemu Windows, na platformie Azure
 Maszyna wirtualna nauki danych firmy Microsoft znajduje się obraz maszyny wirtualnej (VM) systemu Windows Azure wstępnie zainstalowany i skonfigurowany z kilku popularnych narzędzi, które są często używane do analizy danych i uczenia maszynowego. Narzędzia uwzględnione są:
 
-* [Uczenie maszynowe Azure](../preview/index.yml) Workbench
+* [Uczenie maszynowe Azure](../service/index.yml) Workbench
 * [Microsoft Machine Learning serwera](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
 * Dystrybucję oprogramowania Python anaconda
 * Notesu Jupyter (z R, Python, jądra PySpark)
@@ -192,7 +192,7 @@ Azure Machine Learning Workbench jest aplikacją i interfejsu wiersza polecenia.
 Poniżej przedstawiono niektóre kolejne kroki, aby kontynuować learning eksploracji. 
 
 * Poznaj różnych narzędzi analizy danych na nauki danych maszyny Wirtualnej, klikając start menu i wyewidencjonowywanie wymienionych w menu Narzędzia.
-* Dowiedz się więcej o Azure Machine Learning usług i Workbench, przechodząc na stronę produktu [strony Szybki Start i samouczki](../preview/index.yml). 
+* Dowiedz się więcej o Azure Machine Learning usług i Workbench, przechodząc na stronę produktu [strony Szybki Start i samouczki](../service/index.yml). 
 * Przejdź do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** dla przykładów przy użyciu biblioteki RevoScaleR w R obsługującego analizy danych w skali przedsiębiorstwa.  
 * Przeczytaj artykuł: [10 sposobów na nauki danych maszyny wirtualnej](http://aka.ms/dsvmtenthings)
 * Dowiedz się, jak tworzyć kompleksowe rozwiązania analityczne systematycznie przy użyciu [proces nauki danych zespołu](../team-data-science-process/index.yml).

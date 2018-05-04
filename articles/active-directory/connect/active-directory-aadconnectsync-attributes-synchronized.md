@@ -1,11 +1,11 @@
 ---
-title: "Atrybuty są synchronizowane przy użyciu usługi Azure AD Connect | Dokumentacja firmy Microsoft"
-description: "Wyświetla listę atrybutów, które są synchronizowane z usługą Azure Active Directory."
+title: Atrybuty są synchronizowane przy użyciu usługi Azure AD Connect | Dokumentacja firmy Microsoft
+description: Wyświetla listę atrybutów, które są synchronizowane z usługą Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez synchronizacja programu Azure AD Connect.  
@@ -42,7 +42,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | cn |X | |
 | Nazwa wyświetlana |X | |
 | objectSID |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
-| pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używana przez synchronizacji haseł i federacji. |
+| pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | sourceAnchor |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
 | usageLocation |X |tych właściwości. Kraju użytkownika. Używany do przypisywania licencji. |
 | userPrincipalName |X |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków taki sam jak [poczty] wartości. |
@@ -88,7 +88,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| manager |X |X | | |
+| Menedżer |X |X | | |
 | Element członkowski | | |X | |
 | Telefon komórkowy |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
@@ -157,8 +157,8 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | securityEnabled | | |X |Pochodne groupType |
 | SN |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
-| st |X |X | | |
-| streetAddress |X |X | | |
+| St |X |X | | |
+| Adres |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | TelephoneNumber |X |X | | |
@@ -212,7 +212,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | Poczty |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
-| manager |X |X | | |
+| Menedżer |X |X | | |
 | Element członkowski | | |X | |
 | middleName |X |X | | |
 | Telefon komórkowy |X |X | | |
@@ -234,21 +234,21 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | postOfficeBox |X |X | |Ten atrybut jest obecnie nie są używane przez usługi SharePoint Online. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używana przez synchronizacji haseł i federacji. |
+| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Pochodne groupType |
 | SN |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
-| st |X |X | | |
-| streetAddress |X |X | | |
+| St |X |X | | |
+| Adres |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | TelephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | tytuł |X |X | | |
 | unauthOrig |X |X |X | |
-| adres url |X |X | | |
+| url |X |X | | |
 | usageLocation |X | | |tych właściwości. Kraju użytkownika. Używany do przypisywania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków taki sam jak [poczty] wartości. |
 | wWWHomePage |X |X | | |
@@ -272,7 +272,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | Poczty |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| manager |X |X | | |
+| Menedżer |X |X | | |
 | Element członkowski | | |X | |
 | Telefon komórkowy |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
@@ -289,12 +289,12 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używana przez synchronizacji haseł i federacji. |
+| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | securityEnabled | | |X |Pochodne groupType |
 | SN |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
-| st |X |X | | |
-| streetAddress |X |X | | |
+| St |X |X | | |
+| Adres |X |X | | |
 | TelephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | tytuł |X |X | | |
@@ -331,7 +331,7 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | Element członkowski | | |X | |
 | objectSID |X | |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używana przez synchronizacji haseł i federacji. |
+| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | securityEnabled | | |X |Pochodne groupType |
 | sourceAnchor |X |X |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
 | usageLocation |X | | |tych właściwości. Kraju użytkownika. Używany do przypisywania licencji. |
@@ -352,19 +352,19 @@ W takim przypadku zaczynać się na liście atrybutów w tym temacie i zidentyfi
 | givenName |X |X | | |
 | l |X |X | | |
 | managedBy | | |X | |
-| manager |X |X | | |
+| Menedżer |X |X | | |
 | Element członkowski | | |X | |
 | Telefon komórkowy |X |X | | |
 | objectSID |X | |X |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używana przez synchronizacji haseł i federacji. |
+| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | securityEnabled | | |X |Pochodne groupType |
 | SN |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
-| st |X |X | | |
-| streetAddress |X |X | | |
+| St |X |X | | |
+| Adres |X |X | | |
 | TelephoneNumber |X |X | | |
 | tytuł |X |X | | |
 | usageLocation |X | | |tych właściwości. Kraju użytkownika. Używany do przypisywania licencji. |
@@ -390,7 +390,7 @@ Ta grupa jest zestaw atrybutów, które mogą być używane, jeśli katalog usł
 | Element członkowski | | |X | |
 | objectSID |X | | |tych właściwości. Identyfikator użytkownika AD służy do utrzymywania synchronizacji między Azure AD i usługi AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używana przez synchronizacji haseł i federacji. |
+| pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez funkcje synchronizacji skrótów haseł, uwierzytelnianie i federacji. |
 | SN |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niezmienne identyfikator, aby utrzymać relację między DODAJE i Azure AD. |
 | usageLocation |X | | |tych właściwości. Kraju użytkownika. Używany do przypisywania licencji. |
@@ -416,7 +416,7 @@ Te atrybuty **użytkownika** są oprócz wybrano inne aplikacje.
 | Nazwa atrybutu | Użytkownik | Komentarz |
 | --- |:---:| --- |
 | domainFQDN |X |Skrót NazwaDomenyDNS. Na przykład contoso.com. |
-| domainNetBios |X |Also called netBiosName. Na przykład CONTOSO. |
+| domainNetBios |X |Skrót netBiosName. Na przykład CONTOSO. |
 
 ## <a name="exchange-hybrid-writeback"></a>Zapisywanie zwrotne hybrydowego programu Exchange
 Te atrybuty są zapisywane z usługi Azure AD do lokalnej usługi Active Directory po wybraniu umożliwiające **hybrydowym programu Exchange**. W zależności od używanej wersji programu Exchange mogą być synchronizowani mniej atrybutów.
@@ -455,14 +455,14 @@ Obiekty urządzeń są tworzone w usłudze Active Directory. Te obiekty mogą by
 | dn |X | |
 | msDS-CloudAnchor |X | |
 | msDS-DeviceID |X | |
-| msDS-DeviceObjectVersion |X | |
+| atrybut msDS-DeviceObjectVersion |X | |
 | msDS-DeviceOSType |X | |
 | atrybut msDS-DeviceOSVersion |X | |
 | atrybut msDS-DevicePhysicalIDs |X | |
 | msDS-KeyCredentialLink |X |Tylko ze schematem systemu Windows Server 2016 AD |
 | msDS-IsCompliant |X | |
 | msDS-IsEnabled |X | |
-| msDS-IsManaged |X | |
+| atrybut msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
 ## <a name="notes"></a>Uwagi

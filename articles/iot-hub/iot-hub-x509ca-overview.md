@@ -1,12 +1,12 @@
 ---
-title: "Omówienie zabezpieczeń usługi Azure IoT Hub X.509 certyfikacji | Dokumentacja firmy Microsoft"
-description: "Przegląd — jak do uwierzytelniania urządzeń do Centrum IoT przy użyciu X.509 urzędów certyfikacji."
+title: Omówienie zabezpieczeń usługi Azure IoT Hub X.509 certyfikacji | Dokumentacja firmy Microsoft
+description: Przegląd — jak do uwierzytelniania urządzeń do Centrum IoT przy użyciu X.509 urzędów certyfikacji.
 services: iot-hub
 documentationcenter: .net
 author: eustacea
 manager: arjmands
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 11f340ebe1719c680cce5f6ad34150d3717c57d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzenia za pomocą certyfikatów X.509 urzędu certyfikacji
 
@@ -29,7 +29,7 @@ W tym artykule opisano sposób używania certyfikatów X.509 certyfikatu urzędu
 * Jak zarejestrować urządzenia za pomocą certyfikatów X.509 urzędu certyfikacji
 * Sposób uwierzytelniania urządzenia podpisany z urzędem certyfikacji X.509
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Funkcja X.509 urzędu certyfikacji umożliwia uwierzytelnianie urządzenia z Centrum IoT przy użyciu certyfikatu urzędu certyfikacji. Jego jest znacznie ułatwione procesu rejestracji urządzenie początkowe i logistyki łańcucha dostaw podczas produkcji urządzenia. [Dowiedz się więcej w tym artykule scenariuszu o wartości elementu za pomocą certyfikatów X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md) uwierzytelniania urządzenia.  Firma Microsoft zachęca do przeczytaj ten artykuł scenariusz przed kontynuowaniem, jak wyjaśniono, dlaczego czynności, które wykonują istnieje.
 
@@ -69,7 +69,7 @@ W tej części wyjaśniono sposób [zarejestrować certyfikat urzędu certyfikac
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Jak utworzyć urządzenie w Centrum IoT
 
-Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga powiadomienie go, które urządzenia mogą się spodziewać.  Można to zrobić, tworząc wpis urządzenia w rejestrze urządzeń Centrum IoT.  Ten proces jest zautomatyzowany, korzystając z Centrum IoT [usługi inicjowania obsługi urządzeń](https://azure.microsoft.com/en-us/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (punktu dystrybucji). 
+Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga powiadomienie go, które urządzenia mogą się spodziewać.  Można to zrobić, tworząc wpis urządzenia w rejestrze urządzeń Centrum IoT.  Ten proces jest zautomatyzowany, korzystając z Centrum IoT [usługi inicjowania obsługi urządzeń](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (punktu dystrybucji). 
 
 W tej części wyjaśniono sposób [ręcznie utworzyć urządzenie w Centrum IoT](iot-hub-security-x509-get-started.md#createdevice).
 

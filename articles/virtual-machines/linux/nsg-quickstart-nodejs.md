@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: e94b2ee3a14e9046703b66c00e3ba1a305dd3a7d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9520f76ed2ed1d9953f887bc27003e3e640341ba
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-10"></a>Otwieranie portów i punktów końcowych do maszyny Wirtualnej systemu Linux na platformie Azure przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 Otwarcie portu lub utworzyć punkt końcowy z maszyną wirtualną (VM) na platformie Azure, tworząc filtr sieci w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontrolują ruchu przychodzącego i wychodzącego, można umieścić na grupę zabezpieczeń sieci dołączony do tego zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule przedstawiono sposób otwierania portu z maszyną wirtualną za pomocą 1.0 interfejsu wiersza polecenia platformy Azure.
@@ -83,7 +83,7 @@ azure network vnet subnet set \
 ## <a name="more-information-on-network-security-groups"></a>Więcej informacji na temat grup zabezpieczeń sieci
 Szybkie polecenia tutaj pozwala rozpocząć pracę z ruchem przepływać do maszyny Wirtualnej. Grupy zabezpieczeń sieci zapewniają wiele funkcje i poziom szczegółowości kontrolowania dostępu do zasobów. Możesz przeczytać dodatkowe informacje [Tworzenie grupy zabezpieczeń sieci i listy ACL zasady tutaj](../../virtual-network/tutorial-filter-network-traffic-cli.md).
 
-Grupy zabezpieczeń sieci i reguły list kontroli dostępu można zdefiniować jako część szablonów usługi Azure Resource Manager. Przeczytaj więcej na temat [tworzenie grup zabezpieczeń sieci z szablonami](../../virtual-network/virtual-networks-create-nsg-arm-template.md).
+Grupy zabezpieczeń sieci i reguły list kontroli dostępu można zdefiniować jako część szablonów usługi Azure Resource Manager. Przeczytaj więcej na temat [tworzenie grup zabezpieczeń sieci z szablonami](../../virtual-network/template-samples.md).
 
 Jeśli musisz użyć przekierowania portów do mapowania unikatowy portu zewnętrznego wewnętrznego portu na maszynie Wirtualnej, należy użyć modułu równoważenia obciążenia i reguły translatora adresów sieciowych (NAT). Na przykład można ujawnić zewnętrznie TCP port 8080 i ruch kierowany aby port TCP 80 na maszynie Wirtualnej. Informacje na temat [tworzenia modułu równoważenia obciążenia internetowy](../../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 6bc2c63e75e9c750da852b77e4486666c3fc8561
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdd7dbf4f39529ac76fb496f0d459577e6f929dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczeń platformy Azure i plan zgodności - dane kondycji HIPAA/HITRUST i AI
 
@@ -356,7 +356,7 @@ Rozwiązanie obsługuje Azure zdarzeń siatki, pojedynczą usługę zarządzania
 
 
 -   [Rejestrowanie jest włączone](/azure/machine-learning/studio/web-services-logging) do uczenia maszynowego usługi sieci web.
-- przy użyciu [uczenia maszynowego](/azure/machine-learning/preview/experimentation-service-configuration) workbench wymaga opracowania eksperymentów, który zapewnia możliwość prognozowania z zestawem rozwiązania. [Integrowanie workbench](/azure/machine-learning/preview/using-git-ml-project) może usprawnić zarządzanie eksperymentów.
+- przy użyciu [uczenia maszynowego](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench wymaga opracowania eksperymentów, który zapewnia możliwość prognozowania z zestawem rozwiązania. [Integrowanie workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) może usprawnić zarządzanie eksperymentów.
 
 ## <a name="security"></a>ZABEZPIECZENIA
 

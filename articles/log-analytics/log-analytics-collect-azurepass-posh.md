@@ -1,12 +1,12 @@
 ---
-title: "Zbieranie metryk zasobów Azure PaaS z Log Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak włączyć kolekcję metryki zasobów Azure PaaS do przechowywania i analiz w analizy dzienników przy użyciu programu PowerShell."
+title: Zbieranie metryk zasobów Azure PaaS z Log Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć kolekcję metryki zasobów Azure PaaS do przechowywania i analiz w analizy dzienników przy użyciu programu PowerShell.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 83491c4902dabc6bab1e222551298cfaffbaecf4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 8a2c04c2f79f310b7e70e7add7a8d5f318f056d2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurowanie zbierania metryk zasobów Azure PaaS z analizy dzienników
 
@@ -57,7 +57,7 @@ Wykonaj poniższe kroki, aby pobrać i uruchom skrypt.
     PS C:\> save-script -Name Enable-AzureRMDiagnostics -Path "C:\users\<username>\desktop\temp"
     ```
 
-3. Uruchom `Login-AzureRmAccount` można utworzyć połączenia z platformą Azure.   
+3. Uruchom polecenie `Connect-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.   
 4. Uruchom poniższy skrypt `.\Enable-AzureRmDiagnostics.ps1` bez żadnych parametrów, aby włączyć zbieranie danych z określonego zasobu w ramach subskrypcji lub z parametrem `-ResourceGroup <myResourceGroup>` określenie zasobu w określonej grupy zasobów.   
 5. Wybierz odpowiednią subskrypcję z listy, jeśli masz więcej niż jeden, wprowadzając prawidłową wartość.<br><br> ![Wybierz subskrypcję zwróconych przez skrypt](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> W przeciwnym razie powoduje automatyczne wybranie jednego dostępnych subskrypcji.
 6. Następnie skrypt zwraca listę obszarów roboczych usługi Analiza dzienników zarejestrowany w ramach subskrypcji.  Wybierz odpowiednie jedną, z listy.<br><br> ![Wybierz obszar roboczy zwróconych przez skrypt](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 

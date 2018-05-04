@@ -1,6 +1,6 @@
 ---
-title: "Galeria elementów Runbook i modułów dla usługi Automatyzacja Azure"
-description: "Elementy Runbook i modułów firmy Microsoft i społecznością są dostępne, można zainstalować i używać w środowisku usługi Automatyzacja Azure.  W tym artykule opisano, jak można dostęp do tych zasobów i do ich współtworzenia elementy runbook do galerii."
+title: Galeria elementów Runbook i modułów dla usługi Automatyzacja Azure
+description: Elementy Runbook i modułów firmy Microsoft i społecznością są dostępne, można zainstalować i używać w środowisku usługi Automatyzacja Azure.  W tym artykule opisano, jak można dostęp do tych zasobów i do ich współtworzenia elementy runbook do galerii.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6a9298c0b7331bfa8af76eb904d256f6302816bf
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fe0e38e384f9f3d40bc6f7556cdb5e6dee9b4395
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów dla usługi Automatyzacja Azure
 Zamiast tworzenia własnych elementów runbook i modułów w automatyzacji Azure, można uzyskać dostępu do szerokiej gamy scenariuszy, które zostały już utworzone przez firmę Microsoft i społecznością.  Możesz użyć tych scenariuszy bez żadnych modyfikacji lub można ich używać jako punktu wyjścia i edytować je do swoich specyficznych wymagań.
@@ -25,7 +25,7 @@ Można pobrać elementów runbook z [galerię elementów Runbook](#runbooks-in-r
 Można importować tylko bezpośrednio z poziomu galerii elementu Runbook przy użyciu portalu Azure. Nie można wykonać tej funkcji za pomocą środowiska Windows PowerShell.
 
 > [!NOTE]
-> Należy sprawdzić, czy zawartość żadnych elementów runbook uzyskanie galerię elementów Runbook i należy zachować szczególną ostrożność przy instalacji i uruchamiania ich w środowisku produkcyjnym. |
+> Należy sprawdzić, czy zawartość żadnych elementów runbook uzyskanie galerię elementów Runbook i należy zachować szczególną ostrożność przy instalacji i uruchamiania ich w środowisku produkcyjnym.
 > 
 > 
 

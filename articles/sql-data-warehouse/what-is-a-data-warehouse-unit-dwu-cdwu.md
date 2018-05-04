@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a83a9f9332d81e02a83efc019ad56027316301ab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 94791e4dc3d3c841dde4685d34d4e3fdaf7d9af7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (dwu) i zasobów obliczeniowych jednostki magazynu danych (cDWUs)
 Zalecenia dotyczące wybierania idealne numer jednostki magazynu danych (dwu, cDWUs), aby zoptymalizować cen i wydajności oraz jak zmienić liczbę jednostek. 
@@ -36,19 +36,19 @@ Zwiększa liczbę jednostek dwu:
 - Zwiększa maksymalną liczbę równoczesnych zapytań i gniazda współbieżności.
 
 ## <a name="service-level-objective"></a>Cel poziomu usługi
-Cel poziomu usługi (SLO) jest ustawienie skalowalność, który określa poziom kosztów i wydajności magazynu danych. Poziomy usług dla zoptymalizowane dla skalowania warstwy wydajności obliczeniowe są mierzone w jednostki magazynu danych obliczeń (cDWU), na przykład DW2000c. Zoptymalizowane dla elastyczność poziomów usług są mierzone w dwu, na przykład DW2000. 
+Cel poziomu usługi (SLO) jest ustawienie skalowalność, który określa poziom kosztów i wydajności magazynu danych. Poziomy usług dla Gen2 są mierzone w jednostki magazynu danych obliczeń (cDWU), na przykład DW2000c. Poziomy usług Gen1 są mierzone w dwu, na przykład DW2000. 
 
 T-SQL ustawienie SERVICE_OBJECTIVE określa poziom usługi i warstwę wydajności magazynu danych.
 
 ```sql
---Optimized for Elasticity
+--Gen1
 CREATE DATABASE myElasticSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000'
 )
 ;
 
---Optimized for Compute
+--Gen2
 CREATE DATABASE myComputeSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000c'
@@ -60,12 +60,12 @@ WITH
 
 Każda warstwa wydajności używa nieco inne jednostki miary ich jednostki magazynu danych. Ta różnica jest widoczny na fakturze jako jednostki skali bezpośrednio przekłada do rozliczeń.
 
-- Zoptymalizowana dla warstwy wydajności elastyczność jest mierzony w jednostki magazynu danych (dwu).
-- Zoptymalizowane dla warstwy wydajności obliczeniowej jest mierzony w obliczeniowe jednostki magazynu danych (cDWUs). 
+- Magazyny danych Gen1 są mierzone w jednostki magazynu danych (dwu).
+- Warehousesr danych Gen2 są mierzone w obliczeń jednostki magazynu danych (cDWUs). 
 
-Zarówno jednostek dwu i cDWUs obsługuje obliczeń skalowania w górę lub w dół, a wstrzymanie obliczeniowe, gdy nie jest konieczne do użycia w magazynie danych. Operacje te są wszystkie na żądanie. Zoptymalizowane dla obliczania warstwę wydajności również korzysta z lokalnej pamięci podręcznej opartej na dysku w węzłach obliczeniowych do zwiększenia wydajności. Skalować lub wstrzymać systemu unieważnienia pamięci podręcznej i dlatego okres wstępne pamięci podręcznej jest wymagany, zanim optymalna wydajność jest osiągana.  
+Zarówno jednostek dwu i cDWUs obsługuje obliczeń skalowania w górę lub w dół, a wstrzymanie obliczeniowe, gdy nie jest konieczne do użycia w magazynie danych. Operacje te są wszystkie na żądanie. Gen2 używa lokalnej pamięci podręcznej opartej na dysku w węzłach obliczeniowych, aby zwiększyć wydajność. Skalować lub wstrzymać systemu unieważnienia pamięci podręcznej i dlatego okres wstępne pamięci podręcznej jest wymagany, zanim optymalna wydajność jest osiągana.  
 
-Wraz ze zwiększaniem jednostki magazynu danych są liniowo zwiększanie zasobów obliczeniowych. Zoptymalizowane dla obliczania warstwę wydajności zapewnia najlepszą wydajność zapytań i najwyższy skali, lecz jest wyższe ceny wejścia. Jest on przeznaczony dla firm, które mają stałą zapotrzebowanie na wydajność. Te systemy wykorzystują większości pamięci podręcznej. 
+Wraz ze zwiększaniem jednostki magazynu danych są liniowo zwiększanie zasobów obliczeniowych. Gen2 zapewnia najlepszą wydajność zapytań i najwyższy skali, ale ma wyższą cenę wpisu. Jest on przeznaczony dla firm, które mają stałą zapotrzebowanie na wydajność. Te systemy wykorzystują większości pamięci podręcznej. 
 
 ### <a name="capacity-limits"></a>Limity pojemności
 Każdy serwer SQL (na przykład myserver.database.windows.net) ma [jednostka transakcji bazy danych (DTU)](../sql-database/sql-database-what-is-a-dtu.md) przydziału, który umożliwia określoną liczbę jednostki magazynu danych. Aby uzyskać więcej informacji, zobacz [limity pojemności zarządzania obciążenia](sql-data-warehouse-service-capacity-limits.md#workload-management).
@@ -76,10 +76,9 @@ Nadaje się doskonale liczbę jednostek magazynu danych zależy od znacznie obci
 
 Kroki do znajdowania wartość DWU najlepsze dla obciążenia:
 
-1. Podczas tworzenia Rozpocznij od wybrania mniejszych DWU, przy użyciu zoptymalizowane dla warstwy wydajności elastyczność.  Ponieważ dotyczą na tym etapie weryfikacji funkcjonalności, zoptymalizowane dla warstwy wydajności elastyczność jest uzasadnione opcji. Dobry punkt wyjścia jest DW200. 
+1. Rozpocznij od wybrania mniejsze wartości DWU. 
 2. Jak przetestowaniu ilości danych do systemu, obserwowania liczby jednostek dwu wybrane w porównaniu do wydajności, które należy obserwować, należy monitorować wydajność aplikacji.
-3. Zidentyfikować wszelkie dodatkowe wymagania dla okresowe okresów szczytowego działania. Jeśli obciążenie zawiera znaczące pików i koryta w działaniu i powody często skalowanie, a następnie Preferuj zoptymalizowane dla warstwy wydajności elastyczność.
-4. Jeśli potrzebujesz więcej niż 1000 DWU, następnie Preferuj zoptymalizowane dla warstwy wydajności obliczeniowej, ponieważ zapewnia najlepszą wydajność.
+3. Zidentyfikować wszelkie dodatkowe wymagania dla okresowe okresów szczytowego działania. Jeśli obciążenie zawiera znaczące pików i koryta w działaniu i powody często skalowania.
 
 Usługa SQL Data Warehouse to system skalowalnego w poziomie, który można udostępnić czasach ogromne ilości obliczeniowych i zapytania duże ilości danych. Aby wyświetlić jego wartość true, możliwości skalowania, zwłaszcza na większą liczbę jednostek dwu, zaleca się skalowanie zestawu danych podczas skalowania, aby upewnić się, że masz za mało danych do źródła danych procesorów CPU. Do testowania skali, firma Microsoft zaleca używanie co najmniej 1 TB.
 
@@ -117,7 +116,7 @@ Aby zmienić liczbę jednostek dwu lub cDWUs:
 
 2. W obszarze **skali**, przesuń suwak w lewo lub kliknij prawym przyciskiem myszy, aby zmienić ustawienie wartości DWU.
 
-3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **tak** o potwierdzenie lub **nie** do anulowania.
+3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat z potwierdzeniem. Kliknij pozycję **tak**, aby potwierdzić, lub **nie**, aby anulować.
 
 ### <a name="powershell"></a>PowerShell
 Aby zmienić liczbę jednostek dwu lub cDWUs, użyj [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) polecenia cmdlet programu PowerShell. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW, który znajduje się na serwerze MyServer bazy danych.

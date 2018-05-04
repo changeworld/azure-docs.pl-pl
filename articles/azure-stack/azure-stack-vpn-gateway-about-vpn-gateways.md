@@ -1,11 +1,11 @@
 ---
 title: Temat bramy sieci VPN Azure stosu | Dokumentacja firmy Microsoft
-description: "Dowiedz się więcej o i konfigurowanie bramy sieci VPN, używanych w usłudze Azure stosu."
+description: Dowiedz się więcej o i konfigurowanie bramy sieci VPN, używanych w usłudze Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ba9642d8c51f57623aded44b84d7127334806bc1
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
-ms.translationtype: MT
+ms.openlocfilehash: 10b2bf863540330a57b5aecac438f2b9e4bc8a74
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Brama sieci VPN Azure stosu — informacje
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
@@ -26,11 +26,11 @@ ms.lasthandoff: 12/02/2017
 
 Przed wysłaniem ruch sieciowy między sieci wirtualnej platformy Azure i witryny lokalnej, należy utworzyć bramę sieci wirtualnej dla sieci wirtualnej.
 
-Brama sieci VPN jest typem bramy sieci wirtualnej, który wysyła zaszyfrowany ruch sieciowy przez połączenie publiczne. Bramy sieci VPN można użyć do wysyłania ruchu bezpiecznie między sieci wirtualnej Azure stosu i sieć wirtualna na platformie Azure lub między sieci wirtualnej, a inna sieć podłączoną do urządzenia sieci VPN.
+Brama sieci VPN jest typem bramy sieci wirtualnej, który wysyła zaszyfrowany ruch sieciowy przez połączenie publiczne. Bramy sieci VPN można użyć do wysyłania ruchu bezpiecznie między sieć wirtualną w stosie Azure i siecią wirtualną platformy Azure. Można również wysyłać ruch bezpiecznie między sieci wirtualnej, a inna sieć podłączoną do urządzenia sieci VPN.
 
 Podczas tworzenia bramy sieci wirtualnej musisz wybrać typ bramy do utworzenia. Stos Azure obsługuje jeden typ bramy sieci wirtualnej: typ "Vpn".
 
-Każda sieć wirtualna może mieć tylko dwie bramy sieci wirtualnych, ale może istnieć tylko jedna brama danego typu. W zależności od wybranych ustawień można utworzyć wiele połączeń z jedną bramą sieci VPN. Przykładem może być konfiguracja połączenia obejmującego wiele lokacji.
+Każda sieć wirtualna może mieć tylko dwie bramy sieci wirtualnych, ale może istnieć tylko jedna brama danego typu. W zależności od wybranych ustawień można utworzyć wiele połączeń z jedną bramą sieci VPN. Przykładem jest konfigurację połączenia z wieloma lokacjami.
 
 > [!NOTE]
 > Na platformie Azure przepływności przepustowości zostanie wybrana jednostka SKU bramy sieci VPN musi być podzielone między wszystkich połączeń, które są połączone.  W stosie Azure wartość przepustowości dla jednostki SKU bramy sieci VPN jest stosowany do każdego zasobu połączenia, który jest połączony.     
@@ -46,10 +46,10 @@ Połączenie bramy sieci VPN bazuje na wielu zasobach konfigurowanych przy użyc
 Ustawienia wybrane dla każdego zasobu mają kluczowe znaczenie dla utworzenia prawidłowego połączenia. Aby uzyskać informacje dotyczące poszczególnych zasobów i ustawień dla bramy sieci VPN, zobacz [ustawienia bramy sieci VPN o stosu Azure](azure-stack-vpn-gateway-settings.md). Informacje pomagające zrozumieć typy bramy, typy sieci VPN, typów połączeń, podsieci bramy, bramy sieci lokalnej i różne ustawienia zasobów, w których warto rozważyć można znaleźć.
 
 ### <a name="deployment-tools"></a>Narzędzia wdrażania
-Możesz rozpocząć tworzenie i konfigurowanie zasobów za pomocą jednego narzędzia konfiguracji, takiego jak witryna Azure Portal. Później możesz zdecydować się przełączyć do innego narzędzia, takiego jak program PowerShell, w celu skonfigurowania dodatkowych zasobów lub zmodyfikowania istniejących zasobów, jeśli jest to wymagane. Obecnie nie wszystkie zasoby i ustawienia zasobów można skonfigurować w witrynie Azure Portal. Instrukcje w artykułach dotyczących poszczególnych topologii połączeń określają, kiedy potrzebne jest konkretne narzędzie konfiguracji.
+Można tworzyć i konfigurować zasobów za pomocą jednego narzędzia konfiguracji, takich jak portalu Azure. Później może przełączyć się do innego narzędzia, takiego jak PowerShell, aby skonfigurować dodatkowe zasoby lub zmodyfikuj istniejące zasoby, jeśli jest to wymagane. Obecnie nie wszystkie zasoby i ustawienia zasobów można skonfigurować w witrynie Azure Portal. Instrukcje w artykułach dotyczących poszczególnych topologii połączeń określają, kiedy potrzebne jest konkretne narzędzie konfiguracji.
 
 ## <a name="connection-topology-diagrams"></a>Diagram topologii połączenia
-Dostępne są różne konfiguracje połączeń bramy sieci VPN. Należy określić, która konfiguracja najlepiej odpowiada Twoim wymaganiom. Poniższe sekcje zawierają informacje i diagramy topologii dotyczące następujących połączeń bramy sieci VPN: Poniższe sekcje zawierają tabele z informacjami o następujących elementach:
+Dostępne są różne konfiguracje połączeń bramy sieci VPN. Określ konfigurację, która najlepiej odpowiada potrzebom użytkownika. Poniższe sekcje zawierają informacje i diagramy topologii dotyczące następujących połączeń bramy sieci VPN: Poniższe sekcje zawierają tabele z informacjami o następujących elementach:
 
 - Dostępny model wdrażania
 - Dostępne narzędzia konfiguracji
@@ -78,7 +78,7 @@ Po wybraniu wyższej bramy jednostka SKU, takich jak standardowy za pośrednictw
 
 Stos Azure nie obsługuje bramy UltraPerformance jednostka SKU, które jest używane wyłącznie w przypadku Express Route.
 
-Podczas wybierania jednostki SKU należy wziąć pod uwagę następujące zagadnienia:
+Po wybraniu jednostki SKU, należy wziąć pod uwagę następujące:
 - Stos Azure nie obsługuje bramy oparte na zasadach.
 - Protokół BGP (Border Gateway) nie jest obsługiwana na podstawowy SKU.
 - Brama sieci VPN ExpressRoute współistnieją konfiguracje nie są obsługiwane w stosie Azure
@@ -87,13 +87,14 @@ Podczas wybierania jednostki SKU należy wziąć pod uwagę następujące zagadn
 ## <a name="estimated-aggregate-throughput-by-sku"></a>Szacowana agregowana przepływność według jednostki SKU
 W poniższej tabeli przedstawiono typy bram i szacowaną agregowaną przepływność według jednostek SKU bramy.
 
-|   | Przepływność bramy sieci VPN *(1)* |Max tuneli protokołu IPsec bramy sieci VPN |
+|   | Przepływność bramy sieci VPN *(1)* | Tuneli protokołu IPsec max bramy sieci VPN *(2)* |
 |-------|-------|-------|
-|**Podstawowy SKU** ***(2)***    | 100 Mb/s  | 10    |
+|**Podstawowy SKU** ***(3)***    | 100 Mb/s  | 10    |
 |**Standardowy SKU**       | 100 Mb/s  | 10    |
-|**SKU wysokiej wydajności** | 200 Mb/s    | 30    |
+|**SKU wysokiej wydajności** | 200 Mb/s    | 5 |
 ***(1)***  Przepływność sieci VPN nie jest gwarantowanej przepustowości dla połączeń między lokalizacjami w Internecie. Jest to maksymalna możliwa przepustowość.  
-***(2)***  BGP nie jest obsługiwana dla podstawowej jednostki SKU.
+***(2)***  Maksymalna liczba tuneli to suma dla wdrożenia usługi Azure stosu dla wszystkich subskrypcji.  
+***(3)***  BGP nie jest obsługiwana dla podstawowej jednostki SKU.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [ustawienia dla bram sieci VPN](azure-stack-vpn-gateway-settings.md) stosu Azure.

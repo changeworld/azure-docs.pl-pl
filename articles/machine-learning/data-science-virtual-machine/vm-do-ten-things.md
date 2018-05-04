@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: 09c48b92e39aa347c97d42358b50c338851fa59b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5f0961a99eac805e82cbc5e5d61c485f8661ba0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć czynności, które można wykonywać na dane nauki maszyny wirtualnej systemu Windows
 
-Maszyna wirtualna nauki danych firmy Microsoft (DSVM) jest środowisko projektowe nauki zaawansowanych danych, który umożliwia wykonywanie różnych zadań eksploracji i modelowanie danych. Środowisko zawiera już wbudowanych i powiązane z kilku popularnych danych analytics narzędzia, które ułatwiają szybkie rozpoczęcie pracy z analizy lokalnymi, chmury lub hybrydowej. DSVM ściśle współpracuje z wielu usług Azure i jest w stanie odczytywać i przetwarzać dane, które są już przechowywane na platformie Azure, Magazyn danych SQL Azure, usługa Azure Data Lake, usługi Azure Storage lub w usłudze Azure DB rozwiązania Cosmos. Może on również korzystać z innych narzędzi analizy, takich jak uczenie maszynowe Azure i fabryki danych Azure.
+Maszyna wirtualna nauki danych systemu Windows (DSVM) jest środowisko projektowe nauki zaawansowanych danych, który umożliwia wykonywanie różnych zadań eksploracji i modelowanie danych. Środowisko zawiera już wbudowanych i powiązane z kilku popularnych danych analytics narzędzia, które ułatwiają szybkie rozpoczęcie pracy z analizy dla lokalnego, w chmurze czy hybrydowa wdrożeń. DSVM ściśle współpracuje z wielu usług Azure i jest w stanie odczytywać i przetwarzać dane, które są już przechowywane na platformie Azure, Magazyn danych SQL Azure, usługa Azure Data Lake, usługi Azure Storage lub w usłudze Azure DB rozwiązania Cosmos. Można też skorzystać innych narzędzi analizy, takich jak uczenie maszynowe Azure i fabryki danych Azure.
 
 W tym artykule dowiesz się, jak używać programu DSVM do wykonywania różnych zadań nauki danych i interakcji z innymi usługami Azure. Poniżej podano niektóre czynności, które można wykonywać na DSVM:
 
@@ -208,7 +208,7 @@ Analityków danych może udostępniać dużych zestawów danych, kodu lub innych
 Przy użyciu programu Azure Powershell można utworzyć udział usługa plików Azure. Poniżej przedstawiono skrypt do uruchamiania programu Azure PowerShell, aby utworzyć udział plików Azure usługi.
 
     # Authenticate to Azure.
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     # Select your subscription
     Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
     # Create a new resource group.

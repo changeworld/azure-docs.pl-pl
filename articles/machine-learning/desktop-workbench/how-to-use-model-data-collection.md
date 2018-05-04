@@ -1,6 +1,6 @@
 ---
-title: "Użyj funkcji zbierania danych modelu w konsoli usługi Azure Machine Learning Workbench | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera informacje o sposobie używania funkcji zbierania danych modelu w Azure Machine Learning Workbench"
+title: Użyj funkcji zbierania danych modelu w konsoli usługi Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje o sposobie używania funkcji zbierania danych modelu w Azure Machine Learning Workbench
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
 ms.openlocfilehash: 2251f8d241f3ec47d46c04160caf997bcd025124
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Zbieranie danych modelu przy użyciu funkcji zbierania danych
 
@@ -38,7 +38,7 @@ Następnie uruchom następujące polecenie:
 
     pip install azureml.datacollector
 
-## <a name="set-environment-variables"></a>Ustaw zmienne środowiskowe
+## <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
 Zbieranie danych modelu zależy od dwóch zmiennych środowiskowych. Musi mieć ustawioną AML_MODEL_DC_STORAGE_ENABLED **true** (tylko małe litery) i AML_MODEL_DC_STORAGE musi być ustawione parametry połączenia dla konta usługi Magazyn Azure, w którym chcesz przechowywać dane.
 

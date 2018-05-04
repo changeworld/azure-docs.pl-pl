@@ -1,8 +1,8 @@
 ---
-title: "Umożliwia dostęp do usługi Azure Key Vault MSI maszyny Wirtualnej systemu Windows"
-description: "Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Key Vault."
+title: Umożliwia dostęp do usługi Azure Key Vault MSI maszyny Wirtualnej systemu Windows
+description: Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Key Vault.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 3c1f41f407dc85eac40d1aa545c588426db6a382
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c65e2dc3d1b7a754bda54bb9127bbc777b514768
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Umożliwia dostęp do usługi Azure Key Vault Windows wirtualna zarządzane usługi tożsamości (MSI) 
 
@@ -58,7 +58,7 @@ W tym samouczku utworzymy nową maszynę Wirtualną systemu Windows. Można rów
 
 ## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej 
 
-MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie MSI informuje Azure w celu utworzenia tożsamości zarządzanego dla maszyny wirtualnej. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: instalacji rozszerzenia maszyny Wirtualnej MSI w maszynie Wirtualnej, i umożliwia korzystanie z pliku MSI usługi Azure Resource Manager.
+MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie MSI informuje Azure w celu utworzenia tożsamości zarządzanego dla maszyny wirtualnej. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: rejestruje maszyny Wirtualnej w usłudze Azure Active Directory w celu utworzenia tożsamości zarządzanych i konfiguruje tożsamości na maszynie Wirtualnej.
 
 1.  Wybierz **maszyny wirtualnej** chcesz włączyć MSI.  
 2.  Na pasku nawigacyjnym po lewej stronie kliknij **konfiguracji**. 
@@ -66,10 +66,6 @@ MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure A
 4.  Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.  
 
     ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Jeśli chcesz sprawdzić i sprawdź, które rozszerzenia są na tej maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Jeśli MSI jest włączona, następnie **ManagedIdentityExtensionforWindows** pojawią się na liście.
-
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Przyznać uprawnienia maszyny Wirtualnej na kluczu tajnym przechowywane w magazynie kluczy 
  
@@ -112,25 +108,25 @@ Po pierwsze stosujemy MSI maszyny Wirtualnej do uzyskania tokenu dostępu do uwi
     Żądanie programu PowerShell:
     
     ```powershell
-    PS C:\> $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://vault.azure.net"} -Headers @{Metadata="true"} 
+    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -Method GET -Headers @{Metadata="true"} 
     ```
     
     Następnie Wyodrębnij całą odpowiedź, który jest przechowywany jako ciąg w formacie JavaScript Object Notation (JSON) w obiekcie $response.  
     
     ```powershell
-    PS C:\> $content = $response.Content | ConvertFrom-Json 
+    $content = $response.Content | ConvertFrom-Json 
     ```
     
     Następnie Wyodrębnij token dostępu z odpowiedzi.  
     
     ```powershell
-    PS C:\> $KeyVaultToken = $content.access_token 
+    $KeyVaultToken = $content.access_token 
     ```
     
     Na koniec użyj polecenia Invoke-WebRequest w programu PowerShell, można pobrać klucza tajnego utworzonego wcześniej w magazynie kluczy, przekazywanie tokenu dostępu w nagłówku autoryzacji.  Będziesz potrzebować adres URL magazynu kluczy, który znajduje się w **Essentials** sekcji **omówienie** strony magazynu kluczy.  
     
     ```powershell
-    PS C:\> (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
+    (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
     ```
     
     Odpowiedź będzie wyglądać następująco: 

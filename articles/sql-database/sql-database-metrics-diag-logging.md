@@ -10,18 +10,18 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki bazy danych SQL Azure i rejestrowanie danych diagnostycznych 
 Baza danych SQL Azure może emitować metryki i informacji diagnostycznych dzienników łatwiejsze monitorowania. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
 * **Usługa Azure Storage**: dla czasach ogromne ilości danych telemetrycznych dla małych ceny.
 * **Usługa Azure Event Hubs**: używany do integrowania telemetrii bazy danych SQL z niestandardowe rozwiązanie monitorowania lub gorących potoków.
-* **Analiza dzienników Azure**: używany dla poza pole rozwiązanie monitorowania, raportowania, alerty i zmniejszenia możliwości.
+* **Analiza dzienników Azure**: używany dla poza pole rozwiązanie monitorowania, raportowania, alerty i zmniejszenia możliwości. Jest to funkcja [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 

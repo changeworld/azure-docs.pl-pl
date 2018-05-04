@@ -1,11 +1,11 @@
 ---
-title: "Słownik dewelopera usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Lista warunków dla często używanych koncepcje dla deweloperów usługi Azure Active Directory i funkcji."
+title: Słownik dewelopera usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Lista warunków dla często używanych koncepcje dla deweloperów usługi Azure Active Directory i funkcji.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.devlang: na
@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 81e0778a0ae168170436213d8aa48c8d60575da2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik dewelopera usługi Azure Active Directory
 Ten artykuł zawiera definicje dla niektórych podstawowe koncepcje dla deweloperów usługi Azure Active Directory (AD), które są przydatne podczas nauki opracowywanie aplikacji dla usługi Azure AD.
 
-## <a name="access-token"></a>Token dostępu
+## <a name="access-token"></a>token dostępu
 Typ [tokenu zabezpieczającego](#security-token) wystawiony przez [serwera autoryzacji](#authorization-server)i używane przez [aplikacji klienckiej](#client-application) Aby uzyskać dostęp do [chroniony serwer zasobów](#resource-server). Zwykle w postaci [tokenu Web JSON (JWT)][JWT], token stanowią umocowania do klienta przez [właściciel zasobu](#resource-owner), żądany poziom dostępu. Token zawiera wszystkich odpowiednich [oświadczeń](#claim) związane z tym tematem, włączanie aplikacji klienckiej używać go jako formularza poświadczenia podczas uzyskiwania dostępu do zasobu. Eliminuje to potrzebę właściciela zasobów do udostępnienia poświadczeń do klienta.
 
 Tokeny dostępu są czasami określane jako "Użytkownik + aplikacja" lub "App tylko", w zależności od reprezentowanego poświadczenia. Na przykład, jeśli aplikacja kliencka używa:
@@ -79,7 +79,7 @@ Zgodnie z definicją w [Framework autoryzacji OAuth2][OAuth2-Role-Def], odpowied
 
 W przypadku integracji aplikacji usługi Azure AD, Azure AD implementuje rolę serwera autoryzacji dla aplikacji usługi Azure AD i usługi firmy Microsoft interfejsy API, na przykład [Microsoft Graph API][Microsoft-Graph].
 
-## <a name="claim"></a>Oświadczenia
+## <a name="claim"></a>oświadczenie
 A [tokenu zabezpieczającego](#security-token) zawiera oświadczenia, które zapewniają potwierdzenia jednostek o jednym (takich jak [aplikacji klienckiej](#client-application) lub [właściciel zasobu](#resource-owner)) do innej jednostki (na przykład [serwer zasobów](#resource-server)). Oświadczenia są pary nazwa/wartość, które przekazywania informacji o token podmiotu (na przykład przez został uwierzytelniony podmiot zabezpieczeń [serwera autoryzacji](#authorization-server)). Token zawiera danego oświadczenia są zależne od kilku zmiennych, takich jak typ tokenu, typ poświadczenia używany do uwierzytelniania na temat konfiguracji aplikacji, itp.
 
 Zobacz [odwołania do tokenu usługi Azure AD] [ AAD-Tokens-Claims] więcej szczegółów.
@@ -105,7 +105,7 @@ Zobacz [jak zarejestrować każdy użytkownik usługi Azure AD przy użyciu wzor
 ## <a name="native-client"></a>Aplikacja Native client
 Typ [aplikacji klienckiej](#client-application) oryginalnie zainstalowana na urządzeniu. Ponieważ cały kod jest wykonywane na urządzeniu, jest traktowane jako "public" klienta z powodu jego brakiem do przechowywania poświadczeń prywatnie/jako poufne. Zobacz [OAuth2 klienta typów i profile] [ OAuth2-Client-Types] więcej szczegółów.
 
-## <a name="permissions"></a>Uprawnienia
+## <a name="permissions"></a>uprawnienia
 A [aplikacji klienckiej](#client-application) uzyskuje dostęp do [serwer zasobów](#resource-server) przez zadeklarowanie żądanych uprawnień. Dostępne są dwa typy:
 
 * "Delegowane" uprawnienia, które określają [zakresu](#scopes) uzyskiwać dostęp za pomocą autoryzacji delegowania od zalogowanego [właściciel zasobu](#resource-owner), są widoczne dla zasobów w czasie wykonywania jako ["punkt połączenia usługi" oświadczenia](#claim) na komputerze klienckim [token dostępu](#access-token).
@@ -147,15 +147,15 @@ Gdy użytkownik rejestru/aktualizacji aplikacji w [portalu Azure][AZURE-portal],
 
 Zobacz [aplikacji i nazwy głównej usługi obiektów] [ AAD-App-SP-Objects] Aby uzyskać więcej informacji.
 
-## <a name="sign-in"></a>Logowanie
+## <a name="sign-in"></a>logowanie
 Proces [aplikacji klienckiej](#client-application) inicjowanie uwierzytelniania użytkownika końcowego i przechwytywanie stanu na potrzeby pobierania powiązane [tokenu zabezpieczającego](#security-token) i określania zakresu sesji aplikacji do tego stanu. Stanu może zawierać artefaktów na przykład informacje o profilu użytkownika i informacji pochodzących z tokenu oświadczeń.
 
 Funkcja logowania aplikacji jest zwykle używane do implementacji-jednokrotnej (SSO). Go może być poprzedzone funkcję "zapisywania do" jako punkt wejścia dla użytkownika końcowego w celu uzyskania dostępu do aplikacji (na po w wypadku pierwszego logowania). Funkcja tworzenia konta służy do zbierania i utrwalić stanu dodatkowe specyficzne dla użytkownika i może wymagać [zgody użytkownika](#consent).
 
-## <a name="sign-out"></a>wylogowania
+## <a name="sign-out"></a>wylogowanie
 Proces odinstalowywania uwierzytelniania użytkownika końcowego, odłączenie stanu użytkownika skojarzony z [aplikacji klienckiej](#client-application) sesji podczas [logowania](#sign-in)
 
-## <a name="tenant"></a>Dzierżawy
+## <a name="tenant"></a>dzierżawa
 Wystąpienie katalogu usługi Azure AD jest określana jako dzierżawa usługi Azure AD. Zapewnia kilka funkcji, takich jak:
 
 * Usługa rejestru dla zintegrowanych aplikacji
@@ -176,7 +176,7 @@ Podobnie jak obiekt główny usługi jest używana do reprezentowania wystąpien
 ## <a name="web-client"></a>Klient sieci Web
 Typ [aplikacji klienckiej](#client-application) , który jest wykonywany całego kodu na serwerze sieci web i może działać jako klient "poufne dane" przez bezpieczne przechowywanie swoich poświadczeń na serwerze. Zobacz [OAuth2 klienta typów i profile] [ OAuth2-Client-Types] więcej szczegółów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest strony docelowej, można użyć dla wdrożenia usługi Azure AD wszystkich powiązanych tematów, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] i podstawy [uwierzytelniania usługi Azure AD i scenariusze obsługiwane uwierzytelniania][AAD-Auth-Scenarios].  Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskiwania szybkiego skonfigurowania i uruchomienia na [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Użyj poniższej sekcji komentarzy, aby wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość, włącznie z żądaniami dostępność nowych definicji lub aktualizowania istniejących!
@@ -203,7 +203,7 @@ Użyj poniższej sekcji komentarzy, aby wyrazić swoją opinię i pomóc nam dos
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
-[O365-Perm-Ref]: https://msdn.microsoft.com/en-us/office/office365/howto/application-manifest
+[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3

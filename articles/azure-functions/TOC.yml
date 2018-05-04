@@ -97,6 +97,8 @@
           href: durable-functions-bindings.md
         - name: Punkt kontrolny i powtarzanie
           href: durable-functions-checkpointing-and-replay.md
+        - name: Stan niestandardowej aranżacji
+          href: durable-functions-custom-orchestration-status.md
         - name: Zarządzanie wystąpieniami
           href: durable-functions-instance-management.md
         - name: Interfejs API protokołu HTTP
@@ -181,6 +183,8 @@
           href: durable-functions-phone-verification.md
         - name: Testy jednostkowe
           href: durable-functions-unit-testing.md
+        - name: Publikowanie zdarzeń
+          href: durable-functions-event-publishing.md
 - name: Dokumentacja
   items:
     - name: Powiązania

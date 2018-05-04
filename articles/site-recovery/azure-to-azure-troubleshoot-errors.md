@@ -1,6 +1,6 @@
 ---
-title: "Usługa Azure Site Recovery Rozwiązywanie problemów z błędów i problemów z replikacją Azure do platformy Azure | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów z błędów i problemów podczas replikowania maszyn wirtualnych platformy Azure dla odzyskiwania po awarii"
+title: Usługa Azure Site Recovery Rozwiązywanie problemów z błędów i problemów z replikacją Azure do platformy Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z błędów i problemów podczas replikowania maszyn wirtualnych platformy Azure dla odzyskiwania po awarii
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ad0281df19ac1696ebb7cc913045d49c652be84a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyn wirtualnych Azure do platformy Azure
 
@@ -199,6 +199,17 @@ Aby włączyć replikację na maszynie Wirtualnej, stan inicjowania powinien by�
 
 - Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać.
 - Jeśli **provisioningState** jest **aktualizacji**, inne rozszerzenie mogą być pobieranie wdrożone. Sprawdź, czy są wszystkie trwających operacji na maszynie Wirtualnej, poczekaj na ich zakończenie i ponów próbę odzyskania lokacji nie powiodło się **włączyć replikację** zadania.
+
+
+## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ błąd usługi kopiowania woluminów w tle (kod błędu 151025)
+**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia**
+--- | --- | ---
+151025<br></br>**Komunikat**: nie można zainstalować rozszerzenia odzyskiwania lokacji | -Usługa "aplikacji modelu COM + systemu" wyłączona.</br></br>-Volume Shadow Copy service jest wyłączona.| Tryb uruchomienia usługi zestaw 'aplikacji modelu COM + systemu"i"Kopiowania woluminów w tle"automatycznie lub ręcznie.
+
+### <a name="fix-the-problem"></a>Rozwiąż problem
+
+Można otworzyć konsolę "Usługi" i "Aplikacji COM + systemu" Upewnij się, a Volume Shadow Copy nie zostały ustawione na "Wyłączone" dla "Typ uruchamiania".
+  ![Błąd modelu COM](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Replikowanie maszyn wirtualnych platformy Azure](site-recovery-replicate-azure-to-azure.md)

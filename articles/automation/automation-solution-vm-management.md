@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Maszyny wirtualne uruchamiania i zatrzymywania podczas rozwiązania poza godzinami szczytu (wersja zapoznawcza) w usłudze Automatyzacja Azure
 
@@ -54,16 +54,15 @@ Wykonaj poniższe kroki, aby dodać uruchamiania/zatrzymywania maszyn wirtualnyc
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
 1. **Dodaj rozwiązanie** zostanie wyświetlona strona. Monit o skonfigurowanie rozwiązania, przed zaimportowaniem go w ramach subskrypcji automatyzacji.
+
    ![Strona Dodawanie zarządzającego maszyny Wirtualnej](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
+
 1. Na **Dodaj rozwiązanie** wybierz pozycję **obszaru roboczego**. Wybierz obszar roboczy analizy dzienników połączonego z tej samej subskrypcji Azure, która jest konta automatyzacji. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszarem roboczym pakietu OMS** strony, wykonaj następujące czynności:
    * Określ nazwę dla nowego **Obszaru roboczego OMS**.
    * Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli wybrana domyślnie nie jest odpowiedni.
    * Aby uzyskać **grupy zasobów**, możesz utworzyć nową grupę zasobów lub wybierz istniejący.
    * Wybierz **lokalizację**. Obecnie jedynymi lokalizacjami, dostępne są **południowo-wschodnia Australia**, **Kanada centralnej**, **Indie środkowe**, **wschodnie stany USA**, **Japonia Wschodnia**, **Azja południowo-wschodnia**, **Wielka Brytania Południowa**, i **Europa**.
-   * Wybierz **warstwę cenową**. Rozwiązanie oferuje dwie warstwy: **wolne** i **na węzeł (OMS)**. Warstwa bezpłatna ma ograniczenie ilości zbieranych danych codziennie, okres przechowywania i minut czasu wykonywania zadania elementu runbook. Warstwy każdego węzła nie ma ograniczenie ilości danych zbieranych dziennie.
-
-        > [!NOTE]
-        > Mimo że warstwy na GB (autonomiczna) płatnej jest wyświetlany jako opcja, nie ma zastosowania. Jeśli zaznacz go i kontynuować tworzenie tego rozwiązania, w ramach subskrypcji, zwróci błąd. Ten problem zostanie rozwiązany po oficjalnym wydaniu tego rozwiązania. To rozwiązanie tylko używa automatyzacji zadań minut i wprowadzanie dziennika. Dodatkowe węzły nie dodaje do środowiska.
+   * Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczna)** opcji. Analiza dzienników został zaktualizowany [cennik](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwy GB na jest jedyną opcją.
 
 1. Po podaniu wymaganych informacji w **obszarem roboczym pakietu OMS** kliknij przycisk **Utwórz**. Można śledzić postęp w obszarze **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
 1. Na **Dodaj rozwiązanie** wybierz pozycję **konto automatyzacji**. Jeśli tworzysz nowy obszar roboczy analizy dzienników, należy także utworzyć nowe konto automatyzacji ma zostać skojarzony z nim. Wybierz **utworzyć konto usługi automatyzacja**i na **konto automatyzacji dodać** pozycję zapewnia następujące korzyści:
@@ -80,6 +79,9 @@ Wykonaj poniższe kroki, aby dodać uruchamiania/zatrzymywania maszyn wirtualnyc
    * Określ **listę wykluczyć maszyny Wirtualnej (ciąg)**. Jest to nazwa co najmniej jednej maszyny wirtualnej, docelowa grupa zasobów. Można wprowadzić więcej niż jedną nazwę i oddzielić od siebie za pomocą przecinka (wartości nie są z uwzględnieniem wielkości liter). Przy użyciu symboli wieloznacznych jest obsługiwana. Ta wartość jest przechowywana w **External_ExcludeVMNames** zmiennej.
    * Wybierz **harmonogram**. Jest to cykliczne datę i godzinę, uruchamianie i zatrzymywanie maszyn wirtualnych w docelowej grupy zasobów. Domyślnie harmonogramu jest skonfigurowany zgodnie ze strefą czasową UTC. Wybrać inny region nie jest dostępna. Aby skonfigurować harmonogram określonej strefy czasowej po skonfigurowaniu rozwiązania, zobacz [modyfikowanie harmonogramu uruchamiania i wyłączania](#modify-the-startup-and-shutdown-schedule).
    * Aby otrzymywać **wiadomości E-mail z powiadomieniami** z SendGrid, zaakceptuj wartość domyślną **tak** i podaj prawidłowy adres e-mail. W przypadku wybrania **nr** , ale później zdecydować, czy chcesz otrzymywać powiadomienia pocztą e-mail, możesz zaktualizować **External_EmailToAddress** zmiennej z prawidłowych adresów e-mail oddzielonych przecinkami, a następnie Modyfikowanie zmiennej **External_IsSendEmail** z wartością **tak**.
+
+> [!IMPORTANT]
+> Wartość domyślna dla **nazw grupa zasobów docelowych** jest **&ast;**. Dotyczy to wszystkich maszyn wirtualnych w ramach subskrypcji. Jeśli nie chcesz, aby rozwiązania pod kątem wszystkich maszyn wirtualnych w ramach subskrypcji, ta wartość musi zostać zaktualizowany do listy nazwy grup zasobów przed włączeniem harmonogramów.
 
 1. Po skonfigurowaniu początkowego ustawienia wymagane dla rozwiązania, kliknij przycisk **OK** zamknąć **parametry** i wybrać opcję **Utwórz**. Po zweryfikowaniu wszystkich ustawień rozwiązanie jest wdrożone do subskrypcji. Ten proces może potrwać kilka sekund, aby zakończyć, a można śledzić postęp w obszarze **powiadomienia** z menu.
 
@@ -281,7 +283,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 Zapytanie | Opis|
 ----------|----------|
 Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, które zakończyły się pomyślnie | Wyszukiwanie kategorii == "JobLogs" &#124; gdzie (RunbookName_s == "ScheduledStartStop_Parent") &#124; gdzie (ResultType == "Completed") &#124; Podsumuj AggregatedValue = count() przez ResultType, bin (TimeGenerated, 1 godz.) &#124; Sortuj według TimeGenerated desc|
-Znajdź zadania dla elementu runbook SequencedStartStop_Parent, które zakończyły się pomyślnie | search Category == "JobLogs" &#124; where ( RunbookName_s == "SequencedStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc
+Znajdź zadania dla elementu runbook SequencedStartStop_Parent, które zakończyły się pomyślnie | Wyszukiwanie kategorii == "JobLogs" &#124; gdzie (RunbookName_s == "SequencedStartStop_Parent") &#124; gdzie (ResultType == "Completed") &#124; Podsumuj AggregatedValue = count() przez ResultType, bin (TimeGenerated, 1 godz.) &#124; Sortuj według TimeGenerated desc
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 

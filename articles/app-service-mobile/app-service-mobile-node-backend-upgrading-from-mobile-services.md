@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnienie z usług mobilnych Azure App Service - Node.js"
-description: "Dowiedz się, jak łatwo przeprowadzić uaktualnienie aplikacji usługi Mobile Services do aplikacji usługi Mobile App Service"
+title: Uaktualnienie z usług mobilnych Azure App Service - Node.js
+description: Dowiedz się, jak łatwo przeprowadzić uaktualnienie aplikacji usługi Mobile Services do aplikacji usługi Mobile App Service
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Uaktualnij istniejącą usługę Mobile Node.js Azure App Service
 Mobile App Service jest nowy sposób tworzenia aplikacji dla urządzeń przenośnych przy użyciu programu Microsoft Azure. Aby dowiedzieć się więcej, zobacz [co to są Mobile Apps?].
@@ -61,12 +61,12 @@ Pełna konspekt procesu uaktualniania przebiega następująco:
 
 Usuwanie może wystąpić, gdy nie jest widoczny cały ruch w oryginalnej zmigrowane usługi mobilnej.
 
-## <a name="install-npm-package"></a>Zainstaluj wymagania wstępne
+## <a name="install-npm-package"></a> Zainstaluj wymagania wstępne
 [Node] należy zainstalować na komputerze lokalnym.  Należy również zainstalować pakiet zgodności.  Po zainstalowaniu węzła, można uruchomić następujące polecenie z nowego cmd lub w wierszu polecenia programu PowerShell:
 
 ```npm i -g azure-mobile-apps-compatibility```
 
-## <a name="obtain-ams-scripts"></a>Uzyskaj skrypty usług Azure Mobile Services
+## <a name="obtain-ams-scripts"></a> Uzyskaj skrypty usług Azure Mobile Services
 * Zaloguj się do [Azure Portal].
 * Przy użyciu **wszystkie zasoby** lub **usługi aplikacji**, odnalezienie witryny usług Mobile Services.
 * W ramach lokacji, kliknij **narzędzia** -> **Kudu** -> **Przejdź** otworzyć Kudu witryny.
@@ -76,14 +76,14 @@ Usuwanie może wystąpić, gdy nie jest widoczny cały ruch w oryginalnej zmigro
 
 To spowoduje pobranie skryptów w formacie ZIP.  Utwórz nowy katalog na komputerze lokalnym i Rozpakuj `scripts.ZIP` pliku w katalogu.  Spowoduje to utworzenie `scripts` katalogu.
 
-## <a name="scaffold-app"></a>Tworzenie szkieletu nowego zaplecza Azure Mobile Apps
+## <a name="scaffold-app"></a> Tworzenie szkieletu nowego zaplecza Azure Mobile Apps
 Uruchom następujące polecenie z katalog zawierający katalogu skrypty:
 
 ```scaffold-mobile-app scripts out```
 
 Spowoduje to utworzenie szkieletu zaplecza Azure Mobile Apps w `out` katalogu.  Mimo że nie jest to wymagane, to warto sprawdzić `out` katalogu do repozytorium kodu źródłowego, wybranych przez użytkownika.
 
-## <a name="deploy-ama-app"></a>Wdrażanie z poziomu zaplecza Azure Mobile Apps
+## <a name="deploy-ama-app"></a> Wdrażanie z poziomu zaplecza Azure Mobile Apps
 Podczas wdrażania należy wykonać następujące czynności:
 
 1. Tworzenie nowej aplikacji mobilnej w [Azure Portal].
@@ -146,7 +146,7 @@ Jeśli masz nową wersję klienta gotowa, wypróbuj go na uaktualnionym serwerze
 
 <!-- URLs. -->
 
-[Azure portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure classic portal]: https://manage.windowsazure.com/
 [co to są Mobile Apps?]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
@@ -159,7 +159,7 @@ Jeśli masz nową wersję klienta gotowa, wypróbuj go na uaktualnionym serwerze
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[cennik usługi aplikacji]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[cennik usługi aplikacji]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [pojęć dotyczących uwierzytelniania]: ../app-service/app-service-authentication-overview.md
 [uwierzytelniania szybkiego startu]: app-service-mobile-auth.md

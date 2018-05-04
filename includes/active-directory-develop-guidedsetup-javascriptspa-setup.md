@@ -1,4 +1,26 @@
-
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 794fd51c38f66b24193c7da7a145d58f7a225b30
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="setting-up-your-web-server-or-project"></a>Konfigurowanie serwera sieci web lub projektu
 
 > Preferowane jest zamiast tego Pobierz ten przykładowy projekt? 
@@ -7,7 +29,7 @@
 > lub
 > - [Pobierz pliki projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) serwera sieci web z lokalnych, takich jak Python
 >
-> A następnie przejdź do [kroku konfiguracji](#create-an-application-express) skonfigurowaniu przykładowy kod przed jej wykonanie.
+> A następnie przejdź do [kroku konfiguracji](#register-your-application) skonfigurowaniu przykładowy kod przed jej wykonanie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Serwer sieci web lokalnych, takich jak [Python http.server](https://www.python.org/downloads/), [serwera http](https://www.npmjs.com/package/http-server/), [.NET Core](https://www.microsoft.com/net/core), lub integracji usług IIS Express z [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) jest wymagana do uruchamiania Instalatora z przewodnikiem. 
@@ -18,10 +40,10 @@ Instrukcje w tym przewodniku są oparte na Visual Studio 2017 r i Python, ale mo
 
 > ### <a name="option-1-visual-studio"></a>Opcja 1: Visual Studio 
 > Jeśli używasz programu Visual Studio i tworzenia nowego projektu, wykonaj poniższe kroki, aby utworzyć nowe rozwiązanie Visual Studio:
-> 1.    W programie Visual Studio:`File` > `New` > `Project`
-> 2.    W obszarze `Visual C#\Web`, wybierz pozycję`ASP.NET Web Application (.NET Framework)`
+> 1.    W programie Visual Studio:  `File` > `New` > `Project`
+> 2.    W obszarze `Visual C#\Web`, wybierz pozycję `ASP.NET Web Application (.NET Framework)`
 > 3.    Nazwa aplikacji, a następnie kliknij przycisk *OK*
-> 4.    W obszarze `New ASP.NET Web Application`, wybierz pozycję`Empty`
+> 4.    W obszarze `New ASP.NET Web Application`, wybierz pozycję `Empty`
 
 <p/><!-- -->
 

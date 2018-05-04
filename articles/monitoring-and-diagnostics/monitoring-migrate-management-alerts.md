@@ -1,12 +1,12 @@
 ---
-title: "Migrowanie Azure alertów dotyczących zdarzeń zarządzania do alertów dotyczących działań w Dzienniku | Dokumentacja firmy Microsoft"
-description: "Alerty dotyczące zdarzeń zarządzania zostanie usunięty 1 października. Przygotuj przez Migrowanie istniejących alertów."
+title: Migrowanie Azure alertów dotyczących zdarzeń zarządzania do alertów dotyczących działań w Dzienniku | Dokumentacja firmy Microsoft
+description: Alerty dotyczące zdarzeń zarządzania zostanie usunięty 1 października. Przygotuj przez Migrowanie istniejących alertów.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.openlocfilehash: 08a457029d3721f5c38dbcd2d2aab7d09a241d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cc02664a345da49c276a6876d5cdfaf5bdb8477
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrowanie Azure alertów dotyczących zdarzeń zarządzania do dziennika aktywności alertów
 
@@ -38,7 +38,7 @@ Monitor Azure (poprzednio Azure Insights) oferowane możliwość utworzenia aler
 Poniższy skrypt programu PowerShell zwraca listę wszystkie alerty dotyczące zdarzeń zarządzania w Twojej subskrypcji, jak również warunków ustawionych na każdy alert.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $alerts = $null
 foreach ($rg in Get-AzureRmResourceGroup ) {
   $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -113,7 +113,7 @@ Aby utworzyć nowe działanie alertów dziennika, możesz:
 Alerty dotyczące zdarzeń zarządzania, które zostały wcześniej utworzone nie będzie są automatycznie migrowane do alertów dotyczących działań w dzienniku. Należy użyć powyższy skrypt programu PowerShell, aby wyświetlić listę alertów dotyczących zdarzeń zarządzania obecnie zostały skonfigurowane, a następnie ponownie ręcznie utworzyć je jako alertów dotyczących działań w dzienniku. Należy to zrobić przed 1 października, po którym alertów dotyczących zdarzeń zarządzania nie będą już widoczne w Twojej subskrypcji platformy Azure. Innych typów alertów Azure, w tym metryki alerty monitora Azure, alerty usługi Application Insights i analizy dzienników alerty są dotknięte tej zmiany. Jeśli masz pytania, opublikuj na komentarze poniżej.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [dziennik aktywności](monitoring-overview-activity-logs.md)
 * Skonfiguruj [alerty dziennika aktywności za pośrednictwem portalu Azure](monitoring-activity-log-alerts.md)

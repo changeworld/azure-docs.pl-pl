@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 1f24db331b3d59eaad54c5c2488e56913261cff2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4206d90ddd65f58bcdb92661f64d005a5e40563
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure wersji systemu operacyjnego gościa i zgodność pakietu SDK
 Zapewnia użytkownikowi aktualne informacje o najnowszych systemu operacyjnego gościa Azure wersje usługi w chmurze. Informacje te pomagają sobie planowanie uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, aby odczytać tę stronę.
@@ -83,7 +83,7 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 ## <a name="family-5-releases"></a>Zwalnia rodziny 5
 **Windows Server 2016**
 
-.NET Framework Installed: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
+Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 > [!NOTE]
 > Daty z * są może ulec zmianie.
@@ -111,7 +111,7 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 ## <a name="family-4-releases"></a>Zwalnia rodziny 4
 **Windows Server 2012 R2**
 
-.NET Framework Installed: 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
 > Daty z * są może ulec zmianie
@@ -138,7 +138,7 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 ## <a name="family-3-releases"></a>Zwalnia rodziny 3
 **Windows Server 2012**
 
-.NET Framework Installed: 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
 > Daty z * są może ulec zmianie
@@ -165,7 +165,7 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
 **Windows Server 2008 R2 z dodatkiem SP1**
 
-.NET Framework Installed: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+Zainstalowany program .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 > [!NOTE]
 > Daty z * są może ulec zmianie
@@ -247,7 +247,7 @@ Jeśli ręcznie zaktualizować system operacyjny gościa, zobacz [systemu operac
 Zasady obsługi i wycofania systemu operacyjnego gościa jest wyjaśniono [tutaj][retirepolicy].
 
 [źródła danych RSS aktualizacji systemu operacyjnego gościa]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
@@ -265,4 +265,4 @@ Zasady obsługi i wycofania systemu operacyjnego gościa jest wyjaśniono [tutaj
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx

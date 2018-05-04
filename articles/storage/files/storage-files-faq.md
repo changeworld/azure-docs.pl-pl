@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Często zadawane pytania dotyczące usługi pliki Azure
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (znanej także jako Common Internet File System, lub CIFS). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
@@ -103,7 +103,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 * <a id="afs-conflict-resolution"></a>**Jeśli tego samego pliku została zmieniona na dwóch serwerach w tym samym czasie, co się stanie?**  
     Synchronizacja programu Azure pliku używa strategii proste rozwiązywania konfliktów: Firma Microsoft zachować zarówno zmiany do plików, które są zmieniane na dwóch serwerach w tym samym czasie. Zmiana niedawno napisanych zachowuje oryginalna nazwa pliku. Starszy plik ma maszyny "source" i liczby konfliktów dołączonym do nazwy. Wynika to taksonomii: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\< numer wewnętrzny\>  
 
     Na przykład pierwszy konfliktu CompanyReport.docx może stać się CompanyReport CentralServer.docx CentralServer którym wystąpił starsze zapisu. Drugi konflikt będą miały postać CompanyReport-CentralServer-1.docx.
 
@@ -257,7 +257,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
     Tak. Usługa pliki Azure można zachować maksymalnie 200 udziału migawki. Migawki udziału nie są traktowane kierunku przydziału udziału więc ma żadnego limitu poszczególnych udziałów całkowita ilość miejsca, który jest używany przez wszystkie migawki udziału. Limity konta magazynu jest nadal mają zastosowanie. Po 200 udziału migawki należy usunąć starsze migawek do tworzenia nowego udziału migawek.
 * <a id="snapshot-cost"></a>
 **Jaka udostępnić migawki kosztów?**  
-    Standardowa transakcji i koszty magazynu w warstwie standardowa dotyczą migawki. Migawki są przyrostowe charakter. Podstawowy migawka jest udziału. Wszystkie kolejne migawki są przyrostowych i zapisze tylko różnic z wcześniejszej migawki. Oznacza to, że zmiany różnicowe, które będą widoczne w zestawieniu będzie minimalny, jeśli użytkownika zmian obciążenia jest minimalny. Zobacz [strony cennik](https://azure.microsoft.com/en-us/pricing/details/storage/files/) dla standardowe informacje o cenach usługi pliki Azure. Obecnie jest sposób, aby przyjrzeć się rozmiar używane przez migawki udziału porównując pojemność rachunku z używane pojemności. Pracujemy nad narzędzi, aby poprawić raportowania.
+    Standardowa transakcji i koszty magazynu w warstwie standardowa dotyczą migawki. Migawki są przyrostowe charakter. Podstawowy migawka jest udziału. Wszystkie kolejne migawki są przyrostowych i zapisze tylko różnic z wcześniejszej migawki. Oznacza to, że zmiany różnicowe, które będą widoczne w zestawieniu będzie minimalny, jeśli użytkownika zmian obciążenia jest minimalny. Zobacz [strony cennik](https://azure.microsoft.com/pricing/details/storage/files/) dla standardowe informacje o cenach usługi pliki Azure. Obecnie jest sposób, aby przyjrzeć się rozmiar używane przez migawki udziału porównując pojemność rachunku z używane pojemności. Pracujemy nad narzędzi, aby poprawić raportowania.
 
 
 ### <a name="create-share-snapshots"></a>Tworzenie migawek udziału

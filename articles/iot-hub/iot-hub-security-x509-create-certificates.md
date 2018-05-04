@@ -1,11 +1,11 @@
 ---
-title: "Jak utworzyć certyfikatów X.509 przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć certyfikatów X.509 lokalnie i włączyć X.509 przy użyciu programu PowerShell na podstawie zabezpieczeń w Centrum Azure IoT w środowisku symulowanym."
+title: Jak utworzyć certyfikatów X.509 przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Jak utworzyć certyfikatów X.509 lokalnie i włączyć X.509 przy użyciu programu PowerShell na podstawie zabezpieczeń w Centrum Azure IoT w środowisku symulowanym.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
-ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e58096d4bde9c947f199b4696c0b5c28291956d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>Skrypty programu PowerShell do zarządzania certyfikatami X.509 podpisany przez urząd certyfikacji
 
@@ -33,7 +33,9 @@ Ten samouczek zakłada, że zostały nabyte plików binarnych biblioteki OpenSSL
 ## <a name="create-x509-certificates"></a>Tworzenie certyfikatów X.509
 W poniższej procedurze pokazano przykład sposobu tworzenia certyfikatów głównych X.509 lokalnie. 
 
-1. Otwórz okno programu PowerShell jako *administratora*. 
+1. Otwórz okno programu PowerShell jako *administratora*.  
+   **Uwaga:** należy otworzyć to w programie PowerShell samej siebie, nie PowerShell ISE, Visual Studio Code lub innych narzędzi, które otaczają podstawowej konsoli programu PowerShell.  Korzystanie z systemem innym niż konsoli oparte na środowisku PowerShell spowoduje `openssl` poniższe wiszące polecenia.
+
 2. Przejdź do katalogu roboczego. Uruchom następujący skrypt, aby ustawić zmienne globalne. 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"

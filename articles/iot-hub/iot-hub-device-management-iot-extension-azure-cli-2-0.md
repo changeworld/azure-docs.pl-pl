@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: ceace7331c7548c5b4e27f8529152fd69d5469cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1bf2c10c5267157f6d74962c00d587a6956fc574
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Użyj rozszerzenia IoT 2.0 interfejsu wiersza polecenia platformy Azure do zarządzania urządzeniami Centrum IoT Azure
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/03/2018
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to nowe open source rozszerzenia IoT, który dodaje do możliwości [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest). Azure CLI 2.0 zawiera polecenia do interakcji z usługi Azure resource manager i zarządzanie punktami końcowymi. Na przykład służy 2.0 interfejsu wiersza polecenia platformy Azure do utworzenia maszyny Wirtualnej platformy Azure lub Centrum IoT. Rozszerzenia interfejsu wiersza polecenia umożliwia usługą platformy Azure rozszerzyć nadanie wiersza polecenia platformy Azure, dostęp do dodatkowych możliwości specyficznych dla usług. Rozszerzenie IoT udostępnia deweloperom IoT wiersza polecenia możliwości Centrum IoT, krawędzi IoT i inicjowania obsługi usługi IoT Hub urządzeń.
+[Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to nowe open source rozszerzenia IoT, który dodaje do możliwości [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Azure CLI 2.0 zawiera polecenia do interakcji z usługi Azure resource manager i zarządzanie punktami końcowymi. Na przykład służy 2.0 interfejsu wiersza polecenia platformy Azure do utworzenia maszyny Wirtualnej platformy Azure lub Centrum IoT. Rozszerzenia interfejsu wiersza polecenia umożliwia usługą platformy Azure rozszerzyć nadanie wiersza polecenia platformy Azure, dostęp do dodatkowych możliwości specyficznych dla usług. Rozszerzenie IoT udostępnia deweloperom IoT wiersza polecenia możliwości Centrum IoT, krawędzi IoT i inicjowania obsługi usługi IoT Hub urządzeń.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -62,7 +62,7 @@ Uruchom Azure CLI w wersji 2.0 i rozszerzenia IoT Azure CLI 2.0 z różnymi opcj
 
 - [Python 2.7x lub Python 3.x](https://www.python.org/downloads/)
 
-- Zainstaluj interfejs wiersza polecenia platformy Azure 2.0. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie instalatora [MSI](https://aka.ms/InstallAzureCliWindows). Można również postępuj zgodnie z instrukcjami instalacji [Microsoft Docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) można skonfigurować 2.0 interfejsu wiersza polecenia platformy Azure w danym środowisku. Potrzebujesz co najmniej interfejsu wiersza polecenia platformy Azure 2.0 w wersji 2.0.24 lub nowszej. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji. 
+- Zainstaluj interfejs wiersza polecenia platformy Azure 2.0. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie instalatora [MSI](https://aka.ms/InstallAzureCliWindows). Można również postępuj zgodnie z instrukcjami instalacji [Microsoft Docs](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) można skonfigurować 2.0 interfejsu wiersza polecenia platformy Azure w danym środowisku. Potrzebujesz co najmniej interfejsu wiersza polecenia platformy Azure 2.0 w wersji 2.0.24 lub nowszej. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji. 
 
 - Zainstaluj rozszerzenie IoT. Najprostszym sposobem jest uruchomienie polecenia `az extension add --name azure-cli-iot-ext`. [Plik readme rozszerzenia IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) opisuje kilka sposobów instalowania rozszerzenia.
 

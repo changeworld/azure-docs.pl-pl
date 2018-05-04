@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: magoedte
-ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 66c07b757a034501eb66a4b23fc4c75bb94f8b10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne metryki różnych zasobów aplikacji sieci Web Azure
 
 ![Symbol aplikacji sieci Web](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+
+> [!NOTE]
+> Rozwiązania Azure Web Apps Analytics jest przestarzała.  Klienci, którzy zainstalowali rozwiązania można nadal z niego korzystać, ale analiza aplikacji sieci Web Azure nie można dodać do żadnych nowych obszarów roboczych.
+
 Rozwiązanie Analytics aplikacji sieci Web platformy Azure (wersja zapoznawcza) zapewnia wgląd w Twoje [Azure Web Apps](../app-service/app-service-web-overview.md) przez zbieranie metryk różnych różnych zasobów aplikacji sieci Web platformy Azure. Dzięki rozwiązaniu można było analizować i wyszukiwać dane metryki zasobów aplikacji sieci web.
 
 Za pomocą rozwiązania, można wyświetlić:

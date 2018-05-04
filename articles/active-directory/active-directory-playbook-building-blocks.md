@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory dowód podręcznikowym koncepcji: bloki konstrukcyjne
 
@@ -380,8 +380,8 @@ Przybliżona godzina ukończone: 15 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Włącz zarządzanie samoobsługi hasła w dzierżawie. | [Azure Active Directory resetowania hasła dla administratorów IT](active-directory-passwords-update-your-own-password.md) |
-| Włączanie zapisywania zwrotnego haseł do zarządzania hasłami z lokalnymi. Uwaga wymaga określonej usługi Azure AD Connect wersji | [Wymagania wstępne dotyczące funkcji zapisywania zwrotnego haseł](active-directory-passwords-writeback.md) |
-| Zidentyfikuj użytkowników fazy weryfikacji koncepcji, które będą korzystać z tej funkcji i upewnij się, że są oni członkami grupy zabezpieczeń. Użytkownicy muszą być z systemem innym niż administratorzy pełni prezentować możliwości | [Dostosowanie: Zarządzanie hasłami AD platformy Azure: ograniczanie dostępu do resetowania hasła](active-directory-passwords-writeback.md) |
+| Włączanie zapisywania zwrotnego haseł do zarządzania hasłami z lokalnymi. Uwaga wymaga określonej usługi Azure AD Connect wersji | [Wymagania wstępne dotyczące funkcji zapisywania zwrotnego haseł](authentication/howto-sspr-writeback.md) |
+| Zidentyfikuj użytkowników fazy weryfikacji koncepcji, które będą korzystać z tej funkcji i upewnij się, że są oni członkami grupy zabezpieczeń. Użytkownicy muszą być z systemem innym niż administratorzy pełni prezentować możliwości | [Dostosowanie: Zarządzanie hasłami AD platformy Azure: ograniczanie dostępu do resetowania hasła](authentication/howto-sspr-writeback.md) |
 
 
 ### <a name="steps"></a>Kroki
@@ -412,7 +412,7 @@ Przybliżona godzina ukończone: 10 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Identyfikowanie użytkowników fazy weryfikacji Koncepcji, które będą korzystać z usługi MFA  |  |
-| Telefon z dobrym odbioru dla żądania usługi MFA  | [Co to jest usługa Multi-Factor Authentication platformy Azure?](../multi-factor-authentication/multi-factor-authentication.md) |
+| Telefon z dobrym odbioru dla żądania usługi MFA  | [Co to jest usługa Multi-Factor Authentication platformy Azure?](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>Kroki
 
@@ -421,7 +421,7 @@ Przybliżona godzina ukończone: 10 minut
 | Przejdź do bloku "Użytkownicy i grupy" w portalu zarządzania usługi Azure AD | [Portalu zarządzania Azure AD: Użytkownicy i grupy](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | Wybierz blok "Wszyscy użytkownicy" |  |
 | W górnym pasku, wybierz przycisk "Usługi Multi-Factor Authentication" | Bezpośredni adres URL do portalu usługi Azure MFA: https://aka.ms/mfaportal |
-| W ustawieniach "Użytkownika" Wybierz użytkowników, aby zapewnić i włączyć je do usługi MFA | [Stany użytkowników w usłudze Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) |
+| W ustawieniach "Użytkownika" Wybierz użytkowników, aby zapewnić i włączyć je do usługi MFA | [Stany użytkowników w usłudze Azure Multi-Factor Authentication](authentication/howto-mfa-userstates.md) |
 | Zaloguj się jako użytkownika fazy weryfikacji koncepcji i przechodzenia przez proces dowód w górę  |  |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
@@ -457,7 +457,7 @@ Przybliżona godzina ukończone: 10 minut
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-Jeśli używasz federacyjnych, można użyć lokalnego dostawcy tożsamości (IdP) do komunikacji wewnątrz/poza siecią firmową stanu z oświadczeń. Można użyć tej metody bez konieczności zarządzania na liście adresów IP, które mogą być skomplikowane, aby ocenić i zarządzanie nimi w dużych organizacjach. W tej konfiguracji należy konta dla scenariusza "roaming sieci" (zalogowanie się użytkownika z sieci wewnętrznej, a podczas przełączniki zalogowany na przykład w kawiarni) i upewnij się, że rozumiesz konsekwencje. Dowiedz się więcej: [zabezpieczanie zasobów w chmurze Azure Multi-Factor Authentication i usług AD FS: zaufanych adresów IP dla użytkowników federacyjnych](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md#trusted-ips-for-federated-users)
+Jeśli używasz federacyjnych, można użyć lokalnego dostawcy tożsamości (IdP) do komunikacji wewnątrz/poza siecią firmową stanu z oświadczeń. Można użyć tej metody bez konieczności zarządzania na liście adresów IP, które mogą być skomplikowane, aby ocenić i zarządzanie nimi w dużych organizacjach. W tej konfiguracji należy konta dla scenariusza "roaming sieci" (zalogowanie się użytkownika z sieci wewnętrznej, a podczas przełączniki zalogowany na przykład w kawiarni) i upewnij się, że rozumiesz konsekwencje. Dowiedz się więcej: [zabezpieczanie zasobów w chmurze Azure Multi-Factor Authentication i usług AD FS: zaufanych adresów IP dla użytkowników federacyjnych](authentication/howto-mfa-adfs.md#trusted-ips-for-federated-users)
 
 ## <a name="privileged-identity-management-pim"></a>Zarządzanie tożsamościami uprzywilejowanymi (PIM)
 

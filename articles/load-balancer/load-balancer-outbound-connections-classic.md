@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="outbound-connections-classic"></a>Połączenia wychodzące (klasyczne)
 
@@ -114,8 +114,6 @@ W poniższej tabeli przedstawiono preallocations portu SNAT warstw rozmiary puli
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
-| 401-800 | 64 |
-| 801-1,000 | 32 |
 
 Należy pamiętać, że liczba dostępnych portów SNAT nie przekłada się bezpośrednio do liczby przepływów. Jeden port SNAT mogą być ponownie używane dla wielu celów unikatowy. Porty są używane tylko wtedy, gdy jest to niezbędne do zapewnienia przepływów unikatowy. Aby uzyskać wskazówki dotyczące projektowania i środki zaradcze, można znaleźć w sekcji o [jak zarządzać zasobem wyczerpującymi](#snatexhaust) i sekcji opisano [PAT](#pat).
 

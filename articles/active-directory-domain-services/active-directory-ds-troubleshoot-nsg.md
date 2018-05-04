@@ -16,7 +16,7 @@ ms.date: 03/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
 ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/19/2018
 ---

@@ -1,8 +1,8 @@
 ---
-title: "Scenariusze danych dotyczących usługi Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Zapoznanie się z różnych scenariuszy i narzędzi przy użyciu danych można pozyskanych, przetwarzane pobrane i wizualizowane w Data Lake Store"
+title: Scenariusze danych dotyczących usługi Data Lake Store | Dokumentacja firmy Microsoft
+description: Zapoznanie się z różnych scenariuszy i narzędzi przy użyciu danych można pozyskanych, przetwarzane pobrane i wizualizowane w Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: bd69d3c353c7f44efb37e2359412aa3a9f3e8f8d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f8cd666af9e05b543b6794612ec5acf6f8a27756
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Store wymagania danych big data
 Istnieją cztery etapy klucza podczas przetwarzania danych big:
@@ -40,7 +40,7 @@ Ta pozycja reprezentuje mniejszych zestawów danych, które są używane do twor
 
 | Źródło danych | Za pomocą pozyskiwania |
 | --- | --- |
-| Komputer lokalny |<ul> <li>[Azure portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI wieloplatformowych 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Przy użyciu narzędzi Data Lake Tools dla programu Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Komputer lokalny |<ul> <li>[Azure Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI wieloplatformowych 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Przy użyciu narzędzi Data Lake Tools dla programu Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Narzędzie AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Narzędzia DistCp uruchomiona w klastrze usługi HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Strumienia danych
@@ -72,7 +72,7 @@ Do przekazywania danych dziennika serwera sieci web, a także do przekazywania i
 Większość typów klastra usługi HDInsight (Hadoop, HBase, Storm) obsługuje usługi Data Lake Store jako repozytorium magazynu danych. Klastry HDInsight dostęp do danych z usługi Azure blob Storage (WASB). W celu poprawy wydajności można skopiować danych z WASB do konta usługi Data Lake Store skojarzony z klastrem. Aby skopiować dane, można użyć następujących narzędzi.
 
 * [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
-* [AdlCopy Service](data-lake-store-copy-data-azure-storage-blob.md)
+* [Usługa AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Dane przechowywane w lokalnych lub IaaS Hadoop klastrów
@@ -131,4 +131,4 @@ Kombinacja usługi służy do tworzenia wizualnej reprezentacji danych przechowy
 ![Wizualizuj dane w usłudze Data Lake Store](./media/data-lake-store-data-scenarios/visualize-data.png "wizualizacji danych w usłudze Data Lake Store")
 
 * Można uruchomić przy użyciu [fabryki danych Azure, aby przenieść dane z usługi Data Lake Store do usługi Azure SQL Data Warehouse](../data-factory/copy-activity-overview.md)
-* Następnie można [integracji usługi Power BI z usługą Magazyn danych SQL Azure](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) utworzyć wizualną reprezentację danych.
+* Następnie można [integracji usługi Power BI z usługą Magazyn danych SQL Azure](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) utworzyć wizualną reprezentację danych.

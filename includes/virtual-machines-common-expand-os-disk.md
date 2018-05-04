@@ -22,7 +22,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 1. Zaloguj się na swoje konto platformy Microsoft Azure w trybie zarządzania zasobami i wybierz swoją subskrypcję w następujący sposób:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Ustaw nazwę swojej grupy zasobów i nazwę maszyny wirtualnej w następujący sposób:
@@ -65,7 +65,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 1. Zaloguj się na swoje konto platformy Microsoft Azure w trybie zarządzania zasobami i wybierz swoją subskrypcję w następujący sposób:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Ustaw nazwę swojej grupy zasobów i nazwę maszyny wirtualnej w następujący sposób:
@@ -109,7 +109,7 @@ W tym artykule rozszerzyliśmy dysk systemu operacyjnego maszyny wirtualnej IaaS
 Dyski Unamanged:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
@@ -122,7 +122,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 Dyski zarządzane:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'

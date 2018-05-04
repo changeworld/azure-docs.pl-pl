@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 7a0104e68b07dbdff5483b771429fb9bc19a523f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 08a025acb89d3b35798688dc333038fb807284cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Tworzenie sieci wirtualnej równorzędna — różne modele wdrażania i subskrypcji
 
@@ -204,7 +204,7 @@ W tym samouczku korzysta z różnych kont dla każdej subskrypcji. Jeśli używa
     > [!WARNING]
     > Importowanie pliku konfiguracji sieci zmienione może spowodować zmiany w istniejących sieci wirtualnych (klasyczne) w ramach subskrypcji. Upewnij się, tylko dodać poprzedniej sieci wirtualnej i nie zmienić lub usunąć istniejące sieci wirtualnych z subskrypcji. 
 
-5. Zaloguj się do subskrypcji na Użytkownik_b jako Użytkownik_b użycie poleceń Menedżera zasobów, wprowadzając `login-azurermaccount` polecenia.
+5. Zaloguj się do subskrypcji na Użytkownik_b jako Użytkownik_b użycie poleceń Menedżera zasobów, wprowadzając `Connect-AzureRmAccount` polecenia.
 6. Przypisz uprawnienia Użytkownik_a sieci wirtualnej kopiowania B. poniższy skrypt do edytora tekstu, na komputerze i Zastąp `<SubscriptionB-id>` z Identyfikatorem subskrypcji B. Jeśli nie znasz identyfikator subskrypcji, wprowadź `Get-AzureRmSubscription` polecenie, aby go wyświetlić. Wartość **identyfikator** zwrócony wynik jest Twojego identyfikatora subskrypcji. Azure utworzona sieć wirtualna (klasyczna) został utworzony w kroku 4 w grupie zasobów o nazwie *sieci domyślne*. Można wykonać skryptu, skopiuj skrypt zmodyfikowane, wklej je do środowiska PowerShell i naciśnij klawisz `Enter`.
     
     ```powershell 
@@ -214,7 +214,7 @@ W tym samouczku korzysta z różnych kont dla każdej subskrypcji. Jeśli używa
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. Wyloguj się Azure jako Użytkownik_b i zaloguj się do subskrypcji na Użytkownik_a jako Użytkownik_a wprowadzając `login-azurermaccount` polecenia. Konto logowania przy użyciu musi mieć uprawnienia do tworzenia sieci wirtualnej komunikacji równorzędnej. Aby uzyskać listę uprawnień, zobacz [komunikacji równorzędnej uprawnień sieci wirtualnej](virtual-network-manage-peering.md#permissions).
+7. Wyloguj się Azure jako Użytkownik_b i zaloguj się do subskrypcji na Użytkownik_a jako Użytkownik_a wprowadzając `Connect-AzureRmAccount` polecenia. Konto logowania przy użyciu musi mieć uprawnienia do tworzenia sieci wirtualnej komunikacji równorzędnej. Aby uzyskać listę uprawnień, zobacz [komunikacji równorzędnej uprawnień sieci wirtualnej](virtual-network-manage-peering.md#permissions).
 8. Utwórz sieć wirtualną (Resource Manager), kopiując poniższy skrypt, wklejenie go do programu PowerShell, a następnie naciskając klawisz `Enter`:
 
     ```powershell

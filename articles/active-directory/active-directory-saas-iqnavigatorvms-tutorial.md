@@ -1,23 +1,23 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z maszynami Wirtualnymi IQNavigator | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i IQNavigator maszyn wirtualnych."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i IQNavigator maszyn wirtualnych.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: a8a09b25-dfa5-4c31-aea2-53bf1853b365
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 82c91ba8fa340fb2b179d61200a69e94ab85b6d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddb2883c0b90aaffa82bbc701cdc20de1feb7e19
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Samouczek: Integracji Azure Active Directory z IQNavigator maszyny Wirtualne
 
@@ -103,7 +103,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
 3. Na **IQNavigator domeny maszyn wirtualnych i adres URL** sekcji, wykonaj następujące czynności:
@@ -112,7 +112,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. W **identyfikator** tekstowym, wpisz adres URL:`iqn.com`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, wykonaj następujące kroki:
 
@@ -120,46 +120,26 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     W **przekazywania stanu** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.iqnavigator.com`
 
-    > [!NOTE] 
-    > Wartości te nie są prawdziwe. Zaktualizować te wartości z faktycznym stanem adres URL odpowiedzi i przekazywania. Skontaktuj się z [zespołem pomocy technicznej klienta maszyn wirtualnych IQNavigator](https://www.beeline.com/iqn-product-support/) uzyskać te wartości. 
+    > [!NOTE]
+    > Wartości te nie są prawdziwe. Zaktualizować te wartości z faktycznym stanem adres URL odpowiedzi i przekazywania. Skontaktuj się z [zespołem pomocy technicznej klienta maszyn wirtualnych IQNavigator](https://www.beeline.com/iqn-product-support/) uzyskać te wartości.
 
-5. Kliknij przycisk **zapisać** przycisku.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
-
-6. Aby wygenerować **metadanych** adres url, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
+5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpointicon.png)
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **maszyn wirtualnych IQNavigator** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Aplikacja IQNavigator oczekiwać, że wartość identyfikatora unikatowego użytkownika oświadczenia identyfikatora nazwy. Klienta można mapować poprawną wartość oświadczenia identyfikatora nazwy. W takim przypadku zamapowaniu możemy użytkownika. UserPrincipalName w celu demonstracyjnej. Jednak zgodnie z ustawieniami w Twojej organizacji należy mapować poprawną wartość dla niego.   
+6. Aplikacja IQNavigator oczekiwać, że wartość identyfikatora unikatowego użytkownika oświadczenia identyfikatora nazwy. Klienta można mapować poprawną wartość oświadczenia identyfikatora nazwy. W takim przypadku zamapowaniu możemy użytkownika. UserPrincipalName w celu demonstracyjnej. Jednak zgodnie z ustawieniami w Twojej organizacji należy mapować poprawną wartość dla niego.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
+7. Kliknij przycisk **zapisać** przycisku.
+
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
+
 8. Na **konfiguracji maszyn wirtualnych IQNavigator** , kliknij przycisk **Konfigurowanie maszyn wirtualnych IQNavigator** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
-9. Skonfigurować logowanie jednokrotne w **maszyn wirtualnych IQNavigator** stronie, musisz wysłać **adres URL metadanych**, **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** do [IQNavigator maszyn wirtualnych z pomocą techniczną](https://www.beeline.com/iqn-product-support/). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+9. Aby skonfigurować logowanie jednokrotne w **IQNavigator maszyn wirtualnych** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji**, **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi**do [IQNavigator maszyn wirtualnych z pomocą techniczną](https://www.beeline.com/iqn-product-support/). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -174,11 +154,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png) 
+
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png)
 
 4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
  
@@ -191,7 +171,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="creating-a-iqnavigator-vms-test-user"></a>Tworzenie użytkownika testowego IQNavigator maszyny Wirtualne
 
 Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w IQNavigator maszyn wirtualnych. Praca z [IQNavigator maszyn wirtualnych z pomocą techniczną](https://www.beeline.com/iqn-product-support/) Aby dodać użytkowników w ramach konta IQNavigator maszyn wirtualnych.
@@ -200,21 +180,21 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w IQNavigat
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do IQNavigator maszyn wirtualnych.
 
-![Przypisz użytkownika][200] 
+![Przypisz użytkownika][200]
 
 **Aby przypisać Simona Britta IQNavigator maszyn wirtualnych, wykonaj następujące czynności:**
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **maszyn wirtualnych IQNavigator**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Przypisz użytkownika][202] 
+    ![Przypisz użytkownika][202]
 
 4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
@@ -233,12 +213,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka IQNavigator maszyn wirtualnych w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji IQNavigator maszyn wirtualnych.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

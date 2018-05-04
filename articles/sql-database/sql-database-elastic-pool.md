@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 33f4430baacbe50f3d4c7da857ee4345d4f74928
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastyczne pule pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -32,7 +32,7 @@ Pule elastyczne rozwiązać ten problem, zapewniając, że bazy danych uzyskać 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Pule elastyczne Włączanie deweloperowi zakupu zasobów dla puli współużytkowane przez wiele baz danych do uwzględnienia nieprzewidywalne okresów użycia przez pojedyncze bazy danych. Można skonfigurować zasoby puli albo na podstawie [na podstawie jednostek dtu w warstwie model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#dtu-based-purchasing-model) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). Wymaganie zasobów w puli jest określany przez łączny wykorzystania jej baz danych. Liczba dostępnych do puli zasobów jest kontrolowana przez budżet developer. Deweloper po prostu dodaje baz danych do puli, ustawia zasobów minimalną i maksymalną dla baz danych (minimalna i maksymalna liczba jednostek Dtu lub minimalna lub maksymalna vCores w zależności od wybranych resourcing modelu), a następnie ustawia na podstawie puli zasobów ich budżetu. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
+Pule elastyczne Włączanie deweloperowi zakupu zasobów dla puli współużytkowane przez wiele baz danych do uwzględnienia nieprzewidywalne okresów użycia przez pojedyncze bazy danych. Można skonfigurować zasoby puli albo na podstawie [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md). Wymaganie zasobów w puli jest określany przez łączny wykorzystania jej baz danych. Liczba dostępnych do puli zasobów jest kontrolowana przez budżet developer. Deweloper po prostu dodaje baz danych do puli, ustawia zasobów minimalną i maksymalną dla baz danych (minimalna i maksymalna liczba jednostek Dtu lub minimalna lub maksymalna vCores w zależności od wybranych resourcing modelu), a następnie ustawia na podstawie puli zasobów ich budżetu. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
 
 Poszczególne bazy danych w ramach puli mają możliwość elastycznego skalowania automatycznego w określonym zakresie parametrów. Duże obciążenie bazy danych mogą zużywać więcej zasobów, aby spełnić wymagania. Bazy danych w ramach lekkie ładunki zużywają mniej i baz danych w ramach obciążenia korzystać z żadnych zasobów. Aprowizacja zasobów dla całej puli zamiast pojedynczych baz danych upraszcza zadania związane z zarządzaniem. Ponadto należy przewidywalną budżetu puli. Dodatkowe zasoby można dodać do istniejącej puli bez przestojów bazy danych, z wyjątkiem tego, że bazy danych może być konieczne do przeniesienia do zapewnienia zasoby obliczeniowe dodatkowe nowe zastrzeżenie eDTU. Podobnie jeśli dodatkowe zasoby nie są już potrzebne one można usunąć z istniejącej puli w dowolnym momencie w czasie. Można również dodawać bazy danych do puli lub odejmować je z niej. Jeśli baza danych przewidywalnie niewystarczająco wykorzystuje zasoby, należy ją przenieść.
 
@@ -101,7 +101,7 @@ Najlepszy rozmiar puli zależy od łącznej zasobów niezbędnych do wszystkich 
 * Maksymalna zasoby wykorzystywane przez wszystkie bazy danych w puli (maksymalna Dtu lub maksymalna vCores w zależności od wybranych resourcing modelu).
 * Maksymalna liczba bajtów magazynu wykorzystana przez wszystkie bazy danych w puli.
 
-W warstwach usług dostępne dla każdego modelu zasobu, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers.md#dtu-based-purchasing-model) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
+W warstwach usług dostępne dla każdego modelu zasobu, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md).
 
 Usługa SQL Database automatycznie ocenia historyczne użycie zasobów przez bazy danych na istniejącym serwerze usługi SQL Database i zaleca odpowiednią konfigurację puli w witrynie Azure Portal. Oprócz zaleceń, wbudowane środowisko szacuje użycie jednostek eDTU dla niestandardowej grupy baz danych na serwerze. Umożliwia to przeprowadzenie analizy warunkowej przez interaktywne dodawanie baz danych do puli i usuwanie ich w celu uzyskania analizy użycia zasobów i porady dotyczącej rozmiaru przed zatwierdzeniem zmian. Aby uzyskać instrukcje, zobacz [Monitorowanie puli elastycznej, zmienianie jej rozmiaru i zarządzanie nią](sql-database-elastic-pool-manage-portal.md).
 
@@ -112,11 +112,11 @@ W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących i
    Na podstawie jednostek dtu w warstwie model kupna: Maksymalna liczba (<*łączna liczba baz danych* X *średnie użycie jednostek DTU na bazę danych*>,<br>
    <*liczba baz danych jednocześnie osiągających szczyt użycia* X *użycie szczytowe jednostek DTU na bazę danych*)
 
-   Na podstawie vCore model kupna: Maksymalna liczba (<*łączna liczba baz danych* X *średnie wykorzystanie vCore na bazę danych*>,<br>
+   Na podstawie vCore model kupna (wersja zapoznawcza): Maksymalna liczba (<*łączna liczba baz danych* X *średnie wykorzystanie vCore na bazę danych*>,<br>
    <*Liczba jednocześnie peaking bazami danych* X *szczytowego wykorzystania vCore na bazę danych*)
 
 2. Oszacuj miejsce do magazynowania wymagane dla puli przez dodanie liczby bajtów potrzebnych dla wszystkich baz danych w puli. Następnie określ rozmiar puli (w jednostkach eDTU), który zapewni tę ilość miejsca przechowywania.
-3. Na podstawie jednostek dtu w warstwie model kupna potrwać dłuższy szacuje eDTU z kroku 1 i 2. Na podstawie vCore model kupna należy wykonać szacowania vCore z kroku 1.
+3. Na podstawie jednostek dtu w warstwie model kupna potrwać dłuższy szacuje eDTU z kroku 1 i 2. Na podstawie vCore model kupna (wersja zapoznawcza) należy wykonać szacowania vCore z kroku 1.
 4. Zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/) i Znajdź rozmiaru najmniejszą puli, która jest większa niż szacowania w kroku 3.
 5. Porównaj cenę puli z kroku 5 z ceną za używanie odpowiednich poziomów wydajności dla pojedynczych baz danych.
 

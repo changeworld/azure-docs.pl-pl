@@ -1,8 +1,8 @@
 ---
-title: "Monitorowanie aplikacji Docker w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Docker liczników wydajności, zdarzeń i wyjątków mogą być wyświetlane w usłudze Application Insights oraz dane telemetryczne z aplikacji konteneryzowanych."
+title: Monitorowanie aplikacji Docker w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Docker liczników wydajności, zdarzeń i wyjątków mogą być wyświetlane w usłudze Application Insights oraz dane telemetryczne z aplikacji konteneryzowanych.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68f408f18b767ed9c5aba8fed8c97f021cdeb123
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorowanie aplikacji Docker w usłudze Application Insights
-Zdarzenia cyklu życia i wydajności liczników z [Docker](https://www.docker.com/) kontenerów może być na wykresie na usługi Application Insights. Zainstaluj [usługi Application Insights](app-insights-overview.md) obrazu w kontenerze w hoście, a wyświetli liczniki wydajności dla hosta, a także inne obrazy.
+Zdarzenia cyklu życia i wydajności liczników z [Docker](https://www.docker.com/) kontenerów może być na wykresie na usługi Application Insights. Zainstaluj [usługi Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) obrazu w kontenerze w hoście, a wyświetli liczniki wydajności dla hosta, a także inne obrazy.
 
 Z rozwiązaniem Docker, z dystrybucji w kontenerach lekkie ukończone wszystkie zależności aplikacji. By działały na dowolnym komputerze hosta z systemem aparatem platformy Docker.
 
@@ -43,6 +43,10 @@ Po uruchomieniu [obrazu usługi Application Insights](https://hub.docker.com/r/m
 2. Dodaj kafelka Docker: Wybierz **dodać Kafelek**, przeciągnij Kafelek Docker z poziomu galerii, a następnie kliknij przycisk **gotowe**. 
    
     ![Przykład](./media/app-insights-docker/03.png)
+
+> [!NOTE]
+> W okienku omówienie w usłudze Application Insights jest teraz zablokowany i nie zezwala na dodawanie kafelków z galerii. Nadal możesz dodać kafelka Docker zgodnie z powyższym opisem za pośrednictwem interfejsu pulpitu nawigacyjnego platformy Azure.
+
 3. Kliknij przycisk **Essentials** listy rozwijanej i skopiuj klucz instrumentacji. Możesz użyć tego stwierdzić, gdzie jego danych telemetrycznych zestawu SDK.
 
     ![Przykład](./media/app-insights-docker/02-props.png)
@@ -124,7 +128,7 @@ Liczniki wydajności dostępnej pamięci i czasu procesora wzbogacone i pogrupow
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Application Insights dla języka Java](app-insights-java-get-started.md)
 * [Usługa Application Insights dla środowiska Node.js](app-insights-nodejs.md)

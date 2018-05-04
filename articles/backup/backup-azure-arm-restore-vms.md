@@ -1,12 +1,12 @@
 ---
-title: "Kopia zapasowa Azure: Przywracanie maszyn wirtualnych przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Przywracanie maszyny wirtualnej platformy Azure z punktu odzyskiwania za pomocą portalu Azure"
+title: 'Kopia zapasowa Azure: Przywracanie maszyn wirtualnych przy użyciu portalu Azure | Dokumentacja firmy Microsoft'
+description: Przywracanie maszyny wirtualnej platformy Azure z punktu odzyskiwania za pomocą portalu Azure
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "Przywracanie kopii zapasowej. jak przywrócić; punkt odzyskiwania;"
+editor: ''
+keywords: Przywracanie kopii zapasowej. jak przywrócić; punkt odzyskiwania;
 ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Przywracanie maszyn wirtualnych za pomocą portalu Azure
 Ochrona danych za tworzenie migawek danych w określonych odstępach czasu. Te migawki są określane jako punkty odzyskiwania, i w których są przechowywane w Magazyny usług odzyskiwania. Jeśli jest konieczne naprawienie lub skompiluj ponownie maszynę wirtualną (VM), można przywrócić maszynę Wirtualną z żadnym z punktów odzyskiwania zapisane. Po przywróceniu punkt odzyskiwania, można:
@@ -109,7 +109,7 @@ Portal zawiera **szybkie tworzenie** opcji przywróconej maszyny wirtualnej. Aby
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Utwórz nową maszynę Wirtualną z punktu przywracania
 1. Jeśli nie masz już istnieje, [wybierz punkt przywracania](#restore-a vm-with-special-network-configurations) przed rozpoczęciem tworzenia nowej maszyny Wirtualnej z punktu przywracania. Po wybraniu punktu przywracania na **przywracania** bloku, wprowadź lub wybierz wartości dla każdego z następujących pól:
 
-    a. **Przywróć typu**. Utwórz maszynę wirtualną.
+    a. **Przywróć typu**. Tworzy maszynę wirtualną.
 
     b. **Nazwa maszyny wirtualnej**. Podaj nazwę maszyny Wirtualnej. Nazwa musi być unikatowa dla grupy zasobów (dla usługi Azure Resource Manager wdrożone maszyny Wirtualnej) lub usługi w chmurze (w przypadku klasycznych maszyn wirtualnych). Nie można zamienić maszyny Wirtualnej, jeśli już istnieje w subskrypcji.
 
@@ -211,7 +211,7 @@ Kopia zapasowa Azure umożliwia przywracanie kopii zapasowej maszyn wirtualnych 
 ## <a name="restore-domain-controller-vms"></a>Przywracanie kontrolera domeny maszyny wirtualne
 Tworzenie kopii zapasowych kontrolera domeny (DC) maszyn wirtualnych jest obsługiwany scenariusz przy użyciu kopii zapasowej. Jednak należy zachować ostrożność podczas procesu przywracania. Proces przywracania poprawne zależy od struktura domeny. Ogólnie rzecz biorąc masz pojedynczy kontroler domeny w jednej domenie. Najczęściej w przypadku obciążeń produkcyjnych masz jednej domeny z wielu kontrolerów domeny, prawdopodobnie w przypadku niektórych kontrolerów domeny lokalnej. Na koniec konieczne może być lesie z wieloma domenami. 
 
-Z perspektywy usługi Active Directory maszyna wirtualna Azure jest podobnie jak inne maszyny Wirtualnej w nowoczesnych obsługiwanej funkcji hypervisor. Główna różnica z lokalnymi funkcji hypervisor jest dostępnej na platformie Azure jest konsoli maszyny Wirtualnej. Konsola jest wymagana dla niektórych scenariuszach, takich jak odzyskiwanie za pomocą odzyskiwania zera (BMR) — typ kopii zapasowej. Jednak przywrócenie maszyny Wirtualnej z magazynu kopii zapasowych nie zastępuje pełnego odzyskiwania systemu od ZERA. Trybu przywracania usług katalogowych (DSRM) jest również dostępna, więc działało wszystkie scenariusze odzyskiwania usługi Active Directory. Aby uzyskać więcej informacji, zobacz [uwagi dotyczące tworzenia kopii zapasowej i przywracania dla zwirtualizowanych kontrolerów domeny](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) i [planowanie odzyskiwania lasu usługi Active Directory](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
+Z perspektywy usługi Active Directory maszyna wirtualna Azure jest podobnie jak inne maszyny Wirtualnej w nowoczesnych obsługiwanej funkcji hypervisor. Główna różnica z lokalnymi funkcji hypervisor jest dostępnej na platformie Azure jest konsoli maszyny Wirtualnej. Konsola jest wymagana dla niektórych scenariuszach, takich jak odzyskiwanie za pomocą odzyskiwania zera (BMR) — typ kopii zapasowej. Jednak przywrócenie maszyny Wirtualnej z magazynu kopii zapasowych nie zastępuje pełnego odzyskiwania systemu od ZERA. Trybu przywracania usług katalogowych (DSRM) jest również dostępna, więc działało wszystkie scenariusze odzyskiwania usługi Active Directory. Aby uzyskać więcej informacji, zobacz [uwagi dotyczące tworzenia kopii zapasowej i przywracania dla zwirtualizowanych kontrolerów domeny](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) i [planowanie odzyskiwania lasu usługi Active Directory](https://technet.microsoft.com/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
 
 ### <a name="single-dc-in-a-single-domain"></a>Pojedynczy kontroler domeny w jednej domenie
 Można przywrócić maszyny Wirtualnej (na przykład innych maszyn wirtualnych) z portalu Azure lub za pomocą programu PowerShell.
@@ -242,7 +242,7 @@ Aby pełni odtworzyć maszyn wirtualnych po przywróceniu do dysku, wykonaj nast
 
    a. Tworzenie maszyny Wirtualnej w usłudze w chmurze z [wewnętrznego modułu równoważenia obciążenia](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
 
-   b. Utwórz maszynę Wirtualną do nawiązania połączenia [modułu równoważenia obciążenia internetowy](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/).
+   b. Utwórz maszynę Wirtualną do nawiązania połączenia [modułu równoważenia obciążenia internetowy](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
    c. Utwórz maszynę Wirtualną z [wiele kart sieciowych](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
 

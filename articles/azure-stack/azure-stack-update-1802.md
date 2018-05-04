@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 04/19/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizacji 1802 stosu
 
@@ -56,9 +56,10 @@ Numer kompilacji aktualizacji 1802 stosu Azure jest **20180302.1**.
 
 
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
-Po zakończeniu instalacji 1802 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md).  
-- [KB 4103348 — interfejs API kontrolera sieci usługi ulega awarii podczas próby zainstalowania aktualizacji Azure stosu](https://support.microsoft.com/help/4103348)
+Po zakończeniu instalacji 1802 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md). 
+- Azure poprawki stosu **1.0.180302.4**. [KB 4131152 - istniejące zestawy skalowania maszyny wirtualnej może stać się bezużyteczny]( https://support.microsoft.com/help/4131152) 
 
+  Ta poprawka rozwiązuje również problemy wyszczególnione w [4103348 KB — interfejs API kontrolera sieci usługi awarii podczas próby zainstalowania aktualizacji stosu Azure](https://support.microsoft.com/help/4103348).
 
 
 ### <a name="new-features-and-fixes"></a>Nowe funkcje i poprawki

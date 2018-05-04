@@ -1,6 +1,6 @@
 ---
-title: "Śledzenie działań niestandardowych z zestawu .NET SDK usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Śledzenie działań niestandardowych z zestawu .NET SDK usługi Azure Application Insights"
+title: Śledzenie działań niestandardowych z zestawu .NET SDK usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Śledzenie działań niestandardowych z zestawu .NET SDK usługi Azure Application Insights
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 94424a3d8aad56cf4504cccd8adb1a45523d95e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie działań niestandardowych z zestawu SDK .NET usługi Application Insights
 
@@ -169,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Przetwórz
+#### <a name="process"></a>Proces
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -334,7 +334,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Przetwórz
+#### <a name="process"></a>Proces
 
 W poniższym przykładzie wiadomości przychodzącej jest śledzony w sposób, podobnie do przychodzące żądanie HTTP:
 
@@ -377,7 +377,7 @@ Gdy Instrumentacja usuwania komunikatów, upewnij się, że ustawisz operacji id
 - Zatrzymaj `Activity`.
 - Użyj `Start/StopOperation`, lub zadzwoń `Track` telemetrii ręcznie.
 
-### <a name="batch-processing"></a>przetwarzania wsadowego.
+### <a name="batch-processing"></a>Przetwarzanie wsadowe
 W przypadku niektórych kolejek można usuwania z kolejki wielu komunikatów z jednego żądania. Przetwarzanie takich wiadomości jest prawdopodobnie niezależna i należy do różnych operacji logicznej. W takim przypadku nie jest możliwe do skorelowania `Dequeue` na przetwarzanie komunikatów określonej operacji.
 
 Każdy komunikat powinien zostać przetworzony w przepływ sterowania asynchronicznego. Aby uzyskać więcej informacji, zobacz [zależności wychodzące śledzenia](#outgoing-dependencies-tracking) sekcji.
@@ -413,7 +413,7 @@ async Task BackgroundTask()
 }
 ```
 
-W tym przykładzie `telemetryClient.StartOperation` tworzy `RequestTelemetry` i wypełnia kontekstu korelacji. Załóżmy, że masz operacji nadrzędnego, który został utworzony przez żądań przychodzących, które zaplanowanych operacji. Tak długo, jak `BackgroundTask` rozpoczyna się w tej samej asynchronicznej sterowania przepływem jako przychodzącego żądania, jest skorelowany z tym operacja nadrzędnej. `BackgroundTask`i wszystkie elementy zagnieżdżone dane telemetryczne są automatycznie skorelowane z żądania, który spowodował, nawet po zakończeniu żądania.
+W tym przykładzie `telemetryClient.StartOperation` tworzy `RequestTelemetry` i wypełnia kontekstu korelacji. Załóżmy, że masz operacji nadrzędnego, który został utworzony przez żądań przychodzących, które zaplanowanych operacji. Tak długo, jak `BackgroundTask` rozpoczyna się w tej samej asynchronicznej sterowania przepływem jako przychodzącego żądania, jest skorelowany z tym operacja nadrzędnej. `BackgroundTask` i wszystkie elementy zagnieżdżone dane telemetryczne są automatycznie skorelowane z żądania, który spowodował, nawet po zakończeniu żądania.
 
 Po uruchomieniu zadania z wątku w tle, który nie ma żadnej operacji (`Activity`) skojarzone z nią `BackgroundTask` nie ma żadnych nadrzędnej. Jednak go można mieć zagnieżdżonych działań. Wszystkie elementy dane telemetryczne zgłoszone zadania są korelowane z `RequestTelemetry` utworzone w `BackgroundTask`.
 
@@ -450,11 +450,11 @@ public async Task RunMyTaskAsync()
 
 Operacji usuwania powoduje, że operacja ma zostać zatrzymany, więc można go wykonać zamiast wywoływać metodę `StopOperation`.
 
-*Ostrzeżenie*: w niektórych przypadkach może wyjątek unhanded [zapobiec](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally) `finally` wywoływanie, nie mogą być śledzone operacji.
+*Ostrzeżenie*: w niektórych przypadkach może wyjątek unhanded [zapobiec](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` wywoływanie, nie mogą być śledzone operacji.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Równoległe przetwarzanie operacji i śledzenia
 
-`StopOperation`tylko zatrzymuje operację, która została uruchomiona. Jeśli chcesz zatrzymać, nie jest zgodna bieżącej operacji uruchomione `StopOperation` nie działają. Taka sytuacja może się zdarzyć, uruchomić wiele operacji równolegle w tym samym kontekście wykonywania:
+`StopOperation` tylko zatrzymuje operację, która została uruchomiona. Jeśli chcesz zatrzymać, nie jest zgodna bieżącej operacji uruchomione `StopOperation` nie działają. Taka sytuacja może się zdarzyć, uruchomić wiele operacji równolegle w tym samym kontekście wykonywania:
 
 ```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");

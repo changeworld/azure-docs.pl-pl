@@ -1,6 +1,6 @@
 ---
-title: "Jak skalować klastra usługi kontenera platformy Azure na potrzeby usługi Machine Learning | Dokumentacja firmy Microsoft"
-description: "Skalowanie klastra usługi ACS — skalowania automatycznego i skalowanie statycznych; skalowania liczby węzłów w klastrze"
+title: Jak skalować klastra usługi kontenera platformy Azure na potrzeby usługi Machine Learning | Dokumentacja firmy Microsoft
+description: Skalowanie klastra usługi ACS — skalowania automatycznego i skalowanie statycznych; skalowania liczby węzłów w klastrze
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
 ms.openlocfilehash: 58709b5a5b060552e1bc349a6f720d3f45348ba0
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Skalowanie klastra zarządzania przepływności usługi sieci web
 
@@ -86,10 +86,10 @@ Na przykład ustawienie `autoscale-min-replicas` do 5 spowoduje utworzenie pięc
 | Nazwa parametru | Typ | Opis |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | wartość logiczna | Określa, czy jest włączona funkcja automatycznego skalowania. Domyślnie: true |
-| `autoscale-min-replicas` | integer | Określa minimalną liczbę stanowiskami. Musi być mniejsza od 0. Domyślne: 1 |
-| `autoscale-max-replicas` | integer | Określa maksymalną liczbę stanowiskami. Musi być mniejsza od 1. Jeśli funkcja automatycznego skalowania max repliki jest mniejsza niż skalowania automatycznego min replik, skalowania automatycznego max repliki zostaną zignorowane. Domyślny: 10 |
-| `autoscale-refresh-period-seconds` | integer | Określa czas w sekundach między operacjami odświeżania automatycznego skalowania. Domyślne: 1 |
-| `autoscale-target-utilization` | integer | Określa procent wykorzystania, którego element docelowy skalowania automatycznego, od 1 do 100. Domyślne: 70 |
+| `autoscale-min-replicas` | liczba całkowita | Określa minimalną liczbę stanowiskami. Musi być mniejsza od 0. Domyślne: 1 |
+| `autoscale-max-replicas` | liczba całkowita | Określa maksymalną liczbę stanowiskami. Musi być mniejsza od 1. Jeśli funkcja automatycznego skalowania max repliki jest mniejsza niż skalowania automatycznego min replik, skalowania automatycznego max repliki zostaną zignorowane. Domyślny: 10 |
+| `autoscale-refresh-period-seconds` | liczba całkowita | Określa czas w sekundach między operacjami odświeżania automatycznego skalowania. Domyślne: 1 |
+| `autoscale-target-utilization` | liczba całkowita | Określa procent wykorzystania, którego element docelowy skalowania automatycznego, od 1 do 100. Domyślne: 70 |
 
 Funkcja automatycznego skalowania działa zapewnienie następujących warunków:
 

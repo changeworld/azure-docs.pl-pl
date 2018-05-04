@@ -16,7 +16,7 @@ ms.date: 03/9/2018
 ms.author: ellacroi
 ms.openlocfilehash: 918af6da62e0e3a1409528691bdd460b2ad61a3e
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/28/2018
 ---

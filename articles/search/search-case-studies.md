@@ -1,25 +1,20 @@
 ---
-title: "Kto korzysta z usługi Azure Search: wdrożeń i wątki klienta | Dokumentacja firmy Microsoft"
-description: "Analizy przypadków i wątki klienta dotyczące usługi Azure Search, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure."
-services: search
-documentationcenter: 
+title: 'Kto korzysta z usługi Azure Search: wdrożeń i wątki klienta | Dokumentacja firmy Microsoft'
+description: Analizy przypadków i wątki klienta dotyczące usługi Azure Search, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: ad48e927-aaf9-48f5-8efd-48150cfe79b2
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc15d214d48978b2f8a6bceb3d1a0e945f10bd67
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Kto korzysta z usługi Azure Search: wdrożeń i klientów wątków
 Dowiedz się, jak poniższych organizacji przenieść ich firm do przodu integrując sformatowanego usługi Azure Search wystąpić w swoich aplikacjach online.

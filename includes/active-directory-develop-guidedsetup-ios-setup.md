@@ -2,7 +2,7 @@
 
 Ta sekcja zawiera instrukcje krok po kroku dotyczące sposobu tworzenia nowego projektu aby zademonstrować sposób integracji aplikacji systemu iOS (Swift) z *logowania z firmą Microsoft* aby mogła zbadać interfejsów API sieci Web, które wymagają tokenu.
 
-> Preferowane jest zamiast tego Pobierz ten przykład XCode projekt? [Pobieranie projektu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) i przejść [kroku konfiguracji](#create-an-application-express) skonfigurować przykładowy kod przed wykonaniem.
+> Preferowane jest zamiast tego Pobierz ten przykład XCode projekt? [Pobieranie projektu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) i przejść [kroku konfiguracji](#register-your-application) skonfigurować przykładowy kod przed wykonaniem.
 
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>Zainstaluj Carthage do pobrania i kompilacji MSAL

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 503dcd87bf87ffb204b03780fc11f30825ac35ef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemów Azure połączenie punkt lokacja
 
@@ -318,7 +318,7 @@ Ten błąd występuje, gdy serwer usługi RADIUS, używany do uwierzytelniania k
 
 ### <a name="solution"></a>Rozwiązanie
 
-Upewnij się, że serwer RADIUS jest skonfigurowany prawidłowo. Aby uzyskać więcej informacji, zobacz [integracji uwierzytelnianie usługi RADIUS z serwera usługi Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md).
+Upewnij się, że serwer RADIUS jest skonfigurowany prawidłowo. Aby uzyskać więcej informacji, zobacz [integracji uwierzytelnianie usługi RADIUS z serwera usługi Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfaserver-dir-radius.md).
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>"Błąd 405" po pobraniu certyfikatu głównego z bramy sieci VPN
 

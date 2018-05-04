@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 194b8237ce1bff6ac18878bc7eca6e0d3891aa33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: problemy z agentem lub rozszerzenia
 
@@ -63,7 +63,8 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Kopii zapasowej nie powiedzie się, ponieważ nie odpowiada, agent maszyny Wirtualnej
 
-Komunikat o błędzie: "Nie można wykonać operacji, ponieważ Agent maszyny Wirtualnej nie jest elastyczny"
+Komunikat o błędzie: "Nie można wykonać operacji, ponieważ Agent maszyny Wirtualnej nie jest elastyczny" <br>
+Kod błędu: "GuestAgentSnapshotTaskStatusError"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure kopii zapasowej inicjuje zadania komunikując się z rozszerzenia kopii zapasowej maszyny Wirtualnej do tworzenia migawki punktu w czasie. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Jeśli migawka nie jest wyzwalany, może wystąpić błąd tworzenia kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
 **Przyczyna 1: [agent jest zainstalowany na Maszynie wirtualnej, ale odpowiadać (dla maszyn wirtualnych systemu Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -72,7 +73,8 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 
 ## <a name="backup-fails-with-an-internal-error"></a>Kopii zapasowej kończy się niepowodzeniem z powodu błędu wewnętrznego
 
-Komunikat o błędzie: "kopii zapasowej nie powiodło się z powodu wewnętrznego błędu — spróbuj ponownie wykonać operację w ciągu kilku minut."
+Komunikat o błędzie: "kopii zapasowej nie powiodło się z powodu wewnętrznego błędu — spróbuj ponownie wykonać operację w ciągu kilku minut." <br>
+Kod błędu: "BackUpOperationFailed" / "BackUpOperationFailedV2"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure kopii zapasowej inicjuje zadania komunikując się z rozszerzenia kopii zapasowej maszyny Wirtualnej do tworzenia migawki punktu w czasie. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Jeśli migawka nie jest wyzwalany, może wystąpić błąd tworzenia kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
 **Przyczyna 1: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**  
@@ -97,6 +99,8 @@ Aby rozwiązać ten problem, wypróbuj jedną z następujących metod:
 Można użyć [usługi tagi](../virtual-network/security-overview.md#service-tags) Aby zezwolić na połączenia z magazynem określonego regionu. Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż zasady tego blokuje dostęp do Internetu. 
 
 ![Grupy zabezpieczeń sieci przy użyciu tagów magazynu dla regionu](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Aby poznać procedury krok po kroku, aby skonfigurować usługi tagi, obejrzyj [ten film](https://youtu.be/1EjLQtbKm1M).
 
 > [!WARNING]
 > Tagi usługi magazynowania są w wersji zapoznawczej. Są one dostępne tylko w określonych regionach. Aby uzyskać listę regionów, zobacz [usługi tagi dla magazynu](../virtual-network/security-overview.md#service-tags).

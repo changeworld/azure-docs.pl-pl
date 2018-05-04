@@ -1,25 +1,25 @@
 ---
-title: "Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 5 | Microsoft Doc"
-description: "Część 5 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB"
+title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure — część 5 | Microsoft Doc
+description: Część 5 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c06247279df9eaaedf128a2eeec801b4e323c535
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: 7a4b25792577247d3121c5226da55081ed55ff2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB — część 5: łączenie z usługą Azure Cosmos DB przy użyciu wtyczki Mongoose
 
@@ -217,11 +217,11 @@ Przed rozpoczęciem tej części samouczka upewnij się, że zostały wykonane c
 
     Poświęćmy teraz chwilę na zapoznanie się z łańcuchem wywołań. Najpierw przechodzimy do pliku `index.js`, który konfiguruje serwer węzłów, i zauważamy, że jest to skonfigurowanie i zdefiniowanie naszych tras. Nasz plik routes.js komunikuje się następnie z usługą hero i informuje ją o konieczności pobrania naszych funkcji, takich jak getHeroes, oraz przekazania żądania i odpowiedzi. Tutaj plik hero.service.js pobierze model i nawiąże połączenie z usługą Mongo, a następnie wykona wywołaną funkcję getHeroes i zwróci odpowiedź 200. Następnie będzie przechodzić z powrotem przez łańcuch. 
 
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 1. Teraz uruchommy aplikację ponownie. W programie Visual Studio Code zapisz wszystkie zmiany, kliknij przycisk **Debug** (Debuguj) ![Ikona Debug (Debuguj) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) po lewej stronie, a następnie kliknij przycisk **Start Debugging** (Rozpocznij debugowanie) ![Ikona Debug (Debuguj) w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
 
-3. Przejdź teraz do przeglądarki, otwórz pozycję Narzędzia programistyczne i kartę Sieć, a następnie przejdź do lokalizacji http://localhost:3000, w której znajduje się nasza aplikacja.
+3. Przejdź teraz do przeglądarki, otwórz pozycję Narzędzia programistyczne i kartę Sieć, a następnie przejdź do lokalizacji http://localhost:3000, w której znajduje się aplikacja.
 
     ![Nowe konto usługi Azure Cosmos DB w witrynie Azure Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 

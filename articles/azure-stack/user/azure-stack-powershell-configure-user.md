@@ -12,13 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 4/26/2017
 ms.author: mabrigg
-ms.openlocfilehash: 44a5030bd9dfb694968a6b0f64ff9198ecccd84a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.reviewer: Balsu.G
+ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurowanie środowiska PowerShell użytkownika Azure stosu
 
@@ -64,7 +65,7 @@ Na podstawie typu wdrożenia (Azure AD lub AD FS), uruchom jedno z poniższych s
     -EnvironmentName "AzureStackUser"
 
   # Sign in to your environment
-  Connect-AzureRmAccount `
+  Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
     -TenantId $TenantID 
    ```
@@ -99,7 +100,7 @@ Na podstawie typu wdrożenia (Azure AD lub AD FS), uruchom jedno z poniższych s
     -EnvironmentName "AzureStackUser"
 
   # Sign in to your environment
-  Connect-AzureRmAccount `
+  Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
     -TenantId $TenantID 
   ```

@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: bsiva
-ms.openlocfilehash: cbb76aafe97e9e9b45c48a2b13bd1a6566b51fa5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 2a0f183770a07cd05963e88c672452cfeb80e567
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikacja i pracy awaryjnej maszyn wirtualnych VMware do platformy Azure przy użyciu programu PowerShell
 
@@ -42,17 +42,17 @@ Przed rozpoczęciem:
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Zaloguj się do subskrypcji platformy Microsoft Azure
 
-Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia cmdlet Login-AzureRmAccount
+Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia cmdlet Connect-AzureRmAccount
 
 ```azurepowershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 Wybierz subskrypcję platformy Azure, aby zreplikować maszyny wirtualnej VMware. Aby uzyskać listę subskrypcji Azure, do których masz dostęp do, należy użyć polecenia cmdlet Get-AzureRmSubscription. Wybierz subskrypcję platformy Azure, aby pracować z za pomocą polecenia cmdlet Select-AzureRmSubscription.
 
 ```azurepowershell
 Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
 ```
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
 * Utwórz grupę zasobów, w której chcesz utworzyć magazyn usług odzyskiwania. W poniższym przykładzie nazwa grupy zasobów o nazwie VMwareDRtoAzurePS i jest tworzona w regionie, Azja Wschodnia.
 

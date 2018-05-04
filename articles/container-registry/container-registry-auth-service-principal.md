@@ -1,18 +1,18 @@
 ---
-title: "Azure rejestru kontenera uwierzytelniania za pomocą nazwy główne usług"
-description: "Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze kontener prywatnego przy użyciu nazwy głównej usługi Azure Active Directory."
+title: Azure rejestru kontenera uwierzytelniania za pomocą nazwy główne usług
+description: Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze kontener prywatnego przy użyciu nazwy głównej usługi Azure Active Directory.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 97036ecabceb12b87b76c6ecb7e521157cbef827
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 2dd96880292f98d6635ae5223b34cf3b78c81e16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure rejestru kontenera uwierzytelniania za pomocą nazwy główne usług
 
@@ -38,6 +38,13 @@ Indywidualnej operacji dostępu do rejestru, takie jak kiedy należy ręcznie wy
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
+## <a name="sample-scripts"></a>Przykładowe skrypty
+
+Poprzednie przykładowe skrypty można znaleźć dla wiersza polecenia platformy Azure w serwisie GitHub, jak dobrze wersji dla programu Azure PowerShell:
+
+* [Interfejs wiersza polecenia platformy Azure][acr-scripts-cli]
+* [Azure PowerShell][acr-scripts-psh]
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 Po utworzeniu nazwy głównej usługi że zostały przyznane dostępu do rejestru kontenera, można użyć jego poświadczeń w aplikacji i usług do interakcji z rejestru.
@@ -48,6 +55,8 @@ Podczas konfigurowania poszczególnych aplikacji, aby użyć poświadczenia gł�
 * [Uwierzytelniania za pomocą rejestru kontenera platformy Azure z wystąpień kontenera platformy Azure (ACI)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
+[acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
+[acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az_acr_login

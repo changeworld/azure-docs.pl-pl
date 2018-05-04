@@ -61,8 +61,8 @@ Dowiedz się więcej informacji na temat inicjowania chmurze na platformie Azure
 - [Spróbuj samouczek dotyczący automatycznych konfiguracji maszyny Wirtualnej przy użyciu chmury init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
-## <a name="powershell-dsc"></a>PowerShell DSC
-[Konfiguracji żądanego stanu środowiska PowerShell (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. DSC można również w systemie Linux za pomocą [Open Management Infrastructure (OMI) serwera](https://collaboration.opengroup.org/omi/).
+## <a name="powershell-dsc"></a>DSC środowiska PowerShell
+[Konfiguracji żądanego stanu środowiska PowerShell (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. DSC można również w systemie Linux za pomocą [Open Management Infrastructure (OMI) serwera](https://collaboration.opengroup.org/omi/).
 
 Konfiguracji DSC zdefiniować, co należy zainstalować na maszynie oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa na każdym węźle docelowym, który przetwarza żądane akcje wciśnięcia konfiguracji. Serwerem ściągania to usługa sieci web uruchomioną na hoście centralnej do przechowywania konfiguracji DSC i skojarzonych zasobów. Z serwerem ściągania komunikuje się z aparatem LCM na każdym hoście docelowym, aby zapewnić wymagane konfiguracje i raport dotyczący zgodności.
 
@@ -130,5 +130,5 @@ Instrukcje:
 - [Tworzenie infrastruktury programowanie na maszynie Wirtualnej systemu Linux na platformie Azure z Wpięć, GitHub i Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Istnieje wiele różnych opcji za pomocą narzędzi automatyzacji infrastruktury na platformie Azure. Masz swobody za pomocą rozwiązania, która najlepiej pasuje do środowiska i potrzeb użytkowników. Do rozpoczęcia pracy i spróbuj niektóre narzędzia, które są wbudowane w platformę Azure, zobacz temat Jak zautomatyzować dostosowywania [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) lub [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) maszyny Wirtualnej.

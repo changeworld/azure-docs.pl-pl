@@ -1,8 +1,8 @@
 ---
 title: Tworzenie kopii zapasowej aplikacji na platformie Azure
-description: "Dowiedz się, jak tworzyć kopie zapasowe aplikacji w usłudze Azure App Service."
+description: Dowiedz się, jak tworzyć kopie zapasowe aplikacji w usłudze Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 435370a8758d439a5fcce2e04efd11b4aaaf0357
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja Kopia zapasowa i przywracanie w [usłudze Azure App Service](app-service-web-overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji, ręcznie lub zgodnie z harmonogramem. Zastępowanie istniejących aplikacji lub przywracania do innej aplikacji, można przywrócić aplikację do migawki poprzedniego stanu. 
@@ -35,9 +35,9 @@ Usługi aplikacji — kopię zapasową można wykonać poniższe informacje kont
 * Bazy danych jest podłączony do aplikacji
 
 Obsługiwane są następujące rozwiązania bazy danych przy użyciu funkcji tworzenia kopii zapasowej: 
-   - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-   - [Bazy danych platformy Azure dla programu MySQL (wersja zapoznawcza)](https://azure.microsoft.com/en-us/services/mysql)
-   - [Bazy danych platformy Azure dla PostgreSQL (wersja zapoznawcza)](https://azure.microsoft.com/en-us/services/postgres)
+   - [SQL Database](https://azure.microsoft.com/services/sql-database/)
+   - [Bazy danych platformy Azure dla programu MySQL (wersja zapoznawcza)](https://azure.microsoft.com/services/mysql)
+   - [Bazy danych platformy Azure dla PostgreSQL (wersja zapoznawcza)](https://azure.microsoft.com/services/postgres)
    - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 
@@ -154,7 +154,7 @@ Kopia zapasowa bazy danych dla aplikacji są przechowywane w katalogu głównym 
 > 
 > 
 
-## <a name="automate-with-scripts"></a>Zautomatyzować za pomocą skryptów
+## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 
 Można zautomatyzować zarządzania kopiami zapasowymi za pomocą skryptów przy użyciu [interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).
 

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Konfigurowanie usługi Salesforce dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Salesforce."
+title: 'Samouczek: Konfigurowanie usługi Salesforce dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Salesforce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d300eb397b58b4e1f8c8a6516e0a279980d8d09
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b5a85dd7d4ac6bdabcbab49f654ebfe4adae73cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usług Salesforce dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -27,9 +27,13 @@ Celem tego samouczka jest Pokaż kroki wymagane do przeprowadzenia w Salesforce 
 
 Scenariusz opisany w tym samouczku założono, że już następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory.
-*   Musi mieć prawidłową dzierżawy dla usługi Salesforce w pracy lub Salesforce dla instytucji edukacyjnych. Można użyć bezpłatnego konta wersji próbnej dla każdej usługi.
-*   Konto użytkownika w usłudze Salesforce z uprawnieniami administratora zespołu.
+*   Dzierżawy usługi Azure Active directory
+*   Dzierżawy witryny Salesforce.com
+
+>[!IMPORTANT] 
+>Jeśli używane konto próbne witryny Salesforce.com, będzie on mógł skonfigurować użytkownika automatycznego inicjowania obsługi administracyjnej. Konta wersji próbnej nie mieć włączony, dopóki nabywane są niezbędne dostępu do interfejsu API. Przy użyciu bezpłatny można uzyskać wokół tego ograniczenia [konta dewelopera](https://developer.salesforce.com/signup) do ukończenia tego samouczka.
+
+Jeśli używasz środowiska izolowanego Salesforce, zobacz [samouczek integracji usług Salesforce piaskownicy](https://go.microsoft.com/fwLink/?LinkID=521879).
 
 ## <a name="assigning-users-to-salesforce"></a>Przypisywanie użytkowników do usługi Salesforce
 

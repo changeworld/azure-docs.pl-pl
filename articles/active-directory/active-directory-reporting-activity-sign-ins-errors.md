@@ -1,25 +1,25 @@
 ---
-title: "Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory | Microsoft Docs"
-description: "Dokumentacja dotycząca kodów błędów w raportach działań związanych z logowaniem."
+title: Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory | Microsoft Docs
+description: Dokumentacja dotycząca kodów błędów w raportach działań związanych z logowaniem.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -65,6 +65,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50055|Nieprawidłowe hasło — wprowadzono nieważne hasło.|
 |50057|Konto użytkownika zostało wyłączone.|
 |50058|W podanych poświadczeniach nie znaleziono informacji o tożsamości użytkownika, w dzierżawie nie znaleziono użytkownika albo wysłano żądanie logowania dyskretnego, ale żaden użytkownik nie jest zalogowany lub usługa nie mogła uwierzytelnić użytkownika.|
+|50072|Użytkownik musi zarejestrować się na potrzeby uwierzytelniania dwuskładnikowego (interaktywnie)|
 |50074|Użytkownik nie przeszedł żądania uwierzytelniania MFA.|
 |50079|Użytkownik musi zarejestrować się na potrzeby uwierzytelniania dwuskładnikowego.|
 |50089|Weryfikacja tokenu przepływu nie powiodła się z powodu jego wygaśnięcia.|
@@ -97,7 +98,6 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |81013|Nie można znaleźć obiektu użytkownika w oparciu o informacje z biletu Kerberos użytkownika.|
 |90014|Kod używany w różnych przypadkach, jeśli poświadczenia nie zawierają oczekiwanego pola.|
 |90093|Program Graph zwrócił niedozwolony kod błędu dla żądania.|
-
 
 
 ## <a name="next-steps"></a>Następne kroki

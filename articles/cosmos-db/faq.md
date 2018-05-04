@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 0118e78ee7240c139ff808582d6b9b47c6b64b4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: ede354516afbd34372215a08d633969cf74b1562
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -114,7 +114,7 @@ Wartość PreferredLocations można ustawić dla każdego regiony platformy Azur
 ### <a name="is-there-anything-i-should-be-aware-of-when-distributing-data-across-the-world-via-the-azure-datacenters"></a>Czy jest coś I należy zwrócić uwagę podczas dystrybucję danych na świecie za pośrednictwem centrach danych platformy Azure? 
 Azure DB rozwiązania Cosmos jest obecny we wszystkich regionach platformy Azure, jak określono w [regiony platformy Azure](https://azure.microsoft.com/regions/) strony. Co nowego centrum danych, ponieważ jest usługi podstawowej, ma obecności bazy danych Azure rozwiązania Cosmos. 
 
-Po ustawieniu regionu, należy pamiętać, że bazy danych Azure rozwiązania Cosmos szanuje chmur suwerenne i dla instytucji rządowych. Oznacza to jeśli tworzysz konto w regionie suwerennych nie może replikować poza tym suwerennych regionie. Podobnie nie można włączyć replikacji w innych lokalizacjach suwerennych poza konta. 
+Po ustawieniu regionu, należy pamiętać, że bazy danych Azure rozwiązania Cosmos szanuje chmur suwerenne i dla instytucji rządowych. Oznacza to jeśli tworzysz konto w [suwerennych region](https://azure.microsoft.com/global-infrastructure/), nie są replikowane poza który [suwerennych region](https://azure.microsoft.com/global-infrastructure/). Podobnie nie można włączyć replikacji w innych lokalizacjach suwerennych poza konta. 
 
 ## <a name="develop-against-the-sql-api"></a>Tworzenie interfejsu API SQL
 
@@ -170,6 +170,9 @@ Tak, ponieważ bazy danych rozwiązania Cosmos Azure jest usługą RESTful, link
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Lokalne wystąpienie programu SQL interfejsu API jest dostępny?
 Tak. [Azure rozwiązania Cosmos DB emulatora](local-emulator.md) zapewnia emulacji o wysokiej wierności usługi DB rozwiązania Cosmos. Obsługuje funkcje, które są takie same jak rozwiązania Cosmos bazy danych Azure, w tym obsługa tworzenia i badania dokumentów JSON, inicjowania obsługi administracyjnej i skalowanie kolekcje i wykonywania procedury składowane i wyzwalaczy. Mogą tworzyć i testować aplikacje przy użyciu emulatora usługi Azure DB rozwiązania Cosmos i wdrożyć je na platformie Azure w skali globalnej, wprowadzając zmiany do punktu końcowego połączenia dla bazy danych Azure rozwiązania Cosmos konfiguracji pojedynczego.
 
+### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Dlaczego są wartości długo zmiennoprzecinkowych w dokumencie zaokrąglona z Eksploratora danych w portalu. 
+Jest to ograniczenie języka JavaScript. JavaScript używa numerów format zmiennoprzecinkowe podwójnej precyzji jak określono w IEEE-754 i bezpiecznie może reprezentować liczby z zakresu od-(253 - 1) i 253 – 1 (tj. 9007199254740991) tylko.
+
 ## <a name="develop-against-the-api-for-mongodb"></a>Tworzenie do interfejsu API dla bazy danych MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Co to jest API Azure rozwiązania Cosmos bazy danych dla bazy danych MongoDB?
 API Azure rozwiązania Cosmos bazy danych dla bazy danych MongoDB jest warstwy zgodności, który umożliwia aplikacjom łatwo i w przezroczysty sposób komunikowania się z natywnego aparatu bazy danych DB rozwiązania Cosmos Azure za pomocą istniejących, obsługiwane społeczności Apache bazy danych MongoDB z interfejsów API i sterowników. Deweloperzy mogą teraz używać do tworzenia aplikacji, które korzystają z bazy danych Azure rozwiązania Cosmos istniejących łańcuchów Narzędzia bazy danych MongoDB i umiejętności. Deweloperom korzystać z unikatowych możliwości bazy danych rozwiązania Cosmos platformy Azure, w tym obsługi automatycznego indeksowania, tworzenia kopii zapasowej, umów dotyczących poziomu finansowo kopii zapasowej usług (SLA) i tak dalej.
@@ -215,9 +218,9 @@ Istnieją pewne różnice zachowanie, które użytkownicy pochodzące z magazyne
 Pod względem interfejsu API REST istnieje wiele opcji punkty końcowe/zapytania, które nie są obsługiwane przez interfejs API Azure rozwiązania Cosmos DB tabeli:
 | Metody REST | Opcja punktu końcowego/zapytania REST | Adresy URL dokumentu | Wyjaśnienie |
 | ------------| ------------- | ---------- | ----------- |
-| GET, PUT | /?restype=service@comp=properties| [Ustaw właściwości usługi tabeli](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) i [pobrać właściwości usługi tabel](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ten punkt końcowy jest używana do ustawiania zasad CORS, konfiguracji magazynu analizy i ustawień rejestrowania. CORS nie jest obecnie obsługiwany i rejestrowanie i analiza będą obsługiwane inaczej w usłudze Azure DB rozwiązania Cosmos niż tabele magazynu Azure |
+| GET, PUT | /? restype =service@comp= właściwości| [Ustaw właściwości usługi tabeli](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) i [pobrać właściwości usługi tabel](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ten punkt końcowy jest używana do ustawiania zasad CORS, konfiguracji magazynu analizy i ustawień rejestrowania. CORS nie jest obecnie obsługiwany i rejestrowanie i analiza będą obsługiwane inaczej w usłudze Azure DB rozwiązania Cosmos niż tabele magazynu Azure |
 | OPCJE | /<table-resource-name> | [Transmitowane wstępnego CORS tabeli żądania](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Jest to część CORS, które bazy danych Azure rozwiązania Cosmos nie obsługuje obecnie. |
-| GET | /?restype=service@comp=stats | [Pobierz Statystyka usługi tabel](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Zawiera informacje, jak szybko replikuje dane między podstawowe i pomocnicze bazy danych. To nie jest potrzebne do rozwiązania Cosmos bazy danych replikacji jest częścią operacji zapisu. |
+| GET | /? restype =service@comp= statystyki | [Pobierz Statystyka usługi tabel](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Zawiera informacje, jak szybko replikuje dane między podstawowe i pomocnicze bazy danych. To nie jest potrzebne do rozwiązania Cosmos bazy danych replikacji jest częścią operacji zapisu. |
 | GET, PUT | /mytable?comp=acl | [Pobierz tabelę ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) i [ustawić tabeli listy kontroli dostępu](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | To pobiera i ustawia zasady dostępu przechowywane, używany do zarządzania dostępu sygnatur dostępu Współdzielonego. Sygnatury dostępu Współdzielonego jest obsługiwana, ale są one ustawić i zarządzane w inny sposób. |
 
 Ponadto interfejsu API Azure rozwiązania Cosmos DB tabeli obsługuje tylko format JSON nie ATOM.

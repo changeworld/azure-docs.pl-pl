@@ -1,11 +1,11 @@
 ---
-title: "Umożliwia skonfigurowanie przekazywania pliku programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Sposób użycia poleceń cmdlet programu Azure PowerShell do konfigurowania Centrum IoT włączyć plik zostanie przesłany z połączonych urządzeń. Zawiera informacje o konfigurowaniu docelowym kontem magazynu platformy Azure."
+title: Umożliwia skonfigurowanie przekazywania pliku programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Sposób użycia poleceń cmdlet programu Azure PowerShell do konfigurowania Centrum IoT włączyć plik zostanie przesłany z połączonych urządzeń. Zawiera informacje o konfigurowaniu docelowym kontem magazynu platformy Azure.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c6966fd4a60681643c2a690013035bde20abee78
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 22d331342504aa7cc3d4fe86777ef9c2595a27ac
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurowanie Centrum IoT przekazywania plików przy użyciu programu PowerShell
 
@@ -35,12 +35,12 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Zaloguj się i ustawić konta platformy Azure
 
-Zaloguj się do konta platformy Azure i wyboru subskrypcji.
+Zaloguj się do konta platformy Azure i wybierz subskrypcję.
 
-1. W wierszu polecenia programu PowerShell, uruchom **Login-AzureRmAccount** polecenia cmdlet:
+1. W wierszu polecenia programu PowerShell, uruchom **Connect-AzureRmAccount** polecenia cmdlet:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Jeśli masz wiele subskrypcji Azure, logowanie do platformy Azure udziela dostępu do subskrypcji platformy Azure skojarzone z poświadczeniami użytkownika. Aby wyświetlić listę dostępnych przy użyciu subskrypcji platformy Azure, użyj następującego polecenia:
@@ -49,7 +49,7 @@ Zaloguj się do konta platformy Azure i wyboru subskrypcji.
     Get-AzureRMSubscription
     ```
 
-    Użyj następującego polecenia, aby wybrać subskrypcję, która ma być używany do uruchamiania polecenia do zarządzania Centrum IoT. Przy użyciu subskrypcji nazwa lub identyfikator z danych wyjściowych poprzednie polecenie:
+    Użyj następującego polecenia, aby wybrać subskrypcję, która ma być używany do uruchamiania polecenia do zarządzania Centrum IoT. Można użyć nazwy subskrypcji lub identyfikatora z danych wyjściowych poprzedniego polecenia:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -123,7 +123,7 @@ Set-AzureRmIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat możliwości przekazywania plików Centrum IoT, zobacz [przekazywania plików z urządzeniem][lnk-upload].
 
@@ -136,7 +136,7 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Ce
 Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
 * [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 * [Zabezpieczanie rozwiązania IoT od podstaw w górę][lnk-securing]
 
 [lnk-upload]: iot-hub-devguide-file-upload.md

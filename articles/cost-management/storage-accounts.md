@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/27/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 4ddd70501821941120d0d22e273b69842b567532
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 76a9fc586a1932b8b5e664b6c964f0c7d3eac4d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>Konfigurowanie kont magazynu koszt zarządzania
 
@@ -39,7 +39,7 @@ Konfigurowanie możesz magazynu Azure do użycia przez koszt zarządzania jest p
 3. Na stronie konta magazynu w obszarze **ustawienia**, kliknij przycisk **klucze dostępu**.
 4. Kopia programu **nazwy konta magazynu** i **ciąg połączenia** w obszarze klucz1.  
 ![Klucze dostępu do magazynu Azure](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Otwórz Cloudyn portal z portalu Azure lub przejdź do https://azure.cloudyn.com i zaloguj się.
+5. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com i zaloguj się.
 6. Kliknij koło zębate symbol, a następnie wybierz **Zarządzanie raportami magazynowania**.
 7. Kliknij przycisk **Dodaj nowy +** i upewnij się, że wybrany jest Microsoft Azure. Wklej nazwę konta magazynu Azure w **nazwa** obszaru. Wklej Twojej **ciąg połączenia** w odpowiadający mu obszar. Wprowadź nazwę kontenera, a następnie kliknij przycisk **zapisać**.  
 ![Magazyn Cloudyn skonfigurowane dla platformy Azure](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +147,7 @@ Można również ustawić uprawnienia do tworzenia raportów w Twojej przedział
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>Dodawanie magazynu raportu usług AWS do Cloudyn
 
-1. Otwórz Cloudyn portal z portalu Azure lub przejdź do https://azure.cloudyn.com i zaloguj się.
+1. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com i zaloguj się.
 2. Kliknij koło zębate symbol, a następnie wybierz **Zarządzanie raportami magazynowania**.
 3. Kliknij przycisk **Dodaj nowy +** i upewnij się, że wybrano AWS.
 4. Wybierz zasobnik konta i magazynu. Nazwa zasobnika magazynu usług AWS jest wypełniane automatycznie.  

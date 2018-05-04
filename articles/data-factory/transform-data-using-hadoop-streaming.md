@@ -3,21 +3,20 @@ title: Przekształcanie danych za pomocą działaniu przesyłania strumieniowego
 description: Wyjaśniono, jak używać działaniu przesyłania strumieniowego usługi Hadoop w fabryce danych Azure do przekształcania danych, uruchamiając programy przesyłania strumieniowego usługi Hadoop dla klastra usługi Hadoop.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 7c882e6fd826adb415b0452c9b441405d2ff90d7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: c0143b4f2d6858883ac11df18f7844802c667404
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działaniu przesyłania strumieniowego usługi Hadoop w usłudze fabryka danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -80,9 +79,9 @@ Jeśli jesteś nowym użytkownikiem usługi fabryka danych Azure, zapoznaj się 
 | linkedServiceName | Odwołanie do klastra usługi HDInsight zarejestrowany jako połączonej usługi z fabryki danych. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [obliczeniowe połączonych usług](compute-linked-services.md) artykułu. | Yes      |
 | mapowania            | Określa nazwę pliku wykonywalnego mapowania | Yes      |
 | Reduktor           | Określa nazwę pliku wykonywalnego reduktor | Yes      |
-| combiner          | Określa nazwę pliku wykonywalnego łączenia | Nie       |
+| łączenia          | Określa nazwę pliku wykonywalnego łączenia | Nie       |
 | fileLinkedService | Odwołanie do połączonej usługi magazynu Azure są używane do przechowywania mapowania, łączenia i reduktor na wykonywanie programów. Jeśli nie określisz tej połączonej usługi, usługi połączonej magazynu Azure, zdefiniowane w połączonej usłudze HDInsight jest używany. | Nie       |
-| filePath          | Podaj tablicę ścieżka do mapowania, łączenia, i programy reduktor przechowywanych w magazynie Azure odwołuje się fileLinkedService. W ścieżce jest rozróżniana wielkość liter. | Yes      |
+| Ścieżka pliku          | Podaj tablicę ścieżka do mapowania, łączenia, i programy reduktor przechowywanych w magazynie Azure odwołuje się fileLinkedService. W ścieżce jest rozróżniana wielkość liter. | Yes      |
 | Dane wejściowe             | Określa ścieżkę WASB do pliku wejściowego dla mapowania. | Yes      |
 | output            | Określa reduktor WASB ścieżka do pliku wyjściowego. | Yes      |
 | getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do magazynu Azure używanego przez klaster usługi HDInsight (lub) określony przez element scriptLinkedService. Dozwolone wartości: None, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |

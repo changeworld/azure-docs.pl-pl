@@ -9,26 +9,26 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Dostrajanie wydajności w bazie danych SQL Azure
 
 Baza danych SQL Azure udostępnia [zalecenia](sql-database-advisor.md) czy można użyć do zwiększenia wydajności bazy danych, lub możesz pozwolić, aby baza danych SQL Azure [automatycznie dostosowania do aplikacji](sql-database-automatic-tuning.md) i zastosować zmiany, które poprawią wydajność obciążenia.
 
 W przypadku nie ma żadnych odpowiednich zaleceń i nadal masz problemy z wydajnością, usprawniających wydajność może skorzystać z następujących metod:
-1. Zwiększ [warstw usług](sql-database-service-tiers.md) i podaj więcej zasobów w bazie danych.
-2. Dostrajanie aplikacji i stosować najlepsze rozwiązania, które może poprawić wydajność. 
-3. Dostrajanie bazy danych, zmieniając indeksów i zapytań na bardziej efektywną pracę z danymi.
+- Zwiększyć warstwy usług w Twojej [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) zapewnienie więcej zasobów w bazie danych.
+- Dostrajanie aplikacji i stosować najlepsze rozwiązania, które może poprawić wydajność. 
+- Dostrajanie bazy danych, zmieniając indeksów i zapytań na bardziej efektywną pracę z danymi.
 
-Są to ręcznej metody, ponieważ potrzebne do podejmowania decyzji [warstw usług](sql-database-service-tiers.md) należy wybrać lub trzeba ponownie pisać kodu aplikacji lub bazy danych i wdrażanie zmiany.
+Te są metod ręcznych, ponieważ należy zdecydować, co [limity zasobów jednostek dtu w warstwie na podstawie modelu](sql-database-dtu-resource-limits.md) i [limity zasobów opartych na vCore modelu (wersja zapoznawcza)](sql-database-vcore-resource-limits.md) odpowiadają Twoim potrzebom. W przeciwnym razie konieczne będzie ponowne zapisywanie adresów aplikacji lub kodu bazy danych i wdrażanie zmiany.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Zwiększenie poziomu wydajności bazy danych
 
-Baza danych SQL Azure oferuje dwa modele zakupów, model kupna jednostek dtu w warstwie i systemem Core v model kupna. Każdy model ma wiele [warstw usług](sql-database-service-tiers.md) , które są dostępne. Każdej warstwy usług izoluje ściśle zasobów można używać bazy danych SQL i zapewnia przewidywalną wydajność tego poziomu usług. W tym artykule firma Microsoft oferuje wskazówki, które ułatwiają wybieranie warstwy usługi dla aplikacji. Omówiono także sposoby dostroić aplikacji maksymalne z bazy danych SQL Azure.
+Baza danych SQL Azure oferuje dwa modele zakupów, [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) wybraną z. Każdej warstwy usług izoluje ściśle zasobów można używać bazy danych SQL i zapewnia przewidywalną wydajność tego poziomu usług. W tym artykule firma Microsoft oferuje wskazówki, które ułatwiają wybieranie warstwy usługi dla aplikacji. Omówiono także sposoby dostroić aplikacji maksymalne z bazy danych SQL Azure.
 
 > [!NOTE]
 > Ten artykuł skupia się na wytyczne dotyczące wydajności dla pojedynczej bazy danych w bazie danych SQL Azure. Aby uzyskać wskazówki dotyczące wydajności związane z pule elastyczne, zobacz [zagadnienia dotyczące cen i wydajności dla pul elastycznych](sql-database-elastic-pool-guidance.md). Należy pamiętać, jednak wiele dostrajania zaleceń w tym artykule dotyczą baz danych w puli elastycznej i uzyskiwanie podobnego zwiększenia wydajności.
@@ -48,7 +48,7 @@ Poziom usług, który należy do bazy danych SQL zależy od wymagań obciążeni
 
 ### <a name="service-tier-capabilities-and-limits"></a>Możliwości warstwy usług i limity
 
-W poszczególnych warstwach usług ustawić poziom wydajności, więc możesz swobodnie płacisz tylko za pojemność, które są potrzebne. Możesz [Dostosuj wydajność](sql-database-service-tiers.md), w górę lub w dół, jak zmiany obciążenia. Na przykład jeśli obciążenie bazy danych jest wysoka w sezonie zakupów wstecz do służbowych, może zwiększyć poziom wydajności bazy danych na określony czas, lipca za pośrednictwem września. Można zmniejszyć ją po zakończeniu Twojej sezonu godzinami szczytu. Można zminimalizować płacisz za Optymalizowanie środowiska chmury do sezonowości firmy. Ten model jest również odpowiedni dla oprogramowania produktu cykle. Zespół może przydzielić pojemności, podczas jej uruchomień testów, a następnie zwolnij wydajność po zakończeniu testowania. W modelu żądania pojemności płacisz za pojemność potrzebny i uniknąć wydatków na dedykowany zasobów, które może być rzadko używane.
+W poszczególnych warstwach usług ustawić poziom wydajności, więc możesz swobodnie płacisz tylko za pojemność, które są potrzebne. Możesz [Dostosuj wydajność](sql-database-service-tiers-dtu.md), w górę lub w dół, jak zmiany obciążenia. Na przykład jeśli obciążenie bazy danych jest wysoka w sezonie zakupów wstecz do służbowych, może zwiększyć poziom wydajności bazy danych na określony czas, lipca za pośrednictwem września. Można zmniejszyć ją po zakończeniu Twojej sezonu godzinami szczytu. Można zminimalizować płacisz za Optymalizowanie środowiska chmury do sezonowości firmy. Ten model jest również odpowiedni dla oprogramowania produktu cykle. Zespół może przydzielić pojemności, podczas jej uruchomień testów, a następnie zwolnij wydajność po zakończeniu testowania. W modelu żądania pojemności płacisz za pojemność potrzebny i uniknąć wydatków na dedykowany zasobów, które może być rzadko używane.
 
 ### <a name="why-service-tiers"></a>Dlaczego warstw do usług?
 Mimo że poszczególnych obciążeń bazy danych może się różnić, celem warstwy usług jest zapewnienie przewidywalność wydajności na różnych poziomach wydajności. Klientów z bazy danych na dużą skalę wymagań dotyczących zasobów można pracować w bardziej dedykowanego środowiska komputerowego.
@@ -270,7 +270,8 @@ Niektóre aplikacje intensywnie zapisu. Czasami można zmniejszyć całkowitego 
 Niektóre aplikacje bazy danych mają obciążeń intensywnie odczytu. Buforowanie warstwy może zmniejszyć obciążenie bazy danych i może zmniejszyć poziom wydajności, wymagany do obsługi bazy danych przy użyciu bazy danych SQL Azure. Z [pamięć podręczna Redis Azure](https://azure.microsoft.com/services/cache/), jeśli masz obciążenie intensywnie odczytu danych może odczytywać raz (lub raz na maszynie warstwy aplikacji, w zależności od sposobu skonfigurowania) i następnie przechowywania tych danych spoza Twojej bazy danych SQL. Jest to sposób, aby zmniejszyć obciążenie bazy danych (CPU i odczytu We/Wy), ale nie wpływa na spójności transakcyjnej, ponieważ odczytywane z pamięci podręcznej dane mogą być zsynchronizowane z danymi w bazie danych. Chociaż w wielu aplikacjach pewnego poziomu niespójności jest dopuszczalna, który nie jest spełniony dla wszystkich obciążeń. Wszelkie wymagania aplikacji należy zapoznać się przed zaimplementowaniem strategii buforowania warstwy aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać więcej informacji na temat warstwy usług, zobacz [opcje bazy danych SQL i wydajność](sql-database-service-tiers.md)
+* Aby uzyskać więcej informacji na temat warstw na podstawie jednostek dtu w warstwie usług, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers-dtu.md) i [limity zasobów jednostek dtu w warstwie na podstawie modelu](sql-database-dtu-resource-limits.md)
+* Aby uzyskać więcej informacji na temat warstw usług opartych na vCore, zobacz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md) i [limity zasobów na podstawie vCore (wersja zapoznawcza)](sql-database-vcore-resource-limits.md)
 * Aby uzyskać więcej informacji na temat pule elastyczne, zobacz [co to jest puli elastycznej platformy Azure?](sql-database-elastic-pool.md)
 * Aby uzyskać informacje o wydajności i elastyczne pule, zobacz [kiedy należy wziąć pod uwagę puli elastycznej](sql-database-elastic-pool-guidance.md)
 

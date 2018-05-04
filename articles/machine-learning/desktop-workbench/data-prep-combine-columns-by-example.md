@@ -1,6 +1,6 @@
 ---
-title: "Łączenie kolumn przez przekształcania przykład za pomocą usługi Azure Machine Learning Workbench"
-description: "W dokumencie referencyjnym przekształcenia łączenie kolumn w przykładzie"
+title: Łączenie kolumn przez przekształcania przykład za pomocą usługi Azure Machine Learning Workbench
+description: W dokumencie referencyjnym przekształcenia łączenie kolumn w przykładzie
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Łączenie kolumn w przykładzie transformacja
 Ta transformacja umożliwia użytkownikowi Dodaj nową kolumnę przez połączenie wartości z wielu kolumn. Użytkownika można określić separatora lub zawierają przykłady połączonych wartości do wykonania tej transformacji. Podczas użytkownika zawiera przykłady kombinacja, transformacja jest obsługiwana przez ten sam **przez przykład** aparatu, który jest używany w **kolumny pochodzi przykładzie** transformacji.
@@ -58,7 +58,7 @@ Przecinek następuje spacja jest używany jako separator w tym przykładzie poł
 |16041 N.E. sposób 36th|REDMOND|WA|98052|16041 N.E. 36th way, REDMOND, WA, 98052|
 |16051 N.E. sposób 36th|REDMOND|WA|98052|16051 N.E. 36th way, REDMOND, WA, 98052|
 |16061 N.E. sposób 36th|REDMOND|WA|98052|16061 N.E. 36th way, REDMOND, WA, 98052|
-|3460 157th Avenue NE|REDMOND|WA|98052|NE ścieżek 157th 3460, REDMOND, WA, 98052|
+|NE ścieżek 157th 3460|REDMOND|WA|98052|NE ścieżek 157th 3460, REDMOND, WA, 98052|
 |3350 157th Ave. N.E.|REDMOND|WA|98052|N.E. Ave. 157th 3350, REDMOND, WA, 98052|
 |3240 157th ścieżek N.E.|REDMOND|WA|98052|N.E. ścieżek 157th 3240, REDMOND, WA, 98052|
 

@@ -1,23 +1,23 @@
 ---
-title: "Jednostka usługi klastra Azure Kubernetes"
-description: "Tworzenie jednostki usługi Azure Active Directory dla klastra Kubernetes w usłudze AKS i zarządzanie nią"
+title: Jednostka usługi klastra Azure Kubernetes
+description: Tworzenie jednostki usługi Azure Active Directory dla klastra Kubernetes w usłudze AKS i zarządzanie nią
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: get-started-article
-ms.date: 02/24/2018
+ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7c80b64a33f4f71c694f80bf3e68f39ecd01828
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Jednostka usługi Azure Container Service (AKS)
 
-Klaster AKS wymaga [jednostki usługi Azure Active Directory][aad-service-principal] do współpracy z interfejsami API platformy Azure. Jednostka usługi jest potrzebna do dynamicznego zarządzania zasobami, takimi jak [trasy zdefiniowane przez użytkownika][user-defined-routes] i narzędzie [Azure Load Balancer dla warstwy 4][azure-load-balancer-overview].
+Klaster AKS wymaga [jednostki usługi Azure Active Directory][aad-service-principal] do współpracy z interfejsami API platformy Azure. Jednostka usługi jest potrzebna do dynamicznego tworzenia zasobów, takich jak [usługa Azure Load Balancer][azure-load-balancer-overview], i zarządzania nimi.
 
 W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla własnego klastra Kubernetes w usłudze AKS.
 
@@ -80,10 +80,10 @@ Podczas pracy z jednostkami usług AKS i Azure AD należy pamiętać o poniższy
 
 * Jednostka usługi dla rozwiązania Kubernetes jest częścią konfiguracji klastra. Nie należy jednak używać tożsamości do wdrażania klastra.
 * Każda jednostka usługi jest skojarzona z aplikacją usługi Azure AD. Jednostka usługi dla klastra Kubernetes może zostać skojarzona z dowolną prawidłową nazwą aplikacji usługi Azure AD (np. `https://www.contoso.org/example`). Adres URL dla aplikacji nie musi być rzeczywistym punktem końcowym.
-* Podczas określania **identyfikatora klienta** jednostki usługi można użyć wartości `appId` (jak pokazano w tym artykule) lub odpowiedniej jednostki usługi `name` (na przykład `https://www.contoso.org/example`).
+* Podczas określania **identyfikatora klienta** jednostki usługi użyj wartości `appId` (jak pokazano w tym artykule) lub odpowiedniego elementu `name` jednostki usługi (na przykład `https://www.contoso.org/example`).
 * Na głównej maszynie wirtualnej i maszynach wirtualnych węzłów w klastrze Kubernetes poświadczenia jednostki usługi są przechowywane w pliku `/etc/kubernetes/azure.json`.
-* Gdy używasz polecenia `az aks create`, aby automatycznie wygenerować jednostkę usługi, poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/acsServicePrincipal.json` na maszynie użytej do uruchomienia polecenia.
-* Usunięcie klastra AKS utworzonego za pomocą polecenia `az aks create` nie powoduje usunięcia automatycznie utworzonej jednostki usługi. Można ją usunąć za pomocą polecenia `az ad sp delete --id $clientID`.
+* Gdy używasz polecenia `az aks create`, aby automatycznie wygenerować jednostkę usługi, poświadczenia jednostki usługi są zapisywane w pliku `~/.azure/aksServicePrincipal.json` na maszynie użytej do uruchomienia polecenia.
+* Usunięcie klastra AKS utworzonego za pomocą polecenia `az aks create` nie powoduje usunięcia automatycznie utworzonej jednostki usługi. Usuń ją za pomocą polecenia `az ad sp delete --id $clientID`.
 
 ## <a name="next-steps"></a>Następne kroki
 

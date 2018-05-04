@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 04/23/2018
 ms.author: jgao
-ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 95ffc033a442fcf6074998398104ccb01e7a01a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Użyj węzłami pusty edge na klastrów platformy Hadoop w usłudze HDInsight
 
@@ -69,13 +69,15 @@ Po utworzeniu węzeł krawędzi, można połączyć się z węzłem krawędzi pr
 >
 > Jeśli korzystasz z technologii Apache, można znaleźć pomoc za pośrednictwem Apache witryny projektu na [ http://apache.org ](http://apache.org), takich jak [Hadoop](http://hadoop.apache.org/) lokacji.
 
+> [!NOTE]
+> Taki sam jak klastrów, krawędzi węzły są zarządzane poprawki.  Aby uzyskać więcej informacji, zobacz [poprawki systemu operacyjnego dla usługi HDInsight](./hdinsight-os-patching.md).
+
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Dodawanie węzła krawędzi do istniejącego klastra
-W tej sekcji możesz Użyj szablonu usługi Resource Manager, aby dodać węzeł krawędzi w istniejącym klastrze usługi HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wywołuje akcję skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
+W tej sekcji możesz Użyj szablonu usługi Resource Manager, aby dodać węzeł krawędzi w istniejącym klastrze usługi HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wywołuje akcję skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
 
 **Aby dodać węzeł krawędzi pusty do istniejącego klastra**
 
-1. Tworzenie klastra usługi HDInsight, jeśli nie masz jeszcze.  Zobacz [samouczek Hadoop: rozpoczynanie pracy z platformą Hadoop w usłudze HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-2. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otwórz szablon usługi Azure Resource Manager w portalu Azure. 
+1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otwórz szablon usługi Azure Resource Manager w portalu Azure. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. Należy skonfigurować następujące właściwości:
@@ -95,7 +97,7 @@ W tej sekcji możesz Użyj szablonu usługi Resource Manager, aby dodać węzeł
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Dodaj węzeł krawędzi, podczas tworzenia klastra
 W tej sekcji użyjesz szablonu usługi Resource Manager do tworzenia klastra usługi HDInsight z węzłem krawędzi.  Szablon usługi Resource Manager można znaleźć w [galerię szablonów Szybki Start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Szablon usługi Resource Manager wywołuje akcję skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
 
-**Aby dodać węzeł krawędzi pusty do istniejącego klastra**
+**Aby utworzyć klaster usługi HDInsight z węzłem krawędzi**
 
 1. Tworzenie klastra usługi HDInsight, jeśli nie masz jeszcze.  Zobacz [rozpocząć korzystanie z platformy Hadoop w usłudze HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 2. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otwórz szablon usługi Azure Resource Manager w portalu Azure. 
@@ -116,6 +118,10 @@ W tej sekcji użyjesz szablonu usługi Resource Manager do tworzenia klastra us�
      Niektóre właściwości zostały zapisane na stałe w szablonie: typ klastra, liczba węzłów procesu roboczego klastra rozmiaru węzła krawędzi i nazwa węzła krawędzi.
 4. Sprawdź **akceptuję warunki i postanowienia, o których wspomniano**, a następnie kliknij przycisk **zakupu** do utworzenia klastra z węzłem krawędzi.
 
+## <a name="add-multiple-edge-nodes"></a>Dodawanie wielu węzłów krawędzi
+
+Można dodać wiele krawędzi węzłów w klastrze usługi HDInsight.  Konfiguracja wielu węzłów krawędzi jest możliwe tylko za pomocą usługi Azure Resource Manager szablonów.  Zobacz przykład szablonu na początku tego artykułu.  Musisz zaktualizować **targetInstanceCount** aby odzwierciedlić liczby węzłów krawędzi chcesz utworzyć.
+
 ## <a name="access-an-edge-node"></a>Dostęp do węzła krawędzi
 Węzeł brzegowy ssh punkt końcowy jest &lt;EdgeNodeName >.&lt; ClusterName >-ssh.azurehdinsight.net:22.  Na przykład nowy edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
 
@@ -125,7 +131,7 @@ Węzeł krawędzi jest wyświetlany jako aplikacji w portalu Azure.  Portal zawi
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Otwórz klaster usługi HDInsight z węzłem krawędzi.
-3. Kliknij przycisk **aplikacji** w bloku klastra. Zostanie wyświetlona węzła krawędzi.  Nazwa domyślna to **nowe edgenode**.
+3. Kliknij przycisk **aplikacji**. Zostanie wyświetlona węzła krawędzi.  Nazwa domyślna to **nowe edgenode**.
 4. Kliknij węzeł krawędzi. Zostanie wyświetlona punkt końcowy SSH.
 
 **Aby korzystanie z programu Hive w węźle krawędzi**
@@ -146,7 +152,7 @@ W portalu Azure, można usunąć węzła krawędzi.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Otwórz klaster usługi HDInsight z węzłem krawędzi.
-3. Kliknij przycisk **aplikacji** w bloku klastra. Zostanie wyświetlona lista węzłów krawędzi.  
+3. Kliknij przycisk **aplikacji**. Zostanie wyświetlona lista węzłów krawędzi.  
 4. Kliknij prawym przyciskiem myszy węzeł krawędzi chcesz usunąć, a następnie kliknij przycisk **usunąć**.
 5. Kliknij przycisk **Tak**, aby potwierdzić.
 

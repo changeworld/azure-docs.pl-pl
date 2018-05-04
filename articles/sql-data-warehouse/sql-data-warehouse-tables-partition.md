@@ -1,60 +1,46 @@
 ---
-title: "Partycjonowanie tabel w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: Wprowadzenie do partycjonowania tabeli w magazynie danych SQL Azure.
+title: Partycjonowanie tabel w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zalecenia i przykłady dotyczące używania partycji tabeli w magazynie danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 6cef870c-114f-470c-af10-02300c58885d
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: f94bc3770fbd7e707194032cb99c67b09f8a0618
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ada55950ee36222e70809e2ef423c63612cd61ed
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Partycjonowanie tabel w usłudze SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Omówienie][Overview]
-> * [Typy danych][Data Types]
-> * [Dystrybuuj][Distribute]
-> * [Indeks][Index]
-> * [Partycji][Partition]
-> * [Statystyki][Statistics]
-> * [Tymczasowe][Temporary]
-> 
-> 
+Zalecenia i przykłady dotyczące używania partycji tabeli w magazynie danych SQL Azure.
 
-Partycjonowanie jest obsługiwana dla wszystkich typów tabeli SQL Data Warehouse; w tym klastrowanego magazynu kolumn, indeks klastrowany i stosu.  Partycjonowanie jest również obsługiwany na wszystkich typach dystrybucji, w tym zarówno skrótu lub działanie okrężne rozproszonych.  Włącza partycjonowanie do dzielenia danych na mniejsze grupy danych i w większości przypadków partycjonowania odbywa się według kolumny daty.
+## <a name="what-are-table-partitions"></a>Co to są partycje tabeli?
+Partycje tabeli służą do dzielenia danych na mniejszym grupom danych. W większości przypadków partycje tabeli są tworzone według kolumny daty. Partycjonowanie jest obsługiwana dla wszystkich typów tabeli SQL Data Warehouse; w tym klastrowanego magazynu kolumn, indeks klastrowany i stosu. Partycjonowanie jest również obsługiwany na wszystkich typach dystrybucji, w tym zarówno skrótu lub działanie okrężne rozproszonych.  
 
-## <a name="benefits-of-partitioning"></a>Korzyści wynikające z partycjonowania
-Partycjonowanie mogą korzystać wydajność obsługi i zapytań danych.  Określa, czy przynosi korzyści zarówno lub jeden z nich jest zależna od jak załadować danych i czy tej samej kolumnie może służyć do obu celów, ponieważ Partycjonowanie jest możliwe tylko w jednej kolumnie.
+Partycjonowanie mogą korzystać wydajność obsługi i zapytań danych. Określa, czy przynosi korzyści zarówno lub jeden z nich jest zależna od jak załadować danych i czy tej samej kolumnie może służyć do obu celów, ponieważ Partycjonowanie jest możliwe tylko w jednej kolumnie.
 
 ### <a name="benefits-to-loads"></a>Zalety dla obciążeń
-Główną zaletą partycjonowania w usłudze SQL Data Warehouse jest zwiększenie wydajności i wydajności podczas ładowania danych przy użyciu usunięcia partycji, przełączania i scalanie.  W większości przypadków danych jest podzielona na partycje w kolumnie dat, która jest ściśle związany kolejność, w którym dane zostaną załadowane do bazy danych.  Jedną z największych korzyści wynikające ze stosowania partycje do przechowywania danych o jej unikania rejestrowanie transakcji.  Po prostu Wstawianie, aktualizowanie lub usuwanie danych mogą być Najprostszym rozwiązaniem z niewielką ilością myśl i nakładu pracy, przy użyciu podziału na partycje podczas procesu obciążenia znacznie może poprawić wydajność.
+Główną zaletą partycjonowania w usłudze SQL Data Warehouse jest zwiększenie wydajności i wydajności podczas ładowania danych przy użyciu usunięcia partycji, przełączania i scalanie. W większości przypadków danych jest podzielona na partycje w kolumnie dat, która jest ściśle związany kolejność, w którym dane zostaną załadowane do bazy danych. Jedną z największych korzyści wynikające ze stosowania partycje do przechowywania danych o jej unikania rejestrowanie transakcji. Po prostu Wstawianie, aktualizowanie lub usuwanie danych mogą być Najprostszym rozwiązaniem z niewielką ilością myśl i nakładu pracy, przy użyciu podziału na partycje podczas procesu obciążenia znacznie może poprawić wydajność.
 
-Przełączanie partycji umożliwia szybkie należy usunąć lub zamienić sekcji tabeli.  Na przykład tabela faktów sprzedaży może zawierać tylko dane z ostatnich miesięcy 36.  Na koniec każdego miesiąca miesiąc najstarsze dane sprzedaży został usunięty z tabeli.  Te dane, można go usunąć za pomocą instrukcji delete umożliwia usunięcie danych najstarsze miesiąc.  Jednak usunięcie dużych ilości danych wiersz po wierszu z instrukcji delete może trwać zbyt dużo czasu, a także spowodować ryzyko duże transakcje, które można wycofać zająć dużo czasu, jeśli jakaś nieprawidłowość.  Więcej optymalne podejście jest Porzuć partycję najstarsze danych.  Gdzie usuwanie poszczególnych wierszy może zająć godziny, usunięcie całego partycji może potrwać sekund.
+Przełączanie partycji umożliwia szybkie należy usunąć lub zamienić sekcji tabeli.  Na przykład tabela faktów sprzedaży może zawierać tylko dane z ostatnich miesięcy 36. Na koniec każdego miesiąca miesiąc najstarsze dane sprzedaży został usunięty z tabeli.  Te dane, można go usunąć za pomocą instrukcji delete umożliwia usunięcie danych najstarsze miesiąc. Jednak usunięcie dużych ilości danych wiersz po wierszu z instrukcji delete może trwać zbyt dużo czasu, a także spowodować ryzyko duże transakcje, które można wycofać zająć dużo czasu, jeśli jakaś nieprawidłowość. Więcej optymalne podejście jest Porzuć partycję najstarsze danych. Gdzie usuwanie poszczególnych wierszy może zająć godziny, usunięcie całego partycji może potrwać sekund.
 
 ### <a name="benefits-to-queries"></a>Korzyści dotyczące zapytań
-Partycjonowanie można również poprawić wydajność zapytań.  Zapytanie, które dotyczą filtr danych podzielonej na partycje można ograniczyć skanowanie w celu kwalifikacji partycji. Ta metoda filtrowania można uniknąć skanowania tabeli pełne i tylko skanowanie mniejszego podzestawu danych. Wraz z wprowadzeniem klastrowane indeksy magazynu kolumn zwiększenia wydajności eliminacji predykatu są mniej korzystne, ale w niektórych przypadkach może być korzyści zapytania.  Na przykład jeśli tabela faktów sprzedaży jest podzielona na partycje do 36 miesięcy, korzystając z pola Data sprzedaży, a następnie wysyła zapytanie tego filtru na dacie sprzedaży można pominąć wyszukiwanie w partycji, które nie pasuje do filtru.
+Partycjonowanie można również poprawić wydajność zapytań. Zapytanie, które dotyczą filtr danych podzielonej na partycje można ograniczyć skanowanie w celu kwalifikacji partycji. Ta metoda filtrowania można uniknąć skanowania tabeli pełne i tylko skanowanie mniejszego podzestawu danych. Wraz z wprowadzeniem klastrowane indeksy magazynu kolumn zwiększenia wydajności eliminacji predykatu są mniej korzystne, ale w niektórych przypadkach może być korzyści zapytania. Na przykład jeśli tabela faktów sprzedaży jest podzielona na partycje do 36 miesięcy, korzystając z pola Data sprzedaży, a następnie wysyła zapytanie tego filtru na dacie sprzedaży można pominąć wyszukiwanie w partycji, które nie pasuje do filtru.
 
-## <a name="partition-sizing-guidance"></a>Wskazówki dotyczące rozmiaru partycji
-Podczas partycjonowania może służyć do zwiększenia wydajności w niektórych scenariuszach, tworzenia tabeli z **zbyt wiele** partycji może pogarszać wydajność w pewnych okolicznościach.  Te problemy są szczególnie istotne w przypadku tabel klastrowanego magazynu kolumn.  Partycjonowania być pomocne, ważne jest zrozumienie, kiedy należy używać partycjonowania i liczby partycji można utworzyć.  Nie twardych szybkiego zasady, jak wiele partycji są zbyt wiele, to zależy od danych i jak wiele partycji można jednocześnie ładowania.  Pomyślne schemat partycjonowania ma zazwyczaj dziesiątki setki partycji, nie tysięcy.
+## <a name="sizing-partitions"></a>Ustawianie rozmiaru partycji
+Podczas partycjonowania może służyć do zwiększenia wydajności w niektórych scenariuszach, tworzenia tabeli z **zbyt wiele** partycji może pogarszać wydajność w pewnych okolicznościach.  Te problemy są szczególnie istotne w przypadku tabel klastrowanego magazynu kolumn. Partycjonowania być pomocne, ważne jest zrozumienie, kiedy należy używać partycjonowania i liczby partycji można utworzyć. Nie twardych szybkiego zasady, jak wiele partycji są zbyt wiele, to zależy od danych i jak wiele partycji można jednocześnie ładowania. Pomyślne schemat partycjonowania ma zazwyczaj dziesiątki setki partycji, nie tysięcy.
 
-Podczas tworzenia partycji na **klastrowanego magazynu kolumn** tabel, ważne jest, aby wziąć pod uwagę liczbę wierszy należą do każdej partycji.  Optymalne kompresji i wydajności tabel klastrowanego magazynu kolumn co najmniej 1 milion wierszy na dystrybucji i partycja na potrzeby.  Przed utworzeniem partycji usługi SQL Data Warehouse już dzieli każdej tabeli 60 rozproszonej bazy danych.  Wszystkie partycje dodane do tabeli jest oprócz dystrybucje utworzone w tle.  Jeśli tabela faktów sprzedaży zawiera 36 miesięczne partycji i biorąc pod uwagę, że usługa SQL Data Warehouse ma 60 dystrybucje, następnie tabeli faktów sprzedaży powinien zawierać 60 mln wierszy na miesiąc lub 2.1 miliardy wierszy po wszystkich miesięcy są wypełniane przy użyciu tego przykładu.  Jeśli tabela zawiera mniej niż minimalna zalecana liczba wierszy przypadających na partycję, rozważ użycie mniejszej liczby partycji w celu zwiększenia liczby wierszy przypadających na partycję.  Zobacz też [indeksowanie] [ Index] artykułu, który obejmuje zapytania uruchamiane na magazyn danych SQL do oceny jakości klastra indeksy magazynu kolumn.
+Podczas tworzenia partycji na **klastrowanego magazynu kolumn** tabel, ważne jest, aby wziąć pod uwagę liczbę wierszy należą do każdej partycji. Optymalne kompresji i wydajności tabel klastrowanego magazynu kolumn co najmniej 1 milion wierszy na dystrybucji i partycja na potrzeby. Przed utworzeniem partycji usługi SQL Data Warehouse już dzieli każdej tabeli 60 rozproszonej bazy danych. Wszystkie partycje dodane do tabeli jest oprócz dystrybucje utworzone w tle. Jeśli tabela faktów sprzedaży zawiera 36 miesięczne partycji i biorąc pod uwagę, że usługa SQL Data Warehouse ma 60 dystrybucje, następnie tabeli faktów sprzedaży powinien zawierać 60 mln wierszy na miesiąc lub 2.1 miliardy wierszy po wszystkich miesięcy są wypełniane przy użyciu tego przykładu. Jeśli tabela zawiera mniej niż minimalna zalecana liczba wierszy przypadających na partycję, rozważ użycie mniejszej liczby partycji w celu zwiększenia liczby wierszy przypadających na partycję. Aby uzyskać więcej informacji, zobacz [indeksowanie](sql-data-warehouse-tables-index.md) artykułu, w tym zapytań, które można ocenić jakość klastra indeksy magazynu kolumn.
 
-## <a name="syntax-difference-from-sql-server"></a>Różnica składni z programu SQL Server
-Usługa SQL Data Warehouse wprowadza sposób definiowania partycji, która jest łatwiejsze niż w przypadku programu SQL Server.  Partycjonowania funkcje i schematy nie są używane w usłudze SQL Data Warehouse, ponieważ są one w programie SQL Server.  Zamiast tego jest wszystko, co należy zrobić, zidentyfikować kolumny podzielone na partycje i punkty granic.  Składnia partycjonowania może być nieco inne niż SQL Server, podstawowe koncepcje są takie same.  SQL Server i SQL Data Warehouse obsługuje jedna kolumna partycji w tabeli, które mogą być ranged partycji.  Aby dowiedzieć się więcej na temat partycjonowania, zobacz [partycjonowane tabele i indeksy][Partitioned Tables and Indexes].
+## <a name="syntax-differences-from-sql-server"></a>Różnice składni z programu SQL Server
+Usługa SQL Data Warehouse wprowadza sposób definiowania partycji, która jest łatwiejsze niż w przypadku programu SQL Server. Partycjonowania funkcje i schematy nie są używane w usłudze SQL Data Warehouse, ponieważ są one w programie SQL Server. Zamiast tego jest wszystko, co należy zrobić, zidentyfikować kolumny podzielone na partycje i punkty granic. Składnia partycjonowania może być nieco inne niż SQL Server, podstawowe koncepcje są takie same. SQL Server i SQL Data Warehouse obsługuje jedna kolumna partycji w tabeli, które mogą być ranged partycji. Aby dowiedzieć się więcej na temat partycjonowania, zobacz [partycjonowane tabele i indeksy](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
 
-Poniższy przykład przedstawia SQL Data Warehouse na partycje [CREATE TABLE] [ CREATE TABLE] instrukcji, partycje tabela FactInternetSales w kolumnie OrderDateKey:
+W poniższym przykładzie użyto [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) instrukcji do partycjonowania tabeli FactInternetSales w kolumnie OrderDateKey:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -83,10 +69,10 @@ WITH
 ## <a name="migrating-partitioning-from-sql-server"></a>Migrowanie partycjonowania z programu SQL Server
 Aby przeprowadzić migrację definicje partycji programu SQL Server do usługi SQL Data Warehouse po prostu:
 
-* Eliminowanie programu SQL Server [schemat partycji][partition scheme].
-* Dodaj [funkcja partycji] [ partition function] definicji do tworzenia tabeli.
+- Eliminowanie programu SQL Server [schemat partycji](/sql/t-sql/statements/create-partition-scheme-transact-sql).
+- Dodaj [funkcja partycji](/sql/t-sql/statements/create-partition-function-transact-sql) definicji do tworzenia tabeli.
 
-W przypadku migracji tabeli partycjonowanej z wystąpieniem programu SQL Server, SQL następujące może pomóc ustalić liczbę wierszy w każdej partycji.  Należy pamiętać, że użycie takiej samej szczegółowości partycjonowania na SQL Data Warehouse liczba wierszy przypadających na partycję zmniejsza się o 60.  
+W przypadku migracji tabeli partycjonowanej z wystąpieniem programu SQL Server, SQL następujące może pomóc ustalić liczbę wierszy w każdej partycji. Należy pamiętać, że użycie takiej samej szczegółowości partycjonowania na SQL Data Warehouse liczba wierszy przypadających na partycję zmniejsza się o 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -123,9 +109,9 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="workload-management"></a>Zarządzanie obciążeniami
-Pierwsza kwestia ostatni element składników do partycji tabeli decyzja dotyczy [zarządzania obciążenia][workload management].  Zarządzanie obciążenia w usłudze SQL Data Warehouse jest głównie zarządzania pamięci i współbieżności.  W usłudze SQL Data Warehouse Maksymalna pamięć przydzielona do każdej dystrybucji podczas wykonywania zapytania podlega klasy zasobów.  W idealnym przypadku partycji są o rozmiarze, biorąc pod uwagę innych czynników, takich jak wymagania dotyczące pamięci tworzenia klastrowane indeksy magazynu kolumn.  Klastrowane korzyści indeksy magazynu kolumn znacznie, gdy są przydzielone więcej pamięci.  W związku z tym chcesz upewnić się, że odbudowywanie indeksu partycji nie jest zagłodzone pamięci. Zwiększenie ilości pamięci do zapytania można osiągnąć przełączyć domyślna rola smallrc, do jednego z innych ról, takich jak largerc.
+Pierwsza kwestia końcowego składników można zdecydować, czy tabela partycji jest [zarządzania obciążenia](resource-classes-for-workload-management.md). Zarządzanie obciążenia w usłudze SQL Data Warehouse jest głównie zarządzania pamięci i współbieżności. W usłudze SQL Data Warehouse Maksymalna pamięć przydzielona do każdej dystrybucji podczas wykonywania zapytania podlega klasy zasobów. W idealnym przypadku partycji są o rozmiarze, biorąc pod uwagę innych czynników, takich jak wymagania dotyczące pamięci tworzenia klastrowane indeksy magazynu kolumn. Klastrowane korzyści indeksy magazynu kolumn znacznie, gdy są przydzielone więcej pamięci. W związku z tym chcesz upewnić się, że odbudowywanie indeksu partycji nie jest zagłodzone pamięci. Zwiększenie ilości pamięci do zapytania można osiągnąć przełączyć domyślna rola smallrc, do jednego z innych ról, takich jak largerc.
 
-Informacje dotyczące alokacji pamięci dla dystrybucji są dostępne, badając zarządcy zasobów dynamicznych widoków zarządzania. W rzeczywistości Twojej przydział pamięci jest mniejsza niż wyniki następującej kwerendy. Jednak to zapytanie zawiera poziom wskazówki, które można używać podczas określania rozmiaru partycji dla danych operacji zarządzania.  Należy unikać zmiany rozmiaru partycji poza przydziału pamięci o rozmiarze udostępnianym przez klasę bardzo dużych zasobów. Jeśli partycji rosnąć poza tym rysunku, istnieje ryzyko wykorzystania pamięci, co z kolei prowadzi do mniej optymalnej kompresji.
+Informacje dotyczące alokacji pamięci dla dystrybucji są dostępne, badając zarządcy zasobów dynamicznych widoków zarządzania. W rzeczywistości Twojej przydział pamięci jest mniejsza niż wyniki następującej kwerendy. Jednak to zapytanie zawiera poziom wskazówki, które można używać podczas określania rozmiaru partycji dla danych operacji zarządzania. Należy unikać zmiany rozmiaru partycji poza przydziału pamięci o rozmiarze udostępnianym przez klasę bardzo dużych zasobów. Jeśli partycji rosnąć poza tym rysunku, istnieje ryzyko wykorzystania pamięci, co z kolei prowadzi do mniej optymalnej kompresji.
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -144,7 +130,7 @@ AND     rp.[name]    = 'SloDWPool'
 ```
 
 ## <a name="partition-switching"></a>Przełączanie partycji
-Magazyn danych SQL obsługuje partycji dzielenia, łączenia i przełączania. Każda z tych funkcji jest wykonywana przy użyciu [instrukcji ALTER TABLE] [ ALTER TABLE] instrukcji.
+Magazyn danych SQL obsługuje partycji dzielenia, łączenia i przełączania. Każda z tych funkcji jest wykonywana przy użyciu [instrukcji ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) instrukcji.
 
 Aby przełączyć partycji między dwiema tabelami, pamiętaj, że partycje są wyrównane na ich odpowiednich granice a definicje tabel są takie same. Jak sprawdzić, czy ograniczenia nie są dostępne do wymuszania zakres wartości w tabeli, tabeli źródłowej musi zawierać tej samej granice partycji w tabeli docelowej. Jeżeli granice partycji nie są następnie tego samego przełącznika partycji wystąpi błąd, ponieważ metadane partycji nie będą synchronizowane.
 
@@ -185,11 +171,11 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> Tworząc obiektu Statystyka metadanych tabeli jest bardziej dokładne. W przypadku pominięcia statystyk, SQL Data Warehouse użyje wartości domyślnych. Aby uzyskać więcej informacji dotyczących statystyk, zapoznaj się z tematem [statystyki][statistics].
+> Tworząc obiektu Statystyka metadanych tabeli jest bardziej dokładne. W przypadku pominięcia statystyk, SQL Data Warehouse użyje wartości domyślnych. Aby uzyskać więcej informacji dotyczących statystyk, zapoznaj się z tematem [statystyki](sql-data-warehouse-tables-statistics.md).
 > 
 > 
 
-Poniższe zapytanie znajduje się liczba wierszy przy użyciu `sys.partitions` widoku katalogu:
+Następujące zapytanie znajduje się liczba wierszy przy użyciu `sys.partitions` widoku katalogu:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -212,7 +198,7 @@ Następujące polecenie podziału odbiera komunikat o błędzie:
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, 15 poziom, stan 1, wiersz 44 PODZIELONY klauzula instrukcji ALTER PARTITION nie powiodło się, ponieważ partycja nie jest pusty.  Można dzielić tylko puste partycje w gdy w tabeli istnieje indeks magazynu kolumn. Rozważ wyłączenie indeksu magazynu kolumn przed wykonaniem instrukcji ALTER PARTITION, a następnie odbudowanie indeksu magazynu kolumn po ukończeniu operacji ALTER PARTITION.
+Msg 35346, 15 poziom, stan 1, wiersz 44 PODZIELONY klauzula instrukcji ALTER PARTITION nie powiodło się, ponieważ partycja nie jest pusty. Można dzielić tylko puste partycje w gdy w tabeli istnieje indeks magazynu kolumn. Rozważ wyłączenie indeksu magazynu kolumn przed wykonaniem instrukcji ALTER PARTITION, a następnie odbudowanie indeksu magazynu kolumn po ukończeniu operacji ALTER PARTITION.
 
 Można jednak użyć `CTAS` Aby utworzyć nową tabelę do przechowywania danych.
 
@@ -272,43 +258,41 @@ Aby uniknąć z definicji tabeli z **uszkodzona** w systemie kontroli źródła,
 
 1. Tworzenie tabeli partycjonowanej tabeli, ale bez wartości partycji
 
-```sql
-CREATE TABLE [dbo].[FactInternetSales]
-(
-    [ProductKey]            int          NOT NULL
-,   [OrderDateKey]          int          NOT NULL
-,   [CustomerKey]           int          NOT NULL
-,   [PromotionKey]          int          NOT NULL
-,   [SalesOrderNumber]      nvarchar(20) NOT NULL
-,   [OrderQuantity]         smallint     NOT NULL
-,   [UnitPrice]             money        NOT NULL
-,   [SalesAmount]           money        NOT NULL
-)
-WITH
-(   CLUSTERED COLUMNSTORE INDEX
-,   DISTRIBUTION = HASH([ProductKey])
-,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                    ()
-                )
-)
-;
-```
+    ```sql
+    CREATE TABLE [dbo].[FactInternetSales]
+    (
+        [ProductKey]            int          NOT NULL
+    ,   [OrderDateKey]          int          NOT NULL
+    ,   [CustomerKey]           int          NOT NULL
+    ,   [PromotionKey]          int          NOT NULL
+    ,   [SalesOrderNumber]      nvarchar(20) NOT NULL
+    ,   [OrderQuantity]         smallint     NOT NULL
+    ,   [UnitPrice]             money        NOT NULL
+    ,   [SalesAmount]           money        NOT NULL
+    )
+    WITH
+    (   CLUSTERED COLUMNSTORE INDEX
+    ,   DISTRIBUTION = HASH([ProductKey])
+    ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES () )
+    )
+    ;
+    ```
 
 1. `SPLIT` Tabela w ramach procesu wdrażania:
 
-```sql
--- Create a table containing the partition boundaries
+    ```sql
+     -- Create a table containing the partition boundaries
 
-CREATE TABLE #partitions
-WITH
-(
-    LOCATION = USER_DB
-,   DISTRIBUTION = HASH(ptn_no)
-)
-AS
-SELECT  ptn_no
-,       ROW_NUMBER() OVER (ORDER BY (ptn_no)) as seq_no
-FROM    (
+    CREATE TABLE #partitions
+    WITH
+    (
+        LOCATION = USER_DB
+    ,   DISTRIBUTION = HASH(ptn_no)
+    )
+    AS
+    SELECT  ptn_no
+    ,       ROW_NUMBER() OVER (ORDER BY (ptn_no)) as seq_no
+    FROM    (
         SELECT CAST(20000101 AS INT) ptn_no
         UNION ALL
         SELECT CAST(20010101 AS INT)
@@ -318,59 +302,36 @@ FROM    (
         SELECT CAST(20030101 AS INT)
         UNION ALL
         SELECT CAST(20040101 AS INT)
-        ) a
-;
+    ) a
+    ;
 
--- Iterate over the partition boundaries and split the table
+     -- Iterate over the partition boundaries and split the table
 
-DECLARE @c INT = (SELECT COUNT(*) FROM #partitions)
-,       @i INT = 1                                 --iterator for while loop
-,       @q NVARCHAR(4000)                          --query
-,       @p NVARCHAR(20)     = N''                  --partition_number
-,       @s NVARCHAR(128)    = N'dbo'               --schema
-,       @t NVARCHAR(128)    = N'FactInternetSales' --table
-;
+    DECLARE @c INT = (SELECT COUNT(*) FROM #partitions)
+    ,       @i INT = 1                                 --iterator for while loop
+    ,       @q NVARCHAR(4000)                          --query
+    ,       @p NVARCHAR(20)     = N''                  --partition_number
+    ,       @s NVARCHAR(128)    = N'dbo'               --schema
+    ,       @t NVARCHAR(128)    = N'FactInternetSales' --table
+    ;
 
-WHILE @i <= @c
-BEGIN
-    SET @p = (SELECT ptn_no FROM #partitions WHERE seq_no = @i);
-    SET @q = (SELECT N'ALTER TABLE '+@s+N'.'+@t+N' SPLIT RANGE ('+@p+N');');
+    WHILE @i <= @c
+    BEGIN
+        SET @p = (SELECT ptn_no FROM #partitions WHERE seq_no = @i);
+        SET @q = (SELECT N'ALTER TABLE '+@s+N'.'+@t+N' SPLIT RANGE ('+@p+N');');
 
-    -- PRINT @q;
-    EXECUTE sp_executesql @q;
+        -- PRINT @q;
+        EXECUTE sp_executesql @q;
+        SET @i+=1;
+    END
 
-    SET @i+=1;
-END
+     -- Code clean-up
 
--- Code clean-up
-
-DROP TABLE #partitions;
-```
+    DROP TABLE #partitions;
+    ```
 
 Z tej metody pozostaje statyczna kodu w kontroli źródła i partycjonowania wartości granicznych mogą być dynamiczny; ewolucji w magazynie wraz z upływem czasu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej, zobacz artykuły w [omówienie tabeli][Overview], [typy danych tabeli][Data Types], [Dystrybucja tabeli] [ Distribute], [Indeksowania tabeli][Index], [utrzymania statystyk tabeli] [ Statistics] i [Tabel tymczasowych][Temporary].  Aby uzyskać więcej informacji na temat najlepszych rozwiązań, zobacz [najlepsze rozwiązania magazynu danych SQL][SQL Data Warehouse Best Practices].
+Aby uzyskać więcej informacji na temat tworzenia tabel, zobacz artykuły w [omówienie tabeli](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[workload management]: ./resource-classes-for-workload-management.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!-- MSDN Articles -->
-[Partitioned Tables and Indexes]: https://msdn.microsoft.com/library/ms190787.aspx
-[ALTER TABLE]: https://msdn.microsoft.com/en-us/library/ms190273.aspx
-[CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
-[partition function]: https://msdn.microsoft.com/library/ms187802.aspx
-[partition scheme]: https://msdn.microsoft.com/library/ms179854.aspx
-
-
-<!-- Other web references -->

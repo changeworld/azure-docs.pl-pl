@@ -3,7 +3,7 @@ title: Ochrona maszyn wirtualnych wdrożonych na stosie Azure | Dokumentacja fir
 description: Wskazówki na temat ochrony maszyn wirtualnych wdrożonych na stosie Azure.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
@@ -11,20 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 02get-started-article
-ms.date: 02/27/2018
-ms.author: mabrigg
+ms.topic: get-started-article
+ms.date: 04/25/2018
+ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b49a8650611472b5e35c4bdf8373a1d7e3a45589
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych na stosie Azure
-
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
-
 W tym artykule opisano wskazówki na temat ochrony użytkownika maszyn wirtualnych wdrożonych na stosie Azure.
 
 Do ochrony przed utratą danych i nieplanowanych przestojów, należy wdrożyć plan odzyskiwania kopii zapasowej lub odzyskiwania po awarii dla użytkownika aplikacji i danych. Ten plan jest unikatowa dla każdej aplikacji, ale następuje struktury ustala ciągłość kompleksowe Twojej organizacji i strategia odzyskiwania (BC i odzyskiwania po awarii). Ogólne wzorców i rozwiązania dotyczące aplikacji dostępności i odporności odwołują się do [projektowanie aplikacji odporne na platformie Azure](https://docs.microsoft.com/azure/architecture/resiliency) w Centrum architektura platformy Azure.
@@ -147,7 +144,8 @@ Ważne uwagi dotyczące wdrożenia usługi Azure stosu:
 ## <a name="next-steps"></a>Kolejne kroki 
 
 W tym artykule firma Microsoft omówione wskazówki na temat ochrony użytkownika maszyn wirtualnych wdrożonych na stosie Azure. Aby uzyskać więcej informacji na temat ochrony maszyn wirtualnych przy użyciu usług Azure można skorzystać z:
- - [Azure obsługi Utwórz kopię zapasową serwera Azure stosu](https://docs.microsoft.com/en-us/azure/backup/ ) 
- - [Azure Site Recovery obsługę Azure stosu](https://docs.microsoft.com/en-us/azure/site-recovery/)  
+ - [Tworzyć kopie zapasowe plików i aplikacji na stosie Azure przy użyciu usługi Kopia zapasowa Azure](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Azure obsługi Utwórz kopię zapasową serwera Azure stosu](https://docs.microsoft.com/azure/backup/ ) 
+ - [Azure Site Recovery obsługę Azure stosu](https://docs.microsoft.com/azure/site-recovery/)  
  
 Aby dowiedzieć się więcej na temat produktów partnera, które zapewniają ochronę maszyny Wirtualnej na stosie Azure, zobacz "[ochrona aplikacji i danych na stosie Azure](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."

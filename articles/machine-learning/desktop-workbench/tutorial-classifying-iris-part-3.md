@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 0b56b15af7c573304db9a1b6e6e9f37453a63458
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3: klasyfikowanie irysów: wdrażanie modelu
 Usługa Azure Machine Learning (wersja zapoznawcza) to zintegrowane, kompleksowe rozwiązanie do nauki o danych i do analiz zaawansowanych przeznaczone dla profesjonalnych analityków. Pozwala ono analitykom przygotowywać dane, opracowywać eksperymenty i wdrażać modele na skalę chmury.
@@ -120,7 +120,7 @@ Do wdrożenia usługi internetowej z plikiem modelu potrzebny jest również skr
 
 Teraz można przystąpić do przygotowania środowiska do obsługi operacji modelu.
 
-## <a name="prepare-to-operationalize-locally"></a>Przygotowywanie do lokalnej obsługi operacji
+## <a name="prepare-to-operationalize-locally-for-development-and-testing-your-service"></a>Przygotowywanie do lokalnej obsługi operacji [Na potrzeby tworzenia i testowania usługi]
 Użyj wdrożenia w _trybie lokalnym_, które będzie działać w kontenerach Docker na komputerze lokalnym.
 
 _Trybu lokalnego_ można użyć do tworzenia i testowania. Aparat platformy Docker musi być uruchomiony lokalnie, aby możliwe było wykonanie poniższych kroków w celu rozpoczęcia obsługi operacji modelu. Możesz użyć flagi `-h` na końcu każdego polecenia w celu wyświetlenia odpowiedniego komunikatu pomocy.
@@ -257,7 +257,7 @@ Teraz można przystąpić do tworzenia usługi internetowej czasu rzeczywistego.
    docker ps
    ```
 
-## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>Tworzenie usługi internetowej czasu rzeczywistego przy użyciu oddzielnych poleceń
+## <a name="optional-alternative-create-a-real-time-web-service-by-using-separate-commands"></a>[Opcjonalna alternatywa] Tworzenie usługi internetowej czasu rzeczywistego przy użyciu oddzielnych poleceń
 Zamiast używać przedstawionego wcześniej polecenia **az ml service create realtime**, można również wykonać kroki oddzielnie. 
 
 Najpierw należy zarejestrować model. Następnie należy wygenerować manifest, utworzyć obraz platformy Docker i utworzyć usługę internetową. Takie szczegółowe podejście zapewnia większą elastyczność na każdym kroku. Ponadto jednostki generowane w poszczególnych krokach mogą być używane ponownie i możliwe jest ponowne kompilowanie jednostek tylko w razie potrzeby.

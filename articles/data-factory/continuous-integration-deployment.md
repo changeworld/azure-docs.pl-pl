@@ -10,19 +10,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f44d8cc48d6bfee909c04b20136cd2be6f828a0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągłej integracji i wdrażania w fabryce danych Azure
 
 Ciągła Integracja jest rozwiązaniem testowania każdej zmiany, aby Twoje codebase automatycznie i możliwie jak najszybciej. Ciągłe wdrażanie wynika, testowania, który odbywa się podczas ciągłej integracji i wypychanie zmiany do systemu tymczasowym czy produkcyjnym.
 
 Fabryka danych Azure ciągłej integracji i wdrażania oznacza przenoszenie potoki fabryka danych z jednego środowiska (Programowanie, testów produkcyjnych) do innego. Celu ciągłej integracji i wdrażania można korzystania z szablonów usługi Azure Resource Manager integracji interfejsu użytkownika z fabryki danych. Fabryka danych interfejsu użytkownika można wygenerować szablonu usługi Resource Manager, po wybraniu **szablon ARM** opcje. Po wybraniu **szablon ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla fabryki danych i pliku konfiguracji, który zawiera wszystkie ciągi połączeń oraz innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla każdego środowiska (Programowanie, testu, produkcyjnego). Główny plik szablonu usługi Resource Manager jest taka sama dla wszystkich środowisk.
+
+Wprowadzenie dziewięć minutę i pokaz tej funkcji Obejrzyj następujące:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>Utwórz szablon Menedżera zasobów dla każdego środowiska
 Wybierz **szablon ARM wyeksportować** Aby wyeksportować szablon Menedżera zasobów dla fabrykę danych w środowisku programistycznym.
@@ -92,7 +96,7 @@ Poniżej przedstawiono kroki, aby skonfigurować zlecenia VSTS co umożliwia aut
 
     a.  Dodawanie kluczy tajnych do pliku parametrów:
 
-        -   Tworzenie kopii pliku parametrów, który jest przekazywany do publikowania gałęzi i ustaw wartości parametrów, który chcesz pobrać z magazynu kluczy o następującym formacie:
+       -   Tworzenie kopii pliku parametrów, który jest przekazywany do publikowania gałęzi i ustaw wartości parametrów, który chcesz pobrać z magazynu kluczy o następującym formacie:
 
         ```json
         {
@@ -102,24 +106,24 @@ Poniżej przedstawiono kroki, aby skonfigurować zlecenia VSTS co umożliwia aut
                         "keyVault": {
                             "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
                         },
-                        "secretName": " &lt secret - name &gt "
+                        "secretName": " < secret - name > "
                     }
-                }        
+                }
             }
         }
         ```
 
-        -   Korzystając z tej metody, klucz tajny są automatycznie pobierane z magazynu kluczy.
+       -   Korzystając z tej metody, klucz tajny są automatycznie pobierane z magazynu kluczy.
 
-        -   Plik parametrów musi być w w gałęzi publikowania.
+       -   Plik parametrów musi być w w gałęzi publikowania.
 
     b.  Dodaj [zadań usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault):
 
-        -   Wybierz **zadania** karcie, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
+       -   Wybierz **zadania** karcie, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
 
-        -   W zadaniu Key Vault, wybierz subskrypcję, w którym został utworzony magazyn kluczy, podaj poświadczenia, jeśli to konieczne, a następnie wybierz magazyn kluczy.
+       -   W zadaniu Key Vault, wybierz subskrypcję, w którym został utworzony magazyn kluczy, podaj poświadczenia, jeśli to konieczne, a następnie wybierz magazyn kluczy.
 
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Dodaj zadanie wdrażania usługi Azure Resource Manager:
 

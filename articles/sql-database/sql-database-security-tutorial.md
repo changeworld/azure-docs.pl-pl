@@ -9,15 +9,22 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpieczanie usługi Azure SQL Database
 
-Usługa SQL Database zabezpiecza dane przez ograniczenie dostępu do bazy danych przy użyciu reguł zapory, mechanizmów uwierzytelniania wymagających od użytkowników potwierdzenia tożsamości oraz funkcji autoryzacji do danych za pośrednictwem członkostw i uprawnień opartych na rolach, a także zabezpieczeń na poziomie wiersza i dynamicznego maskowania danych.
+Usługa SQL Database zabezpiecza dane przez: 
+- Ograniczanie dostępu do bazy danych przy użyciu reguł zapory 
+- Korzystanie z mechanizmów uwierzytelniania wymagających od użytkowników potwierdzenia tożsamości
+- Autoryzację do danych za pośrednictwem członkostw i uprawnień opartych na rolach 
+- Zabezpieczenia na poziomie wiersza
+- Dynamiczne maskowanie danych
+
+Usługa SQL Database oferuje również zaawansowane monitorowanie, inspekcję i wykrywanie zagrożeń. 
 
 W kilku prostych krokach możesz poprawić zabezpieczenia bazy danych, aby chronić ją przed złośliwymi użytkownikami i nieautoryzowanym dostępem. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
@@ -155,7 +162,7 @@ Przezroczyste szyfrowanie danych (TDE) usługi Azure SQL Database automatycznie 
 
 3. W razie potrzeby ustaw opcję **Szyfrowanie danych** na WŁ., a następnie kliknij opcję **Zapisz**.
 
-Proces szyfrowania zostanie uruchomiony w tle. Możesz monitorować postępy, łącząc się z usługą SQL Database przy użyciu programu [SQL Server Management Studio](./sql-database-connect-query-ssms.md) poprzez wysłanie zapytania do kolumny encryption_state widoku `sys.dm_database_encryption_keys`.
+Proces szyfrowania zostanie uruchomiony w tle. Możesz monitorować postępy, łącząc się z usługą SQL Database przy użyciu programu [SQL Server Management Studio](./sql-database-connect-query-ssms.md) i wysyłając zapytania do kolumny encryption_state widoku [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017). Stan 3 oznacza, że baza danych jest szyfrowana. 
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>Włączanie inspekcji usługi SQL Database, jeżeli jest potrzebna
 

@@ -1,6 +1,6 @@
 ---
-title: "Transakcje i tryby blokady na platformie Azure usługi sieci szkieletowej niezawodnej kolekcje | Dokumentacja firmy Microsoft"
-description: "Menedżer niezawodnej stanu sieci szkieletowej usługi Azure i transakcji niezawodnej kolekcje i blokowania."
+title: Transakcje i tryby blokady na platformie Azure usługi sieci szkieletowej niezawodnej kolekcje | Dokumentacja firmy Microsoft
+description: Menedżer niezawodnej stanu sieci szkieletowej usługi Azure i transakcji niezawodnej kolekcje i blokowania.
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9d431d94a6df9636a48e1b2aaa59aaa576e2dc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakcje i tryby blokady w kolekcjach niezawodnej sieci szkieletowej usług Azure
 
 ## <a name="transaction"></a>Transakcji
 Sekwencja operacji wykonywanych jako pojedyncza jednostka logiczna pracy jest transakcja.
-Transakcji musi mieć następujące właściwości ACID. (zobacz: https://technet.microsoft.com/en-us/library/ms190612)
+Transakcji musi mieć następujące właściwości ACID. (zobacz: https://technet.microsoft.com/library/ms190612)
 * **Niepodzielność**: transakcji musi być Atomowej jednostki pracy. Innymi słowy wszystkie zmiany danych są wykonywane albo żadna z nich jest wykonywana.
 * **Spójność**: po zakończeniu transakcji musi pozostać wszystkie dane w spójnym stanie. Wszystkie struktur danych wewnętrznych musi być prawidłowy na końcu transakcji.
 * **Izolacja**: zmiany dokonane przez równoczesnych transakcji musi być odizolowany od zmiany dokonane przez równoczesnych transakcji. Poziom izolacji używany podczas operacji w ramach ITransaction jest określana przez IReliableState wykonywania operacji.
@@ -34,13 +34,13 @@ Transakcji musi mieć następujące właściwości ACID. (zobacz: https://techne
 Poziom izolacji definiuje stopień, do którego transakcja musi być odizolowany od zmiany dokonane przez inne transakcje.
 Istnieją dwa poziomy izolacji, które są obsługiwane w kolekcjach niezawodnej:
 
-* **Odczyt powtarzalny**: Określa, czy instrukcje nie można odczytać danych, które zostały zmodyfikowane, ale nie zostały jeszcze zatwierdzone przez inne transakcje i że nie inne transakcje nie mogą zmodyfikować danych został odczytany przez bieżącą transakcję zakończenie bieżącej transakcji. Aby uzyskać więcej informacji, zobacz [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Odczyt powtarzalny**: Określa, czy instrukcje nie można odczytać danych, które zostały zmodyfikowane, ale nie zostały jeszcze zatwierdzone przez inne transakcje i że nie inne transakcje nie mogą zmodyfikować danych został odczytany przez bieżącą transakcję do bieżącej transakcji Zakończenie. Aby uzyskać więcej informacji, zobacz [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
 * **Migawki**: Określa, że dane odczytane przez żadnej instrukcji w transakcji jest spójna transakcyjnie wersji danych, które istniały na początku transakcji.
   Transakcja może rozpoznawać tylko zmiany danych, które zostały zatwierdzone przed rozpoczęciem transakcji.
   Dane zmiany wprowadzone przez inne transakcje po rozpoczęciu bieżącej transakcji nie są widoczne dla instrukcji wykonywania w bieżącej transakcji.
   Efekt jest tak, jakby instrukcje w transakcji migawki danych zatwierdzone znajdowały się na początku transakcji.
   Migawki są spójne w kolekcjach wiarygodne.
-  Aby uzyskać więcej informacji, zobacz [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+  Aby uzyskać więcej informacji, zobacz [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
 
 Kolekcje niezawodnej automatycznie wybrać poziom izolacji dla danej operacji odczytu, w zależności od operacji i Rola repliki w czasie tworzenia transakcji.
 Poniżej znajduje się tabela, która przedstawia wartości domyślnych poziomu izolacji operacje słownika niezawodnych i kolejki.
@@ -87,7 +87,7 @@ W takim przypadku limit czasu będzie jedną lub obie czynności.
 
 W tym scenariuszu zakleszczenie jest doskonałym przykładem jak blokady aktualizacji można zapobiec zakleszczenia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Praca z elementami Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Niezawodne usługi powiadomień](service-fabric-reliable-services-notifications.md)
 * [Niezawodne usługi Kopia zapasowa i przywracanie (odzyskiwania po awarii)](service-fabric-reliable-services-backup-restore.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9c8472e74cab779e417e68316a6125d40410ef1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie upłynął metadanych w transmisji strumieniowej na żywo
 
@@ -70,7 +70,7 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 | wskaźnik        | Ciąg     | Wymagane | Komunikaty o zdarzeniach.  Powinien być "SpliceOut", aby określić tryb prosty splice.                                              |
 | id         | Ciąg     | Wymagane | Unikatowy identyfikator opisujący łączenia lub segmentu. Identyfikuje wystąpienie tego komunikatu                            |
 | Czas trwania   | Liczba     | Wymagane | Czas trwania łączenia. Jednostki są ułamkowych części sekundy.                                                                |
-| Który upłynął    | Liczba     | Optional (Opcjonalność) | Gdy sygnał jest zajdą w celu zapewnienia obsługi dostrajania, to pole jest czas prezentacji, który upłynął od chwili rozpoczęcia łączenia. Jednostki są ułamkowych części sekundy. Podczas korzystania z trybu simple, ta wartość nie może przekraczać oryginalnego czas trwania łączenia.                                                  |
+| elapsed    | Liczba     | Optional (Opcjonalność) | Gdy sygnał jest zajdą w celu zapewnienia obsługi dostrajania, to pole jest czas prezentacji, który upłynął od chwili rozpoczęcia łączenia. Jednostki są ułamkowych części sekundy. Podczas korzystania z trybu simple, ta wartość nie może przekraczać oryginalnego czas trwania łączenia.                                                  |
 | time       | Liczba     | Wymagane | Się podczas łączenia, w czasie prezentacji. Jednostki są ułamkowych części sekundy.                                     |
 
 ---------------------------
@@ -83,7 +83,7 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 | type       | Ciąg     | Wymagane | URN lub adres URL identyfikujący system komunikatów; na przykład "urn: przykład: sygnalizowania: 1.0".  Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby wiadomości można wysyłać do klientów HLS i Smooth, Dash z aktualizacjami [SCTE 67].  |
 | id         | Ciąg     | Wymagane | Unikatowy identyfikator opisujący łączenia lub segmentu. Identyfikuje wystąpienie tej wiadomości.  Komunikaty z semantyki równoważne mają taką samą wartość.|
 | Czas trwania   | Liczba     | Wymagane | Czas trwania zdarzenia lub ad łączenia segmentu, jeśli znane. Jeśli jest nieznany, wartość musi mieć wartość 0.                                                                 |
-| Który upłynął    | Liczba     | Optional (Opcjonalność) | Gdy w celu dostrojenia powtarza się sygnał ad [SCTE 35] i to pole będzie prezentacji czas, który upłynął od chwili rozpoczęcia łączenia. Jednostki są ułamkowych części sekundy. W trybie [SCTE 35] Ta wartość może przekroczyć oryginalnego podany czas trwania łączenia lub segmentu.                                                  |
+| elapsed    | Liczba     | Optional (Opcjonalność) | Gdy w celu dostrojenia powtarza się sygnał ad [SCTE 35] i to pole będzie prezentacji czas, który upłynął od chwili rozpoczęcia łączenia. Jednostki są ułamkowych części sekundy. W trybie [SCTE 35] Ta wartość może przekroczyć oryginalnego podany czas trwania łączenia lub segmentu.                                                  |
 | time       | Liczba     | Wymagane | Godzina prezentacji łączenia zdarzeń lub ad.  Prezentacja czas i czas trwania powinno odpowiadać z punktów dostępu strumienia (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. Za wyjście HLS czas i czas trwania powinno odpowiadać granice segmentu. Czas prezentacji i czas trwania zdarzeń komunikatów w tym samym strumienia zdarzeń muszą nie mogą się pokrywać. Jednostki są ułamkowych części sekundy.
 
 ---------------------------
@@ -407,7 +407,7 @@ Pozyskiwania Smooth Streaming wymaga, które musi zawierać pola danych (mdat) *
 
 **[AMF0]**  ["AMF0 Format komunikatu akcji"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE-FMP4]**  [Specyfikacji pozyskiwania MP4 pofragmentowane na żywo w usłudze azure Media Services](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[LIVE-FMP4]**  [Specyfikacji pozyskiwania MP4 pofragmentowane na żywo w usłudze azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]**  ISO/IEC 14496-12: podstawowy nośnik ISO 12 części pliku w formacie, czwarty wersji 2012-07-15.
 

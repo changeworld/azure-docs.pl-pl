@@ -1,25 +1,24 @@
 ---
-title: "Jak używać kontroli dostępu (Java) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak opracowanie i kontroli dostępu za pomocą języka Java na platformie Azure."
+title: Jak używać kontroli dostępu (Java)
+description: Dowiedz się, jak opracowanie i kontroli dostępu za pomocą języka Java na platformie Azure.
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: 
+manager: mbaldwin
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bd65da490bf3d7e17bf6ff36e76e306842d50653
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Jak uwierzytelniać użytkowników sieci Web za pomocą usługi kontroli dostępu na platformie Azure przy użyciu programu Eclipse
 W tym przewodniku opisano sposób korzystania z usługi kontroli dostępu (ACS) platformy Azure, w ramach zestawu narzędzi platformy Azure dla programu Eclipse. Aby uzyskać więcej informacji dotyczących usług ACS, zobacz [następne kroki](#next_steps) sekcji.
@@ -116,14 +115,14 @@ To zadanie służy do konfigurowania usług ACS do rozpoznawania aplikacji sieci
    
    1. W **nazwa**, wpisz nazwę planu odzyskiwania. Do celów tego samouczka, wpisz **aplikacji sieci Web Azure**.
    2. W **tryb**, wybierz pozycję **wprowadź ustawienia ręcznie**.
-   3. W **obszaru**, wpisz identyfikator URI, do którego jest stosowana tokenu zabezpieczającego wydane przez usługi ACS. Dla tego zadania, wpisz **adresem http://localhost: 8080 /**.
+   3. W **obszaru**, wpisz identyfikator URI, do którego jest stosowana tokenu zabezpieczającego wydane przez usługi ACS. Dla tego zadania, wpisz **http://localhost:8080/**.
       ![Jednostki uzależnionej obszar strony do użycia w emulatorze obliczeń][relying_party_realm_emulator]
-   4. W **zwrotny adres URL** wpisz adres URL, do którego ACS zwraca token zabezpieczający. Dla tego zadania, wpisz **http://localhost:8080/MyACSHelloWorld/index.jsp**
-      ![jednostki uzależnionej strony zwrotnego adresu URL do użycia w emulatorze obliczeń][relying_party_return_url_emulator]
+   4. W **zwrotny adres URL** wpisz adres URL, do którego ACS zwraca token zabezpieczający. Dla tego zadania, wpisz ** http://localhost:8080/MyACSHelloWorld/index.jsp ** 
+       ![jednostki uzależnionej strony zwrotnego adresu URL do użycia w emulatorze obliczeń][relying_party_return_url_emulator]
    5. Zaakceptuj wartości domyślne w pozostałych polach.
 4. Kliknij pozycję **Zapisz**.
 
-Teraz pomyślnie skonfigurowano aplikację sieci web Java uruchamianych w emulatorze obliczeń platformy Azure (pod adresem http://localhost: 8080 /) być RP w przestrzeni nazw usługi ACS. Następnie należy utworzyć zasady, które ACS używa do przetwarzania oświadczenia dla planu odzyskiwania.
+Teraz pomyślnie skonfigurowano aplikację sieci web Java uruchamianych w emulatorze obliczeń platformy Azure (w http://localhost:8080/) być RP w przestrzeni nazw usługi ACS. Następnie należy utworzyć zasady, które ACS używa do przetwarzania oświadczenia dla planu odzyskiwania.
 
 ## <a name="create-rules"></a>Tworzenie reguł
 To zadanie służy do definiowania reguł, które określają sposób oświadczenia są przekazywane z adresów IP do Twojego planu odzyskiwania. Na potrzeby tego przewodnika możemy skonfiguruje po prostu ACS do skopiowania typy oświadczeń przychodzących i wartości bezpośrednio w tokenie dane wyjściowe bez filtrowania i modyfikuje je.

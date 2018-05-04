@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie przechwytywania pakietów z obserwatora sieciowego Azure - Azure portal | Dokumentacja firmy Microsoft"
-description: "Ta strona wyjaśnia sposób zarządzania funkcja przechwytywania pakietów obserwatora sieciowego przy użyciu portalu Azure"
+title: Zarządzanie przechwytywania pakietów z obserwatora sieciowego Azure - Azure portal | Dokumentacja firmy Microsoft
+description: Ta strona wyjaśnia sposób zarządzania funkcja przechwytywania pakietów obserwatora sieciowego przy użyciu portalu Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 508b9e7eef757277d4bc0e93a26f3a63045f31e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Zarządzanie przechwytywania pakietów za pomocą Monitora sieci Azure przy użyciu portalu
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [Program PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Interfejs wiersza polecenia 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 > - [Interfejs wiersza polecenia 2.0](network-watcher-packet-capture-manage-cli.md)
@@ -86,7 +86,7 @@ Właściwości, które mogą być definiowane w przechwytywania pakietów są:
 - **Ścieżka do pliku lokalnego** — ścieżka lokalna na maszynie wirtualnej, w której jest zapisywany przechwytywania pakietów (prawidłowe tylko w przypadku **[plik]** jest zaznaczona). Należy określić prawidłową ścieżkę. Jeśli korzystasz z maszyny wirtualnej systemu Linux, ścieżka musi rozpoczynać się od / var / przechwytuje.
 - **Konto magazynu** — Określa, czy przechwytywania pakietów jest zapisywane na koncie magazynu.
 - **Plik** — Określa, czy przechwytywania pakietów jest zapisywane lokalnie na maszynie wirtualnej.
-- **Konta magazynu** — wybrać konto magazynu, aby zapisać pakiet w. Domyślna lokalizacja to identyfikator name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription konta https://{storage} /resourcegroups/ {Nazwa maszyny name}/providers/microsoft.compute/virtualmachines/{virtual grupy zasobów} / {YY} / {MM} / {DD} / {HH} packetcapture__{MM}_CAP _ {XXX} {SS}. (Włączone, tylko jeśli **magazynu** jest zaznaczone)
+- **Konta magazynu** — wybrać konto magazynu, aby zapisać pakiet w. Domyślna lokalizacja to identyfikator name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription konta https://{storage} /resourcegroups/ {Nazwa maszyny name}/providers/microsoft.compute/virtualmachines/{virtual grupy zasobów} / {YY} / {MM} / {DD} / {HH} packetcapture__{MM}_ CAP _ {XXX} {SS}. (Włączone, tylko jeśli **magazynu** jest zaznaczone)
 - **Ścieżka do pliku lokalnego** — ścieżka lokalna na maszynie wirtualnej, aby zapisać przechwytywania pakietów. (Włączone, tylko jeśli **pliku** jest zaznaczona). Należy podać prawidłową ścieżkę. Dla maszyny wirtualnej systemu Linux, ścieżka musi rozpoczynać się od */var/przechwytuje*.
 - **Maksymalna liczba bajtów na pakiet** — liczba bajtów z każdego pakietu, które są przechwytywane, wszystkie bajty są przechwytywane, jeśli pole pozostanie puste.
 - **Maksymalna liczba bajtów na sesji** — jest to całkowita liczba bajtów, które są przechwytywane, gdy wartość osiągnięciu zatrzymuje przechwytywania pakietów.
@@ -131,7 +131,7 @@ W widoku przechwytywania pakietów, kliknij przycisk **menu kontekstowe** (...) 
 
 ## <a name="download-a-packet-capture"></a>Pobierz przechwytywania pakietów
 
-Po zakończeniu sesji przechwytywania pakietów, plik przechwytywania jest przekazywany do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest definiowany podczas tworzenia sesji. Wygodne narzędzie one dostęp do plików przechwytywania na koncie magazynu jest Microsoft Azure Eksploratora usługi Storage, który można pobrać tutaj: http://storageexplorer.com/
+Po zakończeniu sesji przechwytywania pakietów, plik przechwytywania jest przekazywany do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest definiowany podczas tworzenia sesji. Wygodne narzędzie one dostęp do plików przechwytywania na koncie magazynu jest Microsoft Azure Eksploratora usługi Storage, który można pobrać tutaj:  http://storageexplorer.com/
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
 ```
@@ -142,7 +142,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 Dowiedz się, jak można zautomatyzować przechwytywania pakietów z alertami maszyny wirtualnej, wyświetlając [utworzyć przechwytywania alertów wyzwalanych pakietów](network-watcher-alert-triggered-packet-capture.md)
 
-Znajdź, jeśli niektórych ruch jest dozwolony w lub z maszyny Wirtualnej, odwiedzając [Sprawdź przepływ Sprawdź IP](network-watcher-check-ip-flow-verify-portal.md)
+Znajdź, jeśli niektórych ruch jest dozwolony w lub z maszyny Wirtualnej, odwiedzając [Sprawdź przepływ Sprawdź IP](diagnose-vm-network-traffic-filtering-problem.md)
 
 <!-- Image references -->
 [1]: ./media/network-watcher-packet-capture-manage-portal/figure1.png

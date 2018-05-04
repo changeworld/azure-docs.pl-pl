@@ -1,8 +1,8 @@
 ---
-title: "Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell"
+title: Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: maheshu
-ms.openlocfilehash: a456a6265400abe1d3a3620df74e41d8b4399b97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 22be243b9da5afd93744ca9410b63a8ec936088a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Włączanie usługi Azure Active Directory Domain Services przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób Włączanie usług domenowych Azure Active Directory (AD) przy użyciu programu PowerShell.
@@ -161,7 +161,7 @@ $AzureLocation = "westus"
 Connect-AzureAD
 
 # Login to your Azure subscription.
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId “2565bd9d-da50-47d4-8b85-4c97f669dc36”
@@ -225,7 +225,7 @@ New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGro
 * Włączanie synchronizacji haseł w usługach domenowych Azure AD, użytkownicy końcowi mogą Zaloguj się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu domeny zarządzanej, należy wykonać poniższe zadania konfiguracji, aby można było używać domeny zarządzanej:
 
 * [Zaktualizuj ustawienia serwera DNS dla sieci wirtualnej, aby wskazywał domeny zarządzanej](active-directory-ds-getting-started-dns.md)

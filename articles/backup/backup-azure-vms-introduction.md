@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: markgal;trinadhk;sogup
+ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestie zasobów ułatwiają planowanie infrastruktury kopii zapasowych maszyn wirtualnych. Definiuje również kluczowych aspektów usługi tworzenia kopii zapasowej; te aspekty może mieć decydujące znaczenie dla określenia architektury, planowanie pojemności i planowania. Jeśli znasz [przygotować środowisko](backup-azure-arm-vms-prepare.md), następnym krokiem planowania jest przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji o maszynach wirtualnych platformy Azure, zobacz [dokumentacji maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -99,7 +99,8 @@ Podczas gdy większość czasu tworzenia kopii zapasowej jest poświęcony na od
 
 * Czas potrzebny do [Zainstaluj lub zaktualizuj zapasowy numer wewnętrzny](backup-azure-arm-vms.md).
 * Czas migawki to czas potrzebny do wyzwolenia migawki. Migawki są wyzwalane bliski zaplanowanego czasu tworzenia kopii zapasowej.
-* Czas oczekiwania w kolejce. Ponieważ usługa kopii zapasowej przetwarza kopii zapasowych z wielu klientów, kopiowanie danych kopii zapasowej z migawki kopii zapasowej lub magazyn usług odzyskiwania może nie uruchomić natychmiast. Czas szczytowego obciążenia, czas oczekiwania może rozciąganie ze względu na liczbę kopii zapasowych przetwarzanych maksymalnie ośmiu godzin. Łączny czas tworzenia kopii zapasowej maszyny Wirtualnej jest jednak mniej niż 24 godziny dla zasad tworzenia kopii zapasowych codziennie.
+* Czas oczekiwania w kolejce. Ponieważ usługa kopii zapasowej przetwarza kopii zapasowych z wielu klientów, kopiowanie danych kopii zapasowej z migawki kopii zapasowej lub magazyn usług odzyskiwania może nie uruchomić natychmiast. Czas szczytowego obciążenia, czas oczekiwania może rozciąganie ze względu na liczbę kopii zapasowych przetwarzanych maksymalnie ośmiu godzin. Łączny czas tworzenia kopii zapasowej maszyny Wirtualnej jest jednak mniej niż 24 godziny dla zasad tworzenia kopii zapasowych codziennie. <br>
+**Przechowuje to prawidłowe tylko dla przyrostowych kopii zapasowych, a nie pierwszej kopii zapasowej. Po raz pierwszy kopii zapasowej jest proporcjonalny i może być większa niż 24 godziny, w zależności od rozmiaru danych oraz czasu tworzenia kopii zapasowej.**
 * Czas transferu danych, czasu potrzebnego dla usługi tworzenia kopii zapasowych na potrzeby obliczania zmiany przyrostowe z poprzedniej kopii zapasowej i przenieść te zmiany do magazynu magazynu.
 
 ### <a name="why-am-i-observing-longer12-hours-backup-time"></a>Dlaczego mam obserwowania longer(>12 hours) kopii zapasowej czas?

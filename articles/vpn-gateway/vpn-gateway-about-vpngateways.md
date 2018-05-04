@@ -1,45 +1,44 @@
 ---
-title: 'Usługa VPN Gateway — omówienie: Tworzenie połączeń VPN obejmujących wiele lokalizacji z sieciami wirtualnymi platformy Azure | Microsoft Docs'
-description: W tym artykule wyjaśniono czym jest usługa VPN Gateway oraz przedstawiono sposoby nawiązywania połączenia z sieciami wirtualnymi platformy Azure przez Internet przy użyciu połączenia VPN. Omówienie zawiera diagramy podstawowych konfiguracji połączeń.
+title: Azure VPN Gateway | Microsoft Docs
+description: Dowiedz się, co to jest brama sieci VPN i jak za jej pomocą możesz nawiązać połączenie z sieciami wirtualnymi platformy Azure. W tym z rozwiązaniami IPsec/IKE typu lokacja-lokacja obejmującymi wiele lokalizacji oraz sieć wirtualna-sieć wirtualna, a także z sieciami VPN typu punkt lokacja.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
-tags: azure-resource-manager,azure-service-management
+tags: azure-resource-manager
+Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 405af7d1191e8ea3c0ba1c526f0c5a526aef795b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 30a2029fdf169747570d8c07915270ffae8ef8f5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="about-vpn-gateway"></a>VPN Gateway — informacje
+# <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
-Brama sieci VPN jest typem bramy sieci wirtualnej, który wysyła zaszyfrowany ruch sieciowy przez połączenie publiczne do lokalizacji lokalnej. Za pomocą bram sieci VPN można także wysyłać zaszyfrowany ruch sieciowy między sieciami wirtualnymi platformy Azure przez sieć firmy Microsoft. Aby wysyłać zaszyfrowany ruch sieciowy między siecią wirtualną platformy Azure i lokacją lokalną, musisz utworzyć bramę sieci VPN dla sieci wirtualnej.
-
-Każda sieć wirtualna może mieć tylko jedną bramę sieci VPN, jednak można tworzyć wiele połączeń z tą samą bramą sieci VPN. Przykładem może być konfiguracja połączenia obejmującego wiele lokacji. W przypadku utworzenia wielu połączeń z tą samą bramą sieci VPN wszystkie tunele VPN, łącznie z sieciami VPN typu punkt-lokacja, współużytkują przepustowość dostępną dla bramy.
+Brama sieci VPN to specyficzny typ bramy sieci wirtualnej, który służy do wysyłania zaszyfrowanego ruchu sieciowego między siecią wirtualną platformy Azure a lokalizacją lokalną za pośrednictwem publicznego Internetu. Za pomocą bramy sieci VPN można także wysyłać zaszyfrowany ruch sieciowy między sieciami wirtualnymi platformy Azure za pośrednictwem sieci firmy Microsoft. Każda sieć wirtualna może mieć tylko jedną bramę sieci VPN. Możesz jednak utworzyć wiele połączeń do tej samej bramy sieci VPN. W przypadku utworzenia wielu połączeń do tej samej bramy sieci VPN wszystkie tunele VPN współdzielą dostępną przepustowość bramy.
 
 ## <a name="whatis"></a>Co to jest brama sieci wirtualnej?
 
-Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych, które są wdrażane w określonej podsieci o nazwie GatewaySubnet. Maszyny wirtualne, które znajdują się w podsieci GatewaySubnet, są tworzone podczas tworzenia bramy sieci wirtualnej. Maszyny wirtualne bramy sieci wirtualnej są skonfigurowane w taki sposób, aby zawierały tabele routingu oraz specyficzne dla siebie usługi bramy. Nie można bezpośrednio skonfigurować maszyn wirtualnych, które są częścią bramy sieci wirtualnej, i nie należy nigdy wdrażać dodatkowych zasobów w podsieci GatewaySubnet.
+Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych, które są wdrażane w określonej podsieci o nazwie *podsieć bramy*. Maszyny wirtualne, które znajdują się w podsieci bramy, są tworzone podczas tworzenia bramy sieci wirtualnej. Maszyny wirtualne bramy sieci wirtualnej są skonfigurowane w taki sposób, aby zawierały tabele routingu oraz specyficzne dla siebie usługi bramy. Nie można bezpośrednio skonfigurować maszyn wirtualnych, które są częścią bramy sieci wirtualnej, i nie należy nigdy wdrażać dodatkowych zasobów w podsieci bramy.
 
-Podczas tworzenia bramy sieci wirtualnej przy użyciu typu bramy „Vpn” tworzy on określony typ bramy sieci wirtualnej, która szyfruje ruch; jest to brama sieci VPN. Tworzenie bramy sieci VPN może potrwać do 45 minut. Dzieje się tak dlatego, że maszyny wirtualne dla bramy sieci VPN są wdrażane w podsieci GatewaySubnet i konfigurowane przy użyciu określonych przez użytkownika ustawień. Wybrana jednostka SKU bramy określa, jak wydajne są maszyny wirtualne.
+Tworzenie bramy sieci VPN może potrwać do 45 minut. Podczas tworzenia bramy sieci VPN maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Możesz również utworzyć połączenie sieci VPN typu punkt-lokacja (sieć VPN przez protokół IKEv2 lub SSTP), które umożliwia nawiązanie połączenia z siecią wirtualną z lokalizacji zdalnej, na przykład konferencji lub domu.
 
 ## <a name="configuring"></a>Konfigurowanie bramy VPN Gateway
 
-Połączenie bramy sieci VPN bazuje na wielu zasobach konfigurowanych przy użyciu konkretnych ustawień. Większość zasobów można skonfigurować osobno, choć w niektórych przypadkach muszą być one konfigurowane w określonej kolejności.
+Połączenie bramy sieci VPN bazuje na wielu zasobach konfigurowanych przy użyciu konkretnych ustawień. Większość zasobów można skonfigurować osobno, choć niektóre z nich należy skonfigurować w określonej kolejności.
 
 ### <a name="settings"></a>Ustawienia
 
-Ustawienia wybrane dla każdego zasobu mają kluczowe znaczenie dla utworzenia prawidłowego połączenia. Aby uzyskać informacje na temat poszczególnych zasobów i ustawień dla bramy sieci VPN, zobacz [Ustawienia bramy sieci VPN — informacje](vpn-gateway-about-vpn-gateway-settings.md). Ten artykuł zawiera informacje ułatwiające poznanie typów bram, typów sieci VPN, typów połączeń, podsieci bram, bram sieci lokalnych i innych ustawień zasobów, które warto wziąć pod uwagę.
+Ustawienia wybrane dla każdego zasobu mają kluczowe znaczenie dla utworzenia prawidłowego połączenia. Aby uzyskać informacje na temat poszczególnych zasobów i ustawień dla bramy sieci VPN, zobacz [Ustawienia bramy sieci VPN — informacje](vpn-gateway-about-vpn-gateway-settings.md). Ten artykuł zawiera informacje ułatwiające poznanie typów bram, jednostek SKU bram typów sieci VPN, typów połączeń, podsieci bram, bram sieci lokalnych i innych ustawień zasobów, które warto wziąć pod uwagę.
 
 ### <a name="tools"></a>Narzędzia wdrażania
 
@@ -47,7 +46,7 @@ Możesz rozpocząć tworzenie i konfigurowanie zasobów za pomocą jednego narz�
 
 ### <a name="models"></a>Model wdrażania
 
-Czynności wykonywane podczas konfigurowania bramy sieci VPN zależą od modelu wdrażania użytego w celu utworzenia sieci wirtualnej. Jeśli na przykład sieć wirtualna została utworzona przy użyciu klasycznego modelu wdrożenia, do tworzenia i konfigurowania ustawień bramy sieci VPN należy użyć wskazówek i instrukcji dotyczących klasycznego modelu wdrażania. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [Omówienie modelu wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md).
+Obecnie dostępne są dwa modele wdrażania dla platformy Azure. Czynności wykonywane podczas konfigurowania bramy sieci VPN zależą od modelu wdrażania użytego w celu utworzenia sieci wirtualnej. Jeśli na przykład sieć wirtualna została utworzona przy użyciu klasycznego modelu wdrożenia, do tworzenia i konfigurowania ustawień bramy sieci VPN należy użyć wskazówek i instrukcji dotyczących klasycznego modelu wdrażania. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [Omówienie modelu wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ### <a name="planningtable"></a>Tabela planowania
 
@@ -83,7 +82,7 @@ Połączenie bramy sieci VPN typu lokacja-lokacja to połączenie nawiązywane z
 
 ### <a name="Multi"></a>Wiele witryn
 
-Ten typ połączenia jest odmianą połączenia typu lokacja-lokacja. W tym przypadku tworzysz więcej niż jedno połączenie VPN z bramy sieci wirtualnej — zwykle do nawiązywania połączenia z wieloma lokacjami lokalnymi. Podczas pracy z wieloma połączeniami musisz użyć sieci VPN typu RouteBased (nazywanego dynamiczną bramą w przypadku pracy z klasycznymi sieciami wirtualnymi). Ze względu na to, że każda sieć wirtualna może mieć tylko jedną bramę sieci VPN, wszystkie połączenia za pośrednictwem bramy współużytkują dostępną przepustowość. Ten typ konfiguracji jest często określany mianem połączenia „obejmującego wiele lokacji”.
+Ten typ połączenia jest odmianą połączenia typu lokacja-lokacja. W tym przypadku tworzysz więcej niż jedno połączenie VPN z bramy sieci wirtualnej — zwykle do nawiązywania połączenia z wieloma lokacjami lokalnymi. Podczas pracy z wieloma połączeniami musisz użyć sieci VPN typu RouteBased (nazywanego dynamiczną bramą w przypadku pracy z klasycznymi sieciami wirtualnymi). Ze względu na to, że każda sieć wirtualna może mieć tylko jedną bramę sieci VPN, wszystkie połączenia za pośrednictwem bramy współużytkują dostępną przepustowość. Ten typ połączenia jest często określany mianem połączenia „obejmującego wiele lokacji”.
 
 ![Przykład połączenia obejmującego wiele lokacji w usłudze Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
@@ -130,11 +129,11 @@ Można utworzyć połączenie przy użyciu komunikacji równorzędnej sieci wirt
 
 ## <a name="ExpressRoute"></a>ExpressRoute (połączenie prywatne)
 
-Usługa Microsoft Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i CRM Online. Połączenie może być z sieci typu dowolna-dowolna (IP VPN), sieci Ethernet typu punkt-punkt lub przy użyciu łączności obejmującej wiele połączeń wirtualnych przez dostawcę połączenia w ramach infrastruktury współlokacji.
+Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i CRM Online. Połączenie może być z sieci typu dowolna-dowolna (IP VPN), sieci Ethernet typu punkt-punkt lub przy użyciu łączności obejmującej wiele połączeń wirtualnych przez dostawcę połączenia w ramach infrastruktury współlokacji.
 
 Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Dzięki temu oferują one większą niezawodność i szybkość oraz mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet.
 
-Połączenie usługi ExpressRoute nie używa bramy sieci VPN, mimo że używa bramy sieci wirtualnej w ramach wymaganej konfiguracji. W przypadku połączenia usługi ExpressRoute brama sieci wirtualnej jest konfigurowana z typem bramy „ExpressRoute” zamiast „Vpn”. Więcej informacji na temat usługi ExpressRoute zawiera artykuł [ExpressRoute technical overview](../expressroute/expressroute-introduction.md) (Opis techniczny usługi ExpressRoute).
+Połączenie usługi ExpressRoute używa bramy sieci wirtualnej w ramach wymaganej konfiguracji. W przypadku połączenia usługi ExpressRoute brama sieci wirtualnej jest konfigurowana z typem bramy „ExpressRoute” zamiast „Vpn”. Mimo iż ruch sieciowy przesyłany za pośrednictwem obwodu usługi ExpressRoute domyślnie nie jest szyfrowany, możliwe jest utworzenie rozwiązania umożliwiającego przesyłanie zaszyfrowanego ruchu sieciowego za pośrednictwem obwodu usługi ExpressRoute. Więcej informacji na temat usługi ExpressRoute zawiera artykuł [ExpressRoute technical overview](../expressroute/expressroute-introduction.md) (Opis techniczny usługi ExpressRoute).
 
 ## <a name="coexisting"></a>Współistniejące połączenia typu lokacja-lokacja i ExpressRoute
 

@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak wdrożyć nawigację aspektową w usłudze Azure Search
 Nawigacji aspektowej jest mechanizm filtrowania, który udostępnia samodzielnego rozwijania szczegółów nawigacji w aplikacji wyszukiwania. Termin "nawigacji aspektowej" mogą być nieznane, ale prawdopodobnie użyto go przed. Jak w poniższym przykładzie pokazano, nawigacji aspektowej ma więcej niż kategorie używane do filtrowania wyników.
@@ -61,7 +61,7 @@ W kodzie aplikacji wzorzec jest użycie aspektu parametry zapytania do zwróceni
 
 ### <a name="query-basics"></a>Podstawowe informacje o zapytań
 
-W usłudze Azure Search, żądanie jest określany za pośrednictwem jednego lub więcej parametrów zapytania (zobacz [dokumenty wyszukiwania](http://msdn.microsoft.com/library/azure/dn798927.aspx) opis każdego z nich). Żaden z parametrów zapytania nie jest wymagana, ale użytkownik musi mieć co najmniej jeden w kolejności dla zapytania jest nieprawidłowy.
+W usłudze Azure Search, żądanie jest określany za pośrednictwem jednego lub więcej parametrów zapytania (zobacz [dokumenty wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) opis każdego z nich). Żaden z parametrów zapytania nie jest wymagana, ale użytkownik musi mieć co najmniej jeden w kolejności dla zapytania jest nieprawidłowy.
 
 Dokładność, zrozumienie, jak możliwość filtrowania trafień nie ma znaczenia, odbywa się za pośrednictwem jednego lub obu tych wyrażeń:
 
@@ -228,7 +228,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Parametr zapytania aspektu ma wartość pola i w zależności od typu danych, mogą być dodatkowe parametry funkcjom rozdzielana przecinkami lista zawierająca `count:<integer>`, `sort:<>`, `interval:<integer>`, i `values:<list>`. Lista wartości jest obsługiwana dla danych liczbowych, podczas konfigurowania zakresów. Zobacz [wyszukiwania dokumentów (interfejsu API usługi Azure Search)](http://msdn.microsoft.com/library/azure/dn798927.aspx) szczegóły użycia.
+Parametr zapytania aspektu ma wartość pola i w zależności od typu danych, mogą być dodatkowe parametry funkcjom rozdzielana przecinkami lista zawierająca `count:<integer>`, `sort:<>`, `interval:<integer>`, i `values:<list>`. Lista wartości jest obsługiwana dla danych liczbowych, podczas konfigurowania zakresów. Zobacz [wyszukiwania dokumentów (interfejsu API usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) szczegóły użycia.
 
 Wraz z aspektów żądanie sformułowane przez aplikację powinny również tworzyć filtry służące do zawęzić zestaw dokumentów kandydata na podstawie zaznaczenia wartość aspektu. Magazynu roweru nawigacji aspektowej zawiera wskazówki dotyczące pytania, takich jak *jakie kolory, producenci i typy rowerów są dostępne?*. Filtrowanie odpowiedzi na pytania, takie jak *które dokładne rowerów są oznaczone kolorem czerwonym, rowerów górski, w tym ceny zakresu?*. Po kliknięciu przycisku "Red", aby wskazać, powinny być wyświetlane tylko czerwony produktów zawiera zapytanie dalej wysyła aplikacji `$filter=Color eq ‘Red’`.
 
@@ -329,7 +329,7 @@ Etykiety są zazwyczaj definiowane w formularzu lub HTML (`index.cshtml` w przyk
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtr na podstawie zakresu
-Tworzenie aspektów zakresach wartości jest typowe wymagania aplikacji wyszukiwania. Zakresy są obsługiwane dla danych liczbowych i wartości daty/godziny. Więcej o każde podejście w [wyszukiwania dokumentów (interfejsu API usługi Azure Search)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
+Tworzenie aspektów zakresach wartości jest typowe wymagania aplikacji wyszukiwania. Zakresy są obsługiwane dla danych liczbowych i wartości daty/godziny. Więcej o każde podejście w [wyszukiwania dokumentów (interfejsu API usługi Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 Wyszukiwanie Azure ułatwia konstrukcji zakresu, zapewniając dwa podejścia do przetwarzania danych zakresu. Dla obu podejść usługi Azure Search tworzy odpowiednie zakresy podane dane wejściowe, dostarczona przez Ciebie. Na przykład jeśli określisz wartości z zakresu od 10 | 20 | 30, automatycznie tworzy zakres 0-10, 10-20, 20 – 30. Aplikację można opcjonalnie usunąć żadnych interwałów, które są puste. 
 
@@ -362,7 +362,7 @@ Dostępne są dwie funkcje dane geograficzne w usłudze Azure Search **geo.dista
 * **Geo.distance** funkcja zwraca w kilometrach odległość między dwoma punktami. Pole jest jeden punkt i innych jest stałą przekazanych jako część filtru. 
 * **Geo.intersects** funkcja zwraca wartość true, jeśli dany punkt znajduje się w danym wielokąta. Pole jest punkt i Wielokąt jest określony jako stała lista współrzędne przekazanych jako część filtru.
 
-Można znaleźć przykłady filtru w [składni wyrażeń OData (Azure Search)](http://msdn.microsoft.com/library/azure/dn798921.aspx).
+Można znaleźć przykłady filtru w [składni wyrażeń OData (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="tryitout"></a>
 
@@ -431,9 +431,9 @@ Aby uzyskać więcej szczegółowych informacji o zasadach projektowania dla naw
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

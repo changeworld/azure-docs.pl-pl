@@ -1,11 +1,11 @@
 ---
 title: Centrum IoT Azure jak | Dokumentacja firmy Microsoft
-description: "Deweloper jak używać różnych funkcji Centrum IoT?"
+description: Deweloper jak używać różnych funkcji Centrum IoT?
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24376318-5344-4a81-a1e6-0003ed587d53
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: b451ea2d42f0ff2f64746bcb296fb9128472fea8
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 9b112d2d7fc1756b74e98335831175f5d4c13320
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-use-azure-iot-hub"></a>Jak używać Centrum IoT Azure
 
@@ -52,11 +52,11 @@ Jeśli wolisz informacje o określonych funkcji Centrum IoT pracy nad Ćwiczenia
 
 - [Konfigurowanie urządzeń za pomocą właściwości żądanego][lnk-properties-tutorial]. Ten samouczek pokazuje, że sposobu do urządzenia przez dwie potrzeby a zgłosił właściwości, do zdalnego konfigurowania urządzenia.
 
-- [Zainicjuj aktualizację oprogramowania układowego urządzenia za pomocą zadania urządzenia][lnk-jobs-tutorial]. Ten samouczek pokazuje, jak używać funkcji zarządzania urządzeniami klucza, takich jak twins i bezpośrednie metody. Jak używać tych funkcji można zdalnie zaktualizować oprogramowanie układowe urządzenia.
+- [Zaktualizuj oprogramowanie układowe urządzenia za pomocą przystawki Zarządzanie urządzeniami][lnk-jobs-tutorial]. Ten samouczek pokazuje, jak używać funkcji zarządzania urządzeniami klucza, takich jak twins i bezpośrednie metody. Jak używać tych funkcji można zdalnie zaktualizować oprogramowanie układowe urządzenia.
 
 - [Zadania harmonogramu i emisji][lnk-schedule-tutorial]. W tym samouczku przedstawiono sposób użyć żądanej właściwości i metody bezpośrednio do interakcji z wieloma urządzeniami w zaplanowanym czasie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej o usłudze IoT Hub, zobacz [przewodnik dewelopera po][lnk-devguide].
 

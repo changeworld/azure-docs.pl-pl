@@ -2,23 +2,20 @@
 title: Rozpoczynanie pracy z magazynem kolejek i Visual Studio połączone usługi (projekty zadania WebJob) | Dokumentacja firmy Microsoft
 description: Jak rozpocząć korzystanie z magazynu kolejek Azure projektu zadania WebJob, po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi.
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 332d682147ba832f631052d8348039f74b46c438
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z magazynem kolejek Azure i programu Visual Studio połączone usługi (zadania WebJob projekty)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -297,12 +294,12 @@ Jeśli potrzebujesz wykonania dodatkowych czynności w funkcji przed powiązania
 
 * **Strumień** (Odczyt lub zapis, określony za pomocą parametru konstruktora FileAccess)
 * **TextReader**
-* **TextWriter**
+* **Element TextWriter**
 * **ciąg** (odczyt)
 * **limit ciąg** (zapisu; tworzy obiektu blob tylko wtedy, gdy parametr ciągu jest różna od null, gdy funkcja zwraca)
 * POCO (odczyt)
 * limit POCO (zapisu; zawsze tworzy obiektu blob, tworzy jako obiekt null, jeśli parametr POCO ma wartość null, gdy funkcja zwraca)
-* **CloudBlobStream** (write)
+* **CloudBlobStream** (zapis)
 * **ICloudBlob** (odczytu i zapisu)
 * **CloudBlockBlob** (odczytu i zapisu)
 * **CloudPageBlob** (odczytu i zapisu)

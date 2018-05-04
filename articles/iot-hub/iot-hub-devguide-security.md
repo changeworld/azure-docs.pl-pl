@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: c410db9a7255a039ab9b41ae39f2fe1018719f8f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.openlocfilehash: d1f9d1a9163eee0f3a6c3b418e5e8d4fec0581de
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -137,7 +137,7 @@ Poniżej przedstawiono oczekiwanych wartości:
 | {sygnatury} |Podpis HMAC SHA256 ciąg w formie: `{URL-encoded-resourceURI} + "\n" + expiry`. **Ważne**: klucz jest zdekodować z formatu base64 i używany jako klucz do wykonywania obliczeń HMAC SHA256. |
 | {resourceURI} |Prefiks identyfikatora URI (według segmentu) punktów końcowych, które mogą być udostępniane z tym tokenem, począwszy od nazwy hosta Centrum IoT (nie protocol). Na przykład: `myHub.azure-devices.net/devices/device1` |
 | {wygaśnięcia} |Ciągi UTF8 liczbę sekund od czasu UTC epoki 00:00:00 w dniu 1 stycznia rokiem 1970. |
-| {URL-encoded-resourceURI} |Małe przypadek kodowania adresów URL identyfikator URI zasobu małe litery |
+| {URL-zakodowane resourceURI} |Małe przypadek kodowania adresów URL identyfikator URI zasobu małe litery |
 | {policyName} |Nazwa zasady dostępu współdzielonego, do którego odwołuje się ten token. Brak Jeśli token odwołuje się do poświadczeń w rejestrze urządzeń. |
 
 **Uwaga na prefiksie**: Prefiks URI jest obliczana przez segment, a nie przez znak. Na przykład `/a/b` był prefiksem dla `/a/b/c` , ale nie dla `/a/bc`.
@@ -358,7 +358,7 @@ Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu urzędu c
 
 ### <a name="c-support"></a>C\# pomocy technicznej
 
-**RegistryManager** klasy zapewnia programowy sposób zarejestrować urządzenie. W szczególności **AddDeviceAsync** i **UpdateDeviceAsync** metody umożliwiają rejestrowanie i aktualizowanie urządzenia w rejestrze tożsamości Centrum IoT. Te dwie metody przyjmują **urządzenia** wystąpienia jako dane wejściowe. **Urządzenia** klasa zawiera **uwierzytelniania** właściwość, która pozwala na określenie odciski palców certyfikatów X.509 podstawowego i pomocniczego. Odcisk palca reprezentuje wartości skrótu SHA-1 (przechowywane przy użyciu kodowania binarnego DER) certyfikatu X.509. Istnieje możliwość określenia podstawowego odcisk palca lub dodatkowej odcisk palca lub oba. Podstawowe i pomocnicze odciski palców są obsługiwane do obsługi scenariuszy przerzucania certyfikatu.
+**RegistryManager** klasy zapewnia programowy sposób zarejestrować urządzenie. W szczególności **AddDeviceAsync** i **UpdateDeviceAsync** metody umożliwiają rejestrowanie i aktualizowanie urządzenia w rejestrze tożsamości Centrum IoT. Te dwie metody przyjmują **urządzenia** wystąpienia jako dane wejściowe. **Urządzenia** klasa zawiera **uwierzytelniania** właściwość, która pozwala na określenie odciski palców certyfikatów X.509 podstawowego i pomocniczego. Odcisk palca reprezentuje skrót SHA256 certyfikatu X.509 (przechowywane przy użyciu kodowania binarnego DER). Istnieje możliwość określenia podstawowego odcisk palca lub dodatkowej odcisk palca lub oba. Podstawowe i pomocnicze odciski palców są obsługiwane do obsługi scenariuszy przerzucania certyfikatu.
 
 Poniżej przedstawiono przykładowe C\# fragment kodu do zarejestrowania urządzenia przy użyciu odcisku palca certyfikatu X.509:
 
@@ -444,7 +444,7 @@ Inne tematy referencyjne w Podręczniku dewelopera Centrum IoT obejmują:
 * [Język zapytań Centrum IoT] [ lnk-query] opisuje język kwerendy można pobrać z Centrum IoT informacji o twins urządzenia i zadania.
 * [Obsługa MQTT Centrum IoT] [ lnk-devguide-mqtt] zapewnia więcej informacji na temat Centrum IoT obsługi protokołu MQTT.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, kiedy znasz sterowanie dostępem Centrum IoT, mogą być zainteresowane w następujących tematach przewodnik dewelopera Centrum IoT:
 

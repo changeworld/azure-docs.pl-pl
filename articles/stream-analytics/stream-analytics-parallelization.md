@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/22/2017
-ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.date: 04/27/2018
+ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Korzystać z zapytania paralelizacja w Azure Stream Analytics
 W tym artykule przedstawiono sposób wykorzystać paralelizacja Azure Stream Analytics. Sposób skalowania zadania usługi analiza strumienia, konfigurując wejściowych partycji i dostrajania analytics definicji zapytania.
@@ -29,21 +29,13 @@ Skalowanie zadania Stream Analytics korzysta z partycjami w danych wejściowych 
 
 ### <a name="inputs"></a>Dane wejściowe
 Wszystkie dane wejściowe Azure Stream Analytics można wykorzystać partycjonowania:
--   EventHub (należy jawnie ustawić klucz partycji)
--   Centrum IoT (należy jawnie ustawić klucz partycji)
+-   EventHub (należy ustawić klucz partycji jawnie z PARTITION BY słowem kluczowym)
+-   Centrum IoT (należy ustawić klucz partycji jawnie z PARTITION BY słowem kluczowym)
 -   Blob Storage
 
 ### <a name="outputs"></a>Dane wyjściowe
 
-Podczas pracy z usługi Stream Analytics, możesz korzystać z partycji w danych wyjściowych:
--   Azure Data Lake Storage
--   Azure Functions
--   Tabela platformy Azure
--   Blob Storage
--   CosmosDB (należy jawnie ustawić klucz partycji)
--   EventHub (należy jawnie ustawić klucz partycji)
--   Centrum IoT (należy jawnie ustawić klucz partycji)
--   Service Bus
+Podczas pracy z usługi Stream Analytics, możesz korzystać z partycjonowania dla większości sink danych wyjściowych. Więcej informacji na temat partycjonowania danych wyjściowych jest dostępna na [partycjonowania sekcji danych wyjściowych strony](stream-analytics-define-outputs.md#partitioning).
 
 Wyjść usługi Power BI, SQL i magazyn danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić danych wejściowych zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
 
@@ -56,7 +48,7 @@ Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 ## <a name="embarrassingly-parallel-jobs"></a>Embarrassingly równoległych zadań
 *Embarrassingly równoległych* zadanie jest najbardziej skalowalny scenariusza mamy w Azure Stream Analytics. Jedna partycja danych wejściowych do jednego wystąpienia zapytania łączy się jedną partycję w danych wyjściowych. Równoległość ten ma następujące wymagania:
 
-1. Logika zapytania zależy od tego samego klucza przetwarzanych przez to samo wystąpienie zapytania, należy się upewnić, że zdarzenia przejdź do tej samej partycji dane wejściowe. Usługi event hubs, oznacza to, że dane zdarzeń muszą mieć **PartitionKey** zestawu wartości. Alternatywnie można użyć nadawców podzielonym na partycje. W przypadku magazynu obiektów blob oznacza to, że zdarzenia są wysyłane do tego samego folderu partycji. Jeśli logika zapytania nie wymaga tego samego klucza do przetworzenia przez to samo wystąpienie zapytania, możesz zignorować to wymaganie. Przykładem tego logiki może być prostego zapytania wybierz projekt filtru.  
+1. Logika zapytania zależy od tego samego klucza przetwarzanych przez to samo wystąpienie zapytania, należy się upewnić, że zdarzenia przejdź do tej samej partycji dane wejściowe. Centra zdarzeń lub Centrum IoT oznacza to, że dane zdarzeń muszą mieć **PartitionKey** zestawu wartości. Alternatywnie można użyć nadawców podzielonym na partycje. W przypadku magazynu obiektów blob oznacza to, że zdarzenia są wysyłane do tego samego folderu partycji. Jeśli logika zapytania nie wymaga tego samego klucza do przetworzenia przez to samo wystąpienie zapytania, możesz zignorować to wymaganie. Przykładem tego logiki może być prostego zapytania wybierz projekt filtru.  
 
 2. Po danych jest rozmieszczona na stronie wprowadzania, to należy się upewnić, że zapytanie jest podzielona na partycje. Wymaga to użycia **PARTITION BY** wszystkich kroków. Wiele kroków są dozwolone, ale wszystkie muszą podzielone na partycje przy użyciu tego samego klucza. Obecnie, podziału klucza musi być ustawiona na **PartitionId** aby pełni równoległe zadania.  
 
@@ -66,6 +58,7 @@ Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
    * 8 partycje wejściowych Centrum zdarzeń i Centrum zdarzeń 8 output partycji
    * 8 partycje wejściowych Centrum zdarzeń i danych wyjściowych z magazynu obiektów blob  
+   * 8 partycje wejściowych Centrum Iot i Centrum zdarzeń 8 output partycji
    * 8 partycje wejściowych magazynu obiektów blob i dane wyjściowe z magazynu obiektów blob  
    * 8 obiektu blob magazynu wejściowego partycji i 8 partycje danych wyjściowych Centrum zdarzeń  
 

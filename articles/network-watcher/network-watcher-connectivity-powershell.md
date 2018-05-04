@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: eecdd9f169b5b61262f4e3121337c730700f0757
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7e8c04fd2284a3a00d4847f39fd34982a543cc29
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure przy użyciu programu PowerShell
 
@@ -304,6 +304,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Określić, czy niektórych ruch jest dozwolony w lub z maszyny Wirtualnej, przechodząc [Sprawdź przepływ Sprawdź IP](network-watcher-check-ip-flow-verify-portal.md).
+Określić, czy niektórych ruch jest dozwolony w lub z maszyny Wirtualnej, przechodząc [Sprawdź przepływ Sprawdź IP](diagnose-vm-network-traffic-filtering-problem.md).
 
 Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń zdefiniowane.

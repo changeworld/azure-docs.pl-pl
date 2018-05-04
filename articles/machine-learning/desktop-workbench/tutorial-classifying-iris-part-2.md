@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: b0d268937300abd105349d340f7bf1dae398fa8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24ac4d699a511cc99936cb2cd4b245de01984163
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Samouczek 2: klasyfikowanie irysów — kompilowanie modelu
 Usługi Azure Machine Learning (wersja zapoznawcza) stanowią zintegrowane rozwiązanie do przetwarzania danych i do przeprowadzania zaawansowanych analiz. Jest ono przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
@@ -280,7 +280,7 @@ Opcjonalnie możesz eksperymentować, uruchamiając skrypty dla lokalnego konten
    >[!IMPORTANT]
    >W celu wykonania kolejnych kroków musisz użyć tego okna interfejsu wiersza polecenia.
 
-1. W oknie interfejsu wiersza polecenia zaloguj się do platformy Azure. [Dowiedz się więcej o poleceniu az login](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+1. W oknie interfejsu wiersza polecenia zaloguj się do platformy Azure. [Dowiedz się więcej o poleceniu az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    Użytkownik może już być zalogowany. W takim przypadku można pominąć ten krok.
 

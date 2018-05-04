@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8bcc1b2c76ff1e312d1435997ef6d677656510d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Potrząsanie, potrząsanie dla Tweet — pobierania wiadomości Twitter z usługi Azure Functions!
 
@@ -33,7 +33,7 @@ Zakończ [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hu
 
 Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za pomocą jednej z następujących metod:
 
-* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/free/)
 * Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) w przypadku subskrybentów MSDN lub Visual Studio
 
 ## <a name="open-the-project-folder"></a>Otwórz folder projektu
@@ -44,10 +44,6 @@ Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za 
 - Uruchom kod programu VS.
 - Zestaw deweloperski można połączyć się z komputerem.
 
-Kod VS automatycznie wyszukuje użytkownika zestaw deweloperski i wyświetlenie strony wprowadzenie:
-
-![Mini solution vscode](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_start.png)
-
 > [!NOTE]
 > Podczas uruchamiania kodu programu VS, może zostać wyświetlony komunikat o błędzie, który Arduino IDE lub pakietu pokrewne tablicy nie może zostać znalezione. Jeśli ten błąd występuje, zamknij kodzie VS, a następnie uruchom ponownie Arduino IDE. VS kod powinien teraz poprawnie zlokalizować ścieżkę Arduino IDE.
 
@@ -57,7 +53,8 @@ Po lewej stronie rozwiń **przykłady ARDUINO** przejdź do **przykłady MXCHIP 
 
 ![Mini solution — przykłady](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Jeśli wystąpi aby zamknąć okienko, zostanie ponownie otwarty. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+> [!NOTE]
+> Przykład można również otworzyć z palety polecenia. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
 
 ## <a name="provision-azure-services"></a>Udostępnianie usług platformy Azure
 
@@ -68,7 +65,7 @@ W terminalu VS kodu interaktywnego wiersza polecenia prowadzi użytkownika przez
 ![Zainicjuj obsługę chmury](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Jeśli strony w stan ładowania, zawiesza się podczas próby logowanie do platformy Azure, zapoznaj się to [krok — często zadawane pytania] ({{"/docs/faq/#page-hangs-when-log-in-azure" | 
+> Jeśli strony w stan ładowania, zawiesza się podczas próby logowanie do platformy Azure, zapoznaj się to [krok — często zadawane pytania](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
  
 ## <a name="modify-the-hashtag"></a>Modyfikowanie #hashtag
 

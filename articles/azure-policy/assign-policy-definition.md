@@ -1,19 +1,19 @@
 ---
-title: "Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów w środowisku platformy Azure | Microsoft Docs"
-description: "W tym artykule opisano kroki tworzenia definicji zasad umożliwiających identyfikację niezgodnych zasobów."
+title: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów w środowisku platformy Azure | Microsoft Docs
+description: W tym artykule opisano kroki tworzenia definicji zasad umożliwiających identyfikację niezgodnych zasobów.
 services: azure-policy
-keywords: 
-author: bandersmsft
-ms.author: banders
-ms.date: 01/10/2018
+keywords: ''
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4287b139f26d17e58f6caffbadb2c7da2a9b7b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 6bb9eddb6a663e1f230c9c46835661ad20c02cfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów w środowisku platformy Azure
 Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów. Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia przypisania zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych.
@@ -71,15 +71,14 @@ Jeśli istnieją jakiekolwiek zasoby niezgodne z nowym przypisaniem, zostaną on
 
 Jeśli warunek zostanie oceniony dla istniejących zasobów i okaże się prawdziwy, zasoby te zostaną oznaczone jako niezgodne z zasadami. Poprzedni przykładowy obraz zawierał niezgodne zasoby. W poniższej tabeli przedstawiono sposób, w jaki różne akcje dotyczące zasad działają w przypadku oceny warunku na potrzeby wynikowego stanu zgodności. Mimo że logika oceny nie jest widoczna w witrynie Azure Portal, wyniki stanu zgodności są wyświetlane. Wynik stanu zgodności może być zgodny lub niezgodny.
 
-|Zasób  |Jeśli ocena warunku w zasadach to  |Akcja w zasadach   |Stan zgodności  |
-|-----------|---------|---------|---------|
-|Exists     |True     |Zablokuj     |Niezgodne |
-|Exists     |False    |Zablokuj     |Zgodne     |
-|Exists     |True     |Append   |Niezgodne |
-|Exists     |False    |Append   |Zgodne     |
-|Exists     |True     |Inspekcja    |Niezgodne |
-|Exists     |False    |Inspekcja    |Niezgodne |
+| **Stan zasobu** | **Akcja** | **Ocena zasad** | **Stan zgodności** |
+| --- | --- | --- | --- |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niezgodne |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Zgodne |
+| Nowa | Audit, AuditIfNotExist\* | True | Niezgodne |
+| Nowa | Audit, AuditIfNotExist\* | False | Zgodne |
 
+\* Akcje Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE. Ponadto akcje wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Inne przewodniki w tej kolekcji bazują na tym przewodniku Szybki start. Jeśli planujesz kontynuować pracę z kolejnymi samouczkami, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego przewodnika Szybki start.

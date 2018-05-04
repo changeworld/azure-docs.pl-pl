@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 0f560a02a51239cff0a7d4057ec7beb2f0f5c5c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f439c65d9b4fbeb78623312c426767f89dfd9fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Usługa Azure Active Directory B2C: Włączanie uwierzytelniania wieloskładnikowego w aplikacjach dla użytkownika
-Usługa Azure Active Directory (Azure AD) B2C integruje się bezpośrednio z [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) , aby mogli dodawać drugą warstwę zabezpieczeń do rejestracji i logowania w aplikacjach dla użytkownika. I można to zrobić bez pisania pojedynczy wiersz kodu. Obecnie firma Microsoft obsługuje połączenia telefonicznego i tekst komunikatu weryfikacji. Jeśli utworzono już zasad rejestracji i logowania, nadal można włączyć usługę Multi-Factor Authentication.
+Usługa Azure Active Directory (Azure AD) B2C integruje się bezpośrednio z [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , aby mogli dodawać drugą warstwę zabezpieczeń do rejestracji i logowania w aplikacjach dla użytkownika. I można to zrobić bez pisania pojedynczy wiersz kodu. Obecnie firma Microsoft obsługuje połączenia telefonicznego i tekst komunikatu weryfikacji. Jeśli utworzono już zasad rejestracji i logowania, nadal można włączyć usługę Multi-Factor Authentication.
 
 > [!NOTE]
 > Uwierzytelnianie wieloskładnikowe można włączyć również podczas tworzenia zasad rejestracji i logowania, nie tylko przez edytowania istniejących zasad.

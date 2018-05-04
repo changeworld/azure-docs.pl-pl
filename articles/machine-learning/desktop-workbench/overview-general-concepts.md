@@ -1,6 +1,6 @@
 ---
-title: "Omówienie funkcji w wersji zapoznawczej usługi Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Omówienie funkcji w wersji zapoznawczej usługi Azure Machine Learning, takich jak subskrypcje, kont, obszarów roboczych, projekty itd."
+title: Omówienie funkcji w wersji zapoznawczej usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Omówienie funkcji w wersji zapoznawczej usługi Azure Machine Learning, takich jak subskrypcje, kont, obszarów roboczych, projekty itd.
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ms.openlocfilehash: ea9da6f23fd08c09f9e805519487648480816f35
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning---concepts"></a>Uczenie maszynowe Azure — pojęcia
 
@@ -34,7 +34,7 @@ W tym artykule definiuje oraz opisano pojęcia, które trzeba znać do użycia u
 - **Obszar roboczy:** obszaru roboczego jest podstawowym składnikiem do udostępniania i współpracy w uczenie Maszynowe Azure. Projekty są pogrupowane w obszarze roboczym. Obszar roboczy można następnie udostępniać wielu użytkowników, które zostały dodane do konta eksperymenty.
 
 
-- **Projekt:** w usłudze Azure Machine Learning projektu jest kontenerem logicznym dla wszystkich wykonywanych zadań i rozwiązać problem. Mapuje jeden folder na dysku lokalnym, a można dodać żadnych plików lub sub folderów do niego. Projekt opcjonalnie może być skojarzony z repozytorium Git do kontroli źródła i współpracy.  
+- **Projekt:** w usłudze Azure Machine Learning projektu jest kontenerem logicznym dla wszystkich wykonywanych zadań i rozwiązać problem. Jest on mapowany na jeden folder plików na dysku lokalnym i można do niego dodać dowolne pliki lub podfoldery. Projekt opcjonalnie może być skojarzony z repozytorium Git do kontroli źródła i współpracy.  
 
 - **Eksperymentu:** Azure ml eksperymentu jest jeden lub więcej plików kodu źródłowego, wykonanych z jeden punkt wejścia. Może on zawierać zadań, takich jak wprowadzanie danych, engineering funkcji, szkolenia modelu lub modelu oceny. Obecnie uczenie Maszynowe Azure obsługuje Python lub PySpark tylko eksperymentów.
 

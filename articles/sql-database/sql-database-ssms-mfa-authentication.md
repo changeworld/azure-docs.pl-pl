@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 2ea8c3119366d86c3aabf1faa0d71f1ba3610f41
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c6472dcde55a7b642ced7bbf0d93893df9208e0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Uwierzytelnianiem uniwersalnym z bazy danych SQL i magazyn danych SQL (Obsługa SSMS MFA)
 Azure SQL Database i Azure SQL Data Warehouse obsługi połączeń z programu SQL Server Management Studio (SSMS) przy użyciu *uniwersalnych uwierzytelnianie usługi Active Directory*. 
@@ -25,7 +25,7 @@ Azure SQL Database i Azure SQL Data Warehouse obsługi połączeń z programu SQ
 
 - `Active Directory - Universal with MFA` uwierzytelnianie jest metody interakcyjnej, który również obsługuje *Azure Multi-Factor Authentication* (MFA). Usługa Azure MFA zabezpiecza dostęp do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania. Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe (Rozmowa telefoniczna, wiadomość tekstowa, karty inteligentne z numeru pin lub powiadomienie aplikacji mobilnej), dzięki czemu użytkownicy mogą wybrać metodę preferowany. Interakcyjne MFA z usługą Azure AD może spowodować wyskakujące okno dialogowe do weryfikacji.
 
-Opis usługi Multi-Factor Authentication, zobacz [uwierzytelnianie wieloskładnikowe](../multi-factor-authentication/multi-factor-authentication.md).
+Opis usługi Multi-Factor Authentication, zobacz [uwierzytelnianie wieloskładnikowe](../active-directory/authentication/multi-factor-authentication.md).
 Kroki konfiguracji, zobacz [uwierzytelnianie wieloskładnikowe skonfigurować bazy danych SQL Azure dla programu SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD nazwy lub dzierżawy parametr Identyfikatora domeny   

@@ -1,32 +1,27 @@
 ---
-title: "Synchronizacja programu Azure Active Directory Connect: Skonfiguruj preferowany danych lokalizację dla możliwości wielu geograficznie w usłudze Office 365 | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób put zasobami użytkowników usługi Office 365 zbliża się użytkownika z synchronizacji usługi Azure Active Directory Connect."
+title: 'Synchronizacja programu Azure Active Directory Connect: Skonfiguruj preferowany danych lokalizację dla możliwości wielu geograficznie w usłudze Office 365 | Dokumentacja firmy Microsoft'
+description: Opisuje sposób put zasobami użytkowników usługi Office 365 zbliża się użytkownika z synchronizacji usługi Azure Active Directory Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 04/16/2018
 ms.author: billmath
-ms.openlocfilehash: a5ebd61539af7116b8f92cdf9404cd2b5cdea193
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0020ed42baaa32fbc5ae2d62b37558e491842d67
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizacja programu Azure Active Directory Connect: Skonfiguruj preferowany danych lokalizację dla zasobów usługi Office 365
 W tym temacie ma na celu przeprowadzi użytkownika przez proces konfigurowania atrybut lokalizacji preferowanych danych synchronizacji usługi Azure Active Directory (Azure AD) Połącz. Gdy ktoś korzysta z możliwości wielu geograficznie w usłudze Office 365, możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna danych użytkowników usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
-
-> [!IMPORTANT]
-> Multi-geograficzna jest obecnie w przeglądzie. Jeśli chcesz dołączyć do programu Podgląd, skontaktuj się z przedstawicielem firmy Microsoft.
->
->
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Włącz synchronizację danych preferowanych lokalizacji
 Domyślnie zasobów usługi Office 365 dla użytkowników znajdują się w tej samej lokalizacji geograficznej jako dzierżawy usługi Azure AD. Na przykład jeśli dzierżawy znajduje się w Ameryce Północnej, następnie skrzynek pocztowych programu Exchange użytkowników znajdują się również w Ameryce Północnej. W przypadku międzynarodowej organizacji to może nie być optymalne.
@@ -34,7 +29,7 @@ Domyślnie zasobów usługi Office 365 dla użytkowników znajdują się w tej s
 Ustawienie atrybutu **preferredDataLocation**, można zdefiniować geograficznie użytkownika. Możesz mieć użytkownika usługi Office 365 zasoby, takie jak skrzynek pocztowych i OneDrive, w tej samej lokalizacji geograficznej jako użytkownik i jeszcze jeden dzierżawy dla całej organizacji.
 
 > [!IMPORTANT]
-> Na kwalifikować się do wielu geograficznie, musi mieć co najmniej 5000 pozycji w ramach subskrypcji usługi Office 365.
+> Multi-geograficzna jest obecnie dostępny dla klientów z co najmniej 5000 subskrypcji usługi Office 365. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
 >
 >
 
@@ -50,12 +45,12 @@ Obszarach geograficznych w usłudze Office 365 dostępne dla wielu geograficznie
 | Unii Europejskiej | EUR |
 | Indie | ZNAJDŹ |
 | Japonia | JPN |
-| Korea Południowa | KOR |
+| Korea | KOR |
 | Wielka Brytania | GBR |
-| Stany Zjednoczone | NAM |
+| Stany Zjednoczone | NAZWA |
 
 * Jeśli obszar nie znajduje się w tej tabeli (na przykład Ameryka Południowa), następnie go nie może służyć do wielu Geo.
-* Indie i Korea Południowa obszarach geograficznych są dostępne tylko w przypadku klientów z rozliczeń adresy i licencji zakupionych w tych obszarach geograficznych.
+* Indie geograficzna jest dostępna tylko w przypadku klientów z rozliczeń adres i licencji zakupionych w tym z magazynu geograficznie.
 * Nie wszystkie usługi Office 365 obciążeń obsługują ustawienia geo użytkownika.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect obsługę synchronizacji

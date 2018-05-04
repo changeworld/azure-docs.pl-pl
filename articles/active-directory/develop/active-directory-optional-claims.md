@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/15/2018
+ms.date: 04/24/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f9cc4f900428e1337fc9b9d428879d6527c60017
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f87487c4ee56ae90eb5825b0e77610fac73bd3fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Opcjonalne oświadczenia w usłudze Azure AD (wersja zapoznawcza)
 
@@ -65,7 +65,9 @@ Zestaw oświadczeń opcjonalne domyślnie dostępne do użycia przez aplikacje s
 | `fwd`                      | Adres IP.  Dodaje oryginalnego adresu IPv4 klienta (w sieci Wirtualnej)                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | Kraj użytkownika                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | Kraj dzierżawy zasobów                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
+| `acct`    | Stan konta użytkowników w dzierżawie.  Jeśli użytkownik jest członkiem dzierżawcy, wartość jest `0`.  Jeśli są one Gość, wartość jest `1`.  | JWT, SAML | | |
 | `upn`                      | Oświadczenie UserPrincipalName.  Mimo że tego oświadczenia jest uwzględniana automatycznie, należy określić go jako opcjonalnego roszczenia można dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa. | JWT, SAML  |           | Dodatkowe właściwości: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+
 ### <a name="v20-optional-claims"></a>Opcjonalne oświadczeń w wersji 2.0
 Te oświadczenia zawsze znajdują się w wersji 1.0 tokenów, ale są usuwane z tokenów w wersji 2.0, o ile nie jest wymagane.  Oświadczenia te dotyczą tylko tokenów Jwt (tokeny Identyfikatora i tokenów dostępu).  
 

@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: 1e94466d9d41bbc6a2100256d96e19d0d13600cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Transfer danych do usługi Azure Storage za pomocą usługi Import/Eksport Microsoft Azure
 W tym artykule udostępniamy instrukcje krok po kroku na temat używania usługi Import/Eksport Azure do bezpiecznego przesyłania dużych ilości danych do magazynu obiektów Blob platformy Azure i usługi pliki Azure przez wysyłanie dysków do centrum danych platformy Azure. Ta usługa może również przesyłanie danych z magazynu Azure do dysków twardych i wysłać do lokalnych witryn. Dane z pojedynczej stacji dysków SATA wewnętrzny można zaimportować do magazynu obiektów Blob platformy Azure lub usługi pliki Azure. 
@@ -29,7 +29,7 @@ Wykonaj następujące czynności w przypadku danych na dysku do zaimportowania d
 2.  W zależności od całkowity rozmiar danych Uzyskaj wymaganej liczby 2,5 SSD 2,5-calowe lub 3,5" stacje dysków twardych SATA II lub III.
 3.  Dołącz dyski twarde bezpośrednio przy użyciu SATA lub z zewnętrznej karty USB do komputera z systemem windows.
 1.  Utwórz pojedynczy wolumin NTFS na każdy dysk twardy i przypisać literę dysku do woluminu. Nie punkty instalacji.
-2.  Aby włączyć szyfrowanie na komputerze z systemem windows, należy włączyć szyfrowanie skrytki bitowych na woluminie NTFS. Postępuj zgodnie z instrukcjami na https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
+2.  Aby włączyć szyfrowanie na komputerze z systemem windows, należy włączyć szyfrowanie skrytki bitowych na woluminie NTFS. Postępuj zgodnie z instrukcjami na https://technet.microsoft.com/library/cc731549(v=ws.10).aspx.
 3.  Całkowicie skopiować dane do pojedynczego woluminów NTFS te zaszyfrowane na dyskach przy użyciu kopii & Wklej lub przeciągnij & upuszczania lub Robocopy lub takie narzędzie.
 7.  Pobierz WAImportExport V1 z https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Rozpakuj do waimportexportv1 folder domyślny. Na przykład C:\WaImportExportV1  

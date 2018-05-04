@@ -110,6 +110,10 @@
                   href: azure-stack-version-profiles-azurecli2.md
                 - name: PRZEJDŹ
                   href: azure-stack-version-profiles-go.md
+                - name: Ruby
+                  href: azure-stack-version-profiles-ruby.md
+                - name: Python
+                  href: azure-stack-version-profiles-python.md
                 - name: 'Dostawca zasobów interfejsów API, obsługiwane przez profil'
                   href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: Używanie modułu zasad

@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aec87625cd00b11b41c248eecf7af650ae57036f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Włącz ponownie ochronę maszyny z platformy Azure do lokacji lokalnej
 
@@ -39,6 +39,8 @@ Jeśli szablon jest używany do tworzenia maszyn wirtualnych, upewnij się, że 
 - Upewnij się, że należy otworzyć następujące porty dla trybu failover i powrotu po awarii.
 
     ![Porty dla trybu failover i powrotu po awarii](./media/vmware-azure-reprotect/failover-failback.png)
+
+- Możesz przeczytać wszystkie wymagania wstępne na porty i listę dozwolonych adresów URL podobnej [tutaj](vmware-azure-deploy-configuration-server.md#prerequisites)
 
 ## <a name="deploy-a-process-server-in-azure"></a>Wdrażanie serwera przetwarzania na platformie Azure
 

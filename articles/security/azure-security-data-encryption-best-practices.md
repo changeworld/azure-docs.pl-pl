@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 159bdf681761b9fc46f77cbcf25a210db11d1d9b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Dobre praktyki dotyczące zabezpieczeń danych platformy Azure i szyfrowania
 Jeden z kluczy do ochrony danych w chmurze jest księgowanie możliwe stany, w których może wystąpić danych oraz kontrolki są dostępne dla tego stanu. Danych Azure na potrzeby szyfrowania najlepsze praktyki dotyczące zabezpieczeń i zalecenia będą wokół stanów następujące dane:
@@ -50,15 +50,15 @@ Danych Azure szyfrowania najlepsze praktyki dotyczące zabezpieczeń i omówione
 * Wymuszanie szyfrowania danych na poziomie plików
 
 ## <a name="enforce-multi-factor-authentication"></a>Wymusić uwierzytelnianie wieloskładnikowe
-Pierwszym krokiem podczas dostępu do danych i sterowania w programie Microsoft Azure jest do uwierzytelnienia użytkownika. [Usługa Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) jest metodą weryfikacji tożsamości użytkownika przy użyciu innej metody niż tylko nazwę użytkownika i hasło. Tego uwierzytelniania — metoda ułatwia zabezpieczenie dostępu do danych i aplikacji, spełniając zapotrzebowanie na prosty proces logowania.
+Pierwszym krokiem podczas dostępu do danych i sterowania w programie Microsoft Azure jest do uwierzytelnienia użytkownika. [Usługa Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) jest metodą weryfikacji tożsamości użytkownika przy użyciu innej metody niż tylko nazwę użytkownika i hasło. Tego uwierzytelniania — metoda ułatwia zabezpieczenie dostępu do danych i aplikacji, spełniając zapotrzebowanie na prosty proces logowania.
 
 Przez włączenie usługi Azure MFA dla użytkowników, dodajesz drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. W takim przypadku transakcji może uzyskiwać dostęp do dokumentu znajdującego się na serwerze plików lub w trybie Online programu SharePoint. Usługa Azure MFA ułatwia również IT, aby zmniejszyć prawdopodobieństwo, że przejęciem poświadczeń dostępu do danych organizacji.
 
 Na przykład: wymusić uwierzytelnianie wieloskładnikowe Azure dla użytkowników i skonfigurować go do użycia jako weryfikacji, połączenia telefonicznego lub wiadomości tekstowej w przypadku złamania zabezpieczeń poświadczeń użytkownika, atakujący będzie mógł dostęp do dowolnych zasobów, ponieważ on nie ma dostępu do telefonu użytkownika. Organizacje, które nie dodawaj tego dodatkową warstwę ochrony tożsamości są bardziej narażony na atak kradzieży poświadczeń, co może prowadzić do naruszenia danych.
 
-Jeden alternatywą dla organizacji, które mają być zachowane uwierzytelniania sterowania lokalnej jest użycie [serwera usługi Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), nazywany również lokalne usługi MFA. Za pomocą tej metody nadal będzie mógł wymusić uwierzytelnianie wieloskładnikowe, przy zachowaniu MFA serwera lokalnego.
+Jeden alternatywą dla organizacji, które mają być zachowane uwierzytelniania sterowania lokalnej jest użycie [serwera usługi Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfaserver-deploy.md), nazywany również lokalne usługi MFA. Za pomocą tej metody nadal będzie mógł wymusić uwierzytelnianie wieloskładnikowe, przy zachowaniu MFA serwera lokalnego.
 
-Aby uzyskać więcej informacji dotyczących usługi Azure MFA, przeczytaj artykuł [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Aby uzyskać więcej informacji dotyczących usługi Azure MFA, przeczytaj artykuł [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Kontrola dostępu (RBAC) oparta na rolach użycia
 Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń. Jest to konieczne w przypadku organizacji, które mają być wymuszać zasady zabezpieczeń dla dostępu do danych. Azure opartej na rolach kontroli dostępu (RBAC) może służyć do przypisywania uprawnień do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji.

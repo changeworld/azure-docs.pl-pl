@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Połączenie analiz danych z danych nauki maszyny wirtualnej systemu Linux na platformie Azure
 W tym przewodniku przedstawiono sposób wykonywania kilka typowych zadań nauki danych z maszyny Wirtualnej systemu Linux danych nauki. Linux danych nauki maszyny wirtualnej (DSVM) jest obrazu maszyny wirtualnej na platformie Azure, który jest wstępnie zainstalowane z kolekcją narzędzi powszechnie używany do analizy danych i uczenia maszynowego. Składniki oprogramowania są wyszczególnione w [Aprowizowanie maszyny wirtualnej systemu Linux danych nauki](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy podczas nauki danych (w minutach), bez konieczności instalowania i konfigurowania poszczególnych narzędzi pojedynczo. Można łatwo skalowanie w górę maszynę Wirtualną, jeśli to konieczne i zatrzymaj ją nieużywane. Dlatego ten zasób jest zarówno elastyczne i ekonomiczne.
@@ -264,7 +264,7 @@ XGBoost można również wywołać z języka python lub wiersza polecenia.
 Do tworzenia aplikacji przy użyciu języka Python zostały zainstalowane w DSVM dystrybucje Anaconda Python 2.7 i 3.5.
 
 > [!NOTE]
-> Obejmuje dystrybucji Anaconda [Condas](http://conda.pydata.org/docs/index.html), które mogą służyć do tworzenia niestandardowego środowiska dla języka Python, które mają różne wersje i/lub pakietów zainstalowanych w nich.
+> Obejmuje dystrybucji Anaconda [Conda](http://conda.pydata.org/docs/index.html), które mogą służyć do tworzenia niestandardowego środowiska dla języka Python, które mają różne wersje i/lub pakietów zainstalowanych w nich.
 >
 >
 
@@ -316,6 +316,24 @@ Aby opublikować model uczenie maszynowe Azure:
 
 ## <a name="jupyterhub"></a>Jupyterhub
 Rozkład Anaconda w DSVM jest dostarczany z notesu Jupyter środowisku wieloplatformowych udostępniać kod języka Python, R lub Julia i analizy. Notesu Jupyter jest dostępny za pośrednictwem JupyterHub. Zaloguj się przy użyciu lokalnego nazwę użytkownika systemu Linux i hasło na ***https://\<nazwę DNS maszyny Wirtualnej lub adres IP\>: 8000 /***. Wszystkie pliki konfiguracji dla JupyterHub znajdują się w katalogu **/etc/jupyterhub**.
+
+> [!NOTE]
+> Aby użyć Menedżera pakietów języka Python (za pośrednictwem `pip` polecenie) z notesu Jupyter w bieżącym jądra polecenie może być używany w komórki kodu, na przykład:
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> Aby użyć Instalatora Conda (za pośrednictwem `conda` polecenie) z notesu Jupyter w bieżącym jądra polecenie może być używany w komórki kodu, na przykład:
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
 
 Kilka przykładowych notesów są już zainstalowane na maszynie Wirtualnej:
 

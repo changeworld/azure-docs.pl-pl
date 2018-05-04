@@ -1,12 +1,12 @@
 ---
-title: "Korzystanie z programu Storage Explorer (wersja zapoznawcza) za pośrednictwem usługi Azure File Storage | Microsoft Docs"
-description: "Dowiedz się, jak korzystać z programu Storage Explorer (wersja zapoznawcza) w celu pracy z udziałami plików i plikami."
+title: Korzystanie z Eksploratora usługi Storage za pośrednictwem usługi Azure File Storage | Microsoft Docs
+description: Dowiedz się, jak korzystać z Eksploratora usługi Storage w celu pracy z udziałami plików i plikami.
 services: storage
 documentationcenter: na
 author: cawaMS
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="using-storage-explorer-preview-with-azure-file-storage"></a>Korzystanie z programu Storage Explorer (wersja zapoznawcza) za pośrednictwem usługi Azure File Storage
+# <a name="using-storage-explorer-with-azure-file-storage"></a>Używanie programu Storage Explorer z usługą Azure File Storage
 
-Azure File Storage to usługa, która umożliwia korzystanie z udziałów plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB, Server Message Block). Obsługiwane są wersje 2.1 i 3.0 protokołu SMB. W usłudze Magazyn plików Azure można migrować starsze aplikacje korzystające z udziałów plików na platformę Azure szybko i bez kosztownych modyfikacji oprogramowania. Usługa File Storage może być używana do udostępniania danych publicznie lub do przechowywania danych aplikacji prywatnie. Ten artykuł zawiera informacje dotyczące sposobu korzystania z programu Storage Explorer (wersja zapoznawcza) w celu pracy z udziałami plików i plikami.
+Azure File Storage to usługa, która umożliwia korzystanie z udziałów plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB, Server Message Block). Obsługiwane są wersje 2.1 i 3.0 protokołu SMB. W usłudze Magazyn plików Azure można migrować starsze aplikacje korzystające z udziałów plików na platformę Azure szybko i bez kosztownych modyfikacji oprogramowania. Usługa File Storage może być używana do udostępniania danych publicznie lub do przechowywania danych aplikacji prywatnie. Ten artykuł zawiera informacje dotyczące sposobu korzystania z Eksploratora usługi Storage w celu pracy z udziałami plików i plikami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania kroków opisanych w tym artykule konieczne jest wykonanie kroków znajdujących się w następujących artykułach:
 
-- [Pobieranie i instalowanie Eksploratora usługi Storage (wersja zapoznawcza)](http://www.storageexplorer.com/)
+- [Pobieranie i instalowanie Eksploratora usługi Storage](http://www.storageexplorer.com/)
 
 - [Łączenie się z usługą lub kontem magazynu platformy Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -36,9 +36,9 @@ Do wykonania kroków opisanych w tym artykule konieczne jest wykonanie kroków z
 
 Wszystkie pliki muszą znajdować się w udziale plików, który jest po prostu logiczną grupą plików. Konto może zawierać nieograniczoną liczbę udziałów plików, a każdy udział może obejmować nieograniczoną liczbę plików.
 
-Poniższe kroki ilustrują tworzenie udziału plików w programie Storage Explorer (wersja zapoznawcza).
+Poniższe kroki ilustrują tworzenie udziału plików w Eksploratorze usługi Storage.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 
 2. W okienku po lewej stronie rozwiń konto magazynu, w którym chcesz utworzyć udział plików
 
@@ -58,9 +58,9 @@ Poniższe kroki ilustrują tworzenie udziału plików w programie Storage Explor
 
 Udziały plików zawierają pliki i foldery (które mogą również zawierać pliki).
 
-Poniższe kroki ilustrują wyświetlanie zawartości udziału plików w programie Storage Explorer (wersja zapoznawcza):
+Poniższe kroki ilustrują wyświetlanie zawartości udziału plików w Eksploratorze usługi Storage:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz wyświetlić.
 
@@ -78,9 +78,9 @@ Poniższe kroki ilustrują wyświetlanie zawartości udziału plików w programi
 
 Udziały plików można łatwo tworzyć i usuwać. Informacje na temat sposobu usuwania pojedynczych plików zawiera sekcja [Managing files in a file share](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) (Zarządzanie plikami w udziale plików).
 
-Poniższe kroki ilustrują usuwanie udziału plików w programie Storage Explorer (wersja zapoznawcza):
+Poniższe kroki ilustrują usuwanie udziału plików w Eksploratorze usługi Storage:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz wyświetlić.
 
@@ -96,11 +96,11 @@ Poniższe kroki ilustrują usuwanie udziału plików w programie Storage Explore
 
 ## <a name="copy-a-file-share"></a>Kopiowanie udziału plików
 
-Program Storage Explorer (wersja zapoznawcza) umożliwia kopiowanie udziału pliku do schowka, a następnie wklejanie go do innego konta magazynu. Informacje na temat sposobu kopiowania pojedynczych plików zawiera sekcja [Managing files in a file share](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) (Zarządzanie plikami w udziale plików).
+Eksplorator usługi Storage umożliwia kopiowanie udziału plików do schowka, a następnie wklejanie go do innego konta magazynu. Informacje na temat sposobu kopiowania pojedynczych plików zawiera sekcja [Managing files in a file share](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) (Zarządzanie plikami w udziale plików).
 
 Poniższe kroki ilustrują kopiowanie udziału plików z jednego konta magazynu do innego.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, który chcesz skopiować.
 
@@ -120,7 +120,7 @@ Poniższe kroki ilustrują kopiowanie udziału plików z jednego konta magazynu 
 
 Poniższe kroki ilustrują tworzenie sygnatury dostępu współdzielonego dla udziału plików:
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, dla którego ma zostać uzyskana sygnatura dostępu współdzielonego.
 
@@ -146,7 +146,7 @@ Poniższe kroki ilustrują tworzenie sygnatury dostępu współdzielonego dla ud
 
 Poniższe kroki ilustrują zarządzanie (dodawanie i usuwanie) zasadami dostępu dla udziału plików. Zasady dostępu są używane do tworzenia adresów URL sygnatur dostępu współdzielonego, za pomocą których użytkownicy mogą uzyskiwać dostęp do zasobów pliku magazynu przez zdefiniowany okres.
 
-1. Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1. Otwórz Eksploratora usługi Storage.
 
 2. W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, którego zasadami dostępu chcesz zarządzać.
 
@@ -180,7 +180,7 @@ Po utworzeniu udziału plików można do niego przekazać plik, pobrać plik na 
 
 Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
-1.  Otwórz Eksploratora usługi Storage (wersja zapoznawcza).
+1.  Otwórz Eksploratora usługi Storage.
 
 2.  W okienku po lewej stronie rozwiń konto magazynu zawierające udział plików, którym chcesz zarządzać.
 
@@ -206,7 +206,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         ![Dodawanie plików](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. Wybierz pozycję **Przekaż**.
+        d. Wybierz pozycję **Przekaż**.
 
     - **Przekazywanie folderu do udziału plików**
         
@@ -216,7 +216,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
 
-        c. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
+        d. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
 
         d. Wybierz pozycję **Przekaż**.
 
@@ -226,7 +226,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
         
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Pobierz**.
         
-        c. W oknie dialogowym **Określanie lokalizacji, w której zapisać pobrany plik** określ lokalizację, w której ma zostać zapisany pobrany plik, oraz nazwę tego pliku.
+        d. W oknie dialogowym **Określanie lokalizacji, w której zapisać pobrany plik** określ lokalizację, w której ma zostać zapisany pobrany plik, oraz nazwę tego pliku.
 
         d. Wybierz pozycję **Zapisz**.
 
@@ -236,7 +236,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
         
         b.  Na pasku narzędzi okienka głównego wybierz pozycję **Otwórz**.
         
-        c.  Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku źródłowego.
+        d.  Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku źródłowego.
 
     - **Kopiowanie pliku do Schowka**
 
@@ -244,7 +244,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Kopiuj**.
 
-        c. W lewym okienku przejdź do innego udziału plików i kliknij go dwukrotnie, aby wyświetlić go w okienku głównym.
+        d. W lewym okienku przejdź do innego udziału plików i kliknij go dwukrotnie, aby wyświetlić go w okienku głównym.
 
         d. Na pasku narzędzi okienka głównego wybierz pozycję **Wklej**, aby utworzyć kopię pliku.
 
@@ -254,10 +254,10 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Usuń**.
 
-        c. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
+        d. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [najnowsze informacje o wersji i filmy wideo dotyczące programu Storage Explorer (wersja zapoznawcza)](http://www.storageexplorer.com/).
+- Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](http://www.storageexplorer.com/).
 
 - Dowiedz się, jak [tworzyć aplikacje przy użyciu obiektów Blob, tabel, kolejek i plików platformy Azure](https://azure.microsoft.com/documentation/services/storage/).

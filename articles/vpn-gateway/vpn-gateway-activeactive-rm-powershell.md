@@ -1,11 +1,11 @@
 ---
-title: "Skonfigurować połączenia sieci VPN S2S aktywny aktywny dla bram sieci VPN: usługi Azure Resource Manager: programu PowerShell | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono konfigurowanie aktywny aktywny połączeń przy użyciu bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i programu PowerShell."
+title: 'Skonfigurować połączenia sieci VPN S2S aktywny aktywny dla bram sieci VPN: usługi Azure Resource Manager: programu PowerShell | Dokumentacja firmy Microsoft'
+description: W tym artykule przedstawiono konfigurowanie aktywny aktywny połączeń przy użyciu bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: yushwang
-ms.openlocfilehash: 41cca764335f21bed60fe968288bc8b8274f3215
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c09abe97d34b7220d76481a403165f1b7e07fcaa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Skonfigurować połączenia sieci VPN S2S aktywny aktywny z bramy sieci VPN platformy Azure
 
@@ -94,7 +94,7 @@ Upewnij się, że program PowerShell został przełączony do trybu umożliwiaj�
 Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
@@ -276,7 +276,7 @@ Podobnie poniżej listy parametrów wprowadzany do drugiego urządzenia sieci VP
 
 Gdy jest nawiązane połączenie (tunele), konieczne będzie podwójne nadmiarowe urządzenia sieci VPN i tunele, połączenie sieci lokalnej i Azure:
 
-![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![podwójny nadmiarowość crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
 ## <a name ="aav2v"></a>Część 3 — ustanowienie połączenia do wirtualnymi aktywny aktywny
 W tej sekcji tworzy aktywny aktywny wirtualnymi do połączenia z protokołem BGP. 
@@ -416,7 +416,7 @@ W tym kroku Włącz tryb aktywny aktywny i zaktualizować bramę. W tym przykła
 
 * Nie można zmienić starszej wersji jednostki SKU na jedną z nowych wersji produktu za pomocą tego kroku. Można zmienić tylko starszej wersji jednostki SKU do innego obsługiwanych starszej wersji jednostki SKU. Na przykład nie można zmienić jednostki SKU zgodne ze standardem do VpnGw1 (nawet jeśli VpnGw1 jest obsługiwana w przypadku aktywny aktywny) ponieważ Standard jest starszej wersji jednostki SKU i VpnGw1 bieżącej wersji produktu. Aby uzyskać więcej informacji na temat zmiany rozmiaru i Migrowanie jednostki SKU, zobacz [jednostki SKU bramy](vpn-gateway-about-vpngateways.md#gwsku).
 
-* Jeśli chcesz zmienić rozmiar bieżącego SKU, na przykład VpnGw1 do VpnGw3, możesz to zrobić przy użyciu tego kroku, ponieważ jednostki SKU znajdują się w tej samej rodziny SKU. Aby to zrobić, należy użyć wartości:```-GatewaySku VpnGw3```
+* Jeśli chcesz zmienić rozmiar bieżącego SKU, na przykład VpnGw1 do VpnGw3, możesz to zrobić przy użyciu tego kroku, ponieważ jednostki SKU znajdują się w tej samej rodziny SKU. Aby to zrobić, należy użyć wartości: ```-GatewaySku VpnGw3```
 
 Gdy używana jest to w danym środowisku, jeśli nie trzeba zmieniać rozmiar bramy, nie trzeba określać GatewaySku —. Zwróć uwagę, że w tym kroku należy ustawić obiektu bramy w programie PowerShell, aby wyzwolić rzeczywistej aktualizacji. Ta aktualizacja może potrwać 30 do 45 minut, nawet jeśli nie są zmiany rozmiaru bramy.
 

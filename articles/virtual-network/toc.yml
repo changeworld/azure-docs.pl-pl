@@ -5,6 +5,7 @@
     - name: Informacje o usłudze Virtual Network
       href: virtual-networks-overview.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Tworzenie sieci wirtualnej — Portal
       href: quick-create-portal.md

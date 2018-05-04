@@ -12,11 +12,11 @@ ms.workload: On Demand
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 46236c11b15f86c26be5e8c1311ba35e8bdd90f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e5c64ed51fd7c36b1c2cb3b5d98df18b82e08cc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -37,7 +37,7 @@ W poniższej tabeli porównano Wstaw i cel punktu odzyskiwania dla każdej warst
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Użyj w momencie przywracania, aby odzyskać bazę danych
 
-Baza danych SQL automatycznie wykonuje kombinacji pełnej bazy danych kopii zapasowych co tydzień, co godzinę kopii zapasowych różnicowej bazy danych i transakcji kopii zapasowych dziennika co pięć - dziesięć minut do ochrony przed utratą danych firmy. Te kopie zapasowe są przechowywane w magazynie RA-GRS 35 dni w przypadku baz danych w warstwach usług standardowa i Premium i 7 dni w przypadku baz danych w warstwie usług podstawowych. Ogólnego przeznaczenia i warstwy krytycznych usług biznesowych (wersja zapoznawcza) konfiguruje się do 35 dni się przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [warstw usług](sql-database-service-tiers.md). Jeśli okres przechowywania w warstwie usług nie spełnia Twoich wymagań biznesowych, można go zwiększyć, [zmieniając warstwę usług](sql-database-service-tiers.md). Pełne oraz różnicowe kopie zapasowe bazy danych są także replikowane do [sparowanego centrum danych](../best-practices-availability-paired-regions.md) w celu ochrony przed awarią centrum danych. Aby uzyskać więcej informacji, zobacz [kopie zapasowe bazy danych automatyczne](sql-database-automated-backups.md).
+Baza danych SQL automatycznie wykonuje kombinacji pełnej bazy danych kopii zapasowych co tydzień, co godzinę kopii zapasowych różnicowej bazy danych i transakcji kopii zapasowych dziennika co pięć - dziesięć minut do ochrony przed utratą danych firmy. Jeśli używasz [model kupna na podstawie jednostek dtu w warstwie](sql-database-service-tiers-dtu.md), a następnie te kopie zapasowe są przechowywane w magazynie RA-GRS 35 dni w przypadku baz danych w warstwach usług standardowa i Premium i 7 dni w przypadku baz danych w warstwie podstawowej usługi. Jeśli okres przechowywania w warstwie usług nie spełnia Twoich wymagań biznesowych, można go zwiększyć, [zmieniając warstwę usług](sql-database-service-tiers-dtu.md#choosing-a-service-tier-in-the-dtu-based-purchasing-model). Jeśli używasz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers-vcore.md), przechowywania kopii zapasowych jest konfigurowane w górę celu 35 dni w ogólnego przeznaczenia i krytyczne warstwy biznesowej. Pełne oraz różnicowe kopie zapasowe bazy danych są także replikowane do [sparowanego centrum danych](../best-practices-availability-paired-regions.md) w celu ochrony przed awarią centrum danych. Aby uzyskać więcej informacji, zobacz [kopie zapasowe bazy danych automatyczne](sql-database-automated-backups.md).
 
 Maksymalny okres przechowywania PITR obsługiwanych jest niewystarczająca dla aplikacji, można go rozszerzyć Konfigurując zasady długoterminowego przechowywania (od lewej do prawej) dla baz danych. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
@@ -97,8 +97,7 @@ Aby uzyskać więcej informacji i poznać szczegółowe kroki przywracania usuni
 
 > [!IMPORTANT]
 > Jeśli usunięto serwer logiczny, nie można odzyskać usuniętej bazy danych.
->
->
+
 
 ### <a name="restore-backups-from-long-term-retention"></a>Przywracanie kopii zapasowych z długoterminowego przechowywania
 

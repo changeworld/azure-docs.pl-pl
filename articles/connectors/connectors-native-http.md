@@ -1,11 +1,11 @@
 ---
-title: "Komunikować się z dowolnego punktu końcowego za pośrednictwem protokołu HTTP - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Tworzenie aplikacji logiki, które mogą się komunikować z dowolnego punktu końcowego za pośrednictwem protokołu HTTP"
+title: Komunikować się z dowolnego punktu końcowego za pośrednictwem protokołu HTTP - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie aplikacji logiki, które mogą się komunikować z dowolnego punktu końcowego za pośrednictwem protokołu HTTP
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-the-http-action"></a>Rozpoczynanie pracy z akcji HTTP
 
@@ -113,8 +113,8 @@ A * oznacza, że jest polem wymaganym.
 
 | Nazwa wyświetlana | Nazwa właściwości | Opis |
 | --- | --- | --- |
-| Metoda * |metoda |Zlecenie HTTP do użycia |
-| URI* |identyfikator URI |Identyfikator URI dla żądania HTTP |
+| Metoda * |method |Zlecenie HTTP do użycia |
+| IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI dla żądania HTTP |
 | Nagłówki |nagłówki |Obiekt JSON nagłówków HTTP w celu uwzględnienia |
 | Treść |treść |Treść żądania HTTP |
 | Authentication |uwierzytelnianie |Szczegółowe informacje w [uwierzytelniania](#authentication) sekcji |
@@ -131,7 +131,7 @@ Poniżej przedstawiono szczegóły danych wyjściowych dla odpowiedzi HTTP.
 | Kod stanu |int |Kod stanu HTTP |
 
 ## <a name="authentication"></a>Authentication
-Z funkcji Logic Apps umożliwia przy użyciu różnych typów uwierzytelniania względem punktów końcowych HTTP. Korzystając z uwierzytelniania za pomocą **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, i  **[HTTP elementu Webhook](connectors-native-webhook.md)**  łączników. Konfigurowane są następujące typy uwierzytelniania:
+Z funkcji Logic Apps umożliwia przy użyciu różnych typów uwierzytelniania względem punktów końcowych HTTP. Korzystając z uwierzytelniania za pomocą **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, i **[HTTP elementu Webhook](connectors-native-webhook.md)** łączników. Konfigurowane są następujące typy uwierzytelniania:
 
 * [Uwierzytelnianie podstawowe](#basic-authentication)
 * [Uwierzytelnianie certyfikatu klienta](#client-certificate-authentication)
@@ -150,7 +150,7 @@ A * oznacza, że jest polem wymaganym.
 
 > [!TIP]
 > Jeśli chcesz użyć hasła, które nie można pobrać z definicji, użyj `securestring` parametru i `@parameters()`  
->  [funkcji definicji przepływu pracy](http://aka.ms/logicappdocs).
+>  [funkcji definicji przepływu pracy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
 
 Na przykład:
 
@@ -169,12 +169,12 @@ Następujący obiekt uwierzytelniania jest potrzebne uwierzytelnianie certyfikat
 | Nazwa właściwości | Typ danych | Opis |
 | --- | --- | --- |
 | Typ * |type |Typ uwierzytelniania (musi być `ClientCertificate` dla certyfikatów klienta SSL) |
-| PFX* |pfx |Zawartość pliku wymiany informacji osobistych (PFX) algorytmem Base64 |
+| PFX* |PFX |Zawartość pliku wymiany informacji osobistych (PFX) algorytmem Base64 |
 | Hasło * |hasło |Hasło dostępu do pliku PFX |
 
 > [!TIP]
 > Aby użyć parametru, który nie będzie można odczytać w definicji po zapisaniu aplikację logiki, można użyć `securestring` parametru i `@parameters()`  
->  [funkcji definicji przepływu pracy](http://aka.ms/logicappdocs).
+>  [funkcji definicji przepływu pracy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
 
 Na przykład:
 
@@ -198,7 +198,7 @@ Następujący obiekt uwierzytelniania jest wymagane do uwierzytelniania usługi 
 | Klucz tajny * |wpis tajny |Klucz tajny klienta, który żąda tokenu |
 
 > [!TIP]
-> Można użyć `securestring` parametru i `@parameters()` [funkcji definicji przepływu pracy](http://aka.ms/logicappdocs) do używania parametru, który nie będzie można odczytać w definicji po zapisaniu.
+> Można użyć `securestring` parametru i `@parameters()` [funkcji definicji przepływu pracy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow) do używania parametru, który nie będzie można odczytać w definicji po zapisaniu.
 > 
 > 
 

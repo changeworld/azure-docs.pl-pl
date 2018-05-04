@@ -1,24 +1,24 @@
 ---
-title: "Usługi Azure AD v1 ASP.NET serwera sieci Web wprowadzenie | Dokumentacja firmy Microsoft"
-description: "Implementowanie logowania firmy Microsoft dla rozwiązania ASP.NET z aplikacji opartych na przeglądarce sieci web tradycyjnych przy użyciu standardowego protokołu OpenID Connect"
+title: Usługi Azure AD v1 ASP.NET serwera sieci Web wprowadzenie | Dokumentacja firmy Microsoft
+description: Implementowanie logowania firmy Microsoft dla rozwiązania ASP.NET z aplikacji opartych na przeglądarce sieci web tradycyjnych przy użyciu standardowego protokołu OpenID Connect
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2017
+ms.date: 04/09/2018
 ms.author: andret
-ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Dodaj logowanie z firmy Microsoft do aplikacji sieci web platformy ASP.NET
@@ -250,7 +250,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--start-test-->
 ## <a name="test-your-code"></a>Testowanie kodu
 
-Naciśnij klawisz `F5` do uruchomienia projektu w programie Visual Studio. W przeglądarce zostanie otwarty i kieruje użytkownika do *http://localhost: {port}* której występuje *Zaloguj się przy użyciu Microsoft* przycisku. Przejdź dalej i kliknij go, aby zarejestrować.
+Naciśnij klawisz `F5` do uruchomienia projektu w programie Visual Studio. W przeglądarce zostanie otwarty i kieruje użytkownika do *http://localhost:{port}* której występuje *Zaloguj się przy użyciu Microsoft* przycisku. Przejdź dalej i kliknij go, aby zarejestrować.
 
 Gdy wszystko jest gotowe do testowania, zaloguj się za pomocą konta służbowego (Azure Active Directory). 
 
@@ -280,7 +280,7 @@ Ponadto zobaczysz tabeli, w tym wszystkie oświadczenia użytkownika dołączana
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Test podczas uzyskiwania dostępu do metody, która ma *[Authorize]* atrybutu (opcjonalnie)
 W tym kroku należy przetestować uzyskiwanie dostępu do kontrolera oświadczeń jako użytkownik anonimowy:<br/>
 Wybierz łącze do wylogowania użytkownika i ukończyć proces wylogowywania.<br/>
-Teraz w przeglądarce, wpisz http://localhost: {port} / oświadczeń kontrolerze, który jest chroniony za pomocą dostępu do `[Authorize]` atrybutu
+Teraz w przeglądarce, wpisz http://localhost:{port}/claims kontrolerze, który jest chroniony za pomocą dostępu do `[Authorize]` atrybutu
 
 #### <a name="expected-results"></a>Oczekiwanych rezultatów
 Powinien zostać wyświetlony monit wymaga uwierzytelniania, aby wyświetlić widok.

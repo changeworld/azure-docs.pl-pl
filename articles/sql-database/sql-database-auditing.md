@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Usługa Azure SQL database auditing śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja również:
@@ -120,7 +120,7 @@ Istnieje kilka metod, których można użyć do wyświetlenia obiektu blob, dzie
 
 * Użyj [synchronizacji aplikacji](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , który został utworzony. Działa na platformie Azure, a używa analizy dzienników publiczne interfejsy API, aby wypchnąć dzienników inspekcji SQL do analizy dzienników. Synchronizowanie aplikacji wypchnięcia dzienników inspekcji SQL do analizy dzienników zużycia za pośrednictwem pulpitu nawigacyjnego Analytics dziennika.
 
-* Use Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+* Przy użyciu usługi Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
 * Pobierz pliki dziennika z kontenera obiektów blob magazynu Azure w portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Storage Azure](http://storageexplorer.com/).
     * Po pobraniu pliku dziennika, który jest lokalnie, możesz kliknąć dwukrotnie plik, który będzie otwierać, przeglądać i analizować dzienniki w programie SSMS.
@@ -165,8 +165,18 @@ W środowisku produkcyjnym najprawdopodobniej będzie okresowo Odśwież kluczy 
 3. Przejdź wstecz do inspekcji bloku konfiguracji przełącznika klucz dostępu do magazynu z podstawowym dodatkowej, a następnie kliknij przycisk **OK**. Następnie kliknij przycisk **zapisać** w górnej części bloku konfiguracji inspekcji.
 4. Wróć do bloku konfiguracji magazynu, a następnie ponownie wygenerować pomocniczy klucz dostępu (w ramach przygotowania do klucza następnego cyklu odświeżania).
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Zarządzanie za pomocą programu Azure PowerShell inspekcja bazy danych SQL
+## <a name="additional-information"></a>Informacje dodatkowe
 
+* Aby uzyskać szczegółowe informacje o dzienniku sformatować hierarchii folderu przechowywania i konwencje nazewnictwa, zobacz [odwołanie Format dziennika inspekcji obiektu Blob](https://go.microsoft.com/fwlink/?linkid=829599).
+
+   > [!IMPORTANT]
+   > Azure inspekcji bazy danych SQL przechowuje 4000 znaków dane znaków pól rekordu inspekcji. Gdy **instrukcji** lub **data_sensitivity_information** wartości zwracanych z akcji podlegających inspekcji zawiera więcej niż 4000 znaków, wszystkie dane poza najpierw 4000 znaków zostaną  **obcięty i nie inspekcji**.
+
+* Dzienniki inspekcji są zapisywane w **Dołącz obiekty BLOB** w magazynie obiektów Blob platformy Azure w ramach subskrypcji platformy Azure.
+   * **Magazyn w warstwie Premium** jest obecnie **nieobsługiwane** przez Dołącz obiektów blob.
+   * **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
+
+## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Zarządzanie za pomocą programu Azure PowerShell inspekcja bazy danych SQL
 
 * **Polecenia cmdlet programu PowerShell**:
 

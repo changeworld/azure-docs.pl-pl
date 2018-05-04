@@ -1,11 +1,11 @@
 ---
-title: "Jak przypisać MSI dostępu do zasobów platformy Azure przy użyciu programu PowerShell"
-description: "Krok po kroku instrukcje dotyczące przypisywania MSI dla jednego zasobu, dostęp do innego zasobu, przy użyciu programu PowerShell."
+title: Jak przypisać MSI dostępu do zasobów platformy Azure przy użyciu programu PowerShell
+description: Krok po kroku instrukcje dotyczące przypisywania MSI dla jednego zasobu, dostęp do innego zasobu, przy użyciu programu PowerShell.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 36b95a1de64fe49a1225bd647ca963c8957fe160
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7074aeddaf5ff3e64c4ccb12c3bfbb53b54eea33
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>Przypisywanie dostępu zarządzane tożsamości usługi (MSI) do zasobów przy użyciu programu PowerShell
 
@@ -35,10 +35,10 @@ Ponadto zainstalować [Azure PowerShell w wersji 4.3.1](https://www.powershellga
 
 Po włączeniu MSI na zasobów platformy Azure, [takich jak maszyny Wirtualnej platformy Azure](qs-configure-powershell-windows-vm.md):
 
-1. Zaloguj się do platformy Azure przy użyciu `Login-AzureRmAccount` polecenia cmdlet. Użyj konta, które jest skojarzone z subskrypcją platformy Azure, w którym skonfigurowano MSI:
+1. Zaloguj się do platformy Azure przy użyciu `Connect-AzureRmAccount` polecenia cmdlet. Użyj konta, które jest skojarzone z subskrypcją platformy Azure, w którym skonfigurowano MSI:
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 2. W tym przykładzie udostępniamy możliwość sprawowania maszyny Wirtualnej Azure dostęp do konta magazynu. Najpierw używamy [Get AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) można pobrać nazwy głównej usługi dla maszyny Wirtualnej o nazwie "myVM", który został utworzony po włączeniu możemy MSI. Następnie używamy [AzureRmRoleAssignment nowy](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) umożliwiają Maszynie wirtualnej "Czytnika" dostęp do konta magazynu o nazwie "myStorageAcct":
 

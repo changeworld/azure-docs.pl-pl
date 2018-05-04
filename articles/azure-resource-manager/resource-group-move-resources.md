@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8ad73132839aaa77166c115feff9a70db864ba12
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -121,7 +121,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Cognitive Services
 * Content Moderator
 * Data Catalog
-* Fabryka danych
+* Fabryka danych - V1 można można przenieść, ale przeniesienie V2 (wersja zapoznawcza) nie jest obsługiwana.
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -148,7 +148,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Magazyn
 * Magazyn (klasyczne) — zobacz [Classic deployment ograniczenia](#classic-deployment-limitations)
 * Stream Analytics — usługi analiza strumienia zadania nie można przenieść uruchomionej w stanie.
-* Baza danych SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. W przypadku przenoszenia programu SQL server, również są przenoszone jej baz danych.
+* Baza danych SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. W przypadku przenoszenia programu SQL server, również są przenoszone jej baz danych. Dotyczy to baz danych Azure SQL Database i Azure SQL Data Warehouse. 
 * Traffic Manager
 * Nie można przenieść maszyny wirtualne — maszyny wirtualne z dyskami zarządzanych. Zobacz [ograniczenia maszyny wirtualne](#virtual-machines-limitations)
 * Maszyny wirtualne (klasyczne) — zobacz [Classic deployment ograniczenia](#classic-deployment-limitations)
@@ -163,11 +163,13 @@ Usługi, które aktualnie nie należy włączać przenoszenie zasobu to:
 * Usługi domenowe AD
 * Usługa kondycji hybrydowe AD
 * Application Gateway
+* Azure Database for MySQL
 * BizTalk Services
+* Certyfikaty — można przenieść certyfikaty usługi aplikacji, ale ma przekazane certyfikaty [ograniczenia](#app-service-limitations).
 * Container Service
-* ExpressRoute
 * Włączono DevTest Labs — aby przejść do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenia między subskrypcji nie jest włączona.
 * Dynamics LCS
+* ExpressRoute
 * Moduły równoważenia obciążenia — zobacz [ograniczenia usługi równoważenia obciążenia](#lb-limitations)
 * Aplikacje zarządzane
 * Zarządzane dysków, zobacz [ograniczenia maszyny wirtualne](#virtual-machines-limitations)

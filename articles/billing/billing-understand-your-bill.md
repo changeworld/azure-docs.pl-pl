@@ -1,11 +1,11 @@
 ---
 title: Zrozumienie rachunku dla platformy Azure
-description: "Dowiedz się, jak i dokładnie zapoznać się z użycia i Kwota rachunku dla subskrypcji platformy Azure"
-services: 
-documentationcenter: 
+description: Dowiedz się, jak i dokładnie zapoznać się z użycia i Kwota rachunku dla subskrypcji platformy Azure
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: MT
+ms.openlocfilehash: ec4fd970c6b552d87e006f9e0ab55d3495c9b0c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Opis zawartości rachunku za korzystanie z platformy Microsoft Azure
 Aby zrozumieć rachunku Azure, porównaj faktury z szczegółowe codzienne pliku użycia i kosztów zarządzania raportów w portalu Azure.
@@ -102,7 +102,7 @@ Jeśli użytkownik [płać za fakturowania](billing-how-to-pay-by-invoice.md), W
 [Tworzenie biletu pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) poprosić o stan płatności. 
 
 ## <a name="tips-for-cost-management"></a>Wskazówki dotyczące zarządzania koszt
-- Szacowanie kosztów za pomocą [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) i [całkowity koszt posiadania kalkulatora](https://aka.ms/azure-tco-calculator)i uzyskać [szczegółowych informacji o cenach dla każdej usługi](https://azure.microsoft.com/en-us/pricing/).
+- Szacowanie kosztów za pomocą [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) i [całkowity koszt posiadania kalkulatora](https://aka.ms/azure-tco-calculator)i uzyskać [szczegółowych informacji o cenach dla każdej usługi](https://azure.microsoft.com/pricing/).
 - [Konfigurowanie alertów rozliczeń](billing-set-up-alerts.md).
 - [Przejrzyj użycia i kosztów regularnie w portalu Azure](billing-getting-started.md#costs).
 

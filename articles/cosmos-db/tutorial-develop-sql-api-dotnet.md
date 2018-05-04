@@ -4,7 +4,7 @@ description: Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu SQL API 
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -16,17 +16,17 @@ ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 7fca9f184097ed50ace665cde0c5ef8fb180feda
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a6ed74de159593003e8a18daefce2eb9a5945481
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu SQL API na platformie .NET
+# <a name="azure-cosmos-db-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu SQL API na platformie .NET
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
-Ten samouczek pokazuje, jak utworzyć konto usługi Azure Cosmos DB przy użyciu witryny Azure Portal oraz jak utworzyć kolekcję i bazę danych dokumentów z [kluczem partycji](sql-api-partition-data.md#partition-keys) przy użyciu [interfejsu SQL API na platformie .NET](sql-api-introduction.md). Dzięki zdefiniowaniu klucza partycji podczas tworzenia kolekcji aplikacja jest przygotowana do łatwego skalowania wraz ze wzrostem ilości danych. 
+Ten samouczek pokazuje, jak utworzyć konto usługi Azure Cosmos DB przy użyciu witryny Azure Portal oraz jak utworzyć kolekcję i bazę danych dokumentów z [kluczem partycji](sql-api-partition-data.md#partition-keys) przy użyciu [interfejsu SQL API na platformie .NET](sql-api-introduction.md). Dzięki zdefiniowaniu klucza partycji podczas tworzenia kolekcji aplikacja jest przygotowana do łatwego skalowania wraz ze wzrostem ilości danych.
 
 Ten samouczek obejmuje następujące zadania wykonywane za pomocą [interfejsu SQL API na platformie .NET](sql-api-sdk-dotnet.md):
 
@@ -41,25 +41,22 @@ Ten samouczek obejmuje następujące zadania wykonywane za pomocą [interfejsu S
 > * Usuwanie bazy danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Upewnij się, że masz:
+Przed rozpoczęciem upewnij się, że masz:
 
-* Aktywne konto platformy Azure. Jeśli go nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/free/). 
+* Dostęp do konta usługi Azure Cosmos DB
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
+  Możesz również użyć własnej subskrypcji platformy Azure, rejestrując się w celu uzyskania [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). Od tego momentu możesz [utworzyć konto usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-a-database-account).
+
 * Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 
-## <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
-
-Zacznijmy od utworzenia konta usługi Azure Cosmos DB w witrynie Azure Portal.
 
 > [!TIP]
-> * Masz już konto usługi Azure Cosmos DB? Jeśli tak, przejdź do sekcji [Konfigurowanie rozwiązania programu Visual Studio](#SetupVS)
-> * Jeśli używasz emulatora usługi Azure Cosmos DB, wykonaj czynności opisane w temacie [Emulator usługi Azure Cosmos DB](local-emulator.md), aby skonfigurować emulator, a następnie przejdź do sekcji [Konfigurowanie rozwiązania programu Visual Studio](#SetupVS). 
+> * Jeśli zdecydujesz się na używanie emulatora usługi Azure Cosmos DB, wykonaj czynności opisane w temacie [Emulator usługi Azure Cosmos DB](local-emulator.md), aby skonfigurować emulator
 >
 >
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupVS"></a>Konfigurowanie rozwiązania programu Visual Studio
 1. Otwórz program **Visual Studio** na komputerze.
@@ -68,7 +65,7 @@ Zacznijmy od utworzenia konta usługi Azure Cosmos DB w witrynie Azure Portal.
    ![Zrzut ekranu przedstawiający okno Nowy projekt](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-new-project-2.png)
 
 4. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy nową aplikację konsolową, która znajduje się w ramach rozwiązania Visual Studio, a następnie kliknij pozycję **Zarządzaj pakietami NuGet...**
-    
+
     ![Zrzut ekranu przedstawiający menu projektu kliknięte prawym przyciskiem myszy](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-manage-nuget-pacakges.png)
 5. Na karcie **NuGet** kliknij pozycję **Przeglądaj** i wpisz ciąg  **documentdb** w polu wyszukiwania.
 <!---stopped here--->
@@ -103,11 +100,11 @@ private DocumentClient client;
 
 Wróć do witryny [Azure Portal](https://portal.azure.com), aby pobrać adres URL punktu końcowego i klucz podstawowy. Adres URL punktu końcowego i klucz podstawowy są niezbędne, aby aplikacja wiedziała, z jakim elementem ma się połączyć, oraz aby usługa Azure Cosmos DB ufała połączeniu aplikacji.
 
-W witrynie Azure Portal przejdź do konta usługi Azure Cosmos DB, kliknij pozycję **Klucze**, a następnie kliknij pozycję **Klucze odczytu i zapisu**.
+W witrynie Azure Portal przejdź do swojego konta usługi Azure Cosmos D. Z menu po lewej stronie wybierz pozycję **Klucze**, a następnie wybierz pozycję **Klucze odczytu i zapisu**.
 
 Skopiuj identyfikator URI z portalu i wklej go w miejsce elementu `<your endpoint URL>` w pliku program.cs. Następnie skopiuj KLUCZ PODSTAWOWY z portalu i wklej go w miejsce elementu `<your primary key>`. Pamiętaj o usunięciu elementu `<` i `>` z własnych wartości.
 
-![Zrzut ekranu przedstawiający witrynę Azure Portal używaną przez samouczek NoSQL do tworzenia aplikacji konsolowej C#. Przedstawia konto usługi Azure Cosmos DB z pozycją KLUCZE wyróżnioną w bloku konta usługi Azure Cosmos DB oraz wartościami IDENTYFIKATOR URI i KLUCZ PODSTAWOWY wyróżnionymi w bloku Klucze](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
+![Zrzut ekranu przedstawiający witrynę Azure Portal używaną przez samouczek NoSQL do tworzenia aplikacji konsolowej C#. Przedstawia konto usługi Azure Cosmos DB z pozycją KLUCZE wyróżnioną w sekcji konta usługi Azure Cosmos DB oraz wartościami IDENTYFIKATOR URI i KLUCZ PODSTAWOWY wyróżnionymi w sekcji Klucze](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
 
 ## <a id="instantiate"></a>Tworzenie wystąpienia klasy DocumentClient
 
@@ -124,24 +121,24 @@ Następnie utwórz [bazę danych](sql-api-resources.md#databases) usługi Azure 
 ```csharp
 await client.CreateDatabaseAsync(new Database { Id = "db" });
 ```
-## <a name="decide-on-a-partition-key"></a>Wybieranie klucza partycji 
+## <a name="decide-on-a-partition-key"></a>Wybieranie klucza partycji
 
-Kolekcje to kontenery do przechowywania dokumentów. Są one zasobami logicznymi i mogą [obejmować co najmniej jedną partycję fizyczną](partition-data.md). [Klucz partycji](sql-api-partition-data.md) to właściwość (lub ścieżka) w dokumentach używana do dystrybuowania danych między serwerami lub partycjami. Wszystkie dokumenty z takim samym kluczem partycji są przechowywane w jednej partycji. 
+Kolekcje to kontenery do przechowywania dokumentów. Są one zasobami logicznymi i mogą [obejmować co najmniej jedną partycję fizyczną](partition-data.md). [Klucz partycji](sql-api-partition-data.md) to właściwość (lub ścieżka) w dokumentach używana do dystrybuowania danych między serwerami lub partycjami. Wszystkie dokumenty z takim samym kluczem partycji są przechowywane w jednej partycji.
 
-Określenie klucza partycji przed utworzeniem kolekcji jest ważnym krokiem. Klucze partycji to właściwości (lub ścieżki) w dokumentach używane przez usługę Azure Cosmos DB do dystrybuowania danych między wieloma serwerami lub partycjami. Usługa Cosmos DB skraca wartość klucza partycji i używa skróconego wyniku w celu określenia partycji do przechowywania dokumentu. Wszystkie dokumenty z tym samym kluczem partycji są przechowywane w tej samej partycji. Kluczy partycji nie można zmienić po utworzeniu kolekcji. 
+Określenie klucza partycji przed utworzeniem kolekcji jest ważnym krokiem. Klucze partycji to właściwości (lub ścieżki) w dokumentach używane przez usługę Azure Cosmos DB do dystrybuowania danych między wieloma serwerami lub partycjami. Usługa Cosmos DB skraca wartość klucza partycji i używa skróconego wyniku w celu określenia partycji do przechowywania dokumentu. Wszystkie dokumenty z tym samym kluczem partycji są przechowywane w tej samej partycji. Kluczy partycji nie można zmienić po utworzeniu kolekcji.
 
-W tym samouczku ustawimy klucz partycji `/deviceId` tak, aby wszystkie dane na jednym urządzeniu były przechowywane w jednej partycji. Wskazany jest wybór klucza partycji z dużą liczbą wartości. Wartości te powinny być używane w przybliżeniu z taką samą częstotliwością, co sprawi, że usługa Cosmos DB będzie mogła równoważyć obciążenie wraz ze wzrostem ilości danych i osiągać pełną przepływność kolekcji. 
+W ramach tego samouczka należy ustawić klucz partycji `/deviceId` tak, aby wszystkie dane na jednym urządzeniu były przechowywane w jednej partycji. Wskazany jest wybór klucza partycji z dużą liczbą wartości. Wartości te powinny być używane w przybliżeniu z taką samą częstotliwością, co sprawi, że usługa Cosmos DB będzie mogła równoważyć obciążenie wraz ze wzrostem ilości danych i osiągać pełną przepływność kolekcji.
 
-Aby uzyskać więcej informacji na temat partycjonowania, zobacz [How to partition and scale in Azure Cosmos DB? (Jak partycjonować i skalować w usłudze Azure Cosmos DB?)](partition-data.md) 
+Aby uzyskać więcej informacji na temat partycjonowania, zobacz [How to partition and scale in Azure Cosmos DB? (Jak partycjonować i skalować w usłudze Azure Cosmos DB?)](partition-data.md)
 
-## <a id="CreateColl"></a>Tworzenie kolekcji 
+## <a id="CreateColl"></a>Tworzenie kolekcji
 
-Teraz, gdy znamy klucz partycji `/deviceId`, utwórzmy [kolekcję](sql-api-resources.md#collections) za pomocą metody [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) lub metody [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) klasy **DocumentClient**. Kolekcja jest kontenerem dokumentów JSON i dowolnej skojarzonej logiki aplikacji JavaScript. 
+Przy użyciu klucza partycji `/deviceId` można utworzyć [kolekcję](sql-api-resources.md#collections) za pomocą metody [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) lub metody [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) klasy **DocumentClient**. Kolekcja jest kontenerem dokumentów JSON i dowolnej skojarzonej logiki aplikacji JavaScript.
 
 > [!WARNING]
-> Tworzenie kolekcji ma wpływ na cenę, ponieważ rezerwujesz przepływność aplikacji na potrzeby komunikowania się z usługą Azure Cosmos DB. Aby uzyskać więcej informacji, odwiedź naszą [stronę cennika](https://azure.microsoft.com/pricing/details/cosmos-db/)
-> 
-> 
+> Tworzenie kolekcji ma wpływ na cenę, ponieważ rezerwujesz przepływność aplikacji na potrzeby komunikowania się z usługą Azure Cosmos DB. Aby uzyskać więcej informacji, odwiedź naszą [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/)
+>
+>
 
 ```csharp
 // Collection for device telemetry. Here the JSON property deviceId is used  
@@ -186,7 +183,7 @@ public class DeviceReading
     public double MetricValue;
   }
 
-// Create a document. Here the partition key is extracted 
+// Create a document. Here the partition key is extracted
 // as "XMS-0001" based on the collection definition
 await client.CreateDocumentAsync(
     UriFactory.CreateDocumentCollectionUri("db", "coll"),
@@ -202,12 +199,12 @@ await client.CreateDocumentAsync(
 ```
 ## <a name="read-data"></a>Odczyt danych
 
-Odczytajmy dokument za pomocą klucza partycji i identyfikatora przy użyciu metody ReadDocumentAsync. Należy pamiętać, że odczyty obejmują wartość PartitionKey (odpowiadającą nagłówkowi żądania `x-ms-documentdb-partitionkey` w interfejsie API REST).
+Odczytajmy dokument za pomocą jego klucza partycji i identyfikatora przy użyciu metody ReadDocumentAsync. Należy pamiętać, że odczyty obejmują wartość PartitionKey (odpowiadającą nagłówkowi żądania `x-ms-documentdb-partitionkey` w interfejsie API REST).
 
 ```csharp
 // Read document. Needs the partition key and the Id to be specified
 Document result = await client.ReadDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
 DeviceReading reading = (DeviceReading)(dynamic)result;
@@ -223,7 +220,7 @@ reading.MetricValue = 104;
 reading.ReadingTime = DateTime.UtcNow;
 
 await client.ReplaceDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   reading);
 ```
 
@@ -234,7 +231,7 @@ Teraz usuńmy dokument według klucza partycji i identyfikatora przy użyciu met
 ```csharp
 // Delete a document. The partition key is required.
 await client.DeleteDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
 ## <a name="query-partitioned-collections"></a>Wykonywanie zapytań o kolekcje partycjonowane
@@ -247,13 +244,13 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     UriFactory.CreateDocumentCollectionUri("db", "coll"))
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
-    
+
 Poniższe zapytanie nie ma filtra klucza partycji (DeviceId) i jest rozsyłane do wszystkich partycji, w których jest wykonywane względem indeksu partycji. Należy pamiętać, że trzeba określić element EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` w interfejsie API REST), aby zestaw SDK wykonał zapytanie w partycjach.
 
 ```csharp
 // Query across partition keys
 IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new FeedOptions { EnableCrossPartitionQuery = true })
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
@@ -264,16 +261,16 @@ Zestawy SQL SDK usługi Azure Cosmos DB w wersji 1.9.0 i nowszej obsługują opc
 ```csharp
 // Cross-partition Order By queries
 IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
     .OrderBy(m => m.MetricValue);
 ```
-    
+
 Możesz zarządzać równoległym wykonywaniem zapytań przez dostrojenie następujących parametrów:
 
-* Ustawienie elementu `MaxDegreeOfParallelism` pozwala kontrolować stopień równoległości, czyli maksymalną liczbę równoczesnych połączeń sieciowych z partycją w kolekcji. Jeśli ustawisz ten element na -1, stopień równoległości będzie zarządzany przez zestaw SDK. Jeśli element `MaxDegreeOfParallelism` nie zostanie określony lub ustawiony na 0 (wartość domyślna), zostanie nawiązane jedno połączenie sieciowe z partycjami kolekcji.
-* Ustawiając element `MaxBufferedItemCount`, można osiągnąć kompromis między opóźnieniem zapytania i wykorzystaniem pamięci po stronie klienta. Pominięcie tego parametru lub ustawienie go na -1 spowoduje, że liczba elementów buforowanych podczas równoległego wykonywania zapytań będzie zarządzana przez zestaw SDK.
+* Ustawienie elementu `MaxDegreeOfParallelism` pozwala kontrolować stopień równoległości, czyli maksymalną liczbę równoczesnych połączeń sieciowych z partycją w kolekcji. Jeśli ustawisz ten parametr na wartość -1, stopień równoległości będzie zarządzany przez zestaw SDK. Jeśli element `MaxDegreeOfParallelism` nie zostanie określony lub ustawiony na 0 (wartość domyślna), zostanie nawiązane jedno połączenie sieciowe z partycjami kolekcji.
+* Ustawiając element `MaxBufferedItemCount`, można osiągnąć kompromis między opóźnieniem zapytania i wykorzystaniem pamięci po stronie klienta. Pominięcie tego parametru lub ustawienie go na wartość -1 spowoduje, że liczba elementów buforowanych podczas równoległego wykonywania zapytań będzie zarządzana przez zestaw SDK.
 
 Jeśli kolekcja będzie mieć taki sam stan, zapytanie równoległe zwróci wyniki w tej samej kolejności jak wykonanie szeregowe. Podczas wykonywania zapytań między partycjami z uwzględnieniem sortowania (opcje ORDER BY i/lub TOP) zestaw SDK SQL uruchamia zapytania równolegle w partycjach i scala częściowo posortowane wyniki po stronie klienta, aby wygenerować wyniki uporządkowane globalnie.
 
@@ -283,7 +280,7 @@ Dodatkowo można wykonywać transakcje niepodzielne względem dokumentów z taki
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
     UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
     "XMS-001-FE24C");
 ```
 
@@ -293,12 +290,12 @@ I to wszystko. Są to główne składniki aplikacji usługi Azure Cosmos DB, kt�
 
 Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego samouczka:
 
-1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij unikatową nazwę utworzonego zasobu. 
+1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij unikatową nazwę utworzonego zasobu.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę zasobu do usunięcia, a następnie kliknij pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonano następujące czynności: 
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
 > * Utworzenie konta usługi Azure Cosmos DB
@@ -310,7 +307,7 @@ W tym samouczku wykonano następujące czynności:
 > * Usunięcie dokumentu
 > * Usunięcie bazy danych
 
-Teraz możesz przejść do następnego samouczka i zaimportować dodatkowe dane do konta usługi Cosmos DB. 
+Teraz możesz przejść do następnego samouczka i zaimportować dodatkowe dane do konta usługi Cosmos DB.
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)

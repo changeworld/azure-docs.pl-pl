@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: f0c6c54b0f168f87ff122dee70a091fdcb96014e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9d1e2f801db2ed7edf262f8a5f221057ef791106
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakiet, a następnie wdrożyć istniejącego pliku wykonywalnego sieci szkieletowej usług
 Podczas pakowania istniejącego pliku wykonywalnego jako [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md), można wybrać jedną, aby użyć szablonu projektu programu Visual Studio lub [ręcznie utworzyć pakiet aplikacji](#manually). Za pomocą programu Visual Studio, struktura pakietu aplikacji i pliki manifestu są tworzone przez nowy szablon projektu dla Ciebie.
@@ -43,7 +43,7 @@ Program Visual Studio udostępnia szablonu usługi Service Fabric ułatwiają wd
 4. Nadaj nazwę usłudze i kliknij przycisk **OK**.
 5. Jeśli usługa wymaga punktu końcowego do komunikacji, protokół, port i typ można teraz dodać do pliku ServiceManifest.xml. Na przykład: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Można teraz za pomocą pakietu i opublikować akcji względem klastra lokalnego przez debugowanie rozwiązań w programie Visual Studio. Po wykonaniu tych czynności możesz opublikować aplikację do zdalnego klastra lub zaewidencjonować rozwiązanie do kontroli źródła.
-7. Odczyt [Sprawdź aplikację usługi uruchomione](#check-your-running-application) zobacz sposób wyświetlania pliku wykonywalnego usługi gościa w narzędziu Service Fabric Explorer.
+7. Odczyt [Sprawdź aplikację usługi uruchomione](#check-your-running-application) aby zobaczyć sposób wyświetlania pliku wykonywalnego usługi gościa w narzędziu Service Fabric Explorer.
 
 Na przykład wskazówki, zobacz [tworzenie pierwszej aplikacji pliku wykonywalnego gościa za pomocą programu Visual Studio](quickstart-guest-app.md).
 

@@ -1,25 +1,18 @@
 ---
-title: "Planowanie wydajności dla usługi Azure Search | Dokumentacja firmy Microsoft"
-description: "Dostosuj partycji i replik zasobów komputera w usłudze Azure Search, gdzie w jednostkach rozliczeniowy wyszukiwania kosztuje każdego zasobu."
-services: search
-documentationcenter: 
+title: Planowanie wydajności dla usługi Azure Search | Dokumentacja firmy Microsoft
+description: Dostosuj partycji i replik zasobów komputera w usłudze Azure Search, gdzie w jednostkach rozliczeniowy wyszukiwania kosztuje każdego zasobu.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 1dc16afe-56f9-439d-8874-1733ae1a2b74
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Poziomy zasobów skali kwerendy i indeksowania obciążeń w usłudze Azure Search
 Po [wybierz warstwę cenową](search-sku-tier.md) i [alokowanie usługi wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększenie liczby replikami lub partycje używane przez usługę. Każda warstwa oferuje ustalona liczba jednostek rozliczeń. W tym artykule opisano sposób przydzielania tych jednostek, aby osiągnąć optymalną konfigurację, który równoważy wymagania dotyczące wykonywania zapytania, indeksowanie i magazynu.
@@ -111,10 +104,10 @@ W poniższej tabeli przedstawiono SUs wymagane do obsługi kombinacje repliki i 
 | **1 repliki** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replik** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **repliki 3** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replik** |4 SU |8 SU |12 SU |16 SU |24 SU |Nie dotyczy |
-| **5 repliki** |5 SU |10 SU |15 SU |20 SU |30 SU |Nie dotyczy |
-| **6 repliki** |6 SU |12 SU |18 SU |24 SU |36 SU |Nie dotyczy |
-| **12 repliki** |12 SU |24 SU |36 SU |Nie dotyczy |Nie dotyczy |Nie dotyczy |
+| **4 replik** |4 SU |8 SU |12 SU |16 SU |24 SU |ND |
+| **5 repliki** |5 SU |10 SU |15 SU |20 SU |30 SU |ND |
+| **6 repliki** |6 SU |12 SU |18 SU |24 SU |36 SU |ND |
+| **12 repliki** |12 SU |24 SU |36 SU |ND |ND |ND |
 
 SUs, ceny i pojemność są szczegółowo opisane w witrynie sieci Web platformy Azure. Aby uzyskać więcej informacji, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/search/).
 

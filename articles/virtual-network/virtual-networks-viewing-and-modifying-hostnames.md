@@ -3,7 +3,7 @@ title: Wyświetlanie i modyfikowanie nazwy hostów | Dokumentacja firmy Microsof
 description: Jak przeglądać i zmieniać nazwy hostów maszyn wirtualnych platformy Azure, sieci web i proces roboczy do rozpoznawania nazw
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: genli
-ms.openlocfilehash: 6fe3522c1b3e2f5a07de3d12875ae47a830873d3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9bf57eac2176444ed408d90723009118bd411480
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Wyświetlanie i modyfikowanie nazwy hostów
 Aby zezwolić wystąpienia roli przywoływanie według nazwy hosta, należy ustawić wartość nazwy hosta w pliku konfiguracji usługi dla każdej roli. Można to zrobić przez dodanie nazwy wybranego hosta, aby **vmName** atrybutu **roli** elementu. Wartość **vmName** atrybutu jest używana jako podstawa dla każdego wystąpienia roli nazwy hosta. Na przykład jeśli **vmName** jest *sieć Web* istnieją trzy wystąpień tej roli, nazwy hosta wystąpień będą *webrole0*, *webrole1*, i *webrole2*. Nie trzeba określić nazwę hosta dla maszyn wirtualnych w pliku konfiguracji, ponieważ nazwa hosta dla maszyny wirtualnej jest wypełniana na podstawie nazwy maszyny wirtualnej. Aby uzyskać więcej informacji o konfigurowaniu usługi Microsoft Azure, zobacz [schemat konfiguracji usługi Azure (cscfg plików)](https://msdn.microsoft.com/library/azure/ee758710.aspx)

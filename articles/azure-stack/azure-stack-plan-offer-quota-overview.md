@@ -1,25 +1,25 @@
 ---
-title: "Omówienie usługi Azure stosu planu, oferty, przydziału i subskrypcji | Dokumentacja firmy Microsoft"
-description: "Jako operator chmury ma być planów Azure stosu, oferty, przydziały i subskrypcje."
+title: Omówienie usługi Azure stosu planu, oferty, przydziału i subskrypcji | Dokumentacja firmy Microsoft
+description: Jako operator chmury ma być planów Azure stosu, oferty, przydziały i subskrypcje.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/22/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: fcf19f486ebdc739f3d5c7b25215ba8726462a56
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Omówienie planu, oferty, przydziału i subskrypcji
 
@@ -32,10 +32,10 @@ Oferty zawierają co najmniej jeden plan, a każdy plan zawiera co najmniej jedn
 - ilość tych zasobów, które użytkownicy mogą korzystać z
 - regiony mają dostęp do zasobów
 
-Zapewnienia obsługi wykonamy następujące ogólne kroki:
+W przypadku dostarczenia usługi, wykonaj następujące kroki wysokiego poziomu:
 
 1. Dodaj usługi, które mają zostać dostarczone do użytkowników.
-2. Utwórz plan, który zawiera co najmniej jedna usługa. Podczas tworzenia planu, będzie wybierz lub utwórz przydziały definiujące ograniczenia zasobów poszczególnych usług w planie.
+2. Utwórz plan, który zawiera co najmniej jedna usługa. Podczas tworzenia planu, wybierz lub utwórz przydziały definiujące ograniczenia zasobów poszczególnych usług w planie.
 3. Utwórz ofertę, która zawiera co najmniej jeden plan (w tym planów podstawowej i planów dodatek opcjonalne).
 
 Po utworzeniu oferty, użytkownicy mogą subskrybować on dostęp do usługi i zasoby, które zapewnia. Użytkownicy mogą subskrybować tyle oferty mogą. Na poniższym diagramie przedstawiono prosty przykład użytkownika, który subskrybuje dwa oferty. Każdy oferta ma planu lub dwóch i każdego planu umożliwi im dostęp do usług.
@@ -52,13 +52,15 @@ Aby ułatwić zarządzanie pojemność w chmurze, wybierz lub utworzyć przydzia
 
 Można skonfigurować przydziały według regionu. Na przykład planu zawierający usługi obliczeniowe z regionu A może mieć przydziału dwóch maszyn wirtualnych, 4 GB pamięci RAM oraz 10 rdzeni Procesora. Azure stosu Development Kit, tylko jeden region (o nazwie *lokalnego*) jest dostępny.
 
+Dowiedz się więcej o [typy przydziału w stosie Azure](azure-stack-quota-types.md). 
+
 ### <a name="base-plan"></a>Plan podstawowy
 
 Podczas tworzenia oferty, administrator usługi mogą obejmować planu podstawowego. Te plany podstawowe są domyślnie dołączone, gdy użytkownik subskrybuje tej oferty. Gdy użytkownik subskrybuje, mają dostęp do wszystkich dostawców zasobów określone w te plany podstawowe (za pomocą odpowiednich przydziały).
 
 ### <a name="add-on-plans"></a>Plany dodatkowe
 
-Opcjonalne dodatkowe plany można również uwzględnić w oferty. Dodatek planów nie znajdują się domyślnie w subskrypcji. Dodatkowe programy są dodatkowe planów (limity) dostępna w propozycję subskrybenta można dodać do subskrypcji. Na przykład możesz zaoferować podstawowy plan o ograniczonych zasobów z wersji próbnej i planu dodatkowe zasoby bardziej znaczące klienci, którzy zdecydują się wdrożyć usługę.
+Dodatkowe programy są opcjonalne plany, które można dodać do oferty. Dodatek planów nie znajdują się domyślnie w subskrypcji. Dodatkowe programy są dodatkowe planów (limity) dostępna w propozycję subskrybenta można dodać do subskrypcji. Na przykład możesz zaoferować podstawowy plan o ograniczonych zasobów z wersji próbnej i planu dodatkowe zasoby bardziej znaczące klienci, którzy zdecydują się wdrożyć usługę.
 
 ## <a name="offers"></a>Oferta
 

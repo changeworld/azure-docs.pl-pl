@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 21d21c945b622c1695d8856c4baff02c098218cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
 Poniżej znajduje się pełna lista wszystkich ustawień, które będą przekazywane lub kopii zapasowej w systemie Windows 10. 
@@ -27,12 +27,12 @@ Poniżej znajduje się pełna lista wszystkich ustawień, które będą przekazy
 ## <a name="devices-and-endpoints"></a>Punktów końcowych i urządzeń
 Poniższej tabeli przedstawiono podsumowanie urządzeń i typy kont, które są obsługiwane przez synchronizacji, kopia zapasowa i przywracanie framework w systemie Windows 10.
 
-| Typ konta i działania | Pulpit | Komórkowy |
+| Typ konta i działania | Klasyczna | Komórkowy |
 | --- | --- | --- |
-| Usługa Azure Active Directory: synchronizacja |Tak |Nie |
+| Usługa Azure Active Directory: synchronizacja |Yes |Nie |
 | Azure Active Directory: przywracania kopii zapasowej |Nie |Nie |
-| Konto Microsoft: synchronizacja |Tak |Tak |
-| Konto Microsoft: kopia zapasowa i przywracanie |Nie |Tak |
+| Konto Microsoft: synchronizacja |Yes |Yes |
+| Konto Microsoft: kopia zapasowa i przywracanie |Nie |Yes |
 
 ## <a name="what-is-backup"></a>Co to jest kopia zapasowa?
 Ustawienia systemu Windows są zazwyczaj synchronizacji domyślnie, ale niektóre ustawienia są tylko kopię zapasową, takich jak lista zainstalowanych aplikacji na urządzeniu. Kopia zapasowa jest dla urządzeń przenośnych, a obecnie nie jest dostępna tylko dla użytkowników roamingu stanu przedsiębiorstwa. Kopia zapasowa przy użyciu konta Microsoft i przechowuje ustawienia i dane aplikacji w usłudze OneDrive. Jeśli użytkownik wyłączy synchronizacji na urządzeniu przy użyciu aplikacji ustawienia, zwykle synchronizuje dane aplikacji staje się kopii zapasowej tylko. Dane kopii zapasowej można uzyskać tylko za pośrednictwem operacji przywracania podczas środowisko pierwszego uruchomienia nowego urządzenia. Kopii zapasowych można wyłączyć za pomocą ustawień urządzenia i i można z niego usunięte za pomocą konta usługi OneDrive.
@@ -47,11 +47,15 @@ Następujące grupy ustawienia są dostępne dla użytkowników końcowych włą
 * Ułatwienia dostępu: narrator, program Klawiatura ekranowa, Lupa 
 * Inne ustawienia systemu Windows: Zobacz szczegóły ustawień systemu Windows
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 Synchronizowanie grupy (Ulubione, odczytywanie listy) ustawienie przeglądarki Microsoft Edge może włączona lub wyłączona przez użytkowników końcowych za pośrednictwem przeglądarki Microsoft Edge opcji menu Ustawienia.
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-edge.png)
+
+Dla systemu Windows 10 w wersji 1803 lub nowszego, programu Internet Explorer ustawienie grupy (Ulubione, wpisane adresy URL) synchronizowanie może być włączona lub wyłączona przez użytkowników końcowych za pomocą opcji menu ustawień programu Internet Explorer. 
+
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Szczegóły ustawień systemu Windows
 W poniższej tabeli, innych pozycji w kolumnie Grupa ustawienia odwołuje się do ustawień, które można wyłączyć, przechodząc do ustawienia > konta > Synchronizuj swoje ustawienia > Ustawienia inne okna. 
@@ -59,7 +63,7 @@ W poniższej tabeli, innych pozycji w kolumnie Grupa ustawienia odwołuje się d
 Wewnętrzny pozycje w kolumnie grupa ustawień odnoszą się do ustawień i aplikacji, które można wyłączyć tylko synchronizowanie w aplikacji lub wyłączenie synchronizacji dla wszystkich danych z urządzenia przy użyciu zarządzania urządzeniami przenośnymi (MDM) lub ustawień zasad grupy.
 Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć do grupy.
 
-| Ustawienia | Pulpit | Komórkowy | Grupa |
+| Ustawienia | Klasyczna | Komórkowy | Grupa |
 | --- | --- | --- | --- |
 | **Konta**: obraz konta |Synchronizacji |X |Motyw |
 | **Konta**: inne ustawienia konta |X |X | |
@@ -100,7 +104,7 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Przeglądarka Microsoft Edge**: Pokaż sugestie dotyczące wyszukiwania i lokacji, podczas pisania <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
 | **Przeglądarka Microsoft Edge**: preferencji pliki cookie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
 | **Przeglądarka Microsoft Edge**: let witryn zapisać chronionych nośnika licencji w urządzeniu <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Microsoft Edge**: czytnik ustawienie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Edge**: czytnik ustawienie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
 | **Duży kontrast**: Włączanie/wyłączanie |Synchronizacji |X |łatwość dostępu |
 | **Duży kontrast**: ustawienia motywu |Synchronizacji |X |łatwość dostępu |
 | **Program Internet Explorer**: Otwórz karty (adres URL i tytuł) |Synchronizacji |Synchronizacji |Internet Explorer |

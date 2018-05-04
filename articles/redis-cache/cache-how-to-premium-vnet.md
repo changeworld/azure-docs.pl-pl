@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie sieci wirtualnej dla usługi pamięć podręczna Azure Redis Premium | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia i zarządzania nimi obsługi sieci wirtualnej dla swoich wystąpień pamięci podręcznej Redis Azure warstwy Premium"
+title: Konfigurowanie sieci wirtualnej dla usługi pamięć podręczna Azure Redis Premium | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia i zarządzania nimi obsługi sieci wirtualnej dla swoich wystąpień pamięci podręcznej Redis Azure warstwy Premium
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 250c66c3a39519a6eddc1ecb51259ec1944c88a9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Jak skonfigurować obsługę sieci wirtualnych dla podręczna Redis Azure Premium
 Pamięć podręczna Redis Azure ma inną pamięci podręcznej oferty, które zapewniają elastyczność w wyborze rozmiar pamięci podręcznej i funkcji, łącznie z funkcji warstwy Premium, takich jak klastrowanie, trwałości i obsługi sieci wirtualnej. Sieci wirtualnej jest ona prywatną siecią w chmurze. Po skonfigurowaniu wystąpienia pamięci podręcznej Redis Azure z sieci wirtualnej nie jest publicznie adresowana i jest możliwy tylko z maszyn wirtualnych i aplikacji w sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla wystąpienia pamięci podręcznej Redis Azure premium.
@@ -84,12 +84,13 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące skalow
 
 * [Co to są niektórych typowych problemów błędnej konfiguracji sieci wirtualnych i pamięci podręcznej Redis Azure?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 * [Jak sprawdzić, czy Moje pamięci podręcznej działa w sieci Wirtualnej?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [Podczas próby nawiązania połączenia do mojego pamięci podręcznej Redis w sieci Wirtualnej, Dlaczego otrzymuję komunikat o błędzie informujący, że zdalny certyfikat jest nieprawidłowy.?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Sieci wirtualne można używać z standard lub podstawowa pamięci podręcznej?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Dlaczego Tworzenie pamięci podręcznej Redis powiedzie w niektórych podsieci, a innych nie?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [Jakie są wymagania dotyczące miejsca na adres podsieci?](#what-are-the-subnet-address-space-requirements)
 * [Wszystkie funkcje pamięci podręcznej działają odnośnie do hostowania pamięci podręcznej w sieci Wirtualnej?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
-## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Co to są niektórych typowych problemów błędnej konfiguracji sieci wirtualnych i pamięci podręcznej Redis Azure?
+### <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Co to są niektórych typowych problemów błędnej konfiguracji sieci wirtualnych i pamięci podręcznej Redis Azure?
 Gdy pamięć podręczna Redis Azure znajduje się w sieci wirtualnej, są używane porty w poniższych tabelach. 
 
 >[!IMPORTANT]
@@ -100,7 +101,7 @@ Gdy pamięć podręczna Redis Azure znajduje się w sieci wirtualnej, są używa
 - [Wymagania dotyczące portów wychodzących](#outbound-port-requirements)
 - [Wymagania dotyczące portów dla ruchu przychodzącego](#inbound-port-requirements)
 
-### <a name="outbound-port-requirements"></a>Wymagania dotyczące portów wychodzących
+#### <a name="outbound-port-requirements"></a>Wymagania dotyczące portów wychodzących
 
 Istnieje siedem wymagań dotyczących portu wychodzącego.
 
@@ -120,7 +121,7 @@ Istnieje siedem wymagań dotyczących portu wychodzącego.
 | 6379-6380 |Wychodzący |TCP |Wewnętrzny komunikację z usługą Redis | (Redis podsieci) |(Redis podsieci) |
 
 
-### <a name="inbound-port-requirements"></a>Wymagania dotyczące portów dla ruchu przychodzącego
+#### <a name="inbound-port-requirements"></a>Wymagania dotyczące portów dla ruchu przychodzącego
 
 Ma osiem wymagań zakresu portów przychodzących. Żądania przychodzące w tych zakresów są ruch przychodzący z innych usług hostowanych w tej samej sieci Wirtualnej lub wewnętrzny komunikacja podsieci Redis.
 
@@ -135,7 +136,7 @@ Ma osiem wymagań zakresu portów przychodzących. Żądania przychodzące w tyc
 | 16001 |Przychodzący |TCP/UDP |Równoważenia obciążenia Azure | (Redis podsieci) |Azure Load Balancer |
 | 20226 |Przychodzący |TCP |Wewnętrzny komunikację z usługą Redis | (Redis podsieci) |(Redis podsieci) |
 
-### <a name="additional-vnet-network-connectivity-requirements"></a>Dodatkowe wymagania dotyczące łączności sieci sieci Wirtualnej
+#### <a name="additional-vnet-network-connectivity-requirements"></a>Dodatkowe wymagania dotyczące łączności sieci sieci Wirtualnej
 
 Istnieją wymagania dotyczące łączności sieciowej pamięci podręcznej Redis Azure nie może być początkowo spełnieniu w sieci wirtualnej. Pamięć podręczna Redis Azure wymaga następujących elementów działał poprawnie, gdy jest używany w ramach sieci wirtualnej.
 
@@ -164,6 +165,24 @@ Gdy wymagania dotyczące portów są skonfigurowane zgodnie z opisem w poprzedni
   - Innym sposobem testu jest utworzenie klienta pamięci podręcznej testu (które może być prostą aplikację konsoli przy użyciu programie StackExchange.Redis) który łączy do pamięci podręcznej i dodaje oraz pobiera niektóre elementy z pamięci podręcznej. Zainstaluj klienta przykładowe na maszynę Wirtualną, która znajduje się w tej samej sieci Wirtualnej jako pamięci podręcznej i uruchom go do weryfikowania łączności do pamięci podręcznej.
 
 
+### <a name="when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid"></a>Podczas próby nawiązania połączenia do mojego pamięci podręcznej Redis w sieci Wirtualnej, Dlaczego otrzymuję komunikat o błędzie informujący, że zdalny certyfikat jest nieprawidłowy.?
+
+Podczas próby połączenia z pamięci podręcznej Redis w sieci Wirtualnej, zostanie wyświetlony błąd sprawdzania poprawności certyfikatu, takich jak ta:
+
+`{"No connection is available to service this operation: SET mykey; The remote certificate is invalid according to the validation procedure.; …"}`
+
+Może to być spowodowane się, że host jest nawiązywane za pomocą adresu IP. Firma Microsoft zaleca korzystanie z nazwą hosta. Innymi słowy Użyj następującego polecenia:     
+
+`[mycachename].redis.windows.net:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+Należy unikać podobne do następujących parametrów połączenia adres IP:
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+Jeśli nie można rozpoznać nazwy DNS, niektóre biblioteki klienta obejmują m.in `sslHost` przekazywane przez klienta w programie StackExchange.Redis. Dzięki temu można zastąpić nazwę hosta, używany do sprawdzania poprawności certyfikatu. Na przykład:
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
+
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Sieci wirtualne można używać z standard lub podstawowa pamięci podręcznej?
 Sieci wirtualne można używać tylko z pamięci podręcznych premium.
 
@@ -182,7 +201,9 @@ Jeśli pamięć podręczna jest częścią sieci Wirtualnej, tylko klienci w sie
 
 * Redis konsoli — konsoli Redis jest uruchamiana w przeglądarce lokalnego znajduje się poza siecią Wirtualną, nie może nawiązać połączenia z pamięci podręcznej.
 
+
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Użyj usługi ExpressRoute z pamięcią podręczną Azure Redis
+
 Klienci mogą się łączyć [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) obwód do infrastruktury sieci wirtualnej, a więc rozszerzenia sieci lokalnej na platformie Azure. 
 
 Domyślnie nowo utworzony obwodu usługi expressroute nie tunelowanie wymuszone (anons trasę domyślną wartość 0.0.0.0/0) w sieci Wirtualnej. W związku z tym wychodzące połączenie internetowe jest dozwolona bezpośrednio z siecią Wirtualną i aplikacje klienckie mogą nawiązać połączenia z innymi punkty końcowe systemu Azure, łącznie z pamięcią podręczną Redis Azure.

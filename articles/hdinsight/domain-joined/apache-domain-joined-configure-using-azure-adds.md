@@ -1,24 +1,19 @@
 ---
-title: Konfigurowanie klastrów HDInsight przyłączonych do domeny za pomocą usługi Azure Active Directory Domain Services - Azure | Dokumentacja firmy Microsoft
+title: Konfigurowanie domeny klastrów usługi HDInsight przy użyciu usługi AAD DS
 description: Informacje o sposobie instalowania i konfigurowania klastrów HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bhanupr
-ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 060ca8040f514ec1df48c2ca4568cbbb2a529267
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurowanie klastrów HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory
 
@@ -36,7 +31,10 @@ Musisz utworzyć Azure usług AD DS przed rozpoczęciem tworzenia klastra usług
 > [!NOTE]
 > Tylko Administratorzy dzierżawy mają uprawnienia do tworzenia usług domenowych w usłudze. Jeśli używasz usługi Azure Data Lake magazyn (ADLS) jako domyślny magazyn dla usługi HDInsight, upewnij się, że domyślna dzierżawa usługi Azure AD dla ADLS jest taka sama jak domena klastra usługi HDInsight. W tym skonfigurowany do pracy z usługą Azure Data Lake Store usługi Multi-Factor authentication musi być wyłączona dla użytkowników mających dostęp do klastra.
 
-Po zainicjowano usługę domeny, musisz utworzyć konto usługi w **Administratorzy kontrolera domeny w usłudze Azure AD** grupy w celu tworzenia klastra usługi HDInsight. Konto usługi musi być administratorem globalnym w usłudze Azure AD.
+Po zainicjowano usługi AAD domeny, musisz utworzyć konto usługi w usłudze AAD (który będą synchronizowane z usługi AAD DS) z odpowiednich uprawnień do tworzenia klastra usługi HDInsight. Jeśli to konto usługi już istnieje, należy zresetować hasło i poczekaj jego dopóki synchronizowanych AAD DS (spowoduje to resetowania w przypadku tworzenia skrótu hasła protokołu kerberos i może potrwać do 30 minut). To konto usługi ma następujących uprawnień:
+
+- Przyłączanie komputerów do domeny i umieścić podmiotów maszyny w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
+- Utwórz jednostki usługi w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
 
 Należy włączyć bezpieczny LDAP dla domeny zarządzanych usług domenowych Azure AD. Aby włączyć bezpiecznego protokołu LDAP, zobacz [Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla usługi domenowe Azure AD zarządzane domeny](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
@@ -49,7 +47,7 @@ Następnym krokiem jest do tworzenia klastra usługi HDInsight przy użyciu usł
 Podczas tworzenia klastra usługi HDInsight przyłączonych do domeny, należy podać następujące parametry:
 
 - **Nazwa domeny**: nazwa domeny skojarzony z usługi Azure AD DS. Na przykład contoso.onmicrosoft.com
-- **Nazwa użytkownika domeny**: konto usługi w ramach grupy Administratorzy kontrolera domeny w usłudze Azure AD, która jest tworzona w poprzedniej sekcji. Na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny jest administratorem tego klastra usługi HDInsight przyłączonych do domeny.
+- **Nazwa użytkownika domeny**: konto usługi w programie Azure AD kontroler domeny utworzonego w poprzedniej sekcji. Na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny będzie administratora klastra usługi HDInsight to przyłączonych do domeny.
 - **Hasła domeny**: hasło konta usługi.
 - **Jednostka organizacyjna**: nazwę wyróżniającą jednostki Organizacyjnej, do którego chcesz używać z klastrem usługi HDInsight. Na przykład: OU = HDInsightOU, DC = contoso, DC = onmicrosohift, DC = com. Jeśli nie istnieje tej jednostki Organizacyjnej, klaster usługi HDInsight podejmuje próbę utworzenia tej jednostki Organizacyjnej. 
 - **Adres URL LDAPS**: na przykład ldaps://contoso.onmicrosoft.com:636

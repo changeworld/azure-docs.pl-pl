@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c7d28831edf028657b7dd2a6a404a692a4a3bcb0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów marketplace z platformy Azure do stosu Azure
 
@@ -62,7 +62,7 @@ Na komputerze, który ma łączność z Internetem wykonaj następujące kroki, 
 
 1. Otwórz konsolę programu PowerShell jako administrator i [zainstalować określone moduły programu PowerShell Azure stosu](azure-stack-powershell-install.md). Upewnij się, że instalujesz program **środowiska PowerShell w wersji 1.2.11 lub nowszej**.  
 
-2. Dodaj konto platformy Azure, używany do rejestrowania stosu Azure. Aby dodać konta, uruchom **Connect-AzureRmAccount** polecenia cmdlet bez parametrów. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelniania wieloskładnikowego 2 na podstawie konfiguracji Twoje konto.  
+2. Dodaj konto platformy Azure, używany do rejestrowania stosu Azure. Aby dodać konta, uruchom **Add-AzureRmAccount** polecenia cmdlet bez parametrów. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelniania wieloskładnikowego 2 na podstawie konfiguracji Twoje konto.  
 
 3. Jeśli masz wiele subskrypcji, uruchom następujące polecenie, aby wybrać używanego do rejestracji:  
 

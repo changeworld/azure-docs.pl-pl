@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/19/2018
 ms.author: tomsh
-ms.openlocfilehash: dfc0128247ad86e9fa6932f8b05c91ae7da0d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29a479ffee3488768f1882c0938b0ecfdd55218b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-white-papers"></a>Azure zabezpieczeń oficjalne dokumenty
 | | |
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/05/2018
 |[Zabezpieczenia sieci na platformie Azure](azure-network-security.md)|Stanowi wprowadzenie do szerokiej gamy kontrolek sieci, które można skonfigurować, aby zwiększyć bezpieczeństwo rozwiązania, które wdrażasz na platformie Azure. Koncentruje się kontroli zabezpieczeń sieci dostępnych dla klienta.|
 |[Azure bezpieczeństwa operacyjnego](azure-operational-security.md)|Zapewnia kompleksowe przyjrzeć się bezpieczeństwa operacyjnego uwzględniającym klienta technologii i usług dostępnych przy użyciu platformy Azure.|
 |[Możliwości techniczne zabezpieczeń platformy Azure](azure-security-technical-capabilities.md)|Skupiono się na te funkcje zabezpieczeń i funkcje obsługi usługi Azure Storage, baz danych SQL Azure, modelu maszyny wirtualnej platformy Azure i narzędzi i infrastruktury, zarządzających ich wszystkich.|
-|[Azure Storage security guide (Przewodnik po zabezpieczeniach usługi Azure Storage)](https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Zawiera omówienie poszczególnych funkcji zabezpieczeń, które mogą być używane z usługą Azure Storage. Obejmuje zabezpieczeń płaszczyzny zarządzania, zabezpieczeń płaszczyzna danych, szyfrowanie magazynowanych, szyfrowanie w locie i analiza magazynu.|
+|[Azure Storage security guide (Przewodnik po zabezpieczeniach usługi Azure Storage)](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Zawiera omówienie poszczególnych funkcji zabezpieczeń, które mogą być używane z usługą Azure Storage. Obejmuje zabezpieczeń płaszczyzny zarządzania, zabezpieczeń płaszczyzna danych, szyfrowanie magazynowanych, szyfrowanie w locie i analiza magazynu.|
 |[Klasyfikacja danych pod kątem przygotowania do chmury](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03) |Ten dokument do pobrania przedstawiono podstawowe informacje dotyczące klasyfikacji danych i jej wartości w kontekście chmury obliczeniowej. Organizacje oceny chmury obliczeniowych do użytku w przyszłości lub organizacje aktualnie używa usług w chmurze i znalezienia sposobów optymalizacji danych zarządzania spowoduje korzystają najbardziej z tego dokumentu.|
 |[Nadzór na platformie Azure](governance-in-azure.md)|Omówiono funkcje zabezpieczeń i zarządzania wbudowanych w platformy Azure. Problemy głównego ładu omówione są: zasad, procesów i wykonania procedury na cele organizacji; bezpieczeństwo i ciągłe zgodności ze standardami organizacji; monitorowanie i alerty.
 |[Izolacja w chmurze publicznej systemu Azure](azure-isolation.md)|Opisano, jak Azure zapewnia izolację zarówno złośliwe i złośliwych użytkowników. Służy jako przewodnik projektowania rozwiązań w chmurze, oferując architektów różnych opcji izolacji. Głównym celem jest na opcji zabezpieczeń umożliwiających dostęp klienta i nie jest podejmowana próba SLA adres, ceny modeli i zagadnienia dotyczące praktyki DevOps.|

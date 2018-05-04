@@ -1,8 +1,8 @@
 ---
-title: "Umożliwia dostęp do usługi Azure Key Vault MSI maszyny Wirtualnej systemu Linux"
-description: "Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Linux VM zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Resource Manager."
+title: Umożliwia dostęp do usługi Azure Key Vault MSI maszyny Wirtualnej systemu Linux
+description: Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Linux VM zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Resource Manager.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 8d962475fc2b40f042e1e746d892442b0275643b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fe38a423ffc40da21299b727c37532b9f0001d59
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Umożliwia dostęp do usługi Azure Key Vault Linux VM zarządzane usługi tożsamości (MSI) 
 
@@ -57,7 +57,7 @@ W tym samouczku utworzymy nową maszynę Wirtualną systemu Linux. Można równi
 
 ## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej
 
-MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: instalacji rozszerzenia maszyny Wirtualnej MSI w maszynie Wirtualnej i umożliwia korzystanie z pliku MSI dla maszyny Wirtualnej.  
+MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie zarządzania tożsamości usługi na maszynie Wirtualnej, wykonuje dwie czynności: rejestrów maszyny Wirtualnej z usługi Azure Active Directory do utworzenia zarządzanej tożsamości, a konfiguruje tożsamości na maszynie Wirtualnej.
 
 1. Wybierz **maszyny wirtualnej** chcesz włączyć MSI.
 2. Na pasku nawigacyjnym po lewej stronie kliknij **konfiguracji**.
@@ -65,11 +65,6 @@ MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure A
 4. Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.
 
     ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Jeśli chcesz sprawdzić, które rozszerzenia są na tym **maszyny Wirtualnej systemu Linux**, kliknij przycisk **rozszerzenia**. Po włączeniu MSI **ManagedIdentityExtensionforLinux** pojawia się na liście.
-
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
-
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Przyznać uprawnienia maszyny Wirtualnej na kluczu tajnym przechowywane w magazynie kluczy  
 
@@ -108,7 +103,7 @@ Aby wykonać te kroki, należy klient SSH.  Jeśli korzystasz z systemu Windows,
     ZWINIĘCIE żądanie tokenu dostępu jest niższa.  
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true  
     ```
     Odpowiedź zawiera token dostępu, należy otworzyć Menedżera zasobów. 
     

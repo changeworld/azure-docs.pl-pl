@@ -1,22 +1,19 @@
 ---
 title: Pełny tekst Architektura aparatu (Lucene) wyszukiwania w usłudze Azure Search | Dokumentacja firmy Microsoft
 description: Wyjaśnienie Lucene zapytań i przetwarzania dokumentów pobierania pojęcia dotyczące wyszukiwania pełnotekstowego w odniesieniu do usługi Azure Search.
-services: search
-manager: jhubbard
+manager: jlembicz
 author: yahnoosh
-documentationcenter: ''
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 04/06/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4382c3001f6b0a9227407beccb483347bccb387c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Ile wyszukiwanie pełnotekstowe działa w usłudze Azure Search
 
@@ -55,7 +52,7 @@ Na poniższym diagramie przedstawiono składniki używane do przetwarzania żąd
 Poniższy przykład pochodzi żądanie wyszukiwania może wysłać do usługi Azure Search przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents).  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2016-09-01 
+POST /indexes/hotels/docs/search?api-version=2017-11-11 
 {  
     "search": "Spacious, air-condition* +\"Ocean view\"",  
     "searchFields": "description, title",  
@@ -258,7 +255,7 @@ Powrót do naszym przykładzie dla **tytuł** pola odwrócony indeksu wygląda j
 |------|---------------|
 | atman | 1 |
 | Nieznane | 2 |
-| hotel | 1, 3 |
+| hoteli | 1, 3 |
 | Oceanu | 4  |
 | playa | 3 |
 | możliwości | 3 |

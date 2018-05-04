@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d6bc4f69386cc8a9119aa852693456f6465f59ce
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób tworzenia i aktualizacji [usługi Application Insights](app-insights-overview.md) zasobów automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testów sieci web dostępności](app-insights-monitor-web-app-availability.md), skonfiguruj [alerty](app-insights-alerts.md)ustaw [cennik schemat](app-insights-pricing.md)i Utwórz innych zasobów platformy Azure.
@@ -52,7 +52,6 @@ Utwórz nowy plik JSON — teraz wywołać ją `template1.json` w tym przykładz
                 "allowedValues": [
                     "web",
                     "java",
-                    "HockeyAppBridge",
                     "other"
                 ],
                 "metadata": {
@@ -155,7 +154,7 @@ Utwórz nowy plik JSON — teraz wywołać ją `template1.json` w tym przykładz
 ## <a name="create-application-insights-resources"></a>Tworzenie zasobów usługi Application Insights
 1. W programie PowerShell logowanie do platformy Azure:
    
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 2. Uruchom polecenie następująco:
    
     ```PS

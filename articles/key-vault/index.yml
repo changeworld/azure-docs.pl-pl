@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Key Vault
+metadata:
+  title: Dokumentacja usługi Azure Key Vault — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  meta.description: Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  services: key-vault
+  author: czeumault
+  manager: carolz
+  layout: LandingPage
+  ms.assetid: 
+  ms.service: key-vault
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: carolz
+  ms.openlocfilehash: 1dd00a68510ef5d1dbb726a3aea4a85897256a5b
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: Dowiedz się, jak za pomocą usługi Key Vault chronić klucze kryptograficzne i klucze tajne używane przez aplikacje i usługi w chmurze oraz zarządzać tymi kluczami. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób tworzenia i obsługi kluczy, które umożliwiają uzyskiwanie dostępu do zasobów i rozwiązań oraz ich szyfrowanie.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: ''
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/cli.svg
+      text: Interfejs wiersza polecenia platformy Azure
+      href: /azure/key-vault/quick-create-cli
+    - image:
+        src: media/index/logo_powershell.svg
+      text: PowerShell
+      href: /azure/key-vault/quick-create-powershell
+    - image:
+        src: media/index/portal.svg
+      text: Azure Portal
+      href: /azure/key-vault/quick-create-portal
+- title: Samouczki krok po kroku
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Rozpoczynanie pracy z usługą Key Vault z aplikacji sieci Web
+      href: /azure/key-vault/key-vault-use-from-web-application
+      image:
+        src: media/index/get-started.svg
+        href: /azure/key-vault/key-vault-use-from-web-application
+    - title: Konfigurowanie kompleksowej wymiany i inspekcji kluczy w usłudze Azure Key Vault
+      href: /azure/key-vault/key-vault-key-rotation-log-monitoring
+      image:
+        src: media/index/tutorial.svg
+        href: /azure/key-vault/key-vault-key-rotation-log-monitoring
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Wiersz polecenia
+      html: <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">Program PowerShell</a></p><p><a href="/cli/azure/keyvault">Interfejs wiersza polecenia platformy Azure 2</a></p>
+    - title: Języki
+      html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/keyvault">Interfejs API REST</a></p>

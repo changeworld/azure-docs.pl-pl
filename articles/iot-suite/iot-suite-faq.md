@@ -1,12 +1,12 @@
 ---
-title: "Pakiet Azure IoT — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące Pakietu IoT"
+title: Pakiet Azure IoT — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące Pakietu IoT
 services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c79c90c4f6c28153d4d299015a06a6bc37145081
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 49e94e771deb4582b922400d81e8388faf164f40
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Często zadawane pytania dotyczące Pakietu IoT
 
@@ -33,6 +33,12 @@ Kod źródłowy jest przechowywane w następujących repozytoriów GitHub:
 * [Zdalne monitorowanie wstępnie skonfigurowane rozwiązanie (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 * [Rozwiązanie do konserwacji predykcyjnej wstępnie](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [Fabryka połączonych wstępnie skonfigurowane rozwiązanie](https://github.com/Azure/azure-iot-connected-factory)
+
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-preconfigured-solutions"></a>Jakie zestawy SDK można użyć do opracowywania klientów urządzeń wstępnie skonfigurowanych rozwiązań?
+
+Linki do zestawów SDK urządzenia IoT inny język (C, .NET, Java, Node.js, Python) można znaleźć w [zestawów SDK programu Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdks) repozytoriów GitHub.
+
+Jeśli korzystasz z urządzenia zestaw deweloperski, można znaleźć zasobów i próbek w [SDK zestaw deweloperski IoT](https://github.com/Microsoft/devkit-sdk) repozytorium GitHub.
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-preconfigured-solutions"></a>Nowa architektura mikrousług jest dostępna dla wszystkich trzech wstępnie skonfigurowanych rozwiązań?
 

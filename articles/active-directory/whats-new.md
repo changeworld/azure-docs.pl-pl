@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b7ad535976508cb195991c374995b0a0b6e45e10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Nowości w usłudze Azure Active Directory
 
@@ -39,6 +39,217 @@ Usługi Azure AD odbiera ulepszenia w sposób ciągły. Aby bądź na bieżąco 
 -   Plany zmiany
 
 Ta strona jest aktualizowana co miesiąc, więc ponownie regularnie.
+
+
+## <a name="april-2018"></a>2018 kwietnia
+ 
+
+
+### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C Token dostępu są GA
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** B2C - zarządzania tożsamością użytkowników  
+**Możliwości produktu:** B2B/B2C
+ 
+
+Można uzyskać dostęp w sieci Web API zabezpieczonej przez usługi Azure AD B2C przy użyciu tokenów dostępu. Funkcja jest przenoszona z publicznej wersji zapoznawczej do po Udoskonalono możliwości interfejsu użytkownika do konfigurowania aplikacji usługi Azure AD B2C i interfejsu API sieci web, a inne drobne ulepszenia zostały utworzone.
+ 
+Aby uzyskać więcej informacji, zobacz [usługi Azure AD B2C: żądania tokenów dostępu](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens).
+
+
+---
+ 
+
+### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>Pojedynczy znak w konfiguracji testów dla aplikacji SAML
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** aplikacje przedsiębiorstwa  
+**Możliwości produktu:** logowania jednokrotnego
+ 
+
+Podczas konfigurowania SAML logowania jednokrotnego aplikacji opartych na będą mogli Testowanie integracji na stronie konfiguracji. Jeśli wystąpi błąd podczas logowania, można udostępnić błędu w środowisku testowym i usługa Azure AD zapewnia kroki rozwiązania do rozwiązania konkretnego problemu.
+
+Aby uzyskać więcej informacji, zobacz:
+
+- [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
+- [Debugowanie na języku SAML logowanie jednokrotne do aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+
+
+---
+ 
+### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD warunki użytkowania ma teraz na raportowania użytkownika
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** warunki użytkowania  
+**Możliwości produktu:** zgodności
+ 
+
+Administratorzy mogą teraz wybierz danego użytkowania i wyświetlić wszystkich użytkowników, które wyraża zgodę na czy warunki i co daty/godziny go miało miejsce.
+
+
+Aby uzyskać więcej informacji, zobacz [usługi Azure AD warunki użytkowania funkcji](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+ 
+
+---
+ 
+### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Azure AD Connect Health: Ryzykownych adresów IP do ochrony blokowanie ekstranetu w usługach AD FS 
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** innych  
+**Możliwości produktu:** monitorowanie i raportowanie
+ 
+
+Connect Health teraz obsługuje zdolność wykrywania IP adresów, które przekroczą próg nieudanych logowań U/P na podstawie godzinowo lub dziennie. Możliwości zapewniane przez tę funkcję są:
+
+- Kompleksowe raport adres IP i liczba nieudanych logowań generowane na podstawie co godzinę/codziennie o progu można dostosowywać.
+- Opartych na poczcie e-mail alertów po określonego adresu IP przekroczyła próg nieudanych logowań U/P na podstawie co godzinę/codziennie.
+- Możliwość pobierania wykonaj szczegółową analizę danych
+
+
+Aby uzyskać więcej informacji, zobacz [ryzykowne raportu IP](https://aka.ms/aadchriskyip).
+
+ 
+
+---
+ 
+
+### <a name="easy-app-config-with-metadata-file-or-url"></a>Łatwe aplikacji konfiguracji z pliku metadanych lub adres URL
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** aplikacje przedsiębiorstwa  
+**Możliwości produktu:** logowania jednokrotnego
+ 
+
+Na stronie aplikacje przedsiębiorstwa Administratorzy może przekazywać plik metadanych SAML, aby skonfigurować SAML na podstawie logowania jednokrotnego dla aplikacji AAD i inne niż galerii.
+
+URL metadanych Federacji aplikacji usługi Azure AD można użyć do konfigurowania rejestracji Jednokrotnej z docelowej aplikacji.
+
+Aby uzyskać więcej informacji, zobacz [konfigurowania rejestracji jednokrotnej do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).
+ 
+
+---
+ 
+
+### <a name="azure-ad-terms-of-use-now-generally-available"></a>Azure AD warunki użytkowania teraz ogólnie dostępna
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** warunki użytkowania  
+**Możliwości produktu:** zgodności
+ 
+
+Azure AD warunki użytkowania został przeniesiony z publicznej wersji zapoznawczej ogólnie dostępna.
+
+Aby uzyskać więcej informacji, zobacz [usługi Azure AD warunki użytkowania funkcji](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+
+ 
+
+---
+ 
+
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwala lub blokuje zaproszeń do użytkowników B2B z określonym organizacjom
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** B2B  
+**Możliwości produktu:** B2B/B2C
+ 
+
+Można teraz określić organizacji partnerskich, które chcesz udostępnić i współpracę z we współpracy B2B usługi Azure AD. Aby to zrobić, możesz utworzyć listę określonych dozwolonych lub zablokowanych domen. Po zablokowaniu domeny za pomocą tych funkcji, pracownicy nie może wysyłać zaproszenia do osób w danej domenie.
+
+Dzięki temu można kontrolować dostęp do zasobów, podczas włączania smooth środowisko dla zatwierdzonych użytkowników.
+
+Ta funkcja współpracy B2B jest dostępna dla wszystkich klientów usługi Azure Active Directory i może służyć w połączeniu z funkcji Azure AD Premium, takich jak warunkowego dostępu i tożsamości ochrony do zapewnienia jeszcze bardziej precyzyjnej kontroli sposób podpisania użytkowników zewnętrznych biznesowych i w i uzyskanie dostępu.
+
+Aby uzyskać więcej informacji, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
+
+ 
+
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji Azure AD
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** aplikacje przedsiębiorstwa  
+**Możliwości produktu:** 3 integracji strony
+ 
+
+W kwietniu 2018 dodano obsługę następujących 13 nowych aplikacji w galerii aplikacji z Federacją:
+
+
+
+Kryterium HCM, [FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial), [klucz tajny serwera (lokalnego)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial), [sygnałów dynamicznych](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial), [mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial), [schematu organizacyjnego Teraz](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial), [Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial), [monitora wydajności AppNeta](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial), [Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial) , [Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial), [ Chmura Cisco](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial), półki [SafetyNet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
+
+
+
+ Listę dostępnych samouczki, w tym miejscu można znaleźć: [ https://aka.ms/appstutorial ](https://aka.ms/appstutorial).
+
+Aby uzyskać więcej informacji, zobacz [wyświetlanie aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+
+
+ 
+
+---
+ 
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych (publicznej wersji zapoznawczej)
+
+**Typ:** nowej funkcji  
+**Kategoria usług:** B2B  
+**Możliwości produktu:** B2B/B2C
+ 
+
+Jako organizacja korzysta z możliwości współpracy B2B usługi Azure Active Directory (Azure AD) z zaproszeniem dla gości z organizacji partnera do usługi Azure AD można teraz podasz tych użytkowników B2B dostęp do aplikacji lokalnych. Te aplikacje lokalnej można używać uwierzytelniania opartego na SAML lub zintegrowane uwierzytelnianie systemu Windows (IWA) z ograniczonego delegowania protokołu Kerberos (KCD).
+
+Aby uzyskać więcej informacji, zobacz [użytkowników Grant B2B w usłudze Azure AD dostęp do aplikacji lokalnych](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises)
+ 
+
+---
+ 
+### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Pobierz samouczki integracji rejestracji Jednokrotnej z portalu Azure Marketplace
+
+**Typ:** funkcji zmienione  
+**Kategoria usług:** innych  
+**Możliwości produktu:** 3 integracji strony
+ 
+
+Jeśli aplikacja, która znajduje się w [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) obsługuje SAML na podstawie logowania jednokrotnego, klikając pozycję **Pobierz teraz** zapewnia samouczek integracji skojarzoną z daną aplikacją. 
+
+
+---
+
+### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>Szybsza usługi Azure AD użytkownika automatycznego inicjowania obsługi administracyjnej dla aplikacji SaaS
+
+**Typ:** funkcji zmienione  
+**Kategoria usług:** Aprowizacja aplikacji  
+**Możliwości produktu:** 3 integracji strony
+ 
+
+Wcześniej, przy użyciu przypisywania łączników dla aplikacji SaaS (na przykład Salesforce, ServiceNow i pole) użytkowników usługi Azure Active Directory klienci mogą wystąpić bardzo niską wydajność, jeśli ich dzierżaw usługi Azure AD zawiera ponad 100 000 użytkowników połączonych i grup i ich zostały za pomocą przypisań użytkowników i grup do określenia, powinny zostać zainicjowana obsługa użytkowników, którzy.
+
+Na 2 kwietnia wydajności bardzo istotne ulepszenia zostały wdrożone do inicjowania obsługi usługi Azure AD, który znacznie skrócić czas potrzebny do wykonywania początkowej synchronizacji między usługą Azure Active Directory i aplikacji SaaS docelowych.
+
+
+W związku z tym wielu klientów który miał synchronizacji początkowej do aplikacji, które miały liczby dni lub nigdy nie została zakończona, teraz są kończone w ciągu kilku minut lub godzin.
+
+Aby uzyskać więcej informacji, zobacz [co się dzieje podczas inicjowania obsługi?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning)
+
+---
+ 
+
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>Samoobsługowe Resetowanie z ekranu blokady systemu Windows 10 w usłudze Azure AD hybrydowym haseł przyłączone maszyny
+
+**Typ:** funkcji zmienione  
+**Kategoria usług:** samoobsługowego resetowania hasła  
+**Możliwości produktu:** uwierzytelnianie użytkownika
+ 
+
+Zaktualizowano dla funkcji SSPR 10 systemu Windows obejmują obsługę maszyn, które są hybrydowego przyłączonych do usługi Azure AD. Ta funkcja jest dostępna w systemu Windows 10 RS4 umożliwia użytkownikom do zresetowania swojego hasła na ekranie blokady urządzenia z systemem Windows 10. Użytkownicy, którzy są włączone i zarejestrowany do samodzielnego resetowania hasła może korzystać z tej funkcji.
+
+Aby uzyskać więcej informacji, zobacz [resetowania na ekranie logowania hasła usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows).
+ 
+
+---
+
+
 
 ## <a name="march-2018"></a>2018 marca
  
@@ -362,7 +573,7 @@ Aby uzyskać więcej informacji, zobacz [Dostosowywanie oświadczeń wydanych w 
 
 Aby ułatwić wdrożenie aplikacji i ograniczyć czynności administracyjnych, firma Microsoft obsługują możliwości publikowania aplikacji przy użyciu symboli wieloznacznych. Aby opublikować aplikację symboli wieloznacznych, może wykonaj przepływu publikowania standardowej aplikacji, ale użyć symbolu wieloznacznego w adresach URL wewnętrznych i zewnętrznych.
 
-Aby uzyskać więcej informacji, zobacz [aplikacji symbolu wieloznacznego w serwer proxy aplikacji usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)
+Aby uzyskać więcej informacji, zobacz [aplikacji symbolu wieloznacznego w serwer proxy aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)
 
  
 
@@ -521,7 +732,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 **Typ:** funkcji zmienione  
 **Kategoria usług:** warunki użytkowania  
-**Możliwości produktu:** ładu
+**Możliwości produktu:** zgodności
  
 
 Po wyświetleniu warunki użytkowania, możesz teraz kliknąć **o problemy z wyświetlaniem? Kliknij tutaj**. Kliknięcie tego łącza otwiera warunki użytkowania w sposób macierzysty na urządzeniu. Niezależnie od tego, czy rozmiar czcionki w dokumencie lub rozmiaru ekranu urządzenia można powiększyć i odczytu dokumentu zgodnie z potrzebami. 
@@ -656,7 +867,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 **Typ:** nowej funkcji  
 **Kategoria usług:** warunki użytkowania  
-**Możliwości produktu:** ładu/zgodności
+**Możliwości produktu:** zgodności
  
 Możesz teraz przejść do panelu dostępu i wyświetlić warunki użytkowania, które zostały wcześniej zaakceptowane.
 
@@ -707,7 +918,7 @@ Aby uzyskać więcej informacji, zobacz [mniejszą liczbę monitów logowania: n
 
 **Typ:** nowej funkcji  
 **Kategoria usług:** warunki użytkowania  
-**Możliwości produktu:** ładu/zgodności
+**Możliwości produktu:** zgodności
  
 Opcja dla administratorów wymaga użytkownikom rozwinąć warunki użytkowania, przed rozpoczęciem akceptowania warunków.
 
@@ -864,7 +1075,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 **Typ:** nowej funkcji    
 **Kategoria usług:** warunki użytkowania  
-**Możliwości produktu:** ładu/zgodności
+**Możliwości produktu:** zgodności
 
 
 
@@ -1154,7 +1365,7 @@ Aby uzyskać więcej informacji, zobacz [dokumentacja dotycząca raportowania us
 
 **Typ:** nowej funkcji  
 **Kategoria usług:** warunki użytkowania  
-**Możliwości produktu:** ładu/zgodności  
+**Możliwości produktu:** zgodności  
 
 
 
@@ -1197,7 +1408,7 @@ Aby uzyskać więcej informacji, zobacz [Privileged Identity Management zasobów
 
 **Typ:** nowej funkcji  
 **Kategoria usług:** dostęp do przeglądu  
-**Możliwości produktu:** ładu/zgodności  
+**Możliwości produktu:** zgodności  
 
 
 

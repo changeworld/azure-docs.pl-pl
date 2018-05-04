@@ -1,13 +1,13 @@
 ---
-title: "Grupami dynamicznymi i współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft"
-description: "Pokazuje, jak dynamiczna grup usługi Azure AD za pomocą usługi Azure Active Directory B2B współpracy"
+title: Grupami dynamicznymi i współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft
+description: Pokazuje, jak dynamiczna grup usługi Azure AD za pomocą usługi Azure Active Directory B2B współpracy
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 12/14/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb700e513947034a783c6b6574c8daddf96844b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
-ms.translationtype: MT
+ms.openlocfilehash: d96fefb859cba5db65382801fb1ac143df12b647
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Grupami dynamicznymi i współpracy usługi Azure Active Directory B2B
 
@@ -55,7 +55,4 @@ Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
 * [Delegowanie zaproszenia współpracy B2B](active-directory-b2b-delegate-invitations.md)
 * [Kod współpracy B2B i przykłady środowiska PowerShell](active-directory-b2b-code-samples.md)
 * [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
-* [Tokeny użytkownika współpracy B2B](active-directory-b2b-user-token.md)
-* [Oświadczenia użytkowników współpracy B2B mapowania](active-directory-b2b-claims-mapping.md)
-* [Udostępnianie zewnętrzne w usłudze Office 365](active-directory-b2b-o365-external-user.md)
-* [Bieżące ograniczenia współpracy B2B](active-directory-b2b-current-limitations.md)
+

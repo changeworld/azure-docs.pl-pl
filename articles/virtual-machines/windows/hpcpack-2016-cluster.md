@@ -1,11 +1,11 @@
 ---
 title: Klaster HPC Pack 2016 na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak wdrożyć klaster HPC Pack 2016 na platformie Azure"
+description: Dowiedz się, jak wdrożyć klaster HPC Pack 2016 na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3dde6a68-e4a6-4054-8b67-d6a90fdc5e3f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91f067de33d1ff4bc272773e3db49de47fac2feb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>Wdrożenie klastra HPC Pack 2016 na platformie Azure
 
@@ -56,7 +56,7 @@ Po utworzeniu certyfikatu w magazynie bieżącego użytkownika, użyj przystawki
 
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>Przekaż certyfikat do magazynu kluczy Azure
 
-Przed wdrożeniem klastra HPC, Przekaż certyfikat PFX do [usługi Azure key vault](../../key-vault/index.md) jako klucz tajny i rekord następujące informacje do użycia podczas wdrażania: **nazwę magazynu**, **magazynu Grupa zasobów**, **adres URL certyfikatu**, i **odcisk palca certyfikatu**.
+Przed wdrożeniem klastra HPC, Przekaż certyfikat PFX do [usługi Azure key vault](../../key-vault/index.yml) jako klucz tajny i rekord następujące informacje do użycia podczas wdrażania: **nazwę magazynu**, **magazynu Grupa zasobów**, **adres URL certyfikatu**, i **odcisk palca certyfikatu**.
 
 Przykładowy skrypt programu PowerShell, Przekaż certyfikat, utwórz magazyn kluczy i wygenerować wymaganych informacji jest zgodna. Aby uzyskać więcej informacji na temat przekazywania certyfikatu do usługi Azure key vault, zobacz [wprowadzenie do usługi Azure Key Vault](../../key-vault/key-vault-get-started.md).
 

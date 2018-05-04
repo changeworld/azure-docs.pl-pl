@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ed0718f2d9d5093442001005e43551e7e9749eef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="door-monitor"></a>Monitor drzwi          
 
@@ -44,7 +44,7 @@ Zakończ [Getting Started Guide]({{"/docs/get-started/" | absolute_url }}) do:
 
 Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za pomocą jednej z następujących metod:
 
-* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/en-us/free/).
+* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/free/).
 * Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) Jeśli jesteś subskrybentem MSDN lub Visual Studio.
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Wdrażanie usługi SendGrid na platformie Azure
@@ -69,7 +69,7 @@ Następnie wyświetlona następująca strona.
 
 Wypełnij formularz rejestracji:
 
-  * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid lub użyć istniejącego. Zobacz [używanie grup zasobów do zarządzania zasobami Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid lub użyć istniejącego. Zobacz [używanie grup zasobów do zarządzania zasobami Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **Nazwa**: Nazwa usługi SendGrid. Wybierz unikatową nazwę, różniące się od innych usług, które mogą mieć.
 
@@ -111,7 +111,7 @@ Następnie wyświetlona następująca strona.
 
 Wypełnij formularz rejestracji:
 
-  * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid lub użyć istniejącego. Zobacz [używanie grup zasobów do zarządzania zasobami Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid lub użyć istniejącego. Zobacz [używanie grup zasobów do zarządzania zasobami Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **Nazwa centrum iot**: Nazwa centrum IoT. Wybierz unikatową nazwę, różniące się od innych usług, które mogą mieć.
 
@@ -132,10 +132,6 @@ Wypełnij formularz rejestracji:
 - Uruchom kod programu VS.
 - Zestaw deweloperski można połączyć się z komputerem.
 
-Kod VS automatycznie wykryje Twoje zestaw deweloperski i Otwórz stronę wprowadzenie:
-
-![VSCode](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-start.png)
-
 > [!NOTE]
 > Podczas uruchamiania kodu programu VS, może zostać wyświetlony komunikat o błędzie informujący, że nie można odnaleźć Arduino IDE lub pakietu pokrewne tablicy. Jeśli ten błąd jest wyświetlany, zamknij kodzie VS, uruchom ponownie IDE Arduino i kodzie VS należy zlokalizować Arduino IDE ścieżkę poprawnie.
 
@@ -145,7 +141,8 @@ Po lewej stronie rozwiń **przykłady ARDUINO** przejdź do **przykłady MXCHIP 
 
 ![Mini solution — przykłady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Jeśli wystąpi aby zamknąć okienko, zostanie ponownie otwarty. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+> [!NOTE]
+> Przykład można również otworzyć z palety polecenia. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
 
 ### <a name="provision-azure-services"></a>Udostępnianie usług platformy Azure
 
@@ -216,4 +213,4 @@ Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https:/
 Znasz jak zestaw deweloperski urządzenie podłączone do pakietu IoT Azure i korzystać z usługi SendGrid do wysyłania wiadomości e-mail. Poniżej znajdują się Sugerowane następne kroki:
 
 * [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
-* [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

@@ -1,24 +1,24 @@
 ---
-title: "Rejestrować dane Analytics | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu analizy dzienników prywatności i zabezpiecza dane."
+title: Rejestrować dane Analytics | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu analizy dzienników prywatności i zabezpiecza dane.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: bfd9b3302c73e50408cdd68b25317630aa087d7f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="log-analytics-data-security"></a>Rejestrować analizy danych
 Ten dokument jest przeznaczony do dostarczania informacji Azure Log Analytics załączyć na [Centrum zaufania Azure](../security/security-microsoft-trust-center.md).  
@@ -46,7 +46,7 @@ W ramach Twojej [umowy subskrypcyjnej dotyczącej usług](https://azure.microsof
 
 Poniższa tabela przedstawia niektóre z dostępnych rozwiązań oraz przykłady typu danych, które pobierają.
 
-| Rozwiązania | **Typy danych** |
+| **Rozwiązania** | **Typy danych** |
 | --- | --- |
 | Pojemność i wydajność |Dane dotyczące wydajności i metadane |
 | Ocena oprogramowania chroniącego przed złośliwym kodem |Dane konfiguracji i metadane |
@@ -57,7 +57,7 @@ Poniższa tabela przedstawia niektóre z dostępnych rozwiązań oraz przykłady
 
 W poniższej tabeli przedstawiono przykłady typów danych:
 
-| Typ danych | **Pola** |
+| **Typ danych** | **Pola** |
 | --- | --- |
 | Alerty |Alert nazwa, opis alertu, identyfikatorze BaseManagedEntityId, identyfikator problemu, IsMonitorAlert, RuleId, ResolutionState, priorytet, ważność, kategoria, właściciel, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, RepeatCount TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, |
 | Konfigurowanie |CustomerID, identyfikator agenta, identyfikator jednostki, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
@@ -155,9 +155,9 @@ Systemu Windows lub dane w pamięci podręcznej agenta serwer zarządzania jest 
 Zgodnie z powyższym opisem dane z serwera zarządzania lub podłączony bezpośrednio agenci są wysyłane za pośrednictwem protokołu SSL do centrów danych Microsoft Azure. Opcjonalnie można używać usługi ExpressRoute, aby zapewnić dodatkową ochronę danych. ExpressRoute to sposób bezpośredniego połączenia z platformą Azure od istniejącej sieci WAN, takich jak wiele protokołów etykietę przełączania sieci VPN (MPLS), pochodzącymi z dostawcą usługi sieciowej. Aby uzyskać więcej informacji, zobacz [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Usługi analizy dzienników odbiera i przetwarza dane
-Usługi analizy dzienników tnie zapewnia, że dane przychodzące jest z zaufanego źródła, weryfikując certyfikaty i integralności danych za pomocą uwierzytelniania systemu Azure. Nieprzetworzone dane pierwotne następnie znajduje się w Centrum zdarzeń Azure w regionie, który ostatecznie dane będą przechowywane w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane i używane do zbierania danych. Następnie analizy dzienników usługi procesów nieprzetworzone dane i wysyła strumień go do bazy danych.
+Usługi analizy dzienników zapewnia, że dane przychodzące jest z zaufanego źródła, sprawdzając poprawność certyfikatów i integralności danych za pomocą uwierzytelniania systemu Azure. Nieprzetworzone dane pierwotne następnie znajduje się w Centrum zdarzeń Azure w regionie, który ostatecznie dane będą przechowywane w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane i używane do zbierania danych. Następnie analizy dzienników usługi procesów nieprzetworzone dane i wysyła strumień go do bazy danych.
 
-Okres przechowywania zbieranych danych przechowywanych w bazie danych jest zależny od planu wybranej podczas tworzenia obszaru roboczego.  Dla warstwy płatną zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 365 dni.  Te dane nie są jeszcze szyfrowane magazynowane i planowane środek 2018. 
+Okres przechowywania zbieranych danych przechowywanych w bazie danych zależy od wybranego planu cenowego. Aby uzyskać *wolne* warstwa, zebranych danych jest dostępna przez 7 dni. Aby uzyskać *zapłacone* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 720 dni. Dane są przechowywane szyfrowane, gdy w magazynie Azure, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni są także przechowywane w pamięci podręcznej z na dyskach SSD i ta pamięć podręczna jest aktualnie niezaszyfrowane.  Firma Microsoft planuje obsługuje takie szyfrowania w późniejszym połowie 2018.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Umożliwia dostęp do danych analizy dzienników
 Aby uzyskać dostęp do obszaru roboczego analizy dzienników, należy zalogować się do portalu Azure za pomocą konta organizacyjnego lub konta Microsoft, które należy wcześniej skonfigurować. Cały ruch między portalem i usługą analizy dzienników są wysyłane za pośrednictwem bezpiecznego kanału HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarki sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Zakończone, pamięci podręcznej są usuwane. Pliki cookie po stronie klienta, które nie zawierają informacji umożliwiających identyfikację użytkownika, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są zabezpieczone. Po upływie wstępnie określoną bezczynności sesji portalu Azure, zostanie zakończony.

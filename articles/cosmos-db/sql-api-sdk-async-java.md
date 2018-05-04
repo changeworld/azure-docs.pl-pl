@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: a8e4ac763b9a16210d62fc080aaf8917c1eefc33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b80ad9837939af5406989d08e18f6f3d9fe3064f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Async Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -55,6 +55,16 @@ SDK Java asynchronicznego interfejsu API SQL różni się od zestawu SDK Java in
 
 ## <a name="release-notes"></a>Informacje o wersji
 
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Dodano obsługę wąskiego gardła w zapytaniu.
+* Dodano obsługę identyfikator zakresem kluczy partycji w zapytaniu.
+* Napraw umożliwić większą token kontynuacji w nagłówku żądania (bugfix github #24).
+* zależności netty uaktualnione do 4.1.22.Final zapewnienie JVM zamykany po zakończeniu głównego wątku.
+* Napraw uniknąć przekazywania tokenu sesji podczas odczytu zasobów wzorca.
+* Dodano więcej przykładów.
+* Dodano więcej najlepszymi scenariuszy.
+* Pliki nagłówkowe stałym Java generowania javadoc właściwe.
+
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Zestaw SDK GA o obsługę end-to-end nieblokujące We/Wy przy użyciu [Netty biblioteki](http://netty.io/) w trybie bramy. 
 
@@ -69,6 +79,7 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 
 | Wersja | Data wydania | Dacie wycofania |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |20 kwietnia 2018|--- |
 | [1.0.0](#1.0.0) |27 lutego 2018 r.|--- |
 
 ## <a name="faq"></a>Często zadawane pytania

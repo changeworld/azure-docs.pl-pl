@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: c0bc3c8774b68b49be95d5df86319a2e0463e6ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 54dc97c0d20f90d3b57b715fb21714a11e5a1525
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Danych Azure szyfrowania na Rest
 Istnieje wiele narzędzi w systemie Microsoft Azure w celu zabezpieczenia danych zgodnie z potrzebami firmy zabezpieczeń i zgodności. Ten dokument koncentruje się na:
@@ -236,10 +236,10 @@ Każdy klient jako usługa (IaaS) przy użyciu infrastruktury platformy Azure fu
 
 #### <a name="azure-storage"></a>Azure Storage
 
-Obiektów Blob platformy Azure i plików obsługuje szyfrowanie przechowywanych dla scenariuszy zaszyfrowany po stronie serwera, a także klienta zaszyfrowanych danych (szyfrowanie po stronie klienta).
+Wszystkie usługi Azure Storage (magazynu obiektów Blob, magazyn kolejek, Magazyn tabel i plików Azure) obsługuje szyfrowanie po stronie serwera magazynowanych, z niektórych usług pomocniczych zarządzany przez klienta kluczy i szyfrowania po stronie klienta.  
 
-- Po stronie serwera: klientów przy użyciu magazynu obiektów blob platformy Azure można włączyć szyfrowanie przechowywanych na każdym koncie zasobów magazynu Azure. Raz włączone szyfrowanie po stronie serwera niewidocznie odbywa się do aplikacji. Zobacz [szyfrowanie usługi Magazyn Azure dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption) Aby uzyskać więcej informacji.
-- Po stronie klienta: szyfrowanie po stronie klienta obiektów blob Azure jest obsługiwane. Po za pomocą szyfrowania po stronie klienta klientów szyfrowania danych i przekazywanie danych jako obiekt blob zaszyfrowany. Zarządzanie kluczami jest realizowane przez klienta. Zobacz [szyfrowania po stronie klienta i usługi Azure Key Vault dla magazynu Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) Aby uzyskać więcej informacji.
+- Po stronie serwera: Wszystkich usług magazynu Azure Włącz szyfrowanie po stronie serwera, domyślnie przy użyciu zarządzanych przez usługę kluczy, który jest niewidoczny dla aplikacji. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn Azure dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob storage i pliki Azure obsługują także zarządzane przez klienta klucze w usłudze Azure Key Vault. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Po stronie klienta: Obiekty BLOB platformy Azure, tabel i kolejek obsługuje szyfrowania po stronie klienta. Podczas korzystania z szyfrowania po stronie klienta, klienci szyfrowania danych i przekazywanie danych jako obiekt blob zaszyfrowany. Zarządzanie kluczami jest realizowane przez klienta. Aby uzyskać więcej informacji, zobacz [szyfrowania po stronie klienta i usługi Azure Key Vault dla magazynu Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="sql-azure"></a>Usługi SQL Azure
@@ -259,8 +259,8 @@ Szyfrowanie po stronie klienta danych SQL Azure jest obsługiwane przez [zawsze 
 | Program SQL Server (IaaS)                |                | Yes                 | Yes                          | Yes                          | Yes    |
 | Azure SQL (PaaS)                 |                | Yes                 | Yes                          | -                            | Yes    |
 | Usługa Azure Storage (bloku/stronicowych obiektów blob) |                | Yes                 | Yes                          | -                            | Yes    |
-| Magazyn Azure (pliki)            |                | Yes                 | -                            | -                            | -      |
-| Usługa Azure Storage (tabel, kolejek)   |                | -                   | -                            | -                            | Yes    |
+| Magazyn Azure (pliki)            |                | Yes                 | Yes                          | -                            | -      |
+| Usługa Azure Storage (tabel, kolejek)   |                | Yes                 | -                            | -                            | Yes    |
 | Rozwiązania cosmos bazy danych (dokument DB)          |                | Yes                 | -                            | -                            | -      |
 | Magazyn StorSimple                       |                | Yes                 | -                            | -                            | Yes    |
 | Backup                           |                | -                   | -                            | -                            | Yes    |

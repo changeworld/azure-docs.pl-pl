@@ -1,8 +1,8 @@
 ---
-title: "Migracja między regionu Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat migracji między regionu Azure Data Lake Store."
+title: Migracja między regionu Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat migracji między regionu Azure Data Lake Store.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: swums
 manager: amitkul
 editor: swums
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Migracja usługi Data Lake Store w regionach
 
@@ -28,7 +28,7 @@ Jak usługa Azure Data Lake Store stają się dostępne w nowych regionów, moż
 
 * **Subskrypcja platformy Azure**. Aby uzyskać więcej informacji, zobacz [utworzyć bezpłatne konto platformy Azure obecnie](https://azure.microsoft.com/pricing/free-trial/).
 * **Konto usługi Data Lake Store w dwóch różnych regionach**. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Data Lake Store](data-lake-store-get-started-portal.md).
-* **Fabryka danych Azure**. Aby uzyskać więcej informacji, zobacz [wprowadzenie do fabryki danych Azure](../data-factory/introduction.md).
+* **Fabryka danych Azure**. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Data Factory](../data-factory/introduction.md).
 
 
 ## <a name="migration-considerations"></a>Zagadnienia dotyczące migracji
@@ -45,11 +45,11 @@ Inne ważne informacje, które należy uwzględnić podczas planowania migracji 
 
 * **Narzędzia**. Firma Microsoft zaleca użycie [działanie kopiowania fabryki danych Azure](../data-factory/connector-azure-data-lake-store.md) do kopiowania plików usługi Data Lake Store. Fabryka danych obsługuje przenoszenie danych o wysokiej wydajności i niezawodności. Należy pamiętać, że fabryki danych kopiuje tylko hierarchii folderów i zawartość plików. Należy ręcznie zastosować wszystkie listy kontroli dostępu (ACL) używanych w ramach konta starego do nowego konta. Aby uzyskać więcej informacji, w tym cele wydajności dla scenariuszy najlepszym zobacz [wydajności działania kopiowania i dostrajania przewodnik](../data-factory/copy-activity-performance.md). Jeśli chcesz, aby dane skopiowane szybciej, konieczne może być za pomocą dodatkowe jednostek przepływu danych w chmurze. Kopiowanie danych między regionami innych narzędzi, takich jak AdlCopy, nie jest obsługiwane.  
 
-* **Opłaty przepustowości**. [Opłaty przepustowości](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) zastosować, ponieważ dane są przesyłane poza region platformy Azure.
+* **Opłaty przepustowości**. [Opłaty przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/) zastosować, ponieważ dane są przesyłane poza region platformy Azure.
 
 * **Listy kontroli dostępu na podstawie danych**. Zabezpieczanie danych w nowym regionie, stosując listy kontroli dostępu do plików i folderów. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake Store](data-lake-store-secure-data.md). Firma Microsoft zaleca, należy użyć migracji do aktualizacji, a następnie Dostosuj Twojej listy kontroli dostępu. Można użyć ustawień podobny do bieżących ustawień. Można wyświetlić listy kontroli dostępu, które są stosowane do dowolnego pliku przy użyciu portalu Azure [poleceń cmdlet programu PowerShell](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), ani zestawów SDK.  
 
 * **Lokalizacja usługi analizy**. Aby uzyskać najlepszą wydajność usługi analytics, takich jak Azure Data Lake Analytics lub Azure HDInsight, należy w tym samym regionie, w którym znajdują się dane.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md)

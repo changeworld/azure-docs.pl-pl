@@ -6,7 +6,7 @@
 ## [Enabling operational security (Włączanie bezpieczeństwa działania)](../azure-operational-security.md)
 ## [Nadzór na platformie Azure](../governance-in-azure.md)
 ## [Izolacja w chmurze platformy Azure](../azure-isolation.md)
-## [Bezpieczna hybrydowa architektura sieci](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
+## [Bezpieczna hybrydowa architektura sieci](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
 ## [Możliwości techniczne zabezpieczeń](../azure-security-technical-capabilities.md)
 
 # [Bezpieczeństwo i szyfrowanie danych](../security-azure-encryption-overview.md)

@@ -1,25 +1,19 @@
 ---
-title: "Wybierz jednostki SKU lub warstwy cenowej dla usługi Azure Search | Dokumentacja firmy Microsoft"
-description: "Usługa wyszukiwanie Azure można udostępnić w tych jednostki SKU: bezpłatne, Basic i Standard, gdzie Standard jest dostępna w różne konfiguracje zasobów i pojemności, poziomów."
+title: Wybierz jednostki SKU lub warstwy cenowej dla usługi Azure Search | Dokumentacja firmy Microsoft
+description: 'Usługa wyszukiwanie Azure można udostępnić w tych jednostki SKU: bezpłatne, Basic i Standard, gdzie Standard jest dostępna w różne konfiguracje zasobów i pojemności, poziomów.'
 services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 8d4b7bca-02a5-43ee-b3f8-03551dfb32fd
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6fe41a8c4d184fef4d1bb0a12fed44a49ef8a6da
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Wybieranie jednostki SKU lub warstwy cenowej usługi Azure Search
 W usłudze Azure Search [usługi zostanie zainicjowana](search-create-service-portal.md) w określonych warstwę cenową lub jednostki SKU. Dostępne są następujące opcje **wolne**, **podstawowe**, lub **standardowe**, gdzie **standardowe** są dostępne w wielu konfiguracjach i pojemności.
@@ -75,12 +69,12 @@ Poniższy schemat jest podzbiorem limitów z [ograniczenia usługi w usłudze Az
 
 | Zasób | Bezpłatna | Podstawowa | S1 | S2 | S3 | S3 (wysoka gęstość) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Umowa dotycząca poziomu usług (SLA) |Nie<sup>1</sup> |Tak |Tak |Tak |Tak |Tak |
+| Umowa dotycząca poziomu usług (SLA) |Nie<sup>1</sup> |Yes |Yes |Yes |Yes |Yes |
 | Limity indeksu |3 |5 |50 |200 |200 |1000 <sup>2</sup> |
 | Limity dokumentów |10 000 łącznie |1 mln dla usługi |15 milionów dla każdej partycji |60 milionów dla każdej partycji |120 milionów dla każdej partycji |1 mln w indeksie |
-| Maksymalna partycji |Nie dotyczy |1 |12 |12 |12 |3<sup>2</sup> |
+| Maksymalna partycji |ND |1 |12 |12 |12 |3<sup>2</sup> |
 | Rozmiar partycji |Całkowita liczba 50 MB |2 GB na usługi |25 GB dla jednej partycji |100 GB dla jednej partycji (maksymalnie 1,2 TB na usługę) |200 GB dla jednej partycji (maksymalnie 2.4 TB na usługę) |200 GB (maksymalnie 600 GB dla usługi) |
-| Maksymalna repliki |Nie dotyczy |3 |12 |12 |12 |12 |
+| Maksymalna repliki |ND |3 |12 |12 |12 |12 |
 
 <sup>1</sup> bezpłatnej warstwy i Podgląd funkcji nie pochodzą z umów dotyczących poziomu usług (SLA). Dla wszystkich warstw rozliczeniowy umowy SLA zaczną obowiązywać podczas obsługi administracyjnej nadmiarowość wystarczające dla Twojej usługi. Co najmniej dwa repliki są wymagane do umowy SLA kwerendy (odczyt). Co najmniej trzech repliki są wymagane dla zapytań i indeksowania SLA (odczytu i zapisu). Liczba partycji nie jest brany pod uwagę umowy dotyczącej poziomu usług. 
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f40bd7954bbf079c87f8312bff731b68d1acb7dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL przy użyciu kopii zapasowych bazy danych automatycznych
 Baza danych SQL oferuje następujące opcje bazy danych odzyskiwania przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) i [kopie zapasowe w przechowywania długoterminowego](sql-database-long-term-retention.md). Można przywrócić z kopii zapasowej bazy danych, aby:
@@ -50,7 +50,7 @@ Czas odzyskiwania Przywracanie bazy danych przy użyciu kopii zapasowych automat
   
   Dla bardzo dużych i/lub aktywnej bazy danych przywracania może zająć kilka godzin. Jeśli istnieje długimi awaria w regionie, jest to możliwe, że ma dużą liczbę żądań geograficzne przetwarzanych przez innych regionów. Gdy istnieje wiele żądań, czasu odzyskiwania może zwiększyć dla baz danych w tym regionie. Pełne przywracanie większości baz danych w ciągu 12 godzin.
 
-W ramach jednej subskrypcji jest przesłane i przystąpiła pewne ograniczenia liczby żądań równoczesnych przywracania (w tym punkcie w czasie przywracania, przywracania geograficznie i przywrócenie z kopii zapasowej przechowywania długoterminowego):
+Jednej subskrypcji, istnieją pewne ograniczenia liczby żądań równoczesnych przywracania (w tym punkcie w czasie przywracania, przywracania geograficznie i przywrócenie z długoterminowego przechowywania kopii zapasowej) są przesłane i przystąpiła:
 |  | **Maksymalna liczba jednoczesnych żądań przetwarzanych** | **Maksymalna liczba jednoczesnych żądań przesyłaniu** |
 | :--- | --: | --: |
 |Pojedyncza baza danych (dla subskrypcji)|10|60|
@@ -97,7 +97,7 @@ Do czasu usunięcia dla usuniętej bazy danych na tym samym serwerze logicznym p
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby odzyskać usuniętej bazy danych podczas jego [okres przechowywania](sql-database-service-tiers.md) przy użyciu portalu Azure, otwórz stronę dla serwera i w obszarze działania, kliknij przycisk **usunięte bazy danych**.
+Aby odzyskać usuniętej bazy danych podczas jego [okres przechowywania na podstawie jednostek dtu w warstwie modelu](sql-database-service-tiers-dtu.md) lub [okres przechowywania na podstawie vCore modelu](sql-database-service-tiers-vcore.md) przy użyciu portalu Azure, otwórz stronę dla serwera i w obszarze działania, kliknij przycisk **Usunięte bazy danych**.
 
 ![usunięte bazy danych — Przywracanie-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
@@ -123,7 +123,7 @@ W momencie przywracania na dodatkowej geograficzna nie jest obecnie obsługiwane
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby przywracaniem geograficznym w bazie danych podczas jego [okres przechowywania](sql-database-service-tiers.md) przy użyciu portalu Azure, otwórz stronę baz danych, a następnie kliknij przycisk **Dodaj**. W **wybierz źródło** pole tekstowe, wybierz **kopii zapasowej**. Określ kopię zapasową, z którego do przeprowadzenia odzyskiwania w regionie i na serwerze wybranych przez użytkownika. 
+Aby przywracaniem geograficznym w bazie danych podczas jego [okres przechowywania na podstawie jednostek dtu w warstwie modelu](sql-database-service-tiers-dtu.md) lub [okres przechowywania na podstawie vCore modelu](sql-database-service-tiers-vcore.md) przy użyciu portalu Azure, otwórz stronę baz danych, a następnie kliknij przycisk **Dodaj** . W **wybierz źródło** pole tekstowe, wybierz **kopii zapasowej**. Określ kopię zapasową, z którego do przeprowadzenia odzyskiwania w regionie i na serwerze wybranych przez użytkownika. 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programowo odzyskiwanie przy użyciu automatycznego tworzenia kopii zapasowych
 Jak już wspomniano, oprócz portalu Azure programowo przy użyciu programu Azure PowerShell lub interfejsu API REST można wykonać odzyskiwanie bazy danych. W poniższych tabelach opisano zestaw dostępnych poleceń.
@@ -132,8 +132,8 @@ Jak już wspomniano, oprócz portalu Azure programowo przy użyciu programu Azur
 | Polecenie cmdlet | Opis |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Pobiera co najmniej jedną bazę danych. |
-| [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Pobiera usuniętej bazy danych, które można przywrócić. |
-| [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Pobiera geograficznie nadmiarowego kopii zapasowej bazy danych. |
+| [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Pobiera usuniętą bazę danych, którą można przywrócić. |
+| [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Pobiera geograficznie nadmiarową kopię zapasową bazy danych. |
 | [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |Przywraca bazę danych SQL. |
 |  | |
 

@@ -1,6 +1,6 @@
 ---
-title: Najlepsze rozwiązania dotyczące uwierzytelniania Wieloskładnikowego | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera najlepsze rozwiązania w zakresie obsługi za pomocą usługi Azure MFA z kontami usługi Azure
+title: Wskazówki dotyczące zabezpieczeń na potrzeby uwierzytelniania Wieloskładnikowego | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera wskazówki związane z kontami Azure przy użyciu usługi Azure MFA
 services: multi-factor-authentication
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -15,19 +15,19 @@ ms.date: 06/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 0fd90c4e59fa64c24ecfa6d7d8f23e025210e078
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 50e6cd3c067e09ebf9ace442894d5d066141e0b6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="security-best-practices-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Najlepsze rozwiązania dotyczące korzystania z usługi Azure Multi-Factor Authentication z konta usługi Azure AD
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Wskazówki dotyczące zabezpieczeń korzystania z konta usługi Azure AD przy użyciu usługi Azure Multi-Factor Authentication
 
 Weryfikacja dwuetapowa to preferowane wyborem w przypadku większości organizacji, które chcesz zwiększyć ich procesu uwierzytelniania. Usługa Azure Multi-Factor Authentication (MFA) pomaga firm, które spełnia ich wymagania dotyczące zabezpieczeń i zgodności, zapewniając prostych środowiska logowania dla użytkowników. W tym artykule przedstawiono kilka wskazówek, które należy wziąć pod uwagę podczas planowania przyjęcia usługi Azure MFA.
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>Wdrażanie usługi Azure MFA w chmurze
 
-Istnieją dwa sposoby, aby włączyć usługi Azure MFA dla wszystkich użytkowników.
+Istnieją dwa sposoby [włączyć usługi Azure MFA dla wszystkich użytkowników](howto-mfa-getstarted.md).
 
 * Kupowanie licencji dla każdego użytkownika (albo usługi Azure MFA, Azure AD Premium lub Enterprise Mobility + Security)
 * Tworzenie dostawcy uwierzytelniania wieloskładnikowego i płatności dla poszczególnych użytkowników lub uwierzytelnienia
@@ -46,12 +46,12 @@ Podczas konfigurowania uwierzytelniania wieloskładnikowego, należy wziąć pod
 ### <a name="multi-factor-auth-provider"></a>Dostawca uwierzytelniania MFA
 ![Dostawca uwierzytelniania MFA](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-Jeśli nie masz licencji, które obejmują usługi Azure MFA, można utworzyć dostawcy uwierzytelniania MFA. 
+Jeśli nie masz licencji, które obejmują usługi Azure MFA, a następnie możesz [Tworzenie dostawcy uwierzytelniania MFA](concept-mfa-authprovider.md).
 
 Podczas tworzenia dostawcy uwierzytelniania, musisz wybrać katalog i należy wziąć pod uwagę następujące informacje:
 
-* Nie trzeba katalog usługi Azure AD, aby utworzyć dostawcy uwierzytelniania wieloskładnikowego, ale uzyskać więcej funkcji z jednym. Następujące funkcje są włączone, gdy dostawca usługi MFA można skojarzyć z katalogu usługi Azure AD:  
-  * Rozszerzanie weryfikacji dwuetapowej dla wszystkich użytkowników  
+* Nie trzeba katalog usługi Azure AD, aby utworzyć dostawcy uwierzytelniania wieloskładnikowego, ale uzyskać więcej funkcji z jednym. Następujące funkcje są włączone, gdy dostawca usługi MFA można skojarzyć z katalogu usługi Azure AD:
+  * Rozszerzanie weryfikacji dwuetapowej dla wszystkich użytkowników
   * Oferują dodatkowe funkcje, takie jak portalu zarządzania, niestandardowe pozdrowienia i raporty z administratorów globalnych.
 * Po zsynchronizowaniu w lokalnym środowisku usługi Active Directory z katalogiem Azure AD, należy narzędzia DirSync i AAD Sync. Jeśli używasz katalog usługi Azure AD, która nie jest zsynchronizowany z lokalnego wystąpienia usługi Active Directory, nie trzeba narzędzia DirSync i AAD Sync.
 * Wybierz model zużycie, który najlepiej odpowiada firmy. Po wybraniu model zastosowania, nie można go zmienić. Są dwa modele:
@@ -65,7 +65,7 @@ Ponieważ większość użytkowników są zapoznanie się przy użyciu tylko has
 * Należy wziąć pod uwagę [możliwości zaufanych adresów IP](howto-mfa-mfasettings.md#trusted-ips) w usługi Azure MFA w sposób, aby zminimalizować weryfikacji dwuetapowej. Przy użyciu tej funkcji Administratorzy dzierżawy zarządzane lub federacyjnych można pominąć weryfikacji dwuetapowej dla użytkowników, którzy są logujący się z lokalny intranet firmy. Funkcje są dostępne dla dzierżaw usługi Azure AD, którzy mają licencje usługi Azure AD Premium, Enterprise Mobility Suite lub Azure Multi-Factor Authentication.
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>Najlepsze rozwiązania dotyczące wdrożenia lokalnego
-Jeśli firma zdecydowała się korzystać z własnej infrastruktury, aby włączyć uwierzytelnianie wieloskładnikowe, następnie należy wdrożyć Azure aplikacji serwer Multi-Factor Authentication lokalnymi. W poniższym diagramie przedstawiono składniki serwera usługi MFA:
+Jeśli firma zdecydowała się korzystać z własnej infrastruktury, aby włączyć uwierzytelnianie wieloskładnikowe, konieczna [wdrażanie Azure aplikacji serwer Multi-Factor Authentication lokalnej](howto-mfaserver-deploy.md). W poniższym diagramie przedstawiono składniki serwera usługi MFA:
 
 ![Domyślne składniki serwera usługi MFA: konsoli, aparatu synchronizacji, portalu zarządzania usługą w chmurze](./media/multi-factor-authentication-security-best-practices/server.png) \*nie jest instalowany domyślnie \** zainstalowany, lecz nie jest włączona domyślnie
 
@@ -112,4 +112,3 @@ Chociaż ten artykuł zawiera opis najlepsze rozwiązania dla usługi Azure MFA,
 * [Raporty w uwierzytelnianie wieloskładnikowe platformy Azure](howto-mfa-reporting.md)
 * [Środowisko rejestracji weryfikacji dwuetapowej](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
 * [Uwierzytelnianie wieloskładnikowe platformy Azure — często zadawane pytania](multi-factor-authentication-faq.md)
-

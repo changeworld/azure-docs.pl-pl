@@ -14,21 +14,17 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: a50854b2e12db9a202d769f9e5feebee8e5f9395
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 78148c6538efa06018628297a89681ec6ec3d32d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Często zadawane pytania i znane problemy z zarządzania usługi tożsamości (MSI) dla usługi Azure Active Directory
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
-
-### <a name="is-there-a-private-preview-program-available-for-upcoming-msi-features-and-integrations"></a>Dostępne dla kolejnych funkcji MSI i integracji to program prywatnej wersji zapoznawczej?
-
-Tak. Jeśli chcesz wziąć pod uwagę dla rejestracji w prywatnej wersji zapoznawczej programu, [odwiedź naszą stronę tworzenia konta](https://aka.ms/azuremsiprivatepreview).
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI działa z usługami w chmurze Azure?
 
@@ -53,7 +49,7 @@ Korzystając z pliku MSI z maszynami wirtualnymi, zaleca się przy użyciu punkt
 
 Rozszerzenia maszyny Wirtualnej MSI jest nadal dostępne do użycia oprogramowania; jednak następnych firma Microsoft będzie domyślnie korzysta z punktu końcowego IMDS. Rozszerzenia maszyny Wirtualnej MSI rozpocznie planu amortyzacja wkrótce. 
 
-Aby uzyskać więcej informacji w usłudze Metada wystąpienia platformy Azure, zobacz [IMDS dokumentacji](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)
+Aby uzyskać więcej informacji w usłudze Metada wystąpienia platformy Azure, zobacz [IMDS dokumentacji](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Co to są obsługiwane dystrybucje systemu Linux?
 
@@ -122,3 +118,16 @@ Po uruchomieniu maszyny Wirtualnej, można usunąć tagu za pomocą następując
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
+
+## <a name="known-issues-with-user-assigned-msi-preview"></a>Znane problemy związane z MSI przypisany użytkownik *(wersja zapoznawcza)*
+
+- Jedynym sposobem, aby usunąć wszystkich użytkowników przypisanych msi przypisano systemowi MSI. 
+- Inicjowanie obsługi rozszerzenia maszyny Wirtualnej do maszyny Wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Uruchom ponownie maszynę Wirtualną, a następnie spróbuj ponownie. 
+- Dodawanie MSI "nieistniejącego" spowoduje, że maszyna wirtualna może się nie powieść. *Uwaga: Poprawka niepowodzenia Przypisz tożsamości w przypadku Instalatora MSI nie istnieje, ma zostać przeniesiona poza*
+- Samouczek usługi Azure magazynu jest dostępna tylko w centralnej nam EUAP w tej chwili. 
+- Tworzenie użytkownika przypisanego MSI znaki specjalne (np. podkreślenie) w nazwie, nie jest obsługiwane.
+- Dodawanie drugiego użytkownika przypisany tożsamości, clientID może być dostępne dla żądań tokenów dla niego. Jako ograniczenie Uruchom ponownie rozszerzenia MSI maszyny Wirtualnej za pomocą następujących poleceń dwóch bash:
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
+- VMAgent w systemie Windows nie obsługuje obecnie MSI przypisany użytkownik. 
+- Gdy użytkownik, któremu przypisano MSI ma Maszynę wirtualną, ale żaden system przydzielonych MSI, portalu interfejsu użytkownika będzie widoczna MSI jako włączona. Aby włączyć system przypisane MSI, użyj szablonu usługi Azure Resource Manager, Azure CLI lub zestawu SDK.

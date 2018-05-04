@@ -1,30 +1,28 @@
 ---
 title: Skonfiguruj ustawienia Spark - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Jak skonfigurować Spark dla klastra usługi HDInsight."
+description: Jak skonfigurować Spark dla klastra usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: maxluk
-ms.openlocfilehash: 1dd0ff26cdb39feacec697d7900ad7abaa5f1996
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2ee496eae0767de22d070a0c5689692f0200515b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-spark-settings"></a>Skonfiguruj ustawienia Spark
+# <a name="configure-spark-settings"></a>Konfigurowanie ustawień platformy Spark
 
-Klaster Spark w usłudze HDInsight obejmuje instalację biblioteki Apache Spark.  Każdy klaster usługi HDInsight zawiera parametry konfiguracji domyślnego dla wszystkich jego zainstalowanych usług, w tym Spark.  Kluczowym aspektem zarządzania klastrem usługi HDInsight Hadoop jest monitorowanie obciążenia, w tym zadań Spark, upewnij się, że działają w sposób przewidywalne. Aby najlepiej uruchomić Spark zadania, należy wziąć pod uwagę konfiguracji klastra fizycznego podczas określania sposobu optymalizacji logicznej konfiguracji klastra.
+Klaster Spark w usłudze HDInsight obejmuje instalację biblioteki Apache Spark.  Każdy klaster usługi HDInsight zawiera parametry konfiguracji domyślnego dla wszystkich jego zainstalowanych usług, w tym Spark.  Kluczowym aspektem zarządzania klastrem HDInsight Hadoop jest monitorowanie obciążenia, w tym zadania Spark, aby upewnić się, że zadania są uruchomione w sposób przewidywalny. Aby najlepiej uruchomić Spark zadania, należy wziąć pod uwagę konfiguracji klastra fizycznego podczas określania sposobu optymalizacji logicznej konfiguracji klastra.
 
 Domyślne klastra Apache Spark w usłudze HDInsight obejmuje następujące węzły: trzy węzły dozorcy dwóch węzłów głównych i jeden lub więcej węzłów procesu roboczego:
 
@@ -34,9 +32,13 @@ Liczbę maszyn wirtualnych i rozmiarów maszyn wirtualnych dla węzłów w klast
 
 ## <a name="spark-versions"></a>Wersje Spark
 
-Należy również rozważyć najlepszą wersję platformy Spark dla klastra.  Platforma Spark 2.x można uruchomić znacznie lepszą niż Spark 1.x. Platforma Spark 2.x ma kilka optymalizacji wydajności, takich jak wolframu, Catalyst optymalizacji zapytania i inne.  Usługa HDInsight obejmuje wiele wersji Spark i HDInsight się.  Każda wersja programu Spark zawiera zestaw domyślnych ustawień klastra.  Podczas tworzenia nowego klastra, w tym miejscu są bieżące wersje Spark do wyboru:
+Użyj najlepszą wersję Spark dla klastra.  Usługa HDInsight obejmuje kilka wersji zarówno w iskrowym, jak i HDInsight się.  Każda wersja programu Spark zawiera zestaw domyślnych ustawień klastra.  
+
+Podczas tworzenia nowego klastra, w tym miejscu są bieżące wersje Spark do wyboru:
 
 ![Wersje Spark](./media/apache-spark-settings/spark-version.png)
+
+Platforma Spark 2.x można uruchomić znacznie lepszą niż Spark 1.x. Platforma Spark 2.x ma kilka optymalizacji wydajności, takich jak wolframu, Catalyst optymalizacji zapytania i inne.  
 
 > [!NOTE]
 > Wersja domyślna platforma Apache Spark w usłudze HDInsight mogą ulec zmianie bez uprzedzenia. Jeśli masz zależność wersji, firma Microsoft zaleca określić tej konkretnej wersji, podczas tworzenia klastrów przy użyciu programu .NET SDK/Azure PowerShell i interfejsu wiersza polecenia Azure.
@@ -47,7 +49,7 @@ Platforma Apache Spark ma trzy lokalizacje w systemie konfiguracji:
 * Zmienne środowiskowe może służyć do ustawienia dla poszczególnych komputerów, takie jak adres IP za pośrednictwem `conf/spark-env.sh` skrypt w każdym węźle.
 * Można skonfigurować rejestrowania za pośrednictwem `log4j.properties`.
 
-Po wybraniu konkretnej wersji Spark klaster zawiera domyślne ustawienia konfiguracji.  Domyślnych wartości konfiguracji Spark można zmienić, zapewniając niestandardowego pliku konfiguracji platformy Spark.  Poniżej przedstawiono przykład.
+Po wybraniu konkretnej wersji Spark klaster zawiera domyślne ustawienia konfiguracji.  Domyślnych wartości konfiguracji w iskrowym można zmienić za pomocą niestandardowego pliku konfiguracji Spark.  Poniżej przedstawiono przykład.
 
 ```
     spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
@@ -57,7 +59,7 @@ Po wybraniu konkretnej wersji Spark klaster zawiera domyślne ustawienia konfigu
     spark.sql.files.openCostInBytes 1099511627776
 ```
 
-Powyższym przykładzie zastępuje kilka wartości domyślne parametrów konfiguracji pięć Spark.  Są to koder-dekoder kompresji, mapreduce z Hadoop podzielić minimalny rozmiar i rozmiary bloków parquet i partycji dźwigar SQL i rozmiary plików otwórz wartości domyślne.  Te zmiany w konfiguracji są wybrane, ponieważ zadania (w tym przykładzie genomiczne danych) i skojarzone dane mają konkretnej właściwości, które wykona lepiej przy użyciu tych ustawień konfiguracji niestandardowej.
+Powyższym przykładzie zastępuje kilka wartości domyślne parametrów konfiguracji pięć Spark.  Są to koder-dekoder kompresji, Hadoop MapReduce podzielić minimalny rozmiar i rozmiarze bloku parkiet i partycji dźwigar SQL i wartości domyślne rozmiary otwartych plików.  Te zmiany w konfiguracji są wybrane, ponieważ powiązanych danych i zatrudnienia (w tym przykładzie dane genomu) posiadają pewne specyficzne cechy, które wykona lepiej przy użyciu tych ustawień konfiguracji niestandardowej.
 
 ---
 
@@ -86,7 +88,7 @@ Jeśli tworzysz z systemem innym niż domyślny zestaw wartości konfiguracji, m
 
 ## <a name="configuring-spark-executors"></a>Konfigurowanie modułów Spark
 
-Na poniższym diagramie przedstawiono obiektów Spark kluczy: program sterowników i jego skojarzony żaden kontekst Spark i Menedżera klastra i jego  *n*  węzłów procesu roboczego.  Każdego węzła procesu roboczego zawiera moduł wykonujący pamięci podręcznej, i  *n*  zadań wystąpień.
+Na poniższym diagramie przedstawiono obiektów w iskrowym kluczy: program sterownika i jego skojarzony kontekst Spark i Menedżer klastra i jego *n* węzły pracownika.  Każdy węzeł pracownika zawiera wykonawcy, pamięci podręcznej, a *n* zadań wystąpień.
 
 ![Obiekty klastra](./media/apache-spark-settings/spark-arch.png)
 
@@ -105,9 +107,9 @@ Alternatywnie można użyć interfejsu API REST Ambari Aby programowo sprawdzić
 
 W zależności od obciążenia Spark należy określić, że konfiguracja Spark innych niż domyślne zapewnia bardziej zoptymalizowane Spark wykonania zadania.  Należy przeprowadzić testowanie obciążeń próbki do sprawdzania poprawności konfiguracji klastra z systemem innym niż domyślny za pomocą testu wydajności.  Niektóre typowe parametry, które można rozważyć dostosowania są:
 
-* `--num-executors`Ustawia liczbę modułów.
-* `--executor-cores`Ustawia liczbę rdzeni dla każdego Moduł wykonujący. Zalecamy używanie modułów middle-sized zgodnie z innymi procesami również korzystać z niektórych części ilość dostępnej pamięci.
-* `--executor-memory`Formanty rozmiar pamięci (rozmiar stosu) każdy moduł wykonujący na YARN, należy pozostawić pamięci do wykonania czynności.
+* `--num-executors` Ustawia liczbę wykonawców.
+* `--executor-cores` Ustawia liczbę rdzeni dla każdego wykonawcy. Zalecamy używanie modułów middle-sized zgodnie z innymi procesami również korzystać z niektórych części ilość dostępnej pamięci.
+* `--executor-memory` Formanty rozmiar pamięci (rozmiar stosu) każdego wykonawcy na PRZĘDZY, a będziesz musiał zostawić trochę pamięci dla wykonania obciążenie.
 
 Poniżej przedstawiono przykład dwóch węzłów procesu roboczego o wartości innej konfiguracji:
 
@@ -115,10 +117,10 @@ Poniżej przedstawiono przykład dwóch węzłów procesu roboczego o wartości 
 
 Na poniższej liście przedstawiono klucza przetwarzania Spark parametrów pamięci.
 
-* `spark.executor.memory`Określa łączną ilość dostępnej pamięci Moduł wykonujący.
-* `spark.storage.memoryFraction`(domyślnie ~ 60%) definiuje ilości pamięci do przechowywania RDDs utrwalonych.
-* `spark.shuffle.memoryFraction`(domyślna ~ 20%) określa ilość pamięci zarezerwowanej dla losowa.
-* `spark.storage.unrollFraction`i `spark.storage.safetyFraction` (sumowanie ~ 30% całkowitej ilości pamięci) — te wartości są używane wewnętrznie Spark i nie można zmienić.
+* `spark.executor.memory` Określa całkowitą ilość pamięci dostępnej dla wykonawcy.
+* `spark.storage.memoryFraction` (ustawienie domyolne ~ 60%) określa ilość pamięci dostępnej do przechowywania trwałych RDDs.
+* `spark.shuffle.memoryFraction` (ustawienie domyolne ~ 20%) określa ilość pamięci zarezerwowanej dla losowo.
+* `spark.storage.unrollFraction` i `spark.storage.safetyFraction` (sumowanie ~ 30% całkowitej pamięci) - wartości te są używane wewnętrznie w iskrowym i nie powinno być zmieniane.
 
 YARN steruje maksymalną suma pamięci używanej przez kontenery w każdym węźle Spark. Na poniższym diagramie przedstawiono każdego węzła relacje między obiektami konfiguracji YARN i Spark.
 
@@ -126,7 +128,7 @@ YARN steruje maksymalną suma pamięci używanej przez kontenery w każdym węź
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Zmiana parametrów aplikacji uruchomionej w notesu Jupyter
 
-Domyślnie klastry Spark w usłudze HDInsight zawierają liczbę składników. Każdy z tych składników obejmuje domyślnych wartości konfiguracji, które może zostać zastąpiona.
+Domyślnie klastry Spark w usłudze HDInsight zawierają liczbę składników. Każdy z tych składników zawiera domyślnych wartości konfiguracyjnych, które może być zastąpiona.
 
 * Platforma Spark Core - Spark Core, Spark SQL, Spark interfejsów API przesyłania strumieniowego, GraphX oraz MLlib
 * Anaconda — Menedżera pakietów języka python
@@ -148,7 +150,7 @@ Poniższy kod przedstawia sposób zmiany konfiguracji dla aplikacji działający
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Istnieje wiele podstawowych ustawień konfiguracyjnych, które należy monitorować i Dostosuj, aby upewnić się, że Twoje zadania Spark uruchamiane w sposób, przewidywalnych i wydajności. Te ustawienia pomagają określić najlepsze konfiguracji klastra Spark dla konkretnego obciążeń.  Należy również monitorować wykonywania długotrwałych i/lub korzystanie z zasobów wykonania zadania Spark.  Najczęstsze wyzwania Centrum wokół wykorzystania pamięci z powodu nieprawidłowej konfiguracji (szczególnie niepoprawnie o rozmiarze z modułów wykonujących) długotrwałe operacje i zadania, które powodują kartezjańskimi operacji.
+Istnieje wiele podstawowych ustawień konfiguracyjnych, które należy monitorować i Dostosuj, aby upewnić się, że Twoje zadania Spark uruchamiane w sposób, przewidywalnych i wydajności. Te ustawienia pomagają określić najlepsze konfiguracji klastra Spark dla konkretnego obciążeń.  Należy również monitorować wykonywania długotrwałych i/lub korzystanie z zasobów wykonania zadania Spark.  Najczęstsze wyzwania Centrum wokół wykorzystania pamięci z powodu nieprawidłowej konfiguracji (szczególnie niepoprawnie o rozmiarze z modułów wykonujących) długotrwałych operacji i zadań, które powodują kartezjańskimi operacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

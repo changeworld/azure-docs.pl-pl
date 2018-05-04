@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3035d0e8642310698274e4351a95013e204e2f14
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Zarządzanie aplikacjami dla wielu środowisk
 
@@ -48,8 +48,8 @@ Konfigurację, którą należy podać można podzielić na dwie kategorie:
 
 Podczas tworzenia wystąpienia nazwanego aplikacji w sieci szkieletowej usług, istnieje możliwość do przekazania parametrów. Sposób odbywa się zależy od tego, jak utworzyć wystąpienie aplikacji.
 
-  - W programie PowerShell [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenia cmdlet przyjmuje parametry aplikacji jako tablica skrótów.
-  - Przy użyciu sfctl, [ `sfctl application create` ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) polecenie przyjmuje parametry jako ciągu JSON. Skrypt install.sh używa sfctl.
+  - W programie PowerShell [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenia cmdlet przyjmuje parametry aplikacji jako tablica skrótów.
+  - Przy użyciu sfctl, [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) polecenie przyjmuje parametry jako ciągu JSON. Skrypt install.sh używa sfctl.
   - Visual Studio zapewnia zbiór parametrów pliki w folderze parametrów w projekcie aplikacji. Te pliki parametrów są używane podczas publikowania z programu Visual Studio za pomocą programu Visual Studio Team Service lub Team Foundation Server. W programie Visual Studio pliki parametrów są są przekazywane do skryptu Deploy-FabricApplication.ps1.
 
 ## <a name="next-steps"></a>Kolejne kroki

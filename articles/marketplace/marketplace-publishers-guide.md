@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik dotyczący wydawcy witrynę Azure Marketplace i AppSource
 
@@ -253,7 +253,7 @@ Każdy klient mający umowę Enterprise Agreement może dodać do niej opcję ko
 
 |**Wymaganie**  | **Szczegóły**  |**Opcja publikowania**  |
 |---------|---------|---------|
-|**Bezpłatny okres próbny i środowisko wersji próbnej**     |  Klient musi mieć możliwość użycia aplikacji bezpłatnie przez ograniczony czas.<br><br>Oznacza to, że klient nie będą poddawani uwierzytelnianiu licencji lub subskrypcji opłaty za produktu ani koszt produktu firmy Microsoft lub usługi podstawowej. Ponieważ wszystkie opcje wersji próbnej subskrypcji produktu Microsoft wydawcy są wdrażane, wydawcy nadzoruje wyłącznie optymalizację kosztów wersji próbnej i zarządzanie nimi.<br><br>Możesz wybrać bezpłatnej wersji próbnej, interaktywny pokaz lub przetestuj. Niezależnie od tego, możesz wybrać bezpłatna wersja próbna musi zaoferować klientowi minimalna ilość czasu na wypróbowanie aplikacji dla bez dodatkowych kosztów.<br><br>Aby rozpocząć proces tworzenia dysku testu, dotrzeć do cloudmarketplace@microsoft.com. <br><br>Należy pamiętać, że napotyka Azure Marketplace SaaS wersji próbnej musi zezwolić użytkownikom na logowanie za pomocą poświadczeń służbowych usługi Active Directory. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Wersja próbna      | 
+|**Bezpłatny okres próbny i środowisko wersji próbnej**     |  Klient musi mieć możliwość użycia aplikacji bezpłatnie przez ograniczony czas.<br><br>Oznacza to, że klient nie będą poddawani uwierzytelnianiu licencji lub subskrypcji opłaty za produktu ani koszt produktu firmy Microsoft lub usługi podstawowej. Ponieważ wszystkie opcje wersji próbnej subskrypcji produktu Microsoft wydawcy są wdrażane, wydawcy nadzoruje wyłącznie optymalizację kosztów wersji próbnej i zarządzanie nimi.<br><br>Możesz wybrać bezpłatnej wersji próbnej, interaktywny pokaz lub przetestuj. Niezależnie od tego, możesz wybrać bezpłatna wersja próbna musi zaoferować klientowi minimalna ilość czasu na wypróbowanie aplikacji dla bez dodatkowych kosztów.<br><br>Aby rozpocząć proces tworzenia dysku testu, dotrzeć do cloudmarketplace@microsoft.com. <br><br>Należy pamiętać, że napotyka Azure Marketplace SaaS wersji próbnej musi zezwolić użytkownikom na logowanie za pomocą poświadczeń służbowych usługi Active Directory. [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Wersja próbna      | 
 | **Można łatwo konfigurować, gotowe rozwiązanie**    |  Aplikacja musi być łatwo i szybko do skonfigurowania i.       |  Wersja próbna       |
 |**Czas dostępności/działania**    |    Platformie lub aplikacja SaaS musi mieć przestojów co najmniej 99,9%.     |    Wersja próbna     |
 |**Azure Active Directory**    |    Ofertę musi dopuszczać usługi Azure Active Directory (Azure AD) federacyjnych rejestracji jednokrotnej (SSO), za zgodą włączone.      |  Wersja próbna|
@@ -264,7 +264,7 @@ Każdy klient mający umowę Enterprise Agreement może dodać do niej opcję ko
 |**Wymaganie**  |**Szczegóły** |**Opcja publikowania**  |
 |---------|---------|---------|
 |**Rozliczenia i pomiarów**    |  Maszyny wirtualnej musi obsługiwać Bring Your Own License lub użycia, miesięczne rozliczeń.       |    Transakcji    |
-|**Azure zgodnego wirtualnego dysku twardego (VHD)**     |   Maszyny wirtualne muszą zostać skompilowane [Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) lub [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Transakcji      |
+|**Azure zgodnego wirtualnego dysku twardego (VHD)**     |   Maszyny wirtualne muszą zostać skompilowane [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) lub [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Transakcji      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Określone wymagania wstępne dotyczące usługi konsultingowe publikowania
 
@@ -277,7 +277,7 @@ Każdy klient mający umowę Enterprise Agreement może dodać do niej opcję ko
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Aby włączyć prób przy użyciu usługi Azure Active Directory
 Usługi Azure Active Directory to usługa tożsamości chmury, która umożliwia uwierzytelnianie z programu Microsoft konto służbowe za pomocą standardowych protokołów: OAuth i OpenID Connect. Dowiedz się więcej o usłudze Azure AD na [strony sieci Web produktu](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft uwierzytelnia wszyscy użytkownicy portalu Marketplace z usługą Azure AD. Gdy uwierzytelniony użytkownik kliknie za pośrednictwem okresu próbnego w witrynie Marketplace i jest przekierowywany do środowiska wersji próbnej, można udostępnić użytkownika bezpośrednio do korzystania z wersji próbnej, bez konieczności dodatkowego kroku logowania. [Token, który odbiera aplikacji z usługi Azure AD podczas uwierzytelniania](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) zawiera użytkownika cenne informacje, które umożliwia tworzenie konta użytkownika w aplikacji. Następnie można zautomatyzować proces inicjowania obsługi administracyjnej i zwiększyć prawdopodobieństwo konwersji. 
+Microsoft uwierzytelnia wszyscy użytkownicy portalu Marketplace z usługą Azure AD. Gdy uwierzytelniony użytkownik kliknie za pośrednictwem okresu próbnego w witrynie Marketplace i jest przekierowywany do środowiska wersji próbnej, można udostępnić użytkownika bezpośrednio do korzystania z wersji próbnej, bez konieczności dodatkowego kroku logowania. [Token, który odbiera aplikacji z usługi Azure AD podczas uwierzytelniania](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) zawiera użytkownika cenne informacje, które umożliwia tworzenie konta użytkownika w aplikacji. Następnie można zautomatyzować proces inicjowania obsługi administracyjnej i zwiększyć prawdopodobieństwo konwersji. 
 
 Aby włączyć uwierzytelnianie jednym kliknięciem do aplikacji lub wersji próbnej, za pomocą usługi Azure AD:
 
@@ -292,20 +292,20 @@ Jeśli obsługuje obecnie usługi Azure AD:
 
 - Zarejestrować aplikację w portalu Azure.
 - Włącz funkcję wielodostępności w usłudze Azure AD, aby uzyskać środowisko wersji próbnej jednym kliknięciem.
-- [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
 Jeśli jesteś nowym użytkownikiem usługi Azure AD federacyjnej usługi logowania jednokrotnego:
 
 - Zarejestrować aplikację w portalu Azure.
-- Tworzenie za pomocą rejestracji Jednokrotnej z usługą Azure AD [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) lub [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
+- Tworzenie za pomocą rejestracji Jednokrotnej z usługą Azure AD [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) lub [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
 - Włącz funkcję wielodostępności w usłudze Azure AD, aby uzyskać środowisko wersji próbnej jednym kliknięciem.
-- [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
 
 ### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>Certyfikowanie integracją usługi Azure AD dla witryny Marketplace: pojedynczej dzierżawy aplikacji
 
 Istnieje wiele opcji dla pojedynczej dzierżawy aplikacji:
 
-- Dodawanie użytkowników do katalogu jako goście przy użyciu [B2B usługi Azure](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Dodawanie użytkowników do katalogu jako goście przy użyciu [B2B usługi Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 - Ręcznie Zapewnij prób dla klientów za pośrednictwem mnie kontaktu.
 - Tworzenie dysku testu na klienta.
 - Tworzenie wielodostępnych przykładową aplikację pokaz logowania jednokrotnego.
@@ -316,11 +316,11 @@ W przypadku aplikacji AppSource rozszerzających pakietu Office, Dynamics i usł
 
 |Product (Produkt) |Publikowanie informacji o  |
 |---------|---------|
-|Office 365     |    Przegląd [publikowania procesu i wskazówki dotyczące]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).     |
-|Dynamics 365 Finanse i operacje  |   Gdy tworzysz Enterprise Edition, przejrzyj [publikowania procesu i wskazówki dotyczące](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
-|Dynamics 365 naboru klienta |Przegląd [publikowania procesu i wskazówki dotyczące](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource). |
-|Power BI   |     Przegląd [publikowania procesu i wskazówki dotyczące]( https://docs.microsoft.com/en-us/power-bi/developer/office-store).    |
-|Cortana Intelligence     |    Dowiedz się więcej o [Cortana w AppSource](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
+|Office 365     |    Przegląd [publikowania procesu i wskazówki dotyczące]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).     |
+|Dynamics 365 Finanse i operacje  |   Gdy tworzysz Enterprise Edition, przejrzyj [publikowania procesu i wskazówki dotyczące](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
+|Dynamics 365 naboru klienta |Przegląd [publikowania procesu i wskazówki dotyczące](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource). |
+|Power BI   |     Przegląd [publikowania procesu i wskazówki dotyczące]( https://docs.microsoft.com/power-bi/developer/office-store).    |
+|Cortana Intelligence     |    Dowiedz się więcej o [Cortana w AppSource](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
 |AppSource konsultacji oferty     |  Przegląd [wskazówki i informacje o sposobie przesyłania ofertę](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf).    |
 
 
@@ -522,11 +522,11 @@ Podczas tworzenia konta firmy, zgodna z tymi wytycznymi Jeśli więcej niż jedn
 
 Konto dewelopera powinni mieć dostęp przede wszystkim z zaufanych komputerów. Jest to krytyczny, ponieważ istnieje limit liczby kody wygenerowane dla danego konta, na tydzień. Przy użyciu zaufanych komputerów umożliwia bezproblemową obsługę logowania.
 
-Aby uzyskać więcej informacji o wytycznych konta dewelopera dodatkowe i zabezpieczeniach, zobacz [otwieranie konta dewelopera](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
+Aby uzyskać więcej informacji o wytycznych konta dewelopera dodatkowe i zabezpieczeniach, zobacz [otwieranie konta dewelopera](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account).
 
 ### <a name="guidance-for-microsoft-ids-in-an-azure-ad-federated-domain"></a>Wskazówki dotyczące IDs firmy Microsoft w domenie federacyjnych usługi Azure AD
 
-Twoje konto firmowe mogą federacyjnych za pośrednictwem [usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/). Zwróci błąd przy próbie utworzenia Identyfikatora Microsoft za pomocą adresu e-mail firmy. Jeśli wystąpi błąd, najpierw skontaktuj się z zespołu IT w celu upewnij się, że jest to możliwe. Jest to znany problem i pracujemy nad rozwiązania. 
+Twoje konto firmowe mogą federacyjnych za pośrednictwem [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Zwróci błąd przy próbie utworzenia Identyfikatora Microsoft za pomocą adresu e-mail firmy. Jeśli wystąpi błąd, najpierw skontaktuj się z zespołu IT w celu upewnij się, że jest to możliwe. Jest to znany problem i pracujemy nad rozwiązania. 
 
 Jako obejście, firma Microsoft zaleca, aby utworzyć nowy adres e-mail w @outlook.com domeny i Utwórz regułę. Wykonaj następujące kroki:
 
@@ -562,7 +562,7 @@ Po wykonaniu ostatniego kroku programu Outlook wysyłać wiadomości e-mail/kore
 5. Dla **typ konta**, wybierz pozycję **firmy** , a następnie wybierz **dalej** przycisku.
 
    >[!IMPORTANT]
-   >Aby lepiej zrozumieć typy kont i najlepiej można wybrać, zobacz [konta typów, lokalizacji i opłat](https://docs.microsoft.com/en-us/windows/uwp/publish/account-types-locations-and-fees).
+   >Aby lepiej zrozumieć typy kont i najlepiej można wybrać, zobacz [konta typów, lokalizacji i opłat](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
 6. Aby uzyskać **wydawcy, nazwa wyświetlana**, wprowadź nazwę wyświetlaną (zazwyczaj nazwa firmy).
 

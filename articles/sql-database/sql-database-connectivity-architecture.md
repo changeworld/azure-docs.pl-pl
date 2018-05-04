@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: f7dc584c8fa9f4452b2bd9288df86492399c036c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 76af1ead671a6d6b279202eaf7886463d4cd8bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura połączenia bazy danych Azure SQL 
 
@@ -78,7 +78,7 @@ W poniższej tabeli wymieniono głównych i dodatkowych adresów IP bramy bazy d
 | Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
 | Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
 | Północne Zjednoczone Królestwo | 13.87.97.210 | |
-| UK South 1 | 51.140.184.11 | |
+| Wielka Brytania Południowa 1 | 51.140.184.11 | |
 | Południowe Zjednoczone Królestwo 2 | 13.87.34.7 | |
 | Zachodnie Zjednoczone Królestwo | 51.141.8.11  | |
 | Środkowo-zachodnie stany USA | 13.78.145.25 | |
@@ -105,7 +105,7 @@ Aby zmienić zasady połączenia bazy danych SQL Azure dla serwera bazy danych S
 Poniższy skrypt programu PowerShell pokazuje, jak zmienić zasad połączenia.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <Subscription Name>
 
 # Azure Active Directory ID

@@ -1,4 +1,4 @@
-Aby włączyć edytowanie profilu w Twojej aplikacji, musisz utworzyć zasady edytowania profilu. Te zasady opisują procesy, przez które przejdą użytkownicy podczas edytowania profilu, i zawartość tokenów, które aplikacja otrzyma po pomyślnym ich ukończeniu.
+Jeśli chcesz umożliwić edytowanie profilu dla aplikacji, użyj **edycji profilu** zasad. Ta zasada opisano procesy, które podczas edycji profilu i zawartość aplikacji zostanie wyświetlony po pomyślnym ukończeniu tokeny przeszli przez klientów.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

@@ -1,25 +1,19 @@
 ---
 title: Usługa limity w usłudze Azure Search | Dokumentacja firmy Microsoft
 description: Ograniczenia usługi używane do planowania pojemności i maksymalna limity żądań i odpowiedzi dla usługi Azure Search.
-services: search
-documentationcenter: ''
 author: HeidiSteen
-manager: jhubbard
-editor: ''
-tags: azure-portal
-ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: heidist
-ms.openlocfilehash: 77ea75bf66f4b6ae6ec7d6ede4364db6b7fa82a0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Ograniczenia usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążenia i ilości indeksów, dokumentów, a inne obiekty są zależne od tego, czy użytkownik [udostępnić usługi Azure Search](search-create-service-portal.md) w **wolne**, **podstawowe**, lub **Standardowe** warstw cenowych.
@@ -130,7 +124,7 @@ Szacuje są bardziej przewidywalne podczas obliczania na usługi działające na
 * Maksymalną 100 sugestie zwracane zgodnie z żądaniem Sugeruj interfejsu API
 
 ## <a name="api-key-limits"></a>Limity klucz interfejsu API
-Klucze interfejsu API są używane do uwierzytelniania usługi. Istnieją dwa typy. Kluczy administratora są określone w nagłówku żądania i przyznać dostęp do odczytu zapisu do usługi. Klucze zapytania są tylko do odczytu, określona w adresie URL i zazwyczaj dystrybuowane do aplikacji klienckich.
+Klucze interfejsu API są używane do uwierzytelniania usługi. Są dwa typy analizatorów. Kluczy administratora są określone w nagłówku żądania i przyznać dostęp do odczytu zapisu do usługi. Klucze zapytania są tylko do odczytu, określona w adresie URL i zazwyczaj dystrybuowane do aplikacji klienckich.
 
 * Maksymalnie 2 kluczy administratora usługi
 * Maksymalnie 50 kluczy zapytania dla usługi

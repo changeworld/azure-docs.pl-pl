@@ -1,9 +1,9 @@
 ---
-title: "Utwórz alert metryki z szablonem usługi Resource Manager | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak szablon Menedżera zasobów do tworzenia metryki alert, aby otrzymywać powiadomienia pocztą e-mail lub elementu webhook."
+title: Tworzenie klasycznej alert metryki na platformie Azure przy użyciu szablonu usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak szablon Menedżera zasobów do tworzenia klasycznych alert metryki, aby otrzymywać powiadomienia pocztą e-mail lub elementu webhook.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
@@ -12,16 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/21/2017
+ms.date: 4/27/2018
 ms.author: johnkem
-ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c83eeaf6c26aca3acdd43a767aa11357fa502544
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
+# <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
 W tym artykule opisano, jak używasz [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) Konfigurowanie alertów metryki platformy Azure. Umożliwia to automatyczne konfigurowanie alertów dla zasobów podczas ich tworzenia, aby upewnić się, że wszystkie zasoby są monitorowane poprawnie.
+
+> [!NOTE]
+> 
+> W tym artykule opisano tworzenie **klasycznego alerty metryki** przy użyciu szablonów usługi Resource Manager. Jeśli szukasz tworzenie [nowszej alerty metryki](monitoring-near-real-time-metric-alerts.md) za pomocą szablonów, [w tym artykule](monitoring-create-metric-alerts-with-templates.md) udostępnia szczegółowe informacje.
+>
+
 
 Podstawowe kroki są następujące:
 
@@ -30,7 +36,7 @@ Podstawowe kroki są następujące:
 
 Poniżej opisano sposób tworzenia szablonu usługi Resource Manager najpierw alertu samodzielnie, a następnie dla alertu podczas tworzenia innego zasobu.
 
-## <a name="resource-manager-template-for-a-metric-alert"></a>Szablon usługi Resource Manager metryki alertu
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Szablon usługi Resource Manager w klasycznym alertu metryki
 Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utworzyć zasobu typu `Microsoft.Insights/alertRules` i wypełnij wszystkie powiązane właściwości. Poniżej znajduje się szablon, który tworzy regułę alertu.
 
 ```json
@@ -180,7 +186,7 @@ Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utwo
 
 Objaśnienia dotyczące schematu i właściwości dla reguły alertu [jest dostępnych tutaj](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>Szablon usługi Resource Manager dla zasobu z alertem
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Szablon Menedżera zasobów dla zasobów klasycznych alert metryki
 Alert w szablonie usługi Resource Manager najczęściej jest przydatne podczas tworzenia alertu podczas tworzenia zasobu. Na przykład może być upewnij się, że "Procesora % > 80" skonfigurować regułę za każdym razem, gdy wdrożenie maszyny wirtualnej. W tym celu należy dodać reguły alertów jako zasób w tablicy zasobów szablonu maszyny Wirtualnej i dodać zależności za pomocą `dependsOn` właściwość identyfikatora zasobu maszyny Wirtualnej W tym miejscu jest pełny przykład, który tworzy Maszynę wirtualną systemu Windows i dodaje alert powiadamia Administratorzy subskrypcji, gdy użycie procesora CPU przekracza 80%.
 
 ```json

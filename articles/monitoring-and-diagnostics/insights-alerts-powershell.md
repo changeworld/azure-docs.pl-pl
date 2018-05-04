@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ca9df36c642334d9323736abb51a931a6610fd3e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Tworzenie klasycznej metryki alertów w monitorze Azure dla usług Azure - PowerShell
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Aby uzyskać dodatkowe informacje, zawsze można wpisać ```Get-Help``` , a nast
 1. Loguje się do platformy Azure.   
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     ```
 2. Pobranie listy subskrypcji posiadanego. Sprawdź, użytkownik pracuje z prawej subskrypcji. Jeśli nie, ustaw ją na właściwy przy użyciu dane wyjściowe z `Get-AzureRmSubscription`.
@@ -133,7 +133,7 @@ Aby uzyskać dodatkowe informacje, zawsze można wpisać ```Get-Help``` , a nast
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myLogAlertRule
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie monitorowania Azure](monitoring-overview.md) w tym typy informacji, można zbierać i monitorowania.
 * Dowiedz się, jak [skonfigurować elementów webhook w alertach](insights-webhooks-alerts.md).
 * Dowiedz się, jak [skonfigurować alerty dotyczące zdarzeń dziennika aktywności](monitoring-activity-log-alerts.md).

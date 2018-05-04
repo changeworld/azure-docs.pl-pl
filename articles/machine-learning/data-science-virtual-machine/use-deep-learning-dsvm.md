@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 66994dfcd84db1de0ba072e9e3a45e7ec11fcec0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 2053ed8cc420183d493097eeb2cd2ad93c82c70c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>Za pomocą bezpośrednich uczenia maszyny wirtualnej
 
@@ -35,7 +35,7 @@ Oprócz próbek na podstawie framework zestaw kompleksowe wskazówki dostępne s
 
 - [Przewodnik rozwiązania na trasie do wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): wykrywania obrazu to technika, który można odnaleźć i sklasyfikować obiekty w obrazach. Ta technologia może potencjalnie do ogromnych korzyści w wielu domenach firm rzeczywistych. Na przykład sprzedawców można użyć tej metody do określenia, który produkt klientowi została pobrana z półki. Informacje te pomagają z kolei magazyny Zarządzanie spis produktów. 
 
-- [O nazwie wyodrębniania jednostki z streszczenia PubMed](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) ten samouczek pokazuje, jak można wyodrębnić nazwane jednostki, takich jak nazwy narkotyków lub choroby, z tekstu bez struktury. Go przygotowuje dowolne słowo osadzanie na Boże tekstu, z 18 milionów PubMed Abstract, używa modelu do konstruowania modelu powtarzającego się sieci neuronowej długi krótkoterminowe pamięci (LSTM) do wyodrębnienia jednostki i pokazuje, że można przewyższyć word specyficznego dla domeny osadzania modelu ogólny program word osadzania wyodrębniania jednostki.
+- [O nazwie wyodrębniania jednostki z streszczenia PubMed](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) ten samouczek pokazuje, jak można wyodrębnić nazwane jednostki, takich jak nazwy narkotyków lub choroby, z tekstu bez struktury. Go przygotowuje dowolne słowo osadzanie na Boże tekstu, z 18 milionów PubMed Abstract, używa modelu do konstruowania modelu powtarzającego się sieci neuronowej długi krótkoterminowe pamięci (LSTM) do wyodrębnienia jednostki i pokazuje, że można przewyższyć word specyficznego dla domeny osadzania modelu ogólny program word osadzania wyodrębniania jednostki.
 
 - [Bezpośrednie uczenia dla audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) w tym samouczku przedstawiono sposób uczenie modelu przy użyciu bezpośrednich learning wykrywania zdarzeń audio na [zurbanizowane dźwięki zestawu danych](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) i omówiono sposób pracy z danymi audio.
 

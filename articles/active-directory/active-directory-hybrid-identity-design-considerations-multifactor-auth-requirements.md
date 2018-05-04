@@ -1,11 +1,11 @@
 ---
-title: "Tożsamość hybrydowym — wymagania dotyczące uwierzytelniania wieloskładnikowego Azure | Dokumentacja firmy Microsoft"
-description: "Z kontroli dostępu warunkowego usługi Azure Active Directory sprawdza określonych warunków, można wybrać podczas uwierzytelniania użytkownika i przed zezwoleniem na dostęp do aplikacji. Gdy te warunki są spełnione, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji."
-documentationcenter: 
+title: Tożsamość hybrydowym — wymagania dotyczące uwierzytelniania wieloskładnikowego Azure | Dokumentacja firmy Microsoft
+description: Z kontroli dostępu warunkowego usługi Azure Active Directory sprawdza określonych warunków, można wybrać podczas uwierzytelniania użytkownika i przed zezwoleniem na dostęp do aplikacji. Gdy te warunki są spełnione, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji.
+documentationcenter: ''
 services: active-directory
 author: femila
 manager: billmath
-editor: 
+editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
 ms.service: active-directory
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bbdf60ed22a720f4f735108da79fe3b2ace1660a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 998aebfc38c4a0971a5071faebdeae4dbca86690
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące rozwiązania z tożsamością hybrydową uwierzytelniania wieloskładnikowego
 W tym świecie mobilności użytkownikom uzyskiwanie dostępu do danych i aplikacji w chmurze i na dowolnym urządzeniu zabezpieczanie informacji stał się podstawowym.  Codziennie jest nowy nagłówek o naruszenie zabezpieczeń.  Mimo że nie ma żadnej gwarancji przed takie naruszenia, uwierzytelnianie wieloskładnikowe, zapewnia dodatkową warstwę zabezpieczeń, aby uniknąć tych naruszeń.
 Rozpocznij od Trwa szacowanie wymagań organizacji w usłudze Multi-Factor authentication. Oznacza to co jest organizacji próby zabezpieczenia.  Ocena ważne jest, aby zdefiniować wymagania techniczne dotyczące konfigurowania i umożliwienie użytkownikom organizacji uwierzytelnianie wieloskładnikowe.
 
 > [!NOTE]
-> Jeśli nie masz doświadczenia z usługami MFA i jakie operacje, zdecydowanie zaleca się przeczytanie artykułu [co to jest usługa Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) przed kontynuować odczytu w tej sekcji.
+> Jeśli nie masz doświadczenia z usługami MFA i jakie operacje, zdecydowanie zaleca się przeczytanie artykułu [co to jest usługa Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) przed kontynuować odczytu w tej sekcji.
 > 
 > 
 
@@ -57,7 +57,7 @@ Po odpowiedzi na pytania Wstecz, można określić, czy istnieją już zaimpleme
 * Czy firma musi włączyć uwierzytelnianie wieloskładnikowe dla wszystkich kwalifikujących się użytkowników z tych aplikacji lub tylko administratorzy?
 * Czy konieczne jest zawsze włączone uwierzytelnianie MFA lub tylko, gdy użytkownicy są zalogowani poza siecią firmową?
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Definiowanie strategii wdrażania tożsamości hybrydowej](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>Zobacz także

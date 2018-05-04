@@ -1,8 +1,8 @@
 ---
-title: "Dostosowywanie wskazówki dotyczące wydajności usługi Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Dostosowywanie wskazówki dotyczące wydajności usługi Azure Data Lake Store"
+title: Dostosowywanie wskazówki dotyczące wydajności usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Dostosowywanie wskazówki dotyczące wydajności usługi Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 15832f94b73057a8bfce7be27e3fd57c7771940d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Dostrajanie wydajności usługi Azure Data Lake Store
 
@@ -42,7 +42,7 @@ Czy korzystasz z maszyny lokalnej lub maszyn wirtualnych na platformie Azure, na
 
 ### <a name="network-connectivity-to-azure-data-lake-store"></a>Połączenie sieciowe z usługi Azure Data Lake Store
 
-Połączenie sieciowe między źródła danych i usługi Azure Data Lake store może być czasem wąskie gardło. Jeśli źródło danych działa lokalnie, należy rozważyć użycie dedykowanego łącza z [Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) . Jeśli źródło danych jest na platformie Azure, wydajność będzie najlepiej, gdy dane są tego samego regionu Azure Data Lake Store.
+Połączenie sieciowe między źródła danych i usługi Azure Data Lake store może być czasem wąskie gardło. Jeśli źródło danych działa lokalnie, należy rozważyć użycie dedykowanego łącza z [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Jeśli źródło danych jest na platformie Azure, wydajność będzie najlepiej, gdy dane są tego samego regionu Azure Data Lake Store.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurowanie narzędzia wprowadzanie danych do maksymalnego paralelizacja
 
@@ -142,6 +142,6 @@ Oprócz ogólne wytyczne powyżej każda aplikacja ma różnych parametry dostę
 | [MapReduce w usłudze HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>mapreduce.map.Memory</li><li>Mapreduce.job.Maps</li><li>mapreduce.Reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [STORM w usłudze HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Liczba procesów roboczych</li><li>Liczba wystąpień Moduł wykonujący spout</li><li>Liczba wystąpień Moduł wykonujący bolt </li><li>Liczba zadań spout</li><li>Liczba zadań bolt</li></ul>|
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md)
 * [Rozpoczynanie pracy z usługą Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

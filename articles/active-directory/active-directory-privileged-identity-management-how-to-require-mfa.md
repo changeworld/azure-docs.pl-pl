@@ -1,11 +1,11 @@
 ---
-title: "Jak wymusić uwierzytelnianie wieloskładnikowe | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wymusić uwierzytelnianie wieloskładnikowe (MFA) dla uprzywilejowanymi tożsamościami przy rozszerzenia usługi Azure Active Directory Privileged Identity Management."
+title: Jak wymusić uwierzytelnianie wieloskładnikowe | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wymusić uwierzytelnianie wieloskładnikowe (MFA) dla uprzywilejowanymi tożsamościami przy rozszerzenia usługi Azure Active Directory Privileged Identity Management.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1e3dc4ad-3a6a-4a52-8417-3ca4f84ae05c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: faee62bdaca3f80fdd8f6be8aaf28c881314333a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 42552b4b8a7b2704a94786518f411f922dbd6a81
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Jak zażądać usługi MFA w usłudze Azure AD Privileged Identity Management
 Firma Microsoft zaleca wymusić uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich Administratorzy w Twojej organizacji. Pozwala to ograniczyć ryzyko ataku z powodu którego bezpieczeństwo zostało naruszone hasła.
@@ -41,11 +41,11 @@ Ponadto wymaganie usługi MFA dla konkretnej roli można zmienić, klikając go 
 ## <a name="how-azure-ad-pim-validates-mfa"></a>Jak Azure AD PIM weryfikuje MFA
 Dostępne są dwie opcje sprawdzania poprawności MFA, gdy użytkownik aktywuje roli.
 
-Jest to najprostsza opcja do usługi Azure MFA dla użytkowników, którzy są Aktywacja ról uprzywilejowanych. W tym celu należy najpierw sprawdź, czy Ci użytkownicy są licencjonowane w razie potrzeby i zarejestrowany dla usługi Azure MFA. Więcej informacji na temat sposobu wykonania tego zadania jest [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md). Jest zalecane, ale nie musi, skonfigurowanie usługi Azure AD, aby wymusić uwierzytelnianie wieloskładnikowe dla tych użytkowników po zalogowaniu. Jest to spowodowane kontroli MFA wykonuje się przez usługi Azure AD PIM samej siebie.
+Jest to najprostsza opcja do usługi Azure MFA dla użytkowników, którzy są Aktywacja ról uprzywilejowanych. W tym celu należy najpierw sprawdź, czy Ci użytkownicy są licencjonowane w razie potrzeby i zarejestrowany dla usługi Azure MFA. Więcej informacji na temat sposobu wykonania tego zadania jest [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](authentication/howto-mfa-getstarted.md). Jest zalecane, ale nie musi, skonfigurowanie usługi Azure AD, aby wymusić uwierzytelnianie wieloskładnikowe dla tych użytkowników po zalogowaniu. Jest to spowodowane kontroli MFA wykonuje się przez usługi Azure AD PIM samej siebie.
 
-Alternatywnie użytkownicy są uwierzytelniani lokalnie może mieć odpowiedzialny za MFA dostawcy tożsamości. Na przykład, jeśli skonfigurowano usługi federacyjne AD będą musieli uwierzytelnianie za pomocą karty inteligentnej przed uzyskaniem dostępu do usługi Azure AD [zabezpieczanie zasobów w chmurze Azure Multi-Factor Authentication i usług AD FS](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md) zawiera instrukcje dotyczące konfigurowania usług AD FS, aby wysyłać oświadczenia do usługi Azure AD. Gdy użytkownik próbuje aktywować rolę, Azure AD PIM będzie akceptować czy MFA została już sprawdzona dla użytkownika po otrzymaniu odpowiednich oświadczeń.
+Alternatywnie użytkownicy są uwierzytelniani lokalnie może mieć odpowiedzialny za MFA dostawcy tożsamości. Na przykład, jeśli skonfigurowano usługi federacyjne AD będą musieli uwierzytelnianie za pomocą karty inteligentnej przed uzyskaniem dostępu do usługi Azure AD [zabezpieczanie zasobów w chmurze Azure Multi-Factor Authentication i usług AD FS](authentication/howto-mfa-adfs.md) zawiera instrukcje dotyczące konfigurowania usług AD FS, aby wysyłać oświadczenia do usługi Azure AD. Gdy użytkownik próbuje aktywować rolę, Azure AD PIM będzie akceptować czy MFA została już sprawdzona dla użytkownika po otrzymaniu odpowiednich oświadczeń.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: bfbcf8ff3f24b69b49b9a2bd5d567e1ead57d974
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Zmodyfikuj zestaw skali maszyny wirtualnej
 W całym cyklu życia aplikacji należy zmodyfikować lub zaktualizować zestawu skalowania maszyny wirtualnej. Aktualizacje te mogą obejmować jak zaktualizować konfigurację zestawu skali lub zmienić konfigurację aplikacji. W tym artykule opisano sposób modyfikowania istniejących zestaw interfejsów API REST, programu Azure PowerShell lub Azure CLI 2.0 skalowania.
@@ -373,12 +373,12 @@ Jeśli aplikacja jest wdrażana do skali ustawiana za pośrednictwem rozszerzeni
 Jest również wspólne dla aplikacji można wdrożyć za pomocą niestandardowego obrazu. W tym scenariuszu zostało opisane w poniższej sekcji.
 
 ### <a name="os-updates"></a>Aktualizacje systemu operacyjnego
-Jeśli używasz obrazy platformy Azure, można zaktualizować obraz, modyfikując *elementu imageReference* (więcej informacji, zobacz [dokumentacja interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Jeśli używasz obrazy platformy Azure, można zaktualizować obraz, modyfikując *elementu imageReference* (więcej informacji, zobacz [dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
 > Obrazy platformy jest często stosowanym rozwiązaniem określ "najnowszej" wersji odwołanie do obrazu. Podczas tworzenia, skalowanie w poziomie, a odtworzenia z obrazu, maszyny wirtualne są tworzone z najnowszej dostępnej wersji. Jednak go **nie** oznacza, że obraz systemu operacyjnego jest automatycznie aktualizowany w czasie, jak wydawane są nowe wersje obrazu. Oddzielne funkcja jest obecnie w wersji zapoznawczej, która zapewnia automatycznych uaktualnień systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [dokumentacji automatycznych uaktualnień systemu operacyjnego](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Jeśli używasz niestandardowych obrazów, obraz można zaktualizować przez aktualizację *elementu imageReference* identyfikator (więcej informacji, zobacz [dokumentacja interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Jeśli używasz niestandardowych obrazów, obraz można zaktualizować przez aktualizację *elementu imageReference* identyfikator (więcej informacji, zobacz [dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Przykłady
 

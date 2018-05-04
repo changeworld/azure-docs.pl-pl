@@ -1,8 +1,8 @@
 ---
-title: "Samouczek: Konfigurowanie Replicon dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie zapewnianie i usuwanie kont użytkowników do Replicon."
+title: 'Samouczek: Konfigurowanie Replicon dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie zapewnianie i usuwanie kont użytkowników do Replicon.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: v-ant
-ms.openlocfilehash: 8d612012505ea43a3635650c6a38fe993b8e57f6
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c7ec58b0da3a918729733809d326e6f2e5916c9d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-replicon-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Replicon dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -109,13 +109,13 @@ W tej sekcji przedstawiono kroki, aby skonfigurować usługi Azure AD świadczen
 
     *   W **hasło administratora** pola, wypełnij hasła odpowiadającego nazwa użytkownika.
 
-    *   W **CompanyId** pola, wypełnij CompanyId dzierżawy Replicon. Przykład: % CompanyID oparty na poniżej logowania, jest Contoso.
+    *   W **CompanyId** pola, wypełnij CompanyId dzierżawy Replicon. Przykład: CompanyID oparte na dziennika w poniżej jest Contoso.
 
     ![Replicon logowania](./media/active-directory-saas-replicon-provisioning-tutorial/RepliconLogin.png)
 
     *   W **domeny** pola, wypełnij domeny, zgodnie z opisem w kroku 6.
     
-6. Uzyskaj **serviceEndpointRootURL** dla Twojego Replicon dzierżawy konto w zależności od czynności wymienionych w, [Pomoc usługi Replicon](https://www.replicon.com/help/determining-the-url-for-your-service-calls). Podczas uzyskiwania adresu URL, **domeny** poddomeną **serviceEndpointRootURL** jako zaznaczony. 
+6. Uzyskaj **serviceEndpointRootURL** dla Twojego Replicon dzierżawy konta czynności wymienionych w oparciu o [Pomoc usługi Replicon](https://www.replicon.com/help/determining-the-url-for-your-service-calls). Podczas uzyskiwania adresu URL, **domeny** poddomeną **serviceEndpointRootURL** jako zaznaczony. 
 
     ![Replicon inicjowania obsługi administracyjnej.](./media/active-directory-saas-replicon-provisioning-tutorial/RepliconEndpoint.png)
 

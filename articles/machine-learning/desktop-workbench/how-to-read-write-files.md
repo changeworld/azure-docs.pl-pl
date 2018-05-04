@@ -1,6 +1,6 @@
 ---
-title: "Odczyt i zapis plików dużej ilości danych | Dokumentacja firmy Microsoft"
-description: "Odczytywanie i zapisywanie dużych plików w eksperymentów w usłudze Azure Machine Learning."
+title: Odczyt i zapis plików dużej ilości danych | Dokumentacja firmy Microsoft
+description: Odczytywanie i zapisywanie dużych plików w eksperymentów w usłudze Azure Machine Learning.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
 ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Utrwalanie zmian i Praca z dużymi plikami
 W usłudze Azure Machine Learning eksperymenty można skonfigurować różne realizacji celów. Niektóre elementy docelowe są lokalne, na przykład komputer lokalny lub kontener Docker na komputerze lokalnym. Inne są zdalnego, takich jak kontener Docker na komputerze zdalnym lub klastra usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Machine Learning eksperymentu usługi wykonywania](experimentation-service-configuration.md). 

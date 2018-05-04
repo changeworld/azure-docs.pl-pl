@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 3d6f2bf569ecfebe3bf4f535a7a8ab3bf22849f1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f0df9b02e7672faec3a1d94997c9b27ffca275e5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Często zadawane pytania w stosie Azure użycia interfejsu API
 Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące interfejsu API Azure stosu użycia.
@@ -44,7 +44,7 @@ Użycie jest zgłaszany w przypadku następujących dostawców zasobów:
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |Żądania liczba 10, 000's |Żądania obsługi kolejki (w 10 000). |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Transfer danych przychodzących danych w GB |Usługa kolejki danych wejściowych w GB. |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Transfer danych wychodzących w GB |Wyjście danych usługi kolejki w GB |
-| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*godziny   | Całkowita pojemność baz danych podczas tworzenia. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca MB pomnożona przez liczbę godzin. |
+| **SQL RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*godziny   | Całkowita pojemność baz danych podczas tworzenia. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca MB pomnożona przez liczbę godzin. |
 | **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*godziny    | Całkowita pojemność baz danych podczas tworzenia. Jeśli wywołujesz interfejs API użycia z dzienne licznika zwraca MB pomnożona przez liczbę godzin. |
 | **Obliczanie** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Godziny rozmiar podstawowej maszyny Wirtualnej |Wirtualne podstawowe godziny | Liczba rdzeni wirtualnego pomnożona przez godziny, w których uruchomiono maszyny Wirtualnej. |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Godziny rozmiar maszyny Wirtualnej systemu Windows |Wirtualne podstawowe godziny | Liczba rdzeni wirtualnego pomnożona przez godziny uruchomienia maszyny Wirtualnej. |
@@ -68,7 +68,7 @@ Użycie jest zgłaszany w przypadku następujących dostawców zasobów:
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Jak wykorzystanie stosu Azure, interfejsy API porównania [użycia usługi Azure API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (obecnie w publicznej wersji zapoznawczej)?
 * Interfejs API użycia dzierżawcy jest zgodna z interfejsu API platformy Azure, z jednym wyjątkiem: *showDetails* flagi obecnie nie jest obsługiwana w stosie Azure.
 * Interfejs API użycia dostawcy dotyczy tylko stosu Azure.
-* Obecnie [RateCard API](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx) czyli dostępnej na platformie Azure nie jest dostępna w stosie Azure.
+* Obecnie [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) czyli dostępnej na platformie Azure nie jest dostępna w stosie Azure.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Jaka jest różnica między czasem użycia i zgłoszony czas?
 Raporty danych użycia są dwie wartości czasu głównego:

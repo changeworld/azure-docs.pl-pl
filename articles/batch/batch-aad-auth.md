@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 09/28/2017
+ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c28af5a9773cc362663831346b58f599aed6ea9a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie partii rozwiązań usług w usłudze Active Directory
 
@@ -65,7 +65,7 @@ Użyj **punktu końcowego zasobów partii zadań Azure** można uzyskać tokenu 
 
 Pierwszy krok w celu uwierzytelniania przy użyciu usługi Azure AD jest zarejestrowanie aplikację w dzierżawie usługi Azure AD. Rejestrowanie aplikacji umożliwia wywoływanie platformy Azure [biblioteki uwierzytelniania usługi Active Directory] [ aad_adal] (ADAL) w kodzie. ADAL udostępnia interfejs API w celu uwierzytelniania w usłudze Azure AD z aplikacji. Rejestrowanie aplikacji jest wymagana czy planujesz używać zintegrowanego uwierzytelniania lub nazwy głównej usługi.
 
-Podczas rejestrowania aplikacji, podanych informacji o aplikacji do usługi Azure AD. Następnie usługi Azure AD zapewnia identyfikator aplikacji, która umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej na temat identyfikator aplikacji, zobacz [aplikacji i usług obiektów principal w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+Podczas rejestrowania aplikacji, podanych informacji o aplikacji do usługi Azure AD. Następnie usługi Azure AD zapewnia identyfikator aplikacji (nazywane również *identyfikator klienta*) umożliwia kojarzenie aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej na temat identyfikator aplikacji, zobacz [aplikacji i usług obiektów principal w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
 
 Aby zarejestrować aplikację partii, postępuj zgodnie z instrukcjami [Dodawanie aplikacji](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) sekcji [Integrowanie aplikacji z usługą Azure Active Directory][aad_integrate]. Jeśli zarejestrujesz aplikacji jako aplikacji natywnej, można określić dowolny prawidłowy identyfikator URI dla **identyfikator URI przekierowania**. Nie musi być rzeczywistym punktu końcowego.
 
@@ -81,7 +81,7 @@ Identyfikator dzierżawy określa dzierżawy usługi Azure AD, która zapewnia u
 
 1. W portalu Azure wybierz usługi Active Directory.
 2. Kliknij pozycję **Właściwości**.
-3. Skopiuj wartość identyfikatora GUID dla identyfikatora katalogu. Ta wartość jest również określany jako identyfikator dzierżawcy.
+3. Skopiuj wartość identyfikatora GUID **identyfikator katalogu**. Ta wartość jest również określany jako identyfikator dzierżawcy.
 
 ![Skopiuj identyfikator katalogu](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -97,17 +97,17 @@ Po wprowadzeniu [zarejestrowana aplikacja](#register-your-application-with-an-az
 
     ![Wyszukaj nazwę aplikacji](./media/batch-aad-auth/search-app-registration.png)
 
-3. Otwórz **ustawienia** bloku dla aplikacji. W **dostępu do interfejsu API** zaznacz **wymagane uprawnienia**.
+3. Kliknij aplikację, a następnie kliknij przycisk **ustawienia**. W **dostępu do interfejsu API** zaznacz **wymagane uprawnienia**.
 4. W **wymagane uprawnienia** bloku, kliknij przycisk **Dodaj** przycisku.
-5. W kroku 1 Wyszukaj interfejsu API partii. Wyszukuj następujące ciągi, aż znajdziesz odpowiedni interfejs API:
+5. W **wybierz interfejs API**, wyszukaj interfejsu API partii. Wyszukuj następujące ciągi, aż znajdziesz odpowiedni interfejs API:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. W przypadku nowszych dzierżaw usługi Azure AD może być używana ta nazwa.
     3. **ddbf3205-c6bd-46ae-8127-60eb93363864** to identyfikator interfejsu API usługi Batch. 
-6. Po znalezieniu interfejsu API partii, zaznacz go i kliknij **wybierz** przycisku.
-6. W kroku 2, zaznacz pole wyboru **usługa partia zadań Azure dostępu** i kliknij przycisk **wybierz** przycisku.
-7. Kliknij przycisk **gotowe** przycisku.
+6. Po znalezieniu interfejsu API partii, zaznacz go i kliknij **wybierz**.
+7. W **wybierz uprawnienia**, zaznacz pole wyboru obok pozycji **usługa partia zadań Azure dostępu** i kliknij przycisk **wybierz**.
+8. Kliknij przycisk **Gotowe**.
 
-**Wymagane uprawnienia** bloku teraz pokazuje, czy aplikacja usługi Azure AD ma dostęp do biblioteki ADAL oraz partii usługi interfejsu API. Przyznano uprawnienia do biblioteki ADAL automatycznie podczas rejestrowania aplikacji z usługą Azure AD.
+**Wymagane uprawnienia** windows teraz pokazuje, czy aplikacja usługi Azure AD ma dostęp do biblioteki ADAL oraz partii usługi interfejsu API. Przyznano uprawnienia do biblioteki ADAL automatycznie podczas rejestrowania aplikacji z usługą Azure AD.
 
 ![Interfejs API Udziel uprawnień](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -126,7 +126,7 @@ Wykonaj następujące kroki w portalu Azure:
 
 1. W okienku nawigacji po lewej stronie portalu Azure wybierz **wszystkie usługi**. Kliknij przycisk **rejestracji aplikacji**.
 2. Wyszukaj nazwę aplikacji na liście rejestracji aplikacji.
-3. Wyświetl **ustawienia** bloku. W **dostępu do interfejsu API** zaznacz **klucze**.
+3. Kliknij aplikację, a następnie kliknij przycisk **ustawienia**. W **dostępu do interfejsu API** zaznacz **klucze**.
 4. Aby utworzyć klucz, wprowadź opis klucza. Następnie wybierz czas trwania dla klucza jeden lub dwa lata. 
 5. Kliknij przycisk **zapisać** przycisk, aby utworzyć i wyświetlić klucz. Skopiować wartość klucza do bezpiecznej lokalizacji, nie będzie można uzyskać do niego dostęp ponownie po zakończeniu działania bloku. 
 
@@ -152,14 +152,14 @@ Identyfikator dzierżawy określa dzierżawy usługi Azure AD, która zapewnia u
 
 1. W portalu Azure wybierz usługi Active Directory.
 2. Kliknij pozycję **Właściwości**.
-3. Skopiuj wartość identyfikatora GUID dla identyfikatora katalogu. Ta wartość jest również określany jako identyfikator dzierżawcy.
+3. Skopiuj wartość identyfikatora GUID **identyfikator katalogu**. Ta wartość jest również określany jako identyfikator dzierżawcy.
 
 ![Skopiuj identyfikator katalogu](./media/batch-aad-auth/aad-directory-id.png)
 
 
 ## <a name="code-examples"></a>Przykłady kodu
 
-Przykłady kodu w tej sekcji przedstawiają sposób uwierzytelniania z usługi Azure AD przy użyciu zintegrowanego uwierzytelniania i nazwy głównej usługi. Te przykłady kodu przy użyciu .NET, ale pojęcia są podobne dla innych języków.
+Przykłady kodu w tej sekcji przedstawiają sposób uwierzytelniania z usługi Azure AD przy użyciu zintegrowanego uwierzytelniania i nazwy głównej usługi. Większość tych przykładów kodu przy użyciu .NET, ale pojęcia są podobne dla innych języków.
 
 > [!NOTE]
 > Token uwierzytelniania usługi Azure AD wygasa po upływie godziny. Korzystając z długotrwałe **BatchClient** obiektu, zaleca się pobrania tokenu z biblioteki ADAL na każde żądanie, aby upewnić się, zawsze ma nieprawidłowy token. 
@@ -205,7 +205,7 @@ Określ identyfikator aplikacji (identyfikator klienta) dla aplikacji. Identyfik
 private const string ClientId = "<application-id>";
 ```
 
-Kopiuje też przekierowania URI, które zostały określone podczas procesu rejestracji. Określone w kodzie identyfikator URI przekierowania musi być zgodna przekierowania URI podane podczas rejestrowania aplikacji:
+Także skopiować przekierowania URI, który jest określony, jeśli aplikacja jest zarejestrowany jako aplikacji natywnej. Określone w kodzie identyfikator URI przekierowania musi być zgodna przekierowania URI podane podczas rejestrowania aplikacji:
 
 ```csharp
 private const string RedirectUri = "http://mybatchdatasample";
@@ -296,7 +296,7 @@ public static async Task<string> GetAuthenticationTokenAsync()
 }
 ```
 
-Utworzyć **BatchTokenCredentials** obiekt, który przyjmuje delegata jako parametr. Użyj tych poświadczeń do otwierania **BatchClient** obiektu. Następnie można użyć który **BatchClient** obiektu dla kolejnych operacji względem usługi partia zadań:
+Utworzyć **BatchTokenCredentials** obiekt, który przyjmuje delegata jako parametr. Użyj tych poświadczeń do otwierania **BatchClient** obiektu. Użyj tego **BatchClient** obiektu dla kolejnych operacji względem usługi partia zadań:
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -308,6 +308,65 @@ public static async Task PerformBatchOperations()
         await client.JobOperations.ListJobs().ToListAsync();
     }
 }
+```
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Przykład kodu: przy użyciu nazwy głównej usługi Azure AD z partii Python
+
+Do uwierzytelniania za pomocą nazwy głównej usługi w języku Python partii, zainstalowania i odwołania [partii zadań azure](https://pypi.org/project/azure-batch/) i [typowe azure](https://pypi.org/project/azure-common/) modułów.
+
+
+```python
+from azure.batch import BatchServiceClient
+from azure.common.credentials import ServicePrincipalCredentials
+```
+
+Przy użyciu nazwy głównej usługi, należy podać identyfikator dzierżawcy. Aby pobrać identyfikator dzierżawy, wykonaj czynności opisane w temacie [uzyskanie Identyfikatora dzierżawy usługi Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
+
+```python
+TENANT_ID = "<tenant-id>";
+```
+
+Odwołanie do punktu końcowego zasobów usługi partii:  
+
+```python
+RESOURCE = "https://batch.core.windows.net/";
+```
+
+Odwołanie konta partii zadań:
+
+```python
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+```
+
+Określ identyfikator aplikacji (identyfikator klienta) dla aplikacji. Identyfikator aplikacji jest dostępna z rejestracji aplikacji w portalu Azure:
+
+```python
+CLIENT_ID = "<application-id>";
+```
+
+Określ klucz tajny, który został skopiowany z portalu Azure:
+
+```python
+SECRET = "<secret-key>";
+```
+
+Utwórz **ServicePrincipalCredentials** obiektu:
+
+```python
+credentials = ServicePrincipalCredentials(
+    client_id=CLIENT_ID,
+    secret=SECRET,
+    tenant=TENANT_ID,
+    resource=RESOURCE
+)
+```
+
+Umożliwia otwieranie poświadczenia główne usługi **BatchServiceClient** obiektu. Użyj tego **BatchServiceClient** obiektu dla kolejnych operacji względem usługi partia zadań.
+
+```python
+    batch_client = BatchServiceClient(
+    credentials,
+    base_url=BATCH_ACCOUNT_URL
+)
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

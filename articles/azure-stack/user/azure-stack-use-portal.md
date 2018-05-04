@@ -1,49 +1,49 @@
 ---
-title: "Przy użyciu portalu Azure stosu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostępu i korzystanie z aplikacji portal użytkowników w stosie Azure."
+title: Przy użyciu portalu Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostępu i korzystanie z aplikacji portal użytkowników w stosie Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 5aa00123-5b87-45e0-a671-4165e66bfbc6
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 279722cc53889cb0a261fcffde0c7e0f86be6dc5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Przy użyciu portalu Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Jako klient korzystający z usług Azure stosu za pomocą portalu Azure stosu do subskrybowania publiczne oferty i korzystać z usług, które są dostępne za pośrednictwem tych ofert. Jeśli używano portalu Azure przed, znasz już interfejsu użytkownika.
+Jako klient korzystający z usług Azure stosu za pomocą portalu Azure stosu do subskrybowania publiczne oferty i korzystać z usług, które zapewniają te oferty. Jeśli używano portalu Azure przed, znasz już interfejsu użytkownika.
 
 ## <a name="access-the-portal"></a>Dostępu do portalu
 
-Operatorem stosu Azure (dostawcy usług lub administrator w organizacji), może powiadamiać o poprawny adres URL do dostępu do portalu. 
+Operatorem stosu Azure (dostawcy usług lub administrator w organizacji), może powiadamiać o poprawny adres URL do dostępu do portalu.
 
-- Zintegrowany system adres URL zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem i będzie w format https://portal. &lt; *region*&gt;.&lt; *FQDN*&gt;.
+- Zintegrowany system, zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem adres URL, a musi być w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
 - Jeśli używasz usługi Azure stosu Development Kit adres portalu jest https://portal.local.azurestack.external.
 
 ![Zrzut ekranu przedstawiający portal użytkowników usługi Azure stosu](media/azure-stack-use-portal/UserPortal.png)
 
 ## <a name="customize-the-dashboard"></a>Dostosowywać pulpit nawigacyjny
 
-Pulpit nawigacyjny zawiera zestaw domyślnych kafelków. Możesz kliknąć **edycji pulpitu nawigacyjnego** do zmiany domyślnego pulpitu nawigacyjnego, albo kliknij przycisk **nowego pulpitu nawigacyjnego** dodawać niestandardowe pulpity nawigacyjne. Można łatwo dodać Kafelki na pulpicie nawigacyjnym. Na przykład kliknięcie **nowy**, kliknij prawym przyciskiem myszy **obliczeniowe**, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
+Pulpit nawigacyjny zawiera domyślny zestaw kafelków. Możesz kliknąć **edycji pulpitu nawigacyjnego** do zmiany domyślnego pulpitu nawigacyjnego, albo kliknij przycisk **nowego pulpitu nawigacyjnego** utworzenie niestandardowego pulpitu nawigacyjnego. Można łatwo dostosować pulpit nawigacyjny, dodając lub usuwając Kafelki. Na przykład, aby dodać pole obliczeniowe, kliknij przycisk **nowy**. Kliknij prawym przyciskiem myszy **obliczeniowe**, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Tworzenie subskrypcji i przeglądanie dostępnych zasobów
  
-Jeśli nie masz już subskrypcję, w pierwszej kolejności należy wykonać to subskrybować oferty. Po wykonaniu tej można przeglądać, jakie zasoby są dostępne. Aby przeglądać i Utwórz zasoby, wykonaj jedną z następujących czynności:
+Jeśli nie masz już subskrypcję, w pierwszej kolejności należy wykonać to subskrybować oferty. Następnie można przeglądać dostępne zasoby. Przeglądanie i utworzyć zasobów, użyj jednej z następujących metod:
 
-- Kliknij przycisk **Marketplace** kafelka na pulpicie nawigacyjnym. 
+- Kliknij przycisk **Marketplace** kafelka na pulpicie nawigacyjnym.
 - Na **wszystkie zasoby** Kafelek, kliknij przycisk **Utwórz zasoby**.
 - W lewym okienku nawigacji, kliknij polecenie **nowy**.
 
@@ -51,7 +51,7 @@ Jeśli nie masz już subskrypcję, w pierwszej kolejności należy wykonać to s
 
 Aby uzyskać wskazówki dotyczące sposobu używania dostępnych usług, mogą istnieć różne opcje dostępne dla Ciebie.
 
-- Organizacja lub dostawcy usług mogą zawierać własnej dokumentacji. Jest to szczególnie istotne, jeśli oferują możliwość wyboru usług lub aplikacji.
+- Organizacja lub dostawcy usług mogą zawierać własnej dokumentacji, która jest typowe w przypadku, jeśli oferują możliwość wyboru usług lub aplikacji.
 - Aplikacje innych producentów ma własną dokumentację.
 - Usług Azure spójne zaleca się przejrzenie dokumentacji stosu Azure. Aby uzyskać dostęp do dokumentacji użytkownika stosu Azure, kliknij ikonę Pomoc, a następnie kliknij przycisk **Pomoc i obsługa techniczna**.
  
@@ -60,15 +60,15 @@ Aby uzyskać wskazówki dotyczące sposobu używania dostępnych usług, mogą i
     W szczególności zalecamy zapoznanie się następujące artykuły, aby rozpocząć:
 
     - [Kluczowe zagadnienia dotyczące: za pomocą usług lub tworzenia aplikacji dla platformy Azure stosu](azure-stack-considerations.md)
-    - W sekcji "Użyj usługi" dokumentacji zobaczysz poszczególnych usług Azure spójne na liście. Brak tematu "Uwagi" dla każdej usługi, w którym opisano różnice między usług oferowanych na platformie Azure i tej samej usługi oferowane w stosie usługi Azure. Na przykład zobacz [zagadnienia dotyczące maszyny Wirtualnej](azure-stack-vm-considerations.md). Mogą istnieć inne informacje w sekcji "Użyj usługi" jest unikatowy dla stosu Azure. 
+    - W sekcji "Użyj usługi" w dokumentacji ma artykuł "Uwagi", dla każdej usługi. Na stronie "Uwagi" opisano różnice między usług oferowanych na platformie Azure i tej samej usługi oferowane w stosie Azure. Na przykład zobacz [zagadnienia dotyczące maszyny Wirtualnej](azure-stack-vm-considerations.md). Mogą istnieć inne informacje w sekcji "Użyj usługi" jest unikatowy dla stosu Azure.
      
       Dokumentację platformy Azure można używać jako informacje ogólne, dla usługi, ale należy pamiętać o tych różnic. Zrozumienie, że dokumentację łączy **samouczków szybkiego startu** kafelka punktu dokumentacji platformy Azure.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-Jeśli potrzebujesz dodatkowej pomocy, skontaktuj się z dostawcą organizacji lub usługi, aby uzyskać pomoc. 
+Jeśli potrzebujesz dodatkowej pomocy, skontaktuj się z dostawcą organizacji lub usługi.
 
-Jeśli używasz usługi Azure stosu Development Kit [forum Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) jest jedyną metodą pomocy technicznej.
+Jeśli używasz usługi Azure stosu Development Kit [forum Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) jest jedynym źródłem pomocy technicznej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

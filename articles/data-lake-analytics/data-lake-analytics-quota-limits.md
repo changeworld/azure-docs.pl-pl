@@ -1,9 +1,9 @@
 ---
-title: "Limity przydziału usługi Azure Data Lake Analytics"
-description: "Dowiedz się, jak dostosować i zwiększyć limity przydziału na kontach usługi Azure Data Lake Analytics (ADLA)."
+title: Limity przydziału usługi Azure Data Lake Analytics
+description: Dowiedz się, jak dostosować i zwiększyć limity przydziału na kontach usługi Azure Data Lake Analytics (ADLA).
 services: data-lake-analytics
 keywords: Azure Data Lake Analytics
-documentationcenter: 
+documentationcenter: ''
 author: omidm1
 editor: omidm1
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
@@ -12,11 +12,11 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Limity przydziału usługi Azure Data Lake Analytics
 
@@ -24,9 +24,13 @@ Dowiedz się, jak dostosować i zwiększyć limity przydziału na kontach usług
 
 ## <a name="azure-subscriptions-limits"></a>Limity subskrypcji platformy Azure
 
-**Maksymalna liczba ADLA konta dla subskrypcji:** 5
+**Maksymalna liczba ADLA konta dla subskrypcji dla regionu:** 5
 
-Jest to maksymalna liczba kont ADLA, tworzonych na subskrypcję, na region. Jeśli próbujesz utworzyć konto ADLA szóstego, wystąpi błąd "Osiągnięto maksymalną liczbę kont usługi Data Lake Analytics może (5) w regionie, w obszarze Nazwa subskrypcji". W takiej sytuacji można wybrać inny region, jeśli jest to odpowiedni lub Usuń wszystkie nieużywane konta ADLA w tym samym regionie, lub skontaktuj się z platformy Azure obsługuje przez [otwarcie biletu pomocy technicznej](#increase-maximum-quota-limits) Aby zażądać zwiększenia limitu przydziału.
+Jeśli próbujesz utworzyć konto ADLA szóstego, wystąpi błąd "Osiągnięto maksymalną liczbę kont usługi Data Lake Analytics może (5) w regionie, w obszarze Nazwa subskrypcji". 
+
+Jeśli chcesz wykracza poza ten limit, możesz spróbować te opcje:
+* Wybierz inny region, jeśli jest to odpowiednie
+* Skontaktuj się z pomocą techniczną platformy Azure przez [otwarcie biletu pomocy technicznej](#increase-maximum-quota-limits) Aby zażądać zwiększenia limitu przydziału.
 
 ## <a name="adla-account-limits"></a>Limity konta ADLA
 

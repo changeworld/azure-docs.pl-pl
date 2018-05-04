@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 16e0fc493a257504e2708336e05c30b36d4bea15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c3622b4699ef532f204231c76aa3436be3676763
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Nowe alerty występują w monitorze Azure
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2018
 
 Alerty ma nowego środowiska. Alerty starsze obsługi jest teraz na karcie alerty (klasyczny). Nowe środowisko alertów ma następujące zalety nad środowiskiem alerty (klasyczne):
 
--   **Lepsze systemu powiadomień**: Użyj wszystkie alerty nowszej [grupy akcji]( https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups), które są nazywane grup powiadomień oraz akcje, które mogą być ponownie używane w wielu alertów.  Klasycznym alerty metryki i starszych alerty analizy dzienników nie należy używać grup akcji. 
+-   **Lepsze systemu powiadomień**: Użyj wszystkie alerty nowszej [grupy akcji]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), które są nazywane grup powiadomień oraz akcje, które mogą być ponownie używane w wielu alertów.  Klasycznym alerty metryki i starszych alerty analizy dzienników nie należy używać grup akcji. 
 - **A unified środowisko tworzenia** — wszystkich alertów tworzenie miar, dzienników i aktywności logowania przez Monitor Azure Log Analytics i usługi Application Insights znajduje się w jednym miejscu. 
 - **Widok generowane alerty Log Analytics w portalu Azure** — można teraz również Zobacz generowane alerty analizy dzienników w ramach subskrypcji. Wcześniej były one w oddzielnych portalu. 
 - **Rozdzielenie Fired alertów i reguły alertu** — Alert reguły (definicja warunku wyzwalania alertu) i generowane alerty (wystąpienia uruchamiania reguły alertu) są zróżnicowane, więc widoków operacyjnych i konfiguracji są rozdzielone.
@@ -104,7 +104,7 @@ Alerty są dostępne przez kilka Azure monitorowanie usług. Aby uzyskać inform
 | **Typ sygnału** | **Źródło monitora** | **Opis** | 
 |-------------|----------------|-------------|
 | Metryka | Monitor systemu Azure | Skrót [alerty metryki niemal czasie rzeczywistym](monitoring-near-real-time-metric-alerts.md), obsługuje sprawdzanie warunków metryki co minutę często i umożliwić reguły metryki wielu metryki i wielowymiarowych. Dostępna jest lista obsługiwane typy zasobów [tutaj](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported). |
-| Metryka | Monitor systemu Azure | [Starsze klasycznego alerty metryki](monitoring-overview-alerts.md) nie są obsługiwane w nowym środowisku alerty. Można je znaleźć w obszarze alerty (klasyczne) w portalu Azure. Alerty klasycznego obsługuje niektóre typy metryk, które nie zostały przeniesione do nowszej alertów. Aby uzyskać pełną listę, zobacz [obsługiwane metryk](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
+| Metryka | Monitor systemu Azure | [Starsze klasycznego alerty metryki](monitoring-overview-alerts.md) nie są obsługiwane w nowym środowisku alerty. Można je znaleźć w obszarze alerty (klasyczne) w portalu Azure. Alerty klasycznego obsługuje niektóre typy metryk, które nie zostały przeniesione do nowszej alertów. Aby uzyskać pełną listę, zobacz [obsługiwane metryk](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
 | Dzienniki  | Log Analytics | Otrzymywać powiadomienia, lub Uruchom akcje automatyczne, gdy dziennik zapytania wyszukiwania danych metryki i/lub zdarzeń spełnia określone kryteria. Starsze alerty analizy dzienników są nadal dostępne, ale są [kopiowane do nowego środowiska](monitoring-alerts-extend.md). Ponadto [Podgląd *analizy dzienników rejestruje jako metryki* ](monitoring-alerts-extend-tool.md) jest dostępna. Wersja zapoznawcza umożliwia wykonać niektóre typy dzienników i przekonwertować je na metryki, gdy użytkownik może następnie alert po wystąpieniu je za pomocą nowego środowiska alertów. Podgląd jest przydatne w przypadku innych niż Azure dzienniki, które chcesz pobrać obok natywnego metryki Azure Monitor. |
 | Dziennik aktywności | Dzienniki aktywności (Ogólne) | Zawiera rekordy wszystkie akcje tworzenia, aktualizowania lub usuwania wykonywane za pomocą wybranego celu (Grupa zasobów/zasobów/subskrypcji). |
 | Dziennik aktywności  | Service Health | Nie jest obsługiwany w nowym środowisku alerty. Zobacz [tworzyć alerty dziennika działania dotyczące powiadomień usługi](monitoring-activity-log-alerts-on-service-notifications.md).  |
@@ -115,7 +115,7 @@ Alerty są dostępne przez kilka Azure monitorowanie usług. Aby uzyskać inform
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Informacje o sposobie użycia nowego środowiska alertów do tworzenia, wyświetlania i Zarządzanie alertami](monitor-alerts-unified-usage.md)
 - [Dowiedz się więcej o alertach dziennika w środowisku alertów](monitor-alerts-unified-log.md)
 - [Dowiedz się więcej o alertach metryki środowisko alertów](monitoring-near-real-time-metric-alerts.md)

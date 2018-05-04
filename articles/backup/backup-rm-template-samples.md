@@ -1,0 +1,42 @@
+---
+title: Szablony usługi Azure Resource Manager dla usługi Azure Backup | Microsoft Docs
+description: Przykłady programu PowerShell dla usługi Azure Backup
+services: backup
+documentationcenter: ''
+author: markgalioto
+manager: carmonm
+editor: ''
+tags: ''
+ms.assetid: ''
+ms.service: backup
+ms.devlang: na
+ms.topic: sample
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 04/18/2018
+ms.author: markgal
+ms.custom: mvc
+ms.openlocfilehash: b8502e4e3934b36fb4c8ccac00f4fa14565780d9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/23/2018
+---
+# <a name="azure-resource-manager-templates-for-azure-backup"></a>Szablony usługi Azure Resource Manager dla usługi Azure Backup
+
+Poniższa tabela zawiera linki do szablonów usługi Azure Resource Manager używanych dla magazynów usługi Recovery Services i funkcji usługi Azure Backup.
+
+|   |   |
+|---|---|
+|**Magazyn usługi Recovery Services** | |
+| [Tworzenie magazynu usługi Recovery Services](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Utwórz magazyn usługi Recovery Services. Magazynu można użyć dla usług Azure Backup i Azure Site Recovery. |
+|**Tworzenie kopii zapasowych maszyn wirtualnych**| |
+| [Tworzenie kopii zapasowych maszyn wirtualnych usługi Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-vms) | Za pomocą istniejącego magazynu usługi Recovery Services i zasad usługi Backup można tworzyć kopie zapasowe maszyn wirtualnych usługi Resource Manager w tej samej grupie zasobów.|
+| [Tworzenie kopii zapasowych maszyn wirtualnych infrastruktury IaaS w magazynie usługi Recovery Services](https://github.com/Azure/azure-quickstart-templates/tree/master/201-recovery-services-backup-classic-resource-manager-vms) | Szablon tworzenia kopii zapasowej klasycznych maszyn wirtualnych i maszyn wirtualnych usługi Resource Manager. |
+| [Tworzenie zasad cotygodniowego tworzenia kopii zapasowej dla maszyn wirtualnych infrastruktury IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-weekly-backup-policy-create) | Szablon umożliwia utworzenie magazynu usługi Recovery Services i zasad cotygodniowego tworzenia kopii zapasowej używanych do tworzenia kopii zapasowej klasycznych maszyn wirtualnych i maszyn wirtualnych usługi Resource Manager.|
+| [Tworzenie zasad codziennego tworzenia kopii zapasowej dla maszyn wirtualnych infrastruktury IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-daily-backup-policy-create) | Szablon umożliwia utworzenie magazynu usługi Recovery Services i zasad codziennego tworzenia kopii zapasowej używanych do tworzenia kopii zapasowej klasycznych maszyn wirtualnych i maszyn wirtualnych usługi Resource Manager.|
+| [Wdrażanie maszyny wirtualnej z systemem Windows Server i włączoną kopią zapasową](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | Szablon umożliwia utworzenie maszyny wirtualnej z systemem Windows Server i magazynu usługi Recovery Services z włączonymi domyślnymi zasadami kopii zapasowej.|
+|**Monitorowanie zadań kopii zapasowej** |  |
+| [Używanie usługi Log Analytics pakietu OMS do monitorowania usługi Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Szablon umożliwia wdrożenie funkcji monitorowania pakietu OMS dla usługi Azure Backup, która pozwala na monitorowanie zadań tworzenia i przywracania kopii zapasowej, alertów kopii zapasowych i magazynu w chmurze używanego przez magazyny usługi Recovery Services.|  
+|   |   |
+

@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 251c736e0f607ffeea144639f437900eb337b6ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6d061d5b1100051a2a06e838dc16912119efb6c9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-location-based-services---traffic-coverage"></a>Lokalizacja platformy Azure na podstawie usług - pokrycia ruchu
 
@@ -31,6 +31,7 @@ Azure lokalizacji na podstawie usług (kg) zawiera informacje sformatowanego ruc
 |Bahrajn     |         |✓         |
 |Belgia     |✓         |✓         |
 |Brazylia     |✓         |✓         |
+|Bułgaria     |✓         |✓         |
 |Kanada     |✓         |✓         |
 |Chile     |✓         |✓         |
 |Kolumbia      |         |✓         |
@@ -55,7 +56,7 @@ Azure lokalizacji na podstawie usług (kg) zawiera informacje sformatowanego ruc
 |+San Marino     |✓         |✓         |
 |Kuwejt     |✓         |✓         |
 |Łotwa     |         |✓         |
-|Lesotho     |✓         |✓         |
+|Lesoto     |✓         |✓         |
 |Litwa     |         |✓         |
 |Luksemburg     |✓         |✓         |
 |SRA Makau     |         |✓         |

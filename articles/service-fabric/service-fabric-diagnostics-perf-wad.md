@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: b2b740c2ececba2c3f95f8fbfbfb55e7f4811112
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9e8ef7243fcef990dae6ddc6509cd31b3f36e3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności z rozszerzeniem diagnostyki Windows Azure
 
@@ -44,7 +44,9 @@ Można zebrać liczników wydajności za pośrednictwem WAD, należy zmodyfikowa
 
     `scheduledTransferPeriod` Definiuje konfiguracji frquently wartości liczników, które są zbierane są przekazywane do tabeli magazynu systemu Azure i dla każdego obiektu sink. 
 
-3. Dodaj liczniki wydajności, które chcesz zebrać na potrzeby `PerformanceCounterConfiguration` który został zadeklarowany w poprzednim kroku. Każdego licznika chcesz zbierać jest zdefiniowana z `counterSpecifier`, `sampleRate`, `unit`, `annotation`, a wszelkie odpowiednie `sinks`. Poniżej przedstawiono przykład konfiguracji licznika dla *łączny czas procesora* (ilość czasu procesora CPU był używany w operacjach przetwarzania) i *wywołań metod aktora sieci szkieletowej usług na sekundę*, jeden z liczników wydajności niestandardowe sieci szkieletowej usług. Zapoznaj się [liczników wydajności usługi niezawodnego aktora](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) i [niezawodnej liczników wydajności usługi](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) pełną listę liczników niestandardowych wydajności sieci szkieletowej usług.
+3. Dodaj liczniki wydajności, które chcesz zebrać na potrzeby `PerformanceCounterConfiguration` który został zadeklarowany w poprzednim kroku. Każdego licznika chcesz zbierać jest zdefiniowana z `counterSpecifier`, `sampleRate`, `unit`, `annotation`, a wszelkie odpowiednie `sinks`.
+
+Poniżej przedstawiono przykład konfiguracji licznika dla *łączny czas procesora* (ilość czasu procesora CPU był używany w operacjach przetwarzania) i *wywołań metod aktora sieci szkieletowej usług na sekundę*, jeden z liczników wydajności niestandardowe sieci szkieletowej usług. Zapoznaj się [liczników wydajności usługi niezawodnego aktora](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) i [niezawodnej liczników wydajności usługi](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) pełną listę liczników niestandardowych wydajności sieci szkieletowej usług.
 
  ```json
  "WadCfg": {
@@ -112,9 +114,8 @@ Można zebrać liczników wydajności za pośrednictwem WAD, należy zmodyfikowa
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Po zakończeniu uaktualniania zetknie (trwa od 15 do 45 minut), WAD powinny być zbierania liczników wydajności i wysyłania ich do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastra.
+5. Po zakończeniu uaktualniania zetknie (trwa od 15 do 45 minut), WAD powinny być zbierania liczników wydajności i wysyłania ich do tabeli o nazwie WADPerformanceCountersTable w ramach konta magazynu skojarzone z klastra. Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie zbiornika AI do szablonu usługi Resource Manager](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz liczniki wydajności w usłudze Application Insights przez [Dodawanie zbiornika AI do szablonu usługi Resource Manager](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
 * Zbieranie większej liczby liczników wydajności dla klastra. Zobacz [metryki wydajności](service-fabric-diagnostics-event-generation-perf.md) listę liczników, które należy zebrać.
 * [Użyj monitorowania i diagnostyki z szablonów maszyny Wirtualnej systemu Windows i usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) na dalsze zmiany w Twojej `WadCfg`, łącznie z konfigurowaniem dodatkowych kont magazynu do wysyłania danych diagnostycznych.

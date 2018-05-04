@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3e23bab6d67cc4911dd46c226ebc9b87e40e2fa2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Przechowywania adresów IP pracy w trybie failover maszyny wirtualnej platformy Azure
 
@@ -34,20 +34,20 @@ Biorąc pod uwagę wymagania przechowywania adresu IP (np. dla powiązań aplika
 
 Oto, jak wygląda architektury sieci przed trybu failover:
 - Maszyny wirtualne aplikacji znajdują się w usłudze Azure Azja Wschodnia, przy użyciu sieci wirtualnej platformy Azure z 10.1.0.0/16 przestrzeni adresowej. Ta sieć wirtualna o nazwie **sieci wirtualnej źródła**.
-- Obciążeń aplikacji są podzielone na trzy podsieci — 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24 odpowiednio o nazwie **podsieć 1**, **podsieci 2**, **3 podsieci**.
+- Obciążeń aplikacji są podzielone na trzy podsieci — 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24 odpowiednio o nazwie **podsieć 1**, **podsieci 2**, **3 podsieci**.
 - Azure Azja południowo-wschodni region docelowy i ma sieć wirtualną odzyskiwania i naśladuje konfiguracji miejsca i podsieć adresu w źródle. Ta sieć wirtualna o nazwie **sieci wirtualnej odzyskiwania**.
-- Węzły repliki, takich jak zawsze na kontrolerze domeny, itp. znajdują się w sieci wirtualnej z 20.1.0.0/16 miejsca adresów w podsieci 4 z 20.1.0.0/24 adres. Sieć wirtualna o nazwie **sieci wirtualnej Azure** i jest na Azja południowo-wschodnia Azure.
+- Węzły repliki, takich jak zawsze na kontrolerze domeny, itp. znajdują się w sieci wirtualnej z 10.2.0.0/16 miejsca adresów w podsieci 4 z 10.2.4.0/24 adres. Sieć wirtualna o nazwie **sieci wirtualnej Azure** i jest na Azja południowo-wschodnia Azure.
 - **Źródło sieci wirtualnej** i **sieci wirtualnej Azure** są połączone za pośrednictwem połączenie sieci VPN typu lokacja lokacja.
 - **Sieć wirtualna odzyskiwania** nie jest połączony z innych sieci wirtualnej.
 - **Firmy, A** przypisuje/sprawdza, czy docelowy adres IP dla zreplikowanych elementów. W tym przykładzie docelowy adres IP jest taki sam jak źródłowy adres IP dla każdej maszyny Wirtualnej.
 
-![Łączność Azure do platformy Azure przed trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover.png)
+![Łączność Azure do platformy Azure przed trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Pełna region trybu failover
 
 W przypadku regionalnej awarii **firmy A** można odzyskać jego całą wdrożenie szybko i łatwo za pomocą portalu usługi Azure Site Recovery zaawansowane [planów odzyskiwania](site-recovery-create-recovery-plans.md). Już ustawiony docelowy adres IP dla każdej maszyny Wirtualnej przed trybu failover, **firmy A** można organizować tryb failover i zautomatyzować ustanawianie połączenia między siecią wirtualną odzyskiwania i sieci wirtualnej Azure, jak pokazano w poniższych diagramu.
 
-![Trybu failover pełne regionu Azure do platformy Azure łączności](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover.png)
+![Trybu failover pełne regionu Azure do platformy Azure łączności](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
 W zależności od wymagań aplikacji połączeń między dwiema sieciami wirtualnymi, na region docelowy może być nawiązane przed, podczas (jako etap pośredni) lub po pracy awaryjnej. Użyj [planów odzyskiwania](site-recovery-create-recovery-plans.md) do dodania skryptów i zdefiniuj kolejność pracy awaryjnej.
 
@@ -62,23 +62,23 @@ Lepszy sposób, aby uwzględnić wymagania dotyczące aplikacji na poziomie pods
 Do projektowania poszczególnych aplikacji zapewnia odporność na awarie, zaleca się do przechowywania aplikacji w własne dedykowane sieci wirtualnej i nawiązywać połączenie między te sieci wirtualne zgodnie z wymaganiami. Umożliwia to aplikacji izolowanych trybu failover przy zachowaniu oryginalnej prywatnych adresów IP.
 
 Następnie konfiguracji trybu failover sprzed wygląda następująco:
-- Maszyny wirtualne aplikacji znajdują się w Azure Azja Wschodnia, przy użyciu sieci wirtualnej platformy Azure z 10.1.0.0/16 przestrzeni adresowej dla pierwszej aplikacji i 15.1.0.0/16 drugi aplikacji. Sieci wirtualne są nazywane **VNet1 źródła** i **VNet2 źródła** na podstawie pierwszego i drugiego odpowiednio.
+- Maszyny wirtualne aplikacji znajdują się w Azure Azja Wschodnia, przy użyciu sieci wirtualnej platformy Azure z 10.1.0.0/16 przestrzeni adresowej dla pierwszej aplikacji i 10.2.0.0/16 drugi aplikacji. Sieci wirtualne są nazywane **VNet1 źródła** i **VNet2 źródła** na podstawie pierwszego i drugiego odpowiednio.
 - Każda sieć wirtualną dalsze jest podzielony na dwie podsieci.
 - Azure Azja południowo-wschodni region docelowy i ma sieci wirtualnych odzyskiwania VNet1 odzyskiwania i VNet2 odzyskiwania.
-- Węzły repliki, takich jak zasoby potrzebne do zawsze włączone, kontroler domeny, itp. są umieszczane w sieci wirtualnej z 20.1.0.0/16 przestrzeni adresowej wewnątrz **4 podsieci** z 20.1.0.0/24 adres. Sieć wirtualna nosi nazwę sieci wirtualnej platformy Azure i jest na platformie Azure Azja południowo-wschodnia.
+- Węzły repliki, takich jak zasoby potrzebne do zawsze włączone, kontroler domeny, itp. są umieszczane w sieci wirtualnej z 10.3.0.0/16 przestrzeni adresowej wewnątrz **4 podsieci** z 10.3.4.0/24 adres. Sieć wirtualna nosi nazwę sieci wirtualnej platformy Azure i jest na platformie Azure Azja południowo-wschodnia.
 - **Źródło VNet1** i **sieci wirtualnej Azure** są połączone za pośrednictwem połączenie sieci VPN typu lokacja lokacja. Podobnie **VNet2 źródła** i **sieci wirtualnej Azure** również są połączone za pośrednictwem połączenie sieci VPN typu lokacja lokacja.
 - **Źródło VNet1** i **VNet2 źródła** również są połączone za pośrednictwem połączenia VPN S2S w tym przykładzie. Ponieważ dwie sieci wirtualne są w tym samym regionie, równorzędna sieci wirtualnej można również zamiast S2S sieci VPN.
 - **Odzyskiwanie VNet1** i **VNet2 odzyskiwania** nie są połączone z innych sieci wirtualnej.
 - Aby zmniejszyć celu czasu odzyskiwania (RTO), bramy sieci VPN są skonfigurowane na **VNet1 odzyskiwania** i **VNet2 odzyskiwania** przed trybu failover.
 
-![Łączność Azure do platformy Azure izolowane aplikację przed trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover.png)
+![Łączność Azure do platformy Azure izolowane aplikację przed trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
 W przypadku sytuacji po awarii, która dotyczy tylko jednej aplikacji (w tym przykładzie znajdujących się w VNet2 źródłowego) A firmy można odzyskać programu w następujący sposób:
 - Połączenia sieci VPN między **VNet1 źródła** i **VNet2 źródła**, a między **VNet2 źródła** i **sieci wirtualnej Azure** jest odłączony.
 - Ustanowiono połączenia sieci VPN między **VNet1 źródła** i **VNet2 odzyskiwania**, a między **VNet2 odzyskiwania** i **sieci wirtualnej Azure**.
 - Maszyny wirtualne z **VNet2 źródła** są awarii **VNet2 odzyskiwania**.
 
-![Łączność Azure do platformy Azure izolowany aplikacji po trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover.png)
+![Łączność Azure do platformy Azure izolowany aplikacji po trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
 Powyżej izolowanego trybu failover przykładzie można rozszerzyć, aby dołączyć więcej aplikacji i połączenia sieciowe. To zalecanie służy do wykonania model połączenia podobnych przypominającej, o ile to możliwe, w przypadku przechodzenie w tryb failover z źródłowego do docelowego.
 
@@ -92,13 +92,13 @@ Drugi scenariusz, możemy należy wziąć pod uwagę **firmy B** mający częś�
 
 Oto, jak wygląda architektury sieci przed trybu failover:
 - Maszyny wirtualne aplikacji znajdują się w usłudze Azure Azja Wschodnia, przy użyciu sieci wirtualnej platformy Azure z 10.1.0.0/16 przestrzeni adresowej. Ta sieć wirtualna o nazwie **sieci wirtualnej źródła**.
-- Obciążeń aplikacji są podzielone na trzy podsieci — 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24 odpowiednio o nazwie **podsieć 1**, **podsieci 2**, **3 podsieci**.
+- Obciążeń aplikacji są podzielone na trzy podsieci — 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24 odpowiednio o nazwie **podsieć 1**, **podsieci 2**, **3 podsieci**.
 - Azure Azja południowo-wschodni region docelowy i ma sieć wirtualną odzyskiwania i naśladuje konfiguracji miejsca i podsieć adresu w źródle. Ta sieć wirtualna o nazwie **sieci wirtualnej odzyskiwania**.
 - Maszyny wirtualne w Azja Wschodnia Azure są połączone z lokalnego centrum danych za pośrednictwem programu ExpressRoute lub sieci VPN typu lokacja-lokacja.
 - Aby zmniejszyć celu czasu odzyskiwania (RTO), firmy B inicjuje bram w sieci wirtualnej odzyskiwania w Azja południowo-wschodnia Azure przed trybu failover.
 - **Firmy B** przypisuje/sprawdza, czy docelowy adres IP dla zreplikowanych elementów. W tym przykładzie docelowy adres IP jest taki sam jak źródłowy adres IP dla każdej maszyny Wirtualnej
 
-![Łączność w lokalnym do Azure przed trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover.png)
+![Łączność w lokalnym do Azure przed trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Pełna region trybu failover
 
@@ -106,7 +106,7 @@ W przypadku regionalnej awarii **firmy B** można odzyskać jego całą wdrożen
 
 Oryginalne połączenie między Azja Wschodnia Azure i lokalnego centrum danych musi być odłączony przed nawiązaniem połączenia między Azja południowo-wschodnia Azure i lokalnego centrum danych. Lokalną routingu jest również tak skonfigurować, aby wskazać region docelowy i bram post trybu failover.
 
-![Łączność w lokalnym do Azure po trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover.png)
+![Łączność w lokalnym do Azure po trybu failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
 ### <a name="subnet-failover"></a>Tryb failover podsieci
 
@@ -114,5 +114,5 @@ W odróżnieniu od scenariusza Azure do platformy Azure opisano dla **firmy A**,
 
 Aby osiągnąć odporność aplikacji, zaleca się, że każdej aplikacji są przechowywane w własne dedykowane sieci wirtualnej platformy Azure. Aplikacje można następnie można przełączyć w izolacji i wymagane lokalnej do połączeń ze źródłem może być kierowane do region docelowy zgodnie z powyższym opisem.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [planów odzyskiwania](site-recovery-create-recovery-plans.md).

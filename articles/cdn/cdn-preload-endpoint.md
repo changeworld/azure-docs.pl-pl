@@ -1,11 +1,11 @@
 ---
-title: "Wstępne ładowanie zasobów dla punktu końcowego usługi Azure CDN | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wstępne ładowanie pamięci podręcznej zawartości dla punktu końcowego usługi Azure CDN."
+title: Wstępne ładowanie zasobów dla punktu końcowego usługi Azure CDN | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wstępne ładowanie pamięci podręcznej zawartości dla punktu końcowego usługi Azure CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: mazha
-ms.openlocfilehash: e00205ddcaab277029d7185d0158a64818d0d49b
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: bf3161d756759e4b278e48ad7a49615e4a73d17f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -67,6 +67,6 @@ W tym samouczku przedstawiono wstępnego ładowania zawartości w pamięci podr�
 
 ## <a name="see-also"></a>Zobacz także
 * [Przeczyszczanie punktu końcowego usługi Azure CDN](cdn-purge-endpoint.md)
-* [Azure dokumentacji interfejsu API REST usługi CDN: wstępnie załadować zawartość dla punktu końcowego](https://docs.microsoft.com/en-us/rest/api/cdn/endpoints/loadcontent)
-* [Azure dokumentacji interfejsu API REST usługi CDN: przeczyścić zawartości z punktu końcowego](https://docs.microsoft.com/en-us/rest/api/cdn/endpoints/purgecontent)
+* [Azure dokumentacji interfejsu API REST usługi CDN: wstępnie załadować zawartość dla punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Azure dokumentacji interfejsu API REST usługi CDN: przeczyścić zawartości z punktu końcowego](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

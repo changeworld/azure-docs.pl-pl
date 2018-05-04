@@ -7,21 +7,17 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b1d60cc0a83c95c5e33fbaae6083572af3e183ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 1cc796061056ff017e3d778ebb2e50e13d55a4c1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania dotyczące używania zreplikowane tabele w magazynie danych SQL Azure
 Ten artykuł zawiera zalecenia dotyczące projektowania zreplikowanych tabel w schematu SQL Data Warehouse. Użyj te zalecenia, aby poprawić wydajność zapytań, zmniejsza się złożoność danych przemieszczania i zapytań.
-
-> [!NOTE]
-> Funkcja zreplikowanej tabeli jest obecnie w wersji zapoznawczej. Niektóre zachowania mogą ulec zmianie.
-> 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że znasz z danych dystrybucji i koncepcje przepływu danych w usłudze SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz [architektura](massively-parallel-processing-mpp-architecture.md) artykułu. 
@@ -44,20 +40,13 @@ Replikowane tabele pracy efektywne w przypadku tabel wymiarów małych w schemat
 Należy rozważyć użycie zreplikowanej tabeli, gdy:
 
 - Rozmiar tabeli na dysku jest mniejszy niż 2 GB, niezależnie od liczby wierszy. Aby znaleźć rozmiar tabeli, można użyć [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) polecenia: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
-- Tabela jest używana w sprzężeniu, które w przeciwnym razie wymaga przenoszenia danych. Na przykład sprzężenia w tabelach rozpowszechniane skrót wymaga przenoszenia danych, gdy łącząca kolumn nie są w tej samej kolumnie dystrybucji. Jedną z tabel rozpowszechniane skrót jest mały, należy wziąć pod uwagę zreplikowanej tabeli. Sprzężenia w tabeli okrężnego wymaga przenoszenia danych. Zalecamy używanie zamiast okrężnego tabel w większości przypadków zreplikowanych tabelach. 
-
-
-Należy wziąć pod uwagę Konwertowanie istniejącej rozproszonej zreplikowanej tabeli tabeli, gdy:
-
-- Zapytanie plany operacje przenoszenia danych użycia, które emisji danych do wszystkich węzłów obliczeniowych. BroadcastMoveOperation jest kosztowne i zmniejsza wydajność kwerend. Aby wyświetlić operacje przenoszenia danych w planie zapytania, użyj [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).
+- Tabela jest używana w sprzężeniu, które w przeciwnym razie wymaga przenoszenia danych. Podczas sprzęgania tabel, które nie są dystrybuowane na tej samej kolumnie, takich jak tabeli rozpowszechniane skrót do tabeli okrężnego przepływu danych jest wymagany do wykonania zapytania.  Jeśli jedna z tabel jest mały, należy wziąć pod uwagę zreplikowanej tabeli. Zalecamy używanie zamiast okrężnego tabel w większości przypadków zreplikowanych tabelach. Aby wyświetlić operacje przenoszenia danych w planie zapytania, użyj [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  BroadcastMoveOperation jest operacji przeniesienia typowych danych, które mogą zostać usunięte przy użyciu zreplikowanej tabeli.  
  
 Zreplikowane tabele nie mogą użyć instrukcji yield najlepszą wydajność zapytań po:
 
 - Tabela zawiera częste wstawiania, aktualizowania i usuwania działań. Te operacje języka manipulacji danych wymaga odbudowania zreplikowanej tabeli. Ponowne kompilowanie często powodują mniejszą wydajność.
 - W magazynie danych często skalowania. Skalowanie hurtowni danych zmienia liczba węzłów obliczeniowych, który wiąże się z kompilowania.
-- Tabela ma dużą liczbę kolumn, ale operacje na danych zwykle uzyskują dostęp do niewielkiej liczby kolumn. W tym scenariuszu, zamiast replikować całą tabelę może być bardziej skuteczna do wyznaczania wartości skrótu dystrybucji tabeli, a następnie utwórz indeks dla często używanych kolumn. Jeśli zapytanie wymaga przenoszenia danych, Magazyn danych SQL tylko przenosi dane w żądanych kolumn. 
-
-
+- Tabela ma dużą liczbę kolumn, ale operacje na danych zwykle uzyskują dostęp do niewielkiej liczby kolumn. W tym scenariuszu, zamiast replikować całą tabelę może być bardziej efektywnej dystrybucji tabeli, a następnie utwórz indeks dla często używanych kolumn. Jeśli zapytanie wymaga przenoszenia danych, Magazyn danych SQL tylko przenosi dane dla żądanej kolumny. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Zreplikowane tabele za pomocą prostego zapytania predykatów
 Przed wybraniem do dystrybucji lub replikacji tabeli, należy zastanowić typy zapytań, które mają być wykonywane w tabeli. Jeśli to możliwe,
@@ -67,7 +56,7 @@ Przed wybraniem do dystrybucji lub replikacji tabeli, należy zastanowić typy z
 
 Użycie Procesora CPU zapytania wykonywane najlepiej, jeśli praca jest dystrybuowana do wszystkich węzłów obliczeniowych. Na przykład zapytania uruchamiane obliczenia w każdym wierszu tabeli działać lepiej w tabelach rozproszonej niż zreplikowanych tabelach. Ponieważ zreplikowanej tabeli są przechowywane w całości w każdym węźle obliczeń, użycie Procesora CPU zapytanie zreplikowanej tabeli jest uruchamiana dla całej tabeli w każdym węźle obliczeń. Dodatkowe obliczenia może zmniejszyć wydajność kwerend.
 
-Na przykład ta kwerenda zawiera złożone predykatu.  Uruchamia szybciej gdy dostawca jest tabela rozproszona zamiast zreplikowanej tabeli. W tym przykładzie dostawcy mogą być dystrybuowane wyznaczania wartości skrótu, albo rozproszone okrężnego.
+Na przykład ta kwerenda zawiera złożone predykatu.  Uruchamia szybciej gdy dostawca jest tabela rozproszona zamiast zreplikowanej tabeli. W tym przykładzie dostawcy może być okrężnego rozproszonych.
 
 ```sql
 
@@ -132,7 +121,7 @@ Ponownie utworzono `DimDate` i `DimSalesTerritory` jako zreplikowane tabele i zo
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Zagadnienia dotyczące wydajności modyfikowania zreplikowanych tabelach
-Usługa SQL Data Warehouse implementuje zreplikowanej tabeli dzięki utrzymywaniu głównej wersji w tabeli. Kopiuje głównej wersji do bazy danych dystrybucji jeden w każdym węźle obliczeń. W przypadku zmiany SQL Data Warehouse najpierw aktualizuje wzorcowej tabeli. Następnie wymaga odbudowania tabel w każdym węźle obliczeń. Odbudowywanie zreplikowanej tabeli obejmuje kopiowanie tabeli na każdym węźle obliczeń, a następnie odbudowanie indeksy.
+Usługa SQL Data Warehouse implementuje zreplikowanej tabeli dzięki utrzymywaniu głównej wersji w tabeli. Kopiuje głównej wersji do bazy danych dystrybucji jeden w każdym węźle obliczeń. W przypadku zmiany SQL Data Warehouse najpierw aktualizuje wzorcowej tabeli. Następnie spowoduje odbudowanie tabel w każdym węźle obliczeń. Odbudowywanie zreplikowanej tabeli obejmuje kopiowanie tabeli na każdym węźle obliczeń, a następnie tworzenie indeksów.  Na przykład zreplikowanej tabeli na DW400 ma 5 kopie danych.  Kopia wzorca i pełnej kopii w każdym węźle obliczeń.  Wszystkie dane są przechowywane w bazach danych dystrybucji. Usługi SQL Data Warehouse używa tego modelu do obsługi instrukcji modyfikacji danych szybsze i elastyczny operacji skalowania. 
 
 Odtwarza są wymagane po:
 - Dane są ładowane lub zmodyfikowane
@@ -143,7 +132,7 @@ Odtwarza nie są wymagane po:
 - Operację wstrzymywania
 - Wznawia działania
 
-Ponowna kompilacja nie odbywa się natychmiast po zmodyfikowaniu danych. Zamiast tego rekonstrukcji zostanie wywołany po raz pierwszy wybiera zapytania z tabeli.  W ramach początkowego instrukcji select w tabeli są kroki, aby odbudować zreplikowanej tabeli.  Ponieważ rekonstrukcji jest wykonywana w ramach zapytania, wpływu instrukcją select może być istotne, w zależności od rozmiaru tabeli.  Jeśli wiele zreplikowanych tabelach są zaangażowane wymagające kompilowania, każda kopia zostanie odtworzony pojedynczo jako kroków w ramach instrukcji.  Do przechowywania danych zgodności podczas kompilowania zreplikowanej tabeli wyłącznej blokady jest pobierana w tabeli.  Blokada uniemożliwia dostęp do tabeli na czas trwania rekonstrukcji. 
+Ponowna kompilacja nie odbywa się natychmiast po zmodyfikowaniu danych. Zamiast tego rekonstrukcji zostanie wywołany po raz pierwszy wybiera zapytania z tabeli.  Zapytanie, która wyzwoliła rekonstrukcji odczytuje natychmiast z głównej wersji tabeli podczas asynchronicznego skopiowanie danych do każdego węzła obliczeń. Do czasu ukończenia kopiowania danych kolejne zapytania będzie nadal używać głównej wersji tabeli.  W przypadku żadnego działania względem zreplikowanej tabeli, która wymusza innego odbudowy, unieważnienia kopię danych, a następnie następnej instrukcji select wyzwala dane do skopiowania ponownie. 
 
 ### <a name="use-indexes-conservatively"></a>Użyj konserwatywnie indeksów
 Rozwiązania w zakresie indeksowania standardowe mają zastosowanie do zreplikowanych tabelach. Usługa SQL Data Warehouse odbudowuje każdy indeks zreplikowanej tabeli jako część rekonstrukcji. Indeksy należy używać tylko w przypadku bardziej wydajne podejścia są większe niż koszty odbudowywania indeksów.  
@@ -172,7 +161,7 @@ Na przykład tego wzorca obciążenia ładuje z czterech źródeł danych, ale t
 
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Odbuduj zreplikowanej tabeli po załadowaniu partii
-Aby zapewnić czas na wykonanie zapytania spójne, zaleca się wymuszanie odświeżanie w zreplikowanych tabelach po załadowaniu partii. W przeciwnym razie wartość pierwszego zapytania należy poczekać tabele, aby odświeżyć, która obejmuje ponowne tworzenie indeksów. W zależności od rozmiaru i liczby zreplikowanych tabel, których to dotyczy jego wpływ na wydajność może być istotne.  
+Aby zapewnić czas na wykonanie zapytania spójny, należy wziąć pod uwagę wymuszania kompilacji zreplikowanych tabelach po załadowaniu partii. W przeciwnym razie pierwszej kwerendy będą nadal używać przenoszenie danych do wykonania zapytania. 
 
 To zapytanie używa [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV zreplikowanych tabel, które zostały zmodyfikowane, ale nie został odbudowany.
 
@@ -187,7 +176,7 @@ SELECT [ReplicatedTable] = t.[name]
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
  
-Aby wymusić kompilowania, uruchom następującą instrukcję w każdej tabeli w powyższych danych wyjściowych. 
+Aby wyzwolić kompilowania, uruchom następującą instrukcję w każdej tabeli w powyższych danych wyjściowych. 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]

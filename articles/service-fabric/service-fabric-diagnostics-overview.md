@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2018
+ms.date: 04/25/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowania i diagnostyki dla sieci szkieletowej usług Azure
 
@@ -33,19 +33,20 @@ Monitorowanie aplikacji śledzi, jak są używane funkcje i składniki aplikacji
 
 Sieć szkieletowa usług obsługuje wiele opcji Instrumentacja kod aplikacji przy użyciu odpowiednich śladów i telemetrii. Zaleca się, że używasz Application Insights (AI). AI przez integrację z sieci szkieletowej usług zawiera narzędzia związane z portalu Azure i Visual Studio, a także określonych metryk usługi Service Fabric, zapewnienie obsługi kompleksowego out box rejestrowania. Chociaż wiele dzienniki są automatycznie tworzone i zbierane automatycznie z AI, firma Microsoft zaleca dodanie więcej niestandardowego rejestrowania dla poszczególnych aplikacji, aby utworzyć rozbudowanej diagnostyki. Zobacz więcej na temat rozpoczynania pracy z usługą Application Insights z sieci szkieletowej usług w [analiza zdarzeń z usługi Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md).
 
-![Szczegóły śladu usługi AI](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
-
 ## <a name="platform-cluster-monitoring"></a>Monitorowanie platformy (klaster)
 Monitorowanie klastra usługi sieć szkieletowa jest szczególnie ważne w celu zapewnienia, że platforma i wszystkich obciążeń działają zgodnie z oczekiwaniami. Jednym z celów usługi sieć szkieletowa jest do zachowania aplikacji odporność na awarie sprzętowe. W tym celu odbywa się za pośrednictwem usługi systemowe platformy możliwość wykrywania problemów z infrastrukturą i szybko obciążeń trybu failover do innych węzłów w klastrze. Ale co zrobić, jeśli w tym przypadku uwierzytelnienia usługi system ma problemy? Lub jeśli podczas próby przeniesienia obciążenia, naruszenia reguły umieszczania usług? Monitorowanie klastra służy do uzyskiwania informacji o działaniu odbywa się w klastrze, co ułatwia diagnozowanie problemów i ich efektywne rozwiązanie. Niektóre elementy klucza, który chcesz szukać są:
 * Sieć szkieletowa usług zachowuje się oczekiwaniami, wprowadzenie do aplikacji i obejść klastra równoważenia? 
 * Akcje użytkownika są podejmowane w klastrze potwierdzone i wykonywane na zgodnie z oczekiwaniami? Jest to szczególnie istotne w przypadku, gdy skalowanie klastra.
 * Sieć szkieletowa usług obsługuje dane i usługa usługa komunikacji wewnątrz klastra poprawnie?
 
-Sieć szkieletowa usług zapewnia rozbudowany zestaw zdarzeń fabrycznej kanałami Operational danych i komunikatów. W systemie Windows, są w postaci jednego dostawcy ETW z zestawem odpowiednich `logLevelKeywordFilters` umożliwia pobranie między różnych kanałów. W systemie Linux wszystkich zdarzeń platformy przepuszczane LTTng i są umieszczane w jednej tabeli, od których one mogą być filtrowane zgodnie z potrzebami. 
+Sieć szkieletowa usług zapewnia rozbudowany zestaw zdarzeń z pola. Te [zdarzeń usługi sieć szkieletowa](service-fabric-diagnostics-events.md) jest możliwy za pośrednictwem interfejsów API EventStore lub kanału operacyjne (udostępniany przez platformę kanał zdarzeń). 
+* EventStore - EventStore (dostępnej w systemie Windows w wersji 6.2 i nowszych, Linux w toku lub nowszym Data ostatniej aktualizacji w tym artykule), udostępnia te zdarzenia za pomocą zestawu interfejsów API (dostępne za pośrednictwem punkty końcowe REST lub za pomocą biblioteki klienta). Dowiedz się więcej o EventStore w [omówienie EventStore](service-fabric-diagnostics-eventstore.md).
+* Sieć szkieletowa usług zdarzeń kanałów — w systemie Windows sieci szkieletowej usług zdarzenia są dostępne z jednego dostawcy ETW z zestawem odpowiednich `logLevelKeywordFilters` umożliwia pobranie między & operacyjnego i danych wiadomości kanałem — jest sposób odseparować limit wychodzące Usługi sieci szkieletowej zdarzeń ma zostać przefiltrowana w razie potrzeby. W systemie Linux zdarzenia platformy Service Fabric przepuszczane LTTng i są umieszczane w jednej tabeli magazynu, z których one mogą być filtrowane zgodnie z potrzebami. Te kanały zawierają wyselekcjonowanych, strukturalnych zdarzenia, które umożliwiają lepsze zrozumienie stanu klastra. Diagnostyka są domyślnie włączone w czasie tworzenia klastra, co spowoduje utworzenie tabeli magazynu Azure, gdy zdarzenia te kanały są wysyłane można zbadać w przyszłości. 
 
-Te kanały zawierają wyselekcjonowanych, strukturalnych zdarzenia, które umożliwiają lepsze zrozumienie stanu klastra. Diagnostyka są domyślnie włączone w czasie tworzenia klastra, co spowoduje utworzenie tabeli magazynu Azure, gdy zdarzenia te kanały są wysyłane można zbadać w przyszłości. Więcej o monitorowaniu klastra na [platformy poziomu generowania zdarzeń i dziennika](service-fabric-diagnostics-event-generation-infra.md).
+Firma Microsoft zaleca się używanie EventStore do szybkiego analizy, a także aby uzyskać pomysłem migawki działania klastra, a jeśli czynności są wykonywane jako. Do zbierania dzienników i zdarzenia generowane przez klaster, ogólnie zalecamy użycie [rozszerzenia diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md). To jest zintegrowany z usługi sieć szkieletowa Analytics, analizy dzienników OMS sieci szkieletowej usług określonego rozwiązania, które zawiera niestandardowy pulpit nawigacyjny do monitorowania klastrów sieci szkieletowej usług i umożliwia zapytań dotyczących zdarzeń, klastra i skonfigurować alerty. Dowiedz się więcej o tym w [analiza zdarzeń z OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
-Do zbierania dzienników i zdarzenia generowane przez klaster, ogólnie zalecamy użycie [rozszerzenia diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md). To zintegrowany z OMS sieci szkieletowej usług analizy dla dziennika konkretne rozwiązanie usługi Analytics sieci szkieletowej, która zawiera niestandardowy pulpit nawigacyjny do monitorowania klastrów sieci szkieletowej usług i umożliwia zapytań dotyczących zdarzeń, klastra i skonfigurować alerty. Dowiedz się więcej o tym w [analiza zdarzeń z OMS](service-fabric-diagnostics-event-analysis-oms.md). 
+ Więcej o monitorowaniu klastra na [platformy poziomu generowania zdarzeń i dziennika](service-fabric-diagnostics-event-generation-infra.md).
+
 
  ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 

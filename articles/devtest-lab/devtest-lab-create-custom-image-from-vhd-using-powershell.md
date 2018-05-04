@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 2c542f9d47eb8011a13bf7156430324c53d238ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6bfb34c05a03ed02694210a5901f4f367e8a2fd3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Tworzenie niestandardowego obrazu z pliku VHD za pomocą programu PowerShell
 
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/23/2018
 
 W poniższych krokach objaśniono przez proces tworzenia niestandardowego obrazu z pliku VHD za pomocą programu PowerShell:
 
-1. W wierszu polecenia programu PowerShell Zaloguj się do konta platformy Azure z następujące wywołanie do **Login-AzureRmAccount** polecenia cmdlet.  
+1. W wierszu polecenia programu PowerShell Zaloguj się do konta platformy Azure z następujące wywołanie do **Connect-AzureRmAccount** polecenia cmdlet.  
     
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1.  Wybierz odpowiednią subskrypcję Azure przez wywołanie metody **Select-AzureRmSubscription** polecenia cmdlet. Zastąp symbol zastępczy następujące dla **$subscriptionId** zmiennej z identyfikatorem ważnej subskrypcji platformy Azure. 
@@ -83,7 +83,7 @@ Poniższy skrypt programu PowerShell, można utworzyć niestandardowy obraz z pl
 
 ```PowerShell
 # Log in to your Azure account.  
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Select the desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'

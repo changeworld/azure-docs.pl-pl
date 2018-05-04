@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie usługi Azure Storage zapory i sieci wirtualne | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie zabezpieczeń warstwowych sieci dla konta magazynu."
+title: Konfigurowanie usługi Azure Storage zapory i sieci wirtualne | Dokumentacja firmy Microsoft
+description: Konfigurowanie zabezpieczeń warstwowych sieci dla konta magazynu.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: cbrooksmsft
 manager: cbrooks
 editor: cbrooks
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52d904e7a7e8e5d520d2abd799ef0ae7e99b9894
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie usługi Azure Storage zapory i sieci wirtualnych
 Magazyn Azure oferuje model zabezpieczeń warstwowych, co umożliwia Zabezpieczanie kont magazynu do określonego zestawu dozwolonych sieci.  Gdy zasady sieci są skonfigurowane, tylko aplikacje z dozwolonych sieci można uzyskać dostęp do konta magazynu.  Podczas wywoływania metody z dozwolonych sieci, aplikacje będą nadal będą musieli właściwą autoryzację (prawidłowy dostęp do klucza lub tokenu sygnatury dostępu Współdzielonego) do uzyskania dostępu do konta magazynu.
@@ -37,11 +37,9 @@ Gdy są stosowane zasady sieci, są one stosowane dla wszystkich żądań.  Toke
 
 Ruch dysku maszyny wirtualnej (w tym instalacji i Odinstaluj operacji i we/wy dysku) jest **nie** wpływ zasad sieci.  REST dostęp do stronicowe obiekty BLOB są chronione przez zasady sieci.
 
-> [!NOTE]
-> Kopia zapasowa i przywracanie z maszyn wirtualnych za pomocą niezarządzanych dysków na kontach magazynu przy użyciu reguł sieciowej stosowane nie jest obecnie obsługiwane.  Aby uzyskać więcej informacji, zobacz [ograniczenia w przypadku tworzenia kopii zapasowej i przywracanie maszyny Wirtualnej](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)
->
-
 Klasycznych kont magazynu **nie** obsługuje zapory i sieci wirtualnych.
+
+Kopia zapasowa i przywracanie z maszyn wirtualnych za pomocą niezarządzanych dysków na kontach magazynu przy użyciu reguł sieciowej stosowane jest obsługiwane za pośrednictwem tworzenie wyjątek, zgodnie z opisem w [wyjątki](/storage/common/storage-network-security#exceptions) sekcji tego artykułu.  Wyjątki zapory nie są stosowane w przypadku dysków zarządzanych, jak są już zarządzane przez usługę Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Zmienić domyślną regułę dostępu sieciowego
 Domyślnie kont magazynu akceptowania połączeń z klientami w dowolnej sieci.  Aby ograniczyć dostęp do wybranej sieci, należy zmienić domyślne działanie.
@@ -291,6 +289,7 @@ Po włączeniu wyjątek "Zaufanych usług firmy Microsoft" następujących usłu
 
 |Usługa|Nazwa dostawcy zasobów|Przeznaczenie|
 |:------|:---------------------|:------|
+|Azure Backup|Microsoft.Backup|Wykonywanie kopii zapasowych i przywracania niezarządzane dysków w przypadku maszyn wirtualnych IAAS. (nie wymaga do zarządzanych dysków). [Dowiedz się więcej](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Tworzenie i artefaktu instalacji obrazu niestandardowego.  [Dowiedz się więcej](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzenia magazynu obiektów Blob.  [Dowiedz się więcej](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych z przechwytywania centrów zdarzeń.  [Dowiedz się więcej](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|

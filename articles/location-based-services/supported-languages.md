@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8c284bb3637415186a12c63d4eeb088ab5f23e2e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f85a7b018085ce30550bec21fe41ca3f9253da80
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-location-based-services---supported-languages"></a>Usługi - języków obsługiwanych na podstawie lokalizacji platformy Azure
 Usługi platformy Azure na podstawie lokalizacji zostały zlokalizowane w różnych językach w usługach.  W poniższej tabeli przedstawiono kody obsługiwanego języka dla każdej usługi.  
@@ -38,8 +38,8 @@ Usługi platformy Azure na podstawie lokalizacji zostały zlokalizowane w różn
 | hr HR      | Chorwacki               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | Czeski                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | Ciemny da      | Duński                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| NL -NL     | Holenderski                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl-BE      | Holenderski (Belgia)        |       |    ✓   |         |                   |                |     ✓     |
+| NL-NL      | Holenderski                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| NL-być      | Holenderski (Belgia)        |       |    ✓   |         |                   |                |     ✓     |
 | pl         | Polski                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et EE      | Estoński               |       |    ✓   |         |         ✓         |                |     ✓     |
 | fi-FI      | Fiński                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -52,7 +52,7 @@ Usługi platformy Azure na podstawie lokalizacji zostały zlokalizowane w różn
 | w      | Hindi                  |       |        |         |                   |                |     ✓     |
 | hu-HU      | Węgierski              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | id-ID      | Indonezyjski             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
-| it-IT      | Włoski                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| IT-IT      | Włoski                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ja-JP      | Japoński               |       |        |         |                   |                |     ✓     |
 | kk-KZ      | Kazachski                 |       |        |         |                   |                |     ✓     |
 | ko-KR      | Koreański                 |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |

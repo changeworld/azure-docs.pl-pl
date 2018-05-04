@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0b49a23de62385a8aa362680dde845512d9302fc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure DB rozwiązania Cosmos rejestrowania diagnostycznego
 
@@ -26,7 +26,7 @@ Po uruchomieniu używać co najmniej jeden bazy danych Azure rozwiązania Cosmos
 
 ## <a name="logs-available-in-azure"></a>Dzienniki dostępnej na platformie Azure
 
-Przed omawianiu jak monitorować konta bazy danych rozwiązania Cosmos Azure umożliwia wyjaśnienia kilka rzeczy, o rejestrowania i monitorowania. Istnieją różne typy dzienników na platformie Azure. Istnieją [Dzienniki aktywności Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [dzienników diagnostycznych platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), zdarzenia, monitorowanie pulsu, dzienniki operacji i tak dalej. Brak nadmiar dzienników. Można wyświetlić pełną listę dzienników w [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) w portalu Azure. 
+Przed omawianiu jak monitorować konta bazy danych rozwiązania Cosmos Azure umożliwia wyjaśnienia kilka rzeczy, o rejestrowania i monitorowania. Istnieją różne typy dzienników na platformie Azure. Istnieją [Dzienniki aktywności Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [dzienników diagnostycznych platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), zdarzenia, monitorowanie pulsu, dzienniki operacji i tak dalej. Brak nadmiar dzienników. Można wyświetlić pełną listę dzienników w [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) w portalu Azure. 
 
 Na poniższej ilustracji przedstawiono różne rodzaje Azure dzienniki, które są dostępne:
 
@@ -51,7 +51,7 @@ Dzienniki aktywności (operacji kontroli płaszczyzny) może być bardziej rozbu
 
 ### <a name="azure-metrics"></a>Metryki Azure
 
-[Metryki Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics) najważniejszych rodzaju danych telemetrycznych platformy Azure (nazywane również _liczniki wydajności_) które są emitowane przez zasobów najbardziej Azure. Metryki umożliwiają wyświetlanie informacji o przepływności, magazynu, spójności, dostępności i opóźnienia zasobów platformy Azure DB rozwiązania Cosmos. Aby uzyskać więcej informacji, zobacz [monitorowanie i debugowanie za pomocą metryki w usłudze Azure DB rozwiązania Cosmos](use-metrics.md).
+[Metryki Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) najważniejszych rodzaju danych telemetrycznych platformy Azure (nazywane również _liczniki wydajności_) które są emitowane przez zasobów najbardziej Azure. Metryki umożliwiają wyświetlanie informacji o przepływności, magazynu, spójności, dostępności i opóźnienia zasobów platformy Azure DB rozwiązania Cosmos. Aby uzyskać więcej informacji, zobacz [monitorowanie i debugowanie za pomocą metryki w usłudze Azure DB rozwiązania Cosmos](use-metrics.md).
 
 ### <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -140,7 +140,7 @@ Jeśli został już zainstalowany program Azure PowerShell, a nie wiadomo, wersj
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobiera wszystkie subskrypcje, które są skojarzone z tym kontem i domyślnie używa pierwszego z nich.

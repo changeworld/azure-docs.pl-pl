@@ -1,19 +1,19 @@
 ---
-title: "Monitor klaster Azure DC/OS - ŁOSI stosu"
-description: "Monitorowanie klastra DC/OS w klastrze usługi kontenera platformy Azure z ŁOSI (Elasticsearch Logstash i Kibana)."
+title: Monitor klaster Azure DC/OS - ŁOSI stosu
+description: Monitorowanie klastra DC/OS w klastrze usługi kontenera platformy Azure z ŁOSI (Elasticsearch Logstash i Kibana).
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b378fc38233534df74582388e6e832d40f431d11
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: dc863894d8846e066c90bdf7b309f141d32a1186
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>Monitor klastra usługi kontenera platformy Azure z ŁOSI
 
@@ -27,7 +27,7 @@ W tym artykule przedstawiony sposób wdrażania stosu ŁOSI (Elasticsearch, Logs
 Stos ŁOSI jest kombinacją Elasticsearch, Logstash i Kibana, która zapewnia kompleksowe stosu, który może służyć do monitorowania i analizować dzienniki w klastrze.
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>Skonfigurować stosu ŁOSI w klastrze DC/OS
-Dostęp za pośrednictwem interfejsu użytkownika DC/OS [http://localhost:80 /](http://localhost:80/) raz w Interfejsie użytkownika DC/OS przejdź do **Universe**. Wyszukiwanie i instalowanie Elasticsearch, Logstash i Kibana z Universe DC/OS i w tej kolejności. Więcej informacji o konfiguracji z **instalacji zaawansowanym** łącza.
+Dostęp za pośrednictwem interfejsu użytkownika DC/OS [ http://localhost:80/ ](http://localhost:80/) raz w Interfejsie użytkownika DC/OS przejdź do **Universe**. Wyszukiwanie i instalowanie Elasticsearch, Logstash i Kibana z Universe DC/OS i w tej kolejności. Więcej informacji o konfiguracji z **instalacji zaawansowanym** łącza.
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
@@ -55,7 +55,7 @@ Po przejściu do adresu URL, powinien zostać wyświetlony pulpit nawigacyjny HA
 
 Do uzyskiwania dostępu Kibana pulpitu nawigacyjnego, który jest wdrażana na porcie 5601, należy otworzyć port 5601. Postępuj zgodnie z instrukcjami [tutaj](container-service-enable-public-access.md). Następnie otwórz pulpit nawigacyjny Kibana w: `http://localhost:5601`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dla dziennika systemu i aplikacji przekazywania i ustawień, zobacz [zarządzanie dziennikiem w DC/OS z ŁOSI](https://docs.mesosphere.com/1.8/administration/logging/elk/).
 

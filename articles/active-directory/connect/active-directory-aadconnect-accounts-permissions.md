@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: fa6a994f30c301fd6c7b431467aebc9d3489c6bc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 5a0574af04c118d466544d533561eb01639edfc6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 Kreator instalacji Azure AD Connect oferuje dwa różne ścieżki:
@@ -58,7 +58,7 @@ Te poświadczenia są używane tylko podczas instalacji i nie są używane po za
 
 | Uprawnienie | Używany do |
 | --- | --- |
-| <li>Replikować zmiany katalogu</li><li>Replikowanie katalogu zmienia wszystkie |Synchronizacja haseł |
+| <li>Replikować zmiany katalogu</li><li>Replikowanie katalogu zmienia wszystkie |Synchronizacja skrótów haseł |
 | Odczyt/zapis wszystkich właściwości użytkownika |Hybrydowe Import i Exchange |
 | Odczyt/zapis wszystkich właściwości iNetOrgPerson |Hybrydowe Import i Exchange |
 | Grupa wszystkich właściwości odczytu/zapisu |Hybrydowe Import i Exchange |
@@ -87,7 +87,7 @@ Uprawnienia wymagane jest zależny od funkcji opcjonalnych można włączyć. Je
 | Cecha | Uprawnienia |
 | --- | --- |
 | Funkcja msDS-ConsistencyGuid |Uprawnienia do zapisu do atrybutu msDS-ConsistencyGuid udokumentowane w [zagadnienia dotyczące projektowania — przy użyciu msDS-ConsistencyGuid jako sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). | 
-| Synchronizacja haseł |<li>Replikować zmiany katalogu</li>  <li>Replikowanie katalogu zmienia wszystkie |
+| Synchronizacja skrótów haseł |<li>Replikować zmiany katalogu</li>  <li>Replikowanie katalogu zmienia wszystkie |
 | Wdrożenie hybrydowe programu Exchange |Uprawnienia do zapisu w atrybutach w [zapisywania zwrotnego hybrydowego programu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) dla użytkowników, grup i kontakty. |
 | Folder publiczny poczty programu Exchange |Uprawnienia odczytu do atrybutów w [folderu publicznego poczty programu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 
 | Zapisywanie zwrotne haseł |Uprawnienia do zapisu w atrybutach w [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |

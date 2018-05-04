@@ -1,6 +1,6 @@
 ---
-title: "Rozpoczynanie korzystania z zestawu SDK Java dla usług Azure Media Services | Microsoft Docs"
-description: "W tym samouczku przedstawiono kolejne kroki wdrażania podstawowej usługi do dostarczania zawartości wideo na żądanie (VoD) za pomocą aplikacji Azure Media Services (AMS) przy użyciu języka Java."
+title: Rozpoczynanie korzystania z zestawu SDK Java dla usług Azure Media Services | Microsoft Docs
+description: W tym samouczku przedstawiono kolejne kroki wdrażania podstawowej usługi do dostarczania zawartości wideo na żądanie (VoD) za pomocą aplikacji Azure Media Services (AMS) przy użyciu języka Java.
 services: media-services
 documentationcenter: java
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: cba1e58478f4bbdffb61566e53aa0b86138b7fc6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7b8dea132fc1af546b64f51e5ab395ad8bc3fe37
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Rozpoczynanie korzystania z zestawu SDK klienta Java dla usług Azure Media Services
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -42,7 +42,7 @@ Jeśli na przykład Twoim narzędziem kompilacji jest narzędzie `gradle`, dodaj
     compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
 
 >[!IMPORTANT]
->Począwszy od pakietu `azure-media` w wersji `0.9.8`, do zestawu SDK dodano obsługę uwierzytelniania za pomocą usługi Azure Active Directory (AAD) i usunięto obsługę uwierzytelniania za pomocą usługi Azure Access Control Service (ACS). Usługi ACS zostaną wycofane 1 czerwca 2018 r. Zalecamy jak najszybszą migrację do modelu uwierzytelniania za pomocą usługi Azure AD. Aby uzyskać szczegółowe informacje dotyczące migracji, przeczytaj artykuł [Uzyskiwanie dostępu do interfejsu API usług Azure Media Services przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+>Począwszy od pakietu `azure-media` w wersji `0.9.8`, do zestawu SDK dodano obsługę uwierzytelniania za pomocą usługi Azure Active Directory (AAD) i usunięto obsługę uwierzytelniania za pomocą usługi Azure Access Control Service (ACS). Usługi ACS zostaną wycofane 22 czerwca 2018 r. Zalecamy jak najszybszą migrację do modelu uwierzytelniania za pomocą usługi Azure AD. Aby uzyskać szczegółowe informacje dotyczące migracji, przeczytaj artykuł [Uzyskiwanie dostępu do interfejsu API usług Azure Media Services przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
 >Kod źródłowy zestawu SDK Java usług Azure Media Services znajdziesz w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Pamiętaj, aby przejść do gałęzi 0.9, a nie gałęzi głównej. 

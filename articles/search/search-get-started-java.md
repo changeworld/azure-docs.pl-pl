@@ -1,24 +1,18 @@
 ---
-title: "Wprowadzenie do usługi Azure Search w języku Java | Microsoft Docs"
-description: "Jak utworzyć hostowaną aplikację wyszukiwania w chmurze na platformie Azure, używając języka Java jako języka programowania."
+title: Wprowadzenie do usługi Azure Search w języku Java | Microsoft Docs
+description: Jak utworzyć hostowaną aplikację wyszukiwania w chmurze na platformie Azure, używając języka Java jako języka programowania.
 services: search
-documentationcenter: 
-author: EvanBoyle
-manager: pablocas
-editor: v-lincan
-ms.assetid: 8b4df3c9-3ae5-4e3a-b4bb-74b516a91c8e
+author: jj09
+manager: jlembicz
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: hero-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/14/2016
-ms.author: evboyle
-ms.openlocfilehash: 8b253ef1eccfbc6ca703657b124d17d1482c2eed
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
-ms.translationtype: HT
+ms.author: jjed
+ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Wprowadzenie do usługi Azure Search w języku Java
 > [!div class="op_single_selector"]
@@ -91,7 +85,7 @@ Wszystkie kolejne modyfikacje plików i instrukcje uruchamiania będą wykonywan
 ## <a name="configure-the-service-url-and-api-key"></a>Konfigurowanie adresu URL usługi i klucza api-key
 1. W obszarze **Eksplorator projektów** kliknij dwukrotnie pozycję **config.properties**, aby edytować ustawienia konfiguracji, które zawierają nazwę serwera i klucz api-key.
 2. Wróć do kroków opisanych wcześniej w tym artykule, aby odnaleźć adres URL usługi oraz klucz api-key w witrynie [Azure Portal](https://portal.azure.com). Uzyskane wartości należy wpisać w pliku **config.properties**.
-3. W pliku **config.properties** zastąp ciąg „Api Key” (Klucz interfejsu API) kluczem api-key dla Twojej usługi. Następnie nazwą usługi (pierwszy składnik adresu URL http://nazwa_uslugi.search.windows.net) zastąp ciąg „service name” (nazwa usługi) w tym samym pliku.
+3. W pliku **config.properties** zastąp ciąg „Api Key” (Klucz interfejsu API) kluczem api-key dla Twojej usługi. Następnie, nazwa usługi (pierwszy składnik adresu URL http://servicename.search.windows.net) zastępuje "Nazwa usługi" w tym samym pliku.
    
     ![][5]
 
@@ -159,7 +153,7 @@ Możesz też wprowadzić jeden z poniższych terminów:
 * Pembroke
 * goose +cape
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 To jest pierwszy samouczek usługi Azure Search bazujący na języku Java i zestawie danych agencji USGS. Wraz z upływem czasu będziemy rozszerzać ten samouczek, aby zademonstrować dodatkowe funkcje wyszukiwania, których mogą być przydatne w rozwiązaniach niestandardowych.
 
 Jeśli masz już pewną wiedzę na temat usługi Azure Search, możesz użyć tego przykładu jako podstawy do dalszych eksperymentów. Na przykład możesz rozszerzyć [stronę wyszukiwania](search-pagination-page-layout.md) lub zaimplementować [nawigację aspektową](search-faceted-navigation.md). Możesz również ulepszyć stronę wyników wyszukiwania przez dodanie liczników i łączenie dokumentów w partie, aby użytkownicy mogli przechodzić do kolejnych stron wyników.

@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 9b182935ad6a328afa4ee25049b3651f62277d45
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Bazy danych platformy Azure dla PostgreSQL warstw cenowych
 
@@ -23,7 +23,7 @@ Można utworzyć bazy danych Azure PostgreSQL serwera w jednym z trzech różnyc
 |:---|:----------|:--------------------|:---------------------|
 | Generowanie obliczeniowe | Gen 4, 5 Gen | Gen 4, 5 Gen | 5. generacja |
 | vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Ilość pamięci na vCore | Baseline | 2 x Basic | 2 x ogólnego przeznaczenia |
+| Ilość pamięci na vCore | Linii bazowej | 2 x Basic | 2 x ogólnego przeznaczenia |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowych bazy danych | 7-35 dni | 7-35 dni | 7-35 dni |
@@ -36,7 +36,8 @@ Wybierz warstwę cenową, skorzystaj z poniższej tabeli jako punktu wyjścia.
 | Ogólne zastosowanie | Większość obciążeń biznesowych, które wymagają zrównoważonym obliczeniową i pamięć z skalowalne przepływność we/wy. Przykłady obejmują serwery hostingu sieci web i aplikacji mobilnych i inne aplikacje przedsiębiorstwa.|
 | Pamięć | Obciążeń wysokiej wydajności bazy danych, które wymagają wydajności w pamięci dla szybsze przetwarzanie transakcji i wyższe współbieżności. Przykładami serwerów na potrzeby przetwarzania danych w czasie rzeczywistym i wysokiej wydajności aplikacji transakcyjnej lub analitycznych.|
 
-Po utworzeniu serwera liczba vCores można zmienić w górę lub w dół w ciągu kilku sekund. Ponadto można niezależnie dostosować ilość pamięci masowej w górę i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Aby uzyskać więcej informacji zobacz sekcję "Zasoby są skalowane".
+Po utworzeniu serwera liczba vCores można zmienić w górę lub w dół (w ramach tej samej warstwie cenowej) w ciągu kilku sekund. Ponadto można niezależnie dostosować ilość pamięci masowej w górę i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić warstwy cenowej lub typ magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz [zasoby są skalowane](#scale-resources) sekcji.
+
 
 ## <a name="compute-generations-vcores-and-memory"></a>Generacje obliczeń, vCores i pamięci
 
@@ -53,16 +54,18 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Zachodnie stany USA 2 |  | X |
 | Kanada Środkowa | X | X |
 | Kanada Wschodnia | X | X |
-| Brazylia Południowa | X |  |
+| Brazylia Południowa | X | X |
 | Europa Północna | X | X |
 | Europa Zachodnia | X | X |
 | Zachodnie Zjednoczone Królestwo |  | X |
 | Południowe Zjednoczone Królestwo |  | X |
 | Azja Wschodnia | X |  |
-| Azja Południowo-Wschodnia | X |  |
+| Azja Południowo-Wschodnia | X | X |
 | Australia Wschodnia |  | X |
+| Australia Południowo-Wschodnia |  | X |
 | Indie Środkowe | X |  |
 | Indie Zachodnie | X |  |
+| Indie Południowe |  | X |
 | Japonia Wschodnia | X | X |
 | Japonia Zachodnia | X | X |
 | Korea Południowa |  | X |
@@ -90,7 +93,7 @@ Usługa automatycznie wykonuje kopie zapasowe serwera. Minimalny okres przechowy
 
 ## <a name="scale-resources"></a>Skalowanie zasobów
 
-Po utworzeniu serwera niezależnie zmienić vCores, ilość miejsca w magazynie i okres przechowywania kopii zapasowych. Po utworzeniu serwera nie można zmienić warstwy cenowej lub typ magazynu kopii zapasowej. vCores i okres przechowywania kopii zapasowych można skalować w górę lub w dół. Tylko można zwiększyć rozmiar magazynu. Skalowanie zasobów można zrobić za pomocą portalu lub wiersza polecenia platformy Azure. Przykład odbierającej za pomocą interfejsu wiersza polecenia Azure, zobacz [monitora i skalowania bazy danych Azure PostgreSQL serwera przy użyciu interfejsu wiersza polecenia Azure](scripts/sample-scale-server-up-or-down.md).
+Po utworzeniu serwera niezależnie zmienić vCores, ilość miejsca w magazynie i okres przechowywania kopii zapasowych. Po utworzeniu serwera nie można zmienić warstwy cenowej lub typ magazynu kopii zapasowej. Liczba vCores można skalować w górę lub w dół w ramach tej samej warstwie cenowej. Okres przechowywania kopii zapasowych można skalować w górę lub w dół od 7 do 35 dni. Tylko można zwiększyć rozmiar magazynu.  Skalowanie zasobów można zrobić za pomocą portalu lub wiersza polecenia platformy Azure. Przykład odbierającej za pomocą interfejsu wiersza polecenia Azure, zobacz [monitora i skalowania bazy danych Azure PostgreSQL serwera przy użyciu interfejsu wiersza polecenia Azure](scripts/sample-scale-server-up-or-down.md).
 
 Jeśli zmienisz numer vCores z nowej alokacji obliczeniowe jest utworzona kopia oryginalnego serwera. Po skonfigurowaniu i uruchomieniu nowego serwera połączeń są przełączono się na nowym serwerze. W momencie gdy system przełącza się na nowym serwerze można ustalić bez nowych połączeń, a wszystkie niezatwierdzone transakcje są wycofywane. To okno jest różny, ale w większości przypadków jest mniej niż minutę.
 

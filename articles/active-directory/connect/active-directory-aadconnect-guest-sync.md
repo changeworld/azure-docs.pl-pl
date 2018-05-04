@@ -9,11 +9,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: billmath
-ms.openlocfilehash: f450747cac06a416950efc6c37c1058c1cb40775
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d21f124858a7f98227eb301a97b9837e3adbba68
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="synchronizing-guest-user-accounts-that-use-email-for-sign-in-preview"></a>Synchronizowanie konta użytkownika gościa, korzystających z poczty e-mail w celu logowania (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Ta sekcja zawiera listę wymagania wstępne i założenia, które należy zwróc
 - Azure AD Connect wersji 1.1.524.0 lub nowszej
 - Zweryfikowanej domeny można ustawić nazwy UPN użytkowników zewnętrznych chmury (przykład: bmcontoso.com).
 - Uwierzytelnianie użytkowników zewnętrznych usługi federacyjnej. Jeśli używasz usług AD FS, musi być 2012 R2 lub nowszy
-- MSOL programu PowerShell w wersji 1.1 jest zainstalowany na komputerze, aby sprawdzić ustawienia federacji. Aby uzyskać więcej informacji, zobacz [usłudze Azure ActiveDirectory (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0).
+- MSOL programu PowerShell w wersji 1.1 jest zainstalowany na komputerze, aby sprawdzić ustawienia federacji. Aby uzyskać więcej informacji, zobacz [usłudze Azure ActiveDirectory (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0).
 
 
 ### <a name="assumptions"></a>Wartości domyślne 
@@ -45,7 +45,7 @@ Ta sekcja zawiera listę wymagania wstępne i założenia, które należy zwróc
 Ten dokument sprawia, że następujące założenia:
 - Konfigurowanie usługi federacyjnej i że jest pomyślnie uwierzytelniania użytkowników.
 - Użytkownicy zewnętrzni mogą uwierzytelniać przy użyciu adresu e-mail zewnętrznych.
-- - Korzystanie z alternatywnego Identyfikatora do logowania ma została przygotowana i skonfigurowana. Użytkownicy mogą uwierzytelniać za pomocą ich alternatywny identyfikator. Aby uzyskać dodatkowe informacje na temat konfigurowania alternatywny identyfikator z usługami AD FS, zobacz [Konfigurowanie alternatywnego Identyfikatora logowania](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
+- - Korzystanie z alternatywnego Identyfikatora do logowania ma została przygotowana i skonfigurowana. Użytkownicy mogą uwierzytelniać za pomocą ich alternatywny identyfikator. Aby uzyskać dodatkowe informacje na temat konfigurowania alternatywny identyfikator z usługami AD FS, zobacz [Konfigurowanie alternatywnego Identyfikatora logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 
 ## <a name="task-1--prepare-the-environment"></a>Zadanie 1: Przygotowanie środowiska
 Następujące zadanie jest informacyjny, aby rozpocząć synchronizowanie kont zewnętrznych, tak aby ich można Zaloguj się przy użyciu dyskietki i, takich jak atrybut poczty.
@@ -139,7 +139,7 @@ Poniższa procedura umożliwia skonfigurowanie usługi Azure AD Connect.
 ## <a name="task-3--federation"></a>Zadanie 3: federacyjnego
 Następujące zadanie ma charakter informacyjny na kilka rzeczy, które są potrzebne w celu zapewnienia w miejscu dla scenariusza, aby pracować.
 
-Możesz sprawdzić ustawienia federacji z platformy Azure przy użyciu programu Azure AD PowerShell. Ten dokument używa MSOL środowiska PowerShell w wersji 1.1. Można zainstalować tę wersję [tutaj](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0).
+Możesz sprawdzić ustawienia federacji z platformy Azure przy użyciu programu Azure AD PowerShell. Ten dokument używa MSOL środowiska PowerShell w wersji 1.1. Można zainstalować tę wersję [tutaj](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0).
 
 ### <a name="verify-the-federation-settings"></a>Sprawdź ustawienia Federacji
 Użyj poniższej procedury, aby sprawdzić ustawienia federacji.
@@ -181,5 +181,5 @@ Aby zweryfikować, że to działa prawidłowo, należy zalogować się do punktu
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Właściwości użytkownika współpracy usługi Azure Active Directory B2B](../../active-directory/active-directory-b2b-user-properties.md#key-properties-of-the-azure-ad-b2b-collaboration-user)
-- [Konfigurowanie alternatywnego Identyfikatora logowania](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
+- [Konfigurowanie alternatywnego Identyfikatora logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
 - [Azure AD Connect: Version release history](active-directory-aadconnect-version-history.md) (Azure AD Connect: historia wersji)

@@ -5,21 +5,21 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2018
+ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c4b05044b0894e565ec4136f368314cb22041a7b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
-Rozwiązania do zarządzania aktualizacji w usłudze Automatyzacja Azure umożliwia zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego dla komputerów z systemem Windows i Linux wdrożonych w Azure, środowiskach lokalnych lub innych dostawców chmury. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
+Rozwiązania do zarządzania aktualizacji w usłudze Automatyzacja Azure umożliwia zarządzanie aktualizacji systemu operacyjnego dla komputerów z systemem Windows i Linux wdrożonych w Azure, środowiskach lokalnych lub innych dostawców chmury. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
 
 Możesz włączyć zarządzanie aktualizacjami dla maszyn wirtualnych bezpośrednio z poziomu konta usługi [Azure Automation](automation-offering-get-started.md).
-Aby dowiedzieć się, jak włączyć zarządzanie aktualizacjami dla maszyn wirtualnych z poziomu konta usługi Automation, zobacz [Zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md).
+Aby dowiedzieć się, jak włączyć zarządzanie aktualizacjami dla maszyn wirtualnych z poziomu konta usługi Automation, zobacz [Zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Można również włączyć zarządzanie aktualizacji dla jednej maszyny wirtualnej ze strony maszyny wirtualnej w portalu Azure. Ten scenariusz jest dostępna zarówno [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) maszyn wirtualnych.
 
 ## <a name="solution-overview"></a>Omówienie rozwiązania
 
@@ -46,16 +46,16 @@ W dniu i o godzinie określonych we wdrożeniu aktualizacji komputery docelowe w
 
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
-W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych: 
+W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko zaktualizować ocen         |
-|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |Windows PowerShell 4.0 lub nowszy jest wymagany ([Pobierz WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).<br> Windows PowerShell w wersji 5.1 ([Pobierz 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) jest zalecane w przypadku bardziej niezawodne.         |
+|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |Windows PowerShell 4.0 lub nowszy jest wymagany ([Pobierz WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Windows PowerShell w wersji 5.1 ([Pobierz 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) jest zalecane w przypadku bardziej niezawodne.         |
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|Ubuntu 12.04 LTS i nowsze x86/x64       |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
 
 ### <a name="unsupported-client-types"></a>Typy klientów nieobsługiwana
 
@@ -122,7 +122,7 @@ Heartbeat
 
 Na komputerze z systemem Windows możesz przejrzeć następujące polecenie, aby sprawdzić połączenie agenta z analizy dzienników:
 
-1. Otwórz program Microsoft Monitoring Agent w Panelu sterowania, a na **Azure Log Analytics** kartę, agent wyświetla komunikat z informacją: **programu Microsoft Monitoring Agent została pomyślnie połączono z analizy dzienników** .   
+1. Otwórz program Microsoft Monitoring Agent w Panelu sterowania, a na **Azure Log Analytics** kartę, agent wyświetla komunikat z informacją: **programu Microsoft Monitoring Agent została pomyślnie połączono z analizy dzienników** .
 2. Otwórz Dziennik zdarzeń systemu Windows, przejdź do pozycji **Dzienniki aplikacji i usług\Operacje** i wyszukaj identyfikatory zdarzeń 3000 i 5002 ze źródła Service Connector. Te zdarzenia wskazują komputer został zarejestrowany za pomocą obszaru roboczego analizy dzienników i odbiera konfiguracji.
 
 Jeśli agent nie jest w stanie nawiązać połączenia z analizy dzienników i został on skonfigurowany do komunikowania się z Internetem za pośrednictwem zapory lub serwera proxy, upewnij się, serwer zapory lub serwera proxy jest poprawnie skonfigurowany, przeglądając [konfiguracji sieci Windows agent](../log-analytics/log-analytics-agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
@@ -145,7 +145,7 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 | --- | --- | --- |
 | Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Windows i inicjuje instalowanie wymaganych aktualizacji. |
 | Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów dla systemu Linux i inicjuje instalowanie wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br>Bezpośrednie połączenie agenta programu Operations Manager z usługą Log Analytics nie jest wymagane. Dane są przesyłane dalej z grupy zarządzania do obszaru roboczego analizy dzienników. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.</br>Bezpośrednie połączenie agenta programu Operations Manager z usługą Log Analytics nie jest wymagane. Dane są przesyłane dalej z grupy zarządzania do obszaru roboczego analizy dzienników. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -196,6 +196,30 @@ Utwórz nowe wdrożenie aktualizacji, klikając **harmonogram wdrożenia aktuali
 |Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
 
+## <a name="update-classifications"></a>Klasyfikacje aktualizacji
+
+Poniższe tabele zawierają listę klasyfikacje aktualizacji w zarządzania aktualizacjami oraz definicji dla każdej klasyfikacji.
+
+### <a name="windows"></a>Windows
+
+|Klasyfikacja  |Opis  |
+|---------|---------|
+|Aktualizacje krytyczne     | Aktualizacje dla konkretnego problemu, którego dotyczy krytyczną usterkę niepowiązaną z zabezpieczeń.        |
+|Aktualizacje zabezpieczeń     | Aktualizacji dotyczącej problemu z konkretnym produktem, związanych z zabezpieczeniami.        |
+|Pakiety zbiorcze aktualizacji     | Zbiorczego zestawu poprawek zebranych w jednym pakiecie w celu łatwiejszego wdrażania.        |
+|Pakiety funkcji     | Nowych funkcji produktów, rozpowszechnianych poza wydaniami.        |
+|Dodatki Service Pack     | Zbiorczego zestawu poprawek przeznaczonych do aplikacji.        |
+|Aktualizacje definicji     | Aktualizacji definicji wirusów lub innych plików definicji.        |
+|Narzędzia     | Narzędzia lub funkcji pomagających wykonać jedno lub więcej zadań.        |
+|Aktualizacje     | Aktualizacja aplikacji lub pliku, który jest obecnie zainstalowany.        |
+
+### <a name="linux"></a>Linux
+
+|Klasyfikacja  |Opis  |
+|---------|---------|
+|Aktualizacje krytyczne i zabezpieczeń     | Aktualizacje dla konkretnego problemu lub problemu z konkretnym produktem, związanych z zabezpieczeniami.         |
+|Inne aktualizacje     | Wszystkie inne aktualizacje, które nie są ważne w aktualizacjach charakter lub zabezpieczeń.        |
+
 ## <a name="search-logs"></a>Dzienniki wyszukiwania
 
 Oprócz szczegółów, które zostały opublikowane w portalu można przed dzienniki wyszukiwania. Z **śledzenia zmian** otwarty, kliknij **analizy dzienników**, spowoduje to otwarcie **wyszukiwania dziennika** strony
@@ -206,13 +230,13 @@ W poniższej tabeli przedstawiono przykładowy dziennik wyszukuje zebrane przez 
 
 | Zapytanie | Opis |
 | --- | --- |
-|Aktualizacja<br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false<br>&#124;Projekt komputera, Title, KBID, klasyfikacja, PublishedDate |Wszystkie komputery z brakującymi aktualizacjami<br>Dodaj jeden z następujących czynności, aby ograniczyć systemu operacyjnego:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Aktualizacja<br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false<br>&#124;gdy komputer == "ContosoVM1.contoso.com"<br>&#124;Projekt komputera, Title, KBID, produktu, PublishedDate |Brakujące aktualizacje dla konkretnego komputera (zastąp wartość własną nazwą komputera)|
-| Wydarzenie<br>&#124;gdzie EventLevelName == "error" i komputera w ((aktualizacja &#124; where (klasyfikacji == "Aktualizacje zabezpieczeń" lub klasyfikacji == "Aktualizacje krytyczne")<br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false <br>&#124;DISTINCT Computer)) |Zdarzenia błędu dotyczące komputerów, na których brakuje wymaganych aktualizacji krytycznych lub zabezpieczeń |
-| Aktualizacja<br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false<br>&#124;różne tytułu |Różne brakujące aktualizacje na wszystkich komputerach |
-| UpdateRunProgress<br>&#124;gdzie InstallationStatus == "nie powiodło się" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Komputery z aktualizacjami, których nie powiodła się w przebiegu aktualizacji<br>Dodaj jeden z następujących czynności, aby ograniczyć systemu operacyjnego:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Aktualizacja<br>&#124;gdzie OSType == "Linux"<br>&#124;gdzie UpdateState! = "Nie jest wymagane" i (klasyfikacji == "Aktualizacje krytyczne" lub klasyfikacji == "Aktualizacje zabezpieczeń")<br>&#124; summarize AggregatedValue = count() by Computer |Listę wszystkich maszyn systemu Linux, które mają dostępnych aktualizacji pakietu, która usterki krytyczne lub zabezpieczeń | 
-| UpdateRunProgress<br>&#124;gdzie UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|Komputery, które zostały zaktualizowane w ramach tego przebiegu aktualizacji (zastąp wartość nazwą własnego wdrożenia aktualizacji) | 
+|Aktualizacja</br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false</br>&#124;Projekt komputera, Title, KBID, klasyfikacja, PublishedDate |Wszystkie komputery z brakującymi aktualizacjami</br>Dodaj jeden z następujących czynności, aby ograniczyć systemu operacyjnego:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Aktualizacja</br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false</br>&#124;gdy komputer == "ContosoVM1.contoso.com"</br>&#124;Projekt komputera, Title, KBID, produktu, PublishedDate |Brakujące aktualizacje dla konkretnego komputera (zastąp wartość własną nazwą komputera)|
+| Wydarzenie</br>&#124;gdzie EventLevelName == "error" i komputera w ((aktualizacja &#124; where (klasyfikacji == "Aktualizacje zabezpieczeń" lub klasyfikacji == "Aktualizacje krytyczne")</br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false </br>&#124;DISTINCT Computer)) |Zdarzenia błędu dotyczące komputerów, na których brakuje wymaganych aktualizacji krytycznych lub zabezpieczeń |
+| Aktualizacja</br>&#124;gdzie UpdateState == "Wymagane" i opcjonalne == false</br>&#124;różne tytułu |Różne brakujące aktualizacje na wszystkich komputerach |
+| UpdateRunProgress</br>&#124;gdzie InstallationStatus == "nie powiodło się" </br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Komputery z aktualizacjami, których nie powiodła się w przebiegu aktualizacji</br>Dodaj jeden z następujących czynności, aby ograniczyć systemu operacyjnego:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Aktualizacja</br>&#124;gdzie OSType == "Linux"</br>&#124;gdzie UpdateState! = "Nie jest wymagane" i (klasyfikacji == "Aktualizacje krytyczne" lub klasyfikacji == "Aktualizacje zabezpieczeń")</br>&#124; summarize AggregatedValue = count() by Computer |Listę wszystkich maszyn systemu Linux, które mają dostępnych aktualizacji pakietu, która usterki krytyczne lub zabezpieczeń |
+| UpdateRunProgress</br>&#124;gdzie UpdateRunName == "DeploymentName"</br>&#124; summarize AggregatedValue = count() by Computer|Komputery, które zostały zaktualizowane w ramach tego przebiegu aktualizacji (zastąp wartość nazwą własnego wdrożenia aktualizacji) |
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integracja z programem System Center Configuration Manager
 
@@ -248,18 +272,18 @@ Jeśli wystąpią problemy podczas próby dołączenia rozwiązania lub maszyny 
 
 | Komunikat | Przyczyna | Rozwiązanie |
 |----------|----------|----------|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br>rejestracja nie powiodła się z powodu wyjątku<br>System.InvalidOperationException: {"Message": "Maszyna jest już<br>zarejestrowana na innym koncie. "} | Maszyna została już dołączona do innego obszaru roboczego na potrzeby zarządzania aktualizacjami | Przeprowadź czyszczenie starych artefaktów, [usuwając grupę hybrydowych elementów runbook](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br>rejestracja nie powiodła się z powodu wyjątku<br>System.Net.Http.HttpRequestException: Wystąpił błąd podczas wysyłania żądania. ---><br>System.Net.WebException: Połączenie podstawowe<br>zostało zamknięte: Wystąpił nieoczekiwany błąd<br>przy odbiorze. ---> System.ComponentModel.Win32Exception:<br>Klient i serwer nie mogą nawiązać komunikacji,<br>ponieważ nie mają wspólnego algorytmu | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br>rejestracja nie powiodła się z powodu wyjątku<br>Newtonsoft.Json.JsonReaderException: Błąd podczas analizowania wartości nieskończoności dodatniej. | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
-| Certyfikat przedstawiony przez usługę <wsid>.oms.opinsights.azure.com<br>nie został wystawiony przez urząd certyfikacji<br>używany na potrzeby usług firmy Microsoft. Kontakt<br>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje<br>komunikację TLS/SSL. |Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,<br>rejestracja nie powiodła się z powodu wyjątku<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Nie można utworzyć certyfikatu z podpisem własnym. ---><br>System.UnauthorizedAccessException: Odmowa dostępu. | Niepowodzenie generowania certyfikatu z podpisem własnym | Sprawdź, czy konto systemowe ma<br>dostęp do odczytu do folderu:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
+| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>System.InvalidOperationException: {"Message": "Maszyna jest już</br>zarejestrowana na innym koncie. "} | Maszyna została już dołączona do innego obszaru roboczego na potrzeby zarządzania aktualizacjami | Przeprowadź czyszczenie starych artefaktów, [usuwając grupę hybrydowych elementów runbook](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
+| Nie można zarejestrować maszyny Zarządzanie poprawkami, rejestracja nie powiodła się z powodu wyjątku</br>System.Net.Http.HttpRequestException: Wystąpił błąd podczas wysyłania żądania. ---></br>System.Net.WebException: Połączenie podstawowe</br>zostało zamknięte: Wystąpił nieoczekiwany błąd</br>przy odbiorze. ---> System.ComponentModel.Win32Exception:</br>Klient i serwer nie mogą nawiązać komunikacji,</br>ponieważ nie mają wspólnego algorytmu | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
+| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>Newtonsoft.Json.JsonReaderException: Błąd podczas analizowania wartości nieskończoności dodatniej. | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
+| Certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com</br>nie został wystawiony przez urząd certyfikacji</br>używany na potrzeby usług firmy Microsoft. Kontakt</br>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje</br>komunikację TLS/SSL. |Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
+| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Nie można utworzyć certyfikatu z podpisem własnym. ---></br>System.UnauthorizedAccessException: Odmowa dostępu. | Niepowodzenie generowania certyfikatu z podpisem własnym | Sprawdź, czy konto systemowe ma</br>dostęp do odczytu do folderu:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Nadal samouczkiem, aby dowiedzieć się, jak zarządzanie aktualizacjami dla maszyn wirtualnych systemu Windows.
 
 > [!div class="nextstepaction"]
-> [Zarządzanie aktualizacje i poprawki dla maszyn wirtualnych systemu Windows Azure](automation-tutorial-troubleshoot-changes.md)
+> [Zarządzanie aktualizacje i poprawki dla maszyn wirtualnych systemu Windows Azure](automation-tutorial-update-management.md)
 
 * Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../log-analytics/log-analytics-log-searches.md) w celu wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie alertów](../log-analytics/log-analytics-alerts.md) po wykryciu braku aktualizacji krytycznych na komputerach lub komputera z wyłączonymi aktualizacjami automatycznymi.

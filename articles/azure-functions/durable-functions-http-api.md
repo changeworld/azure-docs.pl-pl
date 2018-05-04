@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 07e6e5beb96042c2da82ac8be19e391d6153eabd
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w funkcji trwałe (funkcje platformy Azure)
 
@@ -131,6 +131,7 @@ Może być zwracany kilka wartości Kod stanu możliwe.
 |-----------------|-----------|-------------|
 | runtimeStatus   | ciąg    | Stanu działania wystąpienia. Wartości to *systemem*, *oczekujące*, **, *anulowane*, *zwolniony*, *Ukończone*. |
 | Dane wejściowe           | JSON      | Dane JSON, używane do inicjowania wystąpienia. |
+| customStatus    | JSON      | Dane JSON używane na potrzeby stanu aranżacji niestandardowych. To pole jest `null` Jeżeli nie jest ustawiony. |
 | output          | JSON      | Dane wyjściowe JSON wystąpienia. To pole jest `null` Jeśli wystąpienie nie jest w stanie ukończone. |
 | createdTime     | ciąg    | Podczas tworzenia tego wystąpienia. Używa ISO 8601 rozszerzony notacji. |
 | lastUpdatedTime | ciąg    | Czas, jaką trwała ostatniego wystąpienia. Używa ISO 8601 rozszerzony notacji. |
@@ -180,6 +181,7 @@ Oto przykład odpowiedzi ładunek wyjść historii i działanie wykonanie orches
       }
   ],
   "input": null,
+  "customStatus": { "nextActions": ["A", "B", "C"], "foo": 2 },
   "lastUpdatedTime": "2018-02-28T05:18:54Z",
   "output": [
       "Hello Tokyo!",

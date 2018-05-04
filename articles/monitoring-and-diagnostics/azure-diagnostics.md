@@ -1,11 +1,11 @@
 ---
-title: "Omówienie diagnostyki Azure | Dokumentacja firmy Microsoft"
-description: "Użyj diagnostyki Azure dla debugowania pomiaru wydajności, monitorowanie, analiza ruchu w usługi w chmurze, maszyn wirtualnych i sieci szkieletowej usług"
+title: Omówienie diagnostyki Azure | Dokumentacja firmy Microsoft
+description: Użyj diagnostyki Azure dla debugowania pomiaru wydajności, monitorowanie, analiza ruchu w usługi w chmurze, maszyn wirtualnych i sieci szkieletowej usług
 services: multiple
 documentationcenter: .net
 author: rboucher
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
 ms.service: multiple
 ms.workload: na
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>Co to jest Azure Diagnostics
-Diagnostyka Azure jest możliwość w ramach platformy Azure, która umożliwia zbieranie danych diagnostycznych na wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są Azure Cloud Service w sieci Web i proces roboczy, maszynach wirtualnych platformy Azure z systemem Microsoft Windows i sieci szkieletowej usług. Innymi usługami Azure mają własne oddzielne diagnostyki.
+Diagnostyka Azure jest możliwość w ramach platformy Azure, która umożliwia zbieranie danych diagnostycznych na wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są usługi w chmurze Azure (klasyczne) w sieci Web i proces roboczy, maszyn wirtualnych, zestawy skalowania maszyny wirtualnej i sieci szkieletowej usług. Innymi usługami platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md). 
 
 ## <a name="data-you-can-collect"></a>Dane, które można zbierać
 Diagnostyka Azure można zebrać następujące typy danych:
@@ -38,16 +38,13 @@ Diagnostyka Azure można zebrać następujące typy danych:
 | Dzienniki błędów niestandardowych |Dzienniki tworzone przez usługi lub aplikacji |
 | Dzienniki diagnostyczne infrastruktury platformy Azure |Informacje o diagnostyce sam |
 
-Rozszerzenia diagnostyki Azure można transferu tych danych do konta magazynu Azure lub wysyłają je do usług, takich jak [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Dane można użyć do debugowania i rozwiązywania problemów, pomiaru wydajności monitorowania użycia zasobów, analizy ruchu i Planowanie wydajności i inspekcji.
+Rozszerzenia diagnostyki Azure można transferu tych danych do konta magazynu Azure lub wysyłać je do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Można również strumienia do [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), który następnie służy do wysyłania do innych niż Azure montoring usług. Dane można użyć do debugowania i rozwiązywania problemów, pomiaru wydajności monitorowania użycia zasobów, analizy ruchu i Planowanie wydajności i inspekcji.
 
 ## <a name="versioning"></a>Obsługa wersji
 Zobacz [historii Wersjonowania diagnostyki Azure](azure-diagnostics-versioning-history.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Wybierz usługi, które próbujesz na zbieranie danych diagnostycznych i skorzystaj z poniższych artykułów, aby rozpocząć pracę. Użyj łączy ogólne diagnostyki Azure dla odwołania do wykonywania określonych zadań.
-
-## <a name="web-apps"></a>Web Apps
-Należy pamiętać, że aplikacje sieci Web nie diagnostyki Azure. Znajdź równoważnych informacji w [aplikacji sieci Web](../app-service/web-sites-enable-diagnostic-log.md)
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Usługi w chmurze za pomocą diagnostyki Azure
 * Jeśli używasz programu Visual Studio, zobacz [program Visual Studio do śledzenia aplikacji usługi w chmurze](../vs-azure-tools-debug-cloud-services-virtual-machines.md) rozpocząć pracę. W przeciwnym razie zobacz

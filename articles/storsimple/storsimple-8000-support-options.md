@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6753b52b02373d03a9ed5fec775c899a806aff3e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="storsimple-solution-support"></a>Obsługa rozwiązania StorSimple
 
@@ -83,7 +83,7 @@ Jeśli dany kontrakt Obsługa wygasł, należy pamiętać, w zależności od teg
 Niż język angielski, język lokalny jest obsługiwane w następujących językach w godzinach pracy: japoński, koreański, tajwańskimi i języka chińskiego tradycyjnego.
 
 ## <a name="support-scope"></a>Zakres pomocy technicznej 
-Pomoc techniczna dotycząca problemów związanych z zarządzaniem rozliczeniami i subskrypcjami jest dostępna na wszystkich poziomach. Aby uzyskać pomoc StorSimple, odbiorcy muszą być aktywnie zarejestrowane dla StorSimple Standard lub Premium plany pomocy technicznej. StorSimple zespołem pomocy technicznej będzie odpowiedzialna za rozwiązania wszystkich problemów, które mają wpływ na rozwiązaniu StorSimple. Aby otrzymać pomoc dotyczącą problemów związanych z usługi Azure, które nie są bezpośrednio związane z StorSimple, nabywca musi być zarejestrowane w planie odpowiedniej pomocy technicznej platformy Azure. Zobacz [tutaj](https://azure.microsoft.com/en-us/support/plans/) szczegółowe informacje. Zespół pomocy technicznej oznacza dziale obsługi StorSimple z systemem innym niż zespół Azure monitującą oparte na uprawnień klienta do pomocy technicznej platformy Azure. 
+Pomoc techniczna dotycząca problemów związanych z zarządzaniem rozliczeniami i subskrypcjami jest dostępna na wszystkich poziomach. Aby uzyskać pomoc StorSimple, odbiorcy muszą być aktywnie zarejestrowane dla StorSimple Standard lub Premium plany pomocy technicznej. StorSimple zespołem pomocy technicznej będzie odpowiedzialna za rozwiązania wszystkich problemów, które mają wpływ na rozwiązaniu StorSimple. Aby otrzymać pomoc dotyczącą problemów związanych z usługi Azure, które nie są bezpośrednio związane z StorSimple, nabywca musi być zarejestrowane w planie odpowiedniej pomocy technicznej platformy Azure. Zobacz [tutaj](https://azure.microsoft.com/support/plans/) szczegółowe informacje. Zespół pomocy technicznej oznacza dziale obsługi StorSimple z systemem innym niż zespół Azure monitującą oparte na uprawnień klienta do pomocy technicznej platformy Azure. 
 
 
 | **WAŻNOŚĆ** |**SYTUACJA KLIENTA**                                                                                                                                | OCZEKIWANO ODPOWIEDZI MICROSOFT <sup>2                                                                                       | OCZEKIWANO KLIENTA ODPOWIEDZI                                                                                                                                                       |

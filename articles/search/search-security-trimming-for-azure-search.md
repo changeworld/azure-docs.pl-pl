@@ -1,21 +1,18 @@
 ---
-title: "Filtry zabezpieczeń dla wyników przycinania w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości użytkowników."
-ms.custom: 
-ms.date: 08/07/2017
+title: Filtry zabezpieczeń dla wyników przycinania w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Kontrolę dostępu do zawartości usługi Azure Search przy użyciu filtrów zabezpieczeń i tożsamości użytkowników.
 ms.service: search
-ms.reviewer: 
-ms.suite: 
-ms.tgt_pltfrm: 
-caps.latest.revision: "26"
+ms.topic: conceptual
+services: search
+ms.date: 08/07/2017
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: dd26676b74431566b3631b8a79cd06bcf3022518
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpieczeń dla wyników przycinania w usłudze Azure Search
 
@@ -29,7 +26,7 @@ W tym artykule przedstawiono sposób wykonania filtrowanie zabezpieczeń, wykonu
 > [!div class="checklist"]
 > * Utwórz pole, które zawiera identyfikatory główna 
 > * Push lub zaktualizuj istniejących dokumentów z odpowiednimi identyfikatorami główna
-> * Wysłać żądania wyszukiwania z `search.in``filter`
+> * Wysłać żądania wyszukiwania z `search.in` `filter`
 
 >[!NOTE]
 > Proces pobierania główna identyfikatory nie opisano w tym dokumencie. Należy pobrać go z dostawcą usług tożsamości.
@@ -155,7 +152,7 @@ Należy pobrać je ponownie, gdy `group_ids` zawiera "group_id1" lub "group_id2"
 
 Jest to, jak można filtrować wyniki na podstawie tożsamości użytkownika i usługi Azure Search `search.in()` funkcji. Ta funkcja służy do przekazania w identyfikatorach podmiotu zabezpieczeń dla użytkownika do dopasowania do głównej identyfikatorów skojarzonych z każdym dokumencie docelowym. Podczas obsługi żądania wyszukiwania `search.in` funkcja odfiltrowuje wyniki wyszukiwania, dla których żaden z podmiotów zabezpieczeń użytkownika nie ma dostępu do odczytu. Identyfikatory główna może reprezentować np. grupy zabezpieczeń, ról lub nawet tożsamości przez użytkownika.
  
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Kontrola dostępu na podstawie tożsamości katalogu Active za pomocą usługi Azure Search filtrów](search-security-trimming-for-azure-search-with-aad.md)
 + [Filtry w usłudze Azure Search](search-filters.md)

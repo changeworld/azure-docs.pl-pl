@@ -1,12 +1,12 @@
 ---
-title: "Usługi aplikacji Azure stosu: Fault Aktualizacja domeny | Dokumentacja firmy Microsoft"
-description: "Jak wykonać ponowną dystrybucję usłudze Azure App Service na stosie Azure domen błędów"
+title: 'Usługi aplikacji Azure stosu: Fault Aktualizacja domeny | Dokumentacja firmy Microsoft'
+description: Jak wykonać ponowną dystrybucję usłudze Azure App Service na stosie Azure domen błędów
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 851747263879aa89fabe8b168876238a004ea8b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 42adef66fb1b1141ab44aab3a1ccdaae022202b5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak wykonać ponowną dystrybucję usłudze Azure App Service na stosie Azure domen błędów
 
@@ -55,7 +55,7 @@ Aby można było ponownie dystrybuować zestawy skalowania wdrożone dla dostawc
 2. Skalowanie obok każdego zestawu.  Na przykład jeśli masz istniejące wystąpienia w zestawie skalowania musi skalowanie w poziomie z do 6, tak aby trzech nowych wystąpień, które będą udostępniane w domenach awarii.
     a. [Konfigurowanie środowiska Azure stosu administratora w programie PowerShell](azure-stack-powershell-configure-admin.md) b. W tym przykładzie umożliwiają skalowanie w poziomie zestaw skali:
         ```powershell
-                Login-AzureRMAccount -EnvironmentName AzureStackAdmin 
+                Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
                 # Get current scale set
                 $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"

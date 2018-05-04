@@ -1,11 +1,11 @@
 ---
 title: Tworzenie i rejestrowanie konta wydawcy | Dokumentacja firmy Microsoft
-description: "Instrukcje dotyczące tworzenia konta Microsoft Developer, więc po zatwierdzeniu można sprzedać różnych oferują typy w witrynie Azure Marketplace."
+description: Instrukcje dotyczące tworzenia konta Microsoft Developer, więc po zatwierdzeniu można sprzedać różnych oferują typy w witrynie Azure Marketplace.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: mbaldwin
-ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69da37cbf5691fe94b9550200e259711e9e201d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 Ten artykuł przeprowadzi Cię przez proces rejestracji zostać zatwierdzone Microsoft Developer do portalu Azure Marketplace i tworzenie konta niezbędne.
@@ -37,7 +37,7 @@ Adres, który wchodzi w skład nazwy użytkownika powinny być w domenie i kontr
 Podczas tworzenia konta firmy, zgodna z tymi wytycznymi Jeśli więcej niż jedna osoba potrzebować dostępu do konta, logując się przy użyciu konta Microsoft, które otworzyć konto.
 
 > [!Important]
-> Ważne Aby Zezwalaj wielu użytkownikom na dostęp do tego konta Centrum deweloperów, zaleca się używanie usługi Azure Active Directory do przypisywania ról dla poszczególnych użytkowników, którzy mogą uzyskać dostępu do konta poprzez zalogowanie za pomocą ich indywidualne poświadczenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [użytkownikami konta](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Ważne Aby Zezwalaj wielu użytkownikom na dostęp do tego konta Centrum deweloperów, zaleca się używanie usługi Azure Active Directory do przypisywania ról dla poszczególnych użytkowników, którzy mogą uzyskać dostępu do konta poprzez zalogowanie za pomocą ich indywidualne poświadczenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [użytkownikami konta](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * Utwórz konto Microsoft przy użyciu adresu e-mail, który należy do domeny firmy, ale nie do jedna osoba — na przykład windowsapps@fabrikam.com.
 * Ograniczanie dostępu do tego konta Microsoft na najmniejszą możliwą liczbę deweloperów.
@@ -49,7 +49,7 @@ Podczas tworzenia konta firmy, zgodna z tymi wytycznymi Jeśli więcej niż jedn
 
 Konto dewelopera powinni mieć dostęp przede wszystkim z zaufanych komputerów. Jest to krytyczny, ponieważ istnieje limit liczby kody wygenerowane dla danego konta, na tydzień. Umożliwia także bezproblemową obsługę logowania.
 
-Aby uzyskać więcej informacji o wytycznych konta dewelopera dodatkowe i zabezpieczeniach, kliknij przycisk [tutaj](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+Aby uzyskać więcej informacji o wytycznych konta dewelopera dodatkowe i zabezpieczeniach, kliknij przycisk [tutaj](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Instrukcje
 1. Otwórz nowy Incognito przeglądarki Chrome lub sesja przeglądania Internet Explorer InPrivate Aby upewnić się, że nie zalogowano Cię do istniejącego konta.

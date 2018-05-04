@@ -10,15 +10,15 @@ ms.custom: saas apps
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: c6f3da52643caa9aa1172db5b884c5336c409715
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3b2b1b767b26d844046d545e3d587621c5d14995
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Odzyskiwanie po awarii dla wielodostępnych aplikacji SaaS przy użyciu replikacja geograficzna bazy danych
 
-W tym samouczku eksplorowania scenariusza odzyskiwania awaryjnego pełny dla wielodostępnych aplikacji SaaS implementowane przy użyciu modelu bazy danych dla dzierżawy. Aby chronić aplikacji po awarii, należy użyć [ _— replikacja geograficzna_ ](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) do tworzenia repliki dla bazy danych katalogu i dzierżawy w regionie alternatywny odzyskiwania. W przypadku wystąpienia awarii, możesz szybko przełączyć tych replik, aby wznowić operacje biznesowe normalnego. W tryb failover baz danych w oryginalnej region stać się replikach pomocniczych baz danych w regionie odzyskiwania. Po przejściu do trybu online trybu tych replik one automatycznie nadążyć stan bazy danych w regionie odzyskiwania. Po awarii nie zostanie rozwiązany, możesz powrót po awarii do baz danych w oryginalnej regionie produkcji.
+W tym samouczku eksplorowania scenariusza odzyskiwania awaryjnego pełny dla wielodostępnych aplikacji SaaS implementowane przy użyciu modelu bazy danych dla dzierżawy. Aby chronić aplikacji po awarii, należy użyć [ _— replikacja geograficzna_ ](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) do tworzenia repliki dla bazy danych katalogu i dzierżawy w regionie alternatywny odzyskiwania. W przypadku wystąpienia awarii, możesz szybko przełączyć tych replik, aby wznowić operacje biznesowe normalnego. W tryb failover baz danych w oryginalnej region stać się replikach pomocniczych baz danych w regionie odzyskiwania. Po przejściu do trybu online trybu tych replik one automatycznie nadążyć stan bazy danych w regionie odzyskiwania. Po awarii nie zostanie rozwiązany, możesz powrót po awarii do baz danych w oryginalnej regionie produkcji.
 
 W tym samouczku Eksploruje przepływy pracy awaryjnej i powrotu po awarii. Dowiesz się, jak:
 > [!div classs="checklist"]
@@ -82,7 +82,7 @@ W tym samouczku najpierw użyć do utworzenia repliki biletów Wingtip aplikacji
 Później w oddzielnych repatriacji kroku, możesz przełączyć bazy danych katalogu i dzierżawy w regionie odzyskiwania do oryginalnej regionu. Aplikacji i baz danych pozostają dostępne w całej repatriacji. Po zakończeniu aplikacji jest w pełni funkcjonalny w oryginalnym regionie.
 
 > [!Note]
-> Aplikacja jest odzyskiwana do _sparowanego region_ regionu, w którym aplikacja jest wdrażana. Aby uzyskać więcej informacji, zobacz [Azure łączyć regionów](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions).
+> Aplikacja jest odzyskiwana do _sparowanego region_ regionu, w którym aplikacja jest wdrażana. Aby uzyskać więcej informacji, zobacz [Azure łączyć regionów](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ## <a name="review-the-healthy-state-of-the-application"></a>Sprawdź kondycję aplikacji
 
@@ -103,7 +103,7 @@ Przed rozpoczęciem procesu odzyskiwania należy przejrzeć normalnego stanu dob
 To zadanie służy do uruchamiania procesu, który synchronizuje konfigurację serwerów, pule elastyczne i baz danych do katalogu dzierżawcy. Proces zachowuje te informacje aktualne w katalogu.  Proces działa z katalogu active w regionie oryginalnym lub w regionie odzyskiwania. Informacje o konfiguracji jest używany jako część procesu odzyskiwania, aby zapewnić środowisko odzyskiwania jest zgodna z oryginalne środowisko, a następnie później, podczas repatriacji, aby upewnić się, oryginalny region jest spójna ze zmianami wprowadzonymi w środowisko odzyskiwania. Katalogu jest również używane do śledzenia stanu odzyskiwania zasobów dla dzierżawcy
 
 > [!IMPORTANT]
-> Dla uproszczenia procesu synchronizacji i innych długotrwała procesów odzyskiwania i repatriacji są implementowane w tych samouczkach jako lokalnego zadania programu Powershell lub sesji, które Uruchom loginu użytkownika klienta. Tokeny uwierzytelniania, wystawiane, gdy wygaśnie po kilku godzinach logowania i zadania, następnie zakończy się niepowodzeniem. W scenariuszu produkcyjnym procesy długotrwałe powinny zostać wdrożone jako wiarygodnych usług Azure pewnego rodzaju uruchamiania nazwy głównej usługi. Zobacz [użycia programu Azure PowerShell do tworzenia nazwy głównej usługi przy użyciu certyfikatu](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal).
+> Dla uproszczenia procesu synchronizacji i innych długotrwała procesów odzyskiwania i repatriacji są implementowane w tych samouczkach jako lokalnego zadania programu Powershell lub sesji, które Uruchom loginu użytkownika klienta. Tokeny uwierzytelniania, wystawiane, gdy wygaśnie po kilku godzinach logowania i zadania, następnie zakończy się niepowodzeniem. W scenariuszu produkcyjnym procesy długotrwałe powinny zostać wdrożone jako wiarygodnych usług Azure pewnego rodzaju uruchamiania nazwy głównej usługi. Zobacz [użycia programu Azure PowerShell do tworzenia nazwy głównej usługi przy użyciu certyfikatu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
 1. W _PowerShell ISE_, otwórz plik Modules\UserConfig.psm1 ...\Learning. Zastąp `<resourcegroup>` i `<user>` w wierszach 10 i 11 o wartości używane w przypadku wdrażania aplikacji.  Zapisz plik!
 
@@ -181,7 +181,7 @@ Teraz załóżmy istnieje awaria w regionie, w którym aplikacja jest wdrożona 
 
 2. Naciśnij klawisz **F5**, aby uruchomić skrypt.  
     * Skrypt zostanie otwarty w nowym oknie programu PowerShell, a następnie uruchamia serię zadań programu PowerShell, które są uruchamiane równolegle. Te zadania w trybie Failover dzierżawy region odzyskiwania baz danych.
-    * Region odzyskiwania jest _sparowanego region_ skojarzone z region platformy Azure, w której wdrożono aplikację. Aby uzyskać więcej informacji, zobacz [Azure łączyć regionów](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions). 
+    * Region odzyskiwania jest _sparowanego region_ skojarzone z region platformy Azure, w której wdrożono aplikację. Aby uzyskać więcej informacji, zobacz [Azure łączyć regionów](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. Monitorowanie stanu procesu odzyskiwania, w oknie programu PowerShell.
     ![Proces trybu failover](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
@@ -310,4 +310,4 @@ Dowiedz się więcej o technologii bazy danych Azure SQL udostępnia umożliwiaj
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Dodatkowe samouczki, które zależą od aplikacji Wingtip SaaS](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [Dodatkowe samouczki, które zależą od aplikacji Wingtip SaaS](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)

@@ -1,6 +1,6 @@
 ---
-title: "Kreator Azure Machine Learning źródła danych Azure | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono AML środowiska roboczego Kreatora źródła danych"
+title: Kreator Azure Machine Learning źródła danych Azure | Dokumentacja firmy Microsoft
+description: Wyjaśniono AML środowiska roboczego Kreatora źródła danych
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
 ms.openlocfilehash: 4f9a2249142220f3c57cb2e479a175d4227749fd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-source-wizard"></a>Kreator źródła danych #
 
@@ -22,7 +22,7 @@ Kreator źródła danych jest szybki i łatwy sposób dostosowania zestawu danyc
 
 ## <a name="step-1-trigger-the-data-source-wizard"></a>Krok 1: Wyzwolenia Kreatora źródła danych ## 
 
-Aby przenieść dane do projektu przy użyciu Kreatora źródła danych. Wybierz  **+**  znajdujący się obok pola wyszukiwania w widoku danych i wybierz polecenie Dodaj źródło danych. 
+Aby przenieść dane do projektu przy użyciu Kreatora źródła danych. Wybierz **+** znajdujący się obok pola wyszukiwania w widoku danych i wybierz polecenie Dodaj źródło danych. 
 
 ![Dodawanie źródła danych](media/data-source-wizard/add-data-source.png)
 

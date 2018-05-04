@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fd68658d2549e47f69005af4012c2c328e192631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
@@ -232,9 +232,17 @@ Aplikacja domyślnie umożliwia korzystanie z protokołu [TLS](https://wikipedia
 
 Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w obszarze **wersji protokołu TLS** wybierz minimalną wersję protokołu TLS do użycia.
 
-![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+![Wymuszanie protokołu TLS 1.1 lub 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 Po ukończeniu operacji aplikacja odrzuca wszystkie połączenia z niższymi wersjami protokołu TLS.
+
+## <a name="renew-certificates"></a>Odnawianie certyfikatów
+
+Adres IP dla ruchu przychodzącego może ulec zmianie po usunięciu powiązania, nawet jeśli to powiązanie jest oparte na adresie IP. Jest to szczególnie ważne podczas odnawiania certyfikatu, który już znajduje się w powiązaniu opartym na adresie IP. Aby uniknąć zmian w adresie IP aplikacji, wykonaj kolejno następujące kroki:
+
+1. Przekaż nowy certyfikat.
+2. Powiąż nowy certyfikat z wybraną domeną niestandardową bez usuwania starego certyfikatu. Ta akcja zastępuje powiązanie zamiast usuwania go.
+3. Usuń stary certyfikat. 
 
 ## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 
@@ -278,7 +286,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Certyfikaty publiczne (opcjonalnie)
-Do swojej aplikacji internetowej możesz przekazać [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/). Certyfikatów publicznych możesz też używać dla aplikacji w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów komputera lokalnego, musisz użyć aplikacji internetowej w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [How to configure public certificates to your Web App (Jak skonfigurować certyfikaty publiczne dla aplikacji internetowej)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+[Certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) możesz przekazać do aplikacji internetowej, aby aplikacja mogła uzyskiwać dostęp do zewnętrznej usługi wymagającej uwierzytelniania za pomocą certyfikatu.  Aby uzyskać więcej szczegółów na temat ładowania i używania certyfikatu publicznego w aplikacji, zobacz [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load).  Certyfikatów publicznych możesz też używać z aplikacjami w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów komputera lokalnego, musisz użyć aplikacji internetowej w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [How to configure public certificates to your Web App (Jak skonfigurować certyfikaty publiczne dla aplikacji internetowej)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Przekazywanie certyfikatu publicznego](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

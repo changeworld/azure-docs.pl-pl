@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: fe383d172def4916338db86c5fba641d75813e9b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="my-first-graphical-runbook"></a>Mój pierwszy graficzny element Runbook
 
@@ -117,6 +117,10 @@ Teraz masz zmienną służącą do przechowywania identyfikatora subskrypcji i m
 1. Nie ma potrzeby **zapisu Hello World do wyjściowego** , więc kliknij wielokropek (...) i wybierz **usunąć**.
 1. W kontrolce Biblioteka rozwiń pozycję **ZASOBY** i **Połączenia**, a następnie dodaj pozycję **AzureRunAsConnection** do kanwy, wybierając pozycję **Dodaj do kanwy**.
 1. W formancie biblioteki typu **Connect-AzureRmAccount** w polu tekstowym wyszukiwania.
+
+   > [!IMPORTANT]
+   > **Dodaj-AzureRmAccount** jest teraz aliasem **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementy, jeśli nie widzisz **Connect-AzureRMAccount**, można użyć **Add-AzureRmAccount**, lub zaktualizować moduły na Twoim koncie automatyzacji.
+
 1. Dodaj **Connect-AzureRmAccount** do obszaru roboczego.
 1. Umieść kursor nad pozycją **Uzyskaj połączenie Uruchom jako** i zaczekaj, aż w dolnej części kształtu pojawi się okrąg. Kliknij okrąg i przeciągnij strzałkę **Connect-AzureRmAccount**. Utworzona strzałka to *link*. Rozpoczyna się od elementu runbook **uzyskać Uruchom jako połączenia** , a następnie uruchom **Connect-AzureRmAccount**.<br> ![Tworzenie połączenia między działaniami](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 1. W obszarze roboczym, wybierz **Connect-AzureRmAccount** i w okienku typu formantu konfiguracji **logowania do platformy Azure** w **etykiety** pola tekstowego.
@@ -135,9 +139,6 @@ Teraz masz zmienną służącą do przechowywania identyfikatora subskrypcji i m
 1. Po wybraniu zestaw parametrów parametry są wyświetlane na stronie Konfiguracja parametru działania. Kliknij pozycję **SubscriptionID**.
 1. Na stronie wartość parametru wybierz **zasób zmiennej** dla **źródła danych** i wybierz **AzureSubscriptionId** z listy, a następnie kliknij przycisk **OK** dwa razy.
 1. Umieść kursor nad pozycją **Zaloguj się do platformy Azure** i zaczekaj, aż w dolnej części kształtu pojawi się okrąg. Kliknij okrąg i przeciągnij strzałkę do pozycji **Określ identyfikator subskrypcji**.
-
-> [!IMPORTANT]
-> **Connect-AzureRmAccount** jest teraz aliasem **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementy, jeśli nie widzisz **Connect-AzureRMAccount**, można użyć **Connect-AzureRmAccount**, lub zaktualizować moduły na Twoim koncie automatyzacji.
 
 Element Runbook powinien na tym etapie wyglądać następująco: <br>![Konfiguracja uwierzytelniania elementu Runbook](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

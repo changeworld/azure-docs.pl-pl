@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: df13f23908aa787bfcc579340ed0aa6cb0d5ed29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 813124ae7c0dd76a27dcbaea6f0d7aa19bc1e49c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Szyfrowanie dysków Azure dla systemu Windows i maszyn wirtualnych systemu Linux IaaS
 Microsoft Azure jest silnie zobowiązane do zapewnienia prywatności danych, suwerenności danych i umożliwia sterowanie platformy Azure hostowanej danych za pomocą wielu zaawansowanych technologii szyfrowania, sterowania i zarządzania kluczami szyfrowania, inspekcji i kontroli dostępu do danych. Klienci Azure zapewnia elastyczność wyboru rozwiązania, które będzie najlepiej odpowiadać ich potrzeb biznesowych. W tym dokumencie firma Microsoft podstawowe informacje na temat nowego rozwiązania technologii "Szyfrowania dysków Azure dla systemu Windows i Linux IaaS maszyny Wirtualnej na" Aby chronić i ochrony danych w celu spełnienia organizacji bezpieczeństwa i zgodności zobowiązań. Papieru zapewnia napotka szczegółowe wskazówki dotyczące sposobu używania funkcji szyfrowania dysków Azure w tym obsługiwane scenariusze i użytkownika.
@@ -141,7 +141,7 @@ Przed włączeniem szyfrowania dysków Azure na maszynach wirtualnych Azure IaaS
 > [!NOTE]
 > Dla systemu Windows Server 2008 R2 musisz mieć zainstalowany przed włączeniem szyfrowania na platformie Azure programu .NET Framework 4.5. Można zainstalować z witryny Windows Update, instalując opcjonalną aktualizację programu Microsoft .NET Framework 4.5.2 dla systemów opartych na x64 systemu Windows Server 2008 R2 ([KB2901983](https://support.microsoft.com/kb/2901983)).
 
-* Szyfrowanie dysków Azure jest tylko obsługiwana w określonych galerii Azure na podstawie dystrybucje systemu Linux serwera i wersje.  Aby uzyskać listę aktualnie obsługiwanych wersji, zapoznaj się [FAQ szyfrowania dysków Azure](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq).
+* Szyfrowanie dysków Azure jest tylko obsługiwana w określonych galerii Azure na podstawie dystrybucje systemu Linux serwera i wersje.  Aby uzyskać listę aktualnie obsługiwanych wersji, zapoznaj się [FAQ szyfrowania dysków Azure](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq).
 
 * Szyfrowanie dysków Azure wymaga, aby magazyn kluczy i maszyny wirtualne znajdowały się w tym samym regionie Azure i subskrypcji.
 
@@ -783,7 +783,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 
 ##### <a name="prerequisites-for-os-disk-encryption"></a>Wymagania wstępne dotyczące szyfrowania dysku systemu operacyjnego
 
-* Maszyna wirtualna musi być przy użyciu rozkładu zgodne z szyfrowania dysku systemu operacyjnego wymienionych w [FAQ szyfrowania dysków Azure](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
+* Maszyna wirtualna musi być przy użyciu rozkładu zgodne z szyfrowania dysku systemu operacyjnego wymienionych w [FAQ szyfrowania dysków Azure](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
 * Maszyna wirtualna musi zostać utworzony z obrazu witryny Marketplace usługi Azure Resource Manager.
 * Maszyna wirtualna platformy Azure z co najmniej 4 GB pamięci RAM (zalecany rozmiar to 7 GB).
 * (W przypadku RHEL i CentOS) Wyłącz SELinux. Aby wyłączyć SELinux, zobacz "4.4.2. Wyłączanie SELinux"w [Przewodnik administratora i użytkownika SELinux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na maszynie Wirtualnej.

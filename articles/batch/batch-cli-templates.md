@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: 4b4a5b9199fe648425304eaa8db0130bb1b4264d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0a6e355d8f16fed9022cc2cf55dc09781364f0b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Korzystanie z szablonów interfejsu wiersza polecenia usługi Azure Batch i transferu plików (wersja zapoznawcza)
 
@@ -261,5 +261,5 @@ Wypróbowanie rozszerzenia partii dla wiersza polecenia platformy Azure i uzyska
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz w partii szablony wpisie w blogu: [zadania uruchomione partii zadań Azure za pomocą wiersza polecenia platformy Azure — kod nie jest wymagany](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/).
+- Zobacz w partii szablony wpisie w blogu: [zadania uruchomione partii zadań Azure za pomocą wiersza polecenia platformy Azure — kod nie jest wymagany](https://azure.microsoft.com/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/).
 - Szczegółowa dokumentacja instalacji i użycia, przykłady i kodu źródłowego są dostępne w [repozytorium Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions).

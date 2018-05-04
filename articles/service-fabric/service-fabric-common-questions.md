@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a112951409fc6177240b9eddc9fcd7f6c0c932cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania dotyczące sieci szkieletowej usług
 
 Istnieje wiele często zadawane pytania dotyczące czynności sieci szkieletowej usług i jak należy jej używać. W tym dokumencie opisano wiele z tych często zadawane pytania i odpowiedzi.
 
 ## <a name="cluster-setup-and-management"></a>Konfiguracja klastra i zarządzanie
+
+### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Jak wykonać wycofania certyfikatu klastra sieci szkieletowej usług?
+
+Wycofywanie jakiegokolwiek uaktualnienia do aplikacji wymaga kondycji wykrywania awarii przed z kworum klastra usługi sieć szkieletowa zatwierdzenie zmiany; zatwierdzone zmiany mogą być tylko przeniesiona do przodu. Inżynierem eskalacji za pomocą techniczną, może być wymagane, aby odzyskać klaster, jeśli wprowadzono istotne niemonitorowane zmiany certyfikatu.  [Uaktualnienie aplikacji usługi sieć szkieletowa](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master) stosuje [parametry uaktualniania aplikacji](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), i dostarcza zero promise uaktualnienia przestoju.  Po naszej aplikacji zalecane monitorowanych tryb uaktualniania, automatyczne postępu za pośrednictwem aktualizacji domen opiera się na sprawdzenie kondycji, przechodzącą, stopniowego wstecz automatycznie, jeśli domyślna usługa aktualizacji nie powiedzie się.
+ 
+Jeśli klaster nadal polega na wykorzystaniu klasycznego właściwości odcisk palca certyfikatu w szablonie usługi Resource Manager, zaleca możesz [zmiany klastra z odcisk palca certyfikatu, aby nazwa pospolita](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), aby wykorzystać nowoczesnych kluczy tajnych Funkcje zarządzania.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Można utworzyć klastra obejmującego wiele regiony platformy Azure lub własny centrów danych?
 
@@ -89,7 +95,7 @@ Gdy pracujemy nad udoskonalone środowisko obecnie jest odpowiedzialny za uaktua
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Można zaszyfrować danych dołączonych dysków w typ węzła klastra (zestaw skali maszyny wirtualnej)?
 Tak.  Aby uzyskać więcej informacji, zobacz [utworzyć klaster z dysków dołączonych danych](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [szyfrowania dysków (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), i [szyfrowania dysków (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>Co to są katalogów i procesy wymagające do wykluczenia podczas uruchamiania programu antywirusowego w mojej klastra?
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Co to są katalogów i procesy wymagające do wykluczenia podczas uruchamiania programu antywirusowego w mojej klastra?
 
 | **Katalogi wykluczone antywirusowe** |
 | --- |
@@ -164,6 +170,6 @@ Firma Microsoft [zapowiedziała niedawno](https://blogs.msdn.microsoft.com/azure
 
 Postępuj zgodnie z [blogu usługi sieć szkieletowa](https://blogs.msdn.microsoft.com/azureservicefabric/) Aby uzyskać więcej informacji, ponieważ są one anonsowania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Dowiedz się więcej o podstawowych pojęć sieci szkieletowej usług i najlepsze rozwiązania](https://mva.microsoft.com/en-us/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965)

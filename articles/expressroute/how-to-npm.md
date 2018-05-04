@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0d8bee936717a5668e16fbd66d416fcc4e738814
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
@@ -73,7 +73,7 @@ Tworzenie obszaru roboczego w subskrypcji, która ma łącze sieci wirtualnych d
 1. W [portalu Azure](https://portal.azure.com), wybierz subskrypcję, która ma sieci wirtualne połączyć za pomocą do obwodu usługi ExpressRoute. Następnie odszukaj na liście usług w **Marketplace** "Monitor wydajności sieci". Powrotu, kliknij, aby otworzyć **monitora wydajności sieci** strony.
 
    >[!NOTE]
-   >Może tworzyć nowy obszar roboczy lub użyj istniejącego obszaru roboczego.  Jeśli chcesz korzystać z istniejącym obszarem roboczym, upewnij się, że obszaru roboczego przeprowadzono migrację do nowego języka zapytań. [Więcej informacji...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Może tworzyć nowy obszar roboczy lub użyj istniejącego obszaru roboczego.  Jeśli chcesz korzystać z istniejącym obszarem roboczym, upewnij się, że obszaru roboczego przeprowadzono migrację do nowego języka zapytań. [Więcej informacji...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![portal](.\media\how-to-npm\3.png)<br><br>
@@ -118,7 +118,7 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
   >
   
   >[!NOTE]
-  >Wypychana agentów przez SCOM (obejmuje [MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx)) nie może być spójnie wykryć ich lokalizacji, jeśli są one hostowane na platformie Azure.  Firma Microsoft zaleca, aby używać tych agentów w sieci wirtualnych platformy Azure do monitorowania usługi ExpressRoute.
+  >Wypychana agentów przez SCOM (obejmuje [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) nie może być spójnie wykryć ich lokalizacji, jeśli są one hostowane na platformie Azure.  Firma Microsoft zaleca, aby używać tych agentów w sieci wirtualnych platformy Azure do monitorowania usługi ExpressRoute.
   >
   >
 

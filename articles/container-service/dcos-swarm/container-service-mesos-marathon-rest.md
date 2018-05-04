@@ -1,19 +1,19 @@
 ---
-title: "Zarządzanie klastrem Azure DC/OS z interfejsu API REST platformy Marathon"
-description: "Wdrażanie kontenerów do klastra usługi kontenera platformy Azure DC/OS przy użyciu interfejsu API REST platformy Marathon."
+title: Zarządzanie klastrem Azure DC/OS z interfejsu API REST platformy Marathon
+description: Wdrażanie kontenerów do klastra usługi kontenera platformy Azure DC/OS przy użyciu interfejsu API REST platformy Marathon.
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c9322756c30011305ebe6f4f2fd38554f275a1b3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>Zarządzanie kontenerem DC/OS przy użyciu interfejsu API REST platformy Marathon
 
@@ -27,7 +27,7 @@ Przed przystąpieniem do pracy nad tymi przykładami będziesz potrzebować klas
 * [Łączenie z klastrem usługi Azure Container Service](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>Dostęp do interfejsów API platformy DC/OS
-Po nawiązaniu połączeniu z klastrem usługi kontenera platformy Azure masz dostęp do platformy DC/OS i powiązanych interfejsów API REST pod adresem http://localhost:local-port. W przykładach przedstawionych w tym dokumencie założono, że tunelowanie korzysta z portu 80. Na przykład punkty końcowe platformy Marathon można połączyć się z na identyfikatory URI rozpoczynające się od `http://localhost/marathon/v2/`. 
+Po połączeniu się z klastrem usługi kontenera platformy Azure są dostępne DC/OS i powiązanych interfejsów API REST za pośrednictwem http://localhost:local-port. W przykładach przedstawionych w tym dokumencie założono, że tunelowanie korzysta z portu 80. Na przykład punkty końcowe platformy Marathon można połączyć się z na identyfikatory URI rozpoczynające się od `http://localhost/marathon/v2/`. 
 
 Aby uzyskać więcej informacji o różnych interfejsach API, zobacz dokumentację Mesosphere dotyczącą [interfejsu API platformy Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html) i [interfejsu API programu Chronos](https://mesos.github.io/chronos/docs/api.html) oraz dokumentację Apache dotyczącą [interfejsu API aplikacji Mesos Scheduler](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
@@ -120,7 +120,7 @@ Interfejsu API platformy Marathon umożliwia skalowanie w poziomie oraz skalowan
 Z tunelowane połączenie uruchom następujące polecenie, aby skalować aplikację w poziomie.
 
 > [!NOTE]
-> Identyfikator URI będzie mieć postać http://localhost/marathon/v2/apps/ z dołączonym identyfikatorem aplikacji do skalowania. W przypadku użycia przedstawionej tutaj przykładowej aplikacji Nginx identyfikator URI będzie mieć postać http://localhost/marathon/v2/apps/nginx.
+> Identyfikator URI jest http://localhost/marathon/v2/apps/ następuje identyfikator aplikacji do skalowania. Jeśli używasz próbka Nginx, która została podana w tym miejscu identyfikator URI będzie mieć http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -179,7 +179,7 @@ Interfejs API platformy Marathon umożliwia także skalowanie w poziomie oraz sk
 Uruchom następujące polecenie, aby skalować aplikację w poziomie:
 
 > [!NOTE]
-> Identyfikator URI będzie mieć postać http://localhost/marathon/v2/apps/ z dołączonym identyfikatorem aplikacji do skalowania. W przypadku użycia przedstawionej tutaj przykładowej aplikacji Nginx, identyfikator URI będzie mieć postać http://localhost/marathon/v2/apps/nginx.
+> Identyfikator URI jest http://localhost/marathon/v2/apps/ następuje identyfikator aplikacji do skalowania. Jeśli używasz Nginx przykładu dostępnego w tym miejscu, identyfikator URI będzie mieć http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -187,7 +187,7 @@ Uruchom następujące polecenie, aby skalować aplikację w poziomie:
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Więcej informacji na temat punktów końcowych HTTP platformy Mesos](http://mesos.apache.org/documentation/latest/endpoints/)
 * [Więcej informacji na temat interfejsu API REST platformy Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

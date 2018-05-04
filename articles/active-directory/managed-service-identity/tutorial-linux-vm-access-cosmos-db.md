@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: 507986e4fa83e1821b1d7a1938b356feee81e9d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 692bc5eb401ccda36ef42006de509144170f7757
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Umożliwia dostęp do bazy danych Azure rozwiązania Cosmos MSI maszyny Wirtualnej systemu Linux 
 
@@ -113,7 +113,7 @@ Odpowiedź zawiera szczegóły MSI przypisane systemu (Uwaga principalID, poniew
 ```
 ## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Przyznać uprawnienia MSI maszyny Wirtualnej systemu Linux do klucze dostępu do konta DB rozwiązania Cosmos
 
-Rozwiązania cosmos bazy danych nie obsługuje natywnie uwierzytelniania usługi Azure AD.  Jednak można użyć Instalatora MSI można pobrać klucz dostępu DB rozwiązania Cosmos z Menedżera zasobów, a następnie za pomocą klawisza dostępu DB rozwiązania Cosmos.  W tym kroku należy przyznać systemu przypisane MSI dostępu do kluczy do konta DB rozwiązania Cosmos.
+Rozwiązania cosmos bazy danych nie obsługuje natywnie uwierzytelniania usługi Azure AD. Jednak można użyć Instalatora MSI można pobrać klucz dostępu DB rozwiązania Cosmos z Menedżera zasobów, a następnie za pomocą klawisza dostępu DB rozwiązania Cosmos. W tym kroku należy przyznać uprawnienia MSI kluczy do konta DB rozwiązania Cosmos.
 
 Aby udzielić dostępu tożsamości MSI na koncie DB rozwiązania Cosmos w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure, zaktualizuj wartości dla `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<COSMOS DB ACCOUNT NAME>` dla danego środowiska. Zastąp `<MSI PRINCIPALID>` z `principalId` właściwości zwróconej przez `az resource show` w [pobrać principalID msi maszyny Wirtualnej systemu Linux](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Rozwiązania cosmos bazy danych obsługuje dwa poziomy szczegółowości klawiszy dostępu: odczytu/zapisu dostępu do konta, a także dostęp tylko do odczytu do konta.  Przypisz `DocumentDB Account Contributor` roli, jeśli chcesz pobrać klucze odczytu/zapisu dla konta lub przypisać `Cosmos DB Account Reader Role` roli, jeśli chcesz pobrać klucze tylko do odczytu dla konta:
 
@@ -149,7 +149,7 @@ Aby wykonać te kroki, należy klient SSH. Jeśli korzystasz z systemu Windows, 
 4. Umożliwia ZWINIĘCIE Uzyskaj token dostępu usługi Azure Resource Manager: 
      
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
  
     > [!NOTE]

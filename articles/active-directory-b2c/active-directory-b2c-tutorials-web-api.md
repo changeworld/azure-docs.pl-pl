@@ -1,22 +1,22 @@
 ---
-title: Samouczek dotyczący chronienia internetowego interfejsu API platformy ASP.NET za pomocą usługi Azure Active Directory B2C
+title: Samouczek — udzielanie dostępu do internetowego interfejsu API platformy ASP.NET z aplikacji internetowej przy użyciu usługi Azure Active Directory B2C | Microsoft Docs
 description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy ASP.NET i wywoływania go z aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 editor: ''
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>Samouczek: Chronienie internetowego interfejsu API platformy ASP.NET za pomocą usługi Azure Active Directory B2C
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET z aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
 W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API chronionego przez usługę Azure Active Directory (Azure AD) B2C z aplikacji internetowej platformy ASP.NET.
 
@@ -45,7 +45,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
 
 1. Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal.
 
-2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **+ Dodaj**.
+2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**.
 
     Aby zarejestrować przykładowy internetowy interfejs API w dzierżawie, użyj następujących ustawień.
     
@@ -89,11 +89,13 @@ Aby skonfigurować zakresy dla interfejsu API, dodaj następujące wpisy.
 | **Zakres** | Hello.Read | Dostęp do odczytu do folderu hello |
 | **Zakres** | Hello.Write | Dostęp do zapisu do folderu hello |
 
+Kliknij pozycję **Zapisz**.
+
 Opublikowane zakresy umożliwiają udzielenie aplikacji klienckiej uprawnień do internetowego interfejsu API.
 
 ### <a name="grant-app-permissions-to-web-api"></a>Udzielanie uprawnień aplikacji do internetowego interfejsu API
 
-Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzielić aplikacji uprawnień do tego interfejsu. 
+Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzielić aplikacji uprawnień do tego interfejsu. W tym samouczku użyj aplikacji utworzonej w [samouczku dotyczącym uwierzytelniania użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET](active-directory-b2c-tutorials-web-app.md). 
 
 1. W witrynie Azure Portal wybierz pozycję **Azure AD B2C** na liście usług i kliknij pozycję **Aplikacje**, aby wyświetlić listę zarejestrowanych aplikacji.
 
@@ -109,7 +111,7 @@ Aby wywoływać chroniony internetowy interfejs API z aplikacji, należy udzieli
 
 Aplikacja **Moja przykładowa aplikacja internetowa** zostanie zarejestrowana w celu wywoływania chronionego interfejsu **Mój przykładowy internetowy interfejs API**. Użytkownik [uwierzytelnia się](../active-directory/develop/active-directory-dev-glossary.md#authentication) w usłudze Azure AD B2C, aby korzystać z aplikacji internetowej. Aplikacja internetowa uzyskuje [autoryzację](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant) z usługi Azure AD B2C w celu uzyskiwania dostępu do chronionego internetowego interfejsu API.
 
-## <a name="update-web-api-code"></a>Aktualizowanie kodu internetowego interfejsu API
+## <a name="update-code"></a>Aktualizowanie kodu
 
 Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów należy skonfigurować kod internetowego interfejsu API w celu korzystania z dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładowy internetowy interfejs API. 
 
@@ -137,11 +139,11 @@ Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 
 3. Skonfiguruj identyfikator URI interfejsu API. Ten identyfikator URI jest używany przez aplikację internetową w celu wysyłania żądań do interfejsu API. Ponadto skonfiguruj żądane uprawnienia.
 
-```C#
-<add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
-<add key="api:ReadScope" value="Hello.Read" />
-<add key="api:WriteScope" value="Hello.Write" />
-```
+    ```C#
+    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
+    <add key="api:ReadScope" value="Hello.Read" />
+    <add key="api:WriteScope" value="Hello.Write" />
+    ```
 
 ### <a name="configure-the-web-api"></a>Konfigurowanie internetowego interfejsu API
 
@@ -162,7 +164,7 @@ Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 4. Zaktualizuj ustawienie zasad, używając nazwy wygenerowanej podczas tworzenia zasad rejestracji i logowania.
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
     ```
 
 5. Skonfiguruj ustawienie zakresów tak, aby było zgodne z ustawieniami utworzonymi w portalu.
@@ -172,7 +174,7 @@ Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
     <add key="api:WriteScope" value="Hello.Write" />
     ```
 
-## <a name="run-the-sample-web-app-and-web-api"></a>Uruchamianie przykładowej aplikacji internetowej i internetowego interfejsu API
+## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
 Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**. 
 

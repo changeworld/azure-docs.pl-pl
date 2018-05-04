@@ -1,8 +1,8 @@
 ---
-title: "Włącz Application Insights profilera dla aplikacji, które znajdują się w zasobach usług Azure Cloud Services | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania profilera Insights aplikacji w aplikacji działających na usługi w chmurze Azure."
+title: Włącz Application Insights profilera dla aplikacji, które znajdują się w zasobach usług Azure Cloud Services | Dokumentacja firmy Microsoft
+description: Informacje o sposobie konfigurowania profilera Insights aplikacji w aplikacji działających na usługi w chmurze Azure.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: ramach-msft
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ef6d8cb47971b1cf261edceb13485b940eff3d13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Włącz Application Insights profilera dla maszyn wirtualnych platformy Azure, usługi Service Fabric i usług w chmurze Azure
 
@@ -40,7 +40,7 @@ Aby w pełni włączyć profilera, należy zmienić konfigurację w trzech miejs
 
 ## <a name="set-up-the-application-insights-instance"></a>Skonfiguruj wystąpienie usługi Application Insights
 
-1. [Utwórz nowy zasób usługi Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource), lub wybierz istniejący. 
+1. [Utwórz nowy zasób usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource), lub wybierz istniejący. 
 
 2. Przejdź do zasobu usługi Application Insights, a następnie skopiuj klucz instrumentacji.
 

@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5e8ac9da4df2428191e8a7e6402f2ac06e695503
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd4ebbec4506824f00d09a09369ebbeaf9458c19
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w bazie danych Azure dla programu MySQL przy użyciu wiersza polecenia platformy Azure
 
@@ -68,14 +68,14 @@ Należy wybrać opcję konfigurowania serwera dla kopii zapasowych lokalnie nadm
 
 Podczas tworzenia serwera za pośrednictwem `az mysql server create` polecenia `--geo-redundant-backup` parametru decyduje o opcjach nadmiarowość kopii zapasowej. Jeśli `Enabled`, są pobierane z magazynu geograficznie nadmiarowego kopii zapasowych. Lub, jeśli `Disabled` są pobierane lokalnie nadmiarowego kopii zapasowych. 
 
-Okres przechowywania kopii zapasowych jest ustawiany przez parametr `--backup-retention-days`. 
+Okres przechowywania kopii zapasowych jest ustawiany przez parametr `--backup-retention`. 
 
 Aby uzyskać więcej informacji na temat ustawiania tych wartości podczas tworzenia, zobacz [Azure bazy danych serwera MySQL — Szybki Start interfejsu wiersza polecenia](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Okres przechowywania kopii zapasowych serwera można zmienić w następujący sposób:
 
 ```azurecli-interactive
-az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 Powyższy przykład zmiany okres przechowywania kopii zapasowych mydemoserver 10 dni.

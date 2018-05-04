@@ -1,6 +1,6 @@
 ---
-title: Dodawanie danych wejściowych do zadań usługi Azure Stream Analytics
-description: Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu blogu strumieniowe źródła danych.
+title: Zrozumieć dane wejściowe dla usługi Azure Stream Analytics
+description: W tym artykule opisano pojęcia danych wejściowych do zadania usługi Azure Stream Analytics, porównanie przesyłania strumieniowego dane wejściowe wejściowych danych referencyjnych.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,71 +8,41 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 713b830717cce7b4b2b0fb1171596659c2275b85
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/25/2018
+ms.openlocfilehash: 926821e2ba9912ae0140f11c9fe9a2d504609a1e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Dodaj dane przesyłane strumieniowo danych wejściowych lub odwołanie do zadania usługi analiza strumienia
-Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu obiektów Blob strumieniowe źródła danych.
+# <a name="understand-inputs-for-azure-stream-analytics"></a>Zrozumieć dane wejściowe dla usługi Azure Stream Analytics
 
-Zadania usługi analiza strumienia Azure można podłączyć do wprowadzania danych jednego lub więcej, z których każdy zdefiniować połączenie z istniejącym źródłem danych. Ponieważ dane są wysyłane do tego źródła danych, jest używane przez zadanie usługi analiza strumienia i przetwarzane w czasie rzeczywistym jako strumienia danych. Analiza strumienia ma pierwszej klasie integracji z [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) i [magazynu obiektów Blob Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md) w obrębie i poza zadanie subskrypcji.
+Zadania usługi analiza strumienia Azure nawiązać połączenia z co najmniej jeden danych wejściowych danych. Każdy wprowadzania definiuje połączenie z istniejącym źródłem danych. Analiza strumienia akceptuje przychodzące dane z kilku rodzajów źródeł zdarzeń, łącznie z magazynem usługi Event Hubs, Centrum IoT i obiektów Blob. Dane wejściowe odwołuje się nazwa w zapytaniu SQL przesyłania strumieniowego, który można zapisać dla każdego zadania. W zapytaniu można dołączyć wielu danych wejściowych blend danych lub do porównywania dane przesyłane strumieniowo z wyszukiwania odwoływanie się do danych i przekazać wyniki do danych wyjściowych. 
+
+Analiza strumienia ma najwyższej jakości integracji z trzech rodzajów zasobów jako dane wejściowe:
+- [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
+- [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+
+Te zasoby wejściowy może na żywo w tej samej subskrypcji platformy Azure jako zadania usługi analiza strumienia lub z innej subskrypcji.
+
+Można użyć [portalu Azure](stream-analytics-quick-create-portal.md#configure-input-to-the-job), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net interfejsu API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), i [programu Visual Studio](stream-analytics-tools-for-visual-studio.md)do tworzenia, edytowania i przetestować dane wejściowe zadania usługi analiza strumienia.
+
+## <a name="stream-and-reference-inputs"></a>Dokumentacja i strumienia danych wejściowych
+Jak przekazania danych do źródła danych, ma używane przez zadanie usługi analiza strumienia i przetwarzane w czasie rzeczywistym. Dane wejściowe są podzielone na dwa typy: dane strumienia danych wejściowych i odwołują się dane wejściowe dane.
+
+### <a name="data-stream-input"></a>Dane wejściowe strumienia danych
+Strumień danych jest niepowiązany sekwencji zdarzeń w czasie. Zadania usługi analiza strumienia musi zawierać co najmniej jednego danych elementu wejściowego strumienia. Centra zdarzeń, Centrum IoT i magazynu obiektów Blob są obsługiwane jako źródeł dla wejścia strumienia danych. Centra zdarzeń są używane do zbierania strumieni zdarzeń z wielu urządzeń i usług. Strumienie te mogą obejmować źródła działań mediów społecznościowych, handlu standardowych informacji lub dane z czujników. Centra IoT są optymalizowane w celu zbierania danych z połączonych urządzeń w scenariuszach Internetu rzeczy (IoT).  Magazyn obiektów blob może służyć jako źródło danych wejściowych do wprowadzania danych zbiorczego jako strumienia, takich jak pliki dziennika.  
+
+Aby uzyskać więcej informacji na temat strumienia danych wejściowych danych, zobacz [przesyłać strumieniowo dane jako dane wejściowe do usługi analiza strumienia](stream-analytics-define-inputs.md)
+
+### <a name="reference-data-input"></a>Odwołanie do danych wejściowych
+Analiza strumienia obsługuje również znane jako dane wejściowe *danych referencyjnych*. Dane referencyjne jest całkowicie statyczny lub zmienia się powoli. Zwykle służy do wykonywania korelacji i wyszukiwania. Na przykład można sprzęgnąć danych w danych wejściowych strumienia z danymi w danych referencyjnych, tak jak będzie wykonywać sprzężenia SQL do odszukania wartości statyczne. Magazyn obiektów Blob Azure jest obecnie obsługiwane tylko źródła danych wejściowych danych referencyjnych. Odwołanie do źródła danych typu blob są ograniczone do 100 MB rozmiar.
+
+Aby uzyskać więcej informacji o danych wejściowych danych odwołania, zobacz [danych referencyjnych Using odnośników w analiza strumienia](stream-analytics-use-reference-data.md)
 
 W tym artykule jest krokiem w [ścieżka szkoleniowa dotycząca usługi analiza strumienia](/documentation/learning-paths/stream-analytics/).
 
-## <a name="data-input-streaming-data-and-reference-data"></a>Dane wejściowe: przesyłanie strumieniowe danych i danych referencyjnych
-Istnieją dwa różne typy dane wejściowe, Stream Analytics: strumienie danych i danych referencyjnych.
-
-* **Strumienie danych**: zadania usługi analiza strumienia musi zawierać co najmniej jeden danych wejściowych strumienia używane i przekształcenia przez zadanie. Azure Blob storage i Azure Event Hubs są obsługiwane jako źródeł dla wejścia strumienia danych. Usługa Azure Event Hubs są używane do zbierania strumieni zdarzeń z połączonych urządzeń, usług i aplikacji. Magazyn obiektów Blob Azure może służyć jako źródło danych wejściowych do wprowadzania danych zbiorczego jako strumień.  
-* **Danych referencyjnych**: analiza strumienia obsługuje drugi typ pomocniczy odwołanie do danych wejściowych o nazwie danych.  W przeciwieństwie do danych w ruchu te dane są statyczne lub spowalniając zmiana.  Zwykle służy do wyszukania i korelacji strumieni danych do utworzenia bardziej zaawansowane funkcje zestawu danych.  Magazyn obiektów Blob Azure jest obecnie obsługiwane tylko źródła danych wejściowych danych referencyjnych.  
-
-Aby dodać dane wejściowe do zadania usługi analiza strumienia:
-
-1. W portalu Azure kliknij **dane wejściowe** , a następnie kliknij przycisk **dodać dane wejściowe** w zadania usługi analiza strumienia.
-   
-    ![Portal Azure — Dodawanie danych wejściowych.](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)  
-   
-    W portalu Azure kliknij **dane wejściowe** kafelka w zadania usługi analiza strumienia.  
-   
-    ![Portal Azure — Dodawanie danych wejściowych.](./media/stream-analytics-add-inputs/7-stream-analytics-add-inputs.png)  
-2. Określ typ danych wejściowych: albo **strumienia danych** lub **danych referencyjnych**.
-   
-    ![Dodaj prawidłowe dane wejściowe, strumieniowo lub odwołania](./media/stream-analytics-add-inputs/2-stream-analytics-add-inputs.png)  
-   
-    ![Dodaj prawidłowe dane wejściowe, strumieniowo lub odwołania](./media/stream-analytics-add-inputs/8-stream-analytics-add-inputs.png)  
-3. W przypadku tworzenia elementu wejściowego strumienia danych, określ typ źródła danych wejściowych.  Ten krok można pominąć podczas tworzenia danych referencyjnych jako tylko obiektu Blob magazynu jest obsługiwana w tej chwili.
-   
-    ![Dodawanie danych strumienia danych wejściowych](./media/stream-analytics-add-inputs/3-stream-analytics-add-inputs.png)  
-   
-    ![Dodawanie danych strumienia danych wejściowych](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)  
-4. Podaj przyjazną nazwę dla tych danych wejściowych w polu Alias wejściowy.  Ta nazwa będzie używana w zapytaniu zadania kopii później do odwoływania się do danych wejściowych.
-   
-    Wprowadź pozostałe właściwości połączenia wymagane do nawiązania połączenia źródła danych. Te pola zależą od typu danych wejściowych i źródła i szczegółowo zdefiniowane [tutaj](stream-analytics-create-a-job.md).  
-   
-    ![Dodawanie zdarzeń centrum danych wejściowych](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)  
-5. Określ ustawienia serializacji dla danych wejściowych:
-   
-   * Aby zapytania mogły działać zgodnie z oczekiwaniami, należy określić **Format serializacji zdarzeń** przychodzących danych.  Serializacja obsługiwane formaty to JSON, CSV i Avro.
-   * Sprawdź **kodowanie** danych.  UTF-8 to jedyny obsługiwany obecnie format kodowania.
-     
-     ![Ustawienia danych serializacji w danych wejściowych](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  
-     
-     ![Ustawienia danych serializacji w danych wejściowych](./media/stream-analytics-add-inputs/10-stream-analytics-add-inputs.png)  
-6. Po zakończeniu tworzenia wejściowych, Stream Analytics sprawdzi, czy można nawiązać źródła danych wejściowych.  Stan operacji Test połączenia można wyświetlić w Centrum powiadomień.
-   
-    ![Testowanie połączenia dane przesyłane strumieniowo danych wejściowych](./media/stream-analytics-add-inputs/6-stream-analytics-add-inputs.png)  
-   
-    ![Testowanie połączenia dane przesyłane strumieniowo danych wejściowych](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)  
-
-## <a name="get-help-with-streaming-data-inputs"></a>Uzyskaj pomoc dotyczącą strumienia danych wejściowych danych
-Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
-* [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
-* [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics Management REST API Reference (Dokumentacja interfejsu API REST zarządzania usługą Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+> [!div class="nextstepaction"]
+> [Szybki Start: Tworzenie zadania usługi analiza strumienia za pomocą portalu Azure](stream-analytics-quick-create-portal.md)

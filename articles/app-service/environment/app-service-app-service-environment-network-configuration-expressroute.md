@@ -1,11 +1,11 @@
 ---
-title: "Praca z Express Route szczegóły konfiguracji sieci"
-description: "Szczegóły konfiguracji sieci do uruchamiania środowiska usługi App Service w sieciach wirtualnych połączone z obwodem usługi ExpressRoute."
+title: Praca z Express Route szczegóły konfiguracji sieci
+description: Szczegóły konfiguracji sieci do uruchamiania środowiska usługi App Service w sieciach wirtualnych połączone z obwodem usługi ExpressRoute.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: nirma
-editor: 
+editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.service: app-service
 ms.workload: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
-ms.openlocfilehash: bb3e283e8a9327a9c66c8d8ded037cee5195ffc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fcb9fa9004039205fa49f63c50d5907a8029a079
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-configuration-details-for-app-service-environments-with-expressroute"></a>Szczegóły konfiguracji sieci dla środowisk usługi App Service przy użyciu rozwiązania ExpressRoute
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Klienci mogą się łączyć [Azure ExpressRoute] [ ExpressRoute] obwód do infrastruktury sieci wirtualnej, a więc rozszerzenia sieci lokalnej na platformie Azure.  Środowiska usługi aplikacji mogą być tworzone w podsieci tego [sieci wirtualnej] [ virtualnetwork] infrastruktury.  Aplikacje działające w środowisku usługi aplikacji może następnie ustanowić bezpiecznego połączenia z zasobami zaplecza dostępne tylko za pośrednictwem połączenia ExpressRoute.  
 
 Środowiska usługi aplikacji mogą być tworzone w **albo** sieci wirtualnej platformy Azure Resource Manager **lub** sieci wirtualnej wdrożenia klasycznego modelu.  Z ostatnie zmiany wprowadzone w czerwca 2016 ASEs również teraz można wdrożyć w sieci wirtualnych, które używają zakresy publicznych adresów lub RFC1918 przestrzeni adresów (czyli adresy prywatne). 
@@ -127,7 +127,7 @@ Wprowadzenie do środowiska usługi App Service, zobacz [wprowadzenie do środow
 [UDROverview]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
 [UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[AzureDownloads]: http://azure.microsoft.com/en-us/downloads/ 
+[AzureDownloads]: http://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: http://www.microsoft.com/download/details.aspx?id=41653  
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md

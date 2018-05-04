@@ -3,17 +3,17 @@ title: Rozwiązywanie problemów z wystąpień kontenera platformy Azure
 description: Dowiedz się, jak rozwiązać problemy z wystąpień kontenera platformy Azure
 services: container-instances
 author: seanmck
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: ac7ddbccdef736bce941716883cf821a0f5c1f34
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a4067db9955b804f126e889fa73641f69fef56ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Rozwiązywanie problemów i wdrożenia kontenera w wystąpień kontenera platformy Azure
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono sposób rozwiązywania problemów w przypadku wdra�
 
 Jeśli masz błędna kontenera, Rozpocznij od przeglądanie jego dzienników z [az kontenera dzienniki][az-container-logs]i przesyłania strumieniowego jego wyjście standardowe i błąd standardowy z [dołączyć kontenera az] [az-container-attach].
 
-### <a name="view-logs"></a>Wyświetl dzienniki
+### <a name="view-logs"></a>Wyświetlanie dzienników
 
 Aby wyświetlić dzienniki w kodzie aplikacji w kontenerze, można użyć [dzienniki kontenera az] [ az-container-logs] polecenia.
 

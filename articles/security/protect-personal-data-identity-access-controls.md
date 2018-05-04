@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: 45b148a9ccbd7c801821f23586810872a4a0d50d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0e7f2060f81812cd69ed1af0246287757985243
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory i uwierzytelniania wieloskładnikowego: ochrony danych osobowych z formantami tożsamościami i dostępem
 
@@ -125,7 +125,7 @@ Jeśli użytkownicy mają licencje, które obejmują usługi Azure Multi-Factor 
 
 ![Użytkownicy włączone uwierzytelnianie MFA](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-Jeśli obecnie nie masz licencji, które muszą przejść przez proces określania najodpowiedniejszy typ wdrożenia dla danego scenariusza. Można uruchomić, analizując artykuł [wybrać rozwiązania Azure Multi-Factor Autehntication](../multi-factor-authentication/multi-factor-authentication-get-started.md). Jeśli zdecydujesz, należy utworzyć serwer Multi-Factor Authentication. Można uruchomić, wykonując następujące czynności:
+Jeśli obecnie nie masz licencji, które muszą przejść przez proces określania najodpowiedniejszy typ wdrożenia dla danego scenariusza. Można uruchomić, analizując artykuł [wybrać rozwiązania Azure Multi-Factor Autehntication](../active-directory/authentication/concept-mfa-whichversion.md). Jeśli zdecydujesz, należy utworzyć serwer Multi-Factor Authentication. Można uruchomić, wykonując następujące czynności:
 
 1. Wybierz **usługi Active Directory** w portalu Azure (zalogowany jako administrator).
 
@@ -137,7 +137,7 @@ Jeśli obecnie nie masz licencji, które muszą przejść przez proces określan
 
 4. Kliknij pozycję **Zapisz**
 
-W tym oknie również mieć możliwość pobrania serwera usługi MFA. Można uzyskać dodatkowe szczegóły dotyczące rozmiaru i Zaplanuj wdrożenie, przeglądając artykuł [wprowadzenie do korzystania z serwera usługi Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
+W tym oknie również mieć możliwość pobrania serwera usługi MFA. Można uzyskać dodatkowe szczegóły dotyczące rozmiaru i Zaplanuj wdrożenie, przeglądając artykuł [wprowadzenie do korzystania z serwera usługi Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfaserver-deploy.md)
 
 Aby uzyskać dodatkowe instrukcje na temat zarządzania dostawcy uwierzytelniania wieloskładnikowego, zobacz [wprowadzenie do korzystania z dostawcy usługi Azure Multi-Factor Authentication.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)
 

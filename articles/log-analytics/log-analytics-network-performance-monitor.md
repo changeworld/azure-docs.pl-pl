@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Sieci monitora wydajności rozwiązania na platformie Azure
 
@@ -249,6 +249,24 @@ Topologia pokazano mapy topologii warstwy 3 i nie zawiera urządzenia warstwy 2 
 ## <a name="log-analytics-search"></a>Wyszukaj analizy dzienników 
 
 Wszystkie dane, które jest narażonych graficznie za pośrednictwem pulpitu nawigacyjnego monitora wydajności sieci i przechodzenia strony jest również dostępna natywnie w [wyszukiwania analizy dzienników](log-analytics-log-search-new.md). Można wykonywać analizy interakcyjnej danych w repozytorium i skorelować danych z różnych źródeł. Możesz również utworzyć niestandardowe alertów i widoków i eksportowanie danych do programu Excel, usłudze Power BI lub możliwe do udostępnienia łącza.  **Typowych kwerend** obszar na pulpicie nawigacyjnym ma niektóre przydatne zapytań, które służy jako punkt początkowy do tworzenia własnych kwerendy i raporty. 
+
+## <a name="alerts"></a>Alerty
+
+Monitor wydajności sieci korzysta z możliwości alertów [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+
+Oznacza to, że wszystkie alerty odbywa się przy użyciu [grupy akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
+
+Jeśli jesteś użytkownikiem NPM Tworzenie alertów za pośrednictwem OMS: 
+1. Zostanie wyświetlone łącze, które nastąpi przekierowanie do portalu Azure. Kliknij go, aby uzyskać dostęp do portalu.
+2. Kliknij Kafelek rozwiązania monitora wydajności sieci. 
+3. Przejdź do skonfigurowania.  
+4. Wybierz test chcesz utworzyć alert na i wykonaj wymienione poniżej czynności.
+
+Jeśli jesteś użytkownikiem NPM Tworzenie alertów za pośrednictwem portalu Azure:  
+1. Użytkownik może wprowadzić bezpośrednio adres e-mail lub możesz tworzyć alerty za pomocą grup akcji.
+2. Jeśli użytkownik chce wprowadzić bezpośrednio adres e-mail, akcja grupy o nazwie **Właściwość ActionGroup E-mail NPM** jest tworzony i identyfikator poczty e-mail jest dodane do tej grupy działań.
+3. Jeśli chcesz użyć grupy akcji, będzie trzeba wybrać grupy utworzonej wcześniej akcji. Znajdują się informacje dotyczące tworzenia grupy akcji [tutaj.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+4. Po pomyślnym utworzeniu alertu, służy Zarządzanie alertami łącze do zarządzania alertami. 
 
 ##<a name="pricing"></a>Cennik
 
