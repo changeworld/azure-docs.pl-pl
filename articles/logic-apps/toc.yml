@@ -61,6 +61,8 @@
           href: logic-apps-content-type.md
         - name: Obsługa błędów i wyjątków
           href: logic-apps-exception-handling.md
+        - name: Obsługa dużych komunikatów
+          href: logic-apps-handle-large-messages.md
         - name: Zabezpieczanie aplikacji logiki
           href: logic-apps-securing-a-logic-app.md
         - name: Opracowywanie łączników niestandardowych

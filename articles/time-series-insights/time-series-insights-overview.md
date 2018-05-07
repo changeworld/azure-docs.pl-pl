@@ -21,7 +21,7 @@ ms.lasthandoff: 04/20/2018
 
 Czas serii Insights zaprojektowano pod kątem przechowywania, wizualizowanie i badania dużych ilości danych serii czasu, takich jak generowany przez urządzenia IoT.  Jeśli chcesz przechowywać, zarządzanie, zapytania lub wizualizacji danych w serii. czas w chmurze, czas serii Insights prawdopodobnie dla odpowiedni.  
 
-! [Flowchart Insights serii czasu] (media/overview/time-series-insights-flowchart.png)
+![Flowchart Insights serii czasu] (media/overview/time-series-insights-flowchart.png)
 
 Czas serii Insights ma cztery zadania klucza:
 
@@ -68,7 +68,7 @@ Wprowadzenie ma mniej niż 5 minut.
 4.  Zobacz danych w ciągu minut przy Eksplorator Insights serii czasu.
 
 ## <a name="time-series-insights-explorer"></a>Eksplorator usługi Time Series Insights
-Ten diagram przedstawia przykład szeregów czasowych danych usługi insights wyświetlać za pomocą Eksploratora:! [Eksplorator Insights serii czasu] (media/time-series-insights-explorer/explorer4.png)
+Ten diagram przedstawia przykład szeregów czasowych danych usługi insights wyświetlać za pomocą Eksploratora: ![Eksplorator Insights serii czasu] (media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
  - [Eksplorowania przy użyciu Eksploratora czasu serii wgląd w środowisku pokaz](./time-series-quickstart.md)

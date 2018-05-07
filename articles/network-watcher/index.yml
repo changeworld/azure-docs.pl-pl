@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/24/2018
   ms.author: jdial
-  ms.openlocfilehash: 8458b8cb21a0b9699a5856ad5b46abf88d1e3659
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.openlocfilehash: 65f301d231a3a5c4da9edfe30f3871bf95a9c02c
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 04/28/2018
+  ms.lasthandoff: 05/03/2018
 abstract:
   description: Dowiedz się, jak korzystać z usługi Azure Network Watcher. Przewodniki Szybki start, samouczki i inne zasoby przedstawiają sposób uzyskiwania szczegółowych informacji na temat usługi Azure Virtual Network przy użyciu narzędzi, takich jak przechwytywanie pakietów i dzienniki przepływów sieciowych grup zabezpieczeń, w celu diagnozowania problemów z przekierowywaniem i filtrowaniem ruchu oraz monitorowania połączeń.
 sections:
@@ -49,6 +49,9 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure/network-watcher/diagnose-vm-network-routing-problem">Diagnozowanie problemu z routingiem sieciowym na maszynie wirtualnej</a>
+    - html: <a href="/azure/network-watcher/connection-monitor">Monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi</a>
+    - html: <a href="/azure/network-watcher/diagnose-communication-problem-between-networks">Diagnozowanie problemów z komunikacją między sieciami</a>
+    - html: <a href="/azure/network-watcher/network-watcher-nsg-flow-logging-portal">Rejestrowanie ruchu sieciowego do i z maszyny wirtualnej</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list

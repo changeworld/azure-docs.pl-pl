@@ -113,7 +113,11 @@
         - name: Jak włączyć akcelerator zapisu
           href: how-to-enable-write-accelerator.md
         - name: Rozwiązywanie problemów z dołączonymi dyskami VHD
-          href: troubleshoot-vhds.md
+          items:
+            - name: Błędy usuwania zasobów magazynu
+              href: storage-resource-deletion-errors.md
+            - name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
+              href: unexpected-reboots-attached-vhds.md
     - name: Networking
       href: network-overview.md
     - name: Automatyczne skalowanie aplikacji

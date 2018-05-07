@@ -21,8 +21,12 @@
       href: azure-stack-quick-create-vm-linux-cli.md
 - name: Samouczki
   items:
-    - name: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
+    - name: Wdrażanie aplikacji na platformie Azure oraz Azure stosu
       href: azure-stack-solution-pipeline.md
+    - name: Skonfiguruj hybrydowych tożsamość w chmurze
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Konfiguracja połączenia chmury hybrydowej
+      href: azure-stack-solution-hybrid-connectivity.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Korzystanie z portalu usługi Azure Stack

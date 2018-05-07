@@ -123,6 +123,8 @@
           href: durable-functions-versioning.md
         - name: Wydajność i skalowanie
           href: durable-functions-perf-and-scale.md
+        - name: Odzyskiwanie po awarii i dystrybucja geograficzna
+          href: durable-functions-disaster-recovery-geo-distribution.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Programowanie

@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: bb0b9e3db4637a6b872c7fed9653a16457b848db
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 3747b53af0be02fb33e0c4b97ff01aaf505066d3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z usługi Amazon proste usługi magazynu przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -93,7 +93,7 @@ Aby skopiować dane z usługi Amazon S3, ustaw właściwość Typ zestawu danych
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość type zestawu danych: **AmazonS3Object** |Yes |
-| bucketName | Nazwa pakietu S3. |Yes |
+| bucketName | Nazwa pakietu S3. Filtr symbolu wieloznacznego nie jest obsługiwane. |Yes |
 | key | **Nazwę lub symbol wieloznaczny filtr** klucza obiektu S3 pod określony zasobnik. Dotyczy tylko, gdy nie jest określona właściwość "prefiksu". <br/><br/>Filtr symboli wieloznacznych jest obsługiwana tylko dla część nazwy pliku, ale nie należą do folderu. Dozwolone symbole wieloznaczne są: `*` (wielu znaków) i `?` (pojedynczy znak).<br/>— Przykład 1: `"key": "rootfolder/subfolder/*.csv"`<br/>— Przykład 2: `"key": "rootfolder/subfolder/???20180427.txt"` |Nie |
 | Prefiks | Prefiks klucza obiektu S3. Wybrano obiektów, w której klucze uruchomienia z tym prefiksem. Ma zastosowanie tylko wtedy, gdy nie określono właściwości "key". |Nie |
 | wersja | Wersja obiektu S3, jeśli włączono S3 przechowywania wersji. |Nie |

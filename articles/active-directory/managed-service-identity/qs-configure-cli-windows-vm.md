@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 0f167fef2303ff3b552b9924db3eae9a07c1cb69
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 6b8497f03281028c8a26cd66ac6afabf63911a65
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurowanie zarządzanych tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure
 
@@ -113,10 +113,11 @@ W tej sekcji przedstawiono tworzenie maszyny wirtualnej za pomocą przypisania p
    az group create --name <RESOURCE GROUP> --location <LOCATION>
    ```
 
-2. Utwórz użytkownika przypisane przy użyciu tożsamości [utworzenia tożsamości az](/cli/azure/identity#az_identity_create).  `-g` Parametr określa grupę zasobów, w której utworzono użytkownika z przypisanym tożsamości i `-n` parametr określa jego nazwę.
+2. Utwórz użytkownika przypisane przy użyciu tożsamości [utworzenia tożsamości az](/cli/azure/identity#az_identity_create).  `-g` Parametr określa grupę zasobów, w której utworzono użytkownika z przypisanym tożsamości i `-n` parametr określa jego nazwę.    
     
     > [!IMPORTANT]
-    > Tworzenie użytkownika z przypisanym tożsamości z znaki specjalne (np. podkreślenie) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Sprawdzanie dostępności aktualizacji.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+    > Tworzenie tożsamości użytkowników przypisanych obsługuje tylko alfanumeryczne i łączniki (0-9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków do przypisania do maszyny Wirtualnej/VMSS działała poprawnie. Sprawdzanie dostępności aktualizacji. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+
 
     ```azurecli-interactive
     az identity create -g myResourceGroup -n myUserAssignedIdentity

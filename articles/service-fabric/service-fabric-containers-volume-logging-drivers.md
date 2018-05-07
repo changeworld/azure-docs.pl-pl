@@ -1,52 +1,101 @@
 ---
-title: Usługa Azure Service Fabric Docker Compose (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Sieć szkieletowa usług Azure akceptuje format rozwiązania Docker Compose ułatwiające organizowania istniejących kontenerów przy użyciu sieci szkieletowej usług. Obsługa rozwiązania Docker Compose jest obecnie w wersji zapoznawczej.
+title: Usługa sieci szkieletowej Azure pliki sterowników woluminu (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Sieć szkieletowa usług obsługuje przy użyciu plików Azure do tworzenia kopii zapasowych woluminów z Twojej kontenera. Ta funkcja jest obecnie w wersji zapoznawczej.
 services: service-fabric
-documentationcenter: .net
+documentationcenter: other
 author: mani-ramaswamy
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
-ms.devlang: dotNet
+ms.devlang: other
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 4/30/2018
 ms.author: subramar
-ms.openlocfilehash: 72ff8e99453d3067492d50c3e35396dba9f23c12
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: d4751182cac9b5b952ef9a9dd125408267c1f8d0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Użyj Docker woluminu dodatków plug-in i sterowniki rejestrowania w sieci kontenera
-Sieć szkieletowa usług Azure obsługuje określanie [Docker woluminu dodatków plug-in](https://docs.docker.com/engine/extend/plugins_volume/) i [sterowniki rejestrowania Docker](https://docs.docker.com/engine/admin/logging/overview/) dla usługi kontenera. Można ją utrwalić danych w [plików Azure](https://azure.microsoft.com/services/storage/files/) podczas przeniesienia z kontenera lub uruchomiona ponownie na innym hoście.
-
-Tylko sterowniki wolumin kontenerów Linux są obecnie obsługiwane. Jeśli używasz systemu Windows kontenery woluminu można mapować do usługi pliki Azure [udziału protokołu SMB3](https://blogs.msdn.microsoft.com/clustering/2017/08/10/container-storage-support-with-cluster-shared-volumes-csv-storage-spaces-direct-s2d-smb-global-mapping/) bez sterownika woluminu. Aby to mapowanie, należy zaktualizować maszyn wirtualnych (VM) w klastrze do najnowszej wersji systemu Windows Server 1709.
-
-
-## <a name="install-the-docker-volumelogging-driver"></a>Instalacja sterownika wolumin/rejestrowania Docker
-
-Jeśli sterownik wolumin/rejestrowania Docker nie jest zainstalowany na komputerze, można zainstalować go ręcznie przy użyciu protokołu RDP/SSH. Można wykonać instalację z tych protokołów za pośrednictwem [zestawu skalowania maszyn wirtualnych uruchamiania skryptu](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
-
-Przykładowy skrypt do zainstalowania [sterownik woluminu Docker na platformie Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) wygląda następująco:
-
-```bash
-docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
-    CLOUD_PLATFORM=AZURE \
-    AZURE_STORAGE_ACCOUNT="[MY-STORAGE-ACCOUNT-NAME]" \
-    AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
-    DEBUG=1
-```
+# <a name="service-fabric-azure-files-volume-driver-preview"></a>Usługa sieci szkieletowej Azure plików woluminu sterownika (wersja zapoznawcza)
+Wtyczka woluminu pliki Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewnia [plików Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów kontenerów Docker. Ten dodatek plug-in woluminu Docker jest dostarczana jako aplikacji sieci szkieletowej usług, które można wdrożyć do klastrów sieci szkieletowej usług. Jego celem jest zapewnienie plików Azure opartej na woluminach dla innych aplikacji kontenera sieci szkieletowej usług, które są wdrażane w klastrze.
 
 > [!NOTE]
+> Wersja 6.255.389.9494 wtyczki woluminu pliki Azure jest wersji zapoznawczej, która jest dostępna z tego dokumentu. Wersja preview, jest **nie** obsługiwane do użytku w środowiskach produkcyjnych.
+>
+
+## <a name="prerequisites"></a>Wymagania wstępne
+* Wersja wtyczki woluminu plików Azure działa na [systemu Windows Server w wersji 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10 w wersji 1709](https://docs.microsoft.com/en-us/windows/whats-new/whats-new-windows-10-version-1709) lub nowszymi systemami operacyjnymi. Wersji systemu Linux wtyczki woluminu plików Azure działa we wszystkich wersjach systemu operacyjnego, obsługiwany przez sieć szkieletowa usług.
+
+* Postępuj zgodnie z instrukcjami [dokumentacji usługi pliki Azure](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share) do utworzenia udziału plików dla aplikacji kontenera sieci szkieletowej usług do użycia jako wolumin.
+
+* Konieczne będzie [programu Powershell z modułem platformy Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started) lub [SFCTL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cli) zainstalowane.
+
+## <a name="deploy-the-service-fabric-azure-files-application"></a>Wdrażanie aplikacji usługi sieci szkieletowej Azure plików
+
+Aplikacja usługi Service Fabric, która zapewnia woluminów dla kontenerów można pobrać z następujących [łącze](https://aka.ms/sfvolume). Aplikację można wdrożyć w klastrze za pomocą [PowerShell](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications), [CLI](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-lifecycle-sfctl) lub [interfejsów API klienta fabricclient z rolą](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient).
+
+1. Korzystając z wiersza polecenia, zmień katalog na główny katalog pobrany pakiet aplikacji. 
+
+    ```powershell 
+    cd .\AzureFilesVolume\
+    ```
+
+    ```bash
+    cd ~/AzureFilesVolume
+    ```
+
+2. Skopiuj pakiet aplikacji do magazynu obrazów, uruchom polecenie poniżej z odpowiednią wartość dla [ApplicationPackagePath] i [element ImageStoreConnectionString]:
+
+    ```powershell
+    Copy-ServiceFabricApplicationPackage -ApplicationPackagePath [ApplicationPackagePath] -ImageStoreConnectionString [ImageStoreConnectionString] -ApplicationPackagePathInImageStore AzureFilesVolumePlugin
+    ```
+
+    ```bash
+    sfctl cluster select --endpoint https://testcluster.westus.cloudapp.azure.com:19080 --pem test.pem --no-verify
+    sfctl application upload --path [ApplicationPackagePath] --show-progress
+    ```
+
+3. Rejestracja typu aplikacji
+
+    ```powershell
+    Register-ServiceFabricApplicationType -ApplicationPathInImageStore AzureFilesVolumePlugin
+    ```
+
+    ```bash
+    sfctl application provision --application-type-build-path [ApplicationPackagePath]
+    ```
+
+4. Tworzenie aplikacji w poleceniu, aby utworzyć aplikację poniżej, należy pamiętać, **ListenPort** parametr aplikacji. Ta wartość określona dla parametru tej aplikacji jest port, na którym wtyczki woluminu plików Azure nasłuchuje żądań z demona Docker. Należy zapewnić portu dostarczony do aplikacji nie powoduje konfliktu z dowolnego portu używanego przez klaster lub aplikacji.
+
+    ```powershell
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.255.389.9494 -ApplicationParameter @{ListenPort='19100'}
+    ```
+
+    ```bash
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.255.389.9494 --parameter '{"ListenPort":"19100"}'
+    ```
+
+> [!NOTE]
+
 > Windows Server 2016 w centrum danych nie obsługuje instalacji SMB mapowania do kontenerów ([która jest tylko obsługiwana w systemie Windows Server w wersji 1709](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage)). Tego ograniczenia zapobiega mapowania woluminu sieci i plików Azure woluminu sterowników w wersjach starszych niż 1709. 
 >   
 
+### <a name="deploy-the-application-on-a-local-development-cluster"></a>Wdrażanie aplikacji na lokalny klaster projektowy
+Domyślną liczbę wystąpień usługi dla aplikacji wtyczki woluminu pliki Azure jest wartość -1, co oznacza, że jest wystąpieniem usługi wdrożone do każdego węzła w klastrze. Jednak w przypadku wdrażania aplikacji usługi pliki Azure woluminu wtyczki na lokalny klaster projektowy, liczba wystąpień usługi powinny być określone jako 1. Można to zrobić za pomocą **InstanceCount** parametr aplikacji. W związku z tym polecenie wdrożenia aplikacji Azure plików woluminu wtyczki na lokalny klaster projektowy jest:
 
-## <a name="specify-the-plug-in-or-driver-in-the-manifest"></a>Określ wtyczka lub sterownik w manifeście
-Dodatki plug-in są określone w manifeście aplikacji:
+```powershell
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.255.389.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+```
+
+```bash
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.255.389.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+```
+## <a name="configure-your-applications-to-use-the-volume"></a>Skonfiguruj aplikacje korzystają z woluminu.
+Poniższy fragment kodu przedstawia, jak woluminu na podstawie plików Azure można określić w manifeście aplikacji w aplikacji. Element określonych zainteresowań to **woluminu** tagu:
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -61,16 +110,13 @@ Dodatki plug-in są określone w manifeście aplikacji:
         <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
      <Policies>
        <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv"> 
-        <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
-        <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
-        <LogConfig Driver="etwlogs" >
-          <DriverOption Name="test" Value="vale"/>
-        </LogConfig>
-        <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
-        <Volume Source="[MyStorageVar]" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
-        <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azure" IsReadOnly="true">
-           <DriverOption Name="share" Value="models"/>
-        </Volume>
+            <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
+            <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
+            <Volume Source="azfiles" Destination="c:\VolumeTest\Data" Driver="sfazurefile">
+                <DriverOption Name="shareName" Value="" />
+                <DriverOption Name="storageAccountName" Value="" />
+                <DriverOption Name="storageAccountKey" Value="" />
+            </Volume>
        </ContainerHostPolicies>
    </Policies>
     </ServiceManifestImport>
@@ -82,18 +128,52 @@ Dodatki plug-in są określone w manifeście aplikacji:
 </ApplicationManifest>
 ```
 
-**Źródła** znacznika **woluminu** element odwołuje się do folderu źródłowego. Folder źródłowy może być folderem w maszynie Wirtualnej, która obsługuje kontenery lub trwałego magazynu zdalnego. **Docelowego** tag to lokalizacja, w który **źródła** jest mapowany w kontenerze uruchomione. W związku z tym folderu docelowego nie może być już istnieje w kontenerze Twojej lokalizacji.
+Nazwa sterownika dla wtyczki woluminu pliki Azure jest **sfazurefile**. Ta wartość jest ustawiana dla **sterownika** atrybutu **woluminu** elementu w manifeście aplikacji.
 
-Parametry aplikacji są obsługiwane dla woluminów, jak pokazano w poprzednim fragment manifestu (Wyszukaj `MyStoreVar` na przykład użyć).
+W **woluminu** element we fragmencie powyżej wtyczki woluminu plików Azure wymaga następujących tagów: 
+- **Źródło** — odnosi się do folderu źródłowego, który może być folderem w maszynie Wirtualnej, która obsługuje kontenery lub trwałego magazynu zdalnego
+- **Docelowy** — ten tag to lokalizacja, w który **źródła** jest mapowany w kontenerze uruchomione. W związku z tym folderu docelowego nie może być lokalizacji, która już istnieje w kontenerze sieci
 
-Podczas określania woluminu wtyczki, usługi Service Fabric automatycznie tworzy woluminu przy użyciu określonych parametrów. **Źródła** tag jest nazwa woluminu i **sterownika** tag określa dodatek plug-in sterownika woluminu. Opcje można określić za pomocą **DriverOption** tagu w następujący sposób:
+Jak pokazano w **DriverOption** elementy we fragmencie powyżej wtyczki woluminu plików Azure obsługuje następujące opcje sterownika:
+
+- **Nazwa udziału** — nazwa udziału plików Azure plików, który udostępnia wolumin kontenera
+- **storageAccountName** — nazwa konta magazynu Azure, który zawiera plik plików Azure udziału
+- **storageAccountKey** -klucza dostępu dla konta magazynu platformy Azure, zawierający pliki Azure udziału plików
+
+Wymagane są wszystkie opcje sterownika powyżej. 
+
+## <a name="using-your-own-volume-or-logging-driver"></a>Za pomocą własnych woluminu lub sterownik rejestrowania
+Sieć szkieletowa usług umożliwia także użycie własnego niestandardowego woluminu lub sterowniki rejestrowania. Jeśli sterownik wolumin/rejestrowania Docker nie jest zainstalowany w klastrze, można zainstalować go ręcznie przy użyciu protokołu RDP/SSH. Można wykonać instalację z tych protokołów za pośrednictwem [zestawu skalowania maszyn wirtualnych uruchamiania skryptu](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
+
+Przykładowy skrypt do zainstalowania [sterownik woluminu Docker na platformie Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) wygląda następująco:
+
+```bash
+docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
+    CLOUD_PLATFORM=AZURE \
+    AZURE_STORAGE_ACCOUNT="[MY-STORAGE-ACCOUNT-NAME]" \
+    AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
+    DEBUG=1
+```
+
+W aplikacjach, woluminu lub rejestrowania sterownik został zainstalowany, możesz musi podaj odpowiednie wartości w **woluminu** i **LogConfig** elementy w obszarze  **ContainerHostPolicies** w manifeście aplikacji. 
 
 ```xml
-<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
-           <DriverOption Name="share" Value="models"/>
-</Volume>
+<ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv"> 
+    <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
+    <RepositoryCredentials PasswordEncrypted="false" Password="****" AccountName="test"/>
+    <LogConfig Driver="[YOUR_LOG_DRIVER]" >
+        <DriverOption Name="test" Value="vale"/>
+    </LogConfig>
+    <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
+    <Volume Source="[MyStorageVar]" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
+    <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="[YOUR_VOLUME_DRIVER]" IsReadOnly="true">
+        <DriverOption Name="[name]" Value="[value]"/>
+    </Volume>
+</ContainerHostPolicies>
 ```
-Sterownik dziennika Docker jest określony, masz wdrażania agentów (lub kontenery) do obsługi dzienników w klastrze. **DriverOption** tag może służyć do określ opcje dla sterownika dziennika.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Do wdrażanie kontenerów do klastra usługi sieć szkieletowa, zobacz artykuł [wdrażanie kontenera w sieci szkieletowej usług](service-fabric-deploy-container.md).
+* Aby wyświetlić przykłady kontenera, w tym sterownik woluminu odwiedź [przykłady kontenera sieci szkieletowej usług](https://github.com/Azure-Samples/service-fabric-containers)
+* Do wdrażanie kontenerów do klastra usługi sieć szkieletowa, zobacz artykuł [wdrażanie kontenera w sieci szkieletowej usług](service-fabric-deploy-container.md)
+
+

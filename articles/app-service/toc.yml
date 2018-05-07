@@ -187,6 +187,10 @@
           href: web-sites-create-web-jobs.md
         - name: Opracowywanie zadań WebJob w programie VS
           href: websites-dotnet-deploy-webjobs.md
+        - name: Wprowadzenie do zestawu WebJobs SDK
+          href: webjobs-sdk-get-started.md
+        - name: Korzystanie z zestawu WebJobs SDK
+          href: webjobs-sdk-how-to.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
