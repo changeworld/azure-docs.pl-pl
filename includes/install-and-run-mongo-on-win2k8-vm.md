@@ -77,7 +77,7 @@ Wykonaj następujące kroki, aby zainstalować i uruchomić bazy danych MongoDB 
 
     ![Punkty końcowe][Image7]
 
-13. Kliknij pozycję **Dodaj**.
+13. Kliknij pozycję **Add** (Dodaj).
 
 14. Dodawanie punktu końcowego o nazwie "Mongo" protokołu **TCP**, a oba **publicznego** i **prywatnej** porty ustawioną wartość "27017". Otwarcie tego portu umożliwia bazy danych MongoDB ma być dostępna zdalnie.
 

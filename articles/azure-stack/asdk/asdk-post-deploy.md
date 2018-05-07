@@ -1,25 +1,25 @@
 ---
-title: "Po konfiguracji wdrażania dla usługi Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano zmiany zalecaną konfigurację, aby po zainstalowaniu Azure stosu Development Kit (ASDK)."
+title: Po konfiguracji wdrażania dla usługi Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano zmiany zalecaną konfigurację, aby po zainstalowaniu Azure stosu Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2183576e87aa2fb31f8be8f676a5aee7d52f68df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po zakończeniu instalacji ASDK zadania konfiguracji
 Po [instalowanie ASDK](asdk-install.md), istnieje kilka zalecanych konfiguracji po instalacji można zmienić. 
@@ -37,7 +37,10 @@ Set-PSRepository `
 
  Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga profilu wersji interfejsu API 2017-03-09-profil, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. 
  
- Można zainstalować programu Azure PowerShell stosu lub bez łączności z Internetem na komputerze-hoście ASDK:
+ Można zainstalować najnowsze modułu Azure PowerShell stosu lub bez łączności z Internetem na komputerze-hoście ASDK:
+
+> [!IMPORTANT]
+> Przed zainstalowaniem wersji wymagane, upewnij się, że możesz [odinstaluj wszelkie istniejące modułów programu Azure PowerShell](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
 
 - **W przypadku połączenia internetowego** z ASDK komputera hosta. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na projektowanie instalacji zestawu:
 

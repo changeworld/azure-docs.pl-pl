@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i oceny zabezpieczeń — automatyzacji aplikacji sieci Web FedRAMP — plan zgodności i autoryzacji"
-description: "Automatyzacja aplikacji FedRAMP Web — oceny zabezpieczeń i autoryzacji"
+title: Zabezpieczeń platformy Azure i oceny zabezpieczeń — automatyzacji aplikacji sieci Web FedRAMP — plan zgodności i autoryzacji
+description: Automatyzacja aplikacji FedRAMP Web — oceny zabezpieczeń i autoryzacji
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: d1c9846589adaef0baeeaf16077c8e74bef1cd9f
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="security-assessment-and-authorization-ca"></a>Ocena zabezpieczeń i autoryzacji (CA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] ocena i upoważnienie zasady zabezpieczeń, którego dotyczy cel, zakres, ról, obowiązki, zarządzania zobowiązań, koordynacji między jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji zasad zabezpieczeń do oceny i autoryzacji i kontroli do oceny i autoryzacji skojarzony; przegląda i aktualizuje bieżące zasady autoryzacji do oceny i zabezpieczeń [przypisania: zdefiniowane przez organizację częstotliwość]; i procedur zabezpieczeń do oceny i autoryzacji [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 2.a** organizacji rozwija plan oceny zabezpieczeń, który opisuje zakres, w tym opcji zabezpieczeń i kontroli ulepszenia oceny oceny; procedury oceny ma być używany do określenia kontroli zabezpieczeń skuteczności; i oceny środowiska, zespół oceny i oceny role i obowiązki.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **2.b urzędu certyfikacji** organizacji ocenia kontrole zabezpieczeń w systemie informacji i jego środowiska operacji [przypisania: częstotliwość zdefiniowany przez organizację] do ustalenia zakresu, do którego kontrolki są wykonywane prawidłowo, operacyjnego jako zamierzone i tworzenie żądanego wyniku względem spotkania ustanowić wymagania dotyczące zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 2.c** organizacji tworzy raport oceny zabezpieczeń, który wyniki oceny.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **2.d urzędu certyfikacji** organizacji wyświetla wyniki oceny kontroli zabezpieczeń [przypisania: zdefiniowane przez organizację konkretnych osób lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-2 (1)** organizacja stosuje oceniających lub zespoły oceny [przypisania: zdefiniowane przez organizację poziom niezależność] przeprowadzenie oceny kontroli zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-2 (2)** obejmuje organizacji w ramach oceny kontroli zabezpieczeń, [przypisania: częstotliwość zdefiniowany przez organizację], [zaznaczenia: ogłoszone; bez uprzedzenia], [wybór (jeden lub więcej): szczegółowe monitorowanie; luki w zabezpieczeniach skanowanie; złośliwy użytkownik testowania; oceny zagrożeń wewnętrznych; wydajność/obciążenia testowania; [Przypisania: organizacji zdefiniowane przez inne formy oceny zabezpieczeń]].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-2 (3)** organizacji akceptuje wyniki oceny [przypisania: system informacje zdefiniowane przez organizację] wykonywane przez [przypisania: zdefiniowany przez organizację zewnętrznych organizacji] podczas oceny spełnia [przypisania: zdefiniowany przez organizację wymagania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 3.a** organizacji zezwala na połączenia z systemu informacji do innych systemów informacyjnych przy użyciu połączenia zabezpieczeń umowy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 3.b** przekazane dokumenty organizacji, dla każdego połączenia, charakterystyki, wymagania dotyczące zabezpieczeń i rodzaju informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **3.c urzędu certyfikacji** organizacji przegląda i aktualizuje umów zabezpieczeń połączenia [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-3 (3)** organizacji zabrania bezpośredniego połączenia z [przypisania: system zdefiniowany przez organizację niesklasyfikowanego, z systemem innym niż national zabezpieczeń] do sieci zewnętrznej bez użycia [przypisania; ochrony granic zdefiniowany przez organizację urządzenie].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-3 (5)** organizacja stosuje [zaznaczenia: wszystkie Zezwalaj, Odmów przez wyjątek; Odmów all, zezwolenia przez wyjątek] zasady umożliwiające [przypisania: systemów informacje zdefiniowane przez organizację] nawiązać połączenia z systemów zewnętrznych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 5.a** organizacji opracowuje plan działania i punkty kontrolne do dokumentów w organizacji systemu informacji zaplanowanej czynności zaradczych, aby poprawić słabych lub braki podczas oceny kontroli bezpieczeństwa i stwierdzono ograniczenie lub wyeliminowanie znanych luk w zabezpieczeniach w systemie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -221,13 +221,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-5b"></a>NIST 800-53 Control CA-5.b
+ ## <a name="nist-800-53-control-ca-5b"></a>Formant urzędu certyfikacji NIST 800 53-5.b
 
 #### <a name="plan-of-action-and-milestones"></a>Plan działania i punkty kontrolne
 
 **5.b urzędu certyfikacji** organizacji aktualizuje istniejący plan działania i punkty kontrolne [przypisania: zdefiniowane przez organizację częstotliwość] oparte na wyniki oceny kontroli zabezpieczeń, analizy wpływu zabezpieczeń i ciągłego monitorowania działań.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 6.a** organizacji przypisuje wyższego poziomu wykonawczego lub manager jako autoryzowanie oficjalne systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 6.b** organizacji gwarantuje, że autoryzowanie oficjalne autoryzuje systemu informacji do przetwarzania przed rozpoczęciem operacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **6.c urzędu certyfikacji** organizacji aktualizacje autoryzacji zabezpieczeń [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -277,13 +277,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-7a"></a>NIST 800-53 Control CA-7.a
+ ## <a name="nist-800-53-control-ca-7a"></a>Formant urzędu certyfikacji NIST 800 53-7.a
 
 #### <a name="continuous-monitoring"></a>Ciągłego monitorowania
 
 **7.a urzędu certyfikacji** organizacji rozwija strategii ciągłego monitorowania i implementuje ciągłego monitorowania program, który obejmuje ustanowienie [przypisania: zdefiniowane przez organizację metryki] do monitorowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -291,13 +291,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-7b"></a>NIST 800-53 Control CA-7.b
+ ## <a name="nist-800-53-control-ca-7b"></a>Urząd certyfikacji kontroli NIST 800 53-od 7.b
 
 #### <a name="continuous-monitoring"></a>Ciągłego monitorowania
 
 **Od 7.b urzędu certyfikacji** organizacji rozwija strategii ciągłego monitorowania i implementuje ciągłego monitorowania program, który obejmuje ustanowienie [przypisania: zdefiniowane przez organizację częstotliwości] do monitorowania i [przypisania: zdefiniowany przez organizację częstotliwości] do obsługi, monitorowaniem oceny.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -305,13 +305,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-7c"></a>NIST 800-53 Control CA-7.c
+ ## <a name="nist-800-53-control-ca-7c"></a>Formant urzędu certyfikacji NIST 800 53-7.c
 
 #### <a name="continuous-monitoring"></a>Ciągłego monitorowania
 
 **Urząd certyfikacji 7.c** organizacji rozwija strategii ciągłego monitorowania i implementuje ciągłego program monitorowania, który zawiera oceny kontroli zabezpieczeń trwającą zgodnie z organizacyjnej ciągłego monitorowania strategii.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -319,13 +319,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-7d"></a>NIST 800-53 Control CA-7.d
+ ## <a name="nist-800-53-control-ca-7d"></a>Formant urzędu certyfikacji NIST 800 53-7.d
 
 #### <a name="continuous-monitoring"></a>Ciągłego monitorowania
 
 **Urząd certyfikacji 7.d** organizacji rozwija strategii ciągłego monitorowania i implementuje ciągłego monitorowania program, który obejmuje monitorowanie stanu zabezpieczeń trwającą zdefiniowany przez organizację metryk zgodnie z organizacyjnej Strategia monitorowania ciągłego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.e** Organizacja rozwija strategii ciągłego monitorowania i implementuje ciągłego monitorowania program, który zawiera korelacji i analizy informacji związanych z zabezpieczeniami, ocen i monitorowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -347,13 +347,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-7f"></a>NIST 800-53 Control CA-7.f
+ ## <a name="nist-800-53-control-ca-7f"></a>Formant urzędu certyfikacji NIST 800 53-7.f
 
 #### <a name="continuous-monitoring"></a>Ciągłego monitorowania
 
 **Urząd certyfikacji 7.f** organizacji rozwija strategii ciągłego monitorowania i implementuje ciągłego monitorowania program, który obejmuje działania w odpowiedzi na adres wyniki analizy informacji związanych z zabezpieczeniami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **7.g urzędu certyfikacji** organizacji rozwija strategii ciągłego monitorowania i implementuje ciągłego monitorowania program, który w tym raportowanie stanu zabezpieczeń organizacji i systemu informacji [przypisania: zdefiniowane przez organizację personel lub ról] [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji do 7 (1)** organizacja stosuje oceniających lub zespoły oceny [przypisania: zdefiniowany przez organizację poziom niezależność] do monitorowania kontrole zabezpieczeń w systemie informacji w sposób ciągły.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji do 7 (3)** organizacja stosuje analizy trendów w celu określenia, czy zabezpieczeń kontrolować implementacji, można zmodyfikować częstotliwości ciągłego monitorowania aktywności i/lub typy działań używane w procesie ciągłego monitorowania na podstawie empiryczne danych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **8 urzędu certyfikacji** organizacja przeprowadza testowanie penetracji [przypisania: zdefiniowane przez organizację częstotliwość] na [przypisania: systemów informacje zdefiniowane przez organizację lub składników systemu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji-8 (1)** organizacja stosuje penetracji niezależnego agenta lub zespołu penetracji wykonania penetracji testowania systemu informacje lub składników systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -431,13 +431,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ca-9a"></a>NIST 800-53 Control CA-9.a
+ ## <a name="nist-800-53-control-ca-9a"></a>Formant urzędu certyfikacji NIST 800 53-9.a
 
 #### <a name="internal-system-connections"></a>Połączenia wewnętrznego systemu
 
 **9.a urzędu certyfikacji** organizacji zezwala na połączenia wewnętrznego [przypisania: składniki systemowe informacje zdefiniowane przez organizację lub klas składników] do systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **Urząd certyfikacji 9.b** przekazane dokumenty organizacji, dla każdego połączenia wewnętrznego, charakterystyki, wymagania dotyczące zabezpieczeń i rodzaju informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

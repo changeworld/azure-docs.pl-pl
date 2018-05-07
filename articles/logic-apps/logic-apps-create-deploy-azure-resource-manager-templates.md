@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie aplikacji logiki z szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Tworzenie i wdrażanie przepływów pracy aplikacji logiki z szablonów usługi Azure Resource Manager"
+title: Tworzenie aplikacji logiki z szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Tworzenie i wdrażanie przepływów pracy aplikacji logiki z szablonów usługi Azure Resource Manager
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9e696f6e4614052456cf2b55123d98d61b8b3b9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69be968f34d756cc725f5353dcf074c01fad65ce
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Tworzenie i wdrażanie aplikacji logiki z szablonów usługi Azure Resource Manager
 
@@ -31,46 +31,46 @@ Szablon używa wartości parametrów dla nazwy aplikacji logiki (```logicAppName
 
 ``` json
 {
-    "type": "Microsoft.Logic/workflows",
-    "apiVersion": "2016-06-01",
-    "name": "[parameters('logicAppName')]",
-    "location": "[resourceGroup().location]",
-    "tags": {
-        "displayName": "LogicApp"
-    },
-    "properties": {
-        "definition": {
-            "$schema": "http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-            "contentVersion": "1.0.0.0",
-            "parameters": {
-                "testURI": {
-                "type": "string",
-                "defaultValue": "[parameters('testUri')]"
-                }
-            },
-            "triggers": {
-                "Recurrence": {
-                    "type": "Recurrence",
-                    "recurrence": {
-                        "frequency": "Hour",
-                        "interval": 1
-                    }
-                }
-            },
-            "actions": {
-                "Http": {
-                    "type": "Http",
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "@parameters('testUri')"
-                    },
-                    "runAfter": {}
-                }
-            },
-            "outputs": {}
-        },
-        "parameters": {}
-    }
+   "type": "Microsoft.Logic/workflows",
+   "apiVersion": "2016-06-01",
+   "name": "[parameters('logicAppName')]",
+   "location": "[resourceGroup().location]",
+   "tags": {
+      "displayName": "LogicApp"
+   },
+   "properties": {
+      "definition": {
+         "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+            "testURI": {
+               "type": "string",
+               "defaultValue": "[parameters('testUri')]"
+            }
+         },
+         "triggers": {
+            "Recurrence": {
+               "type": "Recurrence",
+               "recurrence": {
+                  "frequency": "Hour",
+                  "interval": 1
+               }
+            }
+         },
+         "actions": {
+            "Http": {
+              "type": "Http",
+              "inputs": {
+                  "method": "GET",
+                  "uri": "@parameters('testUri')"
+              },
+              "runAfter": {}
+           }
+         },
+         "outputs": {}
+      },
+      "parameters": {}
+   }
 }
 ``` 
 

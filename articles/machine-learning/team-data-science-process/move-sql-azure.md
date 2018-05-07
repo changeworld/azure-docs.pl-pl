@@ -1,9 +1,9 @@
 ---
-title: "Przenoszenie danych do bazy danych SQL Azure dla usługi Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Tworzenie tabeli SQL i ładowanie danych do tabeli SQL"
+title: Przenoszenie danych do bazy danych SQL Azure dla usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Tworzenie tabeli SQL i ładowanie danych do tabeli SQL
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 50f8b862-4d32-44b2-a1e2-4fbc8024acaa
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 323861d078e9beeb197333dc7e2d0314014dfdb0
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 03104b497034ef92ddb2c6216d6e9200e65168b0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning
 W tym temacie opisano opcje przenoszenia danych z plików prostych (w formatach CSV lub TSV) albo z danych przechowywanych w lokalnym serwerze SQL z bazą danych Azure SQL. Te zadania przenoszenie danych w chmurze są częścią procesu nauki danych zespołu.
@@ -48,13 +48,13 @@ Czynności opisane w tym miejscu wymagają:
 
 Można dostosować procedury opisane w tym miejscu z zestawem danych użytkownika lub wykonaj kroki opisane przy użyciu taksówki NYC zestawu danych. Aby przekazać taksówki NYC zestawu danych do lokalnej bazy danych programu SQL Server, wykonaj procedurę opisaną w [zbiorczego importowania danych do bazy danych serwera SQL](sql-walkthrough.md#dbload). Te instrukcje dotyczą programu SQL Server na maszynie wirtualnej platformy Azure, ale procedura przekazywania do lokalnego serwera SQL jest taka sama.
 
-## <a name="file-to-azure-sql-database"></a>Przenoszenie danych ze źródła pliku prostego do bazy danych Azure SQL
+## <a name="file-to-azure-sql-database"></a> Przenoszenie danych ze źródła pliku prostego do bazy danych Azure SQL
 Dane plików prostych (formacie CSV lub TSV) mogą zostać przeniesione do bazy danych Azure SQL za pomocą kwerendy SQL wstawiania zbiorczego.
 
-### <a name="bulk-insert-sql-query"></a>Zapytanie SQL wstawiania zbiorczego
+### <a name="bulk-insert-sql-query"></a> Zapytanie SQL wstawiania zbiorczego
 Kroki procedury przy użyciu zapytania SQL wstawiania zbiorczego są podobne do tych opisane w sekcjach przenoszenie danych ze źródła pliku prostego do programu SQL Server na maszynie Wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz [zapytania SQL wstawiania zbiorczego](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a>Przenoszenie danych z lokalnego programu SQL Server z bazą danych Azure SQL
+## <a name="sql-on-prem-to-sazure-sql-database"></a> Przenoszenie danych z lokalnego programu SQL Server z bazą danych Azure SQL
 Jeśli źródło danych jest przechowywany w lokalnym serwerze SQL, istnieją różne możliwości przenoszenia danych do bazy danych Azure SQL:
 
 1. [Wyeksportuj do pliku prostego](#export-flat-file)

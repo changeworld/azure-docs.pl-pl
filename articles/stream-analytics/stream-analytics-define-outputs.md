@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 10d7b5d3670bd7a5f289a6f9f2754ecc6aa18795
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 3bd87090df048f2b67de88f5202998af02d42491
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych dostępne zadania usługi analiza strumienia Azure. Dane wyjściowe umożliwiają przechowywanie i Zapisz wyniki zadania usługi analiza strumienia. Za pomocą danych wyjściowych, można wykonać dalszego analiz biznesowych i danych magazynu danych. 
@@ -290,10 +290,10 @@ W poniższej tabeli przedstawiono obsługę partycji i liczby modułów zapisywa
 | Azure Blob Storage | Yes | Użyj {date} i {time} tokenów w wzorzec ścieżki. Wybierz format daty, takie jak RRRR/MM/dd. DD/MM/RRRR, MM-DD-RRRR. HH służy do formatu godziny. | Sposób wprowadzania partycjonowania dla [pełni działania równoległego zapytania](stream-analytics-scale-jobs.md). | 
 | Azure Event Hub | Yes | Yes | Może być różna w zależności od wyrównania partycji.</br> Po klucz partycji jest równie wyrównane nadrzędnego (poprzedni) kroku zapytania, liczba składników zapisywania Centrum zdarzeń jest taka sama liczba dane wyjściowe output partycji Centrum zdarzeń. Każdy moduł zapisujący używa w EventHub [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. </br> Gdy jest Centrum zdarzeń klucza partycji nie jest wyrównana z nadrzędnego (poprzedni) kroku zapytania, liczba modułów zapisywania danych wyjściowych taka sama jak liczba partycji w tym poprzedniego kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. | 
-| Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Sposób wprowadzania partycjonowania dla [pełni sparaliżowanych zapytania](stream-analytics-scale-jobs.md). | 
+| Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Sposób wprowadzania partycjonowania dla [pełni zarządzana z przetwarzaniem zapytania](stream-analytics-scale-jobs.md). | 
 | Azure Service Bus tematu | Yes | Wybrana automatycznie. Liczba partycji jest oparta na [SKU magistrali usługi i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji to unikatowa wartość dla każdej partycji.| Taka sama jak liczba partycji w temacie danych wyjściowych.  |
 | Kolejki magistrali usług Azure | Yes | Wybrana automatycznie. Liczba partycji jest oparta na [SKU magistrali usługi i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji to unikatowa wartość dla każdej partycji.| Taka sama jak liczba partycji w kolejki wyjściowej. |
-| Azure Cosmos DB | Yes | Użyj tokenu {partition} we wzorcu nazwy kolekcji. wartość {partition} jest oparta na klauzuli PARTITION BY w zapytaniu. | Sposób wprowadzania partycjonowania dla [pełni sparaliżowanych zapytania](stream-analytics-scale-jobs.md). |
+| Azure Cosmos DB | Yes | Użyj tokenu {partition} we wzorcu nazwy kolekcji. wartość {partition} jest oparta na klauzuli PARTITION BY w zapytaniu. | Sposób wprowadzania partycjonowania dla [pełni zarządzana z przetwarzaniem zapytania](stream-analytics-scale-jobs.md). |
 | Azure Functions | Nie | Brak | Nie dotyczy. | 
 
 ## <a name="output-batch-size"></a>Rozmiar partii danych wyjściowych

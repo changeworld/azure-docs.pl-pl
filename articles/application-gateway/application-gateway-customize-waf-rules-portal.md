@@ -1,30 +1,30 @@
 ---
-title: "Dostosowywanie reguły zapory aplikacji sieci web w brama usługi aplikacji Azure — portalu Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera informacje na temat sposobu dostosowywania sieci web reguły zapory aplikacji w polu Brama aplikacji w portalu Azure."
+title: Dostosowywanie reguły zapory aplikacji sieci web w brama usługi aplikacji Azure — portalu Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat sposobu dostosowywania sieci web reguły zapory aplikacji w polu Brama aplikacji w portalu Azure.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 406e491aa54806b3534ef0f500d6aea03434e2c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: ae61e3a8308e95c16ccde71de37fb10666ef0df9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Dostosowywanie reguły zapory aplikacji sieci web za pośrednictwem portalu Azure
 
 > [!div class="op_single_selector"]
-> * [Azure portal](application-gateway-customize-waf-rules-portal.md)
+> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
 > * [Program PowerShell](application-gateway-customize-waf-rules-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure 2.0](application-gateway-customize-waf-rules-cli.md)
 

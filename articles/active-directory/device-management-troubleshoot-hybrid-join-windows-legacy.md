@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 43c1907bf3f9bb8eea92dc02889df24a5a0cc9e3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowe usługi Azure Active Directory przyłączone do urządzeń niskiego poziomu 
 
@@ -90,7 +90,7 @@ Jeśli sprzężenie hybrydowe usługi Azure AD nie powiodło się, okno dialogow
     
     - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. Może to być spowodowane wyświetlania problemy z połączeniem sieciowym wyjściowego powiązanej Azure URL AD (Sprawdź wymagania wstępne). Przyczyną mogą być również uwierzytelnianie wieloskładnikowe (MFA) jest włączona/skonfigurowanego dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze federacyjnym (kroki konfiguracji wyboru). Inną możliwością jest stronę odnajdowania (obszaru macierzystego HRD) tego obszaru macierzystego oczekuje do interakcji z użytkownikiem, który zapobiega **autoworkplace.exe** w trybie dyskretnym uzyskiwania tokenu.
     
-    - Twoja organizacja korzysta z usługi Azure AD bezproblemowe logowanie jednokrotne, `https://autologon.microsoftazuread-sso.com` nie znajduje się na urządzeniu IE ustawienia sieci intranet, a **Zezwalaj na pasku stanu za pomocą skryptu aktualizacji** nie jest włączona dla strefy Intranet.
+    - Twoja organizacja korzysta z usługi Azure AD bezproblemowe logowanie jednokrotne, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są spełnione przez urządzenia IE ustawienia sieci intranet, a **Zezwalaj na pasku stanu za pomocą skryptu aktualizacji** nie jest włączone dla strefy intranetowej.
 
 - Osiągnięto limit przydziału
 

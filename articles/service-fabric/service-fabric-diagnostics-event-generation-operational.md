@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 8426218cf8f0819f20c78d9d84e202541d025b60
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: d397dcb1ecdc25dbd66ab3d6f2f010bc29f87c6c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="list-of-service-fabric-events"></a>Lista zdarzeń sieci szkieletowej usług 
 
@@ -35,7 +35,7 @@ W tym miejscu jest dostępna w platformie posortowane według jednostki, które 
 
 | Identyfikator zdarzenia | Name (Nazwa) | Źródło (zadania) | Poziom | Wersja |
 | --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStartOperational | CM | Informacyjne | C1 |
+| 29627 | ClusterUpgradeStartOperational | CM | Informacyjne | 1 |
 | 29628 | ClusterUpgradeCompleteOperational | CM | Informacyjne | 1 |
 | 29629 | ClusterUpgradeRollbackStartOperational | CM | Informacyjne | 1 |
 | 29630 | ClusterUpgradeRollbackCompleteOperational | CM | Informacyjne | 1 |

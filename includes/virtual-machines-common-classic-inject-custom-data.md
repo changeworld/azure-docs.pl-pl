@@ -38,7 +38,7 @@ Ta funkcja jest obecnie obsługiwany tylko w [interfejsu wiersza polecenia platf
 ## <a name="cloud-init-on-azure"></a>Inicjowania chmurze na platformie Azure
 W przypadku maszyny Wirtualnej Azure z obrazu Ubuntu lub CoreOS, można użyć CustomData do wysyłania konfiguracji chmury do inicjowania chmury. Lub jeśli plik danych niestandardowych jest skryptem, następnie init chmury można po prostu wykonywania.
 
-### <a name="ubuntu-cloud-images"></a>Obrazy Ubuntu chmury
+### <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
 W większości obrazów systemu Linux platformy Azure, możesz edytować "/ etc/waagent.conf" do konfigurowania zasobów dysku i plik wymiany. Zobacz [Podręcznik użytkownika agenta systemu Linux Azure](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać więcej informacji.
 
 Jednak na Ubuntu obrazów chmury, należy użyć init chmury można skonfigurować dysku zasobów (to znaczy "tymczasowych" dysk), a zamienić partycji. Przejrzyj następującą stronę w witrynie typu wiki Ubuntu więcej szczegółów: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).

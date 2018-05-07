@@ -1,9 +1,9 @@
 ---
-title: "Określenie scenariuszy zaawansowana analityka dla usługi Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Wybierz odpowiednie scenariusze robić, zaawansowane analizy predykcyjnej z procesem nauki danych Team."
+title: Określenie scenariuszy zaawansowana analityka dla usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Wybierz odpowiednie scenariusze robić, zaawansowane analizy predykcyjnej z procesem nauki danych Team.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 53aecc1e-5089-42cf-8d44-77678653f92d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b6a92f4f4615954902124c59adca25560182de6
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: 7b1b8f00e109776a3a5d3cc8c2224e8160b85704
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning
 W tym artykule przedstawiono różne źródła danych przykładowych i scenariusze docelowe, które są obsługiwane przez [zespołu danych nauki procesu (TDSP)](overview.md). TDSP dostarcza systematyczne rozwiązanie dla zespołów współpracować nad tworzenia aplikacji inteligentnego. Scenariusze przedstawionych w tym miejscu przedstawiono opcje dostępne w przepływie pracy przetwarzania danych, które są zależne od właściwości danych, lokalizacji źródłowej i repozytoriów docelowego na platformie Azure.
@@ -35,7 +35,7 @@ Każdy z poniższych sekcji przedstawia przykładowy scenariusz. Dla każdego sc
 > **Wszystkie z poniższych scenariuszy musisz:**
 > <br/>
 > 
-> * [Utwórz konto magazynu](../../storage/common/storage-create-storage-account.md)
+> * [Tworzenie konta magazynu](../../storage/common/storage-create-storage-account.md)
 >   <br/>
 > * [Utwórz obszar roboczy usługi Azure Machine Learning](../studio/create-workspace.md)
 > 

@@ -10,16 +10,16 @@ tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
-ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: mobandyo
+ms.openlocfilehash: 487636ffb0efc35c282e14d835c6669ed9d47315
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cruiser i rozliczeń integracji interfejsu API platformy Microsoft Azure w chmurze
 W tym artykule opisano, jak można użyć informacji zebranych w nowych Microsoft Azure Billing interfejsów API w chmurze Cruiser symulacji koszt przepływu pracy i analizy.
@@ -123,7 +123,7 @@ Końcowe celem jest możliwość tworzenia raportów podobny do następującego 
 
 ![Na rysunku nr 10 - raport o awarii przy użyciu tagów][10]
 
-### <a name="microsoft-azure-tags"></a>Microsoft Azure Tags
+### <a name="microsoft-azure-tags"></a>Tagi platformy Microsoft Azure
 Dostępne za pośrednictwem interfejsu API Azure użycia danych obejmuje nie tylko informacje o, ale także w tym wszystkie znaczniki skojarzone z nim metadane zasobu. Znaczniki umożliwiają łatwe do organizowania zasobów, ale w celu zapewnienia efektywności, należy upewnić się, że:
 
 * Tagi poprawnie są stosowane do zasobów w czasie udostępniania

@@ -3,7 +3,7 @@
 #### <a name="to-download-hotfixes"></a>Aby pobrać poprawki
 Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu usługi Microsoft Update.
 
-1. Uruchom program Internet Explorer i przejdź pod adres [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
 2. Jeśli po raz pierwszy używasz Wykazu usługi Microsoft Update na danym komputerze, po wyświetleniu monitu o zainstalowanie dodatku Wykazu usługi Microsoft Update kliknij pozycję **Zainstaluj**.
     ![Zainstaluj katalogu](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 3. W polu wyszukiwania z wykazu usługi Microsoft Update, wprowadź numer bazy wiedzy Knowledge Base (KB) poprawki do pobrania, na przykład **3186843**, a następnie kliknij przycisk **wyszukiwania**.
@@ -11,7 +11,7 @@ Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu u
     Poprawka zostanie wyświetlona na liście, na przykład **zbiorczą 3.0 aktualizacji pakietu oprogramowania dla z serii StorSimple 8000**.
    
     ![Przeszukiwanie wykazu](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
-4. Kliknij pozycję **Dodaj**. Aktualizacja zostanie dodana do koszyka.
+4. Kliknij pozycję **Add** (Dodaj). Aktualizacja zostanie dodana do koszyka.
 5. Wyszukaj wszystkie dodatkowe poprawki wymienione w powyższej tabeli (**3186859**) i Dodaj do koszyka.
 6. Kliknij pozycję **Wyświetl koszyk**.
 7. Kliknij pozycję **Pobierz**. Określ lokalizację lokalną, do której mają trafiać pobrane pliki, albo **przejdź** do takiej lokalizacji. Aktualizacje są pobierane do określonej lokalizacji i umieszczane w podfolderze o takiej samej nazwie, jak w przypadku aktualizacji. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.

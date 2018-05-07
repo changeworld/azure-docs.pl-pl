@@ -6,7 +6,7 @@
    
    1. Podaj nazwę zasad tworzenia kopii zapasowej składającą się z 3–150 znaków.
    2. Wybierz woluminy do wykonania kopii zapasowej. W przypadku wybrania więcej niż jednego woluminu woluminy te zostaną zgrupowane w celu utworzenia kopii zapasowej spójnej na poziomie awarii.
-   3. Kliknij ikonę strzałki ![ikona strzałki](./media/storsimple-take-backup/HCS_ArrowIcon-include.png). 
+   3. Kliknij ikonę strzałki, ![ikona strzałki](./media/storsimple-take-backup/HCS_ArrowIcon-include.png). 
       
       ![Dodawanie zasad tworzenia kopii zapasowej](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard1M-include.png)
 3. Na stronie **Definiowanie harmonogramu**:

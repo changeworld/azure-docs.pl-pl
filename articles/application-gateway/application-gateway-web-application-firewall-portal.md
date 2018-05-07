@@ -1,27 +1,27 @@
 ---
-title: "Utwórz bramę aplikacji z zapory aplikacji sieci web - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramę aplikacji za pomocą zapory aplikacji sieci web przy użyciu portalu Azure."
+title: Utwórz bramę aplikacji z zapory aplikacji sieci web - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji za pomocą zapory aplikacji sieci web przy użyciu portalu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 9967813b193159b68aa0f008dae4440aa6e533dc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Utwórz bramę aplikacji za pomocą zapory aplikacji sieci web przy użyciu portalu Azure
 
 Azure portal umożliwia tworzenie [brama aplikacji w](application-gateway-introduction.md) z [zapory aplikacji sieci web](application-gateway-web-application-firewall-overview.md) (WAF). Używa zapory aplikacji sieci Web [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) zasady ochrony aplikacji. Reguły obejmują ochronę przed ataki, takie jak iniekcja kodu SQL, atakami skryptów między witrynami i hijacks sesji.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Utwórz bramę aplikacji z zapory aplikacji sieci Web jest włączona
@@ -68,11 +68,11 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
 1. Kliknij przycisk **wszystkie zasoby** w menu po lewej stronie, a następnie kliknij przycisk **myVNet** na liście zasobów.
 2. Kliknij przycisk **podsieci**, a następnie kliknij przycisk **podsieci**.
 
-    ![Utwórz podsieć](./media/application-gateway-web-application-firewall-portal/application-gateway-subnet.png)
+    ![Tworzenie podsieci](./media/application-gateway-web-application-firewall-portal/application-gateway-subnet.png)
 
 3. Wprowadź *myBackendSubnet* dla nazwy podsieci, a następnie kliknij przycisk **OK**.
 
-## <a name="create-backend-servers"></a>Utwórz serwerów wewnętrznej bazy danych
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Należy również zainstalować usług IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
@@ -83,17 +83,17 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 3. Wprowadź wartości dla maszyny wirtualnej:
 
     - *myVM* — Nazwa maszyny wirtualnej.
-    - *azureuser* — nazwa użytkownika administratora.
+    - *azureuser* — jako nazwę użytkownika administratora.
     - *Azure123456!* hasła.
     - Wybierz **Użyj istniejącego**, a następnie wybierz *myResourceGroupAG*.
 
 4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** dla rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **wybierz**.
+5. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
 6. Upewnij się, że **myVNet** został wybrany do sieci wirtualnej i podsieci jest **myBackendSubnet**. 
-7. Kliknij przycisk **wyłączone** wyłączyć diagnostyki rozruchu.
-8. Kliknij przycisk **OK**Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
+8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
 
-### <a name="install-iis"></a>Zainstaluj usługi IIS
+### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Otwórz powłokę interakcyjne i upewnij się, że jest ustawiona na **PowerShell**.
 
@@ -132,7 +132,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 W tym samouczku aplikacji przy użyciu brama konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Analiza dzienników lub Centrum zdarzeń można użyć również do rejestrowania danych.
 
 1. Kliknij przycisk **nowy** znaleziono w lewym górnym rogu portalu Azure.
-2. Wybierz **magazynu**, a następnie wybierz **konta magazynu — obiekt blob, plików, tabeli, kolejki**.
+2. Wybierz pozycję **Magazyn**, a następnie wybierz pozycję **Konto magazynu — obiekt blob, plik, tabela, kolejka**.
 3. Wprowadź nazwę konta magazynu, wybierz opcję **Użyj istniejącego** dla grupy zasobów, a następnie wybierz **myResourceGroupAG**. W tym przykładzie nazwa konta magazynu jest *myagstore1*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **Utwórz**.
 
 ## <a name="configure-diagnostics"></a>Skonfiguruj diagnostyki
@@ -155,7 +155,7 @@ Skonfiguruj diagnostykę, aby zapisać dane w dzienniku ApplicationGatewayAccess
 
     ![Zarejestruj publiczny adres IP bramy aplikacji](./media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png)
 
-2. Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki.
+2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
     ![Brama aplikacji w testu](./media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
 

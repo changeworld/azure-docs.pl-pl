@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 12/14/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: d96fefb859cba5db65382801fb1ac143df12b647
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 5f628f20cbe86d48b1757644df64b36a27dc526c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Grupami dynamicznymi i współpracy usługi Azure Active Directory B2B
 
@@ -47,12 +47,7 @@ Jakie takiej grupy może wyglądać tak:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
-
-* [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
-* [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
-* [Delegowanie zaproszenia współpracy B2B](active-directory-b2b-delegate-invitations.md)
-* [Kod współpracy B2B i przykłady środowiska PowerShell](active-directory-b2b-code-samples.md)
-* [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
+- [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
+- [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
+- [Dostęp warunkowy dla użytkowników współpracy B2B](active-directory-b2b-mfa-instructions.md)
 

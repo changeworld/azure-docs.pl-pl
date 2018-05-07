@@ -1,39 +1,35 @@
 ---
-title: "Hosting serwerów na stosie Azure SQL | Dokumentacja firmy Microsoft"
-description: "Jak dodać wystąpienia programu SQL dla inicjowania obsługi administracyjnej za pośrednictwem dostawcy zasobów karty SQL"
+title: Hosting serwerów na stosie Azure SQL | Dokumentacja firmy Microsoft
+description: Jak dodać wystąpienia programu SQL dla inicjowania obsługi administracyjnej za pośrednictwem dostawcy zasobów karty SQL
 services: azure-stack
-documentationCenter: 
-author: mattbriggs
+documentationCenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0a29ef133a045b2828777050f2d7a204c0add4a8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 05/01/2018
+ms.author: jeffgilb
+ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Dodaj serwery hostingu do użycia przez kartę SQL
-
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
-
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodaj serwery hostingu dla dostawcy zasobów SQL
 Można użyć wystąpienia programu SQL na maszynach wirtualnych wewnątrz sieci [stosu Azure](azure-stack-poc.md), lub wystąpienia poza środowiskiem Azure stosu, podać dostawcę zasobów można się z nim połączyć. Ogólne wymagania są:
 
 * Wystąpienie programu SQL muszą być przeznaczone wyłącznie do użytku przez obciążeń planu odzyskiwania i użytkownika. Nie można użyć wystąpienia SQL, który jest używany przez innego użytkownika, łącznie z usługi aplikacji.
-* Karta planu odzyskiwania nie jest przyłączony do domeny i można połączyć wyłącznie przy użyciu uwierzytelniania SQL.
-* Należy skonfigurować konto z odpowiednimi uprawnieniami do użycia przez planu odzyskiwania.
-* Planu odzyskiwania i użytkowników, takich jak aplikacje sieci Web należy używać sieci użytkownika, dlatego łączność do wystąpienia serwera SQL w tej sieci jest wymagana. To wymaganie zwykle oznacza, że adres IP dla swoich wystąpień SQL musi być w sieci publicznej.
-* Zarządzanie wystąpień programu SQL i ich hostów zależy od użytkownika; RP nie wykonać stosowania poprawek, tworzenia kopii zapasowej, poświadczeń, obracanie itp.
+* Dostawcy zasobów SQL maszyny Wirtualnej nie jest przyłączony do domeny i można połączyć wyłącznie przy użyciu uwierzytelniania programu SQL.
+* Należy skonfigurować konto z odpowiednimi uprawnieniami do użytku przez dostawcę zasobów.
+* Dostawcy zasobów i użytkowników, takich jak aplikacje sieci Web, należy używać sieci użytkownika, dlatego jest wymagana łączność z wystąpieniem serwera SQL w tej sieci. To wymaganie zwykle oznacza, że adres IP dla swoich wystąpień SQL musi być w sieci publicznej.
+* Zarządzanie wystąpień programu SQL i ich hostów zależy od użytkownika; Dostawca zasobów nie wykonać stosowania poprawek, tworzenia kopii zapasowej, poświadczeń, obracanie itp.
 * Jednostki SKU może służyć do tworzenia różnych klas możliwości SQL, takich jak wydajność, zawsze na itp.
 
-
-Liczba obrazów maszyn wirtualnych SQL IaaS są dostępne za pośrednictwem funkcji zarządzania Marketplace. Upewnij się, że zawsze pobieranie najnowszej wersji rozszerzenia IaaS SQL, przed wdrożeniem maszyny Wirtualnej przy użyciu elementu portalu Marketplace. Obrazy SQL są takie same jak SQL maszyn wirtualnych, które są dostępne w systemie Azure. Dla maszyn wirtualnych SQL utworzony na podstawie tych obrazów, rozszerzenia IaaS i odpowiedniego rozszerzenia portalu udostępnia funkcje, takie jak automatyczne stosowanie poprawek i możliwości tworzenia kopii zapasowej.
+Liczba obrazów maszyn wirtualnych SQL IaaS są dostępne za pośrednictwem funkcji zarządzania Marketplace. Upewnij się, że zawsze Pobierz najnowszą wersję **rozszerzenia IaaS SQL** przed wdrożeniem maszyny Wirtualnej przy użyciu elementu portalu Marketplace. Obrazy SQL są takie same jak SQL maszyn wirtualnych, które są dostępne w systemie Azure. Dla maszyn wirtualnych SQL utworzony na podstawie tych obrazów, rozszerzenia IaaS i odpowiedniego rozszerzenia portalu udostępnia funkcje, takie jak automatyczne stosowanie poprawek i możliwości tworzenia kopii zapasowej.
 
 Istnieją inne opcje wdrażania maszyn wirtualnych SQL, w tym szablony w [galerii Szybki Start Azure stosu](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -84,7 +80,10 @@ Aby dodać autonomicznego hostem serwera, która została już przydzielona, wyk
 
   Nazwa jednostki SKU powinien odzwierciedlać właściwości, dzięki czemu użytkownicy mogą powodować odpowiednio swoje bazy danych. Wszystkie serwery hostingu w jednostce SKU powinny mieć takie same możliwości.
 
-    Przykład:
+> [!IMPORTANT]
+> Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **rodziny** lub **warstwy** nazwy podczas tworzenia jednostki SKU dla dostawców zasobów SQL i MySQL.
+
+Przykład:
 
 ![Jednostki SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
@@ -140,27 +139,6 @@ Aby dodać SQL AlwaysOn serwerami hostingu, wykonaj następujące kroki:
 Tworzenie planów i oferty, aby udostępnić baz danych SQL dla użytkowników. Dodaj usługę Microsoft.SqlAdapter planu i dodawania istniejącego przydziału lub Utwórz nową. Jeśli tworzysz przydział, należy określić pojemność, aby zezwolić użytkownikowi.
 
 ![Tworzenie planów i ofert do dołączenia bazy danych](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
-
-## <a name="maintenance-of-the-sql-adapter-rp"></a>Obsługa SQL karty planu odzyskiwania
-
-Konserwacja wystąpień programu SQL nie pasuje do, z wyjątkiem informacji o hasłach obrotu. Jest odpowiedzialny za stosowanie poprawek i tworzenia kopii zapasowej/odzyskiwania serwerów bazy danych używane z kartą SQL.
-
-### <a name="patching-and-updating"></a>Stosowanie poprawek i aktualizacji
- Karta SQL nie jest obsługiwany jako część stosu Azure jako dodatkowy składnik jest. Microsoft będzie udostępniać aktualizacje karty SQL w razie potrzeby. Karta SQL zostanie uruchomiony na _użytkownika_ maszyny wirtualnej w ramach subskrypcji domyślny dostawca. W związku z tym jest niezbędne do zapewnienia poprawki systemu Windows, sygnatur oprogramowania antywirusowego,... itd. Systemu Windows aktualizację pakietów, które są dostarczane jako część cyklu poprawek i aktualizacji mogą być używane do stosowania aktualizacji do maszyny Wirtualnej systemu Windows. Po wydaniu zaktualizowanej karty skrypt jest dostarczany w celu zastosowania aktualizacji. Ten skrypt tworzy nową maszynę Wirtualną planu odzyskiwania i migracji tutaj stan, który już istnieje.
-
- ### <a name="backuprestoredisaster-recovery"></a>Odzyskiwanie kopii zapasowej/przywracania/po awarii
- Karta SQL nie jest kopii zapasowej jako część procesu Azure stosu BC-odzyskiwania po awarii, ponieważ jest dodatkowy składnik. Skrypty będzie świadczona w celu ułatwienia:
-- Tworzenie kopii zapasowej informacji niezbędnych stanu (przechowywane na koncie magazynu Azure stosu)
-- Przywracanie planu odzyskiwania, w przypadku odzyskiwania cały stos staje się koniecznością.
-Serwery bazy danych musi zostać odzyskana najpierw (Jeśli to konieczne), zanim zostanie przywrócone planu odzyskiwania.
-
-### <a name="updating-sql-credentials"></a>Aktualizowanie poświadczeń programu SQL
-
-Użytkownik jest odpowiedzialny za tworzenie i obsługę kont administratora systemu na serwerach SQL. RP potrzebuje konta z tych uprawnień do zarządzania bazami danych w imieniu użytkowników — nie wymaga dostępu do danych w tych baz danych. Jeśli musisz zaktualizować hasła administratora systemu na serwerach SQL, można użyć możliwości aktualizacji interfejsu administratora RP zmiany przechowywane hasła używane przez planu odzyskiwania. Te hasła są przechowywane w Key Vault w wystąpieniu usługi Azure stosu.
-
-Aby zmodyfikować ustawienia, kliknij przycisk **Przeglądaj** &gt; **zasobów administracyjnych** &gt; **Hosting serwerów SQL** &gt; **Kont logowania SQL** i wybierz nazwę logowania. Zmiana musi zostać wykonana w wystąpieniu programu SQL najpierw (i wszystkie repliki, jeśli to konieczne). W **ustawienia** panelu, kliknij pozycję **hasło**.
-
-![Zaktualizuj hasło administratora](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

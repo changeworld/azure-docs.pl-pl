@@ -1,9 +1,9 @@
 ---
-title: "Czyszczenie i przygotowania danych do usługi Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Wstępnie przetworzyć i czyszczenia danych, aby przygotować go do uczenia maszynowego."
+title: Czyszczenie i przygotowania danych do usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Wstępnie przetworzyć i czyszczenia danych, aby przygotować go do uczenia maszynowego.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7f0c1f0f549e746cc99db3b47f6c90bb51145d5d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Zadania w celu przygotowania danych do rozszerzonego uczenia maszynowego
 Przetwarzanie wstępne i czyszczenia danych są ważne zadania, które zwykle należy przeprowadzić przed zestawu danych można skutecznie uczenia maszynowego. Dane pierwotne jest często zakłócenia i zawodnych i może brakować wartości. Przy użyciu tych danych do modelowania może wygenerować błędne wyniki. Te zadania należą do zespołu danych nauki procesu (TDSP) i zwykle wykonaj eksploracji początkowego zestawu danych używane do odnajdywania i planowanie przetwarzanie wstępne wymagane. Aby uzyskać szczegółowe instrukcje dotyczące procesu TDSP, zobacz czynności opisane w temacie [proces nauki danych zespołu](overview.md).

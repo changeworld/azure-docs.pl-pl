@@ -34,7 +34,7 @@ Aby utworzyć maszynę wirtualną podczas tworzenia aplikacji sieci web, wykonaj
     
     ![][5]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli chcesz dostosować opublikowanych skryptów tworzenia, odczytu bardziej szczegółowe informacje o [za pomocą skryptów programu PowerShell systemu Windows do opublikowania deweloperów i środowisk testowych](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG

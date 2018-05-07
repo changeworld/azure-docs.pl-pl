@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: d80e0fc35b8c20bd61a78a68542f3311c1a40952
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: bdd7966721b22d75023c593593e69ab651b3aaca
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Użyj użytkownika przypisane zarządzane usługi tożsamości (MSI) na maszynie Wirtualnej systemu Windows, można uzyskać dostępu do usługi Azure Resource Manager
 
@@ -79,7 +79,7 @@ New-AzureRmVm `
 Użytkownik, któremu przypisano tożsamości jest tworzony jako autonomiczny zasobów platformy Azure. Przy użyciu [AzureRmUserAssignedIdentity nowy](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity), platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, który można przypisać do co najmniej jedno wystąpienie usługi Azure.
 
 > [!IMPORTANT]
-> Tworzenie użytkownika z przypisanym tożsamości z znaki specjalne (np. podkreślenie) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Sprawdzanie dostępności aktualizacji.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+> Tworzenie tożsamości użytkowników przypisanych obsługuje tylko alfanumeryczne i łączniki (0-9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków do przypisania do maszyny Wirtualnej/VMSS działała poprawnie. Sprawdzanie dostępności aktualizacji. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1

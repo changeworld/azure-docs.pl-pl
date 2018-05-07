@@ -1,6 +1,6 @@
 ---
-title: "Plan ochrony fizyczne i środowiskowe - automatyzacji aplikacji sieci Web FedRAMP - Azure zabezpieczeń i zgodności"
-description: "Automatyzacji aplikacji sieci Web FedRAMP - ochrony fizyczne i środowiskowe"
+title: Plan ochrony fizyczne i środowiskowe - automatyzacji aplikacji sieci Web FedRAMP - Azure zabezpieczeń i zgodności
+description: Automatyzacji aplikacji sieci Web FedRAMP - ochrony fizyczne i środowiskowe
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>Fizyczne i środowiskowe ochrony (PE)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasady ochrony fizyczne i środowiskowe, które dotyczy cel, zakres, ról, obowiązki, zarządzania zobowiązań, koordynacji między jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji zasad ochrony fizyczne i środowiskowe i kontrolek skojarzone fizyczne i środowiskowe ochrony; przegląda i aktualizuje bieżące zasady ochrony fizyczne i środowiskowe [przypisania: zdefiniowane przez organizację częstotliwość]; i procedur ochrony fizyczne i środowiskowe [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.a** organizacji rozwija zatwierdza i przechowuje listę osób autoryzowany dostęp do funkcji, w której znajduje się system informacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.b** poświadczenia autoryzacji dostępu zaimplementowanych wystawia organizacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.c** organizacji sprawdza listy dostępu określających dostępu zaimplementowanych autoryzowanych osób [przypisania: zdefiniowany przez organizację częstotliwość].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.d** organizacji usuwa osób z listy dostępu zaimplementowanych po dostępu nie jest już wymagane.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.a** organizacja wymusza zezwolenia na dostęp do fizycznych w [przypisania: zdefiniowane przez organizację wejścia/wyjścia wskazuje funkcji którym znajduje się system informacji] weryfikując zezwolenia na dostęp do poszczególnych przed udzieleniem im dostęp do obiektu; i kontrolowanie wejście/wyjście do zaimplementowanych przy użyciu [wybór (jeden lub więcej): [przypisania: urządzenia systemów sterujące zdefiniowane w organizacji dostęp fizyczny]; osłony].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.b** Organizacja zachowuje dzienniki inspekcji fizyczny dostęp do [przypisania: punkty wejścia/wyjścia zdefiniowany przez organizację].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.c** zapewnia organizacji [przypisania: zabezpieczeń zdefiniowany przez organizację] Aby kontrolować dostęp do obszarów w obrębie obiektu oficjalnie wyznaczony jako dostępny publicznie.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.d** eskorty odwiedzających organizacji i monitoruje aktywność odwiedzający [przypisania: zdefiniowane przez organizację okoliczności wymagające eskorty dla gości i monitorowania].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.e** Organizacja zabezpiecza klucze, kombinacje i inne urządzenia fizycznego dostępu.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.f** spisów organizacji [przypisania: zdefiniowane przez organizację fizyczny dostęp urządzeń] co [przypisania: częstotliwość zdefiniowany przez organizację].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.g** organizacji zmienia kombinacji i klucze [przypisania: zdefiniowane przez organizację częstotliwość] i/lub gdy klucze zostaną utracone, kombinacje są uszkodzone lub osób są przekazywane lub zakończenia.  
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **Pe3 (1)** organizacja wymusza autoryzacje fizyczny dostęp do systemu informacji oprócz fizyczne metody kontroli dostępu dla funkcji w [przypisania: zdefiniowane przez organizację spacje fizycznego zawierający jeden lub więcej składników system informacje].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 4** organizacja kontroluje dostęp fizyczny do [przypisania: informacje zdefiniowane przez organizację systemu dystrybucji i transmisji linii] w obrębie organizacji urządzeń przy użyciu [przypisania: zabezpieczeń zdefiniowany przez organizację] .
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 5** organizacja kontroluje fizyczny dostęp do informacji systemu wyjściowego urządzeń uniemożliwienie nieautoryzowane uzyskania danych wyjściowych.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 6.a** organizacji monitoruje fizyczny dostęp do funkcji, których system informacji znajduje się wykrywanie i reagowanie na zdarzenia zabezpieczeń fizycznych.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 6.b** organizacji przegląda dzienników fizycznego dostępu [przypisania: zdefiniowane przez organizację częstotliwość] i po wystąpieniu [przypisania: zdarzeń zdefiniowanych przez organizację lub potencjalne oznaczenia zdarzeń].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 6.c** organizacji koordynuje wyniki przeglądów i badania możliwości organizacyjnej odpowiedzi na zdarzenia. 
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 6 (1)** organizacji monitoruje alarmy fizycznych nieautoryzowanego dostępu i kontroli urządzeń.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 6 (4)** organizacji monitoruje fizyczny dostęp do systemu informacje oprócz monitorowania fizycznego dostępu ze strony jako [przypisania: zdefiniowane przez organizację spacje fizycznego zawierający co najmniej jednego składnika informacji System]
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 8.a** organizacji przechowuje rekordy dostępu dla gości w obiekcie, w której znajduje się system informacji dla [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 8.b** organizacji przegląda rekordy dostępu dla gości [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 8 (1)** automatyczne mechanizmów ułatwia prowadzenie i przegląd rekordy dostępu osoby odwiedzającej jest stosowana w organizacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 9** organizacji chroni zasilania sprzętu i zasilania okablowania systemu informacji z uszkodzenia i zniszczenia.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 10.a** organizacji zapewnia możliwość z wyłączeniem zasilania systemu informacje lub system poszczególnych składników sytuacji awaryjnych.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 10.b** organizacji umieszcza przełączniki awaryjnego bliskie lub urządzeń w [przypisania: zdefiniowane przez organizację lokalizacji systemu informacje lub składnik systemu] do ułatwienia bezpiecznego i łatwego dostępu dla personelu.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 10.c** organizacji chroni zdolność bliskie awaryjnego zasilania przed nieautoryzowanym aktywacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 11** organizacji zapewnia krótkoterminowej zasilacz ułatwiające [wybór (jeden lub więcej): prawidłowe zamknięcie systemu informacji; przejścia systemu informacji do długoterminowego zasilania] w przypadku utraty źródła zasilania podstawowego.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 11 (1)** organizacji zapewnia długoterminowej alternatywny zasilacz wymagany system informacji, umożliwiającej utrzymania minimalny zestaw możliwości operacyjnych w przypadku rozszerzonej utraty zasilania podstawowego.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 12** organizacja stosuje i obsługuje automatyczne awaryjnego oświetlenia dla systemu informacji, który uaktywnia w przypadku awarii zasilania lub przerw w działaniu i który obejmuje awaryjnego kończy działanie oraz ewakuacji w obrębie obiektu.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 13** organizacja stosuje i przechowuje fire pomijanie wykrywania urządzeń/systemy i systemu informacje są obsługiwane przez źródło energii niezależne.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 13 (1)** wymaga organizacji wyzwalać wykrywania urządzeń/komputerach systemu informacji o aktywacji automatycznie i powiadom [przypisania: techniczną zdefiniowany przez organizację lub ról] i [przypisania: awaryjnego zdefiniowany przez organizację obiekty odpowiadające] w przypadku fire.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 13 (2)** wymaga organizacji wyzwalać pomijania urządzenia/systemy dla systemu informacje, które zapewniają automatyczne powiadomienia o dowolnym aktywacji do [przypisania: techniczną zdefiniowany przez organizację lub ról] i [przypisania: zdefiniowany przez organizację awaryjnego obiektów odpowiadających].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 13 (3)** możliwości pomijania automatycznej fire systemu informacji jest stosowana w organizacji, podczas funkcji nie pracownicy w sposób ciągły.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 14.a** organizacji przechowuje temperatury i wilgotności poziomy w obrębie obiektu, w którym system informacji znajduje się w [przypisania: zdefiniowane przez organizację akceptowalnego poziomu].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 14.b** organizacji monitoruje poziom temperatury i wilgotności [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE — 14 (2)** organizacja stosuje temperatury i wilgotności monitorowania, który pozwala alarm lub powiadomienia o zmianach potencjalnie szkodliwe personelu lub urządzeń.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 15** organizacji chroni system informacji z szkody wynikające z wyciek wody, zapewniając wzorca zawory bliskie lub izolacji, które są dostępne, działa prawidłowo i znanych do personelu klucza.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE – 15 (1)** organizacja stosuje mechanizmy automatycznego do wykrywania obecności wody w pobliżu informacji systemu i alerty [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 16** organizacji autoryzuje, monitoruje i kontroluje [przypisania: zdefiniowane przez organizację typy informacji na składniki systemu] wprowadzanie i zamykanie funkcji i obsługuje rekordy z tych elementów.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 17.a** organizacja stosuje [przypisania: kontroli zabezpieczeń zdefiniowany przez organizację] w miejscach pracy alternatywny.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 17.b** organizacji ocenia jak to możliwe, skuteczności zabezpieczeń formanty w miejscach pracy alternatywny.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -613,13 +613,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-pe-17c"></a>NIST 800-53 Control PE-17.c
+ ## <a name="nist-800-53-control-pe-17c"></a>Formant PE NIST 800 53-17.c
 
 #### <a name="alternate-work-site"></a>Alternatywne pracy witryny
 
 **PE 17.c** organizacji umożliwia pracownikom do komunikowania się z personelem zabezpieczeń informacji w przypadku problemów lub zdarzeń zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 18** organizacji umieszcza składników systemu informacji w obrębie obiektu, aby zminimalizować potencjalne szkody z [przypisania: zdefiniowane przez organizację fizyczne i środowiskowe zagrożenia] i minimalizuje możliwość wystąpienia dla nieautoryzowany dostęp.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|

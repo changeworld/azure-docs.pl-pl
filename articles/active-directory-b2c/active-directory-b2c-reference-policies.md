@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 424186a0acfe17cd7cb96f3ba7f8201e8b2b38ec
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Usługi Azure Active Directory B2C: Wbudowane zasady
 
@@ -81,6 +81,10 @@ Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z
 ## <a name="create-a-password-reset-policy"></a>Tworzenie zasad resetowania haseł
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
+
+## <a name="preview-policies"></a>Podgląd zasad
+
+Jak możemy zwalniają nowe funkcje, niektóre z nich nie można na istniejące zasady.  Firma Microsoft planuje Zamień starsze wersje przy użyciu najnowszych danych tego samego typu, po tych zasad należy wprowadzić po  Nie spowoduje zmiany istniejących zasad i aby korzystać z nowych funkcji musisz utworzyć nowe zasady.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

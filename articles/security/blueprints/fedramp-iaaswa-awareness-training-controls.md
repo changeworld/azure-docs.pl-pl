@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i pogłębianie wiedzy na temat zgodności - automatyzacji aplikacji sieci Web FedRAMP — plan szkolenia"
-description: "Automatyzacja aplikacji sieci Web FedRAMP — świadomości i szkolenia"
+title: Zabezpieczeń platformy Azure i pogłębianie wiedzy na temat zgodności - automatyzacji aplikacji sieci Web FedRAMP — plan szkolenia
+description: Automatyzacja aplikacji sieci Web FedRAMP — świadomości i szkolenia
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: a019f76929ea3c7d27492f8a9d6b6994e471aabe
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="awareness-and-training-at"></a>Rozpoznawanie i szkolenia (AT)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] świadomości bezpieczeństwa i szkolenia zasady, które dotyczy cel, zakres, ról, obowiązki, zobowiązań zarządzania Współpraca między jednostki organizacyjnej i zgodności; i procedur w celu ułatwienia wykonania świadomości bezpieczeństwa i szkolenia zasad i skojarzony świadomości i formanty szkolenia; przegląda i aktualizuje bieżącego świadomości bezpieczeństwa i szkolenia zasad [przypisania: zdefiniowane przez organizację częstotliwość]; i świadomości bezpieczeństwa i procedury szkolenie [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 2.a** organizacji zapewnia szkolenia pogłębianie wiedzy na temat podstawowych zabezpieczeń dla użytkowników systemu informacji (w tym menedżerów, kadry kierowniczej i wykonawców) jako część wstępne szkolenie dla nowych użytkowników.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 2.b** organizacji zapewnia szkolenia pogłębianie wiedzy na temat podstawowych zabezpieczeń dla użytkowników systemu informacji (w tym menedżerów, kadry kierowniczej i wykonawców) na żądanie zmiany systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 2.c** organizacji zapewnia szkolenia pogłębianie wiedzy na temat podstawowych zabezpieczeń dla użytkowników systemu informacji (w tym menedżerów, kadry kierowniczej i wykonawców) [przypisania: zdefiniowane przez organizację częstotliwość] później.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2 (2)** organizacji udostępnia rozpoznawanie zabezpieczeń szkolenia na rozpoznawanie i raportowania wskaźników potencjalne zagrożenia wewnętrznego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 3.a** organizacji zapewnia szkolenia w zakresie zabezpieczeń opartych na rolach do pracowników z przypisanymi rolami zabezpieczeń i jego obowiązki przed autoryzowania dostępu do systemu informacje lub wykonywania obowiązków przypisane.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 3.b** organizacji zapewnia szkolenia w zakresie zabezpieczeń opartych na rolach do pracowników z przypisanymi rolami zabezpieczeń i obowiązków, gdy jest to wymagane przez zmiany informacji w systemie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 3.c** organizacji zapewnia szkolenia w zakresie zabezpieczeń opartych na rolach do pracowników z przypisanymi rolami zabezpieczeń i jego obowiązki [przypisania: zdefiniowany przez organizację częstotliwość] później.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3 (3)** organizacji obejmuje Ćwiczenia praktyczne szkolenia w zakresie zabezpieczeń które wzmocnienia celów szkoleniowych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3 (4)** organizacji zawiera szkolenia personel po [przypisania: zdefiniowany przez organizację wskaźniki złośliwego kodu] rozpoznaje podejrzane komunikacji i nietypowych zachowań systemów informatycznych w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 4.a** organizacji dokumentów i monitory informacje o poszczególnych systemu zabezpieczeń szkoleń tym szkolenia pogłębianie wiedzy na temat podstawowych zabezpieczeń i szkolenia w zakresie zabezpieczeń określonych informacji systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT 4.b** Organizacja zachowuje szkolenia poszczególne rekordy [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

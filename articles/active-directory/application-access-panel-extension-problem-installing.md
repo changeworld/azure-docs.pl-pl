@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 5/4/18
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 87396204933ca964634656f9eb84c6d245c0c6c0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Zainstaluj rozszerzenie przeglądarki panelu dostępu
 
@@ -83,6 +83,12 @@ Możesz również pobrać rozszerzenia dla programu Chrome i krawędzi bezpośre
    3. Wyszukaj aplikację, która jest dostępna w portalu Moje aplikacje.
    4. Na liście wyników wyszukiwania wybierz aplikację.  
        Ostatnie trzy aplikacje używane są wyświetlane w **ostatnio używane** listy skrótów.
+       
+* Aby użyć adresów URL wewnętrznego firmy podczas pracy zdalnej, wykonaj następujące czynności:
+    1. [Skonfiguruj serwer Proxy aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) na dzierżawy
+    2. [Opublikuj aplikację](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) i adresu URL za pośrednictwem serwera Proxy aplikacji
+    3. Zainstaluj rozszerzenie, a następnie zaloguj do niego, wybierając logowania rozpoczęcie pracy
+    4. Możesz teraz przejść do adresu URL wewnętrzne firmy, nawet podczas zdalnego
 
 > [!NOTE]
 > Poprzednie opcje są dostępne tylko dla krawędzi, Chrome i Firefox.

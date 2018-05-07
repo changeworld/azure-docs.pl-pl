@@ -41,6 +41,6 @@
    > Jeśli używanym dostawcą jest HP, protokół SSL będzie zawsze włączony.
    > 
    > 
-6. Po ustawieniu filtrów ![ikona znacznika wyboru](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.
+6. Kliknij ikonę znacznika wyboru ![ikona znacznika wyboru](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Po pomyślnym utworzeniu konta magazynu otrzymasz powiadomienie.
 7. Nowo utworzone konto magazynu zostanie wyświetlone na stronie **Konfigurowanie** w obszarze **Konto magazynu**. Kliknij przycisk **Zapisz**, aby zapisać nowe konto magazynu. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **OK**.
 

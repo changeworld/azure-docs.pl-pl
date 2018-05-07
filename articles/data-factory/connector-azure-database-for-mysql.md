@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f2b048d4fad1fae240904fef48842679accaa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 17e5ba3637b0ae36412e46166f7f178d4c82d179
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopiowanie danych z bazy danych platformy Azure dla programu MySQL przy użyciu fabryki danych Azure
 
@@ -47,6 +47,13 @@ Następujące właściwości są obsługiwane w bazie danych Azure dla usługi M
 | type | Właściwość type musi mieć ustawioną: **AzureMySql** | Yes |
 | Parametry połączenia | Podaj informacje wymagane do połączenia z bazą danych Azure dla wystąpienia MySQL. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+
+Ciąg połączenia typowe jest `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+
+| Właściwość | Opis | Opcje | Wymagane |
+|:--- |:--- |:--- |:--- |:--- |
+| SSLMode | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas nawiązywania połączenia MySQL. Na przykład `SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0) / PREFEROWANYCH (1) **(domyślna)** / wymagane (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nie |
+| useSystemTrustStore | Ta opcja określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Na przykład `UseSystemTrustStore=<0/1>;`| (1) włączone / wyłączone (0) **(domyślna)** | Nie |
 
 **Przykład:**
 

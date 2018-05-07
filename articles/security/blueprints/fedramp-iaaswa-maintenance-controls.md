@@ -1,6 +1,6 @@
 ---
-title: "Plan obsługi - automatyzacji aplikacji sieci Web FedRAMP - zabezpieczeń platformy Azure i zgodność"
-description: "Automatyzacja aplikacji sieci Web FedRAMP — konserwacji"
+title: Plan obsługi - automatyzacji aplikacji sieci Web FedRAMP - zabezpieczeń platformy Azure i zgodność
+description: Automatyzacja aplikacji sieci Web FedRAMP — konserwacji
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: de7dd5b4651f7f74d90d9d026af71cd676c720e6
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="maintenance-ma"></a>Konserwacji (MA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról], którego dotyczy cel, zakres, ról, obowiązki zobowiązań zarządzania, koordynacji zasad konserwacji systemu wśród jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji zasad konserwacji systemu i skojarzonego z nim systemu obsługi kontroli; przegląda i aktualizuje bieżące zasady konserwacji systemu [przypisania: zdefiniowane przez organizację częstotliwość]; i procedury obsługi systemu [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.a** organizacja planuje, wykonuje dokumentów i monitoruje rekordów konserwacji i naprawy składników systemu informacji zgodnie z specyfikacji producenta lub dostawcy i/lub wymagań organizacyjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -53,13 +53,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ma-2b"></a>NIST 800-53 Control MA-2.b
+ ## <a name="nist-800-53-control-ma-2b"></a>Formant MA NIST 800 53-2.b
 
 #### <a name="controlled-maintenance"></a>Kontrolowane konserwacji
 
 **MA 2.b** organizacji zatwierdza i monitoruje wszystkie działania konserwacji, czy wykonać w witrynie lub zdalnie oraz tego, czy urządzenie jest obsługiwane w lokacji lub usunięty w innej lokalizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.c** organizacja wymaga, aby [przypisania: techniczną zdefiniowany przez organizację lub ról] jawnie potwierdzenie usunięcia systemu informacje lub składników systemu z urządzeń do organizacji lub poza nim konserwacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -81,13 +81,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Platforma Microsoft Azure wymaga tej właściwości zasobów (np. urządzenia sieciowego lub serwera) konieczności transferu poza siedzibą firmy mają zatwierdzenia przez właściciela zasobów jawnego. |
 
 
- ## <a name="nist-800-53-control-ma-2d"></a>NIST 800-53 Control MA-2.d
+ ## <a name="nist-800-53-control-ma-2d"></a>Formant MA NIST 800 53-2.d
 
 #### <a name="controlled-maintenance"></a>Kontrolowane konserwacji
 
 **MA 2.d** organizacji oczyszcza urządzenia do usuwania wszystkich informacji z nośnika skojarzony przed usunięciem z urządzeń do organizacji lub poza nim konserwacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.e** Organizacja sprawdza wszystkie potencjalnie wpływ na zabezpieczenia, aby sprawdzić, czy formanty nadal działają poprawnie następujące akcje konserwacji lub naprawy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.f** obejmuje organizacji [przypisania: zdefiniowane przez organizację informacje dotyczące konserwacji] w rekordach organizacji konserwacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A MA-2 (2)** organizacja stosuje automatycznych mechanizmy harmonogramu, postępowania i konserwacji dokumentu i naprawy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) MA-2, b** organizacji tworzy o daty, dokładne, i rekordów ukończenia wszystkich działań konserwacji i napraw zażądał zaplanowane w procesie oraz zostać zakończona.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 3** organizacji zatwierdza kontrolek i monitoruje informacje narzędzia do konserwacji systemu.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) MA-3** organizacja kontroluje narzędzi konserwacji odbywa się w zakładzie personelowi obsługi do nieprawidłowej lub nieautoryzowane zmiany.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) MA-3** organizacji nośników zawierających diagnostycznych i programy badania złośliwego kodu przed sprawdza nośniki są używane w systemie informacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) MA-3** organizacji uniemożliwia nieautoryzowanym usuwania urządzeń do konserwacji zawierający informacje organizacyjne, upewniając się, że nie istnieje organizacji informacji znajdujących się na sprzęt; oczyszczania lub niszczenie urządzenia; zachowywanie urządzeń w obrębie obiektu; lub uzyskiwanie zwolnienia z [przypisania: techniczną zdefiniowany przez organizację lub ról] jawnie autoryzowanie usunięcie urządzenia z funkcji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.a** organizacji zatwierdza i monitoruje nielokalne obsługi i działania diagnostyczne.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.b** organizacji zezwala na korzystanie z obsługi nielokalne i diagnostycznych narzędzi tylko jako zgodne z zasadami organizacji i opisane w sekcji Planowanie zabezpieczeń systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -235,13 +235,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ma-4c"></a>NIST 800-53 Control MA-4.c
+ ## <a name="nist-800-53-control-ma-4c"></a>Formant MA NIST 800 53-4.c
 
 #### <a name="nonlocal-maintenance"></a>Nielokalne konserwacji
 
 **MA 4.c** silne wystawców uwierzytelnienia w zakładzie nielokalne konserwacji i diagnostycznych sesji jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.d** organizacji przechowuje rekordy nielokalne konserwacji i diagnostycznych działań.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.e** Organizacja kończy sesji i połączenia sieciowe, po zakończeniu obsługi nielokalnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) MA-4** dokumentów organizacji w sekcji Planowanie zabezpieczeń systemu informacji zasady i procedury dotyczące tworzenia i wykorzystania nielokalne konserwacji i diagnostycznych połączenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) MA-4** organizacja wymaga nielokalne konserwacji i usługi diagnostyczne wykonanie z systemu informacji, który implementuje porównywalna możliwości zaimplementowana w systemie są obsługiwane; możliwości zabezpieczeń lub usuwa składnik, który będzie obsługiwany w systemie informacji przed nielokalne konserwacji lub usługi diagnostyczne oczyszcza składnika (w odniesieniu do informacji organizacyjnych) przed usunięcie z urządzeń w organizacji, a po usługi wykonywane, bada i oczyszcza składnika (względem potencjalnie złośliwych programów) przed ponownym połączeniem składnika do systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (6)** system informacji implementuje mechanizmów kryptograficznych do ochrony integralności i poufności nielokalne konserwacji i diagnostycznych komunikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 5.a** ustanawia proces autoryzacji personelu obsługi i przechowuje listę autoryzowanych konserwacji organizacji lub personel organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 5.b** organizacji gwarantuje, że personel eskortowanych konserwacja systemu informacje mają odpowiednie zezwolenia na dostęp do.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 5.c** organizacji wyznacza organizacji pracowników z zezwoleń wymagane prawa dostępu i kwalifikacji technicznych nadzorowanie działania obsługi technicznej, którzy nie mają zezwolenia wymagany dostęp.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) MA-5 .a** organizacji implementuje procedury wykorzystania personelu obsługi, które nie mają odpowiednich niedopuszczających lub obywateli Stanów Zjednoczonych, które obejmują następujące personel obsługi wymagań, który nie ma potrzeby nie są zezwolenia na dostęp, prześwity lub posiadanie dostępu zatwierdzeń są eskortowanych i nadzorowane podczas wykonywania konserwacji i diagnostycznych działania w systemie informacji przez zatwierdzonych organizacji pracowników, którzy są w pełni wyczyszczone, mają odpowiednie autoryzacji dostępu i są technicznie kwalifikowana; przed inicjujący konserwacji lub czynności diagnostycznych przez personel kto nie mieć wymaganych autoryzacji dostępu, zezwoleń lub zatwierdzenia posiadanie dostępu, zmienne informacje się, że składniki magazynu w ramach systemu informacje są oczyszczony i wszystkie nieulotnej nośniki są usuwane lub fizycznie odłączone od systemu i zabezpieczone.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) MA-5, b** rozwoju organizacji i implementuje alternatywne zabezpieczeń, w przypadku informacji składnik systemu nie może być oczyszczony, usunięte lub odłączone od systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 6** organizacji uzyskuje obsługi pomocy technicznej i/lub zapasowego części dla [przypisania: składniki systemowe zdefiniowane przez organizację informacje] w [przypisania: okres zdefiniowany organizacji] awarii.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|

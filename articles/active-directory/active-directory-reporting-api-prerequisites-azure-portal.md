@@ -1,35 +1,35 @@
 ---
-title: "Wymagania wstępne dotyczące dostępu raportowania interfejsu API usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o wymaganiach wstępnych można uzyskać dostępu do raportowania interfejsu API usługi Azure AD"
+title: Wymagania wstępne dotyczące dostęp do usługi Azure Active Directory raportowania interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o wymaganiach wstępnych można uzyskać dostępu do raportowania interfejsu API usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 05/03/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1f4d79b59d44bc1c151391290e79026051fe1df
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 72372a37c4ddcc6135fc7477807e4ff94ae90c77
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Wymagania wstępne dotyczące raportowania interfejsu API usługi Azure AD dostęp
+# <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące dostęp do usługi Azure Active Directory raportowania interfejsu API
 
-[Raportowania interfejsów API usługi Azure AD](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają programowy dostęp do danych za pomocą zestawu opartego na interfejsie REST API. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
+[Usługi Azure Active Directory (Azure AD) raportowania interfejsów API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają programowy dostęp do danych za pomocą zestawu opartego na interfejsie REST API. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
 
 Raportowania używa interfejsu API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) do autoryzacji dostępu do interfejsów API sieci web. 
 
 Aby uzyskać dostęp do danych raportowania za pośrednictwem interfejsu API, należy mieć jeden z następujących ról przypisane:
 
-- Czytnik zabezpieczeń
+- Odczytywanie zabezpieczeń
 - Administrator zabezpieczeń
 - Administrator globalny
 
@@ -37,14 +37,14 @@ Aby uzyskać dostęp do danych raportowania za pośrednictwem interfejsu API, na
 Aby przygotować dostęp do interfejsu API raportowania, należy:
 
 1. Rejestrowanie aplikacji 
-2. Udzielanie uprawnień 
+2. Udziel uprawnień 
 3. Zbierz ustawienia konfiguracji 
 
-Pytania, problemy lub opinie, użyj funkcji [pliku biletu pomocy technicznej](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
+Pytania, problemy lub opinie [pliku biletu pomocy technicznej](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
 ## <a name="register-an-azure-active-directory-application"></a>Rejestrowanie aplikacji usługi Azure Active Directory
 
-Należy zarejestrować aplikację, nawet jeśli uzyskują dostęp do interfejsu API raportowania przy użyciu skryptu. Zapewnia to **identyfikator aplikacji**, który jest wymagany przez wywołanie autoryzacji i umożliwia swój kod, aby odbierać tokeny.
+Należy zarejestrować aplikację, nawet jeśli uzyskujesz dostęp do interfejsu API raportowania przy użyciu skryptu. Zapewnia to **identyfikator aplikacji**, który jest wymagany przez wywołanie autoryzacji i umożliwia swój kod, aby odbierać tokeny.
 
 Aby skonfigurować dostęp raportowania interfejsu API usługi Azure AD do katalogu, należy zalogować się do portalu Azure przy użyciu konta administratora platformy Azure, który jest również członkiem **administratora globalnego** roli katalogu w dzierżawie usługi Azure AD.
 
@@ -59,15 +59,15 @@ Aby skonfigurować dostęp raportowania interfejsu API usługi Azure AD do katal
    
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Na **usługi Azure Active Directory** bloku, kliknij przycisk **rejestracji aplikacji**.
+2. Na **usługi Azure Active Directory** kliknij przycisk **rejestracji aplikacji**.
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/02.png) 
 
-3. Na **rejestracji aplikacji** bloku na pasku narzędzi u góry, kliknij przycisk **nowej rejestracji aplikacji**.
+3. Na **rejestracji aplikacji** na pasku narzędzi u góry, kliknij przycisk **nowej rejestracji aplikacji**.
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/03.png)
 
-4. Na **Utwórz** blok, wykonaj następujące czynności:
+4. Na **Utwórz** wykonaj następujące czynności:
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/04.png)
 
@@ -80,30 +80,39 @@ Aby skonfigurować dostęp raportowania interfejsu API usługi Azure AD do katal
     d. Kliknij przycisk **Utwórz**. 
 
 
-## <a name="grant-permissions"></a>Udzielanie uprawnień 
+## <a name="grant-permissions"></a>Udziel uprawnień 
 
-Celem tego etapu jest udzielić aplikacji **odczytuj dane katalogu** uprawnień do **Windows Azure Active Directory** interfejsu API.
+W zależności od interfejsu API, który chcesz uzyskać dostęp musisz przyznać aplikacji następujące uprawnienia:  
 
-![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/16.png)
+| Interfejs API | Uprawnienie |
+| --- | --- |
+| Windows Azure Active Directory | Odczytuj dane katalogu |
+| Microsoft Graph | Odczytać wszystkie inspekcji dane dziennika |
+
+
+![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/36.png)
+
+
+W poniższej sekcji przedstawiono kroki dla obu interfejsów API. Jeśli nie chcesz uzyskać dostępu do jednego z interfejsów API, można pominąć kroki pokrewne.
  
 
-**Aby udzielić zgody użytkownika aplikacji do użycia interfejsu API:**
+**Aby udzielić uprawnień aplikacji do użycia interfejsów API:**
 
-1. Na **rejestracji aplikacji** bloku na liście aplikacji, kliknij przycisk **aplikacji interfejsu API raportowania**.
+1. Na **rejestracji aplikacji** na liście aplikacji, kliknij przycisk **aplikacji interfejsu API raportowania**.
 
-2. Na **aplikacji interfejsu API raportowania** bloku na pasku narzędzi u góry, kliknij przycisk **ustawienia**. 
+2. Na **aplikacji interfejsu API raportowania** na pasku narzędzi u góry, kliknij przycisk **ustawienia**. 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/05.png)
 
-3. Na **ustawienia** bloku, kliknij przycisk **wymagane uprawnienia**. 
+3. Na **ustawienia** kliknij przycisk **wymagane uprawnienia**. 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/06.png)
 
-4. Na **wymagane uprawnienia** bloku, w **interfejsu API** kliknij **Windows Azure Active Directory**. 
+4. Na **wymagane uprawnienia** strony w **interfejsu API** kliknij **Windows Azure Active Directory**. 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/07.png)
 
-5. Na **Włącz dostęp** bloku, wybierz opcję **odczytuj dane katalogu**. 
+5. Na **Włącz dostęp** wybierz pozycję **odczytuj dane katalogu** i usuń zaznaczenie **Zaloguj się i odczytuj profil użytkownika**. 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/08.png)
 
@@ -111,7 +120,26 @@ Celem tego etapu jest udzielić aplikacji **odczytuj dane katalogu** uprawnień 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/15.png)
 
-7. Kliknij przycisk **udzielanie uprawnień**, a następnie kliknij przycisk **tak**.
+7. Na **wymagane uprawnienia** na pasku narzędzi u góry, kliknij przycisk **Dodaj**.
+
+    ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/32.png)
+
+8. Na **dostępu Dodaj interfejsu API** kliknij przycisk **wybierz interfejs API**.
+
+    ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/31.png)
+
+9. Na **wybierz interfejs API** kliknij przycisk **Microsoft Graph**, a następnie kliknij przycisk **wybierz**.
+
+    ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/33.png)
+
+10. Na **Włącz dostęp** wybierz pozycję **odczytać wszystkich danych dziennika inspekcji,**, a następnie kliknij przycisk **wybierz**.  
+
+    ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/34.png)
+
+
+11. Na **dostępu Dodaj interfejsu API** kliknij przycisk **gotowe**.  
+
+12. Na **wymagane uprawnienia** strony na pasku narzędzi u góry. Kliknij przycisk **udzielanie uprawnień**, a następnie kliknij przycisk **tak**.
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/17.png)
 
@@ -133,7 +161,7 @@ Te wartości są wymagane podczas konfigurowania wywołania interfejsu API rapor
    
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Na **usługi Azure Active Directory** bloku, kliknij przycisk **niestandardowych nazw domen**.
+2. Na **usługi Azure Active Directory** kliknij przycisk **niestandardowych nazw domen**.
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/09.png) 
 
@@ -148,9 +176,9 @@ Te wartości są wymagane podczas konfigurowania wywołania interfejsu API rapor
    
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Na **rejestracji aplikacji** bloku na liście aplikacji, kliknij przycisk **aplikacji interfejsu API raportowania**.
+2. Na **rejestracji aplikacji** na liście aplikacji, kliknij przycisk **aplikacji interfejsu API raportowania**.
 
-3. Na **aplikacji interfejsu API raportowania** bloku na **identyfikator aplikacji**, kliknij przycisk **kliknij, aby skopiować**.
+3. Na **aplikacji interfejsu API raportowania** strony, na **identyfikator aplikacji**, kliknij przycisk **kliknij, aby skopiować**.
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/11.png) 
 
@@ -165,19 +193,19 @@ Aby uzyskać klucz tajny klienta aplikacji, musisz utworzyć nowy klucz i zapisa
    
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Na **rejestracji aplikacji** bloku na liście aplikacji, kliknij przycisk **aplikacji interfejsu API raportowania**.
+2. Na **rejestracji aplikacji** na liście aplikacji, kliknij przycisk **aplikacji interfejsu API raportowania**.
 
 
-3. Na **aplikacji interfejsu API raportowania** bloku na pasku narzędzi u góry, kliknij przycisk **ustawienia**. 
+3. Na **aplikacji interfejsu API raportowania** na pasku narzędzi u góry, kliknij przycisk **ustawienia**. 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/05.png)
 
-4. Na **ustawienia** bloku, w **dostępu APIR** kliknij **klucze**. 
+4. Na **ustawienia** strony w **dostępu APIR** kliknij **klucze**. 
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/12.png)
 
 
-5. Na **klucze** blok, wykonaj następujące czynności:
+5. Na **klucze** wykonaj następujące czynności:
 
     ![Zarejestruj aplikację](./media/active-directory-reporting-api-prerequisites-azure-portal/14.png)
 

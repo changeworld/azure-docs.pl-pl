@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: e65f64939826a97eae0fca0fe3ae220f5479d2b4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 75c61894d5562f4bb0cb45fd8500bd9cf0f2bf8f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web programu Service Manager za pomocą zautomatyzowanego skryptu
 
@@ -29,13 +29,13 @@ Uruchom skrypt, podając następujące wymagane szczegóły:
 - Szczegóły subskrypcji platformy Azure
 - Nazwa grupy zasobów
 - Lokalizacja
-- Szczegóły serwera programu Service Manager (nazwa serwera, domenę, nazwę użytkownika i hasło)
+- Szczegóły serwera programu Service Manager (nazwa serwera, domeny, nazwę użytkownika i hasło)
 - Prefiks nazwy witryny dla aplikacji sieci Web
 - Namespace magistrali usług.
 
-Skrypt zostanie utworzona aplikacja sieci Web przy użyciu nazwy określonej (wraz z kilku dodatkowe ciągi go). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta** i **klucz tajny klienta**.
+Skrypt zostanie utworzona aplikacja sieci Web przy użyciu nazwy określonej (wraz z kilku dodatkowe ciągi go). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta**, i **klucz tajny klienta**.
 
-Zapisz te wartości należy je podczas tworzenia połączenia z łącznikiem zarządzania usługi IT.
+Zapisz te wartości należy te wartości podczas tworzenia połączenia z łącznikiem zarządzania usługi IT.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -191,6 +191,8 @@ Write-Output "Web App Deployed successfully!!"
 Add-Type -AssemblyName System.Web
 
 $clientSecret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+
+$clientSecret = $clientSecret | ConvertTo-SecureString -AsPlainText -Force
 
 try
 {

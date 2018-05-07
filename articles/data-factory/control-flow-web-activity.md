@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/01/2018
 ms.author: shlo
-ms.openlocfilehash: e6846661370fcad139730fc0443d9df54fa12a70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58faed48f5031b26f1340f3766fdd8bdc6bd2ccb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Działanie sieci Web w fabryce danych Azure
 Działanie WebActivity może być używane do wywoływania niestandardowego punktu końcowego REST z potoku usługi Data Factory. Można przekazywać zestawy danych i połączone usługi do zużycia i dostępu przez działanie. 
@@ -68,8 +68,8 @@ Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania sieci web | Ciąg | Yes
 type | Należy wybrać opcję **WebActivity**. | Ciąg | Yes
-metoda | Metoda interfejsu API REST dla docelowego punktu końcowego. | Ciąg. <br/><br/>Obsługiwane typy: "GET", "POST", "PUT" | Yes
-adres url | Docelowy punkt końcowy i ścieżki | Ciąg (lub wyrażenie o wartości resultType ciągu). Działanie będzie limitu czasu na 1 minutę z powodu błędu, jeśli otrzymasz odpowiedź z punktu końcowego. | Yes
+method | Metoda interfejsu API REST dla docelowego punktu końcowego. | Ciąg. <br/><br/>Obsługiwane typy: "GET", "POST", "PUT" | Yes
+url | Docelowy punkt końcowy i ścieżki | Ciąg (lub wyrażenie o wartości resultType ciągu). Działanie będzie limitu czasu na 1 minutę z powodu błędu, jeśli otrzymasz odpowiedź z punktu końcowego. | Yes
 nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ na żądanie: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Ciąg (lub wyrażenie o wartości resultType ciągu) | Tak, nagłówek Content-type jest wymagany. `"headers":{ "Content-Type":"application/json"}`
 treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego. Wymagany w przypadku metody POST/PUT.  | Ciąg (lub wyrażenie o wartości resultType ciągu). <br/><br/>Zobacz Schemat ładunku żądania w [schematu ładunku żądania](#request-payload-schema) sekcji. | Nie
 uwierzytelnianie | Metoda uwierzytelniania używana do wywoływania punktu końcowego. Obsługiwane typy to "Basic lub ClientCertificate." Aby uzyskać więcej informacji, zobacz [uwierzytelniania](#authentication) sekcji. Jeśli uwierzytelnianie nie jest wymagane, należy wykluczyć tę właściwość. | Ciąg (lub wyrażenie o wartości resultType ciągu) | Nie
@@ -79,9 +79,19 @@ linkedServices | Lista usług połączonych przekazany do punktu końcowego. | T
 > [!NOTE]
 > Punkty końcowe REST, które wywołuje aktywności sieci web musi zwracać odpowiedzi typu JSON. Działanie będzie limitu czasu na 1 minutę z powodu błędu, jeśli otrzymasz odpowiedź z punktu końcowego.
 
+W poniższej tabeli przedstawiono wymagania dotyczące zawartość JSON:
+
+| Typ wartości | Treść żądania | Treść odpowiedzi |
+|---|---|---|
+|Obiekt JSON | Obsługiwane | Obsługiwane |
+|Tablica JSON | Obsługiwane <br/>(Obecnie tablice notacji JSON nie działają w wyniku błędu Poprawka jest w toku.) | Nieobsługiwane |
+| Wartość JSON | Obsługiwane | Nieobsługiwane |
+| Typ spoza JSON | Nieobsługiwane | Nieobsługiwane |
+||||
+
 ## <a name="authentication"></a>Authentication
 
-### <a name="none"></a>None
+### <a name="none"></a>Brak
 Jeśli uwierzytelnianie nie jest wymagane, nie ma właściwości "uwierzytelnianie".
 
 ### <a name="basic"></a>Podstawowa

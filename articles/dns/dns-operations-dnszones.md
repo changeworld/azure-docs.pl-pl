@@ -3,7 +3,7 @@ title: Zarządzanie strefami DNS w usłudze Azure DNS - PowerShell | Dokumentacj
 description: Możesz zarządzać stref DNS przy użyciu programu Azure Powershell. W tym artykule opisano sposób aktualizowanie, usuwanie i tworzenie stref DNS w usłudze Azure DNS
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
 ms.service: dns
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: gwallace
-ms.openlocfilehash: b9c263acf754a72cde5b2716703b8e771a349457
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: kumud
+ms.openlocfilehash: e7b0bc32d3fa8fbcf73298b6988655fca7cfa793
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Jak zarządzać stref DNS przy użyciu programu PowerShell
 
@@ -52,7 +52,7 @@ Poniższy przykład przedstawia sposób tworzenia strefy DNS przy użyciu dwóch
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Usługa Azure DNS teraz obsługuje również prywatnej stref DNS (obecnie w publicznej wersji zapoznawczej).  Aby uzyskać więcej informacji na temat prywatnych stref DNS, zobacz [Using Azure DNS for private domains (Używanie usługi Azure DNS dla domen prywatnych)](private-dns-overview.md). Na przykład sposobu tworzenia prywatnej strefy DNS Zobacz [wprowadzenie do usługi Azure DNS strefy prywatnej przy użyciu programu PowerShell](./private-dns-getstarted-powershell.md).
+Usługa Azure DNS teraz obsługuje również prywatne strefy DNS (obecnie w wersji zapoznawczej).  Aby uzyskać więcej informacji na temat prywatnych stref DNS, zobacz [Using Azure DNS for private domains (Używanie usługi Azure DNS dla domen prywatnych)](private-dns-overview.md). Aby uzyskać przykład sposobu tworzenia prywatnej strefy DNS, zobacz [Rozpoczynanie pracy ze strefami prywatnymi usługi Azure DNS przy użyciu programu PowerShell](./private-dns-getstarted-powershell.md).
 
 ## <a name="get-a-dns-zone"></a>Pobierz strefę DNS
 
@@ -71,23 +71,23 @@ NumberOfRecordSets    : 2
 MaxNumberOfRecordSets : 5000
 ```
 
-## <a name="list-dns-zones"></a>Lista stref DNS
+## <a name="list-dns-zones"></a>Wyświetlanie listy stref DNS
 
-Pomijając nazwę strefy z `Get-AzureRmDnsZone`, można wyliczyć wszystkich stref w grupie zasobów. Ta operacja zwraca tablicę obiektów stref.
+Pomijając nazwę strefy w elemencie `Get-AzureRmDnsZone`, można wyliczyć wszystkie strefy w grupie zasobów. Ta operacja zwraca tablicę obiektów stref.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-Pomijając zarówno nazwę strefy, jak i nazwę grupy zasobów z `Get-AzureRmDnsZone`, można wyliczyć wszystkich stref w subskrypcji platformy Azure.
+Pomijając zarówno nazwę strefy, jak i nazwę grupy zasobów w elemencie `Get-AzureRmDnsZone`, można wyliczyć wszystkie strefy w subskrypcji platformy Azure.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone
 ```
 
-## <a name="update-a-dns-zone"></a>Zaktualizuj strefę DNS
+## <a name="update-a-dns-zone"></a>Aktualizowanie strefy DNS
 
-Można wprowadzać zmiany do zasobu strefy DNS przy użyciu `Set-AzureRmDnsZone`. To polecenie cmdlet nie zaktualizować zestawów rekordów DNS w strefie (zobacz [jak rekordy DNS zarządzanie](dns-operations-recordsets.md)). Jest używane wyłącznie do właściwości zasobu strefy samej aktualizacji. Właściwości strefy zapisu są obecnie ograniczone do [usługi Azure Resource Manager "tagów" dla zasobu strefy](dns-zones-records.md#tags).
+Zmiany w zasobie strefy DNS można wprowadzić przy użyciu polecenia `Set-AzureRmDnsZone`. To polecenie cmdlet nie powoduje aktualizacji żadnego z zestawów rekordów DNS w strefie (zobacz [How to Manage DNS records (Jak zarządzać rekordami DNS)](dns-operations-recordsets.md)). Służy ono wyłącznie do aktualizacji właściwości samego zasobu strefy. Właściwości strefy zapisu są obecnie ograniczone do [usługi Azure Resource Manager "tagów" dla zasobu strefy](dns-zones-records.md#tags).
 
 Użyj jednej z dwóch sposobów do aktualizacji strefy DNS:
 
@@ -99,7 +99,7 @@ Ta metoda zastępuje istniejące znaczniki strefy podane wartości.
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Określ strefę za pomocą obiektu $zone
+### <a name="specify-the-zone-using-a-zone-object"></a>Określenie strefy przy użyciu obiektu $zone
 
 Takie podejście pobiera istniejący obiekt strefy, modyfikuje tagi, a następnie zatwierdza zmiany. W ten sposób istniejące znaczniki będzie możliwe.
 
@@ -124,29 +124,29 @@ Korzystając z `Set-AzureRmDnsZone` z obiektem $zone [sprawdza Etag](dns-zones-r
 Można usunąć strefy DNS przy użyciu `Remove-AzureRmDnsZone` polecenia cmdlet.
 
 > [!NOTE]
-> Usunięcie strefy DNS powoduje usunięcie wszystkich rekordów DNS w strefie. Tej operacji nie można cofnąć. Strefa DNS jest używana, usług za pomocą strefie zakończy się niepowodzeniem po usunięciu strefy.
+> Usunięcie strefy DNS powoduje również usunięcie wszystkich rekordów DNS w strefie. Tej operacji nie można cofnąć. Jeśli strefa DNS jest używana, po jej usunięciu usługi korzystające z tej strefy będą kończyć się niepowodzeniem.
 >
->Aby chronić przed usunięciem strefy przypadkowe, zobacz [jak chronić strefy DNS i rekordy](dns-protect-zones-recordsets.md).
+>Aby zapobiec przypadkowemu usunięciu strefy, zobacz [jak chronić strefy i rekordy DNS](dns-protect-zones-recordsets.md).
 
 
-Użyj jednej z dwóch sposobów można usunąć strefy DNS:
+Strefę DNS można usunąć przy użyciu jednego z dwóch poniższych sposobów:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Określ strefę przy użyciu nazwy strefy i nazwy grupy zasobów
+### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Określenie strefy przy użyciu nazwy strefy i nazwy grupy zasobów
 
 ```powershell
 Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Określ strefę za pomocą obiektu $zone
+### <a name="specify-the-zone-using-a-zone-object"></a>Określenie strefy przy użyciu obiektu $zone
 
-Można określić strefy, które mają zostać usunięte przy użyciu `$zone` obiektu zwróconego przez `Get-AzureRmDnsZone`.
+Strefę do usunięcia można wskazać przy użyciu obiektu `$zone` zwróconego przez element `Get-AzureRmDnsZone`.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 Remove-AzureRmDnsZone -Zone $zone
 ```
 
-Obiekt strefy może również być przekazywane w potoku zamiast przekazywana jako parametr:
+Obiekt strefy można również przekazać w potoku zamiast przekazywania jako parametr:
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
@@ -155,17 +155,17 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 Jak `Set-AzureRmDnsZone`, określając przy użyciu strefy `$zone` obiektu umożliwia Etag kontroli w celu zapewnienia, równoległe zmiany nie zostaną usunięte. Użyj `-Overwrite` przełącznik, aby pominąć kontrole.
 
-## <a name="confirmation-prompts"></a>Monituje o potwierdzenie
+## <a name="confirmation-prompts"></a>Monity o potwierdzenie
 
-`New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, I `Remove-AzureRmDnsZone` o potwierdzenie obsługuje wszystkie polecenia cmdlet.
+Polecenia cmdlet `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` i `Remove-AzureRmDnsZone` obsługują monity o potwierdzenie.
 
-Zarówno `New-AzureRmDnsZone` i `Set-AzureRmDnsZone` monituje o potwierdzenie, jeśli `$ConfirmPreference` PowerShell preferencji Zmienna ma wartość `Medium` lub niższej. Z powodu potencjalnie duże znaczenie usunięcia strefę DNS `Remove-AzureRmDnsZone` polecenie cmdlet monituje o potwierdzenie, jeśli `$ConfirmPreference` PowerShell zmienna ma żadnej wartości innych niż `None`.
+Polecenia `New-AzureRmDnsZone` i `Set-AzureRmDnsZone` monitują o potwierdzenie, jeśli zmienna preferencji `$ConfirmPreference` programu PowerShell ma wartość `Medium` lub mniejszą. Z powodu potencjalnie dużego wpływu usunięcia strefy DNS polecenie cmdlet `Remove-AzureRmDnsZone` monituje o potwierdzenie, jeśli zmienna `$ConfirmPreference` programu PowerShell ma wartość inną niż `None`.
 
-Ponieważ domyślna wartość `$ConfirmPreference` jest `High`, tylko `Remove-AzureRmDnsZone` monituje o potwierdzenie domyślnie.
+Ponieważ domyślną wartością elementu `$ConfirmPreference` jest `High`, tylko polecenie `Remove-AzureRmDnsZone` domyślnie monituje o potwierdzenie.
 
-Można zastąpić bieżącą `$ConfirmPreference` ustawienie przy użyciu `-Confirm` parametru. Jeśli określisz `-Confirm` lub `-Confirm:$True` , polecenie cmdlet monituje o potwierdzenie przed go uruchamia. Jeśli określisz `-Confirm:$False` , polecenie cmdlet monituje o potwierdzenie.
+Bieżące ustawienie `$ConfirmPreference` można zastąpić przy użyciu parametru `-Confirm`. W przypadku wybrania elementów `-Confirm` lub `-Confirm:$True` polecenie cmdlet monituje o potwierdzenie przed uruchomieniem. W przypadku wybrania elementu `-Confirm:$False` polecenie cmdlet nie monituje o potwierdzenie.
 
-Aby uzyskać więcej informacji na temat `-Confirm` i `$ConfirmPreference`, zobacz [o zmiennych preferencji](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
+Aby uzyskać więcej informacji na temat elementów `-Confirm` i `$ConfirmPreference`, zobacz [About Preference Variables (Informacje o zmiennych preferencji)](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

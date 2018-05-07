@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: d1f9d1a9163eee0f3a6c3b418e5e8d4fec0581de
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: c5a9a56d444da232717b023cb7057b96c291c265
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -393,27 +393,27 @@ var authMethod = new DeviceAuthenticationWithX509Certificate("<device id>", x509
 var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 ```
 
-## <a name="custom-device-authentication"></a>Uwierzytelnianie urządzeń niestandardowych
+## <a name="custom-device-and-module-authentication"></a>Niestandardowe uwierzytelnianie urządzenia i modułu
 
-Można użyć Centrum IoT [rejestru tożsamości] [ lnk-identity-registry] skonfigurować poświadczenia zabezpieczeń na urządzenie i uzyskać dostęp za pomocą formantu [tokenów][lnk-sas-tokens]. Jeśli rozwiązania IoT już schemat rejestru i/lub uwierzytelnianie tożsamości niestandardowej, należy rozważyć utworzenie *token usługi* tej infrastruktury jest integrowana z Centrum IoT. W ten sposób można użyć innych funkcji IoT w rozwiązaniu.
+Można użyć Centrum IoT [rejestru tożsamości] [ lnk-identity-registry] skonfigurować poświadczenia na urządzeniu/modułowe zabezpieczeń i uzyskiwać dostęp za pomocą formantu [tokenów] [ lnk-sas-tokens]. Jeśli rozwiązania IoT już schemat rejestru i/lub uwierzytelnianie tożsamości niestandardowej, należy rozważyć utworzenie *token usługi* tej infrastruktury jest integrowana z Centrum IoT. W ten sposób można użyć innych funkcji IoT w rozwiązaniu.
 
-Token usługi to usługa w chmurze niestandardowych. Używa Centrum IoT *udostępnionych zasad dostępu* z **DeviceConnect** uprawnienia do tworzenia *zakres urządzeń* tokenów. Tokeny te włączyć w urządzeniu nawiązać połączenia z Centrum IoT.
+Token usługi to usługa w chmurze niestandardowych. Używa Centrum IoT *udostępnionych zasad dostępu* z **DeviceConnect** lub **ModuleConnect** uprawnienia do tworzenia *zakres urządzeń* lub *zakres modułu* tokenów. Tokeny te włączyć urządzenia i moduł nawiązać połączenia z Centrum IoT.
 
 ![Kroki wzorca usługi tokenu][img-tokenservice]
 
 Oto główne kroki wzorzec usługi tokenu:
 
-1. Tworzenie zasad dostępu do udostępnionego Centrum IoT z **DeviceConnect** uprawnienia Centrum IoT. Można utworzyć te zasady w [portalu Azure] [ lnk-management-portal] lub programowo. Usługa tokenu używa tej zasady do podpisywania tokenów, który tworzy.
-1. Gdy urządzenie musi uzyskać dostępu do Centrum IoT, żądań podpisany token z usługą tokenu. Urządzenia mogą uwierzytelniać za pomocą schematem rejestru/uwierzytelniania tożsamości niestandardowej ustalenie tożsamości tego urządzenia, token używany przez usługę do utworzenia tokenu.
-1. Usługa tokenu zwraca token. Token jest tworzona przy użyciu `/devices/{deviceId}` jako `resourceURI`, z `deviceId` jako urządzenie jest uwierzytelniane. Token usługi używane są zasady dostępu współdzielonego do utworzenia tokenu.
-1. Urządzenie używa tokenu bezpośrednio z Centrum IoT.
+1. Tworzenie zasad dostępu do udostępnionego Centrum IoT z **DeviceConnect** lub **ModuleConnect** uprawnienia Centrum IoT. Można utworzyć te zasady w [portalu Azure] [ lnk-management-portal] lub programowo. Usługa tokenu używa tej zasady do podpisywania tokenów, który tworzy.
+1. Gdy urządzenie/modułu ma dostęp do Centrum IoT, żądań podpisany token z usługą tokenu. Urządzenia mogą uwierzytelniać za pomocą schematem rejestru/uwierzytelniania tożsamość niestandardowa, można określić tożsamości urządzenia/modułu, token używany przez usługę do utworzenia tokenu.
+1. Usługa tokenu zwraca token. Token jest tworzona przy użyciu `/devices/{deviceId}` lub `/devices/{deviceId}/module/{moduleId}` jako `resourceURI`, z `deviceId` jako urządzenie uwierzytelnianego lub `moduleId` jako moduł jest uwierzytelniane. Token usługi używane są zasady dostępu współdzielonego do utworzenia tokenu.
+1. Urządzenie/modułu używa tokenu bezpośrednio z Centrum IoT.
 
 > [!NOTE]
 > Można użyć klasy .NET [SharedAccessSignatureBuilder] [ lnk-dotnet-sas] lub Klasa Java [IotHubServiceSasToken] [ lnk-java-sas] do utworzenia tokenu w sieci Usługa tokenu.
 
-Usługa tokenu można ustawić wygaśnięcia tokenu zgodnie z potrzebami. Po wygaśnięciu tokenu Centrum IoT serwery połączenie z urządzeniem. Następnie urządzenia, należy zażądać nowego tokenu z usługi tokenu. Czas wygaśnięcia krótkich spowoduje zwiększenie obciążenia na urządzeniu i usługi tokenu.
+Usługa tokenu można ustawić wygaśnięcia tokenu zgodnie z potrzebami. Po wygaśnięciu tokenu Centrum IoT serwery połączenia urządzenia/modułu. Następnie urządzenia/modułu należy zażądać nowego tokenu z usługi tokenu. Czas wygaśnięcia krótkich spowoduje zwiększenie obciążenia na urządzeniu/modułu i usługi tokenu.
 
-Dla urządzenia w celu nawiązania połączenia z koncentratorem, należy nadal go dodać w rejestrze tożsamości Centrum IoT — nawet jeśli urządzenie używa tokenu i nie klucza urządzenia do łączenia. W związku z tym można nadal używać kontroli dostępu na urządzeniu przez włączenie lub wyłączenie tożsamości urządzenia w [rejestru tożsamości][lnk-identity-registry]. Takie podejście zmniejsza ryzyko użycia tokeny wraz z czasem wygaśnięcia długi.
+Dla urządzenia/modułu do nawiązania połączenia z koncentratorem, należy nadal go dodać w rejestrze tożsamości Centrum IoT — mimo że it jest używany do nawiązywania połączenia token, a nie kluczem. W związku z tym można nadal używać kontroli dostępu na urządzenie/na — moduł przez włączenie lub wyłączenie tożsamości urządzenia/modułu w [rejestru tożsamości][lnk-identity-registry]. Takie podejście zmniejsza ryzyko użycia tokeny wraz z czasem wygaśnięcia długi.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Porównanie z bramą niestandardowych
 
@@ -431,7 +431,7 @@ W poniższej tabeli wymieniono uprawnienia, których można użyć do kontrolowa
 | --- | --- |
 | **RegistryRead** |Przyznaje dostęp do odczytu w rejestrze tożsamości. Aby uzyskać więcej informacji, zobacz [rejestru tożsamości][lnk-identity-registry]. <br/>To uprawnienie jest używany przez usługi w chmurze zaplecza. |
 | **RegistryReadWrite** |Przyznaje uprawnienia odczytu i zapisu w rejestrze tożsamości. Aby uzyskać więcej informacji, zobacz [rejestru tożsamości][lnk-identity-registry]. <br/>To uprawnienie jest używany przez usługi w chmurze zaplecza. |
-| **ServiceConnect** |Udziela dostępu do komunikacji i monitorowania punktów końcowych połączonej usługi w chmurze. <br/>Udziela uprawnień do odbierania komunikatów urządzenia do chmury, wysyłać chmury do urządzenia i pobrać odpowiedni potwierdzeń dostarczenia. <br/>Przyznaje uprawnienia do pobierania potwierdzeń dostarczenia pliku operacji przekazywania. <br/>Udziela uprawnień do dostępu urządzenia twins zaktualizować znaczniki i odpowiednie właściwości pobierania właściwości zgłoszone i uruchamianie zapytań. <br/>To uprawnienie jest używany przez usługi w chmurze zaplecza. |
+| **ServiceConnect** |Udziela dostępu do komunikacji i monitorowania punktów końcowych połączonej usługi w chmurze. <br/>Udziela uprawnień do odbierania komunikatów urządzenia do chmury, wysyłać chmury do urządzenia i pobrać odpowiedni potwierdzeń dostarczenia. <br/>Przyznaje uprawnienia do pobierania potwierdzeń dostarczenia pliku operacji przekazywania. <br/>Udziela uprawnień do dostępu twins zaktualizować znaczniki i odpowiednie właściwości pobierania właściwości zgłoszone i uruchamianie zapytań. <br/>To uprawnienie jest używany przez usługi w chmurze zaplecza. |
 | **DeviceConnect** |Zapewnia dostęp do urządzeń połączonych z punktów końcowych. <br/>Udziela uprawnień do urządzenia do chmury wysyłać i odbierać wiadomości chmury do urządzenia. <br/>Przyznaje uprawnienia do wykonywania przekazywania pliku z urządzenia. <br/>Udziela uprawnień, aby otrzymywać powiadomienia o właściwości dwie żądanego urządzenia i zaktualizować dwie urządzenia zgłoszone właściwości. <br/>Przyznaje uprawnienia do wykonywania pliku operacji przekazywania. <br/>To uprawnienie jest używany przez urządzenia. |
 
 ## <a name="additional-reference-material"></a>Odwołanie dodatkowe materiały
@@ -482,7 +482,7 @@ Jeśli chcesz wypróbować niektóre pojęcia opisane w tym artykule, zobacz nas
 [lnk-java-sas]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token
 [lnk-tls-psk]: https://tools.ietf.org/html/rfc4279
 [lnk-protocols]: iot-hub-protocol-gateway.md
-[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: iot-hub-devguide-security.md#supported-x509-certificates
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md

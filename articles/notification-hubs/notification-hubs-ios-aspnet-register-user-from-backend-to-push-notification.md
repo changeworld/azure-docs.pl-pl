@@ -1,11 +1,11 @@
 ---
-title: "Zarejestruj bieżącego użytkownika dla powiadomień wypychanych przy użyciu interfejsu API sieci Web | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć żądanie rejestracji powiadomień wypychanych w aplikacji systemu iOS za pomocą usługi Azure Notification Hubs, gdy rejestracja odbywa się za pośrednictwem interfejsu API sieci Web platformy ASP.NET."
+title: Zarejestruj bieżącego użytkownika dla powiadomień wypychanych przy użyciu interfejsu API sieci Web | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć żądanie rejestracji powiadomień wypychanych w aplikacji systemu iOS za pomocą usługi Azure Notification Hubs, gdy rejestracja odbywa się za pośrednictwem interfejsu API sieci Web platformy ASP.NET.
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 46eb0dab60856d774c8ad2bf7ab55e1ffc6ddb66
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Zarejestruj bieżącego użytkownika dla powiadomień wypychanych przy użyciu platformy ASP.NET
 > [!div class="op_single_selector"]
@@ -98,7 +98,7 @@ W tym temacie przedstawiono sposób żądania rejestracji powiadomień wypychany
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    Pierwszy wiersz inicjuje **DeviceInfo** singleton. Drugi uruchamia wiersza rejestracji powiadomień wypychanych, który jest już obecny jest zostały już wykonane [Rozpoczynanie pracy z usługą Notification Hubs] samouczka.
+    Pierwszy wiersz inicjuje **DeviceInfo** singleton. Drugi wiersz rozpoczyna się rejestracja powiadomień wypychanych, który jest już wyświetlany, jeśli zostały już wykonane [Rozpoczynanie pracy z usługą Notification Hubs] samouczka.
 7. W PushToUserAppDelegate.m, zaimplementuj metodę **didRegisterForRemoteNotificationsWithDeviceToken** w Twojej AppDelegate i Dodaj następujący kod:
    
         self.deviceInfo.deviceToken = deviceToken;

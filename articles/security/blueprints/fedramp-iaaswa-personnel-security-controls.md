@@ -1,6 +1,6 @@
 ---
-title: "Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP - zabezpieczenia dotyczące personelu"
-description: "Automatyzacja aplikacji sieci Web FedRAMP - zabezpieczenia dotyczące personelu"
+title: Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP - zabezpieczenia dotyczące personelu
+description: Automatyzacja aplikacji sieci Web FedRAMP - zabezpieczenia dotyczące personelu
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 2b9095d0420987f9cad758e3c883a9e2b5cd60c4
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="personnel-security-ps"></a>Zabezpieczenia dotyczące personelu (PS)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] personelu zasady zabezpieczeń, którego dotyczy cel, zakres, ról, obowiązki zobowiązań zarządzania, koordynacji wśród jednostki organizacyjnej i zgodności; i procedur w celu ułatwienia wykonania personelu zasady zabezpieczeń i kontroli bezpieczeństwa personel; przegląda i aktualizuje bieżące zasady zabezpieczeń personelu [przypisania: zdefiniowane przez organizację częstotliwość]; i procedury bezpieczeństwa [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 2.a** organizacji przypisuje oznaczenie ryzyka wszystkie pozycje organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -53,13 +53,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-2b"></a>NIST 800-53 Control PS-2.b
+ ## <a name="nist-800-53-control-ps-2b"></a>PS kontroli NIST 800 53-2.b
 
 #### <a name="position-risk-designation"></a>Oznaczenie ryzyka pozycji
 
 **PS 2.b** organizacji ustanawia kryteria kontroli dla użytkowników indywidualnych wypełnianie tych pozycji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -67,13 +67,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-2c"></a>NIST 800-53 Control PS-2.c
+ ## <a name="nist-800-53-control-ps-2c"></a>PS kontroli NIST 800 53-2.c
 
 #### <a name="position-risk-designation"></a>Oznaczenie ryzyka pozycji
 
 **PS 2.c** organizacji przegląda i aktualizuje oznaczeń ryzyka pozycji [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 3.a** organizacji ekrany osób przed Autoryzowanie dostępu do informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 3.b** organizacji rescreens osób zgodnie z [przypisania: warunki zdefiniowane w organizacji wymagających rescreening i, jeżeli tak zaznaczono rescreening, częstotliwość takich rescreening].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-3 (3), tj.** organizacji zapewnia przypisanie osobom dostęp do systemu informacji przetwarzania, przechowywania i przekazywania informacji wymagające specjalnej ochrony mają zezwolenia na dostęp, które przedstawiono w oficjalne rządowych obowiązków.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **B PS-3 (3)** organizacji gwarantuje, że osobom dostęp do informacji o systemie przetwarzania, przechowywania lub przesyłania informacji wymagające specjalnej ochrony spełniają [przypisania: zdefiniowane przez organizację osłonami dodatkowego personelu kryteria].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.a** organizacji, po zakończeniu pracy poszczególnych wyłącza dostęp do systemu informacji w ramach [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -151,13 +151,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-4b"></a>NIST 800-53 Control PS-4.b
+ ## <a name="nist-800-53-control-ps-4b"></a>PS kontroli NIST 800 53-4.b
 
 #### <a name="personnel-termination"></a>Personel zakończenia
 
 **PS 4.b** organizacji, po zakończeniu pracy poszczególnych kończy/wycofanie wszelkich wystawców uwierzytelnienia lub poświadczeń skojarzonych z poszczególnymi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.c** organizacji, po zakończeniu pracy poszczególnych prowadzi zakończenia rozmowy, które zawierają omówienie [przypisania: tematy zabezpieczeń zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.d** organizacji, po zakończeniu pracy poszczególnych pobiera wszystkie właściwości związanych z systemem związanych z zabezpieczeniami informacji organizacyjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-4.e** Po zakończeniu pracy poszczególnych organizacji zachowuje dostępu do informacji organizacyjnych i systemów informacyjnych wcześniej kontrolowane przez zakończone poszczególnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -207,13 +207,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-4f"></a>NIST 800-53 Control PS-4.f
+ ## <a name="nist-800-53-control-ps-4f"></a>PS kontroli NIST 800 53-4.f
 
 #### <a name="personnel-termination"></a>Personel zakończenia
 
 **PS 4.f** powiadamia organizacji, po zakończeniu pracy poszczególnych [przypisania: techniczną zdefiniowany przez organizację lub ról] w [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-4 (2)** organizacja stosuje automatycznych mechanizmy powiadamiania o [przypisania: techniczną zdefiniowany przez organizację lub ról] po zakończeniu osoby.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5.a** przegląda i potwierdza trwającą operacyjne potrzebę obecne zezwolenia logiczny i fizyczny dostęp do informacji o systemach/urządzeń fizycznych są przypisane lub przenoszone do innych pozycji w organizacji organizacja.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5.b** inicjuje organizacji [przypisania: transfer lub ponownego przypisania akcje zdefiniowane przez organizację] w [przypisania: organizacji zdefiniowano okresu następującego Akcja posiadanie transferu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5.c** organizacji modyfikuje autoryzacji dostępu, zgodnie z potrzebami odpowiadającą wszelkie zmiany w potrzeby operacyjnej z powodu ponownego przypisania lub przeniesienia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -277,13 +277,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-5d"></a>NIST 800-53 Control PS-5.d
+ ## <a name="nist-800-53-control-ps-5d"></a>PS kontroli NIST 800 53-5.d
 
 #### <a name="personnel-transfer"></a>Personel transferu
 
 **PS 5.d** powiadamia organizacji [przypisania: techniczną zdefiniowany przez organizację lub ról] w [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 6.a** rozwoju organizacji i umów systemów informatycznych w organizacji dostęp do dokumentów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 6.b** organizacji przegląda i aktualizuje umowy dostępu [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 6.c** organizacji temu podpisania Umowy odpowiedniego dostępu przed przyznaniem dostępu; fizycznych wymagających dostępu do informacji organizacyjnych i systemów informacyjnych i ponownego podpisania Umowy dostępu do uzyskania dostępu do systemy informacje organizacyjne, po aktualizacji umów dostępu lub [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 7.a** organizacji ustanawia personelu wymagania dotyczące zabezpieczeń w tym role zabezpieczeń i obowiązków dla dostawców innych firm.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -347,13 +347,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-7b"></a>NIST 800-53 Control PS-7.b
+ ## <a name="nist-800-53-control-ps-7b"></a>Od PS kontroli NIST 800 53-7.b
 
 #### <a name="third-party-personnel-security"></a>Zabezpieczenia dotyczące personelu innych firm
 
 **Od 7.b PS** organizacja wymaga dostawców innych firm w celu zachowania zgodności z zasadami zabezpieczeń personelu i procedur ustanowionych przez organizację.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -361,13 +361,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-7c"></a>NIST 800-53 Control PS-7.c
+ ## <a name="nist-800-53-control-ps-7c"></a>PS kontroli NIST 800 53-7.c
 
 #### <a name="third-party-personnel-security"></a>Zabezpieczenia dotyczące personelu innych firm
 
 **PS 7.c** organizacji dokumentów personelu wymagania dotyczące zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -375,13 +375,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-7d"></a>NIST 800-53 Control PS-7.d
+ ## <a name="nist-800-53-control-ps-7d"></a>PS kontroli NIST 800 53-7.d
 
 #### <a name="third-party-personnel-security"></a>Zabezpieczenia dotyczące personelu innych firm
 
 **PS 7.d** organizacja wymaga dostawców innych firm, aby powiadomić [przypisania: techniczną zdefiniowany przez organizację lub ról] transferów personelu lub zakończenia personelu innych firm, którzy posiadają poświadczeń w organizacji i/lub identyfikatory lub mają uprawnienia systemu informacji w ramach [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-7.e** Organizacja monitoruje zgodność dostawcy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 8.a** organizacja stosuje procesu posiadanie sankcje dla użytkowników indywidualnych, które nie są zgodne z zasadami zabezpieczeń ustalonych informacji i procedur.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -417,13 +417,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ps-8b"></a>NIST 800-53 Control PS-8.b
+ ## <a name="nist-800-53-control-ps-8b"></a>PS kontroli NIST 800 53-8.b
 
 #### <a name="personnel-sanctions"></a>Personel sankcje
 
 **PS 8.b** powiadamia organizacji [przypisania: techniczną zdefiniowany przez organizację lub ról] w [przypisania: organizacji zdefiniowane przez okres] podczas sankcji posiadanie pracownika proces jest inicjowany, identyfikowanie poszczególnych zaakceptowane oficjalnie i Przyczyna oficjalnie akceptować.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

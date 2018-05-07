@@ -1,33 +1,31 @@
 ---
-title: "Przy użyciu baz danych dostarczonych przez RP karty SQL Azure stosu | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć i zarządzać udostępniane przy użyciu dostawcy zasobów karty SQL bazy danych SQL"
+title: Przy użyciu baz danych dostarczonych przez RP karty SQL Azure stosu | Dokumentacja firmy Microsoft
+description: Jak utworzyć i zarządzać udostępniane przy użyciu dostawcy zasobów karty SQL bazy danych SQL
 services: azure-stack
-documentationCenter: 
-author: mattbriggs
+documentationCenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 39f6cc30191f07a7c891446a9132222a6d264dc4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 05/01/2018
+ms.author: jeffgilb
+ms.reviewer: jeffgo
+ms.openlocfilehash: 2808847642639069e60102b195ac97957c8593f0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-sql-databases"></a>Tworzenie bazy danych SQL
-
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
-
 Samoobsługowe baz danych są realizowane za pośrednictwem portalu użytkowników. Użytkownik musi subskrypcji, która ma oferty zawiera usługę bazy danych.
 
 1. Zaloguj się do [stosu Azure](azure-stack-poc.md) portalu użytkowników (Administratorzy usług mogą również korzystać z portalu administratora).
 
-2. Kliknij przycisk **+ nowy** &gt; **dane i Magazyn "** &gt; **bazy danych serwera SQL (wersja zapoznawcza)** &gt; **Dodaj**.
+2. Kliknij przycisk **+ nowy** &gt; **dane i Magazyn "** &gt; **bazy danych programu SQL Server** &gt; **dodać**.
 
 3. Wypełnij formularz ze szczegółami bazy danych, w tym **Nazwa bazy danych**, **maksymalny rozmiar**i zmień innych parametrów w razie potrzeby. Zostanie wyświetlona prośba o pobranie wersji bazy danych. Po dodaniu serwerami hostingu, są przydzielone jednostki SKU. Bazy danych są tworzone w tej puli serwerów, które tworzą jednostki SKU hosta.
 
@@ -47,17 +45,15 @@ Samoobsługowe baz danych są realizowane za pośrednictwem portalu użytkownik�
 
     ![Parametry połączenia](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
-## <a name="delete-sql-databases"></a>Usuwanie bazy danych SQL
-W portalu
-
->[!NOTE]
->
->Po usunięciu bazy danych funkcji SQL AlwaysOn z planu odzyskiwania go pomyślnie jest usuwany z podstawowym i grupy dostępności AlwaysOn, ale przez grupy dostępności SQL projektu umieszczenie bazy danych w stanie w każdej replice odzyskiwania i nie porzucenia bazy danych, chyba że wyzwolone. Jeśli bazy danych nie został usunięty, replikach pomocniczych przechodzi do stanu nie można zsynchronizować. Ponowne dodanie nowej bazy danych do grupy dostępności o tej samej za pośrednictwem RP nadal działa. Zobacz ![usuwanie pomocniczej bazy danych](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/remove-a-secondary-database-from-an-availability-group-sql-server)
-
-## <a name="manage-database-credentials"></a>Zarządzanie poświadczeniami bazy danych
-Możesz zaktualizować poświadczenia bazy danych (ustawienia logowania).
+## <a name="delete-sql-alwayson-databases"></a>Usuń bazy danych funkcji SQL AlwaysOn
+Po usunięciu bazy danych funkcji SQL AlwaysOn od dostawcy zasobów go pomyślnie jest usuwany z podstawowym i grupy dostępności funkcji AlwaysOn, ale przez projekt, SQL AG umieszcza bazy danych w stanie w każdej replice odzyskiwania i nie porzucenia bazy danych, chyba że wyzwolone. Jeśli bazy danych nie został usunięty, replikach pomocniczych przechodzi do stanu nie można zsynchronizować. Ponowne dodanie nowej bazy danych do grupy dostępności o tej samej za pośrednictwem RP nadal działa.
 
 ## <a name="verify-sql-alwayson-databases"></a>Sprawdź baz danych funkcji SQL AlwaysOn
 Zawsze włączone bazy danych powinny być widoczne zsynchronizowane i są dostępne na wszystkich wystąpień i w grupie dostępności. Po przejściu w tryb failover powinni bezproblemowo połączyć bazy danych. SQL Server Management Studio służy do sprawdzenia, czy trwa synchronizacja bazy danych:
 
 ![Sprawdź (AlwaysOn)](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
+
+
+## <a name="next-steps"></a>Kolejne kroki
+
+[Obsługa dostawcy zasobów programu SQL Server](azure-stack-sql-resource-provider-maintain.md)

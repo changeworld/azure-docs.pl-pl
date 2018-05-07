@@ -9,17 +9,20 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 65f2fb4526f1048ae88193f85a552a2202afa1d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eecbc10b5e030f67382d72a7b702e441a2e5492c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Debugowanie modułu C# z krawędzią IoT Azure przy użyciu programu Visual Studio Code
 Ten artykuł zawiera szczegółowe instrukcje dotyczące używania [Visual Studio Code](https://code.visualstudio.com/) jako Narzędzia główne programowanie debugowania moduły Azure IoT krawędzi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenie brzegowe IoT może być inne urządzenie fizyczne lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
+
+> [!NOTE]
+> Umożliwia debugowanie tylko moduł C# w kontenerach linux amd64.
 
 Przed wykonaniem wskazówki zawarte w tym artykule, wykonaj kroki [opracowywania rozwiązań IoT Edge z wieloma modułami w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md). Po wykonaniu tej powinny mieć gotowy następujące elementy:
 - Lokalnego rejestru Docker uruchomiony na komputerze deweloperskim. Zalecane jest korzystanie lokalnego rejestru Docker prototypu i celów testowych. Można zaktualizować klucza rejestru kontenera `module.json` plik w folderze każdego modułu.

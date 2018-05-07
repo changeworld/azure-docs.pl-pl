@@ -1,12 +1,12 @@
 ---
-title: "Migracja maszyn wirtualnych systemu Linux do magazynu Azure Premium z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Migracji istniejących maszyn wirtualnych do usługi Azure Premium Storage za pomocą usługi Site Recovery. Magazyn w warstwie Premium oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych na maszynach wirtualnych platformy Azure."
+title: Migracja maszyn wirtualnych systemu Linux do magazynu Azure Premium z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Migracji istniejących maszyn wirtualnych do usługi Azure Premium Storage za pomocą usługi Site Recovery. Magazyn w warstwie Premium oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych na maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 5d6eb958169b7bf04e206c861250ffd98670652b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ab8ce25e3be85061c3fc0417b30b63e04b764ab
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migracja do magazynu Premium za pomocą usługi Azure Site Recovery
 
@@ -157,7 +157,7 @@ Aby sprawdzić, czy serwer konfiguracji jest pomyślnie skojarzone z zasadami re
 
    Przełączona w tryb failover maszyny Wirtualnej będzie mieć dwa tymczasowego dyski: jeden z podstawowej maszyny Wirtualnej, a druga utworzone podczas inicjowania obsługi maszyny wirtualnej w regionie odzyskiwania. Aby wykluczyć dysku tymczasowym przed replikacji, zainstalować usługi mobilności, przed włączeniem replikacji. Aby dowiedzieć się więcej o tym, jak można wykluczyć dysku tymczasowy, zobacz [wykluczyć z replikacji dyski](../../site-recovery/vmware-walkthrough-overview.md).
 
-2. Włącz replikację w następujący sposób:
+2. Aby włączyć replikację:
    1. Wybierz **Replikowanie aplikacji** > **źródła**. Po włączeniu replikacji po raz pierwszy, wybierz **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn.
    2. W kroku 1 — Konfiguracja **źródła** jako serwera przetwarzania.
    3. W kroku 2 Określ model wdrożenia trybu failover post, konto magazynu premium, aby przeprowadzić migrację do konta magazynu w warstwie standardowa, aby zapisać dzienników i sieci wirtualnej nie.
@@ -202,7 +202,7 @@ Usługa Site Recovery spowoduje utworzenie wystąpienia maszyny Wirtualnej, któ
    * Dla maszyny Wirtualnej utworzonej przy użyciu klasycznego modelu wdrażania: Dodaj maszynę Wirtualną do zestawu w portalu Azure dostępności. Aby uzyskać szczegółowy opis kroków, przejdź do [Dodaj istniejącą maszynę wirtualną do zestawu dostępności](../linux/classic/configure-availability-classic.md).
    * Dla maszyny Wirtualnej utworzonej przy użyciu modelu wdrażania usługi Resource Manager: Zapisz konfigurację maszyny wirtualnej, a następnie usunięcie i ponowne utworzenie maszyn wirtualnych w zestawie dostępności. Aby to zrobić, należy użyć skryptu w [ustawić Azure Resource Manager maszyny Wirtualnej zestawu dostępności](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Przed uruchomieniem tego skryptu sprawdź jego ograniczenia i zaplanowaniu czasu na przestoje.
 
-2. **Usuń stare maszyn wirtualnych i dysków**. Upewnij się, że dyski Premium są zgodne z dysków źródłowych i że nowych maszyn wirtualnych wykonać taką samą funkcję jak źródłowe maszyny wirtualne. Usuń maszynę Wirtualną i Usuń dyski ze źródła kont magazynu w portalu Azure. Jeśli występuje problem, której ten dysk nie jest usunięte, mimo że można usunąć maszyny Wirtualnej, zobacz [Rozwiązywanie problemów podczas usuwania wirtualne dyski twarde](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+2. **Usuń stare maszyn wirtualnych i dysków**. Upewnij się, że dyski Premium są zgodne z dysków źródłowych i że nowych maszyn wirtualnych wykonać taką samą funkcję jak źródłowe maszyny wirtualne. Usuń maszynę Wirtualną i Usuń dyski ze źródła kont magazynu w portalu Azure. Jeśli występuje problem, której ten dysk nie jest usunięte, mimo że można usunąć maszyny Wirtualnej, zobacz [Rozwiązywanie problemów z błędami usunięcia zasobów magazynu](storage-resource-deletion-errors.md).
 
 3. **Wyczyść infrastruktury usługi Azure Site Recovery**. Jeśli usługi Site Recovery nie jest już potrzebne, można wyczyścić swoją infrastrukturę. Usuń elementy replikowane, czy serwer konfiguracji i zasady odzyskiwania, a następnie usuń magazyn Azure Site Recovery.
 

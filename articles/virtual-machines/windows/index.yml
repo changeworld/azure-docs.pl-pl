@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentacja dotycząca maszyn wirtualnych z systemem Windows"
+title: Dokumentacja dotycząca maszyn wirtualnych z systemem Windows
 metadata:
   document_id: 1d98d530-28c7-635f-d41b-8da3ae02970c
-  title: "Dokumentacja maszyny wirtualnej z systemem Windows na platformie Azure — samouczki i dokumentacja interfejsu API"
+  title: Dokumentacja maszyny wirtualnej z systemem Windows na platformie Azure — samouczki i dokumentacja interfejsu API
   meta.description: Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.
   services: virtual-machines\windows
   author: czeumault
@@ -14,13 +14,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 91e400e46befa5664b0224d87948bf83ebbcc309
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 0d92316cc736d7e52be6234a07b04b06c5f3da36
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 05/03/2018
 abstract:
-  description: "Maszyny wirtualne z systemem Windows na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Windows Server. Dowiedz się, jak tworzyć, konfigurować i skalować maszyny wirtualne z systemem Windows oraz zarządzać nimi, korzystając z przewodników Szybki Start, samouczków i przykładów."
+  description: Maszyny wirtualne z systemem Windows na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Windows Server. Dowiedz się, jak tworzyć, konfigurować i skalować maszyny wirtualne z systemem Windows oraz zarządzać nimi, korzystając z przewodników Szybki Start, samouczków i przykładów.
   aside:
     image:
       alt: 
@@ -34,7 +34,7 @@ sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Dowiedz się, jak wdrożyć serwer sieci Web usług IIS na maszynie wirtualnej z systemem Windows Server 2016:"
+    text: 'Dowiedz się, jak wdrożyć serwer sieci Web usług IIS na maszynie wirtualnej z systemem Windows Server 2016:'
   - type: list
     style: icon48
     items:
@@ -51,7 +51,7 @@ sections:
       text: Interfejs wiersza polecenia platformy Azure
       href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json
   - type: paragraph
-    text: "Dowiedz się, jak przeprowadzać ciągłe wdrażanie:"
+    text: 'Dowiedz się, jak przeprowadzać ciągłe wdrażanie:'
   - type: list
     style: icon48
     items:
@@ -62,31 +62,32 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak wdrażać i monitorować maszyny wirtualne z systemem Windows na platformie Azure i zarządzać nimi"
+    text: Dowiedz się, jak wdrażać i monitorować maszyny wirtualne z systemem Windows na platformie Azure i zarządzać nimi.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-manage-vm\">Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi</a>"
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-manage-data-disk\">Tworzenie dysków maszyn wirtualnych i zarządzanie nimi</a>"
+    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">Tworzenie dysków maszyn wirtualnych i zarządzanie nimi</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">Automatyzowanie konfiguracji maszyny wirtualnej</a>
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-custom-images\">Tworzenie niestandardowych obrazów maszyn wirtualnych</a>"
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-availability-sets\">Tworzenie maszyn wirtualnych o wysokiej dostępności</a>"
+    - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">Tworzenie niestandardowych obrazów maszyn wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">Tworzenie maszyn wirtualnych o wysokiej dostępności</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">Tworzenie zestawu skalowania maszyn wirtualnych</a>
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-load-balancer\">Równoważenie obciążenia maszyn wirtualnych</a>"
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-virtual-network\">Zarządzanie maszynami wirtualnymi z sieciami wirtualnymi</a>"
+    - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">Równoważenie obciążenia maszyn wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">Zarządzanie maszynami wirtualnymi z sieciami wirtualnymi</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">Tworzenie kopii zapasowych maszyn wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-govern-resources">Nadzorowanie maszyn wirtualnych</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Monitorowanie maszyn wirtualnych</a>
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-azure-security\">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>"
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-vsts-iis-cicd\">Tworzenie potoku ciągłej integracji z programem Visual Studio</a>"
+    - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Tworzenie potoku ciągłej integracji z programem Visual Studio</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-iis-sql">Instalowanie stosu \.NET SQL\IIS</a>
-    - html: "<a href=\"/azure/virtual-machines/windows/tutorial-secure-web-server\">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>"
-- title: "Bezpłatne szkolenie wideo firmy PluralSight"
+    - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>
+- title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Zarządzanie infrastrukturą"
+    - title: Zarządzanie infrastrukturą
       href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
@@ -96,22 +97,22 @@ sections:
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: "Rozpoczynanie pracy z monitorowaniem rozwiązania IaaS"
+    - title: Rozpoczynanie pracy z monitorowaniem rozwiązania IaaS
       href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: "Przykłady"
+- title: Przykłady
   items:
   - type: paragraph
-    text: "Wdrażanie pierwszej aplikacji na platformie Azure."
+    text: Wdrażanie pierwszej aplikacji na platformie Azure.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=/azure/virtual-machines/windows/toc.json">Interfejs wiersza polecenia platformy Azure</a>
     - html: <a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=/azure/virtual-machines/windows/toc.json">Azure PowerShell</a>
-- title: "Odwołanie"
+- title: Dokumentacja
   items:
   - type: list
     style: cards
@@ -119,7 +120,7 @@ sections:
     items:
     - title: Wiersz polecenia
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/vm">Interfejs wiersza polecenia platformy Azure</a></p>
-    - title: "Języki"
+    - title: Języki
       html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/compute\">Dokumentacja interfejsu API REST usług Compute</a></p>"
+      html: <p><a href="/rest/api/compute">Dokumentacja interfejsu API REST usług Compute</a></p>

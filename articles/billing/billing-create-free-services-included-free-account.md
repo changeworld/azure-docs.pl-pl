@@ -1,22 +1,22 @@
 ---
-title: "Tworzenie bezpłatnych usług z bezpłatne konto platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bezpłatne konto platformy Azure dołączonych do usługi."
-documentationcenter: 
+title: Tworzenie bezpłatnych usług z bezpłatne konto platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bezpłatne konto platformy Azure dołączonych do usługi.
+documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: dfcf4c98a27f6ea31b92f51737e9ca3768da8f5c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 84b73d3f1481c0c1a551da50b9f6292cd835d567
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Tworzenie usługi uwzględnione w bezpłatne konto platformy Azure
 

@@ -3,7 +3,7 @@ title: Biblioteki uwierzytelniania v2.0 w usłudze Azure Active Directory | Doku
 description: Zgodny klient biblioteki i bibliotek oprogramowania pośredniczącego serwera i powiązane biblioteki, źródła i łączy próbek, dla punktu końcowego v2.0 usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: SaeedAkhter-MSFT
 manager: mtillman
 editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/22/2017
-ms.author: dastrock
+ms.date: 04/13/2018
+ms.author: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0d9e2831f9d8676eb3e7fac91c58f3977f2e0f32
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f961f8a6795df156549eece12c2c7e4cc26713ab
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Biblioteki uwierzytelniania v2.0 w usłudze Azure Active Directory
-[Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) obsługuje standardowych protokołów uwierzytelniania OAuth 2.0 i OpenID Connect 1.0. Można użyć różnych bibliotek firmy Microsoft i innych organizacjach z punktem końcowym v2.0.
 
-Podczas kompilowania aplikacji korzystającej z punktem końcowym v2.0, zalecane jest użycie bibliotek, które są zapisywane przez ekspertów domeny protokołu, Obserwujący metodologii Security Development Lifecycle (SDL), są tak samo, jak [co następuje Microsoft][Microsoft-SDL]. Jeśli zdecydujesz się kodu strony Obsługa protokołów, firma Microsoft zaleca wykonaj metodologii SDL i zwracać szczególną uwagę na zagadnienia dotyczące zabezpieczeń w specyfikacji standardów dla każdego protokołu.
+[Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) obsługuje standardowych protokołów uwierzytelniania OAuth 2.0 i OpenID Connect 1.0. Biblioteka uwierzytelniania firmy Microsoft (MSAL) jest przeznaczona do pracy z punktem końcowym v2.0 usługi Azure AD.  Istnieje również możliwość użycia bibliotek open source, które obsługują OAuth 2.0 i OpenID Connect 1.0.
+
+Zalecane jest użycie biblioteki napisane przez ekspertów domeny protokołu, Obserwujący metodologii Security Development Lifecycle (SDL), są tak samo, jak [co następuje Microsoft][Microsoft-SDL]. Jeśli zdecydujesz się kodu strony Obsługa protokołów, wykonaj metodologii, jak SDL firmy Microsoft i płatności zamknąć uwagę zagadnienia dotyczące zabezpieczeń w specyfikacji standardów dla każdego protokołu.
 
 > [!NOTE]
 > Szukasz bibliotek w wersji 1.0 usługi Azure AD (ADAL)? Wyewidencjonowanie [przewodnik bibliotekę ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries).
@@ -32,13 +33,15 @@ Podczas kompilowania aplikacji korzystającej z punktem końcowym v2.0, zalecane
 >
 
 ## <a name="types-of-libraries"></a>Rodzaje bibliotek
+
 Punktu końcowego v2.0 usługi Azure AD współpracuje z dwóch typów biblioteki:
 
 * **Bibliotek klienckich**. Natywny klienci i serwery umożliwia pobieranie tokenów dostępu do wywoływania zasobów, takich jak Microsoft Graph bibliotek klienckich.
 * **Biblioteki oprogramowania pośredniczącego serwera**. Aplikacje sieci Web korzystać bibliotek oprogramowania pośredniczącego serwera dla logowania użytkownika. Interfejsy API sieci Web umożliwia sprawdzania poprawności tokenów, które są wysyłane przez klientów natywnych lub przez inne serwery bibliotek oprogramowania pośredniczącego serwera.
 
 ## <a name="library-support"></a>Obsługa biblioteki
-Ponieważ można wybrać wszystkie biblioteki zgodny ze standardami, korzystając z punktem końcowym v2.0, należy wiedzieć, gdzie przejdź do pomocy technicznej. Problemy i żądania funkcji w kodzie biblioteki skontaktuj się z właścicielem biblioteki. Funkcja żądania w implementacji protokołu po stronie serwera i problemów skontaktuj się z firmy Microsoft.
+
+Ponieważ można wybrać wszystkie biblioteki zgodny ze standardami, korzystając z punktem końcowym v2.0, należy wiedzieć, gdzie przejdź do pomocy technicznej. Problemy i żądania funkcji w kodzie biblioteki skontaktuj się z właścicielem biblioteki. Funkcja żądania w implementacji protokołu po stronie serwera i problemów skontaktuj się z firmy Microsoft. [Plik żądanie funkcji](https://feedback.azure.com/forums/169401-azure-active-directory) dodatkowych funkcji, które chcesz zobaczyć w protokole. [Utwórz żądanie obsługi](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request) Jeśli napotkasz problem gdzie punktu końcowego v2.0 usługi Azure AD nie jest zgodne z OAuth 2.0 lub OpenID Connect 1.0.
 
 Biblioteki są dostępne w dwóch kategorii pomocy technicznej:
 
@@ -47,11 +50,10 @@ Biblioteki są dostępne w dwóch kategorii pomocy technicznej:
 
 Lista bibliotek, które współpracują z punktem końcowym v2.0 zobacz sekcje dalej w tym artykule.
 
-
 ## <a name="microsoft-supported-client-libraries"></a>Biblioteki klienta obsługiwane przez firmę Microsoft
 
 > [!IMPORTANT]
-> Biblioteki Podgląd MSAL są odpowiednie do użycia w środowisku produkcyjnym. Udostępniamy tego samego poziomu wsparcia produkcji dla bibliotek, tak jak skorzystać z bibliotek produkcji bieżącego (ADAL). W wersji zapoznawczej firma Microsoft może zmieniać MSAL API, format wewnętrznej pamięci podręcznej i innych mechanizmów te biblioteki bez powiadomienia, które będzie wymagane do wykonania wraz z poprawki lub ulepszenia funkcji. Może to mieć wpływ na aplikację. Na przykład zmianę formatu pamięci podręcznej może mieć wpływ na użytkowników, np. wymaganie je, aby zalogować się ponownie. Zmiany interfejsu API może wymagać zaktualizuj kod. Podając wersji ogólnodostępnej firma Microsoft będzie wymagać aktualizacji do wersji ogólnodostępnej w ciągu sześciu miesięcy, jako aplikacje napisane przy użyciu podglądu wersji biblioteki mogą przestać działać.
+> Biblioteki Podgląd MSAL są odpowiednie do użycia w środowisku produkcyjnym. Firma Microsoft zapewnia obsługę poziomu tego samego produkcji te biblioteki jako bieżący bibliotek produkcji (ADAL). W wersji zapoznawczej oczekiwać, że zmiany do interfejsu API MSAL, format wewnętrznej pamięci podręcznej i innych mechanizmów te biblioteki bez powiadomienia, które będzie wymagane do wykonania wraz z poprawki lub ulepszenia funkcji. Może to mieć wpływ na aplikację. Na przykład zmianę formatu pamięci podręcznej może wymagać użytkowników, aby zalogować się ponownie. Zmiany interfejsu API może wymagać zaktualizuj kod. Po udostępnieniu wersji dostępności ogólne (GA), wszystkie aplikacje korzystające z wersji zapoznawczej biblioteki należy zaktualizować w ciągu sześciu miesięcy lub ich mogą przestać działać.
 
 | Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Informacje ogólne
 | --- | --- | --- | --- | --- | --- |
@@ -64,8 +66,8 @@ Lista bibliotek, które współpracują z punktem końcowym v2.0 zobacz sekcje d
 
 | Platforma | Biblioteka | Do pobrania | Kod źródłowy | Sample | Informacje ogólne
 | --- | --- | --- | --- | --- | --- |
-| .NET 4.x | OWIN OpenID Connect oprogramowania pośredniczącego |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[Aplikacji MVC](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
-| .NET 4.x | Oprogramowanie pośredniczące elementu nośnego OAuth OWIN do AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |  | |
+| .NET 4.x | OWIN OpenID Connect oprogramowania pośredniczącego |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/) |[Aplikacji MVC](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
+| .NET 4.x | Oprogramowanie pośredniczące elementu nośnego OAuth OWIN do AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/) |  | |
 | .NET 4.x | Program obsługi tokenów JWT dla platformy .NET 4.5 | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 | .NET Core | Oprogramowanie pośredniczące ASP.NET OpenID Connect |[Microsoft.AspNetCore.Authentication.OpenIdConnect (NuGet)][ServerLib-NetCore-Owin-Oidc-Lib] |[Zabezpieczenia programu ASP.NET (GitHub)][ServerLib-NetCore-Owin-Oidc-Repo] |[Aplikacji MVC](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2) |
 | .NET Core | Oprogramowanie pośredniczące elementu nośnego OAuth ASP.NET |[Microsoft.AspNetCore.Authentication.OAuth (NuGet)][ServerLib-NetCore-Owin-Oauth-Lib] |[Zabezpieczenia programu ASP.NET (GitHub)][ServerLib-NetCore-Owin-Oauth-Repo] |  |
@@ -73,13 +75,14 @@ Lista bibliotek, które współpracują z punktem końcowym v2.0 zobacz sekcje d
 | Node.js |Azure AD usługi Passport. |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Aplikacja sieci Web](active-directory-v2-devquickstarts-node-web.md)| |
 
 ## <a name="compatible-client-libraries"></a>Zgodny klient biblioteki
+
 | Platforma | Nazwa biblioteki | Wersja przetestowany | Kod źródłowy | Sample |
 |:---:|:---:|:---:|:---:|:---:|
-| Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/wiki) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[Przykładowej aplikacji natywnej](active-directory-v2-devquickstarts-android.md) |
+| Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[Przykładowej aplikacji natywnej](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[Przykładowej aplikacji natywnej](active-directory-v2-devquickstarts-ios.md) |
 | JavaScript |[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| Java | [Scribejava Sekretarz Java](https://github.com/scribejava/scribejava) | [Wersja 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
-| PHP | [PHP Ligi oauth2 klienta](https://github.com/thephpleague/oauth2-client) | [Wersja 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [Klient protokołu oauth2](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
+| Java | [Scribejava Sekretarz Java](https://github.com/scribejava/scribejava) | [Wersja 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
+| PHP | [PHP Ligi oauth2 klienta](https://github.com/thephpleague/oauth2-client) | [Wersja 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [Klient protokołu oauth2](https://github.com/thephpleague/oauth2-client/) | |
 | Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 
 ## <a name="related-content"></a>Zawartość pokrewna

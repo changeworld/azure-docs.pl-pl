@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 57bc38e6c825f0f62e41d2680e0a39da73d3c4d0
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 96360eabefcbbdf36ef3bd83b0c6de45c1a6f3cc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Zarządzanie usługą Azure Data Lake Analytics przy użyciu programu Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -69,7 +69,7 @@ Save-AzureRmProfile -Path D:\profile.json
 Select-AzureRmProfile -Path D:\profile.json 
 ```
 
-## <a name="managing-accounts"></a>Zarządzanie kontami
+## <a name="manage-accounts"></a>Zarządzanie kontami
 
 ### <a name="create-a-data-lake-analytics-account"></a>Tworzenie konta Data Lake Analytics
 
@@ -91,7 +91,7 @@ Gdy grupa zasobów i konto magazynu usługi Data Lake Store będą dostępne, ut
 New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
-### <a name="get-information-about-an-account"></a>Uzyskiwanie informacji o koncie
+### <a name="get-acount-information"></a>Uzyskiwanie informacji konto
 
 Uzyskiwanie szczegółowych informacji o koncie.
 
@@ -111,7 +111,7 @@ Sprawdź istnienie określonego konta usługi Data Lake Store. Polecenie cmdlet 
 Test-AdlStoreAccount -Name $adls
 ```
 
-### <a name="listing-accounts"></a>Wyświetlanie listy kont
+### <a name="list-accounts"></a>Wyświetlanie listy kont
 
 Lista Data Lake Analytics kont w ramach bieżącej subskrypcji.
 
@@ -125,48 +125,7 @@ Lista Data Lake Analytics kont w ramach określonej grupy zasobów.
 Get-AdlAnalyticsAccount -ResourceGroupName $rg
 ```
 
-## <a name="managing-firewall-rules"></a>Zarządzanie regułami zapory
-
-Lista reguł zapory.
-
-```powershell
-Get-AdlAnalyticsFirewallRule -Account $adla
-```
-
-Dodaj regułę zapory.
-
-```powershell
-$ruleName = "Allow access from on-prem server"
-$startIpAddress = "<start IP address>"
-$endIpAddress = "<end IP address>"
-
-Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
-```
-
-Zmień reguły zapory.
-
-```powershell
-Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
-```
-
-Usuń regułę zapory.
-
-```powershell
-Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
-```
-
-Zezwalaj na adresy IP platformy Azure.
-
-```powershell
-Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
-```
-
-```powershell
-Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
-Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
-```
-
-## <a name="managing-data-sources"></a>Zarządzanie źródłami danych
+## <a name="manage-data-sources"></a>Zarządzaj źródłami danych
 Azure Data Lake Analytics obsługuje obecnie następujących źródeł danych:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
@@ -516,6 +475,48 @@ Write-Host '$subid' " = ""$adla_subid"" "
 Write-Host '$adla' " = ""$adla_name"" "
 Write-Host '$adls' " = ""$adla_defadlsname"" "
 ```
+
+## <a name="manage-firewall-rules"></a>Zarządzaj regułami zapory
+
+### <a name="list-firewall-rules"></a>Lista reguł zapory
+
+```powershell
+Get-AdlAnalyticsFirewallRule -Account $adla
+```
+
+### <a name="add-a-firewall-rule"></a>Dodaj regułę zapory
+
+```powershell
+$ruleName = "Allow access from on-prem server"
+$startIpAddress = "<start IP address>"
+$endIpAddress = "<end IP address>"
+
+Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
+```
+
+### <a name="change-a-firewall-rule"></a>Zmień reguły zapory
+
+```powershell
+Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
+```
+
+### <a name="remove-a-firewall-rule"></a>Usuwanie reguły zapory
+
+```powershell
+Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
+```
+
+### <a name="allow-azure-ip-addresses"></a>Zezwalaj na adresy IP platformy Azure.
+
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
+```
+
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
+```
+
 
 ## <a name="working-with-azure"></a>Praca z platformy Azure
 

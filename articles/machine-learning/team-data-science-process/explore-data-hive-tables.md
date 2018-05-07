@@ -1,9 +1,9 @@
 ---
-title: "Eksploruj dane w tabelach gałąź z zapytań programu Hive | Dokumentacja firmy Microsoft"
-description: "Eksploruj dane w tabelach Hive za pomocą zapytań Hive."
+title: Eksploruj dane w tabelach gałąź z zapytań programu Hive | Dokumentacja firmy Microsoft
+description: Eksploruj dane w tabelach Hive za pomocą zapytań Hive.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 0d46cea5-2b4c-4384-9bfa-fa20f6f75148
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 9cf205abcf9782ceac4d9ac5a920e136b69c57b6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: e85530e5297618b9e87f46a5a274621b060fe1fc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Eksplorowanie danych tabel programu Hive za pomocą zapytań Hive
 Ten dokument zawiera przykładowe skrypty Hive, które są używane, aby eksplorować dane w tabelach gałęzi w klastrze usługi HDInsight Hadoop.
@@ -37,11 +37,11 @@ W tym artykule przyjęto założenie, że masz:
 * Aby uzyskać instrukcje dotyczące sposobu przesyłania zapytań programu Hive, zobacz [sposobu przesyłania zapytań Hive](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Przykładowe skrypty służące zapytania Hive do Eksploracja danych
-1. Zliczanie uwagi dla każdej partycji`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Zliczanie uwagi na dzień`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Zliczanie uwagi dla każdej partycji  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Zliczanie uwagi na dzień  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. Pobierz poziomy w kolumnie podzielone na kategorie  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Pobierz liczbę poziomów w połączeniu z dwóch kolumn podzielone na kategorie`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. Pobierz liczbę poziomów w połączeniu z dwóch kolumn podzielone na kategorie  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. Pobierz dystrybucji dla kolumn wartości liczbowych  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Wyodrębnij rekordy z Sprzęganie dwóch tabel

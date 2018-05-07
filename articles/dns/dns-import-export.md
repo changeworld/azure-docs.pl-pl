@@ -1,6 +1,6 @@
 ---
-title: "Importowanie i eksportowanie pliku strefy domeny do usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie importowania i eksportowania pliku strefy DNS do usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0"
+title: Importowanie i eksportowanie pliku strefy domeny do usługi Azure DNS za pomocą usługi Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: Informacje o sposobie importowania i eksportowania pliku strefy DNS do usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 04/30/2018
 ms.author: gwallace
-ms.openlocfilehash: d6d3fa7aa0e8b2462b3a6b4b66d3d87ab5535314
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bb9b6de195eaea1f7c8591d2de47d360ccde488
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-10"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure 
 
-W tym artykule przedstawiono sposób importowania i eksportowania plików strefy DNS dla usługi Azure DNS przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure.
+W tym artykule przedstawiono sposób importowania i eksportowania plików strefy DNS dla usługi Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="introduction-to-dns-zone-migration"></a>Wprowadzenie do migracji strefy DNS
 
@@ -29,11 +29,8 @@ Pliku strefy DNS to plik tekstowy zawierający szczegóły każdego rekordu syst
 
 Usługa DNS platformy Azure obsługuje importowania i eksportowania plików strefy przy użyciu interfejsu wiersza polecenia platformy Azure (CLI). Importowanie pliku strefy jest **nie** obecnie obsługiwane za pośrednictwem programu Azure PowerShell lub w portalu Azure.
 
-Azure CLI 1.0 jest narzędziem wiersza polecenia i platform używanym do zarządzania usługami Azure. Jest dostępna dla platformy systemu Windows, Mac i Linux z [Azure pliki do pobrania](https://azure.microsoft.com/downloads/). Obsługa platform jest ważne w przypadku importowania i eksportowania plików stref, ponieważ najczęściej używane oprogramowanie serwera Nazwa [POWIĄZAĆ](https://www.isc.org/downloads/bind/), zwykle działa w systemie Linux.
+Azure CLI 2.0 jest narzędziem wiersza polecenia i platform używanym do zarządzania usługami Azure. Jest dostępna dla platformy systemu Windows, Mac i Linux z [Azure pliki do pobrania](https://azure.microsoft.com/downloads/). Obsługa platform jest ważne w przypadku importowania i eksportowania plików stref, ponieważ najczęściej używane oprogramowanie serwera Nazwa [POWIĄZAĆ](https://www.isc.org/downloads/bind/), zwykle działa w systemie Linux.
 
-> [!NOTE]
-> Obecnie są dwie wersje interfejsu wiersza polecenia Azure. CLI1.0 opiera się na Node.js i ma polecenia rozpoczynające się od "azure".
-> CLI2.0 jest oparty na języku Python i ma polecenia rozpoczynające się od "az". Podczas importowania z pliku strefy jest obsługiwane w obu wersjach, zalecamy użycie poleceń CLI1.0, zgodnie z opisem na tej stronie.
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>Uzyskaj do istniejącego pliku strefy DNS
 
@@ -58,11 +55,10 @@ Importowanie pliku strefy tworzy nową strefę w usłudze Azure DNS, jeśli już
 ### <a name="merge-behavior"></a>Scal zachowanie
 
 * Domyślnie są scalane istniejących i nowych zestawów rekordów. Usuń zduplikowane są identyczne rekordy w zestawie rekordów scalone.
-* Alternatywnie, określając `--force` opcja zamienia procesu importowania istniejącego rekordu zestawy z nowego zestawów rekordów. Istniejące zestawy rekordów, które nie mają odpowiedni rekord w pliku strefy importowanych nie zostaną usunięte.
-* W przypadku zestawów rekordów scalania, jest używany czas wygaśnięcia (TTL) istniejących zestawów rekordów. Gdy `--force` jest używana, jest używany czas wygaśnięcia zestawu rekordów.
-* Początek parametry uwierzytelniania (SOA) (z wyjątkiem `host`) są zawsze pobierana z pliku importowanych stref, niezależnie od tego, czy `--force` jest używany. Podobnie dla Ustaw w wierzchołku strefy rekord serwera nazw czas wygaśnięcia jest zawsze pobierana z pliku importowanych stref.
-* Importowany rekord CNAME nie zastępuje istniejący rekord CNAME o takiej samej nazwie chyba że `--force` parametr jest określony.
-* Gdy wystąpi konflikt między rekord CNAME, a inny rekord o tej samej nazwie, ale innego typu (niezależnie od tego, który jest istniejących lub nowych), jest zachowywana istniejącego rekordu. To jest niezależna od stosowania `--force`.
+* W przypadku zestawów rekordów scalania, jest używany czas wygaśnięcia (TTL) istniejących zestawów rekordów.
+* Początek parametry uwierzytelniania (SOA) (z wyjątkiem `host`) są zawsze pobierana z pliku importowanych stref. Podobnie dla Ustaw w wierzchołku strefy rekord serwera nazw czas wygaśnięcia jest zawsze pobierana z pliku importowanych stref.
+* Importowany rekord CNAME nie zastępuje istniejący rekord CNAME o takiej samej nazwie.  
+* Gdy wystąpi konflikt między rekord CNAME, a inny rekord o tej samej nazwie, ale innego typu (niezależnie od tego, który jest istniejących lub nowych), jest zachowywana istniejącego rekordu. 
 
 ### <a name="additional-information-about-importing"></a>Dodatkowe informacje na temat importowania
 
@@ -81,57 +77,32 @@ Poniższe uwagi znajdują się dodatkowe informacje techniczne na temat strefy p
 Format polecenie wiersza polecenia platformy Azure, aby zaimportować strefę DNS jest:
 
 ```azurecli
-azure network dns zone import [options] <resource group> <zone name> <zone file name>
+az network dns zone import -g <resource group> -n <zone name> -f <zone file name>
 ```
 
 Wartości:
 
-* `<resource group>`to nazwa grupy zasobów dla strefy w usłudze Azure DNS.
-* `<zone name>`to nazwa strefy.
-* `<zone file name>`jest/nazwa ścieżki pliku strefy do zaimportowania.
+* `<resource group>` to nazwa grupy zasobów dla strefy w usłudze Azure DNS.
+* `<zone name>` to nazwa strefy.
+* `<zone file name>` jest/nazwa ścieżki pliku strefy do zaimportowania.
 
-Jeśli strefa o tej nazwie nie istnieje w grupie zasobów, jest tworzony automatycznie. Jeśli strefa już istnieje, importowane zestawy rekordów są scalane z istniejących zestawów rekordów. Aby zastąpić istniejące zestawy rekordów, użyj `--force` opcji.
+Jeśli strefa o tej nazwie nie istnieje w grupie zasobów, jest tworzony automatycznie. Jeśli strefa już istnieje, importowane zestawy rekordów są scalane z istniejących zestawów rekordów. 
 
-Aby sprawdzić format pliku strefy bez jego faktycznego importowania, użyj `--parse-only` opcji.
 
 ### <a name="step-1-import-a-zone-file"></a>Krok 1. Zaimportuj plik strefy
 
 Aby zaimportować plik strefy strefy **contoso.com**.
 
-1. Zaloguj się do subskrypcji platformy Azure przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure.
+1. Jeśli nie masz już, należy utworzyć grupę zasobów Menedżera zasobów.
 
     ```azurecli
-    azure login
+    az group create --group myresourcegroup -l westeurope
     ```
 
-2. Wybierz subskrypcję, której chcesz utworzyć nowej strefy DNS.
+2. Aby zaimportować strefy **contoso.com** z pliku **contoso.com.txt** do nowej strefy DNS w grupie zasobów **myresourcegroup**, należy uruchomić polecenie `az network dns zone import` .<BR>To polecenie ładuje plik strefy i analizuje go. Polecenie wykonuje szereg poleceń w usłudze Azure DNS, można utworzyć strefy i ustawia wszystkich rekordów w strefie. Polecenie Raporty postęp w oknie konsoli wraz z jakiekolwiek błędy i ostrzeżenia. Ponieważ zestawy rekordów są tworzone w serii, może upłynąć kilka minut, aby zaimportować plik dużej strefy.
 
     ```azurecli
-    azure account set <subscription name>
-    ```
-
-3. Usługa DNS platformy Azure jest usługą platformy Azure tylko do Menedżera zasobów, więc wiersza polecenia platformy Azure, należy włączyć tryb Resource Manager.
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-4. Przed użyciem usługi Azure DNS, należy zarejestrować subskrypcję do używania dostawcy zasobów Microsoft.Network. (Jest to jednorazowa operacja dla każdej subskrypcji).
-
-    ```azurecli
-    azure provider register Microsoft.Network
-    ```
-
-5. Jeśli nie masz już, należy utworzyć grupę zasobów Menedżera zasobów.
-
-    ```azurecli
-    azure group create myresourcegroup westeurope
-    ```
-
-6. Aby zaimportować strefy **contoso.com** z pliku **contoso.com.txt** do nowej strefy DNS w grupie zasobów **myresourcegroup**, uruchom polecenie `azure network dns zone import`.<BR>To polecenie ładuje plik strefy i przeanalizować go. Polecenie wykonuje szereg poleceń w usłudze Azure DNS, można utworzyć strefy i ustawia wszystkich rekordów w strefie. Polecenie Raporty postęp w oknie konsoli wraz z jakiekolwiek błędy i ostrzeżenia. Ponieważ zestawy rekordów są tworzone w serii, może upłynąć kilka minut, aby zaimportować plik dużej strefy.
-
-    ```azurecli
-    azure network dns zone import myresourcegroup contoso.com contoso.com.txt
+    az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
 ### <a name="step-2-verify-the-zone"></a>Krok 2. Sprawdź strefy
@@ -141,29 +112,41 @@ Aby sprawdzić strefę DNS, po zaimportowaniu plików, można użyć jednej z na
 * Można wyświetlić listę rekordów za pomocą następującego polecenia wiersza polecenia platformy Azure:
 
     ```azurecli
-    azure network dns record-set list myresourcegroup contoso.com
+    az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
 * Wyświetl listę rekordów za pomocą polecenia cmdlet programu PowerShell `Get-AzureRmDnsRecordSet`.
-* Można użyć `nslookup` Aby sprawdzić rozpoznawanie nazw dla rekordów. Ponieważ strefa nie jest jeszcze delegowana, musisz jawnie określić poprawne serwerów nazw usługi Azure DNS. Poniższy przykład pokazuje, jak można pobrać nazw serwerów nazw przypisanych do strefy. IT przedstawiono również sposób zapytanie dotyczące rekordu "www" za pomocą `nslookup`.
+* Można użyć `nslookup` Aby sprawdzić rozpoznawanie nazw dla rekordów. Ponieważ strefa nie jest jeszcze delegowana, musisz jawnie określić poprawne serwerów nazw usługi Azure DNS. Poniższy przykład pokazuje, jak można pobrać nazw serwerów nazw przypisanych do strefy. To również przedstawia sposób zapytanie dotyczące rekordu "www" za pomocą `nslookup`.
+```
+C:\>az network dns record-set ns list -g myresourcegroup -z  --output json 
+  [
+   .......
+   "name": "@",
+    "nsRecords": [
+      {
+        "additionalProperties": {},
+        "nsdname": "ns1-03.azure-dns.com."
+      },
+      {
+        "additionalProperties": {},
+        "nsdname": "ns2-03.azure-dns.net."
+      },
+      {
+        "additionalProperties": {},
+        "nsdname": "ns3-03.azure-dns.org."
+      },
+      {
+        "additionalProperties": {},
+        "nsdname": "ns4-03.azure-dns.info."
+      }
+    ],
+    "resourceGroup": "myresourcegroup",
+    "ttl": 86400,
+    "type": "Microsoft.Network/dnszones/NS"
+  }
+]
 
-        C:\>azure network dns record-set show myresourcegroup contoso.com @ NS
-        info:Executing command network dns record-set show
-        + Looking up the DNS Record Set "@" of type "NS"
-        data:Id: /subscriptions/.../resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com/NS/@
-        data:Name: @
-        data:Type: Microsoft.Network/dnszones/NS
-        data:Location: global
-        data:TTL : 3600
-        data:NS records
-        data:Name server domain name : ns1-01.azure-dns.com
-        data:Name server domain name : ns2-01.azure-dns.net
-        data:Name server domain name : ns3-01.azure-dns.org
-        data:Name server domain name : ns4-01.azure-dns.info
-        data:
-        info:network dns record-set show command OK
-
-        C:\> nslookup www.contoso.com ns1-01.azure-dns.com
+        C:\> nslookup www.contoso.com ns1-03.azure-dns.com
 
         Server: ns1-01.azure-dns.com
         Address:  40.90.4.1
@@ -171,6 +154,7 @@ Aby sprawdzić strefę DNS, po zaimportowaniu plików, można użyć jednej z na
         Name:www.contoso.com
         Addresses:  134.170.185.46
         134.170.188.221
+```
 
 ### <a name="step-3-update-dns-delegation"></a>Krok 3. Zaktualizuj Delegowanie DNS
 
@@ -181,39 +165,21 @@ Po upewnieniu się, że strefa zostały zaimportowane prawidłowo, należy zaktu
 Format polecenie wiersza polecenia platformy Azure, aby zaimportować strefę DNS jest:
 
 ```azurecli
-azure network dns zone export [options] <resource group> <zone name> <zone file name>
+az network dns zone export -g <resource group> -z <zone name> -f <zone file name>
 ```
 
 Wartości:
 
-* `<resource group>`to nazwa grupy zasobów dla strefy w usłudze Azure DNS.
-* `<zone name>`to nazwa strefy.
-* `<zone file name>`jest/nazwa ścieżki pliku strefy do wyeksportowania.
+* `<resource group>` to nazwa grupy zasobów dla strefy w usłudze Azure DNS.
+* `<zone name>` to nazwa strefy.
+* `<zone file name>` jest/nazwa ścieżki pliku strefy do wyeksportowania.
 
 Jako importowania strefy najpierw należy się zalogować, wybraniu subskrypcji i Konfigurowanie interfejsu wiersza polecenia Azure do pracy w trybie Menedżera zasobów.
 
 ### <a name="to-export-a-zone-file"></a>Aby wyeksportować plik strefy
 
-1. Zaloguj się do subskrypcji platformy Azure przy użyciu wiersza polecenia platformy Azure.
+Aby wyeksportować istniejący strefy DNS platformy Azure **contoso.com** w grupie zasobów **myresourcegroup** do pliku **contoso.com.txt** (w bieżącym folderze), uruchom `azure network dns zone export`. To polecenie wymaga usługa Azure DNS wyliczyć zestawów rekordów w strefie i wyeksportować wyniki do pliku strefy POWIĄZANIE zgodne.
 
-    ```azurecli
-    azure login
     ```
-
-2. Wybierz subskrypcję, której chcesz utworzyć własną strefę DNS.
-
-    ```azurecli
-    azure account set <subscription name>
-    ```
-
-3. Usługa DNS platformy Azure jest usługą platformy Azure tylko do Menedżera zasobów. Interfejsu wiersza polecenia Azure, należy włączyć tryb Resource Manager.
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-4. Aby wyeksportować istniejący strefy DNS platformy Azure **contoso.com** w grupie zasobów **myresourcegroup** do pliku **contoso.com.txt** (w bieżącym folderze), uruchom `azure network dns zone export`. To polecenie wymaga usługa Azure DNS wyliczyć zestawów rekordów w strefie i wyeksportować wyniki do pliku strefy POWIĄZANIE zgodne.
-
-    ```azurecli
-    azure network dns zone export myresourcegroup contoso.com contoso.com.txt
+    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```

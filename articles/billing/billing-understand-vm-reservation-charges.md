@@ -1,23 +1,23 @@
 ---
-title: "Zrozumienie aplikacji rabat zastrzeżone wystąpień maszyn wirtualnych Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rabat zastrzeżone wystąpienia maszyny Wirtualnej platformy Azure są stosowane do działających maszyn wirtualnych."
+title: Zrozumienie aplikacji rabat zastrzeżone wystąpień maszyn wirtualnych Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rabat zastrzeżone wystąpienia maszyny Wirtualnej platformy Azure są stosowane do działających maszyn wirtualnych.
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: vikdesai
-ms.openlocfilehash: 2a3854077c7c8bdb20804c6b3e77500659c3c484
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6e551fddfc5ba8924cd8c71a1775307e7569b847
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>Zrozumienie, jak stosowany jest rabat zastrzeżone wystąpienie maszyny wirtualnej
 Po kupić zastrzeżone wystąpienia maszyny Wirtualnej, rabat rezerwacji jest automatycznie stosowane do dopasowania, atrybuty i ilość zastrzeżenia maszyn wirtualnych. Zastrzeżenie obejmuje kosztów infrastruktury maszyn wirtualnych. W poniższej tabeli przedstawiono kosztów dla maszyny wirtualnej, po dokonaniu zakupu rezerwacji. We wszystkich przypadkach są naliczane opłaty dotyczące magazynu i sieci w normalnych stawek.
@@ -43,7 +43,7 @@ Po kupić zastrzeżone wystąpienia maszyny Wirtualnej, rabat rezerwacji jest au
 Aby zrozumieć i Wyświetl aplikację z rezerwacji w rozliczeń raporty użycia, zobacz [użycia zrozumieć zastrzeżone wystąpienia maszyny Wirtualnej](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Stosowanie rabatu zastrzeżenia do maszyn wirtualnych systemu Windows
-Po uruchomieniu wystąpień maszyny Wirtualnej systemu Windows, rezerwacji jest stosowany do obejmują kosztów infrastruktury. Aplikacja rezerwacji kosztów infrastruktury maszyny Wirtualnej dla maszyn wirtualnych systemu Windows jest taka sama jak w przypadku VMs z systemem innym niż Windows. Naliczane są opłaty oddzielnie oprogramowania systemu Windows na podstawie na vCPU. Zobacz [koszty oprogramowania Windows zastrzeżenia](https://go.microsoft.com/fwlink/?linkid=862756). Może obejmować koszty licencjonowania systemu Windows z [Azure hybrydowego korzyści dla systemu Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
+Po uruchomieniu wystąpień maszyny Wirtualnej systemu Windows, rezerwacji jest stosowany do obejmują kosztów infrastruktury. Aplikacja rezerwacji kosztów infrastruktury maszyny Wirtualnej dla maszyn wirtualnych systemu Windows jest taka sama jak w przypadku VMs z systemem innym niż Windows. Naliczane są opłaty oddzielnie oprogramowania systemu Windows na podstawie na vCPU. Zobacz [koszty oprogramowania Windows zastrzeżenia](https://go.microsoft.com/fwlink/?linkid=862756). Może obejmować koszty z [Azure hybrydowego korzyści dla systemu Windows Server] licencjonowania systemu Windows (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o zastrzeżonych wystąpień maszyn wirtualnych, zobacz następujące artykuły.

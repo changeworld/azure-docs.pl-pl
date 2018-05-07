@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ede354516afbd34372215a08d633969cf74b1562
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 6d783a5b36fd71fbcc020025e21aed49e8fd6e05
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -214,6 +214,7 @@ Istnieją pewne różnice zachowanie, które użytkownicy pochodzące z magazyne
 * Nazwy tabeli w magazynie tabel platformy Azure nie jest rozróżniana, ale są one interfejsu API Azure rozwiązania Cosmos DB tabeli
 * Azure rozwiązania Cosmos DB wewnętrzny formaty kodowania informacje, np. pola binarnego nie są obecnie tak efektywne jak jedną może. W związku z tym może to spowodować nieoczekiwane ograniczenia na rozmiar danych. Na przykład aktualnie jedną nie można użyć pełnej 1 mg jednostki tabeli do przechowywania danych binarnych, ponieważ szyfrowanie zwiększa rozmiar danych.
 * Nazwa właściwości jednostki "Id" obecnie nieobsługiwane
+* TableQuery TakeCount nie jest ograniczona do 1000
 
 Pod względem interfejsu API REST istnieje wiele opcji punkty końcowe/zapytania, które nie są obsługiwane przez interfejs API Azure rozwiązania Cosmos DB tabeli:
 | Metody REST | Opcja punktu końcowego/zapytania REST | Adresy URL dokumentu | Wyjaśnienie |

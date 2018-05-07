@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: fa04e7a3c0d6f19603befed026b316eba6e46eb7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: ef7517e91965b0d7444d158f041b1d2bddea6bd2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analiza zdarzeń i wizualizacji z usługą Application Insights
 
@@ -32,7 +32,7 @@ Ten artykuł ma na celu pokazują, jak uzyskać wgląd i rozwiązywanie problem�
 
 ## <a name="monitoring-in-app-insights"></a>Monitorowanie usługi App Insights
 
-Usługa Application Insights ma wzbogaconej fabrycznej z sieci szkieletowej usług. Na stronie przeglądu AI zawiera najważniejsze informacje na temat usługi takie jak czas odpowiedzi i liczba przetwarzanych żądań. Klikając przycisk "Wyszukaj" u góry, lista ostatnich żądań w aplikacji. Ponadto będzie można zobaczyć tutaj nieudanych żądań i diagnozowanie, może wystąpić, jakie błędy.
+Usługi Application Insights ma bogate możliwości pola, używając usługi sieć szkieletowa. Na stronie przeglądu AI zawiera najważniejsze informacje na temat usługi takie jak czas odpowiedzi i liczba przetwarzanych żądań. Klikając przycisk "Wyszukaj" u góry, lista ostatnich żądań w aplikacji. Ponadto będzie można zobaczyć tutaj nieudanych żądań i diagnozowanie, może wystąpić, jakie błędy.
 
 ![Omówienie AI](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 

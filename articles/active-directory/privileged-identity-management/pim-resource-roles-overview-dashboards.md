@@ -1,6 +1,6 @@
 ---
-title: Jak przeprowadzić przegląd dostępu w Privileged Identity Management zasobów Azure | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera opis sposobu wykonywania i dostęp do przeglądu w PIM zasobów Azure.
+title: 'Omówienie: Wykonywać Przegląd dostępu w Privileged Identity Management zasobów platformy Azure | Dokumentacja firmy Microsoft'
+description: Tym dokumencie opisano, jak przeprowadzić przegląd dostępu w PIM dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,20 +14,28 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: f1bcf114b997c3056016b84cafc28253ea1af28e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 61be9873cac462c096599680a6e071e104f3a54c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="resource-dashboards"></a>Pulpity nawigacyjne zasobów
+# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Pulpit nawigacyjny zasobów umożliwia wykonywanie przeglądu dostępu
 
-Widok administratora pulpit nawigacyjny zawiera cztery podstawowe składniki. Graficzna reprezentacja zasobu roli aktywacji w ciągu ostatnich siedmiu dni. Te dane zakresie znajduje się wybrany zasób i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, Administrator dostępu użytkowników), a wszystkie role, w połączeniu.
+Pulpit nawigacyjny zasobów można użyć do wykonania w zarządzania tożsamości uprzywilejowanych (PIM) Przegląd dostępu dla zasobów platformy Azure. Pulpit nawigacyjny widoku administracyjnej ma trzy główne składniki:
 
-Po prawej stronie wykresu aktywacji są dwa wykresy dystrybucji przypisań ról przez typ przydziału dla użytkowników i grup. Wybór wycinek wykresu zmienia wartość na wartość procentową (lub odwrotnie).
+- Graficzna reprezentacja zasobu roli aktywacji.
+- Dwa wykresy dystrybucji przypisań ról przez typ przypisania.
+- Obszar danych dotyczących nowych przypisań ról.
 
-![](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![Zrzut ekranu przedstawiający Admin widoku pulpitu nawigacyjnego, wyświetlanie wykresów i wykresy](media/azure-pim-resource-rbac/rbac-overview-top.png)
 
-Poniżej wykresy zobacz temat liczby użytkowników i grup z nowych przypisań ról w ciągu ostatnich 30 dni (po lewej), a lista ról posortowane według całkowitej przypisania (malejąco).
+![Zrzut ekranu przedstawiający Admin widoku pulpitu nawigacyjnego, przedstawiający listę danych](media/azure-pim-resource-rbac/role-settings.png)
 
-![](media/azure-pim-resource-rbac/role-settings.png)
+Graficzna reprezentacja zasobu roli aktywacji obejmuje ostatnich siedmiu dni. Te dane zakresie znajduje się wybrany zasób i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, administrator dostępu użytkowników) i dla wszystkich ról połączone.
+
+Po prawej stronie wykresu aktywacji dwa wykresy wyświetlić typ przydziału dla użytkowników i grup dystrybucji przypisań ról. Należy zmienić wartość na wartość procentową (lub odwrotnie), wybierając wycinek wykresu.
+
+Poniżej wykresy zostanie wyświetlony w ciągu ostatnich 30 dni oraz listę ról posortowane według całkowitej przypisania (w kolejności malejącej) liczbę użytkowników i grup z nowych przypisań ról.
+
+

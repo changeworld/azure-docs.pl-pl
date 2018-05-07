@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ef048967bc08fed1a108872d2d7eecc2a66993fa
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>W zrozumieniu i użytkowaniu twins urządzenie w Centrum IoT
 
@@ -183,7 +183,7 @@ Zaplecze rozwiązania działa na dwie urządzenia przy użyciu następujących o
     $content — typ | application/json |
     $iothub-enqueuedtime |  Czas wysłania powiadomienia |
     $iothub-message-source | twinChangeEvents |
-    $content-encoding | UTF-8 |
+    $content-kodowania | UTF-8 |
     deviceId | Identyfikator urządzenia |
     hubName | Nazwa centrum IoT |
     operationTimestamp | [ISO8601] sygnatury czasowej operacji |
@@ -318,7 +318,7 @@ Na przykład:
 
 Ta informacja jest przechowywana na każdym poziomie (nie tylko liście strukturze JSON) do zachowania aktualizacji, które usunąć obiekt kluczy.
 
-## <a name="optimistic-concurrency"></a>Optymistycznej współbieżności
+## <a name="optimistic-concurrency"></a>Optymistyczna współbieżność
 Tagi, potrzeby i podać właściwości wszystkich optymistycznej współbieżności pomocy technicznej.
 Tagi przypada tag ETag jako [RFC7232], reprezentujący reprezentacja JSON znacznika. Elementy etag w operacjach aktualizowania warunkowego z zaplecza rozwiązania służy do zapewnienia spójności.
 
@@ -349,9 +349,10 @@ Inne tematy referencyjne w Podręczniku dewelopera Centrum IoT obejmują:
 * [Centrum IoT zapytania języka twins urządzenia, zadania i rozsyłania wiadomości] [ lnk-query] artykule język zapytań Centrum IoT można pobrać z Centrum IoT informacji o twins urządzenia i zadania.
 * [Obsługa MQTT Centrum IoT] [ lnk-devguide-mqtt] artykuł zawiera więcej informacji na temat obsługi protokołu MQTT Centrum IoT.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz wiesz już, o twins urządzenie, może Cię zainteresować następujące tematy przewodnik dewelopera Centrum IoT:
 
+* [W zrozumieniu i użytkowaniu twins modułu w Centrum IoT][lnk-module-twins]
 * [Wywoływanie metody bezpośrednio na urządzeniu][lnk-methods]
 * [Planowanie zadań na wielu urządzeniach][lnk-jobs]
 
@@ -385,5 +386,6 @@ Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
+[lnk-module-twins]:iot-hub-devguide-module-twins.md
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png

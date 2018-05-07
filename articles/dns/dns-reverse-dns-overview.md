@@ -1,22 +1,22 @@
 ---
-title: "Omówienie wstecznego DNS na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wstecznego DNS działa i jak może służyć na platformie Azure"
+title: Omówienie wstecznego DNS na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wstecznego DNS działa i jak może służyć na platformie Azure
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: kumud
+ms.openlocfilehash: 1ce14360d0f62a01172a8003e1d78a45885166f6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Omówienie wstecznego DNS i pomocy technicznej na platformie Azure
 
@@ -86,7 +86,7 @@ Wyszukiwanie wsteczne dla zapytania "192.0.2.129" adres IP dla rekordu PTR o naz
 
 ### <a name="ipv6"></a>Protokół IPv6
 
-Nazwa strefy wyszukiwania wstecznego IPv6, powinna być w następującym formacie:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Nazwa strefy wyszukiwania wstecznego IPv6, powinna być w następującym formacie: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Na przykład. Podczas tworzenia strefy wyszukiwania wstecznego do rekordów hosta dla hostów z adresów IP które znajdują się w 2001:db8:1000:abdc:: / 64 prefiks, nazwę strefy zostałyby utworzone przez izolowanie prefiksu sieci adresu (2001:db8:abdc::). Następnie rozwiń węzeł prefiksu sieci IPv6, aby usunąć [zero kompresji](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), jeśli użyto w celu skrócenia prefiks adresu IPv6 (2001:0db8:abdc:0000::). Odwracanie kolejności kropką jako separator każdą liczbę szesnastkową prefiksu, tworzenie prefiks odwróconej sieci (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) i Dodaj sufiks `.ip6.arpa`.
 

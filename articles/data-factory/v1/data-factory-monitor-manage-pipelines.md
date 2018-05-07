@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 94b3c1e812bdf3345d5fb1f7308fb7a55be8f922
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 860a09d004c16de992093e79c0dbda4c469bb775
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorowanie i zarządzanie nimi potoki fabryki danych Azure przy użyciu portalu Azure i programu PowerShell
 > [!div class="op_single_selector"]
@@ -28,11 +28,13 @@ ms.lasthandoff: 03/29/2018
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [monitorować i zarządzać nimi potoki fabryki danych w wersji 2](../monitor-visually.md).
 
+W tym artykule opisano sposób monitorowania, zarządzania i debugowania z potoków przy użyciu portalu Azure i programu PowerShell.
+
 > [!IMPORTANT]
 > Aplikacja monitorowania i zarządzania zapewnia lepszą obsługę do monitorowania i zarządzania potoki Twoje dane i rozwiązywania problemów. Aby uzyskać informacje dotyczące korzystania z aplikacji, zobacz [monitorować i zarządzać nimi potoki fabryki danych przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md). 
 
-
-W tym artykule opisano sposób monitorowania, zarządzania i debugowania z potoków przy użyciu portalu Azure i programu PowerShell.
+> [!IMPORTANT]
+> Fabryka danych Azure w wersji 1 teraz używa nowego [Monitor Azure alerty infrastruktury](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Stary alertów infrastruktury jest przestarzały. W związku z tym istniejące alerty skonfigurowane dla wersji 1 dane, które fabryki przestanie działać. Istniejące alerty dla fabryki danych v1 nie są automatycznie migrowane. Należy ponownie utworzyć te alerty na nowych alertów infrastruktury. Zaloguj się do platformy Azure, portalu i wybierz pozycję **Monitor** tworzenia nowych alertów na metryki (na przykład działa nie powiodło się lub uruchamia się pomyślnie) dla danej wersji fabryki danych 1.
 
 ## <a name="understand-pipelines-and-activity-states"></a>Potoki i stanów działania
 Za pomocą portalu Azure, możesz:
@@ -196,7 +198,8 @@ Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName produc
 ## <a name="debug-pipelines"></a>Debugowanie potoki
 Fabryka danych Azure zapewnia zaawansowane możliwości debugowania i rozwiązywania problemów z potoków, za pomocą portalu Azure i programu Azure PowerShell.
 
-> [! Uwaga} jest znacznie łatwiejsze Rozwiązywanie problemów z błędami, za pomocą aplikacji do zarządzania i monitorowania. Aby uzyskać informacje dotyczące korzystania z aplikacji, zobacz [monitorować i zarządzać nimi potoki fabryki danych przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md) artykułu. 
+> [!NOTE] 
+> Jest znacznie łatwiejsze Rozwiązywanie problemów z błędami, za pomocą aplikacji do zarządzania i monitorowania. Aby uzyskać informacje dotyczące korzystania z aplikacji, zobacz [monitorować i zarządzać nimi potoki fabryki danych przy użyciu aplikacji monitorowanie i zarządzanie](data-factory-monitor-manage-app.md) artykułu. 
 
 ### <a name="find-errors-in-a-pipeline"></a>Znaleziono błędów w potoku
 W przypadku niepowodzenia uruchomienia działania w potoku zestawu danych, który jest generowany przez potok jest w stanie błędu z powodu błędu. Można debugować i rozwiązywanie problemów z fabryki danych Azure przy użyciu następujących metod.
@@ -296,6 +299,35 @@ Typ "aktualizacji" ma ustawioną wartość "Parametru UpstreamInPipeline", co oz
 ```powershell
 Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
+## <a name="create-alerts-in-the-azure-portal"></a>Tworzenie alertów w portalu Azure
+
+1.  Zaloguj się do platformy Azure, portalu i wybierz pozycję **Monitor -> alerty** aby otworzyć stronę alerty.
+
+    ![Otwórz stronę alerty.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+
+2.  Wybierz **+ nową regułę alertu** do utworzenia nowego alertu.
+
+    ![Utwórz nowy alert](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+
+3.  Zdefiniuj **alertów warunku**. (Upewnij się wybrać **fabryki danych** w **Filtruj według typu zasobu** pola.) Można również określić wartości dla **wymiary**.
+
+    ![Zdefiniuj warunek alertu — wybierz docelowy](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+
+    ![Zdefiniuj warunek alertu — Dodaj kryteria alertu](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+
+    ![Zdefiniuj warunek alertu — Dodawanie alertu logiki](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+
+4.  Zdefiniuj **szczegóły alertu**.
+
+    ![Zdefiniuj szczegóły alertu](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+
+5.  Zdefiniuj **grupy akcji**.
+
+    ![Określ grupę akcji — Utwórz nową grupę akcji](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+
+    ![Zdefiniuj grupę akcji — Ustawianie właściwości](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+
+    ![Określ grupę akcji — nowej grupy akcji utworzone](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Przenieś fabryki danych do innej grupy zasobów lub subskrypcji
 Fabryka danych można przenieść do innej grupie zasobów lub różnych subskrypcji przy użyciu **Przenieś** polecenia paska przycisk na stronie głównej w fabryce danych.

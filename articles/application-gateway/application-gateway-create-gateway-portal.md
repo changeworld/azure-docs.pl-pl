@@ -1,21 +1,21 @@
 ---
-title: "Utwórz bramę aplikacji - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramę aplikacji przy użyciu portalu Azure."
+title: Utwórz bramę aplikacji - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu portalu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 0df71c445d2c5fc6827b69f708203a3b3e6e2b53
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-portal"></a>Utwórz bramę aplikacji przy użyciu portalu Azure
 
@@ -60,11 +60,11 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
 1. Kliknij przycisk **wszystkie zasoby** w menu po lewej stronie, a następnie kliknij przycisk **myVNet** na liście zasobów.
 2. Kliknij przycisk **podsieci**, a następnie kliknij przycisk **podsieci**.
 
-    ![Utwórz podsieć](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
+    ![Tworzenie podsieci](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
 3. Wprowadź *myBackendSubnet* dla nazwy podsieci, a następnie kliknij przycisk **OK**.
 
-## <a name="create-backend-servers"></a>Utwórz serwerów wewnętrznej bazy danych
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Należy również zainstalować usług IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
@@ -75,17 +75,17 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 3. Wprowadź wartości dla maszyny wirtualnej:
 
     - *myVM* — Nazwa maszyny wirtualnej.
-    - *azureuser* — nazwa użytkownika administratora.
+    - *azureuser* — jako nazwę użytkownika administratora.
     - *Azure123456!* hasła.
     - Wybierz **Użyj istniejącego**, a następnie wybierz *myResourceGroupAG*.
 
 4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** dla rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **wybierz**.
+5. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
 6. Upewnij się, że **myVNet** został wybrany do sieci wirtualnej i podsieci jest **myBackendSubnet**. 
-7. Kliknij przycisk **wyłączone** wyłączyć diagnostyki rozruchu.
-8. Kliknij przycisk **OK**Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
+8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
 
-### <a name="install-iis"></a>Zainstaluj usługi IIS
+### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Otwórz powłokę interakcyjne i upewnij się, że jest ustawiona na **PowerShell**.
 
@@ -123,7 +123,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 
     ![Zarejestruj publiczny adres IP bramy aplikacji](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
 
-2. Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki.
+2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
     ![Brama aplikacji w testu](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
@@ -134,4 +134,4 @@ Gdy nie są już potrzebne, Usuń grupę zasobów, bramę aplikacji i wszystkie 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym szybkiego startu utworzyć grupę zasobów, zasobów sieciowych i serwerów wewnętrznej bazy danych. Te zasoby są następnie używane do tworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do tworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.

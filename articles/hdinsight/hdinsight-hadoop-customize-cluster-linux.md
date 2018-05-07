@@ -4,7 +4,7 @@ description: Dodawanie niestandardowych składników do opartych na systemie Lin
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
@@ -12,24 +12,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: ff8b8ffc66ea4c90ca2f11edc36aac670f24eac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów usługi HDInsight opartej na systemie Linux za pomocą akcji skryptu
 
-HDInsight zapewnia opcję konfiguracji o nazwie **akcji skryptu** który wywołuje niestandardowe skrypty umożliwiające dostosowanie klastra. Skrypty te służą do instalowania dodatkowych składników i zmienić ustawienia konfiguracji. Akcje skryptu można podczas lub po utworzeniu klastra.
+Usługa HDInsight zapewnia metody konfiguracji o nazwie **skryptu akcje** który wywołuje skrypty niestandardowe, aby dostosować klastra. Skrypty te służą do instalowania dodatkowych składników i zmienić ustawienia konfiguracji. Akcje skryptu można podczas lub po utworzeniu klastra.
 
 > [!IMPORTANT]
 > Możliwość używania akcji skryptu w klastrze już uruchomiona jest dostępna tylko w przypadku klastrów usługi HDInsight opartej na systemie Linux.
 >
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-Akcje skryptu mogą być publikowane w portalu Azure Marketplace jako aplikacji usługi HDInsight. Przykłady w tym dokumencie pokazują, jak zainstalować aplikację usługi HDInsight przy użyciu polecenia akcji skryptu środowiska PowerShell i zestawu .NET SDK. Aby uzyskać więcej informacji na temat aplikacji w usłudze HDInsight, zobacz [publikować aplikacje usługi HDInsight w portalu Azure Marketplace](hdinsight-apps-publish-applications.md).
+Akcje skryptu mogą być publikowane w portalu Azure Marketplace jako aplikacji usługi HDInsight. Aby uzyskać więcej informacji na temat aplikacji w usłudze HDInsight, zobacz [publikować aplikacje usługi HDInsight w portalu Azure Marketplace](hdinsight-apps-publish-applications.md).
 
 ## <a name="permissions"></a>Uprawnienia
 

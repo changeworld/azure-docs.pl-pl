@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/30/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 54faa5a50b3fe965bc7f95fc0da0fdda9388412f
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 4fe1f2ad4bad9d670094bbb4eed188baf28108ea
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="write-accelerator"></a>Zapis klawiszy skrótów
 Zapisu akceleratora jest wyłącznie możliwości dysku dla serii M maszynach wirtualnych (VM na magazyn Azure dysków zarządzanych w warstwie Premium). Jako nazwa stany, cel funkcji jest ulepszenie opóźnień operacji We/Wy zapisu w usłudze Azure Premium Storage. Zapisu akceleratora doskonale nadaje gdzie aktualizacji plików dziennika są wymagane do utrwalenia na dysku w dużej wydajności sposób dla nowoczesnych baz danych.
@@ -42,7 +42,7 @@ Używając skrótów zapisu dla dysków Azure/VHD, zastosuj następujące ograni
 
 - Buforowanie dysku Premium musi być ustawiona na "None" lub "Tylko do odczytu". Wszystkie tryby buforowania nie są obsługiwane.
 - Migawki na dysku zapisu włączone klawiszy skrótów nie jest jeszcze obsługiwany. To ograniczenie blokuje możliwość usługi Kopia zapasowa Azure wykonywania spójna migawka aplikacji wszystkich dysków maszyny wirtualnej.
-- Tylko mniejszych we/wy trwa przyspieszonego ścieżki. Obciążenia pracą sytuacji, w którym danych otrzymuje zbiorczego załadowany lub w przypadku gdy buforów dziennika transakcji z innego systemu DBMS są wypełnione w większym stopniu przed pobierania utrwalone w magazynie, istnieje prawdopodobieństwo są zapisywane w operacji We/Wy dysku nie podejmuje przyspieszonego ścieżki.
+- Tylko mniejszych we/wy (< = 32KiB) trwa przyspieszonego ścieżki. Obciążenia pracą sytuacji, w którym danych otrzymuje zbiorczego załadowany lub w przypadku gdy buforów dziennika transakcji z innego systemu DBMS są wypełnione w większym stopniu przed pobierania utrwalone w magazynie, istnieje prawdopodobieństwo są zapisywane w operacji We/Wy dysku nie podejmuje przyspieszonego ścieżki.
 
 Istnieją ograniczenia Azure Premium magazynu wirtualnych dysków twardych na maszynie Wirtualnej, która może być obsługiwana przez zapisu akceleratora. Bieżące ograniczenia są:
 
@@ -105,7 +105,7 @@ Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 
 Dwa główne scenariusze umożliwia pisanie skryptów, jak pokazano w poniższych sekcjach.
 
-#### <a name="adding--new-disk-supported-by-write-accelerator"></a>Dodawanie nowego dysku obsługiwane przez zapisu klawiszy skrótów
+#### <a name="adding-a-new-disk-supported-by-write-accelerator"></a>Dodawanie nowego dysku obsługiwane przez zapisu klawiszy skrótów
 Ten skrypt służy do dodawania nowego dysku do maszyny Wirtualnej. Utworzony za pomocą tego skryptu dysk będzie służyć zapisu akceleratora.
 
 ```
@@ -157,6 +157,13 @@ Należy dostosować nazwy maszyny Wirtualnej, dysku i grupy zasobów. Skrypt pow
 
 > [!Note]
 > Wykonywanie skryptu powyżej będzie odłączyć określonego dysku, Włącz zapisu akceleratora dla dysku i ponownie podłączyć dysk
+
+### <a name="enabling-through-azure-portal"></a>Włączanie za pośrednictwem portalu Azure
+
+Można włączyć zapisu akceleratora za pośrednictwem portalu, w którym określić ustawienia pamięci podręcznej dysku: 
+
+![Zapis akceleratora w portalu Azure](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
+
 
 ### <a name="enabling-through-rest-apis"></a>Włączanie za pośrednictwem interfejsów API Rest
 Aby można było wdrożyć za pomocą interfejsu API Rest Azure, musisz zainstalować Azure armclient

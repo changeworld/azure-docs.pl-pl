@@ -128,6 +128,6 @@ Skonfiguruj maszynę wirtualną i instalować oprogramowanie na nim, jest dobrym
 1. W Eksploratorze serwera, wybierz maszynę wirtualną, aby wyłączyć w **maszyny wirtualne Azure** węzła.
 2. W menu skrótów wybierz **zamknięcia** polecenie lub wybierz **Konfiguruj** wyświetlić na stronie konfiguracji maszyny wirtualnej, a następnie wybierz pozycję **zamknięcia** przycisku.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat tworzenia maszyn wirtualnych, zobacz [tworzenia maszyny wirtualnej systemem Linux](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [Utwórz maszynę wirtualną z systemem Windows w portalu Azure w wersji zapoznawczej](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

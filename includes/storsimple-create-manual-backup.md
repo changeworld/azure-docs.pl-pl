@@ -14,7 +14,7 @@
    
     ![Ręczne monitorowanie kopii zapasowej](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
 5. Po zakończeniu zadania tworzenia kopii zapasowej przejdź do karty **Katalog kopii zapasowej**.
-6. Ustaw wybory filtrów do odpowiedniego urządzenia, odpowiednich zasad tworzenia kopii zapasowej i odpowiedniego zakresu czasu. Po ustawieniu filtrów ![ikona znacznika wyboru](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) kliknij ikonę znacznika wyboru.
+6. Ustaw wybory filtrów do odpowiedniego urządzenia, odpowiednich zasad tworzenia kopii zapasowej i odpowiedniego zakresu czasu. Kliknij ikonę znacznika wyboru ![ikona znacznika wyboru](./media/storsimple-create-manual-backup/HCS_CheckIcon-include.png) kliknij ikonę znacznika wyboru.
    
    Kopia zapasowa powinna pojawić się na liście zestawów kopii zapasowych, która jest wyświetlana w katalogu.
 

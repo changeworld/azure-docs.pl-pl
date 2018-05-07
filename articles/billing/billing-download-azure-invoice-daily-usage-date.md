@@ -1,27 +1,27 @@
 ---
-title: "Pobierz rozliczeń faktury i dziennego użycia danych Azure | Dokumentacja firmy Microsoft"
-description: "Zawiera opis sposobu pobierania lub wyświetlania Azure rozliczeń faktury i dziennego użycia danych."
-keywords: "faktury rozliczeń, pobierania faktury, faktury azure, azure użycie"
-services: 
-documentationcenter: 
+title: Pobierz rozliczeń faktury i dziennego użycia danych Azure | Dokumentacja firmy Microsoft
+description: Zawiera opis sposobu pobierania lub wyświetlania Azure rozliczeń faktury i dziennego użycia danych.
+keywords: faktury rozliczeń, pobierania faktury, faktury azure, azure użycie
+services: ''
+documentationcenter: ''
 author: genlin
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eea55735d0e17de4fe543847d0d521b0e8c0c3f7
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 6fa9f9ae4ef2bd39f3c6d3ec7c6d757aa50b2fd1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobierz lub wyświetlanie Twoich Azure rozliczeń faktury i dziennego użycia danych
 Możesz pobrać faktury z [portalu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub została ona wysłana w wiadomości e-mail. Aby pobrać dzienne użycie, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Tylko w przypadku niektórych ról ma uprawnienia do rozliczeń faktury i informacje o użyciu, takie jak konto administratora. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [zarządzanie dostępem do platformy Azure, rozliczeń, za pomocą ról](billing-manage-access.md).
@@ -90,7 +90,7 @@ Tylko Administrator konta może uzyskać dostęp do Centrum konta platformy Azur
 
 Aby uzyskać więcej informacji na temat dzienne użycie zobacz [zrozumieć rachunku platformy Microsoft Azure](billing-understand-your-bill.md). Aby uzyskać pomoc, zarządzanie kosztami, [uniknąć kosztów nieoczekiwany rozliczenia Azure i kosztów zarządzania](billing-getting-started.md).
 
-## <a name="noinvoice"></a>Dlaczego nie widzę faktury w ostatnim okresie rozliczeniowym?
+## <a name="noinvoice"></a> Dlaczego nie widzę faktury w ostatnim okresie rozliczeniowym?
 
 Może istnieć kilka przyczyn widzisz faktury:
 

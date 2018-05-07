@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 8da7573d8790bae8c54d2055fd355372625eccf7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: af35bbeb203df90878408add030c47291cd94db9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure wystąpienie metadanych
 
@@ -36,7 +36,7 @@ Usługa jest dostępna w ogólnie dostępne regiony platformy Azure. Nie wszystk
 
 Regiony                                        | Dostępność?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępna globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępna   | 2017-04-02, 2017-08-01, 2017-12-01
+[Wszystkie ogólnie dostępna globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępna   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
 [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępna | 2017-04-02,2017-08-01
 [Chin Azure](https://www.azure.cn/)                                                           | Ogólnie dostępna | 2017-04-02,2017-08-01
 [Niemcy Azure](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępna | 2017-04-02,2017-08-01
@@ -286,7 +286,7 @@ Dane | Opis | Wprowadzona wersja
 location | Region platformy Azure, maszyna wirtualna jest uruchomiona | 2017-04-02 
 name | Nazwa maszyny Wirtualnej | 2017-04-02
 oferta | Oferują informacji o obrazie maszyny Wirtualnej. Ta wartość ma tylko obrazy wdrożone z galerii Azure obrazu. | 2017-04-02
-publisher | Wydawcy obrazu maszyny Wirtualnej | 2017-04-02
+Wydawcy | Wydawcy obrazu maszyny Wirtualnej | 2017-04-02
 sku | Określonej jednostki SKU dla obrazu maszyny Wirtualnej | 2017-04-02
 wersja | Wersja obrazu maszyny Wirtualnej | 2017-04-02
 osType | Linux lub Windows | 2017-04-02
@@ -303,10 +303,11 @@ strefa | [Dostępność strefy](../../availability-zones/az-overview.md) maszyny
 ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02
 ipv4/publicIpAddress | Publiczny adres IPv4 maszyny wirtualnej | 2017-04-02
 podsieć lub adres. | Adres podsieci maszyny wirtualnej | 2017-04-02 
-subnet/prefix | Prefiks podsieci, przykład 24 | 2017-04-02 
+prefiks podsieci / | Prefiks podsieci, przykład 24 | 2017-04-02 
 adres IPv6/IP | Lokalny adres IPv6 maszyny wirtualnej | 2017-04-02 
 macAddress | Adres mac dla maszyny Wirtualnej | 2017-04-02 
 scheduledevents | Zobacz [zaplanowane zdarzenia](scheduled-events.md) | 2017-08-01
+identity | (Wersja zapoznawcza) Tożsamość usługi zarządzanej. Zobacz [uzyskać token dostępu](../../active-directory/managed-service-identity/how-to-use-vm-token.md) | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>Przykładowe scenariusze użycia  
 

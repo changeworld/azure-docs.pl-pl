@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory dowód podręcznikowym koncepcji: bloki konstrukcyjne
 
@@ -275,7 +275,7 @@ Przybliżona godzina ukończone: 60 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Azure AD Connect zainstalowane i skonfigurowane | Bloków konstrukcyjnych: [synchronizacja katalogów — synchronizacja skrótów haseł](#directory-synchronization--password-hash-sync-phs--new-installation) |
-| Wymagania dotyczące spotkań wystąpienia ADLDS | [Ogólny łącznik LDAP informacje techniczne: omówienie ogólny łącznik LDAP](./connect/active-directory-aadconnectsync-connector-genericldap.md#overview-of-the-generic-ldap-connector) |
+| Wymagania dotyczące spotkań wystąpienia ADLDS | [Ogólny łącznik LDAP informacje techniczne: omówienie ogólny łącznik LDAP](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
 | Lista obciążeń, które użytkownicy korzystają z i atrybuty skojarzone z tych obciążeń. | [Synchronizacja programu Azure AD Connect: atrybuty synchronizowane z usługą Azure Active Directory](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
@@ -283,7 +283,7 @@ Przybliżona godzina ukończone: 60 minut
 
 | Krok | Zasoby |
 | --- | --- |
-| Dodaj ogólny łącznik LDAP | [Ogólny łącznik LDAP informacje techniczne: Tworzenie nowego łącznika](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
+| Dodaj ogólny łącznik LDAP | [Ogólny łącznik LDAP informacje techniczne: Tworzenie nowego łącznika](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | Tworzenie profilów uruchamiania dla utworzonego łącznika (pełny import, import zmian, pełnej synchronizacji, w ramach synchronizacji przyrostowej, eksport) | [Tworzenie profilu uruchamiania agenta zarządzania](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Używanie łączników przy użyciu usługi Azure AD Connect synchronizacji Menedżera usług](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | Pełny import profilu uruchamiania i sprawdź, czy istnieją obiekty w przestrzeni łącznika | [Wyszukiwania dla obiekt miejsca łącznika](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Używanie łączników przy użyciu usługi Azure AD Connect synchronizacji Menedżera usług: przestrzeni łącznika wyszukiwania](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
 | Tworzenie reguły synchronizacji tak, aby obiekty w magazynie Metaverse mają atrybuty niezbędne dla obciążeń | [Synchronizacja programu Azure AD Connect: najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej: zmian reguł synchronizacji](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Synchronizacja programu Azure AD Connect: opis Aprowizacją deklaratywną](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Synchronizacja programu Azure AD Connect: opis deklaratywne wyrażenia inicjowania obsługi administracyjnej](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |

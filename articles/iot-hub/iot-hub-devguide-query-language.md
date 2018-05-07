@@ -1,6 +1,6 @@
 ---
 title: Zrozumienie język zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — opis języka zapytań Centrum IoT przypominającego SQL używane do pobierania informacji o urządzeniu twins i zadania z Centrum IoT.
+description: Przewodnik dewelopera — opis Centrum IoT przypominającego SQL zapytania język używany do pobierania informacji o urządzeniu/modułu twins i zadania z Centrum IoT.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: f1c578b6ebb766f71d6e8b65b02724d91dde3126
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Język zapytań Centrum IoT urządzenia twins, zadań i rozsyłania wiadomości
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań Centrum IoT urządzenia i moduł twins, zadań i rozsyłania wiadomości
 
 Centrum IoT zapewnia zaawansowane języka przypominającego SQL, aby pobrać informacje dotyczące [twins urządzenia] [ lnk-twins] i [zadania][lnk-jobs], i [rozsyłania wiadomości][lnk-devguide-messaging-routes]. W tym artykule przedstawiono:
 

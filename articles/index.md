@@ -6,11 +6,11 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ea272619638c8794a17bcd62f818cc9f230167ef
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cd33973a4786b722ff4eafbf6be53ef9fb509f48
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -966,7 +966,7 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://azure.microsoft.com/en-us/features/xamarin">
+                                            <a href="https://azure.microsoft.com/features/xamarin">
                                                 <img src="media/index/logo_xamarin.svg" alt="" />
                                                 <p>Xamarin</p>
                                             </a>
@@ -975,9 +975,9 @@ Terraform </a>
                                     <h3>Internet rzeczy</h3>
                                     <ul>
                                         <li>
-                                            <a href="https://azure.microsoft.com/develop/iot/">
+                                            <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>Centrum deweloperów IoT</p>
+                                                <p>Podstawy usługi IoT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2637,7 +2637,7 @@ Terraform </a>
                         <a href="#iot">Internet rzeczy</a>
                         <ul id="iot" class="cardsA">
                             <li>
-                                <a href="https://azure.microsoft.com/develop/iot/">
+                                <a href="/azure/iot-fundamentals">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2647,7 +2647,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Centrum deweloperów IoT</h3>
+                                                    <h3>Podstawy usługi IoT</h3>
                                                     <p>Wprowadzenie do łączenia urządzeń</p>
                                                 </div>
                                             </div>
@@ -3355,7 +3355,7 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://azure.microsoft.com/en-us/features/xamarin">
+                                <a href="https://azure.microsoft.com/features/xamarin">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3732,7 +3732,7 @@ Terraform </a>
                     </li>
                 </ul>
             </li>
-            <li>
+             <li>
                 <a href="#sdkstools">Zestawy SDK/narzędzia</a>
                 <ul id="sdkstools">
                     <li>
@@ -3754,8 +3754,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Uzyskiwanie bibliotek platformy Azure dla platformy .NET</a>
-                                                </h3>
+Platforma Azure dla deweloperów platformy .NET </h3>
                                                 <p>
                                                     <a href="/dotnet/azure">Wprowadzenie</a>
                                                 </p>
@@ -3778,8 +3777,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/python/azure">Uzyskiwanie bibliotek platformy Azure dla języka Python</a>
-                                                </h3>
+Platforma Azure dla deweloperów języka Python </h3>
                                                 <p>
                                                     <a href="/python/azure">Wprowadzenie</a>
                                                 </p>
@@ -3802,8 +3800,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/nodejs/azure/">Uzyskiwanie bibliotek platformy Azure dla aplikacji Node.js</a>
-                                                </h3>
+Platforma Azure dla deweloperów środowiska Node.js </h3>
                                                 <p>
                                                     <a href="/javascript/azure/">Wprowadzenie</a>
                                                 </p>
@@ -3826,8 +3823,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">Uzyskiwanie bibliotek platformy Azure dla języka Java</a>
-                                                </h3>
+Platforma Azure dla deweloperów języka Java </h3>
                                                 <p>
                                                     <a href="/java/azure">Wprowadzenie</a>
                                                 </p>
@@ -3845,47 +3841,17 @@ Terraform </a>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-5.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://rubygems.org/gems/azure">Uzyskaj zestaw Ruby SDK</a>
-                                                </h3>
+Platforma Azure dla deweloperów języka Go </h3>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Wprowadzenie</a>
+                                                    <a href="/go/azure/">Wprowadzenie</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Dokumentacja interfejsu API</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">Uzyskaj przykłady</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/develop/ruby/">Dowiedz się więcej</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-                                                    <a href="/go/azure/">Uzyskaj zestaw Go SDK</a>
-                                                </h3>
-                                                <p>
-                                                    <a href="/go/azure/azure-sdk-go-qs-vm">Wprowadzenie</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Dokumentacja</a>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Dokumentacja interfejsu API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3903,13 +3869,9 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/rest/api/">Rozpocznij pracę z technologią REST</a>
-                                                </h3>
+Interfejsy API REST platformy Azure </h3>
                                                 <p>
-                                                    <a href="/rest/api">Dokumentacja</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">Uzyskaj przykłady</a>
+                                                    <a href="/rest/api">Dokumentacja interfejsu API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3932,15 +3894,12 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-Interfejs wiersza polecenia platformy Azure 2.0 </h3>
+Interfejs wiersza polecenia platformy Azure </h3>
                                                 <p>
                                                     <a href="/cli/azure">Wprowadzenie</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/install-azure-cli">Pobierz interfejs wiersza polecenia platformy Azure w wersji 2.0</a>
-                                                </p>
-                                                <p>
-                                                    <a href="/cli/azure">Dokumentacja</a>
+                                                    <a href="/cli/azure/reference-index">Dokumentacja</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3957,47 +3916,12 @@ Interfejs wiersza polecenia platformy Azure 2.0 </h3>
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>PowerShell</h3>
+                                                <h3>Azure PowerShell</h3>
                                                 <p>
                                                     <a href="/powershell/azure/get-started-azureps">Wprowadzenie</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">Pobierz program PowerShell</a>
-                                                </p>
-                                                <p>
                                                     <a href="/powershell/azure/overview">Dokumentacja</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                    <img src="media/index/azure_dev-7.svg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-Interfejs wiersza polecenia platformy Azure </h3>
-                                                <p>
-                                                    <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Wprowadzenie</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">Pobierz interfejs wiersza polecenia platformy Azure dla systemu Linux</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">Pobierz interfejs wiersza polecenia platformy Azure dla komputerów Mac</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">Pobierz interfejs wiersza polecenia platformy Azure dla systemu Windows</a>
-                                                </p>
-                                                <p>
-                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Dokumentacja</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4015,15 +3939,24 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-9.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_vs-code.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">Narzędzia Visual Studio Tools dla platformy Azure</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-azureextensionpack">Visual Studio Code</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">Pobierz</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice">App Service</a>
+                                                </p>
+                                                 <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Storage</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb">Cosmos DB</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4041,10 +3974,9 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Narzędzia platformy Docker</a>
-                                                </h3>
+Docker </h3>
                                                 <p>
-                                                    <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">Wprowadzenie</a>
+                                                    <a href="/dotnet/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio Tools for Docker</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780680">Pobierz dla programu Visual Studio</a>
@@ -4066,15 +3998,44 @@ Interfejs wiersza polecenia platformy Azure </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-8.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_java.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Narzędzia programu PowerShell dla programu Visual Studio</a>
+Narzędzia języka Java </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/java/api/overview/azure/maven/readme">Wtyczki usługi Maven</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/java/azure/java-azure-tools">IntelliJ i Eclipse</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://code.visualstudio.com/docs/languages/java">Visual Studio Code</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure_dev-2.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+                                                    <a href="https://www.visualstudio.com/vs/python">Narzędzia języka Python</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Pobierz</a>
+                                                    <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Visual Studio</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://code.visualstudio.com/docs/languages/python">Visual Studio Code</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4133,30 +4094,6 @@ Narzędzia SQL </h3>
                                                 </p>
                                                 <p>
                                                     <a href="http://go.microsoft.com/fwlink/?LinkId=708343">Pobierz dla systemu Windows</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                    <img src="media/index/azure_dev-2.svg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Narzędzia języka Python</a>
-                                                </h3>
-                                                <p>
-                                                    <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Wprowadzenie do programu Visual Studio</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://code.visualstudio.com/docs/languages/python">Wprowadzenie do programu Visual Studio Code</a>
                                                 </p>
                                             </div>
                                         </div>

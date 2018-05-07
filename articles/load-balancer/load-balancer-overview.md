@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2d9e0fc50bed4e8301a24a062407b490d688803d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 690bfa55166b6d5d4e418daa321fafad2f4b6293
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa równoważenia obciążenia Azure?
 
@@ -73,7 +73,11 @@ Moduł równoważenia obciążenia zapewnia następujące funkcje podstawowe dla
 
 * **Aplikacja o niesprecyzowanym i przezroczyste**
 
-    Moduł równoważenia obciążenia nie bezpośrednio współdziała z TCP lub UDP lub warstwy aplikacji i wszelkich TCP lub może być obsługiwany scenariusz aplikacji opartych na protokole UDP. Na przykład Chociaż usługi równoważenia obciążenia nie zakończy TLS samego, możesz skompilować i skalowanie aplikacji TLS przy użyciu usługi równoważenia obciążenia i następnie kończ połączenia TLS w samej maszyny Wirtualnej. Usługi równoważenia obciążenia nie zakończy przepływem i uzgodnienia protokołu zawsze wykonywane bezpośrednio między klientem a wystąpienia wybrane skrótu puli zaplecza. Na przykład uzgadniania TCP zawsze występuje między klientem a wybranej maszynie Wirtualnej zaplecza. Odpowiedzi na żądanie fronton jest odpowiedź, która jest generowana z zaplecza maszyny Wirtualnej. Wydajność sieci wychodzącego modułu równoważenia obciążenia jest ograniczona tylko jednostki SKU maszyny Wirtualnej, możesz wybrać i przepływów pozostają aktywne przez długi czas Jeśli nigdy nie został osiągnięty limit czasu bezczynności.
+    Moduł równoważenia obciążenia nie bezpośrednio współdziała z TCP lub UDP lub warstwy aplikacji i wszelkich TCP lub może być obsługiwany scenariusz aplikacji opartych na protokole UDP.  Moduł równoważenia obciążenia nie zakończyć lub pochodzą przepływów, interakcji z ładunku przepływu, zapewnia żadnej funkcji bramy warstwy aplikacji, a protokół uzgodnienia zawsze wykonywane bezpośrednio między klientem a wystąpienia puli zaplecza.  Odpowiedzi na przepływ ruchu przychodzącego jest zawsze odpowiedzi z maszyny wirtualnej.  Po odebraniu przepływ na maszynie wirtualnej, oryginalnego adresu IP źródłowego również są zachowywane.  Kilka przykładów dalsze ilustrujący przezroczystość:
+    - Uzgadnianie TCP zawsze występuje między klientem a wybranej maszynie Wirtualnej zaplecza. Odpowiedzi na żądanie fronton jest odpowiedzi generowane przez maszynę Wirtualną zaplecza. Do sprawdzania poprawności łączności dla tego scenariusza, należy użyć polecenia ping protokołu TCP.  Użyj [narzędzia psping](https://docs.microsoft.com/en-us/sysinternals/downloads/psping) lub [nmap](https://nmap.org) do sprawdzenia, czy uzgadniania z maszyną wirtualną w dobrej kondycji zakończy się pomyślnie. Należy pamiętać, ICMP jest protokołem IP innego niż UDP lub TCP i nie są obsługiwane w tym celu.
+    - Ładunki aplikacji są niewidoczne dla usługi równoważenia obciążenia i wszelkie UDP lub TCP na podstawie aplikacji mogą być obsługiwane. Dla obciążeń, które wymagają na przetwarzanie żądań HTTP lub manipulowania ładunków warstwy aplikacji (np. podczas analizowania adresów URL protokołu HTTP), należy użyć warstwy 7 równoważenia, takich jak [brama aplikacji w](https://azure.microsoft.com/en-us/services/application-gateway).
+    - Ponieważ usługi równoważenia obciążenia jest niezależny od ładunku TCP oraz odciążanie protokołu TLS ("SSL") nie zostanie podana, możesz skompilować kompleksowe scenariuszy zaszyfrowanych przy użyciu usługi równoważenia obciążenia i uzyskania dużych skalowania dla aplikacji protokołu TLS przerywa połączenie protokołu TLS w samej maszyny Wirtualnej.  Na przykład sesji TLS klucza pojemności jest ograniczona tylko według typu i liczbę maszyn wirtualnych, należy dodać do puli zaplecza.  Jeśli potrzebujesz "Odciążanie protokołu SSL", sposób postępowania z warstwy aplikacji lub chcesz delegować zarządzanie certyfikatami na platformie Azure, należy użyć modułu równoważenia obciążenia warstwy 7 platformy Azure [brama aplikacji w](https://azure.microsoft.com/en-us/services/application-gateway) zamiast tego.
+        
 
 * **Automatyczna ponowna konfiguracja**
 

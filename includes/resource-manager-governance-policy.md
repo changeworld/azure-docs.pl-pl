@@ -10,7 +10,7 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c04514218c7ed8dfd72b94345d2deb88e663fda1
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/23/2018
 ---

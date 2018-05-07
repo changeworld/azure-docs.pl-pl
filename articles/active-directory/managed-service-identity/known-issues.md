@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 78148c6538efa06018628297a89681ec6ec3d32d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f643b1203283d7aac01aa8821a180c898f33ec25
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Często zadawane pytania i znane problemy z zarządzania usługi tożsamości (MSI) dla usługi Azure Active Directory
 
@@ -119,15 +119,15 @@ Po uruchomieniu maszyny Wirtualnej, można usunąć tagu za pomocą następując
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-msi-preview"></a>Znane problemy związane z MSI przypisany użytkownik *(wersja zapoznawcza)*
+## <a name="known-issues-with-user-assigned-identities"></a>Znane problemy z tożsamościami przypisany użytkownik
 
-- Jedynym sposobem, aby usunąć wszystkich użytkowników przypisanych msi przypisano systemowi MSI. 
+- Przypisania przypisane tożsamości użytkownika są tylko tym dostępną dla maszyny Wirtualnej i VMSS. Ważne: Przypisania tożsamości przypisany użytkownik zmieni się w ciągu przyszłych miesięcy.
+- Zduplikowana przypisane tożsamości użytkowników w tej samej maszyny Wirtualnej/VMSS, spowoduje, że maszyna wirtualna/VMSS się niepowodzeniem. W tym tożsamości, które są dodawane z innej wielkości znaków. np. MyUserAssignedIdentity i myuserassignedidentity. 
 - Inicjowanie obsługi rozszerzenia maszyny Wirtualnej do maszyny Wirtualnej może zakończyć się niepowodzeniem z powodu błędów wyszukiwania DNS. Uruchom ponownie maszynę Wirtualną, a następnie spróbuj ponownie. 
-- Dodawanie MSI "nieistniejącego" spowoduje, że maszyna wirtualna może się nie powieść. *Uwaga: Poprawka niepowodzenia Przypisz tożsamości w przypadku Instalatora MSI nie istnieje, ma zostać przeniesiona poza*
-- Samouczek usługi Azure magazynu jest dostępna tylko w centralnej nam EUAP w tej chwili. 
-- Tworzenie użytkownika przypisanego MSI znaki specjalne (np. podkreślenie) w nazwie, nie jest obsługiwane.
-- Dodawanie drugiego użytkownika przypisany tożsamości, clientID może być dostępne dla żądań tokenów dla niego. Jako ograniczenie Uruchom ponownie rozszerzenia MSI maszyny Wirtualnej za pomocą następujących poleceń dwóch bash:
+- Dodawanie tożsamości przypisane przez użytkownika "nieistniejącego" spowoduje, że maszyna wirtualna może się nie powieść. 
+- Tworzenie użytkownika przypisanego tożsamości z znaki specjalne (np. podkreślenie) w nazwie, nie jest obsługiwane.
+- Użytkownik, któremu przypisano nazwy tożsamości są ograniczone do 24 znaków dla scenariusza pełnego. Tożsamości przypisanych użytkowników o nazwach dłużej niż 24 znaki zakończy się niepowodzeniem do przypisania.  
+- Po dodaniu drugiego użytkownika przypisaniu tożsamości, clientID może być niedostępne dla żądań tokenów dla rozszerzenia maszyny Wirtualnej. Jako ograniczenie Uruchom ponownie rozszerzenia MSI maszyny Wirtualnej za pomocą następujących poleceń dwóch bash:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- VMAgent w systemie Windows nie obsługuje obecnie MSI przypisany użytkownik. 
-- Gdy użytkownik, któremu przypisano MSI ma Maszynę wirtualną, ale żaden system przydzielonych MSI, portalu interfejsu użytkownika będzie widoczna MSI jako włączona. Aby włączyć system przypisane MSI, użyj szablonu usługi Azure Resource Manager, Azure CLI lub zestawu SDK.
+- Gdy maszyna wirtualna ma przypisany tożsamości użytkownika, ale nie systemu przypisane tożsamości, portalu interfejsu użytkownika zostanie wyświetlone MSI jako wyłączone. Aby włączyć system przypisane tożsamości, należy użyć szablonu usługi Azure Resource Manager, Azure CLI lub zestawu SDK.

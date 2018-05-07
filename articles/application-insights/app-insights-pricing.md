@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Zarządzanie wolumin ceny i danych w usłudze Application Insights
 
@@ -40,11 +40,8 @@ Dla bieżącego cen w walucie i regionu, zobacz [usługi Application Insights wy
 
 Podstawowy plan jest ustawieniem domyślnym cennik planu, gdy zostanie utworzony nowy zasób usługi Application Insights. Podstawowy plan jest optymalna dla wszystkich klientów z wyjątkiem tych, którzy mają subskrypcję usługi Operations Management Suite.
 
-* W planie Basic naliczane są opłaty za ilość danych. Ilość danych jest to liczba bajtów odebranych przez usługę Application Insights telemetrii. 
-    
-    Ilość danych jest mierzony jako rozmiar nieskompresowanych pakiet danych JSON, który jest odbierany przez usługę Application Insights z poziomu aplikacji.
-
-    Aby uzyskać [zaimportowany do analizy danych tabelarycznych](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), ilość danych jest mierzony jako rozmiar nieskompresowanych plików, które są wysyłane do usługi Application Insights.
+* W planie Basic naliczane są opłaty za ilość danych. Ilość danych jest to liczba bajtów odebranych przez usługę Application Insights telemetrii. Ilość danych jest mierzony jako rozmiar nieskompresowanych pakiet danych JSON, który jest odbierany przez usługę Application Insights z poziomu aplikacji. Aby uzyskać [zaimportowany do analizy danych tabelarycznych](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), ilość danych jest mierzony jako rozmiar nieskompresowanych plików, które są wysyłane do usługi Application Insights.
+* Opłaty wolumin danych aplikacji są teraz zgłaszanych na nowy licznik rozliczeń o nazwie **wprowadzanie danych** od 2018 kwietnia. Nowy licznik jest udostępniany przez monitorowanie technologii, takich jak aplikacje wgląd i analizy dzienników i jest obecnie pod nazwą usługi **usługi aplikacji** (i szybko zmienić **analizy dzienników**). 
 * [Metryki strumień na żywo](app-insights-live-stream.md) danych nie są one uwzględniane dla celów cennik.
 * [Eksport ciągły](app-insights-export-telemetry.md) i [łącznika Azure Log Analytics](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) dostępnych bez dodatkowych opłat w planie Basic lub nowszym 2018 kwietnia.
 

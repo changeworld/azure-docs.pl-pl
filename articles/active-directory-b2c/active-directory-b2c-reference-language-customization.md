@@ -11,17 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Dostosowywanie języka w usłudze Azure Active Directory B2C
-
->[!NOTE]
->Ta funkcja jest dostępna w publicznej wersji zapoznawczej.
->
 
 Dostosowywanie języka w usłudze Azure Active Directory B2C (Azure AD B2C) umożliwia zasady, aby zmieścił się w różnych językach, w zależności od potrzeb klientów.  Firma Microsoft udostępnia tłumaczenia dla [36 języków](#supported-languages), ale można też podać własne tłumaczenia dla żadnego języka. Nawet jeśli środowiska jest dostarczany tylko jednego języka, można dostosować tekst na stronach.  
 
@@ -49,7 +45,7 @@ Podczas dostosowywania języka zasad zostanie włączone, można kontrolować j�
 5. Przeczytaj informacje w oknie dialogowym, a następnie wybierz **tak**.
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Wybierz języki w podróży użytkownika są włączone 
-Włącz zestaw języków dla podróży użytkownika ma zostać poddany translacji o tym, kiedy `ui_locales` nie podano parametru.
+Włącz zestaw języków dla podróży użytkownika do przetłumaczenia na żądanie przeglądarki bez `ui_locales` parametru.
 1. Sprawdź, czy zasady ma włączyć za pomocą poprzedniej instrukcje dostosowywania języka.
 2. Z **edytować zasady** wybierz pozycję **dostosowywania języka**.
 3. Wybierz język, który ma być obsługiwana.
@@ -102,7 +98,7 @@ Zastąp `<ExtensionAttribute>` o nazwie atrybut użytkownika niestandardowego.
 Zastąp `<ExtensionAttributeValue>` o nowe parametry, które mają być wyświetlane.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Podaj listę wartości przy użyciu LocalizedCollections
-Jeśli chcesz udostępnić listę zestaw wartości dla odpowiedzi, należy utworzyć `LocalizedCollections` atrybutu.  `LocalizedCollections` jest tablicą `Name` i `Value` pary. Aby dodać `LocalizedCollections`, użyj następującego formatu:
+Jeśli chcesz udostępnić listę zestaw wartości dla odpowiedzi, należy utworzyć `LocalizedCollections` atrybutu.  `LocalizedCollections` jest tablicą `Name` i `Value` pary. Kolejność elementów będzie kolejność ich wyświetlania.  Aby dodać `LocalizedCollections`, użyj następującego formatu:
 
 ```JSON
 {
@@ -153,9 +149,9 @@ Można załadować strony w `fr`. Po stronie ściąga zawartości HTML i CSS, je
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-locales"></a>Dodaj niestandardowe ustawienia regionalne
+## <a name="add-custom-languages"></a>Dodaj niestandardowe języki
 
-Można również dodać języki, które aktualnie nie oferuje tłumaczenia. Należy podać tłumaczenia dla wszystkich ciągów w zasadach.
+Można również dodać języki, które aktualnie nie oferuje tłumaczenia. Należy podać tłumaczenia dla wszystkich ciągów w zasadach.  Kody język i ustawienia regionalne są ograniczone do tych w normie ISO 639-1. 
 
 1. Z **edytować zasady** wybierz pozycję **dostosowywania języka**.
 2. Wybierz **dodać niestandardowe język** w górnej części strony.
@@ -165,6 +161,10 @@ Można również dodać języki, które aktualnie nie oferuje tłumaczenia. Nale
 6. Wybierz **włączyć**, i zgodnie z zasadami można teraz wyświetlić ten język dla użytkowników.
 7. Zapisz ten język.
 
+>[!IMPORTANT]
+>Należy włączyć obsługę języków niestandardowych lub Przekaż zastąpienia go przed zapisaniem.
+>
+
 ## <a name="additional-information"></a>Dodatkowe informacje
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>Etykiety dostosowania interfejsu użytkownika strony jako zastąpień
@@ -172,7 +172,7 @@ Po włączeniu dostosowania języka wcześniejszych zmian dla etykiet przy użyc
 ### <a name="up-to-date-translations"></a>Aktualne tłumaczenia
 Firma Microsoft dokłada starań, aby udostępniać aktualne tłumaczeń do użycia. Firma Microsoft stale zwiększa tłumaczenia i przechowuje je w zgodności dla Ciebie. Microsoft będzie zidentyfikować usterek i zmiany w terminologii globalne i upewnij aktualizacje, które będą działać bezproblemowo w podróży użytkownika.
 ### <a name="support-for-right-to-left-languages"></a>Obsługa języków od prawej do lewej
-Firma Microsoft obecnie nie zapewnia obsługi języków od prawej do lewej. Jeśli chcesz dodać tę funkcję, należy głosowania dla niego w [opinii Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
+Firma Microsoft obecnie nie zapewnia obsługi języków od prawej do lewej. Można to zrobić przy użyciu niestandardowych ustawień regionalnych i CSS Aby zmienić sposób wyświetlania ciągi.  Jeśli chcesz dodać tę funkcję, należy głosowania dla niego w [opinii Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
 ### <a name="social-identity-provider-translations"></a>Tłumaczenie dostawcy tożsamości społecznościowych
 Firma Microsoft udostępnia `ui_locales` OIDC parametr społecznościowych logowania. Jednak niektóre dostawców tożsamości społecznościowych, w tym Facebook i Google, nie uwzględnić je. 
 ### <a name="browser-behavior"></a>Zachowanie przeglądarki
@@ -202,7 +202,7 @@ Chrome i Firefox zarówno zażądać ich języka zestawu. Jeśli jest obsługiwa
 | Malajalam             | ml            |
 | Marathi               | mr            |
 | Malajski                 | ms            |
-| Norwegian Bokmal      | nb            |
+| Norweski (Nynorsk)      | nb            |
 | Holenderski                 | nl            |
 | Pendżabski               | pa            |
 | Polski                | pl            |

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Kontener rozwiązania monitorowanie analizy dzienników
 
@@ -34,8 +34,9 @@ Rozwiązanie zawiera kontenery, które są, obrazów kontenera nich uruchomiony 
 - Service Fabric
 - Red Hat OpenShift
 
+Jeśli interesuje Cię monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes hostowanej na AKS (usługi kontenera platformy Azure), zobacz [usługi kontenera platformy Azure Monitor](../monitoring/monitoring-container-health.md).  To rozwiązanie monitorowanie kontenera nie obsługują monitorowanie tej platformy.  
 
-Na poniższym diagramie przedstawiono relacje między różnych hostów kontenera i agentów z usługą OMS.
+Na poniższym diagramie przedstawiono relacje między różnymi hostów kontenera i agentów z analizy dzienników.
 
 ![Diagram kontenerów](./media/log-analytics-containers/containers-diagram.png)
 
@@ -51,7 +52,7 @@ W poniższej tabeli przedstawiono aranżacji Docker i monitorowania obsługę ko
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Usługa<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Usługa<br>Sieć szkieletowa | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat Otwórz<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(autonomiczna) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Serwer systemu Linux<br>(autonomiczna) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -91,7 +92,7 @@ W poniższej tabeli przedstawiono aranżacji Docker i monitorowania obsługę ko
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania.
 
-1. Dodaj rozwiązanie monitorowanie kontenera na obszar roboczy OMS z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
+1. Dodaj rozwiązanie monitorowania kontenera do obszaru roboczego analizy dzienników z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
 
 2. Zainstalować i korzystać z agentem pakietu OMS Docker. Oparte na systemie operacyjnym i Docker orchestrator, można użyć następujących metod można skonfigurować agenta.
   - W przypadku autonomicznych hostów:
@@ -116,15 +117,15 @@ Przegląd [aparatem platformy Docker w systemie Windows](https://docs.microsoft.
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Instalowanie i konfigurowanie hostów kontenera systemu Linux
 
-Po zainstalowaniu Docker Użyj następujących ustawień dla hosta kontenera, aby skonfigurować agenta do użycia z Docker. Najpierw należy OMS identyfikator i klucz, który można znaleźć w portalu Azure. W obszarze roboczym, kliknij przycisk **Szybki Start** > **komputerów** do wyświetlania Twojego **identyfikator obszaru roboczego** i **klucz podstawowy**.  Skopiuj i wklej obie wartości do ulubionego edytora.
+Po zainstalowaniu Docker Użyj następujących ustawień dla hosta kontenera, aby skonfigurować agenta do użycia z Docker. Najpierw należy swój identyfikator obszaru roboczego analizy dzienników i klucz, który można znaleźć w portalu Azure. W obszarze roboczym, kliknij przycisk **Szybki Start** > **komputerów** do wyświetlania Twojego **identyfikator obszaru roboczego** i **klucz podstawowy**.  Skopiuj i wklej obie wartości do ulubionego edytora.
 
 **Dla wszystkich hostów kontenera Linux z wyjątkiem CoreOS:**
 
-- Aby uzyskać więcej informacji i kroki dotyczące instalowania agenta pakietu OMS dla systemu Linux, zobacz [połączyć komputery Linux do Operations Management Suite (OMS)](log-analytics-agent-linux.md).
+- Aby uzyskać więcej informacji i kroki dotyczące instalowania agenta pakietu OMS dla systemu Linux, zobacz [połączenie komputerów Linux Log Analytics](log-analytics-concept-hybrid.md).
 
 **Dla wszystkich hostów kontenera Linux CoreOS w tym:**
 
-Uruchom kontener OMS, który chcesz monitorować. Zmodyfikuj i skorzystaj z następującego przykładu:
+Uruchom kontenera, w którym mają być monitorowane. Zmodyfikuj i skorzystaj z następującego przykładu:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
@@ -132,7 +133,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 **Dla wszystkich hostów kontenera platformy Azure dla instytucji rządowych Linux CoreOS w tym:**
 
-Uruchom kontener OMS, który chcesz monitorować. Zmodyfikuj i skorzystaj z następującego przykładu:
+Uruchom kontenera, w którym mają być monitorowane. Zmodyfikuj i skorzystaj z następującego przykładu:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
@@ -144,7 +145,7 @@ Jeśli wcześniej używana bezpośrednio zainstalować agenta i chcesz zamiast t
 
 #### <a name="configure-an-oms-agent-for-docker-swarm"></a>Konfigurowanie agenta pakietu OMS dla rozwiązania Docker Swarm
 
-Agent pakietu OMS można uruchomić jako usługę globalnej w rozwiązaniu Docker Swarm. Skorzystaj z poniższych informacji, aby utworzyć usługę agenta pakietu OMS. Należy wstawić OMS identyfikator i klucz podstawowy.
+Agent pakietu OMS można uruchomić jako usługę globalnej w rozwiązaniu Docker Swarm. Skorzystaj z poniższych informacji, aby utworzyć usługę agenta pakietu OMS. Należy podać identyfikator obszaru roboczego analizy dzienników i klucz podstawowy.
 
 - Uruchom następujące polecenie na węzła głównego.
 
@@ -190,8 +191,8 @@ Istnieją trzy sposoby dodawania Agent pakietu OMS do Red Hat OpenShift można u
 
 W tej sekcji możemy opisano kroki wymagane do zainstalowania agenta pakietu OMS jako zbiór demon OpenShift.  
 
-1. Zaloguj się do węzła głównego OpenShift, a następnie skopiuj plik yaml programu [ocp omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z serwisu GitHub, aby Twój główny węzeł i zmodyfikuj wartość za pomocą Identyfikatora obszar roboczy OMS i kluczem podstawowym.
-2. Uruchom następujące polecenia, aby utworzyć projekt pakietu OMS i ustaw konto użytkownika.
+1. Zaloguj się do węzła głównego OpenShift, a następnie skopiuj plik yaml programu [ocp omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z serwisu GitHub, aby Twój główny węzeł i zmodyfikować wartości z Identyfikatorem obszaru roboczego analizy dzienników i kluczem podstawowym.
+2. Uruchom następujące polecenia, aby utworzyć projekt analizy dzienników i ustaw konto użytkownika.
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -227,10 +228,10 @@ W tej sekcji możemy opisano kroki wymagane do zainstalowania agenta pakietu OMS
     No events.  
     ```
 
-Jeśli chcesz zabezpieczyć OMS identyfikator i klucz podstawowy, korzystając z pliku zestawu demon yaml programu Agent pakietu OMS przy użyciu kluczy tajnych, wykonaj następujące kroki.
+Jeśli chcesz zabezpieczyć dziennika analizy identyfikator i klucz podstawowy, korzystając z pliku zestawu demon yaml programu Agent pakietu OMS przy użyciu kluczy tajnych, wykonaj następujące kroki.
 
-1. Zaloguj się do węzła głównego OpenShift, a następnie skopiuj plik yaml programu [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) i klucz tajny Generowanie skryptu [ocp secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z usługi GitHub.  Ten skrypt spowoduje wygenerowanie pliku yaml programu kluczy tajnych OMS identyfikator obszaru roboczego i klucz podstawowy zabezpieczyć Twoje secrete informacji.  
-2. Uruchom następujące polecenia, aby utworzyć projekt pakietu OMS i ustaw konto użytkownika. Klucz tajny Generowanie skryptu poprosi o podanie Identyfikatora obszar roboczy OMS <WSID> i klucz podstawowy <KEY> i po jego ukończeniu, tworzy plik ocp secret.yaml.  
+1. Zaloguj się do węzła głównego OpenShift, a następnie skopiuj plik yaml programu [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) i klucz tajny Generowanie skryptu [ocp secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z usługi GitHub.  Ten skrypt spowoduje wygenerowanie pliku yaml programu kluczy tajnych identyfikator obszaru roboczego analizy dzienników i klucz podstawowy zabezpieczyć Twoje secrete informacji.  
+2. Uruchom następujące polecenia, aby utworzyć projekt analizy dzienników i ustaw konto użytkownika. Klucz tajny Generowanie skryptu poprosi o podanie Identyfikatora obszaru roboczego analizy dzienników <WSID> i klucz podstawowy <KEY> i po jego ukończeniu, tworzy plik ocp secret.yaml.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -314,7 +315,7 @@ Można utworzyć omsagent DaemonSets z lub bez kluczy tajnych.
     1. Skopiuj skrypt i pliku szablonu tajne i upewnij się, że znajdują się w tym samym katalogu.
         - Generowanie skryptu - gen.sh klucz tajny klucz tajny
         - Szablon tajne — template.yaml klucz tajny
-    2. Uruchom skrypt, jak w następującym przykładzie. Wyświetleniu zapytania o OMS identyfikator i klucz podstawowy i po wprowadzeniu ich skrypt tworzy plik tajny yaml programu, dlatego może być uruchomiony.   
+    2. Uruchom skrypt, jak w następującym przykładzie. Skrypt wprowadza identyfikator obszaru roboczego analizy dzienników i klucz podstawowy i po wprowadzeniu ich skrypt tworzy plik tajny yaml programu, dlatego może być uruchomiony.   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -549,7 +550,7 @@ W poniższej tabeli przedstawiono przykłady rekordów zebrane przez rozwiązani
 | --- | --- | --- |
 | Wydajność dla hostów i kontenerów | `Perf` | Komputer, nazwa obiektu, CounterName &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, użycie pamięć (MB), sieci odbieranie bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem |
 | Kontener magazynu | `ContainerInventory` | TimeGenerated, komputera, nazwę kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, CreatedTime, StartedTime, FinishedTime, SourceSystem, identyfikatora kontenera, ImageID |
-| Kontener magazynu obrazu | `ContainerImageInventory` | TimeGenerated, Computer, Image, ImageTag, ImageSize, VirtualSize, Running, Paused, Stopped, Failed, SourceSystem, ImageID, TotalContainer |
+| Kontener magazynu obrazu | `ContainerImageInventory` | TimeGenerated, komputer, obraz, ImageTag, ImageSize, VirtualSize, działa wstrzymana, zatrzymana, nie powiodło się, SourceSystem, ImageID, TotalContainer |
 | Kontener dziennika | `ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, nazwy kontenera, LogEntrySource, LogEntry, SourceSystem, identyfikatora kontenera |
 | Dziennik usługi kontenera | `ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, Image, Command, SourceSystem, ContainerID |
 | Kontener węzła magazynu | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
@@ -561,7 +562,7 @@ Etykiety dołączany do *PodLabel* typy danych są etykiet niestandardowych. Do�
 
 
 ## <a name="monitor-containers"></a>Monitorowanie kontenerów
-Po rozwiązaniu włączone w portalu OMS **kontenery** kafelka zawiera podsumowanie informacji o hostach kontenera i kontenery uruchomione na hostach.
+Po rozwiązaniu włączone w portalu usługi Analiza dzienników **kontenery** kafelka zawiera podsumowanie informacji o hostach kontenera i kontenery uruchomione na hostach.
 
 ![Kontenery kafelka](./media/log-analytics-containers/containers-title.png)
 

@@ -1,9 +1,9 @@
 ---
-title: "Określenie scenariuszy i Planowanie procesu analytics - Azure | Dokumentacja firmy Microsoft"
-description: "Planowanie zaawansowana analityka przy uwzględnieniu szereg pytań klucza."
+title: Określenie scenariuszy i Planowanie procesu analytics - Azure | Dokumentacja firmy Microsoft
+description: Planowanie zaawansowana analityka przy uwzględnieniu szereg pytań klucza.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: d2b982669f126695e3e5baefce24853269947536
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy
 Jakie zasoby powinny zamierzasz włączyć podczas konfigurowania środowiska w celu zaawansowana analityka przetwarzania na zestaw danych? W tym artykule sugeruje szereg pytań pomagające w identyfikacji zadania i odpowiednie zasoby danego scenariusza. Kolejność etapów wysokiego poziomu analizy predykcyjnej jest opisane w temacie [co to jest proces nauki danych zespołu (TDSP)?](overview.md). Każda z tych czynności wymaga określonych zasobów dla zadań dotyczących Twojego scenariusza. Ważne pytania, aby zidentyfikować scenariusz dotyczy danych logistyki cech jakości zestawów danych, narzędzia i języki, aby wykonać analizy.
@@ -52,7 +52,7 @@ Logistyczna pytania dotyczą lokalizację **źródła danych**, **docelowej** pl
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Pytania dotyczące danych właściwości: typ, format i rozmiar
 Pytania te stanowią podstawę planowania magazynu i przetwarzania środowiska, które są odpowiednie do różnych typów danych i każdy z nich ma pewne ograniczenia.
 
-1. **Co to są typy danych?** Na przykład:
+1. **Jakie są typy danych?** Na przykład:
    
    * Wartości liczbowych
    * Podzielone na kategorie
@@ -94,7 +94,7 @@ Istnieje wiele opcji w zależności od jakich języków i środowisk dewelopersk
 2. **Jakie narzędzia należy używać do analizy danych?**
    
    * [Microsoft Azure Powershell](/powershell/azure/overview) -język skryptów służących do administrowania zasobami Azure w języku skryptu.
-   * [Usługa Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+   * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
    * [Obrót analityka](http://www.revolutionanalytics.com/revolution-r-open)
    * [Programu RStudio](http://www.rstudio.com)
    * [Python Tools for Visual Studio](http://microsoft.github.io/PTVS/)

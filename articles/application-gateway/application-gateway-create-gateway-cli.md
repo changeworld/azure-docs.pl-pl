@@ -1,22 +1,22 @@
 ---
-title: "Utwórz bramę aplikacji - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramę aplikacji przy użyciu wiersza polecenia platformy Azure."
+title: Utwórz bramę aplikacji - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: bf7e22e86e593045d25a9f31166aebe992caeb45
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 791cc8bca95fc2264b485c23f30e24254067f513
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Utwórz bramę aplikacji przy użyciu wiersza polecenia platformy Azure
 
@@ -38,7 +38,7 @@ Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastu
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Utwórz zasoby sieciowe 
+## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
 Tworzenie sieci wirtualnej i podsieci przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/vnet#az_vnet_create). Utwórz publiczny adres IP przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_public_ip_create).
 
@@ -60,13 +60,13 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-backend-servers"></a>Utwórz serwerów wewnętrznej bazy danych
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Należy również zainstalować NGINX na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
-### <a name="create-two-virtual-machines"></a>Utwórz dwie maszyny wirtualne
+### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
 
-Plik konfiguracji chmury init służy do instalowania NGINX i uruchamianie aplikacji Node.js "Hello World" w maszynie wirtualnej systemu Linux. W bieżącym powłoki Utwórz plik o nazwie init.txt chmury i skopiuj i wklej następującą konfigurację w powłoce. Upewnij się, że należy skopiować cały init chmury pliku poprawnie, szczególnie pierwszy wiersz:
+Aby zainstalować serwer NGINX i uruchomić aplikację Node.js „Hello World” na maszynie wirtualnej z systemem Linux, możesz użyć pliku konfiguracji cloud-init. W bieżącej powłoce utwórz plik o nazwie cloud-init.txt, a następnie skopiuj i wklej poniższą konfigurację do powłoki. Upewnij się, że kopiujesz cały plik cloud-init, a szczególnie pierwszy wiersz:
 
 ```yaml
 #cloud-config
@@ -110,7 +110,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Tworzenie interfejsów sieciowych z [tworzenie kart interfejsu sieciowego az](/cli/azure/network/nic#az_network_nic_create). Tworzenie maszyn wirtualnych z [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create).
+Tworzenie interfejsów sieciowych z [tworzenie kart interfejsu sieciowego az](/cli/azure/network/nic#az_network_nic_create). Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -160,7 +160,7 @@ Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworz
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, należy użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, należy użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -182,5 +182,5 @@ az group delete --name myResourceGroupAG
  
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym szybkiego startu utworzyć grupę zasobów, zasobów sieciowych i serwerów wewnętrznej bazy danych. Te zasoby są następnie używane do tworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do tworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
 

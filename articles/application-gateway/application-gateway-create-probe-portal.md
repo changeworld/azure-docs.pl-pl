@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie niestandardowych sondowania — brama aplikacji w usłudze Azure - Azure Portal | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć niestandardowe sondowania bramy aplikacji przy użyciu portalu"
+title: Tworzenie niestandardowych sondowania — brama aplikacji w usłudze Azure - Azure Portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć niestandardowe sondowania bramy aplikacji przy użyciu portalu
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: bb77c9b39e1aa89f6411de8ec3b1fca41e954bf2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 45737c1c378ec56a5e2bedec8c1f7b7bc7ba6225
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowych sondowania bramy aplikacji przy użyciu portalu
 
 > [!div class="op_single_selector"]
-> * [Azure portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasyczny portal Azure — program PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -53,7 +53,7 @@ Sondy są konfigurowane w dwóch etapach za pośrednictwem portalu. Pierwszym kr
   |**Nazwa**|customProbe|Ta wartość jest przyjazną nazwę sondowania, który jest dostępny w portalu.|
   |**Protokół**|HTTP lub HTTPS | Protokół, który używa sondy kondycji.|
   |**Host**|tj contoso.com|Ta wartość jest nazwa hosta jest używana do sondowania. Dotyczy tylko wtedy, gdy obejmujący wiele lokacji jest skonfigurowany dla bramy aplikacji, w przeciwnym razie użyj '127.0.0.1'. Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej.|
-  |**Ścieżka**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowych sondy. Nieprawidłowa ścieżka zaczyna się od '/'. Domyślna ścieżka http://contoso.com po prostu użyj "/" |
+  |**Ścieżka**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowych sondy. Nieprawidłowa ścieżka zaczyna się od '/'. Ścieżki domyślnej http://contoso.com użyć "/" |
   |**Interwał (w sekundach)**|30|Jak często sondy jest uruchamiany do sprawdzenia kondycji. Nie zaleca się ustawić niższy niż 30 sekund.|
   |**Limit czasu (w sekundach)**|30|Ilość czasu sondy czeka przed przekroczeniem limitu czasu. Limit czasu musi być odpowiednio wysoka, że wywołanie http może również upewnić się, że strona kondycji wewnętrznej bazy danych jest dostępna.|
   |**Próg złej kondycji**|3|Liczba nieudanych prób jest określana jako zła. Próg 0 oznacza, że jeśli zaplecza niepowodzenia sprawdzania kondycji jest określany złej kondycji od razu.|

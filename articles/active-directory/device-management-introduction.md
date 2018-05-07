@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzanie urządzeniami może pomóc uzyskać kontrolę nad urządzeniami, które uzyskują dostęp do zasobów w danym środowisku."
+title: Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzanie urządzeniami może pomóc uzyskać kontrolę nad urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: faea960d2b6207aab5a2f5df8dc65fddc9ba5b54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
 
@@ -73,7 +73,7 @@ Celem urządzeń usługi Azure AD przyłączony jest uproszczenie:
 
 
 Te cele są realizowane przez zapewnienie użytkownikom przy użyciu środowiska samodzielnego uzyskania urządzenia należące do pracy pod kontrolą programu Azure AD.  
-**Azure AD Join** jest przeznaczona dla organizacji, które są najpierw chmury / tylko w chmurze. Są to zazwyczaj małych i średnich firm, które nie mają infrastruktury lokalnej usługi Active Directory systemu Windows Server. 
+**Azure AD Join** jest przeznaczona dla organizacji, które chcesz najpierw chmury lub tylko w chmurze. Brak ograniczeń rozmiaru lub typ organizacji, które można wdrożyć w usłudze Azure AD Join nie istnieje. Azure AD Join działa prawidłowo nawet w przypadku środowiska hybrydowego, a można włączyć dostęp do lokalnych aplikacji i zasobów.
 
 Wdrażanie usługi Azure AD przyłączone do urządzeń zapewnia następujące korzyści:
 
@@ -81,11 +81,14 @@ Wdrażanie usługi Azure AD przyłączone do urządzeń zapewnia następujące k
 
 - **Roaming zgodne Enterprise** ustawień użytkownika na urządzeniach połączonych. Użytkownicy nie muszą łączyć konta Microsoft (na przykład usługi Hotmail), aby wyświetlić ustawienia między urządzeniami.
 
-- **Dostęp do Sklepu Windows dla firm** przy użyciu konta usługi AD. Użytkownicy, można wybrać ze spisu aplikacji wstępnie wybrany przez organizację.
+- **Dostęp do Sklepu Windows dla firm** przy użyciu konta usługi Azure AD. Użytkownicy, można wybrać ze spisu aplikacji wstępnie wybrany przez organizację.
 
 - **Usługi Windows Hello** obsługę bezpiecznej i wygodny dostęp do zasobów.
 
 - **Ograniczenie dostępu** aby aplikacji tylko w przypadku urządzeń, które spełniają zasady zgodności.
+
+- **Bezproblemowy dostęp do zasobów na lokalnych** gdy urządzenie ma procesów z wiersza do lokalnego kontrolera domeny.
+
 
 Podczas usługi Azure AD join jest przeznaczone głównie dla organizacji, które nie mają infrastruktury lokalnej usługi Active Directory systemu Windows Server, można wykonywać następujące czynności na pewno również korzystać w scenariuszach, w których:
 
@@ -163,7 +166,7 @@ Zgodnie z zasadą thumb należy użyć:
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać przegląd sposobu zarządzania urządzeniami w portalu Azure, zobacz [zarządzanie urządzeniami przy użyciu portalu Azure](device-management-azure-portal.md)
 

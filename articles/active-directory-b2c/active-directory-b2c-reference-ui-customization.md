@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e6d1e093fafc6ea74dfcdfa498810ff33d27d89f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: b202f30e5fb47bcd16f25c5961f8345dd0324139
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Usługa Azure Active Directory B2C: Dostosowywanie interfejsu użytkownika (UI) usługi Azure AD B2C
 
@@ -332,7 +332,17 @@ Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy uży
 
 ## <a name="localizing-your-html-content"></a>Lokalizacja zawartości HTML
 
-Można lokalizować zawartość HTML, włączając ["Języka dostosowania"](active-directory-b2c-reference-language-customization.md).  Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales`, do punktu końcowego.  Serwer zawartości można Użyj tego parametru, aby zapewnić dostosowanych stron HTML, które są specyficzne dla języka.
+Istnieją dwa sposoby do zlokalizowania zawartości HTML. Jednym ze sposobów jest włączenie [dostosowywania języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales`, do punktu końcowego.  Serwer zawartości można Użyj tego parametru, aby zapewnić dostosowanych stron HTML określonego języka.
+
+Alternatywnie można pobierać zawartość z różnych miejsc, oparte na ustawienia regionalne, który jest używany. Punkt końcowy z obsługą CORS można skonfigurować strukturę folderów do hosta zawartości dla określonych języków. Właściwy będzie wywołania w przypadku użyj wartości symbolu wieloznacznego `{Culture:RFC5646}`.  Załóżmy na przykład, że jest to niestandardowej strony identyfikatora URI:
+
+```
+https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
+```
+Można załadować strony w `fr`. Po stronie ściąga zawartości HTML i CSS, jest ściąganie z:
+```
+https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
+```
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>Warto zapamiętać podczas tworzenia własnych zawartości
 

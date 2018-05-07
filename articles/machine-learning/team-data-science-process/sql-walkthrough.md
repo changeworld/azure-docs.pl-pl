@@ -1,9 +1,9 @@
 ---
-title: "Tworzenie i wdrażanie modelu uczenia maszynowego przy użyciu programu SQL Server na maszynie Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
+title: Tworzenie i wdrażanie modelu uczenia maszynowego przy użyciu programu SQL Server na maszynie Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
 description: Proces zaawansowane metody analizy i technologii w akcji
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: deguhath
+ms.openlocfilehash: 1e53814c0c0598380944d576e1937e38d1e1d792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Proces nauki danych zespołu w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego przy użyciu programu SQL Server i publicznie dostępnych danych — [rund taksówki NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje nauki standardowych danych przepływu pracy: pozyskiwania i eksplorować dane funkcje odtwarzania w celu ułatwienia learning, a następnie Skompiluj i Wdróż model.
@@ -75,8 +75,8 @@ Aby skonfigurować środowisko nauki danych Azure:
    > [!NOTE]
    > Przykładowe skrypty i notebooki IPython zostaną pobrane do analizy danych maszyny wirtualnej, podczas procesu instalacji. Po zakończeniu działania skryptu poinstalacyjnego maszyny Wirtualnej, przykłady będą biblioteki dokumentów maszyny Wirtualnej:  
    > 
-   > * Przykładowe skrypty:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * Przykładowe IPython notesów:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Przykładowe skrypty: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * Przykładowe IPython notesów: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   gdzie `<user_name>` jest nazwą logowania systemu Windows maszyny Wirtualnej. Odnoszą się do folderów próbki jako **przykładowe skrypty** i **notesów IPython próbki**.
    > 
    > 
@@ -578,7 +578,7 @@ W tym ćwiczeniu mamy już przedstawione i odtwarzane danych w programie SQL Ser
    
     ![Uczenie maszynowe Azure i zaimportuj dane][17]
 2. Wybierz **bazy danych SQL Azure** jako **źródła danych** w **właściwości** panelu.
-3. Wprowadź nazwę DNS bazy danych w **nazwę serwera bazy danych** pola. Format:`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Wprowadź nazwę DNS bazy danych w **nazwę serwera bazy danych** pola. Format: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Wprowadź **Nazwa bazy danych** w odpowiednie pole.
 5. Wprowadź **nazwa użytkownika SQL** w ** nazwa_serwera aqccount użytkownika i hasło w **hasło konta użytkownika serwera**.
 7. W **zapytanie bazy danych** edytowania obszaru tekstu, Wklej zapytanie, które zwraca pola niezbędne bazy danych (w tym wszystkie pola obliczanej, takich jak etykiety) i w dół próbek danych do żądanego próbkowania.

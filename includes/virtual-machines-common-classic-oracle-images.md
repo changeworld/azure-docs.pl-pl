@@ -22,6 +22,6 @@ Poniżej znajduje się lista dostępnych wstępnie skonfigurowanych obrazów mas
 * Oracle Linux 7.0.0.0.0
 * Oracle Linux 7.2.0.0.0
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 [Obrazy maszyn wirtualnych środowiska Oracle — różne zagadnienia](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 

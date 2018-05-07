@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 05/01/2018
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integracja istniejącej infrastrukturze serwera NPS z usługi Azure Multi-Factor Authentication
 
@@ -117,9 +117,9 @@ Podczas wdrażania rozszerzenia serwera NPS, użyj te czynniki do oceny, które 
 
 Możesz [wyłączyć metody uwierzytelniania nieobsługiwany](howto-mfa-mfasettings.md#selectable-verification-methods) na platformie Azure.
 
-### <a name="enable-users-for-mfa"></a>Włącz użytkowników dla usługi MFA
+### <a name="register-users-for-mfa"></a>Rejestrowanie użytkowników dla usługi MFA
 
-Przed wdrożeniem pełne rozszerzenia serwera zasad Sieciowych, należy włączyć uwierzytelnianie wieloskładnikowe dla użytkowników, którzy mają do przeprowadzenia weryfikacji dwuetapowej. Więcej natychmiast po jej wdrożeniu, należy przetestować rozszerzenia, musisz mieć konto co najmniej jeden test, pełni zarejestrowany w usłudze Multi-Factor Authentication.
+Przed wdrożeniem i rozszerzenie serwera zasad Sieciowych, użytkowników, które będą wymagane do przeprowadzenia weryfikacji dwuetapowej należy zarejestrować dla usługi MFA. Więcej natychmiast po jej wdrożeniu, należy przetestować rozszerzenia, musisz mieć konto co najmniej jeden test, pełni zarejestrowany w usłudze Multi-Factor Authentication.
 
 Uzyskanie testowe konto uruchomiona, wykonaj następujące kroki:
 1. Zaloguj się do [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) przy użyciu konta testowego. 

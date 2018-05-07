@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/20/2018
+ms.date: 05/02/2018
 ms.author: jroth
-ms.openlocfilehash: a275df84ce784147b5fd4f09afe4995417affffd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 71c86af9d4dcdf1026b4f539574b9932ef1cfc89
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Wskazówek dotyczących ceny dla maszyn wirtualnych Azure, programu SQL Server
 
 Ten artykuł zawiera cenową wskazówki dotyczące [maszyn wirtualnych programu SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) na platformie Azure. Dostępnych jest kilka opcji, które mają wpływ na koszty i ważne jest, aby wybrać prawego obrazu, który równoważy koszt z wymaganiami biznesowymi.
 
 > [!TIP]
-> Jeśli trzeba sprawdzić szacowania kosztów dla określonej kombinacji wersji programu SQL Server, a rozmiar maszyny wirtualnej, zobacz [cennikiem](https://azure.microsoft.com/pricing/details/virtual-machines/windows). Wybierz system operacyjny i wersji programu SQL Server z **systemu operacyjnego/oprogramowania** listy.
+> Jeśli musisz sprawdzić szacowania kosztów dla określonej kombinacji wersji programu SQL Server, a rozmiar maszyny wirtualnej, zobacz stronie dotyczącej cen [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) lub [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux). Wybierz platformy i wersji programu SQL Server z **systemu operacyjnego/oprogramowania** listy.
 >
 > ![Interfejs użytkownika na stronie cennika maszyny Wirtualnej](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -34,11 +34,11 @@ Ten artykuł zawiera cenową wskazówki dotyczące [maszyn wirtualnych programu 
 
 ## <a name="free-licensed-sql-server-editions"></a>Zwolnij licencjonowane wersje programu SQL Server
 
-Testowanie, lub kompilacji Weryfikacja koncepcji, następnie należy użyć wolne licencją **programu SQL Server Developer edition**. Ta wersja zawiera wszystko, co w programie SQL Server Enterprise edition, w związku z tym go używać do tworzenia aplikacji, niezależnie od ma. Tylko nie mogą być uruchamiane w środowisku produkcyjnym. Maszyna wirtualna programu SQL Server Developer tylko opłaty kosztów maszyny Wirtualnej, a nie dla licencjonowania programu SQL Server.
+Testowanie, lub kompilacji Weryfikacja koncepcji, następnie należy użyć za darmo licencjonowane **programu SQL Server Developer edition**. Ta wersja zawiera wszystkie funkcje programu SQL Server Enterprise edition, umożliwia tworzenie i testowanie dowolnego typu aplikacji. Nie można jednak uruchomić Developer edition w środowisku produkcyjnym. Wersja programu SQL Server Developer wirtualna tylko zostaną naliczone opłaty powiązane kosztów maszyny Wirtualnej, ponieważ nie ma skojarzonego serwera SQL koszty licencjonowania.
 
-Jeśli chcesz uruchomić lekkie obciążenia w środowisku produkcyjnym (< 4 rdzenie < 1 GB pamięci RAM, < 10 GB/bazy danych), następnie użyć wolne licencją **programu SQL Server Express edition**. Maszynę wirtualną SQL Express jedynie opłatami za kosztów maszyny Wirtualnej, nie licencjonowania programu SQL.
+Jeśli chcesz uruchomić lekkie obciążenia w środowisku produkcyjnym (< 4 rdzenie < 1 GB pamięci RAM, < 10 GB/bazy danych), użyj w pełni licencjonowanej **programu SQL Server Express edition**. SQL Server Express edition wirtualna tylko zostaną naliczone opłaty powiązane kosztów maszyny Wirtualnej.
 
-Dla tych programowanie i testowanie obciążeń produkcyjnych lekkie można także zapisać pieniądze, wybierając mniejszego rozmiaru maszyny Wirtualnej, odpowiadający tych obciążeń. DS1v2 może być dobrym rozwiązaniem w przypadku tych obciążeń.
+Dla tych programowanie i testowanie i obciążeń produkcyjnych lekkie można także zapisać pieniędzy, wybierając mniejszego rozmiaru maszyny Wirtualnej, odpowiadający tych obciążeń. DS1v2 może być dobrym rozwiązaniem w niektórych scenariuszach.
 
 Aby utworzyć Maszynę wirtualną Azure 2017 serwera SQL z jednym z tych obrazów, zobacz następujące linki:
 
@@ -61,14 +61,17 @@ Jeśli obciążenie z systemem innym niż lightweight produkcji, użyj jednej z 
 
 Dostępne są dwie opcje w celu opłacenia licencjonowania programu SQL Server dla następujących wersji: *płatności za użycie* lub *użycie własnej licencji (BYOL)*.
 
-### <a name="pay-per-usage"></a>Należy zwrócić na użycie
+## <a name="pay-per-usage"></a>Należy zwrócić na użycie
 
-**Płatności licencji programu SQL Server na użycie** oznacza, że koszt na sekundę maszyny Wirtualnej Azure zawiera koszt licencji programu SQL Server. Cennik o różnych wersjach programu SQL Server (sieci Web, Standard i Enterprise) można zobaczyć w [maszyny Wirtualnej Azure cennikiem](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Koszt jest taka sama dla wszystkich wersji programu SQL Server (2012 z dodatkiem SP3 2017). Podobnie jak w przypadku licencjonowania programu SQL Server ogólnie rzecz biorąc, kosztów licencjonowania na sekundę zależy od liczby rdzeni maszyny Wirtualnej.
+**Płatności licencji programu SQL Server na użycie** oznacza, że koszt na sekundę maszyny Wirtualnej Azure zawiera koszt licencji programu SQL Server. Widać cennik o różnych wersjach programu SQL Server (sieci Web, Standard i Enterprise) w Maszynie wirtualnej Azure cennikiem dla [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) lub [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+
+Koszt jest taka sama dla wszystkich wersji programu SQL Server (2012 z dodatkiem SP3 2017). Kosztów licencjonowania na sekundę zależy od liczby rdzeni maszyny Wirtualnej, który jest standardem wszystkich licencjonowania programu SQL Server.
 
 Płatności programu SQL Server licencjonowania na użycie jest zalecane w przypadku:
 
-- Tymczasowe lub okresowe obciążeń. Na przykład aplikacja, która musi obsługiwać zdarzenia z kilku miesięcy, co rok lub analizy biznesowej od poniedziałku.
-- Obciążeń z istnienia nieznany lub skali. Na przykład aplikacja, co może nie być wymagane w ciągu kilku miesięcy lub co może wymagać więcej lub mniej moc obliczeniową, w zależności od zapotrzebowania.
+- **Tymczasowe lub okresowe obciążeń**. Na przykład aplikacja, która musi obsługiwać zdarzenia z kilku miesięcy, co rok lub analizy biznesowej od poniedziałku.
+
+- **Obciążeń z istnienia nieznany lub skalę**. Na przykład aplikacja, co może nie być wymagane w ciągu kilku miesięcy lub co może wymagać więcej lub mniej moc obliczeniową, w zależności od zapotrzebowania.
 
 Aby utworzyć Maszynę wirtualną Azure 2017 serwera SQL z jednym z tych obrazów płatności za użycie, zobacz następujące linki:
 
@@ -80,11 +83,13 @@ Aby utworzyć Maszynę wirtualną Azure 2017 serwera SQL z jednym z tych obrazó
 | Ubuntu | [SQL Server 2017 sieci Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 standardowa maszyna wirtualna platformy Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> Podczas tworzenia maszyny wirtualnej programu SQL Server w portalu, **wybierz rozmiar** okna pokazuje szacowany koszt. Należy pamiętać, że ta szacowana tylko kosztów obliczeń do uruchamiania maszyny Wirtualnej wraz z oknami koszty licencjonowania dla maszyn wirtualnych systemu Windows. Nie ma dodatkowych licencjonowania koszty sieci Web, wersje Standard i Enterprise programu SQL Server. On również nie ma żadnych dodatkowych kosztów licencjonowania dla systemów operacyjnych Linux innych firm dla maszyn wirtualnych systemu Linux. Aby uzyskać najbardziej dokładnego oszacowania cenową, wybierz system operacyjny i wersji programu SQL Server na stronie dotyczącej cen [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) i [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> Podczas tworzenia maszyny wirtualnej programu SQL Server w portalu, **wybierz rozmiar** okna pokazuje szacowany koszt. Należy pamiętać, że ta szacowana jest tylko kosztów obliczeń do uruchamiania maszyn wirtualnych wraz z dowolnego systemu operacyjnego koszty (Windows lub systemów operacyjnych Linux innych firm) licencjonowania.
 >
 > ![Wybierz bloku rozmiar maszyny Wirtualnej](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
+>
+>Nie ma dodatkowych licencjonowania koszty sieci Web, wersje Standard i Enterprise programu SQL Server. Aby uzyskać najbardziej dokładnego oszacowania cenową, wybierz system operacyjny i wersji programu SQL Server na stronie dotyczącej cen [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) lub [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-### <a name="bring-your-own-license-byol"></a>Model dostarczania własnej licencji (BYOL)
+## <a name="bring-your-own-license-byol"></a>Model dostarczania własnej licencji (BYOL)
 
 **Przywracanie licencję programu SQL Server za pośrednictwem przenośność licencji**, nazywany również **BYOL**, środków z Software Assurance w maszynie Wirtualnej platformy Azure przy użyciu istniejącego programu SQL Server z licencją zbiorczą. Maszyna wirtualna SQL Server przy użyciu BYOL opłat tylko kosztów uruchamiania maszyny Wirtualnej, a nie dla licencjonowania programu SQL Server, biorąc pod uwagę, że ma już nabytych licencji i Software Assurance za pośrednictwem programu licencjonowania zbiorowego.
 
@@ -93,10 +98,11 @@ Aby utworzyć Maszynę wirtualną Azure 2017 serwera SQL z jednym z tych obrazó
 
 Dostarczają własne SQL licencjonowania za pośrednictwem przenośność licencji jest zalecane w przypadku:
 
-- Ciągłe obciążeń. Na przykład aplikacja, która musi obsługiwać operacje biznesowe 24 x 7.
-- Obciążeń przy użyciu znanych okres istnienia i skali. Na przykład aplikację, która jest wymagana dla całego roku i popytu zostały prognozowanych.
+- **Ciągłe obciążeń**. Na przykład aplikacja, która musi obsługiwać operacje biznesowe 24 x 7.
 
-Aby używać BYOL z maszyny Wirtualnej programu SQL Server, musi mieć licencję na program SQL Server Standard lub Enterprise i [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), która jest wymagana przez niektóre [licencjonowania zbiorowego](https://www.microsoft.com/en-us/download/details.aspx?id=10585) programy i opcjonalne zakup z innymi osobami.  Poziom cenową realizowane za pośrednictwem programów licencjonowania zbiorczego zależy od typu umowy oraz ilość i lub zobowiązań do programu SQL Server. Jednak jako zasadą, przywracanie własnej licencji w przypadku obciążeń produkcyjnych ciągłego ma następujące zalety:
+- **Obciążeń przy użyciu znanych okres istnienia i skali**. Na przykład aplikację, która jest wymagana dla całego roku i popytu zostały prognozowanych.
+
+Aby używać BYOL z maszyny Wirtualnej programu SQL Server, musi mieć licencję na program SQL Server Standard lub Enterprise i [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), która jest wymagana przez niektóre programy licencjonowania zbiorczego i opcjonalnie zakupu z innymi osobami. Poziom cenową realizowane za pośrednictwem programów licencjonowania zbiorczego zależy od typu umowy oraz ilość i lub zobowiązań do programu SQL Server. Jednak jako zasadą, przywracanie własnej licencji w przypadku obciążeń produkcyjnych ciągłego ma następujące zalety:
 
 | BYOL korzyści | Opis |
 |-----|-----|
@@ -104,18 +110,18 @@ Aby używać BYOL z maszyny Wirtualnej programu SQL Server, musi mieć licencję
 | **Długoterminowe oszczędności** | Na ogół jest *30% rocznie tańsze* lub odnowić licencji programu SQL Server przez pierwsze 3 lata. Ponadto po 3 lata, nie trzeba już odnowić licencji, po prostu opłacać Software Assurance. W tym momencie jest *200% tańsze*. |
 | **Bezpłatne pasywnym repliki pomocniczej** | Inną zaletą dostarczają własnej licencji jest [wolne Licencjonowanie jedna replika pomocnicza pasywnym](https://azure.microsoft.com/pricing/licensing-faq/) dla programu SQL Server na potrzeby wysokiej dostępności. Wytnij to w połowie licencjonowania koszt wdrożenia programu SQL Server o wysokiej dostępności (na przykład przy użyciu zawsze włączonych grup dostępności). Prawa do uruchamiania pomocniczej pasywnym są udostępniane za pośrednictwem korzyści awaryjnej serwerów Software Assurance. |
 
-Aby utworzyć maszyny Wirtualnej Azure SQL Server 2016 z jednym z tych obrazów Przełącz your właścicielem licencji, zobacz maszyn wirtualnych i jest poprzedzony prefiksem "{BYOL}":
+Aby utworzyć Maszynę wirtualną Azure 2017 serwera SQL z jednym z tych obrazów Przełącz your właścicielem licencji, zobacz maszyn wirtualnych i jest poprzedzony prefiksem "{BYOL}":
 
-- [SQL Server 2016 Enterprise Azure VM](https://ms.portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1EnterpriseWindowsServer2016)
-- [SQL Server 2016 standardowa maszyna wirtualna platformy Azure](https://ms.portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP1StandardWindowsServer2016)
+- [SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)
+- [SQL Server 2017 standardowa maszyna wirtualna platformy Azure](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016)
 
 > [!IMPORTANT]
-> Trafić w ciągu 10 dni liczbę licencji programu SQL Server będzie używany na platformie Azure. Łącza do poprzedniego obrazy mają instrukcje jak to zrobić.
+> Trafić w ciągu 10 dni liczbę licencji programu SQL Server używane na platformie Azure. Łącza do poprzedniego obrazy mają instrukcje jak to zrobić.
 
 > [!NOTE]
-> Nie jest możliwa zmiana licencjonowania model płatności na sekundę maszyny Wirtualnej serwera SQL, aby użyć własnej licencji. W takim przypadku należy utworzyć nową maszynę wirtualną w modelu BYOL i zmigrować bazy danych do tej nowej maszyny wirtualnej. 
+> Nie jest możliwa zmiana licencjonowania model płatności na sekundę maszyny Wirtualnej serwera SQL, aby użyć własnej licencji. W takim przypadku należy utworzyć nową maszynę wirtualną w modelu BYOL i zmigrować bazy danych do tej nowej maszyny wirtualnej.
 
-## <a name="avoid-unnecessary-costs"></a>Unikaj niepotrzebnych kosztów
+## <a name="reduce-costs"></a>Obniżenie kosztów
 
 Aby uniknąć niepotrzebnych kosztów, wybierz rozmiar maszyny wirtualnej optymalne i rozważ sporadyczne zamknięcia nieciągły obciążeń.
 
@@ -152,8 +158,9 @@ Dla innych przepływów pracy, należy wziąć pod uwagę automatycznie zamykani
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ogólne Azure cennik wskazówki, zobacz [uniknąć kosztów nieoczekiwany rozliczenia Azure i kosztów zarządzania](../../../billing/billing-getting-started.md).
+Ogólne Azure cennik wskazówki, zobacz [uniknąć kosztów nieoczekiwany rozliczenia Azure i kosztów zarządzania](../../../billing/billing-getting-started.md). Najnowsze maszyn wirtualnych cennika, w tym program SQL Server, zobacz Azure maszyny Wirtualnej Azure cennikiem dla [maszyn wirtualnych systemu Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) i [maszyn wirtualnych systemu Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-Dla maszyn wirtualnych najnowsze cennika, w tym program SQL Server, zobacz [maszyny Wirtualnej Azure cennikiem](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+Omówienie programu SQL Server uruchomionego na maszynach wirtualnych platformy Azure zobacz następujące artykuły:
 
-Dowiedz się więcej o maszynach wirtualnych programu SQL Server dla obu [maszyn wirtualnych systemu Windows Server SQL](virtual-machines-windows-sql-server-iaas-overview.md) i [maszyn wirtualnych systemu Linux serwera SQL](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
+- [Omówienie programu SQL Server na maszynach wirtualnych systemu Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+- [Omówienie programu SQL Server na maszynach wirtualnych systemu Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)

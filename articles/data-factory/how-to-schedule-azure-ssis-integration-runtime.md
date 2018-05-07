@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 2ccde1a4eaff391dccf1b5f624257479acb263cb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Jak można zaplanować uruchamianie i zatrzymywanie środowiska uruchomieniowego integracji Azure SSIS 
 Uruchomiona środowiska uruchomieniowego integracji SSIS Azure (SQL Server Integration Services) (IR) ma opłat skojarzonych z nim. W związku z tym który chcesz uruchomić IR tylko wtedy, gdy jest to wymagane do uruchamiania pakietów SSIS na platformie Azure i zatrzymaj ją, gdy nie będzie potrzebny. Można użyć interfejsu użytkownika z fabryki danych lub Azure PowerShell do [ręcznie uruchomić lub zatrzymać IR SSIS Azure](manage-azure-ssis-integration-runtime.md)). W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu usługi Automatyzacja Azure i fabryki danych Azure. Poniżej przedstawiono ogólne kroki opisane w tym artykule:
@@ -69,21 +69,20 @@ Jeśli nie masz konta usługi Automatyzacja Azure, utwórz je zgodnie z instrukc
 
 ### <a name="import-data-factory-modules"></a>Zaimportuj moduły fabryki danych
 
-1. Wybierz **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie sprawdź, czy masz **AzureRM.Profile** i **AzureRM.DataFactoryV2** na liście modułów. Jeśli nie ma, wybierz **galerii przeglądania** na pasku narzędzi.
+1. Wybierz **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie sprawdź, czy masz **AzureRM.Profile** i **AzureRM.DataFactoryV2** na liście modułów. Jeśli tak nie jest na liście, wybierz **galerii przeglądania** na pasku narzędzi i wykonaj następujące kroki.
 
-    ![Strona główna automatyzacji](./media/how-to-schedule-azure-ssis-integration-runtime/automation-modules.png)
-2. W **galerii przeglądania** wpisz **AzureRM.Profile** okna wyszukiwania, a następnie naciśnij klawisz **ENTER**. Wybierz **AzureRM.Profile** na liście. Następnie kliknij przycisk **importu** na pasku narzędzi. 
+    > [!IMPORTANT]
+    > Obecnie, można użyć tylko **AzureRM.DataFactoryV2 0.5.2** i **AzureRM.Profile 4.5.0** modułów.
 
-    ![Wybierz AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
-1. W **importu** wybierz **zgadzam się zaktualizować wszystkie moduły Azure** opcji, a następnie kliknij przycisk **OK**.  
+    ![Sprawdź wymagane moduły](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-    ![Importuj AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/import-azurerm-profile.png)
-4. Zamknij, aby wrócić do **modułów** okna. Powinny pojawić się status na liście importu. Wybierz pozycję **Odśwież**, aby odświeżyć listę. Poczekaj na wyświetlenie **stan** jako **dostępne**.
+2.  Przejdź do galerii programu PowerShell dla [modułu AzureRM.DataFactoryV2 0.5.2](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2), wybierz pozycję **Wdróż automatyzacji Azure**, wybierz konto automatyzacji, a następnie wybierz **OK**. Przejdź wstecz, aby wyświetlić **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie poczekaj na wyświetlenie **stan** z **AzureRM.DataFactoryV2 0.5.2**  zmiana modułu **dostępne**.
 
-    ![Stan importu](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-profile.png)
-1. Powtórz kroki, aby zaimportować **AzureRM.DataFactoryV2** modułu. Upewnij się, że stan ten moduł ma ustawioną **dostępne** przed kontynuacją. 
+    ![Sprawdź modułu fabryki danych](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-    ![Stan końcowy importu](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-datafactoryv2.png)
+3.  Przejdź do galerii programu PowerShell dla [modułu AzureRM.Profile 4.5.0](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0), kliknij **Wdróż automatyzacji Azure**, wybierz konto automatyzacji, a następnie wybierz **OK**. Przejdź wstecz, aby wyświetlić **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie poczekaj na wyświetlenie **stan** z **AzureRM.Profile 4.5.0** zmiana modułu **dostępne**.
+
+    ![Sprawdź modułu profilu](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
 ### <a name="create-a-powershell-runbook"></a>Tworzenie elementu runbook programu PowerShell
 Poniższa procedura zawiera kroki tworzenia elementu runbook programu PowerShell. Skrypt skojarzony z elementem runbook albo rozpoczyna/zatrzymuje IR SSIS Azure oparte na określone dla polecenia **operacji** parametru. W tej sekcji podano wszystkich szczegółów tworzenia elementu runbook. Aby uzyskać więcej informacji, zobacz [utworzyć element runbook](../automation/automation-quickstart-create-runbook.md) artykułu.

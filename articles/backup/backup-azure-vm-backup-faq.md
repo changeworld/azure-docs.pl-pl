@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 785ba078669886cf16041752bd7af5a957899d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Pytania dotyczące usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
 W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -54,6 +54,9 @@ Tak. Możesz anulować zadanie tworzenia kopii zapasowej, jeśli jest w fazie "U
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Blokady grupy zasobów I włączona na tym dysku zarządzanej kopii zapasowej maszyn wirtualnych. Czy operacje tworzenia kopii zapasowych będą nadal działać?
 Użytkownik zablokuje grupy zasobów, usługi Kopia zapasowa nie jest można usunąć starsze punkty przywracania. Z tego powodu nowe kopie zapasowe zaczęło kończyć się niepowodzeniem, ponieważ istnieje limit maksymalnego 18 punktów przywracania nałożone z wewnętrznej bazy danych. Jeśli tworzenie kopii zapasowych zakończą się niepowodzeniem z powodu wewnętrznego błędu po blokady zarządcy zasobów, postępuj zgodnie z następującymi [kroki, aby usunąć przywracania punktu kolekcji](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+
+### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Zasad tworzenia kopii zapasowej uwzględnienia czasu letniego Time(DST) zapisywania?
+Nie. Należy pamiętać, że data i godzina na komputerze lokalnym jest wyświetlana w formacie czasu lokalnego oraz z uwzględnieniem bieżącego czasu. Dlatego skonfigurowanym czasie dla zaplanowanych kopii zapasowych może różnić się od czasu lokalnego z powodu czasu letniego.
 
 ## <a name="restore"></a>Przywracanie
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Jak wybrać między przywróceniem dysków a pełnym przywróceniem maszyny wirtualnej?

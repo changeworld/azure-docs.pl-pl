@@ -1,8 +1,8 @@
 ---
-title: "Konserwacji predykcyjnej w aerospace z platformy Azure — szablon Cortana Intelligence rozwiązania | Dokumentacja firmy Microsoft"
-description: "Szablon rozwiązania z Microsoft Cortana Intelligence do konserwacji predykcyjnej w aerospace, narzędzia i transportu."
+title: Azure Podręcznikowym AI rozwiązań konserwacji predykcyjnej | Dokumentacja firmy Microsoft
+description: Kompleksowy opis analizy danych, obsługującego konserwacji predykcyjnej rozwiązań w wielu branżach pionowy.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/01/2018
 ms.author: fboylu
-ms.openlocfilehash: da7826c49c3548600187956908f5369cc4891065
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad06617fb8c14928dca7d9ce18ad86190e8255fe
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Cortana Intelligence rozwiązania szablonu Podręcznikowym do konserwacji predykcyjnej aerospace i innych firm
+# <a name="azure-ai-playbook-for-predictive-maintenance-solutions"></a>Azure Podręcznikowym AI konserwacji predykcyjnej rozwiązań 
 ## <a name="executive-summary"></a>Streszczenie
 Konserwacji predykcyjnej jest jednym z najbardziej żądane aplikacje analizy predykcyjnej z unarguable korzyści, w tym bardzo dużą oszczędność kosztów. Tego podręcznika dotyczącego jest zapewnienie odwołania dla rozwiązań konserwacji predykcyjnej ze szczególnym uwzględnieniem przypadki użycia głównych.
 Jest przygotowany do udzielenia czytnik zrozumienia najbardziej typowych scenariuszy biznesowych konserwacji predykcyjnej, wyzwania kwalifikujących się problemów biznesowych dla takich rozwiązań dane wymagane do rozwiązywania tych problemów biznesowych, predykcyjnej modelowania technik w celu tworzenia rozwiązań przy użyciu tych danych i najlepszych praktyk z architektury rozwiązania próbki.

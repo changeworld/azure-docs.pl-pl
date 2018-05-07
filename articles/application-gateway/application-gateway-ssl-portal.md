@@ -1,27 +1,27 @@
 ---
-title: "Utwórz bramę aplikacji z kończenia żądań SSL - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramę aplikacji i Dodaj certyfikat dla zakończenia połączenia SSL przy użyciu portalu Azure."
+title: Utwórz bramę aplikacji z kończenia żądań SSL - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji i Dodaj certyfikat dla zakończenia połączenia SSL przy użyciu portalu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 10796000f913428e39a0ffbd0aa2cbe0c515eb7a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Utwórz bramę aplikacji z kończenia żądań SSL przy użyciu portalu Azure
 
 Azure portal umożliwia tworzenie [brama aplikacji w](application-gateway-introduction.md) certyfikat dla zakończenia połączenia SSL, używającego maszyn wirtualnych dla serwerów wewnętrznej bazy danych.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Utwórz certyfikat z podpisem własnym
@@ -98,11 +98,11 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
 1. Kliknij przycisk **wszystkie zasoby** w menu po lewej stronie, a następnie kliknij przycisk **myVNet** na liście zasobów.
 2. Kliknij przycisk **podsieci**, a następnie kliknij przycisk **podsieci**.
 
-    ![Utwórz podsieć](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
+    ![Tworzenie podsieci](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
 
 3. Wprowadź *myBackendSubnet* dla nazwy podsieci, a następnie kliknij przycisk **OK**.
 
-## <a name="create-backend-servers"></a>Utwórz serwerów wewnętrznej bazy danych
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Należy również zainstalować usług IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
@@ -113,17 +113,17 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 3. Wprowadź wartości dla maszyny wirtualnej:
 
     - *myVM* — Nazwa maszyny wirtualnej.
-    - *azureuser* — nazwa użytkownika administratora.
+    - *azureuser* — jako nazwę użytkownika administratora.
     - *Azure123456!* hasła.
     - Wybierz **Użyj istniejącego**, a następnie wybierz *myResourceGroupAG*.
 
 4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** dla rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **wybierz**.
+5. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
 6. Upewnij się, że **myVNet** został wybrany do sieci wirtualnej i podsieci jest **myBackendSubnet**. 
-7. Kliknij przycisk **wyłączone** wyłączyć diagnostyki rozruchu.
-8. Kliknij przycisk **OK**Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
+8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
 
-### <a name="install-iis"></a>Zainstaluj usługi IIS
+### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Otwórz powłokę interakcyjne i upewnij się, że jest ustawiona na **PowerShell**.
 
@@ -161,11 +161,11 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 
     ![Zarejestruj publiczny adres IP bramy aplikacji](./media/application-gateway-ssl-portal/application-gateway-ag-address.png)
 
-2. Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki. Aby zaakceptować ostrzeżenie o zabezpieczeniach, jeśli używasz certyfikatu z podpisem własnym, wybierz szczegóły, a następnie przejdź do strony sieci Web:
+2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Aby zaakceptować ostrzeżenie o zabezpieczeniach, jeśli używasz certyfikatu z podpisem własnym, wybierz szczegóły, a następnie przejdź do strony sieci Web:
 
     ![Ostrzeżenie bezpieczne](./media/application-gateway-ssl-portal/application-gateway-secure.png)
 
-    Wyświetlane są następnie zabezpieczonej witryny sieci Web usług IIS, jak w poniższym przykładzie:
+    Zostanie wyświetlona zabezpieczona witryna internetowa usług IIS, tak jak w poniższym przykładzie:
 
     ![Podstawowy adres URL testu bramy aplikacji](./media/application-gateway-ssl-portal/application-gateway-iistest.png)
 

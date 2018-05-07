@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja Azure datacenter stosu - tożsamości
 Stos Azure za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) można wdrożyć jako dostawcy tożsamości. Wybór należy przed wdrożeniem stosu Azure. Wdrożenia przy użyciu usług AD FS jest również nazywany wdrażanie stosu Azure w trybie rozłączonym.
@@ -60,6 +60,8 @@ Wymagania:
 
 ## <a name="setting-up-graph-integration"></a>Konfigurowanie integracji wykresu
 
+Wykres tylko obsługuje integrację z jednego lasu usługi Active Directory. Jeśli istnieje wiele lasów, lasu, określona w konfiguracji będzie służyć do pobierania użytkowników i grup.
+
 Jako dane wejściowe dla parametrów automatyzacji wymagane są następujące informacje:
 
 
@@ -95,12 +97,14 @@ Do wykonania tej procedury należy użyć komputera w sieci centrum danych, któ
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   Po wyświetleniu monitu podaj poświadczenia dla konta użytkownika, którego chcesz używać usługi wykresu (na przykład graphservice).
+   Po wyświetleniu monitu podaj poświadczenia dla konta użytkownika, którego chcesz używać usługi wykresu (na przykład graphservice). Dane wejściowe dla polecenia cmdlet Register-DirectoryService musi być nazwą lasu / główny domeny w lesie, a nie inne domeny w lesie.
 
    > [!IMPORTANT]
    > Poczekaj, aż wyskakujących poświadczeń (Get-Credential nie jest obsługiwana w punkcie końcowym uprzywilejowanych), a następnie wprowadź poświadczenia konta usługi wykresu.
 
 #### <a name="graph-protocols-and-ports"></a>Wykres protokoły i porty
+
+Graph usługi Azure stosu używa następujące protokoły i porty do komunikacji z zapisywalnej serwera wykazu globalnego (GC) i Centrum dystrybucji kluczy (KDC), który może przetwarzać żądań logowania w docelowych lasu usługi Active Directory.
 
 Graph usługi Azure stosu używane następujące protokoły i porty do komunikowania się z elementem docelowym usługi Active Directory:
 

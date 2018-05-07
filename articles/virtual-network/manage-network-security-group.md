@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -34,7 +34,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 - Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
-## <a name="work-with-network-security-groups"></a>Praca z grupami zabezpieczeń sieci
+## <a name="work-with-network-security-groups"></a>Praca z sieciowymi grupami zabezpieczeń
 
 Można utworzyć [Wyświetl wszystkie](#view-all-network-security-groups), [szczegóły](#view-details-of-a-network-security-group), [zmienić](#change-a-network-security-group), i [usunąć](#delete-a-network-security-group) grupy zabezpieczeń sieci. Możesz również [skojarzyć lub usunąć skojarzenie](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) sieciową grupę zabezpieczeń z interfejsu sieciowego lub podsieci.
 
@@ -79,7 +79,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowej grupy zabezp
 ### <a name="change-a-network-security-group"></a>Zmienianie grupy zabezpieczeń sieci
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieciowej grupy zabezpieczeń* w polu wyszukiwania. Gdy **sieciowej grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
-2. Wybierz grupy zabezpieczeń sieci, który chcesz zmienić. Najbardziej typowe zmiany są [Dodawanie](#create-a-security-rule) lub [usuwanie](#delete-a-security-rule) reguły zabezpieczeń i [Associating lub usunięciu grupy zabezpieczeń sieci do lub z interfejsem podsieci lub sieci](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
+2. Wybierz grupy zabezpieczeń sieci, który chcesz zmienić. Najbardziej typowe zmiany są [Dodawanie](#create-a-security-rule) lub [usuwanie](#delete-a-security-rule) reguły zabezpieczeń i [Associating lub usunięciu grupy zabezpieczeń sieci do lub z interfejsem podsieci lub sieci](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
 **Polecenia**
 

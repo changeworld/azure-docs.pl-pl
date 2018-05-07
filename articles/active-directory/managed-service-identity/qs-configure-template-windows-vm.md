@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 521c5a3c0ad55afa0b71628195be7782b0e43b67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 324a1e08e92a2c7ae76d7a6df56536540dc772a1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi maszyn wirtualnych zarządzanych za pomocą szablonu
 
@@ -34,7 +34,7 @@ W tym artykule Dowiedz się jak wykonać następujące operacje zarządzane toż
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
-Zgodnie z platformy Azure portalu i skryptów, szablony usługi Azure Resource Manager zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowany przez grupę zasobów platformy Azure. Kilka opcje są dostępne do edycji szablonu i wdrażania, zarówno lokalnych, jak i oparte na portalu, w tym:
+Podobnie jak w przypadku platformy Azure, portalu i skryptów, [usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) Szablony zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowany przez grupę zasobów platformy Azure. Kilka opcje są dostępne do edycji szablonu i wdrażania, zarówno lokalnych, jak i oparte na portalu, w tym:
 
    - Przy użyciu [niestandardowego szablonu z portalu Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), co pozwala na tworzyć szablon od podstaw albo oparte na istniejących typowe lub [szablon szybkiego startu](https://azure.microsoft.com/documentation/templates/).
    - Wyprowadzanie z istniejącej grupy zasobów przez wyeksportowanie szablonu z dowolnej [oryginalnego wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), lub z [bieżący stan wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
@@ -112,59 +112,14 @@ Jeśli masz maszynę Wirtualną, która nie będzie już potrzebował tożsamoś
 
 ## <a name="user-assigned-identity"></a>Użytkownik, któremu przypisano tożsamości
 
-W tej sekcji utworzysz maszyny Wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager i tożsamości użytkowników.
+W tej sekcji należy przypisać tożsamość użytkownika z przypisanym do maszyny Wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager.
 
- ### <a name="create-and-assign-a-user-assigned-identity-to-an-azure-vm"></a>Utwórz i przypisz użytkownika przypisanego tożsamości do maszyny Wirtualnej platformy Azure
+> [!Note]
+> Aby tworzyć tożsamość użytkownika z przypisanym przy użyciu szablonu usługi Azure Resource Manager, zobacz [utworzenia tożsamości użytkownika z przypisanym](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
-1. Wykonaj pierwszy krok w sekcji [włączyć tożsamość systemu przypisany podczas tworzenia maszyny Wirtualnej platformy Azure, lub z istniejącej maszyny Wirtualnej](#enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm)
+ ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Przypisać użytkownicy przypisani tożsamości do maszyny Wirtualnej platformy Azure
 
-2.  W sekcji zmiennych zawierający zmienne konfiguracji dla maszyny Wirtualnej Azure Dodaj wpis dla nazwy przypisanej tożsamości użytkownika podobny do następującego.  Spowoduje to utworzenie użytkownika z przypisanym tożsamości w trakcie procesu tworzenia maszyny Wirtualnej platformy Azure:
-    
-    > [!IMPORTANT]
-    > Tworzenie użytkownika z przypisanym tożsamości z znaki specjalne (np. podkreślenie) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Sprawdzanie dostępności aktualizacji.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
-
-    ```json
-    "variables": {
-        "vmName": "[parameters('vmName')]",
-        //other vm configuration variables...
-        "identityName": "[concat(variables('vmName'), 'id')]"
-    ```
-
-3. W obszarze `resources` elementu, Dodaj następujący wpis do utworzenia tożsamości użytkownika z przypisanym:
-
-    ```json
-    {
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-        "name": "[variables('identityName')]",
-        "apiVersion": "2015-08-31-PREVIEW",
-        "location": "[resourceGroup().location]"
-    },
-    ```
-
-4. Następnie w obszarze `resources` element Dodaj następujący wpis do przypisywania tożsamości zarządzanych rozszerzenia do maszyny Wirtualnej:
-
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
-        "apiVersion": "2015-05-01-preview",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
-        }
-    }
-    ```
-5. Następnie należy dodać następujący wpis do przypisywania przypisane do maszyny Wirtualnej tożsamości użytkownika:
-
+1. W obszarze `resources` elementu, Dodaj następujący wpis, aby przypisać tożsamość użytkownika z przypisanym do maszyny Wirtualnej.  Pamiętaj zastąpić `<USERASSIGNEDIDENTITY>` o nazwie tożsamość użytkownika z przypisanym został utworzony.
     ```json
     {
         "apiVersion": "2017-12-01",
@@ -174,15 +129,36 @@ W tej sekcji utworzysz maszyny Wirtualnej platformy Azure przy użyciu szablonu 
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', variables('identityName'))]"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITYNAME>)']"
             ]
         },
     ```
-6.  Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
-    > [!NOTE]
-    > Szablon nie ma wszystkie zmienne niezbędne do utworzenia maszyny Wirtualnej.  `//other configuration variables...` Służy do miejsca wszystkie zmienne konfiguracji niezbędne w celu skrócenia.
+    
+2. (Opcjonalnie) Następnie w obszarze `resources` elementu, Dodaj następujący wpis, aby przypisać rozszerzenie tożsamości zarządzanych do maszyny Wirtualnej. Ten krok jest opcjonalny, jako punkt końcowy tożsamości Azure wystąpienie metadanych usługi (IMDS), umożliwia pobranie również tokenów. Należy użyć następującej składni:
+    ```json
+    {
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+        "apiVersion": "2015-05-01-preview",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+        ],
+        "properties": {
+            "publisher": "Microsoft.ManagedIdentity",
+            "type": "ManagedIdentityExtensionForWindows",
+            "typeHandlerVersion": "1.0",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+                "port": 50342
+            }
+        }
+    }
+    ```
+    
+3.  Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
 
-      ![Zrzut ekranu przedstawiający tożsamości przypisane przez użytkownika](../media/msi-qs-configure-template-windows-vm/template-user-assigned-identity.png)
+      ![Zrzut ekranu przedstawiający tożsamości przypisane przez użytkownika](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
 
 ## <a name="related-content"></a>Zawartość pokrewna

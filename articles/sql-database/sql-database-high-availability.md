@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 839cadffc37a1c4a6ceae77fbe1e01020c28fe1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Baza danych SQL wysokiej dostępności i platformy Azure
 Od chwili rozpoczęcia oferty PaaS bazy danych SQL Azure firma Microsoft wprowadziła Obietnica jej klientów, które wysokiej dostępności (HA) korzysta z wbudowanej w usługi i klientów nie są wymagane do działania, Dodaj logikę specjalnych lub podejmować decyzje dotyczące wysokiej dostępności. Firma Microsoft udostępnia pełną kontrolę nad HA system konfiguracji i obsłudze, zaoferować klientom umowy dotyczącej poziomu usług. HA umowy SLA stosuje się do bazy danych SQL w regionie i nie zapewnia ochrony w przypadku niepowodzenia obszar całkowity, który jest wystąpiły z przyczyn będących poza kontrolą firmy Microsoft (na przykład klęski żywiołowej, plik war, czynności terroryzmu, zamieszek, akcji dla instytucji rządowych, lub sieci lub na urządzeniu niepowodzenie zewnętrznych w centrach danych firmy Microsoft, w tym klientów w lokacjach lub między lokacjami klienta i centrum danych firmy Microsoft).
@@ -30,7 +30,7 @@ Klienci najbardziej interesujących odporność własnych baz danych i mniej pla
 
 W przypadku danych bazy danych SQL korzysta z magazynu zdalnego (r) oparte na usłudze Azure Premium Storage stronicowe obiekty BLOB i Magazyn lokalny (LS) oparte na bezpośrednie dołączonych dysków/wirtualne dyski twarde. 
 - Magazyn lokalny jest używany w warstwie Premium lub baz danych biznesowych krytyczne (wersja zapoznawcza) i pule elastyczne, które są przeznaczone dla misji krytycznych aplikacji OLTP wysokiego IOPS. 
-- Magazyn zdalny jest używana do Basic i Standard warstwy usług, przeznaczone dla obciążeń biznesowych budżetu ukierunkowane, które wymagają magazynu i mocy niezależne skalowanie obliczeniowej. Korzystają z jednego stronicowy obiekt blob dla plików dziennika i bazy danych i magazynu wbudowanych mechanizmów replikacji i trybu failover.
+- Magazyn zdalny jest używany w warstwach usług podstawowa, standardowa i ogólnego przeznaczenia, które są przeznaczone dla obciążeń biznesowych budżetu ukierunkowane, które wymagają magazynu i mocy niezależne skalowanie obliczeniowej. Korzystają z jednego stronicowy obiekt blob dla plików dziennika i bazy danych i magazynu wbudowanych mechanizmów replikacji i trybu failover.
 
 W obu przypadkach replikacji, wykrywanie błędów i pracy awaryjnej mechanizmów bazy danych SQL są w pełni zautomatyzowanego, a działanie bez udziału człowieka. Taka architektura jest przeznaczona do upewnij się, że przekazane dane nigdy nie zostaną utracone i że trwałość danych ma pierwszeństwo przed wszystkie inne.
 
@@ -56,7 +56,7 @@ W tej konfiguracji każda baza danych jest przełączony w tryb online przez us�
 
 ## <a name="remote-storage-configuration"></a>Konfiguracja magazynu zdalnego
 
-W przypadku konfiguracji zdalnego magazynu (warstwy Basic i Standard) dokładnie jeden kopia jest przechowywana w zdalnego magazynu obiektów blob, za pomocą funkcji systemów pamięci masowej trwałości, nadmiarowości i wykrywania bit zaprojektowana. 
+W przypadku konfiguracji zdalnego magazynu (warstwy Basic, Standard lub ogólnego przeznaczenia) dokładnie jeden kopia jest przechowywana w zdalnego magazynu obiektów blob, za pomocą funkcji systemów pamięci masowej trwałości, nadmiarowości i wykrywania bit zaprojektowana. 
 
 W poniższym diagramie przedstawiono architekturę wysokiej dostępności:
  

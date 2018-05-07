@@ -2,19 +2,19 @@
 title: Utwórz bramę aplikacji, który obsługuje wiele witryn sieci web - portalu Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć bramę aplikacji, który obsługuje wiele witryn sieci web przy użyciu portalu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 078252fe3413c702a93da59484be9fc678ddec1e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.author: victorh
+ms.openlocfilehash: 9d55db498624d7f23bc499989333ba46340c43b0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Utwórz i skonfiguruj bramę aplikacji do obsługi wielu witryn sieci web przy użyciu portalu Azure
 
@@ -103,7 +103,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `

@@ -9,15 +9,17 @@ ms.date: 04/30/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 285ee153a86270fe65846dc6a22786e007a8a595
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: ba5380813266b3baf981eaf39eda384ad8c91d5a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
 Definicja zasad zasobu używanego przez zasady usługi Azure umożliwia ustalenie Konwencji zasobów w organizacji przez opisujące, gdy zasady są wymuszane i jaka akcja ma być. Definiowanie Konwencji, można kontrolować koszty i zarządzania zasobami. Na przykład można określić, czy dozwolone są tylko niektóre typy maszyn wirtualnych. Alternatywnie można wymagać, że wszystkie zasoby mają określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Tak Jeśli zasady są stosowane do grupy zasobów, ma zastosowanie do wszystkich zasobów w danej grupie zasobów.
+
+Schemat używany przez zasady usługi Azure można znaleźć tutaj: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
 JSON służy do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
 
@@ -184,7 +186,7 @@ Wynikiem warunku jest czy **pola** spełnia określone kryteria. Są obsługiwan
 
 Korzystając z **jak** i **notLike** warunki, można podać symbol wieloznaczny (*) w wartości.
 
-Korzystając z **odpowiada** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [obrazy zatwierdzone wirtualna](scripts/allowed-custom-images.md).
+Korzystając z **odpowiada** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [Zezwalaj wielu wzorce nazw](scripts/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
 Warunki są utworzone za pomocą pola. Pole reprezentuje właściwości w ładunku żądania zasobu, który jest używany do opisu stanu typu zasobu.  

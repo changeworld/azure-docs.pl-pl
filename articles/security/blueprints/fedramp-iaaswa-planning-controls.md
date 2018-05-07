@@ -1,5 +1,5 @@
 ---
-title: "Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP - planowania"
+title: Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP - planowania
 description: Automatyzacja aplikacji sieci Web FedRAMP - planowania
 services: security
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: d5e5666db71ac9f5a136c9acb448fb13bf39a853
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="planning-pl"></a>Planowanie (PL)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasad, którego dotyczy cel, zakres, ról, obowiązki zobowiązań zarządzania, koordynacji planowania zabezpieczeń wśród jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji zabezpieczeń planowania zasad i skojarzone zabezpieczenia planowania zabezpieczeń; przegląda i aktualizuje bieżącego planowania zasady zabezpieczeń [przypisania: zdefiniowane przez organizację częstotliwość]; i procedury planowania zabezpieczeń [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 2.a** organizacji opracowuje plan zabezpieczeń systemu informacji, który jest zgodna z architekturą enterprise organizacji; jawnie definiuje granic autoryzacji dla systemu; opisano operacyjne kontekście system informacji pod względem misji i procesów biznesowych; udostępnia kategoryzacji zabezpieczeń systemu informacji, w tym obsługi uzasadnienie; w tym artykule opisano środowisku operacyjnym systemu informacji i relacje z lub połączenia z innymi systemami informacji; Zawiera omówienie wymagań zabezpieczeń dotyczących systemu; identyfikuje wszelkie istotne nakładki, jeśli ma to zastosowanie; Zawiera opis opcji zabezpieczeń, w miejscu lub planowanych spełniające te wymagania, włączając uzasadnienie tailoring decyzje; i jest sprawdzone i zatwierdzone przez autoryzowanie oficjalne lub wyznaczonego przedstawiciela przed planu wykonania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 2.b** organizacji dystrybuuje kopii planu ochrony i komunikuje się kolejne zmiany do planu [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 2.c** organizacji przegląda planu zabezpieczeń systemu informacji [przypisania: zdefiniowany przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -81,13 +81,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-pl-2d"></a>NIST 800-53 Control PL-2.d
+ ## <a name="nist-800-53-control-pl-2d"></a>Formant NIST 800 53 PL-2.d
 
 #### <a name="system-security-plan"></a>Planowanie zabezpieczeń systemu
 
 **PL 2.d** organizacji aktualizacji planu do zmiany adresu środowiskową systemu informacji operacji lub problemy podczas oceny kontroli plan wdrażania i zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-2.e** Organizacja chroni plan ochrony przed nieuprawnionym ujawnieniem i modyfikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-2 (3)** organizacji planów i koordynuje działań związanych z zabezpieczeniami wpływu na informacje o systemie [przypisania: zdefiniowane przez organizację osób lub grup] przed przeprowadzeniem takiego działania w celu zmniejszenia wpływu na inne jednostki organizacyjnej.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 4.a** organizacji ustanawia i udostępnia łatwo fizycznych wymagających dostępu do informacji o systemie, reguł, które opisują ich obowiązków i oczekiwane zachowanie w odniesieniu do informacji i informacje o systemie Użycie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 4.b** organizacja otrzymuje podpisem potwierdzenia od takich osób, wskazującą, czy one, zrozumieć i akceptuję przestrzega zasad zachowania, przed autoryzowania dostępu do informacji i informacje o systemie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 4.c** organizacji przegląda i aktualizuje zasad zachowania [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 4.d** organizacja wymaga osób, którzy zalogowali się poprzednia wersja zasad zachowania do odczytywania i ponowne podpisanie w przypadku zasad zachowania zmian aktualizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-4 (1)** obejmuje organizacji w zasadach zachowania, jawne ograniczenia użycia nośnika/sieci społecznościowych witryn i informacje organizacyjne publikowanie na publiczne witryny sieci Web.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 8.a** architektury zabezpieczeń informacji w systemie informacje opisujące ogólnej zasady klas, wymagań i podejście podejmowanych w odniesieniu do ochrony poufności, integralności, rozwoju organizacji i dostępność informacji organizacyjnych. Opisuje sposób Architektura zabezpieczeń informacji jest zintegrowany i obsługuje architektury przedsiębiorstwa; i opisuje wszelkie założenia zabezpieczeń informacji o i zależne od, usług zewnętrznych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 8.b** organizacji przegląda i aktualizuje informacje Architektura zabezpieczeń [przypisania: zdefiniowany przez organizację częstotliwość] do uwzględnienia aktualizacji architektury przedsiębiorstwa.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL 8.c** organizacji gwarantuje, że zmiany architektury zabezpieczeń planowane informacje są odzwierciedlane w plan ochrony, zabezpieczeń koncepcję operacji (CONOPS) i zamówień/przejęć organizacyjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

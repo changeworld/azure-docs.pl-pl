@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do zasad zabezpieczeń Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat zasad zabezpieczeń Centrum zabezpieczeń Azure i kluczowych możliwości."
+title: Wprowadzenie do zasad zabezpieczeń Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zasad zabezpieczeń Centrum zabezpieczeń Azure i kluczowych możliwości.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 7a4d056fa71f211dea5e7be649c39034eabc9395
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f552164edc22b450c4ace57cce5c051d1c93e780
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-policies-overview"></a>Omówienie zasad zabezpieczeń
 Ten artykuł zawiera omówienie zasad zabezpieczeń w Centrum zabezpieczeń.
@@ -31,7 +31,7 @@ Zasady usługi Security Center zawierają następujące składniki:
 - **Zbieranie danych**: Określa agenta inicjowania obsługi administracyjnej i [zbierania danych](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) ustawienia.
 - **Zasady zabezpieczeń**: Określa, który kontroluje monitorów Centrum zabezpieczeń i zaleca. Można edytować [zasady zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-policies) w Centrum zabezpieczeń. Można również użyć [zasadami Azure](security-center-azure-policy.md) (w wersji zapoznawczej ograniczone) do tworzenia nowych definicji, zdefiniuj dodatkowe zasady, a przypisanie zasad w grupach zarządzania.
 - **Wiadomości e-mail z powiadomieniami**: Określa kontaktów zabezpieczeń i [powiadomień e-mail](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) ustawienia.
-- **Warstwa cenowa**: definiuje wolnego lub standard [cennik wybór](https://docs.microsoft.com/azure/security-center/security-center-pricing). Wybranej warstwie określa funkcji Centrum zabezpieczeń, które są dostępne dla zasobów w zakresie. Można określić warstwy dla subskrypcji, grupy zasobów i obszarów roboczych. 
+- **Warstwa cenowa**: definiuje wolnego lub standard [cennik wybór](https://docs.microsoft.com/azure/security-center/security-center-pricing). Wybrana warstwa określa, które funkcje usługi Security Center są dostępne dla zasobów w zakresie. Można określić warstwy dla subskrypcji, grupy zasobów i obszarów roboczych. 
 
 
 ## <a name="who-can-edit-security-policies"></a>Kto może edytować zasady zabezpieczeń?
@@ -41,7 +41,7 @@ Centrum zabezpieczeń używa opartej na rolach kontroli dostępu (RBAC), który 
 - **Administrator zabezpieczeń**: mają te same prawa widoku jako *czytnika zabezpieczeń*, i może również zaktualizować zasady zabezpieczeń i odrzucić zalecenia i alerty.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono informacje dotyczące zasad zabezpieczeń w Centrum zabezpieczeń Azure. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center-policies.md): informacje o sposobie konfigurowania zasad zabezpieczeń dla subskrypcji platformy Azure i grup zasobów.

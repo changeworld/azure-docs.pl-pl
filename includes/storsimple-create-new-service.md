@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>Aby utworzyć nową usługę
-1. Za pomocą poświadczeń konta Microsoft zaloguj się do klasycznego portalu Azure pod tym adresem URL: [https://manage.windowsazure.com/](https://manage.windowsazure.com/).
+1. Przy użyciu poświadczeń konta Microsoft, zaloguj się do klasycznego portalu Azure pod tym adresem URL: [ https://manage.windowsazure.com/ ](https://manage.windowsazure.com/).
 2. W klasycznej witrynie Azure Portal kliknij kolejno opcje **Nowe** > **Data Services** > **StorSimple Manager** > **Szybkie tworzenie**.
 3. W wyświetlonym formularzu wykonaj następujące czynności:
    

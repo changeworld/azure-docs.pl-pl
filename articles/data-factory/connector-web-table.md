@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: f1fa79ed32969f5087107d6105fd2f4baf7640e3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2bc47c8963630351d3097938bc7f3d65116d9e4b
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli sieci Web przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,8 +52,8 @@ Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **sieci Web** |Yes |
-| adres url | Adres URL źródła w sieci Web |Yes |
-| authenticationType | Dozwolone wartości to: **anonimowe**. |Yes |
+| url | Adres URL źródła w sieci Web |Yes |
+| Typ authenticationType | Dozwolone wartości to: **anonimowe**. |Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. Środowisko uruchomieniowe integracji Self-hosted jest wymagana, jak wspomniano w [wymagania wstępne](#prerequisites). |Yes |
 
 **Przykład:**
@@ -79,7 +79,7 @@ Następujące właściwości są obsługiwane dla sieci Web tabeli połączonej 
 
 Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych z tabeli sieci Web.
 
-Aby skopiować dane z tabeli sieci Web, ustaw właściwość Typ zestawu danych do **RelationalTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z tabeli sieci Web, ustaw właściwość Typ zestawu danych do **tabeli WebTable**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -94,7 +94,10 @@ Aby skopiować dane z tabeli sieci Web, ustaw właściwość Typ zestawu danych 
     "name": "WebTableInput",
     "properties": {
         "type": "WebTable",
-        "linkedServiceName": "WebLinkedService",
+        "linkedServiceName": {
+            "referenceName": "<Web linked service name>",
+            "type": "LinkedServiceReference"
+        },
         "typeProperties": {
             "index": 1,
             "path": "AFI's_100_Years...100_Movies"

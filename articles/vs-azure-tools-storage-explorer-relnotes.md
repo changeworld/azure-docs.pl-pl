@@ -14,17 +14,112 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji Eksploratora magazynu Microsoft Azure
 
-Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Storage (wersja zapoznawcza) wersji, a także informacje o wersji w poprzednich wersjach.
+Ten artykuł zawiera informacje o wersji w wersji 1.0.0 Eksploratora usługi Azure Storage, a także informacje o wersji w poprzednich wersjach.
 
 [Eksplorator magazynu Microsoft Azure](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która pozwala łatwo pracować z danymi usługi Azure Storage w systemie Windows, macOS i Linux.
+
+## <a name="version-100"></a>W wersji 1.0.0
+2018-04/16
+
+### <a name="download-azure-storage-explorer-100"></a>Pobierz Eksploratora usługi Azure Storage 1.0.0
+- [Eksplorator usługi Azure Storage 1.0.0 dla systemu Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Eksplorator usługi Azure Storage 1.0.0 dla komputerów Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Eksplorator usługi Azure Storage 1.0.0 dla systemu Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Nowa
+* Rozszerzone uwierzytelniania, umożliwiający Eksploratora magazynu do użycia z tego samego konta magazynu jako Visual Studio 2017 r. Aby użyć tej funkcji, należy ponownie logowania do kont i ponownie określić subskrypcji przefiltrowane.
+* W przypadku kont Azure stosu obsługiwanych przez usługi AAD Eksploratora usługi Storage, pobiera subskrypcji Azure stosu po włączeniu "Stosu Azure docelowego". Nie trzeba tworzyć środowiska logowania niestandardowych.
+* Dodano kilka skróty umożliwiające szybsze nawigacji. Należą do różnych zespołów przełączanie i przechodzenia między edytory. Wyświetlić menu Widok, aby uzyskać więcej informacji.
+* Opinie Eksploratora magazynu znajduje się teraz w witrynie GitHub. Możesz uzyskiwać dostęp naszą stronę problemów przez kliknięcie przycisku opinii na dole po lewej lub przechodząc do [ https://github.com/Microsoft/AzureStorageExplorer/issues ](https://github.com/Microsoft/AzureStorageExplorer/issues). Możesz także sugestii, Zgłoś problemy, zadać pytania lub pozostaw jakąkolwiek inną formę opinii.
+* Jeśli są uruchomione na problemy z certyfikatami SSL i nie można odnaleźć certyfikatu ataku, można otworzyć Eksploratora usługi Storage z poziomu wiersza polecenia z `--ignore-certificate-errors` flagi. Gdy uruchamiana z tą flagą, Eksploratora usługi Storage zignoruje błędów certyfikatów SSL.
+* Jest teraz opcję "Pobierz" w menu kontekstowym elementów obiektów blob i plików.
+* Ulepszone ułatwień dostępu i obsługę czytnika ekranu. Jeśli użytkownik korzysta z funkcji ułatwień dostępu, zobacz nasze [dokumentacji ułatwień dostępu](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) Aby uzyskać więcej informacji.
+* Eksplorator usługi Storage korzysta z elektronów 1.8.3
+
+### <a name="breaking-changes"></a>Fundamentalne zmiany
+* Eksplorator usługi Storage została przełączona do nowej biblioteki uwierzytelniania. W ramach przełącznika do biblioteki trzeba będzie ponownie logowania do kont i ponownie określić subskrypcji przefiltrowane
+* Metoda używana do szyfrowania poufnych danych została zmieniona. Może to spowodować niektórych elementów szybki dostęp konieczności ponownego dodania i/lub części należy dołączyć zasobów musi zostać ponownie nałożona.
+
+### <a name="fixes"></a>Poprawki
+* W przypadku niektórych użytkowników za serwery proxy byłyby grupy obiektów blob przekazywanie lub Pobieranie przerwane z powodu "Nie można rozpoznać" komunikat o błędzie. Problem został rozwiązany.
+* Jeśli logowanie było wymagane, gdy za pomocą bezpośredniego łącza, klikając wiersz "Zaloguj" czy wyskakujące puste okno. Problem został rozwiązany.
+* W systemie Linux, jeśli nie można uruchomić z powodu awarii procesów GPU Eksploratora usługi Storage można teraz jest informowany awarii (Crash), informację, aby użyć "--Wyłącz gpu" przełącznika, a następnie automatycznie uruchomiony ponownie z opcją włączone będzie Eksplorator magazynu.
+* Nieprawidłowy dostęp zasady były trudne do tożsamości w oknie dialogowym zasad dostępu. Zasady dostępu nieprawidłowe identyfikatory teraz są opisane w kolor czerwony dla widoczność.
+* Dziennik aktywności czasami musi duże obszary odstępów między poszczególnymi częściami działania. Problem został rozwiązany.
+* W edytorze zapytań tabeli jeśli left klauzulę timestamp w nieprawidłowym stanie, a następnie podjęto próbę modyfikacji inną klauzulę zablokować edytora. Po wykryciu zmiany w klauzuli innego edytora teraz przywróci klauzuli timestamp ostatni stan prawidłowy.
+* Jeśli została wstrzymana podczas pisania w kwerendzie wyszukiwania w widoku drzewa, czy rozpocząć wyszukiwanie i fokus czy kradzieży w polu tekstowym. Teraz jawnie musi rozpocząć wyszukiwanie, naciskając klawisz "Wprowadź" lub klikając na przycisk start.
+* Polecenie "Uzyskaj sygnaturę dostępu współdzielonego" czasami zostanie wyłączone po kliknięciu prawym przyciskiem myszy w pliku w udziale plików. Problem został rozwiązany.
+* Jeśli węzeł drzewa zasobów z fokusem został odfiltrowane podczas wyszukiwania, nie można karcie w drzewie zasobów i użyj klawiszy strzałek do przechodzenia drzewa zasobów. Teraz Jeśli węzeł drzewa ukierunkowanych zasobów jest ukryty, pierwszy węzeł w drzewie zasobów zostanie automatycznie koncentrować się.
+* Dodatkowe separatora czasami będzie widoczny na pasku narzędzi edytora. Problem został rozwiązany.
+* Pole tekstowe nawigacją czasami spowodowałoby przepełnienie. Problem został rozwiązany.
+* Edytory obiektów Blob i udziału plików spowoduje czasami stale Odśwież podczas przekazywania wielu plików jednocześnie. Problem został rozwiązany.
+* Funkcja "Statystyki folderu" miał bezcelowe w widoku Zarządzanie migawki udziału plików. Ma teraz wyłączona.
+* Menu Plik nie pojawił się w systemie Linux. Problem został rozwiązany.
+* Podczas przekazywania folder do udziału plików, domyślnie, zostały przekazane tylko zawartość tego folderu. Domyślne zachowanie jest teraz Przekaż zawartość folderu do dopasowania folderu w udziale plików.
+* Kolejność przycisków w kilka okien dialogowych miał została wycofana. Problem został rozwiązany.
+* Różne zabezpieczeń związane z poprawki.
+
+### <a name="known-issues"></a>Znane problemy
+* W rzadkich przypadkach fokus drzewa może zostać zablokowane na szybki dostęp. Aby przylegał fokus, można odświeżyć wszystkie.
+* Celem Azure stosu, przekazywanie pewne pliki jako uzupełnialnych obiektów blob może zakończyć się niepowodzeniem.
+* Po kliknięciu przycisku "Anuluj" dla zadania, może upłynąć trochę czasu dla tego zadania anulować. Jest to spowodowane używamy rozwiązanie filtru Anuluj opisane w tym miejscu. 
+* Jeśli wybierzesz nieprawidłowy certyfikat kodu PIN/karty inteligentnej, będzie konieczne ponowne uruchomienie w celu Eksploratora usługi Storage zapomnij tej decyzji.
+* Zmiana nazwy obiektów blob (indywidualnie lub wewnątrz kontenera obiektów blob zmienionej nazwie) nie zostaną zachowane migawki. Wszystkie inne właściwości i metadanych dla obiektów blob, plików i jednostek są zachowywane podczas zmiany nazwy.
+* Mimo że stosu Azure aktualnie nie obsługuje udziałów plików, węzła udziałów plików jest nadal wyświetlana na koncie dołączone magazynu Azure stosu.
+* Powłoka elektronów wykorzystywane przez Eksploratora magazynu ma problemy z niektórych przyspieszanie sprzętowe procesora GPU (jednostka przetwarzania grafiki). Jeśli Eksploratora usługi Storage są wyświetlane puste okno główne (pusta), można spróbować uruchamianie Eksploratora usługi Storage z poziomu wiersza polecenia i wyłączanie przyspieszenie procesora GPU, dodając `--disable-gpu` przełącznika:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* W przypadku użytkowników systemu Linux, musisz zainstalować [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Dla użytkowników Ubuntu 14.04, konieczne będzie zapewnienia GCC jest aktualny — można to zrobić, uruchamiając następujące polecenia i ponownym uruchomieniu komputera:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Dla użytkowników Ubuntu 17.04 będą musieli zainstalować GConf — można to zrobić, uruchamiając następujące polecenia i ponownym uruchomieniu komputera:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Poprzednie wersje
+
+* [Wersja 0.9.6](#version-096)
+* [Wersja 0.9.5](#version-095)
+* [Wersja 0.9.4 i 0.9.3](#version-094-and-093)
+* [Wersja 0.9.2](#version-092)
+* [W wersji od 0.9.1 i 0.9.0](#version-091-and-090)
+* [Wersja 0.8.16](#version-0816)
+* [Wersja 0.8.14](#version-0814)
+* [Wersja 0.8.13](#version-0813)
+* [Wersja 0.8.12 i 0.8.11 i 0.8.10](#version-0812-and-0811-and-0810)
+* [Wersja 0.8.9 i 0.8.8](#version-089-and-088)
+* [Wersja 0.8.7](#version-087)
+* [Wersja 0.8.6](#version-086)
+* [Wersja 0.8.5](#version-085)
+* [Wersja 0.8.4](#version-084)
+* [Wersja 0.8.3](#version-083)
+* [Wersja 0.8.2](#version-082)
+* [Wersja 0.8.0](#version-080)
+* [Wersja 0.7.20160509.0](#version-07201605090)
+* [Wersja 0.7.20160325.0](#version-07201603250)
+* [Wersja 0.7.20160129.1](#version-07201601291)
+* [Wersja 0.7.20160105.0](#version-07201601050)
+* [Wersja 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>Wersja 0.9.6
 02/28/2018
@@ -66,30 +161,6 @@ Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Sto
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Poprzednie wersje
-
-* [Wersja 0.9.5](#version-095)
-* [Wersja 0.9.4 i 0.9.3](#version-094-and-093)
-* [Wersja 0.9.2](#version-092)
-* [W wersji od 0.9.1 i 0.9.0](#version-091-and-090)
-* [Wersja 0.8.16](#version-0816)
-* [Wersja 0.8.14](#version-0814)
-* [Wersja 0.8.13](#version-0813)
-* [Wersja 0.8.12 i 0.8.11 i 0.8.10](#version-0812-and-0811-and-0810)
-* [Wersja 0.8.9 i 0.8.8](#version-089-and-088)
-* [Wersja 0.8.7](#version-087)
-* [Wersja 0.8.6](#version-086)
-* [Wersja 0.8.5](#version-085)
-* [Wersja 0.8.4](#version-084)
-* [Wersja 0.8.3](#version-083)
-* [Wersja 0.8.2](#version-082)
-* [Wersja 0.8.0](#version-080)
-* [Wersja 0.7.20160509.0](#version-07201605090)
-* [Wersja 0.7.20160325.0](#version-07201603250)
-* [Wersja 0.7.20160129.1](#version-07201601291)
-* [Wersja 0.7.20160105.0](#version-07201601050)
-* [Wersja 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-095"></a>Wersja 0.9.5
 2018-02/06

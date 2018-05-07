@@ -1,10 +1,10 @@
 ---
-title: "Rozwiązywanie problemów ze spadkiem stanu w usłudze Azure Traffic Manager"
-description: "Jak rozwiązywać problemy z profilów usługi Traffic Manager będzie wyświetlana jako znacznie mniej wydajna stanu."
+title: Rozwiązywanie problemów ze spadkiem stanu w usłudze Azure Traffic Manager
+description: Jak rozwiązywać problemy z profilów usługi Traffic Manager będzie wyświetlana jako znacznie mniej wydajna stanu.
 services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
+documentationcenter: ''
+author: chadmath
+manager: cshepard
 ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: kumud
-ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: f5b2f471b13db67411f15f32abad5afc644c04ba
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Rozwiązywanie problemów ze stanem obniżonej wydajności w usłudze Azure Traffic Manager
 
@@ -48,7 +48,7 @@ Aby rozwiązać błąd sondowania, należy narzędzia, który zawiera kod stanu 
 
 Ponadto służy karcie sieciowej F12 narzędzi debugowania w programie Internet Explorer do przeglądania odpowiedzi HTTP.
 
-W tym przykładzie, jeśli chcesz zobaczyć odpowiedzi z adresu URL naszej sondy: http://watestsdp2008r2.cloudapp.net:80/sondowania. W poniższym przykładzie programu PowerShell zilustrowano problem.
+W tym przykładzie, jeśli chcesz zobaczyć odpowiedzi z adresu URL naszej sondy: http://watestsdp2008r2.cloudapp.net:80/Probe. W poniższym przykładzie programu PowerShell zilustrowano problem.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

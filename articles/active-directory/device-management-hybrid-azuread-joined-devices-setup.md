@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 934b79977369e5cf8e6f09e85669c7fca299737c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurowanie hybrydowego urządzeń przyłączonych do usługi Azure Active Directory
 
@@ -83,8 +83,20 @@ Upewnij się, że następujące adresy URL są dostępne z komputerów w sieci o
 
 - https://device.login.microsoftonline.com
 
-Jeśli w Twojej organizacji wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, musi implementować autowykrywania serwera Proxy sieci Web (WPAD) umożliwia komputerom z systemem Windows 10 można zarejestrować się w usłudze Azure AD.
+- W organizacji STS (Sfederowanych domen)
 
+Jeśli nie zostało już przeprowadzone STS organizacji (w przypadku domen federacyjnych) powinien być uwzględniany w ustawieniach lokalny intranet użytkownika.
+
+Jeśli Twoja organizacja planuje za pomocą logowania jednokrotnego bezproblemowe, następujące adresy URL muszą być dostępny z komputerów w organizacji i również muszą zostać dodane do strefy Lokalny intranet użytkownika:
+
+- https://autologon.microsoftazuread-sso.com
+
+- https://aadg.windows.net.nsatc.net
+
+- Ponadto należy włączyć następujące ustawienie w strefie intranetu użytkownika: "Zezwalaj na pasku stanu za pomocą skryptu aktualizacji".
+
+
+Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, musisz zaimplementować autowykrywania serwera Proxy sieci Web (WPAD) umożliwia komputerom z systemem Windows 10 można zarejestrować się w usłudze Azure AD.
 
 ## <a name="configuration-steps"></a>Kroki konfiguracji
 

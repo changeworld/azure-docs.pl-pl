@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: c6f01a16f5f60193c81a03a7374649f87eeb270a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: e05b2d515b997e769306146a5390d4d44fd5cf50
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory
 Poza rzeczywiste przepływu pracy lub zawartości przedsiębiorstwa mają dwa podstawowe wymagania dotyczące wszystkich aplikacji:
@@ -111,6 +111,6 @@ Z usługą Azure AD można zabezpieczyć swoje aplikacje za pomocą zasad dostę
 Aby rozpocząć Integrowanie aplikacji z usługą Azure AD, Przyjrzyjmy się [przewodnik Wprowadzenie do integracji Azure Active Directory z aplikacjami pobierania](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Zobacz także
-[Artykuł indeksu do zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
-[planu wdrożenie krok po kroku dla logowania jednokrotnego do aplikacji SaaS](http://aka.ms/ssodeploymentplan)
+* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
+* [Plan wdrożenie krok po kroku dla logowania jednokrotnego do aplikacji SaaS](http://aka.ms/ssodeploymentplan)
 

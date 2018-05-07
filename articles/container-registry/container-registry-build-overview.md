@@ -6,13 +6,13 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/01/2018
 ms.author: marsma
-ms.openlocfilehash: 0e10b415f3d1c7ca502cfd63ebd27a6adcb69635
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 7506351c0d65fb167136478d2dc383cdabd81835
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatyzacja systemu operacyjnego i framework poprawki z ACR kompilacji
 
@@ -58,7 +58,7 @@ Ponieważ dynamicznie kompilacji ACR odnajdzie zależności obrazu podstawowego,
 Więcej informacji na temat systemu operacyjnego i framework poprawki w trzeci samouczek tworzenia ACR [obrazu Automatyzacja opiera się na podstawowy obraz aktualizacji z kompilacji rejestru kontenera Azure](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Podczas tworzenia ACR jest w wersji zapoznawczej, wyzwalacz aktualizacji obrazu podstawowego tworzy tylko wtedy, gdy obrazy podstawową i aplikacji znajdują się w rejestrze tego samego kontenera platformy Azure.
+> Początkowej wersji zapoznawczej wyzwalacz aktualizacji obrazu podstawowego tworzy tylko wtedy, gdy obrazy podstawową i aplikacji znajdują się w rejestrze tego samego kontenera platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

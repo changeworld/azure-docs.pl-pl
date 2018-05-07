@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie, edytowanie i rozszerzyć JSON logiki aplikacji definicje - Azure Logic Apps | Dokumentacja firmy Microsoft"
+title: Tworzenie, edytowanie i rozszerzyć JSON logiki aplikacji definicje - Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Tworzenie i dostosowywanie definicji aplikacji logiki w formacie JSON
 author: ecfan
 manager: SyntaxC4
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f37f600d001b110775d8ca0e78950e3b8743df82
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Tworzenie, edytowanie i dostosować JSON definicji aplikacji logiki
 
@@ -49,7 +49,7 @@ W programie Visual Studio możesz otworzyć aplikacji logiki, które zostały ut
 
 2. Znajdowanie i otwieranie definicji aplikacji logiki, która domyślnie jest wyświetlana w [szablonu usługi Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment)nazwanego **LogicApp.json**. Można użyć i dostosować ten szablon do wdrożenia w różnych środowiskach.
 
-3. Otwórz menu skrótów szablon i definicję aplikacji logiki. Wybierz **Otwórz w Projektancie aplikacji logiki**.
+3. Otwórz menu skrótów szablon i definicję aplikacji logiki. Wybierz pozycję **Otwórz przy użyciu Projektanta aplikacji logiki**.
 
    ![Aplikacja logiki otwarty w rozwiązaniu Visual Studio](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
@@ -119,7 +119,7 @@ Poniżej przedstawiono podstawowe definicji:
 
 ``` json
 {
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "uri": {
@@ -170,7 +170,7 @@ Logic Apps ma funkcje służące do pracy z ciągami znaków. Na przykład zał�
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {
@@ -231,7 +231,7 @@ Na przykład ten przepływ pracy definiuje kilka kategorii jako parametry i mapo
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "specialCategories": {
@@ -321,7 +321,7 @@ Do formatowania daty, można użyć ciągu elementy formatujące. Na przykład, 
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {

@@ -4,8 +4,8 @@ description: Zapytania analityczne między dzierżawcy przy użyciu danych pobra
 keywords: samouczek usługi sql database
 services: sql-database
 documentationcenter: ''
-author: stevestein
-manager: jhubbard
+author: anumjs
+manager: craigg
 editor: MightyPen
 ms.service: sql-database
 ms.custom: scale out apps
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/08/2017
-ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 487dcd75113b92c1e50caca2ae9df34b4fb2548f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.author: anjangsh
+ms.openlocfilehash: dd51480f30187456104a0f9d72ec17082dc1e39e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Eksploruj SaaS analizy w usłudze baza danych SQL Azure SQL Data Warehouse, fabryki danych i usługi Power BI
 

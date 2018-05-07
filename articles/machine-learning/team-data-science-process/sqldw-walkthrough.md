@@ -3,7 +3,7 @@ title: 'Proces nauki danych zespołu w działaniu: przy użyciu usługi SQL Data
 description: Proces zaawansowane metody analizy i technologii w akcji
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev
-ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: b6b78c5ae4506c1405428b60887567f272d6e268
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Proces nauki danych zespołu w działaniu: przy użyciu magazynu danych SQL
 W tym samouczku, możemy opisano tworzenie i wdrażanie modelu uczenia maszynowego przy użyciu magazynu danych SQL (SQL DW) dla elementu dataset publicznie dostępnych — [rund taksówki NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany prognozuje czy poradę ma być stosowany w podróży i modele wieloklasowej klasyfikacji i regresji omówiono także które prognozowania dystrybucji dla kwoty Porada płatnej.

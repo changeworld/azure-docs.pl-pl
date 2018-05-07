@@ -1,9 +1,9 @@
 ---
-title: "Utwórz bramę aplikacji z wewnętrznego przekierowania - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do odpowiedniej puli przy użyciu wiersza polecenia platformy Azure."
+title: Utwórz bramę aplikacji z wewnętrznego przekierowania - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do odpowiedniej puli przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,18 +11,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 4228a3f534a5dc58ab2efa3c5cf0edd4caee43c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 5bd9e8f2521120dd1d12eb9630663493b89f5844
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Utwórz bramę aplikacji z wewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
 
 Interfejs wiersza polecenia platformy Azure umożliwiają skonfigurowanie [przekierowania ruchu w sieci web](application-gateway-multi-site-overview.md) podczas tworzenia [brama aplikacji w](application-gateway-introduction.md). W tym samouczku utworzysz puli wewnętrznej bazy danych przy użyciu zestawu skalowania maszyn wirtualnych. Następnie skonfiguruj odbiorników i reguły na podstawie domen, do których należą do upewnij się, że ruch w sieci web dociera do odpowiedniej puli. Ten samouczek zakłada, że masz wiele domen i używa przykłady *www.contoso.com* i *www.contoso.org*.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
@@ -47,7 +47,7 @@ Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastu
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Utwórz zasoby sieciowe 
+## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
 Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_net). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane przez pulę zaplecza serwerów za pomocą [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_network_public_ip_create).
 
@@ -190,7 +190,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
@@ -208,11 +208,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę domeny na pasku adresu przeglądarki. Such as, http://www.contoso.com.
+Wpisz nazwę domeny na pasku adresu przeglądarki. Takie jak http://www.contoso.com.
 
 ![Lokacja contoso testu bramy aplikacji](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 
-Zmień adres na inne domeny, na przykład http://www.contoso.org i powinny być widoczne czy ruch został przekierowany do odbiornika dla www.contoso.com.
+Zmień adres do Twojej domeny, na przykład http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika dla www.contoso.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

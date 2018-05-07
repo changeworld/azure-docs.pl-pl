@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a873aa9835ffab8b0d195d9fc9588167ea134128
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpieczenia bazy danych w usłudze Azure DB rozwiązania Cosmos
 
@@ -78,7 +78,7 @@ Umożliwia pracę na każdej z nich szczegółowo.
 |Odpowiadanie na ataki|Gdy nawiązano pomocy technicznej platformy Azure, aby zgłosić potencjalny atak proces odpowiedzi na zdarzenia krok 5 zostało rozpoczęte. Celem procesu krok 5 jest przywrócenie normalnego użytkowania, zabezpieczenia i operacje możliwie jak najszybciej po zostanie wykryty problem i dochodzenia została uruchomiona.<br><br>Dowiedz się więcej w [Response zabezpieczeń firmy Microsoft Azure w chmurze](https://aka.ms/securityresponsepaper).|
 |Grodzenia|Azure DB rozwiązania Cosmos zapewnia zarządzanie danymi i zgodności dla suwerennych regionów (na przykład Niemczech, Chinach, nam wersji dla instytucji rządowych).|
 |Urządzenia chronione|Dane w usłudze Azure DB rozwiązania Cosmos są przechowywane na dyskach SSD w centrach danych chronionych na platformie Azure.<br><br>Dowiedz się więcej [Globalne centra danych firmy Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|Szyfrowanie protokołu HTTPS/SSL/TLS|Wszystkie interakcje bazy danych rozwiązania Cosmos Azure Usługa klienta są SSL/TLS 1.2, wymuszane. Ponadto wszystkie replikacji wewnątrz centrum danych i między centrum danych jest SSL/TLS 1.2, wymuszane.|
+|Szyfrowanie protokołu HTTPS/SSL/TLS|Wszystkie interakcje bazy danych rozwiązania Cosmos Azure Usługa klienta są SSL/TLS 1.2 stanie. Ponadto wszystkie replikacji wewnątrz centrum danych i między centrum danych jest SSL/TLS 1.2, wymuszane.|
 |Szyfrowanie w spoczynku|Wszystkie dane przechowywane w bazie danych rozwiązania Cosmos Azure jest szyfrowane, gdy. Dowiedz się więcej [szyfrowania bazy danych Azure rozwiązania Cosmos w stanie spoczynku](.\database-encryption-at-rest.md)|
 |Poprawioną serwerów|Jako zarządzane bazy danych bazy danych Azure rozwiązania Cosmos eliminuje konieczność zarządzania i poprawka serwerów, jaka została wykonana automatycznie.|
 |Konta z uprawnieniami administracyjnymi o silnych haseł|Trudno jest podejrzeń, musimy jeszcze wspomina to wymaganie, lecz w odróżnieniu od niektórych naszych konkurencji nie jest możliwe jest konto administracyjne bez hasła w usłudze Azure DB rozwiązania Cosmos.<br><br> Zabezpieczenia za pośrednictwem protokołu SSL i HMAC tajny uwierzytelnianie oparte na jest rozszerzania w domyślnie.|

@@ -1,6 +1,6 @@
 ---
-title: "Plan ochrony Media - automatyzacji aplikacji sieci Web FedRAMP - Azure zabezpieczeń i zgodności"
-description: "Automatyzacja aplikacji FedRAMP Web — ochrony nośnika"
+title: Plan ochrony Media - automatyzacji aplikacji sieci Web FedRAMP - Azure zabezpieczeń i zgodności
+description: Automatyzacja aplikacji FedRAMP Web — ochrony nośnika
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 37812c2f7ee79685f9014a7999b4355e649ca6e1
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="media-protection-mp"></a>Ochrona nośnika (MP)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasady ochrony nośnika, którego dotyczy cel, zakres, ról, obowiązki zobowiązań zarządzania, koordynacji wśród jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji zasad ochrony nośników i kontrolek ochrony skojarzonych z nimi nośników; przegląda i aktualizuje bieżące zasady ochrony nośnika [przypisania: zdefiniowane przez organizację częstotliwość]; i procedur ochrony nośnika [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-2** organizacji, ogranicza dostęp do [przypisania: zdefiniowane przez organizację typów nośników cyfrowych i/lub -cyfrowe] do [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **Pakiet administracyjny 3.a** organizacji oznacza nośnika systemu informacje wskazujące ograniczenia dystrybucji, obsługa ostrzeżenia i oznaczenia ochrony (jeśli istnieją) informacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 3.b** wyłącza organizacji [przypisania: zdefiniowany przez organizację typy nośnika systemu informacje] oznaczyć tak długo, jak nośnik pozostają w [przypisania: zdefiniowane przez organizację kontrolowane obszarów].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -83,11 +83,11 @@ ms.lasthandoff: 02/11/2018
 
  ## <a name="nist-800-53-control-mp-4a"></a>Formant NIST 800 53 MP-4.a
 
-#### <a name="media-storage"></a>Media Storage
+#### <a name="media-storage"></a>Nośnik magazynowania
 
 **MP 4.a** organizacja kontroluje fizycznie i są bezpiecznie przechowywane [przypisania: zdefiniowane przez organizację typów nośników cyfrowych i/lub -cyfrowe] w [przypisania: zdefiniowane przez organizację kontrolowane obszarów].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -97,11 +97,11 @@ ms.lasthandoff: 02/11/2018
 
  ## <a name="nist-800-53-control-mp-4b"></a>Formant NIST 800 53 MP-4.b
 
-#### <a name="media-storage"></a>Media Storage
+#### <a name="media-storage"></a>Nośnik magazynowania
 
 **Pakiet administracyjny 4.b** organizacji chroni informacji nośnika systemu, dopóki nie zostaną zniszczone nośnika lub oczyszczony przy użyciu zatwierdzonych sprzętu, technik i procedur.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 5.a** organizacji chroni i kontroluje [przypisania: zdefiniowane przez organizację typów nośnika systemu informacje] podczas transportu poza kontrolowanym przy użyciu [przypisania: zabezpieczeń zdefiniowany przez organizację].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **Pakiet administracyjny 5.b** organizacji utrzymuje accountability dla nośnika systemu informacji podczas transportu poza kontrolowanym.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **Pakiet administracyjny 5.c** organizacji dokumentów czynnościami związanymi z transportem nośnika systemu informacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **Pakiet administracyjny 5.d** organizacji ogranicza działania związane z transportem nośnika systemu informacji do autoryzowanego personelu.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5 (4)** system informacji implementuje mechanizmów kryptograficznych, aby chronić prywatność i integralność informacji przechowywanych na nośnika cyfrowego podczas transportu poza kontrolowanym.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 6.a** oczyszcza organizacji [przypisania: nośnika systemu informacje zdefiniowane przez organizację] przed usunięciem, spoza organizacji formantu, czy zwykłe wydanie ponownemu użyciu [przypisania: techniki zdefiniowany przez organizację ich oczyszczania i procedur] zgodnie z odpowiednich standardów federalnych i organizacyjne i zasady.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **Pakiet administracyjny 6.b** mechanizmów ich oczyszczania z siły i integralności proporcjonalnie do kategorii lub klasyfikacji informacji jest stosowana w organizacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-6 (1)** organizacji przegląda, zatwierdza śledzi, dokumentów i weryfikuje działań nośnika ich oczyszczania i usuwania.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-6 (2)** organizacji testów ich oczyszczania sprzętu i procedur [przypisania: zdefiniowany przez organizację częstotliwość] można zweryfikować, że zamierzone ich oczyszczania zostanie osiągnięty.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-6 (3)** organizacji dotyczy techniki ich bezpieczne oczyszczania urządzenia przenośnego urządzenia pamięci masowej przed łączyć tych urządzeń z systemem informacje w następujących okolicznościach: [przypisania: zdefiniowane przez organizację okoliczności wymagające ich oczyszczania urządzenia przenośnego urządzenia pamięci masowej].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-7** organizacji [zaznaczenia: ogranicza; zabrania] użycie [przypisania: zdefiniowany przez organizację typy nośnika systemu informacji] na [przypisania: systemów informacje zdefiniowane przez organizację lub składników systemu] przy użyciu [przypisania: zdefiniowany przez organizację zabezpieczającymi].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-7 (1)** organizacji zabrania używania urządzenia przenośnego urządzenia pamięci masowej w systemach informacje organizacyjne, wówczas, gdy takich urządzeń do zidentyfikowania właściciela.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|

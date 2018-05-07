@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 281f50a942a9396bf1163f5a20feb98bf450e6eb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f31ef7285e07467fe233d5e10534340bc912ed1c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Jak zarejestrować każdy użytkownik usługi Azure Active Directory przy użyciu wzorca wielodostępnych aplikacji
 Jeśli oferujesz oprogramowania jako usługi aplikacji dla wielu organizacji, można skonfigurować aplikację do akceptowania logowania z dowolnej dzierżawy usługi Azure Active Directory (AD). Ta konfiguracja jest nazywana tworzenie dzierżawy usługi aplikacji. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po zgodę swojego konta za pomocą aplikacji.  
@@ -57,7 +57,8 @@ Jeśli usługi Azure AD odbiera żądanie na / Common punktu końcowego, jego lo
 
 Odpowiedź logowania do aplikacji, następnie zawiera token reprezentujący użytkownika. Wartości wystawcy tokenu informuje aplikacji dzierżawy, jakie użytkownik jest z. Gdy zwraca odpowiedź znajdujący punktu końcowego, odpowiada wartości wystawcy tokenu użytkownika dzierżawcy. 
 
-> [! IMPORTANTNT] / Common punktu końcowego nie jest dzierżawcy i nie jest wystawcę, jest tylko multiplekser. Używając/Common logikę w aplikacji do sprawdzania poprawności tokenów musi zostać zaktualizowany do to uwzględniać. 
+> [!IMPORTANT]
+> / Wspólnego punktu końcowego nie jest dzierżawcy i nie jest wystawcę, jest tylko multiplekser. Używając/Common logikę w aplikacji do sprawdzania poprawności tokenów musi zostać zaktualizowany do to uwzględniać. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Zaktualizuj swój kod obsługi wielu wartości wystawcy
 Aplikacje sieci Web i interfejsów API sieci web odbierają i sprawdzania poprawności tokenów z usługi Azure AD.  
@@ -156,9 +157,6 @@ Użytkownicy i Administratorzy mogą wycofać zgodę do aplikacji w dowolnym mom
 * Administratorzy odwołać dostęp do aplikacji, usuwając je z usługą Azure AD przy użyciu [aplikacje dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) sekcji [portalu Azure][AZURE-portal].
 
 Jeśli administrator zgadza się na aplikacji dla wszystkich użytkowników w dzierżawie, użytkownicy nie mogą indywidualnie odwołać dostęp. Tylko administrator może odwołać dostęp i tylko dla całej aplikacji.
-
-### <a name="consent-and-protocol-support"></a>Obsługa zgody i protokołów
-Zgoda jest obsługiwana w usłudze Azure AD za pomocą uwierzytelniania OAuth, OpenID Connect, WS-Federation oraz SAML protokołów. Nie obsługują protokoły SAML i WS-Federation `prompt=admin_consent` parametru, więc zgody administratora tylko jest to możliwe za pośrednictwem protokołu OAuth i OpenID Connect.
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Aplikacje wielodostępne i buforowanie tokeny dostępu
 Aplikacje wielodostępne można również uzyskać tokenów dostępu do wywoływania interfejsów API, które są chronione przez usługę Azure AD. Typowym błędem podczas przy użyciu biblioteki uwierzytelniania usługi Active Directory (ADAL) z aplikacją wielodostępne jest początkowo żądania token dla użytkownika za pomocą/Common, otrzymują odpowiedź, a następnie żądania tokenu kolejnych dla tego samego użytkownika również przy użyciu/Common. Ponieważ odpowiedzi z usługi Azure AD nie pochodzi od dzierżawcy, / wspólne, ADAL buforuje token jako od dzierżawcy. Wpis pamięci podręcznej chybień kolejne wywołanie/Common do uzyskania tokenu dostępu dla użytkownika, a użytkownik jest monitowany o Zaloguj się ponownie. Aby uniknąć, Brak pamięci podręcznej, upewnij się, że wezwań do już zalogowanego użytkownika zostały wprowadzone do punktu końcowego dzierżawcy.

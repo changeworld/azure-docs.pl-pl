@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b4baced183721d666354667f457f4cc5954b0d11
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i do Dynamics 365 (typowe Usługa danych) lub usługi Dynamics CRM przy użyciu fabryki danych Azure
 
@@ -276,7 +276,11 @@ Aby skopiować dane do programu Dynamics, należy ustawić typ ujścia w działa
 | ignoreNullValues | Wskazuje, czy mają zostać zignorowane wartości null w danych wejściowych (z wyjątkiem pól klucza) podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **Wartość true,**: Pozostaw bez zmian danych w obiekcie docelowym, po wykonaniu operacji upsert/aktualizacji. Wstaw wartości domyślnej zdefiniowanej po wykonaniu operacji wstawiania.<br/>- **FALSE**: zaktualizować dane w obiekcie docelowym null po wykonaniu operacji upsert/aktualizacji. Wstaw wartość NULL, po wykonaniu operacji wstawiania. | Nie (wartość domyślna to false) |
 
 >[!NOTE]
->Wartość domyślna writeBatchSize odbioru i działanie kopiowania [parallelCopies](copy-activity-performance.md#parallel-copy) dla obiekt sink Dynamics są obie 10. W związku z tym 100 rekordów są przesyłane do programu Dynamics jednocześnie.
+>Wartość domyślna dla obiekt sink "**writeBatchSize**"i działanie kopiowania"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" dla obiekt sink Dynamics są obie 10. W związku z tym 100 rekordów są przesyłane do programu Dynamics jednocześnie.
+
+Dla trybu online Dynamics 365 istnieje limit [2 partii współbieżnych wywołań na organizacji](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations). Po przekroczeniu tego limitu generowany jest błąd "Serwer jest zajęty" przed wykonaniem kiedykolwiek pierwszego żądania. Utrzymywanie "writeBatchSize" mniejsza lub równa 10 czy należy unikać takich ograniczania równoczesnych wywołań.
+
+Optymalne połączenie "**writeBatchSize**"i"**parallelCopies**" zależy od schematu jednostki np. liczba kolumn, rozmiar wiersza, liczba wtyczek/przepływy pracy/działań przepływu pracy podłączonymi do tych wywołań itd. Domyślne ustawienie 10 writeBatchSize * 10 parallelCopies jest zalecane zgodnie z usługi Dynamics, która będzie działać dla większości obiektów Dynamics jednak mogą nie być najlepszą wydajność. Dostrajaniu dostosowując kombinacji w ustawieniach działania kopiowania.
 
 **Przykład:**
 
@@ -322,12 +326,13 @@ Skonfiguruj odpowiedni typ danych fabryki danych w strukturze zestawu danych na 
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Długie | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Wartość logiczna | ✓ | ✓ |
+| AttributeType.Customer | Identyfikator GUID | ✓ | | 
 | AttributeType.DateTime | Data/godzina | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Podwójnej precyzji | ✓ | ✓ |
 | AttributeType.EntityName | Ciąg | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Identyfikator GUID | ✓ | |
+| AttributeType.Lookup | Identyfikator GUID | ✓ | ✓ |
 | AttributeType.ManagedProperty | Wartość logiczna | ✓ | |
 | AttributeType.Memo | Ciąg | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |

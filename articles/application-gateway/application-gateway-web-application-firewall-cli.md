@@ -1,31 +1,31 @@
 ---
-title: "Utwórz bramę aplikacji z zapory aplikacji sieci web - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramę aplikacji za pomocą zapory aplikacji sieci web przy użyciu wiersza polecenia platformy Azure."
+title: Utwórz bramę aplikacji z zapory aplikacji sieci web - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji za pomocą zapory aplikacji sieci web przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: 87125b68c81af07d0ecd9693fdf7e2dc00a93324
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Utwórz bramę aplikacji za pomocą zapory aplikacji sieci web przy użyciu wiersza polecenia platformy Azure
 
 Interfejsu wiersza polecenia Azure umożliwia tworzenie [brama aplikacji w](application-gateway-introduction.md) z [zapory aplikacji sieci web](application-gateway-web-application-firewall-overview.md) (WAF), która używa [zestaw skali maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Używa zapory aplikacji sieci Web [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) zasady ochrony aplikacji. Reguły obejmują ochronę przed ataki, takie jak iniekcja kodu SQL, atakami skryptów między witrynami i hijacks sesji. 
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Utwórz bramę aplikacji z zapory aplikacji sieci Web jest włączona
-> * Utwórz zestaw skali maszyny wirtualnej
+> * Tworzenie zestawu skalowania maszyn wirtualnych
 > * Utwórz konto magazynu i skonfigurować diagnostykę
 
 ![Przykład zapory aplikacji sieci Web](./media/application-gateway-web-application-firewall-cli/scenario-waf.png)
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli wybierzesz do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym samouczku wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -44,7 +44,7 @@ Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platform
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Utwórz zasoby sieciowe
+## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
 Sieci wirtualnej i podsieci są używane do zapewnienia możliwości połączenia sieci z bramy aplikacji i jej skojarzonych zasobów. Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create) i [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* z [utworzyć az sieci publicznej ip](/cli/azure/network/public-ip#az_network_public_ip_create).
 
@@ -100,7 +100,7 @@ Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworz
 - *appGatewayFrontendIP* -przypisuje *myAGPublicIPAddress* do *appGatewayHttpListener*.
 - *rule1* — domyślna routingu regułę, która jest skojarzona z *appGatewayHttpListener*.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Utwórz zestaw skali maszyny wirtualnej
+## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
 W tym przykładzie utworzysz zestaw skali maszyny wirtualnej, która zawiera dwa serwery w puli zaplecza bramy aplikacji. W zestawie skalowania maszyn wirtualnych są skojarzone z *myBackendSubnet* podsieci. Aby utworzyć skali zestaw, możesz użyć [az vmss utworzyć](/cli/azure/vmss#az_vmss_create).
 
@@ -129,7 +129,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Utwórz konto magazynu i skonfigurować diagnostykę
@@ -163,7 +163,7 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, należy użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, należy użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -182,7 +182,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Utwórz bramę aplikacji z zapory aplikacji sieci Web jest włączona
-> * Utwórz zestaw skali maszyny wirtualnej
+> * Tworzenie zestawu skalowania maszyn wirtualnych
 > * Utwórz konto magazynu i skonfigurować diagnostykę
 
 Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.

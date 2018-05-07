@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 390e917990586642e55913a69873b1707e371de3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9b0d2df078c59c7d261fd3231450ddfb2fdcd88e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informacje o cenach Centrum IoT Azure
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 04/03/2018
 | Komunikaty chmury do urządzenia | Pomyślnie wysłane wiadomości są pobierane w fragmentów 4 KB, na przykład wiadomości 6 KB rozliczany 2 wiadomości. |
 | Przekazywania plików | Transfer plików do magazynu Azure nie jest pomiaru przez Centrum IoT. Komunikaty rozpoczęcia i zakończenia transferu plików są naliczane, ponieważ messaged mierzonego w przyrostach 4 KB. Na przykład przesyłania pliku 10 MB jest pobierana dwa komunikaty oraz koszt usługi Azure Storage. |
 | Metody bezpośrednie | Metoda pomyślnego żądania są naliczane w fragmentów 4 KB, odpowiedzi z treściami niepustym są naliczane w fragmentów 4 KB jako dodatkowe komunikaty. Żądania do odłączonego urządzenia są naliczane jako komunikaty w fragmentów 4 KB. Na przykład metody z treścią 6 KB, który daje w odpowiedzi nie jednostki z urządzenia, jest rozliczany jako dwa komunikaty. Metoda o treści 6 KB, który daje w odpowiedzi 1 KB z urządzenia jest rozliczany jako dwa komunikaty żądania plus inny komunikat odpowiedzi. |
-| Liczba odczytów bliźniaczej reprezentacji urządzenia | Dwie urządzenia odczytuje z urządzenia i z powrotem rozwiązania zakończenia są naliczane jako komunikaty w fragmentów 512-bajtowego. Na przykład odczytywania dwie 6 KB urządzenia jest rozliczany jako 12 wiadomości. |
-| Aktualizacje dwie urządzeń (znaczniki i właściwości) | Aktualizacje dwie urządzeń z urządzenia i z zaplecza rozwiązania są naliczane jako komunikaty w fragmentów 512-bajtowego. Na przykład odczytywania dwie 6 KB urządzenia jest rozliczany jako 12 wiadomości. |
-| Urządzenie dwie zapytań | Zapytania są naliczane jako komunikaty, w zależności od wielkości wynik w fragmentów 512-bajtowego. |
+| Odczytuje dwie modułu i urządzenia | Dwie odczytuje z urządzenia lub modułu i z powrotem rozwiązania zakończenia są naliczane jako komunikaty w fragmentów 512-bajtowego. Na przykład Odczyt dwie 6 KB jest rozliczany jako 12 wiadomości. |
+| Urządzenia i moduł aktualizacji dwie (znaczniki i właściwości) | Dwie aktualizacje z urządzenia lub modułu i zaplecza rozwiązania są naliczane jako komunikaty w fragmentów 512-bajtowego. Na przykład Odczyt dwie 6 KB jest rozliczany jako 12 wiadomości. |
+| Urządzenia i moduł dwie zapytań | Zapytania są naliczane jako komunikaty, w zależności od wielkości wynik w fragmentów 512-bajtowego. |
 | Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | Nie zostanie obciążona. |
-| Operacje na urządzenie zadania | Operacje zadania (na przykład aktualizacji dwie urządzenia i metody) są naliczane normalnego. Na przykład zadanie wynikiem wywołania metody 1000 1 KB żądań i odpowiedzi pusty treści jest pobierana 1000 komunikatów. |
+| Operacje na urządzenie zadania | Operacje zadania (na przykład dwie aktualizacje i metody) są naliczane normalnego. Na przykład zadanie wynikiem wywołania metody 1000 1 KB żądań i odpowiedzi pusty treści jest pobierana 1000 komunikatów. |
 
 > [!NOTE]
 > Wszystkie rozmiary są obliczane, biorąc pod uwagę rozmiar ładunku w bajtach (protokół ramek zostanie zignorowana). Komunikaty, które mają właściwości, oraz i treść, rozmiar jest obliczana w sposób niezależny od protokołu. Aby uzyskać więcej informacji, zobacz [Centrum IoT wiadomości przewodnik dewelopera][lnk-message-size].

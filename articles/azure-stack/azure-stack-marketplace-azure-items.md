@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure stosu
 
@@ -82,6 +82,7 @@ Microsoft Azure stosu obsługuje następujące maszyny wirtualne Azure Marketpla
 ## <a name="linux-distributions"></a>Dystrybucje systemu Linux
 |  | Nazwa elementu | Opis | Wydawca |
 | --- | --- | --- | --- |
+| ![Wyczyść system operacyjny Linux](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Wyczyść system operacyjny Linux](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Odwołanie dystrybucji systemu Linux, zoptymalizowana pod kątem architekturze firmy Intel. | Wyczyść projekt systemu Linux |
 | ![Kontener Linux przez CoreOS](media/azure-stack-marketplace-azure-items/coreos.png) | [Kontener Linux przez CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kontener Linux jest nowoczesnych i minimalnym dystrybucji systemu Linux udostępnia prosty sposób uruchamiania kontenerów, zarządzania klastrami i bezproblemowo aktualizacji serwerów — wszystkie składniki, które umożliwiają skalowanie magazynu obliczeniowe. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Serwer Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server jest Linux najpopularniejszym na świecie dla środowisk chmury. | Canonical |
 | ![Debian 8 "Joasia."](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Joasia."](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux jest jednym z najpopularniejszych dystrybucje systemu Linux. | credativ |

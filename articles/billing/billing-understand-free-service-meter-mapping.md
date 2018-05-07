@@ -1,24 +1,24 @@
 ---
-title: "Usługi do pomiaru mapowania bezpłatne konto - Azure | Dokumentacja firmy Microsoft"
-description: "Zrozumienie usługi do mapowania licznika dla usługi uwzględnione w bezpłatne konto."
-services: 
-documentationcenter: 
+title: Usługi do pomiaru mapowania bezpłatne konto - Azure | Dokumentacja firmy Microsoft
+description: Zrozumienie usługi do mapowania licznika dla usługi uwzględnione w bezpłatne konto.
+services: ''
+documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 9d7e355e755f2bac8929ab16f7f71aa3b0702658
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 683a94f25e94faf0eee7c6aa5fbae52132d58f34
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>Zrozumienie bezpłatnej usługi do pomiaru mapowania
 
@@ -48,7 +48,7 @@ Każda usługa Azure emituje użycia przed liczniki, które korzysta z platformy
 | SQL Database | Dni korzystania z bazy danych standardowa S0 — baza danych SQL | Dni korzystania z bazy danych standardowa S0 — w warstwie bezpłatna | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
 | Shared - przepustowości ** | Wychodzący transfer danych (GB) | Transfer danych wychodzących (GB) — w warstwie bezpłatna | 0fc067a1-65d2-46DA-b24b-7a9cbe2c69bd
 
-\*Po utworzeniu maszyny wirtualnej systemu Windows i wybierz dysków zarządzanych, będą korzystać z licznika dysków zarządzanych w ramach maszyny wirtualnej.
+\* Po utworzeniu maszyny wirtualnej systemu Windows i wybierz dysków zarządzanych, będą korzystać z licznika dysków zarządzanych w ramach maszyny wirtualnej.
 
 \** Udostępniony liczniki mogą być używane przez wiele usług. Na przykład zarówno maszyn wirtualnych i magazynu Emituj użycia przed Out(GB) transferu danych miernika.
 

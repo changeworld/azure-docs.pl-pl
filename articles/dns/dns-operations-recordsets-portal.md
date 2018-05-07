@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie zestawów rekordów DNS i rekordy z usługi Azure DNS | Dokumentacja firmy Microsoft"
-description: "Usługa DNS platformy Azure umożliwia zarządzanie zestawami rekordów DNS i rekordy, gdy hosting domeny."
+title: Zarządzanie zestawów rekordów DNS i rekordy z usługi Azure DNS | Dokumentacja firmy Microsoft
+description: Usługa DNS platformy Azure umożliwia zarządzanie zestawami rekordów DNS i rekordy, gdy hosting domeny.
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: gwallace
-ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: kumud
+ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Zarządzanie rekordami DNS i zestawów rekordów przy użyciu portalu Azure
 
 > [!div class="op_single_selector"]
-> * [Azure portal](dns-operations-recordsets-portal.md)
+> * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Interfejs wiersza polecenia platformy Azure 1.0](dns-operations-recordsets-cli-nodejs.md)
 > * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-recordsets-cli.md)
 > * [Program PowerShell](dns-operations-recordsets.md)
@@ -63,7 +63,7 @@ Możesz dodać maksymalnie 20 rekordów do każdego zestawu rekordów. Zestaw re
 
 Po zapisaniu rekordu, wartości na **strefy DNS** bloku zostaną one zastosowane w nowym rekordzie.
 
-## <a name="update-a-record"></a>Zaktualizuj rekord
+## <a name="update-a-record"></a>Aktualizacja rekordu
 
 Podczas aktualizacji rekordu w istniejącego zestawu rekordów, pola, które można zaktualizować zależą od typu rekordu, z którymi pracujesz.
 

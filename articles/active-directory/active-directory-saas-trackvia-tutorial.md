@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z TrackVia | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i TrackVia."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i TrackVia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 51b040e1dfaba8fff8136e8947edf716919f53b0
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 54e830f2ead2887c941d81a97ed619ae5cb1c750
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Samouczek: Integracji Azure Active Directory z TrackVia
 
@@ -108,13 +108,13 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny TrackVia pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_url.png)
 
-    W **identyfikator** tekstowym, wpisz wartość:`TrackVia`
+    W **identyfikator** tekstowym, wpisz wartość: `TrackVia`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Adresy URL i domeny TrackVia pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://companyname.trackvia.com`
+    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://companyname.trackvia.com`
      
     > [!NOTE] 
     > Zaloguj się na wartość adresu URL nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta TrackVia](mailto:support@trackvia.com) aby zyskać tę wartość.
@@ -126,11 +126,22 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 6. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-trackvia-tutorial/tutorial_general_400.png)
-    
-7. Skonfigurować logowanie jednokrotne w **TrackVia** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej TrackVia](mailto:support@trackvia.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Na **konfiguracji TrackVia** , kliknij przycisk **skonfigurować TrackVia** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML** z **sekcji krótkimi opisami.**
+
+    ![Konfiguracja TrackVia](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_configure.png)
+    
+8. W oknie innej przeglądarki należy zalogować się jako administrator do witryny firmy TrackVia.
+
+9. Polecenie Trackvia **Moje konto** ustawienia, a następnie wybierz **rejestracji jednokrotnej** karcie, wykonaj następujące czynności:
+
+    ![Konfiguracja TrackVia](./media/active-directory-saas-trackvia-tutorial/configure1.png)
+
+    a. W **identyfikator jednostki dostawcy tożsamości** pole tekstowe, Wklej **identyfikator jednostki SAML** wartość, która została skopiowana z portalu Azure.
+
+    b. Wybierz **wybierz plik** można przekazać pliku metadanych, który został pobrany z portalu Azure.
+
+    c. Kliknij pozycję **Zapisz**
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -160,7 +171,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
@@ -212,8 +223,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_01.png
@@ -227,4 +236,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_203.png
-

@@ -1,31 +1,31 @@
 ---
-title: "Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory."
+title: Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Informacje o sposobie konfigurowania zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2354a8bf81189f70bb8d0d63c3df3236403c11fc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ede0c7954fdcb27788e4045c08bd6a0b88ae74bc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory
 
-Z [dostępu warunkowego w usłudze Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md), można dostosować sposób autoryzowani użytkownicy mają dostęp do zasobów. Na przykład ograniczyć dostęp do niektórych zasobów do zaufanych urządzeń. Zasady dostępu warunkowego, która wymaga zaufanego urządzenia jest nazywana zasad dostępu warunkowego opartego na urządzeniu.
+Z [dostępu warunkowego w usłudze Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md), można kontrolować sposób autoryzowani użytkownicy mogą uzyskać dostępu do zasobów. Na przykład można ograniczyć dostęp do niektórych zasobów do zarządzanych urządzeń. Zasady dostępu warunkowego, która wymaga zarządzanego urządzenia jest nazywana zasad dostępu warunkowego opartego na urządzeniu.
 
-Ten temat zawiera informacje dotyczące sposobu konfigurowania zasad dostępu warunkowego opartego na urządzeniu dla Azure AD połączonych aplikacji. 
+W tym temacie wyjaśniono, jak można skonfigurować zasady dostępu warunkowego opartego na urządzeniu dla Azure AD połączonych aplikacji. 
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -37,40 +37,65 @@ Ties dostępu warunkowego opartego na urządzeniu **dostępu warunkowego dla us�
 - **[Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](device-management-introduction.md)**  — ten temat zawiera omówienie różnych opcji, należy podłączyć urządzenia z usługą Azure AD. 
 
 
-## <a name="trusted-devices"></a>Zaufane urządzenia
 
-W świecie pierwszy mobile, najpierw chmury Azure Active Directory umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. Dla niektórych zasobów w danym środowisku, udzielanie dostępu do odpowiednich użytkowników może nie być wystarczająca. Oprócz odpowiednich użytkowników może również wymagać zaufanego urządzenia ma być używany do uzyskania dostępu do zasobu. W danym środowisku, można zdefiniować zaufanego urządzenia oparte na następujących składników:
+## <a name="managed-devices"></a>Zarządzane urządzenia  
 
-- [Platform urządzeń](active-directory-conditional-access-conditions.md#device-platforms) na urządzeniu
-- Określa, czy urządzenie jest zgodne
-- Określa, czy urządzenie jest przyłączony do domeny 
+W świecie pierwszy mobile, najpierw chmury Azure Active Directory umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. Dla niektórych zasobów w danym środowisku, udzielanie dostępu do odpowiednich użytkowników może nie być wystarczająca. Oprócz odpowiednich użytkowników możesz także mogą wymagać czy prób dostępu można wykonać tylko przy użyciu zarządzanego urządzenia.
 
-[Platform urządzeń](active-directory-conditional-access-conditions.md#device-platforms) charakteryzuje się systemu operacyjnego, który działa na urządzeniu. W zasadach dostępu warunkowego opartego na urządzeniu można ograniczyć dostęp do niektórych zasobów do konkretnych platform sprzętowych.
+Zarządzane urządzenia to urządzenie, które spełniają standardy zabezpieczeń i zgodności. Proste warunków, zarządzanych urządzeń są urządzenia, które są w obszarze *jakiegoś* organizacyjnej formantu. W usłudze Azure AD wymagań wstępnych dotyczących zarządzanego urządzenia jest, że został on zarejestrowany z usługą Azure AD. Rejestrowanie urządzenia tworzy tożsamość urządzenia w postaci obiektu urządzenia. Ten obiekt jest używany przez platformę Azure, aby śledzić stan informacji o urządzeniu. Jako administrator usługi Azure AD, możesz już tego obiektu można używać do przełączania (Włączanie/wyłączanie) stan urządzenia.
+  
+![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/32.png)
+
+Aby uzyskać urządzeń zarejestrowanych w usłudze Azure AD, masz trzy opcje:
+
+- **[Urządzenia zarejestrowane usługi Azure AD](device-management-introduction.md#azure-ad-registered-devices)**  — urządzenie osobiste zarejestrowane w usłudze Azure AD
+
+- **[Urządzeniach przyłączonych do usługi Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  — Aby uzyskać organizacyjnej urządzenia systemu Windows 10, który nie jest przyłączony do usługi Azure AD zarejestrowana w usłudze Azure AD w zarejestrowany na lokalnym. 
+
+- **[Urządzeniach przyłączonych do hybrydowej usługi Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  — urządzenie z systemem Windows 10 dołączonego do lokalnej usługi AD zarejestrowane w usłudze Azure AD.
+
+Aby stać się zarządzanego urządzenia, zarejestrowane urządzenie może być hybrydowego przyłączonych do usługi Azure AD, urządzenie lub urządzenia, który został oznaczony jako zgodne.  
+
+![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/47.png)
 
 
+ 
+## <a name="require-hybrid-azure-ad-joined-devices"></a>Wymagaj hybrydowe usługi Azure AD przyłączone do urządzeń
 
-W zasadach dostępu warunkowego opartego na urządzeniu można wymagać zaufanych urządzeń może być oznaczony jako zgodne.
+Zasady dostępu warunkowego, można wybrać **wymagają urządzenia dołączonego do hybrydowej usługi Azure AD** do stanu, że aplikacje wybranej chmury można uzyskać tylko za pomocą zarządzanego urządzenia. 
 
-![Aplikacje w chmurze](./media/active-directory-conditional-access-policy-connected-applications/24.png)
+![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Urządzenia może być oznaczony jako zgodne w katalogu przez:
+To ustawienie dotyczy tylko urządzeń z systemem Windows 10, które dołączyły do usługi Azure AD lokalnymi. Można zarejestrować tylko te urządzenia z usługą Azure AD przy użyciu sprzężenia hybrydowej usługi Azure AD, która jest [zautomatyzowanego procesu](device-management-hybrid-azuread-joined-devices-setup.md) zarejestrowane urządzenie z systemem Windows 10. 
 
+![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/45.png)
+
+Co sprawia, że hybrydowej usługi Azure AD łączone urządzenia zarządzanego urządzenia?  Dla urządzeń, które są częścią lokalnej usługi AD, zakłada się, czy kontrolę nad te urządzenia są wymuszane za pomocą rozwiązania do zarządzania, takich jak **programu System Center Configuration Manager (SCCM)** lub **(GP)Zasadygrupy** do zarządzania nimi. Ponieważ nie istnieje metoda dla usługi Azure AD w celu ustalenia, czy ma jednej z tych metod zostały zastosowane do urządzenia, wymaganie urządzenia dołączonego do hybrydowej usługi Azure AD jest stosunkowo słaba mechanizm wymagają zarządzanego urządzenia. Go zależy od użytkownika jako administrator, aby ocenić, czy metod, które są stosowane do lokalnej przyłączonych do domeny urządzenia są wystarczająco silne stanowić zarządzanego urządzenia, jeśli takie urządzenia jest również urządzenia dołączonego do hybrydowej usługi Azure AD.
+
+
+## <a name="require-device-to-be-marked-as-compliant"></a>Wymagaj, aby urządzenie było oznaczone jako zgodne
+
+Opcja *wymagają urządzenia może być oznaczony jako zgodne* to najwyższy formularza żądania zarządzanego urządzenia.
+
+![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/11.png)
+
+Ta opcja wymaga urządzenia mają być zarejestrowane w usłudze Azure AD i może być oznaczony jako zgodne przez:
+         
 - Usługa Intune 
 - Urządzeniami przenośnymi innej firmy zarządzanych systemu, która zarządza urządzeniami z systemem Windows 10 za pomocą integracji z usługą Azure AD 
  
-  
+![Warunków opartych na urządzeniu](./media/active-directory-conditional-access-policy-connected-applications/46.png)
 
-Tylko urządzenia, które są połączone z usługą Azure AD może być oznaczony jako zgodne. Podłącz urządzenie do usługi Azure Active Directory, masz następujące opcje: 
 
-- Azure AD w zarejestrowany
-- Azure AD joined
-- Hybrydowe przyłączonych do usługi Azure AD
 
-    ![Aplikacje w chmurze](./media/active-directory-conditional-access-policy-connected-applications/26.png)
+Urządzenia, które jest oznaczona jako zgodna można założyć, że: 
 
-Jeśli masz nakłady zasobów lokalnej usługi Active Directory (AD), można rozważyć urządzeń, które nie są podłączone do usługi Azure AD, ale przyłączony do usługi AD jako zaufane.
+- Zarządzania urządzeniami przenośnymi, używanych przez pracowników dostępu do danych firmowych
+- Zarządzane aplikacje mobilne, używanych przez pracowników
+- Informacje o Twojej firmie jest chroniony przez pomoc, aby kontrolować sposób uzyskuje dostęp do pracowników i udostępnia ją
+- Urządzenia i jego aplikacje są zgodne z wymaganiami zabezpieczeń firmy
 
-![Aplikacje w chmurze](./media/active-directory-conditional-access-policy-connected-applications/25.png)
+
 
 
 ## <a name="next-steps"></a>Kolejne kroki

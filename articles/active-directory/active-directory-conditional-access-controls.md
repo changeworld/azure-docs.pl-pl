@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Kontrola dostępu w usłudze Azure Active Directory dostępu warunkowego 
 
@@ -75,13 +75,13 @@ Przy użyciu usługi Multi-Factor authentication pomaga chronić zasoby z uzyski
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest aby udzielić dostępu do zasobów skonfigurowany tylko z zaufanych urządzeń. Wymaganie zgodnego urządzenia jest jedną z opcji należy zdefiniować jest urządzenie zaufane. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje prób dostępu do dostępu z urządzeń, które dołączyły do usługi Azure Active Directory i są oznaczone jako zgodne przez rozwiązanie do zarządzania urządzeniami Przenośnymi.
+Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest udzielić dostępu do zasobów skonfigurowany tylko z [zarządzanych urządzeń](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Wymaganie zgodnego urządzenia jest jedną z opcji należy zdefiniować urządzenia zarządzanego. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego udziela dostępu do dostępu podjętych z urządzeniami, które są [zarejestrowany](device-management-introduction.md) do platformy Azure Active Directory i są oznaczone jako zgodne przez rozwiązanie do zarządzania urządzeniami Przenośnymi.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
-### <a name="domain-joined-device"></a>Urządzenia przyłączone do domeny
+### <a name="hybrid-azure-ad-joined-device"></a>Urządzenia dołączone do hybrydowej usługi Azure AD
 
-Wymaganie inną opcją jest urządzenia przyłączone do domeny należy skonfigurować zasady dostępu warunkowego opartego na urządzeniu. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są częścią lokalnej usługi Active Directory systemu Windows. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje próby dostępu do dostępu z urządzeń, które są częścią lokalnej usługi Active Directory i Azure Active Directory.  
+Wymaganie hybrydowego urządzenia dołączone do usługi Azure AD jest inną opcją, należy skonfigurować zasady dostępu warunkowego opartego na urządzeniu. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są częścią lokalnej usługi Active Directory systemu Windows. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje próby dostępu do dostępu z urządzeń, które są częścią lokalnej usługi Active Directory i Azure Active Directory.  
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
@@ -115,7 +115,7 @@ Tych kontrolek Zezwalaj na korzystanie z niektórych usług zewnętrznych lub ni
 
 Obecnie oferty usługi zgodne dostawców obejmują:
 
-- [Duo Security](https://duo.com/docs/azure-ca)
+- [Duo zabezpieczeń](https://duo.com/docs/azure-ca)
 
 - RSA
 

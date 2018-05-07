@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: f92629a3a5d20cce050aa7f124b140b1f4eb32d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 41b756855ea91db291f4fdb5a963993de4b9cd7e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Usługa Azure Active Directory B2C: Konfigurowanie dostosowywania interfejsu użytkownika w zasadach niestandardowych
 
@@ -143,7 +143,7 @@ Najwyższego poziomu *\<TrustFrameworkPolicy\>* tagu, należy odnaleźć *\<Buil
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Testowanie zasad niestandardowych przy użyciu **Uruchom teraz**
 
-1. Na **usługi Azure AD B2C** bloku, przejdź do **wszystkie zasady**.
+1. Na **usługi Azure AD B2C** bloku, przejdź do **wszystkich zasad**.
 2. Wybierz zasady niestandardowe przekazywane i kliknij przycisk **Uruchom teraz** przycisku.
 3. Należy zalogowanie przy użyciu adresu e-mail.
 
@@ -174,7 +174,7 @@ W [zmodyfikować sekcji rejestracji i logowania zasady niestandardowe](#modify-y
 | *API.idpselections.Signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać podczas tworzenia konta. Te opcje są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
 | *api.localaccountpasswordreset* | **Nie pamiętasz hasła strony**. Ta strona zawiera formularz, który użytkownik należy wykonać, aby zainicjować resetowania hasła.  |
 | *api.localaccountsignin* | **Strona logowania konta lokalnego**. Ta strona zawiera formularz logowania dla logowania przy użyciu konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola do wprowadzania tekstu, a w polu wprowadzania hasła. |
-| *api.localaccountsignup* | **Stronę tworzenia konta lokalnego konta**. Ta strona zawiera formularz zapisów do skorzystania z konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takich jak pola do wprowadzania tekstu, pole wprowadzania hasła przycisk radiowy, jednokrotnym zaznaczeniem pola listy rozwijanej i pól wyboru wielokrotnego wyboru. |
+| *API.localaccountsignup* | **Stronę tworzenia konta lokalnego konta**. Ta strona zawiera formularz zapisów do skorzystania z konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takich jak pola do wprowadzania tekstu, pole wprowadzania hasła przycisk radiowy, jednokrotnym zaznaczeniem pola listy rozwijanej i pól wyboru wielokrotnego wyboru. |
 | *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkownicy mogą sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania. |
 | *api.selfasserted* | **Strony rejestracji społecznościowych konta**. Ta strona zawiera wypełnieniu formularza, który użytkownicy muszą wykonać podczas logowania przy użyciu istniejącego konta od dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobny do poprzedniego konta społecznościowych stronę tworzenia konta, z wyjątkiem pól wprowadzania hasła. |
 | *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularz, który użytkownicy mogą używać do aktualizacji profilu. Ta strona jest podobna do strony rejestracji społecznościowych konto, z wyjątkiem pól wprowadzania hasła. |

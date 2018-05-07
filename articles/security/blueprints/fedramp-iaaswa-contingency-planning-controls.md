@@ -1,5 +1,5 @@
 ---
-title: "Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP - planowania"
+title: Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP - planowania
 description: Automatyzacja aplikacji sieci Web FedRAMP - planowania
 services: security
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: f993271656e9484881ccac357acb3d50830c219e
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="contingency-planning-cp"></a>Rozwiązanie przydatne planowania (CP)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zdarzenie warunkowe planowania zasad, którego dotyczy cel, zakres, ról, obowiązki, zobowiązań zarządzania Współpraca między jednostki organizacyjnej i zgodności; i procedur w celu ułatwienia wykonania awaryjnych planowania zasad i skojarzone awaryjnych planowania zabezpieczeń; przegląda i aktualizuje bieżące rozwiązanie przydatne planowania zasad [przypisania: zdefiniowane przez organizację częstotliwość]; i procedury planowania awaryjnych [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.a** organizacji opracowuje plan gotowości systemu informacji, który identyfikuje niezbędne misji i znaczenie biznesowe i skojarzone wymagania gotowości; zapewnia cele odzyskiwania, priorytetów przywracania i metryki; adresy gotowości, obowiązki, przypisanych ról osób informacje kontaktowe; adresy obsługi podstawowych misji i funkcje biznesowej niezależnie od informacji systemu przerw w działaniu, naruszenia lub awarii; informacje ostateczna, pełne przywracanie systemu bez niszczenia zabezpieczenia zabezpieczeń pierwotnie planowane i wykonywane; sprawdzone i zatwierdzone przez [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.b** organizacji dystrybuuje kopie plan gotowości do [przypisania: zdefiniowane przez organizację klucza gotowości personelu (identyfikowane przez nazwę i/lub roli) i organizacyjne elementy].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.c** organizacji koordynuje gotowości planowania działania ze zdarzeniem Obsługa działań.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.d** organizacji monitoruje plan gotowości systemu informacji [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.e** Organizacja aktualizuje plan gotowości do zmiany adresu w organizacji, system informacji lub środowiska operacji i problemy występujące podczas implementacji plan gotowości, wykonanie lub testowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.f** organizacji komunikuje się zmiany plan gotowości [przypisania: zdefiniowane przez organizację klucza gotowości personelu (identyfikowane przez nazwę i/lub roli) i organizacyjne elementy].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.g** organizacji chroni plan gotowości przed nieuprawnionym ujawnieniem i modyfikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2 (1)** plan gotowości rozwoju organizacji elementami odpowiedzialny za powiązane planów koordynuje organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2 (2)** organizacji przeprowadza Planowanie pojemności, dzięki czemu niezbędne pojemność dla przetwarzania informacji telekomunikacyjnych i obsługa środowiska istnieje podczas operacji gotowości.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2 (3)** planów organizacji wznowienie niezbędne misji i funkcji biznesowych w ramach [przypisania: okres zdefiniowany organizacji] plan gotowości aktywacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2 (4)** planów organizacji wznowienie wszystkich misji i funkcji biznesowych w ramach [przypisania: okres zdefiniowany organizacji] plan gotowości aktywacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2 (5)** organizacji planów dla kontynuacji niezbędne misji i znaczenie biznesowe niewielkiego lub żadnego utraty ciągłości i obsłuży tego ciągłości do przywracania systemu pełne informacje na podstawowe przetwarzanie i/lub Lokacje magazynu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2 (8)** organizacji identyfikuje zasoby systemu kluczowych informacji obsługi podstawowych misji i znaczenie biznesowe.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-3.a** organizacji zapewnia gotowości szkoleń dla użytkowników systemu informacje spójne z przypisane role i obowiązki w ramach [przypisania: okres zdefiniowany organizacji] wypełniania gotowości roli lub odpowiedzialności.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-3.b** organizacji zapewnia gotowości szkoleń dla użytkowników systemu informacji zgodnie z przypisane role i obowiązki, gdy jest to wymagane przez zmiany informacji w systemie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-3.c** organizacji zapewnia gotowości szkoleń dla użytkowników systemu informacji zgodnie z przypisane role i obowiązki [przypisania: zdefiniowany przez organizację częstotliwość] później.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-3 (1)** organizacji zawiera symulowane zdarzenia do szkolenia gotowości ułatwiających efektywne odpowiedzi przez personel w kryzysami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4.a** organizacji testów plan gotowości systemu informacji [przypisania: częstotliwość zdefiniowany przez organizację] przy użyciu [przypisania: zdefiniowany przez organizację testów] do ustalenia skuteczności planu i organizacji gotowość do planu wykonania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4.b** organizacji monitoruje wyniki testu plan gotowości.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4.c** organizacji inicjuje działania naprawcze, jeśli to konieczne.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4 (1)** plan gotowości organizacji współrzędne testowania z elementami organizacyjnej odpowiedzialny za związane z planami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4 (2), tj.** organizacji testów gotowości planu w witrynie alternatywnej przetwarzania zapoznać gotowości pracowników z zakładzie i dostępnych zasobów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4 (2) b** organizacji testów plan gotowości w witrynie alternatywnej przetwarzania do oceny możliwości lokacja przetwarzania alternatywnej do obsługi operacji gotowości.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-6.a** organizacji ustanawia alternatywnej lokalizacji tym niezbędne umowy, aby zezwolić na przechowywanie i pobieranie informacji o kopii zapasowej systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-6.b** organizacji gwarantuje, że lokacji alternatywnej magazynu zawiera informacje zabezpieczającymi odpowiednikiem lokacji głównej.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-6 (1)** organizacji identyfikuje alternatywnej lokalizacji oddzielony od lokacji głównej magazynu zmniejszenie podatności na tego samego zagrożenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-6 (2)** organizacja skonfiguruje lokację alternatywny magazynu ułatwiające operacje odzyskiwania zgodnie z czasu odzyskiwania i celów punktu odzyskiwania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-6 (3)** organizacji identyfikuje potencjalnych problemów z dostępnością alternatywnej lokalizacji w przypadku przerw w działaniu całej strefy lub po awarii i przedstawiono akcje jawne środki zaradcze.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7.a** organizacji ustanawia witryny przetwarzania alternatywne, w tym umowy niezbędne, aby zezwolić na transfer i wznowienie [przypisania: operacje systemu informacje zdefiniowane przez organizację] dla misji podstawowych/firm funkcje w ramach [przypisania: organizacji zdefiniowane przez okres czasu zgodnie z czasu odzyskiwania i celów punktu odzyskiwania] po możliwości przetwarzania są niedostępne.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **Od 7.b CP** organizacji gwarantuje, że sprzęt i dostaw wymagane do transferu i wznawiać operacje są dostępne w witrynie alternatywnej przetwarzania lub kontrakty są stosowane do obsługi dostarczania do lokacji w czasie zdefiniowany przez organizację okres transfer/wznowienie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7.c** organizacji gwarantuje, że lokacja przetwarzania alternatywny zawiera informacje zabezpieczającymi odpowiadające lokacji głównej.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7 (1)** organizacji identyfikuje alternatywny przetwarzania lokacji, która jest oddzielony od lokacji głównej przetwarzania zmniejszenie podatności na tego samego zagrożenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7 (2)** organizacji identyfikuje potencjalne problemy ułatwień dostępu do witryny alternatywny przetwarzania w przypadku przerw w działaniu całej strefy lub po awarii i przedstawiono akcje jawne środki zaradcze.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7 (3)** organizacji rozwija umowy lokacji alternatywnych przetwarzania, które zawierają przepisy priorytet usługi zgodnie z wymaganiami organizacji dostępności (w tym zakresie docelowego czasu odzyskiwania).
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7 (4)** organizacji przygotowuje lokacja przetwarzania alternatywnych tak, aby witryna jest gotowa do użycia jako operacyjne lokacji obsługi podstawowych misji i znaczenie biznesowe.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8** organizacji ustanawia usług telekomunikacyjnych alternatywne, w tym niezbędne umowy, aby zezwolić na wznowienie [przypisania: operacje systemu informacje zdefiniowane przez organizację] dla misji podstawowych i business funkcje w ramach [przypisania: organizacji zdefiniowane przez okres] po możliwości telekomunikacyjnych głównej są niedostępne w podstawowej lub alternatywne przetwarzania lub witryn magazynu.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (1), tj.** głównej rozwoju organizacji i alternatywne telekomunikacyjnych usługi umowy, które zawierają przepisy priorytet usługi zgodnie z wymaganiami organizacji dostępności (w tym momencie odzyskiwania cele).
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (1) b** organizacji żądań telekomunikacyjnych usługi priorytet dla wszystkich usług telekomunikacyjnych używany do zabezpieczenia przygotowanie na wypadek awarii w przypadku, gdy usług telekomunikacyjnych podstawowej i/lub alternatywne udostępniane przez operator wspólnego.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (2)** organizacji uzyskuje usług alternatywny telekomunikacyjnych, aby zmniejszyć prawdopodobieństwo udostępnianie usług telekomunikacyjnych głównej pojedynczego punktu awarii.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (3)** organizacji uzyskuje usług telekomunikacyjnych alternatywny od dostawców, które są oddzielone od podstawowego usługodawców zmniejszenie podatności na tego samego zagrożenia.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (4), tj.** organizacja wymaga podstawowej i dostawców ma plany usług telekomunikacyjnych alternatywny.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (4) b** organizacji przegląda plany dostawcy, aby upewnić się, że plany spełniają wymagania organizacyjne gotowości.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8 (4) .c** organizacji uzyskuje dowód awaryjnych testowania szkolenia przez dostawców [przypisania: częstotliwość zdefiniowany przez organizację].
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9.a** organizacja przeprowadza kopii zapasowych na poziomie użytkownika informacji zawartych w systemie informacji [przypisania: zdefiniowane przez organizację częstotliwość zgodne z czasu odzyskiwania i celów punktu odzyskiwania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9.b** organizacja przeprowadza kopii zapasowych na poziomie systemu informacji zawartych w systemie informacji [przypisania: zdefiniowane przez organizację częstotliwość zgodne z czasu odzyskiwania i celów punktu odzyskiwania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9.c** organizacja przeprowadza kopii zapasowych w dokumentacji systemu informacje o tym związanych z zabezpieczeniami [przypisania: zdefiniowane przez organizację częstotliwość zgodne z czasu odzyskiwania i celów punktu odzyskiwania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9.d** organizacji zapewnia ochronę poufności, integralności i dostępności informacje o kopii zapasowej w lokalizacji magazynu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9 (1)** organizacji sprawdza informacje o kopii zapasowej [przypisania: zdefiniowany przez organizację częstotliwość] Aby sprawdzić integralność informacje niezawodności i nośnika.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9 (2)** organizacja używa przykładowych danych kopii zapasowej przywróceniem wybrane informacje funkcji systemu w ramach testowania plan gotowości.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9 (3)** organizacji przechowywane są kopie zapasowe [przypisania: oprogramowanie systemowe zdefiniowane organizacji kluczowych informacji i inne informacje związane z zabezpieczeniami] w oddzielnych zaimplementowanych lub oceną fire kontener, który nie jest kolokowana z system operacyjny.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9 (5)** organizacji transferu kopii zapasowej systemu informacji do lokacji magazynu alternatywny [przypisania: okres zdefiniowany przez organizację i transfer szybkości zgodne z czasu odzyskiwania i celów punktu odzyskiwania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-10** organizacji zapewnia odzyskiwania i odtworzenie systemu informacji do znanego stanu po przerw w działaniu, awarii lub naruszenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-10 (2)** system informacji implementuje odzyskiwania transakcji dla systemów, które są oparte na transakcji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-10 (4)** organizacji udostępnia możliwość przywracania informacji na składniki systemu w ramach [przypisania: okresów zdefiniowany przez organizację przywracania] z kontrolą konfiguracji i chronione integralność informacji reprezentujący znane, operacyjne stanu dla składników.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

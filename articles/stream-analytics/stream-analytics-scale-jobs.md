@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Zadanie usługi analiza strumienia Azure w celu zwiększenia przepływności skalowania
 W tym artykule przedstawiono sposób dostrajania Stream Analytics zapytanie w celu zwiększenia przepływności zadań przesyłania strumieniowego usługi Analytics. Następujący Przewodnik umożliwia skalowanie zadania obsługi większych obciążeń i wykorzystać więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).
@@ -31,7 +31,8 @@ Jeśli zapytanie jest z założenia pełni działania równoległego między par
         - W przypadku problemu z powodu dławienia zbiornika, konieczne może być zwiększenie liczby partycji w danych wyjściowych (i również wejściowego partycji, aby zachować pełni działania równoległego zadania), lub zwiększ ilość zasobów zbiornika (na przykład liczba jednostek żądania dla CosmosDB).
     - Na diagramie zadania jest na partycji zaległości zdarzeń metryki dla każdej danych wejściowych. Jeśli Metryka zdarzenia zaległości stale, również jest wskaźnik, że zasób systemowy jest ograniczone (albo z powodu ograniczania ujście danych wyjściowych lub wysokie procesor CPU).
 4.  Po określeniu limitów co 6 zadania SU może nawiązać połączenie, możesz umożliwiają ekstrapolację liniowo wydajności przetwarzania zadania dodawania więcej SUs, przy założeniu, że nie masz żadnych danych pochylanie, które powoduje, że niektóre partycji "gorących".
->[!Note]
+
+> [!NOTE]
 > Wybierz prawa liczbę jednostek przesyłania strumieniowego: ponieważ Stream Analytics tworzy węzeł przetwarzania dla każdego 6 SU dodane, najlepiej powiększając liczby węzłów dzielnikiem liczby partycji wejściowych partycji można równomiernie rozłożony między węzły.
 > Na przykład mieć mierzona z 6 SU zadania można osiągnąć 4 MB/s przetwarzania szybkości i liczba partycji wejściowe to 4. Można uruchamiać zadanie z 12 SU do osiągnięcia około 8 szybkości przetwarzania MB/s lub 24 SU do osiągnięcia 16 MB/s. Następnie można zdecydować, kiedy należy zwiększyć liczbę SU na jakie korzyści zadania jako funkcja częstotliwość wprowadzania.
 

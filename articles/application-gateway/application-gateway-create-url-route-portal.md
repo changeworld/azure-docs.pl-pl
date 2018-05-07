@@ -10,17 +10,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 554618b055ce5afcc67f95afa0242d36e74fabc0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Utwórz bramę aplikacji przy użyciu ścieżki na podstawie reguł routingu przy użyciu portalu Azure
 
 Azure portal umożliwiają skonfigurowanie [reguł routingu na podstawie ścieżki adresu URL](application-gateway-url-route-overview.md) podczas tworzenia [brama aplikacji w](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza przy użyciu maszyn wirtualnych. Następnie można utworzyć reguły routingu, które upewnij się, że ruch w sieci web dociera do odpowiednich serwerów w pulach.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
@@ -82,18 +82,18 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 2. Kliknij przycisk **obliczeniowe** , a następnie wybierz **systemu Windows Server 2016 Datacenter** na liście duży.
 3. Wprowadź wartości dla maszyny wirtualnej:
 
-    - *myVM1* — Nazwa maszyny wirtualnej.
-    - *azureuser* — nazwa użytkownika administratora.
+    - *myVM1* — jako nazwę maszyny wirtualnej.
+    - *azureuser* — jako nazwę użytkownika administratora.
     - *Azure123456!* hasła.
     - Wybierz **Użyj istniejącego**, a następnie wybierz *myResourceGroupAG*.
 
 4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** dla rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **wybierz**.
+5. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
 6. Upewnij się, że **myVNet** został wybrany do sieci wirtualnej i podsieci jest **myBackendSubnet**. 
-7. Kliknij przycisk **wyłączone** wyłączyć diagnostyki rozruchu.
-8. Kliknij przycisk **OK**Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
+8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
 
-### <a name="install-iis"></a>Zainstaluj usługi IIS
+### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Otwórz powłokę interakcyjne i upewnij się, że jest ustawiona na **PowerShell**.
 
@@ -102,7 +102,7 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -153,7 +153,7 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 
     ![Zarejestruj publiczny adres IP bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki. Takie jak http://http://40.121.222.19.
+2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. Takie jak http://http://40.121.222.19.
 
     ![Podstawowy adres URL testu bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

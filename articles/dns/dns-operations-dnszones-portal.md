@@ -1,9 +1,9 @@
 ---
-title: "Zarządzanie strefami DNS w usłudze Azure DNS - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Możesz zarządzać stref DNS przy użyciu portalu Azure. W tym artykule opisano sposób aktualizowanie, usuwanie i tworzenie stref DNS w usłudze Azure DNS"
+title: Zarządzanie strefami DNS w usłudze Azure DNS - portalu Azure | Dokumentacja firmy Microsoft
+description: Możesz zarządzać stref DNS przy użyciu portalu Azure. W tym artykule opisano sposób aktualizowanie, usuwanie i tworzenie stref DNS w usłudze Azure DNS
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: cfb1debf9447cd66856b73166a133d5d498fcc79
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: kumud
+ms.openlocfilehash: 3fbf59010e690ac022e4363eddebe1cfbba53d13
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Jak zarządzać stref DNS w portalu Azure
 
@@ -48,13 +48,13 @@ W tym artykule przedstawiono sposób zarządzania stref DNS przy użyciu portalu
 > [!NOTE]
 > Ustawienie Grupa zasobów dotyczy lokalizacji grupy zasobów i nie ma wpływu na strefę DNS. Lokalizacja strefy DNS jest zawsze „globalna” i nie jest wyświetlana.
 
-## <a name="list-dns-zones"></a>Lista stref DNS
+## <a name="list-dns-zones"></a>Wyświetlanie listy stref DNS
 
 W portalu Azure, przejdź do **więcej usług** > **sieci** > **stref DNS**. Każdej strefy DNS jest jest własnych zasobów, informacje, takie jak liczba zestawów rekordów i serwery nazw są widoczne w tym widoku. Kolumna **serwery nazw** nie znajduje się w widok domyślny, aby dodać go kliknij **kolumn**, wybierz pozycję **serwery nazw** i kliknij przycisk **gotowe**.
 
 ![Lista stref DNS](./media/dns-operations-dnszones-portal/listzones.png)
 
-## <a name="delete-a-dns-zone"></a>Usuń strefę DNS
+## <a name="delete-a-dns-zone"></a>Usuwanie strefy DNS
 
 Przejdź do strefy DNS w portalu. Na **strefy DNS** bloku, kliknij przycisk **Usuń strefę**. Monit o potwierdzenie chcą usunąć strefę DNS. Usunięcie strefy DNS powoduje usunięcie wszystkich rekordów, które są zawarte w strefie.
 

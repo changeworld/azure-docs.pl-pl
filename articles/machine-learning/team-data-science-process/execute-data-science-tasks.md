@@ -2,7 +2,7 @@
 title: Wykonywania zadań analizy danych - Azure Machine Learning | Dokumentacja firmy Microsoft
 description: Jak naukowca danych można wykonać projektu analizy danych w trackable, niepoddany kontroli wersji, a także sposób współpracy.
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev
-ms.openlocfilehash: f0e0c04e48a551db6d7d7cd221a35e267dc0a63f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.author: deguhath
+ms.openlocfilehash: 5c617c60ff51d0b1e7717b28b0372efe63c1ee18
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonanie zadania nauki danych: eksploracji, modelowania i wdrażanie
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/02/2018
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3237ee41f8596ed3ce508857adf7dc29cee1ada
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 01e6c3a6fb922a649f0ae139af9c8515fcb8b2e0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybierz prawa warstwy Centrum IoT dla rozwiązania
 
@@ -48,7 +48,7 @@ Po utworzeniu Centrum IoT można uaktualnić z podstawowych warstwy do warstwy s
 | [Usługa inicjowania obsługi urządzeń](../iot-dps/about-iot-dps.md) | Yes | Yes |
 | [Monitorowania i diagnostyki](iot-hub-monitor-resource-health.md) | Yes | Yes |
 | [Obsługa wiadomości chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Urządzenie twins](iot-hub-devguide-device-twins.md) i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
+| [Urządzenie twins](iot-hub-devguide-device-twins.md), [twins modułu](iot-hub-devguide-module-twins.md) i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
 | [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Yes |
 
 Centrum IoT oferuje również warstwę bezpłatna, który jest przeznaczony do testowania i oceny. Ma ona wszystkie możliwości warstwy standardowa, ale ograniczone dodatki obsługi wiadomości. Nie można uaktualnić warstwę bezpłatna do planu basic lub standard. 
@@ -61,19 +61,26 @@ Różnica między warstwami podstawowa i standardowa Centrum IoT oznacza, że ni
 | --- | ---------- | ------------- |
 | [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice) | Yes | Yes |
 | [Pobierz urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice) | Yes | Yes |
+| Usunąć modułu. | Yes | Yes |
+| Pobieranie modułu | Yes | Yes |
 | [Uzyskać statystyki rejestru](https://docs.microsoft.com/rest/api/iothub/deviceapi/getregistrystatistics) | Yes | Yes |
 | [Uzyskać statystyki usług](https://docs.microsoft.com/rest/api/iothub/deviceapi/getservicestatistics) | Yes | Yes |
 | [Umieść urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Yes | Yes |
+| Umieść moduł | Yes | Yes |
 | [Kwerenda urządzeń](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Yes | Yes |
+| Moduły zapytania | Yes | Yes |
 | [Tworzenie przekazywania pliku identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/httpruntime/createfileuploadsasuri) | Yes | Yes |
 | [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/httpruntime/receivedeviceboundnotification) | Yes | Yes |
 | [Wysyłanie zdarzeń urządzenia](https://docs.microsoft.com/rest/api/iothub/httpruntime/senddeviceevent) | Yes | Yes |
+| Wysyłanie zdarzeń modułu | Yes | Yes |
 | [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/httpruntime/updatefileuploadstatus) | Yes | Yes |
 | [Operacja zbiorcza urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/bulkdeviceoperation) | Tak, z wyjątkiem możliwości krawędzi IoT | Yes | 
 | [Przeczyścić kolejki poleceń](https://docs.microsoft.com/rest/api/iothub/deviceapi/purgecommandqueue) |   | Yes |
 | [Pobierz dwie urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/getdevicetwin) |   | Yes |
+| Pobierz moduł dwie |   | Yes |
 | [Wywoływanie metody urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/invokedevicemethod) |   | Yes |
 | [Zaktualizuj dwie urządzenia](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/updatedevicetwin) |   | Yes | 
+| Dwie modułu aktualizacji |   | Yes | 
 | [Opuszczenie urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/httpruntime/abandondeviceboundnotification) |   | Yes |
 | [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/httpruntime/completedeviceboundnotification) |   | Yes |
 | [Anulowanie zadania](https://docs.microsoft.com/rest/api/iothub/jobapi/canceljob) |   | Yes |

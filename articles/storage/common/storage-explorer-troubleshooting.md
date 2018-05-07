@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: f58fb5090aba3c5052d1bbdec76225d0ae50e8f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 531ca6d781ae62aacd85dce600e3ea8b46ccf360
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Podręczniku rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -57,10 +57,11 @@ Jeśli nie wiesz, z której pochodzi certyfikat, możesz spróbować te kroki, a
 
 Jeśli nie można znaleźć żadnych certyfikatów z podpisem własnym za pomocą powyższych kroków, skontaktuj się z nami za pomocą narzędzia opinii, aby uzyskać dalszą pomoc. Alternatywnie można wybrać, czy można uruchomić z wiersza polecenia z Eksploratora usługi Storage `--ignore-certificate-errors` flagi. Gdy uruchamiana z tą flagą, Eksploratora usługi Storage zignoruje błędów certyfikatów.
 
-## <a name="sign-in-issues"></a>Problemy z logowaniem
+## <a name="sign-in-issues"></a>Problemy dotyczące logowania
 
 Jeśli nie możesz się zalogować, wypróbuj następujące metody rozwiązywania problemów:
 
+* Jeśli używasz macOS i w oknie dialogowym "Oczekiwanie... uwierzytelniania" nigdy nie zostanie wyświetlone okno logowania, spróbuj [te kroki](#Resetting-the-Mac-Keychain)
 * Ponownie uruchom Eksploratora usługi Storage
 * Jeśli okno uwierzytelniania jest pusty, zaczekaj co najmniej jedną minutę przed zamknięciem okna dialogowego uwierzytelniania.
 * Upewnij się, że serwer proxy, a certyfikat się, że ustawienia są poprawnie skonfigurowane dla komputera i Eksploratora usługi Storage
@@ -96,7 +97,8 @@ Jeśli nie można usunąć konto podłączone lub zasobów magazynu za pośredni
 
 Najpierw upewnij się, że wszystkie poprawne są następujące wprowadzone informacje:
 
-* Adres URL serwera proxy i numer portu * Nazwa użytkownika i hasło, jeśli jest to wymagane przez serwer proxy
+* Adres URL serwera proxy i numer portu
+* Nazwa użytkownika i hasło, jeśli jest to wymagane przez serwer proxy
 
 ### <a name="common-solutions"></a>Typowe rozwiązania
 
@@ -129,7 +131,7 @@ Jeśli ustawienia serwera proxy są prawidłowe, należy skontaktować się z ad
 
 Jeśli na platformie Azure są połączone za pośrednictwem serwera proxy, sprawdź, czy ustawienia serwera proxy są poprawne. Jeśli od właściciela subskrypcji lub konta przyznano dostęp do zasobu, sprawdź, czy znasz, lub listę uprawnień dla tego zasobu.
 
-### <a name="issues-with-sas-url"></a>Problemy z adresem URL SAS
+## <a name="issues-with-sas-url"></a>Problemy z adresem URL SAS
 Jeśli łączysz się z usługą przy użyciu adresu URL SAS i występuje błąd:
 
 * Upewnij się, że adres URL zawiera wystarczających uprawnień do odczytu lub listy zasobów.
@@ -152,6 +154,19 @@ Dla dystrybucjach systemu Linux niż Ubuntu 16.04 może być konieczne ręczne z
 * Aktualne GCC
 
 W zależności od Twojego distro mogą istnieć inne pakiety, które należy zainstalować. Eksplorator magazynu [wersji](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) zawiera etapy niektóre dystrybucjach.
+
+## <a name="resetting-the-mac-keychain"></a>Resetowanie łańcucha kluczy Mac
+System macOS łańcucha kluczy czasami można uzyskać w stan, który powoduje problemy dotyczące biblioteki uwierzytelniania Eksploratora magazynu. Aby uzyskać łańcucha kluczy poza tym spróbuj stanu następujące czynności:
+1. Zamknij Eksploratora usługi Storage.
+2. Otwórz łańcucha kluczy (**cmd + miejsca**, wpisz w łańcuchu kluczy, trafień wprowadź).
+3. Wybierz łańcucha kluczy "login".
+4. Kliknij ikonę kłódki, aby zablokować łańcucha (kłódki będzie animować zablokowania po zakończeniu może trwać kilka sekund, w zależności od aplikacji, do których masz Otwórz).
+
+    ![Obraz](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+
+5. Uruchom Eksploratora usługi Storage.
+6. Pop up powinna pojawić się informacją o tym coś, takich jak "Centrum usługi próbuje uzyskać dostęp łańcucha kluczy", wprowadź hasło do konta administratora Mac, a następnie kliknij przycisk **zawsze Zezwalaj** (lub **Zezwalaj** Jeśli **zawsze Zezwalaj** nie jest dostępna).
+7. Spróbuj się zarejestrować.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

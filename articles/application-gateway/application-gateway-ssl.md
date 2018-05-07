@@ -1,10 +1,10 @@
 ---
-title: "Skonfiguruj klasycznego środowiska PowerShell odciążania — brama usługi aplikacji Azure — SSL | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera instrukcje, aby utworzyć bramę aplikacji przy użyciu protokołu SSL Odciążanie przy użyciu modelu klasycznego wdrożenia usługi Azure"
+title: Skonfiguruj klasycznego środowiska PowerShell odciążania — brama usługi aplikacji Azure — SSL | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera instrukcje, aby utworzyć bramę aplikacji przy użyciu protokołu SSL Odciążanie przy użyciu modelu klasycznego wdrożenia usługi Azure
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 63f28d96-9c47-410e-97dd-f5ca1ad1b8a4
 ms.service: application-gateway
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: davidmu
-ms.openlocfilehash: 9540522a945e1ea2a09456b42d64b7b94753791f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: e620730b86d648c1ac9db7a9e6faa7a2d206b46e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Skonfiguruj bramę aplikacji dla odciążania protokołu SSL przy użyciu klasycznego modelu wdrażania
 
 > [!div class="op_single_selector"]
-> * [Azure portal](application-gateway-ssl-portal.md)
+> * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-ssl-arm.md)
 > * [Program Azure PowerShell klasycznego](application-gateway-ssl.md)
 > * [Interfejs wiersza polecenia platformy Azure 2.0](application-gateway-ssl-cli.md)

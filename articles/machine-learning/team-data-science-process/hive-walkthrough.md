@@ -3,7 +3,7 @@ title: Eksplorowanie danych klastra usługi Hadoop i tworzenia modeli w usłudze
 description: Scenariusz end-to-end, wykorzystujących klastra platformy Hadoop w usłudze HDInsight do tworzenia i wdrażania modelu przy użyciu procesu nauki danych zespołu.
 services: machine-learning,hdinsight
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: deguhath
+ms.openlocfilehash: 6f16b7524bc8c268ed3a2314b8b88d25eb2f4325
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Proces nauki danych zespołu w działaniu: klastrów użycia usługi Azure HDInsight Hadoop
 W tym przewodniku używamy [zespołu danych nauki procesu (TDSP)](overview.md) w scenariuszu end-to-end. Używamy [klastra usługi Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) do przechowywania, Analizuj i dane funkcji odtwarzania z publicznie dostępnych [rund taksówki NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych i w dół przykładowych danych. Do obsługi binarnej i wieloklasowej klasyfikacji i regresji predykcyjnej zadania, budujemy modele danych przy użyciu usługi Azure Machine Learning. 
@@ -137,7 +137,7 @@ Aby przygotować klaster do analizy danych poznawcze, Pobierz pliki .hql zawiera
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-Te dwa polecenia Pobierz wszystkie pliki .hql potrzebne w tym przewodniku do katalogu lokalnego ***C:\temp &#92;*** w węzła głównego.
+Te dwa polecenia Pobierz wszystkie pliki .hql potrzebne w tym przewodniku do katalogu lokalnego ***C:\temp&#92;***  w węzła głównego.
 
 ## <a name="#hive-db-tables"></a>Utwórz gałąź bazy danych i tabele partycjonowane według miesięcy
 > [!NOTE]

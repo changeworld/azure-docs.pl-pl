@@ -1,6 +1,6 @@
 ---
-title: "Azure zabezpieczeń i zgodności - automatyzacji aplikacji sieci Web FedRAMP — plan odpowiedzi na zdarzenia"
-description: "Automatyzacja aplikacji sieci Web FedRAMP — odpowiedzi na zdarzenia"
+title: Azure zabezpieczeń i zgodności - automatyzacji aplikacji sieci Web FedRAMP — plan odpowiedzi na zdarzenia
+description: Automatyzacja aplikacji sieci Web FedRAMP — odpowiedzi na zdarzenia
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: bcdb2b151c4d14af59e8133bd871ef6c3c0b9f73
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="incident-response-ir"></a>Odpowiedzi na zdarzenia (IR)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasady odpowiedzi na zdarzenia, które dotyczy cel, zakres, ról, obowiązki zobowiązań zarządzania, koordynacji wśród jednostki organizacyjnej i zgodności; i procedur w celu ułatwienia wykonania zasady odpowiedzi na zdarzenia i skojarzone odpowiedzi na zdarzenia kontroli; przegląda i aktualizuje bieżące zasady odpowiedzi na zdarzenia [przypisania: zdefiniowane przez organizację częstotliwość]; i odpowiedzi na zdarzenia procedury [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 2.a** organizacji zapewnia szkolenia odpowiedzi na zdarzenia dla użytkowników systemu informacje spójne z przypisane role i obowiązki w ramach [przypisania: okres zdefiniowany organizacji] z zakładając, że rola odpowiedzi na zdarzenia lub odpowiedzialności.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 2.b** organizacji zapewnia odpowiedzi na zdarzenia szkoleń dla użytkowników systemu informacji zgodne z przypisane role i obowiązki, gdy jest to wymagane przez zmiany informacji w systemie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 2.c** organizacji zapewnia szkolenia odpowiedzi na zdarzenia dla użytkowników systemu informacji zgodnie z przypisane role i obowiązki [przypisania: częstotliwość zdefiniowany przez organizację] później.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2 (1)** organizacji zawiera symulowane zdarzenia w odpowiedzi na zdarzenia szkolenia ułatwiających efektywne odpowiedzi przez personel w kryzysami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2 (2)** organizacja stosuje automatycznych mechanizmów zapewnienie bardziej kompleksowy i realistyczne środowiska szkolenia odpowiedzi na zdarzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 3** organizacji testów w odpowiedzi na zdarzenia możliwości systemu informacji [przypisania: częstotliwość zdefiniowany przez organizację] przy użyciu [przypisania: zdefiniowany przez organizację testów] do ustalenia skuteczności odpowiedzi na zdarzenia i dokumenty wyniki.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-3 (2)** organizacji koordynuje testowania z elementami organizacyjnej odpowiedzialny za powiązane planów odpowiedzi na zdarzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 4.a** organizacji implementuje funkcję dla zdarzeń zabezpieczeń, która obejmuje przygotowanie, wykrywania i analizy zawierania, zwalczania i odzyskiwania obsługi zdarzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 4.b** organizacji koordynuje działania obsługi zdarzenia z działania związane z planowaniem awaryjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 4.c** organizacji zawiera wnioski z działania trwającej obsługi zdarzenia w odpowiedzi na zdarzenia procedury, szkoleń i testowania, i implementuje powstałe w ten sposób zmienia się odpowiednio.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (1)** organizacja stosuje automatycznych mechanizmy do obsługi zdarzenia procesu obsługi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (2)** organizacji obejmuje dynamicznej zmiany konfiguracji [przypisania: składniki systemowe zdefiniowane przez organizację informacje] jako część możliwości odpowiedzi na zdarzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (3)** identyfikuje organizacji [przypisania: zdefiniowane przez organizację klasy zdarzeń] i [przypisania: zdefiniowane przez organizację działania należy podjąć w odpowiedzi na klasy zdarzenia] zapewnienie kontynuacji misji organizacji i znaczenie biznesowe.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (4)** organizacji są powiązane informacje dotyczące incydentu i poszczególne zdarzenia odpowiedzi do osiągnięcia perspektywy organizacji na rozpoznawanie zdarzenia i odpowiedzi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -242,7 +242,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (6)** organizacji implementuje funkcję obsługi zdarzeń dla zagrożeniami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -256,7 +256,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (8)** koordynuje organizacji z [przypisania: organizacji zdefiniowane przez organizacje zewnętrzne] do grupowania i udostępniać [przypisania: zdefiniowane przez organizację informacje dotyczące zdarzenia] do osiągnięcia perspektywy przedsiębiorstwa dla zdarzenia rozpoznawanie i bardziej efektywną odpowiedzi na zdarzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -270,7 +270,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 5** śledzi i dokumenty zdarzeń zabezpieczeń systemu informacji w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -284,7 +284,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-5 (1)** automatyczne mechanizmów ułatwiających w śledzenia zdarzeń zabezpieczeń i zbierania i analizowania danych zdarzenia jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -298,7 +298,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 6.a** organizacja wymaga personelu podejrzane zdarzenia zabezpieczeń do możliwości organizacyjnej odpowiedzi na zdarzenia w raporcie [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -312,7 +312,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 6.b** organizacji raporty zdarzeń informacji o zabezpieczeniach do [przypisania: zdefiniowane przez organizację urzędów].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -326,7 +326,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR – 6 (1)** organizacja stosuje automatycznych mechanizmów ułatwiających raportowania przypadki naruszenia zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -340,7 +340,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 7** organizacji zawiera zasób obsługi odpowiedzi na zdarzenia integralną częścią funkcją organizacyjnej odpowiedzi na zdarzenia, które oferuje porady i pomocy dla użytkowników systemu informacji obsługi i raportowania zabezpieczeń zdarzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -354,7 +354,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-7 (1)** automatyczne mechanizmy zwiększyć dostępność zdarzenia związane z odpowiedzi informacje i pomoc techniczna jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -368,7 +368,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A IR-7 (2)** organizacji ustanawia relację bezpośrednie, współpracy między jego możliwości odpowiedzi na zdarzenia i zewnętrznych dostawców możliwości ochrony systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -382,7 +382,7 @@ ms.lasthandoff: 02/11/2018
 
 **B IR-7 (2)** organizacji identyfikuje organizacyjnej odpowiedzi na zdarzenia członków zespołu do zewnętrznych dostawców.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -396,7 +396,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.a** organizacji rozwija plan odpowiedzi na zdarzenia, który zapewnia organizacji z planu wykonania jego możliwości odpowiedzi na zdarzenia; opisano strukturę i organizacji w odpowiedzi na zdarzenia możliwości; zawiera podejście wysokiego poziomu, jak w odpowiedzi na zdarzenia możliwości znajdzie się w całej organizacji; spełnia wymagania organizacji, które odnoszą się do misji, rozmiar struktury i funkcji; Definiuje sprawozdawczym zdarzeń; dostarcza metryki pomiaru możliwości odpowiedzi na zdarzenia w organizacji; Definiuje zasobów i zarządzania obsługują potrzebne efektywne Obsługa i dojrzałych możliwości odpowiedzi na zdarzenia; sprawdzone i zatwierdzone przez [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -410,7 +410,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.b** organizacji dystrybuuje kopie planie odpowiedzi na zdarzenia [przypisania: personelu zdefiniowany przez organizację odpowiedzi na zdarzenia (identyfikowane przez nazwę i/lub roli) i organizacyjne elementy].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -424,7 +424,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.c** organizacji monitoruje plan odpowiedzi na zdarzenia [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -438,7 +438,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.d** organizacji aktualizuje plan odpowiedzi na zdarzenia reagowania na zmiany/organizacyjnej systemu lub problemy występujące podczas planu wykonania, wykonanie lub testowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -452,7 +452,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.e** Organizacja komunikuje się plan odpowiedzi na zdarzenia zmiany [przypisania: personelu zdefiniowany przez organizację odpowiedzi na zdarzenia (identyfikowane przez nazwę i/lub roli) i organizacyjne elementy].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -466,7 +466,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.f** organizacji chroni plan odpowiedzi na zdarzenia przed nieuprawnionym ujawnieniem i modyfikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -480,7 +480,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.a** organizacji reaguje na wyciekami informacje identyfikujące określone informacje związane z skażenia systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -494,7 +494,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.b** organizacji reaguje na wyciekami informacji alertów [przypisania: techniczną zdefiniowany przez organizację lub ról] informacje zostaną przeniesione przy użyciu metody nie jest skojarzona z usuwania wycieków komunikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -502,13 +502,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ir-9c"></a>NIST 800-53 Control IR-9.c
+ ## <a name="nist-800-53-control-ir-9c"></a>Formant NIST 800 53 IR-9.c
 
 #### <a name="information-spillage-response"></a>Informacje o wyciek odpowiedzi
 
 **IR 9.c** organizacji odpowiada wyciekami informacji przez izolowanie systemu informacji zanieczyszczonych lub składnik systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -522,7 +522,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.d** organizacji reaguje na wyciekami informacji zwalczania informacji z systemu informacji zanieczyszczonych lub składnika.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -536,7 +536,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.e** Organizacja odpowiada wyciekami informacje, określając innych systemów informacyjnych lub składników systemu, które mogą następnie zanieczyszczone.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -550,7 +550,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.f** organizacji odpowiada wyciekami informacji przez wykonanie innych [przypisania: akcje zdefiniowane przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -564,7 +564,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9 (1)** przypisuje organizacji [przypisania: techniczną zdefiniowany przez organizację lub ról] odpowiedzialny za odpowiada na żądania informacji wylewa.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -578,7 +578,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9 (2)** organizacji udostępnia informacje wyciek odpowiedzi szkolenia [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -592,7 +592,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9 (3)** implementuje organizacji [przypisania: zdefiniowane przez organizację procedury] Aby upewnić się, że organizacji personelu wpływ informacji wyciekami można nadal wykonywać zadania, gdy przechodzą zanieczyszczonych systemów działania naprawcze.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -606,7 +606,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9 (4)** organizacja stosuje [przypisania: zabezpieczeń zdefiniowany przez organizację] dla personelu narażonych na informacji nie poziomu przypisane autoryzacji dostępu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

@@ -3,7 +3,7 @@ title: Odbiorcy akceptacji etapie cyklu życia procesu nauki danych zespołu - A
 description: Cele, zadań i elementów dostarczanych w etapie akceptacji klienta projektów analizy danych
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 0030698bafc3d92a1c6daf944ba496421080912c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: cba2255cc38c9d5b40628f30c5500f8078e31355
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customer-acceptance"></a>Akceptacja klienta
 

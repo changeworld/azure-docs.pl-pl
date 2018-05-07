@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 64fe217cf3d845e6a09fe67d03648e79e8a4cadd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b95f5bb2aa93fb29999994ccd83dc898f88f1072
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi VMSS zarządzane przy użyciu szablonu
 
@@ -36,7 +36,7 @@ W tym artykule Dowiedz się jak wykonać następujące operacje zarządzane toż
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
-Zgodnie z platformy Azure portalu i skryptów, szablony usługi Azure Resource Manager zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowany przez grupę zasobów platformy Azure. Kilka opcje są dostępne do edycji szablonu i wdrażania, zarówno lokalnych, jak i oparte na portalu, w tym:
+Podobnie jak w przypadku platformy Azure, portalu i skryptów, [usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) Szablony zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowany przez grupę zasobów platformy Azure. Kilka opcje są dostępne do edycji szablonu i wdrażania, zarówno lokalnych, jak i oparte na portalu, w tym:
 
    - Przy użyciu [niestandardowego szablonu z portalu Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), co pozwala na tworzyć szablon od podstaw albo oparte na istniejących typowe lub [szablon szybkiego startu](https://azure.microsoft.com/documentation/templates/).
    - Wyprowadzanie z istniejącej grupy zasobów przez wyeksportowanie szablonu z dowolnej [oryginalnego wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), lub z [bieżący stan wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
@@ -51,13 +51,11 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za po
 
 ### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss"></a>Włącz system przypisane tożsamości podczas tworzenia VMSS Azure lub istniejące VMSS Azure
 
-1. Czy logowania się do usługi Azure lokalnie lub za pośrednictwem portalu Azure, użyj konta, które jest skojarzone z subskrypcją platformy Azure, która zawiera zestaw skali maszyny wirtualnej.
-
-2. Po załadowaniu szablonu do edytora, zlokalizuj `Microsoft.Compute/virtualMachineScaleSets` zasobów odsetek w `resources` sekcji. Należy do Ciebie może wyglądać nieco inaczej niż poniższy zrzut ekranu, w zależności od edytor, którego używasz, i czy edytujesz szablon do wdrożenia nowego lub istniejącego.
+1. Ładuje szablon w edytorze, zlokalizuj `Microsoft.Compute/virtualMachineScaleSets` zasobów odsetek w `resources` sekcji. Należy do Ciebie może wyglądać nieco inaczej niż poniższy zrzut ekranu, w zależności od edytor, którego używasz, i czy edytujesz szablon do wdrożenia nowego lub istniejącego.
    
    ![Zrzut ekranu przedstawiający szablonu — zlokalizować maszyny Wirtualnej](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
-3. Aby włączyć tożsamości systemu przypisane, Dodaj `"identity"` właściwości na tym samym poziomie jako `"type": "Microsoft.Compute/virtualMachineScaleSets"` właściwości. Należy użyć następującej składni:
+2. Aby włączyć tożsamości systemu przypisane, Dodaj `"identity"` właściwości na tym samym poziomie jako `"type": "Microsoft.Compute/virtualMachineScaleSets"` właściwości. Należy użyć następującej składni:
 
    ```JSON
    "identity": { 
@@ -65,7 +63,7 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za po
    },
    ```
 
-4. (Opcjonalnie) Dodaj rozszerzenie pliku MSI jako zestawu skalowania maszyn wirtualnych `extensionsProfile` elementu. Ten krok jest opcjonalny, jako tożsamości Azure wystąpienie metadanych usługi (IMDS) umożliwia pobranie również tokenów.  Należy użyć następującej składni:
+3. (Opcjonalnie) Dodaj rozszerzenie pliku MSI jako zestawu skalowania maszyn wirtualnych `extensionsProfile` elementu. Ten krok jest opcjonalny, jako tożsamości Azure wystąpienie metadanych usługi (IMDS) umożliwia pobranie również tokenów.  Należy użyć następującej składni:
 
    >[!NOTE] 
    > W poniższym przykładzie założono rozszerzenia zestawu skalowania maszyn wirtualnych systemu Windows (`ManagedIdentityExtensionForWindows`) jest wdrażany. Można również skonfigurować dla systemu Linux przy użyciu `ManagedIdentityExtensionForLinux` zamiast tego dla `"name"` i `"type"` elementy.
@@ -89,7 +87,7 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za po
             }
    ```
 
-5. Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
+4. Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
 
    ![Zrzut ekranu przedstawiający szablonu po aktualizacji](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
@@ -100,41 +98,18 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za po
 
 Jeśli masz już zestaw skali maszyny wirtualnej należy przypisać tożsamość systemu, ale nadal należy przypisać tożsamość użytkownika:
 
-1. Czy logowania się do usługi Azure lokalnie lub za pośrednictwem portalu Azure, użyj konta, które jest skojarzone z subskrypcją platformy Azure, która zawiera zestaw skali maszyny wirtualnej.
-
-2. Zmień typ tożsamości do `'UserAssigned'`
+- Załadowania szablonu w edytorze i zmienić typ tożsamości na `'UserAssigned'`
 
 ## <a name="user-assigned-identity"></a>Użytkownik, któremu przypisano tożsamości
 
-W tej sekcji utworzysz użytkownik, któremu przypisano tożsamości i VMSS Azure przy użyciu szablonu usługi Azure Resource Manager.
+W tej sekcji należy przypisać tożsamość użytkownika z przypisanym do VMSS Azure przy użyciu szablonu usługi Azure Resource Manager.
 
-### <a name="create-and-assign-a-user-assigned-identity-to-an-azure-vmss"></a>Utwórz i przypisz użytkownika przypisanego tożsamości do VMSS Azure
+> [!Note]
+> Aby tworzyć tożsamość użytkownika z przypisanym przy użyciu szablonu usługi Azure Resource Manager, zobacz [utworzenia tożsamości użytkownika z przypisanym](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
-1. Wykonaj pierwszy krok w sekcji [włączyć tożsamość systemu przypisany podczas tworzenia VMSS Azure, na istniejących VMSS](qs-configure-template-windows-vmss.md#enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss).
+### <a name="assign-a-user-assigned-identity-to-an-azure-vmss"></a>Przypisać użytkownicy przypisani tożsamości do VMSS Azure
 
-2. W sekcji zmiennych zawierający zmienne konfiguracji dla Twojego VMSS Azure Dodaj wpis dla nazwy przypisanej tożsamości użytkownika podobny do następującego.  To przechowuje wartość przypisane w trakcie procesu tworzenia Azure VMSS tożsamości użytkownika:
-    
-    > [!IMPORTANT]
-    > Tworzenie użytkownika z przypisanym tożsamości z znaki specjalne (np. podkreślenie) w nazwie nie jest obecnie obsługiwane. Użyj znaków alfanumerycznych. Sprawdzanie dostępności aktualizacji.  Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
-
-    ```json
-    "variables": {
-        "vmssPrefix": "vmss",
-        "vmssName": "[concat(variables('vmssPrefix'), uniquestring(resourceGroup().id,deployment().name))]",
-        //other vm configuration variables...
-        "identityName": "[concat(variables('vmssName'), 'id')]"
-    ```
-3. W obszarze `resources` element Dodaj następujący wpis do utworzenia tożsamości użytkownika z przypisanym:
-
-    ```json
-    {
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-        "name": "[variables('identityName')]",
-        "apiVersion": "2015-08-31-PREVIEW",
-        "location": "[resourceGroup().location]"
-    },
-    ```
-4. Następnie w obszarze `resources` element Dodaj następujący wpis do przypisania tożsamości użytkownika przypisane do użytkownika VMSS:
+1. W obszarze `resources` elementu, Dodaj następujący wpis, aby przypisać tożsamość użytkownika z przypisanym do Twojej VMSS.  Pamiętaj zastąpić `<USERASSIGNEDIDENTITY>` o nazwie tożsamość użytkownika z przypisanym został utworzony.
 
     ```json
     {
@@ -144,13 +119,13 @@ W tej sekcji utworzysz użytkownik, któremu przypisano tożsamości i VMSS Azur
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/, variables('identityName'))]"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
             ]
         }
 
     }
     ```
-5. (Opcjonalnie) Dodaj następujący wpis w obszarze `extensionProfile` elementu, aby przypisać rozszerzenie tożsamości zarządzanych do Twojej VMSS. Ten krok jest opcjonalny, jako punkt końcowy tożsamości Azure wystąpienie metadanych usługi (IMDS), umożliwia pobranie również tokenów. Należy użyć następującej składni:
+2. (Opcjonalnie) Dodaj następujący wpis w obszarze `extensionProfile` elementu, aby przypisać rozszerzenie tożsamości zarządzanych do Twojej VMSS. Ten krok jest opcjonalny, jako punkt końcowy tożsamości Azure wystąpienie metadanych usługi (IMDS), umożliwia pobranie również tokenów. Należy użyć następującej składni:
    
     ```JSON
        "extensionProfile": {
@@ -169,11 +144,9 @@ W tej sekcji utworzysz użytkownik, któremu przypisano tożsamości i VMSS Azur
                     }
                 }
    ```
-6.  Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
-    > [!NOTE]
-    > Szablon nie ma wszystkie zmienne niezbędne do utworzenia sieci VMSS.  `//other configuration variables...` Służy do miejsca wszystkie zmienne konfiguracji niezbędne w celu skrócenia.
-
-      ![Zrzut ekranu przedstawiający tożsamości przypisane przez użytkownika](../media/msi-qs-configure-template-windows-vmss/template-vmss-user-assigned-identity.png)
+3.  Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
+   
+      ![Zrzut ekranu przedstawiający tożsamości przypisane przez użytkownika](./media/qs-configure-template-windows-vmss/qs-configure-template-windows-final.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

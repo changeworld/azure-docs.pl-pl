@@ -3,8 +3,8 @@ title: Rozwiązywanie problemów z usługą równoważenia obciążenia Azure | 
 description: Rozwiązywanie problemów z znane problemy z modułem równoważenia obciążenia Azure
 services: load-balancer
 documentationcenter: na
-author: RamanDhillon
-manager: timlt
+author: chadmath
+manager: cshepard
 editor: ''
 ms.assetid: ''
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: genli
+ms.openlocfilehash: 294bb6dd780d1df642d6e793b29267da1e8b8336
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą równoważenia obciążenia Azure
+# <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą Azure Load Balancer
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 

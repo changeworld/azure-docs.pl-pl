@@ -16,19 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a5e657d3c171b63734ad4bf6c0097a3142993360
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 1eed0584170c9d94a8f02a2e0538d5982d92b976
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Linux za pomocą przyspieszony sieci
-
-> [!IMPORTANT] 
-> Maszyny wirtualne muszą być tworzone przyspieszony sieci włączone. Nie można włączyć tę funkcję w istniejących maszyn wirtualnych. Wykonaj poniższe kroki, aby włączyć przyspieszony sieci:
->   1. Usuń maszynę wirtualną.
->   2. Ponownie utwórz maszynę wirtualną za pomocą przyspieszony sieci włączone.
->
 
 W tym samouczku Dowiedz się jak utworzyć za pomocą przyspieszony sieci maszyny wirtualnej systemu Linux (VM). Aby utworzyć Maszynę wirtualną systemu Windows za pomocą przyspieszony sieci, zobacz [utworzyć Maszynę wirtualną systemu Windows za pomocą przyspieszony sieci](create-vm-accelerated-networking-powershell.md). Przyspieszone sieci umożliwia wirtualizację We/Wy z jednym elementem głównym (SR-IOV) do maszyny Wirtualnej, znacznie poprawia wydajność sieci. Ta ścieżka wysokiej wydajności pomija hosta z ścieżki danych, zmniejszając czas oczekiwania, zakłócenia i użycie procesora CPU do użycia z najbardziej wymagających obciążeń sieci na obsługiwanych typów maszyny Wirtualnej. Na poniższej ilustracji przedstawiono komunikację między dwiema maszynami wirtualnymi z włączonymi i wyłączonymi przyspieszonego sieci:
 
@@ -46,29 +40,39 @@ Korzyści wynikające z przyspieszonego sieci dotyczą tylko maszynę Wirtualną
 * **Zmniejszyć użycie procesora CPU:** pomijanie przełącznika wirtualnego na hoście prowadzi do mniej użycie procesora CPU do przetwarzania ruchu sieciowego.
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
-* **Ubuntu 16.04**: 4.11.0-1013 lub nowszej wersji jądra
-* **Z dodatkiem SP3 SLES 12**: 4.4.92-6.18 lub nowszej wersji jądra
-* **RHEL 7.4**: 7.4.2017120423 lub nowszej wersji jądra
-* **CentOS 7.4**: 7.4.20171206 lub nowszej wersji jądra
+Fabrycznej z galerii Azure obsługiwane są następujące dystrybucji: 
+* **Ubuntu 16.04** 
+* **SLES 12 Z DODATKIEM SP3** 
+* **RHEL 7.4**
+* **7.4 centOS**
+* **CoreOS systemu Linux**
+* **Debian "Stretch", z backports jądra**
+* **Oracle Linux 7.4**
 
-## <a name="supported-vm-instances"></a>Obsługiwane wystąpienia maszyny Wirtualnej
-Przyspieszone sieci jest obsługiwana w najbardziej ogólnego przeznaczenia i rozmiary obliczeniowe są zoptymalizowane pod kątem wystąpienia z co najmniej 4 Vcpu. W przypadkach, takich jak D/DSv3 lub E/ESv3 obsługujące wielowątkowość przyspieszony sieci jest obsługiwany w wystąpieniach maszyny Wirtualnej z co najmniej 8 Vcpu.  Są obsługiwane serii: D/DSv2, D/DSv3 E/ESv3, F/Fs/Fsv2 i Ms/Mms. 
+## <a name="limitations-and-constraints"></a>Ograniczenia i ograniczenia
+
+### <a name="supported-vm-instances"></a>Obsługiwane wystąpienia maszyny Wirtualnej
+Przyspieszone sieci jest obsługiwana w najbardziej ogólnego przeznaczenia i rozmiary obliczeniowe są zoptymalizowane pod kątem wystąpienia z Vcpu 2 lub większą.  Te serie obsługiwane są: D/DSv2 i F/Fs
+
+Przyspieszony sieci jest obsługiwany w wystąpieniach, które obsługują wielowątkowość na wystąpień maszyn wirtualnych z co najmniej 4 Vcpu. Są obsługiwane serii: D/DSv3, E/ESv3 Fsv2 i Ms/Mms.
 
 Aby uzyskać więcej informacji na wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych systemu Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="regions"></a>Regiony
+### <a name="regions"></a>Regiony
 Dostępna we wszystkich publicznych regiony platformy Azure, a także chmur Azure dla instytucji rządowych.
 
-## <a name="limitations"></a>Ograniczenia
-Podczas przy użyciu tej możliwości istnieją następujące ograniczenia:
+### <a name="network-interface-creation"></a>Tworzenie interfejsu sieciowego 
+Przyspieszone sieci można włączyć tylko dla nowych kart sieciowych. Nie można włączyć dla istniejącej karty sieciowej.
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Włączanie przyspieszony sieci na uruchomionej maszynie Wirtualnej
+Obsługiwany rozmiar maszyny Wirtualnej bez przyspieszonego sieci włączone może mieć tylko funkcja włączona po zatrzymaniu i alokację.  
+### <a name="deployment-through-azure-resource-manager"></a>Wdrożenia za pośrednictwem usługi Azure Resource Manager
+Nie można wdrożyć maszyn wirtualnych (klasyczne) za pomocą przyspieszony sieci.
 
-* **Tworzenie interfejsu sieci:** akcelerowanego sieci można włączyć tylko dla nowych kart sieciowych. Nie można włączyć dla istniejącej karty sieciowej.
-* **Tworzenie maszyny Wirtualnej:** A kart interfejsu Sieciowego z włączoną obsługą przyspieszonego sieci może zostać dołączona tyko do maszyny Wirtualnej po utworzeniu maszyny Wirtualnej. Nie można dołączyć karty Sieciowej do istniejącej maszyny Wirtualnej. Jeśli dodawanie maszyny Wirtualnej do istniejących danych o dostępności, wszystkich maszyn wirtualnych w zestawie dostępności muszą również przyspieszyć sieci włączone.
-* **Tylko wdrożenia za pośrednictwem usługi Azure Resource Manager:** maszyn wirtualnych (klasyczne) nie można wdrożyć za pomocą przyspieszony sieci.
+## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Utwórz Maszynę wirtualną systemu Linux z przyspieszonego Azure w sieci
 
 Chociaż ten artykuł zawiera kroki, aby utworzyć maszynę wirtualną z przyspieszonego w sieci przy użyciu wiersza polecenia platformy Azure, możesz również [Utwórz maszynę wirtualną z przyspieszonego w sieci przy użyciu portalu Azure](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Podczas tworzenia maszyny wirtualnej w portalu, w obszarze **ustawienia**, wybierz pozycję **włączone**w obszarze **przyspieszony sieci**. Możliwość włączenia przyspieszonego sieci nie jest wyświetlane w portalu chyba, że wybrano [obsługiwanym systemie operacyjnym](#supported-operating-systems) i [rozmiar maszyny Wirtualnej](#supported-vm-instances). Po utworzeniu maszyny wirtualnej, należy wykonać instrukcje [Potwierdź, że jest włączona przyspieszonego sieci](#confirm-that-accelerated-networking-is-enabled).
 
-## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
 Zainstaluj najnowszą [Azure CLI 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [logowania az](/cli/azure/reference-index#az_login). W poniższych przykładach Zastąp przykładowe nazwy parametrów własne wartości. Przykład nazwy parametrów uwzględnione *myResourceGroup*, *myNic*, i *myVm*.
 
@@ -91,7 +95,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
+### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 Utwórz grupę zabezpieczeń sieci z [utworzyć nsg sieci az](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
@@ -117,7 +121,7 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-## <a name="create-a-network-interface-with-accelerated-networking"></a>Utwórz interfejs sieciowy z przyspieszonego sieci
+### <a name="create-a-network-interface-with-accelerated-networking"></a>Utwórz interfejs sieciowy z przyspieszonego sieci
 
 Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create). Publiczny adres IP nie jest wymagane, jeśli nie planujesz dostęp do maszyny wirtualnej z Internetu, ale wykonać kroki opisane w tym artykule, jest to wymagane.
 
@@ -140,7 +144,7 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nic"></a>Utwórz Maszynę wirtualną i Dołącz kartę Sieciową
+### <a name="create-a-vm-and-attach-the-nic"></a>Utwórz Maszynę wirtualną i Dołącz kartę Sieciową
 Podczas tworzenia maszyny Wirtualnej, określ karty interfejsu Sieciowego zostały utworzone z `--nics`. Wybierz rozmiar i dystrybucji na liście [Linux przyspieszony sieci](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z obrazu UbuntuLTS i rozmiar, który obsługuje przyspieszony Networking (*Standard_DS4_v2*):
@@ -173,7 +177,7 @@ Po utworzeniu maszyny Wirtualnej, jest zwracana dane wyjściowe podobne do nast�
 }
 ```
 
-## <a name="confirm-that-accelerated-networking-is-enabled"></a>Upewnij się, że przyspieszonego sieć jest włączona
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>Upewnij się, że przyspieszonego sieć jest włączona
 
 Użyj następującego polecenia, aby utworzyć sesję SSH z maszyną wirtualną. Zastąp `<your-public-ip-address>` z publicznym adresem IP przypisane do wirtualnego utworzonego komputera i zastąpić *azureuser* Jeśli używasz innej wartości `--admin-username` podczas tworzenia maszyny Wirtualnej.
 
@@ -210,3 +214,84 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 Przyspieszone sieci jest teraz włączony dla maszyny Wirtualnej.
+
+## <a name="enable-accelerated-networking-on-existing-vms"></a>Włącz przyspieszony sieć na istniejące maszyny wirtualne
+Jeśli utworzono Maszynę wirtualną bez przyspieszony sieci jest możliwe włączyć tę funkcję na istniejącej maszyny Wirtualnej.  Maszyna wirtualna musi obsługiwać przyspieszony sieci spełniając następujące wymagania wstępne opisane powyżej:
+
+* Maszyna wirtualna musi być obsługiwany rozmiar przyspieszony sieci
+* Maszyna wirtualna musi być obsługiwany obraz w galerii Azure (i wersji jądra dla systemu Linux)
+* Wszystkie maszyny wirtualne w zestawie dostępności lub VMSS musi być zatrzymana alokację przed włączeniem przyspieszony sieć na dowolnej karty interfejsu Sieciowego
+
+### <a name="individual-vms--vms-in-an-availability-set"></a>Ustaw poszczególnych maszyn wirtualnych i maszyn wirtualnych w dostępności
+Najpierw Zatrzymaj/Cofnij Przydział maszyny Wirtualnej lub, jeśli zbiór dostępności, wszystkich maszyn wirtualnych w zestawie:
+
+```azurecli
+az vm deallocate \
+    --resource-group myResourceGroup \
+    --name myVM
+```
+
+Ważne, proszę Uwaga: Jeśli maszyna wirtualna została utworzona oddzielnie, bez zestawu dostępności, możesz tylko konieczne stop/cofnąć poszczególnych maszyn wirtualnych, aby włączyć przyspieszony sieci.  Jeśli maszyna wirtualna została utworzona z zestawu dostępności, zawarty w zestawie dostępności wszystkich maszyn wirtualnych należy być zatrzymana alokację przed włączeniem przyspieszony sieci na żadnym z kart sieciowych. 
+
+Gdy usługa zostanie zatrzymana, należy włączyć przyspieszony sieci na karcie Sieciowej maszyny Wirtualnej:
+
+```azurecli
+az network nic update \
+    --name myVM -n myNic \
+    --resource-group myResourceGroup \
+    --accelerated-networking true
+```
+
+Uruchom sieci maszyny Wirtualnej lub, jeśli w zestawie dostępności, wszystkich maszyn wirtualnych w zestawie i sprawdź, czy włączono przyspieszony sieci: 
+
+```azurecli
+az vm start --resource-group myResourceGroup \
+    --name myVM
+```
+
+### <a name="vmss"></a>VMSS
+VMSS różni się nieznacznie, ale wynika z tego samego przepływu pracy.  Przestań maszyn wirtualnych:
+
+```azurecli
+az vmss deallocate \
+    --name myvmss \
+    --resource-group myrg
+```
+
+Po zatrzymaniu maszyny wirtualnej należy zaktualizować właściwości przyspieszony sieci w interfejsie sieci:
+
+```azurecli
+az vmss update --name myvmss \
+    --resource-group myrg \
+    --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
+```
+
+Sprawdź Uwaga, VMSS ma stosowania aktualizacji za pomocą trzy różne ustawienia automatycznego, stopniowego i ręcznego uaktualnienia maszyny Wirtualnej.  W tych instrukcjach zasady są ustawione na tryb automatyczny, aby VMSS przejmą zmian natychmiast po ponownym uruchomieniu.  Ustawić ją na automatyczne, dzięki czemu zmiany są natychmiast pobrana: 
+
+```azurecli
+az vmss update \
+    --name myvmss \
+    --resource-group myrg \
+    --set upgradePolicy.mode="automatic"
+```
+
+Na koniec uruchom ponownie VMSS:
+
+```azurecli
+az vmss start \
+    --name myvmss \
+    --resource-group myrg
+```
+
+Raz należy uruchomić ponownie, poczekaj, aż do zakończenia uaktualnienia, ale po ukończeniu, funkcji Wirtualnej pojawi się w ramach maszyny Wirtualnej.  (Upewnij się, że używasz obsługiwany rozmiar systemu operacyjnego i maszyny Wirtualnej.)
+
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>Zmiana rozmiaru istniejących maszyn wirtualnych za pomocą przyspieszony sieci
+
+Tylko można zmienić rozmiar maszyn wirtualnych za pomocą przyspieszony sieci włączony do maszyn wirtualnych, które obsługują przyspieszony sieci.  
+
+Nie można zmienić rozmiaru maszyny Wirtualnej za pomocą przyspieszony sieci włączone, do wystąpienia maszyny Wirtualnej, która nie obsługuje przyspieszony sieci przy użyciu operacji zmiany rozmiaru.  Zamiast tego aby zmienić rozmiar jednej z tych maszyn wirtualnych: 
+
+* Zatrzymaj/Deallocate maszyny Wirtualnej lub w zestawie dostępności/VMSS, Zatrzymaj/cofnąć wszystkich maszyn wirtualnych w zestawie/VMSS.
+* Przyspieszone sieci musi zostać wyłączona na karcie Sieciowej maszyny Wirtualnej lub gdy w dostępności zestawu/VMSS, wszystkich maszyn wirtualnych w zestawie/VMSS.
+* Po wyłączeniu przyspieszony sieci maszyny Wirtualnej/dostępność zestawu/VMSS można przenieść do nowego rozmiaru, który nie obsługuje przyspieszony sieci i ponowne uruchomienie.  
+

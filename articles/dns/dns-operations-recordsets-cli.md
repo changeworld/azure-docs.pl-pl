@@ -1,10 +1,10 @@
 ---
-title: "Zarządzanie rekordami DNS w usłudze Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zarządzanie zestawów rekordów DNS i rekordy w usłudze Azure DNS, gdy hosting domeny w usłudze Azure DNS. Wszystkie polecenia 2.0 interfejsu wiersza polecenia dla operacji na zestawów rekordów i rekordów."
+title: Zarządzanie rekordami DNS w usłudze Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Zarządzanie zestawów rekordów DNS i rekordy w usłudze Azure DNS, gdy hosting domeny w usłudze Azure DNS. Wszystkie polecenia 2.0 interfejsu wiersza polecenia dla operacji na zestawów rekordów i rekordów.
 services: dns
 documentationcenter: na
 author: KumudD
-manager: carmonm
+manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
@@ -14,16 +14,16 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: kumud
-ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Zarządzanie rekordami DNS i zestawy rekordów w usłudze Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
-> * [Azure portal](dns-operations-recordsets-portal.md)
+> * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-recordsets-cli.md)
 > * [Program PowerShell](dns-operations-recordsets.md)
 
@@ -223,7 +223,7 @@ Nie można dodać, usunąć lub zmodyfikować rekordy w tworzonych automatycznie
 
 W przeciwieństwie do większości innych typów rekordów zestawu rekordów CNAME może zawierać tylko jeden rekord.  W związku z tym nie można zastąpić bieżącą wartość dodawania nowego rekordu i usuwanie istniejącego rekordu, podobnie jak w przypadku innych typów rekordów.
 
-Aby zmodyfikować rekord zasobu CNAME, użyj `az network dns record-set cname set-record`. Aby uzyskać pomoc zobacz`az network dns record-set cname set-record --help`
+Aby zmodyfikować rekord zasobu CNAME, użyj `az network dns record-set cname set-record`. Aby uzyskać pomoc zobacz `az network dns record-set cname set-record --help`
 
 Przykład modyfikuje zestawu rekordów CNAME *www* w strefie *contoso.com*, w grupie zasobów *MyResourceGroup*, aby wskazywał "www.fabrikam.net" zamiast jego istniejącej wartości:
 

@@ -2,19 +2,19 @@
 title: Utwórz bramę aplikacji z zewnętrznego przekierowania - programu Azure PowerShell | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w sieci web do zewnętrznej witryny przy użyciu programu Azure Powershell.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 430c8b64a9e9bafb655357f4ceadd8980c1de3bd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.author: victorh
+ms.openlocfilehash: 6e2f0dadcb1158863282090bf6f81b0ae368416f
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Utwórz bramę aplikacji z zewnętrznego przekierowania przy użyciu programu Azure PowerShell
 

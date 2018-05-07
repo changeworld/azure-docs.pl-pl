@@ -4,7 +4,7 @@ description: Przegląd prywatnej DNS obsługującego usługę w systemie Microso
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>Za pomocą usługi Azure DNS dla domen prywatnych
 System nazw domen lub DNS, jest odpowiedzialny za tłumaczenia (lub rozpoznawania) nazwę usługi na adres IP. Usługa DNS platformy Azure to Usługa hostingu domen DNS, rozpoznawania nazw przy użyciu infrastruktury Microsoft Azure.  Oprócz internetowy domen DNS usługi Azure DNS teraz obsługuje również prywatnej domen DNS jako funkcja w wersji zapoznawczej.  
@@ -75,7 +75,7 @@ Strefy DNS prywatnego jest bezpłatne w publicznej wersji zapoznawczej. Podczas 
 
 Dowiedz się, jak utworzyć strefę prywatnego za pomocą usługi Azure DNS [PowerShell](./private-dns-getstarted-powershell.md) lub [interfejsu wiersza polecenia](./private-dns-getstarted-cli.md).
 
-Przeczytana niektórych typowych scenariuszy [scenariusze strefy prywatnego](./private-dns-scenarios.md) który można uzyskać z prywatnej stref w usłudze Azure DNS.
+Zapoznaj się z informacjami o niektórych typowych scenariuszach, które można realizować za pomocą funkcji stref prywatnych w usłudze Azure DNS, w temacie [Private Zone scenarios (Scenariusze dotyczące stref prywatnych)](./private-dns-scenarios.md).
 
 Przeczytaj na [— często zadawane pytania](./dns-faq.md#private-dns) dla niektórych typowych pytań i odpowiedzi na prywatnego stref w usłudze Azure DNS, włączając określone zachowanie można oczekiwać, że na niektóre rodzaje operacji. 
 

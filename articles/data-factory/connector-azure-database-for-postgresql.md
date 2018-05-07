@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 4aea42bd20f01b4dae9e940b0ed101020d64c00c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 365775f840f85efe1792f376880145c7e7db1312
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Kopiowanie danych z bazy danych platformy Azure dla PostgreSQL przy użyciu fabryki danych Azure 
 
@@ -47,6 +47,13 @@ Bazy danych Azure PostgreSQL połączone usługi, obsługiwane są następujące
 | type | Właściwość type musi mieć ustawioną: **AzurePostgreSql** | Yes |
 | Parametry połączenia | Parametry połączenia ODBC do łączenia z bazą danych Azure dla PostgreSQL. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+
+Ciąg połączenia typowe jest `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+
+| Właściwość | Opis | Opcje | Wymagane |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownika i serwer bazy danych. Na przykład `ValidateServerCertificate=<0/1/6>;`| 0 (brak szyfrowania) **(domyślna)** / 1 (SSL) / 6 (RequestSSL) | Nie |
+| ValidateServerCertificate (wirtualnej karty Inteligentnej) | Określa, czy sterownik weryfikuje certyfikat, który jest wysyłany przez serwer bazy danych, jeśli jest włączone szyfrowanie SSL (metoda szyfrowania = 1). Na przykład `ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(domyślna)** / 1 (włączone) | Nie |
 
 **Przykład:**
 
@@ -90,7 +97,7 @@ Aby skopiować dane z bazy danych Azure dla PostgreSQL, ustaw właściwość Typ
 
 Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę obsługiwanych przez bazę danych Azure PostgreSQL źródła właściwości.
 
-### <a name="azurepostgresqlsource-as-source"></a>AzurePostgreSqlSource as source
+### <a name="azurepostgresqlsource-as-source"></a>AzurePostgreSqlSource jako źródło
 
 Aby skopiować dane z bazy danych Azure dla PostgreSQL, należy ustawić typ źródła w przypadku działania kopiowania do **AzurePostgreSqlSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
 

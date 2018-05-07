@@ -1,26 +1,26 @@
 ---
-title: "Utwórz bramę aplikacji z wielu lokacji hosting - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć bramy aplikacji, która obsługuje wiele lokacji przy użyciu portalu Azure."
+title: Utwórz bramę aplikacji z wielu lokacji hosting - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramy aplikacji, która obsługuje wiele lokacji przy użyciu portalu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: f3dd092b2298bfc97cac30b8706e0588a466e1e0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Utwórz bramę aplikacji z wielu lokacji hostingu za pomocą portalu Azure
 
 Azure portal umożliwiają skonfigurowanie [obsługujący wiele witryn sieci web](application-gateway-multi-site-overview.md) podczas tworzenia [brama aplikacji w](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza przy użyciu zestawów skalowania maszyn wirtualnych. Następnie skonfiguruj odbiorników i reguły na podstawie domen, do których należą do upewnij się, że ruch w sieci web dociera do odpowiednich serwerów w pulach. Ten samouczek zakłada, że masz wiele domen i używa przykłady *www.contoso.com* i *www.fabrikam.com*.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
@@ -70,7 +70,7 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
 1. Kliknij przycisk **wszystkie zasoby** w menu po lewej stronie, a następnie kliknij przycisk **myVNet** na liście zasobów.
 2. Kliknij przycisk **podsieci**, a następnie kliknij przycisk **podsieci**.
 
-    ![Utwórz podsieć](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
+    ![Tworzenie podsieci](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
 
 3. Wprowadź *myBackendSubnet* dla nazwy podsieci, a następnie kliknij przycisk **OK**.
 
@@ -83,17 +83,17 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 3. Wprowadź wartości dla maszyny wirtualnej:
 
     - *contosoVM* — Nazwa maszyny wirtualnej.
-    - *azureuser* — nazwa użytkownika administratora.
+    - *azureuser* — jako nazwę użytkownika administratora.
     - *Azure123456!* hasła.
     - Wybierz **Użyj istniejącego**, a następnie wybierz *myResourceGroupAG*.
 
 4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** dla rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **wybierz**.
+5. Wybierz **DS1_V2** jako rozmiar maszyny wirtualnej, a następnie kliknij pozycję **Wybierz**.
 6. Upewnij się, że **myVNet** został wybrany do sieci wirtualnej i podsieci jest **myBackendSubnet**. 
-7. Kliknij przycisk **wyłączone** wyłączyć diagnostyki rozruchu.
-8. Kliknij przycisk **OK**Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
+8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
 
-### <a name="install-iis"></a>Zainstaluj usługi IIS
+### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Otwórz powłokę interakcyjne i upewnij się, że jest ustawiona na **PowerShell**.
 
@@ -102,7 +102,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zapl
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -166,7 +166,7 @@ Po utworzeniu bramy aplikacji z publicznego adresu IP można pobrać adresu DNS 
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-1. Wpisz nazwę domeny na pasku adresu przeglądarki. Such as, http://www.contoso.com.
+1. Wpisz nazwę domeny na pasku adresu przeglądarki. Takie jak http://www.contoso.com.
 
     ![Lokacja contoso testu bramy aplikacji](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
 

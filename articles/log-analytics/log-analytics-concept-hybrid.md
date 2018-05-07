@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Zbieranie danych z komputerów w środowisku z analizy dzienników
 
@@ -28,7 +28,7 @@ Analiza dzienników Azure można zbierać i działają na danych z komputerów z
 * Centrum danych jako serwerów fizycznych lub maszynach wirtualnych
 * Maszyny wirtualne w usłudze hostowanych w chmurze, takich jak Amazon Web Services (AWS)
 
-Komputery hostowanych w danym środowisku może być bezpośrednio połączony do analizy dzienników, lub jeśli już monitorowania tych komputerów z System Center Operations Manager 2012 R2 lub 2016, grupy zarządzania operacje zarządzania można zintegrować z analizy dzienników i kontynuacja, obsługi strategii i procesy operacji usługi.  
+Komputery hostowanych w danym środowisku może być bezpośrednio połączony do analizy dzienników, lub jeśli już monitorowania tych komputerów przy użyciu programu System Center Operations Manager 2012 R2, 2016 lub wersji 1801 można zintegrować z grupy zarządzania operacji zarządzania Zaloguj się Analytics i nadal obsługiwane procesów IT operacji usługi.  
 
 ## <a name="overview"></a>Przegląd
 
@@ -36,15 +36,11 @@ Komputery hostowanych w danym środowisku może być bezpośrednio połączony d
 
 Przed analizowanie i działającą w zebranych danych, należy najpierw zainstalować i połączyć agentów dla wszystkich komputerów, które chcesz wysyłać dane z usługą analizy dzienników. Można zainstalować agentów na komputerach lokalnych przy użyciu Instalatora, wiersza polecenia lub z żądanego stanu konfiguracji (DSC) w automatyzacji Azure. 
 
-Agenta dla systemu Linux i Windows komunikuje się wychodzące z usługą analizy dzienników za pośrednictwem portu TCP 443 i jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, przejrzyj [Konfigurowanie agenta do użycia z serwerem proxy lub bramy OMS](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway) zrozumienie będzie zmian konfiguracji, należy zastosować. Jeśli monitorowanych komputerów z System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2, można wieloadresowego z usługą analizy dzienników w celu zbierania danych i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager ](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z analizy dzienników nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Agent systemu Windows może raportować do czterech obszarów roboczych, a agenta systemu Linux obsługuje tylko do jednego obszaru roboczego raporty.  
+Agenta dla systemu Linux i Windows komunikuje się wychodzące z usługą analizy dzienników za pośrednictwem portu TCP 443 i jeśli komputer łączy się z serwerem zapory lub serwera proxy do komunikacji za pośrednictwem Internetu, przejrzyj [sekcji wymagania wstępne](#prerequisites) do Dowiedz się, wymagane konfiguracji sieci.  Jeśli zasady zabezpieczeń IT nie zezwalają na komputerach w sieci, aby połączyć się z Internetem, można skonfigurować [OMS bramy](log-analytics-oms-gateway.md) , a następnie skonfigurować agenta, aby nawiązać połączenie za pośrednictwem bramy w celu analizy dzienników. Agenta można odbierać informacje o konfiguracji i wysyłać dane zbierane w zależności od tego, jakie zasady zbierania danych i rozwiązania zostało włączone. 
 
-Agent dla systemu Linux i Windows, który nie jest tylko w przypadku łączenia do analizy dzienników, obsługuje również automatyzacji Azure łączenia się z hostem roli procesu roboczego Runbook hybrydowego i rozwiązań do zarządzania takich jak śledzenia zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowy proces roboczy elementu Runbook, zobacz [procesu roboczego Runbook hybrydowego automatyzacji Azure](../automation/automation-offering-get-started.md#automation-architecture-overview).  
+Jeśli monitorowanych komputerów z System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2, można wieloadresowego z usługą analizy dzienników w celu zbierania danych i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager ](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z analizy dzienników nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Agent systemu Windows może raportować do czterech obszarów roboczych, a agenta systemu Linux obsługuje tylko do jednego obszaru roboczego raporty.  
 
-Jeśli zasady zabezpieczeń IT nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, aby połączyć się z bramą OMS do odbierania informacji o konfiguracji i wysyłania danych zebranych w zależności od rozwiązania, które aktywowano można skonfigurować agenta. Aby uzyskać więcej informacji i kroki dotyczące sposobu konfigurowania agenta systemu Linux lub Windows do komunikowania się za pośrednictwem bramy OMS z usługą analizy dzienników, zobacz [łączenia komputerów przy użyciu bramy OMS OMS](log-analytics-oms-gateway.md). 
-
-> [!NOTE]
-> Agent dla systemu Windows obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0 i 1.1.  
-> 
+Agent dla systemu Linux i Windows, który nie jest tylko w celu nawiązania połączenia analizy dzienników, obsługuje ona również usługi Automatyzacja Azure umożliwia hosta roli procesu roboczego Runbook hybrydowego i rozwiązań do zarządzania takich jak śledzenia zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowy proces roboczy elementu Runbook, zobacz [procesu roboczego Runbook hybrydowego automatyzacji Azure](../automation/automation-offering-get-started.md#automation-architecture-overview).  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem należy przejrzeć następujące informacje, aby sprawdzić, czy zostały spełnione minimalne wymagania systemowe.
@@ -54,6 +50,9 @@ Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Wi
 
 * Windows Server 2008 Service Pack 1 (SP1) lub nowszy
 * Windows 7 z dodatkiem SP1 lub nowszy.
+
+> [!NOTE]
+> Agent dla systemu Windows obsługuje tylko zabezpieczeń TLS (Transport Layer) 1.0 i 1.1.  
 
 #### <a name="network-configuration"></a>Konfiguracja sieci
 Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla agenta systemu Windows do komunikowania się z analizy dzienników. Ruch jest wychodzący z sieci lokalnej z usługą analizy dzienników. 

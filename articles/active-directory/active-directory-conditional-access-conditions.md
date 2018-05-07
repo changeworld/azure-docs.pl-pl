@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b3096fbec6a7cc30d1ae3452b6c8b872cf3aec8f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Warunki dostępu warunkowego w usłudze Azure Active Directory 
 
@@ -38,8 +38,10 @@ Kombinacja warunki z kontroli dostępu w sieci reprezentuje zasady dostępu waru
 
 ![Kontrola](./media/active-directory-conditional-access-conditions/61.png)
 
-W tym artykule przedstawiono omówienie warunki i sposób ich użycia w zasadach dostępu warunkowego. 
 
+Warunki, które nie zostały skonfigurowane w zasadach dostępu warunkowego nie są stosowane. Niektóre warunki są [obowiązkowe](active-directory-conditional-access-best-practices.md#whats-required-to-make-a-policy-work) zastosować zasady dostępu warunkowego do środowiska. 
+
+W tym artykule przedstawiono omówienie warunki i sposób ich użycia w zasadach dostępu warunkowego. 
 
 ## <a name="users-and-groups"></a>Użytkownicy i grupy
 
@@ -110,7 +112,7 @@ Platformy urządzeń charakteryzuje się systemu operacyjnego, który działa na
 Aby uzyskać pełną listę obsługiwanych platform urządzeń, zobacz [warunku platformy urządzenia](active-directory-conditional-access-technical-reference.md#device-platform-condition).
 
 
-Typowy przypadek użycia dla tego warunku jest zasada, która ogranicza dostęp do aplikacji w chmurze do [zaufane urządzenia](active-directory-conditional-access-policy-connected-applications.md#trusted-devices). Aby uzyskać więcej scenariuszy, w tym warunku platformy urządzeń, zobacz [dostępu warunkowego na podstawie aplikacji usługi Azure Active Directory](active-directory-conditional-access-mam.md).
+Typowy przypadek użycia dla tego warunku jest zasada, która ogranicza dostęp do aplikacji w chmurze do [zarządzanych urządzeń](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Aby uzyskać więcej scenariuszy, w tym warunku platformy urządzeń, zobacz [dostępu warunkowego na podstawie aplikacji usługi Azure Active Directory](active-directory-conditional-access-mam.md).
 
 
 

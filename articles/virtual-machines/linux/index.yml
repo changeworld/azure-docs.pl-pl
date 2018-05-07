@@ -3,7 +3,7 @@ documentType: LandingData
 title: Maszyny wirtualne z systemem Linux
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: "Dokumentacja maszyny wirtualnej z systemem Linux na platformie Azure — samouczki i dokumentacja interfejsu API"
+  title: Dokumentacja maszyny wirtualnej z systemem Linux na platformie Azure — samouczki i dokumentacja interfejsu API
   meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
   services: virtual-machines\linux
   author: czeumault
@@ -14,13 +14,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 41531cf8ea7d4f94caafac0fd2ecaa1902eb8988
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 374e6a75d9ddfb5765418b1044dc525f14f86f67
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 05/03/2018
 abstract:
-  description: "Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów."
+  description: Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
   aside:
     image:
       alt: 
@@ -34,7 +34,7 @@ sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: "Dowiedz się, jak wdrożyć serwer sieci Web usług NGINX na maszynie wirtualnej z systemem Ubuntu:"
+    text: 'Dowiedz się, jak wdrożyć serwer sieci Web usług NGINX na maszynie wirtualnej z systemem Ubuntu:'
   - type: list
     style: icon48
     items:
@@ -53,57 +53,58 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: "Dowiedz się, jak wdrażać i skalować maszyny wirtualne z systemem Linux na platformie Azure i zarządzać nimi"
+    text: Dowiedz się, jak wdrażać i skalować maszyny wirtualne z systemem Linux na platformie Azure i zarządzać nimi.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-manage-vm\">Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi</a>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-manage-disks\">Tworzenie dysków maszyn wirtualnych i zarządzanie nimi</a></li>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Tworzenie dysków maszyn wirtualnych i zarządzanie nimi</a></li>
     - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Automatyzowanie konfiguracji maszyny wirtualnej</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-custom-images\">Tworzenie niestandardowych obrazów maszyn wirtualnych</a>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-availability-sets\">Tworzenie maszyn wirtualnych o wysokiej dostępności</a>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Tworzenie niestandardowych obrazów maszyn wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Tworzenie maszyn wirtualnych o wysokiej dostępności</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Tworzenie zestawu skalowania maszyn wirtualnych</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-load-balancer\">Równoważenie obciążenia maszyn wirtualnych</a>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-virtual-network\">Zarządzanie maszynami wirtualnymi i sieciami wirtualnymi</a>"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Równoważenie obciążenia maszyn wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Zarządzanie maszynami wirtualnymi i sieciami wirtualnymi</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Tworzenie kopii zapasowych maszyn wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-govern-resources">Nadzorowanie maszyn wirtualnych</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitorowanie i aktualizowanie maszyn wirtualnych</a>
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-azure-security\">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd\">Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub</a>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-build-deploy-jenkins\">Ciągła integracja/ciągłe dostarczanie za pomocą usług Team Services</a>"
-    - html: "Tworzenie stosu serwera internetowego z użyciem modelu <a href=\"/azure/virtual-machines/linux/tutorial-lamp-stack\">LAMP</a>, <a href=\"/azure/virtual-machines/linux/tutorial-lemp-stack\">LEMP</a> lub <a href=\"/azure/virtual-machines/linux/tutorial-mean-stack\">MEAN</a>"
-    - html: "<a href=\"/azure/virtual-machines/linux/tutorial-secure-web-server\">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>"
-- title: "Bezpłatne szkolenie wideo firmy PluralSight"
+    - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Zarządzanie zabezpieczeniami na maszynach wirtualnych</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Ciągła integracja/ciągłe dostarczanie za pomocą usług Team Services</a>
+    - html: Tworzenie stosu serwera internetowego z użyciem modelu <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> lub <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>
+- title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Zarządzanie infrastrukturą na platformie Azure"
+    - title: Zarządzanie infrastrukturą na platformie Azure
       href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: "Wprowadzenie do usługi Azure Virtual Machines"
+    - title: Wprowadzenie do usługi Azure Virtual Machines
       href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: "Wprowadzenie do monitorowania rozwiązania IaaS"
+    - title: Wprowadzenie do monitorowania rozwiązania IaaS
       href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: "Przykłady"
+- title: Przykłady
   items:
   - type: paragraph
-    text: "Wdrażanie pierwszej aplikacji na platformie Azure."
+    text: Wdrażanie pierwszej aplikacji na platformie Azure.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
     - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
-- title: "Odwołanie"
+- title: Dokumentacja
   items:
   - type: list
     style: cards
@@ -111,7 +112,7 @@ sections:
     items:
     - title: Wiersz polecenia
       html: <p><a href="/cli/azure/vm">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-    - title: "Języki"
+    - title: Języki
       html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
     - title: REST
       html: <p><a href="/rest/api/compute">Dokumentacja interfejsu API REST</a></p>

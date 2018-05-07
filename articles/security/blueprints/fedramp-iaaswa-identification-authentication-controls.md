@@ -1,5 +1,5 @@
 ---
-title: "Azure zabezpieczeń i zgodności plan - automatyzacji aplikacji sieci Web FedRAMP - identyfikacji i uwierzytelniania"
+title: Azure zabezpieczeń i zgodności plan - automatyzacji aplikacji sieci Web FedRAMP - identyfikacji i uwierzytelniania
 description: Automatyzacja aplikacji sieci Web FedRAMP - identyfikacji i uwierzytelniania
 services: security
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 21b5c453716f99be26c8dd6400bb3489477b4956
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="identification-and-authentication-ia"></a>Identyfikacji i uwierzytelniania (IA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasad identyfikacji i uwierzytelniania, którego dotyczy cel, zakres, ról, obowiązki, zarządzania zobowiązań, koordynacji między jednostki organizacyjnej i zgodności; i procedur w celu ułatwienia wykonania nadzór nad identyfikacją i zasady uwierzytelniania i skojarzone identyfikacji i uwierzytelniania; przegląda i aktualizuje bieżące zasady identyfikacji i uwierzytelniania [przypisania: zdefiniowane przez organizację częstotliwość]; i identyfikacji i uwierzytelniania procedury [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2** unikatowo identyfikuje system informacji i uwierzytelnia użytkowników w organizacji (lub procesów działających w imieniu użytkowników w organizacji).
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (1)** system informacji implementuje uwierzytelnianie wieloskładnikowe dla dostępu do sieci do kont uprzywilejowanych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (2)** system informacji implementuje uwierzytelnianie wieloskładnikowe dla dostępu do sieci, aby konta bez uprawnień.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (3)** system informacji implementuje uwierzytelnianie wieloskładnikowe na potrzeby dostępu lokalnego do kont uprzywilejowanych.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (4)** system informacji implementuje uwierzytelnianie wieloskładnikowe dla lokalnego dostępu do konta z niskimi uprawnieniami.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (5)** organizacja wymaga osób uwierzytelniania za pomocą poszczególnych uwierzytelniania podczas uwierzytelniania grupy jest stosowane.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (8)** system informacji implementuje mechanizmy uwierzytelniania powtarzania odporne na dostęp do sieci do kont uprzywilejowanych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (9)** system informacji implementuje mechanizmy uwierzytelniania powtarzania odporne na dostęp do sieci, aby konta bez uprawnień.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (11)** system informacji implementuje uwierzytelnianie wieloskładnikowe dla dostępu zdalnego do uprzywilejowanego i konta nieuprzywilejowanego tak, aby jednym z czynników jest udostępniana przez urządzenie oddzielona od systemu, aby uzyskać dostęp, a urządzenie spełnia [ Przypisania: zdefiniowane przez organizację siły wymagań mechanizmu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (12)** systemu informacji akceptuje i elektronicznie weryfikuje poświadczenia weryfikacji tożsamości osobistej (PIV).
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-3** unikatowo identyfikuje system informacji i uwierzytelnia [przypisania: określonych zdefiniowany przez organizację i/lub typów urządzeń] przed nawiązaniem [wybór (jeden lub więcej): lokalny; zdalnego; sieci] połączenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -193,13 +193,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ia-4a"></a>NIST 800-53 Control IA-4.a
+ ## <a name="nist-800-53-control-ia-4a"></a>NIST 800 53 kontroli IA-4.a
 
 #### <a name="identifier-management"></a>Identyfikator zarządzania
 
 **IA 4.a** organizacja zarządza identyfikatory systemu informacji przez odebranie autoryzacji z [przypisania: techniczną zdefiniowany przez organizację lub ról] można przypisać osoby, identyfikator grupy, roli lub urządzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -207,13 +207,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ia-4b"></a>NIST 800-53 Control IA-4.b
+ ## <a name="nist-800-53-control-ia-4b"></a>NIST 800 53 kontroli IA-4.b
 
 #### <a name="identifier-management"></a>Identyfikator zarządzania
 
 **IA-4.b** organizacja zarządza identyfikatory systemu informacji po wybraniu identyfikatora, który identyfikuje osoby, grupy, roli lub urządzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -221,13 +221,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ia-4c"></a>NIST 800-53 Control IA-4.c
+ ## <a name="nist-800-53-control-ia-4c"></a>NIST 800 53 kontroli IA-4.c
 
 #### <a name="identifier-management"></a>Identyfikator zarządzania
 
 **IA 4.c** organizacja zarządza informacji systemu identyfikatory, przypisując identyfikator do zamierzonego osoby, grupy, roli lub urządzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 4.d** organizacja zarządza identyfikatory systemu informacji przez zapobiegania ponownemu identyfikatory [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.e** Organizacja zarządza identyfikatory systemu informacji przez wyłączenie identyfikator po [przypisania: organizacji zdefiniowane okresie braku aktywności].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4 (4)** organizacja zarządza pojedyncze identyfikatory, przez który unikatowo identyfikuje poszczególnych jako [przypisania: właściwości zdefiniowane przez organizację identyfikowanie poszczególnych stanu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 5.a** organizacja zarządza wystawców uwierzytelnienia systemu informacji przy weryfikacji w ramach dystrybucji początkowego uwierzytelniania, tożsamości osoby, grupy, roli lub urządzenie odbierające wystawcy uwierzytelnienia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -291,13 +291,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ia-5b"></a>NIST 800-53 Control IA-5.b
+ ## <a name="nist-800-53-control-ia-5b"></a>NIST 800 53 kontroli IA-5.b
 
 #### <a name="authenticator-management"></a>Wystawca uwierzytelnienia zarządzania
 
 **IA-5.b** organizacja zarządza wystawców uwierzytelnienia systemu informacji ustanawiając zawartości początkowego uwierzytelniania dla uwierzytelnienia zdefiniowany przez organizację.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 5.c** organizacja zarządza wystawców uwierzytelnienia systemu informacji przez zapewnienie, że wystawców uwierzytelnienia mają wystarczającą długość mechanizm ich przeznaczenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -319,13 +319,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ia-5d"></a>NIST 800-53 Control IA-5.d
+ ## <a name="nist-800-53-control-ia-5d"></a>NIST 800 53 kontroli IA-5.d
 
 #### <a name="authenticator-management"></a>Wystawca uwierzytelnienia zarządzania
 
 **IA 5.d** organizacja zarządza wystawców uwierzytelnienia systemu informacji przez ustanawiania i wykonywania procedur administracyjnych dla dystrybucji początkowego uwierzytelniania, utracone naruszony lub uszkodzony wystawców uwierzytelnienia i cofnięcia wystawcy uwierzytelnienia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.e** Organizacja zarządza wystawców uwierzytelnienia systemu informacji przez zmianę domyślnej zawartości wystawców uwierzytelnienia przed instalacją systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 5.f** organizacja zarządza wystawców uwierzytelnienia systemu informacji ustanawiając minimalny i maksymalny okres istnienia ograniczenia i warunki ponownemu wystawców uwierzytelnienia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 5.g** organizacja zarządza wystawców uwierzytelnienia systemu informacji odświeżając zmiana/wystawców uwierzytelnienia [przypisania: organizacji zdefiniowane przez okres czasu według typu uwierzytelniania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 5.h** organizacja zarządza wystawców uwierzytelnienia systemu informacje, aby chronić zawartość uwierzytelniania z nieuprawnionym ujawnieniem i modyfikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA 5.i** organizacja zarządza wystawców uwierzytelnienia systemu informacji wymagając od osób do wykonania i o urządzeniach wdrożenia, określonych zabezpieczeń i ochrony do ochrony wystawców uwierzytelnienia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -403,13 +403,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-ia-5j"></a>NIST 800-53 Control IA-5.j
+ ## <a name="nist-800-53-control-ia-5j"></a>NIST 800 53 kontroli IA-5.j
 
 #### <a name="authenticator-management"></a>Wystawca uwierzytelnienia zarządzania
 
 **IA 5.j** organizacja zarządza wystawców uwierzytelnienia systemu informacji zmieniając wystawców uwierzytelnienia dla konta grupy/roli, kiedy członkostwo tych kont zmiany.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A IA-5 (1)** system informacji dla uwierzytelniania opartego na hasłach wymusza złożoności hasła [przypisania: mieszać zdefiniowany przez organizację wymagania dotyczącą uwzględniania wielkości liter, liczba znaków, wielkie litery, małe litery, cyfry i znaki specjalne, w tym minimalne wymagania dla każdego typu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **B IA-5 (1)** system informacji dla uwierzytelniania opartego na hasłach wymusza co najmniej następującą liczbę znaków zmienione podczas tworzenia nowego hasła: [przypisania: liczba zdefiniowanych przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **.C IA-5 (1)** system informacji dla uwierzytelniania opartego na hasłach przechowuje i przesyła tylko chronione kryptograficznie hasła.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **.D IA-5 (1)** system informacji dla uwierzytelniania opartego na hasłach wymusza stosowanie hasła minimalny i maksymalny okres istnienia ograniczenia [przypisania: zdefiniowane przez organizację numerów okres istnienia minimalny, okres istnienia maksymalną].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1).e** Informacje, do uwierzytelniania opartego na hasłach zabronione ponownemu użyciu hasła dla [przypisania: liczba zdefiniowanych przez organizację] generacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **.F IA-5 (1)** system informacji dla uwierzytelniania opartego na hasłach zezwala na korzystanie z tymczasowego hasła dla logowania systemu za pomocą natychmiastowe zmiany hasła stałe.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A IA-5 (2)** system informacji, do uwierzytelniania na podstawie infrastruktury kluczy publicznych weryfikuje certyfikaty, tworząc i weryfikowanie ścieżki certyfikacji do kotwicy zaufania zaakceptowane tym sprawdzanie informacji o stanie certyfikatów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) IA-5, b** systemu informacji dla uwierzytelniania opartego na infrastruktury kluczy publicznych wymusza uprawnienia dostępu do odpowiedniego klucza prywatnego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **.C IA-5 (2)** systemu informacje, do uwierzytelniania na podstawie infrastruktury kluczy publicznych mapuje uwierzytelniona tożsamość konta użytkownika lub grupy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **.D IA-5 (2)** systemu informacje, do uwierzytelniania na podstawie infrastruktury kluczy publicznych implementuje lokalnej pamięci podręcznej danych odwołania do obsługi odnajdywania ścieżki i weryfikacja w przypadku brakiem dostępu do informacji odwołania za pośrednictwem sieci.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (3)** organizacja wymaga rejestracji procesu odbierania [przypisania: typy zdefiniowane w organizacji i/lub określonych wystawców uwierzytelnienia] prowadzone [zaznaczenia: osobiście; w innej zaufanej] przed [przypisania: Urząd rejestrowania zdefiniowanych przez organizację] o autoryzacji przez [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (4)** organizacja stosuje automatycznego narzędzia do ustalenia, czy hasło wystawców uwierzytelnienia są wystarczająco silne do zaspokojenia [przypisania: wymagania zdefiniowane w organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (6)** organizacji chroni wystawców uwierzytelnienia proporcjonalnie do tej kategorii informacji, do którego wystawca uwierzytelnienia pozwala dostępu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (7)** organizacji zapewnia nie osadzone w aplikacji i skryptów dostępu lub przechowywane na klawiszy funkcyjnych niezaszyfrowane statycznych wystawców uwierzytelnienia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (8)** implementuje organizacji [przypisania: zabezpieczeń zdefiniowany przez organizację] ryzyko ujawnienia z powodu osoby posiadające kont w wielu systemach informacji zarządzania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (11)** system informacji uwierzytelniania tokenów sprzętu wykorzystuje mechanizmy, które spełniają [przypisania: wymagania zdefiniowane w organizacji tokenu jakości].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 [13]** informacji zabronione użycie pamięci podręcznej wystawców uwierzytelnienia po [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-6** systemu informacji ukrywa opinii informacje dotyczące uwierzytelniania podczas procesu uwierzytelniania, aby chronić informacje z eksploatacji/wykorzystanie przez nieautoryzowane osoby.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-7** system informacji implementuje mechanizmy do uwierzytelniania modułu kryptograficznego, które spełniają wymagania obowiązujących przepisów federalne, zamówienia wykonawczego, dyrektywy, zasad, przepisów, standardów i wskazówki dotyczące takich uwierzytelnianie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8** systemu informacji unikatowo identyfikuje i uwierzytelnia użytkowników w organizacji z systemem innym niż (lub procesów działających w imieniu użytkowników w organizacji z systemem innym niż).
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (1)** systemu informacji akceptuje i elektronicznie weryfikuje poświadczenia weryfikacji tożsamości osobistej (PIV) z innymi agencje federalne.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (2)** system informacji akceptuje tylko zatwierdzone FICAM poświadczeń innych firm.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (3)** organizacji jest stosowana tylko składniki systemowe zatwierdzone FICAM informacji w [przypisania: systemów informacje zdefiniowane przez organizację] do akceptowania poświadczeń innych firm.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (4)** systemu informacji odpowiada wystawiony FICAM profilów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

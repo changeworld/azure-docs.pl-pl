@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 72d2eb9e6cf235a90c5b1cf1c125fb6719c65317
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fe68797090926f2e0e0e2fbb66ba2bb7f6d940e7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopiowanie danych z Cassandra przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,12 +53,12 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które
 
 Cassandra połączone usługi, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagana |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| typ |Właściwość type musi mieć ustawioną: **Cassandra** |Tak |
-| host |Jeden lub więcej adresów IP lub nazw hostów serwerów Cassandra.<br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, aby nawiązać połączenie wszystkie serwery jednocześnie. |Tak |
+| type |Właściwość type musi mieć ustawioną: **Cassandra** |Yes |
+| host |Jeden lub więcej adresów IP lub nazw hostów serwerów Cassandra.<br/>Określ rozdzielaną przecinkami listę adresów IP lub nazw hostów, aby nawiązać połączenie wszystkie serwery jednocześnie. |Yes |
 | port |Port TCP używany przez serwer Cassandra nasłuchiwanie dla połączeń klienta. |Nie (wartość domyślna to 9042) |
-| authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych Cassandra.<br/>Dozwolone wartości to: **podstawowe**, i **anonimowe**. |Tak |
+| Typ authenticationType | Typ uwierzytelniania używany do łączenia z bazą danych Cassandra.<br/>Dozwolone wartości to: **podstawowe**, i **anonimowe**. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli authenticationType ustawiany jest podstawowy. |
 | hasło |Określ hasło dla konta użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak, jeśli authenticationType ustawiany jest podstawowy. |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
@@ -91,11 +91,11 @@ Cassandra połączone usługi, obsługiwane są następujące właściwości:
 
 Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje zobacz artykuł zestawów danych. Ta sekcja zawiera listę obsługiwanych przez zestaw danych Cassandra właściwości.
 
-Aby skopiować dane z Cassandra, ustaw właściwość Typ zestawu danych do **RelationalTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Cassandra, ustaw właściwość Typ zestawu danych do **CassandraTable**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagana |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| typ | Musi mieć ustawioną właściwość type zestawu danych: **CassandraTable** | Tak |
+| type | Musi mieć ustawioną właściwość type zestawu danych: **CassandraTable** | Yes |
 | przestrzeni kluczy |Nazwa schematu bazy danych Cassandra lub przestrzeni kluczy. |Nie (Jeśli określono parametr "zapytania" dla "CassandraSource") |
 | tableName |Nazwa tabeli w bazie danych Cassandra. |Nie (Jeśli określono parametr "zapytania" dla "CassandraSource") |
 
@@ -127,9 +127,9 @@ Pełną listę sekcje i właściwości dostępnych dla definiowania działań, z
 
 Aby skopiować dane z Cassandra, należy ustawić typ źródła w przypadku działania kopiowania do **CassandraSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
 
-| Właściwość | Opis | Wymagana |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| typ | Musi mieć ustawioną właściwość type źródła działania kopiowania: **CassandraSource** | Tak |
+| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **CassandraSource** | Yes |
 | query |Użyj niestandardowych zapytania można odczytać danych. |Zapytania SQL 92 lub CQL zapytania. Zobacz [odwołania CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Korzystając z zapytania SQL, określ **przestrzeni kluczy name.table nazwy** do reprezentowania tabeli ma dotyczyć zapytanie. |Nie (Jeśli określono "Nazwa_tabeli" i "przestrzeni kluczy" w zestawie danych). |
 | consistencyLevel |Poziom spójności Określa, jak wiele replik musi odpowiedzieć na żądanie odczytu przed zwróceniem danych do aplikacji klienckiej. Cassandra sprawdza określonej liczby replik danych do spełnienia żądania odczytu. Zobacz [Konfigurowanie spójność danych](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) szczegółowe informacje.<br/><br/>Dozwolone wartości to: **jeden**, **dwóch**, **trzy**, **KWORUM**, **wszystkie**, **LOCAL_ KWORUM**, **EACH_QUORUM**, i **LOCAL_ONE**. |Nie (domyślnie jest `ONE`) |
 
@@ -173,17 +173,17 @@ Podczas kopiowania danych z Cassandra, następujące mapowania są używane z Ca
 |:--- |:--- |
 | ASCII |Ciąg |
 | BIGINT |Int64 |
-| BLOB |Byte[] |
+| OBIEKT BLOB |Byte[] |
 | WARTOŚĆ LOGICZNA |Wartość logiczna |
 | DECIMAL |Decimal |
 | O PODWÓJNEJ PRECYZJI |Podwójnej precyzji |
-| FLOAT |Kawaler/panna |
+| FLOAT |Pojedyncze |
 | INET |Ciąg |
 | INT |Int32 |
 | TEKST |Ciąg |
-| ZNACZNIK CZASU |Data/godzina |
+| ZNACZNIK CZASU |DateTime |
 | TIMEUUID |Identyfikator GUID |
-| UUID |Identyfikator GUID |
+| IDENTYFIKATOR UUID |Identyfikator GUID |
 | VARCHAR |Ciąg |
 | VARINT |Decimal |
 
@@ -208,7 +208,7 @@ Tabele wirtualne odwołują się do danych w tabeli prawdziwe, włączanie dost�
 
 Na przykład następujące "ExampleTable" jest Cassandra tabeli bazy danych, która zawiera całkowitą kolumna klucza podstawowego o nazwie "pk_int", kolumna tekst o nazwie wartość kolumny listy, kolumny mapy i zestawu kolumn (o nazwie "StringSet").
 
-| pk_int | Wartość | Wyliczanie | Mapa | StringSet |
+| pk_int | Wartość | List | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"Przykładowa wartość 1" |["1", "2", "3"] |{"S1": "", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"przykład value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -242,7 +242,7 @@ W poniższych tabelach przedstawiono wirtualnego tabel, które renormalize danyc
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |Z |
+| 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
@@ -250,10 +250,10 @@ W poniższych tabelach przedstawiono wirtualnego tabel, które renormalize danyc
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Z |
+| 1 |A |
 | 1 |B |
 | 1 |C |
-| 3 |Z |
+| 3 |A |
 | 3 |E |
 
 ## <a name="next-steps"></a>Kolejne kroki

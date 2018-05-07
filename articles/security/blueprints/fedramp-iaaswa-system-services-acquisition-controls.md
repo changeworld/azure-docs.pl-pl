@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i zgodności plan - automatyzacji aplikacji sieci Web FedRAMP - systemu i nabywania usług"
-description: "Automatyzacja aplikacji FedRAMP sieci Web — System i nabywania usług"
+title: Zabezpieczeń platformy Azure i zgodności plan - automatyzacji aplikacji sieci Web FedRAMP - systemu i nabywania usług
+description: Automatyzacja aplikacji FedRAMP sieci Web — System i nabywania usług
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 490632a77fd9fb72bda075b996c40378a394f389
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="system-and-services-acquisition-sa"></a>System i nabywania usług (SA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasady nabycia systemu i usług, które dotyczy cel, zakres, ról, obowiązki, zobowiązań zarządzania Współpraca między jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji systemu i usług nabycia zasad i skojarzonego z nim systemu i usług przejęcie kontroli; przegląda i aktualizuje bieżący system i usług nabycia zasad [przypisania: zdefiniowany przez organizację częstotliwość]; i procedur nabycia systemu i usług [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 2.a** organizacji określa wymagania dotyczące systemu informacje lub usługa systemowa informacji zabezpieczeń informacji w planowaniu proces biznesowy/misji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 2.b** określa organizacji, dokumentów i przydziela zasoby wymagane do ochrony systemu informacje lub usługa systemowa informacji w ramach planowania kapitałowych i procesu kontroli inwestycji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 2.c** organizacji ustanawia odrębny elementu wiersza do ochrony informacji w organizacji programowania i budżetowych dokumentacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.a** organizacja zarządza przy użyciu systemu informacji [przypisania: zdefiniowany przez organizację systemu cyklu] który obejmuje zagadnienia dotyczące zabezpieczeń informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.b** organizacji definiuje i dokumenty informacji zabezpieczeń role i obowiązki w całym cyklu systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.c** organizacji identyfikuje osoby posiadające informacji zabezpieczeń role i obowiązki.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.d** organizacji integruje się z procesu zarządzania zagrożenie dla bezpieczeństwa informacji organizacyjnych operacje cyklu życia rozwoju systemu operacyjnego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 4** organizacji obejmuje następujące wymagania, opisy i kryteria, jawnie ani przez odwołanie, w kontrakcie nabycia informacje o systemie, składnik systemu lub usługa systemowa informacji zgodnie z zastosowanie federalne ustawowe, zamówienia wykonawczego, dyrektywy, zasady, przepisy, standardy, wytyczne, i potrzeb organizacji misji/firmy: funkcjonalności wymagania dotyczące zabezpieczeń wymagania dotyczące siły zabezpieczeń; wymagania dotyczące wiarygodności zabezpieczeń; wymagania związane z zabezpieczeniami dokumentacji; wymagania dotyczące ochrony dokumentacji związanych z zabezpieczeniami; Opis środowisko projektowe systemu informacji i środowisko, w którym system jest przeznaczony do działania; i kryteria akceptacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (1)** organizacja wymaga deweloperowi systemu informacji, składnik systemu lub usługa systemowa informacji Podaj opis funkcjonalności właściwości opcji zabezpieczeń, które mają zostać zastosowane.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (2)** organizacja wymaga dewelopera systemu informacji składnik systemu lub informacji usługi systemu, aby umożliwić projekt i implementację informacje dotyczące opcji zabezpieczeń, należy zastosować, który obejmuje: [zaznaczenia (lub jeden lub więcej): interfejsy związanych z zabezpieczeniami systemu zewnętrznego; ogólnymi procedurami projektowania; Projekt niskiego poziomu; źródła kodu lub sprzętu schematy; [Przypisania: Projekt/implementacji zdefiniowany przez organizację informacje]] w [przypisania: zdefiniowane przez organizację poziom szczegółowości].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (8)** organizacja wymaga deweloperowi utworzyć planu dla ciągłego monitorowania efektywność kontroli zabezpieczeń, który zawiera informacje o systemie, składnik systemu lub informacji usługi system [przypisania: zdefiniowany przez organizację poziom szczegółowości].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (9)** organizacja wymaga developer informacji systemu, składnik systemu lub usługa systemowa informacji do identyfikowania wczesnym etapie cyklu systemu, funkcje i portów, protokołów i przeznaczony dla usług Użycie organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (10)** organizacji jest stosowana tylko produkty technologii informacyjnej na liście produktów zatwierdzone FIPS 201 dla funkcji weryfikacji tożsamości osobistej (PIV) wdrożone w ramach systemów informacji organizacyjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.a** organizacji uzyskuje dokumentacji administratora systemu informatycznego, składnik systemu lub usługa systemowa informacji opisano konfigurację zabezpieczeń, instalacji i działania systemu, składnika lub usług. efektywne wykorzystanie oraz obsługi funkcji/mechanizmy zabezpieczeń; i znane luki w zabezpieczeniach dotyczące konfiguracji i stosowania administracyjnych (np. uprzywilejowany) funkcje.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.b** organizacji uzyskuje dokumentacji użytkownika w systemie informacji składnika systemowego lub informacji usługi systemu, który opisuje funkcje/mechanizmy zabezpieczeń dostępne dla użytkownika oraz wydajnie korzystać z tych funkcji zabezpieczeń /Mechanisms; metody interakcji z użytkownikiem, który umożliwia za pomocą systemu, składnika lub usługi w sposób bardziej bezpieczne. i jego obowiązki użytkownika w zachowaniu bezpieczeństwa systemu, składnika lub usługi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.c** organizacji dokumentów próbuje uzyskać informacji systemu, składnik systemu lub dokumentację usługi systemu informacji podczas takich dokumentacja jest niedostępny lub nie istnieje i ma [przypisania: akcje zdefiniowane przez organizację] w odpowiedzi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.d** organizacji chroni dokumentacji zgodnie z wymaganiami, zgodnie z strategii zarządzania ryzykiem.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-5.e** Organizacja dystrybuuje dokumentacji [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 8** organizacja stosuje zasady w specyfikacji, projektowania, tworzenia, wdrażania i modyfikacji systemu informacji inżynierii zabezpieczeń systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 9.a** organizacja wymaga zgodności z wymagań dotyczących zabezpieczeń informacji organizacyjnych oraz u dostawcy usług systemu zewnętrznego informacji [przypisania: opcje zabezpieczeń zdefiniowany przez organizację] zgodnie z obowiązujących przepisów federalne wykonawczego zleceń, dyrektywy, zasady, przepisy, standardów i wskazówki.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 9.b** definiuje i dokumentów dla instytucji rządowych nadzoru i użytkownika role i obowiązki w odniesieniu do usług systemu zewnętrznego informacji w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 9.c** organizacja stosuje [przypisania: zdefiniowane przez organizację procesów, metod i technik] do monitorowania zgodności kontroli zabezpieczeń przez dostawców usług zewnętrznych w sposób ciągły.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A SA-9 (1)** organizacja przeprowadza organizacyjnej oceny ryzyka przed nabyciem lub outsourcing dedykowanych informacji usług zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -361,13 +361,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ### <a name="nist-800-53-control-sa-9-1b"></a>NIST 800-53 Control SA-9 (1).b
+ ### <a name="nist-800-53-control-sa-9-1b"></a>NIST 800 53 kontroli SA-9 (1) b
 
 #### <a name="external-information-system-services--risk-assessments--organizational-approvals"></a>Usługi systemu zewnętrznego informacji | Oceny ryzyka / organizacyjnej zatwierdzenia
 
 **B SA-9 (1)** organizacji zapewnia nabycia lub outsourcing dedykowanych informacji usług zabezpieczeń zostanie zaakceptowane przez [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (2)** organizacja wymaga dostawców [przypisania: zdefiniowane przez organizację informacje zewnętrznych usług systemowych] do identyfikowania funkcje, protokołów, portów i innych usług wymaganych do korzystania z takich usług.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (4)** organizacja stosuje [przypisania: zabezpieczeń zdefiniowany przez organizację] Aby upewnić się, że interesy [przypisania: dostawców usług zewnętrznych zdefiniowany przez organizację] są spójne z i uwzględnia organizacji zainteresowań.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (5)** organizacji ogranicza lokalizacji [wybór (jeden lub więcej): przetwarzania informacji; informacji/danych informacji usług systemowych] do [przypisania: zdefiniowany przez organizację lokalizacje] na podstawie [przypisania: wymagania zdefiniowane w organizacji lub warunków].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.a** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji do wykonania podczas systemu, składnika lub produktu usługi zarządzania konfiguracją [wybór (jeden lub więcej): projekt; programowanie ; Implementacja; Operacja].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.b** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji dokumentu, zarządzanie i sterowanie integralność zmiany [przypisania: elementy zdefiniowane w organizacji konfiguracji w obszarze Zarządzanie konfiguracją].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.c** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji implementować tylko zatwierdzone organizacji zmiany do systemu, składnika lub usługi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.d** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji dokumentów zatwierdzone zmiany do systemu, składnika lub usługi i potencjalny wpływ na środowisko zabezpieczeń o zmianach.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.e** Organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji do śledzenia luk w zabezpieczeniach i rozpoznawania luka w ramach systemu, składnika lub usługi, a raport wyników [przypisania: definicja organizacji personel].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10 (1)** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji włączyć weryfikację integralności składników oprogramowania układowego i oprogramowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.a** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji do tworzenia i wdrażania planu oceny zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.b** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji do wykonania [wybór (jeden lub więcej): jednostka integracji systemu; regresji] testowanie/oceny w [przypisania: głębokość zdefiniowany przez organizację i pokrycia];
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.c** organizacja wymaga deweloperowi systemu informacji, składnik systemu lub usługa systemowa informacji przedstawić dowody wykonanie planu oceny zabezpieczeń i wyników testowania/oceny zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.d** organizacja wymaga deweloperowi systemu informacji, składnik systemu lub usługa systemowa informacji należy wdrożyć proces korygowania luka możliwe do zweryfikowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.e** Organizacja wymaga deweloperowi systemu informacji, składnik systemu lub usługa systemowa informacji Popraw wady rozpoznane podczas testowania/oceny zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (1)** organizacja wymaga dewelopera systemu informacji, składnik systemu lub informacji usługa systemowa fragmentów statycznych code analysis z narzędzi identyfikujących typowych błędów i wyniki analizy dokumentu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (2)** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji zagrożeń i analizy luki w zabezpieczeniach i kolejne testowania/oceny systemu skompilowany jako składnik, lub Usługa.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (8)** organizacja wymaga dewelopera systemu informacji, składnik systemu lub informacji usługa systemowa fragmentów dynamiczny kod analizy z narzędzi identyfikujących typowych błędów i wyniki analizy dokumentu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 12** organizacji chroni przed zagrożeniami łańcucha dostaw informacje o systemie, składnik systemu lub usługi systemu informacji poprzez zastosowanie [przypisania: zabezpieczeń zdefiniowany przez organizację] jako część kompleksowe, Strategia zabezpieczeń obrony w zakres zbieranych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 15.a** organizacja wymaga dewelopera systemu informacji składnika systemowego lub informacji usługi system w celu postępuj zgodnie z udokumentowanymi programowanie Przetwarzaj tego jawnie dotyczy wymagań w zakresie zabezpieczeń; identyfikuje normy i narzędzia używane w procesie tworzenia; dokumenty opcje określonego narzędzia i konfiguracje narzędzia używane w procesie rozwoju; dokumenty, zarządza i zapewnia integralność zmiany procesu i/lub narzędzi służących do rozwoju.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 15.b** organizacji monitoruje proces tworzenia, standardy, narzędzia i narzędzie Opcje/konfiguracje [przypisania: zdefiniowane przez organizację częstotliwość] Aby ustalić, czy Proces standardy, narzędzi i opcji/konfiguracji narzędzia wybrane i zastosować spełnia [przypisania: wymagania dotyczące zabezpieczeń zdefiniowany przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 16** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji zapewnienie [przypisania: organizacji zdefiniowanych szkolenia] na prawidłowe użycie i operacja implementowane zabezpieczeń Funkcje, kontrolek, i/lub mechanizmów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 17.a** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji do tworzenia projektu specyfikację i zabezpieczeń architekturę, która jest zgodne z i niezawodnych organizacji Architektura zabezpieczeń, który jest ustanowione w ciągu i jest integralną częścią architektury przedsiębiorstwa w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 17.b** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji do tworzenia projektu specyfikacji i zabezpieczenia architektury opisujący dokładnie i całkowicie wymaganych funkcje zabezpieczeń i alokacji kontroli zabezpieczeń między składnikami fizycznymi i logicznymi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 17.c** organizacja wymaga dewelopera systemu informacji, składnik systemu lub usługa systemowa informacji specyfikację projektu i Architektura zabezpieczeń, określającym poszczególne funkcje zabezpieczeń, mechanizmy i usług współdziałają ze sobą zapewnienie funkcje zabezpieczeń wymagane oraz ujednoliconego podejścia do ochrony.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

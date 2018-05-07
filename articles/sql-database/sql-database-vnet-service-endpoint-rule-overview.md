@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Użyj punktów końcowych usługi sieci wirtualnej i reguł bazy danych SQL Azure
 
@@ -207,7 +207,7 @@ Błąd połączenia 40914 odnosi się do *zasady sieci wirtualnej*, jak określo
 
 #### <a name="error-40615"></a>Błąd 40615
 
-*Tekst komunikatu:* nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient o adresie IP "{1}" nie jest dozwolony dostęp do serwera.
+*Tekst komunikatu:* nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient o adresie IP{1}"nie jest dozwolony dostęp do serwera.
 
 *Opis błędu:* klient próbuje nawiązać połączenie z adresu IP, który nie ma autoryzacji do łączenia się z serwerem bazy danych SQL Azure. Zapora serwera nie ma adresu IP adres reguły umożliwiającą klientów do komunikacji z danego adresu IP do bazy danych SQL.
 
@@ -334,7 +334,7 @@ Funkcja reguły sieci wirtualnej dla bazy danych SQL Azure stały się dostępne
 
 [vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
 
-[vpn-gateway-indexmd-608y]: ../vpn-gateway/index.md
+[vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 
 

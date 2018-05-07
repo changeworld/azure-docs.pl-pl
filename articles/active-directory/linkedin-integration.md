@@ -9,21 +9,24 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/02/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ab59033fd032cfccd2602a1a518e51a08e09581
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn konto połączenia dla usług i aplikacji firmy Microsoft
 W tym artykule możesz dowiedzieć się, jak do zarządzania połączeniami konta LinkedIn dla dzierżawy w Centrum administracyjnym usługi Azure Active Directory (Azure AD). 
 
 > [!IMPORTANT]
 > Funkcja połączenia konta LinkedIn jest obecnie trwa wprowadzanie do dzierżaw usługi Azure AD. Gdy jest wycofywany dla Twojej dzierżawy, jest włączona domyślnie. Nie jest dostępna dla klientów dla instytucji rządowych Stanów Zjednoczonych i organizacji z usługą Exchange Online skrzynek pocztowych hostowanych w Australii, Kanada, Chiny, Francja, Niemczech, Indie, Korea Południowa, Zjednoczone Królestwo, Japonii i Republika Południowej Afryki. Obsługa tych lokalizacji skrzynki pocztowej będzie dostępna wkrótce.  Dla aktualnego widoku wdrożenia informacji, zobacz [Office 365 plan](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) strony.
+
+## <a name="benefit-to-users"></a>Korzyści dla użytkowników
+Po użytkownicy łączyć swoje konta LinkedIn, LinkedIn informacje są używane do wyświetlenia spersonalizowanych informacji i funkcji w różnych aplikacji firmy Microsoft lub usług. Użytkownicy mogą zobaczyć informacjami na temat osoby się, że funkcje te działają w karcie profil firmy Microsoft, nawet jeśli te osoby spoza organizacji. Wraz z upływem czasu ich doświadczeń LinkedIn również staną się bardziej odpowiednie i dostosowane do ich pracy. Na przykład, LinkedIn może sugerować nowe połączenia na podstawie użytkowników pracować z lub na podstawie szczegółowych informacji o osobach kalendarzach danego dnia.
 
 ## <a name="how-linkedin-account-connections-appear-to-the-user"></a>Wygląd LinkedIn konto połączenia dla użytkownika
 Połączenia konta LinkedIn umożliwiają użytkownikom informacje publiczne LinkedIn profil w ramach niektóre aplikacje firmy Microsoft. Użytkownicy w Twojej dzierżawie można połączyć z siecią firmową LinkedIn i firmy Microsoft lub szkolnego konta, aby wyświetlić dodatkowe informacje o profilu LinkedIn. Aby uzyskać więcej informacji, zobacz [LinkedIn informacji i funkcji w usługach i aplikacji firmy Microsoft](https://go.microsoft.com/fwlink/?linkid=850740).

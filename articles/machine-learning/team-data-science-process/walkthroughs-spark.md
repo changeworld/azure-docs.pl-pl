@@ -1,24 +1,24 @@
 ---
-title: "Instruktaże Spark w usłudze HDInsight przy użyciu PySpark i Scala na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Przykłady zespołu procesu analizy danych, które opisano PySpark i Scala na Azure HDInsight Spark analizy predykcyjnej."
+title: Instruktaże Spark w usłudze HDInsight przy użyciu PySpark i Scala na platformie Azure | Dokumentacja firmy Microsoft
+description: Przykłady zespołu procesu analizy danych, które opisano PySpark i Scala na Azure HDInsight Spark analizy predykcyjnej.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 06498f55b38be98441ddceb8f1667c89d257f8fd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark nauki wskazówki dotyczące danych przy użyciu PySpark i Scala na platformie Azure
 
@@ -45,7 +45,7 @@ Zobacz [zaawansowane Eksploracja danych i modelowania z platformy Spark](spark-a
 [Scala użycia z łącznikiem Spark on Azure](scala-walkthrough.md) wskazówki korzysta z nowego Jorku taksówkach danych do prognozowania czy otrzymuje porady i zakres kwoty oczekiwano mają zostać zapłacone. Widoczny jest sposób użycia Scala maszyny nadzorowanego uczenia zadania z maszyną Spark uczenia biblioteki (MLlib) i pakiety SparkML w klastrze Spark w usłudze HDInsight Azure. Przeprowadza użytkownika przez zadania, które stanowią [proces nauki danych](http://aka.ms/datascienceprocess): wprowadzanie danych i eksploracja, wizualizacji engineering funkcji, modelowania i zużycia modelu. Modele wbudowane obejmują Regresja logistyczna i liniowych, losowe lasów i gradientu boosted drzewa.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Omówienie najważniejsze składniki wchodzące w skład procesu nauki danych zespołu, zobacz [Omówienie procesu nauki danych zespołu](overview.md).
 

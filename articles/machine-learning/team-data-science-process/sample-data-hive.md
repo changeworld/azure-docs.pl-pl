@@ -1,9 +1,9 @@
 ---
-title: "Przykładowe dane w tabelach platformy Azure HDInsight Hive | Dokumentacja firmy Microsoft"
-description: "Dół próbkowania dane w tabelach Hive w usłudze Azure HDInsight (Hadopop)"
+title: Przykładowe dane w tabelach platformy Azure HDInsight Hive | Dokumentacja firmy Microsoft
+description: Dół próbkowania dane w tabelach Hive w usłudze Azure HDInsight (Hadopop)
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: f31e8d01-0fd4-4a10-b1a7-35de3c327521
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: d765c2adc8a3aa77d903490875c7f8ad622ef4d2
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: b40aae9d494f3e7ebeae56fcad48f0ff47798bbc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Przykładowe dane w tabelach usługi Azure HDInsight Hive
 W tym artykule opisano sposób dół przykładowe dane przechowywane w tabelach platformy Azure HDInsight Hive za pomocą zapytań programu Hive, aby zmniejszyć jego rozmiar łatwiejsze do analizy. Obejmuje ono trzy metody popularly używane próbkowania:
@@ -39,10 +39,10 @@ To zadanie próbkowania jest krokiem w [zespołu danych nauki procesu (TDSP)](ht
 ## <a name="how-to-submit-hive-queries"></a>Temat dotyczący przesyłania zapytań programu Hive
 Można przesłać zapytań programu hive z wiersza polecenia konsoli Hadoop na węzła głównego klastra usługi Hadoop. Aby to zrobić, zaloguj się do węzła głównego klastra usługi Hadoop, otwórz konsolę wiersza polecenia platformy Hadoop i wysyłanie zapytań programu Hive z tego miejsca. Aby uzyskać instrukcje dotyczące przesyłania zapytań programu Hive w konsoli usługi Hadoop wiersza polecenia, zobacz [sposobu przesyłania zapytań Hive](move-hive-tables.md#submit).
 
-## <a name="uniform"></a>Jednolite losowego pobierania próbek
+## <a name="uniform"></a> Jednolite losowego pobierania próbek
 Jednolite próbkowania losowe oznacza, że każdego wiersza w zestawie danych ma taki sam sposób przez cały czas jest próbkowany. Można ją wdrożyć na dodaniu rand() dodatkowe pola zestawu danych wewnętrzny zapytania "select" i w zapytaniu "Wybierz" zewnętrzne tego warunku losowe pola.
 
-Poniżej przedstawiono przykładowe zapytanie:
+Oto przykładowe zapytanie:
 
     SET sampleRate=<sample rate, 0-1>;
     select
@@ -57,7 +57,7 @@ Poniżej przedstawiono przykładowe zapytanie:
 
 W tym miejscu `<sample rate, 0-1>` określa część rekordów, które użytkownicy mają do próbkowania.
 
-## <a name="group"></a>Losowe próbkowania według grup
+## <a name="group"></a> Losowe próbkowania według grup
 Podczas pobierania próbek danych podzielone na kategorie, warto uwzględnić lub wykluczyć wszystkich wystąpień dla niektórych wartości zmiennej podzielone na kategorie. Tego rodzaju próbkowania jest nazywany "próbkowania przez grupę". Na przykład, jeśli masz podzielone na kategorie zmiennej "*stanu*", która zawiera wartości, takie jak NY, MA urzędu certyfikacji, NJ i PA, rekordy z każdym ze stanów w się ze sobą, czy są pobierane, czy nie.
 
 Poniżej przedstawiono przykładowe zapytanie tej próbki przez grupę:
@@ -89,7 +89,7 @@ Poniżej przedstawiono przykładowe zapytanie tej próbki przez grupę:
 ## <a name="stratified"></a>Stratyfikowana pobierania próbek
 Losowego pobierania próbek jest uporządkować względem zmienną podzielone na kategorie, gdy próbki otrzymane wartości podzielone na kategorie, które znajdują się w tej samej stosunek co w populacji nadrzędnej. Przy użyciu w tym samym przykładzie, jako powyżej, załóżmy, że dane mają następujące uwagi przez Państwa: NJ ma 100 uwagi, NY ma 60 uwag, a WA ma 300 uwag. Jeśli określisz częstotliwość próbkowania stratyfikowana jako 0,5, następnie otrzymaną próbkę ma około 50, 30 i 150 obserwacji NJ, NY i WA odpowiednio.
 
-Poniżej przedstawiono przykładowe zapytanie:
+Oto przykładowe zapytanie:
 
     SET sampleRate=<sample rate, 0-1>;
     select

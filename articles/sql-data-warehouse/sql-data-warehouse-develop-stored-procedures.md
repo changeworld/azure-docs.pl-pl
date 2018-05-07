@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5659e8f29d87c48c447a5cb81c836b0be9dabd45
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 0ad8a599065a44469a3151813972b3d2561782c6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Korzystanie z procedur składowanych w magazynie danych SQL
 Wskazówki dotyczące implementowania procedur przechowywanych w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
@@ -31,7 +31,7 @@ Procedury składowane są to dobry sposób na hermetyzując kodu SQL; zapisanie 
 
 Magazyn danych SQL zawiera implementację uproszczony i zoptymalizowany procedury składowanej. Największych różnicę w porównaniu z programem SQL Server jest, że procedura składowana nie jest wstępnie skompilowanego kodu. W magazynie danych czas kompilacji jest mała, w odróżnieniu od czasu, jaki zajmuje do wykonywania kwerend do dużych ilości danych. Więcej koniecznie upewnij się, że kod procedury składowanej poprawnie jest zoptymalizowana pod kątem duże kwerendy. Celem jest zapisać godzin, minut i sekund, nie milisekund. Dlatego jest bardziej użyteczne do procedury składowane można traktować jako kontenery logiki SQL.     
 
-Magazyn danych SQL wykonuje procedury przechowywanej, instrukcje SQL są przeanalizować, translacji i zoptymalizowany w czasie wykonywania. W trakcie tego procesu każda instrukcja jest konwertowany na zapytań rozproszonych. Kod SQL y wykonywane względem danych różni się od zapytania przesłane.
+Magazyn danych SQL wykonuje procedury przechowywanej, instrukcje SQL są przeanalizować, translacji i zoptymalizowany w czasie wykonywania. W trakcie tego procesu każda instrukcja jest konwertowany na zapytań rozproszonych. Kod SQL, który jest wykonywany z danymi różni się od zapytania przesłane.
 
 ## <a name="nesting-stored-procedures"></a>Procedury przechowywane zagnieżdżenia
 Procedury składowane wywołania innych procedur składowanych lub wykonać dynamicznej SQL, następnie wewnętrznej procedury składowanej lub wywołanie kodu jest uznawany za zagnieżdżony.
@@ -76,7 +76,6 @@ Oto one:
 * numerowane procedury składowane
 * rozszerzone procedury składowane
 * Procedur składowanych CLR
-* 
 * Opcja szyfrowania
 * opcji replikacji
 * Parametry przechowywanymi w tabeli

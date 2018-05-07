@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2017
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Udostępnić użytkownikom Azure stosu bazy danych SQL
 Jako administrator chmury Azure stosu tworzenia oferty, które pozwalają użytkownikom (dzierżawcami) Utwórz bazy danych SQL, które mogą używać z ich chmury natywnych aplikacji, witryn sieci Web i obciążeń. Zapewniając użytkownikom tych baz danych niestandardowych, na żądanie, oparte na chmurze, można je zapisać czasu i zasobów. Aby to skonfigurować, obejmują:
@@ -34,8 +34,8 @@ Jako administrator chmury Azure stosu tworzenia oferty, które pozwalają użytk
 
 Proces wdrażania opisano szczegółowo w [użycia baz danych w artykule stosu Azure](azure-stack-sql-resource-provider-deploy.md)i obejmuje następujące podstawowe kroki:
 
-1. [Wdrażanie dostawcy zasobów SQL]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2. [Weryfikacja wdrożenia]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
+1. [Wdrażanie dostawcy zasobów SQL](azure-stack-sql-resource-provider-deploy.md).
+2. [Weryfikacja wdrożenia](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
 3. Zapewniają pojemność, łącząc się z serwerem SQL hostingu.
 
 ## <a name="create-an-offer"></a>Tworzenie oferty
