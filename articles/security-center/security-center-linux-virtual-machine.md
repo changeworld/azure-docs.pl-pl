@@ -1,11 +1,11 @@
 ---
-title: "Usługi Azure Security Center i Azure Virtual Machines z systemem Linux | Microsoft Docs"
-description: "Ten dokument pomaga zrozumieć, jak usługa Azure Security Center chroni maszyny wirtualne Azure Virtual Machines."
+title: Usługi Azure Security Center i Azure Virtual Machines z systemem Linux | Microsoft Docs
+description: Ten dokument pomaga zrozumieć, jak usługa Azure Security Center chroni maszyny wirtualne Azure Virtual Machines.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e08444cbfdb095c79d164de06dda078c6a242b3f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Usługi Azure Security Center i Azure Virtual Machines z systemem Linux
 Usługa [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -32,7 +32,7 @@ Usługa Security Center pomaga chronić dane maszyny wirtualnej na platformie Az
 * Informacje o brakujących zabezpieczeniach systemu i aktualizacjach krytycznych
 * Zalecenia dotyczące ochrony punktów końcowych
 * Weryfikowanie szyfrowania dysków
-* Ataki oparte na sieci (opcja dostępna tylko w [wersji standardowej](https://azure.microsoft.com/en-us/pricing/details/security-center/))
+* Ataki oparte na sieci (opcja dostępna tylko w [wersji standardowej](https://azure.microsoft.com/pricing/details/security-center/))
 
 Oprócz wspomagania ochrony maszyn wirtualnych platformy Azure usługa Security Center zapewnia także monitorowanie zabezpieczeń i zarządzanie nimi w zakresie usług Cloud Services, App Services, Virtual Networks i innych. 
 
