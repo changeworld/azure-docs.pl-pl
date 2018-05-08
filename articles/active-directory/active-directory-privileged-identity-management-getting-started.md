@@ -1,25 +1,23 @@
 ---
 title: Wprowadzenie do aplikacji Azure AD Privileged Identity Management | Microsoft Docs
-description: "Informacje o sposobie zarządzania uprzywilejowanymi tożsamościami przy użyciu aplikacji Azure Active Directory Privileged Identity Management w witrynie Azure Portal."
+description: Informacje o sposobie zarządzania uprzywilejowanymi tożsamościami przy użyciu aplikacji Azure Active Directory Privileged Identity Management w witrynie Azure Portal.
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 2299db7d-bee7-40d0-b3c6-8d628ac61071
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2017
-ms.author: barclayn
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 9f51daabef7d1e02917869e4e6943b8ea28b56f5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7137d7ba53c055c869bd967a04085d0c65aec683
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Rozpoczynanie używania aplikacji Azure AD Privileged Identity Management
 

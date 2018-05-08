@@ -1,11 +1,11 @@
 ---
-title: "Obsługa alertów zabezpieczeń w usłudze Azure Security Center | Microsoft Docs"
-description: "Ten dokument wyjaśnia, jak korzystać z funkcji usługi Azure Security Center do obsługi zdarzeń naruszenia zabezpieczeń."
+title: Obsługa alertów zabezpieczeń w usłudze Azure Security Center | Microsoft Docs
+description: Ten dokument wyjaśnia, jak korzystać z funkcji usługi Azure Security Center do obsługi zdarzeń naruszenia zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: yurid
-ms.openlocfilehash: a302f8cb2555eef469a24da2523fdd9b97cc5730
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f87edc0717631775acec315dda61323b8fa5909
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Obsługa zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center
 Klasyfikowanie i badanie alertów zabezpieczeń może być czasochłonne nawet dla najbardziej doświadczonego analityka bezpieczeństwa, a wielu nie wie nawet od czego zacząć. Używając [analizy](security-center-detection-capabilities.md) w celu powiązania informacji z różnych [alertów zabezpieczeń](security-center-managing-and-responding-alerts.md), usługa Security Center może dostarczyć pojedynczego widoku kampanii ataku i wszystkich powiązanych alertów — dzięki temu można szybko dowiedzieć się, jakie akcje zostały podjęte przez osobę atakującą i na jakie zasoby miały wpływ.

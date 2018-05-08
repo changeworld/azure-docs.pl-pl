@@ -1,11 +1,11 @@
 ---
-title: "Analiza zagrożeń w usłudze Azure Security Center | Microsoft Docs"
-description: "Dowiedz się, jak wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerach przy użyciu funkcji analizy zagrożeń w usłudze Azure Security Center."
+title: Analiza zagrożeń w usłudze Azure Security Center | Microsoft Docs
+description: Dowiedz się, jak wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerach przy użyciu funkcji analizy zagrożeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: b5bdeb1c70893c2477413df02c7b1a4a07999e93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analiza zagrożeń w usłudze Azure Security Center
 Ten artykuł ułatwia korzystanie z analizy zagrożeń usługi Azure Security Center w celu rozwiązywania problemów związanych z zabezpieczeniami.
@@ -66,7 +66,7 @@ Aby wyświetlić bieżącą analizę zagrożeń dla środowiska, musisz najpierw
 
     b.  **Kraj pochodzenia**. Zawiera zagregowane informacje o ruchu sieciowym zgrupowane według lokalizacji źródłowej.
 
-    c.  **Lokalizacja zagrożeń**. Ułatwia ustalenie, z których miejsc na świecie są wysyłane komunikaty do Twojego środowiska. Na pokazanej mapie strzałki pomarańczowa (ruch przychodzący) i czerwona (ruch wychodzący) wskazują kierunki ruchu. Po wybraniu jednej z tych strzałek zostanie wyświetlony typ zagrożeń i kierunek ruchu.
+    d.  **Lokalizacja zagrożeń**. Ułatwia ustalenie, z których miejsc na świecie są wysyłane komunikaty do Twojego środowiska. Na pokazanej mapie strzałki pomarańczowa (ruch przychodzący) i czerwona (ruch wychodzący) wskazują kierunki ruchu. Po wybraniu jednej z tych strzałek zostanie wyświetlony typ zagrożeń i kierunek ruchu.
 
     d.  **Szczegóły zagrożenia**. Zawiera więcej informacji na temat zagrożenia zaznaczonego na mapie.
 

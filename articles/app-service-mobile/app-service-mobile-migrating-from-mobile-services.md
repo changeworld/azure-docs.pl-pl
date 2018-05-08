@@ -372,7 +372,7 @@ Teraz, gdy aplikacja jest migrowana do usługi App Service, istnieją nawet wię
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[Cennik usługi aplikacji]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service — ceny]: https://azure.microsoft.com/pricing/details/app-service/
 [usługi Application Insights]: ../application-insights/app-insights-overview.md
 [Automatyczne skalowanie]: ../app-service/web-sites-scale.md
 [usłudze Azure App Service]: ../app-service/app-service-web-overview.md

@@ -1,11 +1,11 @@
 ---
-title: "Reagowanie na zdarzenia naruszenia zabezpieczeń w usłudze Azure Security Center | Microsoft Docs"
-description: "Ten dokument przedstawia sposób używania usługi Azure Security Center w scenariuszach reagowania na zdarzenia."
+title: Reagowanie na zdarzenia naruszenia zabezpieczeń w usłudze Azure Security Center | Microsoft Docs
+description: Ten dokument przedstawia sposób używania usługi Azure Security Center w scenariuszach reagowania na zdarzenia.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 95af26a655e72a9cc370f339da5ecedbed441997
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: cca874c0511135b0b041d5d38a3986905b671393
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Używanie usługi Azure Security Center do reagowania na zdarzenia
 Wiele organizacji uczy się reagowania na zdarzenia zabezpieczeń dopiero wtedy, gdy zostaną celem ataku. Aby zmniejszyć koszty i straty, ważne jest dysponowanie planem reagowania na takie zdarzenia jeszcze przed wystąpieniem ataku. Usługi Azure Security Center można używać na różnych etapach reagowania na zdarzenia.

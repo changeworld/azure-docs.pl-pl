@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie tożsamości i dostępu w usłudze Azure Security Center | Microsoft Docs"
-description: "Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami i dostępem w usłudze Azure Security Center w celu monitorowania dostępu użytkowników i rozwiązywania problemów związanych z tożsamościami."
+title: Monitorowanie tożsamości i dostępu w usłudze Azure Security Center | Microsoft Docs
+description: Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami i dostępem w usłudze Azure Security Center w celu monitorowania dostępu użytkowników i rozwiązywania problemów związanych z tożsamościami.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: 842045fbcb5b4f661cc006a207f4087370a7b4ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ee263ef8fb0f20049215eda53e0d58a45342b7e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -56,7 +56,7 @@ Aby wyświetlić bieżące działania związane z tożsamościami i dostępem, m
 
     b. **Nieudane logowania**. Pomaga szybko określić główne przyczyny nieudanych prób logowania. Przedstawia listę 10 głównych kont, dla których nie powiodła się większość prób logowania.
 
-    c. **Logowania w czasie**. Pomaga szybko zidentyfikować liczbę logowań w dłuższym czasie. Jest wyświetlana lista najważniejszych prób logowania do konta komputera.
+    d. **Logowania w czasie**. Pomaga szybko zidentyfikować liczbę logowań w dłuższym czasie. Jest wyświetlana lista najważniejszych prób logowania do konta komputera.
     
 Niezależnie od tego, który kafelek wybierzesz, wyświetlany pulpit nawigacyjny jest oparty na zapytaniu przeszukiwania dzienników. Jedyną różnicą jest typ zapytania i wynik. Nadal możesz wybrać element, na przykład komputer, i wyświetlić odpowiednie dane. 
 

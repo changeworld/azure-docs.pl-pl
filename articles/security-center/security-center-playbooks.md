@@ -3,7 +3,7 @@ title: Element playbook zabezpieczeń w usłudze Azure Security Center | Microso
 description: Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu automatyzowania odpowiedzi na zdarzenia związane z zabezpieczeniami.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
 editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: yurid
-ms.openlocfilehash: 76f2666df76b802c175eadc38d2ac4100799ceae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1d6fee9cb46fcfec32c0ecdb91eec09a56063c4e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Element playbook zabezpieczeń w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z elementów playbook zabezpieczeń w usłudze Azure Security Center w celu reagowania na zdarzenia związane z zabezpieczeniami.

@@ -1,11 +1,11 @@
 ---
-title: "Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń | Microsoft Docs"
-description: "Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń"
+title: Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń | Microsoft Docs
+description: Samouczek dotyczący usługi Azure Security Center — Definiowanie i ocenianie zasad zabezpieczeń
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: yurid
-ms.openlocfilehash: a740cec8a3177e0de5f33b362d5c4956671cd427
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Samouczek: Definiowanie i ocenianie zasad zabezpieczeń
 Usługa Security Center pomaga zapewnić zgodność z wymaganiami dotyczącymi zabezpieczeń określonymi przez firmę lub przepisy, definiując pożądaną konfigurację Twoich obciążeń przy użyciu zasad zabezpieczeń. Gdy zdefiniujesz zasady dla Twoich subskrypcji platformy Azure oraz dostosujesz je do typu obciążenia lub wrażliwości danych, usługa Security Center może podać zalecenia dotyczące zabezpieczeń zasobów obliczeniowych, sieciowych, SQL i magazynowych oraz zasobów aplikacji. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: victorh
-ms.openlocfilehash: abe48c484a232eff6f7ec1cd68e7010353d488d5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 28b200fc3fceac0995248b68963b9a79856262a7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurowanie usługi App Service Web Apps za pomocą usługi Application Gateway 
 
@@ -159,4 +159,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak skonfigurować przekierowanie, odwiedzając stronę [Konfigurowanie przekierowania dla usługi Application Gateway przy użyciu programu PowerShell](application-gateway-configure-redirect-powershell.md).
+Dowiedz się, jak skonfigurować przekierowanie, odwiedzając stronę [Konfigurowanie przekierowania dla usługi Application Gateway przy użyciu programu PowerShell](redirect-overview.md).

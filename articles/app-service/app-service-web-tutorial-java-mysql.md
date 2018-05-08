@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0f88ca7c0353c4ab63bf4f6ca5509b0e4504929f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 46e222ffe40db186343250efc71e20d41adbc285
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka Java i MySQL na platformie Azure
 
@@ -139,10 +139,10 @@ Aby sprawdzić, jakich wartości można użyć dla lokalizacji `--location`, uż
 
 W usłudze Cloud Shell utwórz serwer w usłudze Azure Database for MySQL przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create).
 
-W poniższym poleceniu zamień symbol zastępczy *\<mysql_name>* na unikatową nazwę serwera, symbol zastępczy *\<admin_user>* na nazwę użytkownika, a symbol zastępczy *\<admin_password>* na hasło. Ta nazwa serwera jest używana jako część punktu końcowego bazy danych PostgreSQL (`https://<mysql_name>.mysql.database.azure.com`), więc nazwa musi być unikatowa na wszystkich serwerach platformy Azure.
+W poniższym poleceniu zamień symbol zastępczy *\<mysql_server_name>* na unikatową nazwę serwera, symbol zastępczy *\<admin_user>* na nazwę użytkownika, a symbol zastępczy *\<admin_password>* na hasło. Ta nazwa serwera jest używana jako część punktu końcowego bazy danych PostgreSQL (`https://<mysql_server_name>.mysql.database.azure.com`), więc nazwa musi być unikatowa na wszystkich serwerach platformy Azure.
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name>--location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 > [!NOTE]
@@ -154,11 +154,6 @@ Po utworzeniu serwera MySQL w interfejsie wiersza polecenia platformy Azure zost
 
 ```json
 {
-  "additionalProperties": {},
-  "administratorLogin": "<admin_user>",
-  "earliestRestoreDate": "2018-04-19T22:56:40.990000+00:00",
-  "fullyQualifiedDomainName": "<mysql_name>.mysql.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
   "location": "westeurope",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
@@ -171,16 +166,8 @@ Po utworzeniu serwera MySQL w interfejsie wiersza polecenia platformy Azure zost
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  "storageProfile": {
-    "additionalProperties": {},
-    "backupRetentionDays": 7,
-    "geoRedundantBackup": "Disabled",
-    "storageMb": 5120
-  },
-  "tags": null,
-  "type": "Microsoft.DBforMySQL/servers",
-  "userVisibleState": "Ready",
-  "version": "5.7"
+  ...   +  
+  -  < Output has been truncated for readability >
 }
 ```
 
