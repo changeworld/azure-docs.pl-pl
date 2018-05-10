@@ -1,11 +1,11 @@
 ---
-title: "Jak ustawiać lub edytować zasady usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "W tym temacie pokazano, jak można ustawiać lub edytować zasady usługi Azure API Management."
+title: Jak ustawiać lub edytować zasady usługi Azure API Management | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak można ustawiać lub edytować zasady usługi Azure API Management.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 409069cbc382610a48139df75f0f64b1682d8ee6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Jak ustawiać lub edytować zasady usługi Azure API Management
 
@@ -29,8 +29,8 @@ Aby uzyskać szczegółowe informacje na temat zasad, zobacz [zasad w usłudze A
 
 Można ustawiać lub edytować zasad, wykonaj następujące czynności:
 
-1. Zaloguj się do portalu Azure pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Przejdź do swojego wystąpienia APIM.
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+2. Przejdź do swojego wystąpienia usługi APIM.
 3. Kliknij przycisk **interfejsów API** kartę.
 4. Wybierz jeden z interfejsów API, które zostały wcześniej zaimportowane.
 5. Wybierz **projekt** kartę.
@@ -38,7 +38,7 @@ Można ustawiać lub edytować zasad, wykonaj następujące czynności:
 7. Kliknij trójkąt **przychodzących** lub **wychodzących** ołówki.
 8. Wybierz **edytora kodu** elementu.
 
-    ![Edytuj zasady](./media/set-edit-policies/set-edit-policies01.png)
+    ![Edycja zasad](./media/set-edit-policies/set-edit-policies01.png)
 
 9. Wklej kod odpowiednie zasady w jednym z odpowiednie bloki.
          
@@ -82,7 +82,7 @@ Zasięg globalny jest skonfigurowany dla **wszystkich interfejsów API** APIM wy
     ![Globalne](./media/api-management-howto-policies/global-scope.png)
 
 3. Kliknij ikonę trójkąta.
-4. Wybierz **edytora kodu**.
+4. Wybierz pozycję **Edytor kodu**.
 5. Dodawanie lub edytowanie zasad.
 6. Naciśnij klawisz **zapisać**. 
 
@@ -111,7 +111,7 @@ Interfejs API zakres jest skonfigurowany dla **wszystkie operacje** wybranego in
 
 2. Wybierz **wszystkie operacje**
 3. Kliknij ikonę trójkąta.
-4. Wybierz **edytora kodu**.
+4. Wybierz pozycję **Edytor kodu**.
 5. Dodawanie lub edytowanie zasad.
 6. Naciśnij klawisz **zapisać**. 
 
@@ -125,11 +125,11 @@ Operacja zakres jest skonfigurowany dla wybranej operacji.
     ![Operacja zakresu](./media/api-management-howto-policies/operation-scope.png)
 
 3. Kliknij ikonę trójkąta.
-4. Wybierz **edytora kodu**.
+4. Wybierz pozycję **Edytor kodu**.
 5. Dodawanie lub edytowanie zasad.
 6. Naciśnij klawisz **zapisać**. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz poniższe tematy pokrewne:
 

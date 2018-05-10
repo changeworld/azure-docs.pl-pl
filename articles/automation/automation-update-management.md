@@ -8,17 +8,17 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3bd3c4f6501000f2490bc26cf7c6ff0345d3e7cc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 5c76114484d10873eeb2d7a4516d4196b1d8aaf6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
 Rozwiązania do zarządzania aktualizacji w usłudze Automatyzacja Azure umożliwia zarządzanie aktualizacji systemu operacyjnego dla komputerów z systemem Windows i Linux wdrożonych w Azure, środowiskach lokalnych lub innych dostawców chmury. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
 
-Możesz włączyć zarządzanie aktualizacjami dla maszyn wirtualnych bezpośrednio z poziomu konta usługi [Azure Automation](automation-offering-get-started.md).
+Zarządzanie aktualizacjami dla maszyn wirtualnych można włączyć bezpośrednio z Twojego konta usługi Automatyzacja Azure.
 Aby dowiedzieć się, jak włączyć zarządzanie aktualizacjami dla maszyn wirtualnych z poziomu konta usługi Automation, zobacz [Zarządzanie aktualizacjami dla wielu maszyn wirtualnych](manage-update-multi.md). Można również włączyć zarządzanie aktualizacji dla jednej maszyny wirtualnej ze strony maszyny wirtualnej w portalu Azure. Ten scenariusz jest dostępna zarówno [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) i [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) maszyn wirtualnych.
 
 ## <a name="solution-overview"></a>Omówienie rozwiązania
@@ -37,6 +37,9 @@ Na poniższym diagramie przedstawiono koncepcję zachowanie, a przepływ danych 
 Po komputerze wykonuje skanowanie zgodności aktualizacji, agent przekazuje informacje zbiorcze z analizą dzienników. Na komputerze z systemem Windows skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 12 godzin. Oprócz harmonogram skanowania w poszukiwaniu skanowanie pod kątem zgodności aktualizacji jest inicjowana w ciągu 15 minut po uruchomieniu programu Microsoft Monitoring Agent (MMA), przed instalacją aktualizacji i po zainstalowaniu aktualizacji. Na komputerze z systemem Linux skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 3 godziny, a także inicjowane w ciągu 15 minut po ponownym uruchomieniu agenta programu MMA.
 
 Rozwiązanie informuje, jak aktualne jest oprogramowanie na komputerze, bazując na źródle skonfigurowanym na potrzeby synchronizacji. Jeśli komputer z systemem Windows jest skonfigurowany do raportowania do usługi WSUS, to w zależności od tego, kiedy usługa WSUS była ostatnio synchronizowana z usługą Microsoft Update, wyniki mogą się różnić od tych pokazywanych przez usługę Microsoft Updates. Jest to ten sam dla komputerów z systemem Linux, skonfigurowanych do raportu do lokalnego repozytorium i publicznego repozytorium.
+
+> [!NOTE]
+> Zarządzanie aktualizacjami wymaga niektórych adresów URL i portów mogła poprawnie zgłoszenia do usługi, zobacz [sieci, planowanie hybrydowych procesów roboczych](automation-hybrid-runbook-worker.md#network-planning) Aby dowiedzieć się więcej na temat tych wymagań.
 
 Aktualizacje oprogramowania można wdrożyć i zainstalować na komputerach, które ich wymagają, tworząc zaplanowane wdrożenie. Aktualizacje sklasyfikowane jako *Opcjonalne* są poza zakresem wdrożenia dla komputerów z systemem Windows. W zakresie tym są tylko aktualizacje wymagane. Zaplanowane wdrożenie definiuje komputerów docelowych odbierania odpowiednich aktualizacji przez jawne określenie komputera, lub wybranie [grupy komputerów](../log-analytics/log-analytics-computer-groups.md) opartego wylogowuje wyszukiwania dziennika w określonej grupie komputerów. Można również określić harmonogram zatwierdzania i wyznaczyć okres, w którym można instalować aktualizacje. Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i nie wymagają one żadnej konfiguracji. Utworzenie wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Ten główny element runbook uruchamia podrzędny element runbook na każdym agencie, który przeprowadza instalację wymaganych aktualizacji.
 
@@ -191,12 +194,12 @@ Utwórz nowe wdrożenie aktualizacji, klikając **harmonogram wdrożenia aktuali
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Linux lub Windows|
 | Komputery do zaktualizowania |Wybierz wyszukiwanie, Saved lub wybierz komputer z listy rozwijanej i wybierz poszczególne maszyny |
-|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Aktualizacje, które mają zostać wykluczone|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
+|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Aktualizacje do wykluczenia|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
 |Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
 
-## <a name="update-classifications"></a>Klasyfikacje aktualizacji
+## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 
 Poniższe tabele zawierają listę klasyfikacje aktualizacji w zarządzania aktualizacjami oraz definicji dla każdej klasyfikacji.
 
@@ -219,6 +222,17 @@ Poniższe tabele zawierają listę klasyfikacje aktualizacji w zarządzania aktu
 |---------|---------|
 |Aktualizacje krytyczne i zabezpieczeń     | Aktualizacje dla konkretnego problemu lub problemu z konkretnym produktem, związanych z zabezpieczeniami.         |
 |Inne aktualizacje     | Wszystkie inne aktualizacje, które nie są ważne w aktualizacjach charakter lub zabezpieczeń.        |
+
+## <a name="ports"></a>Porty
+
+Następujące adresy są wymagane w szczególności do zarządzania aktualizacjami. Komunikacja z tych adresów odbywa się za pośrednictwem portu 443.
+
+* *.ods.opinsights.azure.com
+* *.oms.opinsights.azure.com
+* ods.systemcenteradvisor.com
+* *.blob.core.windows.net
+
+Aby uzyskać dodatkowe informacje na porty wymagane przez hybrydowy proces roboczy elementu Runbook [portów roli hybrydowego procesu roboczego](automation-hybrid-runbook-worker.md#hybrid-worker-role)
 
 ## <a name="search-logs"></a>Dzienniki wyszukiwania
 
@@ -273,9 +287,9 @@ Jeśli wystąpią problemy podczas próby dołączenia rozwiązania lub maszyny 
 | Komunikat | Przyczyna | Rozwiązanie |
 |----------|----------|----------|
 | Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>System.InvalidOperationException: {"Message": "Maszyna jest już</br>zarejestrowana na innym koncie. "} | Maszyna została już dołączona do innego obszaru roboczego na potrzeby zarządzania aktualizacjami | Przeprowadź czyszczenie starych artefaktów, [usuwając grupę hybrydowych elementów runbook](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
-| Nie można zarejestrować maszyny Zarządzanie poprawkami, rejestracja nie powiodła się z powodu wyjątku</br>System.Net.Http.HttpRequestException: Wystąpił błąd podczas wysyłania żądania. ---></br>System.Net.WebException: Połączenie podstawowe</br>zostało zamknięte: Wystąpił nieoczekiwany błąd</br>przy odbiorze. ---> System.ComponentModel.Win32Exception:</br>Klient i serwer nie mogą nawiązać komunikacji,</br>ponieważ nie mają wspólnego algorytmu | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
-| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>Newtonsoft.Json.JsonReaderException: Błąd podczas analizowania wartości nieskończoności dodatniej. | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
-| Certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com</br>nie został wystawiony przez urząd certyfikacji</br>używany na potrzeby usług firmy Microsoft. Kontakt</br>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje</br>komunikację TLS/SSL. |Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-offering-get-started.md#network-planning)|
+| Nie można zarejestrować maszyny Zarządzanie poprawkami, rejestracja nie powiodła się z powodu wyjątku</br>System.Net.Http.HttpRequestException: Wystąpił błąd podczas wysyłania żądania. ---></br>System.Net.WebException: Połączenie podstawowe</br>zostało zamknięte: Wystąpił nieoczekiwany błąd</br>przy odbiorze. ---> System.ComponentModel.Win32Exception:</br>Klient i serwer nie mogą nawiązać komunikacji,</br>ponieważ nie mają wspólnego algorytmu | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning)|
+| Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>Newtonsoft.Json.JsonReaderException: Błąd podczas analizowania wartości nieskończoności dodatniej. | Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning)|
+| Certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com</br>nie został wystawiony przez urząd certyfikacji</br>używany na potrzeby usług firmy Microsoft. Kontakt</br>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje</br>komunikację TLS/SSL. |Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning)|
 | Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Nie można utworzyć certyfikatu z podpisem własnym. ---></br>System.UnauthorizedAccessException: Odmowa dostępu. | Niepowodzenie generowania certyfikatu z podpisem własnym | Sprawdź, czy konto systemowe ma</br>dostęp do odczytu do folderu:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>Kolejne kroki

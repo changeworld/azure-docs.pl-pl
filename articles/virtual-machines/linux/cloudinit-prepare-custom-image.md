@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Przygotowanie do użycia z chmury init istniejącego obrazu maszyny Wirtualnej systemu Linux platformy Azure
 W tym artykule przedstawiono sposób pobrać istniejącej maszyny wirtualnej platformy Azure i przygotowania go ponownie wdrożonym i gotowe do użycia chmury init. Obraz wynikowy może służyć do wdrażania nowej maszyny wirtualnej lub zestawy skalowania maszyn wirtualnych — w jednej z nich można następnie można dodatkowo dostosowywać przez init chmury w czasie wdrażania.  Skrypty te init chmury są uruchamiane po pierwszym uruchomieniu komputera po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji na temat chmury inicjowania działania natywnie Azure i obsługiwanych dystrybucjach systemu Linux, zobacz [init chmury — omówienie](using-cloud-init.md)
@@ -136,7 +136,7 @@ Wszystkie obrazy platformy Azure został zainstalowany, niezależnie od tego, je
 sudo waagent -deprovision+user -force
 ```
 
-Aby uzyskać więcej informacji o poleceniach deprovision agenta systemu Linux platformy Azure, zobacz [agenta systemu Linux Azure](agent-user-guide.md) więcej szczegółów.
+Aby uzyskać więcej informacji o poleceniach deprovision agenta systemu Linux platformy Azure, zobacz [agenta systemu Linux Azure](../extensions/agent-linux.md) więcej szczegółów.
 
 Zakończyć sesję SSH, a następnie z powłoki bash, uruchom następujące polecenia AzureCLI deallocate generalize i utworzyć nowy obraz maszyny Wirtualnej platformy Azure.  Zastąp `myResourceGroup` i `sourceVmName` odpowiednie informacje w czasie wykonywania odbicia sourceVM Twojego.
 

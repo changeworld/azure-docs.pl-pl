@@ -1,22 +1,23 @@
 ---
-title: "Konfigurowanie logowania automatycznego przyspieszenie aplikacji przy użyciu zasad odnajdowania obszaru macierzystego | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jest dzierżawa usługi Azure AD oraz sposób zarządzania nią za pomocą usługi Azure Active Directory."
+title: Konfigurowanie logowania automatycznego przyspieszenie aplikacji przy użyciu zasad odnajdowania obszaru macierzystego | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jest dzierżawa usługi Azure AD oraz sposób zarządzania nią za pomocą usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
-ms.author: billmath
-ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.openlocfilehash: 5df12f905595c9b3e8caa8f372b9ba7b54672f81
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie logowania automatycznego przyspieszenie dla aplikacji za pomocą zasad odnajdowania obszaru macierzystego
 
@@ -35,7 +36,7 @@ Użytkownik może być konieczne przekierowanie do uwierzytelnienia do jednej z 
 
 -  Dostawca tożsamości lokalnych, takich jak Active Directory Federation Services (AD FS).
 
-## <a name="auto-acceleration"></a>Auto-acceleration 
+## <a name="auto-acceleration"></a>Akceleracja automatycznie 
 Niektóre organizacje skonfigurować ich dzierżawy usługi Azure Active Directory możliwości utworzenia federacji z innego dostawców tożsamości, takie jak usługi AD FS do uwierzytelniania użytkowników.  
 
 W tych przypadkach gdy loguje użytkownika do aplikacji są najpierw najpierw wpisywane w stronę logowania w usłudze Azure AD. Po wpisywania ich nazwy UPN, są one następnie przekierowanie do strony logowania dostawców tożsamości. W pewnych okolicznościach Administratorzy mogą chcieć przekierować użytkowników do strony logowania, gdy są one zalogowanie się do określonych aplikacji. 
@@ -158,7 +159,7 @@ W tym przykładzie utworzysz zasady, które automatycznie przyspiesza użytkowni
 
 #### <a name="step-1-create-an-hrd-policy"></a>Krok 1: Tworzenie zasad HRD
 ``` powershell
-New-AzureADPoly -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Jeśli masz jednej domeny federacyjnej, który uwierzytelnia użytkowników dla aplikacji, należy utworzyć tylko jedne zasady odnajdowanie obszaru macierzystego.  

@@ -1,26 +1,20 @@
 ---
-title: "Ograniczenia współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft"
-description: "Bieżących ograniczeń dotyczących współpracy usługi Azure Active Directory B2B"
+title: Ograniczenia współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft
+description: Bieżących ograniczeń dotyczących współpracy usługi Azure Active Directory B2B
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7d455b587c013e7a03fe640406e751910456665d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d4efa6ad1d2768a41a670fae4c490942b5a814ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Ograniczenia dotyczące współpracy B2B usługi Azure AD
 Azure współpracy B2B usługi Active Directory (Azure AD) podlega obecnie ograniczenia opisane w tym artykule.
@@ -28,20 +22,13 @@ Azure współpracy B2B usługi Active Directory (Azure AD) podlega obecnie ogran
 ## <a name="possible-double-multi-factor-authentication"></a>Możliwe podwójne uwierzytelnianie wieloskładnikowe
 Z B2B usługi Azure AD można wymusić uwierzytelnianie wieloskładnikowe w organizacji zasobów (zaproszenia organizacji). Przyczyny tego podejścia wyszczególnione w [dostępu warunkowego dla użytkowników współpracy B2B](active-directory-b2b-mfa-instructions.md). Jeśli partnera już uwierzytelnianie wieloskładnikowe, konfigurowanie i wymuszane, użytkowników może być konieczne przeprowadzenie uwierzytelniania raz w domu organizacji, a następnie ponownie w należy do Ciebie.
 
-## <a name="instant-on"></a>Instant-on
+## <a name="instant-on"></a>Natychmiastowa
 W przepływach współpracy B2B możemy dodać użytkowników do katalogu i dynamiczne aktualizowanie ich podczas realizacji zaproszenia, przypisanie aplikacji i tak dalej. Aktualizacje i zapisy zwykle się tak zdarzyć w przypadku jednego katalogu i musi zostać zreplikowana we wszystkich wystąpieniach. Gdy wszystkie wystąpienia są aktualizowane zakończeniem replikacji. Czasami, gdy obiekt jest zapisywane lub zaktualizowane w jedno wystąpienie, a wywołanie do pobrania tego obiektu jest do innego wystąpienia, może wystąpić opóźnienia w replikacji. Jeśli tak się stanie, Odśwież lub ponów próbę, aby pomóc. Jeśli piszesz aplikację przy użyciu naszego interfejsu API ponownych prób z niektórych wycofania jest rozwiązaniem obrony, właściwą rozwiązanie tego problemu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
+Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
 
-* [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
-* [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
-* [Delegowanie B2bB współpracy zaproszenia](active-directory-b2b-delegate-invitations.md)
-* [Grupami dynamicznymi i współpracy B2B](active-directory-b2b-dynamic-groups.md)
-* [Kod współpracy B2B i przykłady środowiska PowerShell](active-directory-b2b-code-samples.md)
-* [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
-* [Tokeny użytkownika współpracy B2B](active-directory-b2b-user-token.md)
-* [Oświadczenia użytkowników współpracy B2B mapowania](active-directory-b2b-claims-mapping.md)
-* [Udostępnianie zewnętrzne w usłudze Office 365](active-directory-b2b-o365-external-user.md)
+- [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Delegowanie B2bB współpracy zaproszenia](active-directory-b2b-delegate-invitations.md)
+

@@ -1,13 +1,13 @@
 ---
-title: "Szybki Start: Instalacja ręczna pojedynczym wystąpieniem SAP HANA na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Przewodnik Szybki start dotyczący instalacji ręcznej z pojedynczym wystąpieniem SAP HANA na maszynach wirtualnych platformy Azure"
+title: 'Szybki Start: Instalacja ręczna pojedynczym wystąpieniem SAP HANA na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft'
+description: Przewodnik Szybki start dotyczący instalacji ręcznej z pojedynczym wystąpieniem SAP HANA na maszynach wirtualnych platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45c7e1b76f64db142fc8fdca85b1e1fa9aca6a42
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Szybki Start: Instalacja ręczna pojedynczym wystąpieniem SAP HANA na maszynach wirtualnych Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -48,7 +48,7 @@ W tej chwili maszynach wirtualnych platformy Azure certyfikowanych przez SAP SAP
 
 Jeśli są próbująca uzyskać wystąpienia SAP HANA lub S/4HANA lub system BW/4HANA wdrożona w czasie bardzo szybko, należy rozważyć użycie [biblioteki urządzenia chmury SAP](http://cal.sap.com). Możesz znaleźć dokumentację dotyczącą wdrażania, na przykład S/4HANA systemu za pośrednictwem SAP CAL na platformie Azure w [w tym przewodniku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Trzeba będzie subskrypcji platformy Azure i użytkownika SAP, który może być zarejestrowane przy użyciu biblioteki urządzenia chmury SAP.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 ### <a name="sap-hana-backup"></a>Kopia zapasowa SAP HANA
 Aby uzyskać informacji na temat tworzenia kopii zapasowej bazy danych SAP HANA na maszynach wirtualnych Azure zobacz:
 * [Podręcznik tworzenia kopii zapasowej programu SAP HANA na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
@@ -66,12 +66,12 @@ Aby uzyskać informacje na systemy operacyjne obsługiwane SAP HANA, zobacz [SAP
 
 Dodatkową dokumentację SAP SAP HANA o różnych systemów operacyjnych Linux zobacz:
 
-* [Uwaga Obsługa SAP &#171356; - oprogramowania SAP w systemie Linux: informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
-* [Obsługa Uwaga &#1944799; - SAP HANA wskazówki dotyczące instalacji systemu operacyjnego SLES SAP](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+* [Uwaga Obsługa SAP 171356 # - oprogramowania SAP w systemie Linux: informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
+* [Obsługa Uwaga 1944799 # - SAP HANA wskazówki dotyczące instalacji systemu operacyjnego SLES SAP](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 * [Uwaga Obsługa SAP #2205917 - SAP HANA DB zalecane ustawienia systemu operacyjnego dla SLES 12 aplikacje SAP](https://launchpad.support.sap.com/#/notes/2205917/E)
-* [Uwaga Obsługa SAP &#1984787; - SUSE Linux Enterprise Server 12: Informacje o instalacji](https://launchpad.support.sap.com/#/notes/1984787)
-* [Uwaga Obsługa SAP &#1391070; - rozwiązań UUID systemu Linux](https://launchpad.support.sap.com/#/notes/1391070)
-* [SAP Uwaga Obsługa &#2009879; - SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879)
+* [Uwaga Obsługa SAP 1984787 # - SUSE Linux Enterprise Server 12: Informacje o instalacji](https://launchpad.support.sap.com/#/notes/1984787)
+* [Uwaga Obsługa SAP 1391070 # - rozwiązań UUID systemu Linux](https://launchpad.support.sap.com/#/notes/1391070)
+* [SAP Uwaga Obsługa 2009879 # - SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879)
 * [2292690 - SAP HANA DB: OS zalecane ustawienia dla systemów RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)
 
 ### <a name="sap-monitoring-in-azure"></a>SAP monitorowania na platformie Azure
@@ -251,7 +251,7 @@ Opis SAP HANA układ standardowy system plików, zobacz [przewodnik aktualizacji
 
 Po zainstalowaniu programu SAP NetWeaver na standardowe SLES/SLES obrazu galerii Azure 12 aplikacje SAP, zostanie wyświetlony komunikat z informacją, że brakuje miejsca wymiany, jak pokazano na poniższym zrzucie ekranu. Aby odrzucić tę wiadomość, można ręcznie dodać plik wymiany przy użyciu **dd**, **mkswap**, i **swapon**. Aby dowiedzieć się, jak to zrobić, wyszukaj "Plik wymiany ręczne dodawanie" w [przy użyciu Partycjonera YaST](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) części dokumentacji SUSE.
 
-Innym rozwiązaniem jest skonfigurowanie obszar wymiany przy użyciu agenta maszyny Wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Podręcznik użytkownika agenta systemu Linux Azure](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Innym rozwiązaniem jest skonfigurowanie obszar wymiany przy użyciu agenta maszyny Wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Podręcznik użytkownika agenta systemu Linux Azure](../../extensions/agent-linux.md).
 
 ![Udzielanie porad jest obszar wymiany niewystarczające komunikat podręczny](./media/hana-get-started/image010.jpg)
 

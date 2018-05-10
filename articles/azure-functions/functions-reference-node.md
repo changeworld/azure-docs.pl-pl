@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: e593f58f6b92e562067401381cfce06d5fb18e29
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 78f29cd4a20861e40bb7f7f398979b8d93387a7b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dewelopera usługi Azure funkcji JavaScript
 
@@ -302,7 +302,7 @@ module.exports = function(context) {
 Należy zdefiniować `package.json` pliku w katalogu głównym aplikacji funkcji. Definiowanie pliku umożliwia wszystkich funkcji aplikacji i udostępniać te same pakiety pamięci podręcznej, które zapewnia najlepszą wydajność. Jeśli wystąpi konflikt wersji, można rozwiązać go przez dodanie `package.json` pliku w folderze określoną funkcję.  
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
-Aby uzyskać wartość zmiennej środowiskowej lub wartość ustawienia aplikacji, należy użyć `process.env`, jak pokazano w poniższym przykładzie:
+Aby uzyskać wartość zmiennej środowiskowej lub wartość ustawienia aplikacji, należy użyć `process.env`, jak pokazano w `GetEnvironmentVariable` funkcji:
 
 ```javascript
 module.exports = function (context, myTimer) {

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 76021642073c7463254f51e84efd9af459af2244
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5b372ae5a7ff2ad26e4bb83675f592df3f08931b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatycznie włączaj ustawień diagnostycznych na tworzenie zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule zostanie przedstawiony sposób korzystania [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych zasobu podczas jego tworzenia. Umożliwia to automatyczne uruchamianie przesyłanych strumieniowo z dzienników diagnostycznych i metryk do usługi Event Hubs, archiwizacji je na koncie magazynu lub wysyłania ich do analizy dzienników po utworzeniu zasobu.
@@ -259,7 +259,7 @@ Aby włączyć diagnostykę na zasobów obliczeniowych, na przykład klaster mas
 3. Dodaj zawartość pliku WADCfg XML do właściwości XMLCfg, prawidłowo anulowanie wszystkich znaków XML.
 
 > [!WARNING]
-> Ten ostatni krok mogą być nieco kłopotliwe prawo. [Znajduje się w artykule](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) przykład dzielącą schemat konfiguracji diagnostyki na zmiennych, które są anulowane i prawidłowo sformatowane.
+> Ten ostatni krok mogą być nieco kłopotliwe prawo. [Znajduje się w artykule](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) przykład dzielącą schemat konfiguracji diagnostyki na zmiennych, które są anulowane i prawidłowo sformatowane.
 > 
 > 
 

@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6ea915ac10314f6304c98e40a50b26e3d1ee79eb
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 4ed0c84dfab58f8a92e0f366bb65634b9e3dab82
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Adresy IP używane przez usługę Application Insights i analizy dzienników
 [Azure Application Insights](app-insights-overview.md) usługa używa liczba adresów IP. Może być konieczne, jeśli aplikacja, która monitorowanych znajduje się za zaporą informacje tych adresów.
@@ -33,7 +33,7 @@ Należy otworzyć niektóre wychodzących porty zapory serwera umożliwia zestaw
 | Przeznaczenie | Adres URL | Adres IP | Porty |
 | --- | --- | --- | --- |
 | Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
-| Metryki strumień na żywo |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
+| Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 | Wewnętrzny Telemetrii |breeze.aimon.applicationinsights.io |52.161.11.71 |443 |
 
 ## <a name="status-monitor"></a>Monitor stanu
@@ -231,14 +231,17 @@ Uwaga: *. loganalytics.io domeny należy do zespołu analizy dzienników.
 
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
+| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | Portal | gateway.azureserviceprofiler.net | dynamiczne | 443
 | Magazyn | *.core.windows.net | dynamiczne | 443
 
 ## <a name="snapshot-debugger"></a>Debuger migawek
 
+> [!NOTE]
+> Profiler i debuger migawki używają tego samego zestawu adresów IP.
+
 | Przeznaczenie | Identyfikator URI | Adres IP | Porty |
 | --- | --- | --- | --- |
-| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
+| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | Portal | ppe.gateway.azureserviceprofiler.net | dynamiczne | 443
 | Magazyn | *.core.windows.net | dynamiczne | 443

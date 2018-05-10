@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 71c60c8d29e4db8aab1932a1bece03396a12e4da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3b45f46197467dd7b83bd986604338e14daa8107
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Przechwytywanie maszyny wirtualnej systemu Linux działających na platformie Azure
 Wykonaj kroki opisane w tym artykule, aby Uogólnij i Przechwyć maszyny wirtualnej systemu Linux platformy Azure (VM) w modelu wdrażania Menedżera zasobów. Uogólnienie maszynę Wirtualną, Usuń konto osobiste informacje i przygotowanie wirtualna do użycia jako obraz. Można następnie przechwytywania obrazu uogólniony wirtualny dysk twardy (VHD) dla systemu operacyjnego, dysków VHD dla dysków dołączonych danych i [szablonu usługi Resource Manager](../../azure-resource-manager/resource-group-overview.md) o nowych wdrożeniach maszyny Wirtualnej. Ten artykuł zawiera szczegóły dotyczące sposobu przechwytywania obrazu maszyny Wirtualnej z interfejsu wiersza polecenia platformy Azure w wersji 1.0 za pomocą niezarządzanych dysków maszyny wirtualnej. Możesz również [Przechwytywanie maszyny Wirtualnej za pomocą dysków zarządzanych Azure 2.0 interfejsu wiersza polecenia Azure](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dyski zarządzane są obsługiwane przez platformę Azure i nie wymagają wszystkie lub lokalizację do przechowywania ich. Aby uzyskać więcej informacji, zobacz temat [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -44,7 +44,7 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
 * **Azure CLI** -Zainstaluj [interfejsu wiersza polecenia Azure](../../cli-install-nodejs.md) na komputerze lokalnym.
 
 ## <a name="step-1-remove-the-azure-linux-agent"></a>Krok 1: Usuń agenta systemu Linux platformy Azure
-Najpierw uruchom **agenta waagent** z **deprovision** parametru na Maszynie wirtualnej systemu Linux. To polecenie usuwa pliki i dane w celu przygotowania do uogólnianie maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Podręcznik użytkownika agenta systemu Linux Azure](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Najpierw uruchom **agenta waagent** z **deprovision** parametru na Maszynie wirtualnej systemu Linux. To polecenie usuwa pliki i dane w celu przygotowania do uogólnianie maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Podręcznik użytkownika agenta systemu Linux Azure](../extensions/agent-windows.md).
 
 1. Podłącz do sieci maszyny Wirtualnej systemu Linux przy użyciu klienta SSH.
 2. W oknie SSH wpisz następujące polecenie:

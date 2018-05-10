@@ -3,17 +3,17 @@ title: Uruchom zadanie Apache Spark z usługi Kubernetes Azure (AKS)
 description: Użyj usługi Kubernetes Azure (AKS), aby uruchamiać zadanie Apache Spark
 services: container-service
 author: lenadroid
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: fbeddb60ce968ff0d32e2ddb6a4f62d2036d80aa
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: cb23c21fd22a35a3e8a5920a94aa5a89fe966cfa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Uruchomionych zadań Apache Spark na AKS
 

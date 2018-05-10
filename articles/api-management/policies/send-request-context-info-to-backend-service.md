@@ -1,11 +1,11 @@
 ---
-title: "Azure próbce interfejsu API zarządzania zasad — informacje o kontekście żądania wysłania do usługi zaplecza | Dokumentacja firmy Microsoft"
-description: "Przykładowe zasady zarządzania Azure API - pokazuje, jak wysłać informacje o kontekście żądania do usługi zaplecza."
+title: Azure próbce interfejsu API zarządzania zasad — informacje o kontekście żądania wysłania do usługi zaplecza | Dokumentacja firmy Microsoft
+description: Przykładowe zasady zarządzania Azure API - pokazuje, jak wysłać informacje o kontekście żądania do usługi zaplecza.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: af4d0a8aa3705b290fa5e4801eaa25264229696e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 932555a20ae89581b557d9d9f0a73992205d1e18
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>Wyślij informacje o kontekście żądania do usługi zaplecza
 
@@ -29,7 +29,7 @@ Wklej kod do **przychodzących** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/Snippets/Send request context information to the backend service.policy.xml)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o zasadach APIM:
 

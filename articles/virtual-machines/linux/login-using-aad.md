@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/01/2018
+ms.date: 05/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 1a2bb6def032d1790a67e458afb162402c1443a7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej systemu Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -43,14 +43,16 @@ Następujące dystrybucje systemu Linux są obecnie obsługiwane w wersji zapozn
 
 | Dystrybucja | Wersja |
 | --- | --- |
-| Ubuntu Server | Ubuntu 16.04 LTS i Ubuntu Server 17.10 |
+| CentOS | CentOS 6,9 i CentOS 7.4 |
+| RedHat Enterprise Linux | RHEL 7 | 
+| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 i Ubuntu Server 17.10 |
 
 Obecnie obsługiwane są następujące regiony platformy Azure w wersji zapoznawczej tej funkcji:
 
-- Środkowo-południowe stany USA
+- Wszystkie publiczne regiony platformy Azure
 
 >[!IMPORTANT]
-> Aby użyć tej funkcji w wersji zapoznawczej, wdrażać tylko w obsługiwanych distro systemu Linux i w obsługiwanym regionie Azure.
+> Aby użyć tej funkcji w wersji zapoznawczej, wdrażać tylko w obsługiwanych distro systemu Linux i w obsługiwanym regionie Azure. Funkcja nie jest obsługiwana w Azure dla instytucji rządowych lub suwerennych chmury.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +81,7 @@ Aby zalogować się do maszyny Wirtualnej systemu Linux przy użyciu poświadcze
 
 ```azurecli-interactive
 az vm extension set \
-    --publisher Microsoft.Azure.ActiveDirectory.LinuxSSH.Edp \
+    --publisher Microsoft.Azure.ActiveDirectory.LinuxSSH \
     --name AADLoginForLinux \
     --resource-group myResourceGroup \
     --vm-name myVM

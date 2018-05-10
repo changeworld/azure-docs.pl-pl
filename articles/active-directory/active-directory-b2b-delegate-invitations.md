@@ -1,26 +1,20 @@
 ---
-title: "Delegowanie zaproszeń do skorzystania z usługi Azure Active Directory B2B współpracy | Dokumentacja firmy Microsoft"
-description: "Właściwości użytkownika współpraca w usłudze Azure Active Directory B2B są konfigurowane"
+title: Delegowanie zaproszeń do skorzystania z usługi Azure Active Directory B2B współpracy | Dokumentacja firmy Microsoft
+description: Właściwości użytkownika współpraca w usłudze Azure Active Directory B2B są konfigurowane
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: facf0f62823c84742986c9fb585990d7fedb2ab1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a4a1303c3992b8c576650859eea65591392b9b20
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Delegowanie zaproszeń do skorzystania z usługi Azure Active Directory B2B współpracy
 
@@ -50,15 +44,10 @@ Domyślnie dzierżaw są ustawione na #4. (Wszystkich użytkowników, w tym goś
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
+Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
 
-* [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
-* [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
-* [Grupami dynamicznymi i współpracy B2B](active-directory-b2b-dynamic-groups.md)
-* [Kod współpracy B2B i przykłady środowiska PowerShell](active-directory-b2b-code-samples.md)
-* [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
-* [Tokeny użytkownika współpracy B2B](active-directory-b2b-user-token.md)
-* [Oświadczenia użytkowników współpracy B2B mapowania](active-directory-b2b-claims-mapping.md)
-* [Udostępnianie zewnętrzne w usłudze Office 365](active-directory-b2b-o365-external-user.md)
-* [Bieżące ograniczenia współpracy B2B](active-directory-b2b-current-limitations.md)
+- [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Dodaj gości współpracy B2B bez zaproszenia](active-directory-b2b-add-user-without-invite.md)
+- [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
+
+

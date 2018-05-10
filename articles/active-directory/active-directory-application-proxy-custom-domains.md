@@ -1,29 +1,29 @@
 ---
-title: "Domen niestandardowych w serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Zarządzanie domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD, aby adres URL aplikacji jest taki sam, niezależnie od tego, gdzie użytkownicy do niego dostęp."
+title: Domen niestandardowych w serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Zarządzanie domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD, aby adres URL aplikacji jest taki sam, niezależnie od tego, gdzie użytkownicy do niego dostęp.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 2fe9f895-f641-4362-8b27-7a5d08f8600f
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b198c6aba4227e33eae4af49c019bc4012086a51
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 91cb67bb7a8ebcf0b06561a4c647098c577a473a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD
 
-Podczas publikowania aplikacji za pośrednictwem serwera Proxy usługi Azure Active Directory aplikacji, możesz utworzyć zewnętrznego adresu URL dla użytkowników, aby przejść do podczas pracy zdalnej. Ten adres URL pobiera domyślną domenę *yourtenant.msappproxy.net*. Na przykład jeśli opublikowana aplikacji o nazwie kosztów i dzierżawy jest o nazwie Contoso, zewnętrzny adres URL może być https://expenses-contoso.msappproxy.net. Jeśli chcesz korzystać z własnej nazwy domeny, skonfiguruj niestandardową domenę na potrzeby aplikacji. 
+Podczas publikowania aplikacji za pośrednictwem serwera Proxy usługi Azure Active Directory aplikacji, możesz utworzyć zewnętrznego adresu URL dla użytkowników, aby przejść do podczas pracy zdalnej. Ten adres URL pobiera domyślną domenę *yourtenant.msappproxy.net*. Na przykład opublikowaniu aplikacji o nazwie kosztów i dzierżawy jest o nazwie Contoso, a następnie będzie zewnętrzny adres URL https://expenses-contoso.msappproxy.net. Jeśli chcesz korzystać z własnej nazwy domeny, skonfiguruj niestandardową domenę na potrzeby aplikacji. 
 
 Zaleca się skonfigurowanie domeny niestandardowej dla aplikacji, jeśli to możliwe. Oto niektóre zalety domen niestandardowych:
 
@@ -32,7 +32,7 @@ Zaleca się skonfigurowanie domeny niestandardowej dla aplikacji, jeśli to moż
 - Kontrolowanie znakowanie i tworzyć adresy URL. 
 
 
-## <a name="configure-a-custom-domain"></a>Skonfigurować własną domenę niestandardową
+## <a name="configure-a-custom-domain"></a>Konfigurowanie domeny niestandardowej
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 

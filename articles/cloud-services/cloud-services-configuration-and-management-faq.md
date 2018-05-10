@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 05/08/2018
 ms.author: genli
-ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd817750d6c6d43ae6973eb38b866b76921f33b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurowanie i zarządzanie problemy dotyczące usług Azure Cloud Services: często zadawane pytania (FAQ)
 
@@ -34,6 +34,7 @@ Ten artykuł zawiera często zadawane pytania dotyczące problemów dotyczących
 - [Jak mogę wygenerować certyfikat żądania Podpisania bez "Używać protokołu RDP" w do wystąpienia?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Wygasa certyfikatu zarządzania usługi chmury. Jak odnowić go?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [Jak zautomatyzować instalację główny certyfikat SSL (.pfx) i pośredniego certificate(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Co to jest celem certyfikatu "Microsoft Azure usługi zarządzania dla MachineKey"?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Monitorowanie i rejestrowanie**
 
@@ -103,6 +104,10 @@ Aby odnowić certyfikaty zarządzania służy następujących poleceń programu 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak zautomatyzować instalację główny certyfikat SSL (.pfx) i pośredniego certificate(.p7b)?
 
 Można zautomatyzować to zadanie za pomocą skryptu uruchomieniowego (partii cmd/PowerShell) i zarejestrować tego skryptu do uruchomienia w pliku definicji usługi. Dodaj zarówno uruchomienia skryptu, jak i certyfikat (plik p7b) w folderze projektu w tym samym katalogu skryptu uruchomieniowego.
+
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Co to jest celem certyfikatu "Microsoft Azure usługi zarządzania dla MachineKey"?
+
+Ten certyfikat jest używany do szyfrowania kluczy komputera na role sieci Web platformy Azure. Aby dowiedzieć się więcej, zapoznaj się tym poradniku [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)

@@ -1,30 +1,33 @@
 ---
-title: "Raport aktywności logowania w usłudze Azure usługi Active Directory dokumentacja interfejsu API | Dokumentacja firmy Microsoft"
-description: "Odwołanie do API raport aktywności logowania usługi Azure Active Directory"
+title: Raport aktywności logowania w usłudze Azure usługi Active Directory dokumentacja interfejsu API | Dokumentacja firmy Microsoft
+description: Odwołanie do API raport aktywności logowania usługi Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dbb95b5910def55437f05837986e850824fbe741
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Raport aktywności logowania w usłudze Azure usługi Active Directory dokumentacja interfejsu API
-Ten temat jest częścią zbiór tematów dotyczących usługi Azure Active Directory raportowania interfejsu API.  
-Raportowanie na platformie Azure AD zapewnia interfejs API, który umożliwia dostęp do danych raport aktywności logowania za pomocą kodu lub narzędzia pokrewne.
-Zakres tego tematu jest dostarczają informacje na temat **API raport aktywności logowania w**.
+
+> [!TIP] 
+> Zapoznaj się z nowego interfejsu API programu Microsoft Graph, dla [raportowania](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit), która zastąpi ostatecznie tego interfejsu API. 
+
+W tym artykule jest częścią kolekcję artykułów na temat usługi Azure Active Directory (Azure AD) raportowania interfejsu API. Raportowanie na platformie Azure AD zapewnia interfejs API, który umożliwia dostęp do danych inspekcji za pomocą kodu lub narzędzia pokrewne.
+Zakres tego artykułu jest dostarczają informacje na temat **inspekcji interfejsu API**.
 
 Zobacz:
 
@@ -37,7 +40,7 @@ Zobacz:
 * Administratorzy globalni
 * Dowolną aplikację, która ma zezwolenie na dostęp do interfejsu API (autoryzacji aplikacji można skonfigurować tylko na podstawie uprawnienia administratora globalnego)
 
-Konfigurowanie dostępu do interfejsów API zabezpieczeń, takich jak rejestrowanie zdarzeń dostępu aplikacji, należy użyć do dodawania aplikacji nazwy głównej usługi do roli zabezpieczeń czytnika następujące programu PowerShell
+Konfigurowanie dostępu dla aplikacji, aby uzyskać dostępu do interfejsów API zabezpieczeń, takich jak zdarzenia logowania, należy użyć do dodawania aplikacji nazwy głównej usługi do roli zabezpieczeń czytnika następujące programu PowerShell
 
 ```PowerShell
 Connect-MsolService
@@ -53,7 +56,7 @@ Aby uzyskać dostęp do tego raportu za pomocą interfejsu API raportowania, mus
 * Ukończono [wymagania wstępne dotyczące raportowania interfejsu API usługi Azure AD dostęp](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Uzyskiwanie dostępu do interfejsu API
-Albo dostęp do tego interfejsu API za pomocą [Explorer wykres](https://graphexplorer2.cloudapp.net) albo programowo z użyciem, na przykład środowiska PowerShell. Aby PowerShell poprawnie interpretować składnia filtru OData używanym w wywołaniach AAD wykres REST, należy użyć backtick (alias: akcent) znaku "ucieczki" znaku $. Znak backtick służy jako [znak ucieczki dla środowiska PowerShell](https://technet.microsoft.com/library/hh847755.aspx), umożliwiając PowerShell literału interpretacja znak $, i uniknąć skomplikowana go jako nazwę zmiennej środowiska PowerShell (ie: $filter).
+Albo dostęp do tego interfejsu API za pomocą [Explorer wykres](https://graphexplorer2.cloudapp.net) albo programowo z użyciem, na przykład środowiska PowerShell. Użyj backtick (alias: akcent) znaku "ucieczki" znak $, aby upewnić się, że PowerShell może interpretować składnia filtru OData używanym w wywołaniach REST Graph usługi AAD. Znak backtick służy jako [znak ucieczki dla środowiska PowerShell](https://technet.microsoft.com/library/hh847755.aspx), umożliwiając PowerShell literału interpretacja znak $, i uniknąć skomplikowana go jako nazwę zmiennej środowiska PowerShell (na przykład $filter).
 
 Ten temat koncentruje się w Eksploratorze wykresu. Na przykład środowiska PowerShell, zobacz [skrypt programu PowerShell](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script).
 
@@ -64,19 +67,18 @@ Aby dostęp do tego interfejsu API przy użyciu następujących podstawowy ident
 
 
 
-Ze względu na ilość danych ten interfejs API ma limit milion zwróconych rekordów. 
+Ze względu na ilość danych ten interfejs API ma limit 1 000 000 rekordów zwróconych. 
 
-To wywołanie zwraca dane w partiach. Każdej z partii może zawierać maksymalnie 1000 rekordów.  
-Aby uzyskać kolejną partię rekordów, użyj łącze do następnej. Pobierz [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) informacji z pierwszego zestawu zwróconych rekordów. Pomiń token zostanie na końcu wynik ustawiona.  
+To wywołanie zwraca dane w partiach. Każdej z partii może zawierać maksymalnie 1000 rekordów. Aby uzyskać kolejną partię rekordów, użyj łącze do następnej. Pobierz [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) informacji z pierwszego zestawu zwróconych rekordów. Pomiń token zostanie na końcu wynik ustawiona.  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
 
 ## <a name="supported-filters"></a>Filtry obsługiwane
 Liczba rekordów, które są zwracane przez interfejs API można zawęzić wywołaj w formularzu filtru.  
-Dla interfejsu API logowania związane z danych, obsługiwane są następujące filtry:
+Dane dotyczące interfejsu API logowania obsługiwane są następujące filtry:
 
-* **$top =\<liczba rekordów, które ma zostać zwrócona\>**  — Aby ograniczyć liczbę zwróconych rekordów. Jest to kosztowna operacja. Nie należy używać tego filtru, aby zwrócić tysiące obiektów.  
+* **$top =\<liczba rekordów, które ma zostać zwrócona\>**  — Aby ograniczyć liczbę zwróconych rekordów. Jest to kosztowna operacja. Nie używaj tego filtru, aby zwrócić tysiące obiektów.  
 * **$filter =\<instrukcji filtru\>**  — Aby określić, na podstawie pól filtr obsługiwanych typu rekordów są dla Ciebie ważne
 
 ## <a name="supported-filter-fields-and-operators"></a>Operatory i pól filtr obsługiwane
@@ -94,7 +96,7 @@ Aby określić typ rekordów, które są dla Ciebie ważne, można utworzyć fil
 > 
 > 
 
-Aby zawęzić zakres zwrócone dane, można tworzyć kombinacje obsługiwanych filtry i pola filtru. Na przykład następująca instrukcja zwraca górny 10 rekordów między 1 lipca 2016 i lipca 2016 6.:
+Aby zawęzić zakres zwrócone dane, można tworzyć kombinacje obsługiwanych filtry i pola filtru. Na przykład następująca instrukcja zwraca top 10 rekordów między 1 lipca 2016 r i lipca 2016 6:
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 
@@ -121,7 +123,7 @@ Przy użyciu zakresu dat
 Parametr daty/godziny, powinna być w formacie UTC 
 
 - - -
-### <a name="userid"></a>Nazwa użytkownika
+### <a name="userid"></a>userId
 **Operatory obsługiwane**: eq
 
 **Przykład**:
@@ -173,7 +175,7 @@ Wartość Identyfikator appId jest wartość ciągu
 Wartość ciągu jest wartością appDisplayName
 
 - - -
-### <a name="loginstatus"></a>loginStatus
+### <a name="loginstatus"></a>stanu logowania
 **Operatory obsługiwane**: eq
 
 **Przykład**:

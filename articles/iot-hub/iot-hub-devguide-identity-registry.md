@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c90bc4945b613f386f98178949e5451e8fe3673
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dce0114c19f6153d2cba789cdc00920d42834b2d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje w rejestrze tożsamości w Centrum IoT
 
@@ -193,7 +193,7 @@ Tożsamości urządzenia są reprezentowane jako dokumenty JSON z następującym
 | Element etag |wymagane, tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości tego urządzenia zgodnie [RFC7232][lnk-rfc7232]. |
 | uwierzytelniania |opcjonalne |Obiekt złożony zawierające materiały informacji i zabezpieczeń uwierzytelniania. |
 | auth.symkey |opcjonalne |Złożony obiekt zawierający podstawowy i klucz pomocniczy, są przechowywane w formacie base64. |
-| status |Wymagane |Wskaźnik dostępu. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie ma dostępu do dowolnego punktu końcowego skierowane do urządzenia. |
+| status |wymagane |Wskaźnik dostępu. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie ma dostępu do dowolnego punktu końcowego skierowane do urządzenia. |
 | statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje Przyczyna stanu tożsamości urządzenia. Dozwolone są wszystkie znaki UTF-8. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, przedstawiający Data i godzina ostatniej aktualizacji stanu. |
 | Element connectionState |tylko do odczytu |Pole wskazujący stan połączenia: albo **połączony** lub **Rozłączono**. To pole reprezentuje Widok Centrum IoT dla stanu połączenia urządzenia. **Ważne**: w tym polu należy używać tylko na potrzeby tworzenia/debugowania. Stan połączenia jest aktualizowany tylko w przypadku urządzeń przy użyciu MQTT lub AMQP. Ponadto jest oparty na poziomie protokołu ping (ping MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu mogą być fałszywych alarmów, takie jak urządzenia zgłoszone jako połączona, ale które zostały odłączone. |
@@ -205,7 +205,7 @@ Tożsamości urządzenia są reprezentowane jako dokumenty JSON z następującym
 
 ## <a name="module-identity-properties"></a>Właściwości tożsamości modułu
 
-Tożsamości urządzenia są reprezentowane jako dokumenty JSON z następującymi właściwościami:
+Moduł tożsamości są reprezentowane jako dokumenty JSON z następującymi właściwościami:
 
 | Właściwość | Opcje | Opis |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ Tożsamości urządzenia są reprezentowane jako dokumenty JSON z następującym
 | Element etag |wymagane, tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości tego urządzenia zgodnie [RFC7232][lnk-rfc7232]. |
 | uwierzytelniania |opcjonalne |Obiekt złożony zawierające materiały informacji i zabezpieczeń uwierzytelniania. |
 | auth.symkey |opcjonalne |Złożony obiekt zawierający podstawowy i klucz pomocniczy, są przechowywane w formacie base64. |
-| status |Wymagane |Wskaźnik dostępu. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie ma dostępu do dowolnego punktu końcowego skierowane do urządzenia. |
+| status |wymagane |Wskaźnik dostępu. Może być **włączone** lub **wyłączone**. Jeśli **włączone**, urządzenie może nawiązać połączenie. Jeśli **wyłączone**, to urządzenie nie ma dostępu do dowolnego punktu końcowego skierowane do urządzenia. |
 | statusReason |opcjonalne |128 ciąg znaków długości, który przechowuje Przyczyna stanu tożsamości urządzenia. Dozwolone są wszystkie znaki UTF-8. |
 | statusUpdateTime |tylko do odczytu |Wskaźnik danych czasowych, przedstawiający Data i godzina ostatniej aktualizacji stanu. |
 | Element connectionState |tylko do odczytu |Pole wskazujący stan połączenia: albo **połączony** lub **Rozłączono**. To pole reprezentuje Widok Centrum IoT dla stanu połączenia urządzenia. **Ważne**: w tym polu należy używać tylko na potrzeby tworzenia/debugowania. Stan połączenia jest aktualizowany tylko w przypadku urządzeń przy użyciu MQTT lub AMQP. Ponadto jest oparty na poziomie protokołu ping (ping MQTT lub polecenia ping protokołu AMQP) i może mieć Maksymalne opóźnienie tylko 5 minut. Z tego względu mogą być fałszywych alarmów, takie jak urządzenia zgłoszone jako połączona, ale które zostały odłączone. |

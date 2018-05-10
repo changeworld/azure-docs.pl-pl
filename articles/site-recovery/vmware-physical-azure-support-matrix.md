@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: fc5fceb0105726cdd7fc45df25c8a3a21d270502
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 2c6867b02fd88c4616647c8602906fbf786da414
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Tabela wsparcia dla VMware i replikacja serwerów fizycznych do platformy Azure
 
@@ -22,7 +22,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia odzys
 
 **Scenariusz** | **Szczegóły**
 --- | ---
-Maszyny wirtualne VMware | Replikacja lokalnych maszyn wirtualnych VMware do platformy Azure. Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.
+Maszyny wirtualne VMware | Replikacja lokalnych maszyn wirtualnych VMware do platformy Azure. Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą [PowerShell](vmware-azure-disaster-recovery-powershell.md).
 Serwerów fizycznych | Replikacja serversto fizycznych lokalnego systemu Windows i Linux Azure. Można wdrożyć ten scenariusz, w portalu Azure.
 
 ## <a name="on-premises-virtualization-servers"></a>Lokalnych serwerów wirtualizacji
@@ -101,7 +101,6 @@ Debian 8 | : 9,14, 9.15. | 3.16.0-4-AMD64 do 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64
 --- | ---
 systemy plików | ext3, ext4, XFS.
 Menedżer woluminów | LVM2.
-Oprogramowanie wielościeżkowego | Mapowanie urządzeń.
 Urządzenia magazynujące parawirtualnego systemu | Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 Blokuj wielu kolejki We/Wy urządzenia | Nieobsługiwane.
 Serwery fizyczne z kontrolera magazynu HP CCISS | Nieobsługiwane.
@@ -162,7 +161,7 @@ Wolumin serwera gościa z dysku rozłożone > 4 TB <br><br/>Zarządzanie wolumin
 Gość/server - miejsca do magazynowania | Nie
 Gość i serwerem dodawania i usuwania gorących dysku | Nie
 Gość/server — Wyklucz dysku | Yes
-Wielościeżkowe gościa i serwerem (MPIO) | ND
+Wielościeżkowe gościa i serwerem (MPIO) | Nie
 
 > [!NOTE]
 > UEFI rozruchu maszyn wirtualnych VMware z systemem Windows Server 2012 lub nowszym można poddać migracji do usługi Azure. Następujące ograniczenia:

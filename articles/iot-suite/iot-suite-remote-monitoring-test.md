@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 5cbd1738bd53179cb9705a86886b6cf811e9988a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: d2523502c20a7cdc4fb4ec388f167f1640919717
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Utwórz nowe urządzenie symulowane
 
@@ -258,7 +258,11 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
 
 1. W **zmiennych środowiskowych** sekcji, edytowanie wartości **komputerów\_Centrum IOTHUB\_CONNSTRING** zmiennej jako parametry połączenia Centrum IoT zanotowany wcześniej. Następnie zapisz zmiany.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **symulacji urządzenia** rozwiązania i wybierz polecenie **Ustaw projekty startowe**. Wybierz **jednego projektu startowego** i wybierz **SimulationAgent**. Następnie kliknij przycisk **OK**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService** projektu, wybierz **właściwości**, a następnie wybierz pozycję **debugowania**.
+
+1. W **zmiennych środowiskowych** sekcji, edytowanie wartości **komputerów\_Centrum IOTHUB\_CONNSTRING** zmiennej jako parametry połączenia Centrum IoT zanotowany wcześniej. Następnie zapisz zmiany.
+
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **symulacji urządzenia** rozwiązania i wybierz polecenie **Ustaw projekty startowe**. Wybierz **jednego projektu startowego** i wybierz **WebService**. Następnie kliknij przycisk **OK**.
 
 1. Dla każdego typu urządzenia jest plikiem JSON modelu i skojarzone skrypty w **usług/data/devicemodels** folderu. W Eksploratorze rozwiązań, skopiuj **Chłodnica** pliki, aby utworzyć **żarówka** plików, jak pokazano w poniższej tabeli:
 
@@ -294,10 +298,12 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
         "status": "on"
       },
       "Interval": "00:00:20",
-      "Scripts": {
-        "Type": "javascript",
-        "Path": "lightbulb-01-state.js"
-      }
+      "Scripts": [
+        {
+          "Type": "javascript",
+          "Path": "lightbulb-01-state.js"
+        }
+      ]
     },
     ```
 
@@ -468,7 +474,7 @@ Aby ograniczyć liczbę symulowanego urządzenia, podłączane do rozwiązania p
 
 Teraz można przystąpić do testowania nowego typu symulowane żarówka lokalnie uruchamiając projekt symulacji urządzenia.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **SimulationAgent**, wybierz **debugowania** , a następnie wybierz **Start nowe wystąpienie**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService**, wybierz **debugowania** , a następnie wybierz **Start nowe wystąpienie**.
 
 1. Aby sprawdzić, czy dwa symulowanego urządzenia są podłączone do Centrum IoT, otwórz Azure portal w przeglądarce.
 

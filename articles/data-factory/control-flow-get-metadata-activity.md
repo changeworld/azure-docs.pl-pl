@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/08/2018
 ms.author: shlo
-ms.openlocfilehash: 5c81c73bd563dd75103ed0fcb45cbc2205eed02a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 91ef3f9f15797c8c0c599e8c01070369e1af0b58
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Uzyskiwanie metadanych działania w fabryce danych Azure
 GetMetadata działanie może być używane do pobierania **metadanych** wszystkich danych z fabryki danych Azure. To działanie jest obsługiwana tylko dla fabryki danych w wersji 2. Mogą być używane w następujących scenariuszach:
@@ -74,7 +74,10 @@ Na liście pól GetMetadata działania można pobrać można określić następu
 | contentMD5 | MD5 pliku. Dotyczy tylko plików. |
 | Struktura | Struktura danych wewnątrz pliku lub tabeli relacyjnej bazy danych. Wartość wyjściowa jest listę nazw kolumn i typ kolumny. |
 | ColumnCount | Liczba kolumn w pliku lub relacyjne tabeli. |
-| istnieje| Określa, czy plik/folder/tabela istnieje, lub nie. Uwaga tak długo, jak "istnieje" określono na liście pól GetaMetadata działania nie zakończyć się niepowodzeniem, nawet wtedy, gdy element (tabeli plików/folderów) nie istnieje; Zamiast tego zwraca `exists: false` w danych wyjściowych. |
+| istnieje| Określa, czy plik/folder/tabela istnieje, lub nie. Należy pamiętać, jeśli określono "istnieje" na liście pól GetaMetadata, działania nie zakończyć się niepowodzeniem, nawet wtedy, gdy element (tabeli plików/folderów) nie istnieje; Zamiast tego zwraca `exists: false` w danych wyjściowych. |
+
+>[!TIP]
+>Aby sprawdzić, czy istnieje plik/folder/tabela lub nie, należy określić `exists` z listy pól GetMetadata działania można sprawdzić `exists: true/false` wynikiem dane wyjściowe działania. Jeśli `exists` nie jest skonfigurowane na liście pól GetMetadata działanie zakończy się niepowodzeniem, jeśli nie znaleziono obiektu.
 
 ## <a name="syntax"></a>Składnia
 
@@ -107,10 +110,9 @@ Na liście pól GetMetadata działania można pobrać można określić następu
         },
         "typeProperties": {
             "folderPath":"container/folder",
-            "Filename": "file.json",
+            "filename": "file.json",
             "format":{
                 "type":"JsonFormat"
-                "nestedSeperator": ","
             }
         }
     }
@@ -123,12 +125,12 @@ Obecnie GetMetadata działania można pobrać następujące typy informacji meta
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-listy pól | Wyświetla listę typów wymaganych informacji o metadanych. Zobacz szczegóły w [opcje metadanych](#metadata-options) sekcję na temat obsługiwanych metadanych. | Nie 
+listy pól | Wyświetla listę typów wymaganych informacji o metadanych. Zobacz szczegóły w [opcje metadanych](#metadata-options) sekcję na temat obsługiwanych metadanych. | Yes 
 Zestaw danych | Zestaw danych odwołania, których działanie metadanych ma być pobrana przez działanie GetMetadata. Zobacz [obsługiwane możliwości](#supported-capabilities) sekcji obsługiwanych łączników i opisane w temacie łącznika w szczegółach składni zestawu danych. | Yes
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-Wynik GetMetadata jest wyświetlany w danych wyjściowych działania. Poniżej przedstawiono dwa przykłady z opcjami wyczerpujący metadanych wybrany w oknie Lista pól jako odwołanie:
+Wynik GetMetadata jest wyświetlany w danych wyjściowych działania. Poniżej przedstawiono dwa przykłady z opcjami wyczerpujący metadanych wybrany w oknie Lista pól jako odwołanie. Aby użyć wyniku w następnych działań, użyj wzorzec `@{activity('MyGetMetadataActivity').output.itemName}`.
 
 ### <a name="get-a-files-metadata"></a>Pobranie pliku metadanych
 

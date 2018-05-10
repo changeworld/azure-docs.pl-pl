@@ -2,25 +2,19 @@
 title: Zezwala lub blokuje zaproszeń do użytkowników B2B z określonym organizacjom — Azure Active Directory | Dokumentacja firmy Microsoft
 description: Pokazuje, jak administrator może użyć portalu Azure lub programu PowerShell można ustawić dostęp lub odmówić listy blokowana B2B użytkowników z niektórych domen.
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 04/19/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 9a18193ee0d216416cda3145c85c8357813f794d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7e89bf47f592e4698a6e50fced78aeab0152ebc6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwala lub blokuje zaproszeń do użytkowników B2B z określonym organizacjom
 

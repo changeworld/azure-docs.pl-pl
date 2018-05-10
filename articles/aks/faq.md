@@ -3,23 +3,23 @@ title: Często zadawane pytania dotyczące usługi Azure Kubernetes
 description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Kubernetes.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 2/14/2018
+ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: 55006a3f0193c96849c52f87ab01dc13ac0c7a16
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: d03f906f0cf4d22772388a589424877d8bb2f8ce
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Service Kubernetes (AKS)
 
 Ten artykuł adresy częste pytania dotyczące usługi Azure Service Kubernetes (AKS).
 
 > [!IMPORTANT]
-> Usługa Kubernetes Azure (AKS) jest obecnie w **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Usługa Azure Kubernetes Service (AKS) jest obecnie w **wersji zapoznawczej**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 >
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Regiony platformy Azure zapewnia dzisiaj usługi Kubernetes Azure (AKS)?
@@ -28,9 +28,7 @@ Ten artykuł adresy częste pytania dotyczące usługi Azure Service Kubernetes 
 - Kanada Wschodnia
 - Środkowe stany USA
 - Wschodnie stany USA
-- Azja Południowo-Wschodnia
 - Europa Zachodnia
-- Zachodnie stany USA 2
 
 ## <a name="when-will-additional-regions-be-added"></a>Gdy zostaną dodane dodatkowe regionów?
 

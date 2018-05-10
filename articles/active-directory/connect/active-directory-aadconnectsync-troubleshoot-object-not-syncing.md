@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5bc0fd3854488704f5368bfe1134d8fa9c959c9b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Rozwiązywanie problemów z obiektu, której nie można zsynchronizować z usługą Azure AD
 
@@ -88,7 +88,7 @@ Po otwarciu obiektu cs istnieje kilka kart u góry. **Zaimportować** karcie są
 ![Obiekt CS](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
 **Stara wartość** pokazuje, co to jest przechowywane w Connect i **nową wartość** co zostały odebrane z systemu źródłowego i nie została jeszcze zastosowana. Jeśli występuje błąd w obiekcie, zmiany nie są przetwarzane.
 
-**Błąd**  
+**Error**  
 ![Obiekt CS](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
 **Błąd synchronizacji** karta jest tylko widoczne, jeśli występuje problem z obiektem. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z błędami synchronizacji](#troubleshoot-errors-in-operations-tab).
 
@@ -139,7 +139,7 @@ Musisz mieć łącznika na:
 - Reprezentowaną w każdym lesie usługi Active Directory użytkownika. Taka reprezentacja mogą obejmować foreignSecurityPrincipals i skontaktuj się z pomocą obiektów.
 - Łącznik usługi Azure AD.
 
-Jeśli brakuje łącznika do usługi Azure AD, następnie odczytywane [atrybuty MV](#MV-attributes) można zweryfikować kryteria aprowizowany do usługi Azure AD.
+Jeśli brakuje łącznika do usługi Azure AD, następnie odczytywane [atrybuty MV](#mv-attributes) można zweryfikować kryteria aprowizowany do usługi Azure AD.
 
 Na tej karcie można również przejść do [obiekt miejsca łącznika](#connector-space-object-properties). Wybierz wiersz i kliknij przycisk **właściwości**.
 

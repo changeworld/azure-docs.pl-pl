@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenie maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza polecenia lub w portalu. W tym samouczku przedstawiono sposób zapewnienia skonfigurowaniu go w celu zoptymalizowania wydajności jej na platformie Microsoft Azure. W tym temacie korzysta z maszyny Wirtualnej systemu Ubuntu Server, ale można również utworzyć maszynę wirtualną systemu Linux przy użyciu [obrazów jako szablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -132,6 +132,6 @@ Należy pamiętać, jak z wszystkich dyskusji optymalizacji, należy przeprowadz
 Niektóre przydatne łącza do dodatkowych zasobów: 
 
 * [Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](premium-storage.md)
-* [Podręcznik użytkownika Azure agenta systemu Linux](agent-user-guide.md)
+* [Podręcznik użytkownika Azure agenta systemu Linux](../extensions/agent-linux.md)
 * [Optymalizacja wydajności MySQL na maszynach wirtualnych systemu Linux platformy Azure](classic/optimize-mysql.md)
 * [Należy skonfigurować oprogramowanie RAID w systemie Linux](configure-raid.md)

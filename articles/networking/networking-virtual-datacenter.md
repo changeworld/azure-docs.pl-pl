@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a62d52e30b04b525dc8ff685ed6c3033d6029542
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Wirtualne centrum danych platformy Microsoft Azure: Perspektywy sieci
 **Microsoft Azure**: szybszą, oszczędności, integracja danych i aplikacji lokalnych
@@ -192,7 +192,7 @@ Składniki infrastruktury zawiera następujące funkcje:
 -   [**PRZEZ**][UDR]. Ruch w sieci wirtualnej jest kierowany przez domyślne na podstawie tabeli routingu systemu. Zdefiniuj użytkownika trasy jest niestandardowe tabele routingu, które administratorzy sieci można kojarzyć z co najmniej jednej podsieci, aby zastąpić zachowania tabeli routingu systemu oraz zdefiniować ścieżki komunikacji w ramach sieci wirtualnej. Obecność Udr gwarancje ruch wychodzący z przesyłania gwiazdy przez określone niestandardowe maszyny wirtualne i/lub wirtualnych urządzeń sieciowych i występuje w Centrum i klienci usługi równoważenia obciążenia.
 -   [**NSG**][NSG]. Grupa zabezpieczeń sieci znajduje się lista reguł zabezpieczeń, które działają jako ruchu filtrowania portów IP źródła, docelowego adresu IP, protokołów, portów IP źródłowego i docelowego adresu IP. Grupy NSG można zastosować do podsieci, karty wirtualnej karty Sieciowej, skojarzonych z maszyny Wirtualnej platformy Azure lub oba. Grupy NSG są niezbędne do zaimplementowania kontroli prawidłowego przepływu w Centrum i klienci. Poziom zabezpieczeń oferowanych przez grupa NSG jest funkcja otwierania portów i w jaki celu. Klienci powinni zastosować filtry wirtualna dodatkowych zapór oparta na hoście, takie jak IPtables lub Zapora systemu Windows.
 -   [**DNS**][DNS]. Rozpoznawanie nazw zasobów w sieci wirtualnych z vDC podano przy użyciu systemu DNS. Platforma Azure udostępnia usługi DNS dla obu [publicznego][DNS] i [prywatnej] [ PrivateDNS] rozpoznawanie nazw. Strefy prywatnej zapewniają rozpoznawania nazw w obrębie sieci wirtualnej i sieci wirtualnych. Masz prywatnej strefy nie tylko zakresu między sieciami wirtualnymi w tym samym regionie, ale także w różnych regionach i subskrypcje. Rozpoznanie publiczne usługi Azure DNS udostępnia usługę hostingu domen DNS, rozpoznawania nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
--   [** Subskrypcji] [ SubMgmt] i [zarządzania grupy zasobów][RGMgmt]**. Subskrypcja definiuje fizycznych granic można utworzyć wiele grup zasobów na platformie Azure. Zasobów w subskrypcji są łączone ze sobą w kontenerach logiczną o nazwie grupy zasobów. Grupa zasobów reprezentuje grupę logiczną do organizowania zasobów vDC.
+-   [**Subskrypcja** ] [ SubMgmt] i [ **zarządzania grupy zasobów**][RGMgmt]. Subskrypcja definiuje fizycznych granic można utworzyć wiele grup zasobów na platformie Azure. Zasobów w subskrypcji są łączone ze sobą w kontenerach logiczną o nazwie grupy zasobów. Grupa zasobów reprezentuje grupę logiczną do organizowania zasobów vDC.
 -   [**RBAC**][RBAC]. Za pomocą RBAC jest możliwość mapy ról organizacyjnych wraz z prawa dostępu do określonych zasobów Azure, umożliwiając Ogranicz użytkowników do pewnych podzestaw akcje. Z RBAC można przyznać dostęp, przypisując odpowiednią rolę dla użytkowników, grup i aplikacji w obrębie odpowiedniego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji platformy Azure. RBAC umożliwia dziedziczenie uprawnień. Rola przypisana w zakresie nadrzędnej również udziela dostępu do podrzędnych w nim zawarte. Przy użyciu funkcji RBAC, można rozdzielenie obowiązków i udzielić tylko takiego dostępu dla użytkowników, które są niezbędne do wykonywania swoich zadań. Na przykład użycie funkcji RBAC, aby umożliwić jednego pracownika zarządzać maszyn wirtualnych w ramach subskrypcji, gdy inny Zarządzanie bazami danych SQL w ramach tej samej subskrypcji.
 -   [**Sieci wirtualnej komunikacji równorzędnej**][VNetPeering]. Funkcja podstawowych używany do tworzenia infrastruktury vDC jest sieci wirtualnej komunikacji równorzędnej, mechanizm, który łączy dwie sieci wirtualnych (sieci wirtualne), w tym samym regionie za pośrednictwem sieci centrum danych Azure lub przy użyciu platformy Azure szkieletu na całym świecie w regionach.
 

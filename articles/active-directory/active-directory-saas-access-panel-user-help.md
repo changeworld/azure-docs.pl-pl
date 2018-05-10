@@ -1,11 +1,11 @@
 ---
-title: "Uzyskaj pomoc dotyczącą uzyskiwanie dostępu i korzystania z portalu Moje aplikacje w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Uzyskaj pomoc dotyczącą logowanie do i wykonywanie typowych zadań w panelu dostępu."
+title: Uzyskaj pomoc dotyczącą uzyskiwanie dostępu i korzystania z portalu Moje aplikacje w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Uzyskaj pomoc dotyczącą logowanie do i wykonywanie typowych zadań w panelu dostępu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Rozwiązywanie problemów z uzyskiwanie dostępu i korzystania z portalu Moje aplikacje
 
@@ -29,7 +29,7 @@ Jeśli występują problemy dotyczące logowania się lub przy użyciu portalu M
 
 Wypróbuj te ogólne wskazówki:
 
-- Po pierwsze, wyboru, aby zobaczyć, czy używasz poprawny adres URL [https://myapps.microsoft.com](https://myapps.microsoft.com).
+- Po pierwsze, wyboru, aby zobaczyć, czy używasz poprawny adres URL [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 - Spróbuj dodać do zaufanych witryn w przeglądarce adres URL.
 - Upewnij się, że hasło jest poprawna i czy nie wygasł. Aby uzyskać więcej informacji, zobacz [zresetować hasło lub szkoły](active-directory-passwords-update-your-own-password.md).
 - Sprawdź, czy informacje kontaktowe dotyczące uwierzytelniania jest aktualny i nie blokują dostęp. Aby uzyskać więcej informacji, zobacz [co oznacza Azure Multi-Factor Authentication dla mnie?](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
@@ -55,7 +55,7 @@ Sprawdź, upewnij się, że spełniają następujące wymagania dotyczące przeg
 - **Krawędź**: w systemie Windows 10 Anniversary Edition lub nowszy.
 - **Chrome**: w systemie Windows 7 lub nowszym i w systemie Mac OS X lub później.
 - **Firefox 26.0 lub nowsze**: w systemie Windows XP SP2 lub nowszy i Mac OS X 10.6 lub później.
-- **Internet Explorer 8, 9, 10, 11**: w systemie Windows 7 lub nowszy (obsługa ograniczona).
+- **Internet Explorer 11**: w systemie Windows 7 lub nowszy (obsługa ograniczona).
 
 Możesz również pobrać rozszerzenia dla programu Chrome i krawędzi bezpośrednio z następujących witryn:
 

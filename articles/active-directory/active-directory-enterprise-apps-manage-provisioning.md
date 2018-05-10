@@ -6,8 +6,8 @@ documentationcenter: ''
 author: asmalser
 manager: mtillman
 editor: ''
-ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: bded73b4a335dc85a84691f5edabac5055f43cca
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b57c6841566f3fd75ca0c48e055f54513247cb30
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji przedsiębiorstwa w portalu Azure
 W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com) zarządzać aprowizację konta użytkowników i anulowanie obsługi aplikacji obsługujących go, zwłaszcza tych, które zostały dodane z "dostępne" kategorii [ Galerii aplikacji usługi Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat Inicjowanie obsługi konta użytkowników i jak działa, zobacz [zautomatyzować Inicjowanie obsługi użytkowników i anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-app-provisioning.md).
@@ -45,12 +45,12 @@ Inicjowanie obsługi administracyjnej ustawienia konta użytkownika mogą być z
 Wybieranie **automatyczne** opcja powoduje wyświetlenie ekranu, który jest podzielony na cztery sekcje:
 
 ### <a name="admin-credentials"></a>Poświadczenia administratora
-Jest to, gdzie wymagane poświadczenia dla usługi Azure AD do nawiązania połączenia Zarządzanie użytkownikami aplikacji interfejsu API zostały wprowadzone. Dane wejściowe wymagane różni się w zależności od aplikacji. Aby dowiedzieć się więcej na temat poświadczeń i wymagań dotyczących konkretnych aplikacji, zobacz [samouczek konfiguracji dla tej konkretnej aplikacji](active-directory-saas-app-provisioning.md).
+Ta sekcja ma, gdzie wymagane poświadczenia dla usługi Azure AD do nawiązania połączenia Zarządzanie użytkownikami aplikacji interfejsu API zostały wprowadzone. Dane wejściowe wymagane różni się w zależności od aplikacji. Aby dowiedzieć się więcej na temat poświadczeń i wymagań dotyczących konkretnych aplikacji, zobacz [samouczek konfiguracji dla tej konkretnej aplikacji](active-directory-saas-app-provisioning.md).
 
 Wybieranie **Testuj połączenie** przycisk można testować poświadczenia dzięki użyciu usługi Azure AD próba łączenia się z aplikacją do inicjowania obsługi administracyjnej aplikacji przy użyciu podanych poświadczeń.
 
 ### <a name="mappings"></a>Mapowania
-Jest to, gdzie Administratorzy można wyświetlać i edytować jakie przepływu atrybutów użytkownika między usługą Azure AD i aplikacji docelowej, gdy konta użytkowników są lub aktualizacji.
+W tej sekcji jest, gdzie Administratorzy można wyświetlać i edytować jakie przepływu atrybutów użytkownika między usługą Azure AD i aplikacji docelowej, gdy konta użytkowników są lub aktualizacji.
 
 Brak zestawu wstępnie skonfigurowanych mapowania między obiektami użytkownika usługi Azure AD i każda aplikacja SaaS użytkownika. Niektóre aplikacje zarządzania innych typów obiektów, takich jak grup ani kontaktów. Wybierając jedną z te mapowania w tabeli pokazuje Edytor mapowania z prawej strony, gdzie można je wyświetlać i dostosować.
 
@@ -59,13 +59,13 @@ Brak zestawu wstępnie skonfigurowanych mapowania między obiektami użytkownika
 Obsługiwane dostosowania obejmują:
 
 * Włączanie i wyłączanie mapowań określonych obiektów, takich jak obiekt użytkownika usługi Azure AD do obiektu użytkownika aplikacji SaaS.
-* Edycja atrybutów, które przepływać z obiektu użytkownika usługi Azure AD do obiektu użytkownika aplikacji. Aby uzyskać więcej informacji na mapowanie atrybutu, zobacz [opis atrybutu mapowania typów](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Edycja atrybutów, które wpływają od obiektu użytkownika usługi Azure AD do obiektu użytkownika aplikacji. Aby uzyskać więcej informacji na mapowanie atrybutu, zobacz [opis atrybutu mapowania typów](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
 * Filtrowanie inicjowania obsługi administracyjnej akcji wykonywanych przez usługę Azure AD w aplikacji docelowej. Zamiast usługi Azure AD, w pełni synchronizowania obiektów, można ograniczyć akcje wykonywane. Na przykład, wybierając tylko **aktualizacji**, usługi Azure AD tylko aktualizacji istniejącego użytkownika konta w aplikacji i nie tworzyć nowe. Tylko wybierając **Utwórz**, Azure tylko tworzy nowe konta użytkowników, ale nie aktualizuje istniejące. Ta funkcja umożliwia administratorom tworzenie różnych mapowań dla tworzenia kont i aktualizowanie przepływów pracy.
 
 ### <a name="settings"></a>Ustawienia
 Ta sekcja umożliwia administratorom uruchomić i zatrzymać usługi Azure AD, świadczenie usługi dla wybranej aplikacji, a także opcjonalnie wyczyścić pamięć podręczną inicjowania obsługi administracyjnej i uruchom ponownie usługę.
 
-Jeśli Inicjowanie obsługi administracyjnej jest włączana na potrzeby aplikacji po raz pierwszy, należy włączyć usługę, zmieniając **stan inicjowania obsługi administracyjnej** do **na**. Powoduje to programu Azure AD świadczenie usługi Przeprowadź początkową synchronizację, w przypadku tekstu użytkownicy przypisani w **użytkowników i grup** sekcji, wysyła zapytanie do aplikacji docelowej dla nich, a następnie oblicza inicjowania obsługi administracyjnej akcje zdefiniowane w usłudze Azure AD **mapowania** sekcji. W trakcie tego procesu inicjowania obsługi usługi przechowuje dane buforowane dotyczące konta użytkownika zarządza, co niezarządzanych kont w aplikacjach docelowych, które były nigdy nie w zakresie przypisania nie dotyczą anulowanie obsługi operacji. Po początkowej synchronizacji zastrzegania usługi automatycznie synchronizuje obiektów grup i użytkowników na 10 minut.
+Jeśli Inicjowanie obsługi administracyjnej jest włączana na potrzeby aplikacji po raz pierwszy, należy włączyć usługę, zmieniając **stan inicjowania obsługi administracyjnej** do **na**. Ta zmiana powoduje programu Azure AD świadczenie usługi Przeprowadź początkową synchronizację, w przypadku tekstu użytkownicy przypisani w **użytkowników i grup** sekcji, wysyła zapytanie do aplikacji docelowej dla nich, a następnie wykonuje akcje inicjowania obsługi administracyjnej zdefiniowane w usłudze Azure AD **mapowania** sekcji. W trakcie tego procesu inicjowania obsługi usługi przechowuje dane buforowane dotyczące konta użytkownika zarządza, co niezarządzanych kont w aplikacjach docelowych, które były nigdy nie w zakresie przypisania nie dotyczą anulowanie obsługi operacji. Po początkowej synchronizacji zastrzegania usługi automatycznie synchronizuje obiektów użytkowników i grup na 10 minutowych interwałach.
 
 Zmiana **stan inicjowania obsługi administracyjnej** do **poza** po prostu wstrzymuje usługę inicjowania obsługi administracyjnej. W tym stanie Azure nie utworzyć, zaktualizować lub usunąć wszystkich użytkowników lub grupy obiektów w aplikacji. Zmiana stanu się na powoduje, że usługa do pobrania miejsca, w którym.
 
@@ -74,11 +74,11 @@ Wybieranie **wyczyścić bieżący stan i ponownie uruchomić synchronizację** 
 ### <a name="synchronization-details"></a>Szczegóły synchronizacji
 Ta sekcja zawiera dodanie szczegółów dotyczących operacji inicjowania obsługi usługi, w tym godziny imię i nazwisko, które usługa dostarczania przeprowadzony na aplikacji i są zarządzane jak wiele obiektów użytkowników i grupy.
 
-Podano linki **inicjowania obsługi administracyjnej raport aktywności**, zapewniające dziennik wszystkich użytkowników i grup utworzonych, zaktualizowane i usunięty między usługą Azure AD i aplikacji docelowej i **inicjowania obsługi administracyjnejraportuobłędach** zapewniające bardziej szczegółowe komunikaty o błędach dla użytkowników i grupy obiektów, które nie można odczytać utworzone, zaktualizowane lub usunięte. 
+Podano linki **inicjowania obsługi administracyjnej raport aktywności** zapewnia dziennik wszystkich użytkowników i grup utworzonych, zaktualizowane i usunięty między usługą Azure AD i aplikacji docelowej i **inicjowania obsługi administracyjnejraportuobłędach** zapewnia bardziej szczegółowe komunikaty o błędach dla obiektów użytkowników i grup, które nie można odczytać, tworzyć, zaktualizowane lub usunięte. 
 
 ## <a name="feedback"></a>Opinia
 
-Mamy nadzieję jak środowiska usługi Azure AD. Pamiętaj o opinie przesyłanych! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** sekcji naszych [forum opinii](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Firma Microsoft jest podekscytowani, informacje o kompilowaniu chłodnych nowości codziennie i użyj wskazówek z kształtem i zdefiniować, co mamy utworzyć w następnej kolejności.
+Pamiętaj o opinie przesyłanych! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** sekcji naszych [forum opinii](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Zespołu inżynieryjnego jest podekscytowani, informacje o kompilowaniu chłodnych nowości codziennie i użyj wskazówek z kształtem i zdefiniować, co należy utworzyć w następnej kolejności.
 
 
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG

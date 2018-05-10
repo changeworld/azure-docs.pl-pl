@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS bazy danych dzierżawców wzorców
 
@@ -88,7 +88,7 @@ Baza danych SQL Azure udostępnia narzędzia niezbędne do skonfigurowania, moni
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Skalowanie operacji dla bazy danych dla dzierżawcy
 
-Platforma Azure SQL Database oferuje wiele funkcji zarządzania przeznaczone do zarządzania dużą liczbą baz danych na dużą skalę, takich jak również ponad 100 000 baz danych.  Te funkcje, że wzorca bazy danych na dzierżawy wiarygodne.
+Platforma Azure SQL Database oferuje wiele funkcji zarządzania przeznaczona do zarządzania dużą liczbą baz danych na dużą skalę, takich jak również ponad 100 000 baz danych.  Te funkcje, że wzorca bazy danych na dzierżawy wiarygodne.
 
 Na przykład załóżmy, że system ma dzierżawy 1000 bazy danych jako jego tylko jedną bazę danych.  Baza danych może zawierać indeksów 20.  Jeśli system konwertuje o 1000 pojedynczego dzierżawcy z bazy danych, liczba indeksów wzrasta do 20 000.  W bazie danych SQL w ramach [automatycznego dostrajania][docu-sql-db-automatic-tuning-771a], automatycznego indeksowania funkcje są domyślnie włączone.  Automatycznego indeksowania zarządza dla Ciebie wszystkich indeksów 20 000 i ich trwającą optymalizacje tworzenie i upuść.  Te akcje automatyczne występują w ramach poszczególnych bazy danych, a nie są one koordynowane lub ograniczone przez podobnych działań w innych bazach danych.  Automatyczne indeksowanie traktuje indeksów inaczej zajęty bazy danych niż w bazie danych mniej zajęty.  Dostosowania zarządzania indeks tego typu będą niepraktyczne na dużą skalę bazy danych dla dzierżawy, jeśli to zadanie zarządzania ogromnych musiało być przeprowadzane ręcznie.
 

@@ -10,13 +10,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 05/08/2018
 ms.author: mbullwin; pharring
-ms.openlocfilehash: a742dc3c3538cd9fc5053fd9cd9aeec740ec0394
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 0721fa42a8d770b82a4b18865b513569bcc8807f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek na wyjątków w aplikacji .NET
 
@@ -193,11 +193,12 @@ Właściciele subskrypcji platformy Azure można sprawdzić migawki. Inni użytk
 
 Aby przyznać uprawnienia, Przypisz `Application Insights Snapshot Debugger` roli do użytkowników, którzy będzie przeprowadzał inspekcję migawki. Tę rolę można przypisać do poszczególnych użytkowników lub grup właściciele subskrypcji dla zasobu usługi Application Insights docelowej lub grupy zasobów lub subskrypcji.
 
-1. Otwiera blok kontroli dostępu (IAM).
-1. Kliknij przycisk Dodaj +.
-1. Wybierz debuger migawki Insights aplikacji z listy rozwijanej ról.
+1. Przejdź do zasobu usługi Application Insights w portalu Azure.
+1. Kliknij przycisk **(IAM) kontroli dostępu**.
+1. Kliknij przycisk **+ Dodaj** przycisku.
+1. Wybierz **Application Insights migawki debugera** z **ról** listy rozwijanej.
 1. Wyszukaj, a następnie wprowadź nazwę użytkownika do dodania.
-1. Kliknij przycisk Zapisz, aby dodać użytkownika do roli.
+1. Kliknij przycisk **zapisać** przycisk, aby dodać użytkownika do roli.
 
 
 > [!IMPORTANT]
@@ -267,22 +268,22 @@ Jednak w usłudze Azure App Services, moduł zbierający migawki można deoptimi
 
 Te wskazówki ułatwiają rozwiązywanie problemów z debugera migawki.
 
-## <a name="use-the-snapshot-health-check"></a>Użyj sprawdzania kondycji migawki
-Jeśli nie widzisz migawki dostępne dla określonego wyjątku może być spowodowane przez kilka powodów, takich jak wersji modułu zbierającego outdate migawki, codziennie próg trafień, migawki właśnie trwa czasu załadowania i tak dalej. Aby pomóc w diagnozowaniu problemów takich, budujemy sprawdzania kondycji migawki usługi inteligentnie analizować, dlatego nie migawki.
+### <a name="use-the-snapshot-health-check"></a>Użyj sprawdzania kondycji migawki
+Otwórz migawki debugowania nie pojawia się powoduje kilka typowych problemów. Przy użyciu nieaktualnych migawki modułu zbierającego, na przykład; osiągnięcia dzienny limit przekazywania; lub może migawki jest po prostu zbyt długo do przekazania. Umożliwia sprawdzanie kondycji migawki Rozwiązywanie typowych problemów.
 
-Jeśli nie widzisz migawki skojarzone z powodu wyjątku, będzie łącze w bloku podglądu śledzenia End-to-end wprowadzania sprawdzenie kondycji migawki.
+Brak łącze w okienku wyjątek umożliwiający przejście do sprawdzenia kondycji migawki widoku śledzenia end-to-end.
 
 ![Wprowadź sprawdzenie kondycji migawki](./media/app-insights-snapshot-debugger/enter-snapshot-health-check.png)
 
-Następnie zobaczysz interakcyjne bot rozmów jak sesji uruchomienie sprawdzenia kondycji różnych aspektów usługi i oferty zawiadomień.
+Interfejs interaktywnych, rozmów przypominającej szuka typowe problemy i przeprowadza Cię rozwiązywania tych problemów.
 
 ![Sprawdzanie kondycji](./media/app-insights-snapshot-debugger/healthcheck.png)
 
-Istnieje kilka wymagane ręczne wykonanie czynności, które można wykonać w celu zdiagnozowania kondycji usługi migawki. Można znaleźć w poniższych sekcjach:
+Jeśli to nie rozwiąże problemu, zobacz Podręcznik następujące kroki rozwiązywania problemów.
 
 ### <a name="verify-the-instrumentation-key"></a>Sprawdź klucza Instrumentacji
 
-Upewnij się, że używasz klucza Instrumentacji poprawne w opublikowanej aplikacji. Zazwyczaj usługi Application Insights odczytuje klucza Instrumentacji z pliku ApplicationInsights.config. Sprawdź, czy wartość jest taka sama jak klucza instrumentacji dla zasobu usługi Application Insights, który zostanie wyświetlony w portalu.
+Upewnij się, że używasz klucza Instrumentacji poprawne w opublikowanej aplikacji. Zazwyczaj klucza Instrumentacji zostanie odczytany z pliku ApplicationInsights.config. Sprawdź, czy wartość jest taka sama jak klucza instrumentacji dla zasobu usługi Application Insights, który zostanie wyświetlony w portalu.
 
 ### <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Uaktualnij do najnowszej wersji pakietu NuGet
 
@@ -293,7 +294,7 @@ Aby upewnić się, że używasz najnowszej wersji Microsoft.ApplicationInsights.
 Po utworzeniu migawki, plik minizrzutu (dmp) jest tworzony na dysku. Proces przesyłania oddzielne tworzy plik minizrzutu i przekazuje, oraz wszystkie skojarzone pliki PDB do magazynu Application Insights migawki debugera. Po pomyślnym przekazaniu minizrzut są usuwane z dysku. Pliki dziennika, aby proces przesyłania są przechowywane na dysku. W środowisku usługi aplikacji można znaleźć te dzienniki w `D:\Home\LogFiles`. Użyj witryny zarządzania Kudu dla aplikacji usługi, aby znaleźć te pliki dziennika.
 
 1. Otwórz aplikację usługi aplikacji w portalu Azure.
-2. Wybierz **zaawansowane narzędzia** bloku lub Wyszukaj **Kudu**.
+2. Kliknij przycisk **zaawansowane narzędzia**, lub Wyszukaj **Kudu**.
 3. Kliknij przycisk **Przejdź**.
 4. W **konsoli debugowania** listy rozwijanej wybierz pozycję **CMD**.
 5. Kliknij przycisk **LogFiles**.
@@ -401,7 +402,7 @@ Wykonaj poniższe kroki konfigurowania roli użytkownika usługi w chmurze z ded
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Użyj usługi Application Insights Wyszukaj, aby znaleźć wyjątki z migawkami
 
-Po utworzeniu migawki przerzucane wyjątek zostanie oznaczony przy użyciu identyfikatora migawki. Ten identyfikator migawki jest uwzględniona jako właściwości niestandardowej, gdy dane telemetryczne wyjątku jest zgłoszony do usługi Application Insights. Za pomocą bloku wyszukiwania w usłudze Application Insights, można znaleźć wszystkie dane telemetryczne z `ai.snapshot.id` właściwości niestandardowej.
+Po utworzeniu migawki przerzucane wyjątek zostanie oznaczony przy użyciu identyfikatora migawki. Ten identyfikator migawki jest uwzględniona jako właściwości niestandardowej, gdy dane telemetryczne wyjątku jest zgłoszony do usługi Application Insights. Przy użyciu **wyszukiwania** w usłudze Application Insights, można znaleźć wszystkie dane telemetryczne z `ai.snapshot.id` właściwości niestandardowej.
 
 1. Przejdź do zasobu usługi Application Insights w portalu Azure.
 2. Kliknij przycisk **wyszukiwania**.

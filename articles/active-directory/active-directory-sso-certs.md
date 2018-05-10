@@ -1,24 +1,24 @@
 ---
-title: "Zarządzanie certyfikatami federacji w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować daty wygaśnięcia certyfikatów Federacji i sposobie odnawiania certyfikatów, które wkrótce wygasną."
+title: Zarządzanie certyfikatami federacji w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować daty wygaśnięcia certyfikatów Federacji i sposobie odnawiania certyfikatów, które wkrótce wygasną.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeevansd
 manager: mtillman
-editor: 
-ms.assetid: f516f7f0-b25a-4901-8247-f5964666ce23
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2247b668584c7bb501043917f98e77c7c5cecfdc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 97a70781adaaaa5fd661474336373e70a3923ef5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Zarządzanie certyfikatami federacyjnego logowania jednokrotnego w usłudze Azure Active Directory
 W tym artykule omówiono typowe pytania i informacje dotyczące certyfikatów, które usługi Azure Active Directory (Azure AD) tworzy ustanowienie federacyjnej rejestracji jednokrotnej (SSO) do aplikacji SaaS. Dodaj aplikacje z galerii aplikacji Azure AD lub przy użyciu szablonu z systemem innym niż galerii aplikacji. Konfigurowanie aplikacji przy użyciu opcji federacyjnego logowania jednokrotnego.

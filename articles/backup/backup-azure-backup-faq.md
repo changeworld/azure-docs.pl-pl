@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/11/2018
+ms.date: 5/9/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d16991d15d76caa496b2923c8d0210b6ccb10a9a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Kopia zapasowa Azure. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Aby komentować, musisz mieć konto Livefyre. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -67,12 +67,19 @@ Tak.
 ### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>Czy mogę zarejestrować serwer programu DPM w wielu magazynach? <br/>
 Nie. Serwer DPM lub MABS można zarejestrować tylko w jednym magazynie.
 
-### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>Która wersja programu System Center Data Protection Manager jest obsługiwana? <br/>
-Zaleca się zainstalowanie [najnowszego](http://aka.ms/azurebackup_agent) agenta usługi Azure Backup z najnowszego pakietu zbiorczego aktualizacji (UR) dla programu System Center Data Protection Manager (DPM). Począwszy od sierpnia 2016 r. pakiet zbiorczy aktualizacji 11 jest najnowszą aktualizacją.
+### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>Która wersja programu System Center Data Protection Manager jest obsługiwana?
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Agent usługi Azure Backup został zainstalowany w celu ochrony plików i folderów. Czy można teraz zainstalować program System Center DPM do pracy z agentem usługi Azure Backup, aby chronić obciążenia aplikacji lokalnych i maszyn wirtualnych na platformie Azure? <br/>
-Aby użyć usługi Azure Backup z programem System Center Data Protection Manager (DPM), najpierw zainstaluj program DPM, a następnie agenta usługi Azure Backup. Instalowanie składników usługi Azure Backup w tej kolejności zapewnia współdziałanie agenta usługi Azure Backup z programem DPM. Nie zaleca się instalowania agenta usługi Azure Backup przed instalacją programu DPM. Takie rozwiązanie nie jest obsługiwane.
+Zaleca się zainstalowanie [najnowszego](http://aka.ms/azurebackup_agent) agenta usługi Azure Backup z najnowszego pakietu zbiorczego aktualizacji (UR) dla programu System Center Data Protection Manager (DPM). 
+- Programu System Center DPM 2012 R2 [14 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) jest najnowszej aktualizacji.
+- Dla programu System Center DPM 2016 [pakiet zbiorczy aktualizacji 2](https://support.microsoft.com/en-us/help/3209593) jest najnowszej aktualizacji.
 
+### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Agent usługi Azure Backup został zainstalowany w celu ochrony plików i folderów. Czy można zainstalować programu System Center DPM na chronić obciążeń lokalnych aplikacji/maszyny Wirtualnej na platformie Azure?
+
+Tak. Jednak aby używać usługi Kopia zapasowa Azure usługi System Center Data Protection Manager (DPM), najpierw zainstaluj program DPM, a następnie zainstaluj agenta usługi Kopia zapasowa Azure. Instalowanie składników usługi Azure Backup w tej kolejności zapewnia współdziałanie agenta usługi Azure Backup z programem DPM. Nie zaleca się instalowania agenta usługi Azure Backup przed instalacją programu DPM. Takie rozwiązanie nie jest obsługiwane.
+
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Aby utworzyć kopię zapasową aplikacji w stosie Azure można używać programu DPM?
+
+Nie. Jeśli kopia zapasowa Azure można użyć do ochrony Azure stosu, kopia zapasowa Azure nie obsługuje obecnie za pomocą programu DPM, aby utworzyć kopię zapasową aplikacji w stosie Azure.
 
 ## <a name="how-azure-backup-works"></a>Jak działa usługa Azure Backup
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Czy w przypadku anulowania uruchomionego zadania tworzenia kopii zapasowej przesyłane dane zostaną usunięte? <br/>

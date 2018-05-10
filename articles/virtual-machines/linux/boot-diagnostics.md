@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: delhan
-ms.openlocfilehash: 0183da348a515787d9382df6db3df8524d584d93
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 38cc806cb77af60cda10f3aeac2e5ed13b445b8c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>Rozwiązywanie problemów z maszyn wirtualnych systemu Linux na platformie Azure przy użyciu diagnostyki rozruchu
 
@@ -44,15 +44,20 @@ Obie te funkcje są obsługiwane dla maszyn wirtualnych platformy Azure we wszys
 - [Błędy FSTAB](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Włączanie diagnostyki na nowej maszynie wirtualnej
-1. Podczas tworzenia nowej maszyny wirtualnej w portalu w wersji zapoznawczej wybierz pozycję **Azure Resource Manager** z listy rozwijanej modelu wdrażania:
+1. Podczas tworzenia nowej maszyny wirtualnej w portalu Azure, wybierz **usługi Azure Resource Manager** z listy rozwijanej modelu wdrażania:
  
     ![Resource Manager](./media/boot-diagnostics/screenshot3.jpg)
 
-2. Skonfiguruj opcję Monitorowanie, aby wybrać konto magazynu, w którym chcesz umieścić te pliki diagnostyczne.
+2. W **ustawienia**, Włącz **diagnostyki rozruchu**, a następnie wybierz konto magazynu, które chcesz umieścić te pliki diagnostyczne.
  
-    ![Tworzenie maszyny wirtualnej](./media/boot-diagnostics/screenshot4.jpg)
+    ![Tworzenie maszyny wirtualnej](./media/boot-diagnostics/create-storage-account.png)
 
-3. Jeśli wykonujesz wdrożenie z szablonu usługi Azure Resource Manager, przejdź do zasobu maszyny wirtualnej i dołącz sekcję profilu diagnostyki. Pamiętaj, aby użyć nagłówka wersji interfejsu API „2015-06-15”.
+    > [!NOTE]
+    > Funkcja diagnostyki rozruchu obsługuje konto magazynu w warstwie premium. Jeśli używasz konta magazynu w warstwie premium dla diagnostyki rozruchu po ponownym uruchomieniu maszyny Wirtualnej zostanie zgłoszony błąd StorageAccountTypeNotSupported. 
+    >
+    > 
+
+3. Jeśli wdrażasz za pomocą szablonu usługi Azure Resource Manager, przejdź do zasobu maszyny wirtualnej i Dołącz sekcji profilu diagnostyki. Pamiętaj, aby użyć nagłówka wersji interfejsu API „2015-06-15”.
 
     ```json
     {
@@ -74,11 +79,19 @@ Obie te funkcje są obsługiwane dla maszyn wirtualnych platformy Azure we wszys
         }
     ```
 
-## <a name="update-an-existing-virtual-machine"></a>Aktualizowanie istniejącej maszyny wirtualnej
+Aby wdrożyć przykładowe maszyny wirtualnej z włączoną diagnostykę rozruchu, zapoznaj się z naszym repozytorium, w tym miejscu.
 
-Aby włączyć diagnostyki rozruchu za pośrednictwem portalu, należy zaktualizować istniejącej maszyny wirtualnej za pośrednictwem portalu. Wybierz opcję Diagnostyka rozruchu i kliknij ikonę Zapisz. Uruchom ponownie maszynę wirtualną, aby zmiany zaczęły obowiązywać.
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Włącz diagnostykę rozruchu w istniejącej maszyny wirtualnej 
 
-![Aktualizowanie istniejącej maszyny wirtualnej](./media/boot-diagnostics/screenshot5.png)
+Aby włączyć diagnostyki rozruchu na już istniejącej maszynie wirtualnej, wykonaj następujące kroki:
+
+1. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie wybierz maszynę wirtualną.
+2. W **pomocy technicznej i rozwiązywania problemów**, wybierz pozycję **diagnostyki rozruchu** > **ustawienia**, Zmień stan na **na**, a następnie Wybierz konto magazynu. 
+4. Upewnij się, że jest zaznaczona opcja diagnostyki rozruchu, a następnie zapisz zmiany.
+
+    ![Aktualizowanie istniejącej maszyny wirtualnej](./media/boot-diagnostics/enable-for-existing-vm.png)
+
+3. Uruchom ponownie maszynę wirtualną, aby zmiany zaczęły obowiązywać.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

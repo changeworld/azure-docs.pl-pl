@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 542632dc61f1acecd8ca8ac45fb29bfa6aa839c2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bde4347c487be8986c72435172b18c10effa0690
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary dla usług w chmurze
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień roli usługi w chmurze (role sieci web i proces roboczy). Umożliwia także zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator umieszczony w sieci [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usługi w chmurze](https://azure.microsoft.com/pricing/details/cloud-services/) strony.
@@ -81,21 +81,21 @@ W poniższych tabelach przedstawiono rozmiary maszyn wirtualnych i możliwości,
 * Maksymalna przepustowość sieci jest maksymalną zagregowaną przepustowością przydzieloną i przypisaną dla typu maszyny wirtualnej. Maksymalna przepustowość stanowi wskazówkę umożliwiającą wybranie odpowiedniego typu maszyny wirtualnej, który zapewni dostępność odpowiedniej pojemności sieci. Podczas przenoszenia między niski, umiarkowany, wysokiej i bardzo wysoka, w związku z tym zwiększa przepływność. Rzeczywista wydajność sieci będzie zależeć od wielu czynników, takich jak obciążenia sieciowe i obciążenia aplikacji oraz ustawienia sieciowe aplikacji.
 
 ## <a name="a-series"></a>Seria A
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalny dysk twardy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / niska |
-| Small           | 1         | 1,75         | 225                  | 1 / średnia |
-| Medium          | 2         | 3,5 GB       | 490                  | 1 / średnia |
-| Large           | 4         | 7            | 1000                 | 2 / wysoka |
-| ExtraLarge      | 8         | 14           | 2040                 | 4 / wysoka |
-| A5              | 2         | 14           | 490                  | 1 / średnia |
-| A6              | 4         | 28           | 1000                 | 2 / wysoka |
-| A7              | 8         | 56           | 2040                 | 4 / wysoka |
+| Small           | 1         | 1,75         | 70                   | 1 / średnia |
+| Medium          | 2         | 3,5          | 135                  | 1 / średnia |
+| Large           | 4         | 7            | 285                  | 2 / wysoka |
+| ExtraLarge      | 8         | 14           | 605                  | 4 / wysoka |
+| A5              | 2         | 14           | 135                  | 1 / średnia |
+| A6              | 4         | 28           | 285                  | 2 / wysoka |
+| A7              | 8         | 56           | 605                  | 4 / wysoka |
 
 ## <a name="a-series---compute-intensive-instances"></a>Seria A — wystąpienia intensywnie korzystające z mocy obliczeniowej
 Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zobacz [wysokiej wydajności obliczeniowe rozmiarów maszyn wirtualnych](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalny dysk twardy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2 / wysoka |
 | A9*             |16         | 112          | 1817                 | 4 / bardzo wysoka |
@@ -106,7 +106,7 @@ Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zoba
 
 ## <a name="av2-series"></a>Seria Av2
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_A1_v2  | 1         | 2            | 10                   | 1 / średnia                 |
 | Standardowa_A2_v2  | 2         | 4            | 20                   | 2 / średnia                 |
@@ -118,7 +118,7 @@ Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zoba
 
 
 ## <a name="d-series"></a>Seria D
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_D1     | 1         | 3,5          | 50                   | 1 / średnia |
 | Standardowa_D2     | 2         | 7            | 100                  | 2 / wysoka |
@@ -130,7 +130,7 @@ Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zoba
 | Standardowa_D14    | 16        | 112          | 800                  | 8 / bardzo wysoka |
 
 ## <a name="dv2-series"></a>Seria Dv2
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_D1_v2  | 1         | 3,5          | 50                   | 1 / średnia |
 | Standardowa_D2_v2  | 2         | 7            | 100                  | 2 / wysoka |
@@ -145,7 +145,7 @@ Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zoba
 
 ## <a name="dv3-series"></a>Seria Dv3
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standardowa_D2_v3  | 2         | 8             | 50                   | 2 / średnia |
 | Standardowa_D4_v3  | 4         | 16            | 100                  | 2 / wysoka |
@@ -156,7 +156,7 @@ Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zoba
 
 ## <a name="ev3-series"></a>Seria Ev3
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB   | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standardowa_E2_v3  | 2         | 16            | 50                   | 2 / średnia |
 | Standardowa_E4_v3  | 4         | 32            | 100                  | 2 / wysoka |
@@ -167,7 +167,7 @@ Aby informacjami i zagadnieniami dotyczącymi przy użyciu tych rozmiarów, zoba
 
 
 ## <a name="g-series"></a>Seria G
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_G1     | 2         | 28           | 384                  |1 / wysoka |
 | Standardowa_G2     | 4         | 56           | 768                  |2 / wysoka |
@@ -180,7 +180,7 @@ Maszyny wirtualne serii H platformy Azure to następna generacja maszyn wirtualn
 
 Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci obsługujących technologię RDMA i niskie opóźnienia, korzystając z sieci InfiniBand o przepustowości FDR wraz z kilkoma konfiguracjami pamięci do obsługi obliczeń wymagających znacznego wykorzystania pamięci.
 
-| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Lokalne dyski SSD: GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
+| Rozmiar            | Rdzenie procesora CPU | Pamięć: GiB  | Magazyn tymczasowy (SSD): GiB       | Maksymalna liczba kart sieciowych / przepustowość sieci |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standardowa_H8     | 8         | 56           | 1000                 | 8 / wysoka |
 | Standardowa_H16    | 16        | 112          | 2000                 | 8 / bardzo wysoka |

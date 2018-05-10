@@ -1,9 +1,9 @@
 ---
-title: "Strumienia Azure monitorowania danych do usługi Event Hubs | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wszystkie dane monitorowania Azure do Centrum zdarzeń można pobrać danych do partnera SIEM lub narzędzia do analizy strumienia."
+title: Strumienia Azure monitorowania danych do usługi Event Hubs | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wszystkie dane monitorowania Azure do Centrum zdarzeń można pobrać danych do partnera SIEM lub narzędzia do analizy strumienia.
 author: johnkemnetz
 manager: robb
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9cc4eb8d8f1494a7ea7a63297751f8e251aedf05
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Azure strumienia danych do Centrum zdarzeń do użycia przez monitorowania przez narzędzie zewnętrzne
 
@@ -79,7 +79,7 @@ Musisz zainstalować agenta w celu wysyłania danych monitorowania systemu opera
 
 ### <a name="stream-linux-data-to-an-event-hub"></a>Strumień danych Linux do Centrum zdarzeń
 
-[Agenta diagnostyki Azure Linux](../virtual-machines/linux/diagnostic-extension.md) może służyć do wysyłania danych z maszyny z systemem Linux do Centrum zdarzeń monitorowania. W tym przez dodanie Centrum zdarzeń jako zbiornika w Twojej LAD ustawienia konfiguracji pliku chronionego JSON. [Zobacz ten artykuł, aby dowiedzieć się więcej na temat dodawania wychwytywania Centrum zdarzeń agentowi Linux Azure diagnostycznych](../virtual-machines/linux/diagnostic-extension.md#protected-settings).
+[Agenta diagnostyki Azure Linux](../virtual-machines/extensions/diagnostics-linux.md) może służyć do wysyłania danych z maszyny z systemem Linux do Centrum zdarzeń monitorowania. W tym przez dodanie Centrum zdarzeń jako zbiornika w Twojej LAD ustawienia konfiguracji pliku chronionego JSON. [Zobacz ten artykuł, aby dowiedzieć się więcej na temat dodawania wychwytywania Centrum zdarzeń agentowi Linux Azure diagnostycznych](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Nie można skonfigurować przesyłanie strumieniowe danych monitorowania systemu operacyjnego gościa do Centrum zdarzeń w portalu. Zamiast tego należy ręcznie edytować plik konfiguracji.

@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: d539475d376e2c3e38c2cbd38de0a10645fcabe4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Zdarzenie siatki zabezpieczeń i uwierzytelniania 
 
@@ -27,6 +27,8 @@ Azure siatki zdarzeń ma trzy typy uwierzytelniania:
 Element Webhook ma jedną z wielu metod odbieranie zdarzeń z siatki zdarzeń Azure. Gdy jest to nowe zdarzenie jest gotowy, Webhook siatki zdarzeń wysyła żądanie HTTP do skonfigurowanego punktu końcowego HTTP ze zdarzeniem w treści.
 
 Po zarejestrowaniu własny punkt końcowy elementu WebHook siatki zdarzeń wysyła możesz żądania POST z kodem poprawności potwierdzenie posiadania punktu końcowego. Twoja aplikacja powinna odpowiadać za wstecz wyświetlania kodu walidacji. Zdarzenie siatki nie dostarczyć zdarzeń do elementu WebHook punktów końcowych, które nie zostały przekazane sprawdzania poprawności. Jeśli używasz usługi interfejsu API innych firm (takich jak [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie można programowo wyświetlać kodu walidacji. Dla tych usług można ręcznie zweryfikować subskrypcji przy użyciu sprawdzania poprawności adresu URL, który są wysyłane w przypadku sprawdzania poprawności subskrypcji. Skopiuj ten adres URL i Wyślij żądanie GET przy użyciu klienta REST lub przeglądarki sieci web.
+
+Weryfikowanie ręczne jest w wersji zapoznawczej. Aby go użyć, należy zainstalować [rozszerzenia siatki zdarzeń](/cli/azure/azure-cli-extensions-list) dla [AZ CLI 2.0](/cli/azure/install-azure-cli). Możesz zainstalować ją z `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, czy używasz `api-version=2018-05-01-preview`.
 
 ### <a name="validation-details"></a>Szczegóły weryfikacji
 

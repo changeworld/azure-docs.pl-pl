@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 02c380c78fa773b56a3c8b666e890836a3d8e54b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie analizy dzienników wielodostępnych aplikacji SaaS bazy danych SQL
 
@@ -65,7 +65,7 @@ SaaS biletów Wingtip wielodostępnym bazy danych skrypty i kod źródłowy apli
 
 Analiza dzienników jest oddzielny usługa, która musi być skonfigurowany. Analiza dzienników umożliwia zbieranie danych dziennika, telemetrii i metryki w obszarze roboczym analizy dzienników. Podobnie jak inne zasoby na platformie Azure można utworzyć obszaru roboczego analizy dzienników. Obszar roboczy nie muszą zostać utworzone w tej samej grupie zasobów co aplikacji, którą monitoruje. Często ten najwygodniejszy jednak. W przypadku aplikacji Wingtip biletów umożliwia upewnij się, że w obszarze roboczym zostanie usunięty z aplikacją pojedyncza grupa zasobów.
 
-1. Otwórz w programie PowerShell ISE *... \\WingtipTicketsSaaS MultiTenantDb wzorca\\modułów szkoleniowych\\zarządzania i monitorowania wydajności\\dziennika analizy\\** LogAnalytics.ps1*** demonstracyjnej.
+1. Otwórz w programie PowerShell ISE *... \\WingtipTicketsSaaS MultiTenantDb wzorca\\modułów szkoleniowych\\zarządzania i monitorowania wydajności\\dziennika analizy\\LogAnalytics.ps1 pokaz*.
 2. Aby uruchomić skrypt, naciśnij klawisz F5.
 
 Teraz możesz otworzyć Log Analytics w portalu Azure lub w portalu usługi Operations Management Suite. Trwa kilka minut, aby zbierać dane telemetryczne w obszarze roboczym analizy dzienników i aby go wyświetlić. Już pozostanie system zbierania danych diagnostycznych jest bardziej interesującego środowisko. 
@@ -90,7 +90,7 @@ W tym ćwiczeniu Otwórz analizy dzienników i portalu usługi Operations Manage
 
 4. Wybierz **analiza SQL Azure** Kafelek, aby go otworzyć.
 
-    ![Kafelka przeglądu](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Kafelek przeglądu](media/saas-dbpertenant-log-analytics/overview.png)
 
 5. Widoki w rozwiązaniu bok, przewijane wraz z ich własnych paska przewijania wewnętrzny u dołu. Odśwież stronę, jeśli to konieczne.
 

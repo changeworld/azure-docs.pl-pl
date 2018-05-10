@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: a882073fce28be1b93a6c9118c40398062f61bc5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 84581de2819ec062a537d4a302f242085a4b3c2c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Użyj schematu CloudEvents siatki zdarzeń
 
@@ -23,6 +23,8 @@ CloudEvents ułatwia współdziałanie, zapewniając wspólny schemat zdarzeń d
 CloudEvents są kompilowane przez kilka [współpracownicy](https://github.com/cloudevents/spec/blob/master/community/contributors.md), łącznie z firmy Microsoft, [chmury natywnego obliczeniowe Foundation](https://www.cncf.io/). Jest dostępna jako wersja 0,1.
 
 W tym artykule opisano sposób użycia schematu CloudEvents zdarzeń siatki.
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent schematu
 
@@ -73,12 +75,6 @@ Aby uzyskać więcej informacji, zobacz [CloudEvents spec](https://github.com/cl
 ## <a name="configure-event-grid-for-cloudevents"></a>Skonfiguruj siatki zdarzeń dla CloudEvents
 
 Siatka zdarzeń Azure ma obecnie, Podgląd obsługę danych wejściowych formatu CloudEvents JSON i danych wyjściowych w **zachodnie centralnej nam**, **środkowe stany USA**, i **Europa Północna**.
-
-Aby użyć CloudEvent, należy włączyć rozszerzenie dla wiersza polecenia platformy Azure:
-
-```azurecli
-az extension add –-name eventgrid
-```
 
 Dla danych wejściowych i wyjściowych zdarzeń w schemacie CloudEvents, można użyć zdarzenia siatki. Można użyć CloudEvents dla zdarzeń systemowych, takich jak zdarzenia magazynu obiektów Blob i zdarzenia Centrum IoT i zdarzeń niestandardowych. Można również przekształcać tych zdarzeń umieszczonego w obu kierunkach.
 

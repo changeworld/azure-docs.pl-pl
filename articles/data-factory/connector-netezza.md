@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 0896f2b23f9b74e12935c0a8b073b64dc743e6a8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopiowanie danych z Netezza przy użyciu fabryki danych Azure (wersja Beta)
 
@@ -50,6 +50,13 @@ Netezza połączone usługi, obsługiwane są następujące właściwości:
 | type | Właściwość type musi mieć ustawioną: **Netezza** | Yes |
 | Parametry połączenia | Parametry połączenia ODBC do nawiązania połączenia Netezza. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+
+Ciąg połączenia typowe jest `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |:--- |
+| SecurityLevel | Poziom zabezpieczeń (SSL/TLS) używanego przez sterownik do połączenia z magazynem danych. Na przykład `SecurityLevel=preferredSecured`. Obsługiwane są następujące wartości:<br/>-Tylko niezabezpieczone (**onlyUnSecured**): sterownik nie korzysta z protokołu SSL.<br/>- **Preferowany Unsecured (preferredUnSecured) (ustawienie domyślne)**: Jeśli serwer umożliwia wybranie, sterownik nie korzysta z protokołu SSL. <br/>- **Preferowany bezpieczne (preferredSecured)**: Jeśli serwer udostępnia wybór, sterownik używa protokołu SSL. <br/>- **Tylko bezpieczne (onlySecured)**: sterownik nie połączyć, chyba że dostępne są połączenia SSL | Nie |
+| PlikCertyfikatuUrzędu | Pełna ścieżka do certyfikatu SSL, który jest używany przez serwer. Na przykład `UseSystemTrustStore=<cert path>;`| Tak, jeśli jest włączony protokół SSL |
 
 **Przykład:**
 

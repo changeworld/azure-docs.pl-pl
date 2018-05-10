@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure stosu infrastruktury klucza publicznego certyfikatu
 
@@ -35,7 +35,7 @@ Azure stos nie zawiera publicznych infrastruktury sieci przy użyciu dostępne z
 ## <a name="certificate-requirements"></a>Wymagania dotyczące certyfikatów
 Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wymagane do wdrożenia usługi Azure stosu: 
 - Certyfikaty muszą być wystawiane z wewnętrznego urzędu certyfikacji lub publicznego urzędu certyfikacji. Jeśli jest używany publiczny urząd certyfikacji, musi być uwzględniona w obrazu podstawowego systemu operacyjnego w ramach programu Microsoft zaufanego głównego urzędu. Pełną listę można znaleźć: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- Infrastruktury Azure stos musi mieć dostęp do certyfikatu urzędu certyfikacji używanego do podpisywania certyfikatów
+- Infrastruktura stosu Azure muszą mieć dostępu do sieci do urzędu certyfikacji listy odwołania certyfikatów (CRL) lokalizacji opublikowane w certyfikacie. Tę listę CRL musi być punkt końcowy http
 - Gdy obracanie certyfikatów, certyfikaty musi być albo wystawiony na podstawie tego samego certyfikatu wewnętrznego urzędu certyfikacji używanego do podpisywania certyfikatów dostępnych na wdrożenie lub dowolnego publicznego urzędu certyfikacji z powyższych
 - Korzystanie z certyfikatów z podpisem własnym nie są obsługiwane.
 - Certyfikat może być obejmujące wszystkie przestrzenie nazw w pole alternatywnej nazwy podmiotu (SAN) certyfikatu jeden symbol wieloznaczny. Alternatywnie można użyć poszczególnych certyfikatów przy użyciu symbole wieloznaczne dla punktów końcowych takich jak **acs** i magazyn kluczy, w którym są one wymagane. 
@@ -45,6 +45,7 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Pliki pfx certyfikatu musi mieć wartości "Uwierzytelnianie serwera (1.3.6.1.5.5.7.3.1)" i "Uwierzytelnianie klienta (1.3.6.1.5.5.7.3.2)" w polu "Ulepszone użycie klucza".
 - Certyfikatu "wydany dla:" pole nie może być taka sama jak jego "wystawiony przez:" pola.
 - Hasła do wszystkich plików pfx certyfikatów muszą być takie same w czasie wdrażania
+- Hasło do pliku pfx certyfikatu musi być złożone hasło.
 - Upewnij się, że nazwy podmiotu i alternatywnej nazwy podmiotu wszystkie certyfikaty są zgodne ze specyfikacjami opisane w tym artykule, aby uniknąć wdrożenia nie powiodło się.
 
 > [!NOTE]
@@ -114,11 +115,11 @@ W poniższej tabeli opisano punktów końcowych i certyfikatów wymaganych dla k
 |App Service|Certyfikat SSL domyślne ruchu w sieci Web|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Obsługa wielu domen wieloznaczny certyfikat SSL<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Interfejs API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Logowanie jednokrotne|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 
 <sup>1</sup> wymaga jednego certyfikatu z wielu symboli wieloznacznych alternatywne nazwy podmiotu. Wiele symboli wieloznacznych sieci SAN na jeden certyfikat może nie być obsługiwany przez wszystkich publicznych urzędów certyfikacji 
 
-<sup>2</sup> A &#42;.appservice. *&lt;region >. &lt;fqdn >* certyfikatu przy użyciu symboli wieloznacznych nie można użyć zamiast te trzy certyfikaty (api.appservice. *&lt;region >. &lt;fqdn >*, ftp.appservice. *&lt;region >. &lt;fqdn >*i sso.appservice. *&lt;region >. &lt;fqdn >*. Appservice jawnie wymaga użycia osobnych certyfikatów dla tych punktów końcowych. 
+<sup>2</sup> A &#42;.appservice. *&lt;region >. &lt;fqdn >* certyfikatu przy użyciu symboli wieloznacznych nie można użyć zamiast te trzy certyfikaty (api.appservice. *&lt;region >. &lt;fqdn >*, ftp.appservice. *&lt;region >. &lt;fqdn >* i sso.appservice. *&lt;region >. &lt;fqdn >*. Appservice jawnie wymaga użycia osobnych certyfikatów dla tych punktów końcowych. 
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 Dowiedz się, jak [generowania certyfikatów PKI dla wdrożenia stosu Azure](azure-stack-get-pki-certs.md). 

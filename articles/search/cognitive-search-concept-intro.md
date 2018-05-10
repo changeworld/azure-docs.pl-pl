@@ -8,15 +8,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: 853e8fbc0c7044dc97a29254bfd4130e7f81bbbd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="what-is-cognitive-search"></a>Co to jest kognitywnych wyszukiwania?
 
-Wyszukiwanie kognitywnych jest funkcja w wersji zapoznawczej usługi Azure Search, dostępne na wszystkich warstw w południowo-środkowe Stany i Europa Zachodnia, który dodaje AI do indeksowania obciążeń. Wyodrębniania danych, przetwarzanie języka naturalnego i przetwarzania obrazu podczas indeksowania odnajduje informacje ukryty w zawartości bez struktury lub niemożliwych i umożliwia wyszukiwanie w usłudze Azure Search.
+Wyszukiwanie kognitywnych jest funkcja w wersji zapoznawczej [usługi Azure Search](search-what-is-azure-search.md), są dostępne na wszystkich warstw w południowo-środkowe Stany i Europa Zachodnia, który dodaje AI do indeksowania obciążeń. Wyodrębniania danych, przetwarzanie języka naturalnego i przetwarzania obrazu podczas indeksowania odnajduje informacje ukryty w zawartości bez struktury lub niemożliwych i umożliwia wyszukiwanie w usłudze Azure Search.
 
 Integracja AI jest za pośrednictwem *kognitywnych umiejętności* który wzbogacić źródła dokumentów za pomocą procesów sekwencyjnych, na trasie do indeksu wyszukiwania. 
 

@@ -1,11 +1,11 @@
 ---
-title: "Szablony interfejsu API w usłudze Azure API Management | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować zawartość strony interfejsu API w portalu dla deweloperów w usłudze Azure API Management."
+title: Szablony interfejsu API w usłudze Azure API Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować zawartość strony interfejsu API w portalu dla deweloperów w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2317047165f49de8c42c41dc864f0752df4af068
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 9abbdda2300fd8d51bec372624f0349455cf2b01
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="api-templates-in-azure-api-management"></a>Szablony interfejsu API w usłudze Azure API Management
 Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów, które skonfigurować ich zawartości. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takie jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zestaw udostępnionego zlokalizowane [zasoby ciągu](api-management-template-resources.md#strings), [symboli zasobów](api-management-template-resources.md#glyphs), i [strony kontrolki](api-management-page-controls.md), ma dużą elastyczność konfigurowania zawartości stron, zgodnie z własnymi potrzebami, za pomocą tych szablonów.  
@@ -28,7 +28,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 -   [Lista interfejsu API](#APIList)  
 -   [Operacja](#Product)  
 -   [Przykłady kodu](#CodeSamples)  
-    -   [Narzędzie curl](#Curl)  
+    -   [Curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
@@ -40,7 +40,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 > [!NOTE]
 >  Przykładowe domyślnych szablonów znajdują się w następującej dokumentacji, ale mogą ulec zmianie z powodu ciągłe ulepszenia. Szablonów domyślnych na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanego szablony osobno. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="APIList"></a>Lista interfejsu API  
+##  <a name="APIList"></a> Lista interfejsu API  
  **Interfejsu API listy** szablonu umożliwia dostosowanie treści strony listy interfejsu API w portalu dla deweloperów.  
   
  ![Lista API portalu deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal szablony interfejsu API listy")  
@@ -108,7 +108,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 }  
 ```  
   
-##  <a name="Product"></a>Operacja  
+##  <a name="Product"></a> Operacja  
  **Operacji** szablonu umożliwia dostosowanie treści strony operacji w portalu dla deweloperów.  
   
  ![Strona operacji portalu dewelopera](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "strona operacji szablony APIM portalu dla deweloperów")  
@@ -341,15 +341,15 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|apiId|Ciąg|Identyfikator bieżącego interfejsu API.|  
-|Nazwa_funkcji_api|Ciąg|Nazwa interfejsu API.|  
-|apiDescription|Ciąg|Opis interfejsu API.|  
+|apiId|ciąg|Identyfikator bieżącego interfejsu API.|  
+|Nazwa_funkcji_api|ciąg|Nazwa interfejsu API.|  
+|apiDescription|ciąg|Opis interfejsu API.|  
 |api|[Podsumowanie interfejsu API](api-management-template-data-model-reference.md#APISummary) jednostki.|Bieżący interfejsu API.|  
-|Operacja|[Operacja](api-management-template-data-model-reference.md#Operation)|Operacja aktualnie wyświetlany.|  
-|sampleUrl|Ciąg|Adres URL dla bieżącej operacji.|  
+|operacja|[Operacja](api-management-template-data-model-reference.md#Operation)|Operacja aktualnie wyświetlany.|  
+|sampleUrl|ciąg|Adres URL dla bieżącej operacji.|  
 |operationMenu|[Operacja menu](api-management-template-data-model-reference.md#Menu)|Menu operacji dla tego interfejsu API.|  
 |consoleUrl|Identyfikator URI|Identyfikator URI dla **wypróbuj** przycisku.|  
-|Przykłady|Kolekcja [przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostek.|Przykłady kodu dla bieżącej operacji...|  
+|przykłady|Kolekcja [przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostek.|Przykłady kodu dla bieżącej operacji...|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -638,12 +638,12 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 }  
 ```  
   
-##  <a name="CodeSamples"></a>Przykłady kodu  
+##  <a name="CodeSamples"></a> Przykłady kodu  
  Następujące szablony umożliwiają dostosowanie treści przykładów kodu poszczególnych na stronie operacji.  
   
  ![Przykłady kodu szablony portalu dewelopera](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "przykłady APIM Developer Portal szablony kodu")  
   
--   [Narzędzie curl](#Curl)  
+-   [Curl](#Curl)  
   
 -   [C#](#CSharp)  
   
@@ -659,7 +659,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a>Narzędzie curl  
+###  <a name="Curl"></a> Narzędzie curl  
  **DocumentationSamplesCurl** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -712,7 +712,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a>C#  
+###  <a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -891,7 +891,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a>Java  
+###  <a name="Stub"></a> Java  
  **DocumentationSamplesJava** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -987,7 +987,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a>JavaScript  
+###  <a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -1076,7 +1076,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a>Objective C  
+###  <a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -1188,7 +1188,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a>PHP  
+###  <a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -1278,7 +1278,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a>Python  
+###  <a name="Python"></a> Python  
  **DocumentationSamplesPython** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -1396,7 +1396,7 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a>Ruby  
+###  <a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
@@ -1467,5 +1467,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](api-management-developer-portal-templates.md).

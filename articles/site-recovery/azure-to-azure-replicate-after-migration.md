@@ -1,17 +1,17 @@
 ---
-title: "Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych Azure po zakończeniu migracji do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób przygotowania maszyny, aby skonfigurować odzyskiwania po awarii między regiony platformy Azure po zakończeniu migracji na platformie Azure przy użyciu usługi Azure Site Recovery."
+title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych Azure po zakończeniu migracji do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób przygotowania maszyny, aby skonfigurować odzyskiwania po awarii między regiony platformy Azure po zakończeniu migracji na platformie Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/07/2018
 ms.author: ponatara
-ms.openlocfilehash: c06af21cd6e273b98c004e8bd0e6eac61ba7d644
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 034052c0406ee51f33c598634f92d27867c7cbe7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych Azure po zakończeniu migracji na platformie Azure 
 
@@ -30,11 +30,11 @@ Przed skonfigurowaniem odzyskiwania po awarii, upewnij się, że migracja zosta�
 
 ## <a name="install-the-azure-vm-agent"></a>Zainstaluj agenta maszyny Wirtualnej Azure
 
-Azure [agenta maszyny Wirtualnej](../virtual-machines/windows/agent-user-guide.md) musi być zainstalowany na Maszynie wirtualnej, dzięki czemu usługa Site Recovery może replikować go.
+Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na Maszynie wirtualnej, dzięki czemu usługa Site Recovery może replikować go.
 
 
 1. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Windows, Pobierz i uruchom [Instalatora agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potrzebne są uprawnienia administratora na maszynie Wirtualnej, aby zakończyć instalację.
-2. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Linux, zainstaluj najnowszą [agenta systemu Linux](../virtual-machines/linux/agent-user-guide.md). Potrzebne są uprawnienia administratora, aby zakończyć instalację. Zaleca się instalowania z repozytorium dystrybucji. Nie zaleca się zainstalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi GitHub. 
+2. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Linux, zainstaluj najnowszą [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Potrzebne są uprawnienia administratora, aby zakończyć instalację. Zaleca się instalowania z repozytorium dystrybucji. Nie zaleca się zainstalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi GitHub. 
 
 
 ## <a name="validate-the-installation-on-windows-vms"></a>Sprawdź poprawność instalacji na maszynach wirtualnych systemu Windows

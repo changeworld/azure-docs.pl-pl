@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2da6b4e957c7e44f399866fd11853363f7424e7d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Wielu wzorzec w obsłudze globalnych z bazy danych Azure rozwiązania Cosmos 
  
@@ -22,6 +22,25 @@ Opracowywanie globalnie rozproszone aplikacji odpowiadających z opóźnieniami 
 ![Architektura wieloma serwerami głównymi](./media/multi-region-writers/multi-master-architecture.png)
 
 Z obsługą wielu wzorców bazy danych rozwiązania Cosmos platformy Azure możesz wykonać zapisy kontenerów danych (na przykład, kolekcje, wykresów, tabel) wszędzie na świecie. Można aktualizować dane w dowolnym regionie skojarzony z konta bazy danych. Te aktualizacje danych można propagować asynchronicznie. Oprócz szybki dostęp i opóźnienie zapisu danych master wielu stanowi praktyczne rozwiązanie dla trybu failover i równoważenia obciążenia problemy. Podsumowując, z bazy danych Azure rozwiązania Cosmos otrzymasz opóźnienie zapisu < 10 ms na 99-ty percentyl w dowolnym miejscu w świecie, 99,999% zapisu i odczytu dostępności w dowolnym miejscu świecie i możliwość skalowania zarówno zapisu i odczytu przepływności wszędzie na świecie.   
+
+> [!IMPORTANT]
+> Obsługa wielu wzorców znajduje się w prywatnej wersji zapoznawczej, aby użyć wersji zapoznawczej [Zarejestruj](#sign-up-for-multi-master-support) teraz.
+
+## <a name="sign-up-for-multi-master-support"></a>Zarejestruj obsługę wielu wzorców
+
+Jeśli masz już subskrypcję platformy Azure, możesz zalogować do programu Podgląd wielu wzorców w portalu Azure. Jeśli jesteś nowym użytkownikiem usługi Azure, należy zarejestrować się w celu [bezpłatnej wersji próbnej](https://azure.microsoft.com/free) gdzie uzyskać 12 miesięcy bezpłatny dostęp do bazy danych Azure rozwiązania Cosmos. Wykonaj poniższe kroki, aby zażądać dostępu do programu Podgląd wieloma serwerami głównymi.
+
+1. W [portalu Azure](https://portal.azure.com), kliknij przycisk **Utwórz zasób** > **baz danych** > **bazy danych Azure rozwiązania Cosmos**.  
+
+2. Na stronie nowe konto Podaj nazwę konta bazy danych rozwiązania Cosmos Azure, wybierz lokalizacji i interfejsu API, subskrypcji, grupy zasobów.  
+
+3. Następnie wybierz **Zarejestruj się, aby wyświetlić podgląd dzisiaj** poniżej pola Multi sprawa podglądu.  
+
+   ![Załóż wieloma serwerami głównymi podglądu](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
+
+4. W **Zarejestruj się, aby wyświetlić podgląd dzisiaj** okienku, kliknij przycisk **OK**. Po przesłaniu żądania stan zmienia się na **oczekują na zatwierdzenie** w bloku tworzenia konta.  
+
+Po zatwierdzeniu żądania otrzymasz wiadomość e-mail z powiadomieniem zatwierdzono Twoje żądanie. Ze względu na dużą liczbę żądań otrzymasz powiadomienie w ciągu tygodnia. Nie jest konieczne tworzenie biletu pomocy technicznej, aby ukończyć żądanie. Żądania zostanie zweryfikowana w kolejności, w jakiej zostały odebrane.
 
 ## <a name="a-simple-multi-master-example--content-publishing"></a>Publikowanie prosty przykład wieloma serwerami głównymi — zawartości  
 

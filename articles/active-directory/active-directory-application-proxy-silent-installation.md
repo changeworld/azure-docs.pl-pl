@@ -1,12 +1,12 @@
 ---
-title: "Instalację łącznika serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Uwzględniono również sposób przeprowadzenia instalacji nienadzorowanej programu Azure łącznika serwera Proxy aplikacji usługi AD, aby zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych."
+title: Instalację łącznika serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Uwzględniono również sposób przeprowadzenia instalacji nienadzorowanej programu Azure łącznika serwera Proxy aplikacji usługi AD, aby zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dbda2448c5bf2b6998d120a082e036d7e0125a1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 33719ea36af3b3b554fc1d32878d7d72e11b7886
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Utwórz skrypt instalacji nienadzorowanej dla łącznika serwera Proxy aplikacji usługi Azure AD
 
@@ -51,7 +51,7 @@ Istnieją dwie metody, który umożliwia zarejestrowanie łącznika:
 * Zarejestrowanie łącznika za pomocą tokenu utworzony w trybie offline
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Zarejestrowanie łącznika przy użyciu obiektu poświadczeń programu Windows PowerShell
-1. Utwórz obiekt poświadczeń programu Windows PowerShell `$cred` zawierający administracyjne nazwy użytkownika i hasła dla katalogu. Uruchom następujące polecenie, zastępując  *\<username\>*  i  *\<hasło\>*:
+1. Utwórz obiekt poświadczeń programu Windows PowerShell `$cred` zawierający administracyjne nazwy użytkownika i hasła dla katalogu. Uruchom następujące polecenie, zastępując *\<username\>* i  *\<hasło\>*:
    
         $User = "<username>"
         $PlainPassword = '<password>'

@@ -1,26 +1,20 @@
 ---
-title: "Udostępnianie zewnętrzne usługi Office 365 i Azure Active Directory B2B współpracy | Dokumentacja firmy Microsoft"
-description: "mapowanie odwołania do usługi Azure Active Directory B2B współpracy oświadczeń"
+title: Udostępnianie zewnętrzne usługi Office 365 i Azure Active Directory B2B współpracy | Dokumentacja firmy Microsoft
+description: Omówienie udostępniania zasobów z partnerami zewnętrznymi za pomocą usługi Office 365 i Azure Active Directory B2B współpracy.
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/24/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8486c7518e2cabb1d17a8f38442b7b5a77fddb01
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4421e6ca2bdce721c360f2701b3693024a694eb6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Udostępnianie zewnętrzne usługi Office 365 i Azure Active Directory B2B współpracy
 
@@ -40,15 +34,7 @@ OneDrive/usługi SharePoint Online ma menedżera oddzielne zaproszenia. Obsługa
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
-
 * [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
 * [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
 * [Delegowanie zaproszenia współpracy B2B](active-directory-b2b-delegate-invitations.md)
 * [Grupami dynamicznymi i współpracy B2B](active-directory-b2b-dynamic-groups.md)
-* [Kod współpracy B2B i przykłady środowiska PowerShell](active-directory-b2b-code-samples.md)
-* [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
-* [Tokeny użytkownika współpracy B2B](active-directory-b2b-user-token.md)
-* [Oświadczenia użytkowników współpracy B2B mapowania](active-directory-b2b-claims-mapping.md)
-* [Bieżące ograniczenia współpracy B2B](active-directory-b2b-current-limitations.md)

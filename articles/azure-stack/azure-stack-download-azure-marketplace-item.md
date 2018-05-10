@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f24dd917f4197f933fd58f7c646c18372da8593
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów marketplace z platformy Azure do stosu Azure
 
@@ -31,7 +31,7 @@ Jak zdecydujesz zawartość do uwzględnienia w Twojej stosu Azure marketplace, 
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>Pobieranie elementów marketplace w przypadku połączonych (z połączeniem internetowym)
 
 1. Aby pobrać elementów portalu marketplace, należy najpierw [zarejestrować stosu Azure w usłudze Azure](azure-stack-register.md).
-2. Zaloguj się do portalu administratora platformy Azure stosu (https://portal.local.azurestack.external).
+2. Zaloguj się do portalu administratora stosu Azure (dla ASDK, użyj https://portal.local.azurestack.external).
 3. Niektóre elementy marketplace mogą być duże. Upewnij się, że masz wystarczającą ilość miejsca w systemie, klikając **dostawców zasobów** > **magazynu**.
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
@@ -60,7 +60,7 @@ Przed użyciem narzędzia zespolonego marketplace, upewnij się, że masz [zarej
 
 Na komputerze, który ma łączność z Internetem wykonaj następujące kroki, aby pobrać elementów marketplace wymagane:
 
-1. Otwórz konsolę programu PowerShell jako administrator i [zainstalować określone moduły programu PowerShell Azure stosu](azure-stack-powershell-install.md). Upewnij się, że instalujesz program **środowiska PowerShell w wersji 1.2.11 lub nowszej**.  
+1. Otwórz konsolę programu PowerShell jako administrator i [zainstalować określone moduły programu PowerShell Azure stosu](azure-stack-powershell-install.md). Upewnij się, że instalujesz program **modułu programu PowerShell Azure stosu wersji 1.2.11 lub nowszej**.  
 
 2. Dodaj konto platformy Azure, używany do rejestrowania stosu Azure. Aby dodać konta, uruchom **Add-AzureRmAccount** polecenia cmdlet bez parametrów. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelniania wieloskładnikowego 2 na podstawie konfiguracji Twoje konto.  
 
@@ -92,7 +92,7 @@ Na komputerze, który ma łączność z Internetem wykonaj następujące kroki, 
 5. Zaimportuj moduł zespolonego i uruchom narzędzie, uruchamiając następujące polecenia:  
 
    ```powershell
-   Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
+   Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
      -destination "<Destination folder path>" `
@@ -100,21 +100,28 @@ Na komputerze, który ma łączność z Internetem wykonaj następujące kroki, 
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
 
-6. Po uruchomieniu zostanie wyświetlony monit o podanie poświadczeń konta platformy Azure. Zaloguj się do konta platformy Azure, używany do rejestrowania stosu Azure. Po logowanie zakończy się pomyślnie, powinien zostać wyświetlony następujący ekran z listy elementów marketplace dostępne.  
+6. Po uruchomieniu zostanie wyświetlony monit o podanie poświadczeń konta platformy Azure. Zaloguj się do konta platformy Azure, używany do rejestrowania stosu Azure. Po pomyślnym zainicjowaniu nazwy logowania, powinien zostać wyświetlony następujący ekran z listy elementów marketplace dostępne.  
 
    ![Azure podręcznego elementów Marketplace](./media/azure-stack-download-azure-marketplace-item/image05.png)
 
 7. Wybierz obraz, który chcesz pobrać i zanotuj wersję obrazu. Możesz wybrać wiele obrazów, przytrzymując klawisz Ctrl. Wersja obrazu służy do importowania obrazu w następnej sekcji.  Następnie kliknij przycisk **Ok**, a następnie zaakceptuj postanowienia prawne, klikając **tak**. Można również filtrować listy obrazów za pomocą **Dodaj kryteria** opcji. 
 
-   Pobieranie zajmie trochę czasu w zależności od rozmiaru obrazu. Raz do pobrania obrazu jest dostępny w ścieżce docelowej podane wcześniej. Pobieranie zawiera elementy plików i galerii wirtualnego dysku twardego w formacie Azpkg.
+   Pobieranie zajmie trochę czasu w zależności od rozmiaru obrazu. Raz do pobrania obrazu jest dostępny w ścieżce docelowej podane wcześniej. Pobieranie zawiera plik wirtualnego dysku twardego (w przypadku maszyn wirtualnych) lub. Plik ZIP (dla rozszerzeń maszyny wirtualnej) i elementu galerii w formacie Azpkg.
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>Importowanie obrazu i opublikować ją w stosie Azure marketplace
+Istnieją trzy różne typy elementów w witrynie marketplace: maszyny wirtualne, rozszerzenia maszyn wirtualnych i szablony rozwiązań. Szablony rozwiązań omówiono poniżej.
+> [!NOTE]
+> Rozszerzenia maszyn wirtualnych nie można dodać do stosu Azure w tej chwili.
 
 1. Po pobraniu pakietu obrazu i galerii, zapisz je i zawartość w folderze AzureStack Narzędzia główne, aby dysk wymienny i skopiować go do środowiska Azure stosu (można go skopiować lokalnie do dowolnej lokalizacji takich jak: "C:\MarketplaceImages").     
 
 2. Przed zaimportowaniem obrazu, musisz połączyć środowiska operator stosu Azure przy użyciu procedury opisanej w [konfigurowania środowiska PowerShell Azure stosu operator](azure-stack-powershell-configure-admin.md).  
 
-3. Zaimportuj obraz do stosu Azure za pomocą polecenia cmdlet Add-AzsVMImage. Korzystając z tego polecenia cmdlet, upewnij się zastąpić *wydawcy*, *oferują*i inne wartości parametru z wartościami właściwości obrazu, który jest importowany. Możesz uzyskać *wydawcy*, *oferują*, i *sku* wartości obrazu z elementu imageReference obiektu pobranego wcześniej pliku Azpkg i  *Wersja* wartość z kroku 6 w poprzedniej sekcji.
+3. Jeśli pobieranie się o nazwie fixed3.vhd mały plik wirtualnego dysku twardego 3MB, jest to szablon rozwiązania. Ten plik nie jest wymagane; Przejdź do kroku 5. Upewnij się, że możesz pobrać wszystkie elementy zależne, jak wskazano w opisie do pobrania.
+
+4. Zaimportuj obraz do stosu Azure za pomocą polecenia cmdlet Add-AzsVMImage. Korzystając z tego polecenia cmdlet, upewnij się zastąpić *wydawcy*, *oferują*i inne wartości parametru z wartościami właściwości obrazu, który jest importowany. Możesz uzyskać *wydawcy*, *oferują*, i *sku* wartości obrazu z elementu imageReference obiektu pobranego wcześniej pliku Azpkg i  *Wersja* wartość z kroku 6 w poprzedniej sekcji.
+
+Można znaleźć elementu imageReference, musisz zmienić nazwę pliku AZPKG z. Rozszerzenie ZIP, wyodrębnij go do tymczasowej lokalizacji, a następnie otwórz plik DeploymentTemplates\CreateUiDefinition.json za pomocą edytora tekstu. Znajdź w tej sekcji:
 
    ```json
    "imageReference": {
@@ -140,9 +147,9 @@ Na komputerze, który ma łączność z Internetem wykonaj następujące kroki, 
     -Location Local
    ```
 
-4. Użyj portalu można przekazać elementu z witryny Marketplace (. Azpkg) do magazynu obiektów Blob platformy Azure stosu. Można przekazać do lokalnego magazynu Azure stosu lub Przekaż do magazynu Azure. (Jest tymczasowej lokalizacji pakietu). Upewnij się, że obiekt blob jest publicznie i Zanotuj identyfikator URI.  
+5. Użyj portalu można przekazać elementu z witryny Marketplace (. Azpkg) do magazynu obiektów Blob platformy Azure stosu. Można przekazać do lokalnego magazynu Azure stosu lub Przekaż do magazynu Azure. (Jest tymczasowej lokalizacji pakietu). Upewnij się, że obiekt blob jest publicznie i Zanotuj identyfikator URI.  
 
-5. Publikowanie elementu portalu marketplace stos Azure przy użyciu **AzsGalleryItem Dodaj**. Na przykład:
+6. Publikowanie elementu portalu marketplace stos Azure przy użyciu **AzsGalleryItem Dodaj**. Na przykład:
 
    ```powershell
    Add-AzsGalleryItem `
@@ -150,7 +157,7 @@ Na komputerze, który ma łączność z Internetem wykonaj następujące kroki, 
      –Verbose
    ```
 
-6. Po opublikowaniu elementu galerii, możesz je wyświetlić z **nowy** > **Marketplace** okienka.  
+7. Po opublikowaniu elementu galerii, możesz je wyświetlić z **nowy** > **Marketplace** okienka. Jeśli pobieranie się szablon rozwiązania, upewnij się, że pobrano zależnych obrazu wirtualnego dysku twardego.
 
    ![Portal Marketplace](./media/azure-stack-download-azure-marketplace-item/image06.png)
 

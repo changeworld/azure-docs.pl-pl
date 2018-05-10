@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0af34a725849acf6fbb6523f03e90a85ce5ba719
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="grow-your-business-with-appsource"></a>Rozwoju firmy z AppSource
 Zarówno w portalu Azure Marketplace, jak i AppSource są uruchamiania punkty dla wspólnych działań przejdź na rynek z firmą Microsoft i zamachowym dla rozwoju firmy. Przy użyciu uruchamiania podwyższania poziomu, generowanie żądanie i wspólnych sprzedaży i marketingu, ofert witryny marketplace można bezpośrednio z aparatu firm chmury. Nie ma żadnych opłat za udział. Klientom firmy Microsoft można znaleźć w naszych rynków chmury każdego dnia można znaleźć prawo aplikacje i usługi, aby zwiększyć ich biznesowych. Naszym celem jest nawiązać połączenia z rozwiązań i usług firmy Microsoft i ekosystemem naszych partnerów organizacji. 
@@ -88,7 +88,7 @@ Poniższe tabele szczegóły każdego kroku wypełniania listy Twojej oferty.
 **Szczegóły sklepu - artefakty Marketing**
 | Ustawienia sklepu       | Najlepsze praktyki          | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Oferta logo (w formacie PNG, 58 x 48)**    | Logo należy zaprojektowane i zoptymalizowane dla nośnika cyfrowego.<br>Przekaż logo w formacie PNG oferta strony wyszukiwania. |
+| **Oferta logo (w formacie PNG, 48 x 48)**    | Logo należy zaprojektowane i zoptymalizowane dla nośnika cyfrowego.<br>Przekaż logo w formacie PNG oferta strony wyszukiwania. |
 | **Oferta logo (PNG. 216 x 216)**     | Logo należy zaprojektowane i zoptymalizowane dla nośnika cyfrowego. <br>Przekaż logo w formacie PNG do wyświetlania strony szczegółów aplikacji oferty. |
 | **Dowiedz się więcej**   | Obejmują wsparcie sprzedaży i marketingu zasobów w obszarze "Dowiedz się więcej,", na przykład, oficjalne dokumenty, broszury, listy kontrolne, slajdów PowerPoint i tak dalej. Wszystkie pliki powinny być w formacie PDF. Nie sprzedaży, poinformuj relacji biznesowej. <br>Dodaj łącze do strony docelowej aplikacji do wszystkich dokumentów i Dodaj parametry adresu URL ułatwiające śledzenie odwiedzających i wersji próbnych. |
 | **Wideo**       | Przekaż co najmniej jeden wideo, dozwolone są maksymalnie cztery pliki wideo. Wideo skontaktować się wartość oferty. Upewnij się, że perspektywa jest bohater wątku nie firmy. Wideo należy mowy do podmiotu zabezpieczeń, problemy i cele Twojej podstawowych decyzji maker osoba. <br>Zalecana długość: 60 90 sekund. Uwzględnienie klucza słów kluczowych nazwach wideo.<br>Rozważ dodanie dodatkowych plików wideo, takich jak porad wideo; wprowadzenie wideo lub wideo opiniami klienta. |
@@ -98,7 +98,7 @@ Poniższe tabele szczegóły każdego kroku wypełniania listy Twojej oferty.
 
 Gdy ofertę znajduje się na AppSource, został uzyskany prawo, aby wyświetlić wskaźnika "Dostępne na AppSource" w witrynie sieci Web. 
 
-    ![AppSource badge](./media/marketplace-appsource/appsourcebadge.png)
+ ![AppSource wskaźnika](./media/marketplace-appsource/appsourcebadge.png)
     
 Dodawanie do swojej witryny wyróżnienie zamienia ofertę na AppSource, można połączyć potencjalnych klientów bezpośrednio do strony listy. Identyfikator AppSource jest dostępne w trzech rozmiarach. Możesz pobrać wskaźnika oraz wskazówki dotyczące sposobu używania go w [podwyższyć poziom dostępności aplikacji na Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: cfc8ac74f626ada30dda72b58e4b4bc7f0d9e806
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services pojęcia
 Ten temat zawiera omówienie koncepcji usługi Media Services.
@@ -108,7 +108,7 @@ Informacje o obsługiwanych koderów znajdują się w temacie [koderów](media-s
 W usłudze Azure Media Services kanał reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał otrzymuje na żywo wejściowych strumieni w jeden z dwóch sposobów:
 
 * Na lokalny koder na żywo wysyła wielokrotnej szybkości transmisji bitów RTMP lub Smooth Streaming (pofragmentowany MP4) do kanału. Można użyć następujących koderów na żywo, które udostępniają Smooth Streaming wielokrotnej szybkości transmisji bitów: MediaExcel, Ateme, Wyobraź sobie komunikacji, Envivio, Cisco i Elemental. Następujące kodery na żywo wysyłają pliki RTMP: Adobe Flash kodera na żywo, Telestream Wirecast, Teradek, Haivision i Tricaster koderów. Pozyskiwane strumienie są przekazywane za pośrednictwem kanałów bez żadnych późniejszych transkodowanie i kodowania. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
-* Strumień o pojedynczej szybkości transmisji bitów (w jednym z następujących formatów: RTP (MPEG-TS)), protokołu RTMP lub Smooth Streaming (pofragmentowany MP4)) jest wysyłany do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługi Media Services. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Strumień o pojedynczej szybkości transmisji bitów (w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4)) jest wysyłany do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługi Media Services. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
 ### <a name="channel"></a>Kanał
 W usłudze Media Services [kanału](https://docs.microsoft.com/rest/api/media/operations/channel)s są zobowiązani do przetwarzania zawartości transmisji strumieniowej na żywo. Kanał zawiera ono wejściowy punkt końcowy (adres URL pozyskiwania) następnie podaj transcoder na żywo. Kanał odbiera strumienie wejściowe na żywo z transcoder na żywo i udostępnia go do przesyłania strumieniowego za pośrednictwem jednego lub więcej punkty końcowe. Kanały zapewniają również punkt końcowy w wersji zapoznawczej (adres URL w wersji zapoznawczej), używanej do wyświetlania i weryfikowania strumienia przed dalszego przetwarzania i dostarczania.

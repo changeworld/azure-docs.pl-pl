@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e1a7c3cec7925c6fb01aafba152dde2383cee442
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Transmisja strumieniowa za pomocą koderów lokalnych, które tworzą strumienie o różnych szybkościach transmisji bitów na żywo
 
@@ -34,7 +34,7 @@ W usłudze Azure Media Services *kanału* reprezentuje potok przetwarzania zawar
   > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie wygaśnięcia przesyłania strumieniowego.
 
 
-* Na lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo w usłudze Media Services w jednym z następujących formatów: RTP (MPEG-TS), protokołu RTMP lub Smooth Streaming (pofragmentowany MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia pojedynczej szybkości transmisji bitów do wielokrotnej szybkości transmisji bitów (adaptacyjnej) strumienia wideo. Usługi Media Services dostarcza strumień do klientów, którzy żądają go.
+* Na lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo w usłudze Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia pojedynczej szybkości transmisji bitów do wielokrotnej szybkości transmisji bitów (adaptacyjnej) strumienia wideo. Usługi Media Services dostarcza strumień do klientów, którzy żądają go.
 
 Począwszy od Media Services 2.10 wersji, podczas tworzenia kanału, można określić sposób kanału do odbierania strumień wejściowy. Można również określić, czy kanał, do przeprowadzania kodowania na żywo strumienia. Dostępne są dwie opcje:
 

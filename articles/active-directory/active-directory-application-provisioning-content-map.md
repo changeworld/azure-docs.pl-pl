@@ -1,22 +1,23 @@
 ---
-title: "Problemy z konfiguracji i inicjowania obsługi użytkowników aplikacji\""
-description: "Problemy z konfiguracji i inicjowania obsługi użytkowników aplikacji\""
+title: Problemy z konfiguracji i inicjowania obsługi użytkowników aplikacji"
+description: Problemy z konfiguracji i inicjowania obsługi użytkowników aplikacji"
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a3143703a946cadccf14d1675399c0848835d97c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d1539552145100e3fcc6fd3f323dfc3e9f322a36
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-configuring-and-provisioning-users-to-an-application"></a>Problemy z konfigurowaniem i aprowizowaniem użytkowników w aplikacji
 

@@ -1,11 +1,11 @@
 ---
-title: "Formanty strony Zarządzanie interfejsami API Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat dostępnych do użycia w szablonach portalu deweloperów w usłudze Azure API Management formantów strony."
+title: Formanty strony Zarządzanie interfejsami API Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat dostępnych do użycia w szablonach portalu deweloperów w usłudze Azure API Management formantów strony.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-api-management-page-controls"></a>Formanty strony Zarządzanie interfejsami API Azure
 Azure API Management zapewnia następujące formanty do użycia w dewelopera szablony portalu.  
@@ -43,10 +43,10 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
 -   [przycisk subskrypcji](#subscribe-button)  
 -   [Anuluj subskrypcję](#subscription-cancel)  
   
-##  <a name="app-actions"></a>Akcje aplikacji  
+##  <a name="app-actions"></a> Akcje aplikacji  
  `app-actions` Kontroli udostępnia interfejs użytkownika do interakcji z aplikacjami na stronie profilu użytkownika w portalu dla deweloperów.  
   
- ![&#45;aplikacji; kontrolka akcje](./media/api-management-page-controls/APIM-app-actions-control.png "APIM kontroli akcje aplikacji")  
+ ![Aplikacja&#45;kontroli akcje](./media/api-management-page-controls/APIM-app-actions-control.png "APIM akcje aplikacji kontroli")  
   
 ### <a name="usage"></a>Sposób użycia  
   
@@ -58,17 +58,17 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 |Parametr|Opis|  
 |---------------|-----------------|  
-|Identyfikator aplikacji|Identyfikator aplikacji.|  
+|appId|Identyfikator aplikacji.|  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
  `app-actions` Formant może być używany w następujących szablonów portalu developer:  
   
 -   [Aplikacje](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a>Rejestrowanie Basic  
+##  <a name="basic-signin"></a> Rejestrowanie Basic  
  `basic-signin` Kontroli udostępnia kontrolkę do pobierania użytkownika logowania na stronie logowania w portalu dla deweloperów.  
   
- ![Basic &#45; kontrolka signin](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic Rejestrowanie formantu")  
+ ![podstawowe&#45;kontroli signin](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic Rejestrowanie formantu")  
   
 ### <a name="usage"></a>Sposób użycia  
   
@@ -84,7 +84,7 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a>Formant stronicowania  
+##  <a name="paging-control"></a> Formant stronicowania  
  `paging-control` Zawiera funkcje stronicowania po developer portal stron, które wyświetlania listy elementów.  
   
  ![stronicowanie kontroli](./media/api-management-page-controls/APIM-paging-control.png "APIM formant stronicowania")  
@@ -107,7 +107,7 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Lista produktów](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a>dostawców  
+##  <a name="providers"></a> dostawców  
  `providers` Kontroli udostępnia kontrolkę wyboru dostawców uwierzytelniania na stronie logowania w portalu dla deweloperów.  
   
  ![Formant dostawców](./media/api-management-page-controls/APIM-providers-control.png "APIM dostawców kontroli")  
@@ -126,7 +126,7 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a>formant wyszukiwania  
+##  <a name="search-control"></a> formant wyszukiwania  
  `search-control` Udostępnia funkcje wyszukiwania na deweloperów na stronach portalu zawierające listę elementów.  
   
  ![Wyszukaj kontroli](./media/api-management-page-controls/APIM-search-control.png "APIM formant wyszukiwania")  
@@ -147,10 +147,10 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Lista produktów](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a>rejestracji  
+##  <a name="sign-up"></a> rejestracji  
  `sign-up` Kontroli udostępnia kontrolkę do zbierania informacji o profilu użytkownika na stronie tworzenia konta w portalu dla deweloperów.  
   
- ![znak &#45; w górę kontrolki](./media/api-management-page-controls/APIM-sign-up-control.png "APIM zapisywania kontrolki")  
+ ![znak&#45;w górę kontrolki](./media/api-management-page-controls/APIM-sign-up-control.png "APIM zapisywania kontrolki")  
   
 ### <a name="usage"></a>Sposób użycia  
   
@@ -166,10 +166,10 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Zarejestruj się](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a>przycisk subskrypcji  
+##  <a name="subscribe-button"></a> przycisk subskrypcji  
  `subscribe-button` Udostępnia kontrolkę do subskrypcji użytkownika produktu.  
   
- ![Subskrypcja &#45; button — formant](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM formantu przycisku subskrypcji")  
+ ![Subskrypcja&#45;przycisku kontrolki](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM formantu przycisku subskrypcji")  
   
 ### <a name="usage"></a>Sposób użycia  
   
@@ -185,10 +185,10 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Produktu](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a>Anuluj subskrypcję  
+##  <a name="subscription-cancel"></a> Anuluj subskrypcję  
  `subscription-cancel` Kontroli udostępnia kontrolkę do anulowanie subskrypcji produktu na stronie profilu użytkownika w portalu dla deweloperów.  
   
- ![Subskrypcja &#45; Anuluj kontroli](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM kontroli Anuluj subskrypcję")  
+ ![Subskrypcja&#45;Anuluj kontroli](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM kontroli Anuluj subskrypcję")  
   
 ### <a name="usage"></a>Sposób użycia  
   
@@ -210,5 +210,5 @@ Aby użyć formantu, należy umieścić w dowolnym miejscu w szablonie portalu d
   
 -   [Produktu](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](api-management-developer-portal-templates.md).

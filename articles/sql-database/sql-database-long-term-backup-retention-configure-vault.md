@@ -7,18 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0154ec9f08f81d2aa47c607c05f09309f7c23c7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie i Przywróć z bazy danych SQL Azure długoterminowego przechowywania kopii zapasowych za pomocą magazynu usług odzyskiwania Azure
 
 Można skonfigurować magazyn usług odzyskiwania Azure do przechowywania kopii zapasowych bazy danych Azure SQL, a następnie odzyskać bazę danych za pomocą kopii zapasowej przechowywane w magazynie przy użyciu portalu Azure lub programu PowerShell.
+
+> [!NOTE]
+> W ramach początkowa wersja Preview długoterminowego przechowywania kopii zapasowych w października 2016 kopie zapasowe są przechowywane w magazynie usług odzyskiwania usług Azure. Ta aktualizacja usuwa to zależność, ale dla zgodności z poprzednimi wersjami oryginalnego interfejsu API jest obsługiwane do 31 maja 2018. Jeśli potrzebujesz wchodzić w interakcje z kopii zapasowych w magazynie Azure Services Recovery, zobacz [długoterminowego przechowywania kopii zapasowych za pomocą usługi Azure Recovery Services vault](sql-database-long-term-backup-retention-configure-vault.md). 
+
 
 ## <a name="azure-portal"></a>Azure Portal
 

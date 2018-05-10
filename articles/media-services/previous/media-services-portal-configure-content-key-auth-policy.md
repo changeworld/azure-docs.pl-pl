@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 33b958b97a5883d585bbfda167db35107c0c5997
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: db0117b0b4ddee002fc69d71e78eca2b9008e4f6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Skonfiguruj zasady autoryzacji klucza zawartości
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -58,7 +58,7 @@ Aby wybrać zasadzie ograniczenia tokenu, wybierz **TOKENU** przycisku.
 
 Zasadzie ograniczenia tokenu musi towarzyszyć token wystawiony przez usługę tokenu zabezpieczającego (STS). Usługa Media Services obsługuje tokenów w tokenie proste sieci web ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) i formatuje tokenu Web JSON (JWT). Aby uzyskać więcej informacji, zobacz [uwierzytelniania JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
-Usługa Media Services nie dostarcza usługi STS. Można utworzyć niestandardowe usługi STS lub użyj usługi kontroli dostępu platformy Azure do wydawania tokenów. Usługa tokenu Zabezpieczającego musi być skonfigurowana do utworzenia tokenu podpisany z określonego klucza i problem oświadczenia określony w konfiguracji ograniczenia tokenu. Jeśli token jest prawidłowy i oświadczenia w tokenie pasują do klucz zawartości, usługa Media Services klucza dostawy zwraca klucz szyfrowania do klienta. Aby uzyskać więcej informacji, zobacz [usłudze kontroli dostępu platformy Azure używana do wydawania tokenów](http://mingfeiy.com/acs-with-key-services).
+Usługa Media Services nie dostarcza usługi STS. Można tworzyć niestandardowe STS do wystawiania tokenów. Usługa tokenu Zabezpieczającego musi być skonfigurowana do utworzenia tokenu podpisany z określonego klucza i problem oświadczenia określony w konfiguracji ograniczenia tokenu. Jeśli token jest prawidłowy i oświadczenia w tokenie pasują do klucz zawartości, usługa Media Services klucza dostawy zwraca klucz szyfrowania do klienta.
 
 Po skonfigurowaniu zasad ograniczonej token, należy określić klucz podstawowy weryfikacji, wystawcy i parametry odbiorców. Klucz podstawowy weryfikacji zawiera klucz, który został podpisany token, z. Wystawca jest usługa tokenu Zabezpieczającego, które wystawia token. Odbiorców (nazywane również zakres) opisano celem tokenu lub zasobu tokenu zezwala na dostęp do. Usługa Media Services klucza dostawy weryfikuje, czy te wartości w tokenie pasują do wartości w szablonie.
 

@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: fdfee4e06994de1b9a63996203b1a1b9fed9b768
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kodery-dekodery kompresji w fabryce danych Azure
 
@@ -457,13 +457,13 @@ Pamiętaj o następujących kwestiach:
 | UInt32 | Długie |
 | Int64 | Długie |
 | UInt64 | Ciąg |
-| Kawaler/panna | Float |
-| Podwójnej precyzji | Podwójnej precyzji |
+| Pojedyncze | Liczba zmiennoprzecinkowa |
+| O podwójnej precyzji | O podwójnej precyzji |
 | Decimal | Decimal |
 | Ciąg | Ciąg |
 | DateTime | Sygnatura czasowa |
 | DateTimeOffset | Sygnatura czasowa |
-| TimeSpan | Sygnatura czasowa |
+| Zakres czasu | Sygnatura czasowa |
 | ByteArray | Binarny |
 | Identyfikator GUID | Ciąg |
 | char | Char(1) |
@@ -486,7 +486,7 @@ Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, 
 Pamiętaj o następujących kwestiach:
 
 * Złożone typy danych nie są obsługiwane (mapa, lista)
-* Plik Parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
+* Plik Parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Fabryka danych obsługuje Odczyt danych z pliku Parquet w żadnym z tych formatów skompresowane. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie plików Parquet typu danych
 
@@ -501,12 +501,12 @@ Pamiętaj o następujących kwestiach:
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/danych binarnych | UInt64 | Decimal |
-| Kawaler/panna | Float | ND | ND |
-| Podwójnej precyzji | Podwójnej precyzji | ND | ND |
+| Pojedyncze | Liczba zmiennoprzecinkowa | ND | ND |
+| O podwójnej precyzji | O podwójnej precyzji | ND | ND |
 | Decimal | Binarny | Decimal | Decimal |
 | Ciąg | Binarny | Utf8 | Utf8 |
 | DateTime | Int96 | ND | ND |
-| TimeSpan | Int96 | ND | ND |
+| Zakres czasu | Int96 | ND | ND |
 | DateTimeOffset | Int96 | ND | ND |
 | ByteArray | Binarny | ND | ND |
 | Identyfikator GUID | Binarny | Utf8 | Utf8 |

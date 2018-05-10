@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 01f396b4a2b8851ce1433a297981d30328c113b8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: a16d65e9c462bfcacc5ae9f29889667efd9ddb84
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie usługi Azure Workbench Blockchain
 
@@ -79,27 +79,6 @@ Następnie należy zmodyfikować manifest aplikacji do korzystania z ról aplika
 
 4.  Kliknij przycisk **zapisać** można zapisać zmian manifestu aplikacji.
 
-### <a name="add-graph-api-key-to-application"></a>Dodaj klucz interfejsu API programu Graph do aplikacji
-
-Blockchain Workbench korzysta z usługi Azure AD jako tożsamość główna systemu zarządzania interakcji z aplikacjami blockchain użytkowników. Aby Blockchain Workbench dostępu do usługi Azure AD i pobierania informacji o użytkownikach, takich jak nazwy i wiadomości e-mail musisz dodać klucz dostępu. Blockchain Workbench korzysta z klucza uwierzytelniania za pomocą usługi Azure AD.
-
-1. Dla aplikacji został zarejestrowany, wybierz **ustawienia** w okienku szczegółów zarejestrowanej aplikacji.
-2. Wybierz pozycję **Klucze**.
-3. Dodaj nowy klucz przez określenie klucza **opis** i wybierając polecenie **wygasa** wartości czasu trwania. 
-
-    ![Utwórz klucz](media/blockchain-workbench-deploy/app-key-create.png)
-
-    |Ustawienie  | Wartość  |
-    |---------|---------|
-    | Opis | `Service` |
-    | Wygasa | Wybierz czas trwania wygasania |
-
-4. Wybierz pozycję **Zapisz**. 
-5. Skopiuj wartość klucza i zapisze go na później. Będzie potrzebny do wdrożenia.
-
-    > [!IMPORTANT]
-    >  Nie zapisuj klucza dla wdrożenia, należy wygenerować nowy klucz. Nie można pobrać wartości klucza później z portalu.
-
 ### <a name="add-graph-api-required-permissions"></a>Dodaj uprawnienia wymagane interfejsu API programu Graph
 
 Aplikacja interfejsu API musi poprosić uprawnienia użytkownika do dostępu do katalogu. Ustaw następujące uprawnienia wymagane dla aplikacji interfejsu API:
@@ -121,6 +100,27 @@ Aplikacja interfejsu API musi poprosić uprawnienia użytkownika do dostępu do 
    ![Udziel uprawnień](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
 
    Udzielanie uprawnień umożliwia Blockchain Workbench do użytkowników w katalogu. Uprawnienia do odczytu jest wymagane do wyszukiwania i dodawać członków do Blockchain Workbench.
+
+### <a name="add-graph-api-key-to-application"></a>Dodaj klucz interfejsu API programu Graph do aplikacji
+
+Blockchain Workbench korzysta z usługi Azure AD jako tożsamość główna systemu zarządzania interakcji z aplikacjami blockchain użytkowników. Aby Blockchain Workbench dostępu do usługi Azure AD i pobierania informacji o użytkownikach, takich jak nazwy i wiadomości e-mail musisz dodać klucz dostępu. Blockchain Workbench korzysta z klucza uwierzytelniania za pomocą usługi Azure AD.
+
+1. Dla aplikacji został zarejestrowany, wybierz **ustawienia** w okienku szczegółów zarejestrowanej aplikacji.
+2. Wybierz pozycję **Klucze**.
+3. Dodaj nowy klucz przez określenie klucza **opis** i wybierając polecenie **wygasa** wartości czasu trwania. 
+
+    ![Utwórz klucz](media/blockchain-workbench-deploy/app-key-create.png)
+
+    |Ustawienie  | Wartość  |
+    |---------|---------|
+    | Opis | `Service` |
+    | Wygasa | Wybierz czas trwania wygasania |
+
+4. Wybierz pozycję **Zapisz**. 
+5. Skopiuj wartość klucza i zapisze go na później. Będzie potrzebny do wdrożenia.
+
+    > [!IMPORTANT]
+    >  Nie zapisuj klucza dla wdrożenia, należy wygenerować nowy klucz. Nie można pobrać wartości klucza później z portalu.
 
 ### <a name="get-application-id"></a>Uzyskiwanie Identyfikatora aplikacji
 
@@ -170,6 +170,7 @@ Po ukończeniu wstępnie wymagane kroki można przystąpić do wdrażania Blockc
     | Hasło | Hasło służy do nawiązywania połączenia z maszynami wirtualnymi. |
     | Protokół SSH | Użyj klucza publicznego RSA w formacie jednowierszowego zaczyna się od **ssh-rsa** lub użyj formatu PEM wiele wierszy. Możesz wygenerować klucze SSH za pomocą `ssh-keygen` w systemie Linux i OS X lub przy użyciu PuTTYGen w systemie Windows. Więcej informacji na temat kluczy SSH, zobacz [kluczy sposobu korzystania z protokołu SSH z systemem Windows Azure](../virtual-machines/linux/ssh-from-windows.md). |
     | Hasła bazy danych / Potwierdź hasło bazy danych | Określ hasło używane do uzyskiwania dostępu do bazy danych utworzone jako część wdrożenia. |
+    | Region wdrożenia | Określ, gdzie do wdrożenia środowiska roboczego Blockchain zasobów. Dla najlepsze dostępności powinna odpowiadać **lokalizacji** ustawienie. |
     | Subskrypcja | Określ subskrypcję Azure mają być używane dla danego wdrożenia. |
     | Grupy zasobów | Utwórz nową grupę zasobów, wybierając **Utwórz nowy** i określ nazwę grupy zasobów unikatowy. |
     | Lokalizacja | Określ region, który chcesz wdrożyć w ramach. |
@@ -199,7 +200,7 @@ Po ukończeniu wstępnie wymagane kroki można przystąpić do wdrażania Blockc
     | Wydajność magazynu | Wybierz preferowany wydajność magazynu maszyny Wirtualnej w sieci blockchain. |
     | Rozmiar maszyny wirtualnej | Wybierz preferowany rozmiar maszyny Wirtualnej dla sieci blockchain. |
 
-10. Kliknij przycisk **OK** na zakończenie sekcji rozmiaru i wydajności sieci.
+10. Wybierz **OK** na zakończenie sekcji rozmiaru i wydajności sieci.
 
 11. Zakończenie **Azure Monitor** ustawienia.
 
@@ -207,9 +208,8 @@ Po ukończeniu wstępnie wymagane kroki można przystąpić do wdrażania Blockc
 
     | Ustawienie | Opis  |
     |---------|--------------|
-    | Monitorowanie | Wybierz, czy program Azure monitora ma być używany do monitorowania sieci blockchain |
-    | Nawiązać połączenia z istniejącym wystąpieniem OMS | Wybierz, czy chcesz użyć istniejącego wystąpienia usługi Operations Management Suite lub Utwórz nową |
-    | Lokalizacja obszar roboczy OMS | Wybierz obszarem roboczym pakietu OMS. To powinno być zgodne, region dla lokalizacji Blockchain Workbench |
+    | Monitorowanie | Wybierz, czy chcesz włączyć Azure Monitor do monitorowania sieci blockchain |
+    | Nawiązać połączenia z istniejącym wystąpieniem analizy dzienników | Wybierz, czy chcesz użyć istniejącego analizy dzienników wystąpienie lub Utwórz nową. W przypadku używania istniejącego wystąpienia, należy wprowadzić identyfikator i klucz podstawowy. |
 
 12. Kliknij przycisk **OK** na zakończenie sekcji Azure Monitor.
 

@@ -3,23 +3,23 @@ title: Pojedynczy zarządzania logowania jednokrotnego dla aplikacji przedsiębi
 description: Zarządzanie ustawieniami pojedynczego logowania jednokrotnego dla aplikacji przedsiębiorstwa w obrębie organizacji z galerii aplikacji usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 editor: ''
-ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 45141551c502c89311ab7e43b53af50450d8babd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ee8f30bc81d3c3bd0bf4659359a6ca3a9280f734
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Zarządzanie logowanie jednokrotne dla aplikacji przedsiębiorstwa
 

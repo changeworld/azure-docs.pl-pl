@@ -1,19 +1,19 @@
 ---
-title: "Instalowanie serwera głównego celu Linux do trybu failover z platformy Azure do lokalnego | Dokumentacja firmy Microsoft"
-description: "Przed ponownej ochrony maszyny wirtualnej systemu Linux, należy Linux głównego serwera docelowego. Dowiedz się, jak zainstalować jedną."
+title: Instalowanie serwera głównego celu Linux do trybu failover z platformy Azure do lokalnego | Dokumentacja firmy Microsoft
+description: Przed ponownej ochrony maszyny wirtualnej systemu Linux, należy Linux głównego serwera docelowego. Dowiedz się, jak zainstalować jedną.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 986f36cccc9755e5b5a7fc2f81d7e6dff2bf1ccf
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Zainstaluj serwer główny cel systemu Linux
 Po przejścia w tryb failover maszyn wirtualnych na platformie Azure, możesz w trybie wstecz maszyn wirtualnych do lokacji lokalnej. Aby wykonaj powrót po awarii, musisz Włącz ponownie ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. W przypadku tego procesu należy lokalny główny serwer docelowy do odbierania ruchu. 
@@ -240,18 +240,13 @@ Wykonaj następujące kroki, aby utworzyć dysk przechowywania:
 
 1. Dołącz nowy dysk 1 TB do głównej docelowej maszyny wirtualnej systemu Linux, a następnie uruchomienie maszyny.
 
-2. Użyj **wielościeżkowe -ll** polecenie, aby dowiedzieć się wielościeżkowe identyfikator dysku przechowywania.
-    
-     `multipath -ll`
+2. Użyj **wielościeżkowe -ll** polecenie, aby dowiedzieć się wielościeżkowe identyfikator dysku przechowywania: **wielościeżkowe — wszystko**
 
-        ![The multipath ID of the retention disk](./media/vmware-azure-install-linux-master-target/media/image22.png)
+    ![Identyfikator wielościeżkowych](./media/vmware-azure-install-linux-master-target/image22.png)
 
-3. Sformatuj dysk, a następnie utworzyć systemu plików na nowym dysku.
-
+3. Sformatuj dysk, a następnie utworzyć systemu plików na nowym dysku: **mkfs.ext4 /dev/mapowania/< identyfikator wielościeżkowe dysku przechowywania >**.
     
-    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
-    
-    ![Tworzenie system plików na dysku](./media/vmware-azure-install-linux-master-target/image23-centos.png)
+    ![System plików](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Po utworzeniu systemu plików, należy zainstalować dysk przechowywania.
 
@@ -266,7 +261,7 @@ Wykonaj następujące kroki, aby utworzyć dysk przechowywania:
     
     Wybierz **Wstaw** aby rozpocząć edytowanie pliku. Utwórz nowy wiersz, a następnie wstaw następujący tekst. Edytuj identyfikator wielościeżkowe dysku, na podstawie Identyfikatora wielościeżkowe wyróżnione z poprzednie polecenie.
 
-     **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
+    **/dev/mapowania/ <Retention disks multipath id> /mnt/rw ext4 przechowywania 0 0**
 
     Wybierz **Esc**, a następnie wpisz **: wq** (zapisać i zamknąć) aby zamknąć okno edytora.
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f5bee7b85a423ba7a1b0b36b4b6910275551849c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="overview"></a>Przegląd
 W konsoli usługi Azure Media Services (AMS) **kanału** reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. A **kanału** odbiera na żywo wejściowych strumieni w jeden z dwóch sposobów:
 
-* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału obsługującego kodowanie na żywo za pomocą usługi Media Services w jednym z następujących formatów: RTP (MPEG TS), RTMP lub Smooth Streaming (pofragmentowany plik MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Na lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo w usłudze Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 * Na lokalny koder na żywo wysyła różnych szybkościach transmisji bitów **RTMP** lub **Smooth Streaming** (pofragmentowany MP4) do kanału, który nie jest włączony do przeprowadzania kodowania na żywo przy użyciu usługi AMS. Pozyskiwane strumienie są przekazywane za pośrednictwem **kanału**s bez dalszego przetwarzania. Ta metoda jest wywoływana **przekazywanego**. Można użyć następujących koderów na żywo, które udostępniają Smooth Streaming wielokrotnej szybkości transmisji bitów: MediaExcel, Ateme, Wyobraź sobie komunikacji, Envivio, Cisco i Elemental. Następujące kodery na żywo wysyłają pliki RTMP: Adobe Flash Media na żywo kodera (FMLE), Telestream Wirecast, Haivision, Teradek i Tricaster koderów.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
   
   > [!NOTE]
@@ -79,7 +79,7 @@ Począwszy od 25 stycznia 2016 Media Services wprowadzanie aktualizacji, która 
 Próg okres nieużywane nominalnie jest 12 godzin, ale może ulec zmianie.
 
 ## <a name="live-encoding-workflow"></a>Przepływ pracy kodowania na żywo
-Poniższy diagram przedstawia na żywo przepływ pracy transmisji strumieniowej, gdzie kanał odbiera strumień o pojedynczej szybkości transmisji bitów w jednym z następujących protokołów: RTMP, Smooth Streaming lub RTP (MPEG-TS); koduje go następnie strumienia do strumienia o wielokrotnej szybkości transmisji bitów. 
+Poniższy diagram przedstawia na żywo przepływ pracy transmisji strumieniowej, gdzie kanał odbiera strumień o pojedynczej szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming; koduje go następnie strumienia do strumienia o wielokrotnej szybkości transmisji bitów. 
 
 ![Przepływ pracy na żywo][live-overview]
 
@@ -91,7 +91,7 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 > 
 > 
 
-1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj na lokalny koder na żywo, który wysyła strumień **pojedynczego** szybkości transmisji bitów w jednym z następujących protokołów: RTMP, Smooth Streaming lub RTP (MPEG-TS). 
+1. Podłącz kamerę wideo do komputera. Uruchom i skonfiguruj na lokalny koder na żywo, który wysyła strumień **pojedynczego** szybkości transmisji bitów w jednym z następujących protokołów: RTMP lub Smooth Streaming. 
    
     Ten krok można również wykonać po utworzeniu kanału.
 2. Utwórz i uruchom kanał. 
@@ -125,48 +125,8 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 ### <a id="Ingest_Protocols"></a>Pozyskiwania protokołu przesyłania strumieniowego
 Jeśli **typu kodera** ustawiono **standardowe**, prawidłowe opcje to:
 
-* **RTP** (MPEG-TS): strumień transportu MPEG-2 przy użyciu protokołu RTP.  
 * Pojedynczej szybkości transmisji bitów **RTMP**
 * Pojedynczej szybkości transmisji bitów **pofragmentowany MP4** (Smooth Streaming)
-
-#### <a name="rtp-mpeg-ts---mpeg-2-transport-stream-over-rtp"></a>RTP (MPEG-TS) - strumień transportu MPEG-2 przy użyciu protokołu RTP.
-Typowy przypadek użycia: 
-
-Professional nadawców programy zwykle współdziałają z koderów na żywo lokalny wysokiej klasy od dostawców, takich jak stanie wolnym technologii, Ericsson, Ateme, imprezie Imagine lub Envivio do wysyłania strumienia. Często używane w połączeniu z działu informatycznego i sieciach prywatnych.
-
-Kwestie do rozważenia:
-
-* Zdecydowanie zalecane jest używanie jednego programu strumień transportowy (SPTS) danych wejściowych. 
-* Można wprowadzić do 8 strumieni audio przy użyciu usług terminalowych MPEG-2 przy użyciu protokołu RTP. 
-* Strumienia wideo powinien mieć średniej szybkości transmisji bitów poniżej 15 MB/s
-* Łączny średniej szybkości transmisji bitów strumieni audio powinno być niższe niż 1 MB/s
-* Kodeki obsługiwane są następujące:
-  
-  * MPEG-2 / H.262 wideo 
-    
-    * Główny profil (4:2:0)
-    * Profil wysokiej (4:2:0, 4:2:2)
-    * Profil 422 (4:2:0, 4:2:2)
-  * MPEG-4 AVC / wideo H.264  
-    
-    * Linii bazowej, Main, wysokiej profilu (8-bitową 4:2:0)
-    * Wysoka profilu 10 (10-bitowy 4:2:0)
-    * Wysoka 422 profilu (10-bitowy 4:2:2)
-  * Audio AAC-LC MPEG-2 
-    
-    * Mono, Stereo, przestrzennego (5.1, 7.1)
-    * OPAKOWYWANIE ADTS styl MPEG-2
-  * Dolby Audio cyfrowy (AC-3) 
-    
-    * Mono, Stereo, przestrzennego (5.1, 7.1)
-  * MPEG Audio (warstwy II i III) 
-    
-    * Mono, Stereo
-* Zalecane emisji koderów to:
-  
-  * Imagine Communications Selenio ENC 1
-  * Imagine Communications Selenio ENC 2
-  * Elemental na żywo
 
 #### <a id="single_bitrate_RTMP"></a>Pojedyncza szybkość transmisji bitów RTMP
 Kwestie do rozważenia:
@@ -232,36 +192,21 @@ Można zdefiniować adresy IP, które mogą łączyć się z punktem końcowym w
 W tej sekcji opisano, jak ustawień kodera na żywo w kanale można dostosować, gdy **typu kodowania** kanał jest ustawiony na wartość **standardowe**.
 
 > [!NOTE]
-> Gdy wprowadzanie wielu wersji językowych i wykonywania, kodowanie na żywo przy użyciu platformy Azure, tylko RTP jest obsługiwane dla wielu języków w danych wejściowych. Można określić maksymalnie 8 strumieni audio przy użyciu usług terminalowych MPEG-2 przy użyciu protokołu RTP. Wprowadzania wielu ścieżek audio RTMP lub Smooth streaming nie jest obecnie obsługiwane. Twoją kodowanie na żywo z [live lokalnymi koduje](media-services-live-streaming-with-onprem-encoders.md), jest nie takiego ograniczenia, ponieważ niezależnie od są wysyłane do usługi AMS przechodzi przez kanał bez dalszego przetwarzania.
+> Twoim kanale informacyjnym udział może zawierać tylko pojedynczą ścieżkę audio — wprowadzania wielu ścieżek audio nie jest obecnie obsługiwany. Twoją kodowanie na żywo z [live lokalnymi koduje](media-services-live-streaming-with-onprem-encoders.md), możesz wysłać udziału źródła strumieniowego w protokole Smooth Streaming zawierający wiele ścieżek audio.
 > 
 > 
 
 ### <a name="ad-marker-source"></a>Źródło znacznika usługi AD
 Można określić źródło sygnałów znaczników reklamowych. Wartość domyślna to **interfejsu Api**, co oznacza, że koder na żywo w kanale powinien nasłuchiwać asynchronicznego **interfejsu API znacznika reklamy**.
 
-Jest prawidłową opcją **Scte35** (dozwolone tylko wtedy, jeśli protokół strumieniowe pozyskiwania ustawiono RTP (MPEG-TS). W przypadku Scte35 kodera na żywo będzie analizować sygnały SCTE 35 ze strumienia wejściowego RTP (MPEG-TS).
-
 ### <a name="cea-708-closed-captions"></a>CEA 708 zamknięte podpisy
 Opcjonalna Flaga, która określa, że koder na żywo będzie ignorował wszystkie dane podpisy CEA 708 osadzony w przychodzących wideo. Jeśli flaga jest ustawiona na false (ustawienie domyślne), koder wykryje i ponownie wstawić CEA 708 danych do strumieni wideo w danych wyjściowych.
-
-### <a name="video-stream"></a>Strumienia wideo
-Opcjonalny. W tym artykule opisano wejściowego strumienia wideo. Jeśli to pole nie zostanie określona, zostanie użyta domyślna wartość. To ustawienie jest dozwolone tylko wtedy, gdy ustawiono danych wejściowych, przesyłanie strumieniowe protokołu RTP (MPEG-TS).
-
-#### <a name="index"></a>Indeks
-Liczony od zera indeks, który określa, które wejściowego strumienia wideo powinny być przetwarzane przez koder na żywo w kanale. To ustawienie ma zastosowanie tylko wtedy, gdy pozyskiwania przesyłania strumieniowego protokół jest RTP (MPEG-TS).
-
-Wartość domyślna wynosi zero. Zaleca się wysyłanie w jednym programie strumień transportowy (SPTS). Jeśli strumień wejściowy zawiera wiele programów, kodera na żywo analizuje tabeli mapy programu (rata) w danych wejściowych, identyfikuje dane wejściowe, które mają nazwę typu strumienia wideo MPEG-2 lub H.264 i rozmieszcza je w kolejności określonej w konto Liczony od zera indeks jest następnie używany do odebrania wpis n-ty percentyl, w tym układ.
-
-### <a name="audio-stream"></a>Audio Stream
-Opcjonalny. W tym artykule opisano strumienie wejściowe audio. Jeśli to pole nie zostanie określony, mają zastosowanie określone wartości domyślne. To ustawienie jest dozwolone tylko wtedy, gdy ustawiono danych wejściowych, przesyłanie strumieniowe protokołu RTP (MPEG-TS).
 
 #### <a name="index"></a>Indeks
 Zaleca się wysyłanie w jednym programie strumień transportowy (SPTS). Jeśli strumień wejściowy zawiera wiele programów, analizuje tabeli mapy programu (rata) w danych wejściowych kodera na żywo w kanale, który identyfikuje dane wejściowe, które mają nazwę typu strumienia ADTS AAC MPEG-2 lub AC-3, System A AC 3 systemu-B lub prywatnej PES MPEG-2 lub MPEG-1 Audio lub Audio MPEG-2 i rozmieszcza je w kolejności określonej w konto Liczony od zera indeks jest następnie używany do odebrania wpis n-ty percentyl, w tym układ.
 
 #### <a name="language"></a>Język
 Identyfikator języka strumieniem audio, zgodne z normą ISO 639-2, takich jak ENG. Jeśli nie istnieje, wartość domyślna to i (niezdefiniowanej).
-
-Może istnieć maksymalnie 8 zestawy strumieniem audio określona, jeśli dane wejściowe do kanału jest MPEG-2 TS przy użyciu protokołu RTP. Jednak może być brak dwóch wpisów z tą samą wartością indeksu.
 
 ### <a id="preset"></a>Ustawienie systemu
 Określa ustawienie wstępne do użycia przez koder na żywo w tym kanale. Obecnie jest jedyną dozwoloną wartość **Default720p** (ustawienie domyślne).
@@ -387,13 +332,11 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 * Rozliczenie jest przeprowadzane tylko w przypadku kanału **systemem** stanu. Aby uzyskać więcej informacji, zapoznaj się [to](media-services-manage-live-encoder-enabled-channels.md#states) sekcji.
 * Obecnie maksymalny zalecany czas trwania wydarzenia na żywo wynosi 8 godzin. Napisz na adres amslived@microsoft.com, jeśli potrzebujesz uruchomić kanał na dłuższy czas.
 * Upewnij się, że ma punktu końcowego przesyłania strumieniowego, z którego chcesz zawartości strumienia w **systemem** stanu.
-* Gdy wprowadzanie wielu wersji językowych i wykonywania, kodowanie na żywo przy użyciu platformy Azure, tylko RTP jest obsługiwane dla wielu języków w danych wejściowych. Można określić maksymalnie 8 strumieni audio przy użyciu usług terminalowych MPEG-2 przy użyciu protokołu RTP. Wprowadzania wielu ścieżek audio RTMP lub Smooth streaming nie jest obecnie obsługiwane. Twoją kodowanie na żywo z [live lokalnymi koduje](media-services-live-streaming-with-onprem-encoders.md), jest nie takiego ograniczenia, ponieważ niezależnie od są wysyłane do usługi AMS przechodzi przez kanał bez dalszego przetwarzania.
 * Ustawienie wstępne kodowania używa pojęcie "maksymalną szybkość" 30 klatek na sekundę. Dlatego w przypadku danych wejściowych jest 60 klatek na sekundę / 59.97i, ramki wejściowe są porzucony/dezaktywuje-interlaced do 30/29,97 kl. / s. Jeśli dane wejściowe są 50 klatek na sekundę/50i, ramki wejściowe są porzucony/dezaktywuje-interlaced do 25 kl. / s. Jeśli dane wejściowe są 25 kl. / s, dane wyjściowe pozostaje w 25 kl. / s.
 * Nie zapomnij o zatrzymanie YOUR kanały po zakończeniu. Jeśli nie, będą nadal rozliczeń.
 
 ## <a name="known-issues"></a>Znane problemy
 * Czas uruchamiania kanału została zwiększona do średnio 2 minuty, ale w czasie z rosnącego zapotrzebowania trwało maksymalnie 20 + minut.
-* Obsługa RTP jest stacji nadawanych kierunku nadawców professional. Przejrzyj uwagi o RTP w [to](https://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/) blogu.
 * Obrazy łupków powinna być zgodna z opisem ograniczenia [tutaj](media-services-manage-live-encoder-enabled-channels.md#default_slate). Jeśli nastąpi próba utworzenia kanału z łupków domyślny, który jest większy niż 1920 x 1080 pikseli, żądanie zostanie ostatecznie błąd.
 * Ponownie... nie zapomnij kanały YOUR STOP, po zakończeniu przesyłania strumieniowego. Jeśli nie, będą nadal rozliczeń.
 

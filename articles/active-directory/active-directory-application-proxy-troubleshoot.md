@@ -1,25 +1,25 @@
 ---
-title: "Rozwiązywanie problemów z serwera Proxy aplikacji | Dokumentacja firmy Microsoft"
-description: "Opisano sposoby rozwiązywania problemów w serwera Proxy aplikacji usługi Azure AD."
+title: Rozwiązywanie problemów z serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+description: Opisano sposoby rozwiązywania problemów w serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 970caafb-40b8-483c-bb46-c8b032a4fb74
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54e0ebe60981ef429fdfc97cee1b460b03261a9f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpi błąd podczas uzyskiwania dostępu do opublikowanych aplikacji lub w przypadku publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji usługi AD Microsoft Azure działa poprawnie:
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji o narzędziu Azure AD Rozwiązywanie problemów,
 ## <a name="the-page-is-not-rendered-correctly"></a>Strony nie są odtwarzane poprawnie
 Mogą wystąpić problemy z aplikacją renderowania lub działać poprawnie bez otrzymania określone komunikaty o błędach. Może to wystąpić, jeśli opublikowane Ścieżka artykułu, ale aplikacja wymaga zawartości znajdujących się poza tej ścieżki.
 
-Na przykład jeśli publikowanie https://yourapp/app ścieżki, ale aplikacja wywołuje obrazów w https://yourapp/media, ich nie być renderowane. Upewnij się, że publikowanie aplikacji przy użyciu najwyższego poziomu ścieżki należy uwzględnić wszystkie odpowiedniej zawartości. W tym przykładzie byłoby http://yourapp/.
+Na przykład, jeśli publikowanie ścieżka https://yourapp/app , ale aplikacja wywołuje obrazów https://yourapp/media, nie będą one być renderowane. Upewnij się, że publikowanie aplikacji przy użyciu najwyższego poziomu ścieżki należy uwzględnić wszystkie odpowiedniej zawartości. W tym przykładzie będzie http://yourapp/.
 
 W przypadku zmiany ścieżki uwzględnić zawartość, której dotyczy odwołanie, ale mimo to muszą użytkownikom trafić na bardziej łącze w ścieżce, zobacz wpis w blogu [ustawienie łącze prawym dla aplikacji serwera Proxy aplikacji w usłudze Azure AD dostęp panelu i uruchamianie aplikacji usługi Office 365](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 

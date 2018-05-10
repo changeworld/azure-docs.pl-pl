@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2c3443f014f6c42ba9e8b68b21c2b9d0fdb1549
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f6b01c2a0bfacb4e7e121cdb06ad8be4ab17d53a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -260,8 +260,8 @@ ms.lasthandoff: 04/23/2018
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md
-[virtual-machines-linux-agent-user-guide]:../../linux/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide-command-line-options]:../../linux/agent-user-guide.md#command-line-options
+[virtual-machines-linux-agent-user-guide]:../../extensions/agent-linux.md
+[virtual-machines-linux-agent-user-guide-command-line-options]:../../extensions/agent-windows.md#command-line-options
 [virtual-machines-linux-capture-image]:../../linux/capture-image.md
 [virtual-machines-linux-capture-image-resource-manager]:../../linux/capture-image.md
 [virtual-machines-linux-capture-image-resource-manager-capture]:../../linux/capture-image.md#step-2-capture-the-vm
@@ -1630,8 +1630,8 @@ W tabeli poniżej SAP typowe porty komunikacyjne są wyświetlane. Zasadniczo je
 | --- | --- | --- | --- | --- |
 | Dyspozytor |sapdp`<nn>` zobacz * |3201 |3200 - 3299 |Dyspozytor SAP, używany przez SAP graficznego interfejsu użytkownika dla systemu Windows i języka Java |
 | Serwer komunikatów |sapms`<sid`> zobacz ** |3600 |bezpłatne sapms`<anySID`> |Identyfikator SID = Identyfikatorem systemu SAP |
-| Brama |sapgw`<nn`> zobacz * |3301 |W warstwie bezpłatna |Bramą SAP, używany do komunikacji CPIC i RFC |
-| SAP router |sapdp99 |3299 |W warstwie bezpłatna |Tylko nazwy usługi CI (centralnej wystąpienia) można przypisać ponownie w /etc/services dowolne wartości po zakończeniu instalacji. |
+| Brama |sapgw`<nn`> zobacz * |3301 |bezpłatna |Bramą SAP, używany do komunikacji CPIC i RFC |
+| SAP router |sapdp99 |3299 |bezpłatna |Tylko nazwy usługi CI (centralnej wystąpienia) można przypisać ponownie w /etc/services dowolne wartości po zakończeniu instalacji. |
 
 *) nn = liczby wystąpień programu SAP
 

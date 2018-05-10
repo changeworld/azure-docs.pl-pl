@@ -1,33 +1,29 @@
 ---
-title: "Tworzenie tematów i kolejek usługi Azure Service Bus partycjonowanej | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób partycji tematów i kolejek usługi Service Bus przy użyciu wielu brokerzy wiadomości."
+title: Tworzenie tematów i kolejek usługi Azure Service Bus partycjonowanej | Dokumentacja firmy Microsoft
+description: Opisuje sposób partycji tematów i kolejek usługi Service Bus przy użyciu wielu brokerzy wiadomości.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: a0c7d5a2-4876-42cb-8344-a1fc988746e7
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2017
+ms.date: 05/08/2016
 ms.author: sethm
-ms.openlocfilehash: beebfb496604b422e091cd3b4425933f3cea1283
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0759decec9d80f1f836110a8907049213ca1eed6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
-Usługa Azure Service Bus jest stosowana w wielu brokerów komunikat do przetwarzania komunikatów i wiele magazynów obsługi komunikatów do przechowywania komunikatów. Konwencjonalne kolejka lub temat są obsługiwane przez brokera pojedynczej wiadomości i przechowywane w jeden Magazyn obsługi komunikatów. Usługa Service Bus *partycje* włączyć kolejek i tematów, lub *jednostki do obsługi komunikatów*, aby być dzielony na partycje w wielu brokerzy wiadomości i magazyny obsługi komunikatów. Oznacza to, że ogólną przepustowość partycjonowane jednostki nie jest już ograniczone przez wydajność brokera komunikatów pojedynczego lub magazynie obsługi komunikatów. Ponadto tymczasowego awaria magazynie obsługi komunikatów nie renderować partycjonowanej kolejka lub temat niedostępny. Partycjonowane kolejek i tematów może zawierać wszystkich zaawansowanych funkcji usługi Service Bus, takie jak obsługa transakcji i sesje.
+
+Usługa Azure Service Bus jest stosowana w wielu brokerów komunikat do przetwarzania komunikatów i wiele magazynów obsługi komunikatów do przechowywania komunikatów. Konwencjonalne kolejka lub temat są obsługiwane przez brokera pojedynczej wiadomości i przechowywane w jeden Magazyn obsługi komunikatów. Usługa Service Bus *partycje* włączyć kolejek i tematów, lub *jednostki do obsługi komunikatów*, aby być dzielony na partycje w wielu brokerzy wiadomości i magazyny obsługi komunikatów. Partycjonowanie oznacza, że ogólną przepustowość partycjonowane jednostki nie jest już ograniczone przez wydajność brokera komunikatów pojedynczego lub magazynie obsługi komunikatów. Ponadto tymczasowego awaria magazynie obsługi komunikatów nie renderować partycjonowanej kolejka lub temat niedostępny. Partycjonowane kolejek i tematów może zawierać wszystkich zaawansowanych funkcji usługi Service Bus, takie jak obsługa transakcji i sesje.
 
 Informacje o wewnętrzne usługi Service Bus, zobacz [Architektura usługi Service Bus] [ Service Bus architecture] artykułu.
 
-Partycjonowanie jest włączone domyślnie podczas tworzenia jednostki dla wszystkich kolejek i tematów w wersjach Standard i Premium messaging. Można utworzyć Standard warstwy jednostki do obsługi komunikatów bez podziału na partycje, ale kolejek i tematów w przestrzeni nazw Premium zawsze są podzielone na partycje; Nie można wyłączyć tę opcję. 
-
-Nie jest możliwe do zmiany opcji podziału na istniejącej kolejki lub tematu w warstwy standardowa lub Premium, można ustawić tylko opcji podczas tworzenia jednostki.
+> [!NOTE]
+> Partycjonowanie jest dostępny na tworzenie jednostki dla wszystkich kolejek i tematów w Basic lub Standard jednostki SKU. Nie jest dostępna dla Premium jednostka SKU komunikatów, ale wszelkie istniejące partycjonowane jednostki w warstwie Premium będzie działać zgodnie z oczekiwaniami.
+ 
+Nie można zmienić opcji podziału na wszelkie istniejące kolejka lub temat; Opcja można ustawić tylko podczas tworzenia jednostki.
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -41,13 +37,13 @@ Nie ma żadnych dodatkowych kosztów przy wysyłaniu wiadomości lub odbierania 
 
 Aby używać partycjonowanej kolejek i tematów z usługi Azure Service Bus, korzystanie z zestawu SDK platformy Azure w wersji 2,2 lub nowszej, lub określ `api-version=2013-10` lub nowszej w Twoich żądań HTTP.
 
-### <a name="standard"></a>Standardowa
+### <a name="standard"></a>Standardowa (Standard)
 
-W warstwie standardowej obsługi wiadomości można utworzyć kolejki usługi Service Bus i tematów w rozmiarze 1, 2, 3, 4 lub 5 GB (wartość domyślna to 1 GB). Z partycjonowania włączone, usługi Service Bus tworzy 16 kopie (16 partycji) jednostki dla każdego Gigabajta określisz. Tak, można utworzyć kolejkę o rozmiarze 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 \* 16) = 80 GB. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal]w **omówienie** bloku dla tej jednostki.
+W warstwie standardowej obsługi wiadomości można utworzyć kolejki usługi Service Bus i tematy w 1, 2, 3, 4 lub rozmiarze 5 GB (wartość domyślna to 1 GB). Z partycjonowania włączone, usługi Service Bus tworzy 16 kopie (16 partycji) jednostki dla każdego Gigabajta określisz. Tak, można utworzyć kolejkę o rozmiarze 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 \* 16) = 80 GB. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal]w **omówienie** bloku dla tej jednostki.
 
 ### <a name="premium"></a>Premium
 
-W przypadku przestrzeni nazw warstwy Premium można utworzyć kolejki usługi Service Bus i tematów w rozmiarze 1, 2, 3, 4, 5, 10, 20, 40 lub 80 GB (wartość domyślna to 1 GB). W partycji, domyślnie włączona, usługi Service Bus tworzy dwie partycje nieobsługujące jednostki. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal]w **omówienie** bloku dla tej jednostki.
+W przypadku przestrzeni nazw warstwy Premium można utworzyć kolejki usługi Service Bus i tematy w 1, 2, 3, 4, 5, 10, 20, 40 lub rozmiary 80 GB (wartość domyślna to 1 GB). W partycji, domyślnie włączona, usługi Service Bus tworzy dwie partycje nieobsługujące jednostki. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal]w **omówienie** bloku dla tej jednostki.
 
 Aby uzyskać więcej informacji na temat partycjonowania w warstwie Premium obsługi komunikatów, zobacz [usługi Service Bus w warstwie Premium i standardowa komunikatami w warstwie](service-bus-premium-messaging.md). 
 
@@ -73,11 +69,11 @@ Niektóre scenariusze, takie jak sesji lub transakcji, wymagają wiadomości, kt
 
 W zależności od scenariusza inny komunikat właściwości są używane jako klucza partycji:
 
-**Identyfikator sesji**: Jeśli wiadomość ma [BrokeredMessage.SessionId] [ BrokeredMessage.SessionId] ustaw właściwość, a następnie usługi Service Bus używa tej właściwości jako klucza partycji. Dzięki temu wszystkie komunikaty, które należą do tej samej sesji są obsługiwane przez tego samego brokera komunikatów. Dzięki temu usługa Service Bus zagwarantowanie komunikat porządkowanie oraz spójności stanów sesji.
+**Identyfikator sesji**: Jeśli wiadomość ma [BrokeredMessage.SessionId] [ BrokeredMessage.SessionId] ustaw właściwość, a następnie usługi Service Bus używa tej właściwości jako klucza partycji. Dzięki temu wszystkie komunikaty, które należą do tej samej sesji są obsługiwane przez tego samego brokera komunikatów. Sesje Włącz usługi Service Bus zagwarantowanie komunikat porządkowanie oraz spójności stanów sesji.
 
 **PartitionKey**: Jeśli wiadomość ma [BrokeredMessage.PartitionKey] [ BrokeredMessage.PartitionKey] właściwości, ale nie [BrokeredMessage.SessionId] [ BrokeredMessage.SessionId] ustaw właściwość, a następnie używa usługi Service Bus [PartitionKey] [ PartitionKey] właściwość jako klucza partycji. Jeśli wiadomość ma zarówno atrybut [SessionId] [ SessionId] i [PartitionKey] [ PartitionKey] zestaw właściwości obie właściwości muszą być takie same. Jeśli [PartitionKey] [ PartitionKey] właściwość jest ustawiona na wartość inną niż [SessionId] [ SessionId] właściwość, usługi Service Bus zwraca jest nieprawidłowa wyjątek operacji. [PartitionKey] [ PartitionKey] właściwości należy używać, gdy nadawca wysyła wiadomości transakcyjne pamiętać-session. Klucz partycji gwarantuje, że wszystkie komunikaty, które są wysyłane w ramach transakcji są obsługiwane przez tego samego brokera obsługi komunikatów.
 
-**Identyfikator komunikatu**: Jeśli kolejka lub temat ma [QueueDescription.RequiresDuplicateDetection] [ QueueDescription.RequiresDuplicateDetection] ustawioną właściwość **true** i [ BrokeredMessage.SessionId] [ BrokeredMessage.SessionId] lub [BrokeredMessage.PartitionKey] [ BrokeredMessage.PartitionKey] nie ustawiono właściwości, a następnie [ BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] właściwość służy jako klucza partycji. (Należy pamiętać, że biblioteki Microsoft .NET i protokołu AMQP automatycznie przypisać identyfikator komunikatu, jeśli aplikacja wysyłająca nie). W takim przypadku wszystkie kopie tej samej wiadomości są obsługiwane przez tego samego brokera komunikatów. Dzięki temu usługa Service Bus do wykrywania i eliminowania duplikatów wiadomości. Jeśli [QueueDescription.RequiresDuplicateDetection] [ QueueDescription.RequiresDuplicateDetection] nie ustawiono właściwości **true**, magistrali usług nie należy wziąć pod uwagę [MessageId] [ MessageId] właściwość jako klucza partycji.
+**Identyfikator komunikatu**: Jeśli kolejka lub temat ma [QueueDescription.RequiresDuplicateDetection] [ QueueDescription.RequiresDuplicateDetection] ustawioną właściwość **true** i [ BrokeredMessage.SessionId] [ BrokeredMessage.SessionId] lub [BrokeredMessage.PartitionKey] [ BrokeredMessage.PartitionKey] nie ustawiono właściwości, a następnie [ BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] właściwość służy jako klucza partycji. (Biblioteki Microsoft .NET i protokołu AMQP automatycznie przypisywać identyfikator komunikatu Jeśli aplikacja wysyłająca nie.) W takim przypadku wszystkie kopie tej samej wiadomości są obsługiwane przez tego samego brokera komunikatów. Ten identyfikator umożliwia korzystanie z usługi Service Bus do wykrywania i eliminowania duplikatów wiadomości. Jeśli [QueueDescription.RequiresDuplicateDetection] [ QueueDescription.RequiresDuplicateDetection] nie ustawiono właściwości **true**, magistrali usług nie należy wziąć pod uwagę [MessageId] [ MessageId] właściwość jako klucza partycji.
 
 ### <a name="not-using-a-partition-key"></a>Nie używa klucza partycji
 W przypadku braku klucza partycji usługi Service Bus dystrybuuje wiadomości w okrężne do wszystkie fragmenty partycjonowanej kolejka lub temat. Wybrany fragment jest niedostępny, usługi Service Bus przypisuje komunikat różnych fragmentu. W ten sposób wysyłania powiedzie się niezależnie od tymczasowej niedostępności magazynie obsługi komunikatów. Jednak nie będzie osiągnąć gwarantuje kolejność, który zawiera klucz partycji.
@@ -86,10 +82,10 @@ Aby uzyskać bardziej szczegółowym omówieniem zależności między dostępno�
 
 Aby zapewnić usługi Service Bus wystarczająco dużo czasu można umieścić w kolejce wiadomości do fragmentu innego [MessagingFactorySettings.OperationTimeout] [ MessagingFactorySettings.OperationTimeout] wartość określoną przez klienta, który wysyła wiadomości musi być większa od 15 sekund. Zalecane jest, aby ustawić [OperationTimeout] [ OperationTimeout] właściwości wartość domyślna wynosząca 60 sekund.
 
-Należy pamiętać, że klucz partycji "PIN" komunikat do określonego fragmentu. Jeśli w magazynie obsługi komunikatów, który zawiera ten fragment jest niedostępny, usługi Service Bus zwraca błąd. W przypadku braku klucza partycji usługi Service Bus można wybrać różne fragmentu i powiedzie się. Dlatego zaleca się, że nie zostanie podany klucz partycji, chyba że jest to wymagane.
+Klucz partycji "PIN" komunikat do określonego fragmentu. Jeśli w magazynie obsługi komunikatów, który zawiera ten fragment jest niedostępny, usługi Service Bus zwraca błąd. W przypadku braku klucza partycji usługi Service Bus można wybrać różne fragmentu i powiedzie się. Dlatego zaleca się, że nie zostanie podany klucz partycji, chyba że jest to wymagane.
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Tematy zaawansowane: transakcji za pomocą partycjonowane jednostki
-Komunikaty, które są wysyłane jako część transakcji muszą określać klucz partycji. Może to być jeden z następujących właściwości: [BrokeredMessage.SessionId][BrokeredMessage.SessionId], [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey], lub [ BrokeredMessage.MessageId][BrokeredMessage.MessageId]. Wszystkie komunikaty, które są wysyłane w ramach tej samej transakcji należy określić ten sam klucz partycji. Jeśli chcesz wysłać wiadomość bez klucza partycji w ramach transakcji, usługi Service Bus zwraca wyjątek Nieprawidłowa operacja. Próba wysyłania wielu wiadomości w tej samej transakcji o różnych kluczach partycji usługi Service Bus zwraca wyjątek Nieprawidłowa operacja. Na przykład:
+Komunikaty wysyłane w ramach transakcji muszą określać klucz partycji. Klucz musi być jedną z następujących właściwości: [BrokeredMessage.SessionId][BrokeredMessage.SessionId], [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey], lub [ BrokeredMessage.MessageId][BrokeredMessage.MessageId]. Wszystkie komunikaty, które są wysyłane w ramach tej samej transakcji należy określić ten sam klucz partycji. Jeśli chcesz wysłać wiadomość bez klucza partycji w ramach transakcji, usługi Service Bus zwraca wyjątek Nieprawidłowa operacja. Próba wysyłania wielu wiadomości w tej samej transakcji o różnych kluczach partycji usługi Service Bus zwraca wyjątek Nieprawidłowa operacja. Na przykład:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -129,7 +125,7 @@ Usługa Service Bus obsługuje komunikat automatycznego przesyłania dalej z, ab
 * **Funkcje wysokiej spójności**: Jeśli jednostki korzysta z funkcji, takich jak sesje, wykrywania duplikatów lub jawne kontrolę nad kluczem partycjonowania, a następnie operacje obsługi wiadomości zawsze są kierowane do określonego fragmenty. Jeśli występują dowolne z fragmentów dużego natężenia ruchu sieciowego lub odpowiedni magazyn jest zła, te operacje kończą się niepowodzeniem, i zmniejsza dostępności. Generalnie spójności jest nadal znacznie wyższa niż niepartycjonowany jednostki; tylko podzestaw ruchu wystąpiły problemy, a nie cały ruch. Aby uzyskać więcej informacji, zobacz [Omówienie dostępności i spójności](../event-hubs/event-hubs-availability-and-consistency.md).
 * **Zarządzanie**: należy wykonać operacji, takich jak tworzenie, Update i Delete na wszystkie fragmenty jednostki. Jeśli wszystkie fragment jest zła, może to spowodować błędy do tych operacji. Dla operacji Get informacje takie jak liczba wiadomości musi być agregowana z wszystkie fragmenty. Jeśli wszystkie fragment jest zła, stan dostępności jednostki został zgłoszony jako ograniczone.
 * **Niska scenariuszy komunikat**: dla takich scenariuszy, szczególnie w przypadku, gdy przy użyciu protokołu HTTP, może zajść potrzeba wykonania wielu operacji pobrania w celu uzyskania wszystkie komunikaty. Dla żądania odbierania fronton wykonuje receive na wszystkie fragmenty i przechowuje wszystkie odpowiedzi. Żądania odbierania kolejnych w ramach tego samego połączenia będzie korzystać z tej pamięci podręcznej i odbierania opóźnienia będzie niższa. Jednak jeśli masz wiele połączeń lub za pomocą protokołu HTTP, który ustanawia nowego połączenia dla każdego żądania. W efekcie nie ma żadnej gwarancji, że będzie on trafić w tym samym węźle. Jeśli wszystkie istniejące wiadomości są zablokowane i są przechowywane w innej frontonu, operacja receive zwraca **null**. Po pewnym czasie wygaśnięcia wiadomości i może odbierać je ponownie. Utrzymanie aktywności HTTP jest zalecane.
-* **Przeglądaj/Peek wiadomości**: [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nie zawsze zwraca liczbę wiadomości określona w [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) właściwości. Istnieją dwie typowe powody to. Jedną z przyczyn jest to, że zagregowane rozmiar kolekcji komunikatów przekracza maksymalny rozmiar 256 KB. Inną przyczyną jest to, że jeśli kolejka lub temat ma [właściwości parametr EnablePartitioning](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) ustawioną **true**, partycji może nie mieć wystarczającej ilości komunikaty, aby ukończyć żądanej liczby komunikatów. Ogólnie rzecz biorąc, jeśli aplikacja chce otrzymywać określoną liczbę wiadomości, powinna wywołać [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) aż pobiera tej liczby wiadomości, lub nie ma żadnych więcej komunikatów do wglądu. Aby uzyskać więcej informacji, przykłady kodu, w tym temacie [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) lub [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) dokumentacji interfejsu API.
+* **Przeglądaj/Peek wiadomości**: [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nie zawsze zwraca liczbę wiadomości określona w [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) właściwości. Istnieją dwie typowe przyczyny tego zachowania. Jedną z przyczyn jest to, że zagregowane rozmiar kolekcji komunikatów przekracza maksymalny rozmiar 256 KB. Inną przyczyną jest to, że jeśli kolejka lub temat ma [właściwości parametr EnablePartitioning](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) ustawioną **true**, partycji może nie mieć wystarczającej ilości komunikaty, aby ukończyć żądanej liczby komunikatów. Ogólnie rzecz biorąc, jeśli aplikacja chce otrzymywać określoną liczbę wiadomości, powinna wywołać [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) aż pobiera tej liczby wiadomości, lub nie ma żadnych więcej komunikatów do wglądu. Aby uzyskać więcej informacji, przykłady kodu, w tym temacie [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) lub [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) dokumentacji interfejsu API.
 
 ## <a name="latest-added-features"></a>Najnowsze funkcje dodane
 * Dodawanie lub usuwanie reguł jest teraz obsługiwana przez partycjonowane jednostki. Inne niż niepartycjonowany jednostki, te operacje nie są obsługiwane w transakcji. 
@@ -140,9 +136,9 @@ Usługa Service Bus obsługuje komunikat automatycznego przesyłania dalej z, ab
 Obecnie Usługa Service Bus nakłada następujące ograniczenia partycjonowanej kolejek i tematów:
 
 * Partycjonowane kolejek i tematów nie obsługują wysyłanie wiadomości, które należą do różnych sesji w ramach jednej transakcji.
-* Usługa Service Bus umożliwia obecnie maksymalnie 100 partycjonowanej kolejki i tematy na przestrzeń nazw. Każdy partycjonowanej kolejka lub temat, liczy się przydziału 10 000 jednostek na przestrzeń nazw (nie ma zastosowania do warstwy Premium).
+* Obecnie w usłudze Service Bus można utworzyć maksymalnie 100 partycjonowanych kolejek lub tematów w każdej przestrzeni nazw. Każdy partycjonowanej kolejka lub temat, liczy się przydziału 10 000 jednostek na przestrzeń nazw (nie ma zastosowania do warstwy Premium).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj informacje o podstawowych pojęciach protokołu AMQP 1.0 wiadomości w specyfikacja [przewodnik protokołu AMQP 1.0](service-bus-amqp-protocol-guide.md).
 
 [Service Bus architecture]: service-bus-architecture.md

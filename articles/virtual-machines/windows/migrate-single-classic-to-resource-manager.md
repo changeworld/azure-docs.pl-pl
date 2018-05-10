@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: b81f3719f8781cf6cdb724108f4dd730f3380c86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Ręcznie Migrowanie klasyczne maszyny Wirtualnej do nowej ARM zarządzane dysku maszyny Wirtualnej z dysku VHD 
 
@@ -92,6 +92,8 @@ Przygotowanie aplikacji dla przestoju. Przeprowadzenie czystej migracji, należy
 
 Przygotowanie aplikacji dla przestoju. Przeprowadzenie czystej migracji, należy zatrzymać wszystkie przetwarzania w systemie. Następnie możesz pobrać go do spójnego stanu, które można migrować do nowej platformie. Czas trwania przestoju zależy od ilości danych na dyskach, aby przeprowadzić migrację.
 
+Ta część wymaga programu Azure PowerShell modułu w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Należy również wykonać `Connect-AzureRmAccount` można utworzyć połączenia z platformą Azure.
+
 
 1.  Najpierw należy ustawić wspólne parametry:
 
@@ -121,11 +123,11 @@ Przygotowanie aplikacji dla przestoju. Przeprowadzenie czystej migracji, należy
 
 2.  Tworzenie zarządzanego dysku systemu operacyjnego przy użyciu wirtualnego dysku twardego z klasycznym maszyny Wirtualnej.
 
-    Upewnij się, że podano pełny identyfikator URI wirtualnego dysku twardego systemu operacyjnego do parametru $osVhdUri. Wprowadź też **- AccountType** jako **PremiumLRS** lub **StandardLRS** na podstawie typu dysków (Premium lub Standard) w przypadku migracji do.
+    Upewnij się, że podano pełny identyfikator URI wirtualnego dysku twardego systemu operacyjnego do parametru $osVhdUri. Wprowadź też **- AccountType** jako **Premium_LRS** lub **Standard_LRS** na podstawie typu dysków (Premium lub Standard) w przypadku migracji do.
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
+    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
     -ResourceGroupName $resourceGroupName
     ```
 
@@ -134,14 +136,14 @@ Przygotowanie aplikacji dla przestoju. Przeprowadzenie czystej migracji, należy
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  Tworzenie dysku danych zarządzanych z pliku VHD danych i dodaj go do nowej maszyny Wirtualnej.
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreationDataCreateOption Import '
+    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
     -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
     
     $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '

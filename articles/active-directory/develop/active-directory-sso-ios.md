@@ -1,11 +1,9 @@
 ---
-title: "Jak włączyć logowanie Jednokrotne wielu aplikacji w systemie iOS przy użyciu biblioteki ADAL | Dokumentacja firmy Microsoft"
-description: "Jak używać funkcji ADAL zestawu SDK do Włącz rejestrację jednokrotną w aplikacji. "
+title: Jak włączyć logowanie Jednokrotne wielu aplikacji w systemie iOS przy użyciu biblioteki ADAL | Dokumentacja firmy Microsoft
+description: 'Jak używać funkcji ADAL zestawu SDK do Włącz rejestrację jednokrotną w aplikacji. '
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: xerners
 manager: mtillman
-editor: 
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +13,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a7d93fe6289ade7fbdf3050d49184feb8b370bb5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c477e7e6fb9ef9a93ceab53c1427b974bab99b37
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Jak włączyć logowanie Jednokrotne wielu aplikacji w systemie iOS przy użyciu biblioteki ADAL
 Zapewniające pojedynczego logowania jednokrotnego (SSO), aby użytkownicy potrzebują tylko może wprowadzić swoje poświadczenia raz, a te poświadczenia automatycznie działać przez aplikacje teraz jest oczekiwany przez klientów. Trudności przy wprowadzaniu swoją nazwę użytkownika i hasło na małego ekranu, często razy łączyć się przy użyciu dodatkowego składnika (2FA), takich jak rozmowa telefoniczna lub kod wysłana wiadomość SMS, powoduje niezadowolenie szybki, jeśli użytkownik ma w tym celu więcej niż jeden raz na produkt.
@@ -160,11 +158,11 @@ Aby platformy pakietu Microsoft Identity dowiedzieć się, że mogą być udost�
 
 Możesz się zastanawiać, jak należy określić różnych aplikacji z usługą Microsoft Identity korzysta z tego samego identyfikatora aplikacji Odpowiedź jest z **identyfikator URI przekierowania**. Każda aplikacja może mieć wiele identyfikator URI przekierowania zarejestrowany w portalu przy dołączaniu. Każdej aplikacji w zestawie ma inny identyfikator URI przekierowania. Jak wygląda przykład znajduje się poniżej:
 
-Identyfikator URI przekierowania App1`x-msauth-mytestiosapp://com.myapp.mytestapp`
+Identyfikator URI przekierowania App1 `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-Identyfikator URI przekierowania App2`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+Identyfikator URI przekierowania App2 `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-Identyfikator URI przekierowania App3:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+Identyfikator URI przekierowania App3: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 

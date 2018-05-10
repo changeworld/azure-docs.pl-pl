@@ -1,26 +1,20 @@
 ---
-title: "Realizacji zaproszenia współpraca w usłudze Azure Active Directory B2B | Dokumentacja firmy Microsoft"
-description: "Azure Active Directory B2B współpracy zaproszenia realizacji środowisko"
+title: Realizacji zaproszenia współpraca w usłudze Azure Active Directory B2B | Dokumentacja firmy Microsoft
+description: Azure Active Directory B2B współpracy zaproszenia realizacji środowisko
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/24/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 22e572fdebe3d2d6d839d3c3878ad1cc54f66b09
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7a0b492ccb48352c5e8463d3196179237f0ca412
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Realizacji zaproszenia współpraca w usłudze Azure Active Directory B2B
 
@@ -35,16 +29,9 @@ Współpraca AD B2B Azure ułatwia dowolnego adresu e-mail używanego do realiza
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
+Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
 
 * [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Jak Administratorzy usługi Azure Active Directory dodać użytkowników współpracy B2B?](active-directory-b2b-admin-add-users.md)
-* [Jak pracownicy przetwarzający informacje dodać użytkowników współpracy B2B?](active-directory-b2b-iw-add-users.md)
 * [Elementy współpracy B2B zaproszenie](active-directory-b2b-invitation-email.md)
-* [Azure licencjonowania współpracy B2B usługi AD](active-directory-b2b-licensing.md)
-* [Rozwiązywanie problemów z współpracy usługi Azure Active Directory B2B](active-directory-b2b-troubleshooting.md)
 * [Azure współpracy B2B usługi Active Directory — często zadawane pytania (FAQ)](active-directory-b2b-faq.md)
 * [Dostosowywanie i Azure Active Directory B2B współpracy interfejsu API](active-directory-b2b-api.md)
-* [Usługa Multi-Factor Authentication dla użytkowników współpracy B2B](active-directory-b2b-mfa-instructions.md)
-* [Dodawanie użytkowników współpracy B2B bez zaproszenia](active-directory-b2b-add-user-without-invite.md)
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)

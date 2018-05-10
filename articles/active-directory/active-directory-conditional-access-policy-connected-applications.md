@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ede0c7954fdcb27788e4045c08bd6a0b88ae74bc
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 07957d5ec843c414813d69b7084915bcd70a5a61
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory
 
@@ -50,7 +50,7 @@ Aby uzyskać urządzeń zarejestrowanych w usłudze Azure AD, masz trzy opcje:
 
 - **[Urządzenia zarejestrowane usługi Azure AD](device-management-introduction.md#azure-ad-registered-devices)**  — urządzenie osobiste zarejestrowane w usłudze Azure AD
 
-- **[Urządzeniach przyłączonych do usługi Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  — Aby uzyskać organizacyjnej urządzenia systemu Windows 10, który nie jest przyłączony do usługi Azure AD zarejestrowana w usłudze Azure AD w zarejestrowany na lokalnym. 
+- **[Urządzeniach przyłączonych do usługi Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  — Aby uzyskać organizacyjnej urządzenia systemu Windows 10, który nie jest dołączony do lokalnego zarejestrowany AD zarejestrowana w usłudze Azure AD. 
 
 - **[Urządzeniach przyłączonych do hybrydowej usługi Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  — urządzenie z systemem Windows 10 dołączonego do lokalnej usługi AD zarejestrowane w usłudze Azure AD.
 

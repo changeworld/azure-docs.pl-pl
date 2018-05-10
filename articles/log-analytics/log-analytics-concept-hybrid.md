@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Zbieranie danych z komputerów w środowisku z analizy dzienników
 
@@ -40,7 +40,7 @@ Agenta dla systemu Linux i Windows komunikuje się wychodzące z usługą analiz
 
 Jeśli monitorowanych komputerów z System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2, można wieloadresowego z usługą analizy dzienników w celu zbierania danych i przekazywać je do usługi i nadal być monitorowane przez [programu Operations Manager ](log-analytics-om-agents.md). Komputery z systemem Linux monitorowane przez grupę zarządzania programu Operations Manager zintegrowany z analizy dzienników nie mają konfiguracji dla źródła danych i do przodu zebranych danych za pośrednictwem grupy zarządzania. Agent systemu Windows może raportować do czterech obszarów roboczych, a agenta systemu Linux obsługuje tylko do jednego obszaru roboczego raporty.  
 
-Agent dla systemu Linux i Windows, który nie jest tylko w celu nawiązania połączenia analizy dzienników, obsługuje ona również usługi Automatyzacja Azure umożliwia hosta roli procesu roboczego Runbook hybrydowego i rozwiązań do zarządzania takich jak śledzenia zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowy proces roboczy elementu Runbook, zobacz [procesu roboczego Runbook hybrydowego automatyzacji Azure](../automation/automation-offering-get-started.md#automation-architecture-overview).  
+Agent dla systemu Linux i Windows, który nie jest tylko w celu nawiązania połączenia analizy dzienników, obsługuje ona również usługi Automatyzacja Azure umożliwia hosta roli procesu roboczego Runbook hybrydowego i rozwiązań do zarządzania takich jak śledzenia zmian i zarządzania aktualizacjami.  Aby uzyskać więcej informacji na temat roli hybrydowy proces roboczy elementu Runbook, zobacz [procesu roboczego Runbook hybrydowego automatyzacji Azure](../automation/automation-hybrid-runbook-worker.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem należy przejrzeć następujące informacje, aby sprawdzić, czy zostały spełnione minimalne wymagania systemowe.
@@ -97,7 +97,7 @@ Wartość konfiguracji serwera proxy ma następującą składnię:
 |Właściwość| Opis |
 |--------|-------------|
 |Protokół | https |
-|użytkownik | Opcjonalna nazwa użytkownika dla uwierzytelniania serwera proxy |
+|Użytkownik | Opcjonalna nazwa użytkownika dla uwierzytelniania serwera proxy |
 |hasło | Opcjonalne hasło dla uwierzytelniania serwera proxy |
 |proxyhost | Adres lub nazwę FQDN serwera proxy serwera/OMS bramy |
 |port | Numer portu opcjonalne dla serwera proxy serwera/OMS bramy |

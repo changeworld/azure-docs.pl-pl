@@ -1,8 +1,8 @@
 ---
-title: "Uwierzytelnianie użytkownika końcowego: usługi Data Lake Store w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać uwierzytelnianie użytkownika końcowego z Data Lake Store za pomocą usługi Azure Active Directory"
+title: 'Uwierzytelnianie użytkownika końcowego: usługi Data Lake Store w usłudze Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak wykonać uwierzytelnianie użytkownika końcowego z Data Lake Store za pomocą usługi Azure Active Directory
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 39ee32ec8b1d005aac12cb88262d7e2f37898721
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Uwierzytelnianie użytkownika końcowego za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Podczas zgodnie z instrukcjami zawartymi w łączu, upewnij się, że wybrano **
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: Uzyskiwanie Identyfikatora aplikacji i identyfikator URI przekierowania
 
-Zobacz [uzyskiwanie Identyfikatora aplikacji](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) uzyskać identyfikator aplikacji (nazywane również identyfikator klienta w klasycznym portalu Azure) natywnych aplikacji usługi Azure AD.
+Zobacz [uzyskiwanie Identyfikatora aplikacji](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) można pobrać identyfikatora aplikacji.
 
 Aby pobrać identyfikator URI przekierowania, wykonaj następujące kroki.
 

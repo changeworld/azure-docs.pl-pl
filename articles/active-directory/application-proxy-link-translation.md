@@ -3,23 +3,23 @@ title: Tłumaczenie łącza i serwer Proxy aplikacji adresów URL usługi Azure 
 description: Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5009266dc2cbea360ef9c5dfa69fc2c13225d8cd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: e2057241065ecefbbcd398ddf482961359f51de7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe łącza do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 

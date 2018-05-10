@@ -7,13 +7,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 754b0bdea4ccb93de16fda4eea5e012e0630daea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Biznesowe ciągłości i odzyskiwanie po awarii (BCDR): łączyć regiony platformy Azure
 
@@ -25,31 +25,30 @@ Każdy region platformy Azure jest skojarzone z innego regionu w tej samej lokal
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Rysunek 1 — diagram Azure pary regionalne
+Rysunek 1 — Azure pary regionalne
 
 | Lokalizacja geograficzna | Sparowane regiony |  |
 |:--- |:--- |:--- |
 | Azja |Azja Wschodnia |Azja Południowo-Wschodnia |
 | Australia |Australia Wschodnia |Australia Południowo-Wschodnia |
+| Brazylia |Brazylia Południowa (2) |Środkowo-południowe stany USA |
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
+| Europa |Europa Północna |Europa Zachodnia |
+| Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
 | Indie |Indie Środkowe |Indie Południowe |
 | Indie |Indie Zachodnie (1) |Indie Południowe |
 | Japonia |Japonia Wschodnia |Japonia Zachodnia |
 | Korea |Korea Środkowa |Korea Południowa |
-| Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
 | Ameryka Północna |Wschodnie stany USA |Zachodnie stany USA |
 | Ameryka Północna |Wschodnie stany USA 2 |Środkowe stany USA |
-| Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA |
-| Europa |Europa Północna |Europa Zachodnia |
-| Japonia |Japonia Wschodnia |Japonia Zachodnia |
-| Brazylia |Brazylia Południowa (2) |Środkowo-południowe stany USA |
+| Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
+| Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
+| Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
+| Departamentu Obrony USA |US DoD — wschodnie stany |US DoD — środkowe stany |
+| Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
 | Rząd USA |Iowa wersji dla instytucji rządowych Stanów Zjednoczonych (3) |Administracja USA — Wirginia |
 | Rząd USA |Virginia wersji dla instytucji rządowych Stanów Zjednoczonych (4) |Administracja USA — Teksas |
-| Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
-| Departamentu Obrony Stanów Zjednoczonych |US DoD — wschodnie stany |US DoD — środkowe stany |
-| WIELKA BRYTANIA |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
-| Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
 
 Tabela 1 - mapowania par regionalnych Azure
 

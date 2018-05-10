@@ -11,17 +11,17 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
-ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f29fe50468aabadcf92d2ed3de3f9ec631d17f21
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest Azure czas serii Insights?
 
 Czas serii Insights zaprojektowano pod kątem przechowywania, wizualizowanie i badania dużych ilości danych serii czasu, takich jak generowany przez urządzenia IoT.  Jeśli chcesz przechowywać, zarządzanie, zapytania lub wizualizacji danych w serii. czas w chmurze, czas serii Insights prawdopodobnie dla odpowiedni.  
 
-![Flowchart Insights serii czasu] (media/overview/time-series-insights-flowchart.png)
+![Schemat blokowy Insights serii czasu](media/overview/time-series-insights-flowchart.png)
 
 Czas serii Insights ma cztery zadania klucza:
 
@@ -68,7 +68,7 @@ Wprowadzenie ma mniej niż 5 minut.
 4.  Zobacz danych w ciągu minut przy Eksplorator Insights serii czasu.
 
 ## <a name="time-series-insights-explorer"></a>Eksplorator usługi Time Series Insights
-Ten diagram przedstawia przykład szeregów czasowych danych usługi insights wyświetlać za pomocą Eksploratora: ![Eksplorator Insights serii czasu] (media/time-series-insights-explorer/explorer4.png)
+Ten diagram przedstawia przykład szeregów czasowych danych usługi insights wyświetlać za pomocą Eksploratora: ![Eksplorator Insights serii czasu](media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
  - [Eksplorowania przy użyciu Eksploratora czasu serii wgląd w środowisku pokaz](./time-series-quickstart.md)

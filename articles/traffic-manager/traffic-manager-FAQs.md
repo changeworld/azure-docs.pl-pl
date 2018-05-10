@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Często zadawane pytania (FAQ) Menedżera ruchu
 
@@ -29,6 +29,10 @@ ms.lasthandoff: 04/16/2018
 Zgodnie z objaśnieniem w [sposób działania usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), działanie Menedżera ruchu polega na poziomie DNS. Wysyła odpowiedzi DNS, aby kierować klientów do punktu końcowego odpowiednią usługę. Klienci następnie połączyć się z punktem końcowym usługi bezpośrednio, nie za pomocą Menedżera ruchu.
 
 W związku z tym menedżera ruchu nie zawiera punktu końcowego lub adres IP dla klientów nawiązać połączenie. Jeśli ma statyczny adres IP dla usługi, które muszą być skonfigurowane na usługę, a nie w usłudze Traffic Manager.
+
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jakie typy ruchu mogą być kierowane za pomocą Menedżera ruchu?
+Zgodnie z objaśnieniem w [sposób działania usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), punkt końcowy Menedżera ruchu może być dowolnym internetowy usługi hostowanej wewnątrz lub na zewnątrz Azure. W związku z tym Menedżer ruchu może kierować ruchu pochodzącego z publicznego Internetu do zestawu punktów końcowych czy też internet stoją. Jeśli masz punktów końcowych, które znajdują się w sieci prywatnej (na przykład wewnętrzny wersji [modułu równoważenia obciążenia Azure](../load-balancer/load-balancer-overview.md#internalloadbalancer)) lub wprowadzania DNS żąda od takich sieciach wewnętrznych Traffic Manager nie można używać dla ruchu tych użytkowników.
+
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager obsługuje "trwałe" sesje?
 
@@ -121,7 +125,7 @@ Region można przypisać do tylko jeden punkt końcowy w profilu, jeśli jego pr
 
 Tak, tylko wersja interfejsu API 2017-03-01 i nowszej obsługuje routing geograficzne typu. Starsze wersje interfejsu API nie może służyć do utworzone profile geograficzne typ routingu lub przypisać regionów geograficznych do punktów końcowych. Jeśli starszej wersji interfejsu API jest używany do pobierania profile z subskrypcją platformy Azure, dowolny profil geograficzny typ routingu nie są zwracane. Ponadto przy użyciu starszej wersji interfejsu API dowolny profil zwrócił który ma punkty końcowe z przypisaniem region geograficzny, nie ma jej przypisanie regionu geograficznego pokazano.
 
-## <a name="real-user-measurements"></a>Pomiary dotyczące prawdziwych użytkowników
+## <a name="real-user-measurements"></a>Pomiary rzeczywistego użytkownika
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jakie są korzyści wynikające ze stosowania rzeczywiste pomiary użytkownika?
 Gdy używasz metody routingu wydajności usługi Traffic Manager wybiera najlepsze region platformy Azure dla użytkownika końcowego nawiązać sprawdzając źródłowy adres IP i podsieci klienta mechanizmów EDNS (jeśli przekazano) i obsługuje sprawdzanie go przed analizy opóźnienia sieci usługi. Rzeczywiste pomiary użytkownika podnosi poziom to dla podstawowej użytkownikowi końcowemu, ich korzystania przyczyniają się do tej tabeli opóźnienia Oprócz zapewniania, obejmującej tej tabeli można ją było właściwie sieci użytkownika końcowego, z którym użytkownicy końcowi połączenia z platformą Azure. Prowadzi to do zwiększenia dokładności routingu użytkowników końcowych.

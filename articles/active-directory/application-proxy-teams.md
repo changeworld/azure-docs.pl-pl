@@ -1,25 +1,25 @@
 ---
-title: "Dostęp do aplikacji serwera Proxy aplikacji usługi Azure AD w zespołach | Dokumentacja firmy Microsoft"
-description: "Użyj serwera Proxy aplikacji usługi Azure AD na dostęp do aplikacji lokalnych poprzez Teams firmy Microsoft."
+title: Dostęp do aplikacji serwera Proxy aplikacji usługi Azure AD w zespołach | Dokumentacja firmy Microsoft
+description: Użyj serwera Proxy aplikacji usługi Azure AD na dostęp do aplikacji lokalnych poprzez Teams firmy Microsoft.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a8dca307bb97898f229b39710a3b566ee913fcca
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 66fdc03d2945b84615ee39dcbcc9bc71ddb06711
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Dostęp do aplikacji lokalnych poprzez Teams firmy Microsoft
 
@@ -38,7 +38,7 @@ Jeśli już masz aplikacje opublikowane, ale nie zapamiętuj ich zewnętrzne adr
 
 Po opublikowaniu aplikacji za pośrednictwem serwera Proxy aplikacji, należy poinformować użytkowników, że można go dodać na karcie bezpośrednio w ich kanały zespołów, a następnie aplikacja jest dostępna dla wszystkich członków zespołu do użycia. Niech wykonaj następujące trzy kroki:
 
-1. Przejdź do kanału zespołów, które chcesz dodać tę aplikację i wybierz  **+**  można dodać na karcie.
+1. Przejdź do kanału zespołów, które chcesz dodać tę aplikację i wybierz **+** można dodać na karcie.
 
    ![Wybierz opcję Dodaj kartę](./media/application-proxy-teams/add-tab.png)
 

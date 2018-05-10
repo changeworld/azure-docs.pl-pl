@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 28b6f6c269dfb1550b4ed12af3366b483d402f86
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 8a8482fa93ca902746e4fc8ef6d67b274a926bdc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument przedstawia niektóre z najczęściej limity Microsoft Azure, nazywane również przydziałów. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu listy zostanie rozwinięty, a zaktualizowane, aby pokrywał się z platformy.
@@ -27,7 +27,7 @@ Ten dokument przedstawia niektóre z najczęściej limity Microsoft Azure, nazyw
 Odwiedź stronę [omówienie cennik usługi Azure](https://azure.microsoft.com/pricing/) Aby dowiedzieć się więcej o cenach systemu Azure. Istnieje, można oszacować koszty przy użyciu [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) lub poprzez odwiedzenie szczegóły stronie dotyczącej cen usługi (na przykład [maszyn wirtualnych systemu Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Aby uzyskać wskazówki pomagające w zarządzaniu kosztów, zobacz [uniknąć kosztów nieoczekiwany rozliczenia Azure i kosztów zarządzania](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Jeśli chcesz podnieść limit lub powyżej limitu przydziału **domyślny Limit**, [otwarcia żądania pomocy technicznej online klienta bez dodatkowych opłat](azure-supportability/resource-manager-core-quotas-request.md). Nie można zgłosić limity powyżej **maksymalny Limit** wartość pokazana w poniższych tabelach. W przypadku nie **maksymalny Limit** kolumny, a następnie zasób nie ma regulowany limity.
+> Jeśli chcesz podnieść limit lub powyżej limitu przydziału **domyślny Limit**, [otwarcia żądania pomocy technicznej online klienta bez dodatkowych opłat](azure-resource-manager/resource-manager-quota-errors.md). Nie można zgłosić limity powyżej **maksymalny Limit** wartość pokazana w poniższych tabelach. W przypadku nie **maksymalny Limit** kolumny, a następnie zasób nie ma regulowany limity.
 >
 > [W warstwie bezpłatna wersja próbna subskrypcji](https://azure.microsoft.com/offers/ms-azr-0044p) nie są uprawnione do zwiększenia limitu lub przydziału. Jeśli masz [subskrypcji bezpłatnej wersji próbnej](https://azure.microsoft.com/offers/ms-azr-0044p), można uaktualnić do [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) subskrypcji. Aby uzyskać więcej informacji, zobacz [uaktualnienia bezpłatna wersja próbna platformy Azure na płatność za rzeczywiste użycie](billing/billing-upgrade-azure-subscription.md) i [subskrypcji bezpłatnej wersji próbnej — często zadawane pytania](https://azure.microsoft.com/free/free-account-faq).
 >
@@ -53,7 +53,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedlają różnice
 * [Automatyzacja](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Event Grid](#azure-event-grid-limits)
-* [Mapy platformy Azure](#azure-maps-limits)
+* [Azure Maps](#azure-maps-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)

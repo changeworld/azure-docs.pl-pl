@@ -1,25 +1,25 @@
 ---
-title: "Uwierzytelnianie oparte na nagłówka z PingAccess dla serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Publikowania aplikacji za pomocą PingAccess i serwera Proxy aplikacji do obsługi uwierzytelniania opartego na nagłówka."
+title: Uwierzytelnianie oparte na nagłówka z PingAccess dla serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Publikowania aplikacji za pomocą PingAccess i serwera Proxy aplikacji do obsługi uwierzytelniania opartego na nagłówka.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: bb341c5700f573e61cdbbe992aa0b0eb99389b2f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Nagłówek uwierzytelniania dla logowania jednokrotnego z serwera Proxy aplikacji i PingAccess
 
@@ -95,7 +95,7 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowe
    ![Wybierz na podstawie nagłówka logowania jednokrotnego](./media/application-proxy-ping-access/sso-header.PNG)
 
 11. Zamknij bloku aplikacji przedsiębiorstwa lub przewiń do lewej strony, aby wrócić do menu usługi Azure Active Directory.
-12. Wybierz **rejestracji aplikacji**.
+12. Wybierz pozycję **Rejestracje aplikacji**.
 
    ![Wybierz rejestracji aplikacji](./media/application-proxy-ping-access/app-registrations.png)
 

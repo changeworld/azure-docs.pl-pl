@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 7e2fe84c51f93bdeb6cd99e23624d1796aff6c1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Przewodnik rozwiązywania problemów z transmisją strumieniową na żywo
-Ten temat zawiera sugestie dotyczące rozwiązywania problemów, transmisji strumieniowej na żywo.
+Ten artykuł zawiera sugestie dotyczące rozwiązywania problemów, transmisji strumieniowej na żywo.
 
 ## <a name="issues-related-to-on-premises-encoders"></a>Problemy związane z koderów lokalnych
 W tej sekcji przedstawiono sugestie dotyczące rozwiązywania problemów związanych z koderów lokalnych, które są skonfigurowane do wysyłania do kanałów AMS, które są włączone dla kodowanie na żywo o pojedynczej szybkości transmisji.
@@ -44,23 +44,10 @@ W tej sekcji przedstawiono sugestie dotyczące rozwiązywania problemów związa
     **Kroki rozwiązywania problemów**: Upewnij się, że koder jest już Wypychanie do AMS, Zatrzymaj i zresetować kanału. Raz uruchomić ponownie, spróbuj się połączyć kodera przy użyciu nowych ustawień. Jeśli to nadal nie rozwiąże problemu, spróbuj utworzyć nowy kanał całkowicie, czasami kanałów może zostać uszkodzony po kilku nieudanych próbach.  
 * **Potencjalny problem**: rozmiar GOP lub klatki ustawienia nie są optymalne. 
   
-    **Kroki rozwiązywania problemów**: interwał rozmiaru lub klatki kluczowej GOP zalecane jest 2 sekundy. Niektóre kodery obliczyć tego ustawienia w liczbę ramek, podczas gdy inne sekund. Na przykład: podczas wyprowadzania 30 klatek na sekundę, rozmiar GOP byłoby 60 ramki, który jest odpowiednikiem 2 sekundy.  
+    **Kroki rozwiązywania problemów**: GOP zalecany rozmiar lub klatki kluczowej odbywa się dwie sekundy. Niektóre kodery obliczyć tego ustawienia w liczbę ramek, podczas gdy inne sekund. Na przykład: podczas wyprowadzania 30 klatek na sekundę, rozmiar GOP byłoby 60 ramki, który jest odpowiednikiem 2 sekundy.  
 * **Potencjalny problem**: blokuje porty zamkniętego strumienia. 
   
-    **Kroki rozwiązywania problemów**: podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty wyjściowe 1935 i 1936 są otwarte. Korzystając z RTP przesyłania strumieniowego, upewnij się, że jest otwarty port wychodzący 2010. 
-
-### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>Problem: Konfigurowanie kodera do strumienia przy użyciu protokołu RTP, nie ma żadnych miejscu wprowadź nazwę hosta.
-* **Potencjalny problem**: wiele RTP kodery nie zezwalaj na dla nazwy hosta i adresu IP musi zostać pobrany.  
-  
-    **Kroki rozwiązywania problemów**: Aby znaleźć adres IP, otwórz wiersz polecenia na każdym komputerze. Aby to zrobić w systemie Windows, otwórz uruchamiania wykonywania (WIN + R), a następnie wpisz "cmd" Aby otworzyć.  
-  
-    Po otwarciu w wierszu polecenia wpisz "Ping [nazwa hosta AMS]". 
-  
-    Nazwa hosta mogą być uzyskane, pomijając numer portu z Azure adresu URL pozyskiwania, jak w poniższym przykładzie wyróżniono: 
-  
-    RTP://Test2-amstest009.RTP.Channel.mediaservices.Windows.NET:2010 / 
-  
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
+    **Kroki rozwiązywania problemów**: podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP, sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty wyjściowe 1935 i 1936 są otwarte. 
 
 > [!NOTE]
 > Jeśli po wykonaniu kroków, które nadal nie można pomyślnie przesyłania strumieniowego, należy przesłać biletu pomocy technicznej przy użyciu portalu Azure.

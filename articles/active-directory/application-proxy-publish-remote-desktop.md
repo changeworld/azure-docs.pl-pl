@@ -1,25 +1,25 @@
 ---
-title: "Publikowanie pulpitu zdalnego z serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników."
+title: Publikowanie pulpitu zdalnego z serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: daveba
+ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 44b54ad4331d48202044316486a5b1d1ef9202d2
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 9d013c22041c2ff64af7790836103068ffbf48ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -75,14 +75,14 @@ Połącz do wdrożenia usług pulpitu zdalnego jako administrator i Zmień nazw�
 1. Połączenie do serwera usług pulpitu zdalnego z roli Broker połączeń usług pulpitu zdalnego.
 2. Uruchom **Menedżera serwera**.
 3. Wybierz **usług pulpitu zdalnego** w okienku po lewej stronie.
-4. Wybierz **omówienie**.
+4. Wybierz pozycję **Przegląd**.
 5. W sekcji Przegląd wdrożenia, wybierz menu rozwijane i wybierz polecenie **Edytuj właściwości wdrożenia**.
 6. Na karcie bramy usług pulpitu zdalnego, należy zmienić **nazwy serwera** do zewnętrznego adresu URL dla punktu końcowego hosta usług pulpitu zdalnego w serwer Proxy aplikacji.
 7. Zmiany **logowania metody** do **uwierzytelniania hasła**.
 
   ![Ekran właściwości wdrożenia na usługi pulpitu zdalnego](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Uruchom to polecenie dla każdej kolekcji. Zastąp  *\<yourcollectionname\>*  i  *\<proxyfrontendurl\>*  odpowiednimi informacjami. To polecenie umożliwia logowanie jednokrotne między sieci Web usług pulpitu zdalnego i Brama usług pulpitu zdalnego oraz optymalizację wydajności:
+8. Uruchom to polecenie dla każdej kolekcji. Zastąp *\<yourcollectionname\>* i *\<proxyfrontendurl\>* odpowiednimi informacjami. To polecenie umożliwia logowanie jednokrotne między sieci Web usług pulpitu zdalnego i Brama usług pulpitu zdalnego oraz optymalizację wydajności:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

@@ -1,11 +1,11 @@
 ---
-title: "Zasady zarządzania interfejsu API Azure przykładowe — autoryzować dostęp za pomocą tokenu Google OAuth | Dokumentacja firmy Microsoft"
-description: "Przykładowe zasady zarządzania Azure API - pokazuje, jak się autoryzacja dostępu do punktów końcowych przy użyciu usługi Google jako dostawcy tokenu OAuth."
+title: Zasady zarządzania interfejsu API Azure przykładowe — autoryzować dostęp za pomocą tokenu Google OAuth | Dokumentacja firmy Microsoft
+description: Przykładowe zasady zarządzania Azure API - pokazuje, jak się autoryzacja dostępu do punktów końcowych przy użyciu usługi Google jako dostawcy tokenu OAuth.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 3889c6fcaef0845c05e455ad173c6880ef053892
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 46ffe21b31597f889b411a40a9f3e1f2dd76f1ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Autoryzacja dostępu za pomocą tokenu Google OAuth
 
@@ -29,7 +29,7 @@ Wklej kod do **przychodzących** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/Snippets/Simple Google OAuth validate-jwt.policy.xml)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o zasadach APIM:
 

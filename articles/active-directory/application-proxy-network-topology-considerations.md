@@ -1,25 +1,25 @@
 ---
-title: "Zagadnienia dotyczące topologii sieci, używając serwera Proxy usługi Azure Active Directory aplikacji | Dokumentacja firmy Microsoft"
-description: "Obejmuje zagadnienia dotyczące topologii sieci, używając serwera Proxy aplikacji usługi Azure AD."
+title: Zagadnienia dotyczące topologii sieci, używając serwera Proxy usługi Azure Active Directory aplikacji | Dokumentacja firmy Microsoft
+description: Obejmuje zagadnienia dotyczące topologii sieci, używając serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f4ca4856333bf8b10a00952356080ed332dc266b
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 5670414cd6c58743d30246681594526544cb128b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory aplikacji
 

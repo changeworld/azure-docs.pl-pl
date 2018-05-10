@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 9fa87f8dc0c94ec93e049e35be727c031b4b06ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bb70b3ff84392797ce0d93b8cf5d4018ff8ebdd8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego
 
@@ -45,7 +45,7 @@ Uproszczona wersja tego tematu, testowania, obliczenia lub informacje o maszynac
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: Anulowanie zastrzeżenia maszyny Wirtualnej
-Możesz anulowanie zastrzeżenia maszyny Wirtualnej przy użyciu agenta maszyny Wirtualnej platformy Azure, aby usunąć maszynę określonych plików i danych. Użyj `waagent` z *-deprovision + użytkownika* parametru w źródle maszyny Wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Przewodnik użytkownika Agenta platformy Azure dla systemu Linux](../windows/agent-user-guide.md).
+Możesz anulowanie zastrzeżenia maszyny Wirtualnej przy użyciu agenta maszyny Wirtualnej platformy Azure, aby usunąć maszynę określonych plików i danych. Użyj `waagent` z *-deprovision + użytkownika* parametru w źródle maszyny Wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Przewodnik użytkownika Agenta platformy Azure dla systemu Linux](../extensions/agent-linux.md).
 
 1. Podłącz do sieci maszyny Wirtualnej systemu Linux przy użyciu klienta SSH.
 2. W oknie SSH wpisz następujące polecenie:

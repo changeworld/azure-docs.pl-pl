@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c219820fd5b8d5502bae394142dfbe80db1f59
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: ef80c99225a9045686ba8de3fe8fd7cf7070b5cd
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Node.js SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="1.14.4"/>1.14.4</a>
+* Dokumentacja programu npm stałej.
+
+### <a name="1.14.3"/>1.14.3</a>
+* Dodano obsługę domyślną liczbę ponownych prób na problemy z połączeniem.
+* Dodano obsługę odczytać zmiany kolekcji źródła danych.
+* Błąd spójności stałym sesji sporadycznie spowodował "odczytu sesji nie jest dostępna".
+* Dodano obsługę metryki zapytania.
+* Zmodyfikowane http agenta maksymalną liczbę połączeń.
 
 ### <a name="1.14.2"/>1.14.2</a>
 * Zaktualizowana dokumentacja odwołania do bazy danych rozwiązania Cosmos Azure zamiast usługi Azure DocumentDB.
@@ -193,6 +203,8 @@ Każde żądanie przy użyciu rozwiązania Cosmos DB wycofane zestawu SDK jest o
 
 | Wersja | Data wydania | Dacie wycofania |
 | --- | --- | --- |
+| [1.14.4](#1.14.4) |03 maja 2018 |--- |
+| [1.14.3](#1.14.3) |03 maja 2018 |--- |
 | [1.14.2](#1.14.2) |21 grudnia 2017 r. |--- |
 | [1.14.1](#1.14.1) |10 listopada 2017 r. |--- |
 | [1.14.0](#1.14.0) |9 listopada 2017 r. |--- |

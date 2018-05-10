@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: eaaee36a2f4dd5a313f8871cea5fd885812fe351
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Użyj usługi Azure Stream Analytics tools dla programu Visual Studio
 Azure Stream Analytics tools dla programu Visual Studio są teraz ogólnie dostępna. Te narzędzia Włącz rozbudowanej Stream Analytics użytkownikom Rozwiązywanie problemów, a także zapisać złożonych kwerend i nawet pisać zapytania lokalnie. Zadanie usługi Stream Analytics można również wyeksportować do projektu programu Visual Studio.
@@ -29,11 +29,25 @@ Po ukończeniu tego samouczka, będą mieć możliwość:
 * Umożliwia monitorowanie rozwiązywania problemów.
 * Wyeksportuj istniejące zadania do projektów.
 
+>[!IMPORTANT]
+>
+>W ramach przygotowania do nowego ogólne dane ochrony rozporządzenia (GDPR) przerywaj w życie 25 maja 2018 zaleca się, że użytkownicy usługi Azure Stream Analytics Tools for Visual Studio uaktualnienia do wersji 2.3.3000.5 lub nowszej. Ta wersja zawiera zmiany oparte na najnowszych wymagań dotyczących ochrony danych. Należy pamiętać, że poprzednie wersje nie są dostępne do pobrania i są przestarzałe. 
+>
+>**Co należy zrobić?**
+>
+>1. Sprawdź, czy używasz starszej wersji niż 2.3.3000.5 Azure Stream Analytics Tools dla programu Visual Studio. 
+>   
+>   ![Sprawdź wersję narzędzia](./media/stream-analytics-tools-for-vs/about-data-lake.png)
+> 
+>2. Jeśli używana wersja jest starsza wersja programu 2.3.3000.5, odwiedzając Centrum pobierania aktualizacji narzędzi Azure Data Lake Tools dla programu Visual Studio: 
+>    - [Dla programu Visual Studio 2017 r.](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Dla programu Visual Studio 2013 i 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 Potrzebne są następujące wymagania wstępne do ukończenia tego samouczka:
 
 * Zakończ kroki do "Utwórz zadanie usługi analiza strumienia" samouczka [tworzenia rozwiązania IoT przy użyciu usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics). 
-* Install Visual Studio 2017, Visual Studio 2015, or Visual Studio 2013 Update 4. Enterprise (Ultimate/Premium), Professional i społeczności wersje są obsługiwane. Express edition nie jest obsługiwane. 
+* Zainstaluj program Visual Studio 2017, programu Visual Studio 2015 lub Visual Studio 2013 Update 4. Enterprise (Ultimate/Premium), Professional i społeczności wersje są obsługiwane. Express edition nie jest obsługiwane. 
 * Postępuj zgodnie z [instrukcje dotyczące instalacji](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) do zainstalowania narzędzia do analizy strumienia dla programu Visual Studio.
 
 ## <a name="create-a-stream-analytics-project"></a>Tworzenie projektu usługi analiza strumienia
@@ -52,7 +66,7 @@ Projekt **przez** jest generowana w **Eksploratora rozwiązań**.
 2. Zaloguj się przy użyciu konta platformy Azure. 
 
 ## <a name="define-input-sources"></a>Definiowanie źródeł dla wejścia
-1. W **Eksploratora rozwiązań**, rozwiń węzeł **dane wejściowe** węzła i Zmień nazwę **Input.json** do **EntryStream.json**. Double-click **EntryStream.json**.
+1. W **Eksploratora rozwiązań**, rozwiń węzeł **dane wejściowe** węzła i Zmień nazwę **Input.json** do **EntryStream.json**. Kliknij dwukrotnie **EntryStream.json**.
 
 2. Aby uzyskać **Alias wejściowy**, wprowadź **EntryStream**. Należy pamiętać, że alias wejściowy jest używana w skrypcie zapytania.
 
@@ -195,7 +209,7 @@ Można wyświetlić postęp w **dane wyjściowe** okna.
    ![Prześlij zadanie](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-submit-job-02.png)
 
  
-### <a name="start-the-job"></a>Uruchom zadanie
+### <a name="start-the-job"></a>Uruchamianie zadania
 Utworzono zadanie, a w widoku zadania otwierany automatycznie. 
 1. Wybierz przycisk zieloną strzałkę, aby uruchomić zadanie.
 

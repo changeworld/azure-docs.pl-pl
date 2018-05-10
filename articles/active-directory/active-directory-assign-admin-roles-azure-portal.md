@@ -14,11 +14,11 @@ ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: fc7a67c644894606b09ed3ad594ff9f87b29f307
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 6e663fe275fc195cb611e1032adc147bf4e99b1d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -41,7 +41,7 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być administratorem globalnym.
   
-* **Administrator programu CRM usługi**: użytkownicy z tą rolą mają uprawnienia globalne w ramach programu Microsoft CRM Online, gdy usługa jest obecne, a także możliwość Zarządzanie biletami pomocy technicznej i monitoruje kondycję usługi. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **Administrator usługi Dynamics 365**: użytkownicy z tą rolą mają uprawnienia globalne w ramach programu Microsoft CRM Online, gdy usługa jest obecne, a także możliwość Zarządzanie biletami pomocy technicznej i monitoruje kondycję usługi. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Administratorzy urządzenia**: użytkownicy z tą rolą stają się Administratorzy komputera lokalnego na wszystkich urządzeniach z systemem Windows 10, które dołączyły do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
 
@@ -126,7 +126,7 @@ Dostępne są następujące role administratora:
 | --- | --- |
 | <p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Zmienianie haseł dla użytkowników i innych administratorów pomocy technicznej</p>|<p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p><p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Wyświetlanie raportów</p>|
 
-### <a name="information-protection-administrator"></a>Administrator ochrona informacji
+### <a name="information-protection-administrator"></a>Administrator usługi Information Protection
 W | Możliwość
 -------- | ---------
 Azure Information Protection | <li>Konfigurowanie ustawień i etykiet w zasadach globalne i zakresami<li>Konfigurowanie i Zarządzanie szablonami ochrony<li>Aktywować lub dezaktywować ochrona —

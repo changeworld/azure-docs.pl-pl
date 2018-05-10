@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 00ca193b281f0a8d24935dd8673cae4e05b4d167
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: c817964ebab358f8e31e7435b7067fc60e9516fa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Interfejs API programu Graph usługi Azure Active Directory
 > [!IMPORTANT]
@@ -46,7 +46,7 @@ Azure AD Graph API oferuje następujące funkcje:
 * **Uwierzytelnianie za pomocą usługi Azure AD**: każde żądanie do interfejsu API Azure AD Graph musi zostać uwierzytelniony przez dołączenie JSON Web Token (JWT) w nagłówku autoryzacji żądania. Token ten jest uzyskaną przez przesyłania do punktu końcowego tokenu usługi Azure AD i podanie prawidłowych poświadczeń. Można użyć przepływ poświadczeń klienta OAuth 2.0 lub kod autoryzacji Udziel przepływu można uzyskać tokenu umożliwiającego wywołanie wykresu. Aby uzyskać więcej informacji [OAuth 2.0 w usłudze Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * **Autoryzacji opartej na rolach (RBAC)**: grupy zabezpieczeń są używane do wykonywania RBAC w interfejsie API Azure AD Graph. Na przykład, jeśli chcesz określić, czy użytkownik ma dostęp do określonych zasobów, aplikacja może wywołać [sprawdzić członkostwa w grupie (przechodnie)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) operacja, która zwraca wartość PRAWDA lub FAŁSZ.
 * **Zapytanie różnicowej**: różnicowej zapytania umożliwia śledzenie zmian w katalogu między dwoma okresów bez konieczności częste zapytań do interfejsu API Azure AD Graph. Ten typ żądania zwróci tylko zmiany wprowadzone od poprzedniego żądania różnicowej zapytania i bieżącego żądania. Aby uzyskać więcej informacji, zobacz [Azure AD Graph API różnicowej zapytania](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
-* **Rozszerzenia katalogów**: jednostki organizacyjnej można dodać właściwości niestandardowe do obiektów katalogu bez konieczności magazynu danych zewnętrznych. Na przykład jeśli aplikacja wymaga właściwości Identyfikatora użytkownika Skype dla każdego użytkownika, możesz zarejestrować nową właściwość w katalogu i będzie on dostępny do użycia dla każdego obiektu użytkownika. Aby uzyskać więcej informacji, zobacz [Azure AD Graph interfejsu API katalogu schematu rozszerzenia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
+* **Rozszerzenia katalogów**: można dodać właściwości niestandardowe do obiektów katalogu bez konieczności magazynu danych zewnętrznych. Na przykład jeśli aplikacja wymaga właściwości Identyfikatora użytkownika Skype dla każdego użytkownika, możesz zarejestrować nową właściwość w katalogu i będzie on dostępny do użycia dla każdego obiektu użytkownika. Aby uzyskać więcej informacji, zobacz [Azure AD Graph interfejsu API katalogu schematu rozszerzenia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
 * **Zabezpieczone przez zakresy uprawnień**: Azure AD Graph API przedstawia zakresy uprawnień, które umożliwiają bezpieczny dostęp do danych usługi Azure AD przy użyciu protokołu OAuth 2.0. Obsługuje ona różnych typów aplikacji klienta, w tym:
   
   * interfejsy użytkownika, które podano delegowany dostęp do danych za pomocą autoryzacji przez zalogowanego użytkownika (delegowane)

@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2018
+ms.date: 05/08/2018
 ms.author: shlo
-ms.openlocfilehash: 0a321de96b26b183432a30868829081c1656be3f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 18748aafa2b70d349f9914e2a8afc1c7477ca26e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działania wyszukiwania w fabryce danych Azure
-Działania wyszukiwania służy do odczytywania lub wyszukania rekordu, nazwę tabeli lub wartość z dowolnego źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania. 
 
-Wyszukiwanie działanie jest przydatne, gdy chcesz dynamicznie pobrać listy plików, rekordy lub tabel z pliku konfiguracji lub źródła danych. Dane wyjściowe działania dalsze można przez inne działania do wykonywania określonych przetwarzania jedynie tych elementów.
+Działanie wyszukiwania może być używane do pobierania zestawu danych z dowolnego źródła danych obsługiwane ADF.  Mogą być używane w następującym scenariuszu:
+- Dynamiczne określanie obiekty, które (plików, tabel, itp.) do działania na kolejne działania, zamiast kodować nazwa obiektu
+
+Działania wyszukiwania może odczytywać i zwrócić zawartość zgodnie z pliku konfiguracji, Tabela konfiguracji lub wynik wykonywania zapytań lub procedurze składowanej.  Dane wyjściowe działania wyszukiwania można używane w kolejnych kopii lub transformacji działania, jeśli jest to wartość singleton lub używany w działaniu ForEach przypadku tablicę z atrybutami.
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 2 usługi Azure Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz dostępnej ogólnie wersji 1 usługi Data Factory, zobacz [Data Factory version 1 documentation (Dokumentacja usługi Data Factory w wersji 1)](v1/data-factory-introduction.md).
@@ -33,7 +35,7 @@ Następujące źródła danych są obecnie obsługiwane dla wyszukiwania:
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, aż do **10MB** rozmiar.
+Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, aż do **2MB** rozmiar.
 
 ## <a name="syntax"></a>Składnia
 

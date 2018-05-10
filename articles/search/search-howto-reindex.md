@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 006d04efb0a6bebc424cb005bf63af2b3cd7a42e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: f38054eaf2829149a496f840366b6f2f9e03e12b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Jak odbudować indeksu usługi Azure Search
 
@@ -35,8 +35,8 @@ Planowanie na częste, pełną odtwarza podczas tworzenia active, gdy indeks sch
 | Modyfikowanie | Odbuduj stanu|
 |--------------|---------------|
 | Zmień nazwę pola typu danych, lub jego [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) | Zmiana definicji pola zazwyczaj wiąże się z kary odbudowy, z wyjątkiem tych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index): pobieranie, SearchAnalyzer, SynonymMaps. Atrybuty pobieranie, SearchAnalyzer i SynonymMaps można dodać do istniejącego pola bez konieczności odbudować jego indeksu.|
-| Dodawanie pola | Nie jest wymagany strict na ponownej kompilacji. Istniejących dokumentów indeksowanego podano wartość null dla nowego pola. W przyszłości indeksowanie wartości ze źródła danych są dodawane do dokumentów. |
-| Usuwanie pola | Nie jest wymagany strict na ponownej kompilacji. Usunięte pole nie jest używany, przy zachowaniu fizycznie definicję pola i zawartość w indeksie aż do następnego ponownej kompilacji. |
+| Dodawanie pola | Nie jest wymagany strict na ponownej kompilacji. Istniejących dokumentów indeksowanego podano wartość null dla nowego pola. W przyszłości indeksowanie wartości ze źródła danych, Zastąp wartości null, dodane przez usługi Azure Search. |
+| Usuwanie pola | Nie można bezpośrednio usunąć pola z indeksu usługi Azure Search. Zamiast tego powinien mieć Ignoruj pole "usunięty", aby go unikać aplikacji. Fizycznie definicję pola i zawartość pozostają w indeksie do następnego wznowienia odbudować indeksu przy użyciu pomija zagadnieniach schematu.|
 
 > [!Note]
 > Odbudowie jest również wymagany, jeśli przełącznik warstwy. Jeśli w pewnym momencie podjęciu decyzji o większej pojemności, nie ma żadnych uaktualnienia w miejscu. Nowa usługa musi być utworzone na nowy punkt pojemności i indeksy muszą zostać skompilowane od podstaw w nowej usługi. 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: v-deasim
-ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fe1f61c7242cf4213b19e9496d557ae7a2253fe8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Zasady usługi Azure CDN aparat funkcji
 W tym artykule przedstawiono szczegółowe opisy funkcji dostępnych dla Azure Content Delivery Network (CDN) [aparatu reguł](cdn-rules-engine.md).
@@ -392,7 +392,7 @@ Tej funkcji można skonfigurować, definiując obu z następujących opcji:
 Opcja|Opis
 --|--
 Oryginalna ścieżka| Zdefiniuj ścieżkę względną do typów żądań, których klucz pamięci podręcznej jest napisany od nowa. Ścieżka względna mogą być definiowane przez wybranie ścieżka do podstawowego źródła, a następnie wzorzec wyrażenia regularnego.
-Nowa ścieżka|Zdefiniuj ścieżkę względną nowy klucz pamięci podręcznej. Ścieżka względna mogą być definiowane przez wybranie ścieżka do podstawowego źródła, a następnie wzorzec wyrażenia regularnego. Ta ścieżka względna można dynamicznie utworzyć przy użyciu protokołu HTTP, zmiennych
+Nowa ścieżka|Zdefiniuj ścieżkę względną nowy klucz pamięci podręcznej. Ścieżka względna mogą być definiowane przez wybranie ścieżka do podstawowego źródła, a następnie wzorzec wyrażenia regularnego. Ta ścieżka względna można dynamicznie utworzyć z [zmienne HTTP](cdn-http-variables.md).
 **Domyślne zachowanie:** klucz pamięci podręcznej żądania jest określana przez identyfikator URI żądania.
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
@@ -884,9 +884,9 @@ W nagłówku żądania można wykonać jedną z następujących czynności:
 
 Opcja|Opis|Przykład
 -|-|-
-Append|Określona wartość zostanie dodany na końcu istniejącą wartość nagłówka żądania.|**Wartość nagłówka (klient) żądania:** wartość1 <br/> **Żądanie wartość nagłówka (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka żądania:** Value1Value2
-Zastąp|Wartość nagłówka żądania zostanie ustawiona na określoną wartość.|**Wartość nagłówka (klient) żądania:** wartość1 <br/>**Żądanie wartość nagłówka (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka żądania:** wartość2 <br/>
-Usuwanie|Usuwa określonego nagłówka żądania.|**Wartość nagłówka (klient) żądania:** wartość1 <br/> **Zmodyfikuj konfigurację nagłówek żądania klienta:** usunąć w nagłówku żądania. <br/>**Wynik:** określonego nagłówka żądania nie zostaną przekazane do serwera pochodzenia.
+Append|Określona wartość zostanie dodany na końcu istniejącą wartość nagłówka żądania.|**Wartość nagłówka żądania (klient):**<br/>Wartość1<br/>**Wartość nagłówka żądania (aparat reguł):**<br/>Wartość2 <br/>**Nowa wartość nagłówka żądania:** <br/>Value1Value2
+Zastąp|Wartość nagłówka żądania zostanie ustawiona na określoną wartość.|**Wartość nagłówka żądania (klient):**<br/>Wartość1<br/>**Wartość nagłówka żądania (aparat reguł):**<br/>Wartość2<br/>**Nowa wartość nagłówka żądania:**<br/> Wartość2 <br/>
+Usuwanie|Usuwa określonego nagłówka żądania.|**Wartość nagłówka żądania (klient):**<br/>Wartość1<br/>**Zmień konfigurację nagłówka żądania klienta:**<br/>Usuwanie w nagłówku żądania.<br/>**Wynik:**<br/>Określonego nagłówka żądania nie zostaną przekazane do serwera pochodzenia.
 
 Informacje o kluczu:
 
@@ -922,9 +922,9 @@ W nagłówku odpowiedzi można wykonać jedną z następujących czynności:
 
 Opcja|Opis|Przykład
 -|-|-
-Append|Określona wartość zostanie dodany na końcu istniejącej wartości nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):** wartość1 <br/> **Wartość nagłówka odpowiedzi (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:** Value1Value2
-Zastąp|Będzie można ustawić wartości nagłówka odpowiedzi na określoną wartość.|**Wartość nagłówka odpowiedzi (klient):** wartość1 <br/>**Wartość nagłówka odpowiedzi (aparat reguł HTTP):** wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:** wartość2 <br/>
-Usuwanie|Usuwa określonego nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):** wartość1 <br/> **Zmodyfikuj konfigurację nagłówka odpowiedzi klienta:** usunąć zagrożona nagłówka odpowiedzi. <br/>**Wynik:** określonego nagłówka odpowiedzi nie zostaną przekazane do zleceniodawcy.
+Append|Określona wartość zostanie dodany na końcu istniejącej wartości nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):**<br />Wartość1<br/>**Wartość nagłówka odpowiedzi (aparat reguł):**<br/>Wartość2<br/>**Nowa wartość nagłówka odpowiedzi:**<br/>Value1Value2
+Zastąp|Będzie można ustawić wartości nagłówka odpowiedzi na określoną wartość.|**Wartość nagłówka odpowiedzi (klient):**<br/>Wartość1<br/>**Wartość nagłówka odpowiedzi (aparat reguł):**<br/>Wartość2 <br/>**Nowa wartość nagłówka odpowiedzi:**<br/>Wartość2 <br/>
+Usuwanie|Usuwa określonego nagłówka odpowiedzi.|**Wartość nagłówka odpowiedzi (klient):**<br/>Wartość1<br/>**Zmień konfigurację nagłówka odpowiedzi klienta:**<br/>Usuń zagrożona nagłówka odpowiedzi.<br/>**Wynik:**<br/>Określonego nagłówka odpowiedzi nie zostaną przekazane do zleceniodawcy.
 
 Informacje o kluczu:
 
@@ -998,7 +998,7 @@ Informacje o kluczu:
 - Aby zapobiec przesyłane dalej nagłówek żądania specyficzne dla usługi CDN, usuń go z rozdzielonej spacjami listy w polu listy nagłówka.
 
 Następujące nagłówki HTTP znajdują się na domyślnej liście:
-- za pomocą
+- Przez
 - X przekazywane do
 - X-Forwarded-Proto
 - X-Host
@@ -1234,8 +1234,8 @@ Konfiguracja ta funkcja wymaga ustawienia następujących opcji:
 Opcja|Opis
 -|-
 Kod|Wybierz kod odpowiedzi, który zostanie zwrócony do zleceniodawcy.
-Wzorzec & źródła| Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą zostać przekierowane. Nastąpi przekierowanie tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/> <br/> **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/> **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> -Upewnij się, że żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z warunkom dopasowania zdefiniowane dla tej funkcji. <br/> -Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane.
-Element docelowy| Zdefiniuj adres URL, do którego zostanie przekierowany żądań powyżej. <br/> Dynamicznie utworzyć przy użyciu tego adresu URL: <br/> -Wzorzec wyrażenia regularnego <br/>-Zmienne HTTP <br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w którym została przechwycona. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, podczas gdy druga wartość reprezentuje $2. <br/> 
+Wzorzec & źródła| Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą zostać przekierowane. Nastąpi przekierowanie tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/> <br/> **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/><br/> **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> -Upewnij się, że żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z warunkom dopasowania zdefiniowane dla tej funkcji. <br/> -Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane.
+Element docelowy| Zdefiniuj adres URL, do którego zostanie przekierowany żądań powyżej. <br/><br/> Dynamicznie utworzyć przy użyciu tego adresu URL: <br/> -Wzorzec wyrażenia regularnego <br/>- [Zmienne HTTP](cdn-http-variables.md) <br/><br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w którym została przechwycona. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, podczas gdy druga wartość reprezentuje $2. <br/> 
 Zdecydowanie zaleca się używania bezwzględnego adresu URL. Użycie względny adres URL może przekierować CDN adresy URL do nieprawidłowej ścieżki.
 
 **Przykładowy scenariusz**
@@ -1276,8 +1276,8 @@ Informacje o kluczu:
 
 Opcja|Opis
 -|-
- Wzorzec & źródła | Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą być napisany od nowa. Zostanie ponownego napisania tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/>     - **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/> - **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> Sprawdź, czy żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z jednego z warunków dopasowania zdefiniowane dla tej funkcji. Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane. 
- Element docelowy  |Określ względny adres URL, do którego powyżej żądania będą ulegną przez: <br/>    1. Wybieranie punktu dostępu do zawartości, który identyfikuje serwer pochodzenia. <br/>    2. Definiowanie za pomocą ścieżki względnej: <br/>        -Wzorzec wyrażenia regularnego <br/>        -Zmienne HTTP <br/> <br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w którym została przechwycona. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, podczas gdy druga wartość reprezentuje $2. 
+ Wzorzec & źródła | Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą być napisany od nowa. Zostanie ponownego napisania tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/><br/>  - **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/><br/> - **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> Sprawdź, czy żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z jednego z warunków dopasowania zdefiniowane dla tej funkcji. Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane. 
+ Element docelowy  |Określ względny adres URL, do którego powyżej żądania będą ulegną przez: <br/>    1. Wybieranie punktu dostępu do zawartości, który identyfikuje serwer pochodzenia. <br/>    2. Definiowanie za pomocą ścieżki względnej: <br/>        -Wzorzec wyrażenia regularnego <br/>        - [Zmienne HTTP](cdn-http-variables.md) <br/> <br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w którym została przechwycona. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, podczas gdy druga wartość reprezentuje $2. 
  Ta funkcja umożliwia POP zmodyfikować adres URL bez wykonywania tradycyjnych przekierowania. Oznacza to osoby żądającej odbiera ten sam kod odpowiedzi tak, jakby zażąda ponownie zapisane adresu URL.
 
 **Przykładowy scenariusz 1**

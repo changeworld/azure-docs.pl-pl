@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: antonfr;mbullwin
-ms.openlocfilehash: c847052134b1d83cd606e0e2b51b63b580f7917c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 45d2f39ff7fb2e5a22cda74cd0c794db28e351f1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Alerty z progami dynamicznych w monitorze Azure (ograniczone publicznej wersji zapoznawczej)
 
@@ -85,7 +85,7 @@ Alerty z progami dynamicznej można skonfigurować za pomocą alertów w monitor
 
    Do zmniejszenia szumu alertów wygenerowanych przez nagłego przejściowy, zaleca się za pomocą ustawień "Liczba naruszeń wyzwolenia alertu". Ta funkcja umożliwia alert zostanie wygenerowany tylko wtedy, gdy próg zostało naruszone X razy pod rząd lub razy Y poza ostatnich okresów Z. Na przykład:
 
-    Do wyzwolenia alertu, gdy problem ciągłego 15 min, 3 razy pod rząd w danym okresie 5 minut, użyj następujących ustawień:
+    Do wyzwolenia alertu, gdy problem jest ciągły przez 15 minut, 3 razy pod rząd w danym okresie 5 minut, użyj następujących ustawień:
 
    ![Oceniono na podstawie](./media/monitoring-alerts-dynamic-thresholds/0008.png)
 

@@ -1,13 +1,13 @@
 ---
-title: "Automatyzacji wdrażania zasobów dla aplikacji funkcji w funkcji Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża aplikację funkcji."
+title: Automatyzacji wdrażania zasobów dla aplikacji funkcji w funkcji Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża aplikację funkcji.
 services: Functions
 documtationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkcje, funkcje, niekorzystającą architektury infrastruktury jako usługi kodu usługi azure resource manager"
+editor: ''
+tags: ''
+keywords: Azure funkcje, funkcje, niekorzystającą architektury infrastruktury jako usługi kodu usługi azure resource manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.server: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 28b2f5aba69e5c058feb7119eb31352220922998
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzacji wdrażania zasobów dla aplikacji funkcja na usługi Azure Functions
 
@@ -56,7 +56,9 @@ Konto magazynu platformy Azure jest wymagany dla funkcji aplikacji. Musisz mieć
 }
 ```
 
-Ponadto właściwości `AzureWebJobsStorage` i `AzureWebJobsDashboard` muszą być określone jako aplikację ustawienia w konfiguracji lokacji. Środowisko wykonawcze usługi Azure Functions używa `AzureWebJobsStorage` ciągu połączenia służącego do tworzenia kolejek wewnętrznych. Parametry połączenia `AzureWebJobsDashboard` jest używana do logowania do magazynu tabel Azure i zasilania **Monitor** kartę w portalu.
+Ponadto właściwość `AzureWebJobsStorage` muszą być określone jako ustawienie aplikacji w konfiguracji lokacji. Jeśli funkcja aplikacji nie korzysta z usługi Application Insights do monitorowania, powinien on także zawierać `AzureWebJobsDashboard` jako ustawienie aplikacji.
+
+Środowisko wykonawcze usługi Azure Functions używa `AzureWebJobsStorage` ciągu połączenia służącego do tworzenia kolejek wewnętrznych.  W przypadku usługi Application Insights nie jest włączone, używa środowiska wykonawczego `AzureWebJobsDashboard` parametry połączenia do logowania do magazynu tabel Azure i zasilania **Monitor** kartę w portalu.
 
 Te właściwości są określone w `appSettings` kolekcji w `siteConfig` obiektu:
 
@@ -260,7 +262,7 @@ Można użyć dowolnej z poniższych metod wdrażania szablonu:
 
 * [Program PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [Interfejs API REST](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Wdrażanie na przycisku Azure

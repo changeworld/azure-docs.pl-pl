@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizacji 1802 stosu
 
@@ -84,6 +84,8 @@ Ta aktualizacja obejmuje następujące ulepszenia i poprawki dla stosu Azure.
 - **Ulepszenia opartej na rolach kontroli dostępu (RBAC)** — można teraz używać RBAC Aby oddelegować uprawnienia do grup uniwersalnych użytkownika po wdrożeniu stosu Azure z usługami AD FS. Aby dowiedzieć się więcej na temat RBAC, zobacz [Zarządzanie RBAC](azure-stack-manage-permissions.md).
 
 - **Dodano obsługę wielu domen błędów**.  Aby uzyskać więcej informacji, zobacz [wysoka dostępność dla stosu Azure](azure-stack-key-features.md#high-availability-for-azure-stack).
+
+- **Obsługa uaktualnień pamięci fizycznej** — teraz można rozszerzyć pojemność pamięci systemu Azure stosu zintegrowane po początkowym wdrożeniu. Aby uzyskać więcej informacji, zobacz [Zarządzanie pojemności pamięci fizycznej stosu Azure](azure-stack-manage-storage-physical-memory-capacity.md).
 
 - **Różne poprawki** wydajności, trwałości, zabezpieczeń i systemu operacyjnego, który jest używany przez stos Azure.
 

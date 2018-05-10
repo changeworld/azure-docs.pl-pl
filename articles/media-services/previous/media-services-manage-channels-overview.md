@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d71f9fc2b69e1a99b518c2317cccde712ab40fec
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Omówienie transmisji strumieniowej na żywo przy użyciu usługi Azure Media Services
 
@@ -54,7 +54,7 @@ W usłudze Azure Media Services **kanały**, **programy**, i **punkty końcowe p
   > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie transmisji strumieniowej na żywo w przypadku organizowania wielu wydarzeń w długim okresie oraz poczynionych inwestycji w kodery lokalne. Zobacz szczegółowe informacje o [cenach](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Na lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo w usłudze Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). RTP (MPEG-TS) jest również obsługiwany, pod warunkiem, że dedykowanego połączenia centrum danych Azure. Następujące kodery na żywo, przy czym dane wyjściowe RTMP wiadomo, że praca z kanałami tego typu: Telestream Wirecast, FMLE. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Na lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo w usłudze Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Następujące kodery na żywo, przy czym dane wyjściowe RTMP wiadomo, że praca z kanałami tego typu: Telestream Wirecast, FMLE. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
 Począwszy od Media Services 2.10 wersji, podczas tworzenia kanału, można określić w jaki sposób chcesz dla kanału do odbierania strumienia wejściowego oraz czy ma dla kanału do przeprowadzania kodowania na żywo strumienia. Dostępne są dwie opcje:
 
@@ -68,7 +68,7 @@ Poniższa tabela zawiera przewodnik dotyczący porównanie dwóch typów kanał�
 | --- | --- | --- |
 | Dane wejściowe pojedynczej szybkości transmisji bitów jest kodowane do wielokrotnych szybkości transmisji bitów w chmurze |Nie |Yes |
 | Rozdzielczość maksymalna, liczba warstw |1080p, 8 warstwy 60 + kl. / s |720p 6 warstwy 30 klatek na sekundę |
-| Protokoły wejściowych |RTMP, Smooth Streaming |RTMP, Smooth Streaming i RTP |
+| Protokoły wejściowych |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Cena |Zobacz [cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo" |Zobacz [stronie dotyczącej cen](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maksymalny czas wykonywania |Całodobowo |8 godzin |
 | Obsługa Wstawianie typu |Nie |Yes |

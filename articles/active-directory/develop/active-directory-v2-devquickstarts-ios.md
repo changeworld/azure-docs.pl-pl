@@ -1,11 +1,9 @@
 ---
-title: "Dodaj logowanie do aplikacji systemu iOS przy użyciu punktu końcowego v2.0 usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć aplikację systemu iOS logujący się użytkownicy z obu osobistego konta Microsoft i kont służbowych przy użyciu bibliotek innych firm."
+title: Dodaj logowanie do aplikacji systemu iOS przy użyciu punktu końcowego v2.0 usługi Azure AD | Dokumentacja firmy Microsoft
+description: Jak utworzyć aplikację systemu iOS logujący się użytkownicy z obu osobistego konta Microsoft i kont służbowych przy użyciu bibliotek innych firm.
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: xerners
 manager: mtillman
-editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +13,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5323f9a514c3c1c6134656e41af68e479fd8fdc5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Dodaj logowanie do aplikacji systemu iOS przy użyciu biblioteki innych firm z interfejsu API programu Graph przy użyciu punktu końcowego v2.0
 Platforma Microsoft Identity korzysta z otwartych standardów, takich jak OAuth2 i OpenID Connect. Deweloperzy mogą używać dowolnej bibliotece potrzebnymi do integracji z naszych usług. Aby pomóc deweloperom korzystać z innych bibliotek platformy, możemy napisanych kilka wskazówki podobny do pokazują, jak skonfigurować biblioteki innych firm, aby nawiązać połączenia z platformą tożsamości Microsoft. Większość bibliotek, które implementują [specyfikację RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) można nawiązać połączenia z platformą tożsamości Microsoft.
@@ -564,7 +562,7 @@ Na koniec Przyjrzyjmy się jak zwrócić dane do MasterViewController. Dane zwra
 ```
 
 
-## <a name="run-the-sample"></a>Uruchom próbki
+## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 Jeśli został użyty szkielet i stosować wraz z tym przewodnikiem teraz należy uruchomić aplikację. Uruchomić symulatora, a następnie kliknij przycisk **Zaloguj** korzystanie z aplikacji.
 
 ## <a name="get-security-updates-for-our-product"></a>Pobierz aktualizacje zabezpieczeń naszych produktów

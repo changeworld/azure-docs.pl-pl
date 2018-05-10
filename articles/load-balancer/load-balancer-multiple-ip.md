@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenia obciążenia na wielu konfiguracji adresów IP za pomocą portalu Azure
 
@@ -120,7 +120,7 @@ Każda witryna sieci Web (contoso.com i fabrikam.com) można skonfigurować w pu
 
 4. Wybierz usługę równoważenia obciążenia (**mylb**) chcesz dodać puli adresów IP frontonu, aby.
 
-5. W obszarze **ustawienia**, wybierz pozycję **pule frontonu**. W okienku dalej u góry, wybierz **Dodaj**.
+5. W obszarze **ustawienia**, wybierz pozycję **konfiguracji IP frontonu**. W okienku dalej u góry, wybierz **Dodaj**.
 
 6. Wpisz nazwę dla adresu IP frontonu (na przykład **contosofe** lub **fabrikamfe**).
 
@@ -128,7 +128,7 @@ Każda witryna sieci Web (contoso.com i fabrikam.com) można skonfigurować w pu
 
 8. Utworzyć drugi adres IP frontonu, powtarzając <a href="#step3-3">krok 3</a> za pośrednictwem <a href="#step3-7">krok 7</a> w tej sekcji.
 
-Po skonfigurowaniu frontonu puli adresów IP są wyświetlane w obszarze przez moduł równoważenia obciążenia **puli adresów IP frontonu** ustawienia. 
+Po skonfigurowaniu frontonu puli adresów IP są wyświetlane w obszarze przez moduł równoważenia obciążenia **konfiguracji IP frontonu** ustawienia. 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>Krok 4: Konfigurowanie puli zaplecza
 

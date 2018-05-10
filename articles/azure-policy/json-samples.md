@@ -1,5 +1,5 @@
 ---
-title: Przykłady szablonów zasad | Dokumentacja firmy Microsoft
+title: Przykłady szablonów zasad
 description: Przykłady JSON dla zasad usługi Azure
 services: azure-policy
 documentationcenter: ''
@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 01/17/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 3473cb5260773fda0534c4f0aca1db731cce74eb
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 458ce4fb77f501d5feba4cf732fe3ce9a49f9c21
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="templates-for-azure-policy"></a>Szablony zasad Azure
 

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji usługi Azure Active Directory z logowania jednokrotnego Procore | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Procore logowania jednokrotnego."
+title: 'Samouczek: Integracji usługi Azure Active Directory z logowania jednokrotnego Procore | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Procore logowania jednokrotnego.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: c6bae8e24f252a535571308467b428832b542e48
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4cba8aa046b84fe63b17a662990824b1823c1572
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Samouczek: Integracji Azure Active Directory z Procore logowania jednokrotnego
 
@@ -30,14 +30,6 @@ Integrowanie Procore rejestracji Jednokrotnej z usługą Azure AD zapewnia nast�
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu zarządzania Azure
 
 Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
-
-<!--## Overview
-
-To enable single sign-on with Procore SSO, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Procore SSO.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -212,7 +204,7 @@ Wykonaj następujące czynności, aby utworzyć użytkownika testowego Procore w
 
     b. W **nazwisko** pole tekstowe, nazwisko użytkownika typu, takich jak **Simona**.
 
-    c. W **adres E-mail** , adres e-mail użytkownika typu pole tekstowe, takich jak  **BrittaSimon@contoso.com** .
+    c. W **adres E-mail** , adres e-mail użytkownika typu pole tekstowe, takich jak **BrittaSimon@contoso.com**.
 
     d. Wybierz **szablon uprawnień** jako **później Zastosuj szablon uprawnień**.
 
@@ -262,7 +254,7 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Jeśli chcesz przetestować jednego ustawienia logowania jednokrotnego, otwórz Panel dostępu. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586). Po kliknięciu kafelka Procore logowania jednokrotnego w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Procore logowania jednokrotnego.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

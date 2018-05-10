@@ -1,30 +1,34 @@
 ---
 title: Azure Active Directory audytu dokumentacja interfejsu API | Dokumentacja firmy Microsoft
-description: "Jak rozpocząć pracę z interfejsem API inspekcji usługi Azure Active Directory"
+description: Jak rozpocząć pracę z interfejsem API inspekcji usługi Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cdf80ff1cc49b1582302d411ee6fcc8f193c021
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 1bf86a9190039cdf0fe8dc435bdee4308b28cf29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory audytu dokumentacja interfejsu API
-Ten temat jest częścią zbiór tematów dotyczących usługi Azure Active Directory raportowania interfejsu API.  
-Raportowanie na platformie Azure AD zapewnia interfejs API, który umożliwia dostęp do danych inspekcji za pomocą kodu lub narzędzia pokrewne.
-Zakres tego tematu jest dostarczają informacje na temat **inspekcji interfejsu API**.
+
+> [!TIP] 
+> Zapoznaj się z nowego interfejsu API programu Microsoft Graph, dla [raportowania](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit), która zastąpi ostatecznie tego interfejsu API. 
+
+
+W tym artykule jest częścią kolekcję artykułów na temat usługi Azure Active Directory (Azure AD) raportowania interfejsu API. Raportowanie na platformie Azure AD zapewnia interfejs API, który umożliwia dostęp do danych inspekcji za pomocą kodu lub narzędzia pokrewne.
+Zakres tego artykułu jest dostarczają informacje na temat **inspekcji interfejsu API**.
 
 Zobacz:
 
@@ -35,9 +39,9 @@ Zobacz:
 
 W przypadku:
 
-- Często zadawane pytania, przeczytaj nasze [— często zadawane pytania](active-directory-reporting-faq.md) 
+- Przeczytaj często zadawane pytania, [— często zadawane pytania](active-directory-reporting-faq.md) 
 
-- Problemy, sprawdź [pliku biletu pomocy technicznej](active-directory-troubleshooting-support-howto.md) 
+- Problemy, [pliku biletu pomocy technicznej](active-directory-troubleshooting-support-howto.md) 
 
 
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
@@ -46,26 +50,25 @@ W przypadku:
 * Dowolną aplikację, która ma zezwolenie na dostęp do interfejsu API (autoryzacji aplikacji można skonfigurować tylko na podstawie uprawnienia administratora globalnego)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby uzyskać dostęp do tego raportu za pomocą interfejsu API raportowania, należy skonfigurować:
+Aby uzyskać dostęp do tego raportu za pomocą interfejsu API raportowania, musi być:
 
 * [Lepsze wersji lub Azure Active Directory bezpłatna](active-directory-editions.md)
 * Ukończono [wymagania wstępne dotyczące raportowania interfejsu API usługi Azure AD dostęp](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Uzyskiwanie dostępu do interfejsu API
-Albo dostęp do tego interfejsu API za pomocą [Explorer wykres](https://graphexplorer2.cloudapp.net) albo programowo z użyciem, na przykład środowiska PowerShell. Aby PowerShell poprawnie interpretować składnia filtru OData używanym w wywołaniach AAD wykres REST, należy użyć backtick (alias: akcent) znaku "ucieczki" znaku $. Znak backtick służy jako [znak ucieczki dla środowiska PowerShell](https://technet.microsoft.com/library/hh847755.aspx), umożliwiając PowerShell literału interpretacja znak $, i uniknąć skomplikowana go jako nazwę zmiennej środowiska PowerShell (ie: $filter).
+Albo dostęp do tego interfejsu API za pomocą [Explorer wykres](https://graphexplorer2.cloudapp.net) albo programowo z użyciem, na przykład środowiska PowerShell. Użyj backtick (alias: akcent) znaku "ucieczki" znak $, aby upewnić się, że PowerShell może interpretować składnia filtru OData używanym w wywołaniach REST Graph usługi AAD. Znak backtick służy jako [znak ucieczki dla środowiska PowerShell](https://technet.microsoft.com/library/hh847755.aspx), umożliwiając PowerShell literału interpretacja znak $, i uniknąć skomplikowana go jako nazwę zmiennej środowiska PowerShell (na przykład $filter).
 
-Ten temat koncentruje się w Eksploratorze wykresu. Na przykład środowiska PowerShell, zobacz [skrypt programu PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
+Ten artykuł koncentruje się na Explorer wykresu. Na przykład środowiska PowerShell, zobacz [skrypt programu PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>Punkt końcowy interfejsu API
+
 Aby dostęp do tego interfejsu API przy użyciu następującego identyfikatora URI:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Nie ma żadnego limitu liczby rekordów zwróconych przez interfejs API inspekcji usługi Azure AD (przy użyciu podział na strony OData).
-Do przechowywania ograniczenia dotyczące raportowania danych, zapoznaj się z [zasad przechowywania dotyczących okresu raportowania](active-directory-reporting-retention.md).
+Nie ma żadnego limitu liczby rekordów, które są zwracane przez interfejs API inspekcji usługi Azure AD (przy użyciu podział na strony OData). Limitów przechowywania danych raportowania, zobacz [zasad przechowywania dotyczących okresu raportowania](active-directory-reporting-retention.md).
 
-To wywołanie zwraca dane w partiach. Każdej z partii może zawierać maksymalnie 1000 rekordów.  
-Aby uzyskać kolejną partię rekordów, użyj łącze do następnej. Pobierz informacje skiptoken z pierwszego zestawu zwróconych rekordów. Pomiń token zostanie na końcu wynik ustawiona.  
+Wywołanie zwraca dane w partiach. Każdej z partii może zawierać maksymalnie 1000 rekordów. Aby uzyskać kolejną partię rekordów, użyj **dalej** łącza. Uzyskiwanie informacji o tokenie pomijania z pierwszego zestawu zwróconych rekordów. Pomiń token zostanie na końcu wynik ustawiona.  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,14 +76,15 @@ Aby uzyskać kolejną partię rekordów, użyj łącze do następnej. Pobierz in
 
 
 ## <a name="supported-filters"></a>Filtry obsługiwane
-Liczba rekordów, które są zwracane przez interfejs API można zawęzić wywołaj w formularzu filtru.  
-Dla interfejsu API logowania związane z danych, obsługiwane są następujące filtry:
 
-* **$top =\<liczba rekordów, które ma zostać zwrócona\>**  — Aby ograniczyć liczbę zwróconych rekordów. Jest to kosztowna operacja. Nie należy używać tego filtru, aby zwrócić tysiące obiektów.     
+Można zawęzić liczbę rekordów, które są zwracane przez wywołanie interfejsu API z filtrem.  
+Dane dotyczące interfejsu API logowania obsługiwane są następujące filtry:
+
+* **$top =\<liczba rekordów, które ma zostać zwrócona\>**  — Aby ograniczyć liczbę zwróconych rekordów. Jest to kosztowna operacja. Nie używaj tego filtru, aby zwrócić tysiące obiektów.     
 * **$filter =\<instrukcji filtru\>**  — Aby określić, na podstawie pól filtr obsługiwanych typu rekordów są dla Ciebie ważne
 
 ## <a name="supported-filter-fields-and-operators"></a>Operatory i pól filtr obsługiwane
-Aby określić typ rekordów, które są dla Ciebie ważne, można utworzyć filtr instrukcję, która może zawierać jeden lub kombinację następujących pól Filtr:
+Aby określić typ rekordów, które są dla Ciebie ważne, można utworzyć filtr instrukcja zawierająca co najmniej kombinację następujących pól Filtr:
 
 * [Daty](#activitydate) — określa datę lub zakres dat
 * [Kategoria](#category) — definiuje chcesz filtrować według kategorii.
@@ -213,7 +217,7 @@ Bez uwzględniania wielkości liter
 **Uwagi dotyczące**:
 
 * Bez uwzględniania wielkości liter
-* Konieczne jest dodanie pełną przestrzeń nazw podczas wykonywania zapytania Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity
+* Dodaj pełną przestrzeń nazw podczas wykonywania zapytania Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity
 
 - - -
 ### <a name="targetobjectid"></a>docelowy/objectId.
@@ -234,10 +238,12 @@ Bez uwzględniania wielkości liter
 **Uwagi dotyczące**:
 
 * Bez uwzględniania wielkości liter 
-* Konieczne jest dodanie pełną przestrzeń nazw podczas wykonywania zapytania Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
+* Dodaj pełną przestrzeń nazw podczas wykonywania zapytania Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
 
 - - -
 ## <a name="next-steps"></a>Następne kroki
-* Czy chcesz wyświetlić przykłady działań filtrowane systemu? Zapoznaj się z [przykłady inspekcji interfejsu API usługi Azure Active Directory](active-directory-reporting-api-audit-samples.md).
-* Czy chcesz dowiedzieć się więcej na temat raportowania interfejsu API usługi Azure AD? Zobacz [wprowadzenie do usługi Azure Active Directory interfejsu API raportowania](active-directory-reporting-api-getting-started.md).
+
+- Czy chcesz wyświetlić przykłady działań filtrowane systemu? Zapoznaj się z [przykłady inspekcji interfejsu API usługi Azure Active Directory](active-directory-reporting-api-audit-samples.md).
+
+- Czy chcesz dowiedzieć się więcej na temat raportowania interfejsu API usługi Azure AD? Zobacz [wprowadzenie do usługi Azure Active Directory interfejsu API raportowania](active-directory-reporting-api-getting-started.md).
 

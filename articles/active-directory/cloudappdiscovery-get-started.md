@@ -4,21 +4,21 @@ description: Znajdź i Zarządzaj aplikacjami w usłudze Cloud App Discovery o p
 services: active-directory
 keywords: Usługa cloud app discovery, zarządzanie aplikacjami
 documentationcenter: ''
-author: curtand
+author: barbkess
 manager: mtillman
 tags: ignite
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
-ms.component: users-groups-roles
 ms.topic: article
 ms.date: 04/25/2018
-ms.author: curtand
+ms.author: barbkess
 ms.reviewer: nigu
-ms.openlocfilehash: 3e4907cbeaf06a519761d76a41708eacd3843ed4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 4d1e845dee621bf284cbed91ba74177f9fc4acf3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Konfigurowanie Cloud App Discovery w usłudze Azure AD
 
@@ -106,7 +106,7 @@ Jeśli dziennik nie jest obsługiwany, wybierz **innych** jako **źródła danyc
 
 ## <a name="data-attributes-according-to-vendor-documentation"></a>Atrybuty danych (zgodnie z dokumentacją dostawcy)
 
-| Źródło danych         | Adres URL aplikacji docelowej | Adres IP aplikacji docelowej | Nazwa użytkownika | Punkt początkowy adres IP | Całkowity ruch | Przekazane bajtów |
+| Źródło danych         | Adres URL aplikacji docelowej | Adres IP aplikacji docelowej | Nazwa użytkownika | Punkt początkowy adres IP | Całkowity ruch | Liczba przekazanych bajtów |
 |-----------------------------------------|----------------|---------------|----------|-----------|---------------|----------------|
 | Barracuda                               | **Tak**        | **Tak**       | **Tak**  | **Tak**   | Nie            | Nie             |
 | Blue Coat                               | **Tak**        | Nie            | **Tak**  | **Tak**   | **Tak**       | **Tak**        |

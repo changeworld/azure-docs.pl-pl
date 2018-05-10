@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 9a6e63e95b833c960356b82a19127ec91a791b98
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 595abcaafdea5cde3f868567bac7fb9cf0ee424b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Zintegrować zarządzanie interfejsami API w wewnętrznej sieci Wirtualnej z bramy aplikacji 
 
@@ -298,7 +298,7 @@ Poniższy przykład tworzy Prosta reguła dla "/ echo /" ścieżkę routingu ruc
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-Jeśli ścieżka nie odpowiada reguły ścieżki, chcemy, aby umożliwić z interfejsu API zarządzania, Konfiguracja mapowania ścieżki reguły konfiguruje również domyślną pulę adresów zaplecza o nazwie **dummyBackendPool**. Na przykład http://api.contoso.net/calc/* przechodzi do **dummyBackendPool** określone jako domyślna pula cofanie dopasowane ruchu.
+Jeśli ścieżka nie odpowiada reguły ścieżki, chcemy, aby umożliwić z interfejsu API zarządzania, Konfiguracja mapowania ścieżki reguły konfiguruje również domyślną pulę adresów zaplecza o nazwie **dummyBackendPool**. Na przykład http://api.contoso.net/calc/sum przechodzi do **dummyBackendPool** określone jako domyślna pula cofanie dopasowane ruchu.
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting

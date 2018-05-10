@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeń SSH maszyny Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub zostało odrzucone
 Istnieją różne powody, czy występują błędy protokołu Secure Shell (SSH), błędów połączenia SSH, lub SSH zostało odrzucone podczas próby nawiązania połączenia z maszyną wirtualną systemu Linux (VM). Ten artykuł ułatwia znajdowanie i rozwiązać problemy. Można użyć portalu Azure, Azure CLI lub rozszerzenia dostępu do maszyny Wirtualnej dla systemu Linux, aby rozwiązać problemy z połączeniem.
@@ -80,7 +80,7 @@ Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/netwo
 ## <a name="use-the-azure-cli-20"></a>Użyj Azure CLI 2.0
 Jeśli nie jest jeszcze, zainstaluj najnowszą [Azure CLI 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [logowania az](/cli/azure/reference-index#az_login).
 
-Jeśli utworzono i przekazać niestandardowego obrazu dysku dla systemu Linux, upewnij się, [agenta usługi Microsoft Azure Linux](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) wersji 2.0.5 lub nowszy jest zainstalowany. Dla maszyn wirtualnych utworzonych przy użyciu obrazów w galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane dla Ciebie.
+Jeśli utworzono i przekazać niestandardowego obrazu dysku dla systemu Linux, upewnij się, [agenta usługi Microsoft Azure Linux](../extensions/agent-windows.md) wersji 2.0.5 lub nowszy jest zainstalowany. Dla maszyn wirtualnych utworzonych przy użyciu obrazów w galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane dla Ciebie.
 
 ### <a name="reset-ssh-configuration"></a>Zresetuj konfigurację protokołu SSH
 Możesz początkowo spróbuj zresetowanie konfiguracji SSH do wartości domyślnych i ponowny rozruch serwera SSH na maszynie Wirtualnej. Należy pamiętać, że nie ma to wpływu nazwę konta użytkownika, hasła lub kluczy SSH.
@@ -155,7 +155,7 @@ Jeśli nie jest jeszcze, [zainstalować 1.0 interfejsu wiersza polecenia platfor
 azure config mode arm
 ```
 
-Jeśli utworzono i przekazać niestandardowego obrazu dysku dla systemu Linux, upewnij się, [agenta usługi Microsoft Azure Linux](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) wersji 2.0.5 lub nowszy jest zainstalowany. Dla maszyn wirtualnych utworzonych przy użyciu obrazów w galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane dla Ciebie.
+Jeśli utworzono i przekazać niestandardowego obrazu dysku dla systemu Linux, upewnij się, [agenta usługi Microsoft Azure Linux](../extensions/agent-windows.md) wersji 2.0.5 lub nowszy jest zainstalowany. Dla maszyn wirtualnych utworzonych przy użyciu obrazów w galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane dla Ciebie.
 
 ### <a name="reset-ssh-configuration"></a>Zresetuj konfigurację protokołu SSH
 Konfiguracja SSHD sam może być niepoprawnie skonfigurowany lub Usługa napotkała błąd. Możesz resetować SSHD do upewnij się, że sama konfiguracji SSH jest prawidłowy. Resetowanie SSHD powinien być pierwszym krokiem rozwiązywania problemów, które należy wykonać.

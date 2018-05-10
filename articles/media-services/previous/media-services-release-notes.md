@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: b36c9150ef251939c9c484da93bc8a086b869676
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 62f5ae4a9152d3f1b1641cc69136bf472527ba2a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowano zmiany z poprzednich wersji i znane problemy.
@@ -44,6 +44,10 @@ Te informacje o wersji dla usługi Azure Media Services podsumowano zmiany z pop
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historia wersji interfejsu API REST
 Informacje o historii wersji interfejsu API REST usług nośnika, zobacz [dokumentacja interfejsu API REST usługi Azure Media].
+
+## <a name="may-2018"></a>2018 maja 
+
+Uruchamianie kanałów na żywo 12 maja 2018 będzie już obsługi strumienia transportowego RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z RTP/MPEG-2 RTMP lub pofragmentowany MP4 (Smooth Streaming) pozyskiwania protokołów.
 
 ## <a name="october-2017-release"></a>2017 października zlecenia
 > [!IMPORTANT] 

@@ -5,20 +5,20 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2018
+ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6fc89469e1a9b2d7142e38f7aea5596fc9adb4e4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1ed82a199fbee44d3cd9df7f5416c4e243d9d191
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchomione elementy runbook na hybrydowy proces roboczy elementu Runbook
 
 Nie ma różnic w strukturze elementów runbook, które są uruchamiane w automatyzacji Azure oraz te, które uruchamiane na hybrydowy proces roboczy elementu Runbook. Elementy Runbook korzystające z każdym najprawdopodobniej różnią się znacznie jednak ponieważ elementy runbook, elementów docelowych hybrydowy proces roboczy elementu Runbook, zwykle zarządzać zasobami na komputerze lokalnym lub w odniesieniu do zasobów w środowisku lokalnym, w których jest wdrożona, gdy elementy runbook automatyzacji Azure zazwyczaj zarządzać zasobami w chmurze Azure.
 
-Podczas tworzenia elementów runbook do uruchamiania na hybrydowy proces roboczy elementu Runbook, należy edytować i testowania elementów runbook na maszynie, który jest hostem hybrydowy proces roboczy. Komputer hosta zawiera wszystkie moduły programu PowerShell i dostępu do sieci, które należy do zarządzania i dostęp do zasobów lokalnych. Gdy element runbook został edytować i przetestowane na maszynie hybrydowego procesu roboczego, można przekazać jej do środowiska usługi Automatyzacja Azure, w których jest dostępna do uruchamiania w hybrydowy proces roboczy. Jest ważne dowiedzieć się, że zadania uruchomione konta systemu lokalnego, które mogą powodować niewielkie różnice, podczas tworzenia elementów runbook dla procesu roboczego elementu Runbook na hybrydowego powinny to być brane pod uwagę.
+Podczas tworzenia elementów runbook do uruchamiania na hybrydowy proces roboczy elementu Runbook, należy edytować i testowania elementów runbook na maszynie, który jest hostem hybrydowy proces roboczy. Komputer hosta zawiera wszystkie moduły programu PowerShell i dostępu do sieci, które należy do zarządzania i dostęp do zasobów lokalnych. Gdy element runbook został edytować i przetestowane na maszynie hybrydowego procesu roboczego, można przekazać jej do środowiska usługi Automatyzacja Azure, w których jest dostępna do uruchamiania w hybrydowy proces roboczy. Ważne jest, aby dowiedzieć się, że zadania uruchomione w ramach lokalnego konta systemowego dla systemu windows lub specjalne konto użytkownika **nxautomation** w systemie Linux, które mogą stać się niewielkie różnice podczas tworzenia elementów runbook dla procesu roboczego elementu Runbook na hybrydowego powinna to być brana pod uwagę.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Uruchamianie elementu runbook na hybrydowy proces roboczy elementu Runbook
 
@@ -28,12 +28,12 @@ Po uruchomieniu elementu runbook w portalu Azure, jest wyświetlana **Uruchom na
 
 Użyj **RunOn** parametru. Następujące polecenie służy do uruchomienia elementu runbook o nazwie Test-Runbook na hybrydowego grupy procesów roboczych elementu Runbook o nazwie MyHybridGroup przy użyciu programu Windows PowerShell.
 
-```powershell-interactive
+```azurepowershell-interactive
 Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 > [!NOTE]
-> **RunOn** parametr został dodany do **Start AzureAutomationRunbook** polecenia cmdlet w wersji od 0.9.1 Microsoft Azure PowerShell. Należy [Pobierz najnowszą wersję](https://azure.microsoft.com/downloads/) Jeśli masz wcześniejszą zainstalowane. Musisz zainstalować tę wersję stacji roboczej, na którym jest uruchamiany element runbook z programu Windows PowerShell. Nie należy go zainstalować na komputerze pracownika, chyba że użytkownik zamierza uruchamiania elementów runbook z tego komputera. Obecnie nie można uruchomić elementu runbook na hybrydowy proces roboczy elementu Runbook z innego elementu runbook, ponieważ wymagałoby to najnowsza wersja programu Azure Powershell do zainstalowania na Twoim koncie automatyzacji. Najnowsza wersja jest automatycznie aktualizowana w automatyzacji Azure i automatycznie przesuwana pracownikom wkrótce.
+> **RunOn** parametr został dodany do **Start AzureAutomationRunbook** polecenia cmdlet w wersji od 0.9.1 Microsoft Azure PowerShell. Należy [Pobierz najnowszą wersję](https://azure.microsoft.com/downloads/) Jeśli masz wcześniejszą zainstalowane. Musisz zainstalować tę wersję stacji roboczej, na którym jest uruchamiany element runbook z programu PowerShell. Nie trzeba zainstalować na komputerze pracownika, chyba że użytkownik zamierza uruchamiania elementów runbook z tego komputera"
 
 ## <a name="runbook-permissions"></a>Uprawnienia elementów Runbook
 
@@ -41,11 +41,11 @@ Elementów Runbook uruchomionych na hybrydowy proces roboczy elementu Runbook ni
 
 ### <a name="runbook-authentication"></a>Uwierzytelnianie elementu Runbook
 
-Domyślnie, elementy runbook działają w kontekście konta systemu lokalnego na komputerze lokalnym, użytkownik musi podać własne uwierzytelniania do zasobów, które będą mieć dostępu do.
+Domyślnie, elementy runbook działają w kontekście konta systemu lokalnego dla systemu Windows oraz specjalne konto użytkownika **nxautomation** dla systemu Linux na komputerze lokalnym, więc użytkownik musi podać własne uwierzytelniania do zasobów, które będą uzyskiwać dostęp do .
 
 Można użyć [poświadczeń](automation-credentials.md) i [certyfikatu](automation-certificates.md) zasoby w elemencie runbook za pomocą poleceń cmdlet, które pozwalają określić poświadczenia, można uwierzytelniać do różnych zasobów. Poniższy przykład przedstawia części elementu runbook, który powoduje ponowne uruchomienie komputera. Pobiera poświadczenia z zasobu poświadczeń i nazwę komputera z zasób zmiennej, a następnie używa tych wartości w poleceniu cmdlet Restart-Computer.
 
-```powershell-interactive
+```azurepowershell-interactive
 $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
 $Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
 
@@ -56,7 +56,7 @@ Można też skorzystać [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Konto Uruchom jako
 
-Zamiast zapewnienia uwierzytelniania do zasobów lokalnych elementów runbook, można określić **RunAs** konto do grupy hybrydowych procesów roboczych. Należy określić [zasób poświadczeń](automation-credentials.md) mający dostęp do zasobów lokalnych i wszystkich elementów runbook działać w ramach tych poświadczeń, podczas uruchamiania na hybrydowy proces roboczy elementu Runbook w grupie.
+Domyślnie hybrydowy proces roboczy elementu Runbook używa lokalnego systemu dla systemu Windows i specjalne konto użytkownika **nxautomation** dla systemu Linux do wykonywania elementów runbook. Zamiast zapewnienia uwierzytelniania do zasobów lokalnych elementów runbook, można określić **RunAs** konto do grupy hybrydowych procesów roboczych. Należy określić [zasób poświadczeń](automation-credentials.md) mający dostęp do zasobów lokalnych i wszystkich elementów runbook działać w ramach tych poświadczeń, podczas uruchamiania na hybrydowy proces roboczy elementu Runbook w grupie.
 
 Nazwa użytkownika dla poświadczenia musi być w jednym z następujących formatów:
 
@@ -79,7 +79,7 @@ W ramach procesu kompilacji automatycznego wdrażania zasobów na platformie Azu
 
 Następujący element runbook programu PowerShell *RunAsCertificateToHybridWorker eksportu*, umożliwia wyeksportowanie certyfikatu uruchom jako z konta usługi Automatyzacja Azure i pliki do pobrania i zaimportowanie go do magazynu certyfikatów komputera lokalnego na hybrydowy proces roboczy podłączony do tego samego konta. Po ukończeniu tego kroku sprawdza to, czy Proces roboczy może pomyślnie wykonać uwierzytelnienia na platformie Azure przy użyciu konta Uruchom jako.
 
-```powershell-interactive
+```azurepowershell-interactive
 <#PSScriptInfo
 .VERSION 1.0
 .GUID 3a796b9a-623d-499d-86c8-c249f10a6986

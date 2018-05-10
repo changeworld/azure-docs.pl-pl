@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Integracja z zaporą Azure stosu
 Używanie urządzenia zapory ułatwiające bezpieczne stosu Azure jest zalecane. Mimo że zapory można ułatwić rozproszonej typu "odmowa usługi" (DDOS) ataków, wykrywania nieautoryzowanego dostępu i inspekcji zawartości, może również zostać wąskie gardło przepływności dla usług magazynu Azure, takich jak obiekty BLOB, tabel i kolejek.
@@ -44,7 +44,7 @@ Downsides użycia translatora adresów Sieciowych dla publicznych adresów VIP, 
 Zalecane jest obecnie wyłączone odszyfrowywania SSL na cały ruch stosu Azure. Jeśli jest obsługiwany w przyszłej aktualizacji, będzie można wskazówki o sposobie włączania odszyfrowywania SSL stosu Azure.
 
 ## <a name="edge-firewall-scenario"></a>Scenariusz zapory krawędzi
-We wdrożeniu krawędzi stosu Azure jest wdrażany bezpośrednio za router brzegowy lub zaporą. W tych scenariuszach jest obsługiwane dla zapory, znajdować się nad obramowania lub działający jako urządzenie obramowania, jeśli obsługuje ona równa koszt Multi ścieżki ECMP () przy użyciu protokołu BGP lub routing statyczny.
+We wdrożeniu krawędzi stosu Azure jest wdrażany bezpośrednio za router brzegowy lub zaporą. W tych scenariuszach jest obsługiwana dla zapory, znajdować się nad obramowania (scenariusz 1), których obsługuje zarówno konfiguracje zapór aktywny aktywny i aktywny pasywny lub działania jako urządzenia obramowania (scenariusz z 2), w których tylko obsługuje zapory aktywny aktywny Konfiguracja jednostki uzależnionej w taki sam koszt wielu ścieżki ECMP () przy użyciu protokołu BGP lub routing statyczny dla trybu failover.
 
 Zazwyczaj publiczne rutowalne adresy IP są określone dla publicznych pulę adresów VIP z siecią zewnętrzną w czasie wdrażania. W scenariuszu krawędzi nie zaleca używania publicznych adresów IP z obsługą routingu w innych sieci ze względów bezpieczeństwa. Ten scenariusz umożliwia użytkownikowi wystąpić środowisko pełnej chmury własnym kontrolowane w chmurze publicznej, takich jak Azure.  
 

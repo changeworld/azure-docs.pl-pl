@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9de8119cbde486800639bc5f3559a1a2859ec204
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure funkcje skryptu (csx) developer odwołanie w C#
 
@@ -335,7 +335,7 @@ Następujące zestawy mogą być używane przez prostą nazwę (na przykład `#r
 ## <a name="referencing-custom-assemblies"></a>Odwołania do zestawów niestandardowych
 
 Aby odwołać niestandardowego zestawu, możesz użyć dowolnej *udostępnionego* zestawu lub *prywatnej* zestawu:
-- Zestawy udostępnione są współużytkowane przez wszystkie funkcje w aplikacji funkcji. Aby odwołać się do niestandardowego zestawu Przekaż zestawu do aplikacji funkcji, takich jak w `bin` folder w katalogu głównym aplikacji funkcji. 
+- Zestawy udostępnione są współużytkowane przez wszystkie funkcje w aplikacji funkcji. Aby odwołać się do niestandardowego zestawu Przekaż zestawu do folderu o nazwie `bin` w Twojej [folder główny aplikacji funkcji](functions-reference.md#folder-structure) (wwwroot). 
 - Zestawy prywatne są częścią kontekstu daną funkcję i obsługuje ładowania bezpośredniego w różnych wersjach. Zestawy prywatne należy przekazać w `bin` folderu w katalogu funkcji. Odwołuje się do zestawów przy użyciu nazwy pliku, takich jak `#r "MyAssembly.dll"`. 
 
 Aby uzyskać informacje na temat przekazywania plików do folderu funkcji, zobacz sekcję dotyczącą [pakietu zarządzania](#using-nuget-packages).

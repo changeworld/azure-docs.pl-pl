@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 29a1d5bc839fcf533973271638bf283d6e48e93b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6071e025352199c5ec559598a580a918c2e9c666
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Jak przechwycić klasyczną maszynę wirtualną z systemem Linux jako obraz
 > [!IMPORTANT]
@@ -107,7 +107,7 @@ Obraz jest gotowy do użycia do tworzenia maszyn wirtualnych. Możesz użyć pol
 
 Można również użyć [portalu Azure](http://portal.azure.com) Tworzenie niestandardowych maszyny Wirtualnej za pomocą **obrazu** — metoda i wybierając obraz został utworzony. Aby uzyskać więcej informacji, zobacz [tworzenie maszyny Wirtualnej niestandardowe][How to Create a Custom Virtual Machine].
 
-**Zobacz też:** [Podręcznik użytkownika Azure agenta systemu Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**Zobacz też:** [Podręcznik użytkownika Azure agenta systemu Linux](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

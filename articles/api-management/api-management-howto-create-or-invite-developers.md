@@ -1,11 +1,11 @@
 ---
-title: "Jak zarządzać kontami użytkowników w usłudze Azure API Management | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć lub zaprosić użytkowników w usłudze Azure API Management"
+title: Jak zarządzać kontami użytkowników w usłudze Azure API Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć lub zaprosić użytkowników w usłudze Azure API Management
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 501210c3fab2659deb9594e1bbd9aa51912187e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 53ed914a3890aab1dd49536856feeb8975986e00
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Jak zarządzać kontami użytkowników w usłudze Azure API Management
 W usłudze API Management Deweloperzy są użytkownicy interfejsów API, które można udostępnić przy użyciu interfejsu API zarządzania. Ten przewodnik przedstawia sposobu tworzenia i zapraszanie deweloperów do korzystania z interfejsów API i produktów czy należy udostępnić je z wystąpieniem usługi API Management. Informacje na programowe zarządzanie kontami użytkowników, zobacz [jednostki użytkownika](https://msdn.microsoft.com/library/azure/dn776330.aspx) dokumentacji w [interfejsu API REST zarządzania](https://msdn.microsoft.com/library/azure/dn776326.aspx) odwołania.

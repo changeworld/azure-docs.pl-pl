@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 69ee7baeda524647dd259ea22bb948b0168fd913
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Podstawowe pojęcia i hierarchiczny model zasobów usługi Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Jak na poniższym diagramie przedstawiono rozwiązania Cosmos bazy danych Azure 
 ![Azure DB rozwiązania Cosmos hierarchiczna zasobów modelu][1]  
 **Model hierarchiczna zasobów**   
 
-Aby rozpocząć pracę z zasobami, należy najpierw [Tworzenie konta bazy danych](create-sql-api-dotnet.md) przy użyciu subskrypcji platformy Azure. Konto bazy danych może składać się z zestawem **baz danych**, każda z nich zawiera wiele **kolekcje**, każdy z które z kolei zawierają ** procedury składowane, wyzwalacze, funkcje UDF, dokumenty i powiązane  **załączniki**. Bazy danych ma również skojarzonych **użytkowników**, każdy z zestawem **uprawnienia** można uzyskać dostępu do kolekcji, procedur składowanych, wyzwalaczy, funkcji UDF, dokumentów lub załączników. Bazy danych, użytkownicy, uprawnienia i kolekcje są zdefiniowane w systemie zasoby z dobrze znanych schematów, dokumentów i załączników zawierać dowolne, zdefiniowane przez użytkownika zawartość JSON.  
+Aby rozpocząć pracę z zasobami, należy najpierw [Tworzenie konta bazy danych](create-sql-api-dotnet.md) przy użyciu subskrypcji platformy Azure. Konto bazy danych może składać się z zestawem **baz danych**, każda z nich zawiera wiele **kolekcje**, każdy z które z kolei zawierają **procedury składowane, wyzwalacze, funkcje UDF, dokumenty i powiązane załączniki**. Bazy danych ma również skojarzonych **użytkowników**, każdy z zestawem **uprawnienia** można uzyskać dostępu do kolekcji, procedur składowanych, wyzwalaczy, funkcji UDF, dokumentów lub załączników. Bazy danych, użytkownicy, uprawnienia i kolekcje są zdefiniowane w systemie zasoby z dobrze znanych schematów, dokumentów i załączników zawierać dowolne, zdefiniowane przez użytkownika zawartość JSON.  
 
 | Zasób | Opis |
 | --- | --- |

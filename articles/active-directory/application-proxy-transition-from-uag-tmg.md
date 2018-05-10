@@ -3,23 +3,23 @@ title: Uaktualnij do serwera Proxy aplikacji usługi Azure AD | Dokumentacja fir
 description: Wybierz, jakie rozwiązanie do serwera proxy jest najlepsze w przypadku uaktualniania z programu Microsoft Forefront lub Unified bramy dostępu.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5323a9225adb9a9bfca2dccec5c84f288c4fd25d
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: a433c18be29416992304b2cb8cfa9acabe895ea6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="compare-remote-access-solutions"></a>Porównanie rozwiązań dostępu zdalnego
 

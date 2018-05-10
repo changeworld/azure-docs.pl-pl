@@ -2,22 +2,19 @@
 title: Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych | Dokumentacja firmy Microsoft
 description: Pokazuje, jak umożliwiają chmury B2B użytkownikom dostępu do aplikacji lokalnych przy użyciu współpracy B2B usługi Azure AD.
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
 ms.service: active-directory
+ms.component: B2B
 ms.topic: article
-ms.workload: identity
 ms.date: 04/20/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b3cc52246db213ff8d5946a1ff3ac3dbe231f4ad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1c13da977021538651084ec4462cf8bd32f131d7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych
 

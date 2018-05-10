@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d59a739e2222aca27993f6ae944a1d3bda567041
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: d3de8241b42aff63faaf04477a58c5564407ac8b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Zestaw deweloperski IoT MXChip nawiązania połączenia zdalnego monitorowania Azure IoT akcelerator rozwiązań
 
@@ -124,4 +124,4 @@ Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https:/
 Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do sieci Azure IoT zdalne monitorowanie akcelerator rozwiązań i wizualizować dane czujników, w tym miejscu są Sugerowane następne kroki:
 
 * [Omówienie akceleratorów rozwiązania IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
-* [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

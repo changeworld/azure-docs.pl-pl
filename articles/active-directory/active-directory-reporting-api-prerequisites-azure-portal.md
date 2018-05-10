@@ -12,37 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/03/2018
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 72372a37c4ddcc6135fc7477807e4ff94ae90c77
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ab05907f1f23c3856b41a941c1b95992ed5a79a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące dostęp do usługi Azure Active Directory raportowania interfejsu API
 
 [Usługi Azure Active Directory (Azure AD) raportowania interfejsów API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają programowy dostęp do danych za pomocą zestawu opartego na interfejsie REST API. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
 
-Raportowania używa interfejsu API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) do autoryzacji dostępu do interfejsów API sieci web. 
+Raportowania używa interfejsu API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) do autoryzacji dostępu do interfejsów API sieci web.
+
+Aby przygotować dostęp do interfejsu API raportowania, należy:
+
+1. Przypisz role
+2. Rejestrowanie aplikacji
+3. Udziel uprawnień
+4. Zbierz ustawienia konfiguracji
+
+
+
+## <a name="assign-roles"></a>Przypisz role
 
 Aby uzyskać dostęp do danych raportowania za pośrednictwem interfejsu API, należy mieć jeden z następujących ról przypisane:
 
 - Odczytywanie zabezpieczeń
+
 - Administrator zabezpieczeń
+
 - Administrator globalny
 
 
-Aby przygotować dostęp do interfejsu API raportowania, należy:
 
-1. Rejestrowanie aplikacji 
-2. Udziel uprawnień 
-3. Zbierz ustawienia konfiguracji 
 
-Pytania, problemy lub opinie [pliku biletu pomocy technicznej](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
-
-## <a name="register-an-azure-active-directory-application"></a>Rejestrowanie aplikacji usługi Azure Active Directory
+## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
 Należy zarejestrować aplikację, nawet jeśli uzyskujesz dostęp do interfejsu API raportowania przy użyciu skryptu. Zapewnia to **identyfikator aplikacji**, który jest wymagany przez wywołanie autoryzacji i umożliwia swój kod, aby odbierać tokeny.
 
@@ -86,7 +93,7 @@ W zależności od interfejsu API, który chcesz uzyskać dostęp musisz przyzna�
 
 | Interfejs API | Uprawnienie |
 | --- | --- |
-| Windows Azure Active Directory | Odczytuj dane katalogu |
+| Windows Azure Active Directory | Odczytaj dane katalogu |
 | Microsoft Graph | Odczytać wszystkie inspekcji dane dziennika |
 
 
@@ -145,11 +152,12 @@ W poniższej sekcji przedstawiono kroki dla obu interfejsów API. Jeśli nie chc
 
 
 ## <a name="gather-configuration-settings"></a>Zbierz ustawienia konfiguracji 
+
 W tej sekcji przedstawiono sposób uzyskać następujące ustawienia z katalogiem:
 
-* Nazwa domeny
-* Identyfikator klienta
-* Klucz tajny klienta
+- Nazwa domeny
+- Identyfikator klienta
+- Klucz tajny klienta
 
 Te wartości są wymagane podczas konfigurowania wywołania interfejsu API raportowania. 
 
@@ -219,6 +227,10 @@ Aby uzyskać klucz tajny klienta aplikacji, musisz utworzyć nowy klucz i zapisa
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Czy chcesz uzyskać dostęp do danych raportowania interfejsu API w sposób programowy usługi Azure AD? Zapoznaj się z [wprowadzenie do usługi Azure Active Directory interfejsu API raportowania](active-directory-reporting-api-getting-started.md).
-* Jeśli chcesz dowiedzieć się więcej o usłudze Azure Active Directory, zobacz [Azure Active Directory Przewodnik po raportach](active-directory-reporting-guide.md).  
+
+- [Pobierz dane przy użyciu usługi Azure Active Directory raportowania interfejsu API z certyfikatami](active-directory-reporting-api-with-certificates.md).
+
+- [Pobierz pierwsze wrażenia raportowania interfejsów API](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [Tworzenie własnych rozwiązań](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

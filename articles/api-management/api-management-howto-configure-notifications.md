@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie powiadomień i szablonów w usłudze Azure API Management wiadomości e-mail | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować powiadomienia i szablonów w usłudze Azure API Management wiadomości e-mail."
+title: Konfigurowanie powiadomień i szablonów w usłudze Azure API Management wiadomości e-mail | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować powiadomienia i szablonów w usłudze Azure API Management wiadomości e-mail.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 228cbb103e13c478bea460bb04de43d6480bc60e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 60788f76dac58ead10e43e892d587a86bdd3fcad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>How to configure notifications and email templates in Azure API Management
 Zarządzanie interfejsami API pozwala, aby skonfigurować powiadomienia dla określonych zdarzeń i konfigurowania szablonów wiadomości e-mail, które są używane do komunikacji z Administratorzy i deweloperzy wystąpienia interfejsu API zarządzania. W tym artykule pokazano, jak skonfigurować powiadomienia o zdarzeniach dostępny i zawiera omówienie konfigurowania szablonów wiadomości e-mail używany dla tych zdarzeń.
@@ -26,7 +26,7 @@ Zarządzanie interfejsami API pozwala, aby skonfigurować powiadomienia dla okre
 
 Nie masz wystąpienie usługi API Management, należy wykonać następujące procedury szybkiego startu: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 
-## <a name="publisher-notifications"></a>Skonfigurować powiadomienia
+## <a name="publisher-notifications"> </a>Konfigurowanie powiadomień
 
 1. Wybierz użytkownika **zarządzanie interfejsami API** wystąpienia.
 2. Kliknij przycisk **powiadomienia** do wyświetlania dostępnych powiadomień.
@@ -50,7 +50,7 @@ Nie masz wystąpienie usługi API Management, należy wykonać następujące pro
     ![Adresatów powiadomień][api-management-email-addresses]
 4. Kliknij przycisk **Dodaj**.
 
-## <a name="email-templates"></a>Konfigurowanie szablonów powiadomień
+## <a name="email-templates"> </a>Konfigurowanie szablonów powiadomień
 Zarządzanie interfejsami API udostępnia szablony powiadomień dla wiadomości e-mail, które są wysyłane w ramach zarządzania i korzystania z usługi. Znajdują się następujące szablony wiadomości e-mail.
 
 * Zatwierdzone przesyłanie galerii aplikacji

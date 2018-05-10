@@ -1,25 +1,25 @@
 ---
-title: "Logowanie jednokrotne przy użyciu serwera Proxy aplikacji | Dokumentacja firmy Microsoft"
-description: "Uwzględniono również sposób zapewnienia logowania jednokrotnego przy użyciu serwera Proxy aplikacji usługi Azure AD."
+title: Logowanie jednokrotne przy użyciu serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+description: Uwzględniono również sposób zapewnienia logowania jednokrotnego przy użyciu serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d6f6894d495170221ad8334bc32ef141fb4e62b4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aee1c1ad44cada857ca0fc8fc42565448b5bfa46
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Ograniczone delegowanie protokołu Kerberos dla rejestracji jednokrotnej do aplikacji przy użyciu serwera Proxy aplikacji
 
@@ -98,7 +98,7 @@ Ta funkcja umożliwia wiele organizacji, które mają różne lokalnymi i tożsa
 * Wewnętrznie mają kilka domen (joe@us.contoso.com, joe@eu.contoso.com) i jednej domeny w chmurze (joe@contoso.com).
 * Wewnętrznie mają nazwy domeny bez obsługi routingu (joe@contoso.usa) i prawnych w chmurze.
 * Nie używaj nazw domen wewnętrznie (Jan)
-* Użyj innych aliasów lokalnych i w chmurze. Na przykład joe-johns@contoso.com vs.joej@contoso.com  
+* Użyj innych aliasów lokalnych i w chmurze. Na przykład joe-johns@contoso.com vs. joej@contoso.com  
 
 Dzięki serwerowi Proxy aplikacji można wybrać tożsamość używaną do uzyskania biletu Kerberos. To ustawienie jest na aplikację. Niektóre z tych opcji nadają się do systemów, które nie akceptują format adresu e-mail, inne są zaprojektowane dla alternatywnej nazwy logowania.
 

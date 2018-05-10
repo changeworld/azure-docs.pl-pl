@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 4d88004f37b40fa92e617545e1a94656744a7db0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Odbieranie zdarzeń w punkcie końcowym HTTP
 
@@ -48,6 +48,8 @@ Kliknij łącze "Wyświetl pliki" w funkcji Azure (prawe okienko większości w 
 ## <a name="endpoint-validation"></a>Sprawdzanie poprawności punktu końcowego
 
 Pierwszą rzeczą, którą chcesz wykonać jest obsługa `Microsoft.EventGrid.SubscriptionValidationEvent` zdarzenia. Za każdym razem, gdy ktoś subskrybuje zdarzenia siatki zdarzeń wysyła zdarzenie sprawdzania poprawności do punktu końcowego z `validationCode` w ładunku danych. Punkt końcowy jest wymagany do echo tej w treści odpowiedzi na [okazać się punkt końcowy jest prawidłowy i należące do Ciebie](security-authentication.md#webhook-event-delivery). Jeśli używasz [wyzwalacz siatki zdarzeń](../azure-functions/functions-bindings-event-grid.md) zamiast elementu WebHook wyzwoleniu funkcja weryfikacji punktu końcowego jest już obsługiwane. Jeśli używasz usługi interfejsu API innych firm (takich jak [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie można programowo wyświetlać kodu walidacji. Dla tych usług można ręcznie zweryfikować subskrypcji przy użyciu sprawdzania poprawności adresu URL, który są wysyłane w przypadku sprawdzania poprawności subskrypcji. Skopiuj ten adres URL w `validationUrl` właściwości i wysyłania GET żądania przy użyciu klienta REST lub przeglądarki sieci web.
+
+Weryfikowanie ręczne jest w wersji zapoznawczej. Aby go użyć, należy zainstalować [rozszerzenia siatki zdarzeń](/cli/azure/azure-cli-extensions-list) dla [AZ CLI 2.0](/cli/azure/install-azure-cli). Możesz zainstalować ją z `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, czy używasz `api-version=2018-05-01-preview`.
 
 Aby programowo wyświetlić kodu walidacji, należy użyć poniższego kodu:
 

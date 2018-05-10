@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Udostępnianie maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell
 
@@ -31,7 +31,7 @@ W tym artykule wymaga programu Azure PowerShell w wersji modułu 3,6 lub nowszej
 
 ## <a name="configure-your-subscription"></a>Skonfiguruj subskrypcję
 
-1. Otwórz program PowerShell i ustanowić dostępu do konta platformy Azure, uruchamiając **Connect-AzureRmAccount** polecenia.
+1. Otwórz program PowerShell i nawiąż połączenie z kontem platformy Azure, uruchamiając polecenie **Connect-AzureRmAccount**.
 
    ```PowerShell
    Connect-AzureRmAccount
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Ustaw właściwości systemu operacyjnego dla maszyny wirtualnej
-Teraz możemy przystąpić do ustawiania właściwości systemu operacyjnego maszyny wirtualnej z [AzureRmVMOperatingSystem zestaw](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) polecenia cmdlet, aby ustawić typ systemu operacyjnego jako systemu Windows, wymagają [agenta maszyny wirtualnej](../agent-user-guide.md) do zainstalowania, określ, czy polecenie cmdlet umożliwia automatyczne aktualizacje, a następnie ustaw nazwę maszyny wirtualnej, nazwę komputera i poświadczenia, korzystając ze zmiennych, które zostały wcześniej zainicjowane.
+Teraz możemy przystąpić do ustawiania właściwości systemu operacyjnego maszyny wirtualnej z [AzureRmVMOperatingSystem zestaw](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) polecenia cmdlet, aby ustawić typ systemu operacyjnego jako systemu Windows, wymagają [agenta maszyny wirtualnej](../../extensions/agent-windows.md) do zainstalowania, określ, czy polecenie cmdlet umożliwia automatyczne aktualizacje, a następnie ustaw nazwę maszyny wirtualnej, nazwę komputera i poświadczenia, korzystając ze zmiennych, które zostały wcześniej zainicjowane.
 
 Wykonaj następujące polecenie cmdlet można ustawić właściwości systemu operacyjnego dla maszyny wirtualnej.
 

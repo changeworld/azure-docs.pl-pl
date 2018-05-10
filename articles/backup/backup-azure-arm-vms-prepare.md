@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 80ae3b526ff429ead5b42769237ce9ee30f30bbd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -172,7 +172,7 @@ Po pomyślnym włączeniu kopii zapasowej zasad tworzenia kopii zapasowej zostan
 Jeśli masz problemy z zarejestrowaniem maszyny wirtualnej, zobacz poniższe informacje na temat instalowania agenta maszyny Wirtualnej oraz łączność sieciową. Prawdopodobnie nie potrzebujesz następujących informacji w przypadku ochrony maszyn wirtualnych utworzonych na platformie Azure. Jednak po migracji maszyn wirtualnych na platformie Azure, należy poprawnie zainstalowany agent maszyny Wirtualnej i maszyny wirtualnej mogą komunikować się z siecią wirtualną.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Zainstaluj agenta maszyny Wirtualnej na maszynie wirtualnej
-Rozszerzenia kopii zapasowej do pracy Azure [agenta maszyny Wirtualnej](../virtual-machines/windows/agent-user-guide.md) musi być zainstalowany na maszynie wirtualnej Azure. Jeśli maszyna wirtualna została utworzona z portalu Azure Marketplace, agent maszyny Wirtualnej jest już obecny w maszynie wirtualnej. 
+Rozszerzenia kopii zapasowej do pracy Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na maszynie wirtualnej Azure. Jeśli maszyna wirtualna została utworzona z portalu Azure Marketplace, agent maszyny Wirtualnej jest już obecny w maszynie wirtualnej. 
 
 Poniżej przedstawiono informacje dotyczące sytuacji, w którym są *nie* przy użyciu maszyny Wirtualnej utworzone w witrynie Azure Marketplace. Na przykład w przypadku migracji maszyny Wirtualnej z lokalnego centrum danych. W takim przypadku agenta maszyny Wirtualnej musi być zainstalowany, aby chronić maszyny wirtualnej.
 
@@ -180,9 +180,9 @@ Jeśli masz problemy z tworzenia kopii zapasowej maszyny Wirtualnej Azure, skorz
 
 | **Operacja** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Zainstaluj agenta maszyny Wirtualnej |Pobierz i zainstaluj [plik MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potrzebne są uprawnienia administratora, aby zakończyć instalację. |Zainstaluj najnowszą [agenta systemu Linux](../virtual-machines/linux/agent-user-guide.md). Potrzebne są uprawnienia administratora, aby zakończyć instalację. Zaleca się zainstalowanie agenta z repozytorium dystrybucji. Firma Microsoft *nie jest zalecane* Instalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi GitHub.  |
-| Aktualizuj agenta maszyny Wirtualnej |Aktualizacja agenta maszyny Wirtualnej jest tak proste, jak zainstalować ponownie [plików binarnych agenta maszyny Wirtualnej](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |Postępuj zgodnie z instrukcjami dotyczącymi [aktualizacja agenta maszyny Wirtualnej systemu Linux](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Firma Microsoft zaleca aktualizacji agenta z repozytorium dystrybucji. Firma Microsoft *nie jest zalecane* zaktualizować agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi GitHub.<br><br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |
-| Sprawdź poprawność instalacji agenta maszyny Wirtualnej |1. Przejdź do folderu C:\WindowsAzure\Packages w maszynie Wirtualnej platformy Azure. <br><br>2. Znajdź plik WaAppAgent.exe. <br><br>3. Kliknij plik prawym przyciskiem myszy, przejdź do opcji **Właściwości**, a następnie wybierz kartę **Szczegóły**. **Wersji produktu** pole powinno być 2.6.1198.718 lub nowszej. |ND |
+| Instalowanie agenta maszyny wirtualnej |Pobierz i zainstaluj [plik MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. |<li> Zainstaluj najnowszą [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Do ukończenia procesu instalacji niezbędne są uprawnienia administratora. Zaleca się zainstalowanie agenta z repozytorium dystrybucji. Firma Microsoft **nie jest zalecane** Instalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi github.  |
+| Aktualizowanie agenta maszyny wirtualnej |Aktualizowanie agenta maszyny wirtualnej jest równie proste, jak ponowne zainstalowanie [plików binarnych agenta maszyny wirtualnej](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Upewnij się, że żadna operacja tworzenia kopii zapasowej nie jest uruchomiona podczas aktualizowania agenta maszyny wirtualnej. |Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny wirtualnej systemu Linux ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Firma Microsoft zaleca aktualizacji agenta z repozytorium dystrybucji. Firma Microsoft **nie jest zalecane** aktualizacji agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi github.<br>Upewnij się, że podczas aktualizowania agenta maszyny wirtualnej żadna operacja tworzenia kopii zapasowej nie jest uruchomiona. |
+| Sprawdzanie poprawności instalacji agenta maszyny wirtualnej |<li>Przejdź do folderu *C:\WindowsAzure\Packages* w maszynie wirtualnej Azure. <li>Powinien znajdować się w nim plik WaAppAgent.exe.<li> Kliknij plik prawym przyciskiem myszy, przejdź do opcji **Właściwości**, a następnie wybierz kartę **Szczegóły**. W polu Wersja produktu powinna znajdować się wartość 2.6.1198.718 lub wyższa. |ND |
 
 ### <a name="backup-extension"></a>Rozszerzenie kopii zapasowej
 Po zainstalowaniu agenta maszyny Wirtualnej na maszynie wirtualnej, usługa Azure Backup instaluje zapasowy numer wewnętrzny agenta maszyny Wirtualnej. Usługa Kopia zapasowa bezproblemowo uaktualnia i poprawek zapasowy numer wewnętrzny.

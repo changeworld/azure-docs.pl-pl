@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eba67e6fe7d836d7b36d2bcd576eeaf4c70df970
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac43817fb3f253c35cd69a8ecd8931afca50892b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-configure-per-cloud-app-mfa-with-azure-active-directory-conditional-access"></a>Szybki Start: Skonfiguruj dla aplikacji usługi MFA w chmurze przy użyciu dostępu warunkowego usługi Azure Active Directory 
 
 
-Aby uprościć proces logowania użytkowników, można zezwolić im na logowanie do aplikacji w chmurze przy użyciu nazwy użytkownika i hasła. Jednak w wielu środowiskach jest co najmniej kilka aplikacji, dla których zaleca się wymagają silniejszego formę weryfikacji konta, takich jak uwierzytelnianie wieloskładnikowe. Może to być na przykład wartość true, dostępu do systemu poczty e-mail w organizacji lub HR aplikacji.  
+Aby uprościć proces logowania użytkowników, można zezwolić im na Zaloguj się do aplikacji w chmurze przy użyciu nazwy użytkownika i hasła. Jednak w wielu środowiskach jest co najmniej kilka aplikacji, dla których zaleca się wymagają silniejszego formę weryfikacji konta, takich jak uwierzytelnianie wieloskładnikowe. Może to być na przykład wartość true, dostępu do systemu poczty e-mail w organizacji lub HR aplikacji.  
 
 Ta opcja szybkiego startu pokazuje, jak wymusić uwierzytelnianie wieloskładnikowe tylko dla zestawu aplikacji w wybranej chmurze w środowisku za pomocą [zasady dostępu warunkowego usługi Azure AD](active-directory-conditional-access-azure-portal.md).
 
@@ -160,7 +160,7 @@ Po skonfigurowaniu narzędzie z **Simona Britta** jako użytkownik i **Microsoft
 
 1. Na [dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) w menu u góry kliknij **co zrobić, jeśli**.  
  
-    ![Analiza warunkowa](./media/active-directory-conditional-access-app-based-mfa/14.png)
+    ![What If](./media/active-directory-conditional-access-app-based-mfa/14.png)
 
 2. Kliknij przycisk **użytkowników**, wybierz pozycję **Simona Britta**, a następnie kliknij przycisk **wybierz**.
 

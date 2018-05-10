@@ -1,13 +1,14 @@
 ---
-title: "Zaawansowane certyfikatu podpisywania opcje w tokenie SAML dla wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć zaawansowanych certyfikatów podpisywania opcje w tokenie SAML dla wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory"
+title: Zaawansowane certyfikatu podpisywania opcje w tokenie SAML dla wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć zaawansowanych certyfikatów podpisywania opcje w tokenie SAML dla wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeevansd
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9c035dcb55af451d0dae71d7a0f5548a6ba3c0ed
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05eb175e3d8306308998780ac230d4f44e611294
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje w tokenie SAML dla galerii aplikacji w usłudze Azure Active Directory podpisania certyfikatu
 Obecnie usługa Azure Active Directory (Azure AD) obsługuje tysięcy wstępnie zintegrowanych aplikacji w galerii aplikacji Azure Active Directory. Liczba ta obejmuje więcej niż 500 aplikacje, które obsługują logowanie jednokrotne za pomocą protokołu SAML 2.0. Podczas uwierzytelniania użytkownika do aplikacji za pomocą usługi Azure AD przy użyciu SAML usługi Azure AD wysyła token do aplikacji (za pośrednictwem protokołu HTTP POST). Następnie aplikacji sprawdza poprawność tokenu i używa go zalogowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML są podpisane za pomocą unikatowy certyfikat, który jest generowany w usłudze Azure AD i określonych algorytmów standardowych.
@@ -56,7 +57,7 @@ Usługi Azure AD obsługuje dwa algorytmy podpisywania odpowiedzi SAML logowania
 
     ![Algorytm podpisywania certyfikatu SHA-1][2]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 * [Konfigurowanie rejestracji jednokrotnej do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](develop/active-directory-saml-debugging.md)

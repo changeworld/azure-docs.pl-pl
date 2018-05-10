@@ -1,13 +1,13 @@
 ---
-title: "Rejestrowanie aplikacji do użycia usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Zapisane dla specjalistów IT, w tym artykule przedstawiono wskazówki dotyczące integracji aplikacji Azure z usługą Active Directory."
+title: Rejestrowanie aplikacji do użycia usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Zapisane dla specjalistów IT, w tym artykule przedstawiono wskazówki dotyczące integracji aplikacji Azure z usługą Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
-ms.assetid: dd69f2bc-37c5-457c-857d-27acb84267fb
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 514db22ad070fed20d89be442cecc2f3ee808ead
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 804c135afae97ffc8b2cf78c31fd8c3653e9911d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Tworzenie aplikacji biznesowych z usługi Azure Active Directory
 Ten przewodnik zawiera omówienie tworzenia — biznesowych (LoB) aplikacji dla usługi Azure Active Directory (AD). Docelowa grupa odbiorców jest Administratorzy globalni usługi Active Directory/Office 365.
@@ -76,7 +76,7 @@ Dla aplikacji, którym ufasz można uprościć czynności użytkowników przez z
 
 Aby uzyskać więcej informacji o zgodę użytkownika i zgody występują na platformie Azure, zobacz [integracji aplikacji z usługą Azure Active Directory](active-directory-integrating-applications.md).
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Włącz bezpieczny dostęp zdalny do aplikacji lokalnych przy użyciu serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-get-started.md)
 * [Podgląd warunkowego dostępu na platformie Azure dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)
 * [Zarządzanie dostępem do aplikacji z usługą Azure AD](active-directory-managing-access-to-apps.md)

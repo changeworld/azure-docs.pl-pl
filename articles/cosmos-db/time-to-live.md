@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 61db8f85e73d2c071bdec0ace60911813fa4f0e8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Ważność danych w kolekcjach bazy danych rozwiązania Cosmos Azure automatycznie z czasu wygaśnięcia
 Aplikacje można tworzyć i przechowywania dużych ilości danych. Niektóre z tych danych, takich jak machine generowane zdarzenie danych, dzienników i użytkownika sesji informacji przydaje się tylko ograniczone okres czasu. Gdy dane będą nadwyżka na potrzeby aplikacji jest bezpieczne przeczyścić tych danych i zmniejszyć wymagania dotyczące magazynu aplikacji.
@@ -124,7 +124,7 @@ Wartość TTL dokumentu można zresetować wykonując żadnej operacji zapisu w 
     Document readDocument = response.Resource;
     readDocument.TimeToLive = 60 * 30 * 30; // update time to live
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="removing-ttl-from-a-document"></a>Usuwanie TTL z dokumentu
 Jeśli wartości TTL został ustawiony w dokumencie i nie ma już ten dokument wygasa, następnie można pobrać dokumentu, usuń pola TTL i zastąpić dokument na serwerze. Pola TTL zostanie usunięty z dokumentu, zostaną zastosowane domyślne w kolekcji. Aby zatrzymać dokumentu z wygasa i nie dziedziczy z kolekcji należy ustawić wartość TTL-1.
@@ -136,7 +136,7 @@ Jeśli wartości TTL został ustawiony w dokumencie i nie ma już ten dokument w
     Document readDocument = response.Resource;
     readDocument.TimeToLive = null; // inherit the default TTL of the collection
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disabling-ttl"></a>Wyłączanie TTL
 Wyłączenie TTL całkowicie w kolekcji i zatrzymać proces w tle z wyszukiwanie wygasłe dokumenty Właściwość DefaultTTL w kolekcji należy go usunąć. Usunięcie tej właściwości jest inna niż ustawieniem dla niego wartość -1. Ustawienie, aby nowe dokumenty-1 oznacza dodać do kolekcji, zawsze na żywo, ale można zmienić na określonych dokumentów w kolekcji. Usunięcie tej właściwości całkowicie z kolekcji oznacza, że żaden dokument wygaśnie, nawet jeśli istnieją dokumenty, które zostały jawnie przesłonięte wcześniejszy domyślny.

@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 445a5f10eac0959dab57e10680659c0792ad6fba
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3279dbc2eeecd3a3f0f36a47d8dd51ef4f3f503f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności 
 
@@ -27,7 +27,7 @@ Usługa mobilności Azure Site Recovery jest zainstalowany na maszynach wirtualn
 
 
 >[!IMPORTANT]
-> Począwszy od wersji 9.7.0.0, na maszynach wirtualnych systemu Windows, usługa mobilności Instalator instaluje również najnowszym dostępnym [agenta maszyny Wirtualnej Azure](../virtual-machines/windows/extensions-features.md#azure-vm-agent). W przypadku awarii komputera za pośrednictwem Azure komputer spełnia wymagań wstępnych dla dowolnego rozszerzenia maszyny Wirtualnej instalacji agenta.
+> Począwszy od wersji 9.7.0.0, na maszynach wirtualnych systemu Windows, usługa mobilności Instalator instaluje również najnowszym dostępnym [agenta maszyny Wirtualnej Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). W przypadku awarii komputera za pośrednictwem Azure komputer spełnia wymagań wstępnych dla dowolnego rozszerzenia maszyny Wirtualnej instalacji agenta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Wykonaj następujące kroki wymagań wstępnych, aby ręcznie zainstalować usługi mobilności na serwerze:

@@ -9,11 +9,11 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
-ms.openlocfilehash: 66d316f50f161c2e905c3f76da30580b44a63a23
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: a970bd889e6994833b2e34adc90af594f9db4d6b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji tekstu przy użyciu usługi Azure Machine Learning
 
@@ -137,7 +137,7 @@ df_test.head()
     <tr style="text-align: right;">
       <th></th>
       <th>Etykiety</th>
-      <th>Tekst</th>
+      <th>tekst</th>
     </tr>
   </thead>
   <tbody>
@@ -420,13 +420,14 @@ text_classifier.fit(df_train)
             text_callable_list=None, text_cols=['text'], text_regex_list=None,
             weight_col=None)
 
-### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Przejrzyj i ustaw parametry procedury innym potoku
 
-Mimo że osprzętu scikit — Dowiedz się modelu przetwarzania wstępnego jest wykonywana przed dopasowywania za pomocą potoku preprocesora i kroki featurizer (transformacji). W związku z tym odwołania do "potoku" szkolenia. Podczas obliczania, pełny potok, w tym przetwarzania wstępnego i scikit — Dowiedz się prognozowania modelu, jest stosowany do zestawu danych testowych.
+Podczas uczenia, musi mieć tekst i etykiety kolumn. Gdy dla prognoz wymagany jest tylko kolumny tekstowej. 
+
+### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Przejrzyj i ustaw parametry procedury innym potoku
+    
+Zazwyczaj należy ustawić parametry, przed dopasowania modelu. 
 
 ***Przykład pokazany z text_word_ngrams*** 
-
-Zazwyczaj należy ustawić parametry, przed dopasowania modelu. 
 
 Poniższe przykłady pokazują, jak nauczenia modelu, używając parametrów domyślnych potoku i modelu. 
 
@@ -573,7 +574,7 @@ Zastosuj Klasyfikator tekstu przeszkolone zestawu danych testowych do generowani
     <tr style="text-align: right;">
       <th></th>
       <th>Etykiety</th>
-      <th>Tekst</th>
+      <th>tekst</th>
       <th>probabilities</th>
       <th>Prognozowanie</th>
     </tr>

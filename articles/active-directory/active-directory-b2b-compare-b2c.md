@@ -2,25 +2,19 @@
 title: Porównaj współpracy B2B i B2C w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jaka jest różnica między współpracy usługi Azure Active Directory B2B i usługi Azure AD B2C?
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 03/15/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 32d7d135e67a05b59279e647c1fb2aa8c9686cef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0e8781fcf2710b00ba352bff29a370cbb73e0648
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Porównaj współpracy B2B i B2C w usłudze Azure Active Directory
 
@@ -41,16 +35,6 @@ Aby dowiedzieć się więcej: [wpis w blogu](https://blogs.technet.microsoft.com
 
 ### <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
+- [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
 
-* [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
-* [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
-* [Delegowanie zaproszenia współpracy B2B](active-directory-b2b-delegate-invitations.md)
-* [Grupami dynamicznymi i współpracy B2B](active-directory-b2b-dynamic-groups.md)
-* [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
-* [Tokeny użytkownika współpracy B2B](active-directory-b2b-user-token.md)
-* [Oświadczenia użytkowników współpracy B2B mapowania](active-directory-b2b-claims-mapping.md)
-* [Udostępnianie zewnętrzne w usłudze Office 365](active-directory-b2b-o365-external-user.md)
-* [Bieżące ograniczenia współpracy B2B](active-directory-b2b-current-limitations.md)
-* [Uzyskiwanie pomocy technicznej dla współpracy B2B](active-directory-b2b-support.md)
