@@ -1,7 +1,7 @@
 ---
 title: Udostępnianie urządzeń do monitorowania zdalnego w środowisku Node.js - Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób podłącz urządzenie do wstępnie pakiet IoT Azure zdalnego monitorowania rozwiązania przy użyciu aplikacji napisanych w Node.js.
-services: ''
+description: Opisuje sposób urządzenie podłączone do akcelerator rozwiązań monitorowania zdalnego przy użyciu aplikacji napisanych w Node.js.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: df89150867a3c95116ba8ca8cd684af4b32a36de
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0edc2d71d5f2ceac9c631fedaa160ca7291e9d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Podłącz urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Podłącz urządzenie do zdalnego akcelerator rozwiązań monitorowania (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ten samouczek pokazuje, jak nawiązać zdalnego wstępnie skonfigurowane rozwiązanie monitorowania urządzenia fizycznego. W tym samouczku używamy Node.js, czyli dobra opcja w przypadku środowiska z ograniczeniami minimalnego zasobów.
+Ten samouczek pokazuje, jak nawiązać zdalnego akcelerator rozwiązań monitorowania urządzenia fizycznego. W tym samouczku używamy Node.js, czyli dobra opcja w przypadku środowiska z ograniczeniami minimalnego zasobów.
 
 ## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania Node.js
 
@@ -175,7 +175,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą funkcję obsługi **FirmwareUpdate** bezpośrednie wywołania metody z rozwiązania. Funkcja sprawdza, czy parametry przekazywane w ładunku metoda bezpośrednia, a następnie uruchamia asynchronicznie symulacji aktualizacji oprogramowania układowego:
 
-    ```node.js
+    ```nodejs
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -204,7 +204,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą funkcję do symulowania długotrwałe przepływu aktualizacji oprogramowania układowego, która raportuje postęp wróć do rozwiązania:
 
-    ```node.js
+    ```nodejs
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -282,7 +282,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następujący kod do wysyłania danych telemetrycznych do rozwiązania. Aplikacja kliencka dodanie właściwości do komunikat, aby zidentyfikować schematu komunikat:
 
-    ```node.js
+    ```nodejs
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();

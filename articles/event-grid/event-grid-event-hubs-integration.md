@@ -1,18 +1,18 @@
 ---
-title: "Integracja Azure siatki zdarzeń i usługi Event Hubs"
-description: "Informacje dotyczące używania do migracji danych do magazynu danych SQL Azure zdarzeń siatki i usługi Event Hubs"
+title: Integracja Azure siatki zdarzeń i usługi Event Hubs
+description: Informacje dotyczące używania do migracji danych do magazynu danych SQL Azure zdarzeń siatki i usługi Event Hubs
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dba17a860dffd87b3784c53cf288b7a312c77e33
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 60857327685fca9a5f97588ab51909ce2537d68f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Strumień danych big data do magazynu danych
 
@@ -66,7 +66,7 @@ Zdarzenie siatki dystrybuuje dane zdarzenia do subskrybentów. Poniższy przykł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka wymagane są:
+Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual studio wersja 2017 15.3.2 lub większą](https://www.visualstudio.com/vs/) z obciążeniami dla: tworzenia klasycznych aplikacji .NET, Azure programowanie ASP.NET i sieć web development, Node.js programowanie i programowania Python.
@@ -118,71 +118,45 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. Otwórz [EventHubsCaptureEventGridDemo przykładowy projekt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) w programie Visual Studio 2017 (15.3.2 lub nowszej).
 
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **FunctionDWDumper**i wybierz **publikowania**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **FunctionEGDWDumper**i wybierz **publikowania**.
 
    ![Publikowanie aplikacji — funkcja](media/event-grid-event-hubs-integration/publish-function-app.png)
 
-3. Wybierz **aplikacji Azure funkcji** i **wybierz istniejącą**. Kliknij przycisk **OK**.
+1. Wybierz **aplikacji Azure funkcji** i **wybierz istniejącą**. Wybierz **publikowania**.
 
    ![Docelowy funkcji aplikacji](media/event-grid-event-hubs-integration/pick-target.png)
 
-4. Wybierz aplikację funkcja, która została wdrożona za pomocą szablonu. Kliknij przycisk **OK**.
+1. Wybierz aplikację funkcja, która została wdrożona za pomocą szablonu. Kliknij przycisk **OK**.
 
    ![Wybierz aplikację, funkcja](media/event-grid-event-hubs-integration/select-function-app.png)
 
-5. Po skonfigurowaniu profilu programu Visual Studio wybierz **publikowania**.
+1. Po skonfigurowaniu profilu programu Visual Studio wybierz **publikowania**.
 
    ![Wybierz publikowania](media/event-grid-event-hubs-integration/select-publish.png)
 
-6. Po opublikowaniu funkcji, przejdź do [portalu Azure](https://portal.azure.com/). Wybierz zasób grupy i funkcji aplikacji.
-
-   ![Wyświetl aplikację — funkcja](media/event-grid-event-hubs-integration/view-function-app.png)
-
-7. Wybierz funkcję.
-
-   ![Wybierz funkcję](media/event-grid-event-hubs-integration/select-function.png)
-
-8. Pobierz adres URL dla tej funkcji. Należy korzystać z tego adresu URL podczas tworzenia subskrypcji zdarzeń.
-
-   ![Pobierz adres URL funkcji](media/event-grid-event-hubs-integration/get-function-url.png)
-
-9. Skopiuj wartość.
-
-   ![Skopiuj adres URL](media/event-grid-event-hubs-integration/copy-url.png)
+Po opublikowaniu funkcji, możesz przystąpić do subskrybowania zdarzenia.
 
 ## <a name="subscribe-to-the-event"></a>Subskrybowanie zdarzeń
 
-Aby subskrybować zdarzenia można użyć wiersza polecenia platformy Azure lub w portalu. W tym artykule przedstawiono obie opcje.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com/). Wybierz zasób grupy i funkcji aplikacji.
 
-### <a name="portal"></a>Portal
+   ![Wyświetl aplikację — funkcja](media/event-grid-event-hubs-integration/view-function-app.png)
 
-1. Wybierz z przestrzeni nazw usługi Event Hubs, **siatki zdarzeń** po lewej stronie.
+1. Wybierz funkcję.
 
-   ![Wybierz zdarzenie siatki](media/event-grid-event-hubs-integration/select-event-grid.png)
+   ![Wybierz funkcję](media/event-grid-event-hubs-integration/select-function.png)
 
-2. Dodaj subskrypcję zdarzeń.
+1. Wybierz **subskrypcji dodać siatki zdarzeń**.
 
-   ![Dodawanie subskrypcji zdarzeń](media/event-grid-event-hubs-integration/add-event-subscription.png)
+   ![Dodawanie subskrypcji](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-3. Podaj wartość dla subskrypcji zdarzeń. Użyj adresu URL funkcji Azure, które zostały skopiowane. Wybierz pozycję **Utwórz**.
+9. Nadaj nazwę subskrypcji zdarzeń siatki. Użyj **centra zdarzeń w przestrzeni nazw** jako typ zdarzenia. Podaj wartości, aby wybrać wystąpienia przestrzeni nazw usługi Event Hubs. Pozostaw punktu końcowego subskrybenta podanej wartości. Wybierz pozycję **Utwórz**.
 
-   ![Podaj wartości subskrypcji](media/event-grid-event-hubs-integration/provide-values.png)
-
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-Aby subskrybować zdarzenia, uruchom następujące polecenia (co wymaga wersji 2.0.24 lub nowszym z wiersza polecenia platformy Azure):
-
-```azurecli-interactive
-namespaceid=$(az resource show --namespace Microsoft.EventHub --resource-type namespaces --name <your-EventHubs-namespace> --resource-group rgDataMigrationSample --query id --output tsv)
-az eventgrid event-subscription create \
-  --resource-id $namespaceid \
-  --name captureEventSub \
-  --endpoint <your-function-endpoint>
-```
+   ![Tworzenie subskrypcji](media/event-grid-event-hubs-integration/set-subscription-values.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Uruchamianie aplikacji do wygenerowania danych
 
-Zakończono konfigurowanie Centrum zdarzeń, Magazyn danych SQL, aplikacji funkcji platformy Azure i subskrypcji zdarzeń. Rozwiązanie jest gotowy do migracji danych z Centrum zdarzeń w magazynie danych. Przed uruchomieniem aplikacji, która generuje dane do Centrum zdarzeń, musisz skonfigurować kilka wartości.
+Po zakończeniu konfigurowania Centrum zdarzeń, Magazyn danych SQL, aplikacji funkcji platformy Azure i subskrypcji zdarzeń. Rozwiązanie jest gotowy do migracji danych z Centrum zdarzeń w magazynie danych. Przed uruchomieniem aplikacji, która generuje dane do Centrum zdarzeń, musisz skonfigurować kilka wartości.
 
 1. W portalu wybierz obszar nazw Centrum zdarzeń. Wybierz **parametry połączenia**.
 
@@ -198,10 +172,10 @@ Zakończono konfigurowanie Centrum zdarzeń, Magazyn danych SQL, aplikacji funkc
 
 4. Wróć do projektu programu Visual Studio. W projekcie WindTurbineDataGenerator Otwórz **program.cs**.
 
-5. Zastąp te dwie wartości stałej. Użyj wartości skopiowanych **EventHubConnectionString**. Użyj nazwy Centrum zdarzeń **EventHubName**.
+5. Zastąp te dwie wartości stałej. Użyj wartości skopiowanych **EventHubConnectionString**. Użyj **hubdatamigration** nazwy Centrum zdarzeń.
 
    ```cs
-   private const string EventHubConnectionString = "Endpoint=sb://tfdatamigratens.servicebus.windows.net/...";
+   private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 

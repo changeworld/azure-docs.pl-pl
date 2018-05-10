@@ -14,18 +14,20 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Tworzenie standardowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure
       href: quickstart-load-balancer-standard-public-cli.md
+- name: Samouczki
+  items:
+    - name: Równoważenie obciążenia ruchem wewnętrznym przez skierowanie go do maszyn wirtualnych
+      href: tutorial-load-balancer-basic-internal-portal.md
+    - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
+      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+    - name: Równoważenie obciążenia maszyny wirtualnej w określonej strefie dostępności
+      href: tutorial-load-balancer-standard-public-zonal-portal.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
-- name: Samouczki
-  items:
-    - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
-    - name: Równoważenie obciążenia maszyny wirtualnej w określonej strefie dostępności
-      href: tutorial-load-balancer-standard-public-zonal-portal.md
 - name: Pojęcia
   items:
     - name: Co to jest usługa Load Balancer w warstwie Standardowa?

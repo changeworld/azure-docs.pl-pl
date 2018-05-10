@@ -148,7 +148,7 @@
             - name: Interfejs API REST
               href: log-analytics-api-alerts.md
             - name: Szablon usługi Resource Manager
-              href: ../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md
+              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
         - name: Przykład akcji elementu webhook
           href: log-analytics-alerts-webhooks.md
         - name: Rozwiązanie usługi Alert Management
@@ -176,7 +176,7 @@
         - name: Omówienie rozwiązań
           href: log-analytics-add-solutions.md
         - name: Rozwiązania docelowe
-          href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Dzienniki aktywności platformy Azure
           items:
             - name: Analiza
@@ -201,7 +201,7 @@
           href: log-analytics-capacity.md
         - name: Śledzenie zmian
           href: log-analytics-change-tracking.md
-        - name: Kontenery
+        - name: Containers
           href: log-analytics-containers.md
         - name: Analiza DNS
           href: log-analytics-dns.md
@@ -246,13 +246,13 @@
             - name: Usługa Service Fabric używana z usługą Azure Resource Manager
               href: log-analytics-service-fabric-azure-resource-manager.md
         - name: Mapa usługi
-          href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Sprawdzanie kondycji bazy danych SQL
           href: log-analytics-sql-assessment.md
         - name: Surface Hub
           href: log-analytics-surface-hubs.md
         - name: Zarządzanie aktualizacjami
-          href: ../operations-management-suite/oms-solution-update-management.md
+          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: VMware
           href: log-analytics-vmware.md
         - name: Analiza systemu Windows

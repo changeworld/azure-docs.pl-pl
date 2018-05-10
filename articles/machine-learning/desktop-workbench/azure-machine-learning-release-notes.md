@@ -9,21 +9,32 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: e30943426ad68171e1464f828a9c8672b06c975a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Co nowego w usłudze Azure Machine Learning
 
-W tym artykule, Dowiedz się więcej o nowe wersje dla [Azure Machine Learning usług](../service/overview-what-is-azure-ml.md). 
+W tym artykule, Dowiedz się więcej o nowych wersjach [usługi Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
+
+
+## <a name="2018-05-sprint-5"></a>2018-05 (przebiegu 5)
+
+W tej wersji usługi Azure Machine Learning można:
++ Obrazy Featurize wersją quantized 50 ResNet uczenia klasyfikatora na podstawie tych funkcji i [wdrażania modelu do układu FPGA na platformie Azure](../service/how-to-deploy-fpga-web-service.md) dla inferencing bardzo małych opóźnień.
+
++ Szybkie tworzenie i wdrażanie, uczenie maszynowe bardzo dokładne i modele uczenia głębokie przy użyciu [niestandardowych pakietów platformy Azure Machine Learning](../service/reference-python-package-overview.md) dla następujących domen:
+  + [Wizja komputera](../service/how-to-build-deploy-image-classification-models.md)
+  + [Analiza tekstu](../service/how-to-build-deploy-text-classification-models.md)
+  + [Funkcja prognozowania](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (przebiegu 4)
 **Numer wersji**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([znaleźć wersji](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 
-Witamy w piątej aktualizacji Azure Machine Learning Workbench. Wiele z następujących aktualizacji są wykonywane jako bezpośrednie wyniki opinii użytkowników. Pamiętaj o ich wejścia!
+Wiele z następujących aktualizacji są wykonywane jako bezpośrednie wyniki opinii użytkowników. Pamiętaj o ich wejścia!
 
 **Godne nowe funkcje i zmiany**
 

@@ -3,7 +3,7 @@ title: Strumień metryk niestandardowych metryk i diagnostyki w usłudze Azure A
 description: Monitorowanie aplikacji sieci web w czasie rzeczywistym z metryki niestandardowe i diagnozowanie problemów z błędów, ślady i wydarzeń na żywo źródło danych.
 services: application-insights
 documentationcenter: ''
-author: SoubhagyaDash
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: mbullwin
-ms.openlocfilehash: f0338642ab99af2fd5ec4f6432bbb8d626daea29
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: mbullwin; Soubhagya.Dash
+ms.openlocfilehash: 49b343fca94e853a29807521f4213a5a85725f52
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Strumień na żywo metryki: Monitor & Diagnozuj z opóźnieniem 1 sekundę 
 
@@ -133,7 +133,7 @@ Lub w kodzie, ustaw go w QuickPulseTelemetryModule:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
-# <a name="net-core-tabnet-core"></a>[.NET Core] (#tab/.net-core)
+# <a name="net-core-tabnet-core"></a>[Platformy .NET core] (# kartę/.net — rdzenie)
 
 Modyfikowanie pliku startup.cs w następujący sposób:
 

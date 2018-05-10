@@ -1,12 +1,12 @@
 ---
-title: "Testy jednostkowe trwałe funkcji platformy Azure"
-description: "Dowiedz się, jak do jednostki przetestować funkcje trwałe."
+title: Testy jednostkowe trwałe funkcji platformy Azure
+description: Dowiedz się, jak do jednostki przetestować funkcje trwałe.
 services: functions
 author: kadimitr
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: kadimitr
-ms.openlocfilehash: a8d2a2281dcaf6e5e308ad4a2aafb167f9ba9121
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7de9a6f0d4dfcb45932b89504c0d38c3c70283e9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-unit-testing"></a>Testy jednostkowe trwałe funkcji
 
@@ -128,7 +128,7 @@ Po połączeniu wszystkich kroków, testu jednostkowego mają następujący kod:
 
 ## <a name="unit-testing-orchestrator-functions"></a>Funkcje programu orchestrator testy jednostkowe
 
-Funkcje programu orchestrator są bardziej interesujące dla jednostki testowania, ponieważ mają one zwykle znacznie większą logiki biznesowej. Obecnie tylko w języku C# można zaimplementować funkcje programu Orchestrator.
+Funkcje programu orchestrator są bardziej interesujące dla jednostki testowania, ponieważ mają one zwykle znacznie większą logiki biznesowej.
 
 W tej sekcji jednostki testów zostanie poprawnie zweryfikowany, dane wyjściowe `E1_HelloSequence` funkcji programu Orchestrator:
 

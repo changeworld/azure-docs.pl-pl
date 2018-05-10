@@ -9,17 +9,18 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59a09b5d67391f2b48d338d721369f14ed6b4ede
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad4f46585be9cf61e3ef8343b5cb05308c972d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
 W tym samouczku pokazano, jak przeprowadzić migrację maszyn wirtualnych usługi Amazon Web Services (AWS) do maszyn wirtualnych platformy Azure za pomocą usługi Site Recovery. Podczas migrowania wystąpień usługi EC2 na platformę Azure maszyny wirtualne są traktowane tak, jakby były fizycznymi komputerami lokalnymi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
+> * Weryfikowanie wymagań wstępnych
 > * Przygotowywanie zasobów platformy Azure
 > * Przygotowywanie wystąpień usługi EC2 usług AWS do migracji
 > * Wdrażanie serwera konfiguracji
@@ -29,6 +30,22 @@ W tym samouczku pokazano, jak przeprowadzić migrację maszyn wirtualnych usług
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
+## <a name="prerequisites"></a>Wymagania wstępne
+- Upewnij się, że na maszynach wirtualnych, która mają zostać zmigrowane, jest uruchomiona obsługiwana wersja systemu operacyjnego. Obsługiwane systemy to: 
+    - 64-bitowa wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszym 
+    - Windows Server 2012
+    - Windows Server 2012 R2 
+    - Windows Server 2016
+    - Red Hat Enterprise Linux 6.7 (tylko wystąpienia z wirtualizacją sprzętową) wyłącznie ze sterownikami Citrix PV lub AWS PV. Wystąpienia ze sterownikami RedHat PV **nie są** obsługiwane.
+
+- Usługa mobilności musi być zainstalowana na każdej maszynie wirtualnej, która ma być replikowana. 
+
+> [!IMPORTANT]
+> Usługa Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla danej maszyny wirtualnej. Instalacja automatyczna wymaga przygotowania na wystąpieniach usługi EC2 konta, za pomocą którego usługa Site Recovery będzie uzyskiwać dostęp do maszyny wirtualnej. Możesz użyć domeny lub konta lokalnego. 
+> - W przypadku maszyn wirtualnych z systemem Linux konto powinno być użytkownikiem głównym na serwerze źródłowym z systemem Linux. 
+> - W przypadku maszyn wirtualnych z systemem Windows, jeśli nie używasz konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na maszynie lokalnej: w kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** dodaj wpis typu DWORD **LocalAccountTokenFilterPolicy** i ustaw jego wartość na 1.
+
+- Potrzebne jest oddzielne wystąpienie usługi EC2, którego można używać jako serwera konfiguracji usługi Site Recovery. Na tym wystąpieniu musi być uruchomiony system Windows Server 2012 R2.
 
 ## <a name="prepare-azure-resources"></a>Przygotowywanie zasobów platformy Azure
 
@@ -74,19 +91,6 @@ Gdy po migracji (przejściu w tryb failover) zostaną utworzone maszyny wirtualn
 8. W obszarach **Podsieć**, **Nazwa** i **Zakres adresów IP** pozostaw wartości domyślne.
 9. Pozostaw funkcję **Punkty końcowe usługi** wyłączoną.
 10. Po zakończeniu kliknij przycisk **Utwórz**.
-
-
-## <a name="prepare-the-ec2-instances"></a>Przygotowywanie wystąpień usługi EC2
-
-Wymagana jest co najmniej jedna maszyna wirtualna, która ma zostać zmigrowana. Na tych wystąpieniach usługi EC2 powinna być uruchomiona 64-bitowa wersja systemu Windows Server 2008 R2 SP1 lub nowszego, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 lub Red Hat Enterprise Linux 6.7 (tylko wystąpienia zwirtualizowane maszyn HWM). Serwer musi mieć wyłącznie sterowniki Citrix PV lub AWS PV. Wystąpienia ze sterownikami RedHat PV nie są obsługiwane.
-
-Usługa mobilności musi być zainstalowana na każdej maszynie wirtualnej, która ma być replikowana. Usługa Site Recovery automatycznie instaluje tę usługę po włączeniu replikacji dla danej maszyny wirtualnej. Instalacja automatyczna wymaga przygotowania na wystąpieniach usługi EC2 konta, za pomocą którego usługa Site Recovery będzie uzyskiwać dostęp do maszyny wirtualnej.
-
-Możesz użyć domeny lub konta lokalnego. W przypadku maszyn wirtualnych z systemem Linux konto powinno być użytkownikiem głównym na serwerze źródłowym z systemem Linux. W przypadku maszyn wirtualnych z systemem Windows, jeśli nie korzystasz z konta domeny, wyłącz kontrolę dostępu użytkowników zdalnych na maszynie lokalnej:
-
-  - W kluczu rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** dodaj wpis DWORD **LocalAccountTokenFilterPolicy** i ustaw wartość na 1.
-
-Potrzebne jest również oddzielne wystąpienie usługi EC2, którego można używać jako serwera konfiguracji usługi Site Recovery. Na tym wystąpieniu musi być uruchomiony system Windows Server 2012 R2.
 
 
 ## <a name="prepare-the-infrastructure"></a>Przygotowywanie infrastruktury

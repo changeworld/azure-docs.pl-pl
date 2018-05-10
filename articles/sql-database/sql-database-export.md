@@ -9,11 +9,11 @@ ms.custom: load & move data
 ms.date: 04/01/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: 7653f0953241fa0b4a1780075641fc3fe5570a23
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 30e89ea940b25e8db4a1203e966000981c47abc9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportuj do pliku pliku BACPAC bazy danych Azure SQL
 
@@ -97,3 +97,4 @@ $exportStatus
 * Aby dowiedzieć się więcej na temat importowania pliku BACPAC bazy danych programu SQL Server, zobacz [zaimportować do bazy danych programu SQL Server BACPCAC](https://msdn.microsoft.com/library/hh710052.aspx).
 * Aby dowiedzieć się więcej na temat Eksportowanie pliku BACPAC z bazy danych programu SQL Server, zobacz [eksportowania aplikacji warstwy danych](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) i [migracji pierwszą bazę danych](sql-database-migrate-your-sql-server-database.md).
 * Jeśli zostaną wyeksportowane z programu SQL Server jako prelude do migracji bazy danych SQL Azure, zobacz [migrację bazy danych programu SQL Server do bazy danych SQL Azure](sql-database-cloud-migrate.md).
+* Aby dowiedzieć się, jak zarządzać i udostępniania magazynu kluczy i dostępu współdzielonego signitures bezpiecznego, zobacz [przewodnik zabezpieczeń magazynu Azure](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

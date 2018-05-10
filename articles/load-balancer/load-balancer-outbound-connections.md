@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: c3d6ed2c011cc6be1098ae5e693ee6d904efaa3b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: c12b52c6b8862d00d51b51a5a120292f89c3ac1f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Połączeń wychodzących na platformie Azure
 
@@ -40,11 +40,11 @@ Dostępnych jest wiele [scenariusze wychodzących](#scenarios). W razie potrzeby
 
 Moduł równoważenia obciążenia Azure i powiązane zasoby są jawnie zdefiniowane podczas korzystania z [usługi Azure Resource Manager](#arm).  Platforma Azure udostępnia obecnie trzech różnych metod na osiągnięcie łączność wychodząca dla zasobów usługi Azure Resource Manager. 
 
-| Scenariusz | Metoda | Opis |
-| --- | --- | --- |
-| [1. Maszyna wirtualna o wystąpieniu poziomu publicznego adresu IP (z lub bez modułu równoważenia obciążenia)](#ilpip) | SNAT, port maskaradę nieużywane. |Azure używa publicznego adresu IP, przypisane do konfiguracji IP karty sieciowej dla wystąpienia. Wystąpienie ma wszystkie dostępne porty efemeryczne. |
-| [2. Publiczny moduł równoważenia obciążenia skojarzone z maszyny Wirtualnej (nie wystąpienia poziomu publicznego adresu IP w wystąpieniu)](#lb) | SNAT z portu maskaradę (PAT) przy użyciu frontends modułu równoważenia obciążenia |Publiczny adres IP publicznego frontends modułu równoważenia obciążenia Azure udostępnia wiele prywatnych adresów IP. Platforma Azure korzysta porty efemeryczne frontends do PAWEŁ. |
-| [3. Maszyna wirtualna autonomiczne (Brak usługi równoważenia obciążenia, żaden adres publiczny adres IP na poziomie wystąpienia)](#defaultsnat) | SNAT z portu maskaradę (PAT) | Azure automatycznie wyznacza publicznego adresu IP dla SNAT współużytkuje ten publiczny adres IP z wielu prywatnych adresów IP zestawu dostępności i używa porty efemeryczne ten publiczny adres IP. Jest to rezerwowy scenariusz dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać wgląd i większą kontrolę. |
+| Scenariusz | Metoda | Protokoły IP | Opis |
+| --- | --- | --- | --- |
+| [1. Maszyna wirtualna o wystąpieniu poziomu publicznego adresu IP (z lub bez modułu równoważenia obciążenia)](#ilpip) | SNAT, port maskaradę nieużywane. | TCP, UDP, ICMP, ESP | Azure używa publicznego adresu IP, przypisane do konfiguracji IP karty sieciowej dla wystąpienia. Wystąpienie ma wszystkie dostępne porty efemeryczne. |
+| [2. Publiczny moduł równoważenia obciążenia skojarzone z maszyny Wirtualnej (nie wystąpienia poziomu publicznego adresu IP w wystąpieniu)](#lb) | SNAT z portu maskaradę (PAT) przy użyciu frontends modułu równoważenia obciążenia | TCP, UDP |Publiczny adres IP publicznego frontends modułu równoważenia obciążenia Azure udostępnia wiele prywatnych adresów IP. Platforma Azure korzysta porty efemeryczne frontends do PAWEŁ. |
+| [3. Maszyna wirtualna autonomiczne (Brak usługi równoważenia obciążenia, żaden adres publiczny adres IP na poziomie wystąpienia)](#defaultsnat) | SNAT z portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publicznego adresu IP dla SNAT współużytkuje ten publiczny adres IP z wielu prywatnych adresów IP zestawu dostępności i używa porty efemeryczne ten publiczny adres IP. Jest to rezerwowy scenariusz dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać wgląd i większą kontrolę. |
 
 Jeśli nie chcesz maszyny Wirtualnej do komunikowania się z punktami końcowymi poza Azure w ramach publicznej przestrzeni adresów IP, można użyć grup zabezpieczeń sieci (NSG) w celu zablokowania dostępu zgodnie z potrzebami. Sekcja [uniemożliwia nawiązanie połączenia wychodzącego](#preventoutbound) omówiono bardziej szczegółowo grup NSG. Wskazówki dotyczące projektowania, wdrażania i zarządzania nimi sieci wirtualnej bez żadnych wychodzący dostęp wykracza poza zakres tego artykułu.
 
@@ -243,7 +243,7 @@ Jeśli grupy NSG blokuje żądania sondy kondycji z AZURE_LOADBALANCER domyślny
 
 ## <a name="limitations"></a>Ograniczenia
 - DisableOutboundSnat nie jest dostępny jako opcja podczas konfigurowania reguły w portalu równoważenia obciążenia.  Zamiast tego użyj narzędzia REST, szablonu lub klienta.
-- Role pracownika w sieci Web spoza sieci wirtualnej mogą stać się niedostępne po tylko wewnętrzny standardowy moduł równoważenia obciążenia jest używany z powodu efekt uboczny od tego, jak funkcja usług pre-VNet. Użytkownik musi nie korzysta z to co usługa odpowiednich siebie lub podstawowych platform mogą ulec zmianie bez uprzedzenia. Należy zawsze musi założenie, że należy utworzyć łączność wychodząca jawnie w razie potrzeby, używając wewnętrzny standardowy moduł równoważenia obciążenia tylko. 
+- Role pracownika w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft mogą stać się niedostępne po tylko wewnętrzny standardowy moduł równoważenia obciążenia jest używany z powodu efekt uboczny z jak funkcja usług pre-VNet usług i innych platform. Należy nie polega na tego efektu ubocznego ponieważ odpowiednie usługi siebie lub podstawowa platformy mogą ulec zmianie bez uprzedzenia. Należy zawsze musi założenie, że należy utworzyć łączność wychodząca jawnie w razie potrzeby, używając wewnętrzny standardowy moduł równoważenia obciążenia tylko. [Domyślne SNAT](#defaultsnat) Scenariusz 3 opisane w tym artykule nie jest dostępna.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

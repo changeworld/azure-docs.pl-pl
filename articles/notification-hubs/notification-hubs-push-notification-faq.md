@@ -1,25 +1,25 @@
 ---
-title: "Centra powiadomień Azure: Często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące projektowania/implementacji rozwiązań dotyczących usługi Notification Hubs"
+title: 'Centra powiadomień Azure: Często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft'
+description: Często zadawane pytania dotyczące projektowania/implementacji rozwiązań dotyczących usługi Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
-author: ysxu
-manager: erikre
-keywords: "powiadomienia wypychane, powiadomień wypychanych, powiadomień wypychanych systemu iOS, powiadomień wypychanych systemu android, ios push, wypychanych systemu android"
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
+keywords: powiadomienia wypychane, powiadomień wypychanych, powiadomień wypychanych systemu iOS, powiadomień wypychanych systemu android, ios push, wypychanych systemu android
 ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/19/2017
-ms.author: yuaxu
-ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: fbdb52b1b2dee682021fd822d584551f41f723ff
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Wypychanie powiadomień z usług Azure Notification Hubs: często zadawane pytania
 ## <a name="general"></a>Ogólne
@@ -82,7 +82,7 @@ Jeśli masz istniejącą aplikację mobilną wstecz zakończenia i chcesz dodać
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Ile urządzeń strony I obsługuje I wysyłania powiadomień wypychanych przy użyciu usługi Notification Hubs?
 Zapoznaj się [Notification Hubs — cennik] strony szczegółowe informacje na temat liczby obsługiwanych urządzeń.
 
-Jeśli potrzebujesz pomocy technicznej dla zarejestrowanych urządzeń więcej niż 10 milionów [skontaktuj się z nami](https://azure.microsoft.com/overview/contact-us/) bezpośrednio, a pomożemy Ci skalować rozwiązania.
+Jeśli potrzebujesz pomocy technicznej dla zarejestrowanych urządzeń więcej niż 10 milionów [skontaktuj się z nami](https://azure.microsoft.com/overview/contact-us/) bezpośrednio i możemy pomóc Ci skalować rozwiązania.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Jak wiele powiadomień wypychanych można wysłać?
 W zależności od wybranej warstwy usługi Azure Notification Hubs jest automatycznie skalowany na podstawie liczby powiadomienia przepływających przez system.
@@ -215,7 +215,7 @@ Firma Microsoft udostępnia również możliwość eksportowania danych telemetr
 [metryki centra powiadomień]: https://msdn.microsoft.com/library/dn458822.aspx
 [Przykładowe metryki centra powiadomień]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [rejestracje eksportu/importu]: https://msdn.microsoft.com/library/dn790624.aspx
-[Witryna Azure Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
 [App Service — ceny]: https://azure.microsoft.com/pricing/details/app-service/

@@ -1,7 +1,7 @@
 ---
-title: "Wdrażanie zdalne monitorowanie rozwiązania - Azure Java | Dokumentacja firmy Microsoft"
-description: "W tym samouczku przedstawiono sposób udostępnienia zdalnego rozwiązanie monitorowania wstępnie skonfigurowane przy użyciu interfejsu wiersza polecenia."
-services: 
+title: Wdrażanie zdalne monitorowanie rozwiązania - Azure Java | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób udostępnienia zdalnego akcelerator rozwiązań monitorowania przy użyciu interfejsu wiersza polecenia.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,19 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 94c3db3286623264e9df7873962d10dd5cc662d4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f158af573475964eca1ff168ecf3eadc58c2a394
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-the-remote-monitoring-preconfigured-solution-using-the-cli"></a>Wdrażanie zdalne rozwiązanie monitorowania wstępnie skonfigurowane przy użyciu interfejsu wiersza polecenia
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie zdalne akcelerator rozwiązań monitorowania przy użyciu interfejsu wiersza polecenia
 
-W tym samouczku przedstawiono sposób aprowizowania wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego. Możesz wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie przy użyciu interfejsu użytkownika sieci web na azureiotsuite.com, aby dowiedzieć się więcej o tej opcji, zobacz [wdrożyć zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-remote-monitoring-deploy.md).
+W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania akcelerator rozwiązań. Możesz wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie przy użyciu interfejsu użytkownika sieci web na azureiotsuite.com, aby dowiedzieć się więcej o tej opcji, zobacz [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wdrożyć zdalnego wstępnie skonfigurowane rozwiązanie monitorowania, należy aktywną subskrypcją platformy Azure.
+Aby wdrożyć zdalnego akcelerator rozwiązań monitorowania, należy aktywną subskrypcją platformy Azure.
 
 Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -40,7 +40,7 @@ npm install iot-solutions -g
 
 ## <a name="sign-in-to-the-cli"></a>Zaloguj się do interfejsu wiersza polecenia
 
-Przed wdrożeniem wstępnie skonfigurowane rozwiązanie, należy zalogować się do subskrypcji platformy Azure przy użyciu interfejsu wiersza polecenia w następujący sposób:
+Przed wdrożeniem akcelerator rozwiązań, musisz się zalogować do subskrypcji platformy Azure przy użyciu interfejsu wiersza polecenia w następujący sposób:
 
 ```cmd/sh
 pcs login
@@ -50,7 +50,7 @@ Postępuj zgodnie z wyświetlanymi instrukcjami, aby ukończyć procesu logowani
 
 ## <a name="deployment-options"></a>Opcje wdrażania
 
-Podczas wdrażania wstępnie skonfigurowanych rozwiązań, dostępnych jest kilka opcji, które konfigurują procesu wdrażania:
+Podczas wdrażania akcelerator rozwiązań, dostępnych jest kilka opcji, które konfigurują procesu wdrażania:
 
 | Opcja | Wartości | Opis |
 | ------ | ------ | ----------- |
@@ -59,11 +59,44 @@ Podczas wdrażania wstępnie skonfigurowanych rozwiązań, dostępnych jest kilk
 
 Aby dowiedzieć się więcej o sposobie używania lokalnego wdrożenia, zobacz [uruchomiony lokalnie zdalnego rozwiązanie monitorowania](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
 
-## <a name="deploy-the-preconfigured-solution"></a>Wdrażanie wstępnie skonfigurowane rozwiązanie
+## <a name="basic-vs-standard-deployments"></a>Podstawowe programu vs. Standardowa wdrożenia
+
+### <a name="basic"></a>Podstawowa
+Podstawy wdrażania jest skierowaną do prezentacji rozwiązania. Aby zmniejszyć koszt tej prezentacji, wszystkie mikrousług są wdrażane w jednej maszynie wirtualnej; to nie omówiono architekturę gotowe do produkcji.
+
+Nasze opcji standardowego wdrożenia należy używać, gdy wszystko będzie gotowe dostosować to architektura gotowe do produkcji, przeznaczony dla skali i rozszerzalność.
+
+Tworzenie podstawowego rozwiązania spowoduje wyświetlenie następujących usług platformy Azure aprowizowany do Twojej subskrypcji platformy Azure, kosztem: 
+
+| Licznik | Zasób                       | Typ         | Używany do |
+|-------|--------------------------------|--------------|----------|
+| 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1 V2  | Hosting mikrousług |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa podstawowa | Zarządzanie urządzeniami i komunikacji |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standardowa (Standard)        | Przechowywanie danych konfiguracji i telemetrii urządzenia, takie jak zasady, alarmy i komunikatów |  
+| 1     | [Konto magazynu Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standardowa (Standard)        | Magazyn dla maszyny Wirtualnej i przesyłania strumieniowego punkty kontrolne |
+| 1     | [Aplikacja sieci Web](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosting aplikacji frontonu sieci web |
+
+### <a name="standard"></a>Standardowa (Standard)
+Standardowe wdrożenie to wdrożenie gotowe do produkcji, deweloper może dostosowywanie i rozszerzanie do własnych potrzeb. Niezawodności i skalowania aplikacji mikrousług są tworzone jako kontenery Docker i wdrażane za pomocą usługi orchestrator ([Kubernetes](https://kubernetes.io/) domyślnie). Orchestrator jest odpowiedzialny za wdrożenie skalowania i zarządzania aplikacji.
+
+Tworzenie standardowego rozwiązania spowoduje wyświetlenie następujących usług platformy Azure aprowizowany do Twojej subskrypcji platformy Azure, kosztem:
+
+| Licznik | Zasób                                     | Jednostka SKU / rozmiaru      | Używany do |
+|-------|----------------------------------------------|-----------------|----------|
+| 4     | [Maszyny wirtualne z systemem Linux](https://azure.microsoft.com/services/virtual-machines/)   | Standardowa D2 V2  | wzorzec 1 i 3 agentów do hostowania mikrousług z nadmiarowością |
+| 1     | [Usługa kontenera platformy Azure](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) orchestrator |
+| 1     | [Centrum IoT azure] [https://azure.microsoft.com/services/iot-hub/]                     | S1 — warstwa podstawowa | Zarządzanie urządzeniami, polecenie i kontroli |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standardowa (Standard)        | Przechowywanie danych konfiguracji i telemetrii urządzenia, takie jak zasady, alarmy i komunikatów |
+| 5     | [Konta magazynu platformy Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardowa (Standard)        | 4 dla magazynu maszyny Wirtualnej, a 1 w przypadku przesyłania strumieniowego punkty kontrolne |
+| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | Standardowa S1     | Brama aplikacji za pośrednictwem protokołu SSL |
+
+> Informacje o cenach dla tych usług można znaleźć [tutaj](https://azure.microsoft.com/pricing). Wielkość użycia i szczegóły płatności dotyczące Twojej subskrypcji można znaleźć w [Azure Portal](https://portal.azure.com/).
+
+## <a name="deploy-the-solution-accelerator"></a>Wdrażanie akcelerator rozwiązań
 
 ### <a name="example-deploy-net-version"></a>Przykład: wdrożenie wersji platformy .NET
 
-Poniższy przykład przedstawia wdrożenie podstawowe, wersji .NET zdalnego wstępnie skonfigurowane rozwiązanie monitorowania:
+Poniższy przykład przedstawia sposób wdrażania basic, wersja platformy .NET zdalnego monitorowania akcelerator rozwiązań:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
@@ -71,7 +104,7 @@ pcs -t remotemonitoring -s basic -r dotnet
 
 ### <a name="example-deploy-java-version"></a>Przykład: wdrożenie wersji języka Java
 
-Poniższy przykład przedstawia sposób wdrażania standardową, wersję Java zdalnego wstępnie skonfigurowane rozwiązanie monitorowania:
+Poniższy przykład przedstawia sposób wdrażania standard, Java wersję zdalnego monitorowania akcelerator rozwiązań:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java
@@ -86,7 +119,7 @@ Po uruchomieniu `pcs` polecenie, aby wdrożyć rozwiązanie, pojawi się monit d
 - Lokalizacja.
 - Poświadczenia dla maszyn wirtualnych hostujących mikrousług. Można używać tych poświadczeń, uzyskiwać dostęp do maszyn wirtualnych do rozwiązywania problemów.
 
-Gdy `pcs` polecenia zakończeniu on Wyświetla adres URL nowego wdrożenia wstępnie skonfigurowanych rozwiązań. `pcs` Polecenie powoduje utworzenie pliku `{deployment-name}-output.json` informacje dodatkowe, takie jak nazwa Centrum IoT udostępniony dla Ciebie.
+Gdy `pcs` polecenia zakończeniu on Wyświetla adres URL nowego wdrożenia akceleratora rozwiązań. `pcs` Polecenie powoduje utworzenie pliku `{deployment-name}-output.json` informacje dodatkowe, takie jak nazwa Centrum IoT udostępniony dla Ciebie.
 
 Aby uzyskać więcej informacji na temat parametrów wiersza polecenia Uruchom polecenie:
 
@@ -101,9 +134,9 @@ Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia, zobacz [s
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie wstępnie skonfigurowanego rozwiązania
-> * Wdrażanie wstępnie skonfigurowane rozwiązanie
-> * Zaloguj się do wstępnie skonfigurowane rozwiązanie
+> * Skonfiguruj akcelerator rozwiązań
+> * Wdrażanie akcelerator rozwiązań
+> * Zaloguj się do akcelerator rozwiązań
 
 Teraz, gdy wdrożono rozwiązanie monitorowania zdalnego następnym krokiem jest [Poznaj możliwości pulpit nawigacyjny rozwiązania](./iot-suite-remote-monitoring-deploy.md).
 

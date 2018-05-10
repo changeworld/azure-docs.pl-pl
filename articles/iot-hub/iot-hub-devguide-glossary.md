@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 828489510cea16ebba1944c0e6d1fc88f9375fc7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów Centrum IoT
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach Centrum IoT.
 
 ## <a name="advanced-message-queueing-protocol"></a>Protokół usługi kolejkowania komunikatów zaawansowane
 [Zaawansowane protokołu usługi kolejkowania komunikatów (AMQP)](https://www.amqp.org/) jest jeden z komunikatów protokołów, które [Centrum IoT](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokoły obsługi komunikatów, które obsługuje Centrum IoT, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
+
+## <a name="automatic-device-management"></a>Zarządzanie urządzeniami automatyczne
+Automatyczne zarządzanie urządzeniami w Centrum IoT Azure pozwala zautomatyzować wiele powtarzających się i złożonych zadań związanych z zarządzaniem floty dużych urządzenia za pośrednictwem całości ich cyklów. Z automatycznego zarządzania urządzeniami docelowa zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją, a let Centrum IoT aktualizowania urządzeń, które pochodzą do zakresu.  Składa się z [konfiguracji automatycznego urządzeń](iot-hub-auto-device-config.md) i [wdrożeń automatycznych krawędzi IoT](../iot-edge/how-to-deploy-monitor.md).
+
+## <a name="automatic-device-configuration"></a>Konfiguracja automatycznych urządzeń
+Można użyć z zaplecza rozwiązania [konfiguracji automatycznego urządzeń](iot-hub-auto-device-config.md) można przypisać odpowiednie właściwości do zestawu [twins urządzenia](#device-twin) oraz stan raportu za pomocą systemu metryki i metryki niestandardowe. 
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 [Interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) to narzędzie do tworzenia i zarządzania zasobami na platformie Microsoft Azure i platform, open source, opartych na powłoki poleceń. Ta wersja interfejsu wiersza polecenia jest implementowane przy użyciu środowiska Node.js.
@@ -65,6 +71,9 @@ Brama chmury umożliwia łączność w przypadku urządzeń, które nie może po
 
 ## <a name="cloud-to-device"></a>Chmura-urządzenie
 Odnosi się do wiadomości wysyłane z Centrum IoT do podłączonego urządzenia. Często komunikaty te są poleceniami, które poinstruować urządzenia, aby podejmować działanie. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
+
+## <a name="configuration"></a>Konfigurowanie
+W kontekście [konfiguracji automatycznego urządzenia](iot-hub-auto-device-config.md), konfiguracji w ramach Centrum IoT definiuje żądanej konfiguracji dla urządzeń twins i zapewnia zbiór metryk do trwałego zgłaszania stanu i postępu.
 
 ## <a name="connection-string"></a>Parametry połączenia
 Umożliwia parametry połączenia w kodzie aplikacji Hermetyzowanie informacje wymagane do połączenia z punktem końcowym. Ciąg połączenia zwykle obejmują adres punktu końcowego i informacji o zabezpieczeniach, ale ciąg połączenia formatów różnią się w usługach. Istnieją dwa typy parametrów połączenia skojarzony z usługą Centrum IoT:
@@ -181,8 +190,8 @@ Centrum IoT to w pełni zarządzana usługa platformy Azure, co umożliwia komun
 ## <a name="iot-hub-resource-provider-rest-api"></a>Dostawca zasobów Centrum IoT interfejsu API REST
 Można użyć [interfejsu API REST dostawcy zasobów Centrum IoT](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) do zarządzania centra IoT w Twojej [subskrypcji platformy Azure](#subscription) wykonywania operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
 
-## <a name="iot-suite"></a>Pakiet IoT
-Pakiet Azure IoT pakiety ze sobą wiele usług platformy Azure z wstępnie skonfigurowanych rozwiązań. Te wstępnie skonfigurowanych rozwiązań umożliwiają szybkie rozpoczęcie pracy z implementacjami na trasie o typowych scenariuszach IoT. Aby uzyskać więcej informacji, zobacz [co to jest pakiet IoT Azure?](../iot-suite/iot-suite-overview.md)
+## <a name="iot-solution-accelerators"></a>Akceleratorów rozwiązania IoT
+Azure akceleratorów rozwiązania IoT pakietu jednocześnie wiele usług platformy Azure do rozwiązania. Te rozwiązania umożliwiają szybkie rozpoczęcie pracy z implementacjami na trasie o typowych scenariuszach IoT. Aby uzyskać więcej informacji, zobacz [co to są akceleratorów rozwiązania Azure IoT?](../iot-suite/iot-suite-overview.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Rozszerzenie IoT Azure CLI 2.0
 [Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to narzędzie i platform, wiersza polecenia. Narzędzie pozwala na zarządzanie urządzeniami w [rejestru tożsamości](#identity-registry), wysyłania i odbierania wiadomości oraz pliki z urządzeń i monitorować działania Centrum IoT.

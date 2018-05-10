@@ -1,0 +1,73 @@
+- name: Dokumentacja usługi Media Services
+  href: ./index.yml
+- name: Omówienie
+  items:
+    - name: Informacje o usłudze Media Services
+      href: media-services-overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Przesyłanie strumieniowe plików wideo za pomocą platformy .NET
+      href: stream-files-dotnet-quickstart.md
+- name: Samouczki
+  items:
+    - name: 'Przekazywanie, kodowanie i przesyłanie strumieniowe'
+      href: stream-files-tutorial-with-api.md
+    - name: Analizowanie filmu wideo
+      href: analyze-videos-tutorial-with-api.md
+- name: Przykłady
+  items:
+    - name: Przykłady kodu platformy Azure
+      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
+- name: Pojęcia
+  items:
+    - name: Elementy zawartości
+      href: assets-concept.md
+    - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
+      href: autogen-bitrate-ladder.md
+    - name: Inteligentna analiza multimediów
+      href: intelligence-concept.md
+    - name: Konta magazynu
+      href: storage-account-concept.md
+    - name: Transformacje i zadania
+      href: transform-concept.md
+    - name: Reagowanie na zdarzenia
+      href: reacting-to-media-services-events.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Tworzenie konta — interfejs wiersza polecenia
+      href: create-account-cli-how-to.md
+    - name: Dostęp do interfejsów API — interfejs wiersza polecenia
+      href: access-api-cli-how-to.md
+    - name: Zdarzenia stanu zadania — interfejs wiersza polecenia
+      href: job-state-events-cli-how-to.md
+    - name: Przekazywanie zawartości — platforma .NET
+      items:
+        - name: Z protokołu HTTP(s)
+          href: job-input-from-http-how-to.md
+        - name: Z pliku lokalnego
+          href: job-input-from-local-file-how-to.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure 2.0
+      href: 'https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest'
+    - name: REST
+      href: 'https://go.microsoft.com/fwlink/p/?linkid=873030'
+    - name: Schematy zdarzeń
+      href: media-services-event-schemas.md
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: Informacje o wersji
+      href: release-notes.md
+    - name: Limity przydziału i ograniczenia
+      href: limits-quotas-constraints.md

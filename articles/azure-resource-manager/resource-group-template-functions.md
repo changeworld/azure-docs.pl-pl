@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 834488e259caf60ae96450fcf7c8188c5ffb0bc5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e21a8251cc4a85232b92faa05d01d0f73410e496
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkcje szablonów usługi Azure Resource Manager
 W tym artykule opisano wszystkie funkcje, których można użyć w szablonie usługi Azure Resource Manager.
@@ -28,6 +28,8 @@ Dodawanie funkcji w szablonach ujęte w nawiasy kwadratowe: `[` i `]`odpowiednio
 Wyrażenia szablonu nie może przekraczać 24 576 znaków.
 
 Funkcje szablonów i ich parametry jest rozróżniana wielkość liter. Na przykład usługi Resource Manager rozpoznaje **variables('var1')** i **VARIABLES('VAR1')** jako takie same. Podczas szacowania, chyba że funkcja modyfikuje wyraźnie liter (na przykład toUpper lub toLower), funkcja zachowuje wielkość liter. Niektóre typy zasobów mogą mieć wielkość wymagania niezależnie od tego, jak są analizowane funkcje.
+
+Aby utworzyć własnych funkcji, zobacz [funkcje zdefiniowane przez użytkownika](resource-group-authoring-templates.md#functions).
 
 <a id="array" />
 <a id="coalesce" />

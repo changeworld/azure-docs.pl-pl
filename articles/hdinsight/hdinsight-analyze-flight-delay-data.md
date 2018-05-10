@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych opóźnienie transmitowane przy użyciu usługi Hive w usłudze HDInsight
 Gałąź umożliwia uruchomionych zadań MapReduce z Hadoop za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które można zastosować do podsumowania, wyszukiwanie i analizowania dużych ilości danych.
@@ -259,7 +259,8 @@ Przekazywanie plików danych i plików skryptu po stronie HiveQL (zobacz [dodate
     <tr><td>Filtruj okres</td><td>styczeń</td></tr>
     <tr><td>Pola</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *operatora*, *FlightNum*, *OriginAirportID*, *Pochodzenia*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (Usuń zaznaczenie wszystkich innych pól)</td></tr>
     </table>
-3. Kliknij przycisk **Pobierz**.
+
+3. Kliknij pozycję **Pobierz**.
 4. Rozpakuj plik **C:\Tutorials\FlightDelay\2013Data** folderu. Każdy plik jest plikiem CSV i jest rozmiar około 60GB.
 5. Zmień nazwę miesiąca, który zawiera dane dla pliku. Na przykład, czy nazwę pliku zawierającego dane stycznia *January.csv*.
 6. Powtórz kroki 2 i 5, aby pobrać plik dla każdej z 12 miesięcy w 2013. Konieczne będzie co najmniej jeden plik do uruchamiania w samouczku.
@@ -273,6 +274,7 @@ Przekazywanie plików danych i plików skryptu po stronie HiveQL (zobacz [dodate
     <tr><td>$storageAccountName</td><td>Konto magazynu Azure, której chcesz przekazać dane do.</td></tr>
     <tr><td>$blobContainerName</td><td>Gdzie chcesz przekazać dane do kontenera obiektów Blob.</td></tr>
     </table>
+    
 2. Otwórz program Azure PowerShell ISE.
 3. Wklej poniższy skrypt w okienku skryptów:
 

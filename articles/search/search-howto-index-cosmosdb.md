@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: fcc77104103cea91f5eecb972e1d6e872c933015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a724057981b5b389011ffc4c2fc93994c2b8be9e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Łączenie z usługi Azure Search przy użyciu indeksatorów DB rozwiązania Cosmos
 
@@ -271,7 +271,7 @@ Jeśli używasz niestandardowe zapytanie, upewnij się, że `_ts` właściwości
 
 <a name="IncrementalProgress"></a>
 ### <a name="incremental-progress-and-custom-queries"></a>Postęp przyrostowych i zapytań niestandardowych
-Przyrostowe postępu podczas indeksowania gwarantuje, że jeśli wykonywanie indeksatora jest przerwane z powodu błędów przejściowych lub limit czasu wykonywania, indeksatora mogą odbierać którym przerwał następnym uruchomieniu, zamiast ponownego indeksowania całą kolekcję od początku. Jest to szczególnie ważne w przypadku, gdy przeprowadzane jest indeksowanie dużych kolekcjach. 
+Przyrostowe postępu podczas indeksowania gwarantuje, że jeśli wykonywanie indeksatora jest przerwane z powodu błędów przejściowych lub limit czasu wykonywania, indeksatora mogą odbierać którym przerwał następnym uruchomieniu, zamiast ponowna indeksacja całą kolekcję od początku. Jest to szczególnie ważne w przypadku, gdy przeprowadzane jest indeksowanie dużych kolekcjach. 
 
 Aby włączyć przyrostowego postępu, za pomocą niestandardowe zapytanie, upewnij się, że kwerenda porządkuje wyniki według `_ts` kolumny. Dzięki temu okresowego sprawdzania wskazującej, która używa usługi Azure Search, aby zapewnić przyrostowego postępu obecności błędów.   
 

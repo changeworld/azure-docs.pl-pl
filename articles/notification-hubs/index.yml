@@ -1,0 +1,65 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure Notification Hubs
+metadata:
+  title: Dokumentacja usługi Azure Notification Hubs — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  description: Dowiedz się, jak wysyłać powiadomienia wypychane z dowolnego zaplecza na dowolne urządzenie mobilne za pomocą usługi Notification Hubs. Samouczki, dokumentacja interfejsu API i inne dokumenty.
+  services: notification-hubs
+  author: spelluru
+  manager: 
+  ms.service: notification-hubs
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/01/2017
+  ms.author: spelluru
+  ms.openlocfilehash: 9b2caeed9e2e5ca4adb2601fe36f7fd4318f37c3
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Dowiedz się, jak używać usługi Notification Hubs, czyli wieloplatformowego i skalowalnego aparatu obsługującego powiadomienia wypychane, aby szybko wysyłać miliony wiadomości do aplikacji działających na urządzeniach różnych typów (z systemem Android, iOS, Windows, Windows Phone, Baidu lub Kindle). <p>W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować i wysyłać powiadomienia wypychane z dowolnego zaplecza na dowolne urządzenie mobilne.</p>
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Powiadomienia wypychane do aplikacji systemu Android
+    href: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+    width: 250
+sections:
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: 'Dowiedz się, jak wypychać powiadomienia przy użyciu usługi Notification Hubs:'
+  - type: list
+    style: ordered
+    items:
+    - html: Powiadomienia wypychane do wszystkich zarejestrowanych urządzeń — <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started">Baidu</a> | <a href="/azure/notification-hubs/notification-hubs-chrome-push-notifications-get-started">Chrome</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification">Kindle</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
+    - html: Powiadomienia wypychane do określonych urządzeń — <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
+    - html: Powiadomienia wypychane do określonych użytkowników — <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
+    - html: Wypychanie powiadomień na podstawie lokalizacji — <a href="/azure/notification-hubs/notification-hubs-push-bing-spartial-data-geofencing-notification">Windows</a>
+    - html: Wypychania spersonalizowanych i zlokalizowanych powiadomień — <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
+- title: Przykłady
+  items:
+  - type: paragraph
+    text: Użyj następujących przykładów do pracy z usługą Notification Hubs
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notification-hubs/samples-powershell">Program PowerShell</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Wiersz polecenia
+      html: <p><a href="/powershell/resourcemanager/azurerm.notificationhubs/v2.3.0/azurerm.notificationhubs">Azure PowerShell</a></p>
+    - title: Języki
+      html: <p><a href="/dotnet/api/microsoft.azure.notificationhubs">.NET</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/notificationhubs">Interfejs API REST</a></p>

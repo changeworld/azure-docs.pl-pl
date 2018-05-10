@@ -1,12 +1,12 @@
 ---
-title: "Udostępnianie urządzeń z systemem Windows do monitorowania zdalnego w języku C - Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób podłącz urządzenie do wstępnie pakiet IoT Azure zdalnego monitorowania rozwiązania przy użyciu Aplikacja napisana w języku C uruchomiony w systemie Windows."
-services: 
+title: Udostępnianie urządzeń z systemem Windows do monitorowania zdalnego w języku C - Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób urządzenie podłączone do akcelerator rozwiązań monitorowania zdalnego przy użyciu Aplikacja napisana w języku C uruchomiony w systemie Windows.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34e39a58-2434-482c-b3fa-29438a0c05e8
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: 83d0427a3ba8c634699608c38ab22efb1f275e52
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4dafcb939aa59d163e7df7f49906979fb181587c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Podłącz urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania (system Windows)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Podłącz urządzenie do zdalnego akcelerator rozwiązań monitorowania (system Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ten samouczek pokazuje, jak nawiązać zdalnego wstępnie skonfigurowane rozwiązanie monitorowania urządzenia fizycznego.
+Ten samouczek pokazuje, jak nawiązać zdalnego akcelerator rozwiązań monitorowania urządzenia fizycznego.
 
 ## <a name="create-a-c-client-solution-on-windows"></a>Tworzenie rozwiązania klienta C w systemie Windows
 
@@ -121,7 +121,7 @@ Dodaj kod, aby wywołać **zdalnego\_monitorowania\_Uruchom** działanie, a nast
 
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **RMDevice** projektu, wybierz **debugowania**, a następnie wybierz pozycję **Start nowe wystąpienie** do uruchomienia przykładu . W konsoli są wyświetlane komunikaty w postaci:
 
-    * Aplikacja wysyła przykładowe dane telemetryczne do wstępnie skonfigurowane rozwiązanie.
+    * Aplikacja wysyła dane telemetryczne próbki akcelerator rozwiązań.
     * Odbiera wartości żądanej właściwości ustawione na pulpicie nawigacyjnym rozwiązania.
     * Odnosi się do metody wywoływane z poziomu pulpitu nawigacyjnego rozwiązania.
 

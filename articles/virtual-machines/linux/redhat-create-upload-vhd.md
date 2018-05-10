@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: e0e0fdbb3702ec16e9d5a33659c1ddbee589b989
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9893ab83584e2fc93ea9cf29c0b74b957080d5ad
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszyny wirtualnej Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje RHEL, które zostały omówione w tym artykule są 6.7 + i 7.1 +. Funkcje hypervisor w celu przygotowania, które zostały omówione w tym artykule są maszyny wirtualnej funkcji Hyper-V, na podstawie jądra (KVM) i VMware. Aby uzyskać więcej informacji o wymaganiach dotyczących kwalifikuje się do uczestnictwa w programie dostęp do chmury Red Hat, zobacz [Red Hat dostęp do chmury witryny sieci Web](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [systemem RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -159,7 +159,7 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
 5. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 6. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
@@ -411,7 +411,7 @@ W tej sekcji założono, że zostały już uzyskane z pliku ISO z witryny sieci 
 
 6. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
 
-        # chkconfig network on
+        # sudo systemctl enable network
 
 7. Zarejestruj subskrypcję Red Hat umożliwia przeprowadzenie instalacji pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 
@@ -665,7 +665,7 @@ W tej sekcji założono, zainstalowano RHEL maszyny wirtualnej w środowisku pro
 
 3. Upewnij się, że Usługa sieciowa będzie uruchamiane podczas rozruchu, uruchamiając następujące polecenie:
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 4. Zarejestruj subskrypcję Red Hat, aby umożliwić instalację pakietów z repozytorium RHEL, uruchamiając następujące polecenie:
 

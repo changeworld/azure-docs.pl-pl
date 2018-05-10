@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 75b89ad7f118d107f570b5e323d61bbc9b94bc40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest wspaniała relacyjnej bazy danych serwerów, pamięci podręcznych średnich i dużych i analizy w pamięci. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -26,9 +26,9 @@ Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokie
 
 * Seria Ev3 funkcje E5 2673 v4 2.3 GHz (Broadwell) procesora w hiperwątkowych konfiguracji, zapewniając lepsze wartości oferty dla większości obciążeń cel i dostosowanie Ev3 do dostosowania ogólnego przeznaczenia maszyn wirtualnych z innych chmur.  Gdy skorygowano limity dysku i sieci na podstawie na core, aby były wyrównane wraz z przejściem do wielowątkowość została rozszerzona pamięci (od 7 GiB/vCPU do 8 GiB/vCPU).  Ev3 jest uzupełnianie rozmiarów maszyn wirtualnych pamięci wysokiej rodzin D/Dv2.
 
-## <a name="esv3-series-sup1sup"></a>Seria Esv3 <sup>1</sup>
+## <a name="esv3-series"></a>Esv3 serii 
 
-ACU: 160–190
+ACU: 160-190 <sup>1</sup>
 
 Wystąpienia serii ESv3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) z zegarem 2,3 GHz, które dzięki technologii Intel Turbo Boost 2.0 mogą osiągnąć częstotliwość 3,5 GHz i korzystają z magazynu Premium Storage. Wystąpienia serii Ev3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
@@ -51,9 +51,9 @@ Wystąpienia serii ESv3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broad
 <sup>3</sup> wystąpienia jest izolowana sprzętu przeznaczonego do jednego odbiorcy.
 
 
-## <a name="ev3-series-sup1sup"></a>Seria Ev3 <sup>1</sup>
+## <a name="ev3-series"></a>Seria Ev3 
 
-ACU: 160–190 
+ACU: 160-190 <sup>1</sup>
 
 Wystąpienia serii Ev3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz. Wystąpienia serii Ev3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
@@ -75,9 +75,9 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 <sup>2</sup> ograniczone dostępne rozmiary core. 
 
 
-## <a name="m-series-sup1sup"></a>M-series <sup>1</sup>
+## <a name="m-series"></a>Seria M 
 
-ACU: 160–180
+ACU: 160-180 <sup>1</sup>
 
 | Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -95,9 +95,9 @@ ACU: 160–180
 <sup>4</sup> wystąpienia jest izolowana sprzętu przeznaczonego do jednego odbiorcy.
 <br>
 
-## <a name="gs-series-sup1sup"></a>GS-series <sup>1</sup>
+## <a name="gs-series"></a>Seria GS 
 
-ACU: 180–240
+ACU: 180-240 <sup>1</sup>
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
 |---|---|---|---|---|---|---|---|
@@ -131,9 +131,9 @@ ACU: 180–240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>Seria DSv2 <sup>1</sup>
+## <a name="dsv2-series"></a>Seria DSv2 
 
-ACU: 210–250
+ACU: 210-250 <sup>1</sup>
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,9 +174,9 @@ ACU: 210–250
 
 <br>
 
-## <a name="ds-series-sup1sup"></a>Serii DS <sup>1</sup>
+## <a name="ds-series"></a>Seria DS 
 
-ACU: 160
+ACU: 160 <sup>1</sup>
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

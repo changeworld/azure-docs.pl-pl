@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: asgang
-ms.openlocfilehash: 44f2016dacf1433cfe3a61058a167c42700e37d6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9bfe181b2271f4e8af6f43e1728167712dade8ee
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędami rozszerzenia usługi Azure Site Recovery: problemy z agentem lub rozszerzenia
 
@@ -31,6 +31,13 @@ Kod błędu: "151076"
 **Przyczyny 2: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Przyczyny 3: [rozszerzenia usługi Site Recovery nie może zaktualizować lub załadować](#the-site-recovery-extension-fails-to-update-or-load)**  
 
+Komunikat o błędzie: "poprzednie lokacji odzyskiwania rozszerzenia operacja trwa dłużej niż oczekiwano."<br>
+Kod błędu: "150066"<br>
+
+**Przyczyna 1: [agent jest zainstalowany na Maszynie wirtualnej, ale odpowiadać (dla maszyn wirtualnych systemu Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 3: [stanu rozszerzenia usługi Site Recovery jest nieprawidłowa](#the-site-recovery-extension-fails-to-update-or-load)**  
+
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Ochrona nie powiedzie się, ponieważ nie odpowiada, agent maszyny Wirtualnej
 
 Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia dla operacji rozszerzenia ma zostać uruchomiony."<br>
@@ -43,7 +50,11 @@ Można sprawdzić stan agenta gościa Azure w [portalu Azure](https://portal.azu
 **Przyczyny 2: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
+Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia dla operacji rozszerzenia ma zostać uruchomiony."<br>
+Kod błędu: "151095"<br>
 
+Dzieje się tak, gdy jest stara wersja agenta na komputerze z systemem Linux. Wykonaj następujący krok rozwiązywania problemów.<br>
+  **Przyczyna 1: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych systemu Windows)

@@ -1,22 +1,22 @@
 ---
 title: Diagnostyka transakcji Insights aplikacji Azure | Dokumentacja firmy Microsoft
-description: "Usługa Application diagnostics transakcji end-to-end Insights"
+description: Usługa Application diagnostics transakcji end-to-end Insights
 services: application-insights
 documentationcenter: .net
-author: SoubhagyaDash
-manager: victormu
+author: mrbullwinkle
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: sdash
-ms.openlocfilehash: 1c7eaafe99717324ad03287a1f1e0699d77cc74f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: mbullwin;sdash
+ms.openlocfilehash: 7a4e4f74c02358fc117e0a66977ee3f0aef5b1dd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostyka ujednoliconego transakcji między składnikami
 
@@ -80,9 +80,9 @@ Szczegóły wybranego elementu z jednej z dwóch części w tym okienku są wyś
 
 [Application Insights profilera](app-insights-profiler.md) lub [debugera migawki](app-insights-snapshot-debugger.md) pomoc w diagnostyce poziomie kodu problemów z wydajnością i niepowodzenie. Z tym środowiskiem widać ślady profilera, lub kliknij przycisk migawek z każdego składnika za pomocą pojedynczej.
 
-Jeśli nie można pobrać profilera pracy, skontaktuj się z**serviceprofilerhelp@microsoft.com**
+Jeśli nie można pobrać profilera pracy, skontaktuj się z **serviceprofilerhelp@microsoft.com**
 
-Jeśli nie można pobrać debugera migawki pracy, skontaktuj się z**snapshothelp@microsoft.com**
+Jeśli nie można pobrać debugera migawki pracy, skontaktuj się z **snapshothelp@microsoft.com**
 
 ![Integracji debugera](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
 

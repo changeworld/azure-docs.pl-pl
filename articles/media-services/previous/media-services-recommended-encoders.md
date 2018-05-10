@@ -1,8 +1,8 @@
 ---
-title: "Więcej informacji na temat koderów zalecane przez usługi Azure Media Services | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat koderów zalecane przez usługę media services"
+title: Więcej informacji na temat koderów zalecane przez usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat koderów zalecane przez usługę media services
 services: media-services
-keywords: "kodowanie koderów; nośnika"
+keywords: kodowanie koderów; nośnika
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: d0c5536d2339470eac058250cc14e1f250b86d90
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="recommended-on-premises-encoders"></a>Koderów lokalnych zalecane
 Gdy na żywo strumienia z usługi Azure Media Services można określić sposób kanału do odbierania strumień wejściowy. Jeśli użytkownik chce używać kodera lokalnego z kanałem kodowania na żywo, kodera ma wypychać strumienia wysokiej jakości pojedynczej szybkości transmisji bitów jako dane wyjściowe. Jeśli wybierzesz kodera lokalnego za pomocą przekazywania kanału, kodera ma wypychać strumień o wielokrotnej szybkości transmisji bitów jako dane wyjściowe z wszystkich właściwości żądanego wyniku. Aby uzyskać więcej informacji, zobacz [Live streaming za pomocą koderów lokalnych](media-services-live-streaming-with-onprem-encoders.md).

@@ -199,6 +199,8 @@
           href: use-remote-desktop.md
         - name: Przyłączanie maszyny wirtualnej do usługi Azure Active Directory
           href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+        - name: Logowanie się za pomocą poświadczeń usługi Azure Active Directory
+          href: login-using-aad.md
         - name: Aktualizacje i poprawki
           items:
             - name: Infrastruktura aktualizacji systemu Red Hat

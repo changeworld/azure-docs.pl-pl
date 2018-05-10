@@ -1,11 +1,11 @@
 ---
-title: "Optymalizacja środowiskiem usługi Active Directory na platformie Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Active Directory kondycji Sprawdź rozwiązania można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu."
+title: Optymalizacja środowiskiem usługi Active Directory na platformie Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Active Directory kondycji Sprawdź rozwiązania można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f026c605b84c5f2b6420e975a06d7c02227efbd9
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: 016b5bafdf6543ad43e36a875e6aa68572b35f97
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optymalizowanie środowiska usługi Active Directory z rozwiązaniem Active Directory kondycji Sprawdź w analizy dzienników
 
@@ -54,7 +54,7 @@ Aby przeprowadzić sprawdzenie kondycji na kontrolerach domeny, które są czło
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Jeśli kontroler domeny nie jest już monitorowany przez System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2.
 2. Jeśli grupa zarządzania nie jest zintegrowany z usługą analizy dzienników jest monitorowany z System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2, kontroler domeny może być wieloadresowego z analizy dzienników do zbierania danych i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
-3. W przeciwnym razie, jeśli grupę zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny na potrzeby zbierania danych przez usługę następujące kroki w obszarze [dodać komputery zarządzane z wykorzystaniem agentów](log-analytics-om-agents.md#connecting-operations-manager-to-oms) po włączeniu rozwiązanie w obszarze roboczym.  
+3. W przeciwnym razie, jeśli grupę zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny na potrzeby zbierania danych przez usługę następujące kroki w obszarze [dodać komputery zarządzane z wykorzystaniem agentów](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązanie w obszarze roboczym.  
 
 Agenta na kontrolerze domeny, które raporty z grupą zarządzania programu Operations Manager umożliwia zbieranie danych, przekazuje do serwera zarządzania przypisany, a następnie wysyłane bezpośrednio z serwerem zarządzania z usługą analizy dzienników.  Dane nie są zapisywane do baz danych programu Operations Manager.  
 

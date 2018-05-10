@@ -111,6 +111,8 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: Informacje o usłudze Azure Traffic Manager z usługą Site Recovery
       href: concepts-traffic-manager-with-site-recovery.md
+    - name: Informacje o usłudze ExpressRoute z usługą Site Recovery
+      href: concepts-expressroute-with-site-recovery.md
     - name: Często zadawane pytania
       href: site-recovery-faq.md
 - name: Przewodniki z instrukcjami
@@ -119,12 +121,14 @@
       items:
         - name: Networking
           items:
-            - name: Zarządzanie siecią na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure (wersja zapoznawcza)
+            - name: Zarządzanie siecią na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure
               href: azure-to-azure-about-networking.md
             - name: Przygotowywanie mapowania sieciowego na potrzeby odzyskiwania po awarii maszyny wirtualnej platformy Azure
               href: azure-to-azure-network-mapping.md
             - name: Konfigurowanie wybierania adresów IP dla trybu failover
               href: site-recovery-retain-ip-azure-vm-failover.md
+            - name: Usługa ExpressRoute z odzyskiwaniem po awarii maszyny wirtualnej platformy Azure
+              href: azure-vm-disaster-recovery-with-expressroute.md
         - name: Odzyskiwanie po awarii
           items:
             - name: Odzyskiwanie po awarii maszyn wirtualnych platformy Azure po migracji na platformę Azure
@@ -141,6 +145,12 @@
           items:
             - name: Rozwiązywanie problemów z replikacją Azure-Azure
               href: azure-to-azure-troubleshoot-errors.md
+            - name: Rozwiązywanie problemów z rozszerzeniem usługi Azure Site Recovery
+              href: site-recovery-extension-troubleshoot.md
+        - name: Zarządzanie
+          items:
+            - name: Automatyczna aktualizacja rozszerzenia usługi mobilności
+              href: azure-to-azure-autoupdate.md
     - name: Serwer fizyczny/VMware do platformy Azure
       items:
         - name: Networking
@@ -167,8 +177,6 @@
               href: vmware-azure-set-up-process-server-scale.md
         - name: Odzyskiwanie po awarii
           items:
-            - name: Odzyskiwanie po awarii maszyn wirtualnych programu VMware z obsługą wielodostępu i dostawcą usług w chmurze
-              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
             - name: Replikowanie maszyn wirtualnych programu VMware na platformę Azure za pomocą programu PowerShell
               href: vmware-azure-disaster-recovery-powershell.md
             - name: Odzyskiwanie po awarii serwerów fizycznych na platformę Azure
@@ -189,12 +197,14 @@
               href: vmware-azure-exclude-disk.md
             - name: Włączanie replikacji maszyny wirtualnej VMware
               href: vmware-azure-enable-replication.md
+            - name: Wielodostępność w ramach programu CSP dla maszyn wirtualnych VMWare
+              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: Wdrażanie usługi mobilności
           items:
+            - name: Omówienie usługi mobilności
+              href: vmware-azure-install-mobility-service.md
             - name: Wdrażanie usługi mobilności za pomocą programu System Center Configuration Manager
               href: vmware-azure-mobility-install-configuration-mgr.md
-            - name: Wdrażanie usługi mobilności przy użyciu usługi Azure Automation DSC
-              href: vmware-azure-mobility-deploy-automation-dsc.md
         - name: Praca w trybie failover i powrót po awarii
           items:
             - name: Uruchamianie próbnego odzyskiwania na platformie Azure

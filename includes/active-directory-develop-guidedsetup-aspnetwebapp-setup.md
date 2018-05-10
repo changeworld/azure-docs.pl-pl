@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/04/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: abb118610afa55834a3a6792c0a5503a1abfd09e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 1c51d70a3747da6a8f51c5fc6341c1975cebbdb7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 ## <a name="set-up-your-project"></a>Konfigurowanie projektu
 
@@ -40,9 +40,9 @@ W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwie
 2. Dodaj *pakietów NuGet oprogramowanie pośredniczące OWIN* wpisując następujące polecenie w oknie konsoli Menedżera pakietów:
 
     ```powershell
-    Install-Package Microsoft.Owin.Security.OpenIdConnect
-    Install-Package Microsoft.Owin.Security.Cookies
-    Install-Package Microsoft.Owin.Host.SystemWeb
+    Install-Package Microsoft.Owin.Security.OpenIdConnect -Version 3.1.0
+    Install-Package Microsoft.Owin.Security.Cookies -Version 3.1.0
+    Install-Package Microsoft.Owin.Host.SystemWeb -Version 3.1.0
     ```
     
 <!--start-collapse-->
@@ -60,9 +60,11 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
 >
 >> Upewnij się, że jest wybrana klasa, klasę początkową OWIN i nie C# klasa standardowa. To potwierdzić, sprawdzając występowanie `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` powyżej przestrzeni nazw.
 
-1. Dodaj *OWIN* i *Microsoft.IdentityModel* odwołuje się do `Startup.cs`:
+1. Dodaj *OWIN* i *Microsoft.IdentityModel* odwołuje się do `Startup.cs` , aby za pomocą deklaracji staną się następujące:
 
     ```csharp
+    using System;
+    using System.Threading.Tasks;
     using Microsoft.Owin;
     using Owin;
     using Microsoft.IdentityModel.Protocols;
@@ -76,19 +78,19 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
 
     ```csharp
     public class Startup
-    {        
+    {
         // The Client ID is used by the application to uniquely identify itself to Azure AD.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
-    
+
         // RedirectUri is the URL where the user will be redirected to after they sign in.
         string redirectUri = System.Configuration.ConfigurationManager.AppSettings["RedirectUri"];
-    
+
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
-    
+
         // Authority is the URL for authority, composed by Azure Active Directory v2 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
-    
+
         /// <summary>
         /// Configure OWIN to use OpenIdConnect 
         /// </summary>
@@ -96,7 +98,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
         public void Configuration(IAppBuilder app)
         {
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
-    
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
                 app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
@@ -122,7 +124,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
                 }
             );
         }
-    
+
         /// <summary>
         /// Handle failed authentication requests by redirecting the user to the home page with an error in the query string
         /// </summary>
@@ -135,7 +137,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
             return Task.FromResult(0);
         }
     }
-    
+
     ```
 
 

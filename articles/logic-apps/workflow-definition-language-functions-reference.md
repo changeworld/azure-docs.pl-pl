@@ -1,9 +1,9 @@
 ---
 title: Funkcje języka definicji przepływu pracy — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat funkcji, których można używać w definicji przepływu pracy aplikacji logiki
+description: Dowiedz się więcej o funkcji tworzenia aplikacji logiki z języka definicji przepływu pracy
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 0155e35641a0407fe48c4da07400fa188152b0af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Odwołanie do funkcji języka definicji przepływu pracy dla usługi Azure Logic Apps
 
-W tym artykule opisano funkcje, których można użyć podczas tworzenia przepływów pracy z [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Aby uzyskać więcej informacji o definicjami aplikacji logiki, zobacz [język definicji przepływu pracy dla usługi Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md). 
+W tym artykule opisano funkcje, których można użyć podczas tworzenia przepływów pracy z [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Aby dowiedzieć się więcej na temat funkcji w definicji aplikacji logiki, zobacz [język definicji przepływu pracy dla usługi Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
 
 > [!NOTE]
 > W składni definicji parametru znak zapytania (?), która pojawia się po parametr oznacza, że parametr jest opcjonalny. Na przykład, zobacz [getFutureTime()](#getFutureTime).

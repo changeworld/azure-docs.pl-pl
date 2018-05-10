@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: c835b5594676edc39b85a1b10cc04afc7486731d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>Określanie zachowania urządzenia IoT
 
 Biblioteka kliencka serializatora usługi IoT Hub korzysta z modelu do określania formatu komunikatów wymienianych między urządzeniem a usługą IoT Hub.
@@ -78,7 +94,7 @@ Biblioteka kliencka serializatora usługi IoT Hub korzysta z modelu do określan
 
 Teraz można dodać kod, który implementuje zachowanie zdefiniowane w modelu.
 
-1. Dodaj następujący program obsługi wywołania zwrotnego, który jest uruchamiany, gdy urządzenie wyśle nowe wartości zgłaszanych właściwości do wstępnie skonfigurowanego rozwiązania:
+1. Dodaj następujące obsługi wywołania zwrotnego, który jest uruchamiany, gdy urządzenie zostało wysłane nowej wartości właściwości zgłoszony do akcelerator rozwiązań:
 
     ```c
     /* Callback after sending reported properties */
@@ -221,7 +237,7 @@ Teraz można dodać kod, który implementuje zachowanie zdefiniowane w modelu.
     }
     ```
 
-1. Dodaj następujące funkcję, która wysyła komunikat z właściwościami wstępnie skonfigurowanego rozwiązania:
+1. Dodaj następujące funkcję, która wysyła wiadomość z właściwościami akcelerator rozwiązań:
 
     ```c
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size, char* schema)
@@ -260,7 +276,7 @@ Teraz można dodać kod, który implementuje zachowanie zdefiniowane w modelu.
     }
     ```
 
-1. Dodaj następującą funkcję, aby połączyć urządzenie ze wstępnie skonfigurowanym rozwiązaniem w chmurze i rozpocząć wymianę danych. Ta funkcja wykonuje następujące działania:
+1. Dodaj następującą funkcję Podłącz urządzenie do akcelerator rozwiązań w chmurze i wymiany danych. Ta funkcja wykonuje następujące działania:
 
     - Inicjuje platformę.
     - Rejestruje przestrzeń nazw Contoso z biblioteką serializacji.
@@ -396,7 +412,7 @@ Teraz można dodać kod, który implementuje zachowanie zdefiniowane w modelu.
     }
     ```
 
-    Do celów referencyjnych zamieszczono tutaj przykładowy komunikat z **danymi telemetrycznymi** wysłany do wstępnie skonfigurowanego rozwiązania:
+    Odwołanie, poniżej przedstawiono przykładowe **Telemetrii** komunikat wysłany do akcelerator rozwiązań:
 
     ```
     Device: [myCDevice],

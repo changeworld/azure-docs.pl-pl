@@ -1,9 +1,9 @@
 ---
-title: "Eksportowanie do usługi Power BI z usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Zapytania analityczne mogą być wyświetlane w usłudze Power BI."
+title: Eksportowanie do usługi Power BI z usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Zapytania analityczne mogą być wyświetlane w usłudze Power BI.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Źródła danych usługi Power BI z usługi Application Insights
 [Power BI](http://www.powerbi.com/) jest to zestaw narzędzi biznesowych, która pomaga analizować dane i udostępniać informacji. Pulpity nawigacyjne sformatowanego są dostępne na każdym urządzeniu. Można połączyć dane z wielu źródeł, takich jak analiza zapytania z [Azure Application Insights](app-insights-overview.md).
@@ -121,7 +121,7 @@ Jeśli zmniejszenie zestawu danych przesyłanych przez zapytanie Analytics nie s
 
 1. Utwórz [klucz interfejsu API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Zaktualizuj skrypt Power BI M wyeksportowany z usługi Analytics zamieniając adres URL Menedżera zasobów Azure przy użyciu interfejsu API Insights aplikacji.
-   * Zastąp **https://management.azure.com/subscriptions/...**
+   * Zastąp  **https://management.azure.com/subscriptions/...**
    * **https://api.applicationinsights.io/beta/apps/...**
 3. Na koniec Zaktualizuj poświadczenia do warstwy podstawowa i korzystania z klucza interfejsu API.
   
@@ -139,7 +139,7 @@ Jeśli zmniejszenie zestawu danych przesyłanych przez zapytanie Analytics nie s
 Aplikacja wysyła dużą ilość danych, można użyć funkcji adaptacyjną próbkowania, która wysyła tylko procent telemetrii. Jest taka sama wartość true, jeśli ręcznie ustawiono próbkowania w zestawie SDK lub na wprowadzanie. [Dowiedz się więcej o próbkowania](app-insights-sampling.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Power BI — informacje](http://www.powerbi.com/learning/)
 * [Samouczek analityka](app-insights-analytics-tour.md)
 

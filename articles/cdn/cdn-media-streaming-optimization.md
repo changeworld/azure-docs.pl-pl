@@ -1,26 +1,26 @@
 ---
-title: "Multimediów strumieniowych optymalizacji za pośrednictwem usługi Azure CDN"
-description: "Optymalizacja strumieniowego przesyłania plików multimedialnych w celu dostarczania smooth"
+title: Multimediów strumieniowych optymalizację za pomocą usługi Azure CDN
+description: Optymalizacja strumieniowego przesyłania plików multimedialnych w celu dostarczania smooth
 services: cdn
-documentationcenter: 
-author: smcevoy
-manager: erikre
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: dksimpson
+manager: akucer
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
-ms.author: v-semcev
-ms.openlocfilehash: c953baad9ca5def916800e6abe7032b4572def5a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 05/01/2018
+ms.author: v-deasim
+ms.openlocfilehash: 8a2b69aaa601e1d00152f57841a4d67f98680181
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="media-streaming-optimization-via-azure-cdn"></a>Multimediów strumieniowych optymalizacji za pośrednictwem usługi Azure CDN 
+# <a name="media-streaming-optimization-with-azure-cdn"></a>Multimediów strumieniowych optymalizację za pomocą usługi Azure CDN 
  
 Użyj wideo wysokiej rozdzielczości zwiększa się w Internecie, co powoduje trudności dla dostarczania dużych plików. Klienci oczekują smooth odtwarzania wideo na żądanie lub live wideo zasobów na różnych klientów i sieci na całym świecie. Mechanizm dostarczania szybkich i wydajnych multimediów strumieniowych plików jest krytyczne zapewnienie obsługi płynne i jest przyjemne konsumenta.  
 
@@ -28,33 +28,57 @@ Multimediów strumieniowych na żywo jest szczególnie trudne do dostarczania ze
 
 Wzorce żądań strumieniowych zapewniają również pewne wyzwania. Po wydaniu popularnego strumień na żywo lub utworzenie nowej serii wideo na żądanie, tysięcy do milionów osób przeglądających może zażądać strumienia, w tym samym czasie. W takim przypadku żądanie inteligentnych konsolidacji jest nie przeciąży serwerów pochodzenia, kiedy zasoby nie są jeszcze buforowane.
  
-**Azure CDN from Akamai** funkcję wydajnie zapewnia przesyłania strumieniowego multimediów zasoby użytkownikom na całym świecie na dużą skalę. Funkcja zmniejsza opóźnienia, ponieważ zmniejsza obciążenie serwerów pochodzenia. Ta funkcja jest dostępna z Akamai standardowe, warstwy cenowej. 
 
-**Usługi Azure CDN from Verizon** dostarcza przesyłania strumieniowego multimediów bezpośrednio w typie optymalizacji dostarczania ogólne sieci web.
- 
-## <a name="configure-an-endpoint-to-optimize-media-streaming"></a>Konfigurowanie punktu końcowego w celu zoptymalizowania przesyłania strumieniowego multimediów
- 
-Można skonfigurować punktu końcowego (CDN) sieci dostarczania zawartości w celu zoptymalizowania dostarczania dla dużych plików za pośrednictwem portalu Azure. Aby to zrobić, można użyć interfejsów API REST lub dowolny z zestawów SDK klienta. W poniższej procedurze pokazano proces za pośrednictwem portalu Azure **Azure CDN from Akamai** profilu:
+## <a name="media-streaming-optimizations-for-azure-cdn-from-microsoft"></a>Multimediów strumieniowych optymalizacji dla usługi Azure CDN firmy Microsoft
 
-1. Aby dodać nowy punkt końcowy na **profilu CDN** wybierz pozycję **punktu końcowego**.
+**Azure CDN Standard from Microsoft** punkty końcowe dostarczania przesyłania strumieniowego multimediów zasoby bezpośrednio, za pomocą typu optymalizacji dostarczania ogólne sieci web. 
+
+Multimediów strumieniowych Optymalizacja **Azure CDN Standard from Microsoft** ma zastosowanie w przypadku na żywo lub nośnika, który używa w celu dostarczania multimediów poszczególne fragmenty strumieniowe przesyłanie wideo na żądanie. Ten proces różni się od pojedynczego zasobu dużych przesyłane przy użyciu pobierania progresywnego lub za pomocą żądania zakresu bajtów. Dla informacji o stylu dostarczania multimediów, zobacz [optymalizację pobierania dużych plików za pomocą usługi Azure CDN](cdn-large-file-optimization.md).
+
+Ogólne nośnika dostarczania lub wideo na żądanie dostarczania optymalizacji typów nośników za pomocą Azure sieci dostarczania zawartości (CDN) optymalizacje zaplecza do dostarczania multimediów zasoby szybciej. Konfiguracje korzysta również trwałych nośnika, na podstawie najlepszych rozwiązań rozpoznane w czasie.
+
+### <a name="partial-cache-sharing"></a>Udostępnianie częściowe pamięci podręcznej
+Udostępnianie częściowe pamięci podręcznej umożliwia CDN z obsługą częściowo buforowane zawartości do nowych żądań. Na przykład jeśli pierwsze żądanie do sieci CDN powoduje Chybienie pamięci podręcznej, żądanie jest wysyłana do źródła. Chociaż ten niekompletną zawartość jest ładowany do pamięci podręcznej CDN, inne żądania do sieci CDN można uruchomić pobierania tych danych. 
+
+
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Przesyłanie strumieniowe optymalizacji dla usługi Azure CDN from Verizon multimediów
+
+**Azure CDN Standard from Verizon** i **Azure CDN Premium from Verizon** punkty końcowe dostarczania przesyłania strumieniowego multimediów zasoby bezpośrednio, za pomocą typu optymalizacji dostarczania ogólne sieci web. Kilka funkcji w sieci CDN bezpośrednio pomagają w dostarczaniu zasoby nośnika domyślnie.
+
+### <a name="partial-cache-sharing"></a>Udostępnianie częściowe pamięci podręcznej
+
+Udostępnianie częściowe pamięci podręcznej umożliwia CDN z obsługą częściowo buforowane zawartości do nowych żądań. Na przykład jeśli pierwsze żądanie do sieci CDN powoduje Chybienie pamięci podręcznej, żądanie jest wysyłana do źródła. Chociaż ten niekompletną zawartość jest ładowany do pamięci podręcznej CDN, inne żądania do sieci CDN można uruchomić pobierania tych danych. 
+
+### <a name="cache-fill-wait-time"></a>Czas oczekiwania wypełnienie pamięci podręcznej
+
+ Funkcja czas oczekiwania wypełnienie pamięci podręcznej wymusza serwer graniczny, aby pomieścić wszystkie kolejne żądania dla tego samego zasobu, do momentu osiągnięcia nagłówków odpowiedzi HTTP z serwera pochodzenia. Jeśli nagłówki odpowiedzi HTTP z punktu początkowego napływają przed wygaśnięciem, wszystkie żądania, które zostały wstrzymane są obsługiwane z rosnącym pamięci podręcznej. W tym samym czasie pamięci podręcznej jest wypełniane przez dane ze źródła. Domyślnie czas oczekiwania wypełnienie pamięci podręcznej wynosi 3 000 milisekund. 
+
+ 
+## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Przesyłanie strumieniowe optymalizacji dla usługi Azure CDN from Akamai multimediów
+ 
+**Azure CDN Standard from Akamai** funkcję wydajnie zapewnia przesyłania strumieniowego multimediów zasoby użytkownikom na całym świecie na dużą skalę. Funkcja zmniejsza opóźnienia, ponieważ zmniejsza obciążenie serwerów pochodzenia. Ta funkcja jest dostępna z Akamai standardowe, warstwy cenowej. 
+
+Multimediów strumieniowych Optymalizacja **Azure CDN Standard from Akamai** ma zastosowanie w przypadku na żywo lub nośnika, który używa w celu dostarczania multimediów poszczególne fragmenty strumieniowe przesyłanie wideo na żądanie. Ten proces różni się od pojedynczego zasobu dużych przesyłane przy użyciu pobierania progresywnego lub za pomocą żądania zakresu bajtów. Dla informacji o stylu dostarczania multimediów, zobacz [optymalizacji plików o dużym](cdn-large-file-optimization.md).
+
+Ogólne nośnika dostarczania lub wideo na żądanie dostarczania optymalizacji typów nośników za pomocą CDN optymalizacje zaplecza do dostarczania multimediów zasoby szybciej. Konfiguracje korzysta również trwałych nośnika, na podstawie najlepszych rozwiązań rozpoznane w czasie.
+
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>Skonfiguruj punkt końcowy Akamai CDN, aby zoptymalizować przesyłania strumieniowego multimediów
+ 
+Można skonfigurować punktu końcowego (CDN) sieci dostarczania zawartości w celu zoptymalizowania dostarczania dla dużych plików za pośrednictwem portalu Azure. Aby to zrobić, można użyć interfejsów API REST lub dowolny z zestawów SDK klienta. W poniższej procedurze pokazano proces za pośrednictwem portalu Azure **Azure CDN Standard from Akamai** profilu:
+
+1. Aby dodać nowy punkt końcowy na Akamai **profilu CDN** wybierz pozycję **punktu końcowego**.
   
-    ![Nowy punkt końcowy](./media/cdn-media-streaming-optimization/01_Adding.png)
+    ![Nowy punkt końcowy](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
 2. W **zoptymalizowane pod kątem** listy rozwijanej wybierz **wideo na żądanie przesyłania strumieniowego multimediów** zasobów wideo na żądanie. Jeśli to zrobisz, kombinację na żywo i przesyłania strumieniowego wideo na żądanie, wybierz **przesyłania strumieniowego multimediów ogólne**.
 
     ![Wybrane przesyłania strumieniowego](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
 Po utworzeniu punktu końcowego stosuje optymalizacji dla wszystkich plików spełniających określone kryteria. W poniższej sekcji opisano tego procesu. 
- 
-## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Przesyłanie strumieniowe optymalizacji dla usługi Azure CDN from Akamai multimediów
- 
-Multimediów strumieniowych Optymalizacja **Azure CDN from Akamai** ma zastosowanie w przypadku na żywo lub nośnika, który używa w celu dostarczania multimediów poszczególne fragmenty strumieniowe przesyłanie wideo na żądanie. Ten proces różni się od pojedynczego zasobu dużych przesyłane przy użyciu pobierania progresywnego lub za pomocą żądania zakresu bajtów. Dla informacji o stylu dostarczania multimediów, zobacz [optymalizacji plików o dużym](cdn-large-file-optimization.md).
-
-Ogólne nośnika dostarczania lub wideo na żądanie dostarczania optymalizacji typów nośników za pomocą CDN optymalizacje zaplecza do dostarczania multimediów zasoby szybciej. Konfiguracje korzysta również trwałych nośnika, na podstawie najlepszych rozwiązań rozpoznane w czasie.
 
 ### <a name="caching"></a>Buforowanie
 
-Jeśli **Azure CDN from Akamai** wykryje, że jest zasobu manifestu przesyłania strumieniowego lub fragment, używa innej buforowania czas wygaśnięcia od dostarczania ogólne sieci web. (Zobacz pełną listę w poniższej tabeli). Jak zawsze honorowane cache-control lub Expires nagłówki wysyłane ze źródła. Jeśli element zawartości nie jest zasób nośnika, buforuje jest przy użyciu czas wygaśnięcia w celu dostarczania ogólne sieci web.
+Jeśli **Azure CDN Standard from Akamai** wykryje, że jest zasobu manifestu przesyłania strumieniowego lub fragment, używa innej buforowania czas wygaśnięcia od dostarczania ogólne sieci web. (Zobacz pełną listę w poniższej tabeli). Jak zawsze honorowane cache-control lub Expires nagłówki wysyłane ze źródła. Jeśli element zawartości nie jest zasób nośnika, buforuje jest przy użyciu czas wygaśnięcia w celu dostarczania ogólne sieci web.
 
 Krótki czas buforowania ujemna jest przydatna do odciążania źródła, gdy wielu użytkowników żądają fragmentu, która jeszcze nie istnieje. Przykładem jest strumień na żywo, gdy pakiety nie są dostępne ze źródła tego drugiego. Interwał buforowania już pomaga również w odciążania żądań ze źródła, ponieważ zawartość wideo zwykle nie jest zmodyfikowany.
  
@@ -83,17 +107,4 @@ Adobe obr. / min | f4m, f4x, drmmeta, bootstrap, f4f,<br>Adres URL seg Frag — 
 DASH | mpd, kreska, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
 Funkcji Smooth streaming | / manifest//QualityLevels/fragmenty /
   
-
  
-## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Przesyłanie strumieniowe optymalizacji dla usługi Azure CDN from Verizon multimediów
-
-**Azure CDN from Verizon** dostarcza przesyłania strumieniowego multimediów zasoby bezpośrednio, za pomocą typu optymalizacji dostarczania ogólne sieci web. Kilka funkcji w sieci CDN bezpośrednio pomagają w dostarczaniu zasoby nośnika domyślnie.
-
-### <a name="partial-cache-sharing"></a>Udostępnianie częściowe pamięci podręcznej
-
-Udostępnianie częściowe pamięci podręcznej umożliwia CDN z obsługą częściowo buforowane zawartości do nowych żądań. Na przykład jeśli pierwsze żądanie do sieci CDN powoduje Chybienie pamięci podręcznej, żądanie jest wysyłana do źródła. Chociaż ten niekompletną zawartość jest ładowany do pamięci podręcznej CDN, inne żądania do sieci CDN można uruchomić pobierania tych danych. 
-
-### <a name="cache-fill-wait-time"></a>Czas oczekiwania wypełnienie pamięci podręcznej
-
- Funkcja czas oczekiwania wypełnienie pamięci podręcznej wymusza serwer graniczny, aby pomieścić wszystkie kolejne żądania dla tego samego zasobu, do momentu osiągnięcia nagłówków odpowiedzi HTTP z serwera pochodzenia. Jeśli nagłówki odpowiedzi HTTP z punktu początkowego napływają przed wygaśnięciem, wszystkie żądania, które zostały wstrzymane są obsługiwane z rosnącym pamięci podręcznej. W tym samym czasie pamięci podręcznej jest wypełniane przez dane ze źródła. Domyślnie czas oczekiwania wypełnienie pamięci podręcznej wynosi 3 000 milisekund. 
-

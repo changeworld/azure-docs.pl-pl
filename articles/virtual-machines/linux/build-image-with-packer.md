@@ -1,25 +1,25 @@
 ---
-title: "Tworzenie obrazów maszyn wirtualnych systemu Linux platformy Azure z pakujący | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać pakujący do tworzenia obrazów maszyn wirtualnych systemu Linux na platformie Azure"
+title: Tworzenie obrazów maszyn wirtualnych systemu Linux platformy Azure z pakujący | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać pakujący do tworzenia obrazów maszyn wirtualnych systemu Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d7ba6a493cca3dd14829e6527136af6df424c05
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak używać pakujący do tworzenia obrazów maszyny wirtualnej systemu Linux na platformie Azure
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje dystrybucji systemu Linux i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. Portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm najczęściej używane dystrybucje i środowisk aplikacji, lub można utworzyć własne niestandardowe obrazy dostosowane do potrzeb użytkownika. W tym artykule szczegółowo przedstawiają, jak korzystać z narzędzia typu open source [pakujący](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
@@ -211,9 +211,11 @@ az vm create \
     --generate-ssh-keys
 ```
 
+Jeśli chcesz utworzyć maszyn wirtualnych w innej grupie zasobów lub regionie niż obraz pakujący, określ identyfikator obrazu, a nie nazwę obrazu. Możesz uzyskać identyfikator obrazu z [Pokaż obraz az](/cli/azure/image#az-image-show).
+
 Trwa kilka minut, aby utworzyć maszynę Wirtualną. Po utworzeniu maszyny Wirtualnej, zanotuj `publicIpAddress` wyświetlanych przez wiersza polecenia platformy Azure. Ten adres jest używany do uzyskania dostępu do witryny NGINX za pośrednictwem przeglądarki sieci web.
 
-Aby zezwolić na ruch w sieci web do maszyny Wirtualnej, należy otworzyć port 80 z Internetu z [port Otwórz az maszyny wirtualnej](/cli/azure/vm#open-port):
+Aby zezwolić na ruch internetowy do maszyny wirtualnej, otwórz port 80 z Internetu za pomocą polecenia [az vm open-port](/cli/azure/vm#open-port):
 
 ```azurecli
 az vm open-port \
@@ -223,7 +225,7 @@ az vm open-port \
 ```
 
 ## <a name="test-vm-and-nginx"></a>Test maszyny Wirtualnej i NGINX
-Teraz możesz otworzyć przeglądarkę sieci web i wprowadź `http://publicIpAddress` na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jak w poniższym przykładzie zostanie wyświetlona strona NGINX domyślne:
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić ciąg `http://publicIpAddress` na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jak w poniższym przykładzie zostanie wyświetlona strona NGINX domyślne:
 
 ![Domyślna witryna serwera NGINX](./media/build-image-with-packer/nginx.png) 
 

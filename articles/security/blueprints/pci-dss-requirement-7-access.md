@@ -1,9 +1,9 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania dotyczące dostępu"
+title: Plan Azure przetwarzania płatności — wymagania dotyczące dostępu
 description: Wymaganie PCI DSS 7
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: ac3afee9-0471-465d-a115-67488a1635a6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 5a3c9eac552fb96309cfa791a2e72a7102662e60
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: fb16a7973022421525e13313f53f615120caa38a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="access-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące dostępu dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-7"></a>Wymaganie PCI DSS 7
@@ -40,8 +40,8 @@ Aby upewnić się, że kluczowe dane są dostępne wyłącznie przez autoryzowan
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Azure wymusza istniejące zasady ISMS dotyczące personelu Azure na dostęp do składników systemu Azure, weryfikacji efektywność kontroli dostępu, zapewniając Just In Time dostępu administracyjnego, odwoływanie dostępu, gdy nie jest już potrzebne i zapewnienie pracowników Uzyskiwanie dostępu do środowiska platformy Azure ma firma potrzeby. Azure dostęp do środowiska klienta jest bardzo ograniczona i dozwolony tylko za zgodą klienta.<br /><br />Aby ograniczyć fizyczny dostęp do centrum danych do autoryzowanych pracowników, dostawców wykonawców i gości zostały określone procedury. Weryfikacji zabezpieczeń i ewidencjonowania są wymagane dla personelu wymagające tymczasowy dostęp do infrastruktury centrum danych wewnętrznych. Dzienników fizycznego dostępu zostaną zweryfikowane co kwartał przez zespoły platformy Azure. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do ograniczenia dostępu do składników systemu oraz danych posiadacza tylko osoby, których zadania wymaga takiego dostępu. Dotyczy to również ograniczenie i ograniczanie dostępu do portalu zarządzania Azure oraz określania konta lub role z uprawnieniami do tworzenia, modyfikowania lub usuwania usług PaaS.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure wymusza istniejące zasady ISMS dotyczące personelu Azure na dostęp do składników systemu Azure, weryfikacji efektywność kontroli dostępu, zapewniając Just In Time dostępu administracyjnego, odwoływanie dostępu, gdy nie jest już potrzebne i zapewnienie pracowników Uzyskiwanie dostępu do środowiska platformy Azure ma firma potrzeby. Azure dostęp do środowiska klienta jest bardzo ograniczona i dozwolony tylko za zgodą klienta.<br /><br />Aby ograniczyć fizyczny dostęp do centrum danych do autoryzowanych pracowników, dostawców wykonawców i gości zostały określone procedury. Weryfikacji zabezpieczeń i ewidencjonowania są wymagane dla personelu wymagające tymczasowy dostęp do infrastruktury centrum danych wewnętrznych. Dzienników fizycznego dostępu zostaną zweryfikowane co kwartał przez zespoły platformy Azure. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do ograniczenia dostępu do składników systemu oraz danych posiadacza tylko osoby, których zadania wymaga takiego dostępu. Dotyczy to również ograniczenie i ograniczanie dostępu do portalu zarządzania Azure oraz określania konta lub role z uprawnieniami do tworzenia, modyfikowania lub usuwania usług PaaS.|
 
 
 
@@ -55,8 +55,8 @@ Aby upewnić się, że kluczowe dane są dostępne wyłącznie przez autoryzowan
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i dokumentowanie procesu zatwierdzania identyfikator użytkownika, definiowanie najniższych uprawnień, ograniczanie dostępu do danych posiadacza, przy użyciu unikatowych identyfikatorów, zapewniając podział obowiązków i odwoływanie dostępu użytkownika, gdy nie jest już potrzebna.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i dokumentowanie procesu zatwierdzania identyfikator użytkownika, definiowanie najniższych uprawnień, ograniczanie dostępu do danych posiadacza, przy użyciu unikatowych identyfikatorów, zapewniając podział obowiązków i odwoływanie dostępu użytkownika, gdy nie jest już potrzebna.|
 
 
 
@@ -68,8 +68,8 @@ Aby upewnić się, że kluczowe dane są dostępne wyłącznie przez autoryzowan
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure przyjęła zasad firmy i ochrony, w tym zasady zabezpieczeń informacji. Zasady zostały zatwierdzone, publikowane i przekazywane w systemie Windows Azure. Zasady zabezpieczeń systemu Microsoft Azure informacji wymaga dostępu do zasobów firmy Microsoft Azure można przyznanych oparte na biznesowego wyjaśnienia, z autoryzacji właściciela zasobów i na podstawie "do ograniczonego" i "najniższych uprawnieniach" zasady. Zasady dotyczy również wymagania dotyczące dostępu do obsługi autoryzacji dostępu, usunięcie uwierzytelniania praw dostępu, w tym cyklu życia zarządzania dostępu i monitoruje okresowe dostępu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Role użytkownika są ograniczone do obowiązków oparte na scenariuszu pokaz udokumentowane.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure przyjęła zasad firmy i ochrony, w tym zasady zabezpieczeń informacji. Zasady zostały zatwierdzone, publikowane i przekazywane w systemie Windows Azure. Zasady zabezpieczeń systemu Microsoft Azure informacji wymaga dostępu do zasobów firmy Microsoft Azure można przyznanych oparte na biznesowego wyjaśnienia, z autoryzacji właściciela zasobów i na podstawie "do ograniczonego" i "najniższych uprawnieniach" zasady. Zasady dotyczy również wymagania dotyczące dostępu do obsługi autoryzacji dostępu, usunięcie uwierzytelniania praw dostępu, w tym cyklu życia zarządzania dostępu i monitoruje okresowe dostępu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Role użytkownika są ograniczone do obowiązków oparte na scenariuszu pokaz udokumentowane.|
 
 
 
@@ -81,8 +81,8 @@ Aby upewnić się, że kluczowe dane są dostępne wyłącznie przez autoryzowan
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Role użytkownika są ograniczone do obowiązków oparte na scenariuszu pokaz udokumentowane.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Role użytkownika są ograniczone do obowiązków oparte na scenariuszu pokaz udokumentowane.|
 
 
 
@@ -94,8 +94,8 @@ Aby upewnić się, że kluczowe dane są dostępne wyłącznie przez autoryzowan
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do ograniczenia dostępu do składników systemu oraz danych posiadacza tylko osoby, których zadania wymaga takiego dostępu. Dotyczy to również ograniczenie i ograniczanie dostępu do portalu zarządzania Azure oraz określania konta lub role z uprawnieniami do tworzenia, modyfikowania lub usuwania usług PaaS.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do ograniczenia dostępu do składników systemu oraz danych posiadacza tylko osoby, których zadania wymaga takiego dostępu. Dotyczy to również ograniczenie i ograniczanie dostępu do portalu zarządzania Azure oraz określania konta lub role z uprawnieniami do tworzenia, modyfikowania lub usuwania usług PaaS.|
 
 
 
@@ -111,8 +111,8 @@ Ten system kontroli dostępu musi zawierać następujące czynności:
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory, aby ograniczyć dostęp tylko wyznaczonym użytkownikom. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory, aby ograniczyć dostęp tylko wyznaczonym użytkownikom. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -124,8 +124,8 @@ Ten system kontroli dostępu musi zawierać następujące czynności:
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Przypadek użycia i opis dotyczące używający CHD i używania CHD znaleźć w dokumentacji magazynu sieci Web firmy Contoso.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Przypadek użycia i opis dotyczące używający CHD i używania CHD znaleźć w dokumentacji magazynu sieci Web firmy Contoso.|
 
 
 

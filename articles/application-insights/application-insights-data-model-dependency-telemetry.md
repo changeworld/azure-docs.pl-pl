@@ -1,9 +1,9 @@
 ---
-title: "Model danych Telemetrii Insights aplikacji Azure — dane telemetryczne zależności | Dokumentacja firmy Microsoft"
-description: "Model danych usługi Insights aplikacji dla dane telemetryczne zależności"
+title: Model danych Telemetrii Insights aplikacji Azure — dane telemetryczne zależności | Dokumentacja firmy Microsoft
+description: Model danych usługi Insights aplikacji dla dane telemetryczne zależności
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Dane telemetryczne zależności: model danych usługi Application Insights
 
 Dane telemetryczne zależności (w [usługi Application Insights](app-insights-overview.md)) reprezentuje interakcji monitorowanego składnika zdalnego składnika, takiego jak SQL lub punkt końcowy HTTP.
 
-## <a name="name"></a>Nazwa
+## <a name="name"></a>Name (Nazwa)
 
 Nazwa polecenia inicjowane z tego wywołania zależności. Wartość Kardynalność niski. Przykłady są nazwa procedury składowanej i szablon ścieżki adresu URL.
 
@@ -38,7 +38,7 @@ Polecenia inicjowane przez wywołanie zależności. Przykłady są instrukcji SQ
 
 Nazwa typu zależności. Kardynalność niskiej wartości logiczne grupowanie zależności i interpretacji innych pól, takich jak commandName i resultCode. Przykłady są SQL, tabeli platformy Azure i HTTP.
 
-## <a name="target"></a>docelowy
+## <a name="target"></a>Środowisko docelowe
 
 Lokacji docelowej wywołania zależności. Przykłady to nazwa serwera, adres hosta. Aby uzyskać więcej informacji, zobacz [korelacji](application-insights-correlation.md) strony.
 
@@ -63,7 +63,7 @@ Oznaczenia wywołanie powiodła się czy nie.
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Konfigurowanie śledzenia dla zależności [.NET](app-insights-asp-net-dependencies.md).
 - Konfigurowanie śledzenia dla zależności [Java](app-insights-java-agent.md).

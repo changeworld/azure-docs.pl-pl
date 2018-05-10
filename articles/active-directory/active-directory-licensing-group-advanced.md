@@ -1,32 +1,30 @@
 ---
-title: "Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze | Dokumentacja firmy Microsoft"
-description: "Więcej scenariusze dotyczące usługi Azure Active Directory na podstawie grupy licencji"
+title: Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze | Dokumentacja firmy Microsoft
+description: Więcej scenariusze dotyczące usługi Azure Active Directory na podstawie grupy licencji
 services: active-directory
-keywords: "Licencjonowanie usługi Azure AD"
-documentationcenter: 
+keywords: Licencjonowanie usługi Azure AD
+documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: piotrci
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf18076c81ecf7471771674fe40d36dba3b9866d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb8bd727618eda2a887cc9e1b739889204eb87fa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenariusze, ograniczenia i znane problemy przy użyciu grup do zarządzania Licencjonowanie w usłudze Azure Active Directory
 
 Aby uzyskać większą wiedzę na podstawie grupy licencjonowania usługi Azure Active Directory (Azure AD), należy użyć następujące informacje i przykłady.
 
-## <a name="usage-location"></a>Lokalizacja użytkowania
+## <a name="usage-location"></a>Lokalizacja użycia
 
 Pewnych usług firmy Microsoft nie są dostępne we wszystkich lokalizacjach. Zanim można przypisać licencję do użytkownika, administrator musi określić **lokalizacji użytkowania** właściwości użytkownika. W [portalu Azure](https://portal.azure.com), można określić w **użytkownika** &gt; **profilu** &gt; **ustawienia**.
 
@@ -139,7 +137,7 @@ Skrypt programu PowerShell służy do sprawdzenia, czy użytkownik ma licencję 
 
 1. Uruchom `connect-msolservice` polecenia cmdlet do uwierzytelniania i Połącz z dzierżawą.
 
-2. `Get-MsolAccountSku`może służyć do odnajdywania wszystkich licencji produktu elastycznie w dzierżawie.
+2. `Get-MsolAccountSku` może służyć do odnajdywania wszystkich licencji produktu elastycznie w dzierżawie.
 
   ![Zrzut ekranu przedstawiający polecenia cmdlet Get-Msolaccountsku](media/active-directory-licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -230,7 +228,7 @@ Jeśli używasz licencjonowania na podstawie grupy, jest warto zapoznać się z 
 
 - Na podstawie grupy licencji nie rejestruje błędy podczas licencji nie można przypisać do użytkownika z powodu konfiguracji proxy zduplikowany adres w usłudze Exchange Online; takie użytkownicy są pomijane podczas przypisywania licencji. Aby uzyskać więcej informacji na temat zidentyfikować i rozwiązać ten problem, zobacz [w tej sekcji](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej o innych scenariuszy zarządzania licencji za pomocą licencjonowania na podstawie grupy, zobacz:
 

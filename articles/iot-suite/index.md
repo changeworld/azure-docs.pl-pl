@@ -1,6 +1,6 @@
 ---
-title: "Dokumentacja Pakietu IoT Azure — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Dokumentacja Pakietu IoT Azure zawiera przewodniki wprowadzające, artykuły z instrukcjami, samouczki i dokumentację interfejsu API."
+title: Dokumentacja akceleratorów rozwiązań Azure IoT — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Dokumentacja akceleratorów rozwiązań Azure IoT zawiera przewodniki wprowadzające, artykuły z instrukcjami, samouczki i dokumentację interfejsu API.
 services: iot-suite
 author: czeumault
 manager: carolz
@@ -9,72 +9,81 @@ ms.service: iot-suite
 ms.topic: landing-page
 ms.date: 11/27/2017
 ms.author: carolz
-ms.openlocfilehash: 8cb979f645f0c1405ebd424d39cc2d67c5b59ba0
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 62a414697e5ce217f1533d64020d4ce06c222d10
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="iot-suite-documentation"></a>Dokumentacja Pakietu IoT
+# <a name="iot-solution-accelerators-documentation"></a>Dokumentacja akceleratorów rozwiązań IoT
 
-Szybko rozpocznij pracę z Pakietem IoT Microsoft Azure. Użyj wstępnie skonfigurowanych rozwiązań i przyspiesz opracowywanie rozwiązań Internetu rzeczy (IoT). Dodawaj nowe urządzenia — i łącz istniejące — za pomocą zestawów SDK urządzeń dla wielu platform, w tym systemów Linux i Windows oraz systemów operacyjnych czasu rzeczywistego. Łatwe skalowanie od kilku czujników do milionów równocześnie połączonych urządzeń. Możesz polegać na globalnej dostępności platformy Azure &mdash; niezależnie od wielkości projektu.
+Szybko rozpocznij pracę z akceleratorami rozwiązań IoT w celu tworzenia rozwiązań IoT. Dodawaj nowe urządzenia — i łącz istniejące — za pomocą zestawów SDK urządzeń dla wielu platform, w tym systemów Linux i Windows oraz systemów operacyjnych czasu rzeczywistego. Łatwo skaluj od kilku czujników do milionów równocześnie połączonych urządzeń. i polegaj na globalnej dostępności platformy Azure &mdash; niezależnie od wielkości projektu.
 
-<ul class="panelContent cardsFTitle">
+<h2>Eksploruj</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="/azure/iot-suite/iot-suite-what-are-preconfigured-solutions">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/iot-suite.svg" alt="Learn about IoT Suite" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Dowiedz się więcej na temat Pakietu IoT</h3>
+                        <p>Dowiedz się więcej o akceleratorach rozwiązań, kluczowych scenariuszach i sposobie rozpoczęcia pracy</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-what-are-solution-accelerators">Omówienie akceleratorów rozwiązań</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">Wdrażanie akceleratora rozwiązań</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">Możliwości gotowego rozwiązania</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">Możliwości monitorowania</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">Możliwości zarządzania regułami</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">Możliwości zarządzania urządzeniami</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
+</ul> 
+
+---
+
+<h2>Połączenie</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="https://azure.microsoft.com/resources/videos/index/?sort=newest&tag=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="Azure Video Library" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Biblioteka wideo platformy Azure</h3>
+                        <p>Dowiedz się, jak podłączyć urządzenia do akceleratora rozwiązań</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">Omówienie modelu urządzenia</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">Dostosowywanie symulowanych urządzeń</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">Podłączanie urządzeń fizycznych</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="Deploy the remote monitoring preconfigured solution" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Wdrażanie wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>    
 </ul>
+
+---
+
+<h2>Dostosowywanie</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <p>Dowiedz się, jak dostosować akcelerator rozwiązań</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy-local">Lokalne uruchamianie rozwiązania</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-customize#presentation-and-visualization">Dostosowywanie środowiska użytkownika</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul> 
 
 ---
 

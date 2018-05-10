@@ -3,7 +3,7 @@ title: Usługa Azure Application Insights migawki debuger dla aplikacji .NET | D
 description: Debugowanie migawki są zbierane automatycznie, gdy wyjątki zostaną zgłoszone w aplikacjach .NET produkcji
 services: application-insights
 documentationcenter: ''
-author: pharring
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.author: mbullwin; pharring
+ms.openlocfilehash: a742dc3c3538cd9fc5053fd9cd9aeec740ec0394
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek na wyjątków w aplikacji .NET
 
 Po wystąpieniu wyjątku, można automatycznie zbierać migawki debugowania aplikacji sieci web na żywo. Migawki przedstawia stan kodu źródłowego i zmiennych w momencie utworzenia zgłoszono wyjątek. Debuger migawki (wersja zapoznawcza) w [Azure Application Insights](app-insights-overview.md) monitoruje dane telemetryczne wyjątku z aplikacji sieci web. Zbiera migawki na listy wyjątków zgłaszanie top, dzięki czemu masz informacje potrzebne do diagnozowania problemów w środowisku produkcyjnym. Obejmują [pakietu NuGet modułu zbierającego migawki](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) w aplikacji i opcjonalnie skonfigurować parametry kolekcji w [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Migawki są wyświetlane na [wyjątki](app-insights-asp-net-exceptions.md) w portalu usługi Application Insights.
 
-Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Aby uzyskać bardziej wydajne działanie debugowania z kodem źródłowym, otwórz migawki z programu Visual Studio Enterprise 2017 przez [pobieranie rozszerzenia migawki debugera programu Visual Studio](https://aka.ms/snapshotdebugger). W programie Visual Studio można również [ustawić Snappoints do interaktywnego migawek](https://aka.ms/snappoint) bez oczekiwania na wyjątek.
+Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Aby uzyskać bardziej wydajne działanie debugowania z kodem źródłowym, otwórz migawki z programu Visual Studio Enterprise 2017 przez [pobieranie rozszerzenia migawki debugera programu Visual Studio](https://aka.ms/snapshotdebugger). W programie Visual Studio, możesz również [ustawić Snappoints do interaktywnego migawek](https://aka.ms/snappoint) bez oczekiwania na wyjątek.
 
 Kolekcja migawki jest dostępny dla:
 * Aplikacje środowiska .NET framework i program ASP.NET systemem .NET Framework 4.5 lub nowszej.
@@ -55,7 +55,7 @@ Są obsługiwane w następujących środowiskach:
         <!-- DeveloperMode is a property on the active TelemetryChannel. -->
         <IsEnabledInDeveloperMode>false</IsEnabledInDeveloperMode>
         <!-- How many times we need to see an exception before we ask for snapshots. -->
-        <ThresholdForSnapshotting>5</ThresholdForSnapshotting>
+        <ThresholdForSnapshotting>1</ThresholdForSnapshotting>
         <!-- The maximum number of examples we create for a single problem. -->
         <MaximumSnapshotsRequired>3</MaximumSnapshotsRequired>
         <!-- The maximum number of problems that we can be tracking at any time. -->
@@ -146,8 +146,8 @@ Są obsługiwane w następujących środowiskach:
        "InstrumentationKey": "<your instrumentation key>"
      },
      "SnapshotCollectorConfiguration": {
-       "IsEnabledInDeveloperMode": true,
-       "ThresholdForSnapshotting": 5,
+       "IsEnabledInDeveloperMode": false,
+       "ThresholdForSnapshotting": 1,
        "MaximumSnapshotsRequired": 3,
        "MaximumCollectionPlanSize": 50,
        "ReconnectInterval": "00:15:00",
@@ -228,7 +228,22 @@ Pobrany migawki zawiera wszystkie pliki symboli, które zostały odnalezione na 
 
 ## <a name="how-snapshots-work"></a>Jak działają migawki
 
-Podczas uruchamiania aplikacji, tworzony jest proces przesyłania oddzielne migawki, który monitoruje aplikację żądań migawki. Zleconą migawkę kopii w tle uruchomiony proces jest przeprowadzane w milisekundach około 10 do 20. Następnie są analizowane przez proces w tle, a migawka jest tworzona podczas procesu głównego kontynuuje działanie i obsługiwać ruch do użytkowników. Migawki są następnie przekazywane do usługi Application Insights oraz pliki odpowiednich symboli (.pdb), które są potrzebne, aby wyświetlić migawki.
+Moduł zbierający migawki jest zaimplementowany jako [Application Insights Telemetrii procesora](app-insights-configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po uruchomieniu aplikacji migawki modułu zbierającego dane telemetryczne procesora jest dodawany do potoku dane telemetryczne aplikacji.
+Po każdej aktualizacji wywołania aplikacji [TrackException](app-insights-asp-net-exceptions.md#exceptions), moduł zbierający migawki oblicza identyfikator problemu z typu zgłaszanego wyjątku i przerzucane metody.
+Za każdym razem, aplikacji wywołuje TrackException, licznik jest zwiększany odpowiedni identyfikator problemu. Jeśli licznik osiągnie `ThresholdForSnapshotting` wartość, identyfikator problemu jest dodawany do planu zbierania danych.
+
+Moduł zbierający migawki monitoruje również wyjątki, ponieważ są one generowane przez subskrybowanie [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) zdarzeń. Gdy zdarzenie jest generowane, identyfikator problemu wyjątku jest obliczana i porównywana identyfikatorów Problem w planie kolekcji.
+Jeśli istnieje dopasowanie, tworzona jest migawka uruchomionego procesu. Migawka jest przypisany unikatowy identyfikator i wyjątek jest dołączana z danym identyfikatorem. Po powrocie obsługi FirstChanceException, zwrócony wyjątek normalnego przetwarzania. Po pewnym czasie wyjątek osiągnie ponownie metodę TrackException gdzie, wraz z identyfikatorem migawki jest zgłoszony do usługi Application Insights.
+
+Proces główny kontynuuje działanie i obsługiwać ruch do użytkowników z małego przerwania. W tym samym czasie migawki jest przekazany do procesu przekazujący migawki. Przekazujący migawki tworzy minizrzutu i przekazuje ją do usługi Application Insights oraz wszystkie pliki odpowiednich symboli (.pdb).
+
+> [!TIP]
+> - Migawki procesu jest wstrzymane Sklonowanie uruchomionego procesu.
+> - Tworzenie migawki trwa około 10-20 w milisekundach.
+> - Wartość domyślna dla `ThresholdForSnapshotting` 1. Jest to również wartość minimalna. W związku z tym aplikacja ma ten sam wyjątek wyzwalanie **dwukrotnie** przed utworzeniem migawki.
+> - Ustaw `IsEnabledInDeveloperMode` na true, jeśli chcesz wygenerować migawki podczas debugowania w programie Visual Studio.
+> - Częstotliwość tworzenia migawki jest ograniczona przez `SnapshotsPerTenMinutesLimit` ustawienie. Domyślnie limit jest jedną migawkę, co 10 minut.
+> - Mogą być przekazywane nie więcej niż 50 migawek na dzień.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
@@ -242,22 +257,42 @@ Debuger migawki wymaga plików symboli na serwerze produkcyjnym w celu zdekodowa
 Dla rozwiązań usługi obliczenia Azure i innych typów, upewnij się, że pliki symboli są w tym samym folderze DLL aplikacji głównej (zazwyczaj `wwwroot/bin`) lub są dostępne w bieżącej ścieżce.
 
 ### <a name="optimized-builds"></a>Zoptymalizowane kompilacji
-W niektórych przypadkach zmiennych lokalnych nie można wyświetlić w kompilacjach wydania z powodu optymalizacji, które są stosowane podczas procesu kompilacji.
+W niektórych przypadkach zmiennych lokalnych nie można wyświetlić w kompilacjach wydania z powodu optymalizacji, które są stosowane przy użyciu kompilatora JIT.
+Jednak w usłudze Azure App Services, moduł zbierający migawki można deoptimize przerzucane metod, które są częścią jego planu zbierania danych.
+
+> [!TIP]
+> Zainstaluj rozszerzenie lokacji usługi Application Insights w usłudze App Service, aby uzyskać pomoc techniczną deoptimization.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Te wskazówki ułatwiają rozwiązywanie problemów z debugera migawki.
 
+## <a name="use-the-snapshot-health-check"></a>Użyj sprawdzania kondycji migawki
+Jeśli nie widzisz migawki dostępne dla określonego wyjątku może być spowodowane przez kilka powodów, takich jak wersji modułu zbierającego outdate migawki, codziennie próg trafień, migawki właśnie trwa czasu załadowania i tak dalej. Aby pomóc w diagnozowaniu problemów takich, budujemy sprawdzania kondycji migawki usługi inteligentnie analizować, dlatego nie migawki.
+
+Jeśli nie widzisz migawki skojarzone z powodu wyjątku, będzie łącze w bloku podglądu śledzenia End-to-end wprowadzania sprawdzenie kondycji migawki.
+
+![Wprowadź sprawdzenie kondycji migawki](./media/app-insights-snapshot-debugger/enter-snapshot-health-check.png)
+
+Następnie zobaczysz interakcyjne bot rozmów jak sesji uruchomienie sprawdzenia kondycji różnych aspektów usługi i oferty zawiadomień.
+
+![Sprawdzanie kondycji](./media/app-insights-snapshot-debugger/healthcheck.png)
+
+Istnieje kilka wymagane ręczne wykonanie czynności, które można wykonać w celu zdiagnozowania kondycji usługi migawki. Można znaleźć w poniższych sekcjach:
+
 ### <a name="verify-the-instrumentation-key"></a>Sprawdź klucza Instrumentacji
 
 Upewnij się, że używasz klucza Instrumentacji poprawne w opublikowanej aplikacji. Zazwyczaj usługi Application Insights odczytuje klucza Instrumentacji z pliku ApplicationInsights.config. Sprawdź, czy wartość jest taka sama jak klucza instrumentacji dla zasobu usługi Application Insights, który zostanie wyświetlony w portalu.
 
+### <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Uaktualnij do najnowszej wersji pakietu NuGet
+
+Aby upewnić się, że używasz najnowszej wersji Microsoft.ApplicationInsights.SnapshotCollector, użyj Menedżera pakietów NuGet programu Visual Studio. Informacje o wersji można znaleźć w folderze https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+
 ### <a name="check-the-uploader-logs"></a>Sprawdź dzienniki przesyłania
 
-Po utworzeniu migawki, plik minizrzutu (dmp) jest tworzony na dysku. Proces przesyłania oddzielne przyjmuje ten plik minizrzutu i przekazuje, oraz wszystkie skojarzone pliki PDB do magazynu Application Insights migawki debugera. Po pomyślnym przekazaniu minizrzut są usuwane z dysku. Pliki dziennika, aby proces przesyłania są przechowywane na dysku. W środowisku usługi aplikacji można znaleźć te dzienniki w `D:\Home\LogFiles`. Użyj witryny zarządzania Kudu dla aplikacji usługi, aby znaleźć te pliki dziennika.
+Po utworzeniu migawki, plik minizrzutu (dmp) jest tworzony na dysku. Proces przesyłania oddzielne tworzy plik minizrzutu i przekazuje, oraz wszystkie skojarzone pliki PDB do magazynu Application Insights migawki debugera. Po pomyślnym przekazaniu minizrzut są usuwane z dysku. Pliki dziennika, aby proces przesyłania są przechowywane na dysku. W środowisku usługi aplikacji można znaleźć te dzienniki w `D:\Home\LogFiles`. Użyj witryny zarządzania Kudu dla aplikacji usługi, aby znaleźć te pliki dziennika.
 
 1. Otwórz aplikację usługi aplikacji w portalu Azure.
-
 2. Wybierz **zaawansowane narzędzia** bloku lub Wyszukaj **Kudu**.
 3. Kliknij przycisk **Przejdź**.
 4. W **konsoli debugowania** listy rozwijanej wybierz pozycję **CMD**.
@@ -292,7 +327,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> W powyższym przykładzie pochodzi z wersji 1.2.0 pakiet Microsoft.ApplicationInsights.SnapshotCollector Nuget. W starszych wersjach, proces przesyłania jest nazywany `MinidumpUploader.exe` i dziennika jest mniej szczegółowe.
+> W powyższym przykładzie pochodzi z wersji 1.2.0 pakiet Microsoft.ApplicationInsights.SnapshotCollector NuGet. W starszych wersjach, proces przesyłania jest nazywany `MinidumpUploader.exe` i dziennika jest mniej szczegółowe.
 
 W poprzednim przykładzie, klucz Instrumentacji jest `c12a605e73c44346a984e00000000000`. Ta wartość powinna być zgodna klucza instrumentacji aplikacji.
 Minizrzut jest skojarzony z migawki z Identyfikatorem `139e411a23934dc0b9ea08a626db16c5`. Ten identyfikator można użyć do zlokalizowania telemetrii skojarzony wyjątek w Application Insights Analytics później.
@@ -316,7 +351,7 @@ W przypadku aplikacji, które są _nie_ hostowanych w usłudze App Service, dzie
 Dla ról usług w chmurze domyślny folder tymczasowy jest zbyt mały do przechowywania plików minizrzutu, co może prowadzić do utraty migawki.
 Potrzebne miejsce zależy od całkowitej zestaw roboczy aplikacji i liczby równoczesnych migawek.
 Zestaw roboczy rolę sieci web ASP.NET 32-bitowych jest zwykle od 200 MB do 500 MB.
-Zezwól na co najmniej dwóch jednoczesnych migawek.
+Zezwalaj na co najmniej dwóch jednoczesnych migawek.
 Na przykład jeśli aplikacja korzysta z 1 GB całkowita zestaw roboczy, należy się upewnić, że istnieje co najmniej 2 GB miejsca na dysku do przechowywania migawek.
 Wykonaj poniższe kroki konfigurowania roli użytkownika usługi w chmurze z dedykowanym zasobu lokalnego migawek.
 
@@ -366,7 +401,7 @@ Wykonaj poniższe kroki konfigurowania roli użytkownika usługi w chmurze z ded
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Użyj usługi Application Insights Wyszukaj, aby znaleźć wyjątki z migawkami
 
-Po utworzeniu migawki przerzucane wyjątek zostanie oznaczony przy użyciu identyfikatora migawki. Gdy dane telemetryczne wyjątku jest zgłaszane do usługi Application Insights, czy identyfikator migawki jest uwzględniona jako właściwości niestandardowej. Za pomocą bloku wyszukiwania w usłudze Application Insights, można znaleźć wszystkie dane telemetryczne z `ai.snapshot.id` właściwości niestandardowej.
+Po utworzeniu migawki przerzucane wyjątek zostanie oznaczony przy użyciu identyfikatora migawki. Ten identyfikator migawki jest uwzględniona jako właściwości niestandardowej, gdy dane telemetryczne wyjątku jest zgłoszony do usługi Application Insights. Za pomocą bloku wyszukiwania w usłudze Application Insights, można znaleźć wszystkie dane telemetryczne z `ai.snapshot.id` właściwości niestandardowej.
 
 1. Przejdź do zasobu usługi Application Insights w portalu Azure.
 2. Kliknij przycisk **wyszukiwania**.
@@ -383,6 +418,10 @@ Aby wyszukać Identyfikatora określoną migawkę z dzienników przesyłania, na
 2. Przy użyciu sygnatury czasowej w dzienniku przekazujący, Dostosuj zakres czasu filtr wyszukiwania, aby pokrywał się tego zakresu czasu.
 
 Jeśli nadal nie widać Wystąpił wyjątek o takim identyfikatorze migawki, dane telemetryczne wyjątku nie zgłosił do usługi Application Insights. Taka sytuacja może się zdarzyć, jeśli awaria aplikacji po zajęło migawki, ale przed zgłosiła ona dane telemetryczne wyjątku. W takim wypadku zapoznaj się z dziennikami usługi aplikacji w obszarze `Diagnose and solve problems` aby zobaczyć, czy wystąpiły nieoczekiwane ponowne uruchomienia lub nieobsługiwane wyjątki.
+
+### <a name="edit-network-proxy-or-firewall-rules"></a>Edytuj reguły serwera proxy lub zapory sieciowe
+
+Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub zapory, konieczne może być edytować reguły Zezwalaj aplikacji na komunikację z usługą debugera migawki. Oto [listę adresów IP i portów używanych przez debuger migawki](app-insights-ip-addresses.md#snapshot-debugger).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

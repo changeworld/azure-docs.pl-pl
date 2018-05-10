@@ -289,6 +289,7 @@
 ## Zabezpieczanie tożsamości
 ### [Dostęp warunkowy](active-directory-conditional-access-azure-portal.md)
 #### [Warunki](active-directory-conditional-access-conditions.md)
+#### [Warunki lokalizacji](active-directory-conditional-access-locations.md)
 #### [Kontrolki](active-directory-conditional-access-controls.md)
 #### [Wprowadzenie](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Najlepsze praktyki](active-directory-conditional-access-best-practices.md)

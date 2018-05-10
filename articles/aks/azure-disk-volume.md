@@ -1,6 +1,6 @@
 ---
-title: "Używać dysków Azure AKS"
-description: "Używać dysków Azure AKS"
+title: Używać dysków Azure AKS
+description: Używać dysków Azure AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a2f46aba80ad47335b7cd9b5e8d615c1d895cccb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 33d9a01f063ee8ad531a3f7e01dcfbf1c4ba8901
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="volumes-with-azure-disks"></a>Woluminy z dysku systemu Azure
 
-Aplikacje kontenera często muszą uzyskać dostęp do utrwalenia danych w woluminie danych zewnętrznych. Dyski Azure mogą być używane jako ten magazyn danych zewnętrznych. Szczegóły tego artykułu przy użyciu dysku platformy Azure jako wolumin Kubernetes w klastrze usługi kontenera platformy Azure (AKS).
+Aplikacje kontenera często muszą uzyskać dostęp do utrwalenia danych w woluminie danych zewnętrznych. Dyski Azure mogą być używane jako ten magazyn danych zewnętrznych. Szczegóły tego artykułu przy użyciu dysku platformy Azure jako wolumin Kubernetes w klastrze usługi Kubernetes Azure (AKS).
 
 Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kubernetes][kubernetes-volumes].
 
@@ -38,7 +38,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Użyj [Tworzenie dysku az] [ az-disk-create] polecenie, aby utworzyć dysku platformy Azure. 
+Użyj [Tworzenie dysku az] [ az-disk-create] polecenie, aby utworzyć dysku platformy Azure.
 
 Za pomocą tego przykładu, zaktualizuj `--resource-group` z nazwą grupy zasobów i `--name` na wybraną nazwę.
 
@@ -58,7 +58,7 @@ Po utworzeniu dysku, powinny zostać wyświetlone dane wyjściowe podobne do nas
 
 ## <a name="mount-disk-as-volume"></a>Zainstalować dysk jako wolumin
 
-Zainstaluj dysku platformy Azure w sieci pod przez skonfigurowanie woluminu w specyfikacji kontenera. 
+Zainstaluj dysku platformy Azure w sieci pod przez skonfigurowanie woluminu w specyfikacji kontenera.
 
 Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartość. Aktualizacja `diskName` o nazwie nowo utworzony dysk i `diskURI` o identyfikatorze dysku. Ponadto Zanotuj `mountPath`, jest to ścieżka, jaką dysku platformy Azure jest zainstalowany w pod.
 

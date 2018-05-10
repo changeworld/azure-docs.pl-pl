@@ -1,12 +1,12 @@
 ---
-title: Pakiet Azure IoT i Azure Active Directory | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano, jak pakiet IoT Azure używa usługi Azure Active Directory do zarządzania uprawnieniami."
-services: 
+title: Azure akceleratorów rozwiązania IoT i Azure Active Directory | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak akceleratorów rozwiązania Azure IoT używa usługi Azure Active Directory do zarządzania uprawnieniami.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e5804cda921e9d598d0ed02c4fafccdb40fbe7a5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b7360ca4df63cac114b0eb1f93375367da6735cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Uprawnienia w witrynie the azureiotsuite.com
 
@@ -29,35 +29,35 @@ Przy pierwszym zalogowaniu się na [azureiotsuite.com][lnk-azureiotsuite], witry
 
 1. Najpierw do wypełnienia listy dzierżawców widoczne obok nazwy użytkownika, lokacji znajduje na platformie Azure dzierżaw usługi AAD, które należą do. Obecnie witryny można uzyskać tokeny użytkownika dla jednego dzierżawcy w czasie. W związku z tym podczas przełączania dzierżawcy przy użyciu listy rozwijanej w prawym górnym rogu lokacji rejestruje w tej dzierżawy uzyskać tokenów dla tej dzierżawy.
 
-2. Następnie lokacji znajduje z platformy Azure, subskrypcje, które zostały skojarzone z wybranej dzierżawy. Podczas tworzenia nowego rozwiązania wstępnie skonfigurowane są wyświetlane dostępnych subskrypcji.
+2. Następnie lokacji znajduje z platformy Azure, subskrypcje, które zostały skojarzone z wybranej dzierżawy. Podczas tworzenia nowego akcelerator rozwiązań są wyświetlane dostępnych subskrypcji.
 
-3. Na koniec lokacji pobiera wszystkie zasoby w subskrypcji i grup zasobów oznakowane jako wstępnie skonfigurowanych rozwiązań i wypełnia Kafelki na stronie głównej.
+3. Na koniec lokacji pobiera wszystkie zasoby w subskrypcji i grup zasobów oznakowane jako akceleratorów rozwiązania i wypełnia Kafelki na stronie głównej.
 
-W poniższych sekcjach opisano role, które kontrolują dostęp do wstępnie skonfigurowanych rozwiązań.
+W poniższych sekcjach opisano role, które kontrolują dostęp do akceleratorów rozwiązania.
 
 ## <a name="aad-roles"></a>Role usługi AAD
 
-Role AAD kontrolowanie możliwości rozwiązania wstępnie udostępnić i zarządzanie użytkownikami w wstępnie skonfigurowane rozwiązanie.
+Role AAD kontrolą akceleratorów rozwiązania udostępniania możliwości i zarządzanie użytkownikami w akcelerator rozwiązań.
 
-Można znaleźć więcej informacji na temat ról administratorów w usłudze AAD w [przypisywanie ról administratorów w usłudze Azure AD][lnk-aad-admin]. Bieżący artykuł skupia się na **administratora globalnego** i **użytkownika** ról katalogu jako używane przez wstępnie skonfigurowanych rozwiązań.
+Można znaleźć więcej informacji na temat ról administratorów w usłudze AAD w [przypisywanie ról administratorów w usłudze Azure AD][lnk-aad-admin]. Bieżący artykuł skupia się na **administratora globalnego** i **użytkownika** ról katalogu jako używane przez akceleratory rozwiązania.
 
 ### <a name="global-administrator"></a>Administrator globalny
 
 Może istnieć wiele Administratorzy globalni na dzierżawę usługi AAD:
 
 * Podczas tworzenia dzierżawy usługi AAD jest domyślnie administratora globalnego tej dzierżawy.
-* Administrator globalny może udostępnić basic i standard wstępnie skonfigurowanych rozwiązań.
+* Administrator globalny może udostępnić akceleratory podstawowe i standardowe rozwiązanie.
 
 ### <a name="domain-user"></a>Użytkownik domeny
 
 Może istnieć wiele użytkowników domeny w dzierżawie usługi AAD:
 
-* Użytkownik domeny można udostępnić podstawowego rozwiązania wstępnie skonfigurowane w ramach [azureiotsuite.com] [ lnk-azureiotsuite] lokacji.
-* Użytkownik domeny, można utworzyć podstawowego rozwiązania wstępnie skonfigurowane przy użyciu interfejsu wiersza polecenia.
+* Użytkownik domeny można udostępnić akceleratora podstawowego rozwiązania, za pomocą [azureiotsuite.com] [ lnk-azureiotsuite] lokacji.
+* Użytkownik domeny można utworzyć skrótu podstawowego rozwiązania, przy użyciu interfejsu wiersza polecenia.
 
 ### <a name="guest-user"></a>Gość
 
-Może istnieć wiele gości na dzierżawę usługi AAD. Goście mają ograniczony zestaw praw w dzierżawie usługi AAD. W związku z tym gości nie może obsłużyć wstępnie skonfigurowane rozwiązanie w dzierżawie usługi AAD.
+Może istnieć wiele gości na dzierżawę usługi AAD. Goście mają ograniczony zestaw praw w dzierżawie usługi AAD. W związku z tym gości nie może obsłużyć akcelerator rozwiązań w dzierżawie usługi AAD.
 
 Aby uzyskać więcej informacji dotyczących użytkowników i role w usłudze AAD zobacz następujące zasoby:
 
@@ -94,7 +94,7 @@ Szukaj na poniższym diagramie, aby uzyskać wskazówki:
 Jeśli masz pewność, że masz subskrypcję platformy Azure, sprawdź poprawność mapowania dla Twojej subskrypcji dzierżawcy i upewnij się, że wybrano poprawny dzierżawy na liście rozwijanej. Jeśli zostały sprawdzone żądaną dzierżawy jest poprawna, postępuj zgodnie z wcześniejszym diagramie i sprawdzić poprawności mapowania subskrypcji i tego dzierżawę usługi AAD.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby kontynuować zapoznawanie pakiet IoT, zobacz temat [dostosować wstępnie skonfigurowane rozwiązanie][lnk-customize].
+Aby kontynuować zapoznawanie akceleratorów rozwiązania IoT, zobacz temat [dostosować akcelerator rozwiązań][lnk-customize].
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 

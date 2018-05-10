@@ -102,14 +102,13 @@
 ### Aplikacje sieci Web
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [ASP.NET Core](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2)
-#### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
+#### [NodeJS](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)
 ### Interfejsy API sieci Web
 #### [ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
 #### [ASP.NET Core](https://azure.microsoft.com/en-us/resources/samples/active-directory-dotnet-native-aspnetcore-v2)
+#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
 ### Aplikacje jednostronicowe
 #### [JavaScript](guidedsetups/active-directory-javascriptspa.md)
-### Interfejsy API sieci Web
-#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
 ### Usługa do usługi
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Przewodniki

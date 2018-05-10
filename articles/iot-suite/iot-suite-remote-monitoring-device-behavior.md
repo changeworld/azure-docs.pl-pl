@@ -1,7 +1,7 @@
 ---
-title: "Symulowane urządzenie zachowanie w zdalnym rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób użycia JavaScript do definiowania zachowania symulowane urządzenie zdalne rozwiązanie monitorowania."
-services: 
+title: Symulowane urządzenie zachowanie w zdalnym rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób użycia JavaScript do definiowania zachowania symulowane urządzenie zdalne rozwiązanie monitorowania.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e5846893166c3e65b75e84d02849c2b8ab78e079
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2a2cbe5379adbd2c4ad6534b621871ecc30bfc81
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementuje zachowanie model urządzenia
 
@@ -25,7 +25,7 @@ Artykuł [zrozumieć schematu modelu urządzenia](iot-suite-remote-monitoring-de
 - **Stan** JavaScript pliki uruchomionymi w ustalonych odstępach czasu, aby zaktualizować stan wewnętrzny urządzenia.
 - **Metoda** pliki JavaScript, który uruchamiany, gdy rozwiązanie wywołuje metodę na urządzeniu.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 >[!div class="checklist"]
 > * Formant stanu symulowane urządzenie
@@ -36,8 +36,8 @@ W tym artykule dowiesz się, jak:
 
 [Symulacji](iot-suite-remote-monitoring-device-schema.md#simulation) sekcji schematu modelu urządzenia definiuje wewnętrzny stan klasy symulowane urządzenie:
 
-- `InitialState`Definiuje wartości początkowe dla wszystkich właściwości obiektu stanu urządzenia.
-- `Script`Określa plik JavaScript, że działa zgodnie z harmonogramem, aby zaktualizować stan urządzenia.
+- `InitialState` Definiuje wartości początkowe dla wszystkich właściwości obiektu stanu urządzenia.
+- `Script` Określa plik JavaScript, że działa zgodnie z harmonogramem, aby zaktualizować stan urządzenia.
 
 W poniższym przykładzie przedstawiono definicję obiektu stanu urządzenia dla urządzeń symulowane Chłodnica:
 
@@ -53,10 +53,10 @@ W poniższym przykładzie przedstawiono definicję obiektu stanu urządzenia dla
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:05",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -66,7 +66,7 @@ Stan symulowanego urządzenia, zgodnie z definicją w `InitialState` sekcji, jes
 Poniżej pokazano konturu typowe `main` funkcji:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   // Use the previous device state to
   // generate the new device state
@@ -78,9 +78,9 @@ function main(context, previousState) {
 
 `context` Parametr ma następujące właściwości:
 
-- `currentTime`jako ciąg w formacie`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, na przykład`Simulated.Chiller.123`
-- `deviceModel`, na przykład`Chiller`
+- `currentTime` jako ciąg w formacie `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, na przykład `Simulated.Chiller.123`
+- `deviceModel`, na przykład `Chiller`
 
 `state` Parametr zawiera stan urządzenia obsługiwane przez usługę symulacji urządzenia. Ta wartość jest `state` obiektu zwróconego przez poprzednie wywołanie `main`.
 
@@ -108,7 +108,7 @@ function restoreState(previousState) {
   }
 }
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   restoreState(previousState);
 
@@ -133,7 +133,7 @@ function vary(avg, percentage, min, max) {
 }
 
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     restoreState(previousState);
 
@@ -192,28 +192,31 @@ Stan symulowanego urządzenia, zgodnie z definicją w `InitialState` sekcji sche
 Poniżej pokazano konturu typowe `main` funkcji:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
 }
 ```
 
 `context` Parametr ma następujące właściwości:
 
-- `currentTime`jako ciąg w formacie`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, na przykład`Simulated.Chiller.123`
-- `deviceModel`, na przykład`Chiller`
+- `currentTime` jako ciąg w formacie `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, na przykład `Simulated.Chiller.123`
+- `deviceModel`, na przykład `Chiller`
 
 `state` Parametr zawiera stan urządzenia obsługiwane przez usługę symulacji urządzenia.
 
-Istnieją dwie funkcje globalne używanego pomagających w realizacji zachowanie metody:
+`properties` Parametr zawiera właściwości urządzenia, które są zapisane jako właściwości zgłoszony do dwie urządzenia IoT Hub.
 
-- `updateState`Aby zaktualizować stan posiadanych przez usługę symulacji.
-- `sleep`Aby zatrzymać wykonywanie do symulowania długotrwałe zadanie.
+Istnieją trzy funkcje globalne używanego pomagających w realizacji zachowanie metody:
+
+- `updateState` Aby zaktualizować stan posiadanych przez usługę symulacji.
+- `updateProperty` Aby zaktualizować pojedynczej właściwości urządzenia.
+- `sleep` Aby zatrzymać wykonywanie do symulowania długotrwałe zadanie.
 
 W poniższym przykładzie przedstawiono skróconej wersji **IncreasePressure method.js** skryptu używany przez urządzenia Chłodnica symulowanego:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     log("Starting 'Increase Pressure' method simulation (5 seconds)");
 

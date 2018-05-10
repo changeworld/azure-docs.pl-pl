@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 25ae6bde2ca89b2f944a8879c746dcedcf798ec2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure DB rozwiązania Cosmos: procedury składowane, wyzwalacze bazy danych i funkcji UDF
 
-Dowiedz się, jak Azure rozwiązania Cosmos DB języku zintegrowanym, transakcyjne wykonywanie JavaScript umożliwia deweloperom pisanie **procedur składowanych**, **wyzwalaczy**, i **funkcje zdefiniowane przez użytkownika (UDF)**  natywnie w [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Integracja ta Javascript umożliwia pisanie logiki aplikacji programu bazy danych, które mogą być dostarczane i wykonywane bezpośrednio na partycje magazynu bazy danych. 
+Dowiedz się, jak Azure rozwiązania Cosmos DB języku zintegrowanym, transakcyjne wykonywanie JavaScript umożliwia deweloperom pisanie **procedur składowanych**, **wyzwalaczy**, i **funkcje zdefiniowane przez użytkownika (UDF)**  natywnie w [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Integracja języka JavaScript umożliwia pisanie logiki programu, które mogą być dostarczane i wykonywane bezpośrednio w ramach partycji magazynu bazy danych. 
 
 Zalecamy rozpoczęcie pracy od obejrzenia poniższego klipu wideo, w którym Andrew Liu zawiera wprowadzenie do modelu programowania po stronie serwera bazy danych DB rozwiązania Cosmos Azure. 
 
@@ -58,7 +58,7 @@ Tworzenie i wykonywanie wyzwalaczy bazy danych, procedury składowane i operator
 W tym samouczku używana [Node.js SDK z ze zobowiązania Q](http://azure.github.io/azure-documentdb-node-q/) w celu zilustrowania składni i użycia procedur składowanych, wyzwalaczy i funkcji UDF.   
 
 ## <a name="stored-procedures"></a>Procedury składowane
-### <a name="example-write-a-simple-stored-procedure"></a>Przykład: Napisać prosty procedury składowanej
+### <a name="example-write-a-stored-procedure"></a>Przykład: Zapisać procedury składowanej
 Zacznijmy od prostego procedury przechowywanej, która zwraca odpowiedź "Hello World".
 
     var helloWorldStoredProc = {
@@ -96,7 +96,7 @@ Po zarejestrowaniu procedurę składowaną można ją wykonać kolekcji i przecz
         });
 
 
-Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wykonywane w magazynie rozwiązania Cosmos bazy danych, a także dostęp do obiektów żądania i odpowiedzi. W takim przypadku użyliśmy obiekt odpowiedzi, aby ustawić treść odpowiedzi, który został wysłany do klienta. Aby uzyskać więcej informacji, zobacz [serwera Azure rozwiązania Cosmos DB JavaScript dokumentacji zestawu SDK](http://azure.github.io/azure-documentdb-js-server/).  
+Obiekt kontekstu zapewnia dostęp do wszystkich operacji, które mogą być wykonywane w magazynie rozwiązania Cosmos bazy danych, a także dostęp do obiektów żądania i odpowiedzi. W takim przypadku obiekt odpowiedzi używany do ustawiania treści odpowiedzi, który został wysłany do klienta. Aby uzyskać więcej informacji, zobacz [serwera Azure rozwiązania Cosmos DB JavaScript dokumentacji zestawu SDK](http://azure.github.io/azure-documentdb-js-server/).  
 
 Daj nam rozwiń w tym przykładzie i dodać więcej funkcji związanych z bazy danych do procedury składowanej. Procedury składowane można utworzyć, zaktualizować, odczytu, zapytań i usuwania dokumentów i załączników w kolekcji.    
 
@@ -148,16 +148,16 @@ W powyższym przykładzie wywołanie zwrotne zgłasza błąd, jeśli operacja ni
     });
 
 
-Należy pamiętać, że można zmodyfikować tej procedury składowanej, aby pobrać tablicę treści dokumentu jako dane wejściowe i utwórz je w tym samym wykonywanie procedury składowanej zamiast wielu żądań sieci w celu utworzenia każdego z nich osobno. Może być używany do zaimplementowania importer zbiorczego wydajne rozwiązania Cosmos bazy danych (omówiony w dalszej części tego samouczka).   
+Tę procedurę składowaną można zmodyfikować w taki sposób, aby pobrać tablicę treści dokumentu jako dane wejściowe i je utworzyć w tym samym wykonywanie procedury składowanej zamiast wielu żądań w celu utworzenia każdego z nich osobno. Tę procedurę składowaną może służyć do zaimplementowania importer zbiorczego wydajne rozwiązania Cosmos bazy danych (omówiony w dalszej części tego samouczka).   
 
-Opisanym przykładzie przedstawiono sposób użycia procedur składowanych. Później w samouczku omówimy wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF).
+Opisanym przykładzie przedstawiono sposób użycia procedur składowanych. Następnie dowiesz się o wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) w dalszej części tego samouczka.
 
 ## <a name="database-program-transactions"></a>Transakcji w bazie danych programu
 Transakcji w typowej bazy danych można zdefiniować jako sekwencja operacji wykonywanych jako pojedyncza jednostka logiczna pracy. Udostępnia każdą transakcję **ACID gwarancje**. KWAS jest dobrze znanego akronim, zawiera cztery właściwości — niepodzielność, spójności, izolacji i trwałości.  
 
 Krótko mówiąc, niepodzielność gwarantuje, że wszystkie pracy wykonanej w transakcji jest traktowany jako pojedyncza jednostka gdzie albo wszystkie dba lub none. Spójność upewnia się, że dane są zawsze dobrego stanu wewnętrznego w transakcji. Izolacja gwarantuje, że żadne transakcje dwóch koliduje ze sobą — ogólnie rzecz biorąc, większość komercyjnych systemów zapewniają wiele poziomów izolacji, które mogą być używane zgodnie z wymaganiami aplikacji. Trwałości zapewnia żadnych zmian, które zostaje zatwierdzona w bazie danych będą zawsze istnieje.   
 
-W bazie danych rozwiązania Cosmos JavaScript znajduje się w tej samej przestrzeni pamięci, co baza danych. W związku z tym żądań w ramach procedur składowanych i wyzwalacze są wykonywane w tym samym zakresie sesji bazy danych. Dzięki temu rozwiązania Cosmos bazy danych zagwarantować kwasu dla wszystkich operacji, które są częścią jednego procedury składowanej/wyzwalacza. Należy wziąć pod uwagę następujące definicji procedury składowanej:
+W bazie danych rozwiązania Cosmos JavaScript znajduje się w tej samej przestrzeni pamięci, co baza danych. W związku z tym żądań w ramach procedur składowanych i wyzwalacze są wykonywane w tym samym zakresie sesji bazy danych. Ta funkcja umożliwia rozwiązania Cosmos bazy danych zagwarantować kwasu dla wszystkich operacji, które są częścią jednego procedury składowanej/wyzwalacza. Należy wziąć pod uwagę następujące definicji procedury składowanej:
 
     // JavaScript source code
     var exchangeItemsSproc = {
@@ -232,14 +232,14 @@ Transakcje są głęboko i natywnie zintegrowane model programowania JavaScript 
 W przypadku dowolnego wyjątek, który jest propagowana ze skryptu środowiska wykonawczego języka JavaScript DB rozwiązania Cosmos cofnie cała transakcja. Jak pokazano w przykładzie wcześniej, zgłaszanie wyjątku jest równoważne "WYCOFYWANIA transakcji" w bazie danych rozwiązania Cosmos.
 
 ### <a name="data-consistency"></a>Spójność danych
-Procedury składowane i wyzwalaczy zawsze są wykonywane w replice podstawowej kontenera Azure DB rozwiązania Cosmos. Dzięki temu, że odczyty z wewnątrz przechowywane procedury oferta wysoki poziom spójności. Zapytania przy użyciu funkcji zdefiniowanej przez użytkownika mogą być wykonywane w podstawowej lub pomocnicze repliki, ale Upewniamy się, aby spełnić poziomu spójności żądanego, wybierając odpowiednie repliki.
+Procedury składowane i wyzwalaczy zawsze są wykonywane w replice podstawowej kontenera Azure DB rozwiązania Cosmos. Dzięki temu, że odczyty z wewnątrz przechowywane procedury oferta wysoki poziom spójności. Zapytania przy użyciu funkcji zdefiniowanej przez użytkownika mogą być wykonywane w podstawowej lub pomocnicze repliki, ale upewnieniu się, aby spełnić poziomu spójności żądanego, wybierając odpowiednie repliki.
 
 ## <a name="bounded-execution"></a>Ograniczonego wykonania
 Wszystkie operacje rozwiązania Cosmos bazy danych należy wykonać w ramach serwera określony limit czasu żądania. To ograniczenie dotyczy również funkcje kodu JavaScript (procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika). Jeśli operacja nie została zakończona z limitem czasu, transakcja zostanie wycofana. Funkcje kodu JavaScript musi zakończyć się przed upływem limitu czasu lub zaimplementuj kontynuacji na podstawie modelu do wykonywania wsadowego/wznawiania.  
 
 W celu uproszczenia rozwoju procedur składowanych i wyzwalaczy do obsługi terminów, wszystkie funkcje w obiekcie kolekcji (dla tworzenia, odczytu, zastępowanie i usuwanie dokumentów i załączników) zwracać wartość logiczną, która informuje, czy ta operacja zostanie ukończona. Jeśli ta wartość wynosi false, to wskazanie limitu czasu o zbliżającym się wygaśnięciu i czy procedura musi dobiega końca wykonywania.  Operacji w kolejce przed pierwszą operacją niezaakceptowanych magazynu dotrą do wykonania, jeśli procedura składowana jest przeprowadzany w czasie, a nie umieszcza w kolejce więcej żądań.  
 
-JavaScript — funkcje są również ograniczona zużycia zasobów. Rozwiązania cosmos DB rezerwuje przepływności na kolekcję na podstawie rozmiaru elastycznie konta bazy danych. Przepływność wyrażonych znormalizowane jednostki Procesora, pamięci i wywołać jednostki żądania lub RUs zużycie we/wy. Funkcje kodu JavaScript potencjalnie może zużywać dużą liczbę RUs w krótkim czasie i mogą zostać ograniczony szybkość po osiągnięciu limitu kolekcji. Procedury składowane obciążający zasoby może również zostaną poddane kwarantannie, aby zapewnić dostępność operacji w bazie danych pierwotnych.  
+JavaScript — funkcje są również ograniczona zużycia zasobów. Rozwiązania cosmos DB rezerwuje przepływności na kolekcję lub zbiór kontenerów. Przepływność wyrażonych znormalizowane jednostki Procesora, pamięci i wywołać jednostki żądania lub RUs zużycie we/wy. Funkcje kodu JavaScript potencjalnie może zużywać dużą liczbę RUs w krótkim czasie i mogą zostać ograniczony szybkość po osiągnięciu limitu kolekcji. Procedury składowane obciążający zasoby może również zostaną poddane kwarantannie, aby zapewnić dostępność operacji w bazie danych pierwotnych.  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>Przykład: Zbiorcze importowanie danych do programu bazy danych
 Poniżej przedstawiono przykład procedury przechowywanej, która jest zapisywany do importowania zbiorczego dokumentów w kolekcji. Należy zwrócić uwagę, jak procedura składowana obsługuje ograniczonego wykonania, sprawdzając typu Boolean wartość zwracana z createDocument, a następnie używa liczbę dokumentów dodaje w każdym wywołaniu procedury składowanej do śledzenia i wznowić postęp w partiach.
@@ -349,7 +349,7 @@ I odpowiedni kod po stronie klienta środowiska Node.js dla wyzwalacza:
 
 Wstępne wyzwalaczy nie może mieć parametrów wejściowych. Obiekt żądania może służyć do manipulowania komunikat żądania skojarzony z operacją. W tym miejscu przed wyzwalacza jest uruchamiana z tworzeniem dokumentu i treść żądania zawiera dokument, który ma zostać utworzony w formacie JSON.   
 
-Gdy wyzwalacze są zarejestrowane, użytkownicy mogą określić operacje, które można uruchomić z. Wyzwalacz został utworzony z TriggerOperation.Create, co oznacza, że następujące nie jest dozwolone.
+Gdy wyzwalacze są zarejestrowane, użytkownicy mogą określić operacje, które można uruchomić z. Wyzwalacz został utworzony z TriggerOperation.Create, co oznacza, że w ramach operacji Zamień, jak pokazano w poniższym kodzie za pomocą wyzwalacza jest niedozwolone.
 
     var options = { preTriggerInclude: "validateDocumentContents" };
 
@@ -434,7 +434,7 @@ Może być zarejestrowany wyzwalacza, jak pokazano w poniższym przykładzie.
 
 Wyzwalacz wysyła zapytanie dokument metadanych i aktualizuje ze szczegółami dotyczącymi nowo utworzonego dokumentu.  
 
-Należy zwrócić uwagę jest to **transakcyjnych** wykonanie wyzwalaczy w bazie danych rozwiązania Cosmos. Po wyzwalacz uruchamia się w ramach tej samej transakcji, jak tworzenie oryginalnego dokumentu. W związku z tym jeśli z po wyzwalacza (Jeśli nie można zaktualizować dokument metadanych powiedzieć) firma Microsoft zgłosić wyjątek, cała transakcja zakończy się niepowodzeniem i wycofana. Dokument nie zostanie utworzona i zostanie zwrócony wyjątek.  
+Należy zwrócić uwagę jest to **transakcyjnych** wykonanie wyzwalaczy w bazie danych rozwiązania Cosmos. Po wyzwalacz uruchamia się w ramach tej samej transakcji, jak tworzenie oryginalnego dokumentu. W związku z tym jeśli z po wyzwalacza (Jeśli nie można zaktualizować dokument metadanych powiedzieć) należy zgłosić wyjątek, cała transakcja zakończy się niepowodzeniem i wycofana. Dokument nie zostanie utworzona i zostanie zwrócony wyjątek.  
 
 ## <a id="udf"></a>Funkcje zdefiniowane przez użytkownika
 Funkcje zdefiniowane przez użytkownika (UDF) służą do rozszerzania gramatyki języka zapytań usługi Azure rozwiązania Cosmos bazy danych SQL i implementować niestandardowe reguły biznesowe. Mogą one wywołać tylko z wewnątrz zapytań. Nie masz dostępu do obiektu kontekstu, a są przeznaczone do użycia jako tylko do obliczeń JavaScript. W związku z tym funkcje UDF może działać w replikach pomocniczych usługi DB rozwiązania Cosmos.  
@@ -479,7 +479,7 @@ UDF później mogą być używane w zapytaniach, podobnie jak w poniższym przyk
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>Zapytanie o języku zintegrowanym JavaScript API
-Oprócz wysyłania zapytań przy użyciu gramatyki SQL Azure rozwiązania Cosmos DB SDK po stronie serwera umożliwia wykonywanie zoptymalizowane zapytania przy użyciu interfejsu JavaScript fluent bez żadnych wiedzy programu SQL Server. Interfejs API umożliwia programowego tworzenia zapytań przez przekazanie funkcji predykatu w funkcji chainable zapytania JavaScript wywołuje ze składnią znane built-ins tablicy oraz popularnych bibliotek JavaScript, takich jak lodash ECMAScript5 w. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript do wykonania efektywne wykorzystanie indeksów DB rozwiązania Cosmos Azure.
+Oprócz wysyłania zapytań przy użyciu gramatyki SQL Azure rozwiązania Cosmos DB SDK po stronie serwera umożliwia wykonywanie zoptymalizowane zapytania przy użyciu interfejsu JavaScript fluent bez żadnych wiedzy programu SQL Server. Interfejs API umożliwia programowego tworzenia zapytań przez przekazanie funkcji predykatu w funkcji chainable zapytania JavaScript wywołuje ze składnią znane built-ins tablicy oraz popularnych bibliotek JavaScript, takich jak Lodash ECMAScript5 w. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript do wykonania efektywne wykorzystanie indeksów DB rozwiązania Cosmos Azure.
 
 > [!NOTE]
 > `__` (o podwójnej precyzji podkreślenie) jest aliasu `getContext().getCollection()`.
@@ -503,7 +503,7 @@ Rozpoczyna się value() od łańcuchowa wywołanie, które musi zostać zakończ
 <b>Filtr (predicateFunction [, opcje] [, wywołania zwrotnego])</b>
 <ul>
 <li>
-Filtry przy użyciu funkcji predykatu, która zwraca wartość PRAWDA/FAŁSZ, aby filtrować dokumentów wejściowych we/wy na wynikowy zestaw danych wejściowych. Działa to podobnie do klauzuli WHERE instrukcji SQL.
+Filtry przy użyciu funkcji predykatu, która zwraca wartość PRAWDA/FAŁSZ, aby filtrować dokumentów wejściowych we/wy na wynikowy zestaw danych wejściowych. Ta funkcja działa podobnie do klauzuli WHERE instrukcji SQL.
 </li>
 </ul>
 </li>
@@ -511,7 +511,7 @@ Filtry przy użyciu funkcji predykatu, która zwraca wartość PRAWDA/FAŁSZ, ab
 <b>mapy (transformationFunction [, opcje] [, wywołania zwrotnego])</b>
 <ul>
 <li>
-Stosuje projekcji podanej funkcji przekształcania, która mapuje do obiektu JavaScript lub wartość każdego elementu wejściowego. Działa to podobnie jak w klauzuli SELECT w języku SQL.
+Stosuje projekcji podanej funkcji przekształcania, która mapuje do obiektu JavaScript lub wartość każdego elementu wejściowego. Ta funkcja działa podobnie do klauzuli SELECT w języku SQL.
 </li>
 </ul>
 </li>
@@ -519,7 +519,7 @@ Stosuje projekcji podanej funkcji przekształcania, która mapuje do obiektu Jav
 <b>pluck ([propertyName] [, opcje] [, wywołania zwrotnego])</b>
 <ul>
 <li>
-Jest to skrót do mapy, który pobiera wartość właściwości jednego z każdego elementu wejściowego.
+Ta funkcja jest skrót mapy wyodrębnia wartości właściwości jednego z każdego elementu wejściowego.
 </li>
 </ul>
 </li>
@@ -527,7 +527,7 @@ Jest to skrót do mapy, który pobiera wartość właściwości jednego z każde
 <b>spłaszczanie ([isShallow] [, opcje] [, wywołania zwrotnego])</b>
 <ul>
 <li>
-Łączy i spłaszcza tablic z każdego elementu wejściowego do jednej macierzy. Działa to podobnie jak operacja SelectMany w składniku LINQ.
+Łączy i spłaszcza tablic z każdego elementu wejściowego do jednej macierzy. Ta funkcja działa podobnie do operacja SelectMany w składniku LINQ.
 </li>
 </ul>
 </li>
@@ -535,7 +535,7 @@ Jest to skrót do mapy, który pobiera wartość właściwości jednego z każde
 <b>sortBy ([predicate] [, opcje] [, wywołania zwrotnego])</b>
 <ul>
 <li>
-Tworzy nowy zestaw dokumentów, sortując dokumentów w strumieniu dokument wejściowy rosnąco przy użyciu podanego predykatu. Zachowuje się to podobne do klauzuli ORDER BY w języku SQL.
+Tworzy nowy zestaw dokumentów, sortując dokumentów w strumieniu dokument wejściowy rosnąco przy użyciu podanego predykatu. Ta funkcja działa podobnie do klauzuli ORDER BY w języku SQL.
 </li>
 </ul>
 </li>
@@ -543,7 +543,7 @@ Tworzy nowy zestaw dokumentów, sortując dokumentów w strumieniu dokument wej�
 <b>sortByDescending ([predicate] [, opcje] [, wywołania zwrotnego])</b>
 <ul>
 <li>
-Tworzy nowy zestaw dokumentów, sortując dokumentów w strumieniu dokument wejściowy w kolejności malejącej, używając podanego predykatu. Zachowuje się to podobne do klauzuli ORDER BY x DESC w języku SQL.
+Tworzy nowy zestaw dokumentów, sortując dokumentów w strumieniu dokument wejściowy w kolejności malejącej, używając podanego predykatu. Ta funkcja działa podobnie do klauzuli ORDER BY x DESC w programie SQL.
 </li>
 </ul>
 </li>
@@ -553,7 +553,7 @@ Tworzy nowy zestaw dokumentów, sortując dokumentów w strumieniu dokument wej�
 Gdy się wewnątrz predykatu lub selektora funkcje, następujące konstrukcje JavaScript uzyskać automatycznie zoptymalizowana pod kątem uruchamiać bezpośrednio na indeksy bazy danych Azure rozwiązania Cosmos:
 
 * Operatory prosty: = + - * / % | ^ &amp; == != === !=== &lt; &gt; &lt;= &gt;= || &amp;&amp; &lt;&lt; &gt;&gt; &gt;&gt;&gt;! ~
-* Literały, w tym literału obiektu: {}
+* Literały literału obiektu w tym: {}
 * var return
 
 Następujące elementy JavaScript nie pobrać zoptymalizowane pod kątem indeksy bazy danych Azure rozwiązania Cosmos:
@@ -629,7 +629,7 @@ Z kwerendy SQL dokumentu klucze właściwości (na przykład `doc.id`) jest rozr
 |Wybierz docs.id, docs.message jako msg, docs.actions <br>Z dokumentów|__.map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Zwraca {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|2|
 |WYBIERZ *<br>Z dokumentów<br>WHERE docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>});|3|
 |WYBIERZ *<br>Z dokumentów<br>GDZIE ARRAY_CONTAINS (dokumentów. Tagi, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags && x.Tags.indexOf(123) > -1;<br>});|4|
-|Wybierz docs.id, docs.message jako msg<br>Z dokumentów<br>WHERE docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|5|
+|Wybierz docs.id, docs.message jako msg<br>Z dokumentów<br>WHERE docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|5|
 |Wybierz wartość tagu<br>Z dokumentów<br>Dołącz do dokumentów w tagu. Tagi<br>Docs._ts ORDER BY|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć dokumentu. Tagi & & Array.IsArray — (dokumentu. Znaczniki);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|6|
 
 Poniższe opisy wyjaśnić, każdego zapytania w powyższej tabeli.
@@ -648,7 +648,7 @@ Azure DB rozwiązania Cosmos [JavaScript API po stronie serwera](http://azure.gi
 Procedury składowane JavaScript i wyzwalacze są w trybie piaskownicy tak, aby skutków jednego skryptu nie zostały publicznie innych bez pośrednictwa izolacji transakcji migawki na poziomie bazy danych. Środowiska wykonawcze w puli, ale czyszczone kontekstu po każdym uruchomieniu. Dlatego ma gwarancji bezpieczne z dowolnym niezamierzone skutki uboczne od siebie.
 
 ### <a name="pre-compilation"></a>Wstępna kompilacja
-Procedur składowanych, wyzwalaczy i funkcji UDF są niejawnie prekompilowany do formatu kodu bajtów, aby uniknąć kosztów kompilacji w czasie każde wywołanie skryptu. Dzięki temu wywołań procedury składowane są szybkie i ma niewielki rozmiar.
+Procedur składowanych, wyzwalaczy i funkcji UDF są niejawnie prekompilowany do formatu kodu bajtów, aby uniknąć kosztów kompilacji w czasie każde wywołanie skryptu. Wstępna kompilacja zapewnia wywołania procedur składowanych jest szybkie i ma niewielki rozmiar.
 
 ## <a name="client-sdk-support"></a>Obsługa zestawu SDK klienta
 Oprócz Azure DB rozwiązania Cosmos [Node.js](sql-api-sdk-node.md) interfejsu API, bazy danych Azure rozwiązania Cosmos ma [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript ](http://azure.github.io/azure-documentdb-js/), i [zestawów SDK Python](sql-api-sdk-python.md) dla funkcji API SQL. Procedur składowanych, wyzwalaczy i funkcji UDF można tworzyć i wykonywane przy użyciu dowolnej z tych zestawów SDK oraz. Poniższy przykład przedstawia sposób tworzenia i wykonywanie procedury przechowywanej za pomocą klienta programu .NET. Należy zwrócić uwagę, jak przekazany do procedury składowanej w formacie JSON i odczytywania typów .NET.
@@ -723,7 +723,7 @@ I w poniższym przykładzie pokazano, jak utworzyć funkcji zdefiniowanej przez 
     }
 
 ## <a name="rest-api"></a>Interfejs API REST
-Wszystkie operacje bazy danych rozwiązania Cosmos Azure mogą być wykonywane w sposób RESTful. Procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika może być zarejestrowany w kolekcji przy użyciu metody POST protokołu HTTP. Poniżej przedstawiono przykład sposobu rejestrowania procedury składowanej:
+Wszystkie operacje bazy danych rozwiązania Cosmos Azure mogą być wykonywane w sposób RESTful. Procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika może być zarejestrowany w kolekcji przy użyciu metody POST protokołu HTTP. Poniższy przykład przedstawia sposób rejestrowania procedury składowanej:
 
     POST https://<url>/sprocs/ HTTP/1.1
     authorization: <<auth>>
@@ -757,7 +757,7 @@ To przechowywane procedury może następnie być wykonywane przez wystawienie ż
     [ { "name": "TestDocument", "book": "Autumn of the Patriarch"}, "Price", 200 ]
 
 
-W tym miejscu dane wejściowe procedury składowanej jest przekazywany w treści żądania. Należy pamiętać, że dane wejściowe jest przekazywany jako tablica JSON parametrów wejściowych. Procedura składowana przyjmuje pierwszej danej wejściowej jako dokument, który jest treść odpowiedzi. Otrzymaliśmy odpowiedzi jest następujący:
+W tym miejscu dane wejściowe procedury składowanej jest przekazywany w treści żądania. Dane wejściowe są przekazywane jako tablica JSON parametrów wejściowych. Procedura składowana przyjmuje pierwszej danej wejściowej jako dokument, który jest treść odpowiedzi. Odpowiedź, który pojawi się następująco:
 
     HTTP/1.1 200 OK
 
@@ -793,9 +793,9 @@ Wyzwalacze, w przeciwieństwie do procedur składowanych, nie można wykonać be
 W tym miejscu przed wyzwalacz, który ma działać z tym żądaniem jest określony w nagłówku x-ms-documentdb-pre-trigger-include. Odpowiednio żadne po wyzwalacze są podane w nagłówku x-ms-documentdb-post-trigger-include. Zarówno przed i po wyzwalaczy można określić dla danego żądania.
 
 ## <a name="sample-code"></a>Przykładowy kod
-Można znaleźć więcej przykładów kodu po stronie serwera (w tym [usuwanie zbiorcze](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), i [aktualizacji](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) na naszych [repozytorium GitHub](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
+Można znaleźć więcej przykładów kodu po stronie serwera (w tym [usuwanie zbiorcze](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), i [aktualizacji](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) w [repozytorium GitHub](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
 
-Chcesz udostępnić świetny procedury składowanej? Wyślij żądanie ściągnięcia! 
+Chcesz udostępnić świetny procedury składowanej? przyczyniają się do repozytorium i Utwórz żądanie ściągnięcia! 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu jednego lub więcej procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika utworzonych można załadować je i wyświetlić je w portalu Azure za pomocą Eksploratora danych.
@@ -803,7 +803,7 @@ Po utworzeniu jednego lub więcej procedur składowanych, wyzwalaczy i funkcji z
 Można również znaleźć następujące odwołania i zasoby przydatne w ścieżce, aby dowiedzieć się więcej na temat programowania po stronie serwera bazy danych Azure rozwiązania Cosmos:
 
 * [Zestawy SDK Azure rozwiązania Cosmos bazy danych](sql-api-sdk-dotnet.md)
-* [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
+* [Studio usługi DocumentDB](https://github.com/mingaliu/DocumentDBStudio/releases)
 * [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Rozszerzalność bezpieczne i przenośnych bazy danych](http://dl.acm.org/citation.cfm?id=276339) 

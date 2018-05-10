@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -29,34 +29,46 @@ ms.lasthandoff: 03/30/2018
 
 ![Eksplorator metryk usługi Application Insights](media/functions-monitoring/metrics-explorer.png)
 
-Funkcje ma wbudowaną funkcję monitorowania, który nie korzysta z usługi Application Insights. Firma Microsoft zaleca usługi Application Insights, ponieważ oferuje więcej danych i lepsze metody do analizowania danych. Informacje o monitorowaniu wbudowanych, zobacz [ostatniej sekcji tego artykułu](#monitoring-without-application-insights).
+Ma również funkcje [wbudowanych monitorowania, który nie korzysta z usługi Application Insights](#monitoring-without-application-insights). Firma Microsoft zaleca usługi Application Insights, ponieważ oferuje więcej danych i lepsze metody do analizowania danych.
 
-## <a name="enable-application-insights-integration"></a>Włącz integrację usługi Application Insights
+## <a name="application-insights-pricing-and-limits"></a>Cennik usługi Application Insights i limity
 
-Dla aplikacji funkcja do wysyłania danych do usługi Application Insights należy znać klucza Instrumentacji wystąpienia usługi Application Insights. Istnieją dwa sposoby dokonanie takiego połączenia w [portalu Azure](https://portal.azure.com):
+Można wypróbować integracji usługi Application Insights dla aplikacji funkcja bezpłatnie. Jednak brak dzienny limit ilości danych, które mogą być przetwarzane bezpłatnie i może osiągnęła limit podczas testowania. Platforma Azure udostępnia portal i wiadomości e-mail powiadomienia po Zbliżasz dziennego limitu.  Ale jeśli pominięte alertów i osiągnął limit, nowe dzienniki nie będzie dłużej wyświetlane w zapytaniach usługi Application Insights. Dlatego należy pamiętać o granicy, aby uniknąć niepotrzebnych czasu rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [zarządzać woluminem cennik i danych w usłudze Application Insights](../application-insights/app-insights-pricing.md).
 
-* [Utwórz połączony wystąpienie usługi Application Insights, podczas tworzenia aplikacji funkcji](#new-function-app).
-* [Połącz wystąpienie usługi Application Insights do istniejącej aplikacji funkcji](#existing-function-app).
+## <a name="enable-app-insights-integration"></a>Włącz integrację usługi App Insights
+
+Dla aplikacji funkcja do wysyłania danych do usługi Application Insights należy znać klucz Instrumentacji zasobu usługi Application Insights. Klucz musi być wprowadzona w polu Ustawienie aplikacji o nazwie APPINSIGHTS_INSTRUMENTATIONKEY.
+
+Można skonfigurować tego połączenia w [portalu Azure](https://portal.azure.com):
+
+* [Automatycznie dla nowej aplikacji funkcji](#new-function-app)
+* [Ręcznie połączyć zasobu usługi App Insights](#manually-connect-an-app-insights-resource)
 
 ### <a name="new-function-app"></a>Nowa aplikacja funkcji
 
-Włącz usługę Application Insights w aplikacji funkcji **Utwórz** strony:
+1. Przejdź do aplikacji funkcji **Utwórz** strony.
 
 1. Ustaw **usługi Application Insights** przełącznika **na**.
 
 2. Wybierz **Application Insights lokalizacji**.
 
+   Wybierz region najbliższy region aplikacji funkcji w [Azure geograficzne](https://azure.microsoft.com/global-infrastructure/geographies/) miejsce do przechowywania danych.
+
    ![Włącz usługę Application Insights podczas tworzenia aplikacji funkcji](media/functions-monitoring/enable-ai-new-function-app.png)
 
-### <a name="existing-function-app"></a>Istniejących aplikacji — funkcja
+3. Wprowadź wymagane informacje.
 
-Pobierz klucz Instrumentacji i zapisz go w aplikacji funkcji:
+1. Wybierz pozycję **Utwórz**.
 
-1. Utwórz wystąpienie usługi Application Insights. Ustaw typ aplikacji **ogólne**.
+Następnym krokiem jest [wyłączyć rejestrowanie wbudowanych](#disable-built-in-logging).
 
-   ![Utwórz wystąpienie usługi Application Insights, wpisz ogólne](media/functions-monitoring/ai-general.png)
+### <a name="manually-connect-an-app-insights-resource"></a>Ręcznie połączyć zasobu usługi App Insights 
 
-2. Kopiowanie klucza Instrumentacji z **Essentials** strony wystąpienia usługi Application Insights. Umieść kursor nad koniec wyświetlane wartości klucza do pobrania **kliknij, aby skopiować** przycisku.
+1. Utwórz zasób usługi Application Insights. Ustaw typ aplikacji **ogólne**.
+
+   ![Tworzenie zasobu usługi Application Insights, wpisz ogólne](media/functions-monitoring/ai-general.png)
+
+2. Kopiowanie klucza Instrumentacji z **Essentials** strony zasobu usługi Application Insights. Umieść kursor nad koniec wyświetlane wartości klucza do pobrania **kliknij, aby skopiować** przycisku.
 
    ![Skopiuj klucz Instrumentacji usługi Application Insights](media/functions-monitoring/copy-ai-key.png)
 
@@ -70,13 +82,46 @@ Pobierz klucz Instrumentacji i zapisz go w aplikacji funkcji:
 
 Po włączeniu usługi Application Insights, zaleca się wyłączenie [rejestrowania wbudowanych, korzystającym z magazynu Azure](#logging-to-storage). Wbudowane rejestrowania jest przydatna przy testowaniu z kategorii lekkich obciążeń, ale nie jest przeznaczony do użycia w środowisku produkcyjnym duże obciążenie. Do produkcji monitorowania, zaleca się usługi Application Insights. Jeśli wbudowane rejestrowania jest używany w środowisku produkcyjnym, rekord rejestrowania mogą być niekompletne z powodu dławienia w magazynie Azure.
 
-Aby wyłączyć rejestrowanie wbudowanych, należy usunąć `AzureWebJobsDashboard` ustawienia aplikacji. Aby dowiedzieć się, jak usunąć ustawienia aplikacji w portalu Azure, zobacz **ustawienia aplikacji** sekcji [jak zarządzać aplikacji funkcji](functions-how-to-use-azure-function-app-settings.md#settings).
+Aby wyłączyć rejestrowanie wbudowanych, należy usunąć `AzureWebJobsDashboard` ustawienia aplikacji. Aby dowiedzieć się, jak usunąć ustawienia aplikacji w portalu Azure, zobacz **ustawienia aplikacji** sekcji [jak zarządzać aplikacji funkcji](functions-how-to-use-azure-function-app-settings.md#settings). Przed usunięciem ustawienia aplikacji, upewnij się, że żadnych istniejących funkcji w tej samej aplikacji funkcja użyć jej do wyzwalaczy usługi Azure Storage lub powiązań.
 
-Po włączeniu usługi Application Insights i Wyłącz rejestrowanie wbudowanych, **Monitor** karta funkcji w portalu Azure umożliwia przejście do usługi Application Insights.
+## <a name="view-telemetry-in-monitor-tab"></a>Dane telemetryczne wyświetleń na karcie Monitor
 
-## <a name="view-telemetry-data"></a>Wyświetlanie danych telemetrii
+Po skonfigurowaniu integracji usługi Application Insights opisane w poprzednich sekcjach, można wyświetlić dane telemetryczne w **Monitor** kartę.
 
-Aby przejść do połączonych wystąpienia usługi Application Insights z funkcji aplikacji w portalu, wybierz **usługi Application Insights** łącze w aplikacji funkcji **omówienie** strony.
+1. Na stronie aplikacji funkcji wybierz funkcję, która ma co najmniej raz uruchomić po usługi Application Insights został skonfigurowany, a następnie wybierz **Monitor** kartę.
+
+   ![Wybierz kartę monitora](media/functions-monitoring/monitor-tab.png)
+
+2. Wybierz **Odśwież** okresowo, dopóki nie zostanie wyświetlona lista wywołania funkcji.
+
+   Może potrwać do 5 minut na liście w celu wyświetlenia, ze względu na sposób dane telemetryczne klienta partii w celu przesłania go do serwera. (Nie dotyczy to opóźnienie [strumień na żywo metryki](../application-insights/app-insights-live-stream.md). Czy usługa łączy się z hostem funkcji podczas ładowania strony, dlatego dzienniki są przesyłane strumieniowo bezpośrednio do strony.)
+
+   ![Lista wywołań](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+2. Aby wyświetlić dzienniki dla wywołania określonej funkcji, wybierz **data** łącze kolumny dla tego wywołania.
+
+   ![Łącze Szczegóły wywołania](media/functions-monitoring/invocation-details-link-ai.png)
+
+   Dane wyjściowe rejestrowania dla tego wywołania jest wyświetlana w nowej strony.
+
+   ![Szczegóły wywołania](media/functions-monitoring/invocation-details-ai.png)
+
+Obie strony (wywołanie listy i szczegółów), łącze do kwerendy analizy Insights aplikacji, która pobiera dane:
+
+![Uruchom w usłudze Application Insights](media/functions-monitoring/run-in-ai.png)
+
+![Lista wywołania Insights Analytics aplikacji](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+Z tych kwerend widać, że listy wywołania jest ograniczona do ostatniego 30 dni i nie więcej niż 20 wierszy (`where timestamp > ago(30d) | take 20`) i jest na liście szczegóły wywołania w ciągu ostatnich 30 dni bez ograniczeń.
+
+Aby uzyskać więcej informacji, zobacz [zapytania dane telemetryczne](#query-telemetry-data) dalszej części tego artykułu.
+
+## <a name="view-telemetry-in-app-insights"></a>Dane telemetryczne wyświetleń w usłudze App Insights
+
+Aby otworzyć usługę Application Insights z funkcji aplikacji w portalu Azure, wybierz **usługi Application Insights** łącze w **skonfigurować funkcje** części aplikacji funkcji **—Omówienie** strony.
+
+![Łącze aplikacji szczegółowe informacje na stronie Przegląd](media/functions-monitoring/ai-link.png)
+
 
 Aby uzyskać informacje o sposobie używania usługi Application Insights, zobacz [dokumentacji usługi Application Insights](https://docs.microsoft.com/azure/application-insights/). W tej sekcji przedstawiono kilka przykładów sposobu wyświetlania danych w usłudze Application Insights. Jeśli już znasz usługi Application Insights, można przejść bezpośrednio do [sekcje zawierają informacje dotyczące konfigurowania i dostosowywania danych telemetrycznych](#configure-categories-and-log-levels).
 
@@ -256,7 +301,7 @@ Jak wspomniano w poprzedniej sekcji, środowisko uruchomieniowe agreguje dane do
 
 ## <a name="configure-sampling"></a>Skonfiguruj pobierania próbek
 
-Usługa Application Insights ma [próbkowania](../application-insights/app-insights-sampling.md) funkcja, która może chronić od wytwarzania zbyt dużej ilości danych telemetrycznych w czasie z obciążenia szczytowego. Liczba elementów danych telemetrycznych przekracza określonej wartości, usługi Application Insights uruchamia losowo zignorowanie niektórych elementów przychodzących. Można skonfigurować próbkowania w *host.json*.  Oto przykład:
+Usługa Application Insights ma [próbkowania](../application-insights/app-insights-sampling.md) funkcja, która może chronić od wytwarzania zbyt dużej ilości danych telemetrycznych w czasie z obciążenia szczytowego. Liczba elementów danych telemetrycznych przekracza określonej wartości, usługi Application Insights uruchamia losowo zignorowanie niektórych elementów przychodzących. Domyślne ustawienie maksymalnej liczby elementów na sekundę wynosi 5. Można skonfigurować próbkowania w *host.json*.  Oto przykład:
 
 ```json
 {
@@ -489,13 +534,19 @@ Aby zgłosić problem w integracji usługi Application Insights w funkcjach lub 
 
 ## <a name="monitoring-without-application-insights"></a>Monitorowanie bez usługi Application Insights
 
-Zalecamy usługi Application Insights dla funkcji monitorowania, ponieważ oferuje więcej danych i lepsze metody do analizowania danych. Ale można również znaleźć dzienników i danych telemetrycznych na stronach portalu Azure dla aplikacji funkcja.
+Zalecamy usługi Application Insights dla funkcji monitorowania, ponieważ oferuje więcej danych i lepsze metody do analizowania danych. Ale jeśli wolisz systemu wbudowanych rejestrowania, który używa usługi Azure Storage, można w dalszym używać.
 
 ### <a name="logging-to-storage"></a>Rejestrowanie w magazynie
 
-Rejestrowanie wbudowanych używa konta magazynu określony w ciągu połączenia w `AzureWebJobsDashboard` ustawienia aplikacji. Jeśli danego ustawienia aplikacji jest skonfigurowana, zostaną wyświetlone dane rejestrowania w portalu Azure. W zasobie magazynu, przejdź do plików, wybierz usługę plików dla funkcji, a następnie przejdź do `LogFiles > Application > Functions > Function > your_function` do znajduje się w pliku dziennika. Na stronie aplikacji funkcji wybierz funkcję, a następnie wybierz **Monitor** kartę i uzyskać listę wykonaniami funkcji. Wybierz wykonywania funkcji, aby sprawdzić czas trwania, danych wejściowych, błędy i skojarzone pliki dziennika.
+Rejestrowanie wbudowanych używa konta magazynu określony w ciągu połączenia w `AzureWebJobsDashboard` ustawienia aplikacji. Na stronie aplikacji funkcji wybierz funkcję, a następnie wybierz **Monitor** karcie i pozostawić ją w widoku klasycznym.
 
-Jeśli używasz usługi Application Insights i mieć [wbudowanych rejestrowanie wyłączone](#disable-built-in-logging), **Monitor** kartę przejście do usługi Application Insights.
+![Przełącz do widoku klasycznego](media/functions-monitoring/switch-to-classic-view.png)
+
+ Możesz uzyskać listę wykonaniami funkcji. Wybierz wykonywania funkcji, aby sprawdzić czas trwania, danych wejściowych, błędy i skojarzone pliki dziennika.
+
+Jeśli wcześniej włączona usługi Application Insights, ale teraz ma nastąpić przejście do rejestrowania wbudowanych, wyłącz usługi Application Insights ręcznie, a następnie wybierz **Monitor** kartę. Aby wyłączyć integrację usługi Application Insights, należy usunąć ustawienie aplikacji APPINSIGHTS_INSTRUMENTATIONKEY.
+
+Nawet jeśli **Monitor** karcie są wyświetlane dane usługi Application Insights, zostaną wyświetlone dane dziennika w systemie plików, jeśli nie jest [wyłączone rejestrowania wbudowanych](#disable-built-in-logging). W zasobie magazynu, przejdź do plików, wybierz usługę plików dla funkcji, a następnie przejdź do `LogFiles > Application > Functions > Function > your_function` do znajduje się w pliku dziennika.
 
 ### <a name="real-time-monitoring"></a>Monitorowanie w czasie rzeczywistym
 

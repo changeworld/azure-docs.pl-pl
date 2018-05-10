@@ -1,12 +1,12 @@
 ---
-title: "Lista kontrolna zabezpieczeń bazy danych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw Lista kontrolna zabezpieczeń bazy danych platformy Azure."
+title: Lista kontrolna zabezpieczeń bazy danych platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw Lista kontrolna zabezpieczeń bazy danych platformy Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 37523506369ece144183dba76feb8b23b6c1acb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-checklist"></a>Lista kontrolna zabezpieczeń bazy danych platformy Azure
 
@@ -32,7 +32,7 @@ Należą do nich:
 -   Bezpieczne połączenie z bazą danych przy użyciu bezpiecznego połączenia ciągów
 -   Użyj zarządzania dostępem
 -   Szyfrowanie danych
--   Inspekcja bazy danych SQL
+-   Inspekcja usługi SQL Database
 -   Wykrywanie zagrożeń bazy danych SQL
 
 ## <a name="introduction"></a>Wprowadzenie
@@ -57,8 +57,8 @@ Zalecamy przeczytanie [najlepsze rozwiązania zabezpieczeń bazy danych Azure](h
 ## <a name="conclusion"></a>Podsumowanie
 Bazy danych platformy Azure to platforma niezawodne bazy danych, z pełnym zakresem funkcji zabezpieczeń, które spełniają wymagania organizacyjne i przepisami zgodności wiele. Można łatwo chronić dane przez kontrolowanie fizyczny dostęp do danych i za pomocą różnych opcji zabezpieczeń danych w pliku, kolumny lub poziomie wiersza niewidocznego szyfrowania danych, szyfrowanie na poziomie komórki lub zabezpieczenia na poziomie wiersza. Zawsze zaszyfrowane umożliwia również operacji względem zaszyfrowane dane, uproszczeniu procesu aktualizacji aplikacji. Z kolei dostęp do inspekcji Dzienniki aktywności bazy danych SQL zawiera informacje, które są potrzebne, co należy wiedzieć, jak i kiedy jest uzyskiwany dostęp do danych.
 
-## <a name="next-steps"></a>Następne kroki
-Można zwiększyć ochrony bazy danych przed złośliwymi użytkownikami lub nieautoryzowanego dostępu, wystarczy kilka prostych kroków. W tym samouczku dowiesz się:
+## <a name="next-steps"></a>Kolejne kroki
+W kilku prostych krokach możesz poprawić zabezpieczenia bazy danych, aby chronić ją przed złośliwymi użytkownikami i nieautoryzowanym dostępem. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 - Konfigurowanie [reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) serwera i lub bazy danych.
 - Ochrona danych za pomocą [szyfrowania](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).

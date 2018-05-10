@@ -1,21 +1,21 @@
 ---
-title: "Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska .NET"
-description: "Samouczek — Równoległe transkodowanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch .NET"
+title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska .NET
+description: Samouczek — Równoległe transkodowanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch .NET
 services: batch
 author: dlepow
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1100f8fddcd2f802b5f38e0b9789bc9ec359e03a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -38,7 +38,7 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 * [Zintegrowane środowisko projektowe programu Visual Studio](https://www.visualstudio.com/vs) (Visual Studio 2015 lub nowsza wersja). 
 
-* Konto usługi Batch i powiązane konto magazynu ogólnego przeznaczenia. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
+* Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 
 * [64-bitowa wersja narzędzia ffmpeg 3.4 dla systemu Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (plik zip). Pobierz plik zip na komputer lokalny. Na potrzeby tego samouczka potrzebujesz tylko pliku zip. Nie musisz go rozpakowywać ani instalować lokalnie. 
 
@@ -280,11 +280,11 @@ for (int i = 0; i < inputFiles.Count; i++)
 batchClient.JobOperations.AddTask(jobId, tasks);
 ```
 
-### <a name="monitor-tasks"></a>Monitorowanie zadań podrzędnych
+### <a name="monitor-tasks"></a>Monitorowanie podzadań
 
 Po dodaniu zadań podrzędnych do zadania usługa Batch automatycznie tworzy kolejkę zadań podrzędnych i planuje ich wykonanie w węzłach obliczeniowych powiązanej puli. Na podstawie określonych przez użytkownika ustawień usługa Batch obsługuje dodawanie zadań podrzędnych do kolejki, ich planowanie, ponawianie prób ich wykonania oraz inne czynności administracyjne. 
 
-Istnieje wiele sposobów, w jakie można monitorować wykonanie zadań podrzędnych. Ta przykładowa aplikacja definiuje metodę `MonitorTasks`, umożliwiającą tylko raportowanie zakończenia zadań podrzędnych oraz ich powodzenia lub niepowodzenia. Kod metody `MonitorTasks` określa parametr [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel), aby efektywnie wybrać tylko minimum informacji o zadaniach podrzędnych. Następnie tworzy funkcję [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor), która udostępnia narzędzia do monitorowania stanu zadań podrzędnych. W przypadku metody `MonitorTasks` przykładowa aplikacja czeka, aż wszystkie zadania podrzędne osiągną stan `TaskState.Completed` w określonym czasie. Następnie kończy zadanie i zgłasza wszystkie zadania podrzędne, które zostały ukończone, ale w przypadku których mógł wystąpić błąd, na przykład niezerowy kod zakończenia.
+Istnieje wiele sposobów, w jakie można monitorować wykonanie podzadań. Ta przykładowa aplikacja definiuje metodę `MonitorTasks`, umożliwiającą tylko raportowanie zakończenia zadań podrzędnych oraz ich powodzenia lub niepowodzenia. Kod metody `MonitorTasks` określa parametr [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel), aby efektywnie wybrać tylko minimum informacji o zadaniach podrzędnych. Następnie tworzy funkcję [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor), która udostępnia narzędzia do monitorowania stanu zadań podrzędnych. W przypadku metody `MonitorTasks` przykładowa aplikacja czeka, aż wszystkie zadania podrzędne osiągną stan `TaskState.Completed` w określonym czasie. Następnie kończy zadanie i zgłasza wszystkie zadania podrzędne, które zostały ukończone, ale w przypadku których mógł wystąpić błąd, na przykład niezerowy kod zakończenia.
 
 ```csharp
 TaskStateMonitor taskStateMonitor = batchClient.Utilities.CreateTaskStateMonitor();

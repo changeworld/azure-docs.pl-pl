@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.openlocfilehash: 3bd87090df048f2b67de88f5202998af02d42491
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 05/07/2018
+ms.openlocfilehash: 54bf0cd80d1fcc6d761f977484a1a5539d581361
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych dostępne zadania usługi analiza strumienia Azure. Dane wyjściowe umożliwiają przechowywanie i Zapisz wyniki zadania usługi analiza strumienia. Za pomocą danych wyjściowych, można wykonać dalszego analiz biznesowych i danych magazynu danych. 
@@ -48,7 +48,7 @@ Strumienia Analytics obsługuje [Azure Data Lake Store](https://azure.microsoft.
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiks, można wybrać format daty, w którym pliki są organizowane. Przykład: RRRR/MM/dd. |
 |Format godziny | Opcjonalny. Jeśli czas nie jest używany w ścieżce prefiks, określ format czasu, w którym pliki są organizowane. Obecnie jedyna obsługiwana wartość to HH. |
 | Format serializacji zdarzeń | Format serializacji w danych wyjściowych. JSON, CSV i Avro są obsługiwane.| 
-| Encoding | Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 to jedyny obsługiwany obecnie format kodowania.|
+| Kodowanie | Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 to jedyny obsługiwany obecnie format kodowania.|
 | Ogranicznik | Dotyczy tylko serializacji woluminów CSV. Analiza strumienia obsługuje różne ograniczniki dla serializacji danych CSV. Obsługiwane wartości to przecinek, średnik, miejsca, karta i pionowy pasek.|
 | Format | Dotyczy tylko serializacji JSON. Rozdzielone Określa, czy wynik jest formatowany przez poszczególne obiekty JSON rozdzielone znakiem nowego wiersza. Tablica Określa, czy dane wyjściowe są sformatowane jako tablica obiektów JSON. Ta tablica jest zamknięty, tylko wtedy, gdy zadanie zostanie zatrzymane lub Stream Analytics została przeniesiona następne okno czasu. Ogólnie rzecz biorąc, zaleca się używania wiersza oddzielone JSON, ponieważ nie wymaga żadnej specjalnej obsługi, gdy wciąż trwa zapisywanie pliku wyjściowego do.|
 
@@ -86,22 +86,24 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenia wyjści
 | Konto magazynu | Nazwa konta magazynu, w którym wysyłania danych wyjściowych. |
 | Klucz konta magazynu | Klucz tajny, skojarzone z kontem magazynu. |
 | Kontener magazynu | Kontenery umożliwiają logiczne grupowanie dla obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Przekazywanie obiektu blob do usługi Blob, należy określić kontener dla tego obiektu blob. |
-| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do zapisywania obiektów blob w określonym kontenerze. </br> We wzorcu ścieżkę można umożliwia określenie częstotliwości, które obiekty BLOB są zapisywane w co najmniej jedno wystąpienie następujących zmiennych 2: </br> {date} {time} </br> Przykład 1: Klaster1/dzienniki / {date} / {time} </br> Przykład 2: Klaster1/dzienniki / {date} <BR> <BR> Następującej konwencji nazewnictwa plików są następujące: </br> {Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension </br></br> Przykład danych wyjściowych plików: </br>Myoutput/20170901/00/45434_gguid_1.csv </br> Myoutput/20170901/01/45434_gguid_1.csv |
+| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do zapisywania obiektów blob w określonym kontenerze. </br></br> We wzorcu ścieżka można użyć co najmniej jedno wystąpienie zmiennych czasu Data określenie częstotliwości, które obiekty BLOB są zapisywane: </br> {date} {time} </br> </br>Może także określić jedną nazwę pola {kolumna} z danych do obiektów blob z partycji przez, gdzie nazwa pola jest alfanumeryczne i może zawierać spacji, łączniki i podkreślenia. Ograniczenia dotyczące pól niestandardowych są następujące: <ul><li>Przypadek niedostatecznej (nie różnic między kolumny "ID" i kolumnie "id")</li><li>Zagnieżdżone pola nie są dozwolone (zamiast tego użyć aliasu w zapytaniu zadania do pola "spłaszczenia")</li><li>Nie można użyć wyrażenia jako nazwa pola</li></ul>Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3: Klaster1 / {client_id} / {date} / {time}</li><li>Przykład 4: Klaster1 / {myField} gdzie zapytanie jest: Wybierz data.myField jako myField z danych wejściowych;</li></ul><BR> Następującej konwencji nazewnictwa plików są następujące: </br> {Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension </br></br> Przykład danych wyjściowych plików: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiks, można wybrać format daty, w którym pliki są organizowane. Przykład: RRRR/MM/dd. |
 | Format godziny | Opcjonalny. Jeśli czas nie jest używany w ścieżce prefiks, określ format czasu, w którym pliki są organizowane. Obecnie jedyna obsługiwana wartość to HH. |
 | Format serializacji zdarzeń | Format serializacji w danych wyjściowych.  JSON, CSV i Avro są obsługiwane.
-| Encoding | Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 to jedyny obsługiwany obecnie format kodowania. |
+| Kodowanie | Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 to jedyny obsługiwany obecnie format kodowania. |
 | Ogranicznik | Dotyczy tylko serializacji woluminów CSV. Analiza strumienia obsługuje różne ograniczniki dla serializacji danych CSV. Obsługiwane wartości to przecinek, średnik, miejsca, karta i pionowy pasek. |
 | Format | Dotyczy tylko serializacji JSON. Rozdzielone Określa, czy wynik jest formatowany przez poszczególne obiekty JSON rozdzielone znakiem nowego wiersza. Tablica Określa, czy dane wyjściowe są sformatowane jako tablica obiektów JSON. Ta tablica jest zamknięty, tylko wtedy, gdy zadanie zostanie zatrzymane lub Stream Analytics została przeniesiona następne okno czasu. Ogólnie rzecz biorąc, zaleca się używania wiersza oddzielone JSON, ponieważ nie wymaga żadnej specjalnej obsługi, gdy wciąż trwa zapisywanie pliku wyjściowego do. |
 
 Korzystając z magazynu obiektów blob jako dane wyjściowe, nowy plik jest tworzony w obiekcie blob w następujących przypadkach:
 
-* Jeśli plik przekracza maksymalną liczbę dozwolonych bloków. Maksymalną dozwoloną liczbę bloków może osiągnąć bez osiągnięcia rozmiar maksymalny dozwolony obiektu blob. Na przykład w przypadku wysoki współczynnik danych wyjściowych widać więcej bajtów na blok i rozmiar pliku jest większy. Jeśli szybkość, z danych wyjściowych jest niska, każdy blok ma mniejszą ilość danych, a rozmiar pliku jest mniejsza.
+* Jeśli plik przekracza maksymalną liczbę dozwolonych bloków (obecnie 50 000). Maksymalną dozwoloną liczbę bloków może osiągnąć bez osiągnięcia rozmiar maksymalny dozwolony obiektu blob. Na przykład w przypadku wysoki współczynnik danych wyjściowych widać więcej bajtów na blok i rozmiar pliku jest większy. Jeśli szybkość, z danych wyjściowych jest niska, każdy blok ma mniejszą ilość danych, a rozmiar pliku jest mniejsza.
 * Jeśli zmiany schematu w danych wyjściowych i format wyjściowy wymaga stałego schematu (CSV i Avro).  
-* Jeśli zadanie zostanie ponownie uruchomiony albo zewnętrznie lub wewnętrzny ponownego uruchomienia zadania.  
+* Jeśli zadanie zostanie ponownie uruchomiony, zewnętrznie przez użytkownika jej zatrzymania, a następnie uruchomiona lub wewnętrznie konserwacji lub błąd podczas odzyskiwania systemu.  
 * Jeśli zapytanie pełni jest podzielona na partycje, tworzony jest nowy plik dla każdej partycji w danych wyjściowych.  
 * Jeśli plik lub kontenera konta magazynu jest usunięty przez użytkownika.  
 * Jeśli dane wyjściowe po raz partycjonowanego wzorca prefiks ścieżki, nowy obiekt blob jest używany podczas kwerenda przechodzi do następnej godziny.
+* Jeśli dane wyjściowe jest podzielona na partycje według pola niestandardowe, nowy obiekt blob jest tworzony na klucz partycji, jeśli nie istnieje.
+*   Jeśli pole niestandardowe, których liczebność klucza partycji przekracza 8000 partycjonowanego dane wyjściowe, można utworzyć nowego obiektu blob na klucz partycji.
 
 ## <a name="event-hub"></a>Centrum zdarzeń
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) usługa jest wysoce skalowalna publikowania / subskrypcji systemem zbierania zdarzeń. Może on zbierać miliony zdarzeń na sekundę. Jeden korzystanie z Centrum zdarzeń jako dane wyjściowe jest, gdy dane wejściowe zadania przesyłania strumieniowego innego staje się dane wyjściowe zadania usługi analiza strumienia.
@@ -117,7 +119,7 @@ Istnieje kilka parametrów, które są potrzebne do skonfigurowania strumieni da
 | Klucz zasad centrum zdarzeń | Klucz dostępu współużytkowanego używany do uwierzytelniania dostępu do przestrzeni nazw Centrum zdarzeń. |
 | Kolumna klucza partycji [opcjonalnie] | Ta kolumna zawiera klucz partycji dla danych wyjściowych Centrum zdarzeń. |
 | Format serializacji zdarzeń | Format serializacji w danych wyjściowych.  JSON, CSV i Avro są obsługiwane. |
-| Encoding | Dla woluminu CSV i JSON UTF-8 to jedyny obsługiwany format kodowania w tej chwili. |
+| Kodowanie | Dla woluminu CSV i JSON UTF-8 to jedyny obsługiwany format kodowania w tej chwili. |
 | Ogranicznik | Dotyczy tylko serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, karta i pionowy pasek. |
 | Format | Dotyczy tylko serializacji JSON. Rozdzielone Określa, czy wynik jest formatowany przez poszczególne obiekty JSON rozdzielone znakiem nowego wiersza. Tablica Określa, czy dane wyjściowe są sformatowane jako tablica obiektów JSON. Ta tablica jest zamknięty, tylko wtedy, gdy zadanie zostanie zatrzymane lub Stream Analytics została przeniesiona następne okno czasu. Ogólnie rzecz biorąc, zaleca się używania wiersza oddzielone JSON, ponieważ nie wymaga żadnej specjalnej obsługi, gdy wciąż trwa zapisywanie pliku wyjściowego do. |
 
@@ -218,7 +220,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenia kolejki
 | Nazwa zasad kolejki |Podczas tworzenia kolejki można też utworzyć zasady dostępu współużytkowanego na karcie Konfigurowanie kolejki. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia ustawić i klucze dostępu. |
 | Klucz zasad kolejki |Dostęp współdzielony klucz używany do uwierzytelniania dostępu do przestrzeni nazw usługi Service Bus |
 | Format serializacji zdarzeń |Format serializacji w danych wyjściowych.  JSON, CSV i Avro są obsługiwane. |
-| Encoding |Dla woluminu CSV i JSON UTF-8 to jedyny obsługiwany format kodowania w tej chwili |
+| Kodowanie |Dla woluminu CSV i JSON UTF-8 to jedyny obsługiwany format kodowania w tej chwili |
 | Ogranicznik |Dotyczy tylko serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, karta i pionowy pasek. |
 | Format |Dotyczy tylko typu JSON. Rozdzielone Określa, czy wynik jest formatowany przez poszczególne obiekty JSON rozdzielone znakiem nowego wiersza. Tablica Określa, czy dane wyjściowe są sformatowane jako tablica obiektów JSON. |
 
@@ -237,7 +239,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenia tabeli 
 | Nazwa zasad tematu |Podczas tworzenia tematu można też utworzyć zasady dostępu współużytkowanego na karcie Konfigurowanie tematu. Wszystkie zasady dostępu współdzielonego ma nazwę, uprawnienia ustawić i klucze dostępu |
 | Klucz zasad tematu |Dostęp współdzielony klucz używany do uwierzytelniania dostępu do przestrzeni nazw usługi Service Bus |
 | Format serializacji zdarzeń |Format serializacji w danych wyjściowych.  JSON, CSV i Avro są obsługiwane. |
-| Encoding |Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 w tej chwili jest obsługiwany tylko format kodowania |
+| Kodowanie |Jeśli przy użyciu formatu CSV lub JSON, należy określić kodowania. UTF-8 w tej chwili jest obsługiwany tylko format kodowania |
 | Ogranicznik |Dotyczy tylko serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, karta i pionowy pasek. |
 
 Liczba partycji jest [na podstawie SKU magistrali usługi i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji to unikatowa wartość dla każdej partycji.

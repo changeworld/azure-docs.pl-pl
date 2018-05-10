@@ -1,6 +1,6 @@
 ---
-title: GPU w usłudze kontenera platformy Azure (AKS)
-description: Użyj GPU w usłudze kontenera platformy Azure (AKS)
+title: GPU z usługi Azure Kubernetes (AKS)
+description: Użyj GPU z usługi Azure Kubernetes (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 6c30c966ad88f904ee652d88abd1717819077d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 1e07845591583c7159958d4e2eb7eeb2f126b75f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="using-gpus-on-aks"></a>Przy użyciu GPU na AKS
+# <a name="using-gpus-on-aks"></a>Przy użyciu procesorów GPU w usłudze AKS
 
 AKS obsługuje tworzenie pul węzła GPU jest włączone. Obecnie platforma Azure udostępnia jednego lub wielu GPU włączone maszyn wirtualnych. Procesor GPU włączone maszyny wirtualne są przeznaczone dla obciążeń obliczeniowych, dużą ilością grafiki i wizualizacji. Lista GPU włączone maszyn wirtualnych można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
 Graficzne są zwykle wymagane przez obciążeń obliczeniowych, takich jak dużą ilością grafiki i obciążeń wizualizacji. Odwołuje się do następujących [dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) ustalenie właściwego rozmiaru maszyny Wirtualnej dla obciążenia.
-Firma Microsoft zaleca minimalny rozmiar `Standard_NC6` dla usługi kontenera platformy Azure (AKS) węzły.
+Firma Microsoft zaleca minimalny rozmiar `Standard_NC6` dla usługi Kubernetes Azure (AKS) węzły.
 
 > [!NOTE]
 > Procesor GPU włączone maszyny wirtualne zawiera specjalne sprzęt, który podlega wyższej dostępności cennik i regionu. Aby uzyskać więcej informacji, zobacz [cennik](https://azure.microsoft.com/pricing/) narzędzia i [dostępność w danym regionie](https://azure.microsoft.com/global-infrastructure/services/) witryny, aby uzyskać więcej informacji.
@@ -50,7 +50,7 @@ az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 
 ## <a name="confirm-gpus-are-schedulable"></a>Upewnij się, że są schedulable GPU
 
-Uruchom następujące polecenia, aby potwierdzić, że są schedulable za pośrednictwem Kubernetes GPU. 
+Uruchom następujące polecenia, aby potwierdzić, że są schedulable za pośrednictwem Kubernetes GPU.
 
 Pobierz bieżącą listę węzłów.
 
@@ -165,7 +165,7 @@ spec:
       volumes:
         - name: nvidia
           hostPath:
-            path: /usr/local/nvidia         
+            path: /usr/local/nvidia
 ```
 
 Użyj [utworzyć kubectl] [ kubectl-create] polecenie do uruchomienia zadania. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.

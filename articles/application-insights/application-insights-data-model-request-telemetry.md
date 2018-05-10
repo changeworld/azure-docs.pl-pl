@@ -1,9 +1,9 @@
 ---
-title: "Model danych Telemetrycznych Insights aplikacji Azure — żądanie Telemetrii | Dokumentacja firmy Microsoft"
-description: "Model danych usługi Insights aplikacji dla dane telemetryczne żądania"
+title: Model danych Telemetrycznych Insights aplikacji Azure — żądanie Telemetrii | Dokumentacja firmy Microsoft
+description: Model danych usługi Insights aplikacji dla dane telemetryczne żądania
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0073f38097ffbebd669754eac5f2d48a620941bf
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: e0bdaf132474d8e5eaac6a9c65093d27d673d343
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Żądanie telemetrii: model danych usługi Application Insights
 
@@ -24,7 +24,7 @@ Element dane telemetryczne żądania (w [usługi Application Insights](app-insig
 
 Żądanie telemetrii obsługuje modelu rozszerzalności standardowe przy użyciu niestandardowych `properties` i `measurements`.
 
-## <a name="name"></a>Nazwa
+## <a name="name"></a>Name (Nazwa)
 
 Nazwa żądania reprezentuje ścieżkę kodu do przetworzenia żądania. Wartość Niski Kardynalność umożliwiają grupowanie lepiej żądań. Dla żądania HTTP reprezentuje metody HTTP i szablon ścieżki adresu URL, takie jak `GET /values/{id}` bez rzeczywistego `id` wartość.
 
@@ -62,7 +62,7 @@ Maksymalna długość: 1024 znaki
 
 ## <a name="success"></a>Powodzenie
 
-Oznaczenia wywołanie powiodła się czy nie. To pole jest wymagane. Jeśli nie Ustaw jawnie na `false` -uznane za udane żądania. Ta wartość `false` Jeśli operacja została przerwana przez wyjątek lub zwrócił błąd o kodzie wynik.
+Oznaczenia wywołanie powiodła się czy nie. Pole jest wymagane. Jeśli nie Ustaw jawnie na `false` -uznane za udane żądania. Ta wartość `false` Jeśli operacja została przerwana przez wyjątek lub zwrócił błąd o kodzie wynik.
 
 Dla aplikacji sieci web usługi Application Insights Definiuj żądanie nie powiodło się, gdy kod odpowiedzi jest mniejsza `400` lub równa `401`. Jeśli to domyślne mapowanie nie są zgodne semantycznego aplikacji istnieją jednak przypadki. Kod odpowiedzi `404` może wskazywać "żadne rekordy", które mogą być częścią regularnego przepływu. Może także wskazywać przerwany link. Przerwane łącza można zaimplementować nawet bardziej zaawansowanych logiki. Przerwane łącza można oznaczyć jako błędy tylko wtedy, gdy te linki znajdują się w tej samej lokacji analizując adres url odwołania. Lub oznaczyć je jako błędy podczas uzyskiwania dostępu do aplikacji mobilnych firmy. Podobnie `301` i `302` wskazuje błąd podczas uzyskiwania dostępu do klienta, który nie obsługuje przekierowania.
 
@@ -78,7 +78,7 @@ Możesz przeczytać więcej w wyniku żądania kodu i kodu stanu w [wpis w blogu
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Pisanie niestandardowych żądanie telemetrii](app-insights-api-custom-events-metrics.md#trackrequest)
 - Zobacz [modelu danych](application-insights-data-model.md) dla modelu danych i typów usługi Application Insights.

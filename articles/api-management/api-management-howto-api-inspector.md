@@ -1,11 +1,11 @@
 ---
-title: "Debugowanie swoje interfejsy API za pomocą śledzenia niepomyślnych żądań w usłudze Azure API Management | Dokumentacja firmy Microsoft"
-description: "Wykonaj kroki w tym samouczku, aby dowiedzieć się, jak przeprowadzać inspekcję czynności w usłudze Azure API Management przetwarzania żądania."
+title: Debugowanie interfejsów API za pomocą funkcji śledzenia żądań w usłudze Azure API Management | Microsoft Docs
+description: Postępuj zgodnie z krokami w tym samouczku, aby dowiedzieć się, jak przeprowadzać inspekcję kroków przetwarzania żądań w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,58 +14,56 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7b9bec7927169b9d820c095a7d11705264e7dcfe
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 4db89b52a3fa9585572322d546d87513da41c3f0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>Debugowanie swoje interfejsy API za pomocą śledzenia niepomyślnych żądań
+# <a name="debug-your-apis-using-request-tracing"></a>Debugowanie interfejsów API za pomocą funkcji śledzenia żądań
 
-W tym samouczku opisano, jak przeprowadzać inspekcję przetwarzania żądania, które zapewniają pomoc podczas debugowania i rozwiązywanie problemów z interfejsu API. 
+W tym samouczku opisano, jak przeprowadzać inspekcję przetwarzania żądań w celu debugowania interfejsu API i rozwiązywania problemów z nim. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wywołanie śledzenia
+> * Śledzenie wywołania
 
 ![Inspektor interfejsu API](media/api-management-howto-api-inspector/api-inspector001.PNG)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
-+ Ponadto Ukończ samouczek następujących: [Import i opublikować swój pierwszy interfejs API](import-and-publish.md).
++ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
++ Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+## <a name="trace-a-call"></a>Śledzenie wywołania
 
-## <a name="trace-a-call"></a>Wywołanie śledzenia
+1. Wybierz pozycję **Interfejsy API**.
+2. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
+3. Wybierz operację **GetSpeakers**.
+4. Przełącz się na kartę **Test**.
+5. Pamiętaj, aby dołączyć nagłówek HTTP o nazwie **Ocp-Apim-Trace** z wartością ustawioną na **true**.
+6. Kliknij przycisk **„Wyślij”** w celu wygenerowania wywoływania interfejsu API. 
+7. Poczekaj na ukończenie wywołania. 
+8. Przejdź na kartę **Śledzenie** w **konsoli interfejsu API**. Możesz kliknąć dowolny z następujących linków, aby przejść bezpośrednio do szczegółowych informacji śledzenia: **dane przychodzące**, **zaplecze**, **dane wychodzące**.
 
-1. Wybierz **interfejsów API**.
-2. Kliknij przycisk **API konferencji pokaz** z listy interfejsu API.
-3. Wybierz **GetSpeakers** operacji.
-4. Przełącz się do **testu** kartę.
-5. Upewnij się, że Dołącz nagłówek HTTP o nazwie **Ocp Apim śledzenia** z wartością ustawioną na **true**.
-6. Kliknij przycisk **"Wyślij"** do wywoływania interfejsu API. 
-7. Poczekaj, aż do ukończenia wywołania. 
-8. Przejdź do **śledzenia** karcie **konsoli interfejsu API**. Można kliknąć dowolną z poniższych linków, aby przejść do śledzenia szczegółowe informacje o: **przychodzących**, **zaplecza**, **wychodzących**.
+    W sekcji **dane przychodzące** widać oryginalne żądanie odebrane przez usługę API Management od wywołującego i wszystkie zasady zastosowane do tego żądania, w tym limit szybkości i zasady set-header dodane w kroku 2.
 
-    W **przychodzących** sekcji Zobacz oryginalnego żądania interfejsu API zarządzania otrzymanych od wywołującego i wszystkie zasady zastosowane do żądania tym limit szybkości i zasad nagłówka set dodaliśmy w kroku 2.
-
-    W **zaplecza** sekcji Zobacz żądania interfejsu API zarządzania wysyłane do zaplecza interfejsu API i otrzymania odpowiedzi.
+    W sekcji **zaplecze** widać żądania wysłane przez usługę API Management do zaplecza interfejsu API i otrzymane odpowiedzi.
     
-    W **wychodzących** sekcji Zobacz wszystkie zasady zastosowane do odpowiedzi przed wysłaniem z powrotem do wywołującego.
+    W sekcji **dane wychodzące** widać wszystkie zasady zastosowane do odpowiedzi przed wysłaniem ich z powrotem do wywołującego.
  
     > [!TIP]
-    > Każdy krok również przedstawia czas, który upłynął od żądania jest odbierany przez interfejs API zarządzania.
+    > Przy każdym kroku widać również czas, jaki upłynął od odebrania żądania przez usługę API Management.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wywołanie śledzenia
+> * Śledzenie wywołania
 
-Przejdź do następnego samouczek:
+Przejdź do następnego samouczka:
 
 > [!div class="nextstepaction"]
-> [Użyj poprawki](api-management-get-started-revise-api.md)
+> [Korzystanie z poprawek](api-management-get-started-revise-api.md)

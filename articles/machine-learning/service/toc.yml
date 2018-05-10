@@ -4,17 +4,17 @@
   expanded: true
   items:
     - name: Informacje o usłudze Azure Machine Learning
-      href: ../desktop-workbench/overview-what-is-azure-ml.md
+      href: overview-what-is-azure-ml.md
     - name: Omówienie zarządzania modelami
       href: ../desktop-workbench/model-management-overview.md
     - name: Inne produkty ML
-      href: ../desktop-workbench/overview-more-machine-learning.md
+      href: overview-more-machine-learning.md
     - name: Co nowego
       href: ../desktop-workbench/azure-machine-learning-release-notes.md
 - name: Przewodniki Szybki start
   items:
     - name: Instalacja i uruchamianie
-      href: ../desktop-workbench/quickstart-installation.md
+      href: quickstart-installation.md
 - name: Samouczki
   items:
     - name: 1. Przygotowywanie danych
@@ -29,6 +29,8 @@
   items:
     - name: Kluczowe pojęcia
       href: ../desktop-workbench/overview-general-concepts.md
+    - name: Akceleratory FPGA
+      href: concept-accelerate-with-fpgas.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Najważniejsze zadania interfejsu wiersza polecenia
@@ -92,8 +94,10 @@
           href: ../desktop-workbench/how-to-read-write-files.md
         - name: Korzystanie z biblioteki MMLSpark
           href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: Operacjonalizowanie modeli
+    - name: Wdrażanie modeli i korzystanie z nich
       items:
+        - name: Wdrażanie modeli do układów FPGA
+          href: how-to-deploy-fpga-web-service.md
         - name: Konfigurowanie zarządzania modelami
           href: ../desktop-workbench/deployment-setup-configuration.md
         - name: Skalowanie klastrów i usług
@@ -142,6 +146,31 @@
           href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
 - name: Dokumentacja
   items:
+    - name: Pakiety języka Python
+      href: reference-python-package-overview.md
+      items:
+        - name: Przetwarzanie obrazów
+          items:
+            - name: Przegląd pakietu i jego instalacja
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision'
+            - name: Tworzenie i wdrażanie modeli klasyfikacji obrazów
+              href: how-to-build-deploy-image-classification-models.md
+            - name: Dokładność modelu
+              href: how-to-improve-accuracy-for-computer-vision-models.md
+        - name: Prognozowanie
+          items:
+            - name: Omówienie i instalacja
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview'
+            - name: Tworzenie i wdrażanie modeli prognozy
+              href: how-to-build-deploy-forecast-models.md
+        - name: Akceleracja FPGA
+          href: reference-fpga-package-overview.md
+        - name: Analiza tekstu
+          items:
+            - name: Omówienie i instalacja
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics'
+            - name: Tworzenie i wdrażanie modeli klasyfikacji tekstu
+              href: how-to-build-deploy-text-classification-models.md
     - name: Przygotowywanie danych
       items:
         - name: Rozszerzenia języka Python na potrzeby przygotowywania danych
@@ -191,13 +220,13 @@
     - name: Często zadawane pytania
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Problemy i ich rozwiązywanie
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
+      href: known-issues-and-troubleshooting-guide.md
     - name: Pomoc techniczna i szkolenia
-      href: ../desktop-workbench/support-for-aml-services.md
+      href: support-for-aml-services.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cennik
-      href: ../desktop-workbench/aml-pricing.md
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: Dostępność w danym regionie
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Zespołowe przetwarzanie danych dla celów naukowych

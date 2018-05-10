@@ -1,9 +1,9 @@
 ---
-title: "Analiza użytkowników, sesji i zdarzeń w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Analiza demograficznych użytkowników aplikacji sieci web."
+title: Analiza użytkowników, sesji i zdarzeń w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Analiza demograficznych użytkowników aplikacji sieci web.
 services: application-insights
-documentationcenter: 
-author: botatoes
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mbullwin; daviste
-ms.openlocfilehash: 1a5380cac08ab32cfea4cf457aed1fb1510099ed
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3ac738d6b3c0f1f3579a9b644a03a01f1509173a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Analiza użytkownikami, sesjami i zdarzeń w usłudze Application Insights
 

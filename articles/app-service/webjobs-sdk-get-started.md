@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 324b578a7736719eb953cab4eca4e9a3e9bfa35d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-the-webjobs-sdk"></a>Wprowadzenie do zestawu SDK zadań Webjob
 
@@ -293,7 +293,7 @@ W tej sekcji Tworzenie i uruchamianie projektu lokalnie i wywołać funkcję prz
 
 ## <a name="add-application-insights-logging"></a>Dodaj rejestrowania usługi Application Insights
 
-Po uruchomieniu projektu na platformie Azure, wykonanie funkcji nie można monitorować, wyświetlając dane wyjściowe konsoli. Rozwiązanie monitorowania, zaleca się [usługi Application Insights](../application-insights/app-insights-overview.md). Procedury dotyczące wyświetlania danych telemetrycznych są podobne do [monitorowanie usługi Azure Functions](../azure-functions/functions-monitoring.md#view-telemetry-data).
+Po uruchomieniu projektu na platformie Azure, wykonanie funkcji nie można monitorować, wyświetlając dane wyjściowe konsoli. Rozwiązanie monitorowania, zaleca się [usługi Application Insights](../application-insights/app-insights-overview.md). Aby uzyskać więcej informacji, zobacz [Monitor usługi Azure Functions](../azure-functions/functions-monitoring.md).
 
 W tej sekcji możesz wykonać następujące zadania, aby skonfigurować rejestrowanie usługi Application Insights przed wdrożeniem na platformie Azure:
 

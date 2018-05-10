@@ -1,9 +1,9 @@
 ---
-title: "Przy użyciu Analytics — narzędzie wyszukiwania zaawansowanego w Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Przy użyciu Analytics, narzędzie zaawansowane wyszukiwanie diagnostycznych z usługi Application Insights. "
+title: Przy użyciu Analytics — narzędzie wyszukiwania zaawansowanego w Azure Application Insights | Dokumentacja firmy Microsoft
+description: 'Przy użyciu Analytics, narzędzie zaawansowane wyszukiwanie diagnostycznych z usługi Application Insights. '
 services: application-insights
-documentationcenter: 
-author: danhadari
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="using-analytics-in-application-insights"></a>Za pomocą analizy w usłudze Application Insights
 [Analiza](app-insights-analytics.md) to funkcja wyszukiwania zaawansowanego [usługi Application Insights](app-insights-overview.md). Te strony opisano język zapytań usługi Analiza dzienników.
@@ -108,8 +108,8 @@ Jeśli uważasz, że nie występują wszystkie wyniki, które miały, istnieje k
     Dobrym rozwiązaniem, aby uniknąć naciśnięcie limit jest. Użyj filtru zakres czasu lub używać operatorów, takich jak:
 
   * [100 najpopularniejszych przez sygnatury czasowej](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
-  * [take 100](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
-  * [Podsumowanie](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
+  * [podejmij 100](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
+  * [Podsumowanie ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
   * [gdzie sygnatury czasowej > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
 
 (Więcej niż 10 KB wierszy chcesz? Należy rozważyć użycie [eksportu ciągłego](app-insights-export-telemetry.md) zamiast tego. Analiza jest przeznaczona dla analizy, a nie podczas pobierania danych pierwotnych).
@@ -143,7 +143,7 @@ Oznacza to, że jeśli Podsumowując pulpicie nawigacyjnym, aby ułatwić sobie 
 Możesz przypinać tabeli do pulpitu nawigacyjnego, jeśli ma cztery lub mniejszą liczbę kolumn. Górne siedmiu wiersze są wyświetlane.
 
 ### <a name="dashboard-refresh"></a>Odświeżanie pulpitu nawigacyjnego
-Wykres przypięty do pulpitu nawigacyjnego jest automatycznie odświeżany przez ponowne uruchomienie zapytania co około godzin. Można również kliknij przycisk Odśwież.
+Wykres przypięty do pulpitu nawigacyjnego jest automatycznie odświeżany przez ponowne uruchomienie zapytania mniej więcej co godzinę. Można również kliknij przycisk Odśwież.
 
 ### <a name="automatic-simplifications"></a>Automatyczne uproszczenia
 

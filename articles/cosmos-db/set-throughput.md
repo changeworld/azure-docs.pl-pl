@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 05/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bede91ed3ffc456740a0eb63ed7a15278e99ebe2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Ustawianie i pobieranie przepływności bazy danych Azure rozwiązania Cosmos kontenerów
 
-Przepływność można ustawić dla kontenerów bazy danych Azure rozwiązania Cosmos w portalu Azure lub za pomocą zestawów SDK klienta. 
+Można ustawić przepływności bazy danych Azure rozwiązania Cosmos kontenerów lub zestaw kontenerów w portalu Azure lub za pomocą zestawów SDK klienta. 
 
 W poniższej tabeli wymieniono dostępne dla kontenerów przepływności:
 
@@ -31,15 +31,18 @@ W poniższej tabeli wymieniono dostępne dla kontenerów przepływności:
             <td valign="top"><p></p></td>
             <td valign="top"><p><strong>Kontener jednej partycji</strong></p></td>
             <td valign="top"><p><strong>Kontener podzielonym na partycje</strong></p></td>
+            <td valign="top"><p><strong>Zbiór kontenerów</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>Przepustowość minimalna</p></td>
             <td valign="top"><p>400 jednostek żądań na sekundę</p></td>
             <td valign="top"><p>1000 jednostek żądania na sekundę</p></td>
+            <td valign="top"><p>50 000 jednostek żądań na sekundę</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maksymalna przepustowość</p></td>
             <td valign="top"><p>10 000 jednostek żądań na sekundę</p></td>
+            <td valign="top"><p>Nieograniczona liczba</p></td>
             <td valign="top"><p>Nieograniczona liczba</p></td>
         </tr>
     </tbody>
@@ -62,6 +65,7 @@ Poniższy fragment kodu pobiera bieżący przepływności i zmieni 500 RU/s. Dla
 
 ```csharp
 // Fetch the offer of the collection whose throughput needs to be updated
+// To change the throughput for a set of containers, use the database's selflink instead of the collection's selflink
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -82,6 +86,7 @@ Poniższy fragment kodu pobiera bieżący przepływności i zmieni 500 RU/s. Kom
 
 ```Java
 // find offer associated with this collection
+// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
 Iterator < Offer > it = client.queryOffers(
     String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
 assertThat(it.hasNext(), equalTo(true));
@@ -131,7 +136,7 @@ Najprostszym sposobem, aby uzyskać dobrą oszacowanie żądania opłat jednostk
 ![Metryki portalu API bazy danych MongoDB][1]
 
 ### <a id="RequestRateTooLargeAPIforMongoDB"></a> Przekraczanie limitów zarezerwowaną przepływnością w interfejsie API bazy danych MongoDB
-Aplikacje, które przekraczają udostępnionej przepływności dla kontenera będzie ograniczony szybkość dopóki stopę zużycia spadnie poniżej elastycznie przepustowość. W przypadku ograniczenia szybkości wewnętrznej bazy danych preemptively zakończy się żądanie z `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API bazy danych MongoDB ma automatycznie ponawiać próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. W przypadku otrzymania wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania próby w aplikacji Błąd procedury obsługi lub [zwiększyć przepływność dla kontenera](set-throughput.md).
+Aplikacje, które przekraczają udostępnionej przepływności dla kontenera lub grupy kontenerów będzie ograniczony szybkość dopóki stopę zużycia spadnie poniżej elastycznie przepustowość. W przypadku ograniczenia szybkości wewnętrznej bazy danych preemptively zakończy się żądanie z `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API bazy danych MongoDB ma automatycznie ponawiać próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. W przypadku otrzymania wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania próby w aplikacji Błąd procedury obsługi lub [zwiększyć przepływność dla kontenera](set-throughput.md).
 
 ## <a name="throughput-faq"></a>Przepływność — często zadawane pytania
 
@@ -139,7 +144,7 @@ Aplikacje, które przekraczają udostępnionej przepływności dla kontenera bę
 
 400 RU/s jest minimalna przepływność DB rozwiązania Cosmos kontenerów jednej partycji (minimum dla kontenerów podzielonym na partycje jest 1000 RU/s). Żądanie jednostki są ustawiane w 100 RU/s odstępach czasu, ale przepływności nie można ustawić na 100 RU/s lub dowolną wartość mniejszą niż 400 RU/s. Jeśli szukasz ekonomiczne metody umożliwiające opracowanie i przetestowanie rozwiązania Cosmos DB mogą korzystać z BEZPŁATNEJ [Azure rozwiązania Cosmos DB emulatora](local-emulator.md), które można wdrożyć lokalnie bez ponoszenia kosztów. 
 
-**Jak ustawić througput przy użyciu interfejsu API bazy danych MongoDB?**
+**Jak ustawić przepływność przy użyciu interfejsu API bazy danych MongoDB?**
 
 Brak bez rozszerzenia interfejsu API bazy danych MongoDB, można ustawić przepływności. Zalecane jest używanie interfejsu API SQL, jak pokazano w [można ustawić przepływność przy użyciu interfejsu API SQL dla platformy .NET](#set-throughput-sdk).
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 05/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 8c2a7e723d21f79f21e92da31fbc4fd49d64fd37
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f0afe48c37c6cb5dc8c1658f0a7beed4f0e6140
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem do maszyny wirtualnej przy użyciu tylko w czasie
 
@@ -41,7 +41,7 @@ Jednym ze sposobów zmniejszyć ryzyko ataków siłowych jest ograniczyć czas, 
 
 Gdy zostanie włączona funkcja „dokładnie na czas”, usługa Security Center zablokuje ruch przychodzący do maszyn wirtualnych platformy Azure poprzez utworzenie reguły sieciowej grupy zabezpieczeń. Należy wybrać porty na maszynie Wirtualnej, do którego będzie można zablokować ruch przychodzący. Te porty są kontrolowane przez tylko w rozwiązaniu czasu.
 
-Gdy użytkownik żąda dostępu do maszyny Wirtualnej, Centrum zabezpieczeń sprawdza, czy użytkownik ma [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) uprawnienia, które zapewniają dostęp do zapisu dla maszyny Wirtualnej. Jeśli mają one uprawnienia do zapisu, żądanie zostanie zatwierdzone i Centrum zabezpieczeń automatycznie konfiguruje grup zabezpieczeń sieci (NSG) zezwalająca na ruch przychodzący do portów zarządzania przez czas określony. Po upływie czasu Centrum zabezpieczeń przywraca grup NSG do poprzedniego stanu.
+Gdy użytkownik żąda dostępu do maszyny Wirtualnej, Centrum zabezpieczeń sprawdza, czy użytkownik ma [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) uprawnienia, które zapewniają dostęp do zapisu dla maszyny Wirtualnej. Jeśli mają one uprawnienia do zapisu, żądanie zostanie zatwierdzone i Centrum zabezpieczeń automatycznie konfiguruje grup zabezpieczeń sieci (NSG) zezwalająca na ruch przychodzący do portów wybranych przez czas określony. Po upływie czasu Centrum zabezpieczeń przywraca grup NSG do poprzedniego stanu.
 
 > [!NOTE]
 > Centrum zabezpieczeń na wszelki dostęp do maszyny Wirtualnej czasu aktualnie obsługuje tylko maszyn wirtualnych wdrożonych za pośrednictwem usługi Azure Resource Manager. Aby dowiedzieć się więcej o klasycznego i modeli wdrażania usługi Resource Manager, zobacz [usługi Azure Resource Manager, a wdrożenie klasyczne](../azure-resource-manager/resource-manager-deployment-model.md).

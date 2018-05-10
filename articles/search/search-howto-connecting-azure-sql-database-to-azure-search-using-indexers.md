@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa24c3197af28101b2f3a0acda6d0ae81b9e96d5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5545b2e40777496ab8c808a8c2692b346d3509c5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Połączenie bazy danych SQL Azure do usługi Azure Search przy użyciu indeksatorów
 
@@ -50,7 +50,7 @@ W zależności od wielu czynników odnoszących się do danych użycie indeksato
 |----------|---------|
 | Dane pochodzą z pojedynczej tabeli lub widoku | Jeśli dane są rozproszone w wielu tabel, można utworzyć jeden widok danych. Jednak jeśli używasz widoku, nie będzie można używać wykrywania zmian programu SQL Server zintegrowanego odświeżyć indeks o zmiany przyrostowe. Aby uzyskać więcej informacji, zobacz [Przechwytywanie zmienione i usunąć wiersze](#CaptureChangedRows) poniżej. |
 | Typy danych są zgodne | Większość, ale nie wszystkie typy SQL są obsługiwane w indeksie usługi wyszukiwanie Azure. Aby uzyskać listę, zobacz [mapowania typów danych](#TypeMapping). |
-| Synchronizacja danych w czasie rzeczywistym nie jest wymagane | Indeksator można ponownie indeksu tabeli, co najwyżej co pięć minut. Jeśli dane ulegają częstym zmianom i zmiany muszą być odzwierciedlone w indeksie w ciągu sekund lub minut pojedynczego, firma Microsoft zaleca używanie [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) lub [zestawu .NET SDK](search-import-data-dotnet.md) wypychanej bezpośrednio zaktualizowanych wierszy. |
+| Synchronizacja danych w czasie rzeczywistym nie jest wymagane | Indeksator można ponowna indeksacja tabeli najwyżej co pięć minut. Jeśli dane ulegają częstym zmianom i zmiany muszą być odzwierciedlone w indeksie w ciągu sekund lub minut pojedynczego, firma Microsoft zaleca używanie [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) lub [zestawu .NET SDK](search-import-data-dotnet.md) wypychanej bezpośrednio zaktualizowanych wierszy. |
 | Możliwe jest przyrostowe indeksowania | Jeśli masz dużych zestawów danych i zamierzasz uruchomić indeksatora zgodnie z harmonogramem, musi być mógł zidentyfikować nowych, zmodyfikowane lub usunięte wiersze, wydajne usługi Azure Search. Indeksowanie przyrostowe nie jest dozwolona tylko indeksowania na żądanie (nie zgodnie z harmonogramem), lub indeksowania mniej niż 100 000 wierszy. Aby uzyskać więcej informacji, zobacz [Przechwytywanie zmienione i usunąć wiersze](#CaptureChangedRows) poniżej. |
 
 > [!NOTE] 
@@ -178,7 +178,7 @@ Można dodać, zmienić lub usunąć harmonogram dla istniejącego indeksatora z
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Przechwytywanie nowego, zmiany i usunięcia wierszy
 
-Usługa Azure Search korzysta **przyrostowe indeksowania** Aby uniknąć konieczności ponownego indeksowania całej tabeli lub widoku każdym uruchomieniu indeksatora. Wyszukiwanie Azure oferuje dwie zmiany zasad wykrywania do obsługi przyrostowe indeksowania. 
+Usługa Azure Search korzysta **przyrostowe indeksowania** Aby uniknąć konieczności ponowna indeksacja całej tabeli lub widoku każdym uruchomieniu indeksatora. Wyszukiwanie Azure oferuje dwie zmiany zasad wykrywania do obsługi przyrostowe indeksowania. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Zasad śledzenia zmian zintegrowane ze środowiskiem SQL
 Jeśli baza danych SQL obsługuje [śledzenie zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), zaleca się używanie **SQL zintegrowane zmienić zasady śledzenia**. Jest to najbardziej efektywny zasad. Ponadto pozwala on Azure Search zidentyfikować usuniętych wierszy bez konieczności dodać kolumnę explicit "usuwania nietrwałego" do tabeli.

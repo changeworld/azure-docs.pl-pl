@@ -1,6 +1,6 @@
 ---
-title: "Użyj środowiska usługi aplikacji Azure"
-description: "Jak tworzenie, publikowanie i skalowanie aplikacji w środowisku usługi aplikacji Azure"
+title: Użyj środowiska usługi aplikacji Azure
+description: Jak tworzenie, publikowanie i skalowanie aplikacji w środowisku usługi aplikacji Azure
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-an-app-service-environment"></a>Użyj środowiska usługi aplikacji #
 
@@ -58,19 +58,28 @@ Aby utworzyć aplikację sieci web w elemencie ASE:
 
 4. Wprowadź nazwę nowej grupy zasobów lub wybierz **Użyj istniejącego** i wybierz z listy rozwijanej.
 
+5. Wybierz system operacyjny. 
+
+    * Hosting w aplikacji systemu Linux w elemencie ASE jest nowa funkcja w wersji zapoznawczej, dlatego zalecamy nie dodać aplikacje dla systemu Linux w elemencie ASE, które jest aktualnie uruchomione obciążeń produkcyjnych. 
+    * Dodawanie aplikacji systemu Linux w elemencie ASE oznacza, że ASE będzie także w wersji zapoznawczej. 
+
 5. Wybierz istniejący plan usługi aplikacji w Twojej ASE lub Utwórz nową, wykonując następujące kroki:
 
     a. Wybierz **tworzenia nowych**.
 
     b. Wprowadź nazwę planu usługi aplikacji.
 
-    c. Wybierz użytkownika ASE w **lokalizacji** listy rozwijanej.
+    c. Wybierz użytkownika ASE w **lokalizacji** listy rozwijanej. Hosting w aplikacji systemu Linux w elemencie ASE jest włączona tylko w regionach, 6, obecnie: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
 
     d. Wybierz **izolowany** warstwy cenowej. Wybierz **wybierz**.
 
     e. Kliknij przycisk **OK**.
     
     ![Izolowane warstw cenowych][2]
+
+    > [!NOTE]
+    > Linux aplikacji sieci web i aplikacji sieci web systemu Windows nie może należeć do tego samego planu usługi App Service, ale może być w tym samym środowisku usługi aplikacji. 
+    >
 
 6. Wybierz pozycję **Utwórz**.
 

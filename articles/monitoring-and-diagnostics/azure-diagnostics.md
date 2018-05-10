@@ -1,5 +1,5 @@
 ---
-title: Omówienie diagnostyki Azure | Dokumentacja firmy Microsoft
+title: Omówienie diagnostyki Azure rozszerzenia | Dokumentacja firmy Microsoft
 description: Użyj diagnostyki Azure dla debugowania pomiaru wydajności, monitorowanie, analiza ruchu w usługi w chmurze, maszyn wirtualnych i sieci szkieletowej usług
 services: multiple
 documentationcenter: .net
@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2017
+ms.date: 05/01/2018
 ms.author: robb
-ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daeaddefa461e71fcc62af4efc4fb7084b237cf9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="what-is-azure-diagnostics"></a>Co to jest Azure Diagnostics
-Diagnostyka Azure jest możliwość w ramach platformy Azure, która umożliwia zbieranie danych diagnostycznych na wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są usługi w chmurze Azure (klasyczne) w sieci Web i proces roboczy, maszyn wirtualnych, zestawy skalowania maszyny wirtualnej i sieci szkieletowej usług. Innymi usługami platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md). 
+# <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki Azure
+Rozszerzenie Azure Diagnostics jest agenta w ramach platformy Azure, która umożliwia zbieranie danych diagnostycznych na wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są usługi w chmurze Azure (klasyczne) w sieci Web i proces roboczy, maszyn wirtualnych, zestawy skalowania maszyny wirtualnej i sieci szkieletowej usług. Innymi usługami platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md). 
+
+## <a name="linux-agent"></a>Agent systemu Linux
+A [wersji systemu Linux rozszerzenia](../virtual-machines/linux/diagnostic-extension.md) jest dostępna dla maszyn wirtualnych z systemem Linux. Statystyki zebranych i zachowanie się różnić od wersji systemu Windows. 
 
 ## <a name="data-you-can-collect"></a>Dane, które można zbierać
-Diagnostyka Azure można zebrać następujące typy danych:
+Rozszerzenia diagnostyki Azure można zebrać następujące typy danych:
 
 | Źródło danych | Opis |
 | --- | --- |
@@ -38,10 +41,15 @@ Diagnostyka Azure można zebrać następujące typy danych:
 | Dzienniki błędów niestandardowych |Dzienniki tworzone przez usługi lub aplikacji |
 | Dzienniki diagnostyczne infrastruktury platformy Azure |Informacje o diagnostyce sam |
 
-Rozszerzenia diagnostyki Azure można transferu tych danych do konta magazynu Azure lub wysyłać je do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Można również strumienia do [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), który następnie służy do wysyłania do innych niż Azure montoring usług. Dane można użyć do debugowania i rozwiązywania problemów, pomiaru wydajności monitorowania użycia zasobów, analizy ruchu i Planowanie wydajności i inspekcji.
+## <a name="data-storage"></a>Magazyn danych
+Rozszerzenie przechowuje dane w [konta magazynu Azure](azure-diagnostics-storage.md) określonym przez użytkownika. 
 
-## <a name="versioning"></a>Obsługa wersji
-Zobacz [historii Wersjonowania diagnostyki Azure](azure-diagnostics-versioning-history.md).
+Można również wysyłać do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Inną możliwością jest wykonanie go do strumienia [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), który następnie służy do wysyłania do innych niż Azure montoring usług. 
+
+
+## <a name="versioning-and-configuration-schema"></a>Przechowywanie wersji i konfiguracji schematu
+Zobacz [Historia wersji diagnostyki Azure i schemat](azure-diagnostics-versioning-history.md).
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Wybierz usługi, które próbujesz na zbieranie danych diagnostycznych i skorzystaj z poniższych artykułów, aby rozpocząć pracę. Użyj łączy ogólne diagnostyki Azure dla odwołania do wykonywania określonych zadań.
@@ -57,7 +65,7 @@ Aby uzyskać bardziej zaawansowanych tematów zobacz
 * [Śledzenie przepływu aplikacji usługi w chmurze Diagnostyka Azure](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [Aby skonfigurować diagnostykę na usługi w chmurze za pomocą programu PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="virtual-machines-using-azure-diagnostics"></a>Maszyny wirtualne za pomocą diagnostyki Azure
+## <a name="virtual-machines"></a>Maszyny wirtualne
 * Jeśli używasz programu Visual Studio, zobacz [program Visual Studio do śledzenia maszyny wirtualne Azure](../vs-azure-tools-debug-cloud-services-virtual-machines.md) rozpocząć pracę. W przeciwnym razie zobacz
 * [Konfigurowanie diagnostyki Azure na maszynie wirtualnej platformy Azure](../virtual-machines-dotnet-diagnostics.md)
 
@@ -66,12 +74,9 @@ Aby uzyskać bardziej zaawansowanych tematów zobacz
 * [Aby skonfigurować diagnostykę na maszynach wirtualnych platformy Azure za pomocą programu PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Utwórz maszynę wirtualną systemu Windows z monitorowania i diagnostyki za pomocą szablonu usługi Resource Manager Azure](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="service-fabric-using-azure-diagnostics"></a>Sieć szkieletowa usług za pomocą diagnostyki Azure
+## <a name="service-fabric"></a>Service Fabric
 Rozpoczynanie pracy w [monitorowanie aplikacji sieci szkieletowej usług](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). Wiele innych artykułów diagnostyki sieci szkieletowej usług są dostępne w drzewie nawigacji po lewej stronie, gdy pojawi się w tym artykule.
 
-## <a name="general-azure-diagnostics-articles"></a>Artykuły diagnostyki Azure ogólne
-* [Konfiguracja schematu diagnostyki Azure](https://msdn.microsoft.com/library/azure/mt634524.aspx) -Zmienianie pliku schematu i gromadzone dane diagnostyczne. Należy pamiętać, można również użyć programu Visual Studio do zmiany pliku schematu.
-* [Sposób przechowywania danych diagnostyki Azure w usłudze Azure Storage](../cloud-services/cloud-services-dotnet-diagnostics-storage.md) -znać nazwy tabel i obiektów blob, w którym zapisywana jest danych diagnostycznych.
+## <a name="general-articles"></a>Artykuły ogólne
 * Dowiedz się, jak [użyć liczników wydajności w diagnostyce Azure](../cloud-services/diagnostics-performance-counters.md).
-* Dowiedz się, jak [Azure trasy informacje diagnostyczne do usługi Application Insights](azure-diagnostics-configure-application-insights.md)
-* Jeśli masz problem z uruchomieniem diagnostyki lub wyszukiwanie danych w tabelach usługi Azure Storage, zobacz [rozwiązywania problemów Diagnostyka Azure](azure-diagnostics-troubleshooting.md)
+* Jeśli masz problem z uruchomieniem diagnostyki lub wyszukiwanie danych w tabelach magazynu Azure, zobacz [rozwiązywania problemów Diagnostyka Azure](azure-diagnostics-troubleshooting.md)

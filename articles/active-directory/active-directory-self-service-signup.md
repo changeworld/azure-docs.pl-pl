@@ -1,26 +1,24 @@
 ---
-title: "Samoobsługi lub próbnej usługi rejestracji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Użyj subskrypcji samoobsługowej w dzierżawie usługi Azure Active Directory (Azure AD)"
+title: Samoobsługi lub próbnej usługi rejestracji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Użyj subskrypcji samoobsługowej w dzierżawie usługi Azure Active Directory (Azure AD)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/28/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 9f2b541d5028596f9beabc7fd82001b4c9dacad4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 67fd5ba9be2de1f79511c806ffaa0ae3001bfdcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co to jest subskrypcji samoobsługowej usługi Azure Active Directory?
 W tym artykule opisano subskrypcji samoobsługowej oraz do jego obsługi w usłudze Azure Active Directory (Azure AD). Jeśli chcesz przejąć nazwy domeny z usługi Azure AD niezarządzanej dzierżawy, zobacz [przejąć niezarządzane katalogu jako administrator](domains-admin-takeover.md).

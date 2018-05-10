@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/05/2018
 ms.author: shlo
-ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: 0a321de96b26b183432a30868829081c1656be3f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działania wyszukiwania w fabryce danych Azure
 Działania wyszukiwania służy do odczytywania lub wyszukania rekordu, nazwę tabeli lub wartość z dowolnego źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania. 
@@ -31,22 +31,7 @@ Wyszukiwanie działanie jest przydatne, gdy chcesz dynamicznie pobrać listy pli
 
 Następujące źródła danych są obecnie obsługiwane dla wyszukiwania:
 
-- Amazon Redshift
-- Azure Blob Storage
-- Azure Cosmos DB
-- Azure Data Lake Store
-- Magazyn plików Azure
-- Azure SQL Database
-- Azure SQL Data Warehouse
-- Azure Table Storage
-- Dynamics 365
-- Dynamics CRM
-- System plików
-- PostgreSQL
-- SalesForce
-- Salesforce Service Cloud
-- SFTP
-- Oprogramowanie SQL Server
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, aż do **10MB** rozmiar.
 
@@ -74,7 +59,7 @@ Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, 
 Name (Nazwa) | Opis | Typ | Wymagana?
 ---- | ----------- | ---- | --------
 Zestaw danych | Zawiera odwołania do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji w sekcji "Właściwości zestawu danych" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
-źródło | Zawiera właściwości specyficzne dla zestawu danych źródła, taki sam jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji w sekcji "Kopiuj właściwości działania" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
+source | Zawiera właściwości specyficzne dla zestawu danych źródła, taki sam jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji w sekcji "Kopiuj właściwości działania" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
 firstRowOnly | Wskazuje, czy mają być zwracane tylko pierwszy wiersz lub wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
 
 Pamiętaj o następujących kwestiach:

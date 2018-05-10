@@ -1,6 +1,6 @@
 ---
-title: Pakiet IoT Azure zdalne monitorowanie — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, pakiet IoT
+title: Zdalne monitorowanie akcelerator rozwiązań — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące monitorowania zdalnego akcelerator rozwiązań
 services: iot-suite
 suite: iot-suite
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1cc260710d025428a1ca77c41c104dc172447e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>Często zadawane pytania dotyczące zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, pakiet IoT
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Często zadawane pytania dotyczące monitorowania zdalnego akcelerator rozwiązań
 
 Zobacz też ogólne [— często zadawane pytania](iot-suite-faq.md).
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Ile kosztuje udostępnić nowe rozwiązanie monitorowania zdalnego?
 
-Nowe wstępnie skonfigurowane rozwiązanie oferuje dwie opcje wdrożenia:
+Nowy akcelerator rozwiązań udostępnia dwie opcje wdrożenia:
 
 * A *podstawowe* — opcja przeznaczona dla deweloperów wyszukiwanie niższe koszty rozwoju lub klienci, którzy chcą do kompilacji pokaz lub weryfikacji koncepcji.
 * A *standardowe* — opcja przeznaczona dla przedsiębiorstw, która pragnie wdrożyć infrastrukturę gotowe do produkcji.
@@ -44,15 +44,11 @@ Każdej opcji wdrażania odnosi się do różnych potrzeb. Podstawy wdrażania j
 
 Aby uzyskać więcej informacji, zobacz [klucza uaktualnienia mapy Aby wyświetlić urządzenia na mapie dynamiczne](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Ile bezpłatnych interfejsów API usługi Mapy Bing można aprowizować w ramach subskrypcji?
-
-Dwa. W subskrypcji platformy Azure można utworzyć tylko dwa wewnętrzne transakcje poziom 1 mapy Bing dla planów organizacji. Rozwiązanie monitorowania zdalnego jest udostępniana domyślnie z planem wewnętrzny poziom 1 transakcji. W związku z tym niemodyfikowana subskrypcja pozwala aprowizować maksymalnie dwa rozwiązania do monitorowania zdalnego.
-
 ### <a name="next-steps"></a>Kolejne kroki
 
-Możesz także wypróbować niektóre inne funkcje i możliwości wstępnie skonfigurowanych rozwiązań Pakietu IoT:
+Można również zapoznać się niektóre inne funkcje i możliwości akceleratorów rozwiązania IoT:
 
-* [Poznaj możliwości zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-remote-monitoring-explore.md)
-* [Omówienie rozwiązania konserwacji predykcyjnej wstępnie](iot-suite-predictive-overview.md)
-* [Fabryka połączonych wstępnie Omówienie rozwiązania](iot-suite-connected-factory-overview.md)
+* [Poznaj możliwości zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-explore.md)
+* [Akceleratora rozwiązania predykcyjne konserwacji — omówienie](iot-suite-predictive-overview.md)
+* [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-suite-connected-factory-overview.md)
 * [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)

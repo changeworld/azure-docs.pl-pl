@@ -1,0 +1,106 @@
+---
+title: Filtruj działania w fabryce danych Azure | Dokumentacja firmy Microsoft
+description: Działanie filtru filtruje dane wejściowe.
+services: data-factory
+documentationcenter: ''
+author: sharonlo101
+manager: craigg
+ms.reviewer: douglasl
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/04/2018
+ms.author: shlo
+ms.openlocfilehash: 40b409964d139641a06186114fb5e06c19971a36
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/08/2018
+---
+# <a name="filter-activity-in-azure-data-factory"></a>Działanie filtru w fabryce danych Azure
+Działanie filtru w potoku umożliwia dotyczą wyrażenie filtru tablicy wejściowej. 
+
+> [!NOTE]
+> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Jeśli używasz wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA), zobacz [dokumentacji V1 fabryki danych](v1/data-factory-introduction.md).
+
+## <a name="syntax"></a>Składnia
+
+```json
+{
+    "name": "MyFilterActivity",
+    "type": "filter",
+    "typeProperties": {
+        "condition": "<condition>",
+        "items": "<input array>"
+    }
+}
+```
+
+## <a name="type-properties"></a>Właściwości typu
+
+Właściwość | Opis | Dozwolone wartości | Wymagane
+-------- | ----------- | -------------- | --------
+name | Nazwa `Filter` działania. | Ciąg | Yes
+type | Należy wybrać opcję **filtru**. | Ciąg | Yes
+warunek | Warunku można użyć do filtrowania danych wejściowych. | Wyrażenie | Yes
+pozycje | Tablica wejściowa, na którym jest stosowany filtr. | Wyrażenie | Yes
+
+## <a name="example"></a>Przykład
+
+W tym przykładzie potoku ma dwa działania: **filtru** i **ForEach**. Działanie filtru jest skonfigurowana do filtrowania tablicy wejściowej dla elementów o wartości większej niż 3. Działania ForEach następnie wykonuje iterację na filtrowane wartości i czeka na liczbę sekund, określony przez bieżącą wartość.
+
+```json
+{
+    "name": "PipelineName",
+    "properties": {
+        "activities": [{
+                "name": "MyFilterActivity",
+                "type": "filter",
+                "typeProperties": {
+                    "condition": "@greater(item(),3)",
+                    "items": "@pipeline().parameters.inputs"
+                }
+            },
+            {
+                "name": "MyForEach",
+                "type": "ForEach",
+                "typeProperties": {
+                    "isSequential": "false",
+                    "batchCount": 1,
+                    "items": "@activity('MyFilterActivity').output.value",
+                    "activities": [{
+                        "type": "Wait",
+                        "typeProperties": {
+                            "waitTimeInSeconds": "@item()"
+                        },
+                        "name": "MyWaitActivity"
+                    }]
+                },
+                "dependsOn": [{
+                    "activity": "MyFilterActivity",
+                    "dependencyConditions": ["Succeeded"]
+                }]
+            }
+        ],
+        "parameters": {
+            "inputs": {
+                "type": "Array",
+                "defaultValue": [1, 2, 3, 4, 5, 6]
+            }
+        }
+    }
+}
+```
+
+## <a name="next-steps"></a>Kolejne kroki
+Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych: 
+
+- [Działanie If Condition](control-flow-if-condition-activity.md)
+- [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
+- [Dla każdego działania](control-flow-for-each-activity.md)
+- [Działanie GetMetadata](control-flow-get-metadata-activity.md)
+- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Działania w sieci Web](control-flow-web-activity.md)
+- [Działanie Until](control-flow-until-activity.md)

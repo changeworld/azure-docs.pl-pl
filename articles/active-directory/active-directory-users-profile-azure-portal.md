@@ -1,25 +1,23 @@
 ---
-title: "Dodawanie lub zmienianie informacji o profilu użytkownika w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak dodać profil użytkownika, w tym obraz profilu w usłudze Azure Active Directory"
+title: Dodawanie lub zmienianie informacji o profilu użytkownika w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak dodać profil użytkownika, w tym obraz profilu w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: aa38ab92-a867-45d7-9dc1-7f1c628f7ed3
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/03/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 1f82f0f867173da10907d06c6c093ddcc569565f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 4d3b9d83bc949a2a77ac384b803521726b1bf09b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Dodawanie lub zmienianie informacji o profilu użytkownika w usłudze Azure Active Directory
 W tym artykule wyjaśniono, jak dodać informacje o profilu użytkownika, takich jak obraz profilu lub telefonu i informacje dotyczące uwierzytelniania wiadomości e-mail, w usłudze Azure Active Directory (Azure AD). Aby uzyskać informacje dotyczące dodawania nowych użytkowników w organizacji, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](active-directory-users-create-azure-portal.md).

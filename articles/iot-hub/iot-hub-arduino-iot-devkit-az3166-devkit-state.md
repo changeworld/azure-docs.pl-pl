@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 33d8a36cc88bd1c263f2c4a38a59e04e1253357c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: ac013cf234fdc7249d4d71992435adcc27fcc64e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="mxchip-iot-devkit"></a>Zestaw deweloperski IoT MXChip
 
@@ -90,10 +90,10 @@ Z Twojego zestaw deweloperski IoT MXChip podłączone do komputera:
 ## <a name="next-steps"></a>Kolejne kroki
 
 Wiesz już, jak:
-- Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do pakietu Azure IoT.
+- Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do akcelerator rozwiązań sieci Azure IoT zdalnego monitorowania.
 - Funkcja Azure IoT urządzenia twins znaczeniu i sterowanie kolor LED RGB zestaw deweloperski.
 
 Poniżej znajdują się Sugerowane następne kroki:
 
-* [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
+* [Omówienie usługi Azure akceleratora rozwiązania IoT monitorowania zdalnego](https://docs.microsoft.com/azure/iot-suite/)
 * [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

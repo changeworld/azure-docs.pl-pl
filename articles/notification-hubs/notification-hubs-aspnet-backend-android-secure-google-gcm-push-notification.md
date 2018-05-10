@@ -1,11 +1,11 @@
 ---
-title: "Wysyłanie powiadomień wypychanych bezpiecznego przy użyciu usługi Azure Notification Hubs"
-description: "Dowiedz się, jak wysyłać powiadomienia wypychane bezpieczny do aplikacji systemu Android na platformie Azure. Przykłady kodu napisane w języku Java i C#."
+title: Wysyłanie powiadomień wypychanych bezpiecznego przy użyciu usługi Azure Notification Hubs
+description: Dowiedz się, jak wysyłać powiadomienia wypychane bezpieczny do aplikacji systemu Android na platformie Azure. Przykłady kodu napisane w języku Java i C#.
 documentationcenter: android
-keywords: "Wypychanie powiadomień, powiadomienia wypychane push wiadomości, powiadomień wypychanych systemu android"
-author: ysxu
-manager: erikre
-editor: 
+keywords: Wypychanie powiadomień, powiadomienia wypychane push wiadomości, powiadomień wypychanych systemu android
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: 58f6967c59a5060baa10ff83752b9c6ed08226cb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Wysyłanie powiadomień wypychanych bezpiecznego przy użyciu usługi Azure Notification Hubs
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Na wysokim poziomie przepływ wygląda następująco:
    * Urządzenie z systemem Android kontaktuje się z zaplecza żąda bezpiecznego ładunku.
    * Aplikację można wyświetlić ładunku jako powiadomienie na urządzeniu.
 
-Należy pamiętać, że w poprzednim przepływu (i w tym samouczku) przyjęto założenie, że urządzenia są przechowywane token uwierzytelniania w magazynie lokalnym, po zalogowaniu się użytkownika. Gwarantuje to całkowicie nie zakłóca pracy, jak urządzenia mogą pobierać ładunku bezpiecznego powiadomienia za pomocą tego tokenu. Jeśli aplikacja nie przechowuje tokeny uwierzytelniania na urządzeniu lub tokeny te mogą wygasnąć, aplikacji urządzenia, po otrzymaniu powiadomienia wypychane powinien być wyświetlany ogólny powiadomienie monitowania użytkownika do uruchomienia aplikacji. Następnie aplikacja uwierzytelnia użytkownika i zawiera ładunek powiadomienia.
+Należy pamiętać, że w poprzednim przepływu (i w tym samouczku), zakłada się, że urządzenia są przechowywane token uwierzytelniania w magazynie lokalnym, po zalogowaniu się użytkownika. Takie podejście gwarantuje bezproblemowe, jak urządzenia mogą pobierać ładunku bezpiecznego powiadomienia za pomocą tego tokenu. Jeśli aplikacja nie przechowuje tokeny uwierzytelniania na urządzeniu lub tokeny te mogą wygasnąć, aplikacji urządzenia, po otrzymaniu powiadomienia wypychane powinien być wyświetlany ogólny powiadomienie monitowania użytkownika do uruchomienia aplikacji. Następnie aplikacja uwierzytelnia użytkownika i zawiera ładunek powiadomienia.
 
 Ten samouczek pokazuje, jak wysyłać powiadomienia wypychane bezpieczne. Opiera się na [Powiadom użytkowników](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) samouczku, dlatego należy wykonać kroki opisane w tym samouczku najpierw Jeśli jeszcze.
 
@@ -63,7 +63,7 @@ Ten samouczek pokazuje, jak wysyłać powiadomienia wypychane bezpieczne. Opiera
 Teraz, aby modyfikować Twojej aplikacji zaplecza wysłać tylko *identyfikator* powiadomienia wypychane, należy zmienić aplikacji systemu Android w celu obsługi tego powiadomienia i wywołania zwrotnego z zaplecza można pobrać zabezpieczoną wiadomość, który będzie wyświetlany.
 Na osiągnięcie tego celu, należy upewnić się, że aplikacji systemu Android potrafi do samodzielnego uwierzytelnienia z poziomu zaplecza, gdy odbiera powiadomienia wypychane.
 
-Firma Microsoft będzie teraz zmodyfikować *logowania* przepływu, aby zapisać wartości nagłówka uwierzytelniania w udostępnionych preferencji aplikacji. Mechanizmy analogiczne może służyć do przechowywania wszelkich token uwierzytelniania (np. tokenów OAuth), który aplikacji będą musieli używać bez konieczności wprowadzania poświadczeń użytkownika.
+Teraz, zmodyfikować *logowania* przepływu, aby zapisać wartości nagłówka uwierzytelniania w udostępnionych preferencji aplikacji. Mechanizmy analogiczne może służyć do przechowywania wszelkich token uwierzytelniania (na przykład tokenów OAuth), która aplikacja ma używać bez konieczności wprowadzania poświadczeń użytkownika.
 
 1. W projekcie aplikacji systemu Android, Dodaj następujące ograniczenia w górnej części **MainActivity** klasy:
    
@@ -86,7 +86,7 @@ Firma Microsoft będzie teraz zmodyfikować *logowania* przepływu, aby zapisać
    
         import android.content.SharedPreferences;
 
-Teraz zostanie zmieniona obsługi, które jest wywoływane w przypadku otrzymania powiadomienia.
+Teraz Zmień obsługi, które jest wywoływane w przypadku otrzymania powiadomienia.
 
 1. W **MyHandler** klasy zmiany `OnReceive()` metoda zawiera:
    
@@ -126,7 +126,7 @@ Teraz zostanie zmieniona obsługi, które jest wywoływane w przypadku otrzymani
 
 Ta metoda wywołuje Twojej aplikacji zaplecza do pobierania zawartości powiadomienia przy użyciu poświadczeń przechowywanych w udostępnionych preferencji i wyświetla je jako normalne powiadomienie. Wygląda powiadomienie dla użytkownika aplikacji, dokładnie tak samo jak inne powiadomień wypychanych.
 
-Należy pamiętać, że preferowane do obsługi przypadków brakujących właściwości nagłówka uwierzytelniania lub odrzucenia przez zaplecza. Obsługę określonych przypadkach zależą od większości użytkowników docelowych. Jedną z opcji jest powiadomienia z monitem ogólnego dla użytkownika do uwierzytelniania można pobrać rzeczywiste powiadomienia mają być wyświetlane.
+Zaleca się do obsługi przypadków brakujących właściwości nagłówka uwierzytelniania lub odrzucenia przez zaplecza. Obsługę określonych przypadkach zależy przede wszystkim użytkowników docelowych. Jedną z opcji jest powiadomienia z monitem ogólnego dla użytkownika do uwierzytelniania można pobrać rzeczywiste powiadomienia mają być wyświetlane.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 Aby uruchomić aplikację, wykonaj następujące czynności:

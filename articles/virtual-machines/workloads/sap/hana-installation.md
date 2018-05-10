@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować SAP HANA (duże wystąpień) w systemie Azure
 
 Poniżej przedstawiono niektóre ważne definicje należy wiedzieć przed przeczytaniem tego przewodnika. W [omówienie SAP HANA (duże wystąpień) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wprowadzono dwóch różnych klas jednostek HANA dużych wystąpienie:
 
 - S72, S72m S144, S144m, S192 i S192m, który nazywamy "Typ klasy I" z jednostki SKU.
-- S384, S384m S384xm, S576, S768 i S960, który nazywamy "klasy typu II' SKU.
+- S384, S384m S384xm, S576m, S768m i S960m, który nazywamy "klasy typu II' SKU.
 
 Specyfikator klasy będzie można całej dokumentacji wystąpienia dużych HANA ostatecznie odwoływać się do różnych funkcji i wymagań oparte na jednostki SKU HANA dużych wystąpienia.
 
@@ -39,7 +39,7 @@ Instalacja SAP HANA odpowiada i działania można uruchomić po przekazaniem now
 > [!Note]
 > Dla poszczególnych zasad SAP instalacji SAP HANA odbywa się przez osobę certyfikowane do przeprowadzenia instalacji SAP HANA. Osoby, która minęła egzaminu certyfikowane skojarzyć technologii SAP, egzaminu certyfikacji SAP HANA instalacji, lub integratora systemów SAP (SI).
 
-Sprawdź ponownie, szczególnie w przypadku planowania instalacji HANA 2.0 [&#2235581; SAP Obsługa Uwaga - SAP HANA: systemy operacyjne obsługiwane](https://launchpad.support.sap.com/#/notes/2235581/E) aby mieć pewność, że system operacyjny jest obsługiwany z o wersji należy decyzję o zainstalowaniu SAP HANA. Należy pamiętać, że obsługiwany system operacyjny HANA 2.0 jest bardziej ograniczony system operacyjny obsługiwany HANA 1.0. 
+Sprawdź ponownie, szczególnie w przypadku planowania instalacji HANA 2.0 [2235581 # SAP Obsługa Uwaga - SAP HANA: systemy operacyjne obsługiwane](https://launchpad.support.sap.com/#/notes/2235581/E) aby mieć pewność, że system operacyjny jest obsługiwany z o wersji należy decyzję o zainstalowaniu SAP HANA. Należy pamiętać, że obsługiwany system operacyjny HANA 2.0 jest bardziej ograniczony system operacyjny obsługiwany HANA 1.0. 
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Pierwsze kroki po otrzymaniu jednostek wystąpienia dużych HANA
 
@@ -71,7 +71,7 @@ Parametr musi być ustawiony in/etc/modprobe.d/sunrpc-local.conf. Jeśli plik ni
 
 **Piąty krok** jest sprawdzenie etc/hosts. Jak uzyskać przekazywany bloków, mają one różne adresy IP przypisane do różnych celów (zobacz następną sekcję). Sprawdź plik etc/hosts. W przypadkach, gdy jednostki są dodawane do istniejącej dzierżawy nie powinien mieć itp/hosty systemów nowo wdrożonym obsługiwane poprawnie z adresami IP wcześniej dostarczonego systemów. Dlatego jest w przypadku klientów, aby sprawdzić poprawne ustawienia, czy nowo wdrożone wystąpienie mogą współpracować i rozpoznawania nazw wcześniej wdrożonej jednostki w dzierżawie. 
 
-## <a name="networking"></a>Sieć
+## <a name="networking"></a>Networking
 Przyjęto założenie, że zostały wykonane zalecenia dotyczące projektowania sieciom wirtualnym platformy Azure oraz nawiązywanie połączeń z tych sieci wirtualnych wystąpień dużych HANA zgodnie z opisem w tych dokumentach:
 
 - [Architektura na platformie Azure i SAP HANA (duże wystąpienia) — omówienie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
@@ -147,12 +147,12 @@ Dla programu SAP HANA 1.0 do wersji SPS12, te parametry można ustawić podczas 
 
 Także można skonfigurować parametrów po zakończeniu instalacji bazy danych SAP HANA przy użyciu hdbparam framework. 
 
-SAP HANA 2.0 z hdbparam framework jest przestarzała. W związku z tym należy ustawić parametry za pomocą polecenia SQL. Aby uzyskać więcej informacji, zobacz [&#2399079; Uwaga SAP: eliminacji hdbparam 2 HANA](https://launchpad.support.sap.com/#/notes/2399079).
+SAP HANA 2.0 z hdbparam framework jest przestarzała. W związku z tym należy ustawić parametry za pomocą polecenia SQL. Aby uzyskać więcej informacji, zobacz [2399079 # Uwaga SAP: eliminacji hdbparam 2 HANA](https://launchpad.support.sap.com/#/notes/2399079).
 
 
 ## <a name="operating-system"></a>System operacyjny
 
-Obszar wymiany dostarczonego obrazu systemu operacyjnego jest równa 2 GB zgodnie z [&#1999997; SAP Obsługa Uwaga — często zadawane pytania: SAP HANA pamięci](https://launchpad.support.sap.com/#/notes/1999997/E). Wszystkie różne ustawienia żądaną musi być ustawiona przez użytkownika jako klient.
+Obszar wymiany dostarczonego obrazu systemu operacyjnego jest równa 2 GB zgodnie z [1999997 # SAP Obsługa Uwaga — często zadawane pytania: SAP HANA pamięci](https://launchpad.support.sap.com/#/notes/1999997/E). Wszystkie różne ustawienia żądaną musi być ustawiona przez użytkownika jako klient.
 
 [SUSE Linux Enterprise Server 12 SP1 dla programu SAP aplikacji](https://www.suse.com/products/sles-for-sap/hana) jest dystrybucja systemu Linux zainstalowane dla SAP HANA na platformie Azure (wystąpienia duże). Tej konkretnej dystrybucji zapewnia możliwości specyficznych dla programu SAP &quot;fabrycznej&quot; (w tym systemie SAP SLES skutecznie wstępnie ustawionymi parametrów).
 
@@ -179,14 +179,14 @@ Dodatkowe i przydatne SAP Red Hat łączy pokrewnych:
 
 SAP Obsługa uwagi do implementowania SAP HANA na Red Hat:
 
-- [Uwaga Obsługa SAP &#2009879; - SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E).
-- [Uwaga Obsługa SAP &#2292690; - SAP HANA DB: Ustawienia zalecane systemu operacyjnego dla systemów RHEL 7](https://launchpad.support.sap.com/#/notes/2292690).
-- [Uwaga Obsługa SAP &#2247020; - SAP HANA DB: OS zalecane ustawienia dla RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020).
+- [Uwaga Obsługa SAP 2009879 # - SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E).
+- [Uwaga Obsługa SAP 2292690 # - SAP HANA DB: Ustawienia zalecane systemu operacyjnego dla systemów RHEL 7](https://launchpad.support.sap.com/#/notes/2292690).
+- [Uwaga Obsługa SAP 2247020 # - SAP HANA DB: OS zalecane ustawienia dla RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020).
 - [Uwaga Obsługa SAP #1391070 — rozwiązania Linux UUID](https://launchpad.support.sap.com/#/notes/1391070).
 - [Uwaga Obsługa SAP #2228351 - Linux: SAP HANA bazy danych SPS 11 poprawki 110 (lub nowszej) na RHEL 6 lub SLES 11](https://launchpad.support.sap.com/#/notes/2228351).
 - [Uwaga Obsługa SAP #2397039 — często zadawane pytania: SAP na RHEL](https://launchpad.support.sap.com/#/notes/2397039).
-- [Uwaga Obsługa SAP &#1496410; - Red Hat Enterprise Linux 6.x: instalacji i uaktualniania](https://launchpad.support.sap.com/#/notes/1496410).
-- [Uwaga Obsługa SAP &#2002167; - Red Hat Enterprise Linux 7.x: instalacji i uaktualniania](https://launchpad.support.sap.com/#/notes/2002167).
+- [Uwaga Obsługa SAP 1496410 # - Red Hat Enterprise Linux 6.x: instalacji i uaktualniania](https://launchpad.support.sap.com/#/notes/1496410).
+- [Uwaga Obsługa SAP 2002167 # - Red Hat Enterprise Linux 7.x: instalacji i uaktualniania](https://launchpad.support.sap.com/#/notes/2002167).
 
 ## <a name="time-synchronization"></a>Czas synchronizacji
 
@@ -352,7 +352,7 @@ Jeśli chcesz zainstalować SAP HANA przy użyciu graficznego instalacji pakietu
 rpm –qa | grep gtk2
 ```
 
-W dalszych krokach możemy są prezentacja konfiguracji SAP HANA z graficznego interfejsu użytkownika. Jako następnego kroku przejdź do katalogu instalacji, a następnie przejdź do katalogu sub HDB_LCM_LINUX_X86_64. Początek
+W dalszych krokach możemy są prezentacja konfiguracji SAP HANA z graficznego interfejsu użytkownika. Jako następnego kroku przejdź do katalogu instalacji, a następnie przejdź do katalogu sub HDB_LCM_LINUX_X86_64. Uruchamianie
 
 ```
 ./hdblcmgui 

@@ -9,17 +9,17 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d0a508f6430bd97e7c76aee686f4837acf246ad3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e4753cf0ffdedcc2ddc694fba67c560363789e3a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako moduł krawędzi IoT — w wersji preview
 
-Moduły krawędzi IoT umożliwia wdrażanie kodu, który implementuje logiki biznesowej bezpośrednio do urządzenia IoT krawędzi. Ten samouczek przedstawia wdrażanie usługi Azure Machine Learning moduł, który prognozuje, jeśli urządzenia nie powiodło się na podstawie danych czujnika na symulowane urządzenie brzegowe IoT utworzony w [krawędzi IoT Azure wdrożenia symulowanego urządzenia w systemie Windows] [ lnk-tutorial1-win] lub [Linux] [ lnk-tutorial1-lin] samouczki. 
+Moduły krawędzi IoT umożliwia wdrażanie kodu, który implementuje logiki biznesowej bezpośrednio do urządzenia IoT krawędzi. Ten samouczek przedstawia wdrażanie usługi Azure Machine Learning moduł, który prognozuje, jeśli urządzenia nie powiodło się na podstawie danych czujnika na symulowane urządzenie brzegowe IoT utworzony w [krawędzi IoT Azure wdrożenia symulowanego urządzenia w systemie Windows] [ lnk-tutorial1-win] lub [Linux] [ lnk-tutorial1-lin] samouczki.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz moduł usługi Azure Machine Learning
@@ -27,28 +27,28 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wdrażanie usługi Azure Machine Learning module do Twojego urządzenia IoT krawędzi
 > * Wyświetlanie wygenerowanych danych
 
-Moduł usługi Azure Machine Learning, który można utworzyć w tym samouczku odczytuje środowiska dane generowane przez urządzenie i etykiet komunikatów jako anomalia, czy nie. 
+Moduł usługi Azure Machine Learning, który można utworzyć w tym samouczku odczytuje środowiska dane generowane przez urządzenie i etykiet komunikatów jako anomalia, czy nie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Urządzenie brzegowe IoT Azure utworzoną w pierwszym samouczku lub Szybki Start.
 * Parametry połączenia Centrum IoT Centrum IoT, która łączy się z urządzenia IoT krawędzi.
-* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku. 
+* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku.
 * Moduł zarządzania dla usługi Azure ML na tym komputerze. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami [konfiguracji zarządzania modelu](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration).
 
-Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM. 
+Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM.
 
 ## <a name="create-the-azure-ml-container"></a>Tworzenie kontenera uczenie Maszynowe Azure
-W tej sekcji pobierania plików uczonego modelu i przekonwertować je na kontenera usługi uczenie Maszynowe Azure.  
+W tej sekcji pobierania plików uczonego modelu i przekonwertować je na kontenera usługi uczenie Maszynowe Azure.
 
-Na komputerze z programem modułu zarządzania dla usługi Azure ML, Pobierz i Zapisz [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) i [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) z zestawu narzędzi IoT uczenie Maszynowe Azure w serwisie GitHub. Te pliki zdefiniuj przeszkolone maszyny, uczenie modelu, które zostaną wdrożone do urządzenia Iot krawędzi. 
+Na komputerze z programem modułu zarządzania dla usługi Azure ML, Pobierz i Zapisz [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) i [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) z zestawu narzędzi IoT uczenie Maszynowe Azure w serwisie GitHub. Te pliki zdefiniuj przeszkolone maszyny, uczenie modelu, które zostaną wdrożone do urządzenia Iot krawędzi.
 
 Umożliwia utworzenie kontenera, w którym można wdrożyć do urządzenia IoT brzegowe trenowanego modelu. Użyj następującego polecenia, aby:
 
    * Zarejestruj modelu.
    * Utwórz manifest.
    * Tworzenie kontenera Docker obrazu o nazwie *machinelearningmodule*.
-   * Wdróż obraz do klastra usługi kontenera platformy Azure (AKS).
+   * Wdróż obraz do klastra usługi Kubernetes Azure (AKS).
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
@@ -72,12 +72,12 @@ Dodaj poświadczenia dla rejestru do środowiska uruchomieniowego usługi Edge n
 
 Linux:
    ```cmd
-   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
    ```
 
 W systemie Windows:
    ```cmd
-   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
    ```
 
 ## <a name="run-the-solution"></a>Uruchamianie rozwiązania
@@ -96,7 +96,7 @@ W systemie Windows:
     1. W **obrazu** wprowadź swój adres obrazu, na przykład `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Wybierz pozycję **Zapisz**.
 1. W kroku **Dodawanie modułów** wybierz opcję **Dalej**.
-1. W kroku **Określanie tras** skopiuj poniższe dane JSON do pola tekstowego. Pierwszy trasy transportu wiadomości z czujnika temperatury modułu nauczania komputera za pośrednictwem punktu końcowego "amlInput", która jest punkt końcowy, który Użyj wszystkich modułów usługi Azure Machine Learning. Drugi trasy transportu wiadomości z modułu nauczania maszyny do Centrum IoT. W tej trasy punktu końcowego, który umożliwia dane wyjściowe wszystkich modułów usługi Azure Machine Learning jest "amlOutput" i "powyżej$" oznacza Centrum IoT. 
+1. W kroku **Określanie tras** skopiuj poniższe dane JSON do pola tekstowego. Pierwszy trasy transportu wiadomości z czujnika temperatury modułu nauczania komputera za pośrednictwem punktu końcowego "amlInput", która jest punkt końcowy, który Użyj wszystkich modułów usługi Azure Machine Learning. Drugi trasy transportu wiadomości z modułu nauczania maszyny do Centrum IoT. W tej trasy punktu końcowego, który umożliwia dane wyjściowe wszystkich modułów usługi Azure Machine Learning jest "amlOutput" i "powyżej$" oznacza Centrum IoT.
 
     ```json
     {
@@ -105,24 +105,24 @@ W systemie Windows:
             "machineLearningToIoTHub": "FROM /messages/modules/machinelearningmodule/outputs/amlOutput INTO $upstream"
         }
     }
-    ``` 
+    ```
 
-1. Wybierz opcję **Dalej**. 
-1. W kroku **Przegląd szablonu** wybierz opcję **Prześlij**. 
+1. Wybierz opcję **Dalej**.
+1. W kroku **Przegląd szablonu** wybierz opcję **Prześlij**.
 1. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**.  Powinien zostać wyświetlony nowy **machinelearningmodule** uruchomiona wraz z **tempSensor** modułu i modułów środowiska uruchomieniowego IoT krawędzi.
 
 ## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-Można wyświetlić komunikaty urządzenia do chmury, które urządzenia IoT krawędzi wysyła przy użyciu [explorer Centrum IoT](https://github.com/azure/iothub-explorer) lub rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code. 
+Można wyświetlić komunikaty urządzenia do chmury, które urządzenia IoT krawędzi wysyła przy użyciu [explorer Centrum IoT](https://github.com/azure/iothub-explorer) lub rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code.
 
-1. W programie Visual Studio Code, wybierz **urządzenia IoT Hub**. 
-2. Wybierz **...**  następnie wybierz **ustawić parametry połączenia Centrum IoT** z menu. 
+1. W programie Visual Studio Code, wybierz **urządzenia IoT Hub**.
+2. Wybierz **...**  następnie wybierz **ustawić parametry połączenia Centrum IoT** z menu.
 
    ![Urządzenia IoT Hub więcej menu](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. W polu tekstowym, który zostanie otwarty w górnej części strony wprowadź ciąg połączenia iothubowner Centrum IoT. Urządzenie brzegowe IoT powinien znajdują się na liście urządzeń Centrum IoT.
 4. Wybierz **...**  ponownie wybierz **rozpocząć monitorowanie komunikat D2C**.
-5. Sprawdź komunikaty pochodzące z tempSensor co pięć sekund. Treść wiadomości zawiera właściwość o nazwie **anomalii** oferujący machinelearningmodule o wartości true lub false. **AzureMLResponse** właściwość zawiera wartość "OK", jeśli model został uruchomiony pomyślnie. 
+5. Sprawdź komunikaty pochodzące z tempSensor co pięć sekund. Treść wiadomości zawiera właściwość o nazwie **anomalii** oferujący machinelearningmodule o wartości true lub false. **AzureMLResponse** właściwość zawiera wartość "OK", jeśli model został uruchomiony pomyślnie.
 
    ![Azure ML odpowiedzi w treści wiadomości](./media/tutorial-deploy-machine-learning/ml-output.png)
 

@@ -1,9 +1,9 @@
 ---
-title: "Rozwiązywanie problemów z analizy użycia w usłudze Azure Application Insights"
-description: "Przewodnik rozwiązywania problemów — analizowanie danych użycia witryny i aplikacji z usługą Application Insights."
+title: Rozwiązywanie problemów z analizy użycia w usłudze Azure Application Insights
+description: Przewodnik rozwiązywania problemów — analizowanie danych użycia witryny i aplikacji z usługą Application Insights.
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb5f3052301b23eb10cd6b84ab6fae98bcc7ea18
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: mbullwin;daviste
+ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="troubleshoot-usage-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizy użycia w usłudze Application Insights
 Masz pytania dotyczące [użycia narzędzia do analizy w usłudze Application Insights](app-insights-usage-overview.md): [zdarzenia użytkowników, sesji,](app-insights-usage-segmentation.md), [Lejki](usage-funnels.md), [przepływu użytkownika](app-insights-usage-flows.md), [Przechowywania](app-insights-usage-retention.md), lub stado? Poniżej przedstawiono niektóre odpowiedzi.
@@ -37,7 +37,7 @@ Narzędzia analizy użycia nie obsługuje obecnie, zliczania użytkowników lub 
 ## <a name="naming-events"></a>Zdarzenia nazewnictwa
 **Moja aplikacja ma tysiące zdarzenie niestandardowe nazwy i innej strony widoku. Trudno ich rozróżnienia i narzędzi analizy użycia często przestać odpowiadać. Jak rozwiązać te problemy nazewnictwa**
 
-Widok strony i nazwy zdarzenie niestandardowe są używane w całej narzędzia analizy użycia. Dobrze nazw zdarzeń jest krytyczna do pobierania wartości z tych narzędzi. Celem jest kompromis między o zbyt mało zbyt ogólnym nazw ("kliknięto element Button") oraz o zbyt wiele, zbyt określonej nazwy ("przycisk Edytuj kliknął http://www.contoso.com/index").
+Widok strony i nazwy zdarzenie niestandardowe są używane w całej narzędzia analizy użycia. Dobrze nazw zdarzeń jest krytyczna do pobierania wartości z tych narzędzi. Celem jest kompromis między o zbyt mało zbyt ogólnym nazw ("kliknięto element Button") oraz o zbyt wiele, zbyt określonej nazwy ("kliknięty przycisk Edytuj http://www.contoso.com/index").
 
 Aby wprowadzić zmiany widoku i nazwy niestandardowych zdarzeń, które wysyła aplikacji, musisz zmienić kod źródłowy aplikacji i wdróż go ponownie. **Wszystkie dane telemetryczne dane w usłudze Application Insights są przechowywane przez 90 dni i nie można usunąć**, więc zmiany nazwy zdarzenia potrwa 90 dni do pełni manifestu. 90 dni po wprowadzeniu zmiany nazwy nazwy starych i nowych zdarzeń zostanie pojawiają się w obrębie telemetrii, więc Dostosuj zapytania i komunikacji w obrębie zespołów, w związku z tym.
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d6bc7824687f5418f1270e22b216f8637578aa6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 722a10e853f6d61bb5349e92754954e3bb199225
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Monitorowanie bazy danych SQL Azure przy użyciu analiza SQL Azure (wersja zapoznawcza) w analizy dzienników
 
@@ -136,7 +136,8 @@ Za pomocą zapytania czeka perspektyw i czas trwania kwerendy można skorelować
 
 ### <a name="analyze-data-and-create-alerts"></a>Analizuj dane i tworzyć alerty
 
-Można łatwo tworzyć alerty o dane pochodzące z zasobów bazy danych SQL Azure. Oto niektóre przydatne [wyszukiwania dziennika](log-analytics-log-searches.md) zapytań, które służy do tworzenia alertu:
+Możesz z łatwością [tworzyć alerty](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) o dane pochodzące z zasobów bazy danych SQL Azure. Oto niektóre przydatne [wyszukiwania dziennika](log-analytics-log-searches.md) zapytania, których można użyć alert w dzienniku:
+
 
 
 *Wysoka DTU na bazę danych Azure SQL*
@@ -157,18 +158,7 @@ AzureMetrics
 | render timechart
 ```
 
-Można tych zapytań na podstawie alertu alert po wystąpieniu określone progi dla bazy danych SQL Azure i elastyczne pule. Aby skonfigurować alert dla obszaru roboczego analizy dzienników:
 
-#### <a name="to-configure-an-alert-for-your-workspace"></a>Aby skonfigurować alert dla obszaru roboczego
-
-1. Przejdź do [portalu OMS](http://mms.microsoft.com/) i zaloguj się.
-2. Otwórz obszar roboczy, który został skonfigurowany dla rozwiązania.
-3. Na stronie Przegląd kliknij **analiza SQL Azure (wersja zapoznawcza)** kafelka.
-4. Uruchom jedno z przykładowych zapytań.
-5. W wyszukiwaniu dziennik, kliknij przycisk **alertu**.  
-![Utwórz alert podczas wyszukiwania.](./media/log-analytics-azure-sql/create-alert01.png)
-6. Na **Dodaj regułę alertu** Ustaw odpowiednie właściwości i określone progi, które mają, a następnie kliknij przycisk **zapisać**. 
-![Dodaj regułę alertów](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

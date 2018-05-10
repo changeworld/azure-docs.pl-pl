@@ -1,26 +1,26 @@
 ---
-title: "Uwierzytelniania opartego na tokenie (HTTP/2) dla usługi APNS w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft"
-description: "W tym temacie wyjaśniono, jak korzystać z nowego tokenu uwierzytelniania dla usługi APNS"
+title: Uwierzytelniania opartego na tokenie (HTTP/2) dla usługi APNS w usłudze Azure Notification Hubs | Dokumentacja firmy Microsoft
+description: W tym temacie wyjaśniono, jak korzystać z nowego tokenu uwierzytelniania dla usługi APNS
 services: notification-hubs
 documentationcenter: .net
-author: kpiteira
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/17/2017
-ms.author: kapiteir
-ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: ca86130e9c184576fc44119190d6224a363c6561
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Uwierzytelniania opartego na tokenie (HTTP/2) dla usługi APNS
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten artykuł zawiera szczegóły dotyczące sposobu zastosowania nowego protokołu APNS HTTP/2 z uwierzytelniania przy użyciu tokenu.
 
 Najważniejsze zalety stosowania nowy protokół obejmują:
@@ -75,8 +75,8 @@ Brak nową właściwość — *tryb uwierzytelniania*. Wybieranie Token umożliw
 Można użyć naszych [API zarządzania](https://msdn.microsoft.com/library/azure/dn495827.aspx) Aby zaktualizować Centrum powiadomień do uwierzytelniania opartego na tokenie.
 W zależności od tego, czy w przypadku konfigurowania aplikacji jest aplikacja piaskownicy lub produkcji (określone w danych konta dewelopera Apple) użyj jednej z odpowiednich punktów końcowych:
 
-- Punkt końcowy piaskownicy: [https://api.development.push.apple.com:443/3/urządzenia](https://api.development.push.apple.com:443/3/device)
-- Punkt końcowy produkcji: [https://api.push.apple.com:443/3/urządzenia](https://api.push.apple.com:443/3/device)
+- Punkt końcowy piaskownicy: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
+- Punkt końcowy produkcyjnym: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
 > Uwierzytelnianie na podstawie tokenu wymaga wersji interfejsu API: **2017 04 lub nowszym**.

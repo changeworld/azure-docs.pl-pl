@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a360b41b24f4aca3c3aba29387ecd55faf881b7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0e4c4c9e950610526a29e02d70827a1279d9686a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie koszt kontrolując ilość danych i przechowywania w analizy dzienników
 Analiza dzienników jest przeznaczone do skali i pomocy technicznej zbierania, indeksowanie i przechowywania dużych ilości danych dziennie z dowolnego źródła w przedsiębiorstwie lub wdrożona na platformie Azure.  Może to być podstawowy sterownik dla Twojej organizacji, niskich kosztów jest ostatecznie sterownika. W tym celu jego wziąć pod uwagę, że koszt obszaru roboczego Analytisc dziennika po prostu nie jest oparty na ilość danych zebranych, również jest zależny od plan wybrany, i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
@@ -33,14 +33,15 @@ Koszt danych mogą być znaczące w zależności od następujących czynników:
 - Okresu dane są przechowywane w obszarze roboczym  
 - Liczba rozwiązań do zarządzania włączone, źródła danych i częstotliwość kolekcji 
 
-Zapoznaj się z dokumentacją, dla każdego rozwiązania, ponieważ zapewnia szacunkową ilość danych, które zbiera.   
+> [!NOTE]
+> Zapoznaj się z dokumentacją, dla każdego rozwiązania, ponieważ zapewnia szacunkową ilość danych, które zbiera.   
 
-Jeśli na "" warstwy cenowej bezpłatna, dane są ograniczone do przechowywania 7 dni. "Na GB (autonomiczna)" lub "Na węzłami (OMS)" warstw zebranych danych jest dostępna w ciągu ostatnich 31 dni i przechowywania można zwiększyć do 2 lata. Opłaty za wybranie dłuższy okres przechowywania. Planu Free ma dzienny limit wprowadzanie 500 MB, a Jeśli znajdziesz spójnie przekroczyć kwoty dozwolone woluminu, można zmienić obszaru roboczego GB na lub warstw węzłów na zbieranie danych po przekroczeniu tego limitu. Możesz zmienić typ planu w dowolnym momencie, a także aby uzyskać więcej informacji o cenach, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/). 
+Jeśli pracujesz w *wolne* planu, dane są ograniczone do przechowywania 7 dni. Aby uzyskać *autonomiczny* lub *zapłacone* warstwy, dane zbierane są dostępne w ciągu ostatnich 31 dni. *Wolne* plan ma 500 MB dzienny limit wprowadzanie i odnalezienie stale przekracza dozwolone woluminu kwoty obszaru roboczego można zmienić na plan płatnej do zbierania danych po przekroczeniu tego limitu. 
 
 > [!NOTE]
-> W kwietniu 2018 firma Microsoft [wprowadzone](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania Azure. Ten model przyjmuje prostego modelu "z" między pełną gamę monitorowanie usług. Dowiedz się więcej o [nowy model cenowy](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) oparte na Twoich wzorców użycia i [jak zgłosić do nowego modelu do](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
+> Opłaty za wybranie opcji wybierz dłuższy okres przechowywania dla warstwy płatną. Możesz zmienić typ planu w dowolnym momencie, a także aby uzyskać więcej informacji o cenach, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Niezależnie od tego modelu lub warstwy cenowej fundmental kontrolowanie kosztów jest zarządzanie ilość danych. Jako uzupełnienie testowych i konfiguracji konkretne rozwiązanie w ramach analizy dzienników znajdują się dwa sposoby, w których ilość danych może być ograniczona i pomóc kontrolować koszty są codziennie przechowywania danych i zakończenia.  
+Istnieją takie dwa sposoby, w których ilość danych może być ograniczona i pomóc kontrolować koszty, są codziennie przechowywania danych i zakończenia.  
 
 ## <a name="review-estimated-cost"></a>Przejrzyj szacowany koszt
 Sprawia, że analiza dziennika go łatwo zrozumieć, co prawdopodobnie koszty oparte na najnowszych wzorców użycia.  Aby to zrobić, wykonaj następujące czynności.  
@@ -54,9 +55,9 @@ W tym miejscu możesz przejrzeć woluminu dane dla danego miesiąca. Dotyczy to 
 Dziennik analizy opłaty są dodawane do rachunku platformy Azure. Można wyświetlić szczegóły Azure naliczać opłaty sekcji rozliczeń w portalu Azure lub w [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
 
 ## <a name="daily-cap"></a>Limit dzienny
-Podczas tworzenia obszaru roboczego analizy dzienników z portalu Azure i wybierz *wolne* planu, ma ustawioną wartość 500 MB limitu dnia. Nie ma żadnego limitu do innych planów cenowych. Możesz skonfigurować dzienny limit i ograniczyć wprowadzanie dziennych obszaru roboczego, ale zachować ostrożność, zgodnie z celem nie powinno być trafienie dzienny limit.  W przeciwnym razie w tym momencie spowoduje utratę danych do końca dnia i możliwość warunki kondycji zasobów usługi IT pomocnicze jest w pełni funkcjonalne.  Dzienny limit jest przeznaczony do użycia jako sposobu zarządzania nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostać w ramach limitu lub gdy chcesz po prostu ograniczyć nieplanowane opłat obszaru roboczego.  
+Podczas tworzenia obszaru roboczego analizy dzienników z portalu Azure i wybierz *wolne* planu, ma ustawioną wartość 500 MB limitu dnia. Nie ma żadnego limitu do innych planów cenowych. Możesz skonfigurować dzienny limit i ograniczyć wprowadzanie dziennych obszaru roboczego, ale zachować ostrożność, zgodnie z celem nie powinno być trafienie dzienny limit.  W przeciwnym razie utraty danych do końca dnia, w którym może wpłynąć na innych usług platformy Azure i rozwiązań, funkcje, których może zależeć od aktualnych danych dostępnych w obszarze roboczym.  W związku z tym możliwość obserwować i otrzymywać alerty, po wpływ na warunki kondycji zasobów Obsługa usług IT.  Dzienny limit jest przeznaczony do użycia jako sposobu zarządzania nieoczekiwany wzrost ilości danych z zarządzanych zasobów i pozostać w ramach limitu lub gdy chcesz po prostu ograniczyć nieplanowane opłat obszaru roboczego.  
 
-Po osiągnięciu dzienny limit kolekcję typów danych rozliczeniowy zatrzymuje się do końca dnia.  Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego analizy dzienników i zdarzenia operacji są wysyłane do *operacji* tabeli w obszarze **LogManagement** kategorii. Zbieranie danych wznawia działanie po czasie resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Zaleca się definiowania zasady alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy zostanie osiągnięty dzienny limit danych. 
+Po osiągnięciu dzienny limit kolekcję typów danych rozliczeniowy zatrzymuje się do końca dnia. Transparent ostrzeżenie pojawia się w górnej części strony dla wybranego obszaru roboczego analizy dzienników i zdarzenia operacji są wysyłane do *operacji* tabeli w obszarze **LogManagement** kategorii. Zbieranie danych wznawia działanie po czasie resetowania zdefiniowane w obszarze *dzienny limit jest ustawiony na*. Zaleca się definiowania zasady alertu na podstawie zdarzeń tej operacji, skonfigurowana do wysyłania powiadomień, gdy zostanie osiągnięty dzienny limit danych. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Określenie, jakie dzienny limit danych, aby zdefiniować 
 Przegląd [dziennika analizy użycia i szacowane koszty](log-analytics-usage.md) trend wprowadzanie danych i co to jest codziennie zakończenia woluminu do definiowania. Należy rozważyć ostrożnie, ponieważ nie można monitorować zasobów, po osiągnięciu limitu. 

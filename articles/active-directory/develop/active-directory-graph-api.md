@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: c0f5110fe73fb48cf6cf5307de08045bd843cb5a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 00ca193b281f0a8d24935dd8673cae4e05b4d167
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Interfejs API programu Graph usługi Azure Active Directory
 > [!IMPORTANT]
@@ -50,7 +50,7 @@ Azure AD Graph API oferuje następujące funkcje:
 * **Zabezpieczone przez zakresy uprawnień**: Azure AD Graph API przedstawia zakresy uprawnień, które umożliwiają bezpieczny dostęp do danych usługi Azure AD przy użyciu protokołu OAuth 2.0. Obsługuje ona różnych typów aplikacji klienta, w tym:
   
   * interfejsy użytkownika, które podano delegowany dostęp do danych za pomocą autoryzacji przez zalogowanego użytkownika (delegowane)
-  * aplikacje usługi/demon czy operacji w tle bez konieczności zalogowanego użytkownika stanowią i korzystaj z dostępu zdefiniowane aplikacji opartej na rolach kontroli
+  * aplikacje usługi/demon, które działają w tle, użytkownik nie jest zalogowany jest obecny i za pomocą kontroli dostępu opartej na rolach zdefiniowanym przez aplikację
     
     Oba delegowane i uprawnienia aplikacji reprezentują uprawnienia udostępniany przez interfejs API Azure AD Graph i może być wysłane przez aplikacje klienckie za pośrednictwem funkcji uprawnień rejestracji aplikacji w [portalu Azure](https://portal.azure.com). [Zakresy uprawnień interfejsu API Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) zawiera informacje na temat co to jest dostępne do użycia przez aplikację klienta.
 

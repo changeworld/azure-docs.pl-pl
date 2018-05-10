@@ -1,25 +1,25 @@
 ---
-title: "Omówienie wielodostępnej obsługę replikacji maszyny Wirtualnej VMware do platformy Azure (CSP) przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Zawiera omówienie pomocy technicznej usługi Azure Site Recovery dla dzierżawcy subskrypcje w środowisku wielodostępnym za pośrednictwem programu dostawcy usług Kryptograficznych."
+title: Omówienie wielodostępnej obsługę replikacji maszyny Wirtualnej VMware do platformy Azure (CSP) przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Zawiera omówienie pomocy technicznej usługi Azure Site Recovery dla dzierżawcy subskrypcje w środowisku wielodostępnym za pośrednictwem programu dostawcy usług Kryptograficznych.
 services: site-recovery
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/03/2018
 ms.author: manayar
-ms.openlocfilehash: 9b4fbb34686a12f992b344ac61420c9ba99ee405
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 285086964365339291e9027a7fe8e5ee0083e13b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Omówienie wielodostępnej obsługę replikacji maszyn wirtualnych VMware do platformy Azure z dostawcy usług Kryptograficznych
 
-[Usługa Azure Site Recovery](site-recovery-overview.md) obsługuje wielodostępne środowiska subskrypcji dzierżawcy. Obsługuje ona również wielodostępność dla subskrypcji dzierżawcy, które są tworzone i zarządzane przez program Microsoft Cloud Solution Provider (CSP). 
+[Usługa Azure Site Recovery](site-recovery-overview.md) obsługuje wielodostępne środowiska subskrypcji dzierżawcy. Obsługuje ona również wielodostępność dla subskrypcji dzierżawcy, które są tworzone i zarządzane przez program Microsoft Cloud Solution Provider (CSP).
 
-W tym artykule omówiono wdrażanie i zarządzanie nim wielodostępne VMware do platformy Azure replikacji. 
+W tym artykule omówiono wdrażanie i zarządzanie nim wielodostępne VMware do platformy Azure replikacji.
 
 ## <a name="multi-tenant-environments"></a>Środowiska z wieloma dzierżawcami
 
@@ -33,7 +33,7 @@ Istnieją trzy główne modele wielodostępne:
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Dostawca usług udostępnionych hosting (HSP)
 
- Dwa scenariusze są podzbiorem scenariusz udostępnionych hosting i używają tych samych zasad. Różnice są opisane na końcu wskazówki udostępniane hosting.
+Dwa scenariusze są podzbiorem scenariusz udostępnionych hosting i używają tych samych zasad. Różnice są opisane na końcu wskazówki udostępniane hosting.
 
 Podstawowe wymagania w przypadku wielu dzierżawców jest dzierżawcy należy oddzielić. Jeden dzierżawy nie może być można obserwować, co hosted innego dzierżawcę. W środowisku zarządzana przez partnera to wymaganie nie jest równie ważne, ponieważ jest on w środowisku samoobsługi, którym może mieć kluczowe znaczenie. W tym artykule zakłada, że wymagane izolacji dzierżawców.
 
@@ -47,7 +47,7 @@ Na diagramie każdy klient ma na serwerze zarządzania oddzielne. Ta konfiguracj
 
 Wymaganie izolacji danych oznacza, że wszystkie informacje poufne infrastruktury (na przykład dostęp do poświadczeń) pozostaje niejawne dzierżawcom. Z tego powodu zaleca się pozostawienie wszystkie składniki serwera zarządzania, w obszarze wyłączną kontrolę partnera. Składniki serwera zarządzania są:
 
-* Serwer konfiguracji)
+* Serwer konfiguracji
 * Serwer przetwarzania
 * Główny serwer docelowy
 
@@ -63,7 +63,7 @@ Każdy serwer konfiguracji w scenariuszu wielodostępne używa dwóch kont:
 
 ## <a name="vcenter-account-requirements"></a>wymagania dotyczące konta vCenter
 
-Należy skonfigurować serwer konfiguracji przy użyciu konta, który ma specjalne uprawnienia przypisane do niej. 
+Konfigurowanie serwera konfiguracji z konta, które ma specjalne uprawnienia przypisane do niej.
 
 - Przypisania roli należy zastosować do konta dostępu vCenter dla każdego obiektu vCenter i nie są propagowane do obiektów podrzędnych. Ta konfiguracja zapewnia izolacji dzierżawców, ponieważ propagacja dostępu może spowodować przypadkowe dostęp do innych obiektów.
 
@@ -108,22 +108,36 @@ Aby ograniczyć operacje odzyskiwania po awarii do trybu failover tylko (czyli b
 - Zamiast przypisywać *Azure_Site_Recovery* rolę vCenter konta dostępu należy przypisywać tylko *tylko do odczytu* roli do tego konta. Ten zestaw uprawnień pozwala na replikację maszyny Wirtualnej i trybu failover, a nie zezwala na powrót po awarii.
 - Wszystkie inne poprzedniego procesu pozostaje jest. Do zapewnienia izolacji dzierżawy i ograniczyć odnajdywanie maszyny Wirtualnej, co uprawnienie jest ciągle przypisany tylko na poziomie obiektu i nie są propagowane do obiektów podrzędnych.
 
+### <a name="deploy-resources-to-the-tenant-subscription"></a>Wdrażanie zasobów w subskrypcji dzierżawy
+
+1. W portalu Azure Utwórz grupę zasobów, a następnie wdrożyć na zwykły proces magazynu usług odzyskiwania.
+2. Pobierz klucz rejestracji magazynu.
+3. Zarejestruj CS dla dzierżawcy przy użyciu klucza rejestracji magazynu.
+4. Wprowadź poświadczenia dla kont dostępu dwa konta dostępu do serwera vCenter i konto, które ma dostęp do maszyny Wirtualnej.
+
+    ![Kont serwera configuration Manager](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
+
+### <a name="register-servers-in-the-vault"></a>Zarejestruj serwer w magazynie
+
+1. W portalu Azure w magazynie, który został utworzony wcześniej należy zarejestrować serwer vCenter do konfiguracji serwera, za pomocą utworzonego konta vCenter.
+2. Zakończ proces "Przygotowanie infrastruktury" Site Recovery na zwykły proces.
+3. Maszyny wirtualne są teraz gotowe do replikacji. Sprawdź, czy tylko maszyny wirtualne dzierżawcy są wyświetlane w **replikować** > **wybierz maszyny wirtualne**.
 
 ## <a name="dedicated-hosting-solution"></a>Dedykowane rozwiązania do hostingu
 
-Jak pokazano na poniższym diagramie, architektury różnica w dedykowane rozwiązania hostingu jest, że infrastruktura każdego dzierżawcy jest skonfigurowany dla tej dzierżawy tylko. Ponieważ dzierżaw są izolowane za pomocą osobnych Vcenter, dostawcy hostingu musi nadal zawiera procedura dostawcy usług Kryptograficznych dla udostępniona Usługa hostingu, ale nie trzeba martwić izolacji dzierżawców. Instalator dostawcy usług Kryptograficznych pozostaje niezmieniona.
+Jak pokazano na poniższym diagramie, architektury różnica w dedykowane rozwiązania hostingu jest, że infrastruktura każdego dzierżawcy jest skonfigurowany dla tej dzierżawy tylko.
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
 **Dedykowany hostingu scenariusza z wieloma Vcenter**
 
 ## <a name="managed-service-solution"></a>Usługi zarządzane przez rozwiązanie
 
-Jak pokazano na poniższym diagramie, architektury różnica w rozwiązaniu zarządzanych usług jest infrastruktury każdego dzierżawcy jest również fizycznie oddzielona od innych dzierżaw infrastruktury. W tym scenariuszu zwykle występuje, gdy dzierżawa jest właścicielem infrastruktury i chce dostawcę rozwiązania do zarządzania odzyskiwania po awarii. Ponownie ponieważ dzierżaw są fizycznie izolowane za pośrednictwem różnych infrastruktur, konieczność partnera postępuj zgodnie z instrukcjami dostawcy usług Kryptograficznych przewidzianych udostępniona Usługa hostingu, ale nie trzeba martwić izolacji dzierżawców. Inicjowanie obsługi administracyjnej dostawcy usług Kryptograficznych pozostaje niezmieniona.
+Jak pokazano na poniższym diagramie, architektury różnica w rozwiązaniu zarządzanych usług jest infrastruktury każdego dzierżawcy jest również fizycznie oddzielona od innych dzierżaw infrastruktury. W tym scenariuszu zwykle występuje, gdy dzierżawa jest właścicielem infrastruktury i chce dostawcę rozwiązania do zarządzania odzyskiwania po awarii.
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
 **Zarządzane usługi scenariusza z wieloma Vcenter**
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Dowiedz się więcej](site-recovery-role-based-linked-access-control.md) o kontroli dostępu opartej na rolach w usłudze Site Recovery.
-Dowiedz się, jak [Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware do platformy Azure](vmware-azure-tutorial.md)
-[ustawienia odzyskiwania po awarii dla maszyn wirtualnych VMWare z wielu dzierżawców z dostawcy usług Kryptograficznych](vmware-azure-multi-tenant-csp-disaster-recovery.md)
+- [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md) o kontroli dostępu opartej na rolach w usłudze Site Recovery.
+- Dowiedz się, jak [Konfigurowanie odzyskiwania po awarii maszyn wirtualnych VMware do platformy Azure](vmware-azure-tutorial.md).
+- Dowiedz się więcej o [wielodostępność z dostawcy usług Kryptograficznych dla maszyn wirtualnych VMWare](vmware-azure-multi-tenant-csp-disaster-recovery.md).

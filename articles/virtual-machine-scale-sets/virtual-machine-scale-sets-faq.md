@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: c161b8fb70f20ef7d82834e6c61daff759726b93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Zestawach skali maszyny wirtualnej platformy Azure — często zadawane pytania
 
@@ -337,7 +337,7 @@ Dokumentacja usługi Azure Key Vault stany, Pobierz klucz tajny interfejsu API R
  
 Metoda | Adres URL
 --- | ---
-POBIERZ | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
 
 Zastąp {*nazwa klucza tajnego*} o nazwie i Zastąp {*wersja klucza tajnego*} przy użyciu wersji klucza tajnego do pobrania. Może zostać wyłączone wersję klucza tajnego. W takim przypadku jest pobierana bieżącej wersji.
   
@@ -450,9 +450,9 @@ Jeśli ustawiona definicji rozszerzenia w skali maszyny wirtualnej zaktualizowa�
 
 W przypadku istniejącej maszyny Wirtualnej zabliźnione usługi, jest widoczny jako ponowne uruchomienie komputera, a rozszerzenia nie są ponownie. Jeśli go zostanie odtworzone z obrazu, przypomina zamianę dysku systemu operacyjnego obrazu źródłowego. Wszelkie specjalizacji z najnowszego modelu, takie jak rozszerzenia, są uruchamiane.
  
-### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-azure-ad-domain"></a>Jak dołączyć skalowania maszyny wirtualnej, domena usługi Azure AD?
+### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>Jak dołączyć skalowania maszyny wirtualnej, ustaw do domeny usługi Active Directory?
 
-Aby przyłączyć skalowania maszyny wirtualnej, domena usługi Azure Active Directory (Azure AD), można zdefiniować rozszerzenia. 
+Aby przyłączyć skalowania maszyny wirtualnej, ustaw do domeny usługi Active Directory (AD), można zdefiniować rozszerzenia. 
 
 Aby zdefiniować rozszerzenie, należy użyć właściwości JsonADDomainExtension:
 

@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Wprowadzenie do usługi Azure Event siatki
 
@@ -24,11 +24,15 @@ Siatka zdarzeń obsługuje obecnie następujących regionach:
 
 * Azja Południowo-wschodnia
 * Azja Wschodnia
+* Australia Wschodnia
+* Australia Południowo-Wschodnia
 * Środkowe stany USA
 *   Wschodnie stany USA
 *   Wschodnie stany USA 2
 * Europa Zachodnia
 * Europa Północna
+* Japonia Wschodnia
+* Japonia Zachodnia
 *   Środkowo-zachodnie stany USA
 *   Zachodnie stany USA
 *   Zachodnie stany USA 2
@@ -45,10 +49,13 @@ Obecnie następujących usług platformy Azure obsługuje wysyłanie zdarzeń do
 * Niestandardowe — tematy
 * Event Hubs
 * Usługa IoT Hub
+* Media Services
 * Grupy zasobów (operacje zarządzania)
 * Service Bus
 * Obiektu Blob magazynu
 * Magazynu ogólnego przeznaczenia v2 (GPv2)
+
+Łącza do artykułów, które pokazują, jak używać każdego źródła zdarzeń, zobacz [źródła zdarzeń w siatce zdarzeń Azure](event-sources.md).
 
 ## <a name="event-handlers"></a>Uchwyty zdarzeń
 
@@ -57,11 +64,15 @@ Obecnie następujących usług platformy Azure obsługuje Obsługa zdarzeń z si
 * Azure Automation
 * Azure Functions
 * Event Hubs
+* Połączenia hybrydowe
 * Logic Apps
 * Microsoft Flow
+* Queue Storage
 * Elementy webhook
 
 Podczas korzystania z usługi Azure Functions jako program obsługi, należy użyć wyzwalacza zdarzenia siatki ogólnego HTTP Wyzwalacze INSTEAD OF. Usługa Event Grid automatycznie weryfikuje wyzwalacze funkcji usługi Event Grid. W przypadku ogólnych wyzwalaczy HTTP trzeba zaimplementować [odpowiedź weryfikacji](security-authentication.md#webhook-event-delivery).
+
+Łącza do artykułów, które pokazują, jak używać każdy program obsługi zdarzeń, zobacz [programów obsługi zdarzeń w siatce zdarzeń Azure](event-handlers.md).
 
 ## <a name="concepts"></a>Pojęcia
 

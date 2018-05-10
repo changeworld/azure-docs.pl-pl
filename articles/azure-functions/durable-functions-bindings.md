@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f3952ce87394270051bd37fae271162abc04a675
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla funkcji trwałe (funkcje platformy Azure)
 
@@ -36,17 +36,12 @@ Podczas pisania funkcje programu orchestrator w językach skryptów (na przykła
 {
     "name": "<Name of input parameter in function signature>",
     "orchestration": "<Optional - name of the orchestration>",
-    "version": "<Optional - version label of this orchestrator function>",
     "type": "orchestrationTrigger",
     "direction": "in"
 }
 ```
 
 * `orchestration` to nazwa orchestration. Jest to wartość, której klienci muszą używać chcąc Uruchom nowe wystąpienia tej funkcji programu orchestrator. Ta właściwość jest opcjonalna. Jeśli nie zostanie określony, używany jest nazwa funkcji.
-* `version` jest etykietę wersji orchestration. Klienci, którzy uruchomić nowe wystąpienie klasy aranżacji musi zawierać dopasowania etykiety wersji. Ta właściwość jest opcjonalna. Jeśli nie określono pusty ciąg jest używany. Aby uzyskać więcej informacji o wersji, zobacz [Versioning](durable-functions-versioning.md).
-
-> [!NOTE]
-> Ustawienie wartości `orchestration` lub `version` właściwości nie jest zalecane w tej chwili.
 
 Wewnętrznie tego powiązania wyzwalacza sonduje serii kolejek w domyślne konto magazynu dla funkcji aplikacji. Te kolejki są szczegóły implementacji wewnętrzny rozszerzenia, dlatego nie są one jawnie skonfigurowane we właściwościach powiązania.
 
@@ -69,12 +64,11 @@ Wyzwalacz aranżacji powiązanie obsługuje danych wejściowych i danych wyjści
 * **dane wejściowe** -funkcji aranżacji obsługują tylko [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) jako parametr typu. Deserializacja danych wejściowych bezpośrednio w sygnaturze funkcji nie jest obsługiwana. Należy użyć kodu [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metodę, aby pobrać dane wejściowe funkcji programu orchestrator. Te dane wejściowe muszą być typów możliwych do serializacji JSON.
 * **generuje** -wyzwalacze aranżacji obsługują wartości danych wyjściowych, a także dane wejściowe. Zwracana wartość funkcji jest używana do przypisywania wartości wyjściowych i musi być możliwy do serializacji JSON. Jeśli funkcja zwraca `Task` lub `void`, `null` wartość zostanie zapisany jako dane wyjściowe.
 
-> [!NOTE]
-> Wyzwalacze aranżacji są obsługiwane tylko w języku C# w tej chwili.
-
 ### <a name="trigger-sample"></a>Przykładowe wyzwalacza
 
-Poniżej przedstawiono przykład jak może wyglądać najprostszym funkcja orchestrator "Hello World" C#:
+Poniżej przedstawiono przykład jak może wyglądać najprostszym funkcja orchestrator "Hello World":
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -85,7 +79,23 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    return `Hello ${name}!`;
+});
+```
+
+> [!NOTE]
+> Należy używać JavaScript orchestrators `return`. `durable-functions` Biblioteki zajmuje się wywoływania `context.done` metody.
+
 Większość funkcji programu orchestrator wywołania funkcji działania, Oto przykład "Hello World", który demonstruje sposób wywołania funkcji działania:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -96,6 +106,18 @@ public static async Task<string> Run(
     string result = await context.CallActivityAsync<string>("SayHello", name);
     return result;
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    const result = yield context.df.callActivityAsync("SayHello", name);
+    return result;
+});
 ```
 
 ## <a name="activity-triggers"></a>Wyzwalacze działania
@@ -110,17 +132,12 @@ Jeśli używasz portalu Azure do tworzenia aplikacji, wyzwalacz działania jest 
 {
     "name": "<Name of input parameter in function signature>",
     "activity": "<Optional - name of the activity>",
-    "version": "<Optional - version label of this activity function>",
     "type": "activityTrigger",
     "direction": "in"
 }
 ```
 
 * `activity` to nazwa działania. Jest to wartość, która umożliwia wywołanie tej funkcji działania funkcji programu orchestrator. Ta właściwość jest opcjonalna. Jeśli nie zostanie określony, używany jest nazwa funkcji.
-* `version` jest wersja etykietę działania. Funkcje programu orchestrator, które wywołują działania musi zawierać dopasowania etykiety wersji. Ta właściwość jest opcjonalna. Jeśli nie określono pusty ciąg jest używany. Aby uzyskać więcej informacji, zobacz [Versioning](durable-functions-versioning.md).
-
-> [!NOTE]
-> Ustawienie wartości `activity` lub `version` właściwości nie jest zalecane w tej chwili.
 
 Wewnętrznie tego powiązania wyzwalacza sonduje kolejkę w domyślne konto magazynu dla funkcji aplikacji. Kolejka jest szczegółów wewnętrznej implementacji rozszerzenia, dlatego nie jest jawnie skonfigurowany we właściwościach powiązania.
 
@@ -144,12 +161,11 @@ Wyzwalacz działania powiązanie obsługuje danych wejściowych i danych wyjści
 * **generuje** — działanie funkcji obsługi wartości danych wyjściowych, a także dane wejściowe. Zwracana wartość funkcji jest używana do przypisywania wartości wyjściowych i musi być możliwy do serializacji JSON. Jeśli funkcja zwraca `Task` lub `void`, `null` wartość zostanie zapisany jako dane wyjściowe.
 * **metadane** -działania funkcji można powiązać z `string instanceId` parametru można pobrać Identyfikatora wystąpienia aranżacji nadrzędnej.
 
-> [!NOTE]
-> Wyzwalacze działania nie są obecnie obsługiwane w przypadku funkcji Node.js.
-
 ### <a name="trigger-sample"></a>Przykładowe wyzwalacza
 
-Poniżej przedstawiono przykład prostego funkcja działania "Hello World" C# przykładową:
+Poniżej przedstawiono przykład prostego funkcja działania "Hello World" przykładową:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -160,7 +176,17 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+module.exports = function(context) {
+    context.done(null, `Hello ${context.bindings.name}!`);
+};
+```
+
 Domyślny typ parametru dla `ActivityTriggerAttribute` powiązanie to `DurableActivityContext`. Jednak również obsługa powiązanie bezpośrednio z JSON serializeable typy (w tym typy pierwotne), można uprościć taką samą funkcję, jako wyzwalacze działania są następujące:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -168,6 +194,14 @@ public static string SayHello([ActivityTrigger] string name)
 {
     return $"Hello {name}!";
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+module.exports = function(context, name) {
+    context.done(null, `Hello ${name}!`);
+};
 ```
 
 ### <a name="passing-multiple-parameters"></a>Przekazywanie wiele parametrów 
@@ -302,9 +336,9 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 }
 ```
 
-#### <a name="nodejs-sample"></a>Przykładu środowiska node.js
+#### <a name="javascript-sample"></a>Przykład JavaScript
 
-Poniższy przykład przedstawia sposób użycia klienta aranżacji trwałe powiązanie, aby uruchomić nowe wystąpienie funkcji z funkcją Node.js:
+Poniższy przykład przedstawia sposób użycia klienta aranżacji trwałe powiązanie, aby uruchomić nowe wystąpienie funkcji z funkcją JavaScript:
 
 ```js
 module.exports = function (context, input) {

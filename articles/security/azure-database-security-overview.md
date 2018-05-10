@@ -1,12 +1,12 @@
 ---
-title: "Przegląd zabezpieczeń bazy danych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie bazy danych Azure funkcje zabezpieczeń."
+title: Przegląd zabezpieczeń bazy danych platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie bazy danych Azure funkcje zabezpieczeń.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: b5e9e412fddf727237b008e37238fa2c547694de
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-overview"></a>Przegląd zabezpieczeń bazy danych platformy Azure
 
@@ -211,7 +211,7 @@ Usługa [Azure Security Center](https://azure.microsoft.com/documentation/servic
 Portal Azure Marketplace to rynek aplikacji i usług w trybie online, który umożliwia początkującym i niezależnym dostawcom oprogramowania oferowanie swoich rozwiązań klientom platformy Azure na całym świecie.
 Portal Azure Marketplace łączy ekosystemy partnerów platformy Microsoft Azure w pojedynczą, jednolitą platformę, która lepiej służy naszym klientom i partnerom. Kliknij przycisk [tutaj](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1) oka produktów zabezpieczeń bazy danych na platformę handlową platformy Azure.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [zabezpieczenia bazy danych SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).
 - Dowiedz się więcej o [usługi Centrum zabezpieczeń Azure i usługi Azure SQL Database](https://docs.microsoft.com/azure/security-center/security-center-sql-database).

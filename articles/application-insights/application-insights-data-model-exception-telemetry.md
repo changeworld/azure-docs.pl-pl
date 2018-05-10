@@ -1,9 +1,9 @@
 ---
-title: "Model danych Telemetrii aplikacji Azure Insights — dane telemetryczne dotyczące wyjątków | Dokumentacja firmy Microsoft"
-description: "Model danych usługi Insights aplikacji dla dane telemetryczne dotyczące wyjątków"
+title: Model danych Telemetrii aplikacji Azure Insights — dane telemetryczne dotyczące wyjątków | Dokumentacja firmy Microsoft
+description: Model danych usługi Insights aplikacji dla dane telemetryczne dotyczące wyjątków
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3c3c3a39c7986cc771fe4baf60ad9b316888f6ed
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 036670c46a0ff40dd7b20a03c90f10513395cd71
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Dane telemetryczne wyjątku: model danych usługi Application Insights
 
@@ -44,7 +44,7 @@ Poziom ważności śledzenia. Wartość może być `Verbose`, `Information`, `Wa
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [modelu danych](application-insights-data-model.md) dla modelu danych i typów usługi Application Insights.
 - Dowiedz się, jak [diagnozowanie wyjątków w aplikacjach sieci web za pomocą usługi Application Insights](app-insights-asp-net-exceptions.md).

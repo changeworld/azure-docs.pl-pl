@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 3235813708b3c097e7f66610796f75eafd06aa05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7754242aa79a2ba7931a6d80a7a12a0858c6f260
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w usłudze Azure Search
 Usługa Azure Search regularnie zbiera i wydaje aktualizacje funkcji. Czasami, ale nie zawsze te aktualizacje wymagają firmie Microsoft w celu publikowania nowej wersji interfejsach API w celu zachowania zgodności z poprzednimi wersjami. Opublikowanie nowych wersji umożliwia określenie, kiedy i jak integrować aktualizacje usługi wyszukiwania w kodzie.
@@ -32,8 +32,9 @@ Poniżej jest migawkę bieżącej wersji wszystkich interfejsów programowania d
 | --- | --- | --- |
 | [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |5.0 |Ogólnie dostępne, wydane 2018 kwietnia |
 | [Wersja zapoznawcza zestawu SDK .NET](https://aka.ms/search-sdk-preview) |4.0.1-Preview |Podgląd wydane 2017 maja |
-| [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |Ogólnie dostępna |
-| [Podgląd interfejsu API REST usługi](search-api-2016-09-01-preview.md) |2016-09-01-preview |Wersja zapoznawcza |
+| [Interfejs API REST usługi](https://docs.microsoft.com/rest/api/searchservice/) |2016-09-01 |Ogólnie dostępna |
+| [2016 interfejsu API REST usługi-09-01-Preview](search-api-2016-09-01-preview.md) |2016-09-01-preview |Wersja zapoznawcza |
+| [2017 interfejsu API REST usługi-11-11-Preview](search-api-2017-11-11-preview.md) |2017-11-11-preview |Wersja zapoznawcza |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |2.0 |Ogólnie dostępna |
 | [Interfejsu API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Ogólnie dostępna |
 

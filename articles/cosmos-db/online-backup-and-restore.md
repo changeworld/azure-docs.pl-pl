@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f8ddc9c57df878137ee1ff1b6431e40acfd5eb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracania bazy danych Azure rozwiązania Cosmos
 Azure DB rozwiązania Cosmos automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatycznego tworzenia kopii zapasowych woluminów bez wpływu na wydajność i dostępność operacji w bazie danych. Kopie zapasowe są przechowywane oddzielnie w innej usłudze magazynu, a te kopie zapasowe globalnie są replikowane w celu odporność regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy przypadkowego usunięcia z kontenera DB rozwiązania Cosmos i później wymagają danych odzyskiwania lub rozwiązanie odzyskiwania po awarii.  
@@ -50,7 +50,11 @@ Na poniższym obrazie przedstawiono okresowe pełne kopie zapasowe wszystkich je
 ## <a name="backup-retention-period"></a>Okres przechowywania kopii zapasowych
 Zgodnie z powyższym opisem bazy danych Azure rozwiązania Cosmos przyjmuje migawki danych na poziomie partycji co cztery godziny. W dowolnym momencie tylko ostatnie dwa migawki są zachowywane. Jednak usunięcie/bazie danych kolekcji możemy zachować istniejące migawek dla wszystkich usuniętych partycji w danej kolekcji/bazy danych przez 30 dni.
 
-Jeśli chcesz zachować swoje własne migawki, można użyć eksportu opcji JSON w usłudze Azure DB rozwiązania Cosmos [narzędzia migracji danych](import-data.md#export-to-json-file) można zaplanować dodatkowych kopii zapasowych.
+Dla interfejsu API SQL, jeśli chcesz zachować swoje własne migawki służy eksportu opcji JSON w usłudze Azure DB rozwiązania Cosmos [narzędzia migracji danych](import-data.md#export-to-json-file) można zaplanować dodatkowych kopii zapasowych.
+
+> [!NOTE]
+> Jeśli możesz "Przepływności udostępniania dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnić dotrzeć w 8 godzin do pomocy, jeśli przypadkowo usunięto pozycję kontener — kolekcji/tabeli/graph korzystając z tej nowej możliwości. 
+
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Przywracanie bazy danych z kopii zapasowej online
 Jeśli został przypadkowo usunięty z bazy danych lub kolekcji, możesz [pliku biletu pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [z działem pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) przywrócić dane z ostatnich automatycznej kopii zapasowej. Jeśli trzeba przywrócić bazę danych z powodu problemu z uszkodzenie danych (w tym przypadków, w których są usuwane dokumentów w kolekcji), zobacz [obsługi uszkodzenie danych](#handling-data-corruption) jak należy wykonać dodatkowe czynności, aby zapobiec uszkodzonych danych zastąpienie istniejących kopii zapasowych. Określoną migawkę kopii zapasowej do przywrócenia bazy danych rozwiązania Cosmos wymaga dane były dostępne w czasie trwania cyklu tworzenia kopii zapasowych dla tej migawki.

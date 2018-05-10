@@ -316,22 +316,24 @@
           href: compute-linked-services.md
     - name: Przepływ sterowania
       items:
-        - name: Działanie If Condition
-          href: control-flow-if-condition-activity.md
-        - name: Działanie Until
-          href: control-flow-until-activity.md
-        - name: Działanie internetowe
-          href: control-flow-web-activity.md
-        - name: Działanie wyszukiwania
-          href: control-flow-lookup-activity.md
-        - name: Działanie pobierania metadanych
-          href: control-flow-get-metadata-activity.md
         - name: Działanie wykonywania potoku
           href: control-flow-execute-pipeline-activity.md
+        - name: Filtruj aktywność
+          href: control-flow-filter-activity.md
         - name: Dla każdego działania
           href: control-flow-for-each-activity.md
+        - name: Działanie pobierania metadanych
+          href: control-flow-get-metadata-activity.md
+        - name: Działanie If Condition
+          href: control-flow-if-condition-activity.md
+        - name: Działanie wyszukiwania
+          href: control-flow-lookup-activity.md
+        - name: Działanie Until
+          href: control-flow-until-activity.md
         - name: Działanie Wait
           href: control-flow-wait-activity.md
+        - name: Działanie internetowe
+          href: control-flow-web-activity.md
         - name: Język wyrażeń
           href: control-flow-expression-language-functions.md
         - name: Zmienne systemu

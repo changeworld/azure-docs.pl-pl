@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e461eaebaafab6f8a95bed333928d017c540d4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
 Dowiedz się, jak utworzyć, Zmień ustawienia i usunąć interfejsu sieciowego. Interfejs sieciowy umożliwia maszynie wirtualnej platformy Azure do komunikowania się z Internetem, Azure i lokalnymi zasobami. Podczas tworzenia maszyny wirtualnej przy użyciu portalu Azure, portal tworzy jeden interfejs sieciowy z ustawieniami domyślnymi dla Ciebie. Można zamiast tego do tworzenia interfejsów sieciowych z użyciem ustawień niestandardowych i Dodaj jeden lub więcej interfejsów sieciowych do maszyny wirtualnej, po jego utworzeniu. Można również zmienić domyślne ustawienia interfejsu sieciowego dla istniejącego interfejsu sieciowego. W tym artykule wyjaśniono, jak utworzyć niestandardowe ustawienia interfejsu sieciowego, zmień istniejące ustawienia, takie jak przypisywanie (sieciowej grupy zabezpieczeń) filtru sieci, przypisanie podsieci, ustawienia serwera DNS i przesyłanie dalej IP i usunąć interfejsu sieciowego.
 
 Aby dodać, zmienić, lub usunąć adresy IP dla interfejsu sieciowego, zobacz [adresów IP zarządzanie](virtual-network-network-interface-addresses.md). Jeśli konieczne jest dodanie interfejsów sieciowych do lub usuwanie interfejsów sieciowych z maszyn wirtualnych, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](virtual-network-network-interface-vm.md).
-
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -37,7 +36,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 - Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
-Konto logowania na platformie Azure za pomocą musi być przypisany na minimalne, uprawnienia roli współautora sieci dla Twojej subskrypcji. Aby dowiedzieć się więcej na temat Przypisywanie ról i uprawnień do kont, zobacz [wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+Konta, zaloguj się do lub z usługą Azure, musi być przypisany do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania na liście [uprawnień ](#permissions).
 
 ## <a name="create-a-network-interface"></a>Tworzenie interfejsu sieciowego
 
@@ -88,7 +87,7 @@ Możesz wyświetlić i zmienić większość ustawień interfejsu sieciowego po 
     - **Właściwości:** Wyświetla klucz Ustawienia dotyczące interfejsu sieciowego, łącznie z jej adres MAC (pusty w przypadku interfejsu sieciowego nie jest dołączony do maszyny wirtualnej), a subskrypcja istnieje on w.
     - **Reguły efektywnym elementem systemu zabezpieczeń:** reguły zabezpieczeń są wyświetlane, jeśli interfejs sieciowy jest dołączony do uruchomionej maszyny wirtualnej, a grupa NSG jest skojarzona z interfejsu sieciowego i/lub jest przypisany do podsieci. Aby dowiedzieć się więcej o to, co jest wyświetlane, zobacz [wyświetlić reguły efektywnym elementem systemu zabezpieczeń](#view-effective-security-rules). Aby dowiedzieć się więcej na temat grup NSG, zobacz [sieciowej grupy zabezpieczeń](security-overview.md).
     - **Skuteczne tras:** wymienione są trasy, jeśli interfejs sieciowy jest dołączony do uruchomionej maszyny wirtualnej. Trasy są kombinacją trasy domyślne Azure, wszelkie trasy zdefiniowane przez użytkownika i żadnych trasy protokołu BGP, które mogą wystąpić dla podsieci, w której interfejsu sieciowego jest przypisany do. Aby dowiedzieć się więcej o to, co jest wyświetlane, zobacz [wyświetlić trasy skuteczne](#view-effective-routes). Aby dowiedzieć się więcej na temat trasy domyślne Azure i trasy zdefiniowane przez użytkownika, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-    - **Typowe ustawienia usługi Azure Resource Manager:** Aby dowiedzieć się więcej na temat typowych ustawień usługi Azure Resource Manager, zobacz [dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [(IAM) kontroli dostępu](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [tagi](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags), [Blokuje](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), i [skryptu automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+    - **Typowe ustawienia usługi Azure Resource Manager:** Aby dowiedzieć się więcej na temat typowych ustawień usługi Azure Resource Manager, zobacz [dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [(IAM) kontroli dostępu](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Blokuje](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), i [skryptu automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Polecenia**
 
@@ -204,7 +203,7 @@ Po usunięciu interfejsu sieciowego są wydawane adresy MAC lub adres IP przypis
 
 ## <a name="resolve-connectivity-issues"></a>Rozwiąż problemy z połączeniem
 
-Jeśli nie można komunikować się do lub z maszyny wirtualnej, sieci reguł zabezpieczeń grupy zabezpieczeń lub trasy dla interfejsu sieciowego mogą być przyczyną problemu. Masz następujące opcje, aby pomóc w rozwiązaniu problemu:
+Jeśli nie można nawiązać komunikacji z maszyny wirtualnej, reguł zabezpieczeń grupy zabezpieczeń sieci lub trasy dla interfejsu sieciowego lub mogą być przyczyną problemu. Masz następujące opcje, aby pomóc w rozwiązaniu problemu:
 
 ### <a name="view-effective-security-rules"></a>Wyświetl reguły efektywnym elementem systemu zabezpieczeń
 
@@ -240,11 +239,30 @@ Funkcję następnego przeskoku obserwatora sieci Azure może również pomóc w 
 - Azure CLI: [az sieci karty sieciowej Pokaż obowiązującej--tabeli tras](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby utworzyć maszynę wirtualną z wielu interfejsów sieciowych lub adresów IP, zobacz następujące artykuły:
+## <a name="permissions"></a>Uprawnienia
 
-|Zadanie|Narzędzie|
-|---|---|
-|Tworzenie maszyny wirtualnej z wieloma kartami sieciowymi|[Interfejs wiersza polecenia](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [środowiska PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Tworzenie jednej maszyny Wirtualnej karty Sieciowej z wielu adresów IPv4|[Interfejs wiersza polecenia](virtual-network-multiple-ip-addresses-cli.md), [środowiska PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|Tworzenie jednej maszyny Wirtualnej karty Sieciowej za pomocą prywatnego adresu IPv6 (za równoważenia obciążenia Azure)|[Interfejs wiersza polecenia](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [szablonu usługi Azure Resource Manager](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+Do wykonywania zadań w interfejsach sieciowych, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie uprawnienia są wymienione w poniższej tabeli:
+
+| Akcja                                                                     | Name (Nazwa)                                                      |
+| ---------                                                                  | -------------                                             |
+| Microsoft.Network/networkInterfaces/read                                   | Pobierz interfejs sieciowy                                     |
+| Microsoft.Network/networkInterfaces/write                                  | Utwórz lub zaktualizuj interfejs sieciowy                        |
+| Microsoft.Network/networkInterfaces/join/action                            | Dołącz do interfejsu sieciowego z maszyną wirtualną           |
+| Microsoft.Network/networkInterfaces/delete                                 | Usunąć interfejsu sieciowego                                  |
+| Microsoft.Network/networkInterfaces/joinViaPrivateIp/action                | Dołącz zasobu do interfejsu sieciowego za pośrednictwem servi...     |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action             | Pobierz tabelę tras skuteczne interfejsu sieciowego               |
+| Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action  | Pobierz grup zabezpieczeń skuteczne interfejsu sieciowego           |
+| Microsoft.Network/networkInterfaces/loadBalancers/read                     | Pobierz moduły równoważenia obciążenia interfejsu sieciowego                      |
+| Microsoft.Network/networkInterfaces/serviceAssociations/read               | Uzyskaj skojarzenie usługi                                   |
+| Microsoft.Network/networkInterfaces/serviceAssociations/write              | Utwórz lub zaktualizuj skojarzenie usługi                    |
+| Microsoft.Network/networkInterfaces/serviceAssociations/delete             | Usuń skojarzenie usługi                                |
+| Microsoft.Network/networkInterfaces/serviceAssociations/validate/action    | Sprawdź poprawność skojarzenie usługi                              |
+| Microsoft.Network/networkInterfaces/ipconfigurations/read                  | Pobierz Konfiguracja IP interfejsu sieciowego                    |
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Utwórz maszynę Wirtualną z wieloma kartami sieciowymi przy użyciu [interfejsu wiersza polecenia Azure](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [programu PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Utwórz pojedynczy adresów maszyny Wirtualnej karty Sieciowej z wielu IPv4 [interfejsu wiersza polecenia Azure](virtual-network-multiple-ip-addresses-cli.md) lub [programu PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+- Tworzenie jednej maszyny Wirtualnej karty Sieciowej z prywatnych adresów (za równoważenia obciążenia Azure) IPv6, za pomocą [interfejsu wiersza polecenia Azure](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), lub [szablonu usługi Azure Resource Manager](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Tworzenie przy użyciu interfejsu sieciowego [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia Azure](cli-samples.md) przykładowe skrypty lub przy użyciu usługi Azure [szablony Menedżera zasobów](template-samples.md)
+- Tworzenie i stosowanie [Azure zasad](policy-samples.md) dla sieci wirtualnych

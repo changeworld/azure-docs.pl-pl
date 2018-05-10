@@ -3,7 +3,7 @@ title: Próbkowanie danych telemetrii w usłudze Azure Application Insights | Do
 description: Jak zapewnić ilość danych telemetrycznych pod kontrolą.
 services: application-insights
 documentationcenter: windows
-author: vgorbenko
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
-ms.author: mbullwin
-ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: mbullwin; vitalyg
+ms.openlocfilehash: 53753a3202362c73356e8e39bfca9d813f6387e0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -38,7 +38,7 @@ Próbkowania powoduje zmniejszenie kosztów ruchu i dane i pomaga uniknąć ogra
 ## <a name="types-of-sampling"></a>Typy pobierania próbek
 Istnieją trzy metody alternatywne próbkowania:
 
-* **Próbkowanie adaptacyjną** automatycznie dostosowuje ilość danych telemetrycznych wysłanych z zestawu SDK w aplikacji ASP.NET. Począwszy od zestawu SDK v 2.0.0-beta3 jest domyślna metoda pobierania próbek. Adaptacyjną próbkowania jest obecnie dostępny tylko dla telemetrii po stronie serwera ASP.NET. Dla pełnej dotyczących aplikacji platformy Asp.NET Core Framework, adaptacyjną próbkowania jest dostępny w wersji 1.0.0 Microsoft.ApplicationInsights.AspNetCore SDK. Dotyczących aplikacji platformy Asp.NET Core NetCore adaptacyjną próbkowania jest dostępna z 2.2.0-beta1 Microsoft.ApplicationInsights.AspNetCore zestawu SDK.
+* **Próbkowanie adaptacyjną** automatycznie dostosowuje ilość danych telemetrycznych wysłanych z zestawu SDK w aplikacji ASP.NET. Począwszy od zestawu SDK v 2.0.0-beta3 jest domyślna metoda pobierania próbek. Adaptacyjną próbkowania jest obecnie dostępny tylko dla telemetrii po stronie serwera ASP.NET. Dla aplikacji platformy Asp.NET Core przeznaczanie pełne platformy adaptacyjną próbkowania jest dostępne w wersji 1.0.0 Microsoft.ApplicationInsights.AspNetCore SDK. W przypadku aplikacji platformy Asp.NET Core przeznaczonych dla NetCore adaptacyjną próbkowania jest udostępniana przez 2.2.0-beta1 Microsoft.ApplicationInsights.AspNetCore zestawu SDK.
 
 * **Próbkowanie stałej stawki** zmniejsza ilość danych telemetrycznych wysłanych z programu ASP.NET lub Java serwera i przeglądarki użytkownika. Możesz ustawić częstotliwość. Klient i serwer będzie synchronizować ich próbkowania tak, w wyszukiwania, można przechodzić między wyświetleń strony powiązane i żądań.
 * **Wprowadzanie próbkowania** działa w portalu Azure. Odrzuca niektóre dane telemetryczne, przychodzący z aplikacji, na poziomie próbkowania zostanie ustawiona. Nie zmniejszenie ruchu danych telemetrycznych wysłanych z aplikacji, ale pomaga zachować w wykorzystaniu całego przydziału miesięcznego. Główną zaletą wprowadzanie próbkowania jest bez ponownego wdrażania aplikacji można ustawić częstotliwość próbkowania, czy działa on jednakowo do wszystkich serwerów i klientów. 

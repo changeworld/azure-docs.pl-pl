@@ -1,9 +1,9 @@
 ---
-title: "Badanie i udostępniać dane użycia interakcyjne skoroszytów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Analiza demograficznych użytkowników aplikacji sieci web."
+title: Badanie i udostępniać dane użycia interakcyjne skoroszytów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Analiza demograficznych użytkowników aplikacji sieci web.
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3edaefa942b834a070c55fe28daf60c74ea9f59d
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.author: mbullwin; daviste
+ms.openlocfilehash: a871378b3e2cc0b34c925593c6f01952de3aa08e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Badanie i udostępniać dane użycia interakcyjne skoroszytów w usłudze Application Insights
 
@@ -114,9 +114,9 @@ Aby przypiąć łącze do skoroszytu do pulpitu nawigacyjnego platformy Azure:
 2. Kliknij przycisk "..." obok skoroszytu, który chcesz przypiąć
 3. Kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby umożliwić korzystanie z użycia, Rozpocznij wysyłanie [zdarzeń niestandardowych](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
 - Jeżeli już zdarzeń niestandardowych lub wyświetleń strony, Poznaj narzędzia użycia, aby dowiedzieć się, jak używać usługi przez użytkowników.
     - [Użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md)

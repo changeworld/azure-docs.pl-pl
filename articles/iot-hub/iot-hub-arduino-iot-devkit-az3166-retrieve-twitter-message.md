@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 8bcc1b2c76ff1e312d1435997ef6d677656510d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Potrząsanie, potrząsanie dla Tweet — pobierania wiadomości Twitter z usługi Azure Functions!
 
@@ -188,6 +188,6 @@ Jeśli występują inne problemy, zapoznaj się [— często zadawane pytania](h
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do pakietu Azure IoT i pobrać tweet, Oto Sugerowane następne kroki:
+Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do sieci Azure IoT zdalne monitorowanie akcelerator rozwiązań i pobrać tweet, Oto Sugerowane następne kroki:
 
-* [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
+* [Omówienie usługi Azure akceleratora rozwiązania IoT monitorowania zdalnego](https://docs.microsoft.com/azure/iot-suite/)

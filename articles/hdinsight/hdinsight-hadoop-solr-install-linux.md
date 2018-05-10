@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 8a642b569389d960e7a3a1fa2c7cb0f2d87bd809
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 707f25a71a22f136a3cfc537ec3dd939e06dea08
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Zainstalować i używać Solr w klastrach HDInsight Hadoop
 
@@ -87,7 +87,7 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
     Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > Kroki opisane w dalszej części tego dokumentu Podłącz do interfejsu użytkownika sieci web Solr za pomocą tunelowania SSL. Do wykonania tych czynności, należy ustanowić tunel protokołu SSL, a następnie skonfiguruj przeglądarkę, aby go użyć.
+     > Kroki opisane w dalszej części tego dokumentu, użyj tunelu SSH do nawiązania połączenia interfejsu użytkownika sieci web Solr. Do wykonania tych czynności, należy ustanowić tunelu SSH, a następnie skonfiguruj przeglądarkę, aby go użyć.
      >
      > Aby uzyskać więcej informacji, zobacz [Użyj SSH Tunneling z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 

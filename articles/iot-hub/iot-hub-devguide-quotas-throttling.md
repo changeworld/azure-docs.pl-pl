@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 37d1397b0601e09b12c0c05ff0adc6a916d66d70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e1f8a907c8bf64497f7439e5b635ad336cd23a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie - Centrum IoT przydziały i ograniczenia przepustowości
 
@@ -49,6 +49,8 @@ W poniższej tabeli przedstawiono limity wymuszone. Wartości odnoszą się do p
 | Dwie aktualizacji (urządzenia i modułu)<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
 | Zadania operacje<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (jednostka/100/min) | 1.67/sec/Unit (jednostka/100/min) | 83.33/sec/Unit (jednostka-5000/min) |
 | Zadania na urządzenie operacji przepływności<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
+| Konfiguracje i wdrożenia krawędzi<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 0.33/sec/Unit (jednostka-20/min) | 0.33/sec/Unit (jednostka-20/min) | 0.33/sec/Unit (jednostka-20/min) |
+
 
 <sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa Centrum IoT. Aby uzyskać więcej informacji, zobacz [Wybieranie prawo Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika jest 8 KB.
 
@@ -76,6 +78,9 @@ Centrum IoT wymusza inne ograniczenia operacyjne:
 | Urządzenia do chmury do obsługi komunikatów | Rozmiar maksymalny komunikatu 256 KB |
 | Wiadomości chmury do urządzenia<sup>1</sup> | Komunikat maksymalny rozmiar 64 KB. Maksymalna liczba oczekujących komunikatów w celu dostarczania to 50. |
 | Metoda bezpośrednia<sup>1</sup> | Metoda bezpośrednia maksymalny rozmiar ładunku jest 128 KB. |
+| Konfiguracje | 20 konfiguracje dla koncentratora. |
+| Krawędź wdrożenia | 20 wdrożeń na koncentratora. 20 modułów na wdrożenie. |
+| Twins | Maksymalny rozmiar każdej sekcji dwie (tagi, żądanej właściwości, właściwości zgłoszone) to 8 KB |
 
 <sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa Centrum IoT. Aby uzyskać więcej informacji, zobacz [Wybieranie prawo Centrum IoT](iot-hub-scaling.md).
 

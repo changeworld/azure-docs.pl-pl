@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 26c77b706f17f49eff782e6d0d73087050739874
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizacji 1803 stosu
 
@@ -40,8 +40,18 @@ Numer kompilacji aktualizacji 1803 stosu Azure jest **20180329.1**.
 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-- Zainstaluj stosu Azure [zaktualizować 1802](azure-stack-update-1802.md) przed zastosowaniem aktualizacji 1803 stosu Azure.    
+- Zainstaluj stosu Azure [zaktualizować 1802](azure-stack-update-1802.md) przed zastosowaniem aktualizacji 1803 stosu Azure.   
 
+- Zainstaluj **AzS poprawkę — 20180222.2 kompilacji 1.0.180312.1-** przed zastosowaniem aktualizacji 1803 stosu Azure. Ta poprawka aktualizacji usługi Windows Defender i jest dostępna podczas pobierania aktualizacji dla stosu Azure.
+
+  Aby zainstalować poprawkę, wykonaj normalnych procedur [instalowania aktualizacji dla stosu Azure](azure-stack-apply-updates.md). Nazwa aktualizacji jest wyświetlana jako **poprawkę AzS — 1.0.180312.1**i zawiera następujące pliki: 
+    - PUPackageHotFix_20180222.2-1.exe
+    - PUPackageHotFix_20180222.2-1.bin
+    - Metadata.xml
+
+  Po przekazaniu tych plików, aby konto magazynu i kontener, uruchom instalację na kafelku aktualizacji w portalu administracyjnym. 
+  
+  W odróżnieniu od aktualizacje stosu Azure po zainstalowaniu tej aktualizacji nie powoduje zmiany wersji Azure stosu. Aby potwierdzić, ta aktualizacja jest zainstalowana, wyświetlić listę **zainstalowane aktualizacje**.
 
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
 - Po zakończeniu instalacji 1803 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md).

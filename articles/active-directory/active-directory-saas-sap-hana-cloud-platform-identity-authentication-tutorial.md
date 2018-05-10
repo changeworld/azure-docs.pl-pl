@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z uwierzytelnianie tożsamości platformy chmury SAP | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i uwierzytelniania tożsamości platformy SAP w chmurze."
+title: 'Samouczek: Integracji Azure Active Directory z uwierzytelnianie tożsamości platformy chmury SAP | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i uwierzytelniania tożsamości platformy SAP w chmurze.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0c7dd884eaadd1fba4fcbc19b6c9cf92c68a59ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 69a8eba2e099e9333d19d139fb5af503fd582dda
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Samouczek: Integracji Azure Active Directory z uwierzytelniania tożsamości platformy SAP w chmurze
 
@@ -126,21 +126,25 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. Jeśli chcesz skonfigurować aplikację w **IDP** inicjowane w trybie **domeny uwierzytelniania tożsamości SAP Cloud Platform i adres URL** sekcji w **identyfikator** okno, Wpisz adres URL z następującego wzorca: `https://<entity-id>.accounts.ondemand.com`.  
+3. Jeśli chcesz skonfigurować aplikację w **IDP** inicjowane w trybie **domeny uwierzytelniania tożsamości SAP Cloud Platform i adres URL** sekcji, wykonaj następujące czynności:  
 
     ![Adresy URL i SAP Cloud Platform tożsamości uwierzytelniania domeny pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url.png)
 
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej SAP Cloud Platform tożsamość uwierzytelniania klient](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) aby zyskać tę wartość. Jeśli nie znasz tę wartość, zapoznaj się z dokumentacją uwierzytelnianie tożsamości platformy chmury SAP o [konfiguracji dzierżawy SAML 2.0](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
+    a. W **identyfikator** wpisz adres URL z następującego wzorca: `<IAS-tenant-id>.accounts.ondemand.com`
 
-4. Jeśli chcesz skonfigurować aplikację w **SP** tryb inicjowane, wybierz opcję **Pokaż zaawansowane ustawienia adresu URL**. 
+    b. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca: `https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
+
+    > [!NOTE]
+    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej SAP Cloud Platform tożsamość uwierzytelniania klient](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) uzyskać te wartości. Jeśli nie znasz wartość identyfikatora, zapoznaj się z dokumentacją uwierzytelnianie tożsamości platformy chmury SAP o [konfiguracji dzierżawy SAML 2.0](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
+
+4. Jeśli chcesz skonfigurować aplikację w **SP** tryb inicjowane, wybierz opcję **Pokaż zaawansowane ustawienia adresu URL**.
 
     ![Adresy URL i SAP Cloud Platform tożsamości uwierzytelniania domeny pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url1.png)
 
-    W **na adres URL logowania** wpisz adres URL z następującego wzorca: `https://<entity-id>.accounts.ondemand.com/admin`.
+    W **na adres URL logowania** wpisz adres URL z następującego wzorca: `{YOUR BUSINESS APPLICATION URL}`.
 
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej SAP Cloud Platform tożsamość uwierzytelniania klient](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) aby zyskać tę wartość.
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Użyj Twojej firmy jednokrotnej adres URL aplikacji. Skontaktuj się z [zespołem pomocy technicznej SAP Cloud Platform tożsamość uwierzytelniania klient](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) Jeśli masz wątpliwości.
 
 5. W **certyfikat podpisywania SAML** zaznacz **XML metadanych**. Następnie zapisz plik metadanych na tym komputerze.
 
@@ -271,7 +275,7 @@ Po wybraniu kafelka uwierzytelnianie tożsamości platformy chmury SAP w panelu 
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -289,4 +293,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_203.png
-

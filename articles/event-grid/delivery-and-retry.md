@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: db16a4ba2177e92fa4500af0969c44471004ba73
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń i spróbuj ponownie 
 
@@ -35,7 +35,7 @@ Następujące kody odpowiedzi HTTP wskazują, że zdarzenia został pomyślnie d
 
 ### <a name="failure-codes"></a>Kod błędów
 
-Następujące kody odpowiedzi HTTP wskazują, że próba dostarczania zdarzeń nie powiodła się. Siatka zdarzeń próbuje ponownie wysłać zdarzenia. 
+Następujące kody odpowiedzi HTTP wskazują, że próba dostarczania zdarzeń nie powiodła się. 
 
 - 400 Niewłaściwe żądanie
 - 401 nieautoryzowane
@@ -46,9 +46,9 @@ Następujące kody odpowiedzi HTTP wskazują, że próba dostarczania zdarzeń n
 - 503 — usługa niedostępna
 - 504 — limit czasu bramy
 
-Każdy kod odpowiedzi lub brak odpowiedzi oznacza błąd. Zdarzenie siatki ponownych prób dostarczenia. 
+Jeśli zdarzenia siatki odebrał błąd, który wskazuje, że punkt końcowy jest niedostępny, próbuje ponownie wysłać zdarzenia. 
 
-## <a name="retry-intervals"></a>Interwały ponawiania
+## <a name="retry-intervals-and-duration"></a>Interwał ponawiania i czas trwania
 
 Siatka zdarzeń używa zasady ponawiania wykładniczego wycofywania w celu dostarczania zdarzeń. Jeśli Twoje elementu webhook nie odpowiada, zwraca kod błędu siatki zdarzeń ponowi próbę dostarczania zgodnie z harmonogramem następujące:
 
@@ -62,9 +62,7 @@ Siatka zdarzeń używa zasady ponawiania wykładniczego wycofywania w celu dosta
 
 Siatka zdarzeń dodaje małe losowe do wszystkich interwałów ponów próbę. Po upływie godziny dostarczania zdarzeń próba zostanie ponowiona godzinę.
 
-## <a name="retry-duration"></a>Spróbuj ponownie czas trwania
-
-Azure siatki zdarzeń wygasa wszystkie zdarzenia, które nie zostały dostarczone w ciągu 24 godzin.
+Domyślnie zdarzenia siatki wygasa wszystkie zdarzenia, które nie zostały dostarczone w ciągu 24 godzin.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

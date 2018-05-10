@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: 72eb329c03893f801e112ad33bca0c57c5ee46a0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Procesor kanału informacyjnego zmiany .NET SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -31,6 +31,8 @@ ms.lasthandoff: 04/28/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -48,6 +50,7 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Ulepszenia.
+  * Rozwiąż problem anulowane zadania, które mogą prowadzić do zatrzymania obserwatorów na niektóre partycje obsługi.
 * Obsługa ręczne tworzenie punktów kontrolnych.
 * Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21 i powyżej.
 
@@ -70,7 +73,14 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="pre-release-builds"></a>Kompilacje wydania wstępnego
 
+### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Prerelease
+* Drobne zmiany interfejsu API:
+  * Usunięte ChangeFeedProcessorOptions.IsAutoCheckpointEnabled, który został oznaczony jako przestarzały.
+
 ### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-Prerelease
+* Ulepszenia:
+  * Lepszą obsługę zainicjowanie magazynu dzierżawy. Gdy dzierżawa magazynu jest pusta, tylko jedno wystąpienie procesora można go zainicjować, innych będzie czekać.
+  * Więcej odnawiania dzierżawy stabilny/wydajne i wersji. Odnawianie i wydanie jedną partycję dzierżawy jest niezależna od innych odnawiania. W wersji 1, która została wykonana po kolei dla wszystkich partycji.
 * Nowe v2 interfejsu API:
   * Wzorzec konstruktora do konstrukcji elastyczne procesora: klasa ChangeFeedProcessorBuilder.
     * Może być dowolną kombinacją parametrów.
@@ -83,6 +93,7 @@ ms.lasthandoff: 04/28/2018
     * IPartitionProcessor - niestandardowych przetwarzania zmian na partycji.
 * Rejestrowanie - używa [LibLog](https://github.com/damianh/LibLog) biblioteki.
 * 100% zgodności z wcześniejszymi wersjami API w wersji 1.
+* Nowy kod podstawowy.
 * Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21.1 lub nowszym.
 
 ## <a name="release--retirement-dates"></a>Wersja & wycofania dat

@@ -1,0 +1,10 @@
+- name: Azure Media Services v3 (wersja zapoznawcza)
+  href: latest/media-services-overview.md
+- name: Azure Media Services v2 (wersja ogólnie dostępna)
+  href: previous/media-services-overview.md
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=media'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'

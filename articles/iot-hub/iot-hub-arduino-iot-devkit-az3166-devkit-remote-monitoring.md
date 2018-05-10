@@ -1,6 +1,6 @@
 ---
 title: 'Zestaw deweloperski IoT do chmury: Połącz IoT MXChip zestaw deweloperski z Centrum IoT Azure | Dokumentacja firmy Microsoft'
-description: W tym samouczku Dowiedz się, jak wysyłać stanu czujników na AZ3166 zestaw deweloperski IoT Azure IoT pakietu monitorowania i wizualizacji.
+description: W tym samouczku Dowiedz się, jak wysyłać stan czujników na AZ3166 zestaw deweloperski IoT do akcelerator rozwiązań monitorowania zdalnego IoT Azure.
 services: iot-hub
 documentationcenter: ''
 author: liydu
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: d59a739e2222aca27993f6ae944a1d3bda567041
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Zestaw deweloperski IoT MXChip połączyć się z pakiet IoT Azure zdalnego monitorowania
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Zestaw deweloperski IoT MXChip nawiązania połączenia zdalnego monitorowania Azure IoT akcelerator rozwiązań
 
-W tym samouczku Dowiedz się jak uruchomić przykładową aplikację na Twoje zestaw deweloperski, aby wysłać dane czujników do pakietu Azure IoT.
+W tym samouczku Dowiedz się jak uruchomić przykładową aplikację na Twoje zestaw deweloperski, aby wysłać dane czujników do akcelerator rozwiązań sieci Azure IoT zdalnego monitorowania.
 
 [Zestaw deweloperski IoT MXChip](https://aka.ms/iot-devkit) jest w jednym Arduino tablicy zgodny z czujników i sformatowanego urządzenia peryferyjne. Można utworzyć dla niego przy użyciu [rozszerzenia Visual Studio Code Arduino](https://aka.ms/arduino). I pochodzi z rosnącym [katalogu projektów](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) prowadzące prototypu Internetu rzeczy (IoT) rozwiązania, które korzystać z usług Microsoft Azure.
 
@@ -38,12 +38,12 @@ Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za 
 * Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/free/)
 * Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) w przypadku subskrybentów MSDN lub Visual Studio
 
-## <a name="create-an-azure-iot-suite"></a>Utwórz pakiet Azure IoT
+## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Utwórz akcelerator rozwiązań monitorowania zdalnego IoT Azure
 
-1. Przejdź do [lokacji pakiet IoT Azure](https://www.azureiotsuite.com/) i kliknij przycisk **Utwórz nowe rozwiązanie**.
-  ![Wybierz typ pakiet IoT Azure](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
+1. Przejdź do [lokacji acclerators rozwiązania Azure IoT](https://www.azureiotsuite.com/) i kliknij przycisk **Utwórz nowe rozwiązanie**.
+  ![Wybierz typ akceleratora rozwiązania Azure IoT](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
-  > Domyślnie ten przykład tworzy Centrum IoT S2 po utworzeniu jeden pakiet IoT. Jeśli w tym Centrum IoT nie jest używana z bardzo dużej liczby urządzeń, zdecydowanie zaleca się obniżyć go z S2 S1 i usunąć pakiet IoT, więc pokrewne Centrum IoT mogą być również usuwane, gdy nie są już potrzebne. 
+  > Domyślnie ten przykład tworzy Centrum IoT S2 po utworzeniu jednego akcelerator rozwiązań monitorowania zdalnego IoT. Jeśli w tym Centrum IoT nie jest używana z bardzo dużej liczby urządzeń, zdecydowanie zaleca się obniżyć go z S2 S1 i usunąć akcelerator rozwiązań monitorowania zdalnego IoT, aby powiązane Centrum IoT mogą być również usuwane, gdy nie są już potrzebne. 
 
 2. Wybierz **monitorowania zdalnego**.
 
@@ -100,13 +100,13 @@ Zestaw deweloperski wykonuje ponowny rozruch i uruchamiania kodu.
 
 ## <a name="test-the-project"></a>Projekt testowy
 
-Po uruchomieniu aplikacji przykładowej, zestaw deweloperski wysyła dane czujników za pośrednictwem sieci Wi-Fi do pakietu Azure IoT. Aby zobaczyć wynik, wykonaj następujące kroki:
+Po uruchomieniu aplikacji przykładowej, zestaw deweloperski wysyła dane czujników za pośrednictwem sieci Wi-Fi do akcelerator rozwiązań sieci Azure IoT zdalnego monitorowania. Aby zobaczyć wynik, wykonaj następujące kroki:
 
-1. Przejdź do pakietu IoT Azure, a następnie kliknij przycisk **pulpitu NAWIGACYJNEGO**.
+1. Przejdź do akcelerator rozwiązań sieci Azure IoT zdalnego monitorowania, a następnie kliknij przycisk **pulpitu NAWIGACYJNEGO**.
 
-2. W konsoli rozwiązania pakiet IoT Azure pojawi się stan czujnik zestaw deweloperski.
+2. W konsoli rozwiązanie monitorowania zdalnego pojawi się stan czujnik zestaw deweloperski.
 
-![Dane czujników w pakiet IoT Azure](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
+![Dane czujników w akcelerator rozwiązań monitorowania zdalnego IoT Azure](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
 
 ## <a name="change-device-id"></a>Zmień identyfikator urządzenia
 
@@ -121,7 +121,7 @@ Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https:/
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do pakietu Azure IoT i wizualizować dane czujników, w tym miejscu są Sugerowane następne kroki:
+Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do sieci Azure IoT zdalne monitorowanie akcelerator rozwiązań i wizualizować dane czujników, w tym miejscu są Sugerowane następne kroki:
 
-* [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
+* [Omówienie akceleratorów rozwiązania IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
 * [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

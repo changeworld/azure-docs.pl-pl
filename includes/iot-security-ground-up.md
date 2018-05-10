@@ -1,10 +1,26 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpieczeń Internetu rzeczy od podstaw
 
 Internet rzeczy (IoT) stanowi wyjątkowe wyzwanie zabezpieczeń, prywatności i zgodności dla firm na całym świecie. W przeciwieństwie do tradycyjnych przez technologii gdzie te problemy koncentrują się wokół oprogramowania i jak jest implementowane IoT dotyczy, co się stanie po zbieżne ataków i względem fizycznych. Ochrona rozwiązania IoT wymaga zapewnienia bezpiecznego inicjowania obsługi urządzeń i bezpieczna łączność między tymi urządzeniami i chmurą i ochronę danych w chmurze podczas przetwarzania i przechowywania. Jednak działać z takich funkcji, są ograniczone zasobów urządzeń, rozmieszczenie geograficzne wdrożeń i dużej liczby urządzeń w ramach rozwiązania.
 
-Ten artykuł opisuje, jak pakiet IoT Microsoft Azure zapewnia bezpieczeństwo i prywatność Internetu rzeczy rozwiązania w chmurze. Pakiet IoT Azure zapewnia kompleksowe rozwiązanie end-to-end z zabezpieczeniami wbudowanych w każdym etapie od podstaw. Firma Microsoft opracowywania oprogramowania bezpiecznego jest częścią praktyki engineering oprogramowania, umieszczone w dekad firmy Microsoft długo środowisko rozwoju oprogramowania bezpieczne. Aby to zapewnić, Security Development Lifecycle (SDL) jest metodologii programowanie podstawowych, w połączeniu z hostem usługi zabezpieczeń na poziomie infrastruktury, takie jak operacyjnej gwarancji bezpieczeństwa (OSA) i Microsoft jednostki, Microsoft Centrum zabezpieczeń, a w Centrum ochrony przed złośliwym oprogramowaniem firmy Microsoft.
+Ten artykuł opisuje, w jaki akceleratorów rozwiązania IoT zapewnia bezpieczeństwo i prywatność Internetu rzeczy rozwiązania w chmurze. Akceleratorów rozwiązania dostarczania kompletnego rozwiązania end-to-end z zabezpieczeniami wbudowanych w każdym etapie od podstaw. Firma Microsoft opracowywania oprogramowania bezpiecznego jest częścią praktyki engineering oprogramowania, umieszczone w dekad firmy Microsoft długo środowisko rozwoju oprogramowania bezpieczne. Aby to zapewnić, Security Development Lifecycle (SDL) jest metodologii programowanie podstawowych, w połączeniu z hostem usługi zabezpieczeń na poziomie infrastruktury, takie jak operacyjnej gwarancji bezpieczeństwa (OSA) i Microsoft jednostki, Microsoft Centrum zabezpieczeń, a w Centrum ochrony przed złośliwym oprogramowaniem firmy Microsoft.
 
-Pakiet IoT Azure oferuje funkcje unikatowy udostępniania tego upewnij, połączenie i przechowywanie danych z urządzeń IoT łatwe i przejrzysty i najbardziej, bezpieczna. W tym artykule sprawdza funkcji zabezpieczeń pakiet IoT Azure i są opisane strategie wdrażania, aby upewnić się, zabezpieczeń, prywatności i zgodności wyzwania.
+Akceleratorów rozwiązania oferują unikatowe funkcje tego programu, inicjowanie obsługi tej upewnij, nawiązywania połączenia i przechowywanie danych z urządzeń IoT łatwe i przejrzysty i najbardziej, bezpieczna. W tym artykule sprawdza funkcje zabezpieczeń akceleratorów rozwiązania Azure IoT i są opisane strategie wdrażania, aby upewnić się, zabezpieczeń, prywatności i zgodności wyzwania.
 
 ## <a name="introduction"></a>Wprowadzenie
 
@@ -26,17 +42,17 @@ Microsoft Azure oferuje rozwiązania pełnej chmury, który łączy stale rosną
 
 Systemy firmy Microsoft zapewniają ciągłego włamań i zapobiegania, zapobieganie atakom usługi regularne penetracji testowania i śledczej narzędzi, które pomagają zidentyfikować i uniknięcie zagrożeń. [Uwierzytelnianie wieloskładnikowe](../articles/active-directory/authentication/multi-factor-authentication.md) zapewnia dodatkową warstwę zabezpieczeń umożliwiający użytkownikom końcowym dostęp do sieci. I aplikacji i dostawcy hosta, firma Microsoft oferuje kontroli dostępu, monitorowanie przed złośliwym oprogramowaniem, skanowanie luki w zabezpieczeniach, poprawki i zarządzanie konfiguracją.
 
-Pakiet IoT Microsoft Azure wykorzystuje bezpieczeństwo i prywatność wbudowanych w platformy Azure oraz SDL i OSA procesów związanych z bezpieczeństwem programowania i działania oprogramowania firmy Microsoft. Te procedury zawierają funkcje tożsamość i zarządzanie podstawowych zabezpieczeń od wszelkich rozwiązań do ochrony infrastruktury, ochrony sieci i.
+Akceleratorów rozwiązania korzystać z zabezpieczeń i prywatności wbudowanych w platformy Azure oraz SDL i OSA procesów związanych z bezpieczeństwem programowania i działania oprogramowania firmy Microsoft. Te procedury zawierają funkcje tożsamość i zarządzanie podstawowych zabezpieczeń od wszelkich rozwiązań do ochrony infrastruktury, ochrony sieci i.
 
-[Centrum IoT Azure](../articles/iot-hub/iot-hub-what-is-iot-hub.md) w [pakiet IoT](../articles/iot-suite/iot-suite-what-is-azure-iot.md) oferuje w pełni zarządzaną usługę, takich jak umożliwiającą i niezawodności dwukierunkową komunikację między urządzeniami IoT i usług Azure [ Usługa Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) i [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) przy użyciu poświadczeń zabezpieczeń urządzenia i kontrola dostępu.
+[Centrum IoT Azure](../articles/iot-hub/iot-hub-what-is-iot-hub.md) w [akceleratorów rozwiązania IoT](../articles/iot-suite/iot-suite-what-is-azure-iot.md) oferuje w pełni zarządzaną usługę, takich jak umożliwiającą i niezawodności dwukierunkową komunikację między urządzeniami IoT i usług Azure [Usługi azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) i [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) przy użyciu poświadczeń zabezpieczeń urządzenia i kontrola dostępu.
 
-Najlepiej komunikację funkcje zabezpieczeń i prywatności wbudowane pakiet IoT Azure, w tym artykule dzieli pakiet na trzy obszary głównej zabezpieczeń.
+Najlepiej komunikację funkcje zabezpieczeń i prywatności wbudowane akceleratorów rozwiązania Azure IoT, w tym artykule dzieli pakiet na trzy obszary głównej zabezpieczeń.
 
-![Azure IoT Suite](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
+![Akceleratory rozwiązań Azure IoT](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Zabezpieczenia, inicjowanie obsługi administracyjnej urządzeń i uwierzytelniania
 
-Pakiet IoT Azure chroni urządzenia, gdy znajdują się w polu podając unikatową tożsamość klucza dla każdego urządzenia, którego można użyć do komunikacji z urządzeniem podczas operacji przez infrastrukturę IoT. Ten proces jest szybka i łatwa do skonfigurowania. Wygenerowany klucz z Identyfikatorem urządzenia wybrane przez użytkownika stanowi podstawę tokenu używane w całej komunikacji między urządzeniem a Centrum IoT Azure.
+Akceleratorów rozwiązania zabezpieczania urządzeń podczas znajdują się w polu podając unikatową tożsamość klucza dla każdego urządzenia, którego można użyć do komunikacji z urządzeniem podczas operacji przez infrastrukturę IoT. Ten proces jest szybka i łatwa do skonfigurowania. Wygenerowany klucz z Identyfikatorem urządzenia wybrane przez użytkownika stanowi podstawę tokenu używane w całej komunikacji między urządzeniem a Centrum IoT Azure.
 
 Identyfikatory urządzeń mogą być skojarzone z urządzeniem podczas produkcji, (tj. zainstalowany w module zaufania sprzętu) lub można użyć istniejącego stałej tożsamości jako serwer proxy (na przykład numery seryjne Procesora). Ponieważ zmiana ta informacje identyfikacyjne w urządzeniu nie jest proste, należy wprowadzić nazwy urządzenia logicznego w przypadku podstawowej zmiany sprzętowe urządzenia, ale urządzenie logiczne jest taka sama. W niektórych przypadkach możliwe skojarzenie tożsamości urządzenia w czasie wdrażania urządzenia (na przykład inżyniera uwierzytelnionego pola fizycznie konfiguruje nowego urządzenia podczas komunikacji z zapleczem rozwiązania). [Rejestru tożsamości Centrum IoT Azure](../articles/iot-hub/iot-hub-devguide.md) zapewnia bezpieczne przechowywanie tożsamości urządzenia i kluczy zabezpieczeń dla rozwiązania. Osoby lub grupy tożsamości urządzenia można dodać do listy dozwolonych lub zablokowanych, umożliwiające pełną kontrolę nad uzyskiwania dostępu do urządzenia.
 
@@ -64,9 +80,9 @@ Funkcje zabezpieczeń dodatkowego połączenia:
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Bezpieczne przetwarzanie i magazynowanie w chmurze
 
-Z szyfrowanie komunikacji do przetwarzania danych w chmurze pakiet IoT Azure pomaga chronić dane. Zapewnia możliwość wdrażania dodatkowego szyfrowania i zarządzania kluczy zabezpieczeń.
+Z szyfrowanie komunikacji do przetwarzania danych w chmurze akceleratory rozwiązanie pomaga chronić dane. Zapewnia możliwość wdrażania dodatkowego szyfrowania i zarządzania kluczy zabezpieczeń.
 
-Do uwierzytelniania i autoryzacji użytkowników przy użyciu usługi Azure Active Directory (AAD), pakiet IoT Azure zapewnia modelu autoryzacji na podstawie zasad dla danych w chmurze, włączania inspekcji i przejrzeć zarządzania łatwy dostęp. Ten model umożliwia także niemal natychmiastowe odwoływanie dostępu do danych w chmurze i urządzeń podłączonych do pakiet IoT Azure.
+Za pomocą usługi Azure Active Directory (AAD) do uwierzytelniania i autoryzacji użytkowników, akceleratory rozwiązania Azure IoT zapewnia modelu autoryzacji na podstawie zasad dla danych w chmurze, włączania inspekcji i przejrzeć zarządzania łatwy dostęp. Ten model umożliwia także niemal natychmiastowe odwoływanie dostępu do danych w chmurze i urządzeń podłączonych do akceleratorów rozwiązania Azure IoT.
 
 Gdy dane znajdują się w chmurze, można przetwarzania i przechowywania w przepływie pracy użytkownika. Dostęp do każdej części danych jest kontrolowany w usłudze Azure Active Directory, w zależności od usługi magazynu używane.
 
@@ -76,11 +92,11 @@ Wszystkich kluczy używanych przez infrastrukturę IoT są przechowywane w chmur
 
 Internet rzeczy rozpoczyna się od sieci rzeczy — co najważniejsze dla firm. IoT mogą dostarczać wartość niesamowite firmy przez zmniejszenie kosztów, zwiększenie przychodów i przekształcanie biznesowych. Powodzenie tej transformacji zależy przede wszystkim Wybieranie prawo dostawcy oprogramowania i usługi IoT. Oznacza to, znajdowanie dostawcę, który nie tylko catalyzes tej transformacji zrozumienie potrzeb biznesowych i wymagania dotyczące, ale udostępnia również wbudowane pomocą zabezpieczeń, prywatności i zgodności jako główne projektowania przezroczystości oprogramowania i usług. Firma Microsoft zbiorczych doświadczeń tworzenie i wdrażanie bezpiecznych oprogramowania i usług i pozostaje znaki wiodące w tej nowej wieku Internetu rzeczy.
 
-Pakiet IoT Microsoft Azure kompilacje w środki bezpieczeństwa zgodnie z projektem, włączanie bezpiecznego monitorowania zasobów w celu zwiększenia efektywności, wydajność operacyjnej dysku, aby włączyć innowacji i stosować analytics zaawansowanych danych do przekształcania firmy. Z warstwowego podejścia do zabezpieczeń, wiele funkcji zabezpieczeń i wzorce projektowe pakiet IoT Azure ułatwia wdrażanie infrastruktury, który jest zaufany do przekształcania dowolnego rodzaju działalności.
+Akceleratorów rozwiązania kompilacji w środki bezpieczeństwa zgodnie z projektem, włączanie bezpiecznego monitorowania zasobów w celu zwiększenia efektywności, wydajność operacyjnej dysku, aby włączyć innowacji i stosować analytics zaawansowanych danych do przekształcania firmy. Z warstwowego podejścia do zabezpieczeń, wiele funkcji zabezpieczeń i wzorce projektowe akceleratory rozwiązania pomagają wdrażania infrastruktury, który jest zaufany do przekształcania dowolnego rodzaju działalności.
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-Każdy pakiet IoT Azure wstępnie skonfigurowane rozwiązanie tworzy wystąpienia usług platformy Azure, takich jak:
+Każdy akcelerator rozwiązań tworzy wystąpienia usług platformy Azure, takich jak:
 
 * [**Centrum IoT Azure**](https://azure.microsoft.com/services/iot-hub/): bramy łączącej chmury do urządzenia. Z obsługą uwierzytelniania na urządzenie pomaga zabezpieczyć rozwiązanie sieci można skalować do milionów połączeń na proces i koncentrator bardzo dużych woluminów danych.
 * [**Azure DB rozwiązania Cosmos**](https://azure.microsoft.com/services/cosmos-db/): Usługa skalowalne, pełni indeksowana bazy danych dla częściowo ustrukturyzowanych danych, która zarządza metadanych dla urządzeń udostępnieniem, takich jak atrybuty, konfiguracji i właściwości zabezpieczeń. Azure DB rozwiązania Cosmos oferuje przetwarzanie wysokiej wydajności i wysokiej przepustowości, niezależny od schematu indeksowania danych i interfejs zaawansowanych zapytań SQL.

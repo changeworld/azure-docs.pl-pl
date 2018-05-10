@@ -25,7 +25,7 @@
       href: quickstart-docker-go.md
 - name: Samouczki
   items:
-    - name: 1 — Aplikacja z bazą danych
+    - name: Aplikacja z bazą danych
       items:
         - name: .NET Core z bazą danych SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
@@ -37,14 +37,16 @@
           href: tutorial-nodejs-mongodb-app.md
         - name: Kontener niestandardowy Python z bazą danych PostgreSQL
           href: tutorial-docker-python-postgresql-app.md
-    - name: 1 — Niestandardowy obraz Docker
+    - name: Niestandardowy obraz Docker
       href: tutorial-custom-docker-image.md
-    - name: 2 — Mapowanie domeny niestandardowej
+    - name: Mapowanie domeny niestandardowej
       href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: 3 — Powiązywanie certyfikatu SSL
+    - name: Wiązanie certyfikatu protokołu SSL
       href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: 4 — Dodawanie usługi CDN
+    - name: Dodawanie usługi CDN
       href: ../app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Uwierzytelnianie użytkowników
+      href: tutorial-auth-aad.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -65,6 +67,8 @@
       href: ../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Wybieranie typu wdrożenia
       href: choose-deployment-type.md
+    - name: Diagnostyka
+      href: ../app-service-diagnostics.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Konfigurowanie aplikacji
@@ -113,6 +117,8 @@
               href: ../app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: Uwierzytelnianie za pomocą usługi Twitter
               href: ../app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Dostosowywanie aplikacji
+          href: ../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Konfigurowanie wzajemnego uwierzytelniania protokołu TLS
           href: ../app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Skalowanie aplikacji

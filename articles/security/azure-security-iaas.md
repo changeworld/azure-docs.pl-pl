@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące IaaS obciążeń na platformie Azure
 
@@ -85,7 +85,7 @@ Laboratoria i środowisk deweloperskich przy użyciu usługi Azure umożliwia or
 
 [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) usługi używa [kontroli dostępu](../role-based-access-control/overview.md) (RBAC). Za pomocą RBAC, można rozdzielenie obowiązków w obrębie organizacji do ról, które udzielić tylko poziom dostępu, które są niezbędne dla użytkowników do wykonywania zadań. RBAC zawiera wstępnie zdefiniowane role (właściciel, użytkownik laboratorium i współautor). Te role umożliwia nawet przypisać prawa do partnerami zewnętrznymi i znacznie upraszcza współpracy.
 
-Ponieważ DevTest Labs używa RBAC, istnieje możliwość utworzenia dodatkowych, [role niestandardowe](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nie tylko ułatwia zarządzanie uprawnienia, takie rozwiązanie upraszcza proces konfigurowania środowiska obsługi administracyjnej. Pomaga również postępowania w przypadku innych typowych wyzwań związanych z zespołów, które pracują na środowisk projektowania i testowania. Wymaga on pewne przygotowania, ale w długim okresie, jego będzie ułatwienia dla zespołu.
+Ponieważ DevTest Labs używa RBAC, istnieje możliwość utworzenia dodatkowych, [role niestandardowe](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nie tylko ułatwia zarządzanie uprawnienia, takie rozwiązanie upraszcza proces konfigurowania środowiska obsługi administracyjnej. Pomaga również postępowania w przypadku innych typowych wyzwań związanych z zespołów, które pracują na środowisk projektowania i testowania. Wymaga on pewne przygotowania, ale w długim okresie, jego będzie ułatwienia dla zespołu.
 
 Azure DevTest Labs funkcje:
 

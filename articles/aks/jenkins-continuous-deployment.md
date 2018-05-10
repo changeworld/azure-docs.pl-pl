@@ -1,6 +1,6 @@
 ---
-title: Ciągłe wdrażanie Wpięć z Kubernetes usługi kontenera platformy Azure
-description: Jak zautomatyzować proces ciągłego wdrażania z Wpięć do wdrożenia i uaktualnienia konteneryzowanych aplikacji na Kubernetes usługi kontenera platformy Azure
+title: Ciągłe wdrażanie Wpięć z Kubernetes w usłudze Azure Kubernetes
+description: Jak zautomatyzować proces ciągłego wdrażania z Wpięć do wdrożenia i uaktualnienia konteneryzowanych aplikacji na Kubernetes w usłudze Azure Kubernetes
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi kontenera platformy Azure
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi Kubernetes Azure
 
-Ten dokument pokazano, jak skonfigurować ciągłe wdrażanie podstawowych przepływ pracy między Wpięć a klastrem usługi kontenera platformy Azure (AKS).
+Ten dokument pokazano, jak skonfigurować ciągłe wdrażanie podstawowych przepływ pracy między Wpięć a klastrem usługi Kubernetes Azure (AKS).
 
 Przykładowy przepływ pracy obejmuje następujące kroki:
 
@@ -33,7 +33,7 @@ Przykładowy przepływ pracy obejmuje następujące kroki:
 Aby wykonać kroki opisane w tym artykule potrzebne są następujące zasoby.
 
 - Podstawową wiedzę na temat Kubernetes, Git CI/CD i rejestru kontenera platformy Azure (ACR).
-- [Klastra usługi kontenera platformy Azure (AKS)] [ aks-quickstart] i [skonfigurowane poświadczenia AKS] [ aks-credentials] w systemie deweloperskim.
+- [Klastra usługi Kubernetes Azure (AKS)] [ aks-quickstart] i [skonfigurowane poświadczenia AKS] [ aks-credentials] w systemie deweloperskim.
 - [Rejestru rejestru kontenera platformy Azure (ACR)][acr-quickstart], nazwa ACR logowania serwera i [poświadczenia ACR] [ acr-authentication] z dostępem do wypychania i ściągania.
 - Azure CLI zainstalowane w systemie deweloperskim.
 - Docker zainstalowane w systemie deweloperskim.

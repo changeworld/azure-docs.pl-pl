@@ -1,8 +1,8 @@
 ---
-title: "Utwórz klipy z funkcji tworzenia wycinków Azure Media | Dokumentacja firmy Microsoft"
-description: "Omówienie usługi Azure Media funkcji tworzenia wycinków, narzędzia do tworzenia nośnika klipy z zasobów"
+title: Utwórz klipy z funkcji tworzenia wycinków Azure Media | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure Media funkcji tworzenia wycinków, narzędzia do tworzenia nośnika klipy z zasobów
 services: media-services
-keywords: "klip subclip; kodowanie; nośnika"
+keywords: klip subclip; kodowanie; nośnika
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f3822386d0d16b1feaf16853424329558a18f910
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Utwórz klipy z funkcji tworzenia wycinków multimediów Azure
 Azure Media funkcji tworzenia wycinków jest bezpłatna biblioteka języka JavaScript, który umożliwia deweloperom sieci web użytkownikom ich interfejs służący do tworzenia nośnika klipy. To narzędzie można zintegrować dowolną stronę sieci web i udostępnia interfejsy API do ładowania zasobów i przesyłanie zadań wycinka.
@@ -33,7 +33,7 @@ Na poniższym obrazie przedstawiono interfejsu funkcji tworzenia wycinków: ![fu
 
 ## <a name="release-notes"></a>Informacje o wersji
 Przejrzyj następującą listę wpis w blogu funkcji tworzenia wycinków, różnych znane problemy i wykaz zmian w najnowszej wersji programu funkcji tworzenia wycinków:
-- [Wpis w blogu](https://azure.microsoft.com/blog/azure-media-clipper/)
+- [wpis w blogu](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Lista znanych problemów](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
 - [Wykaz zmian](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 

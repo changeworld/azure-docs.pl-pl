@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 66c07b757a034501eb66a4b23fc4c75bb94f8b10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne metryki różnych zasobów aplikacji sieci Web Azure
 
@@ -57,7 +57,7 @@ W przeciwieństwie do większości innych rozwiązań analizy dzienników danych
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Analytics aplikacji sieci Web platformy Azure dla obszarów roboczych.
 
 1. Włącz rozwiązania analizy aplikacji sieci Web platformy Azure z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
-2. [Włącz rejestrowanie metryki zasobów platformy Azure z usługą OMS przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+2. [Włącz rejestrowanie metryki zasobów platformy Azure, aby Analiza dzienników przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Rozwiązania Azure Web Apps Analytics zbiera dwóch zestawów metryki z platformy Azure:
 
@@ -77,10 +77,6 @@ Rozwiązania Azure Web Apps Analytics zbiera dwóch zestawów metryki z platform
   - Procent pamięci
 
 Metryki planu usługi aplikacji są zbierane tylko, jeśli używasz planu dedykowanych usługi. To nie ma zastosowania do planów usługi aplikacji — warstwa bezpłatna lub udostępnionego.
-
-Jeśli dodasz rozwiązania przy użyciu portalu OMS, zostanie wyświetlony następujący fragment. Musisz [włączyć rejestrowanie metryki zasobów platformy Azure z usługą OMS przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
-
-![Zostanie wykonana oceny powiadomień](./media/log-analytics-azure-web-apps-analytics/performing-assessment.png)
 
 Po skonfigurowaniu rozwiązania danych należy zacząć przepływać do obszaru roboczego w ciągu 15 minut.
 

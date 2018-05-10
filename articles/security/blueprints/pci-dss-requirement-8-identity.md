@@ -1,9 +1,9 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania dotyczące tożsamości"
+title: Plan Azure przetwarzania płatności — wymagania dotyczące tożsamości
 description: Wymaganie PCI DSS 8
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 1a398601-8c48-4f8e-b3d4-eba94edad61c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: f77cc3c9926b5316913c70e5f4412383e55c5193
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: a83040a6b5174307ea73e5473165835458d217f6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="identity-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące tożsamości dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-8"></a>Wymaganie PCI DSS 8
@@ -42,8 +42,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Przypadek użycia i opis odpowiednie użycie administratorów zapewnia magazynu sieci Web firmy Contoso Przykładowe wdrożenie.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Przypadek użycia i opis odpowiednie użycie administratorów zapewnia magazynu sieci Web firmy Contoso Przykładowe wdrożenie.|
 
 
 
@@ -55,8 +55,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso implementuje usługi Azure Active Directory i kontroli dostępu Azure Active Directory Role-Based (RBAC) do zapewnienia wszystkich użytkowników mają unikatowego identyfikatora. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso implementuje usługi Azure Active Directory i kontroli dostępu Azure Active Directory Role-Based (RBAC) do zapewnienia wszystkich użytkowników mają unikatowego identyfikatora. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -68,8 +68,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso implementuje usługi Azure Active Directory i kontroli dostępu Azure Active Directory Role-Based (RBAC) do zapewnienia wszystkich użytkowników mają unikatowego identyfikatora. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso implementuje usługi Azure Active Directory i kontroli dostępu Azure Active Directory Role-Based (RBAC) do zapewnienia wszystkich użytkowników mają unikatowego identyfikatora. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -81,8 +81,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory do zarządzania użytkownikami. Odwołania użytkowników może odbywać się w usłudze Active Directory.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory do zarządzania użytkownikami. Odwołania użytkowników może odbywać się w usłudze Active Directory.|
 
 
 
@@ -94,8 +94,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory do zarządzania użytkownikami. `-enableADDomainPasswordPolicy` Można ustawić opcję zapewnienie hasła wygasną w ciągu 90 dni.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory do zarządzania użytkownikami. `-enableADDomainPasswordPolicy` Można ustawić opcję zapewnienie hasła wygasną w ciągu 90 dni.|
 
 
 
@@ -109,8 +109,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure przyjęła zasad firmy i ochrony, w tym zasady zabezpieczeń informacji. Zasady zostały zatwierdzone, opublikowana i przekazywane do systemu Microsoft Azure. Zasady zabezpieczeń informacji wymaga dostępu do zasobów firmy Microsoft Azure, aby otrzymać oparte na biznesowego wyjaśnienia, z autoryzacji właściciela zasobów i ograniczona na podstawie zasad "do ograniczonego" i "uprawnień". Ponadto zasady dotyczy również wymagania dotyczące cyklu życia zarządzania dostęp do takich jak dostęp do inicjowania obsługi administracyjnej, uwierzytelniania, autoryzacji dostępu, usuwanie praw dostępu i okresowe dostęp recenzji. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Wersja demonstracyjna magazynu sieci Web firmy Contoso zaimplementowała Azure Active Directory i kontroli dostępu Azure Active Directory Role-Based zarządzanie dostępem użytkowników do instalacji. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure przyjęła zasad firmy i ochrony, w tym zasady zabezpieczeń informacji. Zasady zostały zatwierdzone, opublikowana i przekazywane do systemu Microsoft Azure. Zasady zabezpieczeń informacji wymaga dostępu do zasobów firmy Microsoft Azure, aby otrzymać oparte na biznesowego wyjaśnienia, z autoryzacji właściciela zasobów i ograniczona na podstawie zasad "do ograniczonego" i "uprawnień". Ponadto zasady dotyczy również wymagania dotyczące cyklu życia zarządzania dostęp do takich jak dostęp do inicjowania obsługi administracyjnej, uwierzytelniania, autoryzacji dostępu, usuwanie praw dostępu i okresowe dostęp recenzji. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Wersja demonstracyjna magazynu sieci Web firmy Contoso zaimplementowała Azure Active Directory i kontroli dostępu Azure Active Directory Role-Based zarządzanie dostępem użytkowników do instalacji. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -122,8 +122,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso Webstore zaimplementowała przejrzysty podział obowiązków (DARNI) dla wszystkich użytkowników pokaz. Aby uzyskać więcej informacji, zobacz ""Azure Active Directory Identity Protection"w [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso Webstore zaimplementowała przejrzysty podział obowiązków (DARNI) dla wszystkich użytkowników pokaz. Aby uzyskać więcej informacji, zobacz ""Azure Active Directory Identity Protection"w [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -135,8 +135,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia, wymuszania i monitorowania zasad haseł, zgodne z wymaganiami PCI DSS.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia, wymuszania i monitorowania zasad haseł, zgodne z wymaganiami PCI DSS.|
 
 
 
@@ -148,8 +148,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia, wymuszania i monitorowania zasad haseł, zgodne z wymaganiami PCI DSS.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia, wymuszania i monitorowania zasad haseł, zgodne z wymaganiami PCI DSS.|
 
 
 
@@ -164,8 +164,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso w usłudze Multi-Factor authentication została wyłączona, aby zapewnić łatwość użycia dla pokaz. Uwierzytelnianie wieloskładnikowe można zaimplementować przy użyciu [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso w usłudze Multi-Factor authentication została wyłączona, aby zapewnić łatwość użycia dla pokaz. Uwierzytelnianie wieloskładnikowe można zaimplementować przy użyciu [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/).|
 
 
 
@@ -177,8 +177,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury zarządzania kluczami zarządzać kluczy kryptograficznych w całym cyklu ich życia (np. generacji, dystrybucji odwołania). Microsoft Azure korzysta z firmowej infrastruktury PKI firmy Microsoft. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury zarządzania kluczami zarządzać kluczy kryptograficznych w całym cyklu ich życia (np. generacji, dystrybucji odwołania). Microsoft Azure korzysta z firmowej infrastruktury PKI firmy Microsoft. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -191,8 +191,8 @@ Skuteczność hasła przede wszystkim jest określany przez projekt i implementa
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury zarządzania kluczami zarządzać kluczy kryptograficznych w całym cyklu ich życia (np. generacji, dystrybucji odwołania). Microsoft Azure korzysta z firmowej infrastruktury PKI firmy Microsoft. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury zarządzania kluczami zarządzać kluczy kryptograficznych w całym cyklu ich życia (np. generacji, dystrybucji odwołania). Microsoft Azure korzysta z firmowej infrastruktury PKI firmy Microsoft. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -207,8 +207,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania.|
 
 
 
@@ -220,8 +220,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory do zarządzania użytkownikami. `-enableADDomainPasswordPolicy` Można ustawić opcji upewnij się, co najmniej raz na 90 dni wygaśnięcia hasła.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Active Directory do zarządzania użytkownikami. `-enableADDomainPasswordPolicy` Można ustawić opcji upewnij się, co najmniej raz na 90 dni wygaśnięcia hasła.|
 
 
 
@@ -233,8 +233,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -246,8 +246,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymusza stosowanie silnych haseł, udokumentowane w przewodniku wdrażania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -263,8 +263,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Administratorzy Azure są wymagane na potrzeby dostępu podczas wykonywania konserwacji i administracji do systemu Azure i serwery usługi Multi-Factor authentication. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Administratorzy Azure są wymagane na potrzeby dostępu podczas wykonywania konserwacji i administracji do systemu Azure i serwery usługi Multi-Factor authentication. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
 
 
 
@@ -279,8 +279,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Administratorzy Azure są wymagane na potrzeby dostępu podczas wykonywania konserwacji i administracji do systemu Azure i serwery usługi Multi-Factor authentication. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Administratorzy Azure są wymagane na potrzeby dostępu podczas wykonywania konserwacji i administracji do systemu Azure i serwery usługi Multi-Factor authentication. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
 
 
 
@@ -293,8 +293,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Administratorzy Azure są wymagane na potrzeby dostępu podczas wykonywania konserwacji i administracji do systemu Azure i serwery usługi Multi-Factor authentication. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Administratorzy Azure są wymagane na potrzeby dostępu podczas wykonywania konserwacji i administracji do systemu Azure i serwery usługi Multi-Factor authentication. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
 
 
 
@@ -310,8 +310,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do następujących wytycznych i dokumentowanie i komunikacji procedury uwierzytelniania i zasady dla wszystkich użytkowników.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do następujących wytycznych i dokumentowanie i komunikacji procedury uwierzytelniania i zasady dla wszystkich użytkowników.|
 
 
 
@@ -326,8 +326,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz.|
 
 
 
@@ -342,8 +342,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy klientów Microsoft Azure. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy klientów Microsoft Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy klientów Microsoft Azure. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy klientów Microsoft Azure.|
 
 
 
@@ -357,8 +357,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz. Dostęp jest zarządzana za pośrednictwem [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/), która pomaga w zabezpieczaniu kluczy kryptograficznych i kluczy tajnych używanych przez usługi i aplikacje w chmurze. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web tworzy trzy konta podczas wdrażania: administrator, sqladmin i edna (domyślny użytkownik zalogowany do aplikacji sieci web podczas wykonywania demo). Uwierzytelnianie wieloskładnikowe nie został zaimplementowany dla pokaz. Dostęp jest zarządzana za pośrednictwem [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/), która pomaga w zabezpieczaniu kluczy kryptograficznych i kluczy tajnych używanych przez usługi i aplikacje w chmurze. |
 
 
 
@@ -373,8 +373,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso chroni wszystkie dane posiadacza z usługi Azure Key Vault, a szyfrowanie rekordów jest opisane w dokumentacji wdrożenia. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso chroni wszystkie dane posiadacza z usługi Azure Key Vault, a szyfrowanie rekordów jest opisane w dokumentacji wdrożenia. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -386,8 +386,8 @@ Alternatywnie haseł/hasła musi mieć złożoność i siły równoważne parame
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia, że zasady zabezpieczeń i procedury działania w celu ich identyfikacji i uwierzytelniania są udokumentowane w użyciu oraz znane wszystkich zainteresowanych podmiotów.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia, że zasady zabezpieczeń i procedury działania w celu ich identyfikacji i uwierzytelniania są udokumentowane w użyciu oraz znane wszystkich zainteresowanych podmiotów.|
 
 
 

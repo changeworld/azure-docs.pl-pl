@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4829ea88e0b6507159c192c111acf8ec7e5088e2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostyka w funkcji trwałe (funkcje platformy Azure)
 
@@ -28,7 +28,7 @@ Dostępnych jest kilka opcji do diagnozowania problemów z [trwałe funkcji](dur
 
 [Usługa Application Insights](../application-insights/app-insights-overview.md) jest zalecanym sposobem Diagnostyka i monitorowanie usługi Azure Functions. To samo dotyczy funkcji trwałe. Omówienie sposób korzystania z usługi Application Insights w aplikacji funkcji, zobacz [Monitor usługi Azure Functions](functions-monitoring.md).
 
-Trwałe rozszerzenie funkcji Azure również emituje *śledzenia zdarzeń* pozwalają śledzić realizację end-to-end aranżacji. Te można znaleźć i wyświetlić przy użyciu [Application Insights Analytics](../application-insights/app-insights-analytics.md) narzędzia w portalu Azure.
+Trwałe rozszerzenie funkcji Azure również emituje *śledzenia zdarzeń* umożliwiające śledzenia end-to-end realizacji aranżacji. Te można znaleźć i wyświetlić przy użyciu [Application Insights Analytics](../application-insights/app-insights-analytics.md) narzędzia w portalu Azure.
 
 ### <a name="tracking-data"></a>Dane śledzenia
 
@@ -68,7 +68,7 @@ Można skonfigurować poziom szczegółowości śledzenia danych wysyłanego do 
 
 Domyślnie wszystkie zdarzenia śledzenia są emitowane. Można zmniejszyć ilość danych przez ustawienie `Host.Triggers.DurableTask` do `"Warning"` lub `"Error"` w takim przypadku śledzenia zdarzeń będzie tylko obliczanie w sytuacjach wyjątkowych.
 
-> [!WARNING]
+> [!NOTE]
 > Domyślnie telemetrii usługi Application Insights jest próbkowany przez środowisko wykonawcze usługi Azure Functions, aby uniknąć zbyt często emitowanie danych. Może to spowodować, że informacje o śledzeniu za utracone w przypadku wystąpienia wielu zdarzeń cyklu życia w krótkim czasie. [Monitorowania funkcji Azure artykułu](functions-monitoring.md#configure-sampling) opisano sposób skonfigurowania tego zachowania.
 
 ### <a name="single-instance-query"></a>Zapytanie pojedynczego wystąpienia
@@ -124,6 +124,8 @@ Wynik jest lista wystąpienia identyfikatorów oraz ich bieżący stan środowis
 
 Należy pamiętać o orchestrator powtarzania zachowanie podczas zapisywania dzienników bezpośrednio z funkcji programu orchestrator. Rozważmy na przykład następująca funkcja programu orchestrator:
 
+#### <a name="c"></a>C#
+
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
@@ -137,6 +139,22 @@ public static async Task Run(
     await ctx.CallActivityAsync("F3");
     log.Info("Done!");
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context){
+    context.log("Calling F1.");
+    yield context.df.callActivityAsync("F1");
+    context.log("Calling F2.");
+    yield context.df.callActivityAsync("F2");
+    context.log("Calling F3.");
+    yield context.df.callActivityAsync("F3");
+    context.log("Done!");
+});
 ```
 
 Wynikowe dane dziennika będzie wyglądać jak poniżej:
@@ -181,6 +199,49 @@ Calling F2.
 Calling F3.
 Done!
 ```
+
+> [!NOTE]
+> `IsReplaying` Właściwość nie jest jeszcze dostępna w języku JavaScript.
+
+## <a name="custom-status"></a>Stan niestandardowy
+
+Stan niestandardowych aranżacji pozwala ustawić wartość stanu niestandardowych dla funkcji programu orchestrator. Ten stan jest dostępne za pośrednictwem zapytania interfejsu API stanu HTTP lub `DurableOrchestrationClient.GetStatusAsync` interfejsu API. Stan niestandardowych orchestration umożliwia bardziej zaawansowane funkcje monitorowania dla funkcji programu orchestrator. Na przykład mogą zawierać kod funkcji orchestrator `DurableOrchestrationContext.SetCustomStatus` wywołania do zaktualizowania postępu długotrwałej operacji. Klient, takich jak strony sieci web lub innych system zewnętrzny, następnie można będzie okresowo uruchamiać kwerendę kwerendy interfejsów API stanu HTTP dla bardziej rozbudowane informacje o postępie. Przy użyciu przykładowych `DurableOrchestrationContext.SetCustomStatus` podano poniżej:
+
+```csharp
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+{
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    var customStatus = new { completionPercentage = 90.0, status = "Updating database records" };
+    ctx.SetCustomStatus(customStatus);
+
+    // ...do more work...
+}
+```
+
+Po uruchomieniu orchestration klientów zewnętrznych można pobrać ten stan niestandardowy:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/instance123
+
+```
+
+Klienci otrzymają następującą odpowiedź: 
+
+```http
+{
+  "runtimeStatus": "Running",
+  "input": null,
+  "customStatus": { "completionPercentage": 90.0, "status": "Updating database records" },
+  "output": null,
+  "createdTime": "2017-10-06T18:30:24Z",
+  "lastUpdatedTime": "2017-10-06T19:40:30Z"
+}
+```
+
+> [!WARNING]
+>  Stan niestandardowy ładunek jest ograniczony do 16 KB tekst JSON UTF-16, ponieważ wymagane jest, aby mieściły się w kolumnie magazynu tabel platformy Azure. Jeśli potrzebujesz większy ładunek, można użyć magazynu zewnętrznego.
 
 ## <a name="debugging"></a>Debugowanie
 

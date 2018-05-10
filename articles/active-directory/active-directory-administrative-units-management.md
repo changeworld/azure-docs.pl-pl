@@ -1,26 +1,24 @@
 ---
-title: "Podgląd Zarządzanie jednostkami administracyjnymi w usłudze Azure Active Directory"
-description: "Przy użyciu jednostek administracyjnych do zapewnienia jeszcze bardziej precyzyjnej delegowania uprawnień w usłudze Azure Active Directory"
+title: Podgląd Zarządzanie jednostkami administracyjnymi w usłudze Azure Active Directory
+description: Przy użyciu jednostek administracyjnych do zapewnienia jeszcze bardziej precyzyjnej delegowania uprawnień w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 8464cd6b-1d1a-470d-a4fb-ee29b8eab4c4
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.component: users-groups-roles
 ms.workload: identity
 ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d657eda25f3b26cb793a7ba1a4546f98c08b7e65
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 373983413ea83e5924b52fbbcbc666aa1a188d80
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Zarządzanie jednostkami administracyjnymi w usłudze Azure AD - publicznej wersji zapoznawczej
 W tym artykule opisano jednostkami administracyjnymi — nowy kontener usługi Azure Active Directory zasobów, które mogą służyć do delegowania uprawnień administracyjnych za pośrednictwem podzbiór użytkowników i stosowania zasad do podzbioru użytkowników. W usłudze Azure Active Directory jednostki administracyjne Włącz centralnej Administratorzy delegować uprawnienia do administratorów regionalnych lub ustawienie zasad na poziomie szczegółowym.

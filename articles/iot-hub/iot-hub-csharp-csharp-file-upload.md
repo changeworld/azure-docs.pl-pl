@@ -1,11 +1,11 @@
 ---
-title: "Przekazywanie plików z urządzenia do Centrum IoT Azure z platformą .NET | Dokumentacja firmy Microsoft"
-description: "Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla platformy .NET. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure."
+title: Przekazywanie plików z urządzenia do Centrum IoT Azure z platformą .NET | Dokumentacja firmy Microsoft
+description: Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla platformy .NET. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: 4362512121ca426fcae6716c74e1f8effa0986f1
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 901b4b6c631d47a6c37eb232f66d8350faa9be76
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Przekazywanie plików z urządzenia do chmury z Centrum IoT przy użyciu platformy .NET
 
@@ -36,7 +36,7 @@ W tym samouczku opiera się na kodzie w [wysyłać chmury do urządzenia z Centr
 * Dane wibrację próbkowanych zgodnie o dużej częstotliwości
 * Niektóre formularz wstępnie przetworzonych danych
 
-Pliki te są zwykle partii przetwarzania w chmurze za pomocą narzędzi takich jak [fabryki danych Azure](../data-factory/introduction.md) lub [Hadoop](../hdinsight/index.md) stosu. Gdy chcesz przekazać pliki z urządzenia, można nadal używać bezpieczeństwa i niezawodności Centrum IoT.
+Pliki te są zwykle partii przetwarzania w chmurze za pomocą narzędzi takich jak [fabryki danych Azure](../data-factory/introduction.md) lub [Hadoop](../hdinsight/index.yml) stosu. Gdy chcesz przekazać pliki z urządzenia, można nadal używać bezpieczeństwa i niezawodności Centrum IoT.
 
 Na końcu tego samouczka możesz uruchomić dwóch aplikacji konsoli .NET:
 
@@ -48,7 +48,7 @@ Na końcu tego samouczka możesz uruchomić dwóch aplikacji konsoli .NET:
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Visual Studio 2015 lub Visual Studio 2017 r.
+* Program Visual Studio 2015 lub Visual Studio 2017
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]

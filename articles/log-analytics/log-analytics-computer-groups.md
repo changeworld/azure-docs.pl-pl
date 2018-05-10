@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Zaloguj się wyszukiwanie grup komputerów w analizy dzienników
 
@@ -56,14 +56,6 @@ Poniższa procedura umożliwia utworzenie grupy komputerów z dziennika wyszukiw
 2. Otwórz **wyszukiwania dziennika** , a następnie kliknij przycisk **zapisane wyszukiwania** w górnej części ekranu.
 3. Kliknij przycisk **Dodaj** i podaj wartości dla każdej właściwości grupy komputerów.
 4. Wybierz **Zapisz to zapytanie jako grupę komputerów** i kliknij przycisk **OK**.
-
-
-Poniższa procedura umożliwia utworzenie grupy komputerów z dziennika wyszukiwania w portalu OMS.
-
-1. Otwórz **wyszukiwania dziennika** i utworzyć wyszukiwania dziennika dla grupy komputerów.  
-2. Kliknij przycisk **zapisać** przycisk w górnej części ekranu.
-3. Wybierz **tak** do **Zapisz to zapytanie jako grupę komputerów**.
-5. Podaj wartość dla każdej właściwości grupy komputerów. 
 
 
 

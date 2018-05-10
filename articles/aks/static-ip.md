@@ -1,6 +1,6 @@
 ---
-title: Użyj statycznego adresu IP usługi równoważenia obciążenia usługi kontenera platformy Azure (AKS)
-description: Statyczny adres IP za pomocą usługi kontenera platformy Azure (AKS) usługi równoważenia obciążenia.
+title: Użyj statycznego adresu IP usługi równoważenia obciążenia Azure Kubernetes usługi (AKS)
+description: Za pomocą statycznego adresu IP usługi równoważenia obciążenia Azure Kubernetes usługi (AKS).
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 623ba423d4f60fee0d18ad9455cc06effeff482a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: da1fc4cd31a4b4f13da5b527e2a62e147799bfef
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-a-static-ip-address-with-the-azure-container-service-aks-load-balancer"></a>Użyj statycznego adresu IP usługi równoważenia obciążenia usługi kontenera platformy Azure (AKS)
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Użyj statycznego adresu IP usługi równoważenia obciążenia Azure Kubernetes usługi (AKS)
 
-W niektórych przypadkach, takich jak podczas ładowania usługi kontenera platformy Azure (AKS) zostaje odtworzone równoważenia lub Kubernetes usługi z typem usługi równoważenia obciążenia są odtwarzane publicznego adresu IP usługi Kubernetes mogą ulec zmianie. Konfigurowanie statycznego adresu IP dla usług Kubernetes szczegóły tego dokumentu.
+W niektórych przypadkach, takich jak podczas ładowania usługi Kubernetes Azure (AKS) zostaje odtworzone równoważenia lub Kubernetes usługi z typem usługi równoważenia obciążenia są odtwarzane publicznego adresu IP usługi Kubernetes mogą ulec zmianie. Konfigurowanie statycznego adresu IP dla usług Kubernetes szczegóły tego dokumentu.
 
 ## <a name="create-static-ip-address"></a>Tworzenie statycznego adresu IP
 
@@ -116,7 +116,7 @@ Events:
 ```
 
 <!-- LINKS - External -->
-[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/ 
+[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

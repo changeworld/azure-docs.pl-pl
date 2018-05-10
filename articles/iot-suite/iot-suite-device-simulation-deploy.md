@@ -1,6 +1,6 @@
 ---
-title: "Wdrażanie rozwiązania symulacji urządzenia - Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek pokazuje, jak zainicjować rozwiązania symulacji urządzenia z azureiotsuite.com."
+title: Wdrażanie rozwiązania symulacji urządzenia - Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek pokazuje, jak zainicjować rozwiązania symulacji urządzenia z azureiotsuite.com.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: da9fb95ed5d3387c98c3274a53769d3f5f945371
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 52890c51b06777a2d74fcf143bee4e5e8919ba75
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>Wdrażanie rozwiązania symulacji urządzenia IoT Azure
 
@@ -39,7 +39,7 @@ Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka
 
 Przed przystąpieniem do wdrażania rozwiązania do subskrypcji platformy Azure, musisz wybrać niektóre opcje konfiguracji:
 
-1. Zaloguj się do [azureiotsuite.com](https://www.azureiotsuite.com) poświadczenia konta przy użyciu platformy Azure i kliknij przycisk  **+**  do tworzenia nowego rozwiązania:
+1. Zaloguj się do [azureiotsuite.com](https://www.azureiotsuite.com) poświadczenia konta przy użyciu platformy Azure i kliknij przycisk **+** do tworzenia nowego rozwiązania:
 
     ![Utwórz nowe rozwiązanie](media/iot-suite-device-simulation-deploy/createnewsolution.png)
 
@@ -47,7 +47,7 @@ Przed przystąpieniem do wdrażania rozwiązania do subskrypcji platformy Azure,
 
     ![Wybierz symulacji urządzenia](media/iot-suite-device-simulation-deploy/select.png)
 
-1. Na **rozwiązania do tworzenia urządzeniami symulacji** wprowadź **Nazwa rozwiązania** rozwiązania do symulacji urządzenia.
+1. Na **rozwiązania utworzyć symulacji urządzenia** wprowadź **Nazwa rozwiązania** rozwiązania do symulacji urządzenia.
 
 1. W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do aprowizacji rozwiązania.
 

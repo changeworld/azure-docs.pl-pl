@@ -1,9 +1,9 @@
 ---
-title: "Wyślij napotyka kontekstu użytkownika identyfikatory, aby umożliwić użycie w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Śledzenie, jak przenieść użytkowników za pośrednictwem usługi przez przypisanie każdego z nich unikatowe, trwałe ciąg Identyfikatora w usłudze Application Insights."
+title: Wyślij napotyka kontekstu użytkownika identyfikatory, aby umożliwić użycie w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Śledzenie, jak przenieść użytkowników za pośrednictwem usługi przez przypisanie każdego z nich unikatowe, trwałe ciąg Identyfikatora w usłudze Application Insights.
 services: application-insights
-documentationcenter: 
-author: abgreg
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mbullwin
-ms.openlocfilehash: fe4481cf851fc021b3073a6d9d6254f546218785
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin;abgreg
+ms.openlocfilehash: 196eeb7b5a817ff932f99c7db86ead5625b5f206
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij kontekstu użytkownika identyfikatory, aby umożliwić korzystanie z użycia w usłudze Azure Application Insights
 
@@ -26,7 +26,7 @@ Usługa Application Insights umożliwia monitorowanie i śledzenie użytkownikó
 * [Użytkownicy, sesje, zdarzenia](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 * [Lejki](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 * [Przechowywanie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
-* Stado
+* Kohorty
 * [Skoroszyty](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
 Aby móc śledzić zmiany w czasie działania użytkownika, usługi Application Insights wymaga Identyfikatora dla każdego użytkownika lub sesję. Uwzględnij następujące identyfikatory w każdy widok niestandardowy zdarzeń lub strony.

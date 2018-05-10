@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (duże wystąpień) i łączność na platformie Azure 
 
 Definicje wyprzedzeniem przed przeczytaniem tego przewodnika. W [omówienie SAP HANA (duże wystąpień) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wprowadzono dwóch różnych klas jednostek HANA dużych wystąpienie:
 
 - S72, S72m S144, S144m, S192 i S192m, który nazywamy "Typ klasy I" z jednostki SKU.
-- S384, S384m S384xm, S576, S768 i S960, który nazywamy "klasy typu II' SKU.
+- S384, S384m S384xm, S576m, S768m i S960m, który nazywamy "klasy typu II' SKU.
 
 Specyfikatory klas będą na potrzeby całej dokumentacji wystąpienia dużych HANA ostatecznie odwoływać się do różnych funkcji i wymagań oparte na jednostki SKU HANA dużych wystąpienia.
 
@@ -213,7 +213,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 W tym przykładzie użyto jednostka SKU bramy wysokowydajnej. Opcje są wysokowydajnej lub UltraPerformance jako brama tylko jednostki SKU obsługiwanych przez SAP HANA na platformie Azure (wystąpienia duże).
 
 > [!IMPORTANT]
-> Dla dużych wystąpienia jednostki SKU HANA typy S384, S384m S384xm, S576, S768 i S960 (II typu klasy SKU) jest wymagane użycie UltraPerformance jednostka SKU bramy.
+> Dla dużych wystąpienia jednostki SKU HANA typy S384, S384m S384xm, S576m, S768m i S960m (II typu klasy SKU) jest wymagane użycie UltraPerformance jednostka SKU bramy.
 
 ### <a name="linking-vnets"></a>Łączenie sieci wirtualnych
 

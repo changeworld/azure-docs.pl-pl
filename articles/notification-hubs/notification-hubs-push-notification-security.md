@@ -1,27 +1,27 @@
 ---
-title: "Zabezpieczenia usługi Notification Hubs"
-description: "W tym temacie wyjaśniono zabezpieczeń dla usługi Azure notification hubs."
+title: Zabezpieczenia usługi Notification Hubs
+description: W tym temacie wyjaśniono zabezpieczeń dla usługi Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 7c3283799806135060bb8ca57ea398c93d1106bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 9f197a85dfad31ce32d0f9c93127b69d8e33c9ee
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security"></a>Bezpieczeństwo
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym temacie opisano model zabezpieczeń usługi Azure Notification Hubs. Ponieważ usługi Notification Hubs jednostki magistrali usług, ich implementować ten sam model zabezpieczeń jako usługi Service Bus. Aby uzyskać więcej informacji, zobacz [uwierzytelniania magistrali usługi](https://msdn.microsoft.com/library/azure/dn155925.aspx) tematów.
 
 ## <a name="shared-access-signature-security-sas"></a>Zabezpieczenia sygnatury dostępu współdzielonego (SAS)
@@ -40,8 +40,8 @@ Podobnie jak inne jednostki, operacje Centrum powiadomień są dozwolone dla trz
 
 | Claim | Opis | Operacje dozwolone |
 | --- | --- | --- |
-| Nasłuchiwanie |Utworzyć lub zaktualizować przeczytać, a usunięcie pojedynczego rejestracji |Utwórz/Aktualizuj rejestracji<br><br>Przeczytaj rejestracji<br><br>Wszystkie rejestracji dla dojścia do odczytu<br><br>Usuwanie rejestracji |
-| Send |Wysyłanie komunikatów do Centrum powiadomień |Wysyłanie wiadomości |
+| Nasłuchuj |Utworzyć lub zaktualizować przeczytać, a usunięcie pojedynczego rejestracji |Utwórz/Aktualizuj rejestracji<br><br>Przeczytaj rejestracji<br><br>Wszystkie rejestracji dla dojścia do odczytu<br><br>Usuwanie rejestracji |
+| Send |Wysyłanie komunikatów do Centrum powiadomień |Wyślij wiadomość |
 | Zarządzanie |CRUDs centra powiadomień (w tym aktualizacji poświadczeń systemu powiadomień platformy i kluczy zabezpieczeń) i odczytu rejestracje oparte na tagów |Centra powiadomień tworzenia/aktualizacji/odczytu/usuwania<br><br>Rejestracje odczytu według znaczników |
 
 Centra powiadomień akceptuje oświadczenia przyznane przez tokeny kontroli dostępu usługi Microsoft Azure i tokeny sygnatury wygenerować za pomocą kluczy współużytkowanych skonfigurowane bezpośrednio w Centrum powiadomień.

@@ -1,6 +1,6 @@
 ---
-title: Uruchom zadanie Apache Spark z usługi kontenera platformy Azure (AKS)
-description: Uruchom zadanie Apache Spark za pomocą usługi kontenera platformy Azure (AKS)
+title: Uruchom zadanie Apache Spark z usługi Kubernetes Azure (AKS)
+description: Użyj usługi Kubernetes Azure (AKS), aby uruchamiać zadanie Apache Spark
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 627cb80a055fb4b66fcc428a1de87d754af6991e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: fbeddb60ce968ff0d32e2ddb6a4f62d2036d80aa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Uruchomionych zadań Apache Spark na AKS
 
-[Platforma Apache Spark] [ apache-spark] to szybki aparat do przetwarzania danych na dużą skalę. Począwszy od programu [wersji Spark 2.3.0][spark-latest-release], Apache Spark obsługuje natywna Integracja z klastrami Kubernetes. Usługa kontenera platformy Azure (AKS) jest zarządzanym środowisku Kubernetes działające na platformie Azure. Ten dokument zawiera szczegóły dotyczące przygotowania i uruchomionych zadań Apache Spark w klastrze usługi kontenera platformy Azure (AKS).
+[Platforma Apache Spark] [ apache-spark] to szybki aparat do przetwarzania danych na dużą skalę. Począwszy od programu [wersji Spark 2.3.0][spark-latest-release], Apache Spark obsługuje natywna Integracja z klastrami Kubernetes. Usługa Kubernetes Azure (AKS) jest zarządzanym środowisku Kubernetes działające na platformie Azure. Ten dokument zawiera szczegóły dotyczące przygotowania i uruchomionych zadań Apache Spark w klastrze usługi Kubernetes Azure (AKS).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,7 +32,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne są następujące elementy.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Platforma Spark służy do przetwarzania danych na dużą skalę i wymaga się, że węzły Kubernetes mają rozmiar w celu spełnienia wymagań zasobów Spark. Firma Microsoft zaleca minimalny rozmiar `Standard_D3_v2` dla usługi kontenera platformy Azure (AKS) węzły.
+Platforma Spark służy do przetwarzania danych na dużą skalę i wymaga się, że węzły Kubernetes mają rozmiar w celu spełnienia wymagań zasobów Spark. Firma Microsoft zaleca minimalny rozmiar `Standard_D3_v2` dla usługi Kubernetes Azure (AKS) węzły.
 
 Jeśli potrzebujesz AKS klastra, który spełnia minimalne zalecenie, uruchom następujące polecenia.
 

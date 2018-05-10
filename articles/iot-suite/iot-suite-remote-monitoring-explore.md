@@ -1,24 +1,24 @@
 ---
-title: "Wprowadzenie do zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft"
-description: "W tym samouczku używana symulowane scenariusze wprowadzenie zdalnego wstępnie skonfigurowane rozwiązanie monitorowania. Te scenariusze są tworzone podczas wdrażania zdalnego wstępnie skonfigurowane rozwiązanie monitorowania po raz pierwszy."
-services: 
+title: Wprowadzenie do zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku używana symulowane scenariusze wprowadzenie zdalnego monitorowania akcelerator rozwiązań. Te scenariusze są tworzone podczas wdrażania zdalnego monitorowania akcelerator rozwiązań po raz pierwszy.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 720269ad22bfe4a7f5871c934be77b680627e2f7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Poznaj możliwości zdalnego wstępnie skonfigurowane rozwiązanie monitorowania
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Poznaj możliwości zdalnego monitorowania akcelerator rozwiązań
 
 Ten samouczek pokazuje kluczowych możliwości zdalnego rozwiązanie monitorowania. Aby dodać tych funkcji, samouczka ilustrację typowych scenariuszy klienta przy użyciu symulowane aplikacji IoT firmy o nazwie Contoso.
 
@@ -28,7 +28,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 >[!div class="checklist"]
 > * Wizualizuj i urządzenia na pulpicie nawigacyjnym filtrować
-> * Odpowiadanie na alarmu
+> * Odpowiadanie na alertu
 > * Zaktualizuj oprogramowanie układowe urządzenia
 > * Organizowanie zasobów
 > * Zatrzymywanie i uruchamianie symulowanego urządzenia
@@ -41,14 +41,14 @@ Poniższe wideo przedstawia przewodnik zdalnego rozwiązanie monitorowania:
 
 Do ukończenia tego samouczka należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Wdrożenie IoT przykładowej firmy Contoso
 
 Umożliwia wdrożenie IoT przykładowej firmy Contoso zrozumieć podstawowe scenariusze zdalnego monitorowania rozwiązanie zapewnia poza pole. Te scenariusze są oparte na rzeczywistych wdrożeń IoT. Prawdopodobnie wybierzesz opcję Dostosuj zdalnego rozwiązanie monitorowania do własnych wymagań, ale przykładowej firmy Contoso pomaga Poznaj podstawy.
 
 > [!NOTE]
-> Jeśli użyto interfejsu wiersza polecenia do wdrożenia wstępnie skonfigurowanego rozwiązania, plik `deployment-{your deployment name}-output.json` zawiera informacje dotyczące wdrażania, takie jak adres URL wdrożonej przykładu.
+> Jeśli interfejsu wiersza polecenia jest używane do wdrażania akcelerator rozwiązań, plik `deployment-{your deployment name}-output.json` zawiera informacje dotyczące wdrażania, takie jak adres URL wdrożonej przykładu.
 
 Przykładowe firmy Contoso inicjuje zestaw symulowanego urządzenia i reguł, które działają na nich. Po zrozumieniu podstawowe scenariusze można kontynuować eksploracji więcej funkcji rozwiązania w [wykonaj zaawansowanego monitorowania urządzeń przy użyciu zdalnego rozwiązanie monitorowania](iot-suite-remote-monitoring-monitor.md).
 
@@ -67,7 +67,7 @@ W poniższej tabeli przedstawiono podsumowanie typów elastycznie urządzeń:
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
 | Chłodnica            | Wykorzystanie temperatury i wilgotności,            | Typ, wersja oprogramowania układowego modelu               | Lokalizacja, Floor, firmy | Ponowny rozruch, oprogramowanie układowe aktualizacji wersji awaryjnego zawór wzrostu wykorzystania                          |
 | Tworzenie prototypów urządzenia | Lokalizacja geograficzna temperatury, wykorzystania,        | Typ, wersja oprogramowania układowego modelu               | Lokalizacja, tryb          | Ponowny rozruch, aktualizacji oprogramowania układowego, Przenieś urządzenia, Zatrzymaj urządzenia, wydanie temperatury, wzrost temperatury |
-| Aparat             | Zbiornik paliwa poziomu, chłodziwa czujnika, wibrację | Typ, wersja oprogramowania układowego modelu               | Lokalizacja, Floor, firmy | Uruchom ponownie, aktualizacji oprogramowania układowego pusty zbiornika, zbiornika wypełnienia                                              |
+| Aparat             | Zbiornik paliwa poziomu, chłodziwa czujnika, wibrację | Typ, wersja oprogramowania układowego modelu               | Lokalizacja, Floor, firmy | Aktualizacja oprogramowania układowego, pusty zbiornika, zbiornika wypełnienia                                              |
 | Ciężarówka              | Lokalizacja geograficzna, szybkość ładunku temperatury     | Typ, wersja oprogramowania układowego modelu               | Lokalizacja, obciążenia          | Niższe temperatury ładunku, Zwiększ ładunku temperatury, aktualizacji oprogramowania układowego                         |
 | Krótka           | FLOOR, wibrację, temperatury              | Typ, wersja oprogramowania układowego, Model, lokalizacja geograficzna | Lokalizacja, firmy        | Zatrzymaj krótka, krótka rozpoczęcia aktualizacji oprogramowania układowego                                               |
 
@@ -88,43 +88,35 @@ Operatory w firmie Contoso znać progi określające, czy urządzenie działa po
 
 ### <a name="operate-the-contoso-sample-deployment"></a>Działanie wdrażania przykładowej firmy Contoso
 
-Ma teraz widoczna początkowej konfiguracji w przykładowej firmy Contoso. W poniższych sekcjach opisano trzy scenariusze w przykładowym Contoso ilustrujące jak operator może używać wstępnie skonfigurowanych rozwiązań.
+Ma teraz widoczna początkowej konfiguracji w przykładowej firmy Contoso. W poniższych sekcjach opisano trzy scenariusze w przykładowym Contoso ilustrujące, jak użyć operatora akcelerator rozwiązań.
 
-## <a name="respond-to-a-pressure-alarm"></a>Odpowiadanie na alarm wykorzystania
+## <a name="respond-to-a-pressure-alert"></a>Odpowiadanie na alert wykorzystania
 
-W tym scenariuszu przedstawiono sposób identyfikowania i reagowanie na alarmu, który zostanie wywołany przez urządzenie Chłodnica. Chłodnica znajduje się w Redmond, tworzenia 43, piętro 2.
+W tym scenariuszu przedstawiono sposób identyfikowania i reagowanie na alert jest wyzwalany przez urządzenie Chłodnica. Chłodnica znajduje się w Redmond, tworzenia 43, piętro 2.
 
-Uprawnienia operatora można są wyświetlane na pulpicie nawigacyjnym alarmu dotyczące wykorzystania z Chłodnica. Można przesuwać i powiększania na mapie, aby wyświetlić więcej szczegółów.
+Uprawnienia operatora można są wyświetlane na pulpicie nawigacyjnym dotyczące wykorzystania z Chłodnica alertu. Można przesuwać i powiększania na mapie, aby wyświetlić więcej szczegółów.
 
-1. Na **pulpitu nawigacyjnego** strony w **alarmy systemu** siatki, zostanie wyświetlony **zbyt duże wykorzystanie Chłodnica** alarm. Chłodnica jest wyróżnione na mapie:
+1. Na **pulpitu nawigacyjnego** strony w **alerty** siatki, zostanie wyświetlony **zbyt duże wykorzystanie Chłodnica** alertu. Chłodnica jest wyróżnione na mapie:
 
-    ![Pulpit nawigacyjny zawiera alarmu wykorzystania i urządzenia na mapie](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
+    ![Pulpit nawigacyjny zawiera alert wykorzystania i urządzenia na mapie](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
 
-1. Aby wyświetlić szczegóły urządzenia i dane telemetryczne, kliknij przycisk wyróżnione Chłodnica na mapie. Dane telemetryczne przedstawia kolekcji wykorzystania:
+1. Aby przejść do **konserwacji** wybierz pozycję **konserwacji** w menu nawigacji. Na **konserwacji** strony, można wyświetlić szczegółów reguły, która wyzwoliła alert Chłodnica wykorzystania.
 
-    ![Wybierz urządzenie, na mapie, aby wyświetlić szczegóły](media/iot-suite-remote-monitoring-explore/dashboarddetail.png)
+1. Na liście alertów pokazuje, ile razy wyzwolenia alertu, potwierdzenia i otwarte i zamknięte alerty:
 
-1. Zamknij **szczegółów urządzenia**.
+    ![Strona konserwacji wyświetlana lista alertów, które zostały wyzwolone](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. Aby przejść do **konserwacji** wybierz pozycję **konserwacji** w menu nawigacji.
+1. Ostatni alert na liście jest ostatnim zadaniem. Kliknij przycisk **Chłodnica wykorzystania zbyt duże** alert, aby wyświetlić skojarzone urządzenia i danych telemetrycznych. Dane telemetryczne przedstawia nagłego wykorzystania dla Chłodnica:
 
-Na **konserwacji** strony, można wyświetlić szczegóły reguły, która wyzwoliła Chłodnica alarm wykorzystania.
+    ![Strona konserwacji przedstawia dane telemetryczne dla wybranego alertu](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
-1. Na liście powiadomień pokazuje, ile razy wyzwolił alarmu, potwierdzenia i alarmy otwarte i zamknięte:
+Teraz zidentyfikować problem, która wyzwoliła alert i skojarzone urządzenia. Jako operator następne kroki są potwierdzić alert i łagodzenia problem.
 
-    ![Strona konserwacji listą alarmów, które ma być wywołany](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
+1. Aby wskazać, że teraz pracujesz nad alert, należy zmienić **alertów stanu** do **Acknowledged**:
 
-1. Alarm pierwszy na liście jest ostatnim zadaniem. Kliknij przycisk **Chłodnica wykorzystania zbyt duże** alarmu, aby wyświetlić skojarzone urządzenia i danych telemetrycznych. Dane telemetryczne przedstawia nagłego wykorzystania dla Chłodnica:
+    ![Wybierz i potwierdzić alertu](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
 
-    ![Strona konserwacji przedstawia dane telemetryczne dla wybranych alarmu](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
-
-Możesz teraz zidentyfikować problem, która wyzwoliła alarm i skojarzone urządzenia. Jako operator następne kroki są potwierdzić alarm i łagodzenia problem.
-
-1. Aby wskazać, że teraz pracujesz nad alarmu, zmień **Alarm stan** do **Acknowledged**:
-
-    ![Wybierz i potwierdzić alarmu](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
-
-1. Do działania na chłodnica, zaznacz go, a następnie wybierz pozycję **harmonogram**. Wybierz **EmergencyValveRelease**, Dodaj nazwę zadania **ChillerPressureRelease**i wybierz polecenie **Zastosuj**. Tych ustawień Utwórz zadanie, które wykonuje natychmiast:
+1. Do działania na chłodnica, zaznacz go, a następnie wybierz pozycję **zadania**. Wybierz **metody Run**, następnie **EmergencyValveRelease**, Dodaj nazwę zadania **ChillerPressureRelease**i wybierz polecenie **Zastosuj**. Tych ustawień Utwórz zadanie, które wykonuje natychmiast:
 
     ![Wybierz urządzenie i Zaplanuj akcji](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
@@ -134,13 +126,13 @@ Możesz teraz zidentyfikować problem, która wyzwoliła alarm i skojarzone urz�
 
 Na koniec Potwierdź wartości danych telemetrycznych z Chłodnica na normalne.
 
-1. Aby wyświetlić siatki alarmów, przejdź do **pulpitu nawigacyjnego** strony.
+1. Aby wyświetlić alerty siatki, przejdź do **pulpitu nawigacyjnego** strony.
 
-1. Aby wyświetlić dane telemetryczne urządzenie, wybierz urządzenie, dla oryginalnego alarmu na mapie i upewnij się, że jest na normalne.
+1. Aby wyświetlić dane telemetryczne urządzenie, wybierz urządzenie, dla oryginalnego alertu na mapie i upewnij się, że jest na normalne.
 
-1. Aby zamknąć zdarzenie, przejdź do **konserwacji** wybierz alarm, a wartość stanu **zamknięte**:
+1. Aby zamknąć zdarzenie, przejdź do **konserwacji** strony, wybierz alert i ustawić stan na **zamknięte**:
 
-    ![Wybierz i zamknij alarmu](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
+    ![Wybierz i zamknij alert](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
 
 ## <a name="update-device-firmware"></a>Zaktualizuj oprogramowanie układowe urządzenia
 
@@ -159,7 +151,7 @@ Aby wykonywać zadania zarządzania niezbędne urządzenia, należy użyć **urz
 
     ![Wybierz urządzenie, na stronie urządzenia](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. Kliknij przycisk **harmonogram** przycisk, a następnie wybierz pozycję **aktualizacji oprogramowania układowego**. Wprowadź wartości w polach **Nazwa zadania**, **wersja oprogramowania układowego**, i **URI oprogramowania układowego**. Wybierz **Zastosuj** zaplanowane zadanie, które chcesz teraz uruchomić:
+1. Kliknij przycisk **zadania** przycisku, wybierz **Run — metoda**, a następnie wybierz pozycję **aktualizacji oprogramowania układowego**. Wprowadź wartości w polach **Nazwa zadania**, **wersja oprogramowania układowego**, i **URI oprogramowania układowego**. Wybierz **Zastosuj** zaplanowane zadanie, które chcesz teraz uruchomić:
 
     ![Planowanie aktualizacji oprogramowania układowego na urządzeniu](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
@@ -176,17 +168,18 @@ Można użyć **konserwacji** stronę, aby śledzić zadania, jak to działa.
 
 1. Znajdź zdarzenie związane z zadania, który został utworzony. Upewnij się, że proces aktualizacji oprogramowania układowego zostało poprawnie zainicjowane.
 
-Można utworzyć filtr, aby sprawdzić, wersja oprogramowania układowego poprawnie aktualizowany.
+<!-- 05/01 broken 
+You can create a filter to verify the firmware version updated correctly.
 
-1. Aby utworzyć filtr, przejdź do **urządzeń** i wybrać opcję **Zarządzanie filtrami**:
+1. To create a filter, navigate to the **Devices** page and select **Manage device groups**:
 
-    ![Zarządzanie filtrami urządzenia](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Manage device groups](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
-1. Utworzyć filtr, który zawiera tylko urządzenia z nowej wersji oprogramowania układowego:
+1. Create a filter that includes only devices with the new firmware version:
 
-    ![Utwórz filtr urządzenia](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
+    ![Create device filter](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
 
-1. Wróć do **urządzeń** stronie i sprawdź, czy urządzenie jest nowa wersja oprogramowania układowego.
+1. Return to the **Devices** page and verify that the device has the new firmware version. -->
 
 ## <a name="organize-your-assets"></a>Organizowanie zasobów
 
@@ -203,7 +196,7 @@ Można utworzyć nazwy tagów do użycia z urządzeń.
 
     ![Pokaż wszystkie urządzenia](media/iot-suite-remote-monitoring-explore/devicesalldevices.png)
 
-1. Wybierz **pojazdów** i **Prototypowania** urządzeń. Następnie wybierz pozycję **Tag**:
+1. Wybierz **pojazdów** i **Prototypowania** urządzeń. Następnie wybierz pozycję **zadania**:
 
     ![Wybierz urządzenia prototypu i ciężarówka](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
@@ -211,19 +204,19 @@ Można utworzyć nazwy tagów do użycia z urządzeń.
 
     ![Dodaj tag prototypu i ciężarówka urządzeń](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
-1. Wybierz **Chłodnica**, **krótka**, i **aparat** urządzeń. Następnie wybierz pozycję **Tag**:
+1. Wybierz **Chłodnica**, **krótka**, i **aparat** urządzeń. Następnie wybierz pozycję **zadania**:
 
     ![Wybierz urządzenia chłodnica, aparatu i krótka](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. Wybierz **Tag** , a następnie utwórz nowy znacznik tekst o nazwie **FieldService** z wartością **SmartBuilding**. Wybierz nazwę dla zadania. Następnie kliknij przycisk **zapisać**:
+1. Wybierz **Tag** , a następnie utwórz nowy znacznik tekst o nazwie **FieldService** z wartością **SmartBuilding**. Wybierz nazwę dla zadania. Następnie kliknij przycisk **Zastosuj**:
 
     ![Dodaj tag chłodnica, aparatu i krótka urządzeń](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 
 Można użyć wartości tagów, aby utworzyć filtry.
 
-1. Na **urządzeń** wybierz pozycję **Zarządzanie filtrami**:
+1. Na **urządzeń** wybierz pozycję **Zarządzanie grupami urządzeń**:
 
-    ![Zarządzanie filtrami urządzenia](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Zarządzanie grupami urządzeń](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
 1. Utwórz nowy filtr, który używa nazwy tagu **FieldService** i wartość **SmartBuilding**. Zapisz filtr jako **budynku inteligentnych**.
 
@@ -237,9 +230,17 @@ W menu ustawień służy do zatrzymania symulowanego urządzenia. Pozwala to zmn
 
 1. Wybierz **ustawienia** ikony.
 
-1. Następnie przełącz **systemem** lub wyłącz:
+1. Następnie przełącz **Flowing** lub wyłącz:
 
     ![Menu ustawień](media/iot-suite-remote-monitoring-explore/settings.png)
+
+## <a name="customize-the-ui"></a>Dostosowywanie interfejsu użytkownika
+
+W menu Ustawienia podstawowe szczegóły konfiguracyjne może dotyczyć akcelerator rozwiązań monitorowania zdalnego. Możesz:
+
+- Przełączać się między jasnym i ciemnym motywów.
+- Zmień nazwę rozwiązania.
+- Przekazać niestandardowe logo.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -247,7 +248,7 @@ W tym samouczku przedstawiono do:
 
 >[!div class="checklist"]
 > * Wizualizuj i urządzenia na pulpicie nawigacyjnym filtrować
-> * Odpowiadanie na alarmu
+> * Odpowiadanie na alertu
 > * Zaktualizuj oprogramowanie układowe urządzenia
 > * Organizowanie zasobów
 > * Zatrzymywanie i uruchamianie symulowanego urządzenia

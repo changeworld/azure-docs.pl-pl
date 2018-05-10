@@ -1,22 +1,22 @@
 ---
-title: "Użyj Centrum IoT zdarzenia wyzwalacza Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi routingu zdarzeń siatki zdarzeń platformy Azure, Utwórz zautomatyzowanych procesów do wykonywania akcji aplikacje logiki platformy Azure na podstawie zdarzeń Centrum IoT."
+title: Użyj Centrum IoT zdarzenia wyzwalacza Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Za pomocą usługi routingu zdarzeń siatki zdarzeń platformy Azure, Utwórz zautomatyzowanych procesów do wykonywania akcji aplikacje logiki platformy Azure na podstawie zdarzeń Centrum IoT.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: f54db95b0dfe5dc39c8e2a85375e56a93d1562ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Wysyłanie powiadomień e-mail o zdarzeniach Centrum IoT Azure za pomocą aplikacji logiki
 
@@ -156,7 +156,7 @@ Zanim opuścisz projektanta aplikacji logiki, skopiuj adres URL, nasłuchiwania 
 W tej sekcji skonfigurujesz Centrum IoT do publikowania zdarzeń w miarę ich występowania. 
 
 1. W portalu Azure przejdź do Centrum IoT. 
-2. Wybierz **siatki zdarzeń**.
+2. Wybierz **zdarzenia**.
 
    ![Otwórz szczegóły zdarzeń siatki](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 

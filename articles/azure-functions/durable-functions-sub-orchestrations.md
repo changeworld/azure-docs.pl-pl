@@ -1,12 +1,12 @@
 ---
-title: "Podrzędne orchestrations dla funkcji trwałe - Azure"
-description: "Jak wywołać orchestrations z orchestrations w rozszerzeniu trwałe funkcji dla usługi Azure Functions."
+title: Podrzędne orchestrations dla funkcji trwałe - Azure
+description: Jak wywołać orchestrations z orchestrations w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5184bef81d1cd6ca7b41c1634def24031a4a5942
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 7545a371749ed9af88f08af23cce3a513f494374
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Podrzędne orchestrations w funkcji trwałe (funkcje platformy Azure)
 
@@ -27,6 +27,9 @@ Oprócz wywoływanie funkcji działania, funkcje programu orchestrator mogą wyw
 Funkcja programu orchestrator można wywołać inną funkcję orchestrator przez wywołanie metody [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) lub [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metody. [Obsługa błędów i kompensacji](durable-functions-error-handling.md#automatic-retry-on-failure) artykuł zawiera więcej informacji na temat automatycznego ponów próbę.
 
 Funkcje programu orchestrator podrzędne działają tak samo jak działanie funkcji względem obiektu wywołującego. Funkcje te mogą zwracać wartości, Zgłoś wyjątek i jest oczekiwane przez funkcję orchestrator nadrzędnej.
+
+> [!NOTE]
+> `CallSubOrchestratorAsync` i `CallSubOrchestratorWithRetryAsync` metody nie są jeszcze dostępne w języku JavaScript.
 
 ## <a name="example"></a>Przykład
 
@@ -76,7 +79,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, co to są koncentratory zadań i sposobach ich konfigurowania](durable-functions-task-hubs.md)

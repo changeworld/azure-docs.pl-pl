@@ -1,9 +1,9 @@
 ---
-title: "Inteligentne wykrywania - anomalii wydajności | Dokumentacja firmy Microsoft"
-description: "Usługa Application Insights wykonuje inteligentne analizy telemetrii aplikacji i ostrzega o potencjalnych problemach. Ta funkcja wymaga ustawień."
+title: Inteligentne wykrywania - anomalii wydajności | Dokumentacja firmy Microsoft
+description: Usługa Application Insights wykonuje inteligentne analizy telemetrii aplikacji i ostrzega o potencjalnych problemach. Ta funkcja wymaga ustawień.
 services: application-insights
 documentationcenter: windows
-author: antonfrMSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; antonfr
+ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentne wykrywanie - anomalii wydajności
 
@@ -88,7 +88,7 @@ Wiadomości e-mail o inteligentne wykrywania anomalii wydajności mogą zawiera�
 
 
 * *Jeśli I nie wykonuj żadnych czynności w odpowiedzi na powiadomienie, I otrzyma monitu?*
-  * Nie, pojawi się komunikat o każdym tylko raz. Jeśli problem będzie się powtarzać zostaną zaktualizowane w inteligentne wykrywanie źródła bloku.
+  * Nie, pojawi się komunikat o każdym tylko raz. Jeśli problem będzie się powtarzał zostaną zaktualizowane w inteligentne wykrywanie źródła bloku.
 * *Utratą wiadomości e-mail. Gdzie można znaleźć powiadomienia w portalu?*
   * W obszarze Przegląd usługi Application Insights aplikacji, kliknij przycisk **inteligentne wykrywanie** kafelka. Można odnaleźć wszystkie powiadomienia się do 90 dni wstecz.
 
@@ -132,7 +132,7 @@ Powiadomienia o degradacji czasu odpowiedzi zawiera:
 * Łącza w celu zdiagnozowania problemu.
   * Ślady profilera, aby wyświetlić, gdzie jest zużywany czas operacji (łącze jest dostępne, jeśli zebrano profilera śledzenia przykłady dla tej operacji w okresie wykrywania). 
   * Raporty wydajności w Eksploratorze metryki, gdy użytkownik może kątami filtrów zakresu czasu dla tej operacji.
-  * Wyszukiwanie tego wywołania wyświetlić właściwości określonych wywołań.
+  * Wyszukiwania dla tego wywołania wyświetlić właściwości wywołań.
   * Zgłasza błąd — jeśli count > 1 oznacza to, że wystąpiły błędy w tej operacji, która może przyczynić się do zmniejszenia wydajności.
 
 ## <a name="dependency-duration-degradation"></a>Zależności degradacji czas trwania
@@ -152,7 +152,7 @@ Należy zauważyć, że informuje o tym:
 * Łącza w celu zdiagnozowania problemu
   * Raporty wydajności w Eksploratorze Metryka tej zależności
   * Wyszukaj wywołania tej zależności, aby wyświetlić właściwości wywołania
-  * Zgłasza błąd — jeśli count > 1 to oznaczają, że wystąpiły nie wywołania zależności w okresie wykrywania, która może przyczynić się do pogorszenia się czas trwania. 
+  * Raporty błąd — jeśli count > 1, oznacza to, że wystąpiły zależności nie powiodło się w okresie wykrywania, która może przyczynić się do pogorszenia się czas trwania. 
   * Otwórz Analytics z kwerendy obliczające ten czas trwania zależności i liczby  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>Inteligentne wykrywanie powolnego wzorce wykonywania 

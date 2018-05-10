@@ -1,30 +1,28 @@
 ---
-title: "Jak rozpocząć Przegląd dostępu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć Przegląd dostępu uprzywilejowanego tożsamości z aplikacji Azure Privileged Identity Management."
+title: Jak rozpocząć Przegląd dostępu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Przegląd dostępu uprzywilejowanego tożsamości z aplikacji Azure Privileged Identity Management.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 3e52b731-55f4-4c8a-ba87-9fd34033f52f
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 05/04/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: f57a32ca1914d18540289ebb05421a7ae9618094
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1923890e01b351f884837e14b5e2ca736ec687ce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak rozpocząć Przegląd dostępu w usłudze Azure AD Privileged Identity Management
 Przypisania ról nieodświeżone "", gdy użytkownicy mają uprzywilejowany dostęp, które nie wymagają już. W celu zmniejszenia ryzyka związanego z tych przypisań ról starych, ról uprzywilejowanych powinni regularnie sprawdzić ról, którym przyznano użytkowników. W tym dokumencie opisano kroki dotyczące uruchomienia Przegląd dostępu w usłudze Azure AD Privileged Identity Management (PIM).
 
-## <a name="start-an-access-review"></a>Rozpocząć Przegląd dostępu
+## <a name="start-an-access-review"></a>Rozpoczynanie przeglądu dostępu
 > [!NOTE]
 > Jeśli nie dodano aplikacji PIM do pulpitu nawigacyjnego w portalu Azure, zobacz kroki w [wprowadzenie do korzystania z usługi Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)
 > 

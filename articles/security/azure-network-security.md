@@ -4,7 +4,7 @@ description: Więcej informacji na temat przetwarzania danych usług w chmurze z
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: cc64ef8d820db6a072b708323eb110d62ed0a83c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
@@ -530,7 +530,7 @@ Ponieważ zasoby są zwracane połączenie między one są modelowane w obszarze
 
 - **Skojarzone** -A kart interfejsu Sieciowego jest skojarzona z maszyną Wirtualną.
 
-#### <a name="variable-packet-capture"></a>Przechwytywania pakietów zmiennej
+#### <a name="variable-packet-capture"></a>Przechwytywanie pakietów zmiennych
 
 Monitor sieci [przechwytywania pakietów zmiennej](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) służy do tworzenia sesji przechwytywania pakietów, aby śledzić ruch do i z maszyny wirtualnej. Pomaga przechwytywania pakietów do diagnozowania sieci anomalii zarówno rozbudowy i proactivity. Innych celów obejmują zbieranie statystyk sieciowych, uzyskanie informacji na temat wtargnięcia sieci, aby debugować komunikacja klient serwer i o wiele więcej.
 

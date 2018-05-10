@@ -1,0 +1,46 @@
+- name: Azure Blockchain Workbench (publiczna wersja zapoznawcza)
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Informacje o aplikacji Azure Blockchain Workbench
+      href: blockchain-workbench-overview.md
+- name: Pojęcia
+  items:
+    - name: Architektura
+      href: blockchain-workbench-architecture.md
+    - name: Wzorce integracji
+      href: blockchain-workbench-integration-patterns.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Wdrażanie aplikacji Workbench
+      href: blockchain-workbench-deploy.md
+    - name: Zarządzaj użytkownikami aplikacji Workbench
+      href: blockchain-workbench-manage-users.md
+    - name: Tworzenie aplikacji łańcucha bloków
+      href: blockchain-workbench-create-app.md
+    - name: Korzystanie z aplikacji łańcucha bloków
+      href: blockchain-workbench-use.md
+    - name: Korzystanie z interfejsu API środowiska roboczego
+      href: blockchain-workbench-use-API.md
+    - name: Rozwiązywanie problemów z aplikacjami
+      href: blockchain-workbench-troubleshooting.md
+    - name: Uzyskiwanie szczegółowych informacji o bazie danych aplikacji Workbench
+      href: blockchain-workbench-getdb-details.md
+    - name: Konfigurowanie zapory usługi SQL DB aplikacji Workbench
+      href: blockchain-workbench-database-firewall.md
+    - name: Korzystanie z danych aplikacji Workbench w programie Excel
+      href: blockchain-workbench-data-excel.md
+    - name: Korzystanie z danych aplikacji Workbench w usłudze Power BI
+      href: blockchain-workbench-data-powerbi.md
+    - name: Korzystanie z danych aplikacji Workbench w programie SQL Management Studio
+      href: blockchain-workbench-data-sql-management-studio.md
+- name: Dokumentacja
+  items:
+    - name: Konfigurowanie
+      href: blockchain-workbench-configuration-overview.md
+    - name: Widoki bazy danych
+      href: blockchain-workbench-database-views.md
+    - name: Interfejs API REST
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+    - name: Interfejs API do obsługi komunikatów
+      href: blockchain-workbench-messages-overview.md

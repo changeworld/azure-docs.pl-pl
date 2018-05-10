@@ -1,12 +1,12 @@
 ---
-title: "Wykrywanie zagrożeń zaawansowane Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat ochrony tożsamości i jego możliwości."
+title: Wykrywanie zagrożeń zaawansowane Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat ochrony tożsamości i jego możliwości.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-advanced-threat-detection"></a>Wykrywanie zagrożeń zaawansowane Azure
 ## <a name="introduction"></a>Wprowadzenie
 
-### <a name="overview"></a>Omówienie
+### <a name="overview"></a>Przegląd
 
 Firma Microsoft opracowała szereg oficjalne dokumenty, omówienie zabezpieczeń najlepsze rozwiązania i listy kontrolne ułatwiają klientów platformy Azure o różnych funkcjach zabezpieczeń dostępnych w i otaczającego platformy Azure. Tematy zakresu pod względem szerokości i głębokość i są okresowo aktualizowane. Ten dokument jest częścią tej serii, zgodnie z opisem w poniższej sekcji abstrakcyjny.
 
@@ -56,7 +56,7 @@ Ten dokument koncentruje się na technologii platformy Azure i kontrolek uwzglę
 
 [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) jest funkcją [Azure AD Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) edition, który umożliwia przegląd zdarzeń o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach wpływających na tożsamości organizacji. Microsoft ma został zabezpieczających tożsamości opartej na chmurze za pośrednictwem dekadę i przy użyciu usługi Azure AD Identity Protection, Microsoft jest udostępnianie tych samych systemów ochrony do przedsiębiorstwa. Identity Protection korzysta z możliwości wykrywania anomalii istniejącej usługi Azure AD w dostępne za pośrednictwem [raporty dotyczące usługi Azure AD nietypowych działań](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)i wprowadza nowe typy zdarzeń ryzyka, które umożliwia wykrywanie anomalii w czasie rzeczywistym.
 
-Identity Protection używa algorytmów uczenia maszynowego adaptacyjną i heurystyki wykrywania anomalii i ryzyka zdarzenia, które mogą wskazywać, że naruszono tożsamości. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, które można zbadać zdarzenia o podwyższonym ryzyku i podjąć odpowiednie środki zaradcze lub ograniczenie akcji.
+Usługa Identity Protection używa adaptacyjnych algorytmów uczenia maszynowego i algorytmów heurystycznych na potrzeby wykrywania anomalii i podejrzanych zdarzeń, które mogą wskazywać na naruszenia tożsamości. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, które można zbadać zdarzenia o podwyższonym ryzyku i podjąć odpowiednie środki zaradcze lub ograniczenie akcji.
 
 Ale Azure Active Directory Identity Protection jest większa niż przy użyciu narzędzi monitorowania i raportowania. Oparte na zdarzenia o podwyższonym ryzyku, Identity Protection oblicza poziom ryzyka użytkownika, dla każdego użytkownika, dzięki któremu można konfigurować zasady ryzyka, aby automatycznie chronić tożsamości organizacji.
 
@@ -88,7 +88,7 @@ Przykłady niektórych metod, które mogą ułatwić ochronę tożsamości usłu
 
 Z [usługi Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure),
 
-![Usługa Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
+![Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
 
 Możesz zarządzanie, sterowanie i monitorowanie dostępu w organizacji. Dotyczy to również dostępu do zasobów usługi Azure AD i innych usług online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
 
@@ -368,7 +368,7 @@ Z narzędzia, które ułatwiają odkrywanie tle IT, ocenie ryzyka egzekwowanie z
 
  </tr>
  <tr>
-   <td>Kontrolka</td>
+   <td>Kontrola</td>
    <td>Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrować użytkowników do chmury bezpiecznej, oficjalnie zaakceptowanych aplikacji alternatyw.</td>
 
  </tr>
@@ -378,7 +378,7 @@ Z narzędzia, które ułatwiają odkrywanie tle IT, ocenie ryzyka egzekwowanie z
 
  </tr>
  <tr>
-   <td>Kontrolka</td>
+   <td>Kontrola</td>
    <td>Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrować użytkowników do chmury bezpiecznej, oficjalnie zaakceptowanych aplikacji alternatyw.</td>
 
  </tr>

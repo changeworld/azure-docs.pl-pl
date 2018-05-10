@@ -1,5 +1,5 @@
 ---
-title: Zarządzaj wygasaniem zawartości sieci web w sieci dostarczania zawartości platformy Azure | Dokumentacja firmy Microsoft
+title: Zarządzaj wygasaniem zawartości sieci web w usłudze Azure CDN | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zarządzać wygasaniem zawartości usług Azure Web Apps/Cloud Services, ASP.NET lub usługi IIS w usłudze Azure CDN.
 services: cdn
 documentationcenter: .NET
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ec5470587454a35bc7606a3518d61bd3491d653b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Zarządzaj wygasaniem zawartości sieci web w sieci dostarczania zawartości platformy Azure
+# <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Zarządzaj wygasaniem zawartości sieci web w usłudze Azure CDN
 > [!div class="op_single_selector"]
 > * [Zawartość sieci Web platformy Azure](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)

@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure Lab Services w wersji zapoznawczej (dawniej DevTest Labs)
+metadata:
+  title: Dokumentacja usługi Azure Lab Services — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
+  services: lab-services
+  author: spelluru
+  manager: 
+  ms.service: lab-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/06/2018
+  ms.author: spelluru
+  ms.openlocfilehash: f06102399cac6ef1b6b31155dff32999a923e173
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Dowiedz się, jak użyć usługi Azure Lab Services do szybkiego skonfigurowania laboratorium badawczego lub testowego bądź laboratorium na potrzeby maratonu programistycznego lub zajęć dla Twojego zespołu lub studentów w chmurze. W samouczkach, przykładach i innych zasobach dotyczących platformy Azure pokazano, jak tworzyć i zabezpieczać laboratoria oraz zarządzać z nimi.
+sections:
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak tworzyć i korzystać z <b>laboratorium na potrzeby zajęć</b> przy użyciu usługi Azure Lab Services.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/lab-services/tutorial-setup-lab-account">Konfigurowanie konta laboratorium</a>
+    - html: <a href="/azure/lab-services/tutorial-setup-classroom-lab">Konfigurowanie laboratorium na potrzeby zajęć</a>
+    - html: <a href="/azure/lab-services/tutorial-connect-virtual-machine-classroom-lab">Dostęp do laboratorium na potrzeby zajęć</a>
+  - type: paragraph
+    text: Dowiedz się, jak tworzyć i korzystać z <b>laboratorium niestandardowego</b> przy użyciu usługi Azure Lab Services.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Konfigurowanie laboratorium niestandardowego</a>
+    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Dostęp do laboratorium niestandardowego</a>
+- title: Przykłady
+  items:
+  - type: paragraph
+    text: Korzystaj z poniższych przykładów podczas pracy z usługą Lab Services.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-devtestlab/tree/master/Samples">Szablony usługi Resource Manager</a>
+    - html: <a href="/azure/lab-services/samples-cli">Interfejs wiersza polecenia platformy Azure</a>
+    - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Wiersz polecenia
+      html: <p><a href="/cli/azure/lab">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/module/azurerm.devtestlabs/#devtest_labs">Azure PowerShell</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/dtl">Interfejs API REST</a></p>

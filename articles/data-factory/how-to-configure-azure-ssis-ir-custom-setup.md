@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: af92eec8b6461563a366805d5eb4cbb964b028a5
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: ff47060ddfee458279c9fed0fd3fcafcf35229d2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure
 
@@ -32,6 +32,10 @@ Można zainstalować składniki wolne lub użytkowaniem i płatną lub licencjon
 -   Jeśli chcesz użyć `gacutil.exe` do zainstalowania zestawów w globalnej pamięci podręcznej zestawów (GAC), należy podać go jako część ustawień niestandardowych, lub użyj kopii w kontenerze publicznej wersji zapoznawczej.
 
 -   Należy przyłączyć Twojej IR Azure SSIS z niestandardowych ustawień do sieci wirtualnej, tylko usługi Azure Resource Manager wirtualnej jest obsługiwana. Klasyczne sieci wirtualnej nie jest obsługiwane.
+
+-   Udział administracyjny nie jest aktualnie obsługiwana w podczerwieni Azure SSIS.
+
+-   Jeśli do mapowania udział plików na dysku w ustawieniach niestandardowych `net use` polecenia nie jest obecnie obsługiwany. W związku z tym nie można użyć polecenia, takich jak `net use d: \\fileshareserver\sharename`. Zamiast tego należy użyć `cmdkey` polecenia — na przykład `cmdkey /add:fileshareserver /user:yyy /pass:zzz` — Aby uzyskać dostęp do `\\fileshareserver\folder` bezpośrednio w pakietach.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -121,7 +125,7 @@ Aby dostosować Twojej IR Azure SSIS, należy następujących czynności:
 
        1. A `Sample` folder zawierający niestandardowe Instalatora, aby zainstalować podstawowe zadania w każdym węźle sieci IR. Azure SSIS Zadanie nie działa jednak uśpienia przez kilka sekund. Folder zawiera także `gacutil` folder, który zawiera `gacutil.exe`.
 
-       2. A `UserScenarios` folder, który zawiera osiem konfiguracje niestandardowe dla scenariuszy rzeczywistego użytkownika.
+       2. A `UserScenarios` folder, który zawiera kilka niestandardowych ustawień dla scenariuszy rzeczywistego użytkownika.
 
     ![Zawartość kontenera publicznej wersji zapoznawczej](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
@@ -133,17 +137,17 @@ Aby dostosować Twojej IR Azure SSIS, należy następujących czynności:
 
        3. `EXCEL` Folder zawierający niestandardowe Instalatora, aby zainstalować zestawy open source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, i `ExcelDataReader.dll`) w każdym węźle sieci podczerwieni Azure SSIS.
 
-       4. `MSDTC` Folder zawierający niestandardowe ustawienia do modyfikowania konfiguracji sieci i zabezpieczeń dla wystąpienia koordynatora transakcji rozproszonych (MSDTC) na każdym węźle sieci IR. Azure SSIS.
+       4. `MSDTC` Folder zawierający niestandardowe ustawienia do modyfikowania konfiguracji sieci i zabezpieczeń dla wystąpienia koordynatora transakcji rozproszonych (MSDTC) na każdym węźle z podczerwieni Azure SSIS.
 
-       5. `ORACLE ENTERPRISE` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) i pliku konfiguracji instalacji dyskretnej (`client.rsp`) do zainstalowania sterownika Oracle OCI w każdym węźle z Azure SSIS IR Enterprise Edition (wersja zapoznawcza prywatnych). Ta konfiguracja pozwala używać Menedżera połączeń Oracle, źródłowym i docelowym. Najpierw należy pobrać `winx64_12102_client.zip` z [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , a następnie przekazać go razem z `main.cmd` i `client.rsp` do Twojej kontenera. Jeśli używasz nazwę nawiązać połączenia z programem Oracle, należy pobrać `tnsnames.ora`, edytowania i przekaż go do Twojego kontenera, mogą zostać skopiowane do folderu instalacji programu Oracle podczas instalacji.
+       5. `ORACLE ENTERPRISE` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) i pliku konfiguracji instalacji dyskretnej (`client.rsp`) do zainstalowania sterownika Oracle OCI w każdym węźle sieci Azure SSIS IR Enterprise Edition. Ta konfiguracja pozwala używać Menedżera połączeń Oracle, źródłowym i docelowym. Po pierwsze, Pobierz najnowszego klienta Oracle — na przykład `winx64_12102_client.zip` — z [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , a następnie przekazać go razem z `main.cmd` i `client.rsp` do Twojej kontenera. Jeśli używasz nazwę nawiązać połączenia z programem Oracle, należy pobrać `tnsnames.ora`, edytowania i przekaż go do Twojego kontenera, mogą zostać skopiowane do folderu instalacji programu Oracle podczas instalacji.
 
-       6. `ORACLE STANDARD` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) do zainstalowania sterownika Oracle ODP.NET w każdym węźle sieci podczerwieni Azure SSIS. Ta konfiguracja pozwala używać Menedżera połączeń ADO.NET, źródłowym i docelowym. Najpierw pobierz `ODP.NET_Managed_ODAC122cR1.zip` z [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), a następnie przekazać go razem z `main.cmd` do Twojej kontenera.
+       6. `ORACLE STANDARD` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) do zainstalowania sterownika Oracle ODP.NET w każdym węźle sieci podczerwieni Azure SSIS. Ta konfiguracja pozwala używać Menedżera połączeń ADO.NET, źródłowym i docelowym. Najpierw należy pobrać najnowszy sterownik Oracle ODP.NET — na przykład `ODP.NET_Managed_ODAC122cR1.zip` — z [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), a następnie przekazać go razem z `main.cmd` do Twojej kontenera.
 
-       7. `SAP BW` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) Aby zainstalować zestaw łącznik .NET programu SAP (`librfc32.dll`) w każdym węźle z Azure SSIS IR Enterprise Edition (wersja zapoznawcza prywatnych). Ta konfiguracja pozwala używać Menedżera połączeń programu SAP BW, źródłowym i docelowym. Najpierw należy przekazać 64-bitowy lub 32-bitowej wersji systemu `librfc32.dll` z folderu instalacyjnego programu SAP do kontenera, wraz z `main.cmd`. Skrypt następnie kopiuje zestawu SAP do `%windir%\SysWow64` lub `%windir%\System32` folderu podczas instalacji.
+       7. `SAP BW` Folder, który zawiera skrypt instalacji niestandardowej (`main.cmd`) Aby zainstalować zestaw łącznik .NET programu SAP (`librfc32.dll`) w każdym węźle sieci Azure SSIS IR Enterprise Edition. Ta konfiguracja pozwala używać Menedżera połączeń programu SAP BW, źródłowym i docelowym. Najpierw należy przekazać 64-bitowy lub 32-bitowej wersji systemu `librfc32.dll` z folderu instalacyjnego programu SAP do kontenera, wraz z `main.cmd`. Skrypt następnie kopiuje zestawu SAP do `%windir%\SysWow64` lub `%windir%\System32` folderu podczas instalacji.
 
        8. A `STORAGE` folder zawierający niestandardowe ustawienia do zainstalowania programu Azure PowerShell w każdym węźle sieci podczerwieni Azure SSIS. Ta konfiguracja pozwala wdrażać i wykonywania SSIS pakietów uruchomionymi [skryptów programu PowerShell do manipulowania konta magazynu Azure](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Kopiuj `main.cmd`, próbkę `AzurePowerShell.msi` (lub zainstaluj najnowszą wersję) i `storage.ps1` z kontenerem. Użyj PowerShell.dtsx jako szablon dla pakietów. Szablon pakietu łączy [zadań pobieranie obiektów Blob Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), które pliki do pobrania `storage.ps1` jako skrypt programu PowerShell można modyfikować i [wykonania zadanie procesu](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) , który jest wykonywany skrypt w każdym węźle.
 
-       9. A `TERADATA` folder, który zawiera skrypt instalacji niestandardowej (`main.cmd)`, jego skojarzony plik (`install.cmd`) i pakietów Instalatora (`.msi`). Te pliki Zainstaluj łączniki programu Teradata, interfejsu API TPT i sterownik ODBC w każdym węźle sieci Azure SSIS IR Enterprise Edition (podglądzie prywatnym). Ta konfiguracja pozwala używać programu Teradata Menedżera połączeń, źródłowym i docelowym. Najpierw Pobierz plik zip 15.x Teradata narzędzi i narzędzia (TTU) (na przykład `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com)i przekazać go razem z powyższych `.cmd` i `.msi` plików do sieci kontenera.
+       9. A `TERADATA` folder, który zawiera skrypt instalacji niestandardowej (`main.cmd)`, jego skojarzony plik (`install.cmd`) i pakietów Instalatora (`.msi`). Te pliki Zainstaluj łączniki programu Teradata, interfejsu API TPT i sterownik ODBC w każdym węźle sieci Azure SSIS IR Enterprise Edition. Ta konfiguracja pozwala używać programu Teradata Menedżera połączeń, źródłowym i docelowym. Najpierw Pobierz plik zip 15.x Teradata narzędzi i narzędzia (TTU) (na przykład `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com)i przekazać go razem z powyższych `.cmd` i `.msi` plików do sieci kontenera.
 
     ![Foldery w folderze scenariusze użytkowników](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

@@ -1,7 +1,7 @@
 ---
-title: "Schemat urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano schematu JSON, który definiuje symulowane urządzenie zdalne rozwiązanie monitorowania."
-services: 
+title: Schemat urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano schematu JSON, który definiuje symulowane urządzenie zdalne rozwiązanie monitorowania.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 364698a529623958695f93a245bab28a89f6bd4c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 24aeb9c3f73d04a3d05f09ebd2ba0859a38e7ad8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-the-device-model-schema"></a>Zrozumienie schematu modelu urządzenia
 
@@ -29,7 +29,7 @@ Następujące artykuły odnoszą się do bieżącego artykułu:
 * [Implementuje zachowanie modelu urządzenia](iot-suite-remote-monitoring-device-behavior.md) opisuje pliki JavaScript przy użyciu zachowanie symulowane urządzenie.
 * [Utwórz nowy symulowane urządzenie](iot-suite-remote-monitoring-test.md) umieszcza je na wszystkich elementów i pokazuje, jak wdrożyć nowy typ symulowane urządzenie do rozwiązania.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 >[!div class="checklist"]
 > * Zdefiniuj modelu symulowane urządzenie przy użyciu pliku JSON
@@ -85,8 +85,8 @@ W `Simulation` sekcji, zdefiniuj wewnętrzny stan klasy symulowane urządzenie. 
 
 Definicja stan urządzenia ma dwa elementy:
 
-* `InitialState`Definiuje wartości początkowe dla wszystkich właściwości obiektu stanu urządzenia.
-* `Script`Określa plik JavaScript, że działa zgodnie z harmonogramem, aby zaktualizować stan urządzenia. Do wartości danych telemetrycznych wysłanych przez urządzenie losowe, można użyć tego pliku skryptu.
+* `InitialState` Definiuje wartości początkowe dla wszystkich właściwości obiektu stanu urządzenia.
+* `Script` Określa plik JavaScript, że działa zgodnie z harmonogramem, aby zaktualizować stan urządzenia. Do wartości danych telemetrycznych wysłanych przez urządzenie losowe, można użyć tego pliku skryptu.
 
 Aby dowiedzieć się więcej na temat plik JavaScript, która aktualizuje obiekt stanu urządzenia, zobacz [zrozumienie zachowania modelu urządzenia](iot-suite-remote-monitoring-device-behavior.md).
 
@@ -104,10 +104,10 @@ W poniższym przykładzie przedstawiono definicję obiektu stanu urządzenia dla
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:10",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -155,9 +155,9 @@ Poniższy przykład wysyła komunikat telemetrii JSON co 10 sekund z `floor`, `v
 ]
 ```
 
-`MessageTemplate`definiuje strukturę JSON wiadomości wysyłane przez symulowane urządzenie. Symbole zastępcze w `MessageTemplate` należy użyć składni `${NAME}` gdzie `NAME` to klucz z [obiektu stanu urządzenia](#simulation). Ciągi powinny być podawane, numery nie powinien.
+`MessageTemplate` definiuje strukturę JSON wiadomości wysyłane przez symulowane urządzenie. Symbole zastępcze w `MessageTemplate` należy użyć składni `${NAME}` gdzie `NAME` to klucz z [obiektu stanu urządzenia](#simulation). Ciągi powinny być podawane, numery nie powinien.
 
-`MessageSchema`Definiuje schemat komunikat wysłany przez symulowane urządzenie. Centrum IoT, aby umożliwić aplikacji wewnętrznej bazy danych ponownie wykorzystać informacje interpretować przychodzące dane telemetryczne również opublikowane schematu wiadomości.
+`MessageSchema` Definiuje schemat komunikat wysłany przez symulowane urządzenie. Centrum IoT, aby umożliwić aplikacji wewnętrznej bazy danych ponownie wykorzystać informacje interpretować przychodzące dane telemetryczne również opublikowane schematu wiadomości.
 
 Obecnie można używać tylko schematy komunikat JSON. Pola wymienione w schemacie mogą być następujące:
 
@@ -167,7 +167,7 @@ Obecnie można używać tylko schematy komunikat JSON. Pola wymienione w schemac
 * Wartość logiczna
 * Liczba całkowita
 * Podwójnej precyzji
-* Data/godzina
+* DateTime
 
 Aby wysyłać dane telemetryczne w różnych odstępach czasu, Dodaj wiele typów danych telemetrycznych do `Telemetry` tablicy. Poniższy przykład wysyła dane temperatury i wilgotności co 10 sekund i stan światła co minutę:
 

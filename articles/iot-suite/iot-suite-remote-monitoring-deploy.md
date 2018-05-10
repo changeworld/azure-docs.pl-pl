@@ -1,33 +1,33 @@
 ---
-title: "Wdrażanie zdalne rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft"
-description: "W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania wstępnie skonfigurowane rozwiązanie z azureiotsuite.com."
-services: 
+title: Wdrażanie zdalne rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania akcelerator rozwiązań z azureiotsuite.com.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fa08817c870372488b1e03a2c282add2eaa85478
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: eb78ce91755c43f1c6fedf62a70238df911b940f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>Wdrażanie wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego
+# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>Wdrażanie zdalne akcelerator rozwiązań monitorowania
 
-W tym samouczku przedstawiono sposób aprowizowania wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego. Możesz wdrożyć rozwiązanie z azureiotsuite.com. Można także wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia, aby dowiedzieć się więcej o tej opcji, zobacz [wdrożyć wstępnie skonfigurowane rozwiązanie z wiersza polecenia](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#deploy-a-pcs-from-the-command-line).
+W tym samouczku przedstawiono sposób udostępnienia zdalnego monitorowania akcelerator rozwiązań. Możesz wdrożyć rozwiązanie z azureiotsuite.com. Można także wdrożyć rozwiązanie przy użyciu interfejsu wiersza polecenia, aby dowiedzieć się więcej o tej opcji, zobacz [wdrażanie akcelerator rozwiązań, w wierszu polecenia](iot-suite-remote-monitoring-deploy-cli.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie wstępnie skonfigurowanego rozwiązania
-> * Wdrażanie wstępnie skonfigurowane rozwiązanie
-> * Zaloguj się do wstępnie skonfigurowane rozwiązanie
+> * Skonfiguruj akcelerator rozwiązań
+> * Wdrażanie akcelerator rozwiązań
+> * Zaloguj się do akcelerator rozwiązań
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,19 +35,17 @@ Do wykonania kroków tego samouczka jest potrzebna aktywna subskrypcja platformy
 
 Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](http://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="deploy-the-preconfigured-solution"></a>Wdrażanie wstępnie skonfigurowane rozwiązanie
+## <a name="deploy-the-solution-accelerator"></a>Wdrażanie akcelerator rozwiązań
 
-Przed wdrożeniem wstępnie skonfigurowane rozwiązanie do subskrypcji platformy Azure, musisz wybrać niektóre opcje konfiguracji:
+Przed wdrożeniem akcelerator rozwiązań do subskrypcji platformy Azure, musisz wybrać niektóre opcje konfiguracji:
 
-1. Zaloguj się do [azureiotsuite.com](https://www.azureiotsuite.com) poświadczenia konta przy użyciu platformy Azure i kliknij przycisk  **+**  do tworzenia nowego rozwiązania:
+1. Zaloguj się do [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) przy użyciu poświadczeń konta platformy Azure.
 
-    ![Utwórz nowe rozwiązanie](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
-
-1. Kliknij przycisk **wybierz** na **zdalnego Podgląd monitorowania** kafelka.
+1. Kliknij przycisk **Spróbuj teraz** na **monitorowania zdalnego** kafelka.
 
     ![Wybierz monitorowania zdalnego](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
-1. Na **utworzyć monitorowania zdalnego rozwiązania** wprowadź **Nazwa rozwiązania** dla zdalnego monitorowania wstępnie skonfigurowane rozwiązanie.
+1. Na **utworzyć monitorowania zdalnego rozwiązania** wprowadź **Nazwa rozwiązania** dla zdalnego monitorowania akcelerator rozwiązań.
 
 1. Wybierz **podstawowe** lub **standardowe** wdrożenia. Jeśli wdrażasz Dowiedz się, jak to działa rozwiązania lub uruchomić pokaz, wybierz **podstawowe** opcję, aby zminimalizować koszty.
 
@@ -59,13 +57,13 @@ Przed wdrożeniem wstępnie skonfigurowane rozwiązanie do subskrypcji platformy
 
 1. Kliknij pozycję **Utwórz rozwiązanie**, aby rozpocząć proces aprowizowania. Ten proces zwykle trwa kilka minut do uruchomienia:
 
-    ![Zdalnego monitorowania szczegóły rozwiązania](media/iot-suite-remote-monitoring-deploy/createform.png)
+    ![Szczegóły rozwiązania monitorowanie zdalnego](media/iot-suite-remote-monitoring-deploy/createform.png)
 
 Aby uzyskać informacje dotyczące rozwiązywania problemów, zobacz [co robić, jeśli wdrożenie nie powiedzie się](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails) w repozytorium GitHub.
 
-## <a name="sign-in-to-the-preconfigured-solution"></a>Zaloguj się do wstępnie skonfigurowane rozwiązanie
+## <a name="sign-in-to-the-solution-accelerator"></a>Zaloguj się do akcelerator rozwiązań
 
-Po zakończeniu procesu inicjowania obsługi administracyjnej można logowania się do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania.
+Po zakończeniu procesu inicjowania obsługi administracyjnej można logowania się do zdalnego monitorowania akcelerator rozwiązań.
 
 1. Na **elastycznie rozwiązań** wybierz nowe zdalnego rozwiązanie monitorowania:
 
@@ -85,9 +83,9 @@ Po zakończeniu procesu inicjowania obsługi administracyjnej można logowania s
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie wstępnie skonfigurowanego rozwiązania
-> * Wdrażanie wstępnie skonfigurowane rozwiązanie
-> * Zaloguj się do wstępnie skonfigurowane rozwiązanie
+> * Skonfiguruj akcelerator rozwiązań
+> * Wdrażanie akcelerator rozwiązań
+> * Zaloguj się do akcelerator rozwiązań
 
 Teraz, gdy wdrożono rozwiązanie monitorowania zdalnego następnym krokiem jest [Poznaj możliwości pulpit nawigacyjny rozwiązania](./iot-suite-remote-monitoring-explore.md).
 

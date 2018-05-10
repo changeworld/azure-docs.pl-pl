@@ -3,7 +3,7 @@ title: Schemat języka definicji przepływu pracy — usługi Azure Logic Apps |
 description: Zapisać definicji niestandardowego przepływu pracy dla usługi Azure Logic Apps język definicji przepływu pracy
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -12,13 +12,13 @@ ms.workload: logic-apps
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 04/25/2018
+ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 7c253fd83bcc1f1dde93ac6ef0c26da1fa1a9a4b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicji przepływu pracy aplikacji logiki ze schematem język definicji przepływu pracy
 
@@ -54,7 +54,7 @@ Oto ogólny struktura definicji przepływu pracy:
 
 ## <a name="parameters"></a>Parametry
 
-W `parameters` sekcji, zdefiniuj parametry, które akceptuje dane wejściowe dla przepływu pracy w czasie wykonywania. Przed użyciem tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach.
+W `parameters` sekcji, zdefiniuj wszystkie parametry przepływu pracy, używane przez aplikację logiki w wdrożenia dla akceptowanie danych wejściowych. Zarówno deklaracji parametrów i wartości parametrów są wymagane na wdrożenie. Przed użyciem tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach. 
 
 Poniżej przedstawiono ogólną strukturę dla definicji parametru:  
 
@@ -80,7 +80,7 @@ Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 | allowedValues | Nie | Identyczny `type` | Tablica z wartościami, które może zaakceptować parametru |  
 | metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis aplikacji logiki lub używane przez program Visual Studio lub innych narzędzi danych czasu projektowania |  
 ||||
-  
+
 ## <a name="triggers-and-actions"></a>Wyzwalacze i akcje  
 
 W definicji przepływu pracy `triggers` i `actions` sekcje definiują wywołania, które mają miejsce podczas wykonywania do przepływu pracy. Informacje o składni i więcej informacji na temat tych sekcji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
@@ -88,6 +88,9 @@ W definicji przepływu pracy `triggers` i `actions` sekcje definiują wywołania
 ## <a name="outputs"></a>Dane wyjściowe 
 
 W `outputs` sekcji, zdefiniuj danych przepływu pracy mogą zwracać po zakończeniu uruchamiania. Na przykład aby śledzić stan określonego lub wartość z każdym uruchomieniu, należy określić zwracanych danych wyjściowych przepływu pracy. 
+
+> [!NOTE]
+> Gdy odpowiada na przychodzące żądania z interfejsu API REST usługi, nie używaj `outputs`. Zamiast tego należy użyć `Response` typ akcji. Aby uzyskać więcej informacji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 Poniżej przedstawiono ogólną strukturę dla definicji danych wyjściowych: 
 
@@ -108,9 +111,6 @@ Poniżej przedstawiono ogólną strukturę dla definicji danych wyjściowych:
 ||||| 
 
 Aby uzyskać dane wyjściowe z przepływu pracy, Przejrzyj historię wykonywania aplikacji logiki i szczegółowe informacje w portalu Azure lub użyj [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługi Power BI, dzięki czemu można tworzyć pulpity nawigacyjne. 
-
-> [!NOTE]
-> Gdy odpowiada na przychodzące żądania z interfejsu API REST usługi, nie używaj `outputs`. Zamiast tego należy użyć `Response` typ akcji. Aby uzyskać więcej informacji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 <a name="expressions"></a>
 
@@ -219,7 +219,8 @@ W [wyrażenia](#expressions) i [funkcje](#functions), Operatorzy wykonywania okr
 
 ## <a name="functions"></a>Funkcje
 
-Niektóre wyrażenia pobrać wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania aplikacji logiki. Aby odwołać i pracować z tych wartości w wyrażeniach, można użyć *funkcji*. Na przykład możesz użyć matematyczne funkcji do obliczeń, takich jak [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkcji, która zwraca sumę liczb całkowitych lub elementów przestawnych. 
+Niektóre wyrażenia pobrać wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania aplikacji logiki. Aby odwołać i pracować z tych wartości w wyrażeniach, można użyć [ *funkcje*](../logic-apps/workflow-definition-language-functions-reference.md). Na przykład możesz użyć matematyczne funkcji do obliczeń, takich jak [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkcji, która zwraca sumę liczb całkowitych lub elementów przestawnych. Aby uzyskać szczegółowe informacje dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Lub kontynuować zapoznawanie funkcji i ich ogólnego przeznaczenia.
 
 Poniżej przedstawiono kilka przykład zadań, które można wykonywać za pomocą funkcji: 
 

@@ -80,6 +80,8 @@ items:
         href: unique-keys.md
       - name: Bezserwerowa baza danych
         href: serverless-computing-database.md
+      - name: Omówienie biblioteki BulkExecutor
+        href: bulk-executor-overview.md
       - name: Bezpieczeństwo
         href: database-security.md
         items:
@@ -87,8 +89,6 @@ items:
             href: database-encryption-at-rest.md
           - name: Zabezpieczanie dostępu do danych
             href: secure-access-to-data.md
-      - name: Całkowity koszt posiadania
-        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Przypadki zastosowań
         href: use-cases.md
         items:
@@ -171,6 +171,10 @@ items:
                 href: multi-region-writers.md
           - name: Przewodniki z instrukcjami
             items:
+              - name: BulkExecutor — platforma .NET
+                href: bulk-executor-dot-net.md
+              - name: BulkExecutor — platforma Java
+                href: bulk-executor-java.md
               - name: Zapytanie
                 items:
                   - name: Wykonywanie zapytań w języku SQL
@@ -247,6 +251,10 @@ items:
                 href: sql-api-sdk-node.md
               - name: Python
                 href: sql-api-sdk-python.md
+              - name: BulkExecutor — platforma .NET
+                href: sql-api-sdk-bulk-executor-dot-net.md
+              - name: BulkExecutor — platforma Java
+                href: sql-api-sdk-bulk-executor-java.md
               - name: REST
                 href: /rest/api/cosmos-db/
               - name: Dostawca zasobów REST
@@ -257,8 +265,6 @@ items:
             items:
               - name: Rozszerzenie programu Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-              - name: Dokument dotyczący indeksowania niezależnego od schematu
-                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: SQL — informacje i testowanie
                 href: 'https://aka.ms/cosmos-db-playground'
       - name: Dokumentacja interfejsu API usługi MongoDB
@@ -433,6 +439,8 @@ items:
         href: set-throughput.md
       - name: Obsługa zapory
         href: firewall-support.md
+      - name: Konfigurowanie punktu końcowego usługi sieci wirtualnej
+        href: vnet-service-endpoint.md
       - name: Metryki
         href: use-metrics.md
       - name: Monitorowanie umów SLA
@@ -465,3 +473,5 @@ items:
         href: faq.md
       - name: Wyjaśnienie pojęcia spójności danych na podstawie baseballu
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+      - name: Oficjalne dokumenty
+        href: whitepapers.md

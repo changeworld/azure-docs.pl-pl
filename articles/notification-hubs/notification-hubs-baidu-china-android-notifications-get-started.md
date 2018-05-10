@@ -1,24 +1,24 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Notification Hubs przy użyciu usługi Baidu | Microsoft Docs"
-description: "Korzystając z tego samouczka, dowiesz się, jak za pomocą usługi Azure Notification Hubs wysyłać powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Baidu."
+title: Rozpoczynanie pracy z usługą Azure Notification Hubs przy użyciu usługi Baidu | Microsoft Docs
+description: Korzystając z tego samouczka, dowiesz się, jak za pomocą usługi Azure Notification Hubs wysyłać powiadomienia wypychane do urządzeń z systemem Android przy użyciu usługi Baidu.
 services: notification-hubs
 documentationcenter: android
-author: kpiteira
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 08/29/2017
-ms.author: kapiteir
-ms.openlocfilehash: 91f20a6e0ff6c2dd512879e9ab3c9369dab5d8ff
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Rozpoczynanie pracy z usługą Azure Notification Hubs przy użyciu usługi Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,10 +31,10 @@ Ponieważ usługa Google Play i rozwiązanie FCM (Firebase Cloud Messaging) nie 
 Dla tego samouczka wymagane są następujące elementy:
 
 * Zestaw Android SDK (założono, że jest używany program Android Studio), który można pobrać z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">witryny systemu Android</a>
-* [zestaw Android SDK dla powiadomień push w usłudze Baidu]
+* [Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]
 
 > [!NOTE]
-> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
+> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
 > 
 > 
 
@@ -159,7 +159,7 @@ Zanotuj wartości `DefaultListenSharedAccessSignature` i `DefaultFullSharedAcces
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6.  Pobierz i rozpakuj [zestaw Android SDK dla powiadomień push w usłudze Baidu]. Skopiuj plik `pushservice-x.y.z jar` z folderu libs. Następnie skopiuj pliki `.so` z folderów `src/main/jniLibs` (utwórz nowy folder) aplikacji dla systemu Android.
+6.  Pobierz i rozpakuj [Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]. Skopiuj plik `pushservice-x.y.z jar` z folderu libs. Następnie skopiuj pliki `.so` z folderów `src/main/jniLibs` (utwórz nowy folder) aplikacji dla systemu Android.
 
     ![Azure Notification Hubs — pliki lib w zestawie SDK usługi Baidu](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -531,6 +531,6 @@ Testowe powiadomienie można wysłać przy użyciu karty debugowania w witrynie 
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[zestaw Android SDK dla powiadomień push w usłudze Baidu]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Zestaw SDK systemu Android dla powiadomień wypychanych w usłudze Baidu]: http://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure Portal]: https://portal.azure.com/
 [portalu Baidu]: http://www.baidu.com/

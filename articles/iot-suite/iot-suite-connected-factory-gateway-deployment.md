@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie bramy sieci połączonych fabryki - Azure | Dokumentacja firmy Microsoft"
-description: "Jak wdrożyć bramę Windows lub Linux, aby umożliwić łączność z połączonych fabryki wstępnie skonfigurowane rozwiązanie."
-services: 
+title: Wdrażanie bramy połączone fabryki - Azure | Dokumentacja firmy Microsoft
+description: Jak wdrożyć bramę Windows lub Linux, aby umożliwić łączność z fabryki połączone akcelerator rozwiązań.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 956da99a5d67d7a2225ab3ea64b4e5a9d41ee3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>Wdrażanie brama brzegowa dla rozwiązania połączonych fabryki wstępnie skonfigurowane w systemie Windows lub Linux
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Wdrażanie brama brzegowa dla fabryki połączone akcelerator rozwiązań w systemie Windows lub Linux
 
-Należy dwa składniki oprogramowania, aby wdrożyć bramę brzegową dla *połączonych fabryki* wstępnie skonfigurowane rozwiązanie:
+Należy dwa składniki oprogramowania, aby wdrożyć bramę brzegową dla *połączone fabryki* akcelerator rozwiązań:
 
-- *OPC Proxy* nawiąże połączenie z połączonych fabryki. Serwer Proxy OPC następnie czeka na polecenia i kontroli wiadomości z zintegrowane przeglądarki OPC, która jest uruchamiana w portalu rozwiązania połączonych fabryki.
+- *OPC Proxy* nawiąże połączenie z fabryki połączony. Serwer Proxy OPC następnie czeka na polecenia i kontroli wiadomości z zintegrowane przeglądarki OPC, która jest uruchamiana w portalu rozwiązania połączone fabryki.
 
-- *Wydawcy OPC* łączy się z istniejącymi lokalnymi serwerami OPC UA i przekazuje komunikaty dane telemetryczne z nich do połączonych fabryki. Możesz połączyć urządzenie klasyczne OPC przy użyciu [OPC klasycznego karta OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+- *Wydawcy OPC* łączy się z istniejącymi lokalnymi serwerami OPC UA i przekazuje dane telemetryczne wiadomości z nich do fabryki połączony. Możesz połączyć urządzenie klasyczne OPC przy użyciu [OPC klasycznego karta OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
 Oba te składniki są open source i są dostępne jako źródło w serwisie GitHub i jak kontenery Docker na DockerHub:
 
@@ -37,14 +37,14 @@ Oba te składniki są open source i są dostępne jako źródło w serwisie GitH
 
 Nie trzeba publicznych adresów IP lub otwartych przychodzących portów w zaporze bramy albo składnika. Składniki serwera Proxy OPC i wydawcy OPC należy używać tylko port wychodzący 443.
 
-Kroki opisane w tym artykule opisano sposób wdrażania bramy krawędzi, przy użyciu rozwiązania Docker w systemie Windows lub Linux. Brama umożliwia łączność z połączonych fabryki wstępnie skonfigurowane rozwiązanie. Umożliwia także składniki bez fabryka połączenia.
+Kroki opisane w tym artykule opisano sposób wdrażania bramy krawędzi, przy użyciu rozwiązania Docker w systemie Windows lub Linux. Brama umożliwia łączność akcelerator rozwiązań połączone fabryki. Umożliwia także składniki bez połączenia fabryki.
 
 > [!NOTE]
 > Oba te składniki mogą być używane jako modułów w [Azure IoT krawędzi](https://github.com/Azure/iot-edge).
 
 ## <a name="choose-a-gateway-device"></a>Wybierz urządzenie bramy
 
-Jeśli nie masz jeszcze urządzenie bramy, firma Microsoft zaleca się, że kupić komercyjnych bramy z jednego z ich partnerów. Listę bramy urządzeń zgodnych z rozwiązania połączonych fabryki, odwiedź stronę [katalogu urządzenia Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postępuj zgodnie z instrukcjami, które pochodzą z urządzeniem, aby skonfigurować bramę.
+Jeśli nie masz jeszcze urządzenie bramy, firma Microsoft zaleca się, że kupić komercyjnych bramy z jednego z ich partnerów. Listę bramy urządzeń zgodnych z rozwiązania fabryki połączone, odwiedź stronę [katalogu urządzenia Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postępuj zgodnie z instrukcjami, które pochodzą z urządzeniem, aby skonfigurować bramę.
 
 Alternatywnie użyj poniższych instrukcji, aby ręcznie skonfigurować istniejące urządzenie bramy.
 
@@ -143,33 +143,33 @@ Serwer Proxy OPC zapisuje ciągu połączenia podczas instalacji. W kolejnych ur
 
 ## <a name="enable-your-gateway"></a>Włącz funkcję bramy
 
-Wykonaj poniższe kroki, aby włączyć bramy w połączonych fabryki wstępnie skonfigurowane rozwiązanie:
+Wykonaj poniższe kroki, aby włączyć bramy w połączony fabryki akcelerator rozwiązań:
 
-1. Gdy oba te składniki są uruchomione, przejdź do **połączyć własny serwer UA OPC** w portalu rozwiązania fabryka połączenia. Ta strona jest dostępna tylko dla administratorów w rozwiązaniu. Wprowadź adres URL punktu końcowego wydawcy (opc.tcp://publisher: 62222) i kliknij przycisk **Connect**.
+1. Gdy oba te składniki są uruchomione, przejdź do **połączyć własny serwer UA OPC** w portalu rozwiązania połączone fabryki. Ta strona jest dostępna tylko dla administratorów w rozwiązaniu. Wprowadź adres URL punktu końcowego wydawcy (opc.tcp://publisher: 62222) i kliknij przycisk **Connect**.
 
-1. Ustanawiania relacji zaufania między połączonych fabryki portalu i OPC wydawcy. Gdy pojawi się ostrzeżenie o certyfikacie, kliknij przycisk **Kontynuuj**. Następnie zostanie wyświetlony błąd, że wydawca OPC nie ufa klienta Agent użytkownika sieci Web. Aby rozwiązać ten problem, skopiuj **klienta sieci Web UA** certyfikat od `<SharedFolder>/CertificateStores/rejected/certs` folder `<SharedFolder>/CertificateStores/trusted/certs` folderu w bramie. Nie trzeba ponownie bramę.
+1. Ustanawiania relacji zaufania między połączone fabryki portalu i OPC wydawcy. Gdy pojawi się ostrzeżenie o certyfikacie, kliknij przycisk **Kontynuuj**. Następnie zostanie wyświetlony błąd, że wydawca OPC nie ufa klienta Agent użytkownika sieci Web. Aby rozwiązać ten problem, skopiuj **klienta sieci Web UA** certyfikat od `<SharedFolder>/CertificateStores/rejected/certs` folder `<SharedFolder>/CertificateStores/trusted/certs` folderu w bramie. Nie trzeba ponownie bramę.
 
 Teraz można podłączyć do bramy z chmury, a wszystko będzie gotowe dodać serwery OPC UA do rozwiązania.
 
 ## <a name="add-your-own-opc-ua-servers"></a>Dodaj serwery OPC UA
 
-Aby dodać serwery OPC UA do połączonych fabryki wstępnie skonfigurowane rozwiązanie:
+Aby dodać serwery OPC UA do fabryki połączone akcelerator rozwiązań:
 
 1. Przejdź do **połączyć z serwerem OPC UA** w portalu rozwiązania fabryka połączenia.
 
     1. Uruchom serwer OPC UA, z którym chcesz nawiązać połączenie. Upewnij się, że serwer OPC UA jest osiągalna z OPC wydawcy i Proxy OPC uruchomione w kontenerze (patrz poprzednie komentarze dotyczące rozpoznawania nazw).
     1. Wprowadź adres URL punktu końcowego serwera OPC UA (`opc.tcp://<host>:<port>`) i kliknij przycisk **Connect**.
-    1. Podczas konfigurowania połączenia relacji zaufania między portalem połączonych fabryki (OPC Agent użytkownika klienta) i serwer OPC UA, z którym próbujesz nawiązać połączenie zostanie nawiązane. Na pulpicie nawigacyjnym połączonych fabryki otrzymasz **nie można zweryfikować certyfikatu serwera, o którym chcesz się połączyć** ostrzeżenie. Gdy pojawi się ostrzeżenie o certyfikacie, kliknij przycisk **Kontynuuj**.
-    1. Konfiguracja certyfikatu serwera OPC UA, z którym próbujesz nawiązać połączenie jest trudniejsze do instalacji. Dla komputera opartych na serwerach OPC UA, okno dialogowe ostrzeżenia mogą wystąpić tylko na pulpicie nawigacyjnym, który można potwierdzić. For embedded systems OPC UA serwera w dokumentacji serwera OPC UA do odszukania jak odbywa się to zadanie. Aby wykonać to zadanie, może być konieczne certyfikat klienta OPC UA portalu połączonych fabryki. Administrator może pobrać tego certyfikatu na **połączyć z serwerem OPC UA** strony:
+    1. Podczas konfigurowania połączenia relacji zaufania między portalem fabryki połączony (OPC Agent użytkownika klienta) i serwer OPC UA, z którym próbujesz nawiązać połączenie zostanie nawiązane. Na pulpicie nawigacyjnym połączone fabryki otrzymasz **nie można zweryfikować certyfikatu serwera, o którym chcesz się połączyć** ostrzeżenie. Gdy pojawi się ostrzeżenie o certyfikacie, kliknij przycisk **Kontynuuj**.
+    1. Konfiguracja certyfikatu serwera OPC UA, z którym próbujesz nawiązać połączenie jest trudniejsze do instalacji. Dla komputera opartych na serwerach OPC UA, okno dialogowe ostrzeżenia mogą wystąpić tylko na pulpicie nawigacyjnym, który można potwierdzić. For embedded systems OPC UA serwera w dokumentacji serwera OPC UA do odszukania jak odbywa się to zadanie. Aby wykonać to zadanie, może być konieczne certyfikat klienta OPC UA portal połączone fabryki. Administrator może pobrać tego certyfikatu na **połączyć z serwerem OPC UA** strony:
 
         ![Portal rozwiązania](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. Przeglądanie drzewa OPC UA węzłów serwera OPC UA, kliknij prawym przyciskiem myszy węzły OPC chcesz wysłać do połączonych fabryki wartości, a następnie wybierz **publikowania**.
+1. Przeglądanie drzewa OPC UA węzłów serwera OPC UA, kliknij prawym przyciskiem myszy węzły OPC chcesz wysłać wartości do fabryki połączone, a następnie wybierz **publikowania**.
 
-1. Dane telemetryczne teraz wypływających z urządzeniem bramy. Można wyświetlić dane telemetryczne w **lokalizacje fabryki** widok portalu fabryki połączonych w obszarze **nowa fabryka**.
+1. Dane telemetryczne teraz wypływających z urządzeniem bramy. Można wyświetlić dane telemetryczne w **lokalizacje fabryki** widok portalu fabryki połączone w obszarze **nowa fabryka**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o architekturze połączonych fabryki wstępnie skonfigurowane rozwiązanie, zobacz [połączonych fabryki wstępnie skonfigurowane rozwiązanie wskazówki](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+Aby dowiedzieć się więcej o architekturze połączone fabryki akcelerator rozwiązań, zobacz [wskazówki akceleratora rozwiązań połączone fabryki](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 
 Dowiedz się więcej o [wydawcy OPC implementacji](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

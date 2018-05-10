@@ -12,16 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2018
+ms.date: 5/4/2018
 ms.author: raiye
-ms.openlocfilehash: df5844ff53d8196eb1143913b420d933ba43920f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea7c01075d9f65ed262681c216f5770d19466507
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa Azure
 Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpowiedzi Center (MSRC) stosowany do systemu operacyjnego gościa Azure. Wyszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczą systemu operacyjnego gościa w przypadku korzystania. Aktualizacje zawsze przeniesieniu dla konkretnej [rodziny] [ family-explain] zostały wprowadzone w.
+
+## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18-04 | [4093119] |Zabezpieczenia systemu Windows 10 |5.18 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093108] |Tylko zabezpieczenia systemu Windows |2,73 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093122] |Tylko zabezpieczenia systemu Windows |3.60 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093115] |Tylko zabezpieczenia systemu Windows |4,53 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4092946] |Internet Explorer |2,73, 3,60, 4,53 |10 kwietnia 2018 r. |
+| ReL 18-04 | [4093110] |Flash |3,60, 4,53, 5.18 |10 kwietnia 2018 r. |
+| ND | [4088875] |Zbiorcze informacje z systemem innym niż zabezpieczeniach marca |2,73 |13 marca 2018 r. |
+| ND | [4099950] |Pakiet zbiorczy-security marca wstępny|2,73 |13 marca 2018 r. |
+| ND | [4088877] |Zbiorcze informacje z systemem innym niż zabezpieczeniach marca |3.60 |13 marca 2018 r. |
+| ND | [4088876] |Zbiorcze informacje z systemem innym niż zabezpieczeniach marca |4,53 |13 marca 2018 r. |
 
 ## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -613,6 +627,18 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ND |[3007054] |Pokazuje chronionego numerem PIN drukowania opcja zawsze podczas drukowania dokumentów w ramach aplikacji Sklepu Windows w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
 | ND |[2999802] |Zamiast wierszy przerywana linia ciągła są podane w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
 | ND |[2896881] |Długi czas logowania, jeśli używasz polecenia AddPrinterConnection VBScript mapować drukarki dla użytkowników podczas procesu logowania w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
+
+
+[4093119]: http://support.microsoft.com/kb/4093119
+[4093108]: http://support.microsoft.com/kb/4093108 
+[4093122]: http://support.microsoft.com/kb/4093122
+[4093115]: http://support.microsoft.com/kb/4093115
+[4092946]: http://support.microsoft.com/kb/4092946
+[4093110]: http://support.microsoft.com/kb/4093110
+[4088875]: http://support.microsoft.com/kb/4088875
+[4099950]: http://support.microsoft.com/kb/4099950
+[4088877]: http://support.microsoft.com/kb/4088877
+[4088876]: http://support.microsoft.com/kb/4088876
 
 [4088787]: http://support.microsoft.com/kb/4088787
 [4088776]: http://support.microsoft.com/kb/4088776 

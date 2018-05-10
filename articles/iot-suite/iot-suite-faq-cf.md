@@ -1,13 +1,13 @@
 ---
-title: "Połączone fabryki rozwiązania często zadawane pytania — Azure | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dla fabryki połączonych pakiet IoT"
-services: 
+title: Połączone fabryki rozwiązania często zadawane pytania — Azure | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące akcelerator rozwiązań połączone fabryki
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 12ebd8b8dfa90ab736190e842b35744dbf1c5b96
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Często zadawane pytania dla fabryki połączonych pakiet IoT wstępnie skonfigurowane rozwiązanie
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązań połączone fabryki
 
-Zobacz też ogólne [— często zadawane pytania](iot-suite-faq.md) pakietu IoT.
+Zobacz też ogólne [— często zadawane pytania](iot-suite-faq.md) dla akceleratorów rozwiązania IoT.
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>Gdzie można znaleźć kodu źródłowego dla wstępnie skonfigurowane rozwiązanie?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Gdzie można znaleźć kodu źródłowego dla akcelerator rozwiązań?
 
 Kod źródłowy jest przechowywane w następujących repozytorium GitHub:
 
-* [Fabryka połączonych wstępnie skonfigurowane rozwiązanie](https://github.com/Azure/azure-iot-connected-factory)
+* [Połączone akcelerator rozwiązań fabryki](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>Co to jest OPC UA?
 
@@ -40,7 +40,7 @@ OPC Ujednolicona architektura (UA), wydane w ramach 2008, jest niezależne od pl
 * Technologia
 * Procesy
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Dlaczego Microsoft został wybrany OPC UA dla połączonych fabryki wstępnie skonfigurowane rozwiązanie?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Dlaczego Microsoft został wybrany OPC UA dla fabryki połączone akcelerator rozwiązań?
 
 Microsoft postanowiono OPC UA, ponieważ jest to platforma otwarty, niezastrzeżonych, standard niezależne, branży i sprawdzone. Jest wymagane dla rozwiązań architektura odwołanie Industrie 4.0 (RAMI4.0) zapewniające współdziałanie szeroką gamę wytwarzania i urządzeń. Microsoft widzi żądanie z klientów do tworzenia rozwiązań Industrie 4.0. Obsługa OPC UA pomaga zmniejszyć bariery dla klientów do ich celach i udostępnia natychmiastowe wartość do nich.
 
@@ -74,7 +74,7 @@ Jeśli wdrożono rozwiązanie z www.azureiotsuite.com nie logowania się do masz
 1. Nazwa użytkownika do użycia: `docker`.
 1. Hasło do użycia zależy od wersji, który został użyty do wdrożenia:
     * Wdrożenie za pomocą skryptu build.ps1 przed 1 czerwca 2017 rozwiązań, jest hasło: `Passw0rd`.
-    * Wdrożenie za pomocą skryptu build.ps1 po 1 czerwca 2017 rozwiązania, można znaleźć hasło w `<name of your deployment>.config.user` pliku. Hasło jest zapisywane w **VmAdminPassword** ustawienie. Hasło jest generowane losowo w czasie wdrażania chyba że zostanie określony za pomocą `build.ps1` skryptu parametru`-VmAdminPassword`
+    * Wdrożenie za pomocą skryptu build.ps1 po 1 czerwca 2017 rozwiązania, można znaleźć hasło w `<name of your deployment>.config.user` pliku. Hasło jest zapisywane w **VmAdminPassword** ustawienie. Hasło jest generowane losowo w czasie wdrażania chyba że zostanie określony za pomocą `build.ps1` skryptu parametru `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Jak zatrzymać i uruchomić wszystkie procesy docker w symulacji maszyny Wirtualnej?
 
@@ -146,13 +146,13 @@ Jeśli zostanie wyświetlone żadne dane wysyłane do Centrum IoT, oznacza to, �
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak włączyć mapy interakcyjnej w Moje rozwiązanie fabryka połączenia?
 
-Aby włączyć mapy interakcyjnej w rozwiązaniu połączonych fabryki, musi mieć istniejącego interfejsu API map Bing planu przedsiębiorstwa.
+Aby włączyć mapy interakcyjnej w rozwiązaniu fabryki połączone, musi mieć istniejącego interfejsu API map Bing planu przedsiębiorstwa.
 
-W przypadku wdrażania z [www.azureiotsuite.com](http://www.azureiotsuite.com), proces wdrażania sprawdza ma włączone interfejsu API map Bing Enterprise planu subskrypcji i automatycznie wdraża mapy interakcyjnej do połączonych fabryki. Jeśli nie jest to możliwe, można włączyć mapy interakcyjnej we wdrożeniu w następujący sposób:
+W przypadku wdrażania z [www.azureiotsuite.com](http://www.azureiotsuite.com), proces wdrażania sprawdza ma włączone interfejsu API map Bing Enterprise planu subskrypcji i automatycznie wdraża mapy interakcyjnej do fabryki połączony. Jeśli nie jest to możliwe, można włączyć mapy interakcyjnej we wdrożeniu w następujący sposób:
 
-Podczas wdrażania przy użyciu `build.ps1` skryptu w połączonych fabryki repozytorium GitHub i mieć interfejsu API map Bing planu Enterprise, ustaw zmienną środowiskową `$env:MapApiQueryKey` w oknie kompilacji, aby klucz zapytania planu. Mapy interakcyjnej jest włączana automatycznie.
+Podczas wdrażania przy użyciu `build.ps1` skryptów w witrynie GitHub fabryki połączone repozytorium i ma interfejsu API map Bing planu przedsiębiorstwa, ustaw zmienną środowiskową `$env:MapApiQueryKey` w oknie kompilacji, aby klucz zapytania planu. Mapy interakcyjnej jest włączana automatycznie.
 
-Jeśli nie masz interfejsu API map Bing Enterprise planu wdrażania rozwiązania fabryki połączonych z [www.azureiotsuite.com](http://www.azureiotsuite.com) lub przy użyciu `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing Enterprise planu subskrypcji, zgodnie z objaśnieniem w [sposób utworzenia interfejsu API map Bing dla konta organizacji?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, zgodnie z objaśnieniem w [Uzyskiwanie interfejsu API map Bing dla przedsiębiorstwa QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do portalu Azure i uzyskać dostęp do zasobu usługi aplikacji w danym wdrożeniu połączonych fabryki. Przejdź do **ustawienia aplikacji**, gdzie można znaleźć sekcji **ustawień aplikacji**. Ustaw **MapApiQueryKey** klucza zapytania został uzyskany. Zapisz ustawienia, a następnie przejdź do **omówienie** i uruchom ponownie usługę aplikacji.
+Jeśli nie masz interfejsu API map Bing Enterprise planu wdrażania rozwiązania fabryki połączone z [www.azureiotsuite.com](http://www.azureiotsuite.com) lub przy użyciu `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing Enterprise planu subskrypcji, zgodnie z objaśnieniem w [sposób utworzenia interfejsu API map Bing dla konta organizacji?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, zgodnie z objaśnieniem w [Uzyskiwanie interfejsu API map Bing dla przedsiębiorstwa QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do portalu Azure i uzyskać dostęp do zasobu usługi aplikacji w danym wdrożeniu połączone fabryki. Przejdź do **ustawienia aplikacji**, gdzie można znaleźć sekcji **ustawień aplikacji**. Ustaw **MapApiQueryKey** klucza zapytania został uzyskany. Zapisz ustawienia, a następnie przejdź do **omówienie** i uruchom ponownie usługę aplikacji.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Jak utworzyć interfejsu API map Bing dla konta organizacji
 
@@ -162,7 +162,7 @@ Możesz uzyskać bezpłatne *wewnętrzne transakcje poziom 1 mapy Bing dla przed
 
 ### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Jak uzyskać interfejsu API map Bing dla QueryKey przedsiębiorstwa
 
-Po utworzeniu interfejsu API map Bing planu przedsiębiorstwa, należy dodać mapy Bing dla zasobów przedsiębiorstwa do grupy zasobów rozwiązania fabryki połączonych w portalu Azure.
+Po utworzeniu interfejsu API map Bing planu przedsiębiorstwa, należy dodać mapy Bing dla zasobów przedsiębiorstwa do grupy zasobów rozwiązania fabryki połączone w portalu Azure.
 
 1. W portalu Azure przejdź do grupy zasobów, zawierającą interfejsu API map Bing planu przedsiębiorstwa.
 
@@ -184,9 +184,9 @@ Aby zmienić statyczny obraz wyświetlany we/wy strony głównej pulpitu nawigac
 
 ### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Jak używać urządzeń z systemem innym niż UA OPC z fabryką połączenia?
 
-Do wysyłania danych telemetrycznych z innych niż UA OPC urządzeń podłączonych fabryką:
+Do wysyłania danych telemetrycznych z innych niż UA OPC urządzeń do fabryki połączenia:
 
-1. [Konfigurowanie nowej stacji w topologii połączonych fabryki](iot-suite-connected-factory-configure.md) w `ContosoTopologyDescription.json` pliku.
+1. [Konfigurowanie nowej stacji w topologii połączone fabryki](iot-suite-connected-factory-configure.md) w `ContosoTopologyDescription.json` pliku.
 
 1. Pozyskiwania danych telemetrii w formacie JSON zgodne fabryka połączenia:
 
@@ -204,14 +204,14 @@ Do wysyłania danych telemetrycznych z innych niż UA OPC urządzeń podłączon
     ]
     ```
 
-1. Format `<timestamp>` jest:`2017-12-08T19:24:51.886753Z`
+1. Format `<timestamp>` jest: `2017-12-08T19:24:51.886753Z`
 
-1. Uruchom ponownie fabryki podłączonej usługi aplikacji.
+1. Uruchom ponownie usługę fabryki połączonych aplikacji.
 
 ### <a name="next-steps"></a>Kolejne kroki
 
-Możesz także wypróbować niektóre inne funkcje i możliwości wstępnie skonfigurowanych rozwiązań Pakietu IoT:
+Można również zapoznać się niektóre inne funkcje i możliwości akceleratorów rozwiązania IoT:
 
-* [Omówienie rozwiązania konserwacji predykcyjnej wstępnie](iot-suite-predictive-overview.md)
-* [Fabryka połączonych wstępnie Omówienie rozwiązania](iot-suite-connected-factory-overview.md)
+* [Akceleratora rozwiązania predykcyjne konserwacji — omówienie](iot-suite-predictive-overview.md)
+* [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-suite-connected-factory-overview.md)
 * [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)

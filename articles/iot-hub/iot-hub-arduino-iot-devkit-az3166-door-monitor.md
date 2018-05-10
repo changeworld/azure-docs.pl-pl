@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: ed0718f2d9d5093442001005e43551e7e9749eef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: d25948aeab4170e67133a8e7f538089fca28407d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="door-monitor"></a>Monitor drzwi          
 
@@ -210,7 +210,7 @@ Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https:/
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Znasz jak zestaw deweloperski urządzenie podłączone do pakietu IoT Azure i korzystać z usługi SendGrid do wysyłania wiadomości e-mail. Poniżej znajdują się Sugerowane następne kroki:
+Znasz jak zestaw deweloperski urządzenie podłączone do sieci akcelerator rozwiązań monitorowania zdalnego IoT Azure i korzystać z usługi SendGrid do wysyłania wiadomości e-mail. Poniżej znajdują się Sugerowane następne kroki:
 
-* [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
+* [Omówienie usługi Azure akceleratora rozwiązania IoT monitorowania zdalnego](https://docs.microsoft.com/azure/iot-suite/)
 * [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

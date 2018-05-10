@@ -1,25 +1,23 @@
 ---
-title: "Dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak dodać nowych użytkowników lub usunąć istniejących użytkowników w usłudze Azure Active Directory"
+title: Dodawanie lub usuwanie użytkowników w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak dodać nowych użytkowników lub usunąć istniejących użytkowników w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: f0f18f377f194e78c05e63e9b6cbc31c1b945335
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 3e8b7061e57c1baf222e5f565a5b7efc6b997507
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>Szybki Start: Dodawanie nowych użytkowników do usługi Azure Active Directory
 W tym artykule wyjaśniono, jak usunąć lub dodanie użytkowników w organizacji do dzierżawy usługi Azure Active Directory (Azure AD) z orgnization przy użyciu portalu Azure lub synchronizowanie danych konta użytkownika systemu Windows Server AD lokalnymi. 
@@ -50,7 +48,7 @@ W tym artykule wyjaśniono, jak usunąć lub dodanie użytkowników w organizacj
 * [Dodaj gości z innego katalogu](active-directory-b2b-what-is-azure-ad-b2b.md) 
 * [Przypisanie użytkownika do roli w usługi Azure AD](active-directory-users-assign-role-azure-portal.md)
 * [Zarządzanie profilami użytkowników](active-directory-users-profile-azure-portal.md)
-* [Przywracanie usuniętych użytkowników](active-directory-users-restore.md)
+* [Przywracanie usuniętego użytkownika](active-directory-users-restore.md)
 
 
 

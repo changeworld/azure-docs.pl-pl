@@ -8,15 +8,15 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: rajanaki
-ms.openlocfilehash: 45f2e2927f699769bb385038c04d4dd23e075a9a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d9b653e4766746d2142a7e1040d6d60ec2aacc44
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności rozszerzenia w replikacji Azure do platformy Azure
 
-Usługa Azure Site Recovery ma miesięczne okresach zlecenia, gdzie są dodawane ulepszenia istniejących funkcji lub nowych i znanych ewentualnych problemów. Oznaczałoby to, aby utrzymać bieżącego z usługą, należy zaplanować wdrożenie tych poprawek w okresach miesięcznych. Aby uniknąć head over skojarzone z uaktualnienia, użytkowników można zamiast tego wybrać opcję odzyskiwania lokacji w celu zarządzania aktualizacjami składników. Jak wyjaśniono w [odwołania architektura](azure-to-azure-architecture.md) podczas odzyskiwania systemu Azure do platformy Azure, usługi mobilności są instalowane na wszystkich maszynach wirtualnych platformy Azure dla których replikacja jest włączona, podczas replikacji maszyn wirtualnych z jednego systemu Azure region na inny. Ten dokument zawiera szczegóły poniżej:
+Usługa Azure Site Recovery ma miesięczne okresach zlecenia, gdzie są dodawane ulepszenia istniejących funkcji lub nowych i znanych ewentualnych problemów. Oznacza to, czy chcesz zachować bieżące z usługą, należy zaplanować wdrożenie tych poprawek, co miesiąc. Aby uniknąć head over skojarzone z uaktualnienia, użytkowników można zamiast tego wybrać opcję odzyskiwania lokacji w celu zarządzania aktualizacjami składników. Jak wyjaśniono w [odwołania architektura](azure-to-azure-architecture.md) podczas odzyskiwania systemu Azure do platformy Azure, usługi mobilności są instalowane na wszystkich maszynach wirtualnych platformy Azure dla których replikacja jest włączona, podczas replikacji maszyn wirtualnych z jednego systemu Azure region na inny. Po włączeniu automatycznej aktualizacji rozszerzenia usługi mobilności aktualizowany przy każdej nowej wersji. Ten dokument zawiera szczegóły poniżej:
 
 - Jak działa automatyczna aktualizacja?
 - Włącz Aktualizacje automatyczne
@@ -25,6 +25,9 @@ Usługa Azure Site Recovery ma miesięczne okresach zlecenia, gdzie są dodawane
 ## <a name="how-does-automatic-update-work"></a>Jak działa automatyczna aktualizacja
 
 Po zezwolisz odzyskiwania lokacji w celu zarządzania aktualizacjami globalny element runbook (która jest używana przez usługi Azure) jest wdrażane za pomocą konta automatyzacji, który jest tworzony w tej samej subskrypcji co magazyn. Jedno konto automatyzacji jest używany dla określonych magazynu. Element runbook sprawdza dla każdej maszyny Wirtualnej w magazynie, dla którego włączone jest automatyczne aktualizacje i inicjuje uaktualnienie rozszerzenia usługi mobilności, jeśli dostępna jest nowsza wersja. Domyślne harmonogramy recurrs runbook codziennie o 00:00:00 zgodnie ze strefą czasową geograficznie zreplikowanej maszyny wirtualnej. Harmonogram może także modyfikować za pomocą konta automatyzacji przez użytkownika, jeśli to konieczne. 
+
+> [!NOTE]
+> Włączenie funkcji Aktualizacje automatyczne nie wymaga ponownego uruchomienia maszynach wirtualnych platformy Azure i nie ma wpływu na replikacji w toku.
 
 ## <a name="enable-automatic-updates"></a>Włącz Aktualizacje automatyczne
 

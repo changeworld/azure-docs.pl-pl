@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie topologii połączonych fabryki | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie topologii połączonych fabryki wstępnie skonfigurowane rozwiązanie."
-services: 
+title: Konfigurowanie topologii połączone fabryki | Dokumentacja firmy Microsoft
+description: Jak skonfigurować topologię akcelerator rozwiązań fabryka połączenia.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 4230914c6fb35201a8c162e2e7ecb31262d2bdca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="configure-the-connected-factory-preconfigured-solution"></a>Konfigurowanie rozwiązania połączonych fabryki wstępnie
+# <a name="configure-the-connected-factory-solution-accelerator"></a>Skonfiguruj akcelerator rozwiązań połączone fabryki
 
-Rozwiązanie połączonych fabryki wstępnie przedstawia symulowane pulpitu nawigacyjnego dla fikcyjnej firmy Contoso. Ta firma dysponuje globalnie fabryki w wielu lokalizacjach globalnego.
+Akcelerator rozwiązań połączone fabryki pokazuje symulowane pulpitu nawigacyjnego dla fikcyjnej firmy Contoso. Ta firma dysponuje globalnie fabryki w wielu lokalizacjach globalnego.
 
-W tym artykule opisano, jak skonfigurować topologię rozwiązania połączonych fabryki używa Contoso jako przykład.
+W tym artykule używa Contoso jako przykład do opisano, jak skonfigurować topologię rozwiązania fabryka połączenia.
 
 ## <a name="simulated-factories-configuration"></a>Symulowane fabryki konfiguracji
 
@@ -34,7 +34,7 @@ Każdej fabryki Contoso ma produkcji wierszy, które składają się z trzech st
 * Test stacji
 * Pakowania
 
-Te serwery OPC Agent użytkownika mają OPC UA węzłów i [wydawcy OPC](https://github.com/Azure/iot-edge-opc-publisher) wysyła wartości te węzły do połączonych fabryki. Obejmuje to:
+Te serwery OPC Agent użytkownika mają OPC UA węzłów i [wydawcy OPC](https://github.com/Azure/iot-edge-opc-publisher) wysyła wartości te węzły do fabryki połączony. Obejmuje to:
 
 * Bieżący stan operacyjny takie jak bieżące zużycie energii.
 * Utworzone produkcji informacje, takie jak liczba produktów.
@@ -46,7 +46,7 @@ Aby przejść do szczegółów w topologii fabryki Contoso z widoku globalnego d
 * Agregacja OEE i KPI dane z poziomu stacji na poziomie globalnym.
 * Wizualizacja alertów i akcje do wykonania, jeśli określone progi osiągnięcia wartości.
 
-## <a name="connected-factory-topology"></a>Topologia połączonych fabryki
+## <a name="connected-factory-topology"></a>Połączone topologii fabryki
 
 Topologia fabryki, linii produkcyjnych i stacji jest hierarchiczne:
 
@@ -66,7 +66,7 @@ Każdy węzeł w topologii ma wspólny zbiór właściwości, które definiują:
 
 ## <a name="topology-configuration-file"></a>Plik konfiguracji topologii
 
-Aby skonfigurować właściwości opisanych w poprzedniej sekcji, rozwiązanie połączonych fabryki używa pliku konfiguracji o nazwie [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Aby skonfigurować właściwości opisanych w poprzedniej sekcji, rozwiązanie połączone fabryki używa pliku konfiguracji o nazwie [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
 Możesz znaleźć tego pliku kodu źródłowego rozwiązania w `WebApp/Contoso/Topology` folderu.
 
@@ -114,13 +114,13 @@ Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<p
 
   Unikatowy identyfikator węzła topologii.
 
-`<factory_configuration>`ma właściwość:
+`<factory_configuration>` ma właściwość:
 
 * **Lokalizacja** (typ `<location_definition>`)
 
   Określa lokalizację fabryka.
 
-`<station_configuration>`ma właściwości:
+`<station_configuration>` ma właściwości:
 
 * **OpcUri** (wpisz ciąg)
 
@@ -129,7 +129,7 @@ Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<p
 
 * **OpcNodes**, tablicę OPC UA węzły, które są (typ `<opc_node_description>`)
 
-`<location_definition>`ma właściwości:
+`<location_definition>` ma właściwości:
 
 * **Miasto** (wpisz ciąg)
 
@@ -147,7 +147,7 @@ Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<p
 
   Długość geograficzna lokalizacji
 
-`<performance_definition>`ma właściwości:
+`<performance_definition>` ma właściwości:
 
 * **Co najmniej** (typ double)
 
@@ -193,7 +193,7 @@ Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<p
   * **CallOpcMethod**: węzeł informacji i parametry OPC UA metody do wywołania w formacie "ID. węzła węzła nadrzędnego, ID. węzła metody do wywołania, identyfikator URI serwera OPC UA."
   * **OpenWebPage**: adres URL do wyświetlenia w oknie przeglądarki.
 
-`<opc_node_description>`zawiera informacje o węzłach OPC UA w stacji (OPC UA server). Węzły reprezentują żadnych istniejących węzłów OPC UA, które są używane jako magazyn logiki obliczeń połączonych fabryki również są prawidłowe. Ma następujące właściwości:
+`<opc_node_description>` zawiera informacje o węzłach OPC UA w stacji (OPC UA server). Węzły reprezentują żadnych istniejących węzłów OPC UA, które są używane jako magazyn logiki obliczeń połączone fabryki również są prawidłowe. Ma następujące właściwości:
 
 * **ID. węzła** (wpisz ciąg)
 
@@ -259,7 +259,7 @@ Wspólne właściwości `<global_configuration>`, `<factory_configuration>`, `<p
 
   Definiuje zestaw akcji, które można podjąć w odpowiedzi na alert maksymalna.
 
-Na poziomie stacji, zostanie również wyświetlony **symulacji** obiektów. Te obiekty służą tylko do konfigurowania symulacji fabryki połączonych i nie należy używać do konfigurowania topologii prawdziwe.
+Na poziomie stacji, zostanie również wyświetlony **symulacji** obiektów. Te obiekty służą tylko do konfigurowania symulacji połączone fabryki i nie należy używać do konfigurowania topologii prawdziwe.
 
 ## <a name="how-the-configuration-data-is-used-at-runtime"></a>Jak dane konfiguracji są używane w czasie wykonywania
 
@@ -282,12 +282,12 @@ Aplikacja sieci Web przechowuje słownika danych wewnętrznych, zawierającego i
 
 ### <a name="oeekpi-computation"></a>Obliczenia OEE/wskaźnika KPI
 
-Rysunki OEE/KPI symulacji połączonych fabryki mają zdefiniowane przez:
+Rysunki OEE/KPI symulacji połączone fabryki mają zdefiniowane przez:
 
 * OPC UA węzła wartości, które mają zostać uwzględnione w obliczeniach.
 * Jak wartość jest obliczana na podstawie wartości telemetrii.
 
-Fabryka połączonych używa formuły OEE opublikowanych przez http://oeeindustrystandard.oeefoundation.org.
+Fabryka połączonych używa formuły OEE publikowanych przez http://oeeindustrystandard.oeefoundation.org.
 
 OPC UA obiektów węzła na stacjach Włącz znakowanie do użycia w obliczeniach OEE/kluczowego wskaźnika wydajności. **Istotność** właściwość wskazuje, dla których rysunek OEE/KPI wartość węzła OPC UA powinny być używane. **OpCode** właściwość definiuje sposób wartość jest uwzględniona w obliczeniach.
 
@@ -302,7 +302,7 @@ Fabryka połączenia obsługuje mechanizm proste minimum i maksimum oparte na wa
 
 ## <a name="correlating-to-telemetry-data"></a>Dopasowywanie do danych telemetrii
 
-Dla niektórych operacji, takich jak wizualizacja ostatnią wartość lub tworzenie zapytań szczegółowe informacje o czasie serii aplikacji sieci Web wymaga schematu adresowania danych telemetrycznych pozyskiwane. Telemetrii wysyłane do połączonych fabryki musi być przechowywany w strukturach danych wewnętrznych. Dwie właściwości włączenie tych operacji są na poziomie węzła OPC UA i stacji (serwer OPC UA):
+Dla niektórych operacji, takich jak wizualizacja ostatnią wartość lub tworzenie zapytań szczegółowe informacje o czasie serii aplikacji sieci Web wymaga schematu adresowania danych telemetrycznych pozyskiwane. Telemetrii wysyłane do fabryki połączony musi być przechowywany w strukturach danych wewnętrznych. Dwie właściwości włączenie tych operacji są na poziomie węzła OPC UA i stacji (serwer OPC UA):
 
 * **OpcUri**
 
@@ -312,13 +312,13 @@ Dla niektórych operacji, takich jak wizualizacja ostatnią wartość lub tworze
 
   Określa wartość węzłów na serwerze OPC UA. Format właściwości musi być określone w specyfikacji OPC UA. W komunikatach pozyskiwane, ta właściwość jest wysyłany jako **ID. węzła**.
 
-Sprawdź [to](https://github.com/Azure/iot-edge-opc-publisher) GitHub strony, aby uzyskać więcej informacji na temat sposobu dane telemetryczne pozyskanych jest fabryką połączonych za pomocą wydawcy OPC.
+Sprawdź [to](https://github.com/Azure/iot-edge-opc-publisher) stronie GitHub uzyskać więcej informacji na temat sposobu dane telemetryczne pozyskanych jest fabryką połączone za pomocą wydawcy OPC.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Przykład: w jaki sposób jest obliczany KPI1
 
 Konfiguracja w `ContosoTopologyDescription.json` plików kontroluje sposób obliczania wartości OEE/kluczowego wskaźnika wydajności. W poniższym przykładzie pokazano, jak właściwości w tym pliku formantu obliczenia KPI1.
 
-W połączony fabryki używanych do mierzenia liczby pomyślnie KPI1 wytwarzane produktów w ciągu ostatniej godziny. Każda stacja (OPC UA serwera) w symulacji połączonych fabryki zawiera węzeł OPC UA (`NodeId: "ns=2;i=385"`), która zawiera dane telemetryczne do obliczenia tego wskaźnika KPI.
+W KPI1 fabryka połączenia służy do mierzenia liczby produkty pomyślnie przetworzone w ciągu ostatniej godziny. Każda stacja (OPC UA serwera) w symulacji połączone fabryki zawiera węzeł OPC UA (`NodeId: "ns=2;i=385"`), która zawiera dane telemetryczne do obliczenia tego wskaźnika KPI.
 
 Konfiguracja dla tego węzła OPC UA wygląda następujący fragment kodu:
 
@@ -339,10 +339,10 @@ Ta konfiguracja umożliwia wyszukiwanie wartości telemetrii tego węzła przy u
 * Średnią wszystkich wartości.
 * Sumę wszystkich wartości dla wszystkich unikatowych **OpcUri** (**ApplicationUri**), **ID. węzła** pary w danym timespan.
 
-Jedną z cech **NumberOfManufactureredProducts** wartość węzła jest fakt, że tylko zwiększa. Aby obliczyć liczbę produktów wytworzonych w timespan, połączone używa fabryki **OpCode** **SubMaxMin**. Obliczenie pobiera wartość minimalna na początku zakres czasu i maksymalną wartość na koniec timespan.
+Jedną z cech **NumberOfManufactureredProducts** wartość węzła jest fakt, że tylko zwiększa. Aby obliczyć liczbę produktów wytworzonych w zakres czasu, korzysta z połączenia fabryki **OpCode** **SubMaxMin**. Obliczenie pobiera wartość minimalna na początku zakres czasu i maksymalną wartość na koniec timespan.
 
 **OpCode** w konfiguracji konfiguruje logiki obliczeń do obliczania wyniku różnicy maksymalne i minimalne wartości. Wyniki te są następnie zebranych elementów bottom do poziomu głównego (globalne) i wyświetlane na pulpicie nawigacyjnym.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-A sugerowane, następnym krokiem jest, aby dowiedzieć się, jak [wdrożyć bramę Windows lub Linux dla połączonych fabryki wstępnie skonfigurowane rozwiązanie](iot-suite-connected-factory-gateway-deployment.md).
+A sugerowane, następnym krokiem jest, aby dowiedzieć się, jak [wdrożyć bramę Windows lub Linux dla akcelerator rozwiązań połączone fabryki](iot-suite-connected-factory-gateway-deployment.md).

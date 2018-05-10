@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: b622cffad66dc5d09df2d737bf2c1d30543a4252
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Przekazywanie danych do usługi Azure Search przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
@@ -60,9 +60,9 @@ Poszczególne obiekty JSON w tablicy „wartość” reprezentują dokumenty, kt
 Po zebraniu wartości pól wymaganych dla akcji indeksu można przystąpić do konstruowania rzeczywistego żądania HTTP i treści żądania JSON w celu zaimportowania danych.
 
 #### <a name="request-and-request-headers"></a>Żądanie i nagłówki żądania
-Zawartość adresu URL musi obejmować nazwę usługi, nazwę indeksu (w tym przypadku „hotels”) oraz odpowiednią wersję interfejsu API (w momencie publikowania tego dokumentu aktualna wersja interfejsu API to `2016-09-01`). Musisz zdefiniować nagłówki żądań `Content-Type` i `api-key`. W przypadku drugiego nagłówka użyj jednego z kluczy administratora usługi.
+Zawartość adresu URL musi obejmować nazwę usługi, nazwę indeksu (w tym przypadku „hotels”) oraz odpowiednią wersję interfejsu API (w momencie publikowania tego dokumentu aktualna wersja interfejsu API to `2017-11-11`). Musisz zdefiniować nagłówki żądań `Content-Type` i `api-key`. W przypadku drugiego nagłówka użyj jednego z kluczy administratora usługi.
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

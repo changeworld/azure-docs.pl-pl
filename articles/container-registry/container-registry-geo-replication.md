@@ -6,23 +6,17 @@ author: stevelas
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
-ms.date: 10/24/2017
+ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 6b82f49d2bf4ed321f5e847d11780535e01531f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
-Wybierz firmy chcące obecność lokalnych lub gorących kopii zapasowej do uruchamiania usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem umieszczenie rejestru kontenera w każdym regionie, w którym są uruchamiane obrazy zezwala na operacje Zamknij sieci, umożliwiające szybkie, transfer warstwy niezawodnej obrazu.
-
-Replikacja geograficzna umożliwia rejestru kontenera platformy Azure do działania jako pojedynczy rejestru, obsługę wielu regionach z wieloma serwerami głównymi regionalnych rejestrów.
-
-> [!IMPORTANT]
-> Funkcja replikacji geograficznej usługi Azure Container Registry jest aktualnie dostępna w **wersji zapoznawczej**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
->
+Wybierz firmy chcące obecność lokalnych lub gorących kopii zapasowej do uruchamiania usług w wielu regionach platformy Azure. Najlepszym rozwiązaniem umieszczenie rejestru kontenera w każdym regionie, w którym są uruchamiane obrazy zezwala na operacje Zamknij sieci, umożliwiające szybkie, transfer warstwy niezawodnej obrazu. Replikacja geograficzna umożliwia rejestru kontenera platformy Azure do działania jako pojedynczy rejestru, obsługę wielu regionach z wieloma serwerami głównymi regionalnych rejestrów.
 
 Rejestr replikacją geograficzną zapewnia następujące korzyści:
 

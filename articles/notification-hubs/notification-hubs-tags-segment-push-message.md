@@ -3,22 +3,22 @@ title: Routing i wyrażeń tagów
 description: W tym temacie wyjaśniono wyrażeń routingu i tag do usługi Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-and-tag-expressions"></a>Wyrażenia routingu i tagów
 ## <a name="overview"></a>Przegląd
@@ -33,7 +33,7 @@ Aplikacja wewnętrznej bazy danych można wybrać rejestracji do miejsca docelow
 3. **Tag wyrażenie**: powiadomienie wszystkich rejestracji, w których zestaw tagi pasują podanego wyrażenia.
 
 ## <a name="tags"></a>Tagi
-Znacznik może być dowolny ciąg, maksymalnie 120 znaków, alfanumerycznego i następujące znaki inne niż alfanumeryczne: "_", "@", "#", ".",":", "-". W poniższym przykładzie przedstawiono aplikację, z którego może otrzymywać wyskakujące powiadomienia o muzyka określonych grup. W tym scenariuszu w prosty sposób powiadomienia trasy jest etykieta rejestracji przy użyciu tagów reprezentujących różne pasma, tak jak na poniższej ilustracji.
+Znacznik może być dowolny ciąg, maksymalnie 120 znaków, alfanumerycznego i następujące znaki inne niż alfanumeryczne: "_", "@", "#", ".",":", "-". W poniższym przykładzie przedstawiono aplikację, z którego może otrzymywać wyskakujące powiadomienia o muzyka określonych grup. W tym scenariuszu w prosty sposób powiadomienia trasy jest etykieta rejestracji przy użyciu tagów reprezentujących różne pasma, tak jak na poniższej ilustracji:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -73,7 +73,7 @@ Innym sposobem użycia znaczników jest zidentyfikować wszystkie urządzenia ok
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-Na tej ilustracji uid:Alice oznakowane wiadomość osiągnie wszystkich uid:Alice oznakowanych rejestracji; w związku z tym wszystkie urządzenia Alicji.
+Na tej ilustracji komunikat oznakowane uid: Alicja osiągnie wszystkich uid:Alice oznakowanych rejestracji; w związku z tym wszystkie urządzenia Alicji.
 
 ## <a name="tag-expressions"></a>Wyrażeń tagów
 Istnieją przypadki, w których powiadomienie ma docelowy zestaw rejestracji, który jest identyfikowany nie przez jeden tag, ale przez wyrażenie logiczne w tagach.

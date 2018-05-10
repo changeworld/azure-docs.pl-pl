@@ -1,12 +1,12 @@
 ---
-title: "Zapewnij Pi malina do monitorowania zdalnego za pomocą C - Azure | Dokumentacja firmy Microsoft"
-description: "Opisano sposób podłączania urządzeń Pi malina do wstępnie pakiet IoT Azure zdalnego monitorowania rozwiązania przy użyciu aplikacji napisanych w C."
+title: Zapewnij Pi malina do monitorowania zdalnego za pomocą C - Azure | Dokumentacja firmy Microsoft
+description: Opisano sposób podłączania urządzeń Pi malina do akcelerator rozwiązań monitorowania zdalnego przy użyciu aplikacji napisanych w C.
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: e3fb95bc5084bb633541f70a5e68cc8d6af83298
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 79a97dda31308cdd0ffeb1196a8a11e0f431803e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Podłącz urządzenie Pi malina do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Podłącz urządzenie Pi malina do zdalnego akcelerator rozwiązań monitorowania (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ten samouczek pokazuje, jak nawiązać zdalnego wstępnie skonfigurowane rozwiązanie monitorowania urządzenia fizycznego. Podobnie jak w przypadku najbardziej osadzonych aplikacji na urządzeniach ograniczone, kodu klienta dla aplikacji urządzeń malina Pi jest napisany w C. W tym samouczku tworzenia aplikacji na Pi malina systemem Raspbian systemu operacyjnego.
+Ten samouczek pokazuje, jak nawiązać zdalnego akcelerator rozwiązań monitorowania urządzenia fizycznego. Podobnie jak w przypadku najbardziej osadzonych aplikacji na urządzeniach ograniczone, kodu klienta dla aplikacji urządzeń malina Pi jest napisany w C. W tym samouczku tworzenia aplikacji na Pi malina systemem Raspbian systemu operacyjnego.
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
@@ -49,7 +49,7 @@ Należy klient SSH na komputerze pulpitu umożliwia zdalny dostęp do wiersza po
 
 W tym artykule przyjęto założenie, zainstalowano najnowszą wersję [OS Raspbian na Twoje Pi malina](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-Poniższe kroki pokazują, jak przygotować Twojej Pi malina do tworzenia aplikacji C, która łączy się wstępnie skonfigurowane rozwiązanie:
+Poniższe kroki pokazują, jak przygotować Twojej Pi malina do tworzenia aplikacji C, która łączy się akcelerator rozwiązań:
 
 1. Nawiązać połączenie przy użyciu Pi malina **ssh**. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [witryny sieci Web Pi malina](https://www.raspberrypi.org/).
 

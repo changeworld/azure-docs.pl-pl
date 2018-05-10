@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ce4497a8bebf9078363509c1f962728ab4189f8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu rejestracji urządzeń usługi Azure Active Directory
 Jeśli wymagane jest użytkownikom Dołącz do miejsca pracy swoje urządzenia osobiste do usługi rejestracji urządzeń usługi Azure Active Directory (Azure AD), urządzeń może być oznaczony znane w organizacji. Poniżej przedstawiono krok po kroku dotyczące włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2.
@@ -86,7 +86,7 @@ Wykonaj kroki opisane na liście kontrolnej, aby włączyć i skonfigurować us�
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Część 3: Zapisywanie zwrotne urządzeń Włącz w usłudze Azure AD
 | Zadanie | Informacje ogólne |
 | --- | --- |
-| Zakończenie części "Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect." Po zakończeniu pracy, wróć do tego przewodnika. |[Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
+| Zakończenie części "Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect." Po zakończeniu pracy, wróć do tego przewodnika. |[Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](./connect/active-directory-aadconnect-feature-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcjonalnie] Część 4: Włączanie uwierzytelniania wieloskładnikowego
 Zdecydowanie zalecane jest skonfigurowanie jednego z kilku opcji uwierzytelnianie wieloskładnikowe. Jeśli chcesz wymagać uwierzytelniania wieloskładnikowego, zobacz [wybierz rozwiązanie bezpieczeństwa uwierzytelniania wieloskładnikowego](authentication/concept-mfa-whichversion.md). Zawiera opis każdego rozwiązania i łączy ułatwiają konfigurowanie rozwiązania wybranych przez użytkownika.

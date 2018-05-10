@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ec08d617b461240062190ec7fdb919f051675798
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c02835e8712c79ea540d7560da111f54abbeed23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Rejestrowanie urządzenia w centrum IoT przy użyciu klienta usługi Azure IoT Hub Device Provisioning (.NET)
 
@@ -49,7 +49,7 @@ Ten krok obejmuje dodawanie unikatowych artefaktów zabezpieczeń urządzenia do
 
 - W przypadku urządzeń opartych na standardzie X.509:
     - [Certyfikat X.509 wystawiony dla urządzenia](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) w postaci pliku *pem* lub *cer*. W przypadku rejestracji indywidualnej należy użyć *certyfikatu liścia* dla systemu X.509, natomiast w przypadku grup rejestracji należy użyć *certyfikatu głównego* lub odpowiedniego *certyfikatu osoby podpisującej*.
-    - *Identyfikator rejestracji* używany do jednoznacznego identyfikowania urządzenia w zakresie/przestrzeni nazw. Może, ale nie musi być taki sam jak identyfikator urządzenia. Identyfikator jest wymagany dla każdego urządzenia. W przypadku urządzeń opartych na standardzie X.509 identyfikator rejestracji jest pochodną nazwy pospolitej certyfikatu. Aby uzyskać więcej informacji na temat tych wymagań, zobacz [Pojęcia dotyczące urządzeń](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device).
+    - *Identyfikator rejestracji* używany do jednoznacznego identyfikowania urządzenia w zakresie/przestrzeni nazw. Może, ale nie musi być taki sam jak identyfikator urządzenia. Identyfikator jest wymagany dla każdego urządzenia. W przypadku urządzeń opartych na standardzie X.509 identyfikator rejestracji jest pochodną nazwy pospolitej certyfikatu. Aby uzyskać więcej informacji na temat tych wymagań, zobacz [Pojęcia dotyczące urządzeń](https://docs.microsoft.com/azure/iot-dps/concepts-device).
 
 Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
 

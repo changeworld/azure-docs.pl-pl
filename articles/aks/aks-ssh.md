@@ -1,6 +1,6 @@
 ---
-title: SSH w węzłach klastra usługi kontenera platformy Azure (AKS)
-description: Utwórz połączenie SSH z klastrem usługi kontenera platformy Azure (AKS) węzły
+title: SSH w węzłach klastra usługi Kubernetes Azure (AKS)
+description: Utwórz połączenie SSH z klastrem usługi Kubernetes Azure (AKS) węzły
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>SSH w węzłach klastra usługi kontenera platformy Azure (AKS)
+# <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH w węzłach klastra usługi Kubernetes Azure (AKS)
 
-Czasami może być konieczne dostępu węzła usługi kontenera platformy Azure (AKS) konserwacji, zbierania dzienników lub inne operacje dotyczące rozwiązywania problemów. Azure usługi kontenera (AKS) węzły nie są widoczne w Internecie. Wykonaj kroki szczegółowo opisane w tym dokumencie, aby utworzyć połączenie SSH za pomocą węzła AKS.
+Czasami może być konieczne dostępu węzła usługi Kubernetes Azure (AKS) konserwacji, zbierania dzienników lub inne operacje dotyczące rozwiązywania problemów. Azure Service Kubernetes (AKS) węzły nie są widoczne w Internecie. Wykonaj kroki szczegółowo opisane w tym dokumencie, aby utworzyć połączenie SSH za pomocą węzła AKS.
 
 ## <a name="get-aks-node-address"></a>Pobierz adres węzła AKS
 

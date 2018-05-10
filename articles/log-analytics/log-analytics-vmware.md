@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 98969cf2f6604843bc1502990222264e7acc363b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware monitorowania (wersja zapoznawcza) rozwiązania analizy dzienników
 
@@ -37,7 +37,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 * Dodaj rozwiązanie monitorowania VMware do subskrypcji przy użyciu procesu opisanego w [Dodaj rozwiązanie do zarządzania](log-analytics-add-solutions.md#add-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Hosty VMware ESXi obsługiwane
-vSphere ESXi 5.5 hosta i 6.0
+vSphere hosta ESXi 5.5, 6.0 i 6.5
 
 #### <a name="prepare-a-linux-server"></a>Przygotuj serwer systemu Linux
 Tworzenie maszyny Wirtualnej, aby otrzymywać wszystkie dane syslog hostach ESXi systemem operacyjnym Linux. [Agenta systemu Linux OMS](log-analytics-linux-agents.md) jest punktem kolekcji dla wszystkich danych z serwera syslog hosta ESXi. Wielu hostach ESXi służy do przekazywania dzienników z jednym serwerem systemu Linux, jak w poniższym przykładzie.  
@@ -45,7 +45,7 @@ Tworzenie maszyny Wirtualnej, aby otrzymywać wszystkie dane syslog hostach ESXi
    ![Przepływ usługi SYSLOG](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Konfigurowanie zbierania syslog
-1. Skonfiguruj funkcję przesyłania syslog VSphere. Aby uzyskać szczegółowe informacje ułatwiające konfigurowanie przekazywania syslog, zobacz [Konfigurowanie syslog na ESXi 5.x i 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Przejdź do **Konfiguracja hosta ESXi** > **oprogramowania** > **Zaawansowane ustawienia** > **Syslog**.
+1. Skonfiguruj funkcję przesyłania syslog VSphere. Aby uzyskać szczegółowe informacje ułatwiające konfigurowanie przekazywania syslog, zobacz [Konfigurowanie syslog na ESXi 5.0 lub nowszym (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Przejdź do **Konfiguracja hosta ESXi** > **oprogramowania** > **Zaawansowane ustawienia** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. W *Syslog.global.logHost* pól, Dodaj serwer z systemem Linux i numer portu *1514*. Na przykład `tcp://hostname:1514` lub `tcp://123.456.789.101:1514`
 3. Otwórz zaporę hosta ESXi dla syslog. **Konfiguracja hosta ESXi** > **oprogramowania** > **profil zabezpieczeń** > **zapory** , a następnie otwórz **Właściwości**.  

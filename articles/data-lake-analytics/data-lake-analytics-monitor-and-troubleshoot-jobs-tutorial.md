@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie problemów z zadania usługi Azure Data Lake Analytics przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy z zadań usługi Data Lake Analytics przy użyciu portalu Azure. "
+title: Monitorowanie zadań w usłudze Azure Data Lake Analytics przy użyciu portalu Azure | Dokumentacja firmy Microsoft
+description: 'Dowiedz się, jak rozwiązywać problemy z zadań usługi Data Lake Analytics przy użyciu portalu Azure. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,42 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14b1f4ec9dff78e4b5d2480755a4b1f2579ec135
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Rozwiązywanie problemów z zadań usługi Azure Data Lake Analytics przy użyciu portalu Azure
-Dowiedz się, jak rozwiązywanie problemów z zadań usługi Data Lake Analytics za pomocą portalu Azure.
-
-W tym samouczku zostanie Konfigurowanie Brak problem pliku źródłowego i użyj portalu Azure, aby rozwiązać problem.
-
-## <a name="submit-a-data-lake-analytics-job"></a>Przesyłanie zadania usługi Data Lake Analytics
-
-Prześlij zadanie U-SQL:
-
-```
-@searchlog =
-   EXTRACT UserId          int,
-           Start           DateTime,
-           Region          string,
-           Query           string,
-           Duration        int?,
-           Urls            string,
-           ClickedUrls     string
-   FROM "/Samples/Data/SearchLog.tsv1"
-   USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-   TO "/output/SearchLog-from-adls.csv"
-   USING Outputters.Csv();
-```
-    
-Plik źródłowy zdefiniowane w skrypcie jest **/Samples/Data/SearchLog.tsv1**, gdzie powinien być **/Samples/Data/SearchLog.tsv**.
-
-
-## <a name="troubleshoot-the-job"></a>Rozwiązywanie problemów z zadania
+# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Monitorowanie zadań w usłudze Azure Data Lake Analytics przy użyciu portalu Azure
 
 **Aby wyświetlić wszystkie zadania**
 
@@ -81,5 +52,4 @@ Plik źródłowy zdefiniowane w skrypcie jest **/Samples/Data/SearchLog.tsv1**, 
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie programu Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Wprowadzenie do usługi Azure Data Lake Analytics przy użyciu programu Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Rozpoczynanie pracy z usługą Azure Data Lake Analytics i języka U-SQL przy użyciu programu Visual Studio](data-lake-analytics-u-sql-get-started.md)
 * [Zarządzanie usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal](data-lake-analytics-manage-use-portal.md)

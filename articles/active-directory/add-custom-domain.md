@@ -1,24 +1,22 @@
 ---
-title: "Dodaj niestandardową domenę do usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak dodać niestandardową domenę w usłudze Azure Active Directory."
+title: Dodaj niestandardową domenę do usługi Azure AD | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak dodać niestandardową domenę w usłudze Azure Active Directory.
 services: active-directory
 author: curtand
 manager: mtillman
-ms.assetid: 0a90c3c5-4e0e-43bd-a606-6ee00f163038
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: e7b85d5f4cd19c94fe904f16090e174d87ea120b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 37890ac856a6b6bd89acc17973327b239a583997
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Szybki Start: Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory
 
@@ -67,7 +65,7 @@ Jeśli nie można zweryfikować niestandardowej nazwy domeny, spróbuj wykonać 
 1. **Zaczekaj godzinę**. Rekordy DNS musi propagację, aby zweryfikować domenę usługi Azure AD. Ten proces może potrwać godzinę lub dłużej.
 2. **Upewnij się, że wprowadzono rekord DNS i że jest on poprawny**. Ten krok należy wykonać w witrynie sieci Web u rejestratora nazw domen dla domeny. Usługi Azure AD nie można zweryfikować nazwy domeny, jeśli 
   * Wpis DNS nie jest obecny w pliku strefy DNS
-  * Nie jest identyczna z wpisu DNS zapewnianej usługi Azure AD, możesz. 
+  * Nie jest on identyczny z wpisem DNS dostarczonym przez usługę Azure AD. 
   
   Jeśli nie masz dostępu do aktualizowania rekordów DNS domeny w rejestrze nazw domen, udostępnij wpis DNS osobie lub zespołowi w organizacji, którzy mają taki dostęp, i poproś o dodanie wpisu DNS.
 3. **Usuń nazwę domeny z innego katalogu w usłudze Azure AD**. Nazwę domeny można weryfikować tylko w jednym katalogu. Jeśli nazwa domeny jest obecnie zweryfikowana w innym katalogu, nie można zweryfikować w katalogu nowe do momentu usunięcia ich na jeden z nich. Aby dowiedzieć się więcej na temat usuwania nazw domen, przeczytaj artykuł [Zarządzanie niestandardowymi nazwami domen](active-directory-domains-manage-azure-portal.md).    
@@ -79,10 +77,10 @@ Powtórz kroki opisane w tym artykule, aby dodać poszczególnych nazwa domeny.
 
 [Zarządzanie niestandardowymi nazwami domen](active-directory-domains-manage-azure-portal.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym szybkiego startu kiedy znasz już jak dodać niestandardową domenę do usługi Azure AD. 
 
 Poniższe łącze służy do dodawania nowej domeny niestandardowej w usłudze Azure AD z portalu Azure.
 
 > [!div class="nextstepaction"]
-> [Dodaj domenę niestandardową](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/QuickStart) 
+> [Dodawanie domeny niestandardowej](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/QuickStart) 

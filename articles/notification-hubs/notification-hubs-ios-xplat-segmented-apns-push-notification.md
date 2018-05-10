@@ -1,35 +1,43 @@
 ---
-title: "Centra powiadomień w najważniejszych wiadomości Samouczek — systemu iOS"
-description: "Dowiedz się, jak używać usługi Azure Service Bus Notification Hubs można wysłać powiadomienia o najważniejszych wiadomościach do urządzeń z systemem iOS."
+title: Powiadomienia wypychane określonych urządzeniach z systemem iOS przy użyciu usługi Azure Notification Hubs | Dokumentacja firmy Microsoft
+description: W tym samouczku możesz dowiedzieć się, jak na potrzeby usługi Azure Notification Hubs wysyłać powiadomienia wypychane do urządzeń z systemem iOS określone.
 services: notification-hubs
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 8aec171b46df3e0e7f2a2d3cc9d44084d064e6fd
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: f6096238deb2186edfac2eb9d1c9a9e76db07553
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-notification-hubs-to-send-breaking-news"></a>Wysyłanie najważniejszych wiadomości przy użyciu usługi Notification Hubs
+# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Samouczek: Powiadomienia wypychane określonych urządzeniach z systemem iOS przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Omówienie
-W tym temacie przedstawiono sposób użycia usługi Azure Notification Hubs wysyłać powiadomienia o najważniejszych wiadomościach do aplikacji systemu iOS. Po zakończeniu będzie można rejestrować zakłócenia w kategorii wiadomości i odbierać tylko powiadomienia wypychane dla tych kategorii. Ten scenariusz jest wspólnego wzorca dla wielu aplikacji, gdzie powiadomienia muszą być wysłane do grup użytkowników, które wcześniej zostały zadeklarowane zainteresowanie je, np. czytnik danych RSS, aplikacje wentylatory utworów muzycznych itp.
+## <a name="overview"></a>Przegląd
+Ten samouczek pokazuje, jak używać usługi Azure Notification Hubs wysyłać powiadomienia o najważniejszych wiadomościach do aplikacji systemu iOS. Po zakończeniu będą mogli zarejestrować zakłócenia w kategorii wiadomości i odbierać tylko powiadomienia wypychane dla tych kategorii. Ten scenariusz jest wspólnego wzorca dla wielu aplikacji, gdzie powiadomienia muszą być wysłane do grup użytkowników, które zostały wcześniej zadeklarowane zainteresowania, na przykład, czytnik danych RSS, aplikacje wentylatory utworów muzycznych itp.
 
-Scenariusze emisji są włączone, umieszczając w niej co najmniej jeden *tagi* podczas tworzenia rejestracji w Centrum powiadomień. Gdy powiadomienia są wysyłane do tagu, wszystkie urządzenia, które zostały zarejestrowane dla tagu będą otrzymywać powiadomienia. Ponieważ tagi są po prostu ciągów, nie mają być przygotowana z wyprzedzeniem. Aby uzyskać więcej informacji na temat tagów, zapoznaj się [routingu centra powiadomień i wyrażeń tagów](notification-hubs-tags-segment-push-message.md).
+Scenariusze emisji są włączone, umieszczając w niej co najmniej jeden *tagi* podczas tworzenia rejestracji w Centrum powiadomień. W przypadku powiadomienia są wysyłane do tagu, urządzenia, które zostały zarejestrowane dla tagu otrzymują powiadomienia. Ponieważ tagi są po prostu ciągów, nie mają być przygotowana z wyprzedzeniem. Aby uzyskać więcej informacji na temat tagów, zobacz [routingu centra powiadomień i wyrażeń tagów](notification-hubs-tags-segment-push-message.md).
+
+W tym samouczku można wykonać następujące czynności:
+
+> [!div class="checklist"]
+> * Dodaj wybór kategorii do aplikacji
+> * Wysyłanie powiadomień oznakowany
+> * Wysyłanie powiadomień z urządzenia
+> * Uruchom aplikację i generować powiadomienia
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym temacie opiera się na aplikacji utworzony w [Rozpoczynanie pracy z usługą Notification Hubs][get-started]. Przed rozpoczęciem tego samouczka należy zostały już wykonane [Rozpoczynanie pracy z usługą Notification Hubs][get-started].
+W tym temacie opiera się na aplikacji utworzony w [samouczek: wypychanie powiadomień do aplikacji systemu iOS przy użyciu usługi Azure Notification Hubs][get-started]. Przed rozpoczęciem tego samouczka należy zostały już wykonane [samouczek: wypychanie powiadomień do aplikacji systemu iOS przy użyciu usługi Azure Notification Hubs][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Dodaj wybrane kategorii do aplikacji
 Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istniejące scenorysu, który umożliwia użytkownikowi wybierz kategorie, aby zarejestrować. Kategorie wybrane przez użytkownika są przechowywane na urządzeniu. Po uruchomieniu aplikacji, rejestracji urządzenia jest tworzony w Centrum powiadomień z wybranych kategorii jako znaczniki.
@@ -45,8 +53,9 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
      
      ![][3]
 2. W edytorze Asystenta utworzyć gniazda dla wszystkich przełączników i połączeń telefonicznych z nimi "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
-3. Utwórz działanie dla przycisk o nazwie "subskrypcji". Twoje ViewController.h powinien zawierać następujące informacje:
+3. Utwórz działanie dla przycisk o nazwie **subskrypcji**. Twoje ViewController.h powinien zawierać następujący kod:
    
+    ```obj-c
         @property (weak, nonatomic) IBOutlet UISwitch *WorldSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *PoliticsSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *BusinessSwitch;
@@ -55,8 +64,10 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
         @property (weak, nonatomic) IBOutlet UISwitch *SportsSwitch;
    
         - (IBAction)subscribe:(id)sender;
+    ```
 4. Utwórz nową **klasy Touch Cocoa** o nazwie `Notifications`. Skopiuj następujący kod w sekcji interfejsu pliku Notifications.h:
    
+    ```obj-c
         @property NSData* deviceToken;
    
         - (id)initWithConnectionString:(NSString*)listenConnectionString HubName:(NSString*)hubName;
@@ -67,11 +78,15 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
         - (NSSet*)retrieveCategories;
    
         - (void)subscribeWithCategories:(NSSet*)categories completion:(void (^)(NSError *))completion;
+    ```
 5. Dodaj następujące dyrektywy importu do Notifications.m:
    
+    ```obj-c
         #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
+    ```
 6. Skopiuj następujący kod w sekcji implementacji pliku Notifications.m.
    
+    ```obj-c
         SBNotificationHub* hub;
    
         - (id)initWithConnectionString:(NSString*)listenConnectionString HubName:(NSString*)hubName{
@@ -98,7 +113,6 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
             return [[NSSet alloc] initWithArray:categories];
         }
 
-
         - (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
         {
            //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
@@ -108,33 +122,37 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
             [hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
                 jsonBodyTemplate:templateBodyAPNS expiryTemplate:@"0" tags:categories completion:completion];
         }
+    ```
 
-
-
-    Ta klasa korzysta z magazynu lokalnego do przechowywania i pobierania kategorii wiadomości, który otrzyma tego urządzenia. Ponadto zawiera metody do rejestrowania dla tych kategorii przy użyciu [szablonu](notification-hubs-templates-cross-platform-push-messages.md) rejestracji.
+    Ta klasa korzysta z magazynu lokalnego do przechowywania i pobierania kategorii wiadomości, który odbiera tego urządzenia. Ponadto zawiera metody do rejestrowania dla tych kategorii przy użyciu [szablonu](notification-hubs-templates-cross-platform-push-messages.md) rejestracji.
 
 1. W pliku AppDelegate.h Dodaj instrukcję import Notifications.h i Dodaj właściwość do wystąpienia klasy powiadomień:
    
+    ```obj-c
         #import "Notifications.h"
    
         @property (nonatomic) Notifications* notifications;
+    ```
 2. W **didFinishLaunchingWithOptions** metody w AppDelegate.m, Dodaj kod, aby zainicjować wystąpienia powiadomienia na początku metody.  
    
-    `HUBNAME`i `HUBLISTENACCESS` (zdefiniowany w pliku hubinfo.h) ma już `<hub name>` i `<connection string with listen access>` zastąpione symbole zastępcze nazwą Centrum powiadomień i parametry połączenia dla *DefaultListenSharedAccessSignature* uzyskany wcześniej
+    `HUBNAME` i `HUBLISTENACCESS` (zdefiniowany w pliku hubinfo.h) ma już `<hub name>` i `<connection string with listen access>` zastąpione symbole zastępcze nazwą Centrum powiadomień i parametry połączenia dla *DefaultListenSharedAccessSignature* uzyskany wcześniej
    
+    ```obj-c
         self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
+    ```
    
    > [!NOTE]
    > Ponieważ poświadczenia, które są dystrybuowane wraz z aplikacji przez klienta nie są zazwyczaj bezpieczna, klucz dostępu do nasłuchiwania należy dystrybuować tylko z aplikacji klienta. Nasłuchiwanie umożliwia dostęp, nie można zmodyfikować aplikację, aby zarejestrować dla powiadomień, ale istniejące rejestracje i nie mogą być wysyłane powiadomienia. Klucz pełny dostęp jest używany w usłudze zabezpieczonych wewnętrznej bazy danych do wysyłania powiadomień i zmianę istniejącego rejestracji.
    > 
    > 
-3. W **didRegisterForRemoteNotificationsWithDeviceToken** metody w AppDelegate.m, Zastąp kod w metodzie następujący kod, aby przekazać token urządzenia do klasy powiadomienia. Klasa powiadomienia będzie wykonywać rejestrowanie na potrzeby powiadomień z kategorii. Jeśli użytkownik zmieni ułatwia wybieranie kategorii, nazywamy `subscribeWithCategories` metody w odpowiedzi na **subskrypcji** przycisk, aby je aktualizować.
+3. W **didRegisterForRemoteNotificationsWithDeviceToken** metody w AppDelegate.m, Zastąp kod w metodzie następujący kod, aby przekazać token urządzenia do klasy powiadomienia. Klasa powiadomienia wykonuje rejestrowanie do powiadomień o kategorii. Jeśli użytkownik zmieni ułatwia wybieranie kategorii, wywołanie `subscribeWithCategories` metody w odpowiedzi na **subskrypcji** przycisk, aby je aktualizować.
    
    > [!NOTE]
    > Ponieważ token urządzenia przypisane przez Notification Service (APNS, Apple Push) szansy można w dowolnym momencie, należy zarejestrować powiadomień często uniknąć niepowodzeń powiadomień. W tym przykładzie rejestruje powiadomienia każdym uruchomieniu aplikacji. Dla aplikacji, które są uruchamiane często więcej niż raz dziennie, można prawdopodobnie pominąć rejestrację, aby zachować przepustowość, jeśli krótszy niż doba upłynął od czasu poprzedniej rejestracji.
    > 
    > 
    
+    ```obj-c
         self.notifications.deviceToken = deviceToken;
    
         // Retrieves the categories from local storage and requests a registration for these categories
@@ -146,26 +164,33 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
                 NSLog(@"Error registering for notifications: %@", error);
             }
         }];
+    ```
 
-    Należy pamiętać, że w tym momencie nie powinno być nie innych kodu w **didRegisterForRemoteNotificationsWithDeviceToken** metody.
+    W tym momencie nie powinny istnieć żadnego innego kodu w **didRegisterForRemoteNotificationsWithDeviceToken** metody.
 
-1. Następujące metody już powinien znajdować się w AppDelegate.m ukończenie [Rozpoczynanie pracy z usługą Notification Hubs] [ get-started] samouczka.  Jeśli nie, dodaj je.
+1. Następujące metody już powinien znajdować się w AppDelegate.m ukończenie [Rozpoczynanie pracy z usługą Notification Hubs] [ get-started] samouczka. Jeśli nie, dodaj je.
    
-    -(void) MessageBox:(NSString *) tytułu wiadomości:(NSString *) messageText {
+    ```obj-c    
+    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    {
    
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
             cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
    
-   * didReceiveRemoteNotification aplikacji:(UIApplication *) aplikacji (void): (NSDictionary *) informacje o użytkowniku {NSLog (@"% @", informacje o użytkowniku);   [self MessageBox:@"Notification" wiadomości: [[informacje o użytkowniku objectForKey:@"aps"] valueForKey:@"alert"]];}
+   * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+       (NSDictionary *)userInfo {
+       NSLog(@"%@", userInfo);
+       [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+     }
+    ```
    
    Ta metoda obsługuje powiadomienia otrzymane, gdy aplikacja jest uruchomiona, wyświetlając prostą **UIAlert**.
-2. W ViewController.m, Dodaj instrukcję import AppDelegate.h i skopiuj następujący kod do generowanych XCode **subskrypcji** metody. Ten kod zaktualizuje rejestracji powiadomień do używania nowych tagów kategorii, którą użytkownik wybrał w interfejsie użytkownika.
+2. W ViewController.m, Dodaj instrukcję import AppDelegate.h i skopiuj następujący kod do generowanych XCode **subskrypcji** metody. Ten kod aktualizuje rejestracji powiadomień do używania nowych tagów kategorii, którą użytkownik wybrał w interfejsie użytkownika.
    
-       ```
+    ```obj-c
        #import "Notifications.h"
-       ```
    
        NSMutableArray* categories = [[NSMutableArray alloc] init];
    
@@ -185,10 +210,12 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
                NSLog(@"Error subscribing: %@", error);
            }
        }];
-   
+    ```
+
    Ta metoda tworzy **NSMutableArray** kategorii i używa **powiadomienia** klasę do przechowywania listy w lokalnej pamięci masowej i rejestruje odpowiednie znaczniki w Centrum powiadomień. Zmiana kategorii rejestracji zostaje odtworzone w nowej kategorii.
 3. W ViewController.m, Dodaj następujący kod w **viewDidLoad** metodę w celu ustawienia interfejsu użytkownika na podstawie wcześniej zapisany kategorii.
 
+    ```obj-c    
         // This updates the UI on startup based on the status of previously saved categories.
 
         Notifications* notifications = [(AppDelegate*)[[UIApplication sharedApplication]delegate] notifications];
@@ -201,21 +228,22 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do Twoje istni
         if ([categories containsObject:@"Technology"]) self.TechnologySwitch.on = true;
         if ([categories containsObject:@"Science"]) self.ScienceSwitch.on = true;
         if ([categories containsObject:@"Sports"]) self.SportsSwitch.on = true;
+    ```
 
 
+Aplikacja może teraz przechowywać zestaw kategorii w magazynie lokalnym urządzenia używane do rejestrowania w Centrum powiadomień przy każdym uruchomieniu aplikacji. Użytkownik może zmienić wybór kategorii środowiska uruchomieniowego i kliknij przycisk **subskrypcji** metodę, aby zaktualizować rejestrację urządzenia. Następnie należy zaktualizować aplikację, aby wysłać powiadomienia o najważniejszych wiadomościach bezpośrednio w aplikacji.
 
-Aplikacja może teraz przechowywać zestaw kategorii w magazynie lokalnym urządzenia używane do rejestrowania w Centrum powiadomień przy każdym uruchomieniu aplikacji.  Użytkownik może zmienić wybór kategorii środowiska uruchomieniowego i kliknij przycisk **subskrypcji** metodę, aby zaktualizować rejestrację urządzenia. Następnie zostanie zaktualizowania aplikacji można wysłać powiadomienia o najważniejszych wiadomościach bezpośrednio w aplikacji.
-
-## <a name="optional-sending-tagged-notifications"></a>(opcjonalnie) Wysyłanie powiadomień oznakowany
+## <a name="optional-send-tagged-notifications"></a>(opcjonalnie) Wysyłanie powiadomień oznakowany
 Jeśli nie masz dostępu do programu Visual Studio, można przejść do następnej sekcji i wysyłania powiadomień z samej aplikacji. Możesz również wysłać powiadomienie prawidłowego szablonu z [portalu Azure] za pomocą karty debugowanie w Centrum powiadomień. 
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="optional-send-notifications-from-the-device"></a>(opcjonalnie) Wysyłanie powiadomień z urządzenia
-Zwykle usługi wewnętrznej bazy danych będą wysyłane powiadomienia, ale możesz wysłać powiadomienia o najważniejszych wiadomościach bezpośrednio z aplikacji. W tym modyfikacjom `SendNotificationRESTAPI` metody zdefiniowanego w [Rozpoczynanie pracy z usługą Notification Hubs] [ get-started] samouczka.
+Zwykle usługi wewnętrznej bazy danych będą wysyłane powiadomienia, ale możesz wysłać powiadomienia o najważniejszych wiadomościach bezpośrednio z aplikacji. Aby to zrobić, należy zaktualizować `SendNotificationRESTAPI` metodę, która jest zdefiniowana w [Rozpoczynanie pracy z usługą Notification Hubs] [ get-started] samouczka.
 
-1. W ramach aktualizacji ViewController.m `SendNotificationRESTAPI` metodę jako zgodna, który akceptuje parametr dla tagu kategorii i wysyła właściwego [szablonu](notification-hubs-templates-cross-platform-push-messages.md) powiadomień.
+1. W `ViewController.m`, zaktualizuj `SendNotificationRESTAPI` metodę jako zgodna, który akceptuje parametr dla tagu kategorii i wysyła właściwego [szablonu](notification-hubs-templates-cross-platform-push-messages.md) powiadomień.
    
+    ```obj-c
         - (void)SendNotificationRESTAPI:(NSString*)categoryTag
         {
             NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration
@@ -272,8 +300,10 @@ Zwykle usługi wewnętrznej bazy danych będą wysyłane powiadomienia, ale moż
    
             [dataTask resume];
         }
-2. W ramach aktualizacji ViewController.m **Wyślij powiadomienie E-mail** akcji, jak pokazano w następującym kodzie. Tak, aby będzie wysyłania powiadomień przy użyciu tagami indywidualnie i wysłać do wielu platform.
+    ```
+2. W `ViewController.m`, zaktualizuj **Wyślij powiadomienie E-mail** akcji, jak pokazano w następującym kodzie. Tak, aby wysyła powiadomienia przy użyciu tagami indywidualnie i wysyła do wielu platform.
 
+    ```obj-c
         - (IBAction)SendNotificationMessage:(id)sender
         {
             self.sendResults.text = @"";
@@ -288,7 +318,7 @@ Zwykle usługi wewnętrznej bazy danych będą wysyłane powiadomienia, ale moż
                 [self SendNotificationRESTAPI:category];
             }
         }
-
+    ```
 
 
 1. Ponownie skompiluj projekt i upewnij się, że żadne błędy kompilacji.
@@ -302,14 +332,14 @@ Zwykle usługi wewnętrznej bazy danych będą wysyłane powiadomienia, ale moż
 2. Wpisz wiadomość, aby wysłane w postaci najważniejszych wiadomości naciśnij **Wyślij powiadomienie E-mail** przycisku. Można również uruchomić aplikacji konsoli .NET do generowania powiadomień.
    
     ![][2]
-3. Każdego urządzenia, które subskrybuje fundamentalne wiadomości otrzymają powiadomienia o najważniejszych wiadomościach właśnie wysłania.
+3. Poszczególne urządzenia, które subskrybuje fundamentalne wiadomości otrzymuje powiadomienia o najważniejszych wiadomościach właśnie wysłania.
 
-## <a name="next-steps"></a>Następne kroki
-W tym samouczku opisano sposób emisji najważniejszych wiadomości według kategorii. Należy rozważyć wykonanie jednej z następujących samouczków, w których są wyróżniane innych zaawansowanych scenariuszy centra powiadomień:
+## <a name="next-steps"></a>Kolejne kroki
+W tym samouczku wysłano wyemitowane powiadomienia do określonych urządzeń z systemem iOS zarejestrowanego dla kategorii. Informacje na temat zlokalizowanych powiadomienia wypychane, przejdź do samouczka następujące: 
 
-* **[Emisji zlokalizowanych najważniejszych wiadomości przy użyciu usługi Notification Hubs]**
-  
-    Dowiedz się, jak rozszerzyć aplikację wiadomości podziału, aby umożliwić wysyłanie powiadomień zlokalizowane.
+> [!div class="nextstepaction"]
+>[Zlokalizowane powiadomienia wypychane](notification-hubs-ios-xplat-localized-apns-push-notification.md)
+
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-subscribed.png
@@ -325,7 +355,7 @@ W tym samouczku opisano sposób emisji najważniejszych wiadomości według kate
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[Emisji zlokalizowanych najważniejszych wiadomości przy użyciu usługi Notification Hubs]: notification-hubs-ios-xplat-localized-apns-push-notification.md
+[Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx

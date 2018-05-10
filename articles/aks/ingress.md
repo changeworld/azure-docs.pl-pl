@@ -1,25 +1,25 @@
 ---
-title: Skonfiguruj transfer danych przychodzących z klastrem usługi kontenera platformy Azure (AKS)
-description: Instalowanie i konfigurowanie kontrolera wejściowych NGINX w klastrze usługi kontenera platformy Azure (AKS).
+title: Skonfiguruj transfer danych przychodzących z klastrem usługi Kubernetes Azure (AKS)
+description: Instalowanie i konfigurowanie kontrolera wejściowych NGINX w klastrze usługi Kubernetes Azure (AKS).
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="https-ingress-on-azure-container-service-aks"></a>Ruch przychodzący HTTPS w usłudze kontenera platformy Azure (AKS)
+# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Ruch przychodzący HTTPS z usługi Azure Kubernetes (AKS)
 
 Kontroler transfer danych przychodzących jest oprogramowaniem udostępniający zwrotnego serwera proxy, routingu ruchu można konfigurować i zakończenie TLS Kubernetes usług. Kubernetes wejściowych zasobów są używane do konfigurowania tras dla poszczególnych usług Kubernetes i transfer danych przychodzących reguł. Przy użyciu kontrolera wejściowych i transfer danych przychodzących reguł, pojedynczy adres zewnętrzny można kierować ruchem do wielu usług w klastrze Kubernetes.
 
-Ten dokument przeprowadzi Cię przez wdrożenie próbki [kontrolera wejściowych NGINX] [ nginx-ingress] w klastrze usługi kontenera platformy Azure (AKS). Ponadto [— LEGO KUBE] [ kube-lego] projektu służy do automatycznego generowania i skonfigurować [umożliwia szyfrowanie] [ lets-encrypt] certyfikatów. Na koniec kilka aplikacji są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem jednego adresu.
+Ten dokument przeprowadzi Cię przez wdrożenie próbki [kontrolera wejściowych NGINX] [ nginx-ingress] w klastrze usługi Kubernetes Azure (AKS). Ponadto [— LEGO KUBE] [ kube-lego] projektu służy do automatycznego generowania i skonfigurować [umożliwia szyfrowanie] [ lets-encrypt] certyfikatów. Na koniec kilka aplikacji są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem jednego adresu.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -46,9 +46,9 @@ Podczas instalacji Azure publiczny adres IP jest tworzona dla kontrolera wejści
 ```console
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   13.82.238.45   80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>         80/TCP                       20m
+NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 Ponieważ żadne reguły wejściowych utworzono po przejściu do publicznego adresu IP, są kierowane do strony NGINX wejściowych kontrolerów domyślne 404.
@@ -63,7 +63,7 @@ Ponieważ są używane certyfikaty protokołu HTTPS, należy skonfigurować nazw
 #!/bin/bash
 
 # Public IP address
-IP="52.224.125.195"
+IP="51.145.155.210"
 
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"

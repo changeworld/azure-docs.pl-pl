@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric najlepszych rozwiązań dotyczących zabezpieczeń | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące zabezpieczeń sieć szkieletowa usług Azure."
+title: Azure Service Fabric najlepszych rozwiązań dotyczących zabezpieczeń | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące zabezpieczeń sieć szkieletowa usług Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric najlepszych rozwiązań dotyczących zabezpieczeń
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed przystąpieniem do wdrażania aplikacji w środowisku produkcyjnym chmury, przejrzyj naszej listy ważne i zalecane najlepsze rozwiązania dotyczące wdrażania bezpiecznych klastrów w aplikacji.
@@ -126,7 +126,7 @@ Konfiguracje replikatora skonfiguruj replikatora odpowiedzialną za tworzenie wy
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurowanie protokołu SSL dla usługi Azure Service Fabric
 Proces uwierzytelniania serwera [uwierzytelnia](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) punktów końcowych klastra zarządzania do klienta zarządzania. Klient zarządzania rozpoznaje, że rozmawia do rzeczywistego klastra. Ten certyfikat zawiera również [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) dla interfejsu API zarządzania HTTPS i Service Fabric Explorer za pośrednictwem protokołu HTTPS.
-Należy uzyskać niestandardowej nazwy domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji, nazwa podmiotu certyfikatu musi odpowiadać nazwa domeny niestandardowej, której użyjesz dla klastra.
+Musisz uzyskać niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji, nazwa podmiotu certyfikatu musi odpowiadać nazwa domeny niestandardowej, której użyjesz dla klastra.
 
 Aby skonfigurować protokół SSL dla aplikacji, należy najpierw uzyskać certyfikat SSL, który został podpisany przez urząd certyfikacji. Urząd certyfikacji jest zaufany innej firmy, który wystawia certyfikaty dla protokołu SSL ze względów bezpieczeństwa. Jeśli nie masz już certyfikat SSL, należy uzyskać od firmy, która sprzedaje certyfikatów SSL.
 
@@ -182,6 +182,6 @@ Po utworzeniu aplikacji do reprezentowania klastra przypisać użytkowników do 
 
 Sieć szkieletowa usług Azure obsługuje dwa typy kontroli dostępu dla klientów, które są podłączone do [klastra sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm): administratora i użytkownika. Administrator klastra można użyć kontroli dostępu, aby ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników. Kontrola dostępu sprawia, że klaster jest bardziej bezpieczne.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Konfigurowanie sieci szkieletowej usług [środowisko projektowe](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started).
 - Dowiedz się więcej o [opcje pomocy technicznej usługi sieć szkieletowa](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).

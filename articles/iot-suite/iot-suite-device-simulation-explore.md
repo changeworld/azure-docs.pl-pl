@@ -1,6 +1,6 @@
 ---
 title: Rozpoczynanie pracy z rozwiązaniem do symulacji urządzenia - Azure | Dokumentacja firmy Microsoft
-description: Pakiet IoT rozwiązania symulacji to narzędzie, które mogą służyć do celów w zakresie projektowania i testowania rozwiązania IoT. Usługa symulacji jest autonomicznym oferty, który może być używany w połączeniu z innymi wstępnie skonfigurowanych rozwiązań lub używana o rozwiązaniach niestandardowych.
+description: Rozwiązanie symulacji akceleratorów rozwiązania IoT to narzędzie, które mogą służyć do celów w zakresie projektowania i testowania rozwiązania IoT. Usługa symulacji jest autonomicznym oferty, który może być używane w połączeniu z innych rozwiązań akceleratorów lub używana o rozwiązaniach niestandardowych.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,15 +12,15 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7dfd56d06e180dd163fa84d4289e6daf4baefc51
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Wskazówki symulacji urządzenia
 
-Symulacji urządzenia w usłudze Azure IoT to narzędzie, które mogą służyć do celów w zakresie projektowania i testowania rozwiązania IoT. Symulacji urządzenia jest autonomicznym oferty, że można użyć w połączeniu z innymi wstępnie skonfigurowanych rozwiązań lub rozwiązaniach niestandardowych.
+Symulacji urządzenia w usłudze Azure IoT to narzędzie, które mogą służyć do celów w zakresie projektowania i testowania rozwiązania IoT. Symulacji urządzenia jest autonomicznym oferty można używania w połączeniu z innych rozwiązań akceleratorów lub rozwiązaniach niestandardowych.
 
 W tym samouczku przedstawiono niektóre funkcje symulacji urządzenia. Przedstawiono sposób działania i można go użyć do przetestowania własne rozwiązania IoT.
 
@@ -39,7 +39,7 @@ Jeśli wdrożono nie jeszcze symulacji urządzenia, ale należy wykonać [wdraż
 
 ## <a name="configuring-device-simulation"></a>Konfigurowanie symulacji urządzenia
 
-Można skonfigurować i uruchomić symulacji urządzenia całkowicie z poziomu pulpitu nawigacyjnego. Otwórz pulpit nawigacyjny z pakiet IoT [elastycznie rozwiązań](https://www.azureiotsuite.com/) strony. Kliknij przycisk **uruchamianie** w nowe wdrożenia symulacji urządzenia.
+Można skonfigurować i uruchomić symulacji urządzenia całkowicie z poziomu pulpitu nawigacyjnego. Otwórz pulpit nawigacyjny z akceleratorów rozwiązania IoT [elastycznie rozwiązań](https://www.azureiotsuite.com/) strony. Kliknij przycisk **uruchamianie** w nowe wdrożenia symulacji urządzenia.
 
 ### <a name="target-iot-hub"></a>Centrum IoT docelowego
 

@@ -1,5 +1,5 @@
 ---
-title: "Tworzenie klastra usługi kontenera platformy Azure (AKS)"
+title: Tworzenie klastra usługi Kubernetes Azure (AKS)
 description: Tworzenie klastra AKS z poziomu interfejsu wiersza polecenia lub w portalu Azure.
 services: container-service
 author: neilpeterson
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 37d6dfc0aa6b3e4fcd88a53e83a3a3d7f2157681
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.openlocfilehash: 46c2f718911f27ad8f51423589c6fdda100a68d2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="create-an-azure-container-service-aks-cluster"></a>Tworzenie klastra usługi kontenera platformy Azure (AKS)
+# <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Tworzenie klastra usługi Kubernetes Azure (AKS)
 
-Klaster usługi kontenera platformy Azure (AKS) mogą być tworzone z wiersza polecenia platformy Azure lub w portalu Azure.
+Klaster usługi Azure Service Kubernetes (AKS) mogą być tworzone z wiersza polecenia platformy Azure lub w portalu Azure.
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -32,9 +32,9 @@ Poniższe opcje są dostępne z `az aks create` polecenia.
 | Argument | Opis | Wymagane |
 |---|---|:---:|
 | `--name` `-n` | Nazwa zasobu zarządzanego klastra. | tak |
-| `--resource-group` `-g` | Nazwa grupy zasobów usługi kontenera platformy Azure. | tak |
+| `--resource-group` `-g` | Nazwa grupy zasobów Azure Kubernetes usługi. | tak |
 | `--admin-username` `-u` | Nazwa użytkownika dla maszyn wirtualnych systemu Linux.  Domyślne: azureuser. | nie |
-| ` --client-secret` | Klucz tajny skojarzony z nazwy głównej usługi. | nie |
+| ` --client-secret` | Wpis tajny skojarzony z jednostką usługi. | nie |
 | `--dns-name-prefix` `-p` | Prefiks DNS dla adresu publicznego adresu ip klastrów. | nie |
 | `--generate-ssh-keys` | Generuj SSH publicznego i prywatnego klucza plików, jeśli brak. | nie |
 | `--kubernetes-version` `-k` | Wersja Kubernetes do użycia podczas tworzenia klastra, takie jak "1.7.9" lub "1.8.2".  Default: 1.7.7. | nie |
@@ -48,7 +48,7 @@ Poniższe opcje są dostępne z `az aks create` polecenia.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Aby uzyskać instrukcje dotyczące wdrażania klastra AKS z portalu Azure, zobacz usługi kontenera platformy Azure (AKS) [Azure Szybki Start portalu][aks-portal-quickstart]. 
+Aby uzyskać instrukcje dotyczące wdrażania klastra AKS z portalu Azure, zobacz usługi Kubernetes Azure (AKS) [Azure Szybki Start portalu][aks-portal-quickstart].
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create

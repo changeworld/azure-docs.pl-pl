@@ -1,11 +1,11 @@
 ---
-title: "Połączenie danych rozwiązania analizy dzienników | Dokumentacja firmy Microsoft"
-description: "Podczas transmisji danych jest skonsolidowanych danych sieci i wydajności z komputerów z agentami OMS, w tym programu Operations Manager oraz agenci połączone z systemem Windows. Dane sieciowe jest połączone z dane dziennika, aby ułatwić skorelować danych."
+title: Połączenie danych rozwiązania analizy dzienników | Dokumentacja firmy Microsoft
+description: Podczas transmisji danych jest skonsolidowanych danych sieci i wydajności z komputerów z agentami OMS, w tym programu Operations Manager oraz agenci połączone z systemem Windows. Dane sieciowe jest połączone z dane dziennika, aby ułatwić skorelować danych.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Podczas transmisji danych 2.0 (wersja zapoznawcza) rozwiązania analizy dzienników
 
@@ -58,8 +58,8 @@ Podczas transmisji danych dane są pobierane z Microsoft Dependency Agent. Agent
 
 | **Źródło połączenia** | **Obsługiwane** | **Opis** |
 | --- | --- | --- |
-| Agenci dla systemu Windows | Yes | Podczas transmisji danych analizuje i zbiera dane z komputerów z systemem Windows agenta. <br><br> Oprócz [Agent pakietu OMS](log-analytics-windows-agent.md), agentów systemu Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwanych systemów operacyjnych](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Podczas transmisji danych analizuje i zbiera dane z komputerów z systemem Linux agenta.<br><br> Oprócz [Agent pakietu OMS](log-analytics-quick-collect-linux-computer.md), Microsoft Dependency Agent wymagają agentów systemu Linux. Zobacz [obsługiwanych systemów operacyjnych](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Windows | Yes | Podczas transmisji danych analizuje i zbiera dane z komputerów z systemem Windows agenta. <br><br> Oprócz [Agent pakietu OMS](log-analytics-windows-agent.md), agentów systemu Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwanych systemów operacyjnych](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Podczas transmisji danych analizuje i zbiera dane z komputerów z systemem Linux agenta.<br><br> Oprócz [Agent pakietu OMS](log-analytics-quick-collect-linux-computer.md), Microsoft Dependency Agent wymagają agentów systemu Linux. Zobacz [obsługiwanych systemów operacyjnych](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
 | Grupa zarządzania programu System Center Operations Manager | Yes | Podczas transmisji danych analizuje i zbiera dane z agentów systemu Windows i Linux w połączonych [grupy zarządzania programu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Połączenie bezpośrednie z komputera agenta programu System Center Operations Manager do analizy dzienników jest wymagana. Dane są przesyłane dalej z grupy zarządzania do analizy dzienników. |
 | Konto magazynu Azure | Nie | Podczas transmisji danych zbiera dane z komputery agenta, więc nie ma żadnych danych z niego do zbierania z usługi Azure Storage. |
 
@@ -115,7 +115,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
@@ -124,7 +124,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 6.0 | 2.6.32-71 |
 | 6.1 | 2.6.32-131 |
@@ -138,7 +138,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
@@ -149,7 +149,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 6.2 | Oracle 2.6.32-300 (UEK R1) |
 | 6.3 | Oracle 2.6.39-200 (UEK R2) |
@@ -159,7 +159,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="oracle-linux-5"></a>Oracle Linux 5
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 5.8 | Oracle 2.6.32-300 (UEK R1) |
 | 5.9 | Oracle 2.6.39-300 (UEK R2) |
@@ -170,7 +170,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 11 | 2.6.27 |
 | 11 SP1 | 2.6.32 |
@@ -180,7 +180,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 #### <a name="suse-linux-10"></a>SUSE Linux 10
 
-| Wersja systemu operacyjnego | Wersja jądra |
+| **Wersja systemu operacyjnego** | **Wersja jądra** |
 | --- | --- |
 | 10 SP4 | 2.6.16.60 |
 
@@ -219,7 +219,7 @@ Opcje z poniższej tabeli służą do instalacji z wiersza polecenia. Aby wyświ
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Flag** | **Opis** |
+| **Flaga** | **Opis** |
 | --- | --- |
 | <code>/?</code> | Pobierz listę opcji wiersza polecenia. |
 | <code>/S</code> | Wykonaj instalację dyskretną bez monitowania użytkownika. |
@@ -244,7 +244,7 @@ Aby wyświetlić listę flagi instalacji, uruchom program instalacyjny z `-help`
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Flag** | **Opis** |
+| **Flaga** | **Opis** |
 | --- | --- |
 | <code>-help</code> | Pobierz listę opcji wiersza polecenia. |
 | <code>-s</code> | Wykonaj instalację dyskretną bez monitowania użytkownika. |
@@ -252,13 +252,13 @@ InstallDependencyAgent-Linux64.bin -help
 
 Pliki programu Agent zależności są umieszczane w następujących katalogów:
 
-| Pliki | **Lokalizacja** |
+| **Pliki** | **Lokalizacja** |
 | --- | --- |
 | Podstawowe pliki | /opt/microsoft/dependency-agent |
 | Pliki dziennika | /var/OPT/Microsoft/Dependency-Agent/log |
 | Pliki konfiguracji | /etc/opt/microsoft/dependency-agent/config |
 | Pliki wykonywalne usługi | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
-| Pliki binarne magazynu | /var/opt/microsoft/dependency-agent/storage |
+| Pliki binarne magazynu | /var/OPT/Microsoft/Dependency-Agent/Storage |
 
 ### <a name="installation-script-examples"></a>Przykłady skryptów instalacji
 
@@ -364,7 +364,7 @@ Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDepend
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
-Instalowanie i konfigurowanie rozwiązania
+**Instalowanie i konfigurowanie rozwiązania**
 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania.
 

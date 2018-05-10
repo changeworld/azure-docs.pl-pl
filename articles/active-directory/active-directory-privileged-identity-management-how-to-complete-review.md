@@ -1,25 +1,23 @@
 ---
-title: "Jak przeprowadzić przegląd dostępu | Dokumentacja firmy Microsoft"
-description: "Po rozpoczęciu Przegląd dostępu w usłudze Azure AD Privileged Identity Management Dowiedz się, jak zakończyć je i wyświetlić wyniki"
+title: Jak przeprowadzić przegląd dostępu | Dokumentacja firmy Microsoft
+description: Po rozpoczęciu Przegląd dostępu w usłudze Azure AD Privileged Identity Management Dowiedz się, jak zakończyć je i wyświetlić wyniki
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: abc2d3dd-afd5-42cf-8a17-6c11f5674c35
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: kgremban
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 3866438de8fba7a6c42777bbb57746eadf1158eb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c1314724d8094f171e4c8468d854a9d4ae0c85d7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak przeprowadzić przegląd dostępu w usłudze Azure AD Privileged Identity Management
 Administratorzy ról uprzywilejowanych można przejrzeć uprzywilejowanego dostępu raz [przeglądu zabezpieczeń została uruchomiona](active-directory-privileged-identity-management-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) będzie automatycznie wysyłać wiadomości e-mail monitowania użytkowników, aby przejrzeć jego uprawnienia dostępu. Jeśli użytkownik nie pobrały wiadomości e-mail, możesz wysłać je zgodnie z instrukcjami [jak przeprowadzić przegląd zabezpieczeń](active-directory-privileged-identity-management-how-to-perform-security-review.md).
@@ -41,7 +39,7 @@ Jeśli Przegląd dostępu jest skonfigurowana tak, aby użytkownicy Przejrzyj, *
 ### <a name="stop"></a>Stop
 Wszystkie przeglądy dostępu mają datę końcową, ale można użyć **zatrzymać** przycisk, aby zakończyć wcześniej. Jeśli jeszcze nie zostały sprawdzone wszyscy użytkownicy tego czasu, będą mogli po zatrzymaniu przeglądu. Nie można ponownie uruchomić przeglądu, po jest została zatrzymana.
 
-### <a name="apply"></a>Składanie wniosku o przyjęcie do programu
+### <a name="apply"></a>Zastosuj
 Po zakończeniu Przegląd dostępu, ponieważ osiągnięto datę zakończenia lub zatrzymana go ręcznie, **Zastosuj** przycisk implementuje wyniku przeglądu. Jeśli w przeglądzie nastąpiła odmowa dostępu użytkownika, to krok, który spowoduje usunięcie przypisania roli.  
 
 ### <a name="export"></a>Eksportowanie
@@ -53,7 +51,7 @@ Jeśli nie jest konieczne w żadnych późniejszych przeglądu, usuń go. **Usun
 > [!IMPORTANT]
 > Nie zostanie wyświetlone ostrzeżenie, zanim nastąpi jego usunięcia, dlatego upewnij się, że chcesz usunąć tego przeglądu. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->

@@ -4,14 +4,14 @@ description: Zawiera omówienie urządzenia moduł zbierający i sposobie konfig
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 05/03/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99f34bce942626cd931c9270192766cc76105f5b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="collector-appliance"></a>Moduł zbierający urządzenia
 
@@ -73,7 +73,7 @@ Ponadto sprawdzania także próbuje zweryfikować łączności o następujących
 *.oneget.org:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
 *.windows.net:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
 *.windowsazure.com:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
-*.powershellgallery.com:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
+*. powershellgallery.com:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
 *.msecnd.net:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
 *.visualstudio.com:443 | Wymagany do pobrania programu powershell na podstawie modułu PowerCLI vCenter. | PowerCLI instalacja nie powiedzie się. Ręcznie Zainstaluj moduł.
 
@@ -89,7 +89,7 @@ Moduł zbierający powinny być zsynchronizowane z serwerem czasu internet, aby 
 
 Usługa modułu zbierającego Azure migracji powinna działać na tym komputerze. Ta usługa jest uruchomiona automatycznie po rozruchu maszyny. Jeśli usługa nie działa, możesz uruchomić *modułu zbierającego Azure migracji* usługi za pośrednictwem Panelu sterowania. Usługa modułu zbierającego jest odpowiedzialny do łączenia się z serwerem vCenter, gromadzenia danych wydajności i metadanych maszyny i wysyłania go do usługi.
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5 
+### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
 
 Moduł powershell VMware PowerCLI należy zainstalować, aby moduł zbierający może komunikować się z serwerem vCenter i zapytanie o szczegóły maszyny i ich dane dotyczące wydajności. Moduł programu powershell jest automatycznie pobierane i instalowane jako część wyboru wstępnych. Automatyczne pobieranie wymaga kilku białej adresów URL, w przeciwnym muszą albo dostarczać przez listę dozwolonych podobnej do nich dostęp, lub ręcznie zainstalować moduł.
 
@@ -103,7 +103,7 @@ Zainstaluj moduł ręcznie, wykonując następujące czynności:
 
 Moduł zbierający należy nawiązać połączenia z serwerem vCenter i móc wysyłać zapytania dotyczące maszyn wirtualnych, ich metadanych i ich liczników wydajności. Te dane są używane przez projekt do obliczania oceny.
 
-1. Aby połączyć z serwerem vCenter, tylko do odczytu konta z uprawnieniami, jak podano w poniższej tabeli można służyć do uruchamiania odnajdywania. 
+1. Aby połączyć z serwerem vCenter, tylko do odczytu konta z uprawnieniami, jak podano w poniższej tabeli można służyć do uruchamiania odnajdywania.
 
     |Zadanie  |Wymagana Rola/konta  |Uprawnienia  |
     |---------|---------|---------|
@@ -118,13 +118,13 @@ Moduł zbierający należy nawiązać połączenia z serwerem vCenter i móc wys
 > Tylko vCenter Server w wersji 5.5, 6.0 i 6.5 oficjalnie są obsługiwane.
 
 > [!IMPORTANT]
-> Zalecane ustawienie najwyższego poziomu wspólnych (3) dla poziomu statystyk, tak aby wszystkie liczniki są poprawnie zbierane. Jeśli masz vCenter ustawiony na niższym poziomie tylko kilka liczniki mogą być zbierane całkowicie z resztą równa 0. Ocena następnie mogą być wyświetlane niekompletne dane. 
+> Zalecane ustawienie najwyższego poziomu wspólnych (3) dla poziomu statystyk, tak aby wszystkie liczniki są poprawnie zbierane. Jeśli masz vCenter ustawiony na niższym poziomie tylko kilka liczniki mogą być zbierane całkowicie z resztą równa 0. Ocena następnie mogą być wyświetlane niekompletne dane.
 
 ### <a name="selecting-the-scope-for-discovery"></a>Wybieranie zakresu odnajdowania
 
 Po nawiązaniu połączenia vCenter, można wybrać zakres odnajdywania. Wybieranie zakresu odnajduje wszystkie maszyny wirtualne z vCenter określona ścieżka spisu.
 
-1. Zakres może być centrum danych, folder lub hosta ESXi. 
+1. Zakres może być centrum danych, folder lub hosta ESXi.
 2. Jednocześnie można wybrać tylko jeden zakres. Aby wybrać więcej maszyn wirtualnych, można zakończyć jeden odnajdywania i ponownego uruchomienia procesu odnajdywania z nowego zakresu.
 3. Można wybrać tylko zakres, który ma *mniej niż 1500 maszyn wirtualnych*.
 
@@ -141,14 +141,15 @@ Po uruchomieniu odnajdywania program vCenter maszyny wirtualne są wykrywane, a 
 
 ### <a name="what-data-is-collected"></a>Jakie dane są zbierane?
 
-Zadanie kolekcji umożliwia odnalezienie następujących statycznych metadane dotyczące wybranych maszyn wirtualnych. 
+Zadanie kolekcji umożliwia odnalezienie następujących statycznych metadane dotyczące wybranych maszyn wirtualnych.
 
 1. Nazwa wyświetlana maszyny Wirtualnej (w programie vCenter)
 2. Ścieżka spisu maszyny Wirtualnej (w programie vCenter hosta/folder)
 3. Adres IP
 4. Adres MAC
+5. System operacyjny
 5. Liczba rdzeni, dysków, kart sieciowych
-6. Pamięć RAM, rozmiarów dysków
+6. Rozmiar pamięci, rozmiarów dysków
 7. Liczniki wydajności i maszyny Wirtualnej, dysku i sieci wymienione w poniższej tabeli.
 
 W poniższej tabeli wymieniono liczniki wydajności, które są zbierane, a także wyświetla wyniki oceny, które ma wpływ, jeśli nie ma określonego licznika.
@@ -161,7 +162,7 @@ W poniższej tabeli wymieniono liczniki wydajności, które są zbierane, a tak�
 |virtualDisk.write.average                | 2       |2                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
 |virtualDisk.numberReadAveraged.average   | 1       |3                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
 |virtualDisk.numberWriteAveraged.average  | 1       |3                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
-|net.received.average                     | 2       |3                 |Koszt rozmiar i sieci maszyny Wirtualnej                        |
+|NET.RECEIVED.AVERAGE                     | 2       |3                 |Koszt rozmiar i sieci maszyny Wirtualnej                        |
 |net.transmitted.average                  | 2       |3                 |Koszt rozmiar i sieci maszyny Wirtualnej                        |
 
 > [!WARNING]
@@ -190,7 +191,7 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania komó
 2. W celu zapewnienia bezpiecznego pobrany poprawki, Otwórz okno polecenia administratora i uruchom następujące polecenie, aby wygenerować skrótu dla pliku ZIP. Skrót wygenerowanego powinno być zgodne z skrótu wymienionych dla określonej wersji:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
+
     (example usage C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
 3. Skopiuj plik zip do migracji Azure modułu zbierającego maszyny wirtualnej (moduł zbierający urządzenia).
 4. Kliknij prawym przyciskiem myszy w pliku zip, a następnie wybierz Wyodrębnij wszystkie.

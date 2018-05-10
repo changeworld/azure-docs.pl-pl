@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 2c6f5cf2d89da0c2418ac58ca5d47a8aa05e732f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-best-practices"></a>Najlepsze rozwiązania Internetu rzeczy
 
 Zabezpieczanie infrastruktury Internetu rzeczy (IoT) wymaga rygorystyczne strategii zabezpieczeń zabezpieczeń. Ta strategia wymaga do zabezpieczania danych w chmurze, ochronę integralności danych przesyłanych za pośrednictwem publicznej sieci internet i bezpiecznie udostępnić urządzeń. Każda warstwa kompilacje gwarancję zabezpieczeń w całej infrastruktury.
@@ -7,7 +23,7 @@ Zabezpieczanie infrastruktury Internetu rzeczy (IoT) wymaga rygorystyczne strate
 Ta strategia zabezpieczeń zabezpieczeń można opracowany i wykonywane przy aktywnego udziału różnych odtwarzaczy niezbędnych do produkcji, opracowywania i wdrażania urządzenia IoT i infrastruktury. Poniżej znajduje się ogólny opis te odtwarzacze.
 
 * **Producenta sprzętu IoT/integrator**: zazwyczaj te odtwarzacze są producentów sprzętu IoT wdrażany integratory zebrania sprzętu od różnych producentów lub dostawców, zapewniając sprzętu wdrożenia IoT wyprodukowanych lub zintegrować przez innych dostawców.
-* **Deweloper rozwiązania IoT**: Projektowanie rozwiązania IoT jest zazwyczaj wykonywane przez dewelopera rozwiązania. Część może tego projektanta wewnętrznych zespołu lub integrator systemu (SI) zajmujących się tego działania. Developer rozwiązania IoT można utworzyć różne składniki rozwiązania IoT od początku, integracji różnych składników gotowe lub open source lub przyjęcie wstępnie skonfigurowanych rozwiązań o dostosowaniu drobne.
+* **Deweloper rozwiązania IoT**: Projektowanie rozwiązania IoT jest zazwyczaj wykonywane przez dewelopera rozwiązania. Część może tego projektanta wewnętrznych zespołu lub integrator systemu (SI) zajmujących się tego działania. Developer rozwiązania IoT można opracowanie różne składniki rozwiązania IoT od początku, integracji różnych składników gotowe lub open source lub przyjąć akceleratorów rozwiązania z pomocniczą dostosowania.
 * **Narzędzie wdrażania rozwiązania IoT**: rozwiązanie po IoT jest rozwinięte, musi on zostać wdrożony w polu. Ten proces obejmuje wdrożenia sprzętu, połączenia urządzeń i wdrażanie rozwiązań w urządzeniach sprzętowych lub chmury.
 * **Operator rozwiązania IoT**: rozwiązania IoT — po wdrożeniu, wymaga długoterminowej obsługi, monitorowaniem, uaktualnienia i konserwacji. Te zadania można wewnętrznych zespół, który obejmuje informacje specjalistów technologii, operacje sprzętu i zespoły konserwacji i specjalistów domeny, które monitorują poprawne zachowanie całej infrastruktury IoT.
 

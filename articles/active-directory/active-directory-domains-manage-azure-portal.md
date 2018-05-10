@@ -1,25 +1,23 @@
 ---
-title: "Zarządzanie niestandardowych nazw domen w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Pojęcia dotyczące zarządzania i kwestie dotyczące zarządzania nazwę domeny w usłudze Azure Active Directory"
+title: Zarządzanie niestandardowych nazw domen w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Pojęcia dotyczące zarządzania i kwestie dotyczące zarządzania nazwę domeny w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 5063cd0a-dba2-4ba9-aa65-b8117490d73a
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 64c1be4358305a736ac1dd8a1b7194c80100d256
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 81c2371d5dbb17399071c80ff4e8b81813ed014c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowych nazw domen w usłudze Azure Active Directory
 Nazwa domeny jest ważnym elementem identyfikator wiele zasobów katalogu: wchodzi w skład użytkownika nazwy lub adresu e-mail dla użytkownika, część adresu w grupie i może być częścią aplikacji identyfikator URI aplikacji. Zasób w usłudze Azure Active Directory (Azure AD) może zawierać nazwy domeny, który już jest weryfikowany jako należących do katalogu, który zawiera zasób. Tylko administrator globalny może wykonywać zadania zarządzania domeny w usłudze Azure AD.
@@ -28,7 +26,7 @@ Nazwa domeny jest ważnym elementem identyfikator wiele zasobów katalogu: wchod
 Podczas tworzenia katalogu z początkowej nazwy domeny, takie jak "contoso.onmicrosoft.com", jest również nazwa domeny głównej. Podczas tworzenia nowego użytkownika, domena podstawowa jest domyślna nazwa domeny dla nowego użytkownika. Nazwa domeny głównej ustawienia usprawnia proces dla administratora utworzyć nowych użytkowników w portalu. Aby zmienić nazwę domeny głównej:
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz **usługi Azure Active Directory**.
+2. Wybierz pozycję **Azure Active Directory**.
 3. Wybierz **niestandardowych nazw domen**.
      
    ![Otwieranie Zarządzanie użytkownikami](./media/active-directory-domains-manage-azure-portal/add-custom-domain.png)
@@ -65,6 +63,6 @@ Większość zadań zarządzania dla nazwy domeny w usłudze Azure Active Direct
 * [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu programu PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Dodawanie niestandardowych nazw domen](add-custom-domain.md)
 

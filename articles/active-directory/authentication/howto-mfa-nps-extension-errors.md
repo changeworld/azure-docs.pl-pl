@@ -1,25 +1,20 @@
 ---
 title: Rozwiązywanie problemów z kodów błędów dla rozszerzenia usługi Azure MFA NPS | Dokumentacja firmy Microsoft
-description: Uzyskaj pomoc dotyczącą rozwiązywania problemów związanych z rozszerzenia serwera NPS uwierzytelnianie wieloskładnikowe Azure z określonego rozwiązania dla typowe komunikaty o błędach
+description: Uzyskaj pomoc dotyczącą rozwiązywania problemów z rozszerzeniem NPS uwierzytelnianie wieloskładnikowe Azure
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: c82c96136dc5c1030deeae6a71e196aba2747490
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Komunikatami o błędach z rozszerzenia serwera NPS uwierzytelnianie wieloskładnikowe Azure
 
@@ -85,8 +80,8 @@ Jeśli wystąpią jeden z tych błędów, zaleca się możesz [się z pomocą te
 | Kod błędu | Komunikat o błędzie |
 | ---------- | ------------- |
 | **InvalidParameter** | Żądanie nie może mieć wartości null |
-| **InvalidParameter** | Identyfikator obiektu nie może być zerowe ani puste dla ReplicationScope: {0} |
-| **InvalidParameter** | Długość NazwaFirmy \{0} \ przekracza maksymalną dopuszczalną długość {1} |
+| **InvalidParameter** | Identyfikator obiektu nie może być zerowe ani puste dla ReplicationScope:{0} |
+| **InvalidParameter** | Długość NazwaFirmy \{0} \ przekracza maksymalną dozwoloną długość {1} |
 | **InvalidParameter** | UserPrincipalName nie może być zerowy lub pusty |
 | **InvalidParameter** | Podanego identyfikatora dzierżawcy nie znajduje się w poprawnym formacie |
 | **InvalidParameter** | Identyfikator sesji nie może być zerowy lub pusty |

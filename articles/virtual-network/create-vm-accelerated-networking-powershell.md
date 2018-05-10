@@ -3,8 +3,8 @@ title: Utwórz maszynę wirtualną platformy Azure za pomocą sieci przyspieszon
 description: Informacje o sposobie tworzenia maszyny wirtualnej systemu Linux za pomocą przyspieszony sieci.
 services: virtual-network
 documentationcenter: ''
-author: jdial
-manager: jeconnoc
+author: gsilva5
+manager: gedegrac
 editor: ''
 ms.assetid: ''
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
-ms.author: jimdial
-ms.openlocfilehash: 6d7e41b2b631fcecefd835a10e9b91fd9bb3f17d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: gsilva
+ms.openlocfilehash: de69cdf69f30639d048dccd7d433c86f6cb9db7b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Windows za pomocą przyspieszony sieci
 
@@ -270,7 +270,7 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
 
 Sprawdź Uwaga, VMSS ma stosowania aktualizacji za pomocą trzy różne ustawienia automatycznego, stopniowego i ręcznego uaktualnienia maszyny Wirtualnej.  W tych instrukcjach zasady są ustawione na tryb automatyczny, aby VMSS przejmą zmian natychmiast po ponownym uruchomieniu.  Ustawić ją na automatyczne, dzięki czemu zmiany są natychmiast pobrana: 
 
-```azurecli
+```azurepowershell
 $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
 
 Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
@@ -280,7 +280,7 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
 
 Na koniec uruchom ponownie VMSS:
 
-```azurecli
+```azurepowershell
 Start-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
     -VMScaleSetName "myScaleSet"
 ```

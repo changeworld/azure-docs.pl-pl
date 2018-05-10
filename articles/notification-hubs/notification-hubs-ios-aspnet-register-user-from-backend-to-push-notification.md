@@ -3,22 +3,22 @@ title: Zarejestruj bieżącego użytkownika dla powiadomień wypychanych przy u�
 description: Dowiedz się, jak utworzyć żądanie rejestracji powiadomień wypychanych w aplikacji systemu iOS za pomocą usługi Azure Notification Hubs, gdy rejestracja odbywa się za pośrednictwem interfejsu API sieci Web platformy ASP.NET.
 services: notification-hubs
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 46eb0dab60856d774c8ad2bf7ab55e1ffc6ddb66
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c43c15131afb5fbf346b0137dac566f5331c65a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Zarejestruj bieżącego użytkownika dla powiadomień wypychanych przy użyciu platformy ASP.NET
 > [!div class="op_single_selector"]

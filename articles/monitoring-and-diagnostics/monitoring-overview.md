@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Monitorowanie aplikacji platformy Azure i zasobów
 
@@ -60,7 +60,7 @@ Podstawowe funkcje monitorowania udostępnia podstawowe, wymagane monitorowanie 
 
 Metryki są dostępne statystyki które zapewniają różne zasoby i nawet systemu operacyjnego wewnątrz maszyny wirtualnej. Możesz wyświetlić te dane z jednego z eksploratorów w portalu Azure i tworzyć alerty oparte na tych metryk. Azure Monitor udostępnia najszybszą metryki potoku (5 minut do 1 minutę), dlatego powinien być używany dla czasu krytyczne alerty i powiadomienia.
 
-Można również wysyłać te metryki i analizy trendów i szczegółowe dzienniki usługi Analiza dzienników Azure lub tworzyć dodatkowe reguły alertów do aktywnego powiadomienia poważnych problemów, w wyniku tego analizy.  
+Można również wysyłać te metryki i dzienniki Analiza dzienników Azure do analizy trendów i szczegółowe lub tworzyć dodatkowe reguły alertów do aktywnego powiadomienia poważnych problemów, w wyniku tego analizy.  
 
 > [!NOTE]
 > Wysyłanie metryki wielowymiarowej do analizy dzienników przy użyciu ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -34,6 +34,8 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 - Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
+Konta, zaloguj się do lub z usługą Azure z musi być przypisany do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania na liście [uprawnień ](#permissions).
+
 ## <a name="work-with-network-security-groups"></a>Praca z sieciowymi grupami zabezpieczeń
 
 Można utworzyć [Wyświetl wszystkie](#view-all-network-security-groups), [szczegóły](#view-details-of-a-network-security-group), [zmienić](#change-a-network-security-group), i [usunąć](#delete-a-network-security-group) grupy zabezpieczeń sieci. Możesz również [skojarzyć lub usunąć skojarzenie](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) sieciową grupę zabezpieczeń z interfejsu sieciowego lub podsieci.
@@ -44,7 +46,7 @@ Istnieje limit liczby sieciowe grupy zabezpieczeń, które można utworzyć dla 
 
 1. W lewym górnym rogu portalu, wybierz **+ Utwórz zasób**.
 2. Wybierz **sieci**, a następnie wybierz pozycję **sieciowej grupy zabezpieczeń**.
-3. Wprowadź **nazwa** sieciowej grupy zabezpieczeń, wybierz użytkownika **subskrypcji**, Utwórz nową **grupy zasobów**, lub wybierz istniejącą grupę zasobów, wybierz pozycję **Lokalizacji**, a następnie wybierz **Utwórz**. 
+3. Wprowadź **nazwa** sieciowej grupy zabezpieczeń, wybierz użytkownika **subskrypcji**, Utwórz nową **grupy zasobów**, lub wybierz istniejącą grupę zasobów, wybierz pozycję **Lokalizacji**, a następnie wybierz **Utwórz**.
 
 **Polecenia**
 
@@ -67,7 +69,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowej grupy zabezp
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure na liście, zobacz następujące artykuły:
     *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [Tagi](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -211,7 +213,7 @@ Podczas niektórych ustawień, takich jak tagi i uprawnienia do istniejącej gru
 
 ### <a name="delete-an-application-security-group"></a>Usuwanie grupy zabezpieczeń aplikacji
 
-Nie można usunąć grupy zabezpieczeń aplikacji, jeśli ma ona żadnych interfejsów sieciowych w nim. Zmiana ustawienia interfejsu sieciowego lub usuwanie interfejsów sieciowych należy usunąć wszystkie interfejsy sieciowe z grupy zabezpieczeń aplikacji. Aby uzyskać więcej informacji, zobacz [dodania lub usunięcia interfejsu sieciowego z grup zabezpieczeń aplikacji](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) lub [usunąć interfejsu sieciowego](virtual-network-network-interface.md#delete-a-network-interface).
+Nie można usunąć grupy zabezpieczeń aplikacji, jeśli ma ona żadnych interfejsów sieciowych w nim. Usuń wszystkie interfejsy sieciowe z grupy zabezpieczeń aplikacji przez zmianę ustawienia interfejsu sieciowego lub usuwanie interfejsów sieciowych. Aby uzyskać więcej informacji, zobacz [dodania lub usunięcia interfejsu sieciowego z grup zabezpieczeń aplikacji](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) lub [usunąć interfejsu sieciowego](virtual-network-network-interface.md#delete-a-network-interface).
 
 **Polecenia**
 
@@ -220,18 +222,33 @@ Nie można usunąć grupy zabezpieczeń aplikacji, jeśli ma ona żadnych interf
 
 ## <a name="permissions"></a>Uprawnienia
 
-Do wykonania zadań dotyczących sieciowych grup zabezpieczeń, zasady zabezpieczeń i grup zabezpieczeń aplikacji, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie uprawnienia są wymienione w poniższej tabeli:
+Do wykonania zadań dotyczących sieciowych grup zabezpieczeń, zasady zabezpieczeń i grup zabezpieczeń aplikacji, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie uprawnienia są wymienione w poniższych tabelach:
 
-|Operacja                                                       |   Nazwa operacji                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/ruleTables/read                              |   Pobierz sieciową grupę zabezpieczeń                              |
-|Microsoft.Network/ruleTables/write                             |   Utwórz lub zaktualizuj sieciową grupę zabezpieczeń                 |
-|Microsoft.Network/ruleTables/delete                            |   Usuń sieciową grupę zabezpieczeń                           |
-|Microsoft.Network/ruleTables/join/action                       |   Dołącz do sieciowej grupy zabezpieczeń                             |
-|Microsoft.Network/ruleTables/rules/read                       |   Pobierz regułę                                    |
-|Microsoft.Network/ruleTables/rules/write                      |   Utwórz lub zaktualizuj regułę                       |
-|Microsoft.Network/ruleTables/rules/delete                     |   Usuń regułę                                 |
-|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   Pobierz sieciową grupę zabezpieczeń skuteczne interfejsu sieciowego  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   Pobiera następnego przeskoku z maszyny Wirtualnej                  |
+### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
-*Dołączanie do grupy zabezpieczeń sieci* operacji jest wymagany do skojarzenia z sieciową grupę zabezpieczeń do podsieci.
+| Akcja                                                        |   Name (Nazwa)                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/ruleTables/read                             |   Pobierz sieciową grupę zabezpieczeń                                          |
+| Microsoft.Network/ruleTables/write                            |   Utwórz lub zaktualizuj sieciową grupę zabezpieczeń                             |
+| Microsoft.Network/ruleTables/delete                           |   Usuń sieciową grupę zabezpieczeń                                       |
+| Microsoft.Network/ruleTables/join/action                      |   Skojarzenia sieciowej grupy zabezpieczeń do podsieci lub sieci interfejsu |
+| Microsoft.Network/ruleTables/rules/read                       |   Pobierz regułę                                                            |
+| Microsoft.Network/ruleTables/rules/write                      |   Utwórz lub zaktualizuj regułę                                               |
+| Microsoft.Network/ruleTables/rules/delete                     |   Usuń regułę                                                         |
+| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   Pobierz sieciową grupę zabezpieczeń skuteczne interfejsu sieciowego              |
+| Microsoft.Network/networkWatchers/nextHop/action              |   Pobiera następnego przeskoku z maszyny Wirtualnej                                         |
+
+### <a name="application-security-groups"></a>Grupy zabezpieczeń aplikacji
+
+| Akcja                                                                     | Name (Nazwa)                                                     |
+| --------------------------------------------------------------             | -------------------------------------------              |
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | Dołącz konfiguracji IP do grupy zabezpieczeń aplikacji|
+| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Dołącz regułę zabezpieczeń do grupy zabezpieczeń aplikacji    |
+| Microsoft.Network/applicationSecurityGroups/read                           | Pobierz grupy zabezpieczeń aplikacji                        |
+| Microsoft.Network/applicationSecurityGroups/write                          | Utwórz lub zaktualizuj grupy zabezpieczeń aplikacji           |
+| Microsoft.Network/applicationSecurityGroups/delete                         | Usuwanie grupy zabezpieczeń aplikacji                     |
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Tworzenie sieci lub za pomocą grupy zabezpieczeń aplikacji [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia Azure](cli-samples.md) przykładowe skrypty lub przy użyciu usługi Azure [szablonów Resource Manager](template-samples.md)
+- Tworzenie i stosowanie [Azure zasad](policy-samples.md) dla sieci wirtualnych

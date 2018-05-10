@@ -3,7 +3,7 @@ title: Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług fi
 description: Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 17794288-9074-44b5-acc8-1dacceb3f56c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: f1339af22132d19f14ea8ebb72fe0e6bd45b7fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń
 
@@ -42,7 +42,7 @@ Architektura składa się z następujących składników i korzysta z funkcji wd
 - **Szablony wdrażania**. W tym wdrożeniu [szablonów usługi Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview#template-deployment) są używane do automatycznego wdrożenia składników architektury w Microsoft Azure, określając parametry konfiguracji podczas instalacji.
 - **Skrypty wdrażania automatycznego**. Skrypty te pomocy wdrożyć rozwiązanie end-to-end. Skrypty obejmują:
     - Instalacja modułu i [administratora globalnego](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) skrypt instalacyjny jest używane do instalowania i sprawdź, czy wymagane moduły programu PowerShell i ról administratora globalnego są poprawnie skonfigurowane. 
-    - Instalacja skryptu PowerShell służy do wdrażania rozwiązania end-to-end, podanego przez plik .zip oraz pliku bacpac, który zawiera pokaz wstępnie zbudowanych aplikacji sieci web z [przykładowej bazy danych SQL](https://github.com/Microsoft/azure-sql-security-sample). zawartość. Kod źródłowy dla tego rozwiązania jest gotowa do przeglądu [repozytorium kodu plan przetwarzania płatności][code-repo]. 
+    - Instalacja skryptu PowerShell służy do wdrażania rozwiązania end-to-end, podanego przez plik .zip oraz pliku bacpac, który zawiera pokaz wstępnie zbudowanych aplikacji sieci web z [przykładowej bazy danych SQL](https://github.com/Microsoft/azure-sql-security-sample). zawartość. Kod źródłowy dla tego rozwiązania jest gotowa do przeglądu [repozytorium kodu plan przetwarzania płatności] [repozytorium kodu]. 
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 
@@ -305,7 +305,7 @@ Domyślnym wdrożeniu mają na celu dostarczenie linii bazowej zaleceń Centrum 
 
 ## <a name="deploy-the-solution"></a>Wdrażanie rozwiązania
 
-Składniki wdrażania tego rozwiązania są dostępne w [repozytorium kodu planu][code-repo]. Wdrażanie podstawowych architektura wymaga wykonania kilku czynności wykonywane przy użyciu v5 PowerShell firmy Microsoft. Aby połączyć z poziomu witryny sieci Web, podaj niestandardowej nazwy domeny (np. contoso.com). To jest określona za pomocą `-customHostName` przełącznika w kroku 2. Aby uzyskać więcej informacji, zobacz [kupić niestandardowej nazwy domeny dla aplikacji sieci Web Azure](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Niestandardowej nazwy domeny nie jest wymagane, aby pomyślnie wdrożyć i uruchomić rozwiązania, ale będzie mógł podłączyć się do witryny sieci Web w celach demonstracyjnych.
+Składniki do wdrożenia tego rozwiązania są dostępne w [repozytorium kodu planu] [repozytorium kodu]. Wdrażanie podstawowych architektura wymaga wykonania kilku czynności wykonywane przy użyciu v5 PowerShell firmy Microsoft. Aby połączyć z poziomu witryny sieci Web, podaj niestandardowej nazwy domeny (np. contoso.com). To jest określona za pomocą `-customHostName` przełącznika w kroku 2. Aby uzyskać więcej informacji, zobacz [kupić niestandardowej nazwy domeny dla aplikacji sieci Web Azure](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Niestandardowej nazwy domeny nie jest wymagane, aby pomyślnie wdrożyć i uruchomić rozwiązania, ale będzie mógł podłączyć się do witryny sieci Web w celach demonstracyjnych.
 
 Skrypty dodać użytkowników domeny do dzierżawy usługi Azure AD, który określisz. Firma Microsoft zaleca utworzenie nowej usługi Azure AD dzierżawy do użycia jako test.
 
@@ -388,8 +388,3 @@ Klienci są zobowiązani do zachowania kopię [odpowiedzialność podsumowanie m
 - Wszystkie nazwy klientów, rekordy transakcji i wszelkie powiązane dane na tej stronie są fikcyjne, utworzone na potrzeby tej architektury podstawowych i do celów ilustracyjnych. Żadne rzeczywiste skojarzenia ani połączenia jest przeznaczony i nie powinno być wnioskowane.  
 - To rozwiązanie został opracowany wspólnie przez firmę Microsoft i konsulting Avyan i jest dostępny w obszarze [licencji MIT](https://opensource.org/licenses/MIT).
 
-### <a name="document-authors"></a>Autorzy dokumentu
-
-* *Piotr Simorjay (Microsoft)*  
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Repozytorium kodu"

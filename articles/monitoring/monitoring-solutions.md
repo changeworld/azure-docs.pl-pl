@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: bwren
-ms.openlocfilehash: 1e22aab85976fcab8ec270bdea1b8988b4d3bfe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="management-solutions-in-azure"></a>Rozwiązania do zarządzania na platformie Azure
 Rozwiązania do zarządzania korzystać z usług Azure, aby zapewnić dodatkowy wgląd w funkcjonowanie określonej aplikacji lub usługi. Ten artykuł zawiera krótki przegląd rozwiązań do zarządzania Azure i uzyskać szczegółowe informacje na i ich instalowania.
 
 Rozwiązania do zarządzania zwykle zbierać informacje do analizy dzienników i podaj widoków do analizowania danych zebranych i dziennik wyszukiwania. Mogą one również korzystać z innych usług, takich jak usługi Automatyzacja Azure do wykonywania akcji związanych z aplikacji lub usługi.
 
-Rozwiązania do zarządzania można dodać do subskrypcji platformy Azure dla dowolnej aplikacji i usług, których używasz. Te są zwykle dostępne w żadnych kosztów, ale zbieranie danych, które może wywołać opłaty za użycie. Oprócz rozwiązań dostarczonych przez firmę Microsoft, partnerów i klientów można [tworzenia rozwiązań do zarządzania](../operations-management-suite/operations-management-suite-solutions-creating.md) do użycia w środowisku własnych lub udostępniona użytkownikom za pośrednictwem przez społeczność.
+Rozwiązania do zarządzania można dodać do subskrypcji platformy Azure dla dowolnej aplikacji i usług, których używasz. Te są zwykle dostępne w żadnych kosztów, ale zbieranie danych, które może wywołać opłaty za użycie. Oprócz rozwiązań dostarczonych przez firmę Microsoft, partnerów i klientów można [tworzenia rozwiązań do zarządzania](../monitoring/monitoring-solutions-creating.md) do użycia w środowisku własnych lub udostępniona użytkownikom za pośrednictwem przez społeczność.
 
 ## <a name="using-management-solutions"></a>Przy użyciu rozwiązań do zarządzania
 **Omówienie** strony dla każdego obszaru roboczego analizy dzienników Wyświetla kafelków dla każdego rozwiązania zainstalowane w obszarze roboczym. Kliknij Kafelek dla rozwiązania, aby otworzyć jego widoku, który zawiera bardziej szczegółowe analizy jego zebranych danych.

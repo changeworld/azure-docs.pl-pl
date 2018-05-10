@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: d6a4701c0318edf8292c777615196a2170a68750
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 065ac8b2e9cb48408c7922a1937e541521ccd8cf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
-Azure automatycznie kieruje ruchem między podsieciami Azure, sieci wirtualnych i sieciami lokalnymi. Jeśli chcesz zmienić domyślne Azure routingu, możesz to zrobić, tworząc tabelę tras. Jeśli nie znasz z routingiem platformy Azure, zaleca się odczytu [Omówienie routingu](virtual-networks-udr-overview.md) i wykonując [kierować ruchem sieciowym z tabelą tras](tutorial-create-route-table-portal.md) samouczek, przed wykonaniem zadania w tym artykule.
+Azure automatycznie kieruje ruchem między podsieciami Azure, sieci wirtualnych i sieciami lokalnymi. Jeśli chcesz zmienić domyślne Azure routingu, możesz to zrobić, tworząc tabelę tras. Jeśli jesteś nowym użytkownikiem routingu w sieci wirtualnych, możesz dowiedzieć się więcej o w [Omówienie routingu](virtual-networks-udr-overview.md) lub wykonując [samouczek](tutorial-create-route-table-portal.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -31,8 +31,10 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
-- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
+
+Konta, zaloguj się do lub z usługą Azure, musi być przypisany do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania na liście [uprawnień ](#permissions).
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
@@ -49,7 +51,7 @@ Istnieje limit liczby tabel tras, można utworzyć dla każdej lokalizacji platf
 
 ## <a name="view-route-tables"></a>Wyświetlanie tabel tras
 
-W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go. Wymieniono tabele tras, które istnieją w Twojej subskrypcji.
+W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją. Wymieniono tabele tras, które istnieją w Twojej subskrypcji.
 
 **Polecenia**
 
@@ -58,12 +60,12 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wys
 
 ## <a name="view-details-of-a-route-table"></a>Wyświetl szczegóły tabelę tras
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
-2. Wybierz z listy, który chcesz wyświetlić szczegóły dotyczące tabeli tras. W obszarze **ustawienia** można wyświetlić **tras** w tabeli tras i **podsieci** jest skojarzona tabela tras.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
+2. Wybierz z listy, który chcesz wyświetlić szczegóły dotyczące tabeli tras. W obszarze **ustawienia**, można wyświetlić **tras** w tabeli tras i **podsieci** jest skojarzona tabela tras.
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, zobacz następujące informacje:
     *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [Tagi](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -74,7 +76,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wys
 
 ## <a name="change-a-route-table"></a>Zmień tabelę tras
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras, które chcesz zmienić. Najbardziej typowe zmiany są [Dodawanie](#create-a-route) lub [usuwanie](#delete-a-route) tras i [kojarzenie](#associate-a-route-table-to-a-subnet) tabel, tras lub [usunięciu](#dissociate-a-route-table-from-a-subnet) tabel z tras podsieci.
 
 **Polecenia**
@@ -86,7 +88,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wys
 
 Podsieć może mieć zero lub jedną tabelę tras skojarzony. Tabela tras może być skojarzona z zero lub wiele podsieci. Ponieważ tabel tras nie są skojarzone z siecią wirtualną, należy skojarzyć tabelę tras do każdej podsieci ma powiązanych z tabeli tras. Wszystkie ruchu wychodzącego do podsieci jest kierowany oparte na trasach utworzonego w ramach tabel tras [domyślne trasy](virtual-networks-udr-overview.md#default), i propagowane trasy z sieci lokalnej, jeśli sieci wirtualnej jest podłączona do sieci wirtualnej platformy Azure (bramy ExpressRoute lub sieci VPN, jeśli za pomocą protokołu BGP dla bramy sieci VPN). Można skojarzyć tylko tabelę tras do podsieci w sieci wirtualnych, które istnieją w tej samej lokalizacji platformy Azure i subskrypcji jako tabeli tras.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz z listy, które podsieci ma zostać skojarzona tabela tras, która ma sieci wirtualnej.
 3. Wybierz **podsieci** w obszarze **ustawienia**.
 4. Wybierz podsieć, chcesz skojarzyć tabeli tras.
@@ -101,7 +103,7 @@ Podsieć może mieć zero lub jedną tabelę tras skojarzony. Tabela tras może 
 
 Jeśli usuniesz skojarzenie tabelę tras z podsiecią, Azure kieruje ruchem na podstawie jego [domyślne trasy](virtual-networks-udr-overview.md#default).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz sieć wirtualną, która zawiera podsieć chcesz usunąć skojarzenie z tabeli tras.
 3. Wybierz **podsieci** w obszarze **ustawienia**.
 4. Wybierz podsieć, aby usunąć skojarzenie z tabeli tras.
@@ -116,7 +118,7 @@ Jeśli usuniesz skojarzenie tabelę tras z podsiecią, Azure kieruje ruchem na p
 
 Jeśli tabelę tras jest skojarzony z żadnych podsieci, nie można usunąć. [Usuń skojarzenie](#dissociate-a-route-table-from-a-subnet) tabelę tras z wszystkich podsieci przed próbą usunięcia go.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz **...**  w prawej tabeli tras do usunięcia.
 3. Wybierz **usunąć**, a następnie wybierz **tak**.
 
@@ -129,7 +131,7 @@ Jeśli tabelę tras jest skojarzony z żadnych podsieci, nie można usunąć. [U
 
 Istnieje limit liczby tras na tabelę tras można utworzyć dla każdej lokalizacji platformy Azure i subskrypcji. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras z listy, który chcesz dodać trasę do.
 3. Wybierz **tras**w obszarze **ustawienia**.
 4. Wybierz pozycję **+ Dodaj**.
@@ -137,7 +139,7 @@ Istnieje limit liczby tras na tabelę tras można utworzyć dla każdej lokaliza
 6. Wprowadź **prefiks adresu**, w notacji CIDR, który ma zostać kierować ruchem do. Nie można zduplikować prefiks w więcej niż jedną trasę w tabeli tras, chociaż prefiks mogą być zawarte w innym prefiks. Na przykład jeśli 10.0.0.0/16 jest zdefiniowany jako prefiksu w jedną trasę, nadal można zdefiniować innej trasy z prefiksem adresu 10.0.0.0/24. Azure wybiera trasę dla ruchu w oparciu o najdłuższe dopasowanie prefiksu. Aby dowiedzieć się więcej na temat sposobu Azure wybierania tras, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 7. Wybierz **następnego przeskoku typu**. Aby uzyskać szczegółowy opis wszystkich typów następnego przeskoku, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
 8. Wprowadź adres IP dla **następnego przeskoku**. Adres można wprowadzić tylko w przypadku wybrania *urządzenie wirtualne* dla **następnego przeskoku typu**.
-9. Kliknij przycisk **OK**. 
+9. Kliknij przycisk **OK**.
 
 **Polecenia**
 
@@ -148,7 +150,7 @@ Istnieje limit liczby tras na tabelę tras można utworzyć dla każdej lokaliza
 
 Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informacje podane podczas wyświetlania tras, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras z listy, który chcesz wyświetlić trasy dla.
 3. Wybierz **tras** w obszarze **ustawienia**.
 
@@ -159,7 +161,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 ## <a name="view-details-of-a-route"></a>Wyświetl szczegóły trasy
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras, który chcesz wyświetlić szczegółowe informacje o trasie dla.
 3. Wybierz **tras**.
 4. Wybierz trasy, który chcesz wyświetlić szczegóły.
@@ -171,7 +173,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 ## <a name="change-a-route"></a>Zmień trasę
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras, aby zmienić trasę dla.
 3. Wybierz **tras**.
 4. Wybierz trasy, który chcesz zmienić.
@@ -184,7 +186,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 ## <a name="delete-a-route"></a>Usuń trasę
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz chcesz usunąć trasę dla tabeli tras.
 3. Wybierz **tras**.
 4. Wybierz z listy tras, **...**  po prawej stronie trasy do usunięcia.
@@ -197,9 +199,9 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 ## <a name="view-effective-routes"></a>Widok skuteczne tras
 
-Skuteczne trasy dla każdego interfejsu sieciowego dołączony do maszyny wirtualnej są kombinacja trasy tabele, które zostały utworzone, trasy domyślne platformy Azure, i propagowane żadnych trasy z lokalnymi sieciami za pomocą protokołu BGP za pośrednictwem bramy sieci wirtualnej platformy Azure. Opis wprowadzenia trasy dla interfejsu sieciowego jest przydatne podczas rozwiązywania problemów z routingiem. Można wyświetlić skuteczne trasy dla dowolnego interfejsu sieciowego, który jest podłączony do uruchomionej maszyny wirtualnej.
+Skuteczne trasy dla każdego interfejsu sieciowego dołączony do maszyny wirtualnej są kombinacją tabele tras, które zostały utworzone, trasy domyślne platformy Azure i wszelkie tras propagowane z lokalnymi sieciami za pomocą protokołu BGP za pośrednictwem bramy sieci wirtualnej platformy Azure. Opis wprowadzenia trasy dla interfejsu sieciowego jest przydatne podczas rozwiązywania problemów z routingiem. Można wyświetlić skuteczne trasy dla dowolnego interfejsu sieciowego, który jest podłączony do uruchomionej maszyny wirtualnej.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź nazwę chcesz wyświetlić skuteczne trasy dla maszyny wirtualnej. Jeśli nie znasz nazwę maszyny wirtualnej, wprowadź *maszyn wirtualnych* w polu wyszukiwania. Gdy **maszyn wirtualnych** pojawia się w wynikach wyszukiwania, zaznacz go i wybierz maszynę wirtualną z listy.
+1. W polu wyszukiwania w górnej części portalu wprowadź nazwę chcesz wyświetlić skuteczne trasy dla maszyny wirtualnej. Jeśli nie znasz nazwę maszyny wirtualnej, wprowadź *maszyn wirtualnych* w polu wyszukiwania. Gdy **maszyn wirtualnych** są wyświetlane w wynikach wyszukiwania, zaznacz go i wybierz maszynę wirtualną z listy.
 2. Wybierz **sieci** w obszarze **ustawienia**.
 3. Wybierz nazwę karty sieciowej.
 4. Wybierz **skuteczne tras** w obszarze **pomocy technicznej i rozwiązywania problemów**.
@@ -226,21 +228,24 @@ Można określić typ następnego przeskoku między maszyną wirtualną i adresu
 
 - Azure CLI: [az sieci obserwatora Pokaż następnego przeskoku](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
 - PowerShell: [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 
- 
+
 ## <a name="permissions"></a>Uprawnienia
 
-Do wykonania zadań dotyczących tras i tabele tras, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie uprawnienia są wymienione w poniższej tabeli:
+Do wykonania zadań dotyczących tras i tabele tras, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie akcje wymienione w poniższej tabeli:
 
-|Operacja                                                       |   Nazwa operacji                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/routeTables/read                              |   Pobierz tabelę tras                              |
-|Microsoft.Network/routeTables/write                             |   Utwórz lub zaktualizuj tabelę tras                 |
-|Microsoft.Network/routeTables/delete                            |   Usunąć tabeli tras                           |
-|Microsoft.Network/routeTables/join/action                       |   Dołącz do tabeli tras                             |
-|Microsoft.Network/routeTables/routes/read                       |   Pobierz trasy                                    |
-|Microsoft.Network/routeTables/routes/write                      |   Utwórz lub zaktualizuj trasę                       |
-|Microsoft.Network/routeTables/routes/delete                     |   Usuń trasy                                 |
-|Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Pobierz tabelę tras obowiązującej interfejsu sieciowego  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   Pobiera następnego przeskoku z maszyny Wirtualnej                  |
+| Akcja                                                          |   Name (Nazwa)                                                  |
+|--------------------------------------------------------------   |   -------------------------------------------           |
+| Microsoft.Network/routeTables/read                              |   Odczytać tabeli tras                                    |
+| Microsoft.Network/routeTables/write                             |   Utwórz lub zaktualizuj tabelę tras                        |
+| Microsoft.Network/routeTables/delete                            |   Usuń tabelę tras                                  |
+| Microsoft.Network/routeTables/join/action                       |   Kojarzenie tabeli tras z podsiecią                   |
+| Microsoft.Network/routeTables/routes/read                       |   Trasy do odczytu                                          |
+| Microsoft.Network/routeTables/routes/write                      |   Utwórz lub zaktualizuj trasę                              |
+| Microsoft.Network/routeTables/routes/delete                     |   Usuń trasę                                        |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Pobierz obowiązująca tabela routingu dla interfejsu sieciowego |
+| Microsoft.Network/networkWatchers/nextHop/action                |   Pobiera następnego przeskoku z maszyny Wirtualnej                           |
 
-*Tabeli tras sprzężenia* operacji jest wymagany do skojarzenia tabelę tras z podsiecią.
+## <a name="next-steps"></a>Kolejne kroki
+
+- Tworzenie tabeli tras przy użyciu [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia Azure](cli-samples.md) przykładowe skrypty lub przy użyciu usługi Azure [szablonów Resource Manager](template-samples.md)
+- Tworzenie i stosowanie [Azure zasad](policy-samples.md) dla sieci wirtualnych

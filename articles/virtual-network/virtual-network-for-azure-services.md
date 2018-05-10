@@ -1,13 +1,13 @@
 ---
-title: "Sieci wirtualnej do usług platformy Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat zalet wdrażania zasobów w sieci wirtualnej. Zasobów w sieci wirtualne mogą komunikować się ze sobą i zasobów lokalnych, bez ruch przechodzi przez Internet."
+title: Sieci wirtualnej do usług platformy Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zalet wdrażania zasobów w sieci wirtualnej. Zasobów w sieci wirtualne mogą komunikować się ze sobą i zasobów lokalnych, bez ruch przechodzi przez Internet.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 15a5ede13aebb039c1d17f118ee1acdcf9031d50
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integracji sieci wirtualnej do usług platformy Azure
 
@@ -49,14 +49,15 @@ Każda usługa bezpośrednio wdrożony w sieci wirtualnej ma szczególne wymagan
  
 - Maszyny wirtualne: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [systemu Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Sieci szkieletowej usług](../service-fabric/service-fabric-patterns-networking.md?toc=%2fazure%2fvirtual-network%2ftoc.json#existingvnet)
-- [Zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Środowisko usługi App Service](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [RedisCache](../redis-cache/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Zarządzanie interfejsami API](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Brama aplikacji (wewnętrzny)](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Aparat usługi kontenera platformy Azure](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json): usługi kontenera platformy Azure utworzy domyślną sieci wirtualnej. Można utworzyć niestandardowe sieci wirtualnej do użycia z [aparat usługi kontenera platformy Azure](https://github.com/Azure/acs-engine/tree/master/examples/vnet).
+- [Usługa Azure Kubernetes (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Aparat usługi kontenera platformy Azure](https://github.com/Azure/acs-engine) z CNI sieci wirtualnych Azure [wtyczki](https://github.com/Azure/acs-engine/tree/master/examples/vnet)
 - [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json): sieć wirtualna (klasyczna) tylko
 - [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
 - [Usługi w chmurze](https://msdn.microsoft.com/library/azure/jj156091): sieć wirtualna (klasyczna) tylko

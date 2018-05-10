@@ -1,12 +1,12 @@
 ---
-title: "Lista kontrolna zabezpieczeń sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw Lista kontrolna zabezpieczeń zabezpieczeń sieci szkieletowej Azure."
+title: Lista kontrolna zabezpieczeń sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw Lista kontrolna zabezpieczeń zabezpieczeń sieci szkieletowej Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 526f10bab30b7d0fae796e47f5a27a58428b9a3b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ef404b106d600f5cb25a46319d75c8978148b466
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Lista kontrolna zabezpieczeń platformy Azure sieci szkieletowej usług
 Ten artykuł zawiera listę kontrolną łatwy w użyciu, które mogą pomóc w zabezpieczeniu środowiska sieć szkieletowa usług Azure.
@@ -46,7 +46,7 @@ Poniższa lista kontrolna umożliwia daje pewność, że nie pomijane wszelkie i
 |Usługa Key Vault| <ul><li>Pozwala zarządzać certyfikatami dla klastrów sieci szkieletowej usług platformy Azure.  </li></ul>|
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Proces uaktualniania klastra sieci szkieletowej usług oraz oczekiwań od użytkownika](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)
 - [Zarządzanie aplikacji usługi Service Fabric w programie Visual Studio](https://docs.microsoft.com/azure/service-fabric/service-fabric-manage-application-in-visual-studio).
 - [Wprowadzenie modelu kondycji sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction).

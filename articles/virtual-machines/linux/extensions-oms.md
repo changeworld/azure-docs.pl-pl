@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/27/2018
+ms.date: 05/07/2018
 ms.author: danis
-ms.openlocfilehash: f04a9b812a86f999d5c0ec52be85f77158094c27
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f5d3754d97e44d9944cd09f1ec082e9c04ad206
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej OMS dla systemu Linux
 
@@ -47,6 +47,7 @@ Poniższa tabela zawiera mapowania wersji wirtualna OMS rozszerzenia i Agent pak
 
 | Wersja rozszerzenia maszyny Wirtualnej systemu Linux OMS | Wersja pakietu OMS agenta | 
 |--------------------------------|--------------------------|
+| 1.6.42.0 | [1.6.42.0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
 | 1.4.58.7 | [14.2-125](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-125)|
@@ -199,6 +200,7 @@ Dane wyjściowe wykonania rozszerzenie jest zarejestrowane w następującym plik
 | 10 | Maszyna wirtualna jest już połączona z obszaru roboczego analizy dzienników | Aby połączyć maszynę Wirtualną do obszaru roboczego określonej w schemacie rozszerzenia, stopOnMultipleConnections ma wartość false w publicznych Ustawienia tej właściwości lub Usuń. Tej maszyny Wirtualnej pobiera rozliczane po dla każdego obszaru roboczego jest połączony. |
 | 11 | Nieprawidłowy konfiguracji do rozszerzenia | Postępuj zgodnie z powyższych przykładach można ustawić wartości wszystkich właściwości niezbędne do wdrożenia. |
 | 12 | Menedżer pakietów dpkg jest zablokowany. | Upewnij się, wszystkie dpkg operacje aktualizacji na komputerze zostało ukończone, a następnie spróbuj ponownie. |
+| 19 | Niepowodzenie instalacji OMI | 
 | 20 | Błąd instalacji pakietu SCX |
 | 51 | To rozszerzenie nie jest obsługiwana w systemie operacyjnym maszyny Wirtualnej | |
 | 55 | Nie można nawiązać połączenia z usługą Microsoft Operations Management Suite | Sprawdź, czy system ma dostęp do Internetu lub że podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego. |

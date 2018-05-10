@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: a1d2261eb0d4d57b5bf8b5c7baae792a0ff41862
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9754058869d790f99e3c44db6ddd31b0ecb7a4e4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie podstawy OnDemand dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -106,7 +106,7 @@ W tej sekcji przedstawiono kroki, aby skonfigurować usługi Azure AD świadczen
 
 5. W obszarze **poświadczeń administratora** sekcji wejściowych **administratora**, **hasło administratora**, i **domeny** z Twojej OnDemand podstawy konto.
 
-    *   W **administratora** pola, wypełnij nazwę użytkownika konta administratora dzierżawy OnDemand podstawy. Przykład: administratora.
+    *   W **administratora** pola, wypełnij domena azwa_użytkownika konta administratora dzierżawy OnDemand podstawy. Przykład: contoso\admin.
 
     *   W **hasło administratora** pola, wypełnij hasła odpowiadającego nazwa użytkownika.
 

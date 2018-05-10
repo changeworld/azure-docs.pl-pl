@@ -1,24 +1,24 @@
 ---
-title: "Jak używać usługi Notification Hubs za pomocą języka PHP"
-description: "Dowiedz się, jak używać usługi Azure Notification Hubs z zaplecza PHP."
+title: Jak używać usługi Notification Hubs za pomocą języka PHP
+description: Dowiedz się, jak używać usługi Azure Notification Hubs z zaplecza PHP.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: php
 ms.devlang: php
 ms.topic: article
-ms.date: 06/07/2016
-ms.author: yuaxu
-ms.openlocfilehash: c27b6308ff528224a0398e0ff40537db05417bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 930da7cca312ac6233b337dd7ddac478c3bbee7b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Jak używać usługi Notification Hubs za pomocą języka PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -31,7 +31,7 @@ W tym temacie zostanie przedstawiony sposób:
 * Postępuj zgodnie z [samouczku Get](notification-hubs-ios-apple-push-notification-apns-get-started.md) dla platformy przenośne wyboru wdrażanie części zaplecza w kodzie PHP.
 
 ## <a name="client-interface"></a>Interfejs klienta
-Interfejs klienta głównego zapewniają te same metody, które są dostępne w [.NET SDK centra powiadomień](http://msdn.microsoft.com/library/jj933431.aspx), to umożliwi bezpośrednio tłumaczenie samouczki i przykłady, które są obecnie dostępne w tej witrynie, a zamieszczone przez społeczności w Internecie.
+Interfejs klienta głównego zapewniają te same metody, które są dostępne w [.NET SDK centra powiadomień](http://msdn.microsoft.com/library/jj933431.aspx), co pozwala na bezpośrednie przetłumaczenie samouczki i przykłady, które są obecnie dostępne w tej witrynie i przekazanych przez społeczności w Internecie.
 
 Możesz znaleźć kod dostępne w [próbki otoki PHP REST].
 
@@ -45,10 +45,10 @@ Aby wysłać iOS natywnych powiadomień:
     $hub->sendNotification($notification, null);
 
 ## <a name="implementation"></a>Wdrażanie
-Jeśli tak, nie jest jeszcze nie, wykonaj naszych [samouczku Get] w górę do ostatniej sekcji, w którym należy implementować zaplecza.
+Jeśli tak, nie jest jeszcze nie, wykonaj [samouczku Get] w górę do ostatniej sekcji, w którym należy implementować zaplecza.
 Ponadto jeśli chcesz służy kod z [próbki otoki PHP REST] i przejść bezpośrednio do [Ukończ samouczek](#complete-tutorial) sekcji.
 
-Wszystkie szczegóły, aby zaimplementować pełne otoki REST można znaleźć w [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji zostaną przedstawione wykonania PHP główne kroki wymagane do uzyskania dostępu punkty końcowe REST centra powiadomień:
+Wszystkie szczegóły, aby zaimplementować pełne otoki REST można znaleźć w [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). W tej sekcji opisano wykonania PHP główne kroki wymagane do uzyskania dostępu punkty końcowe REST centra powiadomień:
 
 1. Analizowanie parametrów połączenia
 2. Wygeneruj token autoryzacji
@@ -132,9 +132,9 @@ Najpierw należy zdefiniować Daj nam Klasa reprezentująca powiadomienie.
         }
     }
 
-Ta klasa jest kontenerem dla treści natywnych powiadomień, lub zbiór właściwości, w przypadku szablonu powiadomienia i zestaw nagłówków zawiera formacie (native platformy lub szablonu) i właściwości specyficzne dla platformy (na przykład właściwość wygaśnięcia firmy Apple i WNS nagłówki).
+Ta klasa jest kontenerem dla treści natywnych powiadomień, lub zbiór właściwości, w przypadku szablonu powiadomienia i zestaw nagłówków, zawiera formacie (native platformy lub szablonu) i właściwości specyficzne dla platformy (na przykład właściwość wygaśnięcia firmy Apple i WNS nagłówki).
 
-Zapoznaj się z [dokumentacja interfejsów API REST centra powiadomień](http://msdn.microsoft.com/library/dn495827.aspx) i formaty na platformach powiadomienia określonych dla wszystkich dostępnych opcji.
+Zapoznaj się [dokumentacja interfejsów API REST centra powiadomień](http://msdn.microsoft.com/library/dn495827.aspx) i formaty na platformach powiadomienia określonych dla wszystkich dostępnych opcji.
 
 Dzięki tej klasy, możemy teraz zapisać wysyłania powiadomień metody wewnątrz **NotificationHub** klasy.
 

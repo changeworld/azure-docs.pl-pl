@@ -1,12 +1,12 @@
 ---
-title: "Integrowanie usługi Azure Service Fabric z usługą API Management | Microsoft Docs"
-description: "Z tego samouczka dowiesz się, jak szybko rozpocząć pracę z usługami Azure API Management i Service Fabric."
+title: Integrowanie usługi Azure Service Fabric z usługą API Management | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak szybko rozpocząć pracę z usługami Azure API Management i Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 430e813b89f3e0004c517ef77f1028e00ebe5404
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f209e992c4562f11727613c58e1e94483af03bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>Samouczek: wdrażanie usługi API Management z usługą Service Fabric
 Niniejszy samouczek jest czwartą częścią serii.  Wdrażanie usługi Azure API Management z usługą Service Fabric odbywa się w ramach zaawansowanego scenariusza.  Usługa API Management jest przydatna, gdy trzeba opublikować interfejsy API z obszernym zestawem reguł rozsyłania dla usług zaplecza Service Fabric. Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. W usłudze Service Fabric bramą może być dowolna usługa bezstanowa przeznaczona dla ruchu przychodzącego, na przykład aplikacja ASP.NET Core albo usługa Event Hubs, IoT Hub lub Azure API Management. 
@@ -59,7 +59,7 @@ Gdy już masz bezpieczny [klaster systemu Windows](service-fabric-tutorial-creat
 Przed wykonaniem poleceń platformy Azure zaloguj się na konto platformy Azure i wybierz subskrypcję.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
@@ -142,7 +142,7 @@ W tym samouczku zostanie wdrożony podstawowy serwer sieci Web, która powtarza 
 
    W klastrze powinna teraz być uruchomiona bezstanowa usługa Java o nazwie `fabric:/EchoServerApplication/EchoServerService`.
 
-5. Otwórz przeglądarkę i wpisz ciąg http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Powinien pojawić się komunikat „[version 1.0]Hello World!!!”
+5. Otwórz przeglądarkę i wpisz ciąg http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Powinien pojawić się komunikat „[version 1.0]Hello World!!!” „[version 1.0]Hello World!!!”
 
 ## <a name="download-and-understand-the-resource-manager-templates"></a>Pobieranie szablonów usługi Resource Manager i zapoznawanie się z nimi
 Pobierz i zapisz plik parametrów oraz następujące szablony usługi Resource Manager:

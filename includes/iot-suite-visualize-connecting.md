@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 8eada6b88c320396b30ecdeb96c95e4ec61679ce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="view-device-telemetry"></a>Wyświetlanie danych telemetrycznych z urządzenia
 
 Można wyświetlić dane telemetryczne, wysyłane z urządzenia **urządzeń** strony w rozwiązaniu.
@@ -41,4 +57,4 @@ Aby wywołać metody na urządzeniach, należy użyć **urządzeń** strony w zd
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Artykuł [dostosować zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) opisano kilka metod, aby dostosować wstępnie skonfigurowane rozwiązanie.
+Artykuł [dostosować zdalnego monitorowania akcelerator rozwiązań](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) opisano niektóre sposoby dostosowania akcelerator rozwiązań.

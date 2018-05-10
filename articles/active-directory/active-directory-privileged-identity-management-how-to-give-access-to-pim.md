@@ -1,25 +1,23 @@
 ---
-title: "Jak zapewnić dostęp do Privileged Identity Management - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać role użytkowników na podstawie rozszerzenia usługi Azure Active Directory Privileged Identity Management, którymi zarządzają usługi PIM."
+title: Jak zapewnić dostęp do Privileged Identity Management - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać role użytkowników na podstawie rozszerzenia usługi Azure Active Directory Privileged Identity Management, którymi zarządzają usługi PIM.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: d4c53b53-2b37-41e6-813c-96ec08a1c897
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 39caeef2648730194827e04e020d8eaea5414f4f
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f7e08e35ce4575715a72b0880d038ce0db766b66
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Przyznawanie dostępu do zarządzania usługi Azure AD Privileged Identity Management
 Administrator globalny, który umożliwia usłudze Azure AD Privileged Identity Management (PIM) dla organizacji, automatycznie pobrać przypisania ról i dostępu do usługi PIM. Nikt pobiera zapisu domyślnie, łącznie z innych administratorów globalnych. Innych administratorów globalnych, administratorów zabezpieczeń i czytników zabezpieczeń mają dostęp tylko do odczytu do usługi Azure AD PIM. Aby udzielić dostępu do usługi PIM, pierwszego użytkownika można przypisać użytkownikom **administrator ról uprzywilejowanych** roli. Ten przydział musi być wykonywane za pomocą programu PIM się i nie można zmienić za pomocą programu PowerShell lub innych portalach.

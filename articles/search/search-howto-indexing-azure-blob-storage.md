@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 976b1c6b65036faeff3c4cc21e91ccf798eb0df3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b2660a98139068a8472c018de5cfbd29d6867c5a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w magazynie obiektów Blob Azure o usłudze Azure Search
 W tym artykule przedstawiono sposób użycia usługi Azure Search w celu indeksowania dokumentów (takich jak PDF, dokumentów Microsoft Office i kilka innych typowych formatach) przechowywanych w magazynie obiektów Blob platformy Azure. Po pierwsze wyjaśniono podstawowe informacje o instalowaniu i konfigurowaniu indeksatora obiektu blob. Następnie zapewnia lepszą badań zachowania i scenariusze jest prawdopodobnie mogą wystąpić.
@@ -279,7 +279,7 @@ Możesz także kontynuować indeksowania Jeśli błędy w dowolnym momencie prze
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Przyrostowe wykrywania indeksowanie i usuwaniem.
-Po skonfigurowaniu indeksatora obiektu blob do uruchamiania zgodnie z harmonogramem ponowna indeksacja tylko zmienionych obiektów blob, określone przez właściwość obiektu blob `LastModified` sygnatury czasowej.
+Po skonfigurowaniu indeksatora obiektu blob do uruchamiania zgodnie z harmonogramem reindexes go tylko zmienionych obiektów blob, określone przez właściwość obiektu blob `LastModified` sygnatury czasowej.
 
 > [!NOTE]
 > Nie trzeba określać zasady wykrywania zmian — przyrostowe indeksowania jest włączona automatycznie.

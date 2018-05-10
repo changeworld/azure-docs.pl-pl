@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -59,7 +59,7 @@ Przejrzyj tabelę poniżej, aby zapoznać się z omówieniem różnice między s
 | HA portów | Wewnętrzny moduł równoważenia obciążenia | / |
 | Bezpieczeństwo domyślne | domyślne zamknięty dla publicznych adresów IP i usługi równoważenia obciążenia punktów końcowych i grupy zabezpieczeń sieci musi być używany do jawnie dozwolone w przypadku ruchu przepływu | domyślny otwarty, grupy zabezpieczeń sieci opcjonalne |
 | Połączenia wychodzące | Wiele frontends z każdej reguły zrezygnować. Scenariusz wychodzących _musi_ jawnie można utworzyć maszyny wirtualnej można było użyć łączność wychodząca.  [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) bez połączenia wychodzącego jest osiągalna, a nie wchodzą w skład dane przetworzone.  Publicznych adresów IP, takich jak usługi Azure PaaS nie jest dostępna jako punktów końcowych usługi sieci wirtualnej, musi być osiągnięta poprzez łączność wychodząca i count do przetwarzania danych. Połączenia wychodzące przez domyślny SNAT wyłącznie do wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, nie są dostępne. Wychodzące programowania SNAT jest protokołu transportowego określonej na podstawie protokołu reguły równoważenia obciążenia dla ruchu przychodzącego. | Fronton jeden losowo wybrany, gdy istnieją frontends wiele.  Gdy tylko wewnętrzny moduł równoważenia obciążenia działa jako maszynę wirtualną, używana jest domyślna SNAT. |
-| Wiele frontends | Przychodzące i wychodzące | Tylko transfer przychodzący |
+| Wiele frontonów | Przychodzące i wychodzące | Tylko transfer przychodzący |
 | Operacje zarządzania | Większość operacji < 30 sekund | 60-90 sekund typowe |
 | Umowa SLA | 99,99% dla ścieżki danych z maszynami wirtualnymi na dwóch dobrej kondycji | Niejawne w umowie SLA maszyny Wirtualnej | 
 | Cennik | Na podstawie liczby reguł, dane przetworzone ruchu przychodzącego lub wychodzącego skojarzony z zasobem  | Bez dodatkowych opłat |
@@ -137,7 +137,7 @@ Są to kluczowe zasady do zapamiętania podczas pracy ze standardowego modułu r
 - wychodzące scenariusze są jawne i łączność wychodząca nie istnieje, dopóki nie został określony.
 - jak zaplanowano SNAT wnioskować o reguły równoważenia obciążenia. Reguły równoważenia obciążenia jest specyficzna dla protokołu. SNAT jest specyficzna dla protokołu i konfiguracji należy uwzględnić to zamiast tworzyć efektem.
 
-#### <a name="multiple-frontends"></a>Wiele frontends
+#### <a name="multiple-frontends"></a>Wiele frontonów
 Jeśli chcesz więcej SNAT portów, ponieważ są oczekiwane lub już występuje duże zapotrzebowanie na połączenia wychodzące, możesz także dodać przyrostowe SNAT portu spisu przez skonfigurowanie dodatkowych frontends, reguł i pul zaplecza w tej samej maszyny wirtualnej zasoby.
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>Formant frontonu, które jest używany do ruchu wychodzącego
@@ -218,11 +218,12 @@ Standardowy moduł równoważenia obciążenia jest produktem obciążona, na po
 
 ## <a name="limitations"></a>Ograniczenia
 
-- W połączyć za pomocą sieci wirtualne w tej chwili nie można zlokalizować wystąpienia zaplecza modułu równoważenia obciążenia. Wszystkie wystąpienia zaplecza muszą być w tym samym regionie.
 - Jednostki SKU nie jest modyfikowalna. Nie możesz zmienić numer istniejącego zasobu.
 - Zasób autonomicznej maszyny wirtualnej zestawu dostępności zasobów lub zasobu zestawu skali maszyny wirtualnej może się odwoływać jednego identyfikatora jednostki Magazynowej, nigdy nie oba.
-- [Alerty monitora Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) nie są obsługiwane w tej chwili.
+- Reguła modułu równoważenia obciążenia nie może obejmować dwie sieci wirtualne.  Frontends i ich wystąpienia pokrewne wewnętrznej bazy danych musi znajdować się w tej samej sieci wirtualnej.  
+- Frontends usługi równoważenia obciążenia nie są dostępne w globalnej sieci wirtualnej komunikacji równorzędnej.
 - [Subskrypcja operacje są przenoszone](../azure-resource-manager/resource-group-move-resources.md) nie są obsługiwane dla standardowych LB jednostki SKU i PIP zasobów.
+- Role pracownika w sieci Web bez sieci wirtualnej i innych usług platformy Microsoft mogą stać się niedostępne po tylko wewnętrzny standardowy moduł równoważenia obciążenia jest używany z powodu efekt uboczny z jak funkcja usług pre-VNet usług i innych platform. Należy nie tylko na tych jako odpowiednie usługi siebie lub podstawowych platform mogą ulec zmianie bez powiadomienia. Należy zawsze zakładać, należy utworzyć [łączność wychodząca](load-balancer-outbound-connections.md) jawnie, jeśli jest to konieczne, korzystając z wewnętrznych standardowy moduł równoważenia obciążenia tylko.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

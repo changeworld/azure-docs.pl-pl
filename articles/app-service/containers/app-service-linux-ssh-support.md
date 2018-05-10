@@ -1,12 +1,12 @@
 ---
-title: "Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux | Dokumentacja firmy Microsoft"
-description: "Więcej informacji o korzystaniu z protokołu SSH z usługi Azure App Service w systemie Linux."
-keywords: "Usługa aplikacji Azure, aplikacji sieci web, linux, oss"
+title: Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux | Dokumentacja firmy Microsoft
+description: Więcej informacji o korzystaniu z protokołu SSH z usługi Azure App Service w systemie Linux.
+keywords: Usługa aplikacji Azure, aplikacji sieci web, linux, oss
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 905c257ab40057f05081e54e8680bd818023d886
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: cf27e852f5ec9b7e12b0c678e9940596bc57b385
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
 
@@ -30,6 +30,10 @@ Usługi aplikacji w systemie Linux zapewnia obsługę protokołu SSH w kontenerz
 ![Stosy środowiska wykonawczego](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
 Za pomocą protokołu SSH i niestandardowe obrazy usługi Docker przy tym serwer SSH jako część obrazu i jego konfigurowania, zgodnie z opisem w tym artykule.
+
+> [!NOTE] 
+> Można również nawiązać kontenera aplikacji bezpośrednio z komputera lokalnego Programowanie przy użyciu protokołu SSH, SFTP lub Visual Studio Code (dla aplikacji Node.js debugowania na żywo). Aby uzyskać więcej informacji, zobacz [zdalnego debugowania i SSH w usłudze App Service w systemie Linux](https://aka.ms/linux-debug).
+>
 
 ## <a name="making-a-client-connection"></a>Połączenia klienta
 

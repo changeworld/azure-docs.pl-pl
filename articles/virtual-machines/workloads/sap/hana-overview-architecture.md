@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceeec6991aaac64211301313c1bb8dc5f5faa1c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bc446dfeee86fa1183892cba8068709f8fd277d5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Architektura na platformie Azure i SAP HANA (duże wystąpień) — omówienie
 
@@ -68,7 +68,7 @@ Kilka wspólnych definicji są powszechnie używane w zakresie architektury i te
 - **Dzierżawy**: klient wdrożone w sygnatura wystąpienia dużych HANA pobiera izolowane do *dzierżawy.* Dzierżawa jest izolowana w sieci, magazynu i warstwy obliczeniowej od pozostałych dzierżawców. Jednostki magazynu i zasobów obliczeniowych, przypisane do różnych dzierżaw nie widać siebie lub komunikują się ze sobą na poziomie wystąpienia dużych HANA sygnatury. Klient może wybrać wdrożenia w różnych dzierżawców. Nawet wówczas nie występuje komunikacja między dzierżawcami na poziomie wystąpienia dużych HANA sygnatury.
 - **Jednostka SKU kategorii**: dla HANA dużych wystąpienia, dostępnych w następujących dwóch kategorii jednostki SKU:
     - **Typ klasy I**: S72, S72m S144, S144m, S192 i S192m
-    - **Typ klasy II**: S384, S384m S384xm, S576, S768 i S960
+    - **Typ klasy II**: S384, S384m S384xm, S576m, S768m i S960m
 
 
 Szereg dodatkowe zasoby są dostępne na temat wdrażania SAP obciążenia w chmurze. Jeśli planujesz wykonanie wdrożenia SAP HANA na platformie Azure, należy być doświadczenia w pracy z i korzystają z zasad IaaS platformy Azure i wdrożenia SAP obciążeń na platformie Azure IaaS. Przed kontynuowaniem, zobacz [rozwiązań Użyj SAP na maszynach wirtualnych Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać więcej informacji. 
@@ -144,9 +144,9 @@ Począwszy od 2017 lipca SAP HANA na platformie Azure (wystąpienia duże) są d
 |---| SAP HANA na Azure S192m<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU  |  4.0 TB |  16 TB | Dostępna |
 |---| SAP HANA na Azure S384m<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  6.0 TB |  18 TB | Dostępna |
 |---| SAP HANA na Azure S384xm<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  8.0 TB |  22 TB |  Dostępna |
-|---| SAP HANA na Azure S576<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  12.0 TB |  28 TB | Dostępna |
-|---| SAP HANA na Azure S768<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  16.0 TB |  36 TB | Dostępna |
-|---| SAP HANA na Azure S960<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 rdzeni Procesora i 960 wątków CPU |  20.0 TB |  46 TB | Dostępna |
+|---| SAP HANA na Azure S576m<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  12.0 TB |  28 TB | Dostępna |
+|---| SAP HANA na Azure S768m<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  16.0 TB |  36 TB | Dostępna |
+|---| SAP HANA na Azure S960m<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 rdzeni Procesora i 960 wątków CPU |  20.0 TB |  46 TB | Dostępna |
 
 - Rdzenie procesora CPU = suma nie-Procesora rdzeni hiperwątkowych sumy procesorów jednostki serwera.
 - Wątków procesora CPU = Suma wątków obliczeniowe udostępniane przez hiperwątkowych rdzeni procesora CPU sumy procesorów jednostki serwera. Wszystkie jednostki są domyślnie skonfigurowane, aby używać technologii Hyper-Threading.
@@ -157,7 +157,7 @@ Konkretne konfiguracje wybrane są zależne od obciążenia, zasobów procesora 
 Podstawowa dla wszystkich ofert sprzętu są certyfikowane SAP HANA TDI. Dwóch różnych klas sprzętu dzielą jednostki SKU do:
 
 - S72, S72m S144, S144m, S192 i S192m, które są określane jako "Typ klasy I" z jednostki SKU.
-- S384, S384m S384xm, S576, S768 i S960, które są określane jako "Typ klasy II" z jednostki SKU.
+- S384, S384m S384xm, S576m, S768m i S960m, które są określane jako "Typ klasy II" z jednostki SKU.
 
 Pełną sygnatury wystąpienia dużych HANA wyłącznie nie jest przydzielona dla jednego odbiorcy&#39;Użyj s. Ten fakt dotyczy stojakami zasoby obliczeniowe i magazynujące, które są połączone za pośrednictwem sieci szkieletowej również wdrożona na platformie Azure. Wystąpienie dużych HANA infrastruktury, takich jak Azure, wdraża różnych klientów &quot;dzierżawców&quot; które są odizolowane od siebie w następujących trzech poziomach:
 
@@ -344,9 +344,9 @@ Zobacz poniższą tabelę pod względem Alokacja magazynu. W tabeli wymieniono n
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12 000 GB | 2050 GB | 2050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2050 GB | 2050 GB | 2,040 GB |
-| S576 | 20,000 GB | 3,100 GB | 2050 GB | 3,100 GB |
-| S768 | UŻYWANE 28 000 GB | 3,100 GB | 2050 GB | 3,100 GB |
-| S960 | 36,000 GB | 4,100 GB | 2050 GB | 4,100 GB |
+| S576m | 20,000 GB | 3,100 GB | 2050 GB | 3,100 GB |
+| S768m | UŻYWANE 28 000 GB | 3,100 GB | 2050 GB | 3,100 GB |
+| S960m | 36,000 GB | 4,100 GB | 2050 GB | 4,100 GB |
 
 
 Rzeczywiste wdrożonej woluminy mogą różnić w zależności od wdrożenia i narzędzie, które służy do wyświetlenia rozmiary woluminów.

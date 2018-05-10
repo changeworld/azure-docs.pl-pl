@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff059b27dc2bdcbfa8cecad1e46e9c2f268ef8c7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Samouczek: Integracji Azure Active Directory przy użyciu konta Adobe
 
@@ -103,7 +103,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. Na **Adobe logowania domeny i adres URL** sekcji, wykonaj następujące czynności:
@@ -115,8 +115,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta logowania Adobe](https://helpx.adobe.com/in/contact/support.html) uzyskać te wartości. 
- 
+    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta logowania Adobe](https://helpx.adobe.com/in/contact/support.html) uzyskać te wartości.
+
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -127,15 +127,34 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 6. Na **konfiguracji logowania Adobe** , kliknij przycisk **Konfigurowanie rejestrowania programu Adobe** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Adobe logowania.
+7. Przed kontynuowaniem konfiguracji należy skontaktować się [zespołem pomocy technicznej Adobe logowania klienta](https://helpx.adobe.com/in/contact/support.html) listą dozwolonych adresów IP domenę w Adobe logowania. Wykonaj następujące czynności, aby dodać domenę:
 
-8. W SAML menu kliknij **ustawienia konta**, a następnie kliknij **SAML ustawienia**.
+    a. [Zespół obsługi klienta logowania Adobe](https://helpx.adobe.com/in/contact/support.html) wyśle losowo wygenerowany token. Domeny, takie jak będzie token: **adobe znak weryfikacji = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
+
+    b. Należy opublikować tokenu weryfikacji w rekordzie DNS tekstu i powiadomienie [zespołem pomocy technicznej klienta logowania Adobe](https://helpx.adobe.com/in/contact/support.html).
+    
+    > [!NOTE]
+    > Można oczekiwać, że może to potrwać kilka dni lub prawdopodobnie już. Należy zauważyć, że opóźnienie propagacji DNS oznacza, że wartość opublikowany w systemie DNS może nie być widoczne na godzinę lub dłużej. Oczekuje się, że IT administrator powinien być wiedzą o tym, jak opublikować ten token w rekordzie DNS tekstu.
+    
+    c. Po powiadomieniu [zespołem pomocy technicznej klienta logowania Adobe](https://helpx.adobe.com/in/contact/support.html) za pośrednictwem biletu pomocy technicznej po opublikowaniu token one będzie zweryfikować domeny i dodaj go do Twojego konta.
+    
+    d. Ogólne kroki należy wykonać, aby opublikować token na rekordu DNS-
+
+    * Zaloguj się do konta domeny
+    * Znajdź stronę aktualizacji rekordu DNS. Ta strona może zostać wywołana, zarządzanie systemem DNS, nazwy serwera zarządzania lub ustawienia zaawansowane.
+    * Znajdowanie rekordów TXT w domenie.
+    * Dodaj rekord TXT z wartością pełnej token dostarczony przez Adobe
+    * Zapisz zmiany.
+
+8. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Adobe logowania.
+
+9. W SAML menu kliknij **ustawienia konta**, a następnie kliknij **SAML ustawienia**.
    
     ![Konto](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "konta")
 
-9. W **ustawienia SAML** sekcji, wykonaj następujące czynności:
+10. W **ustawienia SAML** sekcji, wykonaj następujące czynności:
   
     ![Ustawienia SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "ustawienia SAML")
    
@@ -265,4 +284,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-

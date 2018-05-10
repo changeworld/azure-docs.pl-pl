@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z kompresji plików w usłudze Azure CDN | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów z kompresji plików Azure CDN."
+title: Rozwiązywanie problemów z kompresji plików w usłudze Azure CDN | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z kompresji plików Azure CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14d50cb7cac77af75dd4b7293812154d1f24e47c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Rozwiązywanie problemów związanych z kompresją pliku CDN
 Ten artykuł ułatwia rozwiązywanie problemów z [kompresji plików CDN](cdn-improve-performance.md).
@@ -61,9 +61,9 @@ Najpierw należy wykonać związane z poprawnością szybkie sprawdzenie żądan
 
 ![Nagłówki żądania CDN](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profile"></a>Sprawdź ustawienia kompresji (profilu sieci CDN w warstwie standardowa)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>Sprawdź ustawienia kompresji (standardowych profilów CDN)
 > [!NOTE]
-> Ten krok ma zastosowanie tylko, jeśli profil CDN jest **Azure CDN Standard from Verizon** lub **Azure CDN Standard from Akamai** profilu. 
+> Ten krok ma zastosowanie tylko wtedy, gdy profilu CDN **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, lub **Azure CDN Standard from Akamai** profilu. 
 > 
 > 
 
@@ -74,9 +74,9 @@ Przejdź do punktu końcowego w [portalu Azure](https://portal.azure.com) i klik
 
 ![Ustawienia kompresji CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profile"></a>Sprawdź ustawienia kompresji (profilu sieci CDN w warstwie Premium)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>Sprawdź ustawienia kompresji (profile sieci CDN w warstwie Premium)
 > [!NOTE]
-> Ten krok ma zastosowanie tylko, jeśli profil CDN jest **Azure CDN Premium from Verizon** profilu.
+> Ten krok ma zastosowanie tylko wtedy, gdy profilu CDN **Azure CDN Premium from Verizon** profilu.
 > 
 > 
 
@@ -88,9 +88,9 @@ Przejdź do punktu końcowego w [portalu Azure](https://portal.azure.com) i klik
 
 ![Ustawienia kompresji sieci CDN w warstwie premium](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>Sprawdź, czy zawartość jest buforowana
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>Sprawdź, czy zawartość jest buforowany (Verizon CDN profilów)
 > [!NOTE]
-> Ten krok ma zastosowanie tylko, jeśli profil CDN jest **Azure CDN from Verizon** profilu (standardowy lub Premium).
+> Ten krok ma zastosowanie tylko wtedy, gdy profilu CDN **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon** profilu.
 > 
 > 
 
@@ -101,9 +101,9 @@ Przy użyciu narzędzia dla deweloperów w przeglądarce, sprawdź nagłówków 
 
 ![Nagłówki odpowiedzi CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>Sprawdź, czy plik spełnia wymagania dotyczące rozmiaru
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Sprawdź, czy plik spełnia wymagania rozmiaru (profilów Verizon CDN)
 > [!NOTE]
-> Ten krok ma zastosowanie tylko, jeśli profil CDN jest **Azure CDN from Verizon** profilu (standardowy lub Premium).
+> Ten krok ma zastosowanie tylko wtedy, gdy profilu CDN **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon** profilu.
 > 
 > 
 

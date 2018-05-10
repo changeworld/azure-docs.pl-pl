@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 3b908f1df9228505b2f3bce18bd42d9b502844c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e4995146433d0090849fe17175b152a6e45809f4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Wydajność i skalę testowania z bazy danych Azure rozwiązania Cosmos
 
@@ -96,7 +96,7 @@ Aby skompilować i uruchomić przykładowe .NET jest najszybszym sposobem na roz
     Press any key to exit...
 
 
-**Krok 4 (Jeśli to konieczne):** przepływność zgłoszone (RU/s) z narzędzia powinny być takie same lub wyższe niż przepływność kolekcji. Jeśli nie, zwiększenie DegreeOfParallelism w małych odstępach mogą ułatwić osiągnie limit. Jeśli płaskowyżach przepływności z aplikacji klienta, należy uruchomić wiele wystąpień aplikacji na komputerach klienckich w dodatkowych. Jeśli potrzebujesz pomocy w ramach tego kroku, Wyślij wiadomość e-mail askcosmosdb@microsoft.com lub pliku biletu pomocy technicznej z [portalu Azure](https://portal.azure.com).
+**Krok 4 (Jeśli to konieczne):** przepływność zgłoszone (RU/s) z narzędzia powinna być taka sama lub większa niż przepływność kolekcji lub zestaw kolekcji. Jeśli nie, zwiększenie DegreeOfParallelism w małych odstępach mogą ułatwić osiągnie limit. Jeśli płaskowyżach przepływności z aplikacji klienta, należy uruchomić wiele wystąpień aplikacji na komputerach klienckich w dodatkowych. Jeśli potrzebujesz pomocy w ramach tego kroku, Wyślij wiadomość e-mail askcosmosdb@microsoft.com lub pliku biletu pomocy technicznej z [portalu Azure](https://portal.azure.com).
 
 Po utworzeniu aplikacji możesz spróbować innego [zasady indeksowania](indexing-policies.md) i [poziomy spójności](consistency-levels.md) zrozumienie ich wpływ na przepustowości i opóźnień. Można również przejrzeć kod źródłowy i wdrożenia podobnych konfiguracji własne zestawy testów lub aplikacje produkcyjne.
 

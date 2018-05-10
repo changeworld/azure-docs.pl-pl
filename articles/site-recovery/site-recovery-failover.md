@@ -1,18 +1,18 @@
 ---
-title: "Tryb failover w usłudze Site Recovery | Dokumentacja firmy Microsoft"
-description: "Usługa Azure Site Recovery koordynuje replikacji, trybu failover i odzyskiwania maszyn wirtualnych i serwerów fizycznych. Więcej informacji na temat trybu failover do platformy Azure lub dodatkowego centrum danych."
+title: Tryb failover w usłudze Site Recovery | Dokumentacja firmy Microsoft
+description: Usługa Azure Site Recovery koordynuje replikacji, trybu failover i odzyskiwania maszyn wirtualnych i serwerów fizycznych. Więcej informacji na temat trybu failover do platformy Azure lub dodatkowego centrum danych.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: ponatara
-ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 40f35cde2b55da0763f6ee65b065f5dd8a55b9c6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="failover-in-site-recovery"></a>Praca w trybie failover w usłudze Site Recovery
 W tym artykule opisano, jak do pracy awaryjnej maszyn wirtualnych i fizycznych serwerów są chronione przez usługę Site Recovery.
@@ -98,7 +98,7 @@ W niektórych przypadkach pracy awaryjnej maszyn wirtualnych wymaga bardzo pośr
     * vmbus
     * storflt
     * Intelide
-    * atapi
+    * ATAPI
 * Adresy IP maszyn wirtualnych VMware, które nie mają włączone niezależnie od tego, czy używasz DHCP lub statyczna usługi DHCP
 
 We wszystkich innych przypadkach ten krok pośrednie nie jest wymagane, a czas pracy w trybie failover jest niższa.

@@ -1,25 +1,23 @@
 ---
-title: "Jak zarządzać ustawienia aktywacji dla roli | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zmienić ustawienia domyślne dla uprzywilejowanymi tożsamościami przy rozszerzenia usługi Azure Active Directory Privileged Identity Management."
+title: Jak zarządzać ustawienia aktywacji dla roli | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zmienić ustawienia domyślne dla uprzywilejowanymi tożsamościami przy rozszerzenia usługi Azure Active Directory Privileged Identity Management.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: f6cbcb6a-8a89-4077-afd8-06c94a64f4aa
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 2cf361dc879915c316e7ee907b5c70b5907459c2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 972fd1e322e578516073307d01548132473bc52c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>Jak zarządzać ustawienia roli aktywacji w usłudze Azure AD Privileged Identity Management
 Administrator ról uprzywilejowanych można dostosować w usłudze Azure AD Privileged Identity Management (PIM) w organizacji, łącznie ze zmianą środowisko dla użytkownika, który jest aktywowanie przypisania roli kwalifikujących się.
@@ -45,7 +43,7 @@ Na stronie Ustawienia dla każdej roli istnieje wiele ustawień, które można s
   * Administrator aplikacji
   * Administrator serwera Proxy aplikacji
   * Administrator rozliczeń  
-  * Administrator zgodności  
+  * Administrator do spraw zgodności  
   * Administrator programu CRM usługi
   * Osoba zatwierdzająca dostępu skrytki klienta
   * Składnik zapisywania katalogu  
@@ -53,12 +51,12 @@ Na stronie Ustawienia dla każdej roli istnieje wiele ustawień, które można s
   * Administrator globalny
   * Administrator usługi Intune
   * Skrzynki pocztowej administratora  
-  * Obsługa tier1 partnera  
-  * Obsługa tier2 partnera  
-  * Administrator ról uprzywilejowanych   
+  * Pomoc techniczna dla partnerów (warstwa 1)  
+  * Pomoc techniczna dla partnerów (warstwa 2)  
+  * Administrator roli uprzywilejowanej   
   * Administrator zabezpieczeń  
   * Administrator programu SharePoint  
-  * Skype dla firm administratora  
+  * Administrator programu Skype dla firm  
   * Administrator konta użytkownika  
 
 Aby uzyskać więcej informacji na temat przy użyciu usługi MFA w usłudze PIM zobacz [sposobu wymagać uwierzytelniania MFA](active-directory-privileged-identity-management-how-to-require-mfa.md).
@@ -66,6 +64,6 @@ Aby uzyskać więcej informacji na temat przy użyciu usługi MFA w usłudze PIM
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

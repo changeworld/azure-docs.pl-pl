@@ -14,11 +14,11 @@ ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
 ms.custom: end-user
-ms.openlocfilehash: 8fa9a24b5b402ebebb69bc69f7cda47092436642
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e25ccdad5285bfaa96f538aca415746942523d85
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczenia konta z aplikacji Microsoft Authenticator
 **Dotyczy:**
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 Aplikacji Microsoft Authenticator kopię zapasową poświadczenia konta i ustawień powiązanych aplikacji, takich jak kolejność kont, do chmury. Po utworzeniu kopii zapasowej, można użyć aplikacji do odzyskania danych na nowe urządzenie, potencjalnie unikanie pobierania zablokowany out lub konieczności ponownego tworzenia kont.
 
 >[!IMPORTANT]
-> Dla każdej lokalizacji magazynu kopii zapasowej należy jeden osobistego konta Microsoft i kontami usługi iCloud. Jednak w tej lokalizacji magazynu, można tworzyć kopie zapasowe kilku kont. Na przykład można mieć konto osobiste konto służbowe i konta innych firm, takich jak Facebook, Google itd.<br><br>Tylko poświadczenia konta są przechowywane w tym nazwę użytkownika i kod weryfikacyjny konta 8 cyfr, która jest wymagana do potwierdzenia tożsamości z aplikacji Authenticator firmy Microsoft. Inne informacje związane z kontami, w tym wiadomości e-mail lub pliki nie są przechowywane. Możemy również nie skojarzyć lub udostępniać swoje konta, w dowolny sposób, lub z innego produktu lub usługi. I na koniec administrator IT nie będzie żadnych informacji o tych kont.
+> Dla każdej lokalizacji magazynu kopii zapasowej należy jeden osobistego konta Microsoft i kontami usługi iCloud. Jednak w tej lokalizacji magazynu, można tworzyć kopie zapasowe kilku kont. Na przykład można mieć konto osobiste konto służbowe i konta innych firm, takich jak Facebook, Google itd.<br><br>Tylko poświadczenia konta osobiste oraz 3rd firm są przechowywane w tym nazwę użytkownika i kod weryfikacyjny konta, które są wymagane w celu potwierdzenia Twojej tożsamości. Inne informacje związane z kontami, w tym wiadomości e-mail lub pliki nie są przechowywane. Możemy również nie skojarzyć lub udostępniać swoje konta, w dowolny sposób, lub z innego produktu lub usługi. I na koniec administrator IT nie będzie żadnych informacji o tych kont.
 
 ## <a name="back-up-your-account-credentials"></a>Wykonaj kopię zapasową poświadczeń konta
 Przed utworzeniem kopii zapasowej poświadczeń, muszą mieć system:

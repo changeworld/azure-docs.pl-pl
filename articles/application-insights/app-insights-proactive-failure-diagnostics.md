@@ -1,9 +1,9 @@
 ---
-title: "Inteligentne wykrywania - anomalii awarii, w usłudze Application Insights | Dokumentacja firmy Microsoft"
-description: "Powiadamia o nietypowych zmian liczba nieudanych żądań do aplikacji sieci web i zawiera diagnostyczne analizy. Konfiguracja nie jest potrzebna."
+title: Inteligentne wykrywania - anomalii awarii, w usłudze Application Insights | Dokumentacja firmy Microsoft
+description: Powiadamia o nietypowych zmian liczba nieudanych żądań do aplikacji sieci web i zawiera diagnostyczne analizy. Konfiguracja nie jest potrzebna.
 services: application-insights
-documentationcenter: 
-author: yorac
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
-ms.author: mbullwin
-ms.openlocfilehash: ca484f4d11cf8ab18db2d0c6152f369a90311f10
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; yossiy
+ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentne wykrywanie — błąd anomalii
 [Usługa Application Insights](app-insights-overview.md) automatycznie powiadamia użytkownika, w czasie rzeczywistym near czy Twoja aplikacja sieci web napotyka nietypowym wzroście współczynnika żądań zakończonych niepowodzeniem. Ta funkcja wykrywa nietypowe wzrost częstotliwość wykonywania żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądania żądań zakończonych niepowodzeniem są zwykle z kodami odpowiedź 400 lub nowszej. Aby ułatwić klasyfikowanie i diagnozowanie problemu, analizy właściwości błędy i powiązane dane telemetryczne znajduje się w powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi żadnych konfiguracji ani konfiguracji, jakiej używa do prognozowania współczynnik awaryjności normalne algorytmów uczenia maszynowego.
@@ -70,7 +70,7 @@ Otwórz stronę alerty. Błąd anomalii znajduje się wraz z żadnych alertów, 
 
 Kliknij alert, aby go skonfigurować.
 
-![Konfiguracja](./media/app-insights-proactive-failure-diagnostics/032.png)
+![Konfigurowanie](./media/app-insights-proactive-failure-diagnostics/032.png)
 
 Powiadomienie, że można wyłączyć inteligentne wykrywanie, ale nie można go usunąć (lub utwórz inny).
 
@@ -140,7 +140,7 @@ Inteligentne wykrywanie anomalii awarii uzupełnia inne podobne ale różne funk
 
 * Mamy pomijania alertów w naszej listy prac.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Te narzędzia diagnostyczne pomóc sprawdzić dane telemetryczne z aplikacji:
 
 * [Eksplorator metryk](app-insights-metrics-explorer.md)

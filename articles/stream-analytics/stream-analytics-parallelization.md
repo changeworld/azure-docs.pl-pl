@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/07/2018
+ms.openlocfilehash: 44a7c0721d8a0683162d2219bff0e4a4ecb117e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Korzystać z zapytania paralelizacja w Azure Stream Analytics
 W tym artykule przedstawiono sposób wykorzystać paralelizacja Azure Stream Analytics. Sposób skalowania zadania usługi analiza strumienia, konfigurując wejściowych partycji i dostrajania analytics definicji zapytania.
@@ -35,7 +35,15 @@ Wszystkie dane wejściowe Azure Stream Analytics można wykorzystać partycjonow
 
 ### <a name="outputs"></a>Dane wyjściowe
 
-Podczas pracy z usługi Stream Analytics, możesz korzystać z partycjonowania dla większości sink danych wyjściowych. Więcej informacji na temat partycjonowania danych wyjściowych jest dostępna na [partycjonowania sekcji danych wyjściowych strony](stream-analytics-define-outputs.md#partitioning).
+Podczas pracy z usługi Stream Analytics, możesz korzystać z partycji w danych wyjściowych:
+-   Azure Data Lake Storage
+-   Azure Functions
+-   Tabela platformy Azure
+-   Magazyn obiektów blob (można ustawić klucza partycji jawnie)
+-   CosmosDB (należy jawnie ustawić klucz partycji)
+-   EventHub (należy jawnie ustawić klucz partycji)
+-   Centrum IoT (należy jawnie ustawić klucz partycji)
+-   Service Bus
 
 Wyjść usługi Power BI, SQL i magazyn danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić danych wejściowych zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
 
@@ -54,13 +62,13 @@ Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
 3. Większość wyjście mogą wykorzystać partycjonowania, jednak jeśli jest używany typ danych wyjściowych która nie obsługuje partycjonowanie zadania nie będzie w pełni równoległych. Zapoznaj się [output sekcji](#outputs) więcej szczegółów.
 
-4. Liczby partycji wejściowych musi być równa liczbie partycji danych wyjściowych. Dane wyjściowe z magazynu obiektów blob nie obsługuje obecnie partycji. Ale nie szkodzi, ponieważ dziedziczy ona schemat partycjonowania nadrzędnego zapytania. Poniżej przedstawiono przykładowe wartości partycji, umożliwiających pełni równoległe zadania:  
+4. Liczby partycji wejściowych musi być równa liczbie partycji danych wyjściowych. Dane wyjściowe z magazynu obiektów blob może obsługiwać partycje i dziedziczy schemat partycjonowania nadrzędnego zapytania. Po klucz partycji dla obiektu Blob magazynu jest określony, dane są podzielone na partycje dla każdej partycji wejściowego w związku z tym wynikiem jest nadal pełni równoległych. Poniżej przedstawiono przykładowe wartości partycji, umożliwiających pełni równoległe zadania:
 
    * 8 partycje wejściowych Centrum zdarzeń i Centrum zdarzeń 8 output partycji
-   * 8 partycje wejściowych Centrum zdarzeń i danych wyjściowych z magazynu obiektów blob  
-   * 8 partycje wejściowych Centrum Iot i Centrum zdarzeń 8 output partycji
-   * 8 partycje wejściowych magazynu obiektów blob i dane wyjściowe z magazynu obiektów blob  
-   * 8 obiektu blob magazynu wejściowego partycji i 8 partycje danych wyjściowych Centrum zdarzeń  
+   * 8 partycje wejściowych Centrum zdarzeń i danych wyjściowych z magazynu obiektów blob
+   * 8 wejściowych partycji Centrum zdarzeń i danych wyjściowych magazynu obiektów blob na partycje za pomocą dowolnego Kardynalność przez pole niestandardowe
+   * 8 partycje wejściowych magazynu obiektów blob i dane wyjściowe z magazynu obiektów blob
+   * 8 obiektu blob magazynu wejściowego partycji i 8 partycje danych wyjściowych Centrum zdarzeń
 
 W poniższych sekcjach omówiono niektóre przykładowe scenariusze, które są embarrassingly równoległe.
 

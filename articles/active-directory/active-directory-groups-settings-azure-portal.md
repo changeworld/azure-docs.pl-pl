@@ -1,26 +1,24 @@
 ---
-title: "Zarządzanie właściwościami grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Jak edytować właściwości i inne ustawienia konfiguracji dla grupy w usłudze Azure Active Directory"
+title: Zarządzanie właściwościami grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak edytować właściwości i inne ustawienia konfiguracji dla grupy w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 2f058f9a-5a8f-4b4b-b3b7-885ff10cb1be
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: c569bde2a480ff191dd3079f3ca93a7400cadb3e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a1fe82728e1662ad897d2ee367bad46f1f5fc498
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Zarządzanie ustawieniami grupy w usłudze Azure Active Directory
 W tym artykule wyjaśniono, jak zmienić ustawienia grupy w usłudze Azure Active Directory (Azure AD).

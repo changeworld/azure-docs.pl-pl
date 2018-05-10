@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Przy użyciu usługi Azure CDN z CORS
 ## <a name="what-is-cors"></a>Co to jest CORS?
@@ -47,7 +47,7 @@ Istnieją dwa typy żądań CORPS *prostych żądań* i *złożonych żądań.*
 
 ### <a name="for-complex-requests"></a>Złożonych żądań:
 
-Złożone żądanie jest żądaniem CORS, w którym przeglądarki jest wymagany do wysłania *żądania wstępnego* (tj. wstępne badanie) przed wysłaniem rzeczywiste żądanie CORS. Żądania wstępnego żąda uprawnienia serwera, jeśli oryginalny CORS żądanie może kontynuować i jest `OPTIONS` żądania do tego samego adresu URL.
+Złożone żądanie jest żądaniem CORS, w którym przeglądarki jest wymagany do wysłania *żądania wstępnego* (to znaczy wstępne badanie) przed wysłaniem rzeczywiste żądanie CORS. Żądania wstępnego żąda uprawnienia serwera, jeśli oryginalny CORS żądanie może kontynuować i jest `OPTIONS` żądania do tego samego adresu URL.
 
 > [!TIP]
 > Więcej informacji dotyczących przepływów mechanizmu CORS i typowych problemów, można wyświetlić [przewodnik CORS dla interfejsów API REST](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
@@ -57,7 +57,7 @@ Złożone żądanie jest żądaniem CORS, w którym przeglądarki jest wymagany 
 ## <a name="wildcard-or-single-origin-scenarios"></a>Symbol wieloznaczny lub scenariuszy pojedynczego źródła
 Mechanizm CORS w sieci CDN w warstwie Azure będą działać automatycznie bez konieczności dodatkowej konfiguracji po **Access-Control-Allow-Origin** nagłówka jest ustawiony na symbolu wieloznacznego (*) lub jednego źródła.  CDN będą buforowane pierwszej odpowiedzi i kolejne żądania będą używały tego samego nagłówka.
 
-Jeśli żądań zostały już wprowadzone do sieci CDN przed CORS ustawiania źródła, konieczne będzie przeczyścić zawartości na zawartość ponownie załaduj zawartość z punktu końcowego **Access-Control-Allow-Origin** nagłówka.
+Jeśli wprowadzono już żądań do sieci CDN przed CORS ustawiania źródła, konieczne będzie przeczyścić zawartości na zawartość ponownie załaduj zawartość z punktu końcowego **Access-Control-Allow-Origin** nagłówka.
 
 ## <a name="multiple-origin-scenarios"></a>Wiele scenariuszy źródła
 Jeśli musisz zezwolić określonej listy źródeł, które mogą być dla CORS, rzeczy uzyskać nieco bardziej skomplikowane. Problem występuje, gdy sieć CDN ma buforować **Access-Control-Allow-Origin** nagłówek dla pierwszego źródło CORS.  Gdy różne źródło CORS sprawia, że kolejne żądania, sieć CDN będzie służyć zapisane w pamięci podręcznej **Access-Control-Allow-Origin** nagłówek, który nie odpowiada.  Istnieje kilka sposobów, aby rozwiązać ten problem.
@@ -67,7 +67,7 @@ Najlepszym sposobem, aby je włączyć, jest użycie **Azure CDN Premium from Ve
 
 Konieczne będzie [utworzyć regułę](cdn-rules-engine.md) do sprawdzenia **pochodzenia** nagłówka w żądaniu.  Jeśli istnieje prawidłowy punkt początkowy reguły ustawi **Access-Control-Allow-Origin** nagłówek z pochodzenia podany w żądaniu.  Jeśli punkt początkowy określony w **pochodzenia** nagłówka nie jest dozwolona, należy pominąć reguły **Access-Control-Allow-Origin** nagłówka, co spowoduje przeglądarkę, aby odrzucić żądanie. 
 
-Istnieją dwa sposoby, w tym celu z aparatu reguł.  W obu przypadkach **Access-Control-Allow-Origin** nagłówka z serwera pochodzenia pliku całkowicie jest ignorowany, aparat reguł w sieci CDN w pełni zarządza dozwolonych źródeł CORS.
+Istnieją dwa sposoby, w tym celu z aparatu reguł. W obu przypadkach **Access-Control-Allow-Origin** nagłówka z serwera pochodzenia pliku jest ignorowany i aparatu reguł w sieci CDN w pełni zarządza dozwolonych źródeł CORS.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Jednego wyrażenia regularnego z wszystkie prawidłowe źródła
 W takim przypadku utworzysz wyrażenie regularne, które zawiera wszystkie źródła, które chcesz zezwolić na: 
@@ -75,7 +75,7 @@ W takim przypadku utworzysz wyrażenie regularne, które zawiera wszystkie źró
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Usługi Azure CDN from Verizon** używa [zgodne wyrażeń regularnych języka Perl](http://pcre.org/) jako jego aparat wyrażeń regularnych.  Można użyć narzędzia, takiego jak [101 wyrażeń regularnych](https://regex101.com/) do sprawdzania poprawności z wyrażeniem regularnym.  Należy pamiętać, że znak "/" jest nieprawidłowe w wyrażeniach regularnych i nie należy wstawić jednak anulowanie ten znak jest traktowane jako najlepsze rozwiązanie i jest oczekiwane przez niektóre moduły weryfikacji wyrażenia regularnego.
+> **Azure CDN Premium from Verizon** używa [zgodne wyrażeń regularnych języka Perl](http://pcre.org/) jako jego aparat wyrażeń regularnych.  Można użyć narzędzia, takiego jak [101 wyrażeń regularnych](https://regex101.com/) do sprawdzania poprawności z wyrażeniem regularnym.  Należy pamiętać, że znak "/" jest nieprawidłowe w wyrażeniach regularnych i nie należy wstawić jednak anulowanie ten znak jest traktowane jako najlepsze rozwiązanie i jest oczekiwane przez niektóre moduły weryfikacji wyrażenia regularnego.
 > 
 > 
 
@@ -93,6 +93,6 @@ Zamiast wyrażeń regularnych, zamiast tego można utworzyć regułę osobne dla
 > 
 > 
 
-### <a name="azure-cdn-standard"></a>Usługi Azure CDN Standard
-Na profile Azure CDN Standard, jest użycie mechanizmu tylko do obsługi wielu źródeł bez użycia początkowego symbolu wieloznacznego [buforowanie ciągu zapytania](cdn-query-string.md).  Należy włączyć ustawienie ciągu zapytania dla punktu końcowego CDN, a następnie użyć ciągu zapytania unikatowy dla żądań z każdej domeny, dozwolone. W ten sposób spowoduje CDN buforowanie oddzielny obiekt dla każdego ciągu zapytania unikatowy. Ta metoda nie jest idealne, jednak zgodnie z spowoduje powstanie wielu kopii tego samego pliku pamięci podręcznej w sieci CDN.  
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN profile standardowe
+Na Azure CDN standard profile (**Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, i **Azure CDN Standard from Verizon**), tylko mechanizm Zezwalaj na wiele źródeł bez użycia pochodzenia symboli wieloznacznych jest użycie [buforowanie ciągu zapytania](cdn-query-string.md). Ustawienie ciągu zapytania dla punktu końcowego CDN, a następnie użyj ciągu zapytania unikatowy dla żądań z każdej domeny dozwolonych. W ten sposób spowoduje CDN buforowanie oddzielny obiekt dla każdego ciągu zapytania unikatowy. Ta metoda nie jest idealne, jednak zgodnie z spowoduje powstanie wielu kopii tego samego pliku pamięci podręcznej w sieci CDN.  
 

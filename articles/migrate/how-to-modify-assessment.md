@@ -4,13 +4,13 @@ description: Opisuje sposób ustawiania i uruchamiania ocenę do migrowania masz
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 05/03/2018
 ms.author: raynew
-ms.openlocfilehash: f25aa21aea566ca1cb222fd8ab49c67dafd52f89
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5054da16a6a02dddb8539011d3baa18f2bb9914a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-an-assessment"></a>Dostosowywanie oceny
 
@@ -24,11 +24,12 @@ ms.lasthandoff: 05/03/2018
 
     **Ustawienie** | **Szczegóły** | **Domyślne**
     --- | --- | ---
-    **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/> Migracji Azure obsługuje obecnie 30 regionów, w tym Australia Wschodnia, Południowo-Wschodnia Australia, Brazylia Południowa, Kanada centralnej, Kanada Wschodnia, Indie środkowe, środkowe stany USA, wschodnie Chin, Chin Północna, Azja Wschodnia, wschodnie stany USA, Niemcy centralnej, Niemcy północno-wschodnie, wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia, Korei środkowe, Korea Południowa, Północna środkowe stany USA, Europa Północna, południowo środkowe stany USA, Azja południowo-wschodnia, Indie Południowe, Wielka Brytania Południowa, Wielka Brytania Zachodnia, środkowe stany USA DoD, wschodnie stany USA DoD, Virginia wersji dla instytucji rządowych wersji dla instytucji rządowych Texas, USA wersji dla instytucji rządowych Arizona, USA USA, zachodnie środkowe stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA , a US2 zachodnie. |  Zachodnie stany USA 2 jest domyślną lokalizacją.
-    **Nadmiarowość magazynu** | Typ nadmiarowości magazynu, który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. | Wartość domyślna to [Magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md). Azure obsługuje tylko migracji zarządzane opartej na dyskach: ocen i dysków zarządzanych obsługują tylko LRS, dlatego właściwość obecnie zawiera tylko opcja LRS. 
+    **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/> Migracji Azure obsługuje obecnie 30 regionów, w tym Australia Wschodnia, Południowo-Wschodnia Australia, Brazylia Południowa, Kanada centralnej, Kanada Wschodnia, Indie środkowe, środkowe stany USA, wschodnie Chin, Chin Północna, Azja Wschodnia, wschodnie stany USA, Niemcy centralnej, Niemcy północno-wschodnie, wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia Korei środkowe, Korea Południowa, Północna środkowe stany USA, Europa Północna, południowo środkowe stany USA, Azja południowo-wschodnia, Indie Południowe, Wielka Brytania Południowa, Wielka Brytania Zachodnia, Virginia wersji dla instytucji rządowych wersji dla instytucji rządowych Texas, USA wersji dla instytucji rządowych Arizona, USA USA, zachodnie środkowe stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA i US2 zachodnie. |  Zachodnie stany USA 2 jest domyślną lokalizacją.
+    **Nadmiarowość magazynu** | Typ nadmiarowości magazynu, który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. | Wartość domyślna to [Magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md). Azure obsługuje tylko migracji zarządzane opartej na dyskach: ocen i dysków zarządzanych obsługują tylko LRS, dlatego właściwość obecnie zawiera tylko opcja LRS.
     **Kryterium rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Rozmiar maszyn wirtualnych możesz ustalać *na podstawie wydajności* lub rozmiaru *maszyn lokalnych* bez uwzględniania historii wydajności. | Opcja domyślna to określanie rozmiaru na podstawie wydajności.
     **Historia wydajności** | Przedział czasu uwzględniany podczas oceny wydajności maszyn wirtualnych. Ta właściwość ma zastosowanie tylko w przypadku *ustalania rozmiaru na podstawie wydajności*. | Wartość domyślna to jeden dzień.
     **Użycie percentyla** | Wartość percentyla próbki wydajności uwzględniana w celu prawidłowego określenia rozmiaru. Ta właściwość ma zastosowanie tylko w przypadku *ustalania rozmiaru na podstawie wydajności*.  | Domyślnie jest to 95. percentyl.
+    **Seria maszyn wirtualnych** | Można określić serii maszyny Wirtualnej, która ma zostać należy wziąć pod uwagę doboru wielkości. Na przykład jeśli masz środowiska produkcyjnego, który nie jest planowana migracja do maszyn wirtualnych A-series na platformie Azure, A-series można wykluczyć z listy lub serii i doboru wielkości zostaną wykonane tylko w wybranej serii. | Domyślnie wybrane są wszystkie szeregi maszyny Wirtualnej.
     **Warstwa cenowa** | Możesz określić [warstwę cenową (Podstawowa/Standardowa)](../virtual-machines/windows/sizes-general.md) dla docelowych maszyn wirtualnych platformy Azure. Na przykład jeśli planujesz migrację środowiska produkcyjnego, rozważ warstwę Standardowa, która udostępnia maszyny wirtualne o małych opóźnieniach, lecz które mogą kosztować więcej. Z drugiej strony w przypadku środowiska deweloperskiego i testowego rozważ warstwę Podstawowa, która udostępnia maszyny wirtualnych o większych opóźnieniach, lecz przy niższych kosztach. | Domyślnie jest używana warstwa [Standardowa](../virtual-machines/windows/sizes-general.md).
     **Współczynnik komfortu** | Podczas oceny usługa Azure Migrate uwzględnia bufor (współczynnik komfortu). Jest on stosowany do wszystkich danych użycia maszyn wirtualnych (procesora, pamięci, dysku i sieci). Współczynnik komfortu uwzględnia kwestie, takie jak okresowe użycie, krótka historia wydajności i prawdopodobne zwiększenie użycia w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna o użyciu na poziomie 20% jest w normalnych warunkach równoważna 2-rdzeniowej maszynie wirtualnej. Jednak wynik zastosowania współczynnika komfortu o wartości 2 daje 4-rdzeniową maszynę wirtualną. | Ustawienie domyślne to 1,3x.
     **Oferta** | [Oferta platformy Azure](https://azure.microsoft.com/support/legal/offer-details/), w której przeprowadzono rejestrację. | Ustawienie domyślne to [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/).

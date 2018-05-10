@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f474921acbd3a5082afea03dd982bcfa9c52dcda
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-draft-with-azure-container-service-aks"></a>Projekt za pomocą usługi kontenera platformy Azure (AKS)
+# <a name="use-draft-with-azure-kubernetes-service-aks"></a>Projekt za pomocą usługi Azure Kubernetes (AKS)
 
 Wersja robocza jest narzędziem open source, które ułatwia przechowywania i wdrażania tych kontenerach w klastrze Kubernetes, pozostawiając należy skoncentrować się na cyklu deweloperów — "pętlę wewnętrzny" Programowanie najwięcej wolnego. Projekt działa jako kod jest obecnie opracowywane, ale przed zatwierdzeniem do systemu kontroli wersji. Z wersji próbnej można szybko wdrożyć ponownie aplikację Kubernetes wystąpienia zmian kodu. Aby uzyskać więcej informacji na temat projektu, zobacz [projekt dokumentacji w witrynie Github][draft-documentation].
 
@@ -27,7 +27,7 @@ W krokach szczegółowo opisanych w tym dokumencie założono, że klaster usłu
 
 Należy również prywatnej rejestru Docker w rejestrze kontenera platformy Azure (ACR). Aby uzyskać instrukcje na temat wdrażania wystąpienia ACR, zobacz [Szybki Start Azure kontenera rejestru][acr-quickstart].
 
-Helm również musi być zainstalowany w klastrze AKS. Aby uzyskać więcej informacji na temat instalowania helm, zobacz [Helm użycia z usługi kontenera platformy Azure (AKS)][aks-helm].
+Helm również musi być zainstalowany w klastrze AKS. Aby uzyskać więcej informacji na temat instalowania helm, zobacz [Helm użycia z usługi Kubernetes Azure (AKS)][aks-helm].
 
 Na koniec należy zainstalować [Docker](https://www.docker.com).
 

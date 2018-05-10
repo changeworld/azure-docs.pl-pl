@@ -6,27 +6,27 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 4b9ab8aaef091573d204b8de58115cc03707aa01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Zdarzenie siatki zabezpieczeń i uwierzytelniania 
 
 Azure siatki zdarzeń ma trzy typy uwierzytelniania:
 
 * Subskrypcja zdarzeń
-* Publikowanie zdarzenia
+* Publikowanie zdarzeń
 * Dostarczania zdarzeń elementu WebHook
 
 ## <a name="webhook-event-delivery"></a>Dostarczania zdarzeń elementu WebHook
 
 Element Webhook ma jedną z wielu metod odbieranie zdarzeń z siatki zdarzeń Azure. Gdy jest to nowe zdarzenie jest gotowy, Webhook siatki zdarzeń wysyła żądanie HTTP do skonfigurowanego punktu końcowego HTTP ze zdarzeniem w treści.
 
-Po zarejestrowaniu własny punkt końcowy elementu WebHook siatki zdarzeń wysyła możesz żądania POST z kodem poprawności potwierdzenie posiadania punktu końcowego. Twoja aplikacja powinna odpowiadać za wstecz wyświetlania kodu walidacji. Zdarzenie siatki nie dostarczyć zdarzeń do elementu WebHook punktów końcowych, które nie zostały przekazane sprawdzania poprawności.
+Po zarejestrowaniu własny punkt końcowy elementu WebHook siatki zdarzeń wysyła możesz żądania POST z kodem poprawności potwierdzenie posiadania punktu końcowego. Twoja aplikacja powinna odpowiadać za wstecz wyświetlania kodu walidacji. Zdarzenie siatki nie dostarczyć zdarzeń do elementu WebHook punktów końcowych, które nie zostały przekazane sprawdzania poprawności. Jeśli używasz usługi interfejsu API innych firm (takich jak [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie można programowo wyświetlać kodu walidacji. Dla tych usług można ręcznie zweryfikować subskrypcji przy użyciu sprawdzania poprawności adresu URL, który są wysyłane w przypadku sprawdzania poprawności subskrypcji. Skopiuj ten adres URL i Wyślij żądanie GET przy użyciu klienta REST lub przeglądarki sieci web.
 
 ### <a name="validation-details"></a>Szczegóły weryfikacji
 
@@ -34,6 +34,7 @@ Po zarejestrowaniu własny punkt końcowy elementu WebHook siatki zdarzeń wysy�
 * Zdarzenie zawiera wartość nagłówka "SubscriptionValidation Æg zdarzeń typu:".
 * Treści zdarzenia ma ten sam schemat jako inne zdarzenia, zdarzenia siatki.
 * Dane zdarzenia zawiera właściwość "validationCode" z ciągiem losowo wygenerowany. Na przykład "validationCode: acb13...".
+* Dane zdarzenia zawiera właściwość "validationUrl" z adresem URL ręcznie weryfikowania subskrypcji.
 * Tablica zawiera tylko zdarzenia sprawdzania poprawności. Inne zdarzenia są wysyłane w oddzielne żądanie po odsyłania kodu walidacji.
 
 Przykład SubscriptionValidationEvent przedstawiono w poniższym przykładzie:
@@ -44,7 +45,8 @@ Przykład SubscriptionValidationEvent przedstawiono w poniższym przykładzie:
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "subject": "",
   "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
+    "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=B2E34264-7D71-453A-B5FB-B62D0FDC85EE&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1BNqCxBBSSE9OnNSfZM4%2b5H9zDegKMY6uJ%2fO2DFRkwQ%3d"
   },
   "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
   "eventTime": "2018-01-25T22:12:19.4556811Z",
@@ -60,6 +62,9 @@ Aby potwierdzić własność punktu końcowego, odsyłania kodu walidacji we wł
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Można też ręcznie zweryfikować subskrypcji, wysyłając żądania GET do adresu URL sprawdzania poprawności. Subskrypcja zdarzeń pozostaje w stanie oczekiwania do czasu sprawdzania poprawności.
+
 ### <a name="event-delivery-security"></a>Zabezpieczenia dostarczania zdarzeń
 
 Dodając parametry zapytania do adresu URL elementu webhook podczas tworzenia subskrypcji zdarzeń, można zabezpieczyć punkt końcowy elementu webhook. Wartość dla jednego z tych parametrów zapytania jako klucz tajny, takich jak [token dostępu](https://en.wikipedia.org/wiki/Access_token) którego elementu webhook można użyć do rozpoznania zdarzenia pochodzi od siatki zdarzeń z prawidłowe uprawnienia. Siatka zdarzeń będzie zawierać te parametry zapytań w każdym dostarczania zdarzeń do elementu webhook.

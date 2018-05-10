@@ -1,25 +1,24 @@
 ---
-title: "Dostosowywanie strony logowania dla dzierżawy usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać znakowanie firmowe do platformy Azure strony logowania"
+title: Dostosowywanie strony logowania dla dzierżawy usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać znakowanie firmowe do platformy Azure strony logowania
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 03a6b82f769ed9a36c5d3ff9934de75d1536e1ae
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Szybki Start: Dodawanie znakowania firmowego do stron logowania w usłudze Azure AD
 Aby uniknąć nieporozumień, wiele firm chce zastosować spójny wygląd i zachowanie we wszystkich witrynach sieci Web i usługach, którymi zarządzają. Azure Active Directory (Azure AD) zapewnia tę funkcję, umożliwiając dostosowanie wyglądu strony logowania z logo firmy i niestandardowych schematów kolorów. Strona logowania zostanie wyświetlony po zalogowaniu się do aplikacji opartych na sieci web takich jak Office 365 korzystających z usługi Azure AD jako dostawcy tożsamości. Użytkownik interakcji z tej strony, aby wprowadzić swoje poświadczenia.
@@ -33,7 +32,7 @@ Aby uniknąć nieporozumień, wiele firm chce zastosować spójny wygląd i zach
 
 <!--You can customize the following elements on the sign-in page: <attach image>-->
 
-Dostosowywanie znakowania wyświetlane na stronie logowania usługi Azure AD, gdy użytkownicy uzyskują dostęp do adresu URL specyficznego dla dzierżawy takich jak firmy [ *https://outlook.com/contoso.com*](https://outlook.com/contoso.com).
+Dostosowywanie znakowania wyświetlane na stronie logowania usługi Azure AD, gdy użytkownicy uzyskują dostęp do adresu URL specyficznego dla dzierżawy takich jak firmy [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com).
 
 Na przykład podczas odwiedzania www.office.com, strony logowania nie wyświetla żadnych firmy znakowania dostosowań, ponieważ użytkownik nie ma jeszcze wprowadzone poświadczenia. Gdy użytkownik wprowadza identyfikator użytkownika lub wybiera kafelka użytkownika, wyświetla logo firmy.
 

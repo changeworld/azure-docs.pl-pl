@@ -1,22 +1,22 @@
 ---
-title: "Zarządzanie urządzeniami w zdalnym rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft"
-description: "W tym samouczku przedstawiono sposób zarządzania urządzenia podłączone do zdalnego rozwiązanie monitorowania."
-services: 
+title: Zarządzanie urządzeniami w zdalnym rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób zarządzania urządzenia podłączone do zdalnego rozwiązanie monitorowania.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Konfigurowanie urządzeń oraz zarządzanie nimi
 
@@ -24,7 +24,7 @@ Ten samouczek Pokazuje urządzenie możliwości zarządzania zdalnego rozwiązan
 
 Firma Contoso ma uporządkowane nowe maszyny do rozwiń jedno ze swoich urządzeń do zwiększenia danych wyjściowych. Podczas oczekiwania dla nowych maszyn mają być dostarczane chcesz uruchomić symulacji, aby sprawdzić zachowanie rozwiązania. Jako operator chcesz zarządzania i skonfigurować urządzenia w rozwiązaniu do monitorowania zdalnego.
 
-Oferuje rozszerzalny sposób zarządzania i konfigurowanie urządzeń, rozwiązanie monitorowania zdalnego korzysta z Centrum IoT funkcji, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md). Aby dowiedzieć się, jak implementuje metody dewelopera urządzenia na urządzeniu fizycznym, zobacz [dostosować zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-remote-monitoring-customize.md).
+Oferuje rozszerzalny sposób zarządzania i konfigurowanie urządzeń, rozwiązanie monitorowania zdalnego korzysta z Centrum IoT funkcji, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md). Aby dowiedzieć się, jak implementuje metody dewelopera urządzenia na urządzeniu fizycznym, zobacz [dostosować zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-customize.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -38,7 +38,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Aby użyć tego samouczka, należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="add-a-simulated-device"></a>Dodaj symulowane urządzenie
 
@@ -50,7 +50,7 @@ Pozostaw liczbę urządzeń do świadczenia ustawioną **1**. Wybierz **błędny
 
 ![Zainicjuj obsługę aparatu symulowane urządzenie](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
-Aby dowiedzieć się, jak udostępnić *fizycznych* urządzenia, zobacz [Podłącz urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-connecting-devices-node.md).
+Aby dowiedzieć się, jak udostępnić *fizycznych* urządzenia, zobacz [Podłącz urządzenie do zdalnego monitorowania akcelerator rozwiązań](iot-suite-connecting-devices-node.md).
 
 ## <a name="test-the-simulated-device"></a>Testowanie symulowane urządzenie
 
@@ -68,11 +68,11 @@ Aby wyświetlić szczegółowe diagnostyki, przewiń w dół do widoku **diagnos
 
 ## <a name="act-on-a-device"></a>Działania na urządzeniu
 
-Do działania na co najmniej jedno urządzenie, wybierz je z listy urządzeń, a następnie wybierz pozycję **harmonogram**. **Aparat** model urządzenia określa cztery metody musi obsługiwać urządzenia:
+Do działania na co najmniej jedno urządzenie, wybierz je z listy urządzeń, a następnie wybierz pozycję **zadania**. **Aparat** model urządzenia określa trzy metody musi obsługiwać urządzenia:
 
 ![Metody aparatu](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
-Wybierz **Uruchom ponownie**, ustaw nazwę zadania **RestartEngine**, a następnie wybierz pozycję **Zastosuj**:
+Wybierz **FillTank**, ustaw nazwę zadania **FillEngineTank**, a następnie wybierz pozycję **Zastosuj**:
 
 ![Zaplanuj metodę ponownego uruchomienia](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
@@ -84,11 +84,11 @@ Aby śledzić stan zadania na **konserwacji** wybierz pozycję **zadania**:
 
 Poznaj typy różnych symulowane urządzenie, zobacz, czy inne typy urządzeń obsługuje różne metody. W przypadku wdrożenia z urządzeń fizycznych model urządzenia określa metody, które powinny obsługiwać urządzenia. Zazwyczaj developer urządzenia jest odpowiedzialny za tworzenie kodu, który sprawia, że urządzenie działa w odpowiedzi na wywołanie metody.
 
-Aby zaplanować metody do uruchamiania na wielu urządzeniach, można wybrać wiele urządzeń na liście na **urządzeń** strony. **Harmonogram** panel zawiera typy metody wspólne dla wszystkich wybranych urządzeń.
+Aby zaplanować metody do uruchamiania na wielu urządzeniach, można wybrać wiele urządzeń na liście na **urządzeń** strony. **Zadania** panel zawiera typy metody wspólne dla wszystkich wybranych urządzeń.
 
 ## <a name="reconfigure-a-device"></a>Ponownie skonfiguruj urządzenie
 
-Aby zmienić konfigurację urządzenia, wybierz ją na liście urządzeń **urządzeń** strony, a następnie wybierz pozycję **ponownie skonfigurować**. Panelu ponownej konfiguracji wyświetlane dla wybranego urządzenia, które można zmienić wartości właściwości:
+Aby zmienić konfigurację urządzenia, wybierz ją na liście urządzeń **urządzeń** strony, a następnie wybierz pozycję **zadania**, a następnie wybierz pozycję **ponownie skonfigurować**. Panelu zadań wyświetlane dla wybranego urządzenia, które można zmienić wartości właściwości:
 
 ![Ponownie skonfiguruj urządzenie](media/iot-suite-remote-monitoring-manage/devicesreconfigure.png)
 
@@ -113,6 +113,6 @@ Teraz, kiedy znasz sposobu zarządzania urządzeniami, Sugerowane następne krok
 
 * [Rozwiązywanie problemów i Korygowanie problemów z urządzeniami](iot-suite-remote-monitoring-maintain.md).
 * [Testowanie rozwiązania z urządzeniami symulowane](iot-suite-remote-monitoring-test.md).
-* [Podłącz urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-connecting-devices-node.md).
+* [Podłącz urządzenie do zdalnego monitorowania akcelerator rozwiązań](iot-suite-connecting-devices-node.md).
 
 <!-- Next tutorials in the sequence -->

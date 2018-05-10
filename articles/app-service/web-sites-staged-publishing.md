@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ec2399c955f718186bbedc0e4bad61ccc61fd972
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk w usłudze Azure App Service przejściowych
 <a name="Overview"></a>
@@ -30,11 +30,7 @@ Podczas wdrażania aplikację sieci web, aplikacji sieci web w systemie Linux, p
 * Wdrażanie aplikacji na gnieździe najpierw i zamienienie go w środowisku produkcyjnym gwarantuje, że wszystkie wystąpienia gniazda są przygotowaniu miejsca przed wymieniane w środowisku produkcyjnym. Eliminuje to czas przestoju, podczas wdrażania aplikacji. Przekierowywanie ruchu jest łatwego i żadne żądania są usuwane w wyniku operacji wymiany. Ta całego przepływu pracy można zautomatyzować poprzez skonfigurowanie [automatycznej wymiany](#Auto-Swap) podczas weryfikacji przed wymiany nie jest wymagana.
 * Po wymiany gniazda z wcześniej przygotowanych aplikacji ma poprzedniej aplikacji produkcyjnej. Jeśli zmiany miejscami do miejsca produkcji są niezgodne z oczekiwaniami, można wykonać tego samego wymiany od razu do pobrania "ostatniej znanej dobrej witryny" ponownie.
 
-Każda warstwa planu usługi aplikacji obsługuje różne liczby miejsc wdrożenia. Aby dowiedzieć się, liczba gniazd obsługuje warstwy aplikacji, zobacz [limity usługi App](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits).
-
-* Gdy aplikacja ma wiele miejsc, nie można zmienić warstwy.
-* Skalowanie jest niedostępna dla gniazda nieprodukcyjnych.
-* Zarządzanie połączonego zasobu nie jest obsługiwane dla gniazda nieprodukcyjnych. W [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) , można uniknąć ten potencjalny wpływ na gnieździe produkcyjnym przenosząc tymczasowo miejsca nieprodukcyjnych z inną warstwą planu usługi aplikacji. Należy pamiętać, że gniazdo nieprodukcyjnych musi ponownie udostępnić tej samej warstwie gniazda produkcyjnego przed można wymienić dwóch miejsc.
+Każda warstwa planu usługi aplikacji obsługuje różne liczby miejsc wdrożenia. Aby dowiedzieć się, liczba gniazd obsługuje warstwy aplikacji, zobacz [limity usługi App](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). Aby skalować aplikację do innej warstwy, warstwy docelowej musi obsługiwać liczbę gniazd, które Twoja aplikacja już korzysta z. Na przykład jeśli aplikacja ma więcej niż 5 miejsc, to nie można go skalować w dół do **standardowe** warstwy, ponieważ **standardowe** warstwy obsługuje tylko 5 miejsc wdrożenia.
 
 <a name="Add"></a>
 

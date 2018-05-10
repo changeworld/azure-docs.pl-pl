@@ -1,12 +1,12 @@
 ---
-title: "Omówienie wstępnie skonfigurowanych rozwiązań pakietu Azure IoT Suite | Microsoft Docs"
-description: "Opis wstępnie skonfigurowanych rozwiązań pakietu Azure IoT Suite, w tym informacje dotyczące ich architektury oraz linki prowadzące do dodatkowych zasobów."
-services: 
+title: Omówienie wstępnie skonfigurowanych rozwiązań pakietu Azure IoT Suite | Microsoft Docs
+description: Opis wstępnie skonfigurowanych rozwiązań pakietu Azure IoT Suite, w tym informacje dotyczące ich architektury oraz linki prowadzące do dodatkowych zasobów.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: b29c5fe9543c5fe6da9ff52da6549fdcacff868f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b7b9f61a8fb46d5d591b317049cfd60b723a7e77
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Co to jest pakiet Azure IoT Suite?
 
@@ -97,7 +97,7 @@ Podczas wdrażania wstępnie skonfigurowanego rozwiązania proces inicjowania ob
 * [Azure Time Series Insights](../time-series-insights/index.yml). Wstępnie skonfigurowane rozwiązania używają tej usługi do analizowania i wyświetlania danych telemetrycznych z urządzeń.
 * [Azure Container Service](../container-service/index.yml). Ta usługa obsługuje mikrousługi i zarządza nimi we wstępnie skonfigurowanych rozwiązaniach.
 * Usługi [Azure Cosmos DB](../cosmos-db/index.yml) i [Azure Storage](../storage/index.yml) obsługują przechowywanie danych.
-* [Azure Stream Analytics](../stream-analytics/index.md). Wstępnie skonfigurowane rozwiązanie do konserwacji predykcyjnej korzysta z tej usługi w celu przetwarzania przychodzących danych telemetrycznych, przeprowadzania agregacji danych i wykrywania zdarzeń. To wstępnie skonfigurowane rozwiązanie używa również analizy strumienia do przetwarzania komunikatów informacyjnych, które zawierają metadane lub odpowiedzi urządzeń na wysyłane polecenia.
+* [Azure Stream Analytics](../stream-analytics/index.yml). Wstępnie skonfigurowane rozwiązanie do konserwacji predykcyjnej korzysta z tej usługi w celu przetwarzania przychodzących danych telemetrycznych, przeprowadzania agregacji danych i wykrywania zdarzeń. To wstępnie skonfigurowane rozwiązanie używa również analizy strumienia do przetwarzania komunikatów informacyjnych, które zawierają metadane lub odpowiedzi urządzeń na wysyłane polecenia.
 * Usługa [Azure Web Apps](../app-service/index.yml) hostuje niestandardowy kod aplikacji we wstępnie skonfigurowanych rozwiązaniach.
 
 Omówienie architektury typowego rozwiązania IoT można znaleźć w artykule [Platforma Azure i Internet rzeczy](iot-suite-what-is-azure-iot.md).

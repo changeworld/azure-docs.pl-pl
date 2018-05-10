@@ -1,7 +1,7 @@
 ---
-title: "Symulacji urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft"
-description: "W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego wstępnie skonfigurowane rozwiązanie monitorowania."
-services: 
+title: Symulacji urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego monitorowania akcelerator rozwiązań.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,15 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: 5cbd1738bd53179cb9705a86886b6cf811e9988a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="create-a-new-simulated-device"></a>Utwórz nowy symulowane urządzenie
+# <a name="create-a-new-simulated-device"></a>Utwórz nowe urządzenie symulowane
 
-Ten samouczek przedstawia sposób dostosowywania mikrousługi symulator urządzeń w zdalnym wstępnie skonfigurowane rozwiązanie monitorowania. Aby pokazać możliwości symulator urządzeń dwa scenariusze w tym samouczku jest używany w aplikacji Contoso IoT.
+Ten samouczek pokazuje, jak dostosować mikrousługi symulator urządzeń w zdalnym monitorowania akcelerator rozwiązań. Aby pokazać możliwości symulator urządzeń dwa scenariusze w tym samouczku jest używany w aplikacji Contoso IoT.
+
+Poniższe wideo przedstawia Omówienie opcji dostosowywania mikrousługi symulator urządzeń:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 W pierwszego scenariusza firma Contoso chce przetestować nowe urządzenie żarówka inteligentne. Aby wykonać testów, należy utworzyć nowe symulowane urządzenie o następującej charakterystyce:
 
@@ -32,7 +36,7 @@ W pierwszego scenariusza firma Contoso chce przetestować nowe urządzenie żar�
 | Jasność               | 0 do 100                    |
 | Szacowany pozostały okres | Odliczania w dół od 10 000 godzin |
 
-*Telemetry*
+*Telemetrii*
 
 W poniższej tabeli przedstawiono dane żarówka raportów w chmurze jako strumień danych:
 
@@ -68,7 +72,7 @@ W poniższej tabeli przedstawiono początkowy stan urządzenia:
 
 W drugi scenariusz, należy dodać nowy typ danych telemetrycznych do firmy Contoso jego istniejącą **Chłodnica** urządzenia.
 
-W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego wstępnie skonfigurowane rozwiązanie monitorowania:
+W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego monitorowania akcelerator rozwiązań:
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -86,7 +90,7 @@ Dostępny poniżej film wideo przedstawia wskazówki nawiązywanie symulowanych 
 
 Aby użyć tego samouczka, potrzebne są:
 
-* Wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure. Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](iot-suite-remote-monitoring-deploy.md) samouczka.
+* Wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure. Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-deploy.md) samouczka.
 
 * Program Visual Studio 2017. Jeśli nie masz programu Visual Studio 2017 r zainstalowany, możesz pobrać bezpłatną [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
@@ -221,7 +225,7 @@ W tym samouczku pracować z **symulacji urządzenia** i **adaptera magazynu** pr
 1. Klonowanie wersja .NET **adaptera magazynu** repozytorium, uruchom następujące polecenie:
 
     ```cmd
-    git clone https://github.com/Azure/storage-adapter.git
+    git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
     Usługa symulacji urządzeń używa usługi karty magazynu się połączyć z usługą rozwiązania Cosmos bazy danych na platformie Azure. Rozwiązanie monitorowania zdalnego przechowuje dane konfiguracji symulowane urządzenie w bazie danych DB rozwiązania Cosmos.
@@ -289,10 +293,10 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
         "temperature_unit": "F",
         "status": "on"
       },
-      "Script": {
+      "Interval": "00:00:20",
+      "Scripts": {
         "Type": "javascript",
-        "Path": "lightbulb-01-state.js",
-        "Interval": "00:00:20"
+        "Path": "lightbulb-01-state.js"
       }
     },
     ```
@@ -474,7 +478,7 @@ Teraz można przystąpić do testowania nowego typu symulowane żarówka lokalni
 
     ![Liczba połączonych urządzeń](media/iot-suite-remote-monitoring-test/connecteddevices.png)
 
-1. W przeglądarce przejdź do **pulpitu nawigacyjnego** zdalnego rozwiązania do monitorowania. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dwóch symulowane urządzeń na wykresie:
+1. W przeglądarce przejdź do **pulpitu nawigacyjnego** zdalnego rozwiązania do monitorowania. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dla wszystkich urządzeń symulowane na wykresie:
 
     ![Dane telemetryczne temperatury](media/iot-suite-remote-monitoring-test/telemetry.png)
 
@@ -532,7 +536,7 @@ W następujących krokach założono, że masz repozytorium o nazwie **żarówka
     publish.cmd
     ```
 
-1. Aby sprawdzić, przekazywania, przejdź do [https://hub.docker.com/](https://hub.docker.com/). Znajdź użytkownika **żarówka** repozytorium i wybierz polecenie **szczegóły**. Następnie wybierz pozycję **tagi**:
+1. Aby sprawdzić, przekazywania, przejdź do [ https://hub.docker.com/ ](https://hub.docker.com/). Znajdź użytkownika **żarówka** repozytorium i wybierz polecenie **szczegóły**. Następnie wybierz pozycję **tagi**:
 
     ![Centrum docker](media/iot-suite-remote-monitoring-test/dockerhub.png)
 

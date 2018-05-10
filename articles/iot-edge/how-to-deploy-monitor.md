@@ -1,25 +1,25 @@
 ---
-title: "Wdrażanie, monitorowanie modułów Azure IoT Edge | Dokumentacja firmy Microsoft"
-description: "Zarządzanie modułów, które działają na urządzeniach krawędzi w"
+title: Wdrażanie, monitorowanie modułów Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Zarządzanie modułów, które działają na urządzeniach krawędzi w
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 6d024dfdd661d6bebe7d163b96659d6e169cc5cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę — w wersji preview
 
 Krawędź IoT Azure umożliwia przenoszenie analytics krawędzi i udostępnia interfejs chmury, dzięki czemu można zarządzać i monitorować urządzenia IoT krawędzi bez konieczności fizycznie dostęp do każdej z nich. Możliwość zdalnego zarządzania urządzeniami jest coraz bardziej istotne, ponieważ Internetu rzeczy rozwiązań rośnie większej i bardziej złożonej. Azure IoT krawędzi służy do celów biznesowych, niezależnie od tego, ile urządzeń, możesz dodać.
 
-Można zarządzać poszczególnych urządzeń i wdrożyć moduły pojedynczo. Jednak jeśli chcesz wprowadzić zmiany na urządzeniach na dużą skalę, możesz utworzyć **wdrożenia krawędzi IoT**. Wdrożenia są dynamiczne procesów, które można wdrożyć wiele modułów jednocześnie na wielu urządzeniach, śledzić stan i kondycję moduły i wprowadzić zmiany, gdy jest to konieczne. 
+Można zarządzać poszczególnych urządzeń i wdrożyć moduły pojedynczo. Jednak jeśli chcesz wprowadzić zmiany na urządzeniach na dużą skalę, możesz utworzyć **wdrażania automatycznego krawędzi IoT**, który jest częścią automatyczne zarządzanie urządzeniami w Centrum IoT. Wdrożenia są dynamiczne procesów, które można wdrożyć wiele modułów jednocześnie na wielu urządzeniach, śledzić stan i kondycję moduły i wprowadzić zmiany, gdy jest to konieczne. 
 
 ## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń przy użyciu tagów
 
@@ -67,7 +67,7 @@ Aby dodać moduł z usługi Azure Stream Analytics, wykonaj następujące kroki:
 1. Wybierz **zapisać** można dodać modułu do wdrożenia. 
 
 Aby dodać kod niestandardowy jako moduł lub ręcznie Dodaj moduł usługi Azure, wykonaj następujące kroki:
-1. Wybierz **modułu dodawanie krawędzi IoT**.
+1. Wybierz opcję **Dodaj moduł IoT Edge**.
 1. Nadaj modułu **nazwa**.
 1. Aby uzyskać **identyfikatora URI obrazu** wprowadź obrazu kontenera Docker dla modułu. 
 1. Określ dowolne **opcje tworzenia kontenera** powinien zostać przekazany do kontenera. Aby uzyskać więcej informacji, zobacz [docker Utwórz][lnk-docker-create].
@@ -166,7 +166,7 @@ Po usunięciu wdrożenia żadnych urządzeń przełączyć na ich dalej wdrożen
 1. Wybierz pozycję **Usuń**.
 1. Monit informuje, że ta akcja spowoduje to usunięcie tego wdrożenia i powrócić do poprzedniego stanu dla wszystkich urządzeń.  Oznacza to, że wdrożenie o niższym priorytecie zostaną zastosowane.  Jeśli jest docelowym dla żadnych innych wdrożeń, moduły nie zostaną usunięte. Jeśli klienci chcesz to zrobić, muszą utworzyć wdrożenia z modułami zero i wdrożyć ją do tego samego urządzenia. Wybierz **tak** Jeśli chcesz kontynuować. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o [wdrożenie modułów urządzenia brzegowe][lnk-deployments].
 

@@ -8,8 +8,10 @@
 ## [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
 ## [Tworzenie hybrydowej aplikacji lokalnej/w chmurze](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Połączenia hybrydowe
-### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Node](relay-hybrid-connections-node-get-started.md)
+### [Gniazda WebSocket platformy .NET](relay-hybrid-connections-dotnet-get-started.md)
+### [Protokół HTTP platformy .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+### [Gniazda WebSocket platformy .NET](relay-hybrid-connections-node-get-started.md)
+### [Gniazda WebSocket platformy Node.js](relay-hybrid-connections-http-requests-node-get-started.md)
 ## [Przekaźnik WCF](relay-wcf-dotnet-get-started.md)
 ## [Samouczek dotyczący przekaźnika WCF](service-bus-relay-tutorial.md)
 ## [Przekaźniki WCF — samouczek dotyczący architektury REST](service-bus-relay-rest-tutorial.md)

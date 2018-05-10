@@ -1,9 +1,9 @@
 ---
-title: "Eksportowanie przy użyciu usługi Stream Analytics z usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Analiza strumienia stale można przekształcić, filtrować i przekazywanie danych, które możesz wyeksportować z usługi Application Insights."
+title: Eksportowanie przy użyciu usługi Stream Analytics z usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Analiza strumienia stale można przekształcić, filtrować i przekazywanie danych, które możesz wyeksportować z usługi Application Insights.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: ddaf7bf12854aa5f80c1d292613c3049850ca3ff
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c898e43cb1334bf7fb1836554fb92708033d3f7d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Używać usługi Stream Analytics do przetworzenia wyeksportowane dane z usługi Application Insights
 [Usługa Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) to idealne narzędzie do przetwarzania danych [wyeksportowany z usługi Application Insights](app-insights-export-telemetry.md). Analiza strumienia może pobierają dane z różnych źródeł. Go transformacji i filtrowanie danych i kierowania go do różnych sink.
@@ -106,10 +106,10 @@ Teraz musisz podstawowy klucz dostępu z konta magazynu, który wcześniej zapis
 
 W tym przykładzie:
 
-* `webapplication27`jest to nazwa zasobu usługi Application Insights **małe litery**.
-* `1234...`jest to klucz Instrumentacji zasobu usługi Application Insights **pominięcie łączniki**. 
-* `PageViews`jest to typ danych, które mają być analizowane. Dostępne typy są zależne od filtr ustawionych w eksportu ciągłego. Sprawdź wyeksportowane dane na temat dostępnych typów oraz temat [wyeksportować modelu danych](app-insights-export-data-model.md).
-* `/{date}/{time}`wzorzec są zapisywane jako literału.
+* `webapplication27` jest to nazwa zasobu usługi Application Insights **małe litery**.
+* `1234...` jest to klucz Instrumentacji zasobu usługi Application Insights **pominięcie łączniki**. 
+* `PageViews` jest to typ danych, które mają być analizowane. Dostępne typy są zależne od filtr ustawionych w eksportu ciągłego. Sprawdź wyeksportowane dane na temat dostępnych typów oraz temat [wyeksportować modelu danych](app-insights-export-data-model.md).
+* `/{date}/{time}` wzorzec są zapisywane jako literału.
 
 > [!NOTE]
 > Sprawdź, czy Magazyn upewnij się, że można uzyskać ścieżki prawo.
@@ -223,5 +223,5 @@ Noam Ben Zeev pokazuje, jak można przetworzyć wyeksportowane dane przy użyciu
 ## <a name="next-steps"></a>Kolejne kroki
 * [Eksport ciągły](app-insights-export-telemetry.md)
 * [Szczegółowe dane modelu odwołania dla typów właściwości i wartości.](app-insights-export-data-model.md)
-* [Usługa Application Insights](app-insights-overview.md)
+* [Application Insights](app-insights-overview.md)
 

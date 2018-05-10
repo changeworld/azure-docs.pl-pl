@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: fd30a8eb5149647a24ff04e099bf5c3e187459ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Przykłady integracji usług Azure Service Bus i Event Grid
 
@@ -62,7 +62,7 @@ Komunikat można wysłać do tematu usługi Service Bus za pomocą dowolnej meto
 
 Przed rozpoczęciem wykonywania całego scenariusza skonfiguruj co najmniej małą funkcję testową, której można użyć do debugowania i obserwowania przepływających zdarzeń.
 
-1. W witrynie Azure Portal utwórz nową aplikację usługi Azure Functions. Aby poznać podstawy usługi Azure Functions, zobacz [dokumentację usługi Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/).
+1. W witrynie Azure Portal utwórz nową aplikację usługi Azure Functions. Aby poznać podstawy usługi Azure Functions, zobacz [dokumentację usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
 
 2. W nowo utworzonej funkcji wybierz znak plus (+), aby dodać funkcję wyzwalacza HTTP:
 

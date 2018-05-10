@@ -1,8 +1,8 @@
 ---
-title: "Ładowanie zasobów do funkcji tworzenia wycinków Azure Media | Dokumentacja firmy Microsoft"
-description: "Kroki dotyczące ładowania zasobów do funkcji tworzenia wycinków multimediów Azure"
+title: Ładowanie zasobów do funkcji tworzenia wycinków Azure Media | Dokumentacja firmy Microsoft
+description: Kroki dotyczące ładowania zasobów do funkcji tworzenia wycinków multimediów Azure
 services: media-services
-keywords: "klip subclip; kodowanie; nośnika"
+keywords: klip subclip; kodowanie; nośnika
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 6a479218ff8bd5addf4273b23c06380859e0ea08
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Ładowanie zasobów do funkcji tworzenia wycinków multimediów Azure
 Zasoby mogą zostać załadowane do funkcji tworzenia wycinków multimediów dla platformy Azure za pomocą dwóch metod:

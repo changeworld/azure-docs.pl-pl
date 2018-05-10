@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie środowiska usługi aplikacji Azure zewnętrznych"
-description: "Wyjaśnia sposób tworzenia środowiska usługi aplikacji podczas tworzenia aplikacji lub autonomiczne"
+title: Tworzenie środowiska usługi aplikacji Azure zewnętrznych
+description: Wyjaśnia sposób tworzenia środowiska usługi aplikacji podczas tworzenia aplikacji lub autonomiczne
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 439fadeb01ccad58642492eb49ef25f866a9a9dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: debfff03ea9a4de4fb2cd69779d58709a6a3a34f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznych #
 
@@ -55,7 +55,7 @@ Zewnętrzne ASE ma publiczny adres VIP, co oznacza, że cały ruch HTTP/HTTPS do
 
 ## <a name="create-an-ase-and-an-app-service-plan-together"></a>Utwórz razem ASE i plan usługi aplikacji ##
 
-Plan usługi aplikacji to kontener aplikacji. Po utworzeniu aplikacji w usłudze App Service wybierz lub Utwórz plan usługi aplikacji. W środowiskach modelu kontenera przytrzymaj planów usługi aplikacji i planów usługi App Service przechowywania aplikacji.
+Plan usługi aplikacji to kontener aplikacji. Po utworzeniu aplikacji w usłudze App Service wybierz lub Utwórz plan usługi aplikacji. Środowiska usługi aplikacji przytrzymaj planów usługi App Service i planów usługi App Service przechowywania aplikacji.
 
 Aby utworzyć ASE podczas tworzenia planu usługi aplikacji:
 
@@ -67,13 +67,66 @@ Aby utworzyć ASE podczas tworzenia planu usługi aplikacji:
 
 3. Wybierz lub utwórz grupę zasobów. Z grupami zasobów można zarządzać jako jednostka powiązanych zasobów systemu Azure. Grupy zasobów są także przydatne podczas ustanawiania zasady kontroli dostępu opartej na rolach dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ARMOverview].
 
-4. Wybierz plan usługi aplikacji, a następnie wybierz **Utwórz nowy**.
+4. Wybierz system operacyjny. 
+
+    * Hosting w aplikacji systemu Linux w elemencie ASE jest nowa funkcja w wersji zapoznawczej, dlatego zalecamy nie dodać aplikacje dla systemu Linux w elemencie ASE, które jest aktualnie uruchomione obciążeń produkcyjnych. 
+    * Dodawanie aplikacji systemu Linux w elemencie ASE oznacza, że ASE będzie także w wersji zapoznawczej. 
+
+5. Wybierz plan usługi aplikacji, a następnie wybierz **Utwórz nowy**. Linux aplikacji sieci web i aplikacji sieci web systemu Windows nie może należeć do tego samego planu usługi App Service, ale może być w tym samym środowisku usługi aplikacji. 
 
     ![Nowy plan usługi App Service][2]
 
+6. W **lokalizacji** listy rozwijanej wybierz region, w którym chcesz utworzyć ASE. W przypadku wybrania istniejącego ASE nowe ASE nie jest tworzone. Plan usługi aplikacji jest tworzony w ASE wybrany. 
+
+    > [!NOTE]
+    > Linux na ASE jest włączona tylko w regionach, 6, obecnie: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** Ponieważ systemu Linux na ASE jest funkcja w wersji zapoznawczej, nie zaznaczaj ASE miał utworzony przed tej wersji zapoznawczej.
+    >
+
+7. Wybierz **warstwa cenowa**i wybierz jedną z **izolowany** cennik jednostki SKU. Jeśli wybierzesz **izolowany** karty jednostki SKU i lokalizacji, która nie jest ASE nowe ASE jest tworzony w tej lokalizacji. Aby rozpocząć proces tworzenia ASE, zaznacz **wybierz**. **Izolowany** jednostka SKU jest dostępna tylko w połączeniu z ASE. Również nie można użyć innych SKU cenową w elemencie ASE innych niż **izolowany**. 
+
+    * Dla systemu Linux na podgląd ASE rabat 50% będzie dotyczyć izolowanego jednostki SKU (na nie będzie żadnych rabat opłata płaski ASE, sam).
+
+    ![Wybór warstwy cenowej][3]
+
+8. Wprowadź nazwę użytkownika ASE. Ta nazwa jest używana w nazwie adresowanego dla aplikacji. Jeśli nazwa ASE _appsvcenvdemo_, nazwa domeny jest *. appsvcenvdemo.p.azurewebsites.net*. Jeśli tworzysz aplikację o nazwie *mytestapp*, jest adresowanego na mytestapp.appsvcenvdemo.p.azurewebsites.net. Nie można użyć biały znak w nazwie. Jeśli używasz wielkich liter, nazwa domeny jest całkowita wersji małe o tej nazwie.
+
+    ![Nowa nazwa planu usługi aplikacji][4]
+
+9. Określ szczegóły sieci wirtualnej platformy Azure. Wybierz opcję **tworzenia nowych** lub **wybierz istniejącą**. Możliwość wybrania istniejącej sieci wirtualnej jest dostępna tylko wtedy, gdy sieć wirtualną w wybranym regionie. W przypadku wybrania **Utwórz nowy**, wprowadź nazwę sieci wirtualnej. Utworzono nową sieć wirtualną Menedżera zasobów o tej nazwie. Używa przestrzeni adresowej `192.168.250.0/23` w wybranym regionie. W przypadku wybrania **wybierz istniejącą**, musisz:
+
+    a. Wybierz blok adresów sieci wirtualnej, jeśli masz więcej niż jeden.
+
+    b. Wprowadź nazwę nowej podsieci.
+
+    c. Wybierz rozmiar podsieci. *Pamiętaj, aby wybrać rozmiar wystarczająco duża, aby uwzględnić przyszły wzrost Twojej ASE.* Firma Microsoft zaleca `/25`, który 128 adresów i może obsłużyć ASE rozmiar maksymalny. Nie zaleca się `/28`, na przykład tylko 16 adresów nie są dostępne. Infrastruktura używa adresów co najmniej siedmiu i Azure Networking używa innego 5. W `/28` podsieci, w przypadku pozostałych składającą się maksymalnie z 4 wystąpieniach planu usługi aplikacji — dla zewnętrznych ASE skalowania i tylko 3 wystąpienia planu usług aplikacji dla ASE ILB.
+
+    d. Wybierz zakres adresów IP podsieci.
+
+10. Wybierz **Utwórz** utworzyć ASE. Ten proces tworzy również plan usługi aplikacji i aplikacji. ASE planu usługi aplikacji i aplikacji są pod tą samą subskrypcją, a także w tej samej grupie zasobów. Jeśli Twoje ASE wymaga oddzielnej grupie zasobów lub należy ASE ILB, wykonaj kroki, aby utworzyć ASE samodzielnie.
+
+## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Utwórz ASE i aplikacji sieci web systemu Linux ze sobą przy użyciu niestandardowego obrazu Docker
+
+1. W [portalu Azure](https://portal.azure.com/), **Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web dla kontenerów.** 
+
+    ![Tworzenie aplikacji sieci Web][7]
+
+2. Wybierz subskrypcję. Aplikacji a ASE są tworzone w tej samej subskrypcji.
+
+3. Wybierz lub utwórz grupę zasobów. Z grupami zasobów można zarządzać jako jednostka powiązanych zasobów systemu Azure. Grupy zasobów są także przydatne podczas ustanawiania zasady kontroli dostępu opartej na rolach dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ARMOverview].
+
+4. Wybierz plan usługi aplikacji, a następnie wybierz **Utwórz nowy**. Linux aplikacji sieci web i aplikacji sieci web systemu Windows nie może należeć do tego samego planu usługi App Service, ale może być w tym samym środowisku usługi aplikacji. 
+
+    ![Nowy plan usługi App Service][8]
+
 5. W **lokalizacji** listy rozwijanej wybierz region, w którym chcesz utworzyć ASE. W przypadku wybrania istniejącego ASE nowe ASE nie jest tworzone. Plan usługi aplikacji jest tworzony w ASE wybrany. 
 
-6. Wybierz **warstwa cenowa**i wybierz jedną z **izolowany** cennik jednostki SKU. Jeśli wybierzesz **izolowany** karty jednostki SKU i lokalizacji, która nie jest ASE nowe ASE jest tworzony w tej lokalizacji. Aby rozpocząć proces tworzenia ASE, zaznacz **wybierz**. **Izolowany** jednostka SKU jest dostępna tylko w połączeniu z ASE. Również nie można użyć innych SKU cenową w elemencie ASE innych niż **izolowany**.
+    > [!NOTE]
+    > Linux na ASE jest włączona tylko w regionach, 6, obecnie: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** Ponieważ systemu Linux na ASE jest funkcja w wersji zapoznawczej, nie zaznaczaj ASE miał utworzony przed tej wersji zapoznawczej.
+    >
+
+6. Wybierz **warstwa cenowa**i wybierz jedną z **izolowany** cennik jednostki SKU. Jeśli wybierzesz **izolowany** karty jednostki SKU i lokalizacji, która nie jest ASE nowe ASE jest tworzony w tej lokalizacji. Aby rozpocząć proces tworzenia ASE, zaznacz **wybierz**. **Izolowany** jednostka SKU jest dostępna tylko w połączeniu z ASE. Również nie można użyć innych SKU cenową w elemencie ASE innych niż **izolowany**. 
+
+    * Dla systemu Linux na podgląd ASE rabat 50% będzie dotyczyć izolowanego jednostki SKU (na nie będzie żadnych rabat opłata płaski ASE, sam).
 
     ![Wybór warstwy cenowej][3]
 
@@ -91,7 +144,13 @@ Aby utworzyć ASE podczas tworzenia planu usługi aplikacji:
 
     d. Wybierz zakres adresów IP podsieci.
 
-9. Wybierz **Utwórz** utworzyć ASE. Ten proces tworzy również plan usługi aplikacji i aplikacji. ASE planu usługi aplikacji i aplikacji są pod tą samą subskrypcją, a także w tej samej grupie zasobów. Jeśli Twoje ASE wymaga oddzielnej grupie zasobów lub należy ASE ILB, wykonaj kroki, aby utworzyć ASE samodzielnie.
+9.  Wybierz opcję "Konfigurowanie kontenera".
+    * Wprowadź nazwę niestandardowego obrazu (możesz użyć rejestru kontenera platformy Azure, Centrum Docker i prywatnych rejestru). Jeśli nie chcesz użyć własnych niestandardowych kontenera, można po prostu przenieś swój kod i użyć wbudowanych obrazu z usługi aplikacji w systemie Linux przy użyciu powyższych instrukcji. 
+
+    ! [Skonfiguruj kontener] [9]
+
+10. Wybierz **Utwórz** utworzyć ASE. Ten proces tworzy również plan usługi aplikacji i aplikacji. ASE planu usługi aplikacji i aplikacji są pod tą samą subskrypcją, a także w tej samej grupie zasobów. Jeśli Twoje ASE wymaga oddzielnej grupie zasobów lub należy ASE ILB, wykonaj kroki, aby utworzyć ASE samodzielnie.
+
 
 ## <a name="create-an-ase-by-itself"></a>Utwórz ASE samodzielnie ##
 
@@ -111,7 +170,9 @@ Tworzenie autonomicznych ASE, nie ma nic w nim. Pusty ASE nadal wiąże miesięc
 
 5. Wybierz sieć wirtualną i lokalizacji. Możesz utworzyć nową sieć wirtualną lub wybierz istniejącej sieci wirtualnej: 
 
-    * W przypadku wybrania nowej sieci wirtualnej można określić nazwy i lokalizacji. Nowej sieci wirtualnej ma 192.168.250.0/23 zakres adresów i podsieć o nazwie domyślnej. Podsieć jest zdefiniowana jako 192.168.250.0/24. Można wybrać tylko sieć wirtualną Menedżera zasobów. **Typu VIP** wybór określa Twojej ASE są bezpośrednio dostępne z Internetu (zewnętrzne) lub korzysta z ILB. Aby dowiedzieć się więcej o tych opcjach, zobacz [tworzenie i używanie wewnętrznego modułu równoważenia obciążenia z środowiska usługi aplikacji][MakeILBASE]. 
+    * W przypadku wybrania nowej sieci wirtualnej można określić nazwy i lokalizacji. Jeśli zamierzasz Hostuj aplikacje systemu Linux na tym ASE w tej chwili obsługiwane są tylko tych regionów, 6: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
+    
+    * Nowej sieci wirtualnej ma 192.168.250.0/23 zakres adresów i podsieć o nazwie domyślnej. Podsieć jest zdefiniowana jako 192.168.250.0/24. Można wybrać tylko sieć wirtualną Menedżera zasobów. **Typu VIP** wybór określa Twojej ASE są bezpośrednio dostępne z Internetu (zewnętrzne) lub korzysta z ILB. Aby dowiedzieć się więcej o tych opcjach, zobacz [tworzenie i używanie wewnętrznego modułu równoważenia obciążenia z środowiska usługi aplikacji][MakeILBASE]. 
 
       * W przypadku wybrania **zewnętrznych** dla **typu VIP**, możesz wybrać ile zewnętrzne adresy IP systemu jest tworzony z celów opartych na protokole SSL. 
     
@@ -132,6 +193,9 @@ Aby dowiedzieć się więcej na temat ASEv1, zobacz [wprowadzenie do środowiska
 [4]: ./media/how_to_create_an_external_app_service_environment/createexternalase-embeddedcreate.png
 [5]: ./media/how_to_create_an_external_app_service_environment/createexternalase-standalonecreate.png
 [6]: ./media/how_to_create_an_external_app_service_environment/createexternalase-network.png
+[7]: ./media/how_to_create_an_external_app_service_environment/createexternalase-createwafc.png
+[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreatewafc.png
+[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
 
 
 

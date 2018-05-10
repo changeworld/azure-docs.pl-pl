@@ -91,6 +91,10 @@
               href: azure-stack-kv-push-secret-into-vm.md
             - name: Przykładowa aplikacja usługi KeyVault
               href: azure-stack-kv-sample-app.md
+            - name: Szablony rozwiązań
+              items:
+                - name: Wdrażanie klastra sieci szkieletowej usług
+                  href: azure-stack-solution-template-service-fabric-cluster.md
     - name: Tworzenie aplikacji
       items:
         - name: Opracowywanie zawartości dla usługi Azure Stack

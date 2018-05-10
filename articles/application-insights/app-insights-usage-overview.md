@@ -1,9 +1,9 @@
 ---
-title: "Analiza użycia za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, użytkownicy i ich działania z aplikacją."
+title: Analiza użycia za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Dowiedz się, użytkownicy i ich działania z aplikacją.
 services: application-insights
-documentationcenter: 
-author: botatoes
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9f3eb14340205709b5409a3d16d631cc2d02eb32
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 79f4f77f08653c40591137268b87dc2feeb0acf6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 

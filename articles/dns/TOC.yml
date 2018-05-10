@@ -12,10 +12,6 @@
       href: dns-getstarted-powershell.md
     - name: Tworzenie strefy i rekordu DNS — interfejs wiersza polecenia
       href: dns-getstarted-cli.md
-- name: Przykłady
-  items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: cli-samples.md
 - name: Samouczki
   items:
     - name: Tworzenie strefy i rekordu w prywatnej usłudze DNS
@@ -24,6 +20,10 @@
       href: dns-delegate-domain-azure-dns.md
     - name: Tworzenie niestandardowych rekordów DNS dla aplikacji internetowej
       href: dns-web-sites-custom-domain.md
+- name: Przykłady
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
 - name: Pojęcia
   items:
     - name: Strefy i rekordy DNS

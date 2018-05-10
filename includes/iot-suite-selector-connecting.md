@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 43acf33ec7787378595ad62540a868100bf587f7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/07/2018
+---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-suite/iot-suite-connecting-devices.md)
 > * [C w systemie Linux](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
@@ -5,7 +21,7 @@
 > * [Node.js na urządzeniu Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-node.md)
 > * [C na urządzeniu Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-W tym samouczku zaimplementowaniem **Chłodnica** urządzenia, które wysyła następujące dane telemetryczne do monitorowania zdalnego [wstępnie skonfigurowane rozwiązanie](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md):
+W tym samouczku zaimplementowaniem **Chłodnica** urządzenia, które wysyła następujące dane telemetryczne do monitorowania zdalnego [akcelerator rozwiązań](../articles/iot-suite/iot-suite-what-are-solution-accelerators.md):
 
 * Temperatura
 * wykorzystania
@@ -23,11 +39,11 @@ Do wykonania kroków tego samouczka jest potrzebne aktywne konto platformy Azure
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Przed przystąpieniem do napisania kodu dla danego urządzenia, wdrożyć zdalnego monitorowania wstępnie skonfigurowane rozwiązanie i dodać nowe urządzenie fizyczne do rozwiązania.
+Przed przystąpieniem do napisania kodu dla danego urządzenia, wdrożyć zdalnego monitorowania akcelerator rozwiązań i Dodaj nowe urządzenie fizyczne do rozwiązania.
 
-### <a name="deploy-your-remote-monitoring-preconfigured-solution"></a>Wdrażanie zdalnego wstępnie skonfigurowane rozwiązanie monitorowania
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Wdrażanie zdalne monitorowania akcelerator rozwiązań
 
-**Chłodnica** urządzenia, możesz utworzyć w tym samouczku wysyłania danych do wystąpienia [monitorowania zdalnego](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) wstępnie skonfigurowane rozwiązanie. Jeśli nie zostało już wstępnie skonfigurowane zdalnego wstępnie skonfigurowane rozwiązanie monitorowania w konta platformy Azure, zobacz [wdrożyć zdalnego wstępnie skonfigurowane rozwiązanie monitorowania](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
+**Chłodnica** urządzenia, możesz utworzyć w tym samouczku wysyłania danych do wystąpienia [monitorowania zdalnego](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) akcelerator rozwiązań. Jeśli nie zostało już wstępnie skonfigurowane zdalnego monitorowania akcelerator rozwiązań w konta platformy Azure, zobacz [wdrożyć zdalnego monitorowania akcelerator rozwiązań](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
 
 Podczas procesu wdrażania dla zdalnego rozwiązanie monitorowania zakończy, kliknij przycisk **uruchamianie** aby otworzyć pulpit nawigacyjny rozwiązania w przeglądarce.
 
@@ -38,7 +54,7 @@ Podczas procesu wdrażania dla zdalnego rozwiązanie monitorowania zakończy, kl
 > [!NOTE]
 > Jeśli masz już dodany urządzenia w rozwiązaniu, możesz pominąć ten krok. Parametry połączenia urządzenia wymaga jednak następnego kroku. Można pobrać parametrów połączenia do urządzenia z [portalu Azure](https://portal.azure.com) lub przy użyciu [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) narzędzia interfejsu wiersza polecenia.
 
-Aby urządzenie mogło nawiązać połączenie ze wstępnie skonfigurowanym rozwiązaniem, musi ono zidentyfikować się względem usługi IoT Hub za pomocą prawidłowych poświadczeń. Użytkownik ma możliwość zapisania rozwiązania parametry połączenia urządzenia, które zawiera te poświadczenia podczas dodawania urządzenia. Ciąg połączenia urządzenia możesz uwzględnić w dalszej części tego samouczka aplikacji klienta.
+Urządzenia do nawiązania połączenia akcelerator rozwiązań go zidentyfikowania się Centrum IoT, używając poprawnych poświadczeń. Użytkownik ma możliwość zapisania rozwiązania parametry połączenia urządzenia, które zawiera te poświadczenia podczas dodawania urządzenia. Ciąg połączenia urządzenia możesz uwzględnić w dalszej części tego samouczka aplikacji klienta.
 
 Aby dodać urządzenie do zdalnego rozwiązanie monitorowania, wykonaj następujące czynności na **urządzeń** strony w rozwiązaniu:
 
@@ -54,9 +70,9 @@ Aby dodać urządzenie do zdalnego rozwiązanie monitorowania, wykonaj następuj
 
     ![Pobieranie poświadczeń](media/iot-suite-selector-connecting/credentials.png)
 
-Zostało teraz dodane urządzenie fizyczne do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania i oznaczane w parametrach połączenia urządzenia. W poniższych sekcjach można zaimplementować aplikacji klienckiej, która używa ciągu połączenia urządzenia do łączenia się rozwiązania.
+Zostało teraz dodane urządzenie fizyczne do zdalnego monitorowania akcelerator rozwiązań i oznaczane w parametrach połączenia urządzenia. W poniższych sekcjach można zaimplementować aplikacji klienckiej, która używa ciągu połączenia urządzenia do łączenia się rozwiązania.
 
-Aplikacja kliencka implementuje wbudowane **Chłodnica** model urządzenia. Model urządzenia wstępnie skonfigurowane rozwiązanie określa następujące informacje o urządzeniu:
+Aplikacja kliencka implementuje wbudowane **Chłodnica** model urządzenia. Model urządzenia akceleratora rozwiązań określa następujące informacje o urządzeniu:
 
 * Właściwości urządzenia raporty dla rozwiązania. Na przykład **Chłodnica** urządzenie raportuje informacje o jego oprogramowania układowego i lokalizacji.
 * Typy danych telemetrycznych urządzenie wysyła do rozwiązania. Na przykład **Chłodnica** temperatury i wilgotności oraz wartości wykorzystania wysłania przez urządzenie.

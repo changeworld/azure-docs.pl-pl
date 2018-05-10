@@ -1,11 +1,11 @@
 ---
-title: "Przekazywanie plików z urządzenia do Centrum IoT Azure z językiem Java | Dokumentacja firmy Microsoft"
-description: "Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla języka Java. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure."
+title: Przekazywanie plików z urządzenia do Centrum IoT Azure z językiem Java | Dokumentacja firmy Microsoft
+description: Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla języka Java. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: b6e1ef5a5b3f9298134a7c312ac7d1927cf41a7f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 794ebd3b2d25f6b7d5dcb86b0834380fce9b9a27
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury z Centrum IoT
 
@@ -36,7 +36,7 @@ W tym samouczku opiera się na kodzie w [wysyłać chmury do urządzenia z Centr
 * Dane wibrację próbkowanych zgodnie o dużej częstotliwości
 * Niektóre formularz wstępnie przetworzonych danych.
 
-Pliki te są zwykle partii przetwarzania w chmurze za pomocą narzędzi takich jak [fabryki danych Azure](../data-factory/introduction.md) lub [Hadoop](../hdinsight/index.md) stosu. Gdy trzeba wyżynne pliki z urządzenia, można nadal używać bezpieczeństwa i niezawodności Centrum IoT.
+Pliki te są zwykle partii przetwarzania w chmurze za pomocą narzędzi takich jak [fabryki danych Azure](../data-factory/introduction.md) lub [Hadoop](../hdinsight/index.yml) stosu. Gdy trzeba wyżynne pliki z urządzenia, można nadal używać bezpieczeństwa i niezawodności Centrum IoT.
 
 Na końcu tego samouczka możesz uruchomić dwie aplikacje konsoli Java:
 

@@ -1,6 +1,6 @@
 ---
-title: "Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure."
+title: Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -15,11 +15,11 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: e5b289b2be982653461c4f5b933e1ec444fa9716
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3e37edbf8d29441541e77ed0660dc9a71618fdee
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio obrazów na platformie Azure
 Za pomocą programu Visual Studio w wstępnie skonfigurowane Azure maszyny wirtualnej (VM) jest szybki i łatwy sposób przejść z nic do środowiska projektowego w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -29,12 +29,13 @@ Dopiero zaczynasz korzystać z platformy Azure? [Tworzenie bezpłatnego konta pl
 ## <a name="what-configurations-and-versions-are-available"></a>Jakie konfiguracje i wersje są dostępne?
 Obrazy do najnowszej wersji głównych, Visual Studio 2017 i programu Visual Studio 2015, można znaleźć w portalu Azure Marketplace. Dla każdej wersji głównych Zobacz pierwotnie wydanej wersji (RTW) oraz najnowsze zaktualizowane wersje. Każda z tych wersji oferuje wersje programu Visual Studio Community i Visual Studio Enterprise. Te obrazy są aktualizowane co najmniej co miesiąc uwzględnienie najnowsze aktualizacje programu Visual Studio i systemu Windows. Podczas nazwy obrazów pozostają takie same, opis każdego obrazu zawiera wersję zainstalowanego produktu i "daty" obrazu.
 
-| Wersja              | Wersje            | Wersja produktu     |
-|:-----------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: R (wersja 15,5 cala) |    Enterprise, Community     |      Wersja 15.6.0     |
-|         Visual Studio 2017: RTW           |    Enterprise, Community     |      Wersja 15.0.10    |
-|   Visual Studio 2015: R (Update 3)   |    Enterprise, Community     |  Wersja 14.0.25431.01  |
-|         Visual Studio 2015: RTW           |              None            | (Wygasł obsługi) |
+| Wersja                                              | Wersje                     |     Wersja produktu     |
+|:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
+| Visual Studio 2017: R (wersja 15.7)                    |    Enterprise, Community     |      Wersja 15.7.0     |
+| Programu Visual Studio 2017: Najnowszej wersji zapoznawczej (wersja 15.8, wersja zapoznawcza 1) |    Enterprise, Community     |      Wersja 15.8.1     |
+|         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Wersja 15.0.13    |
+|   Visual Studio 2015: R (Update 3)                      |    Enterprise, Community     |  Wersja 14.0.25431.01  |
+|         Visual Studio 2015: RTW                              |             Brak             | (Wygasł obsługi) |
 
 > [!NOTE]
 > Zgodnie z zasadami obsługi firmy Microsoft wygasł pierwotnie pełnej wersji programu Visual Studio 2015 (RTW) obsługi. Visual Studio 2015 Update 3 jest tylko wersja pozostałych oferowane dla linii produktów Visual Studio 2015.

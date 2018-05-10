@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: cost-management
+author: bandersmsft
+ms.service: cost-management
+ms.topic: include
+ms.date: 04/26/2018
+ms.author: banders
+manager: dougeby
+ms.custom: include file
+ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="view-cost-data"></a>Wyświetlanie danych kosztów
 
 Rozwiązanie Azure Cost Management firmy Cloudyn zapewnia dostęp do wszystkich danych zasobów w chmurze. Pulpit nawigacyjny zawiera standardowe i niestandardowe raporty wyświetlane w widoku z kartami. Poniżej przedstawiono przykłady popularnego pulpitu nawigacyjnego i raportu, który umożliwia natychmiastowe przedstawienie danych kosztów.

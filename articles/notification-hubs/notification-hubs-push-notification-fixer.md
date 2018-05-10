@@ -1,45 +1,45 @@
 ---
-title: "Centra powiadomień Azure porzucony diagnostyki powiadomień"
-description: "Dowiedz się, jak zdiagnozować typowe problemy z porzuconych powiadomienia w usług Azure Notification Hubs."
+title: Centra powiadomień Azure porzucony diagnostyki powiadomień
+description: Dowiedz się, jak zdiagnozować typowe problemy z porzuconych powiadomienia w usług Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: Mobile
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: 
+editor: spelluru
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 3925208fe56bcd9513ec4c0f21aa1e2dd8fbf9c5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: bc9ef70560f0485da81c1f54aa955cee76d280ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Diagnozowanie porzuconych powiadomienia w centra powiadomień
 
 Jednym z najbardziej typowe pytania klientów usługi Azure Notification Hubs jest jak rozwiązywać problemy podczas powiadomienia, które są wysyłane z aplikacji nie są wyświetlane na urządzeniach klienckich. Chce wiedzieć, gdzie i dlaczego powiadomienia zostały usunięte i jak rozwiązać problem. W tym artykule identyfikuje Dlaczego powiadomień może pobrać usunięty lub nie można odebrać przez urządzenia. Dowiedz się, jak analizować i ustalenia głównej przyczyny. 
 
-Warto najpierw zrozumieć, jak usługi Notification Hubs wypychanie powiadomień do urządzenia.
+Warto najpierw zrozumieć, jak usługa Notification Hubs wypychanie powiadomień do urządzenia.
 
 ![Architektura centra powiadomień][0]
 
 Do typowych wysyłania powiadomień przepływu, komunikat jest wysyłany z *zaplecza aplikacji* do usługi Notification Hubs. Centra powiadomień jest część przetwarzania na wszystkich rejestracji. Przetwarzanie uwzględnia skonfigurowanych znaczników i wyrażeń tagów w celu ustalenia "elementów docelowych." Obiekty docelowe są rejestracje, które muszą odbierać powiadomienia wypychane. Te mogą obejmować jedną lub naszych obsługiwanych platform: iOS, Google, Windows, Windows Phone, urządzeń Kindle i Baidu dla Chin systemu Android.
 
-Z obiektami docelowymi nawiązane, centra powiadomień wypychanie powiadomień do *push notification service* dla platformy urządzeń. Przykładami Apple Push Notification service (APNs) firmy Apple i Firebase Cloud Messaging (FCM) dla usług Google. Powiadomienia wypchnięć centra powiadomień podzielić na wiele instancji rejestracji. Centra powiadomień jest uwierzytelniany przy użyciu usługi powiadomień wypychanych odpowiednich na podstawie podanych poświadczeń, które ustawione w portalu Azure w obszarze **Konfigurowanie Centrum powiadomień**. Powiadomienie wypychane następnie usługi przodu powiadomienia do odpowiednich *urządzeń klienckich*. 
+Z ustanowionych celów usługi Notification Hubs wypychanie powiadomień do *push notification service* dla platformy urządzeń. Przykładami Apple Push Notification service (APNs) firmy Apple i Firebase Cloud Messaging (FCM) dla usług Google. Powiadomienia wypchnięć centra powiadomień podzielić na wiele instancji rejestracji. Centra powiadomień jest uwierzytelniany przy użyciu usługi powiadomień wypychanych odpowiednich na podstawie podanych poświadczeń, które ustawione w portalu Azure w obszarze **Konfigurowanie Centrum powiadomień**. Powiadomienie wypychane następnie usługi przodu powiadomienia do odpowiednich *urządzeń klienckich*. 
 
-Należy pamiętać, że do końcowej gałęzi dostarczania powiadomień o zapytaniach odbywa się między usługi powiadomień wypychanych platformy i urządzenia. Jedną z czterech głównych elementów w procesie powiadomień wypychanych (klienta, zaplecza aplikacji usługi Notification Hubs i usługi powiadomień wypychanych platformy) może spowodować powiadomienia ma być przerwane. Aby uzyskać więcej informacji o architekturze usługi Notification Hubs, zobacz [usługi Notification Hubs — omówienie].
+Do końcowej gałęzi dostarczania powiadomień o zapytaniach odbywa się między usługi powiadomień wypychanych platformy i urządzenia. Jedną z czterech głównych elementów w procesie powiadomień wypychanych (klienta, zaplecza aplikacji usługi Notification Hubs i usługi powiadomień wypychanych platformy) może spowodować powiadomienia ma być przerwane. Aby uzyskać więcej informacji o architekturze usługi Notification Hubs, zobacz [usługi Notification Hubs — omówienie].
 
 Nie można dostarczać powiadomienia mogą wystąpić podczas wstępnej fazy badania/przemieszczania. Porzucone powiadomienia na tym etapie może wskazywać na problem z konfiguracją. W przypadku niepowodzenia dostarczać powiadomienia w środowisku produkcyjnym, niektóre lub wszystkie powiadomienia mogą być opuszczane. W takim przypadku wskazane jest bardziej aplikacji lub problem wzorzec do obsługi komunikatów. 
 
 Następna sekcja analizuje scenariusze, w których powiadomienia mogą być opuszczane, od typowych więcej rzadko.
 
 ## <a name="notification-hubs-misconfiguration"></a>Błąd konfiguracji centra powiadomień
-Aby pomyślnie wysyłać powiadomienia do usługi powiadomień wypychanych odpowiednich, centra powiadomień musi do samodzielnego uwierzytelnienia w kontekście dewelopera aplikacji. W tym celu włączone dewelopera tworzy konto dewelopera z odpowiednich platform (Google, Apple systemu Windows i tak dalej). Następnie Deweloper rejestruje ich aplikacji z platformą, w którym znaleźć poświadczeń. 
+Aby pomyślnie wysyłać powiadomienia do usługi odpowiednich push notification service, usługi Notification Hubs musi do samodzielnego uwierzytelnienia w kontekście dewelopera aplikacji. W tym celu włączone dewelopera tworzy konto dewelopera z odpowiednich platform (Google, Apple systemu Windows i tak dalej). Następnie Deweloper rejestruje ich aplikacji z platformą, w którym znaleźć poświadczeń. 
 
 Poświadczenia platformy należy dodać do portalu Azure. Jeśli żadne powiadomienia się połączyć urządzenie, pierwszym krokiem powinno być upewnij się, że poprawne poświadczenia są skonfigurowane w usłudze Notification Hubs. Poświadczenia muszą odpowiadać aplikację, która jest tworzona przy użyciu konta dewelopera specyficzne dla platformy. 
 
@@ -88,7 +88,7 @@ Poniżej przedstawiono kilka typowych błędów konfiguracji, aby wyszukać:
 
 * **Nieprawidłowy rejestracji**
 
-    Jeśli Centrum powiadomień został poprawnie skonfigurowany i znaczniki lub wyrażeń tagów użyto poprawnie, prawidłowe elementy docelowe są dostępne. Mają być wysyłane powiadomienia do następujących elementów docelowych. Centra powiadomień, a następnie uruchamiany poza partie przetwarzania równoległego. Każdej z partii wysyła komunikaty do zestawu rejestracji. 
+    Jeśli Centrum powiadomień został poprawnie skonfigurowany i znaczniki lub wyrażeń tagów użyto poprawnie, prawidłowe elementy docelowe są dostępne. Mają być wysyłane powiadomienia do następujących elementów docelowych. Usługa centra powiadomień, a następnie uruchamiany poza partie przetwarzania równoległego. Każdej z partii wysyła komunikaty do zestawu rejestracji. 
 
     > [!NOTE]
     > Ponieważ przetwarzanie jest wykonywane równolegle, kolejność, w której powiadomienia są dostarczane nie jest gwarantowana. 
@@ -102,7 +102,7 @@ Poniżej przedstawiono kilka typowych błędów konfiguracji, aby wyszukać:
     Aby uzyskać więcej informacji o o przy próbie dostarczenia nie powiodło się przed rejestracji, można użyć interfejsów API REST centra powiadomień [na Telemetrii wiadomości: pobrać Telemetrii komunikat powiadomienia](https://msdn.microsoft.com/library/azure/mt608135.aspx) i [opinii systemu powiadomień platformy](https://msdn.microsoft.com/library/azure/mt705560.aspx). Przykładowy kod, zobacz [przykład wysłać REST](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample).
 
 ## <a name="push-notification-service-issues"></a>Problemy z usługi powiadomień wypychanych
-Po otrzymaniu komunikatu powiadomienia przez usługi powiadomień wypychanych platformy jest odpowiedzialny za usługi powiadomień wypychanych do dostarczenia powiadomienia do urządzenia. W tym momencie usługi Notification Hubs jest poza obraz i nie ma kontroli nad gdy lub jeśli powiadomienie jest dostarczany do urządzenia. 
+Po otrzymaniu komunikatu powiadomienia przez usługi powiadomień wypychanych platformy jest odpowiedzialny za usługi powiadomień wypychanych do dostarczenia powiadomienia do urządzenia. W tym momencie usługi Notification Hubs jest poza obrazu, a nie ma kontroli nad gdy lub jeśli powiadomienie jest dostarczany do urządzenia. 
 
 Ponieważ usługi powiadomień platformy są niezawodne, powiadomienia zwykle do zarządzanego urządzenia z usługi powiadomień wypychanych w ciągu kilku sekund. Jeśli usługi powiadomień wypychanych jest ograniczanie, centra powiadomień stosuje wykładniczej strategii wycofania. Jeśli usługi powiadomień wypychanych pozostaje nieosiągalny przez 30 minut, mamy zasady w celu wygaśnie i trwale usunąć te wiadomości. 
 
@@ -120,7 +120,7 @@ Poniżej przedstawiono ścieżki do diagnozowanie głównej przyczyny porzuconyc
    
     Sprawdź poświadczenia w odpowiednich wypychania powiadomień usługi portalu dla deweloperów (APN, FCM usługi powiadomień systemu Windows i tak dalej). Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Notification Hubs].
 
-* **Azure portal**
+* **Azure Portal**
    
     Aby przejrzeć i być zgodne z poświadczeniami z tymi, które uzyskane z portalu wypychania powiadomień usługi deweloperów w portalu Azure, przejdź do **zasady dostępu** kartę. 
    
@@ -146,7 +146,7 @@ Poniżej przedstawiono ścieżki do diagnozowanie głównej przyczyny porzuconyc
     Wielu klientów używa [Service Bus Explorer] do wyświetlania i zarządzania ich Centrum powiadomień. Eksploratora magistrali usług to projekt typu open source. Aby uzyskać przykłady, zobacz [kod Service Bus Explorer].
 
 ### <a name="verify-message-notifications"></a>Sprawdź komunikat powiadomienia
-* **Azure portal**
+* **Azure Portal**
    
     Aby wysłać powiadomienie testowe do klientów bez konieczności usługi zaplecza do pracy, w obszarze **pomocy technicznej i rozwiązywania problemów**, wybierz pozycję **wysyłanie testowe**. 
    

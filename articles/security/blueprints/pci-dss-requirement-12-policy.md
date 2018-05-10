@@ -1,9 +1,9 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania dotyczące zasad"
+title: Plan Azure przetwarzania płatności — wymagania dotyczące zasad
 description: Wymaganie PCI DSS 12
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: a79d59d8-20e3-4efe-8686-c8f4ed80e220
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 05e9ed7c886d37a024db1eedbc541705b7d8a9a9
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 2fb238e9b95180d6156159c87ec008a71943e698
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="policy-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące zasad dla PCI DSS zgodne środowisk  
 ## <a name="pci-dss-requirement-12"></a>Wymaganie PCI DSS 12
@@ -38,8 +38,8 @@ Zasady silne zabezpieczenie ustawia sygnał zabezpieczeń dla całej jednostki i
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do nawiązywania i utrzymywania zasad zabezpieczeń informacji.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do nawiązywania i utrzymywania zasad zabezpieczeń informacji.|
 
 
 
@@ -51,8 +51,8 @@ Zasady silne zabezpieczenie ustawia sygnał zabezpieczeń dla całej jednostki i
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do aktualizowania swoich informacji zasad zabezpieczeń co najmniej raz, lub gdy zmian w środowisku danych posiadacza (CRP).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do aktualizowania swoich informacji zasad zabezpieczeń co najmniej raz, lub gdy zmian w środowisku danych posiadacza (CRP).|
 
 
 
@@ -68,8 +68,8 @@ Zasady silne zabezpieczenie ustawia sygnał zabezpieczeń dla całej jednostki i
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do implementowania proces oceny ryzyka, która dotyczy wszystkich zagrożeń 12.2 zapotrzebowania na liście.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do implementowania proces oceny ryzyka, która dotyczy wszystkich zagrożeń 12.2 zapotrzebowania na liście.|
 
 
 
@@ -85,8 +85,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -98,8 +98,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -111,8 +111,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -124,8 +124,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -137,8 +137,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -150,8 +150,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -163,8 +163,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do określenia lokalizacji sieciowych akceptowalne dla maszyn wirtualnych w chmurze, magazynu i usług pomocniczych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do określenia lokalizacji sieciowych akceptowalne dla maszyn wirtualnych w chmurze, magazynu i usług pomocniczych.|
 
 
 
@@ -176,8 +176,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do określenia lokalizacji sieciowych akceptowalne dla maszyn wirtualnych w chmurze, magazynu i usług pomocniczych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do określenia lokalizacji sieciowych akceptowalne dla maszyn wirtualnych w chmurze, magazynu i usług pomocniczych.|
 
 
 
@@ -189,8 +189,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje funkcję blokady sesji AD firmy Microsoft, która wymusza dokumentów blokady sesji po okresie braku aktywności. Połączenia sieciowe są zakończone po 30 minutach braku aktywności. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje funkcję blokady sesji AD firmy Microsoft, która wymusza dokumentów blokady sesji po okresie braku aktywności. Połączenia sieciowe są zakończone po 30 minutach braku aktywności. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -202,8 +202,8 @@ Upewnij się, że tych zasad użytkowania wymagają następujących czynności.
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -216,8 +216,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia, że personel podczas uzyskiwania dostępu do danych posiadacza za pomocą technologii dostępu zdalnego są zabronione w myśl kopiowanie, przenoszenie i przechowywanie danych posiadacza na lokalnych dyskach twardych i nośniki wymienne, elektronicznych, chyba że do określonych potrzeb.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia, że personel podczas uzyskiwania dostępu do danych posiadacza za pomocą technologii dostępu zdalnego są zabronione w myśl kopiowanie, przenoszenie i przechowywanie danych posiadacza na lokalnych dyskach twardych i nośniki wymienne, elektronicznych, chyba że do określonych potrzeb.|
 
 
 
@@ -229,8 +229,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -247,8 +247,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klientów, którzy dostawcy usług są odpowiedzialne za dokumentację programu zgodności PCI.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klientów, którzy dostawcy usług są odpowiedzialne za dokumentację programu zgodności PCI.|
 
 
 
@@ -260,8 +260,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i przypisywanie informacji o swoim pracownikom obowiązki związane z zabezpieczeniami.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i przypisywanie informacji o swoim pracownikom obowiązki związane z zabezpieczeniami.|
 
 
 
@@ -273,8 +273,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i przypisywanie informacji o swoim pracownikom obowiązki związane z zabezpieczeniami.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i przypisywanie informacji o swoim pracownikom obowiązki związane z zabezpieczeniami.|
 
 
 
@@ -286,8 +286,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i przypisywanie informacji o swoim pracownikom obowiązki związane z zabezpieczeniami.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do definiowania i przypisywanie informacji o swoim pracownikom obowiązki związane z zabezpieczeniami.|
 
 
 
@@ -299,8 +299,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -312,8 +312,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -325,8 +325,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad dyktowanie prawidłowego użycia, wdrażania i uwierzytelniania dla technologii krytyczne w ich CRP.|
 
 
 
@@ -338,8 +338,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad otaczającego rozpoznawanie zabezpieczeń dla pracowników z dostępem do CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do tworzenia i obsługi zasad otaczającego rozpoznawanie zabezpieczeń dla pracowników z dostępem do CRP.|
 
 
 
@@ -354,8 +354,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia personelu odbierają i potwierdzić bezpieczeństwo informacji i PCI-DSS świadomości szkolenia co najmniej raz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia personelu odbierają i potwierdzić bezpieczeństwo informacji i PCI-DSS świadomości szkolenia co najmniej raz.|
 
 
 
@@ -367,8 +367,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia personelu odbierają i potwierdzić bezpieczeństwo informacji i PCI-DSS świadomości szkolenia co najmniej raz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia personelu odbierają i potwierdzić bezpieczeństwo informacji i PCI-DSS świadomości szkolenia co najmniej raz.|
 
 
 
@@ -383,8 +383,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia pracowników z dostępem do CDE przejście dokładnego kontrole.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do zapewnienia pracowników z dostępem do CDE przejście dokładnego kontrole.|
 
 
 
@@ -396,8 +396,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do monitorowania zgodności PCI dla dostawców usług, z którymi są udostępniane dane posiadacza lub może mieć wpływ na bezpieczeństwo CDE. Klienci muszą zachować zawiera listę wszystkich usług używane w ramach ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do monitorowania zgodności PCI dla dostawców usług, z którymi są udostępniane dane posiadacza lub może mieć wpływ na bezpieczeństwo CDE. Klienci muszą zachować zawiera listę wszystkich usług używane w ramach ich CRP.|
 
 
 
@@ -410,8 +410,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do monitorowania zgodności PCI dla dostawców usług, z którymi są udostępniane dane posiadacza lub może mieć wpływ na bezpieczeństwo CDE. Klienci muszą zachować zawiera listę wszystkich usług używane w ramach ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do monitorowania zgodności PCI dla dostawców usług, z którymi są udostępniane dane posiadacza lub może mieć wpływ na bezpieczeństwo CDE. Klienci muszą zachować zawiera listę wszystkich usług używane w ramach ich CRP.|
 
 
 
@@ -426,8 +426,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do przechowywania pisemne umowy z potwierdzeniem odpowiedzialność za zabezpieczenie posiadacza danych dostawcy usług.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do przechowywania pisemne umowy z potwierdzeniem odpowiedzialność za zabezpieczenie posiadacza danych dostawcy usług.|
 
 
 
@@ -439,8 +439,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są odpowiedzialne za zapewnienie, że istnieje ustalonych procesów do wykonywania dostawcy usług w tym prawidłowego ukończenia przed starannością do zaangażowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są odpowiedzialne za zapewnienie, że istnieje ustalonych procesów do wykonywania dostawcy usług w tym prawidłowego ukończenia przed starannością do zaangażowania.|
 
 
 
@@ -452,8 +452,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci jest odpowiedzialny za konserwację programu do monitorowania stanu zgodności PCI DSS dostawcy usług w co najmniej raz.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci jest odpowiedzialny za konserwację programu do monitorowania stanu zgodności PCI DSS dostawcy usług w co najmniej raz.|
 
 
 
@@ -465,8 +465,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do zachowania kopię [odpowiedzialność podsumowanie macierzy](https://aka.ms/pciblueprintcrm32), który opisano wymagania PCI DSS, które są odpowiedzialne za klienta, jak i tych, które są odpowiedzialne za Microsoft Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do zachowania kopię [odpowiedzialność podsumowanie macierzy](https://aka.ms/pciblueprintcrm32), który opisano wymagania PCI DSS, które są odpowiedzialne za klienta, jak i tych, które są odpowiedzialne za Microsoft Azure.|
 
 
 
@@ -481,8 +481,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci, których usługodawców są odpowiedzialne za potwierdzeniem obowiązków utrzymania zgodności PCI. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci, których usługodawców są odpowiedzialne za potwierdzeniem obowiązków utrzymania zgodności PCI. |
 
 
 
@@ -494,8 +494,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -514,8 +514,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -528,8 +528,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -541,8 +541,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -554,8 +554,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -567,8 +567,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -580,8 +580,8 @@ W przypadku, gdy istnieje potrzeba biznesowa autoryzowanych, dane można chroni�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do opracowywania planu IR i testowania, która uwzględnia wszystkie formanty klienta odnoszących się do udostępnionego touch punktów i wszystkich aplikacji klienta wykorzystanie infrastruktury platformy Azure. Odpowiada klienta Podaj dokładne informacje kontaktowe na platformie Azure, w przypadku zdarzenia muszą być zgłaszane do nich, które mogą mieć wpływ na ich aplikacji i danych.|
 
 
 
@@ -603,8 +603,8 @@ Przeglądy muszą obejmować następujące procesy:
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klientów, którzy dostawcy usług są odpowiedzialne za dokumentację ich przeglądami procesów za potwierdzenie wydajności kontroli zgodności PCI.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klientów, którzy dostawcy usług są odpowiedzialne za dokumentację ich przeglądami procesów za potwierdzenie wydajności kontroli zgodności PCI.|
 
 
 
@@ -622,8 +622,8 @@ Przeglądy muszą obejmować następujące procesy:
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klientów, którzy dostawcy usług są odpowiedzialne za dokumentację ich przeglądami procesów za potwierdzenie wydajności kontroli zgodności PCI.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klientów, którzy dostawcy usług są odpowiedzialne za dokumentację ich przeglądami procesów za potwierdzenie wydajności kontroli zgodności PCI.|
 
 
 

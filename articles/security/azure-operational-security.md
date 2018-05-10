@@ -1,12 +1,12 @@
 ---
-title: "Azure bezpieczeństwa operacyjnego | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat programu Microsoft Operations Management Suite (OMS), jego usług i jak działa."
+title: Azure bezpieczeństwa operacyjnego | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat programu Microsoft Operations Management Suite (OMS), jego usług i jak działa.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8528eeb4eac8397beaa3d0dca37ce9eb33167b32
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security"></a>Azure bezpieczeństwa operacyjnego
 ## <a name="introduction"></a>Wprowadzenie
 
-### <a name="overview"></a>Omówienie
+### <a name="overview"></a>Przegląd
 Wiemy, że zabezpieczenia są zadania, co w chmurze i jak ważne jest aby znaleźć dokładne i aktualne informacje na temat zabezpieczeń platformy Azure. Najważniejsze przyczyny na potrzeby aplikacji i usług Azure ma korzystać z szerokiej gamy narzędzi zabezpieczeń i możliwości są dostępne. Te narzędzia i funkcje pomocy umożliwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure. Windows Azure należy podać poufność, integralność i dostępność danych klienta, jednoczesnym accountability przezroczysty.
 
 Aby ułatwić klientom lepiej zrozumieć tablicy kontroli zabezpieczeń zaimplementowana w systemie Microsoft Azure z obu klienta i Microsoft perspektywy operacyjnej, tym oficjalnym dokumencie "Azure bezpieczeństwa operacyjnego", jest zapisywany który zapewnia kompleksowe przyjrzeć się bezpieczeństwa operacyjnego dostępne w systemie Windows Azure.
@@ -68,7 +68,7 @@ Podstawowe funkcje pakietu OMS są oferowane jako zbiór usług działających n
 | :------------- | :-------------|
 | Log Analytics | Monitorowanie i analizowanie dostępności oraz wydajności różnych zasobów, łącznie z maszynami fizycznymi i wirtualnymi. |
 |Automatyzacja | Automatyzowanie procesów ręcznych oraz wymuszanie konfiguracji maszyn fizycznych i wirtualnych. |
-| Tworzenie kopii zapasowych | Kopie zapasowe i przywracanie danych o kluczowym znaczeniu. |
+| Backup | Kopie zapasowe i przywracanie danych o kluczowym znaczeniu. |
 | Site Recovery | Zapewnianie wysokiej dostępności kluczowych aplikacji. |
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -148,7 +148,7 @@ Aby ułatwić klientom zapobieganie zagrożeniom, wykrywanie ich i reagowanie na
 
 -   **Podział danych**: dane są logicznie oddzielone dla każdego składnika w całej usłudze. Wszystkie dane są otagowane informacjami o organizacji. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi.
 
--   **Dostęp do danych**: Podaj zalecenia dotyczące zabezpieczeń i badanie możliwe zagrożenia bezpieczeństwa, personel firmy Microsoft może uzyskać dostępu do informacji zbieranych lub analizowane przez usług platformy Azure, w tym pliki zrzutu awaryjnego, przetwarzania zdarzeń tworzenia, migawek dysków maszyny Wirtualnej i artefaktów, które mogą przypadkowo obejmować dane klienta lub dane osobowe z maszyn wirtualnych. Firma Microsoft jest zgodna [warunki dotyczące usług Online firmy Microsoft i zasady zachowania poufności informacji](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), których stan, który firma Microsoft nie ma używa danych klienta lub interpretowania go do celów reklamowych lub podobne komercyjnych.
+-   **Dostęp do danych**: Podaj zalecenia dotyczące zabezpieczeń i badanie możliwe zagrożenia bezpieczeństwa, personel firmy Microsoft może uzyskać dostęp do informacji zbieranych lub przeanalizowane przez usługi Azure, w tym pliki zrzutu awaryjnego, przetworzyć zdarzenia tworzenia dysku maszyny Wirtualnej migawki i artefaktów, które mogą przypadkowo obejmować dane klienta lub dane osobowe z maszyn wirtualnych. Firma Microsoft jest zgodna [warunki dotyczące usług Online firmy Microsoft i zasady zachowania poufności informacji](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), których stan, który firma Microsoft nie ma używa danych klienta lub interpretowania go do celów reklamowych lub podobne komercyjnych.
 
 -   **Użycie danych**: firma Microsoft używa wzorców i analizy zagrożeń obecnych w wielu dzierżawach, aby zwiększyć możliwości wykrywania zagrożeń i zapobiegania im — robimy to zgodnie ze zobowiązaniami co do prywatności opisanymi w [zasadach zachowania poufności informacji](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx).
 
@@ -193,7 +193,7 @@ Te dzienniki są emitowane przez zasób i podaj rozbudowane, często danych o dz
 
 Na przykład dzienniki systemu zdarzeń systemu Windows są jedną kategorię dzienników diagnostycznych dla maszyn wirtualnych i obiektów blob, tabeli, a dzienniki kolejki są kategorii dzienników diagnostycznych dla kont magazynu.
 
-Dzienniki diagnostyczne różnią się od [dziennik aktywności (wcześniej znane jako dziennik inspekcji lub dziennik operacyjny)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Dziennik aktywności zapewnia wgląd w operacje wykonywane na zasobów w ramach subskrypcji. Dzienniki diagnostyczne zapewniają wgląd w operacje, w zasobie wykonanie samego.
+Dzienniki diagnostyczne różnią się od [dziennik aktywności (wcześniej znane jako dziennik inspekcji lub dziennik operacyjny)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Dziennik aktywności zapewnia wgląd w operacje wykonywane na zasobów w ramach subskrypcji. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
 
 ### <a name="metrics"></a>Metryki
 
@@ -213,13 +213,13 @@ Azure Monitor umożliwia korzystanie z telemetrię, aby uzyskać wgląd w wydajn
 
 Istnieje możliwość w ramach platformy Azure, która umożliwia zbieranie danych diagnostycznych na wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z różnych różnych źródeł. Obecnie obsługiwane są [Azure Cloud Service w sieci Web i proces roboczy](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service), [maszyny wirtualne Azure](https://docs.microsoft.com/azure/virtual-machines/windows/overview) systemu Microsoft Windows i [sieci szkieletowej usług](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics). Innymi usługami Azure mają własne oddzielne diagnostyki.
 
-## <a name="azure-network-watcher"></a>Monitor sieci platformy Azure
+## <a name="azure-network-watcher"></a>Azure Network Watcher
 
 Inspekcja zabezpieczeń sieci jest niezbędne do wykrycia luk w zabezpieczeniach sieci i zapewniania zgodności z przepisami ładu modelu i zabezpieczeń IT. Widok grupy zabezpieczeń można pobrać skonfigurowanej grupy zabezpieczeń sieci i zasady zabezpieczeń i zasady efektywnym elementem systemu zabezpieczeń. Z listą zasady zastosowane należy określić porty, które są otwarte i oceny luk w zabezpieczeniach sieci.
 
 [Monitor sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) to regionalnych usługa, która umożliwia monitorowanie i diagnozowanie warunki na poziomie sieci w, do i z platformy Azure. Diagnostyka sieci i narzędzi wizualizacji dostępnych z obserwatora sieciowego pomagają zrozumieć, diagnozowanie i Uzyskaj wgląd do sieci na platformie Azure. Ta usługa obejmuje przechwytywania pakietów, następnego przeskoku, przepływ IP Sprawdź widok grupy zabezpieczeń, dzienniki przepływu NSG. Scenariusz poziomu monitorowania udostępnia widok pełnego zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 
-![Monitor sieci platformy Azure](./media/azure-operational-security/azure-operational-security-fig8.png)
+![Azure Network Watcher](./media/azure-operational-security/azure-operational-security-fig8.png)
 
 Obserwatora sieciowego ma obecnie następujące możliwości:
 
@@ -263,7 +263,7 @@ Rozliczeniowy są następujące akcje wykonywane przez analityka magazynu:
 
 Rejestrowane są następujące typy żądań uwierzytelnionych i anonimowe.
 
-| Uwierzytelnione  | Anonimowe|
+| Uwierzytelniony  | Anonimowe|
 | :------------- | :-------------|
 | Liczba pomyślnych żądań | Liczba pomyślnych żądań |
 |Nieudane żądania, w tym limitu czasu, ograniczania przepustowości sieci, autoryzacji i innych błędów | Żądania przy użyciu dostępu sygnatury dostępu Współdzielonego, włącznie z żądaniami nie powiodło się i pomyślne |

@@ -1,10 +1,10 @@
 ---
 title: Azure Notification Hubs bezpiecznego Push
-description: "Dowiedz się, jak wysyłać powiadomienia wypychane bezpieczny do aplikacji systemu iOS z platformy Azure. Przykłady kodu napisane w języku Objective C i C#."
+description: Dowiedz się, jak wysyłać powiadomienia wypychane bezpieczny do aplikacji systemu iOS z platformy Azure. Przykłady kodu napisane w języku Objective C i C#.
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: d3ba967a164a35af5bf66f7e74d5f95b5dc2a37f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs bezpiecznego Push
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Na wysokim poziomie przepływ wygląda następująco:
    * Urządzenie kontaktuje się z zaplecza żąda bezpiecznego ładunku.
    * Aplikację można wyświetlić ładunku jako powiadomienie na urządzeniu.
 
-Należy pamiętać, że w poprzednim przepływu (i w tym samouczku) przyjęto założenie, że urządzenia są przechowywane token uwierzytelniania w magazynie lokalnym, po zalogowaniu się użytkownika. Gwarantuje to całkowicie nie zakłóca pracy, jak urządzenia mogą pobierać ładunku bezpiecznego powiadomienia za pomocą tego tokenu. Jeśli aplikacja nie przechowuje tokeny uwierzytelniania na urządzeniu lub tokeny te mogą wygasnąć, aplikacji urządzenia, po otrzymaniu powiadomienia powinien być wyświetlany ogólny powiadomienie monitowania użytkownika do uruchomienia aplikacji. Następnie aplikacja uwierzytelnia użytkownika i zawiera ładunek powiadomienia.
+Należy pamiętać, że w poprzednim przepływu (i w tym samouczku) przyjęto założenie, że urządzenia są przechowywane token uwierzytelniania w magazynie lokalnym, po zalogowaniu się użytkownika. Gwarantuje to bezproblemowe, jak urządzenia mogą pobierać ładunku bezpiecznego powiadomienia za pomocą tego tokenu. Jeśli aplikacja nie przechowuje tokeny uwierzytelniania na urządzeniu lub tokeny te mogą wygasnąć, aplikacji urządzenia, po otrzymaniu powiadomienia powinien być wyświetlany ogólny powiadomienie monitowania użytkownika do uruchomienia aplikacji. Następnie aplikacja uwierzytelnia użytkownika i zawiera ładunek powiadomienia.
 
 W tym samouczku Secure wypychania pokazano, jak bezpiecznie wysyłać powiadomienia wypychane. Samouczek opiera się na [Powiadom użytkowników](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) samouczku, dlatego należy wykonać kroki tego samouczka najpierw.
 
@@ -58,7 +58,7 @@ Teraz, aby modyfikować Twojej aplikacji zaplecza wysłać tylko *identyfikator*
 
 Na osiągnięcie tego celu, musimy pisanie logiki można pobrać zawartości bezpiecznej z zaplecza aplikacji.
 
-1. W **AppDelegate.m**, upewnij się, że aplikacja rejestruje dyskretnej powiadomień, przetwarza identyfikator powiadomień wysyłanych z wewnętrznej bazy danych. Dodaj **UIRemoteNotificationTypeNewsstandContentAvailability** opcji w didFinishLaunchingWithOptions:
+1. W **AppDelegate.m**, upewnij się, że rejestrów aplikacji dyskretnej powiadomień, przetwarza identyfikator powiadomień wysyłanych z wewnętrznej bazy danych. Dodaj **UIRemoteNotificationTypeNewsstandContentAvailability** opcji w didFinishLaunchingWithOptions:
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 2. W Twojej **AppDelegate.m** Dodaj sekcji implementacji u góry z deklaracją następujące:
@@ -144,7 +144,7 @@ Na osiągnięcie tego celu, musimy pisanie logiki można pobrać zawartości bez
    
         }
    
-    Należy pamiętać, że preferowane do obsługi przypadków brakujących właściwości nagłówka uwierzytelniania lub odrzucenia przez zaplecza. Obsługę określonych przypadkach zależą od większości użytkowników docelowych. Jedną z opcji jest powiadomienia z monitem ogólnego dla użytkownika do uwierzytelniania można pobrać rzeczywiste powiadomienia mają być wyświetlane.
+    Należy pamiętać, że preferowane do obsługi przypadków brakujących właściwości nagłówka uwierzytelniania lub odrzucenia przez zaplecza. Obsługę określonych przypadkach zależy od większości użytkowników docelowych. Jedną z opcji jest powiadomienia z monitem ogólnego dla użytkownika do uwierzytelniania można pobrać rzeczywiste powiadomienia mają być wyświetlane.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 Aby uruchomić aplikację, wykonaj następujące czynności:

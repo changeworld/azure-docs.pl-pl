@@ -1,229 +1,354 @@
 ---
 title: Przepływ pracy wyzwalacze i akcje - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o wyzwalacze i akcje tworzenia automatycznych przepływów pracy i procesy z usługą logic apps
+description: Dowiedz się więcej o wyzwalacze i akcje w definicji przepływu pracy dla usługi Azure Logic Apps
 services: logic-apps
-author: divyaswarnkar
-manager: anneta
+author: kevinlam1
+manager: SyntaxC4
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: article
-ms.date: 10/13/2017
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.topic: reference
+ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="triggers-and-actions-for-logic-app-workflows"></a>Wyzwalacze i akcje dla przepływów pracy aplikacji logiki
+# <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Wyzwalacze i akcje dla definicji przepływu pracy w aplikacjach logiki platformy Azure
 
-Wszystkie aplikacje logiki rozpoczynać wyzwalacz następuje akcje. W tym artykule opisano rodzaje wyzwalacze i akcje, które służy do tworzenia integracji systemu i automatyzacja przepływów pracy firmowych lub procesy, tworzenie aplikacji logiki. 
-  
-## <a name="triggers-overview"></a>Omówienie wyzwalaczy 
+W [Azure Logic Apps](../logic-apps/logic-apps-overview.md), wszystkie przepływy pracy aplikacji logiki rozpoczynać wyzwalaczy, a następnie akcje. W tym artykule opisano wyzwalacze i akcje, które służą do tworzenia aplikacji logiki dla przepływów pracy automatyzacji firmowych lub procesów w programie rozwiązań integracji. Można tworzyć aplikacje logiki wizualnie przy użyciu projektanta aplikacji logiki lub przez bezpośrednie tworzenie podstawowej definicji przepływu pracy z [język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md). Można użyć portalu Azure lub programu Visual Studio. Dowiedz się, jak [działa w przypadku wyzwalacze i akcje cenach](../logic-apps/logic-apps-pricing.md).
 
-Wszystkie aplikacje logiki rozpoczynać wyzwalacz, który określa wywołania, które można uruchomić aplikację logiki, uruchom. Poniżej przedstawiono typy wyzwalaczy, które są dostępne:
+<a name="triggers-overview"></a>
+
+## <a name="triggers-overview"></a>Omówienie wyzwalaczy
+
+Wszystkie aplikacje logiki rozpoczynać wyzwalacz, który definiuje wywołania, które można utworzyć wystąpienia i uruchomić przepływ pracy aplikacji logiki. Poniżej przedstawiono typy wyzwalaczy, które są dostępne:
 
 * A *sondowania* wyzwalacz, który sprawdza punktu końcowego HTTP usługi w regularnych odstępach czasu
 * A *wypychania* wyzwolić, które wywołuje [interfejsu API REST usługi przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows)
-  
-Wszystkich wyzwalaczy zawierać tych elementów najwyższego poziomu:  
+ 
+Wszystkich wyzwalaczy mają takich elementów najwyższego poziomu, chociaż niektóre są opcjonalne:  
   
 ```json
-"<myTriggerName>": {
-    "type": "<triggerType>",
-    "inputs": { <callSettings> },
-    "recurrence": {  
-        "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
-        "interval": "<recurrence-interval-based-on-frequency>"
-    },
-    "conditions": [ <array-with-required-conditions> ],
-    "splitOn": "<property-used-for-creating-runs>",
-    "operationOptions": "<options-for-operations-on-the-trigger>"
+"<triggerName>": {
+   "type": "<triggerType>",
+   "inputs": { "<trigger-behavior-settings>" },
+   "recurrence": { 
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": "<recurrence-interval-based-on-frequency>"
+   },
+   "conditions": [ <array-with-required-conditions> ],
+   "splitOn": "<property-used-for-creating-runs>",
+   "operationOptions": "<optional-trigger-operations>"
 }
 ```
 
-## <a name="trigger-types-and-inputs"></a>Typy wyzwalaczy i dane wejściowe  
+*Wymagane*
 
-Każdy typ wyzwalacza ma innego interfejsu i inne *dane wejściowe* definiuje zachowanie. 
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| <*Nazwa_wyzwalacza*> | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, na przykład: "Http" lub "ApiConnection" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
+| frequency | Ciąg | Jednostka czasu, który opisuje, jak często wyzwalacza: "Drugi", "Minute", "Godzina", "Dzień", "Tygodnia" lub "Miesiąc" | 
+| interval | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często wyzwalacza na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
+|||| 
+
+*Opcjonalne*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| [Warunki](#trigger-conditions) | Tablica | Jeden lub więcej czynników, które określają, czy chcesz uruchomić przepływ pracy | 
+| [splitOn](#split-on-debatch) | Ciąg | Wyrażenie, które dzieli, lub *debatches*, elementy tablicy do wielu wystąpień przepływu pracy do przetwarzania. Ta opcja jest dostępna dla wyzwalaczy, które zwracają tablicy i tylko podczas pracy bezpośrednio w widoku kodu. | 
+| [operationOptions](#trigger-operation-options) | Ciąg | Niektóre wyzwalacze udostępniają dodatkowe opcje, które umożliwiają zmianę domyślnego zachowania wyzwalacza | 
+||||| 
+
+## <a name="trigger-types-and-details"></a>Typy wyzwalaczy i szczegóły  
+
+Każdy typ wyzwalacza ma inny interfejs i dane wejściowe, które określają zachowanie tego wyzwalacza. 
 
 | Typ wyzwalacza | Opis | 
 | ------------ | ----------- | 
-| **Cyklu** | Generowane na podstawie zdefiniowanego harmonogramu. Można ustawić przyszłą datę i godzinę dla wyzwalania tego wyzwalacza. Na podstawie częstotliwości, można również określić godziny i dni na potrzeby uruchamiania przepływu pracy. | 
-| **Żądanie**  | Umożliwia aplikacji logiki do punktu końcowego, który można wywołać, znanej także jako wyzwalacz "manual". | 
-| **HTTP** | Sprawdza, lub *sond*, punkt końcowy HTTP sieci web. Punkt końcowy HTTP musi być zgodny z określonym kontraktem wyzwalająca za pomocą "202" wzorca asynchronicznego lub tablicę. | 
-| **ApiConnection** | Sonduje jak wyzwalacz protokołu HTTP, ale używa [zarządzany przez firmę Microsoft interfejsy API](../connectors/apis-list.md). | 
-| **HTTPWebhook** | Umożliwia aplikacji logiki do punktu końcowego można wywołać, takich jak **żądania** wyzwalania, ale odwołuje się określony adres URL do rejestrowania i wyrejestrowania. |
-| **ApiConnectionWebhook** | Jak działa **HTTPWebhook** wyzwalacz, ale używa API zarządzany przez firmę Microsoft. | 
+| [**Cyklu**](#recurrence-trigger) | Generowane na podstawie zdefiniowanego harmonogramu. Można ustawić przyszłą datę i godzinę dla wyzwalania tego wyzwalacza. Na podstawie częstotliwości, można również określić godziny i dni na potrzeby uruchamiania przepływu pracy. | 
+| [**Żądanie**](#request-trigger)  | Umożliwia aplikacji logiki do punktu końcowego można wywołać, znanej także jako wyzwalacz "manual". Na przykład, zobacz [zagnieździć przepływy pracy z punktami końcowymi protokołu HTTP lub wywołaj wyzwalacz,](../logic-apps/logic-apps-http-endpoint.md). | 
+| [**HTTP**](#http-trigger) | Sprawdza, lub *sond*, punkt końcowy HTTP sieci web. Punkt końcowy HTTP musi być zgodna z kontrakt określonego wyzwalacza, za pomocą "202" wzorca asynchronicznego lub tablicę. | 
+| [**ApiConnection**](#apiconnection-trigger) | Działa jak wyzwalacza HTTP, ale używa [zarządzany przez firmę Microsoft interfejsy API](../connectors/apis-list.md). | 
+| [**HTTPWebhook**](#httpwebhook-trigger) | Działa jak wyzwalacza żądania, ale odwołuje się określony adres URL do rejestrowania i wyrejestrowania. |
+| [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | Działa jak wyzwalacza HTTPWebhook, ale używa [zarządzany przez firmę Microsoft interfejsy API](../connectors/apis-list.md). | 
 ||| 
-
-Aby uzyskać więcej informacji, zobacz [język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md). 
 
 <a name="recurrence-trigger"></a>
 
 ## <a name="recurrence-trigger"></a>Wyzwalacz cyklu  
 
-Wyzwalacz uruchamia na podstawie cyklu i harmonogram, które określisz i zapewnia prosty sposób regularnie uruchamiania przepływu pracy. 
+Wyzwalacz uruchamia oparte na określonej cyklu i harmonogram i zapewnia prosty sposób regularnie uruchamiania przepływu pracy. 
 
-Oto przykład wyzwalacza cyklu podstawowych, w którym jest przeprowadzana codziennie:
+Poniżej przedstawiono definicję wyzwalacza:
 
 ```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Day",
-        "interval": 1
-    }
+"Recurrence": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month",
+      "interval": <recurrence-interval-based-on-frequency>,
+      "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
+      "timeZone": "<time-zone>",
+      "schedule": {
+         // Applies only when frequency is Day or Week. Separate values with commas.
+         "hours": [ <one-or-more-hour-marks> ], 
+         // Applies only when frequency is Day or Week. Separate values with commas.
+         "minutes": [ <one-or-more-minute-marks> ], 
+         // Applies only when frequency is Week. Separate values with commas.
+         "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
+      }
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
+}
+```
+*Wymagane*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| Cykl | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, czyli "Cyklu" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
+| frequency | Ciąg | Jednostka czasu, który opisuje, jak często wyzwalacza: "Drugi", "Minute", "Godzina", "Dzień", "Tygodnia" lub "Miesiąc" | 
+| interval | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często wyzwalacza na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
+|||| 
+
+*Opcjonalne*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| startTime | Ciąg | Data rozpoczęcia i czas w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 godzinie 2:00, określ "2017-09-18T14:00:00" i określ strefę czasową, takie jak "Czas pacyficzny", lub określ "2017-09-18T14:00:00Z" bez strefę czasową. <p>**Uwaga:** ta godzina rozpoczęcia musi występować po [ISO 8601 daty czasu specyfikacji](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litery "Z" na końcu bez spacji. To "Z" odwołuje się do jego odpowiednik [milową czas](https://en.wikipedia.org/wiki/Nautical_time). <p>Proste harmonogramów, godzina rozpoczęcia jest pierwsze wystąpienie, natomiast w przypadku złożonych harmonogramy wyzwalacz nie wyzwalać żadnych wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [tworzenie i harmonogram regularnie uruchomionych zadań](../connectors/connectors-native-recurrence.md). | 
+| timeZone | Ciąg | Dotyczy tylko po określeniu godziny rozpoczęcia, ponieważ wyzwalacz nie akceptuje [przesunięcie UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, który chcesz zastosować. | 
+| hours | Liczba całkowita lub tablicy liczba całkowita | Jeśli określisz "Day" lub "Tydzień" dla `frequency`, można określić co najmniej jeden liczby całkowite z przedziału od 0 do 23 rozdzielonych przecinkami, w formacie godziny, dnia, gdy chcesz uruchomić przepływ pracy. <p>Na przykład jeśli określisz "10", "12" i "14" możesz uzyskać 10 AM, 12 PM i 14: 00 jako znaki godzinę. | 
+| minutes | Liczba całkowita lub tablicy liczba całkowita | Jeśli określisz "Dzień" lub "Tydzień" dla `frequency`, można określić co najmniej jeden liczby całkowite z przedziału od 0 do 59, oddzielonych przecinkami, jako minuty, godziny, jeśli chcesz uruchomić przepływ pracy. <p>Na przykład "30" można określić jako minuta znaku i w poprzednim przykładzie, godziny, dnia, możesz uzyskać godziny 10:30, 12:30:00 i 14:30:00. | 
+| weekDays | Ciąg lub tablicę ciągów | Jeśli określisz "Tydzień" dla `frequency`, można określić co najmniej jeden dzień, oddzielając je średnikami, jeśli chcesz uruchomić przepływ pracy: "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota" i "Niedziela" | 
+| Współbieżność | Obiekt JSON | Cykliczne i sondowania wyzwalaczy ten obiekt określa maksymalną liczbę wystąpień przepływu pracy, które można uruchomić w tym samym czasie. Użyj tej wartości, aby ograniczyć liczbę żądań, które systemy zaplecza odbierania. <p>Na przykład ta wartość ustawia limit współbieżności 10 wystąpień: `"concurrency": { "runs": 10 }` | 
+| operationOptions | Ciąg | `singleInstance` Opcja określa, że wyzwalacz uruchamia się dopiero po zakończeniu wszystkich aktywnej przebiegi. Zobacz [wyzwalaczy: uruchomienie tylko wtedy, gdy aktywne uruchamia Zakończ](#single-instance). | 
+|||| 
+
+*Przykład 1*
+
+Wyzwalacz cyklu podstawowa jest przeprowadzana codziennie:
+
+```json
+"recurrenceTriggerName": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-Można również zaplanować datę i godzinę dla wyzwalania wyzwalacza. Na przykład aby uruchomić raport co tydzień w każdy poniedziałek, można zaplanować aplikację logiki, aby uruchomić na komputerze określonym poniedziałek, tak jak ten przykład: 
+*Przykład 2*
+
+Można określić daty rozpoczęcia i czas uruchamiania wyzwalacza. Tego wyzwalacza cyklu rozpoczyna się od określonej daty, a następnie uruchamiane codziennie:
 
 ```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": "1",
-        "startTime": "2017-09-18T00:00:00Z"
-    }
+"recurrenceTriggerName": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1,
+      "startTime": "2017-09-18T00:00:00Z"
+   }
 }
 ```
 
-Poniżej przedstawiono definicję dla tego wyzwalacza:
+*Przykład 3*
 
-```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "second|minute|hour|day|week|month",
-        "interval": <recurrence-interval-based-on-frequency>,
-        "schedule": {
-            // Applies only when frequency is Day or Week. Separate values with commas.
-            "hours": [ <one-or-more-hour-marks> ], 
-            // Applies only when frequency is Day or Week. Separate values with commas.
-            "minutes": [ <one-or-more-minute-marks> ], 
-            // Applies only when frequency is Week. Separate values with commas.
-            "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
-        },
-        "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
-        "timeZone": "<specify-time-zone>"
-    }
-}
-```
-
-| Nazwa elementu | Wymagane | Typ | Opis | 
-| ------------ | -------- | ---- | ----------- | 
-| frequency | Yes | Ciąg | Jednostka czasu częstotliwość wyzwalacza. Użyj tylko jedną z następujących wartości: "drugi", "min", "Godzina", "day", "tygodnia" lub "miesiąc" | 
-| interval | Yes | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często uruchamia przepływ pracy na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
-| timeZone | Nie | Ciąg | Dotyczy tylko po określeniu godziny rozpoczęcia, ponieważ wyzwalacz nie akceptuje [przesunięcie UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, który chcesz zastosować. | 
-| startTime | Nie | Ciąg | Określ datę i godzinę w następującym formacie: <p>RRRR-MM-Ddtgg, jeśli określona strefa czasowa <p>— lub — <p>RRRR-MM-Ddtgg, jeśli nie określisz strefy czasowej <p>Tak na przykład, jeśli chcesz 18 września 2017 godzinie 2:00, określ "2017-09-18T14:00:00" i określ strefę czasową, takie jak "Czas pacyficzny". Alternatywnie można wskazać "2017-09-18T14:00:00Z" bez strefę czasową. <p>**Uwaga:** ta godzina rozpoczęcia musi występować po [ISO 8601 daty czasu specyfikacji](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcie UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, należy dodać litery "Z" na końcu bez spacji. To "Z" odwołuje się do jego odpowiednik [milową czas](https://en.wikipedia.org/wiki/Nautical_time). <p>Proste harmonogramów, godzina rozpoczęcia jest pierwsze wystąpienie, natomiast w przypadku złożonych harmonogramy wyzwalacz nie wyzwalać żadnych wcześniej niż czas rozpoczęcia. Aby uzyskać więcej informacji na temat daty rozpoczęcia i godziny, zobacz [tworzenie i harmonogram regularnie uruchomionych zadań](../connectors/connectors-native-recurrence.md). | 
-| weekDays | Nie | Ciąg lub tablicę ciągów | Jeśli określisz "Tydzień" dla `frequency`, można określić co najmniej jeden dzień, oddzielając je średnikami, jeśli chcesz uruchomić przepływ pracy: "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota" i "Niedziela" | 
-| hours | Nie | Liczba całkowita lub tablicy liczba całkowita | Jeśli określisz "Day" lub "Tydzień" dla `frequency`, można określić co najmniej jeden liczby całkowite z przedziału od 0 do 23 rozdzielonych przecinkami, w formacie godziny, dnia, gdy chcesz uruchomić przepływ pracy. <p>Na przykład jeśli określisz "10", "12" i "14" możesz uzyskać 10 AM, 12 PM i 14: 00 jako znaki godzinę. | 
-| minutes | Nie | Liczba całkowita lub tablicy liczba całkowita | Jeśli określisz "Dzień" lub "Tydzień" dla `frequency`, można określić co najmniej jeden liczby całkowite z przedziału od 0 do 59, oddzielonych przecinkami, jako minuty, godziny, jeśli chcesz uruchomić przepływ pracy. <p>Na przykład "30" można określić jako minuta znaku i w poprzednim przykładzie, godziny, dnia, możesz uzyskać godziny 10:30, 12:30:00 i 14:30:00. | 
-||||| 
-
-Na przykład tego wyzwalacza cyklu określa, że aplikację logiki jest uruchamiane co tydzień w każdy poniedziałek w godziny 10:30, 12:30:00 i 14:30:00 i Pacyfik (czas standardowy), nie wcześniej niż 9 września 2017, 2:00 PM uruchamianie:
+Wyzwalacz cyklu rozpoczyna się 9 września 2017 godzinie 2:00 i jest uruchamiany co tydzień w każdy poniedziałek w godziny 10:30, 12:30:00 i 14:30:00 (pacyficzny czas standardowy):
 
 ``` json
 "myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": 1,
-        "schedule": {
-            "hours": [
-                10,
-                12,
-                14
-            ],
-            "minutes": [
-                30
-            ],
-            "weekDays": [
-                "Monday"
-            ]
-        },
-       "startTime": "2017-09-07T14:00:00",
-       "timeZone": "Pacific Standard Time"
-    }
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "hours": [ 10, 12, 14 ],
+         "minutes": [ 30 ],
+         "weekDays": [ "Monday" ]
+      },
+      "startTime": "2017-09-07T14:00:00",
+      "timeZone": "Pacific Standard Time"
+   }
 }
 ```
 
-Aby uzyskać więcej informacji o cyklu i przykłady czasu rozpoczęcia dla tego wyzwalacza, zobacz [tworzenie i harmonogram regularnie uruchomionych zadań](../connectors/connectors-native-recurrence.md).
+Aby uzyskać więcej informacji oraz przykłady dla tego wyzwalacza, zobacz [tworzenie i harmonogram regularnie uruchomionych zadań](../connectors/connectors-native-recurrence.md).
+
+<a name="request-trigger"></a>
 
 ## <a name="request-trigger"></a>Wyzwalacz żądania
 
-Wyzwalacz służy jako punkt końcowy, który służy do wywoływania aplikację logiki, za pomocą żądania HTTP. Wyzwalacz żądania wygląda następująco:  
-  
+Tego wyzwalacza sprawia, że aplikację logiki jest wywoływane przez utworzenie punktu końcowego, który może zaakceptować przychodzące żądania HTTP. Aby wywołać tego wyzwalacza, należy użyć `listCallbackUrl` interfejsu API w [interfejsu API REST usługi przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Aby dowiedzieć się, jak używać tego wyzwalacza jako punkt końcowy HTTP, zobacz [zagnieździć przepływy pracy z punktami końcowymi protokołu HTTP lub wywołaj wyzwalacz,](../logic-apps/logic-apps-http-endpoint.md).
+
 ```json
-"myRequestTrigger": {
-    "type": "Request",
-    "kind": "Http",
-    "inputs": {
-        "schema": {
-            "type": "Object",
-            "properties": {
-                "myInputProperty1": { "type" : "string" },
-                "myInputProperty2": { "type" : "number" }
-            },
-            "required": [ "myInputProperty1" ]
-        }
-    }
-} 
-```
-
-Wyzwalacz ma opcjonalna właściwość o nazwie `schema`:
-  
-| Nazwa elementu | Wymagane | Typ | Opis |
-| ------------ | -------- | ---- | ----------- |
-| Schemat | Nie | Obiekt | Schematu JSON, która weryfikuje żądanie przychodzące. Przydatne w przypadku myśl kolejnych kroków znać właściwości, które ma dotyczyć odwołanie. | 
-||||| 
-
-Aby wywołać tego wyzwalacza jako punktu końcowego, należy wywołać `listCallbackUrl` interfejsu API. Zobacz [interfejsu API REST usługi przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows).
-
-## <a name="http-trigger"></a>Wyzwalacz HTTP  
-
-Tego wyzwalacza określony punkt końcowy sonduje i sprawdza odpowiedzi, aby określić, czy przepływ pracy, należy uruchomić lub nie. W tym miejscu `inputs` obiektu przyjmuje tych parametrów wymaganych do konstruowania wywołanie HTTP: 
-
-| Nazwa elementu | Wymagane | Typ | Opis | 
-| ------------ | -------- | ---- | ----------- | 
-| method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
-| identyfikator URI | Yes| Ciąg | Końcowy HTTP lub HTTPs, który sprawdza zgodność wyzwalacza. Maksymalny rozmiar ciągu: 2 KB | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
-| retryPolicy | Nie | Obiekt | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
-| uwierzytelnianie | Nie | Obiekt | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). <p>Poza harmonogramem, jest jedna właściwość więcej obsługiwanych: `authority`. Domyślnie ta wartość jest `https://login.windows.net` gdy nie jest określony, ale możesz użyć innej wartości, takich jak`https://login.windows\-ppe.net`. | 
-||||| 
-
-A *zasady ponawiania* dotyczy sporadycznych błędów jest określony jako kodów stanu HTTP 408 429 i 5xx, oprócz wszelkie wyjątki łączności. Można zdefiniować te zasady z `retryPolicy` obiektów, jak pokazano poniżej:
-  
-```json
-"retryPolicy": {
-    "type": "<retry-policy-type>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"manual": {
+   "type": "Request",
+   "kind": "Http",
+   "inputs": {
+      "method": "GET | POST | PUT | PATCH | DELETE | HEAD",
+      "relativePath": "<relative-path-for-accepted-parameter>",
+      "schema": {
+         "type": "object",
+         "properties": { 
+            "<propertyName>": {
+               "type": "<property-type>"
+            }
+         },
+         "required": [ "<required-properties>" ]
+      }
+   }
 }
 ```
 
-Aby pracować z aplikacji logiki, wyzwalacza HTTP wymaga API protokołu HTTP był zgodny z określonym wzorcem. Wyzwalacz rozpoznaje tych właściwości:  
+*Wymagane*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| Ręcznie | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, czyli "Żądania" | 
+| rodzaj | Ciąg | Typ żądania, czyli "Http" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+|||| 
+
+*Opcjonalne*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| method | Ciąg | Metoda żądania należy użyć do wywołania wyzwalacza: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" |
+| RelativePath | Ciąg | Względna ścieżka Parametr, który akceptuje punkt końcowy HTTP URL | 
+| Schemat | Obiekt JSON | Schematu JSON, który opisuje i sprawdza poprawność ładunku lub niedozwolonych wyzwalacza odbiera z żądania przychodzącego. Ten schemat ułatwia akcje kolejnych wiedzieć, właściwości, aby odwołać. | 
+| properties | Obiekt JSON | Co najmniej jednej właściwości w schemacie JSON, który opisuje ładunku | 
+| Wymagane | Tablica | Co najmniej jednej właściwości, które wymagają wartości | 
+|||| 
+
+*Przykład*
+
+Tego wyzwalacza żądania określa, czy przychodzące żądanie Wywołaj wyzwalacz i sprawdza poprawność danych wejściowych z żądania przychodzącego schematu przy użyciu metody POST protokołu HTTP: 
+
+```json
+"myRequestTrigger": {
+   "type": "Request",
+   "kind": "Http",
+   "inputs": {
+      "method": "POST",
+      "schema": {
+         "type": "Object",
+         "properties": {
+            "customerName": {
+               "type": "String"
+            },
+            "customerAddress": { 
+               "type": "Object",
+               "properties": {
+                  "streetAddress": {
+                     "type": "String"
+                  },
+                  "city": {
+                     "type": "String"
+                  }
+               }
+            }
+         }
+      }
+   }
+} 
+```
+
+<a name="http-trigger"></a>
+
+## <a name="http-trigger"></a>Wyzwalacz HTTP  
+
+Tego wyzwalacza określony punkt końcowy sonduje i sprawdza odpowiedź. Odpowiedź określa, czy przepływ pracy ma uruchomić lub nie. `inputs` Obiektów JSON zawiera i wymaga `method` i `uri` parametrów wymaganych do konstruowania wywołanie HTTP:
+
+```json
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET | PUT | POST | PATCH | DELETE | HEAD",
+      "uri": "<HTTP-or-HTTPS-endpoint-to-poll>",
+      "queries": "<query-parameters>",
+      "headers": { "<headers-for-request>" },
+      "body": { "<payload-to-send>" },
+      "authentication": { "<authentication-method>" },
+      "retryPolicy": {
+          "type": "<retry-policy-type>",
+          "interval": "<retry-interval>",
+          "count": <number-retry-attempts>
+      }
+   },
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": <recurrence-interval-based-on-frequency>
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
+}
+```
+
+*Wymagane*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| HTTP | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, czyli "Http" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| method | Yes | Ciąg | Metoda HTTP do sondowania określony punkt końcowy: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" | 
+| identyfikator URI | Yes| Ciąg | HTTP lub HTTPS adres URL punktu końcowego wyzwalacz sprawdza lub sondowania <p>Maksymalny rozmiar ciągu: 2 KB | 
+| recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
+| frequency | Ciąg | Jednostka czasu, który opisuje, jak często wyzwalacza: "Drugi", "Minute", "Godzina", "Dzień", "Tygodnia" lub "Miesiąc" | 
+| interval | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często wyzwalacza na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
+|||| 
+
+*Opcjonalne*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| — zapytania | Obiekt JSON | Wszystkie parametry zapytania, które chcesz dołączyć do adresu URL <p>Na przykład dodaje ten element `?api-version=2015-02-01` ciągu do adresu URL zapytania: <p>`"queries": { "api-version": "2015-02-01" }` <p>Wynik: `https://contoso.com?api-version=2015-02-01` | 
+| nagłówki | Obiekt JSON | Co najmniej jeden nagłówek wysłać z żądaniem <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Obiekt JSON | Ładunek (dane) do wysłania do punktu końcowego | 
+| uwierzytelnianie | Obiekt JSON | Metoda, która żądania przychodzącego, jeśli ma być używana do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). Poza harmonogramem `authority` właściwość jest obsługiwana. Jeśli nie zostanie określony, wartością domyślną jest `https://login.windows.net`, ale możesz użyć innej wartości, takich jak`https://login.windows\-ppe.net`. | 
+| retryPolicy | Obiekt JSON | Ten obiekt dostosowuje zachowanie ponownych prób dla sporadyczne błędy, które mają 4xx lub 5xx kodów stanu. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
+| Współbieżność | Obiekt JSON | Cykliczne i sondowania wyzwalaczy ten obiekt określa maksymalną liczbę wystąpień przepływu pracy, które można uruchomić w tym samym czasie. Użyj tej wartości, aby ograniczyć liczbę żądań, które systemy zaplecza odbierania. <p>Na przykład ta wartość ustawia limit współbieżności 10 wystąpień: <p>`"concurrency": { "runs": 10 }` | 
+| operationOptions | Ciąg | `singleInstance` Opcja określa, że wyzwalacz uruchamia się dopiero po zakończeniu wszystkich aktywnej przebiegi. Zobacz [wyzwalaczy: uruchomienie tylko wtedy, gdy aktywne uruchamia Zakończ](#single-instance). | 
+|||| 
+
+Do pracy ze aplikację logiki, wyzwalacza HTTP wymaga zgodności HTTP API z określonym wzorcem. Wyzwalacza HTTP rozpoznaje tych właściwości:  
   
 | Odpowiedź | Wymagane | Opis | 
 | -------- | -------- | ----------- |  
-| Kod stanu | Yes | Kod stanu 200 ("OK") powoduje, że działa. Każdy kod stanu nie powoduje uruchomienia. | 
-| Spróbuj ponownie po nagłówka | Nie | Liczba sekund do aplikacji logiki sonduje ponownie punkt końcowy. | 
+| Kod stanu | Yes | "200 OK" Uruchom zaczyna się kod stanu. Każdy kod stanu nie uruchamia Uruchom. | 
+| Spróbuj ponownie po nagłówka | Nie | Liczba sekund do aplikacji logiki sonduje ponownie punkt końcowy | 
 | Nagłówek lokalizacji | Nie | Adres URL do wywołania w następnym interwału sondowania. Jeśli nie zostanie określony, używany jest oryginalny adres URL. | 
 |||| 
 
-Poniżej przedstawiono niektóre przykładowe zachowania dla różnych typów żądań:
-  
-| Kod odpowiedzi | Ponów próbę po | Zachowanie | 
-| ------------- | ----------- | -------- | 
+*Przykład zachowania dla innego żądania*
+
+| Kod stanu | Ponów próbę po | Zachowanie | 
+| ----------- | ----------- | -------- | 
 | 200 | {Brak} | Uruchamianie przepływu pracy, a następnie wyszukaj ponownie większej ilości danych po zdefiniowanych cyklu. | 
 | 200 | 10 sekund | Uruchamianie przepływu pracy, a następnie wyszukaj ponownie większej ilości danych po 10 sekundach. |  
 | 202 | 60 sekund | Nie wyzwolić przepływu pracy. Przy następnej próbie odbywa się na minutę, mogą ulec zdefiniowanych cyklu. Zdefiniowanych cyklu jest mniej niż minutę, pierwszeństwo ma nagłówek ponownych prób po. W przeciwnym razie jest używana zdefiniowanych cyklu. | 
@@ -231,181 +356,314 @@ Poniżej przedstawiono niektóre przykładowe zachowania dla różnych typów ż
 | 500 | {Brak}| Błąd serwera, nie uruchamiaj przepływ pracy. Jeśli nie `retryPolicy` jest zdefiniowany, zostanie użyta domyślna zasada. Po osiągnięciu liczby ponownych prób wyzwalacz sprawdza, czy ponownie danych po zdefiniowanych cyklu. | 
 |||| 
 
-Poniżej przedstawiono dane wyjściowe wyzwalacza HTTP: 
-  
+### <a name="http-trigger-outputs"></a>Dane wyjściowe wyzwalacza HTTP
+
 | Nazwa elementu | Typ | Opis |
 | ------------ | ---- | ----------- |
-| nagłówki | Obiekt | Nagłówki odpowiedzi HTTP | 
-| treść | Obiekt | Treść odpowiedzi HTTP | 
+| nagłówki | Obiekt JSON | Nagłówki z odpowiedzi HTTP | 
+| treść | Obiekt JSON | Treść z odpowiedzi HTTP | 
 |||| 
 
 <a name="apiconnection-trigger"></a>
 
 ## <a name="apiconnection-trigger"></a>Wyzwalacz APIConnection  
 
-Podstawowa funkcjonalność tego wyzwalacza działa jak wyzwalacza HTTP. Jednak parametry do identyfikacji akcji są różne. Oto przykład:   
-  
+Wyzwalacz działa jak [wyzwalacza HTTP](#http-trigger), ale używa [zarządzany przez firmę Microsoft interfejsy API](../connectors/apis-list.md) zatem inne parametry dla tego wyzwalacza. 
+
+Poniżej przedstawiono definicję wyzwalacza, mimo że wiele sekcje są opcjonalne, więc wyzwalacza zachowanie zależy od tego, czy omówione są:
+
 ```json
-"myDailyReportTrigger": {
-    "type": "ApiConnection",
-    "inputs": {
-        "host": {
-            "api": {
-                "runtimeUrl": "https://myarticles.example.com/"
-            }
-        },
-        "connection": {
-            "name": "@parameters('$connections')['myconnection'].name"
-        }
-    },  
-    "method": "POST",
-    "body": {
-        "category": "myCategory"
-    }
+"<APIConnectionTriggerName>": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "api": {
+            "runtimeUrl": "<managed-API-endpoint-URL>"
+         },
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>'].name"
+         },
+      },
+      "method": "GET | PUT | POST | PATCH | DELETE | HEAD",
+      "queries": "<query-parameters>",
+      "headers": { "<headers-for-request>" },
+      "body": { "<payload-to-send>" },
+      "authentication": { "<authentication-method>" },
+      "retryPolicy": {
+          "type": "<retry-policy-type>",
+          "interval": "<retry-interval>",
+          "count": <number-retry-attempts>
+      }
+   },
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": "<recurrence-interval-based-on-frequency>"
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
 }
 ```
 
-| Nazwa elementu | Wymagane | Typ | Opis | 
-| ------------ | -------- | ---- | ----------- | 
-| host | Yes | Obiekt | Hostowanej bramy i identyfikator dla aplikacji interfejsu API | 
-| method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
-| retryPolicy | Nie | Obiekt | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
-| uwierzytelnianie | Nie | Obiekt | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). | 
-||||| 
+*Wymagane*
 
-Aby uzyskać `host` obiektu, w tym miejscu są właściwości:  
-  
-| Nazwa elementu | Wymagane | Opis | 
-| ------------ | -------- | ----------- | 
-| runtimeUrl interfejsu API | Yes | Punkt końcowy dla zarządzanego interfejsu API | 
-| Nazwa połączenia |  | Nazwa zarządzanego połączenia interfejsu API, używanych przez przepływ pracy. Musi odwoływać się do parametru o nazwie `$connection`. |
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| *APIConnectionTriggerName* | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, czyli "ApiConnection" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| host | Obiekt JSON | Obiekt JSON, który opisuje hosta bramy i identyfikator zarządzanego interfejsu API <p>`host` Obiekt JSON ma następujące elementy: `api` i `connection` | 
+| api | Obiekt JSON | Adres URL punktu końcowego dla zarządzanego interfejsu API: <p>`"runtimeUrl": "<managed-API-endpoint-URL>"` | 
+| połączenie | Obiekt JSON | Nazwa zarządzanego połączenia interfejsu API używanych przez przepływ pracy, który musi zawierać odwołania do parametru o nazwie `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>'].name"` | 
+| method | Ciąg | Metoda HTTP służąca do komunikacji przy użyciu zarządzanego interfejsu API: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" | 
+| recurrence | Obiekt JSON | Częstotliwość i interwał, w którym opisano, jak często wyzwalacza |  
+| frequency | Ciąg | Jednostka czasu, który opisuje, jak często wyzwalacza: "Drugi", "Minute", "Godzina", "Dzień", "Tygodnia" lub "Miesiąc" | 
+| interval | Liczba całkowita | Dodatnia liczba całkowita, w tym artykule opisano, jak często wyzwalacza na podstawie częstotliwości. <p>Poniżej przedstawiono minimalne i maksymalne odstępach czasu: <p>-Miesięczny: 1-16 miesięcy </br>-Dniowego: 1-500 dni </br>-Godzinnym: 1-12 000 godzin </br>-Minutowy: 1-72,000 minut </br>-Drugi: 1-9,999,999 sekund<p>Na przykład jeśli interwał to 6 i częstotliwości jest "miesiąc", cykl jest co 6 miesięcy. | 
 |||| 
 
-A *zasady ponawiania* dotyczy sporadycznych błędów jest określony jako kodów stanu HTTP 408 429 i 5xx, oprócz wszelkie wyjątki łączności. Można zdefiniować te zasady z `retryPolicy` obiektów, jak pokazano poniżej:
-  
+*Opcjonalne*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| — zapytania | Obiekt JSON | Wszystkie parametry zapytania, które chcesz dołączyć do adresu URL <p>Na przykład dodaje ten element `?api-version=2015-02-01` ciągu do adresu URL zapytania: <p>`"queries": { "api-version": "2015-02-01" }` <p>Wynik: `https://contoso.com?api-version=2015-02-01` | 
+| nagłówki | Obiekt JSON | Co najmniej jeden nagłówek wysłać z żądaniem <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Obiekt JSON | Obiekt JSON, który opisuje ładunku (dane) do wysyłania do zarządzanego interfejsu API | 
+| uwierzytelnianie | Obiekt JSON | Metoda, która żądanie przychodzące ma być używana do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). |
+| retryPolicy | Obiekt JSON | Ten obiekt dostosowuje zachowanie ponownych prób dla sporadyczne błędy, które mają 4xx lub 5xx kody stanu: <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
+| Współbieżność | Obiekt JSON | Cykliczne i sondowania wyzwalaczy ten obiekt określa maksymalną liczbę wystąpień przepływu pracy, które można uruchomić w tym samym czasie. Użyj tej wartości, aby ograniczyć liczbę żądań, które systemy zaplecza odbierania. <p>Na przykład ta wartość ustawia limit współbieżności 10 wystąpień: `"concurrency": { "runs": 10 }` | 
+| operationOptions | Ciąg | `singleInstance` Opcja określa, że wyzwalacz uruchamia się dopiero po zakończeniu wszystkich aktywnej przebiegi. Zobacz [wyzwalaczy: uruchomienie tylko wtedy, gdy aktywne uruchamia Zakończ](#single-instance). | 
+||||
+
+*Przykład*
+
 ```json
-"retryPolicy": {
-    "type": "<retry-policy-type>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"Create_daily_report": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "api": {
+            "runtimeUrl": "https://myReportsRepo.example.com/"
+         },
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>'].name"
+         }     
+      },
+      "method": "POST",
+      "body": {
+         "category": "statusReports"
+      }  
+   },
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-Poniżej przedstawiono dane wyjściowe dla wyzwalacza połączenia interfejsu API:
-  
+### <a name="apiconnection-trigger-outputs"></a>Wyzwalacz APIConnection danych wyjściowych
+ 
 | Nazwa elementu | Typ | Opis |
 | ------------ | ---- | ----------- |
-| nagłówki | Obiekt | Nagłówki odpowiedzi HTTP | 
-| treść | Obiekt | Treść odpowiedzi HTTP | 
+| nagłówki | Obiekt JSON | Nagłówki z odpowiedzi HTTP | 
+| treść | Obiekt JSON | Treść z odpowiedzi HTTP | 
 |||| 
 
-Dowiedz się więcej o [jak ceny działa połączenie z interfejsem API wyzwala](../logic-apps/logic-apps-pricing.md#triggers).
+<a name="httpwebhook-trigger"></a>
 
 ## <a name="httpwebhook-trigger"></a>Wyzwalacz HTTPWebhook  
 
-Wyzwalacz zawiera punkt końcowy, podobnie jak `Request` wyzwalacz, ale wyzwalacza HTTPWebhook rejestrowanie i wyrejestrowywanie również wywołuje określony adres URL. Oto przykład co wyzwalacz HTTPWebhook może wyglądać tak:
+Wyzwalacz działa jak [wyzwalacza żądania](#request-trigger) przez utworzenie punktu końcowego można wywołać dla aplikacji logiki. Jednak tego wyzwalacza wymaga także adres URL określony punkt końcowy rejestrowania lub wyrejestrowywania subskrypcji. Można określić limity dla elementu trigger elementu webhook w taki sam sposób jak [limity asynchroniczne HTTP](#asynchronous-limits). 
+
+Poniżej przedstawiono definicję wyzwalacza, chociaż w wielu sekcjach są opcjonalne i zachowanie tego wyzwalacza jest zależna od sekcje, które Użyj lub Pomiń:
 
 ```json
-"myAppsSpotTrigger": {
+"HTTP_Webhook": {
     "type": "HttpWebhook",
     "inputs": {
         "subscribe": {
             "method": "POST",
-            "uri": "https://pubsubhubbub.appspot.com/subscribe",
-            "headers": {},
+            "uri": "<subscribe-to-endpoint-URL>",
+            "headers": { "<headers-for-request>" },
             "body": {
                 "hub.callback": "@{listCallbackUrl()}",
                 "hub.mode": "subscribe",
-                "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+                "hub.topic": "<subscription-topic>"
             },
             "authentication": {},
             "retryPolicy": {}
         },
         "unsubscribe": {
             "method": "POST",
-            "url": "https://pubsubhubbub.appspot.com/subscribe",
+            "url": "<unsubscribe-from-endpoint-URL>",
             "body": {
                 "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
                 "hub.mode": "unsubscribe",
-                "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+                "hub.topic": "<subscription-topic>"
             },
             "authentication": {}
         }
     },
-    "conditions": []
 }
 ```
 
-Wiele z tych sekcji są opcjonalne i zachowanie wyzwalacza HTTPWebhook zależy od sekcje, które zapewniają lub Pomiń. Poniżej przedstawiono właściwości wyzwalacza HTTPWebhook:
-  
-| Nazwa elementu | Wymagane | Opis | 
-| ------------ | -------- | ----------- |  
-| Subskrypcja | Nie | Określa żądania wychodzącego do wywołania po utworzeniu wyzwalacza i wykonuje początkowe rejestracyjny. | 
-| Anulowanie subskrypcji | Nie | Określa żądania wychodzącego do wywołania po wyzwalacz jest usuwany. | 
+*Wymagane*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| HTTP_Webhook | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, czyli "HttpWebhook" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| Subskrypcja | Obiekt JSON| Żądania wychodzącego do połączenia i wykonania rejestracji początkowej podczas tworzenia wyzwalacza. To wywołanie dzieje się tak, aby uruchomić wyzwalacz nasłuchuje zdarzeń w punkcie końcowym. Aby uzyskać więcej informacji, zobacz [subskrybowanie i anulowanie subskrypcji](#subscribe-unsubscribe). | 
+| method | Ciąg | Metoda HTTP użytej dla żądania subskrypcji: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" | 
+| identyfikator URI | Ciąg | Adres URL punktu końcowego, w których można wysłać żądania subskrypcji | 
 |||| 
 
-Można określić limity dla elementu trigger elementu webhook w taki sam sposób jak [limity asynchroniczne HTTP](#asynchronous-limits). Poniżej przedstawiono więcej informacji na temat `subscribe` i `unsubscribe` akcje:
+*Opcjonalne*
 
-* `subscribe` nazywa się tak, aby uruchomić wyzwalacz nasłuchuje zdarzeń. To wywołanie wychodzące rozpoczyna się od takich samych parametrach co standardowe akcji HTTP. To wywołanie odbywa się podczas przepływu pracy zmiany w dowolny sposób, na przykład jeśli poświadczenia zostały wycofane, lub zmień parametry wejściowe tego wyzwalacza. 
-  
-  Do obsługi tego wywołania `@listCallbackUrl()` funkcja zwraca unikatowy adres URL dla tego wyzwalacza określonych w przepływie pracy. Ten adres URL reprezentuje unikatowy identyfikator dla punktów końcowych, które używają interfejsu API REST usługi.
-  
-* `unsubscribe` jest automatycznie wywoływane, gdy operacja renderuje tego wyzwalacza nieprawidłowe, w tym te operacje:
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| Anulowanie subskrypcji | Obiekt JSON | Wychodzącej żądanie automatycznie wywoła i anulować subskrypcję, gdy operacja sprawia, że wyzwalacza jest nieprawidłowa. Aby uzyskać więcej informacji, zobacz [subskrybowanie i anulowanie subskrypcji](#subscribe-unsubscribe). | 
+| method | Ciąg | Metoda HTTP do użycia podczas anulowania żądania: "GET", "PUT", "POST", "Poprawka", "DELETE" ani "HEAD" | 
+| identyfikator URI | Ciąg | Adres URL punktu końcowego, w których można wysłać żądania anulowania | 
+| treść | Obiekt JSON | Obiekt JSON, który opisuje ładunku (dane) dla subskrypcji lub anulowania żądania | 
+| uwierzytelnianie | Obiekt JSON | Metoda, która żądanie przychodzące ma być używana do uwierzytelniania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). |
+| retryPolicy | Obiekt JSON | Ten obiekt dostosowuje zachowanie ponownych prób dla sporadyczne błędy, które mają 4xx lub 5xx kody stanu: <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
+|||| 
 
-  * Usuwanie lub wyłączanie wyzwalacza. 
-  * Usuwanie lub wyłączanie przepływ pracy. 
-  * Usuwanie lub wyłączanie subskrypcji. 
-  
-  Parametry dla tej funkcji są takie same jak wyzwalacza HTTP.
+*Przykład*
 
-Poniżej przedstawiono dane wyjściowe z HTTPWebhook wyzwolenia i treść żądania przychodzące są:
-  
+```json
+"myAppSpotTrigger": {
+   "type": "HttpWebhook",
+   "inputs": {
+      "subscribe": {
+         "method": "POST",
+         "uri": "https://pubsubhubbub.appspot.com/subscribe",
+         "headers": {},
+         "body": {
+            "hub.callback": "@{listCallbackUrl()}",
+            "hub.mode": "subscribe",
+            "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+         },
+      },
+      "unsubscribe": {
+         "method": "POST",
+         "url": "https://pubsubhubbub.appspot.com/subscribe",
+         "body": {
+            "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
+            "hub.mode": "unsubscribe",
+            "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+         },
+      }
+   },
+}
+```
+
+<a name="subscribe-unsubscribe"></a>
+
+### <a name="subscribe-and-unsubscribe"></a>`subscribe` i `unsubscribe`
+
+`subscribe` Wywołania się stanie w przypadku przepływu pracy zmiany w dowolny sposób, na przykład gdy poświadczenia zostaną odnowione lub zmiany parametrów wejściowych wyzwalacza. Wywołanie używa tych samych parametrach jako standardowa akcji HTTP. 
+ 
+`unsubscribe` Wywołania się automatycznie stanie, jeśli operacja powoduje wyzwalacza HTTPWebhook nieprawidłowy, na przykład:
+
+* Usuwanie lub wyłączanie wyzwalacza. 
+* Usuwanie lub wyłączanie przepływ pracy. 
+* Usuwanie lub wyłączanie subskrypcji. 
+
+Do obsługi tych wywołań `@listCallbackUrl()` funkcja zwraca unikatowego "adres URL wywołania zwrotnego" dla tego wyzwalacza. Ten adres URL reprezentuje unikatowy identyfikator dla punktów końcowych, które używają interfejsu API REST usługi. Parametry dla tej funkcji są takie same jak wyzwalacza HTTP.
+
+### <a name="httpwebhook-trigger-outputs"></a>Wyzwalacz HTTPWebhook danych wyjściowych
+
 | Nazwa elementu | Typ | Opis |
 | ------------ | ---- | ----------- |
-| nagłówki | Obiekt | Nagłówki odpowiedzi HTTP | 
-| treść | Obiekt | Treść odpowiedzi HTTP | 
+| nagłówki | Obiekt JSON | Nagłówki z odpowiedzi HTTP | 
+| treść | Obiekt JSON | Treść z odpowiedzi HTTP | 
 |||| 
+
+<a name="apiconnectionwebhook-trigger"></a>
+
+## <a name="apiconnectionwebhook-trigger"></a>Wyzwalacz ApiConnectionWebhook
+
+Wyzwalacz działa jak [wyzwalacza HTTPWebhook](#httpwebhook-trigger), ale używa [zarządzany przez firmę Microsoft interfejsy API](../connectors/apis-list.md). 
+
+Poniżej przedstawiono definicję wyzwalacza:
+
+```json
+"<ApiConnectionWebhookTriggerName>": {
+   "type": "ApiConnectionWebhook",
+   "inputs": {
+      "host": {
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>']['connectionId']"
+         }
+      },        
+      "body": {
+          "NotificationUrl": "@{listCallbackUrl()}"
+      },
+      "queries": "<query-parameters>"
+   }
+}
+```
+
+*Wymagane*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| <*ApiConnectionWebhookTriggerName*> | Obiekt JSON | Nazwa wyzwalacza jest obiektem opisanego w formacie Javascript Object Notation (JSON)  | 
+| type | Ciąg | Typ wyzwalacza, czyli "ApiConnectionWebhook" | 
+| Dane wejściowe | Obiekt JSON | Dane wejściowe wyzwalacza, które określają zachowanie tego wyzwalacza | 
+| host | Obiekt JSON | Obiekt JSON, który opisuje hosta bramy i identyfikator zarządzanego interfejsu API <p>`host` Obiekt JSON ma następujące elementy: `api` i `connection` | 
+| połączenie | Obiekt JSON | Nazwa zarządzanego połączenia interfejsu API używanych przez przepływ pracy, który musi zawierać odwołania do parametru o nazwie `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>']['connectionId']"` | 
+| treść | Obiekt JSON | Obiekt JSON, który opisuje ładunku (dane) do wysyłania do zarządzanego interfejsu API | 
+| NotificationUrl | Ciąg | Zwraca unikatową "adres URL wywołania zwrotnego" dla tego wyzwalacza używanego zarządzanego interfejsu API | 
+|||| 
+
+*Opcjonalne*
+
+| Nazwa elementu | Typ | Opis | 
+| ------------ | ---- | ----------- | 
+| — zapytania | Obiekt JSON | Wszystkie parametry zapytania, które chcesz dołączyć do adresu URL <p>Na przykład dodaje ten element `?folderPath=Inbox` ciągu do adresu URL zapytania: <p>`"queries": { "folderPath": "Inbox" }` <p>Wynik: `https://<managed-API-URL>?folderPath=Inbox` | 
+|||| 
+
+<a name="trigger-conditions"></a>
 
 ## <a name="triggers-conditions"></a>Wyzwalacze: warunki
 
-Dla dowolnego wyzwalacza można użyć co najmniej jednego warunku można określić, czy przepływ pracy, należy uruchomić lub nie. W tym przykładzie wyzwalaczy tylko raportu podczas przepływu pracy `sendReports` parametr ma wartość true. 
+Dla dowolnego wyzwalacza z jednego lub kilku warunków, które określają, czy przepływ pracy ma uruchomić lub nie można dołączyć tablicy. W tym przykładzie wyzwalacza raportu generowane tylko podczas przepływu pracy `sendReports` parametr ma wartość true. 
 
 ```json
 "myDailyReportTrigger": {
-    "type": "Recurrence",
-    "conditions": [ 
-        {
-            "expression": "@parameters('sendReports')"
-        } 
-    ],
-    "recurrence": {
-        "frequency": "Day",
-        "interval": 1
-    }
+   "type": "Recurrence",
+   "conditions": [ {
+      "expression": "@parameters('sendReports')"
+   } ],
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-Na koniec warunki można odwoływać się do kod stanu wyzwalacza. Na przykład tylko wtedy, gdy witryny sieci Web zwraca kod stanu 500 można uruchomić przepływu pracy:
-  
+Ponadto warunki można odwoływać się kod stanu tego wyzwalacza. Na przykład załóżmy, że chcesz uruchomić przepływ pracy tylko w przypadku kodu stanu "500" zwraca witryny sieci Web:
+
 ``` json
-"conditions": [ 
-    {  
-      "expression": "@equals(triggers().code, 'InternalServerError')"  
-    }  
-]  
+"conditions": [ {
+   "expression": "@equals(triggers().code, 'InternalServerError')"  
+} ]  
 ```  
 
 > [!NOTE]
-> Domyślnie, wyzwalacz uruchamia się tylko na odbieranie "200 OK" odpowiedzi. Gdy wyrażenie odwołuje się do tego wyzwalacza kodu stanu w dowolny sposób, zostanie zastąpiony wyzwalacza domyślne zachowanie. Tak aby wyzwalacz fire oparte na wiele kodów stanu, na przykład i kodem stanu 200 kod stanu 201, musi zawierać niniejszych jako warunek: 
+> Domyślnie, wyzwalacz uruchamia się tylko na odbieranie "200 OK" odpowiedzi. Gdy wyrażenie odwołuje się do tego wyzwalacza kodu stanu w dowolny sposób, zostanie zastąpiony wyzwalacza domyślne zachowanie. Tak Jeśli chcesz, aby uruchomić dla wiele kodów stanu, na przykład kodem stanu 200 i kod stanu 201, wyzwalacz musi zawierać niniejszych jako warunek: 
 >
 > `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
 
 <a name="split-on-debatch"></a>
 
-## <a name="triggers-process-an-array-with-multiple-runs"></a>Wyzwalacze: Przetwarzanie tablicy zawierającej wiele przebiegów
+## <a name="triggers-split-an-array-into-multiple-runs"></a>Wyzwalacze: Podział tablicy na wielu uruchomień
 
 Jeśli Twój wyzwalacz zwraca tablicę aplikacji logiki do przetwarzania, czasami pętli "for each" może trwać zbyt długo przetworzyć każdy element tablicy. Zamiast tego można użyć **SplitOn** właściwości w wyzwalacz do *debatch* tablicy. 
 
@@ -442,7 +700,7 @@ Aplikację logiki musi tylko zawartość z `Rows`, dzięki czemu można tworzyć
     "type": "Http",
     "recurrence": {
         "frequency": "Second",
-        "interval": "1"
+        "interval": 1
     },
     "inputs": {
         "uri": "https://mydomain.com/myAPI",
@@ -476,21 +734,36 @@ Definicja przepływu pracy można teraz używać `@triggerBody().name` uzyskanie
     }
 }
 ```
-  
-## <a name="triggers-fire-only-after-all-active-runs-finish"></a>Wyzwalacze: Fire, który działa tylko po wszystkich aktywnych Zakończ
 
-Wyzwalacze cyklu można skonfigurować tak, aby ich uruchomienie tylko, gdy wszystkie aktywnej przebiegi została ukończona. Aby skonfigurować to ustawienie, ustaw `operationOptions` właściwości `singleInstance`:
+<a name="trigger-operation-options"></a>
+
+## <a name="triggers-operation-options"></a>Wyzwalaczy: Opcje operacji
+
+Te wyzwalacze Podaj więcej opcji, które umożliwiają zmianę domyślnego zachowania.
+
+| Wyzwalacz | Opcja operacji | Opis |
+|---------|------------------|-------------|
+| [Cykl](#recurrence-trigger), <br>[HTTP](#http-trigger), <br>[ApiConnection](#apiconnection-trigger) | singleInstance | Zakończono Fire, uruchamiania tylko po wszystkich aktywnych wyzwalacza. |
+||||
+
+<a name="single-instance"></a>
+
+### <a name="triggers-fire-only-after-active-runs-finish"></a>Wyzwalacze: Uruchamiają się tylko wtedy, gdy aktywne uruchamia Zakończ
+
+Wyzwalaczy, w którym można ustawić cykl można określić, czy uruchomić wyzwalacz działa tylko po wszystkich aktywnych zostało ukończone. W przypadku wystąpienia przepływu pracy jest uruchomiona zaplanowanego cyklu wyzwalacza pomija i czeka, aż do następnego zaplanowanego cyklu przed ponownym sprawdzeniem. Na przykład:
 
 ```json
-"myTrigger": {
-    "type": "Http",
-    "inputs": { },
-    "recurrence": { },
+"myRecurringTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+    },
     "operationOptions": "singleInstance"
 }
 ```
 
-W przypadku wystąpienia przepływu pracy jest uruchomiona zaplanowanego cyklu wyzwalacza pomija i czeka, aż do następnego interwał cyklu zaplanowane, aby ponownie sprawdzić.
+<a name="actions-overview"></a>
 
 ## <a name="actions-overview"></a>Przegląd działań
 
@@ -548,12 +821,12 @@ W tym miejscu `inputs` obiektu przyjmuje tych parametrów wymaganych do konstruo
 | ------------ | -------- | ---- | ----------- | 
 | method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
 | identyfikator URI | Yes| Ciąg | Końcowy HTTP lub HTTPs, który sprawdza zgodność wyzwalacza. Maksymalny rozmiar ciągu: 2 KB | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
-| retryPolicy | Nie | Obiekt | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
+| — zapytania | Nie | Obiekt JSON | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
+| nagłówki | Nie | Obiekt JSON | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Nie | Obiekt JSON | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
+| retryPolicy | Nie | Obiekt JSON | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nie | Ciąg | Definiuje zestaw specjalnego zachowania do zastąpienia. | 
-| uwierzytelnianie | Nie | Obiekt | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). <p>Poza harmonogramem, jest jedna właściwość więcej obsługiwanych: `authority`. Domyślnie ta wartość jest `https://login.windows.net` gdy nie jest określony, ale możesz użyć innej wartości, takich jak`https://login.windows\-ppe.net`. | 
+| uwierzytelnianie | Nie | Obiekt JSON | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). <p>Poza harmonogramem, jest jedna właściwość więcej obsługiwanych: `authority`. Domyślnie ta wartość jest `https://login.windows.net` gdy nie jest określony, ale możesz użyć innej wartości, takich jak`https://login.windows\-ppe.net`. | 
 ||||| 
 
 Akcje HTTP oraz akcje APIConnection obsługuje *ponów zasady*. Zasady ponawiania dotyczy sporadycznych błędów jest określony jako kodów stanu HTTP 408 429 i 5xx, oprócz wszelkie wyjątki łączności. Można zdefiniować te zasady z `retryPolicy` obiektów, jak pokazano poniżej:
@@ -649,15 +922,15 @@ Ta akcja odwołuje się do łącznika zarządzany przez firmę Microsoft, wymaga
 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
-| host | Yes | Obiekt | Reprezentuje informacje łącznika, takich jak `runtimeUrl` i odwołania do obiektu połączenia. | 
+| host | Yes | Obiekt JSON | Reprezentuje informacje łącznika, takich jak `runtimeUrl` i odwołania do obiektu połączenia. | 
 | method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
 | ścieżka | Yes | Ciąg | Ścieżka dla operacji interfejsu API | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
-| retryPolicy | Nie | Obiekt | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
+| — zapytania | Nie | Obiekt JSON | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
+| nagłówki | Nie | Obiekt JSON | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Nie | Obiekt JSON | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
+| retryPolicy | Nie | Obiekt JSON | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nie | Ciąg | Definiuje zestaw specjalnego zachowania do zastąpienia. | 
-| uwierzytelnianie | Nie | Obiekt | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). |
+| uwierzytelnianie | Nie | Obiekt JSON | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
 Zasady ponawiania dotyczy sporadycznych błędów jest określony jako kodów stanu HTTP 408 429 i 5xx, oprócz wszelkie wyjątki łączności. Można zdefiniować te zasady z `retryPolicy` obiektów, jak pokazano poniżej:
@@ -703,14 +976,14 @@ Akcja APIConnectionWebhook odwołuje się do łącznika zarządzany przez firmę
 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
-| host | Yes | Obiekt | Reprezentuje informacje łącznika, takich jak `runtimeUrl` i odwołania do obiektu połączenia. | 
+| host | Yes | Obiekt JSON | Reprezentuje informacje łącznika, takich jak `runtimeUrl` i odwołania do obiektu połączenia. | 
 | ścieżka | Yes | Ciąg | Ścieżka dla operacji interfejsu API | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
-| retryPolicy | Nie | Obiekt | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
+| — zapytania | Nie | Obiekt JSON | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
+| nagłówki | Nie | Obiekt JSON | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Nie | Obiekt JSON | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
+| retryPolicy | Nie | Obiekt JSON | Ten obiekt jest używany dla Dostosowywanie zachowania ponownych prób dla 4xx lub 5xx błędów. Aby uzyskać więcej informacji, zobacz [ponów zasady](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nie | Ciąg | Definiuje zestaw specjalnego zachowania do zastąpienia. | 
-| uwierzytelnianie | Nie | Obiekt | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). |
+| uwierzytelnianie | Nie | Obiekt JSON | Reprezentuje metodę, która powinna być używana do uwierzytelniania żądania. Aby uzyskać więcej informacji, zobacz [uwierzytelniania połączeń wychodzących harmonogramu](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
 ## <a name="response-action"></a>Akcja odpowiedzi  
@@ -794,9 +1067,9 @@ Ta akcja umożliwia reprezentują i wywołanie [funkcji Azure](../azure-function
 | ------------ | -------- | ---- | ----------- |  
 | id — funkcja | Yes | Ciąg | Identyfikator zasobu dla funkcji platformy Azure, która ma zostać wywołana. | 
 | method | Nie | Ciąg | Metoda HTTP używana do wywołania tej funkcji. Jeśli nie zostanie określony, "POST" jest domyślną metodą. | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
+| — zapytania | Nie | Obiekt JSON | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
+| nagłówki | Nie | Obiekt JSON | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Nie | Obiekt JSON | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
 |||||
 
 Podczas zapisywania aplikacji logiki aparatu Logic Apps sprawdza niektórych funkcji, do którego istnieje odwołanie:
@@ -853,7 +1126,7 @@ Na przykład, aby zatrzymać do uruchomienia, która ma `Failed` stanu:
 | Name (Nazwa) | Wymagane | Typ | Opis | 
 | ---- | -------- | ---- | ----------- | 
 | runStatus | Yes | Ciąg | Element docelowy, uruchom jego stan, który może być `Failed` lub `Cancelled` |
-| runError | Nie | Obiekt | Szczegóły błędu. Obsługiwane tylko wtedy, gdy `runStatus` ma ustawioną wartość `Failed`. |
+| runError | Nie | Obiekt JSON | Szczegóły błędu. Obsługiwane tylko wtedy, gdy `runStatus` ma ustawioną wartość `Failed`. |
 | Kod runError | Nie | Ciąg | Kod błędu przy uruchomieniu |
 | komunikat runError | Nie | Ciąg | Komunikat o błędzie przy uruchomieniu | 
 ||||| 
@@ -990,9 +1263,9 @@ Można również czekać, aż do określonego momentu w czasie, można użyć w 
 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
-| do | Nie | Obiekt | Czas trwania oczekiwania na podstawie punktu w czasie | 
+| do | Nie | Obiekt JSON | Czas trwania oczekiwania na podstawie punktu w czasie | 
 | do sygnatury czasowej | Yes | Ciąg | Do punktu w czasie w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) wygaśnięcia czas oczekiwania | 
-| interval | Nie | Obiekt | Czas oczekiwania na podstawie jednostkę interwału i liczby | 
+| interval | Nie | Obiekt JSON | Czas oczekiwania na podstawie jednostkę interwału i liczby | 
 | Interwał | Yes | Ciąg | Jednostka czasu. Użyj tylko jedną z następujących wartości: "drugi", "min", "Godzina", "day", "tygodnia" lub "miesiąc" | 
 | Liczba interwale | Yes | Liczba całkowita | Dodatnią liczbę całkowitą reprezentującą liczbę jednostek interwału czasu trwania oczekiwania | 
 ||||| 
@@ -1029,9 +1302,9 @@ Ta akcja umożliwia zagnieździć przepływ pracy. Aparat Logic Apps wykonuje ko
 | ------------ | -------- | ---- | ----------- |  
 | Identyfikator hosta | Yes | Ciąg| Identyfikator zasobu dla przepływu pracy, który ma zostać wywołana | 
 | Nazwa_wyzwalacza hosta | Yes | Ciąg | Nazwa wyzwalacza, który chcesz wywołać | 
-| — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
-| nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
+| — zapytania | Nie | Obiekt JSON | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
+| nagłówki | Nie | Obiekt JSON | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| treść | Nie | Obiekt JSON | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
 ||||| 
 
 Ta akcja dane wyjściowe są oparte na definiowanie w `Response` akcji podrzędnych przepływu pracy. Jeśli przepływ pracy podrzędny nie definiuje `Response` akcji, dane wyjściowe są puste.
@@ -1042,7 +1315,7 @@ Aby kontrolować wykonywanie przepływu pracy, akcje kolekcji może zawierać in
 
 ## <a name="if-action"></a>Jeśli akcja
 
-Tę akcję, która jest instrukcji warunkowej, pozwala ocenić warunku i wykonywanie gałęzi według tego, czy wyrażenie jako true. Jeśli wyrażenie pomyślnie jako wartość true, ten stan jest oznaczony jako "Powodzenie". Akcje, które znajdują się w `actions` lub `else` obiektów oceny tych wartości:
+Tę akcję, która jest instrukcji warunkowej, pozwala ocenić warunku i wykonywanie gałęzi według tego, czy wyrażenie jako true. Jeśli wyrażenie pomyślnie jako wartość true, ten stan jest oznaczony stan "Powodzenie". Akcje, które znajdują się w `actions` lub `else` obiektów oceny tych wartości:
 
 * "Powiodło się" podczas uruchamiania i powiodło się
 * "Nie powiodło się" podczas uruchamiania i zakończyć się niepowodzeniem
@@ -1076,9 +1349,9 @@ Dowiedz się więcej o [warunkowe instrukcje w aplikacjach logiki](../logic-apps
 
 | Name (Nazwa) | Wymagane | Typ | Opis | 
 | ---- | -------- | ---- | ----------- | 
-| Akcje | Yes | Obiekt | Wewnętrzny akcje do wykonania, kiedy `expression` daje w wyniku `true` | 
+| Akcje | Yes | Obiekt JSON | Wewnętrzny akcje do wykonania, kiedy `expression` daje w wyniku `true` | 
 | wyrażenie | Yes | Ciąg | Wyrażenie do oceny |
-| else | Nie | Obiekt | Wewnętrzny akcje do wykonania, kiedy `expression` daje w wyniku `false` |
+| else | Nie | Obiekt JSON | Wewnętrzny akcje do wykonania, kiedy `expression` daje w wyniku `false` |
 ||||| 
 
 Na przykład:
@@ -1133,14 +1406,14 @@ Tę akcję, która jest instrukcji switch, wykonuje różne akcje na podstawie o
    "type": "Switch",
    "expression": "<evaluate-this-object-expression-token>",
    "cases": {
-      "myCase1" : {
-         "actions" : {
+      "myCase1": {
+         "actions": {
            "myAction1": {}
          },
          "case": "<result1>"
       },
       "myCase2": {
-         "actions" : {
+         "actions": {
            "myAction2": {}
          },
          "case": "<result2>"
@@ -1158,10 +1431,10 @@ Tę akcję, która jest instrukcji switch, wykonuje różne akcje na podstawie o
 | Name (Nazwa) | Wymagane | Typ | Opis | 
 | ---- | -------- | ---- | ----------- | 
 | wyrażenie | Yes | Ciąg | Obiekt, wyrażenie lub token do oceny | 
-| Przypadków | Yes | Obiekt | Zawiera zestawy wewnętrzny akcje, które są uruchamiane na podstawie wyniku wyrażenia. | 
+| Przypadków | Yes | Obiekt JSON | Zawiera zestawy wewnętrzny akcje, które są uruchamiane na podstawie wyniku wyrażenia. | 
 | Case | Yes | Ciąg | Wartość do dopasowania z wynikami | 
-| Akcje | Yes | Obiekt | Wewnętrzny akcje, które są uruchamiane w przypadku pasującego do wyniku wyrażenia | 
-| domyślnie | Nie | Obiekt | Wewnętrzny akcje uruchamiane po przypadkach nie pasował do wyniku | 
+| Akcje | Yes | Obiekt JSON | Wewnętrzny akcje, które są uruchamiane w przypadku pasującego do wyniku wyrażenia | 
+| domyślnie | Nie | Obiekt JSON | Wewnętrzny akcje uruchamiane po przypadkach nie pasował do wyniku | 
 ||||| 
 
 Na przykład:
@@ -1172,13 +1445,13 @@ Na przykład:
    "expression": "@body('Send_approval_email')?['SelectedOption']",
    "cases": {
       "Case": {
-         "actions" : {
+         "actions": {
            "Send_an_email": {...}
          },
          "case": "Approve"
       },
       "Case_2": {
-         "actions" : {
+         "actions": {
            "Send_an_email_2": {...}
          },
          "case": "Reject"
@@ -1219,7 +1492,7 @@ Ta akcja pętli iteruje tablicy i wykonuje akcje wewnętrzne na każdy element t
 
 | Name (Nazwa) | Wymagane | Typ | Opis | 
 | ---- | -------- | ---- | ----------- | 
-| Akcje | Yes | Obiekt | Wewnętrzny akcje do wykonania w pętli | 
+| Akcje | Yes | Obiekt JSON | Wewnętrzny akcje do wykonania w pętli | 
 | Instrukcja foreach | Yes | Ciąg | Tablica do iteracji | 
 | operationOptions | Nie | Ciąg | Określa opcje operacji dostosowywania zachowanie. Aktualnie obsługuje tylko `Sequential` sekwencyjnie uruchamiania iteracji domyślne zachowanie w przypadku równoległego. |
 ||||| 
@@ -1279,9 +1552,9 @@ Ta akcja pętli uruchamia wewnętrzny akcje, dopóki wynikiem warunku jest PRAWD
 
 | Name (Nazwa) | Wymagane | Typ | Opis | 
 | ---- | -------- | ---- | ----------- | 
-| Akcje | Yes | Obiekt | Wewnętrzny akcje do wykonania w pętli | 
+| Akcje | Yes | Obiekt JSON | Wewnętrzny akcje do wykonania w pętli | 
 | wyrażenie | Yes | Ciąg | Wyrażenie do oceny po każdej iteracji | 
-| Limit | Yes | Obiekt | Limity dla pętli. Należy zdefiniować co najmniej jeden limit. | 
+| Limit | Yes | Obiekt JSON | Limity dla pętli. Należy zdefiniować co najmniej jeden limit. | 
 | liczba | Nie | Liczba całkowita | Limit liczby iteracji do wykonania | 
 | timeout | Nie | Ciąg | Limit czasu w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) Określa, jak długo uruchamiać pętli |
 ||||| 
@@ -1332,7 +1605,7 @@ Ta akcja umożliwia w logiczne grupy działań w przepływie pracy. Zakres równ
 
 | Name (Nazwa) | Wymagane | Typ | Opis | 
 | ---- | -------- | ---- | ----------- |  
-| Akcje | Yes | Obiekt | Wewnętrzny akcje do wykonania w zakresie |
+| Akcje | Yes | Obiekt JSON | Wewnętrzny akcje do wykonania w zakresie |
 ||||| 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,9 +1,9 @@
 ---
-title: "Inteligentne wykrywania w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Usługa Application Insights odbywa się szczegółowa analiza automatycznego dotyczących telemetrii aplikacji i ostrzega o potencjalnych problemach."
+title: Inteligentne wykrywania w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Usługa Application Insights odbywa się szczegółowa analiza automatycznego dotyczących telemetrii aplikacji i ostrzega o potencjalnych problemach.
 services: application-insights
 documentationcenter: windows
-author: rakefetj
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2eeb4a35-c7a1-49f7-9b68-4f4b860938b2
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: c15db8451cc1c5380bcf4a29c5e722d09c0a603b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 38a7c5be98440a717eb54092bf7ce0d412619017
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentne wykrywanie w usłudze Application Insights
  Inteligentne wykrywanie automatycznie ostrzega o potencjalnych problemów z wydajnością w aplikacji sieci web. Wykonuje aktywnego analizy telemetrii, wysyłanej przez aplikację do [usługi Application Insights](app-insights-overview.md). Jeśli istnieje nagły wzrost awariami lub nietypowe wzorce wydajności serwera lub klienta, zostanie wyświetlony alert. Ta funkcja wymaga żadnej konfiguracji. Działa on tak, jeśli aplikacja wyśle za mało danych telemetrii.
@@ -51,7 +51,7 @@ Istnieją trzy typy wykrywania:
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Te narzędzia diagnostyczne pomóc sprawdzić dane telemetryczne z aplikacji:
 
 * [Eksplorator metryk](app-insights-metrics-explorer.md)

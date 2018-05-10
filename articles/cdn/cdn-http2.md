@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Obsługa protokołu HTTP/2 w usługi Azure CDN
 
@@ -29,7 +29,7 @@ Zalety HTTP/2:
 
 *   **Multipleksowanie i współbieżność**
 
-    Przy użyciu protokołu HTTP 1.1, wielu wprowadzania wielu żądań zasobów wymaga wielu połączeń TCP, a każde połączenie ma zmniejszenie wydajności związane z nią. HTTP/2 umożliwia wielu zasobów wymagane dla pojedynczego połączenia TCP.
+    Przy użyciu protokołu HTTP 1.1, wprowadzania wielu żądań zasobów wymaga wielu połączeń TCP, a każde połączenie ma zmniejszenie wydajności związane z nią. HTTP/2 umożliwia wielu zasobów wymagane dla pojedynczego połączenia TCP.
 
 *   **Kompresja nagłówka**
 
@@ -37,12 +37,12 @@ Zalety HTTP/2:
 
 *   **Zależności strumienia**
 
-    Zależności strumienia pozwalają klientowi wskazują na serwer, którego zasoby mają priorytet.
+    Zależności strumienia pozwalają klientowi wskazują na serwer zasoby, które mają priorytet.
 
 
 ## <a name="http2-browser-support"></a>Obsługa przeglądarek HTTP/2
 
-Wszystkie główne przeglądarki wdrożono Obsługa HTTP/2 w ich bieżącej wersji. Nieobsługiwany przeglądarki zostanie automatycznie powrotu do HTTP/1.1.
+Wszystkie główne przeglądarki wdrożono Obsługa HTTP/2 w ich bieżącej wersji. Nieobsługiwany przeglądarek automatycznie powrotu do HTTP/1.1.
 
 |Przeglądarka|Minimalna wersja|
 |-------------|------------|
@@ -54,7 +54,7 @@ Wszystkie główne przeglądarki wdrożono Obsługa HTTP/2 w ich bieżącej wers
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>Włączanie obsługi protokołu HTTP/2 w Azure CDN
 
-Obsługa protokołu HTTP/2 jest obecnie aktywny dla **Azure CDN from Akamai** i **Azure CDN from Verizon** profilów. Żadne dalsze akcje nie jest wymagana od klientów.
+Obecnie aktywne dla wszystkich profilów usługi Azure CDN jest obsługa protokołu HTTP/2. Żadne dalsze akcje nie jest wymagana od klientów.
 
 ## <a name="next-steps"></a>Następne kroki
 

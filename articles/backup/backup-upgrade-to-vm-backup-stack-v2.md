@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 224cd365e6b3ca4fd963b530dbaa289b763d53ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1e5515486afac5a6d84a35bca33f55ae98e287d3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Uaktualnij do modelu wdrażania usługi Azure Resource Manager stosu kopii zapasowej maszyny Wirtualnej Azure
 Model wdrażania Menedżera zasobów dla uaktualnienia do stosu kopii zapasowej maszyny wirtualnej (VM) zapewnia następujące udoskonalenia:
@@ -45,8 +45,6 @@ Domyślnie migawki są przechowywane przez 7 dni. Ta funkcja umożliwia przywrac
 
 ## <a name="considerations-before-upgrade"></a>Zagadnienia dotyczące przed uaktualnieniem
 * Uaktualnienie stos kopii zapasowej maszyny Wirtualnej jest jednym dwukierunkowego. Dlatego wszystkie kopie zapasowe, przejdź do tego przepływu. Ponieważ jest ona włączona na poziomie subskrypcji, wszystkie maszyny wirtualne przechodzą w tego przepływu. Wszystkie nowe informacje będą funkcji są oparte na tym samym stosie. Możliwość kontrolowania, które to na poziomie zasad pochodzi w przyszłych wersjach.
-
-* Dla maszyn wirtualnych z dysków w warstwie premium podczas i do pierwszej kopii zapasowej zakończy, upewnij się, że ma wystarczającej ilości miejsca na koncie magazynu. Powinien być równy rozmiarowi maszyny Wirtualnej.
 
 * Migawki są przechowywane lokalnie do zwiększania Tworzenie punktu odzyskiwania, a także aby przyspieszyć przywracania. W związku z tym zostanie wyświetlony koszty magazynowania, które odpowiadają migawek w ciągu siedmiu dni.
 

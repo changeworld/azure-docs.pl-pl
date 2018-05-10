@@ -15,20 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 56839c38de135a805c51bb96ad5d7abc41ebcad7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
-Dowiedz się, jak utworzyć i usunąć sieci wirtualnej i zmienić ustawienia, takie jak serwery DNS i przestrzeni adresów IP, do istniejącej sieci wirtualnej.
-
-Sieć wirtualna jest odzwierciedla w chmurze Twoją sieć. Sieć wirtualna jest logiczną izolacją chmury Azure, przeznaczona dla Twojej subskrypcji platformy Azure. Dla każdej sieci wirtualnej, utworzony można:
-- Wybierz przestrzeń adresową można przypisać. Przestrzeń adresową składa się z jednego lub więcej zakresów adresów, które są zdefiniowane przy użyciu notacji Classless Inter-Domain Routing (CIDR), takich jak 10.0.0.0/16.
-- Wybierz użyć serwera DNS platformy Azure lub serwera DNS. Wszystkie zasoby, które są podłączone do sieci wirtualnej są przypisywane tego serwera DNS do rozpoznawania nazw w sieci wirtualnej.
-- Segment sieci wirtualnej do podsieci, każda z własną zakres adresów w przestrzeni adresowej sieci wirtualnej. Aby dowiedzieć się, jak tworzenie, zmienianie i usuwanie podsieci, zobacz [Dodawanie, zmienianie lub usuń podsieci](virtual-network-manage-subnet.md).
+Dowiedz się, jak utworzyć i usunąć sieci wirtualnej i zmienić ustawienia, takie jak serwery DNS i przestrzeni adresów IP, do istniejącej sieci wirtualnej. Jeśli jesteś nowym użytkownikiem sieci wirtualnych, możesz dowiedzieć się więcej o nich w [omówienie sieci wirtualnej](virtual-networks-overview.md) lub wykonując [samouczek](quick-create-portal.md). Sieć wirtualna zawiera podsieci. Aby dowiedzieć się, jak tworzenie, zmienianie i usuwanie podsieci, zobacz [Zarządzanie podsieci](virtual-network-manage-subnet.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -36,8 +31,9 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
-- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
+- Konta, zaloguj się do lub z usługą Azure, musi być przypisany do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania na liście [uprawnień ](#permissions).
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
@@ -76,7 +72,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 ## <a name="view-virtual-networks-and-settings"></a>Widok sieci wirtualnych i ustawień
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz sieci wirtualnej, który chcesz wyświetlić ustawienia z listy sieci wirtualnych.
 3. Następujące ustawienia są wyświetlane dla wybranej sieci wirtualnej:
     - **Omówienie**: zawiera informacje o sieci wirtualnej, w tym przestrzeń adresową i serwery DNS. Poniższy zrzut ekranu przedstawia Przegląd ustawień sieci wirtualnej o nazwie **MyVNet**:
@@ -85,7 +81,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
       Sieć wirtualną można przenieść do innej grupy zasobów lub subskrypcji, wybierając **zmiany** obok **grupy zasobów** lub **Nazwa subskrypcji**. Aby dowiedzieć się, jak przenieść sieć wirtualną, zobacz [przenoszenia zasobów w innej grupie zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Artykuł zawiera listę wymagań wstępnych i sposobu przenoszenia zasobów przy użyciu portalu Azure, programu PowerShell i interfejsu wiersza polecenia Azure. Wszystkie zasoby, które są podłączone do sieci wirtualnej, należy przenieść z siecią wirtualną.
     - **Przestrzeń adresowa**: znajdują się przestrzeni adresowych, które są przypisane do sieci wirtualnej. Aby dowiedzieć się, jak dodać i usunąć zakres adresów do przestrzeni adresowej, wykonaj kroki [Dodaj lub Usuń zakres adresów](#add-or-remove-an-address-range).
-    - **Połączone urządzenia**: wymienione są wszystkie zasoby, które są podłączone do sieci wirtualnej. Na poprzednim zrzucie ekranu pokazano trzy interfejsy sieciowe i jeden moduł równoważenia obciążenia są podłączone do sieci wirtualnej. Wyświetlane są nowe zasoby, które tworzą i połączyć sieć wirtualną. Jeśli usuniesz z zasobem, który został podłączony do sieci wirtualnej, nie będzie widoczny na liście.
+    - **Połączone urządzenia**: wymienione są wszystkie zasoby, które są podłączone do sieci wirtualnej. Na poprzednim zrzucie ekranu pokazano trzy interfejsy sieciowe i jeden moduł równoważenia obciążenia są podłączone do sieci wirtualnej. Wyświetlane są nowe zasoby, które tworzą i połączyć sieć wirtualną. Jeśli usuniesz z zasobem, który został podłączony do sieci wirtualnej już wyświetlane na liście.
     - **Podsieci**: przedstawiono listę podsieci, które istnieją w sieci wirtualnej. Aby dowiedzieć się, jak dodać i usunąć podsieć, zobacz [Zarządzanie podsieci](virtual-network-manage-subnet.md).
     - **Serwery DNS**: można określić, czy Azure wewnętrznego serwera DNS lub niestandardowy serwer DNS udostępnia rozpoznawanie nazw dla urządzeń, które są podłączone do sieci wirtualnej. Po utworzeniu sieci wirtualnej przy użyciu portalu Azure, serwery DNS platformy Azure są używane do rozpoznawania nazw w sieci wirtualnej domyślnie. Aby zmodyfikować serwery DNS, wykonaj kroki [serwerów DNS zmiany](#change-dns-servers) w tym artykule.
     - **Komunikacji równorzędnych**: Jeśli istnieją istniejącego komunikacji równorzędnych w subskrypcji, są one wyświetlane tutaj. Można wyświetlać ustawienia dla istniejącego komunikacji równorzędnych, lub utworzyć, zmienić lub usunąć komunikacji równorzędnych. Aby dowiedzieć się więcej na temat komunikacji równorzędnych, zobacz [równorzędna sieci wirtualnej](virtual-network-peering-overview.md).
@@ -94,7 +90,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
     - **Typowe ustawienia Azure**: Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, zobacz następujące informacje:
         *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
         *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-        *   [Tagi](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+        *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -115,7 +111,7 @@ Można dodawać i usuwać zakresy adresów sieci wirtualnej. Zakres adresów mus
 
 Aby dodać lub usunąć zakres adresów:
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Z listy sieci wirtualnych wybierz sieć wirtualna, dla której chcesz dodać lub usunąć zakresu adresów.
 3. Wybierz **przestrzeni adresów**w obszarze **ustawienia**.
 4. Wykonaj jedną z następujących opcji:
@@ -132,7 +128,7 @@ Aby dodać lub usunąć zakres adresów:
 
 Wszystkie maszyny wirtualne, które są podłączone do sieci wirtualnej rejestr przy użyciu serwerów DNS, które określają dla sieci wirtualnej. Określony serwer DNS są również używany do rozpoznawania nazw. Każdego interfejsu sieciowego (NIC) na maszynie wirtualnej może mieć własne ustawienia serwera DNS. Jeśli karta sieciowa ma swoje własne ustawienia serwera DNS, zastępują one ustawienia serwera DNS dla sieci wirtualnej. Aby dowiedzieć się więcej o ustawieniach DNS kart interfejsu Sieciowego, zobacz [interfejsu zadań i ustawień sieci](virtual-network-network-interface.md#change-dns-servers). Aby dowiedzieć się więcej na temat rozpoznawania nazw dla maszyn wirtualnych i wystąpień roli w usług Azure Cloud Services, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](virtual-networks-name-resolution-for-vms-and-role-instances.md). Aby dodać, zmienić lub usunąć serwer DNS:
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Z listy sieci wirtualnych wybierz sieci wirtualnej, dla którego chcesz zmienić serwerów DNS.
 3.  Wybierz **serwerów DNS**w obszarze **ustawienia**.
 4. Wybierz jedną z następujących opcji:
@@ -154,7 +150,7 @@ Wszystkie maszyny wirtualne, które są podłączone do sieci wirtualnej rejestr
 
 Tylko wtedy, gdy nie ma żadnych zasobów dołączone do niego, można usunąć sieci wirtualnej. Jeśli istnieją zasoby podłączone do żadnej podsieci w sieci wirtualnej, należy najpierw usunąć zasoby, które są podłączone do wszystkich podsieci w sieci wirtualnej. Czynności, które należy wykonać, aby usunąć zasób zależy od zasobu. Aby dowiedzieć się, jak usunąć zasoby, które są podłączone do podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz usunąć. Aby usunąć sieć wirtualną:
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz sieć wirtualną, której chcesz usunąć z listy sieci wirtualnych.
 3. Upewnij się, że nie istnieją żadne urządzenia podłączone do sieci wirtualnej, wybierając **urządzeń podłączonych**w obszarze **ustawienia**. W przypadku połączonych urządzeń, należy je usunąć przed usunięciem sieci wirtualnej. Jeśli nie ma żadnych podłączonych urządzeń, wybierz **omówienie**.
 4. Wybierz pozycję **Usuń**.
@@ -167,17 +163,15 @@ Tylko wtedy, gdy nie ma żadnych zasobów dołączone do niego, można usunąć 
 
 ## <a name="permissions"></a>Uprawnienia
 
-Do wykonywania zadań w sieciach wirtualnych, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie uprawnienia są wymienione w poniższej tabeli:
+Do wykonywania zadań w sieciach wirtualnych, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie akcje wymienione w poniższej tabeli:
 
-|Operacja                                    |   Nazwa operacji                    |
-|-------------------------------------------  |   --------------------------------  |
-|Microsoft.Network/virtualNetworks/read       |   Pobierz sieć wirtualną               |
-|Microsoft.Network/virtualNetworks/write      |   Utwórz lub zaktualizuj sieć wirtualną  |
-|Microsoft.Network/virtualNetworks/delete     |   Usunąć sieci wirtualnej            |
+| Akcja                                  |   Name (Nazwa)                                |
+|---------------------------------------- |   --------------------------------    |
+|Microsoft.Network/virtualNetworks/read   |   Przeczytaj sieci wirtualnej              |
+|Microsoft.Network/virtualNetworks/write  |   Utwórz lub zaktualizuj sieć wirtualną  |
+|Microsoft.Network/virtualNetworks/delete |   Usunąć sieci wirtualnej            |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby utworzyć Maszynę wirtualną, a następnie podłącz je do sieci wirtualnej, zobacz [utworzyć sieć wirtualną i połączyć maszyny wirtualne](quick-create-portal.md#create-virtual-machines).
-- Aby filtrować ruch sieciowy między podsieciami sieci wirtualnej, zobacz [Utwórz grupy zabezpieczeń sieci](virtual-networks-create-nsg-arm-pportal.md).
-- -To-peer sieci wirtualnej do innej sieci wirtualnej, zobacz [tworzenie sieci wirtualnej komunikacji równorzędnej](tutorial-connect-virtual-networks-portal.md).
-- Aby dowiedzieć się więcej o opcjach sieci wirtualnej nawiązywania połączenia z siecią lokalną, zobacz [o bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams).
+- Tworzenie sieci wirtualnej przy użyciu [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia Azure](cli-samples.md) przykładowe skrypty lub przy użyciu usługi Azure [szablonów Resource Manager](template-samples.md)
+- Tworzenie i stosowanie [Azure zasad](policy-samples.md) dla sieci wirtualnych

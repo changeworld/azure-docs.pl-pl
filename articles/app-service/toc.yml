@@ -55,6 +55,8 @@
       href: app-service-web-tutorial-content-delivery-network.md
     - name: Uwierzytelnianie użytkowników
       href: app-service-web-tutorial-auth-aad.md
+    - name: Wdrażanie aplikacji w usłudze Azure App Service przy użyciu usługi VSTS oraz funkcji ciągłej integracji i dostarczania
+      href: 'https://docs.microsoft.com/learn/deploy-apps-to-azure/index'
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -177,6 +179,8 @@
           href: web-sites-backup.md
         - name: Przywracanie kopii zapasowej
           href: web-sites-restore.md
+        - name: Przywracanie migawki
+          href: app-service-web-restore-snapshots.md
         - name: Klonowanie aplikacji
           href: app-service-web-app-cloning.md
         - name: Przenoszenie zasobów

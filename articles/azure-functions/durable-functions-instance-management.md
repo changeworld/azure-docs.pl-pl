@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: baea799dbab2625e64140a565064b3c41310b4ad
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Zarządzanie wystąpieniami w funkcjach trwałe (usługi Azure Functions)
 
@@ -50,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-Dla języków .NET z systemem innym niż funkcja powiązania wyjściowego można uruchomić także nowego wystąpienia. W takim przypadku można użyć dowolnego obiektu podlegającego serializacji JSON, zawierający powyżej trzy parametry jako pola. Rozważmy na przykład następująca funkcja Node.js:
+Dla języków .NET z systemem innym niż funkcja powiązania wyjściowego można uruchomić także nowego wystąpienia. W takim przypadku można użyć dowolnego obiektu podlegającego serializacji JSON, zawierający powyżej trzy parametry jako pola. Rozważmy na przykład następująca funkcja JavaScript:
 
 ```js
 module.exports = function (context, input) {
@@ -100,9 +100,6 @@ public static async Task Run(
 }
 ```
 
-> [!NOTE]
-> Wystąpienie zapytania jest obecnie obsługiwany tylko w przypadku funkcji orchestrator C#.
-
 ## <a name="terminating-instances"></a>Trwa przerywanie działania wystąpień
 
 Uruchomione wystąpienie orchestration można przerywać działanie przy użyciu [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metody [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) klasy. Są dwa parametry `instanceId` i `reason` ciąg, który będą zapisywane do dzienników i stan wystąpienia. Zakończone wystąpienia spowoduje zatrzymanie uruchomiony zaraz po dotarciu serwerów do następnej `await` punktu lub zostanie zakończona natychmiast, jeśli jest już włączone `await`. 
@@ -117,9 +114,6 @@ public static Task Run(
     return client.TerminateAsync(instanceId, reason);
 }
 ```
-
-> [!NOTE]
-> Przerwanie wystąpienia jest obecnie obsługiwany tylko w przypadku funkcji orchestrator C#.
 
 > [!NOTE]
 > Kończenie działania wystąpienia nie obecnie propaguje. Działania funkcji i podrzędne orchestrations będzie działać do zakończenia niezależnie od tego, czy wystąpienie aranżacji, które wywołuje ich zostało przerwane.
@@ -146,9 +140,6 @@ public static Task Run(
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
 }
 ```
-
-> [!NOTE]
-> Wywoływanie zdarzeń jest obecnie obsługiwane tylko dla funkcji programu orchestrator C#.
 
 > [!WARNING]
 > Jeśli żadne wystąpienie aranżacji z określonym *identyfikator wystąpienia* lub jeśli wystąpienie nie oczekuje na określonym *Nazwa zdarzenia*, komunikaty o zdarzeniach zostaną odrzucone. Aby uzyskać więcej informacji dotyczących tego zachowania, zobacz [problem GitHub](https://github.com/Azure/azure-functions-durable-extension/issues/29).

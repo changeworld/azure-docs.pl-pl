@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: c80b47dcf2477fda5406c2e6efe3ee87ad1188d6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: fc5fceb0105726cdd7fc45df25c8a3a21d270502
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Tabela wsparcia dla VMware i replikacja serwerów fizycznych do platformy Azure
 
@@ -147,6 +147,7 @@ Punkty końcowe usługi sieci wirtualnej platformy Azure<br/><br/> (Usługa azur
 Host systemu plików NFS | Tak, aby VMware<br/><br/> Nie dla serwerów fizycznych
 Sieć SAN (ISCSI) hosta | Yes
 Wielościeżkowe hosta (MPIO) | Tak, poddane DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
+Woluminy hosta (VVols) | Tak, aby VMware<br/><br/> Brak serwerów fizycznych
 Gość i serwerem VMDK | Yes
 Gość i serwerem interfejsem EFI/UEFI| Partial (migracja do platformy Azure dla systemu Windows Server 2012 i nowszych maszyn wirtualnych VMware tylko) </br></br> Zobacz uwagę na końcu tabeli
 Dysk udostępniony klaster gościa serwera | Nie

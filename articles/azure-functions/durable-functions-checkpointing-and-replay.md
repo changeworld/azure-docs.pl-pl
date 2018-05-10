@@ -1,12 +1,12 @@
 ---
-title: "Punkty kontrolne i powtarzania w funkcjach trwałe - Azure"
-description: "Dowiedz się, jak punkty kontrolne i odpowiedzi działa w rozszerzeniu trwałe funkcji dla usługi Azure Functions."
+title: Punkty kontrolne i powtarzania w funkcjach trwałe - Azure
+description: Dowiedz się, jak punkty kontrolne i odpowiedzi działa w rozszerzeniu trwałe funkcji dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 39cdb9b2c6eae9a3176aedc64b8d187e298fdfdd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Punkty kontrolne i powtarzania w funkcjach trwałe (usługi Azure Functions)
 
@@ -28,7 +28,9 @@ Mimo to trwałe funkcje zapewnia niezawodnego wykonania orchestrations. Robi to 
 
 ## <a name="orchestration-history"></a>Historia aranżacji
 
-Załóżmy, że istnieje następująca funkcja programu orchestrator.
+Załóżmy, że istnieje następująca funkcja programu orchestrator:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -46,7 +48,22 @@ public static async Task<List<string>> Run(
 }
 ```
 
-W każdej `await` instrukcji, punkty kontrolne trwałe Framework zadań stan wykonywania funkcji do magazynu tabel. Ten stan jest, co jest nazywane *historii aranżacji*.
+#### <a name="javascript-functions-v2-only"></a>JavaScript (tylko funkcje v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const output = [];
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Tokyo"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Seattle"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "London"));
+
+    return output;
+});
+```
+
+W każdej `await` (C#) lub `yield` — instrukcja (JavaScript), punkty kontrolne trwałe Framework zadań stan wykonywania funkcji do magazynu tabel. Ten stan jest, co jest nazywane *historii aranżacji*.
 
 ## <a name="history-table"></a>Tabela historii
 
@@ -63,10 +80,10 @@ Po zakończeniu punktu kontrolnego funkcji programu orchestrator jest bezpłatna
 
 Po zakończeniu historii funkcji przedstawiona wcześniej wygląda następujące w usłudze Azure Table Storage (skrót w celach ilustracyjnych):
 
-| PartitionKey (identyfikator wystąpienia)                     | Typ zdarzenia             | Sygnatura czasowa               | Dane wejściowe | Nazwa             | Wynik                                                    | Stan | 
+| PartitionKey (identyfikator wystąpienia)                     | Typ zdarzenia             | Sygnatura czasowa               | Dane wejściowe | Name (Nazwa)             | Wynik                                                    | Stan | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Wartość null  | E1_HelloSequence |                                                           |                     | 
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
@@ -79,7 +96,7 @@ Po zakończeniu historii funkcji przedstawiona wcześniej wygląda następujące
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello Londynie!" ""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokio!" ",""Hello Seattle!" ",""Hello Londynie!" "]" | Ukończony           | 
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokio!" ",""Hello Seattle!" ",""Hello Londynie!" "]" | Ukończone           | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
 
 Kilka uwagi o wartości kolumn:
@@ -141,7 +158,7 @@ Tutaj opisano sposób wykonywania powinna ułatwić zrozumienie, dlaczego kod fu
 
 Jeśli chcesz więcej informacji na temat sposobu trwałe Framework zadania wykonuje funkcje programu orchestrator, najlepiej przeprowadzić jest skontaktować się [trwałe zadań kodu źródłowego w serwisie GitHub](https://github.com/Azure/durabletask). W szczególności, zobacz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) i [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Więcej informacji na temat zarządzania wystąpienia](durable-functions-instance-management.md)

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 6377b79d986d32fba8f84c670d6b69d5eda98b8a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 Podczas tworzenia maszyny wirtualnej (VM), ponownego uruchomienia zatrzymanej maszyny wirtualnej (cofnięciu przydziału) lub zmień rozmiar maszyny Wirtualnej Microsoft Azure przydziela zasoby obliczeniowe do subskrypcji. Firma Microsoft stale najlepiej zainwestować w dodatkowe infrastruktury i funkcje, aby upewnić się, że zawsze mamy wszystkie typy maszyn wirtualnych do obsługi klientów. Jednak czasami mogą wystąpić błędy alokacji zasobów z powodu Niespotykana wzrostu popytu na usług platformy Azure w określonych regionach. Ten problem może wystąpić przy próbie utworzenia lub uruchomić maszyny wirtualne w regionie, gdy maszyny wirtualne są wyświetlane następujący kod błędu i komunikat:
 
@@ -35,7 +35,7 @@ Scenariusz, który najlepiej odpowiada Twoim przypadku zidentyfikować, a nastę
 
 Żądanie rozmiar maszyny Wirtualnej lub dodać do istniejącego zestawu dostępności maszyny Wirtualnej musi nastąpiła w oryginalnego klastra obsługującego dostępności istniejącego zestawu. Żądany rozmiar maszyny Wirtualnej jest obsługiwana przez klaster, ale klaster nie może obecnie miał wystarczającą pojemność. 
 
-### <a name="workaround"></a>Obejście problemu
+### <a name="workaround"></a>Obejście
 
 Jeśli maszyna wirtualna może być częścią zestawu dostępności innego, należy utworzyć Maszynę wirtualną w różnych dostępności, ustawić (w tym samym regionie). Następnie można dodać tej nowej maszyny Wirtualnej do tej samej sieci wirtualnej.
 
@@ -50,7 +50,7 @@ Ten krok zapewnia uruchomieniu nowego próba alokacji i że nowy klaster można 
 
 Częściowe dezalokacji oznacza, że zatrzymane (cofnięciu przydziału) co najmniej jeden, ale nie wszystkie, maszyn wirtualnych w dostępności ustawione. Gdy deallocate maszyny Wirtualnej, są wydawane skojarzonych zasobów. Ponowne uruchamianie maszyn wirtualnych w zestawie dostępności częściowo deallocated jest taka sama jak dodawanie maszyn wirtualnych do istniejącego zestawu dostępności. W związku z tym żądanie alokacji musi być podejmowane w oryginalnym klastrze hostów, dla których zestawu dostępności istniejących, które może nie mieć wystarczającej.
 
-### <a name="workaround"></a>Obejście problemu
+### <a name="workaround"></a>Obejście
 
 Zatrzymaj (deallocate) wszystkich maszyn wirtualnych w tym samym dostępności ustawiona, a następnie uruchom ponownie każdej z nich.
 Aby zatrzymać: kliknij grup zasobów > [grupie zasobów] > zasobów > [zestawu dostępności] > maszyn wirtualnych > [maszyny wirtualnej] > Zatrzymaj.
@@ -63,7 +63,7 @@ Zapewni to, uruchomieniu nowego próba alokacji i że nowy klaster można wybra�
 
 Pełna dezalokacji oznacza, że został zatrzymany (cofnięciu przydziału) wszystkich maszyn wirtualnych w zestawie dostępności. Żądanie alokacji o ponowne uruchomienie tych maszyn wirtualnych będzie obowiązywać wszystkich klastrów, które obsługują wymagany rozmiar w obrębie regionu lub strefy. Zmień żądania alokacji na sugestie w tym artykule i ponów żądanie, aby zwiększyć prawdopodobieństwo pomyślnego alokacji. 
 
-### <a name="workaround"></a>Obejście problemu
+### <a name="workaround"></a>Obejście
 
 Jeśli używasz starszej serii maszyn wirtualnych lub rozmiary, takich jak Dv1, DSv1, Av1, D15v2 lub DS15v2, należy wziąć pod uwagę przeniesienie do nowszych wersji. Zobacz te zalecenia dotyczące określonych rozmiarów maszyn wirtualnych.
 Jeśli nie masz opcję, aby użyć innego rozmiaru maszyny Wirtualnej, spróbuj przeprowadzić wdrożenie w innym regionie, w ramach tej samej lokalizacji geograficznej. Aby uzyskać więcej informacji o dostępnych rozmiarów maszyn wirtualnych w każdym regionie w https://aka.ms/azure-regions
@@ -80,7 +80,7 @@ Jak możemy rozwinąć infrastruktury platformy Azure, możemy wdrożyć sprzęc
 |----------------------|----------------------------|--------------------|
 |Av1 serii|[Av2 serii](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 lub serii DSv1 (D1 do D5)|[Dv3 lub DSv3 serii](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 lub serii DSv1 (D11 do D14)|[Ev3 lub ESv3 serii](../articles/virtual-machines/windows/sizes-memory.md#esv3-series-sup1sup)|
+|Dv1 lub serii DSv1 (D11 do D14)|[Ev3 lub ESv3 serii](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
 |D15v2 lub DS15v2|Jeśli używasz modelu wdrażania Menedżera theResource Aby korzystać z większych rozmiarów maszyn wirtualnych, rozważ migrację D16v3/DS16v3 lub D32v3/DS32v3. Są one przeznaczone do uruchamiania w najnowszej sprzęcie generacji. Jeśli używasz modelu wdrażania usługi Resource Manager do upewnij się, że wystąpienie maszyny Wirtualnej jest izolowana sprzętu przeznaczonego do jednego klienta, należy wziąć pod uwagę przeniesienie do nowego izolowanego rozmiary maszyn, E64i_v3 lub E64is_v3, które są przeznaczone do uruchamiania w najnowszej sprzęcie generacji. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Błędy alokacji w przypadku dużych wdrożeń (ponad 500 rdzenie)

@@ -1,11 +1,11 @@
 ---
-title: "Optymalizuj środowisko programu SQL Server z Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Z usługi Analiza dzienników Azure rozwiązania SQL sprawdzania kondycji służy do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu."
+title: Optymalizuj środowisko programu SQL Server z Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Z usługi Analiza dzienników Azure rozwiązania SQL sprawdzania kondycji służy do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optymalizuj środowisko SQL z rozwiązaniem sprawdzania kondycji serwera SQL w analizy dzienników
 
@@ -54,7 +54,7 @@ Aby przeprowadzić sprawdzenie kondycji na serwerach programu SQL Server, wymaga
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Jeśli serwer nie jest już monitorowany przez System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2.
 2. Jeśli grupa zarządzania nie jest zintegrowany z usługą analizy dzienników jest monitorowany z System Center 2016 - Operations Manager lub programu Operations Manager 2012 R2, serwer może być wieloadresowego z analizy dzienników do zbierania danych i przekazywać je do usługi i jest nadal monitorowane przez program Operations Manager.  
-3. W przeciwnym razie, jeśli grupę zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny na potrzeby zbierania danych przez usługę następujące kroki w obszarze [dodać komputery zarządzane z wykorzystaniem agentów](log-analytics-om-agents.md#connecting-operations-manager-to-oms) po włączeniu rozwiązanie w obszarze roboczym.  
+3. W przeciwnym razie, jeśli grupę zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny na potrzeby zbierania danych przez usługę następujące kroki w obszarze [dodać komputery zarządzane z wykorzystaniem agentów](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązanie w obszarze roboczym.  
 
 Agent na serwerze SQL, które raporty z grupą zarządzania programu Operations Manager umożliwia zbieranie danych, przekazuje do serwera zarządzania w przypisanej, a następnie wysyłane bezpośrednio z serwerem zarządzania z usługą analizy dzienników.  Dane nie są zapisywane do baz danych programu Operations Manager.  
 
@@ -163,7 +163,7 @@ Zanim użyjesz rozwiązanie do oceny w analizy dzienników, musi mieć zainstalo
 Wyświetl oceny zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dla obszaru fokus i podjąć działania naprawcze
-1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 3. W okienku subskrypcje analizy dzienników, wybierz obszar roboczy, a następnie kliknij przycisk **omówienie** kafelka.  
 4. Na **omówienie** kliknij przycisk **SQL kondycji Sprawdź** kafelka.

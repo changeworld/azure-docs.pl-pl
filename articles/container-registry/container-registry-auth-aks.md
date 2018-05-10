@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelniania za pomocą rejestru kontenera platformy Azure z usługą kontenera Azure
-description: Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze prywatnej kontener z usługi kontenera platformy Azure przy użyciu nazwy głównej usługi Azure Active Directory.
+title: Uwierzytelniania za pomocą rejestru kontenera platformy Azure z usługi Azure Kubernetes
+description: Dowiedz się, jak zapewnić dostęp do obrazów w rejestrze prywatnej kontener z usługi Azure Kubernetes przy użyciu nazwy głównej usługi Azure Active Directory.
 services: container-service
 author: neilpeterson
 manager: jeconnoc
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
-ms.openlocfilehash: 6f2f035015445ee1fb2009b64d20d654484d7775
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0888afbb9087251e2c9219e2eb32fbf0d5600304
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-service"></a>Uwierzytelniania za pomocą rejestru kontenera platformy Azure z usługą kontenera Azure
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelniania za pomocą rejestru kontenera platformy Azure z usługi Azure Kubernetes
 
-Podczas korzystania z rejestru kontenera platformy Azure (ACR) z usługi kontenera platformy Azure (AKS), można ustanowić musi mechanizmu uwierzytelniania. Ten dokument zawiera szczegóły zalecanym konfiguracjom dotyczącym uwierzytelniania między tych dwóch usług Azure.
+Podczas korzystania z rejestru kontenera platformy Azure (ACR) z usługi Kubernetes Azure (AKS), można ustanowić musi mechanizmu uwierzytelniania. Ten dokument zawiera szczegóły zalecanym konfiguracjom dotyczącym uwierzytelniania między tych dwóch usług Azure.
 
 ## <a name="grant-aks-access-to-acr"></a>AKS Udziel dostępu do awaryjnego
 
-Po utworzeniu klastra AKS nazwy głównej usługi tworzona jest również zarządzać sprawność działania klastra z zasobów platformy Azure. Tej nazwy głównej usługi również może służyć do uwierzytelniania przy użyciu rejestru ACR. Aby to zrobić, przypisanie roli musi zostać utworzona do usługi głównej dostęp do zasobów ACR. 
+Po utworzeniu klastra AKS nazwy głównej usługi tworzona jest również zarządzać sprawność działania klastra z zasobów platformy Azure. Tej nazwy głównej usługi również może służyć do uwierzytelniania przy użyciu rejestru ACR. Aby to zrobić, przypisanie roli musi zostać utworzona do usługi głównej dostęp do zasobów ACR.
 
 Poniższy przykład może służyć do ukończenia tej operacji.
 
@@ -46,7 +46,7 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
 W niektórych przypadkach usługa główna używana przez AKS nie wchodzą do zakresu w rejestrze ACR. Dla tych przypadków można utworzyć nazwy głównej usługi unikatowy i zakres go w rejestrze ACR.
 
-Poniższy skrypt umożliwia tworzenie nazwy głównej usługi. 
+Poniższy skrypt umożliwia tworzenie nazwy głównej usługi.
 
 ```bash
 #!/bin/bash
@@ -54,11 +54,11 @@ Poniższy skrypt umożliwia tworzenie nazwy głównej usługi.
 ACR_NAME=myacrinstance
 SERVICE_PRINCIPAL_NAME=acr-service-principal
 
-# Populate the ACR login server and resource id. 
+# Populate the ACR login server and resource id.
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a contributor role assignment with a scope of the ACR resource. 
+# Create a contributor role assignment with a scope of the ACR resource.
 SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
 # Get the service principle client id.
@@ -69,7 +69,7 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-Poświadczenia główne usługi teraz mogą być przechowywane w Kubernetes [klucz tajny ściągania obrazu] [ image-pull-secret] i odwołuje się do podczas uruchamiania w klastrze AKS kontenerów. 
+Poświadczenia główne usługi teraz mogą być przechowywane w Kubernetes [klucz tajny ściągania obrazu] [ image-pull-secret] i odwołuje się do podczas uruchamiania w klastrze AKS kontenerów.
 
 Poniższe polecenie tworzy Kubernetes tajny. Zamień na nazwę serwera na serwerze ACR logowania, nazwy użytkownika identyfikator podmiotu zabezpieczeń usługi oraz hasła za pomocą hasła głównej usługi.
 
@@ -77,7 +77,7 @@ Poniższe polecenie tworzy Kubernetes tajny. Zamień na nazwę serwera na serwer
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-Klucz tajny Kubernetes mogą być używane w wdrożenia pod przy użyciu `ImagePullSecrets` parametru. 
+Klucz tajny Kubernetes mogą być używane w wdrożenia pod przy użyciu `ImagePullSecrets` parametru.
 
 ```yaml
 apiVersion: apps/v1beta1

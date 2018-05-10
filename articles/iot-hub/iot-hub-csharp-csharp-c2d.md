@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: f3110e81a7229f8f279609a64949c7f0ce78d338
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b867976c637cdd4dd9b696382103c63f1af2e8b3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Wysyłanie komunikatów z chmury do urządzenia z Centrum IoT (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -48,7 +48,7 @@ Na końcu tego samouczka możesz uruchomić dwóch aplikacji konsoli .NET:
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
-* Visual Studio 2015 lub Visual Studio 2017 r.
+* Program Visual Studio 2015 lub Visual Studio 2017
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
 
 ## <a name="receive-messages-in-the-device-app"></a>Odbieranie komunikatów w aplikacji urządzeń
@@ -176,7 +176,7 @@ W tej sekcji możesz zmodyfikować **SendCloudToDevice** aplikacji do żądania 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób wysyłania i odbierania wiadomości chmury do urządzenia. 
 
-Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [pakiet IoT Azure].
+Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [zdalnego monitorowania Azure IoT akcelerator rozwiązań].
 
 Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Centrum IoT — przewodnik dewelopera].
 
@@ -195,5 +195,5 @@ Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobac
 [Centrum IoT — przewodnik dewelopera]: iot-hub-devguide.md
 [Rozpoczynanie pracy z Centrum IoT]: iot-hub-csharp-csharp-getstarted.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[pakiet IoT Azure]: https://docs.microsoft.com/azure/iot-suite/
+[zdalnego monitorowania Azure IoT akcelerator rozwiązań]: https://docs.microsoft.com/azure/iot-suite/
 [urządzenia Azure IoT SDK]: iot-hub-devguide-sdks.md

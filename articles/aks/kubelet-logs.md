@@ -1,6 +1,6 @@
 ---
-title: "Pobierz dzienniki kubelet z usługi kontenera platformy Azure (AKS)"
-description: "Pobieranie dzienników kubelet z węzłów klastra usługi kontenera platformy Azure (AKS)"
+title: Pobierz dzienniki kubelet z usługi Kubernetes Azure (AKS)
+description: Pobieranie dzienników kubelet z węzłów klastra usługi Kubernetes Azure (AKS)
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 56e20a9f9d17eac01e6f85007db41dcc417f83e4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0467be7e91fdbf4685fc41a375ea86a503e26009
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-kubelet-logs-from-azure-container-service-aks-cluster-nodes"></a>Pobieranie dzienników kubelet z węzłów klastra usługi kontenera platformy Azure (AKS)
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników kubelet z węzłów klastra usługi Kubernetes Azure (AKS)
 
-Czasami może być konieczne pobieranie dzienników kubelet z węzła usługi kontenera platformy Azure (AKS) na potrzeby rozwiązywania problemów. Ten dokument zawiera szczegóły jedną z opcji ściąganie tych dzienników.
+Czasami może być konieczne pobieranie dzienników kubelet z węzła usługi Kubernetes Azure (AKS) na potrzeby rozwiązywania problemów. Ten dokument zawiera szczegóły jedną z opcji ściąganie tych dzienników.
 
 ## <a name="create-an-ssh-connection"></a>Utwórz połączenie SSH
 
-Najpierw należy utworzyć połączenie SSH z węzłem, na którym trzeba pobierać dzienników kubelet. Ta operacja została szczegółowo opisana w [SSH w węzłach klastra usługi kontenera platformy Azure (AKS)] [ aks-ssh] dokumentu.
+Najpierw należy utworzyć połączenie SSH z węzłem, na którym trzeba pobierać dzienników kubelet. Ta operacja została szczegółowo opisana w [SSH w węzłach klastra usługi Kubernetes Azure (AKS)] [ aks-ssh] dokumentu.
 
-## <a name="get-kubelet-logs"></a>Pobierz dzienniki kubelet
+## <a name="get-kubelet-logs"></a>Pobieranie dzienników agenta kubelet
 
 Po podłączeniu do węzła, uruchom następujące polecenie, aby pobierać dzienników kubelet.
 

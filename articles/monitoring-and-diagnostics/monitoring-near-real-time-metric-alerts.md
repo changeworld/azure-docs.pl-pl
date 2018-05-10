@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 6d440a49cb30210d3c0eed7d24e4811cc56925b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Nowsze metryki alerty dla usług Azure w portalu Azure
 Azure Monitor obsługuje teraz metryki nowy typ alertu. Alerty nowszej różnią się od [klasycznego alerty metryki](insights-alerts-portal.md) na kilka sposobów:
@@ -35,7 +35,7 @@ Aby dowiedzieć się, jak utworzyć nowszej alert metryki w portalu Azure, zobac
 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portalu, programu PowerShell, interfejsu wiersza polecenia, REST obsługuje
-Obecnie można tworzyć nowszej metryki alerty tylko w portalu Azure [interfejsu API REST](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template) lub [szablonów Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania alertów nowszej przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI 2.0) będzie dostępna wkrótce.
+Obecnie można tworzyć nowszej metryki alerty tylko w portalu Azure [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) lub [szablonów Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania alertów nowszej przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI 2.0) będzie dostępna wkrótce.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
 Alerty metryki nowszej obsługuje alerty dla metryki, które są używane wymiary. Wymiary służy do filtrowania Twoje metryki na odpowiedni poziom. Wszystkie metryki obsługiwanych wraz z odpowiednich wymiary mogą być zbadane i wizualizowane z [Monitor Azure — Eksploratora metryk (wersja zapoznawcza)](monitoring-metric-charts.md).

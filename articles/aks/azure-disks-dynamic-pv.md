@@ -8,17 +8,17 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 5c82659e4dd980b9285d81d51eb17b227ec33035
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trwałe woluminy z dysku systemu Azure
 
 Trwały wolumin reprezentuje fragment magazynu, które zostały udostępnione do użycia z stanowiskami Kubernetes. Trwały wolumin mogą być używane przez jedną lub wiele stanowiskami i można za dynamicznie, czy statycznie. Aby uzyskać więcej informacji na woluminach trwałe Kubernetes, zobacz [woluminy trwałe Kubernetes][kubernetes-volumes].
 
-Szczegóły tego dokumentu przy użyciu trwałe woluminy z dysku systemu Azure w klastrze usługi kontenera platformy Azure (AKS).
+Szczegóły tego dokumentu przy użyciu trwałe woluminy z dysku systemu Azure w klastrze usługi Kubernetes Azure (AKS).
 
 > [!NOTE]
 > Dysku platformy Azure może być instalowany tylko z typem tryb dostępu ReadWriteOnce, dzięki czemu można tylko jeden węzeł AKS. W przypadku konieczności nie współużytkują woluminu trwałego na wielu węzłach, warto rozważyć użycie [plików Azure][azure-files-pvc].

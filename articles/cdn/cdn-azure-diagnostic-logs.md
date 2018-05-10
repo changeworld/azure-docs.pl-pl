@@ -3,8 +3,8 @@ title: Dzienniki diagnostyczne platformy Azure | Dokumentacja firmy Microsoft
 description: Klienta można włączyć analizy dziennika dla usługi Azure CDN.
 services: cdn
 documentationcenter: ''
-author: ''
-manager: ''
+author: dksimpson
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: v-deasim
-ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: rli
+ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -28,7 +28,7 @@ Dzienniki diagnostyczne platformy Azure możesz wyświetlić podstawowa analiza 
  - Azure Event Hubs
  - [Obszar roboczy analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-Ta funkcja jest dostępna dla wszystkich punktów końcowych usługi CDN Verizon (Standard i Premium) oraz profilów usługi CDN Akamai (Standard). 
+Ta funkcja jest dostępna dla punktów końcowych usługi CDN dla wszystkich warstw cenowych. 
 
 Dzienniki diagnostyczne platformy Azure umożliwiają eksportowania metryki użycia podstawowe z punktu końcowego CDN do różnych źródeł, dzięki czemu będzie można korzystać dostosowany sposób. Na przykład można wykonać następujące typy eksportu danych:
 
@@ -156,10 +156,10 @@ Przed uzyskujesz dostęp do podstawowych danych analytics z konta magazynu Azure
 
 **Opis pola:**
 
-|wartość|description|
+|Wartość|Opis|
 |-------|---------|
 |Identyfikator subskrypcji    |Identyfikator subskrypcji platformy Azure w formacie Guid.|
-|Zasób |Nazwa grupy Nazwa grupy zasobów, do której należą zasoby sieci CDN.|
+|Nazwa grupy zasobów |Nazwa grupy zasobów, do której należą zasoby sieci CDN.|
 |Nazwa profilu |Nazwa profilu CDN|
 |Nazwa punktu końcowego |Nazwa punktu końcowego CDN|
 |Rok|  Reprezentacja 4-cyfrowego roku, na przykład 2017 r.|
@@ -276,47 +276,49 @@ Można przeciągnąć i upuścić typy wykresów i wypełnij szczegóły danych,
     
 ## <a name="log-data-delays"></a>Opóźnienia dane dziennika
 
-Opóźnienia danych dziennika Verizon | Opóźnienia danych dziennika Akamai
---- | ---
-Dane dziennika Verizon 1 godzina opóźnienia i potrwać maksymalnie 2 godziny, aby uruchomić pojawiające się po zakończeniu propagowania punktu końcowego. | Dane dziennika Akamai jest opóźnione przez 24 godziny; Jeśli został on utworzony więcej niż 24 godziny temu, może potrwać maksymalnie 2 godziny Rozpocznij wyświetlaniu. Jeśli niedawno został utworzony, może upłynąć do 25 godzin dzienniki, aby uruchomić wyświetlaniu.
+W poniższej tabeli przedstawiono dziennika opóźnień danych **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, i **Azure CDN Standard/Premium from Verizon**.
+
+Opóźnienia danych dziennika firmy Microsoft | Opóźnienia danych dziennika Verizon | Opóźnienia danych dziennika Akamai
+--- | --- | ---
+Opóźnione o 1 godzinę. | Opóźnione przez godzinę i może potrwać maksymalnie 2 godziny, aby uruchomić pojawiające się po zakończeniu propagowania punktu końcowego. | Opóźnione przez 24 godziny; Jeśli został on utworzony więcej niż 24 godziny temu, może potrwać maksymalnie 2 godziny Rozpocznij wyświetlaniu. Jeśli niedawno został utworzony, może upłynąć do 25 godzin dzienniki, aby uruchomić wyświetlaniu.
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Typy dzienników diagnostycznych do sieci CDN w warstwie podstawowa analiza
 
 Firma Microsoft oferuje obecnie tylko core analizy dzienników zawierających metryki wyświetlane statystki odpowiedzi HTTP i statystyki wyjście widziany od obecności CDN/krawędzi.
 
 ### <a name="core-analytics-metrics-details"></a>Szczegóły metryki analytics Core
-W poniższej tabeli przedstawiono listę dostępnych w dziennikach analytics podstawowe metryki. Nie wszystkie metryki są dostępne z wszystkich dostawców, choć różnice są minimalne. W poniższej tabeli przedstawiono także, czy dana metryka jest dostępna od dostawcy. Należy pamiętać, że metryki są dostępne tylko tych punktów końcowych usługi CDN których ruchu.
+W poniższej tabeli przedstawiono listę dostępnych w rdzeniu metryk analizy dzienników dla **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, i **Azure CDN Standard/Premium FROM Verizon**. Nie wszystkie metryki są dostępne z wszystkich dostawców, choć różnice są minimalne. Tabela także wskazuje, czy dana metryka jest dostępna od dostawcy. Należy pamiętać, że metryki są dostępne tylko tych punktów końcowych usługi CDN których ruchu.
 
 
-|Metryka                     | Opis   | Verizon  | Akamai 
-|---------------------------|---------------|---|---|
-| RequestCountTotal         |Całkowita liczba trafień żądania podczas tego okresu.| Yes  |Yes   |
-| RequestCountHttpStatus2xx |Liczba wszystkich żądań, które wywołały kod HTTP 2xx (na przykład 200, 202)              | Yes  |Yes   |
-| RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wywołały kod HTTP 3xx (na przykład, 300, 302)              | Yes  |Yes   |
-| RequestCountHttpStatus4xx |Liczba wszystkich żądań, które wywołały kod HTTP 4xx (na przykład, 400, 404)               | Yes   |Yes   |
-| RequestCountHttpStatus5xx | Liczba wszystkich żądań, które wywołały kod HTTP 5xx (na przykład, 500, 504)              | Yes  |Yes   |
-| RequestCountHttpStatusOthers |  Liczba innych kodów HTTP (poza 2xx 5xx) | Yes  |Yes   |
-| RequestCountHttpStatus200 | Liczba wszystkich żądań, które spowodowało 200 kod odpowiedzi HTTP              |Nie   |Yes   |
-| RequestCountHttpStatus206 | Liczba wszystkich żądań, które wywołały kod odpowiedź HTTP 206              |Nie   |Yes   |
-| RequestCountHttpStatus302 | Liczba wszystkich żądań, które spowodowało 302 kod odpowiedzi HTTP              |Nie   |Yes   |
-| RequestCountHttpStatus304 |  Liczba wszystkich żądań, które zakończyły się odpowiedź 304 kodu HTTP             |Nie   |Yes   |
-| RequestCountHttpStatus404 | Liczba wszystkich żądań, które wywołały kod odpowiedzi HTTP 404              |Nie   |Yes   |
-| RequestCountCacheHit |Liczba wszystkich żądań, które zakończyły się liczby trafień pamięci podręcznej. Element zawartości zostało obsłużone bezpośrednio z punktu obecności do klienta.               | Yes  |Nie   |
-| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowało w Chybienie pamięci podręcznej. Oznacza to zasób nie został znaleziony na POP najbliżej klienta i w związku z tym nie została pobrana z punktu początkowego.              |Yes   | Nie  |
-| RequestCountCacheNoCache | Liczba wszystkich żądań do zasobu, uniemożliwiających w pamięci podręcznej z powodu konfiguracji użytkownika na krawędzi.              |Yes   | Nie  |
-| RequestCountCacheUncacheable | Liczba wszystkich żądań do zasobów, które uniemożliwiały buforowana przez Cache-Control elementu zawartości i nagłówków wygasa, wskazujące, że go mają nie być buforowane punktu obecności lub przez klienta protokołu HTTP                |Yes   |Nie   |
-| RequestCountCacheOthers | Liczba wszystkich żądań o stanie pamięci podręcznej nie jest objęty przez powyżej.              |Yes   | Nie  |
-| EgressTotal | Transfer danych wychodzących w GB              |Yes   |Yes   |
-| EgressHttpStatus2xx | Danych wychodzących transfer * odpowiedzi z kodów stanu HTTP 2xx w GB            |Yes   |Nie   |
-| EgressHttpStatus3xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 3xx w GB              |Yes   |Nie   |
-| EgressHttpStatus4xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 4xx w GB               |Yes   | Nie  |
-| EgressHttpStatus5xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 5xx w GB               |Yes   |  Nie |
-| EgressHttpStatusOthers | Transfer danych wychodzących dla odpowiedzi o innych kodach stanów HTTP w GB                |Yes   |Nie   |
-| EgressCacheHit |  Transfer danych wychodzących dla odpowiedzi, które zostały dostarczone bezpośrednio z pamięci podręcznej CDN CDN POP/krawędzi  |Yes   |  Nie |
-| EgressCacheMiss | Transfer danych wychodzących dla odpowiedzi, które nie zostały znalezione na najbliższy serwer protokołu POP i pobrać z serwera pochodzenia              |Yes   |  Nie |
-| EgressCacheNoCache | Transfer danych wychodzących dla zasobów, które uniemożliwiały pamięci podręcznej z powodu konfiguracji użytkownika na krawędzi.                |Yes   |Nie   |
-| EgressCacheUncacheable | Transfer danych wychodzących dla zasobów, które uniemożliwiały buforowana przez element zawartości Cache-Control lub Expires headers. Wskazuje, czy jego mają nie być buforowane punktu obecności lub przez klienta HTTP.                   |Yes   | Nie  |
-| EgressCacheOthers |  Transfery danych wychodzących w innych sytuacjach pamięci podręcznej.             |Yes   | Nie  |
+|Metryka                     | Opis | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|----------|---------|--------|
+| RequestCountTotal         | Całkowita liczba trafień żądania, w tym okresie. | Yes | Yes |Yes |
+| RequestCountHttpStatus2xx | Liczba wszystkich żądań, które wywołały kod HTTP 2xx (na przykład 200, 202). | Yes | Yes |Yes |
+| RequestCountHttpStatus3xx | Liczba wszystkich żądań, które wywołały kod HTTP 3xx (na przykład, 300, 302). | Yes | Yes |Yes |
+| RequestCountHttpStatus4xx | Liczba wszystkich żądań, które wywołały kod HTTP 4xx (na przykład, 400, 404). | Yes | Yes |Yes |
+| RequestCountHttpStatus5xx | Liczba wszystkich żądań, które wywołały kod HTTP 5xx (na przykład, 500, 504). | Yes | Yes |Yes |
+| RequestCountHttpStatusOthers | Liczba innych kodów HTTP (poza 2xx 5xx). | Yes | Yes |Yes |
+| RequestCountHttpStatus200 | Liczba wszystkich żądań, które spowodowało 200 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
+| RequestCountHttpStatus206 | Liczba wszystkich żądań, które wywołały kod odpowiedź HTTP 206. | Yes | Nie  |Yes |
+| RequestCountHttpStatus302 | Liczba wszystkich żądań, które spowodowało 302 kod odpowiedzi HTTP. | Yes | Nie  |Yes |
+| RequestCountHttpStatus304 | Liczba wszystkich żądań, które zakończyły się odpowiedź 304 kodu HTTP. | Yes | Nie  |Yes |
+| RequestCountHttpStatus404 | Liczba wszystkich żądań, które wywołały kod odpowiedzi HTTP 404. | Yes | Nie  |Yes |
+| RequestCountCacheHit | Liczba wszystkich żądań, które zakończyły się liczby trafień pamięci podręcznej. Element zawartości zostało obsłużone bezpośrednio z punktu obecności do klienta. | Yes | Yes | Nie  |
+| RequestCountCacheMiss | Liczba wszystkich żądań, które spowodowało w Chybienie pamięci podręcznej. Oznacza to zasób nie został znaleziony na POP najbliżej klienta i w związku z tym nie została pobrana z punktu początkowego. | Yes | Yes | Nie |
+| RequestCountCacheNoCache | Liczba wszystkich żądań do zasobu, uniemożliwiających w pamięci podręcznej z powodu konfiguracji użytkownika na krawędzi. | Yes | Yes | Nie |
+| RequestCountCacheUncacheable | Liczba wszystkich żądań do zasobów, które uniemożliwiały buforowana przez Cache-Control elementu zawartości i nagłówków wygasa, wskazujące, że go mają nie być buforowane punktu obecności lub przez klienta HTTP. | Yes | Yes | Nie |
+| RequestCountCacheOthers | Liczba wszystkich żądań o stanie pamięci podręcznej nie jest objęty przez powyżej. | Nie | Yes | Nie  |
+| EgressTotal | Transfer danych wychodzących w GB | Yes |Yes |Yes |
+| EgressHttpStatus2xx | Danych wychodzących transfer * odpowiedzi z kodów stanu HTTP 2xx w GB. | Yes | Yes | Nie  |
+| EgressHttpStatus3xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 3xx w GB. | Yes | Yes | Nie  |
+| EgressHttpStatus4xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 4xx w GB. | Yes | Yes | Nie  |
+| EgressHttpStatus5xx | Transfer danych wychodzących dla odpowiedzi z kodów stanu HTTP 5xx w GB. | Yes | Yes | Nie |
+| EgressHttpStatusOthers | Transfer danych wychodzących dla odpowiedzi o innych kodach stanów HTTP w GB. | Yes | Yes | Nie  |
+| EgressCacheHit | Wychodzący transfer danych odpowiedzi, które zostały dostarczone bezpośrednio z pamięci podręcznej CDN CDN POP/krawędzi. | Yes | Yes | Nie |
+| EgressCacheMiss. | Transfer danych wychodzących dla odpowiedzi, które nie zostały znalezione na najbliższy serwer protokołu POP i pobrać z serwera pochodzenia. | Yes | Yes | Nie |
+| EgressCacheNoCache | Transfer danych wychodzących dla zasobów, które uniemożliwiały pamięci podręcznej z powodu konfiguracji użytkownika na krawędzi. | Yes | Yes | Nie |
+| EgressCacheUncacheable | Transfer danych wychodzących dla zasobów, które uniemożliwiały buforowana przez element zawartości Cache-Control lub Expires headers. Wskazuje, czy jego mają nie być buforowane punktu obecności lub przez klienta HTTP. | Yes | Yes | Nie |
+| EgressCacheOthers | Transfery danych wychodzących w innych sytuacjach pamięci podręcznej. | Nie | Yes | Nie |
 
 * Transfer danych wychodzących odwołuje się do ruchu dostarczane z serwerów POP w sieci CDN do klienta.
 
@@ -368,7 +370,7 @@ Wszystkie dzienniki są przechowywane w formacie JSON i każdy wpis ma pól cią
 }
 ```
 
-Gdzie "czas" oznacza czas rozpoczęcia granic godzinę, dla którego jest raportowane dane statystyczne. Gdy metryki nie jest obsługiwany przez dostawcę sieci CDN w warstwie, a nie wartość o podwójnej precyzji lub liczba całkowita jest wartością null. Ta wartość null wskazuje brak metryki i różni się od wartości 0. Istnieje jeden zestaw te metryki dla domeny skonfigurowany w punkcie końcowym.
+Gdzie *czasu* reprezentuje czas rozpoczęcia granic godzinę, dla którego jest raportowane dane statystyczne. Gdy metryki nie jest obsługiwany przez dostawcę sieci CDN w warstwie, a nie wartość o podwójnej precyzji lub liczba całkowita jest wartością null. Ta wartość null wskazuje brak metryki i różni się od wartości 0. Istnieje jeden zestaw te metryki dla domeny skonfigurowany w punkcie końcowym.
 
 Przykład właściwości:
 

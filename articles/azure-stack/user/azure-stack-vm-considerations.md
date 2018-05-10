@@ -1,24 +1,24 @@
 ---
-title: "Różnice i zagadnienia dotyczące maszyn wirtualnych w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat różnic i zagadnienia dotyczące podczas pracy z maszynami wirtualnymi Azure stosu."
+title: Różnice i zagadnienia dotyczące maszyn wirtualnych w stosie Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat różnic i zagadnienia dotyczące podczas pracy z maszynami wirtualnymi Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 05/04/2018
 ms.author: brenduns
-ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8c9fd7d5824e5d315a7dd30e5052fe10802d197e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące maszyn wirtualnych Azure stosu
 
@@ -61,7 +61,7 @@ Poniższa tabela zawiera listę maszyn wirtualnych, które są obsługiwane na s
 |Optymalizacja pod kątem pamięci|Seria Dv2     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Optymalizacja pod kątem pamięci|Seria DSv2-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Rozmiary maszyn wirtualnych i ich ilości zasobów są spójne stosu Azure i na platformie Azure. Na przykład ten spójności zawiera ilość pamięci, liczby rdzeni i numer/rozmiaru dysków z danymi, które mogą zostać utworzone. Jednak wydajność ten sam rozmiar maszyny Wirtualnej Azure stosu zależy od podstawowej właściwości określonym środowisku Azure stosu.
+Rozmiary maszyn wirtualnych i ich ilości zasobów są spójne stosu Azure i na platformie Azure. Ta spójności obejmuje ilość pamięci, liczby rdzeni i numer/rozmiaru dysków z danymi, które mogą zostać utworzone. Jednak wydajność ten sam rozmiar maszyny Wirtualnej Azure stosu zależy od podstawowej właściwości określonym środowisku Azure stosu.
 
 ## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyny wirtualnej
 
@@ -93,6 +93,17 @@ Get-AzureRmResourceProvider | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
 Lista obsługiwane typy zasobów i wersje interfejsu API może się różnić, jeśli operatorowi chmury aktualizacji środowiska Azure stosu do nowszej wersji.
+
+## <a name="windows-activation"></a>Aktywacja systemu Windows
+
+Produkty Windows musi być używany zgodnie z prawami używania produktu i postanowienia licencyjne firmy Microsoft. Używa stosu Azure [automatyczna aktywacja maszyny Wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA), aby aktywować maszynach wirtualnych systemu Windows Server (VM). 
+ - Ponieważ hosta Azure stosu aktywuje z klucze AVMA dla systemu Windows Server 2016, wszystkich maszyn wirtualnych który systemem Windows Server 2012 lub później są automatycznie aktywowane.
+ - Maszyny wirtualne, które uruchamiania systemu Windows Server 2008 R2 nie są automatycznie aktywowane i musi zostać aktywowana przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx). 
+
+Microsoft Azure można aktywować maszyn wirtualnych systemu Windows przy użyciu aktywacji usługi KMS. Jeśli przenosisz Maszynę wirtualną z stosu Azure na platformie Azure oraz podczas potyczki aktywować problemów, zobacz [Rozwiązywanie problemów z systemu Windows Azure maszyny wirtualnej aktywacji problemów](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Dodatkowe informacje można znaleźć w folderze [błędy aktywacji Rozwiązywanie problemów z systemu Windows na maszynach wirtualnych Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) post na blogu zespołu pomocy technicznej platformy Azure.
+
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,25 +1,25 @@
 ---
-title: "Tłumaczenie łącza i serwer Proxy aplikacji adresów URL usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników."
+title: Tłumaczenie łącza i serwer Proxy aplikacji adresów URL usługi Azure AD | Dokumentacja firmy Microsoft
+description: Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
-ms.author: daveba
+ms.date: 05/04/2018
+ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d5d704dac58d65dd7d62bc3eca400f9541714d5d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
-ms.translationtype: MT
+ms.openlocfilehash: 5009266dc2cbea360ef9c5dfa69fc2c13225d8cd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe łącza do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -27,12 +27,43 @@ Serwer Proxy aplikacji usługi Azure AD udostępnia aplikacji lokalnej do użytk
 
 Najlepszym sposobem upewnij się, że łącza działają taki sam zarówno wewnątrz, jak i poza siecią firmową jest skonfigurowanie zewnętrzne adresy URL aplikacji do być taka sama jak ich wewnętrzne adresy URL. Użyj [domen niestandardowych](active-directory-application-proxy-custom-domains.md) do konfigurowania sieci zewnętrzne adresy URL mają nazwę domeny firmowej zamiast domyślnej domeny serwera proxy aplikacji.
 
-Jeśli domen niestandardowych nie można użyć w dzierżawie, funkcja tłumaczenia łączenia serwera proxy aplikacji zachowuje łącza działa niezależnie od tego, gdzie znajdują się użytkownicy. Jeśli masz aplikacje, które wskazują bezpośrednio do wewnętrznych punktów końcowych lub portów, możesz mapować te wewnętrzne adresy URL opublikowanych zewnętrzny URL serwera Proxy aplikacji. Po włączeniu tłumaczenia łącza, i serwer Proxy aplikacji przeszukuje HTML i CSS dla łączy wewnętrznych opublikowanych, serwer Proxy aplikacji usługi tłumaczy je tak, aby użytkownicy pobierają nieprzerwaną środowisko.
 
->[!NOTE]
->Funkcja tłumaczenia łącze jest dla dzierżawcy, niezależnie od przyczyny, nie można używać niestandardowych domen do mieć tych samych wewnętrznych i zewnętrznych adresów URL dla aplikacji. Przed włączeniem tej funkcji należy sprawdzić, czy [domen niestandardowych w serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md) można skorzystać.
->
->Lub, jeśli aplikacja, konieczne będzie skonfigurowanie z łączem tłumaczenia jest programu SharePoint, zobacz [Konfigurowanie mapowań dostępu alternatywnego for SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) innego podejścia do mapowania łącza.
+Jeśli domen niestandardowych nie można użyć w dzierżawie, istnieje kilka innych opcji udostępniać tę funkcjonalność. Wszystkie są również zgodna z domeny niestandardowe i inne, dlatego można skonfigurować niestandardowe domeny i innych rozwiązań, w razie potrzeby. 
+
+**Opcja 1: Użycie programu Managed Browser** — to rozwiązanie dotyczy tylko jeśli planujesz zaleca lub wymagają, aby użytkownicy dostęp do aplikacji za pośrednictwem usługi Intune Managed Browser. Wszystkie adresy URL opublikowanej będą obsługiwać. 
+
+**Opcja 2: Użyj rozszerzenia MyApps** — to rozwiązanie wymaga od użytkowników zainstalować rozszerzenie przeglądarki po stronie klienta, ale będą obsługiwać wszystkie opublikowane adresów URL, który działa w najbardziej popularne przeglądarki. 
+
+**Opcja 3: Użycie translację łącze** — jest to ustawienie po stronie administratora, który jest niewidoczny dla użytkowników. Jednak tylko będą obsługiwać adresy URL w formacie HTML i CSS. Ustalony wewnętrzne adresy URL wygenerowane za pomocą skryptu Javascript (na przykład) nie będzie działać.  
+
+Te trzy funkcje Zachowaj łącza działa niezależnie od tego, gdzie znajdują się użytkownicy. Jeśli masz aplikacje, które wskazują bezpośrednio do wewnętrznych punktów końcowych lub portów, możesz mapować te wewnętrzne adresy URL opublikowanych zewnętrzny URL serwera Proxy aplikacji. 
+
+ 
+> [!NOTE]
+> Ostatnia opcja jest tylko do dzierżawców, niezależnie od przyczyny, nie można używać niestandardowych domen do mieć tych samych wewnętrznych i zewnętrznych adresów URL dla aplikacji. Przed włączeniem tej funkcji należy sprawdzić, czy [domen niestandardowych w serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md) można skorzystać. 
+
+>Lub, jeśli aplikacja, konieczne będzie skonfigurowanie z łączem tłumaczenia jest programu SharePoint, zobacz [Konfigurowanie mapowań dostępu alternatywnego for SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) innego podejścia do mapowania łącza. 
+
+ 
+### <a name="option-1-intune-managed-browser-integration"></a>Opcja 1: Intune Managed Browser integracji 
+
+Intune Managed Browser można użyć, aby jeszcze lepiej chronić aplikacji i zawartości. Aby użyć tego rozwiązania, należy wymagać/zalecamy użytkownikom dostępu aplikacji za pomocą programu Intune Managed Browser. Wszystkie adresy URL wewnętrzny opublikowane przy użyciu serwera Proxy aplikacji zostanie rozpoznany przez Managed Browser i Przekierowanie do odpowiedniej zewnętrzny adres URL. Dzięki temu, że wszystkie ustalony wewnętrznych adresów URL będzie działać, a jeśli użytkownik przejdzie do przeglądarki i bezpośrednio typy wewnętrzny adres URL, działa nawet wtedy, gdy użytkownik jest zdalny.  
+
+Aby dowiedzieć się więcej, w tym sposób konfigurowania tej opcji, zobacz [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentacji.  
+
+### <a name="option-2-myapps-browser-extension"></a>Opcja 2: Rozszerzenie przeglądarki MyApps 
+
+Z rozszerzeniem przeglądarki MyApps wszystkie wewnętrzne adresy URL opublikowane przy użyciu serwera Proxy aplikacji są rozpoznawane przez rozszerzenie i Przekierowanie do odpowiedniej zewnętrznego adresu URL. Dzięki temu, że wszystkie ustalony wewnętrznych adresów URL będzie działać, a jeśli użytkownik przejdzie na pasku adresu przeglądarki i bezpośrednio typy wewnętrzny adres URL, działa nawet wtedy, gdy użytkownik jest zdalny.  
+
+Aby użyć tej funkcji, użytkownik musi pobrać rozszerzenia i zalogować się. Brak innych konfiguracji potrzebne do administratorów lub użytkowników. 
+
+ 
+
+### <a name="option-3-link-translation-setting"></a>Opcja 3: Link translację 
+
+Po włączeniu tłumaczenia łącze usługi Serwer Proxy aplikacji wyszukuje za pośrednictwem kodu HTML i CSS opublikowanych łączy wewnętrznych i tłumaczy je tak, aby użytkownicy pobierają nieprzerwaną środowisko. 
+
+
 
 ## <a name="how-link-translation-works"></a>Jak połączyć działa tłumaczenia
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 70255ead4a556204689e9918b9c89e396f8122c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 6ab1b2357e88525f4730b5ad550cfcf3acbb906e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tworzenie nazwy głównej usługi przy użyciu certyfikatu przy użyciu programu Azure PowerShell
 
@@ -31,6 +31,8 @@ Jeśli aplikacji lub skryptu, który ma dostęp do zasobów, można skonfigurowa
 > Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu usługi Azure AD zarządzane tożsamości usługi dla tożsamości użytkownika aplikacji. Azure AD MSI jest w publicznej wersji zapoznawczej usługi Azure Active Directory, które upraszcza tworzenie tożsamości dla kodu. Jeśli kod jest uruchomiony na to usługa, która obsługuje program Azure AD MSI i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie usługi Azure Active Directory, Azure AD MSI jest lepszym rozwiązaniem dla Ciebie. Aby dowiedzieć się więcej na temat usługi Azure AD MSI, łącznie z usług, które obecnie obsługuje, zobacz [zarządzane tożsamość usługi Azure zasobów](../active-directory/managed-service-identity/overview.md).
 
 W tym artykule przedstawiono sposób tworzenia nazwy głównej usługi, który przeprowadza uwierzytelnianie przy użyciu certyfikatu. Aby skonfigurować nazwy głównej usługi z hasłem, zobacz [Tworzenie nazwy głównej usługi platformy Azure przy użyciu programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+
+Musi mieć [najnowszej wersji](/powershell/azure/get-started-azureps) programu PowerShell w tym artykule.
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
@@ -58,61 +60,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 Przykład zostanie uśpiony na 20 sekund, pewien czas dla nowej usługi głównej propagację w usłudze Azure Active Directory. Jeśli skrypt nie oczekuje wystarczająco długi, pojawi się o błędzie informujący: "{ID} podmiot zabezpieczeń nie istnieje w katalogu {DIR-ID}." Aby rozwiązać ten problem, zaczekaj chwilę i uruchom **AzureRmRoleAssignment nowy** polecenie ponownie.
 
-Kolejnym przykładzie jest bardziej skomplikowany, ponieważ umożliwia ustawienie zakres przypisania roli, która różni się od Twojej bieżącej subskrypcji platformy Azure. Określ parametr ResourceGroup tylko wtedy, gdy chcesz ograniczyć zakres przypisania roli do grupy zasobów. Jeśli wystąpi błąd podczas przypisywania roli, ponowi próbę przypisania. Musi mieć Azure PowerShell 2.0 w systemie Windows 10 lub Windows Server 2016.
-
-```powershell
-Param (
-
- # Use to set scope to resource group. If no value is provided, scope is set to subscription.
- [Parameter(Mandatory=$false)]
- [String] $ResourceGroup,
-
- # Use to set subscription. If no value is provided, default subscription is used. 
- [Parameter(Mandatory=$false)]
- [String] $SubscriptionId,
-
- [Parameter(Mandatory=$true)]
- [String] $ApplicationDisplayName
- )
-
- Connect-AzureRmAccount
- Import-Module AzureRM.Resources
-
- if ($SubscriptionId -eq "") 
- {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
- }
- else
- {
-    Set-AzureRmContext -Subscription $SubscriptionId
- }
-
- if ($ResourceGroup -eq "")
- {
-    $Scope = "/subscriptions/" + $SubscriptionId
- }
- else
- {
-    $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
- }
-
- $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
- $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
- Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
-
- $NewRole = $null
- $Retries = 0;
- While ($NewRole -eq $null -and $Retries -le 6)
- {
-    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-    Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
-    $Retries++;
- }
-```
+Zakres przypisania roli do określonej grupy zasobów można określić za pomocą **ResourceGroupName** parametru. Można określić zakres konkretnego zasobu za pomocą również **ResourceType** i **ResourceName** parametrów. 
 
 Jeśli użytkownik **bez zainstalowanego systemu Windows 10 lub Windows Server 2016**, należy pobrać [generator certyfikatu z podpisem własnym](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) z Microsoft Script Center. Wyodrębnij jego zawartość i zaimportuj polecenia cmdlet, które są potrzebne.
 
@@ -137,35 +85,14 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 Gdy zalogujesz się jako nazwy głównej usługi, należy podać identyfikator dzierżawcy katalogu dla aplikacji usługi AD. Dzierżawa jest wystąpieniem usługi Azure Active Directory.
 
 ```powershell
-Param (
- 
- [Parameter(Mandatory=$true)]
- [String] $CertSubject,
- 
- [Parameter(Mandatory=$true)]
- [String] $ApplicationId,
+$TenantId = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+$ApplicationId = (Get-AzureRmADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- [Parameter(Mandatory=$true)]
- [String] $TenantId
- )
-
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match $CertSubject }).Thumbprint
+ $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match "CN=exampleappScriptCert" }).Thumbprint
  Connect-AzureRmAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
-```
-
-Identyfikator aplikacji i Identyfikatora dzierżawcy nie liter, więc można go osadzić bezpośrednio w skrypcie. Można pobrać Identyfikatora dzierżawy, należy użyć:
-
-```powershell
-(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
-```
-
-Aby uzyskać identyfikator aplikacji, należy użyć:
-
-```powershell
-(Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Tworzenie nazwy głównej usługi o certyfikat od urzędu certyfikacji
@@ -264,13 +191,13 @@ Aby zmienić poświadczenia dla aplikacji usługi AD, albo z powodu naruszenia z
 Aby usunąć wszystkie poświadczenia dla aplikacji, należy użyć:
 
 ```powershell
-Remove-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -All
+Get-AzureRmADApplication -DisplayName exampleapp | Remove-AzureRmADAppCredential
 ```
 
 Aby dodać wartość certyfikatu, Utwórz certyfikat z podpisem własnym, jak pokazano w tym artykule. Następnie należy użyć:
 
 ```powershell
-New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 `
+Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore

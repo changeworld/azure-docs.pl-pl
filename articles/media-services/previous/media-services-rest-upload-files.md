@@ -1,11 +1,11 @@
 ---
-title: "Przekazywanie plików do konta usługi Azure Media Services przy użyciu REST | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pobrać zawartości nośnika do usługi Media Services przez tworzenie i przekazywanie zasoby."
+title: Przekazywanie plików do konta usługi Azure Media Services przy użyciu REST | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać zawartości nośnika do usługi Media Services przez tworzenie i przekazywanie zasoby.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: juliako
 ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików do konta usługi Media Services za pomocą usługi REST
 > [!div class="op_single_selector"]
@@ -53,9 +53,9 @@ Następujące kwestie przy użyciu interfejsu API REST usługi Media:
 * Podczas uzyskiwania dostępu do jednostek przy użyciu interfejsu API REST usług nośnika, należy ustawić określonych pól nagłówka i wartości w Twoich żądań HTTP. Aby uzyskać więcej informacji, zobacz [ustawień dla rozwoju interfejsu API REST usługi Media](media-services-rest-how-to-use.md). <br/>Kolekcja Postman używane w tym samouczku odpowiada on za ustawienie wszystkie niezbędne nagłówki.
 * Usługa Media Services używa wartości właściwości IAssetFile.Name podczas kompilowania adresy URL przesyłania strumieniowego zawartości (na przykład http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tego powodu kodowania procent jest niedozwolone. Wartość **nazwa** właściwość nie może mieć następujące [procent kodowanie zarezerwowanych znaków](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
 * Długość nazwy nie może być większa niż 260 znaków.
-* Istnieje limit maksymalnego rozmiaru pliku do przetwarzania w usłudze Media Services. Zobacz [to](media-services-quotas-and-limitations.md) artykułu, aby uzyskać szczegółowe informacje dotyczące limitu rozmiaru pliku.
+* Istnieje limit maksymalnego rozmiaru pliku do przetwarzania w usłudze Media Services. Zobacz [ten](media-services-quotas-and-limitations.md) artykuł, aby uzyskać szczegółowe informacje na temat ograniczeń rozmiarów plików.
 
-## <a name="set-up-postman"></a>Konfigurowanie Postman
+## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
 
 Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman, w tym samouczku, zobacz [skonfigurować Postman](media-rest-apis-with-postman.md).
 
@@ -184,7 +184,7 @@ Na przykład używamy Postman można przekazać pliku mały plik MP4. Być może
 Żądanie przekazania nie jest częścią **AzureMedia** kolekcji. 
 
 Utwórz i skonfiguruj nowe żądanie:
-1. Naciśnij klawisz  **+** , aby utworzyć nową kartę żądania.
+1. Naciśnij klawisz **+**, aby utworzyć nową kartę żądania.
 2. Wybierz **PUT** operacji i Wklej **{{UploadURL}}** w adresie URL.
 2. Pozostaw **autoryzacji** karcie, ponieważ jest (nie należy ustawiać na **tokenów Bearer**).
 3. W **nagłówki** karcie, określ: **klucza**: "x-ms-blob-type" i **wartość**: "BlockBlob".

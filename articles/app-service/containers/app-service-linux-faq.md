@@ -1,13 +1,13 @@
 ---
-title: "Usługa aplikacji Azure w systemie Linux — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Usługa aplikacji Azure w systemie Linux — często zadawane pytania."
-keywords: "Usługa aplikacji Azure, aplikacji sieci web, często zadawane pytania, linux, oss"
+title: Usługa aplikacji Azure w systemie Linux — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Usługa aplikacji Azure w systemie Linux — często zadawane pytania.
+keywords: Usługa aplikacji Azure, aplikacji sieci web, często zadawane pytania, linux, oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa aplikacji Azure w systemie Linux — często zadawane pytania
 
@@ -46,6 +46,10 @@ Ta akcja jest taka sama jak Docker ponownego uruchomienia komputera.
 **Do nawiązania połączenia aplikacji kontenera maszyny wirtualnej (VM) można używać protokołu Secure Shell (SSH)?**
 
 Tak, możesz to zrobić za pośrednictwem witryny zarządzania (SCM) kontroli źródła.
+
+> [!NOTE] 
+> Można również nawiązać kontenera aplikacji bezpośrednio z komputera lokalnego Programowanie przy użyciu protokołu SSH, SFTP lub Visual Studio Code (dla aplikacji Node.js debugowania na żywo). Aby uzyskać więcej informacji, zobacz [zdalnego debugowania i SSH w usłudze App Service w systemie Linux](https://aka.ms/linux-debug).
+>
 
 **Jak utworzyć planu usługi aplikacji Linux za pomocą zestawu SDK lub szablonu usługi Azure Resource Manager?**
 
@@ -155,8 +159,8 @@ Dla ustawienia aplikacji, można użyć tylko litery (A-Z, a – z), cyfry (0-9)
 
 Możesz podać Twój pomysł na [forum opinii aplikacje sieci Web](https://aka.ms/webapps-uservoice). Do tytułu Twój pomysł, należy dodać "[Linux]".
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Co to jest Azure App Service w systemie Linux?](app-service-linux-intro.md)
-* [Konfigurowanie środowisk w usłudze Azure App Service przejściowych](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Ciągłe wdrażanie w aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md)

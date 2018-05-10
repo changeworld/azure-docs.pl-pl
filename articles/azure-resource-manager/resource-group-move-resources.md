@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8ad73132839aaa77166c115feff9a70db864ba12
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -53,7 +53,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Jeśli dzierżawy identyfikatorów subskrypcji źródłowych i docelowych nie są takie same, aby uzgodnić dzierżawy identyfikatorów należy użyć następujących metod: 
+  Jeśli dzierżawy identyfikatorów subskrypcji źródłowych i docelowych nie są takie same, aby uzgodnić dzierżawy identyfikatorów należy użyć następujących metod:
 
   * [Transfer ownership of an Azure subscription to another account](../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)
   * [Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
@@ -166,7 +166,7 @@ Usługi, które aktualnie nie należy włączać przenoszenie zasobu to:
 * Azure Database for MySQL
 * BizTalk Services
 * Certyfikaty — można przenieść certyfikaty usługi aplikacji, ale ma przekazane certyfikaty [ograniczenia](#app-service-limitations).
-* Container Service
+* Usługa Kubernetes
 * Włączono DevTest Labs — aby przejść do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenia między subskrypcji nie jest włączona.
 * Dynamics LCS
 * ExpressRoute
@@ -203,13 +203,13 @@ Nie można przenieść sieć wirtualną do innej subskrypcji, jeśli sieć wirtu
 
 ## <a name="app-service-limitations"></a>Ograniczenia usługi aplikacji
 
-Ograniczenia dotyczące przenoszenia zasobów usługi aplikacji — różnią się w zależności od tego, czy są przenoszenia zasobów w ramach subskrypcji lub do nowej subskrypcji. 
+Ograniczenia dotyczące przenoszenia zasobów usługi aplikacji — różnią się w zależności od tego, czy są przenoszenia zasobów w ramach subskrypcji lub do nowej subskrypcji.
 
 Ograniczenia opisane w tych sekcjach dotyczą certyfikaty przekazane, nie certyfikaty usługi aplikacji. Certyfikaty usługi aplikacji można przenieść do nowej grupy zasobów lub subskrypcji bez ograniczeń. Jeśli masz wiele aplikacji sieci web, które używają tego samego certyfikatu usługi aplikacji, najpierw przenieść wszystkie aplikacje sieci web, następnie przenieść certyfikat.
 
 ### <a name="moving-within-the-same-subscription"></a>Przenoszenie w ramach tej samej subskrypcji
 
-Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_, nie można przenieść przekazane certyfikaty SSL. Jednak aplikacji sieci Web można przenieść do nowej grupy zasobów, bez przenoszenia jego przekazano certyfikat SSL, a funkcja SSL aplikacji nadal działa. 
+Podczas przenoszenia aplikacji sieci Web _w ramach tej samej subskrypcji_, nie można przenieść przekazane certyfikaty SSL. Jednak aplikacji sieci Web można przenieść do nowej grupy zasobów, bez przenoszenia jego przekazano certyfikat SSL, a funkcja SSL aplikacji nadal działa.
 
 Jeśli chcesz przenieść certyfikatu SSL za pomocą aplikacji sieci Web, wykonaj następujące czynności:
 
@@ -227,7 +227,7 @@ Podczas przenoszenia aplikacji sieci Web _w subskrypcjach_, obowiązują następ
     - Przekazany lub zaimportowanych certyfikatów SSL
     - Środowiska usługi App Service
 - Wszystkie zasoby usługi aplikacji w grupie zasobów, muszą zostać przeniesione razem.
-- Zasoby usługi aplikacji można przenieść tylko z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób usługi aplikacji nie jest już w jego oryginalnej grupa zasobów, go musi zostać przeniesiona z powrotem do tego oryginalnego grupy zasobów najpierw, a następnie mogą zostać przeniesione w subskrypcjach. 
+- Zasoby usługi aplikacji można przenieść tylko z grupy zasobów, w której zostały pierwotnie utworzone. Jeśli zasób usługi aplikacji nie jest już w jego oryginalnej grupa zasobów, go musi zostać przeniesiona z powrotem do tego oryginalnego grupy zasobów najpierw, a następnie mogą zostać przeniesione w subskrypcjach.
 
 ## <a name="classic-deployment-limitations"></a>Wdrożenie klasyczne ograniczenia
 

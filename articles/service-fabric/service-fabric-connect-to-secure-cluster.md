@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0ce01b62fde690934d97fdefb7720e1be5512f4a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2ddb72f267fc46d7980007d41c5d512f50eaf47e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
@@ -319,7 +319,7 @@ Aby osiągnąć [Service Fabric Explorer](service-fabric-visualizing-your-cluste
 
 Pełny adres URL jest również dostępna w okienku essentials klastra w portalu Azure.
 
-W celu nawiązania bezpiecznego klastra w systemie Windows lub OS X przy użyciu przeglądarki, można zaimportować certyfikatu klienta, a przeglądarka wyświetli monit o certyfikat używany do łączenia się z klastrem.  Na komputerach z systemem Linux certyfikat będzie mieć do zaimportowania przy użyciu ustawień przeglądarki Zaawansowane (każdą przeglądarkę ma różne mechanizmy) i wskaż lokalizację certyfikatu tehe na dysku.
+W celu nawiązania bezpiecznego klastra w systemie Windows lub OS X przy użyciu przeglądarki, można zaimportować certyfikatu klienta, a przeglądarka wyświetli monit o certyfikat używany do łączenia się z klastrem.  Na komputerach z systemem Linux certyfikat będzie mieć do zaimportowania przy użyciu ustawień przeglądarki Zaawansowane (każdą przeglądarkę ma różne mechanizmy) i wskaż lokalizację certyfikatu na dysku.
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Nawiązać bezpiecznego klastra przy użyciu usługi Azure Active Directory
 

@@ -1,35 +1,35 @@
 ---
-title: "Rozwiązania Office 365 w Operations Management Suite (OMS) | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera szczegółowe informacje o konfiguracji i korzystanie z rozwiązania usługi Office 365 w OMS.  Zawiera szczegółowy opis rekordów usługi Office 365 utworzone w analizy dzienników."
+title: Rozwiązanie do zarządzania usługi Office 365 na platformie Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera szczegółowe informacje o konfiguracji i korzystanie z rozwiązania usługi Office 365 na platformie Azure.  Zawiera szczegółowy opis rekordów usługi Office 365 utworzone w analizy dzienników.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="office-365-solution-in-operations-management-suite-oms"></a>Rozwiązania Office 365 w Operations Management Suite (OMS)
+# <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
 ![Logo usługi Office 365](media/oms-solution-office-365/icon.png)
 
-Rozwiązanie Office 365 dla Operations Management Suite (OMS) służy do monitorowania środowiska usługi Office 365 w analizy dzienników.  
+Rozwiązanie do zarządzania usługi Office 365 służy do monitorowania środowiska usługi Office 365 w analizy dzienników.
 
 - Monitorowanie aktywności użytkowników na swoje konta usługi Office 365, aby analizować wzorce użycia, a także behawioralnej trendów. Na przykład można wyodrębnić scenariusze użycia określonego, takich jak pliki, które są udostępniane poza organizację lub najbardziej popularnych witryn programu SharePoint.
 - Monitorować działania administratora, aby śledzić zmiany w konfiguracji lub operacji wysokiego poziomu uprawnień.
 - Wykrywanie i zbadaj zachowanie niechciane użytkownika, które można dostosować do własnych potrzeb organizacji.
 - Prezentacja inspekcji i zgodności. Na przykład można monitorować operacji uzyskiwania dostępu do pliku na poufne pliki, które ułatwiają wykonywanie procesu inspekcji i zgodności.
-- Rozwiązywania problemów operacyjnych przy użyciu pakietu OMS wyszukiwania na podstawie danych działania usługi Office 365 w organizacji.
+- Rozwiązywania problemów operacyjnych za pomocą [dziennika wyszukiwania](../log-analytics/log-analytics-log-search.md) na podstawie danych działania usługi Office 365 w organizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Poniżej znajduje się przed to rozwiązanie jest zainstalowana i skonfigurowana.
@@ -44,10 +44,10 @@ Poniżej znajduje się przed to rozwiązanie jest zainstalowana i skonfigurowana
 To rozwiązanie nie instalować żadnych pakietów administracyjnych w podłączonych grup zarządzania.
   
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Gdy [dodanych do subskrypcji usługi Office 365 rozwiązania](../log-analytics/log-analytics-add-solutions.md), należy połączyć go z subskrypcji usługi Office 365.
 
-1. Dodaj rozwiązanie zarządzania alertami na obszar roboczy OMS zastosowanie procesu opisanego w [dodać rozwiązania](../log-analytics/log-analytics-add-solutions.md).
+1. Dodaj rozwiązanie zarządzania alertami do obszaru roboczego analizy dzienników przy użyciu procesu opisanego w [dodać rozwiązania](../log-analytics/log-analytics-add-solutions.md).
 2. Przejdź do **ustawienia** w portalu OMS.
 3. W obszarze **połączonych źródeł**, wybierz pozycję **usługi Office 365**.
 4. Polecenie **połączenie usługi Office 365**.<br>![Konstruktor usługi Office 365](media/oms-solution-office-365/configure.png)
@@ -63,7 +63,7 @@ Rozwiązanie Office 365 nie pobierania danych z dowolnej [agentów OMS](../log-a
 Usługi Office 365, wysyła [powiadomienia elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) z szczegółowych danych do analizy dzienników zawsze jest tworzony rekord.
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
-Po dodaniu rozwiązanie Office 365 na obszar roboczy OMS **usługi Office 365** kafelka zostaną dodane do pulpitu nawigacyjnego OMS. Ten kafelek zawiera liczbę oraz graficzną reprezentację liczby komputerów w środowisku wraz z informacjami o ich zgodności aktualizacji.<br><br>
+Po dodaniu rozwiązanie Office 365 do obszaru roboczego analizy dzienników **usługi Office 365** kafelka zostaną dodane do pulpitu nawigacyjnego. Ten kafelek zawiera liczbę oraz graficzną reprezentację liczby komputerów w środowisku wraz z informacjami o ich zgodności aktualizacji.<br><br>
 ![Kafelek podsumowania usługi Office 365](media/oms-solution-office-365/tile.png)  
 
 Polecenie **usługi Office 365** Kafelek, aby otworzyć **usługi Office 365** pulpitu nawigacyjnego.
@@ -100,7 +100,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów usługi Offic
 | ResultStatus | Wskazuje, czy akcja (określony we właściwości operacji) zakończyła się powodzeniem. Możliwe wartości to zakończyło się pomyślnie, PartiallySucceded lub nie powiodło się. Aktywność administratora programu Exchange, wartość jest wartość PRAWDA lub FAŁSZ. |
 | Nazwa użytkownika | Nazwa UPN (główna nazwa użytkownika) użytkownika, który wykonał akcję, która spowodowała rekord rejestrowany; na przykład my_name@my_domain_name. Należy pamiętać, że rejestruje działania wykonywane przez kont systemowych (np. SHAREPOINT\system lub NTAUTHORITY\SYSTEM) dostępne są również. | 
 | UserKey | Alternatywny identyfikator użytkownika określonego we właściwości identyfikatora użytkownika.  Na przykład ta właściwość jest wypełniana passport Unikatowy identyfikator (PUID) zdarzenia wykonywane przez użytkowników w programie SharePoint, usłudze OneDrive dla firm i Exchange. Ta właściwość może także określić tę samą wartość jako wartość właściwości identyfikator użytkownika dla zdarzenia występujące w innych usługach i wydarzeniach wykonywane przez kont systemu|
-| UserType | Typ użytkownika, który wykonać operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowane<br>ServicePrincipal<br>System |
+| UserType | Typ użytkownika, który wykonać operację.<br><br>Jednostka administracyjna<br>Aplikacja<br>DcAdmin<br>Regularne<br>Zarezerwowane<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base
@@ -135,7 +135,7 @@ Te rekordy są tworzone podczas dodatkami lub zmiany zostały wprowadzone do us�
 | OfficeWorkload | Usługi AzureActiveDirectory |
 | recordType     | Usługi AzureActiveDirectory |
 | AADTarget | Użytkownik wykonanej akcji (określone przez właściwość operacji). |
-| Aktora | Nazwa użytkownika lub nazwy głównej usługi, który wykonał akcję. |
+| Aktor | Nazwa użytkownika lub nazwy głównej usługi, który wykonał akcję. |
 | ActorContextId | Identyfikator GUID aktora należącej do organizacji. |
 | ActorIpAddress | Adres IP aktora w formacie adres IPV4 lub IPV6. |
 | InterSystemsId | Identyfikator GUID śledzić akcje dotyczące składników w usłudze Office 365. |
@@ -240,7 +240,7 @@ Te właściwości są wspólne dla wszystkich rekordów z programu SharePoint.
 | MachineId |   Informacje o operacji synchronizacji urządzenia. Te informacje są dostarczane tylko wtedy, gdy znajduje się on na żądanie. |
 | Site_ | Identyfikator GUID lokacji, w którym znajduje się plik lub folder, dostępne dla użytkownika. |
 | Source_Name | Obiekt, który wywołał operację inspekcji. Możliwe wartości to SharePoint lub ObjectModel. |
-| Agent użytkownika | Informacje dotyczące klienta lub przeglądarki użytkownika. Informacje te są dostarczane przez klienta lub przeglądarki. |
+| UserAgent | Informacje dotyczące klienta lub przeglądarki użytkownika. Informacje te są dostarczane przez klienta lub przeglądarki. |
 
 
 ### <a name="sharepoint-schema"></a>Schemat programu SharePoint
@@ -280,9 +280,9 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 | Zapytanie | Opis |
 | --- | --- |
-|Liczba wszystkich operacji w ramach subskrypcji usługi Office 365 |Typ = OfficeActivity &#124; Miara count() przez operację |
-|Użycie witryny programu SharePoint|Typ = OfficeActivity OfficeWorkload = &#124; programu sharepoint Pomiar count() jako liczność według SiteUrl &#124; Sortowanie liczba asc|
-|Operacje na plikach dostępu przez użytkownika typu|Typ = OfficeActivity OfficeWorkload = sharepoint operacji = FileAccessed &#124; Miara count() przez UserType|
+|Liczba wszystkich operacji w ramach subskrypcji usługi Office 365 |Typ = OfficeActivity &#124; miar count() przez operację |
+|Użycie witryny programu SharePoint|Typ = OfficeActivity OfficeWorkload = sharepoint &#124; miar count() jako liczba wg SiteUrl &#124; sortowania asc liczba|
+|Operacje na plikach dostępu przez użytkownika typu|Typ = OfficeActivity OfficeWorkload = sharepoint operacji = FileAccessed &#124; miar count() przez UserType|
 |Wyszukiwanie z określone słowo kluczowe|Typ = OfficeActivity OfficeWorkload = usługi azureactivedirectory "Test"|
 |Monitor działań zewnętrznych na serwerze Exchange|Typ = OfficeActivity OfficeWorkload = exchange ExternalAccess = true|
 
@@ -294,13 +294,13 @@ Jeśli rozwiązania usługi Office 365 nie zbiera danych zgodnie z oczekiwaniami
 
 | Stan | Opis |
 |:--|:--|
-| Aktywne | Subskrypcja usługi Office 365 jest aktywna i obciążenie jest połączył się z obszarem roboczym pakietu OMS. |
-| Oczekujące | Subskrypcja usługi Office 365 jest aktywna, ale obciążenie nie jest jeszcze podłączona do swojego obszaru roboczego OMS pomyślnie. Przy pierwszym połączeniu subskrypcji usługi Office 365 wszystkich obciążeń w tym stanie dopóki będą pomyślnym nawiązaniu połączenia. Zezwól na 24 godziny dla wszystkich obciążeń przełączyć się na aktywny. |
-| Nieaktywne | Subskrypcja usługi Office 365 jest nieaktywny. Sprawdź stronę administracyjne usługi Office 365, aby uzyskać szczegółowe informacje. Po aktywowaniu subskrypcji usługi Office 365, odłączyć go z obszaru roboczego OMS, a następnie połącz go ponownie, aby rozpocząć odbieranie danych. |
+| Aktywne | Subskrypcja usługi Office 365 jest aktywna i obciążenie połączył się z obszaru roboczego analizy dzienników. |
+| Oczekujące | Subskrypcja usługi Office 365 jest aktywna, ale obciążenie nie jest jeszcze podłączony do obszaru roboczego analizy dzienników pomyślnie. Przy pierwszym połączeniu subskrypcji usługi Office 365 wszystkich obciążeń w tym stanie dopóki będą pomyślnym nawiązaniu połączenia. Zezwól na 24 godziny dla wszystkich obciążeń przełączyć się na aktywny. |
+| Nieaktywna | Subskrypcja usługi Office 365 jest nieaktywny. Sprawdź stronę administracyjne usługi Office 365, aby uzyskać szczegółowe informacje. Po aktywowaniu subskrypcji usługi Office 365, odłączyć go z obszaru roboczego analizy dzienników, a następnie połącz go ponownie, aby rozpocząć odbieranie danych. |
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../log-analytics/log-analytics-log-searches.md) w celu wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie własnych pulpity nawigacyjne](../log-analytics/log-analytics-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
 * [Tworzenie alertów](../log-analytics/log-analytics-alerts.md) aktywnego powiadamianych ważne działań usługi Office 365.  

@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi HDInsight
-  href: index.md
+  href: index.yml
 - name: Hadoop
   href: ./hadoop/apache-hadoop-introduction.md
 - name: platforma Spark

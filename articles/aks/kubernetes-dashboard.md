@@ -1,6 +1,6 @@
 ---
-title: "Zarządzanie klastrem Azure Kubernetes z interfejsu użytkownika sieci web"
-description: "Za pomocą pulpitu nawigacyjnego Kubernetes w AKS"
+title: Zarządzanie klastrem Azure Kubernetes z interfejsu użytkownika sieci web
+description: Za pomocą pulpitu nawigacyjnego Kubernetes w AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 47608993320d987822422ea103e4e2043de2d2e8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ab137c8397f747ba07475910cd4461d88951d6be
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Pulpit nawigacyjny Kubernetes z usługi kontenera platformy Azure (AKS)
+# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Pulpit nawigacyjny Kubernetes z usługi Kubernetes Azure (AKS)
 
 Wiersza polecenia platformy Azure mogą być używane do uruchamiania Kubernetes pulpitu nawigacyjnego. Ten dokument przeprowadzi Cię przez początkowy pulpitu nawigacyjnego Kubernetes z wiersza polecenia platformy Azure, a także przeprowadzi Cię przez niektóre operacje podstawowe pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego Zobacz Kubernetes [pulpit nawigacyjny interfejsu użytkownika sieci Web Kubernetes][kubernetes-dashboard].
 
@@ -43,7 +43,7 @@ Po wykonaniu tych czynności kliknij przycisk **Wdróż** utworzyć wdrożenie.
 
 ![Okno dialogowe Tworzenie usługi Kubernetes](./media/container-service-kubernetes-ui/create-deployment.png)
 
-## <a name="view-the-application"></a>Wyświetl aplikację
+## <a name="view-the-application"></a>Wyświetlanie aplikacji
 
 Stan o aplikacji są widoczne na pulpicie nawigacyjnym Kubernetes. Gdy aplikacja jest uruchomiona, każdy składnik ma zielone pole wyboru obok niej.
 

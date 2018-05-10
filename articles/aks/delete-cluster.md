@@ -1,6 +1,6 @@
 ---
-title: "Usuń klaster usługi kontenera platformy Azure (AKS)"
-description: "Usuń i AKS klastra przy użyciu interfejsu wiersza polecenia lub Azure portalu."
+title: Usuń klaster usługi Kubernetes Azure (AKS)
+description: Usuń i AKS klastra przy użyciu interfejsu wiersza polecenia lub Azure portalu.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 78056288f45616eda427f8e708efc679f8a5202c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: e006466d1450471900a8635c49d3bc6c3a73d476
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="delete-an-azure-container-service-aks-cluster"></a>Usuń klaster usługi kontenera platformy Azure (AKS)
+# <a name="delete-an-azure-kubernetes-service-aks-cluster"></a>Usuń klaster usługi Kubernetes Azure (AKS)
 
-Podczas usuwania klastra usługi kontenera platformy Azure, grupy zasobów, w której wdrożono klaster pozostanie, jednak wszystkie powiązane AKS zasoby zostaną usunięte. Ten dokument pokazuje, jak usunąć klaster AKS przy użyciu wiersza polecenia platformy Azure i portalu Azure. 
+Podczas usuwania Kubernetes klastra usługi platformy Azure, grupy zasobów, w której wdrożono klaster pozostanie, jednak wszystkie powiązane AKS zasobów zostaną usunięte. Ten dokument pokazuje, jak usunąć klaster AKS przy użyciu wiersza polecenia platformy Azure i portalu Azure.
 
 Oprócz usunięcie klastra, można usunąć grupy zasobów, w którym została wdrożona, który spowoduje również usunięcie klastra AKS.
 
@@ -34,13 +34,13 @@ Poniższe opcje są dostępne z `az aks delete` polecenia.
 | Argument | Opis | Wymagane |
 |---|---|:---:|
 | `--name` `-n` | Nazwa zasobu zarządzanego klastra. | tak |
-| `--resource-group` `-g` | Nazwa grupy zasobów usługi kontenera platformy Azure. | tak |
+| `--resource-group` `-g` | Nazwa grupy zasobów Azure Kubernetes usługi. | tak |
 | `--no-wait` | Nie należy czekać na zakończenie operacji długotrwałych. | nie |
 | `--yes` `-y` | Nie monituj o potwierdzenie. | nie |
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Znajduje się w portalu Azure, przejdź do grupy zasobów zawiera zasób usługi kontenera platformy Azure (AKS), wybierz zasób i kliknij przycisk **usunąć**. Monit o potwierdzenie operacji usuwania.
+Znajduje się w portalu Azure, przejdź do grupy zasobów zawiera zasób usługi Kubernetes Azure (AKS), wybierz zasób i kliknij przycisk **usunąć**. Monit o potwierdzenie operacji usuwania.
 
 ![Usuń AKS klastra portalu](media/container-service-delete-cluster/delete-aks-portal.png)
 

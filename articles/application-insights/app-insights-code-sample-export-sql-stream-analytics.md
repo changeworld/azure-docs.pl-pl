@@ -1,11 +1,10 @@
 ---
-title: "Eksportowanie do bazy danych SQL z usługi Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Stale eksportować dane usługi Application Insights do bazy danych SQL za pomocą usługi Stream Analytics."
+title: Eksportowanie do bazy danych SQL z usługi Azure Application Insights | Dokumentacja firmy Microsoft
+description: Stale eksportować dane usługi Application Insights do bazy danych SQL za pomocą usługi Stream Analytics.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
-editor: mrbullwinkle
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
 ms.author: mbullwin
-ms.openlocfilehash: 8d008727d964df56d128265b632dafa4ab776f98
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: e410bb87d017a7659c3eaffbedef378aaf7f5716
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Wskazówki: Eksportowanie do bazy danych SQL z usługi Application Insights przy użyciu usługi analiza strumienia
 W tym artykule pokazano, jak przenieść dane telemetryczne z [Azure Application Insights] [ start] do bazy danych Azure SQL za pomocą [eksportu ciągłego] [ export] i [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -171,10 +170,10 @@ Wzorzec prefiksu ścieżki Określa sposób odnajdowania usługi Stream Analytic
 
 W tym przykładzie:
 
-* `webapplication27`jest to nazwa zasobu usługi Application Insights **w przypadku małych**. 
-* `1234...`jest to klucz Instrumentacji zasobu usługi Application Insights **z kreskami usunięte**. 
-* `PageViews`to typ danych, którą chcemy udostępnić analizować. Dostępne typy są zależne od filtr ustawionych w eksportu ciągłego. Sprawdź wyeksportowane dane na temat dostępnych typów oraz temat [wyeksportować modelu danych](app-insights-export-data-model.md).
-* `/{date}/{time}`wzorzec są zapisywane jako literału.
+* `webapplication27` jest to nazwa zasobu usługi Application Insights **w przypadku małych**. 
+* `1234...` jest to klucz Instrumentacji zasobu usługi Application Insights **z kreskami usunięte**. 
+* `PageViews` to typ danych, którą chcemy udostępnić analizować. Dostępne typy są zależne od filtr ustawionych w eksportu ciągłego. Sprawdź wyeksportowane dane na temat dostępnych typów oraz temat [wyeksportować modelu danych](app-insights-export-data-model.md).
+* `/{date}/{time}` wzorzec są zapisywane jako literału.
 
 Aby uzyskać nazwę i iKey zasobu usługi Application Insights, otwórz Essentials na stronie Przegląd, lub Otwórz ustawienia.
 
@@ -253,7 +252,7 @@ Po kilku minutach Przejdź wstecz do narzędzia do zarządzania serwerem SQL i o
 * [Eksportowanie do usługi Power BI przy użyciu usługi analiza strumienia](app-insights-export-power-bi.md)
 * [Szczegółowe dane modelu odwołania dla typów właściwości i wartości.](app-insights-export-data-model.md)
 * [Eksport ciągły w usłudze Application Insights](app-insights-export-telemetry.md)
-* [Usługa Application Insights](https://azure.microsoft.com/services/application-insights/)
+* [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 

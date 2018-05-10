@@ -3,22 +3,22 @@ title: Szablony
 description: W tym temacie wyjaśniono szablonów usługi Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 3e587bdf0efc7c5b416183640abb19286a5cff31
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="templates"></a>Szablony
 ## <a name="overview"></a>Przegląd
@@ -50,9 +50,9 @@ Podobne ładunki można tworzyć dla usługi MPNS (Windows Phone) i usługi GCM 
 
 To wymaganie wymusza zaplecza aplikacji do tworzenia różnych ładunków dla każdej platformy i efektywnie sprawia, że wewnętrznej bazy danych odpowiada za część warstwy prezentacji w aplikacji. Niektóre problemy obejmują lokalizacja i układy graficznego (szczególnie w przypadku aplikacji ze Sklepu Windows obejmujących powiadomień dla różnych typów Kafelki).
 
-Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienta, można utworzyć specjalne rejestracji, nazywane rejestracji szablonu, między innymi, oprócz zestawu tagów, szablon. Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienta skojarzyć urządzenia z szablonów, czy korzystasz z urządzenia (preferowane) lub rejestracji. Podana w poprzednich przykładach ładunku, informacje tylko niezależne od platformy jest rzeczywista komunikat alertu (Witaj!). Szablon jest zestaw instrukcji dla Centrum powiadomień dotyczące formatowania komunikat niezależny od platformy rejestracji, aplikacja określonego klienta. W powyższym przykładzie komunikat niezależny platformy jest jednej właściwości: **wiadomość = Hello!**.
+Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienta, można utworzyć specjalne rejestracji, nazywane rejestracji szablonu, między innymi, oprócz zestawu tagów, szablon. Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienta skojarzyć urządzenia z szablonów, czy korzystasz z urządzenia (preferowane) lub rejestracji. Podana w poprzednich przykładach ładunku, informacje tylko niezależne od platformy jest rzeczywista komunikat alertu (Witaj!). Szablon jest zestaw instrukcji dla Centrum powiadomień dotyczące formatowania komunikat niezależny od platformy rejestracji, aplikacja określonego klienta. W powyższym przykładzie komunikat niezależny od platformy jest jednej właściwości: **wiadomość = Hello!**.
 
-Poniżej przedstawiono proces powyżej:
+Poniżej przedstawiono proces:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
@@ -74,7 +74,7 @@ Należy zauważyć, że rzeczywista komunikat zostanie zastąpiony wyrażenia $(
 
 Podczas pracy z modelem instalacji klucz "Szablony" instalacji przechowuje JSON wielu szablonów. Podczas pracy z modelem rejestracji aplikacji klienckiej, można utworzyć wiele rejestracji aby można było używać wielu szablonów; na przykład szablon komunikaty alertów i szablon do aktualizacji kafelka. Aplikacje klienckie można również mieszać rejestracje natywnego (rejestracje z szablonu) i rejestracji szablonu.
 
-Centrum powiadomień wysyła jedno powiadomienie dla każdego szablonu bez rozważania należą do tej samej aplikacji klienckiej. To zachowanie może służyć do tłumaczenia powiadomienia niezależne od platformy do powiadomień więcej. Na przykład sam komunikat niezależny platformy z Centrum powiadomień można bezproblemowo przeliczane alert wyskakujące i aktualizacji kafelka, bez konieczności wewnętrznej bazy danych należy pamiętać o jego. Należy pamiętać, że niektóre platformy (na przykład iOS) może Zwiń wiele powiadomień do tego samego urządzenia, jeśli są one wysyłane w krótkim czasie.
+Centrum powiadomień wysyła jedno powiadomienie dla każdego szablonu bez rozważania należą do tej samej aplikacji klienckiej. To zachowanie może służyć do tłumaczenia powiadomienia niezależne od platformy do powiadomień więcej. Na przykład ten sam komunikat niezależny od platformy do Centrum powiadomień można bezproblemowo przeliczane alert wyskakujące i aktualizacji kafelka, bez konieczności wewnętrznej bazy danych należy pamiętać o jego. Niektóre platformy (na przykład iOS) może Zwiń wiele powiadomień do tego samego urządzenia, jeśli są one wysyłane w krótkim czasie.
 
 ## <a name="using-templates-for-personalization"></a>Za pomocą szablonów na potrzeby personalizacji
 Inną zaletą używania szablonów jest możliwość wykonania na rejestracji personalizacji powiadomień przy użyciu usługi Notification Hubs. Rozważmy na przykład aplikację pogodzie, która wyświetla kafelka z pogodą z określonej lokalizacji. Użytkownik może wybrać między stopni c lub f i prognozy pojedyncze lub pięć dni. Za pomocą szablonów, instalacja aplikacji każdego klienta można zarejestrować do formatu wymaganego (1-dniowego Celsjusz, 1-dniowego f, 5 dni c, 5 dni Stopnie Fahrenheita), i mieć zaplecza Wyślij pojedynczy komunikat, który zawiera wszystkie informacje wymagane do wypełnienia tych szablonów (na przykład pięciodniowego prognozy z stopni c i f).
@@ -126,9 +126,9 @@ W poniższej tabeli przedstawiono dozwolone w szablonach język:
 
 Wyrażenia może być dowolny z poprzednim formularzy.
 
-Podczas korzystania z łączenia, całe wyrażenie musi być ujęty w {}. Na przykład {$(prop) + "-" + $(prop2)}. |
+Korzystając z łączenia, całe wyrażenie musi być ujęty w {}. Na przykład {$(prop) + "-" + $(prop2)}. |
 
-Na przykład następujący ciąg nie jest prawidłowy szablon XML:
+Na przykład następujący szablon nie jest prawidłowy szablon XML:
 
     <tile>
       <visual>
@@ -139,7 +139,7 @@ Na przykład następujący ciąg nie jest prawidłowy szablon XML:
     </tile>
 
 
-Jak wyjaśniono łączenia, używając wyrażenia musi być ujęte w nawiasach klamrowych. Na przykład:
+Zgodnie z opisem, korzystając z łączenia, wyrażenia musi być ujęte w nawiasach klamrowych. Na przykład:
 
     <tile>
       <visual>

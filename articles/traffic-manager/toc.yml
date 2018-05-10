@@ -8,12 +8,6 @@
   items:
     - name: Tworzenie profilu usługi Traffic Manager
       href: traffic-manager-create-profile.md
-- name: Przykłady
-  items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Samouczki
   items:
     - name: Kierowanie ruchem na podstawie lokalizacji geograficznej punktu końcowego
@@ -24,6 +18,12 @@
       href: traffic-manager-configure-weighted-routing-method.md
     - name: Kierowanie ruchu do priorytetowego punktu końcowego
       href: traffic-manager-configure-priority-routing-method.md
+- name: Przykłady
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Pojęcia
   items:
     - name: Metody routingu

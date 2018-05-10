@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: af853a378a36c97edd74ea99fc5dcce92a073fea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b8b0742054b0348ded39b6357d00f6eac3449f99
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Zadania harmonogramu i emisji (Java)
 
@@ -64,7 +64,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Jeśli wolisz programistyczne tworzenie tożsamości tego urządzenia do odczytu w odpowiedniej sekcji [Podłącz urządzenie do Centrum IoT przy użyciu języka Java](iot-hub-java-java-getstarted.md#create-a-device-identity) artykułu. Można również użyć [rozszerzenia IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) narzędzia do dodania urządzenia do Centrum IoT.
+Można również użyć [rozszerzenia IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) narzędzia do dodania urządzenia do Centrum IoT.
 
 ## <a name="create-the-service-app"></a>Tworzenie aplikacji usługi
 
@@ -479,7 +479,7 @@ Teraz można przystąpić do uruchomienia aplikacji konsoli.
 
     ![Klient urządzenie odpowiada na zmiany](media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure Portal, a następnie tworzenie tożsamości urządzenia w rejestrze tożsamości centrum. Utworzono aplikacji zaplecza, aby uruchomić dwa zadania. Pierwszego zadania do ustawiania wartości właściwości odpowiednie, a drugi zadania wywołana metoda bezpośrednia.
 

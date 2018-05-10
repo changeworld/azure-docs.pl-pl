@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: b80ad9837939af5406989d08e18f6f3d9fe3064f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Async Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -31,8 +31,8 @@ ms.lasthandoff: 04/28/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Dostawca zasobów REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 SDK Java asynchronicznego interfejsu API SQL różni się od zestawu SDK Java interfejsu API SQL zapewniając operacji asynchronicznych z obsługą programu [Netty biblioteki](http://netty.io/). Istniejących wcześniej [zestawu SDK Java interfejsu API SQL](sql-api-sdk-java.md) nie obsługuje operacji asynchronicznych. 
 
@@ -63,7 +63,7 @@ SDK Java asynchronicznego interfejsu API SQL różni się od zestawu SDK Java in
 * Napraw uniknąć przekazywania tokenu sesji podczas odczytu zasobów wzorca.
 * Dodano więcej przykładów.
 * Dodano więcej najlepszymi scenariuszy.
-* Pliki nagłówkowe stałym Java generowania javadoc właściwe.
+* Pliki nagłówkowe stałym Java generowania dokumentu prawidłowego java.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Zestaw SDK GA o obsługę end-to-end nieblokujące We/Wy przy użyciu [Netty biblioteki](http://netty.io/) w trybie bramy. 
@@ -71,7 +71,7 @@ SDK Java asynchronicznego interfejsu API SQL różni się od zestawu SDK Java in
 ## <a name="release-and-retirement-dates"></a>Wersja i wycofania dat
 Firma Microsoft udostępni powiadomienia co najmniej **12 miesięcy** klienta z wyprzedzeniem wycofanie SDK w celu złagodzenia przejścia do nowszej/nieobsługiwaną wersję.
 
-Nowe funkcje i funkcjonalność i optymalizację, które są dodawane tylko do bieżącego zestawu SDK, w związku jest zalecane, zawsze uaktualnienie SDK najnowszą tak szybko jak to możliwe.
+Nowe funkcje i funkcjonalność i optymalizację, które są dodawane tylko do bieżącego zestawu SDK. Dlatego zaleca się zawsze uaktualnienie do najnowszej wersji zestawu SDK możliwie jak najszybciej.
 
 Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestawu SDK będą odrzucane przez usługę.
 

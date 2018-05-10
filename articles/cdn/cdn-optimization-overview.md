@@ -1,12 +1,12 @@
 ---
-title: "Optymalizacja Azure dostarczania zawartości dla danego scenariusza"
-description: "Jak zoptymalizować dostarczania zawartości dla konkretnych scenariuszy"
+title: Optymalizacja Azure dostarczania zawartości dla danego scenariusza
+description: Jak zoptymalizować dostarczania zawartości dla konkretnych scenariuszy
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: rli
-ms.openlocfilehash: fa4cf306eeb1a8372da5b2a86ac73fbba2832666
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: de748f7fa33b0250b1572dd5ae55cddf15003a0e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>Optymalizacja Azure dostarczania zawartości dla danego scenariusza
 
-Podczas dostarczania zawartości do dużej, globalnej grupy odbiorców, bardzo ważne jest upewnij się, zoptymalizowane dostarczania zawartości. Azure Content Delivery Network zoptymalizować proces dostarczania na podstawie typu zawartości, do których masz. Zawartość może być witryna sieci Web, strumień na żywo, wideo lub dużego pliku do pobrania. Po utworzeniu punktu końcowego (CDN) sieci dostarczania zawartości, określ scenariusz w **zoptymalizowane pod kątem** opcji. Wybór określa, które optymalizacji jest stosowane do zawartości z punktu końcowego CDN.
+Podczas dostarczania zawartości do dużej, globalnej grupy odbiorców, bardzo ważne jest upewnij się, zoptymalizowane dostarczania zawartości. Usługa Azure Content Delivery Network (CDN) można zoptymalizować proces dostarczania na podstawie typu zawartości, do których masz. Zawartość może być witryna sieci Web, strumień na żywo, wideo lub dużego pliku do pobrania. Po utworzeniu punktu końcowego usługi CDN, określ scenariusz w **zoptymalizowane pod kątem** opcji. Wybór określa, które optymalizacji jest stosowane do zawartości z punktu końcowego CDN.
 
 Opcje optymalizacji są przeznaczone do zachowaniami najlepszych rozwiązań, aby zwiększyć wydajność dostarczania zawartości i odciążanie lepsze pochodzenia. Wybrane opcje scenariusz wpłynąć na wydajność, modyfikując konfiguracje dla częściowej pamięci podręcznej, obiekt segmentu i zasady ponawiania źródła błędu. 
 
@@ -33,7 +33,19 @@ Ten artykuł zawiera omówienie różnych funkcji optymalizacji i kiedy należy 
 
 ## <a name="provider-options"></a>Opcje dostawcy
 
-**Usługa Azure Content Delivery Network from Akamai** obsługuje następujące funkcje optymalizacji:
+**Azure CDN Standard from Microsoft** obsługuje następujące funkcje optymalizacji:
+
+* [Ogólne web dostarczania](#general-web-delivery). Ten rodzaj optymalizacji jest również używana do przesyłania strumieniowego multimediów i plików o dużym pobierania.
+
+
+**Azure CDN Standard from Verizon**, i **Azure CDN Premium from Verizon** obsługuje następujące funkcje optymalizacji:
+
+* [Ogólne web dostarczania](#general-web-delivery). Ten rodzaj optymalizacji jest również używana do przesyłania strumieniowego multimediów i plików o dużym pobierania.
+
+* [Przyspieszanie witryn dynamicznych](#dynamic-site-acceleration) 
+
+
+**Azure CDN Standard from Akamai** obsługuje następujące funkcje optymalizacji:
 
 * [Dostarczanie ogólne sieci web](#general-web-delivery) 
 
@@ -45,23 +57,17 @@ Ten artykuł zawiera omówienie różnych funkcji optymalizacji i kiedy należy 
 
 * [Przyspieszanie witryn dynamicznych](#dynamic-site-acceleration) 
 
-**Usługa Azure Content Delivery Network from Verizon** obsługuje następujące funkcje optymalizacji:
-
-* [Ogólne web dostarczania](#general-web-delivery) (może również służyć do przesyłania strumieniowego multimediów i plików o dużym pobierania zawartości)
-
-* [Przyspieszanie witryn dynamicznych](#dynamic-site-acceleration) 
-
-Zdecydowanie zaleca się przetestowanie zmian wydajności od różnych dostawców, aby wybrać optymalne dostawcy dla firmy.
+Firma Microsoft zaleca, należy przetestować wydajność zmian od różnych dostawców, aby wybrać optymalne dostawcy dla firmy.
 
 ## <a name="select-and-configure-optimization-types"></a>Wybierz i skonfiguruj typy optymalizacji
 
-Aby utworzyć nowy punkt końcowy, wybierz typ optymalizacji, najlepiej pasującą do scenariusza i typu zawartości, którą chcesz dostarczyć punktu końcowego. **Ogólne web dostarczania** jest ustawieniem domyślnym. Dla istniejących **Azure Content Delivery Network from Akamai** punktów końcowych, możesz zaktualizować opcji optymalizacji w dowolnym momencie. Ta zmiana nie przerywają pracy dostarczania z sieci CDN. 
+Aby utworzyć nowy punkt końcowy, wybierz typ optymalizacji, najlepiej pasującą do scenariusza i typu zawartości, którą chcesz dostarczyć punktu końcowego. **Ogólne web dostarczania** jest ustawieniem domyślnym. Dla istniejących **Azure Content Delivery Network from Akamai** punktów końcowych, możesz zaktualizować opcji optymalizacji w dowolnym momencie. Ta zmiana nie przerywają pracy dostarczanie z usługi Azure CDN. 
 
-1. W ramach **Azure Content Delivery Network from Akamai** profilu, wybierz punkt końcowy.
+1. W ramach **Azure CDN Standard from Akamai** profilu, wybierz punkt końcowy.
 
     ![Punkt końcowy zaznaczenia ](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. W obszarze **ustawienia**, wybierz pozycję **optymalizacji**. Wybierz typ z **zoptymalizowane pod kątem** listy rozwijanej.
+2. W obszarze Ustawienia zaznacz **optymalizacji**. Wybierz typ z **zoptymalizowane pod kątem** listy rozwijanej.
 
     ![Wybór optymalizacji i typ](./media/cdn-optimization-overview/02_Select.png)
 
@@ -76,7 +82,7 @@ Dostarczanie ogólne sieci web jest najbardziej typowych opcji optymalizacji. Je
 Typowy witryny sieci Web zawiera zawartość statycznych i dynamicznych. Zawartość statyczna zawiera obrazy, biblioteki JavaScript i arkusze stylów, które mogą być buforowane i dostarczane do różnych użytkowników. Zawartość dynamiczna jest spersonalizowane dla poszczególnych użytkowników, takie jak wiadomości, które są dostosowane do profilu użytkownika. Zawartość dynamiczna nie jest buforowany, ponieważ jest on unikatowy dla każdego użytkownika, takie jak zawartość koszyka zakupów. Dostarczanie ogólne sieci web można zoptymalizować całej witryny sieci Web. 
 
 > [!NOTE]
-> Jeśli używasz **Azure Content Delivery Network from Akamai**, można użyć tego rodzaju optymalizacji, jeśli Twoje średni rozmiar pliku jest mniejsza niż 10 MB. Jeśli Twoje średni rozmiar pliku jest większy niż 10 MB, wybierz **pobierania plików o dużym** z **zoptymalizowane pod kątem** listy rozwijanej.
+> Jeśli używasz **Azure CDN Standard from Akamai**, można użyć tego rodzaju optymalizacji, jeśli Twoje średni rozmiar pliku jest mniejsza niż 10 MB. Jeśli Twoje średni rozmiar pliku jest większy niż 10 MB, wybierz **pobierania plików o dużym** z **zoptymalizowane pod kątem** listy rozwijanej.
 
 ### <a name="general-media-streaming"></a>Ogólne transmisje strumieniowe multimediów
 
@@ -86,7 +92,7 @@ Przesyłania strumieniowego multimediów jest czasowego, ponieważ pakiety przyc
 
 Ten scenariusz jest typowy dla klientów usługi Azure media. Gdy używasz usługi Azure media services, możesz uzyskać jeden przesyłania strumieniowego punktu końcowego, który może służyć do przesyłania strumieniowego na żywo i na żądanie. W tym scenariuszu klienci nie musisz przełączyć się do innego punktu końcowego zmiany z na żywo w celu przesyłania strumieniowego na żądanie. Optymalizacja przesyłania strumieniowego multimediów ogólne obsługuje scenariusza tego typu.
 
-**Azure Content Delivery Network from Verizon** używa typu optymalizacji dostarczania ogólne sieci web do dostarczania transmisji strumieniowej zawartości nośnika.
+Dla **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, i **Azure CDN Premium from Verizon**, użyj typu optymalizacji dostarczania ogólne sieci web do dostarczanie zawartości multimediów strumieniowych ogólne.
 
 Aby uzyskać więcej informacji o optymalizacji przesyłania strumieniowego multimediów, zobacz [multimediów strumieniowych optymalizacji](cdn-media-streaming-optimization.md).
 
@@ -94,26 +100,24 @@ Aby uzyskać więcej informacji o optymalizacji przesyłania strumieniowego mult
 
 Optymalizacja przesyłania strumieniowego multimediów wideo na żądanie poprawia przesyłania strumieniowego zawartości wideo na żądanie. Jeśli używasz punktu końcowego przesyłania strumieniowego wideo na żądanie, można użyć tej opcji.
 
-**Azure Content Delivery Network from Verizon** używa typu optymalizacji dostarczania ogólne sieci web do dostarczania transmisji strumieniowej zawartości nośnika.
+Dla **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, i **Azure CDN Premium from Verizon**, użyj typu optymalizacji dostarczania ogólne sieci web do dostarczanie zawartości multimediów strumieniowych wideo na żądanie.
 
 Aby uzyskać więcej informacji o optymalizacji przesyłania strumieniowego multimediów, zobacz [multimediów strumieniowych optymalizacji](cdn-media-streaming-optimization.md).
 
 > [!NOTE]
-> Jeśli punkt końcowy służy głównie zawartości wideo na żądanie, użyj tego typu optymalizacji. Główna różnica między tego rodzaju optymalizacji i przesyłania strumieniowego optymalizacji multimediów ogólne jest limit ponownych prób połączenia. Limit czasu jest znacznie krótszy do pracy ze scenariuszami transmisji strumieniowej na żywo.
+> Jeśli punkt końcowy CDN służy głównie zawartości wideo na żądanie, użyj tego typu optymalizacji. Główna różnica między tego rodzaju optymalizacji i przesyłania strumieniowego optymalizacji multimediów ogólne jest limit ponownych prób połączenia. Limit czasu jest znacznie krótszy do pracy ze scenariuszami transmisji strumieniowej na żywo.
 
 ### <a name="large-file-download"></a>Pobieranie dużych plików
 
-Jeśli używasz **Azure Content Delivery Network from Akamai**, należy użyć pobierania dużych plików w celu dostarczania plików większych niż 1,8 GB. **Usługa Azure Content Delivery Network from Verizon** nie ma ograniczenia rozmiaru pobierania pliku w jego optymalizację dostarczania ogólne sieci web.
+Aby uzyskać **Azure CDN Standard from Akamai**, pliki do pobrania plików o dużym są zoptymalizowane pod kątem zawartości większych niż 10 MB. Jeśli Twoje średni rozmiar pliku jest mniejsza niż 10 MB, należy użyć dostarczania ogólne sieci web. Jeśli Twoje rozmiary plików średni są stale większych niż 10 MB, może być bardziej wydajne, aby utworzyć oddzielne punkt końcowy dla dużych plików. Aktualizacje oprogramowania układowego i oprogramowania są zwykle dużych plików. Aby dostarczyć plików większych niż 1,8 GB, optymalizacja pobierania plików o dużym jest wymagana.
 
-Jeśli używasz **Azure Content Delivery Network from Akamai**, pliki do pobrania plików o dużym są zoptymalizowane pod kątem zawartości większych niż 10 MB. Jeśli Twoje średni rozmiar pliku jest mniejsza niż 10 MB, można użyć dostarczania ogólne sieci web. Jeśli Twoje rozmiary plików średni są stale większych niż 10 MB, może być bardziej wydajne, aby utworzyć oddzielne punkt końcowy dla dużych plików. Aktualizacje oprogramowania układowego i oprogramowania są zwykle dużych plików.
-
-**Azure Content Delivery Network from Verizon** używa typu optymalizacji dostarczania ogólne sieci web do dostarczania zawartości pobierania dużych plików.
+Dla **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon**, i **Azure CDN Premium from Verizon**, użyj typu optymalizacji dostarczania ogólne sieci web do dostarczanie plików o dużym pobierania zawartości. Nie istnieje żadne ograniczenia dotyczące rozmiaru pobierania pliku.
 
 Aby uzyskać więcej informacji o optymalizacji dużych plików, zobacz [optymalizacji plików o dużym](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Przyspieszanie witryn dynamicznych
 
- Akceleracja dynamiczne witryny jest dostępna zarówno w **Azure Content Delivery Network from Akamai** i **Azure Content Delivery Network from Verizon** profilów. Tego rodzaju optymalizacji pociąga za sobą dodatkowe opłaty użyty. Aby uzyskać więcej informacji, zobacz [cennik Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+ Akceleracja dynamiczne witryny jest dostępna dla **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon**, i **Azure CDN Premium from Verizon** profilów. Tego rodzaju optymalizacji pociąga za sobą dodatkowe opłaty użyty. Aby uzyskać więcej informacji, zobacz [cennik Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
 
 Akceleracja dynamiczne witryny obejmuje różne techniki, które korzystają opóźnienia i wydajności, zawartości dynamicznej. Techniki to m.in. optymalizacji trasy i sieci, optymalizacja protokołu TCP i inne. 
 

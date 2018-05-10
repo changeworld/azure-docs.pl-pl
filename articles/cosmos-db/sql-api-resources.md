@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Podstawowe pojęcia i hierarchiczny model zasobów usługi Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Ten artykuł zawiera odpowiedzi na następujące pytania:
 * Co to są systemu zdefiniowanych zasobów przeciwieństwie zasoby zdefiniowane przez użytkownika?
 * Jak rozwiązać zasobu?
 * Jak pracować z kolekcjami
-* Jak pracować z procedur składowanych, wyzwalaczy i funkcje zdefiniowane przez użytkownika (UDF)
+* Jak pracować z procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF)
 
 W następujących wideo Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu przeprowadzi Cię przez model zasobów bazy danych Azure rozwiązania Cosmos. 
 
@@ -58,7 +58,7 @@ Aby rozpocząć pracę z zasobami, należy najpierw [Tworzenie konta bazy danych
 | Database (Baza danych) |Baza danych jest kontenerem logicznym magazynu dokumentów podzielonym na partycje w kolekcjach. Istnieje również kontener użytkowników. |
 | Użytkownik |Logiczne przestrzeń nazw dla zakresu uprawnień. |
 | Uprawnienie |Token autoryzacji skojarzonych z użytkownikiem, aby uzyskać dostęp do określonego zasobu. |
-| Collection |Kolekcja jest kontenerem dokumentów JSON i skojarzonej logiki aplikacji JavaScript. Kolekcja to płatna jednostka, której [koszt](performance-levels.md) zależy od poziomu wydajności skojarzonego z tą kolekcją. Kolekcje mogą znajdować się na jednej lub wielu partycjach/serwerach i mogą być skalowane do obsługi praktycznie nieograniczonej ilości magazynu lub przepływności. |
+| Collection |Kolekcja jest kontenerem dokumentów JSON i skojarzonej logiki aplikacji JavaScript. Kolekcje mogą znajdować się na jednej lub wielu partycjach/serwerach i mogą być skalowane do obsługi praktycznie nieograniczonej ilości magazynu lub przepływności. |
 | Procedura składowana |Logika aplikacji napisane w języku JavaScript, który jest zarejestrowany w kolekcji i transakcyjnie wykonywane w ramach aparatu bazy danych. |
 | Wyzwalacz |Logiki aplikacji napisane w języku JavaScript wykonane przed lub po każdej operacji insert, Zamień lub operacji usuwania. |
 | UDF |Logika aplikacji napisane w języku JavaScript. Funkcje UDF umożliwiają modelu operator niestandardowe zapytania i tym samym rozszerzać język zapytań SQL interfejsu API. |
@@ -166,14 +166,14 @@ Bazy danych DB rozwiązania Cosmos jest kontenerem logicznym jedną lub więcej 
 ![Model bazy danych konta i kolekcje hierarchiczne][2]  
 **Baza danych jest kontenerem logicznym użytkowników i kolekcji**
 
-Bazy danych może zawierać nieograniczoną dokumentu magazynu na partycje w kolekcjach.
+Bazy danych może zawierać magazynu nieograniczone dokumentów na partycje w kolekcjach.
 
 ### <a name="elastic-scale-of-an-azure-cosmos-db-database"></a>Elastyczne skalowanie bazy danych Azure DB rozwiązania Cosmos
 Baza danych DB rozwiązania Cosmos jest elastyczny domyślnie — od kilka GB do poziomu petabajtów dyski SSD kopię dokumentu, a udostępnionej przepływności. 
 
 W przeciwieństwie do bazy danych w tradycyjnych RDBMS bazy danych w bazie danych rozwiązania Cosmos jest poza zakresem na jednym komputerze. DB rozwiązania Cosmos potrzeb skalowania aplikacji rośnie, można utworzyć więcej kolekcji i baz danych. W rzeczywistości różne aplikacje firm pierwszy w programie Microsoft korzystają bazy danych Azure rozwiązania Cosmos w skali konsumenta przez utworzenie bardzo dużych baz danych Azure DB rozwiązania Cosmos każdego zawierającego tysiące kolekcje z terabajtów miejsca do magazynowania dokumentu. Można zwiększać i zmniejszać bazy danych przez dodanie lub usunięcie kolekcji w celu spełnienia wymagań skali aplikacji. 
 
-Można utworzyć dowolną liczbę kolekcji w bazie danych może ulec oferty. Każda kolekcja ma kopii dyski SSD, a zainicjowanej dla Ciebie w zależności od warstwy wydajności wybranej przepływności.
+Można utworzyć dowolną liczbę kolekcji w bazie danych może ulec oferty. Każdej kolekcji lub zestaw kolekcji (w bazie danych), ma SSD kopii pamięci masowej i przepływność udostępnione Ci w zależności od wybranej oferty.
 
 Baza danych bazy danych Azure rozwiązania Cosmos jest również kontener użytkowników. Użytkownik, w ruchu jest logiczną przestrzeń nazw dla zestaw uprawnień, który zawiera szczegółowe autoryzacji i dostępu do kolekcji, dokumentów i załączników.  
 
@@ -183,7 +183,7 @@ Zgodnie z innymi zasobami w model zasobów bazy danych Azure rozwiązania Cosmos
 Kolekcja DB rozwiązania Cosmos jest kontenerem dokumentów JSON. 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>Elastyczne SSD kopii magazynu dokumentów
-Kolekcja jest bardzo elastyczny — automatycznie rozwoju i zmniejszana, jak dodać lub usunąć dokumentów. Kolekcje są zasoby logicznej i może obejmować co najmniej jednej partycji fizycznej lub serwerów. Liczba partycji w ramach kolekcji zależy od rozwiązania Cosmos bazy danych na podstawie rozmiaru pamięci masowej i przepływność kolekcji. Każdej partycji w bazie danych rozwiązania Cosmos ma stałą kopie dysków SSD magazynu skojarzone z nim i są replikowane w celu zapewnienia wysokiej dostępności. Zarządzanie partycji pełni zarządza bazy danych Azure rozwiązania Cosmos i nie trzeba pisania złożonego kodu lub Zarządzanie partycjami. Kolekcje rozwiązania cosmos bazy danych są **praktycznie nieograniczonej** pod względem pamięci masowej i przepływność. 
+Kolekcja jest bardzo elastyczny — automatycznie rozwoju i zmniejszana, jak dodać lub usunąć dokumentów. Kolekcje są zasoby logicznej i może obejmować co najmniej jednej partycji fizycznej lub serwerów. Liczba partycji przypisane do kolekcji zależy od rozwiązania Cosmos bazy danych na podstawie rozmiaru magazynu i zainicjowanej dla kolekcji lub zestaw kolekcji przepływności. Każdej partycji w bazie danych rozwiązania Cosmos ma stałą kopie dysków SSD magazynu skojarzone z nim i są replikowane w celu zapewnienia wysokiej dostępności. Zarządzanie partycji pełni zarządza bazy danych Azure rozwiązania Cosmos i nie trzeba pisania złożonego kodu lub Zarządzanie partycjami. Kolekcje rozwiązania cosmos bazy danych są **nieograniczone** pod względem pamięci masowej i przepływność. 
 
 ### <a name="automatic-indexing-of-collections"></a>Automatycznego indeksowania w kolekcji
 Azure DB rozwiązania Cosmos jest systemem true bazy danych bez schematu. Nie przyjmuje ani nie wymaga żadnego schematu dla dokumentów JSON. Dokumenty podczas dodawania do kolekcji, bazy danych rozwiązania Cosmos Azure automatycznie indeksuje je i są dostępne dla Ciebie do zapytania. Automatyczne indeksowanie dokumentów, bez konieczności schematu lub indeksów pomocniczych jest kluczowych możliwości bazy danych Azure rozwiązania Cosmos i jest włączony technikami konserwacji indeksu zoptymalizowanych pod kątem zapisu, zwolnić blokady i opartą na strukturze dziennika. Azure DB rozwiązania Cosmos obsługuje stałej ilości bardzo szybkiego zapisu służąc nadal spójne zapytania. Dokument programu i indeksu magazynu są używane do obliczania magazynu wykorzystanych w ramach każdej kolekcji. Można kontrolować, magazynu i wydajności kompromisy skojarzone z indeksowania Konfigurując zasady indeksowania dla kolekcji. 
@@ -195,7 +195,7 @@ Zasady indeksowania wszystkich kolekcji pozwala wprowadzić wydajności i magazy
 * Określ, czy do dołączania lub wykluczania określonych ścieżek lub wzorce w dokumentach z indeksu. Można to osiągnąć przez ustawienie includedPaths i excludedPaths na indexingPolicy kolekcji odpowiednio. Można również skonfigurować magazynu i wydajności kompromisy dla zapytań o zakres i wyznaczania wartości skrótu dla wzorców określonej ścieżki. 
 * Wybór między synchroniczne (zgodne) i aktualizacje asynchroniczne indeksu (lazy). Domyślnie indeks jest aktualizowana synchronicznie na każdym insert, replace lub usuwania dokumentu do kolekcji. Dzięki temu zapytania uwzględnić poziomu spójności co odczytuje dokument. Podczas zapisu zoptymalizowany i obsługuje woluminy utrzymujących zapisów dokumentu oraz konserwacji synchroniczne indeksu i obsługujący spójne zapytania bazy danych Azure rozwiązania Cosmos można skonfigurować pewne kolekcji, aby zaktualizować ich indeksu w trybie opóźnienia. Indeksowanie z opóźnieniem zwiększa wydajność zapisu dalsze i jest idealny dla scenariuszy wprowadzanie zbiorczego głównie ciężki odczytu kolekcji.
 
-Zasady indeksowania można zmienić, wykonując PUT w kolekcji. Można to osiągnąć za pośrednictwem [klienta SDK](sql-api-sdk-dotnet.md), [portalu Azure](https://portal.azure.com) lub [interfejsów API REST](/rest/api/cosmos-db/).
+Zasady indeksowania można zmienić, wykonując PUT w kolekcji. Można to osiągnąć za pośrednictwem [klienta SDK](sql-api-sdk-dotnet.md), [portalu Azure](https://portal.azure.com), lub [interfejsów API REST](/rest/api/cosmos-db/).
 
 ### <a name="querying-a-collection"></a>Wykonywanie zapytania kolekcji
 Dokumentów w ramach kolekcji może zawierać dowolne schematów i dokumentów w kolekcji można zbadać bez podawania żadnego schematu lub wyprzedzeniem indeksów pomocniczych. Można zbadać za pomocą kolekcji [odwołania do składni SQL DB rozwiązania Cosmos Azure](https://msdn.microsoft.com/library/azure/dn782250.aspx), zapewniające sformatowanego operatorów hierarchiczna relacyjnych i przestrzennych i rozszerzalność dzięki oparte na języku JavaScript funkcji UDF. Gramatyka JSON umożliwia modelowanie dokumentów JSON jako drzewa z etykietami jako węzłami drzewa. To jest wykorzystywana zarówno przez techniki automatycznego indeksowania SQL API, a także dialekt SQL Azure rozwiązania Cosmos DB. Język zapytań SQL składa się z trzech głównych aspektach:   
@@ -222,7 +222,7 @@ Ze względu na jego głębokie zaangażowanie JavaScript i JSON bezpośrednio we
 * Efektywne wykonanie współbieżności kontrolować odzyskiwania automatycznego indeksowania wykresów obiektów JSON bezpośrednio w aparacie bazy danych
 * Naturalnie wyrażanie przepływu sterowania, zmiennej zakresu przypisania i integracji w nim elementów podstawowych transakcji bazy danych bezpośrednio pod względem JavaScript język programowania obsługi wyjątków
 
-Logiki JavaScript zarejestrowany na poziomie kolekcji można następnie wystawiania operacje bazy danych na dokumentach danej kolekcji. Azure DB rozwiązania Cosmos niejawnie opakowuje oparty na języku JavaScript procedury składowane i wyzwalacze w ramach transakcje ACID otoczenia, z użyciem izolacji migawki wszystkich dokumentów w kolekcji. Jeśli w trakcie wykonywania logiki JavaScript zgłosi ona wyjątek, cała transakcja zostaje przerwana. Jest bardzo prosty model programowania wynikowy jeszcze zaawansowanych. Deweloperzy JavaScript Pobierz model programowania "trwałe" podczas nadal przy użyciu konstrukcji języka znanych i biblioteki w nim elementów podstawowych.   
+Logiki JavaScript zarejestrowany na poziomie kolekcji można następnie wystawiania operacje bazy danych na dokumentach danej kolekcji. Azure DB rozwiązania Cosmos niejawnie opakowuje oparty na języku JavaScript procedury składowane i wyzwalacze w ramach transakcji ACID otoczenia z izolacją migawki wszystkich dokumentów w kolekcji. Jeśli w trakcie wykonywania logiki JavaScript zgłosi ona wyjątek, cała transakcja zostaje przerwana. Wynikowa modelu programowania jest proste jeszcze zaawansowanych. Deweloperzy JavaScript Pobierz model programowania "trwałe" podczas nadal przy użyciu konstrukcji języka znanych i biblioteki w nim elementów podstawowych.   
 
 Możliwość wykonania JavaScript bezpośrednio wewnątrz aparatu bazy danych w przestrzeni adresowej jako pula buforów umożliwia wydajności i transakcyjnego wykonywania operacji bazy danych dla dokumentów w kolekcji. Ponadto aparat bazy danych DB rozwiązania Cosmos ułatwia głębokie zaangażowanie JSON i JavaScript eliminuje wszelkie impedancji niezgodność między systemami typu aplikacji i bazy danych.   
 
@@ -282,7 +282,7 @@ Procedury składowane i wyzwalaczy współdziałają z kolekcji i dokumentów w 
 Kolekcje w interfejsie API SQL można tworzyć, usunięto, odczytu lub wyliczeniowego, łatwo za pomocą [interfejsów API REST](/rest/api/cosmos-db/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Interfejsu API SQL zawsze zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych kolekcji. Usuwanie kolekcji automatycznie gwarantuje, że nie masz dostępu do tych dokumentów, załączniki, procedur składowanych, wyzwalaczy i funkcji UDF w nim zawarte.   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>Procedur składowanych, wyzwalaczy i funkcji zdefiniowanych użytkownika (UDF)
-Zgodnie z opisem w poprzedniej sekcji, można napisać logiki aplikacji do uruchamiania bezpośrednio z poziomu transakcji wewnątrz aparatu bazy danych. Logiki aplikacji mogą być zapisywane w całości w języku JavaScript i mogą być modelowane jako procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika. JavaScript można wstawić kodu w procedurze składowanej lub wyzwalacza, replace, delete, odczytu lub zapytania dokumentów w kolekcji. Z drugiej strony JavaScript w funkcji zdefiniowanej przez użytkownika nie może wstawić, Zamień lub usuwanie dokumentów. Funkcje UDF wyliczyć dokumenty zestawu wyników zapytania i utworzyć inny zestaw wyników. Dla wielu dzierżawców Azure DB rozwiązania Cosmos wymusza ładu strict oparte na rezerwacjach zasobów. Każdy przechowywane procedury, wyzwalacza lub UDF pobiera stałym quantum zasobów systemu operacyjnego, aby wykonać swoją pracę. Ponadto procedur składowanych, wyzwalaczy i funkcji UDF nie można połączyć z zewnętrznej biblioteki języka JavaScript i traktowane są jako zabronione przekraczających budżetów zasobów przydzielonych do nich. Możesz zarejestrować, wyrejestruj procedur składowanych, wyzwalaczy i funkcji UDF z kolekcji przy użyciu interfejsów API REST.  Po rejestracji procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika jest wstępnie skompilowany i przechowywane jako kod bajtowy, który jest wykonywany później. Następujące illustrateshow ssection zestawu JavaScript SDK usługi Azure rozwiązania Cosmos bazy danych służy do rejestrowania, wykonaj i wyrejestruj procedury składowanej, wyzwalaczy i funkcji zdefiniowanej przez użytkownika. Zestaw SDK JavaScript jest proste otoki za pośrednictwem [interfejsów API REST](/rest/api/cosmos-db/). 
+Zgodnie z opisem w poprzedniej sekcji, można napisać logiki aplikacji do uruchamiania bezpośrednio z poziomu transakcji wewnątrz aparatu bazy danych. Logiki aplikacji mogą być zapisywane w całości w języku JavaScript i mogą być modelowane jako procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika. JavaScript można wstawić kodu w procedurze składowanej lub wyzwalacza, replace, delete, odczytu lub zapytania dokumentów w kolekcji. Z drugiej strony JavaScript w funkcji zdefiniowanej przez użytkownika nie może wstawić, Zamień lub usuwanie dokumentów. Funkcje UDF wyliczyć dokumenty zestawu wyników zapytania i utworzyć inny zestaw wyników. Dla wielu dzierżawców Azure DB rozwiązania Cosmos wymusza ładu strict oparte na rezerwacjach zasobów. Każdy przechowywane procedury, wyzwalacza lub UDF pobiera stałym quantum zasobów systemu operacyjnego, aby wykonać swoją pracę. Ponadto procedur składowanych, wyzwalaczy i funkcji UDF nie można połączyć z zewnętrznej biblioteki języka JavaScript i traktowane są jako zabronione przekraczających budżetów zasobów przydzielonych do nich. Możesz zarejestrować, wyrejestruj procedur składowanych, wyzwalaczy i funkcji UDF z kolekcji przy użyciu interfejsów API REST.  Po rejestracji procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika jest wstępnie skompilowany i przechowywane jako kod bajtowy, który jest wykonywany później. Poniższej sekcji przedstawiono, jak można użyć zestawu SDK usługi Azure rozwiązania Cosmos DB JavaScript do rejestracji, wykonaj i wyrejestruj procedury składowanej, wyzwalaczy i funkcji zdefiniowanej przez użytkownika. Zestaw SDK JavaScript jest proste otoki za pośrednictwem [interfejsów API REST](/rest/api/cosmos-db/). 
 
 ### <a name="registering-a-stored-procedure"></a>Rejestrowanie procedury składowanej
 Rejestracja procedury składowanej tworzy nowy zasób procedury składowanej w kolekcji za pośrednictwem protokołu HTTP POST.  
@@ -322,7 +322,7 @@ Wykonywanie procedury składowanej odbywa się przez wystawienie przez przekazyw
         });
 
 ### <a name="unregistering-a-stored-procedure"></a>Wyrejestrowywanie procedury składowanej
-Wyrejestrowywanie procedury składowanej po prostu odbywa się przez wystawienie HTTP DELETE przed istniejący zasób procedury składowanej.   
+Wyrejestrowywanie procedury składowanej odbywa się przez wystawienie HTTP DELETE przed istniejący zasób procedury składowanej.   
 
     client.deleteStoredProcedureAsync(createdStoredProcedure.resource._self)
         .then(function (response) {
@@ -364,7 +364,7 @@ Odbywa się wykonywania wyzwalacza, określając nazwę istniejącego wyzwalacza
         });
 
 ### <a name="unregistering-a-pre-trigger"></a>Wyrejestrowywanie wyzwalacz wstępnego
-Wyrejestrowywanie wyzwalacz po prostu odbywa się za pośrednictwem wydania HTTP DELETE przed istniejący zasób wyzwalacza.  
+Wyrejestrowywanie wyzwalacz odbywa się za pośrednictwem wydania HTTP DELETE przed istniejący zasób wyzwalacza.  
 
     client.deleteTriggerAsync(createdPreTrigger._self);
         .then(function(response) {
@@ -415,7 +415,7 @@ Mimo że wstawki powyżej wykazało rejestracji (POST), Wyrejestrowanie (PUT), o
 ## <a name="documents"></a>Dokumenty
 Można wstawić, Zastąp, usuwanie, odczytu, wyliczania i zapytania dowolnych dokumentów JSON w kolekcji. Azure DB rozwiązania Cosmos nie wprowadzić żadnego schematu i nie wymaga indeksów pomocniczych w celu zapewnienia obsługi zapytań za pośrednictwem dokumentów w kolekcji. Maksymalny rozmiar dokumentu jest 2 MB.   
 
-Trwa usługi naprawdę otwartej bazy danych, bazy danych Azure rozwiązania Cosmos nie magazynowa żadnych specjalnych typów (na przykład data i godzina) lub określonego kodowania dla dokumentów JSON. Azure DB rozwiązania Cosmos nie wymaga żadnych specjalnych konwencje JSON do skodyfikować relacje między różnymi dokumentami; Składnia SQL Azure DB rozwiązania Cosmos zapewnia bardzo zaawansowane hierarchicznej i relacyjne kwerenda operatory zapytań i projektu dokumentów bez adnotacji specjalnych lub konieczność skodyfikować relacje dokumentów za pomocą różnych właściwości.  
+Trwa usługi naprawdę otwartej bazy danych, bazy danych Azure rozwiązania Cosmos nie magazynowa żadnych specjalnych typów (na przykład data i godzina) lub określonego kodowania dla dokumentów JSON. Azure DB rozwiązania Cosmos nie wymaga żadnych specjalnych konwencje JSON do skodyfikować relacje między różnymi dokumentami; Składnia SQL Azure DB rozwiązania Cosmos zapewnia zaawansowanych zapytań hierarchicznej i relacyjne, operatorów zapytań i projektu dokumentów bez adnotacji specjalnych lub konieczność skodyfikować relacje dokumentów za pomocą różnych właściwości.  
 
 Zgodnie z wszystkimi innymi zasobami dokumenty mogą być tworzone zastąpiony, usunięty, odczytu, wyliczyć i wyświetlić łatwo przy użyciu interfejsów API REST lub dowolnym [zestawów SDK klienta](sql-api-sdk-dotnet.md). Usuwanie dokumentu natychmiast zwolni przydziału odpowiadający wszystkich zagnieżdżonych załączników. Poziom spójności odczytu dokumentów następuje zasady spójności na konto bazy danych. Ta zasada może być zastąpiona na podstawie danego żądania, w zależności od wymagań spójności danych aplikacji. Podczas wykonywania zapytań dotyczących dokumentów, spójności odczytu następuje trybu indeksowania ustawić w kolekcji. Dla "spójne" wynika to zasady spójności dla konta. 
 
@@ -426,11 +426,11 @@ Należy wziąć pod uwagę aplikacji odczytu społecznościowych, która używa 
 
 * Książki sam jest przechowywana zawartość w magazynie nośnika albo dostępne jako część konta bazy danych DB rozwiązania Cosmos Azure lub magazynu zdalnego nośnika. 
 * Aplikacja może przechowywać metadanych każdego użytkownika jako odrębne dokument — na przykład metadane Jana dla Skoroszyt1 są przechowywane w dokumencie odwołuje się /colls/joe/docs/book1. 
-* Załączniki wskazuje zawartość, którą stron księgi danego użytkownika są przechowywane w dokumencie odpowiednie na przykład, /colls/joe/docs/book1/chapter1, /colls/joe/docs/book1/chapter2 itp. 
+* Załączniki wskazujący zawartości stron księgi danego użytkownika są przechowywane w odpowiednich dokumentu, na przykład /colls/joe/docs/book1/chapter1, /colls/joe/docs/book1/chapter2 itp. 
 
 Powyższe przykłady Użyj przyjaznej nazwy do przekazania hierarchii zasobów. Zasoby są dostępne za pośrednictwem interfejsów API REST za pośrednictwem zasobów unikatowych identyfikatorów. 
 
-Dla nośnika, który jest zarządzany przez bazy danych Azure rozwiązania Cosmos właściwość _media załącznika odwołuje się do nośnika przez jego identyfikator URI. Zapewnia Azure DB rozwiązania Cosmos pamięci zbieranie nośnik, po upuszczeniu wszystkich oczekujących odwołań. Azure DB rozwiązania Cosmos automatycznie generuje załącznika podczas przekazywania nowego nośnika i wypełnia _media wskaż nowo dodanego nośnika. Jeśli zdecydujesz się przechowywać nośnika w magazynie obiektów blob zdalnego zarządzany przez użytkownika (na przykład OneDrive, usługi Azure Storage itp DropBox), do odwołania nośnik można nadal używać załączników. W takim przypadku utworzysz załącznik samodzielnie i wypełnić jego właściwość _media.   
+Dla nośnika, który jest zarządzany przez bazy danych Azure rozwiązania Cosmos właściwość _media załącznika odwołuje się do nośnika przez jego identyfikator URI. Zapewnia Azure DB rozwiązania Cosmos pamięci zbieranie nośnik, po upuszczeniu wszystkich oczekujących odwołań. Azure DB rozwiązania Cosmos automatycznie generuje załącznika podczas przekazywania nowego nośnika i wypełnia _media wskaż nowo dodanego nośnika. Jeśli zdecydujesz się przechowywać nośnika w magazynie obiektów blob zdalnego zarządzany przez użytkownika (na przykład OneDrive, usługi Azure Storage, DropBox, itp.), można nadal używać załączników do odwołania nośnika. W takim przypadku utworzysz załącznik samodzielnie i wypełnić jego właściwość _media.   
 
 Zgodnie z wszystkimi innymi zasobami załączniki mogą być tworzone zastąpione, usunięty, odczytać lub wyliczyć za pomocą interfejsów API REST lub w dowolnej z zestawów SDK klienta. Podobnie jak w przypadku dokumentów, poziomu spójności odczytu załączników następuje zasad spójności na konto bazy danych. Ta zasada może być zastąpiona na podstawie danego żądania, w zależności od wymagań spójności danych aplikacji. Podczas wykonywania zapytania dla załączników, spójności odczytu następuje trybu indeksowania ustawić w kolekcji. Dla "spójne" wynika to zasady spójności dla konta. 
  
@@ -457,7 +457,7 @@ Podobnie jak wszystkie inne zasoby użytkowników w usłudze Azure DB rozwiązan
 ## <a name="permissions"></a>Uprawnienia
 Z punktu widzenia kontroli dostępu do zasobów, takich jak konta bazy danych, bazy danych użytkowników i uprawnienia są traktowane jako *administracyjne* zasobów, ponieważ wymagają one wykonywania uprawnień administracyjnych. Z drugiej strony, zasobów, w tym kolekcje, dokumenty, załączniki, procedury składowane, wyzwalacze, i funkcje UDF są zakresu w określonej bazie danych i uznane za *zasoby aplikacji*. Odpowiadającej dwa typy zasobów i role, które uzyskują dostęp do nich (to znaczy administratora i użytkownika), modelu autoryzacji definiuje dwa typy *klucze dostępu*: *klucza głównego* i  *Klucz zasobu*. Klucz główny jest część konta bazy danych i został dostarczony do deweloperów (lub administratora) który aprowizacji konta bazy danych. Ten klucz główny ma semantykę administrator może służyć do autoryzacji dostępu do zasobów z aplikacją i administracyjnych. Z kolei klucz zasobu jest kluczem szczegółowego dostępu, który zezwala na dostęp do *określonych* zasobów aplikacji. W związku z tym umożliwia przechwytywanie relacji między użytkownikiem bazy danych i uprawnienia użytkownika dla określonego zasobu (na przykład kolekcji, dokumentów, załącznik, procedury składowanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika).   
 
-Jedynym sposobem na uzyskanie klucza zasobu jest tworzenie zasobu uprawnień danego użytkownika. Należy pamiętać, że aby było możliwe utworzenie ani pobrać uprawnień, klucz główny należy przedstawić w nagłówku autoryzacji. Zasób uprawnienia wiąże zasobu, dostęp do niej oraz użytkownika. Po utworzeniu zasobu uprawnienia, użytkownik musi tylko do prezentowania klucza zasobów w celu uzyskania dostępu do odpowiednich zasobów. W związku z tym klucz zasobu można wyświetlić jako logicznych i compact reprezentacji zasobu uprawnienia.  
+Jedynym sposobem na uzyskanie klucza zasobu jest tworzenie zasobu uprawnień danego użytkownika. Aby można było utworzyć lub pobrać uprawnienia, klucz główny należy przedstawić w nagłówku autoryzacji. Zasób uprawnienia wiąże zasobu, dostęp do niej oraz użytkownika. Po utworzeniu zasobu uprawnienia, użytkownik musi tylko do prezentowania klucza zasobów w celu uzyskania dostępu do odpowiednich zasobów. W związku z tym klucz zasobu można wyświetlić jako logicznych i compact reprezentacji zasobu uprawnienia.  
 
 Zgodnie z wszystkimi innymi zasobami, można utworzyć uprawnienia w usłudze Azure DB rozwiązania Cosmos, zastąpione, usunięty, odczytać lub wyliczyć za pomocą interfejsów API REST lub w dowolnej z zestawów SDK klienta. Azure DB rozwiązania Cosmos zawsze zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych uprawnienia. 
 

@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8ca8156d98932e0e7313375cadc1ace2a3088881
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 58d65ef05ed872bb357070de9866253baea5dc70
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 Magazyn danych SQL Azure należy uaktualnić do najnowszej generacji Azure architektura sprzętu i magazynowania.
@@ -68,7 +68,13 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
    
    Drugi etap procesu uaktualniania jest migracji danych ("Uaktualnianie - Online"). Migracja danych jest strumieniem online proces w tle, co wolno przenosi kolumnowy danych z architektury starego magazynu, do korzystania z lokalnej pamięci podręcznej SSD Architektura magazynu. W tym czasie będzie online wykonywania kwerend i ładowania magazynu danych. Wszystkie dane będą dostępne dla zapytań niezależnie od tego, czy został już zmigrowany, czy nie. Migracja danych odbywa się z szybkością różne w zależności od tego, że rozmiar danych, poziom wydajności i liczby segmentów magazynu kolumn. 
 
-5. **Opcjonalne zalecenie:** aby przyspieszyć proces migracji danych w tle, zaleca się natychmiast wymusić przenoszenia danych, uruchamiając [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) dla wszystkich tabel magazynu kolumn w większych SLO i zasobów Klasa. Ta operacja jest w trybie offline w porównaniu do strumieniem proces w tle; jednak migracji danych będzie znacznie szybsza, bo gdzie następnie mogą w pełni korzystać nowej architektury magazynu rozszerzonego raz wraz z rowgroups wysokiej jakości. 
+5. **Znajdź magazynu danych Gen2** za pomocą bloku przeglądania bazy danych SQL. 
+
+> [!NOTE]
+> Obecnie jest problem gdzie danych Gen2 magazynów nie będą wyświetlane w usłudze SQL data warehouse Przeglądaj bloku. Użyj bloku przeglądania bazy danych SQL można znaleźć nowo uaktualniony Gen2 magazynu danych. Aktywnie pracujemy nad tej poprawki.
+> 
+
+6. **Opcjonalne zalecenie:** aby przyspieszyć proces migracji danych w tle, zaleca się natychmiast wymusić przenoszenia danych, uruchamiając [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) dla wszystkich tabel magazynu kolumn w większych SLO i zasobów Klasa. Ta operacja jest w trybie offline w porównaniu do strumieniem proces w tle; jednak migracji danych będzie znacznie szybsza, bo gdzie następnie mogą w pełni korzystać nowej architektury magazynu rozszerzonego raz wraz z rowgroups wysokiej jakości. 
 
 To następujące zapytanie generuje wymagane polecenia Alter Index Rebuild aby przyspieszyć proces migracji danych:
 

@@ -1,8 +1,8 @@
 ---
-title: "Użyj w portalu Azure Media funkcji tworzenia wycinków | Dokumentacja firmy Microsoft"
-description: "Utwórz klipy przy użyciu usługi Azure Media funkcji tworzenia wycinków w portalu Azure"
+title: Użyj w portalu Azure Media funkcji tworzenia wycinków | Dokumentacja firmy Microsoft
+description: Utwórz klipy przy użyciu usługi Azure Media funkcji tworzenia wycinków w portalu Azure
 services: media-services
-keywords: "klip subclip; kodowanie; nośnika"
+keywords: klip subclip; kodowanie; nośnika
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 1deca68cd6a61ede7536c4d5544036a10c54209b
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Utwórz klipy z usługi Azure Media funkcji tworzenia wycinków w portalu
 Azure Media funkcji tworzenia wycinków w portalu służy do tworzenia klipy z zasobów kont usługi multimediów. Aby rozpocząć, przejdź do Twojego konta usługi media services w portalu. Następnie wybierz pozycję **Subclip** kartę.
@@ -39,5 +39,5 @@ Na poniższym obrazie przedstawiono funkcji tworzenia wycinków w trybie dynamic
 ## <a name="submitting-clipping-jobs"></a>Przesyłanie zadań wycinka
 Po zakończeniu tworzenia klip przycisk przesyłania zadania dla inicjowania odpowiedniego zadania wycinka lub wywołania dynamicznego manifestu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby rozpocząć korzystanie z funkcji tworzenia wycinków multimediów Azure, przeczytaj [wprowadzenie](media-services-azure-media-clipper-getting-started.md) artykułu, aby uzyskać więcej informacji na temat wdrażania elementu widget.

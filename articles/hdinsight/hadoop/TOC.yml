@@ -1,8 +1,8 @@
 - name: Dokumentacja usługi Azure HDInsight
   href: /azure/hdinsight
-- name: Usługa Hadoop w usłudze HDInsight
+- name: Omówienie
   items:
-    - name: Omówienie
+    - name: Informacje o platformie Hadoop w usłudze HDInsight
       href: apache-hadoop-introduction.md
     - name: Architektura usługi Hadoop w usłudze HDInsight
       href: ../hdinsight-hadoop-architecture.md
@@ -10,20 +10,32 @@
     - name: Składniki usługi Hadoop na usłudze HDInsight
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Rozpoczęcie pracy
+- name: Szybki start
   items:
-    - name: Rozpoczynanie pracy z usługą Hadoop
+    - name: Tworzenie klastra Hadoop — portal
+      href: apache-hadoop-linux-create-cluster-get-started-portal.md
+    - name: Tworzenie klastra Hadoop — usługa Resource Manager
       href: apache-hadoop-linux-tutorial-get-started.md
-    - name: Piaskownica usługi Hadoop
-      href: apache-hadoop-emulator-get-started.md
-    - name: Instalowanie aplikacji usługi HDInsight
-      href: ../hdinsight-apps-install-applications.md
+- name: Samouczki
+  items:
+    - name: Wykonywanie operacji ETL
+      href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
+    - name: Tworzenie klastrów na żądanie
+      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+      maintainContext: true
+- name: Pojęcia
+  items:
     - name: Planowanie pojemności klastra
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Dostępność i niezawodność
+      href: ../hdinsight-high-availability-linux.md
+      maintainContext: true
 - name: Instrukcje
   items:
+    - name: Korzystanie z piaskownicy usługi Hadoop
+      href: apache-hadoop-emulator-get-started.md
     - name: Korzystanie z magazynu klastra
       items:
         - name: Korzystanie z usługi Azure Storage
@@ -144,9 +156,6 @@
         - name: Analizowanie przechowywanych tweetów
           href: ../hdinsight-analyze-twitter-data-linux.md
           maintainContext: true
-        - name: Analizowanie danych opóźnień lotów
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
-          maintainContext: true
         - name: Generowanie rekomendacji za pomocą biblioteki Mahout
           href: apache-hadoop-mahout-linux-mac.md
         - name: Analizowanie dzienników witryn sieci Web za pomocą technologii Hive
@@ -164,6 +173,9 @@
           maintainContext: true
     - name: Rozszerzanie klastrów
       items:
+        - name: Instalowanie aplikacji usługi HDInsight
+          href: ../hdinsight-apps-install-applications.md
+          maintainContext: true
         - name: Dostosowywanie klastrów za pomocą narzędzia Bootstrap
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
           maintainContext: true
@@ -260,9 +272,6 @@
             - name: Korzystanie z szablonów usługi Azure Resource Manager
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
               maintainContext: true
-        - name: Tworzenie klastrów na żądanie
-          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-          maintainContext: true
         - name: Zarządzanie klastrami Hadoop
           href: ../hdinsight-administer-use-portal-linux.md
           maintainContext: true
@@ -329,9 +338,6 @@
           maintainContext: true
         - name: Migracja do narzędzi programistycznych usługi Resource Manager
           href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
-        - name: Dostępność i niezawodność
-          href: ../hdinsight-high-availability-linux.md
           maintainContext: true
         - name: Uaktualnianie klastra usługi HDInsight do nowszej wersji
           href: ../hdinsight-upgrade-cluster.md

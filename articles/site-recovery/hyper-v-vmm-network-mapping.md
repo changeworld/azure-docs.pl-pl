@@ -1,18 +1,18 @@
 ---
-title: "O mapowania sieci na platformie Azure przy użyciu usługi Site Recovery replikacji maszyny Wirtualnej funkcji Hyper-V (w programie VMM) | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak skonfigurować mapowanie sieci w przypadku replikacji maszyn wirtualnych funkcji Hyper-V zarządzane w chmurach VMM z usługą Azure Site Recovery."
+title: O mapowania sieci na platformie Azure przy użyciu usługi Site Recovery replikacji maszyny Wirtualnej funkcji Hyper-V (w programie VMM) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak skonfigurować mapowanie sieci w przypadku replikacji maszyn wirtualnych funkcji Hyper-V zarządzane w chmurach VMM z usługą Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f7c6e3eeb8db75a3857e687fecc9ee2748e92696
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby replikacji maszyny wirtualnej funkcji Hyper-V do platformy Azure
 
@@ -111,7 +111,7 @@ Maszyny VM2 (repliki VM1) | VMNetwork1-Chicago
 
 Przy użyciu tych ustawień umożliwia przeglądanie, co dzieje się w kilku możliwych scenariuszach.
 
-Scenariusz | **Wynik**
+**Scenariusz** | **Wynik**
 ---|---
 Brak zmian właściwości sieci maszyny Wirtualnej 2 po pracy awaryjnej. | 1 maszyna wirtualna pozostaje połączony z siecią źródła.
 Właściwości sieci maszyny Wirtualnej 2 są zmieniane po pracy awaryjnej i jest odłączony. | 1 maszyna wirtualna jest odłączony.

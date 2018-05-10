@@ -1,24 +1,24 @@
 ---
-title: "Wyślij powiadomienia i platform do użytkowników z centra powiadomień Azure (ASP.NET)"
-description: "Dowiedz się, jak używać usługi Notification Hubs szablonów wysłać pojedyncze żądanie powiadomienia niezależny od platformy, przeznaczonego dla wszystkich platform."
+title: Wyślij powiadomienia i platform do użytkowników z centra powiadomień Azure (ASP.NET)
+description: Dowiedz się, jak używać usługi Notification Hubs szablonów wysłać pojedyncze żądanie powiadomienia niezależny od platformy, przeznaczonego dla wszystkich platform.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 3c6dde338cb154f0cbe02642e4ff0f81d070aa25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Wyślij powiadomienia i platform do użytkowników z usługą Notification Hubs
 W poprzednich samouczek [powiadomić użytkowników z usługą Notification Hubs], przedstawiono sposób powiadomienia wypychane do wszystkich urządzeń, które są zarejestrowane dla określonego użytkownika uwierzytelnionego. W tym samouczku wiele żądań były wymagane do wysyłania powiadomień do każdego obsługiwana platforma kliencka. Centra powiadomień Azure obsługuje szablony, z których można określić sposób chce otrzymywać powiadomienia o określonym urządzeniem. Ta metoda ułatwia wysyłanie powiadomień i platform. 
@@ -81,16 +81,16 @@ Aby wysyłać powiadomienia wielu platform przy użyciu szablonów, należy wyko
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    Ten kod wysyła powiadomienie do wszystkich platform w tym samym czasie, bez konieczności określania natywnego ładunku. Powiadomienie koncentratory kompilacje i dostarcza poprawne ładunku do wszystkich urządzeń z dostarczonych *tag* wartość określoną w szablonie w zarejestrowany.
+    Ten kod wysyła powiadomienie do wszystkich platform, w tym samym czasie, bez konieczności Określ natywnego ładunku. Powiadomienie koncentratory kompilacje i dostarcza poprawne ładunku do wszystkich urządzeń z dostarczonych *tag* wartość określoną w szablonie w zarejestrowany.
 
 4. Ponownie opublikować WebApi projektu zaplecza.
 
 5. Ponownie uruchom aplikację klienta, a następnie sprawdź, czy rejestracja zakończyła się pomyślnie.
 
 6. (Opcjonalnie) Wdrażanie aplikacji klienta do drugiego urządzenia, a następnie uruchom aplikację.
-    Należy pamiętać, że na każdym urządzeniu zostanie wyświetlone powiadomienie.
+    Na każdym urządzeniu zostanie wyświetlone powiadomienie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy została ukończona w tym samouczku, Dowiedz się więcej o usłudze Notification Hubs i szablonów w tych tematach:
 
 * [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.

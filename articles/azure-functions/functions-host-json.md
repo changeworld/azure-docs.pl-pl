@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1dec6f2da4f6fcbeb38585fc6a1cfcd9d622c4a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Dokumentacja host.JSON dla usługi Azure Functions
 
@@ -142,6 +142,46 @@ Formanty [funkcji próbkowania w usłudze Application Insights](functions-monito
 |IsEnabled|true|Włącza lub wyłącza próbkowania.| 
 |maxTelemetryItemsPerSecond|5|Rozpoczyna się progu, w których próbkowania.| 
 
+## <a name="durabletask"></a>durableTask
+
+Ustawienia konfiguracji dla [trwałe funkcji](durable-functions-overview.md).
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub",
+    "ControlQueueBatchSize": 32,
+    "PartitionCount": 4,
+    "ControlQueueVisibilityTimeout": "00:05:00",
+    "WorkItemQueueVisibilityTimeout": "00:05:00",
+    "MaxConcurrentActivityFunctions": 10,
+    "MaxConcurrentOrchestratorFunctions": 10,
+    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
+    "TraceInputsAndOutputs": false,
+    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+    "EventGridKeySettingName":  "EventGridKey"
+  }
+}
+```
+
+Nazwy Centrum dla zadań musi zaczynać się literą i zawierać tylko litery i cyfry. Jeśli nie zostanie określony, jest domyślną nazwę koncentratora zadań dla aplikacji funkcja **DurableFunctionsHub**. Aby uzyskać więcej informacji, zobacz [zadań koncentratory](durable-functions-task-hubs.md).
+
+|Właściwość  |Domyślne | Opis |
+|---------|---------|---------|
+|hubName|DurableFunctionsHub|Alternatywne [Centrum zadań](durable-functions-task-hubs.md) nazwy mogą być używane do izolowania wiele aplikacji funkcji trwałe od siebie, nawet wtedy, gdy używają tego samego magazynu wewnętrznej bazy danych.|
+|ControlQueueBatchSize|32|Liczba komunikatów do ściągnięcia z kolejki formantu w czasie.|
+|Liczba partycji |4|Liczba partycji dla kolejki formantu. Może być dodatnią liczbą całkowitą od 1 do 16.|
+|ControlQueueVisibilityTimeout |5 minut|Limit czasu widoczność formantu usuniętej wiadomości w kolejce.|
+|WorkItemQueueVisibilityTimeout |5 minut|Wiadomości w kolejce elementu pracy usuniętej limitu czasu widoczności.|
+|MaxConcurrentActivityFunctions |10 x liczba procesorów na bieżącym komputerze|Maksymalna liczba funkcji działania, które mogą być jednocześnie przetwarzane w wystąpieniu jednego hosta.|
+|MaxConcurrentOrchestratorFunctions |10 x liczba procesorów na bieżącym komputerze|Maksymalna liczba funkcji działania, które mogą być jednocześnie przetwarzane w wystąpieniu jednego hosta.|
+|AzureStorageConnectionStringName |AzureWebJobsStorage|Nazwa ustawienia aplikacji, który ma parametry połączenia magazynu Azure umożliwia zarządzanie zasobów usługi Azure Storage.|
+|TraceInputsAndOutputs |false|Wartość wskazująca, czy śledzenie wejściami i wyjściami wywołań funkcji. Domyślnym zachowaniem podczas śledzenia zdarzeń wykonywania funkcji ma zawierać liczbę bajtów w serializacji danych wejściowych i wyjściowych dla wywołania funkcji. To zapewnia minimalne informacje o wejściami i wyjściami wygląd bez nadmiernego zwiększenia rozmiaru dzienniki lub przypadkowe udostępnianie poufnych informacji w dziennikach. Ustawienie tej właściwości na wartość true powoduje, że domyślne rejestrowanie funkcji logowania całą zawartość funkcja wejścia i wyjścia.|
+|EventGridTopicEndpoint ||Adres URL punktu końcowego niestandardowego tematu Azure zdarzeń siatki. Gdy ta właściwość jest ustawiona, zdarzenia powiadomień cyklu życia aranżacji są publikowane do tego punktu końcowego.|
+|EventGridKeySettingName ||Nazwa ustawienia aplikacji zawierający klucz używany do uwierzytelniania z niestandardowego tematu Azure zdarzeń siatki w `EventGridTopicEndpoint`.
+
+Wiele z tych jest optymalizacji wydajności. Aby uzyskać więcej informacji, zobacz [wydajności i skalowania](durable-functions-perf-and-scale.md).
+
 ## <a name="eventhub"></a>eventHub
 
 Ustawienia konfiguracji dla [Centrum zdarzeń wyzwalaczy i powiązań](functions-bindings-event-hubs.md).
@@ -150,7 +190,7 @@ Ustawienia konfiguracji dla [Centrum zdarzeń wyzwalaczy i powiązań](functions
 
 ## <a name="functions"></a>functions
 
-Lista funkcji, które host zadania zostanie uruchomiony.  Pusta tablica oznacza uruchamiać wszystkie funkcje.  Przeznaczony do użytku tylko wtedy, gdy [uruchomiony lokalnie](functions-run-local.md). W aplikacjach funkcji, należy użyć *function.json* `disabled` właściwości zamiast tej właściwości w *host.json*.
+Lista funkcji, które host zadania zostanie uruchomiony. Pusta tablica oznacza uruchamiać wszystkie funkcje. Przeznaczony do użytku tylko wtedy, gdy [uruchomiony lokalnie](functions-run-local.md). W aplikacjach funkcji, należy użyć *function.json* `disabled` właściwości zamiast tej właściwości w *host.json*.
 
 ```json
 {
@@ -190,7 +230,7 @@ Ustawienia konfiguracji dla [monitor kondycji hosta](https://github.com/Azure/az
 |healthCheckInterval|10 sekund|Odstęp czasu między kondycji tła okresowo sprawdza. | 
 |healthCheckWindow|2 minuty|Wysuwane okno czasu używany w połączeniu z `healthCheckThreshold` ustawienie.| 
 |healthCheckThreshold|6|Maksymalna dopuszczalna liczba operacji sprawdzania kondycji może zakończyć się niepowodzeniem przed odtworzenia hosta jest inicjowana.| 
-|counterThreshold|0.80|Próg, w którym licznik wydajności będą uznawane za złej kondycji.| 
+|counterThreshold|0,80|Próg, w którym licznik wydajności będą uznawane za złej kondycji.| 
 
 ## <a name="http"></a>http
 
@@ -299,21 +339,6 @@ Zestaw [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-d
     "watchDirectories": [ "Shared" ]
 }
 ```
-
-## <a name="durabletask"></a>durableTask
-
-[Zadanie Centrum](durable-functions-task-hubs.md) nazwę [trwałe funkcji](durable-functions-overview.md).
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub"
-  }
-}
-```
-
-Nazwy Centrum dla zadań musi zaczynać się literą i zawierać tylko litery i cyfry. Jeśli nie zostanie określony, jest domyślną nazwę koncentratora zadań dla aplikacji funkcja **DurableFunctionsHub**. Aby uzyskać więcej informacji, zobacz [zadań koncentratory](durable-functions-task-hubs.md).
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

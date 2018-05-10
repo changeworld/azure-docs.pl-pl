@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Promapp | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Promapp."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Promapp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4a0630bf015361833ed3a6949ea7b29450d53701
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b8a15143d38b7d835f85b8d196af5f33f5de18b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Samouczek: Integracji Azure Active Directory z Promapp
 
@@ -113,23 +113,22 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
     | |
     |--|
-    | `https://demo.promapp.com/TENANTNAME`|
-    | `https://go.promapp.com/TENANTNAME`|
-    | `https://demoau.promapp.com/TENANTNAME`|
-    | `https://au.promapp.com/TENANTNAME`|
-    | `https://demous.promapp.com/TENANTNAME`|
-    | `https://us.promapp.com/TENANTNAME`|
-    | `https://dev.promapp.com/TENANTNAME`|
-    | `https://test.promapp.com/TENANTNAME`|
-    | `https://staging.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME/`|
+    | `https://au.promapp.com/TENANTNAME/`|
+    | `https://us.promapp.com/TENANTNAME/`|
+    | `https://eu.promapp.com/TENANTNAME/`|
+    | `https://ca.promapp.com/TENANTNAME/`|
     
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
+    > [!NOTE] 
+    > Obecnie integracji z usługą Azure AD z Promapp tylko został skonfigurowany dla usługi uwierzytelniania inicjowane, np. przejście do adresu URL Promapp inicjuje proces uwierzytelniania. Jednak adres URL odpowiedzi jest polem wymaganym.
+    
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
+    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Promapp](https://www.promapp.com/about-us/contact-us/) uzyskać te wartości.
@@ -240,13 +239,9 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
     
 ### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
 
-Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowania jednokrotnego za pomocą panelu dostępu.
+Aby przetestować aplikację w **SP** inicjowane trybie, należy zainicjować uwierzytelniania z witryny Promapp. Można to zrobić przez kliknięcie przycisku "Zaloguj się za pomocą rejestracji jednokrotnej" na stronie logowania przy jednoczesnym **opcjonalnie** jest włączony tryb.
 
-Aby przetestować aplikację w **IDP** tryb inicjowane, po kliknięciu kafelka Promapp w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Promapp.
-
-Aby przetestować aplikację w **SP** inicjowane trybie, należy zainicjować uwierzytelniania z witryny Promapp. Można to zrobić przez pozostawiając puste pole hasła podczas logowania, podczas gdy **opcjonalnie** jest włączony tryb.
-
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

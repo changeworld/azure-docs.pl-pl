@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: 8d1eb3229f22b2da3a356562250fedb3c35c4816
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programowe tworzenie subskrypcji Azure Enterprise (wersja zapoznawcza)
 
@@ -49,7 +49,7 @@ Po dodaniu w przypadku rejestracji Azure EA jako właściciel konta Azure używa
 - Masz co najmniej jeden administrator przedsiębiorstwa lub EA: tworzenie i testowanie subskrypcji, co oznacza, że użytkownik został przeszli ręcznego tworzenia konta co najmniej raz
 - Logujesz się do właściciela konta *katalogu macierzystego*, która jest subskrypcje domyślnie tworzone w katalogu
 
-Jeśli powyższe dwa warunki są spełnione, `enrollmentAccount` zasobów jest zwracany i rozpoczęciem tworzenia subskrypcji w ramach tego konta. Wszystkie subskrypcje utworzone w ramach konta są rozliczane kierunku rejestracji EA, których konto.
+Jeśli powyższe trzy warunki są spełnione, `enrollmentAccount` zasobów jest zwracany i rozpoczęciem tworzenia subskrypcji w ramach tego konta. Wszystkie subskrypcje utworzone w ramach konta są rozliczane kierunku rejestracji EA, których konto.
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 690bfa55166b6d5d4e418daa321fafad2f4b6293
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8a3eedb5a3d96eedd1a64d85afdb58f8961df272
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa równoważenia obciążenia Azure?
 
@@ -73,9 +73,9 @@ Moduł równoważenia obciążenia zapewnia następujące funkcje podstawowe dla
 
 * **Aplikacja o niesprecyzowanym i przezroczyste**
 
-    Moduł równoważenia obciążenia nie bezpośrednio współdziała z TCP lub UDP lub warstwy aplikacji i wszelkich TCP lub może być obsługiwany scenariusz aplikacji opartych na protokole UDP.  Moduł równoważenia obciążenia nie zakończyć lub pochodzą przepływów, interakcji z ładunku przepływu, zapewnia żadnej funkcji bramy warstwy aplikacji, a protokół uzgodnienia zawsze wykonywane bezpośrednio między klientem a wystąpienia puli zaplecza.  Odpowiedzi na przepływ ruchu przychodzącego jest zawsze odpowiedzi z maszyny wirtualnej.  Po odebraniu przepływ na maszynie wirtualnej, oryginalnego adresu IP źródłowego również są zachowywane.  Kilka przykładów dalsze ilustrujący przezroczystość:
-    - Uzgadnianie TCP zawsze występuje między klientem a wybranej maszynie Wirtualnej zaplecza. Odpowiedzi na żądanie fronton jest odpowiedzi generowane przez maszynę Wirtualną zaplecza. Do sprawdzania poprawności łączności dla tego scenariusza, należy użyć polecenia ping protokołu TCP.  Użyj [narzędzia psping](https://docs.microsoft.com/en-us/sysinternals/downloads/psping) lub [nmap](https://nmap.org) do sprawdzenia, czy uzgadniania z maszyną wirtualną w dobrej kondycji zakończy się pomyślnie. Należy pamiętać, ICMP jest protokołem IP innego niż UDP lub TCP i nie są obsługiwane w tym celu.
-    - Ładunki aplikacji są niewidoczne dla usługi równoważenia obciążenia i wszelkie UDP lub TCP na podstawie aplikacji mogą być obsługiwane. Dla obciążeń, które wymagają na przetwarzanie żądań HTTP lub manipulowania ładunków warstwy aplikacji (np. podczas analizowania adresów URL protokołu HTTP), należy użyć warstwy 7 równoważenia, takich jak [brama aplikacji w](https://azure.microsoft.com/en-us/services/application-gateway).
+    Moduł równoważenia obciążenia nie bezpośrednio współdziała z TCP lub UDP lub warstwy aplikacji i wszelkich TCP lub UDP scenariusza aplikacji mogą być obsługiwane.  Moduł równoważenia obciążenia nie zakończyć lub pochodzą przepływów, interakcji z ładunku przepływu, zapewnia żadnej funkcji bramy warstwy aplikacji, a protokół uzgodnienia zawsze wykonywane bezpośrednio między klientem a wystąpienia puli zaplecza.  Odpowiedzi na przepływ ruchu przychodzącego jest zawsze odpowiedzi z maszyny wirtualnej.  Po odebraniu przepływ na maszynie wirtualnej, oryginalnego adresu IP źródłowego również są zachowywane.  Kilka przykładów dalsze ilustrujący przezroczystość:
+    - Każdy punkt końcowy jest tylko odbierane przez Maszynę wirtualną.  Na przykład uzgadniania TCP zawsze występuje między klientem a wybranej maszynie Wirtualnej zaplecza.  Odpowiedzi na żądanie fronton jest odpowiedzi generowane przez maszynę Wirtualną zaplecza. Podczas sprawdzania poprawności pomyślnie połączenie frontonu, są sprawdzania poprawności łączności kompleksowe do co najmniej jednej maszyny wirtualnej zaplecza.
+    - Ładunki aplikacji są niewidoczne dla usługi równoważenia obciążenia i wszelkie UDP lub TCP aplikacji mogą być obsługiwane. W przypadku obciążeń, które wymagają na przetwarzanie żądań HTTP lub manipulowania ładunków warstwy aplikacji (na przykład analizowania adresów URL protokołu HTTP), należy użyć modułu równoważenia obciążenia warstwy 7 jak [brama aplikacji w](https://azure.microsoft.com/en-us/services/application-gateway).
     - Ponieważ usługi równoważenia obciążenia jest niezależny od ładunku TCP oraz odciążanie protokołu TLS ("SSL") nie zostanie podana, możesz skompilować kompleksowe scenariuszy zaszyfrowanych przy użyciu usługi równoważenia obciążenia i uzyskania dużych skalowania dla aplikacji protokołu TLS przerywa połączenie protokołu TLS w samej maszyny Wirtualnej.  Na przykład sesji TLS klucza pojemności jest ograniczona tylko według typu i liczbę maszyn wirtualnych, należy dodać do puli zaplecza.  Jeśli potrzebujesz "Odciążanie protokołu SSL", sposób postępowania z warstwy aplikacji lub chcesz delegować zarządzanie certyfikatami na platformie Azure, należy użyć modułu równoważenia obciążenia warstwy 7 platformy Azure [brama aplikacji w](https://azure.microsoft.com/en-us/services/application-gateway) zamiast tego.
         
 
@@ -93,14 +93,14 @@ Moduł równoważenia obciążenia zapewnia następujące funkcje podstawowe dla
 
     - **Niestandardowe sondowaniem TCP**: sonda zależy od ustanawiania sesji TCP pomyślnie do portu zdefiniowanych sondowania. Tak długo, jak określony odbiornik na maszynie Wirtualnej istnieje, to sondowanie zakończy się pomyślnie. Połączenie zostało odrzucone, sondy kończy się niepowodzeniem. To sondowanie zastępuje domyślną sondę agenta gościa.
 
-    - **Sondowanie agenta gościa (na platforma jako usługa [PaaS] VMs tylko)**: usługi równoważenia obciążenia można również korzystać z agenta gościa w ramach maszyny Wirtualnej. Agent gościa wykrywa i wysyła odpowiedź HTTP 200 OK tylko wtedy, gdy wystąpienie jest w stanie gotowe. Jeśli agent nie odpowiada OK 200 protokołu HTTP, usługi równoważenia obciążenia oznacza wystąpienia jako odpowiadać i zatrzymuje wysyłania ruchu do tego wystąpienia. Moduł równoważenia obciążenia w dalszym ciągu próbują nawiązać połączenie z wystąpieniem. Jeśli agent gościa odpowie 200 protokołu HTTP, usługi równoważenia obciążenia wysyła ruch do tego wystąpienia ponownie. Sondy agenta gościa są ostateczność i nie powinna być używana, gdy są możliwe konfiguracje niestandardowe badania HTTP lub TCP. 
+    - **Sondowanie agenta gościa (na platforma jako usługa [PaaS] VMs tylko)**: usługi równoważenia obciążenia można również korzystać z agenta gościa w ramach maszyny Wirtualnej. Agent gościa wykrywa i wysyła odpowiedź HTTP 200 OK tylko wtedy, gdy wystąpienie jest w stanie gotowe. Jeśli agent nie odpowiada OK 200 protokołu HTTP, usługi równoważenia obciążenia oznacza wystąpienia jako odpowiadać i zatrzymuje wysyłania ruchu do tego wystąpienia. Moduł równoważenia obciążenia w dalszym ciągu próbują nawiązać połączenie z wystąpieniem. Jeśli agent gościa odpowie 200 protokołu HTTP, usługi równoważenia obciążenia wysyła ruch do tego wystąpienia ponownie. Sondy agenta gościa są ostateczność i nie jest zalecane podczas konfiguracje niestandardowe badania HTTP lub TCP są możliwe. 
     
-* **Połączenia wychodzące (źródło translatora adresów Sieciowych)**
+* **Połączenia wychodzące (SNAT)**
 
-    Wszystkie przepływy ruchu wychodzącego z prywatnych adresów IP w sieci wirtualnej na publiczne adresy IP w Internecie można przekonwertować na adres IP frontonu modułu równoważenia obciążenia. Gdy publicznego fronton jest powiązany z maszyną wirtualną zaplecza i reguły równoważenia obciążenia, Azure programów połączeń wychodzących, które mają być automatycznie tłumaczone na publiczny adres IP frontonu. Jest to również źródła translatora adresów Sieciowych (SNAT). SNAT oferuje istotne korzyści:
+    Wszystkie przepływy ruchu wychodzącego z prywatnych adresów IP w sieci wirtualnej na publiczne adresy IP w Internecie można przekonwertować na adres IP frontonu modułu równoważenia obciążenia. Gdy publicznego fronton jest powiązany z maszyną wirtualną zaplecza i reguły równoważenia obciążenia, Azure programów połączeń wychodzących, które mają być automatycznie tłumaczone na publiczny adres IP frontonu.
 
-    * Umożliwia on łatwe uaktualnianie i odzyskiwania po awarii usługi, ponieważ fronton można dynamicznie mapować do innego wystąpienia usługi.
-    * Ułatwia ona zarządzanie listę kontroli dostępu (ACL) kontrolą dostępu. Listy kontroli dostępu w przeliczeniu na adresy IP frontonu nie należy zmieniać jako usługi skalowania w górę lub w dół lub pobrać ponownej instalacji.
+    * Włącz łatwe uaktualnianie i odzyskiwania po awarii usługi, ponieważ fronton można dynamicznie mapować do innego wystąpienia usługi.
+    * Łatwiejsze zarządzanie kontrolą dostępu listę kontroli dostępu (ACL) do. Listy kontroli dostępu w przeliczeniu na adresy IP frontonu nie należy zmieniać jako usługi skalowania w górę lub w dół lub pobrać ponownej instalacji.  Translacja połączeń wychodzących na mniejszą liczbę adresów IP, niż maszyny można zmniejszyć obciążenie listę dozwolonych podobnej.
 
     Aby uzyskać więcej informacji, zobacz [połączeń wychodzących](load-balancer-outbound-connections.md).
 
@@ -115,7 +115,7 @@ Jednak w zależności od wersji produktu można wybrać, konfiguracji całego sc
 >[!NOTE]
 > Jeśli korzystasz z nowszej scenariusz projektu, należy rozważyć użycie standardowego modułu równoważenia obciążenia. 
 
-Autonomiczne maszyny wirtualne, zestawów dostępności i zestawy skalowania maszyny Wirtualnej można podłączyć do tylko jednej jednostki SKU, nigdy nie oba. Gdy używasz je z publicznych adresów IP, zarówno usługi równoważenia obciążenia i publiczny adres IP SKU muszą być zgodne. Usługi równoważenia obciążenia i publicznego adresu IP jednostki SKU nie jest modyfikowalna.
+Autonomiczne maszyny wirtualne, zestawów dostępności i zestawy skalowania maszyny wirtualnej można podłączyć do tylko jednej jednostki SKU, nigdy nie oba. Gdy używasz je z publicznych adresów IP, zarówno usługi równoważenia obciążenia i publiczny adres IP SKU muszą być zgodne. Usługi równoważenia obciążenia i publicznego adresu IP jednostki SKU nie jest modyfikowalna.
 
 _Mimo że nie jest jeszcze obowiązkowe jest najlepszym rozwiązaniem jest jawnie, określ jednostki SKU._  W tym czasie wymagane zmiany są są ograniczone do minimum. Jeśli nie określono jednostki SKU, jest interpretowany jako zamiar przy użyciu wersji interfejsu API 2017-08-01 podstawowy SKU.
 
@@ -125,7 +125,7 @@ _Mimo że nie jest jeszcze obowiązkowe jest najlepszym rozwiązaniem jest jawni
 | | [Standardowy SKU](load-balancer-standard-overview.md) | Podstawowy SKU |
 | --- | --- | --- |
 | Rozmiar puli zaplecza | Wystąpienia do 1000. | Wystąpienia do 100. |
-| Punkty końcowe puli zaplecza | Wszystkie maszyny Wirtualnej w ramach jednej sieci wirtualnych, w tym blend maszyn wirtualnych, zestawów dostępności i zestawy skalowania maszyny Wirtualnej. | Maszyny wirtualne w jednej dostępności zestawu lub zestaw skali maszyny Wirtualnej. |
+| Punkty końcowe puli zaplecza | Wszystkie maszyny Wirtualnej w ramach jednej sieci wirtualnych, w tym blend maszyn wirtualnych, zestawów dostępności i zestawy skalowania maszyny wirtualnej. | Maszyny wirtualne w jednej dostępności ustawić lub zestawu skalowania maszyn wirtualnych. |
 | Strefy dostępności platformy Azure | Strefowo nadmiarowy i zonal końce frontonu dla ruchu przychodzącego i mapowanie przepływu wychodzącego, wychodzący awarie strefy, cross strefy równoważenia obciążenia. | / |
 | Diagnostyka | Azure Monitor wielowymiarowych metryk, takich jak bajt i liczniki pakietów, kondycji sondowania stanu, próby połączenia (TCP SYN), kondycja połączenia wychodzącego (SNAT udane i nieudane przepływy), pomiarów płaszczyzny aktywnych danych. | Azure Log Analytics dla publicznego załadować tylko równoważenia, alert wyczerpania SNAT, liczba kondycji puli zaplecza. |
 | HA portów | Wewnętrzny moduł równoważenia obciążenia. | / |
@@ -177,6 +177,11 @@ Podstawowe usługi równoważenia obciążenia jest oferowane bezpłatnie.
 ## <a name="sla"></a>Umowa SLA
 
 Aby uzyskać informacje o standardowych umowy SLA dla usługi równoważenia obciążenia, przejdź do [umowy SLA dla usługi równoważenia obciążenia](https://aka.ms/lbsla) strony. 
+
+## <a name="limitations"></a>Ograniczenia
+
+- Moduł równoważenia obciążenia jest produktem TCP lub UDP do równoważenia obciążenia i portu przekazywania tych określonych protokołów IP.  Reguły równoważenia obciążenia i reguły NAT ruchu przychodzącego są obsługiwane w przypadku protokołu TCP i UDP i nie są obsługiwane przez inne protokoły IP, w tym protokołu ICMP. Moduł równoważenia obciążenia nie zakończy, odpowiadać lub inny sposób interakcji z ładunku przepływu UDP lub TCP. Nie jest serwer proxy. Sprawdzeniu poprawności łączności frontonu musi mieć miejsce w paśmie z tego samego protokołu, które są używane w równoważenia lub przychodzącej reguły NAT obciążenia (TCP lub UDP) _i_ co najmniej jeden z maszyn wirtualnych należy wygenerować odpowiedzi do klienta Aby wyświetlić odpowiedzi z frontonu.  Nie odbiera odpowiedź wewnątrzpasmowe z frontonu modułu równoważenia obciążenia oznacza, że żadne maszyny wirtualne zostały mogą odpowiadać.  Nie jest możliwe do interakcji z modułem równoważenia obciążenia frontonu bez mogą odpowiadać maszyny wirtualnej.  Dotyczy to również połączenia wychodzące gdzie [maskowaniu portu SNAT](load-balancer-outbound-connections.md#snat) jest obsługiwana tylko w przypadku protokołu TCP i UDP; żadnych innych protokołów IP ICMP w tym również zakończy się niepowodzeniem.  Przypisz poziomie wystąpienia publicznego adresu IP do ograniczenia.
+- W przeciwieństwie do publicznej usługi równoważenia obciążenia, która zapewnia [połączeń wychodzących](load-balancer-outbound-connections.md) podczas przejścia z prywatnych adresów IP w sieci wirtualnej na publiczne adresy IP, wewnętrzne moduły równoważenia obciążenia nie tłumaczenia wychodzącego pochodzi połączenia z frontonu wewnętrznego modułu równoważenia obciążenia jako zarówno znajdują się w prywatnej przestrzeni adresów IP.  Dzięki temu można uniknąć potencjalnych wyczerpania SNAT wewnątrz Unikatowy wewnętrzny przestrzeń adresową gdzie tłumaczenia nie jest wymagana.  Efektem ubocznym jest to, że jeśli przepływu wychodzącego z maszyn wirtualnych w puli zaplecza prób przepływu do frontonu wewnętrznego modułu równoważenia obciążenia w puli, która znajduje się _i_ jest zamapowana do samej siebie, nie są zgodne oba etapy przepływu i przepływ zakończy się niepowodzeniem. .  Jeśli przepływ mapują wróć do tej samej maszyny Wirtualnej w puli zaplecza, który utworzony przepływu frontonu, przepływ zostanie wykonana pomyślnie.   Przepływ mapy do samej siebie przepływu wychodzącego prawdopodobnie wynikają z maszyny Wirtualnej z frontonu, a odpowiedni przepływu ruchu przychodzącego wydaje się pochodzą z maszyny Wirtualnej do samej siebie. Z punktu widzenia systemu operacyjnego gościa na maszynie wirtualnej nie zgadzają się części ruchu przychodzącego i wychodzącego z takim samym przepływie. Stosu TCP nie rozpozna tych połowy takim samym przepływie jako część tego samego przepływu zgodnie z serwera źródłowego i docelowego nie są zgodne.  Przepływ, mapy do innych maszyn wirtualnych w puli zaplecza, połowy przepływ będą zgodne, a maszyna wirtualna może pomyślnie odpowiedzieć przepływu.  Objaw dla tego scenariusza jest sporadyczne połączenia przekroczeń limitu czasu. Istnieje kilka typowych obejścia niezawodny sposób realizacji tego scenariusza (pochodzące są przesyłane z puli zaplecza zaplecza pul odpowiednich wewnętrzny moduł równoważenia obciążenia frontonu) który obejmuje albo wstawiania za obciążenia wewnętrznego serwera proxy innych firm Moduł równoważenia lub [przy użyciu reguł stylu DSR](load-balancer-multivip-overview.md).  Publiczny moduł równoważenia obciążenia można użyć do ograniczenia, wynikowy scenariusz jest podatna na [wyczerpania SNAT](load-balancer-outbound-connections.md#snat) i należy unikać, chyba że dokładnie zarządzane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

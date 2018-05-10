@@ -9,11 +9,11 @@ ms.custom: mvc,business continuity
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 569eef6e1d930e505bc6dff9b692814438e5bd4d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementowanie rozproszonej geograficznie bazy danych
 
@@ -380,4 +380,17 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz [Aktywna replikacja geograficzna i grupy trybu failover](sql-database-geo-replication-overview.md).
+W ramach tego samouczka przedstawiono konfigurowanie usługi Azure SQL Database i aplikacji pod kątem przechodzenia w tryb failover do zdalnego regionu, a następnie przetestowano plan trybu failover.  W tym samouczku omówiono: 
+
+> [!div class="checklist"]
+> * Tworzenie użytkowników bazy danych i udzielanie im uprawnień
+> * Konfigurowanie reguły zapory na poziomie bazy danych
+> * Tworzenie grupy trybu failover replikacji geograficznej
+> * Tworzenie i kompilowanie aplikacji w języku Java na potrzeby odpytywania usługi Azure SQL Database
+> * Wykonywanie próbnego odzyskiwania po awarii
+
+Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć wystąpienie zarządzane.
+
+> [!div class="nextstepaction"]
+>[Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md)
+

@@ -1,0 +1,120 @@
+- name: Azure IoT Edge — podstawy
+  href: ../iot-fundamentals/index.yml
+- name: Dokumentacja usługi Azure Maps
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Azure Maps — informacje
+      href: about-azure-maps.md
+- name: Przewodniki Szybki start
+  items:
+    - name: Tworzenie aplikacji z mapą
+      href: quick-demo-map-app.md
+- name: Samouczki
+  items:
+    - name: 1 — Wyszukiwanie punktów orientacyjnych
+      href: tutorial-search-location.md
+    - name: 2 — Trasa do miejsca docelowego
+      href: tutorial-route-location.md
+    - name: 3 — Trasy zależne od środka transportu
+      href: tutorial-prioritized-routes.md
+- name: Pojęcia
+  items:
+    - name: Poziomy powiększenia i siatka kafelków
+      href: zoom-levels-and-tile-grid.md
+    - name: Pokrycie geokodowaniem
+      href: geocoding-coverage.md
+    - name: Pokrycie ruchem
+      href: traffic-coverage.md
+    - name: Pokrycie renderowaniem
+      href: render-coverage.md
+    - name: Pokrycie routingiem
+      href: routing-coverage.md
+    - name: Obsługiwane języki
+      href: supported-languages.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Zarządzanie kontami usługi Maps
+      items:
+        - name: Zarządzanie kontami i użytkownikami
+          href: how-to-manage-account-keys.md
+    - name: Pobierz dane mapy z interfejsów API REST
+      items:
+        - name: Wyszukiwanie adresu
+          href: how-to-search-for-address.md
+    - name: Tworzenie map JavaScript
+      items:
+        - name: Korzystanie z kontrolki mapy
+          href: how-to-use-map-control.md
+        - name: Tworzenie mapy
+          href: map-create.md
+        - name: Dodawanie numeru PIN
+          href: map-add-pin.md
+        - name: Dodawanie menu podręcznego
+          href: map-add-popup.md
+        - name: Dodawanie kształtu
+          href: map-add-shape.md
+        - name: Dodawanie niestandardowego kodu HTML
+          href: map-add-custom-html.md
+        - name: Wyświetlanie wyników wyszukiwania
+          href: map-search-location.md
+        - name: Uzyskiwanie informacji na podstawie współrzędnych
+          href: map-get-information-from-coordinate.md
+        - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
+          href: map-route.md
+        - name: Wyświetlanie ruchu
+          href: map-show-traffic.md
+        - name: Interakcja ze zdarzeniami myszy
+          href: map-events.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs API usług — REST
+      href: 'https://docs.microsoft.com/rest/api/maps/'
+    - name: Interfejs API kontrolek mapy — Javascript
+      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+- name: Powiązane
+  items:
+    - name: Rozwiązania
+      items:
+        - name: Wstępnie skonfigurowane rozwiązania usługi IoT Suite
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Usługi platformy
+      items:
+        - name: Usługa IoT Hub
+          href: /azure/iot-hub
+        - name: Usługa IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Zestawy SDK usług
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Brzeg
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Zestawy SDK urządzeń IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Zasoby
+  items:
+    - name: Centrum deweloperów Azure IoT
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-location-based-services'
+    - name: Techniczne analizy przypadków
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos'

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6e7fdd4faa4213681813733aa8afe81d56835862
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 50e517e5719fb102fd91072abe59d3908176278e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Trwałe funkcji publikowania do siatki zdarzeń Azure (wersja zapoznawcza)
 
@@ -220,7 +220,7 @@ Można znaleźć w dziennikach funkcji utworzone w portalu Azure.
         "functionName": "Sample",
         "instanceId": "055d045b1c8a415b94f7671d8df693a6",
         "reason": "",
-        "eventType": 0
+        "runtimeStatus": "Running"
     },
     "eventType": "orchestratorEvent",
     "eventTime": "2018-04-20T09:28:19.6492068Z",
@@ -239,7 +239,7 @@ Można znaleźć w dziennikach funkcji utworzone w portalu Azure.
         "functionName": "Sample",
         "instanceId": "055d045b1c8a415b94f7671d8df693a6",
         "reason": "",
-        "eventType": 1
+        "runtimeStatus": "Completed"
     },
     "eventType": "orchestratorEvent",
     "eventTime": "2018-04-20T09:28:36.5061317Z",
@@ -261,7 +261,7 @@ Poniżej wyjaśniono schematu zdarzenia cyklu życia:
     * **functionName**: Nazwa funkcji programu Orchestrator.
     * **Identyfikator wystąpienia**: Identyfikator funkcji trwałego wystąpienia.
     * **Przyczyna**: dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [diagnostyki w funkcjach trwałe (usługi Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
-    * **Typ zdarzenia**: aranżacji stanu w czasie wykonywania. 0: systemem 1: zakończone, 2: ContinuedAsNew, 3: nie powiodło się, 4: anulowane 5: zakończone, 6: oczekujące. 
+    * **runtimeStatus**: aranżacji stanu w czasie wykonywania. Uruchomiona zakończona, nie powiodło się, anulowane. 
 * **Typ zdarzenia**: "orchestratorEvent"
 * **eventTime**: czas trwania zdarzenia (UTC).
 * **dataVersion**: wersja schematu zdarzeń cyklu życia.

@@ -1,27 +1,32 @@
 - name: Dokumentacja usługi Azure HDInsight
   href: /azure/hdinsight
-- name: Usługa Spark w usłudze HDInsight
+- name: Omówienie
   items:
-    - name: Omówienie
+    - name: Informacje o platformie Spark w usłudze HDInsight
       href: apache-spark-overview.md
     - name: Składniki usługi Hadoop na usłudze HDInsight
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Rozpoczęcie pracy
+- name: Przewodniki Szybki start
   items:
-    - name: Tworzenie klastra Spark
+    - name: Tworzenie klastra platformy Spark — portal
+      href: apache-spark-jupyter-spark-sql-use-portal.md
+    - name: Tworzenie klastra Spark — program PowerShell
+      href: apache-spark-jupyter-spark-sql-use-powershell.md
+    - name: Tworzenie klastra platformy Spark — szablon
       href: apache-spark-jupyter-spark-sql.md
+- name: Samouczki
+  items:
     - name: Uruchamianie zapytań w klastrze usługi Spark
       href: apache-spark-load-data-run-query.md
     - name: Analizowanie danych przy użyciu narzędzi do analizy biznesowej
       href: apache-spark-use-bi-tools.md
-    - name: Zarządzanie zasobami klastra
-      href: apache-spark-resource-manager.md
-    - name: Zadania debugowania usługi Spark
-      href: apache-spark-job-debugging.md
-    - name: Instalowanie aplikacji usługi HDInsight
-      href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
+    - name: Uruchamianie zadania przesyłania strumieniowego
+      href: apache-spark-eventhub-streaming.md
+    - name: Tworzenie aplikacji usługi Machine Learning
+      href: apache-spark-ipython-notebook-machine-learning.md
+    - name: Tworzenie aplikacji platformy Spark przy użyciu programu IntelliJ
+      href: apache-spark-create-standalone-application.md
 - name: Instrukcje
   items:
     - name: Korzystanie z magazynu klastra
@@ -34,8 +39,6 @@
           maintainContext: true
     - name: Programowanie
       items:
-        - name: Tworzenie aplikacji autonomicznej
-          href: apache-spark-create-standalone-application.md
         - name: Używanie interakcyjnej powłoki usługi Spark
           href: apache-spark-shell.md
         - name: Zdalne zadania przy użyciu usługi Livy
@@ -110,8 +113,6 @@
           href: apache-spark-streaming-exactly-once.md
     - name: Usługa Spark i uczenie maszynowe
       items:
-        - name: Przewidywanie wydajności systemu HVAC
-          href: apache-spark-ipython-notebook-machine-learning.md
         - name: Przewidywanie wyników inspekcji żywności
           href: apache-spark-machine-learning-mllib-ipython.md
         - name: Analizowanie dzienników witryn sieci Web
@@ -205,6 +206,8 @@
           maintainContext: true
     - name: Zarządzanie
       items:
+        - name: Zarządzanie zasobami klastra
+          href: apache-spark-resource-manager.md
         - name: Konfigurowanie ustawień platformy Spark
           href: apache-spark-settings.md
         - name: Optymalizowanie zadań platformy Spark
@@ -311,6 +314,8 @@
           maintainContext: true
     - name: Rozwiązywanie problemów
       items:
+        - name: Zadania debugowania usługi Spark
+          href: apache-spark-job-debugging.md
         - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

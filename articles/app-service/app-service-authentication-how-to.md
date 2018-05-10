@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Dostosowywanie uwierzytelnianie i autoryzację w usłudze Azure App Service
 
@@ -25,7 +25,8 @@ W tym artykule przedstawiono sposób dostosowywania [uwierzytelniania i autoryza
 
 Aby szybko rozpocząć pracę, zobacz jedną z następujących samouczków:
 
-* [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end w usłudze Azure App Service](app-service-web-tutorial-auth-aad.md)
+* [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end w usłudze Azure App Service (system Windows)](app-service-web-tutorial-auth-aad.md)
+* [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end w usłudze Azure App Service dla systemu Linux](containers/tutorial-auth-aad.md)
 * [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Google](app-service-mobile-how-to-configure-google-authentication.md)
@@ -148,4 +149,5 @@ Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następ
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end](app-service-web-tutorial-auth-aad.md)
+> [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end (system Windows)](app-service-web-tutorial-auth-aad.md)
+> [samouczek: uwierzytelniania i autoryzacji użytkowników end-to-end (Linux)](containers/tutorial-auth-aad.md)

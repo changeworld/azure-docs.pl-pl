@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 7d7cd8a197a89781a75f47bb4b4e2ec8fe7c3cb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/07/2018
+---
 # <a name="secure-your-iot-deployment"></a>Zabezpieczanie wdrożenia IoT
 
 Ten artykuł zawiera następny poziom szczegółów dotycząca zabezpieczania infrastruktury opartej na usłudze Azure IoT Internetu rzeczy (IoT). Łączy z poziomu szczegóły wdrożenia dotyczące konfigurowania i wdrażania poszczególnych składników. Umożliwia także porównania i dostępnych wyborów między różnymi metodami konkurencyjnych.
@@ -12,7 +28,7 @@ Zabezpieczanie wdrożenia Azure IoT można podzielić na następujące obszary t
 
 ## <a name="secure-device-provisioning-and-authentication"></a>Zabezpieczenia, inicjowanie obsługi administracyjnej urządzeń i uwierzytelniania
 
-Pakiet IoT Azure zabezpiecza urządzenia IoT za pomocą następujących dwóch metod:
+Akceleratorów rozwiązania IoT zabezpieczania urządzeń IoT za pomocą następujących dwóch metod:
 
 * Zapewniając klucz unikatową tożsamość (tokeny zabezpieczające) dla każdego urządzenia, którego można użyć do komunikowania się z Centrum IoT przez urządzenie.
 * Za pomocą na urządzeniach [certyfikatu X.509] [ lnk-x509] i klucza prywatnego w celu uwierzytelnienia urządzenia z Centrum IoT. Ta metoda uwierzytelniania zapewnia, że klucz prywatny na urządzeniu nie jest znany poza urządzenie w dowolnym momencie zapewnia wyższy poziom zabezpieczeń.

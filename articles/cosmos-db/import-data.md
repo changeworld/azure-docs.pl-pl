@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 9c4908775ab9a471201cc4bb0c35ab863f5d6d50
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure rozwiązania Cosmos bazy danych: Narzędzie migracji danych
 
@@ -433,7 +433,7 @@ Aby zaimportować do jednej kolekcji, wprowadź nazwę kolekcji, do którego dan
 Po wskazaniu nazwy kolekcji, wybierz żądany przepływność kolekcji (RUs 400 do 250 000 RUs). Aby uzyskać najlepszą wydajność importu wybierz wyższej przepustowości. Aby uzyskać więcej informacji na temat poziomów wydajności, zobacz [poziomy wydajności w usłudze Azure DB rozwiązania Cosmos](performance-levels.md). Wszelkie importu do kolekcji o przepływności > 10 000 RUs wymagają klucza partycji. Jeśli wybierzesz więcej niż 250 000 RUs, należy do pliku żądania w portalu, aby zwiększyć konta.
 
 > [!NOTE]
-> Ustawienie przepływności ma zastosowanie tylko do tworzenia kolekcji. Jeśli istnieje już określonej kolekcji, jego przepływności nie zostaną zmodyfikowane.
+> Ustawienie przepływności ma zastosowanie tylko do kolekcji lub tworzenie bazy danych. Jeśli istnieje już określonej kolekcji, jego przepływności nie zostaną zmodyfikowane.
 > 
 > 
 

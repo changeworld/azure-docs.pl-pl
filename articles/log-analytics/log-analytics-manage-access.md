@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-workspaces"></a>Zarządzanie obszarami roboczymi
 
@@ -34,7 +34,7 @@ Aby utworzyć obszar roboczy, trzeba:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Określanie wymaganej liczby obszarów roboczych
 Obszar roboczy jest zasobem platformy Azure w postaci kontenera, w którym dane są zbierane, agregowane, analizowane i przedstawiane w witrynie Azure Portal.
 
-Możesz mieć wiele obszarów roboczych na subskrypcję platformy Azure i dostęp do więcej niż jednego obszaru roboczego. Wcześniej można było tylko analizować dane z bieżącego obszaru roboczego, co ograniczało możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji. Teraz możesz [wysyłać zapytania w wielu obszarach roboczych](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search), co zapewnia wgląd w dane obejmujący cały system. W tej sekcji opisano sytuacje, w których pomocne może być utworzenie więcej niż jednego obszaru roboczego.
+Możesz mieć wiele obszarów roboczych na subskrypcję platformy Azure i dostęp do więcej niż jednego obszaru roboczego. Wcześniej można było tylko analizować dane z bieżącego obszaru roboczego, co ograniczało możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji. Teraz możesz [wysyłać zapytania w wielu obszarach roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search), co zapewnia wgląd w dane obejmujący cały system. W tej sekcji opisano sytuacje, w których pomocne może być utworzenie więcej niż jednego obszaru roboczego.
 
 Obecnie obszar roboczy oferuje następujące możliwości:
 
@@ -77,7 +77,7 @@ Domyślnie konto Microsoft lub konto organizacyjne używane do utworzenia obszar
 Istnieją dwa modele uprawnień, które kontrolują dostęp do obszaru roboczego usługi Log Analytics:
 
 1. Starsze role użytkownika usługi Log Analytics
-2. [Dostęp oparty na rolach na platformie Azure](../active-directory/role-based-access-control-configure.md)
+2. [Dostęp oparty na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)
 
 Poniższa tabela zawiera podsumowanie dostępu, który można ustawić za pomocą każdego modelu uprawnień:
 
@@ -104,7 +104,7 @@ Następujące działania również wymagają uprawnień platformy Azure:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Zarządzanie dostępem do usługi Log Analytics przy użyciu uprawnień platformy Azure
-Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../active-directory/role-based-access-control-configure.md).
+Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
 
 Platforma Azure ma dwie wbudowane role użytkownika w usłudze Log Analytics:
 - Czytelnik usługi Log Analytics
@@ -156,7 +156,7 @@ Za pomocą następujących ról możesz udzielić użytkownikom dostępu w róż
 - Grupa zasobów — dostęp do wszystkich obszarów roboczych w grupie zasobów
 - Zasób — dostęp tylko do określonego obszaru roboczego
 
-Za pomocą [ról niestandardowych](../active-directory/role-based-access-control-custom-roles.md) możesz utworzyć role z określonymi, wymaganymi uprawnieniami.
+Za pomocą [ról niestandardowych](../role-based-access-control/custom-roles.md) możesz utworzyć role z określonymi, wymaganymi uprawnieniami.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Role użytkownika platformy Azure oraz role użytkownika portalu usługi Log Analytics
 Jeśli masz co najmniej uprawnienie platformy Azure do odczytu w obszarze roboczym usługi Log Analytics, możesz otworzyć portal pakietu OMS, klikając zadanie **Portal OMS** podczas przeglądania obszaru roboczego usługi Log Analytics.
@@ -174,11 +174,11 @@ Przypisanie roli w portalu pakietu OMS jest określane w następujący sposób:
 | Zarządzane subskrypcje dostawcy rozwiązań w chmurze (CSP) <br> Konto, na którym się zalogowano, należy do usługi Azure Active Directory połączonej z obszarem roboczym | Administrator | Przeważnie klient dostawcy CSP |
 | Zarządzane subskrypcje dostawcy rozwiązań w chmurze (CSP) <br> Konto, na którym się zalogowano, nie należy do usługi Azure Active Directory połączonej z obszarem roboczym | Współautor | Przeważnie dostawca CSP |
 
-<sup>1</sup> Zapoznaj się z częścią [Azure permissions](../active-directory/role-based-access-control-custom-roles.md) (Uprawnienia platformy Azure), aby uzyskać więcej informacji na temat definicji ról. Podczas oceny ról akcja `*` nie jest odpowiednikiem `Microsoft.OperationalInsights/workspaces/*`.
+<sup>1</sup> Zapoznaj się z częścią [Azure permissions](../role-based-access-control/custom-roles.md) (Uprawnienia platformy Azure), aby uzyskać więcej informacji na temat definicji ról. Podczas oceny ról akcja `*` nie jest odpowiednikiem `Microsoft.OperationalInsights/workspaces/*`.
 
 Należy pamiętać o kilku kwestiach związanych z witryną Azure Portal:
 
-* Po zalogowaniu się do portalu pakietu OMS na stronie http://mms.microsoft.com zobaczysz listę **Wybierz obszar roboczy**. Ta lista zawiera tylko obszary robocze, w których masz rolę użytkownika usługi Log Analytics. Aby wyświetlić obszary robocze, do których uzyskujesz dostęp za pomocą subskrypcji platformy Azure, musisz podać dzierżawę w adresie URL. Przykład: `mms.microsoft.com/?tenant=contoso.com`. Identyfikator dzierżawy jest często ostatnią częścią adresu e-mail użytego podczas logowania.
+* Po zalogowaniu się do portalu pakietu OMS przy użyciu witryny http://mms.microsoft.com zobaczysz listę **Wybierz obszar roboczy**. Ta lista zawiera tylko obszary robocze, w których masz rolę użytkownika usługi Log Analytics. Aby wyświetlić obszary robocze, do których uzyskujesz dostęp za pomocą subskrypcji platformy Azure, musisz podać dzierżawę w adresie URL. Przykład: `mms.microsoft.com/?tenant=contoso.com`. Identyfikator dzierżawy jest często ostatnią częścią adresu e-mail użytego podczas logowania.
 * Aby przejść bezpośrednio do portalu, do którego uzyskujesz dostęp przy użyciu uprawnień platformy Azure, musisz podać zasób w adresie URL. Taki adres URL można uzyskać przy użyciu programu PowerShell.
 
   Na przykład `(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`.

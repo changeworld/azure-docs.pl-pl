@@ -1,13 +1,13 @@
 ---
-title: "Dostosowywanie rozwiązania połączonych fabryki - Azure | Dokumentacja firmy Microsoft"
-description: "Opis sposobu dostosowywania zachowanie połączonych fabryki wstępnie skonfigurowane rozwiązanie."
-services: 
+title: Dostosowywanie rozwiązania połączone fabryki - Azure | Dokumentacja firmy Microsoft
+description: Opis sposobu dostosowywania zachowanie akcelerator rozwiązań połączone fabryki.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: c#
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 48c8036d0bc9534ce94529b96d32b004769246c1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5d074a5cf0dd5191b5d94531068341ad1b953391
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Dostosuj sposób rozwiązania połączonych fabryki wyświetlania danych z serwerów OPC UA
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Dostosuj sposób rozwiązania połączone fabryki wyświetlania danych z serwerów OPC UA
 
-Rozwiązanie połączonych fabryki agreguje i wyświetla dane z serwerów OPC UA nawiązaniu połączenia z rozwiązaniem. Można wybrać i wysyłać polecenia do serwerów OPC UA w rozwiązaniu. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
+Rozwiązania połączone fabryki agreguje i wyświetla dane z serwerów OPC UA nawiązaniu połączenia z rozwiązaniem. Można wybrać i wysyłać polecenia do serwerów OPC UA w rozwiązaniu. Aby uzyskać więcej informacji na temat OPC UA zobacz [— często zadawane pytania fabryki połączone](iot-suite-faq-cf.md).
 
 Przykładami zagregowane dane w rozwiązaniu ogólną wydajność sprzętu (OEE) oraz kluczowych wskaźników wydajności (KPI) widoczne na pulpicie nawigacyjnym poziomie fabryki, wiersza i stacji. Poniższy zrzut ekranu przedstawia wartości OEE i KPI **zestawu** stacji na **wiersza produkcyjnym 1**w **we Wrocławiu** fabryki:
 
@@ -44,7 +44,7 @@ W tym artykule opisano:
 
 ## <a name="data-sources"></a>Źródła danych
 
-Rozwiązanie połączonych fabryki wyświetla dane z serwerów OPC UA nawiązaniu połączenia z rozwiązaniem. Domyślna instalacja obejmuje kilka serwerów OPC UA systemem symulacji fabryki. Można dodać serwery OPC UA który [łączenie się za pośrednictwem bramy] [ lnk-connect-cf] do rozwiązania.
+Rozwiązania połączone fabryki wyświetla dane z serwerów OPC UA nawiązaniu połączenia z rozwiązaniem. Domyślna instalacja obejmuje kilka serwerów OPC UA systemem symulacji fabryki. Można dodać serwery OPC UA który [łączenie się za pośrednictwem bramy] [ lnk-connect-cf] do rozwiązania.
 
 Możesz przejść elementów danych, które połączony serwer OPC Agent użytkownika może wysłać do rozwiązania na pulpicie nawigacyjnym:
 
@@ -65,29 +65,29 @@ Możesz przejść elementów danych, które połączony serwer OPC Agent użytko
 
 ## <a name="map-the-data"></a>Mapowania danych
 
-Rozwiązanie połączonych fabryki mapuje i agreguje elementy opublikowanych danych z serwera OPC UA do różnych widoków w rozwiązaniu. Podczas obsługi administracyjnej rozwiązania rozwiązania połączonych fabryki wdraża się do konta platformy Azure. Plik JSON w rozwiązaniu Visual Studio połączone fabryki przechowuje informacje o mapowaniu. Można wyświetlać i modyfikować tego pliku konfiguracji JSON w fabryce połączonych rozwiązania Visual Studio. Po wprowadzeniu zmiany można ponownie wdrożyć rozwiązanie.
+Rozwiązania połączone fabryki mapuje i agreguje elementy opublikowanych danych z serwera OPC UA do różnych widoków w rozwiązaniu. Podczas obsługi administracyjnej rozwiązania rozwiązania połączone fabryki wdraża się do konta platformy Azure. Plik JSON w rozwiązaniu Visual Studio połączone fabryki przechowuje informacje o mapowaniu. Można wyświetlać i modyfikować tego pliku konfiguracji JSON w rozwiązaniu fabryki połączone w Visual Studio. Po wprowadzeniu zmiany można ponownie wdrożyć rozwiązanie.
 
 Możesz użyć pliku konfiguracji do:
 
 - Edytowanie istniejącego fabryki symulowane, linii produkcyjnych i stacji.
 - Mapowanie danych rzeczywistych serwerów OPC UA, których połączenia z rozwiązaniem.
 
-Aby uzyskać więcej informacji dotyczących mapowania i agregowanie danych do własnych wymagań, zobacz [Konfigurowanie połączonych fabryki wstępnie skonfigurowane rozwiązanie ](iot-suite-connected-factory-configure.md).
+Aby uzyskać więcej informacji dotyczących mapowania i agregowanie danych do własnych wymagań, zobacz [Konfigurowanie akcelerator rozwiązań połączone fabryki ](iot-suite-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>Wdrażanie zmiany
 
-Po zakończeniu wprowadzania zmian do **ContosoTopologyDescription.json** pliku, należy ponownie wdrożyć rozwiązanie fabryki podłączonej do konta platformy Azure.
+Po zakończeniu wprowadzania zmian do **ContosoTopologyDescription.json** pliku, należy ponownie wdrożyć rozwiązanie fabryki połączony z kontem platformy Azure.
 
 **Azure iot — połączony fabryka** repozytorium zawiera **build.ps1** skrypt programu PowerShell, można użyć, aby ponownie skompilować i wdrożyć rozwiązanie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o rozwiązaniu połączonych fabryki wstępnie przeczytaj następujące artykuły:
+Dowiedz się więcej o akcelerator rozwiązań połączone fabryki przeczytaj następujące artykuły:
 
-* [Przewodnik po wstępnie skonfigurowanym rozwiązaniu połączonej fabryki][lnk-rm-walkthrough]
-* [Wdrażanie bramy dla połączonych fabryki][lnk-connect-cf]
+* [Połączone wskazówki akceleratora rozwiązań fabryki][lnk-rm-walkthrough]
+* [Wdrażanie bramy dla fabryki połączone][lnk-connect-cf]
 * [Uprawnienia w witrynie azureiotsuite.com][lnk-permissions]
-* [Często zadawane pytania dotyczące połączonej fabryki](iot-suite-faq-cf.md)
+* [Fabryka połączenia — często zadawane pytania](iot-suite-faq-cf.md)
 * [FAQ][lnk-faq]
 
 

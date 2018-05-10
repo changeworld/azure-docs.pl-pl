@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 6d783a5b36fd71fbcc020025e21aed49e8fd6e05
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -190,7 +190,7 @@ Oprócz często występujące kody błędów bazy danych MongoDB API bazy danych
 
 | Błąd               | Kod  | Opis  | Rozwiązanie  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Całkowita liczba zużywane jednostki żądania przekroczył wskaźnik elastycznie jednostka żądania dla kolekcji i został ograniczony. | Należy wziąć pod uwagę skalowanie przepływność kolekcji z portalu Azure lub podjęciem ponownej próby. |
+| TooManyRequests     | 16500 | Całkowita liczba zużywane jednostki żądania przekroczył wskaźnik elastycznie jednostka żądania dla kolekcji i został ograniczony. | Należy rozważyć skalowanie przepływności przypisany do kontenera lub grupy kontenerów z platformy Azure, w portalu lub ponawianie ponownie. |
 | ExceededMemoryLimit | 16501 | Jako usługę wielodostępną operacja przekroczyła przydział pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnego zapytania kryteria lub skontaktuj się z pomocy technicznej z [portalu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {Nazwa: "Adama"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wieku: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ## <a name="develop-with-the-table-api"></a>Tworzenie tabeli interfejsu API
@@ -386,7 +386,7 @@ Interfejs API tabeli zawiera te same funkcje zapytania jako magazynu tabel Azure
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Podczas zmiany TableThroughput dla interfejsu API tabeli?
 Należy zmienić TableThroughput, gdy stosuje się jeden z następujących warunków:
 * Przeprowadzasz wyodrębniania, przekształcania i ładowania (ETL) danych lub chcesz przekazać dużą ilość danych w krótkim czasie. 
-* Potrzebujesz więcej przepustowości z kontenera w wewnętrznej. Na przykład zobacz przepływności używane jest większa niż udostępnionej przepływności, czy możesz są pobierania ograniczane. Aby uzyskać więcej informacji, zobacz [przepływności zestawu dla kontenerów bazy danych Azure rozwiązania Cosmos](set-throughput.md).
+* Potrzebujesz więcej przepustowości z kontenera lub zbiór kontenery w wewnętrznej. Na przykład zobacz przepływności używane jest większa niż udostępnionej przepływności, czy możesz są pobierania ograniczane. Aby uzyskać więcej informacji, zobacz [przepływności zestawu dla kontenerów bazy danych Azure rozwiązania Cosmos](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Można skalować lub dół przepływność tabeli tabeli interfejsu API? 
 Tak, można użyć portalu Azure DB rozwiązania Cosmos skali okienku można skalować przepływność. Aby uzyskać więcej informacji, zobacz [przepływności zestawu](set-throughput.md).
@@ -401,7 +401,7 @@ Brak. Nie została zmieniona w cenie dla istniejących klientów usługi Magazyn
 Cena zależy od TableThroughput przydzielone. 
 
 ### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Jak obsługiwać żadnych ograniczania przepustowości w tabelach w ofercie tabeli interfejsu API 
-Jeśli szybkość żądania przekracza pojemność udostępnionej przepływności dla podstawowej kontenera, wystąpi błąd i zestawu SDK ponowi próbę połączenia, stosując zasady ponawiania.
+Jeśli szybkość żądania przekracza pojemność udostępnionej przepływności dla kontenera, w podstawowej lub zbiór kontenerów, wystąpi błąd i zestawu SDK ponowi próbę połączenia, stosując zasady ponawiania.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Dlaczego należy wybrać przepływności oprócz PartitionKey i RowKey, aby móc korzystać z oferty tabeli interfejsu API Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos ustawia przepływności domyślnego kontenera sieci, jeśli nie zostanie określona w pliku app.config, lub za pośrednictwem portalu. 
