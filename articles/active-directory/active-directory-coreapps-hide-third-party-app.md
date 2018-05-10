@@ -3,23 +3,24 @@ title: Ukryj aplikację za pomocą środowiska użytkownika w usłudze Azure Act
 description: Jak ukryć aplikację za pomocą środowiska użytkownika w paneli dostępu do usługi Azure Active Directory lub przyciski Uruchom usługi Office 365.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 7da8c60feed7cbb630e5b48653c657cc8fed9e99
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 564b724ab3971e0566fb2b1dc3a75c2eeac3d391
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Ukryj aplikację za pomocą środowiska użytkownika w usłudze Azure Active Directory
 
@@ -40,13 +41,13 @@ Wykonaj następujące kroki, aby ukryć aplikację za pomocą panelu dostępu u�
 1.  Zaloguj się do [portalu Azure](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
 2.  Wybierz **wszystkie usługi**, wprowadź **usługi Azure Active Directory** w polu tekstowym, a następnie wybierz **Enter**.
 3.  Na **usługi Azure Active Directory - *directoryname***  ekranu (to znaczy usługi Azure AD ekranu dla katalogu są używane do zarządzania), wybierz **aplikacje dla przedsiębiorstw**.
-![Aplikacje przedsiębiorstwa](media/active-directory-coreapps-hide-third-party-app/app1.png)
+![Aplikacje w przedsiębiorstwie](media/active-directory-coreapps-hide-third-party-app/app1.png)
 4.  Na **aplikacje dla przedsiębiorstw** ekranu wybierz **wszystkie aplikacje**. Możesz wyświetlić listę aplikacji, którymi można zarządzać.
 5.  Na **aplikacje przedsiębiorstwa — wszystkie aplikacje** ekranu, wybierz aplikację.</br>
-![Aplikacje przedsiębiorstwa](media/active-directory-coreapps-hide-third-party-app/app2.png)
+![Aplikacje w przedsiębiorstwie](media/active-directory-coreapps-hide-third-party-app/app2.png)
 6.  Na ***appname*** ekranu (czyli ekranu o nazwie wybranej aplikacji w tytule), wybierz polecenie Właściwości.
 7.  Na  ***appname* -właściwości** ekranu wybierz **tak** dla **widoczny dla użytkowników?**.
-![Aplikacje przedsiębiorstwa](media/active-directory-coreapps-hide-third-party-app/app3.png)
+![Aplikacje w przedsiębiorstwie](media/active-directory-coreapps-hide-third-party-app/app3.png)
 8.  Wybierz **zapisać** polecenia.
 
 ### <a name="how-do-i-hide-office-365-applications-from-users-access-panel"></a>Jak ukryć aplikacji usługi Office 365 z panelu dostępu użytkownika?

@@ -105,7 +105,11 @@
         - name: Jak włączyć akcelerator zapisu
           href: how-to-enable-write-accelerator.md
         - name: Rozwiązywanie problemów z dołączonymi dyskami VHD
-          href: troubleshoot-vhds.md
+          items:
+            - name: Błędy usuwania zasobów magazynu
+              href: storage-resource-deletion-errors.md
+            - name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
+              href: unexpected-reboots-attached-vhds.md
     - name: Networking
       href: network-overview.md
     - name: Automatyczne skalowanie aplikacji
@@ -202,7 +206,7 @@
         - name: Pobieranie szablonu
           href: download-template.md
         - name: Agent maszyny wirtualnej platformy Azure
-          href: agent-user-guide.md
+          href: ../extensions/agent-windows.md
         - name: Planowana konserwacja
           href: maintenance-notifications.md
         - name: Ograniczanie ryzyka związanego z wykonywaniem spekulatywnym
@@ -365,7 +369,7 @@
         - name: Agent usługi Network Watcher
           href: extensions-nwa.md
         - name: Ograniczanie instalacji rozszerzeń
-          href: extensions-rmpolicy-howto-ps.md
+          href: ../extensions/extensions-rmpolicy-howto-ps.md
     - name: Migrowanie maszyn wirtualnych
       items:
         - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS

@@ -174,10 +174,6 @@
 #### [Tworzenie raportów migawek](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurowanie ciągłego raportowania](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Korzystanie z niestandardowego analizatora dziennika](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### Odnajdywanie oparte na agentach
-##### [Co to jest Cloud App Discovery?](active-directory-cloudappdiscovery-whatis.md)
-##### [Aktualizowanie ustawień rejestru](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-##### [Objaśnienie zabezpieczeń i ochrony prywatności](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [Zdalny dostęp do aplikacji za pomocą serwera proxy aplikacji](active-directory-application-proxy-get-started.md)
@@ -328,7 +324,7 @@
 #### [Często zadawane pytania](active-directory-identity-protection-faqs.md)
 #### [Słownik](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 ## [Integrowanie innych usług z usługą Azure AD]()
 ### [Włączanie integracji z usługą LinkedIn](linkedin-integration.md)

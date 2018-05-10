@@ -208,7 +208,7 @@
         - name: Agent maszyny wirtualnej platformy Azure
           items:
             - name: Omówienie
-              href: agent-user-guide.md
+              href: ../extensions/agent-linux.md
             - name: Aktualizacja agenta
               href: update-agent.md
         - name: Planowana konserwacja
@@ -434,7 +434,7 @@
         - name: Rozszerzenie VMAccess
           href: using-vmaccess-extension.md
         - name: Ograniczanie instalacji rozszerzeń
-          href: extensions-rmpolicy-howto-cli.md
+          href: ../extensions/extensions-rmpolicy-howto-cli.md
     - name: Migrowanie maszyn wirtualnych
       items:
         - name: Migrowanie lokalnych maszyn wirtualnych i maszyn wirtualnych usług AWS
