@@ -115,16 +115,14 @@
           href: automation-pass-json-string.md
     - name: Hybrydowy proces roboczy elementu Runbook
       items:
-        - name: Wdrażanie hybrydowego procesu roboczego elementu runbook
+        - name: Omówienie hybrydowych procesów roboczych elementów Runbook
           href: automation-hybrid-runbook-worker.md
-        - name: Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Windows)
+        - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
           href: automation-windows-hrw-install.md
-        - name: Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Linux)
+        - name: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
           href: automation-linux-hrw-install.md
-        - name: Uruchamianie elementów runbook w ramach procesu roboczego
+        - name: Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
           href: automation-hrw-run-runbooks.md
-        - name: Usuwanie hybrydowych procesów roboczych elementu runbook usługi Azure Automation
-          href: automation-remove-hrw.md
     - name: Wdrażanie zarządzania konfiguracją (DSC)
       items:
         - name: Konfiguracja żądanego stanu (DSC) — omówienie

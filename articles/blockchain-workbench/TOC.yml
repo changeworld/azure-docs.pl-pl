@@ -24,23 +24,27 @@
       href: blockchain-workbench-use-API.md
     - name: Rozwiązywanie problemów z aplikacjami
       href: blockchain-workbench-troubleshooting.md
-    - name: Uzyskiwanie szczegółowych informacji o bazie danych aplikacji Workbench
-      href: blockchain-workbench-getdb-details.md
-    - name: Konfigurowanie zapory usługi SQL DB aplikacji Workbench
-      href: blockchain-workbench-database-firewall.md
-    - name: Korzystanie z danych aplikacji Workbench w programie Excel
-      href: blockchain-workbench-data-excel.md
-    - name: Korzystanie z danych aplikacji Workbench w usłudze Power BI
-      href: blockchain-workbench-data-powerbi.md
-    - name: Korzystanie z danych aplikacji Workbench w programie SQL Management Studio
-      href: blockchain-workbench-data-sql-management-studio.md
+    - name: Korzystanie z danych środowiska roboczego
+      items:
+        - name: Konfigurowanie zapory bazy danych
+          href: blockchain-workbench-database-firewall.md
+        - name: Uzyskiwanie szczegółów bazy danych
+          href: blockchain-workbench-getdb-details.md
+        - name: Korzystanie z danych w programie Excel
+          href: blockchain-workbench-data-excel.md
+        - name: Korzystanie z danych w usłudze Power BI
+          href: blockchain-workbench-data-powerbi.md
+        - name: Korzystanie z danych w programie SQL Management Studio
+          href: blockchain-workbench-data-sql-management-studio.md
 - name: Dokumentacja
   items:
+    - name: Przykłady kodu
+      href: 'https://github.com/Azure-Samples/blockchain'
     - name: Konfigurowanie
       href: blockchain-workbench-configuration-overview.md
     - name: Widoki bazy danych
       href: blockchain-workbench-database-views.md
-    - name: Interfejs API REST
-      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
     - name: Interfejs API do obsługi komunikatów
       href: blockchain-workbench-messages-overview.md
+    - name: Interfejs API REST
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'

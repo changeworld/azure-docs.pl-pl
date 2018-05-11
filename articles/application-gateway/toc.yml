@@ -91,6 +91,8 @@
       href: tutorial-url-route-powershell.md
     - name: Przekierowywanie ruchu sieciowego przy użyciu programu Azure PowerShell
       href: tutorial-url-redirect-powershell.md
+    - name: Tworzenie strefowo nadmiarowej bramy aplikacji
+      href: create-zone-redundant.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

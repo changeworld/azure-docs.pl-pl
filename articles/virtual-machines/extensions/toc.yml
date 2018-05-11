@@ -1,0 +1,95 @@
+- name: Dokumentacja rozszerzeń maszyny wirtualnej
+  href: ../index.md
+- name: Omówienie
+  items:
+    - name: Informacje o rozszerzeniach platformy Azure
+      href: overview.md
+    - name: Agent maszyny wirtualnej systemu Linux
+      href: agent-linux.md
+    - name: Agent maszyny wirtualnej systemu Windows
+      href: agent-windows.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Używanie rozszerzenia niestandardowego skryptu
+      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      maintainContext: true
+- name: Pojęcia
+  items:
+    - name: Linux
+      href: features-linux.md
+    - name: Windows
+      href: features-windows.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Rozszerzenie niestandardowego skryptu
+      items:
+        - name: Linux — wersja 2
+          href: custom-script-linux.md
+        - name: Linux — wersja 1 (OSTC)
+          href: custom-script-linuxOstc.md
+        - name: Windows
+          href: custom-script-windows.md
+    - name: Rozszerzenie pakietu OMS
+      items:
+        - name: Linux
+          href: oms-linux.md
+        - name: Windows
+          href: oms-windows.md
+    - name: Rozszerzenie diagnostyki
+      items:
+        - name: Linux
+          href: diagnostics-linux.md
+        - name: Windows
+          href: diagnostics-windows.md
+        - name: Korzystanie z szablonów
+          href: diagnostics-template.md
+    - name: Agent usługi Network Watcher
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: Rozszerzenie DSC programu PowerShell
+      href: dsc-overview.md
+      items:
+        - name: DSC i system Windows
+          href: dsc-windows.md
+        - name: Obsługa poświadczeń
+          href: dsc-credentials.md
+        - name: Korzystanie z szablonów
+          href: dsc-template.md
+    - name: Ochrona przed złośliwym kodem IaaS dla systemu Windows
+      href: iaas-antimalware-windows.md
+    - name: Rozszerzenie usługi Key Vault
+      href: key-vault-windows.md
+    - name: Rozszerzenie migawki maszyny wirtualnej
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: Rozszerzenia innych firm
+      items:
+        - name: Stackify Retrace
+          href: stackify-retrace-linux.md
+        - name: Symantec
+          href: symantec.md
+    - name: Przestarzałe rozszerzenia
+      items:
+        - name: Rozszerzenie modułu zbierania danych dzienników
+          href: log-collector.md
+        - name: Trend Micro Deep Security
+          href: trend.md
+    - name: Ograniczanie instalacji rozszerzeń
+      items:
+        - name: Linux
+          href: extensions-rmpolicy-howto-cli.md
+        - name: Windows
+          href: extensions-rmpolicy-howto-ps.md
+    - name: Aktualizowanie agenta systemu Linux
+      href: update-linux-agent.md
+    - name: Eksportowanie rozszerzeń
+      href: export-templates.md
+    - name: Rozwiązywanie problemów
+      href: troubleshoot.md

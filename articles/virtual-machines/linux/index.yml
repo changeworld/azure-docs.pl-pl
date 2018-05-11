@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 374e6a75d9ddfb5765418b1044dc525f14f86f67
-  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+  ms.openlocfilehash: 9e60a25d8e41de22010a8b1844fdb6267868333c
+  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/03/2018
+  ms.lasthandoff: 05/10/2018
 abstract:
   description: Maszyny wirtualne z systemem Linux na platformie Azure zapewniają bezpieczną infrastrukturę zwirtualizowaną na żądanie o dużej skali z zastosowaniem systemu Red Hat lub Ubuntu albo wybranej dystrybucji systemu Linux. Dowiedz się, jak tworzyć, konfigurować, aktualizować i skalować maszyny wirtualne z systemem Linux oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.
   aside:
@@ -73,6 +73,7 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Ciągła integracja/ciągłe dostarczanie za pomocą usług Team Services</a>
     - html: Tworzenie stosu serwera internetowego z użyciem modelu <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> lub <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpieczanie serwera internetowego przy użyciu protokołu SSL</a>
+    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure za pomocą niestandardowego obrazu narzędzia Packer</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list

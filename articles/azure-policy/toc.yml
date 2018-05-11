@@ -39,7 +39,5 @@
   items:
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/azure-policy/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'

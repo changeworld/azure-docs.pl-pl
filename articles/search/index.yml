@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/01/2018
   ms.author: heidist
-  ms.openlocfilehash: e947f678905e15619577f3dd5feb0287c6a14d54
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: ac99a23ede3a8adbf60d210b74f642ce4b0131a4
+  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 05/10/2018
 abstract:
   description: Dowiedz się, jak przy użyciu usługi Azure Search utworzyć rozwiązanie wyszukiwania dla przedsiębiorstw obsługujące prywatną, heterogeniczną zawartość. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają sposób konsolidowania zawartości, którą można przeszukiwać, w jeden, szybki indeks umożliwiający wykonywanie zapytań za pomocą składni o różnej złożoności (od podstawowej po zaawansowaną) w szerokim zakresie scenariuszy. <p/><b>Nowe wyszukiwanie kognitywne (wersja zapoznawcza)</b> Użyj interfejsu API REST w wersji wstępnej do powiązania algorytmów opartych na sztucznej inteligencji z potokiem indeksowania. Wyodrębniaj dane i wywołuj przetwarzanie języka naturalnego oraz obrazu w celu przekształcania nieprzetworzonej zawartości bez struktury w zawartość możliwą do wyszukiwania w ramach indeksu usługi Azure Search. <p/>Rozpocznij pracę z <a href="/azure/search/cognitive-search-quickstart-blob">zasobami i przykładowymi danymi</a> lub uzyskaj więcej informacji w obszarze <a href="/azure/search/cognitive-search-concept-intro">Pojęcia</a>.
   aside:
@@ -56,7 +56,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/search/cognitive-search-get-start-preview">Wzbogacone indeksowanie przy użyciu umiejętności kognitywnych</a>
+    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Informacje o interfejsach API REST umiejętności poznawczych</a>
     - html: <a href="/azure/search/search-howto-dotnet-sdk">Jak korzystać z usługi Azure Search za pomocą platformy .NET</a>
     - html: <a href="/azure/search/search-indexer-tutorial">Indeksowanie zawartości usługi Azure SQL Database za pomocą platformy .NET</a>
     - html: <a href="/azure/search/search-semi-structured-data">Indeksowanie częściowo ustrukturyzowanych danych w usłudze Azure Blob Storage za pomocą architektury REST</a>

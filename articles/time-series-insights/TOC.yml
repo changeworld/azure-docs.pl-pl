@@ -7,10 +7,13 @@
     - name: Time Series Insights — informacje
       href: time-series-insights-overview.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
     - name: Poznawanie usługi Time Series Insights
       href: time-series-quickstart.md
+- name: Samouczki
+  items:
+    - name: Eksplorowanie biblioteki klienckiej JavaScript dla usługi TSI
+      href: tutorial-explore-js-client-lib.md
 - name: Pojęcia
   items:
     - name: Planowanie środowiska
