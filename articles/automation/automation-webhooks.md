@@ -3,16 +3,17 @@ title: Uruchamianie elementu runbook usługi Automatyzacja Azure z elementu webh
 description: Element webhook, która umożliwia klientowi uruchomienia elementu runbook automatyzacji Azure z wywołania HTTP.  W tym artykule opisano sposób tworzenia elementu webhook i wywoływanie jednego uruchomienia elementu runbook.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 4ea7366a02dd95fac5c1a7307e6156a0481fa16d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bb64d0c5d94bb198b6ece2ea50a7fc248b93c7dd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Automatyzacja Azure z elementu webhook
 A *webhook* umożliwia uruchomienie określonego elementu runbook automatyzacji Azure za pomocą pojedynczego żądania HTTP. Dzięki temu usług zewnętrznych, takich jak Visual Studio Team Services, GitHub, usługi Analiza dzienników Azure lub niestandardowych aplikacji do uruchamiania elementów runbook bez wdrażania pełnego rozwiązania przy użyciu interfejsu API usługi Automatyzacja Azure.  
@@ -27,7 +28,7 @@ W poniższej tabeli opisano właściwości, które należy skonfigurować dla el
 |:--- |:--- |
 | Name (Nazwa) |Możesz podać dowolną nazwę wybranego dla elementu webhook, ponieważ to nie jest widoczne dla klientów.  Tylko służy do należy do identyfikacji elementu runbook automatyzacji Azure. <br>  Najlepszym rozwiązaniem należy nadać elementu webhook nazwę związane z klienta, który zostanie użyty. |
 | Adres URL |Adres URL elementu webhook jest unikatowy adres, który klient wywołuje z POST protokołu HTTP, aby uruchomić element runbook połączone z elementu webhook.  Jest ona generowana automatycznie podczas tworzenia elementu webhook.  Nie można określić niestandardowy adres URL. <br> <br>  Adres URL zawiera token zabezpieczający, który umożliwia elementu runbook do wywołania przez system innej firmy bez dalszego uwierzytelniania. Z tego powodu powinny być traktowane jak hasło.  Ze względów bezpieczeństwa możesz jedynie wyświetlić adres URL w portalu Azure w czasie tworzenia elementu webhook. Należy zauważyć, adres URL w bezpiecznej lokalizacji do użytku w przyszłości. |
-| Data wygaśnięcia |Takie jak certyfikat każdy element webhook ma datę wygaśnięcia, które go można już używać.  Ta data wygaśnięcia można zmodyfikować po utworzeniu elementu webhook. |
+| Data ważności |Takie jak certyfikat każdy element webhook ma datę wygaśnięcia, które go można już używać.  Ta data wygaśnięcia można zmodyfikować po utworzeniu elementu webhook. |
 | Enabled (Włączony) |Elementu webhook jest domyślnie włączona po jego utworzeniu.  Jeśli zostanie ustawiona na wyłączone, a następnie klienta nie będzie można go użyć.  Można ustawić **włączone** właściwości po utworzeniu elementu webhook lub w każdej chwili po jego utworzeniu. |
 
 ### <a name="parameters"></a>Parametry
@@ -61,7 +62,7 @@ Powyżej elementu runbook, jeśli masz następujące właściwości dla parametr
 
 Następnie przejdzie następującą wartość JSON w Interfejsie użytkownika dla parametru WebhookData:  
 
-* {"WebhookName":"MyWebhook", "RequestHeader":{"From":"Test User"}, "RequestBody":"[\"VM1\",\"VM2\"]"}
+* {"WebhookName": "MyWebhook", "RequestHeader": {"Od": "Użytkownik testowy"}, "RequestBody": "[\"VM1\",\"maszyny VM2\"]"}
 
 ![Uruchom parametr WebhookData z interfejsu użytkownika](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
@@ -183,7 +184,7 @@ Włączone elementu Webhook elementów runbook może służyć do reagowania na 
 
 Oprócz za pomocą usługi Azure alerty jako system powiadomień, należy również rozpocząć się poza elementów runbook w odpowiedzi na alerty. Automatyzacja Azure oferuje możliwość uruchamiania włączone elementu webhook elementów runbook z alertami platformy Azure. Jeśli Metryka przekracza wartość skonfigurowany próg następnie reguły alertu staje się aktywny i wyzwala webhook usługi Automatyzacja, który z kolei wykonuje element runbook.
 
-![Elementy webhook](media/automation-webhooks/webhook-alert.jpg)
+![elementów webhook](media/automation-webhooks/webhook-alert.jpg)
 
 ### <a name="alert-context"></a>Kontekst alertu
 Należy rozważyć zasobów platformy Azure, takich jak maszyny wirtualnej, użycie procesora CPU tego komputera jest jednym z metryki wydajności. Jeśli wykorzystanie procesora CPU jest 100% lub więcej niż określonym przez długi czas, możesz uruchomić ponownie maszynę wirtualną, aby rozwiązać ten problem. To będzie możliwe przez skonfigurowanie reguły alertu do maszyny wirtualnej i procent użycia procesora CPU, jako jego metryka ma ta reguła. Procent użycia procesora CPU w tym miejscu jest po prostu wykonywanej na przykład, ale istnieje wiele innych metryk, które można skonfigurować do zasobów platformy Azure i ponownego uruchamiania maszyny wirtualnej jest akcja, która jest wykonywana, aby rozwiązać ten problem, można skonfigurować element runbook, aby wykonywać inne czynności.
@@ -256,7 +257,7 @@ Następujący przykładowy element runbook jest wyzwalane, gdy reguła alertu st
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji na różne sposoby uruchamiania elementu runbook, zobacz [uruchamianie elementu Runbook](automation-starting-a-runbook.md).
 * Aby uzyskać informacje o wyświetlaniu stanu zadania elementu Runbook, zapoznaj się [wykonanie elementu Runbook automatyzacji Azure](automation-runbook-execution.md).
 * Aby dowiedzieć się, jak używać usługi Automatyzacja Azure do wykonania akcji na alerty Azure, zobacz [skorygować alerty maszyny Wirtualnej Azure z elementu Runbook usługi automatyzacja](automation-azure-vm-alert-integration.md).

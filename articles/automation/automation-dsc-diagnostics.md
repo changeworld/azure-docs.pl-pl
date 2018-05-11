@@ -3,16 +3,17 @@ title: Przekazuj Konfiguracja DSC automatyzacji Azure raportowania danych do ana
 description: W tym artykule przedstawiono sposób wysyłania żądanego stanu konfiguracji (DSC) raportowania danych do analizy dzienników dostarczać dodatkowe szczegółowe dane i zarządzania.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ac0da2b73341f0c6ed4f1e99e077996525890ab7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e87420c6f390d607ce6f0f57df4634a134a93d63
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Przekazuj Konfiguracja DSC automatyzacji Azure raportowania danych do analizy dzienników
 
@@ -185,7 +186,7 @@ Wysyła dane usługi Konfiguracja DSC automatyzacji do analizy dzienników, moż
 
 Analiza dzienników zapewnia lepszą widoczność operacyjnej do danych usługi Konfiguracja DSC automatyzacji i może ułatwić szybciej adres zdarzenia.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat sposobu konstruowania różne zapytania i przejrzyj dzienniki usługi Konfiguracja DSC automatyzacji z analizy dzienników, zobacz [Zaloguj wyszukiwania analizy dzienników](../log-analytics/log-analytics-log-searches.md)
 * Aby dowiedzieć się więcej o korzystaniu z usługi Konfiguracja DSC automatyzacji Azure, zobacz [wprowadzenie do korzystania z usługi Konfiguracja DSC automatyzacji Azure](automation-dsc-getting-started.md)

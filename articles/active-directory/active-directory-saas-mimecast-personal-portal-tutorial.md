@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Azure Active Directory integracji z portalu osobiste Mimecast | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między Mimecast osobistych portalu i usługi Azure Active Directory."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między Mimecast osobistych portalu i usługi Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 4f2c5f7323d9d10b6a784da8f45577ccf774b78f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7d8a746df9bea22970da9dc47b5e436a94335f49
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Samouczek: Integracji Azure Active Directory z Mimecast osobistych portalu
 
@@ -80,8 +80,6 @@ W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokr
 
 Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w portalu osobiste Mimecast jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązane użytkownika w portalu osobiste Mimecast musi określone.
 
-W portalu osobiste Mimecast, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
-
 Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z portalem osobiste Mimecast, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
@@ -127,6 +125,16 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Republika Południowej Afryki    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Australia       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | Platformy        | `https://jer-api.mimecast.com/sso/<accountcode>`|
+
+    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL: 
+
+    | Region  |  Wartość | 
+    | --------------- | --------------- | 
+    | Europa          | `https://eu-api.mimecast.com/login/saml`|
+    | Stany Zjednoczone   | `https://us-api.mimecast.com/login/saml`|
+    | Republika Południowej Afryki    | `https://za-api.mimecast.com/login/saml`|
+    | Australia       | `https://au-api.mimecast.com/login/saml`|
+    | Platformy        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
     > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej osobiste klienta portalu Mimecast](http://www.mimecast.com/customer-success/technical-support/) można uzyskać wartość. 
@@ -178,10 +186,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     h. Wybierz **Zezwalaj funkcji logowania jednokrotnego w**.
    
     i. Kliknij pozycję **Zapisz**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -241,7 +245,7 @@ Należy zarejestrować domeny, przed przystąpieniem do tworzenia użytkowników
    
     ![Zapisz](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795006.png "Zapisz")
    
-    a. W **adres E-mail** pole tekstowe, typ **adres E-mail** użytkownika jako  **BrittaSimon@contoso.com** .
+    a. W **adres E-mail** pole tekstowe, typ **adres E-mail** użytkownika jako **BrittaSimon@contoso.com**.
     
     b. W **globalną nazwę** pole tekstowe, typ **username** jako **BrittaSimon**.
 
@@ -282,14 +286,14 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka Mimecast Portal osobistych w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Portal osobiste Mimecast.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

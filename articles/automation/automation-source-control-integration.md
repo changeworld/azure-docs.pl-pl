@@ -1,18 +1,19 @@
 ---
-title: "Źródło integracji kontroli usługi Automatyzacja Azure"
-description: "W tym artykule opisano integracji kontroli źródła z usługi GitHub automatyzacji Azure."
+title: Źródło integracji kontroli usługi Automatyzacja Azure
+description: W tym artykule opisano integracji kontroli źródła z usługi GitHub automatyzacji Azure.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 96b4f38ea990edcb23ae792d40651672a921a7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 29ec32c933f3dbe07a844bd99a1f5aa3fa57d61b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 Integracja kontroli źródła umożliwia kojarzenie elementów runbook do Twojego konta automatyzacji do repozytorium GitHub kontroli źródła. Kontroli źródła pozwala łatwo współpracować z zespołem śledzenia zmian i przywrócenie wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęziach w kontroli źródła do kont automatyzacji rozwoju, testowym lub produkcyjnym, co ułatwia promowanie kod, który był testowany w środowisku projektowania do produkcji automatyzacji konto.
@@ -34,13 +35,13 @@ Jeśli masz już konto GitHub i repozytorium, który chcesz połączyć usługi 
    
 1. **Kontroli źródła** strona zostanie otwarta, w którym można skonfigurować szczegółowe informacje o koncie usługi GitHub. Poniżej znajduje się lista parametrów do skonfigurowania:  
    
-   | **Parameter** | **Opis** |
+   | **Parametr** | **Opis** |
    |:--- |:--- |
    | Wybieranie źródła |Wybierz źródło. Obecnie tylko **GitHub** jest obsługiwana. |
    | Autoryzacja |Kliknij przycisk **autoryzacji** przycisk, aby udzielić dostępu usługi Automatyzacja Azure z Twoim repozytorium GitHub. Jeśli użytkownik jest już zalogowany na koncie usługi GitHub w innym oknie, są używane poświadczenia tego konta. Po autoryzacji zakończy się pomyślnie, strony zostaną wyświetlone w obszarze nazwy użytkownika usługi GitHub **właściwości autoryzacji**. |
    | Wybierz repozytorium |Zaznacz na liście dostępnych repozytoriów repozytorium GitHub. |
    | Wybierz rozgałęzienie |Wybierz gałąź z listy dostępnych gałęzi. Tylko **wzorca** gałęzi jest wyświetlany, jeśli nie utworzono żadnych gałęziach. |
-   | Ścieżka folderu Runbook |Ścieżka folderu runbook Określa ścieżkę w repozytorium GitHub, z którego chcesz wypychania lub ściągania kodu. Należy podać w formacie **/nazwa folderu/nazwa podfolderu**. Tylko elementy runbook w ścieżce folderu elementów runbook będą synchronizowane z kontem automatyzacji. Elementy Runbook w podfolderach w ścieżce folderu elementów runbook będą **nie** zsynchronizowane. Użyj  **/**  na zsynchronizowanie wszystkich elementów runbook w repozytorium. |
+   | Ścieżka folderu Runbook |Ścieżka folderu runbook Określa ścieżkę w repozytorium GitHub, z którego chcesz wypychania lub ściągania kodu. Należy podać w formacie **/nazwa folderu/nazwa podfolderu**. Tylko elementy runbook w ścieżce folderu elementów runbook będą synchronizowane z kontem automatyzacji. Elementy Runbook w podfolderach w ścieżce folderu elementów runbook będą **nie** zsynchronizowane. Użyj **/** na zsynchronizowanie wszystkich elementów runbook w repozytorium. |
 3. Na przykład, jeśli masz repozytorium o nazwie **PowerShellScripts** zawiera folder o nazwie **RootFolder**, który zawiera folder o nazwie **podfolder**. Można synchronizować z poziomu każdego folderu za pomocą następujących ciągów:
    
    1. Do synchronizacji elementów runbook **repozytorium**, ścieżka folderu runbook */*
@@ -57,7 +58,7 @@ Jeśli masz już konto GitHub i repozytorium, który chcesz połączyć usługi 
    
    * Zmienna **Microsoft.Azure.Automation.SourceControl.Connection** zawiera wartości parametrów połączenia, jak pokazano poniżej.  
      
-     | **Parameter** | **Wartość** |
+     | **Parametr** | **Wartość** |
      |:--- |:--- |
      | Name (Nazwa) |Microsoft.Azure.Automation.SourceControl.Connection |
      | Typ |Ciąg |
@@ -65,7 +66,7 @@ Jeśli masz już konto GitHub i repozytorium, który chcesz połączyć usługi 
 
     * Zmienna **Microsoft.Azure.Automation.SourceControl.OAuthToken**, zawiera bezpieczne zaszyfrowaną wartość OAuthToken Twojego.  
 
-    |**Parameter**            |**Wartość** |
+    |**Parametr**            |**Wartość** |
     |:---|:---|
     | Name (Nazwa)  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
     | Typ | Unknown(Encrypted) |
@@ -92,7 +93,7 @@ Sprawdź element Runbook w umożliwia Wypchnij zmiany wprowadzone do elementu ru
 
 1. Po kliknięciu **zaewidencjonowania**, zostanie wyświetlony monit z potwierdzeniem, kliknij przycisk **tak** aby kontynuować.  
    
-    ![Komunikat zaewidencjonowania](media/automation-source-control-integration/automation_07_CheckinMessage.png)
+    ![Komunikat dotyczący zaewidencjonowania](media/automation-source-control-integration/automation_07_CheckinMessage.png)
 2. Zaewidencjonuj uruchamiania elementu runbook z kontroli źródła: **MicrosoftAzureAutomationAccountToGitHubV1 synchronizacji**. Ten element runbook łączy się GitHub i wypchnięcia zmian usługi Automatyzacja Azure z Twoim repozytorium. Aby wyświetlić ewidencjonowanych w historii zadania, przejdź wstecz do **integracji kontroli źródła** i kliknij, aby otworzyć stronę synchronizacji repozytorium. Ta strona przedstawia wszystkich zadań kontroli źródła.  Wybierz zadania, aby wyświetlić i kliknij, aby wyświetlić szczegóły.  
    
     ![Zaewidencjonowanie elementu Runbook](media/automation-source-control-integration/automation_08_CheckinRunbook.png)

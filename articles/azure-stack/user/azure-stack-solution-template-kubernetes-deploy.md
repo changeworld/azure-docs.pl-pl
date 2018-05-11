@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 71d920ea1c143ed65510b77e1804e9c5e38cc180
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7cf865f0ce75d8308d6d42306e8e05852f763cae
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -24,7 +24,7 @@ ms.lasthandoff: 05/10/2018
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-> [!note]  
+> [!Note]  
 > Kubernetes usługi kontenera platformy Azure (ACS) na stosie Azure znajduje się w prywatnej wersji zapoznawczej. Operatorem stosu Azure należy zażądać dostępu do elementu Kubernetes Marketplace niezbędnych do wykonywania instrukcji w tym artykule.
 
 Następujący artykuł wygląda na przy użyciu szablonu usługi Azure Resource Manager rozwiązania do wdrażania i obsługi administracyjnej zasobów dla Kubernetes w jednej, skoordynowanej operacji. Użytkownik zostanie muszą do zbierania wymaganych informacji o instalacji programu Azure stosu Generowanie szablonu, a następnie wdrożyć do chmury.
@@ -121,7 +121,7 @@ Nadaj głównych dostępu do usługi do subskrypcji, w którym podmiot zabezpiec
 
 6. Wprowadź **prefiks DNS głównego profilu** jest unikatowa w regionie. Musi to być region unikatową nazwę, taką jak `k8s-12345`. Spróbuj wybrać go grupą zasobów nazwy jako najlepsze praktyki.
 
-    > [!note]  
+    > [!Note]  
     > Dla każdego klastra użyj prefiks DNS nowych i unikatowych głównego profilu.
 
 7. Wprowadź liczbę agentów w klastrze. Ta wartość jest określana jako **liczba profilu puli agentów**. Można mieć od 1 do 32

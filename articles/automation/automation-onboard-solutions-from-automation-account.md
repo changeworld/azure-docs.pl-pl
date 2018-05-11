@@ -9,11 +9,11 @@ ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b3ff1991d76b3ab5b4b3c44f4fbe28fbb986d4bd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4bdd0ef182e0d18409ca608a645ff4011f00f9fa
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączyć rozwiązań do zarządzania aktualizacjami, śledzenia zmian i magazynu
 
@@ -45,7 +45,13 @@ Wybierz **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI
 
 Każde rozwiązanie używa konfiguracji zakresu w obszarze roboczym pod kątem komputerów, które rozwiązanie. Konfiguracja zakresu jest grupą co najmniej jeden zapisanych wyszukiwań służy do ograniczania zakresu rozwiązanie do określonych komputerów. Do konfiguracji zakresu, na Twoim koncie automatyzacji w obszarze **powiązane zasoby**, wybierz pozycję **obszaru roboczego**. Następnie w obszarze roboczym **źródeł danych obszaru roboczego**, wybierz pozycję **konfiguracji zakresu**.
 
-Domyślnie tworzone dwie konfiguracje zakresu **śledzenia zmian MicrosoftDefaultScopeConfig** i **MicrosoftDefaultScopeConfig aktualizacje**.
+Jeśli wybranego obszaru roboczego nie ma rozwiązania zarządzania aktualizacjami lub śledzenia zmian, ale są tworzone następujące konfiguracje w zakresie:
+
+* **Śledzenia zmian MicrosoftDefaultScopeConfig**
+
+* **Aktualizacje MicrosoftDefaultScopeConfig**
+
+Jeśli wybranego obszaru roboczego jest już w rozwiązaniu. Rozwiązanie nie jest ponownie wdrożone i konfigurację zakresu nie zostaną dodane do niego.
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
 
@@ -55,7 +61,7 @@ Przejdź do swojego konta automatyzacji i wybierz **zapisane wyszukiwania** w ob
 
 |Name (Nazwa)     |Kategoria  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
 
 Wybierz albo zapisane wyszukiwanie, aby wyświetlić zapytania używany do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytania, a jego wyniki:
@@ -68,7 +74,7 @@ Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze 
 
 Kliknij przycisk **+ Dodaj maszyny Wirtualnej Azure**, wybierz maszynę Wirtualną z listy. Na **zarządzania aktualizacjami** kliknij przycisk **włączyć**. Spowoduje to dodanie bieżącej maszyny Wirtualnej do grupy komputerów zapisanego wyszukiwania dla rozwiązania.
 
-## <a name="onboard-a-non-azure-machine"></a>Dodać komputer z systemem innym niż Azure
+## <a name="onboard-a-non-azure-machine"></a>Dołączanie maszyny spoza platformy Azure
 
 Twoje automatyzacji konta wybierz **spisu** lub **śledzenie zmian** w obszarze **zarządzania konfiguracją**, lub **zarządzanie aktualizacjami** w obszarze **zarządzania AKTUALIZACJAMI**.
 

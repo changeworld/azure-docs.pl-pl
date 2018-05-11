@@ -1,11 +1,11 @@
 ---
-title: "Utwórz niestandardowy pulpit nawigacyjny w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Ten przewodnik pomaga zrozumieć, jak pulpity nawigacyjne analizy dzienników można Wizualizuj wszystkie dziennika zapisanych wyszukiwań, umożliwiając pojedynczego obiektyw, aby wyświetlić środowiska."
+title: Utwórz niestandardowy pulpit nawigacyjny w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Ten przewodnik pomaga zrozumieć, jak pulpity nawigacyjne analizy dzienników można Wizualizuj wszystkie dziennika zapisanych wyszukiwań, umożliwiając pojedynczego obiektyw, aby wyświetlić środowiska.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7eaa74655b009e3154e2cc4f09d5599040ec4589
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Utwórz niestandardowy pulpit nawigacyjny do użycia w analizy dzienników
 
 Ten przewodnik pomaga zrozumieć, jak pulpity nawigacyjne analizy dzienników można Wizualizuj wszystkie dziennika zapisanych wyszukiwań, umożliwiając pojedynczego obiektyw, aby wyświetlić środowiska.
 
 >[!NOTE]
-> Jeśli obszaru roboczego został uaktualniony do [języka zapytań nowe analizy dzienników](log-analytics-log-search-upgrade.md), a następnie nie można edytować istniejące **Mój pulpit nawigacyjny**. Jeśli obszaru roboczego nie ma żadnego **Mój pulpit nawigacyjny** Kafelki dodany, a następnie nie będzie mógł przeglądać **Mój pulpit nawigacyjny** w obszarze roboczym uaktualniony. 
+> Nie będzie można edytować istniejące **Mój pulpit nawigacyjny**. Ta funkcja jest w trakcie przestarzałe.
 
 ![Przykład pulpitu nawigacyjnego](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 
@@ -40,7 +40,7 @@ Wszystkie niestandardowe pulpity nawigacyjne utworzone w portalu OMS są także 
 ## <a name="how-do-i-create-my-dashboard"></a>Jak utworzyć mój pulpit nawigacyjny?
 Aby rozpocząć, przejdź do strony Przegląd OMS. Zobaczysz **Mój pulpit nawigacyjny** kafelka po lewej stronie. Kliknij go, aby przejść do pulpitu nawigacyjnego.
 
-![Omówienie](./media/log-analytics-dashboards/oms-dashboards-overview.png)
+![Przegląd](./media/log-analytics-dashboards/oms-dashboards-overview.png)
 
 ## <a name="adding-a-tile"></a>Dodawanie kafelka
 W pulpitach nawigacyjnych Kafelki są obsługiwane przez zapisany dziennik wyszukiwania. OMS zawiera wiele wstępnie wprowadzone zapisany dziennik wyszukiwania, dzięki czemu będzie można od razu. Wykonaj następujące kroki, które przedstawiają sposób rozpocząć.
@@ -70,7 +70,7 @@ Istnieją trzy rodzaje wizualizacje kafelka do wyboru:
 | Typ wykresu | jaką pełni funkcję |
 | --- | --- |
 | ![Wykres słupkowy](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png) |Wyświetla oś czasu wyników wyszukiwania zapisany dziennik jako wykres słupkowy lub lista wyników według pola w zależności od, jeśli wyszukiwanie dziennika agreguje wyniki według pola, czy nie. |
-| ![Metryka](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Wyświetla trafień wynik wyszukiwania z całkowitej dziennika jako liczby na kafelku. Metryki kafelków umożliwiają ustawienie progu wyróżniane kafelka, po osiągnięciu progu. |
+| ![metryka](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Wyświetla trafień wynik wyszukiwania z całkowitej dziennika jako liczby na kafelku. Metryki kafelków umożliwiają ustawienie progu wyróżniane kafelka, po osiągnięciu progu. |
 | ![wiersz](./media/log-analytics-dashboards/oms-dashboards-line.png) |Wyświetla wykres liniowy osi czasu z zapisany dziennik wyszukiwania wynik trafień wartościami. |
 
 ### <a name="threshold"></a>Próg
@@ -86,5 +86,5 @@ Aby usunąć kafelka, przejdź do widoku Mój pulpit nawigacyjny, a następnie k
 
 ![Usuń Kafelek](./media/log-analytics-dashboards/oms-dashboards-remove-tile.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Utwórz [alerty](log-analytics-alerts.md) w analizy dzienników, aby generować powiadomienia i Korygowanie problemów.

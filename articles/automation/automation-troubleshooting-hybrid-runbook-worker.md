@@ -3,16 +3,17 @@ title: Rozwiązywanie problemów z procesu roboczego elementu Runbook hybrydoweg
 description: Opisz objawy, przyczyny i rozwiązania typowych problemów hybrydowy proces roboczy elementu Runbook automatyzacji Azure.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 37b61dfa8c8b760943f5a4561cc7f9f0db309a61
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5c0cbf1a5cc421ad73fa47e790b5d35042222a91
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>Porady dotyczące rozwiązywania problemów hybrydowy proces roboczy elementu Runbook
 
@@ -55,6 +56,6 @@ Najpierw upewnij się, że komputer wyznaczony do uruchomienia funkcji hybrydowe
 
 Sprawdź **Microsoft SMA** odpowiednie zdarzenie z opisem w dzienniku zdarzeń *Win32 proces został zakończony z kodem [4294967295]*. Przyczyną tego błędu jest nie jeszcze skonfigurowane uwierzytelnianie w elementach runbook lub określony poświadczeń Uruchom jako grupy hybrydowych procesów roboczych. Przegląd [uprawnienia elementów Runbook](automation-hrw-run-runbooks.md#runbook-permissions) o potwierdzenie zostały prawidłowo skonfigurowane uwierzytelnianie na elementach runbook.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać Pomoc innych problemów w automatyzacji, [rozwiązywania typowych problemów z usługi Automatyzacja Azure](automation-troubleshooting-automation-errors.md)

@@ -6,13 +6,13 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/08/2016
+ms.date: 05/10/2016
 ms.author: sethm
-ms.openlocfilehash: 0759decec9d80f1f836110a8907049213ca1eed6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 387801d971a349562c8a6aefc2f8d615edfd2f3a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
 
@@ -21,7 +21,7 @@ Usługa Azure Service Bus jest stosowana w wielu brokerów komunikat do przetwar
 Informacje o wewnętrzne usługi Service Bus, zobacz [Architektura usługi Service Bus] [ Service Bus architecture] artykułu.
 
 > [!NOTE]
-> Partycjonowanie jest dostępny na tworzenie jednostki dla wszystkich kolejek i tematów w Basic lub Standard jednostki SKU. Nie jest dostępna dla Premium jednostka SKU komunikatów, ale wszelkie istniejące partycjonowane jednostki w warstwie Premium będzie działać zgodnie z oczekiwaniami.
+> Partycjonowanie jest dostępny na tworzenie jednostki dla wszystkich kolejek i tematów w Basic lub Standard jednostki SKU. Nie jest dostępna dla Premium jednostka SKU komunikatów, ale żadnych istniejących partycjonowane jednostki w przestrzeniach nazw warstwy Premium będzie działać zgodnie z oczekiwaniami.
  
 Nie można zmienić opcji podziału na wszelkie istniejące kolejka lub temat; Opcja można ustawić tylko podczas tworzenia jednostki.
 
@@ -43,9 +43,7 @@ W warstwie standardowej obsługi wiadomości można utworzyć kolejki usługi Se
 
 ### <a name="premium"></a>Premium
 
-W przypadku przestrzeni nazw warstwy Premium można utworzyć kolejki usługi Service Bus i tematy w 1, 2, 3, 4, 5, 10, 20, 40 lub rozmiary 80 GB (wartość domyślna to 1 GB). W partycji, domyślnie włączona, usługi Service Bus tworzy dwie partycje nieobsługujące jednostki. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal]w **omówienie** bloku dla tej jednostki.
-
-Aby uzyskać więcej informacji na temat partycjonowania w warstwie Premium obsługi komunikatów, zobacz [usługi Service Bus w warstwie Premium i standardowa komunikatami w warstwie](service-bus-premium-messaging.md). 
+W obszarze nazw warstwy Premium partycjonowanie nie jest obsługiwane. Można jednak utworzyć tematów i kolejek usługi Service Bus w 1, 2, 3, 4, 5, 10, 20, 40 lub rozmiary 80 GB (wartość domyślna to 1 GB). Widać, analizując jego wpis rozmiar kolejki lub temat [portalu Azure][Azure portal]w **omówienie** bloku dla tej jednostki.
 
 ### <a name="create-a-partitioned-entity"></a>Utwórz jednostkę podzielonym na partycje
 
@@ -59,7 +57,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Alternatywnie można utworzyć kolejki podzielonym na partycje lub tematu w [portalu Azure] [ Azure portal] lub w programie Visual Studio. Podczas tworzenia kolejki lub tematu w portalu, **włączyć partycjonowania** opcję kolejka lub temat **Utwórz** okno dialogowe jest domyślnie zaznaczone. Tylko można wyłączyć tę opcję w jednostce warstwy standardowa; w warstwie Premium Partycjonowanie jest zawsze włączone. W programie Visual Studio, kliknij przycisk **włączyć partycjonowania** checkbox w **nową kolejkę** lub **nowy temat** okno dialogowe.
+Alternatywnie można utworzyć kolejki podzielonym na partycje lub tematu w [portalu Azure][Azure portal]. Podczas tworzenia kolejki lub tematu w portalu, **włączyć partycjonowania** opcję kolejka lub temat **Utwórz** okno dialogowe jest domyślnie zaznaczone. Tylko można wyłączyć tę opcję w jednostce warstwy standardowa; w warstwie Premium partycjonowanie nie jest obsługiwany, a pole wyboru nie ma wpływu. 
 
 ## <a name="use-of-partition-keys"></a>Użycie kluczy partycji
 Gdy komunikat jest dodawanych do kolejki w podzielonym na partycje kolejka lub temat, usługi Service Bus sprawdza obecności klucza partycji. Jeśli zostanie znaleziony, wybiera fragmentu na podstawie tego klucza. Jeśli nie znajdzie klucza partycji, wybiera fragmentu na podstawie wewnętrznego algorytmu.

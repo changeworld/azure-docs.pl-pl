@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V w systemie Azure
 
@@ -23,9 +23,9 @@ Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia odzys
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 
 **Scenariusz** | **Szczegóły**
---- | --- 
+--- | ---
 Funkcja Hyper-V z programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych na hostach funkcji Hyper-V, które są zarządzane w sieci szkieletowej programu System Center Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.<br/><br/> Gdy hosty funkcji Hyper-V są zarządzane przez program Virtual Machine Manager, również można wykonać odzyskiwania po awarii do lokacji dodatkowej lokalnymi. Aby dowiedzieć się więcej na temat tego scenariusza, przeczytaj [w tym samouczku](tutorial-vmm-to-vmm.md).
-Funkcja Hyper-V bez programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych na hostach funkcji Hyper-V, które nie są zarządzane przez program Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell. 
+Funkcja Hyper-V bez programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych na hostach funkcji Hyper-V, które nie są zarządzane przez program Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.
 
 
 ## <a name="on-premises-servers"></a>Serwery lokalne
@@ -39,7 +39,7 @@ Funkcji Hyper-V (uruchomiony z programu Virtual Machine Manager) | Program Virtu
 ## <a name="replicated-vms"></a>Replikowane maszyny wirtualne
 
 
-Poniższa tabela zawiera podsumowanie obsługi maszyny Wirtualnej. Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwanym systemie operacyjnym. 
+Poniższa tabela zawiera podsumowanie obsługi maszyny Wirtualnej. Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwanym systemie operacyjnym.
 
  **Składnik** | **Szczegóły**
 --- | ---
@@ -78,7 +78,8 @@ Multi-NIC | Yes | Yes
 Zastrzeżony adres IP | Yes | Yes
 Protokół IPv4 | Yes | Yes
 Zachowaj źródłowy adres IP | Yes | Yes
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/><br/> (Usługa azure Storage zapory i sieci wirtualne) | Nie | Nie
+Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapory usługi Azure Storage) | Yes | Yes
+Accelerated Networking | Nie | Nie
 
 
 ## <a name="hyper-v-host-storage"></a>Magazyn hosta funkcji Hyper-V
@@ -125,7 +126,7 @@ Obiekty BLOB typu Block | Nie | Nie
 Szyfrowanie magazynowanych (SSE)| Yes | Yes
 Premium Storage | Yes | Yes
 Import/Eksport usługi | Nie | Nie
-Sieć wirtualna usługi punkty końcowe systemu Azure (Azure Storage zapory i sieci wirtualnych) na docelowym kontem magazynu pamięci podręcznej używany do replikacji danych | Nie | Nie
+Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu pamięci podręcznej/magazynów (używane do przechowywania danych replikacji) | Nie | Nie
 
 
 ## <a name="azure-compute-features"></a>Funkcje obliczeń platformy Azure
@@ -159,9 +160,9 @@ Typu maszyny Wirtualnej | Generacja 1<br/><br/> Generacja 2 — systemu Windows 
 ## <a name="recovery-services-vault-actions"></a>Akcje magazyn usług odzyskiwania
 
 **Akcja** |  **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
---- | --- | --- 
-Przenieś magazyn między grupami zasobów<br/><br/> W obrębie subskrypcji oraz | Nie | Nie 
-Przenieść magazyn, sieć, maszyn wirtualnych platformy Azure w grupach zasobów<br/><br/> W obrębie subskrypcji oraz | Nie | Nie 
+--- | --- | ---
+Przenieś magazyn między grupami zasobów<br/><br/> W obrębie subskrypcji oraz | Nie | Nie
+Przenieść magazyn, sieć, maszyn wirtualnych platformy Azure w grupach zasobów<br/><br/> W obrębie subskrypcji oraz | Nie | Nie
 
 
 ## <a name="provider-and-agent"></a>Dostawca i agent
@@ -179,4 +180,4 @@ Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszy
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [przygotowanie Azure](tutorial-prepare-azure.md) odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V lokalnymi. 
+Dowiedz się, jak [przygotowanie Azure](tutorial-prepare-azure.md) odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V lokalnymi.

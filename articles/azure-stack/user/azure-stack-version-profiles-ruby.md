@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 98d285bf8ec92e7b6baf709d4796ce2f4420c4f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd8130ac12f9c7c2095f9329dc4ce8a34187cf62
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Profile w wersji interfejsu API za pomocą Ruby w stosie Azure
 
@@ -36,7 +36,7 @@ Profil interfejsu API jest kombinacją dostawców zasobów i wersji usługi. Pro
  - Aby korzystać z najnowszą wersją interfejsu api usługi, użyj **najnowsze** profilu określonego gem. Na przykład, jeśli chcesz używać najnowszej wersji interfejsu api usługi obliczeniowe tylko, użyj **najnowsze** profilu **obliczeniowe** gem.
  - Aby użyć określonej wersji interfejsu api dla usługi, użyj określonych wersji interfejsu API, zdefiniowane wewnątrz gem.
 
-> [!note] 
+> [!Note]   
 > Możesz łączyć wszystkie opcje w tej samej aplikacji.
 
 ## <a name="install-the-azure-ruby-sdk"></a>Zainstaluj zestaw Azure SDK dopisków fonetycznych
@@ -88,7 +88,7 @@ Aby użyć zestawu SDK usługi Azure Ruby stosu Azure, należy podać następuj�
 | Identyfikator dzierżawy | AZURE_TENANT_ID | Wartość stosu Azure [Identyfikatorem dzierżawy](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisane podczas nazwy głównej usługi został utworzony w poprzedniej sekcji tego dokumentu.  |
 | Identyfikator subskrypcji | AZURE_SUBSCRIPTION_ID | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest dostęp do oferty Azure stosu. |
-| Klucz tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji głównej usługi zapisane podczas tworzenia nazwy głównej usługi. |
+| Wpis tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji głównej usługi zapisane podczas tworzenia nazwy głównej usługi. |
 | Punkt końcowy Menedżera zasobów | ARM_ENDPOINT | Zobacz [stosu Azure resource manager endpoin](#The-azure-stack-resource-manager-endpoint).  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Punkt końcowy Menedżera zasobów Azure stosu
@@ -96,7 +96,8 @@ Aby użyć zestawu SDK usługi Azure Ruby stosu Azure, należy podać następuj�
 Microsoft Azure Resource Manager to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania w grupie, a nie pojedynczo, w ramach jednej operacji.
 
 Z punktu końcowego usługi Resource Manager można uzyskać informacji o metadanych. Punkt końcowy zwraca plik JSON o informacje wymagane do uruchomienia kodu.
-  > [!note]  
+
+  > [!Note]  
   > **ResourceManagerUrl** jest w Azure stosu Development Kit (ASDK): `https://management.local.azurestack.external/`  
   > **ResourceManagerUrl** w systemach zintegrowane jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -208,7 +209,7 @@ Można użyć w GitHub repositoreis znaleziono następujące przykłady jako odw
 
 Aby uruchomić przykład, upewnij się, że zainstalowano Ruby. Jeśli używasz programu Visual Studio Code, Pobierz zestaw SDK Ruby, jak również rozszerzenie. 
 
-> [!note]  
+> [!Note]  
 > Możesz też uzyskać repozytorium próbki w "[zasobów zarządzania Azure i grup zasobów z Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
 
 1. Klonowanie repozytorium.
@@ -231,7 +232,7 @@ Aby uruchomić przykład, upewnij się, że zainstalowano Ruby. Jeśli używasz 
   Wartości potrzebne są następujące:
   - Identyfikator dzierżawy
   - Identyfikator klienta
-  - Klucz tajny klienta
+  - Wpis tajny klienta
   - Identyfikator subskrypcji
   - Punkt końcowy Menedżera zasobów
 
@@ -243,7 +244,7 @@ Aby uruchomić przykład, upewnij się, że zainstalowano Ruby. Jeśli używasz 
   - Eksportuj AZURE_SUBSCRIPTION_ID = {identyfikator subskrypcji}
   - Eksportuj ARM_ENDPOINT = {adres url Menedżera zasobów AzureStack}
 
-  > [!note]  
+  > [!Note]  
   > W systemie Windows należy użyć zestawu zamiast eksportu.
 
 4. Upewnij się, że ustawiono zmienną lokalizacji do lokalizacji AzureStack. Na przykład lokalnego = "local"

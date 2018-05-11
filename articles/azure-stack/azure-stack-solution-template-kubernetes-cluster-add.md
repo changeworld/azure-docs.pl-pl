@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c66b0d7ea5ade90c6bb8f88006f2a09bd407deaa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f74d378359ec66b76fd53b95ab898f1cec9b07f7
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -77,6 +77,9 @@ Dodaj poniższy obraz Ubuntu Server w portalu Marketplace:
     - **JEDNOSTKA SKU**: 16.04 LTS
     - **Wersja**: 16.04.201802220
 
+    > [!Note]  
+    > Więcej niż jedną wersję Ubuntu Server 16.04 LTS mogą być wyświetlone. Należy dodać wersja jest taka sama. Klaster Kubernetes wymaga dokładnej wersji elementu.
+
 6. Wybierz **pobierania.**
 
 ## <a name="add-a-custom-script-for-linux"></a>Dodawanie niestandardowego skryptu dla systemu Linux
@@ -95,6 +98,9 @@ Dodaj klaster Kubernetes z witryny Marketplace:
     - **Oferują**: skryptu niestandardowego dla systemu Linux 2.0
     - **Wersja**: 2.0.3
     - **Wydawca**: Microsoft Corp.
+
+    > [!Note]  
+    > Mogą być wyświetlone więcej niż jedną wersję niestandardowego skryptu dla systemu Linux. Należy dodać wersja jest taka sama. Klaster Kubernetes wymaga dokładnej wersji elementu.
 
 6. Wybierz **pobierania.**
 
@@ -138,6 +144,8 @@ Aby usunąć element Kubernetes klastra:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie klastra Kubernetes Azure stosu](/user/azure-stack-solution-template-kubernetes-deploy.md)
+[Wdrażanie klastra Kubernetes Azure stosu](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+
+
 
 [Przegląd oferty usług Azure stosu](azure-stack-offer-services-overview.md)

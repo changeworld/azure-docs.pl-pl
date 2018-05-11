@@ -1,11 +1,11 @@
 ---
 title: Problem podczas dodawania aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
-description: "Zrozumienie kroju osób typowe problemy podczas dodawania aplikacji w galerii Azure AD i sposoby ich rozwiązywania"
+description: Zrozumienie kroju osób typowe problemy podczas dodawania aplikacji w galerii Azure AD i sposoby ich rozwiązywania
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 79713cd343e1b876cd7a1b6653bbe00b43272a55
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5cb43976c17bfd46d1f16f0bdaff1c164bdc0fb6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji w galerii Azure AD
 
-W tym artykule ułatwić zrozumienie kroju osób typowe problemy podczas dodawania aplikacji w galerii Azure AD i sposoby ich rozwiązywania.
+Ten artykuł pomaga w zrozumieniu kroju osób typowe problemy podczas dodawania aplikacji w galerii Azure AD i sposoby ich rozwiązywania.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Po kliknięciu przycisku "Dodaj" i Moja aplikacja przez długi czas i pojawienie się
 
-W pewnych okolicznościach, może upłynąć 1 – 2 minuty (i czasami dłużej) do pojawiają się po dodaniu go do katalogu aplikacji. Chociaż nie jest to normalne obniżenie wydajności widać dodawania aplikacji jest w toku, klikając **powiadomienia** ikonę (dzwonka) w prawym górnym rogu [Azure Portal](https://portal.azure.com/) i wyszukiwania dla **w toku** lub **Ukończono** powiadomień z etykietą **tworzenia aplikacji.**
+W pewnych okolicznościach, może upłynąć 1 – 2 minuty (i czasami dłużej) do pojawiają się po dodaniu go do katalogu aplikacji. Chociaż nie jest to normalne obniżenie wydajności widać dodawania aplikacji jest w toku, klikając **powiadomienia** ikonę (dzwonka) w prawym górnym rogu [portalu Azure](https://portal.azure.com/) i wyszukiwania dla **w toku** lub **Ukończono** powiadomień z etykietą **tworzenia aplikacji.**
 
-Aplikacja nigdy nie zostanie dodany, czy w przypadku wystąpienia błędu podczas klikania **Dodaj** przycisku, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz szczegółowe informacje o błędzie, aby dowiedzieć się więcej na temat lub udostępniać engingeer pomocy technicznej, wykonując kroki opisane w widać więcej informacji o błędzie [sposób wyświetlić szczegóły powiadomieniu portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
+Aplikacja nigdy nie zostanie dodany, czy w przypadku wystąpienia błędu podczas klikania **Dodaj** przycisku, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz szczegółowe informacje o błędzie, aby dowiedzieć się więcej na temat lub udział z pracownikiem pomocy technicznej, wykonując kroki opisane w widać więcej informacji na temat błędu [sposób wyświetlić szczegóły powiadomieniu portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Po kliknięciu przycisku "Dodaj" i nie pojawił się Moja aplikacja
 
 Czasami z powodu przejściowych problemów, problemy z siecią lub usterki, dodawanie błędów aplikacji. Można ustalić dzieje się tak po kliknięciu **powiadomienia** ikonę (dzwonka) w prawym górnym rogu portalu Azure, a ikona jest widoczna czerwony (!) obok pozycji z **tworzenie aplikacji** powiadomień. Oznacza to, że wystąpił błąd podczas tworzenia aplikacji.
 
-Jeśli wystąpi błąd, po kliknięciu przycisku **Dodaj** przycisku, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz szczegółowe informacje o błędzie, aby dowiedzieć się więcej na temat lub udostępniać engingeer pomocy technicznej, wykonując kroki opisane w widać więcej informacji o błędzie [sposób wyświetlić szczegóły powiadomieniu portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
+Jeśli wystąpi błąd, po kliknięciu przycisku **Dodaj** przycisku, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz szczegółowe informacje o błędzie, aby dowiedzieć się więcej na temat lub udział z pracownikiem pomocy technicznej, wykonując kroki opisane w widać więcej informacji na temat błędu [sposób wyświetlić szczegóły powiadomieniu portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
 
  ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>I nie wiadomo, jak skonfigurować aplikację, gdy został dodany
 
@@ -54,9 +54,7 @@ Szczegółowe informacje o każdym powiadomieniu portalu można wyświetlić, wy
     >
     >
 
-3.  Otwórz ten **szczegóły powiadomienia** bloku.
-
-4.  Dzięki tym informacjom samodzielnie, aby poznać więcej szczegółów o problemie.
+4.  Informacje w obszarze **szczegóły powiadomienia** Aby poznać więcej szczegółów o problemie.
 
 5.  Jeśli nadal potrzebujesz pomocy, te informacje mogą również współużytkować z pracownikiem pomocy technicznej lub grupa produktów, aby uzyskać pomoc dotyczącą tego problemu.
 
@@ -68,7 +66,7 @@ Jest bardzo ważne, aby udostępniać **poniższymi szczegółami** z pracowniki
 
 ## <a name="notification-details-explained"></a>Szczegóły powiadomienia wyjaśniono
 
-Poniżej przedstawiono więcej funkcji każdego, powiadomienia elementów oznacza i zawiera przykłady każdego z nich.
+Zobacz poniższe opisy więcej szczegółów dotyczących powiadomienia.
 
 ### <a name="essential-notification-items"></a>Elementy podstawowych powiadomień
 
@@ -98,7 +96,7 @@ Poniżej przedstawiono więcej funkcji każdego, powiadomienia elementów oznacz
 
 -   **Nazwa UPN** — użytkownik, który wykonał działanie
 
-    -   Przykład —**tperkins@f128.info**
+    -   Przykład — **tperkins@f128.info**
 
 -   **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który użytkownik, który wykonał działanie był członkiem
 
@@ -120,15 +118,16 @@ Poniżej przedstawiono więcej funkcji każdego, powiadomienia elementów oznacz
 
 -   **Obiekt o identyfikatorze** — **(może być pusta)** Identyfikatora obiektu, względem którego wykonano operację
 
-    -   Przykład — **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
 -   **Szczegóły** — szczegółowy opis co nastąpiło w wyniku operacji
 
     -   Przykład — **wewnętrznego adresu url "http://bing.com/" jest nieprawidłowy, ponieważ jest już używana**
 
--   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** z prawej strony **błąd kopiowania** pole tekstowe, aby skopiować wszystkie szczegóły powiadomienia na udostępnianie z pracownikiem pomocy technicznej lub produkt grupy
+-   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** z prawej strony **błąd kopiowania** pole tekstowe, aby skopiować wszystkie szczegóły powiadomienia do udostępniania z grupą pomocy technicznej lub produktu 
+-   inżynier
 
-    -   Przykład```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    -   Przykład ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>Następne kroki
-[Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory](active-directory-enable-sso-scenario.md)
+## <a name="next-steps"></a>Kolejne kroki
+[Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](manage-apps/what-is-application-management.md)

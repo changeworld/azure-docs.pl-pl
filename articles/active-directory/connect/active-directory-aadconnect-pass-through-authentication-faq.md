@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Przekazywanego uwierzytelniania — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące uwierzytelniania przekazywanego Azure Active Directory"
+title: 'Azure AD Connect: Przekazywanego uwierzytelniania — często zadawane pytania | Dokumentacja firmy Microsoft'
+description: Odpowiedzi na często zadawane pytania dotyczące uwierzytelniania przekazywanego Azure Active Directory
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 7a817092581ef0be0b6be063282f7484c46ff094
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory przekazywanego uwierzytelniania: Często zadawane pytania
 
@@ -48,7 +48,7 @@ Tak. Obsługuje uwierzytelniania przekazywanego `Alternate ID` jako nazwy użytk
 
 Nie. Uwierzytelniania przekazywanego _nie_ automatycznie w tryb failover synchronizacji skrótu hasła. Działa tylko jako rezerwowe dla [scenariusze uwierzytelniania przekazywanego nie obsługuje obecnie](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby uniknąć błędów logowania użytkownika, należy skonfigurować uwierzytelniania przekazywanego [wysokiej dostępności](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
 
-## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Można zainstalować [serwera Proxy aplikacji usługi Azure AD](../active-directory-application-proxy-get-started.md) łącznika na tym samym serwerze, ponieważ Agent uwierzytelniania przekazywanego?
+## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Można zainstalować [serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md) łącznika na tym samym serwerze, ponieważ Agent uwierzytelniania przekazywanego?
 
 Tak. Rebranded wersji agenta uwierzytelniania przekazywanego wersji 1.5.193.0 lub nowszym obsługuje tej konfiguracji.
 

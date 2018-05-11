@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd54c4abeaa58c1b78f67c55eb5e8856dc5bb0c4
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Tworzenie aplikacji Spark dla klastra usługi HDInsight za pomocą narzędzi Azure dla programu Eclipse
 
@@ -229,13 +229,15 @@ Aby rozwiązać ten problem, należy [Pobierz plik wykonywalny](http://public-re
    ![Aplikacji Spark lokalnego wynik uruchomienia](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="known-problems"></a>Znane problemy
-Aby przesłać aplikacji do usługi Azure Data Lake Store, wybierz **Interactive** tryb podczas Azure procesu logowania. W przypadku wybrania **automatycznego** tryb, może być wyświetlany komunikat o błędzie.
+Gdy łącze klastra, I sugerować o podanie poświadczeń magazynu.
 
-![Interakcyjne logowanie](./media/apache-spark-eclipse-tool-plugin/interactive-authentication.png)
+![Interakcyjne logowanie](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-Można wybrać do klastra usługi Azure Data Lake do przesyłania aplikacji przy użyciu dowolnej metody logowania.
+Dostępne są dwa tryby można przesłać zadania. W przypadku poświadczeń magazynu trybie wsadowym będzie używany do przesyłania zadania. W przeciwnym razie zostanie użyta tryb interaktywny. Jeśli klaster jest zajęty, można otrzymać poniższy błąd.
 
-Przeglądanie wyjść Spark bezpośrednio nie jest obecnie obsługiwana.
+![Błąd pobierania Eclipse po klastra zajęty](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+
+![Błąd pobierania Eclipse po klastra zajęty](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback"></a>Opinia
 Jeśli masz opinię, lub jeśli występują inne problemy podczas korzystania z tego narzędzia, Wyślij do nas wiadomość e-mail na hdivstool@microsoft.com.

@@ -3,16 +3,17 @@ title: Tworzenie kont automatyzacji Uruchom jako platformy Azure
 description: W tym artykule opisano sposób aktualizowania konta usługi Automation i tworzenia kont Uruchom jako przy użyciu programu PowerShell lub w portalu.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 239478a9e697d9eed474a9bfcc0d12fb6a05faee
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 03a5cf6fd049e63616155a87bf112636b74be0a1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizowanie uwierzytelniania konta usługi Automation przy użyciu kont Uruchom jako 
 Istniejące konto usługi Automation można zaktualizować w witrynie Azure Portal lub przy użyciu programu PowerShell, gdy:
@@ -286,6 +287,6 @@ W portalu Azure wybierz **subskrypcje** i wybierz subskrypcję konta automatyzac
 
 Aby dodać nazwy głównej usługi do grupy zasobów, wybierz grupę zasobów na platformie Azure, portalu i wybierz pozycję **(IAM) kontroli dostępu**. Wybierz **Dodaj**, spowoduje to otwarcie **dodać uprawnienia** strony. Aby uzyskać **roli**, wybierz pozycję **współautora**. W **wybierz** tekstu wpisz nazwę główną usługi dla konta Uruchom jako i wybierz go z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. W tym dla grup zasobów chcesz nadać automatyzacji Uruchom jako platformy Azure usługa główna dostęp do.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać więcej informacji dotyczących nazwy główne usług, zobacz [obiekty aplikacji i nazwy głównej usługi](../active-directory/active-directory-application-objects.md).
 * Aby uzyskać więcej informacji na temat certyfikatów i usług Azure, zobacz [Omówienie certyfikatów dla usług w chmurze Azure](../cloud-services/cloud-services-certs-create.md).

@@ -3,16 +3,17 @@ title: Dołączania komputerów do zarządzania przez Konfiguracja DSC automatyz
 description: Konfigurowanie komputerów do zarządzania w usłudze Konfiguracja DSC automatyzacji Azure
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Dołączania komputerów do zarządzania przez Konfiguracja DSC automatyzacji Azure
 
@@ -62,6 +63,7 @@ $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
 # fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# NOTE: DSC Node Configuration names are case sensitive in the portal.
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
@@ -111,6 +113,9 @@ $VM = Set-AzureVMExtension `
 
 $VM | Update-AzureVM
 ```
+
+> [!NOTE]
+> Nazwy konfiguracji węzła DSC jest uwzględniana wielkość liter w portalu. Jeśli wielkość liter jest niezgodne węzeł nie będą widoczne w obszarze węzłów DSC.
 
 ## <a name="azure-virtual-machines"></a>Maszyny wirtualne platformy Azure
 
@@ -205,6 +210,9 @@ Można tu dodać dowolnego komputera do usługi Konfiguracja DSC automatyzacji A
 1. Otwórz program PowerShell ISE z uprawnieniami administratora na maszynie w środowisku lokalnym. Komputer musi mieć najnowszą wersję [platformy WMF 5](http://aka.ms/wmf5latest) zainstalowane.
 2. Skopiuj poniższy skrypt lokalnie. Ten skrypt zawiera konfiguracji DSC środowiska PowerShell do tworzenia metaconfigurations i polecenie, aby rozpocząć poza tworzenia metakonfigurację.
 
+> [!NOTE]
+> Nazwy konfiguracji węzła DSC jest uwzględniana wielkość liter w portalu. Jeśli wielkość liter jest niezgodne węzeł nie będą widoczne w obszarze węzłów DSC.
+
     ```powershell
     # The DSC configuration that will generate metaconfigurations
     [DscLocalConfigurationManager()]
@@ -296,6 +304,7 @@ Można tu dodać dowolnego komputera do usługi Konfiguracja DSC automatyzacji A
     }
 
     # Create the metaconfigurations
+    # NOTE: DSC Node Configuration names are case sensitive in the portal.
     # TODO: edit the below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';
@@ -383,7 +392,7 @@ Po zarejestrowaniu komputera jako węzła DSC w konfiguracji DSC automatyzacji A
 
 Ponowna rejestracja można wykonać w taki sam sposób, w zarejestrowany węzeł początkowo przy użyciu dowolnej z metod dołączania opisanych w tym dokumencie. Nie trzeba wyrejestrować węzła z usługi Konfiguracja DSC automatyzacji Azure przed ponownie go zarejestrować.
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły
 
 * [Omówienie usługi Konfiguracja DSC automatyzacji Azure](automation-dsc-overview.md)
 * [Polecenia cmdlet systemu Azure Automation DSC](/powershell/module/azurerm.automation/#automation)

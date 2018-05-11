@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zintegrowanego rozwiązania zarządzania aktualizacjami, śledzenia zmian i magazynu z maszyny wirtualnej platformy Azure
 
@@ -42,7 +42,13 @@ Przejdź do innych rozwiązań i kliknij **włączyć**, analizy dzienników, a 
 
 Każde rozwiązanie używa konfiguracji zakresu w obszarze roboczym pod kątem komputerów, które rozwiązanie. Konfiguracja zakresu jest grupą co najmniej jeden zapisanych wyszukiwań służy do ograniczania zakresu rozwiązanie do określonych komputerów. Do konfiguracji zakresu, na Twoim koncie automatyzacji w obszarze **powiązane zasoby**, wybierz pozycję **obszaru roboczego** następnie w obszarze roboczym **źródeł danych obszaru roboczego**, Wybierz **konfiguracji zakresu**.
 
-Konfiguracje zakresu dwa domyślnie tworzone są **śledzenia zmian MicrosoftDefaultScopeConfig** i **MicrosoftDefaultScopeConfig aktualizacje**.
+Jeśli wybranego obszaru roboczego nie ma rozwiązania zarządzania aktualizacjami lub śledzenia zmian, ale są tworzone następujące konfiguracje w zakresie:
+
+* **Śledzenia zmian MicrosoftDefaultScopeConfig**
+
+* **Aktualizacje MicrosoftDefaultScopeConfig**
+
+Jeśli wybranego obszaru roboczego jest już w rozwiązaniu. Rozwiązanie nie jest ponownie wdrożone i konfigurację zakresu nie zostaną dodane do niego.
 
 Kliknij przycisk wielokropka (...) na wszystkich konfiguracji i wybierz **Edytuj**. Na **konfigurację zakresu edycji** wybierz pozycję **wybierz grupy komputerów** otworzyć **grup komputerów** strony. Ta strona przedstawia zapisanych wyszukiwań, które są używane do tworzenia zakresu konfiguracji.
 

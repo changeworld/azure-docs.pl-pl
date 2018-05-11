@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 356356288823c86c77e46fdfba2cf81a7ef11e0d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 60560a4a656d0ad5df15208261ab8462f4271ec5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -59,7 +59,7 @@ Instalowanie WMF wymaga ponownego uruchomienia. Po ponownym uruchomieniu, rozsze
 
 ### <a name="default-configuration-script"></a>Skrypt konfiguracji domyślnej
 
-Rozszerzenia usługi Konfiguracja DSC Azure obejmuje skrypt konfiguracji domyślnej, który ma być użyta, gdy ci przy dołączeniu do usługi Konfiguracja DSC automatyzacji Azure maszyny Wirtualnej. Parametry skryptu są zgodne z można skonfigurować właściwości [lokalny program Configuration Manager](/powershell/dsc/metaconfig). Parametry skryptu, zobacz [domyślne skryptu konfiguracji](extensions-dsc-template.md#default-configuration-script) w [konfiguracji żądanego stanu rozszerzenia przy użyciu szablonów usługi Azure Resource Manager](extensions-dsc-template.md). Pełna skryptu, zobacz [szablonów Szybki Start Azure w serwisie GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Rozszerzenia usługi Konfiguracja DSC Azure obejmuje skrypt konfiguracji domyślnej, który ma być użyta, gdy ci przy dołączeniu do usługi Konfiguracja DSC automatyzacji Azure maszyny Wirtualnej. Parametry skryptu są zgodne z można skonfigurować właściwości [lokalny program Configuration Manager](/powershell/dsc/metaconfig). Parametry skryptu, zobacz [domyślne skryptu konfiguracji](dsc-template.md#default-configuration-script) w [konfiguracji żądanego stanu rozszerzenia przy użyciu szablonów usługi Azure Resource Manager](dsc-template.md). Pełna skryptu, zobacz [szablonów Szybki Start Azure w serwisie GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenia usługi Konfiguracja DSC w szablonach usługi Resource Manager
 
@@ -155,6 +155,6 @@ Dzienniki rozszerzenia są przechowywane w następującej lokalizacji: `C:\Windo
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji o konfiguracji DSC środowiska PowerShell, przejdź do [Centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
-- Sprawdź [szablonu usługi Resource Manager dla rozszerzenia DSC](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Sprawdź [szablonu usługi Resource Manager dla rozszerzenia DSC](dsc-template.md).
 - Więcej funkcji, którą można zarządzać za pomocą usługi Konfiguracja DSC środowiska PowerShell, a więcej zasobów DSC, Przeglądaj [galerii programu PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Szczegółowe informacje na temat przekazywania poufnych parametrów w konfiguracji, zobacz [Zarządzanie poświadczenia bezpiecznie z obsługą rozszerzenia DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Szczegółowe informacje na temat przekazywania poufnych parametrów w konfiguracji, zobacz [Zarządzanie poświadczenia bezpiecznie z obsługą rozszerzenia DSC](dsc-credentials.md).

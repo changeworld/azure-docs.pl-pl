@@ -3,16 +3,17 @@ title: Hybrydowymi elementami roboczymi Runbook usługi Automatyzacja Azure
 description: Ten artykuł zawiera informacje o instalowaniu i używaniu hybrydowy proces roboczy elementu Runbook, która jest funkcją automatyzacji Azure, która służy do uruchamiania elementów runbook na maszynach w lokalnym centrum danych lub dostawcy usług w chmurze.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 36fa5f7c9cedc25f7cb446a504faccfb386bd019
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 26762a91ddad080f698368c1a74948a5678ef75a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatyzację zasobów w centrum danych lub w chmurze chronionej za pomocą hybrydowy proces roboczy elementu Runbook
 
@@ -164,6 +165,6 @@ Dzienniki są przechowywane lokalnie na każdym hybrydowy proces roboczy na C:\P
 
 Dodatkowe kroki dotyczące rozwiązywania problemów z zarządzania aktualizacjami, zobacz [zarządzania aktualizacjami — Rozwiązywanie problemów](automation-update-management.md#troubleshooting)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przegląd [uruchamiania elementów runbook na hybrydowy proces roboczy elementu Runbook](automation-hrw-run-runbooks.md) Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury.

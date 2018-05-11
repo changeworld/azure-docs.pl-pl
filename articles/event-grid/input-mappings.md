@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8426d03d5c3058638fecc0fe27a03a7699a23add
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1e809f83b43c32031b66c8f470575da6e9fcdc56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapowanie pól niestandardowych do schematu siatki zdarzeń
 
@@ -49,6 +49,10 @@ Podczas tworzenia niestandardowego tematu, należy określić sposób mapowania 
 Poniższy przykład tworzy niestandardowe temat niektóre zamapowane i domyślne pola:
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -135,7 +139,7 @@ Drugi subskrypcji używany schemat zdarzenie wejściowe. Format dostarczonego zd
 
 Należy zauważyć, że oryginalne pola zostały dostarczone.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje dotyczące dostarczania zdarzeń i ponownych prób [dostarczanie komunikatów zdarzeń siatki i ponów próbę](delivery-and-retry.md).
 * Aby obejrzeć wprowadzenie do siatki zdarzeń, zobacz [o siatki zdarzeń](overview.md).

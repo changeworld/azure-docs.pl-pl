@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/09/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: be5ecfdd4465d721dee49c4963cb2267b2b0a40a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>na podstawie vCore model kupna bazy danych SQL Azure (wersja zapoznawcza)
 
@@ -58,7 +58,7 @@ W podstawie vCore zakupów modelu (wersja zapoznawcza) klienci płatności dla:
 
 ## <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług, obliczeniowych, pamięci, magazynu i zasobów we/wy
 
-Konwertowanie na podstawie vCore model kupna (wersja zapoznawcza) umożliwia niezależnie skalowania zasobów obliczeniowych i magazynu, zgodne lokalnymi wydajności i zoptymalizowania cen. Jeśli bazy danych lub puli elastycznej zużywa ponad 300 Konwersja jednostek dtu w warstwie vCore może zmniejszyć koszt. Możesz przekonwertować przy użyciu interfejsu API wyboru lub przy użyciu portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model kupna jednostek dtu w warstwie spełnia wymagania biznesowe i wydajności, na których, można nadal używać. Jeśli zdecydujesz się do konwersji z modelu jednostek dtu w warstwie vCore modelu, należy wybrać poziom wydajności przy użyciu następujących zasadą: każdego 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 vCore, a każdy 125 jednostek DTU w warstwie Premium vCore co najmniej 1.
+Konwertowanie na podstawie vCore model kupna (wersja zapoznawcza) umożliwia niezależnie skalowania zasobów obliczeniowych i magazynu, zgodne lokalnymi wydajności i zoptymalizowania cen. Jeśli bazy danych lub puli elastycznej zużywa ponad 300 Konwersja jednostek dtu w warstwie vCore może zmniejszyć koszt. Możesz przekonwertować przy użyciu interfejsu API wyboru lub przy użyciu portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model kupna jednostek dtu w warstwie spełnia wymagania biznesowe i wydajności, na których, można nadal używać. Jeśli zdecydujesz się do konwersji z modelu jednostek dtu w warstwie vCore modelu, należy wybrać poziom wydajności przy użyciu następujących zasadą: każdego 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 vCore w warstwie ogólnego przeznaczenia; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 vCore w warstwie Business krytyczne.
 
 Poniższa tabela pomoże Ci poznać różnice między tymi dwoma warstwami:
 

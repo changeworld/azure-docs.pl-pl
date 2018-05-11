@@ -1,12 +1,12 @@
 ---
 title: Informacje o wersji StorSimple 8000 serii aktualizacji 4 | Dokumentacja firmy Microsoft
-description: "Opisuje nowe funkcje, problemy i rozwiązania StorSimple 8000 serii Update 4."
+description: Opisuje nowe funkcje, problemy i rozwiązania StorSimple 8000 serii Update 4.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Informacje o wersji StorSimple 8000 serii aktualizacji 4
-> [!NOTE]
-> Klasyczny portal dla urządzeń StorSimple jest przestarzały. Menedżerowie urządzeń StorSimple dokonają automatycznego przeniesienia do nowej witryny Azure Portal zgodnie z ustalonym harmonogramem wycofywania przestarzałych produktów. Powiadomienie o przeniesieniu otrzymasz pocztą e-mail i za pośrednictwem portalu. Ten dokument zostanie wkrótce usunięty. W razie jakichkolwiek pytań dotyczących przeniesienia, zobacz [FAQ: Move to Azure portal (Często zadawane pytania — przeniesienie do witryny Azure Portal)](storsimple-8000-move-azure-portal-faq.md).
-
 
 ## <a name="overview"></a>Przegląd
 
@@ -72,7 +69,7 @@ Poniższa tabela zawiera podsumowanie problemów, które zostały usunięte w pa
 | --- | --- | --- | --- | --- |
 | 1 |Tryb failover |W starszych wersji po pracy awaryjnej, wystąpił problem związany z oczyszczaniem odczytaną po stronie klienta. Tego problemu w tej wersji. |Yes |Yes |
 | 2 |Woluminów przypiętych lokalnie |W poprzednich wersjach wystąpił problem podczas tworzenia woluminu pokrewne dla woluminów przypiętych lokalnie, które umożliwiałyby błędy tworzenia woluminu. Ten problem został spowodowany głównego i stałym w tej wersji. |Yes |Nie |
-| 3 |Pakiet pomocy technicznej |W poprzedniej wersji wystąpiły problemy związane z pakietu pomocy technicznej, który spowoduje powstanie wyjątku System.OutOfMemory lub inne błędy uniemożliwiające tworzenia pakietu obsługi. Te błędy są ustalone w tej wersji. |Yes |Yes |
+| 3 |Pakiet dla pomocy technicznej |W poprzedniej wersji wystąpiły problemy związane z pakietu pomocy technicznej, który spowoduje powstanie wyjątku System.OutOfMemory lub inne błędy uniemożliwiające tworzenia pakietu obsługi. Te błędy są ustalone w tej wersji. |Yes |Yes |
 | 4 |Monitorowanie |W poprzedniej wersji istnieje problem związany z monitorowania wykresów dla lokalnie przypięty woluminów gdzie zużycie był wyświetlany w EB. Ten problem zostanie rozwiązany w tej wersji. |Yes |Yes |
 | 5 |Migracja |W poprzedniej wersji wystąpiły pewne problemy związane z serii 5000 7000 do urządzeń z serii 8000 niezawodność migracji. Te problemy rozwiązano w tej wersji. |Yes |Yes |
 | 6 |Aktualizacja |W poprzednich wersjach, jeśli wystąpił błąd aktualizacji, kontrolery przejdzie do trybu odzyskiwania i dlatego nie można kontynuować aktualizacji i należy skontaktować się z Microsoft Support użytkownika. <br> To zachowanie zostało zmienione w tej wersji. Jeśli użytkownik ma Niepowodzenie aktualizacji po obu kontrolerów korzystają z tej samej wersji (aktualizacja 4), kontrolery nie przechodzą w trybie odzyskiwania. Jeśli użytkownik napotka tego błędu, firma Microsoft zaleca, poczekaj, aż bit i spróbuj ponownie wykonać aktualizację. Ponów próbę, może się powieść. Jeśli próba nie powiedzie się, powinny one kontaktu Support firmy Microsoft. |Yes |Yes |

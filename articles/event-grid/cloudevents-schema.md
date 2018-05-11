@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 84581de2819ec062a537d4a302f242085a4b3c2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Użyj schematu CloudEvents siatki zdarzeń
 
@@ -68,7 +68,7 @@ CloudEvents v0.1 ma następujące właściwości dostępne:
 | schemaURL          | Identyfikator URI      | „https://myschema.com”           | Łącze do schematu, zgodną atrybutu danych (opcjonalnie) | *nie jest używany*
 | Typ zawartości        | Ciąg   | "application/json"               | Opisz format kodowania danych (opcjonalnie)                       | *nie jest używany*
 | Rozszerzenia         | Mapa      | {"extA": "vA", "extB", "vB"}  | Wszelkie dodatkowe metadane (opcjonalnie)                                 | *nie jest używany*
-| dane               | Obiekt   | {"objA": "vA", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | dane
+| Dane               | Obiekt   | {"objA": "vA", "objB", "vB"}  | Ładunek zdarzenia (opcjonalnie)                                       | Dane
 
 Aby uzyskać więcej informacji, zobacz [CloudEvents spec](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
@@ -95,6 +95,10 @@ Aby zdefiniować schemat danych wejściowych na temat CloudEvents na niestandard
 Aby utworzyć temat siatki zdarzenia, należy użyć:
 
 ```azurecli
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -112,7 +116,7 @@ Aby utworzyć subskrypcję zdarzeń, należy użyć:
 
 ```azurecli
 az eventgrid event-subscription create \
-  --name <event_subscription_name> \  
+  --name <event_subscription_name> \
   --topic-name <topic_name> \
   -g gridResourceGroup \
   --endpoint <endpoint_URL> \
@@ -121,7 +125,7 @@ az eventgrid event-subscription create \
 
 Bieżąca wersja CloudEvents nie obsługuje przetwarzanie wsadowe zdarzeń. Subskrypcję zdarzeń skonfigurowanego dla schematu CloudEvent indywidualnie odbiera każdego zdarzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje o monitorowaniu dostaw zdarzeń, zobacz [dostarczanie komunikatów Monitora zdarzeń siatki](monitor-event-delivery.md).
 * Firma Microsoft zachęca do testowania, komentarza, i [współtworzenia](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) do CloudEvents.

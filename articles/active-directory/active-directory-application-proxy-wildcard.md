@@ -15,15 +15,15 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a5466a0b5027fa8fe0edec3c9663e6cd1aafc9a3
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikacje symbolu wieloznacznego w serwer proxy aplikacji usługi Azure Active Directory 
 
-W usłudze Active Directory (Azure AD), konfigurowanie dużą liczbę lokalnych aplikacji może szybko stać się bezproblemowego zarządzania i wprowadza niepotrzebne ryzyko błędów konfiguracji, jeśli wiele z nich wymaga tych samych ustawień. Z [serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-get-started.md), przy użyciu funkcji publikowania aplikacji symboli wieloznacznych, publikowanie i zarządzanie jednocześnie wiele aplikacji może rozwiązać ten problem. Jest to rozwiązanie, które umożliwia:
+W usłudze Active Directory (Azure AD), konfigurowanie dużą liczbę lokalnych aplikacji może szybko stać się bezproblemowego zarządzania i wprowadza niepotrzebne ryzyko błędów konfiguracji, jeśli wiele z nich wymaga tych samych ustawień. Z [serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy.md), przy użyciu funkcji publikowania aplikacji symboli wieloznacznych, publikowanie i zarządzanie jednocześnie wiele aplikacji może rozwiązać ten problem. Jest to rozwiązanie, które umożliwia:
 
 -   Upraszcza czynności administracyjnych
 -   Zmniejsz liczbę potencjalne błędy konfiguracji
@@ -208,7 +208,7 @@ Ponieważ `finance.adventure-works.com` jest bardziej określony adres URL niż 
 Jeśli masz wiele aplikacji publikowanych finansów i masz `finance.adventure-works.com` jako zweryfikowanej domeny, można opublikować innego mapowania zastosowań symboli wieloznacznych `*.finance.adventure-works.com`. Ponieważ jest to bardziej szczegółowy niż ogólnego `*.adventure-works.com`, ma pierwszeństwo, jeśli użytkownik uzyskuje dostęp do aplikacji w domenie finansowych.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat:
 

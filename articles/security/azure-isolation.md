@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 353762f33da8e5d48f6b70df3b790287eeab7ff9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej systemu Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -71,7 +71,7 @@ Użytkownicy, grupy i aplikacje z katalogu mogą zarządzać zasobami w subskryp
 
 Diagnostyka i konserwacyjnych modelu operacyjnego infrastruktury używającego systemu podniesienia uprawnień w czasie jest wymagany i używać. Azure AD Privileged Identity Management (PIM) pojęcia związane z kwalifikujących się uprawnień administratora. [Administratorzy kwalifikujących się](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) powinna być użytkowników, które wymagają uprzywilejowanego dostępu teraz, a następnie, ale nie każdego dnia. Rola jest nieaktywny, dopóki użytkownik będzie potrzebował dostępu, a następnie zakończyć proces aktywacji i stają się aktywne administratora dla wstępnie określoną ilość czasu.
 
-![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
+![Usługa Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
 Usługa Azure Active Directory obsługuje każdego dzierżawcy w jego własnej kontenerze chronionych, zasady i uprawnienia do oraz w kontenerze wyłącznie własnością i zarządzane przez dzierżawcę.
 
@@ -124,6 +124,20 @@ Jeśli dysk używany do magazynowania wystąpi awaria sprzętu, jest bezpiecznie
 
 ## <a name="compute-isolation"></a>Obliczenia bazy danych izolacji
 Microsoft Azure oferuje różne przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub enterprise. Te wystąpienia obliczeniowe i usługi oferują izolacji na różnych poziomach do zabezpieczania danych bez ograniczania elastyczność w konfiguracji tego zapotrzebowania klientów.
+
+### <a name="isolated-virtual-machine-sizes"></a>Izolowane rozmiarów maszyn wirtualnych
+Obliczeń platformy Azure oferuje rozmiary maszyny wirtualnej, które są izolowany do typu określonego sprzętu i dedykowanych jednego odbiorcy.  Rozmiary maszyny wirtualnej są najbardziej odpowiednie dla obciążeń, które wymagają w przypadku obciążeń obejmujących elementy, takie jak zgodnością i przepisami dotyczącymi wysoki stopień izolacji od innych klientów.  Klientów można również dodatkowo podzielić zasoby tych izolowanego maszyn wirtualnych przy użyciu [pomocy technicznej platformy Azure dla maszyn wirtualnych zagnieżdżonych](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).
+
+Przy użyciu izolowanego rozmiar gwarantuje, że maszyna wirtualna będzie uruchomiona tylko jedna w tym wystąpieniu określonego serwera.  Bieżący ofert izolowanego maszyny wirtualnej obejmują:
+* Standard_E64is_v3
+* Standard_E64i_v3
+* Standard_M128ms
+* Standard_GS5
+* Standard_G5
+* Standard_DS15_v2
+* Standard_D15_v2
+
+Dowiedz się więcej na temat izolowane rozmiar każdego dostępne [tutaj](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Funkcji Hyper-V & głównego izolacji systemu operacyjnego między główny maszyn wirtualnych i maszyn wirtualnych gościa
 Platforma obliczeniowa platformy Azure jest oparta na maszynie wirtualizacji, co oznacza, że cały kod klienta jest wykonywana na maszynie wirtualnej funkcji Hyper-V. Na każdym węźle Azure (lub punktu końcowego sieci) Brak funkcji Hypervisor, która uruchamia bezpośrednio przez sprzęt i dzieli węzła numer zmiennej o maszynach wirtualnych gościa (VM).

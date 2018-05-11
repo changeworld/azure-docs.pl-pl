@@ -3,16 +3,17 @@ title: Trwałe połączenie z usługi Automatyzacja Azure
 description: Trwałe połączenie z usługi Automatyzacja Azure zawiera informacje wymagane do połączenia z zewnętrznej usługi lub aplikacji z elementu runbook lub konfiguracji DSC. W tym artykule szczegółowo opisano połączenia i jak pracować z nimi w tworzeniu zarówno tekstową i graficznego.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d2c2cc2964b8223a564d45359f332597a1ca1f87
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 548748843443fe28d801912ae37de9b584096ffa
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Trwałe połączenie z usługi Automatyzacja Azure
 
@@ -144,7 +145,7 @@ runas_connection = automationassets.get_automation_connection("AzureRunAsConnect
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przegląd [łącza w tworzeniu graficznego](automation-graphical-authoring-intro.md#links-and-workflow) sposób bezpośredni i sterowanie przepływem logikę w elementach runbook.  
 

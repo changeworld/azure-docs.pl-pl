@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: bcbebc216dbd63acfb33cf72ba774d088149a3a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ecc65d2d4802ae826f3260b66b26e0bbe414e6
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Logowanie do maszyny wirtualnej systemu Windows przy użyciu witryny Azure Portal
 W portalu Azure, użyj **Connect** przycisk, aby rozpocząć sesję pulpitu zdalnego i zaloguj się do maszyny Wirtualnej systemu Windows.
@@ -42,20 +42,22 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 
     ![Virtual-machine-locations](./media/connect-logon/azureportaldashboard.png)
 
-3. Kliknij przycisk **Connect** na pasku poleceń nad pulpitu nawigacyjnego maszyny wirtualnej.
-
-    ![Połączenia dla maszyny wirtualnej](./media/connect-logon/virtualmachine_dashboard_connect.png)
-
-<!-- Don't know if this still applies
-     I think we can zap this.
-> [!TIP]
-> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
->
->
--->
-
-## <a name="log-on-to-the-virtual-machine"></a>Logowanie do maszyny wirtualnej
-[!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
+1. Kliknij przycisk **Connect** przycisk na stronie właściwości maszyny wirtualnej. 
+2. W **nawiązywanie połączenia z maszyną wirtualną** , przechowywać, wybierz odpowiednie opcje i kliknij przycisk **plik RDP Pobierz**.
+2. Otwórz pobrany plik RDP, a następnie kliknij przycisk **Connect** po wyświetleniu monitu. 
+2. Zostanie wyświetlone ostrzeżenie, że plik `.rdp` pochodzi od nieznanego wydawcy. Jest to normalne. W oknie pulpitu zdalnego kliknij przycisk **Połącz**, aby kontynuować.
+   
+    ![Zrzut ekranu przedstawiający ostrzeżenie o nieznanym wydawcy.](./media/connect-logon/rdp-warn.png)
+3. W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wpisz poświadczenia konta na maszynie wirtualnej, a następnie kliknij przycisk **OK**.
+   
+     **Konto lokalne** — zazwyczaj jest to nazwa użytkownika konta lokalnego i hasło określone podczas tworzenia maszyny wirtualnej. W tym przypadku domeną jest nazwa maszyny wirtualnej wprowadzana jako *nazwa_maszyny_wirtualnej*&#92;*nazwa_użytkownika*.  
+   
+    **Maszyna wirtualna przyłączona do domeny** — jeśli maszyna wirtualna należy do domeny, wprowadź nazwę użytkownika w formacie *domena*&#92;*nazwa_użytkownika*. Konto musi również należeć do grupy Administratorzy albo mieć przydzielone uprawnienia dostępu zdalnego do maszyny wirtualnej.
+   
+    **Kontroler domeny** — jeśli maszyna wirtualna jest kontrolerem domeny, wpisz nazwę użytkownika i hasło konta administratora danej domeny.
+4. Kliknij przycisk **Tak**, aby potwierdzić tożsamość maszyny wirtualnej i zakończyć logowanie.
+   
+   ![Zrzut ekranu przedstawiający komunikat dotyczący potwierdzenia tożsamości maszyny wirtualnej.](./media/connect-logon/cert-warning.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Jeśli **Connect** przycisk jest nieaktywny lub występują inne problemy z połączeniem pulpitu zdalnego, spróbuj zresetować konfigurację. Kliknij przycisk **Zresetuj dostęp zdalny** z poziomu pulpitu nawigacyjnego maszyny wirtualnej.

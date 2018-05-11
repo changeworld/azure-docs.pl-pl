@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 22ef129830941ee7001dd5e0be1501bf9d755eb7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b9750212925294dec2220e6ef3e6e19d3bc7c3c6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD
 
@@ -27,7 +27,7 @@ Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga obsługuje pra
 
 W tym artykule przedstawiono kroki publikowania aplikacji lokalnej za pomocą serwera Proxy aplikacji. Po ukończeniu tego artykułu użytkowników będzie można zdalnego dostępu aplikacji. I będzie gotowa skonfigurować dodatkowe funkcje dla aplikacji, takich jak logowanie jednokrotne, spersonalizowane informacje i wymagania dotyczące zabezpieczeń.
 
-Jeśli jesteś nowym użytkownikiem serwera Proxy aplikacji, więcej informacji na temat tej funkcji z artykułem [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](active-directory-application-proxy-get-started.md).
+Jeśli jesteś nowym użytkownikiem serwera Proxy aplikacji, więcej informacji na temat tej funkcji z artykułem [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](manage-apps/application-proxy.md).
 
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>Publikowanie aplikacji lokalnych dla funkcji dostępu zdalnego

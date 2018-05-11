@@ -1,24 +1,24 @@
 ---
-title: "Konfigurowanie protokołu CHAP dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak skonfigurować protokół uwierzytelniania typu Challenge Handshake (CHAP) na urządzeniu StorSimple."
+title: Konfigurowanie protokołu CHAP dla urządzenia z serii StorSimple 8000 | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak skonfigurować protokół uwierzytelniania typu Challenge Handshake (CHAP) na urządzeniu StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 61e0877187759d76b6f7efcef0a5ed8bec8500fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurowanie protokołu CHAP dla urządzenia StorSimple
 
@@ -77,8 +77,8 @@ W przypadku uwierzytelniania jednokierunkowe inicjator jest uwierzytelniany elem
 4. W **Zaawansowane ustawienia** okno dialogowe:
    
    1. Wybierz **Włącz protokół CHAP logowania** pole wyboru.
-   2. W **nazwa** pola, podaj nazwę użytkownika, który określony dla inicjatora protokołu CHAP w klasycznym portalu.
-   3. W **klucz tajny obiektu docelowego** pola, podaj hasło określone dla inicjatora protokołu CHAP w klasycznym portalu.
+   2. W **nazwa** pola, podaj nazwę użytkownika, który określony dla inicjatora protokołu CHAP w portalu Azure.
+   3. W **klucz tajny obiektu docelowego** pola, podaj hasło określone dla inicjatora protokołu CHAP w portalu Azure.
    4. Kliknij przycisk **OK**.
       
        ![Zaawansowane ustawienia ogólne](./media/storsimple-configure-chap/IC740946.png)
@@ -131,8 +131,8 @@ W przypadku uwierzytelniania dwukierunkowego docelowy umożliwiają uwierzytelni
 8. W **właściwości zaawansowane** okno dialogowe:
    
    1. Wybierz **Włącz protokół CHAP logowania** pole wyboru.
-   2. W **nazwa** pola, podaj nazwę użytkownika, który określony dla inicjatora protokołu CHAP w klasycznym portalu.
-   3. W **klucz tajny obiektu docelowego** pola, podaj hasło określone dla inicjatora protokołu CHAP w klasycznym portalu.
+   2. W **nazwa** pola, podaj nazwę użytkownika, który określony dla inicjatora protokołu CHAP w portalu Azure.
+   3. W **klucz tajny obiektu docelowego** pola, podaj hasło określone dla inicjatora protokołu CHAP w portalu Azure.
    4. Wybierz **wykonaj wzajemnego uwierzytelniania** pole wyboru.
       
        ![Ustawienia zaawansowane wzajemnego uwierzytelniania.](./media/storsimple-configure-chap/IC740950.png)
@@ -166,7 +166,7 @@ Aby sprawdzić, czy CHAP jest używany przez wykonanie następujących kroków.
    
     ![Szczegóły ulubiony obiekt docelowy](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [zabezpieczenia usługi StorSimple](storsimple-8000-security.md).
 * Dowiedz się więcej o [przy użyciu usługi Menedżer StorSimple urządzenia do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).

@@ -7,14 +7,14 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 05/09/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Tworzenie, aktualizowanie statystyk dotyczących tabel w magazynie danych SQL Azure
 Zalecenia i przykłady dotyczące tworzenia i zaktualizowanie statystyk optymalizacji kwerend w tabelach w usłudze Azure SQL Data Warehouse.
@@ -22,24 +22,46 @@ Zalecenia i przykłady dotyczące tworzenia i zaktualizowanie statystyk optymali
 ## <a name="why-use-statistics"></a>Dlaczego warto używać statystyki?
 Im bardziej zna danych Azure SQL Data Warehouse, tym szybciej jego wykonywanie zapytań względem jego. Zbieranie statystyk na podstawie danych i załadowanie go do usługi SQL Data Warehouse jest jednym z najważniejszych czynności, które pozwalają zoptymalizować zapytania. Jest to spowodowane Optymalizator zapytań SQL Data Warehouse jest Optymalizator opartych na kosztach. Porównuje koszt różne plany zapytań, a następnie wybiera plan o najniższej cenie, który znajduje się w większości przypadków plan, który wykonuje najszybsze. Na przykład jeśli Optymalizator szacuje się, że data filtrowania kwerendy zwróci jeden wiersz, ją wybrać inny plan niż w przypadku szacuje go, że wybrana data zwraca 1 milion wierszy.
 
-Proces tworzenia i zaktualizowanie statystyk jest obecnie ręczny proces, ale jest proste zrobić.  Wkrótce będzie mógł automatycznie tworzyć i aktualizować statystyki w jednym kolumn i indeksów.  Korzystając z poniższych informacji, można znacznie automatyzują zarządzanie statystyk na podstawie danych. 
+## <a name="automatic-creation-of-statistics"></a>Automatyczne tworzenie statystyk
+Podczas automatycznego tworzenia statystyk opcja jest włączona, AUTO_CREATE_STATISTICS, SQL Data Warehouse analizuje zapytania przychodzące użytkownika, których statystyki pojedynczej kolumny są tworzone dla kolumny, których brakuje statystyki. Optymalizator zapytań tworzy statystyki dla poszczególnych kolumn w warunek predykatu lub sprzężenia zapytania zwiększające szacowania kardynalności dla planu zapytania. Automatyczne tworzenie statystyk jest obecnie włączona domyślnie.
 
-## <a name="scenarios"></a>Scenariusze
-Tworzenie statystyk próbki w każdej kolumnie jest prosty sposób na rozpoczęcie pracy. Nieaktualne statystyki prowadzić do nieoptymalne kwerendy wydajności. Jednak wraz z rozwojem danych odnajdywania aktualizuje statystyki dla wszystkich kolumn mogą korzystać z pamięci. 
+Możesz sprawdzić, czy magazynu danych ma to skonfigurować, uruchamiając następujące polecenie:
 
-Poniżej przedstawiono zalecenia dotyczące różnych scenariuszy:
-| **Scenariusz** | Zalecenie |
-|:--- |:--- |
-| **Wprowadzenie** | Zaktualizuj wszystkie kolumny po przejściu do usługi SQL Data Warehouse |
-| **Najważniejsze kolumny dla statystyki** | Klucz dystrybucji skrótów |
-| **Drugi najważniejszych kolumny dla statystyki** | Klucz partycji |
-| **Inne ważne kolumn dla statystyki** | Data częste sprzężenia, GROUP BY, HAVING i gdzie |
-| **Częstotliwość aktualizacji statystyk**  | Zachowawcze: codziennie <br></br> Po ładowania lub Przekształcanie danych |
-| **Próbkowanie** |  Mniej niż 1 miliard wierszy, użyj domyślnej próbkowania (% 20) <br></br> Z więcej niż 1 miliard wierszy statystyki dotyczące 2-procentowy zakres jest dobra |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+Jeśli magazyn danych nie ma AUTO_CREATE_STATISTICS skonfigurowane, zalecamy włączenie tej właściwości, uruchamiając następujące polecenie:
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+Poniższe instrukcje wyzwoli automatyczne tworzenie statystyk: wykrycia obecności predykat lub wybierz INSERT SELECT, CTAS, UPDATE, DELETE i WYJAŚNIJ po zawierających sprzężenia. 
+
+> [!NOTE]
+> Automatyczne tworzenie statystyk nie są tworzone w tabelach tymczasowych lub zewnętrznego.
+> 
+
+Automatyczne tworzenie statystyk jest generowany synchronicznie, więc jeśli kolumn nie zostały utworzone dla nich statystyki może zostać obciążony nieznaczne zapytania obniżeniem wydajności. Tworzenie statystyk może zająć kilka sekund na jednej kolumny w zależności od rozmiaru tabeli. Aby uniknąć pomiaru spadek wydajności, szczególnie w testowanie wydajności, powinien zapewnić, że statystyka zostały utworzone najpierw przed rozpoczęciem profilowania system, wykonując testu obciążenia.
+
+> [!NOTE]
+> Tworzenie statystyk, również są rejestrowane w [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) w kontekście innego użytkownika.
+> 
+
+Po utworzeniu automatycznego statystyki one będzie mieć postać: _WA_Sys_< identyfikator kolumny 8 cyfr szesnastkowo > _ < identyfikator tabeli 8 cyfr szesnastkowo >. Można wyświetlić statystyki, które zostały już utworzone, uruchamiając następujące polecenie:
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
 
 ## <a name="updating-statistics"></a>Zaktualizowanie statystyk
 
 Jeden najlepszym rozwiązaniem jest aktualizację statystyk dotyczących kolumn dat każdego dnia, gdy zostaną dodane nowe daty. Każdy czas nowe wiersze są załadowane do magazynu danych, nowe obciążenia daty lub daty transakcji zostaną dodane. Te zmiany dystrybucji danych i utworzyć statystyki nieaktualny. Z drugiej strony statystyki dotyczące kraju kolumny w tabeli klienta może nigdy nie muszą zostać zaktualizowane, ponieważ rozkład wartości zwykle nie ulega zmianie. Zakładając, że dystrybucja jest stałe między klientami, dodawanie nowych wierszy do zmiany tabeli nie jest będzie zmienić dystrybucji danych. Jednak jeśli magazyn danych zawiera tylko jeden kraj, należy przenieść dane z nowego kraju dane z różnych krajach przechowywane, następnie należy aktualizować statystyki w kolumnie kraju.
+
+Poniżej przedstawiono zalecenia dotyczące zaktualizowanie statystyk:
+
+| **Częstotliwość aktualizacji Statystyka** | Zachowawcze: codziennie <br></br> Po ładowania i przekształcania danych || **Próbkowania** |  Mniej niż 1 miliard wierszy, użyj domyślnej próbkowania (% 20) <br></br> Z więcej niż 1 miliard wierszy, statystyki dotyczące 2-procentowy zakres jest dobrym |
 
 Jedno z pierwszym pytań podczas rozwiązywaniu zapytania jest, **"Są statystyki aktualne?"**
 

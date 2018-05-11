@@ -1,8 +1,8 @@
 ---
-title: "GDPR w serwer proxy aplikacji usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o GDPR w serwer proxy aplikacji usługi Azure Active Directory."
+title: GDPR w serwer proxy aplikacji usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o GDPR w serwer proxy aplikacji usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
@@ -15,11 +15,11 @@ ms.date: 02/16/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5e99fba2f226e1e9b401bd8ef5b3b85a5e8c6a7c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a3df15743b4918d72fac5f8769a2d3ee721a452f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="gdpr-in-the-azure-active-directory-application-proxy"></a>GDPR w serwer proxy aplikacji usługi Azure Active Directory  
 
@@ -57,7 +57,7 @@ Widok procesu / Eksportuj żądań, należy przejść przez każdy z plików dzi
 
 Ponieważ dzienniki są plikami tekstowymi, można wyszukiwać według, na przykład za pomocą `findstr` polecenie, aby znaleźć wpisy związane z użytkownikiem. Wyszukaj następujące pola, ponieważ mogą one być w dziennikach: 
 
-- Nazwa użytkownika
+- UserId
 - Wpisz nazwę użytkownika skonfigurowane dla dowolnej aplikacji za pomocą ograniczone delegowanie protokołu Kerberos:
     - Główna nazwa użytkownika
     - Główna nazwa użytkownika lokalnego
@@ -80,5 +80,5 @@ Aby wyłączyć łącznik dzienniki, musisz dostosować `C:\Program Files\Micros
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Omówienie serwera proxy aplikacji usługi Azure AD, zobacz [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](active-directory-application-proxy-get-started.md).
+Omówienie serwera proxy aplikacji usługi Azure AD, zobacz [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](manage-apps/application-proxy.md).
 

@@ -4,7 +4,7 @@ description: Dokumentacja referencyjna dla usługi Azure CDN zasady funkcje apar
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -12,10 +12,10 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: fe1f61c7242cf4213b19e9496d557ae7a2253fe8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1e002b51aa5a93e7fcc800f5cf48ac401c5cb2d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -1240,25 +1240,25 @@ Zdecydowanie zaleca się używania bezwzględnego adresu URL. Użycie względny 
 
 **Przykładowy scenariusz**
 
-W tym przykładzie pokazano, jak przekierować krawędzi URL CNAME, który jest rozpoznawany jako ten podstawowy adres URL usługi CDN: http://marketing.azureedge.net/brochures
+W tym przykładzie pokazano, jak przekierować krawędzi URL CNAME, który jest rozpoznawany jako ten podstawowy adres URL usługi CDN: http:\//marketing.azureedge.net/brochures
 
-Kwalifikowanie żądania nastąpi przekierowanie do tej krawędzi podstawowy adres URL CNAME: http://cdn.mydomain.com/resources
+Kwalifikowanie żądania nastąpi przekierowanie do tej krawędzi podstawowy adres URL CNAME: http:\//cdn.mydomain.com/resources
 
-Ten adres URL przekierowania można osiągnąć za pomocą następującej konfiguracji: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Ten adres URL przekierowania można osiągnąć za pomocą następującej konfiguracji: ![adres URL przekierowania](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Kwestie kluczowe:**
 
 - Żądanie definiuje funkcję adres URL przekierowania adresów URL, które zostanie przekierowany. W rezultacie dopasowanie dodatkowe warunki nie są wymagane. Mimo że warunek dopasowania został zdefiniowany jako "Always", zostanie przekierowany tylko żądania, które wskazują folder "broszury" na "marketing" pochodzenia klienta. 
 - Wszystkie żądania zgodne, zostanie przekierowany do granicy, zdefiniowanych w opcji docelowy adres URL CNAME. 
     - Przykładowy scenariusz #1: 
-        - Przykładowe żądanie (adres URL usługi CDN): http://marketing.azureedge.net/brochures/widgets.pdf 
-        - Adres URL żądania (po przekierowania): http://cdn.mydomain.com/resources/widgets.pdf  
+        - Przykładowe żądanie (adres URL usługi CDN): http:\//marketing.azureedge.net/brochures/widgets.pdf 
+        - Adres URL żądania (po przekierowania): http:\//cdn.mydomain.com/resources/widgets.pdf  
     - Przykładowy scenariusz #2: 
-        - Przykładowe żądanie (krawędzi CNAME adres URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - Adres URL żądania (po przekierowania): http://cdn.mydomain.com/resources/widgets.pdf przykładowy scenariusz
+        - Przykładowe żądanie (krawędzi CNAME adres URL): http:\//marketing.mydomain.com/brochures/widgets.pdf 
+        - Adres URL żądania (po przekierowania): http:\//cdn.mydomain.com/resources/widgets.pdf przykładowy scenariusz
     - Przykładowy scenariusz #3: 
-        - Przykładowe żądanie (krawędzi CNAME adres URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
-        - Adres URL żądania (po przekierowania): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
+        - Przykładowe żądanie (krawędzi CNAME adres URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
+        - Adres URL żądania (po przekierowania): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  
 - Zmienna schemat żądania (% {schemat}) jest wykorzystywana w opcji docelowego, który zapewnia, że schemat żądania nie jest zmieniany po przekierowaniu.
 - Segmenty adresu URL, które są przechwytywane żądania są dołączane do nowego adresu URL za pośrednictwem "$1."
 
@@ -1282,17 +1282,17 @@ Opcja|Opis
 
 **Przykładowy scenariusz 1**
 
-W tym przykładzie pokazano, jak przekierować krawędzi URL CNAME, który jest rozpoznawany jako ten podstawowy adres URL usługi CDN: http://marketing.azureedge.net/brochures/
+W tym przykładzie pokazano, jak przekierować krawędzi URL CNAME, który jest rozpoznawany jako ten podstawowy adres URL usługi CDN: http:\//marketing.azureedge.net/brochures/
 
-Kwalifikowanie żądania nastąpi przekierowanie do tej krawędzi podstawowy adres URL CNAME: http://MyOrigin.azureedge.net/resources/
+Kwalifikowanie żądania nastąpi przekierowanie do tej krawędzi podstawowy adres URL CNAME: http:\//MyOrigin.azureedge.net/resources/
 
-Ten adres URL przekierowania można osiągnąć za pomocą następującej konfiguracji: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Ten adres URL przekierowania można osiągnąć za pomocą następującej konfiguracji: ![adres URL przekierowania](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Przykładowy scenariusz 2**
 
 W tym przykładzie pokazano, jak przekierowywanie adresu URL CNAME z wielkimi literami na małe litery, za pomocą wyrażeń regularnych krawędzi.
 
-Ten adres URL przekierowania można osiągnąć za pomocą następującej konfiguracji: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Ten adres URL przekierowania można osiągnąć za pomocą następującej konfiguracji: ![adres URL przekierowania](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 
 **Kwestie kluczowe:**

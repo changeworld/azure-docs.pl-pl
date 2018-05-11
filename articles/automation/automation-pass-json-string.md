@@ -3,17 +3,18 @@ title: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 description: Jak do przekazania parametrów do elementu runbook jako obiekt JSON
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 keywords: środowiska PowerShell, elementu runbook, json, usługi Automatyzacja azure
-ms.openlocfilehash: 43f11b6e89b45fae94d0f7b10f0348468593956e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6d8bb5ede5bb4148fd5db3c9a89003698f2e5139
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 
@@ -108,7 +109,7 @@ Uruchom następujące polecenia programu PowerShell:
 
 Element runbook używa wartości z pliku JSON do uruchamiania maszyny Wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat edytowania elementów runbook programu PowerShell i przepływ pracy programu PowerShell za pomocą edytora tekstową, zobacz [edycji tekstową elementy runbook automatyzacji Azure](automation-edit-textual-runbook.md) 
 * Aby dowiedzieć się więcej o tworzeniu i importowania elementów runbook, zobacz [Tworzenie lub importowanie elementu runbook automatyzacji Azure](automation-creating-importing-runbook.md)

@@ -3,16 +3,17 @@ title: Tworzenie lub importowanie elementu runbook automatyzacji Azure
 description: W tym artykule opisano, jak utworzyć nowy element runbook automatyzacji Azure lub zaimportować z pliku.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c49b2f19da7f59e413dedbd757ca8b6fc6c7e674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f3d372938a4efb8701ab6916cd391794dbddd1f1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Tworzenie lub importowanie elementu runbook automatyzacji Azure
 Można dodać elementu runbook automatyzacji Azure przez [tworzenia nowej](#creating-a-new-runbook) lub importując istniejący element runbook z pliku lub [galerię elementów Runbook](automation-runbook-gallery.md). Ten artykuł zawiera informacje na temat tworzenia i importowania elementów runbook z pliku.  Można pobrać szczegółów na uzyskiwanie dostępu do społeczności elementów runbook i modułów w [galerie elementów Runbook i modułów w automatyzacji Azure](automation-runbook-gallery.md).

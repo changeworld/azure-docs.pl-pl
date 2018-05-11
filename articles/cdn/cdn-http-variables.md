@@ -12,10 +12,10 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: ea7469b1d1c3d1c20beca9b1fb3bef0d4dac9492
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 36c1b20219fabd1b7c02247d9a93bb7b7cfc898d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -61,8 +61,8 @@ W poniższej tabeli opisano obsługiwane zmienne HTTP. Po geograficznie metadany
 | Schemat żądania | % {Schemat} | Wskazuje schemat żądania. |http |
 | Identyfikator URI (względem) żądania | % {request_uri} | Określa ścieżkę względną, łącznie z ciągu zapytania, zdefiniowane w identyfikatorze URI żądania. | /Marketing/foo.js?loggedin=true |
 | Identyfikator URI (względem bez ciągu zapytania) żądania | {Identyfikator uri} % | Określa ścieżkę względną do żądanej zawartości. <br /><br/>Informacje o kluczu:<br />-Ta ścieżka względna nie obejmuje ciągu zapytania.<br />-Ta ścieżka względna odzwierciedla ponownego adresu URL. Adres URL będzie ulegną w następujących warunkach:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Funkcja ponowne zapisywanie adresów URL: Ta funkcja ponownie zapisuje ścieżki względnej zdefiniowane w identyfikatorze URI żądania.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME adres URL: Ten typ żądania jest napisany od nowa do odpowiedni adres URL usługi CDN. |/800001/corigin/rewrittendir/foo.js |
-| Identyfikator URI żądania | {żądanie} % | W tym artykule opisano żądania. <br />Składnia: `HTTPMethod RelativePath Protocol` | Pobierz /marketing/foo.js?loggedin=true HTTP/1.1 |
-| Wartość nagłówka odpowiedzi | % {resp_&lt;ResponseHeader&gt;} | Zwraca wartość odpowiadającą nagłówka odpowiedzi identyfikowane przez &lt;ResponseHeader&rt; terminu. <br /><br />Jeśli nazwa nagłówka odpowiedzi zawiera, łącznik (na przykład agenta użytkownika), należy ją zastąpić znaku podkreślenia (na przykład User_Agent). | Przykładowe zastosowanie: % {resp_Content_Length}<br /><br />Przykładowe wartości: 100 |
+| Identyfikator URI żądania | {żądanie} % | W tym artykule opisano żądania. <br />Składnia: &lt;metoda HTTP&gt; &lt;ścieżki względnej&gt; &lt;protokołu HTTP&gt; | Pobierz /marketing/foo.js?loggedin=true HTTP/1.1 |
+| Wartość nagłówka odpowiedzi | % {resp_&lt;ResponseHeader&gt;} | Zwraca wartość odpowiadającą nagłówka odpowiedzi identyfikowane przez &lt;ResponseHeader&gt; terminu. <br /><br />Jeśli nazwa nagłówka odpowiedzi zawiera, łącznik (na przykład agenta użytkownika), należy ją zastąpić znaku podkreślenia (na przykład User_Agent). | Przykładowe zastosowanie: % {resp_Content_Length}<br /><br />Przykładowe wartości: 100 |
 
 ## <a name="usage"></a>Sposób użycia
 W poniższej tabeli opisano dokładny opis składni służącą do zmiennej HTTP.
@@ -155,19 +155,19 @@ Informacje o kluczu:
      - Dodatnia: Określa podciąg początkowy znak w prawo.
      - Ujemna: Określa podciąg początkowy znak w lewo.
 
-#### <a name="examples"></a>Przykłady:
+#### <a name="example"></a>Przykład:
 
 Poniższy przykład opiera się na następujący adres URL żądania próbki:
 
-`https://cdn.mydomain.com/folder/marketing/myconsultant/proposal.html`
+https:\//cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
 
 Następujący ciąg przedstawiono różne metody zmiennych:
 
-`https://www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm`
+https:\//www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm
 
 W oparciu o adresie URL żądania próbki, powyżej manipulowania zmiennej utworzy następującą wartość:
 
-`https://www.mydomain.com/mobile/marketing/proposal.htm`
+https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 
 ### <a name="pattern-removal"></a>Usunięcie wzorca
@@ -180,7 +180,7 @@ Tekst, który jest zgodna z określonym wzorcem można usunąć od początku lub
 
 #### <a name="example"></a>Przykład:
 
-W tym przykładowym scenariuszu zmiennej request_uri wartość to:
+W tym przykładowym scenariuszu *request_uri* zmienna jest ustawiona na:
 
 `/800001/myorigin/marketing/product.html?language=en-US`
 

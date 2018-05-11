@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 29d8afb54ffbbed2178c8af611c0c0bb77fbe915
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure podręcznikowym ochronę tożsamości w usłudze Active Directory
 
@@ -102,7 +102,7 @@ Rejestrowanie zostaną wyświetlone na pulpicie nawigacyjnym ochronę tożsamoś
 Luki w zabezpieczeniach występują słabych w środowisku usługi Azure AD, które mogą być używane przez aktora nieprawidłowy. Obecnie 3 typy luk w zabezpieczeniach są udostępniane w Azure AD Identity Protection, zwiększają inne funkcje usługi Azure AD. Te luki w zabezpieczeniach będą wyświetlane na pulpicie nawigacyjnym Identity Protection automatycznie po skonfigurowaniu tych funkcji.
 
 * Usługi Azure AD [uwierzytelnianie wieloskładnikowe](authentication/multi-factor-authentication.md)
-* Usługi Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
+* Usługi Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md).
 * Usługi Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 

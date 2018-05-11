@@ -5,16 +5,18 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 05/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 100e0457627a04414ad2f0780a346933b11f4376
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 842083f0f69552fb9076423386353dbb4dae73b5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-1. Kliknięcie opcji **Połącz** powoduje utworzenie i pobranie pliku Remote Desktop Protocol (rdp). Kliknij przycisk **Otwórz**, aby użyć tego pliku.
+1. Kliknij przycisk **Connect** przycisk na stronie właściwości maszyny wirtualnej. 
+2. W **nawiązywanie połączenia z maszyną wirtualną** , przechowywać, wybierz odpowiednie opcje i kliknij przycisk **plik RDP Pobierz**.
+2. Otwórz pobrany plik RDP, a następnie kliknij przycisk **Connect** po wyświetleniu monitu. 
 2. Zostanie wyświetlone ostrzeżenie, że plik `.rdp` pochodzi od nieznanego wydawcy. Jest to normalne. W oknie pulpitu zdalnego kliknij przycisk **Połącz**, aby kontynuować.
    
     ![Zrzut ekranu przedstawiający ostrzeżenie o nieznanym wydawcy.](./media/virtual-machines-log-on-win-server/rdp-warn.png)

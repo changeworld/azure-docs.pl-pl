@@ -4,19 +4,17 @@ description: Ten dokument zawiera omówienie i szczegółowe przykłady rozszerz
 services: machine-learning
 author: euangMS
 ms.author: euang
-manager: lanceo
-ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 05/09/2018
+ms.openlocfilehash: 6363d39b2dfbd36ccebff6780e35caf58ca84dda
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Rozszerzenia języka Python przygotowań danych
 Sposób wypełniania funkcji luki pomiędzy wbudowane funkcje usługi Azure Machine Learning danych przygotowania zawiera rozszerzalności na różnych poziomach. W tym dokumencie możemy konspektu rozszerzalność dzięki skrypt w języku Python. 
@@ -24,14 +22,10 @@ Sposób wypełniania funkcji luki pomiędzy wbudowane funkcje usługi Azure Mach
 ## <a name="custom-code-steps"></a>Kroki kod niestandardowy 
 Przygotowań danych ma następujące kroki niestandardowe, w którym użytkownicy mogą zapisywać kodu:
 
-* Plik czytnika *
-* Moduł zapisujący *
 * Dodaj kolumnę
 * Filtr zaawansowany
 * Przekształć przepływu danych
 * Przekształć partycji
-
-* Te kroki nie są obecnie obsługiwane w wykonywania Spark.
 
 ## <a name="code-block-types"></a>Typy blok kodu 
 Dla każdej z tych kroków firma Microsoft obsługuje dwa typy bloku kodu. Po pierwsze firma Microsoft obsługuje wyrażenia języka Python systemu od zera, która zostanie wykonana, ponieważ jest. Po drugie firma Microsoft obsługuje moduł Python, gdzie nazywamy konkretną funkcję za pomocą znanych podpisu kodu, który podasz.
@@ -158,74 +152,6 @@ Przykłady
     row.ColumnA + row.ColumnB  
     row["ColumnA"] + row["ColumnB"]
 ```
-
-## <a name="file-reader"></a>Czytnik plików 
-### <a name="purpose"></a>Przeznaczenie 
-Punkt rozszerzenia pliku czytnika pozwala w pełni kontroli procesu czytania pliku do przepływu danych. System wywołuje kod i przekazuje na liście plików, które ma być przetwarzane. Kod musi utworzyć i zwracać Pandas dataframe. 
-
->[!NOTE]
->Ten punkt rozszerzenia nie działa w łączniku Spark. 
-
-
-### <a name="how-to-use"></a>Jak stosować 
-Możesz uzyskać dostępu do tego punktu rozszerzenia z **typu Open Source danych** kreatora. Wybierz **pliku** na pierwszej stronie, a następnie wybierz lokalizację pliku. Na **Wybierz parametry pliku** strony w **typ pliku** listy rozwijanej wybierz pozycję **niestandardowego pliku (skrypt)**. 
-
-Podany kod jest dataframe Pandas, o nazwie "df", który zawiera informacje o pliki potrzebne do odczytu. Jeśli wybrano opcję Otwórz katalog, który zawiera wiele plików, dataframe zawiera więcej niż jeden wiersz.  
-
-Dataframe ten zawiera następujące kolumny:
-
-- Ścieżka: Plik do odczytu.
-- PathHint: Określa, w którym znajduje się plik. Wartości: Lokalne, AzureBlobStorage i AzureDataLakeStorage.
-- AuthenticationType: Typ uwierzytelniania używany do uzyskania dostępu do pliku. Wartości: None, SasToken i OAuthToken.
-- AuthenticationValue: Zawiera None lub token do użycia.
-
-### <a name="syntax"></a>Składnia 
-Wyrażenie 
-
-```python
-    paths = df['Path'].tolist()  
-    df = pd.read_csv(paths[0])
-```
-
-
-Moduł  
-```python
-PathHint = Local  
-def read(df):  
-    paths = df['Path'].tolist()  
-    filedf = pd.read_csv(paths[0])  
-    return filedf  
-```
- 
-
-## <a name="writer"></a>Składnik zapisywania 
-### <a name="purpose"></a>Przeznaczenie 
-Punkt rozszerzenia składnika zapisywania pozwala w pełni kontroli proces zapisywania danych z przepływu danych. System wywołuje kod i przekazuje w dataframe. Kod umożliwia dataframe zapisywać dane w dowolny sposób. 
-
->[!NOTE]
->Punkt rozszerzenia moduł zapisujący nie działa w łączniku Spark.
-
-
-### <a name="how-to-use"></a>Jak stosować 
-Aby dodać ten punkt rozszerzenia, należy za pomocą bloku przepływu danych zapisu (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu.
-
-### <a name="syntax"></a>Składnia 
-Wyrażenie
-
-```python
-    df.to_csv('c:\\temp\\output.csv')
-```
-
-Moduł
-
-```python
-def write(df):  
-    df.to_csv('c:\\temp\\output.csv')  
-    return df
-```
- 
- 
-Ten blok niestandardowych zapisu może istnieć środku listę kroków. Jeśli używasz modułu funkcji zapisu musi zwracać dataframe, będący w danych wejściowych kroku, który następuje. 
 
 ## <a name="add-column"></a>Dodaj kolumnę 
 ### <a name="purpose"></a>Przeznaczenie

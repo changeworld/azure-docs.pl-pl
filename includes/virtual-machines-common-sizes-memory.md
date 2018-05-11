@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 75b89ad7f118d107f570b5e323d61bbc9b94bc40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest wspaniała relacyjnej bazy danych serwerów, pamięci podręcznych średnich i dużych i analizy w pamięci. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -25,6 +25,8 @@ Zoptymalizowanych pod kątem pamięci oferta rozmiary maszyny Wirtualnej wysokie
 * Seria Dv2, kontynuacja oryginalnej serii D, jest wyposażona w procesor CPU o większych możliwościach. Procesor CPU serii Dv2 jest o około 35% szybszy niż procesor CPU serii D. Jest on oparty na najnowszej generacji 2.4 v3® GHz Intel Xeon E5-2673 2,4 GHz (Haswell) lub E5-2673 procesorów 2.3 GHz (Broadwell) w wersji 4 i 2.0 technologii zwiększanie wyniku Turbo firmy Intel, można przejść do GHz 3.1. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
 * Seria Ev3 funkcje E5 2673 v4 2.3 GHz (Broadwell) procesora w hiperwątkowych konfiguracji, zapewniając lepsze wartości oferty dla większości obciążeń cel i dostosowanie Ev3 do dostosowania ogólnego przeznaczenia maszyn wirtualnych z innych chmur.  Gdy skorygowano limity dysku i sieci na podstawie na core, aby były wyrównane wraz z przejściem do wielowątkowość została rozszerzona pamięci (od 7 GiB/vCPU do 8 GiB/vCPU).  Ev3 jest uzupełnianie rozmiarów maszyn wirtualnych pamięci wysokiej rodzin D/Dv2.
+
+* Obliczeń platformy Azure oferuje rozmiary maszyny wirtualnej, które są izolowany do typu określonego sprzętu i dedykowanych jednego odbiorcy.  Rozmiary maszyny wirtualnej są najbardziej odpowiednie dla obciążeń, które wymagają w przypadku obciążeń obejmujących elementy, takie jak zgodnością i przepisami dotyczącymi wysoki stopień izolacji od innych klientów.  Klientów można również dodatkowo podzielić zasoby tych izolowanego maszyn wirtualnych przy użyciu [pomocy technicznej platformy Azure dla maszyn wirtualnych zagnieżdżonych](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Zobacz tabel rodzin maszyny wirtualnej poniżej izolowanego opcji maszyny Wirtualnej.
 
 ## <a name="esv3-series"></a>Esv3 serii 
 

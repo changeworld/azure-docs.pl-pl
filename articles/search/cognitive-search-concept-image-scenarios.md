@@ -10,11 +10,11 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: cefb5b7157f2fc8672ed419961cd3a90314b95e0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c58e731f6b8c86a0b7d6f2500d81077904b2f5ef
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak informacje o procesie i wyodrębniania z obrazów w scenariuszach kognitywnych wyszukiwania
 
@@ -32,10 +32,12 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które iteracja obra
 
 | Parametr konfiguracji | Opis |
 |--------------------|-------------|
-| imageAction   | Jeśli podjęta żadna akcja, gdy wystąpią obrazów osadzonych lub pliki obrazów, należy ustawić na "Brak". <br/>Wartość albo "generateNormalizedImages" Generowanie tablicę znormalizowane obrazów jako część łamania dokumentu. Te obrazy mają być widoczne w *normalized_images* pola. <br/>Wartość domyślna to "none." Ta konfiguracja jest tylko odpowiednie do obiektu blob źródeł danych, gdy "dataToExtract" ma wartość "contentAndMetadata." |
+| imageAction   | Jeśli podjęta żadna akcja, gdy wystąpią obrazów osadzonych lub pliki obrazów, należy ustawić na "Brak". <br/>Wartość "generateNormalizedImages" Generowanie tablicę znormalizowane obrazów jako część łamania dokumentu. Te obrazy mają być widoczne w *normalized_images* pola. <br/>Wartość domyślna to "none." Ta konfiguracja jest tylko odpowiednie do obiektu blob źródeł danych, gdy "dataToExtract" ma wartość "contentAndMetadata." |
 |  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
 |  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
 
+> [!NOTE]
+> Jeśli ustawisz *imageAction* właściwości na inny niż "none", nie będzie możliwe ustawienie *parsingMode* właściwości na inny niż "domyślny".  Można ustawić tylko jedną z tych dwóch właściwości do wartości innych niż domyślne w konfiguracji indeksatora.
 
 Wartość domyślna pikseli 2000 znormalizowane obrazy maksymalną szerokość i wysokość jest oparta na maksymalne rozmiary obsługiwane przez [umiejętności Rozpoznawania](cognitive-search-skill-ocr.md) i [obrazu umiejętności analizy](cognitive-search-skill-image-analysis.md). Jeśli zwiększysz maksymalnych przetwarzanie może zakończyć się niepowodzeniem na większych obrazów.
 

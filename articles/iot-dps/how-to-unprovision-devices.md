@@ -5,18 +5,18 @@ services: iot-dps
 keywords: ''
 author: bryanla
 ms.author: v-jamebr;bryanla
-ms.date: 04/06/2018
+ms.date: 05/11/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 439d4ffa8eec12481f52bd15f0060800411f316e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 87932c1ae1676d36ea0eb1ba7885f2ac455949ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Jak anulowanie zastrzeżenia urządzenia, które wcześniej były udostępniane do automatycznego 
 
@@ -29,7 +29,7 @@ Ogólnie rzecz biorąc anulowania obsługi urządzenia wymaga wykonania dwóch k
    - Aby dowiedzieć się, jak disenroll urządzenia, zobacz [jak urządzenia z usługi udostępniania urządzenia Centrum IoT Azure disenroll](how-to-revoke-device-access-portal.md).
    - Aby dowiedzieć się, jak disenroll urządzenia programowo przy użyciu jednej z inicjowania obsługi administracyjnej zestawów SDK usługi, zobacz [Zarządzanie rejestracji urządzeń z usługi SDK](how-to-manage-enrollments-sdks.md).
 
-2. Wyrejestrowania urządzenia z Centrum IoT, aby uniknąć przyszłych transmisji danych i łączności. Ponownie można tymczasowo wyłączyć lub trwale usunąć urządzenia wpis w rejestrze tożsamości, dla której zainicjowano Centrum IoT. Zobacz [Wyłącz urządzenia](/azure/iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) Aby dowiedzieć się więcej na temat niepełnosprawność. Zobacz "Urządzenia zarządzania / urządzenia IoT" dla zasobu Centrum IoT w [portalu Azure](https://portal.azure.com).
+2. Wyrejestrowania urządzenia z Centrum IoT, aby uniknąć przyszłych transmisji danych i łączności. Ponownie można tymczasowo wyłączyć lub trwale usunąć urządzenia wpis w rejestrze tożsamości, dla której zainicjowano Centrum IoT. Zobacz [Wyłącz urządzenia](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) Aby dowiedzieć się więcej na temat niepełnosprawność. Zobacz "Urządzenia zarządzania / urządzenia IoT" dla zasobu Centrum IoT w [portalu Azure](https://portal.azure.com).
 
 Kolejnych kroków, które należy wykonać w celu anulowanie zastrzeżenia urządzenia są zależne od jego mechanizmu zaświadczania i jego wpis rejestracji mające zastosowanie do inicjowania obsługi administracyjnej usługi. W poniższych sekcjach omówiono proces, na podstawie typu rejestracji i zaświadczania.
 

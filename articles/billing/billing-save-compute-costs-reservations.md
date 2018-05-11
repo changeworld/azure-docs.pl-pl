@@ -3,8 +3,8 @@ title: Zaoszczędzić na wstępnie płatności maszyn wirtualnych platformy Azur
 description: Więcej informacji na temat zastrzeżone wystąpienie maszyny wirtualnej Azure do zapisywania na kosztów maszyn wirtualnych.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikramdesai01
+author: yashesvi
+manager: yashesvi
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: yashar
+ms.openlocfilehash: 9c73102f09e252b449f78603debaf707b3c89c3b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Zaoszczędzić na maszynach wirtualnych z zarezerwowanych wystąpień maszyn wirtualnych 
 Zarezerwowane wystąpień maszyn wirtualnych umożliwiają wstępnie opłacać jednego roku lub trzech lat wydajności obliczeniowej, aby uzyskać rabat na maszyny wirtualne, których używasz. Znacznie zmniejsza koszty maszyny wirtualnej — do 72 procent płatności obejmujące cen — z jednego roku lub trzech lat góry zobowiązań. Zarezerwowane wystąpień maszyn wirtualnych jest rabat rozliczeń i nie ma wpływu na stan czasu wykonywania maszyn wirtualnych.
@@ -35,6 +35,7 @@ Azure klienci z tych typów subskrypcji można zakupić zastrzeżone wystąpieni
 -   Enterprise umowy typu oferty subskrypcji (MS-AZR - 0017P).
 -   [Płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) typu oferty subskrypcji (MS-AZR - 003 P).
 Musisz być w roli "Właściciela" w subskrypcji kupić zastrzeżone wystąpienia. Do zakupu rezerwacji w rejestracji enterprise, administrator przedsiębiorstwa należy włączyć rezerwacji zakupy w portalu EA domyślnie to ustawienie jest włączone.
+-   Cloud Solution Provider (CSP) partnerzy mogą korzystać z portalu zarządzania Azure lub [Centrum partnerskiego](https://docs.microsoft.com/partner-center/azure-reservations) zakupu rezerwacji.
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>Jak jest rozliczany zakupu zastrzeżone wystąpień maszyn wirtualnych
 Zakupu rezerwacji jest pobierana do metody płatności, związana z subskrypcji. Jeśli masz subskrypcję korporacyjną koszt rezerwacji jest odejmowany od Saldo zobowiązań. Jeśli konta zobowiązania pieniężnego nie obejmuje kosztów zastrzeżenia, są rozliczane nadwyżkowe.
@@ -58,7 +59,7 @@ Zastrzeżenia są dostępne dla większości rozmiarów maszyn wirtualnych z pew
 - Przydział jest niewystarczający — zastrzeżone wirtualna wystąpienie które są ograniczone do jednego subskrypcji musi być dostępne w ramach subskrypcji dla nowych RI przydziału vCPU. Na przykład jeśli subskrypcja docelowa ma limit przydziału równy 10 Vcpu dla rodziny D-Series, następnie nie kupisz zastrzeżone wystąpienia maszyny Wirtualnej dla wystąpień Standard_D1 11. Sprawdzanie przydziału zastrzeżenia obejmuje maszyn wirtualnych już wdrożona w subskrypcji. Na przykład, jeśli subskrypcja ma limit przydziału wynoszący 10 Vcpu D-Series rodziny. Ta subskrypcja ma dwa wystąpienia standard_D1 wdrożone, można kupić wystąpienia zastrzeżone maszyny Wirtualnej do 10 wystąpień standard_D1 w ramach tej subskrypcji. 
 - Ograniczenia pojemności — w rzadkich przypadkach, limity Azure zakupu nowego zastrzeżenia dla podzbioru rozmiarów maszyn wirtualnych z powodu niskiej wydajności w regionie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Początek zapisywania na maszynach wirtualnych przez zakup [zastrzeżone wystąpienie maszyny wirtualnej](https://go.microsoft.com/fwlink/?linkid=861721). 
 
 Aby dowiedzieć się więcej o zastrzeżonych wystąpień maszyn wirtualnych, zobacz następujące artykuły.
@@ -69,5 +70,7 @@ Aby dowiedzieć się więcej o zastrzeżonych wystąpień maszyn wirtualnych, zo
 - [Określić sposób użycia wystąpienia zarezerwowane dla Twojej subskrypcji z](billing-understand-reserved-instance-usage.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania systemu Windows nie jest dołączony do wystąpienia zastrzeżone](billing-reserved-instance-windows-software-costs.md)
+- [Zarezerwowane wystąpień w programie partnera Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.

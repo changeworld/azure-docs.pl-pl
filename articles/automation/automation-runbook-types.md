@@ -1,18 +1,19 @@
 ---
-title: "Typy elementu Runbook usługi Automatyzacja Azure"
-description: "Zawiera opis różnych typów elementów runbook, które można używać w automatyzacji Azure i zagadnienia, które należy wziąć pod uwagę podczas określania typu. "
+title: Typy elementu Runbook usługi Automatyzacja Azure
+description: 'Zawiera opis różnych typów elementów runbook, które można używać w automatyzacji Azure i zagadnienia, które należy wziąć pod uwagę podczas określania typu. '
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f3a6b15891a4a1564073d149a198f6789b407342
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 800380c68e1bb1314021ab60f92ccd3b392dbe32
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Typy elementu runbook automatyzacji Azure
 Automatyzacja Azure obsługuje kilka typów elementów runbook krótko opisane w poniższej tabeli.  Poniższe sekcje zawierają dodatkowe informacje na temat poszczególnych typów, łącznie z uwagi na kiedy należy używać każdego.
@@ -58,7 +59,7 @@ Elementy runbook programu PowerShell są oparte na programie Windows PowerShell.
 Oto obecnie znane problemy z elementów runbook programu PowerShell.
 
 * Elementy runbook programu PowerShell nie można pobrać niezaszyfrowane [zasób zmiennej](automation-variables.md) o wartości null.
-* Nie można pobrać elementów runbook programu PowerShell [zasób zmiennej](automation-variables.md) z  *~*  w nazwie.
+* Nie można pobrać elementów runbook programu PowerShell [zasób zmiennej](automation-variables.md) z *~* w nazwie.
 * Get-Process w pętli w programie PowerShell elementu runbook może ulec awarii po około 80 iteracji. 
 * Element runbook programu PowerShell może zakończyć się niepowodzeniem, jeśli próbuje zapisać bardzo dużą ilość danych do strumienia wyjściowego na raz.   Ten problem można zwykle obejść przez generowanie właśnie informacji potrzebnych podczas pracy z dużych obiektów.  Na przykład zamiast Generowanie przypominać *Get-Process*, można output tylko wymagane pola z *Get-Process | Wybierz parametr i procesora CPU*.
 
@@ -98,7 +99,7 @@ Należy wziąć pod uwagę następujące uwagi dodatkowe podczas określania typ
 * Nie można przekonwertować typu tekstowej lub odwrotnie elementów runbook z graficznego.
 * Istnieją ograniczenia dotyczące używania elementów runbook o różnych typach jako podrzędnego elementu runbook.  Zobacz [podrzędnych elementów runbook automatyzacji Azure](automation-child-runbooks.md) Aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby dowiedzieć się więcej na temat tworzenia graficznego elementu runbook, zobacz [tworzenia graficznego automatyzacji Azure](automation-graphical-authoring-intro.md)
 * Aby poznać różnice między środowiska PowerShell i programu PowerShell przepływy pracy dla elementów runbook, zobacz [Learning Windows PowerShell Workflow](automation-powershell-workflow.md)
 * Aby uzyskać więcej informacji na temat Tworzenie lub importowanie elementu Runbook, zobacz [Tworzenie lub importowanie elementu Runbook](automation-creating-importing-runbook.md)

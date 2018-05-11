@@ -3,6 +3,7 @@ title: Rozwiązywanie typowych problemów z usługi Automatyzacja Azure | Dokume
 description: Ten artykuł zawiera informacje ułatwiające rozwiązywanie problemów i Rozwiąż typowe błędy usługi Automatyzacja Azure.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
@@ -10,11 +11,11 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Błąd automatyzacji, rozwiązywania problemów, problem
-ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d8bf617aaef463121abe76cd85a98615c83f11ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Rozwiązywanie typowych problemów w usłudze Automatyzacja Azure 
 Ten artykuł zawiera pomoc w rozwiązywaniu typowych błędów mogą wystąpić w automatyzacji Azure, a także sugeruje możliwe rozwiązania, aby je rozwiązać.
@@ -203,7 +204,7 @@ Aby pomyślnie wdrożyć rozwiązanie, należy wziąć pod uwagę zmiany wskazan
 
 Sprawdź powiadomienia w prawym górnym rogu portalu Azure lub przejdź do grupę zasobów, która zawiera konta automatyzacji i wybierz **wdrożeń** w obszarze **ustawienia** Aby wyświetlić nieudane wdrożenia. Aby dowiedzieć się więcej na temat zasad usługi Azure, odwiedź stronę: [Omówienie zasad Azure](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli wykonano poprzednie kroki rozwiązywania problemów i nie może znaleźć odpowiedzi, możesz przejrzeć dodatkowe wsparcie następujące opcje:
 

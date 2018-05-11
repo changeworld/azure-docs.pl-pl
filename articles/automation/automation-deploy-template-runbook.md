@@ -3,17 +3,18 @@ title: Wdrażanie szablonu usługi Azure Resource Manager w element runbook usł
 description: Wdrażanie szablonu usługi Azure Resource Manager przechowywane w usłudze Azure Storage z poziomu elementu runbook
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 keywords: środowiska PowerShell, elementu runbook, json, usługi Automatyzacja azure
-ms.openlocfilehash: 7b3198c6ea60004a5a747256096c7f6aec68c711
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b6571b87e5753adcd03d7916218ed5a085fb6f82
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
 
@@ -233,7 +234,7 @@ Get-AzureRmStorageAccount
 
 Gotowe. Teraz można użyć szablonów usługi Automatyzacja Azure i usługi Azure Storage, a Menedżer zasobów do wdrożenia wszystkich zasobów na platformie Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat szablonów Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * Aby rozpocząć pracę z usługą Azure Storage, zobacz [wprowadzenie do usługi Azure Storage](../storage/common/storage-introduction.md).

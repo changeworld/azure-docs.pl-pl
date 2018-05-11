@@ -1,18 +1,19 @@
 ---
-title: "Zasoby zmiennej usługi Automatyzacja Azure"
-description: "Zmienna zasoby są wartości, które są dostępne dla wszystkich elementów runbook i konfiguracji DSC automatyzacji Azure.  W tym artykule szczegółowo opisano zmienne i sposobu pracy z nimi w tworzeniu zarówno tekstową i graficznego."
+title: Zasoby zmiennej usługi Automatyzacja Azure
+description: Zmienna zasoby są wartości, które są dostępne dla wszystkich elementów runbook i konfiguracji DSC automatyzacji Azure.  W tym artykule szczegółowo opisano zmienne i sposobu pracy z nimi w tworzeniu zarówno tekstową i graficznego.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7c36fce380712da6572e9512a05af9c23c4152a2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2cae2746df5c9262fc0cb0071d20c04172bd5635
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Zasoby zmiennej usługi Automatyzacja Azure
 

@@ -3,20 +3,23 @@ title: Wykonanie elementu Runbook automatyzacji Azure
 description: W tym artykule opisano szczegółowe informacje o przetwarzaniu elementu runbook automatyzacji Azure.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 05/08/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 286c23e95f030f92b67e8a505905d11d6ece0297
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a6a429b85e0d7522e5840a0ad020d12f4f4d471e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook automatyzacji Azure
 
 Po uruchomieniu elementu runbook w automatyzacji Azure tworzone jest zadanie. Zadanie jest pojedynczym wystąpieniem wykonania elementu runbook. Pracownik usługi Automatyzacja Azure jest przypisany do każdego zadania. Pracownicy są współużytkowane przez wiele kont platformy Azure, są odizolowane od siebie zadań z różnych kont automatyzacji. Możesz nie mieć kontroli za pośrednictwem których procesu roboczego obsługującym żądanie dla zadania. Pojedynczy element runbook może mieć wiele zadań została uruchomiona w tym samym czasie. Może być ponownie używane środowiska wykonania zadań z tego samego konta automatyzacji. Podczas wyświetlania listy elementów runbook w portalu Azure, wyświetla stan wszystkich zadań, które zostały uruchomione dla każdego elementu runbook. Aby śledzić stan każdego z nich, można wyświetlić listę zadań dla każdego elementu runbook. Opis stany różne zadania [stany zadania](#job-statuses).
+
+[!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Na poniższym diagramie przedstawiono cykl życia zadania elementu runbook dla [graficznych elementów runbook](automation-runbook-types.md#graphical-runbooks) i [elementach runbook przepływu pracy programu PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).
 
@@ -34,7 +37,7 @@ W poniższej tabeli opisano różne stany, które są możliwe w dla zadania.
 
 | Stan | Opis |
 |:--- |:--- |
-| Ukończone |Zadanie zostało ukończone pomyślnie. |
+| Ukończony |Zadanie zostało ukończone pomyślnie. |
 | Niepowodzenie |Dla [graficzny i przepływ pracy programu PowerShell elementów runbook](automation-runbook-types.md), element runbook kompilacja nie powiodła się. Aby uzyskać [elementów runbook skrypt programu PowerShell](automation-runbook-types.md), nie można uruchomić elementu runbook lub zadania wystąpił wyjątek. |
 | Nie powiodło się, oczekiwania dla zasobów |Zadanie nie powiodło się, ponieważ osiągnął [odpowiedni udział](#fair-share) ograniczyć trzy razy i z tego samego punktu kontrolnego lub od początku elementu runbook każdej godzina rozpoczęcia. |
 | W kolejce |Zadanie oczekuje dla zasobów procesu roboczego automatyzacji dostępny, aby można było go uruchomić. |
@@ -143,6 +146,6 @@ Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pier
 
 Podczas tworzenia elementu runbook, należy upewnić się, że czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza trzy godziny. Należy dodać punkty kontrolne do elementu runbook, aby upewnić się, że nie osiągnięciu tego limitu trzech godzin lub podzielić long długotrwałych operacji. Na przykład element runbook może wykonywać indeksowanie na duże bazy danych SQL. Jeśli operacja jednego nie zostanie ukończone przed upływem limitu odpowiedni udział, to zadanie jest zwalnianie i ponownego uruchomienia od początku. W takim przypadku należy podzielić operacji indeksowanie w wielu kroków, takich jak indeksowanie jedna tabela w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadanie, po ostatniej operacji, aby zakończyć.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat różnych metod, które mogą służyć do uruchamiania elementu runbook automatyzacji Azure, zobacz [uruchamianie elementu runbook automatyzacji Azure](automation-starting-a-runbook.md)

@@ -1,11 +1,11 @@
 ---
 title: Problem podczas konfiguracji federacyjne logowanie jednokrotne dla aplikacji w galerii Azure AD | Dokumentacja firmy Microsoft
-description: "Niektóre typowe problemy mogą wystąpić podczas konfigurowania federacyjnych pojedynczy adres logowania jednokrotnego dla aplikacji, które są wymienione w galerii aplikacji usługi Azure AD za pomocą protokołu SAML"
+description: Niektóre typowe problemy mogą wystąpić podczas konfigurowania federacyjnych pojedynczy adres logowania jednokrotnego dla aplikacji, które są wymienione w galerii aplikacji usługi Azure AD za pomocą protokołu SAML
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 581b3c4ff7cc7b25f238602560f30280efa34edd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem podczas konfiguracji federacyjne logowanie jednokrotne dla aplikacji w galerii Azure AD
 
@@ -108,4 +108,4 @@ Usługi Azure AD nie udostępnia adresu URL można pobrać metadanych. Można po
 Aby dowiedzieć się, jak dostosować oświadczeń atrybutów SAML wysyłanych do aplikacji, zobacz [oświadczeń mapowanie w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](active-directory-enable-sso-scenario.md)
+[Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](manage-apps/what-is-application-management.md)

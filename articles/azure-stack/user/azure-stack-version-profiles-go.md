@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Profile w wersji interfejsu API za pomocą Przejdź w stosie Azure
 
@@ -61,7 +61,8 @@ Zestaw SDK Przejdź zależy od modułów Azure Przejdź-AutoRest do wysyłania �
 Aby uruchomić przykładowy kod przejdź na stosie Azure:
   1. Zainstaluj zestaw Azure SDK dla Przejdź i jego zależności. Instrukcje zawiera Poprzednia sekcja, [Zainstaluj zestaw Azure SDK for Przejdź](#install-azure-sdk-for-go).
   2. Pobierz informacje metadanych z punktu końcowego Menedżera zasobów. Punkt końcowy zwraca informacje wymagane do uruchomienia kodu Przejdź pliku JSON.
-  > [!note]  
+
+  > [!Note]  
   > **ResourceManagerUrl** jest w Azure stosu Development Kit (ASDK): `https://management.local.azurestack.external/`  
   > **ResourceManagerUrl** w systemach zintegrowane jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -176,7 +177,8 @@ W tej sekcji przedstawiono typowy sposób uzyskać tokeny autoryzujący na stosi
 ## <a name="example"></a>Przykład
 
 W tej sekcji przedstawiono przykładowe kod Przejdź w celu utworzenia sieci wirtualnej Azure stosu. Przykłady pełną Przejdź zestawu SDK można znaleźć [repozytorium przykłady Azure SDk Przejdź](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Stos przykładów dla platformy Azure są dostępne w ramach hybrydowego / ścieżce wewnątrz usługi folderów repozytorium.
-> [!note]  
+
+> [!Note]  
 > Aby uruchomić kod w tym przykładzie, sprawdź, czy z subskrypcją użytą ma **sieci** dostawcy zasobów wymienionym **zarejestrowanej**. Aby go zweryfikować, wyszukaj subskrypcję w portalu Azure stosu, a następnie kliknij polecenie **dostawców zasobów.**
 
 1. Zaimportuj wymagane pakiety w kodzie. Aby zaimportować moduł sieci należy używać najnowszej profilu na stosie Azure. 
@@ -194,7 +196,7 @@ W tej sekcji przedstawiono przykładowe kod Przejdź w celu utworzenia sieci wir
   )
   ````
 
-2. Zdefiniuj zmienne środowiskowe. Należy pamiętać, że można utworzyć sieci wirtualnej, musisz mieć grupę zasobów. 
+2. Zdefiniuj zmienne środowiskowe. Aby utworzyć sieć wirtualną, musisz mieć grupę zasobów. 
 
   ````go
   var (

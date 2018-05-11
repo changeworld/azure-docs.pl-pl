@@ -3,8 +3,8 @@ title: Zrozumienie aplikacji rabat zastrzeżone wystąpień maszyn wirtualnych A
 description: Dowiedz się, jak rabat zastrzeżone wystąpienia maszyny Wirtualnej platformy Azure są stosowane do działających maszyn wirtualnych.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikdesai
+author: yashesvi
+manager: yashar
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
-ms.author: vikdesai
-ms.openlocfilehash: 6e551fddfc5ba8924cd8c71a1775307e7569b847
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: yashar
+ms.openlocfilehash: ddf6e6a869fb2961db6b626878f9433fdc00a55f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>Zrozumienie, jak stosowany jest rabat zastrzeżone wystąpienie maszyny wirtualnej
 Po kupić zastrzeżone wystąpienia maszyny Wirtualnej, rabat rezerwacji jest automatycznie stosowane do dopasowania, atrybuty i ilość zastrzeżenia maszyn wirtualnych. Zastrzeżenie obejmuje kosztów infrastruktury maszyn wirtualnych. W poniższej tabeli przedstawiono kosztów dla maszyny wirtualnej, po dokonaniu zakupu rezerwacji. We wszystkich przypadkach są naliczane opłaty dotyczące magazynu i sieci w normalnych stawek.
 
 | Typ maszyny wirtualnej  | Opłaty za pomocą rezerwacji |    
-|-----------------------|--------------------------------------------| 
+|-----------------------|--------------------------------------------|
 |Maszyny wirtualne systemu Linux bez dodatkowego oprogramowania | Zastrzeżenie obejmuje koszty infrastruktury maszyny Wirtualnej.|
 |Maszyny wirtualne systemu Linux z opłat oprogramowania (na przykład Red Hat) | Zastrzeżenie obejmuje kosztów infrastruktury. Naliczane są opłaty za dodatkowe oprogramowanie.|
 |Maszyny wirtualne systemu Windows bez dodatkowego oprogramowania |Zastrzeżenie obejmuje kosztów infrastruktury. Naliczane są opłaty oprogramowania systemu Windows.|
@@ -45,7 +45,7 @@ Aby zrozumieć i Wyświetl aplikację z rezerwacji w rozliczeń raporty użycia,
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Stosowanie rabatu zastrzeżenia do maszyn wirtualnych systemu Windows
 Po uruchomieniu wystąpień maszyny Wirtualnej systemu Windows, rezerwacji jest stosowany do obejmują kosztów infrastruktury. Aplikacja rezerwacji kosztów infrastruktury maszyny Wirtualnej dla maszyn wirtualnych systemu Windows jest taka sama jak w przypadku VMs z systemem innym niż Windows. Naliczane są opłaty oddzielnie oprogramowania systemu Windows na podstawie na vCPU. Zobacz [koszty oprogramowania Windows zastrzeżenia](https://go.microsoft.com/fwlink/?linkid=862756). Może obejmować koszty z [Azure hybrydowego korzyści dla systemu Windows Server] licencjonowania systemu Windows (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o zastrzeżonych wystąpień maszyn wirtualnych, zobacz następujące artykuły.
 
 - [Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyny Wirtualnej](../virtual-machines/windows/prepay-reserved-vm-instances.md)
@@ -53,7 +53,9 @@ Aby dowiedzieć się więcej o zastrzeżonych wystąpień maszyn wirtualnych, zo
 - [Zaoszczędzić na maszynach wirtualnych z zarezerwowanych wystąpień maszyn wirtualnych](billing-save-compute-costs-reservations.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla Twojej subskrypcji z](billing-understand-reserved-instance-usage.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
+- [Określić sposób użycia wystąpienia zarezerwowane dla subskrypcji dostawcy usług Kryptograficznych](https://docs.microsoft.com/partner-center/azure-reservations)
 - [Koszty oprogramowania systemu Windows nie jest dołączony do wystąpienia zastrzeżone](billing-reserved-instance-windows-software-costs.md)
+
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 

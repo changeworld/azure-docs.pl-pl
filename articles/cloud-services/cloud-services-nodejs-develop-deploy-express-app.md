@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie i wdrażanie aplikacji Node.js Express z usługami w chmurze Azure"
-description: "Tworzenie i wdrażanie aplikacji Express.js w środowisku Node.js do usługi w chmurze Azure"
+title: Tworzenie i wdrażanie aplikacji Node.js Express z usługami w chmurze Azure
+description: Tworzenie i wdrażanie aplikacji Express.js w środowisku Node.js do usługi w chmurze Azure
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 24f8e7ef-e90d-4554-9b1e-a9b31d5824e5
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 8bb78330591b0557b036a161eb83e47b41a8fd43
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Tworzenie i wdrażanie aplikacji sieci web Node.js za pomocą ekspresowego na usługi w chmurze Azure
 
@@ -97,7 +97,7 @@ Teraz zmodyfikuj widok, aby wyświetlić komunikat "Zapraszamy do Express w Azur
    
    ![Zawartość pliku index.jade.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade jest domyślny aparat widoku używany przez aplikacje Express. Aby uzyskać więcej informacji na aparatu Jade widoku, zobacz [http://jade-lang.com][http://jade-lang.com].
+   Jade jest domyślny aparat widoku używany przez aplikacje Express. Aby uzyskać więcej informacji na aparatu Jade widoku, zobacz [ http://jade-lang.com ] [ http://jade-lang.com].
 2. Modyfikowanie ostatniego wiersza tekstu przez dołączenie **na platformie Azure**.
    
    ![Odczytuje ostatni wiersz w pliku index.jade: p — Zapraszamy! \#{nazwa} na platformie Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
@@ -117,7 +117,7 @@ Po zakończeniu operacji wdrażania, przeglądarki otworzyć i wyświetli tej st
 
 ![Przeglądarka wyświetlająca stronę Express. Adres URL wskazuje, że jest ona obecnie hostowana na platformie Azure.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowiska Node.js](/develop/nodejs/).
 
 [Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/

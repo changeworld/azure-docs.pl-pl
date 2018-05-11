@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dbb709ebbecbfd5da7522b17fe837460d50fae11
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a925f8be619d0a4606205eeba5f78b2e8ba8a188
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Włączanie aplikacji klienta natywnego wchodzić w interakcje z serwera proxy aplikacji
 
@@ -34,7 +34,7 @@ Azure AD Authentication Library, która zajmuje się uwierzytelniania i obsługu
 W tym artykule przedstawiono cztery kroki publikowania aplikacji natywnej z serwera Proxy aplikacji i Azure AD Authentication Library. 
 
 ## <a name="step-1-publish-your-application"></a>Krok 1: Publikowanie aplikacji
-Publikowanie serwera proxy aplikacji, jak w przypadku innych aplikacji i przypisać użytkownikom uzyskiwanie dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [publikowania aplikacji za pomocą serwera Proxy aplikacji](active-directory-application-proxy-publish.md).
+Publikowanie serwera proxy aplikacji, jak w przypadku innych aplikacji i przypisać użytkownikom uzyskiwanie dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
 
 ## <a name="step-2-configure-your-application"></a>Krok 2: Konfigurowanie aplikacji
 Skonfiguruj natywnych aplikacji w następujący sposób:

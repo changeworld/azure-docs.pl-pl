@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c17a406a0fd6f1172599ac0379c6afc139403148
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a426f7f424bc1941890c80a83997d8e08b368884
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Zarządzanie użytkownikami w Azure Blockchain Workbench
 
@@ -68,20 +68,18 @@ Aby dodać użytkowników do **Administratorzy** w katalogu usługi Azure AD:
 
 Aplikacja Blockchain Workbench służy do zarządzania użytkownikami i organizacji, które są częścią sieci konsorcjum. Można dodawać i usuwać użytkowników do aplikacji i ról.
 
-[Otwórz Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url) w przeglądarce i zaloguj się jako administrator.
+1. [Otwórz Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url) w przeglądarce i zaloguj się jako administrator.
 
-![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
+    ![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
 
-### <a name="managing-members-in-applications"></a>Zarządzanie elementów członkowskich w aplikacji
+    Elementy członkowskie są dodawane do każdej aplikacji. Elementy Członkowskie mogą mieć co najmniej jedną rolę aplikacji o rozpoczęciu umów lub wykonać akcje.
 
-Elementy członkowskie są dodawane do każdej aplikacji. Elementy Członkowskie mogą mieć co najmniej jedną rolę aplikacji o rozpoczęciu umów lub wykonać akcje.
+2. Aby zarządzać elementy członkowskie dla aplikacji, należy wybrać kafelka aplikacji w **aplikacji** okienka.
 
-Aby dodać członków do aplikacji, wybierz kafelka aplikacji w **aplikacji** okienka.
+    Liczba elementów członkowskich skojarzonych do wybranej aplikacji jest widoczny na kafelku elementów członkowskich.
 
-![Wybierz aplikację](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
+    ![Wybierz aplikację](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
 
-> [!NOTE]
-> Liczba elementów członkowskich skojarzonych do wybranej aplikacji jest widoczny na kafelku elementów członkowskich.
 
 #### <a name="add-member-to-application"></a>Dodawanie członka do aplikacji
 

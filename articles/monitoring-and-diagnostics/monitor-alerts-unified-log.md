@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 3a4277d2106078136cee09dfe6aefc87a73c4e08
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Alerty dziennika w monitorze Azure - alertów 
 Ten artykuł zawiera szczegółowe informacje o alertach dziennika są jednego z typów obsługiwanych w ciągu nowe alerty [alerty Azure](monitoring-overview-unified-alerts.md) i zezwalają na używanie platforma do analiz platformy Azure jako podstawa alertów... Aby uzyskać więcej informacji o alertach Metryka przy użyciu dzienników, zapoznaj się [niemal alerty metryki czasu rzeczywistego](monitoring-near-real-time-metric-alerts.md)
@@ -92,7 +92,7 @@ Rozważmy scenariusz, w którym chce alert dowolnego komputera przekroczeniu uż
 - **Okres czasu:** 30 minut<br>
 - **Alert częstotliwości:** pięć minut<br>
 - **Wartość agregacji:** dużą niż 90<br>
-- **Na podstawie wyzwalania alertu:** naruszeń łączna liczba jest większa niż 5<br>
+- **Na podstawie wyzwalania alertu:** łączna liczba naruszeń większej niż 2<br>
 
 Zapytanie spowodowałoby średnią wartość dla każdego komputera co 5 minut.  To zapytanie może działać co 5 minut przez dane zbierane przez poprzednie 30 minut.  Poniżej przedstawiono przykładowe dane na trzech komputerach.
 

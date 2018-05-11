@@ -1,26 +1,27 @@
 ---
 title: Uruchamianie elementu runbook automatyzacji Azure
-description: "Podsumowanie różnych metod, które mogą służyć do uruchamiania elementu runbook automatyzacji Azure i zawiera szczegółowe informacje przy użyciu portalu Azure i programu Windows PowerShell."
+description: Podsumowanie różnych metod, które mogą służyć do uruchamiania elementu runbook automatyzacji Azure i zawiera szczegółowe informacje przy użyciu portalu Azure i programu Windows PowerShell.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 064ba5f73b53681a824b1416243d10ab0e565c44
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 45ac19ad5011ae67e95281d1c9928c1db4bc7043
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Uruchamianie elementu runbook automatyzacji Azure
 Poniższa tabela ułatwia określenie metody uruchomienia elementu runbook w automatyzacji Azure, która jest najbardziej odpowiednie dla Twojego scenariusza. Ten artykuł zawiera szczegółowe informacje dotyczące uruchamiania elementu runbook z portalu Azure i programu Windows PowerShell. Szczegółowe informacje o innych metodach znajdują się w dokumentacji, która można korzystać z poniższych łączy.
 
-| **— METODA** | **CHARACTERISTICS** |
+| **— METODA** | **WŁAŚCIWOŚCI** |
 | --- | --- |
 | [Azure Portal](#starting-a-runbook-with-the-azure-portal) |<li>Najprostsza metoda o interakcyjny interfejs użytkownika.<br> <li>Formularz, aby podać wartości parametrów proste.<br> <li>Łatwo śledzić stan zadania.<br> <li>Dostęp uwierzytelniony dzięki funkcji logowania do platformy Azure. |
-| [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell.<br> <li>Można dołączyć do automatycznego rozwiązania z wielu kroków.<br> <li>Uwierzytelniania żądań certyfikatów lub użytkownika OAuth główna / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone.<br> <li>Śledź stan zadania.<br> <li>Klient wymagane do obsługi poleceń cmdlet programu PowerShell. |
+| [Środowisko Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell.<br> <li>Można dołączyć do automatycznego rozwiązania z wielu kroków.<br> <li>Uwierzytelniania żądań certyfikatów lub użytkownika OAuth główna / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone.<br> <li>Śledź stan zadania.<br> <li>Klient wymagane do obsługi poleceń cmdlet programu PowerShell. |
 | [Interfejs API usługi Automatyzacja Azure](https://msdn.microsoft.com/library/azure/mt662285.aspx) |<li>Metoda najbardziej elastycznego, ale również większość złożone.<br> <li>Wywoływanie z kodu niestandardowego, który może zgłaszać żądania HTTP.<br> <li>Żądanie uwierzytelniony przy użyciu certyfikatu lub użytkownika Oauth główna / service podmiotu zabezpieczeń.<br> <li>Podaj wartości parametrów proste i złożone. *Jeśli są wywołanie elementu runbook Python za pomocą interfejsu API, musi być serializowany ładunek JSON.*<br> <li>Śledź stan zadania. |
 | [elementów webhook](automation-webhooks.md) |<li>Uruchom element runbook z pojedynczego żądania HTTP.<br> <li>Uwierzytelniani tokenu zabezpieczającego w adresie URL.<br> <li>Klient nie może zastąpić wartości parametrów podczas tworzenia elementu webhook. Element Runbook może definiować jeden parametr, który jest wypełniana szczegółów żądania HTTP.<br> <li>Brak możliwości śledzenia stanu zadania za pomocą adresu URL elementu webhook. |
 | [Odpowiadanie na Azure alertu](../log-analytics/log-analytics-alerts.md) |<li>Uruchom element runbook w odpowiedzi na alert platformy Azure.<br> <li>Konfigurowanie elementu webhook dla elementu runbook i łącze do alertów.<br> <li>Uwierzytelniani tokenu zabezpieczającego w adresie URL. |

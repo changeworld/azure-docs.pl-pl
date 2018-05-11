@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 05/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5140d25119729a391b21735ab9110c216afda669
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -49,9 +49,27 @@ Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw
 
 *   **OpenID Connect**: tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [framework zgody usługi Azure AD](active-directory-integrating-applications.md#overview-of-the-consent-framework) aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego tak, aby każdy klient może zapewnić zgody do aplikacji. Można kontrolować dostęp użytkowników na podstawie Identyfikatora dzierżawy i nazwy UPN użytkownika odebrane w tokenie. Integracja aplikacji z usługą Azure AD, należy wykonać [instrukcje deweloperów](active-directory-authentication-scenarios.md).
 
+    ![Oś czasu wyświetlanie OpenID Connect aplikacji w galerii](./media/active-directory-app-gallery-listing/openid.png)
+
+    * Jeśli chcesz dodać do listy aplikacji w galerii przy użyciu protokołu OpenID Connect, wybierz **OpenID Connect i OAuth 2.0** jak powyżej.
+
+    * Jeśli masz problemy dotyczące dostępu, skontaktuj się z [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+
 *   **SAML 2.0** lub **WS-Fed**: aplikacja musi mieć możliwość czy integrację SAML/WS-Fed logowania jednokrotnego w trybie SP lub dostawców tożsamości. Jeśli aplikacja obsługuje SAML 2.0, możesz też zintegrować ją bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
 
+    ![Wyświetlanie listy aplikacji SAML 2.0 i WS-Fed do galerii osi czasu](./media/active-directory-app-gallery-listing/saml.png)
+
+    * Jeśli chcesz dodać do listy aplikacji w galerii przy użyciu **SAML 2.0** lub **WS-Fed**, wybierz pozycję **SAMl 2.0/WS-Fed** jak powyżej.
+
+    * Jeśli masz problemy dotyczące dostępu, skontaktuj się z [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+
 *   **Hasło logowania jednokrotnego**: tworzenie aplikacji sieci web strony logowania HTML do skonfigurowania [opartego na hasłach rejestracji jednokrotnej](../active-directory-appssoaccess-whatis.md). Logowanie Jednokrotne opartego na hasłach, także określane jako hasło vaulting, umożliwia zarządzanie dostępem użytkowników i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których wielu użytkowników należy do udostępnienia jednego konta, takich jak do organizacji mediów społecznościowych aplikacji kont.
+
+    ![Wyświetlanie listy aplikacji hasło logowania jednokrotnego do galerii osi czasu](./media/active-directory-app-gallery-listing/passwordsso.png)
+
+    * Jeśli chcesz dodać do listy aplikacji w galerii przy użyciu haseł logowania jednokrotnego, wybierz **hasło logowania jednokrotnego** jak powyżej.
+
+    * Jeśli masz problemy dotyczące dostępu, skontaktuj się z [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ##  <a name="updateremove-existing-listing"></a>Aktualizuj lub usuń istniejące listy
 
@@ -60,7 +78,7 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azur
 * Wybierz odpowiednią opcję z poniżej obrazu
 
     ![Wyświetlanie listy aplikacji saml do galerii osi czasu](./media/active-directory-app-gallery-listing/updateorremove.png)
-
+    
     * Jeśli chcesz zaktualizować istniejącą aplikację, wybierz **aktualizacja istniejącej listy aplikacji**.
 
     * Jeśli chcesz usunąć istniejącą aplikację z galerii Azure AD, wybierz **usunięcia istniejącej listy aplikacji**
@@ -77,7 +95,7 @@ Jeśli masz problemy dotyczące dostępu, skontaktuj się z [zespołu integracji
 
 ![Żądanie dostępu w portalu programu SharePoint](./media/active-directory-app-gallery-listing/accessrequest.png)
 
-## <a name="timelines"></a>Osi czasu
+## <a name="timelines"></a>Osie czasu
     
 Oś czasu dla procesu wyświetlanie SAML 2.0 i WS-Fed aplikacji w galerii wynosi 7-10 dni roboczych.
 
@@ -86,6 +104,10 @@ Oś czasu dla procesu wyświetlanie SAML 2.0 i WS-Fed aplikacji w galerii wynosi
 Oś czasu dla procesu wyświetlanie OpenID Connect aplikacji w galerii jest 2-5 dni roboczych.
 
    ![Wyświetlanie listy aplikacji saml do galerii osi czasu](./media/active-directory-app-gallery-listing/timeline2.png)
+
+Oś czasu dla procesu wyświetlanie aplikacji w galerii z użytkownikiem inicjowania obsługi pomocy technicznej jest 40-45 dni roboczych.
+
+   ![Wyświetlanie listy aplikacji saml do galerii osi czasu](./media/active-directory-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>Eskalacji
 

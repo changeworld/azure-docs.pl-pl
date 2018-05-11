@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cb85971d6d3d4dade69b9dc04e070c67341533a5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Wypełniania określonych pól dla aplikacji utworzonych niestandardowych
 
-W tym artykule umożliwiają krótki opis dostępnych pól formularza rejestracji aplikacji w [portalu Azure](https://portal.azure.com).
+Ten artykuł zawiera krótki opis dostępnych pól formularza rejestracji aplikacji w [portalu Azure](https://portal.azure.com).
 
 ## <a name="register-a-new-application"></a>Zarejestrować nową aplikację
 
@@ -43,19 +43,19 @@ W tym artykule umożliwiają krótki opis dostępnych pól formularza rejestracj
 | |**Natywny**: aplikację, którą można zainstalować na urządzeniu lub komputerze użytkownika           |
 | Adres URL logowania      | Adres URL, w którym użytkownicy mogą rejestrować w korzystać z aplikacji                                  |
 
-Po wprowadzeniu powyższego pola zarejestrować aplikację w portalu Azure, i być przekierowany do strony aplikacji. **Ustawienia** przycisk w okienku aplikacji otwartej stronie "ustawienia" ma więcej pól, które można dostosować aplikację. W poniższej tabeli opisano wszystkie pola na stronie ustawień. należy pamiętać, że byłaby widoczna tylko podzbiór tych pól, w zależności od tego, czy podczas tworzenia aplikacji sieci web lub aplikacji natywnej.
+Po wprowadzeniu powyższego pola aplikacji jest zarejestrowany w portalu Azure, a użytkownik zostanie przekierowany do strony aplikacji. **Ustawienia** przycisk w okienku aplikacji otwartej stronie "ustawienia" ma więcej pól, które można dostosować aplikację. W poniższej tabeli opisano wszystkie pola na stronie ustawień. należy pamiętać, że byłaby widoczna tylko podzbiór tych pól, w zależności od tego, czy podczas tworzenia aplikacji sieci web lub aplikacji natywnej.
 
 | Pole           | Opis                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Identyfikator aplikacji  | Podczas rejestrowania aplikacji usługi Azure AD przypisuje aplikacji identyfikator aplikacji. Identyfikator może być używane do unikatowego identyfikowania aplikacji żądania uwierzytelniania do usługi Azure AD, a także uzyskiwać dostęp do zasobów aplikacji, takich jak interfejsu API programu Graph.                                                          |
-| Identyfikator URI identyfikatora aplikacji      | Należy to unikatowy identyfikator URI, zazwyczaj formę **https://&lt;dzierżawy\_nazwa&gt;/&lt;aplikacji\_nazwa&gt;.** Jest on używany podczas przepływu grant autoryzacji, jako unikatowy identyfikator, aby określić zasób, który powinien być wydano tokenu dla. Staje się również w tokenie dostępu wystawione oświadczenie "lub". |
+| Identyfikator URI aplikacji      | Należy to unikatowy identyfikator URI, zazwyczaj formę **https://&lt;dzierżawy\_nazwa&gt;/&lt;aplikacji\_nazwa&gt;.** Jest on używany podczas przepływu grant autoryzacji, jako unikatowy identyfikator, aby określić zasób, który powinien być wydano tokenu dla. Staje się również w tokenie dostępu wystawione oświadczenie "lub". |
 | Przekaż nowe logo | Możesz użyć tego, aby przekazać logo aplikacji. Logo musi być w formacie BMP, jpg lub PNG, a rozmiar pliku powinna być mniejsza niż 100KB. Wymiary obrazu należy 215 x 215 pikseli i wymiary obrazu centralnej 94 x 94 pikseli.                                                       |
 | Adres URL strony głównej   | Jest to adres URL logowania określony podczas rejestracji aplikacji.                                                                                                                                                                                                                                              |
 | Adres URL wylogowywania      | Ten adres URL wylogowania wylogowania pojedynczego. Usługi Azure AD wysyła żądanie wylogowania do tego adresu URL, gdy użytkownik usuwa sesję z usługą Azure AD przy użyciu zarejestrowanej aplikacji.                                                                                                                                       |
-| Z wieloma dzierżawami  | Ten parametr określa, czy aplikacji mogą być używane przez wiele dzierżaw. Zwykle oznacza to, organizacje zewnętrzne można używać aplikacji przez zarejestrowanie go w swojej dzierżawy i udzielanie dostępu do danych używanych w organizacji.                                                                   |
-| Adresy URL odpowiedzi      | Odpowiedź adresy URL są punkty końcowe gdzie usługi Azure AD zwracać wszystkie tokeny żądań aplikacji.                                                                                                                                                                                                          |
-| Identyfikatory URI przekierowania   | Dla natywnych aplikacji jest to, gdy użytkownik jest wysyłane do następujących pomyślnej autoryzacji. Sprawdzenie Azure AD, dostarczającego przekierowania URI aplikacji w żądaniu protokołu OAuth 2.0 pasuje do jednej z wartości zarejestrowany w portalu.                                                            |
+| Obsługa wielu dzierżawcza  | Ten parametr określa, czy aplikacji mogą być używane przez wiele dzierżaw. Zwykle oznacza to, organizacje zewnętrzne można używać aplikacji przez zarejestrowanie go w swojej dzierżawy i udzielanie dostępu do danych używanych w organizacji.                                                                   |
+| Adresy URL odpowiedzi      | Odpowiedź adresy URL są punkty końcowe gdzie zwraca wszystkie tokeny żądań aplikacji w usłudze Azure AD.                                                                                                                                                                                                          |
+| Identyfikator URI przekierowania   | Dla natywnych aplikacji jest wysyłania użytkownika po pomyślnej autoryzacji. Sprawdzenie Azure AD, dostarczającego przekierowania URI aplikacji w żądaniu protokołu OAuth 2.0 pasuje do jednej z wartości zarejestrowany w portalu.                                                            |
 | Klucze            | Można utworzyć klucze do programowego dostępu do interfejsów API sieci web zabezpieczonych przez usługi Azure AD bez interakcji użytkownika. Z \* \*klucze\* \* strony, wprowadź opis klucza i datę wygaśnięcia i zapisywanie do wygenerowania klucza. Upewnij się zapisać go innym bezpieczne, ponieważ nie będzie można później uzyskać dostęp.             |
 
-## <a name="next-steps"></a>Kolejne kroki
-[Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](active-directory-enable-sso-scenario.md)
+## <a name="next-steps"></a>Następne kroki
+[Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](manage-apps/what-is-application-management.md)

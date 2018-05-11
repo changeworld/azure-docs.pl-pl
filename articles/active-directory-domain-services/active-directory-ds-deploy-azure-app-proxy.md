@@ -1,8 +1,8 @@
 ---
-title: "Usługi domenowe w usłudze Azure Active Directory: Wdrażanie serwera Proxy aplikacji usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Użyj serwera Proxy aplikacji usługi Azure AD w domenach zarządzanych usług domenowych Azure Active Directory"
+title: 'Usługi domenowe w usłudze Azure Active Directory: Wdrażanie serwera Proxy aplikacji usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Użyj serwera Proxy aplikacji usługi Azure AD w domenach zarządzanych usług domenowych Azure Active Directory
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 13141549b5b1b77f45dd6fa1c7560b9f9d0e9b72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga obsługuje pracowników zdalnych przez publikowania lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Z usług domenowych Azure AD możesz teraz przyrostu i shift starsze aplikacje uruchomione w siedzibie firmy do usługi infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w organizacji.
 
-Jeśli jesteś nowym użytkownikiem serwer Proxy aplikacji usługi Azure AD, więcej informacji na temat tej funkcji w programie artykule: [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](../active-directory/active-directory-application-proxy-get-started.md).
+Jeśli jesteś nowym użytkownikiem serwer Proxy aplikacji usługi Azure AD, więcej informacji na temat tej funkcji w programie artykule: [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](../active-directory/manage-apps/application-proxy.md).
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem

@@ -15,11 +15,11 @@ ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 54e0ebe60981ef429fdfc97cee1b460b03261a9f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 96e7361ce66caaa653706d22f767e1a109fdacf7
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpi błąd podczas uzyskiwania dostępu do opublikowanych aplikacji lub w przypadku publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji usługi AD Microsoft Azure działa poprawnie:
@@ -88,7 +88,7 @@ Jeśli wystąpi błąd lub problem z aplikacji serwera Proxy Azure AD, która ni
 
 ## <a name="see-also"></a>Zobacz także
 * [Włącz serwer Proxy aplikacji usługi Azure Active Directory](active-directory-application-proxy-enable.md)
-* [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](active-directory-application-proxy-publish.md)
+* [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-publish-azure-portal.md)
 * [Włącz rejestrację jednokrotną](active-directory-application-proxy-sso-using-kcd.md)
 * [Włączanie dostępu warunkowego](application-proxy-enable-remote-access-sharepoint.md)
 

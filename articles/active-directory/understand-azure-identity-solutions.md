@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 53d34f373dc31befe75072733976b2e4126ff2b0
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Zrozumienie Azure tożsamościach
 Microsoft Azure Active Directory (Azure AD) to rozwiązanie chmury zarządzania tożsamościami i dostępem, który udostępnia usługi katalogowe, Zarządzanie tożsamościami i zarządzania dostępem do aplikacji. Usługi Azure AD szybko [umożliwia logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do 1 000 na wstępnie zintegrowanych aplikacji handlowych i niestandardowych w [galerii aplikacji Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wiele z tych aplikacji prawdopodobnie już używasz usługi Office 365, witryny Salesforce.com, pola, usługi ServiceNow i produktu Workday.
@@ -113,10 +113,10 @@ Będziemy mieć ogromne dużą zasobów online ułatwiające Dowiedz się wszyst
 * [Zarządzanie haseł z dowolnego miejsca](active-directory-passwords-update-your-own-password.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-app-provisioning.md)
-* [Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](active-directory-application-proxy-get-started.md)
+* [Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](manage-apps/application-proxy.md)
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](active-directory-manage-groups.md)
 * [Co to jest licencjonowania usługi Microsoft Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
-* [Jak odnajdywać niezatwierdzone aplikacje w chmurze używanych mojej organizacji](active-directory-cloudappdiscovery-whatis.md)
+* [Jak odnajdywać niezatwierdzone aplikacje w chmurze używanych mojej organizacji](manage-apps/cloud-app-discovery.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

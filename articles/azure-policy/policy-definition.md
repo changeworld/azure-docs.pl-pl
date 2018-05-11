@@ -9,11 +9,11 @@ ms.date: 05/07/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 3750bc409753868566c91c01cf6093f439c599f9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -256,122 +256,63 @@ Przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona
 
 Aliasy właściwości umożliwia dostęp do właściwości specyficzne dla typu zasobu. Aliasy pozwalają ograniczyć, jakie wartości lub warunki są dozwolone dla właściwości w zasobie. Każdy alias mapuje ścieżek w różnych wersjach interfejsu API dla typu zasobu. Podczas oceny zasad aparat zasad pobiera ścieżki właściwości dla tej wersji interfejsu API.
 
-**Microsoft.Cache/Redis**
+Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez zasady usługi Azure, użyj jednej z następujących metod:
 
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Cache/Redis/enableNonSslPort | Ustaw czy bez użycia protokołu ssl serwera Redis portu (6379) jest włączona. |
-| Microsoft.Cache/Redis/shardCount | Ustaw liczbę fragmentów do utworzenia na pamięć podręczna klastra Premium.  |
-| Microsoft.Cache/Redis/sku.capacity | Ustaw rozmiar pamięci podręcznej Redis do wdrożenia.  |
-| Microsoft.Cache/Redis/sku.family | Ustaw rodziny SKU do użycia. |
-| Microsoft.Cache/Redis/sku.name | Ustaw typ pamięci podręcznej Redis do wdrożenia. |
+- Azure PowerShell
 
-**Microsoft.Cdn/profiles**
+  ```azurepowershell-interactive
+  # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.CDN/profiles/sku.name | Ustaw nazwę warstwy cenowej. |
+  $azContext = Get-AzureRmContext
+  $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+  $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+  $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+  $authHeader = @{
+      'Content-Type'='application/json'
+      'Authorization'='Bearer ' + $token.AccessToken
+  }
 
-**Microsoft.Compute/disks**
+  # Invoke the REST API
+  $response = Invoke-RestMethod -Uri 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases' -Method Get -Headers $authHeader
 
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Compute/imageOffer | Ustaw oferta obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imagePublisher | Ustaw wydawcy obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imageSku | Jednostka SKU obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej zestawu. |
-| Microsoft.Compute/imageVersion | Ustaw wersję obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
+  # Create an Array List to hold discovered aliases
+  $aliases = New-Object System.Collections.ArrayList
 
+  foreach ($ns in $response.value) {
+      foreach ($rT in $ns.resourceTypes) {
+          if ($rT.aliases) {
+              foreach ($obj in $rT.aliases) {
+                  $alias = [PSCustomObject]@{
+                      Namespace       = $ns.namespace
+                      resourceType    = $rT.resourceType
+                      alias           = $obj.name
+                  }
+                  $aliases.Add($alias) | Out-Null
+              }
+          }
+      }
+  }
 
-**Microsoft.Compute/virtualMachines**
+  # Output the list, sort, and format. You can customize with Where-Object to limit as desired.
+  $aliases | Sort-Object -Property Namespace, resourceType, alias | Format-Table
+  ```
 
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | Ustaw identyfikator obraz używany do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imageOffer | Ustaw oferta obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imagePublisher | Ustaw wydawcy obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imageSku | Jednostka SKU obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej zestawu. |
-| Microsoft.Compute/imageVersion | Ustaw wersję obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/licenseType | Ustaw, że obraz lub dysk jest licencjonowane lokalnymi. Ta wartość jest używana tylko dla obrazów systemu operacyjnego Windows Server.  |
-| Microsoft.Compute/virtualMachines/imageOffer | Ustaw oferta obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/virtualMachines/imagePublisher | Ustaw wydawcy obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/virtualMachines/imageSku | Jednostka SKU obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej zestawu. |
-| Microsoft.Compute/virtualMachines/imageVersion | Ustaw wersję obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/virtualMachines/osDisk.Uri | Ustaw identyfikator URI dysku vhd. |
-| Microsoft.Compute/virtualMachines/sku.name | Ustaw rozmiar maszyny wirtualnej. |
-| Microsoft.Compute/virtualMachines/availabilitySet.id | Ustawia identyfikator dla maszyny wirtualnej zestawu dostępności. |
+- Interfejs wiersza polecenia platformy Azure
 
-**Microsoft.Compute/virtualMachines/extensions**
+  ```azurecli-interactive
+  # Login first with az login if not using Cloud Shell
 
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Compute/virtualMachines/extensions/publisher | Ustaw nazwę wydawcy rozszerzenia. |
-| Microsoft.Compute/virtualMachines/extensions/type | Ustaw typ rozszerzenia. |
-| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Ustaw wersję rozszerzenia. |
+  # Get Azure Policy aliases for a specific Namespace
+  az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+  ```
 
-**Microsoft.Compute/virtualMachineScaleSets**
+- Interfejs API REST / ARMClient
 
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | Ustaw identyfikator obraz używany do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imageOffer | Ustaw oferta obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imagePublisher | Ustaw wydawcy obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/imageSku | Jednostka SKU obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej zestawu. |
-| Microsoft.Compute/imageVersion | Ustaw wersję obrazu platformy lub obrazu z witryny marketplace użyty do utworzenia maszyny wirtualnej. |
-| Microsoft.Compute/licenseType | Ustaw, że obraz lub dysk jest licencjonowane lokalnymi. Ta wartość jest używana tylko dla obrazów systemu operacyjnego Windows Server. |
-| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Ustaw prefiks nazwy komputera dla wszystkich maszyn wirtualnych w zestawie skalowania. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Ustaw identyfikator URI obiektu blob obrazu użytkownika. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Ustawianie adresów URL kontenera, które są używane do przechowywania dysków systemu operacyjnego dla zestawu skalowania. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Ustaw rozmiar maszyn wirtualnych w zestawie skalowania. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Ustawienie warstwy maszyn wirtualnych w zestawie skalowania. |
+  ```http
+  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  ```
 
-**Microsoft.Network/applicationGateways**
-
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Network/applicationGateways/sku.name | Ustawianie rozmiaru bramy. |
-
-**Microsoft.Network/virtualNetworkGateways**
-
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Network/virtualNetworkGateways/gatewayType | Ustaw typ tej bramy sieci wirtualnej. |
-| Microsoft.Network/virtualNetworkGateways/sku.name | Ustaw nazwę jednostki SKU bramy. |
-
-**Microsoft.Sql/servers**
-
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Sql/servers/version | Ustaw wersję serwera. |
-
-**Microsoft.Sql/databases**
-
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Sql/servers/databases/edition | Ustaw wersję bazy danych. |
-| Microsoft.Sql/servers/databases/elasticPoolName | Zestaw nazwę puli elastycznej bazy danych jest. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Ustawienia poziomu identyfikatorów celu skonfigurowanej usługi bazy danych. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Ustaw nazwę celu poziomu usługi skonfigurowane bazy danych.  |
-
-**Microsoft.Sql/elasticpools**
-
-| Alias | Opis |
-| ----- | ----------- |
-| serwery/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Wartość całkowita udostępnionych jednostek DTU dla puli elastycznej bazy danych. |
-| serwery/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Ustaw edition puli elastycznej. |
-
-**Microsoft.Storage/storageAccounts**
-
-| Alias | Opis |
-| ----- | ----------- |
-| Microsoft.Storage/storageAccounts/accessTier | Ustawianie warstwy dostępu używany na potrzeby rozliczeń. |
-| Microsoft.Storage/storageAccounts/accountType | Nazwa jednostki SKU zestawu. |
-| Microsoft.Storage/storageAccounts/enableBlobEncryption | Określ, czy usługa szyfruje dane, jak są przechowywane w usłudze magazyn obiektów blob. |
-| Microsoft.Storage/storageAccounts/enableFileEncryption | Określ, czy usługa szyfruje dane, jak są przechowywane w usłudze magazyn plików. |
-| Microsoft.Storage/storageAccounts/sku.name | Nazwa jednostki SKU zestawu. |
-| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Ustaw, aby zezwolić tylko na ruch protokołu https do usługi Magazyn. |
-| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Sprawdź, czy punkt końcowy usługi sieci wirtualnej jest włączone. |
-
-## <a name="initiatives"></a>Inicjatywy
+## <a name="initiatives"></a>Inicjatyw
 
 Włącz inicjatyw kilka grupy powiązane definicje zasad, aby uprościć zadania i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad znakowania w jednym inicjatywy. Zamiast przypisywać każdej zasady pojedynczo, należy zastosować tej inicjatywy.
 
@@ -449,6 +390,6 @@ Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj przykłady szablonu zasad Azure w [szablony zasad Azure](json-samples.md).

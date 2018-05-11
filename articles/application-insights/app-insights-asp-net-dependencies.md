@@ -1,6 +1,6 @@
 ---
-title: "Zależności śledzenia w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Analizowanie użycia, dostępności i wydajności aplikacji lokalnej lub aplikacji sieci Web na platformie Microsoft Azure za pomocą usługi Application Insights."
+title: Zależności śledzenia w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Analizowanie użycia, dostępności i wydajności aplikacji lokalnej lub aplikacji sieci Web na platformie Microsoft Azure za pomocą usługi Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Skonfiguruj usługę Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, który jest wywoływany przez aplikację. Usługa ta jest zazwyczaj wywoływana przy użyciu protokołu HTTP, lub bazy danych lub systemu plików. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Zbadaj określonych wywołań i dotyczą żądań i wyjątki.
@@ -45,7 +45,7 @@ Informacje o zależnościach częściowe są zbierane automatycznie przez [zesta
 | --- | --- |
 | Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md) lub [uaktualnić aplikacji .NET Framework 4.6 lub nowszy](http://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestaw SDK usługi Application Insights](app-insights-asp-net.md) w aplikacji. |
 | Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otwarcie bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
-| Usługa w chmurze platformy Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [zainstalowania środowiska .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Usługi w chmurze Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [zainstalowania środowiska .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="where-to-find-dependency-data"></a>Gdzie można znaleźć danych zależności
 * [Mapowanie aplikacji](#application-map) wizualizuje zależności między aplikacji i składniki pokrewne.
@@ -83,7 +83,7 @@ Kliknij wykresy podsumowań lub elementów tabeli wyszukiwania raw wystąpień t
 ## <a name="ajax-calls"></a>Wywołania AJAX
 Blok przeglądarki przedstawia współczynnik czas trwania i Niepowodzenie wywołania AJAX z [JavaScript na stronach sieci web](app-insights-javascript.md). Są wyświetlane jako zależności.
 
-## <a name="diagnosis"></a>Diagnozowanie powolne żądań
+## <a name="diagnosis"></a> Diagnozowanie powolne żądań
 Każde zdarzenie żądania jest skojarzony z wywołania zależności, wyjątków i inne zdarzenia, które są śledzone podczas przetwarzania żądania aplikacji. Dlatego niektórych żądań są wykonywane nieprawidłowo, można ustalić czy jest ze względu na wolne odpowiedzi z zależności.
 
 Przejdźmy przykład tego.
@@ -200,9 +200,12 @@ Jeśli chcesz wyłączyć modułu śledzenia zależności standardowe, Usuń odw
 
 *Zapytania SQL nie są wyświetlane w całości.*
 
-* Uaktualnij do najnowszej wersji zestawu SDK. Jeśli wersja .NET jest mniejsza niż 4.6:
-  * Host usługi IIS: Zainstaluj [agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serwerach hostach.
-  * Aplikacja sieci web platformy Azure: Otwórz Application Insights w Panelu sterowania aplikacji sieci web, a następnie zainstaluj usługę Application Insights.
+* Uaktualnij do najnowsza stabilna wersja zestawu SDK usługi Application Insights.
+
+ Jeśli wersja .NET jest mniejsza niż 4.6:
+
+* Host usługi IIS: Zainstaluj [agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serwerach hostach.
+* Aplikacja sieci web platformy Azure: Otwórz Application Insights w Panelu sterowania aplikacji sieci web, a następnie zainstaluj usługę Application Insights.
 
 ## <a name="video"></a>Połączenia wideo
 

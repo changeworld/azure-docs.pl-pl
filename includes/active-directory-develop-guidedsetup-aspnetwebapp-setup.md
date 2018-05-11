@@ -2,24 +2,17 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
-documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 05/04/2018
+ms.date: 05/08/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 1c51d70a3747da6a8f51c5fc6341c1975cebbdb7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 5d3af1800e18e3686e69d4a25131c68d3bdc805b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 ## <a name="set-up-your-project"></a>Konfigurowanie projektu
 
@@ -29,7 +22,7 @@ W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwie
 
 ### <a name="create-your-aspnet-project"></a>Tworzenie projektu platformy ASP.NET
 
-1. W programie Visual Studio: `File` > `New` > `Project`<br/>
+1. W programie Visual Studio: `File` > `New` > `Project`
 2. W obszarze *Visual C# \Web*, wybierz pozycję `ASP.NET Web Application (.NET Framework)`.
 3. Nazwa aplikacji, a następnie kliknij przycisk *OK*
 4. Wybierz `Empty` i zaznacz pole wyboru, aby dodać `MVC` odwołań
@@ -40,11 +33,11 @@ W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwie
 2. Dodaj *pakietów NuGet oprogramowanie pośredniczące OWIN* wpisując następujące polecenie w oknie konsoli Menedżera pakietów:
 
     ```powershell
-    Install-Package Microsoft.Owin.Security.OpenIdConnect -Version 3.1.0
-    Install-Package Microsoft.Owin.Security.Cookies -Version 3.1.0
-    Install-Package Microsoft.Owin.Host.SystemWeb -Version 3.1.0
+    Install-Package Microsoft.Owin.Security.OpenIdConnect
+    Install-Package Microsoft.Owin.Security.Cookies
+    Install-Package Microsoft.Owin.Host.SystemWeb
     ```
-    
+
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>Te biblioteki — informacje
 >Powyżej biblioteki Włącz logowanie jednokrotne (SSO) przy użyciu protokołu OpenID Connect przy użyciu uwierzytelniania opartego na pliku cookie. Po zakończeniu uwierzytelniania i token reprezentujący użytkownika jest wysyłany do aplikacji, oprogramowanie pośredniczące OWIN tworzy plik cookie sesji. Dlatego użytkownik nie musi ponownie wpisać hasło i nie jest wymagane nie dodatkowe weryfikacji przeglądarki następnie używa tego pliku cookie dla kolejnych żądań.
@@ -54,20 +47,19 @@ W tej sekcji przedstawiono kroki, aby zainstalować i skonfigurować potoku uwie
 Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN klasy początkowej można skonfigurować uwierzytelniania OpenID Connect. Ta klasa zostanie uruchomiony automatycznie po rozpoczęciu procesu programu IIS.
 
 > [!TIP]
-> Jeśli projekt nie ma `Startup.cs` pliku w folderze głównym:<br/>
-> 1. Kliknij prawym przyciskiem myszy w folderze głównym projektu: >    `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Nadaj jej nazwę `Startup.cs`<br/>
+> Jeśli projekt nie ma `Startup.cs` pliku w folderze głównym:
+> 1. Kliknij prawym przyciskiem myszy w folderze głównym projektu: > `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Nadaj jej nazwę `Startup.cs`
 >
 >> Upewnij się, że jest wybrana klasa, klasę początkową OWIN i nie C# klasa standardowa. To potwierdzić, sprawdzając występowanie `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` powyżej przestrzeni nazw.
 
-1. Dodaj *OWIN* i *Microsoft.IdentityModel* odwołuje się do `Startup.cs` , aby za pomocą deklaracji staną się następujące:
+1. Dodaj *OWIN* i *Microsoft.IdentityModel* odwołuje się do `Startup.cs`:
 
     ```csharp
-    using System;
-    using System.Threading.Tasks;
     using Microsoft.Owin;
     using Owin;
-    using Microsoft.IdentityModel.Protocols;
+    using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+    using Microsoft.IdentityModel.Tokens;
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OpenIdConnect;
@@ -100,7 +92,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
-                app.UseOpenIdConnectAuthentication(
+            app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
                 {
                     // Sets the ClientId, authority, RedirectUri as obtained from web.config
@@ -109,13 +101,16 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
                     RedirectUri = redirectUri,
                     // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
                     PostLogoutRedirectUri = redirectUri,
-                    Scope = OpenIdConnectScopes.OpenIdProfile,
+                    Scope = OpenIdConnectScope.OpenIdProfile,
                     // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-                    ResponseType = OpenIdConnectResponseTypes.IdToken,
+                    ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
                     // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
-                    TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters() { ValidateIssuer = false },
+                    TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = false
+                    },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
                     {
@@ -137,9 +132,7 @@ Poniższe kroki są używane do tworzenia oprogramowania pośredniczącego OWIN 
             return Task.FromResult(0);
         }
     }
-
     ```
-
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji

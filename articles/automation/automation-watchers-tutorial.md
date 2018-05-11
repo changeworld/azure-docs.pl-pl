@@ -3,15 +3,16 @@ title: Tworzenie zadania obserwatora w ramach konta usługi Automatyzacja Azure
 description: Dowiedz się, jak utworzyć zadanie obserwatora w ramach konta usługi Automatyzacja Azure, aby obejrzeć dla nowych plików utworzonych w folderze.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: eamonoreilly
 ms.author: eamono
 ms.topic: article
 ms.date: 03/19/2017
-ms.openlocfilehash: 8cd5f77d9711ffc95e6a55e97297a23fd87c6bb7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2ae5fe2f2cd01eb9a0d7105c34c1dc216479720c
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Utwórz zadania można śledzić zmiany w pliku na komputerze lokalnym obserwatora usługi Automatyzacja Azure
 
@@ -135,7 +136,7 @@ Message is Process new file...
 Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -1,24 +1,24 @@
 ---
-title: "Wdrażanie usługi Menedżer StorSimple urządzenie na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak tworzyć i usuwać usługi Menedżer StorSimple urządzenia w portalu Azure i opisano sposób zarządzania klucz rejestracji usługi."
+title: Wdrażanie usługi Menedżer StorSimple urządzenie na platformie Azure | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak tworzyć i usuwać usługi Menedżer StorSimple urządzenia w portalu Azure i opisano sposób zarządzania klucz rejestracji usługi.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Wdrażanie usługi Menedżer StorSimple urządzenia dla urządzeń z serii StorSimple 8000
 
@@ -29,7 +29,9 @@ Usługa Menedżera urządzeń StorSimple działa na platformie Microsoft Azure i
 W tym samouczku opisano kroki wymagane do tworzenia, usuwania, migracji usługi i zarządzanie klucz rejestracji usługi. Informacje zawarte w tym artykule ma zastosowanie tylko do urządzeń z serii StorSimple 8000. Aby uzyskać więcej informacji dotyczących tablic wirtualnego StorSimple, przejdź do [wdrożyć usługę Menedżer StorSimple urządzenia dla macierzy wirtualnego StorSimple](storsimple-virtual-array-manage-service.md).
 
 > [!NOTE]
-> Wszyscy menedżerowie klasycznego urządzenia StorSimple zostały automatycznie przeniesione do nowego portalu Azure. Jeśli masz pytania, zobacz [— często zadawane pytania: przejść do portalu Azure](storsimple-8000-move-azure-portal-faq.md). Polecenia cmdlet programu PowerShell usługi Azure Service Management (ASM) nie są obsługiwane po przeniesieniu do nowego portalu Azure. Zaktualizuj skrypty w celu zarządzania urządzeniami, a następnie przejdź do [skryptów użycia usługi Azure Resource Manager SDK do zarządzania urządzeniami StorSimple](storsimple-8000-automation-azurerm-scripts.md) Aby uzyskać więcej informacji. Nowy portal Azure obsługuje urządzenia z systemem aktualizacji w wersji 5.0 lub nowszej. Jeśli urządzenie nie jest aktualny, natychmiast zainstalować aktualizacji 5. Aby uzyskać więcej informacji, przejdź do [zainstalować aktualizacji 5](storsimple-8000-install-update-5.md). Jeśli używasz urządzenia StorSimple w chmurze (8010/8020), nie można zaktualizować urządzenia chmury. Najnowszą wersję oprogramowania umożliwia utworzenie nowego urządzenia chmury z aktualizacji w wersji 5.0, a następnie przełączyć nowy urządzenia chmury utworzony. Wszystkie urządzenia z uruchomioną aktualizacją 4.0 lub wcześniejszym może wystąpić [funkcjonalność zarządzania ograniczona](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
+> -  Azure portal obsługuje urządzenia z systemem aktualizacji w wersji 5.0 lub nowszej. Jeśli urządzenie nie jest aktualny, natychmiast zainstalować aktualizacji 5. Aby uzyskać więcej informacji, przejdź do [zainstalować aktualizacji 5](storsimple-8000-install-update-5.md). 
+> - Jeśli używasz urządzenia StorSimple w chmurze (8010/8020), nie można zaktualizować urządzenia chmury. Najnowszą wersję oprogramowania umożliwia utworzenie nowego urządzenia chmury z aktualizacji w wersji 5.0, a następnie przełączyć nowy urządzenia chmury utworzony. 
+> - Wszystkie urządzenia z uruchomioną aktualizacją 4.0 lub wcześniejszym może wystąpić [funkcjonalność zarządzania ograniczona](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
 
 ## <a name="create-a-service"></a>Tworzenie usługi
 Aby utworzyć usługę Menedżer urządzeń StorSimple, wymagane są:
@@ -38,11 +40,7 @@ Aby utworzyć usługę Menedżer urządzeń StorSimple, wymagane są:
 * Aktywne konto magazynu Microsoft Azure
 * Informacji dotyczących rozliczeń, która służy do zarządzania dostępem
 
-Dozwolone są tylko subskrypcje z umową Enterprise. Subskrypcje Sponsorship firmy Microsoft, które są dozwolone w klasycznym portalu Azure, nie są obsługiwane w portalu Azure. Po za pomocą nieobsługiwanego subskrypcji zostanie wyświetlony następujący komunikat:
-
-![Subskrypcja nie jest prawidłowy](./media/storsimple-8000-manage-service/subscription-not-valid.jpg)
-
-Można także wygenerować domyślne konto magazynu podczas tworzenia usługi.
+Dozwolone są tylko subskrypcje z umową Enterprise. Można także wygenerować domyślne konto magazynu podczas tworzenia usługi.
 
 Jednej usługi można zarządzać wieloma urządzeniami. Jednak urządzenia nie może obejmować wiele usług. Duże przedsiębiorstwa mogą być wiele wystąpień usługi do pracy z różnych subskrypcji, organizacji lub nawet miejsc wdrożenia. 
 
@@ -149,8 +147,7 @@ Ten krok jest wykonywane w programie Windows PowerShell dla interfejsu StorSimpl
 
 > [!NOTE]
 > Żadne operacje nie można wykonać w portalu Azure usługi Menedżer StorSimple do czasu ukończenia przerzucania klucza.
-> 
-> 
+
 
 Jeśli używasz konsoli szeregowej urządzenia do nawiązania połączenia interfejsu programu Windows PowerShell, wykonaj następujące kroki.
 
@@ -177,12 +174,12 @@ Wykonaj poniższe kroki, aby zaktualizować usługę szyfrowania danych na urzą
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Aby zaktualizować klucz szyfrowania danych usługi na fizycznych urządzeniach
 1. Umożliwia łączenie z konsolą programu Windows PowerShell dla StorSimple. Wybierz opcję 1, aby zalogować się z pełnym dostępem.
-2. W wierszu polecenia wpisz:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. W wierszu polecenia wpisz:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Podaj klucz szyfrowania danych usługi, które zostały uzyskane w [krok 2: Użyj środowiska Windows PowerShell dla urządzenia StorSimple do zainicjowania zmiany klucza szyfrowania danych usługi](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Aby zaktualizować klucz szyfrowania danych usługi na wszystkie urządzenia 8010/8020 chmury
 1. Pobierania i instalacji [CloudApplianceServiceEncryptionKey.ps1 aktualizacji](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) skrypt programu PowerShell. 
-2. Otwórz program PowerShell i wpisz w wierszu polecenia:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Otwórz program PowerShell i wpisz w wierszu polecenia:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Ten skrypt zostanie upewnij się, że ten klucz szyfrowania danych usługi jest ustawiony na wszystkie urządzenia 8010/8020 chmury w Menedżerze urządzeń.
 
@@ -191,11 +188,11 @@ W portalu Azure obsługiwane są tylko urządzenia StorSimple uruchomioną aktua
 
 | Operacja                                                                                                                       | Obsługiwane      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Zarejestruj urządzenie                                                                                                               | Yes            |
+| Rejestrowanie urządzenia                                                                                                               | Yes            |
 | Konfigurowanie ustawień urządzenia, takie jak ogólne, sieci i zabezpieczeń                                                                | Yes            |
 | Skanowanie, Pobierz i zainstaluj aktualizacje                                                                                             | Yes            |
 | Dezaktywować urządzenie                                                                                                               | Yes            |
-| Usuń urządzenie                                                                                                                   | Yes            |
+| Usuwanie urządzenia                                                                                                                   | Yes            |
 | Tworzenie, modyfikowanie i usuwanie kontenera woluminów                                                                                   | Nie             |
 | Tworzenie, modyfikowanie i usuwanie woluminu                                                                                             | Nie             |
 | Tworzenie, modyfikowanie i usuwanie zasad tworzenia kopii zapasowej                                                                                      | Nie             |

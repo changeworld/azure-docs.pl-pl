@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Przywracanie maszyn wirtualnych za pomocą portalu Azure
 Ochrona danych za tworzenie migawek danych w określonych odstępach czasu. Te migawki są określane jako punkty odzyskiwania, i w których są przechowywane w Magazyny usług odzyskiwania. Jeśli jest konieczne naprawienie lub skompiluj ponownie maszynę wirtualną (VM), można przywrócić maszynę Wirtualną z żadnym z punktów odzyskiwania zapisane. Po przywróceniu punkt odzyskiwania, można:
@@ -90,12 +90,12 @@ Przywrócenie maszyny Wirtualnej lub wszystkich dysków z maszyny Wirtualnej kop
 
     **Przywrócić** bloku pokazuje, że ustawiono punktu przywracania.
 
-9. Jeśli jeszcze nie jest istnieje, przejdź do **przywrócić** bloku. Upewnij się, że [jest wybrany punkt przywracania](#select-restore-point-for-restore)i wybierz **przywracania**. **Przywracania** zostanie otwarty blok.
+9. Jeśli jeszcze nie jest istnieje, przejdź do **przywrócić** bloku. Upewnij się, że [jest wybrany punkt przywracania](#select-a-restore-point-for-restore)i wybierz **przywracania**. **Przywracania** zostanie otwarty blok.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Wybierz konfigurację przywracania maszyny Wirtualnej
 Wybierz punkt przywracania i wybrać konfigurację przywracania maszyny Wirtualnej. Aby skonfigurować przywróconą maszyną Wirtualną, używając portalu Azure lub programu PowerShell.
 
-1. Jeśli jeszcze nie jest istnieje, przejdź do **przywrócić** bloku. Upewnij się, że [jest wybrany punkt przywracania](#select-restore-point-for-restore)i wybierz **przywracania**. **Przywracania** zostanie otwarty blok.
+1. Jeśli jeszcze nie jest istnieje, przejdź do **przywrócić** bloku. Upewnij się, że [jest wybrany punkt przywracania](#select-a-restore-point-for-restore)i wybierz **przywracania**. **Przywracania** zostanie otwarty blok.
 
     ![Kreator konfiguracji przywracania](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. Na **przywracania** bloku dostępne są dwie opcje:

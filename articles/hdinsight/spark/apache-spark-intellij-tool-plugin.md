@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3d9f9cd835056b61ee72ddde5add285f47665ac1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Zestaw narzędzi platformy Azure dla IntelliJ umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight
 
@@ -86,7 +86,7 @@ Można połączyć normalne klastra przy użyciu Ambari zarządzane username, ta
    > ![Eksplorator usługi Storage w IntelliJ](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
 
    
-3. Widać klastra połączone w **HDInsight** węzła, jeśli dane wejściowe są prawidłowe. Teraz można przesłać do tego klastra połączonych aplikacji.
+3. Widać klastra połączone w **HDInsight** węzła, jeśli dane wejściowe jest odpowiednia. Teraz można przesłać do tego klastra połączonych aplikacji.
 
    ![połączone klastra](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
@@ -283,11 +283,15 @@ Te błędy się tak zdarzyć, ponieważ rozmiar stosu nie jest wystarczająco du
 ![Dodanie opcji do pola "Opcje maszyny Wirtualnej" IntelliJ](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Często zadawane pytania
-Aby przesłać aplikacji do usługi Azure Data Lake Store, wybierz **Interactive** tryb podczas Azure procesu logowania. W przypadku wybrania **automatycznego** tryb, możesz uzyskać wystąpił błąd.
+Gdy łącze klastra, I sugerować o podanie poświadczeń magazynu.
 
-![interative-signin](./media/apache-spark-intellij-tool-plugin/interative-signin.png)
+![Połącz z klastrem, podaj poświadczenia magazynu](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
 
-Teraz możemy go rozwiązał. Można wybrać Azure Data Lake klastra do przesyłania aplikacji przy użyciu dowolnej metody logowania.
+Dostępne są dwa tryby można przesłać zadania. W przypadku poświadczeń magazynu trybie wsadowym będzie używany do przesyłania zadania. W przeciwnym razie zostanie użyta tryb interaktywny. Jeśli klaster jest zajęty, można otrzymać poniższy błąd.
+
+![Intellij komunikat o błędzie podczas klastra zajęty](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
+
+![Intellij komunikat o błędzie podczas klastra zajęty](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback-and-known-issues"></a>Opinie i znane problemy
 Przeglądanie wyjść Spark bezpośrednio nie jest obecnie obsługiwana.

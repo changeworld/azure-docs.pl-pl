@@ -5,14 +5,14 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2018
+ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4fe1f2ad4bad9d670094bbb4eed188baf28108ea
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="write-accelerator"></a>Zapis klawiszy skrótów
 Zapisu akceleratora jest wyłącznie możliwości dysku dla serii M maszynach wirtualnych (VM na magazyn Azure dysków zarządzanych w warstwie Premium). Jako nazwa stany, cel funkcji jest ulepszenie opóźnień operacji We/Wy zapisu w usłudze Azure Premium Storage. Zapisu akceleratora doskonale nadaje gdzie aktualizacji plików dziennika są wymagane do utrwalenia na dysku w dużej wydajności sposób dla nowoczesnych baz danych.
@@ -164,6 +164,21 @@ Można włączyć zapisu akceleratora za pośrednictwem portalu, w którym okre�
 
 ![Zapis akceleratora w portalu Azure](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
+### <a name="enabling-through-azure-cli"></a>Włączanie za pośrednictwem interfejsu wiersza polecenia platformy Azure
+Można użyć [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) aby umożliwić zapis akceleratora. 
+
+Zapis akceleratora, Włącz istniejącego dysku, użyj polecenia poniżej, podstawiając własne diskName VMName i grupa zasobów: 
+```
+az vm update -g group1 -n vm1 –write-accelerator 1=true
+```
+Na podłączenie dysku z akceleratora zapisu należy włączyć Użyj poniżej polecenie z własnymi wartościami:
+```
+az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+```
+Aby wyłączyć akceleratora zapisu, należy ustawić właściwość na wartość false: 
+```
+az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+```
 
 ### <a name="enabling-through-rest-apis"></a>Włączanie za pośrednictwem interfejsów API Rest
 Aby można było wdrożyć za pomocą interfejsu API Rest Azure, musisz zainstalować Azure armclient

@@ -3,17 +3,18 @@ title: Śledzenie zmian za pomocą usługi Automatyzacja Azure
 description: Rozwiązanie śledzenia zmian pomaga w identyfikacji oprogramowania i zmiany usługi systemu Windows w środowisku.
 services: automation
 ms.service: automation
+ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0716466eab69ef2a2439a533cd51e92307bd056
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledzenie zmian w środowisku z rozwiązaniem do śledzenia zmian
 
@@ -194,7 +195,7 @@ W poniższej tabeli przedstawiono przykładowy dziennik wyszukiwania Zmień reko
 |ConfigurationData<br>&#124;gdzie ConfigDataType == "WindowsServices" i SvcStartupType == "Auto"<br>&#124;gdzie SvcState == "Zatrzymana"<br>&#124;Podsumuj arg_max(TimeGenerated, *) przez SoftwareName, komputer         | Zawiera najnowsze rekordów spisu dla usług systemu Windows, zostały ustawione na Auto, które zostały zgłoszone jako zatrzymania<br>Wyniki są ograniczone do ostatniego rekordu tego SoftwareName i komputera      |
 |Zmianakonfiguracji<br>&#124;gdzie ConfigChangeType == "Oprogramowanie" i ChangeCategory == "Usunięte"<br>&#124;kolejność według TimeGenerated desc|Pokazuje rekordów zmian oprogramowania usunięty|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Odwiedź samouczka na śledzenia zmian, aby dowiedzieć się więcej o korzystaniu z rozwiązania:
 

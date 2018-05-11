@@ -11,12 +11,15 @@ Na początkowej start powłoki chmury monituje o skojarzyć udział plików nowe
 
 Po za pomocą podstawowych ustawień i wybierz tylko subskrypcję, powłoki chmury tworzy trzy zasoby w Twoim imieniu w obsługiwanym regionie, najbliższą możesz:
 * Grupa zasobów: `cloud-shell-storage-<region>`
-* Konto magazynu:`cs<uniqueGuid>`
-* Udziału plików:`cs-<user>-<domain>-com-<uniqueGuid>`
+* Konto magazynu: `cs<uniqueGuid>`
+* Udziału plików: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Ustawienia subskrypcji](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
 
 Instaluje udziału plików jako `clouddrive` w Twojej `$Home` katalogu. To działanie jednorazowe i udziału plików automatycznie instaluje się w kolejnych sesjach. 
+
+> [!NOTE]
+> Dla bezpieczeństwa każdy użytkownik powinien obsługiwać własne magazyn.  Do kontroli dostępu opartej na rolach (RBAC), użytkownicy muszą mieć dostęp współautora lub nowszej.
 
 W Bash, udziału plików zawiera także obraz 5 GB, który jest tworzony której automatycznie będzie się powtarzał danych w sieci `$Home` katalogu. 
 
@@ -37,7 +40,7 @@ Skojarzone konta musi znajdować się w tym samym regionie co maszyny powłoki w
 Aby znaleźć przypisaną regionu, użytkownik może:
 * Umożliwia wyświetlenie notatki w oknie dialogowym "Zaawansowane magazynu ustawienia"
 * Odwołuje się do nazwy konta magazynu utworzone (przykład: `cloud-shell-storage-westus`)
-* Uruchom `env` i Znajdź zmiennej`ACC_LOCATION`
+* Uruchom `env` i Znajdź zmiennej `ACC_LOCATION`
 
 Komputer powłoki chmura istnieje w następujących regionach:
 |Obszar|Region|

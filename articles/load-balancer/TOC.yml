@@ -76,7 +76,6 @@
         - name: Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (szablon)
           href: load-balancer-ipv6-internet-template.md
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
-      href: load-balancer-get-started-ilb-arm-portal.md
       items:
         - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia (PowerShell)
           href: load-balancer-get-started-ilb-arm-ps.md

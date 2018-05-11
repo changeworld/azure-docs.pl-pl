@@ -14,11 +14,11 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 19eb9bb593b349d88d8235dc2f1eca448e7646f5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1bd45027ea9c3dbffc642afedc4e478c96bffe7
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza dostępowi do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko raz przy użyciu jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład wpisz hasło) po raz drugi.
@@ -60,7 +60,7 @@ Usługi Azure AD mogą obsługiwać federacyjne logowanie jednokrotne z aplikacj
 
 Zobacz też: [zarządzanie certyfikatami dla federacyjnych rejestracji jednokrotnej](active-directory-sso-certs.md)
 
-### <a name="password-based-single-sign-on"></a>Logowanie jednokrotne oparte na hasłach
+### <a name="password-based-single-sign-on"></a>Oparte na hasłach rejestracji jednokrotnej
 Konfigurowanie opartego na hasłach logowania jednokrotnego pozwala użytkownikom w organizacji automatycznie zalogowani do aplikacji SaaS innych firm przez usługę Azure AD przy użyciu informacji o koncie użytkownika z innych aplikacji SaaS. Po włączeniu tej funkcji usługi Azure AD zbiera i bezpiecznie przechowywane są informacje o koncie użytkownika i hasło powiązane.
 
 Usługi Azure AD może obsługiwać opartego na hasłach rejestracji jednokrotnej dla dowolnego chmurowych aplikacji, który ma oparty na języku HTML strony logowania. Za pomocą wtyczki przeglądarki niestandardowych, automatyzuje użytkownika procesu logowania za pośrednictwem bezpiecznego pobierania poświadczeń aplikacji, takie jak nazwa użytkownika i hasło z katalogu usługi AAD i wejścia te poświadczenia aplikacji strony logowania dla użytkownik. Istnieją dwa przypadki użycia:
@@ -191,7 +191,7 @@ Te linki używane te same mechanizmy kontroli dostępu do panelu dostępu i usł
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Znajdowanie niezatwierdzona aplikacji w chmurze z usługi Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
+* [Znajdowanie niezatwierdzona aplikacji w chmurze z usługi Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 * [Wprowadzenie do zarządzania dostępem do aplikacji](active-directory-managing-access-to-apps.md)
 * [Porównanie funkcji zarządzania w usłudze Azure AD tożsamości zewnętrznych](active-directory-b2b-compare-external-identities.md)
 

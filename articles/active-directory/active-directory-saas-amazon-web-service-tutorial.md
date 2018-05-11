@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3f553b9ea3629a38ab9dea0e93b16c62aebe301f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b59e3dae685c4994c44582d569875637b335bf87
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Samouczek: Integracji Azure Active Directory z usług sieci Web firmy Amazon (AWS)
 
@@ -190,7 +190,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
   
     d. Kliknij przycisk **dalej: uprawnienia**.
 
-16. Na **Dołącz zasady uprawnień** okna dialogowego, kliknij przycisk **dalej: Przejrzyj**.  
+16. Na **Dołącz zasady uprawnień** okna dialogowego, nie trzeba dołączać żadnych zasad. Kliknij przycisk **dalej: Przejrzyj**.  
     
     ![Konfigurowanie zasad rejestracji jednokrotnej][33]
 
@@ -404,7 +404,7 @@ W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania 
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 

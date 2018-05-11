@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c0ca120da27daa7a498f73b9c62530e3af26e539
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2b8b5095fceaa369ae8b7a426ca04685c2d86109
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie platformy Azure i inspekcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -70,7 +70,7 @@ Następująca tabela zawiera listę najważniejszych typów dzienników dostępn
 |[Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Zdarzenia płaszczyzny kontroli zasobów usługi Azure Resource Manager|   Zapewniają wgląd w operacje wykonywane na zasobów w ramach subskrypcji.| Interfejs API REST & [Azure monitora](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|często dane dotyczące działania usługi Azure Resource Manager zasobów w subskrypcji| Zapewniają wgląd w działania, zasobu wykonanie samego| Azure Monitor [strumienia](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Raportowanie usługi AAD](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Dzienników i raportów|Działania logowania użytkowników & informacje o systemie działania dotyczące użytkowników i grupy zarządzania|[Interfejs API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Maszyny wirtualne i usługi w chmurze](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Dziennik zdarzeń systemu Windows i systemu Linux|    Przechwytuje dane systemu i rejestrowanie danych na maszynach wirtualnych i przesyła dane do wybranego konta magazynu.|   Przy użyciu systemu Windows [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (magazynu diagnostyki Windows Azure) i Linux w Monitorze systemu Azure|
+|[Maszyny wirtualne i usługi w chmurze](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Dziennik zdarzeń systemu Windows i systemu Linux| Przechwytuje dane systemu i rejestrowanie danych na maszynach wirtualnych i przesyła dane do wybranego konta magazynu.|   Przy użyciu systemu Windows [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (magazynu diagnostyki Windows Azure) i Linux w Monitorze systemu Azure|
 |[Analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu i udostępnia metryki danych dla konta magazynu|Zapewnia wgląd w żądań śledzenia analizować trendy użycia i diagnozowanie problemów z konta magazynu.|    Interfejs API REST lub [biblioteki klienta](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Dzienniki przepływu NSG (sieciowej grupy zabezpieczeń)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON format i zawiera przepływy ruchu wychodzącego i przychodzącego na podstawie reguł na|Wyświetl informacje o przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci|[Obserwatora sieciowego](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Szczegółowe informacje o aplikacji](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Dzienniki, wyjątków i diagnostyki niestandardowej|    Usługa zarządzania wydajności aplikacji przeznaczonych dla deweloperów sieci web na wielu platformach.| Interfejs API REST, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
@@ -266,7 +266,7 @@ Oprócz powyższego możliwości rejestrowania zdarzeń, obserwatora sieciowego 
 
 ### <a name="application-insight"></a>Szczegółowe informacje o aplikacji
 
-[Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) jest rozszerzalną usługę zarządzania wydajności aplikacji (APM) dla deweloperów sieci web na wielu platformach. Użyj tej usługi do monitorowania aplikacji sieci Web na żywo. Jest automatycznie wykrywania anomalii wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.
+[Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) jest rozszerzalną usługę zarządzania wydajności aplikacji (APM) dla deweloperów sieci web na wielu platformach. Użyj tej usługi do monitorowania aplikacji sieci Web na żywo. Automatycznie wykrywa anomalii wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.
 
  Usługa ta pomaga w ciągłym udoskonalaniu wydajności i użyteczności tworzonych rozwiązań.
 

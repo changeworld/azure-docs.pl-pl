@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/08/2018
 ms.author: billmath
-ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect użytkownika opcje logowania
 Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logowania się do zasobów w chmurze, jak i dla lokalnego przy użyciu takich samych haseł. W tym artykule opisano podstawowe pojęcia dla każdego modelu tożsamości pomaga wybrać tożsamości, która ma być używany dla logowania do usługi Azure AD.
@@ -28,6 +28,7 @@ Jeśli znasz już modelu tożsamości usługi Azure AD i chcesz dowiedzieć się
 * [Synchronizacja skrótów haseł](#password-hash-synchronization) z [bezproblemowe logowanie jednokrotne (SSO)](active-directory-aadconnect-sso.md)
 * [Uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) z [bezproblemowe logowanie jednokrotne (SSO)](active-directory-aadconnect-sso.md)
 * [Federacyjną rejestracją Jednokrotną (z usługi Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* [Federacja z PingFederate](#federation-with-pingfederate)
 
 > [!NOTE] 
 > Należy pamiętać, że skonfigurowanie federacyjnego dla usługi Azure AD, zostanie nawiązana relacja zaufania między dzierżawy usługi Azure AD i domen federacyjnych. Z tej domeny federacyjnej relacji zaufania, użytkownicy będą mieć dostęp do zasobów w chmurze Azure AD w ramach dzierżawy.  
@@ -88,6 +89,13 @@ Jeśli wdrażasz nową farmę lub przy użyciu istniejącej farmy, należy:
 * Maszynie uruchom kreatora na, aby można było nawiązać innych maszyn, które chcesz zainstalować usługi AD FS lub serwer Proxy aplikacji sieci Web na za pomocą zdalnego zarządzania systemem Windows.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie logowania jednokrotnego za pomocą usług AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs).
+
+### <a name="federation-with-pingfederate"></a>Federacja z serwerem PingFederate
+Z federacyjnego logowania użytkownicy mogą Zaloguj się do usługi Azure AD na podstawie ich hasłami lokalnymi. Gdy są one w sieci firmowej, ich nawet nie muszą wprowadzać haseł.
+
+Aby uzyskać więcej informacji na temat konfigurowania PingFederate do użycia z usługą Azure Active Directory, zobacz [PingFederate integracji z usługą Azure Active Directory i usługi Office 365](https://www.pingidentity.com/AzureADConnect)
+
+Aby uzyskać informacje na temat konfigurowania usługi Azure AD Connect przy użyciu PingFederate, zobacz [Azure AD Connect instalacji niestandardowej](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-pingfederate)
 
 #### <a name="sign-in-by-using-an-earlier-version-of-ad-fs-or-a-third-party-solution"></a>Zaloguj się przy użyciu wcześniejszej wersji usług AD FS lub rozwiązanie innej firmy
 Jeśli logowania w chmurze została już skonfigurowana przy użyciu wcześniejszej wersji usług AD FS (np. usługi AD FS 2.0) lub dostawcy federacyjnego innych firm, można pominąć logowanie Konfiguracja użytkownika za pośrednictwem usługi Azure AD Connect. Umożliwi to uzyskać ostatniej synchronizacji i innych funkcji programu Azure AD Connect podczas nadal przy użyciu istniejącego rozwiązania do logowania.
@@ -176,6 +184,6 @@ Na **logowania użytkownika** wybierz żądany logowania użytkownika.
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).
 - Dowiedz się więcej o [zagadnienia dotyczące projektowania usługi Azure AD Connect](active-directory-aadconnect-design-concepts.md).

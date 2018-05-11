@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 447f9867649c7c3a44c8a0ba894e037040023f79
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -31,23 +31,42 @@ W tym artykule opisano sposób pracy z usługi Azure Functions powiązania magaz
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!NOTE]
-> [Konta magazynu tylko do obiektów blob](../storage/common/storage-create-storage-account.md#blob-storage-accounts) nie są obsługiwane wyzwalacze obiektu blob. Wyzwalacze magazynu obiektów blob wymagają konta magazynu ogólnego przeznaczenia. Dla powiązań wejściowych i wyjściowych można używać tylko do obiektu blob magazynu kont.
-
 ## <a name="packages"></a>Pakiety
 
 Powiązania magazynu obiektów Blob są udostępniane w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+> [!NOTE]
+> Użyj wyzwalacza zdarzenia siatki zamiast wyzwalacza magazynu obiektów Blob dla kont magazynu tylko do obiektów blob, wysokiej skali lub w celu uniknięcia zimnego opóźnień. Aby uzyskać więcej informacji, zobacz następujące tematy **wyzwalacza** sekcji. 
+
 ## <a name="trigger"></a>Wyzwalacz
 
-Użyj wyzwalacz magazynu obiektów Blob, aby uruchomić funkcję o wykryciu nowych lub zaktualizowanych obiektów blob. Zawartość obiektu blob są dostarczane jako dane wejściowe do funkcji.
+Wyzwalacz magazynu obiektów Blob uruchamia funkcję po wykryciu nowych lub zaktualizowanych obiektów blob. Zawartość obiektu blob są dostarczane jako dane wejściowe do funkcji.
 
-> [!NOTE]
-> Podczas korzystania z wyzwalacza obiektu blob w planie zużycia, może istnieć maksymalnie 10-minutowych opóźnienia w przetwarzaniu nowe obiekty BLOB po aplikacji funkcji przeszedł bezczynności. Po uruchomieniu aplikacji funkcja obiekty BLOB są przetwarzane natychmiast. Aby uniknąć tego opóźnienia początkowej, weź pod uwagę jedną z następujących opcji:
-> - Za pomocą plan usługi aplikacji na zawsze włączone.
-> - Użyj innego mechanizmu wyzwalanie obiektów blob, przetwarzanie, takie jak wiadomość z kolejki nazwa obiektu blob. Na przykład zobacz [przykład powiązań wejściowych obiektu blob w dalszej części tego artykułu](#input---example).
+[Wyzwalacz zdarzenia siatki](functions-bindings-event-grid.md) ma wbudowaną obsługę [obiektu blob zdarzenia](../storage/blobs/storage-blob-event-overview.md) i można również uruchomić funkcję o wykryciu nowych lub zaktualizowanych obiektów blob. Na przykład zobacz [siatki zdarzenie zmiany rozmiaru obrazu](../event-grid/resize-images-on-storage-blob-upload-event.md) samouczka.
+
+Użyj siatki zdarzeń zamiast wyzwalacza magazynu obiektów Blob w następujących scenariuszach:
+
+* Konta magazynu tylko do obiektów blob
+* Wysoka skalowalność
+* Opóźnienie zimnego
+
+### <a name="blob-only-storage-accounts"></a>Konta magazynu tylko do obiektów blob
+
+[Konta magazynu tylko do obiektów blob](../storage/common/storage-create-storage-account.md#blob-storage-accounts) są obsługiwane dla obiekt blob danych wejściowych i wyjściowych powiązania, ale nie dla obiekt blob wyzwalaczy. Wyzwalacze magazynu obiektów blob wymagają konta magazynu ogólnego przeznaczenia.
+
+### <a name="high-scale"></a>Wysoka skalowalność
+
+Wysoka skalowalność można słabo zdefiniować jako kontenery zawierające ponad 100 000 obiektów blob w nich lub kont magazynu ma więcej niż 100 aktualizacji obiektu blob na sekundę.
+
+### <a name="cold-start-delay"></a>Opóźnienie zimnego
+
+Jeśli funkcja aplikacji znajduje się na plan zużycia, może istnieć maksymalnie 10-minutowych opóźnienia w przetwarzaniu nowe obiekty BLOB, jeśli aplikacja funkcji przeszedł bezczynności. Aby uniknąć tego opóźnienia zimnego, przełącz się do planu usługi App Service z na zawsze włączone lub użyj typu różnych wyzwalacza.
+
+### <a name="queue-storage-trigger"></a>Kolejki magazynu wyzwalacza
+
+Oprócz siatki zdarzeń alternatywą dla przetwarzania obiektów blob jest wyzwalacz kolejki magazynu, ale nie nie wbudowaną obsługę zdarzeń obiektu blob. Czy trzeba tworzyć wiadomości w kolejce podczas tworzenia lub aktualizowania obiektów blob. Na przykład, w którym przyjęto założenie, możesz to, zobacz [przykład powiązania wejściowego obiektu blob w dalszej części tego artykułu](#input---example).
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 
@@ -283,7 +302,7 @@ Aby wyszukać nawiasy klamrowe w nazwach plików, poza nawiasy klamrowe przy uż
 "path": "images/{{20140101}}-{name}",
 ```
 
-Jeśli w nazwie obiektu blob *{20140101}-soundfile.mp3*, `name` jest wartość zmiennej w kodzie funkcja *soundfile.mp3*. 
+Jeśli w nazwie obiektu blob  *{20140101}-soundfile.mp3*, `name` jest wartość zmiennej w kodzie funkcja *soundfile.mp3*. 
 
 ## <a name="trigger---metadata"></a>Wyzwalacz - metadanych
 

@@ -15,15 +15,15 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bb341c5700f573e61cdbbe992aa0b0eb99389b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f480553e6a8ca09872cd638537bc6fb98e793d8b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Nagłówek uwierzytelniania dla logowania jednokrotnego z serwera Proxy aplikacji i PingAccess
 
-Azure Active Directory serwera Proxy aplikacji i PingAccess ma współpracę ze sobą aby zapewnić klientom usługi Azure Active Directory dostępu do nawet więcej aplikacji. Rozwija PingAccess [istniejący serwer Proxy aplikacji ofert](active-directory-application-proxy-get-started.md) uwzględnienie dostępu pojedynczego logowania do aplikacji, które nagłówków jest używany do uwierzytelniania.
+Azure Active Directory serwera Proxy aplikacji i PingAccess ma współpracę ze sobą aby zapewnić klientom usługi Azure Active Directory dostępu do nawet więcej aplikacji. Rozwija PingAccess [istniejący serwer Proxy aplikacji ofert](manage-apps/application-proxy.md) uwzględnienie dostępu pojedynczego logowania do aplikacji, które nagłówków jest używany do uwierzytelniania.
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>Co to jest oprogramowanie PingAccess dla usługi Azure AD?
 
@@ -178,7 +178,7 @@ Tych krokach objaśniono proces pobierania konta PingAccess, jeśli nie masz ju�
 
 Po zakończeniu wszystkich tych kroków aplikacji powinna być uruchomiona. Aby ją przetestować, otwórz przeglądarkę i przejdź do zewnętrzny adres URL utworzony po opublikowaniu aplikacji na platformie Azure. Zaloguj się przy użyciu konta testowego przypisany do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Skonfiguruj PingAccess dla usługi Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
 - [W jaki sposób serwera Proxy aplikacji usługi Azure AD zapewnia rejestrację jednokrotną](application-proxy-sso-overview.md)

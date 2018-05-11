@@ -8,8 +8,8 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 2c6867b02fd88c4616647c8602906fbf786da414
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8269b91ea3459fd9e391d46f0b3e78bc7e5b3b41
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -29,7 +29,7 @@ Serwerów fizycznych | Replikacja serversto fizycznych lokalnego systemu Windows
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-VMware | vCenter Server 6.5 w wersji 6.0 lub 5.5 lub vSphere 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.<br/><br/> Zaleca się, że hostach vSphere i vCenter Server znajdują się w tej samej sieci co serwer przetwarzania. Domyślnie proces składniki serwera jest uruchamiany na serwerze konfiguracji, chyba że jest skonfigurowanie serwera dedykowanego procesu będzie sieci, w którym skonfigurować serwer konfiguracji. 
+VMware | vCenter Server 6.5 w wersji 6.0 lub 5.5 lub vSphere 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.<br/><br/> Zaleca się, że hostach vSphere i vCenter Server znajdują się w tej samej sieci co serwer przetwarzania. Domyślnie proces składniki serwera jest uruchamiany na serwerze konfiguracji, chyba że jest skonfigurowanie serwera dedykowanego procesu będzie sieci, w którym skonfigurować serwer konfiguracji.
 Fizyczne | ND
 
 ## <a name="site-recovery-configuration-server"></a>Serwer konfiguracji odzyskiwania lokacji
@@ -38,19 +38,19 @@ Serwer konfiguracji jest na lokalnej maszynie z systemem składników usługi Si
 
 **Składnik** | **Wymagania**
 --- |---
-Rdzenie procesora CPU | 8 
+Rdzenie procesora CPU | 8
 Pamięć RAM | 12 GB
 Liczba dysków | 3 dysków<br/><br/> Dyski zawierają dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii.
 Wolne miejsce na dysku | 600 GB miejsca wymaganego dla pamięci podręcznej serwera przetwarzania.
 Wolne miejsce na dysku | 600 GB miejsca wymaganego dla dysku przechowywania.
-System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 | 
-Ustawienia regionalne systemu operacyjnego | Angielski (en-us) 
+System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 |
+Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") powinna zostać zainstalowana.
 Role systemu Windows Server | Nie włączaj: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
 Zasady grupy| Nie włączaj: <br> -Uniemożliwić dostęp do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzia do edycji rejestru. <br> — Logika zaufania dla załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>
-Typ karty Sieciowej | VMXNET3 (jeśli są wdrażane jako maszyny Wirtualnej VMware) 
-Typ adresu IP | Statyczny 
+Typ karty Sieciowej | VMXNET3 (jeśli są wdrażane jako maszyny Wirtualnej VMware)
+Typ adresu IP | Statyczny
 Porty | używane do sterowania kanału aranżacji 443)<br>9443 używany do transportu danych
 
 ## <a name="replicated-machines"></a>Replikowane maszyny
@@ -138,7 +138,8 @@ Multi-NIC | Yes
 Zastrzeżony adres IP | Yes
 Protokół IPv4 | Yes
 Zachowaj źródłowy adres IP | Yes
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/><br/> (Usługa azure Storage zapory i sieci wirtualne) | Nie
+Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapory usługi Azure Storage) | Yes
+Accelerated Networking | Nie
 
 ## <a name="storage"></a>Magazyn
 **Składnik** | **Obsługiwane**
@@ -184,7 +185,7 @@ Obiekty BLOB typu Block | Nie
 Szyfrowanie magazynowanych (szyfrowanie usługi Magazyn)| Yes
 Premium Storage | Yes
 Import/Eksport usługi | Nie
-Punkty końcowe usługi sieci wirtualnej<br/><br/> Zapory magazynu i sieci wirtualne skonfigurowane na docelowe konto magazynu pamięci podręcznej/magazynów (używane do przechowywania danych replikacji) | Nie
+Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu pamięci podręcznej/magazynów (używane do przechowywania danych replikacji) | Nie
 Konta magazynu ogólnego przeznaczenia v2 (zarówno gorącego i chłodnego warstw) | Nie
 
 ## <a name="azure-compute"></a>Obliczeń platformy Azure
@@ -201,16 +202,16 @@ Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure musi spe
 
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-System operacyjny gościa | Sprawdź [obsługiwanych systemów operacyjnych](#replicated machines). | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany. 
-Architektura systemu operacyjnego gościa | 64-bitowych. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany. 
-Rozmiar dysku systemu operacyjnego | Do 2048 GB. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany. 
+System operacyjny gościa | Sprawdź [obsługiwanych systemów operacyjnych](#replicated machines). | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+Architektura systemu operacyjnego gościa | 64-bitowych. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+Rozmiar dysku systemu operacyjnego | Do 2048 GB. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Liczba dysków systemu operacyjnego | 1 | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.  
 Liczba dysków danych | 64 lub mniej. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.  
-Rozmiar dysku danych | Do 4,095 GB | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany. 
-Karty sieciowe | Wiele kart sieciowych są obsługiwane. | 
-Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany. 
-FC dysku | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany. 
-BitLocker | Nieobsługiwane. | Przed włączeniem replikacji dla maszyny, należy wyłączyć funkcję BitLocker. | 
+Rozmiar dysku danych | Do 4,095 GB | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+Karty sieciowe | Wiele kart sieciowych są obsługiwane. |
+Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+FC dysku | Nieobsługiwane. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+BitLocker | Nieobsługiwane. | Przed włączeniem replikacji dla maszyny, należy wyłączyć funkcję BitLocker. |
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi zaczynać i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach maszyny w usłudze Site Recovery.
 
 

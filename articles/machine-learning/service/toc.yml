@@ -197,8 +197,6 @@
           href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
         - name: Interfejs API wykonywania na potrzeby przygotowywania danych
           href: ../desktop-workbench/data-prep-python-execution-api.md
-        - name: Operacjonalizacja przygotowywania danych
-          href: ../desktop-workbench/data-prep-operationalization.md
     - name: Eksperymentowanie
       items:
         - name: Konfiguracja usługi eksperymentowania

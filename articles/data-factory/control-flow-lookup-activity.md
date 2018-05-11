@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 18748aafa2b70d349f9914e2a8afc1c7477ca26e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -31,11 +31,9 @@ Działania wyszukiwania może odczytywać i zwrócić zawartość zgodnie z plik
 
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
-Następujące źródła danych są obecnie obsługiwane dla wyszukiwania:
+Następujące źródła danych są obsługiwane dla wyszukiwania. Maksymalna liczba wierszy może być zwracany przez działanie wyszukiwania **5000**, aż do **2MB** rozmiar. I obecnie maksymalny czas trwania działania wyszukiwania przed upływem limitu czasu to jedna godzina.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
-
-Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, aż do **2MB** rozmiar.
 
 ## <a name="syntax"></a>Składnia
 
@@ -64,10 +62,11 @@ Zestaw danych | Zawiera odwołania do zestawu danych do wyszukiwania. Uzyskiwani
 source | Zawiera właściwości specyficzne dla zestawu danych źródła, taki sam jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji w sekcji "Kopiuj właściwości działania" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
 firstRowOnly | Wskazuje, czy mają być zwracane tylko pierwszy wiersz lub wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
 
-Pamiętaj o następujących kwestiach:
+**Pamiętaj o następujących kwestiach:**
 
 1. Kolumna źródłowa ByteArray typu nie jest obsługiwane.
 2. Struktura nie jest obsługiwana w definicji zestawu danych. W przypadku plików tekstowych format w szczególności służy wiersz nagłówka do określenia nazwy kolumny.
+3. Jeśli źródłem wyszukiwania jest pliki JSON, `jsonPathDefinition` ustawienie ponownie kształtowania obiekt JSON nie jest obsługiwane, całą obiekty zostaną pobrane.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Użyj wyniku działania wyszukiwania w następnych działań
 

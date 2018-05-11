@@ -1,8 +1,8 @@
 ---
 title: Zbieranie i analizowanie komunikaty dziennika systemowego w OMS Log Analytics | Dokumentacja firmy Microsoft
-description: "SYSLOG to protokół rejestrowania zdarzeń jest wspólny dla systemu Linux. W tym artykule opisano sposób konfigurowania kolekcji komunikaty dziennika systemowego w analizy dzienników i szczegóły rekordów tworzonych w repozytorium OMS."
+description: SYSLOG to protokół rejestrowania zdarzeń jest wspólny dla systemu Linux. W tym artykule opisano sposób konfigurowania kolekcji komunikaty dziennika systemowego w analizy dzienników i szczegóły rekordów tworzonych w repozytorium OMS.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>SYSLOG źródeł danych w analizy dzienników
 SYSLOG to protokół rejestrowania zdarzeń jest wspólny dla systemu Linux.  Aplikacje będą wysyłać wiadomości, które mogą być przechowywane na komputerze lokalnym lub dostarczone do modułu zbierającego Syslog.  Po zainstalowaniu Agent pakietu OMS dla systemu Linux, konfiguruje lokalnego demon Syslog do przekazywania wiadomości do agenta.  Agent wysyła następnie komunikat do analizy dzienników, w którym odpowiedni rekord jest tworzony w repozytorium OMS.  
@@ -31,12 +31,12 @@ SYSLOG to protokół rejestrowania zdarzeń jest wspólny dla systemu Linux.  Ap
 ![Kolekcja SYSLOG](media/log-analytics-data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Konfigurowanie usługi Syslog
-Agent pakietu OMS dla systemu Linux są zbierane zdarzenia z urządzeń i ważności, które są określone w konfiguracji.  Syslog można skonfigurować za pośrednictwem portalu OMS lub przez zarządzanie plikami konfiguracji na agentów systemu Linux.
+Agent pakietu OMS dla systemu Linux są zbierane zdarzenia z urządzeń i ważności, które są określone w konfiguracji.  Syslog można skonfigurować za pośrednictwem portalu Azure lub przez zarządzanie plikami konfiguracji na agentów systemu Linux.
 
-### <a name="configure-syslog-in-the-oms-portal"></a>Skonfigurować dziennik systemowy w portalu OMS
-Skonfigurować dziennik systemowy z [danych menu Ustawienia usługi Analiza dzienników](log-analytics-data-sources.md#configuring-data-sources).  Ta konfiguracja jest dostarczany do pliku konfiguracji na każdym agenta systemu Linux.
+### <a name="configure-syslog-in-the-azure-portal"></a>Skonfigurować dziennik systemowy w portalu Azure
+Skonfigurować dziennik systemowy z [menu dane w dzienniku Analytics Zaawansowane ustawienia](log-analytics-data-sources.md#configuring-data-sources).  Ta konfiguracja jest dostarczany do pliku konfiguracji na każdym agenta systemu Linux.
 
-Można dodać nowego zakładu, wpisując jej nazwę, a następnie klikając polecenie  **+** .  Dla każdego obiektu zostaną zebrane tylko komunikatów dla wybranej ważności.  Sprawdzanie ważności dla konkretnego obiektu, który chcesz zebrać.  Nie można podać wszelkie dodatkowe kryteria filtrowania wiadomości.
+Można dodać nowego zakładu, wpisując jej nazwę, a następnie klikając polecenie **+**.  Dla każdego obiektu zostaną zebrane tylko komunikatów dla wybranej ważności.  Sprawdzanie ważności dla konkretnego obiektu, który chcesz zebrać.  Nie można podać wszelkie dodatkowe kryteria filtrowania wiadomości.
 
 ![Konfigurowanie usługi Syslog](media/log-analytics-data-sources-syslog/configure.png)
 
@@ -138,8 +138,8 @@ Należy usunąć obiekt przez usunięcie jego sekcji pliku konfiguracji.  Można
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Zbieranie danych z dodatkowych portów usługi Syslog
 Agent pakietu OMS odbiera komunikaty dziennika systemowego na lokalnym kliencie na porcie 25224.  Po zainstalowaniu agenta domyślnej konfiguracji programu syslog jest stosowane i znaleźć w następującej lokalizacji:
 
-* Rsyslog:`/etc/rsyslog.d/95-omsagent.conf`
-* SYSLOG ng:`/etc/syslog-ng/syslog-ng.conf`
+* Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
+* SYSLOG ng: `/etc/syslog-ng/syslog-ng.conf`
 
 Można zmienić numer portu przez utworzenie dwóch plików konfiguracyjnych: FluentD pliku konfiguracji i pliku ng rsyslog lub syslog, w zależności od demon Syslog został zainstalowany.  
 
@@ -200,11 +200,11 @@ Poniższa tabela zawiera przykłady różnych dziennika zapytań, które pobiera
 | Zapytanie | Opis |
 |:--- |:--- |
 | Dziennik systemu |Wszystkie audyt dzienników systemowych. |
-| SYSLOG &#124; gdy poziom ważności == "error" |Wszystkie rekordy dziennika systemowego o ważności błędu. |
+| SYSLOG &#124; gdzie poziom ważności == "error" |Wszystkie rekordy dziennika systemowego o ważności błędu. |
 | SYSLOG &#124; Podsumuj AggregatedValue = count() przez komputer |Liczba Syslog rejestruje przez komputer. |
 | SYSLOG &#124; Podsumuj AggregatedValue = count() przez funkcje |Liczba Syslog rejestruje przez funkcje. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania.
 * Użyj [pola niestandardowe](log-analytics-custom-fields.md) do analizowania danych z rekordów dziennika systemowego do poszczególnych pól.
 * [Konfigurowanie agentów systemu Linux](log-analytics-linux-agents.md) służąca do gromadzenia innych typów danych.

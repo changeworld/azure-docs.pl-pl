@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 54de948597a5eddfcc808371c61e36d45089abc4
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Wersje interfejsu API dostawcy zasobów obsługiwane przez profile w stosie Azure
 
@@ -30,7 +30,7 @@ Profil interfejsu API używa trzech konwencji nazewnictwa:
 
 Opis profilów interfejsu API oraz wersji release okresach stosu Azure można znaleźć [profile wersji Zarządzanie interfejsu API w stosie Azure](azure-stack-version-profiles.md).
 
-> [!note]  
+> [!Note]  
 > **Najnowsze** profilu interfejsu API zawiera najnowszą wersję interfejsu API dostawcy zasobu, a nie znajduje się w tym artykule.
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>Omówienie 2018-03-01-hybrydowego

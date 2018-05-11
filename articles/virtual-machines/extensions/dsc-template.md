@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 7657f27e25af62f13371a9216596f142dc2491dd
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d19d33d7d8d19923e814b8685c3e56553f85850d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -394,6 +394,6 @@ Postępuj zgodnie z formatu podany w poprzednim przykładzie. Obserwowanie ofert
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [zestawów za pomocą skalowania maszyny wirtualnej z rozszerzeniem Azure DSC](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
-- Uzyskać więcej informacji na temat [zarządzania poświadczeniami bezpiecznego DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Pobierz [wprowadzenie do obsługi rozszerzenia usługi Konfiguracja DSC Azure](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Uzyskać więcej informacji na temat [zarządzania poświadczeniami bezpiecznego DSC](dsc-credentials.md).
+- Pobierz [wprowadzenie do obsługi rozszerzenia usługi Konfiguracja DSC Azure](dsc-overview.md).
 - Aby uzyskać więcej informacji o konfiguracji DSC środowiska PowerShell, przejdź do [Centrum dokumentacji programu PowerShell](/powershell/dsc/overview).

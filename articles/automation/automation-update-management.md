@@ -3,16 +3,17 @@ title: Aktualizacja rozwiązania do zarządzania na platformie Azure
 description: Ten artykuł pomaga zrozumieć, jak używać tego rozwiązania do zarządzania aktualizacjami komputerów z systemami Windows i Linux.
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 5c76114484d10873eeb2d7a4516d4196b1d8aaf6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e23db77a1be1650c0a10e45b8b38d232e41428f6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -194,12 +195,12 @@ Utwórz nowe wdrożenie aktualizacji, klikając **harmonogram wdrożenia aktuali
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Linux lub Windows|
 | Komputery do zaktualizowania |Wybierz wyszukiwanie, Saved lub wybierz komputer z listy rozwijanej i wybierz poszczególne maszyny |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Aktualizacje do wykluczenia|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Aktualizacje, które mają zostać wykluczone|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
 |Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
 
-## <a name="update-classifications"></a>Aktualizuj klasyfikacje
+## <a name="update-classifications"></a>Klasyfikacje aktualizacji
 
 Poniższe tabele zawierają listę klasyfikacje aktualizacji w zarządzania aktualizacjami oraz definicji dla każdej klasyfikacji.
 
@@ -292,7 +293,7 @@ Jeśli wystąpią problemy podczas próby dołączenia rozwiązania lub maszyny 
 | Certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com</br>nie został wystawiony przez urząd certyfikacji</br>używany na potrzeby usług firmy Microsoft. Kontakt</br>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje</br>komunikację TLS/SSL. |Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning)|
 | Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Nie można utworzyć certyfikatu z podpisem własnym. ---></br>System.UnauthorizedAccessException: Odmowa dostępu. | Niepowodzenie generowania certyfikatu z podpisem własnym | Sprawdź, czy konto systemowe ma</br>dostęp do odczytu do folderu:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Nadal samouczkiem, aby dowiedzieć się, jak zarządzanie aktualizacjami dla maszyn wirtualnych systemu Windows.
 

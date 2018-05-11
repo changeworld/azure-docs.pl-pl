@@ -3,16 +3,17 @@ title: Kierować aktualizacje przy użyciu kolekcji SCCM automatyzacji Azure —
 description: Ten artykuł ma na celu ułatwienie konfigurowania programu System Center Configuration Manager za pomocą tego rozwiązania do zarządzania aktualizacjami komputerów zarządzanych przez program SCCM.
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 481195538a8c0ece572b4589ea2c2303e559fc44
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 196021a95b57c3295de79ca13f578bdb70c39df0
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integracja programu System Center Configuration Manager z zarządzania aktualizacjami
 
@@ -48,4 +49,4 @@ Do zarządzania aktualizacjami maszyn wirtualnych z systemem Windows Server, kt�
 
 Po wykonaniu tej zmiany konfiguracji, należy utworzyć nowe wdrożenie wykonanie kroków opisanych w [tworzenia wdrożenia aktualizacji](automation-tutorial-update-management.md#schedule-an-update-deployment) i wybierz **zaimportowane grupy** na **typu** listy rozwijanej wybierz odpowiednią kolekcję programu Configuration Manager.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki

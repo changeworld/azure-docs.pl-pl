@@ -15,16 +15,16 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 4240b4a2aa14a0ac1a78c4faca74950b934955e6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d636542c788aff43acf9e35583b4c0615fe0c7db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Rozpoczynanie pracy z serwera Proxy aplikacji i zainstalować łącznik
 W tym artykule przedstawiono procedurę włączania serwera proxy aplikacji usługi Microsoft Azure AD dla katalogu w chmurze w ramach usługi Azure AD.
 
-Jeśli nie masz jeszcze znane korzyści w zakresie zabezpieczeń i wydajności serwera Proxy aplikacji oferuje organizacji, Dowiedz się więcej o [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](active-directory-application-proxy-get-started.md).
+Jeśli nie masz jeszcze znane korzyści w zakresie zabezpieczeń i wydajności serwera Proxy aplikacji oferuje organizacji, Dowiedz się więcej o [jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych](manage-apps/application-proxy.md).
 
 ## <a name="application-proxy-prerequisites"></a>Wymagania wstępne serwera proxy aplikacji
 Wymagania umożliwiające włączenie i używanie usług serwera proxy aplikacji:

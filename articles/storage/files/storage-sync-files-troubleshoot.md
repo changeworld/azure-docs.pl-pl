@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie problemów z synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Rozwiązywania typowych problemów z synchronizacją plików Azure."
+title: Rozwiązywanie problemów z synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Rozwiązywania typowych problemów z synchronizacją plików Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Rozwiązywanie problemów z synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -28,12 +28,20 @@ W tym artykule zaprojektowano w celu ułatwienia rozwiązywania oraz usuwania pr
 1. W sekcji komentarzy w tym artykule.
 2. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure pliki UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie pomocy technicznej, w portalu Azure na **pomocy** wybierz opcję **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowy obsługuje żądania**.
+4. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie pomocy technicznej, w portalu Azure na **pomocy** wybierz opcję **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowy obsługuje żądania**.
 
 ## <a name="storage-sync-service-object-management"></a>Magazyn usługi synchronizacji obiektu zarządzania
 Jeśli to zrobisz przeniesienie zasobów z jedną subskrypcję do innej subskrypcji zasobów synchronizacji (usługa synchronizacji magazynu) plików zostanie zablokowane przenoszony. 
 
 ## <a name="agent-installation-and-server-registration"></a>Agent instalacji i serwera rejestracji
+### <a name="during-server-registration-get-the-error-the-term-find-azurermresource-is-not-recognized-as-the-name"></a>Podczas rejestracji serwera komunikat o błędzie "termin"Znajdź AzureRMResource"nie został rozpoznany jako nazwa,..."
+Problem polega na tym, że polecenie cmdlet Znajdź AzureRMResource została zmieniona w usłudze AzureRM IPv6.  Następnej wersji agenta synchronizacji zostanie rozwiązany do obsługi AzureRM IPv6.  Do tego czasu można obejść ten problem przez:
+1. Zatrzymaj bieżący ServerRegistration.exe za pomocą polecenia taskmgr
+2. Wywołaj okno wiersza polecenia programu PowerShell jako Administrator
+3. PS C:\> AzureRM odinstalowania modułu
+4. PS C:\> install-module-name AzureRM - RequiredVersion 5.7.0
+5. Uruchom C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
+
 <a id="agent-installation-failures"></a>**Rozwiązywanie problemów z niepowodzeniem instalacji agenta**  
 W przypadku niepowodzenia instalacji agenta synchronizacji plików Azure w wierszu polecenia z podwyższonym poziomem uprawnień uruchom następujące polecenie, aby włączyć rejestrowanie podczas instalacji agenta:
 

@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: sujayt
-ms.openlocfilehash: 215874020395faebd70b6dd15a29f1bf23638a84
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji z jednego regionu Azure do innego
 
@@ -175,7 +175,7 @@ GRS | Obsługiwane |
 RA-GRS | Obsługiwane |
 ZRS | Nieobsługiwane |  
 Chłodny i gorących magazynu | Nieobsługiwane | Dyski maszyny wirtualnej nie są obsługiwane na magazynu chłodnego i gorących
-Wirtualne sieci punktów końcowych usług (Azure Storage zapory i sieci wirtualne)  | Nie | Zezwalanie na dostęp do określonych sieci wirtualnych platformy Azure na kontach magazynu pamięci podręcznej używany do przechowywania replikowanych danych nie jest obsługiwane.
+Usługa Azure Storage zapory dla sieci wirtualnej  | Nie | Zezwalanie na dostęp do określonych sieci wirtualnych platformy Azure na kontach magazynu pamięci podręcznej używany do przechowywania replikowanych danych nie jest obsługiwane.
 Konta magazynu ogólnego przeznaczenia V2 (zarówno gorącego i chłodnej warstwy) | Nie | Zwiększenie kosztów transakcji znacznie w porównaniu do ogólnego przeznaczenia V1 kont magazynu
 
 >[!IMPORTANT]
@@ -200,6 +200,8 @@ Nieuwierzytelnione serwera Proxy | Obsługiwane | Zapoznaj się [wytycznych siec
 Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna używa wychodzące połączenie z uwierzytelnionego serwera proxy, nie mogą być replikowane za pomocą usługi Azure Site Recovery.    
 Sieci VPN między lokacjami z lokalnymi (z lub bez ExpressRoute)| Obsługiwane | Upewnij się, że Udr i grup NSG są skonfigurowane w taki sposób, że ruch odzyskiwania lokacji nie jest kierowany do lokalnego. Zapoznaj się [wytycznych sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
 Sieć wirtualna połączenia sieci Wirtualnej | Obsługiwane | Zapoznaj się [wytycznych sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
+Punkty końcowe usługi sieci wirtualnej | Obsługiwane | Azure zapór magazynowania dla sieci wirtualne nie są obsługiwane. Zezwalanie na dostęp do określonych sieci wirtualnych platformy Azure na kontach magazynu pamięci podręcznej używany do przechowywania replikowanych danych nie jest obsługiwane.
+Accelerated Networking | Nieobsługiwane | Mogą być replikowane maszyny Wirtualnej za pomocą przyspieszony sieci włączone, ale tryb failover maszyna wirtualna nie będzie miał przyspieszony sieci włączone. Również zostaną wyłączone przyspieszonego sieci dla źródłowej maszyny Wirtualnej na powrót po awarii.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

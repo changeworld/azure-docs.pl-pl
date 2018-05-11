@@ -4,16 +4,17 @@ description: W tym artykule opisano sposób tworzenia i sprawdzania poprawności
 keywords: uwierzytelnianie aws, konfigurowanie aws
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f8ac816e03df9bb41207a0463d3fa8aa58754943
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2e48dbaffb8431a9275ec8e3d5f2467e2c2bd157
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Uwierzytelnianie elementów Runbook w usłudze Amazon Web Services
 

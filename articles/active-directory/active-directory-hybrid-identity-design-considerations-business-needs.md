@@ -1,11 +1,11 @@
 ---
-title: "Wymagania dotyczące tożsamości dla hybrydowych chmury projektowania tożsamości Azure | Dokumentacja firmy Microsoft"
-description: "Ustalenie potrzeb firmy firmy, które prowadzą do definiowania wymagań dotyczących projektowania tożsamości hybrydowej."
-documentationcenter: 
+title: Wymagania dotyczące tożsamości dla hybrydowych chmury projektowania tożsamości Azure | Dokumentacja firmy Microsoft
+description: Ustalenie potrzeb firmy firmy, które prowadzą do definiowania wymagań dotyczących projektowania tożsamości hybrydowej.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5741a5024b5f5105a71d9404191601b951a301e4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Określenie wymagań dotyczących tożsamości dla rozwiązania z tożsamością hybrydową
 Pierwszy krok w projektowaniu rozwiązania z tożsamością hybrydową jest ustalenie wymagań dotyczących organizacji biznesowych, która będzie wykorzystanie tego rozwiązania.  Tożsamość hybrydowa uruchamia rolę pomocniczych (obsługuje on innych rozwiązań w chmurze, zapewniając uwierzytelniania) i przechodzi do mają nowe, ciekawe funkcje, które odblokować nowych obciążeń dla użytkowników.  Te obciążenia lub usługi, które chcesz przyjąć dla użytkowników będzie określać wymagania dotyczące projektowania tożsamości hybrydowej.  Te usługi i obciążeń należy wykorzystać tożsamość hybrydowa lokalnie i w chmurze.  
 
 Należy zapoznać się z kluczowymi aspektami biznesowe, aby zrozumieć, jakie są wymagania teraz i firma planuje w przyszłości. Jeśli nie masz widoczność długoterminowej strategii dla projektowania tożsamości hybrydowej prawdopodobnie czy rozwiązania nie będzie skalowalne miarę wzrostu i rozwoju firmy.   T on diagramie poniżej przedstawiono przykład architektura tożsamości hybrydowej i obciążeń, które są trwa odblokowywanie dla użytkowników. Jest to przykład wszystkie nowe możliwości, które można odblokować i dostarczane ze strategią tożsamość hybrydowa stałe. 
 
-Niektóre składniki, które są częścią architektury tożsamości hybrydowej![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
+Niektóre składniki, które są częścią architektury tożsamości hybrydowej ![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Określanie potrzeb biznesowych
 Każda firma będzie miała inne wymagania, nawet jeśli firmy działają w tej samej branży, organizację rzeczywiste wymagania mogą się różnić. Oczywiście można wykorzystywać najlepsze rozwiązania z branży, ale ostatecznie to potrzeby biznesowe firmy, które prowadzą do definiowania wymagań dotyczących projektowania tożsamości hybrydowej. 
@@ -56,7 +56,7 @@ Należy mieć świadomość usługi w chmurze, które firma może mieć. Bardzo 
 * Trwa tej integracji w środowisku produkcyjnym lub jest on pilotażu?
 
 > [!NOTE]
-> Jeśli nie masz dokładne mapowania wszystkich aplikacji i usług w chmurze, można użyć narzędzia Cloud App Discovery. To narzędzie można udostępnić dział IT wgląd w Twojej organizacji wszystkie działalności biznesowej i użytkownika aplikacji w chmurze. Znacznie ułatwia to odkrywanie działań IT w organizacji, w tym szczegółów wzorów użytkowania oraz wszystkich użytkowników uzyskujących dostęp do aplikacji w chmurze. Aby uzyskać wstępne informacje, zobacz [Cloud app discovery](active-directory-cloudappdiscovery-whatis.md).
+> Jeśli nie masz dokładne mapowania wszystkich aplikacji i usług w chmurze, można użyć narzędzia Cloud App Discovery. To narzędzie można udostępnić dział IT wgląd w Twojej organizacji wszystkie działalności biznesowej i użytkownika aplikacji w chmurze. Znacznie ułatwia to odkrywanie działań IT w organizacji, w tym szczegółów wzorów użytkowania oraz wszystkich użytkowników uzyskujących dostęp do aplikacji w chmurze. Aby uzyskać wstępne informacje, zobacz [Cloud app discovery](manage-apps/cloud-app-discovery.md).
 > 
 > 
 
@@ -104,7 +104,7 @@ Należy również ocenić wymagań użytkownika. Ocena ważne jest, aby zdefinio
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Określenie wymagań synchronizacji katalogu](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
 ## <a name="see-also"></a>Zobacz także
