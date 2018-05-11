@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skala funkcji platformy Azure i hostingu
 
@@ -95,9 +95,7 @@ Kontroler skali w planie zużycie jest automatycznie skalowany zasobów Procesor
 Użycie zużycie plan hostingu, funkcja kodu pliki są przechowywane w udziałach plików Azure na koncie magazynu głównego funkcji. Podczas usuwania konta magazynu głównego aplikacji funkcji plików kodu funkcji zostaną usunięte i nie może zostać odzyskany.
 
 > [!NOTE]
-> Podczas korzystania z wyzwalacza obiektu blob w planie zużycia, może istnieć maksymalnie 10-minutowych opóźnienia w przetwarzaniu nowe obiekty BLOB, jeśli aplikacja funkcji przeszedł bezczynności. Po uruchomieniu aplikacji funkcja obiekty BLOB są przetwarzane natychmiast. Aby uniknąć tego opóźnienia początkowej, weź pod uwagę jedną z następujących opcji:
-> - Host aplikacji funkcji na plan usługi aplikacji z na zawsze włączone.
-> - Użyj innego mechanizmu wyzwalanie blob przetwarzania, takich jak subskrypcja siatki zdarzeń lub komunikat z kolejki, zawierający nazwę obiektu blob. Na przykład zobacz [przykłady dla obiektu blob danych wejściowych powiązania](functions-bindings-storage-blob.md#input---example).
+> Podczas korzystania z wyzwalacza obiektu blob w planie zużycia, może istnieć maksymalnie 10-minutowych opóźnienia w przetwarzaniu nowe obiekty BLOB, jeśli aplikacja funkcji przeszedł bezczynności. Po uruchomieniu aplikacji funkcja obiekty BLOB są przetwarzane natychmiast. Aby uniknąć tego opóźnienia zimnego, za pomocą plan usługi aplikacji na zawsze włączone, lub użyj wyzwalacza zdarzenia siatki. Aby uzyskać więcej informacji, zobacz [obiektu blob wyzwalacza powiązanie artykule](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Skalowanie środowiska wykonawczego
 

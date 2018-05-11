@@ -13,16 +13,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 5/9/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 905f6b13928d11243202059af0ad255971102da8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a907335ace1f6ea9ec427327d28ca9be5ce02fcc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Kopie zapasowe plików i aplikacji na stosie Azure
 Kopia zapasowa Azure umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji na stosie Azure. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować serwer kopii zapasowej Microsoft Azure jako maszynę wirtualną działającą na stosie Azure. Po zainstalowaniu serwera kopii zapasowej Azure, Dodawanie dysku systemu Azure, aby zwiększyć magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Serwer kopii zapasowej systemu Azure korzysta z magazynu Azure w celu przechowywania długoterminowego.
+
+> [!NOTE]
+> Jeśli serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager (DPM) są podobne, program DPM nie jest obsługiwane do użycia z programem Azure stosu.
+>
+
 
 ## <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
 Serwer kopii zapasowej systemu Azure chroni następujące obciążenia maszyny wirtualnej Azure stosu.
@@ -49,7 +54,7 @@ Aby zainstalować serwer kopii zapasowej Azure na maszynie wirtualnej platformy 
 Aby uruchomić serwera usługi Kopia zapasowa Azure na maszynie wirtualnej platformy Azure stosu, użyj rozmiaru A2 lub większym. Aby uzyskać pomoc przy wyborze rozmiaru maszyny wirtualnej, należy pobrać [kalkulatora rozmiaru maszyny Wirtualnej Azure stosu](https://www.microsoft.com/download/details.aspx?id=56832).
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Sieci wirtualne na maszynach wirtualnych Azure stosu
-Wszystkie maszyny wirtualne używane w stos Azure obciążenia muszą należeć do tej samej sieci wirtualnej platformy Azure i subskrypcję Azure. 
+Wszystkie maszyny wirtualne używane w stos Azure obciążenia muszą należeć do tej samej sieci wirtualnej platformy Azure i subskrypcję Azure.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Przechowywanie danych kopii zapasowej na dysku lokalnym oraz na platformie Azure
 Serwer kopii zapasowej systemu Azure przechowuje dane kopii zapasowej na dyskach platformy Azure dołączonych do maszyny wirtualnej dla operacyjnych dotyczących odzyskiwania. Gdy dyski i miejsca do magazynowania są dołączone do maszyny wirtualnej, serwer kopii zapasowej Azure zarządza magazynu. Ilość miejsca w magazynie danych kopii zapasowych zależy od liczby i rozmiaru dysków dołączonych do każdego [maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-storage-overview.md). Każdego rozmiaru maszyny Wirtualnej Azure stosu ma maksymalną liczbę dysków, które może zostać dołączony do maszyny wirtualnej. Na przykład A2 jest cztery dyski. A3 jest ośmiu dysków. A4 jest 16 dysków. Ponownie rozmiaru i liczby dysków określa puli całkowita magazynu kopii zapasowych.
@@ -82,9 +87,9 @@ Jeśli chcesz skalowania wdrożenia, dostępne są następujące opcje:
 
 ## <a name="bare-metal-recovery-for-azure-stack-vm"></a>Odzyskiwanie stosu Azure maszyny Wirtualnej
 
-Kopia zapasowa kompletnego stanu odzyskiwania systemu od zera (BMR) chroni pliki systemu operacyjnego i wszystkich danych wolumin krytyczny, z wyjątkiem danych użytkownika. Kopia zapasowa BMR obejmuje kopię zapasową stanu systemu. Poniższe procedury wyjaśniają, jak przywrócić dane odzyskiwania systemu od ZERA. 
+Kopia zapasowa kompletnego stanu odzyskiwania systemu od zera (BMR) chroni pliki systemu operacyjnego i wszystkich danych wolumin krytyczny, z wyjątkiem danych użytkownika. Kopia zapasowa BMR obejmuje kopię zapasową stanu systemu. Poniższe procedury wyjaśniają, jak przywrócić dane odzyskiwania systemu od ZERA.
 
-### <a name="run-recovery-on-the-azure-backup-server"></a>Uruchamianie odzyskiwania na serwer kopii zapasowej systemu Azure 
+### <a name="run-recovery-on-the-azure-backup-server"></a>Uruchamianie odzyskiwania na serwer kopii zapasowej systemu Azure
 
 Otwórz konsolę serwer kopii zapasowej Azure.
 
@@ -102,9 +107,9 @@ W konsoli serwera usługi Kopia zapasowa Azure:
 
 ### <a name="restore-the-machine"></a>Przywrócenie maszyny
 
-1. Na maszynie wirtualnej, której chcesz przywrócić odzyskiwania systemu od ZERA Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i wpisz następujące polecenia. **/bootore** Określa, czy środowisko odzyskiwania systemu Windows jest uruchamiany automatycznie podczas następnego uruchomienia systemu.
+1. Na maszynie wirtualnej, której chcesz przywrócić odzyskiwania systemu od ZERA Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i wpisz następujące polecenia. **/boottore** Określa, czy środowisko odzyskiwania systemu Windows jest uruchamiany automatycznie podczas następnego uruchomienia systemu.
 ```
-Reagent /boottore
+Reagentc /boottore
 shutdown /r /t 0
 ```
 

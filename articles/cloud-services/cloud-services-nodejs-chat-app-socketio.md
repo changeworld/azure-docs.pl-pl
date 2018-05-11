@@ -1,11 +1,11 @@
 ---
-title: "Aplikacji node.js za pomocą użyciu biblioteki Socket.io - Azure"
-description: "Dowiedz się, jak używać użyciu biblioteki socket.io w aplikacji node.js hostowanej na platformie Azure."
+title: Aplikacji node.js za pomocą użyciu biblioteki Socket.io - Azure
+description: Dowiedz się, jak używać użyciu biblioteki socket.io w aplikacji node.js hostowanej na platformie Azure.
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: 186cf5e22468b7abf58d6366ca0dec616be23cc6
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 0139c42334b53364aee8cfd29cfa771d47e2ccc8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Tworzenie aplikacji czatu Node.js przy użyciu biblioteki Socket.IO w usługi w chmurze platformy Azure
 
@@ -61,7 +61,7 @@ Dla tego projektu, użyjemy przykład rozmów z [repozytorium GitHub użyciu bib
 
 1. Utwórz kopię lokalną repozytorium przy użyciu **klonowania** przycisku. Można także użyć **ZIP** przycisk, aby pobrać projekt.
    
-   ![Wyświetlanie https://github.com/LearnBoost/socket.io/tree/master/examples/chat, z ikoną pobierania ZIP wyróżnione oknie przeglądarki][chat-example-view]
+   ![Wyświetlanie okna przeglądarki https://github.com/LearnBoost/socket.io/tree/master/examples/chat, z ikoną pobierania ZIP wyróżnione][chat-example-view]
 2. Przejdź struktury katalogu lokalnego repozytorium, dopóki przyjeździe **przykłady\\rozmów** katalogu. Skopiuj zawartość tego katalogu, aby **C:\\węzła\\chatapp\\WorkerRole1** Katalog utworzony wcześniej.
    
    ![Eksplorator, wyświetlania zawartości przykłady\\katalogu rozmów wyodrębnione z archiwum][chat-contents]
@@ -148,7 +148,7 @@ Aplikacja jest teraz uruchomiona na platformie Azure i możliwość przekazywani
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób tworzenia aplikacji rozmów podstawowe hostowanych w usłudze w chmurze Azure. Aby uzyskać informacje o obsłudze tej aplikacji w witrynie sieci Web platformy Azure, zobacz [tworzenie aplikacji czatu Node.js przy użyciu biblioteki Socket.IO w witrynie sieci Web Azure][chatwebsite].
 
 Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów środowiska Node.js](/develop/nodejs/).
