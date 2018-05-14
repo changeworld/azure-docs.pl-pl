@@ -13,16 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/9/2018
+ms.date: 5/11/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: a907335ace1f6ea9ec427327d28ca9be5ce02fcc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 99ac43efa5d3211bbe2d790f28532e682058313c
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Kopie zapasowe plików i aplikacji na stosie Azure
-Kopia zapasowa Azure umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji na stosie Azure. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować serwer kopii zapasowej Microsoft Azure jako maszynę wirtualną działającą na stosie Azure. Po zainstalowaniu serwera kopii zapasowej Azure, Dodawanie dysku systemu Azure, aby zwiększyć magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Serwer kopii zapasowej systemu Azure korzysta z magazynu Azure w celu przechowywania długoterminowego.
+Kopia zapasowa Azure umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji na stosie Azure. Aby utworzyć kopię zapasową plików i aplikacji, należy zainstalować serwer kopii zapasowej Microsoft Azure jako maszynę wirtualną działającą na stosie Azure. Można chronić wszystkie aplikacje uruchomione na każdym serwerze stosu Azure w tej samej sieci wirtualnej. Po zainstalowaniu serwera kopii zapasowej Azure, Dodawanie dysku systemu Azure, aby zwiększyć magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Serwer kopii zapasowej systemu Azure korzysta z magazynu Azure w celu przechowywania długoterminowego.
 
 > [!NOTE]
 > Jeśli serwer usługi Kopia zapasowa Azure i System Center Data Protection Manager (DPM) są podobne, program DPM nie jest obsługiwane do użycia z programem Azure stosu.
@@ -44,8 +44,7 @@ Serwer kopii zapasowej systemu Azure chroni następujące obciążenia maszyny w
 | SQL Server 2012 z dodatkiem SP1 | Database (Baza danych) |
 | SharePoint 2013 | Farma, baza danych, serwera sieci Web, serwer sieci web |
 | SharePoint 2010 | Farma, baza danych, serwera sieci Web, serwer sieci web |
-| Stan systemu | Stan systemu |
-| Odzyskiwania kompletnego stanu systemu od zera (BMR) | Odzyskiwania systemu od ZERA, stan systemu plików, folderów | 
+
 
 ## <a name="install-azure-backup-server"></a>Zainstaluj serwer kopii zapasowej systemu Azure
 Aby zainstalować serwer kopii zapasowej Azure na maszynie wirtualnej platformy Azure stosu, zapoznaj się z artykułem [przygotowanie do tworzenia kopii zapasowych obciążeń przy użyciu serwera usługi Kopia zapasowa Azure](backup-azure-microsoft-azure-backup.md). Przed zainstalowaniem i skonfigurowaniem serwera usługi Kopia zapasowa Azure, należy pamiętać o następujących czynności:
@@ -76,47 +75,13 @@ Jeśli udostępniony innym maszynom wirtualnym, rozmiar konta magazynu i limity 
     - danych przywróconych z chmury (lokalny obszar przemieszczania)
   
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurowanie magazynu dysku tymczasowym kopia zapasowa Azure
-Każda maszyna wirtualna Azure stosu jest dostarczany z magazynu na dysku tymczasowym, który jest dostępny dla użytkownika jako wolumin D:`\`. Lokalny obszar przemieszczania wymagany dla usługi Kopia zapasowa Azure można skonfigurować na D:`\`, i lokalizację pamięci podręcznej można umieścić na dysku C:`\`. W ten sposób magazynu nie trzeba używać przeciwną na dyskach danych dołączonych do maszyny wirtualnej serwera usługi Kopia zapasowa Azure.
+Każda maszyna wirtualna Azure stosu jest dostarczany z magazynu na dysku tymczasowym, który jest dostępny dla użytkownika jako wolumin `D:\`. Lokalny obszar przemieszczania wymagany dla usługi Kopia zapasowa Azure można skonfigurować w celu znajdują się w `D:\`, i lokalizację pamięci podręcznej można umieścić na `C:\`. W ten sposób magazynu nie trzeba używać przeciwną na dyskach danych dołączonych do maszyny wirtualnej serwera usługi Kopia zapasowa Azure.
 
 ### <a name="scaling-deployment"></a>Skalowania wdrożenia
 Jeśli chcesz skalowania wdrożenia, dostępne są następujące opcje:
   - Skalowanie w górę — zwiększenie rozmiaru maszyny wirtualnej serwera usługi Kopia zapasowa Azure z serii D serii i zwiększyć Magazyn lokalny [zgodnie z instrukcjami maszyny wirtualnej Azure stosu](../azure-stack/user/azure-stack-manage-vm-disks.md).
   - Korzystaj — wysyłanie starszych danych do serwera usługi Kopia zapasowa Azure i zachowywanie tylko najnowszych danych w magazynie dołączonym do serwera kopii zapasowej Azure.
   - Skalowanie w poziomie — dodawanie kolejnych serwerów kopia zapasowa Azure w celu włączenia ochrony obciążeń.
-
-
-## <a name="bare-metal-recovery-for-azure-stack-vm"></a>Odzyskiwanie stosu Azure maszyny Wirtualnej
-
-Kopia zapasowa kompletnego stanu odzyskiwania systemu od zera (BMR) chroni pliki systemu operacyjnego i wszystkich danych wolumin krytyczny, z wyjątkiem danych użytkownika. Kopia zapasowa BMR obejmuje kopię zapasową stanu systemu. Poniższe procedury wyjaśniają, jak przywrócić dane odzyskiwania systemu od ZERA.
-
-### <a name="run-recovery-on-the-azure-backup-server"></a>Uruchamianie odzyskiwania na serwer kopii zapasowej systemu Azure
-
-Otwórz konsolę serwer kopii zapasowej Azure.
-
-1. W konsoli, kliknij przycisk **odzyskiwania**, Znajdź maszyny, której chcesz odzyskać, a następnie kliknij przycisk **odzyskiwaniu bez systemu operacyjnego**.
-2. Dostępne punkty odzyskiwania są wyświetlane w kalendarzu pogrubioną czcionką. Wybierz datę i godzinę dla punktu odzyskiwania, który ma być używany.
-3. W **Wybieranie typu odzyskiwania**, wybierz pozycję **Kopiuj do folderu sieciowego**.
-4. W **określ miejsce docelowe**, wybierz opcję, jeśli chcesz skopiować dane. Należy pamiętać, że wybrany lokalizacja docelowa musi mieć wystarczającej ilości miejsca dla punktu odzyskiwania. Zalecane jest utworzenie nowego folderu.
-5. W **Określanie opcji odzyskiwania**, wybierz ustawienia zabezpieczeń, aby zastosować i określ, czy szybciej odzyskiwać dane przy użyciu migawek sprzętowych opartych na sieci SAN.     Migawek sprzętowych opartych na sieci SAN są opcję tylko wtedy, gdy sieć SAN z tej funkcji, włączona i możliwość tworzenia i podziałem jako możliwego do zapisu. Również migawek sprzętowych opartych na sieci SAN do pracy, chronionej maszyny i serwer kopii zapasowej Azure musi być podłączony do tej samej sieci.
-6. Ustaw opcje powiadamiania, a następnie kliknij przycisk **odzyskać** na **Podsumowanie** strony.
-
-### <a name="set-up-the-share-location"></a>Skonfiguruj lokalizację udziału
-W konsoli serwera usługi Kopia zapasowa Azure:
-1. W lokalizacji przywracania przejdź do folderu zawierającego kopię zapasową.
-2. Udostępnij folder powyżej WindowsImageBackup, tak aby głównym folderu udostępnionego jest WindowsImageBackup folder. Jeśli nie jest udostępniony WindowsImageBackup folder, operacja przywracania nie odnajdzie kopii zapasowej. Nawiązywanie połączeń za pomocą środowiska WinRE, konieczne jest dostępny WinRE udziału i poprawny adres IP i poświadczeń.
-
-### <a name="restore-the-machine"></a>Przywrócenie maszyny
-
-1. Na maszynie wirtualnej, której chcesz przywrócić odzyskiwania systemu od ZERA Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i wpisz następujące polecenia. **/boottore** Określa, czy środowisko odzyskiwania systemu Windows jest uruchamiany automatycznie podczas następnego uruchomienia systemu.
-```
-Reagentc /boottore
-shutdown /r /t 0
-```
-
-2. W oknie dialogowym Otwieranie wybierz język i ustawienia regionalne. Na **zainstalować** ekranu wybierz **Napraw komputer**.
-3. Na **opcje odzyskiwania systemu** wybierz pozycję **Przywróć komputer przy użyciu utworzonego wcześniej obrazu systemu**.
-4. Na **Wybierz kopię zapasową obrazu systemu** wybierz pozycję **wybierz obraz systemu** > **zaawansowane** > **Wyszukaj obraz systemu w sieci**. Jeśli zostanie wyświetlone ostrzeżenie, wybierz **tak**. Aby wybrać obraz, przejdź do udziału sieciowego, wprowadź poświadczenia, a następnie wybierz punkt odzyskiwania. To skanowanie w poszukiwaniu określonych kopii zapasowych, które są dostępne w tym punkcie odzyskiwania. Wybierz punkt odzyskiwania.
-5. W **wybierz sposób przywracania kopii zapasowej**, wybierz pozycję **Format i ponownie podziel na partycje dysków**. Na następnym ekranie sprawdź ustawienia i kliknij przycisk **Zakończ** do rozpoczęcia zadania przywracania. Ponowne uruchomienie zgodnie z potrzebami.
 
 ## <a name="see-also"></a>Zobacz także
 Uzyskać na ochrona innych obciążeń za pomocą serwera usługi Kopia zapasowa Azure zobacz następujące artykuły:

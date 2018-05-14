@@ -32,6 +32,16 @@
       href: use-deep-learning-dsvm.md
     - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
       href: use-geo-ai-dsvm.md
+- name: Wskazówki dla przedsiębiorstw
+  items:
+    - name: Omówienie
+      href: dsvm-enterprise-overview.md
+    - name: Skalowanie
+      href: dsvm-pools.md
+    - name: Integracja z usługą Active Directory
+      href: dsvm-common-identity.md
+    - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
+      href: dsvm-secure-access-keys.md
 - name: Dokumentacja
   expanded: true
   items:

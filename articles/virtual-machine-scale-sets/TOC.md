@@ -29,6 +29,8 @@
 ### [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-autoscale-cli.md)
 ### [Azure PowerShell](tutorial-autoscale-powershell.md)
 ### [Szablon](tutorial-autoscale-template.md)
+## Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure za pomocą niestandardowego obrazu narzędzia Packer
+### [Interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/learn/deploy-custom-vmss-app/index)
 
 # Przykłady
 ## [Interfejs wiersza polecenia platformy Azure 2.0](cli-samples.md)

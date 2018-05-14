@@ -41,7 +41,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/iot-suite">Akceleratory rozwiązań Azure IoT</a>
+    - html: <a href="/azure/iot-suite">Akceleratory rozwiązań IoT</a>
     - html: <a href="/azure/iot-central">Centrala IoT</a>
   - type: paragraph
     text: Kompiluj przy użyciu ofert typu „platforma jako usługa” (PaaS).
