@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 702fe812d4ff80c9f18a163af38f883ed3739f12
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 09f3bf3726a4a359d8c54d45843b08871d82f159
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -244,7 +244,7 @@ Przybliżona godzina ukończone: 20 minut
 | Basic usługi Microsoft Azure AD lub subskrypcję usługi premium i katalog usługi Azure AD, dla którego jesteś administratorem globalnym | [Wersje usługi Azure Active Directory](active-directory-editions.md) |
 | Aplikacja sieci web hostowanej lokalnego, który chcesz skonfigurować dla dostępu zdalnego |  |
 | Serwer z systemem Windows Server 2012 R2 lub Windows 8.1 lub nowszym, na którym można zainstalować łącznik serwera Proxy aplikacji | [Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](application-proxy-understand-connectors.md) |
-| Jeśli w ścieżce znajduje się zapora, upewnij się, że jest on otwarty, aby łącznik mogą wysyłać żądania HTTPS (TCP) do serwera Proxy aplikacji | [Włącz serwer Proxy aplikacji w portalu Azure: wymagania wstępne serwera Proxy aplikacji](active-directory-application-proxy-enable.md#application-proxy-prerequisites) |
+| Jeśli w ścieżce znajduje się zapora, upewnij się, że jest on otwarty, aby łącznik mogą wysyłać żądania HTTPS (TCP) do serwera Proxy aplikacji | [Włącz serwer Proxy aplikacji w portalu Azure: wymagania wstępne serwera Proxy aplikacji](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
 | Jeśli organizacja używa serwerów proxy, aby nawiązać połączenie z Internetem, wykonaj przyjrzeć się we wpisie blogu pracy z istniejących serwerów proxy lokalnymi szczegółowe informacje o sposobach ich konfigurowania | [Praca z istniejącym lokalnych serwerów proxy](application-proxy-working-with-proxy-servers.md) |
 
 
@@ -252,9 +252,9 @@ Przybliżona godzina ukończone: 20 minut
 
 | Krok | Zasoby |
 | --- | --- |
-| Zainstaluj łącznik na serwerze | [Włącz serwer Proxy aplikacji w portalu Azure: Instalowanie i rejestrowanie łącznika](active-directory-application-proxy-enable.md#install-and-register-a-connector) |
-| Publikowanie aplikacji lokalnych w usłudze Azure AD jako aplikacja serwera Proxy aplikacji | [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md) |
-| Przypisywanie użytkowników testowych | [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD: Dodaj użytkownika testowego](application-proxy-publish-azure-portal.md#add-a-test-user) |
+| Zainstaluj łącznik na serwerze | [Włącz serwer Proxy aplikacji w portalu Azure: Instalowanie i rejestrowanie łącznika](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
+| Publikowanie aplikacji lokalnych w usłudze Azure AD jako aplikacja serwera Proxy aplikacji | [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md) |
+| Przypisywanie użytkowników testowych | [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD: Dodaj użytkownika testowego](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
 | Opcjonalnie można skonfigurować pojedynczy jednokrotnego dla użytkowników | [Podaj rejestracji jednokrotnej z serwera Proxy aplikacji usługi Azure AD](application-proxy-sso-azure-portal.md) |
 | Testowanie aplikacji, logując się do portalu MyApps jako przypisany użytkownik | https://myapps.microsoft.com |
 

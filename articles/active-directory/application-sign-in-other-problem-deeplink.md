@@ -1,11 +1,11 @@
 ---
-title: "Problemy przy logowaniu do aplikacji przy użyciu głębokiego łącza | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązywać problemy dotyczące uzyskiwania dostępu do aplikacji z adres URL głębokiego łącza za pomocą usługi Azure AD"
+title: Problemy przy logowaniu do aplikacji przy użyciu głębokiego łącza | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy dotyczące uzyskiwania dostępu do aplikacji z adres URL głębokiego łącza za pomocą usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f4c67961316c4b78b691a46b35bd0c19bb409fd8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bf357fef2aad85c45abb1fa8e06ff4420a6f14a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Problemy przy logowaniu do aplikacji przy użyciu głębokiego łącza
 
@@ -274,4 +274,4 @@ Otwórz bilet pomocy technicznej następujące informacje, jeśli są dostępne:
 -   Ślady fiddler
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](active-directory-application-proxy-sso-using-kcd.md)
+[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

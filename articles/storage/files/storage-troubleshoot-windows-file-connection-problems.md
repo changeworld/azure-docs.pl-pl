@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie problemów plików Azure w systemie Windows | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów plików Azure w systemie Windows"
+title: Rozwiązywanie problemów plików Azure w systemie Windows | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów plików Azure w systemie Windows
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 78170df99e9ced304bebd9112d79b5c7e402f218
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów plików Azure w systemie Windows
 
@@ -51,15 +51,15 @@ Połączenie z klienta, który wykonuje następujące czynności:
 
 Błąd systemowy 53 lub błąd systemu 67 może wystąpić, jeśli port 445 komunikacja wychodząca datacenter pliki Azure jest zablokowany. Aby wyświetlić podsumowanie usługodawców internetowych, które Zezwalaj lub nie zezwalaj na dostęp z portu 445, przejdź do [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Aby zrozumieć, czy jest to powód za komunikat "Błąd systemu 53", umożliwia Portqry zapytania TCP:445 punktu końcowego. Jeśli TCP:445 punkt końcowy jest wyświetlany jako filtrowane, TCP port jest zablokowany. Poniżej przedstawiono przykładowe zapytanie:
+Aby zrozumieć, czy jest to powód za komunikat "Błąd systemu 53", umożliwia Portqry zapytania TCP:445 punktu końcowego. Jeśli TCP:445 punkt końcowy jest wyświetlany jako filtrowane, TCP port jest zablokowany. Oto przykładowe zapytanie:
 
   `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
 
-Jeśli TCP port 445 jest zablokowany przez regułę wzdłuż ścieżki sieciowej, zostanie wyświetlony następujące dane wyjściowe:
+Jeśli port TCP 445 jest zablokowany przez regułę wzdłuż ścieżki sieciowej, zostaną wyświetlone następujące dane wyjściowe:
 
   `TCP port 445 (microsoft-ds service): FILTERED`
 
-Aby uzyskać więcej informacji o sposobie używania Portqry, zobacz [opis narzędzia wiersza polecenia Portqry.exe](https://support.microsoft.com/help/310099).
+Aby uzyskać więcej informacji o sposobie używania polecenia Portqry, zobacz artykuł [Description of the Portqry.exe command-line utility (Opis narzędzia wiersza polecenia Portqry.exe)](https://support.microsoft.com/help/310099).
 
 ### <a name="solution-for-cause-2"></a>Rozwiązanie dla przyczyny 2
 
@@ -181,7 +181,7 @@ Po skopiowaniu pliku za pośrednictwem sieci, plik jest odszyfrowywany na komput
 ### <a name="cause"></a>Przyczyna
 Ten problem może wystąpić, jeśli używasz systemu szyfrowania plików (EFS). Mogą zostać skopiowane pliki zaszyfrowane przez funkcję BitLocker do usługi pliki Azure. Jednak usługi pliki Azure nie obsługuje systemu szyfrowania plików NTFS.
 
-### <a name="workaround"></a>Obejście problemu
+### <a name="workaround"></a>Obejście
 Aby skopiować pliku za pośrednictwem sieci, należy najpierw musisz go odszyfrować. Użyj jednej z następujących metod:
 
 - Użyj **skopiuj /d** polecenia. Umożliwia on zaszyfrowane pliki można zapisać jako zaszyfrowanych plików w lokalizacji docelowej.

@@ -9,8 +9,8 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e23db77a1be1650c0a10e45b8b38d232e41428f6
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: c095576ccce7e32850c3fb2daf8303a0d6e957bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -195,12 +195,12 @@ Utwórz nowe wdrożenie aktualizacji, klikając **harmonogram wdrożenia aktuali
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Linux lub Windows|
 | Komputery do zaktualizowania |Wybierz wyszukiwanie, Saved lub wybierz komputer z listy rozwijanej i wybierz poszczególne maszyny |
-|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Aktualizacje, które mają zostać wykluczone|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
+|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Aktualizacje do wykluczenia|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
 |Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
 
-## <a name="update-classifications"></a>Klasyfikacje aktualizacji
+## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 
 Poniższe tabele zawierają listę klasyfikacje aktualizacji w zarządzania aktualizacjami oraz definicji dla każdej klasyfikacji.
 
@@ -228,10 +228,11 @@ Poniższe tabele zawierają listę klasyfikacje aktualizacji w zarządzania aktu
 
 Następujące adresy są wymagane w szczególności do zarządzania aktualizacjami. Komunikacja z tych adresów odbywa się za pośrednictwem portu 443.
 
-* *.ods.opinsights.azure.com
-* *.oms.opinsights.azure.com
-* ods.systemcenteradvisor.com
-* *.blob.core.windows.net
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 
 Aby uzyskać dodatkowe informacje na porty wymagane przez hybrydowy proces roboczy elementu Runbook [portów roli hybrydowego procesu roboczego](automation-hybrid-runbook-worker.md#hybrid-worker-role)
 
@@ -293,7 +294,7 @@ Jeśli wystąpią problemy podczas próby dołączenia rozwiązania lub maszyny 
 | Certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com</br>nie został wystawiony przez urząd certyfikacji</br>używany na potrzeby usług firmy Microsoft. Kontakt</br>administratorem sieci, aby sprawdzić, czy jest używany serwer proxy, który przechwytuje</br>komunikację TLS/SSL. |Serwer proxy/brama/zapora blokuje komunikację | [Przejrzyj wymagania dotyczące sieci](automation-hybrid-runbook-worker.md#network-planning)|
 | Nie można zarejestrować maszyny na potrzeby zarządzania poprawkami,</br>rejestracja nie powiodła się z powodu wyjątku</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Nie można utworzyć certyfikatu z podpisem własnym. ---></br>System.UnauthorizedAccessException: Odmowa dostępu. | Niepowodzenie generowania certyfikatu z podpisem własnym | Sprawdź, czy konto systemowe ma</br>dostęp do odczytu do folderu:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Nadal samouczkiem, aby dowiedzieć się, jak zarządzanie aktualizacjami dla maszyn wirtualnych systemu Windows.
 

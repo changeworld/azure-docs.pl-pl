@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: f7c6e3eeb8db75a3857e687fecc9ee2748e92696
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: fa596bf4941ac791fa1bc697399a4591d97ba68f
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby replikacji maszyny wirtualnej funkcji Hyper-V do platformy Azure
 
@@ -58,7 +58,7 @@ Oto przykład ilustrujący ten mechanizm. Spójrzmy organizacji z dwóch lokaliz
 Nowy Jork | VMM-NewYork| VMNetwork1-NewYork | Mapowany do VMNetwork1 Chicago
  |  | VMNetwork2-NewYork | Nie zostały zamapowane
 Chicago | VMM-Chicago| VMNetwork1-Chicago | Mapowany do NowyJork VMNetwork1
- | | VMNetwork1-Chicago | Nie zostały zamapowane
+ | | VMNetwork2-Chicago | Nie zostały zamapowane
 
 W tym przykładzie:
 

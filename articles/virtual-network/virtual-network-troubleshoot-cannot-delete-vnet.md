@@ -1,24 +1,24 @@
 ---
-title: "Nie można usunąć sieci wirtualnej na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązać ten problem, w której nie można usunąć sieci wirtualnej na platformie Azure."
+title: Nie można usunąć sieci wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać ten problem, w której nie można usunąć sieci wirtualnej na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 60e4a0dbbc15b0414bf1b81e1fd7885e47aa962d
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: d3ffcd9981ff0c57f6d625efcede3e930acd17b5
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Rozwiązywanie problemów: Nie można usunąć sieci wirtualnej na platformie Azure
 
@@ -35,7 +35,7 @@ Błędy może pojawić się podczas próby usunięcia sieci wirtualnej na platfo
 5. [Sprawdź, czy maszyna wirtualna nadal działa w sieci wirtualnej](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
 6. [Sprawdź, czy sieć wirtualna utkwiła w automatycznej migracji](#check-whether-the-virtual-network-is-stuck-in-migration).
 
-## <a name="troubleshooting-steps"></a>Rozwiązywanie problemów
+## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
 
 ### <a name="check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network"></a>Sprawdź, czy brama sieci wirtualnej jest uruchomiony w sieci wirtualnej
 
@@ -89,7 +89,7 @@ Jeśli sieć wirtualna jest zablokowana w stanie migracji, nie można usunąć. 
 
     Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Azure Virtual Network](virtual-networks-overview.md)
 - [Często zadawane pytania dotyczące sieci wirtualnych platformy Azure](virtual-networks-faq.md)

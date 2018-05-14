@@ -10,11 +10,11 @@ ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 1c13da977021538651084ec4462cf8bd32f131d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 028bbb28c7091db3c3ebea321ca2e167b999949d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych
 
@@ -27,7 +27,7 @@ Jeśli aplikacja lokalnymi korzysta z uwierzytelniania opartego na SAML, można 
 Należy wykonać obie następujące czynności:
 
 - Integrowanie aplikacji SAML przy użyciu szablonu z systemem innym niż galerii aplikacji, zgodnie z opisem w [konfigurowania rejestracji jednokrotnej do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](active-directory-saas-custom-apps.md). Upewnij się, że możesz użyć dla **adres URL logowania** wartość.
--  Użyj serwera Proxy aplikacji usługi Azure AD do publikowania aplikacji lokalnej za pomocą **usługi Azure Active Directory** skonfigurowany jako źródło uwierzytelniania. Aby uzyskać instrukcje, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
+-  Użyj serwera Proxy aplikacji usługi Azure AD do publikowania aplikacji lokalnej za pomocą **usługi Azure Active Directory** skonfigurowany jako źródło uwierzytelniania. Aby uzyskać instrukcje, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
 
    Po skonfigurowaniu **wewnętrznego adresu Url** ustawienie, użyj logowania jednokrotnego adres URL określony w szablonie aplikacji z systemem innym niż galerii. W ten sposób użytkownicy mogą korzystać z aplikacji z granicą organizacji. Serwer Proxy aplikacji wykonuje SAML logowania jednokrotnego dla aplikacji lokalnych.
  
@@ -37,8 +37,8 @@ Należy wykonać obie następujące czynności:
 
 Użytkownikom B2B dostęp do aplikacji lokalnych, które są zabezpieczone zintegrowane uwierzytelnianie systemu Windows i ograniczone delegowanie protokołu Kerberos, potrzebne są następujące składniki:
 
-- **Uwierzytelnianie za pośrednictwem serwera Proxy aplikacji usługi Azure AD**. B2B użytkownicy muszą mieć możliwość uwierzytelniania do aplikacji lokalnych. Aby to zrobić, należy opublikować aplikacji lokalnych poprzez serwer Proxy aplikacji usługi Azure AD. Aby uzyskać więcej informacji, zobacz [rozpoczęcie pracy z serwerem Proxy aplikacji i zainstalować łącznik](active-directory-application-proxy-enable.md) i [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md).
-- **Autoryzacji za pośrednictwem obiektu użytkownika B2B w katalogu lokalnym**. Aplikacja musi mieć możliwość wykonywania kontroli dostępu użytkownika i udzielać dostępu do zasobów poprawne. IWA i KCD wymagają obiektu użytkownika w lokalnej Windows Server Active Directory do ukończenia tego autoryzacji. Zgodnie z opisem w [jak rejestracji jednokrotnej z KCD działa](active-directory-application-proxy-sso-using-kcd.md#how-single-sign-on-with-kcd-works), serwer Proxy aplikacji wymaga tego obiektu użytkownika w celu personifikacji użytkownika i uzyskać token protokołu Kerberos do aplikacji. 
+- **Uwierzytelnianie za pośrednictwem serwera Proxy aplikacji usługi Azure AD**. B2B użytkownicy muszą mieć możliwość uwierzytelniania do aplikacji lokalnych. Aby to zrobić, należy opublikować aplikacji lokalnych poprzez serwer Proxy aplikacji usługi Azure AD. Aby uzyskać więcej informacji, zobacz [rozpoczęcie pracy z serwerem Proxy aplikacji i zainstalować łącznik](manage-apps/application-proxy-enable.md) i [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
+- **Autoryzacji za pośrednictwem obiektu użytkownika B2B w katalogu lokalnym**. Aplikacja musi mieć możliwość wykonywania kontroli dostępu użytkownika i udzielać dostępu do zasobów poprawne. IWA i KCD wymagają obiektu użytkownika w lokalnej Windows Server Active Directory do ukończenia tego autoryzacji. Zgodnie z opisem w [jak rejestracji jednokrotnej z KCD działa](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), serwer Proxy aplikacji wymaga tego obiektu użytkownika w celu personifikacji użytkownika i uzyskać token protokołu Kerberos do aplikacji. 
 
    B2B scenariusza użytkownika są dostępne, której można tworzyć obiektów użytkownika gościa, które są wymagane do autoryzacji w katalogu lokalnym dwóch metod:
 

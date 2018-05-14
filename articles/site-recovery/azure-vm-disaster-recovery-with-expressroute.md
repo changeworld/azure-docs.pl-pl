@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 8b4c7bb561d311796f59b94a6e2fbcd9b571d2cd
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 44ecbcc51cb53f4d7b68f5c5e24e7d81c5a4208c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="using-expressroute-with-azure-virtual-machine-disaster-recovery"></a>Przy użyciu usługi ExpressRoute w usłudze odzyskiwania po awarii maszyny wirtualnej platformy Azure
 
@@ -79,7 +79,7 @@ Domyślnie ruch związany z replikacją nie opuszczają granicy Azure. Zazwyczaj
 
 W przypadku maszyn wirtualnych platformy Azure są Failover w innym regionie, istniejące połączenie ExpressRoute do źródłowej sieci wirtualnej jest nie automatycznie przetransferować do docelowej sieci wirtualnej na region odzyskiwania. Nowe połączenie, jest wymagany do połączenia ExpressRoute do docelowej sieci wirtualnej.
 
-Umożliwia replikowanie maszyn wirtualnych platformy Azure na dowolnym regionie Azure, w tym samym klastrze geograficznej zgodnie z opisem [tutaj](azure-to-azure-support-matrix.md#region-support). Wybranego celu region platformy Azure nie mieści się w tym samym regionie geograficznymi jako źródła, należy włączyć Premium usługi ExpressRoute, jeśli używasz jednego obwodu ExpressRoute łączności region źródłowa i docelowa. Aby uzyskać więcej informacji, sprawdź [lokalizacje ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [cennik usługi ExpressRoute](https://azure.microsoft.com/en-us/pricing/details/expressroute/).
+Umożliwia replikowanie maszyn wirtualnych platformy Azure na dowolnym regionie Azure, w tym samym klastrze geograficznej zgodnie z opisem [tutaj](azure-to-azure-support-matrix.md#region-support). Wybranego celu region platformy Azure nie mieści się w tym samym regionie geograficznymi jako źródła, należy włączyć Premium usługi ExpressRoute, jeśli używasz jednego obwodu ExpressRoute łączności region źródłowa i docelowa. Aby uzyskać więcej informacji, sprawdź [lokalizacje ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [cennik usługi ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ### <a name="two-expressroute-circuits-in-two-different-expressroute-peering-locations"></a>Dwa obwody usługi ExpressRoute w dwóch różnych lokalizacjach komunikacji równorzędnej ExpressRoute
 -   Ta konfiguracja jest użyteczna, jeśli chcesz upewnić się przed awariami głównej obwodu ExpressRoute i przed na dużą skalę regionalnej awarii, których można również wpływać na działanie lokalizacje komunikacji równorzędnej ExpressRoute i zakłócić jego głównej obwodu ExpressRoute.

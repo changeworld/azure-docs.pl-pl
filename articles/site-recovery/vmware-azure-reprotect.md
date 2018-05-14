@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: aec87625cd00b11b41c248eecf7af650ae57036f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0946d5234292cfb69a7e9b5bc7846e6acf94dff4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Włącz ponownie ochronę maszyny z platformy Azure do lokacji lokalnej
 
@@ -79,7 +79,7 @@ Po utworzeniu głównego serwera docelowego, wykonaj następujące czynności:
     - Wolumin przechowywania domyślne dla systemu Windows jest R.
     - Wolumin przechowywania domyślne dla systemu Linux jest /mnt/retention.
 - Należy dodać nowy dysk, jeśli używasz istniejącej maszyny serwera konfiguracji serwera/procesu lub skali lub proces serwera/główną maszynę docelową, na serwerze. Nowy dysk powinna spełniać wymagania poprzedniej. Jeśli nie ma dysk przechowywania, nie zostanie wyświetlone na liście rozwijanej wyboru w portalu. Po dodaniu dysku do głównego celu lokalnymi potrzebny do 15 minut dysku pojawią się w zaznaczenia w portalu. Jeśli dysk nie jest wyświetlany po 15 minutach, można również odświeżyć serwera konfiguracji.
-- Zainstaluj narzędzia VMware na głównym serwerze docelowym. Bez narzędzia VMware nie można wykryć datastores na hoście ESXi głównego celu.
+- Zainstaluj narzędzia VMware lub open-vm-tools na głównym serwerze docelowym. Bez narzędzia nie można wykryć datastores na hoście ESXi głównego celu.
 - Ustaw `disk.EnableUUID=true` ustawienie parametrów konfiguracji maszyny wirtualnej główny serwer docelowy w środowisku programu VMware. Jeśli ten wiersz nie istnieje, dodaj ją. To ustawienie jest wymagane do zapewnia spójny UUID dysku maszyny wirtualnej (VMDK), dzięki czemu jego instaluje poprawnie.
 - Host ESX, na której została utworzona główny cel powinien mieć co najmniej jeden VMFS magazynu danych do niego dołączony. Jeśli brak, **Datastore** dane wejściowe na stronie ponownej ochrony jest pusta, i nie może kontynuować.
 - Główny serwer docelowy nie może mieć migawek na dyskach. W przypadku migawki nie przełączonej i powrotu po awarii.

@@ -15,17 +15,17 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e2057241065ecefbbcd398ddf482961359f51de7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a96296e8918c658f1dc3ebeadf01bd064e80716a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe łącza do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 
 Serwer Proxy aplikacji usługi Azure AD udostępnia aplikacji lokalnej do użytkowników, którzy są zdalnej lub na ich własnych urządzeń. Niektóre aplikacje, jednak zostały opracowane z lokalnych łączy osadzone w kodzie HTML. Tych linków nie działa prawidłowo po aplikacji jest używany zdalnie. Masz punktu ze sobą kilka aplikacji lokalnych użytkowników oczekiwać łącza, aby kontynuować pracę, gdy nie są one w biurze. 
 
-Najlepszym sposobem upewnij się, że łącza działają taki sam zarówno wewnątrz, jak i poza siecią firmową jest skonfigurowanie zewnętrzne adresy URL aplikacji do być taka sama jak ich wewnętrzne adresy URL. Użyj [domen niestandardowych](active-directory-application-proxy-custom-domains.md) do konfigurowania sieci zewnętrzne adresy URL mają nazwę domeny firmowej zamiast domyślnej domeny serwera proxy aplikacji.
+Najlepszym sposobem upewnij się, że łącza działają taki sam zarówno wewnątrz, jak i poza siecią firmową jest skonfigurowanie zewnętrzne adresy URL aplikacji do być taka sama jak ich wewnętrzne adresy URL. Użyj [domen niestandardowych](manage-apps/application-proxy-configure-custom-domain.md) do konfigurowania sieci zewnętrzne adresy URL mają nazwę domeny firmowej zamiast domyślnej domeny serwera proxy aplikacji.
 
 
 Jeśli domen niestandardowych nie można użyć w dzierżawie, istnieje kilka innych opcji udostępniać tę funkcjonalność. Wszystkie są również zgodna z domeny niestandardowe i inne, dlatego można skonfigurować niestandardowe domeny i innych rozwiązań, w razie potrzeby. 
@@ -40,7 +40,7 @@ Te trzy funkcje Zachowaj łącza działa niezależnie od tego, gdzie znajdują s
 
  
 > [!NOTE]
-> Ostatnia opcja jest tylko do dzierżawców, niezależnie od przyczyny, nie można używać niestandardowych domen do mieć tych samych wewnętrznych i zewnętrznych adresów URL dla aplikacji. Przed włączeniem tej funkcji należy sprawdzić, czy [domen niestandardowych w serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md) można skorzystać. 
+> Ostatnia opcja jest tylko do dzierżawców, niezależnie od przyczyny, nie można używać niestandardowych domen do mieć tych samych wewnętrznych i zewnętrznych adresów URL dla aplikacji. Przed włączeniem tej funkcji należy sprawdzić, czy [domen niestandardowych w serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-configure-custom-domain.md) można skorzystać. 
 
 >Lub, jeśli aplikacja, konieczne będzie skonfigurowanie z łączem tłumaczenia jest programu SharePoint, zobacz [Konfigurowanie mapowań dostępu alternatywnego for SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) innego podejścia do mapowania łącza. 
 
@@ -118,6 +118,6 @@ Teraz gdy użytkownicy uzyskują dostęp do tej aplikacji, serwer proxy będzie 
 Chcemy Twojej pomocy, aby ta funkcja działa w przypadku wszystkich aplikacji. Przeszukiwania ponad 30 tagów w kodzie HTML i CSS. Przykład wygenerowanego linki, które nie są tłumaczonym, przesyłać fragmentu kodu [opinii serwera Proxy aplikacji](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Domen niestandardowych za pomocą serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md) mają ten sam adres URL wewnętrznych i zewnętrznych
+[Domen niestandardowych za pomocą serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-configure-custom-domain.md) mają ten sam adres URL wewnętrznych i zewnętrznych
 
 [Konfigurowanie mapowań dostępu alternatywnego for SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

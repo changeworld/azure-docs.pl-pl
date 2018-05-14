@@ -15,8 +15,8 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a5466a0b5027fa8fe0edec3c9663e6cd1aafc9a3
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 61426d992e279cf88ae9750f0047b0cd81a797e3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -48,14 +48,14 @@ Na przykład: `http(s)://*.adventure-works.com`. Gdy wewnętrzne i zewnętrzne a
 
 Jeśli masz dodatkowe aplikacje z różnych ustawień konfiguracji, należy opublikować te wyjątki jako osobne aplikacji, aby zastąpić wartości domyślne ustawione dla symbolu wieloznacznego. Aplikacje bez symbolu wieloznacznego zawsze mają pierwszeństwo względem aplikacji symboli wieloznacznych. Z perspektywy konfiguracji są "tak" regularne aplikacji.
 
-Tworzenie aplikacji symboli wieloznacznych jest oparte na tym samym [przepływu publikowania aplikacji](application-proxy-publish-azure-portal.md) dostępnej dla wszystkich innych aplikacji. Jedyna różnica polega na tym, czy zawiera symbol wieloznaczny adresy URL i potencjalnie konfiguracji logowania jednokrotnego.
+Tworzenie aplikacji symboli wieloznacznych jest oparte na tym samym [przepływu publikowania aplikacji](manage-apps/application-proxy-publish-azure-portal.md) dostępnej dla wszystkich innych aplikacji. Jedyna różnica polega na tym, czy zawiera symbol wieloznaczny adresy URL i potencjalnie konfiguracji logowania jednokrotnego.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="custom-domains"></a>Niestandardowe domeny
 
-Gdy [domen niestandardowych](active-directory-application-proxy-custom-domains.md) są opcjonalne dla wszystkich innych aplikacji, są one wymagane w przypadku aplikacji symboli wieloznacznych. Utworzenie domeny niestandardowej wymaga:
+Gdy [domen niestandardowych](manage-apps/application-proxy-configure-custom-domain.md) są opcjonalne dla wszystkich innych aplikacji, są one wymagane w przypadku aplikacji symboli wieloznacznych. Utworzenie domeny niestandardowej wymaga:
 
 1. Utwórz zweryfikowanej domeny w systemie Azure 
 2. Przekaż certyfikat SSL w formacie PFX do serwera proxy aplikacji.
@@ -117,7 +117,7 @@ Zastosowań symboli wieloznacznych jest reprezentowana z tylko jednego kafelka w
 
 ### <a name="kerberos-constrained-delegation"></a>Ograniczone delegowanie protokołu Kerberos
 
-Dla aplikacji za pomocą [kerberos ograniczonego delegowania (KCD) jako metodę logowania jednokrotnego](active-directory-application-proxy-sso-using-kcd.md), wymienione nazwy SPN dla metody logowania jednokrotnego mogą także symbol wieloznaczny. Na przykład może być nazwa SPN: `HTTP/*.adventure-works.com`. Nadal trzeba poszczególnych nazw SPN skonfigurowanych na serwerach wewnętrznej bazy danych (na przykład `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Dla aplikacji za pomocą [kerberos ograniczonego delegowania (KCD) jako metodę logowania jednokrotnego](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md), wymienione nazwy SPN dla metody logowania jednokrotnego mogą także symbol wieloznaczny. Na przykład może być nazwa SPN: `HTTP/*.adventure-works.com`. Nadal trzeba poszczególnych nazw SPN skonfigurowanych na serwerach wewnętrznej bazy danych (na przykład `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 
 
@@ -136,7 +136,7 @@ Wszystkie trzy aplikacje:
 - Ma takie same właściwości
 
 
-Można opublikować zastosowań symboli wieloznacznych, wykonując kroki opisane w temacie [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). W tym scenariuszu przyjęto:
+Można opublikować zastosowań symboli wieloznacznych, wykonując kroki opisane w temacie [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md). W tym scenariuszu przyjęto:
 
 - Dzierżawcy z następującym Identyfikatorem: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -144,7 +144,7 @@ Można opublikować zastosowań symboli wieloznacznych, wykonując kroki opisane
 
 - A **CNAME** wpis wskazujący `*.adventure-works.com` do `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` został utworzony.
 
-Po [opisane kroki](application-proxy-publish-azure-portal.md), Utwórz nową aplikację serwera proxy aplikacji w dzierżawie. W tym przykładzie symbol wieloznaczny znajduje się w następujących pól:
+Po [opisane kroki](manage-apps/application-proxy-publish-azure-portal.md), Utwórz nową aplikację serwera proxy aplikacji w dzierżawie. W tym przykładzie symbol wieloznaczny znajduje się w następujących pól:
 
 - Wewnętrzny adres URL:
 
@@ -183,7 +183,7 @@ W tym scenariuszu należy ponadto trzech aplikacji ogólne innej aplikacji, `fin
 
 Należy upewnić się, że rekordy CNAME tego `finance.adventure-works.com` do końcowego określonych aplikacji, na stronie serwer Proxy aplikacji dla aplikacji. W tym scenariuszu `finance.adventure-works.com` wskazuje `https://finance-awcycles.msappproxy.net/`. 
 
-Po [opisane kroki](application-proxy-publish-azure-portal.md), ten scenariusz wymaga następujących ustawień:
+Po [opisane kroki](manage-apps/application-proxy-publish-azure-portal.md), ten scenariusz wymaga następujących ustawień:
 
 
 - W **wewnętrznego adresu URL**, możesz ustawić **finance** zamiast symbolu wieloznacznego. 
@@ -208,12 +208,12 @@ Ponieważ `finance.adventure-works.com` jest bardziej określony adres URL niż 
 Jeśli masz wiele aplikacji publikowanych finansów i masz `finance.adventure-works.com` jako zweryfikowanej domeny, można opublikować innego mapowania zastosowań symboli wieloznacznych `*.finance.adventure-works.com`. Ponieważ jest to bardziej szczegółowy niż ogólnego `*.adventure-works.com`, ma pierwszeństwo, jeśli użytkownik uzyskuje dostęp do aplikacji w domenie finansowych.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat:
 
-- **Domen niestandardowych**, zobacz [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md).
+- **Domen niestandardowych**, zobacz [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-configure-custom-domain.md).
 
-- **Publikowanie aplikacji**, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md)
+- **Publikowanie aplikacji**, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md)
 
 

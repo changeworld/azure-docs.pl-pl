@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: f7fcd6e9746984b79ba83d0d9157b356bf315dfe
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3ffc453c98f8d21f1cd6f7025387031bdacf073a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikowanie aplikacji w odrębnych sieci i lokalizacje przy użyciu grup łącznika
 
@@ -33,7 +33,7 @@ Wszystkie aplikacje są przypisane do grupy łącznika. Jeśli nie utworzono gru
 >Jeśli masz dużego wdrożenia serwera Proxy aplikacji nie przypisuj aplikacji do domyślnej grupy łącznika. Dzięki temu nowe łączniki nie odbierać ruchu na żywo, dopóki nie zostanie przypisana do grupy łącznika usługi active. Ta konfiguracja umożliwia również umieścić łączników w trybie bezczynności przez przeniesienie ich z powrotem do domyślnej grupy tak, aby można było wykonać konserwacji bez wywierania wpływu na użytkowników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby pogrupować łączników, należy upewnij się, że [zainstalować wiele łączników](active-directory-application-proxy-enable.md). Po zainstalowaniu nowego łącznika automatycznie dołączeniu **domyślne** grupy łącznika.
+Aby pogrupować łączników, należy upewnij się, że [zainstalować wiele łączników](manage-apps/application-proxy-enable.md). Po zainstalowaniu nowego łącznika automatycznie dołączeniu **domyślne** grupy łącznika.
 
 ## <a name="create-connector-groups"></a>Utwórz grupy dla łącznika
 Wykonaj te kroki, aby utworzyć dowolną liczbę grup łącznika. 
@@ -126,6 +126,6 @@ W poniższym przykładzie firma ma dwoma centrami danych, A i B, z dwa łącznik
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](application-proxy-understand-connectors.md)
-* [Włączanie logowania jednokrotnego](application-proxy-sso-overview.md)
+* [Włączanie logowania jednokrotnego](manage-apps/application-proxy-single-sign-on.md)
 
 

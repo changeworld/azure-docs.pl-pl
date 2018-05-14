@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 13141549b5b1b77f45dd6fa1c7560b9f9d0e9b72
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -95,7 +95,7 @@ Masz skonfigurować serwer Proxy aplikacji usługi Azure AD i zintegrować ją z
 
 * **Migracji aplikacji do maszyn wirtualnych platformy Azure:** można przyrostu i shift aplikacji z serwerów lokalnych maszyn wirtualnych platformy Azure jest przyłączony do domeny zarządzanej. Pomoże pozbyć się kosztów infrastruktury działających serwerów lokalnych.
 
-* **Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD:** publikowania aplikacji działających na maszynach wirtualnych platformy Azure przy użyciu serwera Proxy aplikacji usługi AD platformy Azure. Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](../active-directory/application-proxy-publish-azure-portal.md)
+* **Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD:** publikowania aplikacji działających na maszynach wirtualnych platformy Azure przy użyciu serwera Proxy aplikacji usługi AD platformy Azure. Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Uwaga wdrożenia — aplikacje publikowania IWA (zintegrowane uwierzytelnianie systemu Windows) przy użyciu serwera Proxy aplikacji usługi Azure AD

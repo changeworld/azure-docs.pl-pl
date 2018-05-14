@@ -1,24 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z łącznością między maszynami wirtualnymi Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy z łącznością między maszynami wirtualnymi Azure."
+title: Rozwiązywanie problemów z łącznością między maszynami wirtualnymi Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z łącznością między maszynami wirtualnymi Azure.
 services: virtual-network
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3011ef7eced5a24ba07d06e2db2f5e4d344b94de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6decb0e9188db00608be35d9ba4e84df92ceb671
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Rozwiązywanie problemów z łącznością między maszynami wirtualnymi Azure
 

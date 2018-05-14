@@ -15,11 +15,11 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 14e2b82b5c32e1b36bf730b7b834c9b8ad124629
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c7f27d3fd8a5785017d580df02007abaac503c39
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/10/2018
 
 Aby pomyślnie wdrożyć serwer Proxy aplikacji, potrzebujesz co najmniej jeden łącznik, ale zaleca się co najmniej dwóch dla większej odporności. Zainstaluj łącznik na maszynie 2016 lub Windows Server 2012 R2. Łącznik musi być w stanie nawiązać połączenia z usługi Serwer Proxy aplikacji, a także aplikacji lokalnych, które można opublikować. 
 
-Aby uzyskać więcej informacji o wymaganiach dotyczących sieci na serwerze łącznika, zobacz [Rozpoczynanie pracy z serwera Proxy aplikacji i zainstalować łącznik](active-directory-application-proxy-enable.md).
+Aby uzyskać więcej informacji o wymaganiach dotyczących sieci na serwerze łącznika, zobacz [Rozpoczynanie pracy z serwera Proxy aplikacji i zainstalować łącznik](manage-apps/application-proxy-enable.md).
 
 ## <a name="maintenance"></a>Konserwacja
 Łączniki i usługę automatyzującą wszystkie zadania wysokiej dostępności. Można można dodać lub usunąć dynamicznie. Zawsze, gdy nowe żądanie dociera jest kierowany do jednego z łączników, które jest obecnie dostępna. Jeśli łącznik jest tymczasowo niedostępny, nie odpowiada na ten ruch.
@@ -50,7 +50,7 @@ Nie trzeba ręcznie usunąć łączniki, które nie są używane. Łącznik jest
 
 ## <a name="automatic-updates"></a>Automatyczne aktualizacje
 
-Usługa Azure AD zapewnia aktualizacje automatyczne dla wszystkich łączników, które można wdrożyć. Tak długo, jak usługa aktualizator łącznika serwera Proxy aplikacji jest uruchomiona, łączników są aktualizowane automatycznie. Jeśli nie widzisz usługi aktualizator łącznika na serwerze, należy [ponowne instalowanie łącznika programu](active-directory-application-proxy-enable.md) na pobranie aktualizacji. 
+Usługa Azure AD zapewnia aktualizacje automatyczne dla wszystkich łączników, które można wdrożyć. Tak długo, jak usługa aktualizator łącznika serwera Proxy aplikacji jest uruchomiona, łączników są aktualizowane automatycznie. Jeśli nie widzisz usługi aktualizator łącznika na serwerze, należy [ponowne instalowanie łącznika programu](manage-apps/application-proxy-enable.md) na pobranie aktualizacji. 
 
 Jeśli nie chcesz czekać na automatycznych aktualizacji przejdzie do Twojego łącznika można przeprowadzić uaktualnienie ręczne. Przejdź do [stronę pobierania łącznika](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serwerze, gdzie Twojego łącznika jest zlokalizowany i wybierz pozycję **Pobierz**. Ten proces dotyczącego uaktualnienia dla lokalnego łącznika. 
 
@@ -123,7 +123,7 @@ Aby uzyskać więcej informacji o optymalizacji sieci, zobacz [zagadnienia dotyc
 
 Zazwyczaj wdrażanie łącznika jest proste i nie wymaga specjalnej konfiguracji. Istnieją jednak niektóre unikatowe warunki, które należy wziąć pod uwagę:
 
-* Organizacje, które ograniczyć ruch wychodzący musi [otworzyć porty wymagane](active-directory-application-proxy-enable.md#open-your-ports).
+* Organizacje, które ograniczyć ruch wychodzący musi [otworzyć porty wymagane](manage-apps/application-proxy-enable.md#open-your-ports).
 * Może być konieczne maszyny zgodne ze standardem FIPS można zmienić ich konfiguracji umożliwia procesów łącznika do generowania i przechowywania certyfikatu.
 * Organizacje, które zablokowanie środowisku oparta na procesach, które wysyłania żądań sieci należy się, że obie te usługi łącznika jest włączony dostęp do wszystkich wymagane porty i adresy IP.
 * W niektórych przypadkach wychodzącego do przodu serwery proxy mogą przerwanie dwukierunkowe certyfikatu uwierzytelniania i spowodować, że komunikacja się nie powieść.

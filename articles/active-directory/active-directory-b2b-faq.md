@@ -5,16 +5,16 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6160e3e6f23bf4eabb33295fa19323c71c7ed18d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 77dc239385261c9544b00cf2cf2e450136dce0ae
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure współpracy B2B usługi Active Directory — często zadawane pytania
 
@@ -31,9 +31,6 @@ Tak. Aby uzyskać więcej informacji dotyczących używania funkcji przekazywani
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>Jak można dostosować wiadomości e-mail z zaproszeniem?
 Można dostosować niemal wszystkie informacje o procesie zapraszającej przy użyciu [zaproszenia B2B interfejsów API](active-directory-b2b-api.md).
-
-### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>Zaproszonych użytkowników zewnętrznych można pozostawić organizacji po trwa zaproszenie?
-Zapraszanie administratorem w organizacji można usunąć użytkownika gościa współpracy B2B z ich katalogu, ale użytkownika gościa nie może opuścić zaproszenia katalogu organizacji samodzielnie. 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Goście resetowania ich uwierzytelnianie wieloskładnikowe — metoda
 Tak. Gości tak samo jak normalnych użytkowników czy zresetować ich metody uwierzytelniania wieloskładnikowego.
@@ -99,9 +96,7 @@ Firma Microsoft stale jest nasłuchiwanie swoją opinię, aby poprawić współp
 Również zachęcamy do przesyłania swoich koncepcji i głosów dla przyszłych funkcje na [pomysły współpracy B2B](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Tak, aby użytkownik po prostu "gotowe" mamy wysłać zaproszenie jest automatycznie zrealizowane? Czy użytkownik zawsze ma kliknij za pomocą adresu URL realizacji?
-Nie wymagają realizacji przez użytkownika B2B zaproszenia, które są wysyłane przez użytkowników w organizacji zaproszenia, które jest członkiem organizacji partnera.
-
-Firma Microsoft zaleca, aby zaprosić jeden użytkownik z organizacji partnerskiej do dołączenia do zapraszania organizacji. [Dodaj tego użytkownika do roli zapraszającej gościa w organizacji zasobów](active-directory-b2b-add-guest-to-role.md). Tego użytkownika można zaprosić innych użytkowników w organizacji partnerskiej odpowiedzialnej za pomocą logowania w Interfejsie użytkownika, skrypty programu PowerShell lub interfejsów API. Następnie użytkowników współpracy B2B z tej organizacji nie są wymagane do zrealizowania ich zaproszenia.
+Zapraszającej zaprosić innych użytkowników w organizacji partnerskiej odpowiedzialnej za pomocą interfejsu użytkownika, skrypty programu PowerShell lub interfejsów API. Następnie zapraszającej może wysyłać użytkownika gościa bezpośredniego łącza do aplikacji udostępnionej. W większości przypadków nie ma trzeba otworzyć wiadomości e-mail z zaproszeniem, a następnie kliknij adres URL realizacji. Aby uzyskać więcej informacji, zobacz [realizacji zaproszenia współpracy usługi Azure Active Directory B2B](active-directory-b2b-redemption-experience.md).
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Współpraca B2B działanie Jeśli korzysta z zaproszonych partnera federacyjnego można dodać własne uwierzytelniania lokalnego?
 Jeśli partner jest dzierżawa usługi Azure AD, która jest federacyjnego do lokalnej infrastruktury uwierzytelniania, lokalne logowanie jednokrotne (SSO) jest automatycznie osiągnięta. Jeśli partner nie jest dzierżawa usługi Azure AD, konto usługi Azure AD jest tworzone dla nowych użytkowników. 

@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować aplikację serwera Proxy aplikacji | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć Konfiguruj aplikację serwera Proxy aplikacji w kilku prostych krokach"
+title: Jak skonfigurować aplikację serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Konfiguruj aplikację serwera Proxy aplikacji w kilku prostych krokach
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fafd7c03141f67f4fc9ffbedb7a27632754b8d59
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 816f2c10631de3809c6679c1e2715174f072f56d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Jak skonfigurować aplikację serwera Proxy aplikacji
 
@@ -25,15 +25,15 @@ Ten artykuł ułatwia zrozumienie, jak skonfigurować aplikację serwera Proxy a
 
 ## <a name="recommended-documents"></a>Zalecane dokumenty 
 
-Aby uzyskać informacje dotyczące konfiguracji początkowej i tworzenia aplikacji serwera Proxy aplikacji za pośrednictwem portalu administratora, wykonaj [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
+Aby uzyskać informacje dotyczące konfiguracji początkowej i tworzenia aplikacji serwera Proxy aplikacji za pośrednictwem portalu administratora, wykonaj [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
 
-Aby uzyskać więcej informacji na temat konfigurowania łączników, zobacz [Włączanie serwera Proxy aplikacji w portalu Azure](active-directory-application-proxy-enable.md).
+Aby uzyskać więcej informacji na temat konfigurowania łączników, zobacz [Włączanie serwera Proxy aplikacji w portalu Azure](manage-apps/application-proxy-enable.md).
 
-Aby uzyskać informacje na przekazywanie certyfikatów i przy użyciu domen niestandardowych, zobacz [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains).
+Aby uzyskać informacje na przekazywanie certyfikatów i przy użyciu domen niestandardowych, zobacz [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-configure-custom-domain.md).
 
 ## <a name="create-the-applicationsetting-the-urls"></a>Tworzenie aplikacji/ustawienia adresów URL
 
-Jeśli wykonujesz kroki opisane w [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) dokumentacji i czy wprowadzenie błąd podczas tworzenia aplikacji, zobacz szczegóły błędu, aby uzyskać informacje i sugestie dotyczące sposobu rozwiązania aplikacja. Większość komunikaty o błędach obejmują sugerowanej poprawki. Aby uniknąć typowych błędów, sprawdzić:
+Jeśli wykonujesz kroki opisane w [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md) dokumentacji i czy wprowadzenie błąd podczas tworzenia aplikacji, zobacz szczegóły błędu, aby uzyskać informacje i sugestie dotyczące sposobu rozwiązania aplikacja. Większość komunikaty o błędach obejmują sugerowanej poprawki. Aby uniknąć typowych błędów, sprawdzić:
 
 -   Administratorzy z uprawnieniami do tworzenia aplikacji serwera Proxy aplikacji
 
@@ -51,13 +51,13 @@ Komunikat o błędzie powinien być wyświetlany w prawym górnym rogu podczas t
 
 ## <a name="configure-connectorsconnector-groups"></a>Konfigurowanie grup łączników/łącznika
 
-Jeśli masz trudności w konfigurowaniu aplikacji z powodu ostrzeżenie na temat łączników i grup łącznika, zobacz instrukcje na temat włączania szczegółowe informacje na temat sposobu pobierania łączników serwera Proxy aplikacji. Jeśli chcesz dowiedzieć się więcej na temat łączników, zobacz [dokumentacji łączniki](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+Jeśli masz trudności w konfigurowaniu aplikacji z powodu ostrzeżenie na temat łączników i grup łącznika, zobacz instrukcje na temat włączania szczegółowe informacje na temat sposobu pobierania łączników serwera Proxy aplikacji. Jeśli chcesz dowiedzieć się więcej na temat łączników, zobacz [dokumentacji łączniki](application-proxy-understand-connectors.md).
 
 Jeśli łączniki nie są aktywne, oznacza to, że są w stanie uzyskać dostęp do usługi. Jest to często spowodowane wymagane porty nie są otwarte. Aby wyświetlić listę wymaganych portów, zobacz sekcję wymagania wstępne włączenie dokumentacji serwera Proxy aplikacji.
 
 ## <a name="upload-certificates-for-custom-domains"></a>Przekaż certyfikaty dla domen niestandardowych
 
-Domeny niestandardowe umożliwiają określenie domeny sieci zewnętrznych adresów URL. Aby korzystać z domeny niestandardowe, należy przekazać certyfikatu dla tej domeny. Aby uzyskać informacje na temat używania domeny niestandardowej i certyfikatów, zobacz [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains). 
+Domeny niestandardowe umożliwiają określenie domeny sieci zewnętrznych adresów URL. Aby korzystać z domeny niestandardowe, należy przekazać certyfikatu dla tej domeny. Aby uzyskać informacje na temat używania domeny niestandardowej i certyfikatów, zobacz [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-configure-custom-domain.md). 
 
 Pojawiły się problemy, przekazywanie certyfikatu, poszukaj komunikatów o błędach w portalu, aby uzyskać dodatkowe informacje o problemie z certyfikatem. Typowe problemy z certyfikatem obejmują:
 
@@ -71,5 +71,5 @@ Komunikat o błędzie jest wyświetlane w prawym górnym rogu przy próbie przek
 
    ![Wiersz powiadomień](./media/application-proxy-config-how-to/error-message2.png)
 
-## <a name="next-steps"></a>Następne kroki
-[Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md)
+## <a name="next-steps"></a>Kolejne kroki
+[Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md)

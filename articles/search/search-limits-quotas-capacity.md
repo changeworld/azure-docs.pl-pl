@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Ograniczenia usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążenia i ilości indeksów, dokumentów, a inne obiekty są zależne od tego, czy użytkownik [udostępnić usługi Azure Search](search-create-service-portal.md) w **wolne**, **podstawowe**, lub **Standardowe** warstw cenowych.
@@ -87,12 +87,13 @@ Aby zachować rozmiar dokumentu w dół, pamiętaj, aby wykluczyć z systemem in
 
 ## <a name="indexer-limits"></a>Limity indeksatora
 
-Podstawowe usługi utworzone po późne 2017 mają zwiększenie limitu 15 indeksów, źródła danych i indeksatorów.
+Podstawowe usługi utworzone po późne 2017 mają zwiększenie limitu 15 indeksów, źródła danych, skillsets i indeksatorów.
 
 | Zasób | Bezpłatne&nbsp;<sup>1</sup> | Podstawowe&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |
 | Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |
+| Maksymalna skillsets |3 |5 lub 15 |50 |200 |200 |ND |
 | Maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |ND |
 | Maksymalny czas działania | 1 – 3 minuty |24 godziny |24 godziny |24 godziny |24 godziny |ND  |
 | Indeksator obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |ND  |

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a14dbaffe6bfa68e7606d117823195144250c230
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure rozwiązania Cosmos bazy danych: Narzędzie migracji danych
 
@@ -43,6 +43,8 @@ Ten samouczek obejmuje następujące zadania:
 Przed wykonaniem instrukcji zawartych w tym artykule, upewnij się, że masz następujące elementy:
 
 * [Program Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) lub nowszej.
+
+* Zwiększyć przepływność: czas trwania migracji danych zależy od ilości przepływności, możesz skonfigurować dla poszczególnych kolekcji lub zestaw kolekcji. Pamiętaj zwiększyć przepływność większych migracji danych. Po zakończeniu migracji należy zmniejszyć przepustowość w celu ograniczenia kosztów. Aby uzyskać więcej informacji na temat zwiększa wydajność w portalu Azure Zobacz poziomy wydajności i warstw cenowych w usłudze Azure DB rozwiązania Cosmos.
 
 ## <a id="Overviewl"></a>Omówienie
 Narzędzie do migracji danych jest rozwiązaniem typu open source, który importuje dane do bazy danych Azure rozwiązania Cosmos z różnych źródeł, takich jak:

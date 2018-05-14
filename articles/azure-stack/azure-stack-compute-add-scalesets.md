@@ -5,18 +5,16 @@ services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
-ms.reviewer: anajod
-keywords: ''
-ms.openlocfilehash: cdabd2a9d336cdd8ac83d27460fe129c45b7e1c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: kivenkat
+ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnia zestawy skalowania maszyny wirtualnej Azure stosu
 
@@ -38,14 +36,15 @@ Na stosie Azure zestawy skalowania maszyny wirtualnej nie obsługuje automatyczn
    Instalowanie i PowerShell skonfigurowanych dla stosu Azure i narzędzi Azure stosu. Zobacz [rozpocząć pracę przy użyciu programu PowerShell w stosie Azure](azure-stack-powershell-configure-quickstart.md).
 
    Po zainstalowaniu narzędzi Azure stosu, upewnij się, należy zaimportować następujące moduł programu PowerShell (ścieżka względem. \ComputeAdmin folderu w folderze AzureStack Narzędzia główne):
-
+  ````PowerShell
         Import-Module .\AzureStack.ComputeAdmin.psm1
+  ````
 
 * **Obraz systemu operacyjnego**
 
    Jeśli nie dodano obrazu systemu operacyjnego do programu Azure Marketplace stosu, zobacz [Dodaj obraz maszyny Wirtualnej systemu Windows Server 2016 do stosu Azure marketplace](azure-stack-add-default-image.md).
 
-   Obsługę systemu Linux, Pobierz Ubuntu Server 16.04 i dodać go za pomocą ```Add-AzsVMImage``` z następującymi parametrami: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
+   Obsługę systemu Linux, Pobierz Ubuntu Server 16.04 i dodać go za pomocą ```Add-AzsPlatformImage``` z następującymi parametrami: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
 
 
 ## <a name="add-the-virtual-machine-scale-set"></a>Dodaj zestaw skali maszyny wirtualnej
@@ -54,7 +53,7 @@ Edytuj poniższy skrypt programu PowerShell dla danego środowiska, a następnie
 
 ``$User`` to konto, które są używane do łączenia z portalu administratora. Na przykład serviceadmin@contoso.onmicrosoft.com.
 
-```
+````PowerShell  
 $Arm = "https://adminmanagement.local.azurestack.external"
 $Location = "local"
 
@@ -72,7 +71,7 @@ $AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
 Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 
 Add-AzsVMSSGalleryItem -Location $Location
-```
+````
 
 ## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualizowanie obrazów w zestawie skalowania maszyn wirtualnych 
 Po utworzeniu zestawu skalowania maszyn wirtualnych użytkowników można aktualizować obrazów w skali bez zestaw musi zostać ponownie utworzone skalowania. Proces aktualizacji obrazu jest zależna od następujących scenariuszy:
@@ -83,12 +82,14 @@ Po utworzeniu zestawu skalowania maszyn wirtualnych użytkowników można aktual
 
    Poniżej przedstawiono przykład określenia *najnowsze*:  
 
-          "imageReference": {
-             "publisher": "[parameters('osImagePublisher')]",
-             "offer": "[parameters('osImageOffer')]",
-             "sku": "[parameters('osImageSku')]",
-             "version": "latest"
-             }
+    ```Json  
+    "imageReference": {
+        "publisher": "[parameters('osImagePublisher')]",
+        "offer": "[parameters('osImageOffer')]",
+        "sku": "[parameters('osImageSku')]",
+        "version": "latest"
+        }
+    ```
 
    Zanim skalowania w górę, można użyć nowego obrazu, należy pobrać nowe obrazu:  
 
@@ -110,12 +111,12 @@ Aby uzyskać więcej informacji, zobacz [dysków systemu operacyjnego i obrazy](
 
 Aby usunąć maszynę wirtualną skalować zestawu z elementem galerii, uruchom następujące polecenie programu PowerShell:
 
+```PowerShell  
     Remove-AzsVMSSGalleryItem
+````
 
 > [!NOTE]
 > Nie można bezpośrednio usunąć elementu galerii. Nocy należy odświeżyć portalu kilka razy, aby element będzie wyświetlany jako usunięte z portalu Marketplace.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 [Często zadawane pytania dotyczące usługi Azure stosu](azure-stack-faq.md)
-

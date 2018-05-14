@@ -1,37 +1,43 @@
 ---
-title: "Włączenia kopii zapasowej Azure stosu z portalu administracyjnego | Dokumentacja firmy Microsoft"
-description: "Infrastruktura usługi kopii zapasowej za pośrednictwem portalu administracyjnego należy włączyć, dzięki czemu stosu Azure można przywrócić po awarii."
+title: Włączenia kopii zapasowej Azure stosu z portalu administracyjnego | Dokumentacja firmy Microsoft
+description: Infrastruktura usługi kopii zapasowej za pośrednictwem portalu administracyjnego należy włączyć, dzięki czemu stosu Azure można przywrócić po awarii.
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 56C948E7-4523-43B9-A236-1EF906A0304F
 ms.service: azure-stack
 ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
-ms.author: mabrigg
-ms.openlocfilehash: 456a0db9771f5963c8d4375d54a22257f6ca1c56
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 05/11/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 0ef8247eba4605d3c8e5ef0992ce97bce989002e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączenia kopii zapasowej Azure stosu z portalu administracyjnego
+Infrastruktura usługi kopii zapasowej za pośrednictwem portalu administracyjnego należy włączyć, dzięki czemu stosu Azure mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska przy użyciu chmury odzyskiwania w przypadku [poważnej awarii](.\azure-stack-backup-recover-data.md). Celem chmura odzyskiwania jest zapewnienie, że operatorów, a użytkownicy mogą Zaloguj się do portalu po zakończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnego planów, oferty i obliczeń uprzednio zdefiniowanej, magazynu i limitów przydziałów sieci.
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+Jednak usługi tworzenia kopii zapasowej infrastruktury wykonywania kopii zapasowych maszyn wirtualnych IaaS, konfiguracji sieci i zasobów magazynu, takich jak konta magazynu obiektów blob, tabel i itd., więc zakończeniu użytkowników logowania po odzyskaniu chmury nie będą widzieć żadnego ich wcześniej istniejących zasoby. Platforma jako usługa (PaaS) zasobów i danych także nie jest wykonywana przez usługę. 
 
-Infrastruktura usługi kopii zapasowej za pośrednictwem portalu administracyjnego należy włączyć, dzięki czemu stosu Azure mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska w przypadku awarii.
+Administratorzy i użytkownicy są odpowiedzialne za tworzenie kopii zapasowych i przywracanie zasobów IaaS i PaaS oddzielnie od infrastruktury procesów tworzenia kopii zapasowej. Informacje o tworzeniu kopii zapasowych zasobów IaaS i PaaS zobacz następujące linki:
+
+- [Virtual Machines](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-protect)
+- [App Service](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+- [SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
+
 
 > [!Note]  
 > Przed włączeniem kopii zapasowej za pomocą konsoli, należy skonfigurować usługi tworzenia kopii zapasowej. Można skonfigurować usługi tworzenia kopii zapasowej przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [włączenia kopii zapasowej Azure stosu przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
 ## <a name="enable-backup"></a>Włączenia kopii zapasowej
 
-1. Otwieranie portalu administracyjnego platformy Azure stosu w [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+1. Otwieranie portalu administracyjnego platformy Azure stosu w [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
 2. Wybierz **więcej usług** > **infrastruktura kopii zapasowej**. Wybierz **konfiguracji** w **infrastruktura kopii zapasowej** bloku.
 
     ![Azure stosu — ustawienia kontrolera kopii zapasowej](media\azure-stack-backup\azure-stack-backup-settings.png).
@@ -49,5 +55,5 @@ Do wykonania kopii zapasowej, należy pobrać narzędzia stosu Azure, a następn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Dowiedz się wykonać kopię zapasową. Zobacz [kopia zapasowa Azure stosu](azure-stack-backup-back-up-azure-stack.md ).
-- Dowiedz się zweryfikować kopii zapasowej. Zobacz [Potwierdź kopii zapasowej zostało ukończone w portalu administracyjnym](azure-stack-backup-back-up-azure-stack.md ).
+- Dowiedz się wykonać kopię zapasową. Zobacz [kopia zapasowa Azure stosu](azure-stack-backup-back-up-azure-stack.md ).
+- Dowiedz się zweryfikować kopii zapasowej. Zobacz [Potwierdź kopii zapasowej zostało ukończone w portalu administracyjnym](azure-stack-backup-back-up-azure-stack.md).

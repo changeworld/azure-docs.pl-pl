@@ -1,24 +1,24 @@
 ---
-title: "Rozszerzenia maszyny Wirtualnej diagnostyki Azure wydajności dla systemu Windows | Dokumentacja firmy Microsoft"
-description: "Wprowadza rozszerzenia maszyny Wirtualnej diagnostyki Azure wydajności dla systemu Windows."
+title: Rozszerzenia maszyny Wirtualnej diagnostyki Azure wydajności dla systemu Windows | Dokumentacja firmy Microsoft
+description: Wprowadza rozszerzenia maszyny Wirtualnej diagnostyki Azure wydajności dla systemu Windows.
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/29/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9ea7f4652aff07282c9c106f3894db807f341210
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenia maszyny Wirtualnej diagnostyki Azure wydajności dla systemu Windows
 
@@ -28,7 +28,7 @@ Rozszerzenie maszyny Wirtualnej diagnostyki wydajności Azure pomaga diagnostycz
 
 To rozszerzenie można zainstalować na Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016. Można go również zainstalować na Windows 8.1 i Windows 10.
 
-## <a name="extension-schema"></a>Rozszerzenie schematu
+## <a name="extension-schema"></a>Schemat rozszerzenia
 Następujące JSON zawiera schemat rozszerzenia maszyny Wirtualnej systemu Azure wydajności diagnostyki. To rozszerzenie wymaga nazwy i klucza konta magazynu do przechowywania danych wyjściowych diagnostyki i raportów. Te wartości są ważne. Klucz konta magazynu powinny być przechowywane w chronionej konfiguracji. Azure VM ustawienie rozszerzenia chronione dane są szyfrowane, a jest odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **storageAccountName** i **storageAccountKey** jest rozróżniana wielkość liter. Inne wymagane parametry są wymienione w poniższej sekcji.
 
 ```JSON
@@ -65,7 +65,7 @@ Następujące JSON zawiera schemat rozszerzenia maszyny Wirtualnej systemu Azure
 |   **Nazwa**   |**Wartość / przykład**|       **Opis**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Wersja interfejsu API.
-|publisher|Microsoft.Azure.Performance.Diagnostics|Przestrzeń nazw wydawcy rozszerzenia.
+|Wydawcy|Microsoft.Azure.Performance.Diagnostics|Przestrzeń nazw wydawcy rozszerzenia.
 |type|AzurePerformanceDiagnostics|Typ rozszerzenia maszyny Wirtualnej.
 |typeHandlerVersion|1.0|Wersja rozszerzenia obsługi.
 |performanceScenario|podstawowe|Scenariusz wydajności, dla której do przechwytywania danych. Prawidłowe wartości to: **podstawowe**, **vmslow**, **azurefiles**, i **niestandardowych**.

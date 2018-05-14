@@ -1,31 +1,34 @@
 ---
-title: "Rozmiary maszyn wirtualnych obsługiwanych w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Dokumentacja dotycząca obsługiwanych rozmiarów maszyn wirtualnych Azure stosu."
+title: Rozmiary maszyn wirtualnych obsługiwanych w stosie Azure | Dokumentacja firmy Microsoft
+description: Dokumentacja dotycząca obsługiwanych rozmiarów maszyn wirtualnych Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 05/11/2018
 ms.author: brenduns
-ms.openlocfilehash: fd352d6d073c5eff0ddf17588df022ffa3caef8c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1c22eb17ffcd070c1c5529033eeaa73dc7bd3859
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Rozmiary maszyn wirtualnych obsługiwanych w stosie Azure
 
-W tym artykule wymieniono rozmiarów maszyn wirtualnych (VM), które są obsługiwane przez stos Azure. 
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
+W tym artykule wymieniono rozmiarów maszyn wirtualnych (VM), które są dostępne w stosie Azure.
 
 ## <a name="general-purpose"></a>Zastosowania ogólne
+
+Rozmiary maszyn wirtualnych ogólnego przeznaczenia Podaj zrównoważonym stosunek pamięć Procesora. Są one używane do testowania i tworzenia, mały, aby średnia baz danych i niski na serwerach sieci web średnia ruchu.
 
 ### <a name="basic-a"></a>Podstawowa A
 |Rozmiar - Size\Name |Procesor wirtualny     |Memory (Pamięć) | Maksymalny rozmiar dysku tymczasowego | Przepływność dysku Mac OS: (IOPS) | Maksymalna przepustowość tymczasowego magazynu (IOPS) | Dysku (IOPS) maksymalna przepustowość | Maksymalna liczba kart sieciowych |    
@@ -84,8 +87,9 @@ W tym artykule wymieniono rozmiarów maszyn wirtualnych (VM), które są obsług
 |**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 / 6000 |
 |**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 / 10000 |
 
-
 ## <a name="memory-optimized"></a>Optymalizacja pod kątem pamięci
+
+Pamięć zoptymalizowane rozmiarów maszyn wirtualnych zapewniają wysoki współczynnik pamięci do Procesora, stworzonego relacyjnej bazy danych serwerów, pamięci podręcznych średnich i dużych i analizy w pamięci.
 
 ### <a name="mo-d"></a>D-series
 |Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazyn tymczasowy (GiB)  | Mac OS przepływność dysku (IOPS) | Maksymalna przepustowość tymczasowego magazynu (IOPS) | Maksymalna liczba dysków z danymi / przepływności (IOPS) | Maksymalnej liczby kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
@@ -119,7 +123,6 @@ W tym artykule wymieniono rozmiarów maszyn wirtualnych (VM), które są obsług
 |**Standard_DS12_v2** |4   |28  |56   |1000 |16000  |16 / 16x2300  |4 / 3000 |
 |**Standard_DS13_v2** |8   |56  |112  |1000 |32000  |32 / 32x2300  |8 / 6000 |
 |**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 / 10000 |
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

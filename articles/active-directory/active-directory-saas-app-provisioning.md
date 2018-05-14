@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: 5a2a818b6a36fd4dbaf3a18c1ef98d2a13596240
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika alokowania i anulowania alokowania do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczne Inicjowanie obsługi użytkowników dla aplikacji SaaS?
@@ -80,7 +80,7 @@ Skontaktuj się z usługą Azure AD engineering team do żądania obsługi inicj
 
 Konfiguracja programu Azure AD usługi inicjowania obsługi administracyjnej dla wybranej aplikacji jest uruchamiany w  **[portalu Azure](https://portal.azure.com)**. W **usługi Azure Active Directory > aplikacje przedsiębiorstwa** wybierz opcję **Dodaj**, następnie **wszystkie**, a następnie dodaj jednej z następujących pozycji w zależności od danego scenariusza:
 
-* Wszystkie aplikacje w **polecanych aplikacji** automatyczne udostępnianie obsługi sekcji. Zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników] active-directory-saas — samouczek — list.md) dla dodatkowych reguł.
+* Wszystkie aplikacje w **polecanych aplikacji** automatyczne udostępnianie obsługi sekcji. Zobacz [lista samouczków aplikacji do inicjowania obsługi użytkowników](active-directory-saas-tutorial-list.md) dla dodatkowych reguł.
 
 * Użyj opcji "bez galerii aplikacji" opracowany niestandardowej integracji SCIM
 

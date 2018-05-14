@@ -1,11 +1,11 @@
 ---
-title: "Usługa Azure Event Hubs — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Usługa Azure Event Hubs — często zadawane pytania (FAQ)"
+title: Usługa Azure Event Hubs — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Usługa Azure Event Hubs — często zadawane pytania (FAQ)
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6bdcbbe37613d5384017409f3be2772085e276ae
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -112,7 +112,7 @@ Listę możliwych wyjątków usługi Event Hubs, zobacz [omówienie wyjątki](ev
 Usługa Event Hubs obsługuje dwa typy [dzienników diagnostycznych](event-hubs-diagnostic-logs.md) -przechwytywania dzienniki błędów i operacyjne dzienniki — które są reprezentowane w formacie json i można włączyć za pomocą portalu Azure.
 
 ### <a name="support-and-sla"></a>Pomoc techniczna i umowa SLA
-Pomoc techniczna dla usługi Event Hubs jest dostępna za pośrednictwem [Fora społeczności użytkowników](https://social.msdn.microsoft.com/forums/azure/home). Pomoc dotycząca rozliczeń i subskrypcji jest świadczona bezpłatnie.
+Pomoc techniczna dla usługi Event Hubs jest dostępna za pośrednictwem [Fora społeczności użytkowników](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Pomoc dotycząca rozliczeń i subskrypcji jest świadczona bezpłatnie.
 
 Aby dowiedzieć się więcej na temat naszych umowy SLA, zobacz [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/) strony.
 

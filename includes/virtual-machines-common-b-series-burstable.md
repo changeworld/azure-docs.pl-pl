@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 95a78df20f5bed07213dfa3cc2c9b35e283f54e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7372a0c49f6e41ef4d336188ceb5cf4393f4c982
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 Rodziny wirtualna B serii można wybrać rozmiar maszyny Wirtualnej, w którym dostarcza niezbędne podstawowym poziomie wydajności dla obciążenia, możliwość serii wydajności procesora CPU do 100% v4 Intel® Broadwell E5-2673 2.3 GHz lub procesor Intel® Haswell 2,4 GHz E5-2673 v3 vCPU.
 
@@ -58,7 +58,8 @@ Czy w przypadku podjęcia środków 120, który I uzyskany poza szczytem i odją
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Pytanie: czy serii B obsługuje magazyn w warstwie Premium dyski danych?
 **A**: tak, wszystkie rozmiary serii B obsługi dysków z danymi magazyn w warstwie Premium.   
     
-
+### <a name="q-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>Pytanie: czy moje pozostałe środki są ustawione na 0, po redepoy lub stop/start.
+**A** : gdy maszyna wirtualna jest "REDPLOYED", tj., maszyny Wirtualnej są przenoszone do innego węzła i skumulowany środki zostaną utracone. Jeśli maszyna wirtualna jest zatrzymana uruchomiona, ale pozostaje w tym samym węźle, maszyna wirtualna zachowuje skumulowany środków. Zawsze, gdy maszyna wirtualna zacznie świeże w węźle, staje kredytu początkowej, Standard_B8ms jest 240 minut.
 
     
 

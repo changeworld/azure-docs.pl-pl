@@ -15,11 +15,11 @@ ms.date: 09/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5d61ad93ad5e3ab7fdf83c1cef2fe6770089112f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74c99351656a685077bf4ea7714e6804274d396c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Włączenie dostępu zdalnego do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -162,7 +162,7 @@ Aby skonfigurować w ramach delegowania KCD, powtórz następujące czynności d
 
 Po włączeniu programu SharePoint dla protokołu Kerberos i KCD skonfigurowany, możesz przystąpić do publikowania farmy programu SharePoint dla dostępu zdalnego za pośrednictwem serwera Proxy aplikacji usługi Azure AD.
 
-1. Publikowanie witryny programu SharePoint z następującymi ustawieniami. Aby uzyskać instrukcje, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
+1. Publikowanie witryny programu SharePoint z następującymi ustawieniami. Aby uzyskać instrukcje, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
    - **Wewnętrzny adres URL**: adres URL witryny programu SharePoint, takich jak **https://SharePoint/**. W tym przykładzie, upewnij się użyć **protokołu https**
    - **Metoda uwierzytelniania wstępnego**: Azure Active Directory
    - **Tłumaczenie adresów URL w nagłówkach**: nie
@@ -204,6 +204,6 @@ Można teraz uzyskać dostępu do witryny programu SharePoint zewnętrznie za po
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md)
+- [Praca z domenami niestandardowymi w serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-configure-custom-domain.md)
 - [Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](application-proxy-understand-connectors.md)
 

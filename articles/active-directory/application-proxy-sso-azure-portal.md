@@ -15,19 +15,19 @@ ms.date: 07/20/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3c69450601d84f62d05ca6cc8930fd8e9a8e4203
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 77e7288060abd2577867023a777eb3bdd4331e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji
 
 Azure Active Directory serwera Proxy aplikacji pomaga zwiększyć wydajność przez publikowanie aplikacji lokalnych, dzięki czemu pracowników zdalnych można bezpiecznie uzyskiwać do nich dostęp, zbyt. W portalu Azure można również skonfigurowaniu rejestracji jednokrotnej (SSO) do tych aplikacji. Użytkownicy potrzebują tylko do uwierzytelniania za pomocą usługi Azure AD i uzyskać dostęp do aplikacji przedsiębiorstwa bez konieczności ponownego logowania się.
 
-Serwer Proxy aplikacji obsługuje kilka [pojedynczy logowania jednokrotnego tryby](application-proxy-sso-overview.md). Na podstawie hasła logowania jest przeznaczony dla aplikacji, które używają kombinacja nazwy użytkownika i hasła do uwierzytelnienia. Po skonfigurowaniu opartego na hasłach logowania jednokrotnego dla aplikacji, użytkownicy muszą zalogować się do aplikacji lokalnych raz. Po wykonaniu tej usługi Azure Active Directory są przechowywane informacje logowania i automatycznie gwarantuje on aplikacji przez użytkowników dostępu zdalnego. 
+Serwer Proxy aplikacji obsługuje kilka [pojedynczy logowania jednokrotnego tryby](manage-apps/application-proxy-single-sign-on.md). Na podstawie hasła logowania jest przeznaczony dla aplikacji, które używają kombinacja nazwy użytkownika i hasła do uwierzytelnienia. Po skonfigurowaniu opartego na hasłach logowania jednokrotnego dla aplikacji, użytkownicy muszą zalogować się do aplikacji lokalnych raz. Po wykonaniu tej usługi Azure Active Directory są przechowywane informacje logowania i automatycznie gwarantuje on aplikacji przez użytkowników dostępu zdalnego. 
 
-Należy już zostały opublikowane i przetestować aplikację przy użyciu serwera Proxy aplikacji. Jeśli nie, postępuj zgodnie z instrukcjami [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md) następnie potem wróć tutaj. 
+Należy już zostały opublikowane i przetestować aplikację przy użyciu serwera Proxy aplikacji. Jeśli nie, postępuj zgodnie z instrukcjami [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md) następnie potem wróć tutaj. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Ustawianie hasła vaulting aplikacji
 
@@ -55,5 +55,5 @@ Przejdź do zewnętrznego adresu URL skonfigurowanego dla dostępu zdalnego do a
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeczytaj informacje o innych sposobach zaimplementować [rejestracji jednokrotnej z serwerem Proxy aplikacji](application-proxy-sso-overview.md)
+- Przeczytaj informacje o innych sposobach zaimplementować [rejestracji jednokrotnej z serwerem Proxy aplikacji](manage-apps/application-proxy-single-sign-on.md)
 - Dowiedz się więcej o [zagadnienia dotyczące zabezpieczeń w celu uzyskania dostępu do aplikacji zdalnie z serwera Proxy aplikacji usługi Azure AD](application-proxy-security-considerations.md)

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8963dfb3c2d8b81309f44fcdcaab7ddc0b403e7e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5fa52099f5cf55b78fd2fea407c34f29237939d3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -24,14 +24,14 @@ ms.lasthandoff: 05/11/2018
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) i raportowania. Aby uzyskać więcej informacji, zobacz [Raporty w usłudze Azure Active Directory](active-directory-reporting-azure-portal.md). 
 
-**Pytanie: używam https://graph.windows.net/ &lt;nazwa dzierżawcy&gt;punktu końcowego /reports/ raporty do naszej raportowania systemów programowo interfejsy API w celu ściągania usługi Azure AD inspekcji i użycie zintegrowanej aplikacji. Co należy przełączyć?**
+**Pytanie: używam https://graph.windows.net/&lt; nazwa dzierżawy&gt;punktu końcowego /reports/ raporty do naszej raportowania systemów programowo interfejsy API w celu ściągania usługi Azure AD inspekcji i użycie zintegrowanej aplikacji. Co należy przełączyć?**
 
 **A:** odszukać [dokumentacji interfejsu API](https://developer.microsoft.com/graph/) aby zobaczyć, jak można użyć nowych interfejsów API dostępu do [raporty aktywności](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal). Ten punkt końcowy ma dwa raporty (inspekcji i logowania), które zawierają wszystkie dane, które uzyskano w starym punkt końcowy interfejsu API. Ten nowy punkt końcowy ma również logowania raportu z licencji Azure AD Premium, która umożliwia pobieranie użycia aplikacji, użycie urządzeń i informacje logowania dla użytkownika.
 
 
 --- 
 
-**Pytanie: używam https://graph.windows.net/ &lt;nazwa dzierżawcy&gt;/reports/ punktu końcowego API, aby pobierać raporty dotyczące zabezpieczeń usługi Azure AD (określone typy wykrywania, takie jak lub ujawnione poświadczenia logowania z anonimowych adresów IP) w naszym systemy raportowania programowo. Co należy przełączyć?**
+**Pytanie: używam https://graph.windows.net/&lt; nazwa dzierżawy&gt;/reports/ punktu końcowego API, aby pobierać raporty dotyczące zabezpieczeń usługi Azure AD (określone typy wykrywania, takie jak lub ujawnione poświadczenia logowania z anonimowych adresów IP) w naszym systemy raportowania programowo. Co należy przełączyć?**
 
 **A:** można użyć [zdarzenia o podwyższonym ryzyku Identity Protection API](active-directory-identityprotection-graph-getting-started.md) aby wykryć zabezpieczeń dostępu za pomocą programu Microsoft Graph. Ten nowy format zapewnia większą elastyczność w sposób można badać danych, za pomocą zaawansowane filtrowanie, pole wyboru i inne, a standaryzuje zdarzenia ryzyka do jednego typu ułatwia integrację z rozwiązaniem Siem i innych narzędzi do zbierania danych. Ponieważ dane są w innym formacie, nie może zastąpić nowe zapytanie stara zapytań. Jednak [nowy interfejs API korzysta z programu Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), który jest standardem Microsoft tych interfejsów API usługi Office 365 lub Azure AD. Dzięki pracy wymagane można rozszerzyć albo dotychczasowych inwestycji MS Graph Pomoc systemu lub rozpoczęciem przejście do ta nowa platforma standardowa.
 
@@ -39,7 +39,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 **Pytanie: co to jest przechowywanie danych o Dzienniki aktywności (inspekcji i logowania) w portalu Azure?** 
 
-**Odpowiedź:** można znaleźć pod adresem [na jak długo zebrane dane są przechowywane?} (Zasady przechowywania raportów usługi azure Active Directory](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) dla odpowiedzi na to pytanie.
+**A:** zobacz [na jak długo zebrane dane są przechowywane?](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) dla odpowiedzi na to pytanie.
 
 --- 
 

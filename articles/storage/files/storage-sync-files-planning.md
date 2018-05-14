@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -46,7 +46,14 @@ Agent synchronizacji plików Azure jest pobrania pakietu, który umożliwia syst
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Punkt końcowy serwera
-Punkt końcowy serwera reprezentuje konkretnej lokalizacji na zarejestrowanego serwera, takie jak folder na serwerze woluminu. Może istnieć wiele punktów końcowych serwera na tym samym woluminie, jeśli ich przestrzenie nazw nie mogą się pokrywać (na przykład `F:\sync1` i `F:\sync2`). Można skonfigurować zasady warstw chmury indywidualnie dla każdego punktu końcowego serwera. Obecnie nie jest możliwe utworzenie punktu końcowego serwera dla katalogu głównego woluminu (na przykład `F:\` lub `C:\myvolume`, jeśli wolumin jest zainstalowany jako punkt instalacji).
+Punkt końcowy serwera reprezentuje konkretnej lokalizacji na zarejestrowanego serwera, takie jak folder na serwerze woluminu. Może istnieć wiele punktów końcowych serwera na tym samym woluminie, jeśli ich przestrzenie nazw nie mogą się pokrywać (na przykład `F:\sync1` i `F:\sync2`). Można skonfigurować zasady warstw chmury indywidualnie dla każdego punktu końcowego serwera. 
+
+Można utworzyć punktu końcowego serwera za pomocą punktu instalacji. Uwaga: punkty instalacji, w ramach serwera punktu końcowego są pomijane.  
+
+Można utworzyć punktu końcowego serwera w woluminie systemowym, ale istnieją dwa ograniczenia, jeśli możesz to zrobić:
+* Chmura nie można włączyć obsługę poziomów.
+* Nie jest wykonywane Przywracanie szybkie przestrzeni nazw (gdy system umożliwia szybkie dół cały obszar nazw, a następnie uruchamia przywołanie zawartości).
+
 
 > [!Note]  
 > Obsługiwane są tylko woluminy z systemem innym niż wymienne.  Dyski mapowane z udziału zdalnego nie są obsługiwane dla punktu końcowego ścieżki serwera.  Ponadto punktu końcowego serwera może znajdować się w systemie Windows, wolumin systemowy jednak chmury warstwy nie jest obsługiwana w woluminie systemowym.
@@ -85,11 +92,11 @@ Przyszłych wersji systemu Windows Server zostanie dodana po ich wydaniu. Wcześ
 | Cecha | Obsługuje stanu | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy ACL systemu Windows są zachowywane przez synchronizacji plików Azure i są wymuszane przez system Windows Server na serwerze punktów końcowych. Listy ACL systemu Windows nie są (jeszcze) obsługiwany przez pliki Azure, jeśli pliki są udostępniane bezpośrednio w chmurze. |
-| Twarde linki | Pominięto | |
-| Łącza symbolicznego | Pominięto | |
+| Twarde linki | Pominięte | |
+| Łącza symbolicznego | Pominięte | |
 | Punkty instalacji | Częściowo obsługiwanej | Punkty instalacji może być katalogiem głównym serwera punktu końcowego, ale są one pomijane, jeśli są one w przestrzeni nazw punktu końcowego serwera. |
-| Skrzyżowania | Pominięto | Na przykład rozproszonych DfrsrPrivate System plików i DFSRoots folderów. |
-| Punkty ponownej analizy | Pominięto | |
+| Skrzyżowania | Pominięte | Na przykład rozproszonych DfrsrPrivate System plików i DFSRoots folderów. |
+| Punkty ponownej analizy | Pominięte | |
 | Kompresja NTFS | W pełni obsługiwane | |
 | Plików rozrzedzonych | W pełni obsługiwane | Synchronizacja plików rozrzedzonych (nie są blokowane), ale synchronizacji w chmurze jako całego pliku. Zawartość pliku zmiany w chmurze (lub na innym serwerze), plik nie jest już rozrzedzony, gdy zmiana zostały pobrane. |
 | Alternatywne strumienie danych (AD) | Zachowane, ale nie zsynchronizowano | Na przykład tagów klasyfikacji utworzonych przez infrastrukturę klasyfikacji plików nie są zsynchronizowane. Istniejące znaczniki klasyfikacji plików na każdym serwerze punkty końcowe są lewej bez zmian. |
@@ -105,7 +112,7 @@ Przyszłych wersji systemu Windows Server zostanie dodana po ich wydaniu. Wcześ
 | ~$\*.\* | Plik tymczasowy pakietu Office |
 | \*.tmp | Plik tymczasowy |
 | \*.laccdb | Pliku blokowania dostępu do bazy danych|
-| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| 635D02A9D91C401B97884B82B3BCDAEA.* | Wewnętrzny pliku synchronizacji|
 | \\Informacji o woluminie systemowym | Folder specyficzne dla woluminu |
 | $RECYCLE. BIN| Folder |
 | \\SyncShareState | Folder do synchronizacji |

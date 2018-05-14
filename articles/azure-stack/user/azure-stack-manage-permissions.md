@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9944f51c080da6edd89927bfd26398024c5d4de2
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Zarządzanie dostępem do zasobów przy użyciu kontroli dostępu Azure Stack Role-Based
 
@@ -38,6 +38,28 @@ Stos Azure ma trzy podstawowe role, które można zastosować do wszystkich typ�
 * **Właściciel** mogą zarządzać wszystkim łącznie z dostępem do zasobów.
 * **Współautor** mogą zarządzać wszystkim poza dostępem do zasobów.
 * **Czytnik** mogą przeglądać wszystko, ale nie można wprowadzać żadnych zmian.
+
+### <a name="resource-hierarchy-and-inheritance"></a>Hierarchia zasobów i dziedziczenie
+
+Azure stos nie zawiera następująca hierarchia zasobów:
+
+* Każda subskrypcja należy do jednego katalogu.
+* Każdej z grup zasobów należy do jednej subskrypcji.
+* Każdy zasób należy do grupy zasobów.
+
+Dostępu, który można przyznać w zakresie nadrzędnej jest dziedziczona w zakresy podrzędne. Na przykład:
+
+* Należy przypisać rolę czytelnika do grupy usługi Azure AD w zakresie subskrypcji. Członkowie tej grupy można wyświetlić co zasobu i grupy zasobów w subskrypcji.
+* Przypisanie roli współautora do aplikacji w zakresie grupy zasobów. Aplikację można zarządzać zasoby wszystkich typów w tej grupie zasobów, ale nie innych grup zasobów w subskrypcji.
+
+### <a name="assigning-roles"></a>Przypisywanie ról
+
+Można przypisać więcej niż jedną rolę dla użytkownika, a każda rola może być skojarzony z innym zakresie. Na przykład:
+
+* Należy przypisać rolę czytelnika TestUser-A do subskrypcji-1.
+* Możesz przypisać rolę właściciela TestUser-A TestVM-1.
+
+Azure [przypisań ról](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) artykuł zawiera szczegółowe informacje na temat wyświetlania, przypisywania i usuwania ról.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Hierarchia zasobów i dziedziczenie
 
@@ -78,6 +100,6 @@ W poniższych krokach opisano sposób konfigurowania uprawnień dla użytkownika
 
 7. Wybierz pozycję **Zapisz**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Tworzenie jednostek usługi](azure-stack-create-service-principals.md)

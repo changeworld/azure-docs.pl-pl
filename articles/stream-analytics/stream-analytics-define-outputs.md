@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 54bf0cd80d1fcc6d761f977484a1a5539d581361
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/11/2018
+ms.openlocfilehash: 030af72951e226d3484706e627bc8b74d5469670
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych dostępne zadania usługi analiza strumienia Azure. Dane wyjściowe umożliwiają przechowywanie i Zapisz wyniki zadania usługi analiza strumienia. Za pomocą danych wyjściowych, można wykonać dalszego analiz biznesowych i danych magazynu danych. 
@@ -86,7 +86,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenia wyjści
 | Konto magazynu | Nazwa konta magazynu, w którym wysyłania danych wyjściowych. |
 | Klucz konta magazynu | Klucz tajny, skojarzone z kontem magazynu. |
 | Kontener magazynu | Kontenery umożliwiają logiczne grupowanie dla obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Przekazywanie obiektu blob do usługi Blob, należy określić kontener dla tego obiektu blob. |
-| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do zapisywania obiektów blob w określonym kontenerze. </br></br> We wzorcu ścieżka można użyć co najmniej jedno wystąpienie zmiennych czasu Data określenie częstotliwości, które obiekty BLOB są zapisywane: </br> {date} {time} </br> </br>Może także określić jedną nazwę pola {kolumna} z danych do obiektów blob z partycji przez, gdzie nazwa pola jest alfanumeryczne i może zawierać spacji, łączniki i podkreślenia. Ograniczenia dotyczące pól niestandardowych są następujące: <ul><li>Przypadek niedostatecznej (nie różnic między kolumny "ID" i kolumnie "id")</li><li>Zagnieżdżone pola nie są dozwolone (zamiast tego użyć aliasu w zapytaniu zadania do pola "spłaszczenia")</li><li>Nie można użyć wyrażenia jako nazwa pola</li></ul>Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3: Klaster1 / {client_id} / {date} / {time}</li><li>Przykład 4: Klaster1 / {myField} gdzie zapytanie jest: Wybierz data.myField jako myField z danych wejściowych;</li></ul><BR> Następującej konwencji nazewnictwa plików są następujące: </br> {Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension </br></br> Przykład danych wyjściowych plików: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do zapisywania obiektów blob w określonym kontenerze. </br></br> We wzorcu ścieżka można użyć co najmniej jedno wystąpienie zmiennych czasu Data określenie częstotliwości, które obiekty BLOB są zapisywane: </br> {date} {time} </br> </br>Należy także określić jedną nazwę niestandardowego {pola} z danych zdarzeń do partycjonowania obiekty BLOB według, w którym nazwa pola alfanumeryczną i może zawierać spacji, łączniki i podkreślenia. Ograniczenia dotyczące pól niestandardowych są następujące: <ul><li>Przypadek niedostatecznej (nie różnic między kolumny "ID" i kolumnie "id")</li><li>Zagnieżdżone pola nie są dozwolone (zamiast tego użyć aliasu w zapytaniu zadania do pola "spłaszczenia")</li><li>Nie można użyć wyrażenia jako nazwa pola</li></ul>Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3: Klaster1 / {client_id} / {date} / {time}</li><li>Przykład 4: Klaster1 / {myField} gdzie zapytanie jest: Wybierz data.myField jako myField z danych wejściowych;</li></ul><BR> Następującej konwencji nazewnictwa plików są następujące: </br> {Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension </br></br> Przykład danych wyjściowych plików: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiks, można wybrać format daty, w którym pliki są organizowane. Przykład: RRRR/MM/dd. |
 | Format godziny | Opcjonalny. Jeśli czas nie jest używany w ścieżce prefiks, określ format czasu, w którym pliki są organizowane. Obecnie jedyna obsługiwana wartość to HH. |
 | Format serializacji zdarzeń | Format serializacji w danych wyjściowych.  JSON, CSV i Avro są obsługiwane.
@@ -166,7 +166,7 @@ Z usługi Stream Analytics | To Power BI
 bigint | Int64
 nvarchar(max) | Ciąg
 datetime | Data/godzina
-Float | Podwójnej precyzji
+liczba zmiennoprzecinkowa | O podwójnej precyzji
 Tablica rekordu | Ciąg typu, wartości stałej "IRecord" lub "IArray"
 
 ### <a name="schema-update"></a>Aktualizacja schematu
@@ -175,10 +175,10 @@ Analiza strumienia wnioskuje schemat modelu danych, na podstawie pierwszego zest
 `SELECT *` Zapytania należy unikać zapobiec aktualizacji dynamicznej schematu w wierszach. Oprócz potencjalnego wpływu na wydajność również może powodować niedokładność czas poświęcony na wyniki. Należy wybrać dokładnie pola, które muszą być wyświetlane na pulpicie nawigacyjnym usługi Power BI. Ponadto wartości danych powinny być zgodne z wybranym typem danych.
 
 
-Poprzednie/bieżącym | Int64 | Ciąg | Data/godzina | Podwójnej precyzji
+Poprzednie/bieżącym | Int64 | Ciąg | Data/godzina | O podwójnej precyzji
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | Ciąg | Ciąg | Podwójnej precyzji
-Podwójnej precyzji | Podwójnej precyzji | Ciąg | Ciąg | Podwójnej precyzji
+Int64 | Int64 | Ciąg | Ciąg | O podwójnej precyzji
+O podwójnej precyzji | O podwójnej precyzji | Ciąg | Ciąg | O podwójnej precyzji
 Ciąg | Ciąg | Ciąg | Ciąg |  | Ciąg | 
 Data/godzina | Ciąg | Ciąg |  Data/godzina | Ciąg
 
@@ -289,8 +289,8 @@ W poniższej tabeli przedstawiono obsługę partycji i liczby modułów zapisywa
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Yes | Użyj {date} i {time} tokeny we wzorcu prefiks ścieżki. Wybierz format daty, takie jak RRRR/MM/dd. DD/MM/RRRR, MM-DD-RRRR. HH służy do formatu godziny. | Sposób wprowadzania partycjonowania dla [pełni działania równoległego zapytania](stream-analytics-scale-jobs.md). | 
 | Azure SQL Database | Nie | Brak | Nie dotyczy. | 
-| Azure Blob Storage | Yes | Użyj {date} i {time} tokenów w wzorzec ścieżki. Wybierz format daty, takie jak RRRR/MM/dd. DD/MM/RRRR, MM-DD-RRRR. HH służy do formatu godziny. | Sposób wprowadzania partycjonowania dla [pełni działania równoległego zapytania](stream-analytics-scale-jobs.md). | 
-| Azure Event Hub | Yes | Yes | Może być różna w zależności od wyrównania partycji.</br> Po klucz partycji jest równie wyrównane nadrzędnego (poprzedni) kroku zapytania, liczba składników zapisywania Centrum zdarzeń jest taka sama liczba dane wyjściowe output partycji Centrum zdarzeń. Każdy moduł zapisujący używa w EventHub [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. </br> Gdy jest Centrum zdarzeń klucza partycji nie jest wyrównana z nadrzędnego (poprzedni) kroku zapytania, liczba modułów zapisywania danych wyjściowych taka sama jak liczba partycji w tym poprzedniego kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
+| Azure Blob Storage | Yes | Użyj {date} i {time} tokeny lub pojedynczy {fieldname} z pól zdarzenia we wzorcu ścieżki. Wybierz format daty, takie jak RRRR/MM/dd. DD/MM/RRRR, MM-DD-RRRR. HH służy do formatu godziny. | Sposób wprowadzania partycjonowania dla [pełni działania równoległego zapytania](stream-analytics-scale-jobs.md). | 
+| Centrum zdarzeń Azure | Yes | Yes | Może być różna w zależności od wyrównania partycji.</br> Po klucz partycji jest równie wyrównane nadrzędnego (poprzedni) kroku zapytania, liczba składników zapisywania Centrum zdarzeń jest taka sama liczba dane wyjściowe output partycji Centrum zdarzeń. Każdy moduł zapisujący używa w EventHub [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. </br> Gdy jest Centrum zdarzeń klucza partycji nie jest wyrównana z nadrzędnego (poprzedni) kroku zapytania, liczba modułów zapisywania danych wyjściowych taka sama jak liczba partycji w tym poprzedniego kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. | 
 | Azure Table Storage | Yes | Wszystkie kolumny wyjściowej.  | Sposób wprowadzania partycjonowania dla [pełni zarządzana z przetwarzaniem zapytania](stream-analytics-scale-jobs.md). | 
 | Azure Service Bus tematu | Yes | Wybrana automatycznie. Liczba partycji jest oparta na [SKU magistrali usługi i rozmiar](../service-bus-messaging/service-bus-partitioning.md). Klucz partycji to unikatowa wartość dla każdej partycji.| Taka sama jak liczba partycji w temacie danych wyjściowych.  |
@@ -308,7 +308,7 @@ W poniższej tabeli opisano niektóre zagadnienia dotyczące danych wyjściowych
 | Azure Data Lake Store | Zobacz [ogranicza usługi Data Lake Storage](../azure-subscription-service-limits.md#data-lake-store-limits) | Dla operacji zapisu do 4 MB |
 | Azure SQL Database | 10 000 maksymalna liczba wierszy przypadających na jednego zbiorczego wstawiania</br>100 minimalna liczba wierszy przypadających na wstawiania zbiorczego pojedynczego </br>Zobacz też [ogranicza Azure SQL](../sql-database/sql-database-resource-limits.md) |  Każdej partii jest początkowo zbiorczo wstawić z maksymalny rozmiar partii i może podzielone partii połowy oparte na błędy powtarzający operację z bazy danych SQL (do minimalny rozmiar partii). |
 | Azure Blob Storage | Zobacz [ogranicza usługi Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Maksymalny rozmiar blokowych obiektów Blob to 4 MB</br>Maksymalna liczba bock obiektu Blob jest 50000 |
-| Azure Event Hub   | 256 KB na jeden komunikat. </br>Zobacz też [ogranicza usługi Event Hubs](../event-hubs/event-hubs-quotas.md) |    Podczas partycjonowania wyjścia nie były wyrównane, każde zdarzenie jest indywidualnie pakowane w EventData i wysłane partii zgodnie z rozmiarem maksymalny komunikatu (1 MB do warstwy Premium). </br></br>  Podczas operacji wejścia-wyjścia Partycjonowanie jest wyrównywany wiele zdarzeń są pakowane w jednym EventData maksymalnie rozmiar maksymalny komunikatu i wysyłane.    |
+| Centrum zdarzeń Azure   | 256 KB na jeden komunikat. </br>Zobacz też [ogranicza usługi Event Hubs](../event-hubs/event-hubs-quotas.md) |    Podczas partycjonowania wyjścia nie były wyrównane, każde zdarzenie jest indywidualnie pakowane w EventData i wysłane partii zgodnie z rozmiarem maksymalny komunikatu (1 MB do warstwy Premium). </br></br>  Podczas operacji wejścia-wyjścia Partycjonowanie jest wyrównywany wiele zdarzeń są pakowane w jednym EventData maksymalnie rozmiar maksymalny komunikatu i wysyłane.    |
 | Power BI | Zobacz [ogranicza API Rest usługi Power BI](https://msdn.microsoft.com/library/dn950053.aspx) |
 | Azure Table Storage | Zobacz [ogranicza usługi Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Domyślny jest 100 jednostek na jednej transakcji i można skonfigurować na wartość mniejszą zgodnie z potrzebami. |
 | Azure kolejki usługi Service Bus   | 256 KB na jeden komunikat.</br> Zobacz też [ogranicza usługi Service Bus](../service-bus-messaging/service-bus-quotas.md) | Pojedyncze zdarzenie na jeden komunikat. |

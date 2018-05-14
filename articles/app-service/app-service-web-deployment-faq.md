@@ -1,11 +1,11 @@
 ---
-title: "Często zadawane pytania dotyczące wdrożenia dla aplikacji sieci web platformy Azure | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące wdrażania dla funkcji aplikacji sieci Web usługi aplikacji Azure."
+title: Często zadawane pytania dotyczące wdrożenia dla aplikacji sieci web platformy Azure | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące wdrażania dla funkcji aplikacji sieci Web usługi aplikacji Azure.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 318a236652229c4e093ca33886ac1831686aed73
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 54c99cc9dde6a9706c75401dd75b98f8f5de7cec
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wdrażania aplikacji sieci Web na platformie Azure
 
@@ -91,7 +91,7 @@ Masz dwie opcje związane z Visual Studio Team Services za pomocą ciągłego wd
 *   Użyj projektu Git. Połączenie za pomocą usługi aplikacji przy użyciu opcji wdrażania dla tego repozytorium.
 *   Użyj projektu kontroli wersji typu Team Foundation (TFVC). Wdrażanie przy użyciu agenta kompilacji dla aplikacji usługi.
 
-Kod ciągłego wdrażania dla obu tych opcji zależy od istniejących projektanta przepływów pracy i procedur zaewidencjonowania. Aby uzyskać więcej informacji zobacz następujące artykuły: 
+Kod ciągłego wdrażania dla obu tych opcji zależy od istniejących projektanta przepływów pracy i procedur zaewidencjonowania. Więcej informacji można znaleźć w tych artykułach: 
 
 *   [Implementowanie ciągłego wdrażania aplikacji do witryny sieci Web platformy Azure](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
 *   [Konfigurowanie konta usługi Visual Studio Team Services, można wdrożyć w aplikacji sieci web](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)

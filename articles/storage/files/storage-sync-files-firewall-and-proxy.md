@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 81425c6ac4e463bd4242328206bd43ce78a1105a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 979897e3cb703b36a46e96848a9176d6d4c6cc6a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure ustawienia serwera proxy i zapory synchronizacji plików
+# <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Synchronizacja programu Azure pliku nawiązuje połączenie z serwerami lokalnymi do usługi pliki Azure, włączenie synchronizacji obejmujący wiele lokacji i w chmurze, Obsługa poziomów funkcji. W efekcie lokalnego serwera musi połączone z Internetem. Administrator IT musi określić ścieżkę najlepsze na serwerze, aby uzyskać dostęp do usług w chmurze Azure.
 
 W tym artykule będzie zapewniają wgląd w określonych wymagań i opcji dostępnych dla pomyślnie i bezpieczna łączność między serwerem synchronizacji plików Azure.
+
+> [!Important]
+> Synchronizacja programu Azure pliku nie obsługuje jeszcze zapory i sieci wirtualne dla konta magazynu. 
 
 ## <a name="overview"></a>Przegląd
 Synchronizacja programu Azure pliku działa jako usługa aranżacji między serwera z systemem Windows, udziału plików platformy Azure i kilka innych usług Azure, na synchronizowanie danych, zgodnie z opisem w grupie synchronizacji. Do celów synchronizacji plików Azure działał prawidłowo należy skonfigurować serwery do komunikowania się z następujących usług platformy Azure:

@@ -6,14 +6,14 @@ documentationcenter: .net
 author: djrosanova
 manager: timlt
 ms.service: event-hubs
-ms.workload: na
+ms.topic: article
 ms.date: 05/07/2018
 ms.author: darosa
-ms.openlocfilehash: 40805c27e7e2eaef1932c967af2d291f67b4192d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 51e32737be4eaf3c61cdbe50b82a05c205800ac4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="event-hubs-for-kafka-ecosystems"></a>Centra zdarzeń dla ekosystemami Kafka
 
@@ -61,7 +61,7 @@ Następujące funkcje Kafka publicznej wersji zapoznawczej usługi Event Hubs Ka
 *   Kafka połączenia
 *   Strumienie Kafka
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przewidzianych wprowadzenie do usługi Event Hubs Kafka ekosystemami. Aby dowiedzieć się więcej, zobacz następujące linki:
 

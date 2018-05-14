@@ -3,7 +3,7 @@ title: Zresetuj dostęp do maszyny Wirtualnej systemu Linux na platformie Azure 
 description: Jak zarządzać użytkownicy administracyjni i zresetuj dostęp na maszynach wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess i 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: danielsollondon
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,19 +13,39 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 08/04/2017
-ms.author: danlep
-ms.openlocfilehash: a364d3c8c0297d988bc6a31b31921b49e70394bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 05/10/2018
+ms.author: danis
+ms.openlocfilehash: b90b7948d10ff91f3c63b772bc302b1def416f2b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Zarządzanie użytkownikami administracyjnymi oraz SSH i wyboru lub napraw dyski na maszynach wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess 2.0 interfejsu wiersza polecenia platformy Azure
+
+## <a name="overview"></a>Przegląd
+
 Dysk na maszynie Wirtualnej systemu Linux są pokazywane błędy. Jakiś sposób resetowania hasła głównego dla maszyny Wirtualnej systemu Linux lub przypadkowo usunięty klucz prywatny SSH. Jeśli które miały miejsce w ciągu dni centrum danych, konieczne będzie dysk istnieje, a następnie otwórz KVM można uzyskać za pomocą konsoli serwera. Rozszerzenia Azure VMAccess można traktować jako przełącznika KVM, które umożliwia dostęp do konsoli zresetować dostępu do systemu Linux lub przeprowadź obsługę poziomu dysku.
 
-W tym artykule przedstawiono sposób rozszerzenia VMAccess Azure umożliwia sprawdzanie lub naprawiania dysku, zresetuj dostęp użytkownika, zarządzanie kontami użytkowników administracyjnych, zaktualizuj konfigurację protokołu SSH w systemie Linux. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](../linux/using-vmaccess-extension-nodejs.md).
+W tym artykule przedstawiono sposób rozszerzenia VMAccess Azure umożliwia sprawdzanie lub naprawiania dysku, zresetuj dostęp użytkownika, zarządzanie kontami użytkowników administracyjnych lub aktualizacji konfiguracji SSH w systemie Linux, gdy są one uruchomione jako maszyny wirtualne Azure Resource Manager. Jeśli musisz zarządzać maszynami wirtualnymi Classic — należy postępować zgodnie z instrukcjami w [klasycznego dokumentacji wirtualna](../linux/classic/reset-access-classic.md). 
 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+### <a name="operating-system"></a>System operacyjny
+
+Rozszerzenia dostępu do maszyny Wirtualnej mogą być uruchamiane na tych dystrybucje systemu Linux:
+
+
+| Dystrybucja | Wersja |
+|---|---|
+| Ubuntu | 16.04 LTS, 14.04 LTS i 12.04 LTS |
+| Debian | Debian 7,9 +, 8.2 + |
+| RedHat | RHEL 6.7+, 7.1+ |
+| Oracle Linux | 6.4+, 7.0+ |
+| SUSE | 11 i 12 |
+| OpenSuse | openSUSE Leap 42.2+ |
+| CentOS | CentOS 6.3+, 7.0+ |
+| CoreOS | 494.4.0+ |
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Sposoby używania rozszerzenia VMAccess
 Istnieją dwa sposoby, że można użyć rozszerzenia VMAccess na maszyny wirtualne systemu Linux:

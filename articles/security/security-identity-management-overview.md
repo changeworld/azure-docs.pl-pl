@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: dcfc295de39e909bf157edee4fec1ba51a583750
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8e83eb161f487a73d5984425e2c24993006a08a5
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Przegląd zabezpieczeń zarządzania tożsamość platformy Azure
 Pomocy firmy Microsoft tożsamościami i dostępem zarządzania rozwiązań IT ochrony dostępu do aplikacji i zasobów w firmowym centrum danych i w chmurze, włączanie dodatkowe poziomy sprawdzania poprawności, takich jak uwierzytelnianie wieloskładnikowe i zasady dostępu warunkowego. Monitorowania podejrzanych działań przez zaawansowane zabezpieczenia raportowania, inspekcji i alerty, pomaga ograniczyć potencjalne problemy. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) zapewnia jednokrotnego do tysięcy chmury aplikacji (SaaS) i dostęp do aplikacji sieci web, możesz uruchomić lokalnie.
@@ -64,9 +64,9 @@ Serwera Proxy aplikacji usługi Azure AD umożliwia publikowanie aplikacji lokal
 
 Więcej informacji:
 
-* [Włączanie serwera Proxy aplikacji usługi Azure AD](../active-directory/active-directory-application-proxy-enable.md)
+* [Włączanie serwera Proxy aplikacji usługi Azure AD](../active-directory/manage-apps/application-proxy-enable.md)
 * [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](../active-directory/active-directory-application-proxy-publish.md)
-* [Single-sign-on z serwerem Proxy aplikacji](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
+* [Single-sign-on z serwerem Proxy aplikacji](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Praca z dostępu warunkowego](../active-directory/application-proxy-enable-remote-access-sharepoint.md)
 
 ## <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe

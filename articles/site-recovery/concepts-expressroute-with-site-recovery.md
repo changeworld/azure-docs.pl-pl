@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: ffdceeba829cc77d506236274ec1d1cc160eb525
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 7cc4c84ebae7ade4169f8d85a2d5cc11f1df6f87
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Usługa Azure ExpressRoute z usługą Azure Site Recovery
 
@@ -46,11 +46,11 @@ Scenariusz Scalonej odpowiada na poniższym diagramie: ![na lokalnym do Azure z 
 
 Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii [maszyn wirtualnych platformy Azure](azure-to-azure-architecture.md). W zależności od tego, czy sieci wirtualnej platformy Azure maszyny użyj [dysków zarządzanych Azure](../virtual-machines/windows/managed-disks-overview.md), dane replikacji są wysyłane do konta usługi Azure Storage lub repliki dysku zarządzanego w celu region platformy Azure. Mimo że replikacji punktów końcowych, które są publiczne, ruch związany z replikacją dla replikacji maszyny Wirtualnej platformy Azure, domyślnie nie przechodzą przez Internet, niezależnie od tego, który region platformy Azure w sieci wirtualnej źródło istnieje w. Można zastąpić Azure domyślną systemu trasę dla prefiksu adresu 0.0.0.0/0 z [tras niestandardowych](../virtual-network/virtual-networks-udr-overview.md#custom-routes) odwrócenia ruchu maszyny Wirtualnej do urządzenia wirtualnych sieci lokalnych (NVA), ale ta konfiguracja nie jest zalecana dla usługi Site Recovery Replikacja. Jeśli używasz niestandardowych tras [Tworzenie punktu końcowego usługi sieci wirtualnej](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w wirtualnej sieci "Magazynu", aby ruch związany z replikacją nie opuszczają granicy Azure.
 
-Do odzyskiwania po awarii maszyny Wirtualnej platformy Azure jak długo dane replikacji nie opuszczają granicy Azure ExpressRoute nie jest wymagane dla replikacji. Po maszyny wirtualne przełączyć się z obiektem docelowym region platformy Azure, użytkownik może uzyskiwać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Podczas odzyskiwania po awarii maszyny Wirtualnej platformy Azure domyślnie ExpressRoute nie jest wymagane dla replikacji. Po maszyny wirtualne przełączyć się z obiektem docelowym region platformy Azure, użytkownik może uzyskiwać do nich dostęp przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
 
 Jeśli używasz już usługi do nawiązania połączenia z lokalnym centrum danych maszyn wirtualnych Azure w regionie źródła, można zaplanować dla ponowne ustanowienie połączenia ExpressRoute, na region docelowy trybu failover. Ten sam obwód usługi ExpressRoute umożliwia łączenie region docelowy za pomocą nowego połączenia wirtualnej sieci lub korzystanie z oddzielnych obwodu ExpressRoute i połączenia dla odzyskiwania po awarii. Opisano różne możliwe scenariusze [tutaj](azure-vm-disaster-recovery-with-expressroute.md#failover-models-with-expressroute).
 
-Umożliwia replikowanie maszyn wirtualnych platformy Azure na dowolnym regionie Azure, w tym samym klastrze geograficznej zgodnie z opisem [tutaj](../site-recovery/azure-to-azure-support-matrix.md#region-support). Wybranego celu region platformy Azure nie mieści się w tym samym regionie geograficznymi jako źródła, konieczne może włączyć Premium usługi ExpressRoute. Aby uzyskać więcej informacji, sprawdź [lokalizacje ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [cennik usługi ExpressRoute](https://azure.microsoft.com/en-us/pricing/details/expressroute/).
+Umożliwia replikowanie maszyn wirtualnych platformy Azure na dowolnym regionie Azure, w tym samym klastrze geograficznej zgodnie z opisem [tutaj](../site-recovery/azure-to-azure-support-matrix.md#region-support). Wybranego celu region platformy Azure nie mieści się w tym samym regionie geograficznymi jako źródła, konieczne może włączyć Premium usługi ExpressRoute. Aby uzyskać więcej informacji, sprawdź [lokalizacje ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [cennik usługi ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [obwody usługi ExpressRoute](../expressroute/expressroute-circuit-peerings.md).

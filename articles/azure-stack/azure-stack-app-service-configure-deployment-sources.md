@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie źródła wdrożenia dla usługi aplikacji Azure stosu | Dokumentacja firmy Microsoft"
-description: "Jak Administrator usługi można skonfigurować wdrożenie źródła (Git, GitHub, BitBucket, DropBox i OneDrive) dla usługi aplikacji Azure stosu"
+title: Konfigurowanie źródła wdrożenia dla usługi aplikacji Azure stosu | Dokumentacja firmy Microsoft
+description: Jak Administrator usługi można skonfigurować wdrożenie źródła (Git, GitHub, BitBucket, DropBox i OneDrive) dla usługi aplikacji Azure stosu
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 46242fd7ab9e05cfc2edde119afdc6053f129e40
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-deployment-sources"></a>Konfigurowanie źródeł wdrożenia
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
@@ -36,7 +36,7 @@ Oprócz lokalnej Git obsługiwane są następujące dostawców kontroli źródł
 
 ## <a name="view-deployment-sources-in-app-service-administration"></a>Widok źródła wdrożenia w administracji usługi aplikacji
 
-1. Zaloguj się do portalu Azure stosu Admin (https://adminportal.local.azurestack.external) jako administratora usługi.
+1. Zaloguj się do portalu administracyjnego platformy Azure stosu (https://adminportal.local.azurestack.external) jako administratora usługi.
 2. Przejdź do **dostawców zasobów** i wybierz **administrator dostawcy zasobów usługi aplikacji**.  ![Administrator dostawcy zasobów usługi aplikacji][1]
 3. Kliknij przycisk **konfiguracji kontroli źródła**.  W tym miejscu zostanie wyświetlona lista wszystkich źródeł wdrożenia skonfigurowane.
     ![Konfiguracji kontroli źródła administrator dostawcy zasobów usługi aplikacji][2]
@@ -50,10 +50,10 @@ Musisz mieć konto GitHub, aby zakończyć to zadanie. Możesz użyć konta orga
 2. Wprowadź **Nazwa aplikacji** na przykład - usługi aplikacji Azure stosu.
 3. Wprowadź **adres URL strony głównej**. Adres URL strony głównej musi być adresem Portal Azure stosu. Na przykład https://portal.local.azurestack.external.
 4. Wprowadź **opis aplikacji**.
-5. Wprowadź **adresu URL wywołania zwrotnego autoryzacji**.  We wdrożeniu stosu Azure domyślny adres Url jest https://portal.local.azurestack.external/tokenauthorize formularza, jeśli używane do uruchamiania zastępuje inną domenę domenę dla local.azurestack.external ![GitHub - zarejestrować nowe Aplikacja o wartości wypełnione][4]
+5. Wprowadź **adresu URL wywołania zwrotnego autoryzacji**.  We wdrożeniu stosu Azure domyślny adres Url jest w formie https://portal.local.azurestack.external/TokenAuthorize, jeśli jest używane do uruchamiania zastępuje inną domenę domenę w poszukiwaniu local.azurestack.external
 6. Kliknij przycisk **zarejestrować aplikację**.  Teraz zostanie wyświetlona z listą strony **identyfikator klienta** i **klucz tajny klienta** dla aplikacji.
     ![GitHub — rejestracja ukończona aplikacja][5]
-7.  W oknie lub nową kartę przeglądarki zalogować się do stosu administratora portalu Azure (https://adminportal.local.azurestack.external) jako administratora usługi.
+7.  W oknie lub nową kartę przeglądarki zalogować się do portalu administracyjnego platformy Azure stosu (https://adminportal.local.azurestack.external) jako administratora usługi.
 8.  Przejdź do **dostawców zasobów** i wybierz **administrator dostawcy zasobów usługi aplikacji**.
 9. Kliknij przycisk **konfiguracji kontroli źródła**.
 10. Skopiuj i Wklej **identyfikator klienta** i **klucz tajny klienta** w elemencie wejściowym odpowiednie pola GitHub.
@@ -69,14 +69,14 @@ Musisz mieć konto BitBucket, aby zakończyć to zadanie. Możesz użyć konta o
     ![BitBucket dodać klienta OAuth][8]
 3. Wprowadź **nazwa** dla użytkownika, na przykład usługi aplikacji Azure stosu.
 4. Wprowadź **opis** dla aplikacji.
-5. Wprowadź **adres URL wywołania zwrotnego**.  W domyślnym wdrożeniu Azure stosu wywołania zwrotnego adresu Url jest https://portal.local.azurestack.external/TokenAuthorize formularza, jeśli używane do uruchamiania zastępuje inną domenę domenę dla azurestack.local.  Adres Url musi występować po wielkich liter, wymienione w tym miejscu integracji BitBucket powiodło się.
-6. Wprowadź **adres URL** — ten adres Url powinien być Azure stosu adres URL portalu, na przykład https://portal.local.azurestack.external.
+5. Wprowadź **adres URL wywołania zwrotnego**.  We wdrożeniu stosu Azure domyślny adres Url wywołania zwrotnego jest w formie https://portal.local.azurestack.external/TokenAuthorize, jeśli jest używane do uruchamiania zastępuje inną domenę domenę dla azurestack.local.  Adres Url musi występować po wielkich liter, wymienione w tym miejscu integracji BitBucket powiodło się.
+6. Wprowadź **adres URL** — ten adres Url powinien być na przykład adres URL portalu Azure stosu https://portal.local.azurestack.external.
 7. Wybierz **uprawnienia** wymagane:
     - **Repozytoria**: *odczytu*
     - **Elementów Webhook**: *odczytu i zapisu*
 8. Kliknij pozycję **Zapisz**.  Zostanie wyświetlona nowa aplikacja, wraz z **klucza** i **klucz tajny** w obszarze **konsumentów OAuth**.
     ![Lista aplikacji BitBucket][9]
-9.  W oknie lub nową kartę przeglądarki zalogować się do stosu administratora portalu Azure (https://adminportal.local.azurestack.external) jako administratora usługi.
+9.  W oknie lub nową kartę przeglądarki zalogować się do portalu administracyjnego platformy Azure stosu (https://adminportal.local.azurestack.external) jako administratora usługi.
 10.  Przejdź do **dostawców zasobów** i wybierz **administrator dostawcy zasobów usługi aplikacji**.
 11. Kliknij przycisk **konfiguracji kontroli źródła**.
 12. Skopiuj i Wklej **klucza** do **identyfikator klienta** pole wprowadzania i **klucz tajny** do **klucz tajny klienta** pole wejściowe dla BitBucket.
@@ -90,7 +90,7 @@ Musi mieć Account Microsoft połączone z kontem usługi OneDrive w celu wykona
 > [!NOTE]
 > OneDrive dla firm konta nie są obecnie obsługiwane.
 
-1. Przejdź do https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm i dziennika za pomocą Account Microsoft.
+1. Przejdź do https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm i zaloguj się za pomocą Account Microsoft.
 2. W obszarze **aplikacje**, kliknij przycisk **Dodaj aplikację**.
 ![Aplikacje usługi OneDrive][10]
 3. Wprowadź **nazwa** dla nowej rejestracji aplikacji, wprowadź **usługi aplikacji Azure stosu**i kliknij przycisk **tworzenie aplikacji**
@@ -98,13 +98,13 @@ Musi mieć Account Microsoft połączone z kontem usługi OneDrive w celu wykona
 ![Właściwości aplikacji OneDrive][11]
 5. W obszarze **klucze tajne aplikacji**, kliknij przycisk **wygenerować nowe hasło**. Zanotuj **nowe hasło generowane**. To jest klucz tajny aplikacji i nie jest pobieranie, po kliknięciu **OK** na tym etapie.
 6. W obszarze **platform** kliknij **dodać platformy** i wybierz **Web**.
-7. Wprowadź **identyfikator URI przekierowania**.  We wdrożeniu stosu Azure domyślny identyfikator URI przekierowania jest https://portal.local.azurestack.external/tokenauthorize formularza, jeśli używane do uruchamiania zastępuje inną domenę domenę dla azurestack.local ![aplikacja usługi OneDrive — Dodaj Platforma sieci Web][12]
+7. Wprowadź **identyfikator URI przekierowania**.  We wdrożeniu stosu Azure domyślny identyfikator URI przekierowania jest w formie https://portal.local.azurestack.external/TokenAuthorize, jeśli jest używane do uruchamiania zastępuje inną domenę domenę dla azurestack.local ![aplikacja usługi OneDrive — Dodaj platformy sieci Web][12]
 8. Dodaj **uprawnienia Microsoft Graph** - **delegowane uprawnienia**
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
       ![Aplikacja usługi OneDrive — uprawnienia wykresu][13]
 9. Kliknij pozycję **Zapisz**.
-10.  W oknie lub nową kartę przeglądarki zalogować się do stosu administratora portalu Azure (https://adminportal.local.azurestack.external) jako administratora usługi.
+10.  W oknie lub nową kartę przeglądarki zalogować się do portalu administracyjnego platformy Azure stosu (https://adminportal.local.azurestack.external) jako administratora usługi.
 11.  Przejdź do **dostawców zasobów** i wybierz **administrator dostawcy zasobów usługi aplikacji**.
 12. Kliknij przycisk **konfiguracji kontroli źródła**.
 13. Skopiuj i Wklej **identyfikator aplikacji** do **identyfikator klienta** pole wprowadzania i **hasło** do **klucz tajny klienta** pole wejściowe dla usługi OneDrive.
@@ -115,7 +115,7 @@ Musi mieć Account Microsoft połączone z kontem usługi OneDrive w celu wykona
 > [!NOTE]
 > Musisz mieć konto usługi DropBox do zakończenia tego zadania.  Możesz użyć konta organizacji, a nie konta osobistego.
 
-1. Przejdź do https://www.dropbox.com/developers/apps i dziennika przy użyciu konta DropBox.
+1. Przejdź do https://www.dropbox.com/developers/apps i zaloguj się za pomocą konta DropBox.
 2. Kliknij przycisk **tworzenie aplikacji**.
 
     ![Aplikacje skrzynki][14]
@@ -126,9 +126,9 @@ Musi mieć Account Microsoft połączone z kontem usługi OneDrive w celu wykona
 ![Rejestracja aplikacji Dropbox][15]
 6. Kliknij przycisk **tworzenie aplikacji**.  Możesz teraz zobaczy stronę ustawienia dla aplikacji, w tym **klucz aplikacji** i **klucz tajny aplikacji**.
 7. Sprawdź **nazwa folderu aplikacji** ustawiono **usługi aplikacji Azure stosu**.
-8. Ustaw **identyfikator URI przekierowania 2 OAuth** i kliknij przycisk **Dodaj**.  We wdrożeniu stosu Azure domyślny identyfikator URI przekierowania jest https://portal.local.azurestack.external/tokenauthorize formularza, jeśli używane do uruchamiania zastępuje inną domenę domenę dla azurestack.local.
+8. Ustaw **identyfikator URI przekierowania 2 OAuth** i kliknij przycisk **Dodaj**.  We wdrożeniu stosu Azure domyślny identyfikator URI przekierowania jest w formie https://portal.local.azurestack.external/TokenAuthorize, jeśli jest używane do uruchamiania zastępuje inną domenę domenę dla azurestack.local.
 ![Konfiguracja aplikacji Dropbox][16]
-9.  W oknie lub nową kartę przeglądarki zalogować się do stosu administratora portalu Azure (https://adminportal.local.azurestack.external) jako administratora usługi.
+9.  W oknie lub nową kartę przeglądarki zalogować się do portalu administracyjnego platformy Azure stosu (https://adminportal.local.azurestack.external) jako administratora usługi.
 10.  Przejdź do **dostawców zasobów** i wybierz **administrator dostawcy zasobów usługi aplikacji**.
 11. Kliknij przycisk **konfiguracji kontroli źródła**.
 12. Skopiuj i Wklej **klucz aplikacji** do **identyfikator klienta** pole wprowadzania i **klucz tajny aplikacji** do **klucz tajny klienta** pole wejściowe dla DropBox.

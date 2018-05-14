@@ -1,111 +1,126 @@
 ---
-title: Administrator dzierżawy podniesienie uprawnień dostępu — usługi Azure AD | Dokumentacja firmy Microsoft
-description: W tym temacie opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC).
+title: Podniesienie uprawnień dostępu administratora globalnego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Opisuje sposób podniesienie uprawnień dostępu administratora globalnego w usłudze Azure Active Directory przy użyciu portalu Azure lub interfejsu API REST.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: rqureshi
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/30/2017
+ms.date: 05/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 7b4625bff277851fb9002e54b26485b948981252
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b671ff6b473093e59bce18c7bf98b32e9849bbb0
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Podniesienie uprawnień dostępu jako Administrator dzierżawy przy użyciu kontroli dostępu opartej na rolach
+# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Podniesienie uprawnień dostępu administratora globalnego w usłudze Azure Active Directory
 
-Oparta na rolach kontrola dostępu ułatwia administratorom dzierżawy uzyskiwania wybierającym tymczasowe w programie access, przyznają uprawnienia wyższe niż zwykle. Administratorzy dzierżawy podnieść poziom siebie do roli Administrator dostępu użytkowników w razie potrzeby. Ta rola zapewnia administratorów dzierżawy uprawnień udzielanych siebie lub innych użytkowników, ról w zakresie "/".
+Jeśli jesteś [administratora globalnego](../active-directory/active-directory-assign-admin-roles-azure-portal.md#global-administrator) w usłudze Azure Active Directory (Azure AD), może być czas, kiedy zachodzi potrzeba wykonaj następujące czynności:
 
-Ta funkcja jest ważna, ponieważ zezwala ona na administratora dzierżawy wyświetlić wszystkie subskrypcje, które istnieją w organizacji. Umożliwia on również automatyzacji aplikacji, takich jak fakturowania i przeprowadzanie inspekcji dostępu do wszystkich subskrypcji i podaj dokładnego widoku stanu organizacji rozliczeń lub zarządzania zasobami.  
+- Odzyskać dostęp do subskrypcji platformy Azure, gdy użytkownik utracił dostęp
+- Udziel innego użytkownika lub samodzielnie dostęp do subskrypcji platformy Azure
+- Zobacz wszystkie subskrypcje platformy Azure w organizacji
+- Zezwalaj aplikacji automatyzacji (na przykład fakturowania lub inspekcji aplikacji) do wszystkich subskrypcji platformy Azure
 
-## <a name="use-elevateaccess-for-tenant-access-with-azure-ad-admin-center"></a>Użyj elevateAccess na potrzeby dostępu dzierżawcy z Centrum administracyjnego usługi Azure AD
+Domyślnie role administratora usługi Azure AD dostępu opartej na rolach na platformie Azure kontrolę i ról (RBAC) nie zakresu usługi Azure AD i Azure. Jednak jeśli jesteś administratorem globalnym w usłudze Azure AD, możesz podnieść poziom dostępu użytkownika do zarządzania subskrypcjami platformy Azure i grup zarządzania. Gdy użytkownik podniesienia uprawnień dostępu, zostanie nadany [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) roli (rola RBAC) na wszystkie subskrypcje dla konkretnego dzierżawcy. Rola Administrator dostępu użytkowników umożliwia udzielić innym użytkownikom dostęp do zasobów platformy Azure w zakresie głównym (`/`).
 
-1. Przejdź do [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) i zaloguj się przy użyciu poświadczeń.
+Podniesienie uprawnień powinna być tymczasowe i tylko wykonywane w razie potrzeby.
 
-2. Wybierz **właściwości** z usługi Azure AD w lewo menu.
+## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Podniesienie uprawnień dostępu administratora globalnego przy użyciu portalu Azure
 
-3. Znajdź **Administrator globalny może zarządzać subskrypcjami Azure**, wybierz **tak**, następnie **zapisać**.
-    > [!IMPORTANT] 
-    > Po wybraniu **tak**, przypisuje **Administrator dostępu użytkowników** roli w katalogu głównym "/" (główny zakres) dla użytkownika, z którym użytkownik jest aktualnie zalogowany do portalu. **Dzięki temu użytkownikowi na zobaczenie innych subskrypcji platformy Azure.**
-    
-    > [!NOTE] 
-    > Po wybraniu **nr**, usuwa **Administrator dostępu użytkowników** roli w katalogu głównym "/" (główny zakres) dla użytkownika, z którym użytkownik jest aktualnie zalogowany do portalu.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com) lub [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com).
 
-> [!TIP] 
-> Wrażenie to, że jest to właściwość globalny usługi Azure Active Directory, jednak działa na podstawie użytkownika dla obecnie zalogowanego użytkownika. Jeśli użytkownik ma uprawnienia administratora globalnego w usłudze Azure Active Directory, można wywołać funkcji elevateAccess dla użytkownika, że użytkownik jest zalogowany do Centrum administracyjnego usługi Azure Active Directory.
+1. Na liście nawigacji kliknij **usługi Azure Active Directory** , a następnie kliknij przycisk **właściwości**.
 
-![Administrator globalny usługi Azure Centrum administracyjnego usługi AD - właściwości — można zarządzać subskrypcją Azure — zrzut ekranu](./media/elevate-access-global-admin/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+   ![Azure AD właściwości — zrzut ekranu](./media/elevate-access-global-admin/aad-properties.png)
 
-## <a name="view-role-assignments-at-the--scope-using-powershell"></a>Przypisania ról widok w zakresie "/" przy użyciu programu PowerShell
-Aby wyświetlić **Administrator dostępu użytkowników** przypisanie w **/** zakres, należy użyć `Get-AzureRmRoleAssignment` polecenia cmdlet programu PowerShell.
-    
-```powershell
-Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_.SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
+1. W obszarze **administratora globalnego mogą zarządzać subskrypcji platformy Azure i grup zarządzania**, ustawiona przełącznik na **tak**.
+
+   ![Administrator globalny można zarządzać subskrypcjami platformy Azure i grup zarządzania — zrzut ekranu](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+
+   Jeśli zostanie ustawiona przełącznik **tak**, konta administratora globalnego (aktualnie zalogowany użytkownik) jest dodawany do roli Administrator dostępu użytkowników, w Azure RBAC w zakresie głównym (`/`), która udziela dostępu do widoku i tworzenia raportów w wszystkie subskrypcje platformy Azure skojarzony z dzierżawą usługi Azure AD.
+
+   Jeśli zostanie ustawiona przełącznik **nr**, konta administratora globalnego (aktualnie zalogowany użytkownik) zostanie usunięty z roli Administrator dostępu użytkowników w programie Azure RBAC. Nie można wyświetlić wszystkie subskrypcje platformy Azure, które są skojarzone z dzierżawy usługi Azure AD i można wyświetlać i zarządzać nimi tylko subskrypcji platformy Azure do których przyznano Ci dostęp.
+
+1. Kliknij przycisk **zapisać** można zapisać ustawienia.
+
+   To ustawienie nie jest właściwością globalną i ma zastosowanie tylko do aktualnie zalogowanego użytkownika.
+
+1. Wykonaj zadania, które należy upewnić się na podwyższonego poziomu dostępu. Gdy wszystko będzie gotowe, ustawiona przełącznik do **nr**.
+
+## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>Lista przypisanie roli w zakresie głównym (/), za pomocą programu PowerShell
+
+Aby wyświetlić listę przypisania roli użytkownika Administrator dostępu dla użytkownika w zakresie głównym (`/`), użyj [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) polecenia.
+
+```azurepowershell
+Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
+  -and $_.SignInName -eq "<username@example.com>" -and $_.Scope -eq "/"}
 ```
 
-**Przykładowe dane wyjściowe**:
-```
-RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
-Scope              : /    
-DisplayName        : username    
-SignInName         : username@somedomain.com    
-RoleDefinitionName : User Access Administrator    
-RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
-ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc    
-ObjectType         : User    
-```
-
-## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>Usuwa przypisanie roli w "/" zakres przy użyciu programu Powershell:
-Można usunąć przypisania przy użyciu następujące polecenia cmdlet programu PowerShell:
-
-```powershell
-Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefinitionName "User Access Administrator" -Scope "/" 
+```Example
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0
+Scope              : /
+DisplayName        : username
+SignInName         : username@example.com
+RoleDefinitionName : User Access Administrator
+RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
+ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
+ObjectType         : User
 ```
 
-## <a name="use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>Użyj elevateAccess, aby zapewnić dostęp do dzierżawy przy użyciu interfejsu API REST
+## <a name="delete-a-role-assignment-at-the-root-scope--using-powershell"></a>Usuwa przypisanie roli w zakresie głównym (/), za pomocą programu PowerShell
 
-Podstawowy proces działa z następujących kroków:
+Aby usunąć przypisanie roli użytkownika Administrator dostępu dla użytkownika w zakresie głównym (`/`), użyj [AzureRmRoleAssignment Usuń](/powershell/module/azurerm.resources/remove-azurermroleassignment) polecenia.
 
-1. Za pomocą usługi REST, wywołaj *elevateAccess*, która udziela roli Administrator dostępu użytkowników na "/" zakres.
+```azurepowershell
+Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+  -RoleDefinitionName "User Access Administrator" -Scope "/"
+```
 
-    ```
-    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
-    ```
+## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>Podniesienie uprawnień dostępu administratora globalnego przy użyciu interfejsu API REST
 
-2. Utwórz [przypisania roli](/rest/api/authorization/roleassignments) można przypisać żadnej roli w dowolnym zakresie. Poniższy przykład przedstawia właściwości przypisywanie roli czytnika w "/" zakres:
+Poniższe podstawowe kroki umożliwiają podniesienie uprawnień dostępu administratora globalnego przy użyciu interfejsu API REST.
 
-    ```json
-    { 
-      "properties": {
-        "roleDefinitionId": "providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionID}",
-        "principalId": "{objectID}",
-        "scope": "/"
-      },
-      "id": "providers/Microsoft.Authorization/roleAssignments/64736CA0-56D7-4A94-A551-973C2FE7888B",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "name": "64736CA0-56D7-4A94-A551-973C2FE7888B"
-    }
-    ```
+1. Za pomocą usługi REST, wywołaj `elevateAccess`, który przyznaje Ci roli Administrator dostępu użytkowników w zakresie głównym (`/`).
 
-3. Podczas administratorem dostępu użytkownika użytkownik może również usunąć przypisania roli w "/" zakres.
+   ```http
+   POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
+   ```
 
-4. Odwołaj Twoje uprawnienia administratora dostępu użytkownika, dopóki nie są potrzebne, ponownie.
+1. Utwórz [przypisania roli](/rest/api/authorization/roleassignments) można przypisać żadnej roli w dowolnym zakresie. W poniższym przykładzie przedstawiono właściwości przypisywanie roli {roleDefinitionID} w zakresie głównym (`/`):
+
+   ```json
+   { 
+     "properties": {
+       "roleDefinitionId": "providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionID}",
+       "principalId": "{objectID}",
+       "scope": "/"
+     },
+     "id": "providers/Microsoft.Authorization/roleAssignments/64736CA0-56D7-4A94-A551-973C2FE7888B",
+     "type": "Microsoft.Authorization/roleAssignments",
+     "name": "64736CA0-56D7-4A94-A551-973C2FE7888B"
+   }
+   ```
+
+1. Podczas Administrator dostępu użytkowników, możesz także usunąć przypisania roli w zakresie głównym (`/`).
+
+1. Odwołaj Twoje uprawnienia Administrator dostępu użytkowników, dopóki nie jest ponownie potrzebny.
 
 
 ## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>Jak cofnąć elevateAccess przy użyciu interfejsu API REST
 
-Podczas wywoływania *elevateAccess* Tworzenie przypisania roli dla siebie, tak aby można było odwołać uprawnienia te należy usunąć przypisanie.
+Podczas wywoływania `elevateAccess`, możesz utworzyć przypisania roli dla siebie, tak aby można było odwołać uprawnienia te należy usunąć przypisanie.
 
-1.  Wywołanie GET roleDefinitions gdzie roleName = Administrator dostępu użytkowników można określić nazwy roli Administrator dostępu użytkowników identyfikator GUID.
-    ```
+1. Wywołanie [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) gdzie `roleName` jest równe Administrator dostępu użytkowników w celu określenia Identyfikatora nazwy roli użytkownika Administrator dostępu.
+
+    ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
     ```
 
@@ -144,19 +159,18 @@ Podczas wywoływania *elevateAccess* Tworzenie przypisania roli dla siebie, tak 
     }
     ```
 
-    Zapisz identyfikator GUID z *nazwa* parametru, w tym przypadku **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
+    Zapisz identyfikator z `name` parametru, w tym przypadku `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
 
-2. Należy również listy przypisania roli Administrator dzierżawy w zakresie dzierżawy. Wyświetl listę wszystkich przypisań w zakresie dzierżawy dla PrincipalId z TenantAdmin, który wykonał wywołania dostępu podniesienie uprawnień. Wyświetl listę wszystkich przypisań w dzierżawie dla ObjectID.
+2. Należy również listy przypisania roli administrator dzierżawy w zakresie dzierżawy. Wyświetl listę wszystkich przypisań w zakresie dzierżawy dla `principalId` z administratora dzierżawy, który wykonał wywołania dostępu podniesienie uprawnień. Wyświetl listę wszystkich przypisań w dzierżawie dla objectid.
 
-    ```
+    ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
     >Administrator dzierżawy nie powinny mieć wielu przypisań, jeśli poprzednie zapytanie zwraca za dużo przypisania, możesz także zbadać dla wszystkich przypisań tylko na poziomie zakresu dzierżawy, a następnie filtrować wyniki: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
-    
         
-    2. Poprzednich wywołań zwraca listę przypisań ról. Znajdź przypisania roli, której zakresem jest "/" RoleDefinitionId kończy nazwę roli można znaleźć w kroku 1 identyfikator GUID i PrincipalId odpowiada ObjectId administratora dzierżawy. 
+    2. Poprzednich wywołań zwraca listę przypisań ról. Znajdź przypisania roli, której zakresem jest "/" i `roleDefinitionId` kończy Identyfikatora nazwy roli można znaleźć w kroku 1 i `principalId` odpowiada objectId administratora dzierżawy. 
     
     Przykład przypisania roli:
 
@@ -182,16 +196,15 @@ Podczas wywoływania *elevateAccess* Tworzenie przypisania roli dla siebie, tak 
         }
         ```
         
-    Ponownie, Zapisz identyfikator GUID z *nazwa* parametru, w tym przypadku **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
+    Ponownie, Zapisz identyfikator z `name` parametru, w tym przypadku e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-    3. Na koniec użyj wyróżnionych **identyfikator RoleAssignment** można usunąć przypisania dodawany przez podniesienia uprawnień dostępu:
+    3. Na koniec użyj identyfikator przypisania roli można usunąć przypisania dodawany przez `elevateAccess`:
 
-    ```
+    ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [zarządzania opartego na rolach kontrola dostępu przy użyciu REST](role-assignments-rest.md)
-
-- [Zarządzanie przypisaniami dostępu](role-assignments-users.md) w portalu Azure
+- [Kontrola dostępu oparta na rolach przy użyciu REST](role-assignments-rest.md)
+- [Zarządzanie przypisaniami dostępu](role-assignments-users.md)

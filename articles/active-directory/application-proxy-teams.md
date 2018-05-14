@@ -15,11 +15,11 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 66fdc03d2945b84615ee39dcbcc9bc71ddb06711
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f31b5be80ae56ffe4d0f570cb8d25da8cc098009
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Dostęp do aplikacji lokalnych poprzez Teams firmy Microsoft
 
@@ -30,7 +30,7 @@ Użytkownicy mogą dodawać aplikacje w chmurze do ich kanałów zespoły [przy 
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Instalowanie łącznika serwera Proxy aplikacji i publikowanie aplikacji
 
-Jeśli nie jest jeszcze, [skonfigurować serwer Proxy aplikacji dzierżawy i zainstalować łącznik](active-directory-application-proxy-enable.md). Następnie [opublikować aplikację lokalną](application-proxy-publish-azure-portal.md) dostępu zdalnego. W przypadku publikowania aplikacji, zwróć uwagę na zewnętrzny adres URL, ponieważ jest on Dodaj aplikację do zespołów.
+Jeśli nie jest jeszcze, [skonfigurować serwer Proxy aplikacji dzierżawy i zainstalować łącznik](manage-apps/application-proxy-enable.md). Następnie [opublikować aplikację lokalną](manage-apps/application-proxy-publish-azure-portal.md) dostępu zdalnego. W przypadku publikowania aplikacji, zwróć uwagę na zewnętrzny adres URL, ponieważ jest on Dodaj aplikację do zespołów.
 
 Jeśli już masz aplikacje opublikowane, ale nie zapamiętuj ich zewnętrzne adresy URL, wyszukaj je [portalu Azure](https://portal.azure.com). Zaloguj się, a następnie przejdź do **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > Wybierz aplikację > **serwera proxy aplikacji**.
 
@@ -55,4 +55,4 @@ Po jednego członka do zespołu dodaje kartę, jest wyświetlane dla wszystkich 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [publikowanie witryn programu SharePoint lokalnymi](application-proxy-enable-remote-access-sharepoint.md) z serwerem Proxy aplikacji.
-- Konfigurowanie aplikacji do użycia [domen niestandardowych](active-directory-application-proxy-custom-domains.md) dla ich zewnętrznego adresu URL. 
+- Konfigurowanie aplikacji do użycia [domen niestandardowych](manage-apps/application-proxy-configure-custom-domain.md) dla ich zewnętrznego adresu URL. 

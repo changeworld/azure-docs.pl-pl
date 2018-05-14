@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ffc8be29cecac05fda440eaf72b51ffc6f024424
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Tworzenie aplikacji blockchain w Azure Blockchain Workbench
 
 Azure Blockchain Workbench umożliwia tworzenie aplikacji blockchain, które reprezentują wieloosobowa przepływów pracy zdefiniowanych przez konfigurację i kodu kontraktu inteligentne.
 
-Dowiesz się, jak:
+Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Konfigurowanie aplikacji blockchain
@@ -35,6 +35,8 @@ Dowiesz się, jak:
 * Konto administratora Blockchain Workbench. Aby uzyskać więcej informacji, zobacz temat Dodawanie [administratorów Blockchain Workbench w Azure Blockchain Workbench](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
 
 Umożliwia tworzenia podstawowej aplikacji, w którym obiekt żądający wysyła żądanie i obiekt odpowiadający wysyłania odpowiedzi na żądanie. Można na przykład żądania, "Witaj, jak jesteś?" i umożliwia odpowiedzi można "Jestem doskonałe!". Zarówno żądania i odpowiedzi są rejestrowane na blockchain podstawowej. 
+
+Wykonaj kroki, aby utworzyć pliki aplikacji lub możesz [Pobierz przykład z usługi GitHub](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain). 
 
 ## <a name="configuration-file"></a>Plik konfiguracji
 
@@ -398,4 +400,7 @@ Aby uzyskać więcej informacji o zarządzaniu użytkownikami w Blockchain Workb
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, po utworzeniu aplikacji, spróbuj [przy użyciu aplikacji blockchain](blockchain-workbench-use.md).
+W tym artykule zostanie utworzona podstawowej aplikacji żądań i odpowiedzi. Aby dowiedzieć się, jak korzystać z aplikacji, nadal dalej artykule.
+
+> [!div class="nextstepaction"]
+> [Przy użyciu aplikacji blockchain](blockchain-workbench-use.md)

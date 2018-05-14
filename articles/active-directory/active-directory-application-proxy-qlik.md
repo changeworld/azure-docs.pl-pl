@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e10fefdd3bd46aeb90fd2cfc82d4fee3b17d867b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7e4731e150c2d6428fa8c752765780f827c33741
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Serwer Proxy aplikacji i wykrywanie Qlik 
 Azure Active Directory serwera Proxy aplikacji i znaczeniu Qlik ma współpracę ze sobą aby mieć pewność, że łatwo można używać serwera Proxy aplikacji do zapewniania dostępu zdalnego dla danego wdrożenia Qlik znaczeniu.  
@@ -25,13 +25,13 @@ Azure Active Directory serwera Proxy aplikacji i znaczeniu Qlik ma współpracę
 W pozostałej części w tym scenariuszu założono, należy wykonać następujące czynności:
  
 - Skonfigurowane [znaczeniu Qlik](https://community.qlik.com/docs/DOC-19822). 
-- [Zainstalował łącznik serwera Proxy aplikacji](active-directory-application-proxy-enable.md#install-and-register-a-connector) 
+- [Zainstalował łącznik serwera Proxy aplikacji](manage-apps/application-proxy-enable.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>Publikowanie własnych aplikacji na platformie Azure 
 Aby opublikować QlikSense, należy opublikować dwóch aplikacji na platformie Azure.  
 
 ### <a name="application-1"></a>Aplikacja #1: 
-Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowe wskazówki kroki 1 – 8, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
+Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowe wskazówki kroki 1 – 8, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
 
 
 1. Zaloguj się do portalu Azure jako administrator globalny. 
@@ -58,5 +58,5 @@ Aplikacja jest teraz gotowy do testowania. Dostęp do zewnętrznego adresu URL u
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-publish-azure-portal.md)
+- [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)
 - [Praca z serwera Proxy aplikacji łączniki](active-directory-application-proxy-connectors-azure-portal.md).

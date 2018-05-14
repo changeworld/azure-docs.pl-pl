@@ -1,18 +1,18 @@
 ---
-title: "Zarządzanie interfejsów sieciowych w usłudze Azure Site Recovery do środowiska lokalnego do platformy Azure replikacji | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób zarządzania interfejsów sieciowych do środowiska lokalnego do platformy Azure replikacji za pomocą usługi Azure Site Recovery"
+title: Zarządzanie interfejsów sieciowych w usłudze Azure Site Recovery do środowiska lokalnego do platformy Azure replikacji | Dokumentacja firmy Microsoft
+description: Opisuje sposób zarządzania interfejsów sieciowych do środowiska lokalnego do platformy Azure replikacji za pomocą usługi Azure Site Recovery
 services: site-recovery
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: a0d42608dc689e5f084f4ec91858531feeac8033
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: cf16a0e67aaf2d2c73649adccabf3e5eb0540bd3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Zarządzanie interfejsy sieciowe maszyny wirtualnej do środowiska lokalnego do platformy Azure replikacji
 

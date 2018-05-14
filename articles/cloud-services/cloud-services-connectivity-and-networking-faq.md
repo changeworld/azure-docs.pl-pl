@@ -1,11 +1,11 @@
 ---
-title: "Problemów dotyczących łączności i sieci dla Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera listę często zadawanych pytań dotyczących łączności i sieci dla usługi w chmurze Microsoft Azure."
+title: Problemów dotyczących łączności i sieci dla Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera listę często zadawanych pytań dotyczących łączności i sieci dla usługi w chmurze Microsoft Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: e89549f51abb896c1ddf48a46de78fb5e4988f22
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ab0fa22e9ba776db3d4af301499545f6e0822478
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemów dotyczących łączności i sieci dla usług Azure Cloud Services: często zadawane pytania (FAQ)
 

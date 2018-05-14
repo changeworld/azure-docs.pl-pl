@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/1/2018
 ms.author: billmath
-ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a28a377ec3872fad0121636070b6604eaa415b30
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją obiektu z synchronizacji Azure AD Connect
 Ten dokument zawiera kroki umożliwiające rozwiązywanie problemów z synchronizacją obiektu przy użyciu zadania dotyczące rozwiązywania problemów.
@@ -34,6 +34,7 @@ Aby uruchomić zadanie rozwiązywania problemów w kreatorze, wykonaj następuj�
 4.  Przejdź do strony dodatkowych zadań, wybierz Rozwiązywanie problemów, a następnie kliknij przycisk Dalej.
 5.  Na stronie Rozwiązywanie problemów kliknij przycisk Uruchom, aby uruchomić menu rozwiązywania problemów w programie PowerShell.
 6.  W menu głównym wybierz Rozwiązywanie problemów z synchronizacji obiektu.
+![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>Rozwiązywanie problemów z parametrów wejściowych
 Następujące parametry wejściowe są wymagane przez zadanie rozwiązywania problemów:
@@ -47,6 +48,8 @@ Rozwiązywania problemów z zadań wykonuje następujące testy:
 1.  Wykryj niezgodność nazwy UPN, jeśli obiekt jest synchronizowany z usługą Azure Active Directory
 2.  Sprawdź, czy obiekt jest filtrowana z powodu filtrowania domeny
 3.  Sprawdź, czy obiekt jest filtrowana powodu do filtrowania jednostki Organizacyjnej
+4.  Sprawdź, czy synchronizacji obiektu jest zablokowany z powodu połączona Skrzynka pocztowa
+5. Sprawdź, czy obiekt jest grupy dystrybucji dynamiczne, które nie mają być synchronizowane
 
 Pozostałej części tej sekcji opisano określone wyniki, które są zwracane przez zadania. W każdym przypadku zadania zawiera analizę następuje zalecane działania, aby rozwiązać ten problem.
 
@@ -76,9 +79,17 @@ Obiekt jest poza zakresem z powodu domeny nie jest skonfigurowany. W poniższym 
 Obiekt jest poza zakresem jak brakuje domeny uruchomić profile/uruchamianie kroków. W poniższym przykładzie obiekt jest zsynchronizowany zakresu należącego do domeny jest brak pełne importowanie profilu uruchamiania wykonywania czynności.
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
-### <a name="object-is-filtered-due-to-ou-filtering"></a>Obiekt jest filtrowana powodu do filtrowania jednostki Organizacyjnej
-Obiekt jest zakresem zsynchronizowane z powodu konfiguracji filtrowania jednostki Organizacyjnej. W poniższym przykładzie obiekt należy do jednostki Organizacyjnej = NoSync, DC = bvtadwbackdc, DC = com.  Tej jednostki Organizacyjnej nie jest uwzględniony w zakresie synchronizacji.
-![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Obiekt jest filtrowana powodu do filtrowania jednostki Organizacyjnej
+Obiekt jest zakresem zsynchronizowane z powodu konfiguracji filtrowania jednostki Organizacyjnej. W poniższym przykładzie obiekt należy do jednostki Organizacyjnej = NoSync, DC = bvtadwbackdc, DC = com.  Tej jednostki Organizacyjnej nie jest uwzględniony w zakresie synchronizacji.</br>
+
+![JEDNOSTKI ORGANIZACYJNEJ](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+
+## <a name="linked-mailbox-issue"></a>Połączone problem skrzynki pocztowej
+Połączona Skrzynka pocztowa powinien być skojarzony z konta głównego zewnętrznego znajduje się w innym lesie, konto zaufane. Jeśli brak takiego zewnętrznego konta głównego, a następnie Azure AD Connect nie będzie synchronizować użytkownika konta odpowiada połączoną skrzynkę pocztową w lesie programu Exchange do dzierżawy usługi Azure AD.</br>
+![Połączona Skrzynka pocztowa](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch12.png)
+
+## <a name="dynamic-distribution-group-issue"></a>Dynamiczna grupa dystrybucji problem
+Z powodu różnych różnice między lokalnymi usługi Active Directory i Azure Active Directory, Azure AD Connect nie synchronizuje się grupy dynamiczną dystrybucję do dzierżawy usługi Azure AD.
 
 ## <a name="html-report"></a>Raport HTML
 Oprócz analizowania obiektu, rozwiązywania problemów zadań generuje raport HTML, który zawiera wszystko, co wiadomo o obiekcie. Ten raport HTML można udostępniać zespołem pomocy technicznej w celu dalszego rozwiązywania problemów, jeśli to konieczne.

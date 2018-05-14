@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f5812e071046935b0a1a3ee3f14525ede336954a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure stosu
 
@@ -220,5 +220,6 @@ Microsoft Azure stosu obsługuje następujące maszyny wirtualne Azure Marketpla
 | ![S3 usług AWS hybrydowego NooBaa zgodny - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [S3 usług AWS hybrydowego NooBaa compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Usługa magazynu zgodnego S3 obejmuje publicznego i pojemności zasobów lokalnych. | NooBaa |
 | ![Zapora aplikacji PT](media/azure-stack-marketplace-azure-items/pt.png) | [Zapora aplikacji PT](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Zapora aplikacji PT wykrywa znane & nieznany luk w zabezpieczeniach i pozwala zapobiec atakom, aplikacji sieci web. <b>Pobierz oba elementy PT Marketplace.</b> | Technologie dodatnią |
 | ![Puppet przedsiębiorstwa](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet przedsiębiorstwa](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise pozwala zautomatyzować w całym cyklu ich życia infrastruktury Azure stosu. <b>Pobierz oba elementy Puppet Marketplace.</b> | Puppet |
+| ![Żądanie Szybkie odzyskiwanie.](media/azure-stack-marketplace-azure-items/quest.png) | [Żądanie Szybkie odzyskiwanie Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Szybkie odzyskiwanie zaawansowane ochrony danych łączy kopii zapasowych, replikacji i odzyskiwania w jedno rozwiązanie oprogramowania łatwy w użyciu. | Żądanie oprogramowania |
 | ![Serwer Proxy Menedżera 3.0 SUSE (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [Serwer Proxy Menedżera 3.0 SUSE (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Zarządzanie infrastrukturą open source najlepsze w klasie. | SUSE |
 | ![Narzędzie ZeroDown oprogramowania](media/azure-stack-marketplace-azure-items/zerodown.png) | [Narzędzie ZeroDown oprogramowania ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | V7.1 Narzędzie oprogramowania ZeroDown - migracji + wysokiej dostępności. | ZeroDown oprogramowania |

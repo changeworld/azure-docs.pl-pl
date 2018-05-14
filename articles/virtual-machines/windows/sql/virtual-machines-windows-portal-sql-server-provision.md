@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
+ms.date: 05/04/2018
 ms.author: jroth
-ms.openlocfilehash: 33b7c82f08f63199cd128055bc497f61cb30fc4a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Udostępnianie maszynę wirtualną systemu Windows programu SQL Server w portalu Azure
 
@@ -114,7 +114,7 @@ W kroku **Rozmiar** wybierz rozmiar maszyny wirtualnej w oknie **Wybierz rozmiar
 
 ![Opcje rozmiaru maszyny wirtualnej SQL](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
-W przypadku obciążeń produkcyjnych zobacz zalecane rozmiary i konfiguracje maszyn w artykule [Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md). Jeśli potrzebujesz rozmiaru maszyny, którego nie ma na liście, kliknij przycisk **Wyświetl wszystkie**.
+W przypadku obciążeń produkcyjnych zobacz zalecane rozmiary i konfiguracje maszyn w artykule [Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat rozmiarów maszyny wirtualnej, zobacz artykuł [Sizes for virtual machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Rozmiary maszyn wirtualnych).
@@ -130,7 +130,14 @@ W oknie **Ustawienia** skonfiguruj usługę Azure Storage, sieć i monitorowanie
    > [!NOTE]
    > Firma Microsoft zaleca usługę Managed Disks dla programu SQL Server. Usługa Managed Disks obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z usługą Managed Disks znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz [omówienie dysków zarządzanych Azure] [.. / zarządzane dysków overview.md). Aby uzyskać szczegóły dotyczące dysków zarządzanych w zestawie dostępności, zobacz sekcję [Use managed disks for VMs in availability set](../manage-availability.md) (Używanie dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności).
 
-* W obszarze **Sieć** możesz zaakceptować automatycznie wypełnione wartości. Możesz również kliknąć poszczególne funkcje, aby ręcznie skonfigurować ustawienia **Sieć wirtualna**, **Podsieć**, **Publiczny adres IP** i **Sieciowa grupa zabezpieczeń**. Na potrzeby tego przewodnika Zachowaj wartości domyślne.
+* W obszarze **sieci**, wybierz wszystkie przychodzących porty w **wybierz porty dla ruchu przychodzącego publicznego** listy. Na przykład, jeśli chcesz pulpitu zdalnego do maszyny Wirtualnej, wybierz **protokołu RDP (3389)** portu.
+
+   ![Porty wejściowe](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > Możesz wybrać **MS SQL (1433)** port zdalny dostęp do programu SQL Server. Jednak nie jest to konieczne, ponieważ **ustawienia programu SQL Server** krok obejmuje również tej opcji. W przypadku wybrania portu 1433 w tym kroku zostanie otwarty niezależnie od ustawień **ustawienia programu SQL Server** kroku.
+
+   Możesz wprowadzić inne zmiany ustawień sieci lub Zachowaj wartości domyślne.
 
 * Platforma Azure domyślnie umożliwia **monitorowanie** za pomocą tego samego konta magazynu wyznaczonego dla maszyny wirtualnej. Możesz zmienić te ustawienia tutaj.
 

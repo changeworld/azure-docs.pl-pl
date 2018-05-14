@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 31249584891a1bb07628fde56e445fda9b2bb467
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1592e47509f2537bef9cbcefd3cf49618561edcc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Utwórz grupy zarządzania dla organizacji zasobów i zarządzanie
 Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Tworzenie tych kontenerów do tworzenia wydajny i efektywny hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [kontroli dostępu na podstawie roli Azure](../role-based-access-control/overview.md). Aby uzyskać więcej informacji dotyczących grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md). 
@@ -34,7 +34,7 @@ Za pomocą portalu, programu PowerShell lub interfejsu wiersza polecenia Azure, 
 2. Wybierz **wszystkie usługi** > **grup zarządzania**.
 3. Na stronie głównej wybierz **zarządzania nowej grupy.** 
 
-    ![Tworzenie grupy](media/management-groups/create_main.png) 
+    ![Główna grupa](media/management-groups/main.png) 
 4.  Wypełnij pola Identyfikator grupy zarządzania. 
     - **Identyfikator grupy zarządzania** jest unikatowym identyfikatorem katalogu, który służy do przesyłania poleceń w danej grupie zarządzania. Ten identyfikator nie jest edytowalny po utworzeniu, ponieważ jest używany do identyfikowania tej grupy w systemie Azure. 
     - Pole Nazwa wyświetlana jest nazwa, która jest wyświetlana w portalu Azure. Nazwa wyświetlana oddzielne pole jest opcjonalne, tworząc zarządzania grupy i można go zmienić w dowolnym momencie.  

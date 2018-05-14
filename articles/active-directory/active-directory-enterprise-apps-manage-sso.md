@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ee8f30bc81d3c3bd0bf4659359a6ca3a9280f734
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Zarządzanie logowanie jednokrotne dla aplikacji przedsiębiorstwa
 
@@ -28,13 +28,13 @@ W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com)
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
 Wszystkie aplikacje firmowe, które są skonfigurowane dla logowania jednokrotnego, można wyświetlać i zarządzać w portalu Azure. Aplikacje można znaleźć w **wszystkie usługi** &gt; **aplikacje dla przedsiębiorstw** części portalu. 
 
-![Blok aplikacje dla przedsiębiorstw][1]
+![Blok aplikacje dla przedsiębiorstw](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.png)
 
 Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji, które zostały skonfigurowane. Wybieranie aplikacji Wyświetla zasoby dla danej aplikacji, w którym raporty można wyświetlać dla danej aplikacji i różne ustawienia mogą być zarządzane.
 
 Aby zarządzać ustawienia rejestracji jednokrotnej, wybierz **logowanie jednokrotne**.
 
-![Bloku zasobów aplikacji][2]
+![Bloku zasobów aplikacji](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.png)
 
 ## <a name="single-sign-on-modes"></a>Tryby rejestracji jednokrotnej
 **Logowanie jednokrotne** rozpoczyna się od **tryb** menu, dzięki czemu jeden tryb logowania jednokrotnego do skonfigurowania. Dostępne opcje to:
@@ -76,24 +76,19 @@ Ostatnia zawiera dokumentacja i/lub kontrolki, należy skonfigurować aplikację
 > 
 > 
 
-![Osadzony dokumentów][3]
+![Osadzony dokumentów](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>Na podstawie hasła logowania jednokrotnego
 Jeśli jest obsługiwany dla aplikacji, wybierając tryb logowania jednokrotnego opartego na hasłach i wybierając **zapisać** natychmiast konfiguruje wykonania opartego na hasłach logowania jednokrotnego. Aby uzyskać więcej informacji na temat wdrażania opartego na hasłach logowania jednokrotnego, zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
-![Na podstawie hasła logowania jednokrotnego][4]
+![Na podstawie hasła logowania jednokrotnego](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>Połączonego logowania jednokrotnego
 Jeśli obsługiwane w przypadku aplikacji, wybierając tryb połączonego logowania jednokrotnego pozwala na wprowadź adres URL, który ma być Panel dostępu usługi Azure AD lub usługi Office 365 przekierowania po kliknięciu tej aplikacji. Aby uzyskać więcej informacji na temat połączonego logowania jednokrotnego (wcześniej znane jako "istniejące SSO"), zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
-![Połączonego logowania jednokrotnego][5]
+![Połączonego logowania jednokrotnego](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 
 ## <a name="feedback"></a>Opinia
 
 Mamy nadzieję przy użyciu udoskonalone środowisko usługi Azure AD. Pamiętaj o opinie przesyłanych! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** sekcji naszych [forum opinii](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Firma Microsoft jest podekscytowani, informacje o kompilowaniu chłodnych nowości codziennie i użyj wskazówek z kształtem i zdefiniować, co mamy utworzyć w następnej kolejności.
 
-[1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG
-[3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
-[4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
-[5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG

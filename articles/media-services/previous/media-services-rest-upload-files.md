@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików do konta usługi Media Services za pomocą usługi REST
 > [!div class="op_single_selector"]
@@ -87,11 +87,11 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman, w tym samoucz
     ```
 4. Po lewej stronie **Postman** kliknij na **1. Pobierz token usługi AAD MFA** -> **uzyskać Azure AD tokenu dla jednostki usługi**.
 
-    Część adresu URL jest wypełniony **AzureADSTSEndpoint** zmiennej środowiskowej (wartość można ustawić we wcześniejszej części tego samouczka).
-    
-5. Kliknij pozycję **Wyślij**.
+    Część adresu URL jest wypełniony **AzureADSTSEndpoint** zmiennej środowiskowej (wcześniej w samouczku, można ustawić wartości właściwości [zmiennych środowiskowych](#configure-the-environment) obsługujące [kolekcji](#configure-the-collection)).
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postment-get-token.png)
+
+5. Kliknij pozycję **Wyślij**.
 
     Widać odpowiedzi, który zawiera "' access_token '". Skrypt "test" przyjmuje tę wartość i ustawia **AccessToken** zmiennej środowiskowej (jak opisano powyżej). Sprawdź zmienne środowiskowe, pojawi się czy ta zmienna uwzględnia teraz wartość token (token elementu nośnego) dostępu, która jest używana w pozostałej części operacji. 
 

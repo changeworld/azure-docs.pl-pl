@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: efedbf89a6d15a13db5bc86fef9f270e0c84e13b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f899e3f45174aef8274810e184cc374bcca2c50
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -79,8 +79,8 @@ Jeśli masz aplikacje w sieci prywatnej, które muszą być dostępne dla użytk
 | Przewodnik artykułu |  |
 |:---:| --- |
 | Omówienie serwera Proxy aplikacji usługi Azure AD oraz sposób jej działania |[Bezpieczny dostęp zdalny do aplikacji lokalnych](manage-apps/application-proxy.md) |
-| Samouczki na sposób konfigurowania serwera Proxy aplikacji i jak opublikować pierwszej aplikacji |[Jak skonfigurować serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-enable.md)<br /><br />[Jak zainstalować łącznik serwera Proxy aplikacji w trybie dyskretnym](active-directory-application-proxy-silent-installation.md)<br /><br />[Sposób publikowania aplikacji przy użyciu serwera Proxy aplikacji](application-proxy-publish-azure-portal.md)<br /><br />[Jak korzystać z własnej nazwy domeny](active-directory-application-proxy-custom-domains.md) |
-| Jak włączyć jednego logowania i warunkowego dostępu dla aplikacji opublikowane przy użyciu serwera Proxy aplikacji |[Single-sign-on z serwerem Proxy aplikacji](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[Dostęp warunkowy i serwera Proxy aplikacji](application-proxy-enable-remote-access-sharepoint.md) |
+| Samouczki na sposób konfigurowania serwera Proxy aplikacji i jak opublikować pierwszej aplikacji |[Jak skonfigurować serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Jak zainstalować łącznik serwera Proxy aplikacji w trybie dyskretnym](active-directory-application-proxy-silent-installation.md)<br /><br />[Sposób publikowania aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak korzystać z własnej nazwy domeny](manage-apps/application-proxy-configure-custom-domain.md) |
+| Jak włączyć jednego logowania i warunkowego dostępu dla aplikacji opublikowane przy użyciu serwera Proxy aplikacji |[Single-sign-on z serwerem Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Dostęp warunkowy i serwera Proxy aplikacji](application-proxy-enable-remote-access-sharepoint.md) |
 | Wskazówki dotyczące sposobu używania serwera Proxy aplikacji w następujących scenariuszach |[Jak obsługiwać aplikacje Native Client](active-directory-application-proxy-native-client.md)<br /><br />[Jak obsługiwać aplikacje obsługujące oświadczenia](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Jak obsługiwać aplikacji publikowanych w odrębnych sieci i lokalizacje](active-directory-application-proxy-connectors-azure-portal.md) |
 | Podręcznik rozwiązywania problemów dotyczących serwera Proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](active-directory-application-proxy-troubleshoot.md) |
 

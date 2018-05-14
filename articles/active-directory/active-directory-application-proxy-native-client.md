@@ -15,8 +15,8 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a925f8be619d0a4606205eeba5f78b2e8ba8a188
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 79ee3aca783d7c29959c2730696a313bf821b3bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -34,7 +34,7 @@ Azure AD Authentication Library, która zajmuje się uwierzytelniania i obsługu
 W tym artykule przedstawiono cztery kroki publikowania aplikacji natywnej z serwera Proxy aplikacji i Azure AD Authentication Library. 
 
 ## <a name="step-1-publish-your-application"></a>Krok 1: Publikowanie aplikacji
-Publikowanie serwera proxy aplikacji, jak w przypadku innych aplikacji i przypisać użytkownikom uzyskiwanie dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [publikowania aplikacji za pomocą serwera Proxy aplikacji](application-proxy-publish-azure-portal.md).
+Publikowanie serwera proxy aplikacji, jak w przypadku innych aplikacji i przypisać użytkownikom uzyskiwanie dostępu do aplikacji. Aby uzyskać więcej informacji, zobacz [publikowania aplikacji za pomocą serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md).
 
 ## <a name="step-2-configure-your-application"></a>Krok 2: Konfigurowanie aplikacji
 Skonfiguruj natywnych aplikacji w następujący sposób:
@@ -47,7 +47,7 @@ Skonfiguruj natywnych aplikacji w następujący sposób:
    ![Tworzenie nowej rejestracji aplikacji](./media/active-directory-application-proxy-native-client/create.png)
 5. Wybierz pozycję **Utwórz**.
 
-Aby uzyskać szczegółowe informacje dotyczące tworzenia nowej rejestracji aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](.//develop/active-directory-integrating-applications.md).
+Aby uzyskać szczegółowe informacje dotyczące tworzenia nowej rejestracji aplikacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](./develop/active-directory-integrating-applications.md).
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>Krok 3: Udzielanie dostępu do innych aplikacji
@@ -97,4 +97,4 @@ Po modyfikacji biblioteki ADAL z tych parametrów użytkowników należy do uwie
 
 Aby uzyskać więcej informacji o przepływie natywnych aplikacji, zobacz [aplikacji natywnej do interfejsu API sieci web](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
-Dowiedz się więcej o konfigurowaniu [logowanie jednokrotne dla serwera Proxy aplikacji](application-proxy-sso-overview.md)
+Dowiedz się więcej o konfigurowaniu [logowanie jednokrotne dla serwera Proxy aplikacji](manage-apps/application-proxy-single-sign-on.md)

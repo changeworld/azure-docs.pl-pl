@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 757cf69e85885f5a17111410f1dae1ba1c04d167
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 376d3b916c4e01ea6111e6c1db63e976dd1ea320
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi Kubernetes Azure
 
@@ -112,10 +112,10 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-Następnie użyj [utworzyć kubectl] [ kubectl-create] polecenie do uruchomienia aplikacji. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
+Następnie użyj [zastosować kubectl] [ kubectl-apply] polecenie do uruchomienia aplikacji. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
 
 ```bash
-kubectl create -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
 A [usługi Kubernetes] [ kubernetes-service] utworzeniu do udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut.
@@ -297,7 +297,7 @@ W tym momencie proces proste ciągłe Wdrażanie zostało zakończone. Kroki i k
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [git-access-token]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 

@@ -15,8 +15,8 @@ ms.date: 05/02/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cd27bab470b7037087421fac1e9eeabe10957831
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7fa8654e413ac337994d35afdce7bd3478127f64
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -31,7 +31,7 @@ Scenariusz, w tym artykule przyjęto założenie, że masz:
 
 - [TABLEAU](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) skonfigurowany. 
 
-- [Łącznika serwera Proxy aplikacji](active-directory-application-proxy-enable.md) zainstalowane. 
+- [Łącznika serwera Proxy aplikacji](manage-apps/application-proxy-enable.md) zainstalowane. 
 
  
 
@@ -54,7 +54,7 @@ Aby opublikować Tableau, należy opublikować aplikację w portalu Azure.
 
 W przypadku:
 
-- Szczegółowe instrukcje kroki 1 – 8, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-publish-azure-portal.md). 
+- Szczegółowe instrukcje kroki 1 – 8, zobacz [publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
 - Informacje o sposobach znajdowania Tableau wartości w polach serwera Proxy aplikacji można znaleźć w dokumentacji Tableau.  
 
 **Aby opublikować aplikację**: 

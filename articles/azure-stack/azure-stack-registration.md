@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/11/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: 0d8c1ebe9688f32c460ef689119313b0682a0a68
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f34c4697439685ce6ea0ce3f2c7e954ee81b5079
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Zarejestruj stosu Azure przy użyciu platformy Azure
 Rejestrowanie [stosu Azure](azure-stack-poc.md) z platformą Azure umożliwia pobieranie elementów marketplace z platformy Azure i ustawienia commerce danych raportowania z powrotem do firmy Microsoft. Po zarejestrowaniu stosu Azure użycia jest zgłaszany do handlu Azure i widoczny w ramach subskrypcji, używana do rejestracji. 
 
 > [!IMPORTANT]
-> Rejestracja jest wymagane, jeśli wybierzesz modelu rozliczeń płatności jako — użytkownik użycia. W przeciwnym razie będzie do naruszenia postanowień licencyjnych dotyczących wdrożenia stosu Azure jako użycia nie będzie raportowana.
+> Rejestracja jest wymagany do obsługi pełnej funkcjonalności stosu Azure, łącznie z witryny marketplace zespolonego. Ponadto można naruszenie umowy licencyjnej, jeśli nie zarejestrujesz się tak, gdy przy użyciu modelu rozliczeń płatności jako — użytkownik użycia stosu Azure. Aby dowiedzieć się więcej na temat licencjonowania modeli stosu Azure, zobacz [jak kupić strony](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed zarejestrowaniem stosu Azure przy użyciu platformy Azure, musi mieć:

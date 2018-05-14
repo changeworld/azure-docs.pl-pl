@@ -15,8 +15,8 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bb71bd0bcaae8d7f9cb3ae357e726ea1f1c00b07
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 0ab788494f56364d4a46d632e34e4a1334564836
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
@@ -51,7 +51,7 @@ Serwer Proxy aplikacji usługi Azure AD jest:
 ## <a name="what-kind-of-applications-work-with-application-proxy"></a>Jakiego rodzaju aplikacje korzystają z serwera Proxy aplikacji?
 Serwer Proxy aplikacji usługi Azure AD umożliwia dostęp do różnych typów wewnętrznych aplikacji:
 
-* Aplikacje, które używają sieci Web [zintegrowane uwierzytelnianie systemu Windows](../active-directory-application-proxy-sso-using-kcd.md) do uwierzytelniania  
+* Aplikacje, które używają sieci Web [zintegrowane uwierzytelnianie systemu Windows](application-proxy-configure-single-sign-on-with-kcd.md) do uwierzytelniania  
 * Aplikacje używające opartych na formularzach sieci Web lub [na podstawie nagłówka](../application-proxy-ping-access.md) dostępu  
 * Interfejsy API, które chcesz udostępnić do rozbudowanych aplikacji na różnych urządzeniach w sieci Web  
 * Aplikacje wymagające za [bramy usług pulpitu zdalnego](../application-proxy-publish-remote-desktop.md)  
@@ -87,14 +87,14 @@ Przed skonfigurowaniem serwera Proxy aplikacji upewnij się, że masz obsługiwa
 
 Rozpoczynanie pracy z serwerem Proxy aplikacji w dwóch krokach:
 
-1. [Włączanie serwera Proxy aplikacji i skonfigurować łącznik](../active-directory-application-proxy-enable.md).    
-2. [Publikowanie aplikacji](../application-proxy-publish-azure-portal.md) — Użyj Kreatora szybki i łatwy do pobrania aplikacji lokalnej opublikowanych i jest dostępny zdalnie.
+1. [Włączanie serwera Proxy aplikacji i skonfigurować łącznik](application-proxy-enable.md).    
+2. [Publikowanie aplikacji](application-proxy-publish-azure-portal.md) — Użyj Kreatora szybki i łatwy do pobrania aplikacji lokalnej opublikowanych i jest dostępny zdalnie.
 
 ## <a name="whats-next"></a>Co dalej?
 Po opublikowaniu pierwszej aplikacji, istnieje wiele innych, które można wykonać przy użyciu serwera Proxy aplikacji:
 
-* [Włączanie logowania jednokrotnego](../active-directory-application-proxy-sso-using-kcd.md)
-* [Publikowanie aplikacji przy użyciu własnej nazwy domeny](../active-directory-application-proxy-custom-domains.md)
+* [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
+* [Publikowanie aplikacji przy użyciu własnej nazwy domeny](application-proxy-configure-custom-domain.md)
 * [Więcej informacji na temat łączników serwera Proxy aplikacji usługi Azure AD](../application-proxy-understand-connectors.md)
 * [Praca z istniejących lokalnych serwerów Proxy](../application-proxy-working-with-proxy-servers.md) 
 * [Ustaw niestandardową stronę główną](../application-proxy-office365-app-launcher.md)

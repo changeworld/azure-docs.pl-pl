@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc446dfeee86fa1183892cba8068709f8fd277d5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Architektura na platformie Azure i SAP HANA (duże wystąpień) — omówienie
 
@@ -303,6 +303,8 @@ Ta lista składana wymagania dotyczące systemu SAP HANA na platformie Azure (wy
    - Red Hat Linux musisz mieć poziomy poprawną subskrypcję, które obsługują i aktualizacji do systemów operacyjnych HANA dużych wystąpienia usługi. Red Hat zaleca Red Hat Enterprise Linux [SAP rozwiązań] (https://access.redhat.com/solutions/3082481 subskrypcji. 
 
 W macierzy pomocy technicznej w różnych wersjach SAP HANA z różnymi wersjami systemu Linux, zobacz [SAP Uwaga #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+
+Macierz zgodności systemu operacyjnego i wersji oprogramowania układowego/driver HLI, można znaleźć w temacie [uaktualnienia systemu operacyjnego dla HLI](os-upgrade-hana-large-instance.md).
 
 
 **Baza danych**

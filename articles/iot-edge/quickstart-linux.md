@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 750f09c91a086b22df5e7557e4b6fc6a763499e2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9cb627c4d8eff2226717dd675d24349730e90d5
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Szybki Start: Wdrażanie modułu IoT krawędź pierwszego na urządzeniu z systemem Linux lub Mac — wersja zapoznawcza
 
@@ -27,6 +27,15 @@ Ta opcja szybkiego startu korzysta z komputera lub maszyny wirtualnej, takie jak
 
 * Python pip, aby zainstalować środowisko uruchomieniowe IoT krawędzi.
    * Linux: `sudo apt-get install python-pip`.
+      
+      > [!Note]
+      > Na niektórych dystrybucji (na przykład Raspbian) może być również konieczne niektórych pip pakiety uaktualnień i zainstalować dodatkowe zależności:
+      
+        ```
+        sudo pip install --upgrade setuptools pip
+        sudo apt-get install python2.7-dev libffi-dev libssl-dev
+        ```
+        
    * MacOS: `sudo easy_install pip`.
 * Docker do uruchamiania krawędzi IoT modułów
    * [Zainstaluj dla systemu Linux Docker] [ lnk-docker-ubuntu] i upewnij się, że jest uruchomiona. 
@@ -95,7 +104,7 @@ sudo docker ps
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
-## <a name="view-generated-data"></a>Widok wygenerowany danych
+## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
 W tego przewodnika Szybki Start utworzyć nowe urządzenie brzegowe IoT, a na nim zainstalowany środowiska uruchomieniowego IoT krawędzi. Następnie użyto portalu Azure do umieszczenia krawędzi IoT modułu do uruchomienia na urządzeniu bez konieczności zmiany na urządzeniu. W takim przypadku moduł, który zostanie przypisany tworzy dane środowiska, używanego programu samouczków. 
 

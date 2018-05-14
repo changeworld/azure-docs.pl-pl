@@ -1,24 +1,25 @@
 ---
-title: "Azure odwołania do usługi Kopia zapasowa infrastruktury stosu | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera materiałów referencyjnych dla usługi Kopia zapasowa Azure stosu infrastruktury."
+title: Azure odwołania do usługi Kopia zapasowa infrastruktury stosu | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera materiałów referencyjnych dla usługi Kopia zapasowa Azure stosu infrastruktury.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: D6EC0224-97EA-446C-BC95-A3D32F668E2C
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 4/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4e6e0a52b2c55239e38757223f54e5e94dc98c42
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.reviewer: hectorl
+ms.openlocfilehash: 608f3043e0e4b851820274ca743cbc44d1c8c0f1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="infrastructure-backup-service-reference"></a>Dokumentacja usługi Kopia zapasowa
 
@@ -77,9 +78,9 @@ Dostępne są następujące wymagania:
 
 #### <a name="supported-smb-versions"></a>Obsługiwane wersje protokołu SMB
 
-| PROTOKÓŁ SMB | Wersja |
+| SMB | Wersja |
 |-----|---------|
-| PROTOKÓŁ SMB | 3.x     |
+| SMB | 3.x     |
 
 #### <a name="storage-location-sizing"></a>Zmiana rozmiaru lokalizacji magazynu 
 

@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95c5793bec228e2da8c98ea9263475f55de739d9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Usługa Azure SQL database auditing śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja również:
@@ -73,11 +73,11 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu portalu Azure.
 
     ![Okienko nawigacji][3]
 5. Aby otworzyć **magazyn dzienników inspekcji** bloku, wybierz opcję **szczegóły magazynu**. Wybierz konto magazynu Azure, w którym zostaną zapisane dzienniki, a następnie wybierz okres przechowywania. Stare dzienniki zostaną usunięte. Następnie kliknij przycisk **OK**.
-   >[!TIP]
-   >Aby uzyskać maksymalne wykorzystanie inspekcji szablonów raportów, należy użyć tego samego konta magazynu dla wszystkich baz danych inspekcji.
+    >[!TIP]
+    >Aby uzyskać maksymalne wykorzystanie inspekcji szablonów raportów, należy użyć tego samego konta magazynu dla wszystkich baz danych inspekcji.
 
     <a id="storage-screenshot"></a> ![Okienko nawigacji][4]
-6. Jeśli chcesz dostosować zdarzeń inspekcji, można to zrobić za pomocą programu PowerShell lub interfejsu API REST.
+6. Jeśli chcesz dostosować zdarzeń inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
 7. Po skonfigurowaniu ustawień inspekcji można włączyć funkcji wykrywania zagrożeń i skonfigurować wiadomości e-mail w celu otrzymywania alertów zabezpieczeń. Gdy używasz wykrywanie zagrożeń, pojawi się aktywne alerty w przypadku nietypowe działania bazy danych, które mogą wskazywać możliwe zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie wykrywanie zagrożeń](sql-database-threat-detection-get-started.md).
 8. Kliknij pozycję **Zapisz**.
 
@@ -149,8 +149,8 @@ W przypadku baz danych z replikacją geograficzną po włączeniu inspekcji w g�
    * Inspekcja obiektów blob musi być włączona na *podstawowa baza danych sam*, nie na serwerze.
    * Po włączeniu inspekcji obiektu blob na podstawowej bazy danych, również będą stają się włączone w pomocniczej bazie danych.
 
-     >[!IMPORTANT]
-     >Z poziomu bazy danych inspekcji, ustawienia magazynu dla pomocniczej bazy danych będzie identyczne z podstawowej bazy danych, powodując ruchu między regionalne. Zaleca się włączania inspekcji tylko poziomu serwera i pozostawić inspekcji bazy danych na poziomie wyłączona dla wszystkich baz danych.
+    >[!IMPORTANT]
+    >Z poziomu bazy danych inspekcji, ustawienia magazynu dla pomocniczej bazy danych będzie identyczne z podstawowej bazy danych, powodując ruchu między regionalne. Zaleca się włączania inspekcji tylko poziomu serwera i pozostawić inspekcji bazy danych na poziomie wyłączona dla wszystkich baz danych.
 <br>
 
 ### <a id="subheading-6">Ponowne generowanie klucza magazynu</a>
@@ -165,37 +165,45 @@ W środowisku produkcyjnym najprawdopodobniej będzie okresowo Odśwież kluczy 
 3. Przejdź wstecz do inspekcji bloku konfiguracji przełącznika klucz dostępu do magazynu z podstawowym dodatkowej, a następnie kliknij przycisk **OK**. Następnie kliknij przycisk **zapisać** w górnej części bloku konfiguracji inspekcji.
 4. Wróć do bloku konfiguracji magazynu, a następnie ponownie wygenerować pomocniczy klucz dostępu (w ramach przygotowania do klucza następnego cyklu odświeżania).
 
-## <a name="additional-information"></a>Informacje dodatkowe
+## <a name="additional-information"></a>Dodatkowe informacje
 
 * Aby uzyskać szczegółowe informacje o dzienniku sformatować hierarchii folderu przechowywania i konwencje nazewnictwa, zobacz [odwołanie Format dziennika inspekcji obiektu Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-   > [!IMPORTANT]
-   > Azure inspekcji bazy danych SQL przechowuje 4000 znaków dane znaków pól rekordu inspekcji. Gdy **instrukcji** lub **data_sensitivity_information** wartości zwracanych z akcji podlegających inspekcji zawiera więcej niż 4000 znaków, wszystkie dane poza najpierw 4000 znaków zostaną  **obcięty i nie inspekcji**.
+    > [!IMPORTANT]
+    > Azure inspekcji bazy danych SQL przechowuje 4000 znaków dane znaków pól rekordu inspekcji. Gdy **instrukcji** lub **data_sensitivity_information** wartości zwracanych z akcji podlegających inspekcji zawiera więcej niż 4000 znaków, wszystkie dane poza najpierw 4000 znaków zostaną  **obcięty i nie inspekcji**.
 
-* Dzienniki inspekcji są zapisywane w **Dołącz obiekty BLOB** w magazynie obiektów Blob platformy Azure w ramach subskrypcji platformy Azure.
-   * **Magazyn w warstwie Premium** jest obecnie **nieobsługiwane** przez Dołącz obiektów blob.
-   * **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
+* Dzienniki inspekcji są zapisywane w **Dołącz obiekty BLOB** w magazynie obiektów Blob platformy Azure w ramach subskrypcji platformy Azure:
+    * **Magazyn w warstwie Premium** jest obecnie **nieobsługiwane** przez Dołącz obiektów blob.
+    * **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Zarządzanie za pomocą programu Azure PowerShell inspekcja bazy danych SQL
+* Domyślne zasady inspekcji obejmuje wszystkie akcje i następujący zestaw grup działań, które będzie przeprowadzać inspekcję zapytania i procedury składowane wykonane względem bazy danych, a także udane i nieudane logowania:
 
-* **Polecenia cmdlet programu PowerShell**:
+    BATCH_COMPLETED_GROUP<br>
+    SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP<br>
+    FAILED_DATABASE_AUTHENTICATION_GROUP
 
-   * [Get-AzureRMSqlDatabaseAuditing][101]
-   * [Get-AzureRMSqlServerAuditing][102]
-   * [Set-AzureRMSqlDatabaseAuditing][105]
-   * [Set-AzureRMSqlServerAuditing][106]
+    Można skonfigurować inspekcję różnego rodzaju akcje i grupy akcji przy użyciu programu PowerShell, zgodnie z opisem w [inspekcja bazy danych SQL zarządzać przy użyciu programu Azure PowerShell](#subheading-7) sekcji.
 
-   Na przykład skryptu, zobacz [konfigurowania inspekcji i wykrywania zagrożeń przy użyciu programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+## <a id="subheading-7"></a>Zarządzanie za pomocą programu Azure PowerShell inspekcja bazy danych SQL
 
-## <a name="manage-sql-database-auditing-using-rest-api"></a>Zarządzanie za pomocą interfejsu API REST inspekcja bazy danych SQL
+**Polecenia cmdlet programu PowerShell**:
 
-* **Interfejs API REST - Inspekcja obiektów Blob**:
+* [Utwórz lub zaktualizuj bazę danych obiektów Blob (Set-AzureRMSqlDatabaseAuditing) zasady inspekcji][105]
+* [Utwórz lub zaktualizuj serwer obiektów Blob (Set-AzureRMSqlServerAuditing) zasady inspekcji][106]
+* [Pobierz zasady inspekcji bazy danych (Get-AzureRMSqlDatabaseAuditing)][101]
+* [Pobierz obiekt Blob serwera zasady inspekcji (Get-AzureRMSqlServerAuditing)][102]
 
-   * [Utwórz lub zaktualizuj bazę danych obiektów Blob zasady inspekcji](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-   * [Utwórz lub zaktualizuj Blob serwera zasady inspekcji](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-   * [Pobierz bazy danych obiektów Blob zasady inspekcji](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-   * [Pobierz obiekt Blob serwera zasady inspekcji](https://msdn.microsoft.com/library/azure/mt771860.aspx)
-   * [Pobierz Blob serwera inspekcji wynik operacji](https://msdn.microsoft.com/library/azure/mt771862.aspx)
+Na przykład skryptu, zobacz [konfigurowania inspekcji i wykrywania zagrożeń przy użyciu programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+
+## <a id="subheading-9"></a>Zarządzanie za pomocą interfejsu API REST inspekcja bazy danych SQL
+
+**Interfejs API REST - Inspekcja obiektów Blob**:
+
+* [Utwórz lub zaktualizuj bazę danych obiektów Blob zasady inspekcji](https://msdn.microsoft.com/library/azure/mt695939.aspx)
+* [Utwórz lub zaktualizuj Blob serwera zasady inspekcji](https://msdn.microsoft.com/library/azure/mt771861.aspx)
+* [Pobierz bazy danych obiektów Blob zasady inspekcji](https://msdn.microsoft.com/library/azure/mt695938.aspx)
+* [Pobierz obiekt Blob serwera zasady inspekcji](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Pobierz Blob serwera inspekcji wynik operacji](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 
 <!--Anchors-->
@@ -204,8 +212,9 @@ W środowisku produkcyjnym najprawdopodobniej będzie okresowo Odśwież kluczy 
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Automation (PowerShell / REST API)]: #subheading-7
+[Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
+[Manage SQL database auditing using REST API]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

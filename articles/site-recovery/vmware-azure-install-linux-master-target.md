@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 986f36cccc9755e5b5a7fc2f81d7e6dff2bf1ccf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Zainstaluj serwer główny cel systemu Linux
 Po przejścia w tryb failover maszyn wirtualnych na platformie Azure, możesz w trybie wstecz maszyn wirtualnych do lokacji lokalnej. Aby wykonaj powrót po awarii, musisz Włącz ponownie ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. W przypadku tego procesu należy lokalny główny serwer docelowy do odbierania ruchu. 
@@ -330,9 +330,9 @@ Po zakończeniu instalacji należy zarejestrować serwer konfiguracji przy użyc
      Poczekaj na zakończenie skryptu. Czy główny cel został pomyślnie zarejestrowany, główny docelowy są dostępne w **infrastruktura usługi Site Recovery** strony portalu.
 
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>Zainstaluj narzędzia VMware na głównym serwerze docelowym
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Instalowanie narzędzi VMware / open-vm-tools na głównym serwerze docelowym
 
-Musisz zainstalować narzędzia VMware w głównym celu tak, aby go odnaleźć w magazynie danych. Jeśli narzędzia nie są zainstalowane, ekranu ponownej ochrony nie ma na liście w magazynie danych. Po zakończeniu instalacji narzędzi VMware należy ponownie uruchomić.
+Musisz zainstalować narzędzia VMware lub open-vm-tools w głównym celu tak, aby go odnaleźć w magazynie danych. Jeśli narzędzia nie są zainstalowane, ekranu ponownej ochrony nie ma na liście w magazynie danych. Po zakończeniu instalacji narzędzi VMware należy ponownie uruchomić.
 
 ### <a name="upgrade-the-master-target-server"></a>Uaktualnij główny serwer docelowy
 

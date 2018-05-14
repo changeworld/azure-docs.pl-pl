@@ -15,11 +15,11 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1627f3590bd92f2460368cffab48d43c5a82d3c4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3f2dd8dd860ecc1da476fcbccbe16f9c21e3c836
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ustaw niestandardową stronę główną dla opublikowanych aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -141,4 +141,4 @@ Utwórz adres URL strony głównej i aktualizacji aplikacji przy użyciu tej war
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Włączenie dostępu zdalnego do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD](application-proxy-enable-remote-access-sharepoint.md)
-- [Włącz serwer Proxy aplikacji w portalu Azure](active-directory-application-proxy-enable.md)
+- [Włącz serwer Proxy aplikacji w portalu Azure](manage-apps/application-proxy-enable.md)

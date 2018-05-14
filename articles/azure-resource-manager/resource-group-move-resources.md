@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6691ba1e89b7558302c869d3246fc69acd5dcd84
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -114,6 +114,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Application Insights
 * Automatyzacja
 * Azure Cosmos DB
+* Azure Relay
 * Batch
 * Mapy Bing
 * CDN
@@ -130,6 +131,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Centra IoT Hub
 * Usługa Key Vault
 * Moduły równoważenia obciążenia — zobacz [ograniczenia usługi równoważenia obciążenia](#lb-limitations)
+* Log Analytics
 * Logic Apps
 * Uczenie maszynowe — usługi sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale inną subskrypcję usługi Machine Learning Studio. Inne zasoby uczenia maszynowego można przenosić między subskrypcjami.
 * Media Services
@@ -137,7 +139,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Notification Hubs
 * Operational Insights
 * Operations Management
-* Power BI
+* Usługa Power BI — zarówno usługi Power BI Embedded i włączenie kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — Zobacz [ograniczenia publicznego adresu IP](#pip-limitations)
 * Pamięć podręczna Redis
 * Scheduler
@@ -148,7 +150,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Magazyn
 * Magazyn (klasyczne) — zobacz [Classic deployment ograniczenia](#classic-deployment-limitations)
 * Stream Analytics — usługi analiza strumienia zadania nie można przenieść uruchomionej w stanie.
-* Baza danych SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. W przypadku przenoszenia programu SQL server, również są przenoszone jej baz danych. Dotyczy to baz danych Azure SQL Database i Azure SQL Data Warehouse. 
+* Baza danych SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. W przypadku przenoszenia programu SQL server, również są przenoszone jej baz danych. Ten problem dotyczy baz danych Azure SQL Database i Azure SQL Data Warehouse. 
 * Traffic Manager
 * Nie można przenieść maszyny wirtualne — maszyny wirtualne z dyskami zarządzanych. Zobacz [ograniczenia maszyny wirtualne](#virtual-machines-limitations)
 * Maszyny wirtualne (klasyczne) — zobacz [Classic deployment ograniczenia](#classic-deployment-limitations)
@@ -164,6 +166,8 @@ Usługi, które aktualnie nie należy włączać przenoszenie zasobu to:
 * Usługa kondycji hybrydowe AD
 * Application Gateway
 * Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Migrate
 * BizTalk Services
 * Certyfikaty — można przenieść certyfikaty usługi aplikacji, ale ma przekazane certyfikaty [ograniczenia](#app-service-limitations).
 * Usługa Kubernetes
@@ -188,6 +192,11 @@ Dyski zarządzane nie obsługują przenoszenia. To ograniczenie oznacza, że kil
 * Obrazy utworzone na podstawie dysków zarządzanych
 * Migawek utworzonych z dysków zarządzanych
 * Zestawy dostępności z maszynami wirtualnymi z dyskami zarządzanych
+
+Mimo że nie można przenieść dyskiem zarządzanym, możesz utworzyć kopię i następnie utwórz nową maszynę wirtualną z istniejącego dysku zarządzanego. Aby uzyskać więcej informacji, zobacz:
+
+* Kopiowanie dysków zarządzanych w tej samej subskrypcji lub różnych subskrypcji z [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) lub [wiersza polecenia platformy Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
+* Utwórz maszynę wirtualną przy użyciu istniejącego dysku systemu operacyjnego zarządzanego z [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) lub [interfejsu wiersza polecenia Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
 
 Nie można przenieść maszyny wirtualne utworzone na podstawie zasobów Marketplace z planami dołączony między grupami zasobów lub subskrypcji. Anulowanie zastrzeżenia maszynę wirtualną w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: dbd1b171185bf49ed5e633153938d3e7ba81387d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Woluminy trwałe pliki Azure
 
@@ -66,10 +66,10 @@ parameters:
   storageAccount: mystorageaccount
 ```
 
-Utwórz klasę magazynu z [utworzyć kubectl] [ kubectl-create] polecenia.
+Utwórz klasę magazynu z [zastosować kubectl] [ kubectl-apply] polecenia.
 
 ```azurecli-interactive
-kubectl create -f azure-file-sc.yaml
+kubectl apply -f azure-file-sc.yaml
 ```
 
 ## <a name="create-persistent-volume-claim"></a>Tworzenie oświadczeń trwały wolumin
@@ -94,10 +94,10 @@ spec:
       storage: 5Gi
 ```
 
-Tworzenie oświadczenia trwały wolumin o [utworzyć kubectl] [ kubectl-create] polecenia.
+Tworzenie oświadczenia trwały wolumin o [zastosować kubectl] [ kubectl-apply] polecenia.
 
 ```azurecli-interactive
-kubectl create -f azure-file-pvc.yaml
+kubectl apply -f azure-file-pvc.yaml
 ```
 
 Po ukończeniu będzie można utworzyć udziału plików. Klucz tajny Kubernetes tworzona jest również zawierający informacje o połączeniu oraz poświadczenia.
@@ -126,10 +126,10 @@ spec:
         claimName: azurefile
 ```
 
-Utwórz pod z [utworzyć kubectl] [ kubectl-create] polecenia.
+Utwórz pod z [zastosować kubectl] [ kubectl-apply] polecenia.
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-files.yaml
+kubectl apply -f azure-pvc-files.yaml
 ```
 
 Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` katalogu. Ta konfiguracja może być moment zapoznanie się z pod za pośrednictwem `kubectl describe pod mypod`.
@@ -174,7 +174,7 @@ Dowiedz się więcej o Kubernetes woluminów trwałego za pomocą usługi pliki 
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/

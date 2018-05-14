@@ -1,12 +1,12 @@
 ---
-title: "Implementacja fazy weryfikacji koncepcji podręcznika dotyczącego usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Eksploruj i szybkie rozpoczęcie scenariusze Zarządzanie tożsamościami i dostępem"
+title: Implementacja fazy weryfikacji koncepcji podręcznika dotyczącego usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Eksploruj i szybkie rozpoczęcie scenariusze Zarządzanie tożsamościami i dostępem
 services: active-directory
-keywords: "Usługa Azure active directory, podręcznika dotyczącego koncepcji, aby zapewnić"
-documentationcenter: 
+keywords: Usługa Azure active directory, podręcznika dotyczącego koncepcji, aby zapewnić
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: dstefan
-ms.openlocfilehash: e26dfe4aaa374f5587038a0de66c0bd8703c9a41
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f01bdee5ffcc9e2f48278c7209da40ef64cc030
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-implementation"></a>Dowód koncepcji podręcznika dotyczącego usługi Azure Active Directory: implementacja
 
@@ -87,7 +87,7 @@ Tożsamość hybrydowa jest podstawą dla większości klientów organizacji, kt
 
 ### <a name="secure-remote-access-to-on-premises-applications"></a>Bezpieczny dostęp zdalny do aplikacji lokalnych
 
-1. Robert, Azure AD administratora globalnego, uzyskał wiele żądań, aby umożliwić pracownikom dostęp do kilku zasobów przydatne lokalnymi, takie jak aplikacja kosztów, podczas pracy zdalnej. Wykonuje [dokumentacji serwera Proxy aplikacji](active-directory-application-proxy-enable.md) do zainstalowania łącznika i opublikować kosztów jako aplikację serwera Proxy aplikacji. 
+1. Robert, Azure AD administratora globalnego, uzyskał wiele żądań, aby umożliwić pracownikom dostęp do kilku zasobów przydatne lokalnymi, takie jak aplikacja kosztów, podczas pracy zdalnej. Wykonuje [dokumentacji serwera Proxy aplikacji](manage-apps/application-proxy-enable.md) do zainstalowania łącznika i opublikować kosztów jako aplikację serwera Proxy aplikacji. 
 2. Robert udostępniać zewnętrzny adres URL aplikacji kosztów Susie, jeden pracowników, którzy wymaga dostępu zdalnego. Użytkownik uzyskuje dostęp do łącza, a po uwierzytelniany w usłudze AAD, jest ona dostęp do aplikacji koszty i wydajność w dalszym ciągu podczas pracy zdalnej. 
 3. Robert nadal publikowania aplikacji dodatkowych lokalnych przy użyciu tego samego procesu i zapewniające dostęp do użytkowników, zgodnie z potrzebami. Dodaje dostępu warunkowego i uwierzytelniania wieloskładnikowego dla bardziej poufnego aplikacji, które on publikuje, aby zapewnić dodatkową ochronę.
 
@@ -155,7 +155,7 @@ Tożsamość hybrydowa jest podstawą dla większości klientów organizacji, kt
 | [Samodzielne resetowanie haseł](#self-service-password-reset) | [Samodzielne resetowanie haseł](active-directory-playbook-building-blocks.md#self-service-password-reset) |
 | [Samoobsługowego dostęp do aplikacji](#self-service-access-to-applications) | [Samoobsługowego dostęp do aplikacji](active-directory-playbook-building-blocks.md#self-service-access-to-application-management) |
 
-### <a name="self-service-password-reset"></a>Samodzielne resetowanie haseł 
+### <a name="self-service-password-reset"></a>Samodzielne resetowanie hasła 
 
 1. Robert jest administrator globalny usługi Azure AD i umożliwia zarządzanie hasłami usługi samoobsługowego do podzbioru użytkowników, w tym Susie. 
 2. Dzienniki Susie w portalu myapps i zobacz wiadomość w celu zarejestrowania swoich informacji o zabezpieczeniach dla przyszłych hasła zresetować zdarzenia.

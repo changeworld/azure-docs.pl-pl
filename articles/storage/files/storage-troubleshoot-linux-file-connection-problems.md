@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie problemów plików Azure w systemie Linux | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów plików Azure w systemie Linux"
+title: Rozwiązywanie problemów plików Azure w systemie Linux | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów plików Azure w systemie Linux
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów plików Azure w systemie Linux
 
@@ -29,7 +29,7 @@ W tym artykule wymieniono typowe problemy, które są powiązane pliki programu 
 
 W systemie Linux pojawi się komunikat o błędzie podobny do następującego:
 
-**<filename>[odmówiono uprawnienia] Przekroczono przydział dysku**
+**<filename> [odmówiono uprawnienia] Przekroczono przydział dysku**
 
 ### <a name="cause"></a>Przyczyna
 
@@ -71,7 +71,7 @@ To ponowne nawiązanie połączenia jądra systemu Linux teraz problemu w ramach
 
 Jednak te zmiany mogą nie być przenoszone jeszcze do wszystkich dystrybucje systemu Linux. Ta poprawka i inne poprawki ponowne nawiązanie połączenia są wprowadzane w następujących popularnych jądra systemu Linux: 4.4.40, 4.8.16 i 4.9.1. Ta poprawka można uzyskać przez uaktualnienie do wersji zalecane jądra.
 
-### <a name="workaround"></a>Obejście problemu
+### <a name="workaround"></a>Obejście
 
 Ten problem można obejść, określając instalacji twardej. Dzięki temu klient czekać do momentu jest nawiązywane połączenie lub go jawnie zostanie przerwane i pozwala uniknąć błędów z powodu limitów czasu w sieci. To rozwiązanie może jednak spowodować nieograniczonego oczekiwania. Przygotuj się do zatrzymania połączenia w razie potrzeby.
 
@@ -120,7 +120,7 @@ Na platformach systemu Linux/Unix **cp -p** polecenie kończy się niepowodzenie
 
 Flagi force **f** w COPYFILE powoduje wykonywania **cp -p -f** w systemie Unix. To polecenie nie powiedzie się także zachować sygnatury czasowej pliku, który nie jesteś właścicielem.
 
-### <a name="workaround"></a>Obejście problemu
+### <a name="workaround"></a>Obejście
 
 Użyj użytkownika konta magazynu do kopiowania plików:
 
@@ -138,11 +138,11 @@ Typowe przyczyny tego problemu są:
 
 - Używasz niezgodny klient dystrybucji systemu Linux. Firma Microsoft zaleca wykonywanych w celu nawiązania połączenia z udziałem plików na platformę Azure następujące dystrybucje systemu Linux:
 
-    - Ubuntu Server 14.04 + 
+    - Ubuntu Server 14.04+ 
     - RHEL 7 + 
-    - CentOS 7 + 
+    - CentOS 7+ 
     - Debian 8 
-    - openSUSE 13.2 + 
+    - openSUSE 13.2+ 
     - SUSE Linux Enterprise Server 12
 
 - Witryny CIFS nie są zainstalowane na komputerze klienckim.

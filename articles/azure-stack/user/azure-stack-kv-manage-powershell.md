@@ -12,24 +12,31 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 9dac59d74347e21bebaf7cb65d199711f45b29a9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5e9de401f64a835c286c226bfac88caf5168b96e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>Zarządzanie Key Vault w stosie Azure przy użyciu programu PowerShell
+# <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Zarządzanie Key Vault w stosie Azure przy użyciu programu PowerShell
 
-W tym artykule opisano, jak rozpocząć tworzenie i zarządzanie nimi Key Vault w stosie Azure przy użyciu programu PowerShell. Polecenia cmdlet programu PowerShell magazyn klucza opisane w tym artykule są dostępne jako część zestawu SDK usługi Azure PowerShell. W poniższych sekcjach opisano poleceń cmdlet programu PowerShell, która jest wymagana do:
-   - Utwórz magazyn. 
-   - Przechowywanie i zarządzanie nimi kluczy kryptograficznych i kluczy tajnych. 
-   - Zezwalanie użytkownikom lub aplikacjom wywoływać operacje w magazynie. 
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+
+Możesz zarządzać Key Vault w stosie Azure przy użyciu programu PowerShell. Dowiedz się, jak używać poleceń cmdlet programu PowerShell magazynu kluczy:
+
+* Tworzenie magazynu kluczy.
+* Przechowywanie i zarządzanie nimi kluczy kryptograficznych i kluczy tajnych.
+* Zezwalanie użytkownikom lub aplikacjom wywoływać operacje w magazynie.
+
+>[!NOTE]
+>Descibed poleceń cmdlet programu PowerShell magazynu kluczy, w tym artykule są udostępniane w zestawie SDK Azure PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 * Należy zasubskrybować ofertę, która obejmuje usługę Azure Key Vault.
-* [Instalowanie programu PowerShell dla usługi Azure stosu](azure-stack-powershell-install.md).  
+* [Instalowanie programu PowerShell dla usługi Azure stosu](azure-stack-powershell-install.md).
 * [Konfigurowanie środowiska PowerShell użytkownika stosu Azure](azure-stack-powershell-configure-user.md).
 
 ## <a name="enable-your-tenant-subscription-for-key-vault-operations"></a>Włącz subskrypcji dzierżawy dla usługi Key Vault operacji
@@ -39,11 +46,12 @@ Przed możesz wykonywać żadnych operacji dla magazynu kluczy, należy się upe
 ```PowerShell
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 ```
+
 **Dane wyjściowe**
 
-Po włączeniu subskrypcji dla operacji magazynu danych wyjściowych widać "RegistrationState" equals "Zarejestrowanej" dla wszystkich typów zasobów magazynu kluczy.
+Jeśli subskrypcja jest włączony dla operacji magazynu, dane wyjściowe zawierają "RegistrationState" jest "zarejestrowano" dla wszystkich typów zasobów magazynu kluczy.
 
-![Stan rejestracji](media/azure-stack-kv-manage-powershell/image1.png)
+![Stan rejestracji magazynu kluczy](media/azure-stack-kv-manage-powershell/image1.png)
 
 Jeśli operacje magazynu nie są włączone, wywołaj następujące polecenie, aby zarejestrować usługi Key Vault w Twojej subskrypcji:
 
@@ -57,7 +65,7 @@ Jeśli rejestracja zakończy się pomyślnie, zwracany jest następujące dane w
 
 ![Zarejestruj](media/azure-stack-kv-manage-powershell/image2.png) po wywołaniu polecenia magazyn kluczy, może być wyświetlany komunikat o błędzie, takie jak "subskrypcji nie jest zarejestrowany do korzystania z przestrzeni nazw"Microsoft.KeyVault"." Jeśli wystąpi błąd, upewnij się, że masz [włączone dostawcy zasobów usługi Key Vault](#enable-your-tenant-subscription-for-vault-operations) zgodnie z instrukcjami, które zostały wymienione wcześniej.
 
-## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy 
+## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
 Przed utworzeniem magazyn kluczy, Utwórz grupę zasobów, dzięki czemu wszystkie zasoby związane z magazynu kluczy istnieje w grupie zasobów. Aby utworzyć nową grupę zasobów, użyj następującego polecenia:
 
@@ -70,28 +78,31 @@ New-AzureRmResourceGroup -Name “VaultRG” -Location local -verbose -Force
 
 ![nową grupę zasobów](media/azure-stack-kv-manage-powershell/image3.png)
 
-Teraz użyj **New-AzureRMKeyVault** polecenie, aby utworzyć magazyn kluczy w grupie zasobów, który został utworzony wcześniej. To polecenie odczytuje trzy obowiązkowe parametry: Nazwa grupy zasobów, nazwa magazynu kluczy i lokalizacji geograficznej. 
+Teraz użyj **New-AzureRMKeyVault** polecenie, aby utworzyć magazyn kluczy w grupie zasobów, który został utworzony wcześniej. To polecenie odczytuje trzy obowiązkowe parametry: Nazwa grupy zasobów, nazwa magazynu kluczy i lokalizacji geograficznej.
 
 Uruchom następujące polecenie, aby utworzyć magazyn kluczy:
 
 ```PowerShell
 New-AzureRmKeyVault -VaultName “Vault01” -ResourceGroupName “VaultRG” -Location local -verbose
 ```
+
 **Dane wyjściowe**
 
 ![Nowy magazyn kluczy](media/azure-stack-kv-manage-powershell/image4.png)
 
-Dane wyjściowe tego polecenia są wyświetlane właściwości magazynu kluczy, który został utworzony. Gdy aplikacja uzyskuje dostęp do tego magazynu, używa **identyfikator URI magazynu** właściwość wyświetlany w danych wyjściowych. Na przykład Magazyn identyfikator URI (Uniform Resource) w tym przypadku jest "https://vault01.vault.local.azurestack.external". Aplikacje, które współdziałają z tym magazynie kluczy za pomocą interfejsu API REST muszą używać tego identyfikatora URI.
+Dane wyjściowe tego polecenia są wyświetlane właściwości magazynu kluczy, który został utworzony. Gdy aplikacja uzyskuje dostęp do tego magazynu, należy użyć **identyfikator URI magazynu** właściwość, która jest "https://vault01.vault.local.azurestack.external" w tym przykładzie.
 
-W usługach federacyjnych Active Directory (AD FS)-wdrożenia oparte na, podczas tworzenia klucza magazynu przy użyciu programu PowerShell, może pojawić się ostrzeżenie informujące "nie ustawiono zasad dostępu. Nie użytkownika lub aplikacji ma uprawnienia dostępu do użycia w tym magazynie." Aby rozwiązać ten problem, należy ustawić zasady dostępu dla magazynu przy użyciu [Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) polecenia:
+### <a name="active-directory-federation-services-ad-fs-deployment"></a>Wdrażanie usługi Active Directory Federation Services (AD FS)
+
+We wdrożeniu usług AD FS może spowodować, że to ostrzeżenie: "nie ustawiono zasad dostępu. Nie użytkownika lub aplikacji ma uprawnienia dostępu do użycia w tym magazynie." Aby rozwiązać ten problem, należy ustawić zasady dostępu dla magazynu przy użyciu [Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) polecenia:
 
 ```PowerShell
 # Obtain the security identifier(SID) of the active directory user
 $adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
-$objectSID = $adUser.SID.Value 
+$objectSID = $adUser.SID.Value
 
 # Set the key vault access policy
-Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation 
+Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation
 ```
 
 ## <a name="manage-keys-and-secrets"></a>Zarządzanie kluczy i kluczy tajnych
@@ -100,20 +111,21 @@ Po utworzeniu magazynu następujące kroki umożliwiają tworzenie i zarządzani
 
 ### <a name="create-a-key"></a>Utwórz klucz
 
-Użyj **Add-AzureKeyVaultKey** polecenie, aby utworzyć lub zaimportować klucza chronionego przez oprogramowanie, w magazynie kluczy. 
+Użyj **Add-AzureKeyVaultKey** polecenie, aby utworzyć lub zaimportować klucza chronionego przez oprogramowanie, w magazynie kluczy.
 
 ```PowerShell
 Add-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01” -verbose -Destination Software
 ```
+
 **Docelowego** parametr jest używany do określenia, czy dany klucz jest chroniony oprogramowania. Po pomyślnym utworzeniu klucz polecenie wyświetla szczegóły utworzony klucz.
 
 **Dane wyjściowe**
 
 ![Nowy klucz](media/azure-stack-kv-manage-powershell/image5.png)
 
-Teraz możesz odwoływać utworzony klucz za pomocą jego identyfikatora URI. Tworzenie lub Importowanie klucza, takiej samej nazwie jak istniejący klucz oryginalny klucz został zaktualizowany o wartości podanych w nowego klucza. Za pomocą identyfikatora URI określonej wersji klucza można uzyskać dostępu do poprzedniej wersji. Na przykład: 
+Teraz możesz odwoływać utworzony klucz za pomocą jego identyfikatora URI. Tworzenie lub Importowanie klucza, takiej samej nazwie jak istniejący klucz oryginalny klucz został zaktualizowany o wartości podanych w nowego klucza. Za pomocą identyfikatora URI określonej wersji klucza można uzyskać dostępu do poprzedniej wersji. Na przykład:
 
-* Użyj "https://vault10.vault.local.azurestack.external:443/keys/key01" Aby zawsze uzyskać bieżącą wersję. 
+* Użyj "https://vault10.vault.local.azurestack.external:443/keys/key01" Aby zawsze uzyskać bieżącą wersję.
 * Użyj "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" Aby uzyskać tę konkretną wersję.
 
 ### <a name="get-a-key"></a>Uzyskać klucz
@@ -139,7 +151,7 @@ Set-AzureKeyVaultSecret -VaultName “Vault01” -Name “Secret01” -SecretVal
 
 ### <a name="get-a-secret"></a>Pobierz klucz tajny
 
-Użyj **Get-AzureKeyVaultSecret** polecenia można odczytać klucza tajnego w magazynie kluczy. To polecenie może zwrócić wszystkich lub określonych wersji klucza tajnego. 
+Użyj **Get-AzureKeyVaultSecret** polecenia można odczytać klucza tajnego w magazynie kluczy. To polecenie może zwrócić wszystkich lub określonych wersji klucza tajnego.
 
 ```PowerShell
 Get-AzureKeyVaultSecret -VaultName “Vault01” -Name “Secret01”
@@ -163,6 +175,6 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wdrożenie maszyny Wirtualnej przy użyciu hasła zapisane w magazynie kluczy](azure-stack-kv-deploy-vm-with-secret.md) 
-* [Wdrożenie maszyny Wirtualnej przy użyciu certyfikatu przechowywane w magazynie kluczy](azure-stack-kv-push-secret-into-vm.md)
 
+* [Wdrożenie maszyny Wirtualnej przy użyciu hasła zapisane w magazynie kluczy](azure-stack-kv-deploy-vm-with-secret.md)
+* [Wdrożenie maszyny Wirtualnej przy użyciu certyfikatu przechowywane w magazynie kluczy](azure-stack-kv-push-secret-into-vm.md)

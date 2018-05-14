@@ -5,20 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 842446ec0db96b9234fe0c578481ab06e9f0c896
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d0565468d953c83ca5fee864b3079fbfee9bbf1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodawanie użytkowników współpracy usługi Azure Active Directory B2B w portalu Azure
 
 Jako administrator globalny lub użytkownika, który jest przypisany do żadnego z ról katalogu administratorem ograniczonym można użyć portalu Azure, aby zaprosić użytkowników współpracy B2B. Można zaprosić użytkowników gościa do katalogu, grupę lub aplikację. Po zaproszeniu użytkownika za pomocą jednej z tych metod, zaproszonych użytkowników konto jest dodawane do usługi Azure Active Directory (Azure AD), z typem użytkownika *gościa*. Gość musi następnie zrealizować zaproszenia, ich dostęp do zasobów.
+
+Po dodaniu użytkownika gościa do katalogu możesz albo wysłać użytkownika gościa bezpośredniego łącza do udostępnionej aplikacji lub użytkownika gościa można kliknij adres URL realizacji w wiadomości e-mail z zaproszeniem. Aby uzyskać więcej informacji na temat procesu realizacji, zobacz [realizacji zaproszenia współpracy B2B](active-directory-b2b-redemption-experience.md).
+
+> [!IMPORTANT]
+> Należy wykonać czynności opisane w [porad: Dodaj informacje o prywatności organizacji w usłudze Azure Active Directory](https://aka.ms/adprivacystatement) można dodać adres URL zasady zachowania poufności informacji w organizacji. W ramach procesu realizacji zaproszenia pierwszego czasu zaproszony użytkownik musi wyrazić zgodę z zasadami zachowania poufności informacji, aby kontynuować. 
 
 ## <a name="add-guest-users-to-the-directory"></a>Dodaj gości do katalogu
 
@@ -86,7 +91,7 @@ Aby dodać użytkowników współpracy B2B do aplikacji jako administrator usłu
  
 ## <a name="resend-invitations-to-guest-users"></a>Ponownie Wyślij zaproszenia do gości
 
-Jeśli użytkownik-Gość ich zaproszenie nie ma jeszcze zrealizowane, należy wysłać zaproszenie.
+Jeśli użytkownik-Gość ich zaproszenie nie ma jeszcze zrealizowane, można ponownie wysłać wiadomość e-mail z zaproszeniem.
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com) jako administrator usługi Azure AD.
 2. W okienku nawigacji wybierz **usługi Azure Active Directory**.
@@ -105,6 +110,4 @@ Jeśli użytkownik-Gość ich zaproszenie nie ma jeszcze zrealizowane, należy w
 
 - Aby dowiedzieć się, jak dodać administratorów innych niż Azure AD B2B gości, zobacz [jak pracownicy przetwarzający informacje dodać użytkowników współpracy B2B?](active-directory-b2b-iw-add-users.md)
 - Aby uzyskać informacje o wiadomość e-mail z zaproszeniem, zobacz [elementy wiadomość e-mail z zaproszeniem współpracy B2B](active-directory-b2b-invitation-email.md).
-- Aby uzyskać informacje na temat procesu realizacji zaproszenia, zobacz [realizacji zaproszenia współpracy B2B](active-directory-b2b-redemption-experience.md).
-
 

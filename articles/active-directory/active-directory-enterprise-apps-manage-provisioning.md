@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: b57c6841566f3fd75ca0c48e055f54513247cb30
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ebc4de2b3a01138a8b48cc637dcab5fc67a68841
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji przedsiębiorstwa w portalu Azure
 W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com) zarządzać aprowizację konta użytkowników i anulowanie obsługi aplikacji obsługujących go, zwłaszcza tych, które zostały dodane z "dostępne" kategorii [ Galerii aplikacji usługi Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Aby dowiedzieć się więcej na temat Inicjowanie obsługi konta użytkowników i jak działa, zobacz [zautomatyzować Inicjowanie obsługi użytkowników i anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-app-provisioning.md).
@@ -27,13 +27,13 @@ W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com)
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
 Wszystkie aplikacje, które są skonfigurowane dla rejestracji jednokrotnej w katalogu, administrator katalogu przy użyciu [galerii aplikacji usługi Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), można wyświetlać i zarządzane w [portalu Azure](https://portal.azure.com). Aplikacje można znaleźć w **wszystkie usługi** &gt; **aplikacje dla przedsiębiorstw** części portalu. Enterprise aplikacje to aplikacje, które są wdrożone i używane w organizacji.
 
-![Okienko aplikacje dla przedsiębiorstw][0]
+![Okienko aplikacje dla przedsiębiorstw](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.png)
 
 Wybieranie **wszystkie aplikacje** link po lewej stronie zawiera listę wszystkich aplikacji, które zostały skonfigurowane, w tym aplikacji, które dodano w galerii. Wybieranie aplikacji ładuje okienku zasobów dla danej aplikacji, w którym raporty można wyświetlać dla danej aplikacji i różne ustawienia mogą być zarządzane.
 
 Inicjowanie obsługi administracyjnej ustawienia konta użytkownika mogą być zarządzane przez wybranie **inicjowania obsługi administracyjnej** po lewej stronie.
 
-![Okienko zasobów aplikacji][1]
+![Okienko zasobów aplikacji](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Tryby inicjowania obsługi administracyjnej
 **Inicjowania obsługi administracyjnej** okienko rozpoczyna się od **tryb** menu, które pokazuje, jakie tryby inicjowania obsługi administracyjnej są obsługiwane w przypadku aplikacji dla przedsiębiorstw i można je skonfigurować. Dostępne opcje to:
@@ -54,7 +54,7 @@ W tej sekcji jest, gdzie Administratorzy można wyświetlać i edytować jakie p
 
 Brak zestawu wstępnie skonfigurowanych mapowania między obiektami użytkownika usługi Azure AD i każda aplikacja SaaS użytkownika. Niektóre aplikacje zarządzania innych typów obiektów, takich jak grup ani kontaktów. Wybierając jedną z te mapowania w tabeli pokazuje Edytor mapowania z prawej strony, gdzie można je wyświetlać i dostosować.
 
-![Okienko zasobów aplikacji][2]
+![Okienko zasobów aplikacji](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.png)
 
 Obsługiwane dostosowania obejmują:
 
@@ -80,7 +80,3 @@ Podano linki **inicjowania obsługi administracyjnej raport aktywności** zapewn
 
 Pamiętaj o opinie przesyłanych! Opinie i pomysły dotyczące poprawy **portalu administracyjnego** sekcji naszych [forum opinii](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Zespołu inżynieryjnego jest podekscytowani, informacje o kompilowaniu chłodnych nowości codziennie i użyj wskazówek z kształtem i zdefiniować, co należy utworzyć w następnej kolejności.
 
-
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
-[1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

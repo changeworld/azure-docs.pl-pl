@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2018
+ms.date: 5/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b69dce94e2e0bfaa413af9a95c5ef858f766ff1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami z grupy zarządzania 
 Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Można zmienić, usuwanie i zarządzanie kontenery do hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [Azure na podstawie ról dostęp do formantów (RBAC)](../role-based-access-control/overview.md). Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md).
@@ -103,9 +103,9 @@ Można wyświetlić grup zarządzania, do których masz bezpośrednie lub dziedz
 ### <a name="view-in-the-portal"></a>Wyświetl w portalu
 1. Zaloguj się do [portalu Azure](https://portal.azure.com)
 2. Wybierz **wszystkie usługi** > **grup zarządzania** 
-3. Hierarchia grupy zarządzania strony obciążeń, gdy wszystkie grupy są wyświetlane, czy masz dostęp do. 
+3. Hierarchia grupy zarządzania strony obciążenia, w którym można sprawdzić wszystkie grupy zarządzania i subskrypcje, do których masz dostęp do. Wybieranie nazwy grupy przejście poziom w dół hierarchii. Nawigacja działa tak samo jak w Eksploratorze plików. 
     ![Main](media/management-groups/main.png)
-4. Wybierz grupę zarządzania poszczególnych szczegółów  
+4. Aby wyświetlić szczegóły grupy zarządzania, wybierz **(szczegóły)** link obok nazwy grupy zarządzania. Jeśli to łącze nie jest dostępny, nie masz uprawnień do wyświetlania tej grupy zarządzania.  
 
 ### <a name="view-in-powershell"></a>Wyświetl w programie PowerShell
 Polecenie Get-AzureRmManagementGroup można pobrać wszystkich grup.  

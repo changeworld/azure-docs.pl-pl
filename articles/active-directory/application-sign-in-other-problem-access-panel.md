@@ -1,11 +1,11 @@
 ---
-title: "Problemy przy logowaniu do aplikacji w panelu dostępu | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązywać problemy podczas uzyskiwania dostępu do aplikacji, z panelu dostępu do programu Microsoft Azure AD w myapps.microsoft.com"
+title: Problemy przy logowaniu do aplikacji w panelu dostępu | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy podczas uzyskiwania dostępu do aplikacji, z panelu dostępu do programu Microsoft Azure AD w myapps.microsoft.com
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: f73b7929aea35382f7ca684c866b65e070668d5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5765d64fccba69edd0ebe91a6c34694763e6c539
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Problemy przy logowaniu do aplikacji w panelu dostępu
 
@@ -525,5 +525,5 @@ Otwórz bilet pomocy technicznej następujące informacje, jeśli są dostępne:
 -   Ślady fiddler
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](active-directory-application-proxy-sso-using-kcd.md)
+[Podaj logowanie jednokrotne do aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

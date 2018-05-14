@@ -1,10 +1,10 @@
 ---
 ms.topic: include
-ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 31b0d0018129ee65bb124c8008759cc6c7c8510e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>Przedpłaty dla maszyn wirtualnych z wystąpień zastrzeżone maszyny Wirtualnej
 
@@ -13,6 +13,7 @@ Przedpłaty dla maszyn wirtualnych i tańszą z zarezerwowanych wystąpień masz
 Zarezerwowane wystąpień maszyn wirtualnych można kupić [portalu Azure](https://portal.azure.com). Aby kupić zastrzeżone wystąpienie maszyny wirtualnej:
 -   Musisz być w roli właściciela co najmniej jednej organizacji lub z subskrypcji.
 -   Dla subskrypcji Enterprise zakupy rezerwacji musi być włączony w [EA portal](https://ea.azure.com).
+-   Dla programu Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży można kupić rezerwacji.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Kup wystąpienia zastrzeżonej maszyny wirtualnej
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
@@ -50,3 +51,4 @@ Aby dowiedzieć się więcej o zastrzeżonych wystąpień maszyn wirtualnych, zo
 - [Określić sposób użycia wystąpienia zarezerwowane dla Twojej subskrypcji z](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Określić sposób użycia wystąpienia zarezerwowane dla rejestracji w przedsiębiorstwie](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [Koszty oprogramowania systemu Windows nie jest dołączony do wystąpienia zastrzeżone](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [Zarezerwowane wystąpień w programie partnera Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

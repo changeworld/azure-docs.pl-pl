@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 05/10/2018
 ms.author: brenduns
-ms.openlocfilehash: 8c9fd7d5824e5d315a7dd30e5052fe10802d197e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="considerations-for-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące maszyn wirtualnych Azure stosu
+# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące korzystania z maszyn wirtualnych Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Maszyny wirtualne są na żądanie, skalowalnych zasobów obliczeniowych oferowane przez stos Azure. Korzystając z maszyn wirtualnych, należy zrozumieć, czy istnieją różnice między stosie Azure i funkcje, które są dostępne w systemie Azure. Ten artykuł zawiera omówienie unikatowy zagadnień dotyczących maszyn wirtualnych i jego funkcji w stosie Azure. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) artykułu.
+Maszyny wirtualne platformy Azure stosu Podaj na żądanie, skalowalnych zasobów obliczeniowych. Przed przystąpieniem do wdrażania maszyn wirtualnych (VM), należy poznać różnice między maszyny wirtualnej funkcji dostępnych w stosie Azure i Microsoft Azure. W tym artykule opisano różnice te i identyfikuje Najważniejsze kwestie dotyczące planowania wdrażania maszyn wirtualnych. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) artykułu.
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Ściągawka: różnice maszyny wirtualnej
 
@@ -41,10 +41,12 @@ Maszyny wirtualne są na żądanie, skalowalnych zasobów obliczeniowych oferowa
 |Zestawy skalowania maszyn wirtualnych|Obsługiwane automatycznego skalowania|Automatycznego skalowania nie jest obsługiwane.<br>Dodaj więcej wystąpień do skali ustawić za pomocą portalu, szablony usługi Resource Manager lub programu PowerShell.
 
 ## <a name="virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych
-Azure nakłada ograniczenia zasobów na kilka sposobów, aby uniknąć nadmierne zużycie zasobów (serwer lokalny i poziomu usług). Bez wprowadzania niektóre limity na zużycie zasobów dzierżawcy, środowisko dzierżawcy mogą występować podczas zakłócenia sąsiada overconsumes zasobów. 
-- Dla sieci ruch wychodzący z maszyny Wirtualnej istnieją ograniczyć przepustowość. Włączony klawisz Caps w stosie Azure odpowiada Wersaliki na platformie Azure.  
-- Dla zasobów magazynu Azure stosu implementuje limity liczby magazynu, aby uniknąć podstawowe nadmierne zużycie zasobów przez dzierżawców na potrzeby dostępu do magazynu. 
-- Dla maszyn wirtualnych z wieloma dyskami dołączonych danych maksymalną przepływność każdy dysk danych poszczególnych jest 500 IOPS dla HHDs i 2300 IOPS dla dysków SSD.
+
+Stosu Azure nakłada ograniczenia zasobów Aby uniknąć zużycia zasobów (serwer lokalny i poziomu usług). Te limity udoskonalanie dzierżawy przez zmniejszenie wpływu zużycia zasobów przez innych dzierżawców.
+
+- Dla sieci ruch wychodzący z maszyny Wirtualnej istnieją ograniczyć przepustowość. Włączony klawisz Caps w stosie Azure są takie same jak wersaliki na platformie Azure.
+- Dla zasobów magazynu Azure stosu implementuje limity liczby magazynu, aby uniknąć podstawowe nadmierne zużycie zasobów przez dzierżawców na potrzeby dostępu do magazynu.
+- Dla maszyn wirtualnych z wieloma dyskami dołączonych danych maksymalną przepływność każdy dysk danych jest 500 IOPS dla HHDs i 2300 IOPS dla dysków SSD.
 
 Poniższa tabela zawiera listę maszyn wirtualnych, które są obsługiwane na stosie Azure wraz z ich konfiguracji:
 
@@ -61,11 +63,11 @@ Poniższa tabela zawiera listę maszyn wirtualnych, które są obsługiwane na s
 |Optymalizacja pod kątem pamięci|Seria Dv2     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Optymalizacja pod kątem pamięci|Seria DSv2-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Rozmiary maszyn wirtualnych i ich ilości zasobów są spójne stosu Azure i na platformie Azure. Ta spójności obejmuje ilość pamięci, liczby rdzeni i numer/rozmiaru dysków z danymi, które mogą zostać utworzone. Jednak wydajność ten sam rozmiar maszyny Wirtualnej Azure stosu zależy od podstawowej właściwości określonym środowisku Azure stosu.
+Rozmiary maszyn wirtualnych i ich ilości zasobów są spójne stosu Azure i na platformie Azure. Obejmuje to ilość pamięci, liczby rdzeni i numer/rozmiar dysków z danymi, które mogą zostać utworzone. Jednak wydajność maszyn wirtualnych o tym samym rozmiarze zależy od podstawowej właściwości określonym środowisku Azure stosu.
 
 ## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyny wirtualnej
 
- Stos Azure zawiera niewielki zestaw rozszerzeń. Aktualizacje i dodatkowe rozszerzenia i są dostępne za pośrednictwem portalu Marketplace zespolonego.
+ Stos Azure zawiera niewielki zestaw rozszerzeń. Aktualizacje i dodatkowe rozszerzenia są dostępne za pośrednictwem portalu Marketplace zespolonego.
 
 Użyj następującego skryptu programu PowerShell można pobrać listy rozszerzeń maszyny wirtualnej, które są dostępne w środowisku Azure stosu:
 
@@ -92,18 +94,17 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
+
 Lista obsługiwane typy zasobów i wersje interfejsu API może się różnić, jeśli operatorowi chmury aktualizacji środowiska Azure stosu do nowszej wersji.
 
 ## <a name="windows-activation"></a>Aktywacja systemu Windows
 
-Produkty Windows musi być używany zgodnie z prawami używania produktu i postanowienia licencyjne firmy Microsoft. Używa stosu Azure [automatyczna aktywacja maszyny Wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA), aby aktywować maszynach wirtualnych systemu Windows Server (VM). 
- - Ponieważ hosta Azure stosu aktywuje z klucze AVMA dla systemu Windows Server 2016, wszystkich maszyn wirtualnych który systemem Windows Server 2012 lub później są automatycznie aktywowane.
- - Maszyny wirtualne, które uruchamiania systemu Windows Server 2008 R2 nie są automatycznie aktywowane i musi zostać aktywowana przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx). 
+Produkty Windows musi być używany zgodnie z prawami używania produktu i postanowienia licencyjne firmy Microsoft. Używa stosu Azure [automatyczna aktywacja maszyny Wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA), aby aktywować maszynach wirtualnych systemu Windows Server (VM).
+
+- Host platformy Azure stosu aktywuje systemu Windows z klucze AVMA dla systemu Windows Server 2016. Wszystkie maszyny wirtualne z systemem Windows Server 2012 lub nowszym są automatycznie aktywowane.
+- Maszyny wirtualne, które uruchamiania systemu Windows Server 2008 R2 nie są automatycznie aktywowane i musi zostać aktywowana przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx).
 
 Microsoft Azure można aktywować maszyn wirtualnych systemu Windows przy użyciu aktywacji usługi KMS. Jeśli przenosisz Maszynę wirtualną z stosu Azure na platformie Azure oraz podczas potyczki aktywować problemów, zobacz [Rozwiązywanie problemów z systemu Windows Azure maszyny wirtualnej aktywacji problemów](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Dodatkowe informacje można znaleźć w folderze [błędy aktywacji Rozwiązywanie problemów z systemu Windows na maszynach wirtualnych Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) post na blogu zespołu pomocy technicznej platformy Azure.
-
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

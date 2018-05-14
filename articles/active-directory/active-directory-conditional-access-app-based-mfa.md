@@ -12,25 +12,25 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/10/2018
+ms.date: 05/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b451ede984d3baa8331ec87575557f845686c01f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: d675236f36840858f0f011484392186d355ac6df
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Szybki Start: Wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory 
 
-Aby uprościć proces logowania użytkowników, można zezwolić im na Zaloguj się do aplikacji w chmurze przy użyciu nazwy użytkownika i hasła. Jednak w wielu środowiskach jest co najmniej kilka aplikacji, dla których zaleca się wymagają silniejszego formę weryfikacji konta, takich jak uwierzytelnianie wieloskładnikowe. Może to być na przykład wartość true, dostępu do systemu poczty e-mail w organizacji lub HR aplikacji. W usłudze Azure Active Directory można wykonywać w tym celu za pomocą zasad dostępu warunkowego.    
+Aby uprościć proces logowania użytkowników, można zezwolić im na Zaloguj się do aplikacji w chmurze przy użyciu nazwy użytkownika i hasła. Jednak w wielu środowiskach jest co najmniej kilka aplikacji, dla których zaleca się wymagają silniejszego formę weryfikacji konta, takich jak uwierzytelnianie wieloskładnikowe (MFA). Może to być na przykład wartość true, dostępu do systemu poczty e-mail w organizacji lub HR aplikacji. W usłudze Azure Active Directory (Azure AD) można wykonywać w tym celu za pomocą zasad dostępu warunkowego.    
 
-Ta opcja szybkiego startu przedstawia sposób konfigurowania [zasady dostępu warunkowego usługi Azure AD](active-directory-conditional-access-azure-portal.md) Aby wymusić uwierzytelnianie wieloskładnikowe dla zestawu aplikacji w wybranej chmurze w danym środowisku.
+Ta opcja szybkiego startu przedstawia sposób konfigurowania [zasady dostępu warunkowego usługi Azure AD](active-directory-conditional-access-azure-portal.md) wymagającego uwierzytelniania wieloskładnikowego dla zestawu aplikacji w wybranej chmurze w danym środowisku.
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-Scenariusz, w tym artykule używa portalu Azure jako symbolu zastępczego dla aplikacji w chmurze, która wymaga usługi Multi-Factor authentication dla określonego użytkownika. Isabella Simonsen jest użytkownikiem w organizacji. Gdy użytkownik zaloguje się do portalu Azure, ma swoje dodatkową weryfikację swoje konto przy użyciu uwierzytelniania wieloskładnikowego.
+Scenariusz, w tym artykule używa portalu Azure jako symbolu zastępczego dla aplikacji w chmurze, która wymaga usługi MFA dla określonego użytkownika. Isabella Simonsen jest użytkownikiem w organizacji. Gdy użytkownik zaloguje się do portalu Azure, ma swoje dodatkową weryfikację swoje konto za pomocą usługi MFA.
 
 ![Uwierzytelnianie wieloskładnikowe](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
@@ -58,7 +58,7 @@ W zasadach można ustawić następujące czynności:
 |Udziel | Wymagaj uwierzytelniania wieloskładnikowego |
  
 
-![Tworzenie zasad](./media/active-directory-conditional-access-app-based-mfa/21.png)
+![Tworzenie zasad](./media/active-directory-conditional-access-app-based-mfa/31.png)
 
 
 
