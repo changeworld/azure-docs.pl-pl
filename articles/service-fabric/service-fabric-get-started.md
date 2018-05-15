@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/29/2018
+ms.date: 05/02/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 1012cdc73e721c65502d749ce27eb6e9cbda6bf4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: afccb78ab1bf632989411992df9149e7dd5542d4
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -63,10 +63,10 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Zestaw Service Fabric SDK i narzędzia w wersji 3.0.480
-* Środowisko uruchomieniowe usługi Service Fabric w wersji 6.1.480
-* Narzędzia usługi Service Fabric dla programu Visual Studio 2015 w wersji 2.0.10124.2
-* Program Visual Studio 2017 15.5.6 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio w wersji 2.0.20180124.2  
+* Zestaw Service Fabric SDK i narzędzia w wersji 3.1.269
+* Środowisko uruchomieniowe usługi Service Fabric w wersji 6.2.269
+* Service Fabric Tools for Visual Studio 2015 2.1.10410.1
+* Program Visual Studio 2017 15.5.6 obejmuje narzędzia Service Fabric Tools for Visual Studio 2.1.20180406.1  
 
 Listę obsługiwanych wersji można znaleźć na stronie [pomocy technicznej usługi Service Fabric](service-fabric-support.md)
 
@@ -91,7 +91,7 @@ Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruch
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)
 * [Automatyzowanie stosowania poprawek systemu operacyjnego w klastrze](service-fabric-patch-orchestration-application.md)
 
-[1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Strona kampanii usługi Service Fabric"
+[1]: http://azure.microsoft.com/campaigns/service-fabric/ "Strona kampanii usługi Service Fabric"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [full-bundle-vs2015]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI — link"
 [full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI — link"

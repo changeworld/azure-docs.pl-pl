@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/26/2017
+ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e91a92d34131d0b35cfb7b0bfdca99637924552
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
@@ -31,17 +31,13 @@ W kolejnych samouczkach kontener zostanie wdrożony z prywatnego rejestru do apl
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.20 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Dla tego samouczka wymagana jest lokalna instalacja interfejsu wiersza polecenia platformy Azure (w wersji 2.0.31 lub nowszej). Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
-Ten samouczek zakłada, że masz podstawową wiedzę na temat bazowych koncepcji usługi Docker, takich jak kontenery, obrazy kontenerów i podstawowe polecenia usługi Docker. W razie potrzeby zapoznaj się z tematem [Get starter with Docker (Rozpoczynanie pracy z platformą Docker)]( https://docs.docker.com/get-started/), aby uzyskać podstawowe informacje na temat kontenerów.
+Należy posiadać wiedzę na temat bazowych koncepcji usługi Docker, takich jak kontenery, obrazy kontenerów i podstawowe polecenia interfejsu wiersza polecenia usługi Docker. Aby uzyskać podstawowe informacje na temat kontenerów, zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)]( https://docs.docker.com/get-started/).
 
-Do ukończenia tego samouczka konieczne będzie środowisko programowania Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) lub [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+Do ukończenia tego samouczka potrzebna jest lokalna instalacja usługi Docker. Platforma Docker dostarcza instrukcje na temat instalacji w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) i [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 
 Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych do ukończenia każdego kroku w tym samouczku. Dlatego zalecamy użycie lokalnej instalacji interfejsu wiersza polecenia platformy Azure i środowiska deweloperskiego platformy Docker.
-
-> [!IMPORTANT]
-> Funkcja replikacji geograficznej usługi Azure Container Registry jest aktualnie dostępna w **wersji zapoznawczej**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
->
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
@@ -91,9 +87,9 @@ Po zakończeniu replikacji w portalu będzie wyświetlany stan *Gotowe* dla obu 
 
 ## <a name="container-registry-login"></a>Logowanie do rejestru Container Registry
 
-Po skonfigurowaniu replikacji geograficznej utwórz obraz kontenera i wypchnij go do rejestru. Musisz zalogować się do wystąpienia usługi ACR przed wypchnięciem do niego obrazów. W przypadku [jednostek SKU Podstawowa, Standardowa i Premium](container-registry-skus.md) możesz uwierzytelnić się za pomocą tożsamości platformy Azure.
+Po skonfigurowaniu replikacji geograficznej utwórz obraz kontenera i wypchnij go do rejestru. Musisz zalogować się do wystąpienia usługi ACR przed wypchnięciem do niego obrazów.
 
-Użyj polecenia [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login), aby przeprowadzić uwierzytelnianie i zapisać poświadczenia dla rejestru w pamięci podręcznej. Zastąp ciąg `<acrName>` nazwą rejestru utworzonego w poprzednich krokach.
+Użyj polecenia [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login), aby przeprowadzić uwierzytelnianie i zapisać poświadczenia dla rejestru w pamięci podręcznej. Zastąp ciąg `<acrName>` nazwą rejestru utworzonego wcześniej.
 
 ```azurecli
 az acr login --name <acrName>
@@ -103,7 +99,7 @@ Polecenie zwraca ciąg `Login Succeeded` po zakończeniu.
 
 ## <a name="get-application-code"></a>Pobieranie kodu aplikacji
 
-Przykład podany w tym samouczku obejmuje małą aplikację internetową utworzoną za pomocą platformy [ASP.NET Core](http://dot.net). Aplikacja udostępnia stronę HTML wyświetlającą region, z którego obraz został wdrożony przez usługę Azure Container Registry.
+Przykład podany w tym samouczku obejmuje małą aplikację internetową utworzoną za pomocą platformy [ASP.NET Core][aspnet-core]. Aplikacja udostępnia stronę HTML wyświetlającą region, z którego obraz został wdrożony przez usługę Azure Container Registry.
 
 ![Samouczek aplikacji wyświetlony w przeglądarce][tut-app-01]
 
@@ -114,11 +110,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
+Jeśli nie masz zainstalowanego narzędzia `git`, możesz [pobrać archiwum ZIP][acr-helloworld-zip] bezpośrednio z usługi GitHub.
+
 ## <a name="update-dockerfile"></a>Aktualizacja pliku Dockerfile
 
-Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się ono od oficjalnego obrazu [aspnetcore](https://store.docker.com/community/images/microsoft/aspnetcore), następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build](https://store.docker.com/community/images/microsoft/aspnetcore-build) i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
+Plik Dockerfile dołączony do przykładu przedstawia sposób tworzenia kontenera. Rozpoczyna się od oficjalnego obrazu [aspnetcore][dockerhub-aspnetcore], następnie pliki aplikacji są kopiowane do kontenera, instalowane są zależności, dane wyjściowe są kompilowane za pomocą oficjalnego obrazu [aspnetcore-build][dockerhub-aspnetcore-build] i w końcu jest kompilowany zoptymalizowany obraz aspnetcore.
 
-Plik Dockerfile znajduje się w lokalizacji `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
+Plik [Dockerfile][dockerfile] znajduje się w lokalizacji `./AcrHelloworld/Dockerfile` w sklonowanym źródle.
 
 ```dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -146,9 +144,9 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 ```
 
-Aplikacja w obrazie *acr-helloworld* próbuje określić region, z którego wdrożono jej kontener, odpytując usługę DNS o informacje dotyczące serwera logowania rejestru. Musisz określić adres URL serwera logowania rejestru za pomocą zmiennej środowiskowej `DOCKER_REGISTRY` w pliku Dockerfile.
+Aplikacja w obrazie *acr-helloworld* próbuje określić region, z którego wdrożono jej kontener, odpytując usługę DNS o informacje dotyczące serwera logowania rejestru. Musisz określić w pełni kwalifikowaną nazwę domeny (FQDN, fully qualified domain name) serwera logowania rejestru za pomocą zmiennej środowiskowej `DOCKER_REGISTRY` w pliku Dockerfile.
 
-Najpierw pobierz adres URL serwera logowania rejestru za pomocą polecenia `az acr show`. Zastąp ciąg `<acrName>` nazwą rejestru utworzonego w poprzednich krokach.
+Najpierw pobierz serwer logowania rejestru za pomocą polecenia `az acr show`. Zastąp ciąg `<acrName>` nazwą rejestru utworzonego w poprzednich krokach.
 
 ```azurecli
 az acr show --name <acrName> --query "{acrLoginServer:loginServer}" --output table
@@ -162,7 +160,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-Następnie zaktualizuj wiersz `DOCKER_REGISTRY` przy użyciu adresu URL serwera logowania rejestru. W tym przykładzie aktualizujemy wiersz, aby odzwierciedlić nazwę przykładowego rejestru — *uniqueregistryname*:
+Następnie zaktualizuj wiersz `ENV DOCKER_REGISTRY` przy użyciu nazwy FQDN serwera logowania rejestru. W tym przykładzie użyto przykładowej nazwy rejestru *uniqueregistryname*:
 
 ```dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -170,7 +168,7 @@ ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
 
 ## <a name="build-container-image"></a>Tworzenie obrazu kontenera
 
-Po zaktualizowaniu pliku Dockerfile za pomocą adresu URL rejestru możesz użyć polecenia `docker build` do utworzenia obrazu kontenera. Uruchom następujące polecenie, aby utworzyć obraz i oznaczyć go za pomocą adresu URL prywatnego rejestru, ponownie zastępując ciąg `<acrName>` nazwą rejestru:
+Po zaktualizowaniu pliku Dockerfile za pomocą nazwy FQDN serwera logowania rejestru możesz użyć polecenia `docker build` do utworzenia obrazu kontenera. Uruchom następujące polecenie, aby utworzyć obraz i oznaczyć go za pomocą adresu URL prywatnego rejestru, ponownie zastępując ciąg `<acrName>` nazwą rejestru:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -183,7 +181,9 @@ Sending build context to Docker daemon  523.8kB
 Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
 2.0: Pulling from microsoft/aspnetcore
 3e17c6eae66c: Pulling fs layer
-...
+
+[...]
+
 Step 18/18 : ENTRYPOINT dotnet AcrHelloworld.dll
  ---> Running in 6906d98c47a1
  ---> c9ca1763cfb1
@@ -192,23 +192,18 @@ Successfully built c9ca1763cfb1
 Successfully tagged uniqueregistryname.azurecr.io/acr-helloworld:v1
 ```
 
-Użyj polecenia `docker images`, aby wyświetlić utworzony obraz:
+Użyj polecenia `docker images`, aby wyświetlić kompilację i oznakowany obraz:
 
-```bash
-docker images
-```
-
-Dane wyjściowe:
-
-```bash
+```console
+$ docker images
 REPOSITORY                                      TAG    IMAGE ID        CREATED               SIZE
 uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a minute ago    284MB
-...
+[...]
 ```
 
 ## <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Na koniec użyj polecenia `docker push`, aby wypchnąć obraz *acr-helloworld* do rejestru. Zastąp ciąg `<acrName>` nazwą rejestru.
+Następnie użyj polecenia `docker push`, aby wypchnąć obraz *acr-helloworld* do rejestru. Zastąp ciąg `<acrName>` nazwą rejestru.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -216,9 +211,8 @@ docker push <acrName>.azurecr.io/acr-helloworld:v1
 
 Ponieważ rejestr skonfigurowano pod kątem replikacji geograficznej, obraz jest automatycznie replikowany do regionów *Zachodnie stany USA* i *Wschodnie stany USA* po użyciu pojedynczego polecenia `docker push`.
 
-Dane wyjściowe:
-
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 cd54739c444b: Pushed
 d6803756744a: Pushed
@@ -232,15 +226,9 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego samouczka utworzono prywatny, replikowany geograficznie rejestr kontenerów, utworzono obraz kontenera, a następnie wypchnięto obraz do rejestru. Wykonując kroki opisane w tym samouczku:
+W ramach tego samouczka utworzono prywatny, replikowany geograficznie rejestr kontenerów, utworzono obraz kontenera, a następnie wypchnięto obraz do rejestru.
 
-> [!div class="checklist"]
-> * Utworzono rejestr kontenerów platformy Azure z replikacją geograficzną
-> * Sklonowano kod źródłowy aplikacji z usługi GitHub
-> * Utworzono obraz kontenera Docker na podstawie źródła aplikacji
-> * Wypchnięto obraz kontenera do rejestru
-
-Przejdź do następnego samouczka, aby poznać proces wdrażania kontenera do wielu wystąpień funkcji Web Apps for Containers za pomocą replikacji geograficznej w celu udostępniania obrazów lokalnie.
+Przejdź do następnego samouczka, aby wdrożyć kontener do wielu wystąpień funkcji Web Apps for Containers za pomocą replikacji geograficznej w celu udostępniania obrazów lokalnie.
 
 > [!div class="nextstepaction"]
 > [Deploy web app from Azure Container Registry (Wdrażanie aplikacji internetowej z usługi Azure Container Registry)](container-registry-tutorial-deploy-app.md)
@@ -253,3 +241,10 @@ Przejdź do następnego samouczka, aby poznać proces wdrażania kontenera do wi
 [tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
 [tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
 [tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
+
+<!-- LINKS - External -->
+[acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
+[aspnet-core]: http://dot.net
+[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
+[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
+[dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

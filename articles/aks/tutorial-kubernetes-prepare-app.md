@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8a2c2e53ed04cf00cc02135c5e5f82ded18fc2bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 87f407aba40d4896ed8fb61b5528ed624afb80cb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-prepare-application-for-azure-container-service-aks"></a>Samouczek: przygotowywanie aplikacji dla usługi Azure Container Service (AKS)
+# <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji dla usługi Azure Kubernetes Service (AKS)
 
-Ten samouczek, część 1 z 8, obejmuje przygotowanie aplikacji z wieloma kontenerami do użycia w usłudze Kubernetes. Wykonano następujące czynności:  
+Ten samouczek, część 1 z 8, obejmuje przygotowanie aplikacji z wieloma kontenerami do użycia w usłudze Kubernetes. Wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Klonowanie źródła aplikacji z usługi GitHub  
+> * Klonowanie źródła aplikacji z usługi GitHub
 > * Tworzenie obrazu kontenera ze źródła aplikacji
 > * Testowanie aplikacji w lokalnym środowisku usługi Docker
 
@@ -32,7 +32,7 @@ W kolejnych samouczkach obraz kontenera zostanie przekazany do usługi Azure Con
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten samouczek zakłada, że masz podstawową wiedzę na temat bazowych koncepcji usługi Docker, takich jak kontenery, obrazy kontenerów i podstawowe polecenia usługi Docker. W razie potrzeby zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)][docker-get-started], aby uzyskać podstawowe informacje na temat kontenerów. 
+Ten samouczek zakłada, że masz podstawową wiedzę na temat bazowych koncepcji usługi Docker, takich jak kontenery, obrazy kontenerów i podstawowe polecenia usługi Docker. W razie potrzeby zapoznaj się z tematem [Get started with Docker (Rozpoczynanie pracy z platformą Docker)][docker-get-started], aby uzyskać podstawowe informacje na temat kontenerów.
 
 Do ukończenia tego samouczka konieczne będzie środowisko programowania Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows] lub [Linux][docker-for-linux].
 
@@ -40,7 +40,7 @@ Usługa Azure Cloud Shell nie zawiera składników platformy Docker wymaganych d
 
 ## <a name="get-application-code"></a>Pobieranie kodu aplikacji
 
-W tym samouczku jest używana przykładowa prosta aplikacja do głosowania. Ta aplikacja składa się ze składnika internetowego frontonu oraz działającego na zapleczu wystąpienia usługi Redis. Składnik internetowy znajduje się w pakiecie niestandardowego obrazu kontenera. Wystąpienie usługi Redis używa niezmodyfikowanego obrazu z usługi Docker Hub.  
+W tym samouczku jest używana przykładowa prosta aplikacja do głosowania. Ta aplikacja składa się ze składnika internetowego frontonu oraz działającego na zapleczu wystąpienia usługi Redis. Składnik internetowy znajduje się w pakiecie niestandardowego obrazu kontenera. Wystąpienie usługi Redis używa niezmodyfikowanego obrazu z usługi Docker Hub.
 
 Użyj narzędzia git, aby pobrać kopię tej aplikacji do swojego środowiska projektowego.
 
@@ -54,7 +54,7 @@ Zmień katalogi, aby pracować w sklonowanym katalogu.
 cd azure-voting-app-redis
 ```
 
-W tym katalogu znajduje się kod źródłowy aplikacji, wstępnie utworzony plik redagowania usługi Docker i plik manifestu usługi Kubernetes. Te pliki są używane w całym zestawie samouczków. 
+W tym katalogu znajduje się kod źródłowy aplikacji, wstępnie utworzony plik redagowania usługi Docker i plik manifestu usługi Kubernetes. Te pliki są używane w całym zestawie samouczków.
 
 ## <a name="create-container-images"></a>Tworzenie obrazów kontenerów
 
@@ -97,7 +97,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Przejdź do adresu http://localhost:8080, aby wyświetlić uruchomioną aplikację.
+Przejdź na adres http://localhost:8080, aby zobaczyć działającą aplikację.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
@@ -124,7 +124,7 @@ Po zakończeniu będzie dostępny obraz kontenera zawierający aplikację Azure 
 W tym samouczku przetestowano aplikację i obrazy kontenera utworzone dla aplikacji. Wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Klonowanie źródła aplikacji z usługi GitHub  
+> * Klonowanie źródła aplikacji z usługi GitHub
 > * Tworzenie obrazu kontenera ze źródła aplikacji
 > * Testowanie aplikacji w lokalnym środowisku usługi Docker
 

@@ -1,12 +1,12 @@
 ---
-title: "Przewodnik po rozwiązaniu do konserwacji predykcyjnej — Azure | Microsoft Docs"
-description: "Przewodnik po wstępnie skonfigurowanym rozwiązaniu Azure IoT do konserwacji predykcyjnej."
-services: 
+title: Przewodnik po akceleratorze rozwiązania do konserwacji predykcyjnej — Azure | Microsoft Docs
+description: Przewodnik po akceleratorze rozwiązania Azure IoT do konserwacji predykcyjnej.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c48a716-b805-4c99-8177-414cc4bec3de
 ms.service: iot-suite
 ms.devlang: na
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: e9e0024c645d0e04e7cf9b17e440d7d8c10af232
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 397ac3c8b9caa5c392aff4683df2db3b2144899b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>Przewodnik po wstępnie skonfigurowanym rozwiązaniu konserwacji predykcyjnej
+# <a name="predictive-maintenance-solution-accelerator-walkthrough"></a>Przewodnik po akceleratorze rozwiązania do konserwacji predykcyjnej
 
-Wstępnie skonfigurowane, kompleksowe rozwiązanie konserwacji predykcyjnej, dotyczy scenariusza biznesowego, w którym przewidywany jest moment prawdopodobnego wystąpienia awarii. To wstępnie skonfigurowane rozwiązanie można aktywnie wykorzystać w celu zoptymalizowania konserwacji. Rozwiązanie łączy kluczowe usługi Pakietu IoT Azure, takie jak usługa IoT Hub, analiza strumienia oraz obszar roboczy usługi [Azure Machine Learning][lnk-machine-learning]. Ten obszar roboczy zawiera model oparty na publicznym zestawie przykładowych danych, które umożliwiają prognozowanie pozostałego czasu eksploatacji (RUL, Remaining Useful Life) silnika samolotu. Ponadto w rozwiązaniu w pełni zaimplementowano scenariusz biznesowy IoT jako punkt wyjściowy planowania i wdrażania rozwiązania zgodnego z potrzebami firmy.
+Akcelerator rozwiązania do konserwacji predykcyjnej to kompleksowe rozwiązanie dotyczące scenariusza biznesowego, w którym przewidywany jest moment prawdopodobnego wystąpienia awarii. Ten akcelerator rozwiązania można aktywnie wykorzystać w celu zoptymalizowania konserwacji. To rozwiązanie łączy kluczowe usługi akceleratorów rozwiązań Azure IoT, takie jak usługa IoT Hub, analiza strumienia oraz obszar roboczy usługi [Azure Machine Learning][lnk-machine-learning]. Ten obszar roboczy zawiera model oparty na publicznym zestawie przykładowych danych, które umożliwiają prognozowanie pozostałego czasu eksploatacji (RUL, Remaining Useful Life) silnika samolotu. Ponadto w rozwiązaniu w pełni zaimplementowano scenariusz biznesowy IoT jako punkt wyjściowy planowania i wdrażania rozwiązania zgodnego z potrzebami firmy.
 
 ## <a name="logical-architecture"></a>Architektura logiczna
 
-Poniższy diagram przedstawia składniki logiczne wstępnie skonfigurowanego rozwiązania:
+Na poniższym diagramie przedstawiono składniki logiczne tego akceleratora rozwiązania:
 
 ![][img-architecture]
 
-Niebieskie elementy oznaczają usługi platformy Azure zaprowizowane w regionie, w którym wdrożono wstępnie skonfigurowane rozwiązanie. Lista regionów, w których można wdrożyć wstępnie skonfigurowane rozwiązanie, znajduje się na [stronie aprowizacji][lnk-azureiotsuite].
+Niebieskie elementy oznaczają usługi platformy Azure zaprowizowane w regionie, w którym wdrożono akcelerator rozwiązania. Lista regionów, w których można wdrożyć akcelerator rozwiązania, znajduje się na [stronie aprowizacji][lnk-azureiotsuite].
 
 Zielony element oznacza symulowane urządzenie, które odpowiada silnikowi samolotu. Więcej informacji na temat tych symulowanych urządzeń można znaleźć w sekcji [Symulowane urządzenia](#simulated-devices).
 
-Szare elementy oznaczają składniki z zaimplementowanymi funkcjami *zarządzania urządzeniami*. Bieżąca wersja wstępnie skonfigurowanego rozwiązania konserwacji predykcyjnej nie umożliwia aprowizowania tych zasobów. Aby dowiedzieć się więcej o zarządzaniu urządzeniami, zapoznaj się z [wstępnie skonfigurowanym rozwiązaniem monitorowania zdalnego][lnk-remote-monitoring].
+Szare elementy oznaczają składniki z zaimplementowanymi funkcjami *zarządzania urządzeniami*. Bieżąca wersja akceleratora rozwiązania do konserwacji predykcyjnej nie umożliwia aprowizowania tych zasobów. Aby dowiedzieć się więcej o zarządzaniu urządzeniami, zapoznaj się z [wstępnie skonfigurowanym rozwiązaniem monitorowania zdalnego][lnk-remote-monitoring].
 
 ## <a name="simulated-devices"></a>Symulowane urządzenia
 
-W tym wstępnie skonfigurowanym rozwiązaniu symulowane urządzenie odpowiada silnikowi samolotu. W ramach rozwiązania są aprowizowane dwa silniki (dla jednego samolotu). Każdy silnik emituje cztery rodzaje danych telemetrycznych: z czujnika 9, czujnika 11, czujnika 14 i czujnika 15. Czujniki dostarczają dane wymagane przez model usługi Machine Learning do obliczenia pozostałego czasu eksploatacji silnika. Poszczególne symulowane urządzenia wysyłają następujące komunikaty telemetryczne do usługi IoT Hub:
+W tym akceleratorze rozwiązania symulowane urządzenie odpowiada silnikowi samolotu. W ramach rozwiązania są aprowizowane dwa silniki (dla jednego samolotu). Każdy silnik emituje cztery rodzaje danych telemetrycznych: z czujnika 9, czujnika 11, czujnika 14 i czujnika 15. Czujniki dostarczają dane wymagane przez model usługi Machine Learning do obliczenia pozostałego czasu eksploatacji silnika. Poszczególne symulowane urządzenia wysyłają następujące komunikaty telemetryczne do usługi IoT Hub:
 
 *Liczba cykli*. Cykl reprezentuje ukończony lot o długości od 2 do 10 godzin. Podczas lotu dane telemetryczne są przechwytywane co pół godziny.
 
-*Dane telemetryczne*. Są cztery czujniki, które reprezentują parametry silnika. Czujniki te mają ogólne etykiety: czujnik 9, czujnik 11, czujnik 14 i czujnik 15. Te 4 czujniki reprezentują dane telemetryczne, które są wystarczające do uzyskania przydatnych wyników z modelu pozostałego czasu eksploatacji silnika. Model wykorzystywany we wstępnie skonfigurowanym zadaniu został utworzony na podstawie publicznego zestawu danych zawierającego dane z czujników w rzeczywistych silnikach. Aby uzyskać więcej informacji dotyczących tworzenia modelu na podstawie oryginalnego zestawu danych, zobacz [szablon konserwacji predykcyjnej w witrynie Cortana Intelligence Gallery][lnk-cortana-analytics].
+*Dane telemetryczne*. Są cztery czujniki, które reprezentują parametry silnika. Czujniki te mają ogólne etykiety: czujnik 9, czujnik 11, czujnik 14 i czujnik 15. Te 4 czujniki reprezentują dane telemetryczne, które są wystarczające do uzyskania przydatnych wyników z modelu pozostałego czasu eksploatacji silnika. Model wykorzystywany w tym akceleratorze rozwiązania został utworzony na podstawie publicznego zestawu danych zawierającego dane z czujników w rzeczywistych silnikach. Aby uzyskać więcej informacji dotyczących tworzenia modelu na podstawie oryginalnego zestawu danych, zobacz [szablon konserwacji predykcyjnej w witrynie Cortana Intelligence Gallery][lnk-cortana-analytics].
 
 Symulowane urządzenia obsługują w rozwiązaniu następujące polecenia wysyłane z centrum IoT:
 
@@ -69,11 +69,11 @@ Składnik Machine Learning wykorzystuje model opracowany na podstawie danych zeb
 
 
 ## <a name="next-steps"></a>Następne kroki
-Po zapoznaniu się ze składnikami wstępnie skonfigurowanego rozwiązania do konserwacji zapobiegawczej możesz je dostosować. Zobacz [Przewodnik dostosowywania wstępnie skonfigurowanych rozwiązań][lnk-customize].
+Po zapoznaniu się z kluczowymi składnikami akceleratora rozwiązania do konserwacji predykcyjnej możesz je dostosować. Zobacz [Przewodnik dostosowywania akceleratorów rozwiązań][lnk-customize].
 
-Możesz także wypróbować niektóre inne funkcje i możliwości wstępnie skonfigurowanych rozwiązań Pakietu IoT:
+Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
 
-* [Często zadawane pytania dotyczące Pakietu IoT][lnk-faq]
+* [Często zadawane pytania dotyczące akceleratorów rozwiązań IoT][lnk-faq]
 * [Zabezpieczenia IoT od podstaw][lnk-security-groundup]
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png

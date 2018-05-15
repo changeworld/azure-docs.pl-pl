@@ -1,12 +1,12 @@
 ---
-title: "Przewodnik po rozwiązaniu połączonej fabryki — Azure | Microsoft Docs"
-description: "Opis wstępnie skonfigurowanego rozwiązania połączonej fabryki usługi Azure IoT oraz jej architektury."
-services: 
+title: Przewodnik po rozwiązaniu połączonej fabryki — Azure | Microsoft Docs
+description: Opis akceleratora rozwiązania Azure IoT połączonej fabryki oraz jego architektury.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65eb24cf5f995570b7b1752fc850b596209ea59a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connected-factory-preconfigured-solution-walkthrough"></a>Przewodnik po wstępnie skonfigurowanym rozwiązaniu połączonej fabryki
+# <a name="connected-factory-solution-accelerator-walkthrough"></a>Przewodnik po akceleratorze rozwiązania połączonej fabryki
 
-[Wstępnie skonfigurowane rozwiązanie][lnk-preconfigured-solutions] połączonej fabryki pakietu IoT to implementacja kompleksowego rozwiązania przemysłowego, które:
+[Akcelerator rozwiązania][lnk-preconfigured-solutions] połączonej fabryki to implementacja kompleksowego rozwiązania przemysłowego, które:
 
-* Łączy się zarówno z symulowanymi urządzeniami przemysłowymi, na których działają serwery OPC UA na liniach produkcyjnych symulowanej fabryki, jak i z rzeczywistymi urządzeniami serwerów OPC UA. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
+* Łączy się zarówno z symulowanymi urządzeniami przemysłowymi, na których działają serwery OPC UA na liniach produkcyjnych symulowanej fabryki, jak i z rzeczywistymi urządzeniami serwerów OPC UA. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
 * Pokazuje operacyjne kluczowe wskaźniki wydajności oraz ogólną wydajność sprzętu dla tych urządzeń i linii produkcyjnych.
 * Demonstruje, jak aplikacja w chmurze może zostać użyta na potrzeby interakcji z systemami serwerów OPC UA.
 * Umożliwia połączenie własnych urządzeń serwerów OPC UA.
@@ -40,11 +40,11 @@ Ten artykuł przeprowadzi Cię przez niektóre kluczowe elementy rozwiązania po
 * Planowanie sposobu dostosowywania rozwiązania, aby spełniało Twoje wymagania.
 * Projektowanie własnego rozwiązania IoT korzystającego z usług Azure.
 
-Aby uzyskać więcej informacji, zobacz [Connected factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
+Aby uzyskać więcej informacji, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Architektura logiczna
 
-Poniższy diagram przedstawia składniki logiczne wstępnie skonfigurowanego rozwiązania:
+Na poniższym diagramie przedstawiono składniki logiczne tego akceleratora rozwiązania:
 
 ![Architektura logiczna połączonej fabryki][connected-factory-logical]
 
@@ -122,7 +122,7 @@ Usługa IoT Hub w rozwiązaniu wykonuje ponadto następujące czynności:
 To rozwiązanie używa usługi Azure Blob Storage jako magazynu dysków dla maszyny wirtualnej i do przechowywania danych wdrożenia.
 
 ## <a name="web-app"></a>Aplikacja internetowa
-Aplikacja internetowa wdrożona w ramach wstępnie skonfigurowanego rozwiązania obejmuje zintegrowanego klienta OPC UA, przetwarzanie alertów i wizualizację danych telemetrycznych.
+Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zintegrowanego klienta OPC UA, przetwarzanie alertów i wizualizację danych telemetrycznych.
 
 ## <a name="telemetry-data-flow"></a>Przepływ danych telemetrycznych
 
@@ -162,7 +162,7 @@ Aplikacja internetowa wdrożona w ramach wstępnie skonfigurowanego rozwiązania
 
 9. Dane magazynowane w usłudze TSI.
 
-10. Połączona fabryka aplikacji internetowych w zapytaniach usługi Azure AppService wymaga danych z usługi TSI.
+10. Aplikacja internetowa połączonej fabryki w zapytaniach usługi Azure AppService wymaga danych z usługi TSI.
     - Używa komunikacji zabezpieczonej protokołem TCP/TLS.
     - Ten krok jest wewnętrzny dla centrum danych.
 
@@ -217,7 +217,7 @@ Aplikacja internetowa wdrożona w ramach wstępnie skonfigurowanego rozwiązania
     - Serwer proxy OPC wysyła dane jako wartość zwracaną metody urządzenia do usługi IoT Hub i serwera proxy OPC (składnik klienta).
     - Te dane są dostarczane do stosu OPC UA w aplikacji połączonej fabryki.
 
-11. Internetowa aplikacja połączonej fabryki zwraca UX przeglądarki OPC, wzbogacone o informacje specyficzne dla OPC UA otrzymane z serwera OPC UA, do przeglądarki internetowej w celu renderowania.
+11. Internetowa aplikacja połączonej fabryki zwraca UX przeglądarki OPC wzbogacone o informacje specyficzne dla OPC UA otrzymane z serwera OPC UA, do przeglądarki internetowej w celu renderowania.
     - Podczas przeglądania przestrzeni adresowej OPC i stosowania funkcji do węzłów w przestrzeni adresowej OPC część klienta UX przeglądarki OPC używa wywołań AJAX za pośrednictwem protokołu HTTPS chronionych przez tokeny zabezpieczające przed fałszerstwem w celu pobrania danych z internetowej aplikacji połączonej fabryki.
     - W razie potrzeby klient używa komunikacji objaśnionej w krokach od 4 do 10 w celu wymiany informacji z serwerem OPC UA.
 
@@ -229,15 +229,15 @@ Aplikacja internetowa wdrożona w ramach wstępnie skonfigurowanego rozwiązania
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz kontynuować poznawanie Pakietu IoT, czytając następujące artykuły:
+Możesz kontynuować poznawanie akceleratorów rozwiązań IoT, czytając następujące artykuły:
 
 * [Uprawnienia w witrynie azureiotsuite.com][lnk-permissions]
-* [Deploy a gateway on Windows or Linux for the connected factory preconfigured solution (Wdrażanie bramy w systemie Windows lub Linux na potrzeby wstępnie skonfigurowanego rozwiązania połączonej fabryki)](iot-suite-connected-factory-gateway-deployment.md)
+* [Deploy a gateway on Windows or Linux for the Connected Factory solution accelerator (Wdrażanie bramy w systemie Windows lub Linux na potrzeby akceleratora rozwiązania połączonej fabryki)](iot-suite-connected-factory-gateway-deployment.md)
 * [OPC Publisher reference implementation (Implementacja referencyjna wydawcy OPC)](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

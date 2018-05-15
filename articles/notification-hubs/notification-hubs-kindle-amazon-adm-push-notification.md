@@ -1,36 +1,46 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Notification Hubs dla aplikacji dla urządzeń Kindle | Microsoft Docs"
-description: "Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia wypychane do aplikacji dla urządzeń Kindle przy użyciu usługi Azure Notification Hubs."
+title: Wysyłanie zlokalizowanych powiadomień do aplikacji dla urządzeń Kindle przy użyciu usługi Azure Notification Hubs | Microsoft Docs
+description: Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia wypychane do aplikacji dla urządzeń Kindle przy użyciu usługi Azure Notification Hubs.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 346fc8e5-294b-4e4f-9f27-7a82d9626e93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-kindle
 ms.devlang: Java
-ms.topic: hero-article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: af2619a403046bd4f064b958df225e4d42a205f4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Rozpoczynanie pracy z usługą Notification Hubs dla aplikacji dla urządzeń Kindle
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## <a name="overview"></a>Omówienie
-Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia wypychane do aplikacji dla urządzeń Kindle przy użyciu usługi Azure Notification Hubs.
-Utworzysz pustą aplikację dla urządzeń Kindle służącą do odbierania powiadomień wypychanych przy użyciu usługi Amazon Device Messaging (ADM).
+Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia wypychane do aplikacji dla urządzeń Kindle przy użyciu usługi Azure Notification Hubs. Utworzysz pustą aplikację dla urządzeń Kindle służącą do odbierania powiadomień push przy użyciu usługi Amazon Device Messaging (ADM).
+
+W tym samouczku utworzysz/zaktualizujesz kod, aby wykonać następujące zadania: 
+
+> [!div class="checklist"]
+> * Dodawanie nowej aplikacji do portalu dla deweloperów
+> * Tworzenie klucza interfejsu API
+> * Dodawanie poświadczeń do centrum
+> * Konfigurowanie aplikacji
+> * Tworzenie programu obsługi usługi ADM
+> * Dodawanie klucza interfejsu API do aplikacji
+> * Uruchamianie aplikacji
+> * Wysyłanie powiadomienia testowego 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Dla tego samouczka wymagane są następujące elementy:
 
-* Pobierz zestaw SDK systemu Android (założono, że używane jest środowisko Eclipse) z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">witryny systemu Android</a>.
+* Pobierz zestaw Android SDK (założono, że używane jest środowisko Eclipse) z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">witryny systemu Android</a>.
 * Postępuj zgodnie z instrukcjami w temacie <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Setting Up Your Development Environment</a> (Konfigurowanie środowiska projektowego), aby skonfigurować środowisko projektowe dla urządzeń Kindle.
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>Dodawanie nowej aplikacji do portalu dla deweloperów
@@ -68,8 +78,6 @@ W portalu dodaj klucz tajny klienta i identyfikator klienta na karcie **Konfigur
 ## <a name="set-up-your-application"></a>Konfigurowanie aplikacji
 > [!NOTE]
 > Podczas tworzenia aplikacji użyj co najmniej poziomu 17 interfejsu API.
-> 
-> 
 
 Dodaj biblioteki usługi ADM do projektu Eclipse:
 
@@ -82,10 +90,13 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
 
 1. Dodaj przestrzeń nazw Amazon do głównego elementu manifestu:
 
+    ```xml
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
+    ```
 
 1. Dodaj uprawnienia jako pierwszy element w elemencie manifestu. Zastąp wartość **[YOUR PACKAGE NAME]** nazwą pakietu użytego do utworzenia aplikacji.
    
+    ```xml
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
          android:protectionLevel="signature" />
@@ -100,8 +111,10 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
    
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
+    ```
 2. Wstaw następujący element jako pierwszy element podrzędny elementu aplikacji. Pamiętaj, aby zastąpić wartość **[YOUR SERVICE NAME]** nazwą programu obsługi komunikatów ADM tworzonego w następnej sekcji (w tym pakietu) oraz wartość **[YOUR PACKAGE NAME]** nazwą pakietu, którego użyto do utworzenia aplikacji.
    
+    ```xml
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
                      android:required="true"/>
@@ -124,6 +137,7 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
           <category android:name="[YOUR PACKAGE NAME]" />
             </intent-filter>
         </receiver>
+    ```
 
 ## <a name="create-your-adm-message-handler"></a>Tworzenie programu obsługi usługi ADM
 1. Utwórz nową klasę dziedziczącą z klasy `com.amazon.device.messaging.ADMMessageHandlerBase` i nadaj jej nazwę `MyADMMessageHandler`, jak przedstawiono na następującej ilustracji:
@@ -131,6 +145,7 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
     ![][6]
 2. Dodaj następujące instrukcje `import`:
    
+    ```java
         import android.app.NotificationManager;
         import android.app.PendingIntent;
         import android.content.Context;
@@ -138,8 +153,10 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
         import android.support.v4.app.NotificationCompat;
         import com.amazon.device.messaging.ADMMessageReceiver;
         import com.microsoft.windowsazure.messaging.NotificationHub
+    ```
 3. Dodaj następujący kod w utworzonej klasie. Pamiętaj, aby zastąpić nazwę centrum i parametry połączenia (nasłuchiwanie):
    
+    ```java
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
@@ -184,29 +201,39 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
              mBuilder.setContentIntent(contentIntent);
              mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         }
+    ```
 4. Dodaj następujący kod do metody `OnMessage()`:
    
+    ```java
         String nhMessage = intent.getExtras().getString("msg");
         sendNotification(nhMessage);
+    ```
 5. Dodaj następujący kod do metody `OnRegistered`:
    
-            try {
-        getNotificationHub(getApplicationContext()).register(registrationId);
-            } catch (Exception e) {
-        Log.e("[your package name]", "Fail onRegister: " + e.getMessage(), e);
-            }
+    ```java
+        try {
+            getNotificationHub(getApplicationContext()).register(registrationId);
+        } catch (Exception e) {
+            Log.e("[your package name]", "Fail onRegister: " + e.getMessage(), e);
+        }
+    ```
 6. Dodaj następujący kod do metody `OnUnregistered`:
    
+    ```java
          try {
              getNotificationHub(getApplicationContext()).unregister();
          } catch (Exception e) {
              Log.e("[your package name]", "Fail onUnregister: " + e.getMessage(), e);
          }
+    ```
 7. W metodzie `MainActivity` dodaj następującą instrukcję import:
    
+    ```java
         import com.amazon.device.messaging.ADM;
+    ```
 8. Dodaj następujący kod na końcu metody `OnCreate`:
    
+    ```java
         final ADM adm = new ADM(this);
         if (adm.getRegistrationId() == null)
         {
@@ -224,7 +251,8 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
                  }
                }.execute(null, null, null);
         }
-
+    ```
+    
 ## <a name="add-your-api-key-to-your-app"></a>Dodawanie klucza interfejsu API do aplikacji
 1. W programie Eclipse utwórz nowy plik o nazwie **api_key.txt** w katalogu zasobów projektu.
 2. Otwórz plik i skopiuj klucz interfejsu API wygenerowany w portalu dla deweloperów firmy Amazon.
@@ -237,21 +265,31 @@ Edytuj manifest aplikacji w celu zapewnienia obsługi usługi ADM:
 > [!NOTE]
 > W przypadku wystąpienia problemu sprawdź czas emulatora (lub urządzenia). Wartość czasu musi być dokładna. Aby zmienić czas emulatora urządzenia Kindle, możesz uruchomić następujące polecenie w katalogu narzędzi platformy zestawu SDK dla systemu Android:
 > 
-> 
 
-        adb shell  date -s "yyyymmdd.hhmmss"
+```
+adb shell  date -s "yyyymmdd.hhmmss"
+```
 
-## <a name="send-a-message"></a>Wysyłanie komunikatu
+## <a name="send-a-notification-message"></a>Wysyłanie komunikatu powiadomienia
+
 Aby wysłać komunikat przy użyciu programu .NET:
 
-        static void Main(string[] args)
-        {
-            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("[conn string]", "[hub name]");
+```csharp
+static void Main(string[] args)
+{
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("[conn string]", "[hub name]");
 
-            hub.SendAdmNativeNotificationAsync("{\"data\":{\"msg\" : \"Hello from .NET!\"}}").Wait();
-        }
+    hub.SendAdmNativeNotificationAsync("{\"data\":{\"msg\" : \"Hello from .NET!\"}}").Wait();
+}
+```
 
 ![][7]
+
+## <a name="next-steps"></a>Następne kroki
+W tym samouczku wysłano rozgłaszane powiadomienia do wszystkich urządzeń Kindle zarejestrowanych w zapleczu. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń Kindle, przejdź do następującego samouczka. Następujący samouczek przedstawia sposób wypychania powiadomień do konkretnych urządzeń z systemem Android, ale możesz użyć tej samej logiki do wypychania powiadomień do konkretnych urządzeń Kindle. 
+
+> [!div class="nextstepaction"]
+>[Wysyłanie powiadomień push do konkretnych urządzeń](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- URLs. -->
 [portalu dla deweloperów firmy Amazon]: https://developer.amazon.com/home.html

@@ -11,26 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6be6bb3b6b75b278a7c28307d93d6273c5bb18d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Wprowadzenie do środowisk App Service Environment #
  
 ## <a name="overview"></a>Omówienie ##
 
-Azure App Service Environment to funkcja usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali. Umożliwia ona hostowanie aplikacji internetowych, [aplikacji mobilnych][mobileapps], aplikacji interfejsu API oraz [funkcji][Functions].
+Azure App Service Environment to funkcja usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji usługi App Service w dużej skali. Ta funkcja umożliwia hostowanie:
+
+* Aplikacji internetowych systemu Windows
+* Aplikacji internetowych systemu Linux (w wersji zapoznawczej)
+* Kontenerów platformy Docker (w wersji zapoznawczej)
+* Aplikacji mobilnych
+* Funkcje
 
 Środowiska App Service Environment (ASE) są odpowiednie dla obciążeń aplikacji o następujących wymaganiach:
 
-- Bardzo duża skala.
-- Izolacja i bezpieczny dostęp do sieci.
-- Wysoki poziom użycia pamięci.
+* Bardzo duża skala.
+* Izolacja i bezpieczny dostęp do sieci.
+* Wysoki poziom użycia pamięci.
 
 Klienci mogą tworzyć wiele środowisk ASE w pojedynczym regionie platformy Azure lub w wielu regionach platformy Azure. Dzięki tej elastyczności środowiska ASE doskonale nadają się dla warstw aplikacji bezstanowych skalowanych w poziomie na potrzeby obsługi obciążeń o dużej liczbie żądań na sekundę (RPS).
 
@@ -39,7 +45,7 @@ Klienci mogą tworzyć wiele środowisk ASE w pojedynczym regionie platformy Azu
 * Środowiska ASE umożliwiają hosting aplikacji na dużą skalę z bezpiecznym dostępem do sieci. Aby uzyskać więcej informacji, zobacz film [AzureCon Deep Dive](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) poświęcony środowiskom ASE.
 * Za pomocą wielu środowisk ASE można realizować skalowanie w poziomie. Aby uzyskać więcej informacji, dowiedz się, [jak skonfigurować rozproszony geograficznie zasięg aplikacji](app-service-app-service-environment-geo-distributed-scale.md).
 * Za pomocą środowisk ASE można skonfigurować architekturę zabezpieczeń, jak zaprezentowano w tym filmie AzureCon Deep Dive. Aby dowiedzieć się, jak skonfigurowano architekturę zabezpieczeń przedstawioną w tym filmie AzureCon Deep Dive, zobacz [artykuł na temat implementowania warstwowej architektury zabezpieczeń](app-service-app-service-environment-layered-security.md) za pomocą środowisk App Service Environment.
-* Dostęp aplikacji działających w środowiskach ASE może być kontrolowany za pomocą bram na urządzeniach nadrzędnych, takich jak zapory aplikacji internetowych (WAF). Aby uzyskać więcej informacji, zobacz [Configure a WAF for App Service environments](app-service-app-service-environment-web-application-firewall.md) (Konfigurowanie zapory aplikacji internetowych dla środowiska App Service Environment).
+* Dostęp aplikacji działających w środowiskach ASE może być kontrolowany za pomocą bram na urządzeniach nadrzędnych, takich jak zapory aplikacji internetowych (WAF). Aby uzyskać więcej informacji, zobacz [Integracja środowiska usługi App Service wewnętrznego modułu równoważenia obciążenia z usługą Azure Application Gateway][AppGW].
 
 ## <a name="dedicated-environment"></a>Dedykowane środowisko ##
 
@@ -59,7 +65,7 @@ Obowiązuje zryczałtowana stawka miesięczna za środowisko ASE, która pokrywa
 
 ## <a name="virtual-network-support"></a>Obsługa sieci wirtualnej ##
 
-Środowisko ASE można utworzyć tylko w sieci wirtualnej usługi Azure Resource Manager. Aby dowiedzieć się więcej o sieciach wirtualnych platformy Azure, zobacz [często zadawane pytania na ich temat](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Środowisko ASE zawsze istnieje w sieci wirtualnej, a dokładniej — w podsieci sieci wirtualnej. Za pomocą funkcji zabezpieczeń sieci wirtualnych można sterować przychodzącą i wychodzącą komunikacją sieciową używanych aplikacji.
+Funkcja środowiska ASE polega na wdrożeniu usługi Azure App Service bezpośrednio w sieci wirtualnej usługi Azure Resource Manager klienta. Aby dowiedzieć się więcej o sieciach wirtualnych platformy Azure, zobacz [często zadawane pytania na ich temat](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Środowisko ASE zawsze istnieje w sieci wirtualnej, a dokładniej — w podsieci sieci wirtualnej. Za pomocą funkcji zabezpieczeń sieci wirtualnych można sterować przychodzącą i wychodzącą komunikacją sieciową używanych aplikacji.
 
 Środowisko ASE może być środowiskiem połączonym z Internetem za pomocą publicznego adresu IP lub wewnętrznym i mającym tylko adres wewnętrznego modułu równoważenia obciążenia (ILB, Internal Load Balancer) platformy Azure.
 

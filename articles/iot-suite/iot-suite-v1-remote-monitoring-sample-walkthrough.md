@@ -1,12 +1,12 @@
 ---
-title: "Przewodnik po wstępnie skonfigurowanym rozwiązaniu monitorowania zdalnego | Microsoft Docs"
-description: "Opis wstępnie skonfigurowanego rozwiązania Azure IoT do monitorowania zdalnego wraz z informacjami dotyczącymi architektury rozwiązania."
-services: 
+title: Przewodnik po wstępnie skonfigurowanym rozwiązaniu monitorowania zdalnego | Microsoft Docs
+description: Opis wstępnie skonfigurowanego rozwiązania Azure IoT do monitorowania zdalnego wraz z informacjami dotyczącymi architektury rozwiązania.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 7cef60998cf9e46a8d89f8ad53edd0382e3ce76e
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>Przewodnik po wstępnie skonfigurowanym rozwiązaniu monitorowania zdalnego
 
@@ -35,7 +35,17 @@ Ten artykuł przeprowadzi Cię przez niektóre kluczowe elementy rozwiązania do
 
 Poniższy diagram przedstawia składniki logiczne wstępnie skonfigurowanego rozwiązania:
 
-![Architektura logiczna](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![Architektura logiczna](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+
+## <a name="microservices--docker-containers"></a>Mikrousługi i kontenery platformy Docker
+Zdalne monitorowanie to pierwsze z naszych wstępnie skonfigurowanych rozwiązań, które korzysta z architektury mikrousług. Rozwiązanie jest dostępne zarówno na platformie [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet), jak i [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
+Mikrousługi stały się powszechnie stosowanym rozwiązaniem umożliwiającym osiągnięcie skalowalności i elastyczności (przez zezwolenie na osobne skalowanie kontenerów) bez zmniejszenia szybkość tworzenia aplikacji.
+Mikrousługi zapewniają podział kodu i udostępniają dobrze zdefiniowane interfejsy, dzięki czemu rozwiązanie jest łatwiejsze do zrozumienia i mniej monolityczne. Zapewniają one również dodatkowe opcje dla partnerów, którzy chcą rozszerzyć nasze bieżące akceleratory rozwiązań w celu utworzenia ukończonych rozwiązań przeznaczonych do sprzedaży.
+
+**Dowiedz się więcej na temat kontenerów platformy Docker**
+* [Instalowanie platformy Docker](https://docs.docker.com/engine/installation/)
+* [Typowe polecenia platformy Docker na potrzeby zdalnego monitorowania](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#common-docker-commands)
+* [Wprowadzenie do platformy Docker](https://docs.docker.com/get-started/)
 
 ## <a name="simulated-devices"></a>Symulowane urządzenia
 
@@ -226,7 +236,7 @@ GROUP BY
     SlidingWindow (mi, 5)
 ```
 
-## <a name="event-hubs"></a>Usługa Event Hubs
+## <a name="event-hubs"></a>Event Hubs
 
 Zadania ASA **informacje o urządzeniu** i **reguły** przesyłają dane wyjściowe do centrum zdarzeń w celu ich niezawodnego przekazania do **procesora zdarzeń** uruchomionego w zadaniu WebJob.
 

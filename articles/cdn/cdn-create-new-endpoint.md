@@ -1,5 +1,5 @@
 ---
-title: Tworzenie profilu i punktu końcowego usługi Azure CDN | Microsoft Docs
+title: Szybki start — tworzenie profilu i punktu końcowego usługi Azure CDN | Microsoft Docs
 description: W tym przewodniku Szybki start przedstawiono sposób włączania usługi Azure CDN przez utworzenie nowego profilu i punktu końcowego usługi CDN.
 services: cdn
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 6237b47be878217115849b87ebcd3d980665643a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2f2d34db2bb18b93ee4d8b78a135caecde5a293b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN
 W tym przewodniku Szybki start włączysz usługę Azure Content Delivery Network (CDN) przez utworzenie nowego profilu i punktu końcowego usługi CDN. Po utworzeniu profilu i punktu końcowego można rozpocząć dostarczanie zawartości do klientów.
@@ -69,8 +69,10 @@ Utworzony profil usługi CDN może służyć do tworzenia punktu końcowego.
     
    ![Punkt końcowy usługi CDN](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   Punkt końcowy nie jest natychmiast dostępny do użycia, ponieważ propagacja rejestracji zajmuje trochę czasu. 
-
+   Punkt końcowy nie jest natychmiast dostępny do użycia, ponieważ propagacja rejestracji zajmuje trochę czasu: 
+   - W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
+   - W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
+   - W przypadku profili usługi **Azure CDN Standard from Verizon** oraz usługi **Azure CDN Premium from Verizon** propagacja zwykle trwa do 90 minut. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 W poprzednich krokach utworzono profil i punkt końcowy usługi CDN w grupie zasobów. Zapisz te zasoby, jeśli chcesz przejść do sekcji [Następne kroki](#next-steps) i dowiedzieć się, jak dodać domenę niestandardową do punktu końcowego. Jeśli jednak nie będziesz już potrzebować tych zasobów w przyszłości, możesz je usunąć przez usunięcie grupy zasobów, unikając w ten sposób dodatkowych opłat:
@@ -85,6 +87,6 @@ W poprzednich krokach utworzono profil i punkt końcowy usługi CDN w grupie zas
 Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej do punktu końcowego usługi CDN, zapoznaj się z następującym samouczkiem:
 
 > [!div class="nextstepaction"]
-> [Dodawanie domeny niestandardowej](cdn-map-content-to-custom-domain.md)
+> [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
 
 

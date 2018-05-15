@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -63,6 +63,8 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
 4. Wybierz lub utwórz sieć wirtualną.
 
+    * W przypadku wybrania nowej sieci wirtualnej możesz określić nazwę i lokalizację. Jeśli zamierzasz hostować aplikacje systemu Linux w tym środowisku ASE, w tej chwili obsługiwanych jest tylko 6 następujących regionów: **Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja Południowo-Wschodnia.** 
+
 5. W przypadku wybrania istniejącej sieci wirtualnej należy utworzyć podsieć, w której zostanie umieszczone środowisko ASE. Ustaw wystarczająco duży rozmiar podsieci, aby pomieścić środowisko ASE, nawet gdy w przyszłości się rozrośnie. Zalecamy rozmiar `/25`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Minimalny rozmiar, jaki można wybrać, to `/28`. Po zaspokojeniu wymagań infrastruktury ten rozmiar można skalować tylko do maksymalnie 3 wystąpień.
 
     * Plany usługi App Service umożliwiają przekroczenie domyślnej maksymalnej liczby wystąpień wynoszącej 100.
@@ -106,7 +108,7 @@ Jeśli dla ustawienia **Typ adresu VIP** została wybrana opcja **Wewnętrzny**,
 
 Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia tworzy się tak samo jak w normalnym środowisku ASE.
 
-1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **Internet** lub **Urządzenia mobilne** lub **Aplikacja interfejsu API**.
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Sieć Web + aplikacje mobilne** > **Aplikacja internetowa**.
 
 2. Wprowadź nazwę aplikacji.
 
@@ -114,9 +116,13 @@ Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia
 
 4. Wybierz lub utwórz grupę zasobów.
 
-5. Wybierz lub utwórz plan usługi App Service. Jeśli chcesz utworzyć nowy plan usługi App Service, wybierz środowisko ASE jako lokalizację. Wybierz pulę procesów roboczych, w której ma zostać utworzony plan usługi App Service. Podczas tworzenia planu usługi App Service wybierz środowisko ASE jako lokalizację i pulę procesów roboczych. Po określeniu nazwy aplikacji domena w obszarze nazwy aplikacji zostanie zamieniona na domenę środowiska ASE.
+5. Wybierz system operacyjny. 
 
-6. Wybierz pozycję **Utwórz**. Jeśli aplikacja ma być wyświetlana na pulpicie nawigacyjnym, zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego**.
+    * Jeśli chcesz utworzyć aplikację systemu Linux przy użyciu niestandardowego kontenera platformy Docker, możesz użyć własnego kontenera, korzystając z instrukcji podanych w tym miejscu. 
+
+6. Wybierz lub utwórz plan usługi App Service. Jeśli chcesz utworzyć nowy plan usługi App Service, wybierz środowisko ASE jako lokalizację. Wybierz pulę procesów roboczych, w której ma zostać utworzony plan usługi App Service. Podczas tworzenia planu usługi App Service wybierz środowisko ASE jako lokalizację i pulę procesów roboczych. Po określeniu nazwy aplikacji domena w obszarze nazwy aplikacji zostanie zamieniona na domenę środowiska ASE.
+
+7. Wybierz pozycję **Utwórz**. Jeśli aplikacja ma być wyświetlana na pulpicie nawigacyjnym, zaznacz pole wyboru **Przypnij do pulpitu nawigacyjnego**.
 
     ![Tworzenie planu usługi App Service][2]
 
@@ -188,7 +194,7 @@ W środowisku ASE z wewnętrznym modułem równoważenia obciążenia jest obsł
 
 W trakcie używania usługi Azure Functions w środowisku ASE z wewnętrznym modułem równoważenia obciążenia może pojawić się komunikat o błędzie „Nie możemy teraz pobrać funkcji. Spróbuj ponownie później”. Ten błąd występuje, ponieważ interfejs użytkownika usługi Functions korzysta z witryny SCM za pośrednictwem protokołu HTTPS, a w łańcuchu zaufania przeglądarki nie ma certyfikatu głównego. Podobny problem występuje w przypadku zadań Web Job. Aby uniknąć tego problemu, możesz wykonać jedną z następujących czynności:
 
-- Dodaj certyfikat do magazynu zaufanych certyfikatów. Odblokowuje to obsługę w przeglądarkach Microsoft Edge i Internet Explorer.
+- Dodaj certyfikat do magazynu zaufanych certyfikatów. Odblokowuje to obsługę w przeglądarkach Edge i Internet Explorer.
 - W przeglądarce Chrome przejdź najpierw do witryny SCM, zaakceptuj niezaufany certyfikat, a następnie przejdź do portalu.
 - Użyj komercyjnego certyfikatu obecnego w łańcuchu zaufania przeglądarki.  Jest to najlepsze rozwiązanie.  
 

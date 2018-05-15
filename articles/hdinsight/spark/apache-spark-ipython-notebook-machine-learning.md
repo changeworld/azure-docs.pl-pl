@@ -1,50 +1,55 @@
 ---
-title: Tworzenie aplikacji do uczenia maszynowego Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
-description: Instrukcje krok po kroku dotyczące tworzenia aplikacji platformy Apache Spark uczenia maszynowego Spark w usłudze HDInsight clusters za pomocą notesu Jupyter
+title: 'Samouczek: tworzenie aplikacji uczenia maszynowego platformy Spark w usłudze HDInsight | Microsoft Docs'
+description: Instrukcje krok po kroku dotyczące tworzenia aplikacji uczenia maszynowego platformy Apache Spark w klastrach HDInsight Spark przy użyciu notesu Jupyter.
 services: hdinsight
 documentationcenter: ''
 author: mumian
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: f584ca5e-abee-4b7c-ae58-2e45dfc56bf4
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,mvc
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/23/2018
+ms.topic: tutorial
+ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 95daab2bd7bc57d01bc9e3c05404958edd71eecc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.openlocfilehash: 70876196eb6b37065a663afa56ed496a0e9755db
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Tworzenie aplikacji do uczenia maszynowego Apache Spark w usłudze Azure HDInsight
+# <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>Samouczek: tworzenie aplikacji uczenia maszynowego platformy Spark w usłudze HDInsight 
 
-Informacje o sposobie tworzenia komputera Apache Spark nauki aplikacji przy użyciu klastra Spark w usłudze HDInsight. W tym artykule pokazano, jak używać dostępnych notesu Jupyter z klastrem umożliwiający zbudowanie i przetestowanie aplikacji. Aplikacja używa przykładowych danych HVAC.csv, który jest dostępny na wszystkich klastrach domyślnie.
+W tym samouczku dowiesz się, jak utworzyć aplikację uczenia maszynowego platformy Apache Spark dla usługi Azure HDInsight za pomocą notesu Jupyter. 
 
-[MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) Biblioteka learning skalowalne maszyny platforma Spark składające się z wspólnej uczenia algorytmów i narzędzia, w tym klasyfikacji, regresji, klastra, filtrowania współpracy, zmniejszenie wymiary, a także podstawowy Optymalizacja w nim elementów podstawowych.
+[MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) to skalowalna biblioteka uczenia maszynowego platformy Spark, składająca się ze wspólnych narzędzi i algorytmów uczenia się, w tym klasyfikacji, regresji, klastrowania, filtrowania z wykorzystaniem współpracy, zmniejszania wymiarowości, a także źródłowych typów pierwotnych optymalizacji.
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+> [!div class="checklist"]
+> * Tworzenie aplikacji uczenia maszynowego platformy Spark
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne:
 
-Musi mieć następującego elementu:
+Obowiązują następujące wymagania:
 
-* Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md). 
+* Zapoznanie się z przewodnikiem [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="data"></a>Informacje w zestawie danych
+## <a name="understand-the-data-set"></a>Opis zestawu danych
 
-Następujące dane pokazuje temperatury docelowych i rzeczywistego temperatury niektórych budynków, które zainstalowanych systemów HVAC. **Systemu** kolumna reprezentuje identyfikator systemu i **SystemAge** kolumna reprezentuje liczbę lat systemu HVAC miało miejsce w budynku. Używasz danych w tym samouczku do prognozowania, czy budynku będzie hotter lub colder podstawie na temperatury docelowej, identyfikator systemowy i wiek systemu.
+Aplikacja korzysta z przykładowych danych zawartych w pliku HVAC.csv, który jest domyślnie dostępny we wszystkich klastrach. Plik znajduje się w lokalizacji **\HdiSamples\HdiSamples\SensorSampleData\hvac**. Dane dotyczą temperatury docelowej i temperatury rzeczywistej niektórych budynków, wyposażonych w instalacje grzewczo-wentylacyjne (HVAC). Kolumna **System** zawiera identyfikatory systemów, a kolumna **SystemAge** — liczbę lat użytkowania instalacji grzewczo-wentylacyjnej w danym budynku. Na podstawie danych — temperatury docelowej oraz identyfikatora i liczby lat użytkowania systemu — można przewidzieć warunki temperaturowe (ciepło lub zimno) w budynku.
 
-![Migawki danych używanych na przykład learning maszyny Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "migawki dane używane na potrzeby Spark machine learning przykład")
+![Migawka danych używanych w przykładzie uczenia maszynowego platformy Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Migawka danych używanych w przykładzie uczenia maszynowego platformy Spark")
 
-Plik danych **HVAC.csv**, znajduje się pod adresem **\HdiSamples\HdiSamples\SensorSampleData\hvac** na wszystkich klastrach usługi HDInsight.
+## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Tworzenie aplikacji uczenia maszynowego platformy Spark przy użyciu biblioteki MLLib platformy Spark
 
-## <a name="app"></a>Napisać aplikację learning maszyny Spark przy użyciu Spark MLlib
-W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) do przeprowadzania klasyfikacji dokumentu. Potoki ML udostępniają uniform zestaw interfejsów API wysokiego poziomu, rozszerzający DataFrames, które pomagają użytkownikom tworzenie i dostrajania praktyczne machine learning potoków. W potoku podzielone dokumentu słowa, konwertować wyrazy wektor funkcji numerycznych i koniec kompilacji modelu prognozowania, używając funkcji wektorów i etykiet. Wykonaj poniższe kroki, aby utworzyć aplikację.
+W tej aplikacji [potok uczenia maszynowego](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) platformy Spark jest używany do przeprowadzania klasyfikacji dokumentów. Potoki uczenia maszynowego udostępniają ujednolicony zestaw interfejsów API wysokiego poziomu, które bazują na ramkach danych i pomagają użytkownikom tworzyć oraz dostrajać praktyczne potoki uczenia maszynowego. W potoku dokument jest dzielony na wyrazy, które są przekształcane w wektor elementów liczbowych. Na końcu jest tworzony model predykcyjny przy użyciu etykiet i wektorów elementów. Wykonaj poniższe kroki, aby utworzyć aplikację.
 
-1. Tworzenie notesu Jupyter z użyciem jądra PySpark. Aby uzyskać instrukcje, zobacz [tworzenie notesu Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
-2. Importowania typów wymaganych dla tego scenariusza. W pustej komórce Wklej poniższy fragment kodu, a następnie naciśnij klawisz **SHIFT + ENTER**. 
+1. Utwórz notes Jupyter przy użyciu jądra PySpark. Aby uzyskać instrukcje, zobacz [Tworzenie notesu Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+2. Zaimportuj typy wymagane w tym scenariuszu. Wklej następujący fragment kodu do pustej komórki, a następnie naciśnij klawisze **SHIFT + ENTER**. 
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -60,7 +65,7 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
     from pyspark.mllib.regression import LabeledPoint
     from numpy import array
     ```
-3. Ładowanie danych (hvac.csv), przeanalizować go i użyć go do nauczenia modelu. 
+3. Załaduj dane (hvac.csv) i je przeanalizuj, a następnie je wykorzystaj do nauczenia modelu. 
 
     ```PySpark
     # Define a type called LabelDocument
@@ -85,9 +90,9 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
     training = documents.toDF()
     ```
 
-    We fragmencie kodu należy zdefiniować funkcję, która porównuje rzeczywiste temperatury temperatura docelowej. Jeśli rzeczywista temperatury jest większa, kompilacja jest gorących, wskazywane przez wartość **1.0**. W przeciwnym razie kompilacja jest zimnych, w wskazywane przez wartość **0,0**. 
+    Fragment kodu zawiera definicję funkcji, która porównuje temperaturę rzeczywistą z temperaturą docelową. Jeśli temperatura rzeczywista jest większa, przyjmuje się, że w budynku jest ciepło, co odpowiada wartości **1.0**. W przeciwnym razie w budynku jest zimno, co odpowiada wartości **0.0**. 
 
-4. Konfiguruje potok learning maszyny Spark, która składa się z trzech etapów: tokenizatora, hashingTF i lr. 
+4. Skonfiguruj potok uczenia maszynowego platformy Spark, która składa się z trzech etapów: tokenizer, hashingTF i lr. 
 
     ```PySpark
     tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -96,21 +101,21 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    Aby uzyskać więcej informacji na temat nowości potoku i jak działa zobacz <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark machine learning potoku</a>.
+    Aby uzyskać więcej informacji o samym potoku i jego działaniu, zobacz <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark machine learning pipeline (Potok uczenia maszynowego platformy Spark)</a>.
 
-5. Dopasuj potoku do dokumentu szkolenia.
+5. Dopasuj potok do dokumentu szkoleniowego.
    
     ```PySpark
     model = pipeline.fit(training)
     ```
 
-6. Sprawdź dokument szkolenia, aby punkt kontrolny postęp z aplikacją.
+6. Zweryfikuj dokument szkoleniowy w celu sprawdzenia postępu w opracowywaniu aplikacji.
    
     ```PySpark
     training.show()
     ```
    
-    To powinno zawierać dane wyjściowe podobne do następujących:
+    Dane wyjściowe są podobne do następujących:
 
     ```
     +----------+----------+-----+
@@ -139,13 +144,13 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
     +----------+----------+-----+
     ```
 
-    Porównywanie danych wyjściowych na pierwotnych pliku CSV. Na przykład pierwszy wiersz pliku CSV zawiera te dane:
+    Porównaj dane wyjściowe z nieprzetworzonymi danymi w pliku CSV. Na przykład pierwszy wiersz pliku CSV zawiera te dane:
 
-    ![Migawki Spark machine learning przykładowe dane wyjściowe](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "migawki danych wyjściowych na Spark machine learning przykład")
+    ![Migawka danych wyjściowych używanych w przykładzie uczenia maszynowego platformy Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Migawka danych wyjściowych używanych w przykładzie uczenia maszynowego platformy Spark")
 
-    Zwróć uwagę, jak rzeczywiste temperatury jest mniejsza niż sugerowanie temperatury docelowej kompilacja jest zimnych. Dlatego w danych wyjściowych, szkolenia wartość **etykiety** w pierwszym wierszu jest **0,0**, co oznacza, że kompilacja nie jest dynamicznej.
+    Zwróć uwagę, że temperatura rzeczywista jest mniejsza niż temperatura docelowa, co świadczy o tym, że w budynku jest zimno. Z tego względu w szkoleniowych danych wyjściowych wartość w kolumnie **label** w pierwszym wierszu wynosi **0.0**, co oznacza, że w budynku nie jest ciepło.
 
-7. Przygotuj zestawu danych do uruchomienia przed trenowanego modelu. Aby to zrobić, Przekaż na identyfikator systemu i wiek systemu (oznaczonego jako **SystemInfo** w danych wyjściowych szkolenia), i model przewiduje się, czy kompilacja o tym identyfikatorze systemu i wiek systemu będzie hotter (wskazywane przez 1.0) lub chłodniej (wskazywane przez 0,0).
+7. Przygotuj zestaw danych do uruchomienia uczonego modelu. Aby to zrobić, przekaż identyfikator systemu i liczbę lat użytkowania instalacji (w szkoleniowych danych wyjściowych te informacje są zawarte w kolumnie **SystemInfo**). Model przewiduje, czy w budynku charakteryzowanym przez te dane będzie ciepło (wartość 1.0) czy chłodno (wartość 0.0).
    
     ```PySpark   
     # SystemInfo here is a combination of system ID followed by system age
@@ -158,7 +163,7 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
                     (6L, "7 22")]) \
         .map(lambda x: Document(*x)).toDF() 
     ```
-8. Na koniec tworzenia prognoz na danych testowych. 
+8. Na koniec wygenerujemy prognozy na podstawie danych testowych. 
    
     ```PySpark
     # Make predictions on test documents and print columns of interest
@@ -168,7 +173,7 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
         print row
     ```
 
-    Powinny pojawić się dane wyjściowe podobne do następujących:
+    Dane wyjściowe są podobne do następujących:
 
     ```   
     Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
@@ -179,44 +184,20 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
    
-   W pierwszym wierszu Prognozowanie widać, czy system HVAC o identyfikatorze 20 i wiek systemu 25 lat, kompilacja jest gorących (**prognozowania = 1.0**). Wartość pierwszego DenseVector (0.49999) odnosi się do prognozowania 0,0 i drugiej wartości (0.5001) odpowiada prognozowania 1.0. W danych wyjściowych, nawet jeśli druga wartość jest tylko nieznacznie wyższe modelu zawiera **prognozowania = 1.0**.
-10. Zamknij aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zamknięta i zamknięcie notesu.
+   W pierwszym wierszu prognozy widać, że w przypadku instalacji grzewczo-wentylacyjnej o identyfikatorze 20 i liczbie lat użytkowania równej 25 w budynku jest ciepło (**prediction=1.0**). Pierwsza wartość elementu DenseVector (0.49999) odpowiada prognozie 0.0, a druga wartość (0.5001) odpowiada prognozie 1.0. Chociaż w danych wyjściowych druga wartość jest tylko nieznacznie większa, model generuje wynik **prediction=1.0**.
+10. Zamknij notes, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie wybierz pozycję **Close and Halt** (Zamknij i zatrzymaj). Ta akcja powoduje zatrzymanie i zamknięcie notesu.
 
-## <a name="anaconda"></a>Użyj Anaconda scikit — Dowiedz się biblioteki Spark uczenia maszynowego
-Klastry platformy Apache Spark w usłudze HDInsight obejmują bibliotekami Anaconda. Obejmuje to także **scikit — Dowiedz się** biblioteki uczenia maszynowego. Biblioteka zawiera także różne zestawy danych, które służą do tworzenia przykładowej aplikacji bezpośrednio z notesu Jupyter. Przykłady dotyczące używania scikit — Dowiedz się, biblioteka, zobacz [ http://scikit-learn.org/stable/auto_examples/index.html ](http://scikit-learn.org/stable/auto_examples/index.html).
+## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Uczenie maszynowe platformy Spark z użyciem biblioteki Anaconda scikit-learn
+Klastry Apache Spark w usłudze HDInsight obejmują biblioteki Anaconda. Zawierają także bibliotekę **scikit-learn** do uczenia maszynowego. W tej bibliotece znajdują się różne zestawy danych, za pomocą których można utworzyć przykładowe aplikacje bezpośrednio w notesie Jupyter. Przykłady użycia biblioteki scikit-learn można znaleźć na stronie[http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
 
-## <a name="seealso"></a>Zobacz też
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+## <a name="next-steps"></a>Następne kroki
 
-### <a name="scenarios"></a>Scenariusze
-* [Platforma Spark i analiza biznesowa: interakcyjna analiza danych na platformie Spark w usłudze HDInsight z użyciem narzędzi do analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Platforma Spark i usługa Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników kontroli żywności](apache-spark-machine-learning-mllib-ipython.md)
-* [Analiza dzienników witryny sieci Web na platformie Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
+W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
-### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
-* [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Spark przy użyciu programu Livy](apache-spark-livy-rest-interface.md)
+* Tworzenie aplikacji uczenia maszynowego platformy Spark
 
-### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
-* [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
-* [Zdalne debugowanie aplikacji Spark przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Korzystanie z notesów Zeppelin w klastrze Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jądra dostępne dla notesu Jupyter w klastrze Spark w usłudze HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
+Przejdź do następnego samouczka, aby dowiedzieć się, jak używać środowiska IntelliJ IDEA na potrzeby zadań Spark. 
 
-### <a name="manage-resources"></a>Zarządzanie zasobami
-* [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
-* [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)
+> [!div class="nextstepaction"]
+> [Tworzenie aplikacji Scala Maven w środowisku IntelliJ](./apache-spark-create-standalone-application.md)
 
-[hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-weblogs-sample]:../hadoop/apache-hive-analyze-website-log.md
-[hdinsight-sensor-data-sample]:../hadoop/apache-hive-analyze-sensor-data.md
-
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-create-storageaccount]:../../storage/common/storage-create-storage-account.md

@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 79fc716f70fe0fb3273badd485e4c01ea5d04e1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>Samouczek: uruchamianie aplikacji w usłudze Azure Container Service (AKS)
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Samouczek: uruchamianie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
 W tym samouczku (część czwarta z ośmiu) przykładowa aplikacja jest wdrażana w klastrze Kubernetes. Wykonano następujące czynności:
 
@@ -30,7 +30,7 @@ Na potrzeby tego samouczka założono, że masz podstawową wiedzę na temat poj
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontenera, obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi Kubernetes. 
+W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontenera, obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi Kubernetes.
 
 Do ukończenia tego samouczka potrzebujesz wstępnie utworzonego pliku manifestu usługi Kubernetes `azure-vote-all-in-one-redis.yaml`. Ten plik został pobrany z kodu źródłowego aplikacji w poprzednim samouczku. Sprawdź, czy został utworzony klon repozytorium oraz czy katalogi zostały zmienione na sklonowane repozytorium.
 
@@ -89,7 +89,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Testowanie aplikacji
 
-Utworzenie [usługi Kubernetes][kubernetes-service] powoduje uwidocznienie aplikacji w Internecie. Ten proces może potrwać kilka minut. 
+Utworzenie [usługi Kubernetes][kubernetes-service] powoduje uwidocznienie aplikacji w Internecie. Ten proces może potrwać kilka minut.
 
 Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z argumentem `--watch`.
 
@@ -98,12 +98,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 Początkowo adres *EXTERNAL-IP* dla usługi *azure-vote-front* pojawia się jako *oczekujący*.
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Po zmianie adresu *EXTERNAL-IP* z *oczekującego* na *adres IP*, zatrzymaj proces śledzenia narzędzia kubectl za pomocą polecenia `CTRL-C`. 
+Po zmianie adresu *EXTERNAL-IP* z *oczekującego* na *adres IP*, zatrzymaj proces śledzenia narzędzia kubectl za pomocą polecenia `CTRL-C`.
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
@@ -119,14 +119,14 @@ Wykonaj następujące czynności, aby [zezwolić na dostęp za pośrednictwem wp
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku aplikacja do głosowania na platformie Azure została wdrożona w klastrze Kubernetes w usłudze AKS. Wykonasz następujące zadania:  
+W tym samouczku aplikacja do głosowania na platformie Azure została wdrożona w klastrze Kubernetes w usłudze AKS. Wykonasz następujące zadania:
 
 > [!div class="checklist"]
 > * Pobieranie plików manifestu Kubernetes
 > * Uruchamianie aplikacji w usłudze Kubernetes
 > * Testowanie aplikacji
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat skalowania aplikacji Kubernetes i bazowej infrastruktury usługi Kubernetes. 
+Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat skalowania aplikacji Kubernetes i bazowej infrastruktury usługi Kubernetes.
 
 > [!div class="nextstepaction"]
 > [Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes][aks-tutorial-scale]

@@ -1,6 +1,6 @@
 ---
-title: Przesyłanie strumieniowe ze strukturą w systemie Apache Spark za pomocą platformy Kafka — Azure HDInsight | Microsoft Docs
-description: Dowiedz się, jak przekazywać dane do platformy Apache Kafka lub pobierać je z platformy Apache Kafka za pomocą przesyłania strumieniowego systemu Apache Spark (DStream). Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
+title: 'Samouczek: przesyłanie strumieniowe ze strukturą na platformie Apache Spark za pomocą platformy Kafka — Azure HDInsight | Microsoft Docs'
+description: Dowiedz się, jak wymieniać dane z platformą Apache Kafka za pomocą przesyłania strumieniowego platformy Apache Spark. Ten samouczek obejmuje przesyłanie strumieniowe danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -10,28 +10,107 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/04/2018
 ms.author: larryfr
-ms.openlocfilehash: 49c13bbea537d7de60ecf509bc28675191c0b34d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
+# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Samouczek: używanie przesyłania strumieniowego ze strukturą platformy Apache Spark za pomocą platformy Kafka w usłudze HDInsight
 
-Dowiedz się, jak używać przesyłania strumieniowego ze strukturą w systemie Spark w celu odczytywania danych z platformy Apache Kafka w usłudze Azure HDInsight.
+W tym samouczku przedstawiono sposób użycia przesyłania strumieniowego platformy Spark do odczytywania i zapisywania danych przy użyciu platformy Apache Kafka w usłudze Azure HDInsight.
 
-Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. Aby uzyskać więcej informacji o przesyłaniu strumieniowym ze strukturą, zobacz dokument [Structured Streaming Programming Guide [Alpha] (Przewodnik po programowaniu przesyłania strumieniowego ze strukturą [Alpha])](http://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) w witrynie Apache.org.
+Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. 
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> * Przesyłanie strumieniowe ze strukturą na platformie Kafka
+> * Tworzenie klastrów Kafka i Spark
+> * Przekazywanie notesu do platformy Spark
+> * Używanie notesu
+> * Oczyszczanie zasobów
+
+Po zakończeniu pracy z tym dokumentem pamiętaj o usunięciu tych klastrów, aby uniknąć naliczania opłat.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Znajomość zagadnień dotyczących używania notesów Jupyter za pomocą platformy Spark w usłudze HDInsight. Aby uzyskać więcej informacji, zobacz dokument [Ładowanie danych i uruchamianie zapytań za pomocą platformy Spark w usłudze HDInsight](spark/apache-spark-load-data-run-query.md).
+
+* Znajomość języka programowania [Scala](https://www.scala-lang.org/). Kod używany w tym samouczku jest napisany w języku Scala.
+
+* Znajomość zagadnień dotyczących tworzenia tematów platformy Kafka. Aby uzyskać więcej informacji, zobacz dokument [Przewodnik Szybki start dla platformy Kafka w usłudze HDInsight](kafka/apache-kafka-get-started.md).
 
 > [!IMPORTANT]
-> W tym przykładzie użyto platformy Spark 2.2 w usłudze HDInsight 3.6.
+> Kroki przedstawione w tym dokumencie wymagają grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
+> 
+> Dla Twojej wygody w tym dokumencie umieszczono link do szablonu, który umożliwia utworzenie wszystkich wymaganych zasobów platformy Azure. 
 >
-> Kroki przedstawione w tym dokumencie obejmują tworzenie grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
->
-> Po zakończeniu pracy z tym dokumentem pamiętaj o usunięciu tych klastrów, aby uniknąć naliczania opłat.
+> Aby uzyskać więcej informacji na temat używania usługi HDInsight w sieci wirtualnej, zobacz dokument [Rozszerzanie usługi HDInsight przy użyciu sieci wirtualnej](hdinsight-extend-hadoop-virtual-network.md).
+
+## <a name="structured-streaming-with-kafka"></a>Przesyłanie strumieniowe ze strukturą na platformie Kafka
+
+Przesyłanie strumieniowe ze strukturą platformy Spark to aparat przetwarzania strumieni oparty na aparacie SQL platformy Spark. Podczas korzystania z przesyłania strumieniowego ze strukturą możesz pisać zapytania przesyłania strumieniowego w taki sam sposób, jak zapytania wsadowe.
+
+Poniższe fragmenty kodu demonstrują odczytywanie z platformy Kafka i zapisywanie do pliku. Pierwszy z nich to operacja wsadowa, a drugi to operacja przesyłania strumieniowego:
+
+```scala
+// Read a batch from Kafka
+val kafkaDF = spark.read.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data and write to file
+kafkaDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .write
+                .format("parquet")
+                .option("path","/example/batchtripdata")
+                .option("checkpointLocation", "/batchcheckpoint")
+                .save()
+```
+
+```scala
+// Stream from Kafka
+val kafkaStreamDF = spark.readStream.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data from the stream and write to file
+kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .writeStream
+                .format("parquet")
+                .option("path","/example/streamingtripdata")
+                .option("checkpointLocation", "/streamcheckpoint")
+                .start.awaitTermination(30000)
+```
+
+W obu fragmentach dane są odczytywane z platformy Kafka i zapisywane do pliku. Różnice między przykładami:
+
+| Batch | Przesyłanie strumieniowe |
+| --- | --- |
+| `read` | `readStream` |
+| `write` | `writeStream` |
+| `save` | `start` |
+
+Operacja przesyłania strumieniowego używa również wywołania `awaitTermination(30000)`, które zatrzymuje strumień po 30000 ms. 
+
+Aby używać przesyłania strumieniowego ze strukturą na platformie Kafka, projekt musi mieć zdefiniowaną zależność od pakietu `org.apache.spark : spark-sql-kafka-0-10_2.11`. Wersja tego pakietu powinna być zgodna z wersją platformy Spark w usłudze HDInsight. W przypadku platformy Spark 2.2.0 (dostępnej w usłudze HDInsight 3.6) informacje o zależnościach dla różnych typów projektu możesz znaleźć na stronie [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
+
+W przypadku notesu Jupyter udostępnionego z tym samouczkiem następująca komórka ładuje zależność tego pakietu:
+
+```
+%%configure -f
+{
+    "conf": {
+        "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
+        "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+    }
+}
+```
 
 ## <a name="create-the-clusters"></a>Tworzenie klastrów
 
@@ -44,7 +123,7 @@ Na poniższym diagramie przedstawiono przepływ komunikacji między platformami 
 > [!NOTE]
 > Komunikacja usługi Kafka jest ograniczona do sieci wirtualnej. Inne usługi w klastrze, takie jak SSH i Ambari, są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
-Dla wygody do utworzenia klastrów Kafka i Spark wewnątrz sieci wirtualnej użyto szablonu usługi Azure Resource Manager.
+Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klastry Kafka i Spark, wykonaj następujące kroki:
 
 1. Kliknij poniższy przycisk, aby zalogować się do platformy Azure i otworzyć szablon w witrynie Azure Portal.
     
@@ -59,7 +138,7 @@ Dla wygody do utworzenia klastrów Kafka i Spark wewnątrz sieci wirtualnej uży
     * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
 
     > [!IMPORTANT]
-    > Używany w tym przykładzie notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
+    > Używany w tym samouczku notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark 2.2.0 w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
 
 2. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
 
@@ -77,18 +156,18 @@ Dla wygody do utworzenia klastrów Kafka i Spark wewnątrz sieci wirtualnej uży
    
     ![Zrzut ekranu przedstawiający dostosowany szablon](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
+3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**
+
 4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. 
 
 > [!NOTE]
 > Tworzenie klastrów może potrwać do 20 minut.
 
-## <a name="get-the-notebook"></a>Pobieranie notesu
-
-Kod przykładu opisanego w tym dokumencie jest dostępny na stronie [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
-
-## <a name="upload-the-notebooks"></a>Przekazywanie notesów
+## <a name="upload-the-notebook"></a>Przekazywanie notesu
 
 Aby przekazać notes z projektu na platformę Spark w klastrze usługi HDInsight, wykonaj następujące kroki:
+
+1. Pobierz projekt ze strony [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
 
 1. W przeglądarce internetowej połącz się z notesem Jupyter w klastrze Spark. Zastąp element `CLUSTERNAME` w poniższym adresie URL nazwą klastra __Spark__:
 
@@ -128,7 +207,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Gdy już wiesz, jak używać przesyłania strumieniowego ze strukturą na platformie Spark, zapoznaj się z następującymi dokumentami, aby dowiedzieć się więcej na temat pracy z platformami Spark i Kafka:
+W tym samouczku przedstawiono sposób użycia przesyłania strumieniowego ze strukturą platformy Spark do zapisywania danych na platformie Kafka w usłudze HDInsight i odczytywania z niej danych. Korzystając z następującego linku, możesz dowiedzieć się, jak używać systemu Storm z platformą Kafka.
 
-* [How to use Spark streaming (DStream) with Kafka (Jak korzystać z przesyłania strumieniowego w usłudze Spark [DStream] za pomocą usługi Kafka)](hdinsight-apache-spark-with-kafka.md).
-* [Start with Jupyter Notebook and Spark on HDInsight (Rozpoczynanie korzystania z notesu Jupyter i platformy Spark w usłudze HDInsight)](spark/apache-spark-jupyter-spark-sql.md)
+> [!div class="nextstepaction"]
+> [Używanie systemu Apache Storm z platformą Kafka](hdinsight-apache-storm-with-kafka.md)

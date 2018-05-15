@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: a29a3f27f7c9ab41724d400c9eb787e6888bedc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 
@@ -27,7 +27,7 @@ Razem z [wykazem usług Kubernetes][kubernetes-service-catalog] usługa Open Ser
 
 * Uprawnienia do tworzenia jednostki usługi z rolą współautora w subskrypcji platformy Azure
 
-* Istniejący klaster usługi Azure Container Service (AKS). Jeśli potrzebujesz klastra AKS, wykonaj instrukcje podane w przewodniku Szybki start [Tworzenie klastra AKS][create-aks-cluster].
+* Istniejący klaster usługi Azure Kubernetes Service (AKS). Jeśli potrzebujesz klastra AKS, wykonaj instrukcje podane w przewodniku Szybki start [Tworzenie klastra AKS][create-aks-cluster].
 
 ## <a name="install-service-catalog"></a>Instalowanie wykazu usług
 
@@ -182,7 +182,7 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wykonanie instrukcji podanych w tym artykule spowodowało wdrożenie wykazu usług w klastrze usługi Azure Container Service (AKS). Została użyta usługa Open Service Broker for Azure w celu wdrożenia instalacji środowiska WordPress korzystającego z usług zarządzanych przez platformę Azure, w tym przypadku — Azure Database for MySQL.
+Wykonanie instrukcji podanych w tym artykule umożliwiło wdrożenie wykazu usług w klastrze usługi Azure Kubernetes Service (AKS). Została użyta usługa Open Service Broker for Azure w celu wdrożenia instalacji środowiska WordPress korzystającego z usług zarządzanych przez platformę Azure, w tym przypadku — Azure Database for MySQL.
 
 Zapoznaj się z repozytorium [Azure/helm-charts][helm-charts], aby uzyskać dostęp do innych zaktualizowanych planów narzędzia Helm opartych na usłudze OSBA. Jeśli chcesz utworzyć własne plany współpracujące z usługą OSBA, zobacz [Tworzenie nowego planu][helm-create-new-chart].
 

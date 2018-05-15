@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df118a2b5bd8e31bd3fe6101d1d3f631092b6f24
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Container Service (AKS)
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
-Po wdrożeniu aplikacji w usłudze Kubernetes można ją zmodyfikować, określając nowy obraz kontenera lub wersję obrazu. W takiej sytuacji aktualizacja jest przygotowywana tak, aby tylko część była współbieżnie aktualizowana. Ta aktualizacja etapowa umożliwia kontynuowanie działania podczas aktualizacji aplikacji. Udostępnia ona również mechanizm wycofywania w przypadku niepowodzenia wdrożenia. 
+Po wdrożeniu aplikacji w usłudze Kubernetes można ją zmodyfikować, określając nowy obraz kontenera lub wersję obrazu. W takiej sytuacji aktualizacja jest przygotowywana tak, aby tylko część była współbieżnie aktualizowana. Ta aktualizacja etapowa umożliwia kontynuowanie działania podczas aktualizacji aplikacji. Udostępnia ona również mechanizm wycofywania w przypadku niepowodzenia wdrożenia.
 
 W tym samouczku (część szósta z ośmiu) aktualizowana jest przykładowa aplikacja do głosowania platformy Azure. Zadania do wykonania to na przykład:
 
@@ -31,15 +31,15 @@ W kolejnych samouczkach usługa Log Analytics zostanie skonfigurowana do monitor
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontenera, obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi Kubernetes. Następnie uruchomiono aplikację w klastrze usługi Kubernetes. 
+W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontenera, obraz został przekazany do usługi Azure Container Registry i utworzono klaster usługi Kubernetes. Następnie uruchomiono aplikację w klastrze usługi Kubernetes.
 
 Sklonowano również repozytorium aplikacji, w tym kod źródłowy aplikacji i utworzony wcześniej plik narzędzia Docker Compose używany w tym samouczku. Sprawdź, czy został utworzony klon repozytorium oraz czy katalogi zostały zmienione na sklonowany katalog. Zawiera on katalog o nazwie `azure-vote` i plik o nazwie `docker-compose.yaml`.
 
-Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app]. 
+Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
 ## <a name="update-application"></a>Aktualizowanie aplikacji
 
-W tym samouczku wprowadzana jest zmiana aplikacji, a zaktualizowana aplikacja jest wdrażana w klastrze usługi Kubernetes. 
+W tym samouczku wprowadzana jest zmiana aplikacji, a zaktualizowana aplikacja jest wdrażana w klastrze usługi Kubernetes.
 
 Kod źródłowy aplikacji znajduje się wewnątrz katalogu `azure-vote`. Otwórz plik `config_file.cfg` w dowolnym edytorze kodu lub tekstu. W tym przykładzie używamy programu `vi`.
 
@@ -69,13 +69,13 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Przejdź do adresu http://localhost: 8080, aby wyświetlić zaktualizowaną aplikację.
+Przejdź do adresu http://localhost:8080, aby wyświetlić zaktualizowaną aplikację.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>Tagowanie i wypychanie obrazów
 
-Otaguj obraz `azure-vote-front` wartością loginServer rejestru kontenerów. 
+Otaguj obraz `azure-vote-front` wartością loginServer rejestru kontenerów.
 
 Pobierz nazwę serwera logowania przy użyciu polecenia [az acr list](/cli/azure/acr#az_acr_list).
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 679fb066441fd75d5e12f9374d012f50c6f65966
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
@@ -132,6 +132,11 @@ Parametr *name* umożliwia nadanie nazwy działającemu kontenerowi (zamiast ide
 Po uruchomieniu kontenera znajdź jego adres IP, dzięki czemu będzie można połączyć się z działającym kontenerem za pomocą przeglądarki:
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
+```
+
+Jeśli to polecenie nie zwróci żadnych wyników, uruchom następujące polecenie i sprawdź adres IP w elemencie **NetworkSettings**->**Networks**:
+```
+docker inspect my-web-site
 ```
 
 Nawiąż połączenie z działającym kontenerem. Otwórz przeglądarkę internetową i wpisz zwrócony adres IP, na przykład „http://172.31.194.61”. W przeglądarce powinien zostać wyświetlony nagłówek „Hello World!”.
