@@ -1,6 +1,6 @@
 ---
-title: Debugowanie modułu C# z krawędzią IoT Azure przy użyciu programu Visual Studio Code | Dokumentacja firmy Microsoft
-description: Debugowanie modułu C# przy użyciu krawędź IoT Azure w programie Visual Studio Code.
+title: Debugowanie C# modułów Azure IoT krawędzi | Dokumentacja firmy Microsoft
+description: Debugowanie modułu C# z krawędzią IoT Azure w programie Visual Studio Code przy użyciu programu Visual Studio Code.
 services: iot-edge
 keywords: ''
 author: shizn
@@ -9,14 +9,14 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: eecbc10b5e030f67382d72a7b702e441a2e5492c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 035cb129bc3933c10f430b593226108f5d160972
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Debugowanie modułu C# z krawędzią IoT Azure przy użyciu programu Visual Studio Code
-Ten artykuł zawiera szczegółowe instrukcje dotyczące używania [Visual Studio Code](https://code.visualstudio.com/) jako Narzędzia główne programowanie debugowania moduły Azure IoT krawędzi.
+Ten artykuł zawiera szczegółowe instrukcje dotyczące używania [kodu programu Visual Studio (VS)](https://code.visualstudio.com/) jako Narzędzia główne programowanie debugowania moduły Azure IoT krawędzi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenie brzegowe IoT może być inne urządzenie fizyczne lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
@@ -35,18 +35,17 @@ Przed wykonaniem wskazówki zawarte w tym artykule, wykonaj kroki [opracowywania
 
 2. Skompiluj ponownie rozwiązanie. W kodzie VS palety polecenia, wpisz i uruchom polecenie **krawędzi: rozwiązań IoT Edge kompilacji**.
 
-3. W Eksploratorze urządzenia Centrum IoT Azure, kliknij prawym przyciskiem myszy identyfikator urządzenia IoT krawędzi, a następnie wybierz **tworzenie wdrożenia dla urządzenie brzegowe**. Wybierz `deployment.json` w obszarze `config` folderu. Następnie można zauważyć, że pomyślnie utworzono wdrożenie z wdrożeniem, który zintegrowane Identyfikatora w kodzie VS terminala.
+3. W Eksploratorze urządzenia Centrum IoT Azure, kliknij prawym przyciskiem myszy identyfikator urządzenia IoT krawędzi, a następnie wybierz **tworzenie wdrożenia dla urządzenie brzegowe**. Wybierz `deployment.json` w pliku `config` folderu. Następnie można zauważyć, że pomyślnie utworzono wdrożenie z wdrożeniem, który zintegrowane Identyfikatora w kodzie VS terminala.
 
-> [!NOTE]
-> Można sprawdzić stan kontenera w Eksploratorze Docker kodu programu VS lub uruchom `docker images` w terminalu.
+Można sprawdzić stan kontenera w Eksploratorze Docker kodu programu VS lub uruchom `docker images` w terminalu.
 
 ## <a name="start-debugging-c-module-in-vs-code"></a>Rozpocznij debugowanie modułu C# w kodzie VS
-1. Informacje o konfiguracji w śledzi debugowanie kodu VS `launch.json` plik znajdujący się w `.vscode` folder w obszarze roboczym. To `launch.json` plik został wygenerowany podczas tworzenia nowego rozwiązania IoT krawędzi. I zostanie zaktualizowany po dodaniu każdego nowy moduł, który obsługuje debugowania. Przejdź do widoku debugowania, a następnie wybierz odpowiedni plik konfiguracji debugowania.
+1. Informacje o konfiguracji w śledzi debugowanie kodu VS `launch.json` plik znajdujący się w `.vscode` folder w obszarze roboczym. To `launch.json` plik został wygenerowany podczas tworzenia nowego rozwiązania IoT krawędzi. Aktualizuje zawsze dodać nowy moduł, który obsługuje debugowania. Przejdź do widoku debugowania, a następnie wybierz odpowiedni plik konfiguracji debugowania.
     ![Wybierz opcję debugowania konfiguracji](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
 2. Przejdź do adresu `program.cs`. Dodaj punkt przerwania w tym pliku.
 
-3. Kliknij przycisk Rozpocznij debugowanie lub naciśnij klawisz **F5**i wybierz można dołączyć do procesu.
+3. Kliknij przycisk **Rozpocznij debugowanie** przycisk lub naciśnij przycisk **F5**i wybierz można dołączyć do procesu.
 
 4. W widoku debugowania kodu VS widać zmiennych w lewym panelu. 
 

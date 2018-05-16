@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/07/2017
+ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia, hasła) dla aplikacji w chmurze. Ponieważ te dane są poufne i mają krytyczne znaczenie dla prowadzonej działalności, wskazane jest zabezpieczenie dostępu do własnego magazynu kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mogli uzyskiwać do niego dostęp. Ten artykuł zawiera omówienie modelu dostępu do magazynu kluczy, wyjaśnia uwierzytelnianie i autoryzację oraz na przykładzie opisuje sposób zabezpieczania dostępu do magazynu kluczy dla aplikacji w chmurze.
@@ -136,7 +136,7 @@ Teraz zobaczmy, jakich uprawnień dostępu do magazynu kluczy wymagają poszczeg
 | Zespół ds. zabezpieczeń |Współautor magazynu kluczy |Klucze: wykonywanie kopii zapasowej, tworzenie, usuwanie, pobieranie, importowanie, wyświetlanie, przywracanie <br> Wpisy tajne: wszystkie |
 | Deweloperzy/operatorzy |Uprawnienia do wdrażania magazynu kluczy, tak aby wdrażane przez nich maszyny wirtualne mogły pobierać wpisy tajne z magazynu kluczy |Brak |
 | Audytorzy |Brak |Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie |
-| Aplikacja |None |Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
+| Aplikacja |Brak |Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
 
 > [!NOTE]
 > Audytorzy muszą mieć uprawnienia do wyświetlania kluczy i wpisów tajnych, aby móc dokonywać inspekcji atrybutów kluczy i wpisów tajnych, które nie są emitowane w dziennikach, takich jak tagi oraz daty aktywacji i wygaśnięcia.

@@ -3,23 +3,25 @@ title: V2.0 usługi Azure Active Directory i protokołu OpenID Connect | Dokumen
 description: Tworzenie aplikacji sieci web przy użyciu usługi Azure AD w wersji 2.0 implementacji protokołu uwierzytelniania OpenID Connect.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fd1f29f5c2920ea9956d883b9668f36c934a5e59
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a0cd077b1c6530c5794c92f131dffb814f5b341d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>V2.0 usługi Azure Active Directory i protokołu OpenID Connect
 OpenID Connect to protokół uwierzytelniania, oparty na OAuth 2.0, który służy do bezpiecznego logowania użytkownika do aplikacji sieci web. Korzystając z punktem końcowym v2.0 wdrażania protokołu OpenID Connect, logowania i dostępu do interfejsu API można dodać do aplikacji opartych na sieci web. W tym artykule firma Microsoft opisano, jak zrobić to niezależny od języka. Opisano sposób wysyłania i odbierania wiadomości HTTP bez korzystania z żadnych bibliotek open source firmy Microsoft.
@@ -82,7 +84,7 @@ Gdy aplikacja sieci web musi uwierzytelnić użytkownika, można kierować użyt
 * Żądanie musi zawierać `nonce` parametru.
 
 > [!IMPORTANT]
-> Aby pomyślnie żądania tokenu identyfikator rejestracji aplikacji w [portal rejestracji](https://apps.dev.microsoft.com) musi mieć **[niejawne Przyznaj](active-directory-v2-protocols-implicit.md)** włączona dla klienta sieci Web.  Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "podana wartość parametru wejściowego 'response_type' nie jest dozwolona dla tego klienta. Oczekiwana wartość to "code" "
+> Aby pomyślnie żądania tokenu identyfikator rejestracji aplikacji w [portal rejestracji](https://apps.dev.microsoft.com) musi mieć **[niejawne Przyznaj](active-directory-v2-protocols-implicit.md)** włączona dla klienta sieci Web. Jeśli nie jest włączona, `unsupported_response` zostanie zwrócony błąd: "podana wartość parametru wejściowego 'response_type' nie jest dozwolona dla tego klienta. Oczekiwana wartość to "code" "
 
 Na przykład:
 
@@ -196,10 +198,10 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parametr | Warunek | Opis |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | Zalecane | Adres URL, który jest przekierowywany użytkownik po wylogowaniu się pomyślnie. Jeśli parametr nie jest dołączony, użytkownik jest wyświetlany ogólny komunikat, który jest generowany przez punktu końcowego v2.0. Ten adres URL musi odpowiadać nazwie przekierowania, który zarejestrowane identyfikatory URI aplikacji w portalu rejestracji aplikacji.  |
+| post_logout_redirect_uri | Zalecane | Adres URL, który jest przekierowywany użytkownik po wylogowaniu się pomyślnie. Jeśli parametr nie jest dołączony, użytkownik jest wyświetlany ogólny komunikat, który jest generowany przez punktu końcowego v2.0. Ten adres URL musi odpowiadać nazwie przekierowania, który zarejestrowane identyfikatory URI aplikacji w portalu rejestracji aplikacji. |
 
 ## <a name="single-sign-out"></a>Wylogowanie jednokrotne
-Jeśli przekierowanie użytkownika do `end_session_endpoint`, punktu końcowego v2.0 czyści sesji użytkownika z przeglądarki. Jednak użytkownik może nadal być zalogowany do innych aplikacji, które używają kont Microsoft do uwierzytelniania. Aby włączyć te aplikacje do podpisania użytkownika wychodzących jednocześnie v2.0 punktu końcowego wysyła żądanie HTTP GET do zarejestrowaną `LogoutUrl` wszystkich aplikacji, które użytkownik jest aktualnie zalogowany. Aplikacje należy odpowiedzieć na to żądanie przez wyczyszczenie wszelkich sesji, który identyfikuje użytkownika i zwracanie `200` odpowiedzi.  Jeśli chcesz limit obsługi funkcji logowania jednokrotnego do aplikacji, musisz zaimplementować takie `LogoutUrl` w kodzie aplikacji.  Można ustawić `LogoutUrl` z portalu rejestracji aplikacji.
+Jeśli przekierowanie użytkownika do `end_session_endpoint`, punktu końcowego v2.0 czyści sesji użytkownika z przeglądarki. Jednak użytkownik może nadal być zalogowany do innych aplikacji, które używają kont Microsoft do uwierzytelniania. Aby włączyć te aplikacje do podpisania użytkownika wychodzących jednocześnie v2.0 punktu końcowego wysyła żądanie HTTP GET do zarejestrowaną `LogoutUrl` wszystkich aplikacji, które użytkownik jest aktualnie zalogowany. Aplikacje należy odpowiedzieć na to żądanie przez wyczyszczenie wszelkich sesji, który identyfikuje użytkownika i zwracanie `200` odpowiedzi. Jeśli chcesz limit obsługi funkcji logowania jednokrotnego do aplikacji, musisz zaimplementować takie `LogoutUrl` w kodzie aplikacji. Można ustawić `LogoutUrl` z portalu rejestracji aplikacji.
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokołu: nabycie token dostępu
 Wiele aplikacji sieci web należy nie tylko zalogować użytkownika w, ale również dostęp do usługi sieci web w imieniu użytkownika przy użyciu uwierzytelniania OAuth. W tym scenariuszu łączy OpenID Connect do uwierzytelniania użytkowników jednocześnie uzyskanie kodu autoryzacji, która umożliwia pobieranie tokenów dostępu, jeśli używasz przepływu kodu autoryzacji OAuth.
@@ -248,7 +250,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Parametr | Opis |
 | --- | --- |
 | żądaniu |Token ID żądanej aplikacji. Token identyfikator służy do weryfikacji tożsamości użytkownika i rozpocząć sesję użytkownika. Można znaleźć więcej szczegółów o identyfikatorze tokeny i ich zawartość w [punktu końcowego v2.0 tokeny odwołanie](active-directory-v2-tokens.md). |
-| kod |Kod autoryzacji żądanej aplikacji. Aplikację można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kod autoryzacji jest bardzo krótkim okresie. Zazwyczaj autoryzacji kod wygasa po upływie około 10 minut. |
+| Kod |Kod autoryzacji żądanej aplikacji. Aplikację można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kod autoryzacji jest bardzo krótkim okresie. Zazwyczaj autoryzacji kod wygasa po upływie około 10 minut. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikacja powinna Sprawdź, czy wartości stan żądania i odpowiedzi są identyczne. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd

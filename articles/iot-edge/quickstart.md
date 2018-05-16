@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 05/03/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f9ad01d3194ee0f8be4c3b4321c83c4bb15ea55c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 888f74d215956f4ad38605ca247f681da700a787
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki Start: Wdrażanie modułu pierwszy krawędzi IoT z portalu Azure do urządzenia z systemem Windows — w wersji preview
 
@@ -29,7 +29,7 @@ Ten samouczek zakłada, że używasz komputera lub maszyny wirtualnej z systemem
    * Windows 10 
    * Windows Server
 2. Zainstaluj [Docker dla systemu Windows] [ lnk-docker] i upewnij się, że jest uruchomiona.
-3. Zainstaluj [Python 2.7 w systemie Windows] [ lnk-python] i upewnij się, możesz użyć polecenia pip.
+3. Zainstaluj [Python w systemie Windows] [ lnk-python] i upewnij się, możesz użyć polecenia pip. Ta opcja szybkiego startu była testowana przy wersji języka Python > = 2.7.9 i > = 3.5.4.  
 4. Uruchom następujące polecenie, aby pobrać skryptu kontroli IoT krawędzi.
 
    ```cmd
@@ -100,7 +100,7 @@ docker ps
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
-## <a name="view-generated-data"></a>Widok wygenerowany danych
+## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
 W tego przewodnika Szybki Start utworzyć nowe urządzenie brzegowe IoT, a na nim zainstalowany środowiska uruchomieniowego IoT krawędzi. Następnie użyto portalu Azure do umieszczenia krawędzi IoT modułu do uruchomienia na urządzeniu bez konieczności zmiany na urządzeniu. W takim przypadku moduł, który zostanie przypisany tworzy dane środowiska, używanego programu samouczków. 
 

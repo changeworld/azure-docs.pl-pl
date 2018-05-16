@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie usługi Azure AD z logowania jednokrotnego dla aplikacji | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak do samoobsługi połączyć aplikacje w usłudze Azure Active Directory przy użyciu SAML i Usługa rejestracji Jednokrotnej opartego na hasłach"
+title: Konfigurowanie usługi Azure AD z logowania jednokrotnego dla aplikacji | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do samoobsługi połączyć aplikacje w usłudze Azure Active Directory przy użyciu SAML i Usługa rejestracji Jednokrotnej opartego na hasłach
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e161bb308f08e2a7c137c696e77bf1dfb86e8d31
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory
-Ten artykuł dotyczy funkcja, która umożliwia administratorom na konfigurowanie rejestracji jednokrotnej do aplikacji nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez pisania kodu*. Ta funkcja została wydana z wersji zapoznawczej technical preview 18 listopada 2015 i znajduje się w [Azure Active Directory Premium](active-directory-editions.md). Jeśli zamiast tego Wyszukaj wskazówki dla deweloperów na temat integracji z usługą Azure AD przez kod aplikacji niestandardowych, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md).
+Ten artykuł dotyczy funkcja, która umożliwia administratorom na konfigurowanie rejestracji jednokrotnej do aplikacji nie znajduje się w galerii aplikacji usługi Azure Active Directory *bez pisania kodu*. Ta funkcja została wydana z wersji zapoznawczej technical preview 18 listopada 2015 i znajduje się w [Azure Active Directory Premium](active-directory-whatis.md). Jeśli zamiast tego Wyszukaj wskazówki dla deweloperów na temat integracji z usługą Azure AD przez kod aplikacji niestandardowych, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md).
 
 Galerii aplikacji usługi Azure Active Directory zawiera listę aplikacji, które są znane do obsługi formularza rejestracji jednokrotnej z usługą Azure Active Directory, zgodnie z opisem w [w tym artykule](active-directory-appssoaccess-whatis.md). Po (jako IT specjalistyczne lub system integratora w organizacji) znalezieniu aplikacji, którą chcesz się połączyć, możesz rozpocząć pracę zgodnie z instrukcjami krok po kroku przedstawiony w portalu Azure, aby włączyć logowanie jednokrotne.
 
-Klienci z [Azure Active Directory Premium](active-directory-editions.md) licencji również uzyskać te dodatkowe możliwości:
+Klienci z [Azure Active Directory Premium](active-directory-whatis.md) licencji również uzyskać te dodatkowe możliwości:
 
 * Samoobsługowe integracji z dowolnej aplikacji, która obsługuje dostawców tożsamości SAML 2.0 (zainicjował SP lub inicjowane IdP)
 * Samoobsługowe integracji z dowolnej aplikacji sieci web, która ma oparty na języku HTML strony logowania przy użyciu [opartego na hasłach logowania jednokrotnego](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
@@ -110,7 +110,7 @@ Aby uzyskać informacje o tym, jak dodawać i edytować oświadczeń dotyczącyc
 ### <a name="testing-the-saml-application"></a>Testowanie aplikacji SAML
 Po SAML adresy URL i certyfikatu zostały skonfigurowane w usłudze Azure AD i w aplikacji, użytkowników lub grup z przypisanym do aplikacji na platformie Azure, oświadczenia zostały sprawdzone i edytować, jeśli to konieczne, a następnie użytkownik jest gotowy do logowania się do aplikacji. 
 
-Test, po prostu logowania w panelu dostępu usługi Azure AD, pod adresem https://myapps.microsoft.com za pomocą konta użytkownika, którego przypisany do aplikacji, a następnie kliknij przycisk na kafelku dla aplikacji, aby rozpocząć poza pojedynczy proces logowania jednokrotnego. Alternatywnie możesz przeglądać bezpośrednio adres URL logowania jednokrotnego dla aplikacji i zaloguj się z tego miejsca. 
+Aby przetestować, po prostu logowania do usługi Azure AD panelu dostępu pod adresem https://myapps.microsoft.com przy użyciu konta użytkownika przypisany do aplikacji, a następnie kliknij Kafelek dla aplikacji, aby rozpocząć poza pojedynczy proces logowania jednokrotnego. Alternatywnie możesz przeglądać bezpośrednio adres URL logowania jednokrotnego dla aplikacji i zaloguj się z tego miejsca. 
 
 Debugowanie wskazówki, zobacz [artykuł na temat debugowania na języku SAML logowanie jednokrotne do aplikacji](active-directory-saml-debugging.md) 
 
@@ -130,7 +130,7 @@ Po wybraniu **dalej**, pojawi się monit o wprowadzenie adresu URL aplikacji, ab
 
 Uwaga: Możesz przekazać logo kafelka aplikacji przy użyciu **przekazać Logo** znajdującego się na **Konfiguruj** kartę dla aplikacji.
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 * [Dostosowywanie oświadczeń wydanych w tokenie SAML dla wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md)
 * [Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md)

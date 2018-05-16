@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 440072a94ff7146ebcdb242a058ab48b434714f9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Zarządzanie użytkownikami w Azure Blockchain Workbench
 
@@ -43,9 +43,9 @@ Odwiedź stronę [usługi Azure AD](../active-directory/add-users-azure-active-d
 
 ## <a name="manage-blockchain-workbench-administrators"></a>Zarządzaj administratorami Blockchain Workbench
 
-Gdy użytkownicy zostali dodani do katalogu, następnym krokiem jest Wybierz użytkowników, którzy są administratorami Blockchain Workbench. Użytkownicy w **Administratorzy** grupy są skojarzone z **roli Administrator aplikacji** w Blockchain Workbench. Administratorzy mogą Dodaj lub usuń użytkowników, przypisywania użytkowników do określonych scenariuszy i Utwórz nowe aplikacje.
+Gdy użytkownicy zostali dodani do katalogu, następnym krokiem jest Wybierz użytkowników, którzy są administratorami Blockchain Workbench. Użytkownicy w **administratora** grupy są skojarzone z **roli Administrator aplikacji** w Blockchain Workbench. Administratorzy mogą Dodaj lub usuń użytkowników, przypisywania użytkowników do określonych scenariuszy i Utwórz nowe aplikacje.
 
-Aby dodać użytkowników do **Administratorzy** w katalogu usługi Azure AD:
+Aby dodać użytkowników do **administratora** w katalogu usługi Azure AD:
 
 1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2.  Sprawdź, czy są w dzierżawie usługi Azure AD skojarzonego z Blockchain Workbench, wybierając konto w prawym górnym rogu.

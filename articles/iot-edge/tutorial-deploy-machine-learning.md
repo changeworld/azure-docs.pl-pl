@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e4753cf0ffdedcc2ddc694fba67c560363789e3a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6062d8193ce8cf7edaff3187f5c0f7dd9968658b
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako moduł krawędzi IoT — w wersji preview
 
@@ -33,8 +33,8 @@ Moduł usługi Azure Machine Learning, który można utworzyć w tym samouczku o
 
 * Urządzenie brzegowe IoT Azure utworzoną w pierwszym samouczku lub Szybki Start.
 * Parametry połączenia Centrum IoT Centrum IoT, która łączy się z urządzenia IoT krawędzi.
-* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku.
-* Moduł zarządzania dla usługi Azure ML na tym komputerze. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami [konfiguracji zarządzania modelu](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration).
+* Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku. 
+* Moduł zarządzania dla usługi Azure ML na tym komputerze. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami [konfiguracji zarządzania modelu](../machine-learning/desktop-workbench/deployment-setup-configuration.md).
 
 Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM.
 

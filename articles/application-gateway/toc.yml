@@ -45,6 +45,8 @@
       href: ssl-overview.md
     - name: Przekierowywanie adresu URL
       href: redirect-overview.md
+    - name: Monitorowanie kondycji
+      href: application-gateway-probe-overview.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie bramy aplikacji
@@ -93,6 +95,20 @@
       href: tutorial-url-redirect-powershell.md
     - name: Tworzenie strefowo nadmiarowej bramy aplikacji
       href: create-zone-redundant.md
+    - name: Niestandardowe sondy
+      items:
+        - name: Portal
+          href: application-gateway-create-probe-portal.md
+        - name: Klasyczny program PowerShell
+          href: application-gateway-create-probe-classic-ps.md
+        - name: Resource Manager — program PowerShell
+          href: application-gateway-create-probe-ps.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Rozwiązywanie problemów z błędem Zła brama (502)
+          href: application-gateway-troubleshooting-502.md
+        - name: Diagnostyka
+          href: application-gateway-diagnostics.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

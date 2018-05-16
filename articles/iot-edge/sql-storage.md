@@ -10,11 +10,11 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4585e563d59d29ba0a026c992d277e5b0607e681
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Przechowywanie danych na krawędzi, z baz danych programu SQL Server
 
@@ -95,7 +95,7 @@ W kroku 3, możesz dodać utworzyć opcje do kontenera programu SQL Server, któ
         }
    ```
 
-3. Zastąp `<docker registry address>` z adresem w samouczku ukończone [wdrażanie funkcji platformy Azure jako moduł krawędzi IoT - preview](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)
+3. Zastąp `<docker registry address>` z adresem w samouczku ukończone [wdrażanie funkcji platformy Azure jako moduł krawędzi IoT](tutorial-deploy-function.md).
 
    >[!NOTE]
    >Adres rejestru kontenera jest taki sam jak adres serwera logowania skopiowany z rejestru. Powinna być w formie `<your container registry name>.azurecr.io`

@@ -10,6 +10,7 @@
 ## Instrukcje
 ### [Konfiguracja wysokiej dostępności za pomocą metody STONITH](ha-setup-with-stonith.md)
 ### [Kopia zapasowa systemu operacyjnego dla jednostek SKU typu II](os-backup-type-ii-skus.md)
+### [Uaktualnianie systemu operacyjnego dla dużych wystąpień HANA](os-upgrade-hana-large-instance.md)
 # Oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure
 ## [Instalacja SAP HANA z jednym wystąpieniem](hana-get-started.md)
 ## [Rozwiązanie S/4 HANA lub BW/4 HANA SAP CAL — podręcznik wdrażania](cal-s4h.md)

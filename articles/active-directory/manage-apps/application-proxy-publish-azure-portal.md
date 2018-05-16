@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3ab4530047daec9e8cf163b0223109be6b18525b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD
 
@@ -53,7 +53,7 @@ Wykonaj poniższe kroki publikowania aplikacji przy użyciu serwera Proxy aplika
    - **Wewnętrzny adres URL**: adres URL, który umożliwia dostęp do aplikacji z poziomu sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób można publikować różne Lokacje na tym samym serwerze co różnych aplikacji i nadaj każdej z nich własnej nazwy i reguły dostępu.
 
      > [!TIP]
-     > W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład, jeśli Twoja aplikacja znajduje się w https://yourapp/app i przy użyciu obrazów w lokalizacji https://yourapp/media, a następnie należy opublikować https://yourapp/ jako ścieżka. Ten wewnętrzny adres URL nie musi być strony docelowej, które użytkownicy zobaczą. Aby uzyskać więcej informacji, zobacz [ustawić niestandardową stronę główną dla opublikowanych aplikacji](../application-proxy-office365-app-launcher.md).
+     > W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład, jeśli Twoja aplikacja znajduje się w https://yourapp/app i przy użyciu obrazów w lokalizacji https://yourapp/media, a następnie należy opublikować https://yourapp/ jako ścieżka. Ten wewnętrzny adres URL nie musi być strony docelowej, które użytkownicy zobaczą. Aby uzyskać więcej informacji, zobacz [ustawić niestandardową stronę główną dla opublikowanych aplikacji](application-proxy-configure-custom-home-page.md).
 
    - **Zewnętrzny adres URL**: adres Użytkownicy przechodzą do Aby uzyskać dostęp do aplikacji z spoza sieci. Jeśli nie chcesz użyć domyślnej domeny serwera Proxy aplikacji, przeczytaj o [domen niestandardowych w serwera Proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
    - **Wstępne uwierzytelnianie**: jak serwer Proxy aplikacji zweryfikuje użytkowników przed udzieleniem im dostępu do aplikacji. 
@@ -69,7 +69,7 @@ Wykonaj poniższe kroki publikowania aplikacji przy użyciu serwera Proxy aplika
 5. Jeśli to konieczne, należy skonfigurować dodatkowe ustawienia. W przypadku większości aplikacji należy zachować te ustawienia w ich domyślne Stany. 
    - **Limit czasu aplikacji zaplecza**: Ustaw tę wartość na **długi** tylko wtedy, gdy aplikacja jest powolne uwierzytelnienia i połączenia. 
    - **Tłumaczenie adresów URL w nagłówkach**: Zachowaj tę wartość jako **tak** chyba, że aplikacja wymagane oryginalny nagłówek hosta w żądaniu uwierzytelnienia.
-   - **Tłumaczenie adresów URL w treści aplikacji**: Zachowaj tę wartość jako **nr** chyba że zostały zapisane na stałe HTML linki do innych aplikacji lokalnych, a nie używaj domen niestandardowych. Aby uzyskać więcej informacji, zobacz [Link tłumaczenia z serwerem Proxy aplikacji](../application-proxy-link-translation.md).
+   - **Tłumaczenie adresów URL w treści aplikacji**: Zachowaj tę wartość jako **nr** chyba że zostały zapisane na stałe HTML linki do innych aplikacji lokalnych, a nie używaj domen niestandardowych. Aby uzyskać więcej informacji, zobacz [Link tłumaczenia z serwerem Proxy aplikacji](application-proxy-configure-hard-coded-link-translation.md).
    
    ![Konfigurowanie aplikacji](./media/application-proxy-publish-azure-portal/additional-settings.png)
 
@@ -99,6 +99,6 @@ W przeglądarce przejdź do zewnętrznego adresu URL skonfigurowanego w kroku pu
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Pobierz łączniki](application-proxy-enable.md) i [tworzenie grup łącznika](../active-directory-application-proxy-connectors-azure-portal.md) do publikowania aplikacji w różnych sieciach i lokalizacji.
+- [Pobierz łączniki](application-proxy-enable.md) i [tworzenie grup łącznika](application-proxy-connector-groups.md) do publikowania aplikacji w różnych sieciach i lokalizacji.
 
-- [Konfigurowanie rejestracji jednokrotnej](../application-proxy-sso-azure-portal.md) nowo opublikowanych aplikacji
+- [Konfigurowanie rejestracji jednokrotnej](application-proxy-configure-single-sign-on-password-vaulting.md) nowo opublikowanych aplikacji

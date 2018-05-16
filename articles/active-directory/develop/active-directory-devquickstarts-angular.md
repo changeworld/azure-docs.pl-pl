@@ -3,29 +3,31 @@ title: Azure AD AngularJS, wprowadzenie | Dokumentacja firmy Microsoft
 description: Sposób tworzenia aplikacji jednostronicowej AngularJS, która integruje się z usługą Azure AD, logowania i wywołuje Azure interfejsów API, które są chronione przez usługi AD za pomocą uwierzytelniania OAuth.
 services: active-directory
 documentationcenter: ''
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2f78a6b17a512ab54ffab4554ccc0f3f1486f27a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b99ce605d9ecea6c7d67ab9a2ea679d531787d7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS, wprowadzenie
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure Active Directory (Azure AD) powoduje, że proste i bezpośrednie dodanie logowania, wylogowywania i bezpieczny OAuth interfejs API wywołuje do aplikacji jednej strony.  Umożliwia aplikacji do uwierzytelniania użytkowników przy użyciu ich kont usługi Active Directory systemu Windows Server i korzystać z dowolnej sieci web interfejsu API usługi Azure AD pozwala to chronić, takich jak interfejsami API usługi Office 365 lub interfejsu API platformy Azure.
+Azure Active Directory (Azure AD) powoduje, że proste i bezpośrednie dodanie logowania, wylogowywania i bezpieczny OAuth interfejs API wywołuje do aplikacji jednej strony. Umożliwia aplikacji do uwierzytelniania użytkowników przy użyciu ich kont usługi Active Directory systemu Windows Server i korzystać z dowolnej sieci web interfejsu API usługi Azure AD pozwala to chronić, takich jak interfejsami API usługi Office 365 lub interfejsu API platformy Azure.
 
 W przypadku aplikacji JavaScript działającego w przeglądarce usługa Azure AD zapewnia Active Directory Authentication Library (ADAL) lub adal.js. Jest wyłącznie w celu adal.js umożliwia łatwe uzyskanie tokenów dostępu do aplikacji. Aby zademonstrować, jak łatwo jest, w tym miejscu będzie budujemy aplikacji AngularJS listy zadań do wykonania który:
 
@@ -53,7 +55,7 @@ Aby umożliwić aplikacji w celu uwierzytelniania użytkowników i uzyskać toke
 5. Postępuj zgodnie z monitami i utworzyć nową aplikację sieci web i/lub interfejs API sieci web:
   * **Nazwa** opisuje aplikacji dla użytkowników.
   * **Adres URL logowania na** to lokalizacja, do której usługi Azure AD zwróci tokenów. Domyślna lokalizacja dla tego przykładu `https://localhost:44326/`.
-6. Po zakończeniu rejestracji usługi Azure AD przypisuje unikatowy identyfikator aplikacji do aplikacji.  Ta wartość jest potrzebny w kolejnych sekcjach, dlatego skopiuj go na karcie aplikacji.
+6. Po zakończeniu rejestracji usługi Azure AD przypisuje unikatowy identyfikator aplikacji do aplikacji. Ta wartość jest potrzebny w kolejnych sekcjach, dlatego skopiuj go na karcie aplikacji.
 7. Adal.js używa niejawnego przepływu OAuth do komunikowania się z usługą Azure AD. Należy włączyć niejawnego przepływu aplikacji:
   1. Kliknij aplikację, a następnie wybierz **manifestu** aby otworzyć Edytor manifestu w tekście.
   2. Zlokalizuj `oauth2AllowImplicitFlow` właściwości. Ustaw dla niego wartość `true`.
@@ -118,11 +120,11 @@ Adal.js integruje się z AngularJS trasy i dostawców HTTP, więc bezpiecznego p
     ```
 
 ## <a name="summary"></a>Podsumowanie
-Masz teraz bezpiecznego aplikacji jednej strony, który można zarejestrować użytkowników i wysyłania żądań chronionego tokenu elementu nośnego do jego interfejs API zaplecza. Gdy użytkownik kliknie **TodoList** łącza, adal.js spowoduje automatyczne przekierowanie do usługi Azure AD dla logowania w razie potrzeby. Ponadto adal.js automatycznie dołączą token dostępu do żadnych żądania Ajax, które są wysyłane do zaplecza aplikacji.  
+Masz teraz bezpiecznego aplikacji jednej strony, który można zarejestrować użytkowników i wysyłania żądań chronionego tokenu elementu nośnego do jego interfejs API zaplecza. Gdy użytkownik kliknie **TodoList** łącza, adal.js spowoduje automatyczne przekierowanie do usługi Azure AD dla logowania w razie potrzeby. Ponadto adal.js automatycznie dołączą token dostępu do żadnych żądania Ajax, które są wysyłane do zaplecza aplikacji. 
 
 Te czynności są systemu od zera minimalna niezbędnych do tworzenia aplikacji jednej strony przy użyciu adal.js. Jednak kilka innych funkcji są przydatne w aplikacji jednej strony:
 
-* Aby jawnie wysyłania żądań zalogowania się i wylogowania, można zdefiniować funkcje w kontrolerach, które wywołują adal.js.  W `App/Scripts/homeCtrl.js`:
+* Aby jawnie wysyłania żądań zalogowania się i wylogowania, można zdefiniować funkcje w kontrolerach, które wywołują adal.js. W `App/Scripts/homeCtrl.js`:
 
     ```js
     ...
@@ -143,7 +145,7 @@ Te czynności są systemu od zera minimalna niezbędnych do tworzenia aplikacji 
     ...
     ```
 
-* Istnieje wiele scenariuszy, w których należy sprawdzić, czy użytkownik jest zalogowany. Można również użyć `userInfo` obiektu zebranie tych informacji.  Na przykład w `index.html`, można wyświetlić **logowania** lub **wylogowania** przycisk na podstawie uwierzytelniania stanu:
+* Istnieje wiele scenariuszy, w których należy sprawdzić, czy użytkownik jest zalogowany. Można również użyć `userInfo` obiektu zebranie tych informacji. Na przykład w `index.html`, można wyświetlić **logowania** lub **wylogowania** przycisk na podstawie uwierzytelniania stanu:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>

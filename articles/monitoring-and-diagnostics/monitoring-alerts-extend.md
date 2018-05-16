@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25dcbad8607a651a7dd4b79f4f418cc473a2bf0e
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Rozszerzanie alerty (Kopiuj) z portalu OMS na platformie Azure
 Portal Operations Management Suite (OMS) wyświetlane tylko alerty analizy dzienników.  Nowe środowisko alertów ma teraz zintegrowane środowisko alertów w różnych usług i części na platformie Microsoft Azure. Nowe środowisko dostępna jako **alerty** w obszarze Monitor Azure w usłudze Azure portalu zawiera alertów dotyczących działań w dzienniku, metryki alertów i dziennika alerty dla analizy dzienników i usługi Application Insights. 
@@ -36,7 +36,10 @@ Oprócz korzyści naliczone w nie ma potrzeby przejść z portalu Azure istniej�
 ## <a name="process-of-extending-your-alerts"></a>Proces rozszerzania alerty
 Proces rozszerzania alerty z portalu OMS na platformie Azure, nie **nie** wymaga zmian w definicji alertu, w zapytania lub w konfiguracji w dowolny sposób. Tylko zmiany wymagane jest, że na platformie Azure, wszystkie akcje, takie jak powiadomienia e-mail wywołanie elementu webhook i uruchamiania elementu runbook automatyzacji lub nawiązywania Zarządzanie usługami IT — tool są wykonywane za pośrednictwem grupy działań. Dlatego jeśli grupa odpowiednich akcji skojarzonych z alertu - one zostaną stają się rozszerzone na platformie Azure.
 
-Ponieważ proces rozszerzenia jest bezpieczna i nie interruptive, firma Microsoft rozszerzy alerty utworzone w portalu OMS na alerty Azure automatycznie — począwszy od **14 maja 2018**. Od tego dnia Microsoft rozpocznie się zaplanować rozszerzanie alerty na platformie Azure i stopniowo wszystkie alerty w portalu OMS, można zarządzać z portalu Azure. 
+Ponieważ proces rozszerzenia jest bezpieczna i nie interruptive, firma Microsoft rozszerzy alerty utworzone w portalu OMS na alerty Azure automatycznie — począwszy od **14 maja 2018**. Od tego dnia Microsoft rozpocznie się zaplanować rozszerzanie alerty na platformie Azure i stopniowo w portalu OMS, można zarządzać z portalu Azure, a także wszystkie alerty. 
+
+> [!NOTE]
+> Uruchamianie 14 maja 2018 - Microsoft rozpocznie się proces automatycznie rozszerzanie alerty na platformie Azure. Nie wszystkie obszary robocze i alertów zostanie rozszerzony w tym dniu; Zamiast tego Microsoft rozpocznie rozszerzyć alerty automatycznie w transzach w przyszłych tygodni. Dlatego alerty w portalu OMS nie auto rozszerzy na platformie Azure natychmiast na 14 maja 2018 i użytkownika mogą w dalszym ciągu [ręcznie rozszerzyć alerty](monitoring-alerts-extend-tool.md) w tym czasie.
 
 Gdy alerty w obszarze roboczym analizy dzienników są planowane do rozszerzania na platformie Azure, użytkownik będzie nadal działać i zostanie **nie** w żaden sposób naruszyć monitorowanie. Podczas planowania alerty mogą być niedostępne do edycji/modyfikacji tymczasowo; ale nowe alerty Azure mogą w dalszym ciągu można tworzyć w tym krótkim czasie. W tym czasie Jeśli wszystkie edytowania lub tworzenia alertu można to zrobić w portalu OMS, użytkownicy będą mieć opcję, aby kontynuować do Azure Log Analytics lub Azure alerty.
 
@@ -61,7 +64,7 @@ Do żadnej operacji dotyczących alertów, takie jak edytowania lub tworzenia zr
 > [!NOTE]
 > Gdy użytkownicy niewidocznie wpłynie na platformie Azure, na dodanie lub edytować akcję na alert w OMS — upewnij się, użytkownicy są prawidłowo zamapowane odpowiedni [uprawnienia za pomocą monitora Azure i alerty](monitoring-roles-permissions-security.md)
 
-Alert będzie tworzenia z istniejącego [API analizy dziennika](../log-analytics/log-analytics-api-alerts.md) jak wcześniej, tylko drobne zmiany że po alerty zostały rozszerzone na platformie Azure — grup akcji musiałby być skojarzone w harmonogramie.
+Alert będzie tworzenia z istniejącego [API analizy dziennika](../log-analytics/log-analytics-api-alerts.md) i [dziennika analizy zasobów szablonu](../monitoring/monitoring-solutions-resources-searches-alerts.md) jak wcześniej, tylko drobne zmiany podpisu po alerty zostały rozszerzone na platformie Azure - grupy akcji musi być skojarzony w harmonogramie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

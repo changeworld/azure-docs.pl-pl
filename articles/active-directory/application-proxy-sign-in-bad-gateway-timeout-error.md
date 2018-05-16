@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f57b470208ab3bd071b83c0736efa739c7e70363
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Błąd "Nie można uzyskać dostępu do tej aplikacji firmowych" podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -95,7 +95,7 @@ Aby sprawdzić, czy wszystkie wymagane porty są otwarte, zobacz dokumentację n
 
 Jeśli żaden z powyższych rozwiązać ten problem, następnym krokiem jest Wyszukaj problemy lub błędy z łącznik sam. Można wyświetlić niektórych typowych błędów w [Rozwiązywanie problemów dotyczących dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
 
-Można również sprawdzić bezpośrednio w dziennikach łącznika, aby zidentyfikować wszelkie błędy. Wiele komunikatów o błędach udostępnianie zalecenia dotyczące poprawki. Aby wyświetlić dzienniki, zobacz [dokumentacji łączniki](application-proxy-understand-connectors.md#under-the-hood).
+Można również sprawdzić bezpośrednio w dziennikach łącznika, aby zidentyfikować wszelkie błędy. Wiele komunikatów o błędach udostępnianie zalecenia dotyczące poprawki. Aby wyświetlić dzienniki, zobacz [dokumentacji łączniki](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="additional-resolutions"></a>Dodatkowe rozwiązania
 
@@ -107,7 +107,7 @@ Teraz Otwórz przeglądarkę i spróbuj uzyskać dostęp do aplikacji ponownie. 
 
 Jeśli będziesz kontynuować wyświetlić ten błąd, przejdź do komputera, na którym zainstalowano łącznik, otwórz przeglądarkę i próbują uzyskać dostęp wewnętrzny adres URL używany dla aplikacji. Łącznik działa jak innego klienta z tym samym komputerze. Jeśli nie można uzyskać dostęp do aplikacji, sprawdź, dlaczego tej maszynie jest w stanie połączyć aplikacji lub używać łącznika na serwerze, który jest w stanie uzyskać dostępu do aplikacji.
 
-Jeśli można uzyskać dostęp do aplikacji z tego komputera, aby wyszukać problemy lub błędy łącznik sam. Można wyświetlić niektórych typowych błędów w [Rozwiązywanie problemów dotyczących dokumentu](active-directory-application-proxy-troubleshoot.md#connector-errors). Można również sprawdzić bezpośrednio w dziennikach łącznika, aby zidentyfikować wszelkie błędy. Wiele z naszych komunikaty o błędach można udostępnić bardziej szczegółowe zalecenia dotyczące poprawki. Aby dowiedzieć się wyświetlić dzienniki, zobacz [naszej dokumentacji łączniki](application-proxy-understand-connectors.md#under-the-hood).
+Jeśli można uzyskać dostęp do aplikacji z tego komputera, aby wyszukać problemy lub błędy łącznik sam. Można wyświetlić niektórych typowych błędów w [Rozwiązywanie problemów dotyczących dokumentu](active-directory-application-proxy-troubleshoot.md#connector-errors). Można również sprawdzić bezpośrednio w dziennikach łącznika, aby zidentyfikować wszelkie błędy. Wiele z naszych komunikaty o błędach można udostępnić bardziej szczegółowe zalecenia dotyczące poprawki. Aby dowiedzieć się wyświetlić dzienniki, zobacz [naszej dokumentacji łączniki](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](application-proxy-understand-connectors.md)
+[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md)

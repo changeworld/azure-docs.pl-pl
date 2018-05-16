@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 09d17f9f70ef352fe8d44a16c0f78323153a8a1a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c090a3fc36c300a108f10f02d0b663dc1e29f986
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Jak skonfigurować logowanie jednokrotne do aplikacji serwera Proxy aplikacji
 
@@ -37,7 +37,7 @@ Skonfiguruj typ logowania jednokrotnego. Metody logowania są klasyfikowane, opa
 
 -   **Zintegrowane uwierzytelnianie systemu Windows**: w przypadku aplikacji przy użyciu zintegrowanego uwierzytelniania systemu Windows (IWA) rejestracji jednokrotnej jest włączona za pośrednictwem protokołu Kerberos ograniczonego delegowania (KCD). Ta metoda zapewnia uprawnienia łączniki serwera Proxy aplikacji w usłudze Active Directory umożliwiające personifikowanie użytkowników i do wysyłania i odbierania tokenów w ich imieniu. Szczegółowe informacje na temat konfigurowania KCD znajdują się w [rejestracji jednokrotnej z dokumentacją KCD](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md).
 
--   **Na podstawie nagłówka logowania jednokrotnego**: na podstawie nagłówka logowania jest włączona za pośrednictwem powiązania i wymagać dodatkowej konfiguracji. Aby uzyskać szczegółowe informacje o współpracy i instrukcje krok po kroku dotyczące konfigurowania rejestracji jednokrotnej do aplikacji, która używa nagłówki uwierzytelniania, zobacz [PingAccess dokumentacji usługi Azure AD](application-proxy-ping-access.md).
+-   **Na podstawie nagłówka logowania jednokrotnego**: na podstawie nagłówka logowania jest włączona za pośrednictwem powiązania i wymagać dodatkowej konfiguracji. Aby uzyskać szczegółowe informacje o współpracy i instrukcje krok po kroku dotyczące konfigurowania rejestracji jednokrotnej do aplikacji, która używa nagłówki uwierzytelniania, zobacz [PingAccess dokumentacji usługi Azure AD](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md).
 
 Każdą z tych opcji można znaleźć, przechodząc do aplikacji w "Aplikacje przedsiębiorstwa" i otwieranie **rejestracji jednokrotnej** strony w menu po lewej stronie. należy pamiętać, że jeśli aplikacja została utworzona w starego portalu, mogą nie być widoczne wszystkie te opcje.
 

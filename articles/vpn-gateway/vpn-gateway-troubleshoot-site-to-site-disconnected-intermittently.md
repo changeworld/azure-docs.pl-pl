@@ -1,24 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z Azure sporadycznie zakończy połączenie sieci VPN typu lokacja-lokacja | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązać problem, w którym połączenie sieci VPN typu lokacja-lokacja rozłączone regularnie."
+title: Rozwiązywanie problemów z Azure sporadycznie zakończy połączenie sieci VPN typu lokacja-lokacja | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać problem, w którym połączenie sieci VPN typu lokacja-lokacja rozłączone regularnie.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9bcf30fbf1febbd80aa8899253de8cb61f4ae6f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c827469080195054d4ff70ab72fc123365a73df
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Rozwiązywanie problemów: Azure VPN lokacja-lokacja rozłącza sporadycznie
 
@@ -26,7 +26,7 @@ Może wystąpić problem, że nowe lub istniejące połączenie sieci VPN typu l
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Rozwiązywanie problemów
+## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
 
 ### <a name="prerequisite-step"></a>Krok wymagań wstępnych
 
@@ -69,7 +69,7 @@ Brama sieci wirtualnej na podstawie zasad ma limit 200 pary skojarzenia zabezpie
 
 **Doskonałego utajnienia** funkcji może spowodować problemy rozłączenia. Jeśli urządzenie sieci VPN ma **doskonała utajnienie** włączyć, wyłączyć tę funkcję. Następnie [aktualizacji zasad protokołu IPsec bramy sieci wirtualnej](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Skonfiguruj połączenie lokacja-lokacja sieci wirtualnej](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [Skonfiguruj zasady IPsec i IKE dla połączenia sieci VPN typu lokacja-lokacja](vpn-gateway-ipsecikepolicy-rm-powershell.md)

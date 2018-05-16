@@ -3,23 +3,25 @@ title: Typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory 
 description: Typy aplikacji i scenariusze obsługiwane przez punktu końcowego v2.0 usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
-ms.author: hpsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 291cd1adaf36d7f02aae84f97b7f7b3e6bca2c9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 134199c879f6793cb4ed0a88cf0593786341f6d8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) obsługuje uwierzytelnianie dla różnych architektur nowoczesnych aplikacji, wszystkie z nich oparte na standardowych protokołach [OAuth 2.0 lub OpenID Connect](active-directory-v2-protocols.md). W tym artykule opisano typy aplikacji, które można tworzyć przy użyciu usługi Azure AD w wersji 2.0, niezależnie od tego, czy z preferowanego języka lub platformy. Informacje przedstawione w tym artykule zaprojektowano w celu ułatwić zrozumienie ogólnych scenariuszy przed [rozpocząć pracę z kodem](active-directory-appmodel-v2-overview.md#getting-started).
@@ -95,7 +97,7 @@ Interfejs API sieci Web może odbierać tokeny dostępu z niektórych typów apl
 
 Aby dowiedzieć się, jak zabezpieczyć interfejs API sieci Web przy użyciu tokenów dostępu protokołu OAuth2, zapoznaj się z próbek kodu interfejsu API sieci Web w naszym [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
 
-W wielu przypadkach interfejsów API sieci web muszą również wprowadzić inne podrzędne interfejsów API zabezpieczonej przez usługi Azure Active Directory w sieci web żądania wychodzącego.  Aby to zrobić, interfejsów API sieci web można korzystać z usługi Azure AD **w imieniu z** przepływu, dzięki czemu interfejsu API sieci web do programu exchange przychodzący token dostępu o inny token dostępu ma być używana podczas żądania wychodzącego.  Punktem końcowym v2.0 w imieniu przepływu jest opisany w [szczegółowo opisano w tym miejscu](active-directory-v2-protocols-oauth-on-behalf-of.md).
+W wielu przypadkach interfejsów API sieci web muszą również wprowadzić inne podrzędne interfejsów API zabezpieczonej przez usługi Azure Active Directory w sieci web żądania wychodzącego. Aby to zrobić, interfejsów API sieci web można korzystać z usługi Azure AD **w imieniu z** przepływu, dzięki czemu interfejsu API sieci web do programu exchange przychodzący token dostępu o inny token dostępu ma być używana podczas żądania wychodzącego. Punktem końcowym v2.0 w imieniu przepływu jest opisany w [szczegółowo opisano w tym miejscu](active-directory-v2-protocols-oauth-on-behalf-of.md).
 
 ## <a name="mobile-and-native-apps"></a>Aplikacje mobilne i natywne
 Aplikacje zainstalowane urządzenie, takie jak aplikacji mobilnych i klasycznych, często muszą uzyskiwać dostęp do usług zaplecza lub interfejsów API sieci Web, które przechowują dane i funkcji w imieniu użytkownika. Tych aplikacji można dodać logowania i autoryzacji do usług zaplecza przy użyciu [przepływu kodu autoryzacji protokołu OAuth 2.0](active-directory-v2-protocols-oauth-code.md).

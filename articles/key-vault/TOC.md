@@ -1,7 +1,7 @@
 # [Dokumentacja usługi Key Vault](index.yml)
 
 # Omówienie
-## [Omówienie usługi Key Vault](key-vault-overview.md)
+## [Informacje o usłudze Key Vault](key-vault-overview.md)
 
 # Przewodniki Szybki start
 ## [Tworzenie magazynu kluczy — interfejs wiersza polecenia](quick-create-cli.md)
@@ -65,8 +65,8 @@
 ## [Omówienie usługi](https://azure.microsoft.com/services/key-vault/)
 ## [Informacje o kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
 ### [Rozpoczynanie pracy z certyfikatami](certificate-scenarios.md)
-#### [Metody tworzenia certyfikatów](create-certificate.md)
-#### [Monitorowanie tworzenia certyfikatów i zarządzanie nim](create-certificate-scenarios.md)
+### [Metody tworzenia certyfikatów](create-certificate.md)
+### [Monitorowanie tworzenia certyfikatów i zarządzanie nim](create-certificate-scenarios.md)
 ## [Uwierzytelnianie, żądania i odpowiedzi](authentication-requests-and-responses.md)
 ## [Wspólne parametry i nagłówki](common-parameters-and-headers.md)
 ## [Wersje magazynu kluczy](key-vault-versions.md)

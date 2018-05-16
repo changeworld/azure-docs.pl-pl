@@ -3,27 +3,29 @@ title: Biblioteki uwierzytelniania v2.0 w usłudze Azure Active Directory | Doku
 description: Zgodny klient biblioteki i bibliotek oprogramowania pośredniczącego serwera i powiązane biblioteki, źródła i łączy próbek, dla punktu końcowego v2.0 usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: SaeedAkhter-MSFT
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2018
-ms.author: saeeda
+ms.author: celested
+ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4bcf4854198e7c5f3861a39484a047adcbc1d797
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8fe3db09acbdec606f25d0bc81300bc4f5e87411
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Biblioteki uwierzytelniania v2.0 w usłudze Azure Active Directory
 
-[Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) obsługuje standardowych protokołów uwierzytelniania OAuth 2.0 i OpenID Connect 1.0. Biblioteka uwierzytelniania firmy Microsoft (MSAL) jest przeznaczona do pracy z punktem końcowym v2.0 usługi Azure AD.  Istnieje również możliwość użycia bibliotek open source, które obsługują OAuth 2.0 i OpenID Connect 1.0.
+[Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) obsługuje standardowych protokołów uwierzytelniania OAuth 2.0 i OpenID Connect 1.0. Biblioteka uwierzytelniania firmy Microsoft (MSAL) jest przeznaczona do pracy z punktem końcowym v2.0 usługi Azure AD. Istnieje również możliwość użycia bibliotek open source, które obsługują OAuth 2.0 i OpenID Connect 1.0.
 
 Zalecane jest użycie biblioteki napisane przez ekspertów domeny protokołu, Obserwujący metodologii Security Development Lifecycle (SDL), są tak samo, jak [co następuje Microsoft][Microsoft-SDL]. Jeśli zdecydujesz się kodu strony Obsługa protokołów, wykonaj metodologii, jak SDL firmy Microsoft i płatności zamknąć uwagę zagadnienia dotyczące zabezpieczeń w specyfikacji standardów dla każdego protokołu.
 

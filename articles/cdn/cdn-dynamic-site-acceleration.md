@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akceleracja dynamiczne witryny za pomocą usługi Azure CDN
 
@@ -158,7 +158,7 @@ Dostęp do reguły buforowania:
 
 1. Z **profilu CDN** strony, w obszarze Ustawienia zaznacz **buforowanie reguły**.  
     
-    ![Przycisk reguły buforowania CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+    ![Przycisk Reguły buforowania usługi CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
     **Buforowanie reguły** zostanie otwarta strona.
 
@@ -183,9 +183,6 @@ Aby uzyskać dostęp do aparatu reguł:
 Alternatywnie można użyć dwóch punktów końcowych usługi CDN: jeden punkt końcowy zoptymalizowane z DSA dynamicznych zasobów i innym punktem końcowym zoptymalizowanych pod kątem typu statycznego optymalizacji, takie jak ogólne dostarczania sieci web, do dostarczania buforowalnej zasobów. Zmodyfikuj adresami URL strony sieci Web bezpośrednio do elementu zawartości w punkcie końcowym CDN, który ma być używany. 
 
 Na przykład: `mydynamic.azureedge.net/index.html` stronę dynamicznego i jest załadowany z punktu końcowego DSA.  Strony html odwołuje się do wielu zasobów statycznych, takich jak biblioteki języka JavaScript lub obrazów, które są ładowane z statycznego punktu końcowego usługi CDN, takich jak `mystatic.azureedge.net/banner.jpg` i `mystatic.azureedge.net/scripts.js`. 
-
-Na przykład o sposobie używania kontrolerów w aplikacji sieci web ASP.NET do obsługi zawartości przy użyciu określonego adresu URL usługi CDN, zobacz [udostępniać zawartość z akcji kontrolera, za pomocą usługi Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller).
-
 
 
 

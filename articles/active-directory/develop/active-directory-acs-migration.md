@@ -3,22 +3,24 @@ title: Migrowanie z usługi kontroli dostępu platformy Azure | Dokumentacja fir
 description: Opcje przenoszenia aplikacje i usługi z usługi kontroli dostępu platformy Azure
 services: active-directory
 documentationcenter: dev-center-name
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
-ms.author: dastrock
-ms.openlocfilehash: 6c22f85d3e76a005c45a4679ddfd8948a46acffc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: celested
+ms.reviewer: dastrock
+ms.openlocfilehash: c1c86f21d5a99cf251b0b83f41576c2cdaf96dfb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrowanie z usługi kontroli dostępu platformy Azure
 
@@ -71,7 +73,7 @@ Oto harmonogram wycofano składniki kontroli dostępu:
 - **7 listopada 2018**: kontrola dostępu wszystkie składniki są trwale zamknąć. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Należy poddano migracji wszystkich istniejących aplikacji i usług do innych technologii również przed upływem wskazanego terminu.
 
 
-## <a name="migration-strategies"></a>Strategii migracji
+## <a name="migration-strategies"></a>Strategie migracji
 
 W poniższych sekcjach opisano ogólne zalecenia dotyczące migrowania kontroli dostępu do innych technologii firmy Microsoft.
 
@@ -252,7 +254,7 @@ W takich przypadkach możesz rozważyć migrowanie aplikacji sieci web do innej 
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) to usługa tożsamości w chmurze elastyczne utworzył [migracji ogólne wskazówki dotyczące klientów kontroli dostępu](https://auth0.com/acs)i obsługuje prawie wszystkich funkcji, który wykonuje ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Tożsamość ping](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. Usługi tożsamości chmury, która obsługuje wiele te same funkcje co ACS jest PingOne i PingFederate jest podobny produkt tożsamości lokalnych, który zapewnia większą elastyczność. Zapoznaj się [wskazówki wycofanie usług ACS na polecenie Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat używania tych produktów.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Tożsamość ping](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. Usługi tożsamości chmury, która obsługuje wiele te same funkcje co ACS jest PingOne i PingFederate jest podobny produkt tożsamości lokalnych, który zapewnia większą elastyczność. Zapoznaj się [wskazówki wycofanie usług ACS na polecenie Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat używania tych produktów. |
 
 Praca z tożsamości Ping i Auth0 naszym celem jest zapewnienie wszystkich klientów kontroli dostępu ścieżki migracji dla usług i aplikacji, która zminimalizować ilość pracy wymaganej w celu przeniesienia z kontroli dostępu.
 
@@ -277,7 +279,7 @@ Dla usług sieci web, które są zabezpieczone przy użyciu tokenów wystawionyc
 - Obsługę następujących formatów tokenu: token JWT, SAML 1.1 SAML 2.0 i SWT.
 - Reguły przekształcania tokenu proste.
 
-Usługa tożsamości w kontroli dostępu są zwykle używane do uwierzytelniania serwera do zaimplementowania.  
+Usługa tożsamości w kontroli dostępu są zwykle używane do uwierzytelniania serwera do zaimplementowania. 
 
 #### <a name="migrate-to-azure-active-directory"></a>Migracja do usługi Azure Active Directory
 
@@ -314,7 +316,7 @@ W takich sytuacjach należy rozważyć migrowanie aplikacji sieci web do innej u
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) to usługa tożsamości w chmurze elastyczne utworzył [migracji ogólne wskazówki dotyczące klientów kontroli dostępu](https://auth0.com/acs)i obsługuje prawie wszystkich funkcji, który wykonuje ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Tożsamość ping](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. Usługi tożsamości chmury, która obsługuje wiele te same funkcje co ACS jest PingOne i PingFederate jest podobny produkt tożsamości lokalnych, który zapewnia większą elastyczność. Zapoznaj się [wskazówki wycofanie usług ACS na polecenie Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat używania tych produktów.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Tożsamość ping](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. Usługi tożsamości chmury, która obsługuje wiele te same funkcje co ACS jest PingOne i PingFederate jest podobny produkt tożsamości lokalnych, który zapewnia większą elastyczność. Zapoznaj się [wskazówki wycofanie usług ACS na polecenie Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat używania tych produktów. |
 
 Praca z tożsamości Ping i Auth0 naszym celem jest zapewnienie wszystkich klientów kontroli dostępu ścieżki migracji dla usług i aplikacji, która zminimalizować ilość pracy wymaganej w celu przeniesienia z kontroli dostępu.
 

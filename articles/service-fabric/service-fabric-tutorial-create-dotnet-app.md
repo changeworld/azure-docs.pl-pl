@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/29/2018
+ms.date: 04/30/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7840dc86ec7753980bb2c35f932f132c50d65f9e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 Niniejszy samouczek jest pierwszą częścią serii.  Zostanie tutaj przedstawiony sposób tworzenia aplikacji usługi Azure Service Fabric za pomocą frontonu internetowego interfejsu API platformy ASP.NET Core i stanowej usługi zaplecza umożliwiającej przechowywanie danych. Po zakończeniu będziesz mieć aplikację do głosowania z usługą internetową frontonu ASP.NET Core, która zapisuje wyniki głosowania w stanowej usłudze zaplecza w klastrze. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania, możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ukończonej aplikacji i przejść od razu do sekcji [Szczegółowe omówienie przykładowej aplikacji do głosowania](#walkthrough_anchor).  Jeśli wolisz, możesz też obejrzeć [przewodnik wideo](https://channel9.msdn.com/Events/Connect/2017/E100) dla tego samouczka.
@@ -460,13 +460,24 @@ namespace VotingData.Controllers
 }
 ```
 
-
 ## <a name="connect-the-services"></a>Łączenie usług
 W następnym kroku połączysz te dwie usługi i sprawisz, że aplikacja internetowa frontonu będzie pobierała z usługi zaplecza informacje o głosowaniu i ustawiała je.
 
 Usługa Service Fabric zapewnia pełną elastyczność w sposobie komunikowania się z niezawodnymi usługami. W obrębie pojedynczej aplikacji mogą istnieć usługi, które są dostępne za pośrednictwem protokołu TCP. Inne usługi mogą być dostępne za pośrednictwem interfejsu API REST protokołu HTTP, a jeszcze inne za pośrednictwem gniazd internetowych. Aby zapoznać się z opisem dostępnych opcji i zastosowanych technologii, zobacz [Communicating with services](service-fabric-connect-and-communicate-with-services.md) (Komunikacja z usługami).
 
-W tym samouczku zostanie użyty [internetowy interfejs API platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
+W tym samouczku użyj [internetowego interfejsu API platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) oraz [zwrotnego serwera proxy platformy Service Fabric](service-fabric-reverseproxy.md), aby usługa frontonu sieci Web mogła komunikować się z usługą danych zaplecza. Zwrotny serwer proxy jest zazwyczaj skonfigurowany do używania portu 19081. Port jest ustawiany w szablonie ARM używanym do konfigurowania klastra. Aby sprawdzić, który port jest używany, należy poszukać go w szablonie klastra w zasobie **Microsoft.ServiceFabric/clusters**:
+
+```json
+"nodeTypes": [
+          {
+            ...
+            "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+            "isPrimary": true,
+            "vmInstanceCount": "[parameters('nt0InstanceCount')]",
+            "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]"
+          }
+        ],
+```
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 

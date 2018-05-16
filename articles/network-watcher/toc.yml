@@ -17,6 +17,12 @@
   items:
     - name: Diagnozowanie problemu z routingiem maszyny wirtualnej
       href: diagnose-vm-network-routing-problem.md
+    - name: Monitorowanie komunikacji między maszynami wirtualnymi
+      href: connection-monitor.md
+    - name: Diagnozowanie problemu z komunikacją między sieciami
+      href: diagnose-communication-problem-between-networks.md
+    - name: Rejestrowanie ruchu w sieci maszyn wirtualnych
+      href: network-watcher-nsg-flow-logging-portal.md
 - name: Pojęcia
   items:
     - name: Diagnozowanie problemów z filtrowaniem ruchu sieciowego na maszynie wirtualnej
@@ -33,8 +39,8 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Widok sieciowych grup zabezpieczeń
       href: network-watcher-security-group-view-overview.md
-    - name: Wyświetlanie topologii sieci
-      href: network-watcher-topology-overview.md
+    - name: Uprawnienia w kontroli dostępu opartej na rolach
+      href: required-rbac-permissions.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Konfigurowanie usługi Network Watcher
@@ -87,14 +93,10 @@
                   href: network-watcher-intrusion-detection-open-source-tools.md
                 - name: Wizualizowanie wzorców ruchu sieciowego za pomocą narzędzi typu „open source”
                   href: network-watcher-using-open-source-tools.md
-    - name: Monitorowanie połączeń sieciowych
-      href: connection-monitor.md
     - name: Praca z sieciowymi grupami zabezpieczeń
       items:
         - name: Konfigurowanie dzienników przepływu sieciowych grup zabezpieczeń
           items:
-            - name: Azure Portal
-              href: network-watcher-nsg-flow-logging-portal.md
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
             - name: Interfejs wiersza polecenia platformy Azure
@@ -136,8 +138,6 @@
       items:
         - name: Rozwiązywanie problemów
           items:
-            - name: Azure Portal
-              href: network-watcher-troubleshoot-manage-portal.md
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
             - name: Interfejs wiersza polecenia platformy Azure
@@ -151,15 +151,7 @@
         - name: Diagnozowanie połączeń lokalnych za pomocą usługi VPN Gateway
           href: network-watcher-diagnose-on-premises-connectivity.md
     - name: Wyświetlanie topologii sieci
-      items:
-        - name: Azure PowerShell
-          href: network-watcher-topology-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: network-watcher-topology-cli.md
-        - name: Interfejs wiersza polecenia platformy Azure CLI w wersji 1.0
-          href: network-watcher-topology-cli-nodejs.md
-        - name: REST
-          href: network-watcher-topology-rest.md
+      href: view-network-topology.md
     - name: Określanie względnego opóźnienia między lokalizacją a regionem świadczenia usługi Azure
       href: view-relative-latencies.md
 - name: Dokumentacja

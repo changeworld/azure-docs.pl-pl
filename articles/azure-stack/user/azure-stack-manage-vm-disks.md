@@ -1,52 +1,69 @@
 ---
-title: "Zarządzanie dyskami maszyny Wirtualnej w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Udostępnić dyski dla maszyn wirtualnych Azure stosu."
+title: Zarządzanie dyskami maszyny Wirtualnej w stosie Azure | Dokumentacja firmy Microsoft
+description: Udostępnić dyski dla maszyn wirtualnych Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 0c36e2eaaf2d266842b2b7de0b0c8dc0ed1e0145
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
-ms.translationtype: MT
+ms.openlocfilehash: 314c5b51608192719c77ce143b3530f0bb310bc2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="virtual-machine-disk-storage-for-azure-stack"></a>Magazyn dyskowy maszyny wirtualnej Azure stosu
+# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Obsługę magazynowania dysku maszyny wirtualnej Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Stos Azure obsługuje korzystanie z [niezarządzanych dysków](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na maszynie wirtualnej jako dysk systemu operacyjnego (systemu operacyjnego) oraz dysk z danymi. Aby używać dysków niezarządzane, należy utworzyć [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) , a następnie zapisywania tych dysków jako stronicowe obiekty BLOB w kontenerach w ramach konta magazynu. Dyski te są następnie określane jako dyski maszyny Wirtualnej.
+W tym artykule opisano, jak zainicjować magazynu danych na dysku maszyny wirtualnej przy użyciu portalu Azure stosu lub przy użyciu programu PowerShell.
 
-Do zwiększenia wydajności i zmniejszenia kosztów zarządzania systemu Azure stosu, zalecamy, umieść każdy dysk maszyny Wirtualnej w oddzielnych kontenera. Kontener powinno zawierać dysku systemu operacyjnego lub dysku danych, ale nie oba jednocześnie. Jednak nie ma ograniczenia, co uniemożliwia wprowadzanie zarówno do tego samego kontenera.
+## <a name="overview"></a>Przegląd
 
-Jeśli dodasz co najmniej jeden dysk danych do maszyny Wirtualnej, należy zaplanować używanie dodatkowe kontenery jako lokalizację do przechowywania tych dysków. Podobnie jak w przypadku dysków z danymi dysk systemu operacyjnego dla dodatkowych maszyn wirtualnych należy się również w ich własnych osobnych kontenerów.
+Stos Azure obsługuje korzystanie z [niezarządzanych dysków](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na maszynach wirtualnych, jako system operacyjny (systemu operacyjnego) oraz dysk z danymi.
 
-Kiedy tworzysz wiele maszyn wirtualnych, można ponownie użyć tego samego konta magazynu dla każdej nowej maszyny Wirtualnej. Kontenery tworzone powinna być unikatowa.  
+Aby używać dysków niezarządzane, należy utworzyć [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) do przechowywania dysków. Dyski, które możesz utworzyć są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
 
-Aby dodać dyski do maszyny Wirtualnej, użyj portalu użytkownika lub środowiska PowerShell.
+### <a name="best-practice-guidelines"></a>Najlepsze rozwiązania przyjęte
+
+Do zwiększenia wydajności i zmniejszenia ogólnych kosztów, zalecamy, umieść każdy dysk maszyny Wirtualnej w oddzielnych kontenera. Kontener powinno zawierać dysku systemu operacyjnego lub dysku danych, ale nie oba jednocześnie. (Jednak nie ma nic aby uniemożliwić umieszczenie oba rodzaje dysku w tym samym kontenerze.)
+
+Po dodaniu co najmniej jeden dysk danych do maszyny Wirtualnej, użyj dodatkowe kontenery jako lokalizację do przechowywania tych dysków. Dysk systemu operacyjnego dla dodatkowych maszyn wirtualnych należy również w ich własnych kontenerów.
+
+Kiedy tworzysz wiele maszyn wirtualnych, można ponownie użyć tego samego konta magazynu dla każdej nowej maszyny wirtualnej. Kontenery tworzone powinna być unikatowa.
+
+### <a name="adding-new-disks"></a>Dodawanie nowych dysków
+
+W poniższej tabeli przedstawiono sposób dodawania dysków, korzystając z portalu i przy użyciu programu PowerShell.
 
 | Metoda | Opcje
 |-|-|
-|[Portal użytkowników](#use-the-portal-to-add-additional-disks-to-a-vm)|-Dodaj nowe dyski danych do maszyny Wirtualnej, który został wcześniej zainicjowane. Nowe dyski są tworzone przez stos Azure. </br> </br>-Dodaj istniejący plik VHD jako dysk do maszyny Wirtualnej, który został wcześniej zainicjowane. W tym celu należy najpierw przygotować i przekaż plik VHD do stosu usługi Azure. |
-|[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | — Utwórz nową maszynę Wirtualną z dyskiem systemu operacyjnego, a jednocześnie należy dodać co najmniej jeden dysk danych do tej maszyny Wirtualnej. |
+|[Portal użytkowników](#use-the-portal-to-add-additional-disks-to-a-vm)|-Dodaj nowe dyski danych do istniejącej maszyny Wirtualnej. Nowe dyski są tworzone przez stos Azure. </br> </br>-Dodaj istniejący plik dysku (VHD) do wcześniej zainicjowana VM. Aby to zrobić, należy przygotować VHD i następnie przekazać go do stosu usługi Azure. |
+|[Program PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | — Utwórz nową maszynę Wirtualną z dyskiem systemu operacyjnego, a jednocześnie należy dodać co najmniej jeden dysk danych do tej maszyny Wirtualnej. |
 
+## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Dodawanie dysków do maszyny Wirtualnej za pomocą portalu
 
-## <a name="use-the-portal-to-add-additional-disks-to-a-vm"></a>Dodanie dodatkowych dysków do maszyny Wirtualnej za pomocą portalu
-Domyślnie podczas tworzenia maszyny Wirtualnej dla większości elementów portalu marketplace, za pomocą portalu tworzony jest dysk systemu operacyjnego. Dyski utworzone przez usługę Azure są nazywane dysków zarządzanych.
+Domyślnie podczas tworzenia maszyny Wirtualnej dla większości elementów portalu marketplace, za pomocą portalu tworzone tylko na dysku systemu operacyjnego.
 
-Po udostępnić maszynie Wirtualnej, można użyć portalu można dodać nowy dysk danych lub istniejącego dysku danych do tej maszyny Wirtualnej. Każdy dodatkowy dysk należy umieścić w oddzielnych kontenera. Dyski dodane do maszyny Wirtualnej są nazywane niezarządzane dysków.
+Po utworzeniu maszyny Wirtualnej, można użyć portalu, aby:
+* Utwórz nowy dysk danych, a następnie dołącz je do maszyny Wirtualnej.
+* Przekazywanie istniejącego dysku danych i dołącz je do maszyny Wirtualnej.
 
-### <a name="use-the-portal-to-attach-a-new-data-disk-to-a-vm"></a>Użyj portalu można dołączyć nowego dysku danych do maszyny Wirtualnej
+Każdy dysk niezarządzane, dodane należy umieścić w oddzielnych kontenera.
+
+>[!NOTE]
+>Dyski tworzone i zarządzane przez usługę Azure są nazywane [dyskach zarządzanych](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview).
+
+### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Utwórz i Dołącz nowy dysk danych za pomocą portalu
 
 1.  W portalu kliknij **maszyn wirtualnych**.    
     ![Przykład: Pulpit nawigacyjny z maszyny Wirtualnej](media/azure-stack-manage-vm-disks/vm-dashboard.png)
@@ -71,6 +88,7 @@ Po udostępnić maszynie Wirtualnej, można użyć portalu można dodać nowy dy
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>Dołączanie istniejącego dysku danych do maszyny Wirtualnej
+
 1.  [Przygotuj plik VHD](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) do użycia jako dysk z danymi dla maszyny Wirtualnej. Przekazywanie tego pliku VHD na konto magazynu używanej w maszynie Wirtualnej, która ma zostać dołączony plik VHD.
 
   Planowane jest stosowanie różnych kontenerów do przechowywania pliku VHD niż kontener, który zawiera dysk systemu operacyjnego.   

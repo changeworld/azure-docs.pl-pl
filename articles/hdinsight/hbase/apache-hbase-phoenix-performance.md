@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 58ecf22fa0f9349a767455fe3ab08fca058d02da
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b4c1e3fb919ab9ad88a15b51a5e204290a7a12cf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Phoenix
 
@@ -36,21 +36,21 @@ Klucz podstawowy, zdefiniowanego w tabeli Phoenix Określa, jak dane są przecho
 
 Na przykład tabela kontaktów ma imię, ostatnia nazwa, numer telefonu i adres, w tej samej rodziny kolumn. Można zdefiniować klucz podstawowy oparty na rosnący numer sekwencji:
 
-|rowkey|       Adres|   Telefon| Imię| Nazwisko|
+|rowkey|       Adres|   telefon| Imię| Nazwisko|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole|
 |  8396|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji|
 
 Jednak jeśli często zapytania według lastName to klucz podstawowy mogą nie działać, ponieważ każde zapytanie wymaga skanowania tabeli pełne można odczytać wartości co nazwisko. Zamiast tego można zdefiniować klucz podstawowy lastName, firstName i kolumny numer ubezpieczenia społecznego. Jest to ostatnia kolumna do odróżniania dwóch mieszkańców pod tym samym adresem o takiej samej nazwie, takie jak ojciec i syn.
 
-|rowkey|       Adres|   Telefon| Imię| Nazwisko| socialSecurityNum |
+|rowkey|       Adres|   telefon| Imię| Nazwisko| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole| 111 |
 |  8396|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji| 222 |
 
 Z tego nowego klucza podstawowego wiersz będzie klucze generowane przez Phoenix:
 
-|rowkey|       Adres|   Telefon| Imię| Nazwisko| socialSecurityNum |
+|rowkey|       Adres|   telefon| Imię| Nazwisko| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji Calvina-222|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji| 222 |
@@ -60,7 +60,7 @@ W pierwszym wierszu powyżej dane rowkey odpowiada, jak pokazano:
 |rowkey|       key|   wartość| 
 |------|--------------------|---|
 |  Dole-John-111|Adres |1111 Dr Gabriel sieci San.|  
-|  Dole-John-111|Telefon |1-425-000-0002|  
+|  Dole-John-111|telefon |1-425-000-0002|  
 |  Dole-John-111|Imię |Jan|  
 |  Dole-John-111|Nazwisko |Dole|  
 |  Dole-John-111|socialSecurityNum |111| 
@@ -118,7 +118,7 @@ Objęte usługą indeksy są indeksy, które zawierają dane z wiersza oprócz w
 
 Na przykład w tym przykładzie należy skontaktować się z tabeli, można utworzyć pomocniczego indeksu tylko kolumny socialSecurityNum. Pomocniczy indeks może przyspieszyć zapytań, które filtrować według wartości socialSecurityNum, ale pobieranie inne wartości pól będzie wymagać innego odczytu względem tabeli głównej.
 
-|rowkey|       Adres|   Telefon| Imię| Nazwisko| socialSecurityNum |
+|rowkey|       Adres|   telefon| Imię| Nazwisko| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji Calvina-222|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji| 222 |

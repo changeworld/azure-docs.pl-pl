@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 10/14/2016
+ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 025ff3dea365ab75af55f107da1fb7331861eb06
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Przesyłanie zadań HPC z lokalnego komputera do klastra pakietu HPC Pack wdrożonego na platformie Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,9 +29,9 @@ Konfigurowanie komputera klienckiego lokalnymi umożliwiają przesyłanie zadań
 ![Przesyłanie zadań do klastra w systemie Azure][jobsubmit]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Węzłem głównym HPC Pack wdrożony w maszynie Wirtualnej platformy Azure** -zalecane jest użycie automatycznych narzędzi takich jak [szablonie Szybki Start Azure](https://azure.microsoft.com/documentation/templates/) lub [skrypt programu PowerShell Azure](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) wdrażanie węzła głównego i klastra . Należy nazwy DNS węzła głównego i poświadczenia administratora klastra, aby wykonać kroki opisane w tym artykule.
+* **Węzłem głównym HPC Pack wdrożony w maszynie Wirtualnej platformy Azure** -zalecane jest użycie automatycznych narzędzi takich jak [szablonie Szybki Start Azure](https://azure.microsoft.com/documentation/templates/) wdrażanie węzła głównego i klastra. Należy nazwy DNS węzła głównego i poświadczenia administratora klastra, aby wykonać kroki opisane w tym artykule.
 * **Komputer kliencki** -wymagają systemu Windows lub Windows Server komputera klienckiego, który można uruchomić narzędzia klienta HPC Pack (zobacz [wymagania systemowe](https://technet.microsoft.com/library/dn535781.aspx)). Jeśli chcesz użyć portalu internetowego HPC Pack lub interfejsu API REST do przesyłania zadań, można użyć dowolnego komputera klienckiego wybranych przez użytkownika.
-* **Nośnik instalacyjny HPC Pack** — Aby zainstalować narzędzia HPC Pack klienta pakietu instalacyjnego wolnego do najnowszej wersji HPC Pack (HPC Pack 2012 R2) jest niedostępna z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Upewnij się, pobrania tej samej wersji pakietu HPC, który jest zainstalowany w węźle głównym maszyny Wirtualnej.
+* **Nośnik instalacyjny HPC Pack** — Aby zainstalować HPC Pack narzędzi klienta, pakiet instalacyjny wolnego do najnowszej wersji HPC Pack jest niedostępna z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360). Upewnij się, pobrania tej samej wersji pakietu HPC, który jest zainstalowany w węźle głównym maszyny Wirtualnej.
 
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>Krok 1: Instalowanie i konfigurowanie składników sieci web na węzła głównego
 Aby włączyć interfejs REST umożliwiają przesyłanie zadań do klastra przy użyciu protokołu HTTPS, upewnij się, że składniki sieci web HPC Pack są skonfigurowane w węźle głównym HPC Pack. Jeśli nie są już zainstalowane, należy najpierw zainstalować składniki sieci web, uruchamiając plik instalacyjny HpcWebComponents.msi. Następnie należy skonfigurować składniki przez uruchomienie skryptu środowiska PowerShell klastra HPC **HPCWebComponents.ps1 zestawu**.
@@ -39,7 +39,7 @@ Aby włączyć interfejs REST umożliwiają przesyłanie zadań do klastra przy 
 Aby uzyskać szczegółowe procedury, zobacz [zainstalować składniki sieci Web programu Microsoft HPC Pack](http://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
-> Niektóre szablony szybkiego startu usługi Azure HPC Pack zainstalować i skonfigurować składniki sieci web automatycznie. Jeśli używasz [skrypt wdrożenia HPC Pack IaaS](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) do utworzenia klastra, można opcjonalnie zainstalować i skonfigurować składniki sieci web jako część wdrożenia.
+> Niektóre szablony Szybki Start Azure w przypadku klastrów HPC Pack zainstaluje i skonfiguruje składniki sieci web automatycznie.
 > 
 > 
 
@@ -81,7 +81,7 @@ Aby uzyskać szczegółowe procedury, zobacz [zainstalować składniki sieci Web
     ```
 
 ## <a name="step-2-install-the-hpc-pack-client-utilities-on-an-on-premises-computer"></a>Krok 2: Zainstaluj narzędzia klienta HPC Pack na komputerze lokalnym
-Jeśli chcesz zainstalować narzędzia klienta HPC Pack na komputerze, należy pobrać pliki instalacji HPC Pack (Instalacja pełna) z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Po rozpoczęciu instalacji wybierz opcję instalacji dla **narzędzi klienta HPC Pack**.
+Jeśli chcesz zainstalować narzędzia klienta HPC Pack na komputerze, należy pobrać pliki instalacji HPC Pack (Instalacja pełna) z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360). Po rozpoczęciu instalacji wybierz opcję instalacji dla **narzędzi klienta HPC Pack**.
 
 Aby użyć narzędzia klienta HPC Pack umożliwiają przesyłanie zadań do węzła głównego maszyny Wirtualnej, należy również eksportowania certyfikatu z węzła głównego i zainstaluj go na komputerze klienckim. Certyfikat musi być w. CER format.
 

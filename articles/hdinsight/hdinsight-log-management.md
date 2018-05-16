@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d3ca9983eee4db09a68bf772b80c9ef841117872
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -80,7 +80,7 @@ Typowy klastra usługi HDInsight korzysta kilka usług i pakiety oprogramowania 
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Wyświetl ustawienia konfiguracji klastra przy użyciu interfejsu użytkownika narzędzia Ambari
 
-Apache Ambari upraszcza zarządzanie, konfigurowanie oraz monitorowanie klastra usługi HDInsight, zapewniając sieci web interfejsu użytkownika i interfejsu API REST. Ambari znajduje się w klastrach HDInsight opartych na systemie Linux. Wybierz **pulpit nawigacyjny klastra** okienka na stronie portalu HDInsight Azure, aby otworzyć**"pulpitów nawigacyjnych klastrów** łącza strony.  Następnie wybierz pozycję **pulpit nawigacyjny klastra usługi HDInsight** okienko, aby otworzyć Interfejs użytkownika narzędzia Ambari.  Zostanie wyświetlony monit o podanie poświadczeń logowania klastra.
+Apache Ambari upraszcza zarządzanie, konfigurowanie oraz monitorowanie klastra usługi HDInsight, zapewniając sieci web interfejsu użytkownika i interfejsu API REST. Ambari znajduje się w klastrach HDInsight opartych na systemie Linux. Wybierz **pulpit nawigacyjny klastra** okienka na stronie portalu HDInsight Azure, aby otworzyć **"pulpitów nawigacyjnych klastrów** łącza strony.  Następnie wybierz pozycję **pulpit nawigacyjny klastra usługi HDInsight** okienko, aby otworzyć Interfejs użytkownika narzędzia Ambari.  Zostanie wyświetlony monit o podanie poświadczeń logowania klastra.
 
 Aby otworzyć listę widoków usługi, wybierz **widoków Ambari** okienka na stronie portalu platformy Azure dla usługi HDInsight.  Tej listy różni się w zależności od tego, które biblioteki po zainstalowaniu.  Może na przykład zobacz menedżera kolejek YARN, Hive View oraz widok Tez.  Zaznacz dowolne łącze usługi, aby wyświetlić konfigurację i informacje o usłudze.  Interfejs użytkownika narzędzia Ambari **stosu i wersji** zawiera informacje o konfiguracji usługi klastrowania i Historia wersji usługi. Aby przejść do tej sekcji interfejsu użytkownika narzędzia Ambari, wybierz **Admin** menu, a następnie **stosy i wersje**.  Wybierz **wersji** kartę, aby wyświetlić informacje o wersji usługi.
 
@@ -105,17 +105,6 @@ Następnym krokiem jest przeglądanie plików dziennika wykonywania zadania dla 
 HDInsight przechowuje pliki dziennika, zarówno w systemie plików klastra i w magazynie Azure. Pliki dziennika w klastrze można sprawdzić, otwierając połączenia SSH z klastrem i przeglądanie systemu plików lub przy użyciu portalu usługi Hadoop YARN stanu na serwerze zdalnym węzła głównego. Można sprawdzić pliki dziennika w magazynie Azure przy użyciu dowolnego narzędzia, które mogą uzyskać dostęp i pobierania danych z usługi Azure storage. Przykłady są AZCopy, CloudXplorer i Eksploratora serwera na Visual Studio. Aby uzyskać dostęp do danych w magazynie obiektów blob platformy Azure, można użyć programu PowerShell i biblioteki klienta magazynu Azure lub z zestawów SDK .NET usługi Azure.
 
 Pracy jako zadań uruchamia Hadoop *zadań prób* w różnych węzłach w klastrze. HDInsight można zainicjować prób rozważana zadań, kończące inne próby zadań, które nie są wykonywane najpierw. Powoduje to znaczne działanie, które jest rejestrowane kontrolera stderr i syslog dziennika pliki na bieżąco. Ponadto jednocześnie jest uruchomionych wiele zadań prób, ale plik dziennika mogą być wyświetlane tylko wyniki liniowo.
-
-#### <a name="hdinsight-logs-written-to-azure-tables"></a>Dzienniki usługi HDInsight zapisywane w tabelach platformy Azure
-
-Dzienniki zapisywane do tabel Azure wgląd w działania wykonywane z klastrem usługi HDInsight. Podczas tworzenia klastra usługi HDInsight opartej na systemie Linux sześciu tabele są tworzone automatycznie w magazynie tabel domyślne:
-
-* hdinsightagentlog
-* syslog
-* daemonlog
-* hadoopservicelog
-* ambariserverlog
-* ambariagentlog
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>Dzienniki usługi HDInsight zapisywane do magazynu obiektów Blob platformy Azure
 

@@ -1,25 +1,27 @@
 ---
 title: Azure AD .NET interfejsu API sieci Web wprowadzenie | Dokumentacja firmy Microsoft
-description: "Jak utworzyć .NET MVC składnika web API, która integruje się z usługą Azure AD do uwierzytelniania i autoryzacji."
+description: Jak utworzyć .NET MVC składnika web API, która integruje się z usługą Azure AD do uwierzytelniania i autoryzacji.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c4cf11b26402747ef58e4fa3fbbe2154876dfae
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: aa527f66035ce8ea95ecdf405ef307c1202a92a6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET interfejsu API sieci Web wprowadzenie
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -125,8 +127,8 @@ Można sprawdzić poprawności przychodzących żądań i tokenów, należy skon
     ```
 
 7. Otwórz `web.config` plików w folderze głównym projektu TodoListService, a następnie wprowadź wartości konfiguracji w `<appSettings>` sekcji.
-  * `ida:Tenant`to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
-  * `ida:Audience`to identyfikator URI aplikacji w aplikacji, którą wprowadzono w portalu Azure.
+  * `ida:Tenant` to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
+  * `ida:Audience` to identyfikator URI aplikacji w aplikacji, którą wprowadzono w portalu Azure.
 
 ## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurowanie aplikacji klienta i uruchamiania usługi
 Zanim zobaczysz do czy listy działanie usługi, należy skonfigurować klienta listy zadań do wykonania, może uzyskać tokenów z usługi Azure AD i wykonywania wywołań do usługi.
@@ -143,9 +145,9 @@ Zanim zobaczysz do czy listy działanie usługi, należy skonfigurować klienta 
 
 5. W programie Visual Studio Otwórz `App.config` w TodoListClient projektu, a następnie wprowadź wartości konfiguracji w `<appSettings>` sekcji.
 
-  * `ida:Tenant`to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
-  * `ida:ClientId`jest to identyfikator aplikacji skopiowany z portalu Azure.
-  * `todo:TodoListResourceId`to identyfikator URI aplikacji w aplikacji do usługi listy czy wprowadzony w portalu Azure.
+  * `ida:Tenant` to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
+  * `ida:ClientId` jest to identyfikator aplikacji skopiowany z portalu Azure.
+  * `todo:TodoListResourceId` to identyfikator URI aplikacji w aplikacji do usługi listy czy wprowadzony w portalu Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Ponadto wyczyścić, skompilować i uruchomić każdy projekt. Jeśli nie jest jeszcze nadszedł czas, aby utworzyć nowy użytkownik w dzierżawie z *. onmicrosoft.com domeny. Zaloguj się do klienta listy zadań do wykonania z użytkownikiem, a następnie dodać niektóre zadania do listy zadań do wykonania przez użytkownika.

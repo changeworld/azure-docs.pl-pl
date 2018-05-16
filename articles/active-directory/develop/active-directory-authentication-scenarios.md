@@ -3,23 +3,25 @@ title: Scenariusze uwierzytelniania dla usługi Azure AD | Dokumentacja firmy Mi
 description: Zawiera omówienie pięciu najbardziej typowych scenariuszy uwierzytelniania usługi Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2018
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f85898d566ea5c6791350df809e960f7e951012d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scenariusze uwierzytelniania dla usługi Azure AD
 
@@ -49,7 +51,7 @@ Diagram powyżej pamiętać tutaj jest, co należy wiedzieć o jego różne skł
 * Usługi Azure AD jest dostawcy tożsamości, odpowiada za weryfikację tożsamości użytkowników i aplikacje, które znajdują się w katalogu organizacji, a ostatecznie wystawiania tokenów zabezpieczających na pomyślne uwierzytelnienie tych użytkowników i aplikacji.
 * Aplikacja, która chce zewnętrzny uwierzytelniania do usługi Azure AD musi być zarejestrowana w usłudze Azure AD, który rejestruje i unikatowo identyfikuje aplikację w katalogu.
 * Deweloperzy mogą używać biblioteki uwierzytelniania usługi Azure AD open source, aby ułatwić uwierzytelniania dzięki obsłudze szczegółów protokołu dla Ciebie. Aby uzyskać więcej informacji, zobacz [bibliotek uwierzytelniania usługi Azure Active Directory](active-directory-authentication-libraries.md).
-* Po uwierzytelnieniu użytkownika aplikacji muszą weryfikacji tokenu zabezpieczeń użytkownika, aby upewnić się, że uwierzytelnianie zakończyło się pomyślnie.  Mamy przykłady aplikacji wykonaj wiele języków i struktur na [GitHub](https://github.com/Azure-Samples?q=active-directory).  Jeśli tworzysz aplikację sieci web w programie ASP.NET, zobacz [dodać logowania dla przewodnika aplikacji sieci web ASP.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp).  Jeśli tworzysz web API zasobów w programie ASP.NET, zobacz [interfejsu API sieci web wprowadzenie — przewodnik](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* Po uwierzytelnieniu użytkownika aplikacji muszą weryfikacji tokenu zabezpieczeń użytkownika, aby upewnić się, że uwierzytelnianie zakończyło się pomyślnie. Mamy przykłady aplikacji wykonaj wiele języków i struktur na [GitHub](https://github.com/Azure-Samples?q=active-directory). Jeśli tworzysz aplikację sieci web w programie ASP.NET, zobacz [dodać logowania dla przewodnika aplikacji sieci web ASP.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Jeśli tworzysz web API zasobów w programie ASP.NET, zobacz [interfejsu API sieci web wprowadzenie — przewodnik](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * Przepływ żądań i odpowiedzi do procesu uwierzytelniania jest określany przez protokół uwierzytelniania, który był używany, takich jak OAuth 2.0, OpenID Connect, WS-Federation oraz SAML 2.0. Te protokoły omówiono bardziej szczegółowo w [protokoły uwierzytelniania usługi Azure Active Directory](active-directory-authentication-protocols.md) artykułu w poniższych sekcjach.
 
 > [!NOTE]
@@ -189,7 +191,7 @@ Przy użyciu ADAL.js ułatwiające:
 * odświeżanie wygasły token
 * żądanie tokenu dostępu do wywołania interfejsu API zasobów sieci web
 
-Po pomyślnym uwierzytelnieniu usługi Azure AD zapisuje plik cookie w przeglądarce użytkownika w celu ustanowienia sesji.  Należy pamiętać, że sesja istnieje między użytkownikiem a usługą Azure AD (nie między użytkownikiem i aplikacji sieci web). Po wygaśnięciu tokenu ADAL.js używa tej sesji dyskretnie uzyskać inny token. ADAL.js używa ukryte iFrame do wysyłania i odbierania za pomocą protokołu OAuth niejawne Przyznaj żądania. ADAL.js umożliwia także ten sam mechanizm dyskretnie uzyskanie tokenów dostępu do innych zasobów interfejsu API sieci web, aplikacji wywołania tak długo, jak te zasoby obsługuje współużytkowanie zasobów między źródłami (CORS), do udostępniania są rejestrowane w katalogu użytkownika i wszystkie wymagane zgody został podane przez użytkownika podczas logowania.
+Po pomyślnym uwierzytelnieniu usługi Azure AD zapisuje plik cookie w przeglądarce użytkownika w celu ustanowienia sesji. Należy pamiętać, że sesja istnieje między użytkownikiem a usługą Azure AD (nie między użytkownikiem i aplikacji sieci web). Po wygaśnięciu tokenu ADAL.js używa tej sesji dyskretnie uzyskać inny token. ADAL.js używa ukryte iFrame do wysyłania i odbierania za pomocą protokołu OAuth niejawne Przyznaj żądania. ADAL.js umożliwia także ten sam mechanizm dyskretnie uzyskanie tokenów dostępu do innych zasobów interfejsu API sieci web, aplikacji wywołania tak długo, jak te zasoby obsługuje współużytkowanie zasobów między źródłami (CORS), do udostępniania są rejestrowane w katalogu użytkownika i wszystkie wymagane zgody został podane przez użytkownika podczas logowania.
 
 ### <a name="native-application-to-web-api"></a>Aplikacji natywnej do interfejsu API sieci web
 
@@ -260,7 +262,7 @@ W poniższym przepływie omówiono tożsamości aplikacji i typów tożsamości 
 
 1. Użytkownik jest już zalogowany do aplikacji sieci web, w których mechanizm uwierzytelniania jest niezależna od usługi Azure AD.
 1. Aplikacja sieci web wymaga kod autoryzacji do uzyskania tokenu dostępu, więc emituje żądanie za pomocą przeglądarki na punkt końcowy autoryzacji usługi Azure AD, podając identyfikator aplikacji i identyfikator URI przekierowania dla aplikacji sieci web po pomyślnym uwierzytelnieniu. Użytkownik loguje się do usługi Azure AD.
-1. Jeśli użytkownik aplikacji sieci web nie ma jeszcze zgodę na zezwolenie aplikacji sieci web do wywołania interfejsu API sieci web w jego imieniu, użytkownik musi wyrazić zgodę. Aplikacja Wyświetla uprawnienia, które wymaga, a jeśli którakolwiek z tych uprawnień na poziomie administratora, zwykłego użytkownika w katalogu nie będzie mógł zgody. Tej zgody ma zastosowanie do aplikacji w jednym i wieloma dzierżawami.  W przypadku pojedynczej dzierżawy administrator może wykonywać zgody na zgody administratora w imieniu użytkowników.  Można to zrobić za pomocą `Grant Permissions` przycisk [Azure Portal](https://portal.azure.com). 
+1. Jeśli użytkownik aplikacji sieci web nie ma jeszcze zgodę na zezwolenie aplikacji sieci web do wywołania interfejsu API sieci web w jego imieniu, użytkownik musi wyrazić zgodę. Aplikacja Wyświetla uprawnienia, które wymaga, a jeśli którakolwiek z tych uprawnień na poziomie administratora, zwykłego użytkownika w katalogu nie będzie mógł zgody. Tej zgody ma zastosowanie do aplikacji w jednym i wieloma dzierżawami. W przypadku pojedynczej dzierżawy administrator może wykonywać zgody na zgody administratora w imieniu użytkowników. Można to zrobić za pomocą `Grant Permissions` przycisk [Azure Portal](https://portal.azure.com). 
 1. Po użytkownik zgodził, aplikacji sieci web otrzymuje kod autoryzacji, który należy uzyskać token dostępu.
 1. Przy użyciu kodu autoryzacji wystawiony przez usługę Azure AD, aplikacji sieci web wysyła żądanie do punktu końcowego tokenu usługi Azure AD, który zawiera kod autoryzacji, szczegółowe informacje o aplikacji klienta (identyfikator aplikacji i identyfikator URI przekierowania) i żądanego zasobu (aplikacji identyfikator URI dla interfejsu API sieci web).
 1. Kod autoryzacji i informacji na temat interfejsu API sieci web i aplikacji sieci web są weryfikowane przez usługę Azure AD. Po pomyślnym zweryfikowaniem usługi Azure AD zwraca dwa tokeny: token JWT dostępu i token odświeżania JWT.

@@ -1,25 +1,27 @@
 ---
-title: "Punktu końcowego v2.0 usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do tworzenia aplikacji z logowaniem zarówno Account firmy Microsoft, jak i usługi Azure Active Directory."
+title: Punktu końcowego v2.0 usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Wprowadzenie do tworzenia aplikacji z logowaniem zarówno Account firmy Microsoft, jak i usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2dee579f-fdf6-474b-bc2c-016c931eaa27
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 18319ad461500fac13b3f6ac1117a52b94e695e7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fde3cb77389994352b62f06d370c709fa115749
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Zaloguj się Account Microsoft i Azure Active Directory użytkowników w jednej aplikacji
 W przeszłości deweloperzy aplikacji, którzy chcieli obsługuje oba osobistego konta Microsoft i działać kont z usługi Azure Active Directory musiał zintegrować z dwóch oddzielnych systemach. Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) wprowadziła nową wersję uwierzytelniania interfejsu API, które upraszcza ten proces. Punktu końcowego v2.0 usługi Azure AD umożliwia logowanie z obu typów kont za pomocą pojedynczego integracji. Aplikacje używające punktu końcowego v2.0 usługi Azure AD może również używać interfejsów API REST z [interfejsu API programu Microsoft Graph](https://graph.microsoft.io) przy użyciu dowolnego typu konta.

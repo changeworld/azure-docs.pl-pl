@@ -1,8 +1,8 @@
 ---
-title: "Tag zasobów Azure dla organizacji logicznego | Dokumentacja firmy Microsoft"
-description: "Przedstawiono sposób dodawania tagów do organizowania zasobów platformy Azure do rozliczeń i zarządzania nimi."
+title: Tag zasobów Azure dla organizacji logicznego | Dokumentacja firmy Microsoft
+description: Przedstawiono sposób dodawania tagów do organizowania zasobów platformy Azure do rozliczeń i zarządzania nimi.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: c677b80ba6c274cfa9936378110b63e583a102b6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 5da8c747fb8f89ff627cad74bacf0753bb3484ad
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="powershell"></a>PowerShell
 

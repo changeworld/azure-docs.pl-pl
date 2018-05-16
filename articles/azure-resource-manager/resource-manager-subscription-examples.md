@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2c16c0414ddf023e7055a8b57c514fc069f3112a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Przykłady stosowania szkieletu Azure enterprise
-W tym temacie przedstawiono przykłady sposobu przedsiębiorstwa można zaimplementować zalecenia dotyczące [szkieletu Azure enterprise](resource-manager-subscription-governance.md). Aby zilustrować najlepsze rozwiązania dotyczące typowych scenariuszy używa fikcyjnej firmy o nazwie Contoso.
+W tym artykule przedstawiono przykłady sposobu przedsiębiorstwa można zaimplementować zalecenia dotyczące [szkieletu Azure enterprise](resource-manager-subscription-governance.md). Aby zilustrować najlepsze rozwiązania dotyczące typowych scenariuszy używa fikcyjnej firmy o nazwie Contoso.
 
 ## <a name="background"></a>Tło
-Contoso to firma na całym świecie, która zapewnia rozwiązania łańcucha dostaw dla klientów w wszystkie elementy z modelu "Oprogramowanie jako usługa" do modelu spakowanych wdrożonych lokalnie.  Opracowują one oprogramowania na całym świecie z produkcyjnymi znaczących Programowanie w Indie, Stanów Zjednoczonych i Kanady.
+Contoso to firma na całym świecie, która zapewnia rozwiązania łańcucha dostaw dla klientów. Udostępniają one wszystkie elementy z oprogramowania jako modelu usług do modelu spakowanych wdrożonych lokalnie.  Opracowują one oprogramowania na całym świecie z produkcyjnymi znaczących Programowanie w Indie, Stanów Zjednoczonych i Kanady.
 
 Część niezależnego dostawcy oprogramowania firmy jest podzielona na kilka jednostek biznesowych niezależne, zarządzających produktów w znaczący biznesowych. Poszczególnych jednostek biznesowych ma własną deweloperów, menedżerów produktu i architektów.
 
 Jednostki biznesowej usługi technologii przedsiębiorstwa (ETS) zapewnia scentralizowane możliwości IT i zarządza kilka centrach danych, w których jednostki biznesowe host swoich aplikacji. Oraz zarządzanie centrami danych, organizacja ETS zawiera i zarządza scentralizowane współpracy (np. poczty e-mail i witryn sieci Web) i usług sieciowych/telefonii. Mniejszych jednostek biznesowych, którzy nie mają personel operacyjny one również zarządzać obciążeń skierowane do klienta.
 
-Następujące osoby są używane w tym temacie:
+Następujące osoby są używane w tym artykule:
 
 * Dave jest administratorem ETS Azure.
 * Alicja jest programowanie z Dyrektor firmy Contoso w jednostce biznesowej łańcucha dostaw.
 
-Contoso musi tworzenie aplikacji biznesowych systemu i aplikacji dostępnych dla klienta. Zdecydował się je do uruchomienia aplikacji na platformie Azure. Odczytuje Dave [ładu przetestowanego subskrypcji](resource-manager-subscription-governance.md) tematu i jest gotowy do wdrożenia zalecenia.
+Contoso musi tworzenie aplikacji biznesowych systemu i aplikacji dostępnych dla klienta. Zdecydował się je do uruchomienia aplikacji na platformie Azure. Odczytuje Dave [ładu przetestowanego subskrypcji](resource-manager-subscription-governance.md) artykułu i jest gotowy do wdrożenia zalecenia.
 
 ## <a name="scenario-1-line-of-business-application"></a>Scenariusz 1: aplikacji biznesowych —
 Firma Contoso jest kompilowany systemu zarządzania kodu źródłowego (BitBucket) do użycia przez deweloperów w całym świecie.  Aplikacja wykorzystuje infrastrukturę jako usługę (IaaS) do obsługi i składa się z serwerami sieci web a serwerem bazy danych. Deweloperzy uzyskać dostępu do serwerów w swoich środowiskach programistycznych, ale nie potrzebują dostępu do serwerów na platformie Azure. Contoso ETS chce zezwolić właściciel aplikacji i zespołu zarządzać aplikacją. Aplikacja jest dostępna tylko podczas firmy Contoso w sieci firmowej. Dave musi do skonfigurowania subskrypcji dla tej aplikacji. Subskrypcja będzie również obsługiwać innego oprogramowania związane z programowaniem w przyszłości.  
 
 ### <a name="naming-standards--resource-groups"></a>Standardy nazewnictwa & grup zasobów
-Dave tworzy subskrypcję do obsługi narzędzia deweloperskie, które są wspólne dla wszystkich jednostek biznesowych. Musi utworzyć łatwy do rozpoznania nazwy dla subskrypcji i zasobu grup (dla aplikacji i sieci). Tworzy następujące grupy subskrypcji i zasobu:
+Dave tworzy subskrypcję do obsługi narzędzia deweloperskie, które są wspólne dla wszystkich jednostek biznesowych. Dave musi utworzyć łatwy do rozpoznania nazwy dla subskrypcji i zasobu grup (dla aplikacji i sieci). Tworzy następujące grupy subskrypcji i zasobu:
 
 | Element | Name (Nazwa) | Opis |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Dave przypisuje następujące role dla subskrypcji:
 | Rola | Przypisane do | Opis |
 | --- | --- | --- |
 | [Właściciel](../role-based-access-control/built-in-roles.md#owner) |Zarządzane identyfikator z firmy Contoso AD |Ten identyfikator jest kontrolowany przy użyciu tylko w czasie (JIT) dostęp za pomocą narzędzia do zarządzania tożsamościami firmy Contoso i zapewnia, że pełni podlega inspekcji dostępu do właściciela subskrypcji |
-| [Menedżer zabezpieczeń](../role-based-access-control/built-in-roles.md#security-manager) |Bezpieczeństwo i ryzyka działu zarządzania |Ta rola pozwala użytkownikom wyświetlać w Centrum zabezpieczeń Azure i stan zasobów |
+| [Czytnik zabezpieczeń](../role-based-access-control/built-in-roles.md#security-reader) |Bezpieczeństwo i ryzyka działu zarządzania |Ta rola pozwala użytkownikom wyświetlać w Centrum zabezpieczeń Azure i stan zasobów |
 | [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor) |Zespół sieci |Ta rola umożliwia zespołu sieci firmy Contoso do zarządzania sieci VPN między lokacjami i sieci wirtualnych |
 | *Rola niestandardowa* |Właściciel aplikacji |Dave tworzy rolę, która przyznaje uprawnienia do modyfikowania zasobów w grupie zasobów. Aby uzyskać więcej informacji, zobacz [niestandardowych ról w Azure RBAC](../role-based-access-control/custom-roles.md) |
 
@@ -115,7 +115,7 @@ Dave nie ma nic do automatyzacji dla tej aplikacji. Mimo że utworzył konto us�
 ### <a name="azure-security-center"></a>Azure Security Center
 Zarządzanie usługami IT firmy Contoso musi szybko zidentyfikować i obsługiwać zagrożeń. Firma chce również zrozumieć, jakie problemy mogą występować.  
 
-Aby spełnić te wymagania, umożliwia Dave [Centrum zabezpieczeń Azure](../security-center/security-center-intro.md)oraz zapewnia dostęp do roli Menedżera zabezpieczeń.
+Aby spełnić te wymagania, umożliwia Dave [Centrum zabezpieczeń Azure](../security-center/security-center-intro.md)oraz zapewnia dostęp do roli zabezpieczeń czytnika.
 
 ## <a name="scenario-2-customer-facing-app"></a>Scenariusz 2: uwzględniającym klienta aplikacji
 Kierowniczej biznesowych w jednostce biznesowej łańcucha dostaw zidentyfikował różnych możliwości do zwiększenia interakcji użytkowników z klientami firmy Contoso za pomocą karty lojalność. Zespół Alicji należy utworzyć tę aplikację i decyduje o tym, że Azure zwiększa ich możliwości spełnienia potrzeb biznesowych. Alicja współpracuje z Dave z ETS do konfigurowania subskrypcji dwóch dotyczące tworzenia i obsługi tej aplikacji.
@@ -137,7 +137,7 @@ Dla **subskrypcji programowanie**, tworzenia następujące zasady:
 | --- | --- | --- |
 | location |Inspekcji |Przeprowadź inspekcję tworzenia zasobów w dowolnym regionie |
 
-Nie ograniczaj typ jednostki sku utworzone przez użytkownika w rozwoju i nie wymagają tagi dla wszystkich grup zasobów lub zasobów.
+Nie ograniczają typ jednostki sku utworzone przez użytkownika w rozwoju i nie wymagają tagi dla wszystkich grup zasobów lub zasobów.
 
 Dla **subskrypcji produkcji**, tworzenia następujące zasady:
 
@@ -148,7 +148,7 @@ Dla **subskrypcji produkcji**, tworzenia następujące zasady:
 | tags |odrzuć |Wymagaj działu tag |
 | tags |Dołącz |Dołącz tag do każdej z grup zasobów, która wskazuje środowiska produkcyjnego |
 
-Nie ograniczaj typ jednostki sku utworzone przez użytkownika w środowisku produkcyjnym.
+Nie ograniczają typ jednostki sku utworzone przez użytkownika w środowisku produkcyjnym.
 
 ### <a name="resource-tags"></a>Tagi zasobów
 Dave rozumie, że musi mieć określonych informacji do identyfikowania grup biznesowych poprawne rozliczeń i własności. Definiuje znaczniki zasobu dla grupy zasobów i zasoby.

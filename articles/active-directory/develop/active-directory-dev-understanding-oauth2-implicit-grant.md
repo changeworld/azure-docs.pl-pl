@@ -1,25 +1,27 @@
 ---
-title: "Opis protokołu OAuth2 niejawne Przyznaj przepływu w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej informacji na temat wdrożenia usługi Azure Active Directory OAuth2 niejawne Przyznaj przepływu, oraz czy jest odpowiednie dla aplikacji."
+title: Opis protokołu OAuth2 niejawne Przyznaj przepływu w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej informacji na temat wdrożenia usługi Azure Active Directory OAuth2 niejawne Przyznaj przepływu, oraz czy jest odpowiednie dla aplikacji.
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2016
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b3ed6edb0b770e8b57bb5bfde4c183d435335ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 263a093d5cf4b48ed1dadd4a288e548065ddf282
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Opis przepływu niejawne Przyznaj OAuth2 w usłudze Azure Active Directory (AD)
 Przyznanie niejawne OAuth2 jest odpowiedzialne za jest przyznanie z najdłuższym lista problemy z zabezpieczeniami w specyfikacji protokołu OAuth2. I jeszcze, który jest podejście przez ADAL JS i które zalecamy podczas pisania aplikacji JEDNOSTRONICOWEJ. Co daje? Jest to kwestia kompromisów: i jak okaże się niejawne Przyznaj jest najlepszym podejściem może prowadzić do aplikacji, które wykorzystują interfejs API sieci Web za pośrednictwem kodu JavaScript w przeglądarce.
@@ -58,7 +60,7 @@ Jeśli aplikacja jest klientami, niejawnego przepływu nie stanowi doskonałe do
 
 Jeśli tworzysz aplikację sieci Web, w tym wewnętrznej bazie danych i korzystanie z interfejsu API z jego kod zaplecza przepływu niejawnego również nie jest odpowiedni. Inne przyznaje nadaj znacznie więcej możliwości. Na przykład przyznania poświadczeń klienta OAuth2 zapewnia możliwości uzyskiwania tokenów odzwierciedlające uprawnienia przypisane do aplikacji, w przeciwieństwie do delegacji użytkownika. Oznacza to, że klient ma możliwość obsługi programowy dostęp do zasobów, nawet gdy użytkownik nie jest są aktywnie zaangażowane w sesji i tak dalej. Nie tylko który, ale takie przyznaje nadać wyższy gwarancje bezpieczeństwa. Na przykład tokeny dostępu nigdy nie przesyłania za pośrednictwem przeglądarki użytkownika, nie ryzyka są zapisywane w historii przeglądania i tak dalej. Aplikacja kliencka można również wykonywać silnego uwierzytelniania podczas żądania tokenu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby zapoznać się z pełną listą zasoby dla deweloperów, protokołów i autoryzacji OAuth2 udzielić pomocy technicznej przepływów przez usługę Azure AD, takich jak informacje dotyczą [przewodnik dewelopera usługi Azure AD][AAD-Developers-Guide]
 * Zobacz [Integrowanie aplikacji z usługą Azure AD] [ ACOM-How-To-Integrate] dla dodatkowych głębokość na proces integracji aplikacji.
 

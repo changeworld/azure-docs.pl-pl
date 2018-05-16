@@ -3,22 +3,22 @@ title: Limity i konfiguracji — usługi Azure Logic Apps | Dokumentacja firmy M
 description: Limity usług i wartości konfiguracji dla usługi Azure Logic Apps
 services: logic-apps
 documentationcenter: ''
-author: jeffhollan
-manager: anneta
+author: ecfan
+manager: cfowler
 editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 524a2dc7a1a5ae4f0747af03d1b9e69d512f0f00
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 05/14/2018
+ms.author: estfan
+ms.openlocfilehash: 8c2ac4b8f55d25d5d3fcfdd6a9bcb6f6c8cfc201
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -52,15 +52,26 @@ Poniżej przedstawiono limity dla definicji aplikacji logiki pojedynczego:
 
 Poniżej przedstawiono limity aplikacji logiki pojedynczego uruchomienia:
 
-| Name (Nazwa) | Limit | 
-| ---- | ----- | 
-| Czas trwania testu | 90 dni | 
-| Magazyn przechowywania | Godzina rozpoczęcia 90 dni od uruchomienia | 
-| Interwał cyklu minimalna | 1 sekunda </br>Dla aplikacji logiki z planu usługi App Service: 15 sekund | 
-| Maksymalna wartość cyklu interwału | 500 dni | 
-||| 
+| Name (Nazwa) | Limit | Uwagi | 
+|------|-------|-------| 
+| Czas trwania testu | 90 dni | Aby zmienić ten limit, zobacz [Zmień czas trwania](#change-duration). | 
+| Magazyn przechowywania | Godzina rozpoczęcia 90 dni od uruchomienia | Aby zmienić ten limit, zobacz [zmienić przechowywania magazynu](#change-retention). | 
+| Interwał cyklu minimalna | 1 sekunda | | 
+| Maksymalna wartość cyklu interwału | 500 dni | | 
+|||| 
 
-Przekroczenie limitu czas trwania testu lub przechowywania magazynu z przepływu normalnego przetwarzania [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
+<a name="change-duration"></a>
+<a name="change-retention"></a>
+
+### <a name="change-run-duration-and-storage-retention"></a>Zmień Uruchom przechowywania czas trwania i magazynu
+
+To ograniczenie można zmienić na wartość z zakresu od 7 dni i 90 dni. Jednak, aby przekracza maksymalny limit [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
+
+1. W portalu Azure, w menu aplikacji logiki, wybierz **ustawienia przepływu pracy**. 
+
+2. W obszarze **opcje środowiska uruchomieniowego**, z **Uruchom dni przechowywania historii** wybierz **niestandardowy**. 
+
+3. Wprowadź lub przeciągnij suwak liczbę dni, które mają.
 
 <a name="looping-debatching-limits"></a>
 
@@ -113,7 +124,8 @@ Niektóre operacje łącznika wykonywać wywołania asynchronicznego lub nasłuc
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Rozmiar komunikatu | 100 MB | Niektóre łączniki i interfejsów API może nie obsługiwać 100 MB. | 
+| Rozmiar komunikatu | 100 MB | Aby obejść to ograniczenie, zobacz [obsługi dużych wiadomości z podziału](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsów API nie obsługuje podziału lub nawet domyślny limit. | 
+| Rozmiar komunikatu z podziału | 1 GB | Ten limit dotyczy akcje, które natywnie obsługują podziału albo może mieć podziału włączone w konfiguracji obsługi pomocy technicznej. Aby uzyskać więcej informacji, zobacz [obsługi dużych wiadomości z podziału](../logic-apps/logic-apps-handle-large-messages.md). | 
 | Limit obliczania wyrażeń | 131 072 znaków | `@concat()`, `@base64()`, `@string()` Wyrażenia nie może być dłuższa niż to ograniczenie. | 
 |||| 
 
@@ -146,21 +158,45 @@ Poniżej przedstawiono limity dla łączników niestandardowych, które można u
 
 ### <a name="artifact-limits-per-integration-account"></a>Limity artefaktu dla danego konta integracji
 
-Poniżej przedstawiono limity liczby artefaktów dla każdego konta integracji.
+Poniżej przedstawiono limity liczby artefaktów dla każdego konta integracji. Aby uzyskać więcej informacji, zobacz [Logic Apps cennik](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-*Bezpłatnej warstwy cenowej*
+*Warstwa bezpłatna*
 
-| Name (Nazwa) | Limit | Uwagi | 
-| ---- | ----- | ----- | 
-| Umowy | 10 | | 
-| Inne typy artefaktów | 25 | Typy artefaktu zawierają partnerów, schematów, certyfikaty i mapy. Każdy typ może zawierać maksymalnie maksymalną liczbę artefaktów. | 
+| Artefaktów | Limit | Uwagi | 
+|----------|-------|-------| 
+| Partnerzy handlowi EDI | 25 | | 
+| Umowy handlowym EDI | 10 | | 
+| Maps | 25 | | 
+| Schematy | 25 | 
+| Zestawy | 10 | | 
+| Konfiguracje partii | 5 | 
+| Certyfikaty | 25 | | 
 |||| 
 
-*Warstwa cenowa standardowa*
+*Warstwa podstawowa*
 
-| Name (Nazwa) | Limit | Uwagi | 
-| ---- | ----- | ----- | 
-| Dowolnego typu artefaktu | 500 | Typy artefaktu zawierają umowy, partnerów, schematów, certyfikaty i mapy. Każdy typ może zawierać maksymalnie maksymalną liczbę artefaktów. | 
+| Artefaktów | Limit | Uwagi | 
+|----------|-------|-------| 
+| Partnerzy handlowi EDI | 2 | | 
+| Umowy handlowym EDI | 1 | | 
+| Maps | 500 | | 
+| Schematy | 500 | 
+| Zestawy | 25 | | 
+| Konfiguracje partii | 1 | | 
+| Certyfikaty | 2 | | 
+|||| 
+
+*Warstwa standardowa*
+
+| Artefaktów | Limit | Uwagi | 
+|----------|-------|-------| 
+| Partnerzy handlowi EDI | 500 | | 
+| Umowy handlowym EDI | 500 | | 
+| Maps | 500 | | 
+| Schematy | 500 | 
+| Zestawy | 50 | | 
+| Konfiguracje partii | 5 |  
+| Certyfikaty | 50 | | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>

@@ -3,23 +3,25 @@ title: Ograniczenia punktu końcowego v2.0 w usłudze Azure Active Directory | D
 description: Lista ograniczenia dla punktu końcowego v2.0 usługi Azure AD.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy użyć punktu końcowego v2.0?
 Podczas tworzenia aplikacji, które integrują się z usługą Azure Active Directory, należy zdecydować, czy protokołów uwierzytelniania i punktu końcowego v2.0 odpowiadają Twoim potrzebom. Oryginalny punktu końcowego usługi Azure Active Directory firmy jest nadal w pełni obsługiwane i pod pewnymi względami jest więcej zaawansowanej funkcji niż wersja 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści](active-directory-v2-compare.md) dla deweloperów.
@@ -47,7 +49,7 @@ Obecnie dla każdej aplikacji, który chcesz zintegrować z punktem końcowym v2
 Ponadto rejestracji aplikacji, które możesz utworzyć w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) ma następujące ostrzeżenia:
 
 * Tylko dwa klucze tajne aplikacji są dozwolone na identyfikator aplikacji.
-* Można wyświetlać i zarządzać tylko konto dewelopera pojedynczego rejestracji aplikacji zarejestrowanych przez użytkownika z osobistego konta Microsoft. Nie można współużytkować między wielu deweloperów.  Jeśli chcesz udostępnić rejestracji aplikacji wśród wielu deweloperów, można utworzyć aplikacji po zalogowaniu się do portalu rejestracji przy użyciu konta usługi Azure AD.
+* Można wyświetlać i zarządzać tylko konto dewelopera pojedynczego rejestracji aplikacji zarejestrowanych przez użytkownika z osobistego konta Microsoft. Nie można współużytkować między wielu deweloperów. Jeśli chcesz udostępnić rejestracji aplikacji wśród wielu deweloperów, można utworzyć aplikacji po zalogowaniu się do portalu rejestracji przy użyciu konta usługi Azure AD.
 * Istnieje kilka ograniczeń na format przekierowania URI, który jest dozwolony. Aby uzyskać więcej informacji na temat identyfikatorów URI przekierowania zobacz następną sekcję.
 
 ## <a name="restrictions-on-redirect-uris"></a>Ograniczenia dotyczące przekierowania URI
@@ -89,12 +91,12 @@ Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplika
 Obecnie Obsługa bibliotek dla punktu końcowego v2.0 jest ograniczona. Jeśli chcesz używać punktu końcowego v2.0 w aplikacji produkcyjnej, masz następujące opcje:
 
 * Jeśli tworzysz aplikację sieci web bezpiecznie służy oprogramowanie pośredniczące Microsoft ogólnie dostępna po stronie serwera do sprawdzania poprawności logowania i tokenu. Obejmują one oprogramowanie pośredniczące OWIN Open ID Connect ASP.NET i Node.js usługi Passport wtyczki. Aby uzyskać przykłady kodu, korzystających z oprogramowania pośredniczącego firmy Microsoft, zobacz nasze [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
-* Jeśli tworzysz aplikację desktop lub mobile można użyć jednej z naszym podglądzie biblioteki uwierzytelniania firmy Microsoft (MSAL).  Te biblioteki są w podglądzie obsługiwane w środowisku produkcyjnym, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz przeczytać dodatkowe informacje z wersji zapoznawczej i dostępnych bibliotek w naszym [dokumentacja bibliotek uwierzytelniania](active-directory-v2-libraries.md).
+* Jeśli tworzysz aplikację desktop lub mobile można użyć jednej z naszym podglądzie biblioteki uwierzytelniania firmy Microsoft (MSAL). Te biblioteki są w podglądzie obsługiwane w środowisku produkcyjnym, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz przeczytać dodatkowe informacje z wersji zapoznawczej i dostępnych bibliotek w naszym [dokumentacja bibliotek uwierzytelniania](active-directory-v2-libraries.md).
 * W przypadku platform nie pasuje do żadnego biblioteki Microsoft można zintegrować z punktem końcowym v2.0 przez bezpośrednie wysyłanie i odbieranie wiadomości protokołu w kodzie aplikacji. Protokoły OpenID Connect i OAuth 2.0 [są udokumentowane](active-directory-v2-protocols.md) ułatwiające wykonanie takiej integracji.
 * Ponadto można użyć biblioteki Otwórz ID Connect i OAuth open source do integracji z punktem końcowym v2.0. Protokół v2.0 powinna być zgodna z wielu bibliotek protokołu open source bez istotne zmiany. Dostępność tego rodzaju biblioteki jest zależna od języka i platformy. [Open ID Connect](http://openid.net/connect/) i [OAuth 2.0](http://oauth.net/2/) listę popularnych implementacje Obsługa witryn sieci Web. Aby uzyskać więcej informacji, zobacz [biblioteki Azure Active Directory w wersji 2.0 i uwierzytelniania](active-directory-v2-libraries.md)oraz listę bibliotek klienckich open source i przykłady, które zostały przetestowane z punktem końcowym v2.0.
 
 ## <a name="restrictions-on-protocols"></a>Ograniczenia protokołów
-Punktu końcowego v2.0 nie obsługuje SAML lub WS-Federation; obsługuje tylko Open ID Connect i OAuth 2.0.  Nie wszystkie funkcje i możliwości protokołów OAuth zostały włączone do punktu końcowego v2.0. Te funkcje protokołu i możliwości są obecnie *nie jest dostępny* w punkcie końcowym v2.0:
+Punktu końcowego v2.0 nie obsługuje SAML lub WS-Federation; obsługuje tylko Open ID Connect i OAuth 2.0. Nie wszystkie funkcje i możliwości protokołów OAuth zostały włączone do punktu końcowego v2.0. Te funkcje protokołu i możliwości są obecnie *nie jest dostępny* w punkcie końcowym v2.0:
 
 * Nie zawierają tokeny Identyfikatora, które są wydawane przez punktu końcowego v2.0 `email` oświadczenia dla użytkownika, nawet jeśli w przypadku uzyskania zgody użytkownika, aby wyświetlić swój adres e-mail.
 * Informacje o użytkowniku OpenID Connect punkt końcowy nie został zaimplementowany dla punktu końcowego v2.0. Jednak wszystkie dane profilu użytkownika, które potencjalnie będą pojawi się w tym punkcie końcowym jest dostępna z programu Microsoft Graph `/me` punktu końcowego.

@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 43a3427b05b8e4f1fbaf0f8f5e6b60da9e837a46
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 0af8806cdc55b89a9ab87a8059808e4fcc9a1730
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatyzację zasobów w centrum danych lub w chmurze chronionej za pomocą hybrydowy proces roboczy elementu Runbook
 
@@ -143,28 +143,19 @@ Oprócz standardowych adresy i porty wymagane przez hybrydowy proces roboczy ele
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Hybrydowy proces roboczy elementu Runbook jest zależna od programu Microsoft Monitoring Agent, aby komunikować się z Twoim kontem automatyzacji Zarejestruj pracownika, otrzymywanie zadania elementów runbook i zgłoszenia stanu. W przypadku niepowodzenia rejestracji pracownika poniżej przedstawiono niektóre możliwe przyczyny błędu:
+Hybrydowy proces roboczy elementu Runbook zależy od agenta do komunikowania się z Twoim kontem automatyzacji Zarejestruj pracownika, otrzymywanie zadania elementów runbook i zgłoszenia stanu. Dla systemu Windows, Ten agent jest programu Microsoft Monitoring Agent. Dla systemu Linux jest Agent pakietu OMS dla systemu Linux. W przypadku niepowodzenia rejestracji pracownika poniżej przedstawiono niektóre możliwe przyczyny błędu:
 
-1. Hybrydowy proces roboczy jest związany z serwera proxy lub zapory.
+### <a name="the-hybrid-worker-is-behind-a-proxy-or-firewall"></a>Hybrydowy proces roboczy jest używany serwer proxy lub Zapora
 
-   Sprawdź, czy komputer ma dostęp ruchu wychodzącego do *.azure automation.net na porcie 443.
+Sprawdź, czy komputer ma dostęp ruchu wychodzącego do *.azure automation.net na porcie 443.
 
-2. Komputer, hybrydowy proces roboczy na którym działa ma mniej niż minimalne wymagania sprzętowe.
+### <a name="the-computer-the-hybrid-worker-is-running-on-has-less-than-the-minimum-hardware-requirements"></a>Komputer, hybrydowy proces roboczy na którym działa ma mniej niż minimalne wymagania sprzętowe
 
-   Komputery z systemem hybrydowy proces roboczy elementu Runbook powinna spełniać minimalne wymagania sprzętowe przed oznaczeniem go do obsługi tej funkcji. W przeciwnym razie w zależności od innych procesów w tle i rywalizacji spowodowane przez elementy runbook podczas wykonywania na wykorzystanie zasobów komputera staje się nadmiernie wykorzystywany i spowodować opóźnienia zadania elementu runbook i przekroczeń limitu czasu.
+Komputery z systemem hybrydowy proces roboczy elementu Runbook powinna spełniać minimalne wymagania sprzętowe przed oznaczeniem go do obsługi tej funkcji. W przeciwnym razie w zależności od innych procesów w tle i rywalizacji spowodowane przez elementy runbook podczas wykonywania na wykorzystanie zasobów komputera staje się nadmiernie wykorzystywany i spowodować opóźnienia zadania elementu runbook i przekroczeń limitu czasu.
 
-   Upewnij się, że komputer wyznaczony do uruchomienia funkcji hybrydowego procesu roboczego elementu Runbook spełnia minimalne wymagania sprzętowe. Jeśli tak, monitorowanie wykorzystania procesora CPU i pamięci, aby określić korelacja wydajności procesów hybrydowy proces roboczy elementu Runbook i Windows. Brak pamięci lub dużego wykorzystania procesora CPU, może to oznaczać konieczność uaktualnienia lub dodać dodatkowych procesorów lub zwiększ ilość pamięci do adresów wąskie gardło zasobów i Usuń przyczynę błędu. Opcjonalnie zaznacz zasób różnych obliczeń, który może obsługiwać minimalne wymagania i skalowania, gdy wymaganego obciążenia wskazywać wzrost jest konieczne.
+Upewnij się, że komputer wyznaczony do uruchomienia funkcji hybrydowego procesu roboczego elementu Runbook spełnia minimalne wymagania sprzętowe. Jeśli tak, monitorowanie wykorzystania procesora CPU i pamięci, aby określić korelacja wydajności procesów hybrydowy proces roboczy elementu Runbook i Windows. Brak pamięci lub dużego wykorzystania procesora CPU, może to oznaczać konieczność uaktualnienia lub dodać dodatkowych procesorów lub zwiększ ilość pamięci do adresów wąskie gardło zasobów i Usuń przyczynę błędu. Opcjonalnie zaznacz zasób różnych obliczeń, który może obsługiwać minimalne wymagania i skalowania, gdy wymaganego obciążenia wskazywać wzrost jest konieczne.
 
-3. Usługa Microsoft Monitoring Agent nie jest uruchomiona.
-
-   Jeśli usługa Microsoft Monitoring Agent Windows nie jest uruchomiona, zapobiega to hybrydowy proces roboczy elementu Runbook komunikację z usługi Automatyzacja Azure. Sprawdź, agent nie działa, wprowadzając następujące polecenie w programie PowerShell: `get-service healthservice`. Jeśli usługa zostanie zatrzymana, wprowadź następujące polecenie w programie PowerShell, aby uruchomić usługę: `start-service healthservice`.
-
-4. W **aplikacji i usług Menedżera Logs\Operations** dziennika zdarzeń, zobacz zdarzenia 4502 i zawierający EventMessage **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**z następujący opis: *certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com nie został wystawiony przez urząd certyfikacji używany dla usług firmy Microsoft. Skontaktuj się z administratorem sieci, aby sprawdzić, czy działają z serwera proxy przechwytującego komunikację TLS/SSL. Artykuł KB3126513 zawiera dodatkowe informacje dotyczące rozwiązywania problemów, które występują problemy dotyczące połączenia.*
-    Może to być spowodowane serwera proxy lub sieci Zapora blokuje komunikację do systemu Microsoft Azure. Sprawdź, czy komputer ma dostęp ruchu wychodzącego do *.azure automation.net na porty 443.
-
-Dzienniki są przechowywane lokalnie na każdym hybrydowy proces roboczy na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Można sprawdzić, czy istnieją ostrzeżenia lub błędu zdarzeń zapisywanych w **aplikacji i usług Logs\Microsoft-SMA\Operations** i **aplikacji i usług Menedżera Logs\Operations** dziennika zdarzeń, który wskazuje z łącznością lub innego problemu dołączania roli do automatyzacji Azure lub problem podczas wykonywania normalnych operacji.
-
-Dodatkowe kroki dotyczące rozwiązywania problemów z zarządzania aktualizacjami, zobacz [zarządzania aktualizacjami — Rozwiązywanie problemów](automation-update-management.md#troubleshooting)
+Aby uzyskać dodatkowe informacje dotyczące rozwiązywania problemów dla określonego systemu operacyjnego, zobacz [procesu roboczego elementu Runbook hybrydowego Linux](automation-linux-hrw-install.md#troubleshooting) lub [procesu roboczego elementu Runbook hybrydowego systemu Windows](automation-windows-hrw-install.md#troubleshooting)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

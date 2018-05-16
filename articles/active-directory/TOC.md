@@ -12,10 +12,11 @@
 ## [Rozpoczynanie pracy z usługą Azure AD](get-started-azure-ad.md)
 ## [Tworzenie konta w usłudze Azure AD Premium](active-directory-get-started-premium.md)
 ## [Dodawanie niestandardowej nazwy domeny](add-custom-domain.md)
-## [Configure company branding (Konfigurowanie oznaczenia marką firmy)](customize-branding.md)
+## [Konfigurowanie oznaczenia marką firmy](customize-branding.md)
 ## [Dodawanie użytkowników do usługi Azure AD](add-users-azure-active-directory.md)
-## [Assign licenses to users (Przypisywanie licencji do użytkowników)](license-users-groups.md)
-## [Configure Self-service password reset (Konfigurowanie samoobsługowego resetowania haseł)](authentication/quickstart-sspr.md)
+## [Przypisywanie licencji do użytkowników](license-users-groups.md)
+## [Konfigurowanie samoobsługowego resetowania haseł](authentication/quickstart-sspr.md)
+## [Dodawanie informacji o ochronie prywatności w organizacji do usługi Azure AD](active-directory-properties-area.md)
 
 
 # Instrukcje
@@ -58,6 +59,7 @@
 #### [Zasady udostępniania B2B](active-directory-b2b-delegate-invitations.md)
 #### [Dodawanie użytkownika B2B do roli](active-directory-b2b-add-guest-to-role.md)
 #### [Grupy dynamiczne i użytkownicy B2B](active-directory-b2b-dynamic-groups.md)
+#### [Opuszczanie organizacji](active-directory-b2b-leave-the-organization.md)
 #### [Inspekcja i raporty](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B dla organizacji hybrydowych](active-directory-b2b-hybrid-organizations.md)
 ##### [Udzielanie użytkownikom B2B dostępu do aplikacji lokalnych](active-directory-b2b-hybrid-cloud-to-on-premises.md)
@@ -178,11 +180,11 @@
 
 ### [Zdalny dostęp do aplikacji za pomocą serwera proxy aplikacji](manage-apps/application-proxy.md)
 #### Rozpoczęcie pracy
-##### [Włączanie serwera proxy aplikacji](active-directory-application-proxy-enable.md)
-##### [Publikowanie aplikacji](application-proxy-publish-azure-portal.md)
-##### [Niestandardowe domeny](active-directory-application-proxy-custom-domains.md)
-#### [Logowanie jednokrotne](application-proxy-sso-overview.md)
-##### [Logowanie jednokrotne z delegowaniem KCD](active-directory-application-proxy-sso-using-kcd.md)
+##### [Włączanie serwera proxy aplikacji](manage-apps/application-proxy-enable.md)
+##### [Publikowanie aplikacji](manage-apps/application-proxy-publish-azure-portal.md)
+##### [Niestandardowe domeny](manage-apps/application-proxy-configure-custom-domain.md)
+#### [Logowanie jednokrotne](manage-apps/application-proxy-single-sign-on.md)
+##### [Logowanie jednokrotne z delegowaniem KCD](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 ##### [Logowanie jednokrotne z nagłówkami](application-proxy-ping-access.md)
 ##### [Logowanie jednokrotne z przechowywaniem haseł w magazynie](application-proxy-sso-azure-portal.md)
 #### Pojęcia

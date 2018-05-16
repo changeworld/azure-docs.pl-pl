@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 9300c3a45f57da7e55eed1dbdf8fd6e94b094c31
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Sposób użycia tokenu nabycia Azure VM zarządzane usługi tożsamości (MSI) 
 
@@ -282,10 +282,10 @@ Punkt końcowy zarządzane tożsamość usługi sygnalizuje błędów za pomocą
 
 | Kod stanu | Przyczyny błędu | Sposób obsługi |
 | ----------- | ------------ | ------------- |
+| Nie można odnaleźć 404. | Aktualizuje IMDS punktu końcowego. | Spróbuj ponownie z Expontential wycofywania. Zobacz poniższe wskazówki. |
 | 429 zbyt wiele żądań. |  Osiągnięto limit przepustnicy IMDS. | Spróbuj ponownie z wykładniczego wycofywania. Zobacz poniższe wskazówki. |
 | Błąd 4xx w żądaniu. | Co najmniej jeden z parametrów żądania jest niepoprawne. | Nie próbuj ponownie.  Sprawdź, czy szczegóły błędu, aby uzyskać więcej informacji.  błędy 4xx są błędy czasu projektowania.|
 | 5xx Błąd przejściowy z usługi. | Podsystem MSI lub Azure Active Directory zwróciła błąd przejściowy. | Jest bezpieczne ponowić próbę po odczekaniu co najmniej 1 sekundę.  Możesz ponowić próbę zbyt szybko lub zbyt częstym IMDS i/lub Azure AD mogą zwracać błąd limitu szybkości (429).|
-| Nie można odnaleźć 404. | Aktualizuje IMDS punktu końcowego. | Spróbuj ponownie z Expontential wycofywania. Zobacz poniższe wskazówki. |
 | timeout | Aktualizuje IMDS punktu końcowego. | Spróbuj ponownie z Expontential wycofywania. Zobacz poniższe wskazówki. |
 
 Jeśli wystąpi błąd, odpowiednich treści odpowiedzi HTTP zawiera JSON z szczegóły błędu:

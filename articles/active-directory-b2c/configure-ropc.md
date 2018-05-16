@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: davidmu
-ms.openlocfilehash: 4a052da4a6a16fde0583b3a1dbecc2a6de5cc0a9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c1b4d641f6830751e2cb9e66d5052eb20a48d371
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczenia hasła właściciela zasobów (ROPC) w usłudze Azure AD B2C
 
-Przepływ standardowego uwierzytelniania OAUTH jest przepływu poświadczeń (ROPC) hasło właściciela zasobów gdzie aplikacji, znanej także jako uzależnionej wymiany prawidłowe poświadczenia, takie jak nazwa użytkownika i hasło dla tokenu identyfikator, token dostępu i token odświeżania. 
+Przepływu poświadczeń (ROPC) hasło właściciela zasobów jest przepływ standardowego uwierzytelniania OAUTH, gdzie aplikacja, znanej także jako uzależnionej wymiany prawidłowe poświadczenia, takie jak nazwa użytkownika i hasło dla tokenu identyfikator, token dostępu i token odświeżania. 
 
 > [!NOTE]
 > Ta funkcja jest dostępna w wersji zapoznawczej.

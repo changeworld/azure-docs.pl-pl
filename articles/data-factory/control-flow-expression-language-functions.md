@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Wyrażeń i funkcji w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -194,7 +194,7 @@ W poniższym przykładzie przyjmuje potoku **inputPath** i **outputPath** parame
 |i|Zwraca wartość PRAWDA, jeśli spełnione są obydwa parametry. Oba argumenty muszą być wartości logiczne. Zwraca następujące `false`:  `and(greater(1,10),equals(0,0))`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość logiczna 1<br /><br /> **Opis elementu**: wymagane. Pierwszy argument, który musi być `true`.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: wartość logiczna 2<br /><br /> **Opis elementu**: wymagane. Drugi argument musi być `true`.|  
 |lub|Zwraca wartość PRAWDA, jeśli jest spełniony jeden z parametrów. Oba argumenty muszą być wartości logiczne. Zwraca następujące `true`:  `or(greater(1,10),equals(0,0))`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość logiczna 1<br /><br /> **Opis elementu**: wymagane. Pierwszy argument, który może być `true`.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: wartość logiczna 2<br /><br /> **Opis elementu**: wymagane. Drugi argument może być `true`.|  
 |nie|Zwraca wartość true, jeśli parametr jest `false`. Oba argumenty muszą być wartości logiczne. Zwraca następujące `true`:  `not(contains('200 Success','Fail'))`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość logiczna<br /><br /> **Opis elementu**: zwraca wartość true, jeśli parametr jest `false`. Oba argumenty muszą być wartości logiczne. Zwraca następujące `true`:  `not(contains('200 Success','Fail'))`|  
-|if|Zwraca określoną wartość na podstawie, gdy wyniki dostarczonego wyrażenia w `true` lub `false`.  Na przykład następujące zwraca `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wyrażenie<br /><br /> **Opis elementu**: wymagane. Wartość logiczna, która określa wartość, która jest zwracana przez wyrażenie.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: True<br /><br /> **Opis elementu**: wymagane. Wartość zwracana, gdy wyrażenie jest `true`.<br /><br /> **Liczba parametrów**: 3<br /><br /> **Nazwa**: False<br /><br /> **Opis elementu**: wymagane. Wartość zwracana, gdy wyrażenie jest `false`.|  
+|Jeśli|Zwraca określoną wartość na podstawie, gdy wyniki dostarczonego wyrażenia w `true` lub `false`.  Na przykład następujące zwraca `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wyrażenie<br /><br /> **Opis elementu**: wymagane. Wartość logiczna, która określa wartość, która jest zwracana przez wyrażenie.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: True<br /><br /> **Opis elementu**: wymagane. Wartość zwracana, gdy wyrażenie jest `true`.<br /><br /> **Liczba parametrów**: 3<br /><br /> **Nazwa**: False<br /><br /> **Opis elementu**: wymagane. Wartość zwracana, gdy wyrażenie jest `false`.|  
   
 ## <a name="conversion-functions"></a>Funkcje konwersji  
  Funkcje te służą do konwersji między każdego typu natywnego w języku:  
@@ -203,7 +203,7 @@ W poniższym przykładzie przyjmuje potoku **inputPath** i **outputPath** parame
   
 -   liczba całkowita  
   
--   Float  
+-   liczba zmiennoprzecinkowa  
   
 -   wartość logiczna  
   
@@ -215,8 +215,8 @@ W poniższym przykładzie przyjmuje potoku **inputPath** i **outputPath** parame
 |-------------------|-----------------|  
 |int|Parametr należy przekonwertować na liczbę całkowitą. Na przykład poniższe wyrażenie zwraca 100 jako liczbę zamiast ciągu:  `int('100')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość<br /><br /> **Opis elementu**: wymagane. Wartość, która jest konwertowana na liczbę całkowitą.|  
 |ciąg|Parametr jest skonwertowana do ciągu. Na przykład poniższe wyrażenie zwraca `'10'`: `string(10)` można również przekonwertować obiektu na ciąg, na przykład, jeśli **foo** parametr jest obiekt z jedną właściwość `bar : baz`, a następnie spowoduje następujące Zwraca `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość<br /><br /> **Opis elementu**: wymagane. Wartość, która jest konwertowana na ciąg.|  
-|JSON|Konwertuj parametr na wartość typu JSON. Jest przeciwieństwem string(). Na przykład poniższe wyrażenie zwraca `[1,2,3]` jako tablica zamiast ciągu:<br /><br /> `parse('[1,2,3]')`<br /><br /> Podobnie ciąg można przekonwertować na obiekt. Na przykład `json('{"bar" : "baz"}')` zwraca:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: ciąg<br /><br /> **Opis elementu**: wymagane. Ciąg, który jest konwertowany na wartość typu macierzystego.<br /><br /> Funkcja json obsługuje również dane wejściowe xml. Na przykład, wartość parametru:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> jest konwertowana na następujących json:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|Float|Liczba zmiennoprzecinkowa przekonwertować argumentu parametru. Na przykład poniższe wyrażenie zwraca `10.333`:  `float('10.333')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość<br /><br /> **Opis elementu**: wymagane. Wartość, która jest konwertowana na liczba zmiennoprzecinkowa.|  
+|json|Konwertuj parametr na wartość typu JSON. Jest przeciwieństwem string(). Na przykład poniższe wyrażenie zwraca `[1,2,3]` jako tablica zamiast ciągu:<br /><br /> `json('[1,2,3]')`<br /><br /> Podobnie ciąg można przekonwertować na obiekt. Na przykład `json('{"bar" : "baz"}')` zwraca:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: ciąg<br /><br /> **Opis elementu**: wymagane. Ciąg, który jest konwertowany na wartość typu macierzystego.<br /><br /> Funkcja json obsługuje również dane wejściowe xml. Na przykład, wartość parametru:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> jest konwertowana na następujących json:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|liczba zmiennoprzecinkowa|Liczba zmiennoprzecinkowa przekonwertować argumentu parametru. Na przykład poniższe wyrażenie zwraca `10.333`:  `float('10.333')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość<br /><br /> **Opis elementu**: wymagane. Wartość, która jest konwertowana na liczba zmiennoprzecinkowa.|  
 |wartość logiczna|Konwersji parametru na wartość logiczną. Na przykład poniższe wyrażenie zwraca `false`:  `bool(0)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: wartość<br /><br /> **Opis elementu**: wymagane. Wartość, która jest konwertowana na wartość logiczną.|  
 |połączenie|Zwraca pierwszy obiekt zerowy przekazanych argumentów. Uwaga: pusty ciąg nie jest pusty. Na przykład, jeśli nie zdefiniowano parametrów 1 i 2, to zwraca `fallback`:  `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: obiekt*n*<br /><br /> **Opis elementu**: wymagane. Sprawdź, czy obiekty `null`.|  
 |base64|Zwraca reprezentację ciągu wejściowego base64. Na przykład poniższe wyrażenie zwraca `c29tZSBzdHJpbmc=`:  `base64('some string')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: String 1<br /><br /> **Opis elementu**: wymagane. Ciąg do zakodowania w reprezentację base64.|  

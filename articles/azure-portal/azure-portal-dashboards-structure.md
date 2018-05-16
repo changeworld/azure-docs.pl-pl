@@ -1,23 +1,23 @@
 ---
-title: "Struktura pulpitów nawigacyjnych Azure | Dokumentacja firmy Microsoft"
+title: Struktura pulpitów nawigacyjnych Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano strukturze JSON pulpitu nawigacyjnego platformy Azure
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
-manager: timlt
+manager: dougeby
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: f71ff9383f20a1a75fd2c1cf4dc3aaf049d970cf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: fa50b31a0c8e9077658106039c4fbd2eef8b4367
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura Azure pulpitów nawigacyjnych
 Ten dokument zawiera opis za pośrednictwem struktury Azure pulpitu nawigacyjnego, na przykład przy użyciu następujących pulpitu nawigacyjnego:
@@ -335,10 +335,10 @@ __Pozycji__ właściwość zawiera informacje rozmiar i położenie części wyr
 Każda część ma właściwość metadanych, obiekt jest tylko jedna wymagana właściwość o nazwie __typu__. Ten ciąg informuje portalu kafelka, które można wyświetlić. Naszym przykładzie pulpit nawigacyjny korzysta z tych typów Kafelki:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`— Używany do wyświetlania monitorowania metryk
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`— Używany do wyświetlania tekstu lub obrazów za pomocą podstawowe formatowanie list, łącza, itd.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`— Umożliwia wyświetlenie filmy wideo z serwisu YouTube, Channel9 i inne rodzaje wideo, która działa w tagu html wideo.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`— Umożliwia zawierają nazwę i stan maszyny wirtualnej platformy Azure.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` — Używany do wyświetlania monitorowania metryk
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` — Używany do wyświetlania tekstu lub obrazów za pomocą podstawowe formatowanie list, łącza, itd.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` — Umożliwia wyświetlenie filmy wideo z serwisu YouTube, Channel9 i inne rodzaje wideo, która działa w tagu html wideo.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` — Umożliwia zawierają nazwę i stan maszyny wirtualnej platformy Azure.
 
 Każdy typ części ma własną konfigurację. Właściwości konfiguracji możliwe są nazywane __dane wejściowe__, __ustawienia__, i __zasobów__. 
 

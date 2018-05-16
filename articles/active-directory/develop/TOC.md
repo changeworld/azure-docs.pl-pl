@@ -41,7 +41,7 @@
 ### [Przyznawanie kodu autoryzacji OAuth 2.0](active-directory-protocols-oauth-code.md)
 ### [Przyznawanie niejawne protokołu OAuth 2.0](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [Konfigurowanie oświadczenia roli](active-directory-enterprise-app-role-management.md)
+### [Konfigurowanie oświadczenia roli](../active-directory-enterprise-app-role-management.md)
 ### [Dostosowywanie oświadczeń](active-directory-saml-claims-customization.md)
 ### [Debugowanie rejestracji jednokrotnej opartej na SAML](active-directory-saml-debugging.md)
 ### [Protokół SAML logowania jednokrotnego](active-directory-single-sign-on-protocol-reference.md)

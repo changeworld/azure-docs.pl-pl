@@ -1,25 +1,27 @@
 ---
-title: "Jak włączyć logowanie Jednokrotne wielu aplikacji w systemie Android przy użyciu biblioteki ADAL | Dokumentacja firmy Microsoft"
-description: "Jak używać funkcji ADAL zestawu SDK do Włącz rejestrację jednokrotną w aplikacji. "
+title: Jak włączyć logowanie Jednokrotne wielu aplikacji w systemie Android przy użyciu biblioteki ADAL | Dokumentacja firmy Microsoft
+description: 'Jak używać funkcji ADAL zestawu SDK do Włącz rejestrację jednokrotną w aplikacji. '
 services: active-directory
-documentationcenter: 
-author: danieldobalian
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/07/2017
-ms.author: dadobali
+ms.author: celested
+ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7d832ecf3e9c64088a75cc88551879b4e09df715
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee27b1d4dcc091ef570e2b0aef32273af986d3f9
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Jak włączyć logowanie Jednokrotne wielu aplikacji w systemie Android przy użyciu biblioteki ADAL
 Zapewniające pojedynczego logowania jednokrotnego (SSO), aby użytkownicy potrzebują tylko może wprowadzić swoje poświadczenia raz, a te poświadczenia automatycznie działać przez aplikacje teraz jest oczekiwany przez klientów. Trudności przy wprowadzaniu swoją nazwę użytkownika i hasło na małego ekranu, często razy łączyć się przy użyciu dodatkowego składnika (2FA), takich jak rozmowa telefoniczna lub kod wysłana wiadomość SMS, powoduje niezadowolenie szybki, jeśli użytkownik ma w tym celu więcej niż jeden raz na produkt.
@@ -86,7 +88,7 @@ Oto reprezentację działanie zestawów SDK tożsamość firmy Microsoft z magaz
 Asystowane brokera logowania są funkcji logowania, które występują w aplikacji brokera i korzystania z magazynu i zabezpieczeń brokera udostępnianie poświadczeń we wszystkich aplikacjach na urządzeniu, mające zastosowanie platformy pakietu Microsoft Identity. Oznacza to, że aplikacje zależne od brokera do logowania użytkowników. W systemach iOS i Android brokerzy te są realizowane za pośrednictwem aplikacji do pobrania, czy klientów zainstalować niezależnie lub może zostać umieszczony na urządzeniu przez firmę, użytkowników, którzy zarządzają urządzenia dla ich użytkownika. Przykładowe aplikacje tego typu jest aplikacja Microsoft Authenticator w systemie iOS. W systemie Windows ta funkcja jest dostarczana przez selektora konta z wbudowanej w system operacyjny, znane pod względem technicznym jako Broker uwierzytelniania sieci Web.
 Środowisko jest zależna od platformy i czasami mogą być uciążliwe dla użytkowników w przeciwnym razie zarządzane prawidłowo. Znasz prawdopodobnie najbardziej tego wzorca Jeśli z zainstalowaną aplikacją Facebook i używać funkcji usługi Facebook połączenie z innej aplikacji. Platforma Microsoft Identity używa tego samego wzorca.
 
-Dla systemu iOS, który prowadzi to do "przejścia" animacji, w którym aplikacji są wysyłane do tła podczas aplikacji Microsoft Authenticator zawiera pierwszego planu dla użytkownika wybrać konto, które chce się zalogować.  
+Dla systemu iOS, który prowadzi to do "przejścia" animacji, w którym aplikacji są wysyłane do tła podczas aplikacji Microsoft Authenticator zawiera pierwszego planu dla użytkownika wybrać konto, które chce się zalogować. 
 
 Dla systemów Android i Windows selektora konta jest wyświetlany u góry aplikację, która jest prostszy sposób użytkownika.
 
@@ -160,11 +162,11 @@ Aby platformy pakietu Microsoft Identity dowiedzieć się, że mogą być udost�
 
 Możesz się zastanawiać, jak należy określić różnych aplikacji z usługą Microsoft Identity korzysta z tego samego identyfikatora aplikacji Odpowiedź jest z **identyfikator URI przekierowania**. Każda aplikacja może mieć wiele identyfikator URI przekierowania zarejestrowany w portalu przy dołączaniu. Każdej aplikacji w zestawie ma inny identyfikator URI przekierowania. Jak wygląda przykład znajduje się poniżej:
 
-Identyfikator URI przekierowania App1`msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
+Identyfikator URI przekierowania App1 `msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
 
-Identyfikator URI przekierowania App2`msauth://com.example.userapp1/KmB7PxIytyLkbGHuI%2UitkW%2Fejk%4E`
+Identyfikator URI przekierowania App2 `msauth://com.example.userapp1/KmB7PxIytyLkbGHuI%2UitkW%2Fejk%4E`
 
-Identyfikator URI przekierowania App3:`msauth://com.example.userapp2/Pt85PxIyvbLkbKUtBI%2SitkW%2Fejk%9F`
+Identyfikator URI przekierowania App3: `msauth://com.example.userapp2/Pt85PxIyvbLkbKUtBI%2SitkW%2Fejk%9F`
 
 ....
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 19c7a0475d975344a1563b8ff5e279059a93fbea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurowanie hybrydowego urządzeń przyłączonych do usługi Azure Active Directory
 
@@ -561,8 +561,6 @@ Po wykonaniu czynności wymagane urządzenia przyłączone do domeny są gotowe 
 ### <a name="remarks"></a>Uwagi
 
 - Obiekt zasad grupy umożliwia kontrolować dystrybucję automatycznej rejestracji systemu Windows 10 i komputerów przyłączonych do domeny systemu Windows Server 2016. **Jeśli nie chcesz, aby te urządzenia do automatycznego rejestrowania w usłudze Azure AD lub chcesz kontrolować rejestracji**, a następnie musi wprowadzana wyłączanie automatycznej rejestracji na tych urządzeniach, przed rozpoczęciem z konfiguracją zasad grupy kroki. Po zakończeniu konfigurowania, i gdy wszystko będzie gotowe do testowania, należy wdrożyć zasady grupy Włączenie automatycznej rejestracji tylko do urządzeń testowych, a następnie do wszystkich urządzeń podczas wybierz pozycję.
-
-- Windows 10 listopada 2015 aktualizacja automatycznie tworzy sprzężenie z usługą Azure AD **tylko** Jeśli obiekt zasad grupy wdrożenia jest ustawiony.
 
 - Aby wdrażanie komputerów z systemem Windows niższego poziomu, można wdrożyć [pakiet Instalatora Windows](#windows-installer-packages-for-non-windows-10-computers) na komputerach, które można wybrać.
 

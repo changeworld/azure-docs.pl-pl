@@ -3,23 +3,25 @@ title: Azure aplikacji sieci web AD Node.js wprowadzenie | Dokumentacja firmy Mi
 description: Informacje o sposobie tworzenia aplikacji sieci web Node.js Express MVC, która integruje się z usługą Azure AD dla logowania.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Wprowadzenie aplikacji sieci web AD Node.js Azure
 W tym miejscu możemy użyć usługi Passport:
@@ -37,7 +39,7 @@ W tym celu należy wykonać następujące czynności:
 3. Użyć programu Passport do wysyłania do usługi Azure AD żądań zalogowania się i wylogowania.
 4. Wydrukować dane o użytkowniku.
 
-Kod używany w tym samouczku jest przechowywany [ w serwisie GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).  Aby z niego skorzystać, można [pobrać szkielet aplikacji w pliku .zip](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) lub sklonować szkielet:
+Kod używany w tym samouczku jest przechowywany [ w serwisie GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS). Aby z niego skorzystać, można [pobrać szkielet aplikacji w pliku .zip](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) lub sklonować szkielet:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -55,7 +57,7 @@ Ukończona aplikacja znajduje się na końcu również w tym samouczku.
 5. Postępuj zgodnie z monitami, aby utworzyć **aplikacji sieci Web** i/lub **WebAPI**.
   * **Nazwa** aplikacji opisuje aplikacji dla użytkowników.
 
-  * **Adres URL logowania** jest podstawowy adres URL aplikacji.  Domyślnie szkielet `http://localhost:3000/auth/openid/return`.
+  * **Adres URL logowania** jest podstawowy adres URL aplikacji. Domyślnie szkielet `http://localhost:3000/auth/openid/return`.
 
 6. Po zarejestrowaniu, usługi Azure AD przypisuje aplikacji identyfikatora aplikacji Potrzebujesz tej wartości w poniższych sekcjach, dlatego skopiuj go ze strony aplikacji.
 7. Z **ustawienia** -> **właściwości** strony dla aplikacji, zaktualizuj identyfikator URI aplikacji. **Identyfikator URI aplikacji** to unikatowy identyfikator aplikacji. Konwencji jest użycie formatu `https://<tenant-domain>/<app-name>`, na przykład: `https://contoso.onmicrosoft.com/my-first-aad-app`.
@@ -78,7 +80,7 @@ Ukończona aplikacja znajduje się na końcu również w tym samouczku.
 Spowoduje to zainstalowanie bibliotek który `passport-azure-ad` zależy.
 
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>Krok 3: Konfigurowanie aplikacji do użycia strategii passport-node-js
-W tym miejscu możemy skonfigurować Express do używania protokołu uwierzytelniania OpenID Connect.  Usługa Passport umożliwia wykonywanie różnych czynności, włącznie z żądaniami logowania i wylogowywania problem, zarządzanie sesji użytkownika i uzyskać informacje o użytkowniku.
+W tym miejscu możemy skonfigurować Express do używania protokołu uwierzytelniania OpenID Connect. Usługa Passport umożliwia wykonywanie różnych czynności, włącznie z żądaniami logowania i wylogowywania problem, zarządzanie sesji użytkownika i uzyskać informacje o użytkowniku.
 
 1. Aby rozpocząć, otwórz `config.js` plików w katalogu głównym projektu, a następnie wprowadź wartości konfiguracji aplikacji w `exports.creds` sekcji.
 
@@ -181,7 +183,7 @@ Poprzedni kod obejmuje wszystkich użytkowników, która do uwierzytelniania ser
             };
     ```
 
-5.  Następnie możemy dodać kod, aby załadować aparat Express. W tym miejscu użyjemy /views domyślne i zapewnia wzorzec /routes Express.
+5. Następnie możemy dodać kod, aby załadować aparat Express. W tym miejscu użyjemy /views domyślne i zapewnia wzorzec /routes Express.
 
     ```JavaScript
 
@@ -252,7 +254,7 @@ Poprzedni kod obejmuje wszystkich użytkowników, która do uwierzytelniania ser
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Krok 4: Użyj Passport do wysyłania żądań zalogowania się i wylogowania do usługi Azure AD
-Aplikacji jest teraz prawidłowo skonfigurowana do komunikowania się z punktem końcowym przy użyciu protokołu uwierzytelniania OpenID Connect.  `passport-azure-ad` ma podjąć obsługę wszystkich szczegółów obsługuje tworzenie komunikatów uwierzytelniania, sprawdzanie poprawności tokenów z usługi Azure AD i pozostawienie sesji użytkownika. Wszystkie punkty, które pozostaje przyznawanie użytkownikom możliwość zalogować się i wylogowywania i zbieranie dodatkowych informacji na temat zalogowanych użytkowników.
+Aplikacji jest teraz prawidłowo skonfigurowana do komunikowania się z punktem końcowym przy użyciu protokołu uwierzytelniania OpenID Connect. `passport-azure-ad` ma podjąć obsługę wszystkich szczegółów obsługuje tworzenie komunikatów uwierzytelniania, sprawdzanie poprawności tokenów z usługi Azure AD i pozostawienie sesji użytkownika. Wszystkie punkty, które pozostaje przyznawanie użytkownikom możliwość zalogować się i wylogowywania i zbieranie dodatkowych informacji na temat zalogowanych użytkowników.
 
 1. Po pierwsze Dodajmy domyślną, logowania, konta i wylogowania metody naszych `app.js` pliku:
 
@@ -282,7 +284,7 @@ Aplikacji jest teraz prawidłowo skonfigurowana do komunikowania się z punktem 
 
     ```
 
-2.  Przejrzyj te szczegółowo umożliwia:
+2. Przejrzyj te szczegółowo umożliwia:
 
   * `/`Trasa przekierowuje do widoku index.ejs przekazanie użytkownika w żądaniu (jeśli istnieje).
   * `/account` Trasy najpierw *temu firma Microsoft są uwierzytelniani* (wdrożymy który w poniższym przykładzie) i następnie przekazuje użytkownika w żądaniu, dzięki czemu możemy uzyskać dodatkowe informacje o użytkowniku.

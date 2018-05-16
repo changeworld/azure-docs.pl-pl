@@ -1,25 +1,26 @@
 ---
 title: Azure AD oprogramowania Cordova wprowadzenie | Dokumentacja firmy Microsoft
-description: "Jak utworzyć aplikację Cordova, która integruje się z usługą Azure AD, logowania i wywołuje Azure interfejsów API, które są chronione przez usługi AD za pomocą uwierzytelniania OAuth."
+description: Jak utworzyć aplikację Cordova, która integruje się z usługą Azure AD, logowania i wywołuje Azure interfejsów API, które są chronione przez usługi AD za pomocą uwierzytelniania OAuth.
 services: active-directory
-documentationcenter: 
-author: vibronet
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b1a8d7bd-7ad6-44d5-8ccb-5255bb623345
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: vittorib
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6d6d514875aa675bf160ee08a3e94b58944020ee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Azure AD oprogramowania Cordova wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -33,7 +34,7 @@ Wtyczka Cordova opakowuje Azure AD natywnych zestawów SDK w systemach iOS, Andr
 W tym samouczku Apache Cordova wtyczki dla Active Directory Authentication Library (ADAL) będą używane do poprawy prostej aplikacji przez dodanie następujących funkcji:
 
 * Przy użyciu kilku wierszy kodu uwierzytelniania użytkownika i uzyskania tokenu.
-* Użyj tego tokenu do wywołania interfejsu API programu Graph do tego katalogu zapytania i wyświetlić wyniki.  
+* Użyj tego tokenu do wywołania interfejsu API programu Graph do tego katalogu zapytania i wyświetlić wyniki. 
 * Użyj tokenu ADAL pamięci podręcznej, aby zminimalizować monitowania użytkownika o uwierzytelniania.
 
 Aby wprowadzić te ulepszenia, musisz:
@@ -47,7 +48,7 @@ Aby wprowadzić te ulepszenia, musisz:
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Dzierżawa usługi Azure AD, gdzie masz konto z uprawnieniami rozwoju aplikacji.
-* Środowisko deweloperskie, który jest skonfigurowany do używania oprogramowania Apache Cordova.  
+* Środowisko deweloperskie, który jest skonfigurowany do używania oprogramowania Apache Cordova. 
 
 Jeśli masz zarówno już skonfigurować, bezpośrednio przejść do kroku 1.
 
@@ -98,8 +99,8 @@ Po zakończeniu rejestracji usługi Azure AD przypisuje unikatowy identyfikator 
 
 Aby uruchomić `DirSearchClient Sample`, udziel uprawnienia nowo utworzoną aplikacją wykonać zapytania interfejsu API Azure AD Graph:
 
-1. Z **ustawienia** wybierz pozycję **wymagane uprawnienia**, a następnie wybierz **Dodaj**.  
-2. Dla aplikacji usługi Azure Active Directory wybierz **Microsoft Graph** jako interfejsu API i Dodaj **dostępu do katalogu jako zalogowany użytkownik** uprawnienie w obszarze **delegowane uprawnienia**.  Dzięki temu aplikacja wykonać zapytania interfejsu API programu Graph dla użytkowników.
+1. Z **ustawienia** wybierz pozycję **wymagane uprawnienia**, a następnie wybierz **Dodaj**. 
+2. Dla aplikacji usługi Azure Active Directory wybierz **Microsoft Graph** jako interfejsu API i Dodaj **dostępu do katalogu jako zalogowany użytkownik** uprawnienie w obszarze **delegowane uprawnienia**. Dzięki temu aplikacja wykonać zapytania interfejsu API programu Graph dla użytkowników.
 
 ## <a name="step-2-clone-the-sample-app-repository"></a>Krok 2: Klonowanie repozytorium przykładowej aplikacji
 Z powłoki lub wiersza polecenia wpisz następujące polecenie:

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 05/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f68a4d699d1ad6592fe5481cd69795b06e7d8fca
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -156,7 +156,7 @@ Jeśli usługodawca oferuje usługi ExpressRoute w obu lokacjach, możesz pracow
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Czy można mieć wiele obwody usługi ExpressRoute w tym samym metro Czy można połączyć je z tej samej sieci wirtualnej?
 
-Tak. Może mieć wiele obwody usługi ExpressRoute z tego samego lub innego usługodawcy. Jeśli metro ma wiele lokalizacji komunikacji równorzędnej ExpressRoute i obwodów są tworzone w różnych lokalizacjach komunikacji równorzędnej, można je połączyć do tej samej sieci wirtualnej. Jeśli obwodów są tworzone w tej samej lokalizacji komunikacji równorzędnej, nie możesz połączyć je z tej samej sieci wirtualnej.
+Tak. Może mieć wiele obwody usługi ExpressRoute z tego samego lub innego usługodawcy. Jeśli metro ma wiele lokalizacji komunikacji równorzędnej ExpressRoute i obwodów są tworzone w różnych lokalizacjach komunikacji równorzędnej, można je połączyć do tej samej sieci wirtualnej. Jeśli obwodów są tworzone w tej samej lokalizacji komunikacji równorzędnej, nie możesz połączyć je z tej samej sieci wirtualnej. Każda nazwa lokalizacji w portalu Azure lub interfejsu API programu PowerShell/CLI reprezentuje jedną lokalizację komunikacji równorzędnej. Można na przykład wybierz lokalizacje komunikacji równorzędnej "Singapuru" i "Singapore2" i Połącz z każdej z tą samą siecią virtuan obwodów. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Jak połączyć mojej sieci wirtualnych do obwodu usługi ExpressRoute
 

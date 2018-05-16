@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integracji z pakietem adaptacyjną | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i adaptacyjną Suite."
+title: 'Samouczek: Azure Active Directory integracji z pakietem adaptacyjną | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i adaptacyjną Suite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e128ddf53a93fe30350d8e914657f3539701603
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0932eea407ea6dbb43760c2e64c49be802363360
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-suite"></a>Samouczek: Integracji Azure Active Directory z adaptacyjną Suite
 
@@ -110,11 +110,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
-    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     >[!NOTE]
     > Tę wartość można uzyskać z adaptacyjną zestawu **ustawienia logowania jednokrotnego SAML** strony.
-    >  
+    >
+    
+    Sprawdź **Pokaż zaawansowane ustawienia adresu URL** pole. W **identyfikator jednostki** tekstowym, wpisz ten sam adres URL wprowadzony w **adres URL odpowiedzi** pola tekstowego.
+    
+    >[!NOTE]
+    > Identyfikator jednostki dla każdej domeny adaptacyjną Insights jest taki sam jak adres URL odpowiedzi.
+    >
 
 4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
@@ -261,7 +267,7 @@ Celem tej sekcji służy do testowania usługi Microsoft Azure AD rejestracji je
 Po kliknięciu kafelka adaptacyjną Suite w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane adaptacyjną pakiet aplikacji.
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

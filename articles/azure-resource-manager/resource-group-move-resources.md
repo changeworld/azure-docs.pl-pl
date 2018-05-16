@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6691ba1e89b7558302c869d3246fc69acd5dcd84
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -209,6 +209,8 @@ Podczas przenoszenia sieci wirtualnej, należy przenieść jej zasoby zależne. 
 Aby przenieść peered sieci wirtualnej, należy najpierw wyłączyć komunikację równorzędną sieci wirtualnej. Po wyłączeniu można przenieść sieci wirtualnej. Po przeniesieniu należy ponownie włączyć komunikację równorzędną sieci wirtualnej.
 
 Nie można przenieść sieć wirtualną do innej subskrypcji, jeśli sieć wirtualna zawiera podsieci z zasobów łącza nawigacji. Na przykład jeśli zasobów pamięci podręcznej Redis jest wdrażana w podsieci, tej podsieci ma łącza nawigacji zasobu.
+
+Nie można przenieść sieć wirtualną do innej subskrypcji, jeśli sieć wirtualna zawiera niestandardowy serwer DNS. Aby przenieść sieć wirtualną, należy ustawić go na serwer domyślny (DNS platformy Azure). Po przeniesieniu należy ponownie skonfigurować niestandardowy serwer DNS.
 
 ## <a name="app-service-limitations"></a>Ograniczenia usługi aplikacji
 

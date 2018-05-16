@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8b5f59d3fea402efa50bdafd7fc0439a93051e69
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 048e2636aabe406728c8fe1b93ef861f13346256
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Samouczek: Konfigurowanie połączenia hybrydowe chmury Azure i stosu Azure
 
@@ -93,7 +93,7 @@ Specyfikacje połączenia:
 
 ## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Tworzenie sieci wirtualnej w stosie Azure i Azure globalne
 
-> [!note]  
+> [!Note]  
 > Należy upewnij się, czy jest bez nakładania się adresy IP w przestrzeni adresów sieci wirtualnej platformy Azure lub stos Azure. 
 
 Aby utworzyć sieć wirtualną w modelu wdrażania usługi Resource Manager przy użyciu portalu Azure. Użyj [przykładowych wartości](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values), jeśli wykonujesz te kroki w ramach samouczka. Jeśli nie wykonujesz tych kroków w ramach samouczka, koniecznie zastąp te wartości własnymi. 
@@ -129,7 +129,7 @@ W [portalu](http://portal.azure.com/) przejdź do sieci wirtualnej usługi Resou
         - Kliknij przycisk **+ Utwórz nowy** otworzyć **tworzenie publicznego adresu IP** strony.
         - Wprowadź **nazwa** dla publicznego adresu IP. Pozostaw SKU jako **podstawowe**, a następnie wybierz pozycję **OK** u dołu tej strony, aby zapisać zmiany.
 
-    > [!note]  
+    > [!Note]  
     > Brama sieci VPN aktualnie obsługuje tylko Alokacja adresów dynamicznych publicznego adresu IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
 
 4. Sprawdź poprawność ustawień. 

@@ -3,17 +3,17 @@ title: Samouczek dotyczący usługi Kubernetes na platformie Azure — przygotow
 description: Samouczek dotyczący usługi AKS — przygotowywanie aplikacji
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 87f407aba40d4896ed8fb61b5528ed624afb80cb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 50c302ddc7bad9cd2de666c1b99d1fbc6d5a62a8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji dla usługi Azure Kubernetes Service (AKS)
 

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 58b4c6769f6eb441e9ccaf041f3d56f4af9a0831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Skonfigurowane, zrozumieć, jak moduły krawędzi IoT mogą być używane i ponownie - preview
 
@@ -168,7 +168,7 @@ Manifest wdrażania można określić właściwości żądaną dwie modułu każ
 
 Jeśli nie określisz dwie modułu odpowiednie właściwości w manifeście rozmieszczenia, Centrum IoT nie zmodyfikuje dwie modułu w jakikolwiek sposób i będzie można programowo Ustaw odpowiednie właściwości.
 
-Te same mechanizmy, które umożliwiają modyfikowanie twins urządzenia są używane do modyfikowania twins modułu. Zapoznaj się [przewodnik dewelopera dwie urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) Aby uzyskać więcej informacji.   
+Te same mechanizmy, które umożliwiają modyfikowanie twins urządzenia są używane do modyfikowania twins modułu. Zapoznaj się [przewodnik dewelopera dwie urządzenia](../iot-hub/iot-hub-devguide-device-twins.md) Aby uzyskać więcej informacji.   
 
 ## <a name="deployment-manifest-example"></a>Przykład manifestu wdrożenia
 

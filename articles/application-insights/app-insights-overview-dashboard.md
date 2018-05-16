@@ -1,5 +1,5 @@
 ---
-title: Pulpit nawigacyjny aplikacji Insights omówienie | Dokumentacja firmy Microsoft
+title: Pulpit nawigacyjny omówienie szczegółowych informacji aplikacji Azure | Dokumentacja firmy Microsoft
 description: Monitorowanie aplikacji z funkcjami usługi Azure Application Insights i pulpitu nawigacyjnego przeglądu.
 services: application-insights
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: bccb56ad45d9054a437bf2d85e74a8d81fbc3db1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 89ad96441ca4d519a9f4213ae3353eea1f0a7c37
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="overview-dashboard-preview"></a>Przegląd pulpit nawigacyjny (wersja zapoznawcza)
+# <a name="application-insights-overview-dashboard-preview"></a>Pulpit nawigacyjny aplikacji — omówienie Insights (wersja zapoznawcza)
 
-Usługa Application Insights zawsze udostępnił okienko Podsumowanie, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Uruchamianie na 15 maja 2018 nowe, szybsze, bardziej elastyczne środowisko zostaną wydane jako podgląd. Na 29 maja 2018 środowiska klasycznego omówienie zostaną wycofane.
+Usługa Application Insights zawsze udostępnił okienko Podsumowanie, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Nowy pulpit nawigacyjny Omówienie podglądu zapewnia szybsze, bardziej elastyczne środowisko.
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Jak przetestować nowe środowisko
 
-Od 15 maja nowe środowisko rozpocznie się pojawiają się w usłudze Application Insights w obszarze: _zbadaj_ > _(wersja zapoznawcza) — omówienie_.
+ W usłudze Application Insights w obszarze: _zbadaj_ wybierz _(wersja zapoznawcza) — omówienie_.
 
 ![Omówienie podglądu](.\media\app-insights-overview-dashboard\01.png)
 
@@ -60,11 +60,3 @@ Podczas mogą zachować widok domyślny, jeśli chcesz tak, można również dod
 Aby wrócić do obsługi omówienie po prostu wybierz:
 
 ![Przycisk — omówienie](.\media\app-insights-overview-dashboard\07.png)
-
-Istnieje również nowy przycisk o nazwie _części kodu Pin_.
-
-![Przycisk — omówienie](.\media\app-insights-overview-dashboard\008.png)
-
-To replikuje nieco znanych funkcji z klasycznym przeglądu, która pozwala się Kafelki ze starego środowisko omówienie _(alerty, dostępności, metryki na żywo, użycie, aktywne wykryć i mapowanie aplikacji)_ i Dodaj je do niestandardowych pulpitów nawigacyjnych. 
-
-W przypadku domyślnie _pulpit nawigacyjny aplikacji_ tych kafelków zostało już dodane. Ale jeśli tworzenie dodatkowych niestandardowych pulpitów nawigacyjnych lub w zespole usuwanie klasycznego kafelka i chcesz dodać ją ponownie, _części kodu Pin_ zawiera te funkcje w żadnym łatwe do odnalezienia miejsca.

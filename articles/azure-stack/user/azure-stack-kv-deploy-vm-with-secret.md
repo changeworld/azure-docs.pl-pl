@@ -1,35 +1,42 @@
 ---
-title: "Wdrożenie maszyny Wirtualnej z zabezpieczonym hasłem na stosie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć maszynę Wirtualną przy użyciu hasła przechowywane w magazynie kluczy stosu Azure"
+title: Wdrożenie maszyny Wirtualnej z zabezpieczonym hasłem na stosie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć maszynę Wirtualną przy użyciu hasła przechowywane w magazynie kluczy stosu Azure
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2017
+ms.date: 05/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8d9a2cebd7a28ca13cf88518a7c83b217af4c0e1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Utwórz maszynę wirtualną, pobierając hasła przechowywane w magazynie kluczy
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Utwórz maszynę wirtualną przy użyciu bezpiecznego hasła przechowywane w magazynie kluczy stosu Azure
 
-Gdy należy przekazać wartość bezpieczny, takie jak hasła podczas wdrażania można przechowywać tej wartości jako klucza tajnego w magazynie kluczy Azure stosu i odwołania w szablonach usługi Azure Resource Manager. Nie należy, nie należy ręcznie wprowadzić klucz tajny każdym wdrożeniu zasobów, można również określić użytkowników, którzy ani nazwy główne usług mogą uzyskiwać dostęp do klucza tajnego. 
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-W tym artykule firma Microsoft opisano kroki wymagane do wdrożenia maszyny wirtualnej systemu Windows Azure stosu pobierając hasło, które są przechowywane w magazynie kluczy. W związku z tym hasło nigdy nie jest umieszczany w postaci zwykłego tekstu w pliku parametrów szablonu. Korzystania z tych kroków, z Development Kit stosu Azure lub z klientom zewnętrznym, jeśli są połączone za pośrednictwem sieci VPN.
+Kroki tego artykułu, do wdrażania maszyny wirtualnej systemu Windows Server przy użyciu hasła przechowywane w magazynie kluczy stosu Azure. Przy użyciu hasła magazynu kluczy jest bezpieczniejsza niż przekazywanie hasła w postaci zwykłego tekstu.
+
+## <a name="overview"></a>Przegląd
+
+Wartości, takie jak hasła można zapisać jako klucza tajnego w magazynie kluczy Azure stosu. Po utworzeniu klucza tajnego można odwoływać się do niej w szablonach usługi Azure Resource Manager. Użycie kluczy tajnych z usługą Resource Manager zapewnia następujące korzyści:
+
+* Nie trzeba ręcznie wprowadź hasło w każdym wdrożeniu zasobu.
+* Można określić, których użytkowników lub nazwy główne usług można uzyskać dostępu do klucza tajnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
- 
-* Oferta obejmuje usługi Key Vault musi subskrybować.  
-* [Instalowanie programu PowerShell Azure stosu.](azure-stack-powershell-install.md)  
+
+* Oferta obejmuje usługi Key Vault musi subskrybować.
+* [Instalowanie programu PowerShell Azure stosu.](azure-stack-powershell-install.md)
 * [Konfigurowanie środowiska PowerShell użytkownika stosu Azure.](azure-stack-powershell-configure-user.md)
 
 W poniższych krokach opisano proces wymagane do utworzenia maszyny wirtualnej przez pobranie hasła przechowywane w magazynie kluczy:
@@ -37,6 +44,8 @@ W poniższych krokach opisano proces wymagane do utworzenia maszyny wirtualnej p
 1. Tworzenie magazynu klucz tajny.
 2. Zaktualizuj plik azuredeploy.parameters.json.
 3. Wdrażanie szablonu.
+
+>[UWAGA] Korzystania z tych kroków, z platformy Azure stosu Development Kit lub klientom zewnętrznym, jeśli są połączone za pośrednictwem sieci VPN.
 
 ## <a name="create-a-key-vault-secret"></a>Tworzenie magazynu klucz tajny
 
@@ -74,7 +83,7 @@ Modyfikowanie `azuredeploy.parameters.json` plików zgodnie z własnymi wartośc
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>Zaktualizuj plik azuredeploy.parameters.json
 
-Zaktualizuj plik azuredeploy.parameters.json o identyfikatorze URI KeyVault, secretName, adminUsername wartości maszyny wirtualnej, zgodnie z harmonogramem środowiska. Następujący plik JSON przedstawiono przykład pliku parametrów szablonu: 
+Zaktualizuj plik azuredeploy.parameters.json o identyfikatorze URI KeyVault, secretName, adminUsername wartości maszyny wirtualnej, zgodnie z harmonogramem środowiska. Następujący plik JSON przedstawiono przykład pliku parametrów szablonu:
 
 ```json
 {
@@ -114,13 +123,13 @@ New-AzureRmResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
+
 Jeśli szablon został wdrożony pomyślnie, wynikiem następujące dane wyjściowe:
 
 ![Dane wyjściowe wdrażanie](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="next-steps"></a>Następne kroki
 [Wdrażanie przykładowej aplikacji z magazynu kluczy](azure-stack-kv-sample-app.md)
 
 [Wdrożenie maszyny Wirtualnej przy użyciu certyfikatu usługi Key Vault](azure-stack-kv-push-secret-into-vm.md)
-

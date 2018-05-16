@@ -42,7 +42,7 @@
 #### [Informacje o urządzeniu w rozwiązaniu do zdalnego monitorowania](iot-suite-v1-remote-monitoring-device-info.md)
 
 
-## Konserwacja predykcyjna
+## Konserwacja zapobiegawcza
 ### [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-suite-predictive-overview.md)
 ### [Przewodnik po akceleratorze rozwiązań do konserwacji zapobiegawczej](iot-suite-predictive-walkthrough.md)
 
@@ -78,6 +78,7 @@
 #### [Node.js (ogólny)](iot-suite-connecting-devices-node.md)
 #### [Node.js na urządzeniu Raspberry Pi](iot-suite-connecting-pi-node.md)
 #### [C na urządzeniu Raspberry Pi](iot-suite-connecting-pi-c.md)
+#### [Zestaw deweloperski MX Chip AZ3166](iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
 ### Pojęcia
 #### [Szczegóły implementacji monitorowania zdalnego](iot-suite-remote-monitoring-sample-walkthrough.md)
@@ -106,7 +107,7 @@
 ### [IoT Hub](/azure/iot-hub) 
 ### [Usługa IoT Hub Device Provisioning](/azure/iot-dps)
 ### [Zestawy SDK usługi IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
-### [Mapy](/azure/azure-maps) 
+### [Maps](/azure/azure-maps) 
 ### [Time Series Insights](/azure/time-series-insights) 
 ## Brzeg 
 ### [IoT Edge](/azure/iot-edge) 

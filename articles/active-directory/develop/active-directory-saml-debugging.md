@@ -2,24 +2,25 @@
 title: Debugowanie na języku SAML logowanie jednokrotne do aplikacji w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: 'Dowiedz się, jak można debugować na języku SAML logowanie jednokrotne do aplikacji w usłudze Azure Active Directory '
 services: active-directory
-author: asmalser-msft
+author: CelesteDG
 documentationcenter: na
 manager: mtillman
 ms.assetid: edbe492b-1050-4fca-a48a-d1fa97d47815
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/20/2017
-ms.author: asmalser
+ms.author: celested
 ms.custom: aaddev
-ms.reviewer: dastrock
-ms.openlocfilehash: 55ff6b7a70bcdcceacb1484f9969337f9853ce50
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: dastrock; smalser
+ms.openlocfilehash: 1a33b5ab9e26ed497e3be2d430f66ef41402733d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie na języku SAML logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 
@@ -98,7 +99,7 @@ Odwiedź stronę [błąd na stronie aplikacji po zalogowaniu się](https://docs.
 Aby uzyskać informacje dotyczące sposobu przeglądania SAML odpowiedzi Wyświetl artykuł [protokołu SAML rejestracji jednokrotnej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML#response).
 
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Dostosowywanie oświadczeń wydanych w tokenie SAML dla wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md)

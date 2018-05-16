@@ -111,8 +111,6 @@
               href: azure-stack-powershell-download.md
             - name: Konfigurowanie programu PowerShell — operator chmury
               href: azure-stack-powershell-configure-admin.md
-            - name: Szybkie rozpoczynanie pracy dzięki programowi PowerShell
-              href: azure-stack-powershell-configure-quickstart.md
         - name: Punkt końcowy z uprzywilejowanym dostępem
           href: azure-stack-privileged-endpoint.md
         - name: Zarządzanie aktualizacjami

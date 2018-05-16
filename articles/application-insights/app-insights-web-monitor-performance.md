@@ -1,8 +1,8 @@
 ---
-title: "Monitorowanie kondycji i użycia za pomocą usługi Application Insights aplikacji"
-description: "Wprowadzenie do usługi Application Insights. Analizowanie użycia, dostępności i wydajności lokalnej lub w aplikacji Microsoft Azure."
+title: Monitorowanie kondycji i użycia za pomocą usługi Application Insights aplikacji
+description: Wprowadzenie do usługi Application Insights. Analizowanie użycia, dostępności i wydajności lokalnej lub w aplikacji Microsoft Azure.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 40650472-e860-4c1b-a589-9956245df307
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
-ms.author: mbullwin
-ms.openlocfilehash: 32000f5a85c84913aa820df00f1bb7f877bf037f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.date: 05/10/2018
+ms.author: sdash
+ms.openlocfilehash: 02421492528e44ed6a913443a7793235170d4881
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="monitor-performance-in-web-applications"></a>Monitorowanie wydajności w aplikacjach sieci Web
 
@@ -27,9 +27,6 @@ Upewnij się, że aplikacja działa optymalnie i Dowiedz się szybko o zakończ�
 Usługa Application Insights można monitorować aplikacji sieci web zarówno Java, jak i platformy ASP.NET i usługi, usługi WCF. Mogą to być obsługiwana lokalnie, w przypadku maszyn wirtualnych lub jako witryny sieci Web Microsoft Azure. 
 
 Po stronie klienta usługi Application Insights może zająć telemetrii ze stron sieci web i szerokiej gamy urządzeń z systemami iOS, Android i aplikacji ze Sklepu Windows.
-
->[!Note]
-> Wprowadzono nowe środowisko dostępne do znajdowania powolne wykonywania stron w aplikacji sieci web. Jeśli nie masz do niego dostęp, ją włączyć, konfigurując opcje podglądu z [bloku Podgląd](app-insights-previews.md). Przeczytaj informacje o nowe środowisko w [Znajdowanie i rozwiązywanie problemów wąskich gardeł wydajności interakcyjne postępowaniu wydajności](#Find-and-fix-performance-bottlenecks-with-an-interactive-Performance-investigation).
 
 ## <a name="setup"></a>Konfigurowanie monitorowania wydajności
 Jeśli nie zostały jeszcze dodane usługi Application Insights do projektu (Jeśli nie ma ApplicationInsights.config), wybierz jedną z tych sposobów na rozpoczęcie pracy:
@@ -75,12 +72,12 @@ Kliknij Kafelek, aby pobrać razy dla określonych adresów URL.
 
 ![](./media/app-insights-web-monitor-performance/appinsights-42reqs.png)
 
-### <a name="slowest-requests"></a>Najwolniejsze żądań
+### <a name="slowest-requests"></a>Najwolniejsze żądania
 ![](./media/app-insights-web-monitor-performance/appinsights-44slowest.png)
 
 Pokazuje, które żądania może być konieczne dostrojenie wydajności.
 
-### <a name="failed-requests"></a>Żądań zakończonych niepowodzeniem
+### <a name="failed-requests"></a>Żądania zakończone niepowodzeniem
 ![](./media/app-insights-web-monitor-performance/appinsights-46failed.png)
 
 Liczba żądań, które zwrócił nieprzechwyconych wyjątków.
@@ -116,62 +113,29 @@ Poniżej przedstawiono kilka wskazówek do znajdowania i diagnozowanie problemó
 * Monitorowanie aplikacji sieci Web w operację, podając [strumień na żywo metryki][livestream].
 * Przechwyć stan z aplikacji .net [debugera migawki][snapshot].
 
->[!Note]
-> Trwa przechodzenie analizy wydajności usługi Application Insights, która interaktywna pełnego ekranu. Poniższa dokumentacja dotyczy nowego środowiska najpierw i następnie przegląda doświadczenia, w przypadku, gdy nadal potrzebujesz dostępu do niego, gdy będzie dostępna przez cały proces przechodzenia.
+## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Znajdź i napraw wąskich gardeł wydajności z dochodzenia wydajność
 
-## <a name="find-and-fix-performance-bottlenecks-with-an-interactive-full-screen-performance-investigation"></a>Znajdź i napraw wąskich gardeł wydajności z dochodzenia interakcyjne wydajności pełnego ekranu
-
-Nowym postępowaniem interakcyjne wydajności usługi Application Insights umożliwia Przejrzyj powolne przeprowadzanie operacji w aplikacji sieci Web. Możesz szybko wybierz określoną operację powolne i użyć [profilera](app-insights-profiler.md) głównym spowodować wolne operacji do kodu. Przy użyciu dystrybucji nowy okres wyświetlany dla wybranej operacji się, że użytkownik może szybko jednym rzutem oka ocenić jak poważny jest środowisko dla klientów. W rzeczywistości dla każdego wolne działanie można wyświetlić liczbę interakcji użytkownika został zmieniony. W poniższym przykładzie mamy decydujesz się zająć bliższe spojrzenie na środowisko dla operacji GET klientów, uzyskać szczegółowe informacje. W dystrybucji czas trwania widać, że istnieją trzy wartości szczytowe. Po lewej stronie kolekcji jest około 400ms i przedstawia wspaniały reakcji. Środkowy kolekcji jest około 1.2s i przedstawia daje środowisko. Na koniec w 3.6s mamy innego małych kolekcji, reprezentująca 99-ty doświadczenia percentyl, może spowodować jej klientów pozostawić niezadowolony. Czy środowisko jest dziesięć razy mniejsza niż doskonałe środowisko dla tej samej operacji. 
+Badanie wydajność umożliwia Przejrzyj powolne przeprowadzanie operacji w aplikacji sieci Web. Możesz szybko wybierz określoną operację powolne i użyć [profilera](app-insights-profiler.md) głównym spowodować wolne operacji do kodu. Przy użyciu dystrybucji nowy okres wyświetlany dla wybranej operacji się, że użytkownik może szybko jednym rzutem oka ocenić jak poważny jest środowisko dla klientów. Widać, ile interakcji użytkownika został zmieniony. dla każdej operacji powolne. W poniższym przykładzie mamy decydujesz się zająć bliższe spojrzenie na środowisko dla operacji GET klientów, uzyskać szczegółowe informacje. W dystrybucji czas trwania widać, że istnieją trzy wartości szczytowe. Po lewej stronie kolekcji jest około 400 ms i przedstawia wspaniały reakcji. Środkowy kolekcji jest wokół 1.2 s i reprezentuje daje środowisko. Na koniec na 3,6 s mamy innego małych kolekcji, reprezentująca 99-ty doświadczenia percentyl, może spowodować jej klientów pozostawić niezadowolony. Czy środowisko jest dziesięć razy mniejsza niż doskonałe środowisko dla tej samej operacji. 
 
 ![Klienci/szczegóły GET trzy nagłego czas trwania](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
-Aby uzyskać lepszą znaczeniu funkcji środowiska użytkownika dla tej operacji, firma Microsoft wybierz większy zakres czasu. Firma Microsoft może następnie również zawężania w czasie w oknie określony czas, gdy operacja zakończyła się szczególnie powolne. W poniższym przykładzie zostały wprowadziliśmy z domyślnego 24 godziny zakres czasu do 7 dni zakres czasu, a następnie powiększony do 9:47 – 12:47 przedział czasu między Wt 12 i śro 13. Należy pamiętać, że dystrybucji czas trwania i liczbę śladów próbki i profiler został zaktualizowany po prawej stronie.
+Aby uzyskać lepszą znaczeniu funkcji środowiska użytkownika dla tej operacji, firma Microsoft wybierz większy zakres czasu. Firma Microsoft może następnie również zawężania w czasie w oknie określony czas, gdy operacja zakończyła się powoli. W poniższym przykładzie zostały wprowadziliśmy z domyślnego 24 godziny zakres czasu do 7 dni zakres czasu, a następnie powiększony do 9:47 – 12:47 przedział czasu między Wt 12 i śro 13. Dystrybucji czas trwania i liczbę śladów próbki i profiler zostały zaktualizowane po prawej stronie.
 
 ![Uzyskaj klientów/szczegóły trzy nagłego czasu trwania w ciągu 7 dni w zakresie przedział czasu](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
-Aby zawęzić w powolne doświadczeń, możemy obok powiększenie fragmentu okresów, które znajdują się pomiędzy 95th i 99-ty percentyl. Te stanowią % 4, interakcji użytkownika, które były szczególnie powolne.
+Aby zawęzić w powolne doświadczeń, możemy obok powiększenie fragmentu okresów, które znajdują się pomiędzy 95th i 99-ty percentyl. Te stanowią % 4, interakcji użytkownika, które były powolne.
 
 ![Uzyskaj klientów/szczegóły trzy nagłego czasu trwania w ciągu 7 dni w zakresie przedział czasu](./media/app-insights-web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 Możemy teraz albo przyjrzeć reprezentatywnej próbki, klikając przycisk przykłady lub ślady profilera reprezentatywny przez kliknięcie przycisku ślady profilera. W tym przykładzie istnieją cztery śladów zebraniu do pobrania klientów/szczegółów w czas trwania okna i zakres zainteresowania.
 
-Czasami ten problem nie będzie w kodzie, ale w zależności kodu wywołania. Można przełączyć na kartę zależności w widoku wydajności klasyfikacji do sprawdzania, czy takie powolne zależności. Należy pamiętać, że domyślnie widok wydajności jest średnie trendzie, ale co naprawdę chcesz przyjrzeć się 95. percentyl (lub 99th, w przypadku monitorowania bardzo dojrzałe usługi). W poniższym przykładzie firma Microsoft skupia się na wolne zależności obiektów BLOB platformy Azure, gdzie nazywamy PUT fabrikamaccount. Dobra napotyka klastra wokół 40ms, powolne wywołania do tej samej zależności są trzykrotnie wolniej, klaster około 120ms. Nie przyjmuje wiele z tych wywołań do dodawania spowodować znacznie spowolnić odpowiednich operacji. Aby przejść do szczegółów w reprezentatywnej próbki i ślady profilera, podobnie jak karta operacji.
+Czasami ten problem nie będzie w kodzie, ale raczej powstanie zależności kod wywołuje. Można przełączyć na kartę zależności w widoku wydajności klasyfikacji do sprawdzania, czy takie powolne zależności. Domyślnie w widoku wydajności jest średnie trendzie, ale co naprawdę chcesz przyjrzeć się 95. percentyl (lub 99th, w przypadku monitorowania dojrzałe usługi). W poniższym przykładzie firma Microsoft skupia się na wolne zależności obiektów BLOB platformy Azure, gdzie nazywamy PUT fabrikamaccount. Dobra napotyka klastra około 40 ms, powolne wywołania do tej samej zależności są trzykrotnie wolniej, klaster około 120 ms. Nie przyjmuje wiele z tych wywołań do dodawania spowodować znacznie spowolnić odpowiednich operacji. Aby przejść do szczegółów w reprezentatywnej próbki i ślady profilera, podobnie jak karta operacji.
 
 ![Uzyskaj klientów/szczegóły trzy nagłego czasu trwania w ciągu 7 dni w zakresie przedział czasu](./media/app-insights-web-monitor-performance/SlowDependencies95thTrend.png)
 
-Kolejnej naprawdę zaawansowanych funkcji, która jest nowym składnikiem dochodzenia interakcyjne wydajności pełnego ekranu jest integracja z informacjami. Usługi Application Insights umożliwia wykrywanie i powierzchni jako regresji czas odpowiedzi szczegółowe informacje, jak i pomocy, należy zidentyfikować wspólne właściwości w zestawie próbki, którą chcesz skupić się na. Najlepszym sposobem przyjrzeć się wszystkie dostępne szczegółowych danych jest przełączyć się do zakresu czasu 30 dni, a następnie wybierz ogólny, aby zobaczyć wgląd we wszystkie operacje w ostatnim miesiącu.
+Badania wydajność zawiera istotne informacje na temat technologii po stronie zestawu próbki, do którego chcesz skupić się na. Najlepszym sposobem przyjrzeć się wszystkie dostępne szczegółowych danych jest przełączyć się do zakresu czasu 30 dni, a następnie wybierz ogólny, aby zobaczyć wgląd we wszystkie operacje w ostatnim miesiącu.
 
 ![Uzyskaj klientów/szczegóły trzy nagłego czasu trwania w ciągu 7 dni w zakresie przedział czasu](./media/app-insights-web-monitor-performance/Performance30DayOveralllnsights.png)
-
-Usługi Application Insights w widoku klasyfikacji wydajności dosłownie może pomóc w znalezieniu igły w haystack, która spowodować niską środowiska dla użytkowników aplikacji sieci Web.
-
-## <a name="deprecated-find-and-fix-performance-bottlenecks-with-a-narrow-bladed-legacy-performance-investigation"></a>Przestarzałe: Znajdź i napraw wąskich gardeł wydajności postępowaniu wąskie ostrzem wydajności starszych
-
-Starszych dochodzenia ostrzem wydajności usługi Application Insights umożliwia zlokalizować obszary aplikacji sieci Web, które są spowolnieniem ogólną wydajność. Można znaleźć określonego stron, które są spowolnieniem i użyj [profilera](app-insights-profiler.md) śledzenie główną przyczynę tych problemów do kodu. 
-
-### <a name="create-a-list-of-slow-performing-pages"></a>Utwórz listę powolne wykonywania strony 
-
-Pierwszym krokiem do znajdowania problemy z wydajnością jest w celu uzyskania listy powolne odpowiada strony. Zrzut poniżej ekranu pokazuje, używając bloku wydajności, aby uzyskać listę potencjalnych strony, aby zbadać dokładnie. Możliwe jest szybkie wyświetlenie na tej stronie czy wystąpił spowolnienia czas odpowiedzi aplikacji na około 6:00 PM i ponownie na około 10 PM. Można również sprawdzić, czy operacja szczegóły klienta/GET miał niektórych długotrwałe operacje z czasem odpowiedzi środkowej 507.05 milisekund. 
-
-![Wydajność interakcyjne Insights aplikacji](./media/app-insights-web-monitor-performance/performance1.png)
-
-### <a name="drill-down-on-specific-pages"></a>Przechodzenie do określonych stron
-
-Po utworzeniu migawki wydajności aplikacji, więcej informacji można uzyskać na określonych powolna wykonywania operacji. Polecenie żadnej operacji na liście, aby wyświetlić szczegóły, jak pokazano poniżej. Z wykresu jest widoczny czy wydajność oparto na zależność. Można również sprawdzić, ilu użytkowników działa w różnym czasie odpowiedzi. 
-
-![Application Insights operacji bloku](./media/app-insights-web-monitor-performance/performance5.png)
-
-### <a name="drill-down-on-a-specific-time-period"></a>Przechodzenie w określonym przedziale czasu
-
-Po zidentyfikowaniu punktu w czasie, aby zbadać, przejść do szczegółów nawet w przypadku znajduje się w określonej operacji, które mogły spowodować spowolnienia wydajności. Po kliknięciu określonego punktu w czasie otrzymasz szczegóły strony, jak pokazano poniżej. W poniższym przykładzie widoczny operacje wymienione w danym okresie oraz kody odpowiedzi serwera i czas trwania operacji. Masz również adres url do otwarcia elementu roboczego TFS, aby wysyłać tych informacji do zespołu deweloperów.
-
-![Przedział czasu Application Insights](./media/app-insights-web-monitor-performance/performance2.png)
-
-### <a name="drill-down-on-a-specific-operation"></a>Przechodzenie do określonej operacji
-
-Po zidentyfikowaniu punktu w czasie, aby zbadać, przejść do szczegółów nawet w przypadku znajduje się w określonej operacji, które mogły spowodować spowolnienia wydajności. Polecenie operacji z listy, aby wyświetlić szczegóły operacji, jak pokazano poniżej. W tym przykładzie widać, operacja nie powiodła się, czy usługa Application Insights udostępnił szczegóły aplikacja zgłosiła wyjątek. Ponownie można łatwo utworzyć elementu roboczego TFS z poziomu tego bloku.
-
-![Application Insights operacji bloku](./media/app-insights-web-monitor-performance/performance3.png)
 
 
 ## <a name="next"></a>Następne kroki

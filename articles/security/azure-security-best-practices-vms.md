@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Najlepsze rozwiązania dotyczące zabezpieczeń maszyny Wirtualnej Azure
 
@@ -55,7 +55,7 @@ Po włączeniu zasady Resource Manager i RBAC kontrolować dostęp do maszyny Wi
 
 - [Maszyny wirtualnej współautora](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): można zarządzać maszynami wirtualnymi, ale nie wirtualnych sieci lub magazynu konto z którym jest połączony.
 - [Klasycznym współautora maszyny wirtualnej](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): można zarządzać maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania, ale nie z wirtualnych sieci lub magazynu konta połączenie maszyn wirtualnych.
-- [Menedżer zabezpieczeń](../role-based-access-control/built-in-roles.md#security-manager): Zarządzanie składniki zabezpieczeń, zasady zabezpieczeń i maszyn wirtualnych.
+- [Administrator zabezpieczeń](../role-based-access-control/built-in-roles.md#security-admin): można zarządzać składników zabezpieczeń i zasady zabezpieczeń.
 - [DevTest Labs użytkownika](../role-based-access-control/built-in-roles.md#devtest-labs-user): można przeglądać wszystko i połączyć, uruchom ponownie uruchom i zamknij maszyny wirtualne.
 
 Nie udostępniaj kont i haseł innym administratorom, a nie ponownie użyć hasła w wielu kont użytkowników lub usług, szczególnie hasła związanych z mediami społecznościowymi lub innymi działaniami innych niż administracyjne. W idealnym przypadku należy użyć [usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) następujące szablony maszyn wirtualnych bezpieczny sposób. Przy użyciu tej metody, można wzmocnienie wybrane opcje wdrażania oraz wymusi ustawienia zabezpieczeń w całym wdrożeniu.

@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 61426d992e279cf88ae9750f0047b0cd81a797e3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikacje symbolu wieloznacznego w serwer proxy aplikacji usługi Azure Active Directory 
 
@@ -112,7 +112,7 @@ Jeśli używasz tej opcji, należy również inny wpis CNAME dla wartości `AppI
 
 Zastosowań symboli wieloznacznych jest reprezentowana z tylko jednego kafelka w [panelu MyApps](https://myapps.microsoft.com). Domyślnie ten Kafelek jest ukryty. Aby wyświetlić kafelka i mieć ziemi użytkowników na danej stronie:
 
-1. Postępuj zgodnie z wytycznymi dla [ustawienie adresu URL strony głównej](application-proxy-office365-app-launcher.md).
+1. Postępuj zgodnie z wytycznymi dla [ustawienie adresu URL strony głównej](manage-apps/application-proxy-configure-custom-home-page.md).
 2. Ustaw **Pokaż aplikacji** do **true** na stronie właściwości aplikacji.
 
 ### <a name="kerberos-constrained-delegation"></a>Ograniczone delegowanie protokołu Kerberos

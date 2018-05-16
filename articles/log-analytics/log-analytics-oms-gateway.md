@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 207b7ab0968f775dba99c2f48c1961d74b4f11c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji przy użyciu automatyzacji Azure i analizy dzienników przy użyciu bramy OMS, gdy bezpośrednie połączenia lub Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Brama OMS, czyli protokołu HTTP do przodu serwera proxy, który obsługuje tunelowania przy użyciu połączenia HTTP polecenia HTTP, można zbierać dane i przesyła do automatyzacji Azure i analizy dzienników w ich imieniu.  
@@ -36,7 +36,7 @@ Gdy grupa zarządzania programu Operations Manager jest zintegrowany z analizy d
 
 Aby zapewnić wysoką dostępność bezpośrednio połączone lub grup zarządzania operacje, które komunikują się z analizy dzienników za pośrednictwem bramy, skorzystać z równoważenia obciążenia sieciowego do przekierowywania i dystrybuowanie ruchu między wieloma serwerami bramy.  Jeśli jeden serwer bramy ulegnie awarii, ruch jest przekierowywany do innego węzła dostępne.  
 
-Zaleca się zainstalowanie agenta pakietu OMS na komputerze z uruchomionym oprogramowania OMS bramy do monitorowania bramy OMS i analizowanie danych wydajności lub zdarzeń. Ponadto agent pomaga bramy OMS zidentyfikować potrzebne do komunikowania się z punktów końcowych usługi.
+Agent pakietu OMS jest wymagany na komputerze z uruchomionym OMS bramy w celu identyfikacji punktów końcowych usługi potrzebne do komunikowania się z i monitorowanie bramy OMS do analizowania jego wydajności lub dane zdarzenia.
 
 Każdy agent musi mieć łączność sieciową z bramy, tak aby agentów automatycznie przesyłania danych do i z bramy. Nie jest zalecane instalowanie bramy na kontrolerze domeny.
 
@@ -56,6 +56,7 @@ Podczas wyznaczania komputer, aby uruchomić bramę OMS, ten komputer musi mieć
 * Windows Server 2016, w systemie Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, Windows Server 2008
 * Program .net framework 4.5
 * Co najmniej 4 rdzenie procesora i 8 GB pamięci 
+* Agent pakietu OMS dla systemu Windows 
 
 ### <a name="language-availability"></a>Dostępność języka
 

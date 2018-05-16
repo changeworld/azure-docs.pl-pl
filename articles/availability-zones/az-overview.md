@@ -1,6 +1,6 @@
 ---
-title: Przegląd stref dostępności Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie sposobu korzystania ze stref dostępności do tworzenia aplikacji wysoką dostępność i odporność na platformie Azure
+title: Co to są strefy dostępności Azure? | Microsoft Docs
+description: Aby utworzyć aplikacje wysoką dostępność i odporność na platformie Azure, strefy dostępności zapewniają osobnych lokalizacji, w których można użyć do uruchomienia zasobów.
 services: ''
 documentationcenter: ''
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 03/21/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: a4133779538e412a19a11de678b1527fb8023a87
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9eb7105b2d1a95eb8ccfa96ea0bc5188aab1b4aa
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="overview-of-availability-zones-in-azure"></a>Przegląd stref dostępności na platformie Azure
+# <a name="what-are-availability-zones-in-azure"></a>Co to są strefy dostępności na platformie Azure?
 Dostępność strefy jest oferty, który chroni aplikacje i dane awarii centrum danych wysokiej dostępności. Dostępność strefy są unikatowe lokalizacje fizyczne w obrębie regionu platformy Azure. Każdej strefy składa się z co najmniej jeden centrów danych z niezależnej od zasilania, chłodzenia i sieci. W celu zapewnienia odporności, istnieje co najmniej trzech oddzielnych stref we wszystkich regionach włączone. Fizyczne rozdzielenie dostępności stref w obrębie regionu chroni aplikacje i dane z błędami centrum danych. Usługi strefowo nadmiarowy replikowanie danych i aplikacji w dostępności strefa chroni przed jednym punktów z awarią. W strefach dostępności Azure oferuje branży najlepsze 99,99% wirtualna przestojów umowy SLA. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
 
 Tworzenie wysokiej dostępności do architektury aplikacji przez kolokacja zasobów obliczeniowych, magazynu, sieci i danych w ramach strefy i replikacji w innych stref. Usług Azure, które obsługują stref dostępności można podzielić na dwie kategorie:

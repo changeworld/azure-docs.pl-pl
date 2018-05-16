@@ -3,23 +3,24 @@ title: Słownik dewelopera usługi Azure Active Directory | Dokumentacja firmy M
 description: Lista warunków dla często używanych koncepcje dla deweloperów usługi Azure Active Directory i funkcji.
 services: active-directory
 documentationcenter: ''
-author: bryanla
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/16/2017
-ms.author: bryanla
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Słownik dewelopera usługi Azure Active Directory
 Ten artykuł zawiera definicje dla niektórych podstawowe koncepcje dla deweloperów usługi Azure Active Directory (AD), które są przydatne podczas nauki opracowywanie aplikacji dla usługi Azure AD.
@@ -35,7 +36,7 @@ Tokeny dostępu są czasami określane jako "Użytkownik + aplikacja" lub "App t
 Zobacz [odwołania do usługi Azure AD tokenu] [ AAD-Tokens-Claims] więcej szczegółów.
 
 ## <a name="application-id-client-id"></a>Identyfikator aplikacji (identyfikator klienta)
-Unikatowy identyfikator usługi Azure AD problemy rejestracji aplikacji, który identyfikuje określoną aplikację i skojarzony konfiguracji.  Ten identyfikator aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie opracowywania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny. 
+Unikatowy identyfikator usługi Azure AD problemy rejestracji aplikacji, który identyfikuje określoną aplikację i skojarzony konfiguracji. Ten identyfikator aplikacji ([identyfikator klienta](https://tools.ietf.org/html/rfc6749#page-15)) jest używany podczas uwierzytelniania żądań i jest dostarczane do bibliotek uwierzytelniania w czasie opracowywania. Identyfikator aplikacji (identyfikator klienta) nie jest klucz tajny. 
 
 ## <a name="application-manifest"></a>Manifest aplikacji
 Funkcja dostarczonych przez [portalu Azure][AZURE-portal], która tworzy reprezentację JSON Konfiguracja tożsamości aplikacji, używane jako mechanizm aktualizacji skojarzone [ Aplikacja] [ AAD-Graph-App-Entity] i [ServicePrincipal] [ AAD-Graph-Sp-Entity] jednostek. Zobacz [opis manifestu aplikacji usługi Azure Active Directory] [ AAD-App-Manifest] więcej szczegółów.
@@ -85,7 +86,7 @@ A [tokenu zabezpieczającego](#security-token) zawiera oświadczenia, które zap
 Zobacz [odwołania do tokenu usługi Azure AD] [ AAD-Tokens-Claims] więcej szczegółów.
 
 ## <a name="client-application"></a>Aplikacja kliencka
-Zgodnie z definicją w [Framework autoryzacji OAuth2][OAuth2-Role-Def], aplikacji, która sprawia, że chroniony zasób żądania w imieniu [właściciel zasobu](#resource-owner). Termin "klient" oznacza wszystkie właściwości wykonania konkretnego sprzętu (na przykład, czy aplikacja wykonuje na serwerze, pulpitu lub innych urządzeniach).  
+Zgodnie z definicją w [Framework autoryzacji OAuth2][OAuth2-Role-Def], aplikacji, która sprawia, że chroniony zasób żądania w imieniu [właściciel zasobu](#resource-owner). Termin "klient" oznacza wszystkie właściwości wykonania konkretnego sprzętu (na przykład, czy aplikacja wykonuje na serwerze, pulpitu lub innych urządzeniach). 
 
 Aplikacja kliencka żąda [autoryzacji](#authorization) od właściciela zasobu, aby uczestniczyć w [udzielania autoryzacji OAuth2](#authorization-grant) przepływu i może uzyskać dostępu do interfejsów API/danych w imieniu właściciela zasobów. Framework autoryzacji OAuth2 [definiują dwa typy klientów][OAuth2-Client-Types]"poufne dane" i "public", oparte na możliwość zachowania poufności swoich poświadczeń klienta. Aplikacje można wdrożyć [klienta sieci web (poufne)](#web-client) na serwerze sieci web, które są uruchamiane [aplikacja native client (publicznej)](#native-client) zainstalowana na urządzeniu, lub [na podstawie agent użytkownika klienta (publicznej)](#user-agent-based-client)które są uruchamiane w przeglądarce urządzenia.
 
@@ -121,7 +122,7 @@ Zgodnie z definicją w [Framework autoryzacji OAuth2][OAuth2-Role-Def], możliwo
 ## <a name="resource-server"></a>serwer zasobów
 Zgodnie z definicją w [Framework autoryzacji OAuth2][OAuth2-Role-Def], ochronę zasobów mogą akceptować i reagowanie na hostach serwera chronionego zasobu żądania przez [klienta aplikacje](#client-application) tego obecnie [token dostępu](#access-token). Znanej także jako serwer chronionych zasobów lub zasobów aplikacji.
 
-Serwer zasobów udostępnia interfejsy API i wymusza dostęp do jej zasobów chronionych za pomocą [zakresy](#scopes) i [ról](#roles), za pomocą środowiska autoryzacji OAuth 2.0. Przykładami interfejsu API Azure AD Graph, która zapewnia dostęp do danych dzierżawy usługi Azure AD i Office 365 interfejsów API służących do zapewnienia dostępu do danych, takich jak Poczta i kalendarz. Oba te są również dostępne za pośrednictwem [interfejsu API programu Microsoft Graph][Microsoft-Graph].  
+Serwer zasobów udostępnia interfejsy API i wymusza dostęp do jej zasobów chronionych za pomocą [zakresy](#scopes) i [ról](#roles), za pomocą środowiska autoryzacji OAuth 2.0. Przykładami interfejsu API Azure AD Graph, która zapewnia dostęp do danych dzierżawy usługi Azure AD i Office 365 interfejsów API służących do zapewnienia dostępu do danych, takich jak Poczta i kalendarz. Oba te są również dostępne za pośrednictwem [interfejsu API programu Microsoft Graph][Microsoft-Graph]. 
 
 Podobnie jak aplikacja kliencka, konfiguracja tożsamości aplikacji zasobów zostanie nawiązane za pośrednictwem [rejestracji](#application-registration) w dzierżawie usługi Azure AD, zapewniając aplikacji i obiekt główny usługi. Niektóre API firmy Microsoft, takich jak Azure AD Graph API, wstępnie zarejestrowane nazwy główne usług dostępnych w wszystkich dzierżawców podczas inicjowania obsługi.
 
@@ -177,7 +178,7 @@ Podobnie jak obiekt główny usługi jest używana do reprezentowania wystąpien
 Typ [aplikacji klienckiej](#client-application) , który jest wykonywany całego kodu na serwerze sieci web i może działać jako klient "poufne dane" przez bezpieczne przechowywanie swoich poświadczeń na serwerze. Zobacz [OAuth2 klienta typów i profile] [ OAuth2-Client-Types] więcej szczegółów.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest strony docelowej, można użyć dla wdrożenia usługi Azure AD wszystkich powiązanych tematów, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] i podstawy [uwierzytelniania usługi Azure AD i scenariusze obsługiwane uwierzytelniania][AAD-Auth-Scenarios].  Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskiwania szybkiego skonfigurowania i uruchomienia na [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Przewodnik dewelopera usługi Azure AD] [ AAD-Dev-Guide] jest strony docelowej, można użyć dla wdrożenia usługi Azure AD wszystkich powiązanych tematów, w tym omówienie [integracji aplikacji] [ AAD-How-To-Integrate] i podstawy [uwierzytelniania usługi Azure AD i scenariusze obsługiwane uwierzytelniania][AAD-Auth-Scenarios]. Możesz również znaleźć przykłady kodu i samouczki dotyczące sposobu uzyskiwania szybkiego skonfigurowania i uruchomienia na [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Użyj poniższej sekcji komentarzy, aby wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość, włącznie z żądaniami dostępność nowych definicji lub aktualizowania istniejących!
 

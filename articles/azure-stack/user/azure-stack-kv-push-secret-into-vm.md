@@ -1,38 +1,40 @@
 ---
-title: "Wdrażanie maszyny wirtualnej przy użyciu certyfikatu bezpiecznie przechowywane na stosie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć maszynę wirtualną i Wypchnij certyfikatu na go za pomocą magazynu kluczy Azure stosu"
+title: Wdrażanie maszyny wirtualnej przy użyciu certyfikatu bezpiecznie przechowywane na stosie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć maszynę wirtualną i Wypchnij certyfikatu na go za pomocą magazynu kluczy Azure stosu
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/03/2017
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: e319f5c6d27d3a223764b0a5593480f02864ddbe
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>Tworzenie maszyny wirtualnej i uwzględnianie certyfikat pobrany z magazynu kluczy
+# <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Utwórz maszynę wirtualną i zainstaluj certyfikat pobrany z magazynu kluczy Azure stosu
 
-Ten artykuł ułatwia tworzenie maszyny wirtualnej w stos Azure i wypychania certyfikaty na niego. 
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Dowiedz się, jak utworzyć maszynę wirtualną (VM) stosu Azure przy użyciu magazynu kluczy certyfikatu zainstalowanego.
 
-* Oferta obejmuje usługi Key Vault musi subskrybować. 
-* [Instalowanie programu PowerShell Azure stosu.](azure-stack-powershell-install.md)  
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)
+## <a name="overview"></a>Przegląd
 
-Magazyn kluczy Azure stosu jest używany do przechowywania certyfikatów. Certyfikaty są przydatne w wielu scenariuszach. Na przykład Rozważmy scenariusz, w którym znajduje się maszyna wirtualna w stosie Azure, w którym uruchomiono aplikację, która wymaga certyfikatu. Ten certyfikat może służyć do szyfrowania do uwierzytelniania w usłudze Active Directory lub do używania protokołu SSL w witrynie sieci Web. Występowanie certyfikatu w pomaga magazynu kluczy, upewnij się, że jest bezpieczna.
+Certyfikaty są używane w wielu scenariuszach, takich jak uwierzytelnianie w usłudze Active Directory lub szyfrowania ruchu w sieci web. Certyfikaty można bezpiecznie przechowywać jako kluczy tajnych w magazynie kluczy Azure stosu. Korzyści wynikające ze stosowania magazynu kluczy Azure stosu są:
 
-W tym artykule firma Microsoft opisano kroki wymagane do dystrybuowania certyfikatów do maszyny wirtualnej systemu Windows Azure stosu. Korzystania z tych kroków, z Development Kit stosu Azure lub z systemem Windows klienta zewnętrznego, jeśli są połączone za pośrednictwem sieci VPN.
+* Certyfikaty nie są widoczne w skrypcie, Historia wiersza polecenia lub szablonu.
+* Uproszczenie procesu zarządzania certyfikatu.
+* Masz kontrolę nad kluczami, które uzyskują dostęp do certyfikatów.
+
+### <a name="process-description"></a>Opis procesu
 
 W poniższych krokach opisano proces wymagany do dystrybuowania certyfikatów do maszyny wirtualnej:
 
@@ -40,9 +42,21 @@ W poniższych krokach opisano proces wymagany do dystrybuowania certyfikatów do
 2. Zaktualizuj plik azuredeploy.parameters.json.
 3. Wdrożenie szablonu
 
+>[!NOTE]
+>Korzystania z tych kroków, z platformy Azure stosu Development Kit lub klientom zewnętrznym, jeśli są połączone za pośrednictwem sieci VPN.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Oferta obejmuje usługi Key Vault musi subskrybować.
+* [Instalowanie programu PowerShell Azure stosu.](azure-stack-powershell-install.md)
+* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)
+
 ## <a name="create-a-key-vault-secret"></a>Tworzenie magazynu klucz tajny
 
-Poniższy skrypt tworzy certyfikat w formacie pfx, tworzy magazyn kluczy i przechowuje certyfikat w magazynie kluczy jako klucz tajny. Należy użyć `-EnabledForDeployment` parametru podczas tworzenia magazynu kluczy. Tego parametru zapewnia, że magazyn kluczy mogą być przywoływane z szablonów usługi Azure Resource Manager.
+Poniższy skrypt tworzy certyfikat w formacie pfx, tworzy magazyn kluczy i przechowuje certyfikat w magazynie kluczy jako klucz tajny.
+
+>[!IMPORTANT]
+>Należy użyć `-EnabledForDeployment` parametru podczas tworzenia błędów kluczy. Tego parametru zapewnia, że magazyn kluczy mogą być przywoływane z szablonów usługi Azure Resource Manager.
 
 ```powershell
 
@@ -111,7 +125,7 @@ Modyfikowanie `azuredeploy.parameters.json` plików zgodnie z własnymi wartośc
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>Zaktualizuj plik azuredeploy.parameters.json
 
-Zaktualizuj plik azuredeploy.parameters.json o vaultName, tajne URI VmName i inne wartości zgodnie z harmonogramem środowiska. Następujący plik JSON przedstawiono przykład pliku parametrów szablonu: 
+Zaktualizuj plik azuredeploy.parameters.json o vaultName, tajne URI VmName i inne wartości zgodnie z harmonogramem środowiska. Następujący plik JSON przedstawiono przykład pliku parametrów szablonu:
 
 ```json
 {
@@ -148,7 +162,7 @@ Zaktualizuj plik azuredeploy.parameters.json o vaultName, tajne URI VmName i inn
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Teraz można wdrożyć szablon przy użyciu następujący skrypt programu PowerShell:
+Wdrażanie szablonu przy użyciu następujący skrypt programu PowerShell:
 
 ```powershell
 # Deploy a Resource Manager template to create a VM and push the secret onto it
@@ -161,21 +175,24 @@ New-AzureRmResourceGroupDeployment `
 
 Jeśli szablon został wdrożony pomyślnie, wynikiem następujące dane wyjściowe:
 
-![Dane wyjściowe wdrażanie](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
+![Rezultaty szablonu wdrożenia](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
 
-Po wdrożeniu tej maszyny wirtualnej Azure stosu wypycha certyfikat na maszynie wirtualnej. W systemie Windows certyfikat jest dodawany do LocalMachine Lokalizacja certyfikatu z magazynu certyfikatów, który użytkownik podał. W systemie Linux, certyfikat zostanie umieszczony w katalogu /var/lib/waagent z nazwą pliku &lt;UppercaseThumbprint&gt;.crt dla X509 plik certyfikatu i &lt;UppercaseThumbprint&gt;.prv klucza prywatnego .
+Azure stosu wypycha certyfikat na maszynie wirtualnej podczas wdrażania. Lokalizacja certyfikatu zależy od systemu operacyjnego maszyny Wirtualnej:
+
+* W systemie Windows certyfikat jest dodawany do LocalMachine Lokalizacja certyfikatu z magazynu certyfikatów, który użytkownik podał.
+* W systemie Linux, certyfikat zostanie umieszczony w katalogu /var/lib/waagent z nazwą pliku &lt;UppercaseThumbprint&gt;.crt dla X509 plik certyfikatu i &lt;UppercaseThumbprint&gt;.prv klucza prywatnego .
 
 ## <a name="retire-certificates"></a>Wycofaj certyfikaty
 
-W poprzedniej sekcji możemy wyświetlał jak push nowego certyfikatu na maszynie wirtualnej. Stary certyfikat jest nadal na maszynie wirtualnej, a nie można usunąć. Jednak można wyłączyć za pomocą starszej wersji klucza tajnego `Set-AzureKeyVaultSecretAttribute` polecenia cmdlet. Poniżej przedstawiono przykład użycia tego polecenia cmdlet. Upewnij się zastąpić nazwę magazynu, nazwa klucza tajnego i wartości wersji zgodnie ze środowiska:
+Wycofanie certyfikatów jest częścią procesu zarządzania certyfikatu. Nie można usunąć starszej wersji certyfikatu, ale można ją wyłączyć za pomocą `Set-AzureKeyVaultSecretAttribute` polecenia cmdlet.
+
+Poniższy przykład przedstawia sposób wyłączania dotyczące certyfikatu. Użyj wartości dla **VaultName**, **nazwa**, i **wersji** parametrów.
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wdrażanie maszyny wirtualnej z hasłem usługi Key Vault](azure-stack-kv-deploy-vm-with-secret.md)
 * [Zezwalaj aplikacji na dostęp do magazynu kluczy](azure-stack-kv-sample-app.md)
-
-

@@ -4,31 +4,31 @@ description: W tym artykule wyjaśniono, jak tworzyć i edytować pulpitów nawi
 services: azure-portal
 documentationcenter: ''
 author: sewatson
-manager: timlt
+manager: doubeby
 editor: tysonn
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-ms.openlocfilehash: 4e5a5ae944b5f0059ee78a2171a9688902aaf6db
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3bdeb3255c8dc97d2867eca0b9cdec8223d31b21
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych w portalu Azure
 Można tworzyć wiele pulpitów nawigacyjnych i udostępniać je innym użytkownikom, którzy mają dostęp do Twojej subskrypcji platformy Azure.  W tym artykule przechodzi przez podstawy tworzenia, edytowania, publikowanie i zarządzanie dostępem do pulpitów nawigacyjnych.
 
 ## <a name="create-a-dashboard"></a>Utwórz pulpit nawigacyjny
-Aby utworzyć pulpit nawigacyjny, wybierz **nowego pulpitu nawigacyjnego** przycisk Dalej, aby nazwa bieżącego pulpitu nawigacyjnego.  
+Aby utworzyć pulpit nawigacyjny, wybierz przycisk **Nowy pulpit nawigacyjny** obok nazwy bieżącego pulpitu nawigacyjnego.  
 
 ![Utwórz pulpit nawigacyjny](./media/azure-portal-dashboards/new-dashboard.png)
 
-Ta akcja tworzy nowy, pusty, prywatne pulpitu nawigacyjnego i umieszcza Tryb dostosowywania, w którym można nazwa pulpitu nawigacyjnego i dodać lub zmienić Kafelki.  W tym trybie galerii zwijanej kafelka przejmuje menu nawigacji po lewej stronie.  Galeria kafelka pozwala znaleźć kafelków dla zasobów platformy Azure na różne sposoby: można przeglądać [grupy zasobów](../azure-resource-manager/resource-group-overview.md#resource-groups), przez przez typ zasobu [tag](../azure-resource-manager/resource-group-using-tags.md), lub przez wyszukiwanie według nazwy zasobu.  
+Ta akcja tworzy nowy, pusty, prywatny pulpit nawigacyjny i przenosi użytkownika do trybu dostosowania, w którym można nazwać pulpit nawigacyjny oraz dodać kafelki i zmienić ich ułożenie.  W tym trybie galerii zwijanej kafelka przejmuje menu nawigacji po lewej stronie.  Galeria kafelka pozwala znaleźć kafelków dla zasobów platformy Azure na różne sposoby: można przeglądać [grupy zasobów](../azure-resource-manager/resource-group-overview.md#resource-groups), przez przez typ zasobu [tag](../azure-resource-manager/resource-group-using-tags.md), lub przez wyszukiwanie według nazwy zasobu.  
 
 ![Dostosowanie pulpitu nawigacyjnego](./media/azure-portal-dashboards/customize-dashboard.png)
 
@@ -71,15 +71,15 @@ Po zmianie rozmiaru kafelków, wyświetlić pulpit nawigacyjny.
 Po zakończeniu dostosowanie pulpitu nawigacyjnego po prostu wybierz **gotowe dostosowywanie** aby zakończyć działanie trybu dostosowania, lub kliknij prawym przyciskiem myszy i wybierz polecenie **gotowe dostosowywanie** z menu kontekstowego.
 
 ## <a name="publish-a-dashboard-and-manage-access-control"></a>Publikowanie pulpitu nawigacyjnego i zarządzanie kontrolą dostępu
-Podczas tworzenia pulpitu nawigacyjnego jest prywatna domyślnie, co oznacza, że jesteś jedyną osobą, która to sprawdzić.  Aby umożliwić innym osobom, użyj **udziału** przycisku, który pojawi się równolegle z innymi poleceniami pulpitu nawigacyjnego.
+Podczas tworzenia pulpitu nawigacyjnego jest on domyślnie prywatny, co oznacza, że użytkownik jest jedyną osobą, która może go zobaczyć.  Aby uwidocznić go dla innych osób, użyj przycisku **Udostępnij**, który jest wyświetlany wraz z innymi poleceniami pulpitu nawigacyjnego.
 
 ![Udostępnij pulpit nawigacyjny](./media/azure-portal-dashboards/share-dashboard.png)
 
-Zostanie wyświetlona prośba o wybranie subskrypcji i grupy zasobów dla pulpitu nawigacyjnego do opublikowania dla. Aby bezproblemowo zintegrować pulpitów nawigacyjnych w ekosystemie, wdrożyliśmy udostępnionych pulpitów nawigacyjnych jako zasobów platformy Azure (tak, aby nie można udostępnić, wpisując adres e-mail).  Dostęp do informacji wyświetlanych przez większość Kafelki w portalu są regulowane przez [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md). Z punktu widzenia kontroli dostępu do udostępnionych pulpitów nawigacyjnych nie różnią się od maszyny wirtualnej lub konto magazynu.  
+Zostanie wyświetlona prośba o wybór subskrypcji i grupy zasobów, dla których zostanie opublikowany pulpit nawigacyjny. Aby bezproblemowo zintegrować pulpitów nawigacyjnych w ekosystemie, wdrożyliśmy udostępnionych pulpitów nawigacyjnych jako zasobów platformy Azure (tak, aby nie można udostępnić, wpisując adres e-mail).  Dostęp do informacji wyświetlanych przez większość Kafelki w portalu są regulowane przez [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md). Z punktu widzenia kontroli dostępu do udostępnionych pulpitów nawigacyjnych nie różnią się od maszyny wirtualnej lub konto magazynu.  
 
 Załóżmy, że masz subskrypcję platformy Azure i członkowie zespołu są przypisane role **właściciela**, **współautora**, lub **czytnika** subskrypcji.  Użytkownicy, którzy są właściciele i współautorzy mogą się na liście, wyświetlanie, tworzenie, modyfikowanie lub usuwanie pulpitów nawigacyjnych w ramach danej subskrypcji.  Użytkownicy, którzy są czytników są w stanie listy i widok pulpity nawigacyjne, ale nie można je modyfikować lub usuwać.  Użytkownicy z dostępem czytnika można wprowadzać zmian lokalnych do udostępnionego pulpitu nawigacyjnego, ale nie będą mogły publikować tych zmian na serwerze.  Jednak mogą one ułatwić prywatnej kopii pulpitu nawigacyjnego na własny użytek.  Jak zawsze poszczególnych Kafelki na pulpicie nawigacyjnym wymuszanie własnych regułami kontroli dostępu na podstawie zasobów, które są zgodne.  
 
-Dla wygody portalu do publikowania przewodniki środowisko możesz kierunku wzorzec, gdzie umieścić pulpitów nawigacyjnych w grupie zasobów o nazwie **pulpity nawigacyjne**.  
+Dla wygody środowisko publikowania w portalu skieruje Cię do wzorca, w którym umieszcza się pulpity nawigacyjne w grupie zasobów o nazwie **pulpity nawigacyjne**.  
 
 ![Publikowanie pulpitu nawigacyjnego](./media/azure-portal-dashboards/publish-dashboard.png)
 

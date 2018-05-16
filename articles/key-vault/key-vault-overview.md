@@ -5,20 +5,20 @@ services: key-vault
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
-ms.assetid: ''
+ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/16/2018
+ms.date: 05/08/2018
 ms.author: barclayn
-ms.openlocfilehash: d31318b1c2a2cd2b9f3b17e77d8deb66d5de21a5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f9648e15c720c076a65e84a95f4160f27eec598d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -57,8 +57,6 @@ Po utworzeniu kilku magazynów usługi Key Vault może zajść potrzeba monitoro
 - Archiwizowanie na koncie magazynu.
 - Przesyłanie strumieniowe do centrum zdarzeń.
 - Wysyłanie dzienników do usługi Log Analytics.
-
-![Strona wyświetlająca właściwości magazynu usługi Key Vault](./media/key-vault-overview/key-vault-overview.png)
 
 Kontrolujesz dzienniki i możesz je zabezpieczyć przez ograniczenie dostępu, a także możesz usunąć dzienniki, które nie są już potrzebne.
 

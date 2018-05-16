@@ -3,22 +3,24 @@ title: Zrozumienie przepływu kodu autoryzacji protokołu OAuth 2.0 w usłudze A
 description: W tym artykule opisano sposób użycia wiadomości HTTP do autoryzowania dostępu do aplikacji sieci web i interfejsów API sieci web w dzierżawie przy użyciu usługi Azure Active Directory i OAuth 2.0.
 services: active-directory
 documentationcenter: .net
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d2a160d75f89768a3884beff9ea10cbc168d3dda
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93de62a21ca1d3b8c88715fc9207a583920ac33e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzacja dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływu grant kodu OAuth 2.0
 Azure Active Directory (Azure AD) używa protokołu OAuth 2.0 do autoryzowania dostępu do aplikacji sieci web i interfejsów API sieci web w dzierżawie usługi Azure AD. Ten przewodnik jest niezależny od języka i opisuje sposób wysyłania i odbierania wiadomości HTTP bez przy użyciu dowolnej z naszych [bibliotekach open source](active-directory-authentication-libraries.md).
@@ -49,19 +51,19 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| dzierżawa |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości to identyfikatory dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależny od dzierżawcy |
-| client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania z usługą Azure AD. To można znaleźć w portalu Azure. Kliknij przycisk **usługi Azure Active Directory** na pasku bocznym usług kliknij **rejestracji aplikacji**i wybierz aplikację. |
-| response_type |Wymagane |Musi zawierać `code` dla przepływu kodu autoryzacji. |
-| redirect_uri |Zalecane |Redirect_uri aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania.  Go musi dokładnie pasować redirect_uris, który został zarejestrowany w portalu, z wyjątkiem musi być zakodowane w adresie url.  W przypadku aplikacji natywnej & przenośnych powinny używać wartość domyślną `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Zalecane |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do aplikacji.  Możliwe wartości to `query` i `form_post`. `query` zawiera kod jako parametr ciągu zapytania w Twojej przekierowania URI, podczas gdy `form_post` wykonuje POST, zawierającego kod identyfikator URI przekierowania. |
-| state |Zalecane |Wartość zawarte w żądaniu, który jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zazwyczaj używana w przypadku [zapobieganie fałszerstwie żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12).  Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widok, które były na. |
-| zasób | Zalecane |Identyfikator URI aplikacji sieci Web docelowego interfejsu API (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu Azure, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, Otwórz aplikację **ustawienia** strony, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takich jak `https://graph.microsoft.com`.  Jest to wymagane w jednym autoryzacji lub żądania tokenu.  Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieścić w żądaniu autoryzacji, aby upewnić się, że odebraniu zgody użytkownika. |
+| dzierżawa |wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to identyfikatory dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależny od dzierżawcy |
+| client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania z usługą Azure AD. To można znaleźć w portalu Azure. Kliknij przycisk **usługi Azure Active Directory** na pasku bocznym usług kliknij **rejestracji aplikacji**i wybierz aplikację. |
+| response_type |wymagane |Musi zawierać `code` dla przepływu kodu autoryzacji. |
+| redirect_uri |Zalecane |Redirect_uri aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania. Go musi dokładnie pasować redirect_uris, który został zarejestrowany w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnej & przenośnych powinny używać wartość domyślną `urn:ietf:wg:oauth:2.0:oob`. |
+| response_mode |Zalecane |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do aplikacji. Możliwe wartości to `query` i `form_post`. `query` zawiera kod jako parametr ciągu zapytania w Twojej przekierowania URI, podczas gdy `form_post` wykonuje POST, zawierającego kod identyfikator URI przekierowania. |
+| state |Zalecane |Wartość zawarte w żądaniu, który jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zazwyczaj używana w przypadku [zapobieganie fałszerstwie żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony lub widok, które były na. |
+| zasób | Zalecane |Identyfikator URI aplikacji sieci Web docelowego interfejsu API (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu Azure, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, Otwórz aplikację **ustawienia** strony, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takich jak `https://graph.microsoft.com`. Jest to wymagane w jednym autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieścić w żądaniu autoryzacji, aby upewnić się, że odebraniu zgody użytkownika. |
 | scope | **ignorowane** | W przypadku aplikacji usługi Azure AD v1, zakresy muszą być skonfigurowane statycznie w portalu Azure w obszarze aplikacje **ustawienia**, **wymagane uprawnienia**. |
 | wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *logowania*: użytkownik powinien być monitowany o ponownego uwierzytelnienia. <p> *zgoda*: zgody użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: administrator powinien być monitowany o zgodę imieniu wszyscy użytkownicy w organizacji |
-| login_hint |opcjonalne |Można wstępnie wypełnić pole adresu e-mail/nazwa użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika wcześniejsze.  Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, już o wyodrębnić nazwy użytkownika z poprzedniej logowania przy użyciu `preferred_username` oświadczeń. |
+| login_hint |opcjonalne |Można wstępnie wypełnić pole adresu e-mail/nazwa użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika wcześniejsze. Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, już o wyodrębnić nazwy użytkownika z poprzedniej logowania przy użyciu `preferred_username` oświadczeń. |
 | domain_hint |opcjonalne |Zawiera wskazówki dotyczące dzierżawy lub domeny, która powinna być używana do logowania użytkownika. Wartość domain_hint jest domeną zarejestrowanych dla dzierżawcy. Jeśli dzierżawa jest Sfederowane do katalogu lokalnego, usługi AAD przekierowuje do serwera federacyjnego w określonym dzierżawcy. |
-| code_challenge_method | opcjonalne    | Metody używane do kodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z `plain` lub `S256`.  Jeśli wykluczone, `code_challenge` zostanie potraktowany jako zwykłego tekstu, jeśli `code_challenge` jest dołączony.  Azure 1.0 AAD obsługuje zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge        | opcjonalne    | Używany do zabezpieczania przyznaje kod autoryzacji przy użyciu klucza dowód kodu programu Exchange (PKCE) z klienta natywnego lub publiczny. Jeśli wymagane `code_challenge_method` jest dołączony.  Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge_method | opcjonalne    | Metody używane do kodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z `plain` lub `S256`. Jeśli wykluczone, `code_challenge` zostanie potraktowany jako zwykłego tekstu, jeśli `code_challenge` jest dołączony. Azure 1.0 AAD obsługuje zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge        | opcjonalne    | Używany do zabezpieczania przyznaje kod autoryzacji przy użyciu klucza dowód kodu programu Exchange (PKCE) z klienta natywnego lub publiczny. Jeśli wymagane `code_challenge_method` jest dołączony. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
 > Jeśli użytkownik należy do organizacji, administrator w organizacji można wyrazić zgodę lub odrzucić w imieniu użytkownika lub zezwolenie na użytkownika o zgodę. Użytkownik otrzymuje opcję, aby wyrazić zgodę tylko wtedy, gdy administrator pozwala.
@@ -81,7 +83,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | Parametr | Opis |
 | --- | --- |
 | admin_consent |Ma wartość True, jeśli administrator zgodę na wiersz żądania zgody. |
-| kod |Aplikacja zażądała kod autoryzacji. Aplikacji można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. |
+| Kod |Aplikacja zażądała kod autoryzacji. Aplikacji można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. |
 | session_state |Unikatowa wartość, która identyfikuje bieżącą sesję użytkownika. Ta wartość jest identyfikatorem GUID, ale powinien być traktowany jako wartość przezroczystości, która została przekazana bez badania. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Jest dobrym rozwiązaniem dla aplikacji, aby zweryfikować, że wartości stan żądania i odpowiedzi są identyczne, przed użyciem odpowiedzi. Ułatwia to wykrywanie [atakami opartymi na fałszowanie żądań między witrynami (CSRF)](https://tools.ietf.org/html/rfc6749#section-10.12) względem klienta. |
 
@@ -134,14 +136,14 @@ grant_type=authorization_code
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| dzierżawa |Wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji.  Dozwolone wartości to identyfikatory dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależny od dzierżawcy |
-| client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania z usługą Azure AD. To można znaleźć w portalu Azure. Identyfikator aplikacji jest wyświetlany w ustawieniach rejestracji aplikacji.  |
-| Typ grant_type |Wymagane |Musi być `authorization_code` dla przepływu kodu autoryzacji. |
-| kod |Wymagane |`authorization_code` Uzyskanego w poprzedniej sekcji |
-| redirect_uri |Wymagane |Taki sam `redirect_uri` wartości, które zostało użyte do uzyskania `authorization_code`. |
-| client_secret |wymagane dla aplikacji sieci web, nie jest dozwolone dla publicznych klientów |Klucz tajny aplikacji utworzonej w portalu Azure dla aplikacji w obszarze **klucze**.  Nie można użyć w aplikacji natywnej (publicznego klienta), ponieważ client_secrets nie może być niezawodnie przechowywanych na urządzeniach.  Jest to wymagane dla aplikacji sieci web i interfejsów API (wszystkie poufne klientów), która ma możliwość przechowywania sieci web `client_secret` bezpiecznie po stronie serwera. |
-| zasób | Zalecane |Identyfikator URI aplikacji sieci Web docelowego interfejsu API (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu Azure, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, Otwórz aplikację **ustawienia** strony, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takich jak `https://graph.microsoft.com`.  Jest to wymagane w jednym autoryzacji lub żądania tokenu.  Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieścić w żądaniu autoryzacji, aby upewnić się, że odebraniu zgody użytkownika.  Jeśli zarówno żądania autoryzacji i żądania tokenu zasobu "Parametry muszą być zgodne. | 
-| code_verifier | opcjonalne | Tym samym code_verifier, który został użyty do uzyskania authorization_code.  Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji.  Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
+| dzierżawa |wymagane |`{tenant}` Wartość w ścieżce żądania może być używana w celu kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to identyfikatory dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależny od dzierżawcy |
+| client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania z usługą Azure AD. To można znaleźć w portalu Azure. Identyfikator aplikacji jest wyświetlany w ustawieniach rejestracji aplikacji. |
+| Typ grant_type |wymagane |Musi być `authorization_code` dla przepływu kodu autoryzacji. |
+| Kod |wymagane |`authorization_code` Uzyskanego w poprzedniej sekcji |
+| redirect_uri |wymagane |Taki sam `redirect_uri` wartości, które zostało użyte do uzyskania `authorization_code`. |
+| client_secret |wymagane dla aplikacji sieci web, nie jest dozwolone dla publicznych klientów |Klucz tajny aplikacji utworzonej w portalu Azure dla aplikacji w obszarze **klucze**. Nie można użyć w aplikacji natywnej (publicznego klienta), ponieważ client_secrets nie może być niezawodnie przechowywanych na urządzeniach. Jest to wymagane dla aplikacji sieci web i interfejsów API (wszystkie poufne klientów), która ma możliwość przechowywania sieci web `client_secret` bezpiecznie po stronie serwera. |
+| zasób | Zalecane |Identyfikator URI aplikacji sieci Web docelowego interfejsu API (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu Azure, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, Otwórz aplikację **ustawienia** strony, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takich jak `https://graph.microsoft.com`. Jest to wymagane w jednym autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieścić w żądaniu autoryzacji, aby upewnić się, że odebraniu zgody użytkownika. Jeśli zarówno żądania autoryzacji i żądania tokenu zasobu "Parametry muszą być zgodne. | 
+| code_verifier | opcjonalne | Tym samym code_verifier, który został użyty do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
 Aby znaleźć identyfikator URI aplikacji w portalu Azure, kliknij przycisk **usługi Azure Active Directory**, kliknij przycisk **rejestracji aplikacji**, Otwórz aplikację **ustawienia** strony, a następnie kliknij przycisk  **Właściwości**.
 
@@ -174,7 +176,7 @@ Odpowiedź oznaczająca Powodzenie może wyglądać następująco:
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund z rokiem 1970-01-01T0:0:0Z UTC czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia pamięci podręcznej tokenów. |
 | zasób |Identyfikator URI aplikacji sieci Web interfejsu API (zabezpieczonych zasobów). |
 | scope |Personifikacja uprawnienia do aplikacji klienckiej. Domyślne uprawnienia `user_impersonation`. Właściciel zasobu zabezpieczonych rejestrować dodatkowych wartości w usłudze Azure AD. |
-| refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskanie tokenów dostępu dodatkowe po wygaśnięciu bieżącego tokenu dostępu.  Odśwież tokeny są to długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. |
+| refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskanie tokenów dostępu dodatkowe po wygaśnięciu bieżącego tokenu dostępu. Odśwież tokeny są to długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. |
 | żądaniu |Niepodpisane JSON Web Token (JWT). Aplikacji base64Url może zdekodować segmentów tego tokenu do żądania informacji dotyczących użytkownika, który jest zalogowany. Można je wyświetlić i pamięci podręcznej wartości aplikacji, ale nie należy polegać na nich autoryzacji lub granic zabezpieczeń. |
 
 ### <a name="jwt-token-claims"></a>Oświadczenia tokenu JWT
@@ -361,7 +363,7 @@ Przykładowa odpowiedź błędu może wyglądać następująco:
 ```
 {
   "error": "invalid_resource",
-  "error_description": "AADSTS50001: The application named https://foo.microsoft.com/mail.read was not found in the tenant named 295e01fc-0c56-4ac3-ac57-5d0ed568f872.  This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant.  You might have sent your authentication request to the wrong tenant.\r\nTrace ID: ef1f89f6-a14f-49de-9868-61bd4072f0a9\r\nCorrelation ID: b6908274-2c58-4e91-aea9-1f6b9c99347c\r\nTimestamp: 2016-04-11 18:59:01Z",
+  "error_description": "AADSTS50001: The application named https://foo.microsoft.com/mail.read was not found in the tenant named 295e01fc-0c56-4ac3-ac57-5d0ed568f872. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You might have sent your authentication request to the wrong tenant.\r\nTrace ID: ef1f89f6-a14f-49de-9868-61bd4072f0a9\r\nCorrelation ID: b6908274-2c58-4e91-aea9-1f6b9c99347c\r\nTimestamp: 2016-04-11 18:59:01Z",
   "error_codes": [
     50001
   ],

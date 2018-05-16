@@ -14,8 +14,8 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 49a80805c976e5584bb158965583a03eda68cc46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2a51169fa74384778d3351d48055d05e387d0ea6
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
@@ -71,7 +71,7 @@ Azure Stack
     - Można znaleźć szczegółowe instrukcje dotyczące wdrażania ASDK na "[samouczek: Wdrażanie ASDK za pomocą Instalatora](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy)"
     - Można zautomatyzować wiele etapów po wdrożeniu ASDK z następujący skrypt programu PowerShell, [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ).
 
-    > [!note]  
+    > [!Note]  
     > Instalacja ASDK ma siedem godzin, aby zakończyć, więc odpowiednio zaplanować.
 
  - Wdrażanie [usługi aplikacji](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS usług Azure stosu. 
@@ -87,7 +87,7 @@ Azure Stack
  - [Zainstaluj program Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) i [logowania do programu VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
  - Połącz się z projektem i [sklonować lokalnie](https://www.visualstudio.com/docs/git/gitquickstart).
  
- > [!note]  
+ > [!Note]  
  > Konieczne będzie stosu Azure z obrazami prawidłowego zespoloną do uruchomienia (Windows Server i SQL), a następnie wdrożyć usługi aplikacji.
  
 ## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Przygotowanie kompilację prywatną i wersji agenta do integracji programu Visual Studio Team Services
@@ -207,7 +207,7 @@ Zamiast zarządzania oddzielnie każdego agenta, możesz organizować agentów w
 
 3. Skopiuj tokenu.
     
-    > [!note]  
+    > [!Note]  
     > Uzyskiwanie informacji o tokenie. Nie będzie można wyświetlić ponownie, po zakończeniu tego ekranu. 
     
     ![Tekst alternatywny](media\azure-stack-solution-hybrid-pipeline\000_19.png)
@@ -268,7 +268,7 @@ Użytkownicy mogą tworzyć punkty końcowe, więc VSTO kompilacji można wdraż
 
 Konfigurowanie hybrydowego CI/CD, aby wdrożyć aplikację sieci Web na platformie Azure oraz Azure stosu i automatycznie Wypchnij zmiany do obu chmury.
 
-> [!note]  
+> [!Note]  
 > Konieczne będzie stosu Azure z obrazami prawidłowego zespoloną do uruchomienia (Windows Server i SQL), a następnie wdrożyć usługi aplikacji. Zapoznaj się z dokumentacją usługi aplikacji "wymagania wstępne" Azure stosu Operator wymagania.
 
 ### <a name="add-code-to-vsts-project"></a>Dodawanie kodu do projektu programu VSTS
@@ -399,7 +399,7 @@ Visual Studio Team Services (VSTS) i Team Foundation Server (TFS) podaj potoku w
 
 21. Zapisz wszystkie zmiany.
 
-> [!note]  
+> [!Note]  
 > Niektóre ustawienia dla tych zadań mogą automatycznie zdefiniowano jako [zmiennych środowiskowych](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) utworzenia definicji wersji z szablonu. Nie można modyfikować tych ustawień w ustawieniach zadań; Zamiast tego należy wybrać nadrzędnego elementu środowiska, aby zmienić te ustawienia.
 
 ## <a name="create-a-release"></a>Utwórz zlecenia

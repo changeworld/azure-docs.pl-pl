@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: d03f906f0cf4d22772388a589424877d8bb2f8ce
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Service Kubernetes (AKS)
 
@@ -60,7 +60,7 @@ Nie, RBAC nie jest obecnie obsługiwany w AKS, ale będzie wkrótce dostępna.
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Czy mogę wdrożyć AKS w mojej istniejącej sieci wirtualnej
 
-Nie, to nie jest jeszcze dostępny, ale będzie wkrótce dostępna.
+Tak, ta funkcja jest obsługiwana przez [zaawansowanych funkcji sieci](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Usługa Azure Key Vault jest zintegrowany z AKS?
 
@@ -68,7 +68,7 @@ Nie, nie jest, ale jest planowane tej integracji. W międzyczasie, wypróbuj nas
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Kontenery systemu Windows Server można uruchomić na AKS?
 
-Nie, AKS nie jest aktualnie dostępny węzłów agenta opartego na systemie Windows Server, więc nie można uruchomić kontenery systemu Windows Server. Jeśli musisz uruchomić kontenery systemu Windows Server na Kubernetes na platformie Azure, zobacz [dokumentacji dla aparatu acs](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
+Aby uruchomić kontenery systemu Windows Server, należy uruchomić węzłów z systemem Windows Server. Węzły na serwerze z systemem Windows są obecnie w [prywatnej wersji zapoznawczej](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/). Jeśli musisz uruchomić kontenery systemu Windows Server na Kubernetes na platformie Azure poza w wersji zapoznawczej, zobacz [dokumentacji dla aparatu acs](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Dlaczego są tworzone dwie grupy zasobów z AKS?
 

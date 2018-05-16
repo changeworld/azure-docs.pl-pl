@@ -6,121 +6,175 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/11/2017
+ms.date: 05/12/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c886655f0f9469b742532fa940519176a773ad41
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="create-custom-roles-for-azure-role-based-access-control"></a>Tworzenie niestandardowych ról dla kontroli dostępu
-Utwórz niestandardową rolę based kontroli dostępu (RBAC), jeśli żadna wbudowanych ról nie spełnia Twoje potrzeby określonym dostępu. Role niestandardowe można tworzyć przy użyciu [programu Azure PowerShell](role-assignments-powershell.md), [interfejsu wiersza polecenia platformy Azure](role-assignments-cli.md) (CLI) i [interfejsu API REST](role-assignments-rest.md). Podobnie jak wbudowane role role niestandardowe można przypisać do użytkowników, grup i aplikacji w subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w dzierżawie usługi Azure AD i mogą być udostępniane między subskrypcjami.
+# <a name="create-custom-roles-in-azure"></a>Tworzenie niestandardowych ról na platformie Azure
 
-Każdy Dzierżawca może tworzyć role niestandardowe do 2000. 
+Jeśli [wbudowane role](built-in-roles.md) nie spełnia Twoich potrzeb określonym dostępu, można tworzyć własne role niestandardowe. Podobnie jak wbudowane role role niestandardowe można przypisać do użytkowników, grup i nazwy główne usług, subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w dzierżawie usługi Azure Active Directory (Azure AD) i mogą być udostępniane między subskrypcjami. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API REST. W tym artykule opisano przykładowy sposób rozpocząć tworzenie niestandardowych ról przy użyciu programu PowerShell i interfejsu wiersza polecenia Azure.
 
-W poniższym przykładzie przedstawiono niestandardowej roli zabezpieczeń dotyczące monitorowania i ponowne uruchamianie maszyn wirtualnych:
+## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Tworzenie niestandardowej roli zabezpieczeń można otworzyć żądania obsługi przy użyciu programu PowerShell
+
+Aby utworzyć niestandardową rolę, może rozpoczynać się od wbudowanej roli, go edytować i następnie utwórz nową rolę. Na przykład wbudowana [czytnika](built-in-roles.md#reader) roli jest dostosowana do utworzenia niestandardowej roli zabezpieczeń o nazwie "biletami pomocy technicznej czytnika poziom dostępu". Umożliwia użytkownikowi przeglądanie wszystko w subskrypcji, a także żądania pomocy technicznej Otwórz.
+
+> [!NOTE]
+> Tylko dwa wbudowane role, które umożliwiają użytkownikom otwarcia żądania pomocy technicznej są [właściciela](built-in-roles.md#owner) i [współautora](built-in-roles.md#contributor). Użytkownik może mieć możliwość otwarcia żądania pomocy technicznej on należy przypisać rolę w zakresie subskrypcji, ponieważ wszystkie żądania pomocy technicznej są tworzone na podstawie subskrypcji platformy Azure.
+
+W programie PowerShell, użyj [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) polecenie, aby wyeksportować [czytnika](built-in-roles.md#reader) roli w formacie JSON.
+
+```azurepowershell
+Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
+```
+
+Poniżej pokazano dane wyjściowe JSON dla [czytnika](built-in-roles.md#reader) roli. Typowa rola składa się z trzech głównych sekcji, `Actions`, `NotActions`, i `AssignableScopes`. `Actions` Sekcja zawiera informacje o dozwolonych operacji w roli. Aby wykluczyć operacji `Actions`, dodaj je do `NotActions`. Czynne uprawnienia jest obliczana przez odjęcie `NotActions` operacji `Actions` operacji.
 
 ```json
 {
-  "Name": "Virtual Machine Operator",
-  "Id": "cadb4a5a-4e7a-47be-84db-05cad13b6769",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Insights/diagnosticSettings/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
+    "Name":  "Reader",
+    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "IsCustom":  false,
+    "Description":  "Lets you view everything, but not make any changes.",
+    "Actions":  [
+                    "*/read"
+                ],
+    "NotActions":  [
 
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624",
-    "/subscriptions/34370e90-ac4a-4bf9-821f-85eeedeae1a2"
-  ]
+                   ],
+    "AssignableScopes":  [
+                             "/"
+                         ]
 }
 ```
-## <a name="actions"></a>Akcje
-**Akcje** operacje platformy Azure, do których rola przyznaje dostęp określa właściwości niestandardowej roli zabezpieczeń. Jest kolekcją operacji ciągów, które identyfikują zabezpieczanego operacje dostawców zasobów platformy Azure. Operacja ciągów wykonaj format `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Ciągi operacji, które zawierają symbole wieloznaczne (\*) udzielić dostępu do wszystkich operacji, które zgodny z ciągiem operacji. Na wystąpienie:
 
-* `*/read` przyznaje dostęp do odczytu dla operacji dla wszystkich typów zasobów wszystkich dostawców zasobów platformy Azure.
-* `Microsoft.Compute/*` zapewnia dostęp do wszystkich operacji dla wszystkich typów zasobów w dostawcy zasobów Microsoft.Compute.
-* `Microsoft.Network/*/read` przyznaje dostęp do odczytu dla operacji dla wszystkich typów zasobów Microsoft.Network dostawcy zasobów platformy Azure.
-* `Microsoft.Compute/virtualMachines/*` przyznaje dostęp do wszystkich operacji maszyn wirtualnych i jego podrzędny typów zasobów.
-* `Microsoft.Web/sites/restart/Action` udziela dostępu do ponownego uruchomienia witryny sieci Web.
+Następnie możesz edytować dane wyjściowe do utworzenia niestandardowej roli zabezpieczeń JSON. W takim przypadku można utworzyć obsługi biletów, `Microsoft.Support/*` operacja musi zostać dodany. Każda operacja staje się dostępny od dostawcy zasobów. Aby uzyskać listę działań dla dostawcy zasobów, można użyć [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) polecenie lub zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md).
 
-Użyj `Get-AzureRmProviderOperation` (w programie PowerShell) lub `azure provider operations show` (w Azure CLI) do operacji listy dostawców zasobów platformy Azure. Może również używać tych poleceń, sprawdź, czy parametry operacji są prawidłowe i rozwiń ciągi operacji symboli wieloznacznych.
+Jest to konieczne, że rola zawiera jawne subskrypcji identyfikatorów, w którym została użyta. Identyfikatory subskrypcji są wyświetlane w obszarze `AssignableScopes`, w przeciwnym razie będzie nie można zaimportować rolę do subskrypcji.
 
-```powershell
-Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName
+Ponadto należy ustawić `IsCustom` właściwości `true` do określenia, że jest to niestandardowej roli zabezpieczeń.
 
-Get-AzureRMProviderOperation Microsoft.Network/*
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
+
+                   ],
+    "AssignableScopes":  [
+                             "/subscriptions/11111111-1111-1111-1111-111111111111"
+                         ]
+}
 ```
 
-![Zrzut ekranu PowerShell - Get-AzureRMProviderOperation](./media/custom-roles/1-get-azurermprovideroperation-1.png)
+Aby utworzyć nową rolę niestandardowe, należy użyć [AzureRmRoleDefinition nowy](/powershell/module/azurerm.resources/new-azurermroledefinition) poleceń i podaj zaktualizowany plik definicji roli JSON.
+
+```azurepowershell
+New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
+```
+
+Po uruchomieniu [AzureRmRoleDefinition nowy](/powershell/module/azurerm.resources/new-azurermroledefinition), nowej niestandardowej roli są dostępne w portalu Azure, a można przypisać do użytkowników.
+
+![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń zaimportowany w portalu Azure](./media/custom-roles/18.png)
+
+![Zrzut ekranu przedstawiający przypisywanie niestandardowej roli zabezpieczeń zaimportowane do użytkownika w tym samym katalogu](./media/custom-roles/19.png)
+
+![Zrzut ekranu przedstawiający uprawnienia niestandardowe importowanych roli](./media/custom-roles/20.png)
+
+Użytkownicy z tą rolą niestandardowe mogą tworzyć nowe żądania pomocy technicznej.
+
+![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń tworzenia żądań obsługi](./media/custom-roles/21.png)
+
+Użytkownicy z tę rolę niestandardową nie może wykonywać inne akcje, takie jak tworzenie maszyn wirtualnych lub tworzenia grup zasobów.
+
+![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń nie można utworzyć maszyny wirtualne](./media/custom-roles/22.png)
+
+![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń nie można utworzyć nowego RGs](./media/custom-roles/23.png)
+
+## <a name="create-a-custom-role-to-open-support-requests-using-azure-cli"></a>Tworzenie niestandardowej roli zabezpieczeń można otworzyć żądania obsługi przy użyciu wiersza polecenia platformy Azure
+
+Kroki, aby utworzyć niestandardową rolę przy użyciu interfejsu wiersza polecenia Azure przypominają przy użyciu programu PowerShell, różni się dane wyjściowe JSON.
+
+Na przykład można uruchomić z wbudowanej [czytnika](built-in-roles.md#reader) roli. Aby wyświetlić listę działań [czytnika](built-in-roles.md#reader) rolę, użyj [listy definicji roli az](/cli/azure/role/definition#az_role_definition_list) polecenia.
 
 ```azurecli
-azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
-
-azure provider operations show "Microsoft.Network/*"
+az role definition list --name "Reader" --output json
 ```
 
-![Azure CLI zrzut ekranu - azure dostawcy operacji Pokaż "Microsoft.Compute/virtualMachines/\*Action" ](./media/custom-roles/1-azure-provider-operations-show.png)
+```json
+[
+  {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you view everything, but not make any changes.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "permissions": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "additionalProperties": {},
+        "notActions": [],
+      }
+    ],
+    "roleName": "Reader",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
 
-## <a name="notactions"></a>NotActions
-Użyj **NotActions** właściwości, jeśli zestaw działań, które mają być dozwolone łatwiej jest definiowana za pomocą z wyjątkiem operacji ograniczone. Prawa dostępu przyznane przez niestandardowej roli zabezpieczeń jest obliczana przez odjęcie **NotActions** operacji **akcje** operacji.
+Utwórz plik JSON o następującym formacie. `Microsoft.Support/*` Operacji został dodany w `Actions` sekcjach, aby ten użytkownik może otworzyć żądania pomocy technicznej pozostawiając być do odczytu. Należy dodać identyfikator subskrypcji, w którym ta rola będzie używany w `AssignableScopes` sekcji.
 
-> [!NOTE]
-> Jeśli użytkownik ma przypisaną rolę, który wyklucza operacji w **NotActions**i ma przypisaną rolę drugiego, która udziela dostępu do tej samej operacji, użytkownik może wykonać tej operacji. **NotActions** nie jest odmowy reguły — jest po prostu wygodny sposób utworzyć zestaw dozwolonych operacji podczas określonych operacji muszą być wykluczone.
->
->
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
 
-## <a name="assignablescopes"></a>AssignableScopes
-**AssignableScopes** właściwości niestandardowej roli określa zakresów (subskrypcji, grupy zasobów lub zasobów) w obrębie których są dostępne do przypisania roli niestandardowych. Udostępnienie tworzona rola niestandardowa przydziału w subskrypcji lub grupy zasobów, które wymagają i nie zajmowały czynności użytkownika dla pozostałej części subskrypcji lub grupy zasobów.
+                   ],
+    "AssignableScopes": [
+                            "/subscriptions/11111111-1111-1111-1111-111111111111"
+                        ]
+}
+```
 
-Prawidłowe zakresy można przypisać należą:
+Aby utworzyć nową rolę niestandardowe, użyj [utworzenia definicji roli az](/cli/azure/role/definition#az_role_definition_create) polecenia.
 
-* "/ subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/ subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - sprawia, że rola jest dostępne do przypisania w dwóch subskrypcji.
-* "/ subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - sprawia, że rola jest dostępne do przypisania w ramach jednej subskrypcji.
-* "/ subskrypcji i c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/sieci" - sprawia, że rola dostępne do przypisania tylko w grupie zasobów sieciowych.
+```azurecli
+az role definition create --role-definition ~/roles/rbacrole1.json
+```
 
-> [!NOTE]
-> Należy użyć co najmniej jednego subskrypcji, grupy zasobów lub identyfikator zasobu.
->
->
+Nowa rola niestandardowy jest teraz dostępna w portalu Azure i procesu, aby użyć tej roli są takie same jak w poprzedniej sekcji środowiska PowerShell.
 
-## <a name="custom-roles-access-control"></a>Kontrola dostępu role niestandardowe
-**AssignableScopes** właściwości niestandardowej roli również określać, kto może wyświetlać, modyfikowanie i usuwanie roli.
+![Azure portalu zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń utworzone za pomocą interfejsu wiersza polecenia 1.0](./media/custom-roles/26.png)
 
-* Który można utworzyć niestandardową rolę?
-    Właściciele (i administratorów dostępu użytkownika) subskrypcji, grupy zasobów i zasoby można tworzyć role niestandardowe do użycia w tych zakresów.
-    Tworzenie roli użytkownika musi mieć możliwość wykonania `Microsoft.Authorization/roleDefinition/write` operację na wszystkich **AssignableScopes** roli.
-* Kto może zmodyfikować niestandardową rolę?
-    Właściciele (i administratorów dostępu użytkowników) z subskrypcji, grupy zasobów i zasoby można zmodyfikować role niestandardowe w tych zakresów. Użytkownicy muszą mieć możliwość wykonania `Microsoft.Authorization/roleDefinition/write` operację na wszystkich **AssignableScopes** z niestandardowej roli zabezpieczeń.
-* Kto może wyświetlać role niestandardowe?
-    Wszystkie role wbudowane w Azure RBAC umożliwiają wyświetlanie ról, które są dostępne do przypisania. Użytkownicy, którzy mogą wykonywać `Microsoft.Authorization/roleDefinition/read` operacji w zakresie mogą wyświetlać role RBAC, które są dostępne do przypisania w tym zakresie.
 
 ## <a name="see-also"></a>Zobacz także
-* [Kontroli dostępu opartej na rolach](role-assignments-portal.md): rozpoczynanie pracy z RBAC w portalu Azure.
-* Aby uzyskać listę dostępnych operacji, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md).
-* Dowiedz się, jak Zarządzaj dostępem za pomocą:
-  * [Program PowerShell](role-assignments-powershell.md)
-  * [Interfejs wiersza polecenia platformy Azure](role-assignments-cli.md)
-  * [Interfejs API REST](role-assignments-rest.md)
-* [Wbudowane role](built-in-roles.md): uzyskiwanie szczegółowych informacji dotyczących ról, które standardowo w RBAC.
+- [Zrozumienie definicje ról](role-definitions.md)
+- [Zarządzanie kontrolą dostępu na podstawie ról z AzurePowerShell](role-assignments-powershell.md)
+- [Zarządzanie kontrolą dostępu opartej na rolach przy użyciu wiersza polecenia platformy Azure](role-assignments-cli.md)
+- [Zarządzanie kontrolą dostępu opartej na rolach przy użyciu interfejsu API REST](role-assignments-rest.md)

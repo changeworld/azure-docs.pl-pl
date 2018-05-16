@@ -6,30 +6,36 @@ author: stevelas
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 01/22/2018
+ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: fc5ea475ebef9ec5c590bd9e696025fb845cc4cf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10055b75000e5affdcdef5841a8d45db8b41ef05
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
-Usługa Azure Container Registry to zarządzana usługa [rejestru platformy Docker](https://docs.docker.com/registry/) oparta na oprogramowaniu typu open-source Docker Registry 2.0. Twórz i obsługuj rejestry kontenerów platformy Azure w celu przechowywania prywatnych obrazów [kontenerów platformy Docker](https://www.docker.com/what-docker) i zarządzania nimi. Używaj rejestrów kontenerów na platformie Azure przy użyciu istniejących potoków programowania i wdrażania kontenerów oraz korzystaj z wiedzy społeczności platformy Docker.
+Usługa Azure Container Registry to zarządzana usługa [rejestru platformy Docker](https://docs.docker.com/registry/) oparta na oprogramowaniu typu open-source Docker Registry 2.0. Twórz i obsługuj rejestry kontenerów platformy Azure w celu przechowywania prywatnych obrazów [kontenerów platformy Docker](https://www.docker.com/what-docker) i zarządzania nimi.
 
-Aby uzyskać ogólne informacje o platformie Docker i kontenerach, zobacz [podręcznik użytkownika platformy Docker](https://docs.docker.com/engine/userguide/).
+Używaj rejestrów kontenerów na platformie Azure wraz z istniejącymi potokami programowania i wdrażania kontenerów. Używaj usługi Azure Container Registry Build (ACR Build) do kompilowania obrazów kontenerów na platformie Azure. Twórz kompilacje dostępne na żądanie lub całkowicie zautomatyzowane przy użyciu wyzwalaczy kompilacji aktualizacji obrazu podstawowego i zatwierdzenia kodu źródłowego.
+
+Aby uzyskać ogólne informacje o platformie Docker i kontenerach, zobacz temat [Docker overview](https://docs.docker.com/engine/docker-overview/) (Omówienie platformy Docker).
 
 ## <a name="use-cases"></a>Przypadki zastosowań
+
 Ściąganie obrazów z rejestru kontenerów platformy Azure do różnych celów wdrażania:
 
 * **Skalowalne systemy organizowania** zarządzające konteneryzowanymi aplikacjami w klastrach hostów, włączając w to rozwiązania [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/) i [Kubernetes](http://kubernetes.io/docs/).
-* **Usługi platformy Azure** obsługujące kompilowanie i uruchamianie aplikacji na dużą skalę, w tym usługi [Container Service](../container-service/index.yml), [App Service](/app-service/index.md), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) i inne.
+* **Usługi platformy Azure** obsługujące kompilowanie i uruchamianie aplikacji w odpowiedniej skali, w tym usługi [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](/app-service/index.md), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) i inne.
 
 Deweloperzy mogą również przeprowadzać wypychanie do rejestru kontenerów w ramach przepływu pracy opracowywania kontenera. Na przykład mogą kierować dane do rejestru kontenerów z poziomu narzędzia integracji ciągłej lub narzędzia do wdrażania, takiego jak usługa [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) lub [Jenkins](https://jenkins.io/).
 
+Konfiguruj zadania kompilacji usługi [ACR Build](#azure-container-registry-build), aby automatycznie ponownie kompilować obrazy aplikacji podczas aktualizowania ich obrazów podstawowych. Używaj usługi ACR Build, aby automatyzować kompilacje obrazów, gdy Twój zespół będzie zatwierdzać kod w repozytorium usługi Git. *Usługa ACR Build jest obecnie dostępna w wersji zapoznawczej.*
+
 ## <a name="key-concepts"></a>Kluczowe pojęcia
+
 * **Rejestr** — utwórz przynajmniej jeden rejestr kontenerów w subskrypcji platformy Azure. Rejestry są dostępne w ramach trzech jednostek SKU: [podstawowej, standardowej i Premium](container-registry-skus.md). Każda z nich obsługuje integrację elementów webhook, uwierzytelnianie rejestru za pomocą usługi Azure Active Directory oraz funkcję usuwania. Utwórz rejestr w tej samej lokalizacji platformy Azure, w której znajdują się wdrożenia, aby korzystać z lokalnego, bliskiego sieciowo magazynu obrazów kontenerów. Użyj funkcji [replikacji geograficznej](container-registry-geo-replication.md) dostępnej w rejestrach w warstwie Premium dla scenariuszy zaawansowanej replikacji i dystrybucji obrazu kontenera. W pełni kwalifikowana nazwa rejestru ma format `myregistry.azurecr.io`.
 
   Możesz [kontrolować dostęp](container-registry-authentication.md) do rejestru kontenerów za pomocą [nazwy głównej usługi](../active-directory/active-directory-application-objects.md) wspieranej przez usługę Azure Active Directory lub podanego konta administratora. Uruchom standardowe polecenie `docker login` w celu uwierzytelnienia za pomocą rejestru.
@@ -44,7 +50,17 @@ Deweloperzy mogą również przeprowadzać wypychanie do rejestru kontenerów w 
 
 * **Kontener** — mianem kontenera określa się aplikację wraz z jej zależnościami, opakowaną w kompletny system plików, włączając w to kod, środowisko uruchomieniowe, narzędzia systemowe i biblioteki. Uruchom kontenery platformy Docker w oparciu o obrazy systemu Windows lub Linux, które zostały ściągnięte z rejestru kontenerów. Kontenery uruchomione na jednym komputerze współdzielą jądro systemu operacyjnego. Kontenery platformy Docker są całkowicie przenośne na wszystkie główne dystrybucje systemu Linux oraz systemy macOS i Windows.
 
+## <a name="azure-container-registry-build-preview"></a>Azure Container Registry Build (wersja zapoznawcza)
+
+Usługa [Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) to pakiet funkcji usługi Azure Container Registry, który udostępnia udoskonalone i wydajne kompilacje obrazów kontenerów platformy Docker na platformie Azure. Usługa ACR Build umożliwia rozszerzanie wewnętrznej pętli programowania o chmurę dzięki odciążaniu operacji `docker build` na platformie Azure. Konfiguruj zadania kompilacji w celu automatyzowania potoku poprawiania platformy i systemu operacyjnego kontenera, gdy zespół zatwierdza kod w ramach kontroli źródła.
+
+> [!NOTE]
+> Usługa ACR Build jest obecnie dostępna w wersji zapoznawczej i jest obsługiwana wyłącznie przez rejestry kontenerów platformy Azure w regionach **Wschodnie stany USA** (eastus) i **Europa Zachodnia** (westeurope). Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+
 ## <a name="next-steps"></a>Następne kroki
+
 * [Create a container registry using the Azure portal](container-registry-get-started-portal.md) (Tworzenie rejestru kontenerów za pomocą witryny Azure Portal)
 * [Create a container registry using the Azure CLI](container-registry-get-started-azure-cli.md) (Tworzenie rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure)
-* [Push your first image using the Docker CLI](container-registry-get-started-docker-cli.md) (Wypychanie pierwszego obrazu za pomocą interfejsu wiersza polecenia platformy Docker)
+* [Automate OS and framework patching with ACR Build](container-registry-build-overview.md) (Preview) (Automatyzowanie poprawiania systemu operacyjnego i platformy przy użyciu usługi ACR Build (wersja zapoznawcza))
+
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

@@ -93,12 +93,10 @@
               href: azure-stack-kv-sample-app.md
         - name: Szablony rozwiązań
           items:
-            - name: Szablony rozwiązań
-              items:
-                - name: Wdrażanie klastra sieci szkieletowej usług
-                  href: azure-stack-solution-template-service-fabric-cluster.md
-                - name: Wdrażanie klastra Kubernetes
-                  href: azure-stack-solution-template-kubernetes-deploy.md
+            - name: Wdrażanie klastra sieci szkieletowej usług
+              href: azure-stack-solution-template-service-fabric-cluster.md
+            - name: Wdrażanie klastra Kubernetes
+              href: azure-stack-solution-template-kubernetes-deploy.md
     - name: Tworzenie aplikacji
       items:
         - name: Opracowywanie zawartości dla usługi Azure Stack

@@ -3,28 +3,30 @@ title: Azure AD systemu Android wprowadzenie | Dokumentacja firmy Microsoft
 description: Sposób tworzenia aplikacji systemu Android, która integruje się z usługą Azure AD, logowania i wywołania usługi Azure AD chronione przy użyciu OAuth2.0 interfejsów API.
 services: active-directory
 documentationcenter: android
-author: danieldobalian
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: dadobali
+ms.author: celested
+ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7af33005d5984dbf76a16a0daa92f5e1ebf85f9e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 20618fff8d253bfab195ce2847a8848a28960ae4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Azure AD systemu Android wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
-Jeśli projektujesz aplikacji systemu Android firmy Microsoft ułatwia proste i bezpośrednie do logowania użytkowników usługi Azure Active Directory (Azure AD). Usługi Azure AD umożliwia aplikacji dostęp do danych użytkownika za pomocą programu Microsoft Graph lub własne chronionego interfejsu API w sieci web.  
+Jeśli projektujesz aplikacji systemu Android firmy Microsoft ułatwia proste i bezpośrednie do logowania użytkowników usługi Azure Active Directory (Azure AD). Usługi Azure AD umożliwia aplikacji dostęp do danych użytkownika za pomocą programu Microsoft Graph lub własne chronionego interfejsu API w sieci web. 
 
 Biblioteka systemu Android Azure AD Authentication Library (ADAL) daje aplikacji możliwość rozpocząć korzystanie z [firmy Microsoft w chmurze Azure](https://cloud.microsoft.com) & [interfejsu API programu Microsoft Graph](https://graph.microsoft.io) dzięki obsłudze [ Konta Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) przy użyciu branżowy standard OAuth2 i OpenID Connect. W tym przykładzie przedstawiono wszystkie cykle normalne, które aplikacja powinna występować w tym:
 
@@ -74,21 +76,21 @@ mAuthResult.getAccessToken()
 Musisz mieć aplikację native client, w zarejestrowany z firmą Microsoft przy użyciu [portalu Azure](https://portal.azure.com). 
 
 1. Wprowadzenie do rejestracji aplikacji
-    - Przejdź do witryny [Azure Portal](https://aad.portal.azure.com).  
+    - Przejdź do witryny [Azure Portal](https://aad.portal.azure.com). 
     - Wybierz ***usługi Azure Active Directory*** > ***rejestracji aplikacji***. 
 
 2. Tworzymy aplikację.
-    - Wybierz pozycję **Rejestrowanie nowej aplikacji**.  
+    - Wybierz pozycję **Rejestrowanie nowej aplikacji**. 
     - Wprowadź nazwę aplikacji w **nazwa** pola. 
     - W **typu aplikacji** wybierz **natywnego**. 
-    - W **identyfikator URI przekierowania**, wprowadź `http://localhost`.  
+    - W **identyfikator URI przekierowania**, wprowadź `http://localhost`. 
 
 3. Konfigurowanie programu Microsoft Graph
     - Wybierz **Ustawienia > wymagane uprawnienia**.
     - Wybierz **Dodaj**w **wybierz interfejs API** wybierz ***Microsoft Graph***. 
     - Wybierz uprawnienie **Zaloguj się i odczytuj profil użytkownika**, następnie kliknij przycisk **wybierz** do zapisania. 
         - To uprawnienie jest mapowany na `User.Read` zakresu. 
-    - Opcjonalnie: Wewnątrz **wymagane uprawnienia > Windows Azure Active Directory**, Usuń wybrane uprawnienie **Zaloguj się i odczytuj profil użytkownika**. Pozwoli to uniknąć wyświetlania dwukrotnie uprawnienie strony zgody użytkownika.   
+    - Opcjonalnie: Wewnątrz **wymagane uprawnienia > Windows Azure Active Directory**, Usuń wybrane uprawnienie **Zaloguj się i odczytuj profil użytkownika**. Pozwoli to uniknąć wyświetlania dwukrotnie uprawnienie strony zgody użytkownika. 
 
 4. Gratulacje! Pomyślnie skonfigurowano aplikację. W następnej sekcji potrzebne są:
     - `Application ID`
@@ -105,7 +107,7 @@ Musisz mieć aplikację native client, w zarejestrowany z firmą Microsoft przy 
 
 ### <a name="configure-your-code"></a>Skonfiguruj swój kod
 
-Możesz znaleźć wszystkie konfiguracje dla tego przykładu kodu w ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** pliku.  
+Możesz znaleźć wszystkie konfiguracje dla tego przykładu kodu w ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** pliku. 
 
 1. Zastąp stała `CLIENT_ID` z `ApplicationID`.
 2. Zastąp stała `REDIRECT URI` z `Redirect URI` skonfigurowane wcześniej (`http://localhost`). 
@@ -114,7 +116,7 @@ Możesz znaleźć wszystkie konfiguracje dla tego przykładu kodu w ***src/main/
 
 1. Wybierz **kompilacji > Czyszczenie projektu**. 
 2. Wybierz **Uruchom > wykonywania aplikacji**. 
-3. Aplikację należy skompilować i Pokaż niektóre podstawowe UX. Po kliknięciu `Call Graph API` przycisku, zostanie monit o podanie logowania i dyskretnej wywołania interfejsu API programu Microsoft Graph z nowy token.  
+3. Aplikację należy skompilować i Pokaż niektóre podstawowe UX. Po kliknięciu `Call Graph API` przycisku, zostanie monit o podanie logowania i dyskretnej wywołania interfejsu API programu Microsoft Graph z nowy token. 
 
 ## <a name="important-info"></a>Ważne informacje
 
@@ -123,10 +125,10 @@ Możesz znaleźć wszystkie konfiguracje dla tego przykładu kodu w ***src/main/
 3. Znajdź wszystkie problemy lub żądania? Możesz utworzyć problemu lub blogu w witrynie Stackoverflow znacznikiem `azure-active-directory`. 
 
 ### <a name="cross-app-sso"></a>Usługa rejestracji Jednokrotnej w wielu aplikacji
-Dowiedz się [jak włączyć logowanie Jednokrotne wielu aplikacji w systemie Android przy użyciu biblioteki ADAL](active-directory-sso-android.md).  
+Dowiedz się [jak włączyć logowanie Jednokrotne wielu aplikacji w systemie Android przy użyciu biblioteki ADAL](active-directory-sso-android.md). 
 
 ### <a name="auth-telemetry"></a>Dane telemetryczne uwierzytelniania
-Biblioteka ADAL przedstawia uwierzytelniania telemetrię, aby pomóc deweloperom aplikacji zrozumienie zachowania swoje aplikacje i lepszą obsługę kompilacji.  Teraz można przechwytywać logowania sukces, aktywnych użytkowników i kilka innych interesujące szczegółowych informacji. Przy użyciu uwierzytelniania telemetrii wymagać od deweloperów aplikacji do ustanawiania telemetrii usługi do agregacji i przechowywania zdarzeń.
+Biblioteka ADAL przedstawia uwierzytelniania telemetrię, aby pomóc deweloperom aplikacji zrozumienie zachowania swoje aplikacje i lepszą obsługę kompilacji. Teraz można przechwytywać logowania sukces, aktywnych użytkowników i kilka innych interesujące szczegółowych informacji. Przy użyciu uwierzytelniania telemetrii wymagać od deweloperów aplikacji do ustanawiania telemetrii usługi do agregacji i przechowywania zdarzeń.
 
 Aby dowiedzieć się więcej o telemetrii uwierzytelniania wyewidencjonowania [telemetrii uwierzytelnianie ADAL dla systemu Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Telemetry). 
 

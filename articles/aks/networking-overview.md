@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: marsma
-ms.openlocfilehash: 80d12d1f5d6b388c46ed90eb84b7bc00250e17ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 818bae2e05f6a3256ccbf0cbcc901dd337b9a260
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w Azure usługa Kubernetes (AKS)
 
@@ -86,7 +86,7 @@ Następujące pytania i odpowiedzi mają zastosowanie do **zaawansowane** konfig
 
   Nie. Wdrażanie maszyn wirtualnych w podsieci używane przez klaster Kubernetes nie jest obsługiwane. Można wdrożyć maszyn wirtualnych, w tej samej sieci wirtualnej, ale w innej podsieci.
 
-* * Można skonfigurować zasady sieciowe na pod?
+* *Można skonfigurować zasady sieciowe na pod?*
 
   Nie. Zasady sieciowe na pod są obecnie obsługiwane.
 

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c9d142a58f53c28c8f791692cf48b648522ccb99
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 95b385e9847a7809492bbb74bd1eba616df90d72
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH w węzłach klastra usługi Kubernetes Azure (AKS)
 
-Czasami może być konieczne dostępu węzła usługi Kubernetes Azure (AKS) konserwacji, zbierania dzienników lub inne operacje dotyczące rozwiązywania problemów. Azure Service Kubernetes (AKS) węzły nie są widoczne w Internecie. Wykonaj kroki szczegółowo opisane w tym dokumencie, aby utworzyć połączenie SSH za pomocą węzła AKS.
+Czasami może być konieczne dostępu węzła usługi Kubernetes Azure (AKS) konserwacji, zbierania dzienników lub inne operacje dotyczące rozwiązywania problemów. Węzły AKS nie są widoczne w Internecie. Wykonaj kroki szczegółowo opisane w tym dokumencie, aby utworzyć połączenie SSH za pomocą węzła AKS.
 
 ## <a name="reset-ssh-keys"></a>Resetuj kluczy SSH
 
@@ -31,7 +31,7 @@ Wybierz **zresetować publicznego klucza SSH**, wprowadź nazwę AKS klastra uż
 
 ![Portal AKS maszyny Wirtualnej za pomocą przycisku resetowania hasła](media/aks-ssh/reset-password-2.png)
 
-Po klucz SSH został zresetowany, możesz utworzyć połączenie SSH przy użyciu odpowiedniego klucza prywatnego.
+Po klucz SSH został zresetowany, można utworzyć połączenia SSH przy użyciu odpowiedniego klucza prywatnego.
 
 ## <a name="get-aks-node-address"></a>Pobierz adres węzła AKS
 

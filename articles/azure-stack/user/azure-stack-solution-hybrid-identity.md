@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 9a025716c2bb6266c1c1c552a2d0791b39429cac
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5224fe4682509f92e1f18d865e5cc5afb1218ad1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-with-azure-and-azure-stack-applications"></a>Samouczek: Skonfiguruj hybrydowych tożsamość w chmurze z aplikacjami platformy Azure i stosu Azure
 
@@ -60,7 +60,7 @@ Instalacja stosu Azure połączona z usługą Azure Active Directory z subskrypc
 
 Aby połączyć się przy użyciu kodu stosu Azure, umożliwia punkty końcowe interfejsu API usługi Azure Resource Manager Przełącz uwierzytelniania i wykres punkty końcowe instalację stosu Azure, a następnie uwierzytelniania za pomocą żądań REST. Przykładową aplikację można znaleźć [tutaj](https://github.com/shriramnat/HybridARMApplication).
 
-> [!note]  
+> [!Note]  
 Jeśli zestaw Azure SDK dla języka wyboru nie obsługuje profile interfejsu API platformy Azure, zestaw SDK może nie działać z stosu Azure. Aby dowiedzieć się więcej na temat profilów interfejsu API platformy Azure, przejdź [tutaj](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles).
 
 ## <a name="next-steps"></a>Kolejne kroki

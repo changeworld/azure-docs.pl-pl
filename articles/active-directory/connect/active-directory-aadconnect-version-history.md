@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 05/07/2018
 ms.author: billmath
-ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect z nowych funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich grup odbiorców.
@@ -34,6 +34,63 @@ Kroki do uaktualnienia programu Azure AD Connect | Różnych metod na [uaktualni
 Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="118190"></a>1.1.819.0
+
+2018-5/4: wydane dla automatycznego uaktualnienia, będzie wkrótce dostępna do pobrania.
+
+
+
+### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
+
+Nowe funkcje i ulepszenia
+
+
+- Ta wersja zawiera publicznej wersji zapoznawczej integracji PingFederate w programie Azure AD Connect. W tej wersji klienci mogą łatwo i niezawodne skonfigurować ich środowisko usługi Azure Active Directory wykorzystać PingFederate jako ich dostawcy federacyjnego. Aby dowiedzieć się więcej na temat sposobu korzystania z tej nowej funkcji, przejdź na stronę naszych [dokumentacji online](active-directory-aadconnect-user-signin.md#federation-with-pingfederate). 
+- Zaktualizowaliśmy Azure AD Connect kreatora Rozwiązywanie problemów z narzędziu, gdzie mamy teraz analizowanie więcej scenariusz błąd, takich jak połączonego skrzynki pocztowe i grupami dynamicznymi AD. Dowiedz się więcej o narzędziu rozwiązywania problemów [tutaj](active-directory-aadconnect-troubleshoot-objectsync.md).
+- Konfiguracja funkcji zapisywania zwrotnego urządzeń będzie teraz zarządzana wyłącznie w obrębie Azure AD Connect kreatora.
+- Nowy moduł programu PowerShell o nazwie ADSyncTools.psm1 zostanie dodany, który może służyć do rozwiązywania problemów z łącznością SQL i różnych innych narzędzi rozwiązywania problemów. Dowiedz się więcej o ADSyncTools module [tutaj](active-directory-aadconnect-tshoot-sql-connectivity.md). 
+- Dodano nowe zadanie dodatkowe "Konfiguruj opcje urządzenia". Zadania umożliwiają skonfigurowanie dwie następujące czynności: 
+    -   **Hybrydowe usługi Azure AD join**: Jeśli środowiska pod kątem lokalnej wpływ AD a również skorzystać z możliwości oferowane przez usługi Azure Active Directory, można zaimplementować hybrydowe usługi Azure AD przyłączone do urządzeń. Są to urządzenia, które są zarówno do lokalnej usługi Active Directory i Azure Active Directory.
+    -   **Zapisywanie zwrotne urządzeń**: zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego, w oparciu o urządzenia do usług AD FS (2012 R2 lub nowszej) chronione urządzeń
+
+   >[!NOTE] 
+   > - Opcję włączania zapisu zwrotnego urządzeń Dostosuj opcje synchronizacji będzie nieaktywna. 
+   > -  Moduł programu PowerShell dla programu ADPrep jest przestarzałe w tej wersji.
+
+
+
+### <a name="fixed-issues"></a>Rozwiązane problemy 
+
+
+- Przetwarzanie reguł synchronizacji: reguły synchronizacji ruchu wychodzącego sprzężenia z warunkiem nie dołączyć powinna być cofnąć zastosowane, jeśli syncrule nadrzędny nie ma już zastosowania
+- Azure AD kreatora Połącz: Wystąpił błąd podczas tworzenia konta łącznika usługi AD podczas programu Azure AD Connect jest w grupie roboczej
+- Azure AD kreatora Connect: W usłudze Azure AD strony logowania Wyświetla pole wyboru weryfikacji, gdy istnieje niezgodność AD domen i domen usługi Azure AD zweryfikowano
+- Poprawka programu PowerShell automatycznego uaktualnienia można ustawić stan uaktualnienia automatycznie prawidłowo w niektórych przypadkach po próba automatycznego uaktualnienia.
+- Azure AD kreatora Połącz: Zaktualizowano telemetrię, aby przechwycić wcześniej brakujące informacje
+- Azure AD kreatora Połącz: Zainstaluj PTA agenta przed przekonwertowaniem domeny zarządzane
+- Azure AD kreatora Connect: Nie można konwertować użytkowników do dla PTA zarządzany (Konwertuj tylko domeny)
+- Azure AD kreatora Połącz: Wyrażenia regularnego programu AD FS Multi domeny jest nieprawidłowy, gdy ma nazwę UPN użytkownika "znak specjalny wyrażeń regularnych aktualizacji do obsługi znaków specjalnych
+- Azure AD kreatora Połącz: Usuń fałszywe komunikat "Konfiguruj atrybutu zakotwiczenia źródła" podczas bez zmian 
+- Azure AD kreatora Połącz: Usługi AD FS obsługują scenariusza podwójną federacyjnego
+- Azure AD kreatora Connect: Usługi AD FS oświadczenia nie zostaną zaktualizowane dla domeny dodane podczas konwertowania domeny zarządzanej federacyjnego
+- Azure AD kreatora Połącz: Podczas wykrywania zainstalowane pakiety, znaleźliśmy starych Dirsync/usługi Azure AD Sync/usługi Azure AD Connect pokrewnych produktów. Firma Microsoft podejmie teraz próbę odinstalowania starych produktów.
+- Azure AD kreatora Connect: Poprawne błąd komunikat mapowania podczas instalacji agenta uwierzytelniania przekazywanie zakończy się niepowodzeniem.
+- Azure AD kreatora Połącz: Usunąć kontener "Konfiguracja" ze strony filtrowania jednostki Organizacyjnej domeny
+- Zainstaluj aparat synchronizacji: Usuń niepotrzebne logiki starszej wersji, która czasami nie powiodło się z aparatu synchronizacji instalacja msi
+- Azure AD kreatora Połącz: Napraw podręcznego tekst pomocy na stronie funkcje opcjonalne dla synchronizacji skrótów haseł
+- Synchronizowanie aparat środowiska wykonawczego: Usuń scenariusz, w którym obiekt CS ma importowanych delete i spróbować ponownie zainicjować obsługę administracyjną obiektu reguły synchronizacji.
+- Synchronizowanie aparat środowiska wykonawczego: Dodaj pomocy link dla łączności dotyczące rozwiązywania problemów w przewodniku do dziennika zdarzeń wystąpił błąd importu
+- Synchronizowanie aparat środowiska wykonawczego: zmniejszyć użycie pamięci harmonogramu synchronizacji podczas wyliczania łączników
+- Azure AD kreatora Połącz: Rozwiązania problemu rozpoznawania niestandardowe konto usługi synchronizacji z brakiem uprawnień odczytu AD
+- Azure AD kreatora Connect: Rejestrowanie domenę i jednostkę Organizacyjną opcje filtrowania poprawy
+- Azure AD kreatora Połącz: Dodaj usługi AD FS domyślne oświadczenia do relacji zaufania federacji, utworzony w scenariuszu dla usługi MFA
+- Azure AD kreatora Połącz: Usługi AD FS wdrażanie WAP: Dodawanie awarii serwera do użycia nowego certyfikatu
+- Azure AD kreatora Połącz: DSSO wyjątku, gdy onPremCredentials nie jest zainicjowana dla domeny 
+- Przepływ preferencyjnie atrybut distinguishedName AD z obiektu aktywnego użytkownika.
+- Stałej bardzo drobny usterki, gdzie pierwszeństwo reguły synchronizacji pierwszego OOB ustawiono 99 zamiast 100
+
+
 
 ## <a name="117510"></a>1.1.751.0
 Stan 4/12/2018: wydane dla pobierania tylko
@@ -161,9 +218,9 @@ Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obi
 Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Wyświetlanie zawartości        | Ten obiekt  |
 Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
 Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwalaj    | Użytkownicy uwierzytelnieni           | Wyświetlanie zawartości        | Ten obiekt  |
-Zezwalaj    | Użytkownicy uwierzytelnieni           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Użytkownicy uwierzytelnieni           | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | Uwierzytelnieni użytkownicy           | Wyświetlanie zawartości        | Ten obiekt  |
+Zezwalaj    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby zwiększyć ustawienia dla konta usługi AD DS, należy uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell przypisze uprawnienia wymienionych powyżej konta usług AD DS.
 

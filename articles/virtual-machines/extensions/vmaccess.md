@@ -15,26 +15,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: danis
-ms.openlocfilehash: b90b7948d10ff91f3c63b772bc302b1def416f2b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c023f226894d2fabb90736513e49a1ecca179d4f
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Zarządzanie użytkownikami administracyjnymi oraz SSH i wyboru lub napraw dyski na maszynach wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess 2.0 interfejsu wiersza polecenia platformy Azure
-
 ## <a name="overview"></a>Przegląd
-
 Dysk na maszynie Wirtualnej systemu Linux są pokazywane błędy. Jakiś sposób resetowania hasła głównego dla maszyny Wirtualnej systemu Linux lub przypadkowo usunięty klucz prywatny SSH. Jeśli które miały miejsce w ciągu dni centrum danych, konieczne będzie dysk istnieje, a następnie otwórz KVM można uzyskać za pomocą konsoli serwera. Rozszerzenia Azure VMAccess można traktować jako przełącznika KVM, które umożliwia dostęp do konsoli zresetować dostępu do systemu Linux lub przeprowadź obsługę poziomu dysku.
 
 W tym artykule przedstawiono sposób rozszerzenia VMAccess Azure umożliwia sprawdzanie lub naprawiania dysku, zresetuj dostęp użytkownika, zarządzanie kontami użytkowników administracyjnych lub aktualizacji konfiguracji SSH w systemie Linux, gdy są one uruchomione jako maszyny wirtualne Azure Resource Manager. Jeśli musisz zarządzać maszynami wirtualnymi Classic — należy postępować zgodnie z instrukcjami w [klasycznego dokumentacji wirtualna](../linux/classic/reset-access-classic.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
 ### <a name="operating-system"></a>System operacyjny
 
 Rozszerzenia dostępu do maszyny Wirtualnej mogą być uruchamiane na tych dystrybucje systemu Linux:
-
 
 | Dystrybucja | Wersja |
 |---|---|
@@ -58,7 +54,7 @@ W poniższych przykładach użyto [użytkownika maszyny wirtualnej az](/cli/azur
 ## <a name="update-ssh-key"></a>Zaktualizuj klucz SSH
 Poniższy przykład aktualizuje klucz SSH dla użytkownika `azureuser` na Maszynie wirtualnej o nazwie `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user update \
   --resource-group myResourceGroup \
   --name myVM \
@@ -71,7 +67,7 @@ az vm user update \
 ## <a name="reset-password"></a>Resetowanie hasła
 Poniższy przykład resetuje hasło użytkownika `azureuser` na Maszynie wirtualnej o nazwie `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user update \
   --resource-group myResourceGroup \
   --name myVM \
@@ -82,7 +78,7 @@ az vm user update \
 ## <a name="restart-ssh"></a>Uruchom ponownie SSH
 W poniższym przykładzie uruchomieniu demon SSH i zresetowanie konfiguracji SSH do wartości domyślnych na maszynie Wirtualnej o nazwie `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user reset-ssh \
   --resource-group myResourceGroup \
   --name myVM
@@ -91,7 +87,7 @@ az vm user reset-ssh \
 ## <a name="create-an-administrativesudo-user"></a>Utwórz użytkownika administracyjnego/sudo
 Poniższy przykład tworzy użytkownika o nazwie `myNewUser` z **sudo** uprawnienia. Konto używa klucza SSH do uwierzytelniania na Maszynie wirtualnej o nazwie `myVM`. Ta metoda jest przeznaczona do pomóc w odzyskaniu dostępu do maszyny Wirtualnej, w przypadku, gdy bieżące poświadczenia są zgubienia lub zapomnienia hasła. Najlepszym rozwiązaniem kont z **sudo** uprawnień powinna być ograniczona.
 
-```azurecli
+```azurecli-interactive
 az vm user update \
   --resource-group myResourceGroup \
   --name myVM \
@@ -99,18 +95,15 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-
-
 ## <a name="delete-a-user"></a>Usuń użytkownika
 W następującym przykładzie użytkownik o nazwie `myNewUser` na Maszynie wirtualnej o nazwie `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user delete \
   --resource-group myResourceGroup \
   --name myVM \
   --username myNewUser
 ```
-
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>Pliki w formacie JSON i rozszerzenia VMAccess
 W poniższych przykładach użyto nieprzetworzone pliki w formacie JSON. Użyj [zestaw rozszerzenia maszyny wirtualnej az](/cli/azure/vm/extension#az_vm_extension_set) następnie wywołać pliki w formacie JSON. Te pliki w formacie JSON również może być wywołana z szablonów platformy Azure. 
@@ -129,7 +122,7 @@ Aby zaktualizować klucz publiczny SSH użytkownika, Utwórz plik o nazwie `upda
 
 Wykonanie skryptu VMAccess:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -150,7 +143,7 @@ Aby zresetować hasło użytkownika, Utwórz plik o nazwie `reset_user_password.
 
 Wykonanie skryptu VMAccess:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -171,7 +164,7 @@ Aby uruchomić ponownie demon SSH i zresetowanie konfiguracji SSH do wartości d
 
 Wykonanie skryptu VMAccess:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -195,7 +188,7 @@ Aby utworzyć użytkownika z **sudo** uprawnienia, które używa klucza SSH do u
 
 Wykonanie skryptu VMAccess:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -215,7 +208,7 @@ Aby usunąć użytkownika, Utwórz plik o nazwie `delete_user.json` i dodaj nast
 
 Wykonanie skryptu VMAccess:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -239,7 +232,7 @@ Sprawdź, a następnie napraw dysku, Utwórz plik o nazwie `disk_check_repair.js
 
 Wykonanie skryptu VMAccess:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -248,13 +241,16 @@ az vm extension set \
   --version 1.4 \
   --protected-settings disk_check_repair.json
 ```
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i obsługa techniczna
 
-## <a name="next-steps"></a>Kolejne kroki
-Aktualizowanie systemu Linux przy użyciu rozszerzenia VMAccess Azure jest jedną metodę, aby wprowadzić zmiany w uruchomionej maszyny Wirtualnej systemu Linux. Aby zmodyfikować maszyny Wirtualnej systemu Linux na rozruch umożliwia także narzędzia, takie jak szablony usługi Azure Resource Manager i init chmury.
+### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-[Rozszerzenia maszyn wirtualnych i funkcji w systemie Linux](features-linux.md)
+Dane dotyczące stanu wdrożenia rozszerzenia może zostać pobrany z portalu Azure i przy użyciu wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu wiersza polecenia platformy Azure.
 
-[Tworzenie szablonów usługi Azure Resource Manager z rozszerzeniami maszyny Wirtualnej systemu Linux](../windows/template-description.md)
+```azurecli
+az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
+```
 
-[Dostosowywanie maszyny Wirtualnej systemu Linux podczas tworzenia za pomocą init chmury](../linux/using-cloud-init.md)
+### <a name="support"></a>Pomoc techniczna
 
+Jeśli potrzebujesz więcej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ekspertów platformy Azure na [fora MSDN Azure i przepełnienie stosu](https://azure.microsoft.com/support/forums/). Alternatywnie można pliku zdarzenia pomocy technicznej platformy Azure. Przejdź do [witrynę pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z platformy Azure obsługuje, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).

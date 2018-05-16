@@ -1,11 +1,11 @@
 ---
-title: "Powiadomienia o raportach usługi Azure Active Directory"
-description: "Jak używać usługi Azure Active Directory raportowania powiadomienia o podejrzanych znak dodatków."
+title: Powiadomienia o raportach usługi Azure Active Directory
+description: Jak używać usługi Azure Active Directory raportowania powiadomienia o podejrzanych znak dodatków.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ae6d4b0e-5931-4cb3-98bf-9be91b381c92
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c279b923ed4e63d810861c579dd54b3a2b7f415e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Powiadomienia o raportach usługi Azure Active Directory
 ## <a name="what-reports-generate-email-notifications"></a>Jakie raporty generowanie powiadomień e-mail
@@ -39,7 +39,7 @@ Wiadomości e-mail są wysyłane, jeśli 10 nowych nieregularne logowania dział
 Po kliknięciu łącza nastąpi przekierowanie do strony raportu w portalu Azure. Aby uzyskać dostęp do raportu, musisz być:
 
 * Administrator lub współadministratora subskrypcji platformy Azure
-* Administrator globalny w katalogu i przypisaniu licencji usługi Active Directory — wersja Premium. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](active-directory-editions.md).
+* Administrator globalny w katalogu i przypisaniu licencji usługi Active Directory — wersja Premium. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](active-directory-whatis.md).
 
 ## <a name="can-i-turn-off-these-emails"></a>Można wyłączyć te wiadomości e-mail?
 Tak, aby wyłączyć powiadomienia dotyczące nietypowe logowania w portalu Azure, kliknij przycisk **Konfiguruj**, a następnie wybierz **wyłączone** w obszarze **powiadomienia** sekcji.

@@ -14,11 +14,11 @@ ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 373983413ea83e5924b52fbbcbc666aa1a188d80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4fa93e4bf64e01b44b0826b2182b125004c49609
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Zarządzanie jednostkami administracyjnymi w usłudze Azure AD - publicznej wersji zapoznawczej
 W tym artykule opisano jednostkami administracyjnymi — nowy kontener usługi Azure Active Directory zasobów, które mogą służyć do delegowania uprawnień administracyjnych za pośrednictwem podzbiór użytkowników i stosowania zasad do podzbioru użytkowników. W usłudze Azure Active Directory jednostki administracyjne Włącz centralnej Administratorzy delegować uprawnienia do administratorów regionalnych lub ustawienie zasad na poziomie szczegółowym.
@@ -38,4 +38,4 @@ W tej wersji zapoznawczej można tworzyć i zarządzanie jednostkami administrac
 Aby uzyskać więcej informacji na temat wymagań programowych i instalowanie modułu usługi Azure AD oraz informacje dotyczące poleceń cmdlet programu Azure AD modułu Zarządzanie jednostkami administracyjnymi, wraz ze składnią, opisy parametrów i przykłady, zobacz [usługi Azure Active PowerShell katalogu](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Wersje usługi Azure Active Directory](active-directory-editions.md)
+[Wersje usługi Azure Active Directory](active-directory-whatis.md)

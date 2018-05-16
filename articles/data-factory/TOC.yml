@@ -350,16 +350,18 @@
           href: data-factory-service-identity.md
     - name: Monitorowanie i zarządzanie
       items:
-        - name: Korzystanie z zestawów SDK
-          href: monitor-programmatically.md
-        - name: Korzystanie z usługi Azure Monitor
-          href: monitor-using-azure-monitor.md
         - name: Monitorowanie wizualne
           href: monitor-visually.md
-        - name: Zarządzanie środowiskiem Azure SSIS Integration Runtime
-          href: manage-azure-ssis-integration-runtime.md
+        - name: Monitorowanie za pomocą usługi Azure Monitor
+          href: monitor-using-azure-monitor.md
+        - name: Monitorowanie za pomocą zestawów SDK
+          href: monitor-programmatically.md
         - name: Monitorowanie środowiska Integration Runtime
           href: monitor-integration-runtime.md
+        - name: Monitorowanie środowiska Azure-SSIS Integration Runtime
+          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+        - name: Zarządzanie środowiskiem Azure SSIS Integration Runtime
+          href: manage-azure-ssis-integration-runtime.md
     - name: Tworzenie środowiska Integration Runtime
       items:
         - name: Środowisko uruchomieniowe integracji Azure
@@ -370,24 +372,22 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Uruchamianie pakietów SSIS na platformie Azure
       items:
-        - name: Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Aprowizowanie wersji Enterprise Edition dla środowiska Azure SSIS Integration Runtime
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Dołączanie środowiska Azure SSIS Integration Runtime do sieci wirtualnej
           href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Zarządzanie środowiskiem Azure SSIS Integration Runtime
-          href: manage-azure-ssis-integration-runtime.md
-        - name: Konfigurowanie ustawień wydajności środowiska uruchomieniowego integracji usług Azure SSIS
+        - name: Konfigurowanie wysokiej wydajności dla środowiska Azure-SSIS Integration Runtime
           href: configure-azure-ssis-integration-runtime-performance.md
+        - name: Aprowizowanie wersji Enterprise Edition dla środowiska Azure SSIS Integration Runtime
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Dostosowywanie konfiguracji środowiska Azure SSIS Integration Runtime
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Wdrażanie licencjonowanych składników dla środowiska Azure SSIS Integration Runtime
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: Uruchamianie pakietów SSIS za pomocą działania SSIS
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Uruchamianie pakietów SSIS za pomocą działania procedury składowanej
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Harmonogram środowiska Azure SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: Opracowywanie licencjonowanych składników dla środowiska Azure SSIS Integration Runtime
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: Tworzenie wyzwalaczy
       items:
         - name: Tworzenie wyzwalacza harmonogramu

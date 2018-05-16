@@ -1,25 +1,27 @@
 ---
-title: "Metadanych Federacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano dokument metadanych Federacji, który publikuje usługi Azure Active Directory dla usług, które akceptują tokeny usługi Azure Active Directory."
+title: Metadanych Federacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: W tym artykule opisano dokument metadanych Federacji, który publikuje usługi Azure Active Directory dla usług, które akceptują tokeny usługi Azure Active Directory.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 58e5f62009e4e8b688108c6098ea8eabe8020e51
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cfc79b451eafe7dcdd0b8f4285f92714138260bb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="federation-metadata"></a>Metadane federacji
 Azure Active Directory (Azure AD) publikuje dokument metadanych usług federacyjnych usługi skonfigurowanego do akceptowania na usługa Azure AD wystawia tokeny zabezpieczające. Format dokumentu metadanych federacji jest opisany w [Web Services Federation Language (WS-Federation) w wersji 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), która rozszerza [metadane języka OASIS Security Assertion Markup Language (SAML) 2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -41,7 +43,7 @@ Aby uzyskać **punkty końcowe specyficznego dla dzierżawy**, `TenantDomainName
 
 Aby uzyskać **punkty końcowe niezależny od dzierżawcy**, `TenantDomainName` jest `common`. Ten dokument zawiera listę elementów metadanych Federacji, które są wspólne dla wszystkich dzierżaw usługi Azure AD, które są hostowane na login.microsoftonline.com.
 
-Na przykład może być punkt końcowy specyficznego dla dzierżawy `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Punkt końcowy niezależny od dzierżawcy jest [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadanych usług federacyjnych można wyświetlić, wpisując adres URL w przeglądarce.
+Na przykład może być punkt końcowy specyficznego dla dzierżawy `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Punkt końcowy niezależny od dzierżawcy jest [ https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml ](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadanych usług federacyjnych można wyświetlić, wpisując adres URL w przeglądarce.
 
 ## <a name="contents-of-federation-metadata"></a>Zawartość metadanych Federacji
 W poniższej sekcji przedstawiono informacje wymagane przez usługi, które korzystają z tokenów wystawiony przez usługę Azure AD.

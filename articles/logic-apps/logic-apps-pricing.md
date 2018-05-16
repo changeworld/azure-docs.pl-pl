@@ -1,24 +1,24 @@
 ---
-title: "Cennik i rozliczenia — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak działa cennik i rozliczenia dla usługi Azure Logic Apps"
-author: kevinlam1
-manager: anneta
-editor: 
+title: Cennik i rozliczenia — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak działa cennik i rozliczenia dla usługi Azure Logic Apps
 services: logic-apps
-documentationcenter: 
+author: kevinlam1
+manager: cfowler
+editor: ''
+documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: LADocs; klam
-ms.openlocfilehash: 096fdd5a6604ed8cecc931da2169194b777664d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/11/2018
+ms.author: klam
+ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="logic-apps-pricing-model"></a>Model cen aplikacji logiki
 
@@ -57,7 +57,7 @@ Akcje, które są uruchamiane wewnątrz pętli są liczone każdy cykl w pętli.
 
 ## <a name="integration-account-usage"></a>Użycie konta integracji
 
-Na podstawie zużycia użycia obejmuje [konta integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie można eksplorować, opracowanie i przetestowanie [B2B/EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) funkcji Logic Apps bez dodatkowych kosztów. Może mieć jedno z tych kont integracji według regionu i magazynu maksymalnie 10 umów oraz 25 mapy. Możesz mieć i przekaż nieograniczone partnerów, schematy i certyfikaty.
+Na podstawie zużycia użycia obejmuje [konta integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie można eksplorować, opracowanie i przetestowanie [B2B/EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) funkcje w aplikacjach logiki na nie dodatkowych kosztów. Można wybrać jedno konto integracji według regionu i magazynu do konkretnego [liczby artefakty](../logic-apps/logic-apps-limits-and-config.md), na przykład partnerami handlowymi EDI i umowy, map, schematów, zestawy, certyfikaty i konfiguracje partii.
 
 Logic Apps oferuje również konta integracji basic i standard z obsługiwanych SLA aplikacji logiki. Możesz użyć kont podstawową integrację, gdy użytkownik ma być używany tylko obsługa komunikatów lub działa jako partner małych firm, która ma relację handlowym partnera z większą jednostki biznesowe. Konta standardowe integracji obsługuje bardziej złożonych relacji B2B i zwiększyć liczbę obiektów, którymi można zarządzać. Aby uzyskać więcej informacji, zobacz [cennik platformy Azure](https://azure.microsoft.com/pricing/details/logic-apps).
 

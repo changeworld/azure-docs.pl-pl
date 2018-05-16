@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4f899e3f45174aef8274810e184cc374bcca2c50
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów zapisywane o różnych funkcjach związanych z aplikacji w usłudze Azure Active Directory (Azure AD).
@@ -79,9 +79,9 @@ Jeśli masz aplikacje w sieci prywatnej, które muszą być dostępne dla użytk
 | Przewodnik artykułu |  |
 |:---:| --- |
 | Omówienie serwera Proxy aplikacji usługi Azure AD oraz sposób jej działania |[Bezpieczny dostęp zdalny do aplikacji lokalnych](manage-apps/application-proxy.md) |
-| Samouczki na sposób konfigurowania serwera Proxy aplikacji i jak opublikować pierwszej aplikacji |[Jak skonfigurować serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Jak zainstalować łącznik serwera Proxy aplikacji w trybie dyskretnym](active-directory-application-proxy-silent-installation.md)<br /><br />[Sposób publikowania aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak korzystać z własnej nazwy domeny](manage-apps/application-proxy-configure-custom-domain.md) |
-| Jak włączyć jednego logowania i warunkowego dostępu dla aplikacji opublikowane przy użyciu serwera Proxy aplikacji |[Single-sign-on z serwerem Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Dostęp warunkowy i serwera Proxy aplikacji](application-proxy-enable-remote-access-sharepoint.md) |
-| Wskazówki dotyczące sposobu używania serwera Proxy aplikacji w następujących scenariuszach |[Jak obsługiwać aplikacje Native Client](active-directory-application-proxy-native-client.md)<br /><br />[Jak obsługiwać aplikacje obsługujące oświadczenia](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Jak obsługiwać aplikacji publikowanych w odrębnych sieci i lokalizacje](active-directory-application-proxy-connectors-azure-portal.md) |
+| Samouczki na sposób konfigurowania serwera Proxy aplikacji i jak opublikować pierwszej aplikacji |[Jak skonfigurować serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Jak zainstalować łącznik serwera Proxy aplikacji w trybie dyskretnym](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Sposób publikowania aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak korzystać z własnej nazwy domeny](manage-apps/application-proxy-configure-custom-domain.md) |
+| Jak włączyć jednego logowania i warunkowego dostępu dla aplikacji opublikowane przy użyciu serwera Proxy aplikacji |[Single-sign-on z serwerem Proxy aplikacji](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Dostęp warunkowy i serwera Proxy aplikacji](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Wskazówki dotyczące sposobu używania serwera Proxy aplikacji w następujących scenariuszach |[Jak obsługiwać aplikacje Native Client](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Jak obsługiwać aplikacje obsługujące oświadczenia](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Jak obsługiwać aplikacji publikowanych w odrębnych sieci i lokalizacje](manage-apps/application-proxy-connector-groups.md) |
 | Podręcznik rozwiązywania problemów dotyczących serwera Proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](active-directory-application-proxy-troubleshoot.md) |
 
 Serwer Proxy aplikacji jest dostępna dla wszystkich wersji programu Azure AD dla aplikacji do dziesięciu dla poszczególnych użytkowników. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) obsługuje aplikacje nieograniczone. Jeśli Twoja organizacja ma [Azure AD podstawowa](https://azure.microsoft.com/pricing/details/active-directory/) lub [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), a następnie możesz [używanie grup do udzielania dostępu do aplikacji](#managing-access-to-applications).
@@ -108,7 +108,7 @@ Po skonfigurowaniu rejestracji jednokrotnej do aplikacji i zasobów, można nast
 | Przewodnik artykułu |  |
 |:---:| --- |
 | Wprowadzenie do funkcji dostępu warunkowego oferowane przez usługi Azure AD, usługi Office 365 i Intune |[Zarządzanie ryzykiem przy użyciu dostępu warunkowego](active-directory-conditional-access-azure-portal.md) |
-| Sposób włączania dostępu warunkowego dla następujących typów zasobów |[Dostęp warunkowy dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Dostęp warunkowy dla usługi Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Dostęp warunkowy do aplikacji lokalnych](active-directory-conditional-access-azure-portal.md)<br /><br />[Dostęp warunkowy do aplikacji lokalnych opublikowane za pośrednictwem serwera Proxy aplikacji usługi Azure AD](application-proxy-enable-remote-access-sharepoint.md) |
+| Sposób włączania dostępu warunkowego dla następujących typów zasobów |[Dostęp warunkowy dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Dostęp warunkowy dla usługi Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Dostęp warunkowy do aplikacji lokalnych](active-directory-conditional-access-azure-portal.md)<br /><br />[Dostęp warunkowy do aplikacji lokalnych opublikowane za pośrednictwem serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Jak zarejestrować urządzenia z usługą Azure Active Directory, aby włączyć zasady dostępu warunkowego opartego na urządzeniu |[Omówienie usługi Azure Active Directory rejestracji urządzenia](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Włączanie automatycznej rejestracji urządzeń dla domeny przyłączone do urządzeń z systemem Windows](active-directory-conditional-access-automatic-device-registration.md)<br />— [Urządzeń kroki dla Windows 8.1](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Urządzeń kroki dla systemu Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | Sposób użycia aplikacji Authenticator firmy Microsoft na potrzeby weryfikacji dwuetapowej | [Uwierzytelniania firmy Microsoft](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |

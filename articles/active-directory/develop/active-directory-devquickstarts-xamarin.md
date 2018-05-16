@@ -1,25 +1,27 @@
 ---
 title: Azure AD platformy Xamarin wprowadzenie | Dokumentacja firmy Microsoft
-description: "Tworzenie aplikacji platformy Xamarin integracji z usługą Azure AD, logowania i wywoływanie Azure API chronione przez usługi AD w trybie OAuth."
+description: Tworzenie aplikacji platformy Xamarin integracji z usługą Azure AD, logowania i wywoływanie Azure API chronione przez usługi AD w trybie OAuth.
 services: active-directory
 documentationcenter: xamarin
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77ac6a7cfe089fa934592c412c75a9f33efde5e8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ac04cddc00bf76bb366a249a5a2ec4c56d5212c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Azure AD platformy Xamarin wprowadzenie
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -57,8 +59,7 @@ Aby umożliwić aplikacji można uzyskać tokeny, należy najpierw zarejestrowa�
   * **Identyfikator URI przekierowania** jest kombinacją schemat i ciąg, korzystającą z usługi Azure AD w celu zwracać odpowiedzi tokenu. Wprowadź wartość (na przykład http://DirectorySearcher).
 6. Po zakończeniu rejestracji usługi Azure AD przypisuje aplikacji identyfikatora aplikacji Skopiuj wartości z **aplikacji** karcie, ponieważ będzie on potrzebny później.
 7. Na **ustawienia** wybierz pozycję **wymagane uprawnienia**, a następnie wybierz **Dodaj**.
-8. Wybierz **Microsoft Graph** jako interfejsu API. W obszarze **delegowane uprawnienia**, Dodaj **Czytaj dane katalogu** uprawnienia.  
-Ta akcja umożliwia aplikacji zapytania interfejsu API programu Graph dla użytkowników.
+8. Wybierz **Microsoft Graph** jako interfejsu API. W obszarze **delegowane uprawnienia**, Dodaj **Czytaj dane katalogu** uprawnienia. Ta akcja umożliwia aplikacji zapytania interfejsu API programu Graph dla użytkowników.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalowanie i konfigurowanie biblioteki ADAL
 Teraz, gdy masz aplikację w usłudze Azure AD, można zainstalować biblioteki ADAL i wpisz swój kod dotyczące tożsamości. Aby włączyć biblioteki ADAL do komunikowania się z usługą Azure AD, nadaj mu pewnych informacji o rejestracji aplikacji.
@@ -103,8 +104,7 @@ Prawie wszystkie logika uwierzytelniania aplikacji znajduje się `DirectorySearc
     {
     ```
 
-2. Inicjowanie `AuthenticationContext`, która jest klasy podstawowej biblioteki adal.  
-Ta akcja przekazuje ADAL współrzędne potrzebuje do komunikacji z usługą Azure AD.
+2. Inicjowanie `AuthenticationContext`, która jest klasy podstawowej biblioteki adal. Ta akcja przekazuje ADAL współrzędne potrzebuje do komunikacji z usługą Azure AD.
 3. Wywołanie `AcquireTokenAsync(...)`, który akceptuje `IPlatformParameters` obiektu i wywołuje przepływ uwierzytelniania, które są niezbędne zwrócić token do aplikacji.
 
     ```csharp

@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dc820a95a9ccd0feb8b67c898ecfa8ce9826838a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d1c9f4dd8504c2409663cb87b0c0d56164229ed2
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>W jaki sposób serwera Proxy aplikacji usługi Azure AD zapewnia rejestrację jednokrotną
 
@@ -54,7 +54,7 @@ Ta opcja jest dobrym rozwiązaniem, jeśli aplikacji lokalnej nie wymaga uwierzy
 
 Jeśli chcesz używać usługi Azure Active Directory jako magazynu haseł dla lokalnych aplikacji, wybierz **opartego na hasłach logowania jednokrotnego**. Ta opcja jest dobrym rozwiązaniem, jeśli aplikacja jest uwierzytelniany w usłudze kombi nazwy użytkownika i hasła zamiast tokenów dostępu lub nagłówków. Z opartego na hasłach logowania jednokrotnego użytkownicy potrzebują logować się do czasu aplikacji pierwszy uzyskiwania dostępu do. Po wykonaniu tej usługi Azure Active Directory udostępnia nazwy użytkownika i hasła w imieniu użytkownika. 
 
-Aby uzyskać informacji o ustawieniach opartego na hasłach logowania, zobacz [hasło vaulting dla rejestracji jednokrotnej z serwerem Proxy aplikacji](../application-proxy-sso-azure-portal.md).
+Aby uzyskać informacji o ustawieniach opartego na hasłach logowania, zobacz [hasło vaulting dla rejestracji jednokrotnej z serwerem Proxy aplikacji](application-proxy-configure-single-sign-on-password-vaulting.md).
 
 ## <a name="linked-sign-on"></a>Połączonego logowania jednokrotnego
 
@@ -72,10 +72,10 @@ Aby uzyskać informacje o konfigurowaniu zintegrowane uwierzytelnianie systemu W
 
 Użycie aplikacji nagłówki uwierzytelniania, wybierz **na podstawie nagłówka logowania jednokrotnego**. Po wybraniu tej opcji użytkownicy potrzebują tylko do uwierzytelniania usługi Azure Active Directory. Partnerzy firmy Microsoft z usługą uwierzytelniania innej firmy o nazwie PingAccess, który translacji na format nagłówka dla aplikacji token dostępu usługi Azure Active Directory. 
 
-Informacje dotyczące konfigurowania uwierzytelniania na podstawie nagłówka, zobacz [nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](../application-proxy-ping-access.md).
+Informacje dotyczące konfigurowania uwierzytelniania na podstawie nagłówka, zobacz [nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-ping-access.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](../application-proxy-sso-azure-portal.md)
+- [Hasło vaulting dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [Ograniczone delegowanie protokołu Kerberos do logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Nagłówek uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](../application-proxy-ping-access.md) 
+- [Nagłówek uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-ping-access.md) 

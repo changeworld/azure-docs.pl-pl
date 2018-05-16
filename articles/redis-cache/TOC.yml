@@ -6,19 +6,19 @@
       href: cache-overview.md
 - name: Przewodniki Szybki start
   items:
-    - name: ASP.NET
+    - name: Tworzenie aplikacji platformy ASP.NET
       href: cache-web-app-howto.md
-    - name: .NET
+    - name: Tworzenie aplikacji platformy .NET
       href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Węzeł
+    - name: Tworzenie aplikacji platformy Node.js
       href: cache-nodejs-get-started.md
-    - name: Java
+    - name: Tworzenie aplikacji w języku Java
       href: cache-java-get-started.md
-    - name: Python
+    - name: Tworzenie aplikacji w języku Python
       href: cache-python-get-started.md
 - name: Samouczki
   items:
-    - name: Buforowanie rankingów
+    - name: Używanie buforowania z rankingami
       href: cache-web-app-cache-aside-leaderboard.md
 - name: Przykłady
   items:

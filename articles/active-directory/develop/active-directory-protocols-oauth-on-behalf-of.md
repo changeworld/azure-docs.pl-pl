@@ -1,25 +1,27 @@
 ---
-title: "Azure AD usług uwierzytelniania przy użyciu OAuth2.0 specyfikacji w imieniu — z projektu | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób użycia wiadomości HTTP do zaimplementowania usług uwierzytelniania za pomocą OAuth2.0 imieniu-przepływ \"w\"."
+title: Azure AD usług uwierzytelniania przy użyciu OAuth2.0 specyfikacji w imieniu — z projektu | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób użycia wiadomości HTTP do zaimplementowania usług uwierzytelniania za pomocą OAuth2.0 imieniu-przepływ "w".
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: bb3e01b1b8741253a459a41cfff27da558573551
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f7566bc696d07ad3a8003b3493a382f494c4599
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Usługi w celu wywołania usługi za pomocą delegowanego tożsamość użytkownika w imieniu — z przepływu
 OAuth On-Behalf-Of 2.0, którego przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/składnika web API, który z kolei musi wywołać inny usługi/interfejs API sieci web. Będzie propagację uprawnień za pomocą łańcucha żądań i tożsamości użytkowników delegowanego. Dla usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi podrzędne należy go secure token dostępu z usługi Azure Active Directory (Azure AD), w imieniu użytkownika.
@@ -76,16 +78,16 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Typ grant_type |Wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| Potwierdzenia |Wymagane | Wartość tokenu użytego w żądaniu. |
-| client_id |Wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**, kliknij katalog, a następnie kliknij nazwę aplikacji. |
-| client_secret |Wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
-| zasób |Wymagane | Identyfikator URI aplikacji odbierającej usługi (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**kliknij katalog, kliknij nazwę aplikacji, kliknij przycisk **wszystkie ustawienia** , a następnie kliknij przycisk **właściwości**. |
-| requested_token_use |Wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
-| Zakres |Wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
+| Typ grant_type |wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| Potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
+| client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**, kliknij katalog, a następnie kliknij nazwę aplikacji. |
+| client_secret |wymagane | Klucz jest zarejestrowany dla wywołania usługi w usłudze Azure AD. Ta wartość powinna zauważyć w chwili rejestracji. |
+| zasób |wymagane | Identyfikator URI aplikacji odbierającej usługi (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**kliknij katalog, kliknij nazwę aplikacji, kliknij przycisk **wszystkie ustawienia** , a następnie kliknij przycisk **właściwości**. |
+| requested_token_use |wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
+| scope |wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
 
 #### <a name="example"></a>Przykład
-Następujące POST protokołu HTTP żądania tokenu dostępu do interfejsu API sieci web https://graph.windows.net. `client_id` Identyfikuje usługę żądania tokenu dostępu.
+Token dostępu dla żądań następujące HTTP POST https://graph.windows.net interfejs API sieci web. `client_id` Identyfikuje usługę żądania tokenu dostępu.
 
 ```
 // line breaks for legibility only
@@ -108,19 +110,19 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Typ grant_type |Wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| Potwierdzenia |Wymagane | Wartość tokenu użytego w żądaniu. |
-| client_id |Wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**, kliknij katalog, a następnie kliknij nazwę aplikacji. |
-| client_assertion_type |Wymagane |Wartość musi być`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji.  Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
-| zasób |Wymagane | Identyfikator URI aplikacji odbierającej usługi (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**kliknij katalog, kliknij nazwę aplikacji, kliknij przycisk **wszystkie ustawienia** , a następnie kliknij przycisk **właściwości**. |
-| requested_token_use |Wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
-| Zakres |Wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
+| Typ grant_type |wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| Potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
+| client_id |wymagane | Identyfikator aplikacji przypisany do wywoływania usługi podczas rejestracji w usłudze Azure AD. Aby znaleźć identyfikator aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**, kliknij katalog, a następnie kliknij nazwę aplikacji. |
+| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji. Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
+| zasób |wymagane | Identyfikator URI aplikacji odbierającej usługi (zabezpieczonych zasobów). Aby znaleźć identyfikator URI aplikacji w portalu zarządzania Azure, kliknij przycisk **usługi Active Directory**kliknij katalog, kliknij nazwę aplikacji, kliknij przycisk **wszystkie ustawienia** , a następnie kliknij przycisk **właściwości**. |
+| requested_token_use |wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
+| scope |wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Dla protokołu OpenID Connect, zakres **openid** musi być określona.|
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z wyjątkiem tego, że parametr client_secret zostało zastąpione przez dwa parametry: client_assertion_type i client_assertion.
 
 #### <a name="example"></a>Przykład
-Następujące POST protokołu HTTP żądania tokenu dostępu dla https://graph.windows.net interfejsu API sieci web przy użyciu certyfikatu. `client_id` Identyfikuje usługę żądania tokenu dostępu.
+Token dostępu dla żądań następujące HTTP POST https://graph.windows.net interfejs API sieci web przy użyciu certyfikatu. `client_id` Identyfikuje usługę żądania tokenu dostępu.
 
 ```
 // line breaks for legibility only
@@ -145,16 +147,16 @@ Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0 z następującymi parametrami.
 | Parametr | Opis |
 | --- | --- |
 | token_type |Wskazuje wartość typ tokenu. Jedynym typem, który obsługuje usługę Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji dotyczących tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
-| Zakres |Zakres dostępu przyznane w tokenie. |
+| scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Czas token dostępu jest nieprawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund z rokiem 1970-01-01T0:0:0Z UTC czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia pamięci podręcznej tokenów. |
 | zasób |Identyfikator URI aplikacji odbierającej usługi (zabezpieczonych zasobów). |
-| ' access_token ' |Żądany dostęp token. Wywołanie usługi umożliwia ten token uwierzytelniania w usłudze odbierania. |
+| access_token |Żądany dostęp token. Wywołanie usługi umożliwia ten token uwierzytelniania w usłudze odbierania. |
 | żądaniu |Token żądanym identyfikatorem. Wywołanie usługi służy to do weryfikacji tożsamości użytkownika i rozpocząć sesję użytkownika. |
 | refresh_token |Token odświeżania dla tokenu żądany dostęp. Wywołanie usługi umożliwia żądania inny token dostępu po wygaśnięciu tokenu dostępu bieżącego ten token. |
 
 ### <a name="success-response-example"></a>Przykład odpowiedź sukcesu
-W poniższym przykładzie przedstawiono odpowiedzi na żądanie tokenu dostępu do interfejsu API sieci web https://graph.windows.net Powodzenie.
+W poniższym przykładzie przedstawiono Powodzenie odpowiedzi na żądanie dostępu do tokenu dla https://graph.windows.net interfejs API sieci web.
 
 ```
 {
@@ -196,7 +198,7 @@ Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat protokołu OAuth 2.0 i innym sposobem wykonania uwierzytelniania usług przy użyciu poświadczeń klienta.
 * [Usługi w celu uwierzytelniania usługi przy użyciu przyznania poświadczeń klienta OAuth 2.0 w usłudze Azure AD](active-directory-protocols-oauth-service-to-service.md)
 * [OAuth 2.0 w usłudze Azure AD](active-directory-protocols-oauth-code.md)

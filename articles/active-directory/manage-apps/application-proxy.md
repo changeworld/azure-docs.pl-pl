@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0ab788494f56364d4a46d632e34e4a1334564836
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c5f706e6e9402bfc404c370a0d1a45fc07656a9e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych
 
@@ -52,15 +52,15 @@ Serwer Proxy aplikacji usługi Azure AD jest:
 Serwer Proxy aplikacji usługi Azure AD umożliwia dostęp do różnych typów wewnętrznych aplikacji:
 
 * Aplikacje, które używają sieci Web [zintegrowane uwierzytelnianie systemu Windows](application-proxy-configure-single-sign-on-with-kcd.md) do uwierzytelniania  
-* Aplikacje używające opartych na formularzach sieci Web lub [na podstawie nagłówka](../application-proxy-ping-access.md) dostępu  
+* Aplikacje używające opartych na formularzach sieci Web lub [na podstawie nagłówka](application-proxy-configure-single-sign-on-with-ping-access.md) dostępu  
 * Interfejsy API, które chcesz udostępnić do rozbudowanych aplikacji na różnych urządzeniach w sieci Web  
-* Aplikacje wymagające za [bramy usług pulpitu zdalnego](../application-proxy-publish-remote-desktop.md)  
+* Aplikacje wymagające za [bramy usług pulpitu zdalnego](application-proxy-integrate-with-remote-desktop-services.md)  
 * Aplikacje klienta sformatowanego, które są zintegrowane z Active Directory Authentication Library (ADAL)
 
 ## <a name="how-does-application-proxy-work"></a>Jak działa serwer Proxy aplikacji?
 Istnieją dwa składniki, które trzeba skonfigurować, aby serwer Proxy aplikacji działa: łącznika i zewnętrznego punktu końcowego. 
 
-Łącznik jest lekki agenta, która znajduje się w systemie Windows Server w sieci. Łącznik umożliwia przepływ ruchu z usługi Serwer Proxy aplikacji w chmurze do aplikacji lokalnej. Funkcja ta używa tylko połączeń wychodzących, dzięki czemu nie trzeba otworzyć żadnych portów przychodzących lub umieść niczego w sieci obwodowej. Łączniki są bezstanowych i pobierania informacji o chmurze odpowiednio do potrzeb. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](../application-proxy-understand-connectors.md). 
+Łącznik jest lekki agenta, która znajduje się w systemie Windows Server w sieci. Łącznik umożliwia przepływ ruchu z usługi Serwer Proxy aplikacji w chmurze do aplikacji lokalnej. Funkcja ta używa tylko połączeń wychodzących, dzięki czemu nie trzeba otworzyć żadnych portów przychodzących lub umieść niczego w sieci obwodowej. Łączniki są bezstanowych i pobierania informacji o chmurze odpowiednio do potrzeb. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](application-proxy-connectors.md). 
 
 Zewnętrznego punktu końcowego jest, jak użytkownicy osiągnąć aplikacji znajduje się poza siecią. Albo może przejść bezpośrednio do zewnętrznego adresu URL, który należy określić lub za pośrednictwem portalu MyApps one dostęp do aplikacji. Użytkownicy, przejdź do jednego z tych punktów końcowych, uwierzytelniania w usłudze Azure AD i następnie są kierowane za pośrednictwem łącznika do aplikacji lokalnych.
 
@@ -95,9 +95,9 @@ Po opublikowaniu pierwszej aplikacji, istnieje wiele innych, które można wykon
 
 * [Włączanie logowania jednokrotnego](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Publikowanie aplikacji przy użyciu własnej nazwy domeny](application-proxy-configure-custom-domain.md)
-* [Więcej informacji na temat łączników serwera Proxy aplikacji usługi Azure AD](../application-proxy-understand-connectors.md)
-* [Praca z istniejących lokalnych serwerów Proxy](../application-proxy-working-with-proxy-servers.md) 
-* [Ustaw niestandardową stronę główną](../application-proxy-office365-app-launcher.md)
+* [Więcej informacji na temat łączników serwera Proxy aplikacji usługi Azure AD](application-proxy-connectors.md)
+* [Praca z istniejących lokalnych serwerów Proxy](application-proxy-configure-connectors-with-proxy-servers.md) 
+* [Ustaw niestandardową stronę główną](application-proxy-configure-custom-home-page.md)
 
 Aby zapoznać się z najnowszymi informacjami i aktualizacjami, zobacz [blog dotyczący serwera proxy aplikacji](http://blogs.technet.com/b/applicationproxyblog/)
 

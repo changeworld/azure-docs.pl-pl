@@ -8,14 +8,14 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1e04b12241121d3894e2d71df423bae4f000a60d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Tworzenie wystąpienia zarządzanego usługi Azure SQL Database w witrynie Azure Portal
 
@@ -107,7 +107,7 @@ Poniższe kroki przedstawiają sposób utworzenia trasy internetowej następnego
    |**Subskrypcja**|Twoja subskrypcja|Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions).|
    |**Grupa zasobów**|Wybieranie grupy zasobów, która została utworzona w poprzedniej procedurze|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Lokalizacja**|Wybieranie lokalizacji, która została określona w poprzedniej procedurze| Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/).|
-   |**Wyłączanie propagowania tras BCP**|Disabled (Wyłączony)||
+   |**Wyłączanie propagowania tras BCP**|Enabled (Włączony)||
    ||||
 
    ![formularz tworzenia tabeli tras](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
@@ -216,8 +216,8 @@ Poniższe kroki pokazują sposób utworzenia drugiej podsieci w sieci wirtualnej
    |**Nazwa**|Dowolna prawidłowa nazwa|Prawidłowe nazwy opisano w artykule [Ograniczenia i reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Zakres adresów (blok CIDR)**|Dowolny prawidłowy zakres adresów w sieci wirtualnej (użyj wartości domyślnej)||
    |**Sieciowa grupa zabezpieczeń**|Brak||
-   |**Tabela tras**|None||
-   |**Punkty końcowe usługi**|None||
+   |**Tabela tras**|Brak||
+   |**Punkty końcowe usługi**|Brak||
 
    ![szczegóły podsieci maszyny wirtualnej](./media/sql-database-managed-instance-tutorial/vm-subnet-details.png)
 

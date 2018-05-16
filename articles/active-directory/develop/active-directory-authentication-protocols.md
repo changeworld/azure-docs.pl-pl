@@ -1,27 +1,28 @@
 ---
-title: "Protokoły uwierzytelniania usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Omówienie protokoły obsługiwane przez usługi Azure Active Directory (AD)"
+title: Protokoły uwierzytelniania w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Omówienie protokoły obsługiwane przez usługi Azure Active Directory (AD)
 documentationcenter: dev-center-name
-author: priyamohanram
+author: CelesteDG
 services: active-directory
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7a838ae2-c24c-4304-b6c0-e77fb888e6c0
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: priyamo
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 1387ce5f3f16301786cf4111a081a5486788fa77
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 71b12b848b1be309823bac46a219c0bb25e26092
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="azure-active-directory-authentication-protocols"></a>Protokoły uwierzytelniania usługi Azure Active Directory
+# <a name="azure-active-directory-authentication-protocols"></a>Protokoły uwierzytelniania w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) obsługuje niektóre z najczęściej używanych protokołów uwierzytelniania i autoryzacji. W tematach w tej sekcji opisano obsługiwane protokoły i ich implementacji w usłudze Azure AD. Tematy zawarte Przegląd obsługiwane typy oświadczeń, wprowadzenie do używania w metadanych Federacji, szczegółowe OAuth 2.0. i dokumentację referencyjną protokołu SAML 2.0 i w sekcji rozwiązywania problemów.
 
 ## <a name="authentication-protocols-articles-and-reference"></a>Protokoły uwierzytelniania artykułów i odwołania

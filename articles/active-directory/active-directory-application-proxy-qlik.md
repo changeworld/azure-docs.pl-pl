@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7e4731e150c2d6428fa8c752765780f827c33741
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Serwer Proxy aplikacji i wykrywanie Qlik 
 Azure Active Directory serwera Proxy aplikacji i znaczeniu Qlik ma współpracę ze sobą aby mieć pewność, że łatwo można używać serwera Proxy aplikacji do zapewniania dostępu zdalnego dla danego wdrożenia Qlik znaczeniu.  
@@ -59,4 +59,4 @@ Aplikacja jest teraz gotowy do testowania. Dostęp do zewnętrznego adresu URL u
 ## <a name="next-steps"></a>Następne kroki
 
 - [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)
-- [Praca z serwera Proxy aplikacji łączniki](active-directory-application-proxy-connectors-azure-portal.md).
+- [Praca z serwera Proxy aplikacji łączniki](manage-apps/application-proxy-connector-groups.md).

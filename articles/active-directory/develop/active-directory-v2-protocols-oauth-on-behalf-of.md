@@ -3,23 +3,25 @@ title: Azure AD 2.0 OAuth2.0 imieniu-przepływ "w" | Dokumentacja firmy Microsof
 description: W tym artykule opisano sposób użycia wiadomości HTTP do zaimplementowania usług uwierzytelniania za pomocą OAuth2.0 imieniu-przepływ "w".
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ccec8df0741870f3dd3ed21be43f96aa8ba90927
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2aa1c33f138619283a8785aaf3772465df6c9aee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>V2.0 usługi Azure Active Directory i przepływu OAuth 2.0 On-Behalf-Of
 OAuth On-Behalf-Of 2.0, którego przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/składnika web API, który z kolei musi wywołać inny usługi/interfejs API sieci web. Będzie propagację uprawnień za pomocą łańcucha żądań i tożsamości użytkowników delegowanego. Dla usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi podrzędne należy go secure token dostępu z usługi Azure Active Directory (Azure AD), w imieniu użytkownika.
@@ -30,10 +32,10 @@ OAuth On-Behalf-Of 2.0, którego przepływ służy przypadek użycia, w którym 
 >
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
-Załóżmy, że użytkownik został uwierzytelniony w aplikacji przy użyciu [kodu autoryzacji protokołu OAuth 2.0 przyznać przepływu](active-directory-v2-protocols-oauth-code.md).  W tym momencie aplikacja ma token dostępu *do interfejsu API* (token: A) z oświadczeń użytkowników i zgody na dostęp do warstwy środkowej sieci web interfejsu API (interfejs API A). Teraz A interfejsu API musi wprowadzić żądania uwierzytelnionego podrzędne sieci web interfejsu API (interfejs API B).
+Załóżmy, że użytkownik został uwierzytelniony w aplikacji przy użyciu [kodu autoryzacji protokołu OAuth 2.0 przyznać przepływu](active-directory-v2-protocols-oauth-code.md). W tym momencie aplikacja ma token dostępu *do interfejsu API* (token: A) z oświadczeń użytkowników i zgody na dostęp do warstwy środkowej sieci web interfejsu API (interfejs API A). Teraz A interfejsu API musi wprowadzić żądania uwierzytelnionego podrzędne sieci web interfejsu API (interfejs API B).
 
 > [!IMPORTANT]
-> Tokeny nabyte za pomocą [niejawne Przyznaj](active-directory-v2-protocols-implicit.md) nie może służyć do przepływu w imieniu-z.  Klient w przepływach implcit nie jest uwierzytelniony (za pośrednictwem np. klucz tajny klienta) i w związku z tym nie powinien być dozwolony do ładowania początkowego do innego, prawdopodobnie bardziej wydajne tokenu.
+> Tokeny nabyte za pomocą [niejawne Przyznaj](active-directory-v2-protocols-implicit.md) nie może służyć do przepływu w imieniu-z. Klient w przepływach implcit nie jest uwierzytelniony (za pośrednictwem np. klucz tajny klienta) i w związku z tym nie powinien być dozwolony do ładowania początkowego do innego, prawdopodobnie bardziej wydajne tokenu.
 
 Czynności, które wykonują stanowią przepływu w imieniu-z i zostały wyjaśnione przy użyciu poniższym diagramie.
 
@@ -64,12 +66,12 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Typ grant_type |Wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| client_id |Wymagane | Identyfikator aplikacji, która [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
-| client_secret |Wymagane | Klucz tajny aplikacji, generowany dla aplikacji w portalu rejestracji aplikacji. |
-| Potwierdzenia |Wymagane | Wartość tokenu użytego w żądaniu. |
-| scope |Wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Aby uzyskać więcej informacji, zobacz [zakresy](active-directory-v2-scopes.md).|
-| requested_token_use |Wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
+| Typ grant_type |wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| client_id |wymagane | Identyfikator aplikacji, która [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
+| client_secret |wymagane | Klucz tajny aplikacji, generowany dla aplikacji w portalu rejestracji aplikacji. |
+| Potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
+| scope |wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Aby uzyskać więcej informacji, zobacz [zakresy](active-directory-v2-scopes.md).|
+| requested_token_use |wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
 
 #### <a name="example"></a>Przykład
 Następujące POST protokołu HTTP żądania tokenu dostępu i token odświeżania z `user.read` zakres dla https://graph.microsoft.com interfejs API sieci web.
@@ -94,13 +96,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| Typ grant_type |Wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
-| client_id |Wymagane | Identyfikator aplikacji, która [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
-| client_assertion_type |Wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji.  Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
-| Potwierdzenia |Wymagane | Wartość tokenu użytego w żądaniu. |
-| requested_token_use |Wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
-| scope |Wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Aby uzyskać więcej informacji, zobacz [zakresy](active-directory-v2-scopes.md).|
+| Typ grant_type |wymagane | Typ żądania tokenu. Dla żądania przy użyciu token JWT, wartość musi być **urn: ietf:params:oauth:grant — typ: jwt-elementu nośnego**. |
+| client_id |wymagane | Identyfikator aplikacji, która [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
+| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji. Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
+| Potwierdzenia |wymagane | Wartość tokenu użytego w żądaniu. |
+| requested_token_use |wymagane | Określa sposób przetwarzania żądania. W strumieniu w imieniu-z, wartość musi być **on_behalf_of**. |
+| scope |wymagane | Lista zakresów dla żądania tokenu rozdzielonych spacją. Aby uzyskać więcej informacji, zobacz [zakresy](active-directory-v2-scopes.md).|
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z wyjątkiem tego, że parametr client_secret zostało zastąpione przez dwa parametry: client_assertion_type i client_assertion.
 
@@ -149,7 +151,7 @@ W poniższym przykładzie przedstawiono Powodzenie odpowiedzi na żądanie dost�
 ```
 
 > [!NOTE]
-> Zwróć uwagę, że powyższe token dostępu jest tokenem sformatowany V1.  Jest to spowodowane token jest realizowane według zasobów, do której uzyskuje dostęp.  Program Microsoft Graph żądań tokenów V1, dzięki usłudze Azure AD tworzy tokeny dostępu V1, gdy klient żąda tokeny dla programu Microsoft Graph.  Tylko aplikacje powinien wyglądać na tokeny dostępu — klienci nie będą przeprowadzać ich inspekcję. 
+> Zwróć uwagę, że powyższe token dostępu jest tokenem sformatowany V1. Jest to spowodowane token jest realizowane według zasobów, do której uzyskuje dostęp. Program Microsoft Graph żądań tokenów V1, dzięki usłudze Azure AD tworzy tokeny dostępu V1, gdy klient żąda tokeny dla programu Microsoft Graph. Tylko aplikacje powinien wyglądać na tokeny dostępu — klienci nie będą przeprowadzać ich inspekcję. 
 
 
 ### <a name="error-response-example"></a>Przykład odpowiedzi błędu

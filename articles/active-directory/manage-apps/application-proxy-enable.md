@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 227792bcf5776b4fd13c263e02aa462b4d2d104f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Rozpoczynanie pracy z serwera Proxy aplikacji i zainstalować łącznik
 W tym artykule przedstawiono procedurę włączania serwera proxy aplikacji usługi Microsoft Azure AD dla katalogu w chmurze w ramach usługi Azure AD.
@@ -33,7 +33,7 @@ Wymagania umożliwiające włączenie i używanie usług serwera proxy aplikacji
 * Serwer z systemem Windows Server 2012 R2 lub 2016, w którym można zainstalować łącznik serwera Proxy aplikacji. Serwer musi mieć możliwość łączenia się z usługami serwera Proxy aplikacji w chmurze i lokalnych aplikacji, które są publikowane.
   * Dla rejestracji jednokrotnej do aplikacji opublikowanych przy użyciu ograniczone delegowanie protokołu Kerberos tej maszyny powinny być przyłączonych do domeny w tej samej domenie AD, aplikacje, które są publikowane. Aby uzyskać informacje, zobacz [KCD dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).
 
-Jeśli organizacja używa serwerów proxy, aby nawiązać połączenie z Internetem, przeczytaj [pracy przy użyciu istniejących lokalnych serwerów proxy](../application-proxy-working-with-proxy-servers.md) szczegółowe informacje na temat konfigurowania je przed rozpoczęciem pracy z serwerem Proxy aplikacji.
+Jeśli organizacja używa serwerów proxy, aby nawiązać połączenie z Internetem, przeczytaj [pracy przy użyciu istniejących lokalnych serwerów proxy](application-proxy-configure-connectors-with-proxy-servers.md) szczegółowe informacje na temat konfigurowania je przed rozpoczęciem pracy z serwerem Proxy aplikacji.
 
 ## <a name="open-your-ports"></a>Otwieranie portów sieci
 
@@ -51,7 +51,7 @@ Aby przygotować swoje środowisko dla serwera Proxy aplikacji usługi Azure AD,
    > [!IMPORTANT]
    > Tabela odzwierciedla wymagania dotyczące portów dla wersji łącznika 1.5.132.0 i nowszych. Jeśli nadal masz starszą wersję łącznika, należy włączyć następujące porty oprócz 8080 80 i 443: 5671 9350 9090 9091, 9352, 10100 — 10120.
    >
-   >Aby uzyskać informacje o aktualizowaniu łączniki do najnowszej wersji, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](../application-proxy-understand-connectors.md#automatic-updates).
+   >Aby uzyskać informacje o aktualizowaniu łączniki do najnowszej wersji, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](application-proxy-connectors.md#automatic-updates).
 
 2. Jeśli zapora lub serwer proxy zezwala na listę dozwolonych podobnej DNS, możesz połączeń dozwolonych msappproxy.net i servicebus.windows.net. Jeśli nie, musisz zezwolić na dostęp do [zakresy IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653), które są aktualizowane co tydzień.
 
@@ -99,10 +99,10 @@ Na serwerze Sprawdź listę aktywnych usług dla łącznika i aktualizator łąc
 
    ![Usługi łącznika serwera proxy aplikacji — zrzut ekranu](./media/application-proxy-enable/app_proxy_services.png)
 
-Aby uzyskać informacje na temat łączników i jak bądź na bieżąco, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](../application-proxy-understand-connectors.md).
+Aby uzyskać informacje na temat łączników i jak bądź na bieżąco, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](application-proxy-connectors.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz można przystąpić do [publikowania aplikacji za pomocą serwera proxy aplikacji](application-proxy-publish-azure-portal.md).
 
-Jeśli masz aplikacje, które znajdują się w różnych sieciach lub innej lokalizacji, należy użyć grup łącznika do organizowania różnych łączniki do jednostek logicznych. Dowiedz się więcej o [pracy z łącznikami serwera proxy aplikacji](../active-directory-application-proxy-connectors-azure-portal.md).
+Jeśli masz aplikacje, które znajdują się w różnych sieciach lub innej lokalizacji, należy użyć grup łącznika do organizowania różnych łączniki do jednostek logicznych. Dowiedz się więcej o [pracy z łącznikami serwera proxy aplikacji](application-proxy-connector-groups.md).

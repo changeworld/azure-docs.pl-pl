@@ -1,24 +1,26 @@
 ---
-title: "Podpisywanie przerzucania kluczy w usłudze Azure AD"
-description: "W tym artykule omówiono podpisywania Przerzucanie klucza najlepsze rozwiązania dotyczące usługi Azure Active Directory"
+title: Podpisywanie przerzucania kluczy w usłudze Azure AD
+description: W tym artykule omówiono podpisywania Przerzucanie klucza najlepsze rozwiązania dotyczące usługi Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5396baa57fe0b49809d9fe06eb2b2feda2ed9ba8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Podpisywanie przerzucania kluczy w usłudze Azure Active Directory
 W tym artykule opisano, co należy wiedzieć o kluczy publicznych, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy pamiętać, że te przerzucania kluczy w regularnych odstępach czasu i w razie zagrożenia, może być przerzuceniem natychmiast. Wszystkie aplikacje, które używają usługi Azure AD powinno być możliwe do programowego obsługuje procesu Przerzucanie klucza lub ustanowić proces okresowej ręczne przerzucania. Materiały, aby zrozumieć, jak działają kluczy ocenić wpływ Przerzucanie aplikacji oraz sposobu aktualizacji aplikacji lub ustanawiania proces okresowej przerzucania ręcznej obsługi Przerzucanie klucza, jeśli jest to konieczne.
@@ -274,7 +276,7 @@ Po wykonaniu tych kroków pliku Web.config aplikacji zostaną zaktualizowane prz
 
 Wykonaj poniższe kroki, aby zweryfikować logiki przerzucania klucza.
 
-1. Po upewnieniu się, że aplikacja korzysta z kodu powyżej, otwórz **Web.config** pliku, a następnie przejdź do  **<issuerNameRegistry>**  bloku, w szczególności szukasz następujących kilka wierszy:
+1. Po upewnieniu się, że aplikacja korzysta z kodu powyżej, otwórz **Web.config** pliku, a następnie przejdź do **<issuerNameRegistry>** bloku, w szczególności szukasz następujących kilka wierszy:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -282,7 +284,7 @@ Wykonaj poniższe kroki, aby zweryfikować logiki przerzucania klucza.
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. W  **<add thumbprint=””>**  Zmień ustawienie wartości odcisku palca przez zamianę dowolny znak inny. Zapisz **Web.config** pliku.
+2. W **<add thumbprint=””>** Zmień ustawienie wartości odcisku palca przez zamianę dowolny znak inny. Zapisz **Web.config** pliku.
 3. Tworzenie aplikacji, a następnie uruchom go. Jeśli można ukończyć procesu logowania, aplikacja jest pomyślnie aktualizowanie klucza pobierając wymaganych informacji z dokument metadanych usług federacyjnych w Twoim katalogu. Jeśli występują problemy dotyczące logowania, upewnij się, zmiany w aplikacji są poprawne, odczytując [Dodawanie logowania jednokrotnego w sieci Web aplikacji używanie usługi Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) artykułu, lub pobieranie i zapoznanie się poniższy przykładowy kod: [ Chmury wielodostępne aplikacji dla usługi Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Aplikacje sieci Web ochrona zasobów i utworzone za pomocą programu Visual Studio 2008 lub 2010 i .NET 3.5 w wersji 1.0 systemu Windows Identity Foundation (WIF)

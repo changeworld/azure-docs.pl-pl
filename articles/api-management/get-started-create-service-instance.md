@@ -1,22 +1,22 @@
 ---
-title: "Tworzenie wystąpienia usługi Azure API Management | Microsoft Docs"
-description: "Wykonaj kroki tego samouczka, aby utworzyć nowe wystąpienie usługi Azure API Management."
+title: Tworzenie wystąpienia usługi Azure API Management | Microsoft Docs
+description: Wykonaj kroki tego samouczka, aby utworzyć nowe wystąpienie usługi Azure API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 84758fbf8f19728370280d5d94acb478ff739019
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7fb4182c0b5149a9006a30ad34782ad968e16758
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Tworzenie nowego wystąpienia usługi Azure API Management
 
@@ -30,7 +30,7 @@ W tym przewodniku Szybki start opisano procedurę tworzenia nowego wystąpienia 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 ## <a name="create-a-new-service"></a>Tworzenie nowej usługi
 

@@ -3,23 +3,25 @@ title: Umożliwia dostęp do zasobów bezpiecznego bez interakcji z użytkowniki
 description: Tworzenie aplikacji sieci web przy użyciu usługi Azure AD implementacji protokołu uwierzytelniania OAuth 2.0.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ea681244edd81bcba1269886acc725175f779bfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>V2.0 usługi Azure Active Directory i że przepływ poświadczeń klienta OAuth 2.0
 Można użyć [przyznania poświadczeń klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) określona w specyfikacji RFC 6749, nazywane również *bokami dwa OAuth*, aby uzyskać dostęp do zasobów hostowanych w sieci web przy użyciu tożsamości aplikacji. Ten typ grant często służy do interakcji do serwera, które muszą zostać uruchomione w tle, bez natychmiastowego interakcji z użytkownikiem. Często aplikacje tego typu są określane jako *demony* lub *kont usługi*.
@@ -49,10 +51,10 @@ Ten typ autoryzacji jest typowe dla demonów i kont usług, które wymagają dos
 ### <a name="application-permissions"></a>Uprawnienia aplikacji
 Zamiast przy użyciu list kontroli dostępu, możesz użyć interfejsów API do udostępnienia zestaw uprawnień aplikacji. Uprawnienia aplikacji uzyskuje do aplikacji przez administratora organizacji i może służyć tylko dostęp do danych należących do organizacji i jej pracowników. Na przykład program Microsoft Graph udostępnia kilka aplikacji uprawnienia do wykonaj następujące czynności:
 
-* Odczytywanie poczty we wszystkich skrzynkach pocztowych
-* Odczyt i zapis poczty we wszystkich skrzynkach pocztowych
+* Odczytuj pocztę we wszystkich skrzynkach pocztowych
+* Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
 * Wysyłaj wiadomości e-mail jako dowolny użytkownik
-* Odczytuj dane katalogu
+* Odczytaj dane katalogu
 
 Aby uzyskać więcej informacji o uprawnieniach aplikacji, przejdź do [Microsoft Graph](https://graph.microsoft.io).
 
@@ -171,8 +173,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | dzierżawa |Wymagane | Plany działać, w formacie nazwy domeny lub identyfikator GUID dzierżawy katalogu aplikacji. |
 | client_id |Wymagane |Identyfikator aplikacji, która [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
 | scope |Wymagane |Wartość przekazana do `scope` parametr w tym żądaniu powinien być identyfikatora zasobów (URI Identyfikatora aplikacji), należy umieścić z zasobu `.default` sufiks. Na przykład program Microsoft Graph, wartość jest `https://graph.microsoft.com/.default`. Ta wartość informuje punktu końcowego v2.0, że wszystkie bezpośredniego stosowania uprawnień skonfigurowanych dla aplikacji, jego powinien wystawiać token dla skojarzone z zasobem, który ma być używany. |
-| client_assertion_type |Wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji. Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
+| client_assertion_type |wymagane |Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |wymagane | (JSON Web Token) potwierdzenia, że musisz utworzyć i podpisać przy użyciu certyfikatu został zarejestrowany jako poświadczeń dla aplikacji. Przeczytaj informacje o [certyfikatu poświadczeń](active-directory-certificate-credentials.md) informacje na temat rejestracji certyfikatu i format potwierdzenia.|
 | Typ grant_type |Wymagane |Musi być `client_credentials`. |
 
 Należy zauważyć, że parametry są prawie takie same jak w przypadku żądania przez Wspólny klucz tajny, z wyjątkiem tego, że parametr client_secret zostało zastąpione przez dwa parametry: client_assertion_type i client_assertion.

@@ -1,24 +1,24 @@
 ---
-title: "Jak można zresetować interfejsu sieciowego dla maszyny Wirtualnej systemu Windows Azure | Dokumentacja firmy Microsoft"
-description: "Pokazuje, jak można zresetować interfejsu sieciowego dla maszyny Wirtualnej systemu Windows Azure"
+title: Jak można zresetować interfejsu sieciowego dla maszyny Wirtualnej systemu Windows Azure | Dokumentacja firmy Microsoft
+description: Pokazuje, jak można zresetować interfejsu sieciowego dla maszyny Wirtualnej systemu Windows Azure
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6bf5c991e8a96cfdcbad971e0f2ea2dfd01f2893
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 7c78c80e5eaceb210a50549e2885e56c0d9ec7f1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak można zresetować interfejsu sieciowego dla maszyny Wirtualnej systemu Windows Azure 
 
@@ -63,7 +63,7 @@ Po można pulpitu zdalnego do maszyny, należy usunąć starego kart sieciowych,
 2.  Wybierz **widoku** > **Pokaż ukryte urządzenia**.
 3.  Wybierz **karty sieciowe**. 
 4.  Sprawdź, czy karty jako "Karta sieciowa Microsoft Hyper-V".
-5.  Może pojawić się niedostępne karty, który jest niedostępny. Kliknij prawym przyciskiem myszy kartę, a następnie wybierz Odinstaluj.
+5.  Możesz zobaczyć niedostępne karty przedstawione jako wyszarzone. Kliknij prawym przyciskiem myszy kartę, a następnie wybierz Odinstaluj.
 
     ![Obraz karty interfejsu Sieciowego](media/reset-network-interface/nicpage.png)
 

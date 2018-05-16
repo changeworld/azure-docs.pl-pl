@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 8269b91ea3459fd9e391d46f0b3e78bc7e5b3b41
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a7e0455d92635b7767227685b622bdae303f9621
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Tabela wsparcia dla VMware i replikacja serwerów fizycznych do platformy Azure
 
@@ -145,7 +145,8 @@ Accelerated Networking | Nie
 **Składnik** | **Obsługiwane**
 --- | ---
 Host systemu plików NFS | Tak, aby VMware<br/><br/> Nie dla serwerów fizycznych
-Sieć SAN (ISCSI) hosta | Yes
+Sieć SAN (iSCSI/FC) hosta | Yes
+Host sieci vSAN | Tak, aby VMware<br/><br/> Brak serwerów fizycznych
 Wielościeżkowe hosta (MPIO) | Tak, poddane DSM firmy Microsoft, EMC PowerPath 5.7 z dodatkiem SP4 EMC PowerPath DSM dla CLARiiON
 Woluminy hosta (VVols) | Tak, aby VMware<br/><br/> Brak serwerów fizycznych
 Gość i serwerem VMDK | Yes

@@ -3,26 +3,28 @@ title: Sposób tworzenia aplikacji, które można zarejestrować się w każdy u
 description: Pokazuje, jak utworzyć aplikację wielodostępne, której można zalogować użytkownika z dowolnej dzierżawy usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: celestedg
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2018
 ms.author: celested
+ms.reviewer: elisol
 ms.custom: aaddev
-ms.openlocfilehash: f31ef7285e07467fe233d5e10534340bc912ed1c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fd02cde6327cb929d1b4c0c2e3d430d64645ca26
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Jak zarejestrować każdy użytkownik usługi Azure Active Directory przy użyciu wzorca wielodostępnych aplikacji
-Jeśli oferujesz oprogramowania jako usługi aplikacji dla wielu organizacji, można skonfigurować aplikację do akceptowania logowania z dowolnej dzierżawy usługi Azure Active Directory (AD). Ta konfiguracja jest nazywana tworzenie dzierżawy usługi aplikacji. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po zgodę swojego konta za pomocą aplikacji.  
+Jeśli oferujesz oprogramowania jako usługi aplikacji dla wielu organizacji, można skonfigurować aplikację do akceptowania logowania z dowolnej dzierżawy usługi Azure Active Directory (AD). Ta konfiguracja jest nazywana tworzenie dzierżawy usługi aplikacji. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po zgodę swojego konta za pomocą aplikacji. 
 
 Jeśli masz istniejącej aplikacji, która ma swój własny system konta lub inne rodzaje logowania z innych dostawców chmury obsługuje dodawanie usługi Azure AD logowania z dowolnej dzierżawy jest proste. Po prostu rejestrowanie aplikacji, Dodaj kod logowania za pomocą protokołu OAuth2, OpenID Connect lub SAML i umieść [przycisk "Logowania w with Microsoft"] [ AAD-App-Branding] w aplikacji.
 
@@ -39,19 +41,19 @@ Istnieją cztery prostych czynności w celu konwertowania aplikacji na aplikacj�
 Przyjrzyjmy się każdego kroku szczegółowo. Można także przejść bezpośrednio do [tej listy próbek wielodostępne][AAD-Samples-MT].
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Zaktualizuj rejestrację się wieloma dzierżawcami
-Domyślnie rejestracji aplikacji/interfejsu API sieci web w usłudze Azure AD są pojedynczej dzierżawy.  Umożliwia rejestrację wielodostępne znajdując **wielu dzierżawcza** Włącz **właściwości** okienko Twojej rejestracji aplikacji w [portalu Azure] [ AZURE-portal] i ustawieniem dla niego **tak**.
+Domyślnie rejestracji aplikacji/interfejsu API sieci web w usłudze Azure AD są pojedynczej dzierżawy. Umożliwia rejestrację wielodostępne znajdując **wielu dzierżawcza** Włącz **właściwości** okienko Twojej rejestracji aplikacji w [portalu Azure] [ AZURE-portal] i ustawieniem dla niego **tak**.
 
 Przed aplikacji wielodostępnych, usługa Azure AD wymaga aplikacji mogą być globalnie unikatowy identyfikator URI aplikacji. Identyfikator URI aplikacji jest jednym ze sposobów, który aplikacja zostanie zidentyfikowana w wiadomości protokołu. Dla aplikacji pojedynczej dzierżawy jest wystarczająca dla identyfikator URI aplikacji być unikatowe w obrębie tej dzierżawy. Aplikacji wielodostępnych musi być globalnie unikatowe dzięki usłudze Azure AD można znaleźć aplikacji we wszystkich dzierżawców. Globalne unikatowości jest wymuszana przez wymaganie identyfikator URI aplikacji ma nazwę hosta pasującą zweryfikowanej domeny dzierżawy usługi Azure AD. Domyślnie aplikacje utworzone za pośrednictwem portalu Azure mają globalnie unikatowy identyfikator URI aplikacji ustawiona przy tworzeniu aplikacji, ale można zmienić tę wartość.
 
-Na przykład, jeśli nazwę dzierżawy został contoso.onmicrosoft.com, a następnie prawidłowy identyfikator URI aplikacji będzie `https://contoso.onmicrosoft.com/myapp`.  Gdyby dzierżawy zweryfikowanej domeny `contoso.com`, również będą prawidłowy identyfikator URI aplikacji, a następnie `https://contoso.com/myapp`. Jeśli identyfikator URI aplikacji nie będzie zgodna z tego wzorca ustawienia aplikacji, ponieważ wielodostępne zakończy się niepowodzeniem.
+Na przykład, jeśli nazwę dzierżawy został contoso.onmicrosoft.com, a następnie prawidłowy identyfikator URI aplikacji będzie `https://contoso.onmicrosoft.com/myapp`. Gdyby dzierżawy zweryfikowanej domeny `contoso.com`, również będą prawidłowy identyfikator URI aplikacji, a następnie `https://contoso.com/myapp`. Jeśli identyfikator URI aplikacji nie będzie zgodna z tego wzorca ustawienia aplikacji, ponieważ wielodostępne zakończy się niepowodzeniem.
 
 > [!NOTE] 
-> Rejestracje klienta natywnego oraz [aplikacji v2](./active-directory-appmodel-v2-overview.md) są wielodostępne domyślnie.  Nie musisz podejmować żadnych działań do tych aplikacji rejestracji wielu dzierżawców.
+> Rejestracje klienta natywnego oraz [aplikacji v2](./active-directory-appmodel-v2-overview.md) są wielodostępne domyślnie. Nie musisz podejmować żadnych działań do tych aplikacji rejestracji wielu dzierżawców.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Zaktualizuj kod do wysyłania żądań do/Common
 W aplikacji pojedynczej dzierżawy żądań logowania są wysyłane do dzierżawcy logowania punktu końcowego. Na przykład dla contoso.onmicrosoft.com będzie punktu końcowego: `https://login.microsoftonline.com/contoso.onmicrosoft.com`
 
-Żądania wysyłane do punktu końcowego dzierżawcy zalogować się użytkownicy (lub gości) w tej dzierżawie do aplikacji w tej dzierżawie. Z aplikacją wielodostępnych aplikacji nie może ustalić góry dzierżawy, jakie użytkownik ma, więc nie można wysłać żądania do punktu końcowego dzierżawcy.  Zamiast tego żądania są wysyłane do punktu końcowego, który multiplexes między dzierżaw wszystkie usługi Azure AD: `https://login.microsoftonline.com/common`
+Żądania wysyłane do punktu końcowego dzierżawcy zalogować się użytkownicy (lub gości) w tej dzierżawie do aplikacji w tej dzierżawie. Z aplikacją wielodostępnych aplikacji nie może ustalić góry dzierżawy, jakie użytkownik ma, więc nie można wysłać żądania do punktu końcowego dzierżawcy. Zamiast tego żądania są wysyłane do punktu końcowego, który multiplexes między dzierżaw wszystkie usługi Azure AD: `https://login.microsoftonline.com/common`
 
 Jeśli usługi Azure AD odbiera żądanie na / Common punktu końcowego, jego loguje się użytkownik i, w rezultacie, odnajduje dzierżawy, którym użytkownik jest z. / Wspólnego punktu końcowego współpracuje z wszystkie protokoły obsługiwane przez usługę Azure AD: OpenID Connect, OAuth 2.0 SAML 2.0 i WS-Federation.
 
@@ -61,12 +63,12 @@ Odpowiedź logowania do aplikacji, następnie zawiera token reprezentujący uży
 > / Wspólnego punktu końcowego nie jest dzierżawcy i nie jest wystawcę, jest tylko multiplekser. Używając/Common logikę w aplikacji do sprawdzania poprawności tokenów musi zostać zaktualizowany do to uwzględniać. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Zaktualizuj swój kod obsługi wielu wartości wystawcy
-Aplikacje sieci Web i interfejsów API sieci web odbierają i sprawdzania poprawności tokenów z usługi Azure AD.  
+Aplikacje sieci Web i interfejsów API sieci web odbierają i sprawdzania poprawności tokenów z usługi Azure AD. 
 
 > [!NOTE]
-> Aplikacje klienckie natywnego żądania i odbierać tokeny od usługi Azure AD, w tym celu ich wysłania do interfejsów API, w którym są weryfikowane.  Natywnych aplikacji nie sprawdzania poprawności tokenów i należy je traktować jako przezroczystości.
+> Aplikacje klienckie natywnego żądania i odbierać tokeny od usługi Azure AD, w tym celu ich wysłania do interfejsów API, w którym są weryfikowane. Natywnych aplikacji nie sprawdzania poprawności tokenów i należy je traktować jako przezroczystości.
 
-Zobaczmy, w jaki sposób aplikacja weryfikuje tokeny odbiera z usługi Azure AD.  Stosowanie pojedynczej dzierżawy zwykle przyjmuje wartość punktu końcowego, takie jak:
+Zobaczmy, w jaki sposób aplikacja weryfikuje tokeny odbiera z usługi Azure AD. Stosowanie pojedynczej dzierżawy zwykle przyjmuje wartość punktu końcowego, takie jak:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
@@ -86,7 +88,7 @@ Ponieważ / wspólnego punktu końcowego dzierżawcy nie odpowiada i nie jest wy
 
     https://sts.windows.net/{tenantid}/
 
-W związku z tym aplikacji wielodostępnych nie można sprawdzić poprawności tokenów porównując tylko wartości wystawcy w metadanych z `issuer` wartość w tokenie. Aplikacja wielodostępne musi logiki podjęcie decyzji, które wartości wystawcy, są prawidłowe i nie są oparte na część Identyfikatora dzierżawy wartości wystawcy.  
+W związku z tym aplikacji wielodostępnych nie można sprawdzić poprawności tokenów porównując tylko wartości wystawcy w metadanych z `issuer` wartość w tokenie. Aplikacja wielodostępne musi logiki podjęcie decyzji, które wartości wystawcy, są prawidłowe i nie są oparte na część Identyfikatora dzierżawy wartości wystawcy. 
 
 Na przykład jeśli aplikacja wielodostępne zezwala tylko logowania z określonym dzierżawców, którzy utworzyli konto usługi, następnie powinien sprawdzić wartości wystawcy lub `tid` wartości w tokenie, aby się upewnić, że tej dzierżawy jest na liście abonentów oświadczenia. Aplikacji wielodostępnych tylko dotyczy osób, nie decyzje żadnych dostępu oparte na dzierżaw następnie zignorowanie wartości wystawcy całkowicie.
 
@@ -137,7 +139,7 @@ To jest przedstawiona w klientami wielowarstwowych wywoływanie przykładowy int
 
 **Konfiguracja wielu warstw w wielu dzierżawców**
 
-Podobne przypadku się stanie w przypadku różnych warstw aplikacji są rejestrowane w różnym dzierżawcom. Rozważmy na przykład w przypadku tworzenia aplikacji klientami, która wywołuje interfejs API z Online Exchange Office 365. Aby opracować natywnego aplikacji, a później do natywnej aplikacji do uruchamiania w dzierżawie klienta, główną usługi Exchange Online musi być obecny. W takim przypadku deweloperów i klient musi zakupić usługi Exchange Online dla podmiotu zabezpieczeń mogą być tworzone w swoich dzierżaw usługi.  
+Podobne przypadku się stanie w przypadku różnych warstw aplikacji są rejestrowane w różnym dzierżawcom. Rozważmy na przykład w przypadku tworzenia aplikacji klientami, która wywołuje interfejs API z Online Exchange Office 365. Aby opracować natywnego aplikacji, a później do natywnej aplikacji do uruchamiania w dzierżawie klienta, główną usługi Exchange Online musi być obecny. W takim przypadku deweloperów i klient musi zakupić usługi Exchange Online dla podmiotu zabezpieczeń mogą być tworzone w swoich dzierżaw usługi. 
 
 W przypadku interfejsu API utworzony przez organizację innych niż Microsoft developer interfejsu API musi umożliwiają klientom zgody aplikacji do ich klientom dzierżaw. Jest zalecana dla deweloperów innych firm do tworzenia interfejsu API w taki sposób, aby również może działać jako klient sieci web do implementowania rejestracji. W tym celu:
 

@@ -3,17 +3,17 @@ title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — skal
 description: Samouczek dotyczący usługi AKS — skalowanie aplikacji
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6af564a1dc33b6382e70aaad107122034377a95e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Samouczek: skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)
 

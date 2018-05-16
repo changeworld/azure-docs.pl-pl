@@ -25,7 +25,7 @@
       href: role-assignments-external-users.md
     - name: Dzienniki aktywności
       href: change-history-report.md
-    - name: Podniesienie poziomu dostępu administratora dzierżawy
+    - name: Podnoszenie poziomu uprawnień dostępu dla administratora globalnego
       href: elevate-access-global-admin.md
     - name: Rozwiązywanie problemów
       href: troubleshooting.md

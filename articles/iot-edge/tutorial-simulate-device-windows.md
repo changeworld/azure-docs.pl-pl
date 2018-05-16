@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 213a0e7cebda6a8b89ef460799cbec477b487a64
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Wdrażanie usługi Azure IoT krawędzi na symulowane urządzenie w systemie Windows — podglądu
 
@@ -42,7 +42,7 @@ Ten samouczek zakłada, że używasz komputera lub maszyny wirtualnej z systemem
    * Windows 10 
    * Windows Server
 2. Zainstaluj [Docker dla systemu Windows] [ lnk-docker] i upewnij się, że jest uruchomiona.
-3. Zainstaluj [Python 2.7 w systemie Windows] [ lnk-python] i upewnij się, możesz użyć polecenia pip.
+3. Zainstaluj [Python w systemie Windows] [ lnk-python] i upewnij się, możesz użyć polecenia pip. W tym samouczku przetestowano Python wersji > = 2.7.9 i > = 3.5.4.  
 4. Uruchom następujące polecenie, aby pobrać skryptu kontroli IoT krawędzi.
 
    ```cmd
@@ -111,7 +111,7 @@ Zarządzanie urządzeniem krawędzi IoT Azure w chmurze, aby wdrożyć moduł, k
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 
-## <a name="view-generated-data"></a>Widok wygenerowany danych
+## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
 W tym samouczku zostało utworzone nowe urządzenie brzegowe IoT i na nim zainstalowany środowiska uruchomieniowego IoT krawędzi. Następnie użyto portalu Azure do umieszczenia krawędzi IoT modułu do uruchomienia na urządzeniu bez konieczności zmiany na urządzeniu. W takim przypadku moduł, który zostanie przypisany tworzy dane środowiska, używanego programu samouczków. 
 

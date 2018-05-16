@@ -1,11 +1,11 @@
 ---
-title: "Znaleziono żadnej grupy łącznika pracy dla aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft"
-description: "Rozwiąż problemy, które mogą wystąpić po nie pracy łącznika w grupie łącznika dla aplikacji z serwer Proxy aplikacji usługi Azure AD"
+title: Znaleziono żadnej grupy łącznika pracy dla aplikacji serwera Proxy aplikacji | Dokumentacja firmy Microsoft
+description: Rozwiąż problemy, które mogą wystąpić po nie pracy łącznika w grupie łącznika dla aplikacji z serwer Proxy aplikacji usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 7aad43be4dc411215a4b54c21a16c4cbb949c7ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 679b8654ad926ddb80747ad4c93064946c9bc82b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Nie znaleziono aplikacji serwera Proxy aplikacji grupy łącznika pracy
 
-Ten artykuł pomocy można rozwiązywać typowe problemy, które muszą ponieść gdy nie jest łącznika dla aplikacji serwera Proxy aplikacji wykryte zintegrowane z usługą Azure Active Directory.
+Ten artykuł pomaga rozwiązać typowe problemy, które muszą ponieść gdy nie jest łącznik wykryto dla aplikacji serwera Proxy aplikacji zintegrowany z usługą Azure Active Directory.
 
 ## <a name="overview-of-steps"></a>Omówienie kroków
 Jeśli nie ma żadnych pracy łącznika w grupie łącznika dla aplikacji, istnieje kilka sposobów, aby rozwiązać ten problem:
@@ -38,11 +38,11 @@ Jeśli nie ma żadnych pracy łącznika w grupie łącznika dla aplikacji, istni
 
     -   Przenieś łącznika usługi active do grupy
 
-Aby wiedzieć, który z nich jest problem, otwórz menu "Serwer Proxy aplikacji" w aplikacji i przyjrzyj się komunikat ostrzegawczy grupy łącznika. Określ go, że grupy wymaga co najmniej jeden łącznik (użytkownik nie masz żadnej grupy) lub że nie ma żadnych aktywnych łączników (Jeśli masz prawdopodobnie nieaktywne łączniki).
+Aby zdiagnozować problem, otwórz menu "Serwer Proxy aplikacji" w aplikacji i przyjrzyj komunikat ostrzegawczy grupy łącznika. Jeśli w grupie nie żadne łączniki, komunikat ostrzegawczy Określa, że grupa wymaga co najmniej jeden łącznik. Jeśli nie aktywne łączników, komunikat ostrzegawczy wyjaśniono, że. Jest często mają łączniki nieaktywne. 
 
    ![Wybór grupy łącznika w portalu Azure](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-Aby uzyskać szczegółowe informacje na każdej z tych opcji zobacz odpowiedniej sekcji poniżej. Każdy z tych założono uruchamiasz na stronie zarządzania łącznika. Jeśli jest wyświetlany komunikat o błędzie powyżej, można przejść do tej strony, klikając w komunikacie ostrzegawczym. W przeciwnym razie to można znaleźć, przechodząc do **usługi Azure Active Directory**, klikając pozycję na **aplikacje dla przedsiębiorstw**, następnie **serwera Proxy aplikacji.**
+Aby uzyskać szczegółowe informacje na każdej z tych opcji zobacz odpowiedniej sekcji poniżej. Instrukcjach przyjęto założenie, że uruchamiasz na stronie zarządzania łącznika. Jeśli jest wyświetlany komunikat o błędzie powyżej, można przejść do tej strony, klikając w komunikacie ostrzegawczym. Można także uzyskać ze stroną, przechodząc do **usługi Azure Active Directory**, klikając pozycję na **aplikacje dla przedsiębiorstw**, następnie **serwera Proxy aplikacji.**
 
    ![Łącznik grupy zarządzania w portalu Azure](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
@@ -50,7 +50,7 @@ Aby uzyskać szczegółowe informacje na każdej z tych opcji zobacz odpowiednie
 
 Aby pobrać nowy łącznik, przycisk "Pobierz łącznik" w górnej części strony.
 
-Uwaga łącznika musi być zainstalowany na komputerze z bezpośredniego procesów of wiersza do wewnętrznej bazy danych aplikacji i zwykle znajduje się na tym samym serwerze co aplikacja. Po pobraniu, łącznik powinna pojawić się w tym menu. Kliknij łącznik i używając listy rozwijanej "łącznik grupy" Upewnij się, że należy on do grupy prawo. Zapisz zmiany.
+Zainstaluj łącznik na maszynie z bezpośredniego procesów of wiersza do wewnętrznej bazy danych aplikacji. Zazwyczaj łącznik jest zainstalowany na tym samym serwerze co aplikacja. Po pobraniu, łącznik powinna pojawić się w tym menu. Kliknij łącznik i używając listy rozwijanej "łącznik grupy" Upewnij się, że należy on do grupy prawo. Zapisz zmiany.
 
    ![Pobierz łącznik z portalu Azure](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
@@ -64,7 +64,7 @@ Jeśli nie są aktywne tylko łączników w grupie, prawdopodobnie na komputerze
 
 znaleźć w dokumencie Rozwiązywanie problemów dotyczących portów szczegółowe badanie tego problemu.
 
-## <a name="next-steps"></a>Następne kroki
-[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](application-proxy-understand-connectors.md)
+## <a name="next-steps"></a>Kolejne kroki
+[Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-connectors.md)
 
 

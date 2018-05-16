@@ -4,7 +4,7 @@ description: Dowiedz się, jak tworzenie i debugowanie potoków fabryki danych w
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/16/2018
+ms.date: 05/14/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,15 +12,19 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e403afa5c870b2d007a8c5e1d46162cd899ead29
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteracyjne projektowanie i debugowanie z fabryką danych Azure
 
 Fabryka danych Azure umożliwia wielokrotnie powtarzane opracowywania i debugowania potoki fabryki danych.
+
+Wprowadzenie ośmiu minutę i demonstracji tej funkcji Obejrzyj następujące:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
 ## <a name="iterative-debugging-features"></a>Funkcje iteracyjne debugowania
 Tworzenie potoków i testowanie działa przy użyciu **debugowania** możliwości na kanwie potoku bez pisania pojedynczy wiersz kodu.

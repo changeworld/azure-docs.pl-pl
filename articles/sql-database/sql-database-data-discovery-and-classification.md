@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 18afebefaee9117244767e0a00e293a297bbf9af
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 375142b0e55c741e6ab914e969751833f989d2fb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Dane z bazy danych Azure SQL odnajdywania i klasyfikacji
 Dane odnajdywania & klasyfikacji (obecnie w wersji zapoznawczej) zapewnia zaawansowane możliwości, wbudowane w bazie danych SQL Azure dla **odnajdywania**, **klasyfikacji**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
@@ -22,6 +22,9 @@ Wykrywanie i klasyfikowania najbardziej poufnych danych (business, finansowych, 
 * Pomoc w spełniać normy prywatności danych i wymagania zgodności z przepisami, na przykład GDPR.
 * Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując o nietypowych dostęp do poufnych danych.
 * Kontrolowanie dostępu do i wzmacniania ochrony baz danych zawierających wysoce poufnych danych.
+
+> [!NOTE]
+> Ten dokument dotyczy tylko bazy danych SQL Azure. Dla programu SQL Server (lokalnego), zobacz [odnajdywanie danych SQL i klasyfikacji](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Omówienie
 Dane odnajdywania & klasyfikacji wprowadza zestaw zaawansowanych usług i nowe możliwości SQL, tworzących nowego modelu SQL Information Protection mających na celu ochronę danych, a nie tylko bazy danych:

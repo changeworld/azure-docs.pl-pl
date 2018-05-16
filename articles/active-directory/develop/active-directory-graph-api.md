@@ -8,6 +8,7 @@ manager: mtillman
 editor: mbaldwin
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +16,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: c817964ebab358f8e31e7435b7067fc60e9516fa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4b4f698042f6688e3db484f7d96ccfb06c5cdd4f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Interfejs API programu Graph usługi Azure Active Directory
 > [!IMPORTANT]
@@ -58,7 +59,7 @@ Azure AD Graph API oferuje następujące funkcje:
 Azure AD Graph API umożliwia wiele scenariuszy, w aplikacji. Najczęściej używane są następujące scenariusze:
 
 * **Aplikacji biznesowej (pojedynczej dzierżawy)**: W tym scenariuszu developer enterprise działa w przypadku organizacji, która ma subskrypcji usługi Office 365. Deweloper tworzenia aplikacji sieci web, która współdziała z usługą Azure AD umożliwia wykonywanie zadań takich przypisywania licencji do użytkownika. To zadanie wymaga dostępu do interfejsu API Azure AD Graph, dzięki czemu Deweloper rejestruje aplikacji pojedynczej dzierżawy w usłudze Azure AD i konfiguruje uprawnienia odczytu i zapisu dla interfejsu API Azure AD Graph. Następnie aplikacja jest skonfigurowana na potrzeby uzyskania tokenu umożliwiającego wywołanie interfejsu API usługi Azure AD Graph własne poświadczenia lub te, które obecnie logowania użytkownika.
-* **Aplikacja usługi (wielodostępnej) oprogramowania jako**: W tym scenariuszu niezależnego dostawcy oprogramowania (ISV) jest tworzenie aplikacji hostowanej wielodostępnej sieci web, która zawiera funkcje zarządzania użytkownika do innych organizacji korzystających z usługi Azure AD. Funkcje te wymagają dostępu do obiektów katalogu, a więc aplikacja musi wywołać interfejs API Azure AD Graph. Deweloper rejestruje aplikacji w usłudze Azure AD, skonfiguruje je do wymagają odczytu i zapisu uprawnienia dla interfejsu API usługi Azure AD Graph i następnie włącza dostępu zewnętrznego, dzięki czemu inne organizacje mogą wyrazić zgodę korzystanie z aplikacji w ich katalogu. Podczas uwierzytelniania użytkownika w innej organizacji do aplikacji po raz pierwszy, są wyświetlane okno dialogowe zgody użytkownika z uprawnieniami, który żąda aplikacji.  Udzielając zgody określi aplikacji te wymagane uprawnienia do interfejsu API Azure AD Graph w katalogu użytkownika. Aby uzyskać więcej informacji w ramach zgody, zobacz [omówienie Framework zgody](active-directory-integrating-applications.md).
+* **Aplikacja usługi (wielodostępnej) oprogramowania jako**: W tym scenariuszu niezależnego dostawcy oprogramowania (ISV) jest tworzenie aplikacji hostowanej wielodostępnej sieci web, która zawiera funkcje zarządzania użytkownika do innych organizacji korzystających z usługi Azure AD. Funkcje te wymagają dostępu do obiektów katalogu, a więc aplikacja musi wywołać interfejs API Azure AD Graph. Deweloper rejestruje aplikacji w usłudze Azure AD, skonfiguruje je do wymagają odczytu i zapisu uprawnienia dla interfejsu API usługi Azure AD Graph i następnie włącza dostępu zewnętrznego, dzięki czemu inne organizacje mogą wyrazić zgodę korzystanie z aplikacji w ich katalogu. Podczas uwierzytelniania użytkownika w innej organizacji do aplikacji po raz pierwszy, są wyświetlane okno dialogowe zgody użytkownika z uprawnieniami, który żąda aplikacji. Udzielając zgody określi aplikacji te wymagane uprawnienia do interfejsu API Azure AD Graph w katalogu użytkownika. Aby uzyskać więcej informacji w ramach zgody, zobacz [omówienie Framework zgody](active-directory-integrating-applications.md).
 
 ## <a name="see-also"></a>Zobacz też
 [Przewodnik Szybki Start Azure interfejs API Graph usługi AD](active-directory-graph-api-quickstart.md)

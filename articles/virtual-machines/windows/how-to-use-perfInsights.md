@@ -1,24 +1,24 @@
 ---
-title: "Jak używać PerfInsights na platformie Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Uzyskuje informacje o sposobie używania PerfInsights do rozwiązywania problemów z wydajnością maszyny Wirtualnej systemu Windows."
+title: Jak używać PerfInsights na platformie Microsoft Azure | Dokumentacja firmy Microsoft
+description: Uzyskuje informacje o sposobie używania PerfInsights do rozwiązywania problemów z wydajnością maszyny Wirtualnej systemu Windows.
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 06b3b246d5c350f0982faa9b1d5f5692cd0c428e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cac17b5f3ee730bf1f56dbfd05b6c6d3b02c891f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-use-perfinsights"></a>Jak używać PerfInsights 
 
@@ -79,15 +79,15 @@ W tym scenariuszu uruchamia przechwytywania licznika wydajności specjalne wraz 
 | Opóźnienie      | Średnia liczba żądań danych/s         |
 |              | Średni czas odczytu s                 |
 |              | Średni czas zapisu s                |
-| Rozmiar operacji We/Wy      | Avg. Bajty/danych żądania       |
-|              | Avg. Bajty odczytu               |
-|              | Avg. Bajty/zapisu              |
+| Rozmiar operacji We/Wy      | Średni Bajty/danych żądania       |
+|              | Średni Bajty odczytu               |
+|              | Średni Bajty/zapisu              |
 | Przepływność   | Dane bajty/s                |
 |              | Odczytu dysku/s                |
 |              | Bajty zapisane/s               |
-| Długość kolejki | Avg. Długość kolejki odczytu        |
-|              | Avg. Długość kolejki zapisu       |
-|              | Avg. Długość kolejki danych        |
+| Długość kolejki | Średni Długość kolejki odczytu        |
+|              | Średni Długość kolejki zapisu       |
+|              | Średni Długość kolejki danych        |
 
 ### <a name="custom-slow-vm-analysis"></a>Niestandardowe powolne analizy maszyny Wirtualnej 
 

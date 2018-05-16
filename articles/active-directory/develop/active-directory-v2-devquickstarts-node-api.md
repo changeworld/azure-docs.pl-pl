@@ -1,25 +1,27 @@
 ---
-title: "Zabezpiecz interfejs API web v2.0 usługi Azure Active Directory przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia sieci web Node.js interfejsu API, który akceptuje tokeny zarówno z osobistego konta Microsoft, jak i w pracy lub szkołą kont."
+title: Zabezpiecz interfejs API web v2.0 usługi Azure Active Directory przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia sieci web Node.js interfejsu API, który akceptuje tokeny zarówno z osobistego konta Microsoft, jak i w pracy lub szkołą kont.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19ad25c7b08ff073097cacf3be359772ca0a327f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Zabezpieczanie interfejsu API sieci web przy użyciu środowiska Node.js
 > [!NOTE]
@@ -139,7 +141,7 @@ Moduły restify ma zaawansowany mechanizm śledzenia wywołań REST przy użyciu
     ```
 
 ## <a name="6-add-passport-azure-ad-to-your-web-api"></a>6: Dodaj passport-azure-ad do interfejsu API sieci web
-Następnie dodaj strategię OAuth przy użyciu biblioteki passport-azuread. `passport-azuread`jest zestawu strategii łączących usługę Azure AD z usługą Passport. Używamy tej strategii do tokenów elementów nośnych w próbce tego interfejsu API REST.
+Następnie dodaj strategię OAuth przy użyciu biblioteki passport-azuread. `passport-azuread` jest zestawu strategii łączących usługę Azure AD z usługą Passport. Używamy tej strategii do tokenów elementów nośnych w próbce tego interfejsu API REST.
 
 > [!NOTE]
 > Chociaż framework, w którym mogą być wystawiane dowolnego znanego typu tokenu OAuth 2.0, niektóre typy tokenów są często używane. Tokenów elementu nośnego są często używane do ochrony punktów końcowych. Tokeny elementów nośnych są najczęściej wystawiany typ tokenu OAuth 2.0. Wiele implementacji protokołu OAuth 2.0 założono, że tokeny elementów nośnych są jedynym typem wystawianych tokenów.
@@ -830,7 +832,7 @@ Uzyskanie odpowiedzi 401 wskazuje, że warstwa oprogramowania Passport podejmuje
 
 Został usunięty w zakresie, w jakim można bez użycia klienta OAuth 2.0 zgodnego z tym serwerem. W tym należy przejrzeć dodatkowe samouczka.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Odwołania, ukończonych próbka (bez wartości konfiguracji) jest dostępna jako [plik zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip). Użytkownik może ją także sklonować z serwisu GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```

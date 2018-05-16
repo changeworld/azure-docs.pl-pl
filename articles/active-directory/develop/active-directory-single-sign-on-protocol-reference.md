@@ -1,13 +1,14 @@
 ---
 title: Azure funkcji logowania jednokrotnego w protokole SAML | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano protokołu SAML na znak pojedynczego w usłudze Azure Active Directory"
+description: W tym artykule opisano protokołu SAML na znak pojedynczego w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddd5fa6f2ed0878afd8bbd6399471e92dfa30385
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-on-saml-protocol"></a>Jeden protokół logowania jednokrotnego SAML
 W tym artykule omówiono SAML 2.0 uwierzytelniania żądań i odpowiedzi, które obsługuje usługi Azure Active Directory (Azure AD) dla logowania jednokrotnego.
@@ -44,9 +45,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| ID |Wymagane |Usługi Azure AD użyje tego atrybutu, aby wypełnić `InResponseTo` atrybutu zwrócona odpowiedź. Identyfikator nie musi rozpoczynać się od numeru, więc wspólnej strategii jest dołączenie wartości ciągu, takich jak "id" na końcu reprezentacji ciągu identyfikatora GUID. Na przykład `id6c1c178c166d486687be4aaf5e482730` jest poprawnym identyfikatorem. |
-| Wersja |Wymagane |To pole powinno być **2.0**. |
-| IssueInstant |Wymagane |Jest to ciąg daty/godziny z wartości UTC i [obustronne formatu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługi Azure AD oczekuje wartości typu DateTime tego typu, ale nie oceny lub użyj wartości. |
+| ID |wymagane |Usługi Azure AD użyje tego atrybutu, aby wypełnić `InResponseTo` atrybutu zwrócona odpowiedź. Identyfikator nie musi rozpoczynać się od numeru, więc wspólnej strategii jest dołączenie wartości ciągu, takich jak "id" na końcu reprezentacji ciągu identyfikatora GUID. Na przykład `id6c1c178c166d486687be4aaf5e482730` jest poprawnym identyfikatorem. |
+| Wersja |wymagane |To pole powinno być **2.0**. |
+| IssueInstant |wymagane |Jest to ciąg daty/godziny z wartości UTC i [obustronne formatu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Usługi Azure AD oczekuje wartości typu DateTime tego typu, ale nie oceny lub użyj wartości. |
 | AssertionConsumerServiceUrl |opcjonalne |Jeśli zostanie podana, musi on być zgodny `RedirectUri` usługi w chmurze w usłudze Azure AD. |
 | ForceAuthn |opcjonalne | Jest to wartość logiczna. Jeśli PRAWDA, oznacza to, że użytkownik zostanie wymuszone ponownego uwierzytelnienia, nawet jeśli mają prawidłowy sesji z usługą Azure AD. |
 | IsPassive |opcjonalne |Jest to wartość logiczna określająca, czy usługi Azure AD powinien uwierzytelnić użytkownika w trybie dyskretnym, bez interakcji użytkownika, przy użyciu pliku cookie sesji, jeśli taka istnieje. Jeśli to PRAWDA, usługi Azure AD będzie podejmować próby uwierzytelnienia przy użyciu pliku cookie sesji użytkownika. |
@@ -255,7 +256,7 @@ Zawiera oświadczenia dotyczące podmiotu lub użytkownika. Poniższy fragment p
 ```        
 
 * **Nazwa oświadczenia** : wartość `Name` atrybutu (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) jest główna nazwa użytkownika uwierzytelnionego użytkownika, takich jak `testuser@managedtenant.com`.
-* **Oświadczenia w elemencie ObjectIdentifier** : wartość `ObjectIdentifier` atrybutu (`http://schemas.microsoft.com/identity/claims/objectidentifier`) jest `ObjectId` obiektu katalogu, który reprezentuje uwierzytelnionego użytkownika w usłudze Azure AD. `ObjectId`Nie można modyfikować, globalnie unikatowy i ponownego użycia bezpiecznego identyfikatora uwierzytelnionego użytkownika.
+* **Oświadczenia w elemencie ObjectIdentifier** : wartość `ObjectIdentifier` atrybutu (`http://schemas.microsoft.com/identity/claims/objectidentifier`) jest `ObjectId` obiektu katalogu, który reprezentuje uwierzytelnionego użytkownika w usłudze Azure AD. `ObjectId` Nie można modyfikować, globalnie unikatowy i ponownego użycia bezpiecznego identyfikatora uwierzytelnionego użytkownika.
 
 #### <a name="authnstatement"></a>AuthnStatement
 Ten element potwierdza, że podmiotu potwierdzenia został uwierzytelniony w szczególności sposób w określonym czasie.

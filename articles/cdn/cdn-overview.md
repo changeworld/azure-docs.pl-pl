@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/06/2018
-ms.author: rli
+ms.date: 04/20/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
 Sieć dostarczania zawartości (CDN, content delivery network) to rozproszona sieć serwerów, które pozwalają wydajnie dostarczać użytkownikom zawartość internetową. Sieci CDN umożliwiają przechowywanie buforowanej zawartości na serwerach brzegowych w lokalizacjach punktu obecności (POP, Point-of-Presence), które znajdują się blisko użytkowników końcowych, co pozwala zminimalizować opóźnienie. 
@@ -50,7 +50,7 @@ Aby wyświetlić listę bieżących lokalizacji węzłów usługi CDN, zobacz [L
 6. Jeśli czas wygaśnięcia pliku nie upłynął, serwer brzegowy punktu POP zwróci plik bezpośrednio z pamięci podręcznej. Ten proces prowadzi do krótszego czasu reakcji w środowisku użytkownika.
 
 ## <a name="requirements"></a>Wymagania
-Aby korzystać z usługi Azure CDN, musisz być właścicielem co najmniej jednej subskrypcji platformy Azure. Musisz także utworzyć co najmniej jeden profil CDN, który jest kolekcją punktów końcowych usługi CDN. Każdy punkt końcowy usługi CDN reprezentuje określoną konfigurację dostępu i zachowania dostarczania zawartości. Do organizowania punktów końcowych usługi CDN według domeny internetowej, aplikacji internetowej lub innych kryteriów można używać wielu profilów. Ponieważ [ceny usługi Azure CDN](https://azure.microsoft.com/pricing/details/cdn/) są stosowane na poziomie profilu CDN, musisz utworzyć wiele profilów CDN, jeśli chcesz używać różnych warstw cenowych.
+Aby korzystać z usługi Azure CDN, musisz być właścicielem co najmniej jednej subskrypcji platformy Azure. Musisz także utworzyć co najmniej jeden profil CDN, który jest kolekcją punktów końcowych usługi CDN. Każdy punkt końcowy usługi CDN reprezentuje określoną konfigurację dostępu i zachowania dostarczania zawartości. Do organizowania punktów końcowych usługi CDN według domeny internetowej, aplikacji internetowej lub innych kryteriów można używać wielu profilów. Ponieważ [ceny usługi Azure CDN](https://azure.microsoft.com/pricing/details/cdn/) są stosowane na poziomie profilu CDN, musisz utworzyć wiele profilów CDN, jeśli chcesz używać różnych warstw cenowych. Aby uzyskać informacje o strukturze rozliczeń za usługę Azure CDN, zobacz temat [Omówienie rozliczania za usługę Azure CDN](cdn-billing.md).
 
 ### <a name="limitations"></a>Ograniczenia
 Każda subskrypcja platformy Azure ma limity domyślne dla następujących zasobów:
@@ -77,4 +77,5 @@ Aby uzyskać pełną listę funkcji obsługiwanych przez każdy produkt Azure CD
 - Zarządzaj punktami końcowymi usługi CDN za pomocą witryny [Microsoft Azure Portal](https://portal.azure.com) lub programu [PowerShell](cdn-manage-powershell.md).
 - Dowiedz się, jak zautomatyzować usługę Azure CDN przy użyciu platformy [.NET](cdn-app-dev-net.md) lub [Node.js](cdn-app-dev-node.md).
 - Aby zobaczyć usługę Azure CDN w akcji, obejrzyj [filmy wideo dotyczące usługi Azure CDN](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest).
+- Aby dowiedzieć się więcej o najnowszych funkcjach usługi Azure CDN, odwiedź [blog usługi Azure CDN](https://azure.microsoft.com/blog/tag/azure-cdn/).
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 6ee60d05897de7bb5408a226202623fd5955a88a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie usługi Azure Workbench Blockchain
 
@@ -170,7 +170,7 @@ Po ukończeniu wstępnie wymagane kroki można przystąpić do wdrażania Blockc
     | Hasło | Hasło służy do nawiązywania połączenia z maszynami wirtualnymi. |
     | Protokół SSH | Użyj klucza publicznego RSA w formacie jednowierszowego zaczyna się od **ssh-rsa** lub użyj formatu PEM wiele wierszy. Możesz wygenerować klucze SSH za pomocą `ssh-keygen` w systemie Linux i OS X lub przy użyciu PuTTYGen w systemie Windows. Więcej informacji na temat kluczy SSH, zobacz [kluczy sposobu korzystania z protokołu SSH z systemem Windows Azure](../virtual-machines/linux/ssh-from-windows.md). |
     | Hasła bazy danych / Potwierdź hasło bazy danych | Określ hasło używane do uzyskiwania dostępu do bazy danych utworzone jako część wdrożenia. |
-    | Region wdrożenia | Określ, gdzie do wdrożenia środowiska roboczego Blockchain zasobów. Dla najlepsze dostępności powinna odpowiadać **lokalizacji** ustawienie. |
+    | Region wdrożenia | Określ, gdzie do wdrożenia środowiska roboczego Blockchain zasobów. Najlepsze dostępności powinna odpowiadać **lokalizacji** ustawienie. |
     | Subskrypcja | Określ subskrypcję Azure mają być używane dla danego wdrożenia. |
     | Grupy zasobów | Utwórz nową grupę zasobów, wybierając **Utwórz nowy** i określ nazwę grupy zasobów unikatowy. |
     | Lokalizacja | Określ region, który chcesz wdrożyć w ramach. |
@@ -237,6 +237,8 @@ Po zakończeniu wdrożenia środowiska roboczego Blockchain nową grupę zasobó
 
     ![Podstawowe informacje dotyczące usługi aplikacji](media/blockchain-workbench-deploy/app-service.png)
 
+Aby skojarzyć niestandardowej nazwy domeny z Blockchain Workbench, zobacz [Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service przy użyciu Menedżera ruchu](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+
 ## <a name="configuring-the-reply-url"></a>Konfigurowanie adresu URL odpowiedzi
 
 Po wdrożeniu Azure Blockchain Workbench, następnym krokiem jest upewnij się, że aplikacja klienta usługi Azure Active Directory (Azure AD) jest zarejestrowana na prawidłowe **adres URL odpowiedzi** z wdrożonym Blockchain Workbench adres URL sieci web.
@@ -246,7 +248,7 @@ Po wdrożeniu Azure Blockchain Workbench, następnym krokiem jest upewnij się, 
 3. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi. Wybierz pozycję **Rejestracje aplikacji**.
 4. Wybierz aplikację klienta usługi Azure AD, zarejestrowany w sekcji wymagań wstępnych.
 5. Wybierz **Ustawienia > Odpowiedz adresy URL**.
-6. Określ adres URL sieci web głównego deployment Azure Blockchain Workbench pobierana w **uzyskać adres URL sieci Web Azure Blockchain Workbench** sekcji. Adres URL odpowiedzi jest prefiksem `https://`.  Na przykład: `https://myblockchain2-7v75.azurewebsites.net`
+6. Określ adres URL sieci web głównego deployment Azure Blockchain Workbench pobierana w **uzyskać adres URL sieci Web Azure Blockchain Workbench** sekcji. Adres URL odpowiedzi jest prefiksem `https://`. Na przykład: `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Adresy URL odpowiedzi](media/blockchain-workbench-deploy/configure-reply-url.png)
 

@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e63e4afb5c60f193d46e30ab884d72912a6a5054
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9ac6423c6b08aa2a86eda5b0560c8b10e7082284
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie systemu Windows hybrydowego Runbook Worker
 
@@ -130,6 +130,24 @@ Użyj **-Verbose** przełącznik z **Add-HybridRunbookWorker** uzyskać szczegó
 Elementy Runbook można użyć dowolnego działania i poleceń cmdlet zdefiniowane w modułach zainstalowanej w środowisku usługi Automatyzacja Azure. Te moduły nie są automatycznie wdrażane na komputerach lokalnych, więc należy ją zainstalować ręcznie. Wyjątkiem jest moduł Azure, który jest instalowany domyślnie, zapewniając dostęp do poleceń cmdlet dla wszystkich usług platformy Azure i działań automatyzacji Azure.
 
 Ponieważ jest podstawowym celem funkcji hybrydowego procesu roboczego elementu Runbook do zarządzania zasobami lokalnym, prawdopodobnie musisz zainstalować moduły, które obsługują te zasoby. Można to sprawdzić [instalowanie modułów](http://msdn.microsoft.com/library/dd878350.aspx) informacje na temat instalowania modułów programu Windows PowerShell. Moduły, które są zainstalowane musi znajdować się w lokalizacji odwołuje PSModulePath zmiennej środowiskowej, dzięki czemu są automatycznie importowane przez hybrydowy proces roboczy. Aby uzyskać więcej informacji, zobacz [Modyfikowanie ścieżki instalacji PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Hybrydowy proces roboczy elementu Runbook jest zależna od programu Microsoft Monitoring Agent, aby komunikować się z Twoim kontem automatyzacji Zarejestruj pracownika, otrzymywanie zadania elementów runbook i zgłoszenia stanu. W przypadku niepowodzenia rejestracji pracownika poniżej przedstawiono niektóre możliwe przyczyny błędu:
+
+### <a name="the-microsoft-monitoring-agent-is-not-running"></a>Microsoft Monitoring Agent nie jest uruchomiona.
+
+Jeśli usługa Microsoft Monitoring Agent Windows nie jest uruchomiona, zapobiega to hybrydowy proces roboczy elementu Runbook komunikację z usługi Automatyzacja Azure. Sprawdź, agent nie działa, wprowadzając następujące polecenie w programie PowerShell: `Get-Service healthservice`. Jeśli usługa zostanie zatrzymana, wprowadź następujące polecenie w programie PowerShell, aby uruchomić usługę: `Start-Service healthservice`.
+
+### <a name="event-4502-in-operations-manager-log"></a>Zdarzenia 4502 w Dzienniku programu Operations Manager
+
+W **aplikacji i usług Menedżera Logs\Operations** dziennika zdarzeń, zobacz zdarzenia 4502 i zawierający EventMessage **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**z następujący opis: *certyfikat przedstawiony przez usługę \<wsid\>. oms.opinsights.azure.com nie został wystawiony przez urząd certyfikacji używany dla usług firmy Microsoft. Skontaktuj się z administratorem sieci, aby sprawdzić, czy działają z serwera proxy przechwytującego komunikację TLS/SSL. Artykuł KB3126513 zawiera dodatkowe informacje dotyczące rozwiązywania problemów, które występują problemy dotyczące połączenia.*
+
+Może to być spowodowane serwera proxy lub sieci Zapora blokuje komunikację do systemu Microsoft Azure. Sprawdź, czy komputer ma dostęp ruchu wychodzącego do *.azure automation.net na porty 443.
+
+Dzienniki są przechowywane lokalnie na każdym hybrydowy proces roboczy na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Można sprawdzić, czy istnieją ostrzeżenia lub błędu zdarzeń zapisywanych w **aplikacji i usług Logs\Microsoft-SMA\Operations** i **aplikacji i usług Menedżera Logs\Operations** dziennika zdarzeń, który wskazuje z łącznością lub innego problemu dołączania roli do automatyzacji Azure lub problem podczas wykonywania normalnych operacji.
+
+Dodatkowe kroki dotyczące rozwiązywania problemów z zarządzania aktualizacjami, zobacz [zarządzania aktualizacjami — Rozwiązywanie problemów](automation-update-management.md#troubleshooting)
 
 ## <a name="next-steps"></a>Następne kroki
 

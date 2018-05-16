@@ -1,25 +1,27 @@
 ---
 title: Azure Active Directory w wersji 2.0 zakresy, uprawnienia i zgody | Dokumentacja firmy Microsoft
-description: "Opis autoryzacji w punktu końcowego v2.0 usługi Azure AD, w tym zakresy, uprawnienia i zgody."
+description: Opis autoryzacji w punktu końcowego v2.0 usługi Azure AD, w tym zakresy, uprawnienia i zgody.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f001751c9401b88d9bfaf35444882d3d5ccbfef3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Zakresy, uprawnienia i zgody w punkcie końcowym v2.0 usługi Azure Active Directory
 Aplikacje do zintegrowania z usługą Azure Active Directory (Azure AD) wykonaj modelu autoryzacji, która zapewnia użytkownikom kontrolę nad jak aplikacja może uzyskiwać dostępu do danych. Implementacja v2.0 modelu autoryzacji została zaktualizowana i zmienia sposób aplikacji musi współdziałać z usługą Azure AD. W tym artykule opisano podstawowe pojęcia tego modelu autoryzacji, w tym zakresy, uprawnienia i zgody.
@@ -40,7 +42,7 @@ To samo dotyczy dla wszystkich zasobów innych firm, które zostały zintegrowan
 
 * Przeczytaj kalendarza użytkownika
 * Zapis do kalendarza użytkownika
-* Wysyłania wiadomości e-mail jako użytkownik
+* Wysyłaj pocztę jako użytkownik
 
 Zdefiniowanie tych typów uprawnień, zasób ma precyzyjną kontrolę nad jego danych i jak dane są widoczne. Aplikacji innych firm mogą żądać tych uprawnień przez użytkownika aplikacji. Użytkownik aplikacji musi zatwierdzić uprawnienia, zanim aplikacja może działać w imieniu użytkownika. Według segmentu zasobu funkcje na mniejsze zestawy uprawnień, aplikacje innych firm mogą być tworzone na żądanie tylko określone uprawnienia, które są niezbędne do wykonywania ich funkcji. Użytkownicy aplikacji mogą poznać, dokładnie tak jak aplikacja będzie używać swoich danych i może być większa pewność, że aplikacja nie zachowuje się ze złośliwymi działaniami.
 
@@ -58,10 +60,10 @@ V2.0 wdrażania protokołu OpenID Connect ma kilka dobrze zdefiniowany zakresy, 
 ### <a name="openid"></a>openid
 Jeśli aplikacja przeprowadza logowania za pomocą [OpenID Connect](active-directory-v2-protocols.md), należy go zażądać `openid` zakresu. `openid` Zakresu wyświetlane na stronie zgoda konta pracy jako uprawnienie "Logowanie się w" oraz na osobiste strony zgody konto Microsoft jako uprawnienie "Wyświetl swój profil i łączenie z aplikacjami i usługami za pomocą konta Microsoft". Z tego uprawnienia, aplikacja może odbierać Unikatowy identyfikator dla użytkownika w postaci `sub` oświadczeń. Udostępnia również aplikacji uprawnień dostępu do punktu końcowego informacje o użytkowniku. `openid` Zakresu pozwala na token punktu końcowego v2.0 uzyskać tokeny Identyfikatora, które mogą być używane do zabezpieczenia połączenia HTTP między poszczególnymi składnikami aplikacji.
 
-### <a name="email"></a>e-mail
+### <a name="email"></a>wyślij wiadomość e-mail
 `email` Zakresu, może być używany z `openid` zakresu i innych. Daje dostęp do aplikacji do użytkownika podstawowego adresu e-mail w postaci `email` oświadczeń. `email` Oświadczenia jest uwzględniona w tokenu, tylko wtedy, gdy adres e-mail jest skojarzony z konta użytkownika, które nie zawsze jest wielkość liter. Gdy jest używana funkcja `email` zakresu, aplikacja powinna być przygotowana do obsługi przypadek, w którym `email` oświadczenia nie istnieje w tokenie.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profil
 `profile` Zakresu, może być używany z `openid` zakresu i innych. Daje dostęp do aplikacji znacznej ilości informacji o użytkowniku. Informacje, które mogą uzyskać dostęp obejmuje, ale nie jest ograniczona do użytkownika imię, nazwisko preferowanych nazwy użytkownika i identyfikator obiektu. Aby uzyskać pełną listę dostępnych w parametrze id_tokens oświadczeń profilu określonego użytkownika, zobacz [v2.0 tokeny odwołanie](active-directory-v2-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
@@ -199,6 +201,6 @@ Content-Type: application/json
 }
 ```
 
-W żądaniach HTTP do zasobu, można użyć tokenu dostępu. Wskazuje on, niezawodnie do zasobu czy aplikacja ma odpowiednie uprawnienia do wykonywania określonych zadań.  
+W żądaniach HTTP do zasobu, można użyć tokenu dostępu. Wskazuje on, niezawodnie do zasobu czy aplikacja ma odpowiednie uprawnienia do wykonywania określonych zadań. 
 
 Aby uzyskać więcej informacji na temat protokołu OAuth 2.0 oraz pobieranie tokenów dostępu, zobacz [odwołania protokół punktu końcowego v2.0](active-directory-v2-protocols.md).
