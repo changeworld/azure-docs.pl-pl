@@ -1,24 +1,24 @@
 ---
-title: "Menedżer zasobów klastra usługi sieć szkieletowa — zasad umieszczania | Dokumentacja firmy Microsoft"
-description: "Omówienie zasad umieszczania dodatkowe i zasady usługi sieci szkieletowej usług"
+title: Menedżer zasobów klastra usługi sieć szkieletowa — zasad umieszczania | Dokumentacja firmy Microsoft
+description: Omówienie zasad umieszczania dodatkowe i zasady usługi sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf10f1d9199500d4f5bda3c5a05a3d67ff65541
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zasady umieszczania dla usługi sieci szkieletowej usług
 Zasady umieszczania są dodatkowe reguły, które mogą służyć do kierowania rozmieszczenie usługi, w niektórych scenariuszach określone, mniej typowe. Przykłady takich scenariuszy to:
@@ -127,7 +127,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 Teraz czy można używać tych konfiguracji dla usług w klastrze, który nie został geograficznie łączone? Użytkownik może, ale nie ma dużą Przyczyna zbyt. O ile nie wymagają scenariuszy należy unikać konfiguracjach wymaganych, nieprawidłowy i preferowanych domen. Go nie ma sensu wszelkie próby wymusić danego obciążenia można uruchomić w jednym stojaku lub preferować niektórych segmentu klastra lokalnego zamiast innego. Różne konfiguracje sprzętu należy rozłożyć na domenach awarii i obsługiwane za pośrednictwem ograniczenia umieszczania normalne i właściwości węzła.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat konfigurowania usługi [Dowiedz się więcej o konfigurowaniu usługi](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png

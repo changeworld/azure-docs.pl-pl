@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: sngun
-ms.openlocfilehash: fadbe5d2777bc5c8551558be80e77dd2785044a2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 925167c6b4a7f173726ec094c2847a16ca3d0ef4
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustawianie i pobieranie przepływności bazy danych Azure rozwiązania Cosmos kontenery i bazy danych
 
@@ -45,7 +45,7 @@ W tym artykule przedstawiono kroki wymagane do skonfigurowania przepływności n
 
    |**Ustawienie**  |**Opis**  |
    |---------|---------|
-   |Identyfikator bazy danych  |  Podaj unikatową nazwę identyfikującą bazy danych. Baza danych jest kontenerem logicznym z co najmniej jedną kolekcję. Nazwy bazy danych musi zawierać od 1 do 255 znaków i nie mogą zawierać, \, #,?, lub spacji. |
+   |Identyfikator bazy danych  |  Podaj unikatową nazwę identyfikującą bazy danych. Baza danych jest kontenerem logicznym z co najmniej jedną kolekcję. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków /, \\, #, ? ani mieć spacji na końcu. |
    |Identyfikator kolekcji  | Podaj unikatową nazwę identyfikującą kolekcji. W przypadku identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jak dla nazw baz danych. |
    |Pojemność magazynu   | Ta wartość przedstawia pojemność magazynu bazy danych. Podczas inicjowania obsługi administracyjnej przepływność dla poszczególnych kolekcji, pojemności magazynu może być **stałe (10 GB)** lub **nieograniczone**. Pojemność magazynu nieograniczone wymaga ustawienia klucza partycji dla danych.  |
    |Przepływność   | Każdej kolekcji i bazy danych mogą mieć przepływności w jednostkach żądań na sekundę.  Stałe pojemności minimalna przepływność wynosi 400 jednostek żądań na sekundę (RU/s), nieograniczony magazyn pojemności, minimalna przepustowość ustawiono 1000 RU/s.|

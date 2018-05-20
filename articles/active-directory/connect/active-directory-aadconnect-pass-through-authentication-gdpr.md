@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect - uwierzytelniania przekazywanego - GDPR zgodności | Dokumentacja firmy Microsoft"
-description: "Ten artykuł dotyczy usługi Azure Active Directory (Azure AD) przekazywanego uwierzytelniania i GDPR zgodności."
+title: Zasady zachowania poufności użytkownika a platformą Azure uwierzytelniania przekazywanego usługi Active Directory | Dokumentacja firmy Microsoft
+description: Ten artykuł dotyczy usługi Azure Active Directory (Azure AD) przekazywanego uwierzytelniania i GDPR zgodności.
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, GDPR, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, GDPR, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/28/2018
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 21874c961163e3efba45c2ee8557c03135987f95
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-active-directory-pass-through-authentication-gdpr-compliance"></a>Azure przekazywanego uwierzytelnianie usługi Active Directory: Zgodność GDPR
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Zasady zachowania poufności użytkownika a platformą Azure uwierzytelniania przekazywanego usługi Active Directory
+
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Przegląd
-
-W 2018 maja, prawa Europejskiego prywatności, [rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), przypada zaczęły obowiązywać. GDPR nakłada nowe zasady dotyczące firmy, agencji rządowych z systemem innym niż zysków i innymi organizacjami, że oferta towarów i usług do osób w Unii Europejskiej (UE), lub że zbieranie i analizowanie danych powiązane mieszkańców Unii Europejskiej. Stosuje GDPR niezależnie od tego, w którym znajduje się. 
-
-Usług i produktów firmy Microsoft dostępnych dzisiaj ułatwić spełniają wymagania GDPR. Dowiedz się więcej o zasady Privacy firmy Microsoft pod adresem [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 Azure AD przekazywanego uwierzytelniania tworzy następujące typy dziennika, które mogą zawierać EUII:
 
@@ -35,7 +34,7 @@ Azure AD przekazywanego uwierzytelniania tworzy następujące typy dziennika, kt
 - Pliki dziennika śledzenia Agent uwierzytelniania.
 - Pliki dziennika zdarzeń systemu Windows.
 
-GDPR zgodności dla uwierzytelniania przekazywanego można połączyć się z na dwa sposoby:
+Zasady zachowania poufności użytkownika dla uwierzytelniania przekazywanego można połączyć się z na dwa sposoby:
 
 1.  Na żądanie wyodrębnić dane dla osoby i usuwanie danych z tej osoby z instalacji.
 2.  Upewnij się, że żadne dane nie są przechowywane poza 48 godzin.
@@ -104,4 +103,5 @@ Aby zaplanować tego skryptu do uruchomienia co 48 godzin, wykonaj następujące
 Jeśli włączono rejestrowanie inspekcji, ten produkt może generować dzienniki zabezpieczeń dla kontrolerów domeny. Aby dowiedzieć się więcej o konfigurowaniu zasad inspekcji, przeczytaj to [artykułu](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>Kolejne kroki
+* [Przejrzyj zasady Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
 - [**Rozwiązywanie problemów z** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) — Dowiedz się, jak rozwiązać typowe problemy z funkcją.

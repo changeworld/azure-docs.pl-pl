@@ -10,11 +10,11 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1dba7c302d8acad6133c0e7c6a2186f7ba617e2c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5409bf198d0e3f6537619ef4698d9f2e31bd27c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdrażanie resetowania hasła bez konieczności rejestrowania użytkownika końcowego
 
@@ -33,16 +33,27 @@ Aby zapewnić prawidłowe działanie, numerów telefonów musi być w formacie *
 
 Jeśli używasz ustawienia domyślne w programie Azure AD Connect zostały wprowadzone następujące mapowania:
 
-| Lokalna usługa Active Directory | Azure AD | Azure AD authentication informacje o kontaktach |
-| --- | --- | --- |
-| TelephoneNumber | Telefon biurowy | Alternatywny numer telefonu |
-| Telefon komórkowy | Telefon komórkowy | Numer telefonu |
+| Lokalna usługa Active Directory | Azure AD |
+| --- | --- |
+| TelephoneNumber | Telefon biurowy |
+| Telefon komórkowy | Telefon komórkowy |
 
-Te pola może pojawić się pusta, dopóki użytkownik potwierdza swoich danych uwierzytelniania.
+Gdy użytkownik zweryfikuje ich numer telefonu komórkowego, Phone pole w obszarze informacje kontaktowe uwierzytelniania w usłudze Azure AD zostaną wypełnione również o tym numerze.
+
+## <a name="authentication-contact-info"></a>Informacje kontaktowe uwierzytelniania
 
 Administrator globalny można ustawić ręcznie informacje o kontaktach uwierzytelniania użytkownika wyświetlane na poniższym zrzucie ekranu.
 
 ![Skontaktuj się z][Contact]
+
+Jeśli zostanie wypełnione pole telefonu i telefonu komórkowego jest włączony w zasadach SSPR, użytkownik będzie widział przepływ pracy resetowania numer na stronie rejestracji resetowania haseł oraz hasło. 
+
+Pole alternatywnej telefonu nie jest używane do resetowania hasła.
+
+Jeśli zostanie wypełnione pole adresu E-mail i wiadomości E-mail jest włączony w zasadach SSPR, użytkownik będzie widział przepływ pracy resetowania poczty e-mail na stronie rejestracji resetowania haseł oraz hasło.
+
+Jeśli zostanie wypełnione pole alternatywny adres e-mail i wiadomości E-mail jest włączony w zasadach SSPR, użytkownik będzie **nie** zobacz strony rejestracji resetowania poczty e-mail na hasło, że odbiorcy zobaczą przepływ pracy go podczas hasło resetowania. 
+
 
 ## <a name="security-questions-and-answers"></a>Pytania zabezpieczające i odpowiedzi
 

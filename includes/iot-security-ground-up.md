@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpieczeń Internetu rzeczy od podstaw
 
@@ -44,7 +44,7 @@ Systemy firmy Microsoft zapewniają ciągłego włamań i zapobiegania, zapobieg
 
 Akceleratorów rozwiązania korzystać z zabezpieczeń i prywatności wbudowanych w platformy Azure oraz SDL i OSA procesów związanych z bezpieczeństwem programowania i działania oprogramowania firmy Microsoft. Te procedury zawierają funkcje tożsamość i zarządzanie podstawowych zabezpieczeń od wszelkich rozwiązań do ochrony infrastruktury, ochrony sieci i.
 
-[Centrum IoT Azure](../articles/iot-hub/iot-hub-what-is-iot-hub.md) w [akceleratorów rozwiązania IoT](../articles/iot-suite/iot-suite-what-is-azure-iot.md) oferuje w pełni zarządzaną usługę, takich jak umożliwiającą i niezawodności dwukierunkową komunikację między urządzeniami IoT i usług Azure [Usługi azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) i [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) przy użyciu poświadczeń zabezpieczeń urządzenia i kontrola dostępu.
+[Centrum IoT Azure](../articles/iot-hub/iot-hub-what-is-iot-hub.md) w [akceleratorów rozwiązania IoT](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) oferuje w pełni zarządzaną usługę, takich jak umożliwiającą i niezawodności dwukierunkową komunikację między urządzeniami IoT i usług Azure [Usługi azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) i [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) przy użyciu poświadczeń zabezpieczeń urządzenia i kontrola dostępu.
 
 Najlepiej komunikację funkcje zabezpieczeń i prywatności wbudowane akceleratorów rozwiązania Azure IoT, w tym artykule dzieli pakiet na trzy obszary głównej zabezpieczeń.
 

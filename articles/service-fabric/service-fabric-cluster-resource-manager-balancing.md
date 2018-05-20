@@ -1,29 +1,29 @@
 ---
-title: "Równoważenie klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do równoważenia klastra z usługi sieć szkieletowa klastra Menedżera zasobów."
+title: Równoważenie klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Wprowadzenie do równoważenia klastra z usługi sieć szkieletowa klastra Menedżera zasobów.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d2f195c50750a5c7685f62c909f77b2960613e6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Równoważenie klastra sieci szkieletowej usług
 Menedżer zasobów klastra sieci szkieletowej usług obsługuje zmiany dynamicznego obciążenia reagowanie na dodawania i usuwania węzłów lub usług. Automatycznie koryguje naruszenia ograniczeń i aktywne rebalances klastra. Jak często są te akcje podjęte — a wywołujących je?
 
-Istnieją trzy różne kategorie pracy, który wykonuje Menedżera zasobów klastra. Są to:
+Istnieją trzy różne kategorie pracy, który wykonuje Menedżera zasobów klastra. Oto one:
 
 1. Rozmieszczenia — ten etap dotyczy umieszczenie replik stanowe ani bezstanowych wystąpień, które nie są spełnione. Umieszczanie zawiera nowe usługi i obsługa repliki stanowego lub bezstanowego wystąpień, których nie powiodła. Usuwanie i usunięcie repliki lub wystąpienia są obsługiwane w tym miejscu.
 2. Ograniczenie sprawdza — ten etap sprawdza i koryguje naruszenia ograniczeń umieszczania różnych (reguły) w systemie. Przykłady reguł jest rzeczy, takich jak zapewnienie, że węzły nie są przeciążone i że spełnione są ograniczenia umieszczania usług.
@@ -204,7 +204,7 @@ Menedżer zasobów klastra automatycznie danych liczbowych się tym, które usł
 ![Razem równoważenia usług][Image5]
 </center>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Metryki są zarządzaniu Menedżer zasobów klastra sieci szkieletowej usług konsumenckich i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryki i sposobach ich konfigurowania, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)
 * Koszt przeniesienia jest jednym ze sposobów sygnalizowania Menedżera zasobów do klastra, że niektórych usług są droższe do przeniesienia od innych. Więcej informacji o koszt przeniesienia, można znaleźć w temacie [w tym artykule](service-fabric-cluster-resource-manager-movement-cost.md)
 * Menedżer zasobów klastra ma kilka limity, które można skonfigurować tak, aby zwolnić postęp dokonany w klastrze. Nie są one zazwyczaj konieczne, ale jeśli są potrzebne informacje na temat ich [tutaj](service-fabric-cluster-resource-manager-advanced-throttling.md)

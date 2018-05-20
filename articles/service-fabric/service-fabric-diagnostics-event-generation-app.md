@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 7af0dd37b5c16e48ce4e504211e68a29cf8bce77
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b8118d83e2be452c6aa5bbc8b7a3c220d26903a1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="application-and-service-level-logging"></a>Rejestrowanie poziomu usług i aplikacji
 
@@ -28,7 +28,7 @@ Niektóre produkty automatyczną Instrumentację kodu. Mimo że te rozwiązania 
 
 Przykłady dotyczące używania tych sugestii, zobacz [Dodaj logowanie do aplikacji sieci szkieletowej usług](service-fabric-how-to-diagnostics-log.md).
 
-## <a name="eventsource"></a>EventSource
+## <a name="eventsource"></a>Źródła zdarzeń
 
 Po utworzeniu rozwiązania sieci szkieletowej usług z szablonu w programie Visual Studio, **EventSource**-klasy (**ServiceEventSource** lub **ActorEventSource**) jest generowany. Utworzyć szablonu, w którym można dodać zdarzeń dla usługi lub aplikacji. **EventSource** nazwa **musi** być unikatowa i powinny zostać zmienione z domyślnego szablonu ciągu Moja firma -&lt;rozwiązania&gt;-&lt;projektu&gt;. Istnieniem wielu **EventSource** definicje, które korzystają z tej samej nazwy powoduje problem w czasie wykonywania. Każdy zdefiniowane zdarzenie musi mieć unikatowy identyfikator. Jeśli identyfikator nie jest unikatowa, wystąpi błąd czasu wykonywania. Niektóre organizacje preassign zakresów wartości identyfikatorów uniknąć konfliktów między oddzielne zespoły deweloperów. Aby uzyskać więcej informacji, zobacz [zaliczko w blogu](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) lub [dokumentacji MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 

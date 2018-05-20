@@ -8,13 +8,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 93a4befce1f54dcc06d9a8faf31b04e5c0280276
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f758d6aec25ce0ef6bf9a0ecab34189296c81fc0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -214,7 +214,7 @@ Poniższe tabele Pokaż minimalne wymagane uprawnienia potrzebne do dołączenia
 |Tworzenie nowego domyślnego obszaru roboczego      | Microsoft.OperationalInsights/workspaces/write         | Grupa zasobów         |
 |Utwórz nowe konto      |  Microsoft.Automation/automationAccounts/write        |Grupa zasobów         |
 |Obszar roboczy łącza i konta      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|Obszar roboczy</br>Konto usługi Automation
-|Tworzenie rozwiązania      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Grupa zasobów          |
+|Utwórz rozwiązanie      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Grupa zasobów          |
 |Tworzenie rozszerzenia MMA      | Microsoft.Compute/virtualMachines/write         | Maszyna wirtualna         |
 |Utwórz zapisanego wyszukiwania      | Microsoft.OperationalInsights/workspaces/write          | Obszar roboczy         |
 |Tworzenie konfiguracji zakresu      | Microsoft.OperationalInsights/workspaces/write          | Obszar roboczy         |
@@ -237,7 +237,7 @@ Poniższe tabele Pokaż minimalne wymagane uprawnienia potrzebne do dołączenia
 |Blok AutomationOnboarding — obszaru roboczego do odczytu     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Obszar roboczy        |
 |Utwórz łącze do obszaru roboczego i konta     | Microsoft.OperationalInsights/workspaces/write        | Obszar roboczy        |
 |Konto shoebox zapisu      | Microsoft.Automation/automationAccounts/write        | Konto        |
-|Tworzenie rozwiązania      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Grupa zasobów         |
+|Utwórz rozwiązanie      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | Grupa zasobów         |
 |Utwórz/Edytuj zapisane wyszukiwania     | Microsoft.OperationalInsights/workspaces/write        | Obszar roboczy        |
 |Utwórz/Edytuj zakres konfiguracji     | Microsoft.OperationalInsights/workspaces/write        | Obszar roboczy        |
 |Rozwiązanie łącze do konfiguracji zakresu      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Rozwiązanie         |
@@ -254,8 +254,8 @@ Zarządzanie aktualizacjami osiągnie w wielu usługach do jego obsługi. W poni
 |---------|---------|---------|
 |Konto usługi Automation     | Współautor usługi Log Analytics       | Konto usługi Automation        |
 |Konto usługi Automation    | Współautor maszyny wirtualnej        | Grupa zasobów dla konta        |
-|Obszar roboczy analizy dzienników     | Współautor usługi Log Analytics| Obszar roboczy analizy dzienników        |
-|Obszar roboczy analizy dzienników |Czytelnik usługi Log Analytics| Subskrypcja|
+|Obszar roboczy usługi Log Analytics     | Współautor usługi Log Analytics| Obszar roboczy usługi Log Analytics        |
+|Obszar roboczy usługi Log Analytics |Czytelnik usługi Log Analytics| Subskrypcja|
 |Rozwiązanie     |Współautor usługi Log Analytics         | Rozwiązanie|
 |Maszyna wirtualna     | Współautor maszyny wirtualnej        | Maszyna wirtualna        |
 
@@ -388,7 +388,7 @@ Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remov
 
 W powyższych przykładach, Zastąp **zaloguj identyfikator**, **identyfikator subskrypcji**, **Nazwa grupy zasobów**, i **nazwa konta automatyzacji** z sieci Szczegóły konta. Gdy zostanie wyświetlony monit o potwierdzenie usunięcia przypisania roli do użytkownika, wybierz pozycję **Tak**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Więcej informacji dotyczących różnych sposobów konfigurowania funkcji RBAC w usłudze Azure Automation można znaleźć w artykule [Manage RBAC with Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) (Zarządzanie funkcją RBAC przy użyciu programu Azure PowerShell).
 * Szczegółowe informacje dotyczące różnych sposobów uruchamiania elementu Runbook można znaleźć w artykule [Uruchamianie elementu Runbook](automation-starting-a-runbook.md).

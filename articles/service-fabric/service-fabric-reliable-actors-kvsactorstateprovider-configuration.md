@@ -1,24 +1,24 @@
 ---
-title: "Zmień ustawienia KVSActorStateProvider w Azure mikrousług | Dokumentacja firmy Microsoft"
-description: "Informacje na temat konfigurowania stanowe uczestnikami typu KVSActorStateProvider sieć szkieletowa usług Azure."
+title: Zmień ustawienia KVSActorStateProvider w Azure mikrousług | Dokumentacja firmy Microsoft
+description: Informacje na temat konfigurowania stanowe uczestnikami typu KVSActorStateProvider sieć szkieletowa usług Azure.
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: d3424aa7a8e0f6011bbef4aa61274c1f598f5c86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f29754c73db74f02214522a4de15904e65df0e98
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurowanie Reliable Actors — KVSActorStateProvider
 Domyślna konfiguracja KVSActorStateProvider można modyfikować, zmieniając pliku settings.xml, generowany w folderze głównym pakietu Microsoft Visual Studio w folderze konfiguracji dla określonego aktora.
@@ -45,10 +45,10 @@ Domyślna konfiguracja jest generowany przez szablon programu Visual Studio i po
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Nazwy konfiguracji
-| Nazwa | Jednostka | Wartość domyślna | Uwagi |
+| Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0.015 |Okres, dla którego replikatora na dodatkowej czeka po otrzymaniu operacji przed wysłaniem z powrotem do podstawowej potwierdzenia. Inne potwierdzeń na wysłanie operacji przetwarzane w ramach tego interwału są wysyłane jako jedna odpowiedź. |
-| ReplicatorEndpoint |Nie dotyczy |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który replikatora podstawowe i pomocnicze będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punkt końcowy protokołu TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o Definiowanie zasobów punktu końcowego w manifeście usługi. |
+| ReplicatorEndpoint |ND |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który replikatora podstawowe i pomocnicze będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punkt końcowy protokołu TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o Definiowanie zasobów punktu końcowego w manifeście usługi. |
 | retryInterval |Sekundy |5 |Okres, po którym replikatora ponownie przesyła komunikat, jeśli nie otrzyma potwierdzenia dla danej operacji. |
 | MaxReplicationMessageSize |Bajty |50 MB |Maksymalny rozmiar danych replikacji, które mogą być przenoszone w pojedynczym komunikacie. |
 | MaxPrimaryReplicationQueueSize |Liczba operacji |1024 |Maksymalna liczba operacji w kolejce podstawowego. Operacja są zwalniane, gdy Replikator podstawowy otrzyma potwierdzenia od wszystkich dodatkowej replikatorów. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
@@ -62,9 +62,9 @@ Domyślna konfiguracja jest generowany przez szablon programu Visual Studio i po
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Nazwy konfiguracji
-| Nazwa | Jednostka | Wartość domyślna | Uwagi |
+| Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
-| MaxAsyncCommitDelayInMilliseconds |w milisekundach |200 |Ustawia maksymalną przetwarzanie wsadowe interwał zatwierdzeń trwałego magazynu lokalnego. |
+| MaxAsyncCommitDelayInMilliseconds |Milisekundy |200 |Ustawia maksymalną przetwarzanie wsadowe interwał zatwierdzeń trwałego magazynu lokalnego. |
 | MaxVerPages |Liczba stron |16384 |Maksymalną liczbę stron w wersji lokalnej przechowywania bazy danych. Określa maksymalną liczbę oczekujących transakcji. |
 
 ## <a name="sample-configuration-file"></a>Przykładowy plik konfiguracyjny

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-ms.openlocfilehash: 08bf4675378918097e177228ee1be4e4e690c63b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89c4c5c986375177918f14417c6b5a9a24925908
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyny Wirtualnej systemu Linux, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure
 Maszyny wirtualnej systemu Linux (VM) napotkał błąd podczas rozruchu lub dysk, należy wykonać kroki rozwiązywania problemów na wirtualnym dysku twardym, sam. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` , w związku z było pomyślnie uruchomić maszynę Wirtualną. W tym artykule szczegółowo sposób łączenia wirtualnego dysku twardego do innej maszyny Wirtualnej systemu Linux, napraw błędy, a następnie ponownie utwórz oryginalnego maszyny Wirtualnej za pomocą portalu Azure.
@@ -31,6 +31,7 @@ Proces rozwiązywania problemów jest następujący:
 4. Odłącz wirtualny dysk twardy od maszyny wirtualnej rozwiązywania problemów.
 5. Utwórz maszynę Wirtualną przy użyciu oryginalny wirtualny dysk twardy.
 
+Dla maszyny Wirtualnej używającej dysków zarządzanych, zobacz [Rozwiązywanie problemów z maszyn wirtualnych dysków zarządzanych przez Trwa dołączanie nowego dysku systemu operacyjnego](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
 
 ## <a name="determine-boot-issues"></a>Określenie zagadnień rozruchu
 Sprawdź, czy diagnostyki rozruchu i zrzut ekranu maszyny Wirtualnej w celu ustalenia, dlaczego nie będzie mógł poprawnie rozruchu maszyny Wirtualnej. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab`, lub podstawowej wirtualnego dysku twardego jest usunięty lub przeniesiony.
@@ -170,6 +171,13 @@ Szablon jest ładowany do portalu Azure do wdrożenia. Wprowadź nazwy dla nowej
 Po utworzeniu maszyny Wirtualnej z istniejącego wirtualnego dysku twardego diagnostyki rozruchu może nie automatycznie włączone. Aby sprawdzić stan diagnostyki rozruchu i włączyć, jeśli to konieczne, wybierz maszyny Wirtualnej w portalu. W obszarze **monitorowanie**, kliknij przycisk **ustawień diagnostycznych**. Upewnij się, stan jest **na**, a znacznik wyboru obok pozycji **diagnostyki rozruchu** jest zaznaczone. Jeśli wprowadzisz zmiany, kliknij przycisk **zapisać**:
 
 ![Aktualizowanie ustawień diagnostyki rozruchu](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Rozwiązywanie problemów z maszyn wirtualnych dysków zarządzanych przez Trwa dołączanie nowego dysku systemu operacyjnego
+1. Zatrzymaj następujące zarządzane dysku maszyny Wirtualnej systemu Windows.
+2. [Tworzenie migawki dysków zarządzanych w](../windows/snapshot-copy-managed-disk.md) dysku systemu operacyjnego maszyny wirtualnej dysku zarządzanego.
+3. [Tworzenie dysku zarządzanego z migawki](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+4. [Dołącz zarządzanych dysku jako dysku danych maszyny wirtualnej](../windows/attach-disk-ps.md).
+5. [Zmień dysk z danymi z kroku 4 dysk systemu operacyjnego](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli występują problemy dotyczące nawiązywania połączenia z maszyną Wirtualną, zobacz [połączeń Rozwiązywanie problemów z SSH z maszyny Wirtualnej platformy Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). W przypadku problemów z dostępem do aplikacji działających na maszynie Wirtualnej, zobacz [Rozwiązywanie problemów z łącznością aplikacji na maszynie Wirtualnej systemu Linux](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -4,13 +4,13 @@ description: Zawiera omówienie obliczeń oceny w usłudze Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 2/21/2018
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: d075ce9ee124d373a1284577324a50338245a03f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b6b3e78436a215e64894b1102c4e109f72c896d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -25,7 +25,7 @@ Wizualizacja zależności w Azure migracji służy do tworzenia grup dla migracj
 
 Azure używa migracji [mapy usługi](../operations-management-suite/operations-management-suite-service-map.md) rozwiązania [analizy dzienników](../log-analytics/log-analytics-overview.md) dla zależności wizualizacji.
 - Podczas tworzenia projektu migracji Azure obszaru roboczego analizy dzienników jest tworzony w ramach subskrypcji.
-- Nazwa obszaru roboczego jest nazwą, określ dla projektu migracji, i jest poprzedzony prefiksem **migracji-**i opcjonalnie sufiks z numerem. 
+- Nazwa obszaru roboczego jest nazwą, określ dla projektu migracji, i jest poprzedzony prefiksem **migracji-** i opcjonalnie sufiks z numerem. 
 - Przejdź do obszaru roboczego analizy dzienników z **Essentials** sekcji projektu **omówienie** strony.
 - Obszar roboczy utworzony zostanie oznaczony przy użyciu klucza **MigrateProject**i wartość **Nazwa projektu**. Te umożliwia wyszukiwanie w portalu Azure.  
 

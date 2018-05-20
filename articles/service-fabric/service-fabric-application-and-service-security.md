@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: a84e42d3a0254c90bfad2d54eda1aa8e5e35650a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fa6d46186ad833b68e60c24f742d210b7845759a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-and-service-security"></a>Sieć szkieletowa usług aplikacji i usług zabezpieczeń
 Architektura mikrousług można przełączyć [wiele korzyści](service-fabric-overview-microservices.md). Zarządzanie zabezpieczeniami elementu mikrousług, jest jednak żądanie oraz inne niż zarządzanie zabezpieczeniami tradycyjne aplikacje wbudowanymi. 
@@ -95,7 +95,7 @@ Można ustanowić bezpiecznego połączenia między zwrotnego serwera proxy i us
 Struktura aplikacji niezawodne usługi zapewnia kilka stosy wbudowane komunikacji i narzędzi, których można użyć w celu poprawy bezpieczeństwa. Dowiedz się, jak poprawić bezpieczeństwo podczas korzystania z komunikacji zdalnej usługi (w [C#](service-fabric-reliable-services-secure-communication.md) lub [Java](service-fabric-reliable-services-secure-communication-java.md)) lub przy użyciu [WCF](service-fabric-reliable-services-secure-communication-wcf.md).
 
 ## <a name="encrypt-application-data-at-rest"></a>Szyfrowanie danych aplikacji przechowywanych
-Każdy [typu węzła](service-fabric-cluster-nodetypes.md) w klastrze usługi sieć szkieletowa usług działających na platformie Azure nie jest obsługiwana przez [zestaw skali maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Przy użyciu szablonu usługi Azure Resource Manager, można dołączać dysków z danymi do zestawów skalowania, które tworzą klaster sieci szkieletowej usług.  Jeśli usługi zapisać danych na dysku w dołączonych danych, możesz [szyfrowania tych dysków danych](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) do ochrony danych aplikacji.
+Każdy [typu węzła](service-fabric-cluster-nodetypes.md) w klastrze usługi sieć szkieletowa usług działających na platformie Azure nie jest obsługiwana przez [zestaw skali maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Za pomocą szablonu usługi Azure Resource Manager możesz dołączać dyski z danymi do zestawów skalowania tworzących klaster usługi Service Fabric.  Jeśli usługi zapisać danych na dysku w dołączonych danych, możesz [szyfrowania tych dysków danych](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) do ochrony danych aplikacji.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

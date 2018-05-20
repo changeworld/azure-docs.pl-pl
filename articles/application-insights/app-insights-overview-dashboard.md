@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 89ad96441ca4d519a9f4213ae3353eea1f0a7c37
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 4b3a7425f383e1fa8145bac016aa2881d806c545
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="application-insights-overview-dashboard-preview"></a>Pulpit nawigacyjny aplikacji — omówienie Insights (wersja zapoznawcza)
 
@@ -25,23 +25,23 @@ Usługa Application Insights zawsze udostępnił okienko Podsumowanie, aby umoż
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Jak przetestować nowe środowisko
 
- W usłudze Application Insights w obszarze: _zbadaj_ wybierz _(wersja zapoznawcza) — omówienie_.
+ W usłudze Application Insights w obszarze: _omówienie_, wybierz pozycję _spróbuj nowy przegląd przed staje się on środowisko domyślne_.
 
-![Omówienie podglądu](.\media\app-insights-overview-dashboard\01.png)
+![Omówienie podglądu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-01.png)
 
 Spowoduje to uruchomienie nowego pulpitu nawigacyjnego przeglądu domyślne:
 
-![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\02.png)
+![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-02.png)
 
 ## <a name="better-performance"></a>Lepszą wydajność
 
 Prosty interfejs jednym kliknięciem uproszczonej wybranego zakresu czasu.
 
-![Przedział czasu](.\media\app-insights-overview-dashboard\04.png)
+![Przedział czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
 Ogólna wydajność znacząco zwiększono. Każdy domyślne dynamiczne aktualizowanie kafelka kluczowego wskaźnika wydajności jest połączony z odpowiedniej funkcji usługi Application Insights. Na przykład uruchamiają zaznaczając żądań zakończonych niepowodzeniem _błędów_ okienka:
 
-![Awarie](.\media\app-insights-overview-dashboard\03.png)
+![Awarie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
@@ -49,14 +49,21 @@ Pulpit nawigacyjny aplikacji korzysta z istniejących technologii pulpit nawigac
 
 Wybierz pulpit nawigacyjny domyślnego dostępu do _pulpit nawigacyjny aplikacji_ w lewym górnym rogu.
 
-![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\0009.png)
+![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
 Jeśli jest to pierwszy raz podczas uzyskiwania dostępu do pulpitu nawigacyjnego uruchamia widok domyślny:
 
-![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\06.png)
+![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
 Podczas mogą zachować widok domyślny, jeśli chcesz tak, można również dodać, a następnie usuń z pulpitu nawigacyjnego, aby jak najlepiej zgodnie z potrzebami zespołu.
 
 Aby wrócić do obsługi omówienie po prostu wybierz:
 
-![Przycisk — omówienie](.\media\app-insights-overview-dashboard\07.png)
+![Przycisk — omówienie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Lejki](usage-funnels.md)
+- [Przechowywanie](app-insights-usage-retention.md)
+- [User Flows (Przepływy użytkowników)](app-insights-usage-flows.md)
+- [Pulpity nawigacyjne](app-insights-dashboards.md)

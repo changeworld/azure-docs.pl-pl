@@ -1,24 +1,24 @@
 ---
 title: Scenariusze aplikacji i projekt | Dokumentacja firmy Microsoft
-description: "Przegląd kategorie aplikacji w sieci szkieletowej usług w chmurze. W tym artykule omówiono projekt aplikacji, która korzysta z usług stanowe i bezstanowe."
+description: Przegląd kategorie aplikacji w sieci szkieletowej usług w chmurze. W tym artykule omówiono projekt aplikacji, która korzysta z usług stanowe i bezstanowe.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 471ec6f45f4152fbac56242ef3ce906f8af00b54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0a9b24704a91d6a6893937b4ee03765fb05f092
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-scenarios"></a>Scenariusze aplikacji sieci szkieletowej usług
 Sieć szkieletowa usług Azure oferuje niezawodny i elastyczny platformę umożliwiającą zapis i uruchomić wiele typów usług i aplikacji biznesowych. Te aplikacje i mikrousług może być bezstanowe i stanowe i są równoważenia zasobów między maszynami wirtualnymi, aby zmaksymalizować wydajność. Unikatowa architektura sieci szkieletowej usług umożliwia przeprowadzanie analizy danych w czasie rzeczywistym, obliczeń w pamięci, równoległych transakcji i przetwarzania zdarzeń w aplikacjach w pobliżu. Można łatwo skalować aplikacji w górę lub w dół (naprawdę przychodzący lub wychodzący), w zależności od zmieniających się wymagań dotyczących zasobów.
@@ -50,7 +50,7 @@ Stanowe mikrousług uprościć projektów aplikacji, ponieważ będą oni mogli 
 ![Przy użyciu usługi bezstanowej aplikacji][Image2]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Nasłuchiwanie na [analizy przypadków](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=qDJnf86yC_5206218965
 )

@@ -1,24 +1,24 @@
 ---
-title: "Definine i zarządzania stanem w programie Azure mikrousług | Dokumentacja firmy Microsoft"
-description: "Definiowanie i zarządzaniu stanu usługi w sieci szkieletowej usług"
+title: Definine i zarządzania stanem w programie Azure mikrousług | Dokumentacja firmy Microsoft
+description: Definiowanie i zarządzaniu stanu usługi w sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46d2e27b9cdcb03213648982c7e9a0576838bc92
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-state"></a>Stan usługi
 **Usługa stanu** odnosi się do w pamięci lub na dysku danych, którego usługa wymaga, aby funkcja. Zawiera, na przykład struktury danych i zmienne Członkowskie, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa została zaprojektowana on może również obejmować plików lub innych zasobów, które są przechowywane na dysku. Na przykład pliki bazy danych będzie używać do przechowywania danych i dzienników transakcji.
@@ -34,7 +34,7 @@ Stan można externalized lub wspólnie z kodem, który jest manipulowanie stanu.
 
 Stan może być również znajduje się kod, który zmienia stan. Stanowych usług w sieci szkieletowej usług są zazwyczaj tworzone przy użyciu tego modelu. Sieć szkieletowa usług zapewnia infrastrukturę do zapewnienia, że ten stan jest wysoko dostępnych, spójne i trwałe i że usługi utworzone w ten sposób można łatwo skalować.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji dotyczących pojęć sieci szkieletowej usług zobacz następujące artykuły:
 
 * [Dostępność usług sieci szkieletowej usług](service-fabric-availability-services.md)

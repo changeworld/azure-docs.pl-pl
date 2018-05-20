@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 816f2c10631de3809c6679c1e2715174f072f56d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 299d3df1c9ae82bb9f184e9ffb1dd922013e5e65
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Jak skonfigurować aplikację serwera Proxy aplikacji
 
@@ -51,7 +51,7 @@ Komunikat o błędzie powinien być wyświetlany w prawym górnym rogu podczas t
 
 ## <a name="configure-connectorsconnector-groups"></a>Konfigurowanie grup łączników/łącznika
 
-Jeśli masz trudności w konfigurowaniu aplikacji z powodu ostrzeżenie na temat łączników i grup łącznika, zobacz instrukcje na temat włączania szczegółowe informacje na temat sposobu pobierania łączników serwera Proxy aplikacji. Jeśli chcesz dowiedzieć się więcej na temat łączników, zobacz [dokumentacji łączniki](application-proxy-understand-connectors.md).
+Jeśli masz trudności w konfigurowaniu aplikacji z powodu ostrzeżenie na temat łączników i grup łącznika, zobacz instrukcje na temat włączania szczegółowe informacje na temat sposobu pobierania łączników serwera Proxy aplikacji. Jeśli chcesz dowiedzieć się więcej na temat łączników, zobacz [dokumentacji łączniki](manage-apps/application-proxy-connectors.md).
 
 Jeśli łączniki nie są aktywne, oznacza to, że są w stanie uzyskać dostęp do usługi. Jest to często spowodowane wymagane porty nie są otwarte. Aby wyświetlić listę wymaganych portów, zobacz sekcję wymagania wstępne włączenie dokumentacji serwera Proxy aplikacji.
 

@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 4d5743703f3a1d98b720bd92a30c91549bbf89c0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 21274a71042c5acf38711d29a5062e9f68b6a6a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Obsługa zapory w usłudze Azure DB rozwiązania Cosmos
 Aby zabezpieczyć dane przechowywane na koncie Azure DB rozwiązania Cosmos bazy danych, bazy danych Azure rozwiązania Cosmos udostępnił pomocy technicznej na podstawie klucza tajnego [modelu autoryzacji](https://msdn.microsoft.com/library/azure/dn783368.aspx) , która zawiera kod uwierzytelniania wiadomości Hash-based silne (HMAC). Oprócz modelu autoryzacji na podstawie tajnego bazy danych Azure rozwiązania Cosmos obsługuje teraz, zasady kontroli dostępu na podstawie adresu IP dla strony Obsługa zapory dla ruchu przychodzącego zmiennych. Ten model jest podobne do reguł zapory systemu tradycyjne bazy danych i zapewnia dodatkowy poziom zabezpieczeń do bazy danych Azure rozwiązania Cosmos konta bazy danych. Z tym modelem można teraz skonfigurować konto bazy danych DB rozwiązania Cosmos Azure można uzyskiwać tylko z zatwierdzonych zbiór maszyny i/lub usług w chmurze. Dostęp do zasobów bazy danych Azure rozwiązania Cosmos z tych zestawów zatwierdzonych komputery i usługi wymagają nadal obiekt wywołujący, aby przedstawić token prawidłowego autoryzacji.
 
+> [!NOTE]
+> Obsługa zapory jest obecnie dostępne dla interfejsu API Azure rozwiązania Cosmos bazy danych SQL i interfejsu API Mongo kont. Możliwość konfigurowania zapory dla innych interfejsów API i suwerennych chmury, takich jak platformy Azure w Niemczech lub Azure dla instytucji rządowych będzie wkrótce dostępna. Jeśli zamierzasz skonfigurować punkt końcowy usługi listy ACL dla Twojego konta bazy danych Azure rozwiązania Cosmos, który nie ma istniejących zapory IP skonfigurowany, należy pamiętać, konfigurację zapory, Usuń zapory IP, a następnie skonfiguruj listy ACL punktu końcowego usługi. Po skonfigurowaniu punktu końcowego usługi można ponownie włączyć zapory IP, jeśli to konieczne.
+
 ## <a name="ip-access-control-overview"></a>Omówienie kontroli dostępu dla adresu IP
-Domyślnie konto bazy danych Azure DB rozwiązania Cosmos jest dostępny z publicznej sieci internet, tak długo, jak długo żądanie towarzyszy token prawidłowego autoryzacji. Aby skonfigurować kontroli dostępu na podstawie zasad IP, użytkownik musi podać zbiór adresów IP i zakresów adresów IP w postaci CIDR do uwzględnienia jako lista dozwolonych adresów IP klienta, konto bazy danych. Po zastosowaniu tej konfiguracji wszystkich żądań wysyłanych z komputerów spoza tej listy dozwolonych są blokowane przez serwer.  Na poniższym diagramie przedstawiono połączenia przetwarzania przepływu kontroli dostępu na podstawie adresu IP:
+Domyślnie konto usługi Azure Cosmos DB jest dostępne z publicznej sieci Internet, o ile do żądania dołączono prawidłowy token autoryzacji. Aby skonfigurować kontrolę dostępu opartą na zasadach IP, użytkownik musi podać zestaw adresów IP lub zakresów adresów IP w formacie CIDR, które będą uwzględniane jako lista dozwolonych adresów IP klienta dla danego konta bazy danych. Po zastosowaniu konfiguracji wszystkie żądania pochodzące z maszyn spoza tej listy dozwolonych będą blokowane przez serwer.  Na poniższym diagramie przedstawiono połączenia przetwarzania przepływu kontroli dostępu na podstawie adresu IP:
 
 ![Diagram przedstawiający proces łączenia dla kontroli dostępu na podstawie adresu IP](./media/firewall-support/firewall-support-flow.png)
 

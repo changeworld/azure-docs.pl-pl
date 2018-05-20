@@ -2,23 +2,22 @@
 title: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure Portal | Microsoft Docs
 description: W tym przewodniku Szybki start pokazano, jak rozpocząć pracę przez utworzenie zadania usługi Stream Analytics, skonfigurowanie danych wejściowych i wyjściowych oraz zdefiniowanie zapytania.
 services: stream-analytics
-keywords: Usługa Stream Analytics, zadania w chmurze, witryna Azure Portal, dane wejściowe zadania, dane wyjściowe zadania, przekształcenie zadania
-author: SnehaGunda
-ms.author: sngun
-ms.date: 03/16/2018
+author: mamccrea
+ms.author: mamccrea
+ms.date: 05/11/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: c421ab96585da011cdaef9933ceb8a78ffe356a9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 86d4bab282db0ffc7b48813b9817eed0b45c3199
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Szybki start: tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure Portal
 
-W tym przewodniku Szybki start pokazano, jak rozpocząć tworzenie zadania usługi Stream Analytics. W tym przewodniku Szybki start zdefiniujesz zadanie usługi Stream Analytics, które co 30 sekund będzie odczytywać przykładowe dane czujników i filtrować wiersze, których średnia temperatura przekracza 100. W tym artykule dane są odczytywane z magazynu usługi Blob Storage, przekształcane i zapisywane z powrotem do innego kontenera w tym samym magazynie usługi Blob Storage.
+W tym przewodniku Szybki start pokazano, jak rozpocząć tworzenie zadania usługi Stream Analytics. W tym przewodniku Szybki start zdefiniujesz zadanie usługi Stream Analytics, które co 30 sekund będzie odczytywać przykładowe dane czujników i filtrować wiersze, których średnia temperatura przekracza 100. W tym artykule dane są odczytywane z magazynu Blob Storage, przekształcane i zapisywane z powrotem do innego kontenera w tym samym magazynie Blob Storage. Plik danych wejściowych używany w tym przewodniku Szybki start zawiera dane statyczne przeznaczone tylko dla celów ilustracyjnych. W rzeczywistym scenariuszu są używane dane wejściowe przesyłania strumieniowego powiązane z zadaniem usługi Stream Analytics.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -28,43 +27,43 @@ W tym przewodniku Szybki start pokazano, jak rozpocząć tworzenie zadania usłu
 
 ## <a name="prepare-the-input-data"></a>Przygotowywanie danych wejściowych
 
-Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które będą konfigurowane jako dane wejściowe zadania. Uruchom następujące kroki, aby przygotować dane wejściowe wymagane przez zadanie:
+Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które będą konfigurowane jako dane wejściowe zadania. Aby przygotować dane wejściowe wymagane przez zadanie, uruchom następujące kroki:
 
-1. Pobierz [przykładowe dane czujników](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) z witryny GitHub. Przykładowe dane zawierają informacje z czujnika w następującym formacie JSON:  
+1. Pobierz [przykładowe dane czujników](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) z witryny GitHub. Przykładowe dane zawierają informacje z czujnika w następującym formacie JSON:  
 
    ```json
    {
-     "time": "2016-01-26T21:18:52.0000000",
+     "time": "2018-01-26T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
    }
    ```
-2. Logowanie się do witryny Azure Portal  
+2. Zaloguj się do Portalu Azure.  
 
-3. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób** > **Magazyn** > **Konto magazynu**. Wypełnij blok zadania konta magazynu, ustawiając pozycję **Nazwa** na wartość „myasastorageaccount”, pozycję **Lokalizacja** na „Zachodnie stany USA 2”, pozycję **Grupa zasobów** na „MyRG” (umieść konto magazynu w tej samej grupie zasobów co zadanie przesyłania strumieniowego, aby zwiększyć wydajność). Dla pozostałych ustawień można pozostawić ich wartości domyślne.  
+3. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób** > **Magazyn** > **Konto magazynu**. Wypełnij stronę zadania konta usługi Storage, ustawiając pozycję **Nazwa** na wartość „myasastorageaccount”, pozycję **Lokalizacja** na „Zachodnie stany USA 2”, a pozycję **Grupa zasobów** na „MyRG” (umieść konto magazynu w tej samej grupie zasobów, co zadanie przesyłania strumieniowego, aby zwiększyć wydajność). W przypadku pozostałych ustawień można pozostawić ich wartości domyślne.  
 
    ![Tworzenie konta magazynu](./media/stream-analytics-quick-create-portal/create-a-storage-account.png)
 
-4. W bloku **Wszystkie zasoby** znajdź konto magazynu utworzone w poprzednim kroku. Otwórz blok **Przegląd**, a następnie kafelek **Obiekty blob**.  
+4. Na stronie **Wszystkie zasoby** znajdź konto magazynu utworzone w poprzednim kroku. Otwórz stronę **Przegląd**, a następnie kafelek **Obiekty blob**.  
 
-5. W bloku **Usługa blob**, wybierz pozycję **Kontener**, podaj **nazwę** swojego kontenera, na przykład *container1* i zmień pozycję **Poziom dostępu publicznego** na wartość Obiekt blob (anonimowy dostęp tylko do odczytu dla obiektów blob), a następnie wybierz przycisk **OK**.  
+5. Na stronie **Blob Service** wybierz pozycję **Kontener**, podaj **nazwę** swojego kontenera, na przykład *container1*, i zmień pozycję **Poziom dostępu publicznego** na wartość Obiekt blob (anonimowy dostęp tylko do odczytu dla obiektów blob), a następnie wybierz przycisk **OK**.  
 
    ![Tworzenie kontenera](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 
-6. Przejdź do kontenera utworzonego w poprzednim kroku, wybierz pozycję **Przekaż** i przekaż dane czujników pochodzące z kroku 1.  
+6. Przejdź do kontenera utworzonego w poprzednim kroku. Wybierz pozycję **Przekaż**, aby przekazać dane czujników pochodzące z pierwszego kroku.  
 
    ![Przekazywanie przykładowych danych do obiektu blob](./media/stream-analytics-quick-create-portal/upload-sample-data-to-blob.png)
 
 ## <a name="create-a-stream-analytics-job"></a>Tworzenie zadania usługi Stream Analytics
 
-1. Logowanie się do witryny Azure Portal  
+1. Zaloguj się do Portalu Azure.
 
 2. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.  
 
 3. Z listy wyników wybierz pozycję **Dane + analiza** > **Zadanie usługi Stream Analytics**.  
 
-4. Wypełnij blok zadania usługi Stream Analytics następującymi informacjami:
+4. Wypełnij stronę zadania usługi Stream Analytics następującymi informacjami:
 
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
@@ -91,7 +90,7 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
 
 2. Wybierz pozycję **Dane wejściowe** > **Dodaj wejście strumienia** > **Blob Storage**.  
 
-3. Wypełnij blok **Blob Storage** następującymi wartościami:
+3. Wypełnij stronę **Blob Storage** następującymi wartościami:
 
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
@@ -110,7 +109,7 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
 
 2. Wybierz pozycję **Dane wyjściowe > Dodaj > Blob Storage**.  
 
-3. Wypełnij blok **Blob Storage** następującymi wartościami:
+3. Wypełnij stronę **Blob Storage** następującymi wartościami:
 
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
@@ -135,9 +134,9 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
    dspl AS SensorName,
    Avg(temp) AS AvgTemperature
    INTO
-     MyBlobOutput
+     BlobOutput
    FROM
-     MyBlobInput TIMESTAMP BY time
+     BlobInput TIMESTAMP BY time
    GROUP BY TumblingWindow(second,30),dspl
    HAVING Avg(temp)>100
    ```
@@ -148,9 +147,9 @@ W tej sekcji skonfigurujesz magazyn usługi Blob Storage jako dane wejściowe do
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Uruchamianie zadania usługi Stream Analytics i sprawdzanie danych wyjściowych
 
-1. Wróć do bloku przeglądu zadania i wybierz pozycję **Uruchom**  
+1. Wróć na stronę przeglądu zadania i wybierz pozycję **Uruchom**.
 
-2. W obszarze **Uruchom zadanie** dla pola **Czas rozpoczęcia** wybierz opcję **Niestandardowy**. Wybierz datę o jeden dzień wcześniejszą od przekazania pliku do magazynu usługi Blob Storage, ponieważ czas, w którym plik został przekazany jest wcześniejszy od bieżącego. Gdy wszystko będzie gotowe, wybierz pozycję **Uruchom**.  
+2. W obszarze **Uruchom zadanie** dla pola **Czas rozpoczęcia** wybierz opcję **Niestandardowy**. Wybierz `2018-01-24` jako datę początkową, ale nie zmieniaj godziny. Ta data początkowa jest wybierana, ponieważ poprzedza znacznik czasu zdarzenia z przykładowych danych. Gdy wszystko będzie gotowe, wybierz pozycję **Uruchom**.
 
    ![Uruchamianie zadania](./media/stream-analytics-quick-create-portal/start-the-job.png)
 

@@ -1,24 +1,24 @@
 ---
-title: "Dostępność usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano wykrywania błędów, trybu failover i odzyskiwania usługi"
+title: Dostępność usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft
+description: W tym artykule opisano wykrywania błędów, trybu failover i odzyskiwania usługi
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 279ba4a4-f2ef-4e4e-b164-daefd10582e4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6c23a56df48434db3b82bce70cbd3a23941a077a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 0794c0e190ecbc4cce808e94f98bb0ac63d1075a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="availability-of-service-fabric-services"></a>Dostępność usług sieci szkieletowej usług
 Ten artykuł zawiera omówienie zachowywanie dostępności usługi sieć szkieletowa usług Azure.
@@ -39,7 +39,7 @@ Jeśli replika podstawowa ulegnie awarii, Service Fabric sprawia, że jedną z a
 
 Pojęcie repliki podstawowej lub dodatkowej Active, jest nazywany *roli repliki*. Te repliki są opisane dalej w [repliki i wystąpień](service-fabric-concepts-replica-lifecycle.md) artykułu. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji dotyczących pojęć sieci szkieletowej usług zobacz następujące artykuły:
 
 - [Skalowanie usługi w sieci szkieletowej usług](service-fabric-concepts-scalability.md)

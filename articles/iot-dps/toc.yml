@@ -155,6 +155,8 @@
       href: 'https://catalog.azureiotsuite.com/'
     - name: Centrum deweloperów Azure IoT
       href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Żądania danych klienta
+      href: iot-dps-customer-data-requests.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: Narzędzie Device Explorer

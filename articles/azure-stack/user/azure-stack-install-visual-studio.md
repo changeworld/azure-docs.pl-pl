@@ -1,8 +1,8 @@
 ---
-title: "Zainstaluj program Visual Studio i połącz się stosu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się na krokach wymaganych do instalacji programu Visual Studio i połącz się stosu Azure"
+title: Zainstaluj program Visual Studio i połącz się stosu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się na krokach wymaganych do instalacji programu Visual Studio i połącz się stosu Azure
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
@@ -11,29 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 5eae2553af1e41ace878a2f8f2c1a1656c63a7c4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3eaefbe011c4d98fe9a76d4f277a76a2f167b191
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Zainstaluj program Visual Studio i połącz się stosu Azure
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Tworzenie i wdrażanie usługi Azure Resource Manager za pomocą programu Visual Studio [szablony](azure-stack-arm-templates.md) w stosie Azure. Korzystając z procedury opisanej w tym artykule można zainstalować program Visual Studio z [Azure stosu Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrznych po nawiązaniu połączenia za pośrednictwem [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). Te kroki nowej instalacji programu Visual Studio 2015 Community Edition. Przeczytaj więcej na temat [współistnienie](https://msdn.microsoft.com/library/ms246609.aspx) między inne wersje programu Visual Studio.
+Tworzenie i wdrażanie usługi Azure Resource Manager za pomocą programu Visual Studio [szablony](azure-stack-arm-templates.md) w stosie Azure. Korzystając z procedury opisanej w tym artykule można zainstalować program Visual Studio z [Azure stosu Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrznych po nawiązaniu połączenia za pośrednictwem [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). Te czynności w tym artykule dotyczą nowej instalacji programu Visual Studio 2015 Community Edition. Przeczytaj więcej na temat [współistnienie](https://msdn.microsoft.com/library/ms246609.aspx) z innymi wersjami programu Visual Studio.
 
 ## <a name="install-visual-studio"></a>Instalacja programu Visual Studio
-1. Pobierz i uruchom [Instalatora platformy sieci Web](https://www.microsoft.com/web/downloads/platform.aspx).             
-2. Wyszukaj **Visual Studio Community 2015 z zestawem Microsoft Azure SDK - 2.9.6**, kliknij przycisk **Dodaj**, i **zainstalować**.
 
-    ![Zrzut ekranu WebPI kroki instalacji](./media/azure-stack-install-visual-studio/image1.png) 
+1. Pobierz i uruchom [Instalatora platformy sieci Web](https://www.microsoft.com/web/downloads/platform.aspx).
+2. Wyszukaj **Visual Studio Community 2015 z zestawem Microsoft Azure SDK - 2.9.6**, wybierz pozycję **Dodaj**, a następnie wybierz **zainstalować**.
+
+    ![Przechwytywanie ekranu WebPI kroków instalacji](./media/azure-stack-install-visual-studio/image1.png)
 
 3. Odinstaluj **Microsoft Azure PowerShell** który jest instalowany jako część zestawu SDK platformy Azure.
 
-    ![Zrzut ekranu przedstawiający Dodaj/Usuń programy interfejs dla programu Azure PowerShell](./media/azure-stack-install-visual-studio/image2.png) 
+    ![Przechwytywanie ekranu Dodaj/Usuń programy interfejsu dla programu Azure PowerShell](./media/azure-stack-install-visual-studio/image2.png)
 
 4. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Instalowanie programu PowerShell dla usługi Azure Stack)
 
@@ -45,11 +46,11 @@ Tworzenie i wdrażanie usługi Azure Resource Manager za pomocą programu Visual
 
 2. Z **widoku** menu, wybierz opcję **Eksplorator chmury**.
 
-3. W okienku, wybierz **Dodaj konto** i zaloguj się przy użyciu poświadczeń usługi Azure Active Directory.  
-    ![Zrzut ekranu Eksplorator chmury raz zalogowany i podłączony do stosu Azure](./media/azure-stack-install-visual-studio/image6.png)
+3. W okienku, wybierz **Dodaj konto** i zaloguj się przy użyciu poświadczeń usługi Azure Active Directory.
+    ![Przechwytywanie ekranu Eksplorator chmury po znaku w i jest połączony Azure stosu](./media/azure-stack-install-visual-studio/image6.png)
 
-Po zalogowaniu, możesz [wdrażanie szablonów](azure-stack-deploy-template-visual-studio.md) lub przeglądanie dostępnych typów zasobów i grup zasobów, aby tworzyć własne szablony.  
+Po zalogowaniu, możesz [wdrażanie szablonów](azure-stack-deploy-template-visual-studio.md) lub przeglądanie dostępnych typów zasobów i grup zasobów, aby tworzyć własne szablony.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
- - [Tworzenie szablonów dla stosu Azure](azure-stack-develop-templates.md)
+* [Tworzenie szablonów dla stosu Azure](azure-stack-develop-templates.md)

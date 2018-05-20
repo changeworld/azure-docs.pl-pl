@@ -1,0 +1,163 @@
+- name: Dokumentacja usługi Virtual Machine Scale Sets
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to są zestawy skalowania maszyn wirtualnych?
+      href: overview.md
+- name: Przewodniki Szybki start
+  items:
+    - name: Tworzenie w witrynie Azure Portal
+      href: quick-create-portal.md
+    - name: Tworzenie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+      href: quick-create-cli.md
+    - name: Tworzenie przy użyciu programu Azure PowerShell
+      href: quick-create-powershell.md
+    - name: Tworzenie przy użyciu szablonu
+      items:
+        - name: Zestaw skalowania dla systemu Linux
+          href: quick-create-template-linux.md
+        - name: Zestaw skalowania dla systemu Windows
+          href: quick-create-template-windows.md
+- name: Samouczki
+  items:
+    - name: 1 — Tworzenie zestawów skalowania i zarządzanie nimi
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure 2.0
+          href: tutorial-create-and-manage-cli.md
+        - name: Azure PowerShell
+          href: tutorial-create-and-manage-powershell.md
+    - name: 2 — Korzystanie z dysków danych
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure 2.0
+          href: tutorial-use-disks-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-disks-powershell.md
+    - name: 3 — Korzystanie z niestandardowego obrazu maszyny wirtualnej
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure 2.0
+          href: tutorial-use-custom-image-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-custom-image-powershell.md
+    - name: 4 — Wdrażanie aplikacji w zestawie skalowania
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure 2.0
+          href: tutorial-install-apps-cli.md
+        - name: Azure PowerShell
+          href: tutorial-install-apps-powershell.md
+        - name: Szablon
+          href: tutorial-install-apps-template.md
+    - name: 5 — Automatyczne skalowanie zestawu skalowania
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure 2.0
+          href: tutorial-autoscale-cli.md
+        - name: Azure PowerShell
+          href: tutorial-autoscale-powershell.md
+        - name: Szablon
+          href: tutorial-autoscale-template.md
+    - name: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure za pomocą niestandardowego obrazu narzędzia Packer
+      items:
+        - name: Interfejs wiersza polecenia platformy Azure 2.0
+          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
+- name: Przykłady
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure 2.0
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+- name: Instrukcje
+  items:
+    - name: Planowanie i projektowanie
+      items:
+        - name: Zagadnienia dotyczące projektowania
+          href: virtual-machine-scale-sets-design-overview.md
+        - name: Omówienie identyfikatorów wystąpień
+          href: virtual-machine-scale-sets-instance-ids.md
+    - name: Tworzenie szablonu
+      items:
+        - name: Informacje na temat szablonów zestawów dostępności
+          href: virtual-machine-scale-sets-mvss-start.md
+        - name: Korzystanie z istniejącej sieci wirtualnej
+          href: virtual-machine-scale-sets-mvss-existing-vnet.md
+        - name: Korzystanie z obrazu niestandardowego
+          href: virtual-machine-scale-sets-mvss-custom-image.md
+        - name: Używanie skalowania automatycznego na podstawie gościa za pomocą szablonu zestawu skalowania systemu Linux
+          href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
+    - name: Wdrażanie
+      items:
+        - name: Tworzenie przy użyciu programu Visual Studio
+          href: virtual-machine-scale-sets-vs-create.md
+        - name: Korzystanie ze stref dostępności
+          href: virtual-machine-scale-sets-use-availability-zones.md
+        - name: Automatyczne skalowanie zestawu skalowania
+          href: virtual-machine-scale-sets-autoscale-overview.md
+          items:
+            - name: Korzystanie z witryny Azure Portal
+              href: virtual-machine-scale-sets-autoscale-portal.md
+            - name: Zaawansowane automatyczne skalowanie
+              href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: Aplikacje w zestawach skalowania
+          href: virtual-machine-scale-sets-deploy-app.md
+        - name: Korzystanie z dysków danych z zestawami skalowania
+          href: virtual-machine-scale-sets-attached-disks.md
+        - name: Szyfrowanie dysków w zestawach skalowania
+          items:
+            - name: Korzystanie z programu PowerShell
+              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+            - name: Korzystanie z interfejsu wiersza polecenia platformy Azure 2.0
+              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+        - name: Praca z dużymi zestawami skalowania
+          href: virtual-machine-scale-sets-placement-groups.md
+        - name: Konwertowanie szablonu zestawu skalowania w celu używania dysku zarządzanego
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Korzystanie z niskiego priorytetu
+          href: virtual-machine-scale-sets-use-low-priority.md
+    - name: Zarządzanie
+      items:
+        - name: Typowe zadania zarządzania
+          items:
+            - name: Korzystanie z interfejsu wiersza polecenia platformy Azure 2.0
+              href: virtual-machine-scale-sets-manage-cli.md
+            - name: Korzystanie z programu Azure PowerShell
+              href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Skalowanie w pionie w zestawie skalowania
+          href: virtual-machine-scale-sets-vertical-scale-reprovision.md
+        - name: Automatyczne uaktualnienia systemu operacyjnego
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Modyfikowanie zestawu skalowania
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Korzystanie z konfiguracji DSC i zestawów skalowania
+          href: virtual-machine-scale-sets-dsc.md
+        - name: Sieć dla zestawów skalowania
+          href: virtual-machine-scale-sets-networking.md
+        - name: Konwertowanie szablonu na dyski zarządzane
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+    - name: Rozwiązywanie problemów
+      items:
+        - name: Automatyczne skalowanie
+          href: virtual-machine-scale-sets-troubleshoot.md
+    - name: Często zadawane pytania
+      items:
+        - name: Zestaw skalowania — często zadawane pytania
+          href: virtual-machine-scale-sets-faq.md
+- name: Dokumentacja
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: ../virtual-machines/azure-cli-arm-commands.md
+    - name: REST
+      href: /rest/api/virtualmachinescalesets/
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Cennik
+      items:
+        - name: Linux
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
+        - name: Windows
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-vm-scale-set'

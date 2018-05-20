@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Rozwiązywanie problemów z synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -154,7 +154,7 @@ Jeśli synchronizacja nie powiedzie się na serwerze:
     2. Sprawdź, czy usługa synchronizacji Azure pliku jest uruchomiona na serwerze. Aby to zrobić, otwórz przystawkę MMC usług i sprawdź, czy jest uruchomiona usługa agenta synchronizacji magazynu (FileSyncSvc).
 
 <a id="replica-not-ready"></a>**Synchronizacja nie powiedzie się, z powodu następującego błędu: "0x80c8300f — replika nie jest gotowa do wykonania żądanej operacji"**  
-Ten problem powinien po utworzeniu punktu końcowego w chmurze i użyj udziału plików na platformę Azure, która zawiera dane. Po zakończeniu zadania wykrywania zmian uruchomione w udziale plików na platformę Azure (może potrwać do 24 godzin) synchronizacji należy zacząć działać poprawnie.
+Ten problem powinien po utworzeniu punktu końcowego w chmurze i użyj udziału plików na platformę Azure, która zawiera dane. Zadanie wykrywania zmian, które skanuje w poszukiwaniu zmian w udziale plików Azure jest zaplanowane do uruchamiania raz na 24 godziny.  Czas wymagany do ukończenia jest zależna od rozmiaru przestrzeni nazw w udziale plików Azure.  Ten błąd powinien już wyświetlane po wykonaniu tych czynności.
 
 
     > [!NOTE]

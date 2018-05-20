@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: a6b75b3804e7736fe5203caecb8c6badcfbf9ab4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 99e429a2f82d1a9b8d9a87fb3eb4102183c19fe8
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regiony i dostępność maszyn wirtualnych na platformie Azure
 Platforma Azure działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
@@ -104,11 +104,11 @@ Domena aktualizacji to logiczne grupowanie odpowiednich elementów sprzętu, kt�
 ### <a name="managed-disk-fault-domains"></a>Zarządzane domenach awarii dysku
 Maszyny wirtualne korzystające z usługi [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) są przydzielane do domen błędów dysków zarządzanych w przypadku korzystania z zarządzanego zestawu dostępności. Dzięki takiemu dopasowaniu wszystkie dyski zarządzane dołączone do maszyny wirtualnej działają w tej samej domenie błędów dysku zarządzanego. W zarządzanym zestawie dostępności można tworzyć tylko maszyny wirtualne z użyciem dysków zarządzanych. Liczba domen błędów dysku zarządzanego zależy od regionu — dwie lub trzy domeny błędów dysku zarządzanego na region. Możesz przeczytać dodatkowe informacje dotyczące tych zarządzanych domen błędów dysku dla [maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) lub [maszyn wirtualnych systemu Windows](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
 
-## <a name="availability-zones"></a>Dostępność strefy
+## <a name="availability-zones"></a>Strefy dostępności
 
-[Dostępność strefy](../articles/availability-zones/az-overview.md), ustawia zamiast dostępności, rozwiń poziom kontroli należy zachować dostępność aplikacje i dane maszyn wirtualnych. Strefa dostępności to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Istnieją trzy strefy dostępności na obsługiwany region platformy Azure. Każdej strefy dostępności ma oddzielny zasilania źródła, sieci i chłodzenia i jest logicznie oddzielona od innych stref dostępności w obrębie regionu Azure. Przez projektowania rozwiązań do użycia w strefach replikowanych maszyn wirtualnych, można chronić aplikacji i danych z utraty możliwości Centrum danych. W przypadku złamania zabezpieczeń jednego strefy, następnie replikowanych aplikacje i dane są dostępne natychmiast w innej strefie. 
+[Dostępność strefy](../articles/availability-zones/az-overview.md), ustawia zamiast dostępności, rozwiń poziom kontroli należy zachować dostępność aplikacje i dane maszyn wirtualnych. Strefa dostępności to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Istnieją trzy strefy dostępności na obsługiwany region platformy Azure. Każda strefa dostępności ma oddzielne źródło zasilania, sieć i chłodzenie. Przez projektowania rozwiązań do użycia w strefach replikowanych maszyn wirtualnych, można chronić aplikacji i danych z utraty możliwości Centrum danych. W przypadku złamania zabezpieczeń jednego strefy, następnie replikowanych aplikacje i dane są dostępne natychmiast w innej strefie. 
 
-![Dostępność strefy](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![Strefy dostępności](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
 Dowiedz się więcej o wdrażaniu [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) lub [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) maszyny Wirtualnej w strefie dostępności.
 

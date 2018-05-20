@@ -1,24 +1,24 @@
 ---
-title: "Menedżer zasobów klastra usługi sieć szkieletowa — koligacji | Dokumentacja firmy Microsoft"
-description: "Omówienie konfigurowania koligacji dla usługi sieci szkieletowej usług"
+title: Menedżer zasobów klastra usługi sieć szkieletowa — koligacji | Dokumentacja firmy Microsoft
+description: Omówienie konfigurowania koligacji dla usługi sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8122f1644da25a9a2ab05291dafc33c77a91147f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurowanie i używanie koligację usługi w sieci szkieletowej usług
 Koligacja jest formant, który znajduje się głównie do pomóc w usprawnieniu przejścia większych wbudowanymi aplikacji w chmurze i mikrousług świecie. Jest również używany jako optymalizacji dla poprawy wydajności usług, mimo że ten sposób może mieć efekty uboczne.
@@ -77,7 +77,7 @@ Innym czynnikiem, który należy pamiętać o relacjach koligacji dzisiaj te są
 ### <a name="partitioning-support"></a>Partycjonowanie pomocy technicznej
 Końcowy jest, aby uwagi dotyczące koligacji jest koligacji, że relacje nie są obsługiwane, gdy element nadrzędny jest podzielona na partycje. Usługi nadrzędnej podzielonym na partycje, które mogą być obsługiwane po pewnym czasie, ale obecnie nie jest dozwolone.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat konfigurowania usługi [Dowiedz się więcej o konfigurowaniu usługi](service-fabric-cluster-resource-manager-configure-services.md)
 - Do ograniczenia usług niewielki zestaw komputerów lub agregowanie obciążenie usługi, użyj [grup aplikacji](service-fabric-cluster-resource-manager-application-groups.md)
 

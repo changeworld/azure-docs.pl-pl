@@ -13,17 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0174f688cb3fd04fdd41714d54a7371319bae951
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: 7da04f5561615c2e05821d5ef52a3653cb08fda5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
 W tym temacie przedstawiono sposób użycia [portalu Azure](https://portal.azure.com) z [usługi Azure Resource Manager](resource-group-overview.md) wdrażania zasobów platformy Azure. Aby uzyskać informacje dotyczące zarządzania zasobami, zobacz [zasobów Azure zarządzania za pośrednictwem portalu](resource-group-portal.md).
-
-[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 

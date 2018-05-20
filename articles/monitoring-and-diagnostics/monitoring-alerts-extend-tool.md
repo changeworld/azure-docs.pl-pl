@@ -11,16 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: 0de596f454a1e79b1f5540854897bd15f8de88c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Jak rozszerzyć alerty (Kopiuj) z pakietu OMS na platformie Azure
 Począwszy od **14 maja 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
+
+> [!NOTE]
+> Uruchamianie 14 maja 2018 - Microsoft rozpocznie się proces automatycznie rozszerzanie alerty na platformie Azure. Nie wszystkie obszary robocze i alertów zostanie rozszerzony w tym dniu; Zamiast tego Microsoft rozpocznie rozszerzyć alerty automatycznie w transzach w przyszłych tygodni. Dlatego alerty w portalu OMS zostanie nie auto rozszerzania na platformie Azure natychmiast na 14 maja 2018 a użytkownika można nadal ręcznie rozszerzenie alerty za pomocą opcji szczegóły poniżej.
 
 Klienci chcą Przenieś alerty z usługą OMS na platformie Azure, to zrobić za pomocą jednej z opcji podane.
 

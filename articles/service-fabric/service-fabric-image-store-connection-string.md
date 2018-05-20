@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 3c34a3851dbb5c5258b3dc0cf35a510f62cbe14e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 7d164fea62afac83c4fe2216c56a9980d9279f3a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Zrozumienie ustawienie element ImageStoreConnectionString
 
@@ -34,7 +34,7 @@ Obecnie istnieją trzy możliwe typy dostawców magazynu obrazów i ich odpowied
 
 2. System plików: "Ścieżka systemu file:[file]"
 
-3. Azure Storage: "xstore:DefaultEndpointsProtocol=https;AccountName=[...];AccountKey=[...];Container=[...]"
+3. Magazyn Azure: "xstore: defaultendpointsprotocol = https; AccountName = [...]; AccountKey = [...]; Kontener = [...] "
 
 Typ dostawcy używany w środowisku produkcyjnym stanowi usługę Magazyn obrazu, który jest usługa stanowa systemowa utrwalonego widać w narzędziu Service Fabric Explorer. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Skonfiguruj niezawodnej mikrousług Azure | Dokumentacja firmy Microsoft"
-description: "Informacje na temat konfigurowania stanowe niezawodne usługi w sieci szkieletowej usług Azure."
+title: Skonfiguruj niezawodnej mikrousług Azure | Dokumentacja firmy Microsoft
+description: Informacje na temat konfigurowania stanowe niezawodne usługi w sieci szkieletowej usług Azure.
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 84111b37f5cdecf377442bca0b15af2092d57414
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5aaf9869326f2de86d3bff33f36e8f967f3e6fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configure-stateful-reliable-services"></a>Skonfiguruj stanowe niezawodne usługi
 Istnieją dwa zestawy ustawień konfiguracji niezawodne usługi. Jeden zestaw jest globalne dla wszystkich usług niezawodnej w klastrze, gdy drugi zestaw jest przeznaczony dla konkretnego niezawodnej usługi.
@@ -27,13 +27,13 @@ Istnieją dwa zestawy ustawień konfiguracji niezawodne usługi. Jeden zestaw je
 W manifeście klastra dla klastra, w sekcji KtlLogger określana jest Konfiguracja niezawodnej usługi globalne. Go umożliwia skonfigurowanie lokalizacji udostępnionej dziennika i rozmiaru i limity pamięci globalnej używane przez rejestratora. Plik manifestu klastra to pojedynczy plik XML, który przechowuje ustawienia i konfiguracje, które są stosowane do wszystkich węzłów i usług w klastrze. Plik jest zwykle nazywany ClusterManifest.xml. Widać klastra dla klastra przy użyciu polecenia programu powershell Get-ServiceFabricClusterManifest manifestu.
 
 ### <a name="configuration-names"></a>Nazwy konfiguracji
-| Nazwa | Jednostka | Wartość domyślna | Uwagi |
+| Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kilobajtów |8388608 |Minimalna liczba KB przydzielić w trybie jądra dla puli pamięci buforu zapisu rejestratora. Tej puli pamięci jest używana do buforowania informacji o stanie przed zapisu na dysku. |
-| WriteBufferMemoryPoolMaximumInKB |Kilobajtów |Bez ograniczeń |Maksymalny rozmiar, do którego rejestratora zapisu puli bufora pamięci można powiększać. |
-| SharedLogId |IDENTYFIKATOR GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania domyślne udostępniony plik dziennika używanych przez wszystkie usługi niezawodnego we wszystkich węzłach w klastrze, które nie określają SharedLogId ich określonej konfiguracji usługi. Jeśli określono SharedLogId, to SharedLogPath należy również określić. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobajty |8388608 |Minimalna liczba KB przydzielić w trybie jądra dla puli pamięci buforu zapisu rejestratora. Tej puli pamięci jest używana do buforowania informacji o stanie przed zapisu na dysku. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobajty |Bez ograniczeń |Maksymalny rozmiar, do którego rejestratora zapisu puli bufora pamięci można powiększać. |
+| SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania domyślne udostępniony plik dziennika używanych przez wszystkie usługi niezawodnego we wszystkich węzłach w klastrze, które nie określają SharedLogId ich określonej konfiguracji usługi. Jeśli określono SharedLogId, to SharedLogPath należy również określić. |
 | SharedLogPath |W pełni kwalifikowana nazwa |"" |Określa pełną ścieżkę, w którym plik dziennika udostępniony używany przez wszystkie niezawodnej usługi na wszystkich węzłach w klastrze, które nie określają SharedLogPath ich określonej konfiguracji usługi. Jednak jeśli SharedLogPath jest określona, to SharedLogId należy również określić. |
-| SharedLogSizeInMB |Megabajtów |8192 |Określa liczbę MB miejsca na dysku przydzielić statycznie dla dziennika udostępniony. Wartość musi być 2048 lub większy. |
+| SharedLogSizeInMB |Megabajty |8192 |Określa liczbę MB miejsca na dysku przydzielić statycznie dla dziennika udostępniony. Wartość musi być 2048 lub większy. |
 
 Azure ARM lub lokalnymi JSON szablonu w poniższym przykładzie pokazano, jak zmienić dziennika transakcji udostępnionego, który jest tworzony kopii wszystkie kolekcje niezawodnych usług stanowych.
 
@@ -103,10 +103,10 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Nazwy konfiguracji
-| Nazwa | Jednostka | Wartość domyślna | Uwagi |
+| Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0.015 |Okres, dla którego replikatora na dodatkowej czeka po otrzymaniu operacji przed wysłaniem z powrotem do podstawowej potwierdzenia. Inne potwierdzeń na wysłanie operacji przetwarzane w ramach tego interwału są wysyłane jako jedna odpowiedź. |
-| ReplicatorEndpoint |Nie dotyczy |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który replikatora podstawowe i pomocnicze będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punkt końcowy protokołu TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o Definiowanie zasobów punktu końcowego w manifeście usługi. |
+| ReplicatorEndpoint |ND |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który replikatora podstawowe i pomocnicze będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punkt końcowy protokołu TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o Definiowanie zasobów punktu końcowego w manifeście usługi. |
 | MaxPrimaryReplicationQueueSize |Liczba operacji |8192 |Maksymalna liczba operacji w kolejce podstawowego. Operacja są zwalniane, gdy Replikator podstawowy otrzyma potwierdzenia od wszystkich dodatkowej replikatorów. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
 | MaxSecondaryReplicationQueueSize |Liczba operacji |16384 |Maksymalna liczba operacji w kolejce dodatkowej. Operacja są zwalniane po dokonaniu jej stan wysokiej dostępności za pośrednictwem trwałości. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
 | CheckpointThresholdInMB |MB |50 |Ilość miejsca pliku dziennika, po upływie którego stan jest w użyciu. |
@@ -115,7 +115,7 @@ ReplicatorConfig
 | TruncationThresholdFactor |Współczynnik |2 |Określa, w jaki rozmiar dziennika zostanie wywołane obcięcie. Obcięcie wartości progowej, jest określana przez MinLogSizeInMB pomnożona przez TruncationThresholdFactor. TruncationThresholdFactor musi być większa niż 1. MinLogSizeInMB * TruncationThresholdFactor musi być mniejsza niż MaxStreamSizeInMB. |
 | ThrottlingThresholdFactor |Współczynnik |4 |Określa, w jaki rozmiar dziennika repliki rozpocznie się ograniczane. Próg ograniczenia przepustowości (w MB) jest określana przez Max ((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)). Próg ograniczenia przepustowości (w MB) musi być większy niż próg obcięcie (w MB). Próg obcięcie (w MB) musi być mniejsza niż MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Maksymalna liczba zebranych elementów rozmiar (w MB) kopii zapasowych dzienników łańcucha danej kopii zapasowej dziennika. Przyrostowej kopii zapasowej żądań zakończy się niepowodzeniem, jeśli wygenerowanie kopii zapasowej dziennika, spowodowałoby skumulowany dzienniki kopii zapasowych od odpowiednich pełnej kopii zapasowej będzie większy niż rozmiar przyrostowej kopii zapasowej. W takim przypadku użytkownik musi wykonać pełną kopię zapasową. |
-| SharedLogId |IDENTYFIKATOR GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania pliku dziennika udostępniony używany z tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogId jest określona, to SharedLogPath należy również określić. |
+| SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania pliku dziennika udostępniony używany z tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogId jest określona, to SharedLogPath należy również określić. |
 | SharedLogPath |W pełni kwalifikowana nazwa |"" |Określa pełną ścieżkę, w którym zostanie utworzony plik dziennika udostępniony dla tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogPath jest określona, to SharedLogId należy również określić. |
 | SlowApiMonitoringDuration |Sekundy |300 |Określa interwał monitorowania zarządzanego interfejsu API. Przykład: podany przez użytkownika funkcja tworzenia kopii zapasowej wywołania zwrotnego. Po upływie interwału Raport kondycji ostrzeżenie zostanie wysłany do Menedżera kondycji. |
 
@@ -183,7 +183,7 @@ Ustawienie MaxRecordSizeInKB określa maksymalny rozmiar rekordu, które mogą b
 
 Ustawienia SharedLogId i SharedLogPath zawsze są używane razem aby używać oddzielnego dziennika udostępniony z domyślnego dziennika udostępniony dla węzła usługi. Dla zapewnienia optymalnej wydajności dowolną liczbę usług, jak to możliwe, należy określić tego samego udostępnionego dziennika. Udostępnione pliki dziennika powinna zostać umieszczona na dyskach, które są używane wyłącznie do pliku dziennika udostępniony do zmniejszenia rywalizacji przepływu head. Oczekuje się, że ta wartość będzie muszą zostać zmienione tylko sporadycznie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Debugowanie aplikacji sieci szkieletowej usług w programie Visual Studio](service-fabric-debugging-your-application.md)
 * [Dokumentacja dla deweloperów dla niezawodne usługi](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

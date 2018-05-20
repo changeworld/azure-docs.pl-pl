@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie szczegółowych informacji z bazy danych Azure Blockchain Workbench
-description: Dowiedz się, jak uzyskać Azure Blockchain Workbench bazy danych i informacji o serwerze bazy danych.
+title: Uzyskiwanie szczegółów bazy danych usługi Azure Blockchain Workbench
+description: Dowiedz się, jak uzyskać informacje o bazie danych usługi Azure Blockchain Workbench i o serwerze bazy danych.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,42 +10,43 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: bf7cc85e823e6630dbd3278bc91fba85f404059f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 63b718bcb8722c5fd501891d162eadfae9fb8ec2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Pobierz informacje o bazie danych Azure Blockchain Workbench
+# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Pobieranie informacji o bazie danych usługi Azure Blockchain Workbench
 
-W tym artykule pokazano, jak uzyskać szczegółowe informacje o bazie danych Azure Blockchain Workbench.
+W tym artykule pokazano, jak uzyskać szczegółowe informacje o bazie danych usługi Azure Blockchain Workbench.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Informacje o aplikacji, przepływy pracy i wykonywania inteligentne kontraktu podano korzystanie z widoków bazy danych w bazie danych SQL Workbench Blockchain. Deweloperzy mogą używać tych informacji, korzystając z narzędzi, takich jak program Microsoft Excel, usługa Power BI Visual Studio i SQL Server Management Studio.
+Informacje o aplikacjach, przepływach pracy i wykonywaniu kontraktów inteligentnych są podane przy użyciu widoków bazy danych w bazie danych SQL usługi Blockchain Workbench. Deweloperzy mogą korzystać z tych informacji podczas używania narzędzi takich jak program Microsoft Excel, usługa Power BI, program Visual Studio i program SQL Server Management Studio.
 
-Aby deweloperzy mogą łączyć się z bazą danych, potrzebują:
+Aby deweloperzy mogli łączyć się z bazą danych, potrzebują następujących elementów:
 
-* Dostęp klienta zewnętrznego dozwolone w zaporze bazy danych. W tym artykule o konfigurowaniu artykułu zapory bazy danych wyjaśniono, jak zezwolić na dostęp.
-* Nazwa serwera bazy danych i nazwę bazy danych.
+* Dostęp klienta zewnętrznego dozwolony w zaporze bazy danych. W tym artykule na temat konfigurowania zapory bazy danych wyjaśniono, jak zezwolić na dostęp.
+* Nazwa serwera bazy danych i nazwa bazy danych.
 
-## <a name="connect-to-the-blockchain-workbench-database"></a>Połączenie z bazą danych Blockchain Workbench
+## <a name="connect-to-the-blockchain-workbench-database"></a>Nawiązywanie połączenia z bazą danych usługi Workbench Blockchain
 
-Do połączenia z bazą danych:
+Aby połączyć się z bazą danych:
 
-1. Zaloguj się do portalu Azure za pomocą konta mającego **właściciela** uprawnienia do zasobów Azure Blockchain Workbench.
-2. W okienku nawigacji po lewej stronie wybierz **grup zasobów**.
-3. Wybierz nazwę grupy zasobów dla danego wdrożenia Blockchain Workbench.
-4. Wybierz **typu** sortowanie listy zasobów, a następnie wybierz pozycję z **programu SQL server**. Posortowanej listy w następnym Przechwytywanie ekranu znajdują się dwie bazy danych SQL, "główny" i korzystającą "lhgn" jako **prefiks zasobów**.
+1. Zaloguj się do witryny Azure Portal za pomocą konta z uprawnieniami **Właściciel** do zasobów usługi Azure Blockchain Workbench.
+2. W lewym okienku nawigacji wybierz pozycję **Grupy zasobów**.
+3. Wybierz nazwę grupy zasobów dla danego wdrożenia usługi Blockchain Workbench.
+4. Wybierz **Typ**, aby posortować listę zasobów, a następnie wybierz **program SQL Server**. Posortowana lista na następnym zrzucie ekranu pokazuje dwie bazy danych SQL, „master” i drugą, która używa ciągu „lhgn” jako **prefiksu zasobów**.
 
-   ![Posortowaną listę zasobów Blockchain Workbench](media/blockchain-workbench-getdb-details/sorted-workbench-resource-list.png)
+   ![Posortowana lista zasobów usługi Blockchain Workbench](media/blockchain-workbench-getdb-details/sorted-workbench-resource-list.png)
 
-5. Aby wyświetlić szczegółowe informacje o bazie danych Blockchain Workbench, wybierz łącze bazy danych o **prefiks zasobów** podane Blockchain Workbench do wdrażania.
+5. Aby wyświetlić szczegółowe informacje o bazie danych usługi Blockchain Workbench, wybierz link bazy danych z **prefiksem zasobów** podanym podczas wdrażania usługi Blockchain Workbench.
 
    ![Szczegóły bazy danych](media/blockchain-workbench-getdb-details/workbench-db-details.png)
 
-Nazwa serwera bazy danych i nazwę bazy danych pozwalają połączyć z bazą danych Blockchain Workbench przy użyciu programowania lub narzędzia raportowania.
+Nazwa serwera bazy danych i nazwa bazy danych pozwalają nawiązać połączenie z bazą danych usługi Blockchain Workbench przy użyciu narzędzia do programowania lub raportowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Widoki bazy danych w Azure Blockchain Workbench](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Widoki bazy danych w usłudze Azure Blockchain Workbench](blockchain-workbench-database-views.md)

@@ -1,24 +1,24 @@
 ---
-title: "Konfigurowanie klastra autonomiczny sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak konfigurować autonomicznych lub lokalnego klastra usługi sieć szkieletowa usług Azure."
+title: Konfigurowanie klastra autonomiczny sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak konfigurować autonomicznych lub lokalnego klastra usługi sieć szkieletowa usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: bd6e5c1591d01329d95ccb168e5a14e436920baf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Ustawienia konfiguracji dla autonomicznych klastra systemu Windows
 W tym artykule opisano sposób konfigurowania klastra usługi sieć szkieletowa usług Azure autonomiczny przy użyciu pliku pliku ClusterConfig.json. Aby podać informacje o węzłach klastra, konfiguracjach zabezpieczeń, a także topologii sieci w domenach awarii i uaktualniania użyjesz tego pliku.
@@ -200,6 +200,6 @@ Aby skonfigurować dodatkowe funkcje, skonfigurować apiVersion jako 04 2017 lub
 Aby włączyć obsługę kontenera kontenery systemu Windows Server i kontenerami autonomicznych klastrów funkcji Hyper-V, funkcja dodatku DnsService musi być włączona.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po pełny plik pliku ClusterConfig.json skonfigurowany zgodnie z autonomicznej ustawień klastra, można wdrożyć klaster. Postępuj zgodnie z instrukcjami [tworzenia klastra usługi sieć szkieletowa autonomiczny](service-fabric-cluster-creation-for-windows-server.md). Następnie przejdź do [wizualizowanie klastra za pomocą Eksploratora usługi sieć szkieletowa](service-fabric-visualizing-your-cluster.md) i postępuj zgodnie z instrukcjami.
 

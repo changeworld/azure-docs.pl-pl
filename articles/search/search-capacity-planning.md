@@ -1,5 +1,5 @@
 ---
-title: Planowanie wydajności dla usługi Azure Search | Dokumentacja firmy Microsoft
+title: Przydziel partycji i replik kwerendy i indeksowania w usłudze Azure Search | Dokumentacja firmy Microsoft
 description: Dostosuj partycji i replik zasobów komputera w usłudze Azure Search, gdzie w jednostkach rozliczeniowy wyszukiwania kosztuje każdego zasobu.
 author: HeidiSteen
 manager: cgronlun
@@ -8,13 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b6c2c8283d5a60013c525db296bf84cc50d76617
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Poziomy zasobów skali kwerendy i indeksowania obciążeń w usłudze Azure Search
+# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Przydziel partycji i replik kwerendy i indeksowania obciążeń w usłudze Azure Search
 Po [wybierz warstwę cenową](search-sku-tier.md) i [alokowanie usługi wyszukiwania](search-create-service-portal.md), następnym krokiem jest opcjonalnie zwiększenie liczby replikami lub partycje używane przez usługę. Każda warstwa oferuje ustalona liczba jednostek rozliczeń. W tym artykule opisano sposób przydzielania tych jednostek, aby osiągnąć optymalną konfigurację, który równoważy wymagania dotyczące wykonywania zapytania, indeksowanie i magazynu.
 
 Konfiguracja zasobu jest dostępna podczas konfigurowania usługi po [warstwy Basic](http://aka.ms/azuresearchbasic) lub jeden z [warstwy standardowa](search-limits-quotas-capacity.md). W przypadku usług w tych warstwach pojemności jest zakupić według przyrostów *jednostek wyszukiwania* (SUs) gdzie każdej partycji i replik liczone jako jeden SU. 

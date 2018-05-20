@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 1d0ae04bee6d50456949529449b658907d338f91
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej systemu Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -34,6 +34,7 @@ Istnieje wiele zalet przy użyciu uwierzytelniania usługi Azure AD do logowania
   - Dzięki zmniejszeniu sieci zależy od konta administratora lokalnego, nie trzeba martwić się o utracie/kradzieżą poświadczeń, użytkownicy konfigurowania poświadczeń słabe itp.
   - Złożoność hasła, a hasło okres istnienia zasady skonfigurowane dla katalogu usługi Azure AD pomocy bezpiecznego maszyn wirtualnych systemu Linux również.
   - Do dalszego bezpiecznego logowania do maszyn wirtualnych platformy Azure można skonfigurować usługę Multi-Factor authentication.
+  - Możliwość logowania do maszyn wirtualnych systemu Linux w usłudze Azure Active Directory działa także dla klientów korzystających z [usług federacyjnych](../../active-directory/connect/active-directory-aadconnectfed-whatis.md).
 
 - **Bezproblemowe współpracy:** With Role-Based kontroli dostępu (RBAC), można określić kto może Zaloguj się do danej maszyny Wirtualnej przez użytkowników lub z uprawnieniami administratora. Gdy użytkownicy join lub pozostaw zespołu, należy zaktualizować zasady RBAC dla maszyny Wirtualnej, aby udzielić dostępu, zależnie od potrzeb. To środowisko jest znacznie łatwiejsze niż w przypadku konieczności wyczyść maszyn wirtualnych, aby usunąć niepotrzebne klucze publiczne SSH. Gdy pracownicy opuszczają organizację, a ich konta użytkownika zostało wyłączone lub usunięte z usługi Azure AD, nie będzie mieć dostęp do zasobów.
 

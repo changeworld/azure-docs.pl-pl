@@ -4,7 +4,7 @@ description: Dowiedz się, co to jest usługa Azure Content Delivery Network (CD
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
 ms.service: cdn
@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/20/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2f760c1b47da7273827ce2a980cdc9b4db943904
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
 Sieć dostarczania zawartości (CDN, content delivery network) to rozproszona sieć serwerów, które pozwalają wydajnie dostarczać użytkownikom zawartość internetową. Sieci CDN umożliwiają przechowywanie buforowanej zawartości na serwerach brzegowych w lokalizacjach punktu obecności (POP, Point-of-Presence), które znajdują się blisko użytkowników końcowych, co pozwala zminimalizować opóźnienie. 
@@ -70,7 +70,7 @@ Usługa Azure CDN oferuje następujące kluczowe funkcje:
 - [Kompresja plików](cdn-improve-performance.md)
 - [Filtrowanie geograficzne](cdn-restrict-access-by-country.md)
 
-Aby uzyskać pełną listę funkcji obsługiwanych przez każdy produkt Azure CDN, zobacz [Funkcje produktu Azure CDN](cdn-features.md).
+Aby uzyskać pełną listę funkcji obsługiwanych przez każdy produkt Azure CDN, zobacz [Porównanie funkcji produktów Azure CDN](cdn-features.md).
 
 ## <a name="next-steps"></a>Następne kroki
 - Aby zacząć korzystać z usługi CDN, zobacz [Tworzenie punktu końcowego i profilu usługi Azure CDN](cdn-create-new-endpoint.md).

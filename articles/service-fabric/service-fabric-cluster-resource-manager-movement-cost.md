@@ -1,24 +1,24 @@
 ---
-title: "Koszt przeniesienia usługi Menedżer zasobów klastra sieci szkieletowej: | Dokumentacja firmy Microsoft"
-description: "Omówienie koszt przeniesienia dla usług sieci szkieletowej usług"
+title: 'Koszt przeniesienia usługi Menedżer zasobów klastra sieci szkieletowej: | Dokumentacja firmy Microsoft'
+description: Omówienie koszt przeniesienia dla usług sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3063647671fea94da3ce635b887f6f0f7de89f70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-movement-cost"></a>Usługa koszt przeniesienia
 Współczynnik Menedżera zasobów klastra sieci szkieletowej usług pod uwagę podczas próby określenia, jakie zmiany można wprowadzać w klastrze jest koszt tych zmian. Pojęcie "koszt" jest przedmiotem handlu wyłączone przed można zwiększyć ilość klastra. Koszt jest brana pod uwagę podczas przenoszenia usługi równoważenia, defragmentacji i inne wymagania. Celem jest w celu spełnienia wymagań w zakresie zakłócenie najmniej kosztowne. 
@@ -115,7 +115,7 @@ za pomocą pliku ClusterConfig.json dla autonomicznych wdrożeniach lub Template
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Menedżer zasobów klastra sieci szkieletowej usług wykorzystuje metryki Zarządzanie użycia i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryki i sposobach ich konfigurowania, zapoznaj się [Zarządzanie zużycia zasobów i obciążenia w sieci szkieletowej usług o metryki](service-fabric-cluster-resource-manager-metrics.md).
 - Aby dowiedzieć się, jak Menedżer zasobów klastra zarządza i równoważy obciążenie klastra, zapoznaj się [równoważenia klastra usługi sieć szkieletowa](service-fabric-cluster-resource-manager-balancing.md).
 

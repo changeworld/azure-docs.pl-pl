@@ -9,15 +9,13 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Najlepsze rozwiązania dotyczące używania usługi Azure Data Lake Store
 W tym artykule opisano najważniejsze wskazówki i informacje dotyczące pracy z usługi Azure Data Lake Store. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania usługi Data Lake Store. Przed usługi Data Lake Store pracę z danymi big naprawdę w usługach, takich jak usługa Azure HDInsight był zbyt złożony. Konieczne było współdzielenie danych między wiele kont magazynu obiektów Blob, aby petabajt magazynu i optymalnej wydajności, które rozwijają się może zostać osiągnięty. Z usługi Data Lake Store większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne kwestie, które w tym artykule omówiono tak, aby uzyskać najlepszą wydajność dzięki usłudze Data Lake Store. 

@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 29b662aa2f30083b444483554a78d53f0d05cb7f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Dostrajanie wydajności usługi Azure Data Lake Store
 
@@ -66,7 +64,7 @@ Aparaty analizy, takie jak usługi HDInsight i usługą Azure Data Lake Analytic
 
 Ogólnie rzecz biorąc organizowania danych w większe pliki o rozmiarze w celu poprawy wydajności.  Jako zasadą organizowanie zestawów danych w plikach 256MB lub większy. W niektórych przypadkach, takich jak obrazy i danych binarnych nie jest możliwe do ich przetworzenia równolegle.  W takich przypadkach zaleca się zachowanie poszczególnych plików mniej niż 2GB.
 
-Czasami potoki danych mają ograniczoną kontrolę nad nieprzetworzone dane, które zawiera wiele małych plików.  Zalecane jest "gotowania" procesu, który generuje większe pliki służące do podrzędnych aplikacji.  
+Czasami potoki danych mają ograniczoną kontrolę nad nieprzetworzone dane, które zawiera wiele małych plików.  Zalecane jest "gotowania" procesu, który generuje większe pliki służące do podrzędnych aplikacji.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Organizowanie danych szeregów czasowych w folderach
 
@@ -123,7 +121,7 @@ Istnieją trzy warstwy w ramach klastra usługi HDInsight, który można przedst
 
 W zależności od obciążenia będą zawsze miały minimalny rozmiar kontenera YARN, który jest wymagany. W przypadku wybrania za mały kontener Twoje zadania będą uruchamiane w problemów braku pamięci. Zazwyczaj kontenerów YARN nie powinien być mniejszy niż 1GB. Jest to częściej można zobaczyć kontenery YARN 3GB. Dla niektórych zadań może być konieczne większe kontenery YARN.  
 
-**Zwiększ rdzeni w jednym YARN kontenera.**  Zwiększ liczbę rdzeni przydzielone do każdego kontenera, aby zwiększyć liczbę zadań uruchamianych w każdego kontenera.  Działa to w przypadku aplikacji, takich jak Spark, których uruchamianie wielu zadań na kontenera.  Dla aplikacji, takich jak Hive uruchamianych jednym wątku w poszczególnych kontenerach lepiej jest kontenery więcej niż większej liczby rdzeni na kontenera.   
+**Zwiększ rdzeni w jednym YARN kontenera.**  Zwiększ liczbę rdzeni przydzielone do każdego kontenera, aby zwiększyć liczbę zadań uruchamianych w każdego kontenera.  Działa to w przypadku aplikacji, takich jak Spark, których uruchamianie wielu zadań na kontenera.  Dla aplikacji, takich jak Hive uruchamianych jednym wątku w poszczególnych kontenerach lepiej jest kontenery więcej niż większej liczby rdzeni na kontenera.
 
 ### <a name="workload-layer"></a>Obciążenie warstwy
 

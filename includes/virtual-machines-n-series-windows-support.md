@@ -1,6 +1,6 @@
 ---
-title: Plik dyrektywy include
-description: Plik dyrektywy include
+title: include file
+description: include file
 services: virtual-machines-windows
 author: dlepow
 ms.service: virtual-machines-windows
@@ -9,31 +9,31 @@ ms.date: 04/03/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 689e45f96ed5e7aaea3aecd1193e9cd58f10e80d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/24/2018
 ---
-## <a name="supported-operating-systems-and-drivers"></a>Obsługiwane systemy operacyjne i sterowniki
+## <a name="supported-operating-systems-and-drivers"></a>Supported operating systems and drivers
 
-### <a name="nc-ncv2-ncv3-and-nd-series---nvidia-tesla-cuda-drivers"></a>NC, NCv2, NCv3 i serii ND - sterowniki NVIDIA tesla — (CUDA)
+### <a name="nc-ncv2-ncv3-and-nd-series---nvidia-tesla-cuda-drivers"></a>NC, NCv2, NCv3 and ND-series - NVIDIA Tesla (CUDA) drivers
 
-Sterownik pobierania łączy w poniższej tabeli są aktualne w momencie publikacji. Aby uzyskać najnowsze sterowniki, odwiedź witrynę internetową firmy [NVIDIA](http://www.nvidia.com/).
+Driver download links in the following table are current at time of publication. For the latest drivers, visit the [NVIDIA](http://www.nvidia.com/) website.
 
 > [!TIP]
-> Zamiast ręcznej instalacji sterowników CUDA na maszynie Wirtualnej systemu Windows Server, można wdrożyć Azure [maszyny wirtualnej nauki danych](../articles/machine-learning/data-science-virtual-machine/overview.md) obrazu. Wersje DSVM dla systemu Windows Server 2016 wstępnie instalować sterowniki NVIDIA CUDA, CUDA głębokie Neuronowej biblioteki sieciowej i inne narzędzia.
+> As an alternative to manual CUDA driver installation on a Windows Server VM, you can deploy an Azure [Data Science Virtual Machine](../articles/machine-learning/data-science-virtual-machine/overview.md) image. The DSVM editions for Windows Server 2016 pre-install NVIDIA CUDA drivers, the CUDA Deep Neural Network Library, and other tools.
 
 
-| System operacyjny | Sterownik |
+| OS | Driver |
 | -------- |------------- |
 | Windows Server 2016 | [390.85](http://us.download.nvidia.com/Windows/Quadro_Certified/390.85/390.85-tesla-desktop-winserver2016-international.exe) (.exe) |
 | Windows Server 2012 R2 | [390.85](http://us.download.nvidia.com/Windows/Quadro_Certified/390.85/390.85-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |
 
-### <a name="nv-series---nvidia-grid-drivers"></a>Serii Trwałym - sterowniki NVIDIA siatki
+### <a name="nv-series---nvidia-grid-drivers"></a>NV-series - NVIDIA GRID drivers
 
-Microsoft ponownie dystrybuuje instalatorów sterownika NVIDIA siatki dla maszyn wirtualnych z wirtualizacją sieci. Zainstaluj tylko te sterowniki siatki na maszynach wirtualnych z wirtualizacją sieci platformy Azure. Te sterowniki obejmują licencjonowania siatki wirtualnej oprogramowania procesora GPU na platformie Azure.
+Microsoft redistributes NVIDIA GRID driver installers for NV VMs. Install only these GRID drivers on Azure NV VMs. These drivers include licensing for GRID Virtual GPU Software in Azure.
 
-| System operacyjny | Sterownik |
+| OS | Driver |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 | [Siatka 6.0 (391.03)](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
-| Windows Server 2012 R2 | [Siatka 6.0 (391.03)](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |
+| Windows Server 2016<br/><br/>Windows 10 | [GRID 6.0 (391.03)](https://go.microsoft.com/fwlink/?linkid=836843) (.exe) |
+| Windows Server 2012 R2 | [GRID 6.0 (391.03)](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)  |

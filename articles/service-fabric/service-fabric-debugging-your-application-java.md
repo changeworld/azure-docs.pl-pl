@@ -1,24 +1,24 @@
 ---
-title: "Debugowanie aplikacji sieci szkieletowej usług Azure w programie Eclipse | Dokumentacja firmy Microsoft"
-description: "Zwiększyć niezawodność i wydajność usługi poprzez opracowywania i debugowania ich w środowisku Eclipse na lokalny klaster projektowy."
+title: Debugowanie aplikacji sieci szkieletowej usług Azure w programie Eclipse | Dokumentacja firmy Microsoft
+description: Zwiększyć niezawodność i wydajność usługi poprzez opracowywania i debugowania ich w środowisku Eclipse na lokalny klaster projektowy.
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: suhuruli;mikhegn
-ms.openlocfilehash: 023b878706abf524b5a7939492937a92151f6035
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: suhuruli
+ms.openlocfilehash: 0e9e816fa84816b1b5d12f066dc65aee7b4930f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debugowanie aplikacji Java sieci szkieletowej usług za pomocą programu Eclipse
 > [!div class="op_single_selector"]
@@ -28,12 +28,12 @@ ms.lasthandoff: 12/21/2017
 
 1. Uruchom lokalny klaster projektowy, wykonując kroki opisane w [konfigurowania środowiska deweloperskiego sieci szkieletowej usług](service-fabric-get-started-linux.md).
 
-2. Zaktualizuj entryPoint.sh usługi, którą chcesz debugować, tak aby był uruchamiany z parametrami zdalnego debugowania procesu java. Ten plik znajduje się w następującej lokalizacji: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. Port 8001 jest ustawiony do debugowania w tym przykładzie.
+2. Zaktualizuj entryPoint.sh usługi, którą chcesz debugować, tak aby był uruchamiany z parametrami zdalnego debugowania procesu java. Ten plik znajduje się w następującej lokalizacji: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. W tym przykładzie na potrzeby debugowania ustawiono port 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Zaktualizuj Manifest aplikacji, ustawiając liczbę wystąpień lub liczby replik dla usługi, która jest debugowany 1. To ustawienie pozwala uniknąć konfliktów port, który jest używany do debugowania. Na przykład w przypadku usług bezstanowych ustawić ``InstanceCount="1"`` i dla stanowych usług zestawu docelowego i min zestawu replik rozmiary 1 w następujący sposób: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Zaktualizuj Manifest aplikacji, ustawiając liczbę wystąpień lub liczby replik dla usługi, która jest debugowany 1. To ustawienie pozwala uniknąć konfliktów z portem używanym podczas debugowania. Na przykład w przypadku usług bezstanowych ustaw ``InstanceCount="1"``, a dla usług stanowych ustaw docelowy i minimalny rozmiar zestawu replik na 1 w następujący sposób: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
 
 4. Wdrażanie aplikacji.
 

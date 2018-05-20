@@ -1,6 +1,6 @@
 ---
-title: "Połącz i łączyć się z usługami w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązać, łączenie i łączyć się z usługami w sieci szkieletowej usług."
+title: Połącz i łączyć się z usługami w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać, łączenie i łączyć się z usługami w sieci szkieletowej usług.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,23 +9,23 @@ editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Połącz i łączyć się z usługami w sieci szkieletowej usług
 W sieci szkieletowej usług Usługa gdzieś działa w klastrze usługi sieć szkieletowa, zazwyczaj są rozproszone na wielu maszyn wirtualnych. Można można przenosić z jednego miejsca do innego, przez właściciela usługi lub automatycznie przez sieć szkieletowa usług. Usługi nie są statycznie związane z określonego komputera lub adres.
 
 Aplikacji usługi Service Fabric zazwyczaj składa się z wielu różnych usług, w którym każda usługa wykonuje zadanie specjalne. Te usługi może komunikować się ze sobą do utworzenia pełnej funkcji, takich jak renderowania różne części aplikacji sieci web. Dostępne są także aplikacji klienckich, które nawiązać połączenie i łączyć się z usługami. Tego dokumentu zawiera omówienie sposobu konfigurowania komunikacji z i od usługi w sieci szkieletowej usług.
 
-Ten film Microsoft Virtual Academy omówiono także komunikacji usługi:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
+Ten film Microsoft Virtual Academy omówiono także komunikacji usługi: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
 <img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -181,7 +181,7 @@ Framework niezawodne usługi jest dostarczany z kilku opcji wbudowanych komunika
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Przy użyciu protokołów niestandardowych i innych platform komunikacji
 Usługi można użyć protokołu lub framework do komunikacji, czy jest protokołem binarne niestandardowych za pośrednictwem gniazda TCP lub za pośrednictwem przesyłania strumieniowego zdarzenia [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) lub [Centrum IoT Azure](https://azure.microsoft.com/services/iot-hub/). Sieć szkieletowa usług zapewnia komunikację interfejsów API stosu komunikacji, można podłączyć podczas całą pracę na potrzeby odnajdywania i połączyć jest pobieranej przez użytkownika. Znajduje się w artykule [model komunikacji niezawodnej usługi](service-fabric-reliable-services-communication.md) więcej szczegółów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat pojęć i interfejsami API dostępnymi w [model komunikacji niezawodnej usługi](service-fabric-reliable-services-communication.md), następnie szybko rozpocząć pracę z [service remoting](service-fabric-reliable-services-communication-remoting.md) lub przejdź szczegółowe informacje na temat zapisu komunikatu przy użyciu odbiornika [interfejsu API sieci Web z hosta samodzielnego OWIN](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

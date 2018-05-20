@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d394c856b2f27446ab28c44fe4fed2dfd59ae62f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f44532f0b0c0927c7b06c7e92a4839c5ce762f6e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Store i magazynu obiektów Blob platformy Azure
 W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i magazynu obiektów Blob Azure wzdłuż niektóre kluczowe aspekty przetwarzania danych big. Magazyn obiektów Blob Azure jest ogólnego przeznaczenia, magazynu skalowalne obiektów, które jest przeznaczone do szerokiej gamy scenariuszy magazynu. Azure Data Lake Store to repozytorium hiperskali, zoptymalizowana pod kątem obciążeń analizy danych big data.
@@ -35,7 +33,7 @@ W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i 
 | Operacje na danych - uwierzytelniania |Na podstawie [tożsamości usługi Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md) |Oparte na wspólne klucze tajne - [klucze dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account) i [kluczy współużytkowanych podpisu dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Operacje na danych — protokół uwierzytelniania |OAuth 2.0. Wywołania musi zawierać prawidłowy token JWT (JSON Web Token) wydanego przez usługę Azure Active Directory |Kod uwierzytelniania wiadomości na podstawie skrótu (HMAC). Wywołania musi zawierać skrótu SHA-256 algorytmem Base64 częścią żądania HTTP. |
 | Operacje na danych - autoryzacji |Listy kontroli dostępu POSIX (ACL).  Listy ACL oparte na Azure Active Directory tożsamości można ustawić na poziomie plików i folderów. |Na poziomie konta autoryzacji — użyj [klucze dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>Dla konta, kontenera lub obiektu blob autoryzacji - użyj [udostępnionych kluczy podpisów dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
-| Operacje na danych - inspekcji |Dostępne. Zobacz [tutaj](data-lake-store-diagnostic-logs.md) informacji. |Dostępna |
+| Operacje na danych - inspekcji |Dostępne. Zobacz [tutaj](data-lake-store-diagnostic-logs.md) informacji. |Dostępne |
 | Szyfrowanie danych magazynowanych |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Z usługami zarządzać kluczami</li><li>Z zarządzanego przez klienta kluczy w Azure KeyVault</li></ul></ul> |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Z usługami zarządzać kluczami</li><li>Z zarządzanego przez klienta kluczy w KeyVault Azure (wersja zapoznawcza)</li></ul><li>Szyfrowania po stronie klienta</li></ul> |
 | Operacje zarządzania (np. Utwórz konto) |[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |
 | Zestawy SDK dewelopera |.NET, Java, Python, Node.js |.Net, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |

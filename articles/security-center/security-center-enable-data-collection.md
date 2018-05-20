@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń zbiera dane z maszyn wirtualnych platformy Azure (maszyny wirtualne) i komputerów z systemem innym niż Azure monitorowanie luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Microsoft Monitoring Agent kopiuje pliki zrzutu awaryjnego do swojego obszaru roboczego.
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Włącz automatyczne Inicjowanie obsługi programu Microsoft Monitoring Agent     
-Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się, ale ręcznej instalacji agenta jest również dostępna. [Dowiedz się, jak zainstalować rozszerzenie programu Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+Automatyczne inicjowanie obsługi administracyjnej jest domyślnie wyłączone. Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się, ale ręcznej instalacji agenta jest również dostępna. [Dowiedz się, jak zainstalować rozszerzenie programu Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
 > Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów. Aby dowiedzieć się więcej, zobacz [Wyłącz automatyczne udostępnianie](security-center-enable-data-collection.md#disable-automatic-provisioning) w tym artykule. Migawki dysków maszyny Wirtualnej i kolekcji artefaktu są włączone, nawet jeśli jest wyłączona, automatyczne udostępnianie.
@@ -32,13 +32,16 @@ Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Cen
 >
 
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
-1. W menu głównym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**.
+1. W menu głównym Centrum zabezpieczeń, wybierz **zasady zabezpieczeń**.
 2. Wybierz subskrypcję.
+
+  ![Wybieranie subskrypcji][7]
+
 3. W obszarze **Zasady zabezpieczeń** wybierz pozycję **Zbieranie danych**.
-4. W obszarze **dołączania**, wybierz pozycję **na** Aby włączyć automatyczne udostępnianie.
+4. W obszarze **automatycznego inicjowania obsługi administracyjnej**, wybierz pozycję **na** Aby włączyć automatyczne udostępnianie.
 5. Wybierz pozycję **Zapisz**.
 
-![Włączanie automatycznej aprowizacji][1]
+  ![Włączanie automatycznej aprowizacji][1]
 
 ## <a name="default-workspace-configuration"></a>Domyślna konfiguracja obszaru roboczego
 Dane zebrane przez Centrum zabezpieczeń jest przechowywany w analizy dzienników obszarów roboczych.  Możesz zdecydować się na dane zbierane z maszyn wirtualnych platformy Azure, przechowywane w obszary robocze tworzone przez Centrum zabezpieczeń lub istniejący obszar roboczy utworzony.
@@ -49,16 +52,16 @@ Aby użyć istniejącego obszaru roboczego analizy dzienników:
 
 Aby wybrać istniejący obszar roboczy analizy dzienników:
 
-1. W obszarze **zasady zabezpieczeń — zbieranie danych**, wybierz pozycję **Użyj innego obszaru roboczego**.
+1. W obszarze **domyślnej konfiguracji obszaru roboczego**, wybierz pozycję **Użyj innego obszaru roboczego**.
 
    ![Wybierz istniejący obszar roboczy][2]
 
 2. Z menu rozwijanego wybierz obszar roboczy do zapisywania zebranych danych.
 
-> [!NOTE]
-> W ściągania menu rozwijane są wyświetlane tylko obszarów roboczych, które mają dostęp do i znajdują się w ramach subskrypcji platformy Azure.
->
->
+  > [!NOTE]
+  > W ściągania menu rozwijane dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Zobacz [cross wybór obszaru roboczego subskrypcji](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Aby uzyskać więcej informacji.
+  >
+  >
 
 3. Wybierz pozycję **Zapisz**.
 4. Po wybraniu **zapisać**, użytkownik zostanie poproszony, jeśli chcesz monitorować ponownej konfiguracji maszyn wirtualnych.
@@ -73,7 +76,15 @@ Aby wybrać istniejący obszar roboczy analizy dzienników:
 
    - Wybierz **anulować** Aby anulować operację.
 
-   ![Wybierz istniejący obszar roboczy][3]
+     ![Wybierz istniejący obszar roboczy][3]
+
+## <a name="cross-subscription-workspace-selection"></a>Krzyżowe wybór obszaru roboczego subskrypcji
+Wybierz obszar roboczy do przechowywania danych, dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Między subskrypcjami wybór obszaru roboczego umożliwia zbieranie danych z maszyn wirtualnych działających w ramach różnych subskrypcji i zapisz go w obszarze roboczym wybranych przez użytkownika. Ta funkcja działa w przypadku obu maszyn wirtualnych z systemem Linux i Windows.
+
+> [!NOTE]
+> Między subskrypcjami wybór obszaru roboczego jest częścią warstwę bezpłatna Centrum zabezpieczeń Azure. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+>
+>
 
 ## <a name="data-collection-tier"></a>Warstwa danych kolekcji
 Centrum zabezpieczeń może zmniejszyć ilość danych zdarzeń przy zachowaniu za mało zdarzeń do badania, inspekcji i wykrywanie zagrożeń. Można wybrać prawa filtrowania zasady dla subskrypcji i obszarów roboczych z czterech zestawów zdarzeń mają zostać zebrane przez agenta.
@@ -84,7 +95,8 @@ Centrum zabezpieczeń może zmniejszyć ilość danych zdarzeń przy zachowaniu 
 - **Brak** — Wyłącz zbieranie zdarzeń zabezpieczeń z dzienniki funkcji AppLocker i zabezpieczeń. Dla klientów, którzy wybierz tę opcję pulpity nawigacyjne ich zabezpieczeń ma tylko dzienniki zapory systemu Windows i oceny aktywnego, takich jak ochrony przed złośliwym kodem, linii bazowej i aktualizacji.
 
 > [!NOTE]
-> Te zestawy zaprojektowano w celu rozwiązania typowych scenariuszy. Upewnij się ocenić, która z nich potrzebom użytkownika przed jego wdrożeniem.
+> Te zestawy zdarzenia zabezpieczeń są dostępne tylko w warstwie standardowa, Centrum zabezpieczeń. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+Te zestawy zaprojektowano w celu rozwiązania typowych scenariuszy. Upewnij się ocenić, która z nich potrzebom użytkownika przed jego wdrożeniem.
 >
 >
 
@@ -115,7 +127,7 @@ Poniżej przedstawiono pełną podział zabezpieczeń i funkcji AppLocker identy
 >
 
 Aby wybrać zasady filtrowania:
-1. Na **ustawienia i zasady zabezpieczeń** bloku, wybierz filtrowania zasad w obszarze **zdarzenia zabezpieczeń**.
+1. Na **zasady zabezpieczeń zbierania danych** bloku, wybierz filtrowania zasad w obszarze **zdarzenia zabezpieczeń**.
 2. Wybierz pozycję **Zapisz**.
 
    ![Wybierz zasady filtrowania][5]
@@ -129,12 +141,13 @@ Możesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej z zasobó
 >
 
 1. Powróć do menu głównego Centrum zabezpieczeń i wybierz zasady zabezpieczeń.
-
-   ![Wyłącz automatyczne udostępnianie][6]
-
 2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
-3. Na **zasady zabezpieczeń — zbieranie danych** bloku, w obszarze **dołączania** wybierz **poza** do Wyłącz automatyczne udostępnianie.
-4. Wybierz pozycję **Zapisz**.  
+3. Na **zasady zabezpieczeń — zbieranie danych** bloku, w obszarze **automatycznego inicjowania obsługi administracyjnej** wybierz **poza**.
+4. Wybierz pozycję **Zapisz**.
+
+  ![Wyłącz automatyczne udostępnianie][6]
+
+Wyłączenie automatycznego inicjowania obsługi administracyjnej (wyłączone), nie są wyświetlane sekcji konfiguracji domyślnej obszaru roboczego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule pokazano możesz sposób zbierania danych i automatyczne udostępnianie w Centrum zabezpieczeń działa. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
@@ -153,4 +166,5 @@ W tym artykule pokazano możesz sposób zbierania danych i automatyczne udostęp
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png
+[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
+[7]: ./media/security-center-enable-data-collection/select-subscription.png

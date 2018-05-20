@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 720269ad22bfe4a7f5871c934be77b680627e2f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a38098dc2bbcfc6ff59b9f8c96d1e947c637ab1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Poznaj możliwości zdalnego monitorowania akcelerator rozwiązań
 
@@ -41,7 +41,7 @@ Poniższe wideo przedstawia przewodnik zdalnego rozwiązanie monitorowania:
 
 Do ukończenia tego samouczka należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Wdrożenie IoT przykładowej firmy Contoso
 
@@ -55,7 +55,7 @@ Przykładowe firmy Contoso inicjuje zestaw symulowanego urządzenia i reguł, kt
 Contoso to firma, która zarządza szerokiej gamy zasobów w różnych środowiskach. Contoso jest planowane używanie możliwości aplikacji opartych na chmurze IoT zdalnie monitorować i zarządzać wielu zasobów z scentralizowane aplikacji. Poniższe sekcje zawierają Podsumowanie konfiguracji początkowej próbki Contoso:
 
 > [!NOTE]
-> Pokaz Contoso jest tylko jednym ze sposobów udostępniania symulowanego urządzenia i tworzenie reguł. Inne opcje inicjowania obsługi administracyjnej obejmują tworzenie własnych urządzeń niestandardowych. Aby dowiedzieć się więcej o sposobie tworzenia własnych urządzeń i reguł, zobacz [zarządzanie i konfigurowanie urządzeń](iot-suite-remote-monitoring-manage.md) i [wykrywania problemów przy użyciu reguły progu](iot-suite-remote-monitoring-automate.md).
+> Pokaz Contoso jest tylko jednym ze sposobów udostępniania symulowanego urządzenia i tworzenie reguł. Inne opcje inicjowania obsługi administracyjnej obejmują tworzenie własnych urządzeń niestandardowych. Aby dowiedzieć się więcej o sposobie tworzenia własnych urządzeń i reguł, zobacz [zarządzanie i konfigurowanie urządzeń](iot-suite-remote-monitoring-manage.md) i [wykrywania problemów przy użyciu reguły progu](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 
 ### <a name="contoso-devices"></a>Urządzenia firmy Contoso
 
@@ -257,5 +257,5 @@ Teraz, gdy rozwiązanie monitorowania zdalnego zostały zbadane, sugerowane nast
 
 * [Monitorowanie urządzeń](./iot-suite-remote-monitoring-monitor.md).
 * [Zarządzaj swoimi urządzeniami](./iot-suite-remote-monitoring-manage.md).
-* [Automatyzowanie rozwiązania przy użyciu reguł](./iot-suite-remote-monitoring-automate.md).
+* [Automatyzowanie rozwiązania przy użyciu reguł](./../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 * [Obsługa rozwiązania](./iot-suite-remote-monitoring-maintain.md).

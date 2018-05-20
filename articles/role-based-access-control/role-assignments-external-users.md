@@ -1,13 +1,13 @@
 ---
-title: Tworzenie niestandardowych dostępu opartej na rolach ról kontroli i przypisać do użytkowników wewnętrznych i zewnętrznych na platformie Azure | Dokumentacja firmy Microsoft
-description: Przypisz role RBAC niestandardowe utworzone przy użyciu programu PowerShell i interfejsu wiersza polecenia dla użytkowników wewnętrznych i zewnętrznych
+title: Zarządzanie przypisań ról dla użytkowników zewnętrznych na platformie Azure | Dokumentacja firmy Microsoft
+description: Zarządzanie kontroli dostępu opartej na rolach (RBAC) na platformie Azure dla użytkowników spoza organizacji
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: kgremban
+editor: ''
 ms.assetid: ''
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
@@ -16,43 +16,28 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: d2eb39aa0a3fda7b543b6989cda937559f4d09ea
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="intro-on-role-based-access-control"></a>Wprowadzenie dotyczących kontroli dostępu opartej na rolach
+# <a name="manage-role-assignments-for-external-users"></a>Zarządzanie przypisaniami ról dla użytkowników zewnętrznych
 
-Kontrola dostępu oparta na rolach to Azure portalu funkcja tylko stosowanie właściciele subskrypcji do przypisywania ról szczegółowego do innych użytkowników zarządzających zasobów dla określonych zakresów w swoim środowisku.
-
-RBAC umożliwia lepsze zarządzanie zabezpieczeniami dla dużych organizacji oraz dla małych i średnich firmach praca z zewnętrznym współpracownikom, dostawców lub freelancers wymagających dostępu do określonych zasobów w danym środowisku, ale niekoniecznie całej infrastruktury lub dowolny zakresy związanych z rozliczeniami. RBAC umożliwia elastyczność będący właścicielem jedną subskrypcją platformy Azure zarządzanych przez administratora konta (usługi roli administrator na poziomie subskrypcji) i mieć wielu użytkowników zaproszenie do pracy w ramach tej samej subskrypcji, ale bez jakichkolwiek praw administracyjnych dla niego. Zarządzanie i rozliczeń funkcję RBAC okaże się, że czas i zarządzanie wydajne opcji korzystania z funkcji Azure w różnych scenariuszach.
-
-## <a name="prerequisites"></a>Wymagania wstępne
-W środowisku platformy Azure przy użyciu funkcji RBAC wymaga:
-
-* Posiadanie autonomiczny subskrypcji platformy Azure powierzonych użytkownika jako właściciela (rola subskrypcji)
-* Rola właściciela subskrypcji platformy Azure
-* Ma dostęp do [portalu Azure](https://portal.azure.com)
-* Upewnij się, że ma następujących dostawców zasobów w zarejestrowany dla subskrypcji użytkownika: **Microsoft.Authorization**. Aby uzyskać więcej informacji na temat rejestrowania dostawców zasobów, zobacz [dostawców usługi Resource Manager, regiony, wersje interfejsu API i schematów](../azure-resource-manager/resource-manager-supported-services.md).
+Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami dla dużych organizacji oraz dla małych i średnich firmach praca z zewnętrznym współpracownikom, dostawców lub freelancers, które wymagają dostępu do określonych zasobów w danym środowisku, ale niekoniecznie do całej Infrastruktura lub żadnych zakresów związanych z rozliczeniami. RBAC umożliwia elastyczność będący właścicielem jedną subskrypcją platformy Azure zarządzanych przez administratora konta (usługi roli administrator na poziomie subskrypcji) i mieć wielu użytkowników zaproszenie do pracy w ramach tej samej subskrypcji, ale bez jakichkolwiek praw administracyjnych dla niego.
 
 > [!NOTE]
 > Licencje usługi Azure Active Directory lub subskrypcji usługi Office 365 (na przykład: dostęp do usługi Azure Active Directory) pobranego z Centrum nie kwalifikuje się do przy użyciu funkcji RBAC Office 365 Admin.
 
-## <a name="how-can-rbac-be-used"></a>Jak można użyć RBAC
-RBAC można zastosować na trzy różne zakresy na platformie Azure. Z najwyższą zakresu na najniższym jeden są następujące:
-
-* Subskrypcja (najwyższy)
-* Grupa zasobów
-* Zakres zasobów (najniższy poziom dostępu do oferty docelowe uprawnienia do zakresu poszczególnych zasobów platformy Azure)
-
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Przypisz role RBAC w zakresie subskrypcji
+
 Istnieją dwie typowe przykłady dotyczące RBAC jest używana (między innymi):
 
 * Użytkowników zewnętrznych z organizacji (nie jest częścią dzierżawy usługi Azure Active Directory dla użytkownika administracyjnego) zaproszenie do zarządzania niektórych zasobów lub całej subskrypcji
 * Praca z użytkownikami w organizacji (są one częścią dzierżawy usługi Azure Active Directory użytkownika), ale należy do różnych zespołów lub grup, wymagających szczegółowego dostępu do całej subskrypcji lub do określonych grup zasobów lub zakresy zasobów w środowisku
 
 ## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Udziel dostępu na poziomie subskrypcji dla użytkownika poza usługą Azure Active Directory
+
 Role RBAC może zostać przydzielony tylko przez **właścicieli** subskrypcji. W związku z tym administrator musi zalogować się jako użytkownik, który zawiera tę rolę wstępnie przypisany lub została utworzona subskrypcja platformy Azure.
 
 W portalu Azure po zalogowaniu się jako administrator, wybierz "Subskrypcji" i wybierz jedno.
@@ -65,15 +50,7 @@ W tym przykładzie katalog "Domyślna dzierżawa usługi Azure" zawiera tylko u�
 
 Po wybraniu subskrypcji, administrator musi kliknij **kontroli dostępu (IAM)** , a następnie **dodania roli**.
 
-
-
-
-
 ![Funkcja IAM kontroli dostępu w portalu Azure](./media/role-assignments-external-users/1.png)
-
-
-
-
 
 ![Dodaj nowego użytkownika w funkcja IAM kontroli dostępu w portalu Azure](./media/role-assignments-external-users/2.png)
 
@@ -81,15 +58,7 @@ Następnym krokiem jest wybranie roli do przypisania i użytkownika, którego ro
 
 Następnie administrator musi dodać adres e-mail użytkownika zewnętrznego. Oczekiwane zachowanie jest dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po Zaproszono użytkownika zewnętrznego, on będą widoczne w obszarze **subskrypcji > kontroli dostępu (IAM)** z wszystkich bieżących użytkowników, które są obecnie przypisane roli RBAC w zakresie subskrypcji.
 
-
-
-
-
 ![Dodaj uprawnienia do nowej roli RBAC](./media/role-assignments-external-users/3.png)
-
-
-
-
 
 ![Lista ról RBAC na poziomie subskrypcji](./media/role-assignments-external-users/4.png)
 
@@ -98,21 +67,11 @@ Użytkownik "chessercarlton@gmail.com" zaproszono jako **właściciela** dla sub
 
 Trwa spoza organizacji, nowy użytkownik nie ma żadnych istniejących atrybutów w katalogu "Domyślna dzierżawa usługi Azure". Będzie można utworzyć po uzyskaniu zgody użytkownika zewnętrznego mają być rejestrowane w katalogu, który jest skojarzony z subskrypcją został przydzielony do roli.
 
-
-
-
-
 ![wiadomość e-mail zaproszenia dla roli RBAC](./media/role-assignments-external-users/6.png)
 
 Pokazuje użytkownika zewnętrznego w dzierżawcy usługi Azure Active Directory od teraz jako użytkownik zewnętrzny i to można wyświetlić w portalu Azure.
 
-
-
-
-
 ![Użytkownicy portalu Azure usługi active directory bloku azure](./media/role-assignments-external-users/7.png)
-
-
 
 W **użytkowników** widoku, użytkownicy zewnętrzni mogą być rozpoznawane przez typ inną ikonę w portalu Azure.
 
@@ -122,10 +81,6 @@ Jednak udzielanie **właściciela** lub **współautora** dostępu do użytkowni
 > Upewnij się, że po wprowadzeniu poświadczeń w portalu, użytkownik zewnętrzny wybiera do logowania się w poprawnym katalogu. Tego samego użytkownika może mieć dostęp do wielu katalogów i można wybrać jedną z nich, klikając nazwę użytkownika w góry po prawej stronie w portalu Azure a następnie wybierz odpowiedniego katalogu z listy rozwijanej.
 
 Będąc gościa w katalogu użytkownika zewnętrznego mogą zarządzać zasobami wszystkich subskrypcji platformy Azure, ale nie można uzyskać dostępu do katalogu.
-
-
-
-
 
 ![dostęp ograniczony do portalu Azure usługi azure active directory](./media/role-assignments-external-users/9.png)
 
@@ -141,198 +96,38 @@ Przypisywanie roli RBAC wbudowanych **Współautor·maszyny·wirtualnej** na poz
 * Nie można wykonać operacji zmiany z punktu widzenia rozliczeń
 
 ## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Przypisywanie roli RBAC wbudowanych do użytkownika zewnętrznego
+
 Dla innego scenariusza, w tym teście użytkownika zewnętrznego "alflanigan@gmail.com" zostanie dodany jako **Współautor·maszyny·wirtualnej**.
-
-
-
 
 ![wbudowana Rola współautora maszyny wirtualnej](./media/role-assignments-external-users/11.png)
 
 Normalne zachowanie dla tego użytkownika zewnętrznego z tą rolą wbudowanych jest wyświetlanie i zarządzanie nimi tylko maszyny wirtualne i ich sąsiadujących ze sobą Menedżer zasobów tylko zasoby niezbędne podczas wdrażania. Zgodnie z projektem te role ograniczone zapewniają dostęp tylko do ich zasobów odpowiedniego utworzone w portalu Azure.
 
-
-
 ![Omówienie roli współautora maszyny wirtualnej w portalu Azure](./media/role-assignments-external-users/12.png)
 
 ## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Udziel dostępu na poziomie subskrypcji dla użytkownika w tym samym katalogu
+
 Przepływ procesu jest taki sam jak dodawanie użytkownika zewnętrznego, zarówno z perspektywy administracyjnej przyznania roli RBAC, a także użytkownika zostanie im przyznany dostęp do roli. Różnica polega na tym że zaproszonych użytkownik nie będzie otrzymywać żadnych zaproszeń do skorzystania z poczty e-mail, jak wszystkie zakresy zasobów w subskrypcji będą dostępne na pulpicie nawigacyjnym po zalogowaniu się.
 
 ## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>Przypisz role RBAC w zakresie grupy zasobów
+
 Przypisywanie roli RBAC **grupy zasobów** zakres ma taki sam proces przypisywania roli na poziomie subskrypcji dla obu typów użytkownicy — zewnętrznym lub wewnętrznym (część z tym samym katalogu). Użytkownicy, którym przypisano rolę RBAC ma zobacz w swoim środowisku tylko grupy zasobów z przypisanym dostępem z **grup zasobów** ikonę w portalu Azure.
 
 ## <a name="assign-rbac-roles-at-the-resource-scope"></a>Przypisz role RBAC w zakresie zasobów
+
 Przypisywanie roli RBAC w zakresie zasobów na platformie Azure mają identyczne proces przypisywania roli na poziomie subskrypcji lub na poziomie grupy zasobów, po tym samym przepływie pracy w obydwu scenariuszach. Ponownie, użytkowników, którym przypisano rolę RBAC można wyświetlanie tylko tych elementów, które przypisano dostępu do w **wszystkie zasoby** kartę lub bezpośrednio w ich pulpitu nawigacyjnego.
 
 Istotnym elementem do RBAC zarówno w zakresie grupy zasobów lub zasobów zakresie jest przeznaczony dla użytkowników upewnić się zarejestrować się w poprawnym katalogu.
 
-
-
-
-
 ![katalog logowania w portalu Azure](./media/role-assignments-external-users/13.png)
 
 ## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Przypisz role RBAC dla grupy usługi Azure Active Directory
+
 Wszystkie scenariusze na trzy różne zakresy na platformie Azure przy użyciu funkcji RBAC oferują uprawnienie Zarządzanie, wdrażanie i administrowanie różnych zasobów jako przypisany użytkownik bez konieczności zarządzania osobiste subskrypcji. Niezależnie od przypisano rolę RBAC dla subskrypcji, grupy zasobów lub zasobów zakresu, wszystkie zasoby utworzone dalej przez przypisanych użytkowników są rozliczane zgodnie z jedną subskrypcją platformy Azure, której użytkownicy mają dostęp do. Dzięki temu użytkowników, którzy mają rozliczeń uprawnień administratora dla całej subskrypcji platformy Azure ma pełny przegląd zużycia, niezależnie od tego, kto jest zarządzania zasobami.
 
 W przypadku większych organizacji role RBAC można zastosować w taki sam sposób dla uwzględnieniu perspektywy administrator chce szczegółowego dostęp dla zespołów lub całego działów, indywidualnie dla każdego użytkownika, w związku z tym uwzględnieniu bardzo czas i zarządzanie wydajne opcja grup usługi Azure Active Directory. Przykład ilustrujący **współautora** rola została dodana do jednej z grup w dzierżawie na poziomie subskrypcji.
-
-
-
-
 
 ![Dodaj rolę RBAC dla grup usługi AAD](./media/role-assignments-external-users/14.png)
 
 Grupy te są grup zabezpieczeń, które są udostępniane i zarządzane tylko w ramach usługi Azure Active Directory.
 
-## <a name="create-a-custom-rbac-role-to-open-support-requests-using-powershell"></a>Utwórz niestandardową rolę RBAC można otworzyć żądania obsługi przy użyciu programu PowerShell
-Wbudowane role, które są dostępne w systemie Azure zapewnia określone poziomy uprawnień na podstawie dostępnych zasobów w środowisku. Jednak jeśli wbudowane role nie spełniają potrzeb, można tworzyć role niestandardowe.
-
-Aby utworzyć niestandardową rolę, może rozpoczynać się od wbudowanej roli, go edytować i następnie utwórz nową rolę. Na przykład wbudowana **czytnika** roli został dostosowany do Zezwalaj użytkownikom z możliwością otwarcia żądania pomocy technicznej.
-
-W programie PowerShell, użyj [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) polecenie, aby wyeksportować **czytnika** roli w formacie JSON.
-
-```powershell
-Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
-```
-
-Poniżej przedstawiono dane wyjściowe JSON dla roli czytnika.
-
-```json
-{
-    "Name":  "Reader",
-    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "IsCustom":  false,
-    "Description":  "Lets you view everything, but not make any changes.",
-    "Actions":  [
-                    "*/read"
-                ],
-    "NotActions":  [
-
-                   ],
-    "AssignableScopes":  [
-                             "/"
-                         ]
-}
-```
-
-Następnie możesz edytować dane wyjściowe do utworzenia niestandardowej roli zabezpieczeń JSON.
-
-```json
-{
-    "Name":  "Reader support tickets access level",
-    "IsCustom":  true,
-    "Description":  "View everything in the subscription and also open support requests.",
-    "Actions":  [
-                    "*/read",
-                    "Microsoft.Support/*"
-                ],
-    "NotActions":  [
-
-                   ],
-    "AssignableScopes":  [
-                             "/subscriptions/11111111-1111-1111-1111-111111111111"
-                         ]
-}
-```
-
-Typowa rola składa się z trzech głównych sekcji, **akcje**, **NotActions**, i **AssignableScopes**.
-
-**Akcji** sekcja zawiera informacje o dozwolonych operacji w roli. W takim przypadku można utworzyć obsługi biletów, **Microsoft.Support/&ast;**  operacji musi zostać dodany. Należy zrozumieć, że każda operacja ma zostać udostępnione od dostawcy zasobów. Aby uzyskać listę działań dla dostawcy zasobów, można użyć [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) polecenie lub zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md).
-
-Aby ograniczyć wszystkie akcje dla określonej roli, dostawców zasobów są wyświetlane w obszarze **NotActions** sekcji.
-Jest to konieczne, że rola zawiera jawne subskrypcji identyfikatorów, w którym została użyta. Identyfikatory subskrypcji są wyświetlane w obszarze **AssignableScopes**, w przeciwnym razie będzie nie można zaimportować rolę do subskrypcji.
-
-Aby utworzyć niestandardowe roli, należy użyć [AzureRmRoleDefinition nowy](/powershell/module/azurerm.resources/new-azurermroledefinition) poleceń i podaj zaktualizowany plik definicji roli JSON.
-
-```powershell
-New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
-```
-
-W tym przykładzie nazwę tej niestandardowej roli zabezpieczeń jest "biletami pomocy technicznej czytnika poziom dostępu". Umożliwia użytkownikowi przeglądanie wszystko w subskrypcji, a także żądania pomocy technicznej Otwórz.
-
-> [!NOTE]
-> Tylko dwa wbudowane role, które umożliwiają użytkownikom otwarcia żądania pomocy technicznej są **właściciela** i **współautora**. Użytkownik może mieć możliwość otwarcia żądania pomocy technicznej on należy przypisać rolę w zakresie subskrypcji, ponieważ wszystkie żądania pomocy technicznej są tworzone na podstawie subskrypcji platformy Azure.
-
-Nowa rola niestandardowy jest teraz dostępna w portalu Azure i mogą być przypisane do użytkowników.
-
-![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń zaimportowany w portalu Azure](./media/role-assignments-external-users/18.png)
-
-![Zrzut ekranu przedstawiający przypisywanie niestandardowej roli zabezpieczeń zaimportowane do użytkownika w tym samym katalogu](./media/role-assignments-external-users/19.png)
-
-![Zrzut ekranu przedstawiający uprawnienia niestandardowe importowanych roli](./media/role-assignments-external-users/20.png)
-
-Użytkownicy z tą rolą niestandardowe można tworzyć nowe żądania pomocy technicznej.
-
-![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń tworzenia żądań obsługi](./media/role-assignments-external-users/21.png)
-
-Użytkownicy z tę rolę niestandardową nie może wykonywać inne akcje, takie jak tworzenie maszyn wirtualnych lub tworzenia grup zasobów.
-
-![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń nie można utworzyć maszyny wirtualne](./media/role-assignments-external-users/22.png)
-
-![Zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń nie można utworzyć nowego RGs](./media/role-assignments-external-users/23.png)
-
-## <a name="create-a-custom-rbac-role-to-open-support-requests-using-azure-cli"></a>Utwórz niestandardową rolę RBAC można otworzyć żądania obsługi przy użyciu wiersza polecenia platformy Azure
-
-Kroki, aby utworzyć niestandardową rolę przy użyciu interfejsu wiersza polecenia Azure przypominają przy użyciu programu PowerShell, różni się dane wyjściowe JSON.
-
-Na przykład można uruchomić z wbudowanej **czytnika** roli. Aby wyświetlić listę działań rolę czytelnika, użyj [listy definicji roli az](/cli/azure/role/definition#az_role_definition_list) polecenia.
-
-```azurecli
-az role definition list --name "Reader" --output json
-```
-
-```json
-[
-  {
-    "additionalProperties": {},
-    "assignableScopes": [
-      "/"
-    ],
-    "description": "Lets you view everything, but not make any changes.",
-    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "permissions": [
-      {
-        "actions": [
-          "*/read"
-        ],
-        "additionalProperties": {},
-        "notActions": []
-      }
-    ],
-    "roleName": "Reader",
-    "roleType": "BuiltInRole",
-    "type": "Microsoft.Authorization/roleDefinitions"
-  }
-]
-```
-
-Utwórz plik JSON o następującym formacie. **Microsoft.Support/&ast;**  operacji został dodany w **akcje** sekcjach, aby ten użytkownik może otworzyć żądania pomocy technicznej pozostawiając być do odczytu. Należy dodać identyfikator subskrypcji, w którym ta rola będzie używany w **AssignableScopes** sekcji.
-
-```json
-{
-    "Name":  "Reader support tickets access level",
-    "IsCustom":  true,
-    "Description":  "View everything in the subscription and also open support requests.",
-    "Actions":  [
-                    "*/read",
-                    "Microsoft.Support/*"
-                ],
-    "NotActions":  [
-
-                   ],
-    "AssignableScopes": [
-                            "/subscriptions/11111111-1111-1111-1111-111111111111"
-                        ]
-}
-```
-
-Aby utworzyć niestandardowe roli, należy użyć [utworzenia definicji roli az](/cli/azure/role/definition#az_role_definition_create) polecenia.
-
-```azurecli
-az role definition create --role-definition ~/roles/rbacrole1.json
-```
-
-Nowa rola niestandardowy jest teraz dostępna w portalu Azure i procesu, aby użyć tej roli są takie same jak w poprzedniej sekcji środowiska PowerShell.
-
-![Azure portalu zrzut ekranu przedstawiający niestandardowej roli zabezpieczeń utworzone za pomocą interfejsu wiersza polecenia 1.0](./media/role-assignments-external-users/26.png)

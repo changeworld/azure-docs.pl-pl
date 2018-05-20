@@ -1,24 +1,24 @@
 ---
-title: "Menedżer zasobów klastra usługi sieć szkieletowa — grup aplikacji | Dokumentacja firmy Microsoft"
-description: "Omówienie funkcji grupy aplikacji w usługi sieć szkieletowa klastra Menedżer zasobów"
+title: Menedżer zasobów klastra usługi sieć szkieletowa — grup aplikacji | Dokumentacja firmy Microsoft
+description: Omówienie funkcji grupy aplikacji w usługi sieć szkieletowa klastra Menedżer zasobów
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3212631ede7125bd849c2d9ba86ba2a0747d69ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-application-groups"></a>Wprowadzenie do grup aplikacji
 Menedżer zasobów klastra usługi sieć szkieletowa zwykle zarządza zasobami klastra przez rozłożenie obciążenia (reprezentowane przez [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza pojemność węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajność pracy wygodne w przypadku wielu obciążeń, ale wzorców, które w znacznym stopniu wykorzystywane różnych wystąpień aplikacji sieci szkieletowej usług czasami przenieść dodatkowe wymagania. Na przykład można:
@@ -207,7 +207,7 @@ Ograniczenia są wymuszane zarówno podczas tworzenia aplikacji i aktualizacji.
 - Nie należy korzystać z funkcji grupy aplikacji do aplikacji, aby ograniczyć _określonych_ podzbioru węzłów. Innymi słowy, można określić, że aplikacja działa na maksymalnie pięć węzłów, ale nie których określonych pięć węzłów w klastrze. Ograniczający aplikacji do określonych węzłów można osiągnąć za pomocą ograniczenia umieszczania usług.
 - Nie należy próbować upewnij się, że dwie usługi z tej samej aplikacji są umieszczane na tych samych węzłów za pomocą wydajność aplikacji. Zamiast tego użyj [koligacji](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) lub [ograniczenia umieszczania](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat konfigurowania usługi [Dowiedz się więcej o konfigurowaniu usługi](service-fabric-cluster-resource-manager-configure-services.md)
 - Aby dowiedzieć się o jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zobacz artykuł na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
 - Rozpocznij od początku i [wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów](service-fabric-cluster-resource-manager-introduction.md)

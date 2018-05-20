@@ -1,24 +1,24 @@
 ---
-title: "Tworzenie klastra sieci szkieletowej usług Azure autonomiczny | Dokumentacja firmy Microsoft"
-description: "Tworzenie klastra usługi sieć szkieletowa usług Azure na dowolnym komputerze (fizycznych lub wirtualnych) systemem Windows Server, czy jest lokalnie lub w dowolnym chmury."
+title: Tworzenie klastra sieci szkieletowej usług Azure autonomiczny | Dokumentacja firmy Microsoft
+description: Tworzenie klastra usługi sieć szkieletowa usług Azure na dowolnym komputerze (fizycznych lub wirtualnych) systemem Windows Server, czy jest lokalnie lub w dowolnym chmury.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: dekapur;chackdan;maburlik
-ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: dekapur
+ms.openlocfilehash: efa48aa90806b45c99237404af24cb8aba762d15
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie autonomicznych klastra w systemie Windows Server
 Sieć szkieletowa usług Azure służy do tworzenia klastrów sieci szkieletowej usług na dowolnym maszyn wirtualnych lub komputerach z systemem Windows Server. Oznacza to, można wdrażać i uruchamianie aplikacji platformy Service Fabric w dowolnym środowisku, które zawiera zestaw połączonych komputerów z systemem Windows Server, lokalnie i z każdego dostawcy chmury. Usługa Service Fabric realizuje pakietu instalacyjnego do tworzenia klastrów sieci szkieletowej usług o nazwie autonomicznych pakietu systemu Windows Server.
@@ -130,7 +130,7 @@ Przykład:
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 ### <a name="step-3-bring-up-service-fabric-explorer"></a>Krok 3: Wywołaj okno Eksploratora usługi sieć szkieletowa
-Teraz możesz połączyć do klastra z Eksploratora usługi sieć szkieletowa albo bezpośrednio z maszyn z http://localhost:19080/Explorer/index.html lub zdalnie http://<*IPAddressofaMachine*>: 19080/Explorer/index.html.
+Teraz możesz połączyć się z klastrem z Eksploratora usługi sieć szkieletowa bezpośrednio od jednej z maszyn z http://localhost:19080/Explorer/index.html lub zdalnie za pomocą http://<*IPAddressofaMachine*>: 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Dodawanie i usuwanie węzłów
 Można dodać lub usunąć węzły do klastra usługi sieć szkieletowa autonomicznych, jak zmieniających się potrzeb firmy. Zobacz [dodać lub usunąć węzły do klastra usługi sieć szkieletowa autonomiczny](service-fabric-cluster-windows-server-add-remove-nodes.md) szczegółowy opis kroków.
@@ -154,9 +154,9 @@ Ten skrypt można uruchomić na dowolnym komputerze, który ma dostęp administr
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Dane telemetryczne zbierane i jak rezygnacji z jej
-Domyślnie produktu zbiera dane telemetryczne na użycie usługi sieć szkieletowa ulepszania produktów. Analizator najlepszych rozwiązań, która działa jako część instalacji sprawdza, czy łączność [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Jeśli nie jest dostępny, instalacja zakończy się niepowodzeniem, Jeśli zrezygnujesz z telemetrii.
+Domyślnie produktu zbiera dane telemetryczne na użycie usługi sieć szkieletowa ulepszania produktów. Analizator najlepszych rozwiązań, która działa jako część instalacji sprawdza, czy łączność [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1). Jeśli nie jest dostępny, instalacja zakończy się niepowodzeniem, Jeśli zrezygnujesz z telemetrii.
 
-1. Potok telemetrii próbuje przekazać następujące dane [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) raz każdego dnia. Jest przekazywanie optymalnych i nie ma wpływu na funkcjonalność klastra. Dane telemetryczne są zgodne z węzła, który uruchamia przejście w tryb failover manager podstawowego. Nie inne węzły wysłać dane telemetryczne.
+1. Potok telemetrii próbuje przekazać następujące dane [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1) raz każdego dnia. Jest przekazywanie optymalnych i nie ma wpływu na funkcjonalność klastra. Dane telemetryczne są zgodne z węzła, który uruchamia przejście w tryb failover manager podstawowego. Nie inne węzły wysłać dane telemetryczne.
 2. Dane telemetryczne składa się z następujących czynności:
 
 * Liczba usług

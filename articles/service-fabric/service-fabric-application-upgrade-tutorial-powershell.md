@@ -1,24 +1,24 @@
 ---
-title: "Uaktualnianie aplikacji sieci szkieletowej usług za pomocą programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Ten artykuł przeprowadzi Cię przez proces wdrażania aplikacji usługi Service Fabric, zmiana kodu i wprowadza uaktualnienia przy użyciu programu PowerShell."
+title: Uaktualnianie aplikacji sieci szkieletowej usług za pomocą programu PowerShell | Dokumentacja firmy Microsoft
+description: Ten artykuł przeprowadzi Cię przez proces wdrażania aplikacji usługi Service Fabric, zmiana kodu i wprowadza uaktualnienia przy użyciu programu PowerShell.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0306a219112a14121fd881a7cc52d58597a073a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44f4dc3a9c876e383a6e4df8ef5f467f2b93eaa9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Uaktualnianie aplikacji sieci szkieletowej usług za pomocą programu PowerShell
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Tworzenie i publikowanie aplikacji, klikając prawym przyciskiem myszy projekt a
 
 Po utworzeniu projektu programu Visual Studio, możesz użyć polecenia środowiska PowerShell [ServiceFabricApplicationPackage kopiowania](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) Aby skopiować pakiet aplikacji do magazynu ImageStore. Jeśli chcesz sprawdzić lokalnie pakietu aplikacji, użyj [ServiceFabricApplicationPackage testu](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) polecenia cmdlet. Następnym krokiem jest można zarejestrować aplikacji przy użyciu środowiska uruchomieniowego platformy Service Fabric [ServiceFabricApplicationType rejestru](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) polecenia cmdlet. Następny krok się uruchomić wystąpienie aplikacji przy użyciu [ServiceFabricApplication nowy](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) polecenia cmdlet.  Te trzy kroki są podobne do przy użyciu **Wdróż** element menu w programie Visual Studio.  Po ukończeniu inicjowania obsługi należy wyczyścić pakiet aplikacji skopiowanych z magazynu obrazów w celu zmniejszenia używanych zasobów.  Jeśli aplikacja nie jest już wymagane, należy wyrejestrować z tego samego powodu. Zobacz [Wdróż i usunąć aplikacje przy użyciu programu PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) Aby uzyskać więcej informacji.
 
-Teraz, można użyć [Service Fabric Explorer, aby wyświetlić klastra i aplikacji](service-fabric-visualizing-your-cluster.md). Aplikacja ma usługi sieci web, który może zostać przesłane do programu Internet Explorer, wpisując [http://localhost: 8081/visualobjects](http://localhost:8081/visualobjects) na pasku adresu.  Niektóre obiekty visual przestawne przenoszenia na ekranie powinna zostać wyświetlona.  Ponadto można użyć [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) do sprawdzania stanu aplikacji.
+Teraz, można użyć [Service Fabric Explorer, aby wyświetlić klastra i aplikacji](service-fabric-visualizing-your-cluster.md). Aplikacja ma usługi sieci web, który może zostać przesłane do programu Internet Explorer, wpisując [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) na pasku adresu.  Niektóre obiekty visual przestawne przenoszenia na ekranie powinna zostać wyświetlona.  Ponadto można użyć [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) do sprawdzania stanu aplikacji.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Zaktualizuj próbka obiektów Visual
 Można zauważyć, że przy użyciu wersji, który został wdrożony w kroku 1, obiekt visual nie Obróć. Umożliwia uaktualnienie tej aplikacji na taki, gdzie obiekty widoczne również obracać.

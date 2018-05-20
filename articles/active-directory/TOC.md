@@ -12,10 +12,10 @@
 ## [Rozpoczynanie pracy z usługą Azure AD](get-started-azure-ad.md)
 ## [Tworzenie konta w usłudze Azure AD Premium](active-directory-get-started-premium.md)
 ## [Dodawanie niestandardowej nazwy domeny](add-custom-domain.md)
-## [Konfigurowanie oznaczenia marką firmy](customize-branding.md)
+## [Configure company branding (Konfigurowanie oznaczenia marką firmy)](customize-branding.md)
 ## [Dodawanie użytkowników do usługi Azure AD](add-users-azure-active-directory.md)
-## [Przypisywanie licencji do użytkowników](license-users-groups.md)
-## [Konfigurowanie samoobsługowego resetowania haseł](authentication/quickstart-sspr.md)
+## [Assign licenses to users (Przypisywanie licencji do użytkowników)](license-users-groups.md)
+## [Configure Self-service password reset (Konfigurowanie samoobsługowego resetowania haseł)](authentication/quickstart-sspr.md)
 ## [Dodawanie informacji o ochronie prywatności w organizacji do usługi Azure AD](active-directory-properties-area.md)
 
 
@@ -185,27 +185,27 @@
 ##### [Niestandardowe domeny](manage-apps/application-proxy-configure-custom-domain.md)
 #### [Logowanie jednokrotne](manage-apps/application-proxy-single-sign-on.md)
 ##### [Logowanie jednokrotne z delegowaniem KCD](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-##### [Logowanie jednokrotne z nagłówkami](application-proxy-ping-access.md)
-##### [Logowanie jednokrotne z przechowywaniem haseł w magazynie](application-proxy-sso-azure-portal.md)
+##### [Logowanie jednokrotne z nagłówkami](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md)
+##### [Logowanie jednokrotne z przechowywaniem haseł w magazynie](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 #### Pojęcia
-##### [Łączniki](application-proxy-understand-connectors.md)
-##### [Bezpieczeństwo](application-proxy-security-considerations.md)
-##### [Sieci](application-proxy-network-topology-considerations.md)
+##### [Łączniki](manage-apps/application-proxy-connectors.md)
+##### [Bezpieczeństwo](manage-apps/application-proxy-security.md)
+##### [Sieci](manage-apps/application-proxy-network-topology.md)
 
 
-##### [Uaktualnienie z serwera TMG lub UAG](application-proxy-transition-from-uag-tmg.md)
+##### [Uaktualnienie z serwera TMG lub UAG](manage-apps/application-proxy-migration.md)
 
 #### Konfiguracje zaawansowane
-##### [Publikowanie w oddzielnych sieciach](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Serwery proxy](application-proxy-working-with-proxy-servers.md)
-##### [Aplikacje obsługujące oświadczenia](active-directory-application-proxy-claims-aware-apps.md)
-##### [Aplikacje klienta natywnego](active-directory-application-proxy-native-client.md)
-##### [Instalacja dyskretna](active-directory-application-proxy-silent-installation.md)
-##### [Niestandardowa strona główna](application-proxy-office365-app-launcher.md)
-##### [Tłumaczenie linków w tekście](application-proxy-link-translation.md)
+##### [Publikowanie w oddzielnych sieciach](manage-apps/application-proxy-connector-groups.md)
+##### [Serwery proxy](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+##### [Aplikacje obsługujące oświadczenia](manage-apps/application-proxy-configure-for-claims-aware-applications.md)
+##### [Aplikacje klienta natywnego](manage-apps/application-proxy-configure-native-client-application.md)
+##### [Instalacja dyskretna](manage-apps/application-proxy-register-connector-powershell.md)
+##### [Niestandardowa strona główna](manage-apps/application-proxy-configure-custom-home-page.md)
+##### [Tłumaczenie linków w tekście](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
 #### Przewodniki dotyczące publikowania
-##### [Pulpit zdalny](application-proxy-publish-remote-desktop.md)
-##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Pulpit zdalny](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
+##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 

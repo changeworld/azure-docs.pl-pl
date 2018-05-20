@@ -1,24 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z raportów o kondycji systemu | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano raportów kondycji wysyłane przez składniki sieci szkieletowej usług Azure i ich użycia dla klastra rozwiązywaniu problemów lub problemy z aplikacjami"
+title: Rozwiązywanie problemów z raportów o kondycji systemu | Dokumentacja firmy Microsoft
+description: W tym artykule opisano raportów kondycji wysyłane przez składniki sieci szkieletowej usług Azure i ich użycia dla klastra rozwiązywaniu problemów lub problemy z aplikacjami
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8304790b5eba4679b0633641c82d57316e7f8ec4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Używanie raportów kondycji systemu do rozwiązywania problemów
 Składniki sieci szkieletowej usług Azure udostępnia raporty kondycji systemu na wszystkich jednostek w klastrze dodatkowych zabiegów. [Magazynu kondycji](service-fabric-health-introduction.md#health-store) tworzy i usuwa jednostki na podstawie raportów systemu. Również organizuje ona je w hierarchii, która przechwytuje interakcje jednostki.
@@ -56,7 +56,7 @@ Raport określa limit czasu globalnego dzierżawy jako czas wygaśnięcia (TTL).
 * **Właściwość**: rozpoczyna się od **otoczenie** i zawiera informacje na węźle.
 * **Następne kroki**: Sprawdź, dlaczego otoczenie zostaną utracone. Na przykład sprawdzić komunikację między węzłami klastra.
 
-### <a name="rebuild"></a>Kompiluj ponownie
+### <a name="rebuild"></a>Ponowne kompilowanie
 
 Usługa menedżera trybu Failover (FM) zarządza informacjami o węzłach klastra. Gdy FM utracie danych i przechodzi do utraty danych, nie może zagwarantować ma najnowszych informacji o węzłach klastra. W takim przypadku system przechodzi przez kompilowania i System.FM zbiera dane ze wszystkich węzłów w klastrze w celu odbudowania jego stanu. Czasami z powodu sieci lub zagadnienia węzła Odbuduj można uzyskać zatrzymane lub wstrzymane. Taki sam może nastąpić z usługą Failover Manager głównego (FMM). FMM to usługa systemu bezstanowych, która śledzi ścieżkę, z których wszystkie FMs w klastrze. Podstawowy FMM jest zawsze węzeł o identyfikatorze najbliżej 0. Jeśli ten węzeł zostanie porzucone, zostanie wywołany odbudowie.
 W przypadku jednego z powyższych warunków **System.FM** lub **System.FMM** flagi go za pośrednictwem raportów o błędach. Ponowna kompilacja mogła zostać zablokowana na jeden z dwóch faz:
@@ -726,7 +726,7 @@ HealthEvents          :
 ## <a name="deployedapplication-system-health-reports"></a>DeployedApplication systemowych raportów kondycji
 **System.Hosting** urzędu na wdrożonym jednostek.
 
-### <a name="activation"></a>Aktywacja
+### <a name="activation"></a>Uaktywnienie
 System.Hosting raportów, jako OK gdy aplikacji został pomyślnie uaktywniony na węźle. W przeciwnym razie go zgłasza błąd.
 
 * **SourceId**: System.Hosting

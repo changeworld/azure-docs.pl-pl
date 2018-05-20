@@ -14,17 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e7107e5c75d79714ae8d2d78d35e2cd3742ac674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Samouczek: uwierzytelnianie w usłudze Azure SignalR Service
 
+Usługa Microsoft Azure SignalR Service jest obecnie dostępna w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Ten samouczek opiera się na aplikacji pokoju rozmów wprowadzonej w przewodniku Szybki start. Jeśli jeszcze nie zostało wykonane ćwiczenie [Tworzenie pokoju rozmów za pomocą usługi SignalR Service](signalr-quickstart-dotnet-core.md), wykonaj je najpierw. 
 
-Z tego samouczka dowiesz się, jak zaimplementować własne uwierzytelnianie i zintegrować je z usługą Azure SignalR Service. 
+Z tego samouczka dowiesz się, jak zaimplementować własne uwierzytelnianie i zintegrować je z usługą Microsoft Azure SignalR Service. 
 
 Uwierzytelnianie początkowo używane w aplikacji pokoju rozmów przewodnika Szybki start jest zbyt proste dla realnych scenariuszy. Aplikacja umożliwia każdemu klientowi oświadczenie, kim jest, a serwer po prostu to zaakceptuje. To podejście nie nadaje się do rzeczywistych zastosowań, gdzie złośliwy użytkownik może podszyć się pod innych, aby uzyskać dostęp do poufnych danych. 
 
@@ -54,8 +56,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Do ukończenia tego samouczka niezbędne są:
 
 * Konto utworzone w usłudze [GitHub](https://github.com/)
-* [Usługa Git](https://git-scm.com/)
-* [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows) 
+* [Git](https://git-scm.com/)
+* [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download/windows) 
 * [Skonfigurowana usługa Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
 * Pobrane lub sklonowane repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples)
 
@@ -70,7 +72,7 @@ Do ukończenia tego samouczka niezbędne są:
 
     | Nazwa ustawienia | Sugerowana wartość | Opis |
     | ------------ | --------------- | ----------- |
-    | Application name (Nazwa aplikacji) | *Azure SignalR Chat* | Użytkownik usługi Github powinien mieć możliwość rozpoznania i zaufania aplikacji, za pomocą której następuje uwierzytelnienie.   |
+    | Nazwa aplikacji | *Azure SignalR Chat* | Użytkownik usługi Github powinien mieć możliwość rozpoznania i zaufania aplikacji, za pomocą której następuje uwierzytelnienie.   |
     | Homepage URL (Adres URL strony głównej) | *http://localhost:5000/home* | |
     | Application description (Opis aplikacji) | *Przykład pokoju rozmów z użyciem usługi Azure SignalR Service z uwierzytelnianiem usługi Github* | Przydatny opis aplikacji, który pomoże użytkownikom Twojej aplikacji zrozumieć kontekst używanego uwierzytelniania. |
     | Authorization callback URL (Adres URL wywołania zwrotnego autoryzacji) | *http://localhost:5000/signin-github* | To ustawienie jest najważniejszym ustawieniem Twojej aplikacji OAuth. To jest adres URL wywołania zwrotnego, który usługa GitHub zwraca użytkownikowi po pomyślnym uwierzytelnieniu. W tym samouczku musisz użyć domyślnego adresu URL wywołania zwrotnego dla pakietu *AspNet.Security.OAuth.GitHub*, czyli */signin-github*.  |
@@ -603,9 +605,7 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostało dodane uwierzytelnianie za pomocą protokołu OAuth w celu zapewnienia lepszego podejścia do uwierzytelniania za pomocą usługi Azure SignalR Service. Aby dowiedzieć się więcej o korzystaniu z serwera usługi Azure SignalR Server, przejdź do następnego samouczka przedstawiającego integrację z usługą Azure Functions.
+W tym samouczku zostało dodane uwierzytelnianie za pomocą protokołu OAuth w celu zapewnienia lepszego podejścia do uwierzytelniania za pomocą usługi Azure SignalR Service. Aby dowiedzieć się więcej o korzystaniu z serwera Azure SignalR Server, przejdź do przykładów interfejsu wiersza polecenia platformy Azure dla usługi SignalR Service.
 
 > [!div class="nextstepaction"]
-> [Integracja usługi Azure Functions z usługą Azure SignalR Service](./signalr-integrate-functions.md)
-
-
+> [Przykłady Interfejsu wiersza polecenia usługi Azure SignalR](./signalr-cli-samples.md)

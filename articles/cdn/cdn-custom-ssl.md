@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f64f25713dd05ece018138624a06c225218f68e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -74,13 +74,20 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 
 4. W obszarze typu zarządzania certyfikatem wybierz pozycję **Zarządzany przez usługę CDN**.
 
-4. Wybierz pozycję **Wł.**, aby włączyć protokół HTTPS.
+5. Wybierz pozycję **Wł.**, aby włączyć protokół HTTPS.
 
     ![Stan protokołu HTTPS domeny niestandardowej](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
+6. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
+
 
 ## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>Opcja 2: włączanie funkcji HTTPS przy użyciu własnego certyfikatu 
+
+> [!IMPORTANT]
+> Ta funkcja jest dostępna tylko w ramach profilów **usługi Azure CDN w warstwie Standardowa od firmy Microsoft**. 
+>
  
+
 W usłudze Azure CDN można użyć własnego certyfikatu w celu dostarczania zawartości za pośrednictwem protokołu HTTPS. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault. Usługa Azure Key Vault pozwala klientom bezpiecznie przechowywać swoje certyfikaty. Usługa Azure CDN wykorzystuje ten bezpieczny mechanizm do pobierania certyfikatu. Użycie własnego certyfikatu wymaga wykonania kilku dodatkowych kroków.
 
 ### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>Krok 1: przygotowanie certyfikatu i konta usługi Azure Key Vault
@@ -89,9 +96,23 @@ W usłudze Azure CDN można użyć własnego certyfikatu w celu dostarczania zaw
  
 2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault. 
 
-### <a name="step-2-grant-azure-cdn-access-to-your-key-vault"></a>Krok 2: udzielanie usłudze Azure CDN dostępu do magazynu kluczy
+### <a name="step-2-register-azure-cdn"></a>Krok 2: rejestrowanie usługi Azure CDN
+
+Rejestrowanie usługi Azure CDN jako aplikacji w usłudze Azure Active Directory za pomocą programu PowerShell.
+
+1. Jeśli to konieczne, zainstaluj program [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) za pomocą programu PowerShell na komputerze lokalnym.
+
+2. W programie PowerShell uruchom następujące polecenie:
+
+     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+
+    ![Rejestrowanie usługi Azure CDN za pomocą programu PowerShell](./media/cdn-custom-ssl/cdn-register-powershell.png)
+              
+
+### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>Krok 3: udzielanie usłudze Azure CDN dostępu do magazynu kluczy
  
-Musisz przyznać usłudze Azure CDN uprawnienia dostępu do certyfikatów (kluczy tajnych) na koncie usługi Azure Key Vault.
+Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych) na koncie usługi Azure Key Vault.
+
 1. Na koncie magazynu kluczy w obszarze USTAWIENIA wybierz pozycję **Zasady dostępu**, a następnie wybierz pozycję **Dodaj nową**, aby utworzyć nową zasadę.
 
     ![Dodawanie nowej zasady dostępu](./media/cdn-custom-ssl/cdn-new-access-policy.png)
@@ -106,7 +127,7 @@ Musisz przyznać usłudze Azure CDN uprawnienia dostępu do certyfikatów (klucz
 
     Usługa Azure CDN ma teraz dostęp do tego magazynu kluczy i certyfikatów (kluczy tajnych), które są przechowywane w tym magazynie kluczy.
  
-### <a name="step-3-select-the-certificate-for-azure-cdn-to-deploy"></a>Krok 3: wybranie certyfikatu do wdrożenia dla usługi Azure CDN
+### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>Krok 4: wybranie certyfikatu do wdrożenia dla usługi Azure CDN
  
 1. Wróć do portalu usługi Azure CDN, a następnie wybierz profil i punkt końcowy CDN, dla którego chcesz włączyć niestandardowy protokół HTTPS. 
 
@@ -126,16 +147,20 @@ Musisz przyznać usłudze Azure CDN uprawnienia dostępu do certyfikatów (klucz
     - Dostępne wersje certyfikatów. 
  
 5. Wybierz pozycję **Wł.**, aby włączyć protokół HTTPS.
+  
+6. Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation).
 
 
 ## <a name="validate-the-domain"></a>Weryfikowanie domeny
 
-Jeśli używasz już domeny niestandardowej mapowanej na niestandardowy punkt końcowy z rekordu CNAME, przejdź do sekcji  
+Jeśli używasz już domeny niestandardowej mapowanej na niestandardowy punkt końcowy z rekordu CNAME lub własnego certyfikatu, przejdź do sekcji  
 [Domena niestandardowa została zamapowana do punktu końcowego usługi CDN](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record). W przeciwnym razie, jeśli wpis rekordu CNAME dla punktu końcowego już nie istnieje lub zawiera domenę podrzędną cdnverify, przejdź do sekcji [Domena niestandardowa nie została zamapowana na punkt końcowy usługi CDN](#custom-domain-is-not-mapped-to-your-cdn-endpoint).
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Domena niestandardowa została zamapowana na punkt końcowy usługi CDN według rekordu CNAME
 
-Po dodaniu domeny niestandardowej do punktu końcowego utworzono rekord CNAME w tabeli DNS rejestratora domen w celu zamapowania go na nazwę hosta punktu końcowego usługi CDN. Jeśli ten rekord CNAME nadal istnieje i nie zawiera domeny podrzędnej cdnverify, urząd certyfikacji firmy DigiCert użyje go do zweryfikowania prawa własności do domeny niestandardowej. 
+Po dodaniu domeny niestandardowej do punktu końcowego utworzono rekord CNAME w tabeli DNS rejestratora domen w celu zamapowania go na nazwę hosta punktu końcowego usługi CDN. Jeśli ten rekord CNAME nadal istnieje i nie zawiera domeny podrzędnej cdnverify, urząd certyfikacji DigiCert użyje go automatycznie do zweryfikowania prawa własności do domeny niestandardowej. 
+
+Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana.
 
 Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny niestandardowej, a *Wartość* to nazwa hosta punktu końcowego usługi CDN:
 

@@ -1,31 +1,31 @@
 ---
-title: "Cykl życia aplikacji w sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano tworzenie, wdrażanie, testowania, uaktualniania, utrzymywaniem i usunięcie aplikacji sieci szkieletowej usług."
+title: Cykl życia aplikacji w sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: W tym artykule opisano tworzenie, wdrażanie, testowania, uaktualniania, utrzymywaniem i usunięcie aplikacji sieci szkieletowej usług.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 923778e54a1ae5967d681751841c3a2b3fb45130
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: e7dddfca3640615cb851fb6dce9eaa80260ccbf6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-lifecycle"></a>Cykl życia aplikacji w sieci szkieletowej usług
 Ponieważ z innych platform, aplikację na sieć szkieletowa usług Azure zazwyczaj przechodzi przez następujących faz: projekt, programowanie testowania, wdrożenia, uaktualnianie, obsługi i usuwania. Sieć szkieletowa usług zawiera najwyższej jakości pomoc techniczną dla pełnej aplikacji cyklem życia aplikacji w chmurze, od projektowania do wdrożenia, codziennego zarządzania i konserwacji do likwidacji ostatecznego. Model usługi umożliwia kilku różnych ról niezależnie uczestniczyć w cyklu życia aplikacji. Ten artykuł zawiera omówienie interfejsów API i jak są używane przez różne role w etapy cyklu życia aplikacji sieci szkieletowej usług.
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-W poniższym filmie Microsoft Virtual Academy opisano sposób zarządzania cyklu użytkowania Twojej aplikacji:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
+W poniższym filmie Microsoft Virtual Academy opisano sposób zarządzania cyklu użytkowania Twojej aplikacji: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-application-lifecycle/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 

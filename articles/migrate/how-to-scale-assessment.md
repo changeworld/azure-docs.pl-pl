@@ -4,13 +4,13 @@ description: Opisuje sposób oceny dużej liczby komputerów lokalnych za pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e0bd62710c47cfdf81535470ef96bad2ab675bb0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób oceny dużej liczby lokalnych maszyn wirtualnych 
 
 Zaplanuj odnajdywania i oceny na podstawie limitów następujące:
 
-| **Entity** | **Limit komputera** |
+| **Jednostki** | **Limit komputera** |
 | ---------- | ----------------- |
 | Project    | 1,500             |
 | Odnajdowanie  | 1,500             |
@@ -88,7 +88,7 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
 
 3. Upewnij się, czy wygenerowane skrótu zgodna następujące ustawienia.
 
-    Dla wersji komórek jajowych 1.0.9.7
+    OVA w wersji 1.0.9.7
 
     **Algorytm** | **Wartość skrótu**
     --- | ---
@@ -175,7 +175,7 @@ W poniższej tabeli wymieniono także wyniki oceny, które zostaną zmienione, j
 | virtualDisk.write.average               | 2     | 2                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
 | virtualDisk.numberReadAveraged.average  | 1     | 3                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
 | virtualDisk.numberWriteAveraged.average | 1     | 3                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
-| net.received.average                    | 2     | 3                | Koszt rozmiar i sieci maszyny Wirtualnej             |
+| NET.RECEIVED.AVERAGE                    | 2     | 3                | Koszt rozmiar i sieci maszyny Wirtualnej             |
 | net.transmitted.average                 | 2     | 3                | Koszt rozmiar i sieci maszyny Wirtualnej             |
 
 > [!WARNING]
@@ -203,7 +203,7 @@ Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbi
 5.  W obszarze **Specify vCenter Server details** (Określ szczegóły serwera vCenter) wykonaj następujące czynności:
     - Określ nazwę (FQDN) lub adres IP serwera vCenter.
     - W **nazwy użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający będzie używane do wykrywania maszyn wirtualnych w programie vCenter Server.
-    - W **, wybierz zakres**, wybierz zakres odnajdywania maszyny Wirtualnej. Moduł zbierający może odnajdywać tylko maszyny wirtualne w podanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Nie powinien on zawierać więcej niż 1000 maszyn wirtualnych. 
+    - W obszarze **Select scope** (Zakres wybierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający może odnajdywać tylko maszyny wirtualne w podanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Nie powinien on zawierać więcej niż 1000 maszyn wirtualnych. 
 
 6.  W **Określ migrację**, podaj identyfikator i klucz dla projektu. Jeśli nie zostaną skopiowane, otwórz Azure portal z modułu zbierającego maszyny Wirtualnej. Do projektu **omówienie** wybierz pozycję **odnajdywanie maszyn** i skopiuj wartości.  
 7.  W **wyświetlić postęp kolekcji**, monitorować proces odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.

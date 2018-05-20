@@ -1,19 +1,19 @@
 ---
-title: "Wprowadzenie do usługi Azure Container Service dla rozwiązania Kubernetes"
-description: "Usługa Azure Container Service dla rozwiązania Kubernetes ułatwia wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi na platformie Azure."
+title: Wprowadzenie do usługi Azure Container Service dla rozwiązania Kubernetes
+description: Usługa Azure Container Service dla rozwiązania Kubernetes ułatwia wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi na platformie Azure.
 services: container-service
 author: gabrtv
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 1a877204e91098191c218bf1c991cc5d8e53ee7a
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: f12fc0baa055e62d4f15c0e42eb7add3661ea6fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-container-service-for-kubernetes"></a>Wprowadzenie do usługi Azure Container Service dla rozwiązania Kubernetes
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 65e1f8a907c8bf64497f7439e5b635ad336cd23a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 026ff0394e988081bdc581bf001417b13e44427b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie - Centrum IoT przydziały i ograniczenia przepustowości
 
@@ -39,7 +39,7 @@ W poniższej tabeli przedstawiono limity wymuszone. Wartości odnoszą się do p
 | Ograniczenie | Wolne B1 i S1 | B2 i S2 | B3 i S3 | 
 | -------- | ------- | ------- | ------- |
 | Operacje rejestru tożsamości (Tworzenie, pobieranie, listy, aktualizowanie i usuwanie) | 1.67/sec/Unit (jednostka/100/min) | 1.67/sec/Unit (jednostka/100/min) | 83.33/sec/Unit (jednostka-5000/min) |
-| Połączenia urządzenia | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24/s, ale mają co najmniej 100 na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 na sekundę (9\*12) między jednostek. | Jednostka-120/s | Jednostka-6000/s |
+| Nowe połączenia urządzenia (ten limit dotyczy szybkości _nowych połączeń_ są ustalane nie całkowita liczba połączeń) | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24 nowych połączeń na sekundę, ale ma co najmniej 100 nowych połączeń na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 nowych połączeń na sekundę (9\*12) między jednostek. | 120 nowych połączeń na sekundę/jednostkę | nowe 6000 połączeń na sekundę/jednostkę |
 | Liczba elementów wysłanych z urządzenia do chmury | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24/s, ale mają co najmniej 100 na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 na sekundę (9\*12) między jednostek. | Jednostka-120/s | Jednostka-6000/s |
 | Wysyła chmury do urządzenia<sup>1</sup> | 1.67/sec/Unit (jednostka/100/min) | 1.67/sec/Unit (jednostka/100/min) | 83.33/sec/Unit (jednostka-5000/min) |
 | Chmura urządzenie odbiera<sup>1</sup> <br/> (tylko kiedy urządzenie korzysta z protokołu HTTPS)| 16.67/sec/Unit (jednostka-1000/min) | 16.67/sec/Unit (jednostka-1000/min) | 833.33/sec/Unit (jednostka-50000/min) |

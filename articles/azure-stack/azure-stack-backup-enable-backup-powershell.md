@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 5/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5fab656734d0984cf44a9fe1f29fd73530bd9aa8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Włączenia kopii zapasowej Azure stosu przy użyciu programu PowerShell
 
@@ -64,7 +64,7 @@ W tej samej sesji programu PowerShell należy edytować następujący skrypt pro
 
 | Zmienna        | Opis   |
 |---              |---                                        |
-| $username       | Typ **Username** przy użyciu domena i nazwa użytkownika dla lokalizacji udostępnionego dysku. Na przykład `Contoso\administrator`. |
+| $username       | Typ **Username** przy użyciu domena i nazwa użytkownika dla lokalizacji udostępnionego dysku z wystarczające prawa dostępu do odczytu i zapisu plików. Na przykład `Contoso\backupshareuser`. |
 | $password       | Typ **hasło** dla użytkownika. |
 | $sharepath      | Wpisz ścieżkę do **lokalizacja magazynu kopii zapasowej**. Ścieżka do udziału plików hostowane na osobnych urządzenie, musisz użyć ciągu Universal Naming Convention (UNC). Ciąg UNC Określa lokalizację zasobów, takich jak udostępnione pliki lub urządzeń. W celu zapewnienia dostępności danych kopii zapasowej, urządzenia powinny być w innej lokalizacji. |
 

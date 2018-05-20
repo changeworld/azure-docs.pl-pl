@@ -11,7 +11,7 @@ ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 0af8806cdc55b89a9ab87a8059808e4fcc9a1730
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
 ---

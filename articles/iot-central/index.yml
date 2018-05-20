@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja usługi Azure IoT Central (wersja zapoznawcza)
+metadata:
+  title: Dokumentacja usługi Azure IoT Central (wersja zapoznawcza) — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
+  services: iot-central
+  author: czeumault
+  manager: carolz
+  ms.prod: microsoft-iot-central
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/08/2017
+  ms.author: carolz
+  ms.openlocfilehash: 3e443a4ba2de76971ef856b67fdeb1f8836f68e1
+  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 05/16/2018
+abstract:
+  description: Azure IoT Central to w pełni zarządzane rozwiązanie SaaS (oprogramowanie jako usługa), które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi w odpowiedniej skali. Usługa Azure IoT Central upraszcza początkową konfigurację rozwiązania IoT, a także zmniejsza obciążenie związane z zarządzaniem, koszty operacyjne i ogólny nakład pracy w typowym projekcie IoT. Dowiedz się, jak tworzyć i dostosowywać aplikację usługi Azure IoT Central, używać jej oraz zarządzać nią, korzystając z naszych przewodników Szybki start i samouczków.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak <a href="quick-deploy-iot-central">utworzyć nową aplikację usługi Azure IoT Central</a>.
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak dostosowywać aplikację usługi Azure IoT Central i korzystać z niej.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="tutorial-define-device-type">Definiowanie nowego typu urządzenia</a>
+    - html: <a href="tutorial-configure-rules">Konfigurowanie reguł</a>
+    - html: <a href="tutorial-customize-operator">Dostosowywanie widoku operatora</a>
+    - html: <a href="tutorial-monitor-devices">Monitorowanie urządzeń</a>
+    - html: <a href="tutorial-add-device">Dodawanie rzeczywistego urządzenia</a>

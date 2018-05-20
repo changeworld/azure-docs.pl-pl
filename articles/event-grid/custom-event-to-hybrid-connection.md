@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie zdarzeń niestandardowych siatki zdarzeń Azure do połączenia hybrydowego | Dokumentacja firmy Microsoft
-description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Połączenie hybrydowe jest używany dla punktu końcowego.
+title: Wysyłanie zdarzeń niestandardowych dla usługi Azure Event Grid do połączenia hybrydowego | Microsoft Docs
+description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Połączenie hybrydowe jest używane dla punktu końcowego.
 services: event-grid
 keywords: ''
 author: tfitzmac
@@ -8,19 +8,21 @@ ms.author: tomfitz
 ms.date: 05/04/2018
 ms.topic: article
 ms.service: event-grid
-ms.openlocfilehash: 42b3e88d4bf411aa8a0d3bb129795f0d8ab98525
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c95cfee787244367688b82959474e2a8028b7ff6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Trasy zdarzeń niestandardowych w celu połączenia hybrydowe przekazywania Azure z wiersza polecenia platformy Azure i siatki zdarzeń
+# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do połączeń hybrydowych usługi Azure Relay za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. Azure połączeń hybrydowych przekazywania jest jednym z obsługi zdarzeń obsługiwane. Za pomocą połączeń hybrydowych jako program obsługi zdarzeń można przetwarzać zdarzeń z aplikacji, które nie mają publiczny punkt końcowy. Te aplikacje mogą być w sieci firmowej organizacji. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Możesz wysłać zdarzenia do połączenia hybrydowego.
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. Połączenia hybrydowe usługi Azure Relay to jedne z obsługiwanych procedur obsługi zdarzeń. Połączeń hybrydowych można używać jako procedur obsługi zdarzeń, jeśli zachodzi potrzeba przetwarzania zdarzeń z aplikacji, które nie mają publicznego punktu końcowego. Te aplikacje mogą znajdować się w sieci korporacyjnej firmy. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia wysyła się do połączenia hybrydowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule przyjęto założenie, że masz już połączenie hybrydowe i aplikacji odbiornika. Aby rozpocząć pracę z połączeń hybrydowych było możliwe, zobacz [Rozpoczynanie pracy z połączeń hybrydowych przekazywania - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) lub [Rozpoczynanie pracy z połączeń hybrydowych przekazywania - węzła](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+W tym artykule przyjęto założenie, że masz już dostęp do połączenia hybrydowego i aplikacji odbiornika. Aby rozpocząć pracę z połączeniami hybrydowymi, zobacz [Wprowadzenie do połączeń hybrydowych usługi Relay — platforma .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) lub [Wprowadzenie do połączeń hybrydowych usługi Relay — oprogramowanie Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -39,16 +41,20 @@ az group create --name gridResourceGroup --location westus2
 Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
 ## <a name="subscribe-to-a-topic"></a>Subskrybowanie tematu
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład subskrybuje temat utworzone i przekazuje identyfikator zasobu połączenia hybrydowego dla punktu końcowego. Identyfikator połączenia hybrydowe jest w formacie:
+Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazanie identyfikatora zasobu do połączenia hybrydowego punktu końcowego. Identyfikator połączenia hybrydowego ma następujący format:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-Poniższy skrypt pobiera identyfikator zasobu przestrzeni nazw przekazywania. Tworzy identyfikator połączenia hybrydowego i subskrybuje temat siatki zdarzenia. Ustawia typ punktu końcowego `hybridconnection` i używa Identyfikatora połączenia hybrydowe dla punktu końcowego.
+Poniższy skrypt pobiera identyfikator zasobu przestrzeni nazw przekaźnika. Tworzy identyfikator połączenia hybrydowego i subskrybuje temat usługi Event Grid. Ustawia typ punktu końcowego na `hybridconnection` i używa identyfikatora połączenia hybrydowego punktu końcowego.
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -75,14 +81,14 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL.  W poniższym przykładzie wysyłana trzech zdarzeń do tematu siatki zdarzeń:
+Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
 
 ```azurecli-interactive
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Aplikacji odbiornika powinien zostać wyświetlony komunikat o zdarzeniu.
+Aplikacja odbiornika powinna odebrać komunikat zdarzenia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utworzonych w tym artykule. W przeciwnym razie użyj poniższego polecenia, aby usunąć zasoby utworzone w ramach tego artykułu.
@@ -91,7 +97,7 @@ Jeśli zamierzasz kontynuować pracę z tym zdarzeniem, nie usuwaj zasobów utwo
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiesz już, jak tworzyć tematy i subskrypcje zdarzeń. Dowiedz się więcej na temat tego, co może Ci ułatwić usługa Event Grid:
 

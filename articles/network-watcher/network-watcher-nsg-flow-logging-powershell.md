@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2419bf981f613137dba02ba0b767edc491324d27
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f0ffdb9127555ecfdd37a399335335885a10a6ea
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurowanie przepływu grupy zabezpieczeń sieci dzienników przy użyciu programu PowerShell
 
@@ -51,7 +51,7 @@ Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $ns
 Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true
 ```
 
-Konta magazynu przez użytkownika nie może mieć zasady sieci skonfigurowane pod jego kątem ograniczenia dostępu sieciowego tylko do usług firmy Microsoft lub określonych sieci wirtualnych.
+Konta magazynu przez użytkownika nie może mieć zasady sieci skonfigurowane pod jego kątem ograniczenia dostępu sieciowego tylko do usług firmy Microsoft lub określonych sieci wirtualnych. Konto magazynu może być w tej samej lub innej subskrypcji platformy Azure, niż NSG, umożliwiające przepływ w dzienniku. Jeśli używasz różnych subskrypcji, oba muszą być skojarzone z tej samej dzierżawy usługi Azure Active Directory. Konto używane dla każdej subskrypcji musi mieć [niezbędne uprawnienia](required-rbac-permissions.md).
 
 ## <a name="disable-network-security-group-flow-logs"></a>Dzienniki przepływu wyłączyć grupy zabezpieczeń sieci
 

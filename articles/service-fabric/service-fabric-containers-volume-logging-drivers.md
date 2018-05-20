@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: other
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/30/2018
 ms.author: subramar
-ms.openlocfilehash: d4751182cac9b5b952ef9a9dd125408267c1f8d0
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2d98cff1a5869091aa81097bbb34da6e525a2ad5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Usługa sieci szkieletowej Azure plików woluminu sterownika (wersja zapoznawcza)
 Wtyczka woluminu pliki Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewnia [plików Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów kontenerów Docker. Ten dodatek plug-in woluminu Docker jest dostarczana jako aplikacji sieci szkieletowej usług, które można wdrożyć do klastrów sieci szkieletowej usług. Jego celem jest zapewnienie plików Azure opartej na woluminach dla innych aplikacji kontenera sieci szkieletowej usług, które są wdrażane w klastrze.

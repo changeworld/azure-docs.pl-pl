@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric poprawki aranżacji aplikacji dla systemu linux | Dokumentacja firmy Microsoft"
-description: "Aplikacja do automatyzacji w klastrze usługi sieć szkieletowa usług Linux stosowanie poprawek systemu operacyjnego."
+title: Azure Service Fabric poprawki aranżacji aplikacji dla systemu linux | Dokumentacja firmy Microsoft
+description: Aplikacja do automatyzacji w klastrze usługi sieć szkieletowa usług Linux stosowanie poprawek systemu operacyjnego.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/22/2018
 ms.author: nachandr
-ms.openlocfilehash: dac8068705e284b04d84d128eb1ce62c459d44ff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Poprawka systemu operacyjnego Linux w klastrze usługi sieć szkieletowa
 
@@ -124,10 +124,10 @@ Pobierz aplikację z [pobrać link](https://go.microsoft.com/fwlink/?linkid=8679
 
 Zachowanie aplikacji aranżacji poprawek można skonfigurować zgodnie z potrzebami. Zastąpić wartości domyślne, przekazując w parametrze aplikacji podczas tworzenia aplikacji lub aktualizacji. Można podać parametry aplikacji, określając `ApplicationParameter` do `Start-ServiceFabricApplicationUpgrade` lub `New-ServiceFabricApplication` polecenia cmdlet.
 
-|**Parameter**        |**Typ**                          | **Szczegóły**|
+|**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacji pojawia się w węźle miesięcznie wynosi pięć. <br> -Liczba wyników dla operacji może być 10. <br> — Powinny być przechowywane wyniki dla ostatnich trzech miesięcy. |
-|TaskApprovalPolicy   |wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasad, który ma być używany przez usługę koordynatora do instalowania aktualizacji w węzłach klastra sieci szkieletowej usług.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Aktualizacje są zainstalowane jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacje są zainstalowane jedną domenę uaktualnienia naraz. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do aktualizacji.)
+|TaskApprovalPolicy   |wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasad, który ma być używany przez usługę koordynatora do instalowania aktualizacji w węzłach klastra sieci szkieletowej usług.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Aktualizacje są zainstalowane jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacje są zainstalowane jedną domenę uaktualnienia naraz. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do aktualizacji.)
 | UpdateOperationTimeOutInMinutes | Int <br>(Domyślnie: 180)                   | Określa limit czasu do żadnej operacji aktualizacji (pobierania lub instalacji). Jeśli działanie nie zostało ukończone w określonym czasie, zostało przerwane.       |
 | RescheduleCount      | Int <br> (Domyślne: 5).                  | Maksymalna liczba usługi zmienia harmonogram używany system operacyjny aktualizacji w przypadku, gdy operacja trwale kończy się niepowodzeniem.          |
 | RescheduleTimeInMinutes  | Int <br>(Domyślnie: 30). | Interwał, w którym usługa zmienia harmonogram używany system operacyjny aktualizacji, jeśli awaria nie zniknie. |

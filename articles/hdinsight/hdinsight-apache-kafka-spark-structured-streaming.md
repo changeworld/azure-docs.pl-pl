@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: larryfr
-ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Samouczek: używanie przesyłania strumieniowego ze strukturą platformy Apache Spark za pomocą platformy Kafka w usłudze HDInsight
 
@@ -147,8 +147,8 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
     | Subskrypcja | Twoja subskrypcja platformy Azure |
     | Grupa zasobów | Grupa zasobów zawierająca zasoby. |
     | Lokalizacja | Region świadczenia usługi Azure, w którym są tworzone zasoby. |
-    | Nazwa klastra Spark | Nazwa klastra Spark. |
-    | Nazwa klastra Kafka | Nazwa klastra Kafka. |
+    | Nazwa klastra Spark | Nazwa klastra Spark. Pierwszych sześć znaków musi być innych niż nazwa klastra Kafka. |
+    | Nazwa klastra Kafka | Nazwa klastra Kafka. Pierwszych sześć znaków musi być innych niż nazwa klastra Spark. |
     | Nazwa użytkownika logowania klastra | Nazwa użytkownika będącego administratorem klastrów. |
     | Hasło logowania klastra | Hasło użytkownika będącego administratorem klastrów. |
     | Nazwa użytkownika SSH | Użytkownik SSH tworzony na potrzeby obsługi klastrów. |

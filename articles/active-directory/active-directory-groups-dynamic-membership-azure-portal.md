@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/17/2018
 ms.author: curtand
-ms.reviewer: piotrci
+ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 43f364ed7e8539397fe8662a8c75804883a82e4f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Utwórz zasady na podstawie atrybutów dynamiczne członkostwo w grupie w usłudze Azure Active Directory
 W usłudze Azure Active Directory (Azure AD) można utworzyć reguł zaawansowanych, aby włączyć złożonych opartych na atrybutach dynamiczne zarządzanie członkostwem w grupach. W tym artykule szczegółowo atrybuty i składni, aby utworzyć reguły członkostwa dynamicznych dla użytkowników lub urządzeń. Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
@@ -157,13 +157,13 @@ Dozwolonych operatorów
 | city |Dowolną wartość ciągu lub *wartości null* |(user.city - eq "value") |
 | Kraju |Dowolną wartość ciągu lub *wartości null* |(user.country - eq "value") |
 | companyName | Dowolną wartość ciągu lub *wartości null* | (user.companyName - eq "value") |
-| Dział |Dowolną wartość ciągu lub *wartości null* |(user.department - eq "value") |
-| Nazwa wyświetlana |Dowolną wartością ciągu |(user.displayName - eq "value") |
+| dział |Dowolną wartość ciągu lub *wartości null* |(user.department - eq "value") |
+| displayName |Dowolną wartością ciągu |(user.displayName - eq "value") |
 | Identyfikator pracownika |Dowolną wartością ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Dowolną wartość ciągu lub *wartości null* |(user.givenName - eq "value") |
 | Stanowisko |Dowolną wartość ciągu lub *wartości null* |(user.jobTitle - eq "value") |
-| Poczty |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
+| poczta |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (poczty alias użytkownika) |(user.mailNickName - eq "value") |
 | Telefon komórkowy |Dowolną wartość ciągu lub *wartości null* |(user.mobile - eq "value") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
@@ -270,7 +270,7 @@ Można również utworzyć regułę, która wybiera obiekty urządzeń do człon
  Atrybut urządzenia  | Wartości | Przykład
  ----- | ----- | ----------------
  accountEnabled | wartość true, false | (device.accountEnabled - eq true)
- Nazwa wyświetlana | Dowolną wartością ciągu |(device.displayName - eq "Tomasz Iphone")
+ displayName | Dowolną wartością ciągu |(device.displayName - eq "Tomasz Iphone")
  DeviceOSType | Dowolną wartością ciągu | (device.deviceOSType - eq "iPad")- lub (device.deviceOSType - eq "iPhone")
  DeviceOSVersion | Dowolną wartością ciągu | (urządzenia. OSVersion - eq "9.1")
  deviceCategory | Nazwa kategorii prawidłowe urządzenie | (device.deviceCategory - eq "BYOD")
@@ -278,7 +278,7 @@ Można również utworzyć regułę, która wybiera obiekty urządzeń do człon
  deviceModel | Dowolną wartością ciągu | (device.deviceModel - eq "iPad lotniczego")
  deviceOwnership | Osobiste, firma, nieznane | (device.deviceOwnership - eq "Firmy")
  domainName | Dowolną wartością ciągu | (device.domainName - eq "contoso.com")
- enrollmentProfileName | Nazwa profilu rejestracji urządzeń firmy Apple | (device.enrollmentProfileName - eq "DEP iPhone")
+ enrollmentProfileName | Nazwa profilu profilu rejestracji urządzeń firmy Apple lub Autopilot systemu Windows | (device.enrollmentProfileName - eq "DEP iPhone")
  isRooted | wartość true, false | (device.isRooted - eq true)
  managementType | Zarządzanie urządzeniami Przenośnymi (dla urządzeń przenośnych)<br>Komputer (w przypadku komputerów zarządzanych przez agenta Komputerami z usługą Intune) | (device.managementType - eq "MDM")
  Jednostka organizacyjna | dowolną wartością ciągu pasującego do nazwy jednostki organizacyjnej, ustawione przez lokalnej usługi Active Directory | (device.organizationalUnit -eq "US PCs")

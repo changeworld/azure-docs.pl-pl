@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 11726b274d72f263ff3defeb7eb7b80594681e15
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: d47a1099a8b57c450aa48e086cc1c391faf91aa7
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usunąć sieci wirtualnej komunikacji równorzędnej
 
@@ -111,6 +111,11 @@ Jeśli chcesz sieci wirtualne do komunikowania się czasami, ale nie zawsze, zam
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia 
 
+- <a name="cross-region"></a>Można elementów równorzędnych sieci wirtualnych w tym samym regionie lub różnych regionach. Następujące ograniczenia nie są stosowane, gdy obie sieci wirtualne są *tego samego* region, ale są stosowane w przypadku sieci wirtualnych globalnie są połączyć za pomocą: 
+    - Sieci wirtualne mogą znajdować się w dowolnym regionie Azure chmury publicznej, ale nie w Azure national chmury.
+    - Zasoby w jednej sieci wirtualnej nie może komunikować się z adresem IP Azure wewnętrznego modułu równoważenia obciążenia w sieci wirtualnej peered. Moduł równoważenia obciążenia i zasobów, które komunikują się z nim muszą być w tej samej sieci wirtualnej.
+    - Nie można użyć bramy zdalnego lub zezwolić przesyłania bramy. Aby użyć bramy zdalnego lub zezwolić przesyłania bramy, obie sieci wirtualne w komunikacji równorzędnej musi istnieć w tym samym regionie. 
+- Sieci wirtualne mogą mieć tych samych lub różnych subskrypcji. Jeśli sieci wirtualne są w różnych subskrypcji, zarówno subskrypcji musi być skojarzony z tej samej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę AD, możesz szybko [utworzyć](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Można użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) Aby połączyć dwie sieci wirtualne, które istnieją w ramach różnych subskrypcji, które są skojarzone z różnych dzierżawców usługi Active Directory.
 - Sieci wirtualne, które możesz elementu równorzędnego musi mieć-nakładającymi się obszarami adresów IP.
 - Nie można dodać zakresów adresów, lub Usuń zakresy adresów z przestrzeń adresową sieci wirtualnej, po sieci wirtualnej jest połączyć z inną siecią wirtualną za pomocą. Aby dodać lub usunąć zakresy adresów, usunąć komunikację równorzędną, dodać lub usunąć zakresów adresów, następnie utworzyć je ponownie komunikację równorzędną. Aby zakresów adresów, aby dodać lub usunąć zakresy adresów sieci wirtualnej, zobacz [Zarządzanie sieciami wirtualnymi](manage-virtual-network.md).
 - Można równorzędne dwie sieci wirtualne wdrożone za pośrednictwem Menedżera zasobów lub sieci wirtualnej wdrożone za pomocą Menedżera zasobów z siecią wirtualną wdrożone za pośrednictwem klasycznego modelu wdrażania. Nie można równorzędne dwie sieci wirtualne utworzone za pośrednictwem klasycznego modelu wdrażania. Jeśli nie masz doświadczenia w obsłudze modele wdrażania platformy Azure, przeczytaj [modele wdrażania zrozumieć Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu. Do połączenia dwóch sieci wirtualnych utworzonych za pomocą klasycznego modelu wdrażania można użyć usługi [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
@@ -125,13 +130,8 @@ Jeśli chcesz sieci wirtualne do komunikowania się czasami, ale nie zawsze, zam
   Nie ma żadnych komunikacji równorzędnej między VirtualNetwork1 i VirtualNetwork3 za pośrednictwem VirtualNetwork2. Jeśli chcesz utworzyć sieć wirtualną komunikacji równorzędnej między VirtualNetwork1 i VirtualNetwork3, należy utworzyć komunikacji równorzędnej między VirtualNetwork1 i VirtualNetwork3.
 - Nie można rozpoznać nazwy w połączyć za pomocą sieci wirtualnych za pomocą domyślnego rozwiązania nazwa platformy Azure. Aby rozpoznawanie nazw w innych sieciach wirtualnych, należy użyć [usługi Azure DNS dla domen prywatnej](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub niestandardowy serwer DNS. Aby dowiedzieć się, jak skonfigurować serwer DNS, zobacz [rozpoznawanie nazw przy użyciu serwera DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 - Zasoby w połączyć za pomocą sieci wirtualne w tym samym regionie może komunikować się ze sobą przy tym samym przepustowości i opóźnień tak, jakby były w tej samej sieci wirtualnej. Rozmiar każdej maszyny wirtualnej ma jednak własną maksymalną przepustowość sieci. Aby dowiedzieć się więcej na temat maksymalną przepustowość sieci dla maszyny wirtualnej różnych rozmiarów, zobacz [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rozmiarów maszyn wirtualnych.
-- Sieci wirtualne mogą mieć tych samych lub różnych subskrypcji. Jeśli sieci wirtualne są w różnych subskrypcji, zarówno subskrypcji musi być skojarzony z tej samej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę AD, możesz szybko [utworzyć](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Można użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) Aby połączyć dwie sieci wirtualne, które istnieją w ramach różnych subskrypcji, które są skojarzone z różnych dzierżawców usługi Active Directory.
 - Sieć wirtualną można połączyć za pomocą do innej sieci wirtualnej, a także być podłączony do innej sieci wirtualnej z bramą sieci wirtualnej platformy Azure. Jeśli sieci wirtualne są połączone za pośrednictwem komunikacji równorzędnej i bramy, ruchu między sieciami wirtualnymi przechodzi przez konfiguracji komunikacji równorzędnej, a nie bramy.
 - Istnieje nominalna opłata za ruch przychodzący i wychodzący w wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
-* <a name="cross-region"></a>Można elementów równorzędnych sieci wirtualnych w tym samym regionie lub różnych regionach. Następujące ograniczenia nie są stosowane, gdy obie sieci wirtualne są *tego samego* region, ale są stosowane w przypadku sieci wirtualnych globalnie są połączyć za pomocą: 
-    - Sieci wirtualne mogą znajdować się w dowolnym regionie Azure chmury publicznej, ale nie w Azure national chmury.
-    - Zasoby w jednej sieci wirtualnej nie może komunikować się z adresem IP Azure wewnętrznego modułu równoważenia obciążenia w sieci wirtualnej peered. Moduł równoważenia obciążenia i zasobów, które komunikują się z nim muszą być w tej samej sieci wirtualnej.
-    - Nie można użyć bramy zdalnego lub zezwolić przesyłania bramy. Aby użyć bramy zdalnego lub zezwolić przesyłania bramy, obie sieci wirtualne w komunikacji równorzędnej musi istnieć w tym samym regionie. 
 
 ## <a name="permissions"></a>Uprawnienia
 

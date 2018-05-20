@@ -2,23 +2,17 @@
 title: Użyć emulatora magazynu Azure do programowania i testowania | Dokumentacja firmy Microsoft
 description: Emulatora magazynu Azure udostępnia wolnego lokalne Środowisko deweloperskie do tworzenia i testowania aplikacji usługi Azure Storage. Dowiedz się, sposób uwierzytelniania żądań, sposób nawiązywania połączenia z emulatora z aplikacji i jak używać narzędzia wiersza polecenia.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Użyć emulatora magazynu Azure do programowania i testowania
 
@@ -44,17 +38,10 @@ Istnieją pewne różnice w działaniu między emulatora magazynu i usług Azure
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Uruchom i zainicjować emulator magazynu
 
-### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Uruchamianie emulatora magazynu Azure w rozwiązaniu Docker](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
-```
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
-```
-
-### <a name="using-sdk"></a>Przy użyciu zestawu SDK
-
 Aby uruchomić emulatora magazynu Azure:
 1. Wybierz **Start** przycisk lub naciśnij przycisk **Windows** klucza.
-1. Rozpocznij wpisywanie `Azure Storage Emulator`.
-1. Wybierz emulator z listy wyświetlanych aplikacji.
+2. Rozpocznij wpisywanie `Azure Storage Emulator`.
+3. Wybierz emulator z listy wyświetlanych aplikacji.
 
 Po uruchomieniu emulatora magazynu, pojawi się okno wiersza polecenia. To okno konsoli służy do uruchamiania i zatrzymywania emulator magazynu, czyszczenia danych, Pobierz stan i zainicjować emulator. Aby uzyskać więcej informacji, zobacz [odwołanie do narzędzia wiersza polecenia emulatora magazynu](#storage-emulator-command-line-tool-reference) sekcji w dalszej części tego artykułu.
 
@@ -71,6 +58,7 @@ Emulator magazynu jest instalowana domyślnie `C:\Program Files (x86)\Microsoft 
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Inicjowanie emulator magazynu, aby użyć innej bazy danych SQL
+
 Aby zainicjować emulatora magazynu, aby wskazywała wystąpienie bazy danych SQL innych niż domyślne wystąpienie bazy danych LocalDB, można użyć narzędzia wiersza polecenia emulatora magazynu:
 
 1. Otwórz okno konsoli emulatora magazynu, zgodnie z opisem w [Start i zainicjować emulator magazynu](#start-and-initialize-the-storage-emulator) sekcji.
@@ -179,7 +167,7 @@ Aby wyświetlić listę opcji, należy wpisać `/help` w wierszu polecenia.
 | Opcja | Opis | Polecenie | Argumenty |
 | --- | --- | --- | --- |
 | **Rozpocznij** |Emulator magazynu jest uruchamiany. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Uruchom emulator w bieżącym procesie zamiast tworzenia nowego procesu. |
-| **Zatrzymaj** |Zatrzymuje emulatora magazynu. |`AzureStorageEmulator.exe stop` | |
+| **Stop** |Zatrzymuje emulatora magazynu. |`AzureStorageEmulator.exe stop` | |
 | **Stan** |Wyświetla stan emulatora magazynu. |`AzureStorageEmulator.exe status` | |
 | **Wyczyść** |Usuwa dane w usługach wszystkie określone w wierszu polecenia. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*Obiekt blob*: Czyści obiektu blob danych. <br/>*kolejka*: usuwa dane kolejki. <br/>*Tabela*: usuwa dane w tabeli. <br/>*wszystkie*: usuwa wszystkie dane w wszystkich usług. |
 | **Init** |Przeprowadza jednorazowe inicjowanie, aby skonfigurować emulator. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Serwer serverName\instanceName*: Określa serwera obsługującego wystąpienie programu SQL. <br/>*-sqlinstance instanceName*: Określa nazwę wystąpienia serwera SQL do użycia w domyślnym wystąpieniu serwera. <br/>*-forcecreate*: wymusza utworzenie bazy danych SQL, nawet jeśli już istnieje. <br/>*-skipcreate*: pomija tworzenie bazy danych SQL. To ma pierwszeństwo przed - forcecreate.<br/>*-reserveports*: próbuje zarezerwować portów HTTP powiązanego ze wskazanymi usługami.<br/>*-unreserveports*: próby usunięcia zastrzeżenia dla portów HTTP powiązanego ze wskazanymi usługami. To ma pierwszeństwo przed - reserveports.<br/>*-inprocess*: wykonuje inicjowania w bieżącym procesie, a nie dochodzi do uruchamiania nowego procesu. Bieżący proces musi zostać uruchomiona z podwyższonym poziomem uprawnień w przypadku zmiany rezerwacji portu. |

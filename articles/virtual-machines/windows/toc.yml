@@ -102,14 +102,6 @@
           href: disk-scalability-targets.md
         - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: Jak włączyć akcelerator zapisu
-          href: how-to-enable-write-accelerator.md
-        - name: Rozwiązywanie problemów z dołączonymi dyskami VHD
-          items:
-            - name: Błędy usuwania zasobów magazynu
-              href: storage-resource-deletion-errors.md
-            - name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
-              href: unexpected-reboots-attached-vhds.md
     - name: Networking
       href: network-overview.md
     - name: Automatyczne skalowanie aplikacji
@@ -306,6 +298,8 @@
           href: mount-azure-file-storage.md
         - name: Wdrażanie dysków za pomocą szablonu
           href: using-managed-disks-template-deployments.md
+        - name: Włączanie akceleratora zapisu
+          href: how-to-enable-write-accelerator.md
         - name: Migrowanie do usługi Managed Disks
           href: migrate-to-managed-disks.md
           items:
@@ -449,6 +443,12 @@
           href: troubleshoot-vm-by-use-nested-virtualization.md
         - name: Instalowanie agenta maszyny wirtualnej w trybie offline
           href: install-vm-agent-offline.md
+        - name: Rozwiązywanie problemów z dołączonymi dyskami VHD
+          items:
+            - name: Błędy usuwania zasobów magazynu
+              href: storage-resource-deletion-errors.md
+            - name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
+              href: unexpected-reboots-attached-vhds.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

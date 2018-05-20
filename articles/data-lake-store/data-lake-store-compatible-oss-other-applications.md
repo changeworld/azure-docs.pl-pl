@@ -1,24 +1,22 @@
 ---
-title: "Aplikacje danych big data zgodne z usługą Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Lista aplikacji typu open source, które współpracują z usługą Azure Data Lake Store"
+title: Aplikacje danych big data zgodne z usługą Data Lake Store | Dokumentacja firmy Microsoft
+description: Lista aplikacji typu open source, które współpracują z usługą Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 699e1805-cb76-4807-9ac1-8bd9d9bbb72b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 5c00dc99950c25dedc94c17444881a049138a7c5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7e8ba230f8f0a21bf98e1bfeb96f7a40a9553de2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Otwarte aplikacje źródła danych Big Data, które współpracują z usługą Azure Data Lake Store
 W tym artykule wymieniono aplikacji danych big data typu open source, które współpracują z usługą Azure Data Lake Store. Dla aplikacji w poniższej tabeli obsługiwane są dostępne z rozkładem wymienionych wersji. Aby uzyskać informacje na jakie wersje te aplikacje są dostępne z usługą HDInsight, zobacz [przechowywanie wersji składnika usługi HDInsight](../hdinsight/hdinsight-component-versioning.md).

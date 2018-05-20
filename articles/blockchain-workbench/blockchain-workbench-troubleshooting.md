@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8a2715666c4fff490f5184b7b8719b412952b9bf
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 419ed6dc76101366e47ae94067f7b671a10c94e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench Rozwiązywanie problemów
 
@@ -49,7 +49,8 @@ Skrypt akceptuje następujące parametry:
 |---------|---------|----|
 | Identyfikator subskrypcji | Identyfikator subskrypcji do tworzenia i Znajdź wszystkie zasoby. | Yes |
 | ResourceGroupName | Nazwa grupy zasobów platformy Azure, na którym wdrożono Blockchain Workbench. | Yes |
-| OutputDirectory | Ścieżka do tworzenia danych wyjściowych. Plik ZIP. Jeśli nie zostanie określony, domyślnie przyjmowana jest do bieżącego katalogu. | Nie
+| OutputDirectory | Ścieżka do tworzenia danych wyjściowych. Plik ZIP. Jeśli nie zostanie określony, domyślnie przyjmowana jest do bieżącego katalogu. | Nie |
+| LookbackHours | Liczba godzin do użycia podczas ściąganie danych telemetrycznych. Wartość domyślna to 24 godziny. Maksymalna wartość to 90 godzin | Nie |
 | OmsSubscriptionId | Identyfikator subskrypcji, którym jest wdrażany OMS. Ten parametr należy przekazać tylko w przypadku wdrażania OMS sieci blockchain poza Blockchain Workbench grupy zasobów.| Nie |
 | OmsResourceGroup |Grupy zasobów, w którym jest wdrażany OMS. Ten parametr należy przekazać tylko w przypadku wdrażania OMS sieci blockchain poza Blockchain Workbench grupy zasobów.| Nie |
 | OmsWorkspaceName | Nazwa obszaru roboczego OMS. Ten parametr należy przekazać tylko, jeśli OMS sieci blockchain jest wdrożona poza Blockchain Workbench grupy zasobów | Nie |
@@ -58,15 +59,17 @@ Skrypt akceptuje następujące parametry:
 
 Wyjściowy plik ZIP zawiera następującą strukturę folderów:
 
-| Folder \ pliku | Opis  |
+| Folder lub plik | Opis  |
 |---------|---------|
 | \Summary.txt | Podsumowanie systemu |
-| \metrics\blockchain | Metryk dotyczących blockchain |
-| \metrics\workbench | Metryk dotyczących workbench |
-| \details\blockchain | Szczegółowe dzienniki o blockchain |
-| \details\workbench | Szczegółowe dzienniki o workbench |
+| \Metrics\blockchain | Metryk dotyczących blockchain |
+| \Metrics\Workbench | Metryk dotyczących workbench |
+| \Details\Blockchain | Szczegółowe dzienniki o blockchain |
+| \Details\Workbench | Szczegółowe dzienniki o workbench |
 
 Plik podsumowania tworzy migawkę ogólny stan aplikacji i kondycji tej aplikacji. Podsumowanie proponują zalecane akcje, wyróżnia top błędów i metadane dotyczące uruchamiania usługi.
+
+**Metryki** folder zawiera metryki różnych składników systemu wraz z upływem czasu. Na przykład plik wyjściowy `\Details\Workbench\apiMetrics.txt` zawiera podsumowanie kody odpowiedzi różnych i czasy odpowiedzi przez cały okres zbierania. **Szczegóły** folder zawiera szczegółowe dzienniki określonych problemów z podstawowej sieci blockchain lub Workbench. Na przykład `\Details\Workbench\Exceptions.csv` zawiera listę najnowszych wyjątki, które wystąpiły w systemie, w którym jest przydatne podczas rozwiązywania problemów błędy z kontraktami inteligentne lub interakcji z blockchain. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

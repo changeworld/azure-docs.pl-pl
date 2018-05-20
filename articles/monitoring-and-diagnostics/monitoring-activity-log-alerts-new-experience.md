@@ -1,6 +1,6 @@
 ---
-title: Utwórz działanie dziennika alerty i zarządzaj nimi przy użyciu nowego środowiska alerty (wersja zapoznawcza) w monitorze Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera informacje o sposobie tworzenia działania dziennika alertów na karcie alerty (wersja zapoznawcza) w obszarze Azure Monitor. Ten artykuł zawiera szczegóły dotyczące nowego środowiska użytkownika dla tej funkcji.
+title: Utwórz działanie dziennika alerty i zarządzaj nimi przy użyciu nowego środowiska alertów w monitorze Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje o sposobie tworzenia działania dziennika alertów na karcie alerty w obszarze Azure Monitor
 author: JYOTHIRMAISURI
 manager: vvithal
 editor: ''
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: ''
-ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 070acc6fb6f6f744474edeef0e914dda9d24c558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Utwórz dziennik aktywności, które występować alertów za pomocą nowych alertów (wersja zapoznawcza)
+# <a name="create-activity-log-alerts-using-the-new-alerts-experience"></a>Utwórz dziennik aktywności, które występować alertów za pomocą nowych alertów
 
 Alerty dziennika aktywności są alerty, które uzyskać aktywowany, gdy wystąpi nowe zdarzenie dziennika aktywności spełnia warunki określone w alercie.
 
-Te alerty są zasobów platformy Azure, można utworzyć za pomocą szablonu usługi Azure Resource Manager. One również może być utworzone, zaktualizowane lub usunięte w portalu Azure. W tym artykule przedstawiono pojęć dotyczących alertów dotyczących działań w dzienniku. Go następnie przedstawiono sposób Użyj portalu Azure, aby skonfigurować alert na działanie dziennika zdarzeń przy użyciu nowego środowiska w [alerty Azure (wersja zapoznawcza)](monitoring-overview-unified-alerts.md).
+Te alerty są zasobów platformy Azure, można utworzyć za pomocą szablonu usługi Azure Resource Manager. One również może być utworzone, zaktualizowane lub usunięte w portalu Azure. W tym artykule przedstawiono pojęć dotyczących alertów dotyczących działań w dzienniku. Go następnie przedstawiono sposób Użyj portalu Azure, aby skonfigurować alert na działanie dziennika zdarzeń przy użyciu nowego środowiska w [alerty Azure](monitoring-overview-unified-alerts.md).
 
 Zazwyczaj w celu utworzenia działania alerty dziennika, aby otrzymywać powiadomienia o wystąpieniu określonych zmian zasobów w Twojej subskrypcji platformy Azure, często są ograniczone do określonych grupach zasobów lub zasobu. Na przykład możesz chcieć powiadomienia, gdy dowolne maszyny wirtualnej (Grupa zasobów przykładowej) **myProductionResourceGroup** zostanie usunięty, można pobrać powiadamiani, jeśli wszystkie nowe role są przypisane do użytkownika w ramach subskrypcji.
 
@@ -46,11 +46,11 @@ Aby dowiedzieć się więcej o grupach akcji, zobacz [tworzenia grup działań w
 Aby dowiedzieć się więcej na temat powiadomień o kondycji usługi, zobacz [odbierzesz alerty dziennika działania dotyczące powiadomień o kondycji usługi](monitoring-activity-log-alerts-on-service-notifications.md).
 
 
-## <a name="whats-new-in-alerts-preview-for-activity-logs"></a>What's new in Podgląd alerty o Dzienniki aktywności?
+## <a name="whats-new-in-alerts-for-activity-logs"></a>What's new in alerty o Dzienniki aktywności?
 
-[Alerty Azure (wersja zapoznawcza)](monitoring-overview-unified-alerts.md) teraz zapewnia lepszą obsługę użytkowników alertów dotyczących działań w dzienniku. Z [rozszerzonego środowiska użytkownika dla alertów](monitoring-overview-unified-alerts.md), możesz teraz:
+[Alerty Azure](monitoring-overview-unified-alerts.md) teraz zapewnia lepszą obsługę użytkowników alertów dotyczących działań w dzienniku. Z [rozszerzonego środowiska użytkownika dla alertów](monitoring-overview-unified-alerts.md), możesz teraz:
 
-- [Utwórz](#create-an-alert-rule-for-an-activity-log) i [zarządzanie](#view-and-manage-activity-log-alert-rules) działania logowania reguły alertów z **Monitor** > **alertów (wersja zapoznawcza)** bloku. Dowiedz się więcej o [Dzienniki aktywności](monitoring-overview-activity-logs.md).
+- [Utwórz](#create-an-alert-rule-for-an-activity-log) i [zarządzanie](#view-and-manage-activity-log-alert-rules) działania logowania reguły alertów z **Monitor** > **alerty** bloku. Dowiedz się więcej o [Dzienniki aktywności](monitoring-overview-activity-logs.md).
 
 - **Nowe opcje dla docelowego alerty**: podczas tworzenia nowej reguły alertu dziennika aktywności, można teraz wybrać zasobu docelowego lub grupę zasobów lub subskrypcji.
 
@@ -68,8 +68,8 @@ Aby dowiedzieć się więcej na temat powiadomień o kondycji usługi, zobacz [o
 
 Postępuj zgodnie z następującą procedurą:
 
-1. Z portalu Azure, wybierz **Monitor** > **alertów (wersja zapoznawcza).**
-2. Kliknij przycisk **nową regułę alertu** w górnej części **alertów (wersja zapoznawcza)** okna.
+1. Z portalu Azure, wybierz **Monitor** > **alertów**
+2. Kliknij przycisk **nową regułę alertu** w górnej części **alerty** okna.
 
      ![nowe reguły alertu](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule.png)
 
@@ -130,7 +130,7 @@ Postępuj zgodnie z następującą procedurą:
 
 ## <a name="view-and-manage-activity-log-alert-rules"></a>Wyświetl i Zarządzaj regułami alertów dziennika aktywności
 
-1. W portalu Azure kliknij **Monitor** > **alertów (wersja zapoznawcza)** i kliknij przycisk **zarządzanie regułami** w lewym górnym rogu okna.
+1. W portalu Azure kliknij **Monitor** > **alerty** i kliknij przycisk **zarządzanie regułami** w lewym górnym rogu okna.
 
     ![ Zarządzaj regułami alertów](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
 

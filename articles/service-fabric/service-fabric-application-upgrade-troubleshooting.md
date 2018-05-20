@@ -1,24 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z uaktualnieniami aplikacji | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano kilka typowych problemów wokół uaktualnianie aplikacji usługi Service Fabric i sposobu ich rozwiązania."
+title: Rozwiązywanie problemów z uaktualnieniami aplikacji | Dokumentacja firmy Microsoft
+description: W tym artykule opisano kilka typowych problemów wokół uaktualnianie aplikacji usługi Service Fabric i sposobu ich rozwiązania.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: beacf34ae0cf7cfd55b63a862d3dabce99248939
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c6ba61354bf7466819e34a0d619a5a1820dd7b90
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-application-upgrades"></a>Rozwiązywanie problemów z uaktualnieniami aplikacji
 W tym artykule omówiono niektóre typowe problemy dotyczące uaktualniania aplikacji sieci szkieletowej usług Azure i sposobu ich rozwiązania.

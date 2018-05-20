@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Tworzenie skryptów akcji skryptu dla klastrów usługi HDInsight w systemie Windows
 Dowiedz się, jak napisać skrypty akcji skryptu dla usługi HDInsight. Uzyskać informacji na temat używania skryptów akcji skryptu, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów usługi HDInsight opartych na systemie Linux, zobacz [skryptów tworzenie akcji skryptu dla usługi HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -103,7 +103,7 @@ Usługa HDInsight zapewnia kilka skryptów do instalowania dodatkowych składnik
 | Name (Nazwa) | Skrypt |
 | --- | --- |
 | **Zainstaluj Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Zobacz [instalacji i używania platformy Spark w usłudze HDInsight clusters][hdinsight-install-spark]. |
-| **Zainstalować język R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Zobacz [instalacji i używania R w klastrach HDInsight][hdinsight-r-scripts]. |
+| **Zainstalować język R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Zobacz [instalacji i użyj R w klastrach HDInsight] [hdinsight-r skrypty]. |
 | **Zainstaluj Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Zobacz [instalacji i używania Solr w usłudze HDInsight clusters](hdinsight-hadoop-solr-install.md). |
 | - **Zainstaluj Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Zobacz [instalacji i używania Giraph w usłudze HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
 
@@ -300,14 +300,12 @@ W przypadku, gdy wystąpi błąd wykonania, dane wyjściowe opisujące on równi
 ## <a name="see-also"></a>Zobacz także
 * [Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu][hdinsight-cluster-customize]
 * [Zainstalować i używać platformy Spark w usłudze hdinsight][hdinsight-install-spark]
-* [Zainstaluj i użyj języka R w klastrach HDInsight][hdinsight-r-scripts]
 * [Zainstalować i używać Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
 * [Zainstalować i używać Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
 [powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->

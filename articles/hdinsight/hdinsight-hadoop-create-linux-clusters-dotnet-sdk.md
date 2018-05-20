@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: eda1f0e434c59a2a1c7bb63d92ce7b1fa5b42344
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8523b012d6ceaf116e6849abaf8952bbde8b41b3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Tworzenie klastrów z systemem Linux w usłudze HDInsight przy użyciu zestawu .NET SDK
 
@@ -30,7 +30,7 @@ Dowiedz się, jak utworzyć klaster Hadoop w usłudze Azure HDInsight klastra pr
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie Tworzenie klastra z węzła jednego procesu roboczego. Jeśli planowane jest więcej niż 32 węzłami procesów roboczych, podczas tworzenia klastra lub przez skalowanie klastra po utworzeniu, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeni i 14GB pamięci ram.
 >
-> Aby uzyskać więcej informacji na węzeł rozmiary i koszty, zobacz [cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+> Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

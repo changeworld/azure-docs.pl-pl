@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b668ff70d627a63fb34012b07d9b41fc6f6ecb6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7dc7a1dbf024b6d334ec374f78d5e912db3835c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure pokrycia geokodowanie mapy
 
@@ -237,7 +237,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Gwinea Gwinea, Republika                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Erytrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiopia                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Francuskie Terytoria Południowe i Antarktyczne|                 |                |              |      ✓     |          ✓         |
+| Francuskie Terytoria Południowe|                 |                |              |      ✓     |          ✓         |
 | Gabon                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gambia                                              |                 |                |              |      ✓     |          ✓         |
 | Ghana                                               |                 |                |       ✓      |      ✓     |          ✓         |
@@ -263,7 +263,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Majotta                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Maroko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mozambik                                          |                 |                |       ✓      |      ✓     |          ✓         |
-| Myanmar                                             |                 |                |              |      ✓     |          ✓         |
+| Mjanma                                             |                 |                |              |      ✓     |          ✓         |
 | Namibia                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niger                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Nigeria                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -297,7 +297,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat geokodowanie mapy Azure, zobacz [wyszukiwania](https://docs.microsoft.com/rest/api/azure-maps/search) odwołania stron.
+Aby uzyskać więcej informacji na temat geokodowanie mapy Azure, zobacz [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) odwołania stron.
 
 Dowiedz się więcej o [pokrycia obszarów mapy ruchu usługi](traffic-coverage.md). 
 

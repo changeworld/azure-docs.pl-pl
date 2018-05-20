@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: db0fab5b619ddbca4663a0f6afedfff373d406f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 20c5635c0ce00c9fccfec84c477d60c77c55e2fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Sieci wirtualnych platformy Azure (sieci wirtualne) umożliwiają umieszczać zasobów platformy Azure w kontroli dostępu do sieci routeable z systemem innym niż internet. Te sieci następnie mogą być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o sieciach wirtualnych platformy Azure Uruchom z informacjami w tym miejscu: [omówienie sieci wirtualnych Azure](../virtual-network/virtual-networks-overview.md).
@@ -168,6 +168,7 @@ Biorąc pod uwagę obliczania powyżej minimalny rozmiar podsieci, w którym mo�
 * Podsieć i usługi API Management musi być w tej samej subskrypcji.
 * Nie można przenieść w podsieci zawierającej wystąpienia interfejsu API zarządzania różnych subskrypcji.
 * W przypadku wdrożeń zarządzanie interfejsami API skonfigurowana w trybie wewnętrznej sieci wirtualnej użytkownicy są odpowiedzialny za zarządzanie Równoważenie obciążenia w wielu regionach, jak są właścicielami routingu.
+* Łączność z zasobów w sieci Wirtualnej globalnie peered w innym regionie usługi Zarządzanie interfejsami API w trybie wewnętrznej nie będą działać ze względu na ograniczenia platform. Aby uzyskać więcej informacji, zobacz [zasobów w jednej sieci wirtualnej nie może komunikować się z Azure wewnętrznego modułu równoważenia obciążenia w połączyć za pomocą sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
 
 
 ## <a name="related-content"> </a>Zawartość pokrewna

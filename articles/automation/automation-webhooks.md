@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb64d0c5d94bb198b6ece2ea50a7fc248b93c7dd
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 740e3c16d3d9ce9e1aadb3e04ac2667e908bf51e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Automatyzacja Azure z elementu webhook
 A *webhook* umożliwia uruchomienie określonego elementu runbook automatyzacji Azure za pomocą pojedynczego żądania HTTP. Dzięki temu usług zewnętrznych, takich jak Visual Studio Team Services, GitHub, usługi Analiza dzienników Azure lub niestandardowych aplikacji do uruchamiania elementów runbook bez wdrażania pełnego rozwiązania przy użyciu interfejsu API usługi Automatyzacja Azure.  
@@ -184,7 +184,7 @@ Włączone elementu Webhook elementów runbook może służyć do reagowania na 
 
 Oprócz za pomocą usługi Azure alerty jako system powiadomień, należy również rozpocząć się poza elementów runbook w odpowiedzi na alerty. Automatyzacja Azure oferuje możliwość uruchamiania włączone elementu webhook elementów runbook z alertami platformy Azure. Jeśli Metryka przekracza wartość skonfigurowany próg następnie reguły alertu staje się aktywny i wyzwala webhook usługi Automatyzacja, który z kolei wykonuje element runbook.
 
-![elementów webhook](media/automation-webhooks/webhook-alert.jpg)
+![Elementy webhook](media/automation-webhooks/webhook-alert.jpg)
 
 ### <a name="alert-context"></a>Kontekst alertu
 Należy rozważyć zasobów platformy Azure, takich jak maszyny wirtualnej, użycie procesora CPU tego komputera jest jednym z metryki wydajności. Jeśli wykorzystanie procesora CPU jest 100% lub więcej niż określonym przez długi czas, możesz uruchomić ponownie maszynę wirtualną, aby rozwiązać ten problem. To będzie możliwe przez skonfigurowanie reguły alertu do maszyny wirtualnej i procent użycia procesora CPU, jako jego metryka ma ta reguła. Procent użycia procesora CPU w tym miejscu jest po prostu wykonywanej na przykład, ale istnieje wiele innych metryk, które można skonfigurować do zasobów platformy Azure i ponownego uruchamiania maszyny wirtualnej jest akcja, która jest wykonywana, aby rozwiązać ten problem, można skonfigurować element runbook, aby wykonywać inne czynności.
@@ -257,7 +257,7 @@ Następujący przykładowy element runbook jest wyzwalane, gdy reguła alertu st
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać więcej informacji na różne sposoby uruchamiania elementu runbook, zobacz [uruchamianie elementu Runbook](automation-starting-a-runbook.md).
 * Aby uzyskać informacje o wyświetlaniu stanu zadania elementu Runbook, zapoznaj się [wykonanie elementu Runbook automatyzacji Azure](automation-runbook-execution.md).
 * Aby dowiedzieć się, jak używać usługi Automatyzacja Azure do wykonania akcji na alerty Azure, zobacz [skorygować alerty maszyny Wirtualnej Azure z elementu Runbook usługi automatyzacja](automation-azure-vm-alert-integration.md).

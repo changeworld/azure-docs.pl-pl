@@ -1,9 +1,9 @@
 ---
-title: Wdrażanie aplikacji usługi Azure Service Fabric w klastrze z poziomu programu Visual Studio | Microsoft Docs
-description: Dowiedz się, jak wdrożyć aplikację w klastrze z poziomu programu Visual Studio
+title: Wdrażanie aplikacji usługi Azure Service Fabric w klastrze | Microsoft Docs
+description: Dowiedz się, jak wdrożyć aplikację w klastrze z poziomu programu Visual Studio.
 services: service-fabric
 documentationcenter: .net
--author: mikkelhegn
+-author: rwike77
 -manager: msfussell
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/23/2018
-ms.author: mikhegn
+ms.date: 05/11/2018
+ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4f0d41dbc2438217cb4f382da7c44833379b9637
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f75a05e965a025a3041036679ac06cfe4f1ec8d7
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji w klastrze usługi Service Fabric na platformie Azure
 Ten samouczek to druga część serii. Przedstawiono w nim sposób wdrażania aplikacji usługi Azure Service Fabric w nowym klastrze na platformie Azure bezpośrednio z poziomu programu Visual Studio.
@@ -52,48 +52,56 @@ Jeśli nie skompilowano przykładowej aplikacji do głosowania w [pierwszej czę
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="deploy-the-sample-application"></a>Wdrażanie aplikacji przykładowej
+## <a name="create-a-service-fabric-cluster"></a>Tworzenie klastra usługi Service Fabric
+Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze bezpośrednio z programu Visual Studio. [Klaster usługi Service Fabric](/service-fabric/service-fabric-deploy-anywhere.md) jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym wdraża się mikrousługi i nimi zarządza.
 
-### <a name="select-a-service-fabric-cluster-to-which-to-publish"></a>Wybierz klaster usługi Service Fabric, w którym ma zostać opublikowana aplikacja
-Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze bezpośrednio z programu Visual Studio.
+Dostępne są dwie opcje wdrażania w programie Visual Studio:
+- Utworzenie klastra na platformie Azure z poziomu programu Visual Studio. Ta opcja służy do tworzenia bezpiecznego klastra bezpośrednio z poziomu programu Visual Studio z preferowaną konfiguracją. Ten typ klastra jest idealny dla scenariuszy testowych, w których możesz utworzyć klaster, a następnie publikować w nim bezpośrednio z programu Visual Studio.
+- Opublikuj w istniejącym klastrze w ramach subskrypcji.  Klastry usługi Service Fabric można utworzyć za pośrednictwem [witryny Azure Portal](https://portal.azure.com), przy użyciu skryptów programu [PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) lub [interfejsu wiersza polecenia platformy Azure](./scripts/cli-create-cluster.md), albo za pomocą [szablonu usługi Azure Resource Manager](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-Są dostępne dwie opcje wdrożenia:
-- Utwórz klaster z poziomu programu Visual Studio. Ta opcja służy do tworzenia bezpiecznego klastra bezpośrednio z poziomu programu Visual Studio z preferowaną konfiguracją. Ten typ klastra jest idealny dla scenariuszy testowych, w których możesz utworzyć klaster, a następnie publikować w nim bezpośrednio z programu Visual Studio.
-- Opublikuj w istniejącym klastrze w ramach subskrypcji.
-
-Ten samouczek zawiera kroki, które należy wykonać, aby utworzyć klaster z poziomu programu Visual Studio. W przypadku innych opcji możesz skopiować i wkleić punkt końcowy połączenia lub wybrać go w ramach subskrypcji.
+Ten samouczek przedstawia sposób tworzenia klastra z poziomu programu Visual Studio. Jeśli masz już wdrożony klaster, możesz skopiować i wkleić punkt końcowy połączenia lub wybrać go w ramach subskrypcji.
 > [!NOTE]
 > Wiele usług korzysta ze zwrotnego serwera proxy, aby się ze sobą komunikować. Klastry utworzone z poziomu programu Visual Studio i klastry testowe mają domyślnie włączoną opcję korzystania ze zwrotnego serwera proxy.  Jeśli używasz istniejącego klastra, musisz najpierw [włączyć zwrotny serwer proxy w klastrze](service-fabric-reverseproxy.md#setup-and-configuration).
 
-### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>Wdrażanie aplikacji w klastrze usługi Service Fabric
-1. Kliknij prawym przyciskiem myszy projekt aplikacji w Eksploratorze rozwiązań i wybierz polecenie **Publikuj**.
+### <a name="find-the-votingweb-service-endpoint"></a>Znajdowanie punktu końcowego usługi VotingWeb
+Najpierw należy znaleźć punkt końcowy usługi internetowej frontonu.  Usługa internetowa frontonu nasłuchuje na określonym porcie.  Gdy aplikacja jest wdrażana w klastrze na platformie Azure, klaster i aplikacja są uruchamiane za modułem równoważenia obciążenia platformy Azure.  Port aplikacji musi być otwarty w module równoważenia obciążenia platformy Azure, tak aby ruch przychodzący mógł przechodzić do usługi internetowej.  Port (na przykład 8080) znajduje się w pliku *VotingWeb/PackageRoot/ServiceManifest.xml* w elemencie **Endpoint**:
 
-2. Zaloguj się przy użyciu konta platformy Azure, aby uzyskać dostęp do subskrypcji. Ten krok jest opcjonalny, jeśli używasz klastra testowego.
+```xml
+<Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
+```
 
-3. Wybierz listę rozwijaną **Punkt końcowy połączenia** i wybierz opcję „<Create New Cluster...>”.
+W następnym kroku określ ten port na karcie **Zaawansowane** okna dialogowego **Tworzenie klastra**.  W przypadku wdrażania aplikacji w istniejącym klastrze możesz otworzyć ten port w module równoważenia obciążenia platformy Azure za pomocą [skryptu programu PowerShell](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) lub [witryny Azure Portal](https://portal.azure.com).
+
+### <a name="create-a-cluster-in-azure-through-visual-studio"></a>Tworzenie klastra na platformie Azure za pomocą programu Visual Studio
+Kliknij prawym przyciskiem myszy projekt aplikacji w Eksploratorze rozwiązań i wybierz polecenie **Publikuj**.
+
+Zaloguj się przy użyciu konta platformy Azure, aby uzyskać dostęp do subskrypcji. Ten krok jest opcjonalny, jeśli używasz klastra testowego.
+
+Wybierz listę rozwijaną **Punkt końcowy połączenia** i wybierz opcję **<Create New Cluster...>**.
     
-    ![Okno dialogowe Publikowanie](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+![Okno dialogowe Publikowanie](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
     
-4. W oknie dialogowym „Tworzenie klastra” zmodyfikuj następujące ustawienia:
+W oknie dialogowym **Tworzenie klastra** zmodyfikuj następujące ustawienia:
 
-    1. Określ nazwę klastra w polu „Nazwa klastra”, a także subskrypcję i lokalizację, których chcesz użyć.
-    2. Opcjonalnie możesz zmodyfikować liczbę węzłów. Domyślne ustawienie to trzy węzły, czyli minimalna liczba wymagana do testowania scenariuszy usługi Service Fabric.
-    3. Wybierz kartę „Certyfikat”. Na tej karcie wpisz hasło zabezpieczające certyfikat klastra. Ten certyfikat pomaga zabezpieczyć klaster. Możesz również zmodyfikować ścieżkę, w której ma zostać zapisany certyfikat. Program Visual Studio może również automatycznie zaimportować certyfikat, ponieważ jest to krok wymagany do opublikowania aplikacji w klastrze.
-    4. Wybierz kartę „Szczegóły maszyny wirtualnej”. Określ hasło, którego chcesz używać dla maszyn wirtualnych wchodzących w skład klastra. Za pomocą nazwy użytkownika i hasła można zdalnie łączyć się z maszynami wirtualnymi. Należy również wybrać rozmiar maszyny wirtualnej oraz zmienić obraz maszyny wirtualnej, jeśli jest to konieczne.
-    5. Opcjonalnie na karcie „Zaawansowane” można zmodyfikować listę portów, które mają zostać otwarte w module równoważenia obciążenia utworzonym wraz z klastrem. Można również dodać istniejący klucz usługi Application Insights, do którego mają być kierowane pliki dziennika aplikacji.
-    6. Po zakończeniu modyfikowania ustawień kliknij przycisk „Utwórz”. Tworzenie klastra może zająć kilka minut. Informacja o ukończeniu tworzenia klastra pojawi się w oknie danych wyjściowych.
-    
-    ![Okno dialogowe Tworzenie klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+1. Określ nazwę klastra w polu **Nazwa klastra**, a także subskrypcję i lokalizację, których chcesz użyć.
+2. Opcjonalnie możesz zmodyfikować liczbę węzłów. Domyślne ustawienie to trzy węzły, czyli minimalna liczba wymagana do testowania scenariuszy usługi Service Fabric.
+3. Wybierz kartę **Certyfikat**. Na tej karcie wpisz hasło zabezpieczające certyfikat klastra. Ten certyfikat pomaga zabezpieczyć klaster. Możesz również zmodyfikować ścieżkę, w której ma zostać zapisany certyfikat. Program Visual Studio może również automatycznie zaimportować certyfikat, ponieważ jest to krok wymagany do opublikowania aplikacji w klastrze.
+4. Wybierz kartę **Szczegóły maszyny wirtualnej**. Określ hasło, którego chcesz używać dla maszyn wirtualnych wchodzących w skład klastra. Za pomocą nazwy użytkownika i hasła można zdalnie łączyć się z maszynami wirtualnymi. Należy również wybrać rozmiar maszyny wirtualnej oraz zmienić obraz maszyny wirtualnej, jeśli jest to konieczne.
+5. Na karcie **Zaawansowane** można zmodyfikować listę portów, które mają zostać otwarte w module równoważenia obciążenia platformy Azure utworzonym wraz z klastrem.  Dodaj punkt końcowy usługi VotingWeb odnaleziony w poprzednim kroku. Możesz również dodać istniejący klucz usługi Application Insights, do którego mają być kierowane pliki dziennika aplikacji.
+6. Po zakończeniu modyfikowania ustawień wybierz przycisk **Utwórz**. Tworzenie klastra może zająć kilka minut. Informacja o ukończeniu tworzenia klastra pojawi się w oknie danych wyjściowych.
 
-4. Gdy klaster, który ma być używany, będzie gotowy, kliknij prawym przyciskiem myszy projekt aplikacji i wybierz polecenie **Publikuj**.
+![Okno dialogowe Tworzenie klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-    Po zakończeniu publikowania powinno być możliwe wysłanie żądania do aplikacji za pośrednictwem przeglądarki.
+## <a name="deploy-the-sample-application"></a>Wdrażanie aplikacji przykładowej
+Gdy klaster, który ma być używany, będzie gotowy, kliknij prawym przyciskiem myszy projekt aplikacji i wybierz polecenie **Publikuj**.
 
-5. Otwórz preferowaną przeglądarkę i wpisz adres klastra (punkt końcowy połączenia bez informacji o porcie — na przykład win1kw5649s.westus.cloudapp.azure.com).
+Po zakończeniu publikowania powinno być możliwe wysłanie żądania do aplikacji za pośrednictwem przeglądarki.
 
-    Powinien być teraz widoczny ten sam wynik co po lokalnym uruchomieniu aplikacji.
+Otwórz preferowaną przeglądarkę i wpisz adres klastra (punkt końcowy połączenia bez informacji o porcie — na przykład win1kw5649s.westus.cloudapp.azure.com).
 
-    ![Odpowiedź interfejsu API z klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
+Powinien być teraz widoczny ten sam wynik co po lokalnym uruchomieniu aplikacji.
+
+![Odpowiedź interfejsu API z klastra](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
 
 ## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:

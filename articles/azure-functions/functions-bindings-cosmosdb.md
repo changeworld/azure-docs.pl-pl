@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3d63e33adb9cbbe96ad2851870592cc07c9cc3da
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ffb18ef65bc0d901fe237ec9c4f97fdae43dc472
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure DB rozwiązania Cosmos powiązania dla usługi Azure Functions
 
@@ -35,6 +35,8 @@ W tym artykule opisano sposób pracy z [bazy danych Azure rozwiązania Cosmos](.
 Powiązania rozwiązania Cosmos bazy danych dla funkcji wersja 1.x znajdują się w [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) pakietu NuGet. Dla funkcji 2.x, że pakiet jest [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB). Kod źródłowy dla powiązania jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="trigger"></a>Wyzwalacz
 
@@ -170,13 +172,13 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 |**leaseCollectionName** | **LeaseCollectionName** | (Opcjonalnie) Nazwa kolekcji używany do przechowywania dzierżawy. Gdy nie są ustawione, wartość `leases` jest używany. |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Opcjonalnie) Jeśli wartość `true`, kolekcji dzierżawy jest tworzony automatycznie podczas już nie istnieje. Wartość domyślna to `false`. |
 |**LeasesCollectionThroughput**| **LeasesCollectionThroughput**| (Opcjonalnie) Definiuje liczbę jednostek żądań można przypisać podczas tworzenia kolekcji dzierżawy. To ustawienie jest tylko do użycia podczas `createLeaseCollectionIfNotExists` ma ustawioną wartość `true`. Ten parametr ma wartość automatycznie, podczas tworzenia powiązania za pomocą portalu.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Opcjonalnie) Po ustawieniu dodaje prefiksu do dzierżawy utworzone w kolekcji dzierżawy dla tej funkcji, efektywnie stosowanie dwóch osobnych funkcji Azure na współużytkowanie tej samej kolekcji dzierżawy przy użyciu różnych prefiksy.
+|**LeaseCollectionPrefix**| **LeaseCollectionPrefix**| (Opcjonalnie) Po ustawieniu dodaje prefiksu do dzierżawy utworzone w kolekcji dzierżawy dla tej funkcji, efektywnie stosowanie dwóch osobnych funkcji Azure na współużytkowanie tej samej kolekcji dzierżawy przy użyciu różnych prefiksy.
 |**FeedPollDelay**| **FeedPollDelay**| (Opcjonalnie) Gdy zestawu, które definiuje, w milisekundach, opóźnienie pomiędzy sondowania partycji dla nowych zmian w źródle danych są opróżnione po wszystkich bieżących zmian. Domyślna to 5000 (5 sekund).
 |**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, aby rozpocząć wyłączyć zadania do obliczenia, jeśli partycje są rozmieszczone równomiernie wystąpień znane hosta. Domyślnie jest 13000 (w sekundach 13).
 |**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla którego podjęto dzierżawy na dzierżawę reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślnie jest 60000 (60 sekund).
 |**LeaseRenewInterval**| **LeaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwału odnawiania dla wszystkich dzierżaw dla partycji aktualnie utrzymywane przez wystąpienie. Domyślnie jest 17000 (17 w sekundach).
 |**CheckpointFrequency**| **CheckpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Domyślnie jest zawsze po pomyślnym wywołaniem funkcji.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
+|**MaxItemsPerInvocation**| **MaxItemsPerInvocation**| (Opcjonalnie) Po ustawieniu dostosowuje maksymalna ilość elementów odebranych na wywołanie funkcji.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

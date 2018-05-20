@@ -1,24 +1,22 @@
 ---
-title: "Kopiowanie danych z obiektów blob magazynu Azure do usługi Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Kopiowanie danych z obiektów blob magazynu Azure do usługi Data Lake Store za pomocą narzędzia AdlCopy"
+title: Kopiowanie danych z obiektów blob magazynu Azure do usługi Data Lake Store | Dokumentacja firmy Microsoft
+description: Kopiowanie danych z obiektów blob magazynu Azure do usługi Data Lake Store za pomocą narzędzia AdlCopy
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 33bfd200f72cb56b391cab52bf90f19b568893a9
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 964ba0eb9c619fa226b0704a6c83c05186a95261
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Copy data from Azure Storage Blobs to Data Lake Store (Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Data Lake Store)
 > [!div class="op_single_selector"]
@@ -44,7 +42,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
 * **Obiektów blob magazynu Azure** kontener z niektórych danych.
 * **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [wprowadzenie do usługi Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **(Opcjonalnie) konta usługi Azure Data Lake Analytics** — zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) instrukcje dotyczące sposobu tworzenia konta usługi Data Lake Store.
-* **Narzędzie AdlCopy**. Zainstaluj narzędzie AdlCopy z [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy).
+* **Narzędzie AdlCopy**. Zainstaluj narzędzie AdlCopy z [ http://aka.ms/downloadadlcopy ](http://aka.ms/downloadadlcopy).
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>Składnia narzędzia AdlCopy
 Należy użyć następującej składni do pracy z narzędziem AdlCopy
@@ -72,7 +70,7 @@ Poniżej opisano parametrów w składni:
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-    >[AZURE.NOTE]Powyższej składni Określa plik, który ma zostać skopiowany do folderu na koncie usługi Data Lake Store. Narzędzie AdlCopy tworzy folder, jeśli nazwa określony folder nie istnieje.
+    >[AZURE.NOTE] Powyższej składni Określa plik, który ma zostać skopiowany do folderu na koncie usługi Data Lake Store. Narzędzie AdlCopy tworzy folder, jeśli nazwa określony folder nie istnieje.
 
     Pojawi się monit o podanie poświadczeń dla subskrypcji platformy Azure, z którym masz konto usługi Data Lake Store. Zostaną wyświetlone informacje podobne do następujących:
 

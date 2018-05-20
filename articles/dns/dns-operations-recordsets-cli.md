@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 05/15/2018
 ms.author: kumud
-ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d7a90cb46c25e4e01b89bbf4da563685e92a7249
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Zarządzanie rekordami DNS i zestawy rekordów w usłudze Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure
 
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji na temat rekordów DNS w usłudze Azure DNS, zob
 
 ## <a name="create-a-dns-record"></a>Tworzenie rekordu DNS
 
-Aby utworzyć rekord DNS, użyj `az network dns record-set <record-type> set-record` polecenie (gdzie `<record-type>` jest typem rekordu, tj , srv txt, itp.) Aby uzyskać pomoc, zobacz `az network dns record-set --help`.
+Aby utworzyć rekord DNS, użyj `az network dns record-set <record-type> add-record` polecenie (gdzie `<record-type>` jest typem rekordu, tj , srv txt, itp.) Aby uzyskać pomoc, zobacz `az network dns record-set --help`.
 
 Podczas tworzenia rekordu należy określić nazwę grupy zasobów, nazwę strefy, nazwę zestawu rekordów, typ rekordu oraz szczegóły tworzonego rekordu. Podana nazwa zestawu rekordów musi być *względną* nazwy, co oznacza należy wykluczyć Nazwa strefy.
 
@@ -52,13 +52,13 @@ Jeśli jest tworzony nowy rekord, używany jest domyślny czas wygaśnięcia wyn
 Poniższy przykład tworzy rekord A o nazwie *www* w strefie *contoso.com* w grupie zasobów *MyResourceGroup*. Adres IP rekordu A to *1.2.3.4*.
 
 ```azurecli
-az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
+az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
 Aby utworzyć zestaw rekordów w wierzchołku strefy (w tym przypadku „contoso.com”), użyj nazwy rekordu „@”, wraz z cudzysłowem:
 
 ```azurecli
-az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
+az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
 ```
 
 ## <a name="create-a-dns-record-set"></a>Tworzenie zestawu rekordów DNS
@@ -81,13 +81,13 @@ Poniższy przykład tworzy rekord z dwóch wpisów metadanych, "dział = not" i 
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
-Posiadanie utworzony pusty zestaw rekordów, można dodawać rekordy przy użyciu `azure network dns record-set <record-type> set-record` zgodnie z opisem w [Utwórz rekord DNS](#create-a-dns-record).
+Posiadanie utworzony pusty zestaw rekordów, można dodawać rekordy przy użyciu `azure network dns record-set <record-type> add-record` zgodnie z opisem w [Utwórz rekord DNS](#create-a-dns-record).
 
 ## <a name="create-records-of-other-types"></a>Tworzenie rekordów innych typów
 
 O przedstawiono szczegółowo sposób utworzyć rekordy "", następujące przykłady przedstawiają sposób tworzenia rekordu innych typów rekordów obsługiwane przez usługę Azure DNS.
 
-Parametry używane do określenia danych rekordu różnią się w zależności od typu rekordu. Na przykład w przypadku rekordu typu „A” należy podać adres IPv4 przy użyciu parametru `--ipv4-address <IPv4 address>`. Parametry dla poszczególnych typów rekordów mogą być wyświetlane przy użyciu `az network dns record-set <record-type> set-record --help`.
+Parametry używane do określenia danych rekordu różnią się w zależności od typu rekordu. Na przykład w przypadku rekordu typu „A” należy podać adres IPv4 przy użyciu parametru `--ipv4-address <IPv4 address>`. Parametry dla poszczególnych typów rekordów mogą być wyświetlane przy użyciu `az network dns record-set <record-type> add-record --help`.
 
 W każdym przypadku zostanie przedstawiony sposób jeden rekord. Rekord jest dodawana do istniejącego zestawu rekordów lub niejawnie utworzyć zestaw rekordów. Aby uzyskać więcej informacji na temat tworzenia zestawów rekordów i rekordu definiujący parametr jawnie, zobacz [utworzyć zestaw rekordów DNS](#create-a-dns-record-set).
 
@@ -96,7 +96,7 @@ Firma Microsoft nie dają przykład można utworzyć zestawu rekordów SOA, poni
 ### <a name="create-an-aaaa-record"></a>Utwórz rekord AAAA
 
 ```azurecli
-az network dns record-set aaaa set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
+az network dns record-set aaaa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
 ```
 
 ### <a name="create-an-caa-record"></a>Utwórz rekord CAA
@@ -121,13 +121,13 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 W tym przykładzie używamy nazwy zestawu rekordów „@”, aby utworzyć rekord MX w wierzchołku strefy (w tym przypadku „contoso.com”).
 
 ```azurecli
-az network dns record-set mx set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
+az network dns record-set mx add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
 ```
 
 ### <a name="create-an-ns-record"></a>Tworzenie rekordów NS
 
 ```azurecli
-az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
+az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
 ```
 
 ### <a name="create-a-ptr-record"></a>Utwórz rekord PTR
@@ -135,7 +135,7 @@ az network dns record-set ns set-record --resource-group myresourcegroup --zone-
 W takim przypadku "Mój-arpa-zone.com" reprezentuje strefy ARPA reprezentujący zakresowi adresów IP. Każdy rekord PTR w tej strefie odnosi się do adresu IP w tym zakresie adresów IP.  Nazwa rekordu "10" nie jest ostatni oktet adresu IP w zakresie adresów IP, to reprezentowany przez ten rekord.
 
 ```azurecli
-az network dns record-set ptr set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
+az network dns record-set ptr add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
 ```
 
 ### <a name="create-an-srv-record"></a>Tworzenie rekordów SRV
@@ -143,7 +143,7 @@ az network dns record-set ptr set-record --resource-group myresourcegroup --zone
 Podczas tworzenia [zestawu rekordów SRV](dns-zones-records.md#srv-records), określ  *\_usługi* i  *\_protokołu* w nazwie zestawu rekordów. Nie istnieje potrzeba do uwzględnienia "@" w nazwie zestawu rekordów, podczas tworzenia rekordów SRV zestawu w wierzchołku strefy.
 
 ```azurecli
-az network dns record-set srv set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
+az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
 ### <a name="create-a-txt-record"></a>Utwórz rekord TXT
@@ -151,7 +151,7 @@ az network dns record-set srv set-record --resource-group myresourcegroup --zone
 Poniższy przykład pokazuje, jak utworzyć rekord TXT. Aby uzyskać więcej informacji na temat maksymalną długość ciągu obsługiwane w rekordach TXT, zobacz [rekordów TXT](dns-zones-records.md#txt-records).
 
 ```azurecli
-az network dns record-set txt set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
+az network dns record-set txt add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
 ```
 
 ## <a name="get-a-record-set"></a>Pobierz zestaw rekordów
@@ -184,7 +184,7 @@ az network dns record-set a list --resource-group myresourcegroup --zone-name co
 
 ## <a name="add-a-record-to-an-existing-record-set"></a>Dodaj rekord do istniejącego zestawu rekordów
 
-Można użyć `az network dns record-set <record-type> set-record` zarówno tworzenie rekordu w zestawie rekordów lub można dodać rekordu do istniejącego zestawu rekordów.
+Można użyć `az network dns record-set <record-type> add-record` zarówno tworzenie rekordu w zestawie rekordów lub można dodać rekordu do istniejącego zestawu rekordów.
 
 Aby uzyskać więcej informacji, zobacz [Utwórz rekord DNS](#create-a-dns-record) i [tworzenie rekordów innych typów](#create-records-of-other-types) powyżej.
 
@@ -194,7 +194,7 @@ Aby usunąć rekord DNS z istniejącego zestawu rekordów, użyj `az network dns
 
 To polecenie usuwa rekord DNS z zestawu rekordów. Usunięcie ostatniego rekordu w zestawie rekordów samego zestawu rekordów jest również usunięte. Aby zachować pusty rekord, ustaw zamiast tego, użyj `--keep-empty-record-set` opcji.
 
-Należy określić usunięcie rekordu i strefy należy ją usunąć, przy użyciu takich samych parametrach co przy tworzeniu przy użyciu rekordu `az network dns record-set <record-type> set-record`. Te parametry są opisane w [Utwórz rekord DNS](#create-a-dns-record) i [tworzenie rekordów innych typów](#create-records-of-other-types) powyżej.
+Należy określić usunięcie rekordu i strefy należy ją usunąć, przy użyciu takich samych parametrach co przy tworzeniu przy użyciu rekordu `az network dns record-set <record-type> add-record`. Te parametry są opisane w [Utwórz rekord DNS](#create-a-dns-record) i [tworzenie rekordów innych typów](#create-records-of-other-types) powyżej.
 
 Poniższy przykład umożliwia usunięcie rekordu A o wartości "1.2.3.4" z rekordu ustawić nazwane *www* w strefie *contoso.com*, w grupie zasobów *MyResourceGroup*.
 
@@ -213,7 +213,7 @@ Aby zmodyfikować istniejący rekord z typu A, AAAA, CAA, MX, NS, PTR, SRV i TXT
 Poniższy przykład przedstawia sposób zmodyfikować rekord "", z adresu IP 1.2.3.4 adres IP 5.6.7.8:
 
 ```azurecli
-az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
+az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
@@ -254,7 +254,7 @@ Należy pamiętać, że dotyczy to tylko zestawu w wierzchołku strefy rekordów
 Poniższy przykład pokazuje, jak dodać serwer dodatkowe nazwy do zestawu w wierzchołku strefy rekordów NS:
 
 ```azurecli
-az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
+az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>Aby zmodyfikować TTL z istniejącego zestawu rekordów

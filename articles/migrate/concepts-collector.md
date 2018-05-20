@@ -4,14 +4,14 @@ description: Zawiera omówienie urządzenia moduł zbierający i sposobie konfig
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 05/15/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 99f34bce942626cd931c9270192766cc76105f5b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0dd310a1f6dff389a4d3dd41dc389b7117272fe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="collector-appliance"></a>Moduł zbierający urządzenia
 
@@ -128,7 +128,7 @@ Po nawiązaniu połączenia vCenter, można wybrać zakres odnajdywania. Wybiera
 2. Jednocześnie można wybrać tylko jeden zakres. Aby wybrać więcej maszyn wirtualnych, można zakończyć jeden odnajdywania i ponownego uruchomienia procesu odnajdywania z nowego zakresu.
 3. Można wybrać tylko zakres, który ma *mniej niż 1500 maszyn wirtualnych*.
 
-## <a name="specify-migration-project"></a>Określ migrację
+## <a name="specify-migration-project"></a>Określanie projektu migracji
 
 Po lokalnymi vCenter jest połączony i zakres jest określony, można teraz określić szczegółami projektu migracji, które będzie używane do odnajdywania i oceny. Określ klucz i identyfikator projektu i połącz.
 

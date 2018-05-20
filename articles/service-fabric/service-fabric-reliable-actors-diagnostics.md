@@ -1,6 +1,6 @@
 ---
-title: "Diagnostyka złośliwych użytkowników i monitorowanie | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano diagnostyki i wydajności monitorowania funkcji w środowisku uruchomieniowym usługi sieć szkieletowa Reliable Actors, w tym zdarzenia i liczniki wydajności emitowane przez nią."
+title: Diagnostyka złośliwych użytkowników i monitorowanie | Dokumentacja firmy Microsoft
+description: W tym artykule opisano diagnostyki i wydajności monitorowania funkcji w środowisku uruchomieniowym usługi sieć szkieletowa Reliable Actors, w tym zdarzenia i liczniki wydajności emitowane przez nią.
 services: service-fabric
 documentationcenter: .net
 author: abhishekram
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 5fbef8a3fb32f4bc47856ef6c6b459ae389dd541
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 9b4825be7ce7fb05b109310f21cd65cfe3819ae8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostyka i monitorowanie wydajności struktury Reliable Actors
 Środowisko uruchomieniowe Reliable Actors emituje [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) zdarzeń i [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w działania środowiska uruchomieniowego i ułatwić rozwiązywanie problemów i monitorowania wydajności.
@@ -43,8 +43,8 @@ Wszystkie zdarzenia, które należą do niezawodnej EventSource złośliwych uż
 
 | Kategoria | Opis |
 | --- | --- |
-| Aktora sieci szkieletowej usług |Liczniki specyficzne dla usługi Azure Service Fabric uczestników, np. czasu podjąć w celu zapisania stanu aktora |
-| Metoda aktora sieci szkieletowej usług |Liczniki specyficzne dla metod zaimplementowanych przez złośliwych użytkowników usługi Service Fabric, np. częstotliwość aktora jest wywoływana metoda |
+| Aktor usługi Service Fabric |Liczniki specyficzne dla usługi Azure Service Fabric uczestników, np. czasu podjąć w celu zapisania stanu aktora |
+| Metoda aktora usługi Service Fabric |Liczniki specyficzne dla metod zaimplementowanych przez złośliwych użytkowników usługi Service Fabric, np. częstotliwość aktora jest wywoływana metoda |
 
 Każdy z powyższych kategorii ma co najmniej jeden licznik.
 
@@ -101,9 +101,9 @@ W powyższym przykładzie `ivoicemailboxactor.leavemessageasync` jest nazwą met
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Metoda aktora sieci szkieletowej usług |Wywołania na sekundę |Ile razy wywołaniu metody usługi aktora na sekundę |
-| Metoda aktora sieci szkieletowej usług |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi aktora w milisekundach |
-| Metoda aktora sieci szkieletowej usług |Wyjątki zgłaszane na sekundę |Ile razy metody usługi aktora zwrócił wyjątek na sekundę |
+| Metoda aktora usługi Service Fabric |Wywołania/s |Ile razy wywołaniu metody usługi aktora na sekundę |
+| Metoda aktora usługi Service Fabric |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi aktora w milisekundach |
+| Metoda aktora usługi Service Fabric |Zgłoszone wyjątki/s |Ile razy metody usługi aktora zwrócił wyjątek na sekundę |
 
 ### <a name="concurrency-events-and-performance-counters"></a>Współbieżność zdarzenia i liczniki wydajności
 Środowisko uruchomieniowe Reliable Actors emituje następujące zdarzenia związane z [współbieżności](service-fabric-reliable-actors-introduction.md#concurrency).
@@ -116,9 +116,9 @@ W powyższym przykładzie `ivoicemailboxactor.leavemessageasync` jest nazwą met
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Aktora sieci szkieletowej usług |Liczba wywołań aktora czekających na blokadę aktora |Liczba oczekujących wywołań aktora czekających na uzyskanie blokady dla aktora, wymusza współbieżności opartej na włączanie |
-| Aktora sieci szkieletowej usług |Średni czas oczekiwania na blokadę (milisekundy) |Czas (w milisekundach) wymusza współbieżności opartej na włączanie blokady dla aktora |
-| Aktora sieci szkieletowej usług |Średni czas utrzymania blokady aktora (milisekundy) |Czas (w milisekundach), dla której jest przechowywany blokady dla aktora |
+| Aktor usługi Service Fabric |Liczba wywołań aktora czekających na blokadę aktora |Liczba oczekujących wywołań aktora czekających na uzyskanie blokady dla aktora, wymusza współbieżności opartej na włączanie |
+| Aktor usługi Service Fabric |Średni czas oczekiwania na blokadę (milisekundy) |Czas (w milisekundach) wymusza współbieżności opartej na włączanie blokady dla aktora |
+| Aktor usługi Service Fabric |Średni czas utrzymania blokady aktora (milisekundy) |Czas (w milisekundach), dla której jest przechowywany blokady dla aktora |
 
 ### <a name="actor-state-management-events-and-performance-counters"></a>Liczniki wydajności i zdarzeń zarządzania stanu aktora
 Środowisko uruchomieniowe Reliable Actors emituje następujące zdarzenia związane z [Zarządzanie stanem aktora](service-fabric-reliable-actors-state-management.md).
@@ -132,42 +132,42 @@ W powyższym przykładzie `ivoicemailboxactor.leavemessageasync` jest nazwą met
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Aktora sieci szkieletowej usług |Średnia liczba milisekund dla operacji zapisu stanu |Czas zapisania stanu aktora w milisekundach |
-| Aktora sieci szkieletowej usług |Średni czas operacji ładowania stanu (milisekundy) |Czas ładowania stanu aktora w milisekundach |
+| Aktor usługi Service Fabric |Średnia liczba milisekund dla operacji zapisu stanu |Czas zapisania stanu aktora w milisekundach |
+| Aktor usługi Service Fabric |Średni czas operacji ładowania stanu (milisekundy) |Czas ładowania stanu aktora w milisekundach |
 
 ### <a name="events-related-to-actor-replicas"></a>Zdarzenia związane z replik aktora
 Środowisko uruchomieniowe Reliable Actors emituje następujące zdarzenia związane z [replik aktora](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Słowo kluczowe | Opis |
 | --- | --- | --- | --- | --- |
-| ReplicaChangeRoleToPrimary |1 |Informacyjny |0x1 |Repliki aktora zmienić roli do podstawowych. Oznacza to, że zostaną utworzone złośliwych użytkowników dla tej partycji wewnątrz tej repliki. |
-| ReplicaChangeRoleFromPrimary |2 |Informacyjny |0x1 |Repliki aktora zmienić roli do innej niż podstawowa. Oznacza to, że złośliwych użytkowników dla tej partycji nie można utworzyć wewnątrz tej repliki. Żadne żądania nie zostaną dostarczone do podmiotów już utworzone w ramach tej repliki. Podmioty zostaną usunięte po ukończeniu wszystkich żądań w toku. |
+| ReplicaChangeRoleToPrimary |1 |Informacyjne |0x1 |Repliki aktora zmienić roli do podstawowych. Oznacza to, że zostaną utworzone złośliwych użytkowników dla tej partycji wewnątrz tej repliki. |
+| ReplicaChangeRoleFromPrimary |2 |Informacyjne |0x1 |Repliki aktora zmienić roli do innej niż podstawowa. Oznacza to, że złośliwych użytkowników dla tej partycji nie można utworzyć wewnątrz tej repliki. Żadne żądania nie zostaną dostarczone do podmiotów już utworzone w ramach tej repliki. Podmioty zostaną usunięte po ukończeniu wszystkich żądań w toku. |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Aktora Aktywacja i dezaktywacja zdarzenia i liczniki wydajności
 Środowisko uruchomieniowe Reliable Actors emituje następujące zdarzenia związane z [aktora Aktywacja i dezaktywacja](service-fabric-reliable-actors-lifecycle.md).
 
 | Nazwa zdarzenia | Identyfikator zdarzenia | Poziom | Słowo kluczowe | Opis |
 | --- | --- | --- | --- | --- |
-| ActorActivated |5 |Informacyjny |0x1 |Uaktywnieniu aktora. |
-| ActorDeactivated |6 |Informacyjny |0x1 |Dezaktywowano aktora. |
+| ActorActivated |5 |Informacyjne |0x1 |Uaktywnieniu aktora. |
+| ActorDeactivated |6 |Informacyjne |0x1 |Dezaktywowano aktora. |
 
 Środowisko uruchomieniowe Reliable Actors publikuje następujące liczniki wydajności powiązane z aktorem Aktywacja i dezaktywacja.
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Aktora sieci szkieletowej usług |Średnia liczba milisekund OnActivateAsync |Czas wykonania metody OnActivateAsync w milisekundach |
+| Aktor usługi Service Fabric |Średni czas dla metody OnActivateAsync (milisekundy) |Czas wykonania metody OnActivateAsync w milisekundach |
 
 ### <a name="actor-request-processing-performance-counters"></a>Liczniki wydajności przetwarzania żądania aktora
 Gdy klient wywołuje metodę za pośrednictwem obiektu proxy aktora, wynikiem komunikat żądania wysyłane przez sieć do usługi aktora. Usługa przetwarza komunikat żądania i wysyła odpowiedź do klienta. Środowisko uruchomieniowe Reliable Actors publikuje następujące liczniki wydajności powiązane z przetwarzania żądania aktora.
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Aktora sieci szkieletowej usług |Liczba oczekujących żądań |Liczba żądań przetwarzanych przez usługę |
-| Aktora sieci szkieletowej usług |Średnia liczba milisekund dla żądania |Czas (w milisekundach przez usługę do przetwarzania żądań) |
-| Aktora sieci szkieletowej usług |Średni czas deserializacji żądania (milisekundy) |Czas (w milisekundach) do deserializacji komunikatu żądania aktora po odebraniu przez usługę |
-| Aktora sieci szkieletowej usług |Średni czas serializacji odpowiedzi (milisekundy) |Czas (w milisekundach) do serializacji komunikatu odpowiedzi aktora w usłudze przed wysłaniem odpowiedzi do klienta |
+| Aktor usługi Service Fabric |Liczba oczekujących żądań |Liczba żądań przetwarzanych przez usługę |
+| Aktor usługi Service Fabric |Średni czas na żądanie (milisekundy) |Czas (w milisekundach przez usługę do przetwarzania żądań) |
+| Aktor usługi Service Fabric |Średni czas deserializacji żądania (milisekundy) |Czas (w milisekundach) do deserializacji komunikatu żądania aktora po odebraniu przez usługę |
+| Aktor usługi Service Fabric |Średni czas serializacji odpowiedzi (milisekundy) |Czas (w milisekundach) do serializacji komunikatu odpowiedzi aktora w usłudze przed wysłaniem odpowiedzi do klienta |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Jak używać platformy Service Fabric w Reliable Actors](service-fabric-reliable-actors-platform.md)
 * [Dokumentację referencyjną aktora interfejsu API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Przykładowy kod](https://github.com/Azure/servicefabric-samples)

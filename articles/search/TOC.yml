@@ -39,7 +39,7 @@
           href: search-fiddler.md
 - name: Samouczki
   items:
-    - name: Indeksowanie za pomocą wyszukiwania kognitywnego
+    - name: Opracowywanie wyszukiwania kognitywnego
       href: cognitive-search-tutorial-blob.md
     - name: Indeksowanie usługi Azure SQL Database
       href: search-indexer-tutorial.md
@@ -73,11 +73,11 @@
   items:
     - name: Planowanie i projektowanie
       items:
-        - name: Wybieranie jednostki SKU
+        - name: Wybieranie warstwy
           href: search-sku-tier.md
         - name: Limity usługi
           href: search-limits-quotas-capacity.md
-        - name: Skalowalność usługi
+        - name: Przydzielanie partycji i replik
           href: search-capacity-planning.md
         - name: Wzorce projektowe wielodostępnych aplikacji
           href: search-modeling-multitenant-saas-applications.md

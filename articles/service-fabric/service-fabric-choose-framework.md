@@ -1,6 +1,6 @@
 ---
-title: "Omówienie modelu programowania sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "Sieć szkieletowa usług oferuje dwie struktury umożliwiający tworzenie usług: framework aktora i w ramach usługi. Oferują one kompromisy różne prostoty i kontroli."
+title: Omówienie modelu programowania sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: 'Sieć szkieletowa usług oferuje dwie struktury umożliwiający tworzenie usług: framework aktora i w ramach usługi. Oferują one kompromisy różne prostoty i kontroli.'
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 6c4503b3e05f7d78f64a161f620b1fbd6cd38ab1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a03bb3c74d9c776b893b11c3dec8788fe9ac598c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-programming-model-overview"></a>Omówienie modelu programowania sieci szkieletowej usług
 Sieć szkieletowa usług oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi mogą być w pełni korzystać z funkcji platformy i struktury aplikacji przy użyciu interfejsów API usługi sieci szkieletowej. Można także skompilowany program wykonywalny napisane w dowolnym języku lub kodu uruchamianego w kontenerze hostowanych w klastrze usługi sieć szkieletowa usług.
@@ -28,7 +28,7 @@ A [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md
 
 Wprowadzenie do plików wykonywalnych gościa przez wdrożenie pierwszego [aplikacja wykonywalna gościa](service-fabric-deploy-existing-app.md).
 
-## <a name="containers"></a>Kontenery
+## <a name="containers"></a>Containers
 Domyślnie usługi sieć szkieletowa wdraża i aktywuje usługi jako procesów. Sieć szkieletowa usług można także wdrożyć usług w [kontenery](service-fabric-containers-overview.md). Sieć szkieletowa usług obsługuje wdrażanie kontenery systemu Linux i kontenery systemu Windows w systemie Windows Server 2016. Kontener obrazów można ściągnąć z dowolnym repozytorium kontenera i wdrożone na maszynie. Istniejące aplikacje można wdrożyć jako gość pliki wykonywalne, sieć szkieletowa usług bezstanowych i stanowych niezawodne usługi lub Reliable Actors w kontenerach i usług w kontenerach w tej samej aplikacji i usług w procesach, które można łączyć.
 
 [Dowiedz się więcej o containerizing usług w systemie Windows lub Linux](service-fabric-deploy-container.md)

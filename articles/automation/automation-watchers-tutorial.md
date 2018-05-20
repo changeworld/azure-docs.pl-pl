@@ -6,13 +6,13 @@ ms.service: automation
 ms.component: process-automation
 author: eamonoreilly
 ms.author: eamono
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: 2ae5fe2f2cd01eb9a0d7105c34c1dc216479720c
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 0cc215d6643c86460a1d5471aa1eed8fdf18e028
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Utwórz zadania można śledzić zmiany w pliku na komputerze lokalnym obserwatora usługi Automatyzacja Azure
 
@@ -136,7 +136,7 @@ Message is Process new file...
 Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

@@ -1,6 +1,6 @@
 ---
-title: Magazyn geograficznie nadmiarowy (GRS) dla trwałości między regionalne w usłudze Azure Storage | Dokumentacja firmy Microsoft
-description: Magazyn geograficznie nadmiarowy (GRS) replikuje dane między dwóch regionach, które są setki mil od siebie. GRS zapewnia ochronę przed awariami sprzętu w centrum danych, a także regionalnej awarii.
+title: Geo-redundant storage (GRS) for cross-regional durability in Azure Storage | Microsoft Docs
+description: Geo-redundant storage (GRS) replicates your data between two regions that are hundreds of miles apart. GRS protects against hardware failures in the datacenter as well as regional disasters.
 services: storage
 author: tolandmike
 manager: jeconnoc
@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.openlocfilehash: 1aa3f1e948921a2f356b88e31ef1b9b0f408920a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/24/2018
 ---
-# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn geograficznie nadmiarowy (GRS): replikacji między regionalne usługi Azure Storage
+# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geo-redundant storage (GRS): Cross-regional replication for Azure Storage
 
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>See also
 
-- [Replikacja usługi Azure Storage](storage-redundancy.md)
-- [Magazyn lokalnie nadmiarowy (LRS): niedrogich nadmiarowość danych usługi Azure Storage](storage-redundancy-lrs.md)
-- [Magazyn strefowo nadmiarowy (ZRS): aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)
+- [Azure Storage replication](storage-redundancy.md)
+- [Locally-redundant storage (LRS): Low-cost data redundancy for Azure Storage](storage-redundancy-lrs.md)
+- [Zone-redundant storage (ZRS): Highly available Azure Storage applications](storage-redundancy-zrs.md)

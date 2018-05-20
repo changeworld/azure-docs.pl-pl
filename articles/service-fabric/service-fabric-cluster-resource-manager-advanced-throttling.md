@@ -1,24 +1,24 @@
 ---
-title: "Ograniczanie w Menedżerze zasobów klastra usługi sieć szkieletowa | Dokumentacja firmy Microsoft"
-description: "Dowiedz się skonfigurować limity udostępniane przez usługi sieci szkieletowej klastra Menedżera zasobów."
+title: Ograniczanie w Menedżerze zasobów klastra usługi sieć szkieletowa | Dokumentacja firmy Microsoft
+description: Dowiedz się skonfigurować limity udostępniane przez usługi sieci szkieletowej klastra Menedżera zasobów.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9db1070066a2a02b72b5cc051e59d8b04dc9928
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Ograniczanie Menedżera zasobów klastra sieci szkieletowej usług
 Nawet jeśli Menedżera zasobów klastra został prawidłowo skonfigurowany, można pobrać zakłócona klastra. Na przykład może być jednocześnie węzła błędów domeny awarii i — co się stanie po, który wystąpił podczas uaktualniania? Menedżer zasobów klastra zawsze próbuje naprawić wszystkie elementy, korzysta z zasobów klastra próby reorganizować i napraw klastra. Limity zapewniają backstop tak, aby klaster może używać zasobów do utrwalania — węzły wrócić, poprawianego partycje sieciowe, wdrożony poprawiony usługi bits.
@@ -90,6 +90,6 @@ Te informacje są dostarczane w przypadku, gdy masz starszą klastrów lub nadal
 
 Konfiguracja te limity zgodny ze wzorcem samej jako procentowych ograniczania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby dowiedzieć się o jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zobacz artykuł na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
 - Menedżer zasobów klastra ma wiele opcji opisujące klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się w tym artykule na [opisujące klastra sieci szkieletowej usług](service-fabric-cluster-resource-manager-cluster-description.md)

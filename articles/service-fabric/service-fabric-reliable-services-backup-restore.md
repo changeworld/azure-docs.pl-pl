@@ -9,16 +9,16 @@ editor: subramar,zhol
 ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: dd8042620b6b9829e49f3124ecdee1c038f8c12f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Kopie zapasowe i przywracanie Reliable Services i Reliable Actors
 Sieć szkieletowa usług Azure to platforma wysokiej dostępności, która replikuje stanu na wielu węzłach do obsługi tej wysokiej dostępności.  W związku z tym nawet w przypadku awarii jednego węzła w klastrze, usługi nadal dostępne. Może być wystarczające dla niektórych wbudowanych — dublowanie dostarczone przez platformę, w niektórych przypadkach pożądane jest usługi Kopia zapasowa danych (w zewnętrznym sklepie).
@@ -263,5 +263,5 @@ Dopóki usługi zakończeniu działania tego interfejsu API pomyślnie (przez zw
   - [Niezawodne usługi powiadomień](service-fabric-reliable-services-notifications.md)
   - [Niezawodne usługi konfiguracji](service-fabric-reliable-services-configuration.md)
   - [Dokumentacja dla deweloperów niezawodnej kolekcji](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  - [Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
+  - [Okresowe wykonywanie kopii zapasowej i przywracanie w usłudze Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

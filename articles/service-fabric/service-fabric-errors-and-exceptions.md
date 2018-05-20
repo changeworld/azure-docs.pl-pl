@@ -1,24 +1,24 @@
 ---
-title: "Typowe wyjątki klienta fabricclient z rolą zgłaszane | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano typowe wyjątków i błędów, które może zostać wygenerowany przez interfejsy API klienta fabricclient z rolą podczas wykonywania aplikacji i operacji zarządzania klastrem."
+title: Typowe wyjątki klienta fabricclient z rolą zgłaszane | Dokumentacja firmy Microsoft
+description: W tym artykule opisano typowe wyjątków i błędów, które może zostać wygenerowany przez interfejsy API klienta fabricclient z rolą podczas wykonywania aplikacji i operacji zarządzania klastrem.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bb821313-b221-479f-b08e-36cf07e60a07
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/18/2017
 ms.author: ryanwi
-ms.openlocfilehash: f07b1bce2e9ccc82e3dcbfe0f2cfe2311d968505
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 31defde289643b2adfd6e15bb8417b5498ba65d1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Typowe wyjątków i błędów podczas pracy z interfejsami API klienta fabricclient z rolą
 [Klienta fabricclient z rolą](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) interfejsów API umożliwiają administratorom klastra i aplikacji do wykonywania zadań administracyjnych w aplikacji, usługi lub klastra sieci szkieletowej usług. Na przykład wdrożenia aplikacji, uaktualniania i usuwania, sprawdzanie kondycji klastra lub testowania usługi. Deweloperzy aplikacji i Administratorzy klastra mogą używać interfejsów API klienta fabricclient z rolą do opracowywania narzędzia do zarządzania, klastra sieci szkieletowej usług i aplikacji.

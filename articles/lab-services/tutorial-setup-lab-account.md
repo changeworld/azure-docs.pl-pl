@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 5af348bfdccb9392948af962cf582e33ebd40872
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 347b7d183839868f3b52adbdfd00b38cee3f3fbc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services-formerly-azure-devtest-labs"></a>Samouczek: konfigurowanie konta laboratorium przy użyciu usługi Azure Lab Services (wcześniej Azure DevTest Labs)
 W tym samouczku będziesz pełnić rolę administratora laboratorium w celu utworzenia konta laboratorium przy użyciu usługi Azure Lab Services. Następnie przyznasz nauczycielom uprawnienia do tworzenia laboratoriów na potrzeby zajęć na tym koncie laboratorium. Nauczyciel może skonfigurować laboratorium na potrzeby zajęć przy użyciu [witryny internetowej usługi Azure Lab Services](https://labs.azure.com).   
@@ -29,16 +29,15 @@ W tym samouczku wykonasz następujące czynności:
 > * Tworzenie konta laboratorium
 > * Dodawanie użytkownika do roli twórcy laboratorium
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-- Usługa Azure Lab Services jest obecnie dostępna w warunkowej wersji zapoznawczej. Aby utworzyć konto laboratorium, [utwórz konto wersji zapoznawczej](https://aka.ms/azlabspreviewsignup).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-lab-account"></a>Tworzenie konta laboratorium
 Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab Services przy użyciu witryny Azure Portal. 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Z menu głównego po lewej stronie wybierz pozycję **Utwórz zasób** (u góry listy), wskaż pozycję **Narzędzia programistyczne** i kliknij pozycję **Lab Services (wersja zapoznawcza)**.
+2. Z menu głównego po lewej stronie wybierz polecenie **Utwórz zasób**.
+3. Wyszukaj pozycję **Lab Services** w witrynie Azure Marketplace, a następnie wybierz pozycję **Lab Services** z listy rozwijanej. 
+4. Wybierz pozycję **Lab Services (wersja zapoznawcza)** z przefiltrowanej listy usług. 
 1. W oknie **Tworzenie konta laboratorium** wybierz pozycję **Utwórz**.
 2. W oknie **Konto laboratorium** wykonaj następujące czynności: 
     1. W obszarze **Nazwa konta laboratorium** wprowadź nazwę. 

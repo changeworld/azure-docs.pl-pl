@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b8b61f2a512cca2a88274b93d04a1fdc8893a88f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
 
@@ -25,10 +25,9 @@ Wszystkie pliki VHD na platformie Azure, który ma być używany jako źródło 
 Gdy tworzysz maszynę wirtualną na podstawie obrazu, platforma Azure tworzy dysk dla maszyny wirtualnej, który jest kopią źródłowego pliku vhd. Platforma Azure umieszcza dzierżawę na każdym pliku vhd używanym do utworzenia obrazu, dysku systemu operacyjnego lub dysku danych, aby chronić ten plik przed przypadkowym usunięciem.
 
 Zanim będzie możliwe usunięcie źródłowego pliku vhd, trzeba będzie usunąć tę dzierżawę, usuwając dysk lub obraz. Aby usunąć plik vhd, który jest używany przez maszynę wirtualną jako dysk systemu operacyjnego, można jednocześnie usunąć maszynę wirtualną, dysk systemu operacyjnego i źródłowy plik vhd, usuwając maszynę wirtualną i wszystkie skojarzone dyski. Usunięcie pliku vhd będącego źródłem dysku danych wymaga jednak wykonania kilku kroków w ustalonej kolejności. Najpierw należy odłączyć dysk od maszyny wirtualnej, później usunąć dysk, a następnie usunąć plik vhd.
+
 > [!WARNING]
 > Jeśli usuniesz źródłowy plik vhd z magazynu albo usuniesz swoje konto magazynu, firma Microsoft nie będzie mogła odzyskać usuniętych danych.
-> 
-> Stronicowe obiekty BLOB w warstwie Premium Storage są przeznaczone do użytku jako wirtualne dyski twarde tylko. Firma Microsoft zaleca przechowywanie innych typów danych w stronicowe obiekty BLOB w warstwie Premium Storage, jak koszt może być znacznie większą. Użyj blokowych obiektów blob do przechowywania danych, który nie jest dysku VHD.
 
 ## <a name="types-of-disks"></a>Typy dysków 
 

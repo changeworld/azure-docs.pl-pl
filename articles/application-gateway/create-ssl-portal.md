@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji z kończenia żądań SSL - portalu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji i Dodaj certyfikat dla zakończenia połączenia SSL przy użyciu portalu Azure.
+title: Skonfiguruj bramę aplikacji z kończenia żądań SSL - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować bramę aplikacji i Dodaj certyfikat dla zakończenia połączenia SSL przy użyciu portalu Azure.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,18 +8,17 @@ editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: a24cec5dfa8034cf43ce7cfe26308587cf20dc44
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c64754595ef67b7c083ee8d47da5b412467c191b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Utwórz bramę aplikacji z kończenia żądań SSL przy użyciu portalu Azure
+# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Skonfiguruj bramę aplikacji z kończenia żądań SSL przy użyciu portalu Azure
 
-Azure portal umożliwia tworzenie [brama aplikacji w](overview.md) certyfikat dla zakończenia połączenia SSL, używającego maszyn wirtualnych dla serwerów wewnętrznej bazy danych.
+Azure portal umożliwiają skonfigurowanie [brama aplikacji w](overview.md) certyfikat dla zakończenia połączenia SSL, używającego maszyn wirtualnych dla serwerów wewnętrznej bazy danych.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72ba97727fd4de1c419091475f14427065790cc7
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -215,7 +215,7 @@ Nazwa witryny SCM umożliwia przejście do konsoli Kudu, nazywanej **portalem za
 
 W przypadku wielodostępnej usługi App Service i zewnętrznego środowiska ASE obsługiwane jest logowanie jednokrotne między konsolą Kudu a witryną Azure Portal. Jednak w przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia do logowania się do konsoli Kudu należy używać poświadczeń publikowania.
 
-Internetowe systemy ciągłej integracji, takie jak GitHub i Visual Studio Team Services, nie współdziałają ze środowiskiem ASE z wewnętrznym modułem równoważenia obciążenia, ponieważ punkt końcowy publikowania nie jest dostępny przez Internet. Zamiast tego należy używać systemu ciągłej integracji używającego modelu ściągania, takiego jak Dropbox.
+Internetowe systemy ciągłej integracji, takie jak usługi GitHub i Visual Studio Team Services, będą nadal działać ze środowiskiem ASE z wewnętrznym modułem równoważenia obciążenia, jeśli agent kompilacji jest dostępny w Internecie i w tej samej sieci co to środowisko. Dlatego w przypadku usługi Visual Studio Team Services, jeśli agent kompilacji został utworzony w tej samej sieci wirtualnej co środowisko ASE z wewnętrznym modułem równoważenia obciążenia (być może w innej podsieci), to będzie mógł ściągnąć kod z usługi Git VSTS i wdrożyć go w tym środowisku. Jeśli nie chcesz tworzyć własnego agenta kompilacji, musisz użyć systemu ciągłej integracji wykorzystującego model ściągania, takiego jak Dropbox.
 
 Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Ta domena jest wyświetlana w profilu publikowania aplikacji i w bloku portalu aplikacji (**Przegląd** > **Podstawy** oraz **Właściwości**). Jeśli masz środowisko ASE z wewnętrznym modułem równoważenia obciążenia z poddomeną *contoso.net* i aplikację o nazwie *testowa*, użyj adresu *testowa.contoso.net* dla protokołu FTP i *testowa.scm.contoso.net* dla wdrożenia w Internecie.
 

@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie i publikowanie aplikacji zarządzanych katalogu usługi Azure | Dokumentacja firmy Microsoft"
-description: "Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji."
+title: Tworzenie i publikowanie aplikacji zarządzanych katalogu usługi Azure | Dokumentacja firmy Microsoft
+description: Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji.
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/02/2017
+ms.date: 05/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46adcdf39625c85dc962a7541b68c5500cf920ee
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
-ms.translationtype: MT
+ms.openlocfilehash: 57821e9c7ed1ca04aa7442f089268c5e89a017c3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Publikowanie aplikacji zarządzanych na użytek wewnętrzny
 
@@ -55,7 +55,7 @@ Dodaj następujący kod JSON do pliku. Definiuje parametry w celu utworzenia kon
         }
     },
     "variables": {
-        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString('storage'))]"
+        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -138,7 +138,7 @@ Dodaj następujący kod JSON do pliku.
 }
 ```
 
-Zapisz plik createUIDefinition.json.
+Zapisz plik createUiDefinition.json.
 
 ## <a name="package-the-files"></a>Pliki pakietu
 
@@ -152,8 +152,7 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage `
-  -EnableEncryptionService Blob
+  -Kind Storage
 
 $ctx = $storageAccount.Context
 
@@ -173,7 +172,9 @@ Następnym krokiem jest, aby wybrać grupy użytkowników lub aplikacji do zarz�
 
 Potrzebny jest identyfikator obiektu grupy użytkowników na potrzeby zarządzania zasobami. 
 
-![Pobierz identyfikator grupy](./media/publish-service-catalog-app/get-group-id.png)
+```powershell
+$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+```
 
 ### <a name="get-the-role-definition-id"></a>Pobierz identyfikator definicji roli
 
@@ -203,21 +204,49 @@ New-AzureRmManagedApplicationDefinition `
   -LockLevel ReadOnly `
   -DisplayName "Managed Storage Account" `
   -Description "Managed Azure Storage Account" `
-  -Authorization "<group-id>:$ownerID" `
+  -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="create-the-managed-application-by-using-the-portal"></a>Tworzenie aplikacji zarządzanych za pomocą portalu
+## <a name="create-the-managed-application"></a>Tworzenie aplikacji zarządzanych
+
+Można wdrożyć aplikacji zarządzanych za pomocą portalu, programu PowerShell lub wiersza polecenia platformy Azure.
+
+### <a name="powershell"></a>PowerShell
+
+Po pierwsze umożliwia wdrażanie zarządzanych aplikacji za pomocą programu PowerShell.
+
+```powershell
+# Create resource group
+New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
+
+# Get ID of managed application definition
+$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
+
+# Create the managed application
+New-AzureRmManagedApplication `
+  -Name storageApp `
+  -Location westcentralus `
+  -Kind ServiceCatalog `
+  -ResourceGroupName applicationGroup `
+  -ManagedApplicationDefinitionId $appid `
+  -ManagedResourceGroupName "InfrastructureGroup" `
+  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
+```
+
+Istnieje teraz zarządzanych aplikacji i infrastruktury zarządzanych w ramach subskrypcji.
+
+### <a name="portal"></a>Portal
 
 Teraz umożliwia wdrażanie zarządzanych aplikacji za pomocą portalu. Zostanie wyświetlony interfejs użytkownika utworzonego w pakiecie.
 
-1. Przejdź do portalu Azure. Wybierz **+ nowy** i wyszukaj **katalogu usług**.
+1. Przejdź do portalu Azure. Wybierz **+ Utwórz zasób** i wyszukaj **katalogu usług**.
 
-   ![Katalog usługi wyszukiwania](./media/publish-service-catalog-app/select-new.png)
+   ![Katalog usługi wyszukiwania](./media/publish-service-catalog-app/create-new.png)
 
 1. Wybierz **katalogu usług zarządzanych aplikacji**.
 
-   ![Wybierz katalog usług](./media/publish-service-catalog-app/select-service-catalog.png)
+   ![Wybierz katalog usług](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -227,17 +256,17 @@ Teraz umożliwia wdrażanie zarządzanych aplikacji za pomocą portalu. Zostanie
 
    ![Znajdź zarządzanej aplikacji](./media/publish-service-catalog-app/find-application.png)
 
-1. Podaj podstawowe informacje wymagane do zarządzanych aplikacji. Określ subskrypcję i Nowa grupa zasobów zawiera zarządzanej aplikacji. Wybierz **zachodnie centralnej nam** dla lokalizacji. Po zakończeniu wybierz **OK**.
+1. Podaj podstawowe informacje wymagane do zarządzanych aplikacji. Określ subskrypcję i Nowa grupa zasobów zawiera zarządzanej aplikacji. Wybierz **zachodnie centralnej nam** dla lokalizacji. Po zakończeniu wybierz polecenie **Zamknij**.
 
-   ![Podaj parametry zarządzanej aplikacji](./media/publish-service-catalog-app/provide-basics.png)
+   ![Podaj parametry zarządzanej aplikacji](./media/publish-service-catalog-app/add-basics.png)
 
-1. Podaj wartości, które są specyficzne dla zasobów w zarządzanej aplikacji. Po zakończeniu wybierz **OK**.
+1. Podaj wartości, które są specyficzne dla zasobów w zarządzanej aplikacji. Po zakończeniu wybierz polecenie **Zamknij**.
 
-   ![Podaj parametry zasobu](./media/publish-service-catalog-app/provide-resource-values.png)
+   ![Podaj parametry zasobu](./media/publish-service-catalog-app/add-storage-settings.png)
 
 1. Szablon weryfikuje podanych wartości. Jeśli weryfikacja zakończy się powodzeniem, wybierz **OK** do wdrożenia.
 
-   ![Sprawdź poprawność zarządzanej aplikacji](./media/publish-service-catalog-app/validate.png)
+   ![Sprawdź poprawność zarządzanej aplikacji](./media/publish-service-catalog-app/view-summary.png)
 
 Po zakończeniu wdrożenia zarządzanych aplikacji istnieje w grupie zasobów o nazwie applicationGroup. Konto magazynu istnieje w grupie zasobów o nazwie applicationGroup plus wartość skrótu ciągu.
 

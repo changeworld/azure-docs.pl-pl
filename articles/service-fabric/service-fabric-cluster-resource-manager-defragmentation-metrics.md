@@ -1,24 +1,24 @@
 ---
-title: "Defragmentacja metryki w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Omówienie przy użyciu defragmentacji lub pakowania jako strategię metryki w sieci szkieletowej usług"
+title: Defragmentacja metryki w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Omówienie przy użyciu defragmentacji lub pakowania jako strategię metryki w sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0b8b2bad967532bb0040407dc6a3a7b9599576d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a35ae5933729615d634359e64e31d43536d81431
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentacja metryki i obciążenia w sieci szkieletowej usług
 Strategię domyślnego menedżera zasobów klastra sieci szkieletowej usług zarządzania metryki obciążenia w klastrze jest rozkładanie obciążenia. Zapewnienie, że węzły są wykorzystywane równomiernie pozwala uniknąć gorącego i zimnych miejsc prowadzących do rywalizacji i nieużywanego zasobów. Dystrybucji obciążeń w klastrze jest również najbezpieczniejszy pod względem pozostałych błędy, ponieważ gwarantuje, że błąd nie Wyjmij znaczną część danego obciążenia. 
@@ -95,7 +95,7 @@ za pomocą pliku ClusterConfig.json dla autonomicznych wdrożeniach lub Template
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Menedżer zasobów klastra ma opcje man opisujące klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się w tym artykule na [opisujące klastra sieci szkieletowej usług](service-fabric-cluster-resource-manager-cluster-description.md)
 - Metryki są zarządzaniu Menedżer zasobów klastra sieci szkieletowej usług konsumenckich i pojemności w klastrze. Aby dowiedzieć się więcej na temat metryki i sposobach ich konfigurowania, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)
 

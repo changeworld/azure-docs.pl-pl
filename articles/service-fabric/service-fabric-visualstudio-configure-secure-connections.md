@@ -1,6 +1,6 @@
 ---
-title: "Skonfigurować bezpieczne połączenia klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować bezpieczne połączenia, które są obsługiwane przez klaster sieci szkieletowej usług Azure za pomocą programu Visual Studio."
+title: Skonfigurować bezpieczne połączenia klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować bezpieczne połączenia, które są obsługiwane przez klaster sieci szkieletowej usług Azure za pomocą programu Visual Studio.
 services: service-fabric
 documentationcenter: na
 author: cawaMS
@@ -9,16 +9,16 @@ editor: tglee
 ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
 ms.service: multiple
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: dc07b2f38d6fd2de941ebbe99303f6e63cbf122d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2772cc2c59b93c7e523eaa0127dcf4ea0bc589e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Skonfigurować bezpieczne połączenia z klastrem usługi sieć szkieletowa usług w programie Visual Studio
 Dowiedz się, jak bezpieczny dostęp do klastra usługi sieć szkieletowa usług Azure przy użyciu zasad kontroli dostępu skonfigurowana za pomocą programu Visual Studio.
@@ -65,7 +65,7 @@ Jeśli podczas publikowania projektu sieci szkieletowej usług w programie Visua
    ```
 5. Edytować inne wymagane ustawienia, takie jak parametry uaktualniania i lokalizacja pliku parametrów aplikacji, a następnie opublikować aplikacji z **publikowania aplikacji sieci szkieletowej usług** okno dialogowe w programie Visual Studio.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat uzyskiwania dostępu do sieci szkieletowej usług klastrów, zobacz [wizualizacja klastra przy użyciu Eksploratora usługi sieć szkieletowa](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->

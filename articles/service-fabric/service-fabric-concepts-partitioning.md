@@ -1,24 +1,24 @@
 ---
-title: "Partycjonowanie usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób partycji usługi sieć szkieletowa usług stanowych. Partycje umożliwia przechowywanie danych na komputerach lokalnych, danych i zasobów obliczeniowych mogą być skalowane razem."
+title: Partycjonowanie usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft
+description: Opisuje sposób partycji usługi sieć szkieletowa usług stanowych. Partycje umożliwia przechowywanie danych na komputerach lokalnych, danych i zasobów obliczeniowych mogą być skalowane razem.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc6f25c7a8a779d949fbd09f9a9a9a37ec83f56a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Niezawodne usługi Service Fabric partycji
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowania niezawodne usługi sieć szkieletowa usług Azure. Kod źródłowy, używany w artykule jest również dostępna w [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -238,7 +238,7 @@ Ponieważ dosłownie chcemy mieć jedną partycję na literę, możemy użyć 0 
     }
     ```
    
-    `ProcessInternalRequest`odczytuje wartości parametru ciągu zapytania, które są używane do wywoływania partycji i wywołania `AddUserAsync` można dodać nazwisko do słownika niezawodnej `dictionary`.
+    `ProcessInternalRequest` odczytuje wartości parametru ciągu zapytania, które są używane do wywoływania partycji i wywołania `AddUserAsync` można dodać nazwisko do słownika niezawodnej `dictionary`.
 10. Dodajmy usługi bezstanowej do projektu, aby zobaczyć, jak może wywołać określonej partycji.
     
     Ta usługa służy jako prosty interfejs sieci web akceptuje lastname, jako parametr ciągu zapytania, określa klucz partycji i wysyła je z usługą Alphabet.Processing do przetworzenia.
@@ -321,7 +321,7 @@ Ponieważ dosłownie chcemy mieć jedną partycję na literę, możemy użyć 0 
     ```
     
     Pamiętaj, że w tym przykładzie używamy 26 partycje z jedną partycję kluczem dla każdej partycji.
-    Następnie możemy uzyskać partycji usługi `partition` dla tego klucza przy użyciu `ResolveAsync` metoda `servicePartitionResolver` obiektu. `servicePartitionResolver`nie zdefiniowano jako
+    Następnie możemy uzyskać partycji usługi `partition` dla tego klucza przy użyciu `ResolveAsync` metoda `servicePartitionResolver` obiektu. `servicePartitionResolver` nie zdefiniowano jako
     
     ```CSharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
@@ -363,7 +363,7 @@ Ponieważ dosłownie chcemy mieć jedną partycję na literę, możemy użyć 0 
 
 Kod źródłowy całej próbki jest dostępna w [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dla informacji na temat pojęć sieci szkieletowej usług zobacz następujące tematy:
 
 * [Dostępność usług sieci szkieletowej usług](service-fabric-availability-services.md)

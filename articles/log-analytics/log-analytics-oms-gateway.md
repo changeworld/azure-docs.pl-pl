@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji przy użyciu automatyzacji Azure i analizy dzienników przy użyciu bramy OMS, gdy bezpośrednie połączenia lub Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Brama OMS, czyli protokołu HTTP do przodu serwera proxy, który obsługuje tunelowania przy użyciu połączenia HTTP polecenia HTTP, można zbierać dane i przesyła do automatyzacji Azure i analizy dzienników w ich imieniu.  
@@ -131,20 +131,18 @@ Można skonfigurować bramy w celu zapewnienia wysokiej dostępności przy użyc
 
 Aby dowiedzieć się więcej o projektowaniu i wdrożyć klaster równoważenia obciążenia sieciowego systemu Windows Server 2016, zobacz [równoważenia obciążenia sieciowego](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  W poniższych krokach opisano sposób konfigurowania klastra równoważenia obciążenia sieciowego firmy Microsoft.  
 
-1.  Zaloguj się na serwerze z systemem Windows, należącego do klastra równoważenia obciążenia Sieciowego przy użyciu konta administracyjnego.  
-2.  Otwórz Menedżera równoważenia obciążenia sieciowego w Menedżerze serwera, kliknij przycisk **narzędzia**, a następnie kliknij przycisk **Menedżera równoważenia obciążenia sieciowego**.
+1. Zaloguj się na serwerze z systemem Windows, należącego do klastra równoważenia obciążenia Sieciowego przy użyciu konta administracyjnego.  
+2. Otwórz Menedżera równoważenia obciążenia sieciowego w Menedżerze serwera, kliknij przycisk **narzędzia**, a następnie kliknij przycisk **Menedżera równoważenia obciążenia sieciowego**.
 3. Aby połączyć się z serwerem bramy OMS z programu Microsoft Monitoring Agent zainstalowany, kliknij prawym przyciskiem myszy adres IP klastra, a następnie kliknij przycisk **Dodaj hosta do klastra**.<br><br> ![Obciążenia w sieci, Menedżer równoważenia — Dodaj hosta do klastra](./media/log-analytics-oms-gateway/nlb02.png)<br> 
 4. Wprowadź adres IP serwera bramy, którym chcesz się połączyć.<br><br> ![Sieci Menedżera równoważenia obciążenia — Dodaj hosta do klastra: połączenie](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>Konfigurowanie agenta pakietu OMS i grupy zarządzania programu Operations Manager
 Poniższa sekcja zawiera kroki dotyczące sposobu konfigurowania bezpośrednio połączone OMS agentów grupy zarządzania programu Operations Manager i Azure Automation hybrydowymi elementami roboczymi Runbook z bramą OMS do komunikacji z usługi Automatyzacja Azure Log Analytics.  
 
-Aby poznać wymagania i kroki dotyczące instalowania agenta pakietu OMS na komputerach z systemem Windows bezpośredniego połączenia analizy dzienników, zobacz [połączyć komputery do analizy dzienników](log-analytics-windows-agents.md) lub Linux komputerów znajduje się w temacie [połączyć systemu Linux komputery z analizą dzienników](log-analytics-quick-collect-linux-computer.md).  Aby uzyskać informacje dotyczące automatyzacji hybrydowy proces roboczy, zobacz [wdrożenia hybrydowego procesu roboczego elementu Runbook](../automation/automation-hybrid-runbook-worker.md).
-
-### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>Konfigurowanie agenta pakietu OMS i Operations Manager, aby użyć bramy OMS jako serwer proxy
-
 ### <a name="configure-standalone-oms-agent"></a>Konfigurowanie agenta pakietu OMS autonomiczny
-Zobacz [skonfigurować ustawienia serwera proxy i zapory za pomocą programu Microsoft Monitoring Agent](log-analytics-proxy-firewall.md) informacji o konfigurowaniu agenta w celu korzystania z serwera proxy, który w tym przypadku jest brama.  Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia sieciowego, konfiguracji serwera proxy agenta pakietu OMS jest wirtualny adres IP Równoważenie obciążenia Sieciowego:<br><br> ![Microsoft Monitoring Agent właściwości — ustawienia serwera Proxy](./media/log-analytics-oms-gateway/nlb04.png)
+Aby poznać wymagania i kroki dotyczące instalowania agenta pakietu OMS na komputerach z systemem Windows bezpośredniego połączenia analizy dzienników, zobacz [połączyć komputery do analizy dzienników](log-analytics-windows-agents.md) lub Linux komputerów znajduje się w temacie [połączyć systemu Linux komputery z analizą dzienników](log-analytics-quick-collect-linux-computer.md). Określanie serwera proxy podczas konfigurowania agenta, do miejsca tej wartości Zamień adres IP serwera bramy OMS i numer portu.  Jeśli wdrożono wiele serwerów bramy za modułem równoważenia obciążenia sieciowego, konfiguracji serwera proxy agenta pakietu OMS jest wirtualny adres IP Równoważenie obciążenia Sieciowego.  
+
+Aby uzyskać informacje dotyczące automatyzacji hybrydowy proces roboczy, zobacz [wdrożenia hybrydowego procesu roboczego elementu Runbook](../automation/automation-hybrid-runbook-worker.md).
 
 ### <a name="configure-operations-manager---all-agents-use-the-same-proxy-server"></a>Konfigurowanie programu Operations Manager — wszystkich agentów, użyj tego samego serwera proxy
 Możesz skonfigurować programu Operations Manager, aby dodać serwer bramy.  Konfiguracja serwera proxy programu Operations Manager jest automatycznie stosowane do wszystkich agentów podlegających serwerowi programu Operations Manager, nawet jeśli ustawienie jest pusta.  

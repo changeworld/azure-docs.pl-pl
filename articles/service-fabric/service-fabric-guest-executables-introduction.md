@@ -1,24 +1,24 @@
 ---
-title: "Wdrażanie istniejącego pliku wykonywalnego na sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o pakowania istniejącą aplikację jako gość pliku wykonywalnego, dlatego może on zostać wdrożony do klastra usługi sieć szkieletowa usług."
+title: Wdrażanie istniejącego pliku wykonywalnego na sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o pakowania istniejącą aplikację jako gość pliku wykonywalnego, dlatego może on zostać wdrożony do klastra usługi sieć szkieletowa usług.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
-ms.author: mfussell;mikhegn
-ms.openlocfilehash: 328c00697a3c81f5af8488d4303feb7618d81301
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: mfussell
+ms.openlocfilehash: cdaf3dae12c2c9da1f6bcbebbff560b98e62bade
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Wdrażanie istniejącego pliku wykonywalnego sieci szkieletowej usług
 Możesz uruchomić dowolnego typu kodu, np. Node.js, Java lub C++ w sieci szkieletowej usług Azure, jako usługa. Sieć szkieletowa usług odwołuje się do tych typów usług jako pliki wykonywalne gościa.

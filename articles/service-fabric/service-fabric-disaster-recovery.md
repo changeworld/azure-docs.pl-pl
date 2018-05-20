@@ -1,24 +1,24 @@
 ---
-title: "Odzyskiwanie po awarii sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Sieć szkieletowa usług Azure oferuje funkcje niezbędne do postępowania w przypadku wszystkich typów awarii. W tym artykule opisano typy awarii, które mogą wystąpić oraz sposób postępowania z nimi."
+title: Odzyskiwanie po awarii sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Sieć szkieletowa usług Azure oferuje funkcje niezbędne do postępowania w przypadku wszystkich typów awarii. W tym artykule opisano typy awarii, które mogą wystąpić oraz sposób postępowania z nimi.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 295772b70529f79c7a4c135d8ea7c12a1c661fe6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Odzyskiwanie po awarii w sieci szkieletowej usług Azure
 Istotną częścią dostarczanie wysokiej dostępności jest zapewnienie przełączniki wszystkich różnych typów błędów usługi. Jest to szczególnie ważne w przypadku błędów, które są nieplanowane i poza nimi formantu. W tym artykule opisano niektóre często używanych trybów awarii, może być awarii, jeśli nie modelowane i zarządzane prawidłowo. Omówiono także czynniki oraz czynności do wykonania, jeśli mimo wszystko się stało po awarii. Celem jest ograniczenie lub wyeliminowania ryzyko utraty danych lub przestoju, gdy występują awarie, planowane lub w przeciwnym razie wystąpić.
@@ -134,7 +134,7 @@ Sieć szkieletowa usług korzysta z koncepcji węzłów inicjatora. Są to węz�
 
 Zarówno w przypadku autonomicznych klastrów sieci szkieletowej usług, jak i Azure "Podstawowy typ węzła" jest uruchamiana ziarna. Podczas definiowania typu węzła podstawowego, usługi sieć szkieletowa automatycznie skorzystają z liczby węzłów, tworząc do węzłów inicjatora 9 i 9 replik każdej usług systemowych. Jeśli zestaw losowe awarie przyjmuje się większość tych replik usługi systemu jednocześnie, usług systemu wprowadź utraty kworum, możemy opisanych powyżej. W przypadku utraty Większość węzłów inicjatora klastra zostanie zamknięty wkrótce po.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się, jak można symulować różne błędy, przy użyciu [framework testowania](service-fabric-testability-overview.md)
 - Przeczytaj inne zasoby odzyskiwania po awarii i wysokiej dostępności. Firma Microsoft udostępniła dużej liczby wskazówek na następujące tematy. Gdy niektóre z tych dokumentów odwołują się do określonych technik do użycia w innych produktów, zawierają wiele ogólne najlepsze rozwiązania, które można zastosować w tym kontekście sieci szkieletowej usług:
   - [Lista kontrolna dotycząca dostępności](../best-practices-availability-checklist.md)

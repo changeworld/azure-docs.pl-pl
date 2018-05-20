@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/18
+ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 442bfa7081865b2549c07a9436296ba2385a0b66
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co to jest panel dostępu?
 
@@ -86,6 +86,10 @@ Aby zalogować się do opartego na hasłach logowanie jednokrotne, należy uży�
 > [!NOTE]
 > Dodatkowe funkcje są dostępne tylko w przypadku krawędzi, Chrome i Firefox.
 >
+Rozszerzenie można pobrać bezpośrednio z następujących witryn:
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Krawędzi](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.com`, skonfiguruj adres URL domyślnej przez wykonanie następujących czynności:
 1. Podczas *nie* zalogowany do rozszerzenia, kliknij prawym przyciskiem myszy ikonę rozszerzenia.
@@ -93,6 +97,12 @@ Jeśli używasz Mój adres URL aplikacji innych niż `https://myapps.microsoft.c
 3. Wybierz adres URL domyślnej.
 4. Wybierz ikonę rozszerzenia.
 5. Wybierz **Zaloguj się rozpocząć**.
+
+Aby użyć adresów URL wewnętrznego firmy podczas zdalnego przy użyciu rozszerzenia, wykonaj następujące czynności:
+1. [Skonfiguruj serwer Proxy aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) w dzierżawie.
+2. [Opublikuj aplikację](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) i adresu URL za pośrednictwem serwera Proxy aplikacji.
+3. Zainstaluj rozszerzenie, a następnie zaloguj do niego, wybierając logowania rozpocząć pracę.
+4. Możesz teraz przejść do adresu URL wewnętrzne firmy, nawet podczas zdalnego.
 
 ## <a name="mobile-app-support"></a>Obsługa aplikacji mobilnej
 

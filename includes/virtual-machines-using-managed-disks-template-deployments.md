@@ -207,7 +207,7 @@ Do tworzenia zarządzanego zestawy dostępności z maszynami wirtualnymi przy u�
 
 Aby uzyskać pełne informacje dotyczące specyfikacji interfejsu API REST, zapoznaj się z tematem [tworzenie dysków zarządzanych w dokumentacji interfejsu API REST](/rest/api/manageddisks/disks/disks-create-or-update). Dostępne są dodatkowe scenariusze, a także domyślne i dopuszczalne wartości, które można przesłać do interfejsu API za pomocą szablonu wdrożenia. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Pełna szablonów, które zarządzanych dysków można znaleźć w następujących łączy repozytorium Szybki Start Azure.
     * [Maszyny Wirtualnej systemu Windows z dyskiem zarządzanym](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -216,4 +216,4 @@ Aby uzyskać pełne informacje dotyczące specyfikacji interfejsu API REST, zapo
 * Odwiedź stronę [omówienie dysków zarządzanych Azure](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu, aby dowiedzieć się więcej o dyskach zarządzanych.
 * Zapoznaj się z dokumentacją odwołanie szablonu, zasobów maszyny wirtualnej po przejściu na stronę [odwołania do szablonu Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) dokumentu.
 * Zapoznaj się z dokumentacją odwołanie szablonu, zasoby dyskowe odwiedzając [odwołania do szablonu Microsoft.Compute/disks](/azure/templates/microsoft.compute/disks) dokumentu.
- 
+* Aby uzyskać informacje dotyczące sposobu używania dysków zarządzanych w zestawach skali maszyny Wirtualnej Azure, odwiedź stronę [dysków danych za pomocą zestawów skali](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) dokumentu.

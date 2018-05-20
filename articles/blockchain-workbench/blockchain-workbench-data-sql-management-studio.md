@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Workbench danych za pomocą programu SQL Server Management Studio
-description: Dowiedz się, jak nawiązać połączenie bazy danych SQL Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
+title: Korzystanie z danych usługi Azure Blockchain Workbench w programie SQL Server Management Studio
+description: Dowiedz się, jak nawiązać połączenie z bazą danych SQL usługi Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,44 +10,45 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 1c9ee1e94ba1195db027c3edfab2e2a96f181ca3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b640aec322d6dc184a428e67d9576cf162c8f394
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Przy użyciu danych Azure Blockchain Workbench za pomocą programu SQL Server Management Studio
+# <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Korzystanie z danych usługi Azure Blockchain Workbench w programie SQL Server Management Studio
 
-Microsoft SQL Server Management Studio zapewnia możliwość szybkiego zapisu i testowanie zapytań dotyczących bazy danych SQL Azure Blockhain Workbench. Ta sekcja zawiera przewodnik krok po kroku do nawiązania połączenia bazy danych SQL Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
+Program Microsoft SQL Server Management Studio zapewnia możliwość szybkiego pisania i testowania zapytań dotyczących bazy danych SQL DB usługi Azure Blockhain Workbench. Ta sekcja zawiera przewodnik krok po kroku dotyczący sposobu nawiązywania połączenia z bazą danych SQL DB usługi Azure Blockchain Workbench z poziomu programu SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pobierz [programu SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+* Pobierz program [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>SQL Server Management Studio o łączeniu z danymi w Azure Blockchain Workbench
+## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>Łączenie programu SQL Server Management Studio z danymi w usłudze Azure Blockchain Workbench
 
-1. Otwórz program SQL Server Management Studio i wybierz **Connect**.
-2. Wybierz **bazy danych aparatu**.
+1. Otwórz program SQL Server Management Studio i wybierz pozycję **Połącz**.
+2. Wybierz pozycję **Aparat bazy danych**.
 
     ![Aparat bazy danych](media/blockchain-workbench-data-sql-management-studio/database-engine.png)
 
-3. W **Połącz z serwerem** okna dialogowego, wprowadź nazwę serwera i poświadczenia bazy danych.
+3. W oknie dialogowym **Łączenie z serwerem** wprowadź nazwę serwera i poświadczenia bazy danych.
 
-    Jeśli używane są poświadczenia utworzone przez proces wdrażania Azure Blockchain Workbench, jego nazwa zostanie **dbadmin** i hasło będzie podana podczas wdrażania.
+    Jeśli używasz poświadczeń utworzonych przez proces wdrażania usługi Azure Blockchain Workbench, nazwa użytkownika to **dbadmin**, a hasło to hasło podane podczas wdrażania.
 
-    ![Wprowadź poświadczenia SQL](media/blockchain-workbench-data-sql-management-studio/sql-creds.png)
+    ![Wprowadzanie poświadczeń usługi SQL](media/blockchain-workbench-data-sql-management-studio/sql-creds.png)
 
- 4. SQL Server Management Studio Wyświetla listę baz danych, bazy danych, widoków i procedur przechowywanych w bazie danych Azure Blockchain Workbench.
+ 4. Program SQL Server Management Studio wyświetla listę baz danych, widoków bazy danych i procedur składowanych w bazie danych usługi Azure Blockchain Workbench.
 
-    ![Listy baz danych](media/blockchain-workbench-data-sql-management-studio/db-list.png)
+    ![Lista baz danych](media/blockchain-workbench-data-sql-management-studio/db-list.png)
 
-5. Aby wyświetlić dane skojarzone z żadnym widoku bazy danych, można automatycznie wygenerować instrukcji select, wykonując następujące kroki.
+5. Aby wyświetlić dane skojarzone z dowolnymi widokami bazy danych, możesz automatycznie wygenerować instrukcję select, wykonując następujące kroki.
 6. Kliknij prawym przyciskiem myszy jeden z widoków bazy danych w Eksploratorze obiektów.
-7. Wybierz **skryptu widoku w postaci**.
-8. Wybierz **umożliwia**.
-9. Wybierz **nowe okno edytora zapytań**.
-10. Można tworzyć nowe zapytanie, wybierając **nowe zapytanie**.
+7. Wybierz pozycję **Skrypt widoku jako**.
+8. Wybierz pozycję **SELECT to**.
+9. Wybierz pozycję **Nowe okno edytora zapytań**.
+10. Nowe zapytanie można utworzyć, wybierając pozycję **Nowe zapytanie**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Widoki bazy danych w Azure Blockchain Workbench](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Widoki bazy danych w usłudze Azure Blockchain Workbench](blockchain-workbench-database-views.md)

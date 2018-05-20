@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące usługi pliki Azure | Dokumentacja firmy Microsoft
+title: Często zadawane pytania (FAQ) do usługi pliki Azure | Dokumentacja firmy Microsoft
 description: Odpowiedzi na często zadawane pytania dotyczące usługi pliki Azure.
 services: storage
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="frequently-asked-questions-about-azure-files"></a>Często zadawane pytania dotyczące usługi pliki Azure
+# <a name="frequently-asked-questions-faq-about-azure-files"></a>Pliki Azure — często zadawane pytania (FAQ)
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (znanej także jako Common Internet File System, lub CIFS). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji usługi pliki Azure, łącznie z użyciem synchronizacji plików Azure przy użyciu plików Azure. Jeśli nie widzisz odpowiedź na swoje pytanie, użytkownik może skontaktuj się z nami za pośrednictwem następujących kanałów (w kolejności rosnące):
@@ -27,7 +27,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 1. W sekcji komentarzy w tym artykule.
 2. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure pliki UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie pomocy technicznej, w portalu Azure na **pomocy** wybierz opcję **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowy obsługuje żądania**.
+4. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie pomocy technicznej, w portalu Azure na **pomocy** wybierz opcję **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowy obsługuje żądania**.
 
 ## <a name="general"></a>Ogólne
 * <a id="why-files-useful"></a>
@@ -232,7 +232,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak wykonywanie kopii zapasowych pliku Azure udostępnić?**  
-    Można użyć okresowe [udostępnić migawki](storage-snapshots-files.md) ochrony przed przypadkowym usunięciu. Ponadto można AzCopy, Robocopy lub narzędzie kopii zapasowych innych firm, które można wykonać kopię zapasową udziału zainstalowanego pliku. 
+    Można użyć okresowe [udostępnić migawki](storage-snapshots-files.md) ochrony przed przypadkowym usunięciu. Ponadto można AzCopy, Robocopy lub narzędzie kopii zapasowych innych firm, które można wykonać kopię zapasową udziału zainstalowanego pliku. Kopia zapasowa Azure oferuje kopii zapasowej plików Azure. Dowiedz się więcej o [kopia zapasowa Azure udziały kopia zapasowa Azure plików](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Udostępnianie migawki
 ### <a name="share-snapshots-general"></a>Udostępnianie migawki: Ogólne
@@ -313,7 +313,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
      
      Udział migawki są przyrostowe charakter. Migawka podstawowego udziału jest udziału. Wszystkie kolejne udziału migawki są przyrostowych i przechowywać różnica z poprzednim migawki udziału. Rozliczenie jest przeprowadzane tylko w przypadku zmiany zawartości. Jeśli udział z 100 GiB danych, ale tylko 5 GiB uległa zmianie od ostatniego migawki udziału, migawki udziału wykorzystuje tylko 5 GiB dodatkowe i są rozliczane za 105 GiB. Aby uzyskać więcej informacji o transakcji, a opłaty za wyjście standardowe, zobacz [strony cennik](https://azure.microsoft.com/pricing/details/storage/files/).
 
-## <a name="scale-and-performance"></a>Skalowalność i wydajność
+## <a name="scale-and-performance"></a>Skalowanie i wydajność
 * <a id="files-scale-limits"></a>
 **Jakie są limity skalowania plików Azure?**  
     Aby uzyskać informacje dotyczące skalowalności i wydajności usługi pliki Azure, zobacz [elementy docelowe skalowalności i wydajności usługi pliki Azure](storage-files-scale-targets.md).

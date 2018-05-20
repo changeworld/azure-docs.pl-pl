@@ -1,6 +1,6 @@
 ---
-title: Połączenie danych rozwiązania analizy dzienników | Dokumentacja firmy Microsoft
-description: Podczas transmisji danych jest skonsolidowanych danych sieci i wydajności z komputerów z agentami OMS, w tym programu Operations Manager oraz agenci połączone z systemem Windows. Dane sieciowe jest połączone z dane dziennika, aby ułatwić skorelować danych.
+title: Rozwiązanie Dane o komunikacji sieciowej w usłudze Log Analytics | Microsoft Docs
+description: Dane o komunikacji sieciowej to skonsolidowane dane o sieci i wydajności pochodzące z komputerów z agentami OMS, w tym z agentami programu Operations Manager oraz agentami połączonymi z systemem Windows. Dane sieciowe są połączone z danymi Twojego dziennika, aby ułatwić korelowanie danych.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,84 +12,84 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Podczas transmisji danych 2.0 (wersja zapoznawcza) rozwiązania analizy dzienników
+# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
-![Podczas transmisji danych symbolu](./media/log-analytics-wire-data/wire-data2-symbol.png)
+![Symbol rozwiązania Dane o komunikacji sieciowej](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Podczas transmisji danych jest skonsolidowanych danych sieci i wydajności zebrane z komputerów połączonych z systemem Windows i połączonego Linux z agentem pakietu OMS, łącznie z tymi monitorowane przez program Operations Manager w środowisku. Dane sieci są łączone z innymi danymi dziennika ułatwiają skorelować danych.
+Dane o komunikacji sieciowej to skonsolidowane dane o sieci i wydajności zebrane z komputerów połączonych z systemem Windows i systemem Linux za pomocą agenta pakietu OMS, w tym z komputerów monitorowanych przez program Operations Manager w Twoim środowisku. Dane sieciowe są łączone z innymi danymi Twojego dziennika, aby ułatwić korelowanie danych.
 
-Oprócz agent pakietu OMS rozwiązania podczas transmisji danych używa Microsoft zależności Agents instalowanego na komputerach w infrastrukturze IT. Zależności agenci monitorują dane sieci wysyłane do i z komputerów dla sieci poziomy 2 – 3 [OSI model](https://en.wikipedia.org/wiki/OSI_model), włącznie z różnych protokołów i portów używanych. Dane są następnie wysyłane do analizy dzienników przy użyciu agentów.  
+Oprócz agenta pakietu OMS rozwiązanie Dane o komunikacji sieciowej używa agentów Microsoft Dependency Agent zainstalowanych na komputerach w infrastrukturze IT. Agenci Dependency Agent monitorują dane sieciowe wysyłane do i z Twoich komputerów dla poziomów sieci 2 i 3 w [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), włącznie z różnymi używanymi protokołami i portami. Dane są następnie wysyłane do usługi Log Analytics przy użyciu agentów.  
 
 > [!NOTE]
-> Nie można dodać poprzedniej wersji rozwiązania przesyłania danych do nowych obszarów roboczych. Jeśli masz w oryginalnym rozwiązaniu udostępniający dane włączone, można nadal z niego korzystać. Jednak aby używać podczas transmisji danych 2.0, należy najpierw usunąć oryginalną wersją.
+> Do nowych obszarów roboczych nie można dodać poprzedniej wersji rozwiązania Dane o komunikacji sieciowej. Jeśli masz włączone oryginalne rozwiązanie Dane o komunikacji sieciowej, możesz nadal z niego korzystać. Jednak aby używać rozwiązania Dane o komunikacji sieciowej 2.0, należy najpierw usunąć oryginalną wersję.
 
-Domyślnie analizy dzienników rejestruje dane dla Procesora, pamięci, dysku i sieci danych dotyczących wydajności z liczników wbudowane w system Windows i Linux, a także innych liczniki wydajności, które można określić. Sieci i innych zbieranie danych odbywa się w czasie rzeczywistym dla każdego agenta, włącznie z podsieci i protokoły poziomu aplikacji, używane przez komputer.  Podczas transmisji danych analizuje dane sieci na poziomie aplikacji, nie w dół w przypadku warstwy transportu TCP.  Rozwiązanie nie wygląda na poszczególnych potwierdzeń i syn.  Po ukończeniu uzgadniania jest uznawany za połączenia na żywo i oznaczone jako połączony. Połączenie pozostaje na żywo, jak długo obie strony zgadzają się gniazda jest otwarty i dane można przekazać i z powrotem.  Po obu stronach zamyka połączenie, jest oznaczony jako rozłączony.  W związku z tym tylko liczy przepustowości pomyślnie zakończono pakietów, go nie raportują na wysyła ponownie, lub nie powiodło się pakietów.
+Domyślnie usługa Log Analytics rejestruje dane dla procesora CPU, pamięci i dysku oraz dane wydajności sieci z liczników wbudowanych w systemy Windows i Linux oraz innych liczników wydajności, które możesz określić. Gromadzenie danych sieciowych i innych odbywa się w czasie rzeczywistym dla każdego agenta, łącznie z podsieciami i protokołami poziomu aplikacji używanymi przez komputer.  Rozwiązanie Dane o komunikacji sieciowej bierze pod uwagę dane sieciowe na poziomie aplikacji, a nie niżej, w warstwie transportu TCP.  Rozwiązanie nie bierze pod uwagę pojedynczych komunikatów potwierdzeń i synchronizacji.  Po zakończeniu uzgadniania połączenie jest uznawane za aktywne i oznaczane jako Połączono. To połączenie pozostaje aktywne, dopóki obie strony zgadzają się, że gniazdo jest otwarte i dane można przekazywać tam i z powrotem.  Gdy jedna ze stron zamknie połączenie, jest ono oznaczane jako Rozłączono.  W związku z tym zliczana jest tylko przepustowość pomyślnie zakończonych pakietów. Pakiety wysłane ponownie lub zakończone niepowodzeniem nie są raportowane.
 
-Jeśli użyto [sFlow](http://www.sflow.org/) lub innego oprogramowania z [protokołu NetFlow firmy Cisco](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), statystyk i danych, zostanie wyświetlony podczas transmisji danych będzie znane.
+Jeśli zdarzało Ci się korzystać z programu [sFlow](http://www.sflow.org/) albo innego oprogramowania z [protokołem NetFlow firmy Cisco](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), statystyki i dane wyświetlane w danych o komunikacji sieciowej będą wyglądać znajomo.
 
-Typy wbudowane zapytania wyszukiwania dziennika, należą:
+Do niektórych typów wbudowanych zapytań przeszukiwania dzienników należą:
 
-- Agenci udostępniający dane
+- Agenci udostępniający dane o komunikacji sieciowej
 - Adres IP agentów udostępniających dane o komunikacji sieciowej
 - Komunikacja wychodząca według adresów IP
-- Liczba bajtów wysłanych przez protokoły aplikacji
+- Liczba wysłanych bajtów według protokołów aplikacji
 - Liczba bajtów wysłanych przez usługę aplikacji
-- Bajty odebrane przez różnych protokołów
-- Całkowita liczba bajtów wysłanych i odebranych według wersji adresu IP
-- Średni czas oczekiwania dla połączenia, które zostały wiarygodny
-- Komputer przetwarza sieciowej zainicjowały lub odebrały ruch
+- Bajty odebrane przez różne protokoły
+- Całkowita liczba bajtów wysłanych i odebranych według wersji protokołu IP
+- Średnie opóźnienie dla połączeń, które zostały wiarygodnie zmierzone
+- Procesy komputera, które zainicjowały lub odebrały ruch sieciowy
 - Ilość ruchu sieciowego dla procesu
 
-Podczas wyszukiwania przy użyciu udostępniający dane, można filtrować i grupy danych, aby wyświetlić informacje o najwyższym agentów i protokoły najwyższego. Lub kiedy można wyświetlić niektórych komputerów (adresów IP adresy MAC) przekazywane ze sobą, jak długo i ilość danych została wysłana — zasadniczo wyświetlić metadane dotyczące ruchu sieciowego, który jest na podstawie wyszukiwania.
+Podczas wyszukiwania przy użyciu danych o komunikacji sieciowej możesz filtrować i grupować dane, aby wyświetlić informacje o najczęściej używanych agentach i protokołach. Możesz też sprawdzić, kiedy niektóre komputery (adresy IP/adresy MAC) komunikowały się ze sobą, ile to trwało i ile danych wysłano. Zasadniczo możesz przeglądać metadane dotyczące ruchu sieciowego, przeszukując je.
 
-Jednak ponieważ wyświetlasz metadanych nie jest zawsze przydatne podczas rozwiązywania szczegółowe. Podczas transmisji danych analizy dzienników nie jest pełną przechwytywania danych w sieci.  Nie jest on przeznaczony do rozwiązywania problemów głębokość poziomie pakietów. Zaletą przy użyciu agenta, w porównaniu do innych metod kolekcji jest, że nie trzeba zainstalować urządzenia, skonfiguruj ponownie przełączników sieciowych lub przeprowadzić skomplikowane konfiguracje. Podczas transmisji danych jest po prostu agenta na podstawie — Zainstaluj agenta na komputerze i będzie monitorować ruch sieci. Inną zaletą jest to, jeśli chcesz monitorować obciążeń działających w chmurze dostawcy lub dostawcy usług hostingowych lub Microsoft Azure, gdy użytkownik nie posiada warstwy sieci szkieletowej.
+Warto jednak podkreślić, że prezentowane są metadane, a więc niekoniecznie będzie to przydatne przy rozwiązywaniu bardziej złożonych problemów. Dane o komunikacji sieciowej w usłudze Log Analytics nie obejmują wszystkich danych sieciowych.  Nie są one przeznaczone do rozwiązywania problemów na poziomie pakietów. Zaletą używania agenta, w porównaniu do innych metod gromadzenia danych, jest to, że nie trzeba instalować urządzeń, ponownie konfigurować przełączników sieciowych ani przeprowadzać skomplikowanych konfiguracji. Dane o komunikacji sieciowej są po prostu oparte na agencie — instalujesz agenta na komputerze i będzie on monitorować własny ruch sieciowy. Inną zaletą jest możliwość monitorowania obciążeń działających u dostawców chmury lub dostawców usług hostingowych albo na platformie Microsoft Azure, gdy użytkownik nie jest właścicielem warstwy sieci szkieletowej.
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Podczas transmisji danych dane są pobierane z Microsoft Dependency Agent. Agent zależności zależy od agenta pakietu OMS dla jego połączenia z analizy dzienników. To oznacza, że serwer musi mieć Agent pakietu OMS zainstalowany i skonfigurowany najpierw, a następnie zainstaluj agenta zależności. W poniższej tabeli opisano połączonych źródeł, które obsługuje rozwiązania przesyłania danych.
+Rozwiązanie Dane o komunikacji sieciowej pobiera swoje dane z agenta Microsoft Dependency Agent. Agent Dependency Agent zależy od agenta pakietu OMS w zakresie połączeń z usługą Log Analytics. To oznacza, że serwer musi mieć najpierw zainstalowanego i skonfigurowanego agenta pakietu OMS, a dopiero później można zainstalować agenta Dependency Agent. W poniższej tabeli opisano połączone źródła obsługiwane przez rozwiązanie Dane o komunikacji sieciowej.
 
-| **Źródło połączenia** | **Obsługiwane** | **Opis** |
+| **Połączone źródło** | **Obsługiwane** | **Opis** |
 | --- | --- | --- |
-| Agenci dla systemu Windows | Yes | Podczas transmisji danych analizuje i zbiera dane z komputerów z systemem Windows agenta. <br><br> Oprócz [Agent pakietu OMS](log-analytics-windows-agent.md), agentów systemu Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwanych systemów operacyjnych](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Podczas transmisji danych analizuje i zbiera dane z komputerów z systemem Linux agenta.<br><br> Oprócz [Agent pakietu OMS](log-analytics-quick-collect-linux-computer.md), Microsoft Dependency Agent wymagają agentów systemu Linux. Zobacz [obsługiwanych systemów operacyjnych](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
-| Grupa zarządzania programu System Center Operations Manager | Yes | Podczas transmisji danych analizuje i zbiera dane z agentów systemu Windows i Linux w połączonych [grupy zarządzania programu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Połączenie bezpośrednie z komputera agenta programu System Center Operations Manager do analizy dzienników jest wymagana. Dane są przesyłane dalej z grupy zarządzania do analizy dzienników. |
-| Konto magazynu Azure | Nie | Podczas transmisji danych zbiera dane z komputery agenta, więc nie ma żadnych danych z niego do zbierania z usługi Azure Storage. |
+| Agenci dla systemu Windows | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Windows. <br><br> Oprócz [agenta pakietu OMS](log-analytics-windows-agent.md), agenci systemu Windows wymagają agenta Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../monitoring/monitoring-service-map-configure.md#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Linux.<br><br> Oprócz [agenta pakietu OMS](log-analytics-quick-collect-linux-computer.md), agenci systemu Linux wymagają agenta Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](../monitoring/monitoring-service-map-configure.md#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Grupa zarządzania programu System Center Operations Manager | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. Dane są przekazywane z grupy zarządzania do usługi Log Analytics. |
+| Konto magazynu Azure | Nie | Rozwiązanie Dane o komunikacji sieciowej gromadzi dane z komputerów agenta, więc nie ma od niego żadnych danych do gromadzenia z usługi Azure Storage. |
 
-W systemie Windows Microsoft Monitoring Agent (MMA) jest używany zarówno przez System Center Operations Manager i analizy dzienników do zbierania i wysyłania danych. W zależności od kontekstu agent jest nazywany agenta programu System Center Operations Manager, Agent pakietu OMS, Agent analizy dziennika, MMA lub bezpośredniego agenta. System Center Operations Manager i Log Analytics zapewnia nieco inne wersje MMA. Te wersje strony każdy raport do programu System Center Operations Manager do analizy dzienników lub obie.
+W systemie Windows agent Microsoft Monitoring Agent (MMA) jest używany zarówno przez program System Center Operations Manager, jak i usługę Log Analytics do zbierania i wysyłania danych. W zależności od kontekstu agent jest nazywany agentem programu System Center Operations Manager, agentem pakietu OMS, agentem usługi Lob Analytics, MMA lub agentem bezpośrednim. Program System Center Operations Manager i usługa Log Analytics udostępniają nieco inne wersje MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.
 
-W systemie Linux Agent pakietu OMS Linux zbiera i wysyłania danych do analizy dzienników. Na serwerach z agentami bezpośredniego OMS lub na serwerach, które są dołączone do analizy dzienników za pośrednictwem grup zarządzania programu System Center Operations Manager, można użyć podczas transmisji danych.
+W systemie Linux agent pakietu OMS dla systemu Linux gromadzi i wysyła dane do usługi Log Analytics. Rozwiązania Dane o komunikacji sieciowej możesz użyć na serwerach z agentami bezpośrednimi pakietu OMS lub na serwerach, które są dołączone do usługi Log Analytics za pośrednictwem grup zarządzania programu System Center Operations Manager.
 
-W tym artykule odwołuje się do wszystkich agentów, czy Linux lub Windows, czy połączony z grupą zarządzania programu System Center Operations Manager lub bezpośrednio do analizy dzienników są określane jako _agent pakietu OMS_. Nazwa określonego wdrożenia agenta będą używane tylko wtedy, gdy jest wymagana dla kontekstu.
+W tym artykule w odwołaniach do wszystkich agentów, systemu Linux i Windows, połączonych z grupą zarządzania programu System Center Operations Manager i bezpośrednio z usługą Log Analytics, używane jest określenie _agent pakietu OMS_. Konkretna nazwa wdrożenia agenta jest używana tylko wtedy, gdy jest wymagana dla kontekstu.
 
-Agent zależności nie przesyła wszystkie dane, a nie wymaga zmian zapory lub porty. Dane udostępniający dane są zawsze przesyłane przez agenta pakietu OMS z analizą dzienników, albo bezpośrednio lub przy użyciu bramy OMS.
+Agent Dependency Agent nie przesyła żadnych danych samodzielnie i nie wymaga żadnych zmian zapory lub portów. Dane w rozwiązaniu Dane o komunikacji sieciowej są zawsze przesyłane przez agenta pakietu OMS do usługi Log Analytics bezpośrednio albo przy użyciu bramy pakietu OMS.
 
 ![diagram agenta](./media/log-analytics-wire-data/agents.png)
 
-Jeśli jesteś użytkownikiem programu System Center Operations Manager z grupą zarządzania podłączone do analizy dzienników:
+Jeśli używasz programu System Center Operations Manager z grupą zarządzania połączoną z usługą Log Analytics:
 
-- Dodatkowa konfiguracja nie jest wymagana, gdy agentów programu System Center Operations Manager można uzyskać dostęp do Internetu do nawiązania połączenia analizy dzienników.
-- Należy skonfigurować bramę OMS do pracy z programem System Center Operations Manager, gdy agentów programu System Center Operations Manager nie może uzyskać dostęp do analizy dzienników za pośrednictwem Internetu.
+- Dodatkowa konfiguracja nie jest wymagana, jeśli agenci programu System Center Operations Manager mogą uzyskać dostęp do Internetu w celu nawiązania połączenia z usługą Log Analytics.
+- Należy skonfigurować bramę OMS do pracy z programem System Center Operations Manager, gdy Twoi agenci programu System Center Operations Manager nie mogą uzyskać dostępu do usługi Log Analytics za pośrednictwem Internetu.
 
-Jeśli używasz bezpośredniej agenta, należy skonfigurować agenta pakietu OMS do połączenia analizy dzienników lub bramy OMS. Możesz pobrać bramy OMS z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Jeśli używasz bezpośredniego agenta, musisz skonfigurować samego agenta pakietu OMS do nawiązywania połączenia z usługą Log Analytics lub Twoją bramą pakietu OMS. Bramę pakietu OMS możesz pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wymaga [szczegółowe dane i analiza](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) oferta rozwiązania.
-- Jeśli używasz poprzedniej wersji rozwiązania podczas transmisji danych, należy najpierw usunąć go. Jednak wszystkie dane zarejestrowane przez w oryginalnym rozwiązaniu udostępniający dane są nadal dostępne w podczas transmisji danych w wersji 2.0 i wyszukiwania dziennika.
-- Aby zainstalować lub odinstalować agenta zależności są wymagane uprawnienia administratora.
-- Musi być zainstalowany Agent zależności na komputerze z 64-bitowym systemie operacyjnym.
+- Wymaga oferty rozwiązania [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing).
+- Jeśli używasz poprzedniej wersji rozwiązania danych o komunikacji sieciowej, musisz ją najpierw usunąć. Jednak wszystkie dane przechwycone poprzez oryginalne rozwiązanie Dane o komunikacji sieciowej są nadal dostępne za pośrednictwem rozwiązania Dane o komunikacji sieciowej 2.0 i przeszukiwania dzienników.
+- Aby zainstalować lub odinstalować agenta Dependency Agent, są wymagane uprawnienia administratora.
+- Agent Dependency Agent musi być zainstalowany na komputerze z 64-bitowym systemem operacyjnym.
 
 ### <a name="operating-systems"></a>Systemy operacyjne
 
-Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla agenta zależności. Podczas transmisji danych nie obsługuje architektury 32-bitowego dla dowolnego systemu operacyjnego.
+Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla agenta Dependency Agent. Rozwiązanie Dane o komunikacji sieciowej nie obsługuje 32-bitowych architektur dla żadnego systemu operacyjnego.
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -105,13 +105,13 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 - Windows 8
 - Windows 7
 
-#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux i Oracle Linux (z RHEL jądra)
+#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux i Oracle Linux (z jądrem RHEL)
 
-- Obsługiwane są tylko domyślnej i wersjach jądra systemu Linux SMP.
-- Zwalnia jądra niestandardowe, takie jak rozszerzenia adresu fizycznego i Xen, nie są obsługiwane dla dowolnego dystrybucji systemu Linux. Na przykład system z ciąg wersji _2.6.16.21-0.8-xen_ nie jest obsługiwane.
-- Niestandardowe jądra, w tym ponownych kompilacji standardowe jądra, nie są obsługiwane.
-- CentOSPlus jądra nie jest obsługiwane.
-- Oracle podzielenie Enterprise jądra (UEK) zostało opisane w dalszej części tego artykułu.
+- Obsługiwane są tylko wersje domyślne i wersje SMP jądra systemu Linux.
+- Niestandardowe wydania jądra, takie jak PAE i Xen, nie są obsługiwane dla żadnej dystrybucji systemu Linux. Na przykład system z ciągiem wersji _2.6.16.21-0.8-xen_ nie jest obsługiwany.
+- Niestandardowe jądra, łącznie z ponownymi kompilacjami standardowych jąder, nie są obsługiwane.
+- Jądro CentOSPlus nie jest obsługiwane.
+- Jądro Oracle Unbreakable Enterprise Kernel (UEK) zostało opisane w dalszej części tego artykułu.
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
@@ -145,7 +145,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 | 5.10 | 2.6.18-371 |
 | 5.11 | 2.6.18-398 <br> 2.6.18-400 <br>2.6.18-402 <br>2.6.18-404 <br>2.6.18-406 <br> 2.6.18-407 <br> 2.6.18-408 <br> 2.6.18-409 <br> 2.6.18-410 <br> 2.6.18-411 <br> 2.6.18-412 <br> 2.6.18-416 <br> 2.6.18-417 <br> 2.6.18-419 |
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Linux przedsiębiorstwa z jądra podzielenie Enterprise
+#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux z jądrem Unbreakable Enterprise Kernel
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 
@@ -184,7 +184,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 | --- | --- |
 | 10 SP4 | 2.6.16.60 |
 
-#### <a name="dependency-agent-downloads"></a>Zależności agenta pliki do pobrania
+#### <a name="dependency-agent-downloads"></a>Pobieranie agenta Dependency Agent
 
 | **Plik** | **OS** | **Wersja** | **SHA-256** |
 | --- | --- | --- | --- |
@@ -195,50 +195,50 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Wykonaj poniższe kroki, aby skonfigurować rozwiązanie udostępniający dane dla obszarów roboczych.
+Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Dane o komunikacji sieciowej dla Twoich obszarów roboczych.
 
-1. Włącz rozwiązania analizy dzienników działania z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) lub przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
-2. Na każdym komputerze, na którym chcesz pobrać dane, należy zainstalować agenta zależności. Dependency Agent można monitorować połączenia do natychmiastowego sąsiadów, więc nie trzeba agenta na każdym komputerze.
+1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](log-analytics-add-solutions.md).
+2. Na każdym komputerze, z którego chcesz uzyskiwać dane, zainstaluj agenta Dependency Agent. Agent Dependency Agent może monitorować połączenia do najbliższych sąsiadów, więc nie jest konieczny na każdym komputerze.
 
-### <a name="install-the-dependency-agent-on-windows"></a>Zainstaluj agenta zależności w systemie Windows
+### <a name="install-the-dependency-agent-on-windows"></a>Instalowanie agenta Dependency Agent w systemie Windows
 
-Aby zainstalować lub odinstalować agenta wymagane są uprawnienia administratora.
+Aby zainstalować lub odinstalować agenta, wymagane są uprawnienia administratora.
 
-Dependency Agent jest zainstalowany na komputerach z systemem Windows za pośrednictwem InstallDependencyAgent Windows.exe. Po uruchomieniu tego pliku wykonywalnego bez żadnych opcji uruchamia kreatora, który można wykonać w celu zainstalowania interaktywnie.
+Agent Dependency Agent jest instalowany na komputerach z systemem Windows za pomocą pliku InstallDependencyAgent-Windows.exe. Uruchomienie tego pliku wykonywalnego bez żadnych opcji powoduje uruchomienie kreatora, którego polecenia należy wykonywać w celu przeprowadzenia interaktywnej instalacji.
 
-Aby zainstalować agenta zależności na każdy komputer z systemem Windows, wykonaj następujące kroki:
+Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Windows, wykonaj następujące kroki:
 
-1. Zainstaluj agenta pakietu OMS zgodnie z krokami w [zbierania danych z komputerów z systemem Windows w środowisku](log-analytics-windows-agent.md).
-2. Pobierz agenta zależności systemu Windows przy użyciu łącza w poprzedniej sekcji, a następnie uruchom go za pomocą następującego polecenia: `InstallDependencyAgent-Windows.exe`
+1. Zainstaluj agenta pakietu OMS zgodnie z krokami podanymi w [Collect data from Windows computers hosted in your environment (Zbieranie danych z komputerów z systemem Windows hostowanych w Twoim środowisku)](log-analytics-windows-agent.md).
+2. Pobierz program Windows Dependency Agent przy użyciu linku w poprzedniej sekcji, a następnie uruchom go za pomocą następującego polecenia: `InstallDependencyAgent-Windows.exe`
 3. Użyj kreatora, aby zainstalować agenta.
-4. Jeśli Dependency Agent nie powiedzie się, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Windows katalog dziennika jest %Programfiles%\Microsoft Agent\logs zależności.
+4. Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Windows katalog dziennika to %Programfiles%\Microsoft Dependency Agent\logs.
 
 #### <a name="windows-command-line"></a>Wiersz polecenia systemu Windows
 
-Opcje z poniższej tabeli służą do instalacji z wiersza polecenia. Aby wyświetlić listę flagi instalacji, należy uruchomić Instalatora przy użyciu /? Flaga w następujący sposób.
+Użyj opcji z poniższej tabeli, aby przeprowadzić instalację z poziomu wiersza polecenia. Aby wyświetlić listę flag instalacji, uruchom instalatora, używając flagi /? w następujący sposób.
 
 InstallDependencyAgent-Windows.exe /?
 
 | **Flaga** | **Opis** |
 | --- | --- |
 | <code>/?</code> | Pobierz listę opcji wiersza polecenia. |
-| <code>/S</code> | Wykonaj instalację dyskretną bez monitowania użytkownika. |
+| <code>/S</code> | Przeprowadź instalację cichą bez monitowania użytkownika. |
 
-Pliki agenta zależności systemu Windows są umieszczane w C:\Program Files\Microsoft Dependency Agent domyślnie.
+Pliki programu Windows Dependency Agent są domyślnie umieszczane w folderze C:\Program Files\Microsoft Dependency Agent.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Zainstaluj agenta zależności w systemie Linux
+### <a name="install-the-dependency-agent-on-linux"></a>Instalowanie agenta Dependency Agent w systemie Linux
 
-Dostęp do konta root jest wymagane do zainstalowania i skonfigurowania agenta.
+Aby zainstalować lub skonfigurować agenta, wymagany jest dostęp na poziomie administratora.
 
-Dependency Agent jest zainstalowany na komputery z systemem Linux za pomocą Linux64.bin InstallDependencyAgent, skrypt powłoki z samowyodrębniający plikiem binarnym. Plik ten można uruchomić przy użyciu _sh_ lub Dodaj uprawnienia w samym pliku do wykonywania.
+Agent Dependency Agent jest instalowany na komputerach z systemem Linux za pomocą pliku InstallDependencyAgent-Linux64.bin, czyli skryptu powłoki z samowyodrębniającym plikiem binarnym. Plik ten można uruchomić przy użyciu polecenia _sh_ lub dodać uprawnienia do wykonywania do samego pliku.
 
-Aby zainstalować agenta zależności na każdym komputerze z systemem Linux, wykonaj następujące kroki:
+Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Linux, wykonaj następujące kroki:
 
-1. Zainstaluj agenta pakietu OMS zgodnie z krokami w [zbierania danych z komputerów z systemem Linux hostowanych w danym środowisku](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
-2. Pobierz agenta zależności systemu Linux przy użyciu łącza w poprzedniej sekcji, a następnie zainstaluj go jako głównego za pomocą następującego polecenia: sh InstallDependencyAgent Linux64.bin
-3. Jeśli Dependency Agent nie powiedzie się, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. Na agentów systemu Linux jest katalog dziennika: /var/opt/microsoft/dependency-agent/log.
+1. Zainstaluj agenta pakietu OMS zgodnie z krokami podanymi w [Collect data from Linux computers hosted in your environment (Zbieranie danych z komputerów z systemem Linux hostowanych w Twoim środowisku)](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
+2. Pobierz program Linux Dependency Agent przy użyciu linku w poprzedniej sekcji, a następnie zainstaluj go jako użytkownik root za pomocą następującego polecenia: sh InstallDependencyAgent-Linux64.bin
+3. Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. Dla agentów systemu Linux katalogiem dziennika jest: /var/opt/microsoft/dependency-agent/log.
 
-Aby wyświetlić listę flagi instalacji, uruchom program instalacyjny z `-help` Flaga w następujący sposób.
+Aby wyświetlić listę flag instalacji, uruchom program instalacyjny z flagą `-help` w następujący sposób.
 
 ```
 InstallDependencyAgent-Linux64.bin -help
@@ -247,22 +247,22 @@ InstallDependencyAgent-Linux64.bin -help
 | **Flaga** | **Opis** |
 | --- | --- |
 | <code>-help</code> | Pobierz listę opcji wiersza polecenia. |
-| <code>-s</code> | Wykonaj instalację dyskretną bez monitowania użytkownika. |
-| <code>--check</code> | Sprawdź uprawnienia i systemu operacyjnego, ale nie należy instalować agenta. |
+| <code>-s</code> | Przeprowadź instalację cichą bez monitowania użytkownika. |
+| <code>--check</code> | Sprawdź uprawnienia i system operacyjny, ale nie instaluj agenta. |
 
-Pliki programu Agent zależności są umieszczane w następujących katalogów:
+Pliki agenta Dependency Agent są umieszczane w następujących katalogach:
 
 | **Pliki** | **Lokalizacja** |
 | --- | --- |
-| Podstawowe pliki | /opt/microsoft/dependency-agent |
-| Pliki dziennika | /var/OPT/Microsoft/Dependency-Agent/log |
-| Pliki konfiguracji | /etc/opt/microsoft/dependency-agent/config |
+| Pliki jądra | /opt/microsoft/dependency-agent |
+| Pliki dziennika | /var/opt/microsoft/dependency-agent/log |
+| Plik konfiguracji | /etc/opt/microsoft/dependency-agent/config |
 | Pliki wykonywalne usługi | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
-| Pliki binarne magazynu | /var/OPT/Microsoft/Dependency-Agent/Storage |
+| Pliki binarne magazynu | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="installation-script-examples"></a>Przykłady skryptów instalacji
 
-Aby łatwo wdrożyć agenta zależności na wiele serwerów na raz, pomaga za pomocą skryptu. W poniższych przykładach skrypt umożliwia pobranie i zainstalowanie agenta zależności w systemu Windows lub Linux.
+Aby łatwo wdrożyć agenta Dependency Agent na wielu serwerach naraz, można użyć skryptu. Poniższe przykładowe skrypty pozwalają pobrać i zainstalować agenta zależności w systemu Windows lub Linux.
 
 #### <a name="powershell-script-for-windows"></a>Skrypt programu PowerShell dla systemu Windows
 
@@ -286,7 +286,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Konfiguracja żądanego stanu
 
-Aby wdrożyć Dependency Agent za pomocą konfiguracji żądanego stanu, można użyć modułu xPSDesiredStateConfiguration i kodu podobne do poniższych:
+Aby wdrożyć agenta Dependency Agent za pośrednictwem usługi Desired State Configuration, możesz użyć modułu xPSDesiredStateConfiguration i fragmentu kodu podobnego do poniższego:
 
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -338,19 +338,19 @@ Node $NodeName
 }
 
 ```
-### <a name="uninstall-the-dependency-agent"></a>Odinstaluj agenta zależności
+### <a name="uninstall-the-dependency-agent"></a>Odinstalowywanie agenta Dependency Agent
 
-Poniższe sekcje umożliwiają usuwania agenta zależności.
+W poniższych sekcjach opisano, jak usunąć agenta Dependency Agent.
 
-#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstaluj agenta zależności w systemie Windows
+#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalowywanie agenta Dependency Agent w systemie Windows
 
-Administrator może odinstalować zależności agenta dla systemu Windows za pomocą Panelu sterowania.
+Administrator może odinstalować agenta Dependency Agent w systemie Windows za pomocą Panelu sterowania.
 
-Administrator można również uruchomić %Programfiles%\Microsoft Agent\Uninstall.exe zależności można odinstalować agenta zależności.
+Administrator może również uruchomić plik %Programfiles%\Microsoft Dependency Agent\Uninstall.exe, aby odinstalować agenta Dependency Agent.
 
-#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstaluj agenta zależności w systemie Linux
+#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalowywanie agenta Dependency Agent w systemie Linux
 
-Aby całkowicie odinstalować agenta zależności z systemem Linux, należy usunąć sam agent i łącznika, który jest instalowany automatycznie przy użyciu agenta. Można odinstalować zarówno przy użyciu pojedynczego następujące polecenie:
+Aby całkowicie odinstalować agenta Dependency Agent z systemu Linux, musisz usunąć samego agenta i łącznik, który jest instalowany automatycznie wraz z agentem. Oba te elementy można usunąć przy użyciu następującego pojedynczego polecenia:
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -358,96 +358,96 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
-Po aktywowaniu podczas transmisji danych w obszarze roboczym analizy dzienników pakietu administracyjnego 300 KB są wysyłane do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz programu System Center Operations Manager agentów w [podłączonej grupy zarządzania](log-analytics-om-agents.md), Monitor zależności pakietu administracyjnego wdrażania programu System Center Operations Manager. Jeżeli agenci są połączone bezpośrednio Log Analytics zapewnia pakietu administracyjnego.
+Gdy rozwiązanie Dane o komunikacji sieciowej zostanie uaktywnione w obszarze roboczym usługi Log Analytics, pakiet administracyjny o wielkości 300 KB jest wysyłany do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz agentów programu System Center Operations Manager w [połączonej grupie zarządzania](log-analytics-om-agents.md), pakiet administracyjny monitora zależności zostanie wdrożony z programu System Center Operations Manager. Jeżeli agenci są połączeni bezpośrednio, usługa Log Analytics zapewni pakiet administracyjny.
 
-Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Jest ona zapisywana w: %Programfiles%\Microsoft monitorowania Agent\Agent\Health usługi State\Management pakietów. To źródło danych, które korzysta z pakietu administracyjnego: % Program files%\Microsoft monitorowanie Agent\Agent\Health usługi State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Jest on zapisywany w folderze: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. Źródło danych, którego używa pakiet administracyjny, to: % Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
 **Instalowanie i konfigurowanie rozwiązania**
 
-Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązania.
+Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
-- Rozwiązanie udostępniający dane pobrania danych z komputerów z systemem Windows Server 2012 R2, Windows 8.1 i nowszych systemów operacyjnych.
-- Microsoft .NET Framework 4.0 lub nowszy jest wymagany na komputerach, na którym chcesz uzyskać udostępniający dane z.
-- Dodaj rozwiązanie przesyłania danych do obszaru roboczego analizy dzienników przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
-- Aby wyświetlić udostępniający dane dla konkretnego rozwiązania, należy mieć rozwiązanie już dodana do obszaru roboczego.
+- Rozwiązanie Dane o komunikacji sieciowej pozyskuje dane z komputerów z systemem Windows Server 2012 R2, Windows 8.1 i z nowszymi systemami operacyjnymi.
+- Na komputerach, z których chcesz pozyskiwać dane o komunikacji sieciowej, wymagana jest platforma Microsoft .NET Framework 4.0 lub nowsza.
+- Dodaj rozwiązanie Dane o komunikacji sieciowej do swojego obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](log-analytics-add-solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
+- Jeśli chcesz wyświetlić dane o komunikacji sieciowej dla konkretnego rozwiązania, to rozwiązanie musi być już dodane do Twojego obszaru roboczego.
 
-Po zostać zainstalowani agenci i zainstalować rozwiązania, w obszarze roboczym pojawi się Kafelek podczas transmisji danych 2.0.
+Po zainstalowaniu agentów i rozwiązania w Twoim obszarze roboczym pojawi się kafelek Dane o komunikacji sieciowej 2.0.
 
-![Podczas transmisji danych kafelków](./media/log-analytics-wire-data/wire-data-tile.png)
+![Kafelek Dane o komunikacji sieciowej](./media/log-analytics-wire-data/wire-data-tile.png)
 
-## <a name="using-the-wire-data-20-solution"></a>Za pomocą rozwiązania podczas transmisji danych 2.0
+## <a name="using-the-wire-data-20-solution"></a>Używanie rozwiązania Dane o komunikacji sieciowej 2.0
 
-W portalu OMS kliknij **podczas transmisji danych 2.0** Kafelek, aby otworzyć pulpit nawigacyjny udostępniający dane. Pulpit nawigacyjny zawiera bloki w poniższej tabeli. Każdy blok zawiera maksymalnie 10 elementów spełniających kryteria tego bloku dla określonego zakresu i zakres czasu. Można uruchomić wyszukiwania dziennika, który zwraca wszystkie rekordy, klikając **zobaczyć wszystkie** w dolnej części bloku lub przez kliknięcie nagłówka bloku.
+Na stronie **Omówienie** Twojego obszaru roboczego usługi Log Analytics w witrynie Azure Portal kliknij kafelek **Dane o komunikacji sieciowej 2.0**, aby otworzyć pulpit nawigacyjny rozwiązania Dane o komunikacji sieciowej. Na pulpicie nawigacyjnym znajdują się bloki wymienione w poniższej tabeli. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Możesz uruchomić przeszukiwanie dzienników, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole bloku lub kliknij nagłówek bloku.
 
-| **Blade** | **Opis** |
+| **Blok** | **Opis** |
 | --- | --- |
-| Agenci przechwytujący ruch sieciowy | Zawiera liczbę agentów, które są Przechwytywanie ruchu sieciowego i listę top 10 komputerów, które są Przechwytywanie ruchu. Kliknij liczbę do uruchamiania dziennika wyszukiwanie <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kliknij komputer, na liście do uruchomienia zwracanie całkowita liczba bajtów przechwytywane wyszukiwanie dziennika. |
-| Lokalne podsieci | Pokazuje liczbę podsieci lokalne, które zostały odnalezione agentów.  Kliknij liczbę do uruchamiania dziennika wyszukiwanie <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> które wyświetla listę wszystkich podsieci z liczbę bajtów przesyłanych w ramach każdej z nich. Kliknij przycisk podsieci na liście, aby uruchomić wyszukiwanie dziennika zwracanie całkowita liczba bajtów wysłanych w tej podsieci. |
-| Protokoły poziomu aplikacji | Pokazuje liczbę protokoły poziomu aplikacji w użyciu, wykrywane przez agentów. Kliknij liczbę do uruchamiania dziennika wyszukiwanie <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kliknij protokół, aby uruchomić wyszukiwanie dziennika zwracanie całkowita liczba bajtów wysłanych przy użyciu protokołu. |
+| Agenci przechwytujący ruch sieciowy | Pokazuje liczbę agentów, którzy przechwytują ruch sieciowy, i listę 10 najważniejszych komputerów przechwytujących ruch. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kliknij komputer na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę przechwyconych bajtów. |
+| Lokalne podsieci | Pokazuje liczbę lokalnych podsieci, które zostały odnalezione przez agentów.  Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>, które wyświetli listę wszystkich podsieci wraz z liczbą bajtów przesłanych w ramach każdej z nich. Kliknij podsieć na liście, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów przesłanych w tej podsieci. |
+| Protokoły poziomu aplikacji | Pokazuje liczbę używanych protokołów poziomu aplikacji wykrytych przez agentów. Kliknij liczbę, aby uruchomić przeszukiwanie dzienników dla <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kliknij protokół, aby uruchomić przeszukiwanie dzienników zwracające całkowitą liczbę bajtów wysłanych przy użyciu tego protokołu. |
 
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-![Podczas transmisji danych z pulpitu nawigacyjnego](./media/log-analytics-wire-data/wire-data-dash.png)
+![Pulpit nawigacyjny rozwiązania Dane o komunikacji sieciowej](./media/log-analytics-wire-data/wire-data-dash.png)
 
-Można użyć **agenci przechwytujący ruch sieciowy** bloku, aby ustalić, jaka przepustowość sieci jest są używane przez komputery. Ten blok mogą pomóc w prosty sposób wyszukiwać _chattiest_ komputera w danym środowisku. Komputery te może być przeciążony działający nieprawidłowo lub przy użyciu więcej zasobów sieci niż zwykle.
+Możesz użyć bloku **Agenci przechwytujący ruch sieciowy**, aby ustalić, jaka część przepustowości sieci jest zużywana przez komputery. Ten blok może pomóc łatwo odnaleźć _najbardziej rozgadany_ komputer w Twoim środowisku. Takie komputery mogą być przeciążone, działać inaczej niż zwykle lub zużywać więcej zasobów sieciowych niż zwykle.
 
-![Przykład wyszukiwania dziennika](./media/log-analytics-wire-data/log-search-example01.png)
+![przykład przeszukiwania dzienników](./media/log-analytics-wire-data/log-search-example01.png)
 
-Analogicznie, można użyć **podsieci lokalne** bloku, aby określić, ile ruch sieciowy jest przenoszenie za pomocą podsieci. Użytkownicy często definiować podsieci wokół najważniejsze obszary, w przypadku ich aplikacji. Ten blok oferuje zapewnia wgląd w tych obszarach.
+Analogicznie możesz użyć bloku **Podsieci lokalne**, aby określić, ile ruchu sieciowego przechodzi przez Twoje podsieci. Użytkownicy często definiują podsieci wokół najważniejszych obszarów dla swoich aplikacji. Ten blok oferuje wgląd w te obszary.
 
-![Przykład wyszukiwania dziennika](./media/log-analytics-wire-data/log-search-example02.png)
+![przykład przeszukiwania dzienników](./media/log-analytics-wire-data/log-search-example02.png)
 
-**Protokoły poziomu aplikacji** bloku przydaje się, dlatego warto wiedzieć, jakie protokoły są używane. Na przykład może spodziewać się SSH nie będzie używana w środowisku sieciowym. Wyświetlanie informacji o dostępnych w bloku można szybko potwierdzenia lub disprove Twoje oczekiwania.
+Blok **Protokoły poziomu aplikacji** przydaje się, ponieważ pomaga dowiedzieć się, jakie protokoły są używane. Na przykład możesz spodziewać się, że protokół SSH nie będzie używany w Twoim środowisku sieciowym. Wyświetlanie informacji dostępnych w bloku może szybko potwierdzić lub obalić Twoje oczekiwania.
 
-![Przykład wyszukiwania dziennika](./media/log-analytics-wire-data/log-search-example03.png)
+![przykład przeszukiwania dzienników](./media/log-analytics-wire-data/log-search-example03.png)
 
-W tym przykładzie użytkownik może Wejdź do szczegóły SSH, aby wyświetlić komputery, które korzystają z protokołu SSH i inne szczegóły komunikacji.
+W tym przykładzie możesz zagłębić się w szczegóły protokołu SSH, aby wyświetlić komputery, które korzystają z protokołu SSH, i wiele innych szczegółów komunikacji.
 
-![Pokaż wyniki wyszukiwania](./media/log-analytics-wire-data/ssh-details.png)
+![sh search results](./media/log-analytics-wire-data/ssh-details.png)
 
-Jest również warto wiedzieć, jeśli ruch w protokole jest zwiększenie lub zmniejszenie wraz z upływem czasu. Na przykład jeśli wzrasta ilość danych przesyłanych przez aplikację, która może być coś, co należy zwrócić uwagę, lub czy można znaleźć warte wymienienia.
+Warto również wiedzieć, czy ruch w ramach protokołu zwiększa się, czy też zmniejsza wraz z upływem czasu. Jeśli na przykład wzrasta ilość danych przesyłanych przez aplikację, być może warto zwrócić uwagę.
 
 ## <a name="input-data"></a>Dane wejściowe
 
-Podczas transmisji danych zbiera metadane dotyczące ruchu sieciowego przy użyciu agentów, które zostało włączone. Każdy agent wysyła dane dotyczące co 15 s.
+Dane o komunikacji sieciowej gromadzą metadane dotyczące ruchu sieciowego przy użyciu agentów, którzy zostali włączeni. Każdy agent wysyła dane co około 15 s.
 
 ## <a name="output-data"></a>Dane wyjściowe
 
-Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. Rejestruje WireData mają właściwości poniższą tabelą:
+Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. Rekordy rozwiązania Dane o komunikacji sieciowej mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |---|---|
-| Computer (Komputer) | Nazwa komputera, w których zebrano dane |
+| Computer (Komputer) | Nazwa komputera, gdzie są gromadzone dane |
 | TimeGenerated | Czas rekordu |
 | LocalIP | Adres IP komputera lokalnego |
 | SessionState | Połączone lub rozłączone |
-| ReceivedBytes | Liczba bajtów odebranych |
+| ReceivedBytes | Liczba odebranych bajtów |
 | ProtocolName | Nazwa używanego protokołu sieciowego |
-| Wersję adresu IP ustawioną | Wersji protokołu IP |
-| Kierunek | Przychodzący lub wychodzący |
+| IPVersion | Wersja protokołu IP |
+| Kierunek | Ruch przychodzący lub wychodzący |
 | MaliciousIP | Adres IP znanego złośliwego źródła |
-| Ważność | Ważność podejrzanych złośliwego oprogramowania |
-| RemoteIPCountry | Kraj zdalny adres IP |
+| Ważność | Ważność podejrzanego złośliwego oprogramowania |
+| RemoteIPCountry | Kraj zdalnego adresu IP |
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager |
 | SourceSystem | Źródło, gdzie zostały zebrane dane |
-| SessionStartTime | Czas rozpoczęcia sesji |
+| SessionStartTime | Godzina rozpoczęcia sesji |
 | SessionEndTime | Godzina zakończenia sesji |
-| LocalSubnet | Podsieć, w których zebrano dane |
+| LocalSubnet | Podsieć, gdzie zostały zebrane dane |
 | LocalPortNumber | Numer portu lokalnego |
 | RemoteIP | Zdalny adres IP używany przez komputer zdalny |
 | RemotePortNumber | Numer portu używany przez zdalny adres IP |
-| Identyfikator sesji | Unikatowa wartość, która identyfikuje sesji komunikacji między dwoma adresami IP |
-| SentBytes | Liczba bajtów wysłanych |
+| SessionID | Unikatowa wartość, która identyfikuje sesję komunikacji między dwoma adresami IP |
+| SentBytes | Liczba wysłanych bajtów |
 | TotalBytes | Całkowita liczba bajtów wysłanych podczas sesji |
-| ApplicationProtocol | Typ protokołu sieciowego używane   |
-| Identyfikator procesu | Identyfikator procesu systemu Windows |
+| ApplicationProtocol | Typ użytego protokołu sieciowego   |
+| ProcessId | Identyfikator procesu systemu Windows |
 | ProcessName | Ścieżka i nazwa pliku procesu |
-| RemoteIPLongitude | Wartości długości geograficznej IP |
+| RemoteIPLongitude | Wartość długości geograficznej IP |
 | RemoteIPLatitude | Wartość szerokości geograficznej IP |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wyszukaj dzienniki](log-analytics-log-searches.md) Aby wyświetlić szczegółowe podczas transmisji danych wyszukiwanie rekordów.
+- [Wyszukaj dzienniki](log-analytics-log-searches.md), aby wyświetlić szczegółowe rekordy wyszukiwania rozwiązania Dane o komunikacji sieciowej.

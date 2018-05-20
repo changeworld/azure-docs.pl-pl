@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 506877e12d12ff3b1372cc0360a8df1a1d52744a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c2479dad013bfcb738e61e67cc8cf9584b4d11cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący przy użyciu reguł automatycznego skalowania lub ręcznie
 Zestawy skalowania maszyny wirtualnej są zasobu obliczeń platformy Azure, który służy do wdrażania i zarządzania nimi jako zestaw kolekcji maszyn wirtualnych. Każdy typ węzła który jest zdefiniowany w klastrze usługi sieć szkieletowa jest skonfigurowany jako zestaw skali oddzielnej maszynie wirtualnej. Każdy typ węzła można skalować w lub wychodzących niezależnie, mają różne zestawy otwartych portów i może mieć inną pojemność metryki. Dowiedz się więcej o w [elementów sieci szkieletowej usług NodeType](service-fabric-cluster-nodetypes.md) dokumentu. Ponieważ sieci szkieletowej usług typy węzłów w klastrze składają się z zestawy skalowania maszyny wirtualnej w wewnętrznej bazie danych, należy skonfigurować reguły automatycznego skalowania dla zestawu skali maszyny każdego węzła typu/wirtualnej.

@@ -1,20 +1,20 @@
 ---
-title: "Centrum IoT Azure schematu siatki zdarzeń | Dokumentacja firmy Microsoft"
-description: "Strona referencyjna format schematu zdarzeń i właściwości Centrum IoT"
+title: Centrum IoT Azure schematu siatki zdarzeń | Dokumentacja firmy Microsoft
+description: Strona referencyjna format schematu zdarzeń i właściwości Centrum IoT
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 29ad1233a344c3085286c27cb925b2dc9fb41f7e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Centrum IoT Azure schematu zdarzeń siatki zdarzeń
 
@@ -92,8 +92,8 @@ Wszystkie zdarzenia zawierają tych samych danych najwyższego poziomu:
 | Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzenia. |
 | eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
 | dane | obiekt | Dane zdarzenia Centrum IoT.  |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu metadanych zdarzeń. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
+| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
 
 Zawartość obiektu danych są różne dla każdego wydawca zdarzeń. Centrum IoT zdarzeń obiekt danych zawiera następujące właściwości:
 
@@ -104,15 +104,15 @@ Zawartość obiektu danych są różne dla każdego wydawca zdarzeń. Centrum Io
 | operationTimestamp | ciąg | Sygnatura czasowa ISO8601 operacji. |
 | opType | ciąg | Typ zdarzenia określonych dla tej operacji przez Centrum IoT: albo `DeviceCreated` lub `DeviceDeleted`.
 | twin | obiekt | Informacje o dwie urządzeń, czyli represenation chmury metadanych urządzenia aplikacji. | 
-| deviceID | ciąg | Unikatowy identyfikator dwie urządzenia. | 
+| Identyfikator urządzenia | ciąg | Unikatowy identyfikator dwie urządzenia. | 
 | Element etag | ciąg | Fragment informacje opisujące zawartość dwie urządzenia. Każdy element etag jest musi być unikatowy na dwie urządzenia. | 
 | status | ciąg | Określa, czy dwie urządzenia jest włączone lub wyłączone. | 
 | statusUpdateTime | ciąg | Sygnatura czasowa ostatniego stanu dwie urządzenia ISO8601 aktualizacji. |
 | Element connectionState | ciąg | Określa, czy urządzenie jest połączone lub rozłączone. | 
 | lastActivityTime | ciąg | ISO8601 sygnaturę czasową ostatniej aktywności. | 
 | cloudToDeviceMessageCount | liczba całkowita | Liczba chmury do urządzenia komunikaty wysyłane do tego urządzenia. | 
-| authenticationType | ciąg | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
-| x509Thumbprint | ciąg | Unikatową wartość x509 jest odcisk palca certyfikatu, najczęściej używanych można znaleźć określonego certyfikatu w magazynie certyfikatów. Odcisk palca dynamicznie jest generowany przy użyciu algorytmu SHA1, a nie istnieje fizycznie w certyfikacie. | 
+| Typ authenticationType | ciąg | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
+| X509Thumbprint | ciąg | Unikatową wartość x509 jest odcisk palca certyfikatu, najczęściej używanych można znaleźć określonego certyfikatu w magazynie certyfikatów. Odcisk palca dynamicznie jest generowany przy użyciu algorytmu SHA1, a nie istnieje fizycznie w certyfikacie. | 
 | primaryThumbprint | ciąg | X509 głównej odcisku palca certyfikatu. |
 | secondaryThumbprint | ciąg | X509 dodatkowej odcisku palca certyfikatu. | 
 | wersja | liczba całkowita | Liczba całkowita, która jest zwiększany o jednej godziny urządzenia dwie jest aktualizowany. |

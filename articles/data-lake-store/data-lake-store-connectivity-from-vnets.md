@@ -1,8 +1,8 @@
 ---
-title: "Nawiązywanie połączenia usługi Azure Data Lake Store z sieciami wirtualnymi | Dokumentacja firmy Microsoft"
-description: "Nawiązywanie połączenia usługi Azure Data Lake Store z sieci wirtualnych Azure"
+title: Nawiązywanie połączenia usługi Azure Data Lake Store z sieciami wirtualnymi | Dokumentacja firmy Microsoft
+description: Nawiązywanie połączenia usługi Azure Data Lake Store z sieci wirtualnych Azure
 services: data-lake-store,data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: esung22
 manager: jhubbard
 editor: cgronlun
@@ -10,15 +10,13 @@ ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 483406c6929844a8355dffcb86c1e3a3dabda061
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 489e7eb35352e2e8fd3d159381c2177098a90399
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Dostęp do usługi Azure Data Lake Store z maszyn wirtualnych w ramach sieci Wirtualnej platformy Azure
 Azure Data Lake Store jest usługą PaaS, która działa na publiczne adresy Internet IP. Dowolnego serwera, który może nawiązać połączenia z publicznego Internetu zwykle mogą łączyć się również punktów końcowych usługi Azure Data Lake Store. Domyślnie wszystkie maszyny wirtualne, które znajdują się w sieci wirtualnych platformy Azure mogą uzyskiwać dostęp do Internetu i dlatego mogą uzyskiwać dostęp do usługi Azure Data Lake Store. Istnieje możliwość skonfigurowania maszyn wirtualnych w sieci Wirtualnej nie ma dostępu do Internetu. Dla tych maszyn wirtualnych dostęp do usługi Azure Data Lake Store jest ograniczony również. Blokowanie publiczny dostęp do Internetu dla maszyn wirtualnych w sieci wirtualnych platformy Azure może odbywać się przy użyciu dowolnej z następujących metod:

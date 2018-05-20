@@ -1,6 +1,6 @@
 ---
 title: ServiceFabric diagnostyki Azure i monitorowanie | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano funkcje monitorowania wydajności w środowisku wykonawczym ServiceRemoting niezawodnej sieci szkieletowej usług takich jak liczniki wydajności emitowane przez nią."
+description: W tym artykule opisano funkcje monitorowania wydajności w środowisku wykonawczym ServiceRemoting niezawodnej sieci szkieletowej usług takich jak liczniki wydajności emitowane przez nią.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -9,16 +9,16 @@ editor: suchiagicha
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f54e157654fb15d2f7ff48ddc666c6c8803c75a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d462ba0955a362c27b786ee6a5670eec20c52a22
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostyka i monitorowanie wydajności dla niezawodnego Remoting Service
 Emituje środowiska uruchomieniowego niezawodnej ServiceRemoting [liczniki wydajności](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Te zapewniają wgląd w działania ServiceRemoting i ułatwić rozwiązywanie problemów i monitorowania wydajności.
@@ -29,8 +29,8 @@ Emituje środowiska uruchomieniowego niezawodnej ServiceRemoting [liczniki wydaj
 
 | Kategoria | Opis |
 | --- | --- |
-| Usługa sieci szkieletowej usług |Liczniki specyficzne dla usługi Azure Service Fabric Service Remoting, na przykład, Średni czas przetwarzania żądania |
-| Metody usługi sieci szkieletowej usług |Liczniki specyficzne dla metody implementowane przez usługi sieć szkieletowa usług zdalnych, na przykład, jak często jest wywoływana metoda usługi |
+| Usługa Service Fabric |Liczniki specyficzne dla usługi Azure Service Fabric Service Remoting, na przykład, Średni czas przetwarzania żądania |
+| Metoda usługi Service Fabric |Liczniki specyficzne dla metody implementowane przez usługi sieć szkieletowa usług zdalnych, na przykład, jak często jest wywoływana metoda usługi |
 
 Każdy z powyższych kategoriach ma co najmniej jeden licznik.
 
@@ -84,20 +84,20 @@ W poprzednim przykładzie `ivoicemailboxservice.leavemessageasync` jest nazwą m
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Metody usługi sieci szkieletowej usług |Wywołania na sekundę |Ile razy na sekundę wywoływana jest metoda usługi |
-| Metody usługi sieci szkieletowej usług |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi (w milisekundach) |
-| Metody usługi sieci szkieletowej usług |Wyjątki zgłaszane na sekundę |Ile razy czy metody usługi zwrócił wyjątek na sekundę |
+| Metoda usługi Service Fabric |Wywołania/s |Ile razy na sekundę wywoływana jest metoda usługi |
+| Metoda usługi Service Fabric |Średnia liczba milisekund dla wywołania |Czas wykonania metody usługi (w milisekundach) |
+| Metoda usługi Service Fabric |Zgłoszone wyjątki/s |Ile razy czy metody usługi zwrócił wyjątek na sekundę |
 
 ### <a name="service-request-processing-performance-counters"></a>Liczniki wydajności przetwarzania żądania usługi
 Gdy klient wywołuje metodę za pośrednictwem obiektu serwera proxy usługi, wynikiem są wysyłane za pośrednictwem sieci, aby usługa zdalnego komunikat żądania. Usługa przetwarza komunikat żądania i wysyła odpowiedź do klienta. Środowisko uruchomieniowe ServiceRemoting niezawodnej publikuje następujące liczniki wydajności powiązane z przetwarzania żądania usługi.
 
 | Nazwa kategorii | Nazwa licznika | Opis |
 | --- | --- | --- |
-| Usługa sieci szkieletowej usług |Liczba oczekujących żądań |Liczba żądań przetwarzanych przez usługę |
-| Usługa sieci szkieletowej usług |Średnia liczba milisekund dla żądania |Czas (w milisekundach przez usługę do przetwarzania żądań) |
-| Usługa sieci szkieletowej usług |Średni czas deserializacji żądania (milisekundy) |Czas (w milisekundach) do deserializacji komunikatu żądania usługi po odebraniu przez usługę |
-| Usługa sieci szkieletowej usług |Średni czas serializacji odpowiedzi (milisekundy) |Czas (w milisekundach) do serializacji komunikatu odpowiedzi usług w usłudze przed wysłaniem odpowiedzi do klienta |
+| Usługa Service Fabric |Liczba oczekujących żądań |Liczba żądań przetwarzanych przez usługę |
+| Usługa Service Fabric |Średni czas na żądanie (milisekundy) |Czas (w milisekundach przez usługę do przetwarzania żądań) |
+| Usługa Service Fabric |Średni czas deserializacji żądania (milisekundy) |Czas (w milisekundach) do deserializacji komunikatu żądania usługi po odebraniu przez usługę |
+| Usługa Service Fabric |Średni czas serializacji odpowiedzi (milisekundy) |Czas (w milisekundach) do serializacji komunikatu odpowiedzi usług w usłudze przed wysłaniem odpowiedzi do klienta |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Przykładowy kod](https://github.com/Azure/servicefabric-samples)
 * [Element EventSource dostawców w narzędzia PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

@@ -1,6 +1,6 @@
 ---
-title: Użyj danych Azure Blockchain Workbench w usłudze Microsoft Power BI
-description: Dowiedz się, jak załadować i wyświetlania danych bazy danych SQL Workbench Blockchain Azure w usłudze Microsoft Power BI.
+title: Korzystanie z danych usługi Azure Blockchain Workbench w usłudze Microsoft Power BI
+description: Dowiedz się, jak załadować i wyświetlać dane bazy danych SQL DB usługi Azure Blockchain Workbench w usłudze Microsoft Power BI.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,50 +10,51 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 2b909c0a8441010b87c913e5937d25c8127058f1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 321a34589277d62290c2fde680bb461de34b4568
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Przy użyciu danych Azure Blockchain Workbench w usłudze Microsoft Power BI
+# <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Korzystanie z danych usługi Azure Blockchain Workbench w usłudze Microsoft Power BI
 
-Microsoft Power BI umożliwia łatwe generowanie zaawansowanych raportów z bazy danych SQL baz danych przy użyciu Power BI Desktop, a następnie opublikuj je, aby [ https://www.powerbi.com ](http://www.powerbi.com).
+Usługa Microsoft Power BI umożliwia łatwe generowanie zaawansowanych raportów z baz danych SQL DB przy użyciu usługi Power BI Desktop, a następnie publikowanie ich w witrynie [https://www.powerbi.com](http://www.powerbi.com).
 
-Ten artykuł zawiera przewodnik krok po kroku do połączenia z bazy danych SQL Azure Blockchain Workbench z poziomu usługi Power BI desktop, tworzenie raportu i wdrożyć raport w witrynie powerbi.com.
+Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcje dotyczące połączenia z bazą danych SQL Database usługi Azure Blockchain Workbench z poziomu programu Power BI Desktop, tworzenia raportu i wdrażania go w witrynie powerbi.com.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pobierz [PowerBI Desktop](https://aka.ms/pbidesktopstore).
+* Pobierz program [PowerBI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>Łączenie z usługą Power BI z danymi w Azure Blockchain Workbench
+## <a name="connecting-powerbi-to-data-in-azure-blockchain-workbench"></a>Łączenie usługi Power BI z danymi w usłudze Azure Blockchain Workbench
 
 1.  Otwórz program Power BI Desktop.
-2.  Wybierz **Pobierz dane**.
+2.  Wybierz pozycję **Pobieranie danych**.
 
     ![Pobieranie danych](media/blockchain-workbench-data-powerbi/get-data.png)
-3.  Wybierz **programu SQL Server** z listy typy źródeł danych.
+3.  Wybierz pozycję **SQL Server** z listy typów źródeł danych.
 
-4.  Podaj nazwę serwera i bazy danych w oknie dialogowym. Określ, czy do importowania danych lub wykonywania **DirectQuery**. Kliknij przycisk **OK**.
+4.  Podaj nazwę serwera i bazy danych w oknie dialogowym. Określ, czy chcesz importować dane lub wykonać zapytanie w trybie **DirectQuery**. Kliknij przycisk **OK**.
 
     ![Wybieranie pozycji SQL Server](media/blockchain-workbench-data-powerbi/select-sql.png)
 
-5.  Podaj poświadczenia bazy danych do Azure Blockchain Workbench. Wybierz **bazy danych** i wprowadź swoje poświadczenia.
+5.  Podaj poświadczenia bazy danych, aby uzyskać dostęp do usługi Azure Blockchain Workbench. Wybierz pozycję **Baza danych** i wprowadź swoje poświadczenia.
 
-    Jeśli używane są poświadczenia utworzone przez proces wdrażania Azure Blockchain Workbench, nazwa użytkownika jest **dbadmin** i hasło jest podana podczas wdrażania.
+    Jeśli używasz poświadczeń utworzonych przez proces wdrażania usługi Azure Blockchain Workbench, nazwa użytkownika to **dbadmin**, a hasło to hasło podane podczas wdrażania.
 
-    ![Ustawienia bazy danych SQL.](media/blockchain-workbench-data-powerbi/db-settings.png)
+    ![Ustawienia usługi SQL DB](media/blockchain-workbench-data-powerbi/db-settings.png)
 
-6.  Po połączeniu z bazą danych, **Nawigator** Wyświetla okno dialogowe, tabele i widoki, które są dostępne w bazie danych. Widoki są przeznaczone do celów raportowania oraz czy jest poprzedzony **vw**.
+6.  Po połączeniu z bazą danych w oknie dialogowym **Nawigator** są wyświetlane tabele i widoki dostępne w bazie danych. Widoki są przeznaczone do celów raportowania i wszystkie mają prefiks **vw**.
 
     ![Nawigator](media/blockchain-workbench-data-powerbi/navigator.png)
 
-7.  Wybierz widoki, które mają zostać uwzględnione. Dla celów demonstracyjnych, przeprowadzamy **vwContractAction**, który zawiera szczegółowe informacje na wszystkich działań, które miały miejsce na kontrakt.
+7.  Wybierz widoki, które mają zostać uwzględnione. Dla celów demonstracyjnych uwzględnimy widok **vwContractAction** zawierający szczegółowe informacje na temat wszystkich działań, które miały miejsce w kontrakcie.
 
-    ![Wybierz widoki](media/blockchain-workbench-data-powerbi/select-views.png)
+    ![Wybieranie widoków](media/blockchain-workbench-data-powerbi/select-views.png)
 
-Teraz można tworzyć i publikować raporty, jak zwykle przy użyciu usługi Power BI.
+Teraz możesz tworzyć i publikować raporty, tak jak zwykle przy użyciu usługi Power BI.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Widoki bazy danych w Azure Blockchain Workbench](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Widoki bazy danych w usłudze Azure Blockchain Workbench](blockchain-workbench-database-views.md)

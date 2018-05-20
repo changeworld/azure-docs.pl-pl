@@ -1,24 +1,24 @@
 ---
-title: "Raport i Sprawdź kondycję z sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji, sposobu wysyłania raportów o kondycji z kodu usługi i sprawdzać stan usługi za pomocą narzędzi monitorowania kondycji, które zapewnia sieć szkieletowa usług Azure."
+title: Raport i Sprawdź kondycję z sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji, sposobu wysyłania raportów o kondycji z kodu usługi i sprawdzać stan usługi za pomocą narzędzi monitorowania kondycji, które zapewnia sieć szkieletowa usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/2/2017
 ms.author: dekapur
-ms.openlocfilehash: a8c1ac57d38ae504e677c44c6fec08164b9b74ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 82ee3cbca40713d527f64ae4698cb9ce64a10215
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="report-and-check-service-health"></a>Tworzenie raportów i sprawdzanie kondycji usług
 W przypadku wystąpienia problemów z usługami możliwość uwzględniał i naprawić zdarzenia i awarie zależy od możliwości szybko wykrywać problemy. Jeśli zgłaszanie problemów i błędów Menedżera kondycji sieci szkieletowej usług Azure w kodzie usługi, możesz użyć standardowego monitorowania narzędzi dostarczanych do sprawdzania stanu kondycji sieci szkieletowej usług kondycji.
@@ -36,7 +36,7 @@ W tym artykule przedstawiono przykład, w którym Raporty kondycji z kodem usłu
 ## <a name="prerequisites"></a>Wymagania wstępne
 Musi być zainstalowane następujące oprogramowanie:
 
-* Visual Studio 2015 lub Visual Studio 2017 r.
+* Program Visual Studio 2015 lub Visual Studio 2017
 * Usługa SDK sieci szkieletowej
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>Aby utworzyć klaster lokalny deweloperów bezpiecznego
@@ -147,7 +147,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Nowości dotyczące kondycji sieci szkieletowej usług](service-fabric-health-introduction.md)
 * [Interfejs API REST dla raportowania kondycji usługi](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
 * [Interfejs API REST dla raportowania kondycji aplikacji](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)

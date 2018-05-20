@@ -1,8 +1,8 @@
 ---
-title: "Zdarzenia o podwyższonym ryzyku Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Ten temat zawiera szczegółowe omówienie są zdarzenia o podwyższonym ryzyku."
+title: Zdarzenia o podwyższonym ryzyku Azure Active Directory | Dokumentacja firmy Microsoft
+description: Ten artice udostępnia szczegółowy przegląd zdarzeń o podwyższonym ryzyku są.
 services: active-directory
-keywords: "ochronę tożsamości usługi Azure active directory, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń"
+keywords: ochronę tożsamości usługi Azure active directory, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
 author: MarkusVi
 manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 05/14/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e883caa63bde26e13234dde949ce4517b328e3a5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku Azure Active Directory
 
@@ -39,12 +39,13 @@ Obecnie usługa Azure Active Directory wykrywa sześć typów zdarzeń o podwyż
 Wgląd w informacje o uzyskać zdarzenie wykryte zagrożenie jest powiązany z subskrypcją usługi Azure AD. Możesz uzyskać bardziej szczegółowe informacje o wszystkich wykryć podstawowej wersji Azure AD Premium P2. Z wersji Azure AD Premium P1 wykryć, które nie są objęte licencję są wyświetlane jako zdarzenie ryzyka **logowanie z dodatkowych ryzyka wykryto**.
 
 
-Ten temat zawiera możesz są szczegółowe omówienie jakie zdarzenia o podwyższonym ryzyku i jak ich używać do ochrony Twojej tożsamości usługi Azure AD.
+Ten artykuł zawiera możesz są szczegółowe omówienie jakie zdarzenia o podwyższonym ryzyku i jak ich używać do ochrony Twojej tożsamości usługi Azure AD.
 
 
 ## <a name="risk-event-types"></a>Rodzaje ryzykownych zdarzeń
 
-Właściwość typu zdarzenia ryzyko jest identyfikator podejrzanego działania rekordu zdarzenia ryzyka została utworzona dla.  
+Właściwość typu zdarzenia ryzyko jest identyfikator podejrzanego działania rekordu zdarzenia ryzyka została utworzona dla.
+
 Ciągłe inwestycje firmy Microsoft w procesie wykrywania prowadzić do:
 
 - Ulepszenia dokładność wykrywania istniejących zdarzeń ryzyka 
@@ -72,9 +73,11 @@ Ten typ zdarzenia ryzyka identyfikuje dwa logowania pochodzące z odległymi geo
 
 Algorytm ignoruje oczywiste "fałszywych alarmów" Współtworzenie niemożliwa podróż warunki, takie jak sieci VPN i lokalizacje regularnie używane przez innych użytkowników w organizacji. System ma okres learning początkowej 14 dni, w których uczy się nowego użytkownika logowania zachowanie. 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Logowania z nieznanych lokalizacji
+### <a name="sign-in-from-unfamiliar-locations"></a>Logowanie z nieznanych lokalizacji
 
 Ten typ zdarzenia ryzyka uwzględnia poza logowania w lokalizacji (IP, zakres / geograficzne i ASN) do określenia lokalizacji nowego / doświadczenia w pracy. System przechowuje informacje dotyczące powyższych lokalizacjach, używane przez użytkownika i traktuje te lokalizacje "znanych". Zdarzenie ryzyko jest wyzwalane, gdy logowanie odbywa się od lokalizacji, która nie jest jeszcze listę znanych lokalizacji. System ma początkowej learning okres 30 dni, w których nie Flaga wszelkie nowe lokalizacje jako nieznanych lokalizacji. System zignoruje również logowania z urządzeń znanych i lokalizacje, które są od siebie lokalizacjach geograficznych znanych lokalizacji. 
+
+Identity Protection wykrywa logowania z nieznanych lokalizacji również dla uwierzytelniania podstawowego / starszych protokołów. Ponieważ te protokoły nie ma nowoczesnych znanych funkcji, takich jak identyfikator klienta, nie ma wystarczającej ilości danych telemetrycznych do redukować liczbę fałszywych alarmów. Aby zmniejszyć liczbę zdarzeń wykryte zagrożenie, należy przenieść nowoczesnego uwierzytelniania.   
 
 ### <a name="sign-ins-from-infected-devices"></a>Logowania z zainfekowanych urządzeń
 
@@ -86,8 +89,7 @@ Ten typ zdarzenia ryzyka identyfikuje adresów IP, z których dużej liczby nieu
 
 ## <a name="detection-type"></a>Typ wykrywania
 
-Właściwość type wykrywania są wskaźnikami (w czasie rzeczywistym lub w trybie Offline) dla przedziału czasu wykrywania zdarzenia ryzyka.  
-Obecnie większość zdarzeń o podwyższonym ryzyku są wykrywane w trybie offline w ramach operacji przetwarzania końcowego po wystąpieniu zdarzenia ryzyka.
+Właściwość type wykrywania są wskaźnikami (w czasie rzeczywistym lub w trybie Offline) dla przedziału czasu wykrywania zdarzenia ryzyka. Obecnie większość zdarzeń o podwyższonym ryzyku są wykrywane w trybie offline w ramach operacji przetwarzania końcowego po wystąpieniu zdarzenia ryzyka.
 
 W poniższej tabeli wymieniono ilość czasu potrzebnego dla typu wykrywania wyświetlani w raporcie pokrewne:
 
@@ -113,8 +115,7 @@ Typy zdarzeń ryzyka, które wykrywa usługi Azure Active Directory dostępne s�
 
 Właściwość poziomu ryzyka zdarzenia ryzyko jest wskaźnikiem (wysoki, średni lub niski) ważność i zaufania zdarzeń ryzyka. Ta właściwość pomaga priorytetów działania, które należy wykonać. 
 
-Ważność zdarzenia ryzyka reprezentuje siła sygnału jako predykcyjne naruszenia tożsamości.  
-Zaufanie jest wskaźnikiem możliwość fałszywych alarmów. 
+Ważność zdarzenia ryzyka reprezentuje siła sygnału jako predykcyjne naruszenia tożsamości. Zaufanie jest wskaźnikiem możliwość fałszywych alarmów. 
 
 Na przykład: 
 
@@ -132,18 +133,17 @@ Ujawnione poświadczenia zdarzenia o podwyższonym ryzyku są sklasyfikowane jak
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Logowania z anonimowych adresów IP
 
-Poziom ryzyka dla tego typu zdarzenia ryzyko jest **średni** ponieważ anonimowego adresu IP nie jest oznaczenie silne naruszenia konta.  
-Firma Microsoft zaleca, natychmiast skontaktuj się użytkownika, aby sprawdzić, czy za pomocą anonimowych adresów IP.
+Poziom ryzyka dla tego typu zdarzenia ryzyko jest **średni** ponieważ anonimowego adresu IP nie jest oznaczenie silne naruszenia konta. Firma Microsoft zaleca, natychmiast skontaktuj się użytkownika, aby sprawdzić, czy za pomocą anonimowych adresów IP.
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Niemożliwa podróż do nietypowych lokalizacji
 
-Niemożliwa podróż jest zwykle dobry wskaźnik, że haker mógł pomyślnie logowania. Jednak alarmów false może wystąpić, gdy użytkownik podróżuje przy użyciu nowego urządzenia lub sieci VPN, który zazwyczaj nie jest używany przez innych użytkowników w organizacji. Aplikacje, które niepoprawnie przekazywania adresów IP serwera jako klient adresów IP, które mogą spowodować wygląd jest inne źródło alarmów false rejestrowania znajduje się miejsce do centrum danych, gdzie tej aplikacji do wewnętrznego (często są to Microsoft centrów danych nadających wygląd logowania biorąc umieść firmy Microsoft do adresów IP). W wyniku tych alarmów false jest poziom ryzyka dla tego zdarzenia ryzyka **średni**.
+Niemożliwa podróż jest zwykle dobry wskaźnik, że haker został pomyślnie logować się. Jednak alarmów false może wystąpić, gdy użytkownik podróżuje przy użyciu nowego urządzenia lub sieci VPN, który zazwyczaj nie jest używany przez innych użytkowników w organizacji. Aplikacje, które niepoprawnie przekazywania adresów IP serwera jako klient adresów IP, które mogą spowodować wygląd jest inne źródło alarmów false rejestrowania znajduje się miejsce do centrum danych, gdzie tej aplikacji do wewnętrznego (często są to Microsoft centrów danych nadających wygląd logowania biorąc umieść firmy Microsoft do adresów IP). W wyniku tych alarmów false jest poziom ryzyka dla tego zdarzenia ryzyka **średni**.
 
 > [!TIP]
 > Można zmniejszyć liczbę zgłoszonych alarmów false dla tego typu zdarzenia ryzyko przez skonfigurowanie [o nazwie lokalizacje](active-directory-named-locations.md). 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Logowania z nieznanych lokalizacji
+### <a name="sign-in-from-unfamiliar-locations"></a>Logowanie z nieznanych lokalizacji
 
 Nieznanych lokalizacji można podać silne wskazanie, że atakujący jest w stanie używać kradzieży tożsamości. FALSE alarmów może wystąpić, gdy użytkownik podróżuje, próbuje się nowego urządzenia lub jest za pomocą nowej sieci VPN. W wyniku tych fałszywych alarmów, poziom ryzyka dla tego typu zdarzenia jest **średni**.
 
@@ -173,7 +173,7 @@ Zdarzenia o podwyższonym ryzyku są foundation ochrony tożsamości usługi Azu
 | [Logowania z anonimowych adresów IP](#sign-ins-from-anonymous-ip-addresses) | Medium | Czas rzeczywisty |
 | [Niemożliwa podróż do nietypowych lokalizacji](#impossible-travel-to-atypical-locations) | Medium | Offline |
 | [Logowania z nieznanych lokalizacji](#sign-in-from-unfamiliar-locations) | Medium | Czas rzeczywisty |
-| [Logowania z zainfekowanych urządzeń](#sign-ins-from-infected-devices) | Niska | Offline |
+| [Logowania z zainfekowanych urządzeń](#sign-ins-from-infected-devices) | Małe | Offline |
 | [Logowania z adresów IP związanych z podejrzanymi działaniami](#sign-ins-from-ip-addresses-with-suspicious-activity) | Medium | Offline|
 
 Gdzie można znaleźć zdarzenia ryzyka, które zostały wykryte w środowisku

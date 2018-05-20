@@ -1,29 +1,27 @@
 ---
-title: "Sieci Azure stosu: Różnice i zagadnienia dotyczące"
-description: "Więcej informacji na temat różnic i zagadnienia dotyczące podczas pracy z sieci w programie Azure stosu."
+title: 'Sieci Azure stosu: Różnice i zagadnienia dotyczące'
+description: Więcej informacji na temat różnic i zagadnienia dotyczące podczas pracy z sieci w programie Azure stosu.
 services: azure-stack
-keywords: 
+keywords: ''
 author: mattbriggs
 manager: femila
 ms.author: mabrigg
-ms.date: 02/28/2018
+ms.date: 05/14/2018
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 4c881a5f5e64ddc9fc67060208f3bef6ae0f5028
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2a4c5bce072970f158a89763ebdf4132eafe9cbe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Zagadnienia dotyczące sieci Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Sieć w stosie Azure udostępnia wiele funkcji, których możesz znaleźć na platformie Azure z pewne różnice, które należy zrozumieć przed rozpoczęciem wdrażania.
+Azure Networking stosu zawiera funkcje oferowane przez sieć platformy Azure. Istnieją jednak niektóre podstawowe różnice, które należy zrozumieć przed wdrożeniem w sieci Azure stosu.
 
-
-Ten artykuł zawiera omówienie unikatowy zagadnienia dotyczące sieci i jej funkcji w stosie Azure. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
-
+Ten artykuł zawiera omówienie unikatowy zagadnienia dotyczące sieci stosu Azure i jego funkcje. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
 
 ## <a name="cheat-sheet-networking-differences"></a>Ściągawka: różnice sieci
 
@@ -33,7 +31,7 @@ Ten artykuł zawiera omówienie unikatowy zagadnienia dotyczące sieci i jej fun
 | |Rekordów AAAA usługi DNS|Obsługiwane|Nieobsługiwane|
 | |Strefy DNS na subskrypcję|100 (ustawienie domyślne)<br>Można zwiększyć na żądanie.|100|
 | |Zestawy rekordów DNS dla strefy|5000 (ustawienie domyślne)<br>Można zwiększyć na żądanie.|5000|
-||Serwery nazw dla delegowania strefy|Azure Podaj cztery serwery nazw dla każdej strefy użytkownika (dzierżawcy), która jest tworzona.|Stos Azure udostępnia dwa serwery nazw dla każdej strefy użytkownika (dzierżawcy), która jest tworzona.|
+||Serwery nazw dla delegowania strefy|Platforma Azure udostępnia cztery serwery nazw dla każdej strefy użytkownika (dzierżawcy), która jest tworzona.|Stos Azure udostępnia dwa serwery nazw dla każdej strefy użytkownika (dzierżawcy), która jest tworzona.|
 | Sieć wirtualna|Wirtualne sieci równorzędne|Połącz dwie sieci wirtualne w tym samym regionie za pośrednictwem sieci Azure sieci szkieletowej.|Nie jest jeszcze obsługiwane|
 | |Adresy IPv6|Można przypisać adres IPv6 w ramach [Konfiguracja interfejsu sieciowego](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions).|Obsługiwany jest tylko protokół IPv4.|
 |Bramy sieci VPN|Brama sieci VPN typu punkt lokacja|Obsługiwane|Nie jest jeszcze obsługiwane|

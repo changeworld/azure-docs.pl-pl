@@ -1,12 +1,12 @@
 ---
-title: "Dokumentacja ustawień aplikacji dla usługi Azure Functions"
-description: "Dokumentacja referencyjna dla ustawienia aplikacji usługi Azure Functions lub zmiennych środowiskowych."
+title: Dokumentacja ustawień aplikacji dla usługi Azure Functions
+description: Dokumentacja referencyjna dla ustawienia aplikacji usługi Azure Functions lub zmiennych środowiskowych.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
 ms.author: tdykstra
-ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd5603b8f0e15eeae9dd3799d4e10952e115680f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -44,11 +44,11 @@ Parametry połączenia konta opcjonalne magazynu do przechowywania dzienników i
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`oznacza wyłączenie domyślna strona jest wyświetlana dla adresu URL katalogu głównego aplikacji funkcja początkowa. Domyślnie jest `false`.
+`true` oznacza wyłączenie domyślna strona jest wyświetlana dla adresu URL katalogu głównego aplikacji funkcja początkowa. Wartość domyślna to `false`.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|AzureWebJobsDisableHomepage|Wartość true|
+|AzureWebJobsDisableHomepage|true|
 
 Gdy to ustawienie aplikacji jest pominięty lub ma wartość `false`, stronę podobną do poniższego przykładu jest wyświetlany w odpowiedzi na adres URL `<functionappname>.azurewebsites.net`.
 
@@ -56,11 +56,11 @@ Gdy to ustawienie aplikacji jest pominięty lub ma wartość `false`, stronę po
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`oznacza, że w trybie wersji podczas kompilowania kodu platformy .NET; `false` oznacza, że w trybie debugowania. Domyślnie jest `true`.
+`true` oznacza, że w trybie wersji podczas kompilowania kodu platformy .NET; `false` oznacza, że w trybie debugowania. Wartość domyślna to `true`.
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|Wartość true|
+|AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -153,10 +153,10 @@ Domyślna to "6.5.0".
 |---|------------|
 |WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION|6.5.0|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Dowiedz się, jak można zaktualizować ustawień aplikacji](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[Dowiedz się, jak można zaktualizować ustawień aplikacji](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
 
-> [!div class="nextstepaction"]
-> [Zobacz globalne ustawienia w pliku host.json](functions-host-json.md)
+[Zobacz globalne ustawienia w pliku host.json](functions-host-json.md)
+
+[Zobacz inne ustawienia aplikacji dla aplikacji usługi aplikacji](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

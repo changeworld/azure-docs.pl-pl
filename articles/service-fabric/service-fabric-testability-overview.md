@@ -1,6 +1,6 @@
 ---
-title: "Omówienie usługi analiza błędów | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano usługę analiza błędów w sieci szkieletowej usług dla wywołania usterek i uruchamiania scenariuszy testowania usług."
+title: Omówienie usługi analiza błędów | Dokumentacja firmy Microsoft
+description: W tym artykule opisano usługę analiza błędów w sieci szkieletowej usług dla wywołania usterek i uruchamiania scenariuszy testowania usług.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Wprowadzenie do usługi analiza błędów
 Usługi analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usługi sieć szkieletowa usług Microsoft Azure. W usłudze analiza błędów można wywołać znaczenie błędów i uruchomienia testu pełne scenariusze aplikacji. Te błędy i scenariusze wykonywania i sprawdzania poprawności wiele stanów i przejść, które usługa może wystąpić w jego okres istnienia, w sposób kontrolowany, bezpieczne i zgodne.
@@ -91,11 +91,11 @@ Z usługi Service Fabric chociaż skali błędy będą różne w różnych środ
 
 Funkcji usługi analiza błędów znajdują się w przestrzeni nazw System.Fabric w pakiecie Microsoft.ServiceFabric NuGet. Aby używać funkcji usługi analiza błędów, obejmują pakiet nuget jako odwołanie do projektu.
 
-**PowerShell**
+**Program PowerShell**
 
 Przy użyciu programu PowerShell, należy zainstalować zestaw SDK sieci szkieletowej usług. Po zainstalowaniu zestawu SDK modułu ServiceFabric programu PowerShell jest załadowany można użyć automatycznego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby utworzyć naprawdę skali chmury usługi, jest krytyczne, aby upewnić się, przed i po wdrożeniu, że usługi może wytrzymać rzeczywistych błędów. W świecie usługi obecnie możliwość innowacji szybko i Przenieś kod do środowiska produkcyjnego szybko jest bardzo ważne. Usługi analizy błędów ułatwia deweloperom usługi dokładnie w tym celu należy.
 
 Rozpoczęcie testowania aplikacji i usług przy użyciu wbudowanych [przetestować scenariusze](service-fabric-testability-scenarios.md), lub utworzyć własne scenariuszy testowania przy użyciu [fault akcje](service-fabric-testability-actions.md) udostępniony przez usługę analiza błędów.

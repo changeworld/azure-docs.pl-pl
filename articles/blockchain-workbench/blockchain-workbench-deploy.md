@@ -12,7 +12,7 @@ ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
 ---

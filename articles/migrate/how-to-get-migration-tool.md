@@ -1,16 +1,16 @@
 ---
 title: Migracja maszyny po ocenie przy migracji Azure | Dokumentacja firmy Microsoft
-description: "Opisuje sposób uzyskać zalecenia dotyczące migrowania maszyn po uruchomieniu oceny w usłudze Azure migracji."
+description: Opisuje sposób uzyskać zalecenia dotyczące migrowania maszyn po uruchomieniu oceny w usłudze Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: e6e32e9bd2384987a1d0315bfbef913c46fc5dbb
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 242a8b95e7eb278a7884eec7d0cc6a607bdf24d4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="migrate-machines-after-assessment"></a>Migrowanie maszyn po ocenie
 
@@ -35,15 +35,15 @@ Aby sugestie dotyczące narzędzi migracji, należy wykonać głębokiego ujawni
 1. Zanim będzie można pobrać metody sugerowane migracji, należy utworzyć projekt Azure migracji, Odkryj maszyny lokalnej, a następnie uruchom oceny migracji. [Dowiedz się więcej](tutorial-assessment-vmware.md).
 2. Po utworzeniu oceny go wyświetlić, w projekcie > **omówienie** > **pulpitu nawigacyjnego**. Kliknij przycisk **oceny gotowości**
 
-    ![Oceny gotowości](./media/tutorial-assessment-vmware/assessment-report.png)  
+    ![Ocena gotowości](./media/tutorial-assessment-vmware/assessment-report.png)  
 
 3. W **sugerowane narzędzia**, przeglądanie sugestii dla narzędzi można użyć do migracji.
 
-    ![Sugerowane narzędzia](./media/tutorial-assessment-vmware/assessment-suitability.png) 
+    ![Sugerowane narzędzie](./media/tutorial-assessment-vmware/assessment-suitability.png) 
 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się więcej](concepts-assessment-calculation.md) o obliczania oceny.
+[Dowiedz się więcej](concepts-assessment-calculation.md) na temat sposobu obliczania ocen.

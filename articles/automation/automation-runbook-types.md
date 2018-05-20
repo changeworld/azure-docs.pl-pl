@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 800380c68e1bb1314021ab60f92ccd3b392dbe32
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 94fbc1cf0232eaf48bb0be3c6edc0542142e4681
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Typy elementu runbook automatyzacji Azure
 Automatyzacja Azure obsługuje kilka typów elementów runbook krótko opisane w poniższej tabeli.  Poniższe sekcje zawierają dodatkowe informacje na temat poszczególnych typów, łącznie z uwagi na kiedy należy używać każdego.
@@ -99,7 +99,7 @@ Należy wziąć pod uwagę następujące uwagi dodatkowe podczas określania typ
 * Nie można przekonwertować typu tekstowej lub odwrotnie elementów runbook z graficznego.
 * Istnieją ograniczenia dotyczące używania elementów runbook o różnych typach jako podrzędnego elementu runbook.  Zobacz [podrzędnych elementów runbook automatyzacji Azure](automation-child-runbooks.md) Aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej na temat tworzenia graficznego elementu runbook, zobacz [tworzenia graficznego automatyzacji Azure](automation-graphical-authoring-intro.md)
 * Aby poznać różnice między środowiska PowerShell i programu PowerShell przepływy pracy dla elementów runbook, zobacz [Learning Windows PowerShell Workflow](automation-powershell-workflow.md)
 * Aby uzyskać więcej informacji na temat Tworzenie lub importowanie elementu Runbook, zobacz [Tworzenie lub importowanie elementu Runbook](automation-creating-importing-runbook.md)

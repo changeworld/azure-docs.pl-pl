@@ -7,13 +7,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 470f513260cef516fd53ad213138480bd056456a
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e7135e620ab799131f772c16f6799ed80be312e0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Moduły integracji usługi Azure Automation
 Program PowerShell to podstawowa technologia używana w usłudze Azure Automation. Ponieważ usługa Azure Automation jest zbudowana w oparciu o program PowerShell, moduły tego programu stanowią podstawę możliwości rozszerzania usługi Azure Automation. W tym artykule firma Microsoft przedstawiono szczegółowe informacje na temat stosowania automatyzacji Azure moduły programu PowerShell, określany jako "Moduły integracji" i najlepsze rozwiązania dotyczące tworzenia moduły programu PowerShell upewnij się, że działają jako moduły integracji w systemie Azure Automatyzacja. 
@@ -202,7 +202,7 @@ Mimo że moduły integracji są zasadniczo modułami programu PowerShell, istnie
    <br>
 6. Moduł powinien być w pełni zawarty w pakiecie z obsługą opcji Xcopy. Ponieważ moduły usługi Azure Automation są dystrybuowane do piaskownic usługi Automation, jeśli trzeba wykonać elementy Runbook, muszą one działać niezależnie od hosta, na którym są uruchamiane. Oznacza to, że użytkownik powinien mieć możliwość spakowania pakietu modułu i przeniesienia go na inny host z tą samą lub nowszą wersją programu PowerShell, a moduł powinien działać w zwykły sposób po zaimportowaniu do środowiska PowerShell tego hosta. Aby było to możliwe, moduł nie powinien być zależny od żadnych plików poza folderem modułu (folderem pakowanym podczas importowania do usługi Azure Automation) ani od żadnych ustawień rejestru unikatowych na hoście, na przykład określonych podczas instalowania produktu. Jeśli to rozwiązanie nie zostanie zastosowane, użycie modułu w usłudze Azure Automation będzie niemożliwe.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby rozpocząć pracę z elementami Runbook przepływu pracy programu PowerShell, zobacz artykuł [My first PowerShell workflow runbook](automation-first-runbook-textual.md) (Mój pierwszy element Runbook przepływu pracy programu PowerShell).
 * Aby dowiedzieć się więcej na temat tworzenia modułów programu PowerShell, zobacz artykuł [Writing a Windows PowerShell Module](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx) (Pisanie modułu programu Windows PowerShell).

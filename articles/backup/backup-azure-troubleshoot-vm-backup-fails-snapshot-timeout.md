@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: problemy z agentem lub rozszerzenia
 
@@ -194,21 +194,6 @@ Ten problem dotyczy zarządzanych maszyn wirtualnych, w których użytkownik zab
 
 #### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, wykonaj następujące kroki, aby usunąć kolekcję punkt przywracania: <br>
- 
-1. Usunięcie blokady w grupie zasobów, w którym znajduje się maszyna wirtualna. 
-2. Zainstaluj ARMClient przy użyciu Chocolatey: <br>
-   https://github.com/projectkudu/ARMClient
-3. Zaloguj się do ARMClient: <br>
-    `.\armclient.exe login`
-4. Pobierz kolekcję punkt przywracania, do której odnosi się do maszyny Wirtualnej: <br>
-    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
-
-    Przykład: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
-5. Usuń kolekcję punkt przywracania: <br>
-    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
-6. Następnego zaplanowanego tworzenia kopii zapasowej automatycznie tworzy kolekcję punktu przywracania i nowych punktów przywracania.
-
- 
-Problem zostanie wystąpi w przypadku zablokowania grupy zasobów. 
+Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów i umożliwić usługi Kopia zapasowa Azure, wyczyść kolekcję punkt odzyskiwania i podstawowej migawek w następnej kopii zapasowej.
+Po zakończeniu można ponownie umieścić ponownie blokady w grupie zasobów maszyny Wirtualnej. 
 

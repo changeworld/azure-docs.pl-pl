@@ -14,31 +14,31 @@ ms.workload: na
 ms.date: 03/30/2018
 ms.author: bryanla; v-clay
 ms.custom: ''
-ms.openlocfilehash: 04b4079038ab0ef3f87cfceea521a1424e93cce1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 56410b040ac14a2a46927cac8ed41218fc709888
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Technologie i rozwiązania IoT na platformie Azure: PaaS and SaaS
 
 Rozbudowana oferta firmy Microsoft może zaspokoić potrzeby wszystkich klientów, dzięki czemu każdy może mieć dostęp do korzyści wynikających z cyfrowej rewolucji. Ten opis produktów Azure IoT jest omówieniem dostępnych technologii i rozwiązań PaaS/SaaS. Przedstawiono tu dwie ścieżki dostępne podczas tworzenia własnego rozwiązania:
-- Platform as a Service (PaaS) — stwórz własne rozwiązanie przy użyciu pakietu [Azure IoT Suite](https://www.azureiotsuite.com/), zbioru wstępnie skonfigurowanych rozwiązań klasy korporacyjnej, które umożliwiają przyspieszenie rozwoju niestandardowych rozwiązań IoT.
+- Platform as a Service (PaaS) — utwórz własną aplikację przy użyciu [akceleratorów rozwiązań usługi Azure IoT](https://www.azureiotsuite.com/), które są kolekcjami wstępnie skonfigurowanych rozwiązań klasy korporacyjnej umożliwiających przyspieszenie rozwoju niestandardowych rozwiązań IoT.
 - Oprogramowanie jako usługa (SaaS) — szybko rozpocznij pracę dzięki usłudze [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), nowemu rozwiązaniu SaaS, i opracuj aplikacje IoT bez styczności ze złożonością rozwiązania IoT. Jeśli Twoja organizacja nie ma zasobów do utworzenia własnego rozwiązania IoT, usługa Azure IoT Central jest bezkodowym rozwiązaniem IoT, który pozwala na tworzenie modeli urządzeń, pulpitów nawigacyjnych oraz reguł w ciągu kilku minut.
 
-![Najbardziej kompleksowa oferta technologii i rozwiązań w branży][img-paas-saas-technologies-solutions]
+![Technologie i rozwiązania usługi Azure IoT][img-paas-saas-technologies-solutions]
 
 ## <a name="solutions"></a>Rozwiązania
 
-Szybko rozpocznij pracę z usługi Azure IoT Suite i rozwiązań SaaS. Wybierz dowolne ze wstępnie skonfigurowanych rozwiązań, które obsługują typowe scenariusze IoT obejmujące na przykład zdalne monitorowanie, konserwację zapobiegawczą czy połączoną fabrykę, i utwórz w pełni dostosowane rozwiązanie. Możesz też skorzystać z usługi Azure IoT Central, czyli w pełni zarządzanego i kompleksowego rozwiązania, które obsługuje zaawansowane scenariusze IoT, nie wymagając fachowej wiedzy w zakresie rozwiązań w chmurze.
+Szybko rozpocznij pracę z akceleratorami rozwiązań i ofertami SaaS. Wybierz dowolne ze wstępnie skonfigurowanych rozwiązań, które obsługują typowe scenariusze IoT obejmujące na przykład zdalne monitorowanie, konserwację zapobiegawczą czy połączoną fabrykę, i utwórz w pełni dostosowane rozwiązanie. Możesz też skorzystać z usługi Azure IoT Central, czyli w pełni zarządzanego i kompleksowego rozwiązania, które obsługuje zaawansowane scenariusze IoT, nie wymagając fachowej wiedzy w zakresie rozwiązań w chmurze.
 
-### <a name="azure-iot-suite-paas"></a>Azure IoT Suite (PaaS)
+### <a name="azure-iot-solution-accelerators-paas"></a>Akceleratory rozwiązań usługi Azure IoT (PaaS)
 
-Azure IoT Suite to zbiór rozwiązań PaaS klasy korporacyjnej, które można dostosować i które zapewniają wysoki stopień kontroli nad rozwiązaniem IoT. Jeśli Twoja firma wdraża IoT do połączonych operacji lub ma określone wymagania w zakresie dostosowywania w przypadku połączonych produktów, Azure IoT Suite oferuje kontrolę, której potrzebujesz. 
+Akceleratory rozwiązań usługi Azure IoT to zbiór rozwiązań PaaS klasy korporacyjnej, które można dostosować i które zapewniają wysoki stopień kontroli nad rozwiązaniem IoT. Jeśli Twoja firma wdraża technologię IoT na potrzeby połączonych operacji lub ma określone wymagania w zakresie dostosowywania dla połączonych produktów, akceleratory rozwiązań usługi Azure IoT oferują kontrolę, której potrzebujesz. 
 
-Pakiet Azure IoT Suite może przynieść największe korzyści między innymi organizacjom z dużą liczbą urządzeń lub ich modeli oraz producentom poszukującym rozwiązań typu „połączona fabryka”. Tworzenie rozwiązań, które można w dużym stopniu dostosować do złożonych potrzeb. Pakiet IoT Suite zapewnia następujące korzyści:
+Akceleratory rozwiązań IoT mogą przynieść największe korzyści na przykład organizacjom z dużą liczbą urządzeń lub ich modeli oraz producentom poszukującym rozwiązań typu „połączona fabryka”. Tworzenie rozwiązań, które można w dużym stopniu dostosować do złożonych potrzeb — tutaj akceleratory rozwiązań IoT zapewniają następujące korzyści: 
 
-- Wstępnie skonfigurowane rozwiązania
+- Wstępnie przygotowane rozwiązania
     - Zdalne monitorowanie
     - Połączona fabryka
     - Konserwacja zapobiegawcza
@@ -58,26 +58,26 @@ Organizacje używające mniejszej liczby modeli urządzeń, bardziej przewidywal
 - Konfigurowanie w zależności od potrzeb
 - Idealne rozwiązanie do prostych potrzeb w zakresie IoT
 
-### <a name="compare-azure-iot-suite-and-azure-iot-central"></a>Porównanie usług Azure IoT Suite i Azure IoT Central
+### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Porównanie akceleratorów rozwiązań usługi Azure IoT i rozwiązania Azure IoT Central
 
-Aby wdrożyć typową [architekturę rozwiązania IoT](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture), rozwiązanie Azure IoT oferuje różne usługi, [Azure IoT Suite](/azure/iot-suite) i [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions), z których każda spełnia różne wymagania klientów.
+Na potrzeby implementacji typowej [architektury rozwiązania IoT](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture) usługa Azure IoT oferuje kilka możliwości, takich jak [akceleratory rozwiązań usługi Azure IoT](/azure/iot-suite) i rozwiązanie [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions), z których każda spełnia różne wymagania klientów.
 
-[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) to podstawowe rozwiązanie PaaS dostępne na platformie Azure. Korzysta z niego zarówno usługa Azure IoT Central, jak i pakiet Azure IoT Suite. Usługa IoT Hub umożliwia bezpieczną i niezawodną dwukierunkową komunikację między milionami urządzeń IoT i rozwiązaniem w chmurze. Usługa IoT Hub ułatwia spełnienie wymagań dotyczących implementacji IoT, takich jak:
+Usługa [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) to podstawowe rozwiązanie PaaS dostępne w ramach platformy Azure, z którego korzysta zarówno usługa Microsoft IoT Central, jak i akceleratory rozwiązań usługi Azure IoT. Usługa IoT Hub umożliwia bezpieczną i niezawodną dwukierunkową komunikację między milionami urządzeń IoT i rozwiązaniem w chmurze. Usługa IoT Hub ułatwia spełnienie wymagań dotyczących implementacji IoT, takich jak:
 
 * Utrzymywanie łączności zapewniającej przepływ dużej ilości danych między urządzeniami i zarządzanie nimi.
 * Pozyskiwanie dużej ilości danych telemetrycznych.
 * Sterowanie urządzeniami i kontrola nad nimi.
 * Wymuszanie zabezpieczeń urządzeń.
 
-Wybór produktu IoT Azure to decydujący etap planowania rozwiązania IoT. IoT Hub jest autonomiczną usługą platformy Azure, która sama nie zapewnia kompleksowego rozwiązania IoT. Usługa IoT Hub może służyć jako punkt początkowy dla dowolnego rozwiązania IoT. Aby z niej korzystać, nie trzeba używać pakietu Azure IoT Suite ani rozwiązania Azure IoT Central. Zarówno pakiet Azure IoT Suite, jak i rozwiązanie Azure IoT Central używają usługi IoT Hub razem z innymi usługami platformy Azure. W poniższej tabeli przedstawiono podsumowanie najważniejszych różnic między pakietem Azure IoT Suite i usługą Azure IoT Central, aby ułatwić wybór najbardziej odpowiedniego rozwiązania:
+Wybór produktu IoT Azure to decydujący etap planowania rozwiązania IoT. IoT Hub jest autonomiczną usługą platformy Azure, która sama nie zapewnia kompleksowego rozwiązania IoT. Usługa IoT Hub może służyć jako punkt początkowy dla dowolnego rozwiązania IoT. Aby z niej korzystać, nie trzeba używać akceleratorów rozwiązań usługi Azure IoT ani rozwiązania Azure IoT Central. Zarówno akceleratory rozwiązań usługi Azure IoT, jak i rozwiązanie Azure IoT Central używają usługi IoT Hub razem z innymi usługami platformy Azure. W poniższej tabeli przedstawiono podsumowanie najważniejszych różnic między akceleratorami rozwiązań usługi Azure IoT i rozwiązaniem Azure IoT Central, aby ułatwić wybór rozwiązania najbardziej odpowiedniego dla konkretnych wymagań:
 
-|                        | Azure IoT Suite | Azure IoT Central |
+|                        | Akceleratory rozwiązań Azure IoT | Azure IoT Central |
 | ---------------------- | --------- | ----------- |
 | Podstawowe zastosowanie | Przyspieszenie opracowania niestandardowych rozwiązań IoT wymagających maksymalnej elastyczności. | Skrócenie czasu wprowadzenia na rynek prostych rozwiązań IoT, które nie wymagają znaczącego dostosowania usług. |
 | Dostęp do podstawowych usług PaaS          | Dostęp do podstawowych usług platformy Azure, możliwość zarządzania nimi i zastępowania ich w razie potrzeb. | SaaS. W pełni zarządzane rozwiązanie, podstawowe usługi nie są widoczne. |
 | Elastyczność            | Wysoka. Kod mikrousług jest typu „open source”, można go modyfikować w dowolny sposób w celu dopasowania do własnych potrzeb. Ponadto można dostosować infrastrukturę wdrażania.| Średnia. Wbudowane, oparte na przeglądarce środowisko użytkownika umożliwia dostosowywanie modelu rozwiązania i aspektów interfejsu użytkownika. Infrastruktury nie można modyfikować, ponieważ poszczególne składniki nie są widoczne.|
 | Poziom umiejętności                 | Średnio wysoki. Konieczna jest znajomość języka Java lub .NET, aby móc dostosować zaplecze rozwiązania. Konieczna jest znajomość języka JavaScript w celu dostosowania wizualizacji. | Niski. Wymagane jest posiadanie umiejętności modelowania w celu dostosowania rozwiązania. Nie są wymagane umiejętności programowania. |
-| Rozpoczynanie pracy | Wstępnie skonfigurowane rozwiązania implementują typowe scenariusze IoT. Można je wdrożyć w kilka minut. | Szablony aplikacji i urządzeń udostępniają wstępnie wbudowane modele. Można je wdrożyć w kilka minut. |
+| Rozpoczynanie pracy | Akceleratory rozwiązań implementują typowe scenariusze IoT. Można je wdrożyć w kilka minut. | Szablony aplikacji i urządzeń udostępniają wstępnie wbudowane modele. Można je wdrożyć w kilka minut. |
 | Cennik                | Koszty można kontrolować, dostosowując usługi. | Prosta, przewidywalna struktura cen. |
 
 Podjęcie decyzji, którego produktu użyć w celu zbudowania rozwiązania IoT, zależy od następujących czynników:

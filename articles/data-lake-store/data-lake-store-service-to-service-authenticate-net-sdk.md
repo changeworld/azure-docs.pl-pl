@@ -1,23 +1,21 @@
 ---
-title: "Do usługi uwierzytelniania: zestaw .NET SDK z usługą Data Lake Store za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie uzyskania do usługi uwierzytelniania przy użyciu usługi Azure Active Directory przy użyciu zestawu .NET SDK usługi Data Lake Store"
+title: 'Do usługi uwierzytelniania: zestaw .NET SDK z usługą Data Lake Store za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie uzyskania do usługi uwierzytelniania przy użyciu usługi Azure Active Directory przy użyciu zestawu .NET SDK usługi Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: fb3d3dd518cbe0a603524f1bdc38d122582aa6b0
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 794e46bd4bdbb29158a7d7111712fbf62621c79b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Aby usługa uwierzytelniania za pomocą przy użyciu zestawu .NET SDK usługi Data Lake Store
 > [!div class="op_single_selector"]

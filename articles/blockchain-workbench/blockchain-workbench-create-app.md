@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/9/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Tworzenie aplikacji blockchain w Azure Blockchain Workbench
 
@@ -33,6 +33,8 @@ Omawiane kwestie:
 * Deployment Blockchain Workbench. Aby uzyskać więcej informacji, zobacz [deployment Azure Blockchain Workbench](blockchain-workbench-deploy.md) szczegółowe informacje na temat wdrażania.
 * Użytkownicy usługi Azure Active Directory dzierżawca skojarzony z Blockchain Workbench. Aby uzyskać więcej informacji, zobacz [Dodaj użytkowników usługi Azure AD w Azure Blockchain Workbench](blockchain-workbench-manage-users.md#add-azure-ad-users).
 * Konto administratora Blockchain Workbench. Aby uzyskać więcej informacji, zobacz temat Dodawanie [administratorów Blockchain Workbench w Azure Blockchain Workbench](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
+
+## <a name="hello-blockchain"></a>Witaj, Blockchain!
 
 Umożliwia tworzenia podstawowej aplikacji, w którym obiekt żądający wysyła żądanie i obiekt odpowiadający wysyłania odpowiedzi na żądanie. Można na przykład żądania, "Witaj, jak jesteś?" i umożliwia odpowiedzi można "Jestem doskonałe!". Zarówno żądania i odpowiedzi są rejestrowane na blockchain podstawowej. 
 

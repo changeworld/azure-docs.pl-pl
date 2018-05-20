@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70a2118ef0e26043f9f6a9cceb9d4a533d343556
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 9d09fb60722865a75ea0825f5ca54f792642980a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure stosu  
+# <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure stosu
 
-Azure stosu zgodne Azure moduły programu PowerShell są wymagane do pracy z stosu Azure. W tym przewodniku możemy opisano kroki wymagane do zainstalowania programu PowerShell dla usługi Azure stosu. Korzystając z procedury opisanej w tym artykule z Development Kit stosu Azure lub z systemem Windows klienta zewnętrznych po nawiązaniu połączenia za pośrednictwem sieci VPN.
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-W tym artykule przedstawiono szczegółowe instrukcje dotyczące instalacji programu PowerShell dla usługi Azure stosu. Jednak jeśli chcesz szybko zainstalować i skonfigurować program PowerShell, można użyć skryptu, który znajduje się w artykule "Get i uruchomić przy użyciu programu PowerShell". 
+Azure stosu zgodne Azure moduły programu PowerShell są wymagane do pracy z stosu Azure. W tym artykule przedstawiono kroki wymagane do zainstalowania programu PowerShell dla usługi Azure stosu. Korzystając z procedury opisanej w tym artykule z Development Kit stosu Azure lub z systemem Windows klienta zewnętrznych po nawiązaniu połączenia za pośrednictwem sieci VPN.
+
+Ten artykuł zawiera szczegółowe instrukcje dotyczące instalowania programu PowerShell. Jednak jeśli chcesz szybko zainstalować i skonfigurować program PowerShell, można użyć skryptu zawarte w artykule "Get i uruchomić przy użyciu programu PowerShell".
 
 > [!NOTE]
 > Poniższe kroki wymagają programu PowerShell 5.0. Aby sprawdzić swoją wersję, uruchom $PSVersionTable.PSVersion i porównaj "Główny" numer wersji.
@@ -41,24 +43,22 @@ Set-PSRepository `
 
 Przed zainstalowaniem wersji wymagane, upewnij się, odinstalowanie żadnych istniejących modułów programu Azure PowerShell. Można je odinstalować, wykonując jedną z następujących dwóch metod:
 
-* Aby odinstalować istniejące moduły programu PowerShell, zaloguj się development Kit lub do klienta zewnętrznego systemu Windows Jeśli planujesz ustanowić połączenie sieci VPN. Zamknij wszystkie aktywne sesje programu PowerShell i uruchom następujące polecenie: 
+* Aby odinstalować istniejące moduły programu PowerShell, zaloguj się development Kit lub do klienta zewnętrznego systemu Windows Jeśli planujesz ustanowić połączenie sieci VPN. Zamknij wszystkie aktywne sesje programu PowerShell i uruchom następujące polecenie:
 
    ```powershell
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* Zaloguj się development Kit lub do systemu Windows klienta zewnętrznego Jeśli planujesz ustanowić połączenie sieci VPN. Usuń wszystkie foldery, które zaczynają się "Azure" z `C:\Program Files (x86)\WindowsPowerShell\Modules` i `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` folderów. Usunięcie tych folderów usuwa wszystkie istniejące moduły programu PowerShell z "AzureStackAdmin" i "globalny" użytkownik zakresów. 
+* Zaloguj się development Kit lub do systemu Windows klienta zewnętrznego Jeśli planujesz ustanowić połączenie sieci VPN. Usuń wszystkie foldery, które zaczynają się "Azure" z `C:\Program Files (x86)\WindowsPowerShell\Modules` i `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` folderów. Usunięcie tych folderów usuwa wszystkie istniejące moduły programu PowerShell z "AzureStackAdmin" i "globalny" użytkownik zakresów.
 
-W poniższych sekcjach opisano kroki wymagane do zainstalowania programu PowerShell dla usługi Azure stosu. Na stosie Azure, która jest świadczona w połączone, częściowo połączone lub w scenariuszu bez połączenia można zainstalować programu PowerShell. 
+W poniższych sekcjach opisano kroki wymagane do zainstalowania programu PowerShell dla usługi Azure stosu. Na stosie Azure, która jest świadczona w połączone, częściowo połączone lub w scenariuszu bez połączenia można zainstalować programu PowerShell.
 
 ## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Instalowanie programu PowerShell w scenariuszu połączonych (z połączeniem internetowym)
 
 Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga **2017-03-09-profilu** profilu wersji interfejsu API, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. Aby dowiedzieć się więcej o profilach wersji interfejsu API i udostępniane przez nich polecenia cmdlet, zapoznaj się [zarządzania profilami wersji interfejsu API](azure-stack-version-profiles-powershell.md). Oprócz modułów AzureRM należy również zainstalować moduł Azure PowerShell dotyczące stosu. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na deweloperskiej stacji roboczej:
 
-
-
   ```powershell
-  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
+  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
   Install-Module `
     -Name AzureRm.BootStrapper
 
@@ -77,6 +77,7 @@ Aby sprawdzić instalację, uruchom następujące polecenie:
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
+
   Jeśli instalacja się powiodła, moduły AzureRM i stosu Azure są wyświetlane w danych wyjściowych.
 
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Instalowanie programu PowerShell w scenariuszu częściowo połączonych lub rozłączona (ograniczone z łącznością z Internetem)
@@ -102,12 +103,12 @@ W scenariuszu bez połączenia lub częściowo połączonych musi najpierw Pobie
      -Name AzureStack `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.11 
+     -RequiredVersion 1.2.11
    ```
 
 2. Skopiować pobranych pakietów przez urządzenie USB.
 
-3. Zaloguj się w zestawie i skopiuj pakiety z urządzenia USB do lokalizacji w zestawie. 
+3. Zaloguj się w zestawie i skopiuj pakiety z urządzenia USB do lokalizacji w zestawie.
 
 4. Teraz musisz zarejestrować tej lokalizacji jako repozytorium domyślne i zainstalować moduły AzureRM i AzureStack z tego repozytorium:
 
@@ -125,11 +126,11 @@ W scenariuszu bez połączenia lub częściowo połączonych musi najpierw Pobie
      -Repository $RepoName
 
    Install-Module AzureStack `
-     -Repository $RepoName 
+     -Repository $RepoName
    ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobieranie narzędzia Azure stosu z usługi GitHub](azure-stack-powershell-download.md)  
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)  
-* [Zarządzanie profilami wersji interfejsu API Azure stosu](azure-stack-version-profiles-powershell.md)  
+* [Pobieranie narzędzia Azure stosu z usługi GitHub](azure-stack-powershell-download.md)
+* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)
+* [Zarządzanie profilami wersji interfejsu API Azure stosu](azure-stack-version-profiles-powershell.md)

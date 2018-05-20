@@ -1,23 +1,23 @@
 ---
 title: Azure utworzyć elementu interfejsu użytkownika definicji | Dokumentacja firmy Microsoft
 description: W tym artykule opisano elementy do użycia podczas konstruowania definicji interfejsu użytkownika portalu Azure.
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: cbfc9c02cbde8bcf9a253144ff41497676c98f13
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0a69f46294fc370b1eb403440af5bb3c25ef995d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="createuidefinition-elements"></a>Elementy CreateUiDefinition
 W tym artykule opisano schematu i właściwości dla wszystkich elementów obsługiwanych CreateUiDefinition. 

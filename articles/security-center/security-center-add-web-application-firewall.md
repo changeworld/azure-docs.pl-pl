@@ -1,31 +1,31 @@
 ---
-title: "Dodawanie zapory aplikacji sieci web w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure **Dodawanie zapory aplikacji sieci web** i **Finalizuj ochronę aplikacji**."
+title: Dodawanie zapory aplikacji sieci web w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure **Dodawanie zapory aplikacji sieci web** i **Finalizuj ochronę aplikacji**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 05/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 4454d18893d698e49f118048eca0bfc94df315a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e28a1f6b865dae3abe2cb9dfac2921c6a2034491
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Dodawanie zapory aplikacji sieci web w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure może zalecić Dodawanie zapory aplikacji sieci web (WAF) z partnerem firmy Microsoft w celu zabezpieczenia aplikacji sieci web. Ten dokument przeprowadzi Cię przez przykładem zastosowania tego zalecenia.
 
 Wszelkie publicznego połączonej adresu IP (IP poziomie wystąpienia lub IP równoważenia obciążenia) zawierający sieciową grupę zabezpieczeń skojarzoną z portami Otwórz przychodzący sieci web (80,443) jest wyświetlane zalecenie zapory aplikacji sieci Web.
 
-Centrum zabezpieczeń zaleca się zainicjowanie obsługi zapory aplikacji sieci Web pomagających chronić przed atakami przeznaczonych dla aplikacji sieci web na maszynach wirtualnych i zewnętrznego środowiska usługi App Service. Środowisko aplikacji (ASE) jest [Premium](https://azure.microsoft.com/pricing/details/app-service/) opcji plan usługi aplikacji Azure, która udostępnia środowisko pełni izolowanym środowisku, aby bezpiecznie pracować z aplikacjami usługi App service. Aby dowiedzieć się więcej na temat ASE, zobacz [dokumentację środowiska usługi aplikacji](../app-service/environment/intro.md).
+Centrum zabezpieczeń zaleca obsługi administracyjnej zapory aplikacji sieci Web pomagających chronić przed atakami przeznaczonych dla aplikacji sieci web na maszynach wirtualnych i na usługi aplikacji zewnętrznych środowisk (ASE) wdrożone w obszarze [izolowany](https://azure.microsoft.com/pricing/details/app-service/windows/) plan usługi. Plan Izolowany umożliwia hostowanie aplikacji w prywatnym dedykowanym środowisku platformy Azure. Jest to doskonałe rozwiązanie w przypadku aplikacji, które wymagają bezpiecznego połączenia z siecią lokalną lub dodatkowej wydajności i skali. Oprócz aplikacji w izolowanym środowisku aplikacja musi mieć zewnętrzny adres IP usługi równoważenia obciążenia. Aby dowiedzieć się więcej na temat ASE, zobacz [dokumentację środowiska usługi aplikacji](../app-service/environment/intro.md).
 
 > [!NOTE]
 > Informacje na temat usługi przedstawiono w tym dokumencie za pomocą przykładowego wdrożenia.  Ten dokument nie jest przewodnik krok po kroku.

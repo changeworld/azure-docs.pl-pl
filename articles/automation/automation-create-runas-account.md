@@ -7,13 +7,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 03a5cf6fd049e63616155a87bf112636b74be0a1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: fd53ee7634769381f18e359762fa72dbba435a00
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizowanie uwierzytelniania konta usługi Automation przy użyciu kont Uruchom jako 
 Istniejące konto usługi Automation można zaktualizować w witrynie Azure Portal lub przy użyciu programu PowerShell, gdy:
@@ -287,6 +287,6 @@ W portalu Azure wybierz **subskrypcje** i wybierz subskrypcję konta automatyzac
 
 Aby dodać nazwy głównej usługi do grupy zasobów, wybierz grupę zasobów na platformie Azure, portalu i wybierz pozycję **(IAM) kontroli dostępu**. Wybierz **Dodaj**, spowoduje to otwarcie **dodać uprawnienia** strony. Aby uzyskać **roli**, wybierz pozycję **współautora**. W **wybierz** tekstu wpisz nazwę główną usługi dla konta Uruchom jako i wybierz go z listy. Kliknij przycisk **Zapisz**, aby zapisać zmiany. W tym dla grup zasobów chcesz nadać automatyzacji Uruchom jako platformy Azure usługa główna dostęp do.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać więcej informacji dotyczących nazwy główne usług, zobacz [obiekty aplikacji i nazwy głównej usługi](../active-directory/active-directory-application-objects.md).
 * Aby uzyskać więcej informacji na temat certyfikatów i usług Azure, zobacz [Omówienie certyfikatów dla usług w chmurze Azure](../cloud-services/cloud-services-certs-create.md).

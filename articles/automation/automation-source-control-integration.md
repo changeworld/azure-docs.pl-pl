@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 29ec32c933f3dbe07a844bd99a1f5aa3fa57d61b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: a75167b6973d5cce8497c07e21d17ad071290f1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 Integracja kontroli źródła umożliwia kojarzenie elementów runbook do Twojego konta automatyzacji do repozytorium GitHub kontroli źródła. Kontroli źródła pozwala łatwo współpracować z zespołem śledzenia zmian i przywrócenie wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęziach w kontroli źródła do kont automatyzacji rozwoju, testowym lub produkcyjnym, co ułatwia promowanie kod, który był testowany w środowisku projektowania do produkcji automatyzacji konto.

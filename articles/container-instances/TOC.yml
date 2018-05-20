@@ -21,6 +21,12 @@
       href: container-instances-tutorial-prepare-acr.md
     - name: 3 — Wdrażanie aplikacji
       href: container-instances-tutorial-deploy-app.md
+- name: Przykłady
+  items:
+    - name: Przykłady kodu
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+    - name: Szablony usługi Resource Manager
+      href: container-instances-samples-rm.md
 - name: Pojęcia
   items:
     - name: Limity przydziału i limity regionalne
@@ -31,22 +37,28 @@
       href: container-instances-container-groups.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Wdrażanie grup z wieloma kontenerami
-      href: container-instances-multi-container-group.md
-    - name: Wdrażanie z usługi Azure Container Registry
-      href: container-instances-using-azure-container-registry.md
-    - name: Wykonywanie polecenia (exec)
-      href: container-instances-exec.md
-    - name: Uruchamianie zadań konteneryzowanych
-      href: container-instances-restart-policy.md
-    - name: Ustawianie zmiennych środowiskowych (env)
-      href: container-instances-environment-variables.md
-    - name: Rozwiązywanie problemów z wdrożeniami
-      href: container-instances-troubleshooting.md
-    - name: Agenci kompilacji usługi Jenkins w usłudze ACI
-      href: container-instances-jenkins.md
-    - name: Monitorowanie użycia procesora i pamięci
-      href: container-instances-monitor.md
+    - name: Wdrażanie
+      items:
+        - name: Wdrażanie grup z wieloma kontenerami
+          href: container-instances-multi-container-group.md
+        - name: Wdrażanie z usługi Azure Container Registry
+          href: container-instances-using-azure-container-registry.md
+        - name: Ustawianie zmiennych środowiskowych (env)
+          href: container-instances-environment-variables.md
+        - name: Rozwiązywanie problemów z wdrożeniami
+          href: container-instances-troubleshooting.md
+    - name: Zarządzanie
+      items:
+        - name: Wykonywanie polecenia (exec)
+          href: container-instances-exec.md
+        - name: Monitorowanie użycia procesora i pamięci
+          href: container-instances-monitor.md
+    - name: Uruchamianie obciążeń
+      items:
+        - name: Uruchamianie zadań konteneryzowanych
+          href: container-instances-restart-policy.md
+        - name: Agenci kompilacji usługi Jenkins w usłudze ACI
+          href: container-instances-jenkins.md
     - name: Konfigurowanie woluminów danych
       items:
         - name: Azure Files

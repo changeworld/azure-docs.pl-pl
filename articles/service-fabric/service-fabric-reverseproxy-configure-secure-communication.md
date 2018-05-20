@@ -1,23 +1,23 @@
 ---
-title: "Sieć szkieletowa usług Azure odwrotna bezpiecznej komunikacji serwera proxy | Dokumentacja firmy Microsoft"
+title: Sieć szkieletowa usług Azure odwrotna bezpiecznej komunikacji serwera proxy | Dokumentacja firmy Microsoft
 description: Skonfiguruj zwrotnego serwera proxy, aby komunikacja zabezpieczona na trasie.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 568f9638c59282bcd7d3fae058a1588a889c22dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 237a72fd282b29d3032675ccf3fb350f8db59ef7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Połączyć z usługą bezpieczny z zwrotnego serwera proxy
 
@@ -190,7 +190,7 @@ Jeśli klient nie przedstawić certyfikat, zwrotny serwer proxy przekazuje pusty
 > Zwrotny serwer proxy jest tylko usługa przesyłania dalej. Nie będzie wykonywać żadnych weryfikacji certyfikatu klienta.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zapoznaj się [Konfiguruj zwrotnego serwera proxy do nawiązania bezpiecznego usług](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) dla usługi Azure Resource Manager przykłady szablonu, aby skonfigurować zabezpieczenia zwrotny serwer proxy przy użyciu certyfikatu innej usługi opcji weryfikacji.
 * Zobacz przykład protokołu HTTP do komunikacji między usługami w [przykładowy projekt w witrynie GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Zdalne wywołania procedur z usług zdalnych niezawodne usługi](service-fabric-reliable-services-communication-remoting.md)

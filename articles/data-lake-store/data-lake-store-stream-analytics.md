@@ -1,24 +1,22 @@
 ---
-title: "Strumienia danych z usługi Stream Analytics do usługi Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi Azure Stream Analytics strumienia danych do usługi Azure Data Lake Store"
+title: Strumienia danych z usługi Stream Analytics do usługi Data Lake Store | Dokumentacja firmy Microsoft
+description: Za pomocą usługi Azure Stream Analytics strumienia danych do usługi Azure Data Lake Store
 services: data-lake-store,stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ff59957cf7700af79425aa005444a135b7ee098
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Stream data from Azure Storage Blob into Data Lake Store using Azure Stream Analytics (Strumieniowe przesyłanie danych z obiektu blob usługi Azure Storage do usługi Data Lake Store za pomocą usługi Azure Stream Analytics)
 W tym artykule dowiesz się, jak używać usługi Azure Data Lake Store jako dane wyjściowe zadania usługi analiza strumienia Azure. W tym artykule przedstawiono prosty scenariusz, który będzie odczytywać dane z obiektu blob magazynu Azure (dane wejściowe) i zapisuje dane do usługi Data Lake Store (dane wyjściowe).
@@ -96,7 +94,7 @@ Rozpoczyna się od utworzenia zadanie usługi Stream Analytics, która zawiera �
     
     Kliknij przycisk **Utwórz**. Portal teraz dodaje dane wyjściowe i testuje połączenie do niego.
     
-## <a name="run-the-stream-analytics-job"></a>Uruchom zadanie usługi analiza strumienia
+## <a name="run-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
 1. Aby uruchomić zadanie usługi Stream Analytics, należy uruchomić kwerendę, **zapytania** kartę. W tym samouczku, można uruchomić przykładowe zapytanie, zastępując symbole zastępcze zadania danych wejściowych i wyjściowych aliasy, jak pokazano w poniższym zrzucie ekranu.
 

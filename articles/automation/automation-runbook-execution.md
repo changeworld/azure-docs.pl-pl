@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/08/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a6a429b85e0d7522e5840a0ad020d12f4f4d471e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ff58e22f8b9b837ec272cd2cd6193da80a7b718e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook automatyzacji Azure
 
@@ -47,7 +47,7 @@ W poniższej tabeli opisano różne stany, które są możliwe w dla zadania.
 | Uruchomiona, oczekiwania dla zasobów |Zadanie zostało zwolnione, ponieważ osiągnął [odpowiedni udział](#fair-share) limit. Jest wznawiana wkrótce z ostatniego punktu kontrolnego. |
 | Zatrzymano |Zadanie zostało zatrzymane przez użytkownika przed jej ukończeniem. |
 | Zatrzymywanie |System jest w trakcie zatrzymywania zadania. |
-| Wstrzymano |Zadanie zostało zawieszone przez użytkownika przez system lub za pomocą polecenia w elemencie runbook. Zawieszone zadanie można uruchomić ponownie i wznowić z ostatniego punktu kontrolnego lub od początku elementu runbook, jeśli nie ma on punkty kontrolne. Element runbook jest tylko wstrzymane przez system, po wystąpieniu wyjątku. Domyślnie jest równa ErrorActionPreference **Kontynuuj**, co oznacza, że zadanie będzie uruchomione w przypadku wystąpienia błędu. Jeśli ustawiono tę zmienną preferencji **zatrzymać**, a następnie wstrzymuje zadanie w przypadku wystąpienia błędu. Dotyczy [graficzny i przepływ pracy programu PowerShell elementów runbook](automation-runbook-types.md) tylko. |
+| Zawieszone |Zadanie zostało zawieszone przez użytkownika przez system lub za pomocą polecenia w elemencie runbook. Zawieszone zadanie można uruchomić ponownie i wznowić z ostatniego punktu kontrolnego lub od początku elementu runbook, jeśli nie ma on punkty kontrolne. Element runbook jest tylko wstrzymane przez system, po wystąpieniu wyjątku. Domyślnie jest równa ErrorActionPreference **Kontynuuj**, co oznacza, że zadanie będzie uruchomione w przypadku wystąpienia błędu. Jeśli ustawiono tę zmienną preferencji **zatrzymać**, a następnie wstrzymuje zadanie w przypadku wystąpienia błędu. Dotyczy [graficzny i przepływ pracy programu PowerShell elementów runbook](automation-runbook-types.md) tylko. |
 | Wstrzymywanie |System próbuje zawiesić zadanie na żądanie użytkownika. Element runbook musi dotrzeć do swojego następnego punktu kontrolnego, zanim może zostać zawieszone. Jeśli przekazany już ostatni punkt kontrolny, a następnie jego zakończenie przed może zostać zawieszone. Dotyczy [graficzny i przepływ pracy programu PowerShell elementów runbook](automation-runbook-types.md) tylko. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Wyświetlanie stanu zadań z portalu Azure
@@ -146,6 +146,6 @@ Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pier
 
 Podczas tworzenia elementu runbook, należy upewnić się, że czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza trzy godziny. Należy dodać punkty kontrolne do elementu runbook, aby upewnić się, że nie osiągnięciu tego limitu trzech godzin lub podzielić long długotrwałych operacji. Na przykład element runbook może wykonywać indeksowanie na duże bazy danych SQL. Jeśli operacja jednego nie zostanie ukończone przed upływem limitu odpowiedni udział, to zadanie jest zwalnianie i ponownego uruchomienia od początku. W takim przypadku należy podzielić operacji indeksowanie w wielu kroków, takich jak indeksowanie jedna tabela w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadanie, po ostatniej operacji, aby zakończyć.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat różnych metod, które mogą służyć do uruchamiania elementu runbook automatyzacji Azure, zobacz [uruchamianie elementu runbook automatyzacji Azure](automation-starting-a-runbook.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6cc35697573ae2997f289f67c7867d9c522149be
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
 
@@ -92,7 +92,7 @@ Nowego modelu cenowego upraszcza analizy dzienników i usługi Application Insig
 Szacowanie kosztów pokazuje wpływu tych zmian.
 
 > [!WARNING]
-> Ważna uwaga do wdrożenia za pomocą usługi Azure Resource Manager lub programu PowerShell w tym miejscu [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) lub [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) model cenowy zostały przeniesione do nowej subskrypcji. Jeśli określisz warstwy/planu cenowego innych niż "pergb2018" analizy dzienników lub "Basic" dla usługi Application Insights, a nie kończą się niepowodzeniem wdrożenia z powodu określania nieprawidłowy cen warstwy/plan go powiedzie się **, ale będzie używać tylko prawidłowe plan/warstwy cenowej**. 
+> Ważna uwaga do wdrożenia za pomocą usługi Azure Resource Manager lub programu PowerShell w tym miejscu [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) lub [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) model cenowy zostały przeniesione do nowej subskrypcji. Jeśli określisz warstwy/planu cenowego innych niż "pergb2018" analizy dzienników lub "Basic" dla usługi Application Insights, a nie kończą się niepowodzeniem wdrożenia z powodu określania nieprawidłowy cen warstwy/plan go powiedzie się **, ale będzie używać tylko prawidłowe plan/warstwy cenowej** (nie dotyczy organizacji dziennika analizy bezpłatnej warstwy, gdzie zostanie wygenerowany komunikat nieprawidłowy warstwy cenowej).
 >
 
 ## <a name="moving-to-the-new-pricing-model"></a>Przenoszenie do nowego modelu cenowego

@@ -4,13 +4,13 @@ description: Zawiera omówienie obliczeń oceny w usłudze Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/02/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: f3ac9c328db1130ea25ac63170ee7de35fb67d16
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 

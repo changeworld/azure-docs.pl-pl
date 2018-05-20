@@ -1,24 +1,24 @@
 ---
-title: "Określ ustawienia metryki i umieszczanie w Azure mikrousług | Dokumentacja firmy Microsoft"
-description: "Opisujące usługi Service Fabric, określając metryki, ograniczenia umieszczania i inne zasady umieszczania."
+title: Określ ustawienia metryki i umieszczanie w Azure mikrousług | Dokumentacja firmy Microsoft
+description: Opisujące usługi Service Fabric, określając metryki, ograniczenia umieszczania i inne zasady umieszczania.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0ae4e874d0fd0922295a4ec7ad719a0a1fb108c8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16e19a02bf12e30e81eb1743fc637bce435df914
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurowanie ustawień Menedżera zasobów klastra dla usługi sieci szkieletowej usług
 Menedżer zasobów klastra sieci szkieletowej usług umożliwia szczegółową kontrolę nad zasady każdego użytkownika, nazwę usługi. Każda usługa o nazwie można określić zasady jak powinna zostać przydzielona w klastrze. Każda usługa o nazwie również zdefiniować zestaw metryki, którą chce do raportu, w tym, jak ważne są do tej usługi. Konfigurowanie usług dzieli na trzy różne zadania:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego Menedżera ruchu
 
@@ -30,7 +30,7 @@ Aby Skonfiguruj punkt końcowy monitorowania, należy określić następujące u
 
 * **Protokół**. Wybierz pozycję HTTP, HTTPS lub TCP jako protokół usługi Traffic Manager używany podczas badania punktu końcowego w celu sprawdzenia jej kondycji. Monitorowanie HTTPS nie sprawdza, czy obowiązuje certyfikat SSL — go tylko sprawdza, czy certyfikat jest obecny.
 * **Port**. Wybierz port używany dla żądania.
-* **Ścieżka**. To ustawienie konfiguracji jest prawidłowy tylko w przypadku protokołów HTTP i HTTPS, w których Ścieżka określająca ustawienie jest wymagane. Zapewnia to ustawienie dla monitorowania powoduje błąd protokołu TCP. W przypadku protokołu TCP nadaj względną ścieżkę i nazwę strony sieci Web lub plik, którego monitorowanie ma dostęp. Ukośnika (/) jest prawidłowym wpisem dla ścieżki względnej. Ta wartość oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
+* **Ścieżka**. To ustawienie konfiguracji jest prawidłowy tylko w przypadku protokołów HTTP i HTTPS, w których Ścieżka określająca ustawienie jest wymagane. Zapewnia to ustawienie dla monitorowania powoduje błąd protokołu TCP. Dla protokołu HTTP i HTTPS należy podać względną ścieżkę i nazwę strony sieci Web lub plik, którego monitorowanie ma dostęp. Ukośnika (/) jest prawidłowym wpisem dla ścieżki względnej. Ta wartość oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
 * **Interwał sondowania**. Ta wartość określa, jak często punkt końcowy jest sprawdzany pod kątem kondycji od agenta sondowania Menedżera ruchu. Można określić w tym miejscu dwóch wartości: 30 sekund (zwykłego sondowania) i 10 sekund (fast sondowanie). Jeśli wartości nie są dostarczane, profil ustawia domyślną wartość 30 sekund. Odwiedź stronę [cennik usługi Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) strony, aby dowiedzieć się więcej o cenach sondowania szybkie.
 * **Liczba błędów dopuszczalne**. Ta wartość określa, ile błędów sondowania agentem menedżera ruchu zaakceptować przed oznaczeniem określonego punktu końcowego swój stan jako niezdrowy. Wartość może należeć do zakresu od 0 do 9. Wartość 0 oznacza pojedynczego uszkodzenia monitorowania może spowodować tego punktu końcowego może być oznaczony jako w złej kondycji. Jeśli nie określono wartości, używa domyślna wartość 3.
 * **Limit czasu monitorowania**. Ta właściwość określa ilość czasu, który agenta menedżera ruchu sondowania powinien zaczekać na uwzględnieniu który Sprawdź awarii, gdy sonda sprawdzania kondycji są wysyłane do punktu końcowego. Interwał sondowania wynosi 30 sekund, można ustawić wartość limitu czasu od 5 do 10 sekund. Jeśli nie określono wartości, używa wartość domyślną równą 10 sekund. Interwał sondowania wynosi 10 sekund, można ustawić wartość limitu czasu od 5 do 9 sekund. Jeśli wartość limitu czasu nie zostanie określona, używa wartość domyślną 9 sekund.
@@ -90,7 +90,7 @@ Stan monitora profilu jest kombinacją stan skonfigurowanego profilu i punktu ko
 | --- | --- | --- | --- |
 | Disabled (Wyłączony) |&lt;wszelkie&gt; lub profil z określonych punktów końcowych. |Disabled (Wyłączony) |Profil został wyłączony. |
 | Enabled (Włączony) |Stan co najmniej jeden punkt końcowy jest znacznie mniej wydajna. |Obniżono poziom |Przejrzyj wartości stanu poszczególnych punktu końcowego, aby ustalić, które punkty końcowe wymagać dalszych działań. |
-| Enabled (Włączony) |Stan co najmniej jeden punkt końcowy jest w trybie Online. Punkty końcowe nie będą miały stan obniżony. |Online |Usługa akceptuje ruch. Są wymagane żadne dalsze akcje. |
+| Enabled (Włączony) |Stan co najmniej jeden punkt końcowy jest w trybie Online. Punkty końcowe nie będą miały stan obniżony. |Online |Usługa akceptuje ruch. Nie są wymagane żadne dalsze działania. |
 | Enabled (Włączony) |Stan co najmniej jeden punkt końcowy jest CheckingEndpoint. Punkty końcowe nie są w stanie Online lub obniżony. |CheckingEndpoints |Ten stan przejścia występuje, gdy profilu, jeśli utworzone lub włączone. Kondycja punktu końcowego jest sprawdzany po raz pierwszy. |
 | Enabled (Włączony) |Stany wszystkie punkty końcowe w profilu są wyłączone lub zatrzymana lub profil nie ma zdefiniowanych punktów końcowych. |Nieaktywna |Punkty końcowe nie są aktywne, ale profil jest nadal włączony. |
 

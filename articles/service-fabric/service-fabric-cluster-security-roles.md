@@ -1,24 +1,24 @@
 ---
-title: "Zabezpieczenia klastra usługi sieć szkieletowa: role klient | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano dwa klienta role i uprawnienia do ról."
+title: 'Zabezpieczenia klastra usługi sieć szkieletowa: role klient | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano dwa klienta role i uprawnienia do ról.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: coreysa
-editor: 
+editor: ''
 ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: e71275d437aabdd5699f0d462fddc5a190ff19db
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 39b77813e3494e809b92738924544e196d89a166
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Kontrola dostępu oparta na rolach dla klientów sieci szkieletowej usług
 Sieć szkieletowa usług Azure obsługuje dwa typy kontroli różny dostęp dla klientów, które są podłączone do klastra usługi sieć szkieletowa: administratora i użytkownika. Kontrola dostępu umożliwia administratora klastrów, aby ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników, co klaster bardziej bezpieczne.  

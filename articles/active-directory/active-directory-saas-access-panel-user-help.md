@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0604007255d829cab0502e93895ca541da3b93a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Rozwiązywanie problemów z uzyskiwanie dostępu i korzystania z portalu Moje aplikacje
 
@@ -57,10 +57,11 @@ Sprawdź, upewnij się, że spełniają następujące wymagania dotyczące przeg
 - **Firefox 26.0 lub nowsze**: w systemie Windows XP SP2 lub nowszy i Mac OS X 10.6 lub później.
 - **Internet Explorer 11**: w systemie Windows 7 lub nowszy (obsługa ograniczona).
 
-Możesz również pobrać rozszerzenia dla programu Chrome i krawędzi bezpośrednio z następujących witryn:
+Możesz również pobrać rozszerzenia bezpośrednio z następujących witryn:
 
-- [Rozszerzenia programu Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozszerzenie krawędzi](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Krawędzi](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Jeśli zainstalowano rozszerzenia i nadal występują problemy, wypróbuj następujące metody:
 

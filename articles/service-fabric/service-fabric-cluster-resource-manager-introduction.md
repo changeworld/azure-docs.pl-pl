@@ -1,24 +1,24 @@
 ---
-title: "Wprowadzenie do usługi Menedżer zasobów klastra sieci szkieletowej | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów."
+title: Wprowadzenie do usługi Menedżer zasobów klastra sieci szkieletowej | Dokumentacja firmy Microsoft
+description: Wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżera zasobów klastra sieci szkieletowej usług
 Tradycyjnie zarządzania systemów informatycznych lub usługi online przeznaczone przypisywanie określonych fizycznych lub maszynach wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowane pod jako warstw. Może to być warstwy "web" i "dane" lub "Magazyn" warstwy. Aplikacje byłyby warstwy obsługi wiadomości, gdzie żądania przepływ i wylogowanie, a także zestaw maszyn dedykowane do buforowania. Każdej warstwa lub typ obciążenia miała określone maszyny do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilku otrzymano bazy danych. Jeśli konkretny typ obciążenie spowodowane maszyny, służący do Uruchom zbyt gorących więcej komputerów w tej samej konfiguracji jest dodawana do tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zwykle spowodowałoby zastąpienie maszyn o większych maszyn. Łatwe. Maszyna nie powiodło się, część ogólnej aplikacji był uruchamiany na mniejsze zdolności dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).
@@ -43,7 +43,7 @@ Menedżer zasobów klastra to składnik systemu, który obsługuje aranżacji w 
 2. Optymalizowanie środowiska
 3. Ułatwienia z innymi procesami
 
-Aby zobaczyć, jak Menedżer zasobów klastra działa, obejrzyj następujące wideo Microsoft Virtual Academy:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
+Aby zobaczyć, jak Menedżer zasobów klastra działa, obejrzyj następujące wideo Microsoft Virtual Academy: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
 <img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -56,8 +56,8 @@ Niektóre z tych strategii są interesujące, Menedżer zasobów klastra sieci s
 
 Menedżer zasobów klastra jest odpowiedzialny za przeniesienie usługom, zawiera zestaw różnych funkcji w porównaniu do czy pozyskane w Usługa równoważenia obciążenia sieciowego. Jest to spowodowane moduły równoważenia obciążenia sieciowego dostarczania ruchu sieciowego do, w którym usługi już są, nawet jeśli w tej lokalizacji nie jest idealnym rozwiązaniem do uruchamiania samej usługi. Menedżer zasobów klastra sieci szkieletowej usług zostają różni strategii za zapewnienie, że zasoby w klastrze są wydajnie wykorzystywane.
 
-## <a name="next-steps"></a>Następne kroki
-- Aby uzyskać informacje dotyczące przepływu architektury i informacji w ramach Menedżera zasobów klastra, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-architecture.md)
+## <a name="next-steps"></a>Kolejne kroki
+- Aby uzyskać informacje dotyczące przepływu architektury i informacji w ramach Menedżera zasobów klastra, zapoznaj się [w tym artykule ](service-fabric-cluster-resource-manager-architecture.md)
 - Menedżer zasobów klastra ma wiele opcji opisujące klastra. Aby dowiedzieć się więcej na temat metryki, zapoznaj się w tym artykule na [opisujące klastra sieci szkieletowej usług](service-fabric-cluster-resource-manager-cluster-description.md)
 - Aby uzyskać więcej informacji na temat konfigurowania usługi [informacje na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
 - Metryki są zarządzaniu Menedżer zasobów klastra sieci szkieletowej usług konsumenckich i pojemności w klastrze. Aby dowiedzieć się więcej o metryki i sposobach ich konfigurowania wyewidencjonowanie [w tym artykule](service-fabric-cluster-resource-manager-metrics.md)

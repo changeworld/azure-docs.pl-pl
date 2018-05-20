@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9246fccb1713f69d2c6c655b09f0daf51055596f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b999792876f82de9500dccf9e6263f85e3e3105e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Ruch przychodzący HTTPS z usługi Azure Kubernetes (AKS)
 
@@ -38,7 +38,7 @@ helm repo update
 Instalowanie kontrolera wejściowych NGINX. Instalacja kontrolera w `kube-system` przestrzeni nazw, to ustawienie można zmodyfikować do przestrzeni nazw wybranych przez użytkownika.
 
 ```
-helm install stable/nginx-ingress --namespace kube-system
+helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 Podczas instalacji Azure publiczny adres IP jest tworzona dla kontrolera wejściowych. Aby uzyskać publicznego adresu IP, użyj polecenia kubectl get usługi. Może upłynąć trochę czasu, adres IP ma być przypisany do usługi.

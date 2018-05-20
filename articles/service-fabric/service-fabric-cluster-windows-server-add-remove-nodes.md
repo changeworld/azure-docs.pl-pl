@@ -1,24 +1,24 @@
 ---
-title: "Dodaj lub usuń węzły do klastra usługi sieć szkieletowa autonomiczny | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać lub usunąć węzły do klastra usługi sieć szkieletowa usług Azure na fizyczne lub maszyny wirtualnej z systemem Windows Server, który może być lokalnym lub w dowolnej chmury."
+title: Dodaj lub usuń węzły do klastra usługi sieć szkieletowa autonomiczny | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać lub usunąć węzły do klastra usługi sieć szkieletowa usług Azure na fizyczne lub maszyny wirtualnej z systemem Windows Server, który może być lokalnym lub w dowolnej chmury.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 252dcdf0ff9e1fecd6665808bfe7978a4417018b
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: b1ffe3510cf4f5e73b05572a482f49d529fca60d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Dodawanie lub usuwanie węzłów do autonomicznej klastra sieci szkieletowej usług w systemie Windows Server
 Po utworzeniu [utworzone autonomicznej klastra sieci szkieletowej usług na komputerach z systemem Windows Server](service-fabric-cluster-creation-for-windows-server.md)musisz dodać lub usunąć węzły do klastra i potrzeby (biznesowe) mogą ulec zmianie. Ten artykuł zawiera szczegółowy opis kroków można to osiągnąć. Należy pamiętać, że dodawania i usuwania węzła funkcjonalność nie jest obsługiwana w klastrach rozwoju lokalnego.
@@ -57,7 +57,7 @@ Po utworzeniu [utworzone autonomicznej klastra sieci szkieletowej usług na komp
     Można monitorować postępy uaktualniania w narzędziu Service Fabric Explorer. Alternatywnie można uruchomić [Get ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Dodaj węzły do klastrów, skonfigurowaną przy użyciu usługi zarządzane przez grupę zabezpieczeń systemu Windows
-W przypadku klastrów skonfigurowano Account(gMSA) usług zarządzanych grupy (https://technet.microsoft.com/library/hh831782.aspx) przy użyciu uaktualniania programu configuration można dodać nowego węzła:
+W przypadku klastrów skonfigurowano Account(gMSA) usług zarządzanych grupy (https://technet.microsoft.com/library/hh831782.aspx), można dodać nowego węzła przy użyciu uaktualnienia konfiguracji:
 1. Uruchom [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) na żadnym z istniejących węzłów, aby pobrać najnowszy plik konfiguracji i dodać szczegółowe informacje o nowym węźle ma zostać dodany w sekcji "Węzłów". Upewnij się, że nowy węzeł jest częścią tego samego konta zarządzane przez grupę. To konto powinno mieć uprawnienia administratora na wszystkich komputerach.
 
     ```
@@ -127,7 +127,7 @@ Przed usunięciem typu węzła, sprawdź czy ma żadnych węzłów odwołuje si�
 Zastąpienie węzłów głównej powinny być wykonywane jeden węzeł po kolei, zamiast usuwania, a następnie dodanie w partiach.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Ustawienia konfiguracji dla autonomicznych klastra systemu Windows](service-fabric-cluster-manifest.md)
 * [Secure autonomiczny klastra w systemie Windows przy użyciu X509 certyfikatów](service-fabric-windows-cluster-x509-security.md)
 * [Tworzenie klastra usługi sieć szkieletowa autonomiczny z systemem Windows maszynach wirtualnych platformy Azure](service-fabric-cluster-creation-with-windows-azure-vms.md)

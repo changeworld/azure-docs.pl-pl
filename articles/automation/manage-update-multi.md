@@ -7,13 +7,13 @@ ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/20/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae5d2e38f11abfabda067e9affbf81159002cb99
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -186,6 +186,6 @@ Aby wyświetlić strumień zadań elementu runbook, który zarządza wdrożeniem
 
 Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem, wybierz pozycję **Błędy**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat zarządzania aktualizacjami — takie jak dzienniki, dane wyjściowe i komunikaty o błędach, zobacz [rozwiązania do zarządzania aktualizacji w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).

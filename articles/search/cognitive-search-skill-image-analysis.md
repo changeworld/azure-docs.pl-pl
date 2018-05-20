@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f4b0758ed6f1a0d11aeb1061cac34f1e9084ef53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b426fd253b436c71235f006cc41881f0c0c67703
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Umiejętności kognitywnych analizy obrazu
 
@@ -39,9 +39,9 @@ Parametry jest rozróżniana wielkość liter.
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
 
-| Dane wejściowe     | Opis |
-|--------------------|-------------|
-| url | Unikatowy identyfikator dla obrazu. Może to być adres URL sieci web lub lokalizacji magazynu obiektów blob.|
+| Wprowadź nazwę      | Opis                                          |
+|---------------|------------------------------------------------------|
+| Obraz         | Typ złożony. Obecnie tylko działania z polem "/ dokumentu/normalized_images" utworzonego przez indeksator obiektów Blob platformy Azure po ```imageAction``` ma ustawioną wartość ```generateNormalizedImages```. Zobacz [próbki](#sample-output) Aby uzyskać więcej informacji.|
 
 
 
@@ -62,8 +62,8 @@ Parametry jest rozróżniana wielkość liter.
     "defaultLanguageCode": "en",
     "inputs": [
         {
-            "name": "url",
-            "source": "/document/metadata_storage_path"
+            "name": "image",
+            "source": "/document/normalized_images/*"
         }
     ],
     "outputs": [

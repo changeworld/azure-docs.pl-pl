@@ -5,14 +5,14 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 04/30/2018
+ms.date: 05/09/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 6b408dd8c8f0bfd7f7180b10cc9a4882d6950981
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 37427a9d8fedbb379557983c5251a6df9ac96a08
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do usługi Azure Queue Storage za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -20,11 +20,7 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. Magazyn kolejek platfo
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w najnowszej wersji (2.0.24 lub nowszej). Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
-
-Jeśli nie korzystasz z usługi Cloud Shell, musisz się najpierw zalogować za pomocą polecenia `az login`.
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -43,6 +39,10 @@ az group create --name gridResourceGroup --location westus2
 Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
@@ -60,7 +60,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-topic"></a>Subskrybowanie tematu
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazanie identyfikatora zasobu do magazynu kolejek dla punktu końcowego. Identyfikator magazynu kolejek ma następujący format:
+Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie utworzonego tematu i przekazanie identyfikatora zasobu do magazynu kolejek dla punktu końcowego. Za pomocą interfejsu wiersza polecenia platformy Azure przekaż identyfikator magazynu kolejek jako punkt końcowy. Punkt końcowy ma następujący format:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -76,6 +76,18 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --endpoint-type storagequeue \
   --endpoint $queueid
+```
+
+Jeśli korzystasz z interfejsu API REST do utworzenia subskrypcji, identyfikator konta magazynu i nazwa kolejki są przekazywane jako oddzielne parametry.
+
+```json
+"destination": {
+  "endpointType": "storagequeue",
+  "properties": {
+    "queueName":"eventqueue",
+    "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>"
+  }
+  ...
 ```
 
 ## <a name="send-an-event-to-your-topic"></a>Wysyłanie zdarzenia do tematu

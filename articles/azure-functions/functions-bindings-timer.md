@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 2bc2559dc1cf737e018895ffae61d0da0e56fc85
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a8844ea44bf604944c5980b0d41ab5d01a30b876
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -34,6 +34,8 @@ W tym artykule opisano sposób pracy z wyzwalaczy czasomierza w usługi Azure Fu
 Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example"></a>Przykład
 
@@ -206,11 +208,11 @@ Każde pole może mieć jeden z następujących typów wartości:
 
 |Typ  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
-|Określona wartość |<nobr>"0 5 * * * *"</nobr>|w hh:05:00, gdzie hh wynosi godzinę (godzinę)|
-|Wszystkie wartości (`*`)|<nobr>"0 * 5 * * *"</nobr>|w 5:mm: 00 każdego dnia, gdzie jest mm co minutę godziny (60 razy dziennie)|
-|Zakres (`-` operator)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05, hh:mm:06 i hh:mm:07, gdzie hh: mm to co minutę co godzinę (3 razy minuty)|  
-|Zestaw wartości (`,` operator)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, hh:mm:08 i hh:mm:10, gdzie hh: mm to co minutę co godzinę (3 razy minuty)|
-|Wartość interwału (`/` operator)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00, hh:10:00, hh:15:00 i tak dalej za pośrednictwem hh:55:00 gdzie hh wynosi godzinę (12 razy godziny)|
+|Określona wartość |<nobr>"0 5 *** *"</nobr>|w hh:05:00, gdzie hh wynosi godzinę (godzinę)|
+|Wszystkie wartości (`*`)|<nobr>"0 * 5 ** *"</nobr>|w 5:mm: 00 każdego dnia, gdzie jest mm co minutę godziny (60 razy dziennie)|
+|Zakres (`-` operator)|<nobr>"5-7 **** *"</nobr>|hh:mm:05, hh:mm:06 i hh:mm:07, gdzie hh: mm to co minutę co godzinę (3 razy minuty)|  
+|Zestaw wartości (`,` operator)|<nobr>"5,8,10 **** *"</nobr>|hh:mm:05, hh:mm:08 i hh:mm:10, gdzie hh: mm to co minutę co godzinę (3 razy minuty)|
+|Wartość interwału (`/` operator)|<nobr>"0 * / 5 *** *"</nobr>|hh:05:00, hh:10:00, hh:15:00 i tak dalej za pośrednictwem hh:55:00 gdzie hh wynosi godzinę (12 razy godziny)|
 
 ### <a name="cron-examples"></a>Przykłady usługi CRON
 
@@ -218,12 +220,12 @@ Oto kilka przykładów CRON wyrażeń, które można użyć wyzwalacza czasomier
 
 |Przykład|Po wyzwoleniu  |
 |---------|---------|
-|"0 */5 * * * *"|co pięć minut|
-|"0 0 * * * *"|raz na początku co godzinę|
-|"0 0 */2 * * *"|co dwie godziny|
-|"0 0 9-17 * * *"|co godzinę z 9 AM do 17: 00|
-|"0 30 9 * * *"|w 9:30 AM codziennie|
-|"0 30 9 * * 1-5"|w 9:30 AM każdy dzień tygodnia|
+|"0 * / 5 *** *"|co pięć minut|
+|"0 0 *** *"|raz na początku co godzinę|
+|"0 0 * / 2 ** *"|co dwie godziny|
+|"0 0-9-17 ** *"|co godzinę z 9 AM do 17: 00|
+|"0 30 9 ** *"|w 9:30 AM codziennie|
+|"0 30 9 ** 1-5"|w 9:30 AM każdy dzień tygodnia|
 
 >[!NOTE]   
 >Przykłady wyrażeń CRON online można znaleźć, ale wiele z nich Pomiń `{second}` pola. Po skopiowaniu jednego z nich, Dodaj brakujące `{second}` pola. Zazwyczaj należy zero w tym polu nie gwiazdkę.
@@ -246,7 +248,7 @@ Lub Utwórz ustawienia aplikacji dla aplikacji funkcja o nazwie `WEBSITE_TIME_ZO
 "schedule": "0 0 10 * * *",
 ``` 
 
-## <a name="timespan"></a>TimeSpan
+## <a name="timespan"></a>Zakres czasu
 
  A `TimeSpan` można używać tylko dla aplikacji funkcja, która działa na Plan usługi App Service.
 
@@ -256,9 +258,9 @@ Wyrażonej w postaci ciągu, `TimeSpan` format jest `hh:mm:ss` podczas `hh` jest
 
 |Przykład |Po wyzwoleniu  |
 |---------|---------|
-|"01:00:00" | Co godzinę        |
+|"01:00:00" | co godzinę        |
 |"00:01:00"|co minutę         |
-|"24:00:00" | co 24 dni        |
+|"24: 00:00" | co 24 dni        |
 
 ## <a name="scale-out"></a>Skalowanie w poziomie
 

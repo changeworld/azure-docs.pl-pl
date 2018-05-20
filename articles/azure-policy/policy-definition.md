@@ -2,18 +2,17 @@
 title: Struktura definicji zasad platformy Azure
 description: Opisuje, jak zasobów definicji zasad jest używane przez zasady usługi Azure ustanowienie konwencje dla zasobów w organizacji przez opisujące, gdy zasady są wymuszane i wpływ, jaki do wykonania.
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-policy
-ms.custom: ''
-ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+manager: carmonm
+ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -312,7 +311,7 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-## <a name="initiatives"></a>Inicjatyw
+## <a name="initiatives"></a>Inicjatywy
 
 Włącz inicjatyw kilka grupy powiązane definicje zasad, aby uprościć zadania i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad znakowania w jednym inicjatywy. Zamiast przypisywać każdej zasady pojedynczo, należy zastosować tej inicjatywy.
 
@@ -390,6 +389,6 @@ Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi:
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przejrzyj przykłady szablonu zasad Azure w [szablony zasad Azure](json-samples.md).

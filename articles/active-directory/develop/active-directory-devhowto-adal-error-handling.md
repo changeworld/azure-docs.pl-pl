@@ -1,23 +1,24 @@
 ---
-title: "Błąd podczas obsługi najlepsze rozwiązania dla klientów interfejsów Azure Active Directory Authentication Library (ADAL)"
-description: "Zapewnia obsługę wskazówek i najlepszych rozwiązań dla aplikacji klienckich ADAL błędów."
+title: Błąd podczas obsługi najlepsze rozwiązania dla klientów interfejsów Azure Active Directory Authentication Library (ADAL)
+description: Zapewnia obsługę wskazówek i najlepszych rozwiązań dla aplikacji klienckich ADAL błędów.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-ms.author: bryanla
+ms.author: celested
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
-ms.custom: 
-ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: 27315262ff64b640acc3af16a26fc3887d852a00
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Błąd podczas obsługi najlepsze rozwiązania dla klientów interfejsów Azure Active Directory Authentication Library (ADAL)
 
@@ -49,7 +50,7 @@ Istnieje zestaw o błędach wygenerowanych przez system operacyjny, który może
 
 Zasadniczo istnieją dwa przypadki AcquireTokenSilent błędów:
 
-| Case | Opis |
+| Przypadek | Opis |
 |------|-------------|
 | **Przypadek 1**: błąd jest rozpoznawalna przy interakcyjnego logowania | Błędy spowodowane brakiem prawidłowych tokenów interakcyjne żądanie jest konieczne. W szczególności wyszukiwania w pamięci podręcznej i token odświeżania nieprawidłowy/wygasły wymagają wywołanie AcquireToken do rozpoznania.<br><br>W takich przypadkach użytkownik końcowy musi zostać wyświetlony monit o zalogowanie. Aplikację można czy interaktywnych żądań natychmiast, po interakcje użytkownika końcowego (na przykład naciśnięcie przycisku logowania) lub nowszym. Wybór zależy od żądanego zachowania aplikacji.<br><br>Zobacz kod w poniższej sekcji tym konkretnym przypadku i błędy, które diagnozowanie go.|
 | **Przypadek 2**: błąd nie jest rozpoznawalna przy interakcyjnego logowania | Sieci i przejściowy/tymczasowe błędy lub inne błędy wykonywanie interakcyjne żądania AcquireToken nie rozwiązać problem. Niepotrzebne interakcyjnego logowania monity również może frustrować użytkowników końcowych. Biblioteka ADAL automatycznie podejmie pojedynczego ponownych prób dla większości błędów na AcquireTokenSilent błędów.<br><br>Aplikacja kliencka może również podejmować ponowna próba w pewnym momencie nowsze, ale kiedy i jak to zrobić, jest zależna od zachowanie aplikacji oraz żądany przez użytkownika końcowego. Na przykład aplikacja może wykonać AcquireTokenSilent spróbuj ponownie za kilka minut lub w odpowiedzi na akcję użytkownika końcowego. Natychmiastowego ponawiania spowoduje aplikacja ograniczane i nie są sprawdzane.<br><br>Kolejne ponowna próba niepowodzeniem z powodu błędu tego samego oznacza to, że klient zrobić interakcyjne żądania przy użyciu AcquireToken, nie jest rozpoznawany błędu.<br><br>Zobacz kod w poniższej sekcji tym konkretnym przypadku i błędy, które diagnozowanie go. |
@@ -74,7 +75,7 @@ catch (AdalSilentTokenAcquisitionException e) {
     // Exception: AdalSilentTokenAcquisitionException
     // Caused when there are no tokens in the cache or a required refresh failed. 
 
-    // Action: Case 1, resolvable with an interactive request.  
+    // Action: Case 1, resolvable with an interactive request. 
 } 
 
 catch(AdalServiceException e) {
@@ -157,7 +158,7 @@ Kod będzie realizowane w następujący sposób:
             // Error: AD_ERROR_CACHE_MULTIPLE_USERS
             // Description: There was ambiguity in the silent request resulting in multiple cache items.
             // Action: Special Case, application should perform another silent request and specify the user using ADUserIdentifier. 
-            // Can be caused in cases of a multi-user application.  
+            // Can be caused in cases of a multi-user application. 
 
             // Action: Case 2, not resolvable with an interactive request.
             // Attempt retry after some time or user action.
@@ -170,9 +171,9 @@ Kod będzie realizowane w następujący sposób:
 
 ## <a name="acquiretoken"></a>AcquireToken
 
-AcquireToken jest domyślną metodę ADAL używaną do uzyskania tokenów. W przypadku, gdy tożsamość użytkownika jest wymagane AcquireToken próbuje pobrać token pierwszy w trybie dyskretnym, a następnie wyświetla interfejsu użytkownika, w razie potrzeby (o ile nie została przekazana PromptBehavior.Never). W przypadku, gdy tożsamość aplikacji jest wymagany AcquireToken podejmuje próbę pobrania tokenu, ale nie wyświetla interfejsu użytkownika, ponieważ nie ma żadnego użytkownika końcowego.  
+AcquireToken jest domyślną metodę ADAL używaną do uzyskania tokenów. W przypadku, gdy tożsamość użytkownika jest wymagane AcquireToken próbuje pobrać token pierwszy w trybie dyskretnym, a następnie wyświetla interfejsu użytkownika, w razie potrzeby (o ile nie została przekazana PromptBehavior.Never). W przypadku, gdy tożsamość aplikacji jest wymagany AcquireToken podejmuje próbę pobrania tokenu, ale nie wyświetla interfejsu użytkownika, ponieważ nie ma żadnego użytkownika końcowego. 
 
-Podczas obsługi błędów AcquireToken, obsługa błędów jest zależny od platformy i próbuje uzyskać scenariusz aplikacji.  
+Podczas obsługi błędów AcquireToken, obsługa błędów jest zależny od platformy i próbuje uzyskać scenariusz aplikacji. 
 
 System operacyjny można również tworzyć zestaw błędów, które wymagają obsługi zależne od określonych aplikacji błędów. Aby uzyskać więcej informacji, zobacz "Błędy systemu operacyjnego" w [błąd i rejestrowanie odwołanie](#error-and-logging-reference). 
 
@@ -187,7 +188,7 @@ System operacyjny można również tworzyć zestaw błędów, które wymagają o
 
 ### <a name="error-cases-and-actionable-steps-native-client-applications"></a>W przypadku wystąpienia błędów i kroki można wykonać: aplikacje Native client
 
-Jeśli tworzysz aplikację native client, istnieje kilka przypadków obsługi błędu wziąć pod uwagę, które dotyczą problemów z siecią, błędów przejściowych i inne błędy specyficzne dla platformy. W większości przypadków aplikacji nie należy wykonywać natychmiastowego ponownych prób, ale zamiast czekać interakcje użytkownika końcowego, które monituje logowania.  
+Jeśli tworzysz aplikację native client, istnieje kilka przypadków obsługi błędu wziąć pod uwagę, które dotyczą problemów z siecią, błędów przejściowych i inne błędy specyficzne dla platformy. W większości przypadków aplikacji nie należy wykonywać natychmiastowego ponownych prób, ale zamiast czekać interakcje użytkownika końcowego, które monituje logowania. 
 
 Istnieje kilka szczególnych przypadkach, w których pojedynczy ponowna próba może rozwiązać problem. Na przykład po użytkownik odpowiada za włączanie danych na urządzeniu, lub ukończona brokera usługi Azure AD Pobierz po niepowodzeniu początkowej. 
 
@@ -210,8 +211,8 @@ Przedstawionych w tym temacie przedstawiono przykłady obsługi błędów w poł
 
 - AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion,…)   
+- AcquireTokenAsync (..., ClientAssertion,...)
+- AcquireTokenAsync(...,UserAssertion,...)   
 
 Kod będzie realizowane w następujący sposób:
 
@@ -365,7 +366,7 @@ catch (AdalException e) {
 
 ### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>W przypadku wystąpienia błędów i kroki można wykonać: aplikacje jednostronicowe (adal.js)
 
-Jeśli tworzysz aplikację jednej strony, przy użyciu adal.js z AcquireToken błąd kod obsługi jest podobny do typowych wywołania dyskretnej.  W szczególności w adal.js AcquireToken nigdy nie zostanie wyświetlony interfejs użytkownika. 
+Jeśli tworzysz aplikację jednej strony, przy użyciu adal.js z AcquireToken błąd kod obsługi jest podobny do typowych wywołania dyskretnej. W szczególności w adal.js AcquireToken nigdy nie zostanie wyświetlony interfejs użytkownika. 
 
 AcquireToken nie powiodło się ma w następujących przypadkach:
 
@@ -415,7 +416,7 @@ Przedstawionych w tym temacie przedstawiono przykłady obsługi błędów w poł
 
 - AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
+- AcquireTokenAsync (..., ClientAssertion,...)
 - AcquireTokenAsync (..., UserAssertion,...)
 
 Kod będzie realizowane w następujący sposób:
@@ -512,7 +513,7 @@ Logger.getInstance().setExternalLogger(new ILogger() {
     @Override   
     public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) { 
     // …
-    // You can write this to logfile depending on level or errorcode.     
+    // You can write this to logfile depending on level or errorcode. 
     writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);    
     }
 }

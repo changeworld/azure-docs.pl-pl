@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9a7ab3881cd1058a60ff7d5f6e50c296f042e76e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-multiple-guest-executables"></a>Wdrażanie wielu aplikacji wykonywalnych gości
 W tym artykule przedstawiono sposób pakietów i wdrożyć wiele plików wykonywalnych gościa sieć szkieletowa usług Azure. Umożliwiające tworzenie i wdrażanie pojedynczego pakietu sieci szkieletowej usług przeczytać artykuł dotyczący sposobu do [wdrażanie pliku wykonywalnego gościa sieci szkieletowej usług](service-fabric-deploy-existing-app.md).
@@ -203,7 +203,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Gdy aplikacja zostanie opublikowana pomyślnie z lokalnym klastrem, można uzyskać dostępu do aplikacji Node.js na porcie, który mamy wprowadzony w aplikacji Node.js — na przykład http://localhost: 3000 manifestu usługi.
+Gdy aplikacja zostanie opublikowana pomyślnie z lokalnym klastrem, można uzyskać dostępu do aplikacji Node.js na porcie, który mamy zostały wprowadzone w manifeście usługi aplikacji Node.js — na przykład http://localhost:3000.
 
 W tym samouczku jak już wspomniano łatwo pakowaniu dwóch istniejących aplikacji jako jednej aplikacji sieci szkieletowej usług. Ma przedstawiono również sposób wdrażania sieci szkieletowej usług, dzięki czemu mogą korzystać z niektórych funkcji usługi Service Fabric, takie jak wysoka dostępność i kondycji systemu integracji.
 

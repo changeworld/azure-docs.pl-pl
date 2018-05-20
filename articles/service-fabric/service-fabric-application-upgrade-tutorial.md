@@ -1,24 +1,24 @@
 ---
-title: "Samouczek uaktualniania aplikacji sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "Ten artykuł przeprowadzi Cię przez proces wdrażania aplikacji usługi Service Fabric, zmiana kodu i wprowadza uaktualnienia w programie Visual Studio."
+title: Samouczek uaktualniania aplikacji sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: Ten artykuł przeprowadzi Cię przez proces wdrażania aplikacji usługi Service Fabric, zmiana kodu i wprowadza uaktualnienia w programie Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3388257399ce8d2e0ac84b9bff746e1acf153312
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0a94dc91308f21d9e2b440f9638829ee03a8b903
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Samouczek uaktualniania aplikacji sieci szkieletowej usług za pomocą programu Visual Studio
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Wybieranie **publikowania** powoduje wyświetlenie okna podręcznego, i można u
 
 ![Publikowanie aplikacji sieci szkieletowej usług][image2]
 
-Teraz możesz kliknąć **publikowania** w oknie dialogowym. Można użyć [Service Fabric Explorer, aby wyświetlić klastra i aplikacji](service-fabric-visualizing-your-cluster.md). Aplikacja obiektów Visual ma usługi sieci web, który można przejść do wpisując [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) na pasku adresu przeglądarki.  Powinny pojawić się 10 obiektów visual przestawnych przenoszenia na ekranie.
+Teraz możesz kliknąć **publikowania** w oknie dialogowym. Można użyć [Service Fabric Explorer, aby wyświetlić klastra i aplikacji](service-fabric-visualizing-your-cluster.md). Aplikacja obiektów Visual ma usługi sieci web, który można przejść do wpisując [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) na pasku adresu przeglądarki.  Powinny pojawić się 10 obiektów visual przestawnych przenoszenia na ekranie.
 
 **Uwaga:** wdrażania do `Cloud.xml` profilu (sieć szkieletowa usług Azure,) aplikacja powinna być dostępna w **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/**. Upewnij się, że masz `8081/TCP` skonfigurowany w usłudze równoważenia obciążenia (znaleźć usługi równoważenia obciążenia w tej samej grupie zasobów, gdy wystąpienie usługi sieć szkieletowa).
 

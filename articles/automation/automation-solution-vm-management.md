@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/20/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 410f76d406ab65ff1732525a501fe007eeeb5f6a
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 67f6119dd1fccc126131979148c001b9d1815175
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Maszyny wirtualne uruchamiania i zatrzymywania podczas rozwiązania poza godzinami szczytu (wersja zapoznawcza) w usłudze Automatyzacja Azure
 
@@ -337,7 +337,7 @@ Konto usługi Automatyzacja i obszaru roboczego analizy dzienników nie są usuw
 1. Na **analizy dzienników** wybierz obszar roboczy.
 1. Wybierz **usunąć** z menu na stronie Ustawienia obszaru roboczego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat sposobu konstruowania różne zapytania i przejrzyj dzienniki zadania automatyzacji z analizy dzienników, zobacz [Zaloguj wyszukiwania analizy dzienników](../log-analytics/log-analytics-log-searches.md).
 * Aby dowiedzieć się więcej o wykonywaniu elementów runbook, sposobie monitorowania zadań elementów runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu runbook).

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 05/14/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 165a899dbad0893b3a2bddcfc68c9b5d737e9d3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Magazynu Azure stosu: Różnice i zagadnienia dotyczące
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/28/2018
 
 Magazyn Azure stosu to zbiór magazynu usługi w chmurze Microsoft Azure stosu. Usługa Azure Storage stosu udostępnia obiektów blob, tabeli, kolejki i funkcje zarządzania kontami z semantyki spójnej platformy Azure.
 
-Ten artykuł zawiera podsumowanie znane różnice Azure stosu magazynu z usługi Magazyn Azure. Także podsumowanie innych kwestii, które należy wziąć pod uwagę podczas wdrażania usługi Azure stosu. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
+Ten artykuł zawiera podsumowanie znane różnice Azure stosu magazynu z usług Azure Storage. Zawiera także listę rzeczy, które należy wziąć pod uwagę podczas wdrażania usługi Azure stosu. Aby uzyskać informacje ogólne różnice między stosu Azure i usługi Azure, zobacz [kluczowe zagadnienia dotyczące](azure-stack-considerations.md) tematu.
 
 ## <a name="cheat-sheet-storage-differences"></a>Ściągawka: różnice magazynu
 
@@ -49,26 +49,28 @@ Usuwania nietrwałego dla magazynu obiektów blob|Wersja zapoznawcza|Nie jest je
 |Rozmiar klucza w tabeli klucz partycji i wiersza|1024 znaków (2048 bajtów)|400 znaków (800 w bajtach)
 |Migawki obiektu blob|Maksymalna liczba migawek jednego obiektu blob nie jest ograniczona.|Maksymalna liczba migawek jednego obiektu blob jest 1000.|
 
-### <a name="metrics"></a>Metryki
-Istnieją pewne różnice z metryki magazynu:
+Dostępne są również w przypadku metryki magazynu:
+
 * Metryki magazynu danych transakcji nie odróżnia przepustowość sieci wewnętrznych lub zewnętrznych.
 * Danych transakcji w metryki magazynu nie ma na maszynie wirtualnej dostęp do dysków zainstalowanych.
 
 ## <a name="api-version"></a>Wersja interfejsu API
+
 Obsługiwane są następujące wersje z usługą Azure Storage stosu:
 
 Interfejsy API z usług magazynu Azure:
 
 Zaktualizuj 1802 lub nowsza:
+
  - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
  - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
  - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08 ](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
  - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Poprzednie wersje:
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Magazyn Azure usługi Zarządzanie interfejsami API:
 
@@ -78,7 +80,7 @@ Magazyn Azure usługi Zarządzanie interfejsami API:
 
 ## <a name="sdk-versions"></a>Wersje zestawu SDK
 
-Obsługiwane są następujące biblioteki klienta z usługą Azure Storage stosu:
+Usługa Azure Storage stosu obsługuje następujące biblioteki klienta:
 
 | Biblioteka kliencka | Azure stosu obsługiwana wersja | Link                                                                                                                                                                                                                                                                                                                                     | Specyfikacja punktu końcowego       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -94,4 +96,3 @@ Obsługiwane są następujące biblioteki klienta z usługą Azure Storage stosu
 
 * [Wprowadzenie do narzędzi programistycznych magazyn Azure stosu](azure-stack-storage-dev.md)
 * [Wprowadzenie do magazynu Azure stosu](azure-stack-storage-overview.md)
-

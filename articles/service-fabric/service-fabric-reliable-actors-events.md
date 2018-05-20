@@ -1,24 +1,24 @@
 ---
-title: "Zdarzenia w podstawie aktora Azure mikrousług | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do zdarzeń dla elementów Reliable Actors sieci szkieletowej usług."
+title: Zdarzenia w podstawie aktora Azure mikrousług | Dokumentacja firmy Microsoft
+description: Wprowadzenie do zdarzeń dla elementów Reliable Actors sieci szkieletowej usług.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 779d39e2910d0de25ee07b8fae3ca7a0e9772776
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: ed920c8d4ff7254b19c6eef8f5961593bb56bacf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="actor-events"></a>Zdarzenia aktora
 Zdarzenia aktora umożliwiają wysyłanie powiadomień optymalnych z aktora do klientów. Aktora zdarzeń są przeznaczone dla komunikacji aktora do klienta i nie można używać do komunikacji aktora aktora.
@@ -107,7 +107,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wielobieżność aktora](service-fabric-reliable-actors-reentrancy.md)
 * [Aktora Diagnostyka i monitorowanie wydajności](service-fabric-reliable-actors-diagnostics.md)
 * [Dokumentację referencyjną aktora interfejsu API](https://msdn.microsoft.com/library/azure/dn971626.aspx)

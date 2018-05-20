@@ -1,13 +1,13 @@
 ---
-title: "Aplikacje mobilne powiązania dla usługi Azure Functions"
-description: "Zrozumienie, jak używać usługi Azure Mobile Apps powiązania w usługi Azure Functions."
+title: Aplikacje mobilne powiązania dla usługi Azure Functions
+description: Zrozumienie, jak używać usługi Azure Mobile Apps powiązania w usługi Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkcje usługi Azure, funkcje, przetwarzania zdarzeń, dynamiczne obliczeń niekorzystającą architektury"
+editor: ''
+tags: ''
+keywords: funkcje usługi Azure, funkcje, przetwarzania zdarzeń, dynamiczne obliczeń niekorzystającą architektury
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1129bd36b1f1f413e5fd40da16a48f5aff1078bc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Aplikacje mobilne powiązania dla usługi Azure Functions 
 
@@ -34,6 +34,8 @@ Powiązania Mobile Apps pozwalają na odczytywanie i aktualizowanie tabel danych
 Aplikacje mobilne powiązania znajdują się w [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) pakietu NuGet. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="input"></a>Dane wejściowe
 
@@ -144,13 +146,13 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **Typ**|| Musi być ustawiona na "mobileTable"|
-| **Kierunek**||Musi być ustawiona na "w"|
+| **type**|| Musi być ustawiona na "mobileTable"|
+| **direction**||Musi być ustawiona na "w"|
 | **Nazwa**|| Nazwa parametru wejściowego w sygnaturze funkcji.|
-|**tableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
+|**TableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
 | **id**| **Identyfikator** | Identyfikator rekordu do pobrania. Może być statyczne lub w oparciu o wyzwalacz, który wywołuje funkcję. Na przykład, jeśli używasz wyzwalacz kolejki dla funkcji, następnie `"id": "{queueTrigger}"` używa wartości ciągu komunikatu w kolejce jako identyfikator rekordu do pobrania.|
 |**Połączenia**|**Połączenia**|Nazwa ustawienia aplikacji, które ma adres URL aplikacji mobilnej. Funkcja używa tego adresu URL do skonstruowania wymagane operacje REST względem aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji zawierający adres URL aplikacji mobilnej, a następnie określ nazwę ustawienia aplikacji w `connection` właściwości w Twojej powiązania wejściowego. Adres URL wygląda `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|Nazwa ustawienia aplikacji, który ma klucz interfejsu API aplikacji mobilnej. Jeśli klucza interfejsu API zapewniają możesz [zaimplementować klucz interfejsu API w aplikacji mobilnej Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), lub [zaimplementować klucz interfejsu API w aplikacji mobilnej .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, utworzyć ustawienie aplikacji w Twojej aplikacji funkcji, który zawiera klucz interfejsu API, a następnie dodaj `apiKey` właściwości w Twojej powiązania wejściowego o nazwie ustawienia aplikacji. |
+|**apiKey**|**apiKey**|Nazwa ustawienia aplikacji, który ma klucz interfejsu API aplikacji mobilnej. Jeśli klucza interfejsu API zapewniają możesz [zaimplementować klucz interfejsu API w aplikacji mobilnej Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), lub [zaimplementować klucz interfejsu API w aplikacji mobilnej .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, utworzyć ustawienie aplikacji w Twojej aplikacji funkcji, który zawiera klucz interfejsu API, a następnie dodaj `apiKey` właściwości w Twojej powiązania wejściowego o nazwie ustawienia aplikacji. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -303,10 +305,10 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **Typ**|| Musi być ustawiona na "mobileTable"|
-| **Kierunek**||Musi być ustawiona na "out"|
+| **type**|| Musi być ustawiona na "mobileTable"|
+| **direction**||Musi być ustawiona na "out"|
 | **Nazwa**|| Nazwa parametru wyjściowego w funkcji podpisu.|
-|**tableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
+|**TableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
 |**Połączenia**|**MobileAppUriSetting**|Nazwa ustawienia aplikacji, które ma adres URL aplikacji mobilnej. Funkcja używa tego adresu URL do skonstruowania wymagane operacje REST względem aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji zawierający adres URL aplikacji mobilnej, a następnie określ nazwę ustawienia aplikacji w `connection` właściwości w Twojej powiązania wejściowego. Adres URL wygląda `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Nazwa ustawienia aplikacji, który ma klucz interfejsu API aplikacji mobilnej. Podaj if klucza interfejsu API można [implementować klucz interfejsu API zaplecza aplikacji mobilnej Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), lub [implementować klucz interfejsu API zaplecza aplikacji mobilnej .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, utworzyć ustawienie aplikacji w Twojej aplikacji funkcji, który zawiera klucz interfejsu API, a następnie dodaj `apiKey` właściwości w Twojej powiązania wejściowego o nazwie ustawienia aplikacji. |
 

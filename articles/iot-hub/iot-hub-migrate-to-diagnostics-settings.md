@@ -1,12 +1,12 @@
 ---
-title: "Centrum IoT Azure migrację do ustawień diagnostycznych | Dokumentacja firmy Microsoft"
-description: "Jak zaktualizować Centrum IoT Azure, aby użyć ustawień diagnostycznych platformy Azure zamiast operacje monitorowania do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym."
+title: Centrum IoT Azure migrację do ustawień diagnostycznych | Dokumentacja firmy Microsoft
+description: Jak zaktualizować Centrum IoT Azure, aby użyć ustawień diagnostycznych platformy Azure zamiast operacje monitorowania do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: kgremban
-ms.openlocfilehash: 2716f397ad0e7abfdcd397340da8fa8116a172db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a46f6798a71c93ed769ae68877e72801d45b74a4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrowanie Centrum IoT z operacji monitorowania do ustawień diagnostycznych
 
@@ -54,12 +54,12 @@ Ponadto diagnostyki ustawienia oferty śledzenie pięć nowych kategorii. Po zak
 
 W strukturach schematu, zobacz [zrozumieć schematu ustawień diagnostycznych][lnk-diagnostics-schema].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Monitorowanie kondycji Azure IoT Hub i szybkie diagnozowanie problemów][lnk-monitor]
 
 [lnk-opsmon]: iot-hub-operations-monitoring.md
 [lnk-diagnostics-settings]: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md
 [lnk-diagnostics-schema]: iot-hub-monitor-resource-health.md#understand-the-logs
-[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
+[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-accelerators-with-azure-monitor-and-azure-resource-health
 [lnk-monitor]: iot-hub-monitor-resource-health.md

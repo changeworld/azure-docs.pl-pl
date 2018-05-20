@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure DB rozwiązania Cosmos: procedury składowane, wyzwalacze bazy danych i funkcji UDF
 
@@ -151,6 +151,21 @@ W powyższym przykładzie wywołanie zwrotne zgłasza błąd, jeśli operacja ni
 Tę procedurę składowaną można zmodyfikować w taki sposób, aby pobrać tablicę treści dokumentu jako dane wejściowe i je utworzyć w tym samym wykonywanie procedury składowanej zamiast wielu żądań w celu utworzenia każdego z nich osobno. Tę procedurę składowaną może służyć do zaimplementowania importer zbiorczego wydajne rozwiązania Cosmos bazy danych (omówiony w dalszej części tego samouczka).   
 
 Opisanym przykładzie przedstawiono sposób użycia procedur składowanych. Następnie dowiesz się o wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) w dalszej części tego samouczka.
+
+### <a name="known-issues"></a>Znane problemy
+
+Podczas definiowania procedury składowanej przy użyciu portalu Azure, parametry wejściowe są zawsze wysyłane jako ciąg do procedury składowanej. Nawet wtedy, gdy przekazujesz tablica ciągów jako dane wejściowe tablicy jest konwertowana na ciąg i wysyłane do procedury składowanej. Aby obejść ten problem, można zdefiniować funkcję poziomu procedury przechowywanej można przeanalizować ciągu jako tablica. Następujący kod jest przykładem, można przeanalizować ciągu jako tablica: 
+
+``` 
+function sample(arr) {
+    if (typeof arr === "string") arr = JSON.parse(arr);
+    
+    arr.forEach(function(a) {
+        // do something here
+        console.log(a);
+    });
+}
+```
 
 ## <a name="database-program-transactions"></a>Transakcji w bazie danych programu
 Transakcji w typowej bazy danych można zdefiniować jako sekwencja operacji wykonywanych jako pojedyncza jednostka logiczna pracy. Udostępnia każdą transakcję **ACID gwarancje**. KWAS jest dobrze znanego akronim, zawiera cztery właściwości — niepodzielność, spójności, izolacji i trwałości.  

@@ -1,24 +1,24 @@
 ---
-title: "Zarządzanie za pomocą metryki obciążenia Azure mikrousługi | Dokumentacja firmy Microsoft"
-description: "Więcej informacji o konfigurowaniu i metryki w sieci szkieletowej usług do zarządzania zużycie zasobów usługi."
+title: Zarządzanie za pomocą metryki obciążenia Azure mikrousługi | Dokumentacja firmy Microsoft
+description: Więcej informacji o konfigurowaniu i metryki w sieci szkieletowej usług do zarządzania zużycie zasobów usługi.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w sieci szkieletowej usług o metryki
 *Metryki* zasobów, które z usług najważniejsze informacje, które są udostępniane przez węzły w klastrze. Metryka to wszystko, co chcesz zarządzać w celu poprawy lub monitorować wydajność usług. Na przykład może oglądać zużycie pamięci, aby dowiedzieć się, jeśli usługa jest przeciążona. Użyj innego jest aby dowiedzieć się, czy usługa może przenieść innym miejscu, gdzie pamięci jest mniejsza ograniczone, aby uzyskać lepszą wydajność.
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 Np. użycia pamięci, dysku i procesora CPU przedstawiono metryki. Te metryki są metryki fizycznych, zasobów, które odpowiadają zasoby fizyczne na węźle, który musi być zarządzane. Metryki mogą być również (i często są) logicznej metryki. Metryki logiczne są elementy, takie jak "MyWorkQueueDepth" lub "MessagesToProcess" lub "TotalRecords". Metryki logiczne są zdefiniowane przez aplikację i pośrednio odpowiadają niektórych zużycie zasobów fizycznych. Metryki logiczne są często używane, ponieważ może być trudne do miary i raportu zużycia zasobów fizycznych na podstawie-service. Złożoność pomiarów i raportowania własne fizycznych metryki jest również, dlaczego Usługa Service Fabric realizuje niektóre domyślne metryki.
 
 ## <a name="default-metrics"></a>Domyślne metryki
-Załóżmy, że chcesz rozpocząć pisanie i wdrażania usługi. W tym momencie nie wiadomo, jakie zasoby fizyczne lub logiczne zużywa. To świetnie! Menedżer zasobów klastra sieci szkieletowej usług używa niektóre domyślne metryki, jeśli określono nie innych metryk. Są to:
+Załóżmy, że chcesz rozpocząć pisanie i wdrażania usługi. W tym momencie nie wiadomo, jakie zasoby fizyczne lub logiczne zużywa. To świetnie! Menedżer zasobów klastra sieci szkieletowej usług używa niektóre domyślne metryki, jeśli określono nie innych metryk. Oto one:
 
   - PrimaryCount — liczba replik podstawowych, w węźle 
   - ReplicaCount — liczba całkowita stanowe replik w węźle
@@ -261,7 +261,7 @@ W przykładzie top w oparciu jedynie globalnego równoważenia w rzeczywistości
 
 W przykładzie dolnej Menedżera zasobów klastra został rozesłany replik oparte na globalnym i dla usługi równoważenia. Podczas obliczania wyniku rozwiązanie zapewnia najbardziej wagi globalne rozwiązanie i części (można konfigurować) do poszczególnych usług. Globalne saldo metryka jest obliczany na podstawie średnią metryki wag z każdej usługi. Każda usługa jest rozmieszczana zgodnie z własną zdefiniowanych wag metryki. Daje to pewność, że usługi równoważenia między sobą zgodnie z ich własnych potrzeb. W związku z tym jeśli sam pierwszego węzła nie powiedzie się błędu jest dystrybuowana do wszystkich partycji wszystkich usług. Wpływ na każdy jest taka sama.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji na temat konfigurowania usługi [informacje na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
 - Definiowanie metryki defragmentacji jest jednym ze sposobów skonsolidować węzłów zamiast go rozkładanie obciążenia. Aby dowiedzieć się, jak skonfigurować defragmentacji, zajrzyj do [w tym artykule](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - Aby dowiedzieć się o jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zobacz artykuł na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)

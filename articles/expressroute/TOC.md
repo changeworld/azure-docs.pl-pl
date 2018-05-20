@@ -1,23 +1,31 @@
 # [Dokumentacja usługi ExpressRoute](index.md)
 
 # Omówienie
+
 ## [Co to jest usługa ExpressRoute?](expressroute-introduction.md)
-## [Usługa ExpressRoute — często zadawane pytania](expressroute-faqs.md)
+
+# Samouczki
+## [Tworzenie i modyfikowanie obwodu](expressroute-howto-circuit-portal-resource-manager.md)
+## [Tworzenie i modyfikowanie konfiguracji komunikacji równorzędnej](expressroute-howto-routing-portal-resource-manager.md)
+## [Link a virtual network to an ExpressRoute circuit (Łączenie sieci wirtualnej z obwodem usługi ExpressRoute)](expressroute-howto-linkvnet-portal-resource-manager.md)
+## [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-portal.md)
+
+# Pojęcia
+
 ## [Modele łączności](expressroute-connectivity-models.md)
 ## [Obwody i domeny routingu](expressroute-circuit-peerings.md)
 ## [Lokalizacje i partnerzy](expressroute-locations.md)
 ### [Dostawcy według lokalizacji](expressroute-locations-providers.md)
 ### [Lokalizacje według dostawcy](expressroute-locations.md)
 ## [Bramy sieci wirtualnej dla usługi ExpressRoute](expressroute-about-virtual-network-gateways.md)
-
-# Rozpoczęcie pracy
 ## [Wymagania wstępne](expressroute-prerequisites.md)
 ## [Przepływy pracy](expressroute-workflows.md)
 ## [Wymagania dotyczące routingu](expressroute-routing.md)
 ## [Wymagania funkcji QoS](expressroute-qos.md)
 ## [Informacje o przenoszeniu obwodów z wersji klasycznej do usługi Resource Manager](expressroute-move.md)
 
-# Instrukcje
+# Przewodniki z instrukcjami
+
 ## Tworzenie i modyfikowanie obwodu
 ### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-circuit-arm.md)
@@ -32,11 +40,11 @@
 ### [Interfejs wiersza polecenia platformy Azure](howto-linkvnet-cli.md)
 ## [Konfigurowanie sieci VPN typu lokacja-lokacja do komunikacji równorzędnej firmy Microsoft](site-to-site-vpn-over-microsoft-peering.md)
 ## Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute
-### [Azure portal](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja](expressroute-howto-coexist-resource-manager.md)
 ## Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft
-### [Azure portal](how-to-routefilter-portal.md)
+### [Azure Portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
 ### [Interfejs wiersza polecenia platformy Azure](how-to-routefilter-cli.md)
 ## [Przechodzenie z publicznej komunikacji równorzędnej do komunikacji równorzędnej firmy Microsoft](how-to-move-peering.md)
@@ -52,13 +60,11 @@
 ### [Link a virtual network to an ExpressRoute circuit (Łączenie sieci wirtualnej z obwodem usługi ExpressRoute)](expressroute-howto-linkvnet-classic.md)
 ### [Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja](expressroute-howto-coexist-classic.md)
 ### [Dodawanie bramy do sieci wirtualnej](expressroute-howto-add-gateway-classic.md)
-
 ## Najlepsze rozwiązania
 ### [Najlepsze rozwiązania z zakresu bezpieczeństwa sieci i usług w chmurze](../best-practices-network-security.md)
 ### [Optymalizowanie routingu](expressroute-optimize-routing.md)
 ### [Routing asymetryczny](expressroute-asymmetric-routing.md)
 ### [Translator adresów sieciowych dla usługi ExpressRoute](expressroute-nat.md)
-
 ## Rozwiązywanie problemów
 ### [Weryfikowanie połączenia usługi ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
 ### [Resolving network performance issues (Rozwiązywanie problemów z wydajnością sieci)](expressroute-troubleshooting-network-performance.md)
@@ -67,19 +73,14 @@
 ### [Pobieranie tabel ARP (wersja klasyczna)](expressroute-troubleshooting-arp-classic.md)
 
 # Dokumentacja
-## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
+
+## [Azure PowerShell](/powershell/module/azurerm.network#expressroute)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/network/express-route)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (klasyczny)](https://msdn.microsoft.com/library/azure/dn606310)
 
-# Powiązane
-## [Virtual Network](/azure/virtual-network/)
-## [VPN Gateway](/azure/vpn-gateway/)
-## [Virtual Machines](/azure/virtual-machines/)
-## [Load Balancer](/azure/load-balancer/)
-## [Traffic Manager](/azure/traffic-manager/)
-
 # Zasoby
+## [Usługa ExpressRoute — często zadawane pytania](expressroute-faqs.md)
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Analizy przypadków](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [Blog na temat sieci](https://azure.microsoft.com/blog/topics/networking/)

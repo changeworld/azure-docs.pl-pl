@@ -1,20 +1,20 @@
 ---
 title: Automatyczna aktualizacja usługi mobilności w odzyskiwania po awarii z platformy Azure do platformy Azure | Dokumentacja firmy Microsoft
-description: Zawiera omówienie automatycznej aktualizacji usługi mobilności, która jest używana do replikacji maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
+description: Zawiera omówienie automatycznej aktualizacji usługi mobilności podczas replikowania maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: rajanaki
-ms.openlocfilehash: d9b653e4766746d2142a7e1040d6d60ec2aacc44
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności rozszerzenia w replikacji Azure do platformy Azure
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure do platformy Azure
 
 Usługa Azure Site Recovery ma miesięczne okresach zlecenia, gdzie są dodawane ulepszenia istniejących funkcji lub nowych i znanych ewentualnych problemów. Oznacza to, czy chcesz zachować bieżące z usługą, należy zaplanować wdrożenie tych poprawek, co miesiąc. Aby uniknąć head over skojarzone z uaktualnienia, użytkowników można zamiast tego wybrać opcję odzyskiwania lokacji w celu zarządzania aktualizacjami składników. Jak wyjaśniono w [odwołania architektura](azure-to-azure-architecture.md) podczas odzyskiwania systemu Azure do platformy Azure, usługi mobilności są instalowane na wszystkich maszynach wirtualnych platformy Azure dla których replikacja jest włączona, podczas replikacji maszyn wirtualnych z jednego systemu Azure region na inny. Po włączeniu automatycznej aktualizacji rozszerzenia usługi mobilności aktualizowany przy każdej nowej wersji. Ten dokument zawiera szczegóły poniżej:
 

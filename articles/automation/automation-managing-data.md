@@ -7,13 +7,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9245a0a81958f1044ad5be6f5448e086ba54636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 3de8711c2e99459ccf5d85dcb12d6ff2d38b700d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
 Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Automatyzacja Azure.
@@ -58,7 +58,7 @@ Nie można pobrać wartości szyfrowane zmienne lub pole hasła poświadczeń pr
 
 Nie można wyeksportować certyfikaty z usługi Automatyzacja Azure.  Pamiętaj, że wszystkie certyfikaty są dostępne poza platformą Azure.
 
-### <a name="dsc-configurations"></a>Konfiguracji DSC
+### <a name="dsc-configurations"></a>Konfiguracje DSC
 Można wyeksportować konfiguracji do plików skryptu za pomocą usługi Azure portalu lub [AzureRmAutomationDscConfiguration eksportu](https://msdn.microsoft.com/library/mt603485.aspx) polecenia cmdlet programu Windows PowerShell. Te konfiguracje można zaimportować i użyć innego konta automatyzacji.
 
 ## <a name="geo-replication-in-azure-automation"></a>Replikacja geograficzna w automatyzacji Azure

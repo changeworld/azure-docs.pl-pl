@@ -143,24 +143,14 @@
       href: ./blueprints/financial-services-regulated-workloads.md
     - name: RODO
       items:
-        - name: Zarządzanie danymi osobowymi
-          href: manage-personal-data-azure.md
-        - name: 'Wykrywanie, identyfikowanie i klasyfikowanie danych osobowych'
-          href: how-to-discover-classify-personal-data-azure.md
-        - name: Ochrona danych osobowych na platformie Azure
-          href: protect-personal-data-azure.md
-        - name: Ochrona danych osobowych za pomocą usługi Security Center
-          href: protect-personal-data-azure-security-center.md
-        - name: Ochrona danych osobowych za pomocą usługi Application Gateway
-          href: protect-personal-data-network-security.md
-        - name: Ochrona danych osobowych poprzez kontrole tożsamości i dostępu
-          href: protect-personal-data-identity-access-controls.md
-        - name: Ochrona magazynowanych danych osobowych przy użyciu szyfrowania
-          href: protect-personal-data-at-rest.md
-        - name: Ochrona przenoszonych danych osobowych przy użyciu szyfrowania
-          href: protect-personal-data-in-transit-encryption.md
-        - name: Ochrona danych osobowych za pomocą narzędzi do raportowania platformy Azure
-          href: protection-personal-data-azure-reporting-tools.md
+        - name: Analiza danych
+          href: ./blueprints/gdpr-analytics-overview.md
+        - name: Magazyn danych
+          href: ./blueprints/gdpr-datawarehouse-overview.md
+        - name: Aplikacja internetowa IaaS
+          href: ./blueprints/gdpr-iaaswa-overview.md
+        - name: Aplikacja internetowa PaaS
+          href: ./blueprints/gdpr-paaswa-overview.md
     - name: FedRAMP
       items:
         - name: Analiza danych

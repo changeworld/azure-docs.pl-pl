@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fbbce06653e60cd914c2ed4d5990aac78ef53a8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1e6f52da6f7524828cef928c2ee5d5cd92a1de1e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>W zrozumieniu i użytkowaniu twins modułu w Centrum IoT
 
@@ -27,7 +27,7 @@ W tym artykule przyjęto przeczytane [w zrozumieniu i użytkowaniu twins urządz
 
 Na stronie urządzenia zestawy SDK urządzenia IoT Hub umożliwiają tworzenie modułów, których każda otwiera niezależnie od połączenia z Centrum IoT. Pozwala na użycie oddzielnych przestrzeni nazw dla różnych składników na urządzeniu. Na przykład masz na komputerze automaty, który ma trzy różne czujników. Każdy czujnik jest kontrolowana przez różnych działów w firmie. Można utworzyć modułu dla każdej czujnika. W ten sposób każdy dział jest tylko możliwość wysyłania zadań lub metody bezpośredniego czujnika decydować, co pozwala uniknąć konfliktów i błędy użytkownika.
 
- Moduł tożsamości i moduł dwie zapewnia te same możliwości jak dwie tożsamości i devic urządzenia, ale dokładniej. To bardziej szczegółowy umożliwia urządzeń obsługujących, takie jak system operacyjny na podstawie urządzeń lub urządzeń oprogramowania układowego zarządzania wiele składników, aby odizolować konfiguracji i warunki dla każdego z tych składników. Moduł tożsamości i twins modułu zapewniają separacji zarządzania, podczas pracy z urządzeniami IoT, które składniki oprogramowania modułowych. Firma Microsoft celem obsługujący wszystkie funkcje dwie urządzenia na poziomie dwie modułu przez moduł dwie ogólnej dostępności. 
+ Moduł tożsamości i moduł dwie zapewnia te same możliwości jak tożsamości urządzenia i dwie urządzenia, ale dokładniej. To bardziej szczegółowy umożliwia urządzeń obsługujących, takie jak system operacyjny na podstawie urządzeń lub urządzeń oprogramowania układowego zarządzania wiele składników, aby odizolować konfiguracji i warunki dla każdego z tych składników. Moduł tożsamości i twins modułu zapewniają separacji zarządzania, podczas pracy z urządzeniami IoT, które składniki oprogramowania modułowych. Firma Microsoft celem obsługujący wszystkie funkcje dwie urządzenia na poziomie dwie modułu przez moduł dwie ogólnej dostępności. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

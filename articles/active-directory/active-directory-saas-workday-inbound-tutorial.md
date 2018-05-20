@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi użytkowników
 
@@ -99,14 +99,14 @@ Pojedynczy łącznik inicjowania obsługi administracyjnej interfejsy przy użyc
 
 Jest relacją między inicjowania obsługi administracyjnej wystąpienia łącznika i wystąpień aplikacji w usłudze Azure AD:
 
-| Systemu źródłowego | System docelowy |
+| System źródłowy | System docelowy |
 | ---------- | ---------- | 
 | Dzierżawy usługi Azure AD | Aplikacja SaaS |
 
 
 Jednak podczas pracy z produktu Workday i usługi Active Directory, istnieje wiele systemów źródłowych i docelowych wziąć pod uwagę:
 
-| Systemu źródłowego | System docelowy | Uwagi |
+| System źródłowy | System docelowy | Uwagi |
 | ---------- | ---------- | ---------- |
 | Dzień roboczy | Las usługi Active Directory | Każdy las jest traktowany jako system docelowy różne |
 | Dzień roboczy | Dzierżawy usługi Azure AD | Co jest wymagane dla użytkowników tylko w chmurze |
@@ -369,9 +369,9 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 | **Przełącznik (\[Active\],, "0", "True", "1")** |  AccountDisabled      |     | Tworzenie i aktualizowanie |
 | **Imię**   | givenName       |     |    Tworzenie i aktualizowanie |
 | **Nazwisko**   |   SN   |     |  Tworzenie i aktualizowanie |
-| **PreferredNameData**  |  Nazwa wyświetlana |     |   Tworzenie i aktualizowanie |
+| **PreferredNameData**  |  displayName |     |   Tworzenie i aktualizowanie |
 | **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
-| **SupervisoryOrganization**  | Dział  |     |  Tworzenie i aktualizowanie |
+| **SupervisoryOrganization**  | dział  |     |  Tworzenie i aktualizowanie |
 | **ManagerReference**   | Menedżer  |     |  Tworzenie i aktualizowanie |
 | **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
 | **AddressLineData**    |  Adres  |     |   Tworzenie i aktualizowanie |
@@ -804,20 +804,13 @@ Aby to zrobić, należy użyć [Studio produktu Workday](https://community.workd
 
 * Poprzedni problem z dziennikami inspekcji nie są widoczne w dzierżaw usługi Azure AD, znajduje się w Unii Europejskiej został rozwiązany. Jednak konfiguracji dodatkowych agenta jest wymagane dla dzierżaw usługi Azure AD w UE. Aby uzyskać więcej informacji, zobacz [część 3: Konfigurowanie agenta synchronizacji lokalnej](#Part 3: Configure the on-premises synchronization agent)
 
-## <a name="gdpr-compliance"></a>GDPR zgodności
+## <a name="gdpr-information"></a>Informacje o GDPR
 
 [Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR nakłada reguł dla firm, agencji rządowych, z systemem innym niż zysków i innych organizacji, które oferują towarów i usług do osób w UE, lub że zbieranie i analizowanie danych powiązane mieszkańców Unii Europejskiej. 
 
-Inicjowania obsługi usługi Azure AD jest GDPR zgodne wraz z resztą funkcje i usługi firmy Microsoft. Aby dowiedzieć się więcej na temat wątku GDPR firmy Microsoft, zobacz [warunków użytkowania usługi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+Aby dowiedzieć się więcej na temat wątku GDPR firmy Microsoft, zobacz [warunków użytkowania usługi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-Jednak ponieważ produktu Workday rozwiązania inicjowania obsługi administracyjnej dla usługi Active Directory wymaga agent synchronizacji musi zostać zainstalowany na serwerze przyłączonym do domeny, są niektóre zdarzenia, które mają być monitorowanie, aby być na bieżąco GDPR zgodne.
- 
-Agent tworzy dzienniki w **dziennika zdarzeń systemu Windows**, które zawierają dane osobowe.
-
-Istnieją dwa sposoby pozostać GDPR zgodnych:
-
-1. Na żądanie wyodrębnić dane dla osoby i usuwanie danych z tej osoby z dzienników zdarzeń systemu Windows. 
-2. Zachowaj przechowywania dzienników zdarzeń systemu Windows, pochodzących z procesu AADSyncAgent w obszarze 48 godzin.
+Należy pamiętać, produktu Workday, inicjowanie obsługi administracyjnej rozwiązania dla usługi Active Directory wymaga agent synchronizacji musi zostać zainstalowany na serwerze przyłączonym do domeny, czy ten agent tworzy dzienniki w **dziennika zdarzeń systemu Windows** mogącą zawierać dane osobowe.
 
 Aby uzyskać informacje na temat konfigurowania przechowywania danych dzienników zdarzeń systemu Windows, temacie [ustawienia dzienników zdarzeń](https://technet.microsoft.com/library/cc952132.aspx). Aby uzyskać ogólne informacje w dzienniku zdarzeń systemu Windows, temacie [w tym artykule](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
@@ -827,4 +820,3 @@ Aby uzyskać informacje na temat konfigurowania przechowywania danych dziennikó
 * [Dowiedz się, jak należy przejrzeć dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 * [Informacje o sposobie konfigurowania rejestracji jednokrotnej między produktu Workday i Azure Active Directory](active-directory-saas-workday-tutorial.md)
 * [Dowiedz się, jak zintegrować innych aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-

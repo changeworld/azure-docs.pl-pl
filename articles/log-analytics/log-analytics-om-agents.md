@@ -1,6 +1,6 @@
 ---
-title: Łączenie programu Operations Manager do analizy dzienników | Dokumentacja firmy Microsoft
-description: Aby chronić inwestycję istniejących w programie System Center Operations Manager i rozszerzone możliwości za pomocą analizy dzienników, Operations Manager można zintegrować z obszaru roboczego.
+title: Łączenie programu Operations Manager z usługą Log Analytics | Microsoft Docs
+description: Aby obsługiwać istniejącą inwestycję w programie System Center Operations Manager i korzystać z rozszerzonych możliwości usługi Log Analytics, można zintegrować program Operations Manager z obszarem roboczym.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 84eabef06b4d2ad71e6d9a947a77589f9159e030
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager do analizy dzienników
-Aby chronić inwestycję istniejących w programie System Center Operations Manager i rozszerzone możliwości za pomocą analizy dzienników, Operations Manager można zintegrować z obszaru roboczego analizy dzienników.  Dzięki temu, że wykorzystać możliwości analizy dzienników podczas dalszego korzystania z programu Operations Manager:
+# <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
+Aby obsługiwać istniejącą inwestycję w programie System Center Operations Manager i korzystać z rozszerzonych możliwości usługi Log Analytics, można zintegrować program Operations Manager z obszarem roboczym usługi Log Analytics.  Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
 
-* Monitorowanie kondycji usług IT z programem Operations Manager
-* Obsługa integracji z rozwiązaniami Zarządzanie usługami IT — Obsługa zarządzania zdarzeniami i problemów
-* Zarządzanie cyklem życia agenci Wdrożeni do lokalnych i chmurze publicznej maszyn wirtualnych IaaS, które należy monitorować za pomocą programu Operations Manager
+* Monitorowanie kondycji usług IT za pomocą programu Operations Manager
+* Utrzymywanie integracji z rozwiązaniami ITSM obsługującymi zarządzanie zdarzeniami i problemami
+* Zarządzanie cyklem życia agentów wdrożonych lokalnie oraz na maszynach wirtualnych IaaS w chmurze publicznej monitorowanych za pomocą programu Operations Manager
 
-Integracja z programem System Center Operations Manager dodaje wartość strategię operacji usługi za pomocą szybkości i wydajności usługi Analiza dzienników w zbierania, przechowywania i analizowania danych z programu Operations Manager.  Zaloguj się Analytics pomaga korelując i dążyć do identyfikowania usterek, problemów i udostępniając cykle w związku z procesu zarządzania istniejący problem.  Zwiększa elastyczność aparat wyszukiwania, aby zbadać wydajność, zdarzeń i alertów siły analizy dzienników przedstawiono danych sformatowanego pulpity nawigacyjne i funkcji raportowania, aby udostępnić te dane w przejrzysty sposób, w complimenting programu Operations Manager.
+Integracja z programem System Center Operations Manager stanowi dodatkową wartość w strategii operacji usługi przez wykorzystanie szybkości i wydajności usługi Log Analytics podczas zbierania, przechowywania i analizowania danych z programu Operations Manager.  Usługa Log Analytics pomaga skorelować działania mające na celu zidentyfikowanie usterek i problemów oraz poznanie cykli obsługi procesu zarządzania istniejącymi problemami.  Elastyczność aparatu wyszukiwania umożliwiającego zbadanie danych wydajności, zdarzeń i alertów wraz z bogatymi możliwościami wyeksponowania tych danych w przejrzysty sposób na pulpitach nawigacyjnych i w raportach demonstruje siłę współpracy usługi Log Analytics i programu Operations Manager.
 
-Agenci raportowania w grupie zarządzania programu Operations Manager zbieranie danych z serwerów na podstawie analizy dzienników źródła danych i rozwiązania, jakie włączono w obszarze roboczym.  W zależności od rozwiązania włączone, dane są albo wysyłane bezpośrednio z serwera zarządzania programu Operations Manager z usługą lub ze względu na ilość danych zebranych w systemie zarządzane z wykorzystaniem agentów są wysyłane bezpośrednio z agenta do analizy dzienników. Serwer zarządzania przekazuje dane bezpośrednio z usługą; nigdy nie jest ona zapisywana w bazie danych magazynu danych lub operacyjne.  Gdy serwer zarządzania utraci łączność z analizy dzienników, buforować danych lokalnie, dopóki komunikacji nie zostanie nawiązane ponownie z analizy dzienników.  Jeśli serwer zarządzania jest w trybie offline z powodu zaplanowanej konserwacji i nieplanowanych awarii, inny serwer zarządzania w grupie zarządzania wznawia łączności z analizy dzienników.  
+Agenci raportujący w grupie zarządzania programu Operations Manager zbierają dane z serwerów, bazując na źródłach danych i rozwiązaniach usługi Log Analytics, które włączono w obszarze roboczym.  W zależności od tego, które rozwiązania zostały włączone, dane z tych rozwiązań są albo przesyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi, albo, ze względu na ilość danych zgromadzonych na systemie zarządzanym przez agenta, są wysyłane bezpośrednio z agenta do usługi Log Analytics. Serwer zarządzania przekazuje dane bezpośrednio do usługi. Nie są one nigdy zapisywane w magazynie danych ani w operacyjnej bazie danych.  Jeśli serwer zarządzania utraci łączność z usługą Log Analytics, umieszcza dane w lokalnej pamięci podręcznej do czasu ponownego nawiązania komunikacji w usługą Log Analytics.  Jeśli serwer zarządzania przejdzie w tryb offline z powodu zaplanowanej konserwacji lub nieplanowanej awarii, inny serwer zarządzania w grupie zarządzania wznawia łączność z usługą Log Analytics.  
 
-Na poniższym diagramie przedstawiono połączenia między agentami a serwerami zarządzania w grupie zarządzania programu System Center Operations Manager i analizy dziennika, w tym kierunku i portów.   
+Na poniższym diagramie przedstawiono połączenie między serwerami zarządzania i agentami w grupie zarządzania programu System Center Operations Manager oraz usłudze Log Analytics wraz z informacją o kierunkach i portach.   
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Jeśli zasady zabezpieczeń IT nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, aby połączyć się z bramą OMS do odbierania informacji o konfiguracji i wysyłania danych zebranych w zależności od rozwiązania włączone można skonfigurować serwery zarządzania.  Aby uzyskać więcej informacji i kroki dotyczące sposobu konfigurowania grupę zarządzania programu Operations Manager do komunikowania się za pośrednictwem bramy OMS z usługą analizy dzienników, zobacz [łączenia komputerów przy użyciu bramy OMS OMS](log-analytics-oms-gateway.md).  
+Jeśli zasady zabezpieczeń IT nie zezwalają na połączenia komputerów w sieci z Internetem, serwery zarządzania można skonfigurować w taki sposób, aby łączyły się z bramą OMS w celu odbierania informacji o konfiguracji i wysyłania zebranych danych w zależności od tego, które rozwiązania zostały włączone.  Aby uzyskać więcej informacji i instrukcje konfigurowania grupy zarządzania programu Operations Manager na potrzeby komunikowania się za pośrednictwem bramy OMS z usługą Log Analytics, zobacz [Connect computers to OMS using the OMS Gateway](log-analytics-oms-gateway.md) (Łączenie komputerów z konsolą OMS za pośrednictwem bramy OMS).  
 
 ## <a name="system-requirements"></a>Wymagania systemowe
-Przed rozpoczęciem należy przejrzeć następujące informacje, aby sprawdzić, czy zostały spełnione wymagania wstępne.
+Przed rozpoczęciem przejrzyj następujące informacje, aby sprawdzić, czy zostały spełnione wymagania wstępne.
 
-* Log Analytics obsługuje tylko UR6 programu System Center Operations Manager 1801, programu Operations Manager 2016, Operations Manager 2012 z dodatkiem SP1 lub nowszej, a programu Operations Manager 2012 R2 UR2 i większa.  Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
-* Wszystkie agenty programu Operations Manager musi spełniać wymagania minimalne pomocy technicznej. Upewnij się, że agenci są przy minimalnej aktualizacji, w przeciwnym razie ruchu agenta systemu Windows może zakończyć się niepowodzeniem i wiele błędów może wypełnić dziennik zdarzeń programu Operations Manager.
-* Obszar roboczy analizy dzienników.  Aby uzyskać więcej informacji, przejrzyj [wprowadzenie do analizy dzienników](log-analytics-get-started.md).
+* Usługa Log Analytics obsługuje tylko programy System Center Operations Manager 1801, Operations Manager 2016, Operations Manager 2012 SP1 UR6 i nowsze oraz Operations Manager 2012 R2 UR2 i nowsze.  Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
+* Wszystkie agenty programu Operations Manager muszą spełniać minimalne wymagania dotyczące obsługi. Upewnij się, że agenci mają wymagane minimalne poziomy aktualizacji. W przeciwnym razie ruch agenta w systemie Windows może zakończyć się niepowodzeniem, a w dzienniku zdarzeń programu Operations Manager może pojawić się wiele błędów.
+* Obszar roboczy usługi Log Analytics.  Aby uzyskać więcej informacji, przejrzyj [dokumentację usługi Log Analytics](log-analytics-get-started.md).
 
 ### <a name="network"></a>Sieć
-Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla agenta programu Operations Manager, serwerów zarządzania i konsoli operacje, aby komunikować się z analizy dzienników.  Ruch z każdego składnika jest wychodzący z sieci lokalnej z usługą analizy dzienników.     
+W poniższej tabeli zawarto informacje o konfiguracji serwera proxy i zapory, które są wymagane przez agenta programu Operations Manager, serwery zarządzania i konsolę zarządzania operacjami, aby móc komunikować się z usługą Log Analytics.  Ruch z każdego składnika jest ruchem wychodzącym z sieci do usługi Log Analytics.     
 
-|Zasób | Numer portu| Obejście kontroli HTTP|  
+|Zasób | Numer portu| Obejście inspekcji HTTP|  
 |---------|------|-----------------------|  
 |**Agent**|||  
 |\*.ods.opinsights.azure.com| 443 |Yes|  
@@ -59,7 +59,7 @@ Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla 
 |\*.blob.core.windows.net| 443| Yes|  
 |\*.ods.opinsights.azure.com| 443| Yes|  
 |*.azure-automation.net | 443| Yes|  
-|**Konsola programu Operations Manager z usługą OMS**|||  
+|**Konsola programu Operations Manager do usługi OMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
 |\*.live.com| 80 i 443||  
@@ -71,145 +71,143 @@ Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla 
 |api.loganalytics.io| 80 i 443||
 |docs.loganalytics.io| 80 i 443||  
 
-## <a name="connecting-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager do analizy dzienników
-Wykonaj poniższą sekwencję czynności, aby skonfigurować grupę zarządzania programu Operations Manager do nawiązania połączenia co obszarów roboczych analizy dzienników.
+## <a name="connecting-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
+Wykonaj następujące czynności, aby skonfigurować grupę zarządzania programu Operations Manager na potrzeby nawiązywania połączenia z jednym z obszarów roboczych usługi Log Analytics.
 
-Jeśli po raz pierwszy, rejestruje grupę zarządzania programu Operations Manager z obszaru roboczego analizy dzienników i serwery zarządzania muszą komunikować się z usługą za pośrednictwem serwera proxy lub serwera bramy OMS, można określić konfigurację serwera proxy dla Grupa zarządzania nie jest dostępna w konsoli operacje.  Grupa zarządzania nie mają być pomyślnie zarejestrowane w usłudze, zanim ta opcja jest dostępna.  Musisz zaktualizować konfigurację serwera proxy systemu za pomocą narzędzia Netsh w systemie konsoli operacje z systemem do skonfigurowania integracji i wszystkich serwerów zarządzania w grupie zarządzania.  
+Jeśli grupa zarządzania programu Operations Manager rejestruje się po raz pierwszy w obszarze roboczym usługi Log Analytics, a serwery zarządzania muszą komunikować się z usługą za pośrednictwem serwera proxy lub serwera bramy OMS, opcja określania konfiguracji serwera proxy dla grupy zarządzania nie jest dostępna w konsoli zarządzania operacjami.  Ta opcja staje się dostępna dopiero po pomyślnym zarejestrowaniu grupy zarządzania w usłudze.  Aby skonfigurować integrację i wszystkie serwery zarządzania w grupie zarządzania, musisz zaktualizować konfigurację serwera proxy systemu za pomocą narzędzia Netsh w systemie, w którym działa konsola zarządzania operacjami.  
 
-1. Otwórz podniesionego wiersza poleceń.
-   a. Przejdź do **Start** i typ **cmd**.
-   b. Kliknij prawym przyciskiem myszy **wiersza polecenia** i wybierz polecenie Uruchom jako administrator **.
-2. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
+1. Otwórz wiersz polecenia z podwyższonymi uprawnieniami.
+1. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Po zakończeniu następujące kroki, aby zintegrować z analizy dzienników, można usunąć konfiguracji, uruchamiając `netsh winhttp reset proxy` , a następnie użyj **Konfiguruj serwer proxy** opcję w konsoli operacje, aby określić serwer proxy lub OMS Serwer bramy. 
+Po zakończeniu opisanych poniżej kroków integrowania z usługą Log Analytics możesz usunąć konfigurację, uruchamiając polecenie `netsh winhttp reset proxy`, a następnie użyć opcji **Konfiguruj serwer proxy** w konsoli zarządzania operacjami, aby określić serwer proxy lub serwer bramy OMS. 
 
-1. W konsoli programu Operations Manager, wybierz **administracji** obszaru roboczego.
-2. Rozwiń węzeł usługi Operations Management Suite, a następnie kliknij przycisk **połączenia**.
-3. Kliknij przycisk **przeprowadzić rejestrację w usłudze Operations Management Suite** łącza.
-4. Na **Kreator dołączania Operations Management Suite: uwierzytelnianie** strony, wprowadź adres e-mail lub numer telefonu i hasło konta administratora, który jest skojarzony z subskrypcją pakietu OMS, a następnie kliknij przycisk  **Zaloguj się**.
-5. Po pomyślnie uwierzytelnienia, na **Kreator dołączania Operations Management Suite: Wybierz obszar roboczy** strony, zostanie wyświetlony monit wybierz obszar roboczy analizy dzienników.  Jeśli masz więcej niż jeden obszar roboczy, wybierz obszar roboczy, aby zarejestrować grupę zarządzania programu Operations Manager z listy rozwijanej, a następnie kliknij przycisk **dalej**.
+1. W konsoli programu Operations Manager wybierz obszar roboczy **Administracja**.
+2. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
+3. Kliknij link **Zarejestruj się w konsoli Operations Management Suite**.
+4. Na stronie **Kreator dołączania konsoli Operations Management Suite: Uwierzytelnianie** wprowadź adres e-mail lub numer telefonu i hasło konta administratora, które jest skojarzone z subskrypcją pakietu OMS, a następnie kliknij przycisk **Zaloguj się**.
+5. Po pomyślnym uwierzytelnieniu na stronie **Kreator dołączania konsoli Operations Management Suite: Wybieranie obszaru roboczego** zostanie wyświetlony monit o wybranie obszaru roboczego usługi Log Analytics.  Jeśli masz więcej niż jeden obszar roboczy, wybierz z listy rozwijanej ten obszar roboczy, który ma zostać zarejestrowany w grupie zarządzania programu Operations Manager, a następnie kliknij przycisk **Dalej**.
    
    > [!NOTE]
-   > Operations Manager obsługuje tylko jeden obszar roboczy analizy dzienników naraz. Połączenie i komputerów, które zostały zarejestrowane do analizy dzienników z poprzednich obszaru roboczego są usuwane z analizy dzienników.
+   > Program Operations Manager obsługuje jednocześnie tylko jeden obszar roboczy usługi Log Analytics. Połączenie i komputery, które były zarejestrowane w usłudze Log Analytics w kontekście poprzedniego obszaru roboczego, zostaną usunięte z usługi Log Analytics.
    > 
    > 
-6. Na **Kreator dołączania Operations Management Suite: Podsumowanie** , Potwierdź ustawienia i jeśli są poprawne, kliknij przycisk **Utwórz**.
-7. Na **Kreator dołączania Operations Management Suite: Zakończ** kliknij przycisk **Zamknij**.
+6. Na stronie **Kreator dołączania konsoli Operations Management Suite: Podsumowanie** sprawdź ustawienia i jeśli są one poprawne, kliknij przycisk **Utwórz**.
+7. Na stronie **Kreator dołączania konsoli Operations Management Suite: Kończenie** kliknij przycisk **Zamknij**.
 
-### <a name="add-agent-managed-computers"></a>Dodaj komputery zarządzane z wykorzystaniem agentów
-Po skonfigurowaniu integracji z obszaru roboczego analizy dzienników, to tylko nawiązuje połączenie z usługą, zbierane żadne dane z agentów raportowania do grupy zarządzania. Nie będzie to nastąpić dopiero po skonfigurowaniu, które określone komputery zarządzane z wykorzystaniem agentów zbiera dane analizy dziennika. Możesz wybrać obiekty komputerów indywidualnie lub wybrać grupy, który zawiera obiekty typu komputer z systemem Windows. Nie można wybrać grupę zawierającą wystąpienia klasy innego, takich jak dyski logiczne w systemie lub bazy danych SQL.
-
-1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. Rozwiń węzeł usługi Operations Management Suite, a następnie kliknij przycisk **połączenia**.
-3. Kliknij przycisk **dodać grupy** łącze w obszarze Akcje pozycji w prawej części okienka.
-4. W **wyszukiwanie komputera** okno dialogowe, możesz wyszukać komputerów lub grup monitorowanych przez program Operations Manager. Wybierz komputery lub grupy, aby rozpocząć korzystanie z analizy dzienników, kliknij przycisk **Dodaj**, a następnie kliknij przycisk **OK**.
-
-Można wyświetlić komputerów i grup skonfigurowanych do zbierania danych z komputerów zarządzanych węźle Operations Management Suite w **administracji** obszaru roboczego w konsoli operacje.  W tym miejscu można Dodaj lub usuń komputery i grupy odpowiednio do potrzeb.
-
-### <a name="configure-proxy-settings-in-the-operations-console"></a>Skonfiguruj ustawienia serwera proxy w konsoli operacje
-Jeśli wewnętrzny serwer proxy jest między grupą zarządzania a usługą Analtyics dziennika, należy wykonać następujące czynności.  Te ustawienia są centralnie zarządzanego z grupy zarządzania i przekazane do systemów zarządzane z wykorzystaniem agentów, które znajdują się w zakresie zbierania danych dla analizy dzienników.  Jest to przydatne w przypadku gdy niektórych rozwiązań obejścia serwera zarządzania i przekazuj dane bezpośrednio do usługi.
+### <a name="add-agent-managed-computers"></a>Dodawanie komputerów zarządzanych przez agenta
+Po skonfigurowaniu integracji z obszarem roboczym usługi Log Analytics zostaje nawiązane połączenie z usługą, ale żadne dane nie są jeszcze zbierane z agentów raportujących do grupy zarządzania. Dzieje się tak aż do czasu skonfigurowania, które konkretne komputery zarządzane przez agenta mają zbierać dane dla usługi Log Analytics. Obiekty komputerów można wybierać indywidualnie lub przez wybranie grupy zawierającej obiekty komputerów z systemem Windows. Nie można wybrać grupy zawierającej wystąpienia innej klasy, na przykład dysków logicznych lub baz danych SQL.
 
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. Rozwiń pozycję Operations Management Suite, a następnie kliknij przycisk **połączenia**.
+2. Rozwiń węzeł Operations Management Suite i kliknij pozycję **Połączenie**.
+3. Kliknij link **Dodaj komputer/grupę** pod nagłówkiem Akcje w prawej części okienka.
+4. W oknie dialogowym **Wyszukiwanie komputerów** można przeprowadzić wyszukiwanie komputerów lub grup monitorowanych przez program Operations Manager. Wybierz komputery lub grupy, które chcesz dołączyć do usługi Log Analytics, kliknij przycisk **Dodaj**, a następnie przycisk **OK**.
+
+Komputery i grupy skonfigurowane na potrzeby zbierania danych z węzła Komputery zarządzane można wyświetlić w sekcji Operations Management Suite w obszarze roboczym **Administracja** konsoli zarządzania operacjami.  W tym miejscu możesz odpowiednio do potrzeb dodawać lub usuwać komputery i grupy.
+
+### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurowanie ustawień serwera proxy w konsoli zarządzania operacjami
+Wykonaj następujące czynności, jeśli wewnętrzny serwer proxy znajduje się między grupą zarządzania a usługą Log Analytics.  Te ustawienia są centralnie zarządzane z poziomu grupy zarządzania i przekazywane do tych systemów zarządzanych przez agenta, które zostały wyznaczone do zbieranie danych dla usługi Log Analytics.  Jest to korzystne, gdy niektóre rozwiązania pomijają serwer zarządzania i wysyłają dane bezpośrednio do usługi.
+
+1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
+2. Rozwiń węzeł Operations Management Suite, a następnie kliknij pozycję **Połączenia**.
 3. W widoku Połączenie OMS kliknij pozycję **Konfiguruj serwer proxy**.
-4. Na **Kreator Operations Management Suite: serwer Proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostępu do usługi Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 a następnie kliknij przycisk **Zakończ**.
+4. Na stronie **Kreator konsoli Operations Management Suite: Serwer proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostęp do konsoli Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 i kliknij przycisk **Zakończ**.
 
-Jeśli serwer proxy wymaga uwierzytelnienia, wykonaj następujące kroki, aby skonfigurować poświadczenia i ustawienia, które należy obejmie zarządzanych komputerów, które raporty do OMS w grupie zarządzania.
+Jeśli serwer proxy wymaga uwierzytelnienia, wykonaj następujące kroki, aby skonfigurować poświadczenia i ustawienia, które będą musiały być przekazane do komputerów zarządzanych raportujących do konsoli OMS w grupie zarządzania.
 
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
 2. W obszarze **Konfiguracja Uruchom jako** wybierz pozycję **Profile**.
 3. Otwórz profil **Serwer proxy profilu Uruchom jako usługi System Center Advisor**.
-4. W Kreatora profilu Uruchom jako kliknij przycisk Dodaj, aby użyć konta Uruchom jako. Można utworzyć [konta Uruchom jako](https://technet.microsoft.com/library/hh321655.aspx) lub użyj istniejącego konta. Konto to musi mieć wystarczające uprawnienia do komunikacji za pośrednictwem serwera proxy.
-5. Aby ustawić konto do zarządzania, wybierz **wybraną klasę, grupę lub obiekt**, kliknij przycisk **wybierz...** a następnie kliknij przycisk **grupy...** Aby otworzyć **wyszukiwania grupy** pole.
-6. Wyszukaj, a następnie wybierz **grupy monitorowania serwera programu Microsoft System Center Advisor**.  Kliknij przycisk **OK** po wybraniu grupy, aby zamknąć **wyszukiwania grupy** pole.
-7. Kliknij przycisk **OK** zamknąć **Dodaj konto Uruchom jako** pola.
-8. Kliknij przycisk **zapisać** aby zakończyć pracę kreatora i zapisać zmiany.
+4. W kreatorze profilu Uruchom jako kliknij przycisk Dodaj, aby użyć konta Uruchom jako. Możesz utworzyć [konto Uruchom jako](https://technet.microsoft.com/library/hh321655.aspx) lub użyć istniejącego konta. Konto to musi mieć wystarczające uprawnienia do komunikacji za pośrednictwem serwera proxy.
+5. Aby ustawić konto do zarządzania, wybierz pozycję **Wybrana klasa, grupa lub obiekt**, kliknij polecenie **Wybierz...**, a następnie kliknij pozycję **Grupuj...** w celu otwarcie okna **Wyszukiwanie grup**.
+6. Wyszukaj **grupę serwerów monitorowania usługi Microsoft System Center Advisor**, a następnie ją wybierz.  Po wybraniu grupy kliknij przycisk **OK**, aby zamknąć okno **Wyszukiwanie grup**.
+7. Kliknij przycisk **OK**, aby zamknąć okno **Dodawanie konta Uruchom jako**.
+8. Kliknij przycisk **Zapisz**, aby zakończyć pracę kreatora i zapisać zmiany.
 
-Po utworzeniu połączenia i konfigurowanie agentów, które będą zbierania i raportowania danych z analizą dzienników, następujące konfiguracja zostanie zastosowana do grupy zarządzania, niekoniecznie w kolejności:
+Po utworzeniu połączenia i skonfigurowaniu agentów, którzy będą zbierać dane i raportować je do usługi Log Analytics, następująca konfiguracja zostanie zastosowana w grupie zarządzania, niekoniecznie w przedstawionej kolejności:
 
-* Konto Uruchom jako **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** jest tworzony.  Jest on skojarzony z profilem Uruchom jako **Microsoft System Center Advisor Uruchom jako profil obiektu Blob** i dotyczy dwóch klas - **serwera zbierania** i **grupa zarządzania programu Operations Manager** .
-* Są tworzone dwa łączniki.  Pierwszy nosi nazwę **Microsoft.SystemCenter.Advisor.DataConnector** i jest automatycznie konfigurowana subskrypcji, która przekazuje wszystkie alerty generowane ze wystąpień wszystkie klasy w grupie zarządzania w celu analizy dzienników. Drugi łącznik jest **łącznik usługi Advisor**, który jest odpowiedzialny za udostępnianie danych i komunikacji z usługą sieci web OMS.
-* Agenci i grup, które zostały wybrane do zbierania danych w grupie zarządzania jest dodawane do **grupy monitorowania serwera programu Microsoft System Center Advisor**.
+* Tworzone jest konto Uruchom jako o nazwie **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate**.  Zostaje ono skojarzone z profilem Uruchom jako **Microsoft System Center Advisor Run As Profile Blob** i dotyczy dwóch klas — **Collection Server** i **Operations Manager Management Group**.
+* Tworzone są dwa łączniki.  Pierwszy nosi nazwę **Microsoft.SystemCenter.Advisor.DataConnector** i jest automatycznie konfigurowany z subskrypcją, która przekazuje wszystkie alerty generowane przez wystąpienia wszystkich klas w grupie zarządzania do usługi Log Analytics. Drugi łącznik to **Advisor Connector**, który jest odpowiedzialny za udostępnianie danych i komunikację z usługą internetową OMS.
+* Agenci i grupy wybrane do zbierania danych w grupie zarządzania są dodawane do **grupy serwera monitorowania usługi Microsoft System Center Advisor**.
 
-## <a name="management-pack-updates"></a>Aktualizacji pakietu administracyjnego
-Po zakończeniu konfiguracji grupy zarządzania programu Operations Manager ustanawia połączenie z usługą analizy dzienników.  Serwer zarządzania synchronizuje się z usługą sieci web i odbierać informacje o zaktualizowanej konfiguracji w postaci pakietów administracyjnych dla rozwiązań włączonego, które integrują się z programem Operations Manager.   Operations Manager sprawdza dostępność aktualizacji tych pakietów administracyjnych i automatycznie pobrać i importowane, gdy są one dostępne.  Istnieją dwie reguły w szczególności kontrolować to zachowanie, które:
+## <a name="management-pack-updates"></a>Aktualizacje pakietu administracyjnego
+Po zakończeniu konfigurowania grupa zarządzania programu Operations Manager nawiązuje połączenie z usługą Log Analytics.  Serwer zarządzania synchronizuje się z usługą internetową i odbiera zaktualizowane informacje o konfiguracji w postaci pakietów administracyjnych dla włączonych rozwiązań zintegrowanych z programem Operations Manager.   Program Operations Manager sprawdza dostępność aktualizacji tych pakietów administracyjnych i gdy są dostępne, automatycznie je pobiera i importuje.  To zachowanie jest kontrolowane w szczególności przez dwie reguły:
 
-* **Microsoft.SystemCenter.Advisor.MPUpdate** -aktualizacji podstawowej pakietów administracyjnych analizy dzienników. Domyślnie uruchamiane co 12 godzin.
-* **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** — aktualizacje pakietów administracyjnych rozwiązania włączona w obszarze roboczym. Domyślnie uruchamiane co pięć (5) minut.
+* **Microsoft.SystemCenter.Advisor.MPUpdate** — aktualizuje podstawowe pakiety administracyjne usługi Log Analytics. Ta reguła jest domyślnie uruchamiana co 12 godzin.
+* **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** — aktualizuje pakiety administracyjne rozwiązań, które zostały włączone w obszarze roboczym. Ta reguła jest domyślnie uruchamiana co pięć (5) minut.
 
-Można zastąpić te dwie reguły, aby uniknąć automatycznego pobierania wyłączając je, lub zmodyfikować częstotliwości jak często serwer zarządzania synchronizuje się z usługą OMS, aby ustalić, czy nowy pakiet zarządzania jest dostępny i powinien zostać pobrany.  Wykonaj kroki [jak zastąpienie zasady lub monitora](https://technet.microsoft.com/library/hh212869.aspx) do modyfikowania **częstotliwość** parametru z wartością w sekundach, aby zmienić harmonogram synchronizacji lub zmodyfikować **włączone**parametr można wyłączyć reguły.  Cel przesłonięcia względem wszystkich obiektów klasy grupa zarządzania programu Operations Manager.
+Te dwie reguły można przesłonić, aby uniknąć automatycznego pobierania. W tym celu należy je wyłączyć lub zmodyfikować częstotliwość synchronizacji serwera zarządzania z usługą OMS, aby ustalić, czy nowy pakiet administracyjny jest dostępny i czy powinien zostać pobrany.  Wykonaj instrukcje [How to Override a Rule or Monitor](https://technet.microsoft.com/library/hh212869.aspx) (Jak przesłonić regułę lub monitor), aby zmodyfikować parametr **Frequency** (Częstotliwość) wartością w sekundach w celu zmiany harmonogramu synchronizacji lub parametr **Enabled** (Włączone) w celu wyłączenia reguł.  Przesłonięcie dotyczy wszystkich obiektów klasy Operations Manager Management Group.
 
-Jeśli chcesz kontynuować następujące istniejące zmiany kontroli procesu kontroli wersji pakietu zarządzania w danej grupie zarządzania w środowisku produkcyjnym, można wyłączyć reguły i włączyć je w określonych godzinach, kiedy aktualizacje są dozwolone. Jeśli masz rozwoju lub grupy zarządzania w odpowiedzi na pytania w danym środowisku i ma łączność z Internetem, można skonfigurować tej grupy zarządzania z obszaru roboczego analizy dzienników, aby obsługiwać ten scenariusz.  Dzięki temu można Przegląd i ocena iteracyjne wersje pakietów administracyjnych analizy dzienników przed ich do grupy zarządzania produkcji.
+Jeśli chcesz nadal korzystać z istniejącego procesu kontroli zmian do kontrolowania wydań pakietów administracyjnych w produkcyjnej grupie zarządzania, możesz wyłączyć te reguły i włączać je w określonych godzinach, kiedy aktualizacje są dozwolone. Jeśli w swoim środowisku masz grupę deweloperską lub grupę zarządzania kontroli jakości, która ma połączenie z Internetem, możesz skonfigurować tę grupę zarządzania za pomocą obszaru roboczego usługi Log Analytics do obsługi tego scenariusza.  Dzięki temu będzie można przejrzeć i ocenić iteracyjne wydania pakietów administracyjnych usługi Log Analytics przed ich wdrożeniem w produkcyjnej grupie zarządzania.
 
-## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Przełącz grupę programu Operations Manager do nowego obszaru roboczego analizy dzienników
+## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Przełączanie grupy programu Operations Manager do nowego obszaru roboczego usługi Log Analytics
 1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
-2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **analizy dzienników** , a następnie utworzyć obszaru roboczego.  
-3. Otwórz konsolę programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager i wybierz **administracji** obszaru roboczego.
-4. Rozwiń pozycję Operations Management Suite, a następnie wybierz **połączenia**.
-5. Wybierz **skonfiguruj ponownie operację Management Suite** łącze na środku strony panelu.
-6. Postępuj zgodnie z **Kreator dołączania Operations Management Suite** , a następnie wprowadź adres e-mail, numer telefonu i hasło konta administratora, który jest skojarzony z nowego obszaru roboczego analizy dzienników.
+2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics** i utwórz obszar roboczy.  
+3. Otwórz konsolę programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager i wybierz obszar roboczy **Administracja**.
+4. Rozwiń węzeł Operations Management Suite i wybierz pozycję **Połączenia**.
+5. Wybierz link **Skonfiguruj ponownie konsolę Operation Management Suite** na środku panelu.
+6. Postępuj zgodnie z instrukcjami **Kreatora dołączania konsoli Operations Management Suite** i wprowadź adres e-mail lub numer telefonu oraz hasło konta administratora, które jest skojarzone z nowym obszarem roboczym usługi Log Analytics.
    
    > [!NOTE]
-   > **Kreator dołączania Operations Management Suite: Wybierz obszar roboczy** strona przedstawia istniejący obszar roboczy, który jest używany.
+   > Na stronie **Kreator dołączania konsoli Operations Management Suite: Wybieranie obszaru roboczego** przedstawiono istniejący używany obszar roboczy.
    > 
    > 
 
-## <a name="validate-operations-manager-integration-with-log-analytics"></a>Sprawdź poprawność integracji programu Operations Manager z analizy dzienników
-Istnieje kilka sposobów można zweryfikować, że analizy dzienników do integracji programu Operations Manager zakończyła się powodzeniem.
+## <a name="validate-operations-manager-integration-with-log-analytics"></a>Sprawdzanie poprawności integracji programu Operations Manager z usługą Log Analytics
+Istnieje kilka różnych sposobów weryfikowania pomyślnej integracji usługi Log Analytics z programem Operations Manager.
 
-### <a name="to-confirm-integration-from-the-azure-portal"></a>Aby potwierdzić integracji z portalu Azure
+### <a name="to-confirm-integration-from-the-azure-portal"></a>Potwierdzanie integracji w witrynie Azure Portal
 1. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane.
-2. Na liście obszarów roboczych usługi Analiza dzienników wybierz odpowiednie obszaru roboczego.  
-3. Wybierz **Zaawansowane ustawienia**, wybierz pozycję **połączonych źródeł**, a następnie wybierz **programu System Center**. 
-4. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania wymienione do liczby agentów i stan podczas ostatniego Odebrano dane.
+2. Na liście obszarów roboczych usługi Log Analytics wybierz odpowiedni obszar roboczy.  
+3. Wybierz kolejno pozycje **Ustawienia zaawansowane**, **Połączone źródła**, **System Center**. 
+4. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania z liczbą agentów i stanem z godziny ostatniego odebrania danych.
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
 
-### <a name="to-confirm-integration-from-the-operations-console"></a>Aby potwierdzić integracji z poziomu konsoli operacje
+### <a name="to-confirm-integration-from-the-operations-console"></a>Potwierdzanie integracji w konsoli zarządzania operacjami
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
-2. Wybierz **pakietów administracyjnych** i **Wyszukaj:** polu tekstowym wpisz **Advisor** lub **analizy**.
-3. W zależności od rozwiązania, które aktywowano zostanie wyświetlony odpowiedni pakiet administracyjny, w wynikach wyszukiwania.  Na przykład jeśli włączono rozwiązania zarządzania alertami, pakiet administracyjny programu Microsoft System Center Advisor alertu Management jest na liście.
-4. Z **monitorowanie** wyświetlić, przejdź do **operacji zarządzania Suite\Health stanu** widoku.  Wybierz serwer zarządzania, w obszarze **stan serwera zarządzania** okienku i w **: widok szczegółów** okienko upewnij się, wartość właściwości **adres URI usługi uwierzytelniania** zgodny Identyfikator dziennika analizy obszaru roboczego.
+2. Wybierz pozycję **Pakiety administracyjne** i w polu tekstowym **Wyszukaj:** wpisz **Advisor** lub **Intelligence**.
+3. W zależności od włączonych rozwiązań w wynikach wyszukiwania zobaczysz nazwę odpowiedniego pakietu administracyjnego.  Na przykład jeśli włączono rozwiązanie Alert Management, na liście zostanie wyświetlony pakiet administracyjny Microsoft System Center Advisor Alert Management.
+4. Z widoku **Monitorowanie** przejdź do widoku **Operations Management Suite\Stan kondycji**.  W okienku **Stan serwera zarządzania** wybierz serwer zarządzania i w okienku **Widok szczegółów** potwierdź, że wartość właściwości **Identyfikator URI usługi uwierzytelniania** jest zgodny z identyfikatorem obszaru roboczego usługi Log Analytics.
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
-## <a name="remove-integration-with-log-analytics"></a>Usuń Integracja z usługą analizy dzienników
-Gdy nie są już potrzebne integracji między grupę zarządzania programu Operations Manager i obszaru roboczego analizy dzienników, istnieje kilka kroków wymaganych do prawidłowo Usuń połączenie i konfigurację w grupie zarządzania. Poniższa procedura ma możesz zaktualizować obszar roboczy analizy dzienników, usuwając odwołanie do grupy zarządzania, Usuń łączniki analizy dzienników, a następnie usuń pakiety administracyjne obsługujące integrację z usługą.   
+## <a name="remove-integration-with-log-analytics"></a>Usuwanie integracji z usługą Log Analytics
+Jeśli integracja między grupą zarządzania programu Operations Manager i obszarem roboczym usługi Log Analytics nie jest już potrzebna, należy wykonać kilka czynności, aby prawidłowo usunąć połączenie i konfigurację grupy zarządzania. Wykonanie poniższej procedury spowoduje zaktualizowanie obszaru roboczego usługi Log Analytics przez usunięcie odwołania do grupy zarządzania, usunięcie łączników usługi Log Analytics, a następnie usunięcie pakietów administracyjnych obsługujących integrację z usługą.   
 
-Pakiety administracyjne rozwiązań włączono integrujące się z programem Operations Manager i pakiety administracyjne wymagane do obsługi integracji z usługą analizy dzienników nie można łatwo usunąć z grupy zarządzania.  Jest tak, ponieważ niektóre z pakietów administracyjnych analizy dzienników są zależne od innych pakietów administracyjnych pokrewne.  Aby usunąć pakietów administracyjnych, które ma zależność od innych pakietów administracyjnych, Pobierz skrypt [Usuń pakiet administracyjny z zależnościami](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z Centrum skryptów w witrynie TechNet.  
+Usunięcie z grupy zarządzania pakietów administracyjnych dla włączonych rozwiązań zintegrowanych z programem Operations Manager i pakietów administracyjnych wymaganych do obsługi integracji z usługą Log Analytics nie jest łatwe.  Dzieje się tak, ponieważ niektóre z pakietów administracyjnych usługi Log Analytics są zależne od innych pokrewnych pakietów administracyjnych.  Aby usunąć pakiety administracyjne, które są zależne od innych pakietów administracyjnych, pobierz skrypt [usuwający pakiet administracyjny z zależnościami](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z Centrum skryptów w witrynie TechNet.  
 
 1. Otwórz powłokę poleceń programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
    
     > [!WARNING]
-    > Upewnij się, nie masz żadnych niestandardowych pakietów administracyjnych z programu word Advisor lub IntelligencePack w nazwie przed kontynuowaniem, w przeciwnym razie następujące kroki usunąć je z grupą zarządzania.
+    > Przed przejściem do następnego kroku upewnij się, nie masz żadnych niestandardowych pakietów administracyjnych z ciągiem Advisor lub IntelligencePack w nazwie. W przeciwnym razie kolejne kroki spowodują ich usunięcie z grupy zarządzania.
     > 
 
 2. W wierszu polecenia powłoki wpisz `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-3. Typ następnego `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-4. Aby usunąć wszystkie pakiety administracyjne, które pozostały, który ma zależność od innych pakietów administracyjnych programu System Center Advisor, należy użyć skryptu *RecursiveRemove.ps1* wcześniej pobranego z Centrum skryptów w witrynie TechNet.  
+3. Następnie wpisz `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+4. Aby usunąć wszystkie pozostałe pakiety administracyjne, które są zależne od innych pakietów administracyjnych programu System Center Advisor, użyj skryptu *RecursiveRemove.ps1* pobranego wcześniej z Centrum skryptów w witrynie TechNet.  
  
     > [!NOTE]
-    > Nie należy usuwać pakiety administracyjne programu Microsoft System Center Advisor lub programu Microsoft System Center Advisor wewnętrznego.  
+    > Nie należy usuwać pakietów administracyjnych Microsoft System Center Advisor i Microsoft System Center Advisor Internal.  
     >  
 
-5. Otwórz konsolę operacje programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
-6. W obszarze **administracji**, wybierz pozycję **pakietów administracyjnych** węzeł i w **Wyszukaj:** wpisz **Advisor** i sprawdź, czy w grupie zarządzania nadal zaimportowaniu pakietów administracyjnych:
+5. Otwórz konsolę zarządzania operacjami programu Operations Manager przy użyciu konta należącego do roli Administratorzy programu Operations Manager.
+6. W obszarze **Administracja** wybierz węzeł **Pakiety administracyjne**, a następnie w polu tekstowym **Wyszukaj:** wpisz **Advisor** i upewnij się, że następujące pakiety administracyjne są nadal zaimportowane w Twojej grupie zarządzania:
    
    * Microsoft System Center Advisor
-   * Microsoft System Center Advisor wewnętrzny
-7. W portalu pakietu OMS kliknij kafelek **Ustawienia**.
-8. Wybierz **połączone źródła**.
-9. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania, który chcesz usunąć z obszaru roboczego.  W kolumnie **dane o ostatniej**, kliknij przycisk **Usuń**.  
+   * Microsoft System Center Advisor Internal
+1. Otwórz menu **Ustawienia zaawansowane** obszaru roboczego usługi Log Analytics w witrynie Azure Portal.
+1. Wybierz pozycję **Połączone źródła**, a następnie **System Center**.
+1. Powinna być widoczna nazwa grupy zarządzania, którą chcesz usunąć z obszaru roboczego.  W kolumnie **Ostatnie dane** kliknij link **Usuń**.  
    
     > [!NOTE]
-    > **Usuń** łącze nie będą dostępne dopiero po 14 dniach od Jeśli nic się nie wykryto z podłączonej grupy zarządzania.  
+    > Link **Usuń** nie będzie dostępny po 14 dniach, jeśli nie zostanie wykryta żadna aktywność w połączonej grupie zarządzania.  
     > 
 
-10. Zostanie wyświetlone okno z prośbą o potwierdzenie, czy chcesz kontynuować usuwanie.  Kliknij przycisk **tak** aby kontynuować. 
+10. Zostanie wyświetlone okno z prośbą o potwierdzenie operacji usunięcia.  Kliknij pozycję **Tak**, aby kontynuować. 
 
-Aby usunąć dwa łączniki - Microsoft.SystemCenter.Advisor.DataConnector i łącznik usługi Advisor, Zapisz poniższy skrypt programu PowerShell na komputerze i wykonywanie za pomocą poniższych przykładów:
+Aby usunąć dwa łączniki — jeden o nazwie Microsoft.SystemCenter.Advisor.DataConnector, a drugi o nazwie Advisor Connector, zapisz poniższy skrypt programu PowerShell na swoim komputerze i wykonaj go, korzystając z poniższych przykładów:
 
 ```
     .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
@@ -217,7 +215,7 @@ Aby usunąć dwa łączniki - Microsoft.SystemCenter.Advisor.DataConnector i ł�
 ```
 
 > [!NOTE]
-> Komputera, uruchom ten skrypt z, jeśli nie serwer zarządzania powinien mieć powłoki poleceń programu Operations Manager zainstalowane w zależności od wersji grupy zarządzania.
+> Z wyjątkiem serwera zarządzania komputer, na którym uruchomisz ten skrypt, powinien mieć zainstalowaną odpowiednią powłokę poleceń programu Operations Manager w zależności od wersji grupy zarządzania.
 > 
 > 
 
@@ -307,12 +305,12 @@ Aby usunąć dwa łączniki - Microsoft.SystemCenter.Advisor.DataConnector i ł�
     Remove-Connector $connectorName
 ```
 
-W przyszłości, jeśli planujesz ponowne nawiązywanie połączenia z grupy zarządzania do obszaru roboczego analizy dzienników, należy ponownie zaimportować `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` pliku pakietu administracyjnego.  W zależności od wersji programu System Center Operations Manager wdrożony w środowisku można znaleźć tego pliku w następującej lokalizacji:
+Jeśli w przyszłości zajdzie potrzeba ponownego połączenia grupy zarządzania z obszarem roboczym usługi Log Analytics, konieczne będzie ponowne zaimportowanie pliku `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` pakietu administracyjnego.  W zależności od wersji programu System Center Operations Manager wdrożonego w środowisku ten plik można znaleźć w następującej lokalizacji:
 
-* Na nośniku źródłowym, w obszarze `\ManagementPacks` folder dla programu System Center 2016 - Operations Manager lub nowszego.
-* Od najnowszej zbiorczy stosowane do grupy zarządzania.  Dla programu Operations Manager 2012 jest folder źródłowy` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` i 2012 R2 znajduje się w `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
+* Na nośniku źródłowym w folderze `\ManagementPacks` dla programu System Center 2016 — Operations Manager lub nowszego.
+* W najnowszym pakiecie zbiorczym aktualizacji zastosowanym w grupie zarządzania.  Dla programu Operations Manager 2012 folderem źródłowym jest folder ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`, a dla wersji 2012 R2 jest to folder `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby dodać funkcje i zbieranie danych, zobacz [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
+## <a name="next-steps"></a>Następne kroki
+Aby dodać funkcje i zebrać dane, zobacz [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Dodawanie rozwiązania Log Analytics z galerii rozwiązań).
 
 

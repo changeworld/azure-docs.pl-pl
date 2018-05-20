@@ -1,6 +1,6 @@
 ---
-title: Uwzględnij plik dla środowiska PowerShell dla usługi Azure DNS
-description: Uwzględnij plik dla środowiska PowerShell dla usługi Azure DNS
+title: dołączanie pliku programu PowerShell dla usługi Azure DNS
+description: dołączanie pliku programu PowerShell dla usługi Azure DNS
 services: dns
 author: subsarma
 ms.service: dns
@@ -8,11 +8,11 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 1ddfd1ae8dffbc5d381773ea9679713e93a44a32
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 388bea528b138d78b9ec23ceea295108306c61e9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Konfigurowanie programu Azure PowerShell dla usługi Azure DNS
 
@@ -21,11 +21,11 @@ ms.lasthandoff: 03/28/2018
 Przed rozpoczęciem konfiguracji sprawdź, czy dysponujesz następującymi elementami:
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
-* Musisz zainstalować najnowszą wersję poleceń cmdlet programu PowerShell Menedżera zasobów Azure. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Niezbędne jest zainstalowanie najnowszej wersji poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-Ponadto do korzystania ze stref prywatne (publicznej wersji zapoznawczej), należy upewnić się, że poniższe moduły programu PowerShell i wersje. 
-* AzureRM.Dns - [wersji 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) lub nowszy
-* AzureRM.Network - [wersji 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) lub nowszy
+Ponadto aby korzystać z usługi Private Zones (publiczna wersja zapoznawcza), należy upewnić się, że zainstalowano poniższe moduły programu PowerShell w określonych wersjach. 
+* AzureRM.Dns — [wersja 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) lub nowsza
+* AzureRM.Network — [wersja 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) lub nowsza
 
 ```powershell 
 Find-Module -Name AzureRM.Dns 
@@ -35,9 +35,9 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-Dane wyjściowe powyższych poleceń konieczne do wyświetlenia jest 4.1.0 lub nowsza wersja AzureRM.Dns i AzureRM.Network jest 5.4.0 lub nowszej wersji.  
+Dane wyjściowe powyższych poleceń powinny wskazywać, że program AzureRM.Dns jest w wersji 4.1.0 lub nowszej, a program AzureRM.Network jest w wersji 5.4.0 lub nowszej.  
 
-W przypadku, gdy system ma wcześniejszych wersji, można zainstaluj najnowszą wersję programu Azure PowerShell lub pobrać i zainstalować powyżej moduły z galerii programu PowerShell przy użyciu łączy powyżej obok wersji modułu. Następnie można zainstalować przy użyciu poniższych poleceń. Moduły oba są wymagane i są w pełni wstecznie zgodne. 
+Jeśli w systemie są wcześniejsze wersje, możesz zainstalować najnowszą wersję programu Azure PowerShell lub pobrać i zainstalować powyższe moduły z galerii programu PowerShell, korzystając z linków obok wersji modułu. Następnie możesz zainstalować je przy użyciu poniższych poleceń. Oba moduły są wymagane i są w pełni zgodne z poprzednimi wersjami. 
 
 ```powershell
 Install-Module -Name AzureRM.Dns -Force
@@ -49,10 +49,10 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
-Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Aby uzyskać więcej informacji, zobacz [przy użyciu programu PowerShell z usługą Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
+Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Więcej informacji znajduje się w temacie [Using PowerShell with Resource Manager (Używanie programu PowerShell z usługą Resource Manager)](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ### <a name="select-the-subscription"></a>Wybierz subskrypcję

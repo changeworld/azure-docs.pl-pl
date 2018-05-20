@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Wskazówki dotyczące Hive w usłudze HDInsight i usługi Azure Data Lake Store dostrajania wydajności
 
@@ -46,9 +44,9 @@ Poniżej przedstawiono najważniejsze ustawienia, aby dostroić zwiększonej wyd
 
 **hive.tez.container.SIZE** — rozmiar kontenera Określa, ile pamięci dostępnej dla każdego zadania.  Jest to główny danych wejściowych do kontrolowania współbieżność w gałęzi.  
 
-**rozmiar tez.GROUPING.min** — ten parametr umożliwia określenie minimalny rozmiar każdego mapowania.  Jeśli liczba mapowań, które wybierze Tez jest mniejsza niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.  
+**rozmiar tez.GROUPING.min** — ten parametr umożliwia określenie minimalny rozmiar każdego mapowania.  Jeśli liczba mapowań, które wybierze Tez jest mniejsza niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.
 
-**rozmiar tez.GROUPING.max** — parametr można ustawić maksymalny rozmiar każdego mapowania.  Jeśli liczba mapowań, które wybierze Tez jest większa niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.  
+**rozmiar tez.GROUPING.max** — parametr można ustawić maksymalny rozmiar każdego mapowania.  Jeśli liczba mapowań, które wybierze Tez jest większa niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.
 
 **hive.EXEC.reducer.Bytes.per.reducer** — ten parametr określa rozmiar każdego reduktor.  Domyślnie każdy reduktor to 256MB.  
 
@@ -75,9 +73,10 @@ Załóżmy, że klaster D14 8 węzłów.
     # of YARN containers = 768GB / 3072MB = 256
 
 ## <a name="limitations"></a>Ograniczenia
+
 **ADLS ograniczania przepustowości** 
 
-UIf osiągnął limity przepustowości udostępniane przez ADLS, zacząć Zobacz niepowodzeń zadań. Może to być identyfikowany przez obserwowania błędy ograniczania przepustowości w dziennikach zadań.  Aby zmniejszyć równoległości, zwiększyć rozmiar kontenera aplikacji Tez.  Jeśli potrzebujesz więcej współbieżności dla zadania, skontaktuj się z nami.   
+UIf osiągnął limity przepustowości udostępniane przez ADLS, zacząć Zobacz niepowodzeń zadań. Może to być identyfikowany przez obserwowania błędy ograniczania przepustowości w dziennikach zadań.  Aby zmniejszyć równoległości, zwiększyć rozmiar kontenera aplikacji Tez.  Jeśli potrzebujesz więcej współbieżności dla zadania, skontaktuj się z nami.
 
 Aby sprawdzić, jeśli użytkownik są pobierania ograniczane, musisz włączyć rejestrowania po stronie klienta debugowania. Oto, jak można to zrobić:
 

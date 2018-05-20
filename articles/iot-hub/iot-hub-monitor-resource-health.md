@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: ed0bde0945a36c4fa194059f3b17557d566047a2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: bf6202b002aaf6d89a30c7c653fdcee00cb50290
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji Azure IoT Hub i szybkie diagnozowanie problemów
 
@@ -34,7 +34,7 @@ Oprócz integracji z tych dwóch usług, Centrum IoT zapewnia własną metryki, 
 
 Azure Monitor udostępnia informacje diagnostyczne poziom zasobów, co oznacza monitorować działania, które odbywają się w Centrum IoT. 
 
-Zastępuje ustawienia diagnostyki Azure Monitor monitorować operacji centrum IoT. Jeśli użytkownik aktualnie operacji użytkownika monitorowanie, należy zmigrować przepływów pracy. Aby uzyskać więcej informacji, zobacz [migracji z operacji ustawienia monitorowania do diagnostyki][lnk-migrate].
+Zastępuje ustawienia diagnostyki Azure Monitor monitorować operacji centrum IoT. Jeśli obecnie używasz operacji monitorowania, należy przeprowadzić migrację przepływów pracy. Aby uzyskać więcej informacji, zobacz [migracji z operacji ustawienia monitorowania do diagnostyki][lnk-migrate].
 
 Aby dowiedzieć się więcej na temat określonych metryk i zdarzeń, które Azure Monitor Obserwujący, zobacz [obsługiwane metryki z monitorem Azure] [ lnk-AM-metrics] i [obsługiwane usługi, schematów i kategorie dla platformy Azure Dzienniki diagnostyczne][lnk-AM-schemas].
 

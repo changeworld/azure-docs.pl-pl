@@ -1,24 +1,24 @@
 ---
-title: "Dodawanie niestandardowych raportów kondycji sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób wysyłania raportów o kondycji niestandardowych do jednostki kondycji sieci szkieletowej usług Azure. Zawiera zalecenia dotyczące projektowania i wdrażania raportów o kondycji jakości."
+title: Dodawanie niestandardowych raportów kondycji sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: Opisuje sposób wysyłania raportów o kondycji niestandardowych do jednostki kondycji sieci szkieletowej usług Azure. Zawiera zalecenia dotyczące projektowania i wdrażania raportów o kondycji jakości.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 1cd429ed8252573f8e8c3ed11d6c841cba855b52
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3eccb6ba18e6689c3726c8d930279b8a85ab1c92
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Dodawanie niestandardowych raportów kondycji usługi Service Fabric
 Sieć szkieletowa usług Azure wprowadza [model kondycji](service-fabric-health-introduction.md) umożliwiającą Flaga zła klastra i warunki aplikacji na konkretnych obiektów. Model kondycji używa **Raporty kondycji** (składników systemu i watchdogs). Celem jest łatwe i szybkie diagnozowanie i naprawy. Moduły zapisujące usługi należy wziąć pod uwagę góry o kondycji. Wszelkie warunek, który może mieć wpływ na kondycji należy podać, zwłaszcza, jeśli może pomóc problemów flagi bliski katalogu głównego. Informacje o kondycji można oszczędzić czas i wysiłek na analizie i debugowania. Przydatność jest jasne, szczególnie, gdy usługa jest uruchomiona na dużą skalę w chmurze (prywatny czy Azure).

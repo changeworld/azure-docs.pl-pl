@@ -1,23 +1,21 @@
 ---
-title: "Uwierzytelnianie użytkownika końcowego: Data Lake Store za pomocą usługi Azure Active Directory w języku Java | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać uwierzytelnianie użytkownika końcowego z Data Lake Store za pomocą usługi Azure Active Directory z językiem Java"
+title: 'Uwierzytelnianie użytkownika końcowego: Data Lake Store za pomocą usługi Azure Active Directory w języku Java | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak wykonać uwierzytelnianie użytkownika końcowego z Data Lake Store za pomocą usługi Azure Active Directory z językiem Java
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: b1fbf3c1e0e5715ff7effcdac45ff03f2b55f9ee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: b638860dbdab7e3b5a747a4ddd82e7247f24845f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-java"></a>Uwierzytelnianie użytkownika końcowego za pomocą usługi Data Lake Store za pomocą języka Java
 > [!div class="op_single_selector"]

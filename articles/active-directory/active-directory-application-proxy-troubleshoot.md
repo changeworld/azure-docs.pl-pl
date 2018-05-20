@@ -15,11 +15,11 @@ ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 2584af94be5f36d07278d1e3d70d7d3f1403203c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 838bdccb06e5763d33f63208cb6f941a55778b32
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpi błąd podczas uzyskiwania dostępu do opublikowanych aplikacji lub w przypadku publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji usługi AD Microsoft Azure działa poprawnie:
@@ -27,7 +27,7 @@ Jeśli wystąpi błąd podczas uzyskiwania dostępu do opublikowanych aplikacji 
 * Otwórz konsolę usług systemu Windows i sprawdź, czy **łącznik serwera Proxy aplikacji usługi Microsoft AAD** usługi jest włączona i uruchomiona. Możesz spojrzeć na stronie właściwości serwera Proxy aplikacji usługi jak pokazano na poniższej ilustracji:  
   ![Zrzut ekranu okna właściwości łącznika serwera Proxy aplikacji usługi Microsoft AAD](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * Otwórz Podgląd zdarzeń i poszukaj zdarzeń łącznika serwera Proxy aplikacji w **Dzienniki aplikacji i usług** > **Microsoft** > **AadApplicationProxy**  >  **Łącznik** > **Admin**.
-* W razie potrzeby bardziej szczegółowe dzienniki są dostępne przez [Włączanie dzienników sesji łącznika serwera Proxy aplikacji](application-proxy-understand-connectors.md#under-the-hood).
+* W razie potrzeby bardziej szczegółowe dzienniki są dostępne przez [Włączanie dzienników sesji łącznika serwera Proxy aplikacji](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 Aby uzyskać więcej informacji o narzędziu Azure AD Rozwiązywanie problemów, zobacz [narzędzia do rozwiązywania problemów do sprawdzania wymagań wstępnych sieci łącznika](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites).
 
@@ -90,7 +90,7 @@ Jeśli wystąpi błąd lub problem z aplikacji serwera Proxy Azure AD, która ni
 * [Włącz serwer Proxy aplikacji usługi Azure Active Directory](manage-apps/application-proxy-enable.md)
 * [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji](manage-apps/application-proxy-publish-azure-portal.md)
 * [Włącz rejestrację jednokrotną](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-* [Włączanie dostępu warunkowego](application-proxy-enable-remote-access-sharepoint.md)
+* [Włączanie dostępu warunkowego](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

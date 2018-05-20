@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ae24031922c2ef01c9274f6ecf572158a9a194d4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 5266acf2f053af62f907f71ff1fe0805e1008927
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -49,16 +49,22 @@ Zapoznaj się z przykładem specyficzny dla języka:
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) loguje się komunikat z kolejki usługi Service Bus.
+W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) które odczytuje [metadanych komunikat](#trigger---message-metadata) i rejestruje komunikat z kolejki usługi Service Bus:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
     [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
-    string myQueueItem, 
+    string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
     TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -66,7 +72,7 @@ W tym przykładzie jest przeznaczony dla usługi Azure Functions wersja 1.x; dla
  
 ### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
 
-W poniższym przykładzie przedstawiono wyzwalacz usługi Service Bus powiązanie w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja rejestruje komunikat z kolejki usługi Service Bus.
+W poniższym przykładzie przedstawiono wyzwalacz usługi Service Bus powiązanie w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja odczytuje [metadanych komunikat](#trigger---message-metadata) i rejestruje komunikat z kolejki usługi Service Bus.
 
 W tym miejscu jest powiązanie danych *function.json* pliku:
 
@@ -88,9 +94,19 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 Oto kod skryptu C#:
 
 ```cs
-public static void Run(string myQueueItem, TraceWriter log)
+using System;
+
+public static void Run(string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
+    TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -124,7 +140,7 @@ let Run(myQueueItem: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
 
-W poniższym przykładzie przedstawiono wyzwalacz usługi Service Bus powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja rejestruje komunikat z kolejki usługi Service Bus. 
+W poniższym przykładzie przedstawiono wyzwalacz usługi Service Bus powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja odczytuje [metadanych komunikat](#trigger---message-metadata) i rejestruje komunikat z kolejki usługi Service Bus. 
 
 W tym miejscu jest powiązanie danych *function.json* pliku:
 
@@ -148,6 +164,9 @@ Oto kod skryptu JavaScript:
 ```javascript
 module.exports = function(context, myQueueItem) {
     context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
     context.done();
 };
 ```
@@ -247,7 +266,30 @@ Obsługi uszkodzonych komunikatów nie może być kontrolowane ani skonfigurowan
 
 ## <a name="trigger---peeklock-behavior"></a>Wyzwalacz - PeekLock zachowanie
 
-Środowisko uruchomieniowe Functions odbiera wiadomości w [tryb PeekLock](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Wywołuje `Complete` na komunikat, jeśli funkcja zakończy działanie pomyślnie, lub wywołania `Abandon` Jeśli funkcja nie powiedzie się. Jeśli funkcja uruchomione dłużej niż `PeekLock` limit czasu blokady automatycznie zostanie odnowiona.
+Środowisko uruchomieniowe Functions odbiera wiadomości w [tryb PeekLock](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Wywołuje `Complete` na komunikat, jeśli funkcja zakończy działanie pomyślnie, lub wywołania `Abandon` Jeśli funkcja nie powiedzie się. Jeśli funkcja uruchomione dłużej niż `PeekLock` limit czasu blokady jest automatycznie odnawiane tak długo, jak działa funkcja. 
+
+Funkcje 1.x pozwala na skonfigurowanie `autoRenewTimeout` w *host.json*, która mapuje [OnMessageOptions.AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout?view=azure-dotnet#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout). Maksymalny dozwolony dla tego ustawienia jest 5 minut zgodnie z dokumentacją usługi Service Bus, podczas gdy można zwiększyć limit czasu funkcji z wartości domyślnej równej 5 minut do 10 minut. Dla funkcji magistrali usług nie ma w tym celu należy następnie, ponieważ przekroczyłby limit odnawiania usługi Service Bus.
+
+## <a name="trigger---message-metadata"></a>Wyzwalacz - metadanych wiadomości
+
+Wyzwalacz usługi Service Bus udostępnia wiele [właściwości metadanych](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Te właściwości mogą służyć jako część wyrażenia powiązania w pozostałych powiązaniach lub parametrów w kodzie. Są to właściwości [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) klasy.
+
+|Właściwość|Typ|Opis|
+|--------|----|-----------|
+|`DeliveryCount`|`Int32`|Liczba dostaw.|
+|`DeadLetterSource`|`string`|Źródło utraconych wiadomości.|
+|`ExpiresAtUtc`|`DateTime`|Czas wygaśnięcia w formacie UTC.|
+|`EnqueuedTimeUtc`|`DateTime`|Czas umieszczonych w kolejce w formacie UTC.|
+|`MessageId`|`string`|Wartości zdefiniowane przez użytkownika usługi Service Bus umożliwiają identyfikowanie zduplikowanych komunikatów, jeśli jest włączona.|
+|`ContentType`|`string`|Identyfikator typu zawartości, użyte przez nadawcę i odbiorcę dla konkretnej logiki aplikacji.|
+|`ReplyTo`|`string`|Odpowiedzi na adres kolejki.|
+|`SequenceNumber`|`Int64`|Unikatowy numer przypisany do komunikatu przez magistralę usług.|
+|`To`|`string`|Wyślij do adresu.|
+|`Label`|`string`|Etykieta określonych aplikacji.|
+|`CorrelationId`|`string`|Identyfikator korelacji.|
+|`Properties`|`IDictionary<String,Object>`|Właściwości komunikatu określonych aplikacji.|
+
+Zobacz [przykłady kodu](#trigger---example) używające tych właściwości w tym artykule.
 
 ## <a name="trigger---hostjson-properties"></a>Wyzwalacz - host.json właściwości
 
@@ -404,7 +446,7 @@ Oto kod skryptu JavaScript, który tworzy pojedynczy komunikat:
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = message;
+    context.bindings.outputSbQueue = message;
     context.done();
 };
 ```
@@ -415,9 +457,9 @@ Oto kod skryptu JavaScript, który tworzy wiele komunikatów:
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = [];
-    context.bindings.outputSbQueueMsg.push("1 " + message);
-    context.bindings.outputSbQueueMsg.push("2 " + message);
+    context.bindings.outputSbQueue = [];
+    context.bindings.outputSbQueue.push("1 " + message);
+    context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
 ```

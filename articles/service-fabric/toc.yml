@@ -73,6 +73,16 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 4 — Wdrażanie usługi API Management z usługą Service Fabric
           href: service-fabric-tutorial-deploy-api-management.md
+    - name: Tworzenie klastra autonomicznego na platformie AWS
+      items:
+        - name: 1 — Tworzenie infrastruktury na platformie AWS
+          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 2 — Konfigurowanie usługi Service Fabric
+          href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
+        - name: 3 — Wdrażanie aplikacji w klastrze
+          href: service-fabric-tutorial-standalone-install-an-application.md
+        - name: 4 — Czyszczenie klastra i usuwanie infrastruktury
+          href: service-fabric-tutorial-standalone-clean-up.md
 - name: Przykłady
   items:
     - name: Przykłady kodu

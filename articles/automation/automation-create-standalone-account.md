@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: acd1ea95f4ef2717e315d9a247cd2fed54a02bf3
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 77d766358135f5cdabfe7e9b62e54513c2604ed3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tworzenie autonomicznego konta usługi Azure Automation
 
@@ -104,7 +104,7 @@ Poniższa tabela zawiera podsumowanie zasobów dla klasycznego konta Uruchom jak
 | AzureClassicRunAsCertificate |Zasób certyfikatu, który jest automatycznie tworzony. Certyfikat uwierzytelniany w usłudze Azure, Azure zasoby klasyczne można zarządzać z poziomu elementów runbook. Ten certyfikat ma roczny okres obowiązywania. |
 | AzureClassicRunAsConnection |Zasób połączenia, które zostało automatycznie utworzone. Element zawartości uwierzytelniany w usłudze Azure, Azure zasoby klasyczne można zarządzać z poziomu elementów runbook. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat tworzenia graficznego, zobacz [tworzenia graficznego automatyzacji Azure](automation-graphical-authoring-intro.md).
 * Aby rozpocząć pracę z elementami Runbook programu PowerShell, zobacz artykuł [My first PowerShell runbook](automation-first-runbook-textual-powershell.md) (Mój pierwszy element Runbook programu PowerShell).

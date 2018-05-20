@@ -1,6 +1,6 @@
 ---
-title: "Powiązania włączenie funkcji platformy Azure"
-description: "Odwołanie powiązania włączenie funkcji platformy Azure."
+title: Powiązania włączenie funkcji platformy Azure
+description: Odwołanie powiązania włączenie funkcji platformy Azure.
 services: functions
 documentationcenter: na
 author: tdykstra
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: bd4f36bb029f123b0fa41d6dcd57547413e015c0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 29f6b3e8b7d7d940da098953e8f9d3deaccf78dc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Powiązania włączenie funkcji platformy Azure
 
@@ -29,6 +29,8 @@ W tym artykule opisano sposób wysyłania wiadomości e-mail przy użyciu [SendG
 Powiązania SendGrid znajdują się w [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) pakietu NuGet. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example"></a>Przykład
 
@@ -183,12 +185,12 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Typ**|| Wymagana — musi być ustawiona `sendGrid`.|
-|**Kierunek**|| Wymagana — musi być ustawiona `out`.|
+|**type**|| Wymagana — musi być ustawiona `sendGrid`.|
+|**direction**|| Wymagana — musi być ustawiona `out`.|
 |**Nazwa**|| Wymagana — nazwa zmiennej używane w kodzie funkcji żądania lub treści żądania. Ta wartość jest ```$return``` po tylko jednej wartości zwracanej. |
-|**apiKey**|**ApiKey**| Nazwa ustawienia aplikacji, który zawiera klucz interfejsu API. Jeśli nie jest ustawiony, ustawienie domyślna aplikacja jest "AzureWebJobsSendGridApiKey".|
+|**apiKey**|**apiKey**| Nazwa ustawienia aplikacji, który zawiera klucz interfejsu API. Jeśli nie jest ustawiony, ustawienie domyślna aplikacja jest "AzureWebJobsSendGridApiKey".|
 |**Aby**|**Do**| adres e-mail adresata. |
-|**Z**|**Z**| adres e-mail nadawcy. |
+|**Z**|**From**| adres e-mail nadawcy. |
 |**subject**|**Temat**| temat wiadomości e-mail. |
 |**Tekst**|**Tekst**| Treść wiadomości e-mail. |
 

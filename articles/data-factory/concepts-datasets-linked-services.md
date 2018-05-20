@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: f9a3eeff7a44c98228f89a7519117b043217eefd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 17043ef3450554dd4ea272a4b7732367bae8e369
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Zestawy danych i usług połączonych w fabryce danych Azure 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -193,7 +193,7 @@ Właściwość | Opis | Wymagane
 name | Nazwa kolumny. | Yes
 type | Typ danych kolumny. Fabryka danych obsługuje następujące typy danych tymczasowych jako dozwolone wartości: **Int16, Int32, Int64, pojedynczego, Double, Decimal bajtów [], wartość logiczna, ciąg, Guid, Datetime, Datetimeoffset i Timespan** | Nie
 Kultury | . Kulturę opartą na sieci do użycia, gdy typem jest typ architektury .NET: `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie
-Format | Ciąg do użycia, gdy typem jest typ architektury .NET formatu: `Datetime` lub `Datetimeoffset`. Zapoznaj się [niestandardowe ciągi daty i godziny Format](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty i godziny. | Nie
+Format | Ciąg do użycia, gdy typem jest typ architektury .NET formatu: `Datetime` lub `Datetimeoffset`. Zapoznaj się [niestandardowe ciągi daty i godziny Format](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) w sposób formatowania daty i godziny. | Nie
 
 ### <a name="example"></a>Przykład
 W poniższym przykładzie załóżmy, że źródło danych obiektu Blob jest w formacie CSV i zawiera trzy kolumny: nazwa użytkownika, nazwę i lastlogindate. Są one typu Int64, ciągu i daty/godziny w formacie datetime niestandardowych za pomocą nazwy skróconej francuskim dzień tygodnia.

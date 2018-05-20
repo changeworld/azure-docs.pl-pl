@@ -1,6 +1,6 @@
 ---
-title: "Sieć szkieletowa usług Azure odwrotny serwer proxy | Dokumentacja firmy Microsoft"
-description: "Użyj usługi sieć szkieletowa zwrotnego serwera proxy do komunikacji z mikrousług i spoza klastra."
+title: Sieć szkieletowa usług Azure odwrotny serwer proxy | Dokumentacja firmy Microsoft
+description: Użyj usługi sieć szkieletowa zwrotnego serwera proxy do komunikacji z mikrousług i spoza klastra.
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 55b201842503a879725fa77328a72c83fe0bbade
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy w sieci szkieletowej usług Azure
 Zwrotny serwer proxy wbudowanych w sieci szkieletowej usług Azure pomaga mikrousług działającego w klastrze usługi sieć szkieletowa odnajdywania i komunikować się z innymi usługami, których punkty końcowe http.
@@ -97,18 +97,18 @@ Poniżej przedstawiono zasoby usługi:
 
 Jeśli usługa używa singleton schemat partycjonowania *PartitionKey* i *PartitionKind* parametrów ciągu zapytania nie są wymagane, a usługa jest osiągalna przy użyciu bramy jako:
 
-* Zewnętrznie:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Wewnętrznie:`http://localhost:19081/MyApp/MyService`
+* Zewnętrznie: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Wewnętrznie: `http://localhost:19081/MyApp/MyService`
 
 Jeśli usługa używa Int64 jednolity schemat partycjonowania *PartitionKey* i *PartitionKind* parametrów ciągu zapytania musi być używany do osiągnięcia partycji usługi:
 
-* Zewnętrznie:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Wewnętrznie:`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Zewnętrznie: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Wewnętrznie: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 Aby uzyskać dostęp do zasobów, które udostępnia usługi, po prostu umieść ścieżka zasobu po nazwie usługi w adresie URL:
 
-* Zewnętrznie:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Wewnętrznie:`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Zewnętrznie: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Wewnętrznie: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 Bramy następnie będzie przekazywał te żądania na adres URL usługi:
 
@@ -121,7 +121,7 @@ Zwrotny serwer proxy usługi sieci szkieletowej próbuje rozpoznać adres usług
 Jednak repliki lub wystąpień usługi można udostępniać procesu hosta i może również udostępniać port obsługiwanych przez serwer sieci web opartych na pliku http.sys w tym:
 
 * [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [WebListener platformy ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
 W takiej sytuacji jest serwer sieci web jest dostępna w proces hosta i odpowiada na żądania, że wystąpienie usługi rozwiązane lub replika nie jest już dostępny na hoście. W takim przypadku brama zostanie wyświetlony komunikat odpowiedzi HTTP 404 z serwera sieci web. W związku z tym odpowiedzi HTTP 404 może mieć dwie różne znaczenie:

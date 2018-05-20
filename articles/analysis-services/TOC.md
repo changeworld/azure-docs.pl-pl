@@ -11,6 +11,7 @@
 ## [Create a model in Azure portal (preview) (Tworzenie modelu w wersji zapoznawczej witryny Azure Portal)](analysis-services-create-model-portal.md)
 
 # Pojęcia
+## [Automatyzacja przy użyciu jednostek usługi](analysis-services-service-principal.md)
 ## [Obsługiwane źródła danych](analysis-services-datasource.md)
 ## [Łączenie się z lokalnymi źródłami danych](analysis-services-gateway.md)
 ## [Łączenie z serwerami](analysis-services-connect.md)

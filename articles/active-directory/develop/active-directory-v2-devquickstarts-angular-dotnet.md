@@ -1,25 +1,27 @@
 ---
-title: "Aplikację usługi Azure AD w wersji 2.0 .NET AngularJS jednej strony wprowadzenie | Dokumentacja firmy Microsoft"
-description: "Sposób tworzenia aplikacji jednostronicowej kątowego JS logujący się użytkowników z obu osobistego konta Microsoft i konta firmowego lub szkolnego."
+title: Aplikację usługi Azure AD w wersji 2.0 .NET AngularJS jednej strony wprowadzenie | Dokumentacja firmy Microsoft
+description: Sposób tworzenia aplikacji jednostronicowej kątowego JS logujący się użytkowników z obu osobistego konta Microsoft i konta firmowego lub szkolnego.
 services: active-directory
-documentationcenter: 
-author: jmprieur
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d1ddeb957096dc506bc76e1aac600eaa5bc2fbc
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>Dodawanie logowania do aplikacji jednej strony AngularJS - .NET
 W tym artykule dodamy Zaloguj się przy użyciu konta Microsoft, jej do AngularJS aplikacji za pomocą punktu końcowego v2.0 usługi Azure Active Directory.  Punktu końcowego v2.0 umożliwia wykonywanie jednego integracji w aplikacji i uwierzytelnianie użytkowników przy użyciu kont osobistych i pracy/służbowe.

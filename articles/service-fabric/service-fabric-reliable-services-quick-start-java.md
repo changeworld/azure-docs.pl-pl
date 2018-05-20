@@ -1,24 +1,24 @@
 ---
-title: "Tworzenie pierwszego niezawodnej mikrousługi Azure w języku Java | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do tworzenia aplikacji usługi sieć szkieletowa usług Microsoft Azure z usług bezstanowych i stanowych."
+title: Tworzenie pierwszego niezawodnej mikrousługi Azure w języku Java | Dokumentacja firmy Microsoft
+description: Wprowadzenie do tworzenia aplikacji usługi sieć szkieletowa usług Microsoft Azure z usług bezstanowych i stanowych.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: e885a482edcba48c18e425c54f4acc28ee650ddd
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Wprowadzenie do usług Reliable Services
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/12/2018
 >
 >
 
-W tym artykule opisano podstawy niezawodne usługi sieci szkieletowej usług Azure i przeprowadzi użytkownika przez proces tworzenia i wdrażania prostą aplikację niezawodnej usługi napisane w języku Java. Microsoft Virtual Academy wideo przedstawiono również sposób tworzenia bezstanowej niezawodnej usługi:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+W tym artykule opisano podstawy niezawodne usługi sieci szkieletowej usług Azure i przeprowadzi użytkownika przez proces tworzenia i wdrażania prostą aplikację niezawodnej usługi napisane w języku Java. Microsoft Virtual Academy wideo przedstawiono również sposób tworzenia bezstanowej niezawodnej usługi: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -127,7 +127,7 @@ Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i got
 
 Aranżacja jest zarządzana przez sieci szkieletowej usług do zachowania usługi wysokiej dostępności i nieprawidłowo zrównoważone.
 
-`runAsync()`nie zablokować synchronicznie. Implementacji runAsync powinien zwrócić CompletableFuture umożliwia środowiska wykonawczego kontynuować. Jeśli obciążenie należy zaimplementować długotrwała zadanie, które należy wykonać wewnątrz CompletableFuture.
+`runAsync()` nie zablokować synchronicznie. Implementacji runAsync powinien zwrócić CompletableFuture umożliwia środowiska wykonawczego kontynuować. Jeśli obciążenie należy zaimplementować długotrwała zadanie, które należy wykonać wewnątrz CompletableFuture.
 
 #### <a name="cancellation"></a>Anulowanie
 Anulowanie obciążenie jest współpraca wysiłku, zorkiestrowana przez token anulowania podanego. System oczekuje na zadanie zakończenia (przez pomyślne zakończenie anulowania lub fault), zanim przesyłane w. Ważne jest, aby uwzględnić token anulowania, Zakończ pracę i zamknąć `runAsync()` tak szybko jak to możliwe, gdy system żąda anulowania. W poniższym przykładzie pokazano sposób obsługi zdarzenia anulowania:
@@ -193,7 +193,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`działa podobnie, w usługach stanowe i bezstanowe. Jednak w usługi stanowej, platforma wykonuje dodatkowych działań w Twoim imieniu przed rozpoczęciem wykonywania `RunAsync()`. Te działania mogą obejmować zapewnienie, że Menedżer niezawodnej stanu i niezawodne kolekcji są gotowe do użycia.
+`RunAsync()` działa podobnie, w usługach stanowe i bezstanowe. Jednak w usługi stanowej, platforma wykonuje dodatkowych działań w Twoim imieniu przed rozpoczęciem wykonywania `RunAsync()`. Te działania mogą obejmować zapewnienie, że Menedżer niezawodnej stanu i niezawodne kolekcji są gotowe do użycia.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Kolekcje niezawodnych i niezawodne Menedżer stanu
 ```java

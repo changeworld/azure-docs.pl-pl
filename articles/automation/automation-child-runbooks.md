@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/04/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a32212f3ba7f1bb96d69e837177ef828f26a69b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0511c2bf7eed15f997f8444c945afb18179bbc63
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy runbook automatyzacji Azure
 
@@ -83,7 +83,7 @@ $joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomati
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>Porównanie metod wywoływania podrzędnego elementu runbook
 Poniższa tabela zawiera podsumowanie różnic między obiema metodami wywoływania elementu runbook z innego elementu runbook.
 
-|  | Wbudowany | Polecenie cmdlet |
+|  | W tekście | Polecenie cmdlet |
 |:--- |:--- |:--- |
 | Zadanie |Podrzędne elementy runbook uruchomione w tym samym zadaniu co element nadrzędny. |Tworzone jest osobne zadanie dla podrzędnego elementu runbook. |
 | Wykonanie |Nadrzędny element runbook czeka na zakończenie przed kontynuowaniem podrzędnego elementu runbook. |Nadrzędny element runbook kontynuuje działanie od razu po uruchomieniu podrzędnego elementu runbook *lub* nadrzędny element runbook czeka na zakończenie zadania podrzędne. |

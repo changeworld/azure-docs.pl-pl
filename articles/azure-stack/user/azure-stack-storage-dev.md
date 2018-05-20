@@ -1,29 +1,30 @@
 ---
-title: "Wprowadzenie do narzędzi programistycznych magazyn Azure stosu"
-description: "Aby rozpocząć używanie narzędzi programistycznych magazyn Azure stosu"
+title: Wprowadzenie do narzędzi programistycznych magazyn Azure stosu
+description: Aby rozpocząć używanie narzędzi programistycznych magazyn Azure stosu
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 02/21/2018
+ms.date: 05/14/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 81c62fc569e9f758d08bfca0bdfc5bcc9ed5860f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Wprowadzenie do narzędzi programistycznych magazyn Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Microsoft Azure stosu zapewnia zbiór usług magazynowania, włącznie z magazynu obiektów Blob platformy Azure, tabel i kolejek.
+Microsoft Azure stosu zawiera zestaw usług magazynu, który zawiera obiekt blob, tabel i magazyn kolejek.
 
-Ten artykuł zawiera szybki wskazówki dotyczące sposobu uruchamiania przy użyciu narzędzi programistycznych magazyn Azure stosu. W odpowiednich samouczków usługi Azure Storage można znaleźć bardziej szczegółowe informacje, a przykładowy kod.
+Używany w tym artykule jako szablon, aby rozpocząć korzystanie z narzędzi programistycznych magazyn Azure stosu. W odpowiednich samouczków usługi Azure Storage można znaleźć bardziej szczegółowe informacje, a przykładowy kod.
 
-Istnieją znane różnice między usługi Azure Storage i Azure stosu magazynu, w tym niektóre określone wymagania dotyczące każdej platformy. Na przykład istnieją bibliotek określonego klienta i określonego końcowego sufiks wymagania dotyczące stosu Azure. Aby uzyskać więcej informacji, zobacz [usługi Azure Storage stosu: różnice i zagadnienia dotyczące](azure-stack-acs-differences.md).
+>[!NOTE]
+>Istnieją znane różnice między Azure stosu magazynu i magazynu Azure, w tym określone wymagania dotyczące każdej platformy. Na przykład istnieją bibliotek określonego klienta i określonego końcowego sufiks wymagania dotyczące stosu Azure. Aby uzyskać więcej informacji, zobacz [usługi Azure Storage stosu: różnice i zagadnienia dotyczące](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Bibliotek klienta platformy Azure
 
@@ -33,19 +34,20 @@ Obsługiwane wersje interfejsu API REST usługi Azure Storage stosu są 2017-04-
 
 | Biblioteka kliencka | Azure stosu obsługiwana wersja | Link | Specyfikacja punktu końcowego |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET | 8.7.0 | Pakiet Nuget:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config file |
+| .NET | 8.7.0 | Pakiet Nuget:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | pliku App.config |
 | Java | 6.1.0 | Pakiet maven:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Ustawienia połączenia |
 | Node.js | 2.7.0 | Łącze NPM:<br>https://www.npmjs.com/package/azure-storage<br>(Uruchom: `npm install azure-storage@2.7.0`)<br> <br>Wersja usługi Github:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Deklaracja wystąpienia usługi |
 | C++ | 3.1.0 | Pakiet Nuget:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>Wersja usługi GitHub:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | Ustawienia połączenia |
-| PHP | 1.0.0 | Wersja usługi GitHub:<br>Common: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Kolejki:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Tabela: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Zainstaluj za pośrednictwem Composer (Aby dowiedzieć się więcej, [szczegóły poniżej](#install-php-client-via-composer---current).) | Ustawienia połączenia |
+| PHP | 1.0.0 | Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Obiekt blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Kolejki:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Tabela: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Zainstaluj za pośrednictwem Composer (Aby dowiedzieć się więcej, [szczegóły poniżej](#install-php-client-via-composer---current).) | Ustawienia połączenia |
 | Python | 1.0.0 | Wersja usługi GitHub:<br>Wspólne:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Blob:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>Kolejki:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | Deklaracja wystąpienia usługi |
-| Ruby | 1.0.1 | Pakiet RubyGems:<br>Wspólne:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>Queue: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>Table: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>Wersja usługi GitHub:<br>Common: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>Queue: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>Table: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | Ustawienia połączenia |
+| Ruby | 1.0.1 | Pakiet RubyGems:<br>Wspólne:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Obiekt blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>Kolejki: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>Tabela: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>Wersja usługi GitHub:<br>Wspólne: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Obiekt blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>Kolejki: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>Tabela: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | Ustawienia połączenia |
 
 #### <a name="install-php-client-via-composer---current"></a>Instalowanie PHP klienta za pośrednictwem Composer — bieżący
 
 Aby zainstalować za pomocą Composer: (podjęcia obiektu blob jako przykład).
 
 1. Utwórz plik o nazwie **composer.json** w folderze głównym projektu z następującym kodem:
+
   ```php
     {
       "require": {
@@ -53,6 +55,7 @@ Aby zainstalować za pomocą Composer: (podjęcia obiektu blob jako przykład).
       }
     }
   ```
+
 2. Pobierz [composer.phar](http://getcomposer.org/composer.phar) w katalogu głównym projektu.
 3. Instalacja: `php composer.phar install`.
 
@@ -60,7 +63,7 @@ Aby zainstalować za pomocą Composer: (podjęcia obiektu blob jako przykład).
 
 |Biblioteka kliencka|Azure stosu obsługiwana wersja|Link|Specyfikacja punktu końcowego|
 |---------|---------|---------|---------|
-|.NET     |6.2.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|app.config file|
+|.NET     |6.2.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|pliku App.config|
 |Java|4.1.0|Pakiet maven:<br>[http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>Wersja usługi GitHub:<br> [https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|Ustawienia połączenia|
 |Node.js     |1.1.0|Łącze NPM:<br>[https://www.npmjs.com/package/azure-storage](https://www.npmjs.com/package/azure-storage)<br>(Uruchom: `npm install azure-storage@1.1.0)`<br><br>Wersja usługi Github:<br>[https://github.com/Azure/azure-storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|Deklaracja wystąpienia usługi||C++|2.4.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Ustawienia połączenia|
 |C++|2.4.0|Pakiet Nuget:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>Wersja usługi GitHub:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|Ustawienia połączenia|
@@ -73,6 +76,7 @@ Aby zainstalować za pomocą Composer: (podjęcia obiektu blob jako przykład).
 Aby zainstalować za pomocą Composer:
 
 1. Utwórz plik o nazwie **composer.json** w folderze głównym projektu z następującym kodem:
+
   ```php
     {
           "require":{
@@ -80,6 +84,7 @@ Aby zainstalować za pomocą Composer:
           }
     }
   ```
+
 2. Pobierz [composer.phar](http://getcomposer.org/composer.phar) w katalogu głównym projektu.
 3. Instalacja: `php composer.phar install`.
 
@@ -91,16 +96,16 @@ Jeśli nie wiesz o punktu końcowego, skontaktuj się z administratorem chmury.
 
 ## <a name="examples"></a>Przykłady
 
-
 ### <a name="net"></a>.NET
 
 Stosu Azure sufiks punkt końcowy jest określony w pliku app.config:
 
 ```
-<add key="StorageConnectionString" 
+<add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
 ```
+
 ### <a name="java"></a>Java
 
 Dla stosu Azure sufiks punktu końcowego określono w ustawieniach parametry połączenia:
@@ -121,6 +126,7 @@ Stosu Azure w deklaracji wystąpienia określono sufiks punktu końcowego:
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
+
 ### <a name="c"></a>C++
 
 Dla stosu Azure sufiks punktu końcowego określono w ustawieniach parametry połączenia:
@@ -152,6 +158,7 @@ block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
 ```
+
 ### <a name="ruby"></a>Ruby
 
 Dla stosu Azure sufiks punktu końcowego określono w ustawieniach parametry połączenia:
@@ -187,7 +194,6 @@ Następujące samouczki magazynu kolejek Azure mają zastosowanie do stosu Azure
 * [Używanie usługi Queue Storage w języku PHP](../../storage/queues/storage-php-how-to-use-queues.md)
 * [Używanie usługi Queue Storage w języku Python](../../storage/queues/storage-python-how-to-use-queue-storage.md)
 * [Używanie usługi Queue Storage w języku Ruby](../../storage/queues/storage-ruby-how-to-use-queue-storage.md)
-
 
 ## <a name="table-storage"></a>Magazyn tabel
 

@@ -1,6 +1,6 @@
 ---
-title: "Komunikacji niezawodnej usługi — omówienie | Dokumentacja firmy Microsoft"
-description: "Omówienie modelu komunikacji niezawodnej usługi, tym odbiorników otwierania w usługach, rozpoznawania punktów końcowych i komunikacji między usługami."
+title: Komunikacji niezawodnej usługi — omówienie | Dokumentacja firmy Microsoft
+description: Omówienie modelu komunikacji niezawodnej usługi, tym odbiorników otwierania w usługach, rozpoznawania punktów końcowych i komunikacji między usługami.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: BharatNarasimman
 ms.assetid: 36217988-420e-409d-b0a4-e0e875b6eac8
 ms.service: service-fabric
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: eacb4b7d0e33768e0da6ecd43ce1458a4a3bfaa8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 62c81368b8a3129b42262cb99cf23a5021744c1b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak używać komunikacji niezawodnej usługi interfejsów API
 Azure Service Fabric jako platformę jest całkowicie niezależny o komunikacji między usługami. Wszystkie protokoły i stosy są dopuszczalne, z UDP HTTP. To dewelopera usługi, aby wybrać komunikowania usług. Struktura aplikacji niezawodne usługi zawiera komunikacji wbudowanej stosach, a także interfejsów API, który można wykorzystać do tworzenia składników niestandardowych komunikacji.

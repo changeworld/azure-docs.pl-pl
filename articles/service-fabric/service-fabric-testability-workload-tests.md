@@ -1,24 +1,24 @@
 ---
-title: "Symulowanie błędów w Azure mikrousług | Dokumentacja firmy Microsoft"
-description: "Jak zabezpieczyć przed awariami bezpieczne i nieprawidłowego usług."
+title: Symulowanie błędów w Azure mikrousług | Dokumentacja firmy Microsoft
+description: Jak zabezpieczyć przed awariami bezpieczne i nieprawidłowego usług.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dccd8eeeda1a41f23c9e3dd9896e0630e2a7a0a4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Symulowanie błędów w trakcie obciążenia usługi
 Scenariusze testowania w sieci szkieletowej usług Azure umożliwiają deweloperom nie martw się dotyczące poszczególnych błędów. Istnieją scenariusze, jednak gdzie jawne przeplataniem obciążenie klienta i błędy mogą być wymagane. Z przeplotem obciążenie klienta i błędy gwarantuje, że usługa rzeczywistego wykonania akcji w przypadku awarii. Podany poziom formant, który umożliwia zmianę, mogą to być punktach dokładne wykonywania obciążenia. To wywoływanie błędów w innych stanów w aplikacji można znaleźć usterek i poprawy jakości.

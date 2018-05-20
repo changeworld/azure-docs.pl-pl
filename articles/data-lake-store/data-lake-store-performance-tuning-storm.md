@@ -1,8 +1,8 @@
 ---
-title: "Dostosowywanie wskazówki dotyczące wydajności Storm Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Dostosowywanie wskazówki dotyczące wydajności Storm Azure Data Lake Store"
+title: Dostosowywanie wskazówki dotyczące wydajności Storm Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Dostosowywanie wskazówki dotyczące wydajności Storm Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c872bfe36673af1292b5af9cf40374de39a5c159
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5ebca90ffd679de1c30d1bc324bf4f1c3b9f6f70
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Wskazówki dotyczące Storm w usłudze HDInsight i usługi Azure Data Lake Store dostrajania wydajności
 
@@ -27,7 +25,7 @@ Zrozumienie czynników, które należy uwzględnić podczas dostrajania wydajno�
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [wprowadzenie do usługi Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje dotyczące jego tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store](data-lake-store-get-started-portal.md).
 * **Klaster Azure HDInsight** z dostępem do konta usługi Data Lake Store. Zobacz [tworzenia klastra usługi HDInsight z usługą Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
 * **Uruchomiony klaster Storm w usłudze Data Lake Store**. Aby uzyskać więcej informacji, zobacz [Storm w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Wytyczne dotyczące usługi Data Lake Store dostrajania wydajności**.  Koncepcje ogólne wydajności dla [wskazówki dostrajania wydajności magazynu Lake danych](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
@@ -133,10 +131,10 @@ Jeśli naciśniesz limity przepustowości udostępniane przez usługi Data Lake 
 
 Aby sprawdzić, czy możesz są pobierania ograniczane, Włącz rejestrowanie po stronie klienta debugowania:
 
-1. W **Ambari** > **Storm** > **Config** > **zaawansowane storm-procesu roboczego log4j**, zmień  **&lt;główny poziom = "info"&gt;**  do  **&lt;główny poziom = "debug"&gt;**. Uruchom ponownie wszystkie węzły/usługę konfiguracji zaczęły obowiązywać.
+1. W **Ambari** > **Storm** > **Config** > **zaawansowane storm-procesu roboczego log4j**, zmień **&lt;główny poziom = "info"&gt;** do  **&lt;główny poziom = "debug"&gt;**. Uruchom ponownie wszystkie węzły/usługę konfiguracji zaczęły obowiązywać.
 2. Monitor topologii Storm loguje węzłów procesu roboczego (w obszarze /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;portu&gt;/worker.log) dla usługi Data Lake Store ograniczania wyjątków.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dostrajanie wydajności dla Storm może być przywoływany w [ten blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
 
 Na przykład dodatkowe do uruchomienia, zobacz [pokazanego w serwisie GitHub](https://github.com/hdinsight/storm-performance-automation).

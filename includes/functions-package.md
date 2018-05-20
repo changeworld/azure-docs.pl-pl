@@ -9,12 +9,18 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: e94b817e6e08fcf2aee6e3000842bc1b853d512e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d47c170936fc954ceac0d76fdb2e6d9c2c886602
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
-Dla wdrożenia lokalnego w version2.x usługi Azure Functions, pakietu jest używane do [zarejestrować rozszerzenia powiązania](../articles/azure-functions/functions-triggers-bindings.md#local-development-azure-functions-core-tools). Język C# klasy biblioteki Programowanie w funkcjach 1.x i 2.x, obsługa powiązania jest dodawany przez [Instalowanie pakietu](../articles/azure-functions/functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code).
+### <a name="c-class-library"></a>Biblioteki klas C#
 
-Należy pamiętać, że kod źródłowy jest zgodna z Numerowanie wersji zestawu SDK zadań Webjob: wersja zestawu SDK zadań Webjob 2.x jest odpowiednikiem usługi Azure Functions 1.x, więc funkcje 1.x kodu jest w v2.x gałęzi w repozytorium. Gałęzie Master i deweloperów zawierają kod dla zadania Web Job 3.x, która jest taka sama, jak działa 2.x.
+C# tworzenia biblioteki klas, działu pomocy technicznej dla powiązania jest dodawany przez [Instalowanie pakietu](../articles/azure-functions/functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code).
+
+### <a name="binding-extensions-in-functions-2x"></a>Powiązanie rozszerzenia w funkcjach 2.x
+
+Dla wdrożenia lokalnego w version2.x usługi Azure Functions, pakietu jest używane do [zarejestrować rozszerzenia powiązania](../articles/azure-functions/functions-triggers-bindings.md#local-development-azure-functions-core-tools).
+
+

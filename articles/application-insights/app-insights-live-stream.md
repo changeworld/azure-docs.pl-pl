@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 49b343fca94e853a29807521f4213a5a85725f52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 0c3662984c63195d8fc903c66b27aa253ce419cb
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Strumień na żywo metryki: Monitor & Diagnozuj z opóźnieniem 1 sekundę 
 
@@ -116,7 +116,7 @@ Filtry niestandardowe podane kryteria są odsyłane do składnika metryki na ży
 
 ### <a name="add-api-key-to-configuration"></a>Dodaj klucz interfejsu API do konfiguracji
 
-# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+### <a name="classic-aspnet"></a>Klasycznym ASP.NET
 
 W pliku applicationinsights.config dodać AuthenticationApiKey QuickPulseTelemetryModule:
 ``` XML
@@ -133,7 +133,8 @@ Lub w kodzie, ustaw go w QuickPulseTelemetryModule:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
-# <a name="net-core-tabnet-core"></a>[Platformy .NET core] (# kartę/.net — rdzenie)
+
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>Platformy ASP.NET Core (2.3.0-beta wymaga Application Insights ASP.NET Core SDK lub nowszej)
 
 Modyfikowanie pliku startup.cs w następujący sposób:
 
@@ -141,26 +142,14 @@ Najpierw dodaj
 
 ``` C#
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
 ```
 
-Następnie w obszarze metody konfiguracji należy dodać:
+Następnie w metodzie ConfigureServices dodać:
 
 ``` C#
-  QuickPulseTelemetryModule dep;
-            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
-            foreach (var module in modules)
-            {
-                if (module is QuickPulseTelemetryModule)
-                {
-                    dep = module as QuickPulseTelemetryModule;
-                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
-                    dep.Initialize(TelemetryConfiguration.Active);
-                }
-            }
+services.ConfigureTelemetryModule<QuickPulseTelemetryModule>( module => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
----
 
 Jednak jeśli rozpoznaje i zaufania połączonych serwerów, możesz spróbować filtry niestandardowe bez uwierzytelnionego kanału. Ta opcja jest dostępna przez sześć miesięcy. To zastąpienie jest wymagana raz na nowej sesji, lub gdy nowy serwer przejściu do trybu online.
 

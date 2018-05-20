@@ -1,9 +1,9 @@
 ---
-title: "Logowanie napotyka przy użyciu usługi Azure AD Identity Protection | Dokumentacja firmy Microsoft"
-description: "Zawiera omówienie środowiska użytkownika, gdy ochronę tożsamości ma skorygowane lub skorygowane przez użytkownika lub uwierzytelnianie wieloskładnikowe jest wymagany przez zasady."
+title: Logowanie napotyka przy użyciu usługi Azure AD Identity Protection | Dokumentacja firmy Microsoft
+description: Zawiera omówienie środowiska użytkownika, gdy ochronę tożsamości ma skorygowane lub skorygowane przez użytkownika lub uwierzytelnianie wieloskładnikowe jest wymagany przez zasady.
 services: active-directory
-keywords: "ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń"
-documentationcenter: 
+keywords: ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 558d1e04e352d5f33201bb15cb7a2dd1c18f524f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Logowanie, korzystając z usługi Azure AD Identity Protection
 Za pomocą usługi Azure Active Directory Identity Protection można:
@@ -49,10 +49,7 @@ Ten temat zawiera omówienie środowiska użytkownika logowania dla wszystkich p
 ## <a name="multi-factor-authentication-registration"></a>Uwierzytelnianie wieloskładnikowe rejestracji
 Najlepsze środowisko użytkownika w przypadku obu zagrożone konto przepływu odzyskiwania i ryzykowne przepływu logowania, jest, gdy użytkownik samodzielnie można odzyskać. Jeśli użytkownicy są zarejestrowani w usłudze Multi-Factor authentication, mają numer telefonu skojarzony z użyciem konta, który może służyć do przekazywania trudności. Pomoc techniczna lub administrator udziałów jest niezbędne do odzyskanie konta naruszenia. W związku z tym zdecydowanie zaleca się zachęcić użytkowników zarejestrowanych w usłudze Multi-Factor authentication. 
 
-Administratorzy mogą:
-
-* ustawienie zasad, która wymaga od użytkowników skonfigurować swoje konta dodatkowej weryfikacji zabezpieczeń. 
-* umożliwia pomijanie usługi Multi-Factor authentication rejestracji przez maksymalnie 30 dni, w przypadku, gdy chcą, aby umożliwić użytkownikom okres prolongaty przed zarejestrowaniem.
+Administratorzy mogą ustawić zasady, które wymaga od użytkowników skonfigurować swoje konta dodatkowej weryfikacji zabezpieczeń. Ta zasada umożliwia użytkownikom na pominięcie rejestracji usługi Multi-Factor authentication w przypadku 14 dni. 14-dniowy okres prolongaty nie jest konfigurowane.
 
 **Rejestracja usługi Multi-Factor authentication ma trzy kroki:**
 

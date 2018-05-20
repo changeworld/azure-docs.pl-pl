@@ -8,18 +8,17 @@ editor: cgronlun
 ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 9591da6826c0bdd369792e8a9fe125619a091f29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4c08dac95a2d2b52f1a1d28f6933b94ad4db10b7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Tworzenie klastra usługi HDInsight z usługą Data Lake Store (jako dodatkowej pamięci masowej) przy użyciu programu Azure PowerShell
+
 > [!div class="op_single_selector"]
 > * [Korzystanie z portalu](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Przy użyciu programu PowerShell (do magazynu domyślnego)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -54,7 +53,7 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Program Azure PowerShell 1.0 lub nowszy**. Zobacz artykuł [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-* **Zestaw Windows SDK**. Możesz zainstalować ją z [tutaj](https://dev.windows.com/en-us/downloads). Umożliwia to utworzenie certyfikatu bezpieczeństwa.
+* **Zestaw Windows SDK**. Możesz je zainstalować, klikając [tutaj](https://dev.windows.com/en-us/downloads). Umożliwia to utworzenie certyfikatu bezpieczeństwa.
 * **Nazwy głównej usługi Azure Active Directory usługi**. Kroki opisane w tym samouczku zawierają instrukcje dotyczące sposobu tworzenia nazwy głównej usługi w usłudze Azure AD. Jednak musi być administrator usługi Azure AD, aby można było utworzyć nazwy głównej usługi. Jeśli jesteś administratorem usługi Azure AD, możesz pominąć te wymagania wstępne i kontynuować samouczka.
 
     **Jeśli nie jesteś administratorem usługi Azure AD**, nie można wykonać kroki wymagane do utworzenia nazwy głównej usługi. W takim przypadku administrator usługi Azure AD należy najpierw utworzyć nazwy głównej usługi przed utworzeniem klastra usługi HDInsight z usługą Data Lake Store. Ponadto nazwy głównej usługi musi być utworzony przy użyciu certyfikatu, zgodnie z opisem w [Tworzenie nazwy głównej usługi o certyfikat](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
@@ -122,6 +121,7 @@ Wykonaj następujące kroki, aby utworzyć usługi Data Lake Store.
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>Konfigurowanie uwierzytelniania opartego na rolach dostępu do usługi Data Lake Store
+
 Każda subskrypcja platformy Azure jest skojarzony z usługą Azure Active Directory. Z tej usługi Azure Active Directory muszą najpierw uwierzytelnić użytkowników i usług, które uzyskują dostęp do zasobów przy użyciu portalu Azure lub interfejsu API usługi Azure Resource Manager subskrypcji. Dostęp do usług i subskrypcji platformy Azure przez przypisywanie ich odpowiedniej roli na zasobów platformy Azure.  W przypadku usług nazwy głównej usługi identyfikuje usługi w usłudze Azure Active Directory (AAD). W tej części przedstawiono sposób przyznania usługi aplikacji, takich jak usługa HDInsight, dostęp do zasobów platformy Azure (utworzone wcześniej konto usługi Azure Data Lake Store) przez tworzenie nazwy głównej usługi dla aplikacji i przypisywanie ról w tym za pomocą programu Azure PowerShell.
 
 Aby skonfigurować uwierzytelnianie usługi Active Directory dla usługi Azure Data Lake, należy wykonać poniższe zadania.
@@ -130,6 +130,7 @@ Aby skonfigurować uwierzytelnianie usługi Active Directory dla usługi Azure D
 * Tworzenie aplikacji w usłudze Azure Active Directory i nazwy głównej usługi
 
 ### <a name="create-a-self-signed-certificate"></a>Utwórz certyfikat z podpisem własnym
+
 Upewnij się, że masz [zestaw Windows SDK](https://dev.windows.com/en-us/downloads) zainstalowany, przed wykonaniem czynności w tej sekcji. Należy także utworzyć katalogu, takie jak **C:\mycertdir**, gdzie można utworzyć certyfikatu.
 
 1. W oknie programu PowerShell przejdź do lokalizacji, w której zainstalowany zestaw Windows SDK (zazwyczaj `C:\Program Files (x86)\Windows Kits\10\bin\x86` i użyj [MakeCert] [ makecert] narzędzie do utworzenia certyfikatu z podpisem własnym oraz klucza prywatnego. Użyj następujących poleceń.
@@ -147,13 +148,14 @@ Upewnij się, że masz [zestaw Windows SDK](https://dev.windows.com/en-us/downlo
     Po wyświetleniu monitu wprowadź określone wcześniej hasło klucza prywatnego. Wartość określona dla **— po** parametr jest hasło, które jest skojarzone z plikiem pfx. Po pomyślnym zakończeniu działania polecenia, zobacz też CertFile.pfx w katalogu certyfikat określony.
 
 ### <a name="create-an-azure-active-directory-and-a-service-principal"></a>Tworzenie usługi Azure Active Directory i nazwy głównej usługi
+
 W tej sekcji możesz wykonać kroki, aby utworzyć usługę podmiotu zabezpieczeń dla aplikacji usługi Azure Active Directory, przypisać rolę do nazwy głównej usługi i Uwierzytelnij się jako nazwy głównej usługi zapewniając certyfikatu. Uruchom następujące polecenia, aby utworzyć aplikację w usłudze Azure Active Directory.
 
 1. Wklej następujące polecenia cmdlet w oknie konsoli programu PowerShell. Upewnij się, że wartość określona dla **— Nazwa wyświetlana** właściwości jest unikatowa. Ponadto wartości **— strona główna** i **- IdentiferUris** są symbole zastępcze i nie są weryfikowane.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

@@ -3,23 +3,25 @@ title: Biblioteki uwierzytelniania usługi Azure Active Directory | Dokumentacja
 description: Azure AD Authentication Library (ADAL) umożliwia deweloperom łatwe uwierzytelnianie użytkowników w chmurze aplikacji klienta lub lokalnej usługi Active Directory (AD) i uzyskać tokeny dostępu dla zabezpieczanie interfejsu API.
 services: active-directory
 documentationcenter: ''
-author: SaeedAkhter-MSFT
+author: CelesteDG
 manager: mtillman
-editor: mbaldwin
+editor: ''
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2018
-ms.author: saeeda
+ms.author: celested
+ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1e82fa62c86c80b1e68fea995ca6f90861688d5c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: MT
+ms.openlocfilehash: 62df56f76c410186e986564ce8e5a4673a413ebb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Biblioteki uwierzytelniania usługi Azure Active Directory
 

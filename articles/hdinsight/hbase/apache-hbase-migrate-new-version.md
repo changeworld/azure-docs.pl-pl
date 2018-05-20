@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 3ca982e7fc0ce56bee2ee2e193c82a78fac44362
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2ab0bc792777b73f878bc1728c0d8310ecf41167
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>Migrowanie klastra HBase do nowej wersji
 
@@ -46,17 +46,17 @@ Oto przykład wersji macierz zgodności, gdzie t wskazuje zgodności i N wskazuj
 
 | Typ zgodności | Wersja główna| Wersja pomocnicza | Poprawka |
 | --- | --- | --- | --- |
-| Zgodność przewodowy klient-serwer | N | Tak | Tak |
-| Zgodność serwer-serwer | N | Tak | Tak |
-| Plik formatu zgodności | N | Tak | Tak |
-| Interfejs API klienta ze zgodnością | N | Tak | Tak |
-| Zgodność binarną klienta | N | N | Tak |
+| Zgodność przewodowy klient-serwer | Nie | Tak | Tak |
+| Zgodność serwer-serwer | Nie | Tak | Tak |
+| Plik formatu zgodności | Nie | Tak | Tak |
+| Interfejs API klienta ze zgodnością | Nie | Tak | Tak |
+| Zgodność binarną klienta | Nie | Nie | Tak |
 | **Interfejs API zgodności ograniczone po stronie serwera** |  |  |  |
-| Stable | N | Tak | Tak |
-| Zmieniające się | N | N | Tak |
-| Niestabilny | N | N | N |
-| Zgodność zależności | N | Tak | Tak |
-| Zgodność operacyjne | N | N | Tak |
+| Stable | Nie | Tak | Tak |
+| Zmieniające się | Nie | Nie | Tak |
+| Niestabilny | Nie | Nie | Nie |
+| Zgodność zależności | Nie | Tak | Tak |
+| Zgodność operacyjne | Nie | Nie | Tak |
 
 > [!NOTE]
 > Wszelkie niezgodności podziału powinny być opisane w informacjach o wersji bazy danych HBase.

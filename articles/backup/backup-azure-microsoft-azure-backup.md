@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/5/2018
+ms.date: 5/14/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ef6be97144d05f18362ef707ef255b93c8cf21d9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Przygotowywanie do tworzenia kopii zapasowych obciążeń przy użyciu usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -73,40 +73,19 @@ Użytkownik może deduplikacja magazynu programu DPM, za pomocą deduplikacji se
 > - Komputer, na którym jest uruchomiony program Exchange Server
 > - Komputer, który jest węzłem klastra
 
-Zawsze przyłączyć serwer kopii zapasowej Azure do domeny. Jeśli zamierzasz przenieść serwer do innej domeny, zaleca się dołączyć serwer do nowej domeny, przed zainstalowaniem serwera kopii zapasowej Azure. Przeniesienie istniejącej maszyny serwera kopii zapasowej Azure do nowej domeny, po wdrożenia *nieobsługiwane*.
+Zawsze przyłączyć serwer kopii zapasowej Azure do domeny. Jeśli zamierzasz przenieść serwer do innej domeny, najpierw zainstaluj serwer kopii zapasowej Azure, a następnie dołączyć serwer do nowej domeny. Przeniesienie istniejącej maszyny serwera kopii zapasowej Azure do nowej domeny, po wdrożenia *nieobsługiwane*.
 
-## <a name="recovery-services-vault"></a>Magazyn usługi Recovery Services
-Wyślij dane kopii zapasowej na platformie Azure lub schowaj lokalnie, oprogramowanie musi być podłączony do platformy Azure. Bardziej szczegółowe, z maszyną serwera kopii zapasowej Azure musi zostać zarejestrowany w magazynie usług odzyskiwania.
+Wyślij dane kopii zapasowej na platformie Azure lub lokalnie Utrzymaj serwera kopii zapasowej Azure musi być zarejestrowany w magazynie usług odzyskiwania.
 
-Aby utworzyć magazyn usługi Recovery Services:
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. W menu Centrum kliknij opcję **Przeglądaj** i na liście zasobów wpisz ciąg **Usługi odzyskiwania**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij opcję **Magazyn Usług odzyskiwania**.
-
-    ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
-
-    Zostanie wyświetlona lista magazynów usług odzyskiwania.
-3. W menu **Magazyny usługi Recovery Services** kliknij pozycję **Dodaj**.
-
-    ![Tworzenie magazynu Usług odzyskiwania — krok 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
-
-    Zostanie otwarty blok magazynu Usług odzyskiwania i pojawi się monit o podanie wartości w polach **Nazwa**, **Subskrypcja**, **Grupa zasobów** i **Lokalizacja**.
-
-    ![Tworzenie magazynu Usług odzyskiwania — krok 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
-4. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Nazwa musi być unikalna w tej subskrypcji platformy Azure. Wpisz nazwę o długości od 2 do 50 znaków. Musi ona rozpoczynać się od litery i może zawierać tylko litery, cyfry i łączniki.
-5. Kliknij pozycję **Subskrypcja**, aby wyświetlić listę dostępnych subskrypcji. Jeśli nie masz pewności, której subskrypcji użyć, wybierz domyślną (lub sugerowaną). Większa liczba opcji do wyboru jest dostępna tylko w przypadku, gdy konto organizacji jest skojarzone z wieloma subskrypcjami platformy Azure.
-6. Kliknij pozycję **Grupa zasobów**, aby wyświetlić listę dostępnych grup zasobów, lub kliknij pozycję **Nowa**, aby utworzyć nową grupę zasobów. Pełne informacje na temat grup zasobów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
-7. Kliknij pozycję **Lokalizacja**, aby wybrać region geograficzny magazynu.
-8. Kliknij przycisk **Utwórz**. Utworzenie magazynu Usług odzyskiwania może zająć trochę czasu. Monitoruj powiadomienia o stanie wyświetlane w prawej górnej części obszaru portalu.
-   Po utworzeniu magazynu zostanie otwarty w portalu.
+[!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Konfigurowanie replikacji magazynu
-Dla opcji replikacji magazynu można wybrać magazynowanie nadmiarowe geograficznie lub lokalnie. Domyślnie magazyn jest nadmiarowy geograficznie. Jeśli ten magazyn jest podstawowy magazyn, pozostaw tę opcję i magazynu do magazynu geograficznie nadmiarowego. Wybierz magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej, ale mniej trwałej opcji. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w temacie [Azure Storage replication overview](../storage/common/storage-redundancy.md) (Omówienie replikacji usługi Azure Storage).
+Dla opcji replikacji magazynu można wybrać magazynowanie nadmiarowe geograficznie lub lokalnie. Domyślnie Magazyny usług odzyskiwania używają magazynu geograficznie nadmiarowego. Jeśli ten magazyn jest podstawowy magazyn, pozostaw tę opcję i magazynu do magazynu geograficznie nadmiarowego. Wybierz magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej, ale mniej trwałej opcji. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w temacie [Azure Storage replication overview](../storage/common/storage-redundancy.md) (Omówienie replikacji usługi Azure Storage).
 
 Aby edytować ustawienia replikacji magazynu:
 
-1. Wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny i blok Ustawienia. Jeśli blok **Ustawienia** nie zostanie otwarty, kliknij przycisk **Wszystkie ustawienia** na pulpicie nawigacyjnym magazynu.
-2. W bloku **Ustawienia** kliknij opcję **Infrastruktura kopii zapasowej** > **Konfiguracja kopii zapasowej**, aby otworzyć blok **Konfiguracja kopii zapasowej**. W bloku **Konfiguracja kopii zapasowej** wybierz opcję replikacji swojego magazynu.
+1. Wybierz magazyn do otwarcia pulpitu nawigacyjnego magazynu i menu Ustawienia. Jeśli **ustawienia** nie zostanie otwarte menu, kliknij przycisk **wszystkie ustawienia** na pulpicie nawigacyjnym magazynu.
+2. Na **ustawienia** menu, kliknij przycisk **infrastruktura kopii zapasowej** > **konfiguracji kopii zapasowej** otworzyć **konfiguracji kopii zapasowej**bloku. Na **konfiguracji kopii zapasowej** menu, wybierz opcję replikacji magazynu dla magazynu.
 
     ![Lista magazynów kopii zapasowych](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -115,7 +94,7 @@ Aby edytować ustawienia replikacji magazynu:
 ## <a name="software-package"></a>Pakiet oprogramowania
 ### <a name="downloading-the-software-package"></a>Pobieranie pakietu oprogramowania
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Jeśli masz już Otwórz magazyn usług odzyskiwania, przejdź do kroku 3. Jeśli Twój magazyn Usług odzyskiwania nie jest otwarty, ale w portalu Azure są takie magazyny, w menu Centrum kliknij opcję **Przeglądaj**.
+2. Jeśli masz już Otwórz magazyn usług odzyskiwania, przejdź do kroku 3. Jeśli nie masz otwarte magazyn usług odzyskiwania, ale znajdują się w portalu Azure, w menu głównym kliknij **Przeglądaj**.
 
    * Na liście zasobów wpisz **Usługi odzyskiwania**.
    * Po rozpoczęciu pisania zawartość listy będzie filtrowana w oparciu o wpisywane dane. Po wyświetleniu pozycji **Magazyny Usług odzyskiwania** kliknij ją.
@@ -137,7 +116,7 @@ Aby edytować ustawienia replikacji magazynu:
 
     W **wprowadzenie do korzystania z kopii zapasowej** bloku, który zostanie otwarty, **celów tworzenia kopii zapasowej** zostanie wybrana automatycznie.
 
-    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Kopia zapasowa cele — domyślna otwieranych](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. W **cel kopii zapasowej** bloku z **gdzie działa Twoje obciążenie** menu, wybierz opcję **lokalnymi**.
 
@@ -240,11 +219,11 @@ Znając stanu łączności Azure i subskrypcji Azure, można użyć w poniższej
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowych Azure | Kopia zapasowa na dysku | Przywróć z platformy Azure | Przywróć z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączony |Aktywne |Dozwolone |Dozwolone |Dozwolone |Dozwolone |
-| Połączony |Wygasłe |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
-| Połączony |Anulowana |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a Azure usunięte |Zatrzymano |
-| Utratą połączenia > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
-| Utratą połączenia > 15 dni |Wygasłe |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
+| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
+| Połączono |Wygasły |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Połączono |Anulowana |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a Azure usunięte |Zatrzymano |
+| Utratą połączenia > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Utratą połączenia > 15 dni |Wygasły |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
 | Utratą połączenia > 15 dni |Anulowana |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a Azure usunięte |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie z utraty połączenia

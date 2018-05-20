@@ -1,6 +1,6 @@
 ---
 title: Polimorfizm w ramach Reliable Actors | Dokumentacja firmy Microsoft
-description: "Tworzenie hierarchii interfejsów .NET i typów w ramach Reliable Actors do ponownego użycia funkcji i definicje interfejsu API."
+description: Tworzenie hierarchii interfejsów .NET i typów w ramach Reliable Actors do ponownego użycia funkcji i definicje interfejsu API.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 38a86b25b30420c6f0b3027258fa094529c90278
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f03330bbbf2c1c7f92310211058f7ef8858f1941
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizm w ramach Reliable Actors
 Framework Reliable Actors umożliwia tworzenie złośliwych użytkowników używających wiele z tych samych metod, które należy użyć w projekcie zorientowane obiektowo. Jeden z tych metod jest polimorfizm, co umożliwia typów i interfejsy odziedziczone po więcej uogólniony elementów nadrzędnych. Dziedziczenie w ramach Reliable Actors zazwyczaj następuje modelu .NET z kilku dodatkowe ograniczenia. W przypadku języka Java/Linux wynika z modelu Java.
@@ -93,7 +93,7 @@ public class Circle extends ShapeImpl implements Circle
 
 Uwaga `ActorService` atrybut typu aktora. Ten atrybut informuje framework niezawodnego aktora, automatycznie należy utworzyć usługi hostingu uczestników tego typu. W niektórych przypadkach warto utworzyć podstawowy typ, który wyłącznie jest przeznaczony do udostępniania funkcji podtypów i nigdy nie będzie używany do utworzenia wystąpienia konkretnych osób. W takich przypadkach należy użyć `abstract` — słowo kluczowe, aby wskazać, że nigdy nie utworzysz aktora na podstawie tego typu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [jak framework Reliable Actors korzysta z platformy sieć szkieletowa usług](service-fabric-reliable-actors-platform.md) zapewnienie niezawodności i skalowalności oraz w spójnym stanie.
 * Dowiedz się więcej o [cyklu życia aktora](service-fabric-reliable-actors-lifecycle.md).
 

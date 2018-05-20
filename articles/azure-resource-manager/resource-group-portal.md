@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: fe4666f053c7f3bd582ae51dd1694a425bea35dd
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2c76e56d9b30ef11fe4f3b7863a1a1357fca291c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Zarządzania zasobami Azure za pośrednictwem portalu
 
 W tym artykule przedstawiono sposób użycia [portalu Azure](https://portal.azure.com) z [usługi Azure Resource Manager](resource-group-overview.md) do zarządzania zasobami platformy Azure. Aby dowiedzieć się więcej o wdrażaniu zasobów za pośrednictwem portalu, zobacz [wdrożenie zasobów z szablonami usługi Resource Manager i portalu Azure](resource-group-template-deploy-portal.md).
 
-[!INCLUDE [Handle personal data](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="manage-resource-groups"></a>Zarządzanie grupami zasobów
 

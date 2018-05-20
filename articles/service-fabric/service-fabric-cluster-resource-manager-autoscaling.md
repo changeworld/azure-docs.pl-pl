@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: radicmilos
 manager: ''
-editor: ''
+editor: nipuzovi
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
-ms.author: miradic,nipuzovi
-ms.openlocfilehash: 741d77998e9f3405ca6d3863e80cb9125705eefe
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: miradic
+ms.openlocfilehash: cd19c0e51ca1ac7863058d7c3944400719508f9b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do skalowania automatycznego
 Automatyczne skalowanie jest dodatkowe możliwości sieci szkieletowej usług można dynamicznie skalować usług opartych na obciążenia, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowe wystąpienia lub partycji usługi na żądanie. Automatycznie cały proces skalowania jest automatyczne i przejrzysty, a po skonfigurowaniu zasad w usłudze nie jest konieczne ręczne operacji skalowania na poziomie usługi. Automatyczne skalowanie można włączyć w czasie tworzenia usługi lub w dowolnym momencie przez aktualizację usługi.

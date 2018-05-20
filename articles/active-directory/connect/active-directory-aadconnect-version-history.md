@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 89e94e922a8a361abf52909583c22d731c38bba8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect z nowych funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich grup odbiorców.
@@ -37,7 +37,7 @@ Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/
 
 ## <a name="118190"></a>1.1.819.0
 
-2018-5/4: wydane dla automatycznego uaktualnienia, będzie wkrótce dostępna do pobrania.
+2018-5/4: wydane dla automatycznego uaktualnienia i pobierania.
 
 
 
@@ -62,14 +62,16 @@ Nowe funkcje i ulepszenia
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy 
 
-
+- Ta wersja aktualizuje instalacji programu SQL Server Express do programu SQL Server 2012 z dodatkiem SP4, określający, między innymi poprawki kilka luk w zabezpieczeniach.  Zobacz [tutaj](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) Aby uzyskać więcej informacji na temat programu SQL Server 2012 z dodatkiem SP4.
 - Przetwarzanie reguł synchronizacji: reguły synchronizacji ruchu wychodzącego sprzężenia z warunkiem nie dołączyć powinna być cofnąć zastosowane, jeśli syncrule nadrzędny nie ma już zastosowania
+- Kilka poprawek ułatwień dostępu zostały zastosowane do interfejsu użytkownika Menedżera usługi synchronizacji i Edytor reguł synchronizacji
 - Azure AD kreatora Połącz: Wystąpił błąd podczas tworzenia konta łącznika usługi AD podczas programu Azure AD Connect jest w grupie roboczej
 - Azure AD kreatora Connect: W usłudze Azure AD strony logowania Wyświetla pole wyboru weryfikacji, gdy istnieje niezgodność AD domen i domen usługi Azure AD zweryfikowano
 - Poprawka programu PowerShell automatycznego uaktualnienia można ustawić stan uaktualnienia automatycznie prawidłowo w niektórych przypadkach po próba automatycznego uaktualnienia.
 - Azure AD kreatora Połącz: Zaktualizowano telemetrię, aby przechwycić wcześniej brakujące informacje
-- Azure AD kreatora Połącz: Zainstaluj PTA agenta przed przekonwertowaniem domeny zarządzane
-- Azure AD kreatora Connect: Nie można konwertować użytkowników do dla PTA zarządzany (Konwertuj tylko domeny)
+- Azure AD kreatora Połącz: Następujące zmiany zostały wprowadzone korzystając z **zmienić logowania użytkownika** zadanie, aby przełączyć się z usługami AD FS do uwierzytelniania przekazywanego:
+    - Agent uwierzytelniania przekazywanego jest zainstalowany na serwerze programu Azure AD Connect, a funkcja przekazywanego uwierzytelniania jest włączona, zanim nie możemy przekonwertować domenach z federacyjnych do zarządzanych.
+    - Użytkownicy są już skonwertowane z federacyjnych do zarządzanych. Konwertowane są tylko domeny.
 - Azure AD kreatora Połącz: Wyrażenia regularnego programu AD FS Multi domeny jest nieprawidłowy, gdy ma nazwę UPN użytkownika "znak specjalny wyrażeń regularnych aktualizacji do obsługi znaków specjalnych
 - Azure AD kreatora Połącz: Usuń fałszywe komunikat "Konfiguruj atrybutu zakotwiczenia źródła" podczas bez zmian 
 - Azure AD kreatora Połącz: Usługi AD FS obsługują scenariusza podwójną federacyjnego

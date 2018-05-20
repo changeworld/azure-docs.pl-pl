@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 49071044-6767-4041-9EDD-6132295FA551
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a158da6fb397b864a439e067ca99d79814e2b8d2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć kluczy tajnych w stosie Azure
 
@@ -49,6 +48,24 @@ Infrastruktura certyfikatów usługi dla usługi dołączonej do Internetu, któ
 
 W celu zachowania integralności infrastruktury Azure stosu, Operatorzy będą potrzebowali możliwości okresowo Obróć kluczy tajnych ich infrastruktury częstotliwością, które są zgodne z wymaganiami zabezpieczeń używanych w organizacji.
 
+### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>Obracanie kluczy tajnych z certyfikaty zewnętrzne od nowego urzędu certyfikacji
+
+Stos Azure obsługuje tajny Obrót o certyfikaty zewnętrzne z nowego certyfikatu urzędu certyfikacji w następujących sytuacjach:
+
+|Zainstalowany certyfikat urzędu certyfikacji|Obróć do urzędu certyfikacji|Obsługiwane|Obsługiwane wersje Azure stosu|
+|-----|-----|-----|-----|-----|
+|Z podpisem własnym|Do wersji Enterprise|Nieobsługiwane||
+|Z podpisem własnym|Aby z podpisem własnym|Nieobsługiwane||
+|Z podpisem własnym|Na publiczne<sup>*</sup>|Obsługiwane|1803 & później|
+|Enterprise|Do wersji Enterprise|Obsługiwane tak długo, jak używać tego samego przedsiębiorstwa urzędu certyfikacji jako używane w wdrożenia|1803 & później|
+|Enterprise|Aby z podpisem własnym|Nieobsługiwane||
+|Enterprise|Na publiczne<sup>*</sup>|Obsługiwane|1803 & później|
+|Z publicznego<sup>*</sup>|Do wersji Enterprise|Nieobsługiwane|1803 & później|
+|Z publicznego<sup>*</sup>|Aby z podpisem własnym|Nieobsługiwane||
+|Z publicznego<sup>*</sup>|Na publiczne<sup>*</sup>|Obsługiwane|1803 & później|
+
+<sup>*</sup> W tym miejscu publicznych urzędów certyfikacji są tymi, które są częścią programu zaufanych głównych systemu Windows. Pełną listę można znaleźć [programu zaufanych certyfikatów głównych firmy Microsoft: uczestników (począwszy od 27 czerwca 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+
 ## <a name="alert-remediation"></a>Korygowanie alertu
 
 Gdy w ciągu 30 dni wygaśnięcia hasła, następujące alerty są generowane w portalu administratora: 
@@ -74,7 +91,7 @@ Uruchomiona tajny obrotu z instrukcjami poniżej będzie skorygować te alerty.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Obracanie kluczy tajnych wewnętrznych i zewnętrznych
 
-Obracanie wewnętrzny kluczy tajnych zarówno zewnętrznych:
+Aby zmienić zarówno zewnętrzne wewnętrzny klucz tajny:
 
 1. W nowo utworzony **/certyfikaty** Katalog utworzony w kroku przed, umieść nowy zestaw certyfikaty zewnętrzne zastąpienie w strukturze katalogów zgodnie z formatem opisane w sekcji wymagane certyfikaty z [wymagania dotyczące certyfikatu PKI stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
 2. Tworzenie sesji programu PowerShell z [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) przy użyciu **CloudAdmin** konta i przechowywać sesje jako zmienną. Ta zmienna będzie używać jako parametru w następnym kroku.
@@ -137,7 +154,7 @@ Polecenie cmdlet Start-SecretRotation obraca kluczy tajnych infrastruktury syste
  
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Typ | Wymagane | Położenie | Domyślne | Opis |
+| Parametr | Typ | Wymagane | Pozycja | Domyślne | Opis |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalog zawierający wszystkie zewnętrzne sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku obracanie kluczy tajnych wewnętrznych i zewnętrznych. Katalog end musi być **\Certificates**. |
 | CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniane po wewnętrznych i zewnętrznych kluczy tajnych są obracane. |

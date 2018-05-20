@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 29dcfaad840b5498dd859082ce11655a4f1fe8af
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e469311609909e3453015702fca7d015a4e72398
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Równoważenie obciążenia maszyn wirtualnych we wszystkich strefach dostępności przy użyciu wiersza polecenia platformy Azure
 
@@ -61,13 +61,13 @@ az network public-ip create \
 ```
 
 ## <a name="create-azure-load-balancer-standard"></a>Utwórz standardowy moduł równoważenia obciążenia Azure
-W tej sekcji Szczegóły, jak utworzyć i skonfigurować następujące składniki usługi równoważenia obciążenia:
-- Pula adresów IP frontonu, która odbiera przychodzącego ruchu sieciowego w ramach usługi równoważenia obciążenia.
-- Pula IP zaplecza, gdzie puli frontonu wysyła obciążenia zrównoważonym ruchu sieciowego.
-- Badanie kondycji, które określa kondycji wystąpień maszyn wirtualnych wewnętrznej bazy danych.
-- reguły modułu równoważenia obciążenia, który definiuje rozkład ruchu do maszyn wirtualnych.
+W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następujących składników modułu równoważenia obciążenia:
+- Adres IP frontonu, który odbiera przychodzący ruch sieciowy w module równoważenia obciążenia.
+- Pula adresów IP zaplecza, gdzie pula frontonu wysyła ruch sieciowy o zrównoważonym obciążeniu.
+- Sonda kondycji, która określa kondycję wystąpień maszyn wirtualnych zaplecza.
+- Reguła modułu równoważenia obciążenia, która definiuje sposób dystrybucji ruchu do maszyn wirtualnych.
 
-### <a name="create-the-load-balancer"></a>Tworzenie usługi równoważenia obciążenia
+### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 Tworzenie modułu równoważenia obciążenia standardowego z [utworzyć równoważeniem obciążenia sieciowego az](/cli/azure/network/lb#az_network_lb_create). Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie *myLoadBalancer* i przypisuje *myPublicIP* adres do konfiguracji IP frontonu.
 
 ```azurecli-interactive
@@ -94,7 +94,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>Tworzenie reguły modułu równoważenia obciążenia dla portu 80
-Reguły modułu równoważenia obciążenia definiuje konfigurację IP frontonu dla ruchu przychodzącego i puli adresów IP zaplecza, aby odbierać ruch, wraz z wymagany port źródłowy i docelowy. Tworzenie reguły modułu równoważenia obciążenia *myLoadBalancerRuleWeb* z [utworzyć regułę równoważeniem obciążenia sieciowego az](/cli/azure/network/lb/rule#az_network_lb_rule_create) do nasłuchiwania na porcie 80 w puli frontonu *myFrontEndPool* i wysyłania równoważeniem obciążenia ruchu sieciowego do puli adresów zaplecza *myBackEndPool* również przy użyciu portu 80.
+Reguła modułu równoważenia obciążenia definiuje konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Utwórz regułę modułu równoważenia obciążenia *myLoadBalancerRuleWeb* za pomocą polecenia [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) w celu nasłuchiwania na porcie 80 w puli frontonu *myFrontEndPool* i wysyłania ruchu sieciowego o zrównoważonym obciążeniu do puli adresów zaplecza *myBackEndPool*, również przy użyciu portu 80.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -110,7 +110,7 @@ az network lb rule create \
 ```
 
 ## <a name="configure-virtual-network"></a>Konfigurowanie sieci wirtualnej
-Przed wdrożeniem niektórych maszyn wirtualnych i przetestować przez moduł równoważenia obciążenia, należy utworzyć pomocnicze zasoby sieci wirtualnej.
+Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu równoważenia obciążenia, należy utworzyć pomocnicze zasoby sieci wirtualnej.
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
@@ -166,12 +166,12 @@ for i in `seq 1 3`; do
         --lb-address-pools myBackEndPool
 done
 ```
-## <a name="create-backend-servers"></a>Utwórz serwerów wewnętrznej bazy danych
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 W tym przykładzie utworzysz trzech maszyn wirtualnych znajdujących się w strefy 1, 2 strefy i 3, aby pełnić rolę serwerów wewnętrznej bazy danych dla modułu równoważenia obciążenia. Należy również zainstalować NGINX na maszynach wirtualnych, aby sprawdzić, czy usługa równoważenia obciążenia została pomyślnie utworzona.
 
 ### <a name="create-cloud-init-config"></a>Tworzenie pliku konfiguracji cloud-init
 
-Plik konfiguracji chmury init służy do instalowania NGINX i uruchamianie aplikacji Node.js "Hello World" w maszynie wirtualnej systemu Linux. W bieżącym powłoki Utwórz plik o nazwie init.txt chmury i skopiuj i wklej następującą konfigurację w powłoce. Upewnij się, że należy skopiować cały init chmury pliku poprawnie, szczególnie pierwszy wiersz:
+Aby zainstalować serwer NGINX i uruchomić aplikację Node.js „Hello World” na maszynie wirtualnej z systemem Linux, możesz użyć pliku konfiguracji cloud-init. W bieżącej powłoce utwórz plik o nazwie cloud-init.txt, a następnie skopiuj i wklej poniższą konfigurację do powłoki. Upewnij się, że kopiujesz cały plik cloud-init, a szczególnie pierwszy wiersz:
 
 ```yaml
 #cloud-config
@@ -218,19 +218,21 @@ runcmd:
 ### <a name="create-the-zonal-virtual-machines"></a>Tworzenie zonal maszyn wirtualnych
 Tworzenie maszyn wirtualnych o [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create) w strefy 1, 2 strefy i 3. Poniższy przykład tworzy Maszynę wirtualną w każdej strefie i generuje klucze SSH, jeśli jeszcze nie istnieje:
 
-Tworzenie maszyn wirtualnych w strefie 1
+Utwórz maszynę Wirtualną w każdej strefie (strefy 1, zone2 i 3) z *westeurope* lokalizacji.
 
 ```azurecli-interactive
- az vm create \
---resource-group myResourceGroupSLB \
---name myVM$i \
---nics myNic$i \
---image UbuntuLTS \
---generate-ssh-keys \
---zone $i \
---custom-data cloud-init.txt
+for i in `seq 1 3`; do
+  az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM$i \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --zone $i \
+    --custom-data cloud-init.txt
+done
 ```
-## <a name="test-the-load-balancer"></a>Testowanie usługi równoważenia obciążenia
+## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
 
 Pobierz publiczny adres IP przy użyciu usługi równoważenia obciążenia [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). 
 
@@ -247,8 +249,8 @@ Następnie możesz wprowadzić publiczny adres IP w przeglądarce internetowej. 
 
 Aby zobaczyć dystrybucji ruchu na maszynach wirtualnych we wszystkich strefach dostępności trzy z tą aplikacją usługi równoważenia obciążenia, można zatrzymać maszyny Wirtualnej w ramach określonej strefy i odświeżyć przeglądarkę.
 
-## <a name="next-steps"></a>Następne kroki
-- Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](./load-balancer-standard-overview.md)
+## <a name="next-steps"></a>Kolejne kroki
+- Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](./load-balancer-standard-overview.md)
 
 
 

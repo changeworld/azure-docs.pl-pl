@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: babanisa
-ms.openlocfilehash: 8ddde98b448f4d6d6f24a2ee47acf9240593622c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fd82d163ba8407a3dfa088cd322f3e236be5d7ea
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event siatki
 
@@ -40,7 +40,7 @@ W przypadku projektowania aplikacji, istnieje elastyczność podczas podejmowani
 
 Subskrypcję nakazuje siatki zdarzeń na zdarzenia na temat otrzymywać jest subskrybenta. Subskrypcja zawiera również informacji na temat sposobu zdarzenia powinna zostać dostarczona do subskrybenta.
 
-## <a name="event-handlers"></a>Uchwyty zdarzeń
+## <a name="event-handlers"></a>Procedury obsługi zdarzeń
 
 Z perspektywy siatki zdarzeń program obsługi zdarzeń jest miejscem wysyłania zdarzenia. Program obsługi ma niektórych dalszych kroków w celu przetworzenia zdarzenia. Siatka zdarzeń obsługuje wiele typów subskrybenta. W zależności od typu subskrybenta siatki zdarzeń wykonuje różne mechanizmy gwarantujące dostarczania zdarzenia. Dla programów obsługi zdarzeń elementu webhook HTTP, zdarzenie jest ponawiana dopóki obsługi zwraca kod stanu `200 – OK`. Dla kolejki magazynu Azure zdarzenia są ponawiana dopóki usługa kolejki jest może pomyślnie przetworzyć wypychania wiadomości do kolejki.
 

@@ -10,17 +10,16 @@ ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 81074d303fbcefdf396de09510f69067eac3f3f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a9f2e9c2634173cf2feb9ded2e87e49f9c8d1e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Tworzenie klastrów usługi HDInsight z usługą Data Lake Store jako domyślny magazyn przy użyciu programu PowerShell
+
 > [!div class="op_single_selector"]
 > * [Korzystanie z witryny Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Przy użyciu programu PowerShell (do magazynu domyślnego)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -38,11 +37,12 @@ Poniżej przedstawiono kilka istotnych kwestii dotyczących z usługą Data Lake
 Aby skonfigurować HDInsight do pracy z usługą Data Lake Store za pomocą programu PowerShell, postępuj zgodnie z instrukcjami w sekcji następnych pięciu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Przed rozpoczęciem tego samouczka, upewnij się, czy zostały spełnione następujące wymagania:
 
 * **Subskrypcja platformy Azure**: Przejdź do [Azure Pobierz bezpłatną wersję próbną](https://azure.microsoft.com/pricing/free-trial/).
 * **Program Azure PowerShell 1.0 lub nowszego**: zobacz [jak instalowanie i konfigurowanie programu PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Aby zainstalować zestaw Windows SDK, przejdź do [pliki do pobrania i narzędzi dla systemu Windows 10](https://dev.windows.com/en-us/downloads). Zestaw SDK służy do tworzenia certyfikatu zabezpieczeń.
+* **Windows Software Development Kit (SDK)**: Aby zainstalować zestaw Windows SDK, przejdź do [pliki do pobrania i narzędzi dla systemu Windows 10](https://dev.windows.com/downloads). Zestaw SDK służy do tworzenia certyfikatu zabezpieczeń.
 * **Nazwy głównej usługi Azure Active Directory**: w tym samouczku opisano sposób tworzenia nazwy głównej usługi w usłudze Azure Active Directory (Azure AD). Jednak można utworzyć nazwy głównej usługi, musi być administratorem usługi Azure AD. Jeśli jesteś administratorem, możesz pominąć te wymagania wstępne i kontynuować samouczka.
 
     >[!NOTE]
@@ -50,6 +50,7 @@ Przed rozpoczęciem tego samouczka, upewnij się, czy zostały spełnione nastę
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Tworzenie konta usługi Data Lake Store
+
 Aby utworzyć konto usługi Data Lake Store, wykonaj następujące czynności:
 
 1. Na pulpicie otwórz okno programu PowerShell, a następnie wprowadź poniższe fragmenty kodu. Po wyświetleniu monitu zaloguj się, zaloguj się jako jeden z administratorów subskrypcji lub właścicieli. 
@@ -142,7 +143,7 @@ W tej sekcji Tworzenie nazwy głównej usługi dla aplikacji usługi Azure AD, p
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

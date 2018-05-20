@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.openlocfilehash: 8732d1b87acaa6673ae92b3302fb257dcb134217
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Przy użyciu aplikacji w Azure Blockchain Workbench
 
@@ -52,14 +52,7 @@ Aby utworzyć nowy kontrakt, musisz być członkiem **AllowedInstanceRoles** rol
 ## <a name="take-action-on-contract"></a>Podejmij działanie kontraktu
 
 1. W sekcji aplikacji Blockchain Workbench wybierz Kafelek aplikacji zawiera kontrakt podjęcie działań.
-
-    ![Lista aplikacji](media/blockchain-workbench-use/apps-list.png)
-
-2. Wybierz umowę na liście.
-
-    ![Lista umów](media/blockchain-workbench-use/select-contract.png)
-
-    Szczegóły umowy zostaną wyświetlone w różne sekcje. 
+2. Wybierz umowę na liście. Szczegóły umowy zostaną wyświetlone w różne sekcje. 
 
     ![Szczegóły kontraktu](media/blockchain-workbench-use/contract-details.png)
 
@@ -74,9 +67,14 @@ Aby utworzyć nowy kontrakt, musisz być członkiem **AllowedInstanceRoles** rol
 
 4. Szczegółowe informacje o bieżącym stanie kontrakt są wyświetlane w okienku. Wybierz akcję, którą chcesz wykonać w listy rozwijanej. 
 
+    ![Wybierz akcję](media/blockchain-workbench-use/choose-action.png)
+
+5. Wybierz **reakcję** zainicjować akcji.
+6. Jeśli parametry są wymagane dla akcji, należy określić wartości dla akcji.
+
     ![Podejmij działanie](media/blockchain-workbench-use/take-action.png)
 
-5. Wybierz **Execute** podjęcie działań.
+7. Wybierz **reakcję** do wykonania akcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,18 +1,18 @@
 ---
-title: "Azure schematu zdarzeń usługi Service Bus siatki zdarzeń"
-description: "Opisuje właściwości, które są dostępne dla zdarzeń usługi Service Bus Azure zdarzeń siatki"
+title: Azure schematu zdarzeń usługi Service Bus siatki zdarzeń
+description: Opisuje właściwości, które są dostępne dla zdarzeń usługi Service Bus Azure zdarzeń siatki
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 02/21/2018
 ms.author: babanisa
-ms.openlocfilehash: 72780bff3807534efb456a9a7998f7d4de3c6f12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure schematu zdarzeń siatki zdarzeń dla usługi Service Bus
 
@@ -85,8 +85,8 @@ Zdarzenie ma następujące dane najwyższego poziomu:
 | eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu metadanych zdarzeń. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
+| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 

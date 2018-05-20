@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: cc15c92037e18800a6f919d0ca18acb20ed5e893
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja Azure datacenter stosu - tożsamości
 Stos Azure za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) można wdrożyć jako dostawcy tożsamości. Wybór należy przed wdrożeniem stosu Azure. Wdrożenia przy użyciu usług AD FS jest również nazywany wdrażanie stosu Azure w trybie rozłączonym.
@@ -289,6 +289,9 @@ Istnieje wiele scenariuszy, które korzystają z główną nazwę usługi (SPN) 
 - Dostawcy zasobów Azure stosu podczas wdrażania z usługami AD FS
 - Różne aplikacje
 - Wymagaj logowania nieinterakcyjnego
+
+> [!Important]  
+> Usługi AD FS obsługuje jedynie sesje logowania interakcyjnego. Jeśli potrzebujesz nieinterakcyjnym logowania automatycznego scenariusz, należy użyć nazwy SPN.
 
 Aby uzyskać więcej informacji na temat tworzenia głównej nazwy usługi, zobacz [Tworzenie nazwy głównej usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
 

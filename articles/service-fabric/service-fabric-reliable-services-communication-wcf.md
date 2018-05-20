@@ -1,6 +1,6 @@
 ---
-title: "Niezawodne stosu komunikacji usług WCF | Dokumentacja firmy Microsoft"
-description: "Wbudowane stosu komunikacji usługi WCF w sieci szkieletowej usług zawiera Usługa klienta WCF komunikacji niezawodnej usług."
+title: Niezawodne stosu komunikacji usług WCF | Dokumentacja firmy Microsoft
+description: Wbudowane stosu komunikacji usługi WCF w sieci szkieletowej usług zawiera Usługa klienta WCF komunikacji niezawodnej usług.
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5ca579b446e5d3608d53cea73fa9392cd00db06
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikacja oparta na WCF stos niezawodne usługi
 Niezawodne usługi framework umożliwia autorom usługi wybierz stosu komunikacji, który ma być używany dla ich usługi. Można podłączyć stosu komunikacji wybranych przez nich za pośrednictwem **ICommunicationListener** zwrócony z [CreateServiceReplicaListeners lub CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metody. Struktury dostarcza implementację tego stosu komunikacji oparte na systemie Windows Communication Foundation (WCF) dla autorów usługi, które mają być używane do komunikacji usługi WCF.
@@ -26,7 +26,7 @@ Niezawodne usługi framework umożliwia autorom usługi wybierz stosu komunikacj
 ## <a name="wcf-communication-listener"></a>Odbiornik komunikacji usługi WCF
 Implementacja specyficzne dla usługi WCF **ICommunicationListener** są dostarczane przez **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** klasy.
 
-Co najmniej powiedz mamy typu kontraktu usługi`ICalculator`
+Co najmniej powiedz mamy typu kontraktu usługi `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -122,7 +122,7 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wywołanie procedury zdalnej komunikacji zdalnej niezawodne usługi](service-fabric-reliable-services-communication-remoting.md)
 * [Interfejs API OWIN w niezawodnej usługi sieci Web](service-fabric-reliable-services-communication-webapi.md)
 * [Zabezpieczenia komunikacji niezawodnej usług](service-fabric-reliable-services-secure-communication.md)
