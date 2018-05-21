@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z planami 10 000 ft | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i planów ft 10 000."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i planów ft 10 000.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 76e91c1a4f52337fe7e24d2c7dc727d1fb0ebef2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 340bbd62de7dab9bd0ae45da3105ec2ffd271dfe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Samouczek: Integracji Azure Active Directory z planami ft 10 000
 
@@ -29,7 +29,7 @@ Integrowanie planów 10 000 ft z usługą Azure AD zapewnia następujące korzy�
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do 10 000 ft planów (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL:`https://app.10000ft.com`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL: `https://app.10000ft.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL:`https://app.10000ft.com/saml/metadata`
+    b. W **identyfikator** tekstowym, wpisz adres URL: `https://app.10000ft.com/saml/metadata`
 
     > [!NOTE] 
     > Wartość **identyfikator** jest inny, jeśli masz domenę niestandardową. Skontaktuj się z [zespołem pomocy technicznej planów 10 000 ft](https://www.10000ft.com/plans/support) aby zyskać tę wartość. 
@@ -207,10 +207,10 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.  
 Po kliknięciu kafelka planów 10 000 ft w panelu dostępu należy należy pobrać automatycznie zalogowane do 10 000 ft planów aplikacji.
  
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

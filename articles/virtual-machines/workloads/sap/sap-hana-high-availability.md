@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: 5bc578d617edd093a3b7eec7903209bfdb9ebfce
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1965438e64af84d0c808b0684f9e81c797193bff
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure (VM)
 
@@ -228,10 +228,10 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
        sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
        </code></pre>
        
-       Utwórz woluminy logiczne
+        Utwórz woluminy logiczne. Liniowy wolumin zostanie utworzony przy użyciu lvcreate bez -i przełącznika. Zalecamy, aby utworzyć wolumin rozłożony lepszą wydajność We/Wy, -i argument powinien być taki sam jak numer woluminu fizycznych źródłowej. W tym dokumencie 2 woluminy fizyczne są używane do ilość danych, więc argumentu przełącznika -i 2. 1 fizyczny wolumin jest używany dla woluminu dziennika i dlatego nie - jawnie jest używany przełącznik. Użyj -i przełącznika i Zastąp numer do tej samej podstawowej numer woluminu fizycznego, gdy używasz więcej niż 1 wielkość poszczególnych danych, dziennika lub udostępnione woluminy.
 
        <pre><code>
-       sudo lvcreate -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+       sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
        sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
        sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
        sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data

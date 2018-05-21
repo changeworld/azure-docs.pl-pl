@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z EverBridge | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i EverBridge."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i EverBridge.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 493705359186dc9d27e01d0d5fae65829a8af834
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02dc94fe9c53e3ae8d1ca57dec4c7a70d3beb68b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Samouczek: Integracji Azure Active Directory z EverBridge
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD EverBridge zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do EverBridge (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://sso.everbridge.net/<companyname>`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://sso.everbridge.net/<companyname>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://manager.everbridge.net/saml/SSO/<companyname>/alias/defaultAlias`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://manager.everbridge.net/saml/SSO/<companyname>/alias/defaultAlias`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej EverBridge](mailto:support@everbridge.com) uzyskać te wartości.
@@ -149,7 +149,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     f. W dostawcy zainicjował żądanie powiązania usługi, wybierz **przekierowywanie HTTP**.
 
-    g. Kliknij przycisk **Zapisz**
+    g. Kliknij pozycję **Zapisz**
 
 > [!TIP]
 > Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -226,10 +226,10 @@ Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczeg
 
 Po kliknięciu kafelka Everbridge w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Everbridge.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

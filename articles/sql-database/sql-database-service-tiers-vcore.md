@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>na podstawie vCore model kupna bazy danych SQL Azure (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/11/2018
 |**Model kupna**|**Opis**|**Najlepsze dla**|
 |---|---|---|
 |Jednostek dtu w warstwie na podstawie modelu|Ten model jest oparty na powiązane miary obliczeniowej, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu a Edtu, zobacz [co to są Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Najlepsze dla klientów, którzy zasobów proste, wstępnie skonfigurowane opcje.| 
-|vCore na podstawie modelu|Ten model umożliwia niezależnie skalowanie zasobów obliczeniowych i magazynu. Umożliwia on również używać korzyści hybrydowe platformy Azure dla programu SQL Server w celu uzyskania oszczędności.|Najlepsze dla klientów, którzy wartość elastyczność, kontroli i przejrzystości.|
+|vCore na podstawie modelu|Ten model umożliwia niezależnie skalowanie zasoby obliczeniowe i magazynujące - vCores maksymalnie 80, 4 TB pamięci masowej i 200000 IOPS. Umożliwia on również używać korzyści hybrydowe platformy Azure dla programu SQL Server w celu uzyskania oszczędności.|Najlepsze dla klientów, którzy wartość elastyczność, kontroli i przejrzystości.|
 ||||  
 
 ![model cenowy](./media/sql-database-service-tiers/pricing-model.png)
@@ -48,7 +48,7 @@ W podstawie vCore zakupów modelu (wersja zapoznawcza) klienci płatności dla:
 \*\* Podczas udostępniania wersji zapoznawczej mogą 7 dni i IOs
 
 > [!IMPORTANT]
-> Obliczeniowe, IOs, danych i przechowywanie dziennika są naliczane na bazę danych lub puli elastycznej. Magazyn kopii zapasowych jest pobierana dla każdej bazy danych. Szczegóły wystąpienia zarządzane opłat można znaleźć [wystąpienia zarządzane bazy danych SQL Azure](sql-database-managed-instance.md).
+> Obliczeniowe, IOs, danych i przechowywanie dziennika są naliczane na bazę danych lub puli elastycznej. Magazyn kopii zapasowych jest pobierana dla każdej bazy danych. Szczegółowe opłaty za wystąpienia zarządzane znaleźć [wystąpienia zarządzane bazy danych SQL Azure](sql-database-managed-instance.md).
 
 > [!IMPORTANT]
 > Ograniczenia regionu: 
@@ -65,10 +65,10 @@ Poniższa tabela pomoże Ci poznać różnice między tymi dwoma warstwami:
 ||**Ogólnego przeznaczenia**|**Biznesowe krytyczne**|
 |---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżecie obiektowe zrównoważony i skalowalnych zasobów obliczeniowych i magazynu opcje.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|
-|Wystąpienia obliczeniowe|vCore 1-16|vCore 1-16|
+|Wystąpienia obliczeniowe|vCore 1 do 80, generowanie 4 i 5 generacji |vCore 1 do 80, generowanie 4 i 5 generacji|
 |Memory (Pamięć)|7 GB na podstawowe |7 GB na podstawowe |
-|Magazyn|Magazyn zdalny Premium, 5 GB – 4 TB|Lokalny magazyn dysków SSD, 5 GB – 1 TB|
-|Wydajność We/Wy (przybliżony)|500 IOPS na vCore z 7500 maksymalna liczba IOPS|5000 IOPS na podstawowe|
+|Magazyn|Magazyn zdalny Premium, 5 GB – 4 TB|Lokalny magazyn dysków SSD, 5 GB – 4 TB|
+|Wydajność We/Wy (przybliżony)|500 IOPS na vCore z 7000 maksymalna liczba IOPS|5000 IOPS na podstawowe z 200000 maksymalna liczba IOPS|
 |Dostępność|1 repliki, bez skalowania odczytu|repliki 3, 1 [skali odczytu](sql-database-read-scale-out.md), strefy HA geograficznie nadmiarowy|
 |Tworzenie kopii zapasowych|RA-GRS, 7-35 dni (domyślnie co 7 dni)|RA-GRS, 7-35 dni (domyślnie co 7 dni) *|
 |W pamięci|ND|Obsługiwane|

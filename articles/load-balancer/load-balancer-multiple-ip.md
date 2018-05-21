@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Równoważenia obciążenia na wielu konfiguracji adresów IP za pomocą portalu Azure
 
@@ -172,7 +172,7 @@ Skonfiguruj badanie kondycji dla Twojej usługi równoważenia obciążenia:
 
 Dla każdej witryny sieci Web (contoso.com i fabrikam.com) należy skonfigurować reguły równoważenia obciążenia:
     
-1. <a name="step6-1"></a>W obszarze **ustawienia**, wybierz pozycję **sondy kondycji**. W okienku dalej u góry, wybierz **Dodaj**. 
+1. <a name="step6-1"></a>W obszarze **ustawienia**, wybierz pozycję ** równoważenia reguły ** obciążenia. W okienku dalej u góry, wybierz **Dodaj**. 
 
 2. Aby uzyskać **nazwa**, wpisz nazwę reguły równoważenia obciążenia (na przykład **HTTPc** dla domeny contoso.com, lub **HTTPf** dla fabrikam.com).
 

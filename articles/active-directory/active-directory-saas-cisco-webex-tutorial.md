@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Cisco Webex | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Cisco Webex."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Cisco Webex.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 42632dcf8997ec5e987ac8a6615aae24e903399a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 527d74910244058506e8435d431e239968896cd9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Samouczek: Integracji Azure Active Directory z Cisco Webex
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD Cisco Webex zapewnia następujące korzyści:
 - Można umożliwić użytkownikom automatycznie pobrać zalogowany do Cisco Webex z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji--portalu Azure.
 
-Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,11 +110,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Webex Cisco pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. W **adres URL logowania** wpisz adres URL z następującego wzorca:`https://<subdomain>.webex.com`
+    a. W **adres URL logowania** wpisz adres URL z następującego wzorca: `https://<subdomain>.webex.com`
 
     b. W **identyfikator** wpisz adres URL `http://www.webex.com`.
 
-    c. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca:`https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
+    c. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca: `https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Zaktualizować te wartości z adresem URL odpowiedzi rzeczywiste i logowania jednokrotnego adresu URL. Skontaktuj się z [zespołem pomocy technicznej klienta Webex Cisco](https://www.webex.co.in/support/support-overview.html) uzyskać te wartości. 
@@ -222,9 +222,9 @@ Aby umożliwić użytkownikom usługi Azure AD do logowania się na Cisco Webex,
 
     c. W **nazwisko** wpisz nazwisko użytkownika (w tym przypadku **Simona**).
 
-    d. W **Username** wpisz adres e-mail użytkownika (w tym przypadku  **Brittasimon@contoso.com** ).
+    d. W **Username** wpisz adres e-mail użytkownika (w tym przypadku **Brittasimon@contoso.com**).
 
-    e. W **E-mail** wpisz adres e-mail użytkownika (w tym przypadku  **Brittasimon@contoso.com** ).
+    e. W **E-mail** wpisz adres e-mail użytkownika (w tym przypadku **Brittasimon@contoso.com**).
 
     f. W **hasło** wpisz hasło użytkownika.
 
@@ -267,7 +267,7 @@ W tej sekcji możesz umożliwić użytkownikowi Simona Britta do przyznania im d
 
 7. Wybierz **przypisać** przycisk **Dodaj przydziału** okno dialogowe.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -275,10 +275,10 @@ Po wybraniu kafelka Cisco Webex w panelu dostępu, można automatycznie pobrać 
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

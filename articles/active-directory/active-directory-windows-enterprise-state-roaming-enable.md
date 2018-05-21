@@ -1,9 +1,9 @@
 ---
-title: "Włącz Roaming stanu przedsiębiorstwa w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące ustawień roamingu stanu przedsiębiorstwa na urządzeniach z systemem Windows. Roamingu stanu przedsiębiorstwa udostępnia użytkownikom środowisko unified na ich urządzeniach z systemem Windows i skraca czas potrzebny na konfigurowanie nowego urządzenia."
+title: Włącz Roaming stanu przedsiębiorstwa w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące ustawień roamingu stanu przedsiębiorstwa na urządzeniach z systemem Windows. Roamingu stanu przedsiębiorstwa udostępnia użytkownikom środowisko unified na ich urządzeniach z systemem Windows i skraca czas potrzebny na konfigurowanie nowego urządzenia.
 services: active-directory
-keywords: "roaming, chmury systemu windows, jak włączyć roamingu stanu przedsiębiorstwa stanu przedsiębiorstwa"
-documentationcenter: 
+keywords: roaming, chmury systemu windows, jak włączyć roamingu stanu przedsiębiorstwa stanu przedsiębiorstwa
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 3a8714ddbda10d8e1b4a8de35711101f4c8a0106
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dba749b6d85898e6438ce1160b9bf6eaff6f4ac9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 Roamingu stanu przedsiębiorstwa jest dostępne dla każdej organizacji z usługi Azure AD Premium lub pakietu Enterprise Mobility + Security (EMS) licencji. Aby uzyskać więcej informacji na temat sposobu uzyskania subskrypcji usługi Azure AD, zobacz [stronę produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).
 
-Po włączeniu roamingu stanu przedsiębiorstwa, Twoja organizacja jest automatycznie przyznawane bezpłatne, ograniczonej licencji usługi Azure Rights Management. Bezpłatna subskrypcja jest ograniczona do szyfrowania i odszyfrowywania ustawienia przedsiębiorstwa i dane aplikacji synchronizowane przez roamingu stanu przedsiębiorstwa. Musi mieć [płatną subskrypcję](https://azure.microsoft.com/pricing/details/active-directory/) do używania w pełni możliwości usługi Azure Rights Management.
+Po włączeniu roamingu stanu przedsiębiorstwa organizacji automatycznie otrzymuje licencję bezpłatne, ograniczonej ochrony usługi Azure Rights Management z usługi Azure Information Protection. Bezpłatna subskrypcja jest ograniczona do szyfrowania i odszyfrowywania ustawienia przedsiębiorstwa i dane aplikacji synchronizowane przez roamingu stanu przedsiębiorstwa. Musi mieć [płatną subskrypcję](https://azure.microsoft.com/pricing/details/information-protection/) do używania w pełni możliwości usługi Azure Rights Management.
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Aby włączyć roamingu stanu przedsiębiorstwa
 
@@ -39,7 +39,7 @@ Po włączeniu roamingu stanu przedsiębiorstwa, Twoja organizacja jest automaty
 Dla urządzeń z systemem Windows 10 do korzystania z roamingu stanu przedsiębiorstwa usługi urządzenie musi uwierzytelnić przy użyciu tożsamości usługi Azure AD. W przypadku urządzeń, które dołączyły do usługi Azure AD głównej logowania tożsamości użytkownika jest swojej tożsamości usługi Azure AD, więc dodatkowa konfiguracja nie jest wymagane. W przypadku urządzeń korzystających z lokalnej usługi Active Directory, administrator IT musi [łączenie urządzeń przyłączonych do domeny do usługi Azure AD dla systemu Windows 10 napotyka](active-directory-azureadjoin-devices-group-policy.md).
 
 ## <a name="data-storage"></a>Magazyn danych
-Roamingu stanu przedsiębiorstwa danych znajduje się w co najmniej jednej [regiony platformy Azure](https://azure.microsoft.com/regions/) że najlepiej są wyrównane o wartości kraj/region w wystąpieniu usługi Azure Active Directory. Dane roamingu stanu przedsiębiorstwa jest podzielona na partycje oparte na trzech głównych regionach geograficznych: Ameryce Północnej, regionie oraz APAC. Roamingu stanu przedsiębiorstwa danych dla dzierżawy znajduje się lokalnie z region geograficzny, a nie są replikowane w regionach.  Na przykład::
+Roamingu stanu przedsiębiorstwa danych znajduje się w co najmniej jednej [regiony platformy Azure](https://azure.microsoft.com/regions/) że najlepiej są wyrównane o wartości kraj/region w wystąpieniu usługi Azure Active Directory. Dane roamingu stanu przedsiębiorstwa jest podzielona na partycje oparte na trzech głównych regionach geograficznych: Ameryce Północnej, regionie oraz APAC. Roamingu stanu przedsiębiorstwa danych dla dzierżawy znajduje się lokalnie z region geograficzny, a nie są replikowane w regionach.  Na przykład:
 Wartość kraj/region | swoje dane hosted w
 ---------------------|-------------------------
 EMEA kraju, takich jak "Francja" lub "Zambii" | co najmniej regionów platformy Azure w ramach Europy 

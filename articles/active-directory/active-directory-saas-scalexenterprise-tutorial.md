@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integrację usługi Azure Active Directory ze ScaleX | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ScaleX Enterprise."
+title: 'Samouczek: Integrację usługi Azure Active Directory ze ScaleX | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ScaleX Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f83d817647a5339176260bfcf73005045f9ead54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 94c30d39a5d72a022dd77d65141f1af679cf3dd3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Samouczek: Integrację usługi Azure Active Directory ze ScaleX
 
@@ -29,7 +29,7 @@ Integrowanie ScaleX organizacji z usługą Azure AD zapewnia następujące korzy
 - Umożliwia użytkownikom automatycznie pobrać zalogowane ScaleX przedsiębiorstwem (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz. Co to jest dostęp do aplikacji i logowanie jednokrotne z [usługi Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz. Co to jest dostęp do aplikacji i logowanie jednokrotne z [usługi Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,15 +110,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_url1.png)
 
-    a. W **identyfikator** tekstowym, wpisz wartość, przy użyciu następującego wzorca:`https://platform.rescale.com/saml2/<company id>/`
+    a. W **identyfikator** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `https://platform.rescale.com/saml2/<company id>/`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://platform.rescale.com/saml2/<company id>/acs/`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://platform.rescale.com/saml2/<company id>/acs/`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_url2.png)
 
-    W **adres URL logowania** tekstowym, wpisz wartość, przy użyciu następującego wzorca:`https://platform.rescale.com/saml2/<company id>/sso/`
+    W **adres URL logowania** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
     > Nie są to rzeczywiste wartości. Rzeczywisty identyfikator, adres URL odpowiedzi lub adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Enterprise ScaleX](http://info.rescale.com/contact_sales) uzyskać te wartości. 
@@ -168,7 +168,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. **Saml dostawcy usług**: wkleić wartość ***urn: oasis: nazwy: tc: SAML:2.0:nameid-format: stałe***
 
-    c. **Nazwa dostawcy tożsamości pola wiadomości e-mail w odpowiedzi ACS**: wkleić wartość`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Nazwa dostawcy tożsamości pola wiadomości e-mail w odpowiedzi ACS**: wkleić wartość `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **Identyfikator jednostki EntityDescriptor dostawcy tożsamości:** Wklej **identyfikator jednostki SAML** wartość skopiowany z portalu Azure.
 
@@ -256,10 +256,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Kliknij Kafelek ScaleX przedsiębiorstwa w panelu dostępu, można będzie uzyskać automatycznie zalogowane do aplikacji ScaleX przedsiębiorstwa. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

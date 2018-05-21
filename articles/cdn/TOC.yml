@@ -28,6 +28,8 @@
   items:
     - name: Jak działa buforowanie
       href: cdn-how-caching-works.md
+    - name: Dostarczanie zawartości w Chinach
+      href: cdn-china-delivery.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Integracja

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 43dc50d0a5381ace8bcfeb3cae39e249ba743876
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 277dc8e378e5e0c5f649da4f129d3daca96ef8be
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Samouczek: Integracji Azure Active Directory z pałąka zabezpieczającego
 
@@ -30,7 +30,7 @@ Integrowanie pałąka zabezpieczającego z usługi Azure AD zapewnia następują
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do pałąka zabezpieczającego (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -215,7 +215,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do pałąka zabez
 
     ![Zaproś inne osoby](./media/active-directory-saas-rollbar-tutorial/user2.png)
 
-5. W polu tekstowym wprowadź nazwę użytkownika, takich jak  **brittasimon@contoso.com**  , a następnie kliknij pozycję **Add/zaproszenia**.
+5. W polu tekstowym wprowadź nazwę użytkownika, takich jak **brittasimon@contoso.com** , a następnie kliknij pozycję **Add/zaproszenia**.
 
     ![Zaproś inne osoby](./media/active-directory-saas-rollbar-tutorial/user3.png)
 
@@ -251,7 +251,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -261,7 +261,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

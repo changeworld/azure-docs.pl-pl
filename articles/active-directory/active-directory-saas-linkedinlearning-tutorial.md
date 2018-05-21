@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z LinkedIn Learning | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i uczenie się LinkedIn."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i uczenie się LinkedIn.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 07d19a3fb457093d05afc13e1953c120ece3a280
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fabb79a1449529cde97db7054eb954564b4dfa68
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Samouczek: Integracji Azure Active Directory z LinkedIn Learning
 
@@ -29,7 +29,7 @@ Integrowanie LinkedIn Learning z usługą Azure AD zapewnia następujące korzy�
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do uczenia LinkedIn (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -135,9 +135,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |
     | wyślij wiadomość e-mail| User.mail |    
-    | Dział| User.Department |
-    | Imię| User.givenName |
-    | nazwisko| User.surname |
+    | dział| User.Department |
+    | Imię| user.givenname |
+    | nazwisko| user.surname |
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/userattribute.png)
     
@@ -252,10 +252,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Po kliknięciu kafelka LinkedIn Learning w panelu dostępu, należy pobrać strony Azure logowania jednokrotnego i na po pomyślnym logowania, należy pobrać do aplikacji LinkedIn Learning.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

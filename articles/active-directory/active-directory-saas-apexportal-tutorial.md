@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory za pomocą portalu wierzchołku | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między wierzchołku portalu i usługi Azure Active Directory."
+title: 'Samouczek: Integracji Azure Active Directory za pomocą portalu wierzchołku | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między wierzchołku portalu i usługi Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 569151cc1ceaf7797c7de89f9093fad92a414d2e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 59d390fb25c3c3fd7efaaef89158e5a97d80c8f0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Samouczek: Integracji Azure Active Directory za pomocą portalu wierzchołku
 
@@ -30,7 +30,7 @@ Integrowanie portalu wierzchołku z usługą Azure AD zapewnia następujące kor
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do portalu wierzchołku (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny portalu wierzchołku pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-apexportal-tutorial/tutorial_apexonline_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej portalu wierzchołku](mailto:support@apexanalytix.com) uzyskać te wartości.
@@ -123,8 +123,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |    
-    | IMIĘ | User.givenName |
-    | NAZWISKO | User.surname |
+    | IMIĘ | user.givenname |
+    | NAZWISKO | user.surname |
     | POCZTY | User.mail |    
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
@@ -221,17 +221,17 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka wierzchołku portalu w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Portal wierzchołku.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

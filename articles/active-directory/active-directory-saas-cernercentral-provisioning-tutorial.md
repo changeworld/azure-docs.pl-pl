@@ -1,8 +1,8 @@
 ---
-title: "Samouczek: Konfigurowanie centralnego Cerner dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie udostępnić użytkownikom spisu w środkowej Cerner."
+title: 'Samouczek: Konfigurowanie centralnego Cerner dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory, aby automatycznie udostępnić użytkownikom spisu w środkowej Cerner.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: a4aca2db0190b97d209fc6769b9db55b0ad468d9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 060686089634eda5d15345da9668ff294d350012
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie centralnego Cerner dla użytkownika automatycznego inicjowania obsługi administracyjnej
 
@@ -57,7 +57,7 @@ Przed Skonfiguruj i włącz usługę inicjowania obsługi administracyjnej, nale
 Ta sekcja przeprowadzi użytkownika przez łączenie usługi Azure AD z centralnego Cerner spisu użytkownika przy użyciu konta użytkownika SCIM Cerner przez Inicjowanie obsługi interfejsu API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączania przypisany użytkownik, na podstawie kont w środkowej Cerner Przypisywanie użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć na języku SAML logowania jednokrotnego dla siedziby Cerner, zgodnie z instrukcjami podanymi w [portalu Azure (https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej, że te dwie funkcje uzupełniają. Aby uzyskać więcej informacji, zobacz [Cerner centralnego pojedynczego logowania jednokrotnego samouczek](active-directory-saas-cernercentral-tutorial.md).
+> Można też włączyć na języku SAML logowania jednokrotnego dla siedziby Cerner, wykonując instrukcje podane w [portalu Azure (https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznego inicjowania obsługi administracyjnej, że te dwie funkcje uzupełniają. Aby uzyskać więcej informacji, zobacz [Cerner centralnego pojedynczego logowania jednokrotnego samouczek](active-directory-saas-cernercentral-tutorial.md).
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Aby skonfigurować użytkownika automatyczne Inicjowanie obsługi konta do centralnego Cerner w usłudze Azure AD:
@@ -67,25 +67,25 @@ Aby udostępnić konta użytkowników do centralnego Cerner, należy poprosić k
 
 1.  Pierwszym krokiem jest zapewnienie osobom Zarządzanie Cerner i integracji z usługą Azure AD ma konto CernerCare, co jest wymagane, aby uzyskać dostęp do dokumentacji, które należy wykonać instrukcje. Jeśli to konieczne, umożliwiają utworzenie kont CernerCare w każdym środowisku dotyczy poniżej adresy URL.
 
-   * Piaskownicy: https://sandboxcernercare.com/accounts/create
+   * Piaskownicy:  https://sandboxcernercare.com/accounts/create
 
-   * Produkcji: https://cernercare.com/accounts/create  
+   * Produkcyjnym:  https://cernercare.com/accounts/create  
 
 2.  Następnie należy utworzyć konta systemu dla usługi Azure AD. Poniższe instrukcje umożliwiają żądania konto systemowe dla środowiska izolowanego i produkcji.
 
-   * Instructions:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Instrukcje:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
    * Piaskownicy: https://sandboxcernercentral.com/system-accounts/
 
-   * Produkcji: https://cernercentral.com/system-accounts/
+   * Produkcyjnym:  https://cernercentral.com/system-accounts/
 
 3.  Następnie można wygenerować tokenu elementu nośnego OAuth dla każdego konta użytkownika systemu. Aby to zrobić, postępuj zgodnie z poniższymi instrukcjami.
 
-   * Instructions:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Instrukcje:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
    * Piaskownicy: https://sandboxcernercentral.com/system-accounts/
 
-   * Produkcji: https://cernercentral.com/system-accounts/
+   * Produkcyjnym:  https://cernercentral.com/system-accounts/
 
 4. Na koniec należy uzyskać identyfikatory obszaru spisu użytkownika dla środowisk zarówno piaskownicy, jak i produkcji w Cerner, aby zakończyć konfigurację. Aby uzyskać informacje dotyczące sposobu uzyskania to, zobacz: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
@@ -103,9 +103,9 @@ Aby udostępnić konta użytkowników do centralnego Cerner, należy poprosić k
 
    * W **adres URL dzierżawy** wprowadź adres URL w formacie poniżej, zastępując "Użytkownik-spisu-obszaru-ID" z Identyfikatorem obszaru uzyskaną w kroku #4.
 
-> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Piaskownicy: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> Production: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Produkcyjnym: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * W **klucz tajny tokenu** wprowadź token elementu nośnego OAuth wygenerowany w kroku #3 i kliknij przycisk **Testuj połączenie**.
 
@@ -130,7 +130,7 @@ Aby uzyskać więcej informacji na temat usługi Azure AD, inicjowanie obsługi 
 * [Środkowe Cerner: Publikowania danych tożsamości za pomocą usługi Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Samouczek: Konfigurowanie centralnego Cerner na potrzeby rejestracji jednokrotnej z usługą Azure Active Directory](active-directory-saas-cernercentral-tutorial.md)
 * [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](active-directory-enterprise-apps-manage-provisioning.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się, jak należy przejrzeć dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

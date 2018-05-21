@@ -1,24 +1,24 @@
 ---
-title: "Szybkie wdrażanie istniejącej aplikacji do klastra usługi Azure Service Fabric"
-description: "Użyj klastra usługi Azure Service Fabric do hostowania istniejącej aplikacji w technologii Node.js za pomocą programu Visual Studio."
+title: Szybkie wdrażanie istniejącej aplikacji do klastra usługi Azure Service Fabric
+description: Użyj klastra usługi Azure Service Fabric do hostowania istniejącej aplikacji w technologii Node.js za pomocą programu Visual Studio.
 services: service-fabric
 documentationcenter: nodejs
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 65185a2d594a4a251cf87ece6f758ab3db223d7d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3cb7fdf309c935c21f4e80c1d1ba529838935acc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostowanie aplikacji w technologii Node.js w usłudze Azure Service Fabric
 

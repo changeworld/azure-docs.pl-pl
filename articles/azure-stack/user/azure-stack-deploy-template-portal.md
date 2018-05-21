@@ -1,41 +1,42 @@
 ---
-title: "Wdrażanie szablonów przy użyciu portalu Azure stosu | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie wdrażania szablonów za pomocą portalu Azure stosu."
+title: Wdrażanie szablonów przy użyciu portalu Azure stosu | Dokumentacja firmy Microsoft
+description: Informacje o sposobie wdrażania szablonów za pomocą portalu Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 05/17/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 30c077747685ad7617148e9130926120420b098b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.reviewer: ''
+ms.openlocfilehash: 278f15271d3a5443102f5e387d3db1adb53fe7db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Wdrażanie szablonów przy użyciu portalu Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Wdrażanie szablonów usługi Azure Resource Manager development kit stosu Azure za pomocą portalu.
+Portal umożliwia wdrażanie szablonów usługi Azure Resource Manager stos Azure.
 
-Szablony Menedżera zasobów wdrażania i obsługi administracyjnej wszystkie zasoby aplikacji w jednej, skoordynowanej operacji.
+Aby wdrożyć szablon:
 
-1. Zaloguj się do portalu, kliknij przycisk **nowy**, kliknij przycisk **niestandardowy**, a następnie kliknij przycisk **wdrażania szablonu**.
-2. Kliknij przycisk **Edytuj szablon**, następnie wkleić kod JSON szablonu do bloku, a następnie kliknij przycisk **zapisać**.
-3. Kliknij przycisk **Edytuj parametry**wpisz wartości parametrów na liście, a następnie kliknij przycisk **OK**.
-4. Kliknij przycisk **subskrypcji**, wybierz subskrypcję, którą chcesz użyć, a następnie kliknij przycisk **OK**.
-5. Kliknij przycisk **grupy zasobów**, wybierz istniejącą grupę zasobów lub Utwórz nowy, a następnie kliknij przycisk **OK**.
-6. Kliknij przycisk **Utwórz**. Nowy Kafelek na pulpicie nawigacyjnym śledzi postęp procesu wdrożenia szablonu.
+1. Zaloguj się do portalu, wybierz opcję **nowy**, a następnie wybierz **niestandardowy**.
+2. Wybierz **wdrażania szablonu**.
+3. Wybierz **Edytuj szablon**, a następnie wklej kod JSON szablonu do okna kodu. Wybierz pozycję **Zapisz**.
+4. Wybierz **Edytuj parametry**, podaj wartości parametrów, które są wyświetlane, a następnie wybierz **OK**.
+5. Wybierz **subskrypcji**. Wybierz subskrypcję, którą chcesz użyć, a następnie wybierz **OK**.
+6. Wybierz **grupy zasobów**. Wybierz istniejącą grupę zasobów lub Utwórz nowy, a następnie wybierz **OK**.
+7. Wybierz pozycję **Utwórz**. Nowy Kafelek na pulpicie nawigacyjnym śledzi postęp procesu wdrożenia szablonu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)
 
+[Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)

@@ -1,12 +1,14 @@
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
+Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 
-## <a name="create-an-application-express"></a>Tworzenie aplikacji (Express)
+### <a name="option-1-express-mode"></a>Opcja 1: Tryb ekspresowy
 Teraz musisz zarejestrować aplikację w *portalu rejestracji aplikacji Microsoft*:
 1. Zarejestrować aplikację za pośrednictwem [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)
 2.  Wprowadź nazwę aplikacji i poczty e-mail
 3.  Upewnij się, że zaznaczono opcję instrukcje konfiguracji
 4.  Postępuj zgodnie z instrukcjami, aby uzyskać identyfikator aplikacji i wklej go w kodzie
 
-### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Dodaj swoje informacje rejestracyjne aplikacji do rozwiązania (zaawansowane)
+### <a name="option-2-advanced-mode"></a>Opcja 2: Tryb zaawansowany
 
 1.  Przejdź do [portalu rejestracji aplikacji firmy Microsoft](https://apps.dev.microsoft.com/portal/register-app)
 2.  Wprowadź nazwę aplikacji i poczty e-mail

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 67dff6acff33b548518053ca1f569186d6b5b3ae
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: a1ca2b821678b48f65fe6ec6e58fa65cd8e4304f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure kolejki magazynu powiązania dla usługi Azure Functions
 
@@ -33,6 +33,10 @@ W tym artykule opisano sposób pracy z usługi Azure Functions powiązania magaz
 Powiązania kolejki magazynu jest dostępny w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>Wyzwalacz
 
@@ -241,7 +245,7 @@ W języku JavaScript, użyj `context.bindings.<name>` do ładunku elementu kolej
 
 ## <a name="trigger---message-metadata"></a>Wyzwalacz - metadanych wiadomości
 
-Wyzwalacz kolejki udostępnia wiele [właściwości metadanych](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Te właściwości mogą służyć jako część wyrażenia powiązania w pozostałych powiązaniach lub parametrów w kodzie. Wartości mają tej samej semantyki jako [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
+Wyzwalacz kolejki udostępnia wiele [właściwości metadanych](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Te właściwości mogą służyć jako część wyrażenia powiązania w pozostałych powiązaniach lub parametrów w kodzie. Są to właściwości [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) klasy.
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
@@ -252,8 +256,6 @@ Wyzwalacz kolejki udostępnia wiele [właściwości metadanych](functions-trigge
 |`InsertionTime`|`DateTimeOffset`|Godzina dodania wiadomości do kolejki.|
 |`NextVisibleTime`|`DateTimeOffset`|Czas, który następnie będzie widoczny komunikat.|
 |`PopReceipt`|`string`|Pop odbieranie komunikatu.|
-
-Zobacz [przykłady kodu](#trigger---example) używające tych właściwości w tym artykule.
 
 ## <a name="trigger---poison-messages"></a>Wyzwalacz - skażone wiadomości
 

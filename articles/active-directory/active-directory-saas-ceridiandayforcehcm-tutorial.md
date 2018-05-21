@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Ceridian Dayforce HCM | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Ceridian Dayforce HCM."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Ceridian Dayforce HCM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b87fe59f2761c26319ce9e13168dc6c4bf95f8b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 09f9d6d096944453d28a588de4d73dc3c95fc695
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Samouczek: Integracji Azure Active Directory z Ceridian Dayforce HCM
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD Ceridian Dayforce HCM zapewnia następujące korz
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do HCM Dayforce Ceridian (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -112,21 +112,21 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Środowisko | Adres URL |
     | :-- | :-- |
-    | W zastosowaniach produkcyjnych | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
+    | W przypadku środowiska produkcyjnego | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | Dla testu | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
     
     b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
     
     | Środowisko | Adres URL |
     | :-- | :-- |
-    | W zastosowaniach produkcyjnych | `https://ncpingfederate.dayforcehcm.com/sp` |
+    | W przypadku środowiska produkcyjnego | `https://ncpingfederate.dayforcehcm.com/sp` |
     | Dla testu | `https://fs-test.dayforcehcm.com/sp` |
     
     c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL używany przez usługę Azure AD można opublikować odpowiedzi.
     
     | Środowisko | Adres URL |
     | :-- | :-- |
-    | W zastosowaniach produkcyjnych | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
+    | W przypadku środowiska produkcyjnego | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | Dla testu | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
@@ -268,15 +268,15 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.  
 Po kliknięciu kafelka Ceridian Dayforce HCM w panelu dostępu użytkownik powinien uzyskać automatycznie zalogowane do aplikacji Ceridian Dayforce HCM. 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

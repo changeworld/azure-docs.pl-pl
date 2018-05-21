@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Sequr | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Sequr."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Sequr.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a2984bc2c77e9d92d4236b01c21912c27e167f9
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f3e245f609d96cc247f10ef3c184b7fe1de53756
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Samouczek: Integracji Azure Active Directory z Sequr
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD Sequr zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Sequr (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,13 +108,13 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Sequr pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-sequr-tutorial/tutorial_sequr_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL:`https://login.sequr.io`
+    W **identyfikator** tekstowym, wpisz adres URL: `https://login.sequr.io`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Adresy URL i domeny Sequr pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-sequr-tutorial/tutorial_sequr_url1.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL:`https://login.sequr.io`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL: `https://login.sequr.io`
 
     b. W **stan przekazywania** pole tekstowe, otrzymasz wartość ta jest omówiona w dalszej części tego samouczka.
      
@@ -148,7 +148,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. Przeciągnij i upuść **certyfikatu** pliku, który został pobrany z portalu Azure lub ręcznie wprowadzić zawartości certyfikatu.
 
-    d. Po zapisaniu konfiguracji, zostanie wygenerowany wartość stanu przekazywania. Kopiuj **przekazywania stanu** wartości, a następnie wklej je **stan przekazywania** pole tekstowe z **Sequr domeny i adres URL** sekcji w portalu Azure.
+    c. Po zapisaniu konfiguracji, zostanie wygenerowany wartość stanu przekazywania. Kopiuj **przekazywania stanu** wartości, a następnie wklej je **stan przekazywania** pole tekstowe z **Sequr domeny i adres URL** sekcji w portalu Azure.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -183,7 +183,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
@@ -221,7 +221,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -231,7 +231,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -156,6 +156,8 @@
               href: azure-stack-backup-enable-backup-powershell.md
             - name: Tworzenie kopii zapasowej Azure stosu
               href: azure-stack-backup-back-up-azure-stack.md
+            - name: Kopie zapasowe plików i aplikacji na stosie Azure
+              href: ..\backup\backup-mabs-files-applications-azure-stack.md?toc=%2fazure%2fazure-stack%2ftoc.json
             - name: Odzyskaj przed utratą danych w wyniku katastrofy
               href: azure-stack-backup-recover-data.md
             - name: Najlepsze rozwiązania w zakresie tworzenia kopii zapasowej
@@ -245,6 +247,8 @@
               href: azure-stack-app-service-configure-deployment-sources.md
             - name: Usługi aplikacji — informacje o wersji 1 update Azure stosu
               href: azure-stack-app-service-release-notes-update-one.md
+            - name: Usługi aplikacji — informacje o wersji update 2 Azure stosu
+              href: azure-stack-app-service-release-notes-update-two.md
         - name: Wypełnianie portalu Marketplace treścią
           items:
             - name: Omówienie portalu Marketplace

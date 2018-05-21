@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z rozpoznawanie | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i rozpoznawanie."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i rozpoznawanie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: cf0945b478d284da0519a6da49f22f0940b80944
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bf235983af2caf753c4df9fa8d70b05bb3b8b23
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Samouczek: Integracji Azure Active Directory z rozpoznawanie
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD rozpoznawanie zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do uznania (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-recognize-tutorial/tutorial_recognize_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://recognizeapp.com/<your-domain>/saml/sso`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://recognizeapp.com/<your-domain>/saml/sso`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://recognizeapp.com/<your-domain>`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://recognizeapp.com/<your-domain>`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta rozpoznaje](mailto:support@recognizeapp.com) uzyskać adres URL logowania i może uzyskać wartość identyfikatora otwierania adresu URL metadanych dostawcy usług w sekcji Ustawienia logowania jednokrotnego, opisanej w dalszej części tego samouczka. . 
@@ -258,10 +258,10 @@ Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczeg
 
 Po kliknięciu kafelka rozpoznawanie w panelu dostępu należy należy pobrać automatycznie zalogowane do uznania aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

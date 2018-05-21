@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory Integracja z platformą zarządzania kontraktu Icertis | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i platformy zarządzania Icertis kontraktu."
+title: 'Samouczek: Azure Active Directory Integracja z platformą zarządzania kontraktu Icertis | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i platformy zarządzania Icertis kontraktu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 0d5e80e78b7c67984144e7722ce55785efaea501
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: abe7eceac751d8448723a92af9d88aeb3854b102
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>Samouczek: Azure Active Directory Integracja z platformą zarządzania Icertis kontraktu
 
@@ -29,7 +29,7 @@ Integracja platformy zarządzania kontraktu Icertis z usługą Azure AD zapewnia
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do platformy zarządzania kontraktu Icertis (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-icertisicm-tutorial/tutorial_icertisicm_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<company name>.icertis.com`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company name>.icertis.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<company name>.icertis.com`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company name>.icertis.com`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta platformy zarządzania kontraktu Icertis](https://www.icertis.com/company/contact/) uzyskać te wartości. 
@@ -206,10 +206,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka platformy zarządzania Icertis kontraktu w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji platformy zarządzania Icertis kontraktu.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

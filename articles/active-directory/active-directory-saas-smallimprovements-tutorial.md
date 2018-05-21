@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z ulepszeniami małych | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między ulepszenia małe i Azure Active Directory."
+title: 'Samouczek: Integracji Azure Active Directory z ulepszeniami małych | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między ulepszenia małe i Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 959033978ace68012ab65655cb5fd6a62de87290
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f6cab5dd7c10e4036cdd2013c809142bf7ec846
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Samouczek: Integracji Azure Active Directory z ulepszeniami małe
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD małych ulepszenia zapewnia następujące korzyś
 - Umożliwia użytkownikom automatycznie pobrać podpisany w przypadku małych ulepszenia (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.small-improvements.com`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.small-improvements.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.small-improvements.com`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.small-improvements.com`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta ulepszenia małych](mailto:support@small-improvements.com) uzyskać te wartości. 
@@ -214,7 +214,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do ulepszenia ma�
 
     b. Wprowadź **nazwisko** użytkownika, takich jak **Simona**.
 
-    c. Wprowadź **E-mail** użytkownika, takich jak  **brittasimon@contoso.com** . 
+    c. Wprowadź **E-mail** użytkownika, takich jak **brittasimon@contoso.com**. 
 
     d. Można również wprowadzić osobistą wiadomość w **wysłać wiadomość e-mail z powiadomieniem** pole. Jeśli nie chcesz, aby wysłać powiadomienie, usuń zaznaczenie tego pola wyboru.
 
@@ -256,10 +256,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka małych ulepszenia w panelu dostępu należy należy pobrać automatycznie zalogowane do ulepszenia małych aplikacji.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

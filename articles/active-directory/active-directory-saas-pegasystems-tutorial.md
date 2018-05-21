@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z systemami Pega | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między systemami Pega a usługą Azure Active Directory."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między systemami Pega a usługą Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 924abe287b5e39bb77a418b56b5c33195095e07a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 539de49f24b2ca0c9b70be5a339625c1e14edc44
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Samouczek: Integracji Azure Active Directory z systemami Pega
 
@@ -30,7 +30,7 @@ Integrowania systemów Pega z usługą Azure AD zapewnia następujące korzyści
 - Umożliwia użytkownikom automatycznie pobrać zalogowane systemów Pega (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,15 +108,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny systemów Pega pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Adresy URL i domeny systemów Pega pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_url1.png)
 
-    W **stan przekazywania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
+    W **stan przekazywania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi służący i adres URL stanu przekazywania, należy zaktualizować te wartości. Wartości identyfikatora i adres URL odpowiedzi z aplikacji Pega, który znajduje się w dalszej części tego samouczka można znaleźć. Stan przekazywania, skontaktuj się z [zespołem pomocy technicznej klienta systemów Pega](https://www.pega.com/contact-us) można uzyskać wartość. 
@@ -130,8 +130,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |    
     | Identyfikator UID | *********** |
-    | Nazwa pospolita  | *********** |
-    | Poczty | *********** |
+    | cn  | *********** |
+    | poczta | *********** |
     | grupy dostępu | *********** |
     | Organizacja | *********** |
     | orgdivision | *********** |
@@ -197,7 +197,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     c. Wybierz **wyłącz podpisywanie**.
 
-15. Kliknij przycisk **Zapisz**
+15. Kliknij pozycję **Zapisz**
     
 > [!TIP]
 > Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -269,17 +269,17 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka Pega systemów w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji Pega systemów.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

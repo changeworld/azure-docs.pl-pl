@@ -1,24 +1,24 @@
 ---
-title: "Usługa Azure sieci szkieletowej z rozwiązania Docker Compose Podgląd wdrożenia"
-description: "Sieć szkieletowa usług Azure akceptuje rozwiązania Docker Compose format, aby ułatwić organizowania istniejących kontenerów przy użyciu sieci szkieletowej usług. Ta obsługa jest obecnie w przeglądzie."
+title: Usługa Azure sieci szkieletowej z rozwiązania Docker Compose Podgląd wdrożenia
+description: Sieć szkieletowa usług Azure akceptuje rozwiązania Docker Compose format, aby ułatwić organizowania istniejących kontenerów przy użyciu sieci szkieletowej usług. Ta obsługa jest obecnie w przeglądzie.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 6c4e29a9d7976f5f18d3cf825b22cdef04c0c16d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 318898598617ba54b3f8f777bfeca0223d0d296c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Redaguj docker w sieci szkieletowej usług Azure (wersja zapoznawcza)
 
@@ -110,7 +110,7 @@ Ta wersja zapoznawcza obsługuje podzbiór z formatu Redaguj w wersji 3, w tym n
 * Usługi > Wdrażanie > Zasoby > limity
     * udziały procesorów
     * -pamięci
-    * -memory-swap
+    * -pamięci-wymiany
 * Usługi > poleceń
 * Usługi > środowiska
 * Usługi > portów

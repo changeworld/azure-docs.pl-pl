@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Konfigurowanie pole dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pola."
+title: 'Samouczek: Konfigurowanie pole dla użytkownika automatycznego inicjowania obsługi administracyjnej z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pola.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d1bbafdb8bbd5ea7bfa193832992d56016b6ee5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pole dla użytkownika automatycznego inicjowania obsługi administracyjnej.
 
@@ -43,7 +43,7 @@ Przed Skonfiguruj i włącz usługę inicjowania obsługi administracyjnej, nale
 **Pole > Użytkownicy i grupy** kartę w portalu Azure umożliwia określenie, którzy użytkownicy i grupy może być przyznany dostęp do pola. Przypisanie użytkownika lub grupy powoduje, że występuje następujących czynności:
 
 * Usługi Azure AD pozwala przypisany użytkownik (albo przez bezpośrednie przypisanie lub członkostwa w grupie) do uwierzytelniania do pola. Jeśli użytkownik nie jest przypisany, usługi Azure AD nie zezwala na je, aby zalogować się do pola i zwraca błąd na stronie logowania w usłudze Azure AD.
-* Do użytkownika zostanie dodany Kafelek aplikacji dla pola [uruchamiający aplikację](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+* Do użytkownika zostanie dodany Kafelek aplikacji dla pola [uruchamiający aplikację](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
 * Jeśli włączono automatyczne udostępnianie przypisanych użytkowników i/lub grup są dodawane do inicjowania obsługi administracyjnej kolejki, aby automatycznie udostępniane.
   
   * Jeśli tylko obiekty użytkownika zostały skonfigurowane do obsługi administracyjnej, następnie wszystkie bezpośrednio przypisanych użytkowników są umieszczane w kolejce inicjowania obsługi administracyjnej i wszystkich użytkowników, którzy należą do żadnych przypisanych grup są umieszczane w kolejce inicjowania obsługi administracyjnej. 
@@ -120,5 +120,5 @@ W tej dzierżawie pole zsynchronizowanych użytkowników są wyświetlane w obsz
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie rejestracji jednokrotnej](active-directory-saas-box-tutorial.md)

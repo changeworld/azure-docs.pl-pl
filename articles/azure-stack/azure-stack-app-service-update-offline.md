@@ -1,24 +1,24 @@
 ---
-title: "Aktualizowanie w tryb Offline usługa aplikacji Azure | Dokumentacja firmy Microsoft"
-description: "Szczegółowe wskazówki dotyczące aktualizacji usługi Azure App Service na stosie Azure w trybie offline"
+title: Aktualizowanie w tryb Offline usługa aplikacji Azure | Dokumentacja firmy Microsoft
+description: Szczegółowe wskazówki dotyczące aktualizacji usługi Azure App Service na stosie Azure w trybie offline
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 61a3169229cc121c078a934f6b979bdaffafd565
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8671cba484a779e8d7cd0172df141497bb396a97
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>W trybie offline aktualizacji usługi Azure App Service na stosie Azure
 
@@ -43,7 +43,7 @@ Postępując zgodnie z instrukcjami w tym artykule, możesz uaktualnić [dostawc
 
 Aby uaktualnić dostawcę zasobów usługi aplikacji w środowisku Azure stosu, należy wykonać te zadania:
 
-1. Pobierz [Instalatora usługi aplikacji](https://aka.ms/appsvcupdate1installer)
+1. Pobierz [Instalatora usługi aplikacji](https://aka.ms/appsvcupdate2installer)
 2. Tworzenie pakietu uaktualnienia w trybie offline.
 3. Uruchom Instalatora programu App Service (appservice.exe) i ukończyć uaktualnianie.
 
@@ -52,7 +52,7 @@ W trakcie tego procesu uaktualniania zostanie:
 * Wykryj poprzedniego wdrożenia usługi App Service
 * Przekaż do magazynu
 * Uaktualnij wszystkie role usługi aplikacji (kontrolerów, zarządzania, frontonu, wydawcy i proces roboczy ról)
-* Aktualizacja definicji zestawu skali usługi aplikacji
+* Zaktualizuj definicje zestawów skalowania usługi App Service
 * Aktualizowanie manifestu dostawcy zasobów usługi aplikacji
 
 ## <a name="create-an-offline-upgrade-package"></a>Tworzenie pakietu uaktualnienia w trybie offline
@@ -78,7 +78,7 @@ Aby uaktualnić usługi aplikacji w środowisku bez połączenia, należy najpie
 >
 >
 
-1. Appservice.exe Uruchom jako administrator.  
+1. Appservice.exe Uruchom jako administrator.
 
     ![Instalator usługi aplikacji][1]
 
@@ -100,8 +100,8 @@ Aby uaktualnić usługi aplikacji w środowisku bez połączenia, należy najpie
 
    1. Kliknij przycisk **Connect** znajdujący się obok **subskrypcji platformy Azure stosu** pole.
         * Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure stosu. Kliknij przycisk **Zaloguj**.
-        * Jeśli używasz programu Active Directory Federation Services (AD FS), podaj konto administratora. Na przykład  *cloudadmin@azurestack.local* . Wprowadź hasło, a następnie kliknij przycisk **logowania**.
-   2. W **subskrypcji platformy Azure stosu** Wybierz subskrypcję.
+        * Jeśli używasz programu Active Directory Federation Services (AD FS), podaj konto administratora. Na przykład *cloudadmin@azurestack.local*. Wprowadź hasło, a następnie kliknij przycisk **logowania**.
+   2. W **subskrypcji platformy Azure stosu** wybierz opcję **domyślny dostawca subskrypcji**.
    3. W **lokalizacji stosu Azure** wybierz lokalizację, do której odnosi się do regionu jest wdrażany do. Na przykład wybierz **lokalnego** Jeśli wdrażanie Azure stosu Development Kit.
    4. Jeśli istniejące wdrożenie usługi aplikacji został odnaleziony, następnie zasobów grupy i konto magazynu zostanie wypełnione i nieaktywna.
    5. Kliknij przycisk **dalej** do Przejrzyj podsumowanie uaktualnienia.

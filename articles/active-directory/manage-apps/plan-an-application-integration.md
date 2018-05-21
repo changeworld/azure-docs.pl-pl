@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 523508bc2caeb4315caa6597662174aa0fdeb47b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ac3438f0c706988323318146965a87461dcce1e8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Przewodnik Wprowadzenie do integracji Azure Active Directory z aplikacjami pobierania
 ## <a name="overview"></a>Przegląd
@@ -64,7 +64,7 @@ Być może nie masz odpowiedzi na wszystkie pytania na początku, ale nie szkodz
 Jak wspomniano powyżej, może to być aplikacje, które nie zostały zarządzanych przez organizację do tej pory.  W ramach procesu spisu prawdopodobnie można znaleźć chmury niezatwierdzonych aplikacji. Zobacz [znajdowania aplikacji w chmurze niezatwierdzone z usługi Cloud App Discovery](cloud-app-discovery.md).
 
 ### <a name="authentication-types"></a>Typy uwierzytelniania
-Poszczególnych aplikacji może być wymagania dotyczące różnych uwierzytelniania. Z usługą Azure AD certyfikaty podpisywania można z aplikacji, które używają SAML 2.0, WS-Federation, lub OpenID Connect protokoły oraz jak hasło rejestracji jednokrotnej. Aby uzyskać więcej informacji o aplikacji Zobacz typy uwierzytelniania do użycia z usługą Azure AD [Zarządzanie certyfikatów dla federacyjnych rejestracji jednokrotnej w usłudze Azure Active Directory](../active-directory-sso-certs.md) i [hasła na podstawie jednokrotnego](../active-directory-appssoaccess-whatis.md).
+Poszczególnych aplikacji może być wymagania dotyczące różnych uwierzytelniania. Z usługą Azure AD certyfikaty podpisywania można z aplikacji, które używają SAML 2.0, WS-Federation, lub OpenID Connect protokoły oraz jak hasło rejestracji jednokrotnej. Aby uzyskać więcej informacji o aplikacji Zobacz typy uwierzytelniania do użycia z usługą Azure AD [Zarządzanie certyfikatów dla federacyjnych rejestracji jednokrotnej w usłudze Azure Active Directory](../active-directory-sso-certs.md) i [hasła na podstawie jednokrotnego](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Włączanie rejestracji Jednokrotnej z serwera Proxy aplikacji usługi Azure AD
 Dzięki serwerowi Proxy aplikacji usługi AD Microsoft Azure można zapewnić dostęp do aplikacji znajdujących się w sieci prywatnej bezpiecznego, z dowolnego miejsca i na dowolnym urządzeniu. Po zainstalowaniu łącznika serwera proxy aplikacji w danym środowisku, można można łatwo skonfigurować z usługą Azure AD.
@@ -73,7 +73,7 @@ Dzięki serwerowi Proxy aplikacji usługi AD Microsoft Azure można zapewnić do
 W następujących artykułach omówiono sposoby aplikacje integrują się z usługi Azure AD i niektóre wytyczne.
 
 * [Określanie, które usługi Active Directory do użycia](../active-directory-administer.md)
-* [Przy użyciu aplikacji w galerii aplikacji Azure](../active-directory-appssoaccess-whatis.md)
+* [Przy użyciu aplikacji w galerii aplikacji Azure](what-is-single-sign-on.md)
 * [Integrowanie listę samouczków aplikacji SaaS](../active-directory-saas-tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>Zarządzanie dostępem do aplikacji

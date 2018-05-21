@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bb80d68d7ac37c8930626b5163597dc0e492a0d2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a5dfecefb6ce1d74e02c64371a864a6d3b07a2e1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Projekt za pomocą usługi Azure Kubernetes (AKS)
 
@@ -38,7 +38,7 @@ Projekt interfejsu wiersza polecenia jest klient, który działa w systemie dewe
 > [!NOTE]
 > Jeśli po zainstalowaniu wersji roboczej poprzedzające wersję 0.12, najpierw należy usunąć projekt z przy użyciu klastra `helm delete --purge draft` , a następnie usuń lokalnej konfiguracji uruchamiając `rm -rf ~/.draft`. Jeśli używany jest system MacOS, uruchom `brew upgrade draft`.
 
-Aby zainstalować projektu interfejsu wiersza polecenia przy użyciu Mac `brew`. Aby uzyskać dodatkowe opcje instalacji Zobacz, [zainstalować wersję roboczą przewodnik][install-draft].
+Aby zainstalować projektu interfejsu wiersza polecenia przy użyciu Mac `brew`. Aby uzyskać dodatkowe opcje instalacji Zobacz, [zainstalować wersję roboczą przewodnik][draft-documentation].
 
 ```console
 brew tap azure/draft
@@ -288,7 +288,6 @@ Aby uzyskać więcej informacji o korzystaniu z wersji próbnej zobacz dokumenta
 
 <!-- LINKS - external -->
 [draft-documentation]: https://github.com/Azure/draft/tree/master/docs
-[install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
 [kubernetes-ingress]: ./ingress.md
 [kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
 

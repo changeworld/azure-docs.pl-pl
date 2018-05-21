@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z vxMaintain | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i vxMaintain."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i vxMaintain.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c30d59a2bd903a5578caf376957a22bb270455f9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracji Azure Active Directory z vxMaintain
 
@@ -29,7 +29,7 @@ Integracja ta zapewnia kilka istotnych korzyści. Możesz:
 - Umożliwianie użytkownikom automatycznie logować się do vxMaintain z logowaniem jednokrotnym (SSO) za pomocą ich kont usługi Azure AD.
 - Zarządzanie kont w jednej centralnej lokalizacji: portalu Azure.
 
-Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -104,9 +104,9 @@ W tej sekcji można zarówno włączenia funkcji logowania jednokrotnego usługi
 
     ![VxMaintain sekcji domeny i adresy URL](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. W **identyfikator** wpisz adres URL, który ma następującą składnię:`https://<company name>.verisae.com`
+    a. W **identyfikator** wpisz adres URL, który ma następującą składnię: `https://<company name>.verisae.com`
 
-    b. W **adres URL odpowiedzi** wpisz adres URL, który ma następującą składnię:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. W **adres URL odpowiedzi** wpisz adres URL, który ma następującą składnię: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
     > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywistego identyfikatora i adres URL odpowiedzi. Aby uzyskać wartości, skontaktuj się z [zespołem pomocy technicznej vxMaintain](http://www.verisae.com/contact-us).
@@ -153,7 +153,7 @@ W tej sekcji możesz tworzyć użytkownika testowego Simona Britta w portalu Azu
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika testowego Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartości, który został wygenerowany w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartości, który został wygenerowany w **hasło** pole.
 
     d. Wybierz pozycję **Utwórz**.
  
@@ -198,7 +198,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Lista samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

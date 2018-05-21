@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 588da055d06d7e63510085ff48169f3ea756c53c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7b1a6020fb8730aee7ed41d8c82358db0945e4ef
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Omówienie usługi Azure Marketplace stosu
 
@@ -29,7 +29,7 @@ Witryny Marketplace to zbiór usług, aplikacji i zasobów dostosowany do stosu 
 
 Jako operator stosu Azure zdecydujesz elementy, które można dodać (publikowanie) w portalu Marketplace. Można opublikować bazy danych, usługi aplikacji i tak dalej. Publikowanie sposób będą one widoczne dla wszystkich użytkowników. Możesz opublikować niestandardowe elementy, które możesz utworzyć. Można również opublikować elementy z rosnącym [listy elementów portalu Azure Marketplace](azure-stack-marketplace-azure-items.md). Podczas publikowania elementu portalu Marketplace, użytkownicy mogą zobaczyć ją w ciągu pięciu minut.
 
-Aby otworzyć witryny Marketplace, kliknij przycisk **nowy**.
+Aby otworzyć witryny Marketplace, w konsoli administracyjnej wybierz **nowy**.
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
@@ -47,5 +47,6 @@ Każdy element publikowane w witrynie Marketplace w formacie pakietu galerii Azu
 Z wersją 1803 i nowsze stos Azure konwertuje obrazy plików rozrzedzonych podczas pobierania z platformy Azure lub gdy przekazywanie niestandardowych obrazów. Ten proces wydłuża czas przy dodawaniu obrazu, ale pozwala zaoszczędzić miejsce i przyspiesza wdrażanie tych obrazów. Konwersja ma zastosowanie tylko do nowych obrazów.  Istniejących obrazów nie są zmieniane. 
 
 ## <a name="next-steps"></a>Kolejne kroki
+[Pobieranie elementów Marketplace](azure-stack-download-azure-marketplace-item.md)  
 [Tworzenie i publikowanie elementu portalu Marketplace](azure-stack-create-and-publish-marketplace-item.md)
 

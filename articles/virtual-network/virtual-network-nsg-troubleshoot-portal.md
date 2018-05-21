@@ -17,7 +17,7 @@ ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/14/2018
 ---

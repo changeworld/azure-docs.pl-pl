@@ -12,20 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 330b8015bdddbbcf27e4325b97e8b734c4d98d12
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9554309522e4a1e60fd3599b9a19bcf9cf4bbefb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodawanie dostawcy zasobów usługi aplikacji Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1802 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service.
+> Zastosowanie aktualizacji 1804 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service 1.2.
 >
 >
 
@@ -70,7 +70,7 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 
     ![Instalator usługi aplikacji][3]
 
-4. Masz teraz możliwość wdrożenia do istniejącej sieci wirtualnej, zgodnie z konfiguracją kroków [tutaj](azure-stack-app-service-before-you-get-started.md#virtual-network), lub zezwolić Instalator usługi aplikacji do tworzenia sieci wirtualnej i skojarzonych podsieci.
+7. Masz teraz możliwość wdrożenia do istniejącej sieci wirtualnej, zgodnie z konfiguracją kroków [tutaj](azure-stack-app-service-before-you-get-started.md#virtual-network), lub zezwolić Instalator usługi aplikacji do tworzenia sieci wirtualnej i skojarzonych podsieci.
     1. Wybierz **Utwórz sieć wirtualną przy użyciu ustawień domyślnych**, zaakceptuj ustawienia domyślne i kliknij przycisk **dalej**, lub;
     2. Wybierz **użyć istniejącej sieci wirtualnej i podsieci**.
         1. Wybierz **grupy zasobów** zawierający sieci wirtualnej.
@@ -80,7 +80,7 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 
     ![Instalator usługi aplikacji][4]
 
-7. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików korzystać w pełni kwalifikowana nazwa domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.
+8. Wprowadź informacje dotyczące udziału plików, a następnie kliknij przycisk **dalej**. Adres udziału plików korzystać w pełni kwalifikowana nazwa domeny lub adres IP serwera plików. Na przykład \\\appservicefileserver.local.cloudapp.azurestack.external\websites, lub \\\10.0.0.1\websites.
 
    > [!NOTE]
    > Instalator podejmuje próbę Testuj łączność z udziałem plików przed kontynuowaniem.  Jednak jeśli zostało wybrane do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie można nawiązać połączenia z udziałem plików i ostrzeżenia pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące udziału plików i Kontynuuj, jeśli są poprawne.
@@ -89,7 +89,7 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 
    ![Instalator usługi aplikacji][7]
 
-8. Na następnej stronie:
+9. Na następnej stronie:
     1. W **identyfikator aplikacji tożsamości** wprowadź identyfikator GUID dla aplikacji, używane dla tożsamości (z usługi Azure AD).
     2. W **pliku certyfikatu tożsamości aplikacji** wprowadź (lub przejdź do) lokalizację pliku certyfikatu.
     3. W **hasło certyfikatu tożsamości aplikacji** wprowadź hasło dla certyfikatu. To hasło jest wprowadzone należy wziąć pod uwagę, gdy skrypt jest używany do tworzenia certyfikatów.
@@ -98,7 +98,7 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 
     ![Instalator usługi aplikacji][9]
 
-9. Dla każdego z trzech pól pliku certyfikatu, kliknij przycisk **Przeglądaj** i przejdź do pliku odpowiedni certyfikat. Podaj hasło dla każdego certyfikatu. Te certyfikaty są tymi, które zostały utworzone w [tworzenia wymaganych certyfikatów krok](azure-stack-app-service-before-you-get-started.md#get-certificates). Kliknij przycisk **dalej** po wprowadzeniu wszystkich informacji.
+10. Dla każdego z trzech pól pliku certyfikatu, kliknij przycisk **Przeglądaj** i przejdź do pliku odpowiedni certyfikat. Podaj hasło dla każdego certyfikatu. Te certyfikaty są tymi, które zostały utworzone w [tworzenia wymaganych certyfikatów krok](azure-stack-app-service-before-you-get-started.md#get-certificates). Kliknij przycisk **dalej** po wprowadzeniu wszystkich informacji.
 
     | Box | Przykład nazwy pliku certyfikatu |
     | --- | --- |
@@ -110,7 +110,7 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 
     ![Instalator usługi aplikacji][10]
 
-10. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do obsługi baz danych dostawcy zasobów usługi aplikacji, a następnie kliknij przycisk **dalej**. Instalator sprawdza właściwości połączenia SQL.
+11. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do obsługi baz danych dostawcy zasobów usługi aplikacji, a następnie kliknij przycisk **dalej**. Instalator sprawdza właściwości połączenia SQL.
 
     > [!NOTE]
     > Instalator podejmuje próbę przetestowanie łączności z serwerem SQl Server przed kontynuowaniem.  Jednak jeśli zostało wybrane do wdrożenia w ramach istniejącej sieci wirtualnej, Instalator może nie móc połączyć się z serwerem SQL i ostrzeżenia pytaniem, czy chcesz kontynuować.  Sprawdź informacje dotyczące programu SQL Server i Kontynuuj, jeśli są poprawne.
@@ -119,7 +119,7 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 
     ![Instalator usługi aplikacji][11]
 
-11. Przejrzyj opcje jednostki SKU i wystąpienia roli. Minimalna liczba wystąpień i minimalna jednostki SKU dla każdej roli we wdrożeniu ASDK umieścić wartości domyślne. Aby ułatwić planowanie rozmieszczenia udostępniane jest podsumowanie wymagań vCPU i pamięci. Po dokonaniu wyboru kliknij przycisk **dalej**.
+12. Przejrzyj opcje jednostki SKU i wystąpienia roli. Minimalna liczba wystąpień i minimalna jednostki SKU dla każdej roli we wdrożeniu ASDK umieścić wartości domyślne. Aby ułatwić planowanie rozmieszczenia udostępniane jest podsumowanie wymagań vCPU i pamięci. Po dokonaniu wyboru kliknij przycisk **dalej**.
 
     > [!NOTE]
     > W przypadku wdrożeń produkcyjnych, postępując zgodnie ze wskazówkami w [zaplanować role serwera usługi Azure App Service w stosie Azure wydajność](azure-stack-app-service-capacity-planning.md).
@@ -139,23 +139,23 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
     > [!NOTE]
     > **Podstawowy Windows Server 2016 nie jest obrazem obsługiwanych platform do użycia z usługi Azure App Service na stosie Azure.  Nie należy używać obrazów oceny wdrożeń produkcyjnych.**
 
-12. W **wybierz obrazu platformy** wybierz obraz maszyny wirtualnej wdrażania systemu Windows Server 2016 z obrazów dostępne w dostawcy zasobów obliczeniowych w chmurze usługi aplikacji. Kliknij przycisk **Dalej**.
+13. W **wybierz obrazu platformy** wybierz obraz maszyny wirtualnej wdrażania systemu Windows Server 2016 z obrazów dostępne w dostawcy zasobów obliczeniowych w chmurze usługi aplikacji. Kliknij przycisk **Dalej**.
 
-13. Na następnej stronie:
+14. Na następnej stronie:
      1. Wprowadź hasło i nazwa użytkownika administratora maszyny wirtualnej w roli procesu roboczego.
      2. Wprowadź nazwę użytkownika administratora maszyny wirtualnej inne role i hasło.
      3. Kliknij przycisk **Dalej**.
 
     ![Instalator usługi aplikacji][15]    
 
-14. Na stronie Podsumowanie:
+15. Na stronie Podsumowanie:
     1. Sprawdź wybrane opcje wprowadzone. Aby wprowadzić zmiany, należy użyć **Wstecz** przycisków, aby przejść do poprzedniej strony.
     2. Jeśli konfiguracje są poprawne, zaznacz pole wyboru.
     3. Aby uruchomić wdrożenie, kliknij przycisk **dalej**.
 
     ![Instalator usługi aplikacji][16]
 
-15. Na następnej stronie:
+16. Na następnej stronie:
     1. Śledź postęp instalacji. Usługi aplikacji Azure stosu trwa około 60 minut do wdrożenia na podstawie wybranych domyślne.
     2. Po pomyślnym zakończeniu Instalatora, kliknij przycisk **zakończenia**.
 

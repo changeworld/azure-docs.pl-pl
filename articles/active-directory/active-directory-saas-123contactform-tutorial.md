@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z 123ContactForm | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i 123ContactForm."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i 123ContactForm.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 70955676e78642e6c8a6eb85f8165b327baece3f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f7ad606fc8ee394125300a55dc0586a055a33be
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Samouczek: Integracji Azure Active Directory z 123ContactForm
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD 123ContactForm zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do 123ContactForm (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-123contactform-tutorial/url1.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
 4. Jeśli chcesz skonfigurować aplikację w **SP zainicjował tryb**, wykonaj następujące czynności:
 
@@ -120,7 +120,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. Kliknij przycisk **Pokaż zaawansowane ustawienia adresu URL** opcji
 
-    b. W **na adres URL logowania** tekstowym, wpisz adres URL jako:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+    b. W **na adres URL logowania** tekstowym, wpisz adres URL jako: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Musisz zaktualizować te wartości z rzeczywistego adresy URL i identyfikator, który znajduje się w dalszej części tego samouczka.
@@ -133,7 +133,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-123contactform-tutorial/tutorial_general_400.png)
 
-7. Aby skonfigurować logowanie jednokrotne w **123ContactForm** stronie, przejdź do [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) i wykonaj następujące czynności:
+7. Aby skonfigurować logowanie jednokrotne w **123ContactForm** stronie, przejdź do [ https://www.123contactform.com/form-2709121/ ](https://www.123contactform.com/form-2709121/) i wykonaj następujące czynności:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-123contactform-tutorial/submit.png) 
 
@@ -229,10 +229,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka 123ContactForm w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji 123ContactForm.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

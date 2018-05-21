@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Często zadawane pytania dotyczące usługi Azure Management koszt
 
@@ -148,4 +148,4 @@ Nie. Agenci nie są używane. Dane maszyny wirtualnej platformy Azure dla maszyn
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn raporty są wyświetlane więcej niż jednej dzierżawy AD na raport?
 
-Tak. Możesz [tworzenia jednostek konta chmury](tutorial-user-access.md#create-entities) dla każdego dzierżawcy AD, czy masz. Następnie można wyświetlić wszystkich danych dzierżawy usługi Azure AD i innych dostawców platformy chmury, w tym usług Amazon Web Services i usługi Google Cloud Platform.
+Tak. Możesz [tworzenia jednostek konta chmury](tutorial-user-access.md#create-and-manage-entities) dla każdego dzierżawcy AD, czy masz. Następnie można wyświetlić wszystkich danych dzierżawy usługi Azure AD i innych dostawców platformy chmury, w tym usług Amazon Web Services i usługi Google Cloud Platform.

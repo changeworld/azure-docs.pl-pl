@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z SAP Business obiektu chmury | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i SAP Business obiektu chmury."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i SAP Business obiektu chmury.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a56a892ac3b28c4e90ec2ea6360da3d2eff2581
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Samouczek: Integracji Azure Active Directory z SAP Business obiektu chmury
 
@@ -30,7 +30,7 @@ Po zintegrowaniu z usługą Azure AD SAP Business obiektu chmury można uzyskać
 - Użytkownikom programu SAP Business obiektu chmury mogą automatycznie zaloguj przy użyciu rejestracji jednokrotnej i konta usługi Azure AD.
 - Możesz zarządzać kont w jednej, centralnej lokalizacji, portalu Azure.
 
-Aby dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Aby dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -217,7 +217,7 @@ Aby udostępnić konta użytkownika:
 
     ![Dodawanie pracownika](./media/active-directory-saas-sapboc-tutorial/user1.png)
 
-3. Na **użytkowników** , aby dodać nowe szczegóły użytkownika, wybierz  **+** . 
+3. Na **użytkowników** , aby dodać nowe szczegóły użytkownika, wybierz **+**. 
 
     ![Strona dodawania użytkowników](./media/active-directory-saas-sapboc-tutorial/user4.png)
 
@@ -231,7 +231,7 @@ Aby udostępnić konta użytkownika:
 
     4. W **nazwa WYŚWIETLANA** wpisz pełną nazwę użytkownika, takie jak **Simona Britta**.
 
-    5. W **E-MAIL** wprowadź adres e-mail użytkownika, takie jak  **brittasimon@contoso.com** .
+    5. W **E-MAIL** wprowadź adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
 
     6. Na **Wybieranie ról** , wybierz odpowiednią rolę dla użytkownika, a następnie wybierz **OK**.
 
@@ -270,7 +270,7 @@ Aby przypisać Simona Britta SAP Business obiektu chmury:
 
 ![Przypisanie roli użytkownika][200] 
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -278,10 +278,10 @@ Po wybraniu kafelka SAP Business obiektu chmury w panelu dostępu należy powinn
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

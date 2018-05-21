@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/18/2018
 ms.author: billmath
-ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalowanie programu Azure AD Connect przy użyciu SQL delegowane uprawnienia administratora
 Przed ostatniej kompilacji Azure AD Connect administracyjne delegowania, wdrażając konfiguracje, które wymagane SQL, nie jest obsługiwana.  Użytkownicy, którzy chcieli zainstalować program Azure AD Connect potrzebne do mają uprawnienia administratora serwera na serwerze SQL.
@@ -42,7 +42,7 @@ Do udostępniania bazy danych poza pasmem i instalowanie Azure AD Connect przy u
 
 
 1.  Poproś administratora SQL, utworzyć bazę danych ADSync sekwencji sortowania bez uwzględniania wielkości liter **(Latin1_General_CI_AS)**.  Bazy danych musi mieć nazwę **ADSync**.  Model odzyskiwania, poziom zgodności i typ relacji zawierania są aktualizowane poprawną Azure AD Connect jest zainstalowany.  Jednak sekwencji sortowania muszą być ustawione poprawnie przez administratora SQL w przeciwnym razie Azure AD Connect będzie blokował instalacji.  Odzyskiwanie skojarzenia zabezpieczeń należy usunąć i ponownie utworzyć bazy danych.</br>
-![Sortowanie](media/active-directory-aadconnect-sql-delegation/sql1.png)
+![Sortowanie](media/active-directory-aadconnect-sql-delegation/sql4.png)
 2.  Przyznaj administrator usługi Azure AD Connect i konto usługi domeny następujące uprawnienia:
     - Identyfikator logowania SQL 
     - **Baza danych owner(dbo)** praw.  </br>

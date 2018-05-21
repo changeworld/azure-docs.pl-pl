@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z urzędu certyfikacji PPM | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i PPM urzędu certyfikacji."
+title: 'Samouczek: Integracji Azure Active Directory z urzędu certyfikacji PPM | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i PPM urzędu certyfikacji.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: c00b054619b6dbfffd66bfd74b1a8567a83a910b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9800ae137943ab2ff634ba93d1f721d5e3a708f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Samouczek: Integracji Azure Active Directory z PPM urzędu certyfikacji
 
@@ -29,7 +29,7 @@ Integrowanie PPM urzędu certyfikacji z usługą Azure AD zapewnia następujące
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do urzędu certyfikacji PPM (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cappm-tutorial/tutorial_cappm_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://ca.ondemand.saml.20.post.<companyname>`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://ca.ondemand.saml.20.post.<companyname>`
     
-    b. W **adres URL odpowiedzi** pole tekstowe, typu co:`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
+    b. W **adres URL odpowiedzi** pole tekstowe, typu co: `https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej PPM urzędu certyfikacji](mailto:catechnicalsupport@ca.com) aby zyskać tę wartość.
@@ -206,10 +206,10 @@ W tej sekcji można przetestować konfigurację usługi Azure AD z logowania jed
 
 Po kliknięciu kafelka PPM urzędu certyfikacji w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji PPM urzędu certyfikacji.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

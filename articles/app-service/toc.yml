@@ -52,7 +52,7 @@
     - name: Wiązanie certyfikatu protokołu SSL
       href: app-service-web-tutorial-custom-ssl.md
     - name: Dodawanie usługi CDN
-      href: ../cdn/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
+      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Uwierzytelnianie użytkowników
       href: app-service-web-tutorial-auth-aad.md
     - name: Wdrażanie aplikacji w usłudze Azure App Service przy użyciu usługi VSTS oraz funkcji ciągłej integracji i dostarczania

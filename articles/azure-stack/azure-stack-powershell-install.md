@@ -11,14 +11,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 5/10/2018
+ms.date: 5/17/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 8fea502457275c89d99084a5b025b620872d796b
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.openlocfilehash: cb672c8e378db80707db1b0cf77a3196e36b1eb5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure stosu
 
@@ -72,8 +72,8 @@ Install-Module -Name AzureRm.BootStrapper
 # Install and import the API Version Profile required by Azure Stack into the current PowerShell session. 
 Use-AzureRmProfile -Profile 2017-03-09-profile -Force 
 
-# Install Module Version 1.2.12 if Azure Stack is running 1804 at a minimum 
-Install-Module -Name AzureStack -RequiredVersion 1.2.12 
+# Install Module Version 1.3.0 if Azure Stack is running 1804 at a minimum 
+Install-Module -Name AzureStack -RequiredVersion 1.3.0 
 
 # Install Module Version 1.2.11 if Azure Stack is running a lower version then 1804 
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 
@@ -91,8 +91,8 @@ Jeśli instalacja się powiodła, AzureRM i AzureStack moduły są wyświetlane 
 
 W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell na komputerze, na którym ma połączenie z Internetem i przesyła je Azure stosu Development Kit dla instalacji.
 
-> [!IMPORTANT]
-> Wersja modułu PowerShell AzureRM pkt 1.2.12 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz [Przewodnik po migracji](https://github.com/bganapa/azure-powershell/blob/stack-migration/documentation/migration-guides/Stack/migration-guide.1.2.12.md).
+> [!IMPORTANT]  
+> Wersja modułu Azure PowerShell stosu 1.3.0 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.11 wersji, zobacz [Przewodnik po migracji](https://aka.ms/azspowershellmigration).
 
 1. Zaloguj się do komputera, na którym jest połączony z Internetem i użyj następującego skryptu do pobierania AzureRM i pakiety AzureStack na komputerze lokalnym:
 
@@ -105,7 +105,7 @@ W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell n
      -Name AzureRM `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.12
+     -RequiredVersion 1.2.11
 
    Save-Package `
      -ProviderName NuGet `
@@ -113,11 +113,11 @@ W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell n
      -Name AzureStack `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.12 
+     -RequiredVersion 1.3.0 
    ```
 
-> [!Important]  
-> Jeśli nie zostały uruchomione stosu Azure z aktualizacją 1804 lub większą, zmień **requiredversion** wartości parametru `1.2.11`. 
+  > [!Important]  
+  > Jeśli nie zostały uruchomione stosu Azure z aktualizacją 1804 lub większą, zmień **requiredversion** wartości parametru `1.2.11`. 
 
 2. Skopiować pobranych pakietów przez urządzenie USB.
 

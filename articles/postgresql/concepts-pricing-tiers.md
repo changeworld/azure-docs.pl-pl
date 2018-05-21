@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Bazy danych platformy Azure dla PostgreSQL warstw cenowych
 
@@ -22,8 +22,8 @@ Można utworzyć bazy danych Azure PostgreSQL serwera w jednym z trzech różnyc
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowana pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Generowanie obliczeniowe | Gen 4, 5 Gen | Gen 4, 5 Gen | 5. generacja |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Ilość pamięci na vCore | Linii bazowej | 2 x Basic | 2 x ogólnego przeznaczenia |
+| Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| Ilość pamięci na vCore | Punkt odniesienia | 2 x Basic | 2 x ogólnego przeznaczenia |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowych bazy danych | 7-35 dni | 7-35 dni | 7-35 dni |
@@ -86,6 +86,14 @@ Zainicjowanie obsługi magazynu jest pojemności magazynu dostępnych do bazy da
 Podczas i po utworzeniu serwera można dodać dodatkowej pojemności. Warstwa podstawowa nie ma gwarancji IOPS. Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci, warstw cenowych IOPS skalowania o rozmiarze zainicjowanego magazynu w stosunku 3:1.
 
 Można monitorować użycia we/wy w portalu Azure lub przy użyciu poleceń wiersza polecenia platformy Azure. Odpowiednich metryk do monitorowania są [limit magazynu, procent użycia magazynu, Magazyn używany i procent We/Wy](concepts-monitoring.md).
+
+### <a name="reaching-the-store-limit"></a>Przekroczony limit magazynu
+
+Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie osiągnie mniej niż 5 GB lub 5% zainicjowanego magazynu, ta wartość jest mniejsza. Na przykład, jeśli po uprzednim udostępnieniu 100 GB miejsca do magazynowania i rzeczywistego użycia przechodzi 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie Jeśli po uprzednim udostępnieniu 5 GB miejsca do magazynowania, serwer jest oznaczony jako tylko do odczytu po mniej niż 250 MB wolnego miejsca.  
+
+Gdy serwer jest wartość tylko do odczytu, wszelkie istniejące sesje są odłączone i niezatwierdzone transakcje są wycofywane. Wszystkie operacje zapisu kolejnych transakcji i zatwierdza kończyć się niepowodzeniem. Wszystkie kolejne zapytania odczytu działa nieprzerwanie.  
+
+Można zwiększyć ilość zainicjowanego magazynu do serwera lub uruchomić nową sesję w trybie i upuszczanie danych odczytu i zapisu do odzyskiwania wolnego miejsca w magazynie. Uruchomiona `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` ustawia bieżącej sesji, aby odczytać trybie zapisu. Aby uniknąć uszkodzenia danych, nie należy wykonywać żadnych operacji zapisu, gdy serwer jest nadal w stanie tylko do odczytu.
 
 ## <a name="backup"></a>Backup
 

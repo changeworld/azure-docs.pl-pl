@@ -1,23 +1,23 @@
 ---
-title: "Azure zarządzanej aplikacji tworzenia interfejsu użytkownika funkcji definicji | Dokumentacja firmy Microsoft"
-description: "Opisuje funkcje do użycia podczas konstruowania definicji interfejsu użytkownika dla aplikacji zarządzanych platformy Azure"
-services: azure-resource-manager
+title: Azure zarządzanej aplikacji tworzenia interfejsu użytkownika funkcji definicji | Dokumentacja firmy Microsoft
+description: Opisuje funkcje do użycia podczas konstruowania definicji interfejsu użytkownika dla aplikacji zarządzanych platformy Azure
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: dcf570ca4bdc8eacb7e4d7a8ff0011c8e07b7a40
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="createuidefinition-functions"></a>Funkcje CreateUiDefinition
 Ta sekcja zawiera podpisy dla wszystkich obsługiwanych funkcji CreateUiDefinition.
@@ -40,7 +40,7 @@ Jeśli to możliwe, właściwości dane wyjściowe funkcji można odwoływać si
 "[func().prop1]"
 ```
 
-## <a name="referencing-functions"></a>Odwołanie do funkcji
+## <a name="referencing-functions"></a>Funkcje odwołań
 Funkcje te można odwoływać się do danych wyjściowych z właściwości lub kontekstu CreateUiDefinition.
 
 ### <a name="basics"></a>podstawy
@@ -510,7 +510,7 @@ Poniższy przykład zwraca `2`:
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>Float
+### <a name="float"></a>liczba zmiennoprzecinkowa
 Konwertuje parametr zmiennoprzecinkowych. Ta funkcja obsługuje parametry liczbę typ i ciąg.
 
 Poniższy przykład zwraca `1.0`:
@@ -525,7 +525,7 @@ Poniższy przykład zwraca `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>Ciąg
+### <a name="string"></a>ciąg
 Konwertuje parametru na ciąg. Ta funkcja obsługuje parametry wszystkich typów danych JSON.
 
 Poniższy przykład zwraca `"1"`:
@@ -643,7 +643,7 @@ Poniższy przykład zwraca `"https://portal.azure.com/"`:
 ```
 
 ## <a name="math-functions"></a>Funkcje matematyczne
-### <a name="add"></a>Dodaj
+### <a name="add"></a>dodaj
 Dodaje dwie liczby i zwraca wynik.
 
 Poniższy przykład zwraca `3`:
@@ -670,7 +670,7 @@ Poniższy przykład zwraca `6`:
 "[mul(2, 3)]"
 ```
 
-### <a name="div"></a>DIV
+### <a name="div"></a>div
 Dzieli numer pierwszej numerem drugi i zwraca wynik. Wynik jest zawsze liczbą całkowitą.
 
 Poniższy przykład zwraca `2`:
@@ -703,7 +703,7 @@ Poniższy przykład zwraca `1`:
 "[min(1, 2)]"
 ```
 
-### <a name="max"></a>Maksymalna
+### <a name="max"></a>maks.
 Zwraca większych dwóch liczb.
 
 Poniższy przykład zwraca `2`:
@@ -785,6 +785,6 @@ Poniższy przykład zwraca `"1991-01-01T00:59:59.000Z"`:
 "[addHours('1990-12-31T23:59:59Z', 1)]"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby obejrzeć wprowadzenie do usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 

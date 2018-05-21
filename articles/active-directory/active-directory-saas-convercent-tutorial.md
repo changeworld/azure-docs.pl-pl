@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Convercent | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Convercent."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Convercent.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: jeedes
-ms.openlocfilehash: f202e42da7ef052f059e2284f0884b8f86912d6e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7049c16d771ea2b7155053f0dee79486938eb2a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Samouczek: Integracji Azure Active Directory z Convercent
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Convercent zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Convercent (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<instancename>.convercent.com/`
+    W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<instancename>.convercent.com/`
  
 4. Jeśli chcesz skonfigurować aplikację w **SP zainicjował tryb**na **Convercent domeny i adres URL** sekcji należy wykonać następujące czynności:
     
@@ -118,9 +118,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
      a. Kliknij przycisk **"Pokaż zaawansowane ustawienia adresu URL."** 
 
-     b. W **na adres URL logowania** tekstowym, wpisz wartość, przy użyciu następującego wzorca:`https://<instancename>.convercent.com/`
+     b. W **na adres URL logowania** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `https://<instancename>.convercent.com/`
 
-     c. W **stan przekazywania** tekstowym, wpisz wartość, przy użyciu następującego wzorca:`https://<instancename>.convercent.com/`
+     c. W **stan przekazywania** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `https://<instancename>.convercent.com/`
 
     > [!NOTE] 
     > Wartości te nie są wartości rzeczywistych. Zaktualizować te wartości z rzeczywistego identyfikatora, na adres URL logowania i stan przekazywania. Skontaktuj się z [zespołem pomocy technicznej klienta Convercent](http://support.convercent.com) uzyskać te wartości.
@@ -210,10 +210,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Convercent w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Convercent.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

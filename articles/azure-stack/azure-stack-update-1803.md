@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 095356e76dc72c3e549c23ab3855962e9c2f1d26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 2fdb77c133d5d8955ad6ae15864cbe0c78bc4e2f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizacji 1803 stosu
 
@@ -56,7 +56,7 @@ Numer kompilacji aktualizacji 1803 stosu Azure jest **20180329.1**.
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
 - Po zakończeniu instalacji 1803 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md).
 
-  - [KB 4103348 — interfejs API kontrolera sieci usługi ulega awarii podczas próby zainstalowania aktualizacji Azure stosu](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4294441 — przed dzierżawy niepowodzenia zasobów i nieoczekiwany udziały są tworzone na tej samej dzierżawy lub woluminie infrastruktury](https://support.microsoft.com/en-us/help/4294441)
 
 - Po zainstalowaniu tej aktualizacji, należy przejrzeć konfigurację zapory, aby upewnić się, [niezbędne porty](azure-stack-integrate-endpoints.md) są otwarte. Na przykład w tej aktualizacji wprowadzono Azure Monitor, który obejmuje zmianę dzienniki inspekcji, aby dzienniki aktywności. Dzięki tej zmianie portu 13012 obecnie jest używany i musi być otwarty.  
 

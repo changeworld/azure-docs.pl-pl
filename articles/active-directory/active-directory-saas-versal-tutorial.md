@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z BA | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i BA."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i BA.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 34ac0f6f98ba84584d468b5f199d8d6a713ede8a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2710c7fa0d035cee8a16d10edf3d603443ad520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Samouczek: Integracji Azure Active Directory z BA
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD BA zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Ba (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny versal pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-versal-tutorial/tutorial_versal_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz wartość:`VERSAL`
+    a. W **identyfikator** tekstowym, wpisz wartość: `VERSAL`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://versal.com/sso/saml/orgs/<organization_id>`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://versal.com/sso/saml/orgs/<organization_id>`
 
     > [!NOTE] 
     > Wartość adresu URL odpowiedzi nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej BA](https://support.versal.com/hc/) aby zyskać tę wartość.
@@ -198,7 +198,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu kursu BA osadzone w witrynie sieci Web.
 Zobacz [osadzanie organizacji kursów](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML logowania jednokrotnego** Obsługa przewodnik instrukcje dotyczące sposobu osadzanie kursu BA przy pomocy technicznej dla usługi Azure AD logowanie jednokrotne. 
@@ -206,10 +206,10 @@ Zobacz [osadzanie organizacji kursów](https://support.versal.com/hc/en-us/artic
 Należy utworzyć kursu, udostępniać organizacji i opublikować go w celu przetestowania osadzanie kursu. Zobacz [tworzenie kursu](https://support.versal.com/hc/en-us/articles/203722528-Create-a-course), [publikowania kursu](https://support.versal.com/hc/en-us/articles/203753398-Publishing-a-course), i [zarządzania przebiegu i uczeń](https://support.versal.com/hc/en-us/articles/206029467-Course-and-learner-management) Aby uzyskać więcej informacji.  
                      
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,22 +1,22 @@
 ---
-title: "Jak określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Demonstracja używania parametrów, aby określić port dla aplikacji w sieci szkieletowej usług"
+title: Jak określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Demonstracja używania parametrów, aby określić port dla aplikacji w sieci szkieletowej usług
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: aca5b6a476e9526498a5e4834aaa28eb73750562
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 06cfb375c6c18082a0d0316cfcb742a7779fc8a8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak określić numer portu usługi przy użyciu parametrów w sieci szkieletowej usług
 
@@ -30,7 +30,7 @@ W tym przykładzie należy ustawić numer portu dla platformy asp.net core inter
 1. Wybierz szablon bezstanowych platformy ASP.NET Core.
 1. Wybierz interfejs API sieci Web.
 1. Otwórz plik ServiceManifest.xml.
-1. Zanotuj nazwę punktu końcowego określona dla usługi. Domyślnie jest `ServiceEndpoint`.
+1. Zanotuj nazwę punktu końcowego określona dla usługi. Wartość domyślna to `ServiceEndpoint`.
 1. Otwieranie pliku ApplicationManifest.xml
 1. W `ServiceManifestImport` elementu, Dodaj nową `RessourceOverrides` elementu z odwołaniem do punktu końcowego w pliku ServiceManifest.xml.
 
@@ -46,7 +46,7 @@ W tym przykładzie należy ustawić numer portu dla platformy asp.net core inter
       </ServiceManifestImport>
     ```
 
-1. W `Endpoint` elementu, można teraz zmienić dowolny atrybut za pomocą parametru. W tym przykładzie należy określić `Port` i ustaw ją na nazwę parametru za pomocą nawiasów kwadratowych — na przykład`[MyWebAPI_PortNumber]`
+1. W `Endpoint` elementu, można teraz zmienić dowolny atrybut za pomocą parametru. W tym przykładzie należy określić `Port` i ustaw ją na nazwę parametru za pomocą nawiasów kwadratowych — na przykład `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -68,7 +68,7 @@ W tym przykładzie należy ustawić numer portu dla platformy asp.net core inter
       </Parameters>
     ```
 
-1. I zdefiniuj`DefaultValue`
+1. I zdefiniuj `DefaultValue`
 
     ```xml
       <Parameters>

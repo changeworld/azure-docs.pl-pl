@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 9a8b85539ac26629c31e49097fca5c3ce5c5abc2
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>What's new in zarządzania aplikacjami przedsiębiorstwa w usłudze Azure Active Directory 
 
@@ -34,7 +34,7 @@ Oto niektóre ulepszenia dla usługi Azure AD w [portalu Azure](https://portal.a
 
 ## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Ulepszenia dotyczące galerii aplikacji Azure Active Directory
 
-Dodawanie ulubionych aplikacji, czy są one z [galerii aplikacji](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), niestandardowych aplikacji, jest rozszerzenie w chmurze lub nowe aplikacje projektujesz.  Możesz rozpocząć pracę z nowe środowisko, klikając **Dodaj** w obszarze **aplikacje dla przedsiębiorstw** lub **wszystkie aplikacje**.
+Dodawanie ulubionych aplikacji, czy są one z [galerii aplikacji](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), niestandardowych aplikacji, jest rozszerzenie w chmurze lub nowe aplikacje projektujesz.  Możesz rozpocząć pracę z nowe środowisko, klikając **Dodaj** w obszarze **aplikacje dla przedsiębiorstw** lub **wszystkie aplikacje**.
  
   ![Dodawanie aplikacji](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 

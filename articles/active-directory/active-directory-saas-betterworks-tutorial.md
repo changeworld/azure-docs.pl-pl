@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z BetterWorks | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i BetterWorks."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i BetterWorks.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 85c815218bca322bcbfd25b5a10b9eaa17ea4adf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0d70e853450ac2ff5c16db005849239901184da9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>Samouczek: Integracji Azure Active Directory z BetterWorks
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD BetterWorks zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do BetterWorks (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://app.betterworks.com/saml2/metadata/`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://app.betterworks.com/saml2/metadata/`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://app.betterworks.com/saml2/acs/`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://app.betterworks.com/saml2/acs/`
 
 4. Na **BetterWorks domeny i adres URL** sekcji, jeśli chcesz skonfigurować aplikację w **SP zainicjował tryb**, wykonaj następujące czynności:
     
@@ -120,7 +120,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. Polecenie **Pokaż zaawansowane ustawienia adresu URL**.
 
-    b. W **na adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://app.betterworks.com`
+    b. W **na adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://app.betterworks.com`
 
     > [!NOTE] 
     > Nie są to rzeczywiste wartości. Adres URL odpowiedzi, identyfikator i rzeczywistych na adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [BetterWorks obsługuje zespołu](mailto:support@betterworks.com) uzyskać te wartości.
@@ -233,10 +233,10 @@ Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczeg
 
 Po kliknięciu kafelka BetterWorks w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji BetterWorks.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

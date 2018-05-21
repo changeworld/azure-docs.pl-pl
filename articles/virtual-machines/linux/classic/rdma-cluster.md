@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Konfigurowanie klastra RDMA systemu Linux na potrzeby uruchamiania aplikacji MPI
 Dowiedz się, jak skonfigurować klaster RDMA systemu Linux na platformie Azure z [wysokiej wydajności obliczeniowe rozmiarów maszyn wirtualnych](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) na uruchamianie równoległe aplikacji komunikat interfejsu (Passing Interface). Ten artykuł zawiera kroki, aby przygotować obraz HPC systemu Linux, aby uruchomić Intel MPI w klastrze. Po przygotowaniu można wdrożyć klaster maszyn wirtualnych przy użyciu tego obrazu i jeden rozmiary maszyny Wirtualnej platformy Azure z funkcją RDMA (obecnie H16r H16mr, A8 i A9). Klaster umożliwia uruchamianie aplikacji MPI wydajne komunikowanie się przez sieć małym opóźnieniu i dużej przepustowości oparte na technologii dostępu (do pamięci RDMA) zdalnego pamięci.
@@ -210,7 +210,7 @@ W klastrze HPC na podstawie CentOS, istnieją dwie metody do ustanawiania relacj
 
 Przykładowy skrypt zamieszczone przez społeczność jest dostępna w [GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) do włączenia uwierzytelniania użytkownika łatwy w klastrze HPC na podstawie CentOS. Pobranie i użycie tego skryptu za pomocą poniższych kroków. Można również zmodyfikować tego skryptu lub użyć innej metody do ustanawiania passwordless uwierzytelniania SSH między węzłami klastra obliczeniowego.
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
+    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
 
 Aby uruchomić skrypt, musisz znać prefiks podsieci adresów IP. Pobierz prefiks, uruchamiając następujące polecenie w jednym z węzłów klastra. Dane wyjściowe powinny wyglądać podobnie 10.1.3.5 i prefiks jest 10.1.3 części.
 

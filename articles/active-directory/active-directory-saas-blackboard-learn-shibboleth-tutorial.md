@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z tablica Dowiedz się - Shibboleth | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między nauki tablica - Shibboleth i Azure Active Directory."
+title: 'Samouczek: Integracji Azure Active Directory z tablica Dowiedz się - Shibboleth | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między nauki tablica - Shibboleth i Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ac2894a7ec10db52a23bdff74840723e02ed677
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cfc4899a8770037d6f0e5c58d61ce73ec862de9a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Samouczek: Integracji Azure Active Directory z tablica Dowiedz się - Shibboleth
 
@@ -29,7 +29,7 @@ Integrowanie informacje tablica - Shibboleth z usługą Azure AD zapewnia nastę
 - Umożliwia użytkownikom automatycznie pobrać zalogowane tablica informacji - Shibboleth (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,11 +110,11 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/Login`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/Login`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<yourblackoardlearnserver>.blackboardlearn.com/shibboleth-sp`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/shibboleth-sp`
 
-    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
+    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
  
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [tablica Dowiedz się - zespołem pomocy technicznej klienta Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx) uzyskać te wartości. 
@@ -208,10 +208,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Po kliknięciu tablica informacji - Shibboleth kafelka w panelu dostępu należy należy pobrać automatycznie zalogowane Twojej tablica informacji - Shibboleth aplikacji.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

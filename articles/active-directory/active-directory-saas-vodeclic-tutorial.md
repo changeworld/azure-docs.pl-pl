@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Vodeclic | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Vodeclic."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Vodeclic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 940c7bb5040fb91a03b01dc43ee07d52e3d4e63b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: bc889919f2d869478843881cc8eae06fc9cb232c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Samouczek: Integracji Azure Active Directory z Vodeclic
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD Vodeclic zapewnia następujące korzyści:
 - Można umożliwić użytkownikom automatycznie pobrać zalogowanego do Vodeclic (logowanie jednokrotne lub logowania jednokrotnego) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji--portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,15 +108,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Vodeclic pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a. W **identyfikator** wpisz adres URL z następującego wzorca:`https://<companyname>.lms.vodeclic.net/auth/saml`
+    a. W **identyfikator** wpisz adres URL z następującego wzorca: `https://<companyname>.lms.vodeclic.net/auth/saml`
 
-    b. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca:`https://<companyname>.lms.vodeclic.net/auth/saml/callback`
+    b. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
 4. Jeśli chcesz skonfigurować aplikację w **SP** tryb inicjowane, wybierz opcję **Pokaż zaawansowane ustawienia adresu URL** pole wyboru, a następnie wykonaj następujący krok:
 
     ![Adresy URL i domeny Vodeclic pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
-    W **adres URL logowania** wpisz adres URL z następującego wzorca:`https://<companyname>.lms.vodeclic.net/auth/saml`
+    W **adres URL logowania** wpisz adres URL z następującego wzorca: `https://<companyname>.lms.vodeclic.net/auth/saml`
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Zaktualizować te wartości przy użyciu rzeczywistego identyfikatora odpowiedzi na adres URL i adresu URL logowania jednokrotnego. Skontaktuj się z [zespołem pomocy technicznej klienta Vodeclic](mailto:hotline@vodeclic.com) uzyskać te wartości.
@@ -203,7 +203,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -211,10 +211,10 @@ Po wybraniu kafelka Vodeclic w panelu dostępu, możesz pobrać automatycznie za
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

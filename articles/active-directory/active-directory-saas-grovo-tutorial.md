@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Grovo | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Grovo."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Grovo.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: e4bb050e96d3e8d9da4666f5418ac3e444f6212d
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7016208aad3ec60f2db8d071bf67f9dae66a59bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Samouczek: Integracji Azure Active Directory z Grovo
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD Grovo zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Grovo (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Grovo pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.grovo.com/sso/saml2/metadata`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/metadata`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, wykonaj następujące kroki:
 
@@ -122,7 +122,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Grovo pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url2.png)
     
-    W **Zaloguj się na adres URL** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    W **Zaloguj się na adres URL** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Znakiem rzeczywisty identyfikator, adres URL odpowiedzi, na adres URL i przekazywania stanu, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Grovo](https://www.grovo.com/contact-us) uzyskać te wartości.
@@ -148,7 +148,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
 
-    d. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
 
     d. Pozostaw **Namespace** puste.
     
@@ -185,7 +185,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **Rejestracja jednokrotna w punkcie końcowym usługi** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
 
-    d. Wybierz **Rejestracja jednokrotna w powiązaniu punktu końcowego usługi** jako `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`.
+    c. Wybierz **Rejestracja jednokrotna w powiązaniu punktu końcowego usługi** jako `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`.
     
     d. Otwórz pobrany **certyfikatu szyfrowania Base64** z portalu Azure w programie Notatnik, wklej ją do **klucz publiczny** pola tekstowego.
 
@@ -222,7 +222,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
   
@@ -262,7 +262,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -272,7 +272,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

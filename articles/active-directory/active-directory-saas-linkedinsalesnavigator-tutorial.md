@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z LinkedInSalesNavigator | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i LinkedInSalesNavigator."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i LinkedInSalesNavigator.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: fde1d2c5d1a90092ec4528f727dc7af672f80917
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c8dcf4ad49b8f261814c2d442bfdded221e8cbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Samouczek: Integracji Azure Active Directory z Nawigatora sprzedaży LinkedIn
 
@@ -29,7 +29,7 @@ Integrowanie Navigator sprzedaży LinkedIn z usługą Azure AD zapewnia następu
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do LinkedIn Nawigatora sprzedaży (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, Przeglądaj [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, Przeglądaj [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -128,7 +128,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
-    W **adres URL logowania** tekstowym, wpisz wartość, przy użyciu następującego wzorca:`https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
+    W **adres URL logowania** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
 8. Twoje **LinkedIn sprzedaży Navigator** aplikacji oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. Poniższy zrzut ekranu przedstawia przykład. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** , ale Nawigator sprzedaży LinkedIn oczekuje być mapowane z adresu e-mail użytkownika. Można użyć **user.mail** atrybutu z listy lub użyj wartości atrybutu odpowiednie na podstawie konfiguracji organizacji. 
 
@@ -139,9 +139,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |    
     | wyślij wiadomość e-mail| User.mail |
-    | Dział| User.Department |
-    | Imię| User.givenName |
-    | nazwisko| User.surname |
+    | dział| User.Department |
+    | Imię| user.givenname |
+    | nazwisko| user.surname |
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
     
@@ -261,10 +261,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Po kliknięciu kafelka LinkedIn Nawigator sprzedaży w panelu dostępu, powinien być przekierowany do strony organizacji, gdzie należy podać informacje osobowe konta LinkedIn. Łączy konto osobiste konta firmowego LinkedIn. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z przyjęcia LMS | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i przyjęcia LMS."
+title: 'Samouczek: Integracji Azure Active Directory z przyjęcia LMS | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i przyjęcia LMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: f877d8fee4a94207fc01f4a5e0e7919f1286f2e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Samouczek: Integracji Azure Active Directory z przyjęcia LMS
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD przyjęcia LMS zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie zaloguj się do przyjęcia LMS (za pośrednictwem rejestracji jednokrotnej) za pomocą ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji, portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -143,7 +143,7 @@ Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z przyjęcia LMS, w
 
     b. Otwórz Notatnik, certyfikatu, który został pobrany z portalu Azure. Usuń **---BEGIN CERTIFICATE---** i **---END CERTIFICATE---** tagów. Następnie w **klucza** Wklej pozostałą zawartość.
     
-    d. W **właściwość identyfikatora** wybierz atrybut, który został skonfigurowany jako identyfikator użytkownika w usłudze Azure AD. Na przykład jeśli *userPrincipalName* jest wybrane w usłudze Azure AD, wybierz **Username**.
+    c. W **właściwość identyfikatora** wybierz atrybut, który został skonfigurowany jako identyfikator użytkownika w usłudze Azure AD. Na przykład jeśli *userPrincipalName* jest wybrane w usłudze Azure AD, wybierz **Username**.
 
     d. W **adres URL logowania** Wklej **adres URL dostępu użytkownika** z poziomu aplikacji **właściwości** strony portalu Azure.
 
@@ -186,7 +186,7 @@ Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące 
 
     b. W **nazwy użytkownika** tekstowym, wpisz adres e-mail Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość w **hasło** pole.
 
     d. Wybierz pozycję **Utwórz**.
 
@@ -220,7 +220,7 @@ Aby skonfigurować konto użytkownika, wykonaj następujące czynności:
 
     b. W **nazwisko** wpisz nazwisko, takich jak **Simona**.
     
-    d. W **Username** wpisz pełną nazwę, taką jak **Simona Britta**.
+    c. W **Username** wpisz pełną nazwę, taką jak **Simona Britta**.
 
     d. W **hasło** wpisz hasło Simona Britta.
 
@@ -260,7 +260,7 @@ Aby przypisać użytkownika Simona Britta do przyjęcia LMS, wykonaj następują
 
 7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -269,7 +269,7 @@ W panelu dostępu wybierając **przyjęcia LMS** kafelków automatycznie loguje 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

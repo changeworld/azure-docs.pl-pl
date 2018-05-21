@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/22/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Wdrażanie usługi Azure Workbench Blockchain
 
@@ -23,6 +23,25 @@ Azure Blockchain Workbench jest wdrażany w portalu Azure Marketplace przy użyc
 Aby uzyskać więcej informacji o składnikach Blockchain Workbench, zobacz [architektura Azure Blockchain Workbench](blockchain-workbench-architecture.md).
 
 ## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
+
+Blockchain Workbench umożliwia wdrażanie księgowe blockchain wraz z zestawem odpowiednich usług Azure najczęściej używanych do tworzenia aplikacji opartych na blockchain. Wdrażanie Blockchain Workbench powoduje następujących usług platformy Azure, są udostępniane w ramach grupy zasobów w Twojej subskrypcji platformy Azure.
+
+* Temat siatki zdarzenia 1
+* Namespace magistrali usługi 1
+* 1 application Insights
+* 1 bazy danych SQL (standardowa S0)
+* Usługi aplikacji 2 (standardowy)
+* 2 magazynów kluczy azure
+* 2 konta usługi azure Storage (Standard-LRS)
+* 2 zestawy skalowania maszyny wirtualnej (w przypadku węzłów modułu sprawdzania poprawności i proces roboczy)
+* 2 sieci wirtualnych (w tym usługi równoważenia obciążenia, grupy zabezpieczeń sieci i publiczny adres IP dla każdej sieci wirtualnej)
+* Opcjonalnie: Monitor Azure
+
+Poniżej przedstawiono przykład wdrożenia utworzone w **myblockchain** grupy zasobów.
+
+![Przykład wdrożenia](media/blockchain-workbench-deploy/example-deployment.png)
+
+Koszt Blockchain Workbench jest sumą kosztów podstawowej usług Azure. Informacje o cenach dla usługi Azure może być obliczona w [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/).
 
 Azure Blockchain Workbench wymaga kilka wymagań wstępnych przed ich wdrożeniem. Wymagania wstępne obejmują rejestracji konfiguracji i aplikacji usługi Azure AD.
 
@@ -254,9 +273,18 @@ Po wdrożeniu Azure Blockchain Workbench, następnym krokiem jest upewnij się, 
 
 7. Wybierz **zapisać** aktualizację rejestracji klienta.
 
+## <a name="remove-a-deployment"></a>Usuń wdrożenie
+
+Po wdrożeniu nie jest już potrzebne, można usunąć wdrożenia, usuwając Blockchain Workbench grupy zasobów.
+
+1. W portalu Azure, przejdź do **grupy zasobów** w lewym okienku nawigacyjnym i wybierz grupę zasobów, które chcesz usunąć. 
+2. Wybierz pozycję **Usuń grupę zasobów**. Sprawdź usunięcia, wprowadzając nazwę grupy zasobów, a następnie wybierz **usunąć**.
+
+    ![Usuwanie grupy zasobów](media/blockchain-workbench-deploy/delete-resource-group.png)
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule wdrożeniu Azure Blockchain Workbench. Aby dowiedzieć się, jak utworzyć aplikację blockchain, nadal dalej artykule.
+W tym artykule należy wdrożyć Azure Blockchain Workbench. Aby dowiedzieć się, jak utworzyć aplikację blockchain, nadal dalej artykule.
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji blockchain w Azure Blockchain Workbench](blockchain-workbench-create-app.md)

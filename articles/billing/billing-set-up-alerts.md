@@ -19,7 +19,7 @@ ms.author: adpick
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9f20de2c8a8870568ac624846f6a8a4f8d72b5c0
 ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/16/2018
 ---

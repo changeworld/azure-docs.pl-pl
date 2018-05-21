@@ -1,8 +1,8 @@
 ---
-title: "Wdrażanie rozszerzenia Panelu dostępu platformy Azure dla programu Internet Explorer przy użyciu obiektu zasad grupy | Dokumentacja firmy Microsoft"
-description: "Jak wdrożyć dodatek programu Internet Explorer dla portalu Moje aplikacje przy użyciu zasad grupy."
+title: Wdrażanie rozszerzenia Panelu dostępu platformy Azure dla programu Internet Explorer przy użyciu obiektu zasad grupy | Dokumentacja firmy Microsoft
+description: Jak wdrożyć dodatek programu Internet Explorer dla portalu Moje aplikacje przy użyciu zasad grupy.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
@@ -15,14 +15,14 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a203548575eacb2d0eb0d09a4aaf239b11caad3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Wdrażanie rozszerzenia Panel dostępu dla programu Internet Explorer przy użyciu zasad grupy
-Ten samouczek przedstawia sposób użycia zasad grupy można zdalnie zainstalować rozszerzenia Panel dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logowanie do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach rejestracji jednokrotnej](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+Ten samouczek przedstawia sposób użycia zasad grupy można zdalnie zainstalować rozszerzenia Panel dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logowanie do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach rejestracji jednokrotnej](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
 
 Zaleca się, że administratorzy automatyzacji wdrażania tego rozszerzenia. W przeciwnym razie użytkownicy muszą pobrać i zainstalować rozszerzenie, co jest podatne na błędy użytkowników i musi mieć uprawnienia administratora. Ten samouczek obejmuje jedną metodę automatyzację wdrożenia oprogramowania za pomocą zasad grupy. [Dowiedz się więcej na temat zasad grupy.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -107,8 +107,8 @@ Oprócz uruchomiony Instalator, każde rozszerzenie programu Internet Explorer m
     ![Kliknij pozycję Włącz, a następnie kliknij przycisk Pokaż...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
 4. W **Pokaż zawartość** okna, wykonaj następujące czynności:
    
-   1. Dla pierwszej kolumny ( **Nazwa wartości** pola), skopiuj i wklej następujący identyfikator klasy:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. Dla drugiej kolumny ( **wartość** pola), wpisz następujące wartości:`1`
+   1. Dla pierwszej kolumny ( **Nazwa wartości** pola), skopiuj i wklej następujący identyfikator klasy: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   2. Dla drugiej kolumny ( **wartość** pola), wpisz następujące wartości: `1`
    3. Kliknij przycisk **OK** zamknąć **Pokaż zawartość** okna.
       
       ![Wprowadź wartości określonych powyżej.](./media/active-directory-saas-ie-group-policy/show-contents.png)
@@ -151,7 +151,7 @@ Użytkownicy nie będą mogli do przechowywania ich poświadczeń lub użyj auto
 Wykonaj poniższe kroki, aby sprawdzić, czy pomyślne wdrożenie rozszerzenie:
 
 1. Jeśli została wdrożona przy użyciu **Konfiguracja komputera**, zaloguj się na komputerze klienckim, który należy do jednostki Organizacyjnej, które wybrano w [krok 2: Tworzenie obiektu zasad grupy](#step-2-create-the-group-policy-object). Jeśli została wdrożona przy użyciu **Konfiguracja użytkownika**, upewnij się, że Zaloguj się jako użytkownik, który należy do tej jednostki Organizacyjnej.
-2. Może upłynąć kilka znak ins zasad grupy zmian do w pełni aktualizacji z tego komputera. Aby wymusić aktualizację, należy otworzyć **wiersza polecenia** okno i uruchom następujące polecenie:`gpupdate /force`
+2. Może upłynąć kilka znak ins zasad grupy zmian do w pełni aktualizacji z tego komputera. Aby wymusić aktualizację, należy otworzyć **wiersza polecenia** okno i uruchom następujące polecenie: `gpupdate /force`
 3. Należy ponownie uruchomić komputer, aby instalacja została wykonana. Rozruchowego może potrwać znacznie więcej czasu niż zwykle podczas rozszerzenia instaluje.
 4. Po ponownym uruchomieniu, otwórz **programu Internet Explorer**. W prawym górnym rogu okna, kliknij polecenie **narzędzia** (koło zębate ikonę), a następnie wybierz **Zarządzanie dodatkami**.
    
@@ -162,6 +162,6 @@ Wykonaj poniższe kroki, aby sprawdzić, czy pomyślne wdrożenie rozszerzenie:
 
 ## <a name="related-articles"></a>Pokrewne artykuły
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
-* [Dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md)
+* [Dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md)
 * [Rozwiązywanie problemów z rozszerzeniem Panel dostępu dla programu Internet Explorer](active-directory-saas-ie-troubleshooting.md)
 

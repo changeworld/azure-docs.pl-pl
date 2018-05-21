@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integracji z oprogramowaniem chlorowców | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między oprogramowaniem halogenowe i Azure Active Directory."
+title: 'Samouczek: Azure Active Directory integracji z oprogramowaniem chlorowców | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między oprogramowaniem halogenowe i Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: af9c9d4b9bd562169bfe6c9158254beec5c3e1e7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd2a45d34d93f1233302c89c502fb171da2873e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Samouczek: Azure Active Directory integracji z oprogramowaniem chlorowców
 
@@ -29,7 +29,7 @@ Integrowanie chlorowców oprogramowania z usługi Azure AD zapewnia następując
 - Umożliwia użytkownikom automatycznie pobrać zalogowane oprogramowania chlorowców (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -112,9 +112,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://global.hgncloud.com/<companyname>`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://global.hgncloud.com/<companyname>`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://global.halogensoftware.com/<companyname>`,`https://global.hgncloud.com/<companyname>`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://global.halogensoftware.com/<companyname>`, `https://global.hgncloud.com/<companyname>`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta oprogramowania chlorowców](https://support.halogensoftware.com/) uzyskać te wartości. 
@@ -256,10 +256,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka oprogramowania chlorowców w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji oprogramowania halogenowe.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

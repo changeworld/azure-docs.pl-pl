@@ -5,14 +5,14 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/17/2018
 ---
 Następujące limity dotyczą zasobów usługi Log Analytics na subskrypcję:
 
@@ -29,7 +29,7 @@ Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics:
 
 |  | Bezpłatna | Standardowa (Standard) | Premium | Autonomiczna | OMS | Na GB |
 | --- | --- | --- | --- | --- | --- |--- |
-| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |Brak |None | Brak | Brak | Brak
+| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |Brak |Brak | Brak | Brak | Brak
 | Okres przechowywania danych |7 dni |1 miesiąc |12 miesięcy | 1 miesiąc<sup>2</sup> | 1 miesiąc <sup>2</sup>| 1 miesiąc <sup>2</sup>|
 
 <sup>1</sup> Gdy klienci osiągną limit dziennego transferu danych wynoszący 500 MB, analiza danych zostanie zatrzymana, a następnie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC.
@@ -39,5 +39,5 @@ Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics:
 | Kategoria | Limity | Komentarze
 | --- | --- | --- |
 | Interfejs API modułu zbierającego dane | Maksymalny rozmiar pojedynczego wpisu to 30 MB<br>Maksymalny rozmiar wartości pól to 32 KB | Dziel większe woluminy na wiele wpisów<br>Pola dłuższe niż 32 KB są obcinane. |
-| Interfejs API wyszukiwania | 5000 rekordów zwracanych dla danych niezagregowanych<br>500 000 rekordów dla danych zagregowanych | Zagregowane dane to wyszukiwanie obejmujące polecenie `measure`
+| Interfejs API wyszukiwania | 5000 rekordów zwracanych dla danych niezagregowanych<br>500 000 rekordów dla danych zagregowanych | Zagregowane dane to wyszukiwanie obejmujące polecenie `summarize`
  

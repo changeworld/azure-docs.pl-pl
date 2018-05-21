@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory bezpośrednio | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i bezpośrednie."
+title: 'Samouczek: Integracji Azure Active Directory bezpośrednio | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i bezpośrednie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0409ef01630f97d772b08f72006cc1e06e8dae24
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d68f84ffcf9ed5b03e73bb7179e178243ee8eed6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Samouczek: Integracji Azure Active Directory bezpośrednio
 
@@ -29,7 +29,7 @@ Integrowanie bezpośrednio z usługą Azure AD zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do kierowania (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,13 +110,13 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-direct-tutorial/tutorial_direct_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL:`https://direct4b.com/`
+    W **identyfikator** tekstowym, wpisz adres URL: `https://direct4b.com/`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-direct-tutorial/tutorial_direct_url1.png)
 
-     W **adres URL logowania** tekstowym, wpisz adres URL:`https://direct4b.com/sso` 
+     W **adres URL logowania** tekstowym, wpisz adres URL: `https://direct4b.com/sso` 
     
 5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -213,10 +213,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
     
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

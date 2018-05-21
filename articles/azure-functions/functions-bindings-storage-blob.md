@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: MT
+ms.openlocfilehash: 1d1cdee7373b949456032aff3c808cc233aaa1cc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -31,14 +31,18 @@ W tym artykule opisano sposób pracy z usługi Azure Functions powiązania magaz
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+> [!NOTE]
+> Użyj wyzwalacza zdarzenia siatki zamiast wyzwalacza magazynu obiektów Blob dla kont magazynu tylko do obiektów blob, wysokiej skali lub w celu uniknięcia zimnego opóźnień. Aby uzyskać więcej informacji, zobacz [wyzwalacza](#trigger) sekcji. 
+
 ## <a name="packages"></a>Pakiety
 
 Powiązania magazynu obiektów Blob są udostępniane w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-> [!NOTE]
-> Użyj wyzwalacza zdarzenia siatki zamiast wyzwalacza magazynu obiektów Blob dla kont magazynu tylko do obiektów blob, wysokiej skali lub w celu uniknięcia zimnego opóźnień. Aby uzyskać więcej informacji, zobacz następujące tematy **wyzwalacza** sekcji. 
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>Wyzwalacz
 

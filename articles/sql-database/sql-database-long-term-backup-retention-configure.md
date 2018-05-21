@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 130b3ea0012c5fb21766b26ce2c3e589f0916736
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df3d843516bce30253c23080716e606dfb56f25e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure
 
@@ -80,6 +80,10 @@ Wyświetl kopie zapasowe, które zostaną zachowane dla określonej bazy danych 
 ## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Za pomocą programu PowerShell do konfigurowania zasad przechowywania długoterminowego i przywracania kopii zapasowych
 
 Poniższe sekcje pokazują, jak skonfigurować długoterminowego przechowywania kopii zapasowych, wyświetlić kopii zapasowych magazynu Azure SQL i przywracanie z kopii zapasowej w magazynie Azure SQL przy użyciu programu PowerShell.
+
+> [!IMPORTANT]
+> Musisz użyć najnowszej powershell AzureRM do konfigurowania zasad V2 od lewej do prawej. Bieżąca wersja to [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview), to jest wersja preview, aby go zainstalować za pomocą tego polecenia: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
+> Aby uzyskać instrukcje na temat instalowania wersji wstępnej, zobacz [PowerShellGet uzyskać modułu](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). Powershell AzureRM wersji 2018 może pochodzi za kilka dni (powinien być 2018-5/18), można zignorować przełącznika - AllowPrelease po zainstalowaniu wersji po ich udostępnieniu i użyj następującego polecenia " `Install-Module -Name AzureRM.Sql -Force`.
 
 ### <a name="create-an-ltr-policy"></a>Tworzenie zasad od lewej do prawej
 

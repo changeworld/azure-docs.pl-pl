@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b92cbf0df971afd3bea981327975ed792ce942d4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -156,6 +156,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 * Maszyny wirtualne (klasyczne) — zobacz [Classic deployment ograniczenia](#classic-deployment-limitations)
 * Zestawy skalowania maszyny wirtualnej — zobacz [ograniczenia maszyny wirtualne](#virtual-machines-limitations)
 * Sieci wirtualne — Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations)
+* Visual Studio Team Services — konta usługi VSTS z rozszerzeniem innych niż Microsoft zakupi musi [anulować zakupów](https://go.microsoft.com/fwlink/?linkid=871160) przed konta mogą przenosić między subskrypcjami.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Usługi, których nie można przenieść
@@ -170,10 +171,10 @@ Usługi, które aktualnie nie należy włączać przenoszenie zasobu to:
 * Azure Migrate
 * BizTalk Services
 * Certyfikaty — można przenieść certyfikaty usługi aplikacji, ale ma przekazane certyfikaty [ograniczenia](#app-service-limitations).
-* Usługa Kubernetes
 * Włączono DevTest Labs — aby przejść do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenia między subskrypcji nie jest włączona.
 * Dynamics LCS
 * ExpressRoute
+* Usługa Kubernetes
 * Moduły równoważenia obciążenia — zobacz [ograniczenia usługi równoważenia obciążenia](#lb-limitations)
 * Aplikacje zarządzane
 * Zarządzane dysków, zobacz [ograniczenia maszyny wirtualne](#virtual-machines-limitations)

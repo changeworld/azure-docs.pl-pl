@@ -1,28 +1,28 @@
 ---
-title: "Sieć szkieletowa usług Azure z zarządzanie interfejsami API — omówienie | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera wprowadzenie do korzystania z usługi Azure API Management jako bramy dla poszczególnych aplikacji sieci szkieletowej usług."
+title: Sieć szkieletowa usług Azure z zarządzanie interfejsami API — omówienie | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wprowadzenie do korzystania z usługi Azure API Management jako bramy dla poszczególnych aplikacji sieci szkieletowej usług.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: ea3b1f50bada3c1301f8661f8f0b4866cb1c732c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 6bf7ea90bb5351411984110fd8fb05c2f8cb0650
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Sieć szkieletowa usług z usługi Azure API Management — omówienie
 
-Aplikacje w chmurze muszą zwykle frontonu bramy do zapewnienia pojedynczy punkt wejściowych użytkowników, urządzeń lub innych aplikacji. W sieci szkieletowej usług, brama może być dowolnym usługi bezstanowej takich jak [aplikacji platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), lub inna usługa przeznaczone dla ruch przychodzący, takich jak [usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [Centrum IoT](https://docs.microsoft.com/azure/iot-hub/), lub [Azure API Management](https://docs.microsoft.com/azure/api-management/).
+Aplikacje w chmurze zwykle potrzebują bramy frontonu, aby udostępniać pojedynczy punkt danych przychodzących dla użytkowników, urządzeń lub innych aplikacji. W sieci szkieletowej usług, brama może być dowolnym usługi bezstanowej takich jak [aplikacji platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), lub inna usługa przeznaczone dla ruch przychodzący, takich jak [usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [Centrum IoT](https://docs.microsoft.com/azure/iot-hub/), lub [Azure API Management](https://docs.microsoft.com/azure/api-management/).
 
 Ten artykuł zawiera wprowadzenie do korzystania z usługi Azure API Management jako bramy dla poszczególnych aplikacji sieci szkieletowej usług. Zarządzanie interfejsami API integruje się bezpośrednio z usługi Service Fabric, co umożliwia publikowanie interfejsów API za pomocą bogaty zestaw reguł routingu do usług sieci szkieletowej usług zaplecza. 
 
@@ -80,8 +80,8 @@ W tym przykładzie nowego wystąpienia usługi bezstanowej jest tworzone dla pos
 
  Każda usługa ma unikatową nazwę, ale nazwy nie są znane początkowych ponieważ usług są tworzone w odpowiedzi na użytkownika lub administratora danych wejściowych, jak i w związku z tym nie może być ustalony do zasad APIM lub reguły routingu. Zamiast tego nazwy usługi, do którego należy wysłać żądanie jest generowana w definicji zasad zaplecza z `name` wartość podana w ścieżkę adresu URL żądania. Na przykład:
 
-  - Żądanie `/api/users/foo` jest kierowany do wystąpienia usługi`fabric:/app/users/foo`
-  - Żądanie `/api/users/bar` jest kierowany do wystąpienia usługi`fabric:/app/users/bar`
+  - Żądanie `/api/users/foo` jest kierowany do wystąpienia usługi `fabric:/app/users/foo`
+  - Żądanie `/api/users/bar` jest kierowany do wystąpienia usługi `fabric:/app/users/bar`
 
 ![Sieć szkieletowa usług Azure API Management topologii Przegląd][sf-apim-dynamic-stateless]
 
@@ -99,14 +99,14 @@ W tym przykładzie nowe wystąpienie usługi stanowej jest tworzone dla poszczeg
 
  Każda usługa ma unikatową nazwę, ale nazwy nie są znane początkowych ponieważ usług są tworzone w odpowiedzi na użytkownika lub administratora danych wejściowych, jak i w związku z tym nie może być ustalony do zasad APIM lub reguły routingu. Zamiast tego nazwy usługi, do którego należy wysłać żądanie jest generowana w definicji zasad zaplecza z `name` wartość podana ścieżka adresu URL żądania. Na przykład:
 
-  - Żądanie `/api/users/foo` jest kierowany do wystąpienia usługi`fabric:/app/users/foo`
-  - Żądanie `/api/users/bar` jest kierowany do wystąpienia usługi`fabric:/app/users/bar`
+  - Żądanie `/api/users/foo` jest kierowany do wystąpienia usługi `fabric:/app/users/foo`
+  - Żądanie `/api/users/bar` jest kierowany do wystąpienia usługi `fabric:/app/users/bar`
 
 Każde wystąpienie usługi jest również podzielona na partycje przy użyciu schematu partycji Int64 z dwóch partycji i zakres klucza, który obejmuje `Int64.MinValue` do `Int64.MaxValue`. Zasady zaplecza oblicza klucza partycji w ramach tego zakresu, konwertując `id` wartość podana w ścieżce żądanie adresu URL do 64-bitową liczbę całkowitą, chociaż dowolny algorytm można używać w tym miejscu można obliczyć klucza partycji. 
 
 ![Sieć szkieletowa usług Azure API Management topologii Przegląd][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Postępuj zgodnie z [samouczek](service-fabric-tutorial-deploy-api-management.md) do skonfigurowania pierwszego klastra sieci szkieletowej usług za pomocą interfejsu API zarządzania i przepływ żądań za pośrednictwem interfejsu API zarządzania do usług.
 

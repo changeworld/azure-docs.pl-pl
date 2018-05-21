@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 05/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 326d6873ae78c5f712832c4cfce9c793f1dfbf37
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.openlocfilehash: e0c0c3f51b455983dbe3f937917ed090e51d0005
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączonego i zagnieżdżone szablony, w przypadku wdrażania zasobów platformy Azure
 
@@ -148,7 +148,7 @@ Poniższy przykład przedstawia sposób Użyj podstawowego adresu URL, aby utwor
 }
 ```
 
-Można również użyć [deployment()](resource-group-template-functions-deployment.md#deployment) uzyskać podstawowy adres URL dla bieżącego szablonu i używać, aby uzyskać adres URL dla innych szablonów w tej samej lokalizacji. Ta metoda jest przydatna, jeśli zmieni się lokalizację szablonu (być może z powodu versioning) lub aby uniknąć twardego kodowania adresów URL w pliku szablonu.
+Można również użyć [deployment()](resource-group-template-functions-deployment.md#deployment) uzyskać podstawowy adres URL dla bieżącego szablonu i używać, aby uzyskać adres URL dla innych szablonów w tej samej lokalizacji. Ta metoda jest przydatna, jeśli zmieni się lokalizację szablonu (być może z powodu versioning) lub aby uniknąć twardego kodowania adresów URL w pliku szablonu. Właściwość templateLink jest zwracany wyłącznie w trakcie łączenia ze zdalnego szablonu przy użyciu adresu URL. Jeśli używasz lokalnych szablonu, że właściwość nie jest dostępna.
 
 ```json
 "variables": {
@@ -209,7 +209,7 @@ Główne szablon wdraża połączonego szablonu i pobiera zwracanej wartości. Z
 }
 ```
 
-Podobnie jak inne typy zasobów można ustawić zależności między połączonego szablonu i innych zasobów. W związku z tym inne zasoby potrzebują wartość wyjściowa szablonu połączone, można upewnij się, że połączonego szablonu jest wdrożyć przed ich. Lub, gdy szablon połączonego opiera się na inne zasoby, można upewnij się, że inne zasoby są wdrażane przed połączonego szablonu.
+Podobnie jak inne typy zasobów można ustawić zależności między połączonego szablonu i innych zasobów. W związku z tym inne zasoby potrzebują wartość wyjściowa szablonu połączone, upewnij się, że połączonego szablonu jest wdrożyć przed ich. Lub, gdy szablon połączonego opiera się na inne zasoby, upewnij się, że inne zasoby są wdrażane przed połączonego szablonu.
 
 W poniższym przykładzie przedstawiono szablon, który wdraża publicznego adresu IP i zwraca identyfikator zasobu:
 

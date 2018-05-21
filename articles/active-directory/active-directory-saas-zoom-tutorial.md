@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z powiększenia | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i powiększenia."
+title: 'Samouczek: Integracji Azure Active Directory z powiększenia | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i powiększenia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 5a6d9ea9de1035bf9c84cf3c451cc1121f04a82a
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 16fca9c8d1ab18ffe6d156d6bf4549d9a687b164
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Samouczek: Integracji Azure Active Directory z powiększenia
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD powiększenia zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane powiększenie (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i powiększenia domeny pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<companyname>.zoom.us`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.zoom.us`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`<companyname>.zoom.us`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `<companyname>.zoom.us`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta powiększenie](https://support.zoom.us/hc) uzyskać te wartości.
@@ -124,8 +124,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | Nazwa atrybutu | Wartość atrybutu | Wartość Namespace |
     | ------------------- | -----------|--------- |    
     | Adres e-mail | User.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail`|
-    | Imię | User.givenName | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`|
-    | Nazwisko | User.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname `|
+    | Imię | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`|
+    | Nazwisko | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname `|
     | Numer telefonu | User.telephonenumber | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone`|
     | Dział | User.Department | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department`|
 
@@ -137,7 +137,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
 
-    d. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
 
     d. W **Namespace** tekstowym, wpisz wartość przestrzeni nazw wyświetlany dla danego wiersza.
     
@@ -171,14 +171,14 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     b. W **adres URL strony wylogowania** pole tekstowe, Wklej wartość **Sign-Out URL** którego została skopiowana z portalu Azure.
      
-    d. Otwórz w Notatniku certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikat dostawcy tożsamości** pola tekstowego.
+    c. Otwórz w Notatniku certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikat dostawcy tożsamości** pola tekstowego.
 
     d. W **wystawcy** pole tekstowe, Wklej wartość **identyfikator jednostki SAML** którego została skopiowana z portalu Azure. 
 
     e. Kliknij pozycję **Zapisz**.
 
     > [!NOTE] 
-    > Aby uzyskać więcej informacji, odwiedź stronę dokumentacji powiększenia [https://zoomus.zendesk.com/hc/en-us/articles/115005887566](https://zoomus.zendesk.com/hc/en-us/articles/115005887566)
+    > Aby uzyskać więcej informacji odwiedź stronę dokumentacji powiększenia [https://zoomus.zendesk.com/hc/en-us/articles/115005887566](https://zoomus.zendesk.com/hc/en-us/articles/115005887566)
 
 > [!TIP]
 > Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -212,7 +212,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
@@ -238,7 +238,7 @@ Aby umożliwić użytkownikom zalogować się do powiększenia usługi Azure AD,
 
     b. W **wiadomości E-mail** tekstowym, wpisz adres e-mail prawidłowe usługi Azure AD konto ma chcesz udostępnić.
 
-    d. Kliknij pozycję **Add** (Dodaj).
+    c. Kliknij pozycję **Add** (Dodaj).
 
 > [!NOTE]
 > Możesz użyć innych powiększenia użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez powiększenia do świadczenia usługi Azure Active Directory kont użytkowników.
@@ -273,7 +273,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -282,7 +282,7 @@ Po kliknięciu kafelka powiększenia w panelu dostępu użytkownik powinien pobr
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

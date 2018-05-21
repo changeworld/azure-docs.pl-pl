@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z pomocą techniczną Jitbit | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Jitbit pracy działu pomocy technicznej."
+title: 'Samouczek: Integracji Azure Active Directory z pomocą techniczną Jitbit | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Jitbit pracy działu pomocy technicznej.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 31d3295fa8d75aa72c8e9967b7ca81f4e98e5608
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c8e387bb98ad2e23c667ba058ff8ab5dbfedffbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Samouczek: Integracji Azure Active Directory z pomocą techniczną Jitbit
 
@@ -29,7 +29,7 @@ Integrowanie pomocy technicznej Jitbit z usługą Azure AD zapewnia następując
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do działu pomocy technicznej Jitbit (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -120,7 +120,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta techniczną Jitbit](https://www.jitbit.com/support/) aby zyskać tę wartość. 
     
-    b.  W **identyfikator** tekstowym, wpisz adres URL jako poniżej:`https://www.jitbit.com/web-helpdesk/`
+    b.  W **identyfikator** tekstowym, wpisz adres URL jako poniżej: `https://www.jitbit.com/web-helpdesk/`
 
     
  
@@ -221,7 +221,7 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do pomocy technic
    
    a. W **Username** pole tekstowe, typ **BrittaSimon**, nazwę użytkownika w portalu Azure.
 
-   b. W **E-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak  **BrittaSimon@contoso.com** .
+   b. W **E-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak **BrittaSimon@contoso.com**.
 
    c. W **imię** tekstowym, wpisz imię użytkownika, takich jak **Britta**.
 
@@ -271,10 +271,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Jitbit pomoc techniczna w panelu dostępu, należy pobrać strony logowania aplikacji Jitbit pracy działu pomocy technicznej.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

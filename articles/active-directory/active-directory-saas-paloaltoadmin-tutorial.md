@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integrowanie usługi Azure Active Directory z sieciami Palo Alto - interfejsu użytkownika administratora | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między Azure Active Directory i Palo Alto Networks - Admin interfejsu użytkownika."
+title: 'Samouczek: Integrowanie usługi Azure Active Directory z sieciami Palo Alto - interfejsu użytkownika administratora | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między Azure Active Directory i Palo Alto Networks - Admin interfejsu użytkownika.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c5be53f06e009cb2d5180e43318c8670139a68db
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aa3366810a40b004fe510cb2909f8da0f3513ddb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Integrowanie usługi Azure Active Directory z sieciami Palo Alto - interfejsu użytkownika administratora
 
@@ -30,7 +30,7 @@ Dzięki całkującej usługi Azure AD z sieciami Palo Alto - Admin interfejsu u�
 - Można umożliwić użytkownikom uzyskać zalogowany automatycznie Palo Alto Networks - UI Admin (logowanie jednokrotne lub logowania jednokrotnego) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji, portalu Azure.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -180,7 +180,7 @@ Włączanie usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigu
 
     ![Okno "Profil serwera dostawca tożsamości SAML"](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a. W **adres URL SLO dostawcy tożsamości** polu, Zamień poprzednio zaimportowanego URL SLO następujący adres URL:  **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0** .
+    a. W **adres URL SLO dostawcy tożsamości** polu, Zamień poprzednio zaimportowanego URL SLO następujący adres URL: **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0**.
   
     b. Kliknij przycisk **OK**.
 
@@ -301,7 +301,7 @@ W tej sekcji możesz umożliwić użytkownikowi Simona Britta do używania Azure
 
 7. W **Dodaj przydziału** wybierz **przypisać**.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -312,7 +312,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczki dotyczące integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -10,11 +10,11 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ab2631b8a6c9bb2ec8804717d9a3aef4376e2a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: b110f83274b2b42896bd18fb364c355ecc97a028
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledzenie zmian w środowisku z rozwiązaniem do śledzenia zmian
 
@@ -97,6 +97,7 @@ Rozwiązanie śledzenia zmian nie obsługuje obecnie następujące elementy:
 * Śledzenie plików folderów (katalogów) dla systemu Windows
 * Rekursja plików śledzenia
 * Śledzenie plików symbole wieloznaczne dla systemu Windows
+* Rekursja do śledzenia rejestru systemu Windows
 * Zmienne ścieżek
 * Systemy plików sieciowych
 * Zawartość pliku

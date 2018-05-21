@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z iQualify LMS | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i iQualify LMS."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i iQualify LMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f8a7b7fd155a6ad0df7cb1f9026b4acca2401cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 341f2175d283c08496534f3ac0d946dd8671f63c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Samouczek: Integracji Azure Active Directory z iQualify LMS
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD iQualify LMS zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do iQualify LMS (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -111,14 +111,14 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: 
     | |
     |--|--|
-    | Środowisku produkcyjnym:`https://<yourorg>.iqualify.com/`|
-    | Środowisko testowe:`https://<yourorg>.iqualify.io`|
+    | Środowisku produkcyjnym: `https://<yourorg>.iqualify.com/`|
+    | Środowisko testowe: `https://<yourorg>.iqualify.io`|
     
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: 
     | |
     |--|--|
-    | Środowisku produkcyjnym:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Środowisko testowe:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | Środowisku produkcyjnym: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Środowisko testowe: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
@@ -127,8 +127,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:
     | |
     |--|--|
-    | Środowisku produkcyjnym:`https://<yourorg>.iqualify.com/login` |
-    | Środowisko testowe:`https://<yourorg>.iqualify.io/login` |
+    | Środowisku produkcyjnym: `https://<yourorg>.iqualify.com/login` |
+    | Środowisko testowe: `https://<yourorg>.iqualify.io/login` |
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta LMS iQualify](https://www.iqualify.com) uzyskać te wartości. 
@@ -141,9 +141,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |    
-    | wyślij wiadomość e-mail | User.userPrincipalName |
-    | Imię | User.givenName |
-    | nazwisko | User.surname |
+    | wyślij wiadomość e-mail | user.userprincipalname |
+    | first_name | user.givenname |
+    | last_name | user.surname |
     | person_id | "atrybutu" | 
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
@@ -275,7 +275,7 @@ W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania 
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -287,10 +287,10 @@ Kliknij przycisk **Zaloguj się przy użyciu usługi Azure AD** button należy p
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

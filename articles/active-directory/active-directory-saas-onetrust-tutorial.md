@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integracji z oprogramowania do zarządzania prywatności OneTrust | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między OneTrust prywatności zarządzanie oprogramowaniem i Azure Active Directory."
+title: 'Samouczek: Azure Active Directory integracji z oprogramowania do zarządzania prywatności OneTrust | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między OneTrust prywatności zarządzanie oprogramowaniem i Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 89d657e754f6908a3afbb615a2158c9d7f3380f9
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 38125877a5ab17a81d6fe108e0e8c462ecd5d953
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Samouczek: Azure Active Directory integracji z oprogramowania do zarządzania OneTrust prywatności
 
@@ -30,7 +30,7 @@ Integracja oprogramowania do zarządzania prywatności OneTrust z usługą Azure
 - Umożliwia użytkownikom automatycznie pobrać zalogowane OneTrust prywatności zarządzania oprogramowaniem (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,15 +108,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny oprogramowania zarządzania prywatności OneTrust pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-onetrust-tutorial/tutorial_onetrust_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL:`https://www.onetrust.com/saml2`
+    a. W **identyfikator** tekstowym, wpisz adres URL: `https://www.onetrust.com/saml2`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.onetrust.com/auth/consumerservice`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.onetrust.com/auth/consumerservice`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Adresy URL i domeny oprogramowania zarządzania prywatności OneTrust pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-onetrust-tutorial/tutorial_onetrust_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.onetrust.com/auth/login`
+    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.onetrust.com/auth/login`
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL odpowiedzi i znakiem na adres URL, należy zaktualizować te wartości. Skontaktuj się z [OneTrust prywatności zarządzania oprogramowanie klienta z pomocą techniczną](mailto:support@onetrust.com) uzyskać te wartości. 
@@ -203,17 +203,17 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka OneTrust oprogramowanie do zarządzania prywatności w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji oprogramowania do zarządzania prywatności OneTrust.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

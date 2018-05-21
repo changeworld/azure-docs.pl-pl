@@ -9,11 +9,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/12/2018
 ms.author: heidist
-ms.openlocfilehash: 5454e659d488c84de32a15de65226bc3e1b07dfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi wyszukiwanie Azure
 
@@ -67,9 +67,9 @@ Przesunięcie fokus do warstwy standardowa najczęściej używanych **S1 S3** s�
 | Rozmiar partycji|  25 GB | 100 GB | 250 GB |  |  |  |  |
 | Indeks i indeksatora| 50 | 200 | 200 |  |  |  |  |
 
-**S1** jest typowe rozwiązaniem, gdy dedykowany zasoby stać się to konieczne. Z partycjami 25 GB dla partycji do 12, limit na usługi **S1** jest sumą 300 GB po maksymalizacji za pośrednictwem replik partycji (zobacz [przydzielić partycji i replik](search-capacity-planning.md#chart) więcej realistyczne i zrównoważonym kompozycji.)
+**S1** jest typowe rozwiązaniem, gdy dedykowany zasobów i wiele partycji stać się to konieczne. Z partycjami 25 GB dla partycji do 12, limit na usługi **S1** jest sumą 300 GB po maksymalizacji za pośrednictwem replik partycji (zobacz [przydzielić partycji i replik](search-capacity-planning.md#chart) dla bardziej zrównoważonym kompozycje.)
 
-Poza magazynu i limity innych aspektów możliwości usługi są jednolite między warstwami. Replik, które są wystąpieniami klasy aparat wyszukiwania (Obsługa operacji indeksowania i zapytań), nie różnią się zależnie od warstwy: **S1** repliki jest taka sama jak **S3** repliki. Podobnie ładunków żądań i odpowiedzi, zapytania na sekundę, przepływności i maksymalny czas wykonywania również nie różnią się zależnie od warstwy.
+Strony portalu i cennik Przenieś fokus na rozmiar partycji i magazynu, ale dla każdej warstwy obliczeniowe wszystkie możliwości (pojemności dysku, szybkości procesorów) rosną liniowo cena. **S2** repliki jest szybsza niż **S1**, i **S3** jest szybsza niż **S2**. **S3** warstw Podziel zwykle liniowa wzorzec cennik obliczeń z nieproporcjonalnie szybsze we/wy. Jeśli przewidujesz we/wy jako wąskie gardło, **S3** umożliwia IOPS większą niż niższych poziomów.
 
 **S3** i **S3 HD** obsługiwanych przez infrastrukturę identyczne dużej pojemności, ale każdy jedną osiągnie maksymalny limit na różne sposoby. **S3** celem mniejszą liczbę bardzo dużych indeksów. W efekcie jej maksymalny limit jest powiązany z zasobów (2.4 TB dla każdej usługi). **S3 HD** celem duża liczba indeksów bardzo mała. W indeksach 1000 **S3 HD** osiągnięty limit w formie ograniczenia indeksu. Jeśli jesteś **S3 HD** klienta, który wymaga więcej niż 1000 indeksów, skontaktuj się z Microsoft Support informacji na temat kontynuować.
 

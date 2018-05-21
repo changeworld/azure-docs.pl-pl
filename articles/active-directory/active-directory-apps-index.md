@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów zapisywane o różnych funkcjach związanych z aplikacji w usłudze Azure Active Directory (Azure AD).
@@ -31,7 +31,7 @@ Poniższe są dobrym punkt wyjścia dla osób chcących po prostu krótki opis f
 | Przewodnik artykułu |  |
 |:---:| --- |
 | Wprowadzenie do zarządzania aplikacji problemy rozwiązuje usługa Azure AD |[Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
-| Przegląd różnych funkcji w usłudze Azure AD powiązany z włączaniem rejestracji jednokrotnej, określające, kto ma dostęp do aplikacji i jak użytkownicy uruchomią aplikacji |[Dostęp do aplikacji i logowanie jednokrotne w usłudze Azure Active Directory](active-directory-appssoaccess-whatis.md) |
+| Przegląd różnych funkcji w usłudze Azure AD powiązany z włączaniem rejestracji jednokrotnej, określające, kto ma dostęp do aplikacji i jak użytkownicy uruchomią aplikacji |[Dostęp do aplikacji i logowanie jednokrotne w usłudze Azure Active Directory](manage-apps/what-is-single-sign-on.md) |
 | Przeglądać inne czynności związane z integracji aplikacji usługi Azure AD |[Współdziałanie z aplikacjami usługi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Włączanie rejestracji jednokrotnej do aplikacji SaaS](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Zarządzanie dostępem do aplikacji](active-directory-managing-access-to-apps.md) |
 | Techniczne wyjaśnienie, w jaki aplikacje są reprezentowane w usłudze Azure AD |[Metody i przyczyny dodawania aplikacji do usługi Azure AD](active-directory-how-applications-are-added.md) |
 
@@ -52,8 +52,8 @@ Logowania jednokrotnego pozwala użytkownikom na dostęp do różnych aplikacji 
 
 | Przewodnik artykułu |  |
 |:---:| --- |
-| Wprowadzenie do Federacji i inne typy logowania jednokrotnego |[Logowanie jednokrotne z usługą Azure AD](active-directory-appssoaccess-whatis.md) |
-| Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD z uproszczony czynności konfiguracyjnych rejestracji jednokrotnej |[Wprowadzenie do korzystania z galerii aplikacji Azure AD](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują federacyjnego](active-directory-saas-tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji Azure AD](active-directory-app-gallery-listing.md) |
+| Wprowadzenie do Federacji i inne typy logowania jednokrotnego |[Logowanie jednokrotne z usługą Azure AD](manage-apps/what-is-single-sign-on.md) |
+| Tysiące aplikacji SaaS, które są wstępnie zintegrowane z usługą Azure AD z uproszczony czynności konfiguracyjnych rejestracji jednokrotnej |[Wprowadzenie do korzystania z galerii aplikacji Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Pełną listę wstępnie zintegrowanych aplikacji, które obsługują federacyjnego](active-directory-saas-tutorial-list.md)<br /><br />[Jak dodać aplikację do galerii aplikacji Azure AD](active-directory-app-gallery-listing.md) |
 | Więcej niż 150 samouczków aplikacji o tym, jak skonfigurować logowanie jednokrotne dla aplikacji takich jak [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [usługi Google Apps](active-directory-saas-google-apps-tutorial.md), [produktu Workday](active-directory-saas-workday-tutorial.md)i o wiele więcej. |[Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md) |
 | Jak ręcznie skonfigurować i dostosować jednej konfiguracji logowania jednokrotnego |[Jak można skonfigurować federacyjne logowanie jednokrotne do aplikacji, które nie znajdują się w galerii aplikacji Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Dostosowywanie oświadczeń wydanych w tokenie SAML dla wstępnie zintegrowanych aplikacji](active-directory-saml-claims-customization.md) |
 | Podręcznik rozwiązywania problemów dotyczących aplikacji federacyjnych, które używają protokołu SAML |[Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
@@ -66,7 +66,7 @@ Aby włączyć logowanie jednokrotne do aplikacji, które nie obsługują federa
 
 | Przewodnik artykułu |  |
 |:---:| --- |
-| Wprowadzenie do jak opartego na hasłach działa usługa rejestracji Jednokrotnej i krótkie omówienie techniczne |[Oparte na hasłach logowanie jednokrotne z usługą Azure AD](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
+| Wprowadzenie do jak opartego na hasłach działa usługa rejestracji Jednokrotnej i krótkie omówienie techniczne |[Oparte na hasłach logowanie jednokrotne z usługą Azure AD](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | Podsumowanie scenariuszy związanych z konta do udostępniania i jak te problemy można rozwiązać przez usługę Azure AD |[Udostępnianie kont usługi Azure AD](active-directory-sharing-accounts.md) |
 | Automatyczna zmiana hasła dla niektórych aplikacji w regularnych odstępach czasu |[Automatyczne Przerzucanie hasła (wersja zapoznawcza)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Wdrażanie i rozwiązywanie problemów z przewodników dla używanej wersji programu Internet Explorer rozszerzenie zarządzania hasła usługi Azure AD |[Wdrażanie rozszerzenia Panel dostępu dla programu Internet Explorer przy użyciu zasad grupy](active-directory-saas-ie-group-policy.md)<br /><br />[Rozwiązywanie problemów z rozszerzeniem Panel dostępu dla programu Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
@@ -183,11 +183,11 @@ Panel dostępu usługi Azure AD jest, gdzie użytkownicy końcowi mogą uruchom 
 
 | Przewodnik artykułu |  |
 |:---:| --- |
-| Porównanie różne opcje dostępne podczas wdrażania aplikacji rejestracji jednokrotnej dla użytkowników |[Wdrażanie usługi Azure AD zintegrowanych aplikacji dla użytkowników](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
+| Porównanie różne opcje dostępne podczas wdrażania aplikacji rejestracji jednokrotnej dla użytkowników |[Wdrażanie usługi Azure AD zintegrowanych aplikacji dla użytkowników](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | Omówienie panelu dostępu i jego przenośnych MyApps równoważne |[Wprowadzenie do panelu dostępu i MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Systemu android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Jak uzyskać dostęp do aplikacji Azure AD z witryny sieci Web usługi Office 365 |[Za pomocą usługi Office 365 uruchamiania aplikacji](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Jak uzyskać dostęp do aplikacji Azure AD z aplikacjami mobilnymi usługi Intune Managed Browser |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Systemu android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
-| Jak uzyskać dostęp do aplikacji usługi Azure AD za pomocą linków bezpośrednich do zainicjowania rejestracji jednokrotnej |[Pobieranie linki bezpośrednie logowania jednokrotnego do aplikacji](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
+| Jak uzyskać dostęp do aplikacji usługi Azure AD za pomocą linków bezpośrednich do zainicjowania rejestracji jednokrotnej |[Pobieranie linki bezpośrednie logowania jednokrotnego do aplikacji](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 Panel dostępu jest dostępna dla [wszystkie wersje usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 

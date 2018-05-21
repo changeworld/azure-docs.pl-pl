@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z zarządzania zdarzeniami EthicsPoint (EPIM) | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i zarządzania incydentami EthicsPoint (EPIM)."
+title: 'Samouczek: Integracji Azure Active Directory z zarządzania zdarzeniami EthicsPoint (EPIM) | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i zarządzania incydentami EthicsPoint (EPIM).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 87525eacdb7224e7352f713028428d72d64a288e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: be400e9b51e2956557297b3a57313f08a434f96d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Samouczek: Integracji Azure Active Directory z zarządzania zdarzeniami EthicsPoint (EPIM)
 
@@ -29,7 +29,7 @@ Integracja zarządzania zdarzeniami EthicsPoint (EPIM) z usługą Azure AD zapew
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do zarządzania zdarzeniami EthicsPoint (EPIM) (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -116,9 +116,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | `https://<companyname>.navexglobal.com`|
     | `https://<companyname>.ethicspointvp.com`|
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<companyname>.navexglobal.com/adfs/services/trust`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.navexglobal.com/adfs/services/trust`
 
-    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<servername>.navexglobal.com/adfs/ls/`
+    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL odpowiedzi, identyfikator i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta zarządzania zdarzeniami EthicsPoint (EPIM)](http://www.navexglobal.com/company/contact-us) uzyskać te wartości. 
@@ -207,10 +207,10 @@ W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 Po kliknięciu kafelka zarządzania zdarzeniami EthicsPoint (EPIM) w panelu dostępu użytkownik powinien uzyskać automatycznie zalogowane do aplikacji zarządzania zdarzeniami EthicsPoint (EPIM).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

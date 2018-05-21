@@ -1,18 +1,18 @@
 ---
-title: "Schemat zdarzeń grupy zasobów Azure siatki zdarzeń"
-description: "Opisuje właściwości, które są dostępne dla zdarzenia grupy zasobów Azure zdarzeń siatki"
+title: Schemat zdarzeń grupy zasobów Azure siatki zdarzeń
+description: Opisuje właściwości, które są dostępne dla zdarzenia grupy zasobów Azure zdarzeń siatki
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 109f5af5cc1647cebee805c3141f4bc83c73bcfc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 163c32bdb8a3fdc278404b9e26fdc3097797d16c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure schematu zdarzeń siatki zdarzeń dla grupy zasobów
 
@@ -101,8 +101,8 @@ Zdarzenie ma następujące dane najwyższego poziomu:
 | eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia grupy zasobów. |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu metadanych zdarzeń. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
+| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 

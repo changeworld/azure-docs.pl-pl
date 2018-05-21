@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z Menedżera haseł Opiekun & cyfrowe magazynu | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między & cyfrowe magazynu usługi Azure Active Directory i Opiekun menedżera haseł."
+title: 'Samouczek: Integracji Azure Active Directory z Menedżera haseł Opiekun & cyfrowe magazynu | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między & cyfrowe magazynu usługi Azure Active Directory i Opiekun menedżera haseł.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 79ef85e14f36153c086d9e9ae889fa9a51d065db
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c76edea4498e32363a3a4952056e69c012bd468
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Samouczek: Integracji Azure Active Directory z Menedżera haseł Opiekun & cyfrowe magazynu
 
@@ -29,7 +29,7 @@ Integrowanie Menedżera haseł Opiekun & cyfrowe magazynu z usługą Azure AD za
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Menedżera haseł Opiekun & cyfrowe magazynu (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,11 +110,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://{SSO CONNECT SERVER}/sso-connect/saml/login`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect/saml/login`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
 
-    c. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://{SSO CONNECT SERVER}/sso-connect`
+    c. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://{SSO CONNECT SERVER}/sso-connect`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [Menedżera haseł Opiekun & cyfrowe magazynu obsługę klientów zespołu](https://keepersecurity.com/contact.html) uzyskać te wartości. 
@@ -208,10 +208,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Po kliknięciu kafelka Menedżera haseł Opiekun & cyfrowe magazynu w panelu dostępu, należy pobrać strony logowania Menedżera haseł Opiekun & cyfrowe magazynu aplikacji. Po pomyślnym uwierzytelnieniu należy pobrać aplikację. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

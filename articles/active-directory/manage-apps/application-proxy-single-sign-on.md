@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d1c9f4dd8504c2409663cb87b0c0d56164229ed2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1d31b11c3307cc2e54b91e68e1e1a3811ae2ef96
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>W jaki sposób serwera Proxy aplikacji usługi Azure AD zapewnia rejestrację jednokrotną
 
@@ -60,7 +60,7 @@ Aby uzyskać informacji o ustawieniach opartego na hasłach logowania, zobacz [h
 
 Jeśli masz już jedno rozwiązanie logowania jednokrotnego dla tożsamości użytkownika lokalnego, wybierz **połączonego logowania jednokrotnego**. Ta opcja umożliwia usłudze Azure Active Directory korzystać z istniejących rozwiązań logowania jednokrotnego, ale nadal daje użytkownikom zdalny dostęp do aplikacji. 
 
-Informacje o połączonego logowania jednokrotnego (wcześniej znany jako istniejących logowania jednokrotnego), zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Informacje o połączonego logowania jednokrotnego (wcześniej znany jako istniejących logowania jednokrotnego), zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="integrated-windows-authentication"></a>Zintegrowane uwierzytelnianie systemu Windows
 

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 43acf33ec7787378595ad62540a868100bf587f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12e2f0f458d491235a75aab7e3e5e474edf50e4b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-suite/iot-suite-connecting-devices.md)
@@ -21,10 +21,10 @@ ms.lasthandoff: 05/07/2018
 > * [Node.js na urządzeniu Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-node.md)
 > * [C na urządzeniu Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-W tym samouczku zaimplementowaniem **Chłodnica** urządzenia, które wysyła następujące dane telemetryczne do monitorowania zdalnego [akcelerator rozwiązań](../articles/iot-suite/iot-suite-what-are-solution-accelerators.md):
+W tym samouczku zaimplementowaniem **Chłodnica** urządzenia, które wysyła następujące dane telemetryczne do monitorowania zdalnego [akcelerator rozwiązań](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md):
 
 * Temperatura
-* wykorzystania
+* Ciśnienie
 * Wilgotność
 
 Dla uproszczenia kodu generuje przykładowe wartości telemetrii **Chłodnica**. Można rozszerzyć próbki przez połączenie czujników rzeczywistego urządzenia i wysyła rzeczywistych danych telemetrycznych.
@@ -43,7 +43,7 @@ Przed przystąpieniem do napisania kodu dla danego urządzenia, wdrożyć zdalne
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Wdrażanie zdalne monitorowania akcelerator rozwiązań
 
-**Chłodnica** urządzenia, możesz utworzyć w tym samouczku wysyłania danych do wystąpienia [monitorowania zdalnego](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) akcelerator rozwiązań. Jeśli nie zostało już wstępnie skonfigurowane zdalnego monitorowania akcelerator rozwiązań w konta platformy Azure, zobacz [wdrożyć zdalnego monitorowania akcelerator rozwiązań](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
+**Chłodnica** urządzenia, możesz utworzyć w tym samouczku wysyłania danych do wystąpienia [monitorowania zdalnego](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) akcelerator rozwiązań. Jeśli nie zostało już wstępnie skonfigurowane zdalnego monitorowania akcelerator rozwiązań w konta platformy Azure, zobacz [wdrożyć zdalnego monitorowania akcelerator rozwiązań](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 Podczas procesu wdrażania dla zdalnego rozwiązanie monitorowania zakończy, kliknij przycisk **uruchamianie** aby otworzyć pulpit nawigacyjny rozwiązania w przeglądarce.
 

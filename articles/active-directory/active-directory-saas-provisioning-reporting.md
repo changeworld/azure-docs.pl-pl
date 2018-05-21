@@ -1,8 +1,8 @@
 ---
-title: "Raporty dotyczące inicjowania obsługi konta użytkowników usługi Azure Active Directory do aplikacji SaaS | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak sprawdzić stan inicjowania obsługi zadania konta użytkowników i jak rozwiązywać problemy z obsługi poszczególnych użytkowników."
+title: Raporty dotyczące inicjowania obsługi konta użytkowników usługi Azure Active Directory do aplikacji SaaS | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak sprawdzić stan inicjowania obsługi zadania konta użytkowników i jak rozwiązywać problemy z obsługi poszczególnych użytkowników.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: d2ec1b25e39717fb2411d35e3b0a9f5eb3a977be
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1527e8fe28d395a77d7b3c1535e40fe59df1baba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowania na inicjowanie obsługi konta użytkowników
 
@@ -27,11 +27,11 @@ Usługa Azure Active Directory obejmuje [konta użytkownika usługi inicjowania 
 
 W tym artykule opisano sposób sprawdzania stanu zadania obsługi, gdy zostały skonfigurowane i jak rozwiązywać problemy z inicjowania obsługi poszczególnych użytkowników i grup.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Łączniki inicjowania obsługi administracyjnej są głównie Konfigurowanie i skonfigurować za pomocą [portalu zarządzania Azure](https://portal.azure.com), wykonując [podane dokumentacji](active-directory-saas-tutorial-list.md) dla aplikacji, których inicjowanie obsługi konta użytkownika jest potrzebne. Gdy skonfigurowana i uruchomiona, inicjowania obsługi administracyjnej zadania dla aplikacji mogą być zgłaszane przy użyciu jednej z dwóch metod:
 
-* **Portal zarządzania platformy Azure** — w tym artykule opisano głównie podczas pobierania informacji w raporcie z [portalu zarządzania Azure](https://portal.azure.com), który zapewnia zarówno inicjowania obsługi administracyjnej raport z podsumowaniem jak i inicjowania obsługi administracyjnej szczegółowe dzienniki dla danej aplikacji inspekcji.
+* **Portal zarządzania Azure** — w tym artykule opisano głównie podczas pobierania informacji w raporcie z [portalu zarządzania Azure](https://portal.azure.com), zapewniające zarówno inicjowania obsługi administracyjnej raport z podsumowaniem jak i szczegółowe inspekcji inicjowania obsługi administracyjnej Dzienniki dla danej aplikacji.
 
 * **Interfejs API inspekcji** — Azure Active Directory oferuje również inspekcji interfejsu API, który umożliwia pobieranie programowe szczegółowe dzienniki inspekcji inicjowania obsługi administracyjnej. Zobacz [inspekcji usługi Azure Active Directory dokumentacja interfejsu API](active-directory-reporting-api-audit-reference.md) dokumentacji dotyczące korzystania z tego interfejsu API. Gdy w tym artykule nie opisano w szczególności sposób użycia interfejsu API, jego szczegóły typy obsługi zdarzeń, które są rejestrowane w dzienniku inspekcji.
 
@@ -133,4 +133,4 @@ Oparta na scenariuszu wskazówki na temat rozwiązywania problemów inicjowania 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacja konta użytkowników dla aplikacji przedsiębiorstwa](active-directory-enterprise-apps-manage-provisioning.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)

@@ -1,6 +1,7 @@
 - name: Azure Blockchain Workbench (publiczna wersja zapoznawcza)
   href: index.yml
 - name: Omówienie
+  expanded: true
   items:
     - name: Informacje o aplikacji Azure Blockchain Workbench
       href: blockchain-workbench-overview.md
@@ -11,13 +12,14 @@
     - name: Wzorce integracji
       href: blockchain-workbench-integration-patterns.md
 - name: Przewodniki z instrukcjami
+  expanded: true
   items:
     - name: Wdrażanie aplikacji Workbench
       href: blockchain-workbench-deploy.md
-    - name: Zarządzaj użytkownikami aplikacji Workbench
-      href: blockchain-workbench-manage-users.md
     - name: Tworzenie aplikacji łańcucha bloków
       href: blockchain-workbench-create-app.md
+    - name: Zarządzaj użytkownikami aplikacji Workbench
+      href: blockchain-workbench-manage-users.md
     - name: Korzystanie z aplikacji łańcucha bloków
       href: blockchain-workbench-use.md
     - name: Korzystanie z interfejsu API środowiska roboczego

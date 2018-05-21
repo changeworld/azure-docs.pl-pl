@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Skillport | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Skillport."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Skillport.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b14c40b402ae1877f6bfb267c137c9a051b8225
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 269c5aedb2e990a83358605445d19d9d61261f3b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Samouczek: Integracji Azure Active Directory z Skillport
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Skillport zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Skillport (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -112,21 +112,21 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. W **adres URL logowania** tekstowym, wpisz adres URL:
       
-      Europa centrum danych:`https://adfs.skillport.eu`
+      Europa centrum danych: `https://adfs.skillport.eu`
    
-      Centrum danych Stanów Zjednoczonych:`https://sso.skillport.com`
+      Centrum danych Stanów Zjednoczonych: `https://sso.skillport.com`
 
     b. W **identyfikator** tekstowym, wpisz adres URL:
       
-      Europa centrum danych:`http://adfs.skillport.eu/adfs/services/trust`
+      Europa centrum danych: `http://adfs.skillport.eu/adfs/services/trust`
    
-      Centrum danych Stanów Zjednoczonych:`https://sso.skillport.com`
+      Centrum danych Stanów Zjednoczonych: `https://sso.skillport.com`
    
     c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL:
     
-      Europa centrum danych:` https://adfs.skillport.eu/adfs/ls/`
+      Europa centrum danych: ` https://adfs.skillport.eu/adfs/ls/`
     
-      Centrum danych Stanów Zjednoczonych:`https://sso.skillport.com/sp/ACS.saml2`
+      Centrum danych Stanów Zjednoczonych: `https://sso.skillport.com/sp/ACS.saml2`
  
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
@@ -210,10 +210,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Skillport w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Skillport.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

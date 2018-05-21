@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: e46c2ad30b578b0642ee7b541ea003ed67c6a7f5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania odpowiedzi na pytania dotyczące Centrum zabezpieczeń Azure to usługa, która pomaga zapobiec, wykrywania i reagowania na zagrożenia lepszy wgląd w i kontroli w zakresie bezpieczeństwa zasobów na platformie Microsoft Azure.
@@ -51,16 +51,18 @@ Centrum zabezpieczeń ocenia konfiguracji zasobów, aby zidentyfikować problemy
 Zobacz [uprawnienia w Centrum zabezpieczeń Azure](security-center-permissions.md) Aby dowiedzieć się więcej o rolach i akcji dozwolonych w Centrum zabezpieczeń.
 
 ## <a name="data-collection"></a>Zbieranie danych
-Centrum zabezpieczeń zbiera dane z maszyn wirtualnych do oceny stanu zabezpieczeń, podaj zalecenia dotyczące zabezpieczeń i alertów na zagrożenia. Jeśli najpierw przejść do Centrum zabezpieczeń zbieranie danych jest włączone na wszystkich maszynach wirtualnych w ramach subskrypcji. Można również włączyć zbieranie danych w ramach zasad Centrum zabezpieczeń.
+Centrum zabezpieczeń zbiera dane z maszyn wirtualnych platformy Azure (maszyny wirtualne) i komputerów z systemem innym niż Azure monitorowanie luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy.
 
 ### <a name="how-do-i-disable-data-collection"></a>Jak wyłączyć zbieranie danych?
-Jeśli używasz warstwę bezpłatna Centrum zabezpieczeń Azure, możesz wyłączyć zbieranie danych z maszyn wirtualnych w dowolnym momencie. Zbieranie danych jest wymagane dla subskrypcji w warstwie standardowa. Możesz wyłączyć zbieranie danych w ramach subskrypcji w zasadach zabezpieczeń. ([Zaloguj się do portalu Azure](https://portal.azure.com), wybierz pozycję **Przeglądaj**, wybierz pozycję **Centrum zabezpieczeń**i wybierz **zasad**.)  Po wybraniu subskrypcji otwiera nowy blok i udostępnia opcję wyłączania **zbierania danych**.
+Automatyczne inicjowanie obsługi administracyjnej jest domyślnie wyłączone. Możesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej z zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. Automatyczne udostępnianie zdecydowanie zalecane jest aby uzyskać alerty zabezpieczeń i zaleceń dotyczących aktualizacji systemu, luk w zabezpieczeniach systemu operacyjnego i programu endpoint protection.
+
+Aby wyłączyć zbieranie danych [Zaloguj się do portalu Azure](https://portal.azure.com), wybierz pozycję **Przeglądaj**, wybierz pozycję **Centrum zabezpieczeń**i wybierz **wybierz zasady**. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację. Po wybraniu subskrypcji **zasady zabezpieczeń — zbieranie danych** otwiera. W obszarze **automatycznego inicjowania obsługi administracyjnej**, wybierz pozycję **poza**.
 
 ### <a name="how-do-i-enable-data-collection"></a>Jak włączyć zbieranie danych?
-Zbieranie danych można włączyć dla Twojej subskrypcji platformy Azure w zasadach zabezpieczeń. Aby włączyć zbieranie danych. [Zaloguj się do portalu Azure](https://portal.azure.com), wybierz pozycję **Przeglądaj**, wybierz pozycję **Centrum zabezpieczeń**i wybierz **zasad**. Ustaw **zbierania danych** do **na**.
+Zbieranie danych można włączyć dla Twojej subskrypcji platformy Azure w zasadach zabezpieczeń. Aby włączyć zbieranie danych. [Zaloguj się do portalu Azure](https://portal.azure.com), wybierz pozycję **Przeglądaj**, wybierz pozycję **Centrum zabezpieczeń**i wybierz **zasady zabezpieczeń**. Wybierz subskrypcję, która ma zostać włączone automatyczne udostępnianie. Po wybraniu subskrypcji **zasady zabezpieczeń — zbieranie danych** otwiera. W obszarze **automatycznego inicjowania obsługi administracyjnej**, wybierz pozycję **na**.
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Co się stanie po włączeniu funkcji zbierania danych?
-Po włączeniu funkcji zbierania danych programu Microsoft Monitoring Agent jest udostępniany automatycznie na wszystkich istniejących i nowych obsługiwanych maszyn wirtualnych, które są wdrażane w ramach subskrypcji.
+Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się, ale ręcznej instalacji agenta jest również dostępna. [Dowiedz się, jak zainstalować rozszerzenie programu Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 Agent umożliwia zdarzeń tworzenia procesu 4688 i *CommandLine* pole wewnątrz zdarzenia 4688. Nowe procesy utworzone na maszynie Wirtualnej są rejestrowane w dzienniku zdarzeń i monitorowane przez Centrum zabezpieczeń wykrywania usługi. Aby uzyskać informacje dotyczące szczegółów zarejestrowanych dla każdego nowego procesu, zobacz [pola Opis 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent również zbiera dane zdarzeń 4688 utworzone na maszynie Wirtualnej i przechowuje je w obszarze wyszukiwania.
 

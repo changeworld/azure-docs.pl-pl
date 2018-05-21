@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z chmurą Lifesize | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i w chmurze Lifesize."
+title: 'Samouczek: Integracji Azure Active Directory z chmurą Lifesize | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i w chmurze Lifesize.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae2c59d672c00b466d13aad1d304f4669a38c7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 84af3a9b726d990e585e2b12b1c0a6f4609fcb7e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Samouczek: Integracji Azure Active Directory z chmurą Lifesize
 
@@ -29,7 +29,7 @@ Integrowanie Lifesize chmurze z usługą Azure AD zapewnia następujące korzyś
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do chmury Lifesize (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,16 +110,16 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://login.lifesizecloud.com/ls/?acs`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://login.lifesizecloud.com/<companyname>`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://login.lifesizecloud.com/<companyname>`
 
      
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, wykonaj następujące kroki:    
    
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
 
-    W **przekazywania stanu** tekstowym, wpisz adres URL, używając następującego wzorca:`https://webapp.lifesizecloud.com/?ent=<identifier>`
+    W **przekazywania stanu** tekstowym, wpisz adres URL, używając następującego wzorca: `https://webapp.lifesizecloud.com/?ent=<identifier>`
    
    > [!NOTE] 
    >Należy pamiętać, że nie są one rzeczywiste wartości. należy zaktualizować te wartości z rzeczywisty adres URL logowania, stan przekazywania i identyfikator. Skontaktuj się z [zespołem pomocy technicznej klienta chmury Lifesize](https://www.lifesize.com/support) uzyskać adres URL logowania, a wartości identyfikatora i można uzyskać stanu przekazywania wartości z konfiguracji logowania jednokrotnego, który znajduje się w dalszej części tego samouczka.
@@ -248,10 +248,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Lifesize chmury w panelu dostępu, należy pobrać stronę logowania w chmurze Lifesize aplikacji.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

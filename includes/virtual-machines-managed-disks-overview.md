@@ -47,7 +47,7 @@ Spójrzmy bliższe spojrzenie na te.
 **Typ magazynu:** zarządzane dysków oferuje 2 warstwy wydajności: [Premium](../articles/virtual-machines/windows/premium-storage.md) (oparte na dysk SSD) i [standardowe](../articles/virtual-machines/windows/standard-storage.md) (oparte na dysk twardy). Rozliczenia dysków zarządzanych zależy od tego, jakiego typu magazynu wybranego dysku.
 
 
-**Rozmiar dysku**: rozliczeń dla dysków zarządzanych zależy od elastycznie rozmiaru dysku. Azure mapuje elastycznie rozmiar (zaokrąglona w górę) do najbliższej opcja dysków zarządzanych w określonych w poniższych tabelach. Każdy dysk zarządzany mapuje jedną z obsługiwanych rozmiarów elastycznie i jest on rozliczany odpowiednio. Na przykład jeśli tworzenie standardowych dysków zarządzanych i określ elastycznie rozmiaru 200 GB, są rozliczane zgodnie z harmonogramem cennik typ dysku S20 w warstwie.
+**Rozmiar dysku**: rozliczeń dla dysków zarządzanych zależy od elastycznie rozmiaru dysku. Azure mapuje elastycznie rozmiar (zaokrąglona w górę) do najbliższej opcja dysków zarządzanych w określonych w poniższych tabelach. Każdy dysk zarządzany mapuje jedną z obsługiwanych rozmiarów elastycznie i jest on rozliczany odpowiednio. Na przykład jeśli tworzenie standardowych dysków zarządzanych i określ elastycznie rozmiaru 200 GB, są rozliczane zgodnie z harmonogramem cennik typu S15 dysku.
 
 W tym miejscu są dostępne dla dysków zarządzanych w warstwie premium rozmiary dysków:
 
@@ -58,9 +58,9 @@ W tym miejscu są dostępne dla dysków zarządzanych w warstwie premium rozmiar
 
 W tym miejscu są dostępne dla standardowych dysków zarządzanych rozmiary dysków:
 
-| **Standard zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Rozmiar dysku        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 giB (1 TiB) | GiB 2048 (2 TiB) | GiB 4095 (4 TiB) | 
+| **Standard zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | GiB 2048 (2 TiB) | GiB 4095 (4 TiB) | 
 
 
 **Liczba transakcji**: rozliczenie jest liczba transakcji, które można wykonywać na standardowych dysków zarządzanych. Nie ma żadnych kosztów transakcji dla dysków zarządzanych w warstwie premium.

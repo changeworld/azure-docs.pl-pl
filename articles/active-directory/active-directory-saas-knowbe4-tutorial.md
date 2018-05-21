@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory szkolenie świadomości bezpieczeństwa KnowBe4 | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń."
+title: 'Samouczek: Integracji Azure Active Directory szkolenie świadomości bezpieczeństwa KnowBe4 | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 8153c0824de2cda61fecf1da822c1ffa70d8f0d0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cfbcd48b1cb49f2e042ab0d4afa71d1d20226a46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Samouczek: Integracji Azure Active Directory szkolenie świadomości bezpieczeństwa KnowBe4
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD świadomości szkolenia w zakresie zabezpieczeń 
 - Umożliwia użytkownikom automatycznie pobrać podpisany w zakresie świadomości bezpieczeństwa KnowBe4 (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,12 +108,12 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny szkolenia pogłębianie wiedzy na temat zabezpieczeń KnowBe4 pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE] 
     > Zaloguj się na wartość adresu URL nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta szkolenia świadomości bezpieczeństwa KnowBe4](mailto:support@KnowBe4.com) aby zyskać tę wartość. 
 
-    b. W **identyfikator** tekstowym, wpisz wartość ciągu:`KnowBe4`
+    b. W **identyfikator** tekstowym, wpisz wartość ciągu: `KnowBe4`
 
     > [!NOTE]
     >To jest rozróżniana wielkość liter
@@ -207,16 +207,16 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
   
 Po kliknięciu kafelka świadomości szkolenia w zakresie zabezpieczeń KnowBe4 w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do szkolenia w zakresie rozpoznawania KnowBe4 zabezpieczeń aplikacji. 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

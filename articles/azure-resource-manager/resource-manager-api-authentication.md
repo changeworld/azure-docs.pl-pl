@@ -1,6 +1,6 @@
 ---
-title: "Azure uwierzytelniania usługi Active Directory i usługi Resource Manager | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera do uwierzytelniania przy użyciu interfejsu API usługi Azure Resource Manager i usługi Azure Active Directory dla integracji aplikacji z innych subskrypcji platformy Azure."
+title: Azure uwierzytelniania usługi Active Directory i usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera do uwierzytelniania przy użyciu interfejsu API usługi Azure Resource Manager i usługi Azure Active Directory dla integracji aplikacji z innych subskrypcji platformy Azure.
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
-ms.translationtype: MT
+ms.author: dugill
+ms.openlocfilehash: 1a526663b0280bd1bb7739ccc9a4ebf78882754d
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Użyj Menedżera zasobów uwierzytelniania interfejsu API do dostępu do subskrypcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -29,7 +29,7 @@ Aplikację można uzyskać dostęp do interfejsów API Menedżera zasobów kilka
 1. **Użytkownik i uzyskania dostępu do aplikacji**: dla aplikacji, które uzyskują dostęp do zasobów w imieniu zalogowanego użytkownika. Ta metoda działa w przypadku aplikacji, takich jak aplikacje sieci web i narzędzia wiersza polecenia, które zajmują się tylko "interakcyjne Zarządzanie" zasobów platformy Azure.
 2. **Dostęp tylko do aplikacji**: dla aplikacji uruchamianych demon usługi i zaplanowanych zadań. Tożsamości aplikacji otrzymuje bezpośredni dostęp do zasobów. Ta metoda działa w przypadku aplikacji wymagających długoterminowej bezobsługowe dostępu (Instalacja nienadzorowana) na platformie Azure.
 
-Ten artykuł zawiera instrukcje krok po kroku, aby utworzyć aplikację, która jest stosowana w obu tych metod autoryzacji. Widoczny jest sposób wykonania poszczególnych kroków z interfejsu API REST lub C#. Kompletna aplikacja platformy ASP.NET MVC jest dostępna na [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+Ten artykuł zawiera instrukcje krok po kroku, aby utworzyć aplikację, która jest stosowana w obu tych metod autoryzacji. Widoczny jest sposób wykonania poszczególnych kroków z interfejsu API REST lub C#. Kompletna aplikacja platformy ASP.NET MVC jest dostępna na [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
 ## <a name="what-the-web-app-does"></a>Co to jest aplikacja sieci web
 Aplikacja sieci web:
@@ -65,7 +65,7 @@ Zarządzanie subskrypcjami połączone:
 
 ![Łączenie subskrypcji](./media/resource-manager-api-authentication/sample-ux-7.png)
 
-## <a name="register-application"></a>Zarejestrować aplikację
+## <a name="register-application"></a>Zarejestruj aplikację
 Przed rozpoczęciem kodowania, należy zarejestrować aplikacji sieci web z usługi Azure Active Directory (AD). Rejestracja aplikacji tworzy centralnej tożsamości aplikacji w usłudze Azure AD. Przechowuje podstawowe informacje o aplikacji, takich jak identyfikator klienta OAuth, adresy URL odpowiedzi i poświadczenia, których aplikacja korzysta z uwierzytelniania i dostępu do interfejsów API usługi Azure Resource Manager. Rejestracja aplikacji rejestruje także różne delegowane uprawnienia, których aplikacja wymaga podczas uzyskiwania dostępu do APIs firmy Microsoft w imieniu użytkownika.
 
 Ponieważ aplikacja uzyskuje dostęp do innych subskrypcji, należy go skonfigurować jako aplikacji wielodostępnej. Aby przekazać sprawdzania poprawności, podaj domeny skojarzonych z usługą Azure Active Directory. Aby wyświetlić domeny skojarzone z usługą Azure Active Directory, zaloguj się do portalu.
@@ -224,7 +224,7 @@ Masz tylko token dostępu usługi Azure Resource Manager — należy uzyskać no
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Uzyskaj token dostępu tylko do aplikacji interfejsu API Azure AD Graph
-Aby uwierzytelniać swoją aplikację i uzyskać token do interfejsu API Azure AD Graph, wysłać żądania tokenu przepływu OAuth2.0 przyznania poświadczeń klienta do punktu końcowego tokenu usługi Azure AD (**https://login.microsoftonline.com/ {directory_domain_name} / OAuth2/Token**).
+Aby uwierzytelniać swoją aplikację i uzyskać token do interfejsu API Azure AD Graph, wysłać żądania tokenu przepływu OAuth2.0 przyznania poświadczeń klienta do punktu końcowego tokenu usługi Azure AD (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metody przykładowej aplikacji ASP.net MVC pobiera dostęp tylko do aplikacji token dla interfejsu API programu Graph dla platformy .NET przy użyciu biblioteki uwierzytelniania usługi Active Directory.
 
@@ -294,7 +294,7 @@ Nie trzeba wywołać tego interfejsu API w sposób ciągły. Po określeniu dobr
 
 Poniżej przedstawiono identyfikatory często używane wbudowane role:
 
-| Rola | IDENTYFIKATOR GUID |
+| Rola | Identyfikator GUID |
 | --- | --- |
 | Czytelnik |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | Współautor |b24988ac-6180-42a0-ab88-20f7382dd24c |

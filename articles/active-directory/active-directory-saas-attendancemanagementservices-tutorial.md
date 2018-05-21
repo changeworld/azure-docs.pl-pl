@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integrację z usługami zarządzania obecności | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między obecności usług zarządzania i usługą Azure Active Directory."
+title: 'Samouczek: Azure Active Directory integrację z usługami zarządzania obecności | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między obecności usług zarządzania i usługą Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fcbbabe80c3ff4b5a18904637cb227499da6829
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: abf882d7b06083080ad5cb3c2a20390a76a48139
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Samouczek: Azure Active Directory integrację z usługami zarządzania obecności
 
@@ -30,7 +30,7 @@ Integrowanie usług zarządzania obecności z usługą Azure AD zapewnia następ
 - Umożliwia użytkownikom automatycznie pobrać podpisany w przypadku obecności usługi zarządzania (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -203,7 +203,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do usługi zarzą
 
     ![Dodawanie pracownika](./media/active-directory-saas-attendancemanagementservices-tutorial/user4.png)
 
-    a. W **OBCiD** tekstowym, wpisz adres e-mail użytkownika, takich jak  **BrittaSimon@contoso.com** .
+    a. W **OBCiD** tekstowym, wpisz adres e-mail użytkownika, takich jak **BrittaSimon@contoso.com**.
 
     b. W **hasło** tekstowym, wpisz hasło użytkownika.
 
@@ -240,7 +240,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -250,7 +250,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

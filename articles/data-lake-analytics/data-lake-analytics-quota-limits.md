@@ -12,11 +12,11 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 4334a438f09d7c18912262e9c70bfffbcdeb1d9e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Limity przydziału usługi Azure Data Lake Analytics
 
@@ -32,29 +32,33 @@ Jeśli chcesz wykracza poza ten limit, możesz spróbować te opcje:
 * Wybierz inny region, jeśli jest to odpowiednie
 * Skontaktuj się z pomocą techniczną platformy Azure przez [otwarcie biletu pomocy technicznej](#increase-maximum-quota-limits) Aby zażądać zwiększenia limitu przydziału.
 
-## <a name="adla-account-limits"></a>Limity konta ADLA
+## <a name="default-adla-account-limits"></a>Domyślne limity konta ADLA
 
-**Maksymalna liczba jednostek Analytics (AUs) dla konta:** 250
+**Maksymalna liczba jednostek Analytics (AUs) dla konta:** 32
 
 Jest to maksymalna liczba AUs, które można uruchomić jednocześnie w ramach Twojego konta. Jeśli całkowita liczba uruchamianie AUs we wszystkich zadań przekracza ten limit, automatycznie są kolejkowane zadania nowsza. Na przykład:
 
-* Jeśli masz tylko jedno zadanie uruchomione z 250 AUs, podczas przesyłania drugiej zadania go będzie czekać w kolejce zadań dopiero po zakończeniu pierwszego zadania.
-* Jeśli masz pięć zadania uruchomione i każdego używa 50 AUs, podczas przesyłania szóstego zadanie, które wymaga 20 AUs oczekuje w kolejce zadań, dopóki istnieją 20 AUs dostępne.
+* Jeśli masz tylko jedno zadanie uruchomione z 32 AUs, podczas przesyłania drugiej zadania go będzie czekać w kolejce zadań dopiero po zakończeniu pierwszego zadania.
+* Jeśli masz już cztery zadania uruchomione i każdego używa 8 AUs, podczas przesyłania piątej zadanie, które wymaga 8 AUs oczekuje w kolejce zadań, dopóki istnieją 8 AUs dostępne.
+
+**Maksymalna liczba jednostek Analytics (AUs) na zadanie:** 32
+
+To jest domyślna maksymalna liczba AUs, które można przypisać każdego poszczególnych zadań w ramach Twojego konta. Zadania, które są przypisane przekracza ten limit zostaną odrzucone, chyba że obiekt przesyłający zależy od zasad obliczeń (limit przesyłania zadania), co umożliwia im więcej AUs na zadanie. Górna granica ta wartość jest limit Australia dla konta.
 
 **Maksymalna liczba jednoczesnych zadań U-SQL dla danego konta:** 20
 
 Jest to maksymalna liczba zadań, które można uruchomić jednocześnie w ramach Twojego konta. Powyżej tej wartości automatycznie są kolejkowane zadania nowsza.
 
-## <a name="adjust-adla-quota-limits-per-account"></a>Dostosuj ADLA limity przydziału dla konta
+## <a name="adjust-adla-account-limits"></a>Dostosuj limity konta ADLA
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz istniejące konto ADLA.
 3. Kliknij pozycję **Właściwości**.
-4. Dostosuj **równoległości** i **równoczesnych zadań** w zależności od potrzeb.
-
-    ![Strona portalu usługi Azure Data Lake Analytics](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)
+4. Dostosuj wartości dla **maksymalna AUs**, **maksymalna liczba uruchomionych zadań**, i **zadania przesyłania limity** w zależności od potrzeb.
 
 ## <a name="increase-maximum-quota-limits"></a>Zwiększ limit przydziału maksymalnej
+
+Więcej informacji na temat limitów Azure można znaleźć w [specyficzne dla usługi Azure ogranicza dokumentacji](../azure-subscription-service-limits.md#data-lake-analytics-limits).
 
 1. W portalu Azure, otwórz żądanie pomocy technicznej.
 

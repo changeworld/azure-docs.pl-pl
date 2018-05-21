@@ -1,13 +1,13 @@
 ---
-title: "Powiązania centra powiadomień dla usługi Azure Functions"
-description: "Zrozumienie, jak używać Centrum powiadomień Azure powiązania w usługi Azure Functions."
+title: Powiązania centra powiadomień dla usługi Azure Functions
+description: Zrozumienie, jak używać Centrum powiadomień Azure powiązania w usługi Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkcje usługi Azure, funkcje, przetwarzania zdarzeń, dynamiczne obliczeń niekorzystającą architektury"
+editor: ''
+tags: ''
+keywords: funkcje usługi Azure, funkcje, przetwarzania zdarzeń, dynamiczne obliczeń niekorzystającą architektury
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 292c8295cbc2705c12365a20cee0e80b6da639a5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 572bf9d783e1018b835b47c6c63fff1ce69659e9
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Centra powiadomień w danych wyjściowych wiązanie dla usługi Azure Functions
 
@@ -34,6 +34,8 @@ Centra powiadomień Azure musi być skonfigurowana dla platformy powiadomienia u
 Powiązania usługi Notification Hubs znajdują się w [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) pakietu NuGet. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example---template"></a>Przykład — szablonu
 
@@ -282,8 +284,8 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Typ** |Nie dotyczy| Musi być równa "notificationHub". |
-|**Kierunek** |Nie dotyczy| Należy wybrać opcję "out". | 
+|**type** |Nie dotyczy| Musi być równa "notificationHub". |
+|**direction** |Nie dotyczy| Należy wybrać opcję "out". | 
 |**Nazwa** |Nie dotyczy| Nazwa zmiennej używane w kodzie funkcja komunikat Centrum powiadomień. |
 |**tagExpression** |**TagExpression** | Wyrażeń tagów umożliwiają określenie, czy do zestawu urządzeń, które zostały zarejestrowane, aby otrzymywać powiadomienia, które odpowiada wyrażeniu tagu można dostarczyć powiadomień.  Aby uzyskać więcej informacji, zobacz [wyrażenia routingu i tagu](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Nazwa zasobu Centrum powiadomień, w portalu Azure. |

@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z CloudPassage | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i CloudPassage."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i CloudPassage.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: b9d3329547b10d67c175c349fc643289823a3d81
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 412e2c46ba8dae19892b63899abbfc48ca6a82a8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Samouczek: Integracji Azure Active Directory z CloudPassage
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD CloudPassage zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do CloudPassage (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://portal.cloudpassage.com/saml/init/accountid`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://portal.cloudpassage.com/saml/init/accountid`
 
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://portal.cloudpassage.com/saml/consume/accountid`. Możesz też uzyskać wartość tego atrybutu, klikając **dokumentacji ustawienia logowania jednokrotnego** w **ustawień rejestracji jednokrotnej** sekcji portalem CloudPassage.
 
@@ -131,8 +131,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |
-    | Imię |User.givenName |
-    | nazwisko |User.surname |
+    | Imię |user.givenname |
+    | nazwisko |user.surname |
     | wyślij wiadomość e-mail |User.mail |
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
@@ -243,7 +243,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w CloudPass
   
     d. Jako **typu dostępu**, wybierz pozycję **Włącz dostęp do portalu Halo**.
   
-    e. Kliknij pozycję **Dodaj**.
+    e. Kliknij pozycję **Add** (Dodaj).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
 
@@ -281,10 +281,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka CloudPassage w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji CloudPassage.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

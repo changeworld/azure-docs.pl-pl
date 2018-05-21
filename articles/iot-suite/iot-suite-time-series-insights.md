@@ -9,11 +9,11 @@ ms.author: philmea
 ms.date: 04/29/2018
 ms.topic: article
 ms.service: iot-suite
-ms.openlocfilehash: 12248a719d7d30c9b83be9c72539e0a81f19fb7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 09a54e9cb1c6f063e878fd42c42699a906b60c7b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Wizualizuj zdalnych danych monitorowania z informacjami dotyczącymi serii czasu
 
@@ -23,7 +23,7 @@ Operator może być konieczne dalsze rozszerzanie poza danych pole wizualizacji 
 
 Aby ukończyć ten jak to zrobić, potrzebne następujące elementy:
 
-* [Wdrażanie zdalne monitorowanie wstępnie skonfigurowane rozwiązanie](iot-suite-remote-monitoring-deploy.md)
+* [Wdrażanie zdalne monitorowanie wstępnie skonfigurowane rozwiązanie](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Tworzenie grupy odbiorców
 
@@ -88,10 +88,10 @@ Utwórz nowe źródło zdarzeń nawiązać połączenia z Centrum IoT. Upewnij s
     | Element źródłowy | **IoT Hub** |
     | Opcja importu | **Użyj Centrum IoT z dostępnych subskrypcji** |
     | Identyfikator subskrypcji | Wybierz subskrypcję platformy Azure w listy rozwijanej. |
-    | Nazwa centrum IoT | **contosorma57a6**. Użyj nazwy Centrum IoT z rozwiązania do monitorowania zdalnego. |
-    | Nazwa zasad centrum IoT | **iothubowner** upewnij się, używane są zasady właściciela. |
-    | Klucz zasad centrum IoT | To pole jest wypełniane automatycznie. |
-    | Grupa konsumentów centrum IoT | **timeseriesinsights** |
+    | Nazwa centrum iot | **contosorma57a6**. Użyj nazwy Centrum IoT z rozwiązania do monitorowania zdalnego. |
+    | Nazwa zasad Centrum iot | **iothubowner** upewnij się, używane są zasady właściciela. |
+    | Klucz zasad Centrum iot | To pole jest wypełniane automatycznie. |
+    | Grupy odbiorców Centrum iot | **timeseriesinsights** |
     | Format serializacji zdarzeń | **JSON**     | Nazwa właściwości sygnatury czasowej | Pozostaw puste |
 
     ![Tworzenie źródła zdarzeń](media/iot-suite-time-series-insights/time-series-insights-event-source-create.png)

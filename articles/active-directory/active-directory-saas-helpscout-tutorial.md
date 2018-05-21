@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z pomocy Scout | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Scout pomocy."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Scout pomocy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 5608df300ad3b5d3fd42bd904a52d43d115ebf53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 596a1ba27516755e586d88ab56a20a1daed63fc2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Samouczek: Integracji Azure Active Directory z Scout pomocy
 
@@ -30,7 +30,7 @@ Integrowanie pomocy Scout z usługą Azure AD zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do pomocy Scout (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -105,9 +105,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Scout pojedynczego logowania jednokrotnego informacje pomocy](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-    a. **Identyfikator** jest **"Odbiorców identyfikatora URI (identyfikator jednostki dostawcy usługi)"** z pomocy Scout rozpoczyna się od`urn:`
+    a. **Identyfikator** jest **"Odbiorców identyfikatora URI (identyfikator jednostki dostawcy usługi)"** z pomocy Scout rozpoczyna się od `urn:`
 
-    b. **Adres URL odpowiedzi** jest **"Po wstecz URL (adres URL usługi potwierdzenia klienta)"** z pomocy Scout rozpoczyna się od`https://` 
+    b. **Adres URL odpowiedzi** jest **"Po wstecz URL (adres URL usługi potwierdzenia klienta)"** z pomocy Scout rozpoczyna się od `https://` 
 
     > [!NOTE] 
     > Wartości te adresy URL są do pokazania tylko. Musisz zaktualizować te wartości z rzeczywisty adres URL odpowiedzi i identyfikator. Możesz uzyskać te wartości z **rejestracji jednokrotnej** kartę sekcji uwierzytelniania, który znajduje się w dalszej części tego samouczka.
@@ -116,7 +116,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Scout pojedynczego logowania jednokrotnego informacje pomocy](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL jako:`https://secure.helpscout.net/members/login/`
+    W **adres URL logowania** tekstowym, wpisz adres URL jako: `https://secure.helpscout.net/members/login/`
      
 5. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
@@ -234,17 +234,17 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka Scout pomoc w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji Scout pomocy.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

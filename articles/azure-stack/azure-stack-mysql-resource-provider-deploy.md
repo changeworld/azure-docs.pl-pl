@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4fb522e1a5a3c1adeaf5f46b8ccc3b9a852f4a88
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bc88140bf1adea49ff4bc76667d30a379f829bbc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Użyj bazy danych MySQL na Microsoft Azure stosu
 
@@ -117,7 +117,7 @@ Możesz:
 Oto przykład można uruchamiać w wierszu polecenia programu PowerShell. Pamiętaj zmienić informacje o koncie i hasła w razie potrzeby:
 
 
-```
+```powershell
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
@@ -214,6 +214,10 @@ Te parametry można określić w wierszu polecenia. Jeśli nie chcesz, lub jeśl
     - wydajność bazy danych
     - Automatyczne kopie zapasowe
     - Zarezerwuj serwerów o wysokiej wydajności dla poszczególnych działów
+
+
+  > [!IMPORTANT]
+  > Nie można mieszać serwerów autonomicznych z wystąpieniami zawsze włączone w tej samej jednostki SKU. Próba mieszać typów po dodaniu pierwszego hostingu wyników z serwera błąd.
  
 
 Nazwa jednostki SKU powinien odzwierciedlać właściwości, dzięki czemu dzierżaw odpowiednio umieszczać swoje bazy danych. Wszystkie serwery hostingu w jednostce SKU powinny mieć takie same możliwości.

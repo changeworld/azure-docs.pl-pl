@@ -40,6 +40,8 @@
   items:
     - name: Włączanie automatycznego tworzenia tematów
       href: apache-kafka-auto-create-topics.md
+    - name: Używanie usługi Kafka z usługą IoT Hub
+      href: apache-kafka-connector-iot-hub.md
     - name: Instalowanie aplikacji usługi HDInsight
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

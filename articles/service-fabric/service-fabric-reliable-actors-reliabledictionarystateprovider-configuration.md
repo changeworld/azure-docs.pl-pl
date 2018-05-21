@@ -1,24 +1,24 @@
 ---
-title: "Zmień ustawienia ReliableDictionaryActorStateProvider w Azure mikrousług | Dokumentacja firmy Microsoft"
-description: "Informacje na temat konfigurowania stanowe uczestnikami typu ReliableDictionaryActorStateProvider sieć szkieletowa usług Azure."
+title: Zmień ustawienia ReliableDictionaryActorStateProvider w Azure mikrousług | Dokumentacja firmy Microsoft
+description: Informacje na temat konfigurowania stanowe uczestnikami typu ReliableDictionaryActorStateProvider sieć szkieletowa usług Azure.
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 5dcd1b4f5a070e9a09b6f8338928d93d10227d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurowanie Reliable Actors — ReliableDictionaryActorStateProvider
 Domyślna konfiguracja ReliableDictionaryActorStateProvider można modyfikować, zmieniając pliku settings.xml generowane w głównym pakietu programu Visual Studio w folderze konfiguracji dla określonego aktora.
@@ -38,13 +38,13 @@ W manifeście klastra dla klastra, w sekcji KtlLogger określono jego konfigurac
 Plik manifestu klastra to pojedynczy plik XML, który przechowuje ustawienia i konfiguracje, które są stosowane do wszystkich węzłów i usług w klastrze. Plik jest zwykle nazywany ClusterManifest.xml. Widać klastra dla klastra przy użyciu polecenia programu powershell Get-ServiceFabricClusterManifest manifestu.
 
 ### <a name="configuration-names"></a>Nazwy konfiguracji
-| Nazwa | Jednostka | Wartość domyślna | Uwagi |
+| Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kilobajtów |8388608 |Minimalna liczba KB przydzielić w trybie jądra dla puli pamięci buforu zapisu rejestratora. Tej puli pamięci jest używana do buforowania informacji o stanie przed zapisu na dysku. |
-| WriteBufferMemoryPoolMaximumInKB |Kilobajtów |Bez ograniczeń |Maksymalny rozmiar, do którego rejestratora zapisu puli bufora pamięci można powiększać. |
-| SharedLogId |IDENTYFIKATOR GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania domyślne udostępniony plik dziennika używanych przez wszystkie usługi niezawodnego we wszystkich węzłach w klastrze, które nie określają SharedLogId ich określonej konfiguracji usługi. Jeśli określono SharedLogId, to SharedLogPath należy również określić. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobajty |8388608 |Minimalna liczba KB przydzielić w trybie jądra dla puli pamięci buforu zapisu rejestratora. Tej puli pamięci jest używana do buforowania informacji o stanie przed zapisu na dysku. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobajty |Bez ograniczeń |Maksymalny rozmiar, do którego rejestratora zapisu puli bufora pamięci można powiększać. |
+| SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator GUID służących do identyfikowania domyślne udostępniony plik dziennika używanych przez wszystkie usługi niezawodnego we wszystkich węzłach w klastrze, które nie określają SharedLogId ich określonej konfiguracji usługi. Jeśli określono SharedLogId, to SharedLogPath należy również określić. |
 | SharedLogPath |W pełni kwalifikowana nazwa |"" |Określa pełną ścieżkę, w którym plik dziennika udostępniony używany przez wszystkie niezawodnej usługi na wszystkich węzłach w klastrze, które nie określają SharedLogPath ich określonej konfiguracji usługi. Jednak jeśli SharedLogPath jest określona, to SharedLogId należy również określić. |
-| SharedLogSizeInMB |Megabajtów |8192 |Określa liczbę MB miejsca na dysku przydzielić statycznie dla dziennika udostępniony. Wartość musi być 2048 lub większy. |
+| SharedLogSizeInMB |Megabajty |8192 |Określa liczbę MB miejsca na dysku przydzielić statycznie dla dziennika udostępniony. Wartość musi być 2048 lub większy. |
 
 ### <a name="sample-cluster-manifest-section"></a>Sekcja manifestu klastra próbki
 ```xml
@@ -79,16 +79,16 @@ Domyślna konfiguracja jest generowany przez szablon programu Visual Studio i po
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Nazwy konfiguracji
-| Nazwa | Jednostka | Wartość domyślna | Uwagi |
+| Name (Nazwa) | Jednostka | Wartość domyślna | Uwagi |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0.015 |Okres, dla którego replikatora na dodatkowej czeka po otrzymaniu operacji przed wysłaniem z powrotem do podstawowej potwierdzenia. Inne potwierdzeń na wysłanie operacji przetwarzane w ramach tego interwału są wysyłane jako jedna odpowiedź. |
-| ReplicatorEndpoint |Nie dotyczy |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który replikatora podstawowe i pomocnicze będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punkt końcowy protokołu TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o Definiowanie zasobów punktu końcowego manifestu usługi. |
+| ReplicatorEndpoint |ND |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który replikatora podstawowe i pomocnicze będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punkt końcowy protokołu TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o Definiowanie zasobów punktu końcowego manifestu usługi. |
 | MaxReplicationMessageSize |Bajty |50 MB |Maksymalny rozmiar danych replikacji, które mogą być przenoszone w pojedynczym komunikacie. |
 | MaxPrimaryReplicationQueueSize |Liczba operacji |8192 |Maksymalna liczba operacji w kolejce podstawowego. Operacja są zwalniane, gdy Replikator podstawowy otrzyma potwierdzenia od wszystkich dodatkowej replikatorów. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
 | MaxSecondaryReplicationQueueSize |Liczba operacji |16384 |Maksymalna liczba operacji w kolejce dodatkowej. Operacja są zwalniane po dokonaniu jej stan wysokiej dostępności za pośrednictwem trwałości. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
 | CheckpointThresholdInMB |MB |200 |Ilość miejsca pliku dziennika, po upływie którego stan jest w użyciu. |
 | MaxRecordSizeInKB |KB |1024 |Największy rozmiar rekordu, który replikatora może zapisywać w dzienniku. Ta wartość musi być wielokrotnością liczby 4 i większa niż 16. |
-| OptimizeLogForLowerDiskUsage |Wartość logiczna |Wartość true |W przypadku wartości true dziennika jest skonfigurowana tak, aby w pliku dziennika dedykowanego repliki jest tworzona przy użyciu pliku rozrzedzonego systemu plików NTFS. Zmniejsza to wykorzystanie miejsca rzeczywistego dysku dla pliku. Gdy ma wartość false, plik jest tworzony o stałej alokacji, które zapewniają najlepszą wydajność zapisu. |
+| OptimizeLogForLowerDiskUsage |Wartość logiczna |true |W przypadku wartości true dziennika jest skonfigurowana tak, aby w pliku dziennika dedykowanego repliki jest tworzona przy użyciu pliku rozrzedzonego systemu plików NTFS. Zmniejsza to wykorzystanie miejsca rzeczywistego dysku dla pliku. Gdy ma wartość false, plik jest tworzony o stałej alokacji, które zapewniają najlepszą wydajność zapisu. |
 | SharedLogId |Identyfikator GUID |"" |Określa unikatowy identyfikator guid służących do identyfikowania pliku dziennika udostępniony używany z tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogId jest określona, to SharedLogPath należy również określić. |
 | SharedLogPath |W pełni kwalifikowana nazwa |"" |Określa pełną ścieżkę, w którym zostanie utworzony plik dziennika udostępniony dla tej repliki. Zazwyczaj usług nie należy używać tego ustawienia. Jednak jeśli SharedLogPath jest określona, to SharedLogId należy również określić. |
 

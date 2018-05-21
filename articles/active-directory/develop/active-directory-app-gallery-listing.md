@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 05/09/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: fe2133e321b90f8ada91f95ecc2c556631a8b41b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -64,7 +64,7 @@ Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw
 
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **Hasło logowania jednokrotnego**: tworzenie aplikacji sieci web strony logowania HTML do skonfigurowania [opartego na hasłach rejestracji jednokrotnej](../active-directory-appssoaccess-whatis.md). Logowanie Jednokrotne opartego na hasłach, także określane jako hasło vaulting, umożliwia zarządzanie dostępem użytkowników i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których wielu użytkowników należy do udostępnienia jednego konta, takich jak do organizacji mediów społecznościowych aplikacji kont.
+*   **Hasło logowania jednokrotnego**: tworzenie aplikacji sieci web strony logowania HTML do skonfigurowania [opartego na hasłach rejestracji jednokrotnej](../manage-apps/what-is-single-sign-on.md). Logowanie Jednokrotne opartego na hasłach, także określane jako hasło vaulting, umożliwia zarządzanie dostępem użytkowników i hasła do aplikacji sieci web, które nie obsługują federacji tożsamości. Jest również przydatne w scenariuszach, w których wielu użytkowników należy do udostępnienia jednego konta, takich jak do organizacji mediów społecznościowych aplikacji kont.
 
     ![Wyświetlanie listy aplikacji hasło logowania jednokrotnego do galerii osi czasu](./media/active-directory-app-gallery-listing/passwordsso.png)
 

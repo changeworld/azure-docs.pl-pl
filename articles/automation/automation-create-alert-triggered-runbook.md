@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a226a348df4f289dd68924e24b8d4b374a87766
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e791cddb07d3204f807dbeff98b7fc69419ae23c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertu można wyzwolić elementu runbook usługi Automatyzacja Azure
 
@@ -225,7 +225,7 @@ Aby utworzyć klasycznego alertu:
 1. Na **skonfigurować elementu Runbook** strony, dla **źródło elementu Runbook**, wybierz pozycję **użytkownika**. Wybierz konto automatyzacji, a następnie wybierz **Stop AzureVmInResponsetoVMAlert** elementu runbook. Kliknij przycisk **OK**.
 1. Aby zapisać reguły alertów, wybierz **OK**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby uzyskać więcej informacji na temat uruchamiania elementu runbook automatyzacji za pomocą elementu webhook, zobacz [uruchomienia elementu runbook z elementu webhook](automation-webhooks.md).
 * Aby uzyskać szczegółowe informacje o różnych sposobach uruchamiania elementu runbook, zobacz [uruchamianie elementu runbook](automation-starting-a-runbook.md).

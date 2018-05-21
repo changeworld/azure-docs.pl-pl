@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Panorama9 | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Panorama9."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Panorama9.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 7cbb6e45f730b8eaef4cb25307cfeaf9f1c853a1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4008567333d0c1881ab2b79ac62c1a4755bd319e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Samouczek: Integracji Azure Active Directory z Panorama9
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Panorama9 zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Panorama9 (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -111,9 +111,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-panorama9-tutorial/tutorial_panorama9_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL jako:`https://dashboard.panorama9.com/saml/access/3262`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL jako: `https://dashboard.panorama9.com/saml/access/3262`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`http://www.panorama9.com/saml20/<tenant-name>`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `http://www.panorama9.com/saml20/<tenant-name>`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Panorama9](https://support.panorama9.com) uzyskać te wartości. 
@@ -197,7 +197,7 @@ W przypadku Panorama9 Inicjowanie obsługi to zadanie ręczne.
    
   ![Użytkownicy](./media/active-directory-saas-panorama9-tutorial/ic790027.png "użytkowników")
 
-3. W sekcji Użytkownicy kliknij  **+**  można dodać nowego użytkownika.
+3. W sekcji Użytkownicy kliknij **+** można dodać nowego użytkownika.
 
  ![Użytkownicy](./media/active-directory-saas-panorama9-tutorial/ic790028.png "użytkowników")
 
@@ -245,10 +245,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Panorama9 w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane Panorama9 aplikacji.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

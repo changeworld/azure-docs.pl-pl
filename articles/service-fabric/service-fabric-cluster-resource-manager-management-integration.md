@@ -1,24 +1,24 @@
 ---
-title: "Menedżer zasobów klastra usługi sieć szkieletowa — integracji zarządzania | Dokumentacja firmy Microsoft"
-description: "Przegląd punkty integracji między Cluster Resource Manager i usługi zarządzania siecią szkieletową."
+title: Menedżer zasobów klastra usługi sieć szkieletowa — integracji zarządzania | Dokumentacja firmy Microsoft
+description: Przegląd punkty integracji między Cluster Resource Manager i usługi zarządzania siecią szkieletową.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 70c0cc37a1d362c937ab86bd630c5ab051e63870
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integracji Menedżera zasobów klastra z zarządzania klastrem sieci szkieletowej usług
 Menedżer zasobów klastra sieci szkieletowej usługi uaktualnienia nie na dysku w sieci szkieletowej usług, ale zostało ono uwzględnione. Pierwszy sposób, aby Menedżer zasobów klastra z zarządzania jest śledzenie żądanego stanu klastra i usług w nim. Menedżer zasobów klastra wysyła raporty kondycji gdy go nie można wstawić klastra do żądanej konfiguracji. Na przykład jeśli są niewystarczające Menedżera zasobów klastra wysyła ostrzeżeń i błędów wskazujących na ten problem. Inny element integracji związana z działania uaktualnienia. Menedżer zasobów klastra nieco zmienia jego zachowania podczas uaktualniania.  
@@ -207,5 +207,5 @@ Innym czynnikiem, która jest wywoływana podczas uaktualniania jest wyłącza M
 ### <a name="buffered-capacity--upgrade"></a>Pojemność buforowanego & uaktualnienia
 Zwykle ma zostać uaktualniony do ukończenia nawet wtedy, gdy klaster jest ograniczona lub w pobliżu pełnej. Zarządzanie pojemności klastra jest szczególnie ważne podczas uaktualniania niż zwykle. W zależności od liczby domen uaktualnienia od 5 do 20% pojemności, muszą być migrowane jako uaktualnienia przedstawia za pośrednictwem klastra. Pracy ma go w innym miejscu. Jest to, gdy pojęcie [buforowane możliwości](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) jest użyteczne. Pojemność buforowany jest wzięty pod uwagę podczas normalnego działania. Menedżer zasobów klastra mogą wypełnić węzłów do ich całkowitej pojemności (Korzystanie z buforu) podczas uaktualniania, w razie potrzeby.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Rozpocznij od początku i [wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów](service-fabric-cluster-resource-manager-introduction.md)

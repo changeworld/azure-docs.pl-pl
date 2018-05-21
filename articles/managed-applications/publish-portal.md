@@ -1,20 +1,20 @@
 ---
-title: "Publikowanie platformy Azure zarządzanych aplikacji za pośrednictwem portalu | Dokumentacja firmy Microsoft"
-description: "Przedstawia sposób użycia platformy Azure portalu, aby utworzyć platformy Azure zarządzanych aplikacji, która jest przeznaczony dla członków organizacji."
+title: Publikowanie platformy Azure zarządzanych aplikacji za pośrednictwem portalu | Dokumentacja firmy Microsoft
+description: Przedstawia sposób użycia platformy Azure portalu, aby utworzyć platformy Azure zarządzanych aplikacji, która jest przeznaczony dla członków organizacji.
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 764eb479733a7d4acdb6e6c3eee721cb4a161c88
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 69d31a7199347574e8866b275ec17ba3997d80c2
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Publikowanie aplikacji katalogu usług za pośrednictwem portalu Azure
 
@@ -56,9 +56,9 @@ Plik zip, który zawiera definicję aplikacji zarządzanej musi być dostępny z
 
 1. Jeśli zostały podane wszystkie wartości, wybierz **Utwórz**.
 
-   ![Tworzenie aplikacji zarządzanych](./media/publish-portal/create-app.png)
+   ![Tworzenie aplikacji zarządzanej](./media/publish-portal/create-app.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
 * Przykłady zarządzanej aplikacji można znaleźć [przykładowe projekty dla platformy Azure zarządzanych aplikacji](sample-projects.md).

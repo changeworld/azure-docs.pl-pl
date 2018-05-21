@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integracji z sieciami Palo Alto — wewnętrzne portalu | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i sieciami Palo Alto — wewnętrzne portalu."
+title: 'Samouczek: Azure Active Directory integracji z sieciami Palo Alto — wewnętrzne portalu | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i sieciami Palo Alto — wewnętrzne portalu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 32b3a45d9baf0b53e05708abab78a462c6780daa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aaa2adc30d1d798312b50370d4b635d0d8a123e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>Samouczek: Azure Active Directory integracji z sieciami Palo Alto — wewnętrzne portalu
 
@@ -30,7 +30,7 @@ Integracja sieci Palo Alto — wewnętrzne portalu z usługą Azure AD zapewnia 
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do sieci Palo Alto — wewnętrzne Portal (logowanie jednokrotne) za pomocą ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
 
     ![Sieci Palo Alto — wewnętrzne domeny portalu i adresów URL jednym logowania jednokrotnego informacji](./media/active-directory-saas-paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<Customer Firewall Hostname>/SAML20/SP`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<Customer Firewall Hostname>/SAML20/SP`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<Customer Firewall Hostname>/SAML20/SP/ACS`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<Customer Firewall Hostname>/SAML20/SP/ACS`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [Palo Alto Networks - zespołem pomocy technicznej wewnętrzne portalu](https://support.paloaltonetworks.com/support) uzyskać te wartości.
@@ -215,14 +215,14 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 Wewnętrzne portalu jest skonfigurowana za zaporą systemu Windows w maszynie wirtualnej.  Aby przetestować rejestracji jednokrotnej w portalu wewnętrzne, logowania za pomocą maszyny Wirtualnej systemu Windows za pomocą protokołu RDP. Z sesji protokołu RDP, otwórz przeglądarkę, aby każdej witrynie sieci web, powinno zostać automatycznie otwarte adres url logowania jednokrotnego i wiersza do uwierzytelniania. Po zakończeniu uwierzytelniania należy możliwość navgiate do witryn sieci web. 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

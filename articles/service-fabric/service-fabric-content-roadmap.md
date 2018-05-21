@@ -1,24 +1,24 @@
 ---
-title: "Dowiedz się więcej o sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat podstawowych pojęć i głównych obszarów sieci szkieletowej usług Azure. Zawiera omówienie rozszerzonej sieci szkieletowej usług oraz sposobu tworzenia mikrousług."
+title: Dowiedz się więcej o sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat podstawowych pojęć i głównych obszarów sieci szkieletowej usług Azure. Zawiera omówienie rozszerzonej sieci szkieletowej usług oraz sposobu tworzenia mikrousług.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1c3ea5b041cf2a961ef57bc168ae86b83412e044
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego chcesz Dowiedz się więcej o sieci szkieletowej usług?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Sieć szkieletowa usług ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł przedstawia streszczenie sieci szkieletowej usług oraz podstawowe koncepcje programowania modeli, cyklem życia aplikacji, testowania, klastrami i monitorowanie kondycji. Odczyt [omówienie](service-fabric-overview.md) i [co to są mikrousług?](service-fabric-overview-microservices.md) wprowadzenie i jak sieci szkieletowej usług może służyć do tworzenia mikrousług. W tym artykule nie zawiera pełną listę zawartości, ale łącze do omówienie i pobieranie rozpoczęte artykułów dla każdej części sieci szkieletowej usług. 
@@ -82,7 +82,7 @@ Dlaczego masz stanowe mikrousług wraz z nich bezstanowych? Dostępne są nastę
 ## <a name="supported-programming-models"></a>Obsługiwane modele programowania
 Sieć szkieletowa usług oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi mogą używać interfejsów API usługi Service Fabric w pełni wykorzystać funkcje platformy i struktury aplikacji. Można także wszelkie skompilowany program wykonywalny w dowolnym języku i hostowanych w klastrze usługi sieć szkieletowa usług. Aby uzyskać więcej informacji, zobacz [obsługiwane modele programowania](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Kontenery
+### <a name="containers"></a>Containers
 Domyślnie usługi sieć szkieletowa wdraża i aktywuje usługi jako procesów. Sieć szkieletowa usług można także wdrożyć usług w [kontenery](service-fabric-containers-overview.md). Ważne można mieszać usług w procesach i usług w kontenerach w tej samej aplikacji. Sieć szkieletowa usług obsługuje wdrażanie kontenerów Linux kontenery systemu Windows w systemie Windows Server 2016. Można wdrożyć istniejących aplikacji usług bezstanowych i stanowych usług w kontenerach. 
 
 ### <a name="reliable-services"></a>Reliable Services

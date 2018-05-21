@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z usługi zabezpieczeń firmy Symantec w sieci Web (WSS) | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usług zabezpieczeń firmy Symantec w sieci Web (WSS)."
+title: 'Samouczek: Integracji Azure Active Directory z usługi zabezpieczeń firmy Symantec w sieci Web (WSS) | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usług zabezpieczeń firmy Symantec w sieci Web (WSS).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 35427941a084e6750d66ccd3e135d7eef1767c6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dc75a1091c56ddbbffcd54047b2465ece231254
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Samouczek: Integracji Azure Active Directory z usługi zabezpieczeń firmy Symantec w sieci Web (WSS)
 
@@ -32,7 +32,7 @@ Integrowanie usługi zabezpieczeń firmy Symantec w sieci Web (WSS) z usługą A
 
 - Włącz wymuszania użytkowników i grupy poziomu reguł zdefiniowanych w ramach konta programu WSS.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -111,9 +111,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Domena usługi zabezpieczeń firmy Symantec w sieci Web (WSS) i adresy URL pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL:`https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. W **identyfikator** tekstowym, wpisz adres URL: `https://saml.threatpulse.net:8443/saml/saml_realm`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL:`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
     > Skontaktuj się z [zespołem pomocy technicznej klienta usługi zabezpieczeń firmy Symantec w sieci Web (WSS)](https://www.symantec.com/contact-us) Jeśli wartości **identyfikator** i **adres URL odpowiedzi** jakiegoś powodu nie działają.
@@ -200,16 +200,16 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz funkcji pojedynczego logowania jednokrotnego teraz, gdy skonfigurowano konto programu WSS do użycia usługi Azure AD na potrzeby uwierzytelniania SAML.
 
 Po skonfigurowaniu serwera proxy ruchu programu WSS, przeglądarki sieci web po otwarciu przeglądarki sieci web i spróbuj przejść do lokacji, a następnie użytkownik zostanie przekierowany do strony logowania systemu Azure. Wprowadź poświadczenia użytkownika testowego, że zainicjowano w usłudze Azure AD (czyli BrittaSimon) oraz skojarzone hasło. Po uwierzytelnieniu będzie mógł przejść do witryny sieci Web, który został wybrany. Należy utworzyć reguły na stronie programu WSS Aby zablokować BrittaSimon przeglądanie do określonej lokacji, a następnie powinna zostać wyświetlona strona bloku WSS przy próbie przejdź do tej lokacji jako użytkownik BrittaSimon.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

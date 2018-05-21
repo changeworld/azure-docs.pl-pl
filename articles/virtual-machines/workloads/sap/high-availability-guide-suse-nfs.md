@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: sedusch
-ms.openlocfilehash: b1a7b962d07b64aaa662aab937feed1782851a7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bc4a6f4ecca8ffe3575a038b86192a8663c35c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność dla systemu plików NFS na maszynach wirtualnych Azure w systemie SUSE Linux Enterprise Server
 
@@ -129,12 +129,11 @@ Najpierw należy utworzyć maszyny wirtualnej dla tego klastra systemu plików N
 1. Tworzenie zestawu dostępności  
    Zestaw aktualizacji max domeny
 1. Utwórz maszynę wirtualną 1   
-   Użyj co najmniej z dodatkiem SP1 z 12 SLES4SAP, w tym przykładzie SLES4SAP 12 SP1 BYOS obrazu https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES dla SAP aplikacji 12 z dodatkiem SP1 (BYOS) jest używany.  
+   Użyj co najmniej z dodatkiem SP3 SLES4SAP 12, w tym przykładzie SLES4SAP 12 SP3 BYOS obrazu SLES dla SAP aplikacji 12 z dodatkiem SP3 (BYOS) jest używany  
    Wybierz utworzony wcześniej zestawu dostępności  
 1. Tworzenie maszyny wirtualnej 2   
-   Użyj co najmniej z dodatkiem SP1 z 12 SLES4SAP, w tym przykładzie SLES4SAP 12 SP1 BYOS obrazu https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES dla SAP aplikacji 12 z dodatkiem SP1 (BYOS) jest używany.  
+   Użyj co najmniej z dodatkiem SP3 z 12 SLES4SAP, w tym przykładzie SLES4SAP 12 SP3 BYOS obrazu  
+   SLES dla SAP aplikacji 12 z dodatkiem SP3 (BYOS) jest używany.  
    Wybierz utworzony wcześniej zestawu dostępności  
 1. Dodaj jeden dysk danych dla każdego systemu SAP do obu maszyn wirtualnych.
 1. Tworzenie modułu równoważenia obciążenia (wewnętrzny)  

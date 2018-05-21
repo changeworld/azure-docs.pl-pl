@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Learningpool Act | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między ustawa Learningpool i Azure Active Directory."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między ustawa Learningpool i Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: aca50fedb44f25f4d98e4a893ac55783263ba52b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87a36e636362a8b5bfc63a7394ddb92134e119cb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Samouczek: Integracji Azure Active Directory z Learningpool Act
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Learningpool Act zapewnia następujące korzyści
 - Umożliwia użytkownikom automatycznie pobrać zalogowane działanie Learningpool (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-Learningpool-tutorial/tutorial_Learningpoolact_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL:`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
     | |
@@ -133,10 +133,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |
-    | urn: oid:1.2.840.113556.1.4.221 | User.userPrincipalName |
-    | urn: oid:2.5.4.42 | User.givenName |
-    | urn: oid:0.9.2342.19200300.100.1.3 | User.mail |    
-    | urn: oid:2.5.4.4 | User.surname |
+    | urn: oid:1.2.840.113556.1.4.221 | user.userprincipalname |
+    | urn:oid:2.5.4.42 | user.givenname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | User.mail |    
+    | urn:oid:2.5.4.4 | user.surname |
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -239,10 +239,10 @@ Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczeg
 
 Po kliknięciu kafelka Learningpool Act w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Learningpool Act.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

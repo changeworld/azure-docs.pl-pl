@@ -15,11 +15,11 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co to jest panel dostępu?
 
@@ -60,7 +60,7 @@ Aby uzyskać dostęp do panelu dostępu, użytkownik musi zostać uwierzytelnion
 
 Ma subskrypcji platformy Azure lub usługi Office 365, której używasz portalu Azure lub aplikacji pakietu Office 365 można wyświetlić listę aplikacji bez zalogować się ponownie. Jeśli użytkownik nie jest uwierzytelniony, zostanie wyświetlony monit logowania przy użyciu nazwy użytkownika i hasło dla swojego konta w usłudze Azure AD. Jeśli organizacji skonfigurował federacyjnych, wpisując nazwę użytkownika jest wystarczająca.
 
-Gdy użytkownik jest uwierzytelniony, mogą współdziałać z aplikacjami, które administrator ma zintegrowane z katalogiem. Aby dowiedzieć się, jak integrować aplikacje z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Gdy użytkownik jest uwierzytelniony, mogą współdziałać z aplikacjami, które administrator ma zintegrowane z katalogiem. Aby dowiedzieć się, jak integrować aplikacje z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="web-browser-requirements"></a>Wymagania dotyczące przeglądarki sieci Web
 
@@ -215,7 +215,7 @@ Na przykład jeśli aplikacja jest skonfigurowana do uwierzytelniania użytkowni
  
 - Aby uzyskać informacje o integracji aplikacji SaaS z usługą Azure AD, zobacz [lista samouczków dotyczących sposobów integracji aplikacji SaaS](active-directory-saas-tutorial-list.md).
  
-- Aby dowiedzieć się więcej o zarządzaniu aplikacjami za pomocą usługi Azure AD, zobacz [wprowadzenie do uzyskania dostępu do pojedynczego aplikacji logowania jednokrotnego i zarządzanie nimi w usłudze Azure Active Directory](active-directory-appssoaccess-whatis.md).
+- Aby dowiedzieć się więcej o zarządzaniu aplikacjami za pomocą usługi Azure AD, zobacz [wprowadzenie do uzyskania dostępu do pojedynczego aplikacji logowania jednokrotnego i zarządzanie nimi w usłudze Azure Active Directory](manage-apps/what-is-single-sign-on.md).
  
 - Aby dowiedzieć się więcej na temat Inicjowanie obsługi użytkowników, zobacz [zautomatyzować użytkownika alokowania i anulowania alokowania do aplikacji SaaS](active-directory-saas-app-provisioning.md).
 

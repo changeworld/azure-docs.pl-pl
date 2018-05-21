@@ -5,26 +5,25 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 5aa00123-5b87-45e0-a671-4165e66bfbc6
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 05/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 279722cc53889cb0a261fcffde0c7e0f86be6dc5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.reviewer: efemmano
+ms.openlocfilehash: 2ebafc4249f8455bdbe45a07a5bf88aa8984d67a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Przy użyciu portalu Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Jako klient korzystający z usług Azure stosu za pomocą portalu Azure stosu do subskrybowania publiczne oferty i korzystać z usług, które zapewniają te oferty. Jeśli używano portalu Azure przed, znasz już interfejsu użytkownika.
+Można korzystać z portalu Azure stosu do subskrybowania publiczne oferty i korzystać z usług, które zapewniają te oferty. Jeśli używano globalne portalu Azure, już znasz działania lokacji.
 
 ## <a name="access-the-portal"></a>Dostępu do portalu
 
@@ -60,13 +59,13 @@ Aby uzyskać wskazówki dotyczące sposobu używania dostępnych usług, mogą i
     W szczególności zalecamy zapoznanie się następujące artykuły, aby rozpocząć:
 
     - [Kluczowe zagadnienia dotyczące: za pomocą usług lub tworzenia aplikacji dla platformy Azure stosu](azure-stack-considerations.md)
-    - W sekcji "Użyj usługi" w dokumentacji ma artykuł "Uwagi", dla każdej usługi. Na stronie "Uwagi" opisano różnice między usług oferowanych na platformie Azure i tej samej usługi oferowane w stosie Azure. Na przykład zobacz [zagadnienia dotyczące maszyny Wirtualnej](azure-stack-vm-considerations.md). Mogą istnieć inne informacje w sekcji "Użyj usługi" jest unikatowy dla stosu Azure.
+    - W **korzystania z usług** sekcji dokumentacji, jest artykułu zagadnienia, dla każdej usługi. Na stronie zagadnienia opisano różnice między usług oferowanych na platformie Azure i tej samej usługi oferowane w stosie Azure. Na przykład zobacz [zagadnienia dotyczące maszyny Wirtualnej](azure-stack-vm-considerations.md). Mogą istnieć inne informacje w **korzystania z usług** sekcja, która jest unikatowa dla stosu Azure.
      
       Dokumentację platformy Azure można używać jako informacje ogólne, dla usługi, ale należy pamiętać o tych różnic. Zrozumienie, że dokumentację łączy **samouczków szybkiego startu** kafelka punktu dokumentacji platformy Azure.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-Jeśli potrzebujesz dodatkowej pomocy, skontaktuj się z dostawcą organizacji lub usługi.
+Jeśli potrzebujesz pomocy technicznej, skontaktuj się z dostawcą organizacji lub usługi, aby uzyskać pomoc.
 
 Jeśli używasz usługi Azure stosu Development Kit [forum Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) jest jedynym źródłem pomocy technicznej.
 

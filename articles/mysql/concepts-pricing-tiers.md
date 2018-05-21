@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 490b162bcab0656388ef0b211ea693809d446346
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e12010f225b5f8db247d1b751615cbedd413dfb3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Bazy danych platformy Azure dla programu MySQL warstw cenowych
 
@@ -22,8 +22,8 @@ Można utworzyć bazy danych Azure MySQL serwera w jednym z trzech różnych war
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowana pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Generowanie obliczeniowe | Gen 4, 5 Gen | Gen 4, 5 Gen | 5. generacja |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Ilość pamięci na vCore | Linii bazowej | 2 x Basic | 2 x ogólnego przeznaczenia |
+| Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| Ilość pamięci na vCore | Punkt odniesienia | 2 x Basic | 2 x ogólnego przeznaczenia |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowych bazy danych | 7-35 dni | 7-35 dni | 7-35 dni |
@@ -85,6 +85,12 @@ Zainicjowanie obsługi magazynu jest pojemności magazynu dostępnych do bazy da
 Podczas i po utworzeniu serwera można dodać dodatkowej pojemności. Warstwa podstawowa nie ma gwarancji IOPS. Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci, warstw cenowych IOPS skalowania o rozmiarze zainicjowanego magazynu w stosunku 3:1.
 
 Można monitorować użycia we/wy w portalu Azure lub przy użyciu poleceń wiersza polecenia platformy Azure. Odpowiednich metryk do monitorowania są [limit magazynu, procent użycia magazynu, Magazyn używany i procent We/Wy](concepts-monitoring.md).
+
+### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
+
+Serwer zostanie oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca w magazynie osiągnie mniej niż 5 GB lub 5% zainicjowanego magazynu, ta wartość jest mniejsza. Na przykład, jeśli po uprzednim udostępnieniu 100 GB miejsca do magazynowania i rzeczywistego użycia przechodzi 95 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie Jeśli po uprzednim udostępnieniu 5 GB miejsca do magazynowania, serwer jest oznaczony jako tylko do odczytu po mniej niż 250 MB wolnego miejsca.  
+
+Gdy usługa próbuje serwer stał się tylko do odczytu, wszystkich nowych żądań transakcji zapisu są blokowane, a istniejące aktywnych transakcji będzie kontynuować jego wykonywanie. Gdy serwer jest wartość tylko do odczytu, wszystkie operacje zapisu kolejnych i transakcji zatwierdza kończyć się niepowodzeniem. Odczyt zapytania będą w dalszym ciągu nieprzerwaną pracę. Po zainicjowanego magazynu można zwiększyć, serwer będzie gotowy do akceptowania ponownie transakcjach zapisu.
 
 ## <a name="backup"></a>Backup
 

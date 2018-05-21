@@ -1,5 +1,5 @@
 # <a name="azure-premium-storage-design-for-high-performance"></a>Magazynu Azure Premium: Projekt o wysokiej wydajności
-## <a name="overview"></a>Przegląd
+
 Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji wysokiej wydajności przy użyciu usługi Azure Premium Storage. Korzystając z instrukcjami podanymi w tym dokumencie łączyć się z najlepszymi rozwiązaniami wydajności mające zastosowanie do technologii używanych przez aplikację. Aby zilustrować wytyczne, użyliśmy program SQL Server uruchomiony na magazyn w warstwie Premium, na przykład w tym dokumencie.
 
 Natomiast scenariusze wydajności warstwy magazynu w tym artykule można rozwiązać, konieczne będzie optymalizacji warstwy aplikacji. Na przykład jeśli przechowujesz farmy programu SharePoint w usłudze Azure Premium Storage umożliwia przykłady programu SQL Server z tego artykułu zoptymalizować serwer bazy danych. Ponadto zoptymalizować serwera sieci Web farmy programu SharePoint i serwera aplikacji, aby uzyskać większości wydajności.
@@ -90,7 +90,7 @@ Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dy
 | **Przepływność** |Ilość danych odczytu lub zapisu na dysku na sekundę. |Bajty odczytu z dysku/s <br> Bajty zapisu na dysku/s |kB_read/s <br> kB_wrtn/s |
 | **Opóźnienie** |Łączny czas wymagany do ukończenia żądania We/Wy dysku. |Średnia dysku w s/Odczyt <br> Średnia dysku w s/Zapis |await <br> svctm |
 | **Rozmiar operacji We/Wy** |Rozmiar operacji We/Wy żądań problemy z dyskami magazynu. |Bajty odczytu dysku <br> Bajty zapisu dysku |avgrq sz |
-| **Głębokość kolejki** |Liczba oczekujących operacji We/Wy żądań oczekujących do odczytu formularza lub zapisane na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu sz |
+| **Głębokość kolejki** |Liczba oczekujących operacji We/Wy żądań oczekujących odczytywane lub zapisywane na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu sz |
 | **Maks. Pamięci** |Ilość pamięci wymaganą do bezproblemowe działanie aplikacji |Zadeklarowane bajty w użyciu (%) |Użyj vmstat |
 | **Maks. PROCESOR CPU** |Ilość procesorów wymaganych bezproblemowe działanie aplikacji |Czas procesora (%) |% util |
 
@@ -102,15 +102,18 @@ Główne czynniki wpływające na wydajność aplikacji uruchomionych na magazyn
 W tej sekcji odnoszą się do listy kontrolnej wymagania dotyczące aplikacji, który został utworzony, aby określić, ile trzeba zoptymalizować wydajność aplikacji. W oparciu o który, będzie możliwe ustalenie, jakie czynniki w tej sekcji należy do dopasowywania. Obecności skutków każdy czynnik na wydajność aplikacji, należy uruchomić narzędzia najlepszymi w ustawieniach aplikacji. Zapoznaj się [Benchmarking](#Benchmarking) sekcji na końcu tego artykułu czynności, aby uruchomić narzędziom najlepszymi w systemach Windows i maszyn wirtualnych systemu Linux.
 
 ### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>Optymalizacja IOPS, przepustowości i opóźnień w skrócie
-Poniższa tabela zawiera podsumowanie wszystkich czynników wydajności i kroki, aby zoptymalizować IOPS, przepustowości i opóźnień. W sekcjach poniżej to podsumowanie opisano każdy czynnik jest znacznie bardziej szczegółowo.
+
+Poniższa tabela zawiera podsumowanie czynniki wydajności i kroki niezbędne do optymalizacji IOPS, przepustowości i opóźnień. W sekcjach poniżej to podsumowanie opisano każdy czynnik jest znacznie bardziej szczegółowo.
+
+Aby uzyskać więcej informacji na rozmiarów maszyn wirtualnych i na IOPS, przepustowości i opóźnień dostępne dla każdego typu maszyny Wirtualnej, zobacz [rozmiarów maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/sizes.md) lub [rozmiarów maszyn wirtualnych systemu Windows](../articles/virtual-machines/windows/sizes.md).
 
 | &nbsp; | **IOPS** | **Przepływność** | **Opóźnienie** |
 | --- | --- | --- | --- |
 | **Przykładowy scenariusz** |Enterprise OLTP aplikacji wymagających bardzo duże transakcje na drugi szybkości. |Magazynowania aplikacji przetwarzania dużych ilości danych danych przedsiębiorstwa. |Niemal w czasie rzeczywistym aplikacji wymagających błyskawicznych odpowiedzi na żądania użytkownika, takie jak gier online. |
 | Czynniki wydajności | &nbsp; | &nbsp; | &nbsp; |
 | **Rozmiar operacji We/Wy** |Mniejszego rozmiaru we/wy daje wyższa wartość IOPS. |Większy rozmiar we/wy do daje wyższej przepustowości. | &nbsp;|
-| **Rozmiar maszyny Wirtualnej** |Użyj rozmiar maszyny Wirtualnej, który oferuje IOPS większą niż wymagań aplikacji. Zobacz rozmiarów maszyn wirtualnych i limity ich IOPS. |Rozmiar maszyny Wirtualnej za pomocą limit przepływności większy od wymagań aplikacji. Zobacz rozmiarów maszyn wirtualnych i limity ich przepływności. |Użyj rozmiar maszyny Wirtualnej, że oferty skalować limity większe wymagania Twojej aplikacji. Zobacz rozmiarów maszyn wirtualnych i limity ich tutaj. |
-| **Rozmiar dysku** |Użyj rozmiar dysku, który oferuje IOPS większą niż wymagań aplikacji. Zobacz rozmiary dysków i limity ich IOPS. |Rozmiar dysku za pomocą limit przepływności większy od wymagań aplikacji. Zobacz rozmiary dysków i limity ich przepływności. |Użyj rozmiaru dysku, czy oferuje skalowanie limity większe wymagania Twojej aplikacji. Zobacz rozmiary dysków i limity ich tutaj. |
+| **Rozmiar maszyny Wirtualnej** |Użyj rozmiar maszyny Wirtualnej, który oferuje IOPS większą niż wymagań aplikacji. |Rozmiar maszyny Wirtualnej za pomocą limit przepływności większy od wymagań aplikacji. |Użyj rozmiar maszyny Wirtualnej, że oferty skalować limity większe wymagania Twojej aplikacji. |
+| **Rozmiar dysku** |Użyj rozmiar dysku, który oferuje IOPS większą niż wymagań aplikacji. |Rozmiar dysku za pomocą limit przepływności większy od wymagań aplikacji. |Użyj rozmiaru dysku, czy oferuje skalowanie limity większe wymagania Twojej aplikacji. |
 | **Maszyna wirtualna i limity skalowania dysku** |Limit IOPS wybrany rozmiar maszyny Wirtualnej powinna być większa niż łączna liczba IOPS wynikają z dysków w warstwie premium magazynu dołączone do niego. |Limit przepustowości wybrany rozmiar maszyny Wirtualnej powinna być większa niż całkowita przepływność wynikają z dysków w warstwie premium magazynu dołączone do niego. |Limity skalowania wybranego rozmiaru maszyny Wirtualnej musi być większa niż limity skalowania całkowita premium dołączonych dysków magazynowania. |
 | **Buforowanie dysku** |Włącz pamięć podręczną tylko do odczytu na dyski magazynu premium z dużym operacje odczytu, uzyskanie wyższej IOPS odczytu. | &nbsp; |Włączenie pamięci podręcznej tylko do odczytu dla dysków w warstwie premium magazynu z gotowy duże operacje można pobrać odczytu bardzo niskich opóźnień. |
 | **Rozkładanie** |Przy użyciu wielu dysków i paskowych je ze sobą, aby uzyskać Scalonej wyższy limit IOPS i przepustowość. Należy zauważyć, że łączny limit dla maszyny Wirtualnej powinna być większa niż łączna limity premium dołączonych dysków. | &nbsp; | &nbsp; |
@@ -236,13 +239,13 @@ Należy włączyć pamięć podręczną dla prawidłowego zestawu dysków. Okre�
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
 | Dysk systemu operacyjnego |ReadWrite |
-| Dysk z danymi |None |
+| Dysk z danymi |Brak |
 
 Poniżej przedstawiono ustawienia pamięci podręcznej dysku zalecanych dla dysków z danymi
 
 | **Ustawienia buforowania na dysku** | **Zalecenie na użycie tego ustawienia** |
 | --- | --- |
-| None |Konfigurowanie hosta pamięci podręcznej None tylko do zapisu i intensywnie zapisu dysków. |
+| Brak |Konfigurowanie hosta pamięci podręcznej None tylko do zapisu i intensywnie zapisu dysków. |
 | Tylko do odczytu |Skonfiguruj pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i zapisu i odczytu. |
 | ReadWrite |Konfigurowanie pamięci podręcznej hosta jako ReadWrite tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych z pamięci podręcznej na stałe dyski w razie potrzeby. |
 

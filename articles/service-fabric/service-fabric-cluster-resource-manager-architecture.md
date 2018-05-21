@@ -1,24 +1,24 @@
 ---
-title: "Architektura usługi Resource Manager | Dokumentacja firmy Microsoft"
-description: "Przegląd architektury programu usługi sieć szkieletowa klastra Menedżera zasobów."
+title: Architektura usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Przegląd architektury programu usługi sieć szkieletowa klastra Menedżera zasobów.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f0d2202c17bf4d378a625a61e941edf7f3f24636
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48da92be0eef1154b490fb4829363598d6d66569
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Przegląd architektury Menedżera zasobów klastra
 Menedżer zasobów klastra sieci szkieletowej usług jest usługą centralnej, która działa w klastrze. Zarządza żądanego stanu usługi w klastrze, szczególnie w odniesieniu do zużycia zasobów i wszystkie reguły umieszczania. 
@@ -61,7 +61,7 @@ Załóżmy Spójrz na poniższym diagramie i zobacz, co dalej. Załóżmy, że M
 ![Architektura usługi równoważenia zasobów][Image2]
 </center>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Menedżer zasobów klastra ma wiele opcji opisujące klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się w tym artykule na [opisujące klastra sieci szkieletowej usług](./service-fabric-cluster-resource-manager-cluster-description.md)
 - Menedżer zasobów klastra podstawowego obowiązki są ponowne równoważenie klastra i wymuszanie reguły umieszczania. Aby uzyskać więcej informacji na temat konfigurowania te zachowania, zobacz [równoważenia klastra sieci szkieletowej usług](./service-fabric-cluster-resource-manager-balancing.md)
 

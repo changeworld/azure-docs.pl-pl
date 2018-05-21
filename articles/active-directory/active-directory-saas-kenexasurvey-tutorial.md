@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integrację ze IBM Kenexa ankiety | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i IBM Kenexa ankiety przedsiębiorstwa."
+title: 'Samouczek: Azure Active Directory integrację ze IBM Kenexa ankiety | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i IBM Kenexa ankiety przedsiębiorstwa.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 929ae8b780c0e18074832adfefb9a7674097fd08
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88e0072adeeebaf6c9e964db28a45f6fe038fddf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Samouczek: Azure Active Directory integrację ze IBM Kenexa ankiety
 
@@ -29,7 +29,7 @@ Integrowanie IBM Kenexa ankiety przedsiębiorstwa z usługą Azure AD zapewnia n
 - Umożliwia użytkownikom automatycznie logować się do IBM Kenexa ankiety przedsiębiorstwa przy użyciu rejestracji jednokrotnej (SSO) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji: portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -102,9 +102,9 @@ W tej sekcji włączenia funkcji logowania jednokrotnego usługi Azure AD w port
 
     ![IBM Kenexa ankiety Enterprise domeny i adres URL z jednym informacje logowania jednokrotnego](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL z następującego wzorca:`https://surveys.kenexa.com/<companycode>`
+    a. W **identyfikator** tekstowym, wpisz adres URL z następującego wzorca: `https://surveys.kenexa.com/<companycode>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL z następującego wzorca:`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL z następującego wzorca: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE] 
     > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywistego identyfikatora i adres URL odpowiedzi. Aby uzyskać rzeczywiste wartości, skontaktuj się z [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
@@ -202,16 +202,16 @@ Aby przypisać użytkownika Simona Britta IBM Kenexa ankiety przedsiębiorstwa, 
 
 7. W **Dodaj przydziału** okno dialogowe, kliknij przycisk **przypisać** przycisku.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji możesz przetestować konfigurację programu Azure AD z logowania jednokrotnego za pomocą panelu dostępu.
 
 Po kliknięciu **IBM Kenexa ankiety Enterprise** kafelka w panelu dostępu należy powinien można automatycznie zalogowany do aplikacji IBM Kenexa ankiety przedsiębiorstwa.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

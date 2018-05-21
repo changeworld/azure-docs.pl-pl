@@ -1,18 +1,18 @@
 ---
-title: "Schematu zdarzeń magazynu obiektów blob Azure siatki zdarzeń"
-description: "Opisuje właściwości, które są dostępne dla zdarzenia magazynu obiektów blob Azure zdarzeń siatki"
+title: Schematu zdarzeń magazynu obiektów blob Azure siatki zdarzeń
+description: Opisuje właściwości, które są dostępne dla zdarzenia magazynu obiektów blob Azure zdarzeń siatki
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d0a8a3726ac3c33668d8ad91c97c35937c299b46
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4d3f5d50df49851437cfd3bcec16ad217220eca
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure schematu zdarzeń siatki zdarzeń dla magazynu obiektów Blob
 
@@ -94,8 +94,8 @@ Zdarzenie ma następujące dane najwyższego poziomu:
 | eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu metadanych zdarzeń. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
+| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
@@ -108,7 +108,7 @@ Obiekt danych ma następujące właściwości:
 | Typ zawartości | ciąg | Typ zawartości określony dla obiektu blob. |
 | contentLength | liczba całkowita | Rozmiar obiektu blob w bajtach. |
 | blobType | ciąg | Typ obiektu blob. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
-| adres url | ciąg | Ścieżka do obiektu blob. |
+| url | ciąg | Ścieżka do obiektu blob. |
 | Program Sequencer | ciąg | Wartość kontrolowane przez użytkownika, która służy do śledzenia żądań. |
 | storageDiagnostics | obiekt | Informacje o diagnostyki magazynu. |
  

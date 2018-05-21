@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/18/2018
 ms.author: jeffgilb
-ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodaj serwery hostingu dla dostawcy zasobów SQL
 Można użyć wystąpienia programu SQL na maszynach wirtualnych wewnątrz sieci [stosu Azure](azure-stack-poc.md), lub wystąpienia poza środowiskiem Azure stosu, podać dostawcę zasobów można się z nim połączyć. Ogólne wymagania są:
@@ -96,25 +96,21 @@ Konfigurowanie SQL zawsze włączone wystąpienia wymaga wykonania dodatkowych k
 > [!NOTE]
 > Karta SQL RP _tylko_ obsługuje Enterprise programu SQL 2016 z dodatkiem SP1 lub nowszym wystąpień zawsze włączone, ponieważ wymaga ona nowych funkcji programu SQL, takich jak automatyczne wstępne wypełnianie. Oprócz powyższej listy typowych wymagania:
 
-* Należy podać serwer plików, oprócz komputerów SQL AlwaysOn. Brak [szablonów Szybki Start Azure stosu](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-ha) aby tworzenia tego środowiska dla Ciebie. On również może służyć jako przewodnik dotyczący tworzenia własnego wystąpienia.
+W szczególności należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) w każdej grupie dostępności dla każdego wystąpienia programu SQL Server:
 
-* Należy skonfigurować serwery SQL. W szczególności należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) w każdej grupie dostępności dla każdego wystąpienia programu SQL Server.
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>]
+      MODIFY REPLICA ON 'InstanceName'
+      WITH (SEEDING_MODE = AUTOMATIC)
+  GO
+  ```
 
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>]
-    MODIFY REPLICA ON 'InstanceName'
-    WITH (SEEDING_MODE = AUTOMATIC)
-GO
-```
+W wystąpieniach dodatkowej używać tych poleceń SQL:
 
-W wystąpieniach dodatkowej
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
-GO
-
-```
-
-
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
 
 Aby dodać SQL AlwaysOn serwerami hostingu, wykonaj następujące kroki:
 
@@ -124,14 +120,16 @@ Aby dodać SQL AlwaysOn serwerami hostingu, wykonaj następujące kroki:
 
     **Hosting serwerów SQL** bloku jest podłączenia dostawcy zasobów programu SQL Server do rzeczywistego wystąpień programu SQL Server, które służyć jako wewnętrznej bazy danych dostawcy zasobów.
 
-
-3. Wypełnienie formularza Szczegóły połączenia z wystąpienia programu SQL Server, jest użycie nazwy FQDN lub IPv4 adres zawsze na odbiornika (i opcjonalnie port numer). Podaj informacje o koncie dla konta skonfigurowanego z uprawnieniami administratora systemu.
+3. Wypełnienie formularza Szczegóły połączenia z wystąpienia programu SQL Server, jest użycie nazwy FQDN adresu zawsze na odbiornika (i opcjonalnie port numer). Podaj informacje o koncie dla konta skonfigurowanego z uprawnieniami administratora systemu.
 
 4. Zaznacz to pole, aby włączyć obsługę wystąpienia SQL zawsze włączonej grupy dostępności.
 
     ![Serwerów hosta](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. Dodaj wystąpienie SQL AlwaysOn do jednostki SKU. Nie można mieszać serwerów autonomicznych z wystąpieniami zawsze włączone w tej samej jednostki SKU. Który będzie określana podczas dodawania pierwszego serwera hostingu. Podjęto próbę później mieszać typów spowoduje błąd.
+5. Dodaj wystąpienie SQL AlwaysOn do jednostki SKU. 
+
+> [!IMPORTANT]
+> Nie można mieszać serwerów autonomicznych z wystąpieniami zawsze włączone w tej samej jednostki SKU. Próba mieszać typów po dodaniu pierwszego hostingu wyników z serwera błąd.
 
 
 ## <a name="making-sql-databases-available-to-users"></a>Udostępnianie użytkownikom bazy danych SQL

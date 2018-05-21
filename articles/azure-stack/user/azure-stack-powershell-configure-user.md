@@ -12,32 +12,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/26/2017
+ms.date: 5/15/2018
 ms.author: mabrigg
 ms.reviewer: Balsu.G
-ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2655b682d35dd1879c649ed58d524ecd80808896
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurowanie środowiska PowerShell użytkownika Azure stosu
 
-Jako użytkownik stosu Azure można skonfigurować sieci Azure stosu Development Kit dla środowiska PowerShell. Po skonfigurowaniu, służy programu PowerShell do zarządzania stosu Azure zasobów takich jak subskrybować oferty, Tworzenie maszyn wirtualnych, wdrażanie szablonów usługi Azure Resource Manager itp. Ten temat obejmuje środowisk, jeśli chcesz skonfigurować środowiska PowerShell dla operatora środowiska chmury, odwoływać się tylko do użytkownika za pomocą [konfigurowania środowiska PowerShell operator stosu Azure](../azure-stack-powershell-configure-admin.md) artykułu. 
+*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+Do konfigurowania środowiska PowerShell dla użytkownika stosu Azure, wykonaj instrukcje w tym artykule.
+Po skonfigurowaniu środowiska może zarządzać zasobami stosu Azure za pomocą programu PowerShell. Na przykład umożliwia PowerShell subskrybować oferty, Tworzenie maszyn wirtualnych i wdrażanie szablonów usługi Azure Resource Manager.
 
-Uruchom następujące wymagania wstępne, albo z [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klienta zewnętrznych w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+>[!NOTE]
+>W tym artykule znajduje się w zakresie stosu Azure środowiska użytkownika. Ustanowienie środowiska PowerShell dla operatora środowiska chmury, zapoznaj się [konfigurowania środowiska PowerShell operator stosu Azure](../azure-stack-powershell-configure-admin.md) artykułu.
 
-* Zainstaluj [modułów programu Azure PowerShell platformy Azure zgodnego stosu](azure-stack-powershell-install.md).  
-* Pobierz [narzędzia niezbędne do pracy z stosu Azure](azure-stack-powershell-download.md). 
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Możesz skonfigurować te składniki z [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klienta zewnętrznych w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+
+* Zainstaluj [modułów programu Azure PowerShell platformy Azure zgodnego stosu](azure-stack-powershell-install.md).
+* Pobierz [narzędzia niezbędne do pracy z stosu Azure](azure-stack-powershell-download.md).
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>Konfigurowanie środowiska użytkownika i zaloguj się do stosu Azure
 
-Na podstawie typu wdrożenia (Azure AD lub AD FS), uruchom jedno z poniższych skryptów można skonfigurować programu PowerShell dla usługi Azure stosu (Upewnij się, że zastąpienie AAD tenantName, GraphAudience punktu końcowego i wartości ArmEndpoint zgodnie z konfiguracją środowiska):
+Na podstawie typu wdrożenia stosu Azure (Azure AD lub AD FS), uruchom jedno z poniższych skryptów można skonfigurować programu PowerShell dla usługi Azure stosu.
+
+Upewnij się, że następujące zmienne skryptu zastąpić wartościami z konfiguracji Azure stosu:
+
+* TenantName usługi AAD
+* Punkt końcowy GraphAudience
+* ArmEndpoint
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) na podstawie wdrożenia
-       
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -67,11 +79,11 @@ Na podstawie typu wdrożenia (Azure AD lub AD FS), uruchom jedno z poniższych s
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Wdrożenia na podstawie usługi Active Directory Federation Services (AD FS) 
-          
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Wdrożenia na podstawie usługi Active Directory Federation Services (AD FS)
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -94,7 +106,7 @@ Na podstawie typu wdrożenia (Azure AD lub AD FS), uruchom jedno z poniższych s
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
+  # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
     -ADFS `
     -EnvironmentName "AzureStackUser"
@@ -102,29 +114,30 @@ Na podstawie typu wdrożenia (Azure AD lub AD FS), uruchom jedno z poniższych s
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
   ```
 
 ## <a name="register-resource-providers"></a>Zarejestruj dostawców zasobów
 
-Podczas pracy w przypadku subskrypcji nowo utworzony użytkownik, który nie zawiera żadnych zasobów wdrożone za pośrednictwem portalu, dostawców zasobów nie są automatycznie zarejestrowane. Jawnie należy zarejestrować za pomocą następującego skryptu:
+Dostawcy zasobów nie są automatycznie zarejestrowane dla nowej subskrypcji użytkownika, które nie mają żadnych zasobów wdrożone za pośrednictwem portalu. Jawnie można zarejestrować dostawcy zasobów za pomocą następującego skryptu:
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
-    } 
+    }
 ```
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 
-Teraz, gdy mamy wszystkie elementy konfiguracji, umożliwia tworzenie zasobów w stosie Azure przy użyciu programu PowerShell. Można na przykład utworzyć grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Aby utworzyć grupę zasobów o nazwie "MyResourceGroup", użyj następującego polecenia:
+Jeśli masz wszystko Konfigurowanie testowanie łączności za pomocą programu PowerShell na tworzenie zasobów Azure stosu. Badanie Utwórz grupę zasobów dla aplikacji i Dodaj maszynę wirtualną. Uruchom następujące polecenie, aby utworzyć grupę zasobów o nazwie "MyResourceGroup":
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Tworzenie szablonów dla stosu Azure](azure-stack-develop-templates.md)
 * [Wdrażanie szablonów za pomocą programu PowerShell](azure-stack-deploy-template-powershell.md)

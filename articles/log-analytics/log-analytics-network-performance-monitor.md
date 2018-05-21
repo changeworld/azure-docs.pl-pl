@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Sieci monitora wydajności rozwiązania na platformie Azure
 
@@ -74,7 +74,7 @@ Należy zainstalować agentów na podstawowy proces [komputery Windows połączy
 
 Monitor wydajności sieci używa transakcji syntetycznych do monitorowania wydajności sieci między agentami źródłowym i docelowym. Można wybrać TCP i ICMP, jako protokół monitorowania w funkcji Monitora wydajności i Monitor punktu końcowego usługi. TCP jest używany dla monitora usługi ExpressRoute. Upewnij się, że zapora zezwala na komunikację między agentami Operations Management Suite służący do monitorowania wybranego protokołu. 
 
-* **Protokół TCP**: wybranie TCP protokołu służy do monitorowania, należy otworzyć port zapory na agentów używanych dla monitora wydajności sieci i monitorowanie usługi ExpressRoute, aby upewnić się, że agenci mogą się ze sobą łączyć. Do otwarcia portu, należy uruchomić skrypt programu PowerShell EnableRules.ps1 bez żadnych parametrów w oknie programu PowerShell z uprawnieniami administracyjnymi.
+* **Protokół TCP**: wybranie TCP protokołu służy do monitorowania, należy otworzyć port zapory na agentów używanych dla monitora wydajności sieci i monitorowanie usługi ExpressRoute, aby upewnić się, że agenci mogą się ze sobą łączyć. Aby otworzyć port, uruchom [EnableRules.ps1](https://aka.ms/npmpowershellscript) skrypt programu PowerShell bez żadnych parametrów w oknie programu PowerShell z uprawnieniami administracyjnymi.
 
     Skrypt tworzy kluczy rejestru wymaganych przez to rozwiązanie. Tworzy również reguł zapory systemu Windows, aby umożliwić agentów do utworzenia połączenia TCP ze sobą. Klucze rejestru utworzony przez skrypt Określ, czy dzienniki debugowania i ścieżka do pliku dzienniki dziennika. Skrypt określa również port TCP agent używany do komunikacji. Wartości te klucze są automatycznie ustawiane przez skrypt. Nie należy zmieniać ręcznie tych kluczy. Otworzyć domyślny port to 8084. Można użyć niestandardowego numeru portu zapewniając numer_portu parametru do skryptu. Użyj tego samego portu na wszystkich komputerach, w którym skrypt jest uruchamiany. 
 
@@ -82,7 +82,7 @@ Monitor wydajności sieci używa transakcji syntetycznych do monitorowania wydaj
     > Skrypt konfiguruje tylko zapory systemu Windows lokalnie. Jeśli masz zapory sieciowej, upewnij się, że umożliwia ruch kierowany do portu TCP używanego przez Monitor wydajności sieci.
 
     >[!NOTE]
-    > Nie trzeba uruchomić skrypt programu EnableRules.ps1 PowerShell monitora punktu końcowego usługi.
+    > Nie trzeba uruchomić [EnableRules.ps1](https://aka.ms/npmpowershellscript ) skrypt programu PowerShell dla usługi Monitor punktu końcowego.
 
     
 
@@ -98,7 +98,7 @@ Monitor wydajności sieci używa transakcji syntetycznych do monitorowania wydaj
    ```
  
 
-### <a name="configure-the-solution"></a>Konfigurowanie rozwiązania 
+### <a name="configure-the-solution"></a>Skonfiguruj rozwiązanie 
 
 1. Dodaj rozwiązanie sieci monitora wydajności do swojego obszaru roboczego z [witrynę Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Można też użyć procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md). 
 2. Otwórz obszar roboczy analizy dzienników i wybierz **omówienie** kafelka. 

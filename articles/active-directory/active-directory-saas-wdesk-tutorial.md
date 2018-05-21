@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Wdesk | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Wdesk."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Wdesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 9338c8b8ef740885562ea3f2f1ac316b2a0783fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c55b9c32ccf6712da69c869a6f44c71e1c209627
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Samouczek: Integracji Azure Active Directory z Wdesk
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Wdesk zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Wdesk (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz. [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz. [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,15 +110,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**. Jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb, wykonaj następujące kroki:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
+    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Te wartości można uzyskać od WDesk portalu, po skonfigurowaniu logowania jednokrotnego. 
@@ -216,7 +216,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Wdesk, musi by
    
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-wdesk-tutorial/createuser1.png)  
 
-5. W **użytkownika** tekst Wprowadź nazwa użytkownika, takich jak  **brittasimon@contoso.com**  i kliknij przycisk **Kontynuuj** przycisku.
+5. W **użytkownika** tekst Wprowadź nazwa użytkownika, takich jak **brittasimon@contoso.com** i kliknij przycisk **Kontynuuj** przycisku.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-wdesk-tutorial/createuser3.png)
 
@@ -224,7 +224,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do Wdesk, musi by
   
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/active-directory-saas-wdesk-tutorial/createuser4.png)
  
-    a. W **E-mail** tekstowym wprowadź adres e-mail użytkownika, takich jak  **brittasimon@contoso.com** .
+    a. W **E-mail** tekstowym wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
 
     b. W **imię** tekst Wprowadź imię użytkownika, takich jak **Britta**.
 
@@ -272,10 +272,10 @@ Po kliknięciu kafelka Wdesk w panelu dostępu użytkownik powinien pobrać auto
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

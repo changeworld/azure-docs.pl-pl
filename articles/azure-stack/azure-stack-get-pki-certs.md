@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure stosu certyfikaty podpisywania generowania żądania
 
@@ -68,10 +68,10 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     > [!note]  
     > Jeśli zostanie podana nazwa pospolita (CN) to zostanie zastąpiony nazwą DNS pierwszego żądania certyfikatu.
 
-3.  Deklarowanie katalog wyjściowy, który już istnieje:
+3.  Deklarowanie katalog wyjściowy, który już istnieje. Na przykład:
 
     ````PowerShell  
-    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
 4.  Deklarowanie zidentyfikować systemu
 
@@ -95,7 +95,7 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` stanowi podstawę, w którym zewnętrznych nazw DNS w stosie Azure są tworzone w tym przykładzie, portalu będzie `portal.east.azurestack.contoso.com`.
+    > `<regionName>.<externalFQDN>` stanowi podstawę, w którym zewnętrznych nazw DNS w stosie Azure są tworzone w tym przykładzie, portalu będzie `portal.east.azurestack.contoso.com`.  
 
 6. Aby wygenerować żądanie certyfikatu jednego z wielu nazwy alternatywnej podmiotu:
 

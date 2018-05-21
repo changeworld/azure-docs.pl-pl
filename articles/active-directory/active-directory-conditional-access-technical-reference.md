@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 300367ee4e4bdb412bf4e5f25ba6cea067e18ed3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 341142222fb1440cf5118e6d10f5a254e73d53d9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -140,6 +140,15 @@ To ustawienie działa z przeglądarki. Jednak do zaspokojenia zasad urządzenia,
 #### <a name="chrome-support"></a>Obsługa programu Chrome
 
 Chrome działu pomocy technicznej w **systemu Windows 10 twórców aktualizację (wersja 1703)** lub później, zainstaluj [to rozszerzenie](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+
+Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz następujący klucz rejestru:
+
+|    |    |
+|--- | ---|
+|Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+|Name (Nazwa) | 1 |
+|Typ | REG_SZ (ciąg) |
+|Dane | ppnbnpeolgkicgegkbkbjmhlideopiji;https://clients2.google.com/service/update2/crx
 
 Chrome działu pomocy technicznej w **7 i Windows 8.1**, utwórz następujący klucz rejestru:
 

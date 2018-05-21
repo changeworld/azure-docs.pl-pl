@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z FirmPlay - propagowanie pracownika dla Rekrutacja | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i FirmPlay - propagowanie pracownika dla Rekrutacja."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i FirmPlay - propagowanie pracownika dla Rekrutacja.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: e1381f2273ee961a4b72dede8cf8e017814ba909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b154901d2e31f493c32e47bd331cc2d4e9fdc1a4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Samouczek: Integracji Azure Active Directory z FirmPlay - propagowanie pracownika dla Rekrutacja
 
@@ -29,7 +29,7 @@ Integrowanie FirmPlay - propagowanie pracownika dla Rekrutacja z usługą Azure 
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do FirmPlay - propagowanie pracownika dla Rekrutacja (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu zarządzania Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -111,7 +111,7 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu zarz
  
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_01.png)
 
-3. Na **FirmPlay - propagowanie pracownika rekrutacji domeny i adresów URL** sekcji w **na adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<your-subdomain>.firmplay.com/`
+3. Na **FirmPlay - propagowanie pracownika rekrutacji domeny i adresów URL** sekcji w **na adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<your-subdomain>.firmplay.com/`
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_02.png)
 
@@ -232,10 +232,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu FirmPlay - propagowanie pracownika Rekrutacja kafelka w panelu dostępu należy należy pobrać automatycznie zalogowane do Twojej FirmPlay - propagowanie pracownika Rekrutacja aplikacji.
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

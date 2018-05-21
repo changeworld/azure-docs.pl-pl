@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Omówienie rozwiązania StorSimple Data Manager
 
@@ -80,6 +80,11 @@ Ten klucz jest używany przez zasoby obliczeniowe na przekształcenie. Tych obli
 Jeśli Twoim regionie Menedżera danych różni się od regionu definicji zadania, ważne jest zrozumienie danych/metadanych znajduje się w każdym z tych obszarów. Poniższy diagram ilustruje efekt o różnych regionach dla definicji Menedżera danych i zadania.
 
 ![Definicja usługi i zadania w różnych regionach](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="gdpr-compliance"></a>GDPR zgodności
+
+[Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR zawiera wiele wymagań dotyczących sposobu zbierania, przechowywania i Użyj informacji osobistych. Reguły GDPR nakłada się na firm, agencji rządowych i innych organizacji, które działają w UE i zbierać, Analizuj dane powiązane mieszkańców Unii Europejskiej. Menedżer StorSimple danych jest GDPR zgodne. Usługę Menedżer danych nie zbiera danych osobowych.
+Aby uzyskać więcej informacji, przejrzyj zasady Privacy firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

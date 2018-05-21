@@ -30,6 +30,8 @@
           href: sql-database-connect-query-dotnet-visual-studio.md
         - name: .NET Core
           href: sql-database-connect-query-dotnet-core.md
+        - name: .NET z uwierzytelnianiem wieloskładnikowym usługi Active Directory
+          href: active-directory-interactive-connect-azure-sql-db.md
         - name: Przejdź
           href: sql-database-connect-query-go.md
         - name: Java
@@ -102,6 +104,16 @@
       items:
         - name: Omówienie
           href: sql-database-security-overview.md
+        - name: Zaawansowana ochrona przed zagrożeniami
+          href: sql-advanced-threat-protection.md
+        - name: Odnajdowanie i klasyfikacja danych
+          href: sql-database-data-discovery-and-classification.md
+        - name: Ocena luk w zabezpieczeniach
+          href: sql-vulnerability-assessment.md
+        - name: Wykrywanie zagrożeń — usługa SQL Database
+          href: sql-database-threat-detection.md
+        - name: Wykrywanie zagrożeń — wystąpienie zarządzane
+          href: sql-database-managed-instance-threat-detection.md
         - name: Reguły zapory
           href: sql-database-firewall-configure.md
         - name: Reguły sieci wirtualnej zapory
@@ -118,18 +130,10 @@
           href: sql-database-auditing.md
         - name: Inspekcja — wystąpienie zarządzane
           href: sql-database-managed-instance-auditing.md
-        - name: Wykrywanie zagrożeń — usługa SQL Database
-          href: sql-database-threat-detection.md
-        - name: Wykrywanie zagrożeń — wystąpienie zarządzane
-          href: sql-database-managed-instance-threat-detection.md
         - name: Inspekcje tabel i protokół TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dynamiczne maskowanie danych
           href: sql-database-dynamic-data-masking-get-started.md
-        - name: Ocena luk w zabezpieczeniach
-          href: sql-vulnerability-assessment.md
-        - name: Odnajdowanie i klasyfikacja danych
-          href: sql-database-data-discovery-and-classification.md
     - name: Ciągłość działalności biznesowej
       items:
         - name: Omówienie

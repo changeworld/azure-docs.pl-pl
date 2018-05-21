@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 548bd4ca9e8ec66e4c50ea078dc0bccc1788095a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Zarządzanie logowanie jednokrotne dla aplikacji przedsiębiorstwa
 
-W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com) do zarządzania ustawieniami pojedynczego logowania jednokrotnego dla aplikacji przedsiębiorstwa. Enterprise aplikacje to aplikacje, które są wdrożone i używane w organizacji. Ten artykuł dotyczy szczególnie aplikacje, które zostały dodane z [galerii aplikacji usługi Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). 
+W tym artykule opisano sposób użycia [portalu Azure](https://portal.azure.com) do zarządzania ustawieniami pojedynczego logowania jednokrotnego dla aplikacji przedsiębiorstwa. Enterprise aplikacje to aplikacje, które są wdrożone i używane w organizacji. Ten artykuł dotyczy szczególnie aplikacje, które zostały dodane z [galerii aplikacji usługi Azure Active Directory](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). 
 
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
 Wszystkie aplikacje firmowe, które są skonfigurowane dla logowania jednokrotnego, można wyświetlać i zarządzać w portalu Azure. Aplikacje można znaleźć w **wszystkie usługi** &gt; **aplikacje dla przedsiębiorstw** części portalu. 
@@ -43,7 +43,7 @@ Aby zarządzać ustawienia rejestracji jednokrotnej, wybierz **logowanie jednokr
 * **Na podstawie hasła logowania jednokrotnego** — ta opcja jest dostępna, jeśli usługi Azure AD obsługuje formularz hasła wypełnianie dla tej aplikacji.
 * **Połączone logowania jednokrotnego** — wcześniej znana jako "Istniejące rejestracji jednokrotnej", ta opcja umożliwia administratorom umieść link do tej aplikacji w ich użytkownik uruchamiający aplikację Panel dostępu usługi Azure AD lub usługi Office 365.
 
-Aby uzyskać więcej informacji na temat trybów, zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Aby uzyskać więcej informacji na temat trybów, zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="saml-based-sign-on"></a>Na podstawie SAML logowania jednokrotnego
 **Na języku SAML logowania jednokrotnego** opcji jest podzielony na cztery sekcje:
@@ -79,12 +79,12 @@ Ostatnia zawiera dokumentacja i/lub kontrolki, należy skonfigurować aplikację
 ![Osadzony dokumentów](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>Na podstawie hasła logowania jednokrotnego
-Jeśli jest obsługiwany dla aplikacji, wybierając tryb logowania jednokrotnego opartego na hasłach i wybierając **zapisać** natychmiast konfiguruje wykonania opartego na hasłach logowania jednokrotnego. Aby uzyskać więcej informacji na temat wdrażania opartego na hasłach logowania jednokrotnego, zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Jeśli jest obsługiwany dla aplikacji, wybierając tryb logowania jednokrotnego opartego na hasłach i wybierając **zapisać** natychmiast konfiguruje wykonania opartego na hasłach logowania jednokrotnego. Aby uzyskać więcej informacji na temat wdrażania opartego na hasłach logowania jednokrotnego, zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Na podstawie hasła logowania jednokrotnego](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>Połączonego logowania jednokrotnego
-Jeśli obsługiwane w przypadku aplikacji, wybierając tryb połączonego logowania jednokrotnego pozwala na wprowadź adres URL, który ma być Panel dostępu usługi Azure AD lub usługi Office 365 przekierowania po kliknięciu tej aplikacji. Aby uzyskać więcej informacji na temat połączonego logowania jednokrotnego (wcześniej znane jako "istniejące SSO"), zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Jeśli obsługiwane w przypadku aplikacji, wybierając tryb połączonego logowania jednokrotnego pozwala na wprowadź adres URL, który ma być Panel dostępu usługi Azure AD lub usługi Office 365 przekierowania po kliknięciu tej aplikacji. Aby uzyskać więcej informacji na temat połączonego logowania jednokrotnego (wcześniej znane jako "istniejące SSO"), zobacz [jak logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Połączonego logowania jednokrotnego](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 

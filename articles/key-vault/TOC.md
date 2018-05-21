@@ -16,11 +16,12 @@
 # Przykłady
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=key-vault)
 # Pojęcia
+## [Co to jest usługa Key Vault?](key-vault-whatis.md)
 ## [Środowiska zabezpieczeń](key-vault-ovw-security-worlds.md)
 ## [Usuwanie nietrwałe](key-vault-ovw-soft-delete.md)
 ## [Klucze kont magazynu](key-vault-ovw-storage-keys.md)
 ## [Ograniczanie przepływności](key-vault-ovw-throttling.md)
-## [Co to jest usługa Key Vault?](key-vault-whatis.md)
+
 
 # Przewodniki z instrukcjami
 ## Zarządzanie
@@ -68,11 +69,12 @@
 ### [Metody tworzenia certyfikatów](create-certificate.md)
 ### [Monitorowanie tworzenia certyfikatów i zarządzanie nim](create-certificate-scenarios.md)
 ## [Uwierzytelnianie, żądania i odpowiedzi](authentication-requests-and-responses.md)
+## [Funkcje danych klienta](key-vault-customer-data.md)
 ## [Wspólne parametry i nagłówki](common-parameters-and-headers.md)
 ## [Wersje magazynu kluczy](key-vault-versions.md)
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)
-## [Przykłady kodu](https://www.microsoft.com/download/details.aspx?id=45343)
+## [Przykłady kodu](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language=)
 ## [Fora](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [Cennik](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)

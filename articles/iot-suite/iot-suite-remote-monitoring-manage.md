@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 599f8327e9939f400ca18c87fa6193ac3c1e4a61
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Konfigurowanie urządzeń oraz zarządzanie nimi
 
@@ -24,7 +24,7 @@ Ten samouczek Pokazuje urządzenie możliwości zarządzania zdalnego rozwiązan
 
 Firma Contoso ma uporządkowane nowe maszyny do rozwiń jedno ze swoich urządzeń do zwiększenia danych wyjściowych. Podczas oczekiwania dla nowych maszyn mają być dostarczane chcesz uruchomić symulacji, aby sprawdzić zachowanie rozwiązania. Jako operator chcesz zarządzania i skonfigurować urządzenia w rozwiązaniu do monitorowania zdalnego.
 
-Oferuje rozszerzalny sposób zarządzania i konfigurowanie urządzeń, rozwiązanie monitorowania zdalnego korzysta z Centrum IoT funkcji, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md). Aby dowiedzieć się, jak implementuje metody dewelopera urządzenia na urządzeniu fizycznym, zobacz [dostosować zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-customize.md).
+Oferuje rozszerzalny sposób zarządzania i konfigurowanie urządzeń, rozwiązanie monitorowania zdalnego korzysta z Centrum IoT funkcji, takich jak [zadania](../iot-hub/iot-hub-devguide-jobs.md) i [bezpośrednie metody](../iot-hub/iot-hub-devguide-direct-methods.md). Aby dowiedzieć się, jak implementuje metody dewelopera urządzenia na urządzeniu fizycznym, zobacz [dostosować zdalnego monitorowania akcelerator rozwiązań](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -38,7 +38,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Aby użyć tego samouczka, należy wdrożone wystąpienie zdalnego rozwiązanie monitorowania w ramach subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](iot-suite-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrożyć zdalnego monitorowania akcelerator rozwiązań](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) samouczka.
 
 ## <a name="add-a-simulated-device"></a>Dodaj symulowane urządzenie
 

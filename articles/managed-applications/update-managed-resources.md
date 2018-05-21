@@ -1,20 +1,20 @@
 ---
-title: "Aktualizowanie zasobów na platformie Azure zarządzane aplikacje | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób pracy do zasobów w zarządzanej aplikacji zarządzane przez grupę zasobów platformy Azure."
+title: Aktualizowanie zasobów na platformie Azure zarządzane aplikacje | Dokumentacja firmy Microsoft
+description: Opisuje sposób pracy do zasobów w zarządzanej aplikacji zarządzane przez grupę zasobów platformy Azure.
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: d3c955d7be0e7e6d45751c0e685bad498e524d94
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 7c2b38055771dae458e4a3a56c2c98231335ae03
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Praca z zasobami w zarządzanej aplikacji zarządzane przez grupę zasobów platformy Azure
 
@@ -93,7 +93,7 @@ Przypisania zasad jest wyświetlana w portalu.
 
 ![Widok przypisania zasad](./media/update-managed-resources/assignment.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
 * Dla przykładowych projektach [przykładowe projekty dla platformy Azure zarządzanych aplikacji](sample-projects.md).

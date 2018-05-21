@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Wingspan eTMF | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Wingspan eTMF."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Wingspan eTMF.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 83ec7a6fda5bfb14fefa0932135592a9e1a640a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f597a6cbad27da2f9e06273a10034ea77a37caf1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Samouczek: Integracji Azure Active Directory z Wingspan eTMF
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Wingspan eTMF zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do eTMF Wingspan (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,11 +110,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-wingspanetmf-tutorial/tutorial_wingspanetmf_url11.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<customer name>.<instance name>.mywingspan.com/saml`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer name>.<instance name>.mywingspan.com/saml`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`http://saml.<instance name>.wingspan.com/shibboleth`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `http://saml.<instance name>.wingspan.com/shibboleth`
 
-    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<customer name>.<instance name>.mywingspan.com/`
+    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer name>.<instance name>.mywingspan.com/`
      
     > [!NOTE] 
     > Wartości te nie są rzeczywistych. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi w tym nazwa rzeczywista klienta i nazwa wystąpienia, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta eTMF Wingspan](http://www.wingspan.com/contact-us/) uzyskać te wartości. 
@@ -204,10 +204,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Kliknij Kafelek eTMF Wingspan w panelu dostępu, nastąpi przekierowanie do logowania organizacji na stronie. Po pomyślnego logowania użytkownik będzie można zalogowane Wingspan eTMF aplikacji. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](https://msdn.microsoft.com/library/dn308586).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

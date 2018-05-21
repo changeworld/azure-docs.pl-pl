@@ -9,11 +9,11 @@ ms.topic: reference
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: ff56928748f536ffe1cfc30891585565e962d9fe
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d31c169600c594fc4764262cb8d080e9aee96b21
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="services-that-support-managed-service-identity"></a>Usługi obsługujące tożsamość usługi zarządzania 
 
@@ -29,6 +29,7 @@ Następujących usług platformy Azure obsługuje zarządzane tożsamości usłu
 | Azure App Service | Wersja zapoznawcza | 2017 września | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Szablon usługi Azure Resource Manager](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Functions | Wersja zapoznawcza | 2017 września | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Szablon usługi Azure Resource Manager](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Data Factory V2 | Wersja zapoznawcza | 2017 listopada | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[Program PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+| Usługa Azure API Management | Wersja zapoznawcza | 2017 października | [Szablon usługi Azure Resource Manager](/azure/api-management/api-management-howto-use-managed-service-identity) |
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure usługi uwierzytelniania pomocy technicznej usługi Azure AD
 
@@ -36,9 +37,9 @@ Następujące usługi obsługi uwierzytelniania usługi Azure AD i zostały prze
 
 | Usługa | Identyfikator zasobu | Stan | Date | Przypisywanie dostępu |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com | Dostępna | 2017 września | [Azure Portal](howto-assign-access-portal.md) <br>[Program PowerShell](howto-assign-access-powershell.md) <br>[Interfejs wiersza polecenia platformy Azure](howto-assign-access-CLI.md) |
-| W usłudze Azure Key Vault | https://vault.azure.net | Dostępna | 2017 września | |
-| Azure Data Lake | https://datalake.azure.net | Dostępna | 2017 września | |
-| Azure SQL | https://database.windows.net | Dostępna | 2017 października | |
-| Azure Event Hubs | https://eventhubs.azure.net | Dostępna | 2017 grudnia | |
-| Azure Service Bus | https://servicebus.azure.net | Dostępna | 2017 grudnia | |
+| Azure Resource Manager | https://management.azure.com/ | Dostępne | 2017 września | [Azure Portal](howto-assign-access-portal.md) <br>[Program PowerShell](howto-assign-access-powershell.md) <br>[Interfejs wiersza polecenia platformy Azure](howto-assign-access-CLI.md) |
+| W usłudze Azure Key Vault | https://vault.azure.net | Dostępne | 2017 września | |
+| Azure Data Lake | https://datalake.azure.net/ | Dostępne | 2017 września | |
+| Azure SQL | https://database.windows.net/ | Dostępne | 2017 października | |
+| Azure Event Hubs | https://eventhubs.azure.net | Dostępne | 2017 grudnia | |
+| Azure Service Bus | https://servicebus.azure.net | Dostępne | 2017 grudnia | |

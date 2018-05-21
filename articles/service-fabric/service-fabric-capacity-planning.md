@@ -1,24 +1,24 @@
 ---
-title: "Planowanie wydajności dla aplikacji sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób określenia liczby węzłów obliczeniowych wymagane dla aplikacji sieci szkieletowej usług"
+title: Planowanie wydajności dla aplikacji sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: Opisuje sposób określenia liczby węzłów obliczeniowych wymagane dla aplikacji sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: markfuss
-editor: 
+editor: ''
 ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: dc5e81ff7e5466d258624cee80c520c848bd60fa
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ac8abbdbbe9125ea036d837c08e1089aa6d1e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Planowanie wydajności dla aplikacji sieci szkieletowej usług
 Ten dokument jest przedstawienie sposobu oszacować ilość zasobów (procesorów CPU, pamięci RAM, dysku magazynu), należy uruchomić aplikacji sieci szkieletowej usług Azure. Bardzo często wymagań dotyczących zasobów zmiany w czasie. Tworzenie i testowanie usługi, a następnie wymaga większej ilości zasobów, przejdź do środowiska produkcyjnego i rozwoju aplikacji w popularne zwykle wymagają niewielkiej ilości zasobów. Podczas projektowania aplikacji przemyślenie długoterminowych wymagań i opcji umożliwiających usługi do skalowania, aby spełnić wymagania wysokiej klienta.

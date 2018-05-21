@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z ClickTime | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ClickTime."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ClickTime.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f19e1968c736cb21a2a80b9807fa86461e05ee42
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f24dab1856880a3d8c69701257167cae8d97e241
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Samouczek: Integracji Azure Active Directory z ClickTime
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD ClickTime zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do ClickTime (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,7 +108,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny ClickTime pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL jako:`https://app.clicktime.com/sp/`
+    a. W **identyfikator** tekstowym, wpisz adres URL jako: `https://app.clicktime.com/sp/`
     
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
 
@@ -201,7 +201,7 @@ W przypadku ClickTime Inicjowanie obsługi to zadanie ręczne.
    
     a.  W **Pełna nazwa** pole tekstowe, typ Pełna nazwa użytkownika, takich jak **Simona Britta**. 
   
-    b.  W **adres e-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak  **brittasimon@contoso.com** .
+    b.  W **adres e-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
        
     > [!NOTE]
     > Jeśli chcesz, można ustawić dodatkowe właściwości dla nowego obiektu osoby.
@@ -238,17 +238,17 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka ClickTime w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji ClickTime.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

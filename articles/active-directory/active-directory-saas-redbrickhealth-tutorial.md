@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z RedBrick kondycji | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i RedBrick kondycji."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i RedBrick kondycji.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 598592d87cf6471a431dab89d19c5e8beb48e661
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 8d51d516d8716c0ac07bc851210733d352c47b6a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Samouczek: Integracji Azure Active Directory z RedBrick kondycji
 
@@ -30,7 +30,7 @@ Integrowanie RedBrick kondycji z usługą Azure AD zapewnia następujące korzy�
 - Umożliwia użytkownikom automatycznie pobrać zalogowane RedBrick kondycję (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,17 +108,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![RedBrick domeny kondycji i adresów URL jednym informacje logowania jednokrotnego](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL:`http://www.redbrickhealth.com`
+    a. W **identyfikator** tekstowym, wpisz adres URL: `http://www.redbrickhealth.com`
     
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL:`https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
-    W środowisku produkcyjnym:`https://sso.redbrickhealth.com/sp/ACS.saml2`
+    W środowisku produkcyjnym: `https://sso.redbrickhealth.com/sp/ACS.saml2`
 
-    d. Kliknij przycisk **Pokaż zaawansowane ustawienia adresu URL**.
+    c. Kliknij przycisk **Pokaż zaawansowane ustawienia adresu URL**.
     
     ![RedBrick domeny kondycji i adresów URL jednym informacje logowania jednokrotnego](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_url1.png)
 
-    d. W **stan przekazywania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1`
+    d. W **stan przekazywania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1`
     
     > [!NOTE] 
     > Wartość stanu przekazywania nie jest prawdziwe. Zaktualizuj tę wartość z faktycznym stanem przekazywania. Skontaktuj się z [zespołem pomocy technicznej RedBrick kondycji](https://home.redbrickhealth.com/contact/) aby zyskać tę wartość.
@@ -146,7 +146,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
     
-    d. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
 
     d. Pozostaw **Namespace** puste.
     
@@ -197,7 +197,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
   
@@ -235,7 +235,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -245,7 +245,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

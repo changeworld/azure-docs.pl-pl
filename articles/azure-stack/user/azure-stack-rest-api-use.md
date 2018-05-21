@@ -3,55 +3,57 @@ title: Użyj interfejsu API stosu Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak pobrać uwierzytelniania z platformą Azure, aby wysyłać żądania interfejsu API Azure stosu.
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/14/2018
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.openlocfilehash: 2bbfe4f829ad5c42a5742fdf08f2d185af627f42
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.reviewer: thoroet
+ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
-<!--  cblackuk and charliejllewellyn -->
+<!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
 # <a name="use-the-azure-stack-api"></a>Użyj interfejsu API Azure stosu
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Można użyć interfejsu API stosu Azure do automatyzacji operacji, takich jak syndicating elementów marketplace.
+Azure stosu interfejsu programowania aplikacji (API) służy do automatyzacji operacji, takich jak syndicating elementów marketplace.
 
-Korzystanie z interfejsu API wymaga klienta do uwierzytelniania względem punktu końcowego logowania Microsoft Azure. Punkt końcowy zwraca token do użycia w nagłówku każde żądanie wysłane do interfejsu API Azure stosu. (Microsoft Azure korzysta z protokołu Oauth 2.0).
+Interfejs API wymaga klienta do uwierzytelniania względem punktu końcowego logowania Microsoft Azure. Punkt końcowy zwraca token do użycia w nagłówku każde żądanie wysłane do interfejsu API Azure stosu. Microsoft Azure korzysta z protokołu Oauth 2.0.
 
-Ten artykuł zawiera przykłady, które umożliwia tworzenie żądań stosu Azure narzędzie curl. Poniższe przykłady przeprowadzenie proces pobierania tokenu na potrzeby dostępu interfejsu API stosu Azure. Większość języków programowania udostępnia bibliotekach Oauth 2.0, które są niezawodne tokenu zadania zarządzania i obsługi takich token odświeżania.
+W tym artykule przedstawiono przykłady, które używają **cURL** narzędzie do tworzenia żądań stosu Azure. Aplikacja, zwinięcie, jest narzędziem wiersza polecenia z biblioteki do przesyłania danych. Poniższe przykłady przeprowadzenie proces pobierania tokenu na potrzeby dostępu interfejsu API stosu Azure. Większość języków programowania udostępnia bibliotekach Oauth 2.0, które są niezawodne tokenu zadania zarządzania i obsługi takich token odświeżania.
 
-Spojrzenie na cały proces przy użyciu interfejsu API REST stosu Azure z ogólnym klienta REST, takie jak curl ułatwia zrozumienie podstawowych żądania i pokazuje, czego można oczekiwać w ładunku odpowiedzi.
+Przejrzyj cały proces przy użyciu interfejsu API REST stosu Azure z ogólnym klienta REST, takich jak **cURL**, aby ułatwić zrozumienie podstawowych żądania i pokazuje, czego można oczekiwać w ładunku odpowiedzi.
 
-W tym artykule nie Eksploruj wszystkie opcje dostępne dla pobierania tokenów, takie jak logowania interakcyjnego lub tworzenia dedykowanych identyfikatorów aplikacji. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST Azure](https://docs.microsoft.com/rest/api/).
+W tym artykule nie Eksploruj wszystkie opcje dostępne dla pobierania tokenów, takie jak logowania interakcyjnego lub tworzenia dedykowanych identyfikatorów aplikacji. Aby uzyskać informacje dotyczące tych tematów, zobacz [dokumentacja interfejsu API REST Azure](https://docs.microsoft.com/rest/api/).
 
 ## <a name="get-a-token-from-azure"></a>Pobierz token z platformy Azure
 
-Utwórz żądanie *treści* sformatowany przy użyciu typu zawartości x--www-form-urlencoded można uzyskać tokenu dostępu. Po żądania do punktu końcowego uwierzytelniania REST Azure i logowania.
+Utwórz treści żądania, sformatowany przy użyciu typu zawartości x--www-form-urlencoded można uzyskać tokenu dostępu. Po żądania do punktu końcowego uwierzytelniania REST Azure i logowania.
 
-```
+### <a name="uri"></a>Identyfikator URI
+
+```bash  
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
 **Identyfikator dzierżawy** jest:
 
-* Domena dzierżawy, takie jak fabrikam.onmicrosoft.com
-* Twój identyfikator dzierżawy, takie jak 8eaed023-2b34-4da1-9baa-8bc8c9d6a491
-* Wartość domyślna dla kluczy dzierżawy niezależny: wspólnej
+ - Domenę dzierżawy, takich jak `fabrikam.onmicrosoft.com`
+ - Identyfikator dzierżawy, takich jak `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+ - Wartość domyślna dla kluczy niezależny od dzierżawy: `common`
 
 ### <a name="post-body"></a>Treść wpisu
 
-```
+```bash  
 grant_type=password
 &client_id=1950a258-227b-4e31-a9cf-717495945fc2
 &resource=https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155
@@ -62,32 +64,25 @@ grant_type=password
 
 Dla każdej wartości:
 
-  **grant_type**
+ - **grant_type**  
+    Typ schematu uwierzytelniania będzie przy użyciu. W tym przykładzie wartość to `password`
 
-  Typ schematu uwierzytelniania będzie przy użyciu. W tym przykładzie wartość to:
+ - **resource**  
+    Zasób uzyskuje dostęp do tokenu. Badając punktu końcowego metadanych zarządzania stosu Azure można znaleźć zasobu. Przyjrzyj się **odbiorców** sekcji
 
-  ```
-  password
-  ```
+ - **Punkt końcowy zarządzania Azure stosu**  
+    ```
+    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+    ```
 
-  **resource**
-
-  Zasób uzyskuje dostęp do tokenu. Badając punktu końcowego metadanych zarządzania stosu Azure można znaleźć zasobu. Przyjrzyj się **odbiorców** sekcji
-
-  Punkt końcowy usługi Azure Management stosu:
-
-  ```
-  https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
-  ```
-
- > [!NOTE]
- > Jeśli jesteś administratorem próby uzyskania dostępu do interfejsu API dzierżawcy, należy upewnić się użyć punktu końcowego dzierżawcy, na przykład: "https://adminmanagement.{region}.{Azure domeny stosu} punkty końcowe metadanych /? api-version = 2015-01-011
+  > [!NOTE]  
+  > Jeśli jesteś administratorem próby uzyskania dostępu do interfejsu API dzierżawcy musi upewnij się, że należy użyć punktu końcowego dzierżawcy, na przykład: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   Na przykład z zestawem Azure stosu programowanie jako punktu końcowego:
 
-  ```
-  curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
-  ```
+    ```bash
+    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
+    ```
 
   Odpowiedź:
 
@@ -171,17 +166,17 @@ Odpowiedź:
 
 ## <a name="api-queries"></a>Zapytania interfejsu API
 
-Po uzyskaniu tokenu dostępu, należy dodać ją jako nagłówka do wszystkich żądań interfejsu API. Aby to zrobić, należy utworzyć nagłówek **autoryzacji** z wartością: `Bearer <access token>`. Na przykład:
+Po pobraniu tokenu dostępu, należy dodać go jako nagłówka do wszystkich żądań interfejsu API. Aby to zrobić, należy utworzyć nagłówek **autoryzacji** z wartością: `Bearer <access token>`. Na przykład:
 
 Żądanie:
 
-```
+```bash  
 curl -H "Authorization: Bearer eyJ0eXAiOi...truncated for readability..." 'https://adminmanagement.local.azurestack.external/subscriptions?api-version=2016-05-01'
 ```
 
 Odpowiedź:
 
-```
+```bash  
 offerId : /delegatedProviders/default/offers/92F30E5D-F163-4C58-8F02-F31CFE66C21B
 id : /subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8
 subscriptionId : 800c4168-3eb1-406b-a4ca-919fe7ee42e8
@@ -222,6 +217,6 @@ https://adminmanagement.local.azurestack.external/{subscription id}/resourcegrou
 https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji o używaniu Azure RESTful punktów końcowych, zobacz [dokumentacja interfejsu API REST Azure](https://docs.microsoft.com/rest/api/).

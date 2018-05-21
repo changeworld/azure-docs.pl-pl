@@ -5,14 +5,14 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 04/27/2018
+ms.date: 05/16/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 03b7ce49f935c36b0e0652925c41deea987a2a26
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0deda4324a4287e7aa25cb686acb5b6152443735
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 Fabryka danych jest usługą wielodostępne, która ma następujące domyślne limity mające na celu upewnij się, że subskrypcjami klientów są chronione przez obciążeń. Wiele granic można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu za pośrednictwem pracowników pomocy technicznej.
 
@@ -27,7 +27,7 @@ Fabryka danych jest usługą wielodostępne, która ma następujące domyślne l
 | Połączonych usług w fabryce danych | 2500 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Programy obsługi integracji w fabryce danych <sup>4</sup> | 2500 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Całkowita liczba rdzeni procesora CPU dla Runtime(s) integracji usług SSIS Azure w ramach jednej subskrypcji | 100 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Potok współbieżnych jest uruchamiane na potoku | 20 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Potok współbieżnych jest uruchamiane na potoku | 100 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maksymalna liczba działań na potoku | 20 | 30 |
 | Maksymalna liczba parametrów na potoku | 20 | 30 |
 | Bajtów dla każdego obiektu dla potoku obiektów <sup>1</sup> | 200 KB | 200 KB |

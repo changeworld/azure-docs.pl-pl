@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 786261b38fe27dccc9c7ef5ee6550f4b50c52e4b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ab9ad821c6780c685c884a87f3075a5d58c1d73a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia Podaj zrównoważonym stosunek pamięć Procesora. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -29,7 +29,7 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia Podaj zrównoważonym stosun
 
 ## <a name="b-series"></a>Seria B
 
-Maszyny wirtualne burstable B serii idealnie nadają się do obciążeń, które nie muszą pełną wydajność procesora, takich jak serwery sieci web, małych baz danych i programowania i testowania środowisk. Te obciążenia mają zwykle burstable wymagania. Seria B umożliwia tych klientów zakupu dla rozmiaru maszyny Wirtualnej z ceny wydajności bazowej sumienia umożliwia wystąpienia maszyny Wirtualnej w celu zbudowania środków, gdy maszyna wirtualna jest mniejsza od swojej podstawowej wydajności przy użyciu. Po zebraniu środki maszyny Wirtualnej, maszyna wirtualna może serii powyżej linii bazowej maszyny Wirtualnej przy użyciu maksymalnie 100% Procesora, gdy aplikacja wymaga wyższej wydajności procesora CPU.
+Maszyny wirtualne burstable B serii idealnie nadają się do obciążeń, które nie muszą pełną wydajność procesora, takich jak serwery sieci web, małych baz danych i programowania i testowania środowisk. Te obciążenia mają zwykle burstable wymagania. Serii B umożliwia tych klientów dla rozmiaru maszyny Wirtualnej z umożliwiający wystąpienia maszyny Wirtualnej w celu zbudowania środków, gdy maszyna wirtualna jest mniejsza od swojej podstawowej wydajności przy użyciu wydajności bazowej świadome cen zakupu. Po zebraniu środki maszyny Wirtualnej, maszyna wirtualna może serii powyżej linii bazowej maszyny Wirtualnej przy użyciu maksymalnie 100% Procesora, gdy aplikacja wymaga wyższej wydajności procesora CPU.
 
 
 | Rozmiar             | Procesor wirtualny  | Pamięć: GiB | Lokalne dyski SSD: GiB | Podstawowej wydajności rdzenia | Kredyty wpłaty / godzina | Maksymalna liczba wpłaty środków | Maks. liczba dysków danych | MAX dysku danych o wydajności: liczba IOPS / MB/s | Maksymalna liczba niebuforowanych dysku danych o wydajności: liczba IOPS / MB/s | Maksymalna liczba kart sieciowych |          

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 0ef8247eba4605d3c8e5ef0992ce97bce989002e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ce5fd2feaa30948042cc0570a4b0ea7f0ab7ad77
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączenia kopii zapasowej Azure stosu z portalu administracyjnego
 Infrastruktura usługi kopii zapasowej za pośrednictwem portalu administracyjnego należy włączyć, dzięki czemu stosu Azure mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska przy użyciu chmury odzyskiwania w przypadku [poważnej awarii](.\azure-stack-backup-recover-data.md). Celem chmura odzyskiwania jest zapewnienie, że operatorów, a użytkownicy mogą Zaloguj się do portalu po zakończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnego planów, oferty i obliczeń uprzednio zdefiniowanej, magazynu i limitów przydziałów sieci.
@@ -45,7 +45,7 @@ Administratorzy i użytkownicy są odpowiedzialne za tworzenie kopii zapasowych 
 3. Wpisz ścieżkę do **lokalizacja magazynu kopii zapasowej**. Użyj ciągu konwencji UNC (Universal Naming) dla ścieżki do udziału plików hostowane na osobnych urządzenia. Ciąg UNC Określa lokalizację zasobów, takich jak udostępnione pliki lub urządzeń. Dla usługi używając adresu IP. Aby zapewnić dostępność kopii zapasowej danych po awarii, urządzenie powinno być w innej lokalizacji.
     > [!Note]  
     > Jeśli środowisko obsługuje rozpoznawania nazw z siecią infrastruktury Azure stosu w środowisku przedsiębiorstwa, można użyć nazwy FQDN, a nie adres IP.
-4. Typ **Username** przy użyciu domena i nazwa użytkownika. Na przykład `Contoso\administrator`.
+4. Typ **Username** przy użyciu domena i nazwa użytkownika z wystarczające prawa dostępu do odczytu i zapisu plików. Na przykład `Contoso\backupshareuser`.
 5. Typ **hasło** dla użytkownika.
 5. Wpisz hasło ponownie **Potwierdź hasło**.
 6. Podaj klucz wstępny w **klucza szyfrowania** pole. Pliki kopii zapasowej są szyfrowane za pomocą tego klucza. Upewnij się, że przechowywanie tego klucza w bezpiecznej lokalizacji. Po ustawić ten klucz po raz pierwszy lub Obróć klucz w przyszłości, nie można wyświetlić tego klucza z tego interfejsu. Więcej instrukcji do wygenerowania klucza wstępnego, wykonaj skrypty w [włączenia kopii zapasowej Azure stosu przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md#generate-a-new-encryption-key). 

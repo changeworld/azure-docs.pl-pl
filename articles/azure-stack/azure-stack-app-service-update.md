@@ -1,31 +1,31 @@
 ---
-title: "Aktualizacja usługi aplikacji Azure na stosie Azure | Dokumentacja firmy Microsoft"
-description: "Szczegółowe wskazówki dotyczące aktualizacji w usłudze Azure App Service na stosie Azure"
+title: Aktualizacja usługi aplikacji Azure na stosie Azure | Dokumentacja firmy Microsoft
+description: Szczegółowe wskazówki dotyczące aktualizacji w usłudze Azure App Service na stosie Azure
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 151456bbb7f9331730e640e4bece3872c3c92f8d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c822f25e25953b8709f481e51d6a63e6a912a60a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizacja usługi aplikacji Azure na stosie Azure
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1802 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service.
+> Zastosowanie aktualizacji 1804 systemu Azure stosu zintegrowane lub wdrożyć najnowszy zestaw deweloperski stosu Azure przed wdrożeniem usługi Azure App Service 1.2.
 >
 >
 
@@ -44,7 +44,7 @@ W trakcie tego procesu uaktualniania zostanie:
 * Przygotowanie wszystkich pakietów aktualizacji i nowe wersje wszystkich bibliotek OSS do wdrożenia
 * Przekaż do magazynu
 * Uaktualnij wszystkie role usługi aplikacji (kontrolerów, zarządzania, frontonu, wydawcy i proces roboczy ról)
-* Aktualizacja definicji zestawu skali usługi aplikacji
+* Zaktualizuj definicje zestawów skalowania usługi App Service
 * Aktualizowanie manifestu dostawcy zasobów usługi aplikacji
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ W trakcie tego procesu uaktualniania zostanie:
 
 Aby uaktualnić wdrożenie usługi App Service na stosie Azure, wykonaj następujące kroki:
 
-1. Pobierz [Instalatora usługi aplikacji](https://aka.ms/appsvcupdate1installer)
+1. Pobierz [Instalatora usługi aplikacji](https://aka.ms/appsvcupdate2installer)
 
 2. Uruchom jako administrator appservice.exe
 
@@ -74,8 +74,8 @@ Aby uaktualnić wdrożenie usługi App Service na stosie Azure, wykonaj następu
 
    1. Kliknij przycisk **Connect** znajdujący się obok **subskrypcji platformy Azure stosu** pole.
         * Jeśli używasz usługi Azure Active Directory (Azure AD), wprowadź konto administratora usługi Azure AD i hasło podane podczas wdrażania usługi Azure stosu. Kliknij przycisk **Zaloguj**.
-        * Jeśli używasz programu Active Directory Federation Services (AD FS), podaj konto administratora. Na przykład  *cloudadmin@azurestack.local* . Wprowadź hasło, a następnie kliknij przycisk **logowania**.
-   2. W **subskrypcji platformy Azure stosu** Wybierz subskrypcję.
+        * Jeśli używasz programu Active Directory Federation Services (AD FS), podaj konto administratora. Na przykład *cloudadmin@azurestack.local*. Wprowadź hasło, a następnie kliknij przycisk **logowania**.
+   2. W **subskrypcji platformy Azure stosu** wybierz opcję **domyślny dostawca subskrypcji**.
    3. W **lokalizacji stosu Azure** wybierz lokalizację, do której odnosi się do regionu jest wdrażany do. Na przykład wybierz **lokalnego** Jeśli wdrażanie Azure stosu Development Kit.
    4. Jeśli istniejące wdrożenie usługi aplikacji został odnaleziony, następnie zasobów grupy i konto magazynu zostanie wypełnione i nieaktywna.
    5. Kliknij przycisk **dalej** do Przejrzyj podsumowanie uaktualnienia.

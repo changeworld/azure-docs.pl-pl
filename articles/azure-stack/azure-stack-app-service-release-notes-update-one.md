@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: fedf511e06243d5c0652e422b397bb00da3b42c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługi aplikacji — informacje o wersji 1 update Azure stosu
 
@@ -39,7 +39,7 @@ Usługa aplikacji Azure stosu Update 1 numer kompilacji jest **69.0.13698.9**
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 > [!IMPORTANT]
-> Nowe wdrożenia usługi Azure App Service na stosie Azure wymaga [certyfikat uniwersalny podmiotu trzech](azure-stack-app-service-before-you-get-started.md#get-certificates) ze względu na ulepszenia w taki sposób, w jaki usługa rejestracji Jednokrotnej dla Kudu teraz obsługiwane w usłudze Azure App Service. Nowy temat jest ** *.sso.appservice.<region>.<domainname>.<extension>**
+> Nowe wdrożenia usługi Azure App Service na stosie Azure wymaga [certyfikat uniwersalny podmiotu trzech](azure-stack-app-service-before-you-get-started.md#get-certificates) ze względu na ulepszenia w taki sposób, w jaki usługa rejestracji Jednokrotnej dla Kudu teraz obsługiwane w usłudze Azure App Service. Nowy temat jest  **\*. sso.appservice.\< region\>.\< DomainName\>.\< rozszerzenia\>**
 >
 >
 
@@ -198,7 +198,7 @@ Wymiany gniazd lokacji są dzielone w tej wersji. Aby przywrócić funkcjonalno�
     ```
 - Nie można osiągnąć serwera plików, gdy wdrażana jest usługa aplikacji w ramach istniejącej sieci wirtualnej i serwer plików jest dostępna w sieci prywatnej tylko są pracowników.
  
-Jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z plików, należy dodać reguły zabezpieczeń dla ruchu wychodzącego, włączanie ruchu SMB między podsieci procesu roboczego i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+Jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej i wewnętrzny adres IP, aby połączyć się z serwerem plików, należy dodać reguły zabezpieczeń dla ruchu wychodzącego, włączanie ruchu SMB między podsieci procesu roboczego i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
  * Źródło: wszystkie
  * Zakres portów źródłowych: *
  * Miejsce docelowe: Adresy IP

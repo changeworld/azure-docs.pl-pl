@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z łuk Dome9 | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i łuk Dome9."
+title: 'Samouczek: Integracji Azure Active Directory z łuk Dome9 | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i łuk Dome9.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ce4bb1be8b0124c69991765e18ce9922bd2f4a4
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: de164f6a439fd68b4746dc96c43ff5cb0740ffe8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Samouczek: Integracji Azure Active Directory z Dome9 łuk
 
@@ -30,7 +30,7 @@ Integracja z usługą Azure AD łuk Dome9 zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane na łuk Dome9 (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny łuk Dome9 pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-dome9arc-tutorial/tutorial_dome9arc_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL:`https://secure.dome9.com/`
+    a. W **identyfikator** tekstowym, wpisz adres URL: `https://secure.dome9.com/`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://secure.dome9.com/sso/saml/yourcompanyname`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
     > Możesz wybrać wartość nazwę firmy w portalu administracyjnym dome9 znajduje się w dalszej części tego samouczka.
@@ -119,7 +119,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny łuk Dome9 pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-dome9arc-tutorial/tutorial_dome9arc_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://secure.dome9.com/sso/saml/<yourcompanyname>`
+    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta łuk Dome9](https://dome9.com/about/contact-us/) uzyskać te wartości. 
@@ -142,7 +142,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
 
-    d. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
     
     d. Kliknij przycisk **OK**.
 
@@ -176,7 +176,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     b. W **wystawcy** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, która została skopiowana formularza portalu Azure.
 
-    d. W **adres url punktu końcowego Idp** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, która została skopiowana formularza portalu Azure.
+    c. W **adres url punktu końcowego Idp** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, która została skopiowana formularza portalu Azure.
 
     d. Otwórz w Notatniku z pobranego certyfikatu szyfrowania Base64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu X.509** pola tekstowego.
 
@@ -213,7 +213,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
@@ -244,7 +244,7 @@ Aby włączyć użytkowników usługi Azure AD zalogować się na łuk Dome9, mu
 
     b. W **imię** tekstowym, wpisz imię użytkownika, takich jak Britta.
 
-    d. W **nazwisko** tekstowym, wpisz nazwisko użytkownika, takich jak Simona.
+    c. W **nazwisko** tekstowym, wpisz nazwisko użytkownika, takich jak Simona.
 
     d. Wprowadź **użytkownika logowania jednokrotnego** jako **na**.
 
@@ -280,7 +280,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -290,7 +290,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

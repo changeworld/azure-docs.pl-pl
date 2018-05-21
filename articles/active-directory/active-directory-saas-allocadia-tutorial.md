@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Allocadia | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Allocadia."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Allocadia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0fad672f9337f7bd10b154dc6ece76879da68fbd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 80f9a95715e1e6fff7fa3a48abd3b5a542ba629f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Samouczek: Integracji Azure Active Directory z Allocadia
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Allocadia zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Allocadia (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -112,15 +112,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. W **identyfikator** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
        
-     Dla środowiska testowego-`https://na2standby.allocadia.com`
+     Dla środowiska testowego-  `https://na2standby.allocadia.com`
     
-     W środowisku produkcyjnym —`https://na2.allocadia.com`
+     W środowisku produkcyjnym — `https://na2.allocadia.com`
 
     b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
     
-     Dla środowiska testowego-`https://na2standby.allocadia.com/allocadia/saml/SSO`
+     Dla środowiska testowego- `https://na2standby.allocadia.com/allocadia/saml/SSO`
     
-     W środowisku produkcyjnym —`https://na2.allocadia.com/allocadia/saml/SSO`
+     W środowisku produkcyjnym — `https://na2.allocadia.com/allocadia/saml/SSO`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Allocadia](mailTo:support@allocadia.com) uzyskać te wartości.
@@ -133,8 +133,8 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |    
-    | Imię | User.givenName |
-    | nazwisko | User.surname |
+    | Imię | user.givenname |
+    | nazwisko | user.surname |
     | wyślij wiadomość e-mail | User.mail |
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
@@ -238,10 +238,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Allocadia w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Allocadia.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

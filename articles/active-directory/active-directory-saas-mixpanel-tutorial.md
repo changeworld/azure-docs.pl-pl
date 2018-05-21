@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Mixpanel | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Mixpanel."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Mixpanel.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e48a192ada32a764b7f23634c0728c04c226b3d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dec216ea2bc01c3ee3f5afae0ec4966c51afe00
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Samouczek: Integracji Azure Active Directory z Mixpanel
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Mixpanel zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Mixpanel (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,10 +110,10 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_url.png)
 
-     W **adres URL logowania** tekstowym, wpisz adres URL jako:`https://mixpanel.com/login/`
+     W **adres URL logowania** tekstowym, wpisz adres URL jako: `https://mixpanel.com/login/`
 
     > [!NOTE] 
-    > Zarejestruj w [https://mixpanel.com/register/](https://mixpanel.com/register/) skonfigurować poświadczenia logowania i skontaktuj się z [zespołem pomocy technicznej Mixpanel](mailto:support@mixpanel.com) Aby włączyć ustawienia logowania jednokrotnego dla dzierżawy. Możesz również uzyskać wartość na adres URL logowania w razie potrzeby z zespołem pomocy technicznej Mixpanel. 
+    > Zarejestruj w [ https://mixpanel.com/register/ ](https://mixpanel.com/register/) skonfigurować poświadczenia logowania i skontaktuj się z [zespołem pomocy technicznej Mixpanel](mailto:support@mixpanel.com) Aby włączyć ustawienia logowania jednokrotnego dla dzierżawy. Możesz również uzyskać wartość na adres URL logowania w razie potrzeby z zespołem pomocy technicznej Mixpanel. 
  
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
@@ -237,10 +237,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Mixpanel w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Mixpanel.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

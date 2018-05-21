@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 8c052b45a0db42e2220c052b03f53f538de107ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c28d409bbdb7a4100f2bb9f00ff6f58a13855ea4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie lub usuwanie publicznego adresu IP
 
-Więcej informacji na temat publiczny adres IP i tworzenie, zmienianie i usunąć jeden. Publiczny adres IP jest zasób o jego ustawienia można skonfigurować. Przypisywanie publicznego adresu IP do innych zasobów platformy Azure umożliwia:
-- Przychodzące do zasobów, takich jak maszyny wirtualne platformy Azure, zestawy skalowania maszyny wirtualnej Azure bramy sieci VPN platformy Azure, bramy aplikacji i usług równoważenia obciążenia Azure internetowy łączności z Internetem. Zasoby platformy Azure nie może otrzymywać komunikacji przychodzącej z Internetu bez przypisanej publicznego adresu IP. Podczas niektórych zasobów platformy Azure są z założenia dostępne za pośrednictwem publicznych adresów IP, inne zasoby musi mieć publicznych adresów IP przypisanych do nich mają być dostępne z Internetu.
-- Łączność wychodząca z Internetem przy użyciu wartości prognozowanych adresu IP. Na przykład maszyny wirtualne mogą komunikować się ruch wychodzący do Internetu bez publicznego adresu IP przypisane do niej, ale jej adres jest adresem sieci przetłumaczony przez platformę Azure nieprzewidywalne publicznego adresu. Przypisywanie publicznego adresu IP do zasobu umożliwia wiedzieć, który adres IP jest używana dla połączenia wychodzące. Chociaż przewidywalne, można zmienić adres, w zależności od wybranej metody przypisania. Aby uzyskać więcej informacji, zobacz [tworzenie publicznego adresu IP](#create-a-public-ip-address). Aby dowiedzieć się więcej na temat połączenia wychodzące z zasobów platformy Azure, przeczytaj [zrozumieć połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu.
+Więcej informacji na temat publiczny adres IP i tworzenie, zmienianie i usunąć jeden. Publiczny adres IP jest zasób o jego ustawienia można skonfigurować. Przypisywanie publicznego adresu IP do zasobów platformy Azure, która obsługuje publicznych adresów IP umożliwia:
+- Komunikacji przychodzącej z Internetu do zasobów, takich jak Azure maszyn wirtualnych (VM), bramy aplikacji Azure, usługi równoważenia obciążenia Azure, bram sieci VPN platformy Azure i inne. Użytkownik może nadal komunikacji z niektórych zasobów, takich jak maszyny wirtualne z Internetu, jeśli maszyna wirtualna nie ma publicznego adresu IP przypisane do niego, pod warunkiem, maszyna wirtualna jest częścią puli zaplecza modułu równoważenia obciążenia, a moduł równoważenia obciążenia przypisano publiczny adres IP. Aby ustalić, czy można przypisać zasobów dla określonej usługi Azure publicznego adresu IP lub czy go może być komunikowały się z za pośrednictwem publicznego adresu IP innego zasobów platformy Azure, zobacz dokumentację dla usługi. 
+- Łączność wychodząca z Internetem przy użyciu wartości prognozowanych adresu IP. Na przykład maszyny wirtualne mogą komunikować się ruch wychodzący do Internetu bez publicznego adresu IP przypisane do niego, ale jej adres jest adresem sieci przetłumaczony przez platformę Azure nieprzewidywalne adres publiczny, domyślnie. Przypisywanie publicznego adresu IP do zasobu umożliwia wiedzieć, który adres IP jest używana dla połączenia wychodzące. Chociaż przewidywalne, można zmienić adres, w zależności od wybranej metody przypisania. Aby uzyskać więcej informacji, zobacz [tworzenie publicznego adresu IP](#create-a-public-ip-address). Aby dowiedzieć się więcej na temat połączenia wychodzące z zasobów platformy Azure, zobacz [zrozumieć połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

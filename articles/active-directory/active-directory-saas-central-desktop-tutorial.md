@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory przy użyciu centralnej pulpitu | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pulpitu centralnej."
+title: 'Samouczek: Integracji Azure Active Directory przy użyciu centralnej pulpitu | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pulpitu centralnej.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 94c67bef7a0c6ba60fc9c7a60c79a23bf7984fb1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 92c24688cf3d9baefcedcf22c915752b2d29b53c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Samouczek: Integracji Azure Active Directory przy użyciu centralnej pulpitu
 
@@ -30,7 +30,7 @@ Integrowanie centralnej pulpitu z usługą Azure AD zapewnia następujące korzy
 - Można umożliwić użytkownikom automatycznie pobrać zalogowany do centralnej pulpitu przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji--portalu Azure.
 
-Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,7 +108,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Centralnej domeny pulpitu i adresów URL jednym informacje logowania jednokrotnego](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a. W **adres URL logowania** wpisz adres URL z następującego wzorca:`https://<companyname>.centraldesktop.com`
+    a. W **adres URL logowania** wpisz adres URL z następującego wzorca: `https://<companyname>.centraldesktop.com`
 
     b. W **identyfikator** wpisz adres URL z następującego wzorca:
     | |
@@ -116,7 +116,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
     | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
 
-    d. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca:`https://<companyname>.centraldesktop.com/saml2-assertion.php`    
+    c. W **adres URL odpowiedzi** wpisz adres URL z następującego wzorca: `https://<companyname>.centraldesktop.com/saml2-assertion.php`    
      
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Zaktualizować te wartości przy użyciu rzeczywistego identyfikatora odpowiedzi na adres URL i adresu URL logowania jednokrotnego. Skontaktuj się z [zespołem pomocy technicznej klienta pulpitu centralnej](https://imeetcentral.com/contact-us) uzyskać te wartości. 
@@ -147,17 +147,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     b. W **adres URL logowania jednokrotnego** Wklej **identyfikator jednostki SAML** wartość skopiowany z portalu Azure.
     
-    d. W **adres URL logowania jednokrotnego logowania** Wklej **SAML pojedynczy znak na adres URL usługi** wartość skopiowany z portalu Azure.
+    c. W **adres URL logowania jednokrotnego logowania** Wklej **SAML pojedynczy znak na adres URL usługi** wartość skopiowany z portalu Azure.
     
     d. W **adresu URL wylogowania logowania jednokrotnego** Wklej **Sign-Out URL** wartość skopiowany z portalu Azure.
 
 10. W **metody weryfikacji podpisu wiadomości** sekcji, wykonaj następujące czynności:
 
-    ![Metoda weryfikacji podpisu wiadomości](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "metody weryfikacji podpisu wiadomości") . Wybierz **certyfikatu**.
+    ![Metoda weryfikacji podpisu wiadomości](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "metody weryfikacji podpisu wiadomości") . Wybierz pozycję **Certyfikat**.
     
     b. W **certyfikatu logowania jednokrotnego** listy, wybierz **RSH SHA256**.
     
-    d. Otwórz pobrany certyfikat w Notatniku. Następnie skopiuj zawartość certyfikatu i wklej ją do **certyfikatu logowania jednokrotnego** pola.
+    c. Otwórz pobrany certyfikat w Notatniku. Następnie skopiuj zawartość certyfikatu i wklej ją do **certyfikatu logowania jednokrotnego** pola.
         
     d. Wybierz **wyświetlone łącze do strony logowania SAMLv2**.
     
@@ -194,7 +194,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Wybierz pozycję **Utwórz**.
  
@@ -258,7 +258,7 @@ W tej sekcji możesz umożliwić użytkownikowi Simona Britta do przyznania im d
 
 7. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji należy przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -268,7 +268,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

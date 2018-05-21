@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Velpic SAML | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Velpic SAML."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Velpic SAML.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e4f7e4c9e960450f0024cd7ca35bd3808d31ee19
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03ef1ef04d80ac9bb83bcce2082b6cc3f617d812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Samouczek: Integracji Azure Active Directory z Velpic SAML
 
@@ -29,7 +29,7 @@ Integrację Velpic SAML z usługą Azure AD zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Velpic SAML (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu zarządzania Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz wartość, jak:`https://<sub-domain>.velpicsaml.net`
+    a. W **adres URL logowania** tekstowym, wpisz wartość, jak: `https://<sub-domain>.velpicsaml.net`
 
-    b. W **identyfikator** pole tekstowe, Wklej **"Rejestracja jednokrotna w adresie URL"** wartość`https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. W **identyfikator** pole tekstowe, Wklej **"Rejestracja jednokrotna w adresie URL"** wartość `https://auth.velpic.com/saml/v2/<entity-id>/login`
     
     > [!NOTE]
     > Należy pamiętać, że znaku w adresie URL, które będą udostępniane przez zespół Velpic SAML i wartość identyfikatora będzie dostępna podczas konfigurowania rejestracji Jednokrotnej wtyczki po stronie Velpic SAML. Musisz skopiować tę wartość ze strony aplikacji Velpic SAML i wklej go w tym miejscu.
@@ -204,7 +204,7 @@ Zaloguj się do witryny firmy Velpic SAML jako administrator i wykonać następu
 
 2. Na **"Tworzenie nowego użytkownika"** okna dialogowego wykonaj następujące kroki.
 
-    ![użytkownik](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
+    ![Użytkownik](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
     
     a. W **imię** pole tekstowe, nazwa typu pierwszy Simona Britta.
 
@@ -259,10 +259,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 2. Polecenie **"Zaloguj się za pomocą usługi Azure AD"** przycisk, aby zalogować się do Velpic przy użyciu konta usługi Azure AD.
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

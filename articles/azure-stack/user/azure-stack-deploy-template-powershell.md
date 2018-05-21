@@ -1,11 +1,11 @@
 ---
-title: "Wdrażanie szablonów przy użyciu programu PowerShell w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć maszynę wirtualną przy użyciu szablonu usługi Resource Manager i programu PowerShell."
+title: Wdrażanie szablonów w stosie Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Wdrażanie szablonu stos Azure przy użyciu programu PowerShell.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 12fe32d7-0a1a-4c02-835d-7b97f151ed0f
 ms.service: azure-stack
 ms.workload: na
@@ -14,27 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: d271b155d65a7dd95a92262da338cf3a272d140b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.reviewer: ''
+ms.openlocfilehash: 4af82deef029120aa2699e7c69c501ae61a1e8bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="deploy-templates-in-azure-stack-using-powershell"></a>Wdrażanie szablonów w stosie Azure przy użyciu programu PowerShell
+# <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Wdrażanie szablonu stos Azure przy użyciu programu PowerShell
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Wdrażanie szablonów usługi Azure Resource Manager Development Kit stosu Azure za pomocą programu PowerShell.  Szablony Menedżera zasobów wdrażania i obsługi administracyjnej wszystkie zasoby aplikacji w jednej, skoordynowanej operacji.
+PowerShell umożliwia wdrażanie szablonów usługi Azure Resource Manager stos Azure. W tym artykule przedstawiono sposób wdrożyć szablon przy użyciu programu PowerShell.
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>Uruchom polecenia cmdlet programu AzureRM PowerShell
-W tym przykładzie, możesz uruchomić skrypt, aby wdrożyć maszynę wirtualną Azure stosu Development Kit przy użyciu szablonu usługi Resource Manager.  Przed kontynuowaniem upewnij się, masz [skonfigurowane programu PowerShell](azure-stack-powershell-configure-user.md)  
 
-Wirtualny dysk twardy używany w tym przykładzie szablonie jest R2 Datacenter, Windows Server 2012 w —.
+W tym przykładzie używane są polecenia cmdlet programu AzureRM PowerShell i szablon przechowywany w serwisie GitHub. Szablon tworzy maszynę wirtualną systemu Windows Server 2012 R2 Datacenter.
 
-1. Przejdź do <http://aka.ms/AzureStackGitHub>, wyszukaj **101-prosty windows-vm** szablonu i zapisz go w następującej lokalizacji: c:\\szablony\\ azuredeploy-101-prosty windows-vm.json.
-2. W programie PowerShell Uruchom następujący skrypt wdrożenia. Zastąp *username* i *hasło* o nazwę użytkownika i hasło. W kolejnych zastosowań, należy zwiększyć wartość *$myNum* parametr, aby zapobiec zastąpieniu wdrożenia.
-   
+>[!NOTE]
+>Przed podjęciem próby w tym przykładzie, upewnij się, że znasz [skonfigurowane PowerShell](azure-stack-powershell-configure-user.md) dla użytkownika w usłudze Azure stosu.
+
+1. Przejdź do <http://aka.ms/AzureStackGitHub> i Znajdź **101-prosty windows-vm** szablonu. Zapisz szablon do tej lokalizacji: C:\\szablony\\azuredeploy-101-prosty windows-vm.json.
+2. Otwórz wiersz polecenia programu PowerShell z podwyższonym poziomem uprawnień.
+3. Zastąp *username* i *hasło* w poniższym skrypcie o nazwę użytkownika i hasło, a następnie uruchom skrypt.
+
    ```PowerShell
        # Set Deployment Variables
        $myNum = "001" #Modify this per deployment
@@ -56,9 +59,12 @@ Wirtualny dysk twardy używany w tym przykładzie szablonie jest R2 Datacenter, 
            -VmName myVM$myNum `
            -WindowsOSVersion 2012-R2-Datacenter
    ```
-3. Otwieranie portalu, kliknij przycisk stosu Azure **Przeglądaj**, kliknij przycisk **maszyn wirtualnych**i poszukaj nowej maszyny wirtualnej (*myDeployment001*).
 
+   >[!IMPORTANT]
+   >Zawsze, gdy Uruchom ten skrypt, zwiększ wartość parametru "$myNum", aby zapobiec zastąpieniu wdrożenia.
+
+4. Otwieranie portalu, wybierz pozycję Azure stosu **Przeglądaj**, a następnie wybierz **maszyn wirtualnych** można znaleźć nowej maszyny wirtualnej (*myDeployment001*).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Wdrażanie szablonów za pomocą programu Visual Studio](azure-stack-deploy-template-visual-studio.md)
 
+[Wdrażanie szablonów za pomocą programu Visual Studio](azure-stack-deploy-template-visual-studio.md)

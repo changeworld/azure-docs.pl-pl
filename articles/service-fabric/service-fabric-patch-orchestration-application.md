@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric poprawki aranżacji aplikacji | Dokumentacja firmy Microsoft"
-description: "Aplikacja do automatyzacji w klastrze usługi sieć szkieletowa stosowanie poprawek systemu operacyjnego."
+title: Azure Service Fabric poprawki aranżacji aplikacji | Dokumentacja firmy Microsoft
+description: Aplikacja do automatyzacji w klastrze usługi sieć szkieletowa stosowanie poprawek systemu operacyjnego.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Poprawka systemu operacyjnego Windows w klastrze usługi sieć szkieletowa
 
@@ -144,10 +144,10 @@ Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://go.microsoft
 
 Zachowanie aplikacji aranżacji poprawek można skonfigurować zgodnie z potrzebami. Zastąpić wartości domyślne, przekazując w parametrze aplikacji podczas tworzenia aplikacji lub aktualizacji. Można podać parametry aplikacji, określając `ApplicationParameter` do `Start-ServiceFabricApplicationUpgrade` lub `New-ServiceFabricApplication` polecenia cmdlet.
 
-|**Parameter**        |**Typ**                          | **Szczegóły**|
+|**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji systemu Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacji pojawia się w węźle miesięcznie wynosi pięć. <br> -Liczba wyników dla operacji może być 10. <br> — Powinny być przechowywane wyniki dla ostatnich trzech miesięcy. |
-|TaskApprovalPolicy   |wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasad, który ma być używany przez usługę koordynatora instalowania aktualizacji systemu Windows w węzłach klastra sieci szkieletowej usług.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowany jeden węzeł naraz. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update jest zainstalowanych domeny uaktualnienia pojedynczo. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do usługi Windows Update.)
+|TaskApprovalPolicy   |wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasad, który ma być używany przez usługę koordynatora instalowania aktualizacji systemu Windows w węzłach klastra sieci szkieletowej usług.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowany jeden węzeł naraz. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update jest zainstalowanych domeny uaktualnienia pojedynczo. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można przejść do usługi Windows Update.)
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar poprawki aplikacji aranżacji loguje MB, co może trwale znajdować się lokalnie w węzłach.
 | WUQuery               | ciąg<br>(Domyślnie: "IsInstalled = 0")                | Zapytania w celu pobrania aktualizacji systemu Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślne: True)                 | Ta flaga zezwala na instalację aktualizacji systemu operacyjnego Windows.            |

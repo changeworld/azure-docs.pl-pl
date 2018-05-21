@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Cisco Spark | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Cisco Spark."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Cisco Spark.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: c7ee96abacffc6599187ded9a5049cc3bf672e0a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4307904e87bdf9a0361a7fb143e87ae3a662f18e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>Samouczek: Integracji Azure Active Directory z Cisco Spark
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Cisco Spark zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Cisco Spark (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL jako:`https://web.ciscospark.com/#/signin`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL jako: `https://web.ciscospark.com/#/signin`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://idbroker.webex.com/<companyname>`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://idbroker.webex.com/<companyname>`
 
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej klienta Spark Cisco](https://support.ciscospark.com/) aby zyskać tę wartość. 
@@ -129,7 +129,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu  | Wartość atrybutu |
     | --------------- | -------------------- |    
-    |   Identyfikator UID    | User.userPrincipalName |   
+    |   Identyfikator UID    | user.userprincipalname |   
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -218,7 +218,7 @@ W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w Cisco Spark
     
     b. W **nazwisko** pole tekstowe, typ **Simona**.
     
-    c. W **adres E-mail** pole tekstowe, typ  **britta.simon@contoso.com** .
+    c. W **adres E-mail** pole tekstowe, typ **britta.simon@contoso.com**.
 
 5. Kliknij znak plus, aby dodać Simona Britta. Następnie kliknij przycisk **Dalej**.
 
@@ -260,10 +260,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka Cisco Spark w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Cisco Spark.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

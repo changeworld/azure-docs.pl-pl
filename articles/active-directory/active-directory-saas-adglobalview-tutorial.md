@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z ADP Globalview | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ADP Globalview."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ADP Globalview.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7271efe4a1cd943f84d322e7333c92d6f60b62aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5471a4edfc6830367d120580c1c36f30f87a8f90
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Samouczek: Integracji Azure Active Directory z ADP Globalview
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD ADP Globalview zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do ADP Globalview (logowanie jednokrotne) z konta usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_url.png)
 
-     W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.globalview.adp.com/federate` lub`https://<subdomain>.globalview.adp.com/federate2`
+     W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.globalview.adp.com/federate` lub `https://<subdomain>.globalview.adp.com/federate2`
 
     > [!NOTE] 
     > Wartość nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [Obsługa ADP Globalview](https://www.adp.com/contact-us/overview.aspx) można uzyskać wartość.
@@ -131,7 +131,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | ------------------- | -------------------- |    
     | personalimmutableid | User.extensionattribute2 |
     | wyślij wiadomość e-mail               | User.mail |
-    | Nazwa użytkownika              | User.userPrincipalName|
+    | Nazwa użytkownika              | user.userprincipalname|
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -232,10 +232,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka ADP GlobalView w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji ADP GlobalView.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

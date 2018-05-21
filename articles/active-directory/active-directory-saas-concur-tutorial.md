@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Concur | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Concur."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Concur.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 7619b09f24cf63f86871c975584254636292d7f3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dc87add18145bbc733f33df8f4072cb13ae7b75f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>Samouczek: Integracji Azure Active Directory z Concur
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Concur zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Concur (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji na temat integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji na temat integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -113,9 +113,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-concur-tutorial/tutorial_concur_url.png)
 
-    a. W **Zaloguj się na adres URL** tekstowym, wpisz wartość, przy użyciu następującego wzorca:`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
+    a. W **Zaloguj się na adres URL** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<customer-domain>.concursolutions.com`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer-domain>.concursolutions.com`
 
     > [!NOTE] 
     > Wartości te nie są rzeczywistych. Zaktualizować te wartości przy użyciu rzeczywistego konta na adres URL i identyfikator. Skontaktuj się z [zespołem pomocy technicznej klienta cząstkowe](https://www.concur.co.in/contact) uzyskać te wartości. 
@@ -211,10 +211,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Concur w panelu dostępu, należy pobrać strony logowania Concur aplikacji.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Skonfiguruj Inicjowanie obsługi użytkowników](active-directory-saas-concur-provisioning-tutorial.md)
 
 

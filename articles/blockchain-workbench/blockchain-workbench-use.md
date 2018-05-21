@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/26/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8732d1b87acaa6673ae92b3302fb257dcb134217
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Przy użyciu aplikacji w Azure Blockchain Workbench
 
@@ -33,7 +33,7 @@ Musisz zalogować się jako członek Blockchain Workbench. Jeśli nie żadne apl
 
 ## <a name="create-new-contract"></a>Tworzenie nowego kontraktu 
 
-Aby utworzyć nowy kontrakt, musisz być członkiem **AllowedInstanceRoles** roli. 
+Do utworzenia nowego kontraktu, musisz być członkiem określony jako kontrakt **inicjatora**. Definiowanie ról aplikacji i inicjatorów kontraktu informacji, zobacz [przepływów pracy w przeglądzie konfiguracji](blockchain-workbench-configuration-overview.md#workflows). Informacje dotyczące przypisywania elementów członkowskich do ról aplikacji, zobacz [dodać członka do aplikacji](blockchain-workbench-manage-users.md#add-member-to-application).
 
 1. W sekcji aplikacji Blockchain Workbench wybierz Kafelek aplikacji, który zawiera kontrakt, który chcesz utworzyć. Wyświetli się lista aktywnych umów.
 
@@ -50,6 +50,8 @@ Aby utworzyć nowy kontrakt, musisz być członkiem **AllowedInstanceRoles** rol
     ![Lista aktywnych umów](media/blockchain-workbench-use/active-contracts.png)
 
 ## <a name="take-action-on-contract"></a>Podejmij działanie kontraktu
+
+W zależności od stanu kontrakt jest, elementy Członkowskie mogą podjąć działania w celu przejścia do następnego stanu kontraktu. Akcje są zdefiniowane jako [przejścia](blockchain-workbench-configuration-overview.md#transitions) w [stanu](blockchain-workbench-configuration-overview.md#states). Elementy członkowskie należących do dozwolonych aplikacji lub wystąpienia roli przejścia może zająć akcji. 
 
 1. W sekcji aplikacji Blockchain Workbench wybierz Kafelek aplikacji zawiera kontrakt podjęcie działań.
 2. Wybierz umowę na liście. Szczegóły umowy zostaną wyświetlone w różne sekcje. 

@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 6379f463d5c2e9027e1d8d4dd90db61cb72cdd44
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b9372c806eab1b0ca69ba078d972b076c8a7d6f6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="service-fabric-events"></a>Zdarzenia sieci szkieletowej usług 
+# <a name="service-fabric-events"></a>Zdarzenia usługi Service Fabric 
 
 Platformy Service Fabric zapisuje kilka zdarzeń strukturalnych dla klucza operacyjne czynności wykonywane w klastrze. Te należeć do zakresu od uaktualnienia klastra na decyzje dotyczące umieszczenia repliki. Każde zdarzenie, że sieć szkieletowa usług przedstawia mapy do jednej z następujących jednostek w klastrze:
 * Klaster

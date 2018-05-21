@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d6804f7e546547d734f966656362111b31078a4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Przy użyciu wieku bramkowanie w usłudze Azure AD B2C
 
@@ -47,25 +47,22 @@ Po skonfigurowaniu katalogu do użycia, wieku bramkowanie można następnie uży
 Po włączeniu wieku bramkowanie Twojego przepływu użytkownika, użytkownik wystąpić zmiany.  W przypadku tworzenia konta użytkowników teraz zostanie poproszony o daty urodzenia i kraju zamieszkania wraz z atrybutów użytkownika skonfigurowane dla przepływu użytkownika.  Na logowania użytkowników, którzy wcześniej nie podano daty urodzenia i kraju zamieszkania będzie wymagane podanie tego informacje przy następnym zalogowaniu.  Te dwie wartości, usługi Azure AD B2C będzie ustalić, czy użytkownik jest pomocnicze i zaktualizuj `ageGroup` pola, możliwe wartości `null`, `Undefined`, `Minor`, `Adult`, i `NotAdult`.  `ageGroup` i `consentProvidedForMinor` pola są następnie używane do obliczania `legalAgeGroupClassification`. 
 
 ##<a name="age-gating-options"></a>Wiek bramkowanie opcje
-Można mieć usługi Azure AD B2C do osoby nieletnie bloku bez zgody rodzica lub zezwolić im i aplikacja podejmowaniu decyzji, co należy zrobić z nimi.  
+Można mieć osoby nieletnie bloku usługi Azure AD B2C bez zgody rodzica lub zezwolić im i aplikacja podejmowaniu decyzji, co należy zrobić z nimi.  
 
 ###<a name="allowing-minors-without-parental-consent"></a>Zezwolenie na obecność osoby nieletnie bez zgody rodzica
-Przepływy użytkownika, które mają albo podpisywania, logowanie lub obu można zezwolić osoby nieletnie bez zgody użytkownika do aplikacji.  Dla osoby nieletnie bez zgody rodzica, są dozwolone do zalogowania się lub zaloguj się konfigurowanie normalne i wystawia token identyfikator z `legalAgeGroupClassification` oświadczeń.  Za pomocą tego oświadczenia, można wybrać środowisko Ci użytkownicy mają, takie jak przejście przez środowisko do zbierania zgodę jako rodzic (i zaktualizuj `consentProvidedForMinor` pól).
+Przepływy użytkownika, które umożliwia albo Zaloguj się, zaloguj się czy oba rodzaje można zezwolić osoby nieletnie bez zgody użytkownika do aplikacji.  Dla osoby nieletnie bez zgody rodzica, są dozwolone do zalogowania się lub zarejestrować się zgodnie z normalnym i Azure AD B2C wystawia token identyfikator z `legalAgeGroupClassification` oświadczeń.  Za pomocą tego oświadczenia, można wybrać środowisko Ci użytkownicy mają, takie jak przejście przez środowisko do zbierania zgodę jako rodzic (i zaktualizuj `consentProvidedForMinor` pól).
 
 ###<a name="blocking-minors-without-parental-consent"></a>Blokowanie osoby nieletnie bez zgody rodzica
-Przepływy użytkownika, które mają albo podpisywania, logowanie lub obu można zablokować osoby nieletnie bez zgody użytkownika do aplikacji.  Dostępne są dwie opcje obsługi zablokowanych użytkowników w usłudze Azure AD B2C:
+Przepływy użytkownika, które umożliwia albo Zaloguj się, zaloguj się czy oba rodzaje można zablokować osoby nieletnie bez zgody z aplikacji.  Dostępne są dwie opcje obsługi zablokowanych użytkowników w usłudze Azure AD B2C:
 * Odesłania JSON do aplikacji — ta opcja zostanie wysłana odpowiedź z powrotem do aplikacji czy drugorzędnym został zablokowany.
 * Pokaż stronę błędu — użytkownik pojawi się Strona informująca, że ich nie może uzyskać dostęp do aplikacji
 
 ##<a name="known-issues"></a>Znane problemy
-###<a name="customization-unavailable-for-new-pages"></a>Dostosowywanie niedostępne dla nowych stron
-Istnieją dwa nowe strony, które mogą być dostępne w Twojej przepływu użytkownika po włączeniu bramkowanie wieku.  Te strony gromadzenia kraju i Data urodzenia na Zaloguj się i stronę błędu nie można używać z Dostosowywanie strony układu lub języka.  Ta opcja jest dostępna w nadchodzących aktualizacji.
-
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>Format odpowiedzi po zablokowaniu pomocnicze.
 Odpowiedź aktualnie nie jest poprawnie sformułowany, ten problem zostanie rozwiązany w nadchodzących aktualizacji.
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Usuwanie określone atrybuty, które zostały dodane podczas instalacji może być katalogu nie można użyć bramkowanie wieku.
-W ustawieniach bramkowanie wieku, są skonfigurowane za pomocą opcji w katalogu Twojej `Properties`.  W przypadku usunięcia `legalCountry` lub `dateOfBirth`, dzierżawy nie można już używać wieku bramkowanie i nie można ponownie utworzyć te właściwości.
+W ustawieniach bramkowanie wieku, są skonfigurowane za pomocą opcji w katalogu Twojej `Properties`.  W przypadku usunięcia `legalCountry` lub `dateOfBirth` za pomocą wykresu, katalogu nie można już używać wieku bramkowanie i nie można ponownie utworzyć te właściwości.
 
 ###<a name="list-of-countries-is-incomplete"></a>Listę krajów jest niekompletna
 Obecnie listę krajów legalCountry jest niekompletna, dodamy pozostałych krajów, w nadchodzących aktualizacji.

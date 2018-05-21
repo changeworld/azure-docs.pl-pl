@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z punktu widzenia użytkownika Stany Zjednoczone (Non-UltiPro) | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Stanów Zjednoczonych z punktu widzenia użytkownika (Non-UltiPro)."
+title: 'Samouczek: Integracji Azure Active Directory z punktu widzenia użytkownika Stany Zjednoczone (Non-UltiPro) | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Stanów Zjednoczonych z punktu widzenia użytkownika (Non-UltiPro).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d94d233a12e51bf851a791fda481b91c513d64b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da0529897bb02745a2346f6a0282be86923468ba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Samouczek: Integracji Azure Active Directory z punktu widzenia użytkownika Stany Zjednoczone (Non-UltiPro)
 
@@ -30,7 +30,7 @@ Integrowanie z punktu widzenia użytkownika Stany Zjednoczone (Non-UltiPro) z us
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Stanów Zjednoczonych z punktu widzenia użytkownika (Non-UltiPro) (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,9 +108,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Z punktu widzenia użytkownika domeny Stanów Zjednoczonych (Non-UltiPro) i adres URL z jednym informacje logowania jednokrotnego](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL:`https://perception.kanjoya.com/sp`
+    a. W **identyfikator** tekstowym, wpisz adres URL: `https://perception.kanjoya.com/sp`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
     > Wartość nie jest prawdziwe. Wartość zaktualizuje rzeczywiste odpowiedzi adres URL, który znajduje się w dalszej części tego samouczka.
@@ -163,7 +163,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     c. W **Nazwa dostawcy tożsamości** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure. 
 
-    d. W **textbox domeny SAML**, wprowadź domenę, takich jak  **@contoso.com** .
+    d. W **textbox domeny SAML**, wprowadź domenę, takich jak **@contoso.com**.
 
     e. Polecenie **Przekaż ponownie** przekazać **XML metadanych** pliku.
 
@@ -239,17 +239,17 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka wrażenie Stany Zjednoczone (Non-UltiPro) w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji z punktu widzenia użytkownika Stany Zjednoczone (Non-UltiPro).
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

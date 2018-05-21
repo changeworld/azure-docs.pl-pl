@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Picturepark | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Picturepark."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Picturepark.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d9fd7127a36e9a699a352dbe6899edd5ea99e92
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6421921d75b299d44cdd0942b64e524a73dfa042
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Samouczek: Integracji Azure Active Directory z Picturepark
 
@@ -29,7 +29,7 @@ Integracja z usługą Azure AD Picturepark zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatycznie pobrać zalogowane do Picturepark (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -110,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<companyname>.picturepark.com`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.picturepark.com`
 
     b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: 
     
@@ -150,7 +150,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     ![Konfiguracja dostawcy tożsamości](./media/active-directory-saas-picturepark-tutorial/ic795064.png "konfiguracji dostawcy tożsamości")
    
-    a. Kliknij pozycję **Dodaj**.
+    a. Kliknij pozycję **Add** (Dodaj).
   
     b. Wpisz nazwę dla danej konfiguracji.
    
@@ -221,7 +221,7 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do Picturepark, m
    
     ![Utwórz użytkownika](./media/active-directory-saas-picturepark-tutorial/ic795069.png "Tworzenie użytkownika")
    
-    a. W **adres E-mail** pole tekstowe, typ **adres e-mail** użytkownika  **BrittaSimon@contoso.com** .  
+    a. W **adres E-mail** pole tekstowe, typ **adres e-mail** użytkownika **BrittaSimon@contoso.com**.  
    
     b. W **hasło** i **Potwierdź hasło** pól tekstowych, typ **hasło** z BrittaSimon. 
    
@@ -281,10 +281,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 
 Po kliknięciu kafelka Picturepark w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Picturepark. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

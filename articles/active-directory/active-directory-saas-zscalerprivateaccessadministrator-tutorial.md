@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory przy użyciu prywatnego Zscaler dostępu administratora | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Administrator dostępu prywatnego Zscaler."
+title: 'Samouczek: Integracji Azure Active Directory przy użyciu prywatnego Zscaler dostępu administratora | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Administrator dostępu prywatnego Zscaler.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: bf0b7cbd8047dfdbc1a4503775e6d36f8e8a67c1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: c3918e4b54d60d6f609e99e24ed2f4b2995bf80c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Samouczek: Integracji Azure Active Directory przy użyciu prywatnego Zscaler dostępu administratora
 
@@ -30,7 +30,7 @@ Integrowanie Administrator dostępu prywatnego Zscaler z usługą Azure AD zapew
 - Umożliwia użytkownikom automatycznie pobrać zalogowane prywatnego Zscaler dostępu administratora (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -214,7 +214,7 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do prywatnego Zsc
 
     ![Administrator dostępu prywatnego Zscaler użytkownika administratora](./media/active-directory-saas-zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. W **Username** pole tekstowe, wprowadź adres e-mail użytkownika, takich jak  **BrittaSimon@contoso.com** .
+    a. W **Username** pole tekstowe, wprowadź adres e-mail użytkownika, takich jak **BrittaSimon@contoso.com**.
 
     b. W **hasło** tekstowym, wpisz hasło.
 
@@ -222,7 +222,7 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do prywatnego Zsc
 
     d. Wybierz **roli** jako **Administrator dostępu prywatnego Zscaler**.
 
-    e. W **E-mail** pole tekstowe, wprowadź adres e-mail użytkownika, takich jak  **BrittaSimon@contoso.com** .
+    e. W **E-mail** pole tekstowe, wprowadź adres e-mail użytkownika, takich jak **BrittaSimon@contoso.com**.
 
     f. W **Phone** tekstowym, wpisz numer telefonu.
 
@@ -260,7 +260,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
@@ -270,7 +270,7 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 
