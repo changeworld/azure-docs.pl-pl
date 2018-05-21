@@ -47,48 +47,48 @@
 ### [Przewodnik po akceleratorze rozwiązań do konserwacji zapobiegawczej](../iot-suite/iot-suite-predictive-walkthrough.md)
 
 ## Połączona fabryka
-### [Co to jest połączona fabryka?](../iot-suite/iot-suite-connected-factory-features.md)
-### [Omówienie rozwiązania połączonej fabryki](../iot-suite/iot-suite-connected-factory-overview.md)
-### [Przewodnik po rozwiązaniu połączonej fabryki](../iot-suite/iot-suite-connected-factory-sample-walkthrough.md)
+### [Co to jest połączona fabryka?](iot-accelerators-connected-factory-features.md)
+### [Omówienie rozwiązania połączonej fabryki](iot-accelerators-connected-factory-overview.md)
+### [Przewodnik po rozwiązaniu połączonej fabryki](iot-accelerators-connected-factory-sample-walkthrough.md)
 
 ## Symulacja urządzenia
-### [Wdrażanie symulacji urządzenia](../iot-suite/iot-suite-device-simulation-deploy.md)
-### [Eksplorowanie symulacji urządzenia](../iot-suite/iot-suite-device-simulation-explore.md)
+### [Wdrażanie symulacji urządzenia](iot-accelerators-device-simulation-deploy.md)
+### [Eksplorowanie symulacji urządzenia](iot-accelerators-device-simulation-explore.md)
 
 # Przewodniki z instrukcjami
 ## Zdalne monitorowanie
-### [Wykonywanie zaawansowanego monitorowania](../iot-suite/iot-suite-remote-monitoring-monitor.md)
+### [Wykonywanie zaawansowanego monitorowania](iot-accelerators-remote-monitoring-monitor.md)
 ### [Używanie reguł do wykrywania problemów](iot-accelerators-remote-monitoring-automate.md)
-### [Integrowanie danych SIM](../iot-suite/iot-suite-remote-monitoring-telefonica-sim.md)
-### [Zarządzanie urządzeniami](../iot-suite/iot-suite-remote-monitoring-manage.md)
-### [Rozwiązywanie problemów z urządzeniami](../iot-suite/iot-suite-remote-monitoring-maintain.md)
-### [Opis schematu modelu urządzenia](../iot-suite/iot-suite-remote-monitoring-device-schema.md)
-### [Opis zachowania modelu urządzenia](../iot-suite/iot-suite-remote-monitoring-device-behavior.md)
-### [Tworzenie nowego urządzenia symulowanego](../iot-suite/iot-suite-remote-monitoring-test.md)
-### [Wizualizowanie przy użyciu usługi Power BI](../iot-suite/iot-suite-integrate-data-powerbi.md)
+### [Integrowanie danych SIM](iot-accelerators-remote-monitoring-telefonica-sim.md)
+### [Zarządzanie urządzeniami](iot-accelerators-remote-monitoring-manage.md)
+### [Rozwiązywanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md)
+### [Opis schematu modelu urządzenia](iot-accelerators-remote-monitoring-device-schema.md)
+### [Opis zachowania modelu urządzenia](iot-accelerators-remote-monitoring-device-behavior.md)
+### [Tworzenie nowego urządzenia symulowanego](iot-accelerators-remote-monitoring-test.md)
+### [Wizualizowanie przy użyciu usługi Power BI](iot-accelerators-integrate-data-powerbi.md)
 ### [Dostosowywanie interfejsu użytkownika rozwiązania](iot-accelerators-remote-monitoring-customize.md)
-### [Dostosowywanie i ponowne wdrażanie mikrousługi](../iot-suite/iot-suite-microservices-example.md)
+### [Dostosowywanie i ponowne wdrażanie mikrousługi](iot-accelerators-microservices-example.md)
 ### [Wdrażanie przy użyciu interfejsu wiersza polecenia](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [Wdrażanie lokalne](iot-accelerators-remote-monitoring-deploy-local.md)
 ### [Wizualizowanie danych za pomocą usługi Time Series Insights](../iot-suite/iot-suite-time-series-insights.md)
-### [Integracja z usługą Data Lake](../iot-suite/iot-suite-integrate-data-lake.md)
+### [Integracja z usługą Data Lake](iot-accelerators-integrate-data-lake.md)
 ### Podłączanie urządzenia fizycznego
-#### [C w systemie Windows](../iot-suite/iot-suite-connecting-devices.md)
-#### [C w systemie Linux](../iot-suite/iot-suite-connecting-devices-linux.md)
-#### [Node.js (ogólny)](../iot-suite/iot-suite-connecting-devices-node.md)
-#### [Node.js na urządzeniu Raspberry Pi](../iot-suite/iot-suite-connecting-pi-node.md)
-#### [C na urządzeniu Raspberry Pi](../iot-suite/iot-suite-connecting-pi-c.md)
+#### [C w systemie Windows](iot-accelerators-connecting-devices.md)
+#### [C w systemie Linux](iot-accelerators-connecting-devices-linux.md)
+#### [Node.js (ogólny)](iot-accelerators-connecting-devices-node.md)
+#### [Node.js na urządzeniu Raspberry Pi](iot-accelerators-connecting-pi-node.md)
+#### [C na urządzeniu Raspberry Pi](iot-accelerators-connecting-pi-c.md)
 #### [Zestaw deweloperski MX Chip AZ3166](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### Pojęcia
-#### [Szczegóły implementacji monitorowania zdalnego](../iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md)
+#### [Szczegóły implementacji monitorowania zdalnego](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 #### [Wybory dotyczące architektury związane z monitorowaniem zdalnym](iot-accelerators-remote-monitoring-architectural-choices.md)
 
 ## Połączona fabryka
-### [Wdrażanie bramy dla połączonej fabryki](../iot-suite/iot-suite-connected-factory-gateway-deployment.md)
-### [Dostosowywanie połączonej fabryki](../iot-suite/iot-suite-connected-factory-customize.md)
+### [Wdrażanie bramy dla połączonej fabryki](iot-accelerators-connected-factory-gateway-deployment.md)
+### [Dostosowywanie połączonej fabryki](iot-accelerators-connected-factory-customize.md)
 ### [Korzystanie z wydawcy OPC na potrzeby połączonej fabryki](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
-### [Konfigurowanie połączonej fabryki](../iot-suite/iot-suite-connected-factory-configure.md)
+### [Konfigurowanie połączonej fabryki](iot-accelerators-connected-factory-configure.md)
 ## [Uprawnienia w witrynie azureiotsuite.com](../iot-suite/iot-suite-permissions.md)
 
 # Dokumentacja
@@ -118,8 +118,8 @@
 
 # Zasoby
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/)
-## [Często zadawane pytania](../iot-suite/iot-suite-faq.md)
-## [Zdalne monitorowanie — często zadawane pytania](../iot-suite/iot-suite-faq-rm-v2.md)
-## [Połączona fabryka — często zadawane pytania](../iot-suite/iot-suite-faq-cf.md)
+## [Często zadawane pytania](iot-accelerators-faq.md)
+## [Zdalne monitorowanie — często zadawane pytania](iot-accelerators-faq-rm-v2.md)
+## [Połączona fabryka — często zadawane pytania](iot-accelerators-faq-cf.md)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [Ścieżka szkoleniowa dotycząca akceleratorów rozwiązań IoT](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

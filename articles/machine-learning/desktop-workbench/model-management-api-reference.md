@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: e518799fb4144093e5c3caf0524254a098e4b9cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3efc351861a7d5b3c02c08b96494e83a3ccb99f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Odwołanie do usługi Azure Machine Learning Model zarządzania konta API
 
@@ -77,7 +77,7 @@ W kroku rejestracji modelu rejestruje modelu uczenia maszynowego z utworzonego k
 Rejestruje modelu.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -91,19 +91,19 @@ Rejestruje modelu.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | OK. Rejestracja modelu zakończyło się pomyślnie. | [Model](#model) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Zapytanie listy modeli konta
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
 ### <a name="description"></a>Opis
 Wysyła zapytanie do listy modeli w ramach konta. Można filtrować listę wyników tagu i nazwę. Jeśli filtr nie zostanie przekazany, zapytanie Wyświetla listę wszystkich modeli w ramach konta. Jest podzielony na zwracanej liście strony, a liczba elementów w każdej z nich jest parametrem opcjonalnym.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -119,20 +119,20 @@ Wysyła zapytanie do listy modeli w ramach konta. Można filtrować listę wynik
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [PaginatedModelList](#paginatedmodellist) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="get-model-details"></a>Uzyskiwanie szczegółów modelu
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{id}  
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{id}  
  |
 
 ### <a name="description"></a>Opis
 Pobiera model według identyfikatora.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -145,7 +145,7 @@ Pobiera model według identyfikatora.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [Model](#model) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>Zarejestruj manifestu zarejestrowanego modelu i wszystkie zależności
 
@@ -158,7 +158,7 @@ Pobiera model według identyfikatora.
 Rejestruje manifestu z zarejestrowanego modelu i wszystkie jego zależności.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -171,20 +171,20 @@ Rejestruje manifestu z zarejestrowanego modelu i wszystkie jego zależności.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Manifestu rejestracja powiodła się. | [Manifest](#manifest) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>Zapytanie listy manifestów konta
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
 ### <a name="description"></a>Opis
 Wysyła zapytanie do listy manifestów konta. Można filtrować listę wyników przez model identyfikator i nazwa manifestu. Jeśli filtr nie zostanie przekazany, zapytanie Wyświetla listę wszystkich manifestów w ramach konta. Jest podzielony na zwracanej liście strony, a liczba elementów w każdej z nich jest parametrem opcjonalnym.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -200,20 +200,20 @@ Wysyła zapytanie do listy manifestów konta. Można filtrować listę wyników 
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [PaginatedManifestList](#paginatedmanifestlist) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="get-manifest-details"></a>Uzyskiwanie szczegółowych informacji manifestu
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{id} | 
 
 ### <a name="description"></a>Opis
 Pobiera manifest według identyfikatora.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -226,7 +226,7 @@ Pobiera manifest według identyfikatora.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [Manifest](#manifest) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="create-an-image"></a>Tworzenie obrazu
 
@@ -239,7 +239,7 @@ Pobiera manifest według identyfikatora.
 Tworzy obraz jako obraz Docker w rejestrze kontenera platformy Azure.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -252,20 +252,20 @@ Tworzy obraz jako obraz Docker w rejestrze kontenera platformy Azure.
 | Kod | Opis | Nagłówki | Schemat |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adres URL lokalizacji operacji asynchronicznej. Wywołanie GET Pokaż stan zadania tworzenia obrazu. | Operacja lokalizacji |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="query-the-list-of-images-in-an-account"></a>Listy obrazów w ramach konta kwerendy
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
 ### <a name="description"></a>Opis
 Wysyła zapytanie do listy obrazów w ramach konta. Można filtrować listę wyników według Identyfikatora manifestu i nazwę. Jeśli niepowodzenie bez filtru w zapytaniu przedstawiono wszystkie obrazy w ramach konta. Jest podzielony na zwracanej liście strony, a liczba elementów w każdej z nich jest parametrem opcjonalnym.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -281,20 +281,20 @@ Wysyła zapytanie do listy obrazów w ramach konta. Można filtrować listę wyn
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [PaginatedImageList](#paginatedimagelist) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="get-image-details"></a>Uzyskiwanie szczegółów obrazu
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{id} | 
 
 ### <a name="description"></a>Opis
 Pobiera obraz według identyfikatora.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -307,7 +307,7 @@ Pobiera obraz według identyfikatora.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [Obraz](#image) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 
 ## <a name="create-a-service"></a>Tworzenie usługi
@@ -321,7 +321,7 @@ Pobiera obraz według identyfikatora.
 Tworzy usługę z obrazu.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -335,20 +335,20 @@ Tworzy usługę z obrazu.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adres URL lokalizacji operacji asynchronicznej. Wywołanie GET Pokaż stan zadania tworzenia usługi. | Operacja lokalizacji |
 | 409 | Usługa o określonej nazwie już istnieje. |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="query-the-list-of-services-in-an-account"></a>Lista usług w ramach konta kwerendy
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
 ### <a name="description"></a>Opis
 Wysyła zapytanie do listy usług dla konta. Można filtrować listę wyników Identyfikatora nazwy modelu, manifestu nazwa, identyfikator obrazu, nazwa usługi lub Machine Learning obliczeń z identyfikatorem zasobu. Jeśli filtr nie zostanie przekazany, zapytanie Wyświetla listę wszystkich usług w ramach konta. Jest podzielony na zwracanej liście strony, a liczba elementów w każdej z nich jest parametrem opcjonalnym.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -369,20 +369,20 @@ Wysyła zapytanie do listy usług dla konta. Można filtrować listę wyników I
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [PaginatedServiceList](#paginatedservicelist) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse) |
 
 ## <a name="get-service-details"></a>Pobierz szczegóły usługi
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Opis
 Pobiera usługę według identyfikatora.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -395,20 +395,20 @@ Pobiera usługę według identyfikatora.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [ServiceResponse](#serviceresponse) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="update-a-service"></a>Aktualizowanie usługi
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| UMIEŚĆ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
+| PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Opis
 Aktualizuje istniejącą usługę.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -423,20 +423,20 @@ Aktualizuje istniejącą usługę.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adres URL lokalizacji operacji asynchronicznej. Wywołanie GET Pokaż stan zadania aktualizacji usługi. | Operacja lokalizacji |
 | 404 | Usługa o określonym identyfikatorze nie istnieje. |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="delete-a-service"></a>Usuwanie usługi
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| USUŃ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
+| DELETE |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Opis
 Usuwa usługę.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -450,20 +450,20 @@ Usuwa usługę.
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. |  |
 | 204 | Usługa o określonym identyfikatorze nie istnieje. |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="get-service-keys"></a>Pobieranie kluczy usługi
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
 ### <a name="description"></a>Opis
 Pobiera klucze usługi.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -476,20 +476,20 @@ Pobiera klucze usługi.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [AuthKeys](#authkeys)
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="regenerate-service-keys"></a>Ponowne generowanie kluczy usługi
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
+| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {id} / regenerateKeys | 
 
 ### <a name="description"></a>Opis
 Generuje ponownie klucze usługi i zwraca je.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -503,20 +503,20 @@ Generuje ponownie klucze usługi i zwraca je.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [AuthKeys](#authkeys)
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="query-the-list-of-deployments-in-an-account"></a>Zapytanie listy wdrożeń konta
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments | 
 
 ### <a name="description"></a>Opis
 Wysyła zapytanie do listy wdrożeń w ramach konta. Można filtrować listę wyników według Identyfikatora usługi, która będzie zwracać tylko wdrożenia, które są tworzone dla określonej usługi. Jeśli niepowodzenie bez filtru w zapytaniu przedstawiono wszystkie wdrożenia w ramach konta.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -529,20 +529,20 @@ Wysyła zapytanie do listy wdrożeń w ramach konta. Można filtrować listę wy
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [DeploymentList](#deploymentlist) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="get-deployment-details"></a>Pobierz szczegóły wdrożenia
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments/{id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments/{id} | 
 
 ### <a name="description"></a>Opis
 Pobiera wdrożenia według identyfikatora.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -555,20 +555,20 @@ Pobiera wdrożenia według identyfikatora.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [Wdrożenie](#deployment) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 ## <a name="get-operation-details"></a>Szczegóły operacji pobierania
 
 ### <a name="request"></a>Żądanie
 | Metoda | Identyfikator URI żądania |
 |------------|------------|
-| POBIERZ |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/operations/{id} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/operations/{id} | 
 
 ### <a name="description"></a>Opis
 Pobiera stan operacji asynchronicznej według identyfikatora operacji.
 
 ### <a name="parameters"></a>Parametry
-| Name (Nazwa) | Znajduje się w | Opis | Wymagane | Schemat
+| Name (Nazwa) | Lokalizacja | Opis | Wymagane | Schemat
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | ścieżka | Identyfikator subskrypcji platformy Azure. | Yes | ciąg |
 | resourceGroupName | ścieżka | Nazwa grupy zasobów, w którym znajduje się konto zarządzania modelu. | Yes | ciąg |
@@ -581,7 +581,7 @@ Pobiera stan operacji asynchronicznej według identyfikatora operacji.
 | Kod | Opis | Schemat |
 |--------------------|--------------------|--------------------|
 | 200 | Powodzenie. | [OperationStatus](#asyncoperationstatus) |
-| domyślnie | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
+| default | Błąd odpowiedzi, która opisuje Dlaczego nie można wykonać operację. | [Errorresponse języka](#errorresponse)
 
 
 
