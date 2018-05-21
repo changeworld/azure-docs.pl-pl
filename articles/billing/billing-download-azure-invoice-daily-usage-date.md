@@ -17,17 +17,18 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18f568fdeead10fadad0e403ce0ca7fe4b3213a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobierz lub wyświetlanie Twoich Azure rozliczeń faktury i dziennego użycia danych
 Możesz pobrać faktury z [portalu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub została ona wysłana w wiadomości e-mail. Aby pobrać dzienne użycie, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Tylko w przypadku niektórych ról ma uprawnienia do rozliczeń faktury i informacje o użyciu, takie jak konto administratora. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [zarządzanie dostępem do platformy Azure, rozliczeń, za pomocą ról](billing-manage-access.md).
 
->[!NOTE]
->W tym artykule nie dotyczą klientów Enterprise Agreement (EA). Jeśli EA klientów, faktur są wysyłane bezpośrednio do administratorów rejestracji.
+W tym artykule nie dotyczą klientów Enterprise Agreement (EA). Jeśli EA klientów, faktur są wysyłane bezpośrednio do administratorów rejestracji.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Pobierz faktury w wiadomości e-mail (PDF)
 Można włączyć i skonfigurować dodatkowych adresatów, aby otrzymać Azure faktury w wiadomości e-mail. Ta funkcja nie mogą być dostępne dla niektórych subskrypcji, takie jak ofert obsługi, umowy Enterprise Agreement lub Azure otwartym.

@@ -1,12 +1,12 @@
 ---
-title: "Pakiet Azure IoT — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące Pakietu IoT"
-services: 
+title: Pakiet Azure IoT — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące Pakietu IoT
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 6c644395aa7ad51c289cdc4a23b02e9e0239a0fe
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 4c8ecdae8d84028986b4b3fba94486ce8eb7f1bc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Często zadawane pytania dotyczące Pakietu IoT
 
-Zobacz też konkretnym połączonych fabryki [— często zadawane pytania](iot-suite-faq-cf.md).
+Zobacz też konkretnym połączonych fabryki [— często zadawane pytania](../iot-accelerators/iot-accelerators-faq-cf.md).
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Gdzie można znaleźć kodu źródłowego dla wstępnie skonfigurowanych rozwiązań?
 
@@ -34,7 +34,7 @@ Kod źródłowy jest przechowywane w następujących repozytoriów GitHub:
 
 ### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Jak zaktualizować do najnowszej wersji zdalnego wstępnie skonfigurowane rozwiązanie monitorowania, który korzysta z funkcji zarządzania urządzeniami Centrum IoT
 
-* Jeśli wdrożono wstępnie skonfigurowane rozwiązanie z witryny https://www.azureiotsuite.com/ zawsze wdraża nowe wystąpienie klasy najnowsza wersja rozwiązania.
+* W przypadku wdrożenia wstępnie skonfigurowane rozwiązanie z https://www.azureiotsuite.com/ lokacji, zawsze wdraża nowe wystąpienie klasy najnowsza wersja rozwiązania.
 * Jeśli wdrożono wstępnie skonfigurowane rozwiązanie przy użyciu wiersza polecenia, należy zaktualizować istniejące wdrożenie o nowy kod. Zobacz [wdrożenie w chmurze] [ lnk-cloud-deployment] w serwisie GitHub [repozytorium][lnk-remote-monitoring-github].
 
 ### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>Jak dodać obsługę nowej metody urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania
@@ -104,7 +104,7 @@ Zobacz Golpe marek blogu [wskazówki usunięcia dzierżawy usługi Azure AD][lnk
 Możesz także wypróbować niektóre inne funkcje i możliwości wstępnie skonfigurowanych rozwiązań Pakietu IoT:
 
 * [Omówienie rozwiązania konserwacji predykcyjnej wstępnie][lnk-predictive-overview]
-* [Fabryka połączonych wstępnie Omówienie rozwiązania](iot-suite-connected-factory-overview.md)
+* [Fabryka połączonych wstępnie Omówienie rozwiązania](../iot-accelerators/iot-accelerators-connected-factory-overview.md)
 * [Zabezpieczenia IoT od podstaw][lnk-security-groundup]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md

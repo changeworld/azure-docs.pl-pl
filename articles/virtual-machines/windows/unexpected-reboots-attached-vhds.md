@@ -3,19 +3,19 @@ title: Rozwiązywanie problemów z nieoczekiwane ponowne uruchomienie maszyn wir
 description: Jak rozwiązywać problemy z nieoczekiwane ponowne uruchomienie maszyn wirtualnych systemu Windows.
 keywords: SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się
 services: virtual-machines-windows
-author: tamram
-manager: jeconnoc
+author: genlin
+manager: cshepard
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: tamram
-ms.openlocfilehash: 2057ffe2d5ec61e1192ff12291114c43dc2cc049
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: genli
+ms.openlocfilehash: 5c16c2d08a1a317f8f718330ff6c86a452ac1815
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Rozwiązywanie problemów z nieoczekiwane ponowne uruchomienie maszyn wirtualnych z dołączonych dysków VHD
 

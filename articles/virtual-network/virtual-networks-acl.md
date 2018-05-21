@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0f22bae1e1e40d3ea735861b9a633ae46eae5c33
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f532ed9ad1254aa8082f212b8190f83bb71767e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Co to jest punkt końcowy listy kontroli dostępu?
 
 > [!IMPORTANT]
 > Platforma Azure ma dwa różne [modele wdrażania](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) do tworzenia i pracy z zasobami: Resource Manager i model klasyczny. Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby większości nowych wdrożeń korzystać modelu wdrażania usługi Resource Manager. 
 
-Punkt końcowy listy kontroli dostępu (ACL) jest ulepszenie zabezpieczeń, dostępne dla danego wdrożenia usługi Azure. Listy ACL zapewnia możliwość selektywnego akceptowanie lub odrzucanie ruchu dla punktu końcowego maszyny wirtualnej. Ta możliwość filtrowania pakietów zapewnia dodatkową warstwę zabezpieczeń. Można określić listy ACL tylko punktów końcowych sieci. Nie można określić listy ACL dla sieci wirtualnej lub określonej podsieci zawarte w sieci wirtualnej. Zaleca się używanie grup zabezpieczeń sieci (NSG) zamiast listy kontroli dostępu, jeśli to możliwe. Aby dowiedzieć się więcej na temat grup NSG, zobacz [omówienie grupy zabezpieczeń sieci](virtual-networks-nsg.md)
+Punkt końcowy listy kontroli dostępu (ACL) jest ulepszenie zabezpieczeń, dostępne dla danego wdrożenia usługi Azure. Listy ACL zapewnia możliwość selektywnego akceptowanie lub odrzucanie ruchu dla punktu końcowego maszyny wirtualnej. Ta możliwość filtrowania pakietów zapewnia dodatkową warstwę zabezpieczeń. Można określić listy ACL tylko punktów końcowych sieci. Nie można określić listy ACL dla sieci wirtualnej lub określonej podsieci zawarte w sieci wirtualnej. Zaleca się używanie grup zabezpieczeń sieci (NSG) zamiast listy kontroli dostępu, jeśli to możliwe. Aby dowiedzieć się więcej na temat grup NSG, zobacz [omówienie grupy zabezpieczeń sieci](security-overview.md)
 
 Listy kontroli dostępu można skonfigurować przy użyciu programu PowerShell lub w portalu Azure. Aby skonfigurować sieć listy ACL za pomocą programu PowerShell, zobacz [listy kontroli dostępu zarządzanie dla punktów końcowych przy użyciu programu PowerShell](virtual-networks-acl-powershell.md). Aby skonfigurować sieć listy ACL za pomocą portalu Azure, zobacz [sposobu konfigurowania punktów końcowych do maszyny wirtualnej](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

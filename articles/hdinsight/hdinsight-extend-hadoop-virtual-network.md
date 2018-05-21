@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: cb005549fcd9a5850c990d8ef8acb724443f9908
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3df32c39152c8dda24fd5d0796f8074af8ce8a1a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -93,7 +93,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowy HDInsight do i
         Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z grup zabezpieczeń sieci](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) dokumentu.
 
         > [!IMPORTANT]
-        > Reguły grupy zabezpieczeń sieci są stosowane w kolejności, w oparciu o priorytet reguły. Zastosowano pierwszej reguły, która odpowiada wzorcowi ruchu, a nie inne są stosowane dla tego ruchu. Kolejność reguł z najbardziej ograniczająca najbardziej ograniczająca. Aby uzyskać więcej informacji, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md) dokumentu.
+        > Reguły grupy zabezpieczeń sieci są stosowane w kolejności, w oparciu o priorytet reguły. Zastosowano pierwszej reguły, która odpowiada wzorcowi ruchu, a nie inne są stosowane dla tego ruchu. Kolejność reguł z najbardziej ograniczająca najbardziej ograniczająca. Aby uzyskać więcej informacji, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/security-overview.md) dokumentu.
 
     * Trasy definiowane przez użytkownika
 
@@ -214,7 +214,7 @@ Aby połączyć się Ambari i stron sieci web za pośrednictwem sieci wirtualnej
 
 Ruch sieciowy w sieciach wirtualnych platformy Azure można sterować przy użyciu następujących metod:
 
-* **Sieciowe grupy zabezpieczeń** (NSG) umożliwiają filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md) dokumentu.
+* **Sieciowe grupy zabezpieczeń** (NSG) umożliwiają filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/security-overview.md) dokumentu.
 
     > [!WARNING]
     > HDInsight nie obsługuje ograniczenia ruchu wychodzącego.
@@ -242,7 +242,7 @@ Jeśli planujesz używanie **sieciowej grupy zabezpieczeń** lub **trasy zdefini
 
 Aby uzyskać więcej informacji na sieciowych grup zabezpieczeń lub trasy zdefiniowane przez użytkownika Zobacz następującą dokumentację:
 
-* [Sieciowa grupa zabezpieczeń](../virtual-network/virtual-networks-nsg.md)
+* [Sieciowa grupa zabezpieczeń](../virtual-network/security-overview.md)
 
 * [Trasy zdefiniowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md)
 
@@ -666,6 +666,6 @@ Po wykonaniu tych czynności można połączyć się z zasobami w sieci wirtualn
 * Do konfigurowania replikacja geograficzna HBase, zobacz [replikacji klastra HBase w sieciach wirtualnych platformy Azure](hbase/apache-hbase-replication.md).
 * Aby uzyskać więcej informacji o sieci wirtualnych platformy Azure, zobacz [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-* Aby uzyskać więcej informacji dotyczących grup zabezpieczeń sieci, zobacz [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md).
+* Aby uzyskać więcej informacji dotyczących grup zabezpieczeń sieci, zobacz [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md).
 
 * Aby uzyskać więcej informacji dotyczących tras zdefiniowanych przez użytkownika, zobacz [trasy zdefiniowane przez użytkownika i przesyłanie dalej IP](../virtual-network/virtual-networks-udr-overview.md).

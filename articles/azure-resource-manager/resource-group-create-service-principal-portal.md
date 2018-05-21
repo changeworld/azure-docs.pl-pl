@@ -8,25 +8,25 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: e5d93963dddb4acb1147042ae338b32cb5d7646f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a8784a8e29e65d8abea566b5a2bf41a2ae6cadf0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Aby utworzyć aplikację usługi Azure Active Directory i nazwy głównej usługi, który ma dostęp do zasobów za pomocą portalu
 
-Jeśli masz kod, który wymaga dostępu lub modyfikacji zasobów, należy skonfigurować aplikację Azure Active Directory (AD). Wymagane uprawnienia są przypisywane do aplikacji usługi AD. Ta metoda jest preferowana, na którym uruchomiono aplikację z poświadczeniami użytkownika, ponieważ można przypisać uprawnienia do tożsamości aplikacji, które są inne niż własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone do dokładnie co aplikacja powinna wykonać.
+Jeśli masz kod, który wymaga dostępu lub modyfikacji zasobów, należy skonfigurować aplikację Azure Active Directory (AD). Wymagane uprawnienia są przypisywane do aplikacji usługi AD. Ta metoda jest preferowana, na którym uruchomiono aplikację z poświadczeniami użytkownika, ponieważ można przypisać uprawnienia do tożsamości aplikacji, które są inne niż własnych uprawnień. Zazwyczaj te uprawnienia są ograniczone tylko do czynności, które aplikacja musi wykonywać.
 
 W tym artykule przedstawiono sposób wykonywania tych kroków za pośrednictwem portalu. Głównie aplikacji pojedynczej dzierżawy, gdzie aplikacja jest przeznaczona do uruchamiania tylko jednej organizacji. Zwykle użyć pojedynczej dzierżawy aplikacji dla aplikacji — biznesowych, które uruchamiane w danej organizacji.
 
 > [!IMPORTANT]
-> Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu usługi Azure AD zarządzane tożsamości usługi dla tożsamości użytkownika aplikacji. Azure AD MSI jest w publicznej wersji zapoznawczej usługi Azure Active Directory, które upraszcza tworzenie tożsamości dla kodu. Jeśli kod jest uruchomiony na to usługa, która obsługuje program Azure AD MSI i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie usługi Azure Active Directory, Azure AD MSI jest lepszym rozwiązaniem dla Ciebie. Aby dowiedzieć się więcej na temat usługi Azure AD MSI, łącznie z usług, które obecnie obsługuje, zobacz [zarządzane tożsamość usługi Azure zasobów](../active-directory/managed-service-identity/overview.md).
+> Zamiast tworzyć jednostkę usługi, rozważ użycie tożsamości usługi zarządzanej w usłudze Azure AD na potrzeby tożsamości aplikacji. Azure AD MSI to dostępna w publicznej wersji zapoznawczej funkcja usługi Azure Active Directory, która upraszcza tworzenie tożsamości kodu. Jeśli kod jest uruchamiany w usłudze obsługującej funkcję Azure AD MSI i uzyskującej dostęp do zasobów, które obsługują uwierzytelnianie w usłudze Azure Active Directory, funkcja Azure AD MSI jest lepszym rozwiązaniem. Aby dowiedzieć się więcej na temat funkcji Azure AD MSI i zapoznać się z listą usług, które ją obecnie obsługują, zobacz [Tożsamość usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 

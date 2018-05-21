@@ -159,6 +159,8 @@
       items:
         - name: Galeria elementów Runbook
           href: automation-runbook-gallery.md
+        - name: Monitorowanie elementów runbook za pomocą dzienników aktywności
+          href: automation-alert-activity-log.md
         - name: Uruchamianie elementu Runbook z alertów platformy Azure
           href: automation-create-alert-triggered-runbook.md
         - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
