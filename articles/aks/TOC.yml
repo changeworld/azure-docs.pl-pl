@@ -45,13 +45,13 @@
           href: delete-cluster.md
     - name: Konfigurowanie woluminów danych
       items:
-        - name: Dynamiczne aprowizowanie dysku na platformie Azure
+        - name: Dysk platformy Azure — dynamiczny
           href: azure-disks-dynamic-pv.md
-        - name: Statyczne aprowizowanie dysku na platformie Azure
+        - name: Dysk platformy Azure — statyczny
           href: azure-disk-volume.md
-        - name: Dynamiczne aprowizowanie pliku na platformie Azure
+        - name: Azure Files — wersja dynamiczna
           href: azure-files-dynamic-pv.md
-        - name: Statyczne aprowizowanie pliku na platformie Azure
+        - name: Azure Files — wersja statyczna
           href: azure-files-volume.md
     - name: Konfigurowanie sieci
       items:
