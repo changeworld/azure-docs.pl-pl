@@ -1,11 +1,11 @@
 ---
-title: "Importowanie SOAP API i przekonwertować na pozostałe, korzystając z portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zaimportować SOAP API i przekształcić ją w REST z interfejsu API zarządzania."
+title: Importowanie interfejsu API protokołu SOAP i konwertowanie na interfejs API REST | Microsoft Docs
+description: Dowiedz się, jak zaimportować interfejs API protokołu SOAP i przekształcić go w interfejs API REST przy użyciu usługi API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 74935f11d5bf3c83aef46c1d41fccd81ad312acb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 940756917c8f377e7d134818409e6287a4031e15
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="import-a-soap-api-and-convert-to-rest"></a>Importowanie SOAP API i przekonwertować na REST
+# <a name="import-a-soap-api-and-convert-to-rest"></a>Importowanie interfejsu API SOAP i konwertowanie go na interfejs API REST
 
-W tym artykule pokazano, jak zaimportować SOAP API i przekształcić ją w REST. Artykuł opisuje również sposób testowania APIM interfejsu API.
+W tym artykule przedstawiono sposób importowania interfejsu API protokołu SOAP i przekształcania go w interfejs API REST. Artykuł przedstawia również sposób testowania interfejsu API usługi APIM.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Importowanie SOAP API i przekonwertować na REST
-> * Testowanie interfejsu API w portalu Azure
+> * Importowanie interfejsu API SOAP i konwertowanie go na interfejs API REST
+> * Testowanie interfejsu API w witrynie Azure Portal
 > * Testowanie interfejsu API w portalu dla deweloperów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
+Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importu i opublikuj interfejs API zaplecza
+## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-1. Wybierz **interfejsów API** zgodnie z **zarządzanie interfejsami API**.
-2. Wybierz **WSDL** z **dodać nowy interfejs API** listy.
+1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
+2. Wybierz pozycję **WSDL** z listy **Dodaj nowy interfejs API**.
 
-    ![INTERFEJS API PROTOKOŁU SOAP](./media/restify-soap-api/wsdl-api.png)
-3. W **WSDL specification**, wprowadź adres URL, na którym znajduje się Twój interfejs API protokołu SOAP.
-4. Kliknij przycisk **SOAP resztą** przycisk radiowy. Po kliknięciu tej opcji APIM prób automatycznego przekształcania między XML i JSON. W takim przypadku konsumentów powinny być wywołanie interfejsu API jako interfejs API restful, która zwraca JSON. APIM konwertuje każdego żądania do wywołania protokołu SOAP.
+    ![Interfejs API protokołu SOAP](./media/restify-soap-api/wsdl-api.png)
+3. W obszarze **Specyfikacja WSDL** wprowadź adres URL, pod którym znajduje się Twój interfejs API protokołu SOAP.
+4. Kliknij przycisk radiowy **Konwersja z interfejsu SOAP na interfejs REST**. Po kliknięciu tej opcji usługa APIM spróbuje automatycznie przeprowadzić przekształcanie między kodem XML i JSON. W tym przypadku użytkownicy powinni wywoływać interfejs API jako interfejs API RESTful, który zwraca kod JSON. Usługa APIM konwertuje każde żądanie na wywołanie protokołu SOAP.
 
     ![Konwersja z interfejsu SOAP na interfejs REST](./media/restify-soap-api/soap-to-rest.png)
 
-5. Naciśnij klawisz tab.
+5. Naciśnij klawisz Tab.
 
-    Następujące pola uzyskać wypełnione z użyciem informacji z interfejsu API SOAP: Nazwa wyświetlana, nazwa, opis.
-6. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która określa tego interfejsu API w tym wystąpieniu APIM. Musi być unikatowa w tym wystąpieniu APIM.
-9. Opublikuj interfejsu API interfejsu API można skojarzyć z produktem. W takim przypadku "*nieograniczone*" produkt jest używany.  Jeśli chcesz dla interfejsu API do opublikowania i być dostępne dla deweloperów, należy ją dodać do produktu. Można to zrobić podczas tworzenia interfejsu API lub ustaw ją później.
+    Następujące pola są wypełniane przy użyciu informacji z interfejsu API protokołu SOAP: Nazwa wyświetlana, Nazwa, Opis.
+6. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.
+9. Opublikuj interfejs API przez skojarzenie go z produktem. W takim przypadku jest używany produkt typu „*Nieograniczony*”.  Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.
 
-    Produkty są skojarzenia jeden lub więcej interfejsów API. Można zawierają wiele interfejsów API i ich oferty dla deweloperów za pośrednictwem portalu dla deweloperów. Deweloperzy muszą najpierw subskrybować produktu, aby uzyskać dostęp do interfejsu API. Gdy subskrybujesz one, otrzymują klucz subskrypcji, który ułatwia jakiegokolwiek interfejsu API w tym produkcie. Jeśli utworzono wystąpienie APIM jesteś administratorem już, aby zasubskrybować każdego produktu domyślnie.
+    Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.
 
     Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe:
 
@@ -61,31 +61,31 @@ Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure
     * **Unlimited (nieograniczony)**   
 10. Wybierz pozycję **Utwórz**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowy interfejs API APIM w portalu Azure
+## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
 
-Operacje można wywołać bezpośrednio z portalu Azure oferują wygodny sposób, aby wyświetlić i przetestować operacje interfejsu API.  
+Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
-2. Naciśnij klawisz **testu** kartę.
-3. Wybierz niektórych operacji.
+2. Naciśnij kartę **Test**.
+3. Wybierz operację.
 
-    Zostaje wyświetlona strona pól parametrów zapytania i nagłówków. Jeden z nagłówków jest "Ocp-Apim-subskrypcji — klucz", dla subskrypcji klucza produktu, który jest skojarzony z tym interfejsie API. Jeśli utworzono wystąpienie APIM są przeznaczone dla administratorów, więc klucz jest wypełniane automatycznie. 
-1. Naciśnij klawisz **wysyłania**.
+    Na stronie zostaną wyświetlone pola parametrów zapytania i pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie. 
+1. Kliknij pozycję **Wyślij**.
 
-    Zaplecze odpowiada **200 OK** i niektórych danych.
+    Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
 
 ## <a name="call-operation"> </a>Wywoływanie operacji z portalu dla deweloperów
 
-Ponadto można wywołać operacji **portalu dla deweloperów** do testowania interfejsów API. 
+Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API. 
 
-1. Wybierz utworzony w interfejsu API "Import i opublikuj interfejs API zaplecza" krok.
-2. Naciśnij klawisz **portalu dla deweloperów**.
+1. Wybierz interfejs API utworzony w kroku „Importowanie i publikowanie interfejsu API zaplecza”.
+2. Naciśnij pozycję **Portal dla deweloperów**.
 
-    Otwiera witrynę "Portalu dla deweloperów".
-3. Wybierz **interfejsu API** utworzony.
+    Zostanie otwarta witryna „Portal dla deweloperów”.
+3. Wybierz utworzony **interfejs API**.
 4. Kliknij operację, którą chcesz przetestować.
-5. Naciśnij klawisz **wypróbuj**.
-6. Naciśnij klawisz **wysyłania**.
+5. Naciśnij pozycję **Wypróbuj**.
+6. Kliknij pozycję **Wyślij**.
     
     Po wywołaniu operacji portal dla deweloperów wyświetla **stan odpowiedzi**, **nagłówki odpowiedzi** oraz wszelką **zawartość odpowiedzi**.
 
@@ -96,4 +96,4 @@ Ponadto można wywołać operacji **portalu dla deweloperów** do testowania int
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przekształcanie i chronić opublikowanych interfejsu API](transform-api.md)
+> [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

@@ -1,7 +1,9 @@
 ---
-title: "Szybki start platformy Azure — konfigurowanie maszyny wirtualnej za pomocą DSC | Microsoft Docs"
-description: "Konfigurowanie stosu LAMP w maszynie wirtualnej systemu Linux za pomocą konfiguracji żądanego stanu (DSC)"
+title: Szybki start platformy Azure — konfigurowanie maszyny wirtualnej za pomocą DSC | Microsoft Docs
+description: Konfigurowanie stosu LAMP w maszynie wirtualnej systemu Linux za pomocą konfiguracji żądanego stanu (DSC)
 services: automation
+ms.service: automation
+ms.component: dsc
 keywords: dsc, konfiguracja, automatyzacja
 author: KrisBash
 ms.author: krbash
@@ -9,11 +11,11 @@ ms.date: 12/17/2017
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurowanie maszyny wirtualnej systemu Linux za pomocą DSC
 
@@ -28,7 +30,7 @@ Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warun
 * Maszyna wirtualna usługi Azure Resource Manager (nie klasycznej) z systemem Red Hat Enterprise Linux, CentOS lub Oracle Linux. Aby uzyskać instrukcje dotyczące tworzenia maszyny wirtualnej, zobacz [Create your first Linux virtual machine in the Azure portal](../virtual-machines/linux/quick-create-portal.md) (Tworzenie pierwszej maszyny wirtualnej systemu Linux w witrynie Azure Portal)
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do platformy Azure pod adresem https://portal.azure.com
+Zaloguj się do platformy Azure na stronie https://portal.azure.com
 
 ## <a name="onboard-a-virtual-machine"></a>Dołączanie maszyny wirtualnej
 Istnieje wiele różnych metod dołączania maszyny i włączania konfiguracji żądanego stanu. Ten Szybki start obejmuje dołączanie za pomocą konta automatyzacji. Możesz dowiedzieć się więcej o innych metodach dołączania maszyn do konfiguracji żądanego stanu, czytając artykuł o [dołączaniu](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
