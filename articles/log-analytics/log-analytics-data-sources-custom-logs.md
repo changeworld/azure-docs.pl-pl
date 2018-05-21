@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Niestandardowe dzienniki w analizy dzienników
 Źródło danych niestandardowe dzienniki w analizy dzienników umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrowania informacji w plikach tekstowych zamiast standardowych usług rejestrowania, takich jak dziennika zdarzeń systemu Windows lub Syslog.  Po zebraniu danych, można przeanalizować każdego rekordu podczas logowania do poszczególnych pól przy użyciu [pola niestandardowe](log-analytics-custom-fields.md) funkcji analizy dzienników.
@@ -29,7 +29,7 @@ Pliki dziennika mają być zbierane musi odpowiadać następujących kryteriów.
 
 - Dziennik musi mieć pojedynczy wpis wierszu albo użyj sygnatury czasowej dopasowania jedną z następujących formatów na początku każdego wpisu.
 
-    HH: MM: RRRR MM-DD<br>M/D/RRRR GG: MM: SS AM/PM <br>MON DD, YYYY HH: mm:
+    HH: MM: RRRR MM-DD<br>M/D/RRRR GG: MM: SS AM/PM<br>MON DD, YYYY HH: mm:<br />rrmmdd hh: mm:<br />ddMMyy hh: mm:<br />MMM d hh: mm:<br />dd/mm/zzz yyyy<br />RRRR-MM-ddTHH:mm:ssK
 
 - Plik dziennika nie może dopuszczać logowanie cykliczne lub rotacji dziennika, gdy plik jest zastępowany nowe wpisy.
 - Plik dziennika, należy użyć kodowanie ASCII lub UTF-8.  Innych formatach, takich jak UTF-16 nie są obsługiwane.
@@ -84,7 +84,7 @@ Poniższa tabela zawiera przykłady prawidłowych do określenia różnych plika
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika
 Określona nazwa będzie służyć do typu dziennika, jak opisano powyżej.  Zawsze zakończy się z _CL odróżniający go jako dziennik niestandardowy.
 
-1. Wpisz nazwę dziennika.   **\_CL** sufiks jest teraz udostępniana automatycznie.
+1. Wpisz nazwę dziennika.  **\_CL** sufiks jest teraz udostępniana automatycznie.
 2. Dodaj opcjonalny **opis**.
 3. Kliknij przycisk **dalej** można zapisać definicji dziennik niestandardowy.
 

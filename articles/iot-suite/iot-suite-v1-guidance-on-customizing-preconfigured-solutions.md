@@ -1,12 +1,12 @@
 ---
-title: "Dostosowywanie wstępnie rozwiązania | Dokumentacja firmy Microsoft"
-description: "Zawiera wskazówki dotyczące sposobu dostosowywania rozwiązań wstępnie pakiet IoT Azure."
-services: 
+title: Dostosowywanie wstępnie rozwiązania | Dokumentacja firmy Microsoft
+description: Zawiera wskazówki dotyczące sposobu dostosowywania rozwiązań wstępnie pakiet IoT Azure.
+services: ''
 suite: iot-suite
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
 ms.service: iot-suite
 ms.devlang: dotnet
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cb5955111cb3954f71f11602042b5153ccee3473
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="customize-a-preconfigured-solution"></a>Dostosowanie wstępnie skonfigurowanego rozwiązania
 
@@ -29,7 +29,7 @@ Wstępnie skonfigurowanych rozwiązań wyposażone w pakiet IoT Azure przedstawi
 
 Kod źródłowy dla wstępnie skonfigurowanych rozwiązań jest dostępna w witrynie GitHub w następujących repozytoria:
 
-* Monitorowanie zdalne: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
+* Monitorowania zdalnego: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 * Konserwacji predykcyjnej: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
 * Fabryka połączenia: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
@@ -50,7 +50,7 @@ Edytowanie tych zadań bezpośrednio do alter logiki lub dodać logikę określo
 5. Edytowanie danych wejściowych, zapytań i danych wyjściowych.
    
     Prostą modyfikację jest zmiana kwerendy dotyczącej **reguły** zadanie, aby użyć **"<"** zamiast **">"**. Portal rozwiązania pozostanie **">"** podczas edycji reguły, ale Zwróć uwagę, jak zachowanie jest odwrócony z powodu zmiany w podstawowym zadania.
-6. Uruchom zadanie
+6. Uruchamianie zadania
 
 > [!NOTE]
 > Zdalnego pulpitu nawigacyjnego monitorowania zależy od określonych danych, więc zmiany zadania może spowodować niepowodzenie pulpitu nawigacyjnego.
@@ -232,7 +232,7 @@ Wartość domyślna to 10 minut. Można zmienić tę wartość w [TelmetryApiCon
 
 Masz dostosowanie chcesz wyświetlić w tym dokumencie? Dodaj sugestii funkcji [User Voice](https://feedback.azure.com/forums/321918-azure-iot), lub komentarz w tym artykule. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat opcji dostosowywania wstępnie skonfigurowanych rozwiązań, zobacz:
 
@@ -252,4 +252,4 @@ Aby dowiedzieć się więcej na temat opcji dostosowywania wstępnie skonfigurow
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-cf-customize]: iot-suite-connected-factory-customize.md
+[lnk-cf-customize]:../iot-accelerators/iot-accelerators-connected-factory-customize.md
