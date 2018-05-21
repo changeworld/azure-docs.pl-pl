@@ -2,35 +2,31 @@
 title: Podręcznik wdrażania samoobsługowego resetowania haseł — Azure Active Directory
 description: Porady pomagające w pomyślnym wdrażaniu samoobsługowego resetowania haseł w usłudze Azure AD
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: e34bf6ec106976c1c3aab0f2b5c4ebf4b6ccc54b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł
 
 Aby zapewnić bezproblemowe wdrożenie funkcji samoobsługowego resetowania haseł (SSPR, self-service password reset) usługi Azure Active Directory (Azure AD), większość klientów wykonuje następujące czynności:
 
+> [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
+
 1. [Włącz resetowanie haseł w katalogu](quickstart-sspr.md).
 2. [Skonfiguruj lokalne uprawnienia usługi Active Directory do zapisywania zwrotnego haseł](howto-sspr-writeback.md#active-directory-permissions).
 3. [Konfigurowanie zapisywania zwrotnego haseł](howto-sspr-writeback.md#configure-password-writeback) w celu zapisywania haseł z usługi Azure AD z powrotem w katalogu lokalnym.
 4. [Przypisz i zweryfikuj wymagane licencje](concept-sspr-licensing.md).
-5. Określ, czy chcesz zastosować wdrażanie stopniowe. Jeśli chcesz przeprowadzić stopniowe wdrażanie funkcji samoobsługowego resetowania haseł, możesz ograniczyć dostęp do jednej grupy użytkowników i przeprowadzić dla tej grupy pilotażowe wdrożenie programu. Aby przeprowadzić wdrożenie dla określonej grupy, ustaw przełącznik **Funkcja samoobsługowego resetowania hasła jest włączona** na pozycję **Wybrano** i wybierz grupę zabezpieczeń, której chcesz umożliwić resetowanie haseł. 
+5. Określ, czy chcesz zastosować wdrażanie stopniowe. Jeśli chcesz przeprowadzić stopniowe wdrażanie funkcji samoobsługowego resetowania haseł, możesz ograniczyć dostęp do jednej grupy użytkowników i przeprowadzić dla tej grupy pilotażowe wdrożenie programu. Aby przeprowadzić wdrożenie dla określonej grupy, ustaw przełącznik **Funkcja samoobsługowego resetowania hasła jest włączona** na pozycję **Wybrano** i wybierz grupę zabezpieczeń, której chcesz umożliwić resetowanie haseł.  W tym miejscu jest obsługiwane zagnieżdżanie grup zabezpieczeń.
 6. Wypełnij [dane uwierzytelniania](howto-sspr-authenticationdata.md) potrzebne do zarejestrowania użytkowników, takie jak ich numer telefonu służbowego, numer telefonu komórkowego i alternatywny adres e-mail.
 7. [Dostosuj środowisko logowania do usługi Azure AD, aby uwzględnić oznaczenie marką firmy](concept-sspr-customization.md).
 8. Naucz użytkowników, jak korzystać z funkcji SSPR. Wyślij im instrukcje dotyczące rejestrowania się i resetowania haseł.
@@ -66,6 +62,10 @@ Wielu klientów decyduje się na hostowanie strony internetowej i utworzenie gł
 * Inne informacje dotyczące organizacji
 
 W dowolnej komunikacji e-mail i rozsyłanych materiałach marketingowych możesz umieścić firmowe, łatwe do zapamiętania adresy URL, z których mogą skorzystać użytkownicy chcący użyć tych usług. Aby ułatwić Ci pracę, utworzyliśmy także [przykładową stronę resetowania hasła](https://github.com/ajamess/password-reset-page), którą możesz dostosować do potrzeb swojej organizacji.
+
+## <a name="step-by-step-deployment-plan"></a>Plan wdrożenia krok po kroku
+
+Grupa ds. produktów usługi Azure Active Directory utworzyła [plan wdrożenia krok po kroku](https://aka.ms/SSPRDeploymentPlan), którego organizacje mogą używać równolegle z dokumentacją z tej witryny, aby analizować własną działalność i planować wdrożenie samoobsługowego resetowania hasła.
 
 ## <a name="use-enforced-registration"></a>Używanie rejestracji wymuszonej
 

@@ -1,6 +1,6 @@
 ---
-title: Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMS | Microsoft Docs
-description: Dowiedz się, jak przeprowadzić migrację bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMS.
+title: Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA | Microsoft Docs
+description: Dowiedz się, jak przeprowadzić migrację bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,13 +9,13 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 36548e4d088b809f4fb16d89aaa3ef0a802d6d5c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e714667183704670807fd2f62767b75f62978a38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMS
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA
 
 Przeniesienie bazy danych SQL Server do pojedynczej bazy danych usługi Azure SQL Database jest proste i polega na utworzeniu pustej bazy danych SQL na platformie Azure, a następnie zaimportowaniu odpowiedniej bazy danych do platformy Azure przy użyciu programu [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA). Dodatkowe opcje migracji zostały przedstawione w temacie [Migrate your database to Azure SQL Database (Migracja bazy danych do usługi Azure SQL Database)](sql-database-cloud-migrate.md).
 
@@ -46,7 +46,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 
-Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](sql-database-service-tiers.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym bazy danych Azure SQL Database](sql-database-features.md). 
+Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](sql-database-service-tiers-dtu.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym bazy danych Azure SQL Database](sql-database-features.md). 
 
 Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL. 
 
@@ -87,9 +87,9 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 8. Zaakceptuj warunki wersji zapoznawczej, aby użyć opcji **dodatkowego magazynu**. 
 
    > [!IMPORTANT]
-   > \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+   > - Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Administracja USA — Wirginia, Azja Południowo-Wschodnia, Brazylia Południowa, Europa Północna, Europa Zachodnia, Francja Środkowa, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Środkowa, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA 2, Zachodnie stany USA i Zachodnie Zjednoczone Królestwo. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > - W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Administracja USA — Wirginia, Azja Południowo-Wschodnia, Brazylia Południowa, Europa Północna, Europa Zachodnia, Francja Środkowa, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Środkowa, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA 2, Zachodnie stany USA i Zachodnie Zjednoczone Królestwo. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania kliknij przycisk **Zastosuj**.  

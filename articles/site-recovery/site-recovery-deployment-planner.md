@@ -1,24 +1,24 @@
 ---
-title: "Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs"
-description: "Jest to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery."
+title: Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs
+description: Jest to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: 77e76e5f9960f8a7c54ebcb82321784be5c1aa99
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d14d7af39af59bb0b4fbcd5857e8686176afb71
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Planista wdrażania usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure
 Ten artykuł to podręcznik użytkownika planisty wdrażania usługi Azure Site Recovery dla wdrożeń produkcyjnych oprogramowania VMware na platformie Azure.
@@ -105,9 +105,9 @@ Narzędzie można uruchomić z systemu Windows Server 2012 R2, jeśli serwer ma 
 Folder zawiera wiele plików i podfolderów. Plik wykonywalny nosi nazwę ASRDeploymentPlanner.exe i znajduje się w folderze nadrzędnym.
 
     Przykład: skopiuj plik zip na dysk E:\ i wyodrębnij go.
-    E:\ASR Deployment Planner_v2.1zip
+    E:\ASR Deployment Planner_v2.2.zip
 
-    E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Aktualizowanie planisty wdrażania do najnowszej wersji
 Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następujących czynności:
@@ -123,7 +123,7 @@ Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następ
 
 
 ## <a name="version-history"></a>Historia wersji
-Najnowszą wersją narzędzia Planista wdrażania usługi Site Recovery jest wersja 2.1.
+Najnowszą wersją narzędzia Planista wdrażania usługi Site Recovery jest wersja 2.2.
 Informacje na temat poprawek, które zostały dodane w poszczególnych aktualizacjach, możesz znaleźć na stronie [Historia wersji narzędzia Planista wdrażania usługi Site Recovery](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx).
 
 ## <a name="next-steps"></a>Następne kroki

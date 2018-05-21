@@ -543,6 +543,8 @@
               href: service-fabric-cluster-delete.md
             - name: Łączenie się zdalne z maszyną wirtualną węzła klastra
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+            - name: Uaktualnienie/migracja jednostki SKU usługi VMSS
+              href: service-fabric-update-vmss-sku.md
         - name: Klastry autonomiczne
           items:
             - name: Przycisk Utwórz

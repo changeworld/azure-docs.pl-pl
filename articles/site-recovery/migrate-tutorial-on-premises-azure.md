@@ -1,6 +1,6 @@
 ---
-title: "Migrowanie maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs"
-description: "W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery."
+title: Migrowanie maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 656ba02401d9ba610d0ebe33a683164af0b871f0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3e82983ff171e638415d6e7cafe0cb034dd978af
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -32,7 +32,7 @@ Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnyc
 Jest to trzeci samouczek z tej serii. Założono w nim, że zostały już wykonane zadania z poprzednich samouczków:
 
 1. [Przygotowywanie platformy Azure](tutorial-prepare-azure.md)
-2. Przygotuj lokalne serwery programu [VMware](vmware-azure-tutorial-prepare-on-premises.md) lub funkcji Hyper-V.
+2. Przygotowywanie lokalnych serwerów [VMware](vmware-azure-tutorial-prepare-on-premises.md) lub serwerów funkcji [Hyper-V] (hyper-v-prepare-on-premises-tutorial.md).
 
 Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-architecture.md) lub [Hyper-V](hyper-v-azure-architecture.md) na potrzeby odzyskiwania po awarii.
 
@@ -42,7 +42,7 @@ Przed rozpoczęciem warto zapoznać się z architekturami [VMware](vmware-azure-
 Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) > **Recovery Services**.
 2. Kliknij kolejno pozycje **Utwórz zasób** > **Monitorowanie i zarządzanie** > **Backup and Site Recovery**.

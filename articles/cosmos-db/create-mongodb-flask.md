@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: tworzenie aplikacji Flask za pomocą interfejsu API bazy danych MongoDB
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
-W tym przewodniku Szybki start wykorzystano następujący [przykład Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) i przedstawiono sposób tworzenia prostej aplikacji Flask zadań do wykonania (To-Do) za pomocą [emulatora usługi Azure Cosmos DB](/local-emulator.md) i [interfejsu API MongoDB](mongodb-introduction.md) usługi Azure Cosmos DB zamiast bazy danych MongoDB.
+W tym przewodniku Szybki start wykorzystano następujący [przykład Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) i przedstawiono sposób tworzenia prostej aplikacji Flask zadań do wykonania (To-Do) za pomocą [emulatora usługi Azure Cosmos DB](local-emulator.md) i [interfejsu API MongoDB](mongodb-introduction.md) usługi Azure Cosmos DB zamiast bazy danych MongoDB.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Pobierz [emulatora usługi Cosmos Azure DB](/local-emulator.md). Emulator jest obecnie obsługiwany tylko w systemie Windows. Przedstawiono sposób używania przykładu z kluczem produkcyjnym platformy Azure, co można zrobić na dowolnej platformie.
+- Pobierz [emulatora usługi Cosmos Azure DB](local-emulator.md). Emulator jest obecnie obsługiwany tylko w systemie Windows. Przedstawiono sposób używania przykładu z kluczem produkcyjnym platformy Azure, co można zrobić na dowolnej platformie.
 
 - Jeśli nie masz jeszcze zainstalowanego programu Visual Studio Code, możesz szybko zainstalować program [VS Code](https://code.visualstudio.com/Download) odpowiedni dla swojej platformy (Windows, Mac, Linux).
 

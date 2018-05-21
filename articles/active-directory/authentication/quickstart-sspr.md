@@ -2,25 +2,19 @@
 title: Przewodnik Szybki start dotyczący samoobsługowego resetowania haseł — Azure Active Directory
 description: Szybkie wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 6add6e71c9acf6d63858ea921ec85924b4e6c60f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Szybkie wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
 
@@ -33,11 +27,13 @@ W tym przewodniku założono, że masz już działającą dzierżawę usługi Az
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Włączanie funkcji samoobsługowego resetowania haseł dla dzierżawy usługi Azure AD
 
+> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+
 1. W istniejącej dzierżawie usługi Azure AD w witrynie **Azure Portal** w obszarze **Azure Active Directory** wybierz pozycję **Resetowanie hasła**.
 
 2. Na stronie **Właściwości** w ramach opcji **Funkcja samoobsługowego resetowania hasła jest włączona** wybierz jedną z następujących opcji:
    * **Brak**: nikt nie może korzystać z funkcji samoobsługowego resetowania haseł.
-   * **Wybrano**: z funkcji samoobsługowego resetowania haseł mogą korzystać tylko członkowie określonej, wybranej przez Ciebie grupy usługi Azure AD. Zaleca się zdefiniowanie grupy użytkowników i korzystanie z tego ustawienia podczas wdrażania tej funkcji w celu weryfikacji koncepcji.
+   * **Wybrano**: z funkcji samoobsługowego resetowania haseł mogą korzystać tylko członkowie określonej, wybranej przez Ciebie grupy usługi Azure AD. Zaleca się zdefiniowanie grupy użytkowników i korzystanie z tego ustawienia podczas wdrażania tej funkcji w celu weryfikacji koncepcji. W tym miejscu jest obsługiwane zagnieżdżanie grup zabezpieczeń.
    * **Wszyscy**: z funkcji samoobsługowego resetowania haseł mogą korzystać wszyscy użytkownicy z kontami w Twojej dzierżawie usługi Azure AD. Zaleca się użycie tej opcji po osiągnięciu gotowości do wdrożenia tej funkcji w całej dzierżawie po zakończeniu etapu weryfikacji koncepcji.
 
    > [!IMPORTANT]

@@ -2,35 +2,29 @@
 title: Samoobsługowe resetowanie hasła usługi Azure AD z ekranu logowania systemu Windows 10 | Microsoft Docs
 description: Konfigurowanie resetowania hasła usługi Azure AD z ekranu logowania systemu Windows 10 w przypadku zapomnienia numeru PIN
 services: active-directory
-keywords: ''
-documentationcenter: ''
+ms.service: active-directory
+ms.component: authentication
+ms.topic: get-started-article
+ms.date: 04/27/2018
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: ''
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/11/2018
-ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: a85cb6aea1027d657d38007a397321de10e16d07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Resetowanie hasła usługi Azure AD z ekranu logowania
 
 Funkcja samoobsługowego resetowania hasła (SSPR, self-service password reset) usługi Azure AD została już wdrożona, ale użytkownicy nadal dzwonią do działu obsługi klienta, jeśli nie pamiętają hasła. Dzieje się tak, ponieważ nie mogą oni przejść do samoobsługowego resetowania hasła w przeglądarce internetowej.
 
-Dzięki nowej aktualizacji Windows 10 Fall Creators Update użytkownicy z urządzeniami dołączonymi do usługi Azure AD widzą na swoich ekranach logowania link „Resetuj hasło”. Kliknięcie tego linku powoduje przejście do znanego użytkownikom środowiska samoobsługowego resetowania hasła.
+Dzięki nowej aktualizacji systemu Windows 10 z kwietnia 2018 r. użytkownicy z urządzeniami **dołączonymi do usługi Azure AD** lub urządzeniami **hybrydowymi dołączonymi do usługi Azure AD** widzą na swoich ekranach logowania link „Resetuj hasło”, którego mogą użyć. Kliknięcie tego linku powoduje przejście do znanego użytkownikom środowiska samoobsługowego resetowania hasła.
 
 Aby użytkownicy mogli resetować hasło usługi Azure AD z ekranu logowania systemu Windows 10, muszą zostać spełnione następujące wymagania:
 
-* System Windows 10 w wersji 1709 lub nowszy klient [dołączony do usługi Azure AD](../device-management-azure-portal.md).
+* Aktualizacja systemu Windows 10 z kwietnia 2018 r. lub nowszy klient [dołączony do usługi Azure AD](../device-management-azure-portal.md) lub [hybrydowy dołączony do usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
 * Włączona funkcja samoobsługowego resetowania haseł w usłudze Azure AD.
 * Skonfiguruj i wdróż ustawienie, aby włączyć link resetowania hasła przy użyciu jednej z następujących metod:
    * [Profil konfiguracji urządzenia usługi Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
@@ -66,7 +60,7 @@ Aby użytkownicy mogli resetować hasło usługi Azure AD z ekranu logowania sys
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Azure Active Directory**.
 2. Przejdź kolejno do pozycji **Użytkownicy i grupy** > **Wszystkie grupy** > **Nowa grupa**
-3. Podaj nazwę grupy i w obszarze **Typ członkostwa** wybierz pozycję **Przypisane** 
+3. Podaj nazwę grupy i w obszarze **Typ członkostwa** wybierz pozycję **Przypisane**
    * W obszarze **Członkowie** wybierz urządzenia z systemem Windows 10 dołączone do usługi Azure AD, do których chcesz zastosować zasady.
    * Kliknij pozycję **Wybierz**
 4. Kliknij przycisk **Utwórz**
@@ -117,6 +111,7 @@ Podczas testowania tej funkcjonalności za pomocą pulpitu zdanego link „Reset
 * Resetowanie hasła nie jest obecnie obsługiwane z poziomu pulpitu zdalnego.
 
 ## <a name="next-steps"></a>Następne kroki
+
 Poniższe linki dają dostęp do dodatkowych informacji dotyczących resetowania haseł za pomocą usługi Azure AD
 
 * [How do I deploy SSPR? (Jak mogę wdrożyć samoobsługowe resetowanie hasła?)](howto-sspr-deployment.md)
