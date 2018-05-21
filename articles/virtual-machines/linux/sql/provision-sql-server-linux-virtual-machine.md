@@ -1,22 +1,22 @@
 ---
 title: Tworzenie maszyny wirtualnej z programem SQL Server 2017 i systemem Linux na platformie Azure | Microsoft Docs
-description: "W tym samouczku pokazano sposób tworzenia maszyny wirtualnej z programem SQL Server 2017 i systemem Linux na platformie Azure."
+description: W tym samouczku pokazano sposób tworzenia maszyny wirtualnej z programem SQL Server 2017 i systemem Linux na platformie Azure.
 services: virtual-machines-linux
 author: rothja
 ms.author: jroth
 manager: jhubbard
-ms.date: 10/25/2017
+ms.date: 05/11/2018
 ms.topic: hero-article
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b86dd47c112c38bc65c045158787d19b470899a0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Aprowizowanie maszyny wirtualnej z programem SQL Server w witrynie Azure Portal
 
@@ -71,7 +71,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Kliknij przycisk **OK**.
 
-1. W oknie **Rozmiar** wybierz rozmiar maszyny. Aby wyświetlić inne rozmiary, wybierz pozycję **Wyświetl wszystkie**. Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, zobacz [Linux VM sizes (Rozmiary maszyn wirtualnych z systemem Linux)](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+1. W oknie **Rozmiar** wybierz rozmiar maszyny. Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, zobacz [Linux VM sizes (Rozmiary maszyn wirtualnych z systemem Linux)](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
 
     ![Wybieranie rozmiaru maszyny wirtualnej](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
@@ -80,9 +80,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Kliknij pozycję **Wybierz**.
 
-1. W oknie **Ustawienia** możesz wprowadzić zmiany w ustawieniach lub zachować ustawienia domyślne.
+1. W oknie **Ustawienia** wybierz port **SSH (22)** z listy **Select public inbound ports** (Wybierz publiczne porty wejściowe). Ten krok w niniejszym przewodniku Szybki start jest konieczny do połączenia z programem SQL Server i ukończenia jego konfiguracji. Jeśli chcesz łączyć się zdalnie z programem SQL Server, wybierz również pozycję **MS SQL (1433)**, aby otworzyć port 1433 na połączenia przez Internet.
 
-1. Kliknij przycisk **OK**.
+   ![Porty wejściowe](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+
+1. Możesz wprowadzić zmiany w innych ustawieniach lub zachować ustawienia domyślne. Następnie kliknij przycisk **OK**.
 
 1. Na stronie **Podsumowanie** kliknij przycisk **Kup**, aby utworzyć maszynę wirtualną.
 
@@ -145,7 +147,10 @@ Kilka [pakietów](sql-server-linux-virtual-machines-overview.md#packages) progra
 
 ## <a id="remote"></a> Konfigurowanie pod kątem połączeń zdalnych
 
-Jeśli potrzebujesz zdalnie połączyć się z programem SQL Server na maszynie wirtualnej platformy Azure, musisz skonfigurować regułę ruchu przychodzącego w sieciowej grupie zabezpieczeń. Reguła zezwala na ruch przez port, na którym nasłuchuje program SQL Server (domyślnie 1433). Poniższe kroki pokazują, jak korzystać z witryny Azure Portal w tym kroku. 
+Jeśli potrzebujesz zdalnie połączyć się z programem SQL Server na maszynie wirtualnej platformy Azure, musisz skonfigurować regułę ruchu przychodzącego w sieciowej grupie zabezpieczeń. Reguła zezwala na ruch przez port, na którym nasłuchuje program SQL Server (domyślnie 1433). Poniższe kroki pokazują, jak korzystać z witryny Azure Portal w tym kroku.
+
+> [!TIP]
+> Jeśli podczas inicjowania obsługi w oknie Ustawienia wybrano port wejściowy **MS SQL (1433)**, te zmiany zostały wprowadzone automatycznie. Możesz przejść do kolejnej sekcji, która dotyczy konfigurowania zapory.
 
 1. W portalu wybierz pozycję **Maszyny wirtualne**, a następnie wybierz swoją maszynę wirtualną z programem SQL Server.
 

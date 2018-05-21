@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 05/16/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 0deda4324a4287e7aa25cb686acb5b6152443735
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 63653795ad8c52e2743fb02fa804dd2edbf0d2ab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 Fabryka danych jest usługą wielodostępne, która ma następujące domyślne limity mające na celu upewnij się, że subskrypcjami klientów są chronione przez obciążeń. Wiele granic można łatwo wygenerowany dla Twojej subskrypcji do maksymalnego limitu za pośrednictwem pracowników pomocy technicznej.
 
@@ -28,7 +28,7 @@ Fabryka danych jest usługą wielodostępne, która ma następujące domyślne l
 | Programy obsługi integracji w fabryce danych <sup>4</sup> | 2500 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Całkowita liczba rdzeni procesora CPU dla Runtime(s) integracji usług SSIS Azure w ramach jednej subskrypcji | 100 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Potok współbieżnych jest uruchamiane na potoku | 100 | [Kontakt z pomocą techniczną](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Maksymalna liczba działań na potoku | 20 | 30 |
+| Maksymalna liczba działań na potoku | 20 | 40 |
 | Maksymalna liczba parametrów na potoku | 20 | 30 |
 | Bajtów dla każdego obiektu dla potoku obiektów <sup>1</sup> | 200 KB | 200 KB |
 | Liczba bajtów na obiekt zestawu danych i obiektów powiązanych z <sup>1</sup> | 100 KB | 2000 KB |

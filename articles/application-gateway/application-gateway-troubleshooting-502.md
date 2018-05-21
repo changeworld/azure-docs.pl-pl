@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów zły brama bramy aplikacji Azure (502) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązać problemy z błędami 502 bramy aplikacji"
+title: Rozwiązywanie problemów zły brama bramy aplikacji Azure (502) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać problemy z błędami 502 bramy aplikacji
 services: application-gateway
 documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1d431ead-d318-47d8-b3ad-9c69f7e08813
 ms.service: application-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: e0099734a81cd8b1edf5cf80cb56b5c322a5feee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Rozwiązywanie problemów z błędami Zła brama bramy aplikacji
 
@@ -92,7 +92,7 @@ błędy 502 można także częste wskaźniki domyślnej funkcji badania kondycji
 * Wywołanie http://127.0.0.1:port powinien zwrócić 200 kod wyniku HTTP. Powinna to być zwrócona w ciągu 30 sekund limitu czasu.
 * Upewnij się, że skonfigurowany port jest otwarty i czy nie ma żadnych reguł zapory lub grup zabezpieczeń sieci Azure, która zablokować ruch przychodzący lub wychodzący na porcie skonfigurowanym.
 * Jeśli klasyczne maszyny wirtualne platformy Azure lub usługi w chmurze jest używana nazwa FQDN lub publicznego adresu IP, upewnij się, że odpowiednie [punktu końcowego](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) jest otwarty.
-* Jeśli maszyna wirtualna jest skonfigurowana za pośrednictwem usługi Azure Resource Manager i jest spoza sieci wirtualnej, w której wdrażana jest aplikacja bramy, [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) musi być skonfigurowane i umożliwiają dostęp do wybranego portu.
+* Jeśli maszyna wirtualna jest skonfigurowana za pośrednictwem usługi Azure Resource Manager i jest spoza sieci wirtualnej, w której wdrażana jest aplikacja bramy, [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) musi być skonfigurowane i umożliwiają dostęp do wybranego portu.
 
 ## <a name="problems-with-custom-health-probe"></a>Problemy z sondy kondycji niestandardowych
 
