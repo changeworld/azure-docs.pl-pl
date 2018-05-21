@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d07ad69b3a1f6023cf70bb0b9a82cd54defc5c49
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 46e4466085200bf9042c4342ea5e6b37fd2fb701
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Przegląd zabezpieczeń zarządzania tożsamość platformy Azure
 Pomocy firmy Microsoft tożsamościami i dostępem zarządzania rozwiązań IT ochrony dostępu do aplikacji i zasobów w firmowym centrum danych i w chmurze, włączanie dodatkowe poziomy sprawdzania poprawności, takich jak uwierzytelnianie wieloskładnikowe i zasady dostępu warunkowego. Monitorowania podejrzanych działań przez zaawansowane zabezpieczenia raportowania, inspekcji i alerty, pomaga ograniczyć potencjalne problemy. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) zapewnia jednokrotnego do tysięcy chmury aplikacji (SaaS) i dostęp do aplikacji sieci web, możesz uruchomić lokalnie.
@@ -56,7 +56,7 @@ Nie tylko użytkowników nie trzeba zarządzać wiele zestawów nazwy użytkowni
 Więcej informacji:
 
 * [Omówienie logowania jednokrotnego](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../active-directory/active-directory-appssoaccess-whatis.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md)
 * [Integrowanie usługi Azure Active Directory logowania jednokrotnego dla aplikacji SaaS](../active-directory/active-directory-enterprise-apps-manage-sso.md)
 
 ## <a name="reverse-proxy"></a>Zwrotny serwer proxy

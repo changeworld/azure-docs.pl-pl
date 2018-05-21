@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.openlocfilehash: 1d80d199e21222be973fa6f5a06e6e80a505f164
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7707a40a39e429333ff1c20fb7884a1fb7ee2162
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatycznego dostrajania w bazie danych SQL Azure
 
@@ -61,13 +61,13 @@ Omówienie sposobu automatycznego dostrajania działania oraz typowe scenariusze
 ## <a name="automatic-tuning-options"></a>Opcje automatycznego dostrajania
 
 Dostępne są następujące opcje dostrajania automatycznego dostępnych w bazie danych SQL Azure:
- 1. **CREATE INDEX** identyfikującym indeksów, które może poprawić wydajność obciążenia, tworzy indeksy i sprawdza, czy poprawiają wydajność kwerend.
- 2. **Instrukcja DROP INDEX** , które identyfikują nadmiarowe i zduplikowane indeksy i indeksów, które nie były używane w długim okresie.
- 3. **WYMUŚ ostatniego dobry PLAN** identyfikuje kwerendy SQL, które używają plan wykonania wolniejsze niż poprzednie Dobry plan i korzysta z ostatnim znanym Dobry plan zamiast regressed planu.
+ 1. **CREATE INDEX** -identyfikuje indeksów, które może poprawić wydajność obciążenia, tworzy indeksy i automatycznie sprawdza, czy ulepszono wydajność kwerend. Domyślne ustawienie platformy Azure, ta opcja jest włączona.
+ 2. **Instrukcja DROP INDEX** -identyfikuje nadmiarowe i zduplikowane indeksy i indeksów, które nie były używane przez bardzo długi okres czasu. Należy pamiętać, że w tej chwili opcji jest niezgodna z aplikacji przy użyciu wskazówek indeks i przełączanie partycji. Domyślne ustawienie platformy Azure, aby ta opcja jest wyłączona.
+ 3. **WYMUŚ ostatniego dobry PLAN** -identyfikuje przy użyciu planu wykonywania, który jest wolniejszy od poprzedniego Dobry plan i zapytania korzystające z ostatnim znanym Dobry plan zamiast regressed plan zapytania SQL. Domyślne ustawienie platformy Azure, ta opcja jest włączona.
 
 Baza danych SQL Azure identyfikuje **CREATE INDEX**, **DROP INDEX**, i **życie ostatniego DOBRE Planowanie** zaleceń, które można zoptymalizować bazę danych i wyświetla je w portalu Azure. Więcej informacji o identyfikacji indeksów, które powinny zostać zmienione w [znaleźć zalecenia dotyczące indeksu w portalu Azure](sql-database-advisor-portal.md). Można ręcznie stosować zalecenia za pomocą portalu lub pozwolić bazy danych SQL Azure, aby automatycznie zastosować zalecenia, monitorowania obciążenia po zmianie i sprawdź, czy zalecenie zwiększona wydajność obciążenia.
 
-Automatyczne opcje dostrajania może być niezależnie włączony lub wyłączony na bazę danych lub mogą być skonfigurowane na serwerze logicznym i zastosować dla każdej bazy danych, która dziedziczy ustawienia z serwera. Konfigurowanie automatycznego dostrajania opcji na serwerze i dziedziczy ustawienia w bazach danych na serwerze jest zalecana metoda Konfigurowanie automatycznego dostrajania, ponieważ takie rozwiązanie upraszcza zarządzanie opcje automatycznego dostrajania na dużą liczbę baz danych.
+Automatyczne opcje dostrajania może być niezależnie włączony lub wyłączony na bazę danych lub mogą być skonfigurowane na serwerze logicznym i zastosować dla każdej bazy danych, która dziedziczy ustawienia z serwera. Serwerów logicznych może dziedziczyć Azure ustawienia domyślne ustawienia automatycznego dostrajania. Konfigurowanie automatycznego dostrajania opcji na serwerze i dziedziczy ustawienia w bazach danych na serwerze jest zalecana metoda Konfigurowanie automatycznego dostrajania, ponieważ takie rozwiązanie upraszcza zarządzanie opcje automatycznego dostrajania na dużą liczbę baz danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a908c242b5d41d5cd61d8775bdbe53f3cdddd3ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Microsoft Azure
 
@@ -91,19 +91,19 @@ Platforma Azure korzysta zaporą funkcji hypervisor (filtr pakietów), która je
 Istnieją dwie kategorie reguł, które są w tym miejscu programowane:
 
 * **Reguły konfiguracji lub infrastruktury maszyny**: Domyślnie cała komunikacja jest zablokowany. Istnieją wyjątki, aby umożliwić maszynę wirtualną do wysyłania i odbierania ruchu DHCP i DNS. Maszyny wirtualne można również wysyłać ruch do Internetu "public" i przesyłają dane do innych maszyn wirtualnych w ramach klastra i Serwer aktywacji systemu operacyjnego. Maszyn wirtualnych dozwolonych lokalizacji docelowych wychodzących nie zawierają Azure routera podsieci, zarządzania platformy Azure, Utwórz kopię zakończenia i inne właściwości firmy Microsoft.
-* **Plik konfiguracji roli**: definiuje przychodzących list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy. Na przykład jeśli w przypadku konfigurowania punktu końcowego w modelu [zarządzania usługą systemu Azure](../azure-resource-manager/resource-manager-deployment-model.md) dzierżawca ma fronton sieci Web w porcie 80 określonej maszyny wirtualnej, system Azure otwiera port 80 protokołu TCP dla wszystkich adresów IP. Platforma Azure ma kontroli bezpieczeństwa w miejscu, aby zaimplementować ograniczenia zagrożeń, a także aby pomóc zminimalizować potencjalne zagrożenia w swoich środowiskach klientów.
+* **Plik konfiguracji roli**: definiuje przychodzących list kontroli dostępu (ACL) oparte na modelu usługi dzierżawcy. Na przykład jeśli w przypadku konfigurowania punktu końcowego w modelu [zarządzania usługą systemu Azure](../azure-resource-manager/resource-manager-deployment-model.md) dzierżawca ma fronton sieci Web w porcie 80 określonej maszyny wirtualnej, system Azure otwiera port 80 protokołu TCP dla wszystkich adresów IP. Jeśli maszyna wirtualna ma wstecz roli zakończenia lub procesu roboczego uruchomiona, zostanie otwarty roli procesu roboczego tylko do maszyny wirtualnej w ramach tej samej dzierżawy.
 
 ## <a name="isolation"></a>Izolacja
 
-Poniższa lista zawiera podsumowanie możliwości ograniczenie zagrożeń oferowanych na platformie Azure:
+Wymaganie dotyczące zabezpieczeń innej chmurze ważne jest separacji, aby uniemożliwić przesyłanie nieautoryzowanych i niezamierzone informacji między wdrożeniami w udostępnionym przypadku architektury wielodostępnej.
 
-Azure ochrony przed złośliwym oprogramowaniem](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) jest włączona domyślnie na wszystkich serwerach infrastruktury. Możesz opcjonalnie można udostępnić go w maszynach wirtualnych. W ramach subskrypcji, takie jak zapory aplikacji sieci web z wdrożeniem rozwiązania innych firm zabezpieczeń Barracuda. Zasady przepływu ruchu są implementowane na urządzeniach ochrony brzegowej, które domyślnie nie zezwalają na ruch.
+Implementuje Azure [kontroli dostępu do sieci](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) i podział poprzez izolowanie od sieci VLAN, listy ACL, obciążenia równoważenia i filtry IP. Ogranicza ona zakres zewnętrznego ruchu przychodzącego porty i protokoły na maszynach wirtualnych w zdefiniowanych przez użytkownika. Azure implementuje filtrowanie, aby zapobiec fałszywych ruchu i ograniczania ruchu przychodzącego i wychodzącego do TPM składników sieciowych. Zasady przepływu ruchu są implementowane na urządzeniach ochrony brzegowej, które domyślnie nie zezwalają na ruch.
 
 ![Ochrona przed złośliwym kodem zapewniana przez Microsoft na platformie Azure](./media/azure-security-getting-started/sec-azgsfig3.PNG)
 
 Do oddzielania ruchu w sieci wewnętrznej od ruchu zewnętrznego służy Translator adresów sieciowych (NAT, Network Address Translation). Ruch wewnętrzny nie podlega routingowi zewnętrznemu. [Wirtualne adresy IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx), które podlegają routingowi zewnętrznemu, są przekształcane na [wewnętrzne dynamiczne adresy IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx), które podlegają routingowi tylko w obrębie platformy Azure.
 
-Podejście firmy Microsoft do testowania penetracji obejmuje "zespołu kart interfejsu sieciowego czerwony," który obejmuje specjalistom ds. zabezpieczeń firmy Microsoft do zaatakowania systemów produkcyjnych na żywo (z systemem innym niż klienta) na platformie Azure, aby przetestować ochronę przed rzeczywistych, zaawansowane, zagrożenia. Dozwolone są tylko określone znane protokoły. Listy ACL są spełnione, aby ograniczyć ruch pochodzący z maszyn wirtualnych gościa do innych sieci VLAN, używany do zarządzania. Ponadto ruch filtrowane za pomocą filtrów IP na hoście, który dalsze systemu operacyjnego ogranicza ruch w obu warstwach łącza i sieci danych.
+Zewnętrznego ruchu do maszyn wirtualnych platformy Azure jest zaporą za pomocą listy kontroli dostępu na routerach, równoważenia obciążenia i przełączniki warstwy 3. Dozwolone są tylko określone znane protokoły. Listy ACL są spełnione, aby ograniczyć ruch pochodzący z maszyn wirtualnych gościa do innych sieci VLAN, używany do zarządzania. Ponadto ruch filtrowane za pomocą filtrów IP na hoście, który dalsze systemu operacyjnego ogranicza ruch w obu warstwach łącza i sieci danych.
 
 ### <a name="how-azure-implements-isolation"></a>Implementowanie izolacji na platformie Azure
 
@@ -136,7 +136,7 @@ Można umieścić maszyny wirtualne na [sieci wirtualnych platformy Azure](https
 
 Następujące technologie sieci wirtualnej platformy Azure umożliwia ułatwić bezpieczną komunikację w sieci wirtualnej:
 
-* [**Sieć grupy zabezpieczeń (grup zabezpieczeń sieci)**](../virtual-network/virtual-networks-nsg.md). Można użyć grupy NSG sterujących ruchem do co najmniej jedno wystąpienie maszyny wirtualnej w Twojej sieci wirtualnej. Sieciowa grupa zabezpieczeń zawiera reguły kontroli dostępu, które zezwalają na ruch lub go blokują w oparciu o kierunek ruchu, protokół, adres źródłowy i docelowy oraz port.
+* [**Sieć grupy zabezpieczeń (grup zabezpieczeń sieci)**](../virtual-network/security-overview.md). Można użyć grupy NSG sterujących ruchem do co najmniej jedno wystąpienie maszyny wirtualnej w Twojej sieci wirtualnej. Sieciowa grupa zabezpieczeń zawiera reguły kontroli dostępu, które zezwalają na ruch lub go blokują w oparciu o kierunek ruchu, protokół, adres źródłowy i docelowy oraz port.
 * [**Zdefiniowane przez użytkownika routing**](../virtual-network/virtual-networks-udr-overview.md). Możesz sterować przekazywaniem pakietów przez urządzenie wirtualne przez tworzenie trasy zdefiniowane przez użytkownika, określające następnego skoku dla pakietów przepływać do określonej podsieci, aby przejść do urządzenia zabezpieczeń sieci wirtualnej.
 * [**Przekazywanie IP**](../virtual-network/virtual-networks-udr-overview.md). Wirtualne urządzenie zabezpieczeń sieciowych musi umożliwiać odbieranie ruchu przychodzącego, który nie jest do niego adresowany. Aby zezwolić na maszynie wirtualnej odbieranie ruchu kierowanego do innych miejsc docelowych, należy włączyć przesyłanie dalej IP dla maszyny wirtualnej.
 * [**Wymuszane tunelowanie**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md). Umożliwia tunelowania wymuszonego przekierowania lub "force" wszystkie ruch do Internetu generowany przez maszyny wirtualne w sieci wirtualnej z powrotem do lokalizacji lokalnej za pośrednictwem tunelu VPN lokacja lokacja dla inspekcji i inspekcji

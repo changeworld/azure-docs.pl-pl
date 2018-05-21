@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Zarządzanie tożsamościami i dostępem kontrolować najlepszych rozwiązań dotyczących zabezpieczeń
 
@@ -64,7 +64,7 @@ Aby uzyskać więcej informacji na synchronizacji usługi Azure AD, zobacz artyk
 
 Jeśli masz wiele katalogów, aby zarządzać staje się on administracyjne problem nie tylko w przypadku IT, ale także dla użytkowników końcowych, które musiał zapamiętywać wiele haseł. Za pomocą [logowania jednokrotnego](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) zapewnić użytkownikom możliwość użycia tego samego zestawu poświadczeń logować się i uzyskać dostęp do zasobów, które potrzebują, bez względu na to w przypadku tego zasobu znajdujących się lokalnie lub w chmurze.
 
-Użyj logowania jednokrotnego, aby umożliwić użytkownikom dostęp do ich [aplikacji SaaS](../active-directory/active-directory-appssoaccess-whatis.md) oparte na swoje konta organizacyjne w usłudze Azure AD. Ma to zastosowanie nie tylko dla aplikacji SaaS firmy Microsoft, ale także inne aplikacje, takie jak [usługi Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) i [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Aplikację można skonfigurować przy użyciu usługi Azure AD jako [tożsamość oparta na SAML](../active-directory/fundamentals-identity.md) dostawcy. Jako formant zabezpieczeń usługi Azure AD nie będzie wystawiać token, dzięki czemu mogą zalogować się do aplikacji, chyba że przyznano im dostęp przy użyciu usługi Azure AD. Możesz udzielić dostępu bezpośrednio lub za pośrednictwem grupy są członkami.
+Użyj logowania jednokrotnego, aby umożliwić użytkownikom dostęp do ich [aplikacji SaaS](../active-directory/manage-apps/what-is-single-sign-on.md) oparte na swoje konta organizacyjne w usłudze Azure AD. Ma to zastosowanie nie tylko dla aplikacji SaaS firmy Microsoft, ale także inne aplikacje, takie jak [usługi Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) i [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Aplikację można skonfigurować przy użyciu usługi Azure AD jako [tożsamość oparta na SAML](../active-directory/fundamentals-identity.md) dostawcy. Jako formant zabezpieczeń usługi Azure AD nie będzie wystawiać token, dzięki czemu mogą zalogować się do aplikacji, chyba że przyznano im dostęp przy użyciu usługi Azure AD. Możesz udzielić dostępu bezpośrednio lub za pośrednictwem grupy są członkami.
 
 > [!NOTE]
 > decyzji o użyciu rejestracji Jednokrotnej będzie mieć wpływ na sposób integracji katalogu lokalnego z katalogiem w chmurze. Jeśli chcesz, aby usługa rejestracji Jednokrotnej, zostanie należy użyć Federacji, ponieważ udostępni jedynie synchronizacji katalogów [tego samego środowiska logowania jednokrotnego](../active-directory/active-directory-aadconnect.md).

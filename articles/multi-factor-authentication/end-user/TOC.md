@@ -14,3 +14,4 @@
 ### [Logowanie przy użyciu telefonu](microsoft-authenticator-app-phone-signin-faq.md)
 ### [Wykonywanie kopii zapasowych i odzyskiwanie poświadczeń konta](microsoft-authenticator-app-backup-and-recovery.md)
 ### [Często zadawane pytania](microsoft-authenticator-app-faq.md)
+### [Aktualizacje środowiska logowania](sign-in-experience-updates.md)

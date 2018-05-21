@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Skonfiguruj połączenie z indeksator usługi Azure Search do programu SQL Server na maszynie Wirtualnej platformy Azure
 Zgodnie z opisem w [połączenie bazy danych SQL Azure do usługi Azure Search przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatory przed **programu SQL Server na maszynach wirtualnych Azure** (lub **maszynach wirtualnych Azure SQL** skrócie) jest obsługiwana przez usługi Azure Search, ale istnieje kilka związanych z zabezpieczeniami wymagania wstępne dotyczące zajmie się pierwszy. 
@@ -52,14 +52,14 @@ W szczególności zapoznaj się z sekcją w każdym artykule "połączenie za po
 ## <a name="configure-the-network-security-group-nsg"></a>Skonfiguruj grupy zabezpieczeń sieci (NSG)
 Nie jest nietypowe do skonfigurowania udostępnić maszynie Wirtualnej platformy Azure dla innych stron NSG i odpowiedniego punktu końcowego platformy Azure lub listy kontroli dostępu (ACL). Prawdopodobnie przycisk przed zezwalająca na własną logikę aplikacji, nawiązywania połączenia z maszyną Wirtualną programu SQL Azure. Nie różni się dla połączenia usługi Azure Search do maszyny Wirtualnej Azure SQL się go. 
 
-Poniższe linki zawierają instrukcje konfiguracji wdrażania maszyny Wirtualnej w konfiguracji grupy NSG. Użyj tych instrukcji do listy ACL punktu końcowego usługi Azure SEarch, na podstawie jego adresu IP.
+Poniższe linki zawierają instrukcje konfiguracji wdrażania maszyny Wirtualnej w konfiguracji grupy NSG. Użyj tych instrukcji do listy ACL punktu końcowego usługi Azure Search, na podstawie jego adresu IP.
 
 > [!NOTE]
-> W tle, zobacz [co to jest grupa zabezpieczeń sieci?](../virtual-network/virtual-networks-nsg.md)
+> W tle, zobacz [co to jest grupa zabezpieczeń sieci?](../virtual-network/security-overview.md)
 > 
 > 
 
-* Dla **Resource Manager** maszyny Wirtualnej, zobacz [sposób tworzenia grup NSG wdrożeń ARM](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+* Dla **Resource Manager** maszyny Wirtualnej, zobacz [sposób tworzenia grup NSG wdrożeń ARM](../virtual-network/tutorial-filter-network-traffic.md). 
 * Dla **klasycznego** maszyny Wirtualnej, zobacz [sposób tworzenia grup NSG wdrożeń Classic](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
 Adresy IP mogą wiązać się z kilku wyzwania, które są łatwo rozwiązać, jeśli masz świadomość problem i potencjalne rozwiązania problemu. W pozostałych sekcjach przedstawiono zalecenia dotyczące obsługi problemów związanych z adresami IP na liście ACL.

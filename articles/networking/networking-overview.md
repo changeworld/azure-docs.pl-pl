@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-networking"></a>Sieć platformy Azure
 
@@ -120,7 +120,7 @@ Na poniższej ilustracji przedstawiono aplikację wielowarstwową internetowy, k
 
 Można filtrować ruch do i z zasobów platformy Azure, korzystając z następujących opcji:
 
-- **Sieć:** można zaimplementować Azure sieciowych grup zabezpieczeń (NSG) do filtrowania ruchu przychodzącego i wychodzącego do zasobów platformy Azure. Każda grupa NSG zawiera jedną lub więcej reguł ruchu przychodzącego i wychodzącego. Każda reguła określa źródłowych adresów IP, docelowe adresy IP, port i protokół, który ruch jest filtrowany za pomocą. Grupy NSG można zastosować do poszczególnych podsieci i poszczególnych maszyn wirtualnych. Aby dowiedzieć się więcej na temat grup NSG, przeczytaj [Przegląd grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
+- **Sieć:** można zaimplementować Azure sieciowych grup zabezpieczeń (NSG) do filtrowania ruchu przychodzącego i wychodzącego do zasobów platformy Azure. Każda grupa NSG zawiera jedną lub więcej reguł ruchu przychodzącego i wychodzącego. Każda reguła określa źródłowych adresów IP, docelowe adresy IP, port i protokół, który ruch jest filtrowany za pomocą. Grupy NSG można zastosować do poszczególnych podsieci i poszczególnych maszyn wirtualnych. Aby dowiedzieć się więcej na temat grup NSG, przeczytaj [Przegląd grup zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Aplikacja:** przy użyciu bramy aplikacji z zapory aplikacji sieci web może chronić aplikacje sieci web z luk w zabezpieczeniach i luk w zabezpieczeniach. Typowe przykłady są SQL iniekcji atakami, skryptów krzyżowych oraz źle sformułowane nagłówki. Brama aplikacji w odfiltrowuje ten ruch i go zatrzyma dotrze do serwerów sieci web. Jesteś w stanie skonfigurować zasady, jakie mają być włączone. Możliwość konfigurowania zasad negocjacji SSL umożliwiającej określone zasady mają zostać wyłączone. Aby dowiedzieć się więcej na temat zapory aplikacji sieci web, przeczytaj [zapory aplikacji sieci Web](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 
 Jeśli potrzebujesz możliwości sieci Azure nie zapewniają lub chcesz użyć używasz lokalnych aplikacji sieci można zaimplementować produktów na maszynach wirtualnych i podłącz je do sieci wirtualnej. [Portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) zawiera kilka wstępnie skonfigurowane z aplikacjami sieci można obecnie używać różnych maszyn wirtualnych. Te wstępnie skonfigurowanych maszyn wirtualnych zwykle są określane jako urządzenie wirtualne sieci (NVA). NVAs są dostępne z aplikacjami, takie jak zapory i Optymalizacja sieci WAN.

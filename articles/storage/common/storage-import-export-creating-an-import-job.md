@@ -1,11 +1,11 @@
 ---
-title: "Utwórz zadania importowania platformy Azure importu/eksportu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć importu dla usługi Import/Eksport Microsoft Azure."
+title: Utwórz zadania importowania platformy Azure importu/eksportu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć importu dla usługi Import/Eksport Microsoft Azure.
 author: muralikk
 manager: syadav
 editor: syadav
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8b886e83-6148-4149-9d0f-5d48ec822475
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Import/Eksport Azure
 
@@ -62,7 +62,7 @@ Przygotowywanie dysku obejmuje:
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
 
-Przed utworzeniem zadania importu, należy uzyskać wysyłanie nazwy lokalizacji i adres wywołując [lokalizacje listy](/rest/api/storageimportexport/listlocations) operacji. `List Locations`Zwraca listę lokalizacje i ich adres wysyłkowy. Możesz wybrać lokalizację z listy zwróconych i wysłać dyskach twardych na ten adres. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
+Przed utworzeniem zadania importu, należy uzyskać wysyłanie nazwy lokalizacji i adres wywołując [lokalizacje listy](/rest/api/storageimportexport/listlocations) operacji. `List Locations` Zwraca listę lokalizacje i ich adres wysyłkowy. Możesz wybrać lokalizację z listy zwróconych i wysłać dyskach twardych na ten adres. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
 
  Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 
@@ -104,6 +104,8 @@ Muszą dostarczać dysków na adres, który został uzyskany z poprzedniego krok
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>Aktualizowanie zadania importu z informacjami o wysyłki
 Po utworzeniu numer śledzenia wywołań [właściwości zadania aktualizacji](/api/storageimportexport/jobs#Jobs_Update) Operacja aktualizowania wysyłanie Nazwa operatora, numer zadania i operatora numer konta do wysyłki zwracany. Opcjonalnie można określić liczbę dysków, a także data wysyłki.
 
-## <a name="next-steps"></a>Następne kroki
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Przy użyciu interfejsu API REST usługi Import/Eksport](storage-import-export-using-the-rest-api.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące IaaS obciążeń na platformie Azure
 
@@ -106,7 +106,7 @@ Bez dodatkowych kosztów jest skojarzona z użycia DevTest Labs. Tworzenie labs,
 
 Hosting labs lub systemów produkcyjnych na platformie Azure oznacza, że systemy muszą być dostępne z Internetu. Domyślnie nowej maszyny wirtualnej systemu Windows ma numer portu protokołu RDP z Internetu, a maszyny wirtualnej systemu Linux ma otworzyć port SSH. Pobieranie kroki do punktów końcowych limit widoczne jest niezbędne ograniczyć ryzyko nieautoryzowanego dostępu.
 
-Technologie na platformie Azure mogą pomóc ograniczyć dostęp do tych administracyjne punktów końcowych. Na platformie Azure, można użyć [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) (NSG). Gdy używasz usługi Azure Resource Manager do wdrożenia grup NSG ograniczyć dostęp ze wszystkich sieci do właśnie zarządzania punktów końcowych (RDP lub SSH). Jeśli uważasz, że grupy NSG, wziąć pod uwagę router listy kontroli dostępu. Ścisła kontrola komunikację sieciową między różnymi segmentami sieci platformy Azure można używać ich. Jest to podobne do tworzenia sieci w sieci obwodowej lub innych sieci izolowanej. Nie kontrolują ruch, ale pomagają segmentacji sieci.
+Technologie na platformie Azure mogą pomóc ograniczyć dostęp do tych administracyjne punktów końcowych. Na platformie Azure, można użyć [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) (NSG). Gdy używasz usługi Azure Resource Manager do wdrożenia grup NSG ograniczyć dostęp ze wszystkich sieci do właśnie zarządzania punktów końcowych (RDP lub SSH). Jeśli uważasz, że grupy NSG, wziąć pod uwagę router listy kontroli dostępu. Ścisła kontrola komunikację sieciową między różnymi segmentami sieci platformy Azure można używać ich. Jest to podobne do tworzenia sieci w sieci obwodowej lub innych sieci izolowanej. Nie kontrolują ruch, ale pomagają segmentacji sieci.
 
 
 Na platformie Azure, można skonfigurować [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) z sieci lokalnej. Sieć VPN lokacja lokacja rozszerza sieci lokalnych do chmury. Umożliwia innym możliwość użycia grup NSG, ponieważ można również zmodyfikować grupy NSG można nie zezwolić na dostęp z dowolnego miejsca innych niż sieci lokalnej. Następnie można wymagać, aby zarządzanie odbywa się przez nawiązanie sieć platformy Azure za pośrednictwem sieci VPN.

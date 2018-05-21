@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2016
+ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 1cdf33632c282a872d0eb83dd1a1b1c639fc14bd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 661d2f789ace8da68b6d65609d4584a11967a01f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak ustawić statyczne wewnętrzne prywatny adres IP za pomocą programu PowerShell (klasyczne)
 W większości przypadków nie trzeba określić statyczny adres IP wewnętrznego dla maszyny wirtualnej. Maszyn wirtualnych w sieci wirtualnej zostanie automatycznie otrzymują wewnętrzny adres IP z zakresu, który określisz. Jednak w niektórych przypadkach Określanie statycznego adresu IP dla określonej maszyny Wirtualnej ma sens. Na przykład, jeśli maszyna wirtualna jest, aby uruchomić DNS lub będzie kontroler domeny. Statyczny adres IP wewnętrznego utrzymane maszyny Wirtualnej, nawet za pośrednictwem stanu zatrzymania/deprovision. 
@@ -95,7 +95,7 @@ Aby usunąć statyczny adres IP wewnętrznego dodane do maszyny Wirtualnej w skr
     | Update-AzureVM
 
 ## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Jak dodać statyczny adres IP wewnętrznego do istniejącej maszyny Wirtualnej
-Można dodać wewnętrzny statycznego adresu IP do maszyny Wirtualnej utworzone za pomocą skryptu powyżej runt następujące polecenie:
+Aby dodać wewnętrzny statycznego adresu IP do maszyny Wirtualnej utworzone za pomocą skryptu powyżej, uruchom następujące polecenie:
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `

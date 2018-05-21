@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: edbf76ef5dcf581acfec17970becdf698445cbeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Rozwiązywanie problemów z grup zabezpieczeń sieci przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/14/2018
 
 Jeśli skonfigurowana grup zabezpieczeń sieci (NSG) na maszynie wirtualnej (VM) i występują problemy z połączeniem maszyny Wirtualnej, ten artykuł zawiera omówienie funkcji diagnostyki dla grup NSG do dalszego rozwiązywania.
 
-Grupy NSG umożliwiają kontrolę typów ruchu przepływające i maszyn wirtualnych (VM). Grupy NSG można zastosować do podsieci w sieci wirtualnej platformy Azure (VNet) i/lub interfejsów sieciowych (NIC). Skuteczne zasady stosowane do karty Sieciowej są agregacji reguł, które istnieją w grup NSG stosowana do karty Sieciowej i podsieci, w której jest dołączona do. Reguły w tych grup NSG można czasami konflikt ze sobą i mieć wpływ na łączność sieciową z maszyny Wirtualnej.  
+Grupy NSG umożliwiają kontrolę typów ruchu przepływające i maszyn wirtualnych (VM). Grupy NSG można zastosować do podsieci w sieci wirtualnej platformy Azure (VNet) i/lub interfejsów sieciowych (NIC). Skuteczne zasady stosowane do karty Sieciowej są agregacji reguł, które istnieją w grup NSG stosowana do karty Sieciowej i podsieci, w której jest dołączona do. Reguły w tych grup NSG można czasami konflikt ze sobą i mieć wpływ na łączność sieciową z maszyny Wirtualnej.
 
-Można wyświetlić wszystkie reguły efektywnym elementem systemu zabezpieczeń z grup NSG, jak stosować kart sieciowych maszyny Wirtualnej. W tym artykule pokazano, jak rozwiązywać problemy z połączeniem maszyny Wirtualnej przy użyciu tych reguł w modelu wdrażania usługi Azure Resource Manager. Jeśli nie znasz z sieci wirtualnej i NSG pojęcia, przeczytaj [sieci wirtualnej](virtual-networks-overview.md) i [sieciowej grupy zabezpieczeń](virtual-networks-nsg.md) omówienie artykułów.
+Można wyświetlić wszystkie reguły efektywnym elementem systemu zabezpieczeń z grup NSG, jak stosować kart sieciowych maszyny Wirtualnej. W tym artykule pokazano, jak rozwiązywać problemy z połączeniem maszyny Wirtualnej przy użyciu tych reguł w modelu wdrażania usługi Azure Resource Manager. Jeśli nie znasz z sieci wirtualnej i NSG pojęcia, zobacz [omówienie sieci wirtualnej](virtual-networks-overview.md) i [omówienie grupy zabezpieczeń sieci](security-overview.md).
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Rozwiązywanie problemów z przepływem ruchu maszyny Wirtualnej za pomocą skuteczne reguły zabezpieczeń
 Scenariusz, który następuje jest przykładem to powszechny problem połączenia:
@@ -159,8 +159,7 @@ Wykonaj poniższe kroki, aby rozwiązać grup NSG dla maszyny Wirtualnej:
    
    * Istnieją dwa **grupy NetworkSecurityGroup** sekcje: jedna jest skojarzony z podsiecią (*podsieć1*) i jest ono skojarzone z jedną kartą Sieciową (*VM1 NIC1*). W tym przykładzie zastosowano do każdej grupy NSG.
    * **Skojarzenie** pokazuje zasobów (podsieci lub kartę interfejsu Sieciowego) jest skojarzona z danej grupy NSG. Zasób NSG jest przenoszone/usunąć skojarzenia bezpośrednio przed uruchomieniem tego polecenia, może być konieczne kilka sekund zmiany do uwzględnienia w danych wyjściowych polecenia. 
-   * Nazwy reguł, które są poprzedzone znakiem *defaultSecurityRules*: gdy grupa NSG jest tworzona, kilka domyślnych reguł zabezpieczeń są tworzone w niej. Nie można usunąć domyślnej reguły, ale mogą być zastąpione wyższy priorytet reguły.
-     Odczyt [omówienie NSG](virtual-networks-nsg.md#default-rules) artykuł, aby dowiedzieć się więcej na temat NSG domyślne zasady zabezpieczeń.
+   * Nazwy reguł, które są poprzedzone znakiem *defaultSecurityRules*: gdy grupa NSG jest tworzona, kilka domyślnych reguł zabezpieczeń są tworzone w niej. Nie można usunąć domyślnej reguły, ale mogą być zastąpione wyższy priorytet reguły. Dowiedz się więcej o [domyślnych regułach zabezpieczeń](security-overview.md#default-security-rules).
    * **ExpandedAddressPrefix** rozszerza prefiksy adresów dla znaczników domyślnych NSG. Tagi reprezentują wiele prefiksów adresów. Rozszerzenia znaczników mogą być przydatne podczas rozwiązywania problemów z łącznością maszyny Wirtualnej z określonego adresu prefiksy. Na przykład z sieci Wirtualnej komunikacji równorzędnej, VIRTUAL_NETWORK tag zostanie rozwinięty, ukazując prefiksy połączyć za pomocą sieci wirtualnej w poprzednim danych wyjściowych.
      
      > [!NOTE]

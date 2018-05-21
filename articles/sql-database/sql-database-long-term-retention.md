@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce78201e3f87b9687ced181f90d352d73aa29431
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie kopii zapasowych bazy danych SQL Azure przez maksymalnie 10 lat
 
@@ -54,8 +54,13 @@ W = 12 tygodni (84 dni), M = 12 miesięcy (365 dni), Y = 10 lat (3650 dni), Week
 
 
  
-Jeśli można zmodyfikować zasady powyżej i zestawu W = 0 (nie cotygodniowe kopie zapasowe), okresach kopii zapasowych zmieniłby jako przedstawiono w powyższej tabeli dat zaznaczony. W związku z tym ograniczy wielkość pamięci masowej niezbędne, aby zachować te kopie zapasowe. Uwaga: Kopie od lewej do prawej są tworzone przez usługę Azure storage, więc proces kopiowania nie ma wpływu wydajności na istniejącej bazy danych.
-Aby przywrócić bazę danych z magazynu od lewej do prawej, można wybrać określonego oparte na jego sygnatura czasowa kopii zapasowej.   Można przywrócić bazy danych do dowolnego istniejącego serwera w tej samej subskrypcji co oryginalnej bazy danych. 
+Jeśli można zmodyfikować zasady powyżej i zestawu W = 0 (nie cotygodniowe kopie zapasowe), okresach kopii zapasowych zmieniłby jako przedstawiono w powyższej tabeli dat zaznaczony. W związku z tym ograniczy wielkość pamięci masowej niezbędne, aby zachować te kopie zapasowe. 
+
+> [!NOTE]
+1. Kopie od lewej do prawej są tworzone przez usługę Azure storage, więc proces kopiowania nie ma wpływu wydajności na istniejącej bazy danych.
+2. Stosuje zasady do kolejnych kopii zapasowych. Na przykład Jeśli jest określony WeekOfYear w przeszłości, gdy zasada jest skonfigurowana, pierwszy od lewej do prawej zostanie utworzona kopia następnym roku. 
+3. Aby przywrócić bazę danych z magazynu od lewej do prawej, można wybrać określonego oparte na jego sygnatura czasowa kopii zapasowej.   Można przywrócić bazy danych do dowolnego istniejącego serwera w tej samej subskrypcji co oryginalnej bazy danych. 
+> 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych
 

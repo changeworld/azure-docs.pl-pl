@@ -9,18 +9,21 @@ ms.devlang: rest-api
 ms.topic: reference
 ms.date: 04/18/2018
 ms.author: nateko
-ms.openlocfilehash: 8eae54c912711a11c015737903b6898b98fd5159
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e5cd7fcd0c853f03dbafb4d95b8459dcc83aecdf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-search-service-rest-api-version-2016-09-01-preview"></a>Interfejsu API REST usługi Azure Search: Wersji 2016-09-01-Preview
-W tym artykule jest dokumentacji dla `api-version=2016-09-01-Preview`. Ta wersja zapoznawcza rozszerza bieżącej wersji ogólnie dostępna, [interfejsu api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), podając następujące funkcje eksperymentalne:
+W tym artykule wymieniono funkcje w wersji zapoznawczej `api-version=2016-09-01-Preview`. Ta wersja zapoznawcza rozszerza poprzedniej wersji ogólnie dostępna, [interfejsu api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), podając następujące funkcje eksperymentalne:
 
-* [`moreLikeThis` parametr zapytania](search-more-like-this.md) można znaleźć dokumenty, które mają zastosowanie do określonego dokumentu.
+* [`moreLikeThis` parametr zapytania](search-more-like-this.md) można znaleźć dokumenty, które mają zastosowanie do określonego dokumentu. Ta funkcja została w wcześniejszych wersji zapoznawczych. W przypadku wywołujący ten interfejs API przy użyciu starszej wersji interfejsu api, można użyć tej wersji.
 
-Sprawdź, czy docelowy wersja interfejsu API `api-version=2016-09-01-Preview` próby te funkcje eksperymentalne. Poniższy przykład przedstawia sposób Podgląd wersja interfejsu api jest określona w podejmowaniu więcej — podobne tego zapytania.
+
+## <a name="how-to-call-a-preview-api"></a>Wywoływanie interfejsu API w wersji zapoznawczej
+
+Poniższy przykład przedstawia sposób Podgląd wersja interfejsu api jest określona w podejmowaniu więcej — podobne tego zapytania.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?moreLikeThis=a1&api-version=2016-09-01-Preview
 
