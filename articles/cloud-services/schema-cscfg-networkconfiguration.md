@@ -1,23 +1,23 @@
 ---
-title: "Konfiguracja sieci schematu usług w chmurze platformy Azure | Dokumentacja firmy Microsoft"
-ms.custom: 
+title: Konfiguracja sieci schematu usług w chmurze platformy Azure | Dokumentacja firmy Microsoft
+ms.custom: ''
 ms.date: 12/07/2016
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
-caps.latest.revision: "28"
+caps.latest.revision: 28
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 2438876e210363e9918e700397d4181990a3983f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebe81b2e4dea347eb22b173ff1e9baf1ee6bb75d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services schematu konfiguracji konfiguracja sieci
 
@@ -68,7 +68,7 @@ W poniższej tabeli opisano elementy podrzędne `NetworkConfiguration` elementu.
 | Element       | Opis |
 | ------------- | ----------- |
 | AccessControl | Opcjonalny. Określa zasady dostępu do punktów końcowych w usłudze w chmurze. Nazwa kontroli dostępu jest zdefiniowana przez ciąg dla `name` atrybutu. `AccessControl` Elementu zawiera jeden lub więcej `Rule` elementów. Więcej niż jeden `AccessControl` można zdefiniować elementu.|
-| Reguła | Opcjonalny. Określa akcję, która należy do podsieci określony zakres adresów IP. Kolejność reguły jest definiowana za pomocą wartość ciągu dla `order` atrybutu. Im niższa reguły numer wyższy priorytet. Na przykład reguły może być określony o numerach porządkowych 100, 200 i 300. Reguły z numerem porządkowym 100 ma pierwszeństwo przed regułą, z kolejnością 200.<br /><br /> Akcji reguły jest definiowana za pomocą ciągu dla `action` atrybutu. Możliwe wartości:<br /><br /> -   `permit`— Określa, że tylko pakiety z zakresu określonej podsieci może komunikować się z punktem końcowym.<br />-   `deny`— Umożliwia określenie, jest odmowa dostępu do punktów końcowych z zakresu określonej podsieci.<br /><br /> Adresy zakresu adresów IP podsieci, które wpływają reguły są definiowane przez ciąg `remoteSubnet` atrybutu. Opis reguły jest definiowana za pomocą ciągu dla `description` atrybutu.|
+| Reguła | Opcjonalny. Określa akcję, która należy do podsieci określony zakres adresów IP. Kolejność reguły jest definiowana za pomocą wartość ciągu dla `order` atrybutu. Im niższa reguły numer wyższy priorytet. Na przykład reguły może być określony o numerach porządkowych 100, 200 i 300. Reguły z numerem porządkowym 100 ma pierwszeństwo przed regułą, z kolejnością 200.<br /><br /> Akcji reguły jest definiowana za pomocą ciągu dla `action` atrybutu. Możliwe wartości:<br /><br /> -   `permit` — Określa, że tylko pakiety z zakresu określonej podsieci może komunikować się z punktem końcowym.<br />-   `deny` — Umożliwia określenie, jest odmowa dostępu do punktów końcowych z zakresu określonej podsieci.<br /><br /> Adresy zakresu adresów IP podsieci, które wpływają reguły są definiowane przez ciąg `remoteSubnet` atrybutu. Opis reguły jest definiowana za pomocą ciągu dla `description` atrybutu.|
 | EndpointAcl | Opcjonalny. Określa przypisania zasady kontroli dostępu do punktu końcowego. Nazwa roli, która zawiera punkt końcowy jest zdefiniowany przez ciąg `role` atrybutu. Nazwa punktu końcowego jest zdefiniowany przez ciąg `endpoint` atrybutu. Nazwa zestawu `AccessControl` reguł, które mają być stosowane do punktu końcowego są zdefiniowane w parametrach dla `accessControl` atrybutu. Więcej niż jeden `EndpointAcl` można zdefiniować elementów.|
 | Serwer DNS | Opcjonalny. Określa ustawienia dla serwera DNS. Można określić ustawienia dla serwerów DNS bez sieci wirtualnej. Nazwa serwera DNS jest zdefiniowana przez ciąg `name` atrybutu. Adres IP serwera DNS jest definiowana za pomocą ciągu dla `IPAddress` atrybutu. Adres IP musi być prawidłowym adresem IPv4.|
 | VirtualNetworkSite | Opcjonalny. Określa nazwę lokacji sieci wirtualnej, w którym chcesz wdrożyć usługi w chmurze. To ustawienie nie powoduje utworzenia lokacji sieci wirtualnej. Odwołuje się on do lokacji, która została wcześniej zdefiniowana w pliku sieci dla sieci wirtualnej. Usługi w chmurze można tylko członek jedną sieć wirtualną. Jeśli nie określisz to ustawienie, nie można wdrożyć usługę w chmurze do sieci wirtualnej. Nazwa lokacji sieci wirtualnej jest zdefiniowany przez ciąg `name` atrybutu.|

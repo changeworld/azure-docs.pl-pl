@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: debfff03ea9a4de4fb2cd69779d58709a6a3a34f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34248d75c190aa4636c39f087d399d946b589d58
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Tworzenie środowiska usługi aplikacji zewnętrznych #
 
@@ -170,7 +170,7 @@ Tworzenie autonomicznych ASE, nie ma nic w nim. Pusty ASE nadal wiąże miesięc
 
 5. Wybierz sieć wirtualną i lokalizacji. Możesz utworzyć nową sieć wirtualną lub wybierz istniejącej sieci wirtualnej: 
 
-    * W przypadku wybrania nowej sieci wirtualnej można określić nazwy i lokalizacji. Jeśli zamierzasz Hostuj aplikacje systemu Linux na tym ASE w tej chwili obsługiwane są tylko tych regionów, 6: **zachodnie stany USA, wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja południowo-wschodnia.** 
+    * W przypadku wybrania nowej sieci wirtualnej możesz określić nazwę i lokalizację. Jeśli zamierzasz hostować aplikacje systemu Linux w tym środowisku ASE, w tej chwili obsługiwanych jest tylko 6 następujących regionów: **Zachodnie stany USA, Wschodnie stany USA, Europa Zachodnia, Europa Północna, Australia Wschodnia, Azja Południowo-Wschodnia.** 
     
     * Nowej sieci wirtualnej ma 192.168.250.0/23 zakres adresów i podsieć o nazwie domyślnej. Podsieć jest zdefiniowana jako 192.168.250.0/24. Można wybrać tylko sieć wirtualną Menedżera zasobów. **Typu VIP** wybór określa Twojej ASE są bezpośrednio dostępne z Internetu (zewnętrzne) lub korzysta z ILB. Aby dowiedzieć się więcej o tych opcjach, zobacz [tworzenie i używanie wewnętrznego modułu równoważenia obciążenia z środowiska usługi aplikacji][MakeILBASE]. 
 
@@ -207,7 +207,7 @@ Aby dowiedzieć się więcej na temat ASEv1, zobacz [wprowadzenie do środowiska
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../app-service-web-overview.md

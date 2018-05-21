@@ -17,16 +17,18 @@ ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f20de2c8a8870568ac624846f6a8a4f8d72b5c0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Ustawianie alertów rozliczeń lub faktury dla subskrypcji platformy Microsoft Azure
 Jeśli jesteś administratorem konta subskrypcji platformy Azure, aby utworzyć dostosowany, można użyć Usługa alertów rozliczenia Azure alerty dotyczące rozliczeń, które ułatwiają monitorowanie działań i zarządzania nimi rozliczeń dla konta platformy Azure.
 
 Ta usługa jest w wersji zapoznawczej, więc należy ją najpierw włączyć na stronie funkcji w wersji zapoznawczej.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>Ustawiony próg i adres e-mail odbiorcy alertów
 1. Odwiedź stronę [strona funkcje w wersji zapoznawczej](https://account.windowsazure.com/PreviewFeatures) i Włącz **rozliczeń Usługa alertów**.

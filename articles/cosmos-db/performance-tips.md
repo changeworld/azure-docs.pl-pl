@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 51674f80e918f28febf0e854caa72c0da43c589c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -41,9 +41,13 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
     Jak klient nawiąże połączenie bazy danych Azure rozwiązania Cosmos ma istotny wpływ na wydajność, szczególnie pod względem obserwowanych opóźnienia po stronie klienta. Dostępne są dwa ustawienia konfiguracji klucza dla konfiguracji klienta zasady połączenia — połączenie *tryb* i [połączenia *protokołu*](#connection-protocol).  Są dwa tryby dostępne:
 
    1. Tryb bramy (ustawienie domyślne)
+      
+      Tryb bramy jest obsługiwana na wszystkich platformach zestawu SDK i jest skonfigurowana domyślna. Jeśli aplikacja działa w sieci firmowej z ograniczeń zapory strict, najlepszym rozwiązaniem jest w trybie bramy ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Jednak z zależnościami wydajności jest tryb bramy obejmuje przeskoku dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do bazy danych Azure rozwiązania Cosmos. W związku z tym w trybie bezpośrednim oferuje lepszą wydajność ze względu na mniejszą liczbę przeskoków sieciowych.
+
    2. W trybie bezpośrednim
 
-      Tryb bramy jest obsługiwana na wszystkich platformach zestawu SDK i jest skonfigurowana domyślna.  Jeśli aplikacja działa w sieci firmowej z ograniczeń zapory strict, najlepszym rozwiązaniem jest w trybie bramy ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Jednak z zależnościami wydajności jest tryb bramy obejmuje przeskoku dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do bazy danych Azure rozwiązania Cosmos. W związku z tym w trybie bezpośrednim oferuje lepszą wydajność ze względu na mniejszą liczbę przeskoków sieciowych.
+     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Obecnie bezpośrednio jest obsługiwany w .NET 2.0 standardowe tylko platformy systemu Windows.
+      
 <a id="use-tcp"></a>
 2. **Zasady połączeń: używanie protokołu TCP**
 

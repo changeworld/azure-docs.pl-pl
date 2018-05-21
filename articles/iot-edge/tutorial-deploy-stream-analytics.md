@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 05/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Stream Analytics jako moduł krawędzi IoT — w wersji preview
 
@@ -57,7 +57,7 @@ Konto usługi Azure Storage są wymagane do świadczenia punkt końcowy do użyc
 
 1. W portalu Azure, przejdź do **Utwórz zasób**, wprowadź **konta magazynu** w polu wyszukiwania, a następnie wybierz **konta magazynu — obiekt blob, plików, tabeli, kolejki**.
 
-2. W **utworzyć konto magazynu** okienku, wprowadź nazwę konta magazynu, wybierz w tej samej lokalizacji, w którym przechowywana jest Centrum IoT, a następnie wybierz **Utwórz**. Zanotuj nazwę do późniejszego użycia.
+2. W **utworzyć konto magazynu** okienku, wprowadź nazwę konta magazynu, wybierz lokalizację, w którym przechowywana jest Centrum IoT, wybierz grupę zasobów jako centrum IoT, a następnie wybierz **Utwórz**. Zanotuj nazwę do późniejszego użycia.
 
     ![Tworzenie konta magazynu][1]
 
@@ -84,32 +84,25 @@ Konto usługi Azure Storage są wymagane do świadczenia punkt końcowy do użyc
 
 3. Wybierz pozycję **Utwórz**.
 
-4. Utworzone zadanie w obszarze **topologii zadania**, wybierz pozycję **dane wejściowe**, a następnie wybierz **Dodaj**.
-
-5. W **wprowadzania nowych** okienko, wykonaj następujące czynności:
-
-    a. W **alias wejściowy** wprowadź **temperatury**.
-    
-    b. W **typ źródła** wybierz opcję **strumienia danych**.
-    
-    c. W pozostałych polach należy użyć wartości domyślnych.
+4. W zadaniu utworzony w obszarze **topologii zadania**, otwórz **dane wejściowe**.
 
    ![Azure Stream Analytics danych wejściowych.](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. Wybierz pozycję **Utwórz**.
+5. Wybierz **dodać strumienia danych wejściowych**, a następnie wybierz pozycję **krawędzi Centrum**.
 
-7. W obszarze **topologii zadania**, wybierz pozycję **dane wyjściowe**, a następnie wybierz **Dodaj**.
+5. W **wprowadzania nowych** okienku, wprowadź **temperatury** jako alias wejściowy. 
 
-8. W **nowe dane wyjściowe** okienko, wykonaj następujące czynności:
+6. Wybierz pozycję **Zapisz**.
 
-    a. W **alias wyjściowy** wpisz **alert**.
-    
-    b. W pozostałych polach należy użyć wartości domyślnych. 
-    
-    c. Wybierz pozycję **Utwórz**.
+7. W obszarze **topologii zadania**, otwórz **dane wyjściowe**.
 
    ![Azure Stream Analytics danych wyjściowych.](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
+8. Wybierz **Dodaj**, a następnie wybierz pozycję **krawędzi Centrum**.
+
+8. W **nowe dane wyjściowe** okienku, wprowadź **alert** jako alias wyjściowy. 
+
+9. Wybierz pozycję **Utwórz**.
 
 9. W obszarze **topologii zadania**, wybierz pozycję **zapytania**, a następnie zastąpić domyślny tekst następujące zapytanie:
 
@@ -135,7 +128,7 @@ Teraz można przystąpić do wdrażania zadania usługi analiza strumienia Azure
 2. Wybierz opcję **Ustaw moduły**.  
     Jeśli wdrożono modułu tempSensor na tym urządzeniu może automatycznego wypełniania. Jeśli nie, Dodaj moduł w następujący sposób:
 
-   a. Wybierz **Dodaj moduł krawędzi IoT**.
+   a. Wybierz pozycję **Dodaj moduł usługi IoT Edge**.
 
    b. Na stronie Nazwa wpisz **tempSensor**.
     

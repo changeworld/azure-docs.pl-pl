@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 66032a68634be5b52bbfa544d0a3bcd3d1090652
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akceleracja dynamiczne witryny za pomocą usługi Azure CDN
 
 Z rozłożenie mediów społecznościowych, handlu elektronicznego i web spersonalizowanych funkcji hyper szybko rośnie odsetek obsługiwanej użytkownikom końcowym zawartości jest generowany w czasie rzeczywistym. Użytkownicy oczekują web szybkie, niezawodne i spersonalizowanego doświadczenia, niezależnie od przeglądarki, lokalizacji, urządzenia lub sieci. Jednak bardzo innowacje, wchodzące w tych środowisk, dlatego współpraca również powolna strona pliki do pobrania i zagrożenie jakości obsługi klienta. 
 
-Standardowa dostarczania zawartości (CDN) do sieci obejmuje możliwość przyspieszenia dostarczanie plików statycznych do pamięci podręcznej plików bliżej dla użytkowników końcowych. Jednak z dynamicznych aplikacji sieci web, buforowanie tej zawartości w lokalizacjach edge nie jest możliwe, ponieważ serwer generuje zawartość w odpowiedzi na zachowanie użytkownika. Przyspieszenia dostarczania zawartości takie jest bardziej złożone niż tradycyjne krawędzi buforowanie i wymaga precyzyjne Dostraja każdego elementu w ścieżce danych od chwili rozpoczęcia dostarczać rozwiązanie end-to-end. Z usługi Azure CDN optymalizacji acceleration (DSA) dynamiczne witryny widoczny jest zwiększenie wydajności stron sieci web z zawartością dynamiczną.
+Standardowa dostarczania zawartości (CDN) do sieci obejmuje możliwość przyspieszenia dostarczanie plików statycznych do pamięci podręcznej plików bliżej dla użytkowników końcowych. Jednak z dynamicznych aplikacji sieci web, buforowanie tej zawartości w lokalizacjach edge nie jest możliwe, ponieważ serwer generuje zawartość w odpowiedzi na zachowanie użytkownika. Przyspieszenia dostarczania zawartości takie jest bardziej złożone niż tradycyjne krawędzi buforowanie i wymaga precyzyjne Dostraja każdego elementu w ścieżce danych od chwili rozpoczęcia dostarczać rozwiązanie end-to-end. Z usługi Azure CDN optymalizacji acceleration (DSA) dynamiczne witryny widoczny jest zwiększenie wydajności wieku sieci web z zawartością dynamiczną.
 
 **Azure CDN from Akamai** i **Azure CDN from Verizon** zawierają DSA optymalizacji za pośrednictwem **zoptymalizowane pod kątem** menu podczas tworzenia punktu końcowego.
 
@@ -33,7 +33,7 @@ Standardowa dostarczania zawartości (CDN) do sieci obejmuje możliwość przysp
 >   
 > Aby uzyskać **Azure CDN from Verizon** profile, nie można zmienić optymalizacji punktu końcowego usługi CDN po jego utworzeniu.
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>Konfigurowanie punktu końcowego CDN w celu przyspieszenia dostarczania plików dynamicznych
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Konfiguracja punktu końcowego sieci CDN w celu przyspieszenia dostarczania plików dynamicznych
 
 Aby skonfigurować punkt końcowy usługi CDN, aby zoptymalizować dostarczania plików dynamicznych, albo można portalu Azure, interfejsów API REST lub zestawów SDK klienta tak samo postąpić programowo. 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 422563f6a4e85884f4512d797d666e470835e2d2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: d15c5556325284dd3b0b6f11a080c9abc263286c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure powiązania HTTP funkcje i elementu webhook
 
@@ -43,7 +43,7 @@ Powiązania HTTP znajdują się w [Microsoft.Azure.WebJobs.Extensions.Http](http
 
 Wyzwalacz protokołu HTTP umożliwia wywołanie funkcji z żądania HTTP. Wyzwalacz protokołu HTTP umożliwia tworzenie niekorzystającą interfejsów API i reagowanie na elementów webhook. 
 
-Domyślnie wyzwalacza HTTP odpowiada na żądania z kodem stanu HTTP 200 OK i pustej treści. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania wyjściowego HTTP](#http-output-binding).
+Domyślnie wyzwalacza HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 nr zawartości o pustej treści w funkcjach 2.x. Aby zmodyfikować odpowiedzi, należy skonfigurować [powiązania wyjściowego HTTP](#http-output-binding).
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 
@@ -56,7 +56,7 @@ Zapoznaj się z przykładem specyficzny dla języka:
 
 ### <a name="trigger---c-example"></a>Wyzwalacz — przykład C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) która szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
+W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) która szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP. Należy zauważyć, że wartość zwracana jest używane do wiązania danych wyjściowych, ale atrybut wartości zwracanej nie jest wymagane.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -87,15 +87,29 @@ public static async Task<HttpResponseMessage> Run(
 
 W poniższym przykładzie przedstawiono powiązanie wyzwalacza w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto *function.json* pliku:
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+    "disabled": false,
+    "bindings": [
+        {
+            "authLevel": "function",
+            "name": "req",
+            "type": "httpTrigger",
+            "direction": "in",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "name": "$return",
+            "type": "http",
+            "direction": "out"
+        }
+    ]
+}
 ```
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
@@ -147,15 +161,25 @@ public class CustomObject {
 
 W poniższym przykładzie przedstawiono powiązanie wyzwalacza w *function.json* pliku i [F # funkcja](functions-reference-fsharp.md) używającą powiązania. Funkcja szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto *function.json* pliku:
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
@@ -203,15 +227,25 @@ Należy `project.json` pliku, który używa NuGet, aby odwołać `FSharp.Interop
 
 W poniższym przykładzie przedstawiono powiązanie wyzwalacza w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania. Funkcja szuka `name` parametru w ciągu zapytania lub w treści żądania HTTP.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto *function.json* pliku:
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
 ```
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
@@ -224,7 +258,7 @@ module.exports = function(context, req) {
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: "Hello " + (req.query.name || req.body.name)
         };
     }
@@ -263,15 +297,25 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 W poniższym przykładzie przedstawiono wyzwalacz elementu webhook powiązanie w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja rejestruje komentarze problem GitHub.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto *function.json* pliku:
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
@@ -303,15 +347,25 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 W poniższym przykładzie przedstawiono wyzwalacz elementu webhook powiązanie w *function.json* pliku i [F # funkcja](functions-reference-fsharp.md) używającą powiązania. Funkcja rejestruje komentarze problem GitHub.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto *function.json* pliku:
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
@@ -347,11 +401,21 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 [Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
@@ -386,7 +450,6 @@ Pełny przykład, zobacz [wyzwalacza — przykład C#](#trigger---c-example).
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
 W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku i `HttpTrigger` atrybutu.
-
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
@@ -472,13 +535,13 @@ module.exports = function (context, req) {
 
     if (!id) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: "All " + category + " items were requested."
         };
     }
     else {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: category + " item with id = " + id + " was requested."
         };
     }
@@ -549,35 +612,24 @@ Jeśli funkcja, która używa wyzwalacza HTTP nie zakończyła się w ciągu oko
 
 ## <a name="output"></a>Dane wyjściowe
 
-Za pomocą raportu HTTP powiązanie odpowiedź do nadawcy żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i umożliwia dostosowanie odpowiedzi skojarzony z żądaniem tego wyzwalacza. Jeśli powiązania wyjściowego HTTP nie zostanie podany, wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści. 
+Za pomocą raportu HTTP powiązanie odpowiedź do nadawcy żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i umożliwia dostosowanie odpowiedzi skojarzony z żądaniem tego wyzwalacza. Jeśli powiązania wyjściowego HTTP nie zostanie podany, wyzwalacz HTTP zwraca HTTP 200 OK o pustej treści w funkcjach 1.x lub HTTP 204 nr zawartości o pustej treści w funkcjach 2.x.
 
 ## <a name="output---configuration"></a>OUTPUT — Konfiguracja
 
-C# bibliotek klas nie ma żadnych danych wyjściowych — wiązanie konfiguracji właściwości. Aby wysłać odpowiedzi HTTP, należy zwracany typ funkcji `HttpResponseMessage` lub `Task<HttpResponseMessage>`.
-
-W przypadku innych języków powiązania wyjściowego HTTP jest zdefiniowany jako obiekt JSON w `bindings` tablicy function.json, jak pokazano w poniższym przykładzie:
-
-```json
-{
-    "name": "res",
-    "type": "http",
-    "direction": "out"
-}
-```
-
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku.
+W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku. Dla klasy C# Brak bibliotek nie ma żadnych atrybutów właściwości odpowiadające te *function.json* właściwości. 
 
 |Właściwość  |Opis  |
 |---------|---------|
 | **type** |należy wybrać opcję `http`. |
 | **direction** | należy wybrać opcję `out`. |
-|**Nazwa** | Nazwa zmiennej używane w kodzie funkcji dla odpowiedzi. |
+|**Nazwa** | Nazwa zmiennej używane w kodzie funkcja odpowiedzi, lub `$return` do Użyj wartości zwracanej. |
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
-Można użyć parametru wyjściowego odpowiadać obiektowi wywołującemu, HTTP lub elementu webhook. Można również użyć wzorców odpowiedzi standard języka. Na przykład odpowiedzi, zobacz [przykład wyzwalacza](#trigger---example) i [przykład elementu webhook](#trigger---webhook-example).
+Aby wysłać odpowiedzi HTTP, należy użyć wzorców standard języka odpowiedzi. W języku C# lub skryptu C#, wprowadź typ zwracany funkcji `HttpResponseMessage` lub `Task<HttpResponseMessage>`. W języku C# Atrybut wartości zwracanej nie jest wymagane.
+
+Na przykład odpowiedzi, zobacz [przykład wyzwalacza](#trigger---example) i [przykład elementu webhook](#trigger---webhook-example).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-> [!div class="nextstepaction"]
-> [Dowiedz się więcej o usługę Azure functions wyzwalaczy i powiązań](functions-triggers-bindings.md)
+[Dowiedz się więcej o usługę Azure functions wyzwalaczy i powiązań](functions-triggers-bindings.md)

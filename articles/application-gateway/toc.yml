@@ -7,17 +7,17 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Bezpośredni ruch internetowy — portal
+    - name: Zarządzanie ruchem internetowym — portal
       href: quick-create-portal.md
-    - name: Bezpośredni ruch internetowy — PowerShell
+    - name: Zarządzanie ruchem internetowym — PowerShell
       href: quick-create-powershell.md
-    - name: Bezpośredni ruch internetowy — interfejs wiersza polecenia platformy Azure
+    - name: Zarządzanie ruchem internetowym — interfejs wiersza polecenia platformy Azure
       href: quick-create-cli.md
 - name: Samouczki
   items:
     - name: Zarządzanie ruchem internetowym
       href: tutorial-manage-web-traffic-cli.md
-    - name: Ograniczanie ruchu internetowego
+    - name: Włączanie zapory aplikacji internetowych
       href: tutorial-restrict-web-traffic-cli.md
     - name: Zabezpieczanie przy użyciu protokołu SSL
       href: tutorial-ssl-cli.md
@@ -35,18 +35,23 @@
       href: cli-samples.md
 - name: Pojęcia
   items:
+    - name: Kończenie żądań protokołu SSL
+      href: ssl-overview.md
+    - name: Omówienie zasad protokołu SSL
+      href: application-gateway-ssl-policy-overview.md
     - name: Zapora aplikacji sieci Web
       href: waf-overview.md
     - name: Routing adresów URL
       href: url-route-overview.md
     - name: Hosting wielu witryn
       href: multiple-site-overview.md
-    - name: Kończenie żądań protokołu SSL
-      href: ssl-overview.md
-    - name: Przekierowywanie adresu URL
+    - name: Obsługa przekierowania
       href: redirect-overview.md
+    - name: Obsługa wielu dzierżaw
     - name: Monitorowanie kondycji
       href: application-gateway-probe-overview.md
+    - name: Obsługa protokołu WebSocket
+      href: application-gateway-websocket.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie bramy aplikacji
@@ -55,10 +60,20 @@
           href: create-vmss-template.md
         - name: Aplikacje internetowe — PowerShell
           href: create-web-app.md
-    - name: Włączanie kończenia żądań protokołu SSL — portal
+        - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
+          href: application-gateway-ilb.md
+    - name: Konfigurowanie kończenia żądań protokołu SSL — portal
       href: create-ssl-portal.md
     - name: Hostowanie wielu witryn — portal
       href: create-multiple-sites-portal.md
+    - name: Dostosowywanie reguł zapory aplikacji internetowych
+      items:
+        - name: Azure Portal
+          href: application-gateway-customize-waf-rules-portal.md
+        - name: Azure PowerShell
+          href: application-gateway-customize-waf-rules-powershell.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: application-gateway-customize-waf-rules-cli.md
     - name: Przekierowywanie ruchu zewnętrznego
       items:
         - name: Azure PowerShell
@@ -87,6 +102,8 @@
       href: tutorial-restrict-web-traffic-powershell.md
     - name: Kończenie żądań protokołu SSL przy użyciu programu Azure PowerShell
       href: tutorial-ssl-powershell.md
+    - name: Odnawianie certyfikatów
+      href: renew-certificates.md
     - name: Hostowanie wielu witryn przy użyciu programu Azure PowerShell
       href: tutorial-multiple-sites-powershell.md
     - name: Kierowanie ruchu sieciowego przy użyciu programu Azure PowerShell
@@ -111,6 +128,8 @@
           href: application-gateway-diagnostics.md
 - name: Dokumentacja
   items:
+    - name: Reguły CRS
+      href: application-gateway-crs-rulegroups-rules.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

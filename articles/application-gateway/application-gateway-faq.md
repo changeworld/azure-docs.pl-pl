@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -155,7 +155,7 @@ W tym scenariuszu można zrobić za pomocą grup NSG podsieci bramy aplikacji. N
 
 * Zezwalaj na przychodzące żądania ze wszystkich źródeł do portów 65503 65534 dla [zaplecza kondycji komunikacji](application-gateway-diagnostics.md).
 
-* Zezwalaj na przychodzące sondy modułu równoważenia obciążenia Azure (znacznik AzureLoadBalancer) i przychodzącego ruchu w sieci wirtualnej (znacznik VirtualNetwork) na [NSG](../virtual-network/virtual-networks-nsg.md).
+* Zezwalaj na przychodzące sondy modułu równoważenia obciążenia Azure (znacznik AzureLoadBalancer) i przychodzącego ruchu w sieci wirtualnej (znacznik VirtualNetwork) na [NSG](../virtual-network/security-overview.md).
 
 * Blokuj wszystkie pozostałe ruch przychodzący z odmowy wszystkie reguły.
 

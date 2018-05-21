@@ -8,136 +8,138 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: nepeters
-ms.openlocfilehash: dbe418db8fb3d73739a30b60703f15b3dc47b291
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4df230c8306a3876e94a5e9ada5e7408f134ba26
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj wystąpień kontenera Azure jako Wpięć agenta kompilacji
 
-Wystąpień kontenera platformy Azure zapewniają na żądanie, burstable i izolowane środowisko uruchamiania konteneryzowanych obciążeń. Z powodu tych atrybutów wystąpień kontenera Azure należy doskonałą platformą dla zadania kompilacji Wpięć na dużą skalę. Ten dokument przeprowadzi Cię przez wdrażanie i przy użyciu serwera Wpięć, który jest wstępnie skonfigurowana z ACI jako miejsce docelowe kompilacji.
+Wystąpień kontenera platformy Azure (ACI) zapewnia na żądanie, burstable i izolowane środowisko uruchamiania konteneryzowanych obciążeń. Z powodu tych atrybutów ACI sprawia, że bardzo platformą dla zadania kompilacji Wpięć na dużą skalę. W tym artykule przedstawiono wdrażania i przy użyciu serwera Wpięć, wstępnie skonfigurowanego z ACI jako element docelowy kompilacji.
 
 Aby uzyskać więcej informacji na wystąpień kontenera platformy Azure, zobacz [o wystąpień kontenera Azure][about-aci].
 
-## <a name="deploy-jenkins-server"></a>Wdrażanie serwera Wpięć
+## <a name="deploy-a-jenkins-server"></a>Wdrażanie serwera Wpięć
 
-W portalu Azure wybierz **Utwórz zasób** i wyszukaj **Wpięć**. Wybierz oferty Wpięć z wydawcą z **Microsoft** i wybierz **Utwórz**.
+1. W portalu Azure wybierz **Utwórz zasób** i wyszukaj **Wpięć**. Wybierz oferty Wpięć z wydawcą z **Microsoft**, a następnie wybierz **Utwórz**.
 
-Wprowadź następujące informacje w formularzu podstawowe informacje o, a następnie kliknij przycisk **OK** po zakończeniu.
+2. Wprowadź następujące informacje **podstawy** formularza, a następnie wybierz **OK**.
 
-- **Nazwa** — Nazwa wdrożenia Wpięć.
-- **Nazwa użytkownika** — ta nazwa użytkownika jest używana jako administrator Wpięć maszyny wirtualnej.
-- **Typ uwierzytelniania** — SSH klucz publiczny jest zalecane. Jeśli zaznaczone, skopiuj klucz publiczny SSH, na które będą używane podczas logowania się do maszyny wirtualnej Wpięć.
-- **Subskrypcja** — Wybierz subskrypcję platformy Azure.
-- **Grupa zasobów** — Utwórz nowy lub wybierz istniejącą grupę zasobów.
-- **Lokalizacja** — wybierz lokalizację na serwerze Wpięć.
+   - **Nazwa**: Wprowadź nazwę dla wdrożenia Wpięć.
+   - **Nazwa użytkownika**: Wprowadź nazwę użytkownika dla administratora Wpięć maszyny wirtualnej.
+   - **Typ uwierzytelniania**: Firma Microsoft zaleca klucz publiczny SSH do uwierzytelniania. Jeśli wybierzesz tę opcję, Wklej klucz publiczny SSH używanego do logowania do maszyny wirtualnej Wpięć.
+   - **Subskrypcja**: wybierz subskrypcję platformy Azure.
+   - **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
+   - **Lokalizacja**: Wybierz lokalizację na serwerze Wpięć.
 
-![Podstawowe ustawienia wdrażania portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-01.png)
+   ![Podstawowe ustawienia wdrożenia portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-01.png)
 
-W formularzu dodatkowe ustawienia należy wykonać następujące elementy:
+3. Na **dodatkowe ustawienia** tworzą, wykonaj następujące elementy:
 
-- **Rozmiar** — wybierz opcję odpowiednią rozmiaru Wpięć maszyny wirtualnej.
-- **Typ dysku maszyny Wirtualnej** — Określ dysk twardy (dysk twardy) lub dysków SSD (SSD) dla serwera Wpięć.
-- **Sieć wirtualna** -(opcjonalnie) zaznacz wirtualnej sieci można zmodyfikować ustawienia domyślne.
-- **Podsieci** — wybierz podsieci, sprawdź informacje, a następnie wybierz **OK**.
-- **Publiczny adres IP** -wybranie publiczny adres IP umożliwia nadaj mu nazwę niestandardową, skonfiguruj jednostki SKU i metoda przydziału.
-- **Etykieta nazwy domeny** — Określ wartość do utworzenia w pełni kwalifikowany adres URL do Wpięć maszyny wirtualnej.
-- **Typ zlecenia Wpięć** — wybierz typ żądanej wersji z opcji: LTS, co tydzień kompilacji lub zweryfikować Azure.
+   - **Rozmiar**: wybierz opcję odpowiednią rozmiaru Wpięć maszyny wirtualnej.
+   - **Typ dysku maszyny Wirtualnej**: Określ **HDD** (dysk twardy) lub **SSD** (SSD) dla serwera Wpięć.
+   - **Sieć wirtualna**: Wybierz strzałkę, aby zmodyfikować ustawienia domyślne.
+   - **Podsieci**: Wybierz strzałkę, sprawdź informacje, a następnie wybierz **OK**.
+   - **Publiczny adres IP**: Wybierz strzałkę, aby zapewnić niestandardową nazwę publicznego adresu IP, skonfigurowania jednostki SKU i metoda przydziału.
+   - **Etykieta nazwy domeny**: Określ wartość do utworzenia w pełni kwalifikowany adres URL do Wpięć maszyny wirtualnej.
+   - **Typ zlecenia Wpięć**: Wybierz typ żądanej wersji z opcji: **LTS**, **co tydzień kompilacji**, lub **zweryfikować Azure**.
 
-![Dodatkowe ustawienia wdrażania portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-02.png)
+   ![Dodatkowe ustawienia wdrożenia portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-Usługi integracji podmiotu zabezpieczeń, wybierz **Auto(MSI)** mają [tożsamości zarządzanych usługi Azure] [ managed-service-identity] automatyczne tworzenie tożsamość uwierzytelniania dla wystąpienia Wpięć. Umożliwia ręczne dostawcy własne poświadczenia główne usługi.
+4. Usługi integracji podmiotu zabezpieczeń, wybierz **Auto(MSI)** mają [tożsamości zarządzanych usługi Azure] [ managed-service-identity] automatycznie Utwórz tożsamość uwierzytelniania dla Wpięć wystąpienie. Wybierz **ręcznego** zapewnienie własne poświadczenia główne usługi.
 
-Agenci chmurze skonfiguruj oparte na chmurze platforma dla zadania kompilacji Wpięć. Dla tego dokumentu wybierz ACI. W agencie chmury ACI każde zadanie kompilacji Wpięć jest uruchamiane w wystąpieniu kontenera platformy Azure.
+5. Agenci chmurze skonfiguruj oparte na chmurze platforma dla zadania kompilacji Wpięć. Dla tego artykułu, wybierz **ACI**. W agencie chmury ACI każde zadanie kompilacji Wpięć jest uruchamiane w wystąpieniu kontenera.
 
-![Ustawienia integracji chmury wdrożenia portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-03.png)
+   ![Ustawienia integracji chmury Wpięć wdrożenia portalu](./media/container-instances-jenkins/jenkins-portal-03.png)
 
-Gdy odbywa się za pomocą ustawienia integracji, kliknij przycisk **OK**, a następnie **OK** ponownie na podsumowania weryfikacji. Kliknij przycisk **Utwórz** na warunkach Podsumowanie użycia. Serwer Wpięć zajmuje kilka minut, aby wdrożyć.
+6. Po wykonaniu tych ustawień integracji, wybierz **OK**, a następnie wybierz **OK** ponownie na podsumowania weryfikacji. Wybierz **Utwórz** na **warunki użytkowania** podsumowania. Serwer Wpięć zajmuje kilka minut, aby wdrożyć.
 
 ## <a name="configure-jenkins"></a>Konfigurowanie usługi Jenkins
 
-W portalu Azure przejdź do grupy zasobów Wpięć, wybierz maszynę wirtualną, Wpięć i zanotuj nazwę DNS.
+1. W portalu Azure przejdź do grupy zasobów Wpięć, wybierz maszynę wirtualną, Wpięć i zanotuj nazwę DNS.
 
-![Instrukcje logowania Wpięć](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
+   ![Nazwa DNS w szczegóły Wpięć maszyny wirtualnej](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
 
-Przeglądarka nazwa DNS Wpięć maszyny Wirtualnej i skopiuj zwracany ciąg SSH.
+2. Wybierz nazwę DNS maszyny wirtualnej Wpięć i skopiuj zwracany ciąg SSH.
 
-![Instrukcje logowania Wpięć](./media/container-instances-jenkins/jenkins-portal-04.png)
+   ![Instrukcje logowania Wpięć z ciągiem SSH](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-Otwórz terminal sesji w systemie deweloperskim i Wklej w ciągu SSH w ostatnim kroku. Podana nazwa użytkownika w przypadku wdrażania serwera Wpięć aktualizacji 'username'.
+3. Otwórz sesję terminala w systemie deweloperskim i Wklej w ciągu SSH w ostatnim kroku. Aktualizacja `username` określony podczas wdrażania serwera Wpięć nazwy użytkownika.
 
-Po nawiązaniu połączenia, uruchom następujące polecenie, aby pobrać hasło administratora początkowej.
+4. Po sesji jest połączony, uruchom następujące polecenie, aby pobrać hasło początkowej administratora:
 
-```
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-```
+   ```
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   ```
 
-Pozostaw sesji SSH i tunelu uruchomiona, a następnie przejdź do http://localhost:8080 w przeglądarce. Wklej hasło administratora początkowa w polu, jak pokazano na poniższej ilustracji. Wybierz **Kontynuuj** po zakończeniu.
+5. Pozostaw sesji SSH i tunelu uruchomiona, a następnie przejdź do http://localhost:8080 w przeglądarce. Wklej hasło administratora początkowa w polu, a następnie wybierz **Kontynuuj**.
 
-![Odblokuj Wpięć](./media/container-instances-jenkins/jenkins-portal-05.png)
+   ![Ekran "Odblokować Wpięć" z polem dla hasła administratora](./media/container-instances-jenkins/jenkins-portal-05.png)
 
-Wybierz **Instalowanie wtyczki sugerowane** można zainstalować wszystkie zalecane Wpięć wtyczek.
+6. Wybierz **Instalowanie wtyczki sugerowane** można zainstalować wszystkie zalecane Wpięć wtyczek.
 
-![Instalowanie wtyczki Wpięć](./media/container-instances-jenkins/jenkins-portal-06.png)
+   ![Ekran "Dostosować Wpięć" z "Instalowanie wtyczki sugerowane" wybrane](./media/container-instances-jenkins/jenkins-portal-06.png)
 
-Utwórz nowe konto użytkownika Administrator. To konto jest używane do logowania się do i pracy z wystąpieniem Wpięć.
+7. Tworzenie konta administratora. To konto jest używane do logowania do i pracy z wystąpieniem Wpięć.
 
-![Utwórz użytkownika Wpięć](./media/container-instances-jenkins/jenkins-portal-07.png)
+   ![Ekran "Utwórz pierwszy Administrator", przy użyciu poświadczeń wypełnione](./media/container-instances-jenkins/jenkins-portal-07.png)
 
-Wybierz **zapisać i zakończenia** po zakończeniu, a następnie **Rozpoczynanie korzystania z Wpięć** w celu ukończenia konfiguracji.
+8. Wybierz **zapisać i zakończenia**, a następnie wybierz **Rozpoczynanie korzystania z Wpięć** w celu ukończenia konfiguracji.
 
 Wpięć jest teraz skonfigurowane i gotowe do tworzenia i wdrażania kodu. Na przykład prostą aplikację Java służy do pokazują kompilacji Wpięć na wystąpień kontenera platformy Azure.
 
-## <a name="create-build-job"></a>Tworzenie zadania kompilacji
+## <a name="create-a-build-job"></a>Tworzenie zadania kompilacji
 
-Przy użyciu obrazu kontenera jako Wpięć kompilowania docelowej, należy określić obraz, który zawiera wszystkie narzędzia niezbędne do pomyślnego utworzenia kompilacji. Obraz, zaznacz **Zarządzanie Wpięć** > **skonfigurować System** i przewiń w dół do **chmury** sekcji. Na przykład zaktualizować wartość obrazu Docker `microsoft/java-on-azure-jenkins-slave`.
+Podczas korzystania z obrazem kontenera jako Wpięć kompilacji docelowej, należy określić obraz, który zawiera wszystkie narzędzia niezbędne do pomyślnego utworzenia kompilacji. Aby określić obrazu:
 
-Po zakończeniu kliknij przycisk **zapisać** aby wrócić do pulpitu nawigacyjnego Wpięć.
+1. Wybierz **Zarządzanie Wpięć** > **skonfigurować System** i przewiń w dół do **chmury** sekcji. Na przykład zaktualizować wartość obrazu Docker **microsoft/java na azure wpięć podrzędna**.
 
-![Konfiguracja chmury Wpięć](./media/container-instances-jenkins/jenkins-aci-image.png)
+   Gdy wszystko będzie gotowe, wybierz **zapisać** aby wrócić do pulpitu nawigacyjnego Wpięć.
 
-Teraz utworzyć Wpięć zadania kompilacji. Wybierz **nowy element**, nadaj nazwę projektu kompilacji takich jak `aci-java-demo`, wybierz pozycję **stylu projektu**i kliknij przycisk **OK**.
+   ![Konfiguracja chmury Wpięć](./media/container-instances-jenkins/jenkins-aci-image.png)
 
-![Tworzenie zadania usługi Jenkins](./media/container-instances-jenkins/jenkins-new-job.png)
+2. Teraz utworzyć Wpięć zadania kompilacji. Wybierz **nowy element**, nadaj nazwę projektu kompilacji takich jak **aci-java pokaz**, wybierz pozycję **stylu projektu**i wybierz **OK**.
 
-W obszarze **ogólne**, upewnij się, że **Ogranicz, w którym można uruchomić tego projektu** jest zaznaczone. Wprowadź `linux` dla wyrażenia etykiety. Taka konfiguracja powoduje, że to zadanie kompilacji zostanie uruchomiona w chmurze ACI.
+   ![Pole nazwy zadania kompilacji, oraz listę typów projektów](./media/container-instances-jenkins/jenkins-new-job.png)
 
-![Tworzenie zadania usługi Jenkins](./media/container-instances-jenkins/jenkins-job-01.png)
+3. W obszarze **ogólne**, upewnij się, że **Ogranicz, w którym można uruchomić tego projektu** jest zaznaczone. Wprowadź **linux** dla wyrażenia etykiety. Taka konfiguracja powoduje, że to zadanie kompilacji zostanie uruchomiona w chmurze ACI.
 
-W obszarze zarządzania kodem źródłowym, wybierz `Git` , a następnie wprowadź `https://github.com/spring-projects/spring-petclinic.git` dla adresu URL repozytorium. To repozytorium GitHub zawiera przykładowy kod aplikacji.
+   ![Kartę "Ogólne" szczegóły konfiguracji](./media/container-instances-jenkins/jenkins-job-01.png)
 
-![Dodaj do zadania Wpięć kodu źródłowego](./media/container-instances-jenkins/jenkins-job-02.png)
+4. W obszarze **zarządzania kodem źródłowym**, wybierz pozycję **Git** , a następnie wprowadź **https://github.com/spring-projects/spring-petclinic.git** dla adresu URL repozytorium. To repozytorium GitHub zawiera przykładowy kod aplikacji.
 
-W obszarze kompilacji, wybierz **dodać kroku kompilacji** i wybierz `Invoke top-level Maven targets`. Wprowadź `package` jako cel kroku kompilacji.
+   ![Karta "Zarządzania kod źródłowy" z informacji dotyczących kodu źródłowego](./media/container-instances-jenkins/jenkins-job-02.png)
 
-![Dodaj Wpięć kroku kompilacji](./media/container-instances-jenkins/jenkins-job-03.png)
+5. W obszarze **kompilacji**, wybierz pozycję **kroku kompilacji Dodaj** i wybierz **wywołania najwyższego poziomu celów Maven**. Wprowadź **pakietu** jako cel kroku kompilacji.
 
-Wybierz **zapisać** po zakończeniu.
+   ![Karta "Kompilacji", z opcjami kroku kompilacji](./media/container-instances-jenkins/jenkins-job-03.png)
+
+6. Wybierz pozycję **Zapisz**.
 
 ## <a name="run-the-build-job"></a>Uruchom zadanie kompilacji
 
 Aby przetestować zadania kompilacji i obserwować wystąpień kontenera Azure jako platforma kompilacji, należy ręcznie uruchomić kompilację.
 
-Wybierz **kompilacji teraz** można rozpocząć zadania kompilacji. Trwa kilka minut, aż zadanie można uruchomić podczas uruchamiania, powinien zostać wyświetlony stan podobne do następujących obrazów.
+1. Wybierz **kompilacji teraz** można rozpocząć zadania kompilacji. Trwa kilka minut, aż zadanie można uruchomić. Powinien zostać wyświetlony stan, która jest podobna do poniższej ilustracji:
 
-![Dodaj Wpięć kroku kompilacji](./media/container-instances-jenkins/jenkins-job-status.png)
+   !["Historia kompilacji" informacje o stanie zadania](./media/container-instances-jenkins/jenkins-job-status.png)
 
-Gdy zadanie jest uruchomione, otwarcie portalu Azure i przyjrzyj się Wpięć grupy zasobów. Powinna zostać wyświetlona utworzono wystąpienie kontenera platformy Azure. Znajduje się wewnątrz tego wystąpienia, które jest wykonywane zadanie Wpięć.
+2. Gdy zadanie jest uruchomione, otwórz Azure portal i przyjrzyj się Wpięć grupy zasobów. Powinna zostać wyświetlona utworzono wystąpienie kontenera. Zadanie Wpięć jest uruchomione w tym wystąpieniu.
 
-![Kompilacje Wpięć w ACI](./media/container-instances-jenkins/jenkins-aci.png)
+   ![Kontener wystąpienie w grupie zasobów](./media/container-instances-jenkins/jenkins-aci.png)
 
-Zgodnie z Wpięć uruchamia zadania więcej niż skonfigurowana liczba modułów Wpięć (domyślnie: 2), są tworzone wielu wystąpień kontenera platformy Azure.
+3. Zgodnie z Wpięć uruchamia zadania więcej niż skonfigurowana liczba modułów Wpięć (domyślnie: 2), są tworzone wielu wystąpień kontenera.
 
-![Kompilacje Wpięć w ACI](./media/container-instances-jenkins/jenkins-aci-multi.png)
+   ![Nowo utworzona wystąpień kontenera](./media/container-instances-jenkins/jenkins-aci-multi.png)
 
-Po ukończeniu wszystkich zadań kompilacji wystąpień kontenera platformy Azure są usuwane.
+4. Po zakończeniu wszystkich zadań kompilacji, są usuwane wystąpień kontenera.
 
-![Kompilacje Wpięć w ACI](./media/container-instances-jenkins/jenkins-aci-none.png)
+   ![Grupy zasobów z wystąpień kontenera usunięte](./media/container-instances-jenkins/jenkins-aci-none.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o Wpięć na platformy Azure, zobacz [Azure i Wpięć][jenkins-azure].
+Aby dowiedzieć się więcej na temat Wpięć na platformie Azure, zobacz [Azure i Wpięć][jenkins-azure].
 
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md
