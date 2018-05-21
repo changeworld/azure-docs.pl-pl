@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyn wirtualnych uruchamiających stos SQL&#92;IIS&#92;.NET na platformie Azure| Microsoft Docs
-description: Samouczek — Instalowanie stosu SQL, IIS i .NET platformy Azure na maszynach wirtualnych z systemem Windows.
+title: Tworzenie maszyn wirtualnych uruchamiających stos SQL&#47;IIS&#47;.NET na platformie Azure| Microsoft Docs
+description: Z tego samouczka dowiesz się, jak zainstalować stos Azure SQL, IIS i.NET na maszynie wirtualnej z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac6038f7600d6eb4c8d021998f9cfc40bd369332
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f9fea933dd664955a0bc6f47db775fbc469fd684
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="install-a-sql92iis92net-stack-in-azure"></a>Instalacja stosu SQL&#92;IIS&#92;.NET na platformie Azure
+# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Samouczek: Instalowanie stosu SQL&#47;IIS&#47;.NET na maszynie wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
 
-W tym samouczku instalujemy stos SQL&#92;IIS&#92;.NET przy użyciu programu Azure PowerShell. Ten stos składa się z dwóch maszyn wirtualnych z systemem Windows Server 2016 — jednej z usługami IIS i platformą .NET oraz drugiej z programem SQL Server.
+W tym samouczku instalujemy stos SQL&#47;IIS&#47;.NET przy użyciu programu Azure PowerShell. Ten stos składa się z dwóch maszyn wirtualnych z systemem Windows Server 2016 — jednej z usługami IIS i platformą .NET oraz drugiej z programem SQL Server.
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej 
@@ -33,7 +33,7 @@ W tym samouczku instalujemy stos SQL&#92;IIS&#92;.NET przy użyciu programu Azur
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu AzureRM.Compute w wersji 4.3.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM.Compute`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu AzureRM.Compute w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM.Compute`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-a-iis-vm"></a>Tworzenie maszyny wirtualnej usług IIS 
 

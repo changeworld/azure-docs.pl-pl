@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przeprowadzi Cię przez jaki sposób zalecenia w Centrum zabezpieczeń Azure ułatwiają ochronę zasobów platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń."
+title: Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przeprowadzi Cię przez jaki sposób zalecenia w Centrum zabezpieczeń Azure ułatwiają ochronę zasobów platformy Azure i są aktualizowane zgodnie z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 2cb4a1c944d6893ca7913eef4e93620059f2a839
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure
 Ten dokument przedstawia sposób użycia zalecenia w Centrum zabezpieczeń Azure ułatwiają ochronę zasobów platformy Azure.
@@ -39,7 +39,7 @@ W [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center
 * Włącz zbieranie danych.
 * Wybierz, które zalecenia, aby zobaczyć jako część zasad zabezpieczeń.
 
-Bieżący Centrum zalecenia dotyczące zasad wokół aktualizacji systemu, reguły linii bazowej, programy chroniące przed złośliwym kodem [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) na podsieci i interfejsów sieciowych, inspekcja bazy danych SQL, SQL bazy danych przezroczystego szyfrowania danych i zapór aplikacji sieci web.  [Ustawianie zasad zabezpieczeń](security-center-policies.md) zawiera opis poszczególnych opcji zalecenia.
+Bieżący Centrum zalecenia dotyczące zasad wokół aktualizacji systemu, reguły linii bazowej, programów chroniących przed złośliwym [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) na podsieci i interfejsów sieciowych, inspekcja bazy danych SQL, SQL bazy danych przezroczystego szyfrowania danych, i zapory aplikacji sieci web.  [Ustawianie zasad zabezpieczeń](security-center-policies.md) zawiera opis poszczególnych opcji zalecenia.
 
 ### <a name="monitor-recommendations"></a>Zalecenia dotyczące monitorowania
 Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan zabezpieczeń zasobów w celu identyfikowania potencjalnych luk w zabezpieczeniach. **Zalecenia** kafelka w obszarze **omówienie** informuje Cię o całkowitą liczbę zalecenia określone przez Centrum zabezpieczeń.
@@ -75,7 +75,7 @@ Użyj poniższej tabeli jako odwołanie, aby lepiej zrozumieć dostępne zalecen
 | [Włącz zbieranie danych dla subskrypcji](security-center-enable-data-collection.md) |Zaleca się włączenie funkcji zbierania danych w zasadach zabezpieczeń dla każdej subskrypcji i wszystkich maszyn wirtualnych platformy Azure (maszyny wirtualne) oraz komputerów z systemem innym niż Azure. |
 | [Korygowanie konfiguracji zabezpieczeń](security-center-remediate-os-vulnerabilities.md) |Zaleca się, że Dopasuj konfiguracje systemu operacyjnego z zasadami konfiguracji zabezpieczeń, na przykład, nie zezwalaj na zapisywanie haseł. |
 | [Zastosuj aktualizacje systemu](security-center-apply-system-updates.md) |Zaleca się wdrożyć Brak zabezpieczenia systemu i krytycznych aktualizacji do systemu Windows i maszyn wirtualnych systemu Linux i komputerów. |
-| [Zastosuj Just In Time kontroli dostępu do sieci](security-center-just-in-time.md) | Zaleca się zastosowanie tylko w dostęp maszyny Wirtualnej. Tylko w czasie jest funkcja w wersji zapoznawczej i dostępne w warstwie standardowa Centrum zabezpieczeń. Zobacz [cennik](security-center-pricing.md) Aby dowiedzieć się więcej na temat Centrum zabezpieczeń firmy ceny warstw. |
+| [Zastosuj Just In Time kontroli dostępu do sieci](security-center-just-in-time.md) | Zaleca się zastosowanie tylko w dostęp maszyny Wirtualnej. Tylko w czasie jest funkcja w wersji zapoznawczej i dostępne w warstwie standardowa Centrum zabezpieczeń. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
 | [Uruchom ponownie po zaktualizowaniu systemu](security-center-apply-system-updates.md#reboot-after-system-updates) |Zaleca ponowne uruchomienie maszyny wirtualnej w celu ukończenia procesu stosowania aktualizacji systemu. |
 | [Dodawanie zapory aplikacji sieci Web](security-center-add-web-application-firewall.md) |Zaleca się, że wdrażania zapory aplikacji sieci web (WAF) dla punktów końcowych sieci web. Wszelkie publicznego połączonej adresu IP (IP poziomie wystąpienia lub IP równoważenia obciążenia) zawierający sieciową grupę zabezpieczeń skojarzoną z portami Otwórz przychodzący sieci web (80,443) jest wyświetlane zalecenie zapory aplikacji sieci Web. </br>Centrum zabezpieczeń zaleca się zainicjowanie obsługi zapory aplikacji sieci Web pomagających chronić przed atakami przeznaczonych dla aplikacji sieci web na maszynach wirtualnych i środowiska usługi aplikacji. Środowisko aplikacji (ASE) jest [Premium](https://azure.microsoft.com/pricing/details/app-service/) opcji plan usługi aplikacji Azure, która udostępnia środowisko pełni izolowanym środowisku, aby bezpiecznie pracować z aplikacjami usługi App service. Aby dowiedzieć się więcej na temat ASE, zobacz [dokumentację środowiska usługi aplikacji](../app-service/environment/intro.md).</br>Wiele aplikacji sieci web w Centrum zabezpieczeń można chronić, dodając te aplikacje do istniejących wdrożeń zapory aplikacji sieci Web. |
 | [Finalizowanie ochrony aplikacji](security-center-add-web-application-firewall.md#finalize-application-protection) |Aby ukończyć konfigurację zapory aplikacji sieci Web, ruch musi zostać przekierowany do urządzenia zapory aplikacji sieci Web. Zmiany konfiguracji niezbędne kończy się po tego zalecenia. |

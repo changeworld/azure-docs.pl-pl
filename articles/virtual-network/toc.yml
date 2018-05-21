@@ -61,12 +61,10 @@
           href: virtual-networks-acl.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Planowanie i projektowanie
+    - name: Planowanie
       items:
         - name: Sieci wirtualne
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Grupy zabezpieczeń sieci
-          href: virtual-networks-nsg.md
     - name: Wdrażanie
       items:
         - name: Grupy zabezpieczeń sieci
