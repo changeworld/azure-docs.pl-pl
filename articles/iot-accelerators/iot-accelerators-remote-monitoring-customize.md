@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: ab5a0913922e4664c867d54d9ec07e3611345dd8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 94bd864215ad80b299db09b6237f2cebe63feb88
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Dostosowywanie akcelerator rozwiązań monitorowania zdalnego
 
@@ -462,7 +462,7 @@ Aby modyfikować Warstwa prezentacji i wizualizacje w rozwiązaniu Monitorowanie
 
 W tym artykule przedstawiono o zasoby dostępne do dostosowywania interfejsu użytkownika sieci web w akcelerator rozwiązań monitorowania zdalnego.
 
-Więcej informacje koncepcyjne o akcelerator rozwiązań monitorowania zdalnego dla [monitorowania zdalnego architektury](../iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md)
+Więcej informacje koncepcyjne o akcelerator rozwiązań monitorowania zdalnego dla [monitorowania zdalnego architektury](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-Aby uzyskać więcej informacji dotyczących dostosowywania rozwiązanie monitorowania zdalnego, zobacz [dostosowywanie i wdróż go ponownie mikrousługi](../iot-suite/iot-suite-microservices-example.md)
+Aby uzyskać więcej informacji dotyczących dostosowywania rozwiązanie monitorowania zdalnego, zobacz [dostosowywanie i wdróż go ponownie mikrousługi](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

@@ -1,12 +1,12 @@
 ---
-title: "Zarządzanie aplikacjami logiki w usłudze Visual Studio — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Zarządzanie logiki aplikacji i innych zasobów platformy Azure z programu Visual Studio Cloud Explorer"
+title: Zarządzanie aplikacjami logiki w usłudze Visual Studio — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Zarządzanie logiki aplikacji i innych zasobów platformy Azure z programu Visual Studio Cloud Explorer
 author: ecfan
 manager: SyntaxC4
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: db847d5fa3d5f5b2b2f0293f1756226870a8b47e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7914bce6ca71b1b3f00c69fb6f33154f0f52dc7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki z programem Visual Studio
 
@@ -32,24 +32,24 @@ Mimo że można tworzyć, edytować, zarządzanie i wdrażanie aplikacji logiki 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
+* Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
-* Pobierz i zainstaluj tych narzędzi, jeśli nie ma ich jeszcze: 
+* Pobierz i zainstaluj te narzędzia, jeśli jeszcze ich nie masz: 
 
-  * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 lub Visual Studio 2015 — Community edition lub większą</a>. 
-  Ta opcja szybkiego startu używa 2017 społeczności programu Visual Studio, wolnego.
+  * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 lub Visual Studio 2015 — Community Edition lub nowszy</a>. 
+  Ten przewodnik Szybki start używa bezpłatnego Visual Studio Community 2017.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Zestaw Azure SDK (2.9.1 lub nowszym)</a> i <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">programu Azure PowerShell</a>
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Zestaw Azure SDK (2.9.1 lub nowszy)</a> i program <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
 
-  * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Narzędzi aplikacje logiki platformy Azure dla programu Visual Studio 2017</a> lub <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">wersji programu Visual Studio 2015</a> 
+  * Narzędzia <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Azure Logic Apps Tools for Visual Studio 2017</a> lub program <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">Visual Studio 2015</a> 
   
-    Możesz pobrać i zainstalować narzędzia aplikacje logiki platformy Azure bezpośrednio z programu Visual Studio Marketplace lub Dowiedz się <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">jak zainstalować tego rozszerzenia w programie Visual Studio</a>. 
-    Upewnij się, uruchom ponownie program Visual Studio po zakończeniu instalacji.
+    Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z witryny Visual Studio Marketplace lub dowiedzieć się, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">jak zainstalować to rozszerzenie z poziomu programu Visual Studio</a>. 
+    Upewnij się, że po zakończeniu instalacji program Visual Studio zostanie ponownie uruchomiony.
 
 * Dostęp do sieci web podczas korzystania z projektanta aplikacji logiki osadzonych
 
-  Projektant wymaga połączenia internetowego na tworzenie zasobów na platformie Azure i odczytywanie właściwości i danych z łączników w aplikacji logiki. 
-  Na przykład jeśli używany jest łącznik usługi Dynamics CRM Online, projektanta sprawdza wystąpienia CRM, aby domyślnie dostępne i właściwości niestandardowe.
+  Projektant wymaga połączenia internetowego do tworzenia zasobów na platformie Azure oraz odczytywania właściwości i danych z łączników w aplikacji logiki. 
+  Jeśli na przykład używany jest łącznik usługi Dynamics CRM Online, projektant wyszukuje dostępne właściwości domyślne i niestandardowe w wystąpieniu CRM.
 
 <a name="find-logic-apps-vs"></a>
 
@@ -78,7 +78,7 @@ W programie Visual Studio możesz otworzyć aplikacje logiki wcześniej utworzy�
 
 1. Otwórz Eksplorator chmury i Znajdź aplikację logiki. 
 
-2. Menu skrótów aplikacji logiki, wybierz **Otwórz z logiki aplikacji edytor**.
+2. Menu skrótów aplikacji logiki, wybierz **otwarty przy użyciu edytora aplikacji logiki**.
 
    Ten przykład przedstawia aplikacje logiki według typów zasobów, aby aplikacje logiki były wyświetlane w obszarze **Logic Apps** sekcji.
 
@@ -95,7 +95,7 @@ Możesz pobrać aplikacje logiki z <a href="https://portal.azure.com" target="_b
 
 1. W programie Visual Studio Otwórz Eksplorator chmury, a następnie znajdź i wybierz aplikację logiki, która ma zostać pobrana z platformy Azure.
 
-2. Menu skrótów danej aplikacji, wybierz **Otwórz z logiki aplikacji edytor**.
+2. Menu skrótów danej aplikacji, wybierz **otwarty przy użyciu edytora aplikacji logiki**.
 
    Projektant aplikacji logiki otwiera i pokazuje aplikacji logiki. 
    Aby przejrzeć podstawowej definicji aplikacji logiki i struktury w dolnej części projektanta, wybierz **widoku kodu**. 

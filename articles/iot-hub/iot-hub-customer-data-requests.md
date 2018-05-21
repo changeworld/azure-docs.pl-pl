@@ -4,12 +4,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
 ms.topic: conceptual
-ms.service: iot-dps
-ms.openlocfilehash: a9115ee9c49ea069999393a6430b010addf672de
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.service: iot-hub
+ms.openlocfilehash: 3af76fe22e93b6c5d502733196994bda61b9a93e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
@@ -42,7 +42,7 @@ Administratorzy dzierżawy może wykorzystywać kopiowania i wklejania w bloku u
 Istnieje również możliwość wykonywania operacji eksportowania urządzeń przy użyciu interfejsów API REST. Aby uzyskać więcej informacji, zobacz [interfejsu Api urządzenia — Uzyskaj urządzenie](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice).
 
 > [!NOTE]
-> Korzystając z usług dla przedsiębiorstw firmy Microsoft, Microsoft generuje niektórych informacji, znane jako dzienniki generowane przez system. Niektóre usługi inicjowania obsługi urządzeń Centrum IoT Azure dzienniki generowanych przez system nie są dostępne lub można eksportować przez administratorów dzierżawy. Te dzienniki stanowią faktyczne akcje dokonywanych w ramach usługi i danych diagnostycznych dotyczących poszczególnych urządzeń.
+> Korzystając z usług dla przedsiębiorstw firmy Microsoft, Microsoft generuje niektórych informacji, znane jako dzienniki generowane przez system. Niektóre Centrum IoT Azure dzienniki generowanych przez system nie są dostępne lub można eksportować przez administratorów dzierżawy. Te dzienniki stanowią faktyczne akcje dokonywanych w ramach usługi i danych diagnostycznych dotyczących poszczególnych urządzeń.
 
 ## <a name="links-to-additional-documentation"></a>Linki do dodatkowej dokumentacji
 

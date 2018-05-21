@@ -10,11 +10,11 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: e288748d7433f4b3c7da7db1ab1ef2ee487318df
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f349158873acca9d50d4d6e5fdfa3539f26207fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 #    <a name="text-merge-cognitive-skill"></a>Umiejętności kognitywnych scalania tekstu
 
@@ -128,16 +128,14 @@ Następujące skillset przykład używa umiejętności Rozpoznawania można wyod
 W powyższym przykładzie założono, że pole znormalizowany obrazów istnieje. Aby uzyskać pola z znormalizowanych obrazów, ustaw *imageAction* konfiguracji w definicji indeksatora do *generateNormalizedImages* w sposób przedstawiony poniżej:
 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "mergedText": "The quick brown fox jumps over the lazy dog" 
-           }
+{  
+   //...rest of your indexer definition goes here ... 
+  "parameters":{  
+      "configuration":{  
+         "dataToExtract":"contentAndMetadata",
+         "imageAction":"generateNormalizedImages"
       }
-    ]
+   }
 }
 ```
 
@@ -145,3 +143,4 @@ W powyższym przykładzie założono, że pole znormalizowany obrazów istnieje.
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
 + [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Utwórz indeksator (REST)](ref-create-indexer.md)
