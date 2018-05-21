@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Wprowadzenie do przetwarzania danych w chmurze i Microsoft Azure
 
@@ -509,7 +509,7 @@ Analogicznie można użyć wiersza polecenia platformy Azure do wdrożenia szabl
 
 ### <a name="access-and-security-for-virtual-networks"></a>Dostęp i większe bezpieczeństwo sieci wirtualnej
 
-Bezpieczne sieci wirtualnych platformy Azure może pomóc za pomocą grupy zabezpieczeń sieci. Grupy NSG zawierają listę reguł listę kontroli dostępu (ACL) kontroli dostępu, które akceptować lub odrzucać ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można skojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Po skojarzeniu grupy NSG z podsiecią, reguły listy ACL mają zastosowanie do wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto można bardziej ograniczyć ruch do poszczególnych maszyn wirtualnych przez skojarzenie grupy NSG bezpośrednio z tej maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../../virtual-network/virtual-networks-nsg.md).
+Bezpieczne sieci wirtualnych platformy Azure może pomóc za pomocą grupy zabezpieczeń sieci. Grupy NSG zawierają listę reguł listę kontroli dostępu (ACL) kontroli dostępu, które akceptować lub odrzucać ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można skojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Po skojarzeniu grupy NSG z podsiecią, reguły listy ACL mają zastosowanie do wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto można bardziej ograniczyć ruch do poszczególnych maszyn wirtualnych przez skojarzenie grupy NSG bezpośrednio z tej maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
