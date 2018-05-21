@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: b08e2b7315d180a387f27ab2082b7f9f6a9bbfff
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 776ae83990a7799102c69347196a72a68561ee6b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie i zarządzanie nimi maszyny wirtualnej systemu Windows, który ma wiele kart sieciowych
 Maszynach wirtualnych (VM) na platformie Azure mogą mieć wiele wirtualnych kart interfejsu sieciowego (NIC) dołączona do nich. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. Ten artykuł zawiera szczegóły dotyczące sposobu tworzenia maszyny Wirtualnej, który ma wiele kart sieciowych do niego dołączony. Możesz również sposób dodawania lub usuwania kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
@@ -76,7 +76,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Zwykle również utworzyć [sieciowej grupy zabezpieczeń](../../virtual-network/virtual-networks-nsg.md) do filtrowania ruchu sieciowego z maszyną wirtualną a [modułu równoważenia obciążenia](../../load-balancer/load-balancer-overview.md) rozłożenie ruchu między wieloma maszynami wirtualnymi.
+Zwykle również utworzyć [sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md) do filtrowania ruchu sieciowego z maszyną wirtualną a [modułu równoważenia obciążenia](../../load-balancer/load-balancer-overview.md) rozłożenie ruchu między wieloma maszynami wirtualnymi.
 
 ### <a name="create-the-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Teraz rozpocząć tworzenie konfiguracji maszyny Wirtualnej. Rozmiar każdej maszyny Wirtualnej ma limit całkowitej liczby kart sieciowych, które można dodać do maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych systemu Windows](sizes.md).

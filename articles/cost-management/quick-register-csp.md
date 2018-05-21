@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: 839f99153e0b7458d205c1afb61a05c75cbe0fb7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b9dc2064a4d90b924730e2615378892b17340baf
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Rejestrowanie w programie partnerskim programu CSP i wyświetlanie danych kosztów
 
@@ -60,7 +60,7 @@ Domyślnie interfejs API Centrum partnerskiego jest dostępny tylko dla bezpośr
 
 Aby włączyć dostęp dla partnerów lub klientów bezpośredniego programu CSP, wykonaj czynności opisane w sekcji [Tworzenie rejestracji wersji próbnej](#create-a-trial-registration) i skonfiguruj rejestrację wersji próbnej. Następnie wykonaj następujące czynności, aby posegmentować dane pośredniego programu CSP przy użyciu grup jednostek rozwiązania Cloudyn. Przypisz odpowiednie uprawnienia użytkowników do grup jednostek.
 
-1. Utwórz grupę jednostek, korzystając z informacji zawartych w sekcji [Tworzenie jednostek](tutorial-user-access.md#create-entities).
+1. Utwórz grupę jednostek, korzystając z informacji zawartych w sekcji [Tworzenie jednostek](tutorial-user-access.md#create-and-manage-entities).
 2. Wykonaj czynności opisane w artykule [Przypisywanie subskrypcji do jednostek kosztów](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities). Skojarz konto klienta pośredniego programu CSP i jego subskrypcje z uprzednio utworzoną jednostką.
 3. Wykonaj czynności opisane w sekcji [Tworzenie użytkownika z dostępem administratora](tutorial-user-access.md#create-a-user-with-admin-access), aby utworzyć konto użytkownika z dostępem administratora. Następnie upewnij się, że konto użytkownika ma dostęp administratora do określonych jednostek, które utworzono wcześniej dla konta pośredniego.
 

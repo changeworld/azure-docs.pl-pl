@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](active-directory-aadconnect-get-started-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -45,13 +45,14 @@ Podczas instalowania usług synchronizacji sekcja konfiguracji opcjonalnej może
 ### <a name="user-sign-in"></a>Logowanie użytkowników
 Po zainstalowaniu wymaganych składników zostanie wyświetlony monit o wybranie metody logowania jednokrotnego dla użytkowników. Poniższa tabela zawiera krótki opis dostępnych opcji. Pełny opis metod logowania znajduje się w temacie [Logowanie użytkowników](active-directory-aadconnect-user-signin.md).
 
-![Logowanie użytkownika](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
+![Logowanie użytkownika](./media/active-directory-aadconnect-get-started-custom/usersignin4.png)
 
 | Opcja logowania jednokrotnego | Opis |
 | --- | --- |
 | Synchronizacja skrótów haseł |Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej. Hasła użytkowników są synchronizowane z usługą Azure AD jako skrót hasła, a uwierzytelnianie odbywa się w chmurze. Więcej informacji znajduje się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md). |
 |Uwierzytelnianie przekazywane|Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej.  Hasło użytkownika jest przekazywane do lokalnego kontrolera domeny usługi Active Directory w celu przeprowadzenia walidacji.
 | Federacja z usługami AD FS |Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej.  Użytkownicy są przekierowywani do wystąpienia lokalnych usług AD FS w celu zalogowania, a uwierzytelnianie odbywa się lokalnie. |
+| Federacja z serwerem PingFederate|Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej.  Użytkownicy są przekierowywani do lokalnego wystąpienia serwera PingFederate w celu zalogowania, a uwierzytelnianie odbywa się lokalnie. |
 | Nie konfiguruj |Żadna z funkcji logowania użytkownika nie została zainstalowana ani skonfigurowana. Wybierz tę opcję, jeśli masz już serwer federacyjny innej firmy lub korzystasz z innego rozwiązania. |
 |Włącz logowanie jednokrotne|Ta opcja jest dostępna w przypadku synchronizacji haseł i uwierzytelniania przekazywanego. Udostępnia ona funkcję logowania jednokrotnego użytkownikom pulpitu w sieci firmowej. Aby uzyskać więcej informacji, zobacz [Logowanie jednokrotne](active-directory-aadconnect-sso.md). </br>W przypadku klientów usług AD FS ta opcja jest niedostępna, ponieważ usługi AD FS umożliwiają logowanie jednokrotne na tym samym poziomie.</br>
 
@@ -301,6 +302,39 @@ Po wybraniu domeny do sfederowania program Azure AD Connect dostarcza niezbędne
 >
 >
 
+## <a name="configuring-federation-with-pingfederate"></a>Konfigurowanie federacji z serwerem PingFederate
+Konfigurowanie serwera PingFederate przy użyciu programu Azure AD Connect jest proste — wystarczy kilka kliknięć. Przed przystąpieniem do konfiguracji potrzebne są następujące elementy:  Wymagane jest spełnienie wymienionych niżej wymagań wstępnych.
+- Serwer PingFederate 8.4 lub nowszy.  Aby uzyskać więcej informacji, zobacz temat [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) (Integracja serwera PingFederate z usługą Azure Active Directory i usługą Office 365)
+- Certyfikat protokołu SSL dla nazwy usługi federacyjnej, która ma być używana (na przykład sts.contoso.com)
+
+### <a name="verify-the-domain"></a>Weryfikowanie domeny
+Po wyborze federacji z serwerem PingFederate zostanie wyświetlony monit z prośbą o weryfikację domeny, która ma zostać sfederowana.  Wybierz domenę z listy rozwijanej.
+
+![Zweryfikuj domenę](./media/active-directory-aadconnect-get-started-custom/ping1.png)
+
+### <a name="export-the-pingfederate-settings"></a>Eksportowanie ustawień serwera PingFederate
+
+
+Serwer PingFederate musi być skonfigurowany jako serwer federacyjny dla każdej domeny federacyjnej platformy Azure.  Kliknij przycisk Eksportuj ustawienia i udostępnij te informacje administratorowi serwera PingFederate.  Administrator serwera federacyjnego zaktualizuje konfigurację, a następnie poda adres URL i numer portu dla serwera PingFederate, dzięki czemu program Azure AD Connect będzie mógł zweryfikować ustawienia metadanych.  
+
+![Zweryfikuj domenę](./media/active-directory-aadconnect-get-started-custom/ping2.png)
+
+Aby rozwiązać problemy z walidacją, skontaktuj się z administratorem serwera PingFederate.  Poniżej przedstawiono przykład serwera PingFederate, który nie ma prawidłowej relacji zaufania na platformie Azure:
+
+![Relacja zaufania](./media/active-directory-aadconnect-get-started-custom/ping5.png)
+
+
+
+
+### <a name="verify-federation-connectivity"></a>Weryfikowanie łączności federacji
+Program Azure AD Connect podejmie próbę walidacji punktów końcowych uwierzytelniania pobranych w poprzednim kroku z metadanych serwera PingFederate.  Na początku program Azure AD Connect spróbuje rozpoznać punkty końcowe przy użyciu lokalnych serwerów DNS.  W dalszej kolejności spróbuje rozpoznać punkty końcowe, korzystając z zewnętrznego dostawcy DNS.  Aby rozwiązać problemy z walidacją, skontaktuj się z administratorem serwera PingFederate.  
+
+![Weryfikowanie łączności](./media/active-directory-aadconnect-get-started-custom/ping3.png)
+
+### <a name="verify-federation-login"></a>Weryfikowanie logowania federacyjnego
+Na koniec możesz sprawdzić nowo skonfigurowany przepływ logowania federacyjnego, logując się do domeny federacyjnej. Powodzenie tej operacji oznacza, że federacja z serwerem PingFederate została pomyślnie skonfigurowana.
+![Weryfikowanie logowania](./media/active-directory-aadconnect-get-started-custom/ping4.png)
+
 ## <a name="configure-and-verify-pages"></a>Konfigurowanie i weryfikowanie stron
 Na tej stronie wykonywane jest konfigurowanie.
 
@@ -308,6 +342,7 @@ Na tej stronie wykonywane jest konfigurowanie.
 > Przed kontynuowaniem instalacji po skonfigurowaniu federacji należy upewnić się, że skonfigurowano [rozpoznawanie nazw dla serwerów federacyjnych](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers).
 >
 >
+
 
 ![Wszystko gotowe do skonfigurowania](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -336,8 +371,9 @@ Po kliknięciu przycisku Weryfikuj program Azure AD Connect sprawdza ustawienia 
 
 ![Weryfikuj](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-Ponadto należy wykonać następujące kroki weryfikacji:
+Aby sprawdzić poprawność uwierzytelniania na całej trasie, należy ręcznie wykonać przynajmniej jeden z następujących testów:
 
+* Po zakończeniu synchronizacji skorzystaj z dodatkowego zadania weryfikacji logowania federacyjnego w programie Azure AD Connect, aby zweryfikować uwierzytelnianie dla wybranego konta użytkownika lokalnego.
 * Sprawdź, czy możesz zalogować się w przeglądarce na komputerze dołączonym do domeny w sieci intranet — połącz się z adresem https://myapps.microsoft.com i sprawdź logowanie na zalogowanym koncie. Wbudowane konto administratora usług AD DS nie jest synchronizowane i nie można używać go do weryfikacji.
 * Sprawdź, czy możesz zalogować się na urządzeniu w sieci ekstranet. Z komputera domowego lub urządzenia mobilnego połącz się z adresem https://myapps.microsoft.com i podaj poświadczenia.
 * Sprawdź poprawność logowania wzbogaconego klienta. Połącz się z adresem https://testconnectivity.microsoft.com, wybierz kartę usługi **Office 365** i wybierz opcję **Test rejestracji jednokrotnej usługi Office 365**.

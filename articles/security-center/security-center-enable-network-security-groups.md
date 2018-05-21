@@ -1,11 +1,11 @@
 ---
-title: "Włącz sieciowych grup zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** włączyć sieci zabezpieczeń grupy **."
+title: Włącz sieciowych grup zabezpieczeń w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure **włączyć grup zabezpieczeń sieci**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f53ed853-ffaf-4530-a019-1906ba6f341b
 ms.service: security-center
 ms.devlang: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 1e034d59d8847f237fa0d4c772344d45cd618576
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Włącz sieciowych grup zabezpieczeń w Centrum zabezpieczeń Azure
-Centrum zabezpieczeń Azure zaleca włączyć grupę zabezpieczeń sieci (NSG), jeśli nie jest jeszcze włączone. Grupy NSG zawierają listę reguł listy kontroli dostępu (ACL), które akceptować lub odrzucać ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto ruch do poszczególnych maszyn wirtualnych można ograniczyć jeszcze bardziej przez skojarzenie grupy NSG bezpośrednio z tą maszyną Wirtualną. Aby dowiedzieć się więcej, zobacz [co to jest grupa zabezpieczeń sieci (NSG)?](../virtual-network/virtual-networks-nsg.md)
+Centrum zabezpieczeń Azure zaleca włączyć grupę zabezpieczeń sieci (NSG), jeśli nie jest jeszcze włączone. Grupy NSG zawierają listę reguł listy kontroli dostępu (ACL), które akceptować lub odrzucać ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto ruch do poszczególnych maszyn wirtualnych można ograniczyć jeszcze bardziej przez skojarzenie grupy NSG bezpośrednio z tą maszyną Wirtualną. Aby dowiedzieć się więcej, zobacz [co to jest grupa zabezpieczeń sieci (NSG)?](../virtual-network/security-overview.md)
 
 Jeśli nie ma włączone grup NSG, Centrum zabezpieczeń przedstawia dwa zaleceń możesz: Włącz grup zabezpieczeń sieci na podsieci i włączyć grup zabezpieczeń sieci na maszynach wirtualnych. Należy wybrać poziom, podsieć lub maszyny Wirtualnej, aby zastosować grupy NSG.
 
@@ -44,11 +44,11 @@ Jeśli nie ma włączone grup NSG, Centrum zabezpieczeń przedstawia dwa zalece�
 
 Jeśli utworzysz grupy NSG, postępuj zgodnie z instrukcjami [jak zarządzać przy użyciu portalu Azure grup NSG](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) do utworzenia grupy NSG i ustawienia zasad zabezpieczeń.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym artykule pokazano sposób wykonania "Włącz sieciowe grupy zabezpieczeń" zalecenia Centrum zabezpieczeń dla podsieci maszyny wirtualnej lub maszyny wirtualnej. Aby dowiedzieć się więcej na temat włączania grup NSG, zobacz następujące tematy:
 
-* [Co to jest sieciowa grupa zabezpieczeń?](../virtual-network/virtual-networks-nsg.md)
-* [Jak zarządzać grup NSG przy użyciu portalu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Co to jest sieciowa grupa zabezpieczeń?](../virtual-network/security-overview.md)
+* [Zarządzanie grupy zabezpieczeń sieci](../virtual-network/manage-network-security-group.md)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 

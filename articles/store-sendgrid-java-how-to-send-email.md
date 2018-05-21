@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: dbd9d01a00522a0a55828284cd6c0e78a26d9102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cadd771a516270faf23f18a36f54fa9a1541e6d5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Sposób wysyłania poczty E-mail przy użyciu SendGrid za pomocą języka Java
 W tym przewodniku przedstawiono sposób wykonywania typowych zadań programowania usługi poczty e-mail SendGrid na platformie Azure. Przykłady są napisane w języku Java. Omówione scenariusze obejmują **konstruowania e-mail**, **wysyłania wiadomości e-mail**, **dodawanie załączników**, **za pomocą filtrów**i **aktualizowanie właściwości**. Aby uzyskać więcej informacji na SendGrid i wysyłania wiadomości e-mail, zobacz [następne kroki](#next-steps) sekcji.
@@ -158,7 +158,7 @@ SendGrid udostępnia funkcje dodatkowe poczty e-mail za pośrednictwem *filtry*.
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Porady: Aktualizacja właściwości wiadomości e-mail
-Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu **ustawić * właściwość*** lub dołączonych za pomocą **dodać*właściwości ***.
+Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu **ustaw właściwość** lub dołączonych za pomocą **Dodaj właściwość**.
 
 Na przykład, aby określić **ReplyTo** adresów, należy użyć następującego:
 

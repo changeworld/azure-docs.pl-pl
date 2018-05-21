@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/20/2018
+---
 Istnieją różne powody, gdy nie można uruchomić lub połączyć do aplikacji działających na maszynie wirtualnej platformy Azure (VM). Przyczyny aplikacji nie jest uruchomiona lub nasłuchuje na oczekiwanych portach, port nasłuchujący zablokowane lub sieć zasady prawidłowo przekazywanie ruchu do aplikacji. W tym artykule opisano metodyczny podejście, aby odnaleźć i rozwiązać problem.
 
 Jeśli występują problemy dotyczące nawiązywania połączenia z maszyną Wirtualną za pomocą protokołu RDP lub SSH, zobacz następujące artykuły najpierw:
@@ -99,7 +115,7 @@ Jeśli nie można uzyskać dostęp do aplikacji, należy sprawdzić następując
   
   * Sprawdź, czy przychodzące konfiguracji reguły NAT dla maszyny Wirtualnej zezwala na ruch przychodzący, szczególnie protocol (TCP lub UDP) i numery portów publicznego i prywatnego.
   * Upewnij się, żądanie przychodzące i wychodzące odpowiedzi ruchu umożliwia grup zabezpieczeń sieci.
-  * Aby uzyskać więcej informacji, zobacz [What is a Network Security Group (NSG)?](../articles/virtual-network/virtual-networks-nsg.md) (Co to jest sieciowa grupa zabezpieczeń?).
+  * Aby uzyskać więcej informacji, zobacz [co to jest grupa zabezpieczeń sieci?](../articles/virtual-network/security-overview.md)
 
 Jeśli maszyny wirtualnej lub punktu końcowego jest członkiem zestawu z równoważeniem obciążenia:
 
@@ -117,7 +133,7 @@ Jeśli uzyskujesz dostęp do aplikacji, upewnij się, czy zezwala na urządzenie
 
 Aby uzyskać więcej informacji, zobacz [omówienie monitorowania sieci platformy Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 [Rozwiązywanie problemów z połączeniami pulpitu zdalnego do systemu Windows Azure maszyny wirtualnej](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 
 [Rozwiązywanie problemów z połączeniami Secure Shell (SSH) do maszyny wirtualnej opartych na systemie Linux platformy Azure](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)

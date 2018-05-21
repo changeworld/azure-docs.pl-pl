@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5b17b4e8581daa5b19aaafd911765d843a9f3fe4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Monitorowanie usług AD FS za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania programu Azure AD Connect (synchronizacja) za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](active-directory-aadconnect-health-sync.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](active-directory-aadconnect-health-adds.md).
@@ -116,7 +116,7 @@ Raport zawiera następujące informacje:
 >
 >
 
-## <a name="risky-ip-report"></a>Raport ryzykownych adresów IP 
+## <a name="risky-ip-report-public-preview"></a>Raport ryzykownych adresów IP (podgląd publiczny)
 Klienci usług AD FS mogą uwidaczniać w Internecie punkty końcowe uwierzytelniania za pomocą hasła w celu udostępniania użytkownikom końcowym usług uwierzytelniania umożliwiających dostęp do aplikacji SaaS, takich jak usługa Office 365. W takim przypadku możliwe są nieuprawnione próby logowania przy użyciu systemu AD FS w celu odgadnięcia hasła użytkownika końcowego i uzyskania dostępu do zasobów aplikacji. Od wersji 2012 R2 systemu Windows Server usługi AD FS udostępniają funkcję blokady konta na ekstranecie, która uniemożliwia przeprowadzenie takich ataków. Jeśli korzystasz ze starszej wersji, zdecydowanie zalecamy uaktualnienie systemu AD FS do wersji 2016 systemu Windows Server. <br />
 Ponadto możliwe jest podejmowanie szeregu prób logowania z jednego adresu IP przy użyciu danych wielu użytkowników. W takich przypadkach liczba prób na użytkownika może być mniejsza od wartości progowej ochronnej blokady konta w usługach AD FS. Aktualnie program Azure AD Connect Health udostępnia raport ryzykownych adresów IP, który pozwala wykryć ten stan i powiadomić administratorów. Poniżej wymieniono najważniejsze zalety korzystania z tego raportu: 
 - Wykrywanie adresów IP, w przypadku których przekroczono próg nieudanych prób logowania opartego na haśle
@@ -152,10 +152,12 @@ Na przykład zgodnie z poniższym elementem raportu w dniu 28.02.2018 w godzinac
 > - Raport z alertem nie zawiera adresów IP programu Exchange ani prywatnych adresów IP. Jednak można je znaleźć na wyeksportowanej liście. 
 >
 
-
 ![Portal programu Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4c.png)
 
-### <a name="download-risky-ip-report"></a>Pobieranie raportu ryzykownych adresów IP
+### <a name="load-balancer-ip-addresses-in-the-list"></a>Adresy IP modułu równoważenia obciążenia są zawarte na liście
+Moduł równoważenia obciążenia agreguje nieudane działania związane z logowaniem i osiąga próg alertu. Jeśli adresy IP modułu równoważenia obciążenia są widoczne, prawdopodobnie zewnętrzny moduł równoważenia obciążenia nie wysyła adresu IP klienta podczas przekazywania żądania do serwera proxy aplikacji internetowych. Skonfiguruj prawidłowo moduł równoważenia obciążenia, aby przekazać adres IP klienta na potrzeby przekazywania dalej. 
+
+### <a name="download-risky-ip-report"></a>Pobieranie raportu ryzykownych adresów IP 
 Przy użyciu funkcji **pobierania** całą listę ryzykownych adresów IP z ostatnich 30 dni można wyeksportować z portalu programu Connect Health. Wyeksportowane dane obejmują wszystkie nieudane próby logowania przy użyciu usług AD FS w poszczególnych przedziałach czasu wykrywania. Do wyeksportowanych informacji można zastosować własne filtry. Oprócz agregacji wyróżnionych w portalu wyeksportowane dane zawierają również dodatkowe szczegóły nieudanych prób logowania związanych z konkretnym adresem IP:
 
 |  Element raportu  |  Opis  | 
@@ -196,12 +198,14 @@ Jeśli adresy IP modułu równoważenia obciążenia są widoczne, prawdopodobni
 
 3. Co zrobić, aby zablokować adres IP?  <br />
 Złośliwy adres IP należy dodać do zapory lub blokady w programie Exchange.   <br />
-W przypadku usług AD FS 2016 + 1803.C + QFE adres IP można zablokować bezpośrednio w usługach AD FS. 
 
 4. Dlaczego raport nie zawiera żadnych elementów? <br />
    - Nieudane działania związane z logowaniem nie przekraczają ustawień progowych. 
    - Upewnij się, że lista serwerów AD FS nie zawiera aktywnego alertu „Dane usługi kondycji są nieaktualne”.  Dowiedz się więcej o tym, jak [rozwiązywać problemy z tym alertem](active-directory-aadconnect-health-data-freshness.md).
    - Na farmach AD FS nie włączono inspekcji.
+ 
+5. Dlaczego nie mam dostępu do raportu?  <br />
+Wymagane są uprawnienia administratora globalnego lub [czytelnika zabezpieczeń](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader). Skontaktuj się z administratorem globalnym, aby uzyskać dostęp.
 
 
 ## <a name="related-links"></a>Powiązane linki
