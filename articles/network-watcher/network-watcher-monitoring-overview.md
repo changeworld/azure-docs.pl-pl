@@ -1,145 +1,101 @@
 ---
-title: Wprowadzenie do Monitora sieci platformy Azure | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie usługi obserwatora sieciowego do monitorowania i Środek wywołujący sieć połączona zasobami na platformie Azure
+title: Azure Network Watcher | Microsoft Docs
+description: Dowiedz się więcej na temat oferowanych przez usługę Azure Network Watcher funkcji monitorowania, diagnostyki, metryk i rejestrowania zdarzeń dla zasobów w sieci wirtualnej.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 04/24/2018
 ms.author: jdial
-ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="azure-network-monitoring-overview"></a>Omówienie monitorowania sieci platformy Azure
+# <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
-Klienci kompilacji na trasie sieci na platformie Azure poprzez organizowanie i tworzenia różnych zasobów poszczególnych sieci, takich jak sieci wirtualnej, ExpressRoute, bramy aplikacji i usług równoważenia obciążenia. Monitorowanie jest dostępne na każdym z zasobów sieciowych. Firma Microsoft odwoływać się do monitorowania jako poziomu monitorowania zasobów.
+Azure Network Watcher to usługa, która udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlanie metryk i włączanie lub wyłączanie dzienników zasobów w sieci wirtualnej platformy Azure.
 
-Kompleksowe sieci może mieć złożonych konfiguracji i interakcje między zasobami, tworzenie złożonych scenariuszy, które wymagają oparta na scenariuszu monitorowanie za pomocą Monitora sieci.
+## <a name="monitoring"></a>Monitorowanie
 
-W tym artykule opisano scenariusz oraz monitorowania poziomu zasobów. Monitorowanie sieci na platformie Azure jest kompleksowy i obejmuje dwie szerokie kategorie:
+### <a name = "connection-monitor"></a>Monitorowanie komunikacji między maszyną wirtualną a punktem końcowym
 
-* [**Monitor sieci** ](#network-watcher) -oparta na scenariuszu monitorowania jest dostarczana z funkcji obserwatora sieciowego. Ta usługa obejmuje przechwytywania pakietów, następnego przeskoku, przepływ IP Sprawdź widok grupy zabezpieczeń, dzienniki przepływu NSG. Scenariusz poziomu monitorowania udostępnia widok pełnego zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
-* [**Monitorowanie zasobów** ](#network-resource-level-monitoring) -poziomu monitorowania zasobów składa się z czterech funkcji, dzienników diagnostycznych metryki, rozwiązywanie problemów i kondycji zasobów. Te funkcje są tworzone na poziomie zasobów sieciowych.
+Punkty końcowe mogą być inną maszyną wirtualną (VM), w pełni kwalifikowaną nazwą domeny (FQDN), identyfikatorem URI (Uniform Resource Identifier) lub adresem IPv4. *Monitor połączenia* umożliwia monitorowanie komunikacji w regularnych odstępach czasu i informuje o dostępności, opóźnieniu i zmianach topologii sieci między maszyną wirtualną a punktem końcowym. Przykładem może być maszyna wirtualna serwera sieci Web, która komunikuje się z maszyną wirtualną serwera baz danych. Możesz nie wiedzieć, że pewien członek organizacji zastosował niestandardową trasę lub regułę zabezpieczeń na maszynie wirtualnej serwera sieci Web lub serwera baz danych albo też w podsieci.
 
-## <a name="network-watcher"></a>Network Watcher
+Jeśli punkt końcowy staje się niedostępny, funkcja rozwiązywania problemów z połączeniem informuje o przyczynie. Potencjalne przyczyny to problem z rozpoznawaniem nazw DNS, procesorem, pamięcią lub zaporą w systemie operacyjnym maszyny wirtualnej lub typ przeskoku w trasie niestandardowej albo też reguła zabezpieczeń dla maszyny wirtualnej lub podsieci dla połączenia wychodzącego. Dowiedz się więcej o [regułach zabezpieczeń](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) i [typach przeskoku trasy](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) na platformie Azure.
 
-Monitor sieci jest regionalnych usługa, która umożliwia monitorowanie i diagnozowanie warunki na poziomie sieci scenariusz w, do i z platformy Azure. Diagnostyka sieci i narzędzi wizualizacji dostępnych z obserwatora sieciowego pomagają zrozumieć, diagnozowanie i Uzyskaj wgląd do sieci na platformie Azure.
+Monitor połączenia dostarcza również informacje o zmianach w czasie minimalnego, średniego i maksymalnego obserwowanego opóźnienia. Po zapoznaniu się z danymi o opóźnieniu połączenia może okazać się możliwe zmniejszenia opóźnienia dzięki przeniesieniu zasobów platformy Azure do innych regionów platformy. Dowiedz się więcej na temat określania [względnych opóźnień między regionami platformy Azure i dostawcami usług internetowych](#determine-relative-latencies-between-azure- regions-and-internet-service-providers) oraz o sposobach monitorowania komunikacji między maszyną wirtualną a punktem końcowym za pomocą [monitora połączenia](connection-monitor.md). Jeśli zamiast tego chcesz przetestować połączenie w określonym momencie, zamiast monitorować jego zachowanie w czasie za pomocą monitora połączenia, użyj funkcji [rozwiązywania problemów z połączeniem](#connection-troubleshoot).
 
-Obserwatora sieciowego ma obecnie następujące możliwości:
+### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Wyświetlanie zasobów i ich relacji w sieci wirtualnej
 
-* **[Topologia](network-watcher-topology-overview.md)**  -Wyświetla sieci poziomu pokazywanie różnych połączeń i skojarzenia między zasobami sieci w grupie zasobów.
-* **[Zmienna przechwytywania pakietów](network-watcher-packet-capture-overview.md)**  -przechwytuje pakiet danych do i z maszyny wirtualnej. Zaawansowane opcje filtrowania i dostosować formanty, takie jak ustawianie czasu i rozmiaru ograniczenia zapewniają wszechstronność. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w formacie CAP.
-* **[Sprawdź przepływ IP](network-watcher-ip-flow-verify-overview.md)**  — sprawdza, czy pakiet jest dozwolony lub niedozwolony na podstawie przepływ informacji 5-elementowej pakietu parametrów (docelowy adres IP, źródłowy adres IP, Port docelowy, Port źródłowy i Protocol). Jeśli pakiet jest zabroniony przez grupę zabezpieczeń, zwracany jest reguła i grupy, którego pakiet.
-* **[Następny przeskok](network-watcher-next-hop-overview.md)**  — określa następnego skoku dla pakietów przesyłane w sieci szkieletowej Azure, dzięki któremu można zdiagnozować wszelkie błędnie skonfigurowane trasy zdefiniowane przez użytkownika.
-* **[Widok grupy zabezpieczeń](network-watcher-security-group-view-overview.md)**  -pobiera reguły skuteczne i zastosowane zabezpieczeń, które są stosowane na maszynie Wirtualnej.
-* **[Rejestrowanie przepływu NSG](network-watcher-nsg-flow-logging-overview.md)**  — dzienniki przepływu dla grup zabezpieczeń sieci umożliwiają przechwytywanie dzienniki związane z ruchu, który ma być dozwolony lub odrzucany przez zasady zabezpieczeń w grupie. Przepływ został zdefiniowany przez informacji 5-elementowej — źródłowy adres IP, docelowy adres IP, Port źródłowy, Port docelowy i protokołu.
-* **[Brama sieci wirtualnej i rozwiązywanie problemów z połączenia](network-watcher-troubleshoot-manage-rest.md)**  — umożliwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
-* **[Limity subskrypcji sieci](#network-subscription-limits)**  — umożliwia wyświetlenie wykorzystania zasobów sieci ograniczeń.
-* **[Konfigurowanie dziennika diagnostyki](#diagnostic-logs)**  — zapewnia jeden Aby włączyć lub wyłączyć dzienników diagnostycznych do zasobów sieciowych w grupie zasobów.
-* **[Rozwiązywanie problemów dotyczących połączeń](network-watcher-connectivity-overview.md)**  -sprawdza możliwość nawiązywania bezpośredniego połączenia TCP z maszyny wirtualnej z danym punktem końcowym wzbogaconych Azure kontekstu.
-* **[Monitor połączenia](connection-monitor.md)**  — monitorowanie problemy opóźnienia i konfigurację między maszyny wirtualnej platformy Azure i adres IP, za pomocą źródłowego i docelowego adresu IP i portu.
+W miarę dodawania zasobów do sieci wirtualnej coraz trudniejsze staje się zrozumienie, jakie zasoby znajdują w sieci wirtualnej i w jakich relacjach pozostają ze sobą. Funkcja *topologii* umożliwia generowanie schematu graficznego zasobów w sieci wirtualnej oraz zachodzących między nimi relacji. Na poniższej ilustracji przedstawiono przykład diagramu topologii sieci wirtualnej, która ma trzy podsieci, dwie maszyny wirtualne, interfejsy sieciowe, publiczne adresy IP, grupy zabezpieczeń sieci, tabele tras, oraz pokazano relacje między zasobami:
 
-### <a name="role-based-access-control-rbac-in-network-watcher"></a>Kontrola dostępu oparta na rolach (RBAC) w obserwatora sieciowego
+![Widok topologii](./media/network-watcher-monitoring-overview/topology.png)
 
-Sieć obserwatora [modelu based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). Następujące uprawnienia są wymagane przez obserwatora sieciowego. Należy się upewnić, że rola używane do inicjowania interfejsów API obserwatora sieciowego lub za pomocą Monitora sieci z portalu ma wymagane uprawnienia dostępu.
+Edytowalną wersję tego obrazu można pobrać w formacie SVG. Dowiedz się więcej o [widoku topologii](view-network-topology.md).
 
-|Zasób| Uprawnienie|
-|---|---| 
-|Microsoft.Storage/ |Odczyt|
-|Microsoft.Authorization/| Odczyt| 
-|Microsoft.Resources/subscriptions/resourceGroups/| Odczyt|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | Akcja|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |Akcja|
-|Microsoft.Storage/storageAccounts/listKeys/ | Akcja|
-|Microsoft.Compute/virtualMachines/ |Odczyt|
-|Microsoft.Compute/virtualMachines/ |Zapisywanie|
-|Microsoft.Compute/virtualMachineScaleSets/ |Odczyt|
-|Microsoft.Compute/virtualMachineScaleSets/ |Zapisywanie|
-|Microsoft.Network/networkWatchers/packetCaptures/ |Odczyt|
-|Microsoft.Network/networkWatchers/packetCaptures/| Zapisywanie|
-|Microsoft.Network/networkWatchers/packetCaptures/| Usuwanie|
-|Microsoft.Network/networkWatchers/ |Zapisywanie |
-|Microsoft.Network/networkWatchers/| Odczyt |
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/ | *|
+## <a name="diagnostics"></a>Diagnostyka
 
-### <a name="network-subscription-limits"></a>Limity subskrypcji sieci
+### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Diagnozowanie problemów z filtrowaniem ruchu sieciowego wychodzącego z maszyny wirtualnej i przychodzącego do niej
 
-Limity subskrypcji sieci zapewniają szczegółowe informacje dotyczące użycia każdego z zasobów sieciowych w ramach subskrypcji w regionie przed maksymalną liczbę dostępnych zasobów.
+Podczas wdrażania maszyny wirtualnej platforma Azure stosuje wobec niej kilka domyślnych reguł zabezpieczeń, które akceptują lub odrzucają ruch do/z maszyny wirtualnej. Można zastąpić reguły domyślne platformy Azure lub utworzyć dodatkowe reguły. Ze względu na zasady zabezpieczeń maszyna wirtualna może w pewnym momencie przestać komunikować się z innymi zasobami. Funkcja *weryfikowania przepływu adresów IP* umożliwia określenie źródłowego i docelowego adresu IPv4, portu, protokołu (TCP lub UDP) i kierunku ruchu sieciowego (przychodzącego lub wychodzącego). Funkcja weryfikuje przepływ adresów IP, a następnie sprawdza komunikację i informuje o powodzeniu lub niepowodzeniu połączenia. Jeśli połączenie nie powiedzie się, funkcja weryfikacji informuje, która reguła zabezpieczeń akceptuje lub odrzuca połączenie, dzięki czemu można rozwiązać problem. Dowiedz się więcej o [weryfikowaniu przepływu adresów IP](network-watcher-ip-flow-verify-overview.md).
 
-![limit subskrypcji sieci][nsl]
+### <a name="diagnose-network-routing-problems-from-a-vm"></a>Diagnozowanie problemów z routingiem sieci na maszynie wirtualnej
 
-## <a name="network-resource-level-monitoring"></a>Poziom monitorowania zasobów sieciowych
+Po utworzeniu sieci wirtualnej platforma Azure tworzy kilka domyślnych tras wychodzącego ruchu sieciowego. Ruch wychodzący ze wszystkich zasobów, takich jak maszyny wirtualne wdrożone w sieci wirtualnej, jest kierowany w oparciu o trasy domyślne platformy Azure. Można zastąpić trasy domyślne platformy Azure lub utworzyć dodatkowe trasy. Może się okazać, że maszyna wirtualna nie może już komunikować się z innymi zasobami ze względu na określoną trasę. Funkcja *następnego przeskoku* umożliwia określenie źródłowego i docelowego adresu IPv4. Funkcja ta przeprowadza wówczas testy komunikacji i informuje o typie następnego przeskoku używanego do kierowania ruchu. Następnie w celu rozwiązania problemu z routingiem można usunąć, zmienić lub dodać trasę. Dowiedz się więcej o funkcji [następnego przeskoku](network-watcher-next-hop-overview.md?).
 
-Następujące funkcje są dostępne dla poziomu monitorowania zasobów:
+### <a name="connection-troubleshoot"></a>Diagnozowanie połączeń wychodzących z maszyny wirtualnej
 
-### <a name="audit-log"></a>Dziennik inspekcji
+Funkcja *rozwiązywania problemów z połączeniami* umożliwia testowanie połączenia między daną maszyną wirtualną a inną maszyną wirtualną, nazwą FQDN, identyfikatorem URI lub adresem IPv4. Test zwraca informacje podobne do zwracanych przez funkcję [monitora połączenia](#connection-monitor), ale testuje połączenie w określonym momencie, zamiast monitorować je w czasie, tak jak robi to monitor połączenia. Dowiedz się więcej na temat rozwiązywania problemów z połączeniami przy użyciu funkcji [rozwiązywania problemów z połączeniem](network-watcher-connectivity-overview.md).
 
-Operacje wykonywane w ramach konfiguracji sieci są rejestrowane. Dzienniki te mogą być wyświetlane w portalu Azure lub pobrany przy użyciu narzędzi firmy Microsoft, takich jak usługi Power BI lub narzędzi innych firm. Dzienniki inspekcji są dostępne za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API Rest. Aby uzyskać więcej informacji na dziennikach inspekcji, zobacz [inspekcji operacji za pomocą Menedżera zasobów](../resource-group-audit.md)
+### <a name="capture-packets-to-and-from-a-vm"></a>Przechwytywanie pakietów do i z maszyny wirtualnej
 
-Dzienniki inspekcji są dostępne dla operacje wykonywane na wszystkich zasobów sieciowych.
+Bardzo przydatne są zaawansowane opcje filtrowania i dostosowywania ustawień, takie jak określanie czasu i limitów rozmiaru. Przechwycone pakiety mogą być przechowywane w usłudze Azure Storage, na dysku maszyny wirtualnej lub w obu tych miejscach. Następnie można analizować przechwycony plik przy użyciu standardowych narzędzi analizy ruchu sieciowego. Dowiedz się więcej o [przechwytywaniu pakietów](network-watcher-packet-capture-overview.md).
 
-### <a name="metrics"></a>Metryki
+### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Diagnozowanie problemów z bramą sieci wirtualnej i połączeniami Azure
 
-Metryki są miar wydajności i liczniki zebrane w danym okresie czasu. Metryki są obecnie dostępne dla bramy aplikacji. Metryki może służyć do wyzwolenia alerty oparte na wartości progowej. Zobacz [diagnostyki bramy aplikacji](../application-gateway/application-gateway-diagnostics.md) do wyświetlania, jak metryki może służyć do tworzenia alertów.
+Bramy sieci wirtualnej zapewniają łączność między zasobami lokalnymi i sieciami wirtualnymi platformy Azure. Monitorowania bram i ich połączeń jest niezbędne do zapewnienia nieprzerwanej komunikacji. Funkcja *diagnostyki sieci VPN* daje możliwość diagnozowania bram i połączeń. Funkcja diagnostyki sieci VPN umożliwia diagnozowanie kondycji lub połączenia bramy oraz informuje o dostępności bramy i jej połączeń. Jeśli brama lub połączenie nie są dostępne, funkcja diagnostyki sieci VPN informuje o przyczynie, dzięki czemu można rozwiązać problem. Dowiedz się więcej o [diagnostyce VPN](network-watcher-troubleshoot-overview.md).
 
-![Widok wskaźników][metrics]
+### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Określanie opóźnień względnych między regionami platformy Azure i usługodawcami internetowymi
 
-### <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+Usługę Network Watcher można wykorzystać do uzyskania informacji o opóźnieniach między regionami platformy Azure i dostawcami usług internetowych. Wiedza o opóźnieniach między regionami platformy Azure i usługodawcami internetowymi umożliwia odpowiednie wdrożenie zasobów platformy Azure w celu zoptymalizowania czasu odpowiedzi sieci. Dowiedz się więcej o [opóźnieniach względnych](view-relative-latencies.md).
 
-Okresowe i spontanicznych zdarzenia są tworzone przez zasobów sieciowych i zarejestrowane na kontach magazynu, wysyłane do Centrum zdarzeń lub analizy dzienników. Te dzienniki wgląd w kondycję zasobu. Te dzienniki można wyświetlać w narzędzi, takich jak Power BI i analizy dzienników. Aby dowiedzieć się wyświetlić dzienniki diagnostyczne, odwiedź stronę [analizy dzienników](../log-analytics/log-analytics-azure-networking-analytics.md).
+### <a name="view-security-rules-for-a-network-interface"></a>Widok reguł zabezpieczeń dla interfejsu sieciowego
 
-Dzienniki diagnostyczne są dostępne dla [modułu równoważenia obciążenia](../load-balancer/load-balancer-monitor-log.md), [grup zabezpieczeń sieci](../virtual-network/virtual-network-nsg-manage-log.md), trasy i [brama aplikacji w](../application-gateway/application-gateway-diagnostics.md).
+Skuteczne reguły zabezpieczeń interfejsu sieciowego są kombinację wszystkich reguł zabezpieczeń stosowanych do interfejsu sieciowego oraz podsieci, w której znajduje się interfejs sieciowy.  Funkcja *widoku grupy zabezpieczeń* pokazuje wszystkie reguły zabezpieczeń stosowane do interfejsu sieciowego, podsieci, w której znajduje się interfejs sieciowy, oraz łączny efekt obu tych ustawień. Wiedząc, które zasady są stosowane do interfejsu sieciowego, można dodawać, usuwać lub zmieniać zasady, które akceptują lub odrzucają ruch wymagający zmiany. Dowiedz się więcej o [widoku grupy zabezpieczeń](network-watcher-security-group-view-overview.md).
 
-Wyświetl dzienniki diagnostyczne zawiera obserwatora sieciowego. Ten widok zawiera wszystkich zasobów sieciowych, które obsługują rejestrowania diagnostycznego. Z tego widoku można włączyć i wyłączyć zasobów sieciowych, łatwo i szybko.
+## <a name="metrics"></a>Metryki
 
-![dzienniki][logs]
+Istnieją [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) liczby zasobów sieciowych, które można tworzyć w ramach subskrypcji platformy Azure i regionu. Po osiągnięciu tych limitów nie można utworzyć większej liczby zasobów w ramach subskrypcji ani regionu. Funkcja *limitu subskrypcji sieci* zawiera podsumowanie liczby zasobów sieciowych wdrożonych w ramach subskrypcji i regionu oraz podaje limit dla zasobu. Na poniższej ilustracji przedstawiono częściowe dane wyjściowe dotyczące zasobów sieciowych wdrożone w regionie „Wschodnie stany USA” dla przykładowych subskrypcji:
 
-### <a name="troubleshooting"></a>Rozwiązywanie problemów
+![Limity subskrypcji](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
-Rozwiązywania problemów z bloku obsługi w portalu jest dostarczany z zasobów sieciowych dzisiaj zdiagnozować typowe problemy związane z pojedynczego zasobu. To środowisko jest dostępne dla następujących zasobów sieci - ExpressRoute, Brama sieci VPN bramy aplikacji, dzienniki zabezpieczeń sieciowych, trasy, DNS, usługi równoważenia obciążenia i Menedżera ruchu. Aby dowiedzieć się więcej na temat rozwiązywania problemów poziomu zasobów, odwiedź stronę [diagnozowanie i rozwiązywanie problemów z rozwiązywaniem problemów Azure](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)
+Te informacje są przydatne podczas planowania przyszłych wdrożeń zasobów.
 
-![informacje dotyczące rozwiązywania problemów][TS]
+## <a name="logs"></a>Dzienniki
 
-### <a name="resource-health"></a>Kondycja zasobów
+### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Analiza ruchu do lub z sieciowych grup zabezpieczeń
 
-Kondycja zasobu sieciowego znajduje się w regularnych odstępach czasu. Takie zasoby obejmują bramy sieci VPN i tunel VPN. Kondycja zasobów są dostępne w portalu Azure. Aby dowiedzieć się więcej na temat kondycji zasobów, odwiedź stronę [Przegląd kondycji zasobów](../resource-health/resource-health-overview.md)
+Sieciowe grupy zabezpieczeń (NSG) mogą akceptować lub odrzucać ruch przychodzący i wychodzący z interfejsu sieciowego maszyny wirtualnej. Funkcja *dziennika przepływu NSG* umożliwia zapisywanie w dzienniku źródłowego i docelowego adresu IP, portu, protokołu oraz tego, czy ruch został zaakceptowany lub odrzucony przez sieciową grupę zabezpieczeń. Dzienniki można analizować przy użyciu różnych narzędzi, takich jak PowerBi i funkcja *analizy ruchu*. Funkcja analizy ruchu oferuje zaawansowane wizualizacje danych zapisanych w dziennikach przepływu NSG. Na poniższej ilustracji przedstawiono niektóre informacje i wizualizacje dostarczane przez funkcję analizy ruchu na podstawie danych dziennika przepływu NSG:
 
-## <a name="next-steps"></a>Kolejne kroki
+![Analiza ruchu](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-Po zapoznawanie obserwatora sieciowego, aby dowiedzieć się do:
+Dowiedz się więcej o [dziennikach przepływu NSG](network-watcher-nsg-flow-logging-overview.md) i funkcji [analizy ruchu](traffic-analytics.md).
 
-Czy przechwytywania pakietów, na maszynie Wirtualnej, odwiedzając [przechwytywania pakietów zmiennej w portalu Azure](network-watcher-packet-capture-manage-portal.md)
+### <a name="view-diagnostic-logs-for-network-resources"></a>Wyświetlanie dzienników diagnostycznych dla zasobów sieciowych
 
-Wykonywanie aktywnego monitorowania i diagnostyki za pomocą [alert wyzwolony przechwytywania pakietów](network-watcher-alert-triggered-packet-capture.md).
+Funkcję rejestrowania diagnostycznego można włączyć dla zasobów sieciowych Azure takich jak sieciowe grupy zabezpieczeń, publiczne adresy IP, moduły równoważenia obciążenia, bramy sieci wirtualnych i bramy aplikacji. Funkcja *dzienników diagnostycznych* udostępnia pojedynczy interfejs służący do włączania i wyłączania dzienników diagnostycznych zasobów sieciowych dla każdego istniejącego zasobu sieci, który generuje dziennik diagnostyczny. Dzienniki diagnostyczne można wyświetlać za pomocą narzędzi takich jak Microsoft Power BI i Azure Log Analytics. Aby dowiedzieć się więcej na temat analizowania dzienników diagnostycznych sieci platformy Azure, zobacz [Rozwiązania dotyczące sieci Azure w usłudze Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-Wykrywanie luk w zabezpieczeniach z [analizowanie przechwytywania pakietów z programu Wireshark](network-watcher-deep-packet-inspection.md), za pomocą narzędzi typu open source.
+## <a name="next-steps"></a>Następne kroki
 
-Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) platformy Azure.
-
-<!--Image references-->
-[TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png
-[logs]: ./media/network-watcher-monitoring-overview/logs.png
-[metrics]: ./media/network-watcher-monitoring-overview/metrics.png
-[nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
-
-
-
-
-
-
-
-
-
-
+Teraz masz już podstawowe informacje o usłudze Azure Network Watcher. Aby rozpocząć korzystanie z usługi Network Watcher, zdiagnozuj typowy problem z komunikacją do/z maszyny wirtualnej przy użyciu funkcji weryfikowania przepływu adresów IP. Aby dowiedzieć się, jak to zrobić, zobacz przewodnik Szybki start [Diagnozowanie problemu z filtrowaniem ruchu sieciowego maszyny wirtualnej](diagnose-vm-network-traffic-filtering-problem.md).
