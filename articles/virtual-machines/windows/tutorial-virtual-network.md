@@ -1,6 +1,6 @@
 ---
-title: Sieci wirtualnych platformy Azure i maszyn wirtualnych z systemem Windows | Dokumentacja firmy Microsoft
-description: Samouczek — Zarządzanie sieciami wirtualnymi platformy Azure i maszyn wirtualnych z systemem Windows przy użyciu programu Azure PowerShell
+title: Samouczek — tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi na maszynach wirtualnych z systemem Windows | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak tworzyć sieci wirtualne platformy Azure i zarządzać nimi za pomocą programu Azure PowerShell na maszynach wirtualnych z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -10,19 +10,19 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: feaef679a3090491b64c69ac69bf22153c281d31
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: a13163949a52503f42642c109a4fd4c1dedd837f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Zarządzanie sieciami wirtualnymi platformy Azure i maszyn wirtualnych z systemem Windows przy użyciu programu Azure PowerShell
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą programu Azure PowerShell na maszynach wirtualnych z systemem Windows
 
 Maszyny wirtualne platformy Azure korzystają z sieci platformy Azure do wewnętrznej i zewnętrznej komunikacji sieciowej. Ten samouczek przedstawia proces wdrażania dwóch maszyn wirtualnych i konfigurowania dla nich sieci platformy Azure. W przykładach w tym samouczku założono, że maszyny wirtualne hostują aplikację internetową z zapleczem bazy danych, jednak wdrożenie aplikacji nie jest omówione w samouczku. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,9 +33,9 @@ Maszyny wirtualne platformy Azure korzystają z sieci platformy Azure do wewnęt
 > * Zabezpieczanie ruchu sieciowego
 > * Tworzenie maszyny wirtualnej zaplecza
 
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-
-Ten samouczek wymaga modułu AzureRM.Compute w wersji 4.3.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM.Compute`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="vm-networking-overview"></a>Omówienie sieci maszyn wirtualnych
 
@@ -53,14 +53,14 @@ Podczas pracy z tym samouczkiem zostaną utworzone następujące zasoby:
 - *myBackendNSG* — sieciowa grupa zabezpieczeń, która kontroluje komunikację między maszyną *myFrontendVM* a maszyną *myBackendVM*.
 - *myBackendSubnet* — podsieć skojarzona z grupą *myBackendNSG* i używana przez zasoby zaplecza.
 - *myBackendNic* — interfejs sieciowy używany przez maszynę wirtualną *myBackendVM* do komunikacji z maszyną *myFrontendVM*.
-- *myBackendVM* -maszynę Wirtualną, która używa portu 1433 do komunikowania się z *myFrontendVM*.
+- *myBackendVM* — maszyna wirtualna, która korzysta z portu 1433 do komunikacji z maszyną *myFrontendVM*.
 
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 
 W tym samouczku zostanie utworzona jedna sieć wirtualna z dwoma podsieciami. Zostanie utworzona podsieć frontonu do hostowania aplikacji internetowej oraz podsieć zaplecza do hostowania serwera bazy danych.
 
-Przed utworzeniem sieci wirtualnej, Utwórz grupę zasobów za pomocą [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myRGNetwork* w *EastUS* lokalizacji:
+Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myRGNetwork* w lokalizacji *EastUS*:
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
@@ -68,7 +68,7 @@ New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 
 ### <a name="create-subnet-configurations"></a>Tworzenie konfiguracji podsieci
 
-Tworzenie konfiguracji podsieci o nazwie *myFrontendSubnet* przy użyciu [AzureRmVirtualNetworkSubnetConfig nowy](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig):
+Utwórz konfigurację podsieci o nazwie *myFrontendSubnet* za pomocą polecenia [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
@@ -76,7 +76,7 @@ $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
   -AddressPrefix 10.0.0.0/24
 ```
 
-I Tworzenie konfiguracji podsieci o nazwie *myBackendSubnet*:
+Następnie utwórz konfigurację podsieci o nazwie *myBackendSubnet*:
 
 ```azurepowershell-interactive
 $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
@@ -86,7 +86,7 @@ $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
 
 ### <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Tworzenie sieci Wirtualnej o nazwie *myVNet* przy użyciu *myFrontendSubnet* i *myBackendSubnet* przy użyciu [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork):
+Utwórz sieć wirtualną o nazwie *myVNet* na podstawie konfiguracji *myFrontendSubnet* i *myBackendSubnet* za pomocą polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork):
 
 ```azurepowershell-interactive
 $vnet = New-AzureRmVirtualNetwork `
@@ -105,7 +105,7 @@ Publiczny adres IP umożliwia dostęp do zasobów platformy Azure w Internecie. 
 
 Można też ustawić statyczną metodę alokacji, co gwarantuje, że adres IP pozostanie przydzielony do maszyny wirtualnej nawet wówczas, gdy jej przydział zostanie cofnięty. Podczas korzystania ze statycznie przydzielonych adresów IP nie można określić adresu IP. Zamiast tego jest on przydzielany z puli dostępnych adresów.
 
-Utwórz publiczny adres IP o nazwie *myPublicIPAddress* przy użyciu [AzureRmPublicIpAddress nowy](/powershell/module/azurerm.network/new-azurermpublicipaddress):
+Na koniec utwórz publiczny adres IP o nazwie *myPublicIPAddress*, korzystając z polecenia [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
 
 ```azurepowershell-interactive
 $pip = New-AzureRmPublicIpAddress `
@@ -115,11 +115,11 @@ $pip = New-AzureRmPublicIpAddress `
   -Name myPublicIPAddress
 ```
 
-Można zmienić parametru - AllocationMethod `Static` można przypisać statycznego publicznego adresu IP.
+Możesz zmienić parametr -AllocationMethod na `Static`, aby przypisać statyczny publiczny adres IP.
 
 ## <a name="create-a-front-end-vm"></a>Tworzenie maszyny wirtualnej frontonu
 
-Dla maszyny Wirtualnej do komunikowania się w sieci wirtualnej musi on interfejs sieci wirtualnej (NIC). Tworzenie przy użyciu kart [AzureRmNetworkInterface nowy](/powershell/module/azurerm.network/new-azurermnetworkinterface):
+Aby maszyna wirtualna mogła komunikować się w sieci wirtualnej, potrzebuje wirtualnego interfejsu sieciowego. Utwórz interfejs sieciowy za pomocą polecenia [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface):
 
 ```azurepowershell-interactive
 $frontendNic = New-AzureRmNetworkInterface `
@@ -130,13 +130,13 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Ustaw nazwę użytkownika i hasło potrzebne do konta administratora na maszynę Wirtualną przy użyciu [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential). Te poświadczenia umożliwiają połączenie z maszyną Wirtualną w dodatkowych czynności:
+Ustaw nazwę użytkownika i hasło potrzebne dla konta administratora na maszynie wirtualnej przy użyciu polecenia [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential). Te poświadczenia służą do nawiązywania połączenia z maszyną wirtualną w dodatkowych krokach:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Tworzenie maszyn wirtualnych przy użyciu [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm).
+Utwórz maszyny wirtualne za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```azurepowershell-interactive
 New-AzureRmVM `
@@ -166,7 +166,7 @@ Wszystkie sieciowe grupy zabezpieczeń zawierają zestaw reguł domyślnych. Reg
 
 ### <a name="create-network-security-groups"></a>Tworzenie sieciowych grup zabezpieczeń
 
-Utwórz regułę ruchu przychodzącego o nazwie *myFrontendNSGRule* zezwalająca na ruch przychodzący sieci web na *myFrontendVM* przy użyciu [AzureRmNetworkSecurityRuleConfig nowy](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
+Utwórz regułę ruchu przychodzącego o nazwie *myFrontendNSGRule*, aby zezwolić na przychodzący ruch internetowy na maszynie *myFrontendVM* za pomocą polecenia [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -181,7 +181,7 @@ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Można ograniczyć ruch wewnętrzny *myBackendVM* tylko od *myFrontendVM* przez utworzenie grupy NSG podsieci wewnętrznej. Poniższy przykład tworzy reguły NSG o nazwie *myBackendNSGRule*:
+Możesz zezwalać na ruch wewnętrzny do maszyny *myBackendVM* pochodzący jedynie z maszyny *myFrontendVM*, tworząc dla podsieci zaplecza sieciową grupę zabezpieczeń. W poniższym przykładzie pokazano tworzenie sieciowej grupy zabezpieczeń o nazwie *myBackendNSGRule*:
 
 ```azurepowershell-interactive
 $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -196,7 +196,7 @@ $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Dodaj sieciową grupę zabezpieczeń o nazwie *myFrontendNSG* przy użyciu [AzureRmNetworkSecurityGroup nowy](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup):
+Dodaj sieciową grupę zabezpieczeń o nazwie *myFrontendNSG* przy użyciu polecenia [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup):
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzureRmNetworkSecurityGroup `
@@ -206,7 +206,7 @@ $nsgFrontend = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgFrontendRule
 ```
 
-Teraz Dodaj sieciową grupę zabezpieczeń o nazwie *myBackendNSG* przy użyciu nowego AzureRmNetworkSecurityGroup:
+Następnie dodaj sieciową grupę zabezpieczeń o nazwie *myBackendNSG* przy użyciu polecenia New-AzureRmNetworkSecurityGroup:
 
 ```azurepowershell-interactive
 $nsgBackend = New-AzureRmNetworkSecurityGroup `
@@ -216,7 +216,7 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgBackendRule
 ```
 
-Dodaj grupy zabezpieczeń sieci z podsieciami:
+Dodaj sieciowe grupy zabezpieczeń do podsieci:
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -239,9 +239,9 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ## <a name="create-a-back-end-vm"></a>Tworzenie maszyny wirtualnej zaplecza
 
-Najprostszym sposobem tworzenia maszyny Wirtualnej zaplecza na potrzeby tego samouczka jest przy użyciu obrazu programu SQL Server. W tym samouczku tylko tworzy maszynę Wirtualną z serwerem bazy danych, ale nie dostarcza informacji na temat uzyskiwania dostępu do bazy danych.
+Na potrzeby tego samouczka najprostszym sposobem tworzenia maszyny wirtualnej zaplecza jest wykorzystanie obrazu programu SQL Server. Samouczek obejmuje wyłącznie tworzenie maszyny wirtualnej z serwerem baz danych. Nie podaje żadnych informacji na temat uzyskiwania dostępu do bazy danych.
 
-Utwórz *myBackendNic*:
+Utwórz interfejs *myBackendNic*:
 
 ```azurepowershell-interactive
 $backendNic = New-AzureRmNetworkInterface `
@@ -251,13 +251,13 @@ $backendNic = New-AzureRmNetworkInterface `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
-Ustaw nazwę użytkownika i hasło potrzebne do konta administratora na Maszynie wirtualnej z Get-Credential:
+Ustaw nazwę użytkownika i hasło potrzebne dla konta administratora na maszynie wirtualnej przy użyciu polecenia Get-Credential:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Utwórz *myBackendVM*.
+Utwórz maszynę *myBackendVM*.
 
 ```azurepowershell-interactive
 New-AzureRmVM `
@@ -266,13 +266,13 @@ New-AzureRmVM `
    -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
    -ResourceGroupName myRGNetwork `
    -Location "EastUS" `
-   -SubnetName myFrontendSubnet `
+   -SubnetName MyBackendSubnet `
    -VirtualNetworkName myVNet
 ```
 
-Obraz, który jest użyty zainstalowany program SQL Server, ale nie jest używana w tym samouczku. Należy ono do wyświetlenia, jak można skonfigurować Maszynę wirtualną do obsługi ruchu w sieci web i maszyny Wirtualnej, aby obsłużyć Zarządzanie bazą danych.
+Obraz zawiera zainstalowany program SQL Server, ale nie będzie on używany w tym samouczku. Został on uwzględniony, by zademonstrować sposób konfigurowania maszyny wirtualnej do obsługiwania ruchu internetowego albo do zarządzania bazami danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono i zabezpieczono sieci platformy Azure na potrzeby maszyn wirtualnych. 
 
@@ -283,7 +283,7 @@ W tym samouczku utworzono i zabezpieczono sieci platformy Azure na potrzeby masz
 > * Zabezpieczanie ruchu sieciowego
 > * Tworzenie maszyny wirtualnej zaplecza
 
-Przejdź do następnego samouczek, aby dowiedzieć się więcej o monitorowaniu Zabezpieczanie danych w przypadku maszyn wirtualnych przy użyciu kopii zapasowej systemu Azure.
+Przejdź do kolejnego samouczka, aby dowiedzieć się więcej na temat monitorowania i zabezpieczania danych na maszynach wirtualnych za pomocą usługi Azure Backup.
 
 > [!div class="nextstepaction"]
-> [Tworzenie kopii zapasowych maszyn wirtualnych systemu Windows na platformie Azure](./tutorial-backup-vms.md)
+> [Tworzenie kopii zapasowych maszyn wirtualnych z systemem Windows na platformie Azure](./tutorial-backup-vms.md)
