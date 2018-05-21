@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: e46c2ad30b578b0642ee7b541ea003ed67c6a7f5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania odpowiedzi na pytania dotyczące Centrum zabezpieczeń Azure to usługa, która pomaga zapobiec, wykrywania i reagowania na zagrożenia lepszy wgląd w i kontroli w zakresie bezpieczeństwa zasobów na platformie Microsoft Azure.
@@ -88,8 +88,8 @@ Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń, zobacz [Ustawiani
 ### <a name="what-is-a-security-recommendation"></a>Jaka jest zalecana ze względów bezpieczeństwa?
 Centrum zabezpieczeń Azure analizuje stan zabezpieczeń zasobów platformy Azure. Po potencjalnych luk w zabezpieczeniach, tworzone są zalecenia. Zalecenia ułatwiają konfigurowanie potrzebnego formantu. Przykłady to:
 
-* Inicjowanie obsługi administracyjnej ochrony przed złośliwym kodem do identyfikacji i usuwania złośliwego oprogramowania
-* Konfigurowanie [grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md) i reguł sterujących ruchem do maszyn wirtualnych
+* Inicjowanie obsługi administracyjnej przed złośliwym oprogramowaniem do identyfikacji i usuwania złośliwego oprogramowania
+* [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) i reguł sterujących ruchem do maszyn wirtualnych
 * Aprowizowanie zapory aplikacji sieci web pomagających chronić przed atakami przeznaczonych dla aplikacji sieci web
 * Wdrażanie brakujących aktualizacji systemu
 * Modyfikowanie konfiguracji systemu operacyjnego, które odbiegają od zalecanych standardów

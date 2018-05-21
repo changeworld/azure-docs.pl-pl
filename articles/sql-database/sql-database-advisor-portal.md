@@ -3,17 +3,17 @@ title: Stosować zalecenia wydajności — baza danych SQL Azure | Dokumentacja 
 description: Użyj portalu Azure, aby znaleźć zalecenia dotyczące wydajności, które można zoptymalizować wydajność bazy danych SQL Azure.
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdź i stosować zalecenia wydajności
 
@@ -95,10 +95,14 @@ Można ustawić baza danych SQL Azure, aby automatycznie wdrożyć zalecenia. Zg
 
 1. Na **zalecenia** kliknij przycisk **automatyzacja**:
    
-    ![Ustawienia doradcy](./media/sql-database-advisor-portal/settings.png)
+    ![Ustawienia usługi Advisor](./media/sql-database-advisor-portal/settings.png)
 2. Wybierz akcje do automatyzacji:
    
-    ![Zalecane indeksy](./media/sql-database-advisor-portal/automation.png)
+    ![Zalecane indeksy](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> Należy pamiętać, że **DROP_INDEX** opcji w tej chwili jest niezgodny z aplikacji przy użyciu wskazówek indeks i przełączanie partycji i nie powinna włączona w tych przypadkach.
+>
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>Ręcznie uruchom zalecane skryptu T-SQL
 Wybierz każde zalecenie, a następnie kliknij przycisk **Wyświetl skrypt**. Uruchom ten skrypt, aby ręcznie zastosować zalecenie bazy danych.
