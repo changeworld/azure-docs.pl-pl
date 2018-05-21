@@ -1,254 +1,115 @@
 ---
-title: Plan sieci wirtualnej platformy Azure (VNet) oraz przewodnik dotyczący projektowania | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaplanować i zaprojektować sieci wirtualnych na platformie Azure, w zależności od wymagań izolacji, łączności i lokalizacji.
+title: Planowanie sieci wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak planować sieci wirtualne oparte na izolacji, łączności i wymagania dotyczące lokalizacji.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: tysonn
+editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2016
+ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 83558b9d8d47ac5e6bd15dd54db38125376d11bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="plan-and-design-azure-virtual-networks"></a>Planowanie i projektowanie sieci wirtualnych Azure
-Tworzenie sieci wirtualnej do eksperymentów z jest dość proste, ale prawdopodobnie, wdrażania wielu sieci wirtualnych w czasie, aby obsługiwały produkcyjnym wymagania organizacji. Z pewnego planowania i projektowania będzie mógł wdrożyć sieci wirtualnych i połączyć zasoby, których potrzebujesz bardziej efektywnie. Jeśli nie masz doświadczenia z sieciami wirtualnymi, jest zalecane możesz [Dowiedz się więcej o sieci wirtualnych](virtual-networks-overview.md) i [wdrażanie](quick-create-portal.md) jeden przed kontynuowaniem.
+# <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnych
 
-## <a name="plan"></a>Planowanie
-Dokładne zrozumienie subskrypcji platformy Azure, regiony i zasobów sieciowych jest szczególnie ważne w przypadku powodzenia. Lista zagadnień poniżej służy jako punkt początkowy. Po zrozumieniu tych zagadnień można zdefiniować wymagania dla projektu sieci.
+Tworzenie sieci wirtualnej do eksperymentów z jest dość proste, ale prawdopodobnie, będzie wdrożenie wielu sieci wirtualnych w czasie, aby obsługiwały produkcyjnym wymagania organizacji. Przy planowaniu, można wdrożyć sieci wirtualne i zasoby, które skuteczniej należy połączyć. Informacje przedstawione w tym artykule jest najbardziej przydatna, jeśli znasz już sieci wirtualnych i mają pewne doświadczenie w pracy z nimi. Jeśli nie masz doświadczenia z sieciami wirtualnymi, zaleca się przeczytanie [omówienie sieci wirtualnej](virtual-networks-overview.md).
 
-### <a name="considerations"></a>Zagadnienia do rozważenia
-Przed udzielenie odpowiedzi na planowanie pytania poniżej, należy rozważyć następujące kwestie:
+## <a name="naming"></a>Nazewnictwo
 
-* Wszystkie obiekty, które można utworzyć na platformie Azure składa się z co najmniej jeden zasób. Maszyna wirtualna (VM) jest zasobem, karty interfejsu sieciowego (NIC) używany przez maszynę Wirtualną jest zasobem zasobu jest publiczny adres IP używany przez kartę Sieciową, kartę Sieciową podłączoną do sieci wirtualnej jest zasobem.
-* Utwórz zasoby w [regionu Azure](https://azure.microsoft.com/regions/#services) i subskrypcji. Zasoby mogą być połączone tylko z sieci wirtualnej, który istnieje w tym samym regionie i jest subskrypcji zasobu.
-* Sieci wirtualne można połączyć ze sobą przy użyciu:
-    * **[Sieci wirtualnej komunikacji równorzędnej](virtual-network-peering-overview.md)**: w tym samym regionie Azure musi znajdować się sieci wirtualnych. Przepustowość między zasobami w sieciach wirtualnych połączyć za pomocą jest taka sama, jak gdyby zasoby były podłączone do tej samej sieci wirtualnej.
-    * **Azure [bramy sieci VPN](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)**: sieci wirtualnej może istnieć w tych samych lub różnych regionach platformy Azure. Przepustowość między zasobami w sieciach wirtualnych połączone za pośrednictwem bramy sieci VPN jest ograniczona przepustowość bramy sieci VPN.
-* Sieci wirtualne mogą łączyć się z siecią lokalną, przy użyciu jednej z [opcji łączności](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) dostępnej na platformie Azure.
-* Różne zasoby można grupować w [grup zasobów](../azure-resource-manager/resource-group-overview.md#resource-groups), co ułatwia zarządzanie zasobu jako jednostka. Grupa zasobów może zawierać zasobów z wielu regionach, tak długo, jak zasoby należą do tej samej subskrypcji.
+Wszystkie zasoby platformy Azure ma nazwy. Nazwa musi być unikatowa w zakresie, które mogą być różne dla każdego typu zasobu. Na przykład nazwa sieci wirtualnej muszą być unikatowe w obrębie [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale można duplikować, w ramach [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) lub Azure [region](https://azure.microsoft.com/regions/#services). Definiowanie konwencji nazewnictwa, która służy stale w nazwach zasobów jest przydatne, gdy zarządzanie kilku zasobów sieciowych w czasie. Wskazówki dotyczące zasobów, zobacz [konwencje nazewnictwa](/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="define-requirements"></a>Określenie wymagań w zakresie
-Użycie tych pytań poniżej jako punkt początkowy dla projektu sieci platformy Azure.    
+## <a name="regions"></a>Regiony
 
-1. Ich lokalizacje Azure zostanie użyty do hosta sieci wirtualnych?
-2. Potrzebujesz do zapewnienia komunikacji między tymi lokalizacjami Azure?
-3. Czy trzeba zapewniają komunikację między VNet(s) Twojego Azure i datacenter(s) sieci lokalnej?
-4. Ile infrastruktura jako usługa (IaaS) maszyn wirtualnych, usług w chmurze role i aplikacji sieci web potrzebne do rozwiązania?
-5. Potrzebujesz do izolacji ruchu w oparciu o grupy maszyn wirtualnych (tj. fronton sieci web serwerów i serwerów bazy danych zaplecza)?
-6. Czy trzeba sterowaniu przepływem ruchu przy użyciu wirtualnych urządzeń?
-7. Czy użytkownicy mają różne zestawy uprawnień do różnych zasobów platformy Azure?
+Wszystkie zasoby platformy Azure są tworzone w regionie platformy Azure i subskrypcji. Zasób można tworzyć tylko w sieci wirtualnej, który istnieje w tym samym regionie i subskrypcji co zasób. Można jednak połączyć sieci wirtualnych, które istnieją w ramach różnych subskrypcji i regionów. Aby uzyskać więcej informacji, zobacz [łączności](#connectivity). Podczas wybierania który regionów wdrażania zasobów w należy wziąć pod uwagę gdzie fizycznie znajdują się konsumentów zasobów:
 
-### <a name="understand-vnet-and-subnet-properties"></a>Zrozumienie właściwości sieci wirtualnej i podsieci
-Zasoby sieci wirtualnej i podsieci pomocy, zdefiniuj granicę zabezpieczeń dla obciążeń działających na platformie Azure. Kolekcja przestrzeni adresów, zdefiniowany jako bloków CIDR charakteryzuje się sieci wirtualnej.
+- Konsumenci zasoby mają zwykle najniższe opóźnienia sieci, do ich zasobów. Aby określić względną opóźnienia między określonej lokalizacji i regiony platformy Azure, zobacz [wyświetlić względną opóźnienia](../network-watcher/view-relative-latencies.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Czy istnieją wymagania dotyczące siedziby suwerenności, zgodności i odporności danych? Jeśli tak, wybierając obszar, aby była zgodna z wymaganiami jest krytyczne. Aby uzyskać więcej informacji, zobacz [Azure lokalizacji geograficznych](https://azure.microsoft.com/global-infrastructure/geographies/).
+- Czy potrzebne odporności różnych strefach dostępności Azure w ramach tego samego regionu Azure dla zasobów wdrażanych? Zasoby, takie jak maszyn wirtualnych (VM) można wdrożyć w różnych dostępności stref w tej samej sieci wirtualnej. Nie wszystkie regiony platformy Azure obsługuje natomiast dostępność strefy. Aby dowiedzieć się więcej na temat dostępności stref i regionów, które je obsługują, zobacz [stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-> [!NOTE]
-> Administratorzy sieci znają notacji CIDR. Jeśli nie znasz CIDR, [Dowiedz się więcej o](http://whatismyipaddress.com/cidr).
->
->
+## <a name="subscriptions"></a>Subskrypcje
 
-Sieci wirtualne obejmują następujące właściwości.
+Jak wiele sieci wirtualnych zgodnie z wymaganiami w ramach każdej subskrypcji można wdrożyć do [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Niektóre organizacje mają różnych subskrypcji dla różnych działów, np. Aby uzyskać więcej informacji i dodatkowe uwagi wokół subskrypcji, zobacz [ładu subskrypcji](../azure-resource-manager/resource-manager-subscription-governance.md?toc=%2fazure%2fvirtual-network%2ftoc.json#define-your-hierarchy).
 
-| Właściwość | Opis | Ograniczenia |
-| --- | --- | --- |
-| **Nazwa** |Nazwa sieci wirtualnej |Ciąg do 80 znaków. Może zawierać litery, cyfry, podkreślenia, kropki i łączniki. Musi zaczynać się literą lub cyfrą. Musi kończyć się literą, cyfrą lub podkreśleniem. Można zawiera wielkich i małych liter. |
-| **location** |Lokalizacja platformy Azure (zwaną także regionu). |Musi mieć jedną z prawidłowych lokalizacji platformy Azure. |
-| **addressSpace** |Kolekcja prefiksów adresów, które tworzą sieci wirtualnej w notacji CIDR. |Musi być tablicą prawidłowy bloków adresów CIDR, w tym zakresy publicznych adresów IP. |
-| **subnets** |Kolekcja podsieci, które tworzą sieci wirtualnej |znajdują się w poniższej tabeli właściwości podsieci. |
-| **dhcpOptions** |Obiekt, który zawiera jednej wymaganej właściwości o nazwie **dnsServers**. | |
-| **dnsServers** |Tablica serwery DNS używane przez sieci wirtualnej. Jeśli nie zostanie podana, rozpoznawania nazw wewnętrznych Azure jest używana. |Musi być tablicą maksymalnie 10 serwerów DNS, za pomocą adresu IP. |
+## <a name="segmentation"></a>Segmentacja
 
-Podsieć jest zasobem podrzędnych sieci wirtualnej i pomaga zdefiniować segmenty przestrzeni adresów w obrębie blok CIDR, przy użyciu prefiksów adresów IP. Karty sieciowe mogą być dodawane do podsieci lub podłączone do maszyn wirtualnych, zapewniają łączność dla różnych obciążeń.
+Można utworzyć wiele sieci wirtualnych dla poszczególnych subskrypcji i regionu. Możesz utworzyć wiele podsieci w każdej sieci wirtualnej. Kwestie, które należy wykonać pomóc w ustaleniu, jak wiele sieci wirtualnych i podsieci wymagają:
 
-Podsieci obejmują następujące właściwości.
+### <a name="virtual-networks"></a>Sieci wirtualne
 
-| Właściwość | Opis | Ograniczenia |
-| --- | --- | --- |
-| **Nazwa** |Nazwa podsieci |Ciąg do 80 znaków. Może zawierać litery, cyfry, podkreślenia, kropki i łączniki. Musi zaczynać się literą lub cyfrą. Musi kończyć się literą, cyfrą lub podkreśleniem. Można zawiera wielkich i małych liter. |
-| **location** |Lokalizacja platformy Azure (zwaną także regionu). |Musi mieć jedną z prawidłowych lokalizacji platformy Azure. |
-| **addressPrefix** |Prefiks pojedynczy adres, który tworzą podsieci w notacji CIDR |Musi być jeden blok CIDR, który wchodzi w skład jednej z przestrzeni adresów sieci wirtualnej. |
-| **networkSecurityGroup** |Grupa NSG stosowana do podsieci | |
-| **routeTable** |Tabela tras stosowane do podsieci | |
-| **elementy Ipconfiguration** |Kolekcja obiektów konfiguracji IP używane przez karty sieciowe podłączone do podsieci | |
+Sieć wirtualna jest wirtualny, izolowanego część sieci publicznej platformy Azure. Każdej sieci wirtualnej jest dedykowany do subskrypcji. Zagadnienia do rozważenia podczas decydowania o Utwórz jedną sieć wirtualną lub wiele sieci wirtualnych w ramach subskrypcji:
+
+- Czy wszelkich wymagań dotyczących zabezpieczeń w organizacji istnieją dla izolowanie ruchu w różnych sieciach wirtualnych? Można połączyć sieci wirtualnych, czy nie. Jeśli możesz połączyć sieci wirtualnych, można wdrożyć urządzenie wirtualne sieci, takie jak zapory, aby sterować przepływem ruchu między sieciami wirtualnymi. Aby uzyskać więcej informacji, zobacz [zabezpieczeń](#security) i [łączności](#connectivity).
+- Czy wszystkie wymagania organizacyjne istnieje izolowania sieci wirtualnych w oddzielne [subskrypcje](#subscriptions) lub [regionów](#regions)?
+- A [interfejsu sieciowego](virtual-network-network-interface.md) umożliwia maszyny Wirtualnej do komunikowania się z innymi zasobami. Każdy interfejs sieciowy ma co najmniej jeden prywatne adresy IP przypisane do niej. Jak wiele interfejsów sieciowych i [prywatnych adresów IP](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) są wymagane w sieci wirtualnej? Brak [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) liczba interfejsów sieciowych i prywatnych adresów IP, które mogą mieć w ramach sieci wirtualnej.
+- Czy chcesz połączyć sieć wirtualną z innej sieci wirtualnej lub sieci lokalnej? Możesz połączyć niektórych sieci wirtualnych do siebie lub sieciach lokalnych, a innych nie. Aby uzyskać więcej informacji, zobacz [łączności](#connectivity). Każdej sieci wirtualnej, które jest podłączone do innej sieci wirtualnej lub sieci lokalnej musi mieć unikatowy adres miejsca. Każda sieć wirtualna ma przypisane do jego przestrzeni adresowej jeden lub więcej zakresów adresów publicznych lub prywatnych. Zakres adresów jest określony format classless internet domeny routingu (CIDR), takich jak 10.0.0.0/16. Dowiedz się więcej o [zakresy adresów](manage-virtual-network.md#add-or-remove-an-address-range) dla sieci wirtualnych.
+- Czy masz wszelkie wymagania organizacyjne administracji dla zasobów w różnych sieciach wirtualnych? Jeśli tak, może podzielić zasoby na oddzielnych sieci wirtualnej, aby uprościć [przypisanie uprawnień](#permissions) do osób w organizacji lub przypisać różne [zasady](#policies) na różne wirtualnego sieci.
+- Jeśli niektóre zasoby usługi Azure podczas wdrażania w sieci wirtualnej, tworzenia własnych sieci wirtualnej. Aby określić, czy usługa Azure utworzy własnej sieci wirtualnej, zobacz informacje dla każdego [usługi Azure, które można wdrożyć w sieci wirtualnej](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network).
+
+### <a name="subnets"></a>Podsieci
+
+Sieć wirtualną można segmentowanych do co najmniej jednej podsieci do [limity](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Zagadnienia do rozważenia podczas decydowania o utworzyć jedną podsieć lub wiele sieci wirtualnych w ramach subskrypcji:
+
+- Każda podsieć musi mieć unikatowy zakres adresów, określona w formacie CIDR w przestrzeni adresowej sieci wirtualnej. Zakres adresów nie może nakładać się przy użyciu innych podsieci w sieci wirtualnej.
+- Jeśli planujesz wdrożenie niektórych zasobów usługi Azure w sieci wirtualnej, ich może wymagają, lub utworzyć własne podsieci, więc musi być wystarczającej ilości nieprzydzielonego miejsca na nich w tym celu. Aby określić, czy usługa Azure utworzy jego własnej podsieci, zobacz informacje dla każdego [usługi Azure, które można wdrożyć w sieci wirtualnej](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Na przykład jeśli można nawiązać połączenie sieci wirtualnej sieci lokalnej przy użyciu bramy sieci VPN platformy Azure, sieć wirtualna musi mieć dedykowany podsieci bramy. Dowiedz się więcej o [podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
+- Azure kieruje ruchem sieciowym między wszystkich podsieci w sieci wirtualnej, domyślnie. Można zastąpić routingu, aby zapobiec Azure routing między podsieciami, lub kierować ruchem między podsieciami przez urządzenie wirtualne sieci, na przykład domyślny platformy Azure. Jeśli potrzebujesz tego ruchu między zasobami w tym samym przepływie sieci wirtualnej przez urządzenie wirtualne sieci (NVA) wdrażanie zasobów do różnych podsieci. Dowiedz się więcej w [zabezpieczeń](#security).
+- Można ograniczyć dostęp do zasobów platformy Azure, takich jak konta magazynu Azure lub bazy danych Azure SQL, do określonych podsieci z punktem końcowym usługi sieci wirtualnej. Ponadto można odmówić dostępu do zasobów z Internetu. Możesz utworzyć wiele podsieci i włączyć punkt końcowy usługi dla niektórych podsieci, a innych nie. Dowiedz się więcej o [punkty końcowe usługi](virtual-network-service-endpoints-overview.md), i zasobów platformy Azure można włączyć je na.
+- Możesz skojarzyć zero lub jedną grupę zabezpieczeń sieci do każdej podsieci w sieci wirtualnej. Możesz skojarzyć takie same, lub innej, sieciowej grupy zabezpieczeń do każdej podsieci. Każda grupa zabezpieczeń sieci zawiera reguły, które akceptować lub odrzucać ruch do i z źródeł i miejsc docelowych. Dowiedz się więcej o [sieciowej grupy zabezpieczeń](#traffic-filtering).
+
+## <a name="security"></a>Bezpieczeństwo
+
+Można filtrować ruch sieciowy do i z zasobów w sieci wirtualnej przy użyciu grup zabezpieczeń sieci i wirtualnych urządzeń sieciowych. Można kontrolować, jak Azure kieruje ruch z podsieci. Można również ograniczyć, kto w organizacji może współpracować z zasobami w sieciach wirtualnych.
+
+### <a name="traffic-filtering"></a>Filtrowanie ruchu
+
+- Można filtrować ruch sieciowy między zasobami w sieci wirtualnej za pomocą grupy zabezpieczeń sieci, NVA filtrujące ruchu sieciowego, lub obie. Aby wdrożyć NVA, takie jak zapory, filtrowania ruchu w sieci, zobacz [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?subcategories=appliances&page=1). Przy użyciu NVA, możesz również utworzyć trasy niestandardowe przekierowujący ruch z podsieci do analizę NVA. Dowiedz się więcej o [routingu ruchu](#traffic-routing).
+- Grupa zabezpieczeń sieci zawiera kilka zabezpieczeń reguły domyślne akceptować lub odrzucać ruchu do lub z zasobów. Grupa zabezpieczeń sieci może być skojarzona z karty sieciowej i podsieci, w której znajduje się interfejs sieciowy. Aby uprościć zarządzanie zasadami zabezpieczeń, zalecane jest, aby skojarzyć sieciową grupę zabezpieczeń do poszczególnych podsieci, a nie interfejsy sieciowe poszczególnych w obrębie podsieci, jeśli to możliwe.
+- Jeśli różnych maszyn wirtualnych w obrębie podsieci muszą zasad zabezpieczeń zastosowanych do nich, można skojarzyć interfejsu sieciowego w maszynie Wirtualnej na co najmniej jedną grupę zabezpieczeń aplikacji. Reguła zabezpieczeń można określić grupy zabezpieczeń aplikacji w jego źródło i miejsce docelowe. Tej reguły następnie ma zastosowanie tylko do interfejsów sieciowych, które są członkami grupy zabezpieczeń aplikacji. Dowiedz się więcej o [sieciowej grupy zabezpieczeń](security-overview.md) i [grup zabezpieczeń aplikacji](security-overview.md#application-security-groups).
+- Platforma Azure tworzy kilka domyślne zasady zabezpieczeń w ramach każdej grupy zabezpieczeń sieci. Jedna reguła domyślna umożliwia cały ruch między wszystkich zasobów w sieci wirtualnej. Aby zmienić to zachowanie, użyj zabezpieczenia sieci grup niestandardowych, routing kierowanie ruchem do NVA i/lub. Zalecane jest, zapoznaj się ze wszystkimi Azure [domyślne reguły zabezpieczeń](security-overview.md#default-security-rules) i zrozumieć, jak zasady grupy zabezpieczeń sieci są stosowane do zasobu.
+
+Możesz wyświetlić przykładowe projekty wykonywania DMZ platformy Azure i Internetu za pomocą [NVA](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) lub [sieciowej grupy zabezpieczeń](virtual-networks-dmz-nsg.md).
+
+### <a name="traffic-routing"></a>routing ruchu
+
+Platforma Azure tworzy kilka trasy domyślnej dla ruchu wychodzącego z podsieci. Można zastąpić domyślne Azure routingu, tworząc tabelę tras i kojarzenie go do podsieci. Typowe przyczyny są routingu dla Zastępowanie domyślnego platformy Azure:
+- Ponieważ chcesz, aby ruch między podsieciami przepływ NVA. Aby dowiedzieć się więcej o sposobie [skonfigurować tabele tras, aby wymusić ruchu za pośrednictwem NVA](tutorial-create-route-table-portal.md)
+- Ponieważ chcesz wymusić wszystkich ruch do Internetu za pośrednictwem NVA lub lokalnymi, za pośrednictwem bramy sieci VPN platformy Azure. Wymuszenie internet ruchu lokalnego do inspekcji i rejestrowanie jest często określane jako wymuszonego tunelowania. Dowiedz się więcej o sposobie konfigurowania [wymuszone tunelowanie](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
+
+Jeśli musisz wdrożyć niestandardowy routing, zalecane jest zapoznanie się z [routing na platformie Azure](virtual-networks-udr-overview.md).
+
+## <a name="connectivity"></a>Łączność
+
+Można połączyć sieć wirtualną do innych sieci wirtualnych za pomocą sieci wirtualnej komunikacji równorzędnej, lub do sieci lokalnej przy użyciu bramy sieci VPN platformy Azure.
+
+### <a name="peering"></a>Komunikacja równorzędna
+
+Korzystając z [sieci wirtualnej komunikacji równorzędnej](virtual-network-peering-overview.md), sieci wirtualne mogą być w tej samej lub różnych, obsługiwane regiony platformy Azure. Sieci wirtualne można w tym samym lub różnych subskrypcji platformy Azure, tak długo, jak obie subskrypcje są przypisane do tej samej dzierżawy usługi Azure Active Directory. Przed utworzeniem komunikacji równorzędnej, zalecane jest, zapoznaj się ze wszystkimi komunikacji równorzędnej [wymagań i ograniczeń](virtual-network-manage-peering.md#requirements-and-constraints). Przepustowość między zasobami w sieciach wirtualnych połączyć za pomocą jest taka sama, jak gdyby zasoby w tej samej sieci wirtualnej.
+
+### <a name="vpn-gateway"></a>Brama sieci VPN
+
+Można użyć Azure [bramy sieci VPN](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nawiązać sieci wirtualnej sieci lokalnej przy użyciu [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json), lub za pomocą dedykowanego połączenia z platformą Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Możesz połączyć ze sobą równorzędna i bramy sieci VPN, aby utworzyć [gwiazdy sieci](/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json), gdzie sieci wirtualnych gwiazdy połączyć sieć wirtualną koncentratora i koncentrator łączy się z sieci lokalnej, na przykład.
 
 ### <a name="name-resolution"></a>Rozpoznawanie nazw
-Domyślnie korzysta z sieci wirtualnej [rozpoznawania nazw platformy Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md) do rozpoznawania nazw w sieci wirtualnej, a w publicznej sieci Internet. Jednak jeśli łączysz się z sieciami wirtualnymi w centrach danych w sieci lokalnej, należy podać [serwer DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md) do rozpoznawania nazw między sieci.  
 
-### <a name="limits"></a>Limity
-Przejrzyj ograniczenia sieci [Azure ogranicza](../azure-subscription-service-limits.md#networking-limits) artykuł, aby upewnić się, że projektu nie koliduje to z tych limitów. Niektóre limity można zwiększyć przez otwarcie biletu pomocy technicznej.
+Zasoby w jednej sieci wirtualnej nie można rozpoznać nazwy zasobów w peered sieci wirtualnej przy użyciu platformy Azure [wbudowanych DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md). Rozpoznawanie nazw w sieci wirtualnej peered [wdrożenia serwera DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server), lub użyj usługi Azure DNS [domenach prywatnych](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Rozpoznawanie nazw między zasobami w sieci wirtualnej i sieci lokalnej również wymaga wdrożenia serwera DNS.
 
-### <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-Można użyć [Azure RBAC](../role-based-access-control/built-in-roles.md) kontrolować poziom dostępu różni użytkownicy mogą używać do różnych zasobów platformy Azure. W ten sposób może też oddzielić pracy przez zespół na podstawie swoich potrzeb.
+## <a name="permissions"></a>Uprawnienia
 
-Jeżeli sieci wirtualne są dane użytkowników w **współautora sieci** roli mają pełną kontrolę nad zasobami sieci wirtualnej Azure Resource Manager. Podobnie, użytkownicy w **klasycznego współautora sieci** rola ma pełną kontrolę nad zasoby klasyczne sieci wirtualnej.
+Korzysta z usługi Azure [kontrola dostępu oparta na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisane do [zakres](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-hierarchy-and-access-inheritance) w następujących hierarchii: subskrypcji, grupy zarządzania, grupy zasobów i pojedynczego zasobu. Aby dowiedzieć się więcej na temat hierarchii, zobacz [organizowania zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby pracować z sieci wirtualnych platformy Azure i wszystkie ich powiązanych możliwości, takich jak komunikacji równorzędnej, grup zabezpieczeń sieci punktów końcowych usługi i tabele tras, członków organizacji można przypisać do wbudowanej [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor), lub [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ról i następnie przypisać rolę do odpowiedniego zakresu. Jeśli chcesz przypisać uprawnienia określone dla podzbioru funkcji sieci wirtualnej, Utwórz [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określonych uprawnień wymaganych do [sieci wirtualnych](manage-virtual-network.md#permissions), [ podsieci i punktów końcowych usługi](virtual-network-manage-subnet.md#permissions), [interfejsy sieciowe](virtual-network-network-interface.md), [równorzędna](virtual-network-manage-peering.md#permissions), [grup zabezpieczeń sieci i aplikacji](manage-network-security-group.md#permissions), lub [tabel tras](manage-route-table.md#permissions) do roli.
 
-> [!NOTE]
-> Możesz również [tworzyć własne role](../role-based-access-control/role-assignments-portal.md) do oddzielania potrzeb administracyjnych.
->
->
+## <a name="policy"></a>Zasady
 
-## <a name="design"></a>Projekt
-Jeśli znasz już odpowiedzi na pytania w [Planowanie](#Plan) Przejrzyj następujące przed zdefiniowaniem Twojej sieci wirtualnych.
+Zasady usługi Azure umożliwia tworzenia, przypisywania i definicje zasad zarządzania. Definicje zasad wymusić różne zasady i wpływ nad zasobami, więc zasoby pozostają zgodne z standardów organizacji i umowy dotyczącej poziomu usług. Zasady usługi Azure uruchomienie ocenę zasobów, wyszukiwanie zasobów, które nie są zgodne z definicje zasad, do których masz. Na przykład może mieć zasady, które umożliwia tworzenie sieci wirtualnych w grupie określonego zasobu. Inne zasady może być wymagane każdej podsieci jest grupa zabezpieczeń sieci skojarzonych z nim. Zasady są oceniane oddzielnie podczas tworzenia i aktualizowania zasobów.
 
-### <a name="number-of-subscriptions-and-vnets"></a>Liczba subskrypcji i sieci wirtualnych
-Należy rozważyć utworzenie wielu sieci wirtualnych w następujących scenariuszach:
-
-* **Maszyny wirtualne, które muszą być umieszczone w różnych lokalizacjach Azure**. Sieci wirtualne na platformie Azure są regionalne. Nie obejmują one lokalizacji. W związku z tym należy co najmniej jedną sieć wirtualną dla każdej lokalizacji platformy Azure, do maszyn wirtualnych hosta w.
-* **Obciążeń, które muszą być całkowicie odizolowane od siebie**. Można utworzyć oddzielne sieci wirtualnych, nawet używające tej samej przestrzeni adresów IP do izolowania różnych obciążeń od siebie nawzajem.
-
-Należy pamiętać o tym, które są wyświetlone powyżej limitu na region na subskrypcję. Oznacza to, że wiele subskrypcji można użyć, aby zwiększyć limit zasobów, które można zachować na platformie Azure. Sieć VPN lokacja lokacja lub obwodu usługi ExpressRoute, umożliwia połączyć sieci wirtualnych w ramach różnych subskrypcji.
-
-### <a name="subscription-and-vnet-design-patterns"></a>Subskrypcja i wzorce projektowe sieci wirtualnej
-W poniższej tabeli przedstawiono niektóre typowe wzorce projektowe dotyczące korzystania z subskrypcji i sieci wirtualnych.
-
-| Scenariusz | Diagram | Specjaliści | Wady |
-| --- | --- | --- | --- |
-| Jedną subskrypcją, dwie sieci wirtualne dla aplikacji |![Pojedyncza subskrypcja](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Tylko jedna Subskrypcja do zarządzania. |Maksymalna liczba sieci wirtualnych na region platformy Azure. Potrzebujesz więcej subskrypcji po tym. Przegląd [Azure ogranicza](../azure-subscription-service-limits.md#networking-limits) artykułu, aby uzyskać szczegółowe informacje. |
-| Z jedną subskrypcją jednej aplikacji, dwie sieci wirtualne dla aplikacji |![Pojedyncza subskrypcja](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Używa tylko dwie sieci wirtualne na subskrypcję. |Trudne do zarządzania, gdy istnieją zbyt wiele aplikacji. |
-| Z jedną subskrypcją jednej jednostki biznesowej, dwie sieci wirtualne dla aplikacji. |![Pojedyncza subskrypcja](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Równowaga między liczbę subskrypcji i sieci wirtualnych. |Maksymalna liczba sieci wirtualnych na jednostki biznesowej (subscription). Przegląd [Azure ogranicza](../azure-subscription-service-limits.md#networking-limits) artykułu, aby uzyskać szczegółowe informacje. |
-| Z jedną subskrypcją jednej jednostki biznesowej, dwie sieci wirtualne dla każdej grupy aplikacji. |![Pojedyncza subskrypcja](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Równowaga między liczbę subskrypcji i sieci wirtualnych. |Aplikacje muszą występować samodzielnie za pomocą podsieci i grup NSG. |
-
-### <a name="number-of-subnets"></a>Liczba podsieci
-Należy rozważyć wiele podsieci w sieci wirtualnej w następujących scenariuszach:
-
-* **Za mało prywatnych adresów IP dla wszystkich kart sieciowych w podsieci**. Przestrzeń adresowa podsieci nie zawiera za mało adresów IP dla wielu kart sieciowych w podsieci, należy utworzyć wiele podsieci. Należy pamiętać, że Azure rezerwuje 5 prywatnych adresów IP z każdej podsieci, której nie można użyć: imię i nazwisko adresami przestrzeni adresowej (dla adresów podsieci oraz multiemisji) i 3 umożliwia wewnętrznie (na potrzeby DHCP i DNS).
-* **Bezpieczeństwo** Podsieci służy do oddzielania grupy maszyn wirtualnych od siebie nawzajem dla obciążenia, które mają wielowarstwową struktury i zastosowania różnych [sieciowej grupy zabezpieczeń (NSG)](virtual-networks-nsg.md#subnets) dla tych podsieci.
-* **Połączenia hybrydowe**. Można użyć bramy sieci VPN i obwody usługi ExpressRoute, aby [połączyć](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) Twojej sieci wirtualnych ze sobą oraz z center(s) danych lokalnych. Bramy sieci VPN i obwody usługi ExpressRoute wymagają podsieci we własnym ma zostać utworzony.
-* **Urządzenie wirtualne**. Urządzenie wirtualne, takie jak zapory, sieci WAN akceleratora lub brama sieci VPN można użyć w sieć wirtualną platformy Azure. Po wykonaniu tej czynności należy [kierować ruchem](virtual-networks-udr-overview.md) do tych urządzeń i odizolowane w ich własnych podsieci.
-
-### <a name="subnet-and-nsg-design-patterns"></a>Wzorce projektowe podsieci i grupy NSG
-W poniższej tabeli przedstawiono niektóre typowe wzorce projektowe dotyczące korzystania z podsieci.
-
-| Scenariusz | Diagram | Specjaliści | Wady |
-| --- | --- | --- | --- |
-| Jednej podsieci, grupy NSG na warstwie aplikacji dla aplikacji |![Pojedyncza podsieć](./media/virtual-network-vnet-plan-design-arm/figure5.png) |Tylko jednej podsieci do zarządzania. |Wiele grup NSG niezbędne w celu odizolowania każdej aplikacji. |
-| Podsieć każdej aplikacji, grupy NSG na warstwie aplikacji |![Podsieć każdej aplikacji](./media/virtual-network-vnet-plan-design-arm/figure6.png) |Mniejszą liczbę grup NSG do zarządzania. |Wiele podsieci do zarządzania. |
-| Jednej podsieci na warstwie aplikacji, grup NSG dla aplikacji. |![Podsieci w warstwie](./media/virtual-network-vnet-plan-design-arm/figure7.png) |Równowaga między wiele podsieci i grup NSG. |Maksymalna liczba grup NSG na subskrypcję. Przegląd [Azure ogranicza](../azure-subscription-service-limits.md#networking-limits) artykułu, aby uzyskać szczegółowe informacje. |
-| W jednej podsieci na warstwie aplikacji dla aplikacji, grup NSG dla podsieci |![Podsieci w warstwie aplikacji](./media/virtual-network-vnet-plan-design-arm/figure8.png) |Prawdopodobnie mniejszą liczbę grup NSG. |Wiele podsieci do zarządzania. |
-
-## <a name="sample-design"></a>Przykładowy projekt
-Aby zilustrować aplikacji informacje przedstawione w tym artykule, należy rozważyć następujący scenariusz.
-
-Pracujesz dla firmy, która ma 2 centrów danych w Ameryce Północnej i centrów danych dwa Europy. Zidentyfikowano 6 aplikacji połączonej różnych klientów obsługiwana przez 2 różnych jednostek biznesowych, które chcesz migrować na platformie Azure jako pilotażu. Podstawowa architektura aplikacji są następujące:
-
-* App1, App2 App3 i App4 są hostowane na serwerach Linux z systemem Ubuntu aplikacji sieci web. Każda aplikacja nawiązuje połączenie z serwerem aplikacji oddzielne obsługującego usługi RESTful na serwerach Linux. Usługi RESTful nawiązać wewnętrzna baza danych MySQL.
-* App5 i App6 są aplikacji sieci web na serwerach z systemem Windows z systemem Windows Server 2012 R2. Każda aplikacja łączy się do wewnętrznej bazy danych programu SQL Server.
-* Wszystkie aplikacje są obecnie hostowane w jednym z centrów danych firmy w Ameryce Północnej.
-* Lokalnymi centrami danych, użyj przestrzeni adresowej 10.0.0.0/8.
-
-Należy zaprojektować rozwiązanie sieci wirtualnej, która spełnia następujące wymagania:
-
-* Zużycie zasobów w innych jednostek biznesowych nie powinny mieć wpływ na poszczególnych jednostek biznesowych.
-* Należy zminimalizować ilość sieci wirtualnych i podsieci, aby ułatwić zarządzanie.
-* Poszczególnych jednostek biznesowych powinien mieć pojedynczy test/programowanie używane dla wszystkich aplikacji w sieci wirtualnej.
-* Każda aplikacja znajduje się w 2 różnych Azure centrach danych na kontynencie (Ameryce Północnej i Europie).
-* Każda aplikacja jest całkowicie odizolowane od siebie nawzajem.
-* Każdej aplikacji są dostępne przez klientów w Internecie przy użyciu protokołu HTTP.
-* Każda aplikacja może uzyskiwać użytkowników połączonych centrów danych lokalnych przy użyciu tunelu zaszyfrowane.
-* Połączenie z lokalnymi centrami danych, należy używać istniejącego urządzenia sieci VPN.
-* Grupa sieci firmowej powinna mieć pełną kontrolę nad konfigurację sieci wirtualnej.
-* Deweloperzy w poszczególnych jednostek biznesowych tylko powinna być mógł wdrożyć maszyn wirtualnych do istniejących podsieci.
-* Wszystkie aplikacje zostaną poddane migracji, ponieważ są one na platformie Azure (przyrostu i zmiany).
-* Bazy danych w każdej lokalizacji powinny replikowane do innych lokalizacji Azure raz dziennie.
-* Każdej aplikacji należy używać 5 serwerów sieci web frontonu, 2 serwery aplikacji (w razie potrzeby) i 2 serwery bazy danych.
-
-### <a name="plan"></a>Planowanie
-Należy rozpocząć planowanie o udzielenie odpowiedzi na pytania w projekcie [określenie wymagań w zakresie](#Define-requirements) sekcji, jak pokazano poniżej.
-
-1. Ich lokalizacje Azure zostanie użyty do hosta sieci wirtualnych?
-
-    2 lokalizacje w Ameryce Północnej i 2 lokalizacji w Europie. Należy wybrać te, na podstawie fizycznej lokalizacji centrami danych lokalnych. W ten sposób połączenia z Twojej lokalizacji fizycznych do platformy Azure będą mieć lepszą opóźnienia.
-2. Potrzebujesz do zapewnienia komunikacji między tymi lokalizacjami Azure?
-
-    Tak. Ponieważ bazy danych muszą zostać zreplikowane do wszystkich lokalizacji.
-3. Czy trzeba zapewniają komunikację między VNet(s) Twojego Azure i lokalnymi center(s) danych?
-
-    Tak. Ponieważ użytkowników połączonych z lokalnymi centrami danych musi mieć możliwość dostępu do aplikacji za pośrednictwem tunelu zaszyfrowane.
-4. Jak wiele maszyn wirtualnych IaaS należy użyć dla rozwiązania?
-
-    200 maszyn wirtualnych IaaS. App1, App2 App3 i App4 wymagają 5 serwerów sieci web, każdy, 2 aplikacji na każdym serwerze i serwerami baz danych 2 każdego. To suma 9 maszyn wirtualnych IaaS na aplikację lub 36 maszyn wirtualnych IaaS. App5 i App6 wymagają 5 serwerów sieci web, jak i 2 serwery baz danych. To suma 7 maszyn wirtualnych IaaS na aplikację lub 14 maszyn wirtualnych IaaS. W związku z tym należy 50 maszyn wirtualnych IaaS dla wszystkich aplikacji w każdym regionie Azure. Ponieważ należy użyć 4 regionów, będzie 200 maszyn wirtualnych IaaS.
-
-    Należy również podać serwerów DNS w każdej sieci wirtualnej lub w centrach danych z lokalnego do rozpoznawania nazw między maszyn wirtualnych IaaS platformy Azure i siecią lokalną.
-5. Potrzebujesz do izolacji ruchu w oparciu o grupy maszyn wirtualnych (tj. fronton sieci web serwerów i serwerów bazy danych zaplecza)?
-
-    Tak. Każda aplikacja powinna być całkowicie odizolowane od siebie, a także każdej warstwy aplikacji powinna zostać odizolowana.
-6. Czy trzeba sterowaniu przepływem ruchu przy użyciu wirtualnych urządzeń?
-
-    Nie. Urządzenie wirtualne może służyć do zapewnienia większą kontrolę nad przepływ ruchu, tym bardziej szczegółowe rejestrowanie płaszczyzna danych.
-7. Czy użytkownicy mają różne zestawy uprawnień do różnych zasobów platformy Azure?
-
-    Tak. Zespół sieci musi pełnej kontroli dla ustawień sieci wirtualnej, gdy deweloperzy tylko powinien mieć możliwość wdrażania ich maszyn wirtualnych do istniejącego podsieci.
-
-### <a name="design"></a>Projekt
-Należy stosować projektu określenie subskrypcji, sieci wirtualnych, podsieci i grup NSG. W tym miejscu omówimy grup NSG, ale powinien więcej informacji o [grup NSG](virtual-networks-nsg.md) przed zakończeniem projektu.
-
-**Liczba subskrypcji i sieci wirtualnych**
-
-Następujące wymagania odnoszą się do subskrypcji i sieci wirtualnych:
-
-* Zużycie zasobów w innych jednostek biznesowych nie powinny mieć wpływ na poszczególnych jednostek biznesowych.
-* Należy zminimalizować ilość sieci wirtualnych i podsieci.
-* Poszczególnych jednostek biznesowych powinien mieć pojedynczy test/programowanie używane dla wszystkich aplikacji w sieci wirtualnej.
-* Każda aplikacja znajduje się w 2 różnych Azure centrach danych na kontynencie (Ameryce Północnej i Europie).
-
-Na podstawie tych wymagań, musisz mieć subskrypcję dla poszczególnych jednostek biznesowych. W ten sposób zużycia zasobów przy użyciu jednostki biznesowe zostaną nie wchodzą w skład limity dla innych jednostek biznesowych. I ponieważ chcesz ograniczyć liczbę sieci wirtualnych, należy rozważyć użycie **z jedną subskrypcją jednej jednostki biznesowej, dwie sieci wirtualne dla każdej grupy aplikacji** wzorca, jak pokazano poniżej.
-
-![Pojedyncza subskrypcja](./media/virtual-network-vnet-plan-design-arm/figure9.png)
-
-Należy również określić dla każdej sieci wirtualnej przestrzeni adresowej. Ponieważ należy połączenie między danych lokalnych w centrach regiony platformy Azure, przestrzeni adresowej używane dla sieci wirtualnych platformy Azure nie mogą powodować konfliktów z sieci lokalnej i używane przez każdego sieci wirtualnej przestrzeni adresowej powinien nie mogą powodować konfliktów z innych istniejących sieci wirtualnych. Przestrzenie adresowe w poniższej tabeli można użyć do spełnienia tych wymagań.  
-
-| **Subskrypcja** | **Sieć wirtualna** | **Region platformy Azure** | **Przestrzeń adresowa** |
-| --- | --- | --- | --- |
-| BU1 |ProdBU1US1 |Zachodnie stany USA |172.16.0.0/16 |
-| BU1 |ProdBU1US2 |Wschodnie stany USA |172.17.0.0/16 |
-| BU1 |ProdBU1EU1 |Europa Północna |172.18.0.0/16 |
-| BU1 |ProdBU1EU2 |Europa Zachodnia |172.19.0.0/16 |
-| BU1 |TestDevBU1 |Zachodnie stany USA |172.20.0.0/16 |
-| BU2 |TestDevBU2 |Zachodnie stany USA |172.21.0.0/16 |
-| BU2 |ProdBU2US1 |Zachodnie stany USA |172.22.0.0/16 |
-| BU2 |ProdBU2US2 |Wschodnie stany USA |172.23.0.0/16 |
-| BU2 |ProdBU2EU1 |Europa Północna |172.24.0.0/16 |
-| BU2 |ProdBU2EU2 |Europa Zachodnia |172.25.0.0/16 |
-
-**Liczba podsieci i grupy NSG**
-
-Następujące wymagania odnoszą się do podsieci i grup NSG:
-
-* Należy zminimalizować ilość sieci wirtualnych i podsieci.
-* Każda aplikacja jest całkowicie odizolowane od siebie nawzajem.
-* Każdej aplikacji są dostępne przez klientów w Internecie przy użyciu protokołu HTTP.
-* Każda aplikacja może uzyskiwać użytkowników połączonych centrów danych lokalnych przy użyciu tunelu zaszyfrowane.
-* Połączenie z lokalnymi centrami danych, należy używać istniejącego urządzenia sieci VPN.
-* Bazy danych w każdej lokalizacji powinny replikowane do innych lokalizacji Azure raz dziennie.
-
-Na podstawie tych wymagań, można użyć jednej podsieci na warstwie aplikacji i użycia grup NSG do filtrowania ruchu na aplikację. Dzięki temu wystarczy tylko 3 podsieci w każdej sieci wirtualnej (frontonu, warstwy aplikacji i warstwą danych) i jeden NSG na aplikację w każdej podsieci. W takim przypadku należy rozważyć przy użyciu **jednej podsieci na warstwie aplikacji, grup NSG dla aplikacji** wzorzec projektowy. Na poniższej ilustracji pokazano sposób użycia reprezentująca wzorzec projektowania **ProdBU1US1** sieci wirtualnej.
-
-![W jednej podsieci na warstwę, co grupa NSG dla aplikacji w warstwie](./media/virtual-network-vnet-plan-design-arm/figure11.png)
-
-Jednak należy utworzyć dodatkowe podsieci dla połączenia sieci VPN między sieciami wirtualnymi i centrów danych z lokalnego. I należy określić przestrzeń adresów dla każdej podsieci. Na poniższym rysunku przedstawiono przykładowe rozwiązanie dla **ProdBU1US1** sieci wirtualnej. W tym scenariuszu zostanie zreplikowany dla każdej sieci wirtualnej. Każdy kolor reprezentuje inną aplikację.
-
-![Przykład sieci wirtualnej](./media/virtual-network-vnet-plan-design-arm/figure10.png)
-
-**Kontrola dostępu**
-
-Poniższe wymagania dotyczą kontrola dostępu:
-
-* Grupa sieci firmowej powinna mieć pełną kontrolę nad konfigurację sieci wirtualnej.
-* Deweloperzy w poszczególnych jednostek biznesowych tylko powinna być mógł wdrożyć maszyn wirtualnych do istniejących podsieci.
-
-Na podstawie tych wymagań, można dodać użytkowników z sieci zespołu do wbudowanych **współautora sieci** roli w każdej subskrypcji; i utworzyć niestandardową rolę dla deweloperów aplikacji w każdej subskrypcji, zapewniając im prawa do dodawania maszyn wirtualnych do istniejących podsieci.
-
-## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie sieci wirtualnej](quick-create-portal.md).
-* Zrozumienie sposobu [równoważenia obciążenia](../load-balancer/load-balancer-overview.md) maszyny wirtualne IaaS i [Zarządzanie routingu w wielu regionach platformy Azure](../traffic-manager/traffic-manager-overview.md).
-* Dowiedz się więcej o [sieciowej grupy zabezpieczeń](security-overview.md) rozwiązania NSG.
-* Dowiedz się więcej o sieci [między lokalizacjami oraz opcji łączności sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti).
+Zasady są stosowane do następujących hierarchii: subskrypcji, grupy zarządzania i grupy zasobów. Dowiedz się więcej o [Azure zasad](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub wdrożyć niektóre sieci wirtualnej [szablonu zasad](policy-samples.md) próbek.

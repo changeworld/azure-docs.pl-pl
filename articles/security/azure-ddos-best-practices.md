@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Ochrona przed atakami DDoS Azure: Najlepsze rozwiązania i referencyjne architektury
 
@@ -86,8 +86,8 @@ Dla [usłudze Azure App Service](../app-service/app-service-value-prop-what-is.m
 
 W założeniu bardziej jest zarządzanie ryzykiem przy użyciu różnych obrony strategii. Układanie warstwowo zabezpieczenia w aplikacji zmniejsza prawdopodobieństwo udanego ataku. Zaleca się wdrożenie bezpiecznego projektów dla aplikacji za pomocą wbudowanych możliwości platformy Azure.
 
-Na przykład zwiększa ryzyko ataku z rozmiarem (*powierzchnia*) aplikacji. Powierzchni można zmniejszyć przy użyciu listę dozwolonych podobnej do zamknięcia narażonych przestrzeń adresów IP i nasłuchiwać portów, które nie są wymagane na usługi równoważenia obciążenia ([moduł równoważenia obciążenia Azure](../load-balancer/load-balancer-get-started-internet-portal.md) i [brama aplikacji w usłudze Azure](../application-gateway/application-gateway-create-probe-portal.md)). [Sieciowe grupy zabezpieczeń (NSG)](../virtual-network/virtual-networks-nsg.md) można zmniejszyć obszar ataków.
-Można użyć [usługi tagi](/virtual-network/security-overview.md) i [grup zabezpieczeń aplikacji](/virtual-network/security-overview.md) Aby zmniejszyć złożoność do tworzenia reguł zabezpieczeń i konfigurowania zabezpieczeń sieciowych jako stanowi naturalne rozszerzenie struktury aplikacji.
+Na przykład zwiększa ryzyko ataku z rozmiarem (*powierzchnia*) aplikacji. Powierzchni można zmniejszyć przy użyciu listę dozwolonych podobnej do zamknięcia narażonych przestrzeń adresów IP i nasłuchiwać portów, które nie są wymagane na usługi równoważenia obciążenia ([moduł równoważenia obciążenia Azure](../load-balancer/load-balancer-get-started-internet-portal.md) i [brama aplikacji w usłudze Azure](../application-gateway/application-gateway-create-probe-portal.md)). [Sieciowe grupy zabezpieczeń (NSG)](../virtual-network/security-overview.md) można zmniejszyć obszar ataków.
+Można użyć [usługi tagi](/virtual-network/security-overview.md#service-tags) i [grup zabezpieczeń aplikacji](/virtual-network/security-overview.md#application-security-groups) Aby zmniejszyć złożoność do tworzenia reguł zabezpieczeń i konfigurowania zabezpieczeń sieciowych jako stanowi naturalne rozszerzenie struktury aplikacji.
 
 Należy wdrożyć usług platformy Azure w [sieci wirtualnej](../virtual-network/virtual-networks-overview.md) zawsze, gdy jest to możliwe. Takie rozwiązanie pozwala zasobów usługi do komunikacji przy użyciu prywatnych adresów IP. Domyślnie usługa Azure ruch z sieci wirtualnej używa publiczne adresy IP jako źródłowych adresów IP. Przy użyciu [punkty końcowe usługi](../virtual-network/virtual-network-service-endpoints-overview.md) nastąpi przełączenie ruchu w ramach usługi do korzystania wirtualnych sieci prywatnych adresów źródłowych adresów IP przy ich uzyskujesz dostęp do usługi Azure z sieci wirtualnej.
 
@@ -262,7 +262,7 @@ Istnieje wiele sposobów implementowania architektury n-warstwowej. Na poniższy
 
 W ramach tej architektury standardowe ochrony przed atakami DDoS jest włączona w sieci wirtualnej. Wszystkie publiczne adresy IP w sieci wirtualnej uzyskać ochronę przed atakami DDoS warstwy 3 i 4. W przypadku ochrony warstwy 7 należy wdrożyć brama aplikacji w jednostce SKU zapory aplikacji sieci Web. Aby uzyskać więcej informacji o architekturze wzorcowej, zobacz [w tym artykule](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
 
-#### <a name="paas-web-application"></a>PaaS aplikacji sieci web
+#### <a name="paas-web-application"></a>Aplikacja internetowa PaaS
 
 Informacje o architekturze wzorcowej przedstawia uruchamianie aplikacji usługi Azure App Service w pojedynczym regionie. Taka architektura zawiera zestaw sprawdzonych rozwiązań dotyczących aplikacji sieci web, która używa [usłudze Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) i [bazy danych SQL Azure](https://azure.microsoft.com/documentation/services/sql-database/).
 Rezerwy region jest skonfigurowany dla trybu failover scenariuszy.

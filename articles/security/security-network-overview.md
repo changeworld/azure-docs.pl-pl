@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 843ff1adddcb4c1165ead3f484ad74a503410852
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: fbd589aedb955ee4bd61dc0ec754d8713a98179a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-overview"></a>Przegląd zabezpieczeń sieci platformy Azure
 Azure obejmuje to niezawodna infrastruktura sieci do obsługi aplikacji i wymaganiami dotyczącymi łączności usługi. Łączność sieciowa będzie możliwe między zasobami znajdującymi się na platformie Azure, między lokalnymi i Azure hostowanych zasobów oraz do i z Internetu i Azure.
@@ -57,7 +57,7 @@ Jeśli potrzebujesz kontroli dostępu na poziomie sieci podstawowej (na podstawi
 
 Więcej informacji:
 
-* [Grupy zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md)
+* [Grupy zabezpieczeń sieci](../virtual-network/security-overview.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>Trasy kontroli oraz wymuszonego tunelowania
 Możliwość kontrolowania zachowania routingu w sieci wirtualnej jest krytyczna. Jeśli routing jest niepoprawnie skonfigurowana, aplikacji i usług hostowanych na maszynie wirtualnej może się połączyć nieautoryzowanego urządzenia, w tym systemów i jest przez potencjalnymi atakami.

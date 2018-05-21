@@ -4,13 +4,13 @@ description: Opisuje sposób oceny dużej liczby komputerów lokalnych za pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 05/18/2018
 ms.author: raynew
-ms.openlocfilehash: e0bd62710c47cfdf81535470ef96bad2ab675bb0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -33,13 +33,13 @@ Zaplanuj odnajdywania i oceny na podstawie limitów następujące:
 | Odnajdowanie  | 1,500             |
 | Ocena | 1,500             |
 
-<!-- 
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+<!--
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
 - If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
 - If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
       -->
 
 ## <a name="plan-multiple-discoveries"></a>Planowanie wielu odnajdywania
@@ -88,6 +88,14 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
 
 3. Upewnij się, czy wygenerowane skrótu zgodna następujące ustawienia.
 
+    Dla wersji komórek jajowych 1.0.9.8
+
+    **Algorytm** | **Wartość skrótu**
+    --- | ---
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
     OVA w wersji 1.0.9.7
 
     **Algorytm** | **Wartość skrótu**
@@ -112,30 +120,6 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    OVA w wersji 1.0.8.59
-
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    OVA w wersji 1.0.8.49
-
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    OVA w wersji 1.0.8.40:
-
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 |afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>Tworzenie maszyny wirtualnej modułu zbierającego
 
 Pobrany plik należy zaimportować do programu vCenter Server:
@@ -149,7 +133,7 @@ Pobrany plik należy zaimportować do programu vCenter Server:
 4. W polu **Host/Cluster** (Host/klaster) określ host lub klaster, na którym będzie działać maszyna wirtualna modułu zbierającego.
 5. W obszarze Magazyn określ docelowy magazyn dla maszyny wirtualnej modułu zbierającego.
 6. W obszarze **Disk Format** (Format dysku) określ typ i rozmiar dysku.
-7. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieci wymaga łączności z Internetem można wysłać metadanych na platformie Azure. 
+7. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieci wymaga łączności z Internetem można wysłać metadanych na platformie Azure.
 8. Przejrzyj i Potwierdź ustawienia, a następnie wybierz **Zakończ**.
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>Określ identyfikator i klucz dla każdego projektu
@@ -157,13 +141,13 @@ Pobrany plik należy zaimportować do programu vCenter Server:
 Jeśli masz wiele projektów, pamiętaj zidentyfikować identyfikator i klucz dla każdej z nich. Należy klucza podczas uruchamiania modułu zbierającego, aby odnaleźć maszyn wirtualnych.
 
 1. W projekcie, wybierz **wprowadzenie** > **odnajdź & oceny** > **odnajdywanie maszyn**.
-2. W **skopiuj poświadczenia projektu**, skopiować identyfikator i klucz dla projektu. 
+2. W **skopiuj poświadczenia projektu**, skopiować identyfikator i klucz dla projektu.
     ![Skopiuj poświadczenia projektu](./media/how-to-scale-assessment/copy-project-credentials.png)
 
 ## <a name="set-the-vcenter-statistics-level"></a>Ustaw poziom statystyki vCenter
-Poniżej znajduje się lista liczników wydajności, które zostały zebrane podczas odnajdywania. Te liczniki są domyślnie dostępne na różnych poziomach w programie vCenter Server. 
+Poniżej znajduje się lista liczników wydajności, które zostały zebrane podczas odnajdywania. Te liczniki są domyślnie dostępne na różnych poziomach w programie vCenter Server.
 
-Zalecane ustawienie najwyższego poziomu wspólnych (3) dla poziomu statystyk, tak aby wszystkie liczniki są poprawnie zbierane. Jeśli masz vCenter ustawiony na niższym poziomie tylko kilka liczniki mogą być zbierane całkowicie z resztą równa 0. Ocena następnie mogą być wyświetlane niekompletne dane. 
+Zalecane ustawienie najwyższego poziomu wspólnych (3) dla poziomu statystyk, tak aby wszystkie liczniki są poprawnie zbierane. Jeśli masz vCenter ustawiony na niższym poziomie tylko kilka liczniki mogą być zbierane całkowicie z resztą równa 0. Ocena następnie mogą być wyświetlane niekompletne dane.
 
 W poniższej tabeli wymieniono także wyniki oceny, które zostaną zmienione, jeśli nie ma określonego licznika.
 
@@ -203,7 +187,7 @@ Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbi
 5.  W obszarze **Specify vCenter Server details** (Określ szczegóły serwera vCenter) wykonaj następujące czynności:
     - Określ nazwę (FQDN) lub adres IP serwera vCenter.
     - W **nazwy użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający będzie używane do wykrywania maszyn wirtualnych w programie vCenter Server.
-    - W obszarze **Select scope** (Zakres wybierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający może odnajdywać tylko maszyny wirtualne w podanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Nie powinien on zawierać więcej niż 1000 maszyn wirtualnych. 
+    - W obszarze **Select scope** (Zakres wybierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający może odnajdywać tylko maszyny wirtualne w podanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Nie powinien on zawierać więcej niż 1000 maszyn wirtualnych.
 
 6.  W **Określ migrację**, podaj identyfikator i klucz dla projektu. Jeśli nie zostaną skopiowane, otwórz Azure portal z modułu zbierającego maszyny Wirtualnej. Do projektu **omówienie** wybierz pozycję **odnajdywanie maszyn** i skopiuj wartości.  
 7.  W **wyświetlić postęp kolekcji**, monitorować proces odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
@@ -211,7 +195,7 @@ Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbi
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
-Czas odnajdowania zależy od liczby odnajdowanych maszyn wirtualnych. Zazwyczaj 100 maszyn wirtualnych, odnajdywanie zakończy się wokół godzinę po zakończeniu modułu zbierającego. 
+Czas odnajdowania zależy od liczby odnajdowanych maszyn wirtualnych. Zazwyczaj 100 maszyn wirtualnych, odnajdywanie zakończy się wokół godzinę po zakończeniu modułu zbierającego.
 
 1. W projekcie planowania migracji, zaznacz **Zarządzaj** > **maszyny**.
 2. Sprawdź, czy maszyny wirtualne, które miały zostać odnalezione, są widoczne w portalu.

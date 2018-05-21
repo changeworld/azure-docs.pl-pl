@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0aaf49aaa31a022e040fc7019a2f115f92555010
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-best-practices"></a>Najlepsze rozwiązania sieci platformy Azure
 Microsoft Azure umożliwia podłączenie maszyn wirtualnych i urządzenia do innych urządzeń sieciowych, umieszczając je w sieciach wirtualnych platformy Azure. Sieci wirtualnej platformy Azure jest konstrukcję umożliwia łączenie z karty interfejsu sieci wirtualnej do sieci wirtualnej, aby umożliwić opartych na protokole TCP/IP komunikację między urządzeniami sieciowymi włączone. Maszyny wirtualne platformy Azure podłączone do sieci wirtualnej platformy Azure mogą łączyć się urządzenia w tej samej sieci wirtualnej Azure, różnych sieciach wirtualnych platformy Azure, w Internecie lub nawet w sieci lokalnej.
@@ -56,7 +56,7 @@ Podobnie jak co zrobić lokalnie, należy podzielić większą przestrzeń adres
 
 Routing między podsieciami nastąpi automatycznie i nie trzeba ręcznie skonfigurować tabele routingu. Jednak domyślne ustawienie zakłada, że bez kontroli dostępu do sieci między podsieciami, utworzone w sieci wirtualnej platformy Azure. Aby można było utworzyć kontroli dostępu do sieci między podsieciami, należy umieścić coś między podsieciami.
 
-Jednym z elementów, można użyć do wykonania tego zadania jest [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) (NSG). Grupy NSG są proste pakietów kontroli urządzeń, które używają 5 parametrów (źródłowy adres IP, port źródłowy, docelowy adres IP, docelowy port i protokół warstwy 4) podejście do tworzenia zezwalania/niezezwalania reguły dla ruchu sieciowego. Można akceptować lub odrzucać ruch do i z pojedynczego adresu IP do i z wielu adresów IP lub nawet do i z całej podsieci.
+Jednym z elementów, można użyć do wykonania tego zadania jest [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) (NSG). Grupy NSG są proste pakietów kontroli urządzeń, które używają 5 parametrów (źródłowy adres IP, port źródłowy, docelowy adres IP, docelowy port i protokół warstwy 4) podejście do tworzenia zezwalania/niezezwalania reguły dla ruchu sieciowego. Można akceptować lub odrzucać ruch do i z pojedynczego adresu IP do i z wielu adresów IP lub nawet do i z całej podsieci.
 
 Za pomocą grup NSG kontroli dostępu do sieci między podsieciami pozwala umieścić zasoby, które należą do tej samej strefie zabezpieczeń lub roli w swoich własnych podsieciach. Na przykład traktować prostą aplikację 3-warstwowej warstwa sieci web, warstwy logiki aplikacji i warstwy bazy danych. Możesz zaznaczyć maszyn wirtualnych, które należą do każdego z tych warstw w swoich własnych podsieciach. Następnie można użyć grupy NSG, aby kontrolować ruch między podsieciami:
 
@@ -64,7 +64,7 @@ Za pomocą grup NSG kontroli dostępu do sieci między podsieciami pozwala umie�
 * Maszyny wirtualne logiki aplikacji tylko mogą inicjować połączenia z warstwą bazy danych i może akceptować tylko połączenia z warstwą sieci web
 * Maszyny wirtualne warstwy bazy danych nie można zainicjować połączenia z niczego poza ich własnych podsieci i może akceptować tylko połączenia z warstwy logiki aplikacji
 
-Aby dowiedzieć się więcej o grup zabezpieczeń sieci i sposobie ich użycia logicznie segmentów sieci wirtualne platformy Azure, zobacz [co to jest grupa zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md) (NSG).
+Aby dowiedzieć się więcej o grup zabezpieczeń sieci i sposobie ich użycia logicznie segmentów sieci wirtualne platformy Azure, zobacz [co to jest grupa zabezpieczeń sieci](../virtual-network/security-overview.md) (NSG).
 
 ## <a name="control-routing-behavior"></a>Kontrolowania zachowania routingu
 Po umieszczeniu maszyny wirtualnej w sieci wirtualnej platformy Azure można zauważyć, że maszyna wirtualna może łączyć się żadnej innej maszyny wirtualnej w tej samej sieci wirtualnej Azure, nawet jeśli inne maszyny wirtualne są w różnych podsieciach. Jest to możliwe, ponieważ jest kolekcją tras systemowych, które są domyślnie włączone zezwalające na ten typ komunikacji. Te trasy domyślnej umożliwić maszynom wirtualnym na tej samej sieci wirtualnej platformy Azure do nawiązania połączenia ze sobą oraz z Internetem (dla komunikacji wychodzącej tylko z Internetem).

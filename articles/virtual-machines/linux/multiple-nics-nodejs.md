@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 5a4e19f232abce8701e6d2e12a876c55079b91a2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c87d4f07a01fa42ceb2582b974feb4e802b3e03f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Utwórz maszynę wirtualną systemu Linux z wieloma kartami sieciowymi przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 Można utworzyć maszynę wirtualną (VM) na platformie Azure, który ma wiele interfejsów sieci wirtualnej (NIC) do niego dołączony. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. W tym artykule przedstawiono szybki poleceń, aby utworzyć Maszynę wirtualną z wieloma kartami sieciowymi, do niego dołączony. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
@@ -104,7 +104,7 @@ azure network nic create \
     --subnet-name mySubnetBackEnd
 ```
 
-Zwykle również utworzyć [sieciowej grupy zabezpieczeń](../../virtual-network/virtual-networks-nsg.md) lub [modułu równoważenia obciążenia](../../load-balancer/load-balancer-overview.md) ułatwia zarządzanie i rozpowszechniają ruch maszyn wirtualnych. Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Zwykle również utworzyć [sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md) lub [modułu równoważenia obciążenia](../../load-balancer/load-balancer-overview.md) ułatwia zarządzanie i rozpowszechniają ruch maszyn wirtualnych. Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
 azure network nsg create \

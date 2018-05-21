@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: c41a1057bb87c70362477d221b69ca3f5137dec4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a2e2075a735b63588352f3bcdc97e2d6410660fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Tworzenie sieci wirtualnej (wdrożenia klasyczne) z wieloma podsieciami
 
@@ -162,7 +162,6 @@ Można utworzyć sieci wirtualnej (wdrożenia klasyczne) przy użyciu [portalu A
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej o wszystkich ustawieniach podsieci i sieci wirtualnej, zobacz [Zarządzanie sieciami wirtualnymi](manage-virtual-network.md) i [Zarządzanie podsieci sieci wirtualnej](virtual-network-manage-subnet.md). Istnieją różne opcje dotyczące używania sieci wirtualnych i podsieci w środowisku produkcyjnym, aby spełnić różne wymagania.
-- Filtrowanie ruchu przychodzącego i wychodzącego podsieci, tworzenie i stosowanie [sieciowej grupy zabezpieczeń](virtual-networks-nsg.md) do podsieci.
 - Utwórz [systemu Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny wirtualnej, a następnie połącz się z istniejącą siecią wirtualną.
 - Aby połączyć dwie sieci wirtualne w tej samej lokalizacji platformy Azure, Utwórz [sieci wirtualnej komunikacji równorzędnej](create-peering-different-deployment-models.md) między sieciami wirtualnymi. Elementu równorzędnego sieci wirtualnej (Resource Manager) do sieci wirtualnej (wdrożenia klasyczne), ale nie można utworzyć komunikacji równorzędnej między dwoma sieciami wirtualnymi (klasyczny).
 - Połączyć sieć wirtualną z siecią lokalną przy użyciu [bramy sieci VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) obwodu.

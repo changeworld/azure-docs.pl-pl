@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: c18d4d175bace79fefedc09fb887e707b8c066d9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki bazy danych SQL Azure i rejestrowanie danych diagnostycznych 
 Baza danych SQL Azure może emitować metryki i informacji diagnostycznych dzienników łatwiejsze monitorowania. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
@@ -155,7 +155,7 @@ Można połączyć tych parametrów, aby włączyć wiele opcji danych wyjściow
 
 ### <a name="rest-api"></a>Interfejs API REST
 
-Przeczytaj informacje o sposobie [zmiany ustawień diagnostyki za pomocą interfejsu API REST Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx). 
+Przeczytaj informacje o sposobie [zmiany ustawień diagnostyki za pomocą interfejsu API REST Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). 
 
 ### <a name="resource-manager-template"></a>Szablon usługi Resource Manager
 

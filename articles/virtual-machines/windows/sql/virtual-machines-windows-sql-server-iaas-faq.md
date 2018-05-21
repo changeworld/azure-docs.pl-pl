@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/20/2018
 ms.author: v-shysun
-ms.openlocfilehash: 42a82a59d0cf786e80b93f124cbe04007b2a4704
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e0254cd16c27597c3d52aed19b4c4ece49bac765
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-windows-azure-virtual-machines"></a>Często zadawane pytania dotyczące programu SQL Server na maszynach wirtualnych Windows Azure
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
@@ -139,4 +139,4 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące
 * [Omówienie programu SQL Server na maszynie Wirtualnej systemu Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 * [Udostępnić Maszynę wirtualną systemu Linux serwera SQL](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
 * [Często zadawane pytania (Linux)](../../linux/sql/sql-server-linux-faq.md)
-* [Serwer SQL w dokumentacji systemu Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Dokumentacja programu SQL Server w systemie Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

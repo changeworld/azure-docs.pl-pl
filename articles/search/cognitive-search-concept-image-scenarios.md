@@ -10,11 +10,11 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: c58e731f6b8c86a0b7d6f2500d81077904b2f5ef
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 77fbd69aad6c78ecd5c933d8017c980afaa661a3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak informacje o procesie i wyodrębniania z obrazów w scenariuszach kognitywnych wyszukiwania
 
@@ -38,6 +38,8 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które iteracja obra
 
 > [!NOTE]
 > Jeśli ustawisz *imageAction* właściwości na inny niż "none", nie będzie możliwe ustawienie *parsingMode* właściwości na inny niż "domyślny".  Można ustawić tylko jedną z tych dwóch właściwości do wartości innych niż domyślne w konfiguracji indeksatora.
+
+Ustaw **parsingMode** parametr `json` (do indeksowania każdy obiekt blob jako pojedynczego dokumentu) lub `jsonArray` (jeśli obiektów blob zawiera tablice notacji JSON, należy każdy element tablicy powinien być traktowany jako osobny dokument).
 
 Wartość domyślna pikseli 2000 znormalizowane obrazy maksymalną szerokość i wysokość jest oparta na maksymalne rozmiary obsługiwane przez [umiejętności Rozpoznawania](cognitive-search-skill-ocr.md) i [obrazu umiejętności analizy](cognitive-search-skill-image-analysis.md). Jeśli zwiększysz maksymalnych przetwarzanie może zakończyć się niepowodzeniem na większych obrazów.
 

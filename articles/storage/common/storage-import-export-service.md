@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6dc104470ca2bfd738ca9bfc334a1c1325f7318
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Transfer danych do usługi Azure Storage za pomocą usługi Import/Eksport Microsoft Azure
 W tym artykule udostępniamy instrukcje krok po kroku na temat używania usługi Import/Eksport Azure do bezpiecznego przesyłania dużych ilości danych do magazynu obiektów Blob platformy Azure i usługi pliki Azure przez wysyłanie dysków do centrum danych platformy Azure. Ta usługa może również przesyłanie danych z magazynu Azure do dysków twardych i wysłać do lokalnych witryn. Dane z pojedynczej stacji dysków SATA wewnętrzny można zaimportować do magazynu obiektów Blob platformy Azure lub usługi pliki Azure. 
@@ -266,7 +266,7 @@ Zostanie wyświetlony jeden z następujących stanów zadania w zależności od 
 | Odebrane | Po otrzymaniu wszystkich dysków w centrum danych, stan zadania można ustawić odebrane. |
 | Transferowanie | Po rozpoczęciu przetwarzania co najmniej jeden dysk transferowanie będzie można ustawić stan zadania. Zobacz poniższą sekcję stany stacji, aby uzyskać szczegółowe informacje. |
 | Pakowanie | Po zakończeniu wszystkich dysków przetwarzania, zadania zostaną umieszczone w stanie pakowania dopóki dyski są wysyłane z powrotem do. |
-| Ukończone | Po wszystkie dyski zostały wysłane do klienta, jeśli zadanie zostało ukończone bez błędów, zadanie zostanie ustawiona do stanu ukończone. Zadania zostaną automatycznie usunięte po 90 dniach w stanie ukończone. |
+| Ukończony | Po wszystkie dyski zostały wysłane do klienta, jeśli zadanie zostało ukończone bez błędów, zadanie zostanie ustawiona do stanu ukończone. Zadania zostaną automatycznie usunięte po 90 dniach w stanie ukończone. |
 | Zamknięte | Po wszystkie dyski zostały wysłane do klienta, jeśli pojawiły się błędy podczas przetwarzania zadania, zadanie zostanie ustawiona do stanie zamkniętym. Zadania zostaną automatycznie usunięte po 90 dniach w stanie zamkniętym. |
 
 W poniższej tabeli opisano cyklu życia poszczególnych dyskach, ponieważ przechodzi ona za pomocą zadania importu lub eksportu. Bieżący stan każdego dysku w ramach zadania jest teraz widoczne w portalu Azure.
@@ -278,7 +278,7 @@ W poniższej tabeli opisano każdy stan każdego dysku w ramach zadania mogą pr
 | Odebrane | Dysk przejścia do stanu odebrane, gdy operator usługi Import/eksport został przetworzony dysków, które zostały odebrane od firmy wysyłania dla zadania importu. Dla zadania eksportu stan początkowy dysku jest w stanie Received. |
 | NeverReceived | Dysk zostanie przeniesione do stanu NeverReceived po odebraniu pakietu dla zadania, ale pakiet nie zawiera dysku. Dysku można również przenosić w tym stanie, jeśli został dwa tygodnie od momentu usługa odebrała informacji dotyczących wysyłki, ale pakiet nie ma jeszcze dotarły centrum danych. |
 | Transferowanie | Dysk zostanie przeniesione do stanu transferowanie, gdy usługa zaczyna się na przesyłanie danych z dysku do systemu Windows Azure Storage. |
-| Ukończone | Dysku zostanie przejście do stanu ukończone, gdy usługa pomyślnie przeniósł wszystkich danych bez błędów.
+| Ukończony | Dysku zostanie przejście do stanu ukończone, gdy usługa pomyślnie przeniósł wszystkich danych bez błędów.
 | CompletedMoreInfo | Dysk będzie przejście do stanu CompletedMoreInfo, gdy usługa napotkał problemy podczas kopiowania danych z lub na dysku. Informacje mogą obejmować błędy, ostrzeżenia lub komunikaty informacyjne o zastępowaniu obiektów blob.
 | ShippedBack | Dysk spowoduje przejście do stanu ShippedBack, gdy zostały wydane z tyłu centrum danych na adres zwrotny. |
 
@@ -569,6 +569,9 @@ Jeśli przy użyciu [narzędzie WAImportExport](http://download.microsoft.com/do
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
 ```
+
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Trwa konfigurowanie narzędzia WAImportExport](storage-import-export-tool-how-to.md)

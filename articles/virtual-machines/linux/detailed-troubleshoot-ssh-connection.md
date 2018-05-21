@@ -1,12 +1,12 @@
 ---
-title: "Szczegółowe rozwiązywanie SSH dla maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Szczegółowe kroki rozwiązywania problemów dotyczących problemów nawiązywania połączenia z maszyny wirtualnej platformy Azure SSH"
-keywords: "SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się"
+title: Szczegółowe rozwiązywanie SSH dla maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Szczegółowe kroki rozwiązywania problemów dotyczących problemów nawiązywania połączenia z maszyny wirtualnej platformy Azure SSH
+keywords: SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 88f3ca3202359f9f45f5b9a5054ab95b40558520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>SSH szczegółowe kroki rozwiązywania problemów dotyczących problemów, połączenie z maszyną wirtualną systemu Linux na platformie Azure
 Istnieje wiele przyczyn, które klient SSH mogą nie być możliwe nawiązanie łączności usługi SSH na maszynie Wirtualnej. Jeśli wykonano za pomocą bardziej [SSH ogólne kroki rozwiązywania problemów](troubleshoot-ssh-connection.md), należy rozwiązać problem z połączeniem. W tym artykule przedstawiono szczegółowe kroki rozwiązywania problemów, aby określić, gdzie kończy się niepowodzeniem połączenia SSH i sposobu rozwiązania go.
@@ -39,7 +39,7 @@ Poniższe etapy ułatwiają wyizolować źródło problemu i ustalić rozwiązan
 
 2. Wybierz **ustawienia** zbadanie punktów końcowych, adresy IP, grup zabezpieczeń sieci i innych ustawień.
 
-   Maszyna wirtualna ma punkt końcowy zdefiniowany dla ruchu protokołu SSH, który można wyświetlić w **punkty końcowe** lub  **[sieciowej grupy zabezpieczeń](../../virtual-network/virtual-networks-nsg.md)**. Punkty końcowe na maszynach wirtualnych, które zostały utworzone za pomocą Menedżera zasobów są przechowywane w grupie zabezpieczeń sieci. Sprawdź, czy zasady zostały zastosowane do grupy zabezpieczeń sieci i odwołuje się w podsieci.
+   Maszyna wirtualna ma punkt końcowy zdefiniowany dla ruchu protokołu SSH, który można wyświetlić w **punkty końcowe** lub  **[sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md)**. Punkty końcowe na maszynach wirtualnych, które zostały utworzone za pomocą Menedżera zasobów są przechowywane w grupie zabezpieczeń sieci. Sprawdź, czy zasady zostały zastosowane do grupy zabezpieczeń sieci i odwołuje się w podsieci.
 
 Aby sprawdzić łączność sieciową, sprawdź skonfigurowane punkty końcowe i zobacz, jeśli można połączyć się z maszyną Wirtualną za pomocą innego protokołu, na przykład HTTP lub innej usługi.
 
@@ -111,7 +111,7 @@ Aby usunąć punkt końcowy jako źródło problemu, Usuń bieżący punkt końc
 
 ## <a name="source-4-network-security-groups"></a>Źródła 4: Grupy zabezpieczeń sieci
 Sieciowe grupy zabezpieczeń umożliwiają mieć większą kontrolę nad dozwolonego ruchu przychodzącego i wychodzącego. Można utworzyć reguły, które obejmują podsieci oraz usług w sieci wirtualnej platformy Azure w chmurze. Sprawdź reguły grupy zabezpieczeń sieci, tak aby upewnić się, że może SSH ruch do i z Internetu.
-Aby uzyskać więcej informacji, zobacz [dotyczące grup zabezpieczeń sieci](../../virtual-network/virtual-networks-nsg.md).
+Aby uzyskać więcej informacji, zobacz [dotyczące grup zabezpieczeń sieci](../../virtual-network/security-overview.md).
 
 Umożliwia także sprawdzić IP do sprawdzania poprawności konfiguracji grupy NSG. Aby uzyskać więcej informacji, zobacz [omówienie monitorowania sieci platformy Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 

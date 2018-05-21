@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Zagadnienia dotyczące zabezpieczeń programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -46,7 +46,7 @@ Podczas tworzenia maszyny wirtualnej programu SQL Server z obrazem galerii **ł�
 
 Najlepiej wybierz opcję najbardziej restrykcyjne dla danego scenariusza. Na przykład jeśli używasz aplikacji, który uzyskuje dostęp do programu SQL Server na tej samej maszyny Wirtualnej, następnie **lokalnego** jest najbezpieczniejszy wybór. Jeśli używasz aplikacji Azure, która wymaga dostępu do programu SQL Server, następnie **prywatnej** zabezpiecza komunikację z programem SQL Server tylko w obrębie określonego [sieci wirtualnej Azure](../../../virtual-network/virtual-networks-overview.md). Jeśli potrzebujesz **publicznego** (internet) dostęp do maszyny Wirtualnej programu SQL Server, a następnie upewnij się, że należy stosować inne najlepsze rozwiązania w tym temacie w celu ograniczenia obszaru powierzchni ataku.
 
-Wybrane opcje w portalu Użyj reguł zabezpieczeń dla ruchu przychodzącego na maszynach wirtualnych [sieciowej grupy zabezpieczeń](../../../virtual-network/virtual-networks-nsg.md) (NSG), aby zezwolić lub odmówić ruch sieciowy do maszyny wirtualnej. Można zmodyfikować lub utworzyć nowe reguły NSG dla ruchu przychodzącego zezwalająca na ruch do portu programu SQL Server (domyślnie 1433). Można również określić określonych adresów IP, które mogą komunikować się za pośrednictwem tego portu.
+Wybrane opcje w portalu Użyj reguł zabezpieczeń dla ruchu przychodzącego w maszynie wirtualnej [sieciowej grupy zabezpieczeń](../../../virtual-network/security-overview.md) (NSG), aby zezwolić lub odmówić ruch sieciowy do maszyny wirtualnej. Można zmodyfikować lub utworzyć nowe reguły NSG dla ruchu przychodzącego zezwalająca na ruch do portu programu SQL Server (domyślnie 1433). Można również określić określonych adresów IP, które mogą komunikować się za pośrednictwem tego portu.
 
 ![Reguły sieciowych grup zabezpieczeń](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 
