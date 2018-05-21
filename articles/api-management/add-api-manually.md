@@ -1,11 +1,11 @@
 ---
-title: "Dodaj interfejs API ręcznie przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek pokazuje, jak dodać interfejs API ręcznie za pomocą interfejsu API zarządzania (APIM)."
+title: Ręczne dodawanie interfejsu API przy użyciu witryny Azure Portal | Microsoft Docs
+description: Ten samouczek przedstawia sposób użycia usługi API Management (APIM) do ręcznego dodawania interfejsu API.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 9426839f88daece1bb688a2079b7854ccaebdc57
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="add-an-api-manually"></a>Ręcznie Dodaj interfejs API 
+# <a name="add-an-api-manually"></a>Ręczne dodawanie interfejsu API 
 
-Kroki opisane w tym artykule pokazano, jak przy użyciu portalu Azure Dodaj interfejs API ręcznie do wystąpienia interfejsu API zarządzania (APIM). Typowy scenariusz, jeśli chcesz utworzyć pusty interfejsu API i ręczne definiowanie jest, aby mock interfejsu API. Aby uzyskać szczegółowe informacje o mocking interfejsu API, zobacz [odpowiedzi Mock interfejsu API](mock-api-responses.md).
+W tym artykule opisano kroki ręcznego dodawania interfejsu API do wystąpienia usługi API Management (APIM). Typowy scenariusz, w przypadku którego tworzysz pusty interfejs API i definiujesz go ręcznie, to pozorowanie interfejsu API. Aby uzyskać szczegółowe informacje na interfejsu API na temat pozorowania interfejsu API, zobacz [Pozorowanie odpowiedzi interfejsu API](mock-api-responses.md).
 
-Jeśli chcesz zaimportować istniejące interfejsu API, zobacz [Tematy pokrewne](#related-topics) sekcji.
+Jeśli chcesz zaimportować istniejący interfejs API, zobacz sekcję [tematów pokrewnych](#related-topics).
 
-W tym artykule, możemy utworzyć pusty interfejsu API i określić [httpbin.org](http://httpbin.org) (publiczne usługi testowania) jako interfejs API zaplecza.
+W tym artykule tworzymy pusty interfejs API i określamy usługę [httpbin.org](http://httpbin.org) (publiczną usługę testowania) jako interfejs API zaplecza.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
+Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>Tworzenie interfejsu API
 
-1. Wybierz **interfejsów API** zgodnie z **zarządzanie interfejsami API**.
-2. Wybierz z menu po lewej stronie **+ Dodaj interfejsu API**.
-3. Wybierz **puste API** z listy.
+1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
+2. Z menu po lewej stronie wybierz pozycję **+ Dodaj interfejs API**.
+3. Z listy wybierz pozycję **Pusty interfejs API**.
 
     ![Pusty interfejs API](media/add-api-manually/blank-api.png)
 4. Wprowadź ustawienia interfejsu API.
@@ -46,62 +46,62 @@ Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure
 
     |**Nazwa**|**Wartość**|**Opis**|
     |---|---|---|
-    |**Nazwa wyświetlana**|"*Puste interfejsu API*" |Ta nazwa jest wyświetlana w portalu dla deweloperów.|
-    |**Adres URL usługi sieci Web** (opcjonalnie)| "*http://httpbin.org*"| Jeśli chcesz mock interfejsu API, może nie można wprowadzić żadnych. <br/>W takim przypadku możemy wprowadzić [http://httpbin.org](http://httpbin.org). Jest to publicznej usługi testowych. <br/>Jeśli chcesz zaimportować interfejs API, który jest zamapowany na zaplecze automatycznie znajduje się w tematach w [Tematy pokrewne](#related-topics) sekcji.|
-    |**Schemat adresu URL**|"*HTTPS*"|W takim przypadku nawet jeśli wewnętrznej ma dostęp HTTP niezabezpieczone, określono bezpiecznego dostępu HTTPS APIM do wewnętrznej. <br/>Tego rodzaju w scenariuszu (HTTPS http), jest nazywany zakończenia połączenia HTTPS. Można to zrobić, jeśli istnieje interfejsu API w sieci wirtualnej (Jeżeli wiadomo, że dostęp jest bezpieczne, nawet jeśli nie jest używany protokół HTTPS). <br/>Możesz chcieć użyć "Zakończenia połączenia HTTPS" można zapisać na kilka cykli Procesora.|
-    |**Sufiks adresu URL**|"*hbin*"| Sufiks to nazwa, która określa tego interfejsu API w tym wystąpieniu APIM. Musi być unikatowa w tym wystąpieniu APIM.|
-    |**Produkty**|"*Nieograniczone*" |Opublikuj interfejsu API interfejsu API można skojarzyć z produktem. Jeśli chcesz dla interfejsu API do opublikowania i być dostępne dla deweloperów, należy ją dodać do produktu. Można to zrobić podczas tworzenia interfejsu API lub ustaw ją później.<br/><br/>Produkty są skojarzenia jeden lub więcej interfejsów API. Można zawierają wiele interfejsów API i ich oferty dla deweloperów za pośrednictwem portalu dla deweloperów. <br/>Deweloperzy muszą najpierw subskrybować produktu, aby uzyskać dostęp do interfejsu API. Gdy subskrybujesz one, otrzymują klucz subskrypcji, który ułatwia jakiegokolwiek interfejsu API w tym produkcie. Jeśli utworzono wystąpienie APIM jesteś administratorem już, aby zasubskrybować każdego produktu domyślnie.<br/><br/> Domyślnie każde wystąpienie interfejsu API zarządzania jest dostarczany z dwóch produktów próbki: **Starter** i **nieograniczone**.| 
+    |**Nazwa wyświetlana**|„*Pusty interfejs API*” |Ta nazwa jest wyświetlana w portalu dla deweloperów.|
+    |**Adres URL usługi internetowej** (opcjonalnie)| „*http://httpbin.org*”| Jeśli chcesz pozorować interfejs API, możesz nie wprowadzać żadnych informacji. <br/>W tym przypadku wprowadzamy [http://httpbin.org](http://httpbin.org). Jest to publiczna usługa testowania. <br/>Jeśli chcesz zaimportować interfejs API, który jest automatycznie mapowany na zaplecze, zapoznaj się z jednym z tematów w sekcji [tematów pokrewnych](#related-topics).|
+    |**Schemat adresu URL**|„*HTTPS*”|W takim przypadku nawet jeśli zaplecze ma niezabezpieczony dostęp przez protokół HTTP, określamy bezpieczny dostęp usługi APIM przez protokół HTTPS do zaplecza. <br/>Taki scenariusz (HTTPS do HTTP) jest nazywany zakończeniem połączenia HTTPS. Tę czynność można wykonać, jeśli w sieci wirtualnej istnieje interfejs API (jeśli wiadomo, że dostęp jest zabezpieczony, nawet jeśli protokół HTTPS nie jest używany). <br/>Procesu „zakończenia połączenia HTTPS” można użyć, aby zaoszczędzić czas w przypadku niektórych cykli procesora.|
+    |**Sufiks adresu URL**|„*hbin*”| Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.|
+    |**Produkty**|„*Nieograniczony*” |Opublikuj interfejs API przez skojarzenie go z produktem. Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.<br/><br/>Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/>Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.<br/><br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **Starter** i **Unlimited**.| 
 5. Wybierz pozycję **Utwórz**.
 
-W tym momencie nie masz żadnych operacji APIM, które są mapowane na operacje interfejsu API zaplecza. Jeśli należy wywołać operację, która jest uwidaczniany za pomocą wewnętrznej, ale nie za pośrednictwem APIM, możesz uzyskać **404**. 
+W tym momencie w usłudze APIM nie ma żadnych operacji mapowanych na operacje w interfejsie API zaplecza. Jeśli wywołasz operację, która jest uwidaczniana za pośrednictwem zaplecza, a nie usługi APIM, może wystąpić błąd **404**. 
 
 >[!NOTE] 
-> Domyślnie po dodaniu interfejsu API, nawet jeśli jest on podłączony do niektórych usługi zaplecza APIM zostanie nie uwidacznia żadnych operacji do listy dozwolonych możesz je. Operacja usługi zaplecza listą dozwolonych adresów IP Utwórz operację APIM mapowana na operację zaplecza.
+> Domyślnie po dodaniu interfejsu API, nawet jeśli został on połączony z usługą zaplecza, usługa APIM nie uwidoczni żadnych operacji do momentu umieszczenia ich na liście dozwolonych. Aby umieścić operację usługi zaplecza na liście dozwolonych, utwórz operację APIM mapowaną na operację zaplecza.
 >
 
 ## <a name="add-and-test-an-operation"></a>Dodawanie i testowanie operacji
 
-W tej sekcji przedstawiono sposób dodawania operacji "/ get" do mapowania go na operację "http://httpbin.org/get" zaplecza.
+W tej sekcji przedstawiono sposób dodawania operacji „/ get” w celu mapowania jej na operację „http://httpbin.org/get” zaplecza.
 
-### <a name="add-the-operation"></a>Dodaj operację
-
-1. Wybierz interfejs API utworzony w poprzednim kroku.
-2. Kliknij przycisk **+ Dodaj operację**.
-3. W **adres URL**, wybierz pozycję **UZYSKAĆ** , a następnie wprowadź "*/get*" w zasobie.
-4. Wprowadź "*FetchData*" dla **Nazwa wyświetlana**.
-5. Wybierz pozycję **Zapisz**.
-
-### <a name="test-the-operation"></a>Operacja testowania
-
-Operacja testowania w portalu Azure. Alternatywnie można przetestować go w **portalu dla deweloperów**.
-
-1. Wybierz **testu** kartę.
-2. Wybierz **FetchData**.
-3. Naciśnij klawisz **wysyłania**.
-
-Pojawi się odpowiedź, który generuje operacji "http://httpbin.org/get". Do przekształcenia działania, zobacz temat [transformacji i chronić interfejsu API](transform-api.md).
-
-## <a name="add-and-test-a-parameterized-operation"></a>Dodawanie i testowanie sparametryzowane operacji
-
-W tej sekcji przedstawiono sposób dodawania operację, która przyjmuje parametr. W takim przypadku możemy mapy operacji "http://httpbin.org/status/200".
-
-### <a name="add-the-operation"></a>Dodaj operację
+### <a name="add-the-operation"></a>Dodawanie operacji
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Kliknij przycisk **+ Dodaj operację**.
-3. W **adres URL**, wybierz pozycję **UZYSKAĆ** , a następnie wprowadź "*/status/ {code}*" w zasobie. Opcjonalnie możesz podać niektóre informacje skojarzone z tym parametrem. Wprowadź na przykład "*numer*" dla **typu**, "*200*" (domyślna), aby uzyskać **wartości**.
-4. Wprowadź "GetStatus" **Nazwa wyświetlana**.
+3. W polu **adresu URL** wybierz pozycję **GET**, a następnie wprowadź ciąg „*/get*” w zasobie.
+4. Wprowadź ciąg „*FetchData*” w polu **Nazwa wyświetlana**.
 5. Wybierz pozycję **Zapisz**.
 
-### <a name="test-the-operation"></a>Operacja testowania 
+### <a name="test-the-operation"></a>Testowanie operacji
 
-Operacja testowania w portalu Azure.  Alternatywnie można przetestować go w **portalu dla deweloperów**.
+Przetestuj operację w witrynie Azure Portal. Możesz również przetestować ją w **portalu deweloperów**.
 
-1. Wybierz **testu** kartę.
-2. Wybierz **GetStatus**. Domyślnie ma ustawioną wartość kodu "*200*". Można zmienić, aby przetestować innych wartości. Na przykład wpisz "*418*".
-3. Naciśnij klawisz **wysyłania**.
+1. Wybierz kartę **Test**.
+2. Wybierz pozycję **FetchData**.
+3. Kliknij pozycję **Wyślij**.
 
-    Pojawi się odpowiedź, który generuje operacji "http://httpbin.org/status/200". Do przekształcenia działania, zobacz temat [transformacji i chronić interfejsu API](transform-api.md).
+Zostanie wyświetlona odpowiedź generowana przez operację „http://httpbin.org/get”. Jeśli chcesz przekształcać operacje, zobacz temat [Przekształcanie i ochrona interfejsu API](transform-api.md).
+
+## <a name="add-and-test-a-parameterized-operation"></a>Dodawanie i testowanie operacji sparametryzowanej
+
+W tej sekcji przedstawiono sposób dodawania operacji przyjmującej parametr. W tym przypadku mapujemy operację na adres „http://httpbin.org/status/200”.
+
+### <a name="add-the-operation"></a>Dodawanie operacji
+
+1. Wybierz interfejs API utworzony w poprzednim kroku.
+2. Kliknij przycisk **+ Dodaj operację**.
+3. W polu **adresu URL** wybierz pozycję **GET**, a następnie wprowadź ciąg „*/status/{code}*” w zasobie. Opcjonalnie możesz podać niektóre informacje skojarzone z tym parametrem. Na przykład wprowadź wartość „*Numer*” w obszarze **TYP** i „*200*” (wartość domyślna) w obszarze **WARTOŚCI**.
+4. Wprowadź ciąg „GetStatus” w polu **Nazwa wyświetlana**.
+5. Wybierz pozycję **Zapisz**.
+
+### <a name="test-the-operation"></a>Testowanie operacji 
+
+Przetestuj operację w witrynie Azure Portal.  Możesz również przetestować ją w **portalu deweloperów**.
+
+1. Wybierz kartę **Test**.
+2. Wybierz pozycję **GetStatus**. Domyślnie wartość kodu jest ustawiana na „*200*”. Można ją zmienić, aby testować inne wartości. Na przykład wpisz wartość „*418*”.
+3. Kliknij pozycję **Wyślij**.
+
+    Zostanie wyświetlona odpowiedź generowana przez operację „http://httpbin.org/status/200”. Jeśli chcesz przekształcać operacje, zobacz temat [Przekształcanie i ochrona interfejsu API](transform-api.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
@@ -110,4 +110,4 @@ Operacja testowania w portalu Azure.  Alternatywnie można przetestować go w **
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przekształcanie i chronić opublikowanych interfejsu API](transform-api.md)
+> [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 8b007c4658d3ca168c4c1a86a72a737c75ca33db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/20/2018
+---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Obsługiwane platformy migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager
 W tym artykule opisano sposób w przypadku włączania migracji infrastruktura jako usługa (IaaS) zasoby z klasycznego, który to modele wdrażania Menedżera zasobów. Możesz przeczytać dodatkowe informacje [funkcje usługi Azure Resource Manager i korzyści](../articles/azure-resource-manager/resource-group-overview.md). Firma Microsoft szczegółowo sposób łączenie zasobów z modeli dwa wdrożenia, które są dostępne w ramach subskrypcji, przy użyciu bramy lokacja lokacja sieci wirtualnej.
 
@@ -93,7 +109,7 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 | Wystąpienia obliczeniowe | Usługi w chmurze, zawierające role sieć web/proces roboczy. | To nie jest obecnie obsługiwane. |
 | Wystąpienia obliczeniowe | Ustaw zawierające więcej niż jednej dostępności usługi w chmurze lub ustawia wiele dostępności. |To nie jest obecnie obsługiwane. Przenieś maszyny wirtualne na tym samym zestawie przed migracją dostępności. |
 | Wystąpienia obliczeniowe | Maszyna wirtualna z rozszerzeniem Centrum zabezpieczeń Azure | Centrum zabezpieczeń Azure automatycznie instaluje rozszerzenia na maszynach wirtualnych, aby monitorować ich zabezpieczeń i zgłaszanie alertów. Rozszerzenia te zwykle uzyskać zainstalowana automatycznie, jeśli Centrum zabezpieczeń Azure jest włączona dla tej subskrypcji. Aby dokonać migracji maszyn wirtualnych, Wyłącz zasady Centrum zabezpieczeń dla subskrypcji, która spowoduje usunięcie monitorowania rozszerzenia z maszyny wirtualnej w Centrum zabezpieczeń. |
-| Wystąpienia obliczeniowe | Maszyna wirtualna z rozszerzeniem kopii zapasowej lub migawki | Te rozszerzenia są zainstalowane na maszynie wirtualnej skonfigurowanych z usługą kopia zapasowa Azure. Aby przeprowadzić migrację tych maszyn wirtualnych, postępuj zgodnie ze wskazówkami [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault).  |
+| Wystąpienia obliczeniowe | Maszyna wirtualna z rozszerzeniem kopii zapasowej lub migawki | Te rozszerzenia są zainstalowane na maszynie wirtualnej skonfigurowanych z usługą kopia zapasowa Azure. Podczas migracji te maszyny wirtualne nie jest obsługiwane, postępuj zgodnie ze wskazówkami [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) przechowywania kopii zapasowych, które zostały pobrane przed migracją.  |
 | Sieć |Sieci wirtualne, które zawierają maszyny wirtualne i role sieć web/proces roboczy |To nie jest obecnie obsługiwane. Przed migracją Przenieś role sieć Web/proces roboczy do ich własnych sieci wirtualnej. Po migracji klasycznych sieci wirtualnych migrowanych sieci wirtualnej Menedżera zasobów Azure można można połączyć za pomocą z klasycznej sieci wirtualnej do osiągnięcia podobnej konfiguracji jak poprzednio.|
 | Sieć | Klasycznym obwody Express Route |To nie jest obecnie obsługiwane. Te obwody należy migrować do usługi Azure Resource Manager przed rozpoczęciem migracji IaaS. Aby dowiedzieć się więcej na ten temat, zobacz [obwody przenoszenie usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Sieci wirtualne, które zawierają środowiska usługi aplikacji |To nie jest obecnie obsługiwane. |

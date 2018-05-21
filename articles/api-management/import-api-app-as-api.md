@@ -1,11 +1,11 @@
 ---
-title: "Importuj aplikację interfejsu API jako interfejs API w portalu Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek przedstawia sposób użycia interfejsu API zarządzania (APIM) do zaimportowania aplikacji interfejsu API jako interfejs API."
+title: Importowanie aplikacji interfejsu API jako interfejsu API przy użyciu witryny Azure Portal | Microsoft Docs
+description: Ten samouczek przedstawia sposób użycia usługi API Management (APIM) do importowania aplikacji interfejsu API jako interfejsu API.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: d0e1aa6763d96b5a84bbc5fba7dcae690c051eb3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="import-an-api-app-as-an-api"></a>Importuj z aplikacji interfejsu API jako interfejs API
+# <a name="import-an-api-app-as-an-api"></a>Importowanie aplikacji interfejsu API jako interfejsu API
 
-W tym artykule pokazano, jak zaimportować aplikację interfejsu API jako interfejs API. Artykuł opisuje również sposób testowania APIM interfejsu API.
+W tym artykule przedstawiono sposób importowania aplikacji interfejsu API jako interfejsu API. Artykuł przedstawia również sposób testowania interfejsu API usługi APIM.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Importuj z aplikacji interfejsu API jako interfejs API
-> * Testowanie interfejsu API w portalu Azure
+> * Importowanie aplikacji interfejsu API jako interfejsu API
+> * Testowanie interfejsu API w witrynie Azure Portal
 > * Testowanie interfejsu API w portalu dla deweloperów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
-+ Upewnij się, że istnieje aplikacji interfejsu API w ramach subskrypcji. Aby uzyskać więcej informacji zobacz [aplikacji usługi dokumentację] [https://docs.microsoft.com/azure/app-service/]
++ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md)
++ Upewnij się, że Twoja subskrypcja obejmuje aplikację interfejsu API. Aby uzyskać więcej informacji, zobacz [Dokumentacja usługi App Service][https://docs.microsoft.com/azure/app-service/]
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importu i opublikuj interfejs API zaplecza
+## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-1. Wybierz **interfejsów API** zgodnie z **zarządzanie interfejsami API**.
-2. Wybierz **aplikacji interfejsu API** z **dodać nowy interfejs API** listy.
+1. Wybierz pozycję **Interfejsy API** w obszarze **API MANAGEMENT**.
+2. Wybierz pozycję **Aplikacja interfejsu API** z listy **Dodaj nowy interfejs API**.
 
-    ! (Aplikacji interfejsu API) [. / media/import-api-app-as-api/api-app.png]
-3. Naciśnij klawisz **Przeglądaj** Aby wyświetlić listę aplikacji interfejsu API w ramach subskrypcji.
-4. Wybierz aplikację. APIM znajduje swagger skojarzone z wybraną aplikację, pobiera go i importuje go. 
+    !(API app)[./media/import-api-app-as-api/api-app.png]
+3. Naciśnij pozycję **Przeglądaj**, aby wyświetlić listę aplikacji interfejsu API w ramach subskrypcji.
+4. Wybierz aplikację. Usługa APIM znajduje program Swagger skojarzony z wybraną aplikacją, a następnie pobiera go i importuje. 
 
-    W przypadku APIM nie może znaleźć struktury swagger, opisuje interfejs API jako interfejs API "przekazywanie". 
-5. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która określa tego interfejsu API w tym wystąpieniu APIM. Musi być unikatowa w tym wystąpieniu APIM.
-6. Opublikuj interfejsu API interfejsu API można skojarzyć z produktem. W takim przypadku "*nieograniczone*" produkt jest używany.  Jeśli chcesz dla interfejsu API do opublikowania i być dostępne dla deweloperów, należy ją dodać do produktu. Można to zrobić podczas tworzenia interfejsu API lub ustaw ją później.
+    Jeśli usługa APIM nie znajdzie programu Swagger, uwidoczni interfejs API jako interfejs API „przekazywania”. 
+5. Dodaj sufiks adresu URL interfejsu API. Sufiks to nazwa, która identyfikuje dany interfejs API w tym wystąpieniu usługi APIM. Musi ona być unikatowa w tym wystąpieniu usługi APIM.
+6. Opublikuj interfejs API przez skojarzenie go z produktem. W takim przypadku jest używany produkt typu „*Nieograniczony*”.  Jeśli chcesz, aby interfejs API został opublikowany i był dostępny dla deweloperów, dodaj go do produktu. Możesz to zrobić podczas tworzenia interfejsu API lub ustawić tę opcję później.
 
-    Produkty są skojarzenia jeden lub więcej interfejsów API. Można zawierają wiele interfejsów API i ich oferty dla deweloperów za pośrednictwem portalu dla deweloperów. Deweloperzy muszą najpierw subskrybować produktu, aby uzyskać dostęp do interfejsu API. Gdy subskrybujesz one, otrzymują klucz subskrypcji, który ułatwia jakiegokolwiek interfejsu API w tym produkcie. Jeśli utworzono wystąpienie APIM jesteś administratorem już, aby zasubskrybować każdego produktu domyślnie.
+    Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc domyślnie posiada subskrypcję każdego produktu.
 
     Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe:
 
@@ -58,31 +58,31 @@ W tym artykule dowiesz się, jak:
     * **Unlimited (nieograniczony)**   
 7. Wybierz pozycję **Utwórz**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowy interfejs API APIM w portalu Azure
+## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
 
-Operacje można wywołać bezpośrednio z portalu Azure oferują wygodny sposób, aby wyświetlić i przetestować operacje interfejsu API.  
+Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.  
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
-2. Naciśnij klawisz **testu** kartę.
-3. Wybierz niektórych operacji.
+2. Naciśnij kartę **Test**.
+3. Wybierz operację.
 
-    Zostaje wyświetlona strona pól parametrów zapytania i nagłówków. Jeden z nagłówków jest "Ocp-Apim-subskrypcji — klucz", dla subskrypcji klucza produktu, który jest skojarzony z tym interfejsie API. Jeśli utworzono wystąpienie APIM są przeznaczone dla administratorów, więc klucz jest wypełniane automatycznie. 
-1. Naciśnij klawisz **wysyłania**.
+    Na stronie zostaną wyświetlone pola parametrów zapytania i pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie. 
+1. Kliknij pozycję **Wyślij**.
 
-    Zaplecze odpowiada **200 OK** i niektórych danych.
+    Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
 
 ## <a name="call-operation"> </a>Wywoływanie operacji z portalu dla deweloperów
 
-Ponadto można wywołać operacji **portalu dla deweloperów** do testowania interfejsów API. 
+Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API. 
 
-1. Wybierz utworzony w interfejsu API "Import i opublikuj interfejs API zaplecza" krok.
-2. Naciśnij klawisz **portalu dla deweloperów**.
+1. Wybierz interfejs API utworzony w kroku „Importowanie i publikowanie interfejsu API zaplecza”.
+2. Naciśnij pozycję **Portal dla deweloperów**.
 
-    Otwiera witrynę "Portalu dla deweloperów".
-3. Wybierz **interfejsu API** utworzony.
+    Zostanie otwarta witryna „Portal dla deweloperów”.
+3. Wybierz utworzony **interfejs API**.
 4. Kliknij operację, którą chcesz przetestować.
-5. Naciśnij klawisz **wypróbuj**.
-6. Naciśnij klawisz **wysyłania**.
+5. Naciśnij pozycję **Wypróbuj**.
+6. Kliknij pozycję **Wyślij**.
     
     Po wywołaniu operacji portal dla deweloperów wyświetla **stan odpowiedzi**, **nagłówki odpowiedzi** oraz wszelką **zawartość odpowiedzi**.
 
@@ -93,4 +93,4 @@ Ponadto można wywołać operacji **portalu dla deweloperów** do testowania int
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przekształcanie i chronić opublikowanych interfejsu API](transform-api.md)
+> [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

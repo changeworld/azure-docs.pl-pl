@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Najlepsze rozwiązania dotyczące zabezpieczeń maszyny Wirtualnej Azure
 
@@ -68,7 +68,7 @@ Jeśli maszyna wirtualna jest uruchomiona krytyczne aplikacje, które wymagają 
 
 [Moduł równoważenia obciążenia Azure](../load-balancer/load-balancer-overview.md) wymaga również, że równoważeniem obciążenia maszyn wirtualnych należą do tego samego zestawu dostępności. Jeśli te maszyny wirtualne muszą być dostępne z Internetu, należy skonfigurować [modułu równoważenia obciążenia internetowy](../load-balancer/load-balancer-internet-overview.md).
 
-Jeśli maszyny wirtualne są udostępniane w Internecie, ważne jest, że [sterowaniu przepływem ruchu sieciowego z grup zabezpieczeń sieci (NSG)](../virtual-network/virtual-networks-nsg.md). Ponieważ grupy NSG można zastosować do podsieci, można zminimalizować liczbę grup NSG przez grupowanie zasobów według podsieci i zastosowanie grup NSG do podsieci. W zamierzeniu, aby utworzyć warstwę izolacji sieci, co można zrobić, odpowiednio konfigurując [zabezpieczenia sieci](../best-practices-network-security.md) możliwości na platformie Azure.
+Jeśli maszyny wirtualne są udostępniane w Internecie, ważne jest, że [sterowaniu przepływem ruchu sieciowego z grup zabezpieczeń sieci (NSG)](../virtual-network/security-overview.md). Ponieważ grupy NSG można zastosować do podsieci, można zminimalizować liczbę grup NSG przez grupowanie zasobów według podsieci i zastosowanie grup NSG do podsieci. W zamierzeniu, aby utworzyć warstwę izolacji sieci, co można zrobić, odpowiednio konfigurując [zabezpieczenia sieci](../best-practices-network-security.md) możliwości na platformie Azure.
 
 Umożliwia także funkcję just in time (JIT) dostęp do maszyny Wirtualnej z Centrum zabezpieczeń Azure do kontrolowania, kto ma dostęp zdalny do określonej maszyny Wirtualnej i jak długo.
 
@@ -124,6 +124,6 @@ Nadużycia zasobu może to stanowić problem, gdy maszyna wirtualna procesów zu
 
 Analizując [pliki dzienników diagnostycznych platformy Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/), możesz monitorować zasobów maszyny Wirtualnej i zidentyfikuj potencjalne problemy, które mogą negatywnie wpłynąć na wydajność i dostępność. Rozszerzenie diagnostyki Azure udostępnia możliwości monitorowania i diagnostyki na maszynach wirtualnych z systemem Windows. Możesz włączyć te możliwości, wraz z rozszerzeniem jako część [szablonu usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md).
 
-Można również użyć [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) wgląd w kondycję Twojego zasobów.
+Można również użyć [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) wgląd w kondycję Twoich zasobów.
 
 Nie można ustalić, czy niektóre zmiany we wzorcach wydajności są prawidłowe lub nieprawidłowe są organizacji, które nie monitorować wydajność maszyny Wirtualnej. Jeśli maszyna wirtualna zużywa więcej zasobów niż zwykle, potencjalny atak z zewnętrznego zasobu lub ze złamanymi zabezpieczeniami procesu uruchomionego na maszynie wirtualnej, może to wskazywać takie anomalii.
