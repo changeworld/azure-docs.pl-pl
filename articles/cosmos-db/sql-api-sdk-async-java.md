@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/18/2018
 ms.author: sngun
-ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9dae401bc007b78d8ee3c6993735650e3b26b9d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Async Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -55,6 +55,18 @@ SDK Java asynchronicznego interfejsu API SQL różni się od zestawu SDK Java in
 
 ## <a name="release-notes"></a>Informacje o wersji
 
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
+* Dodano obsługę unikatowe zasady indeksu.
+* Dodano obsługę ograniczenie rozmiaru token kontynuacji odpowiedzi w opcjach kanału informacyjnego.
+* Dodano obsługę podziału partycji w zapytaniu dla wielu partycji.
+* Rozwiązane usterki w serializacji Json sygnatury czasowej ([github #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
+* Rozwiązane usterki w serializacji enum Json.
+* Stałe usterki w zarządzaniu dokumentów o rozmiarze 2MB ([github #33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
+* Zależności com.fasterxml.jackson.core:jackson-databind uaktualnione do 2.9.5 z powodu błędu ([jackson databind: github #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
+* Zależność od rxjava dodatki uaktualnione do 0.8.0.17 z powodu błędu ([rxjava dodatki: github #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
+* Opis metadanych w pliku pom zaktualizowany w celu zapewnienia wbudowany z resztą dokumentacji.
+* Poprawa składni ([github #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([github #40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
+
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Dodano obsługę wąskiego gardła w zapytaniu.
 * Dodano obsługę identyfikator zakresem kluczy partycji w zapytaniu.
@@ -79,6 +91,7 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 
 | Wersja | Data wydania | Dacie wycofania |
 | --- | --- | --- |
+| [1.0.2](#1.0.2) |18 maja 2018|--- |
 | [1.0.1](#1.0.1) |20 kwietnia 2018|--- |
 | [1.0.0](#1.0.0) |27 lutego 2018 r.|--- |
 

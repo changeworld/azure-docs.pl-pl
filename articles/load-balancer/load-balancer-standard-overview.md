@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 648d96bbb18186524cfad4d3df1f61e98062fcb4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -119,7 +119,7 @@ Przegląd [szczegółowe omówienie HA porty](load-balancer-ha-ports-overview.md
 
 Standardowa usługa równoważenia obciążenia jest w pełni dołączać do sieci wirtualnej.  Sieć wirtualna jest w sieci prywatnej, zamknięte.  Ponieważ standardowe usługi równoważenia obciążenia i standardowe publiczne adresy IP pozwalają tej sieci wirtualnej jako dostępne spoza sieci wirtualnej, te zasoby teraz domyślnie, chyba że je otworzyć. Oznacza to, aby jawnie zezwolić na teraz są używane grupy zabezpieczeń sieci (NSG) i dozwolonych dozwolone ruchu.  Można tworzyć z całym wirtualnego centrum danych i podjąć decyzję za pośrednictwem grupy NSG, co i kiedy powinny być dostępne.  Jeśli nie masz grupy NSG podsieci lub kartę interfejsu Sieciowego zasobu maszyny wirtualnej, firma Microsoft nie będzie zezwalać ruchu do tego zasobu.
 
-Aby dowiedzieć się więcej na temat grup NSG i zastosować je dla danego scenariusza, zobacz [grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md).
+Aby dowiedzieć się więcej na temat grup NSG i zastosować je dla danego scenariusza, zobacz [grup zabezpieczeń sieci](../virtual-network/security-overview.md).
 
 ### <a name="outbound"></a> Połączenia wychodzące
 
@@ -237,7 +237,7 @@ Standardowy moduł równoważenia obciążenia jest produktem obciążona, na po
 - Dowiedz się więcej o [standardowy moduł równoważenia obciążenia z reguły równoważenia obciążenia HA portów](load-balancer-ha-ports-overview.md)
 - Informacje o używaniu [modułu równoważenia obciążenia z wieloma Frontends](load-balancer-multivip-overview.md)
 - Dowiedz się więcej o [sieci wirtualnych](../virtual-network/virtual-networks-overview.md).
-- Dowiedz się więcej o [grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md).
+- Dowiedz się więcej o [grup zabezpieczeń sieci](../virtual-network/security-overview.md).
 - Dowiedz się więcej o [punktów końcowych usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Dowiedz się więcej o niektóre inne kluczowe [możliwości w zakresie obsługi](../networking/networking-overview.md) na platformie Azure.
 - Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md).

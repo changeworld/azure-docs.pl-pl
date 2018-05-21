@@ -1,11 +1,11 @@
 ---
-title: "Ogranicz dostęp za pośrednictwem punkty końcowe skierowane do Internetu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure ** ograniczyć dostęp za pośrednictwem internetowy punkt końcowy **."
+title: Ogranicz dostęp za pośrednictwem punkty końcowe skierowane do Internetu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument przedstawia sposób wykonania zalecenia Centrum zabezpieczeń Azure **ograniczyć dostęp za pośrednictwem punktu końcowego internetowy**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Ogranicz dostęp za pośrednictwem punkty końcowe skierowane do Internetu w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure zaleca ograniczyć dostęp za pośrednictwem punkty końcowe skierowane do Internetu, jeśli jakakolwiek z grup zabezpieczeń sieci (NSG) ma co najmniej jednej reguły dla ruchu przychodzącego zezwalających na dostęp z "dowolny" źródłowy adres IP. Otwieranie dostępu do"" może umożliwić atakującemu dostęp do zasobów. Centrum zabezpieczeń zaleca edytowanie tych reguł ruchu przychodzącego, aby ograniczyć dostęp do źródła adresy IP, które faktycznie muszą mieć dostęp.
@@ -44,18 +44,18 @@ To zalecenie jest generowany dla dowolnego portu sieci web zawierającej "dowoln
 
    ![Reguły zabezpieczeń ruchu przychodzącego][4]
 
-   Uwaga: Możesz też wybrać **domyślne zasady** wyświetlić zestaw domyślnych reguł zawiera wszystkie grupy NSG. Nie można usunąć reguły domyślne, ale ponieważ mają przypisany o niższym priorytecie, mogą być zastąpione przez tworzone zasady. Dowiedz się więcej o [domyślne zasady](../virtual-network/virtual-networks-nsg.md#default-rules).
+   Uwaga: Możesz też wybrać **domyślne zasady** wyświetlić zestaw domyślnych reguł zawiera wszystkie grupy NSG. Nie można usunąć reguły domyślne, ale ponieważ mają przypisany o niższym priorytecie, mogą być zastąpione przez tworzone zasady. Dowiedz się więcej o [domyślne zasady](../virtual-network/security-overview.md#default-security-rules).
 
    ![Reguły domyślne][5]
-5. Na **AllowWeb** bloku, Edytuj właściwości reguły ruchu przychodzącego, aby **źródła** jest adres IP lub blok adresów IP. Aby dowiedzieć się więcej o właściwościach reguły ruchu przychodzącego, zobacz [reguły NSG](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+5. Na **AllowWeb** bloku, Edytuj właściwości reguły ruchu przychodzącego, aby **źródła** jest adres IP lub blok adresów IP. Aby dowiedzieć się więcej o właściwościach reguły ruchu przychodzącego, zobacz [reguły NSG](../virtual-network/security-overview.md#security-rules).
 
    ![Edytowanie reguły ruchu przychodzącego][6]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym artykule przedstawiono sposób wykonania zalecenia Centrum zabezpieczeń "Ograniczanie dostępu za pośrednictwem Internetu połączonej punktu końcowego". Aby dowiedzieć się więcej na temat włączania grup NSG i reguł, zobacz następujące tematy:
 
-* [Co to jest sieciowa grupa zabezpieczeń?](../virtual-network/virtual-networks-nsg.md)
-* [Jak zarządzać grup NSG przy użyciu portalu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Co to jest sieciowa grupa zabezpieczeń?](../virtual-network/security-overview.md)
+* [Zarządzanie grupy zabezpieczeń sieci](../virtual-network/manage-network-security-group.md)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 

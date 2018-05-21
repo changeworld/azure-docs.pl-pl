@@ -2,22 +2,22 @@
 title: Azure Cloud Services definicję schematu (plik csdef) | Dokumentacja firmy Microsoft
 ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
+services: cloud-services
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
 ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: b7735dbf-8e91-4d1b-89f7-2f17e9302469
-caps.latest.revision: ''
+caps.latest.revision: 42
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: d49112df207e3b8e781480e25855ebb259bbab8e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d5e086a952e18e477177634e5c197c27d4a5cc5f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schemat definicji usług w chmurze Azure (plik csdef)
 Plik definicji usługi definiuje modelu usług dla aplikacji. Plik zawiera definicje dla ról, które są dostępne dla usługi w chmurze, określa punkty końcowe usługi i określa ustawienia konfiguracji dla usługi. Wartości ustawienia konfiguracji są ustawione w pliku konfiguracji usługi w sposób opisany w [schemat konfiguracji usługi w chmurze (klasyczne)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
