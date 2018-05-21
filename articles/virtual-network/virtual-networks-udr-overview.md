@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 87e548dcca655436c00b84b440b72e01ad575338
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -118,12 +118,12 @@ Nazwa wyświetlana i przywoływana dla typów następnego przeskoku jest różna
 
 Brama sieci lokalnej może wymieniać trasy z bramą sieci wirtualnej platformy Azure przy użyciu protokołu BGP. Korzystanie z protokołu BGP z bramą sieci wirtualnej platformy Azure zależy od typu wybranego podczas tworzenia bramy. Jeśli wybrany typ to:
 
-- **ExpressRoute**: musisz użyć protokołu BGP, aby anonsować lokalne trasy do routera brzegowego firmy Microsoft. Nie możesz utworzyć tras zdefiniowanych przez użytkownika w celu wymuszania ruchu do bramy sieci wirtualnej usługi ExpressRoute, jeśli wdrożysz bramę sieci wirtualnej wdrożoną jako typ ExpressRoute. Możesz użyć tras zdefiniowanych przez użytkownika w celu wymuszania ruchu z usługi Express Route do, na przykład, sieciowego urządzenia wirtualnego. 
+- **ExpressRoute**: musisz użyć protokołu BGP, aby anonsować lokalne trasy do routera brzegowego firmy Microsoft. Nie możesz utworzyć tras zdefiniowanych przez użytkownika w celu wymuszania ruchu do bramy sieci wirtualnej usługi ExpressRoute, jeśli wdrożysz bramę sieci wirtualnej wdrożoną jako typ ExpressRoute. Możesz użyć tras zdefiniowanych przez użytkownika w celu wymuszania ruchu z usługi Express Route na przykład do sieciowego urządzenia wirtualnego.
 - **VPN**: opcjonalnie możesz użyć protokołu BGP. Aby uzyskać więcej informacji, zobacz [BGP with site-to-site VPN connections (Protokół BGP przy użyciu połączeń sieci VPN lokacja-lokacja)](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 W przypadku, gdy wymieniasz trasy z platformą Azure przy użyciu protokołu BGP, oddzielna trasa jest dodawana do tabeli tras wszystkich podsieci w sieci wirtualnej dla każdego anonsowanego prefiksu. Trasa jest dodawana z *bramą sieci wirtualnej* wymienioną jako element źródłowy i typ następnego przeskoku. 
 
-Propagację trasy protokołu BGP można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes) z typem następnego przeskoku sieci VPN. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](/manage-route-table#create-a-route-table.md).
+Propagację trasy protokołu BGP można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes) z typem następnego przeskoku sieci VPN. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak platforma Azure wybiera trasę
 
@@ -213,7 +213,7 @@ Tabela tras dla podsieci *Subnet1* na ilustracji zawiera następujące trasy:
 |4   |Domyślne|Nieprawidłowy|10.1.0.0/16         |Komunikacja równorzędna sieci wirtualnych           |                   |              |
 |5   |Domyślne|Nieprawidłowy|10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych           |                   |              |
 |6   |Użytkownik   |Aktywne |10.1.0.0/16         |Brak                   |                   |ToVNet2-1-porzuć|
-|7   |Użytkownik   |Aktywne |10.2.0.0/16         |None                   |                   |ToVNet2-2-porzuć|
+|7   |Użytkownik   |Aktywne |10.2.0.0/16         |Brak                   |                   |ToVNet2-2-porzuć|
 |8   |Domyślne|Nieprawidłowy|10.10.0.0/16        |Brama sieci wirtualnej|[X.X.X.X]          |              |
 |9   |Użytkownik   |Aktywne |10.10.0.0/16        |Urządzenie wirtualne      |10.0.100.4         |Do lokalnego    |
 |10  |Domyślne|Aktywne |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
@@ -246,7 +246,7 @@ Tabela tras dla podsieci *Subnet2* na ilustracji zawiera następujące trasy:
 |Domyślne |Aktywne |10.2.0.0/16         |Komunikacja równorzędna sieci wirtualnych              |                   |
 |Domyślne |Aktywne |10.10.0.0/16        |Brama sieci wirtualnej   |[X.X.X.X]          |
 |Domyślne |Aktywne |0.0.0.0/0           |Internet                  |                   |
-|Domyślne |Aktywne |10.0.0.0/8          |None                      |                   |
+|Domyślne |Aktywne |10.0.0.0/8          |Brak                      |                   |
 |Domyślne |Aktywne |100.64.0.0/10       |Brak                      |                   |
 |Domyślne |Aktywne |172.16.0.0/12       |Brak                      |                   |
 |Domyślne |Aktywne |192.168.0.0/16      |Brak                      |                   |
@@ -258,5 +258,5 @@ Tabela tras dla podsieci *Subnet2* zawiera wszystkie domyślne trasy utworzone p
 - [Create a user-defined route table with routes and a network virtual appliance (Tworzenie tabeli tras zdefiniowanej przez użytkownika z trasami i urządzeniem wirtualnym sieci)](tutorial-create-route-table-portal.md)
 - [Configure BGP for an Azure VPN Gateway (Konfigurowanie protokołu BGP dla bramy sieci VPN platformy Azure)](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Use BGP with ExpressRoute (Używanie protokołu BGP z usługą ExpressRoute)](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
-- [View all routes for a subnet (Wyświetlanie wszystkich tras dla podsieci)](virtual-network-routes-troubleshoot-portal.md). Tabela tras zdefiniowanych przez użytkownika wyświetla tylko trasy zdefiniowane przez użytkownika, a nie trasy domyślne i trasy protokołu BGP dla podsieci. Wyświetlanie wszystkich tras pokazuje trasy domyślne, protokołu BGP i zdefiniowane przez użytkownika dla podsieci, w której znajduje się interfejs sieciowy.
-- [Określanie typu następnego przeskoku](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) między maszyną wirtualną i docelowym adresem IP. Funkcja następnego przeskoku usługi Azure Network Watcher umożliwia określenie, czy ruch opuszcza podsieć i jest kierowany tam, gdzie go oczekujesz.
+- [View all routes for a subnet (Wyświetlanie wszystkich tras dla podsieci)](virtual-network-routes-troubleshoot-portal.md). Tabela tras zdefiniowanych przez użytkownika wyświetla tylko trasy zdefiniowane przez użytkownika, a nie trasy domyślne ani trasy protokołu BGP dla podsieci. Wyświetlanie wszystkich tras pokazuje trasy domyślne, protokołu BGP i zdefiniowane przez użytkownika dla podsieci, w której znajduje się interfejs sieciowy.
+- [Określanie typu następnego przeskoku](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) między maszyną wirtualną i docelowym adresem IP. Funkcja następnego przeskoku usługi Azure Network Watcher umożliwia określenie, czy ruch opuszcza podsieć i jest kierowany tam, gdzie go oczekujesz.

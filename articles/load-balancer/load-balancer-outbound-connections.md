@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Połączeń wychodzących na platformie Azure
 
@@ -235,9 +235,9 @@ Za pomocą polecenia nslookup, możesz wysłać zapytanie DNS dla nazwy myip.ope
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventoutbound"></a>Uniemożliwia nawiązanie połączenia wychodzącego
-Czasami jest niepożądanych dla maszyny Wirtualnej, aby można było utworzyć przepływ wychodzący. Może być wymagane do zarządzania, które miejsc docelowych jest osiągalna z przepływów wychodzących lub które miejsc docelowych można rozpocząć przepływów przychodzących. W takim przypadku można użyć [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) do zarządzania miejsc docelowych, które maszyna wirtualna może nawiązać połączenie. Umożliwia także grup NSG do zarządzania publicznego lokalizację docelową mogą inicjować przepływów przychodzących. 
+Czasami jest niepożądanych dla maszyny Wirtualnej, aby można było utworzyć przepływ wychodzący. Może być wymagane do zarządzania, które miejsc docelowych jest osiągalna z przepływów wychodzących lub które miejsc docelowych można rozpocząć przepływów przychodzących. W takim przypadku można użyć [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) do zarządzania miejsc docelowych, które maszyna wirtualna może nawiązać połączenie. Umożliwia także grup NSG do zarządzania publicznego lokalizację docelową mogą inicjować przepływów przychodzących.
 
-Po zastosowaniu grupy NSG z maszyną wirtualną z równoważeniem obciążenia, należy zwrócić uwagę na [domyślne znaczniki](../virtual-network/virtual-networks-nsg.md#default-tags) i [domyślne zasady](../virtual-network/virtual-networks-nsg.md#default-rules). Należy się upewnić, czy maszyny Wirtualnej może odbierać żądań sondy kondycji z modułu równoważenia obciążenia Azure. 
+Po zastosowaniu grupy NSG z maszyną wirtualną z równoważeniem obciążenia, należy zwrócić uwagę na [usługi tagi](../virtual-network/security-overview.md#service-tags) i [domyślne reguły zabezpieczeń](../virtual-network/security-overview.md#default-security-rules). Należy się upewnić, czy maszyny Wirtualnej może odbierać żądań sondy kondycji z modułu równoważenia obciążenia Azure. 
 
 Jeśli grupy NSG blokuje żądania sondy kondycji z AZURE_LOADBALANCER domyślny znacznik, sondy kondycji Twojej maszyny Wirtualnej nie powiedzie się i maszyny Wirtualnej jest oznaczony w dół. Moduł równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów z tą maszyną Wirtualną.
 
@@ -249,5 +249,5 @@ Jeśli grupy NSG blokuje żądania sondy kondycji z AZURE_LOADBALANCER domyślny
 
 - Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md).
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
-- Dowiedz się więcej o [sieciowej grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md).
+- Dowiedz się więcej o [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md).
 - Dowiedz się więcej o niektóre inne kluczowe [możliwości w zakresie obsługi](../networking/networking-overview.md) na platformie Azure.
