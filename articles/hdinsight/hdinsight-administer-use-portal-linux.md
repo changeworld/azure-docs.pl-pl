@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: cd61aa4a69a5bed8de9874eebad059b54118ab63
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -125,7 +125,7 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
    * **Domyślne źródło danych**: domyślny system plików klastra.
    * **Rozmiar węzłów procesu roboczego**: wybrany rozmiar maszyny Wirtualnej z węzłami procesów roboczych.
    * **HEAD rozmiaru węzła**: wybrany rozmiar maszyny Wirtualnej węzłów głównych.
-   * **Sieć wirtualna**: Nazwa sieci wirtualnej i podsieci, do którego jest wdrażana klastra, jeśli wybrano jeden w czasie wdrażania.
+   * **Sieć wirtualna**: Nazwa sieci wirtualnej, która klastra jest wdrażana, jeśli wybrano jeden w czasie wdrażania.
 
 ## <a name="delete-clusters"></a>Usuwanie klastrów
 Usunięcie klastra nie powoduje usunięcia domyślne konto magazynu ani wszystkie połączone konta magazynu. Można ponownie utworzyć klastra przy użyciu tego samego konta magazynu i tym samym magazyny. Zalecamy używanie nowego domyślnego kontenera obiektów Blob podczas ponownego tworzenia klastra.

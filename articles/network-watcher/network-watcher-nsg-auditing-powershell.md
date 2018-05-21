@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 0c9450099ad3561611796a9b45157932f9ac85a9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 227ea446a75c167be27128b15de1d3c216e6856d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatyzowanie NSG inspekcji z widokiem grupy zabezpieczeń obserwatora sieci platformy Azure
 
 Klienci często występują z żądaniem kontrolować stan zabezpieczeń infrastruktury. Nie różni się ich maszyn wirtualnych na platformie Azure się tego żądania. Należy mieć podobny profil zabezpieczeń na podstawie reguł sieciowej grupy zabezpieczeń (NSG) stosowane. Korzystając z widoku grupy zabezpieczeń, można teraz uzyskać listę reguł zastosowane do maszyny Wirtualnej w ramach grupy NSG. Można zdefiniować złotego profil zabezpieczeń NSG i zainicjować widok grupy zabezpieczeń w okresach co tydzień i porównania danych wyjściowych do profilu złotego i utworzyć raport. W ten sposób można zidentyfikować z łatwością wszystkich maszyn wirtualnych, które nie są zgodne z profil zabezpieczeń wymaganych.
 
-Jeśli nie znasz z grup zabezpieczeń sieci, odwiedź stronę [Przegląd zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md)
+Jeśli nie znasz z grup zabezpieczeń sieci, zobacz [Przegląd zabezpieczeń sieci](../virtual-network/security-overview.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
