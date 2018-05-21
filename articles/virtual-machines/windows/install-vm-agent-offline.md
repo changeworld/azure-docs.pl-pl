@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 77ce133232b63a590c6c7f9361d1ca456f484093
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2d332ce0da8622441d31a16a0addb9c06058998c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Zainstaluj agenta maszyny wirtualnej platformy Azure w trybie offline 
 
@@ -106,12 +106,11 @@ Poniższe kroki należy zainstalować agenta maszyny Wirtualnej w trybie offline
 
 13.  Dostęp do maszyny Wirtualnej. Należy zauważyć, że działa RdAgent i dzienniki są generowane.
 
-Jeśli maszyna wirtualna została utworzona przy użyciu klasycznego modelu wdrażania, wszystko będzie gotowe.
-
+Jeśli maszyna wirtualna została utworzona przy użyciu modelu wdrażania usługi Resource Manager wdrożenia, wszystko będzie gotowe.
 
 ### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>Użyj właściwości ProvisionGuestAgent dla maszyny wirtualne utworzone za pomocą Menedżera zasobów Azure
 
-Jeśli maszyna wirtualna została utworzona przy użyciu modelu wdrażania usługi Resource Manager, należy użyć modułu Azure PowerShell, aby zaktualizować **ProvisionGuestAgent** właściwości. Właściwość informuje Azure, że maszyna wirtualna jest zainstalowany Agent maszyny Wirtualnej.
+Jeśli maszyna wirtualna została utworzona przy użyciu modelu klasycznego, należy użyć modułu Azure PowerShell, aby zaktualizować **ProvisionGuestAgent** właściwości. Właściwość informuje Azure, że maszyna wirtualna jest zainstalowany Agent maszyny Wirtualnej.
 
 Aby ustawić **ProvisionGuestAgent** właściwości, uruchom następujące polecenia w programie Azure PowerShell:
 

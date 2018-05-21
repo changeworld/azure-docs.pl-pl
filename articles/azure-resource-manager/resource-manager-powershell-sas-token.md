@@ -1,24 +1,24 @@
 ---
-title: "Wdrażanie szablonu platformy Azure z tokenu sygnatury dostępu Współdzielonego i programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Użyj usługi Azure Resource Manager i programu Azure PowerShell, aby wdrożyć zasobów na platformie Azure z szablonu, który jest chroniony za pomocą tokenu sygnatury dostępu Współdzielonego."
+title: Wdrażanie szablonu platformy Azure z tokenu sygnatury dostępu Współdzielonego i programu PowerShell | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Resource Manager i programu Azure PowerShell, aby wdrożyć zasobów na platformie Azure z szablonu, który jest chroniony za pomocą tokenu sygnatury dostępu Współdzielonego.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1e3cea027b599e2b1af1ced0fdf14e2cc8a0db82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2dbf7f9ac5a735ec0c70f4daefa721509212a84b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-powershell"></a>Wdrażanie prywatnej szablonu usługi Resource Manager z tokenu sygnatury dostępu Współdzielonego i programu Azure PowerShell
 
@@ -64,7 +64,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri 
 Na przykład za pomocą tokenu sygnatury dostępu Współdzielonego przy użyciu szablonów połączonych, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby obejrzeć wprowadzenie do wdrażania szablonów, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](resource-group-template-deploy.md).
 * Zakończenie przykładowego skryptu, który wdraża szablonu, zobacz [skryptu szablonu wdrażania Menedżera zasobów](resource-manager-samples-powershell-deploy.md)
 * Aby określić parametry w szablonie, zobacz [tworzenia szablonów](resource-group-authoring-templates.md#parameters).

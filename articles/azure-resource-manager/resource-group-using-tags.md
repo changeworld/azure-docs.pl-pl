@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 09c63553f42c1d39ca70f7e535dbda88b15fdf7a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 6f9b2b04c3bdfc02065e2a01e1975d734a5f53ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 

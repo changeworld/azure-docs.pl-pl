@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 15cbfb9babe38ba6acaf4312735ab839af3f2d99
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/20/2018
+---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Często zadawane pytania dotyczące migracji z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Czy ten plan migracji wpływa na moje istniejące usługi lub aplikacje uruchomione na maszynach wirtualnych platformy Azure? 
@@ -32,14 +48,24 @@ Nie. Ostatnio umożliwiliśmy [przenoszenie obwodów usługi ExpressRoute z klas
 
 Podczas migracji zasoby są przekształcane z klasycznych na zasoby usługi Resource Manager. Dlatego zalecamy zaplanowanie aktualizacji zasad RBAC, które należy wykonać po migracji.
 
-## <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Mam utworzone kopie zapasowe moich klasycznych maszyn wirtualnych w magazynie usługi Backup. Czy mogę migrować maszyny wirtualne z trybu klasycznego do trybu usługi Resource Manager i chronić je w magazynie usługi Recovery Services?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>I kopię zapasową mojej klasycznych maszyn wirtualnych w magazynie. Czy mogę migrować maszyny wirtualne z trybu klasycznego do trybu usługi Resource Manager i chronić je w magazynie usługi Recovery Services?
 
-<a name="vault">Klasycznym</a> punktów odzyskiwania maszyny Wirtualnej w magazynie kopii zapasowych nie automatycznie zostanie przeprowadzona migracja do magazynu usług odzyskiwania podczas przenoszenia maszyny Wirtualnej z klasycznym tryb Resource Manager. Wykonaj te kroki, aby przenieść kopie zapasowe maszyn wirtualnych:
+<a name="vault">Gdy</a> przenieść Maszynę wirtualną z klasycznym tryb Resource Manager, kopie zapasowe wykonane przed migracją nie będą migrowane do właśnie został zmigrowany Menedżera zasobów maszyny Wirtualnej. Jednak jeśli chcesz przechowywać kopie zapasowe klasycznych maszyn wirtualnych, wykonaj następujące kroki przed migracją. 
 
-1. W magazynie usługi Backup przejdź do karty **Elementy chronione** i wybierz maszynę wirtualną. Kliknij pozycję [Zatrzymaj ochronę](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines). Pozostaw opcję *Usuń powiązane dane kopii zapasowych* **niezaznaczoną**.
-2. Usuń rozszerzenie kopii zapasowej/migawki z maszyny wirtualnej.
-3. Przeprowadź migrację maszyny wirtualnej z trybu klasycznego do trybu usługi Resource Manager. Upewnij się, że informacje o magazynie i sieci odpowiadające maszynie wirtualnej również zostały zmigrowane do trybu usługi Resource Manager.
-4. Utwórz magazyn usługi Recovery Services i skonfiguruj kopię zapasową w zmigrowanej maszynie wirtualnej przy użyciu akcji **Kopia zapasowa** w górnej części pulpitu nawigacyjnego magazynu. Aby uzyskać szczegółowe informacje na temat tworzenia kopii zapasowych maszyn wirtualnych w magazynie usługi Recovery Services, zobacz artykuł [Ochrona maszyn wirtualnych przy użyciu magazynu usługi Recovery Services](../articles/backup/backup-azure-vms-first-look-arm.md).
+1. W magazynie usług odzyskiwania przejdź do **chronione elementy** i wybierz maszynę Wirtualną. 
+2. Kliknij pozycję [Zatrzymaj ochronę](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines). Pozostaw opcję *Usuń powiązane dane kopii zapasowych* **niezaznaczoną**.
+
+> [!NOTE]
+> Zostanie naliczona koszt wystąpienia kopii zapasowej do zachowania danych. Kopie zapasowe będą usuwane dla każdego zakresu przechowywania. Jednak ostatniej kopii zapasowej zawsze jest przechowywana, dopóki nie zostaną jawnie usunięte dane kopii zapasowej. Zaleca się po umieszczeniu zakres przechowywania, Sprawdź zakres przechowywania maszyny wirtualnej i wyzwalacza "Usuń dane kopii zapasowej" w elemencie chroniony w magazynie. 
+>
+>
+
+Aby przeprowadzić migrację maszyny wirtualnej tryb Resource Manager 
+
+1. Usuń rozszerzenie kopii zapasowej/migawki z maszyny wirtualnej.
+2. Przeprowadź migrację maszyny wirtualnej z trybu klasycznego do trybu usługi Resource Manager. Upewnij się, że informacje o magazynie i sieci odpowiadające maszynie wirtualnej również zostały zmigrowane do trybu usługi Resource Manager.
+
+Ponadto, jeśli chcesz utworzyć kopię zapasową zmigrowane maszyny Wirtualnej, przejdź do bloku zarządzania maszyny wirtualnej do [włączenia kopii zapasowej](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Czy mogę zwalidować moją subskrypcję lub moje zasoby, aby sprawdzić, czy można je zmigrować? 
 

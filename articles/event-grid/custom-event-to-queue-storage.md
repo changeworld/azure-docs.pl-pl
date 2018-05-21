@@ -6,13 +6,13 @@ keywords: ''
 author: tfitzmac
 ms.author: tomfitz
 ms.date: 05/09/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 37427a9d8fedbb379557983c5251a6df9ac96a08
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 49349967abb59967b8c7d33bf9537d1e2df30925
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do usługi Azure Queue Storage za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -99,7 +99,7 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL.  W poniższym przykładzie wysyłane są trzy zdarzenia do tematu usługi Event Grid:
+Aby uprościć ten artykuł, użyj przykładowych danych zdarzenia do wysłania do tematu. Zwykle dane zdarzenia są wysyłane przez aplikację lub usługę platformy Azure. CURL to narzędzie, które wysyła żądania HTTP. W tym artykule do wysłania zdarzenia do tematu używane jest narzędzie CURL.  W poniższym przykładzie są wysyłane trzy zdarzenia do tematu usługi Event Grid:
 
 ```azurecli-interactive
 for i in 1 2 3

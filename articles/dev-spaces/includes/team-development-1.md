@@ -10,11 +10,11 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 96a749c0cb59759e9294f52bd4f631d7fdc2275f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 404e238e51b7ac8b799f413965560a8d42ccc5df
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 Do tej pory działała kodu aplikacji tak, jakby był tylko używająca w aplikacji. W tej sekcji dowiesz się, jak spacje deweloperów Azure upraszcza programowanie zespołowe:
 * Włącz zespół deweloperów do pracy w tym samym środowisku programistycznym.
@@ -50,7 +50,7 @@ Spójrzmy bliższe spojrzenie na którym usługi są aktualnie uruchomione. Uruc
 Name         Space     Chart              Ports   Updated     Access Points
 -----------  --------  -----------------  ------  ----------  -------------------------
 mywebapi     default  mywebapi-0.1.0     80/TCP  2m ago     <not attached>
-webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     https://webfrontend-contosodev.1234abcdef.westeurope.aksapp.io
+webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-contosodev.1234abcdef.eastus.aksapp.io
 ```
 
 Kolumna miejsca pokazuje, że obie usługi są uruchomione w miejscu o nazwie `default`. Każdy, kto otwiera publiczny adres URL i przechodzi do aplikacji sieci web wywoła ścieżkę kodu uprzednio zapisanego uruchamiana za pomocą obu usług. Teraz załóżmy, że chcesz kontynuować tworzenie `mywebapi`. Jak można wprowadzać zmiany kodu i je przetestować i nie przerywają pracy inni deweloperzy, którzy używają środowiska deweloperskiego? W tym celu należy skonfigurować własne miejsca.

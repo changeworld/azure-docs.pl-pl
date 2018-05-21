@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1d1cdee7373b949456032aff3c808cc233aaa1cc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -773,7 +773,7 @@ W języku C# i skryptu C# można powiązać z następujących typów do zapisywa
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> wymaga "powiązania w" `direction` w *function.json* lub `FileAccess.Read` w bibliotece klas C#.
+<sup>1</sup> wymaga "powiązania w" `direction` w *function.json* lub `FileAccess.Read` w bibliotece klas C#. Można jednak użyć obiektu kontenera, który udostępnia środowisko uruchomieniowe do zapisu operacji, takich jak przekazywanie obiekty BLOB do kontenera.
 
 <sup>2</sup> wymaga powiązania "inout" `direction` w *function.json* lub `FileAccess.ReadWrite` w bibliotece klas C#.
 

@@ -1,11 +1,11 @@
 ---
-title: "Otwórz porty do maszyny Wirtualnej systemu Linux z 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak otworzyć port / utworzyć punktu końcowego maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania Menedżera zasobów platformy Azure i 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Otwórz porty do maszyny Wirtualnej systemu Linux z 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak otworzyć port / utworzyć punktu końcowego maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania Menedżera zasobów platformy Azure i 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: f02e9d7c794217824bb2b0fa965d1d581ec94003
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 16493d7ecdec0ec1464820be7668dfa19ec1b13c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwórz porty i punktów końcowych do maszyny Wirtualnej systemu Linux z wiersza polecenia platformy Azure
 Otwarcie portu lub utworzyć punkt końcowy z maszyną wirtualną (VM) na platformie Azure, tworząc filtr sieci w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontrolują ruchu przychodzącego i wychodzącego, można umieścić na grupę zabezpieczeń sieci dołączony do tego zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule przedstawiono sposób Otwórz port do maszyny Wirtualnej z 2.0 interfejsu wiersza polecenia platformy Azure. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](nsg-quickstart-nodejs.md).
@@ -90,4 +90,4 @@ Dla aplikacji sieci web wysokiej dostępności należy umieszczać maszyny wirtu
 W tym przykładzie utworzono prosta Reguła zezwalająca na ruch HTTP. Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe zawierają następujące artykuły:
 
 * [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
-* [Co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/virtual-networks-nsg.md)
+* [Co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/security-overview.md)

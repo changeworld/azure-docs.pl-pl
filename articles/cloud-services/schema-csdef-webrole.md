@@ -2,7 +2,7 @@
 title: Domyślna usługi w chmurze Azure Sieć Web schematu | Dokumentacja firmy Microsoft
 ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
+services: cloud-services
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -13,11 +13,11 @@ caps.latest.revision: 60
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: b2873f61dcab9a14089949f27f40ca5bedaf14ee
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6db3edef937dc0b5cdd805d0045897e02b985e7b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services definicji schematu sieć Web
 Rola sieci web platformy Azure jest rolę, która jest dostosowany do programowania aplikacji sieci web, ponieważ obsługiwane przez usługi IIS 7, takich jak ASP.NET, PHP, Windows Communication Foundation i FastCGI.
@@ -119,7 +119,7 @@ Pliku definicji usługi obejmują następujące elementy, opisano szczegółowo 
 
 [Certyfikaty](#Certificates)
 
-[certyfikat](#Certificate)
+[Certyfikat](#Certificate)
 
 [Importy](#Imports)
 
@@ -310,7 +310,7 @@ W poniższej tabeli opisano atrybuty `Import` elementu.
 
 | Atrybut | Typ | Opis |  
 | --------- | ---- | ----------- |  
-|moduleName|ciąg|Wymagany. Nazwa modułu do zaimportowania. Nieprawidłowy import moduły są:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Diagnostyki<br /><br /> Moduły RemoteAccess i RemoteForwarder pozwalają skonfigurować wystąpienie roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Podłączanie pulpitu zdalnego włączyć](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł Diagnostyka służy do zbierania danych diagnostycznych dla wystąpienia roli.|  
+|Nazwa modułu|ciąg|Wymagany. Nazwa modułu do zaimportowania. Nieprawidłowy import moduły są:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Diagnostyki<br /><br /> Moduły RemoteAccess i RemoteForwarder pozwalają skonfigurować wystąpienie roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Podłączanie pulpitu zdalnego włączyć](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł Diagnostyka służy do zbierania danych diagnostycznych dla wystąpienia roli.|  
 
 ##  <a name="Runtime"></a> Środowisko uruchomieniowe  
 `Runtime` Element opisuje kolekcję ustawień zmiennych środowiskowych dla roli sieci web kontrolujących środowiska wykonawczego procesu hosta platformy Azure. Ten element jest elementem nadrzędnym `Environment` elementu. Ten element jest opcjonalny i rola może mieć tylko jeden blok środowiska wykonawczego.
@@ -362,7 +362,7 @@ W poniższej tabeli opisano atrybuty `NetFxEntryPoint` elementu.
 
 | Atrybut | Typ | Opis |  
 | --------- | ---- | ----------- |  
-|AssemblyName|ciąg|Wymagany. Nazwa i ścieżka pliku zestawu zawierającego punkt wejścia. Ścieżka jest względne wobec folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **% ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika.  **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.<br /><br /> Dla ról użytkownika ścieżka jest zawsze względem  **\\%ROLEROOT%\Approot\bin** folderu.<br /><br /> Pełna usług IIS i usługi IIS Express web ról, jeśli nie można odnaleźć zestawu względem  **\\%ROLEROOT%\Approot** folderu,  **\\%ROLEROOT%\Approot\bin** jest przeszukiwany.<br /><br /> Ta bazowy zachowanie dla usługi IIS nie jest to najlepsze rozwiązanie zaleca się i może być usunięte w przyszłych wersjach.|  
+|AssemblyName|ciąg|Wymagany. Nazwa i ścieżka pliku zestawu zawierającego punkt wejścia. Ścieżka jest względne wobec folderu  **\\%ROLEROOT%\Approot** (nie należy określać  **\\%ROLEROOT%\Approot** w `commandLine`, zakłada się). **% ROLEROOT %** zmienną środowiskową obsługiwany przez platformę Azure, reprezentuje lokalizację folderu głównego dla roli użytkownika. **\\%ROLEROOT%\Approot** folder reprezentuje folder aplikacji dla roli użytkownika.<br /><br /> Dla ról użytkownika ścieżka jest zawsze względem  **\\%ROLEROOT%\Approot\bin** folderu.<br /><br /> Pełna usług IIS i usługi IIS Express web ról, jeśli nie można odnaleźć zestawu względem  **\\%ROLEROOT%\Approot** folderu,  **\\%ROLEROOT%\Approot\bin** jest przeszukiwany.<br /><br /> Ta bazowy zachowanie dla usługi IIS nie jest to najlepsze rozwiązanie zaleca się i może być usunięte w przyszłych wersjach.|  
 |targetFrameworkVersion|ciąg|Wymagany. Wersja programu .NET framework, na którym został utworzony zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|  
 
 ##  <a name="Sites"></a> Lokacje  

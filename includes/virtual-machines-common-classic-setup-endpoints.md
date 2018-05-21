@@ -1,4 +1,19 @@
-
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: cfe675ca269a69c7c2bfa67638acd0afbcd1c8ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/20/2018
+---
 Każdy punkt końcowy ma *port publiczny* i *port prywatny*:
 
 * Port publiczny jest używany przez moduł równoważenia obciążenia Azure do nasłuchiwania ruch przychodzący do maszyny wirtualnej z Internetu.
@@ -6,7 +21,7 @@ Każdy punkt końcowy ma *port publiczny* i *port prywatny*:
 
 Wartości domyślne dla protokołu IP i portów TCP lub UDP sieci dobrze znanych protokołów są dostępne podczas tworzenia punktów końcowych z portalu Azure. Niestandardowe punkty końcowe należy określić poprawną protokołu IP (TCP lub UDP) i porty publiczne i prywatne. Aby losowo dystrybucji przychodzącego ruchu między wieloma maszynami wirtualnymi, należy utworzyć zestaw z równoważeniem obciążenia, składające się z wielu punktów końcowych.
 
-Po utworzeniu punktu końcowego, można użyć listy kontroli dostępu (ACL) można zdefiniować reguły akceptowanie lub odrzucanie ruch przychodzący do portu publicznego punktu końcowego na podstawie jego adresu IP źródłowego. Jednak jeśli maszyna wirtualna znajduje się w sieci wirtualnej platformy Azure, należy zamiast tego użyć grup zabezpieczeń sieci. Aby uzyskać więcej informacji, zobacz [dotyczące grup zabezpieczeń sieci](../articles/virtual-network/virtual-networks-nsg.md).
+Po utworzeniu punktu końcowego, można użyć listy kontroli dostępu (ACL) można zdefiniować reguły akceptowanie lub odrzucanie ruch przychodzący do portu publicznego punktu końcowego na podstawie jego adresu IP źródłowego. Jednak jeśli maszyna wirtualna znajduje się w sieci wirtualnej platformy Azure, należy zamiast tego użyć grup zabezpieczeń sieci. Aby uzyskać więcej informacji, zobacz [dotyczące grup zabezpieczeń sieci](../articles/virtual-network/security-overview.md).
 
 > [!NOTE]
 > Konfiguracja zapory dla maszyn wirtualnych platformy Azure odbywa się automatycznie dla portów skojarzonych z punktami końcowymi połączenia zdalnego, które Azure konfiguruje się automatycznie. Porty określone dla innych punktów końcowych konfiguracja nie odbywa się automatycznie w zaporze maszyny wirtualnej. Po utworzeniu punktu końcowego maszyny wirtualnej należy upewnij się, że zapory maszyny wirtualnej również zezwala na ruch protokołu i port prywatny odpowiadający konfiguracji punktu końcowego. Aby skonfigurować zaporę, skorzystaj z dokumentacji lub pomocy online dla systemu operacyjnego działającego na maszynie wirtualnej.
@@ -39,7 +54,7 @@ Aby określić zestaw komputerów, które mogą przesyłać, listy ACL punktu ko
 >
 >
 
-Jeśli maszyna wirtualna znajduje się w sieci wirtualnej platformy Azure, firma Microsoft zaleca sieciowe grupy zabezpieczeń zamiast listy kontroli dostępu. Aby uzyskać więcej informacji, zobacz [dotyczące grup zabezpieczeń sieci](../articles/virtual-network/virtual-networks-nsg.md).
+Jeśli maszyna wirtualna znajduje się w sieci wirtualnej platformy Azure, firma Microsoft zaleca sieciowe grupy zabezpieczeń zamiast listy kontroli dostępu. Aby uzyskać więcej informacji, zobacz [dotyczące grup zabezpieczeń sieci](../articles/virtual-network/security-overview.md).
 
 1. Jeśli jeszcze tego nie zrobiono, zaloguj się do portalu Azure.
 2. Kliknij przycisk **maszyn wirtualnych**, a następnie kliknij nazwę maszyny wirtualnej, który chcesz skonfigurować.
@@ -47,7 +62,7 @@ Jeśli maszyna wirtualna znajduje się w sieci wirtualnej platformy Azure, firma
 
    ![Określ szczegóły list kontroli dostępu](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
 
-4. Aby dodać, usunąć, lub edytowanie reguły listy ACL i ich kolejność, należy użyć wierszy na liście. **Podsieci zdalnej** wartość jest zakres adresów IP dla ruchu przychodzącego z Internetu, korzystającą z usługi równoważenia obciążenia Azure celu akceptowanie lub odrzucanie ruchu na podstawie jego adresu IP źródłowego. Pamiętaj określić zakres adresów IP w formacie CIDR, znanej także jako formacie prefiksu adresu. Na przykład `10.1.0.0/8`.
+4. Aby dodać, usunąć, lub edytowanie reguły listy ACL i ich kolejność, należy użyć wierszy na liście. **Podsieci zdalnej** wartość jest zakres adresów IP dla ruchu przychodzącego z Internetu, korzystającą z usługi równoważenia obciążenia Azure celu akceptowanie lub odrzucanie ruchu na podstawie jego adresu IP źródłowego. Pamiętaj określić zakres adresów IP w formacie CIDR, znanej także jako formacie prefiksu adresu. Może to być na przykład `10.1.0.0/8`.
 
  ![Nowy wpis listy kontroli dostępu](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 

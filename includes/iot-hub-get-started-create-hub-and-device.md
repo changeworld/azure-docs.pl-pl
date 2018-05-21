@@ -1,44 +1,45 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: f8cd78e63099f864c5fc54b6268f6e558d738626
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 05/20/2018
+---
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
 [!INCLUDE [iot-hub-create-hub](iot-hub-create-hub.md)]
 
 Teraz, po utworzeniu Centrum IoT, zlokalizuj ważne informacje, które są używane do łączenia urządzeń i aplikacji do Centrum IoT. 
 
-1. Po utworzeniu centrum IoT Hub kliknij je na pulpicie nawigacyjnym. Zanotuj wartość z pola **Nazwa hosta**, a następnie kliknij polecenie **Zasady dostępu współużytkowanego**.
+W menu nawigacji Centrum IoT, otwórz **zasady dostępu współużytkowanego**.
+Wybierz **iothubowner** zasad, a następnie skopiuj **ciąg połączenia---klucz podstawowy** Centrum IoT. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu do centrum IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
 
-   ![Pobieranie nazwy hosta centrum IoT Hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
+   > [!NOTE] 
+   > Nie trzeba tego ciągu połączenia iothubowner w tym samouczku konfiguracji. Jednak może być potrzebny dla niektórych samouczki lub różnych scenariuszach IoT po ukończeniu tej konfiguracji.
 
-1. W okienku **Zasady dostępu współużytkowanego** kliknij zasady **iothubowner**, a następnie skopiuj i zanotuj **Parametry połączenia** centrum IoT Hub. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu do centrum IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
-
-> [!NOTE] 
-W przypadku tego samouczka konfiguracji te parametry połączenia iothubowner nie będą potrzebne. Niemniej mogą być potrzebne w ramach innych samouczków dotyczących innych scenariuszy IoT po zakończeniu tej konfiguracji.
-
-   ![Pobieranie parametrów połączenia centrum IoT Hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
+   ![Pobieranie parametrów połączenia centrum IoT Hub](./media/iot-hub-get-started-create-hub-and-device/create-iot-hub5.png)
 
 ## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>Rejestracja urządzenia w centrum IoT Hub dla Twojego urządzenia
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) otwórz swoje centrum IoT Hub.
+1. W menu nawigacji Centrum IoT, otwórz **urządzenia IoT**, następnie kliknij przycisk **Dodaj** zarejestrować urządzenie w Centrum IoT.
 
-2. Kliknij przycisk **urządzenia IoT**.
-3. W okienku urządzenia IoT kliknij **Dodaj** do dodania urządzenia do Centrum IoT. Następnie wykonaj poniższe czynności:
+   ![Dodaj urządzenie urządzenia IoT z Centrum IoT](./media/iot-hub-get-started-create-hub-and-device/create-identity-portal.png)
 
-   **Identyfikator urządzenia**: wprowadź identyfikator nowego urządzenia. W identyfikatorach urządzeń jest uwzględniana wielkość liter.
-
-   **Typ uwierzytelniania**: wybierz pozycję **Klucz symetryczny**.
-
-   **Automatyczne generowanie kluczy**: zaznacz to pole wyboru.
-
-   **Połącz urządzenie z IoT Hub**: kliknij pozycję **Włącz**.
-
-   ![Dodaj urządzenie urządzenia IoT z Centrum IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
+2. Wprowadź **identyfikator urządzenia** dla nowego urządzenia. W identyfikatorach urządzeń jest uwzględniana wielkość liter.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Kliknij pozycję **Zapisz**.
-5. Po utworzeniu urządzenia, należy otworzyć urządzenia w **urządzenia IoT** okienka.
+5. Po utworzeniu urządzenia, należy otworzyć urządzenia z listy w **urządzenia IoT** okienka.
+6. Kopiuj **ciąg połączenia---klucz podstawowy** do użycia w przyszłości.
 
-   ![Lista urządzeń IoT w Centrum IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
-
-6. Zanotuj klucz podstawowy parametrów połączenia.
-
-   ![Pobieranie parametrów połączenia urządzenia](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)
+   ![Pobieranie parametrów połączenia urządzenia](./media/iot-hub-get-started-create-hub-and-device/device-connection-string.png)
