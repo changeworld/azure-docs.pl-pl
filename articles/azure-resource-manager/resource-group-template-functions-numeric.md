@@ -1,24 +1,24 @@
 ---
 title: Azure Resource Manager szablonu funkcji - liczbowych | Dokumentacja firmy Microsoft
-description: "Opisuje funkcje do użycia w szablonu usługi Azure Resource Manager, aby pracować z liczbami."
+description: Opisuje funkcje do użycia w szablonu usługi Azure Resource Manager, aby pracować z liczbami.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2b7ec44b820e510d1e8bd99ef195546a519c365c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4fc17b997c44560199e65edb01d20c6a24e49877
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje numeryczne szablonów usługi Azure Resource Manager
 
@@ -26,18 +26,18 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z liczbami cał
 
 * [Dodaj](#add)
 * [copyIndex](#copyindex)
-* [DIV](#div)
-* [float](#float)
+* [div](#div)
+* [Float](#float)
 * [int](#int)
-* [Maksymalna](#max)
+* [max](#max)
 * [min](#min)
 * [mod](#mod)
 * [mul](#mul)
-* [Sub](#sub)
+* [sub](#sub)
 
 <a id="add" />
 
-## <a name="add"></a>Dodaj
+## <a name="add"></a>dodaj
 `add(operand1, operand2)`
 
 Zwraca sumę dwóch podanych liczb całkowitych.
@@ -46,8 +46,8 @@ Zwraca sumę dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Tak |int |Pierwszy numer do dodania. |
-|operand2 |Tak |int |Druga liczba do dodania. |
+|operand1 |Yes |int |Pierwszy numer do dodania. |
+|operand2 |Yes |int |Druga liczba do dodania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -90,9 +90,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| addResult | int | 8 |
+| addResult | Int | 8 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -117,7 +117,7 @@ Zwraca indeks iteracji pętli.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| loopName | Nie | Ciąg | Nazwa uzyskania iteracji pętli. |
+| loopName | Nie | ciąg | Nazwa uzyskania iteracji pętli. |
 | Przesunięcie |Nie |int |Numer do dodania do wartość iteracji liczony od zera. |
 
 ### <a name="remarks"></a>Uwagi
@@ -154,7 +154,7 @@ Liczba całkowita reprezentująca indeks bieżącej iteracji.
 
 <a id="div" />
 
-## <a name="div"></a>DIV
+## <a name="div"></a>div
 `div(operand1, operand2)`
 
 Zwraca dzielenie liczby całkowitej dwóch podanych liczb całkowitych.
@@ -163,8 +163,8 @@ Zwraca dzielenie liczby całkowitej dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Tak |int |Liczba jest podzielona. |
-| operand2 |Tak |int |Liczba, która jest używana do dzielenia. Nie może wynosić 0. |
+| operand1 |Yes |int |Liczba jest podzielona. |
+| operand2 |Yes |int |Liczba, która jest używana do dzielenia. Nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -207,9 +207,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| divResult | int | 2 |
+| divResult | Int | 2 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -225,7 +225,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="float" />
 
-## <a name="float"></a>Float
+## <a name="float"></a>liczba zmiennoprzecinkowa
 `float(arg1)`
 
 Konwertuje wartość zmiennoprzecinkową numer punktu. Podczas przekazywania niestandardowych parametrów do aplikacji, takie jak aplikacja logiki tylko użyć tej funkcji.
@@ -234,7 +234,7 @@ Konwertuje wartość zmiennoprzecinkową numer punktu. Podczas przekazywania nie
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |ciąg lub int |Wartość do przekonwertowania zmiennoprzecinkowej numer punktu. |
+| arg1 |Yes |ciąg lub int |Wartość do przekonwertowania zmiennoprzecinkowej numer punktu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba zmiennoprzecinkowa.
@@ -268,7 +268,7 @@ Konwertuje określoną wartość na liczbę całkowitą.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Tak |ciąg lub int |Wartość do przekonwertowania na liczbę całkowitą. |
+| valueToConvert |Yes |ciąg lub int |Wartość do przekonwertowania na liczbę całkowitą. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -301,9 +301,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| intResult | int | 4 |
+| intResult | Int | 4 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -319,7 +319,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="max" />
 
-## <a name="max"></a>Maksymalna
+## <a name="max"></a>maks.
 `max (arg1)`
 
 Zwraca maksymalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
@@ -328,7 +328,7 @@ Zwraca maksymalną wartość z tablicy liczb całkowitych lub rozdzielaną przec
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listą liczb całkowitych |Kolekcja można uzyskać wartość maksymalna. |
+| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listą liczb całkowitych |Kolekcja można uzyskać wartość maksymalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -364,10 +364,10 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | int | 5 |
-| intOutput | int | 5 |
+| arrayOutput | Int | 5 |
+| intOutput | Int | 5 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -392,7 +392,7 @@ Zwraca minimalną wartość z tablicy liczb całkowitych lub rozdzielaną przeci
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listą liczb całkowitych |Kolekcja można uzyskać wartość minimalna. |
+| arg1 |Yes |tablica liczb całkowitych lub rozdzielaną przecinkami listą liczb całkowitych |Kolekcja można uzyskać wartość minimalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -428,10 +428,10 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
+| arrayOutput | Int | 0 |
+| intOutput | Int | 0 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -456,8 +456,8 @@ Zwraca resztę z dzielenia przy użyciu dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Tak |int |Liczba jest podzielona. |
-| operand2 |Tak |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
+| operand1 |Yes |int |Liczba jest podzielona. |
+| operand2 |Yes |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca resztę.
@@ -499,9 +499,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| modResult | int | 1 |
+| modResult | Int | 1 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -526,8 +526,8 @@ Zwraca iloczyn dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Tak |int |Pierwszy liczbę Aby pomnożyć. |
-| operand2 |Tak |int |Druga liczba do wielokrotnie. |
+| operand1 |Yes |int |Pierwszy liczbę Aby pomnożyć. |
+| operand2 |Yes |int |Druga liczba do wielokrotnie. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -570,9 +570,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| mulResult | int | 15 |
+| mulResult | Int | 15 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -597,8 +597,8 @@ Zwraca odejmowania dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Tak |int |Liczba, która jest odejmowany od. |
-| operand2 |Tak |int |Liczba, która jest odejmowany. |
+| operand1 |Yes |int |Liczba, która jest odejmowany od. |
+| operand2 |Yes |int |Liczba, która jest odejmowany. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca odejmowania.
@@ -640,9 +640,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| subResult | int | 4 |
+| subResult | Int | 4 |
 
 Aby wdrożyć ten przykładowy szablon z wiersza polecenia platformy Azure, należy użyć:
 
@@ -656,7 +656,7 @@ Aby wdrożyć szablon ten przykład przy użyciu programu PowerShell, należy u�
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Opis części szablonu usługi Azure Resource Manager, zobacz [szablonów Authoring Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 * Do wykonywania iteracji określoną liczbę razy podczas tworzenia typu zasobu, zobacz [utworzyć wiele wystąpień zasobów usługi Azure Resource Manager](resource-group-create-multiple.md).

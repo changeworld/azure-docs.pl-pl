@@ -1,23 +1,23 @@
 ---
-title: "Domyślna usługi w chmurze Azure Schemat LoadBalancerProbe | Dokumentacja firmy Microsoft"
-ms.custom: 
+title: Domyślna usługi w chmurze Azure Schemat LoadBalancerProbe | Dokumentacja firmy Microsoft
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: "14"
+caps.latest.revision: 14
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 31c974c5a4b9dc9cff882ff42b73ee023fc4ad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cd56c9b04fc4657cedf845e7f111005a8dee183
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Definicja schematu LoadBalancerProbe usług w chmurze Azure
 Sondę modułu równoważenia obciążenia jest klienta badanie kondycji zdefiniowanych punktów końcowych protokołu UDP i punktów końcowych w wystąpieniach ról. `LoadBalancerProbe` Nie jest elementem autonomiczny; jest połączona z rolą sieci web lub roli proces roboczy w pliku definicji usługi. A `LoadBalancerProbe` mogą być używane przez więcej niż jednej roli.
@@ -50,10 +50,10 @@ Jeśli używasz sondę modułu równoważenia obciążenia niestandardowych musi
 - [LoadBalancerProbes Element](#LoadBalancerProbes)
 - [LoadBalancerProbe Element](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a>LoadBalancerProbes Element
+##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes Element
 `LoadBalancerProbes` Element opisuje kolekcję sondy modułu równoważenia obciążenia. Ten element jest elementem nadrzędnym [LoadBalancerProbe elementu](#LoadBalancerProbe). 
 
-##  <a name="LoadBalancerProbe"></a>LoadBalancerProbe Element
+##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe Element
 `LoadBalancerProbe` Element definiuje sondy kondycji dla modelu. Można zdefiniować wiele sondy modułu równoważenia obciążenia. 
 
 W poniższej tabeli opisano atrybuty `LoadBalancerProbe` elementu:
@@ -62,7 +62,7 @@ W poniższej tabeli opisano atrybuty `LoadBalancerProbe` elementu:
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Wymagany. Nazwa sondę modułu równoważenia obciążenia. Nazwa musi być unikatowa.|
 | `protocol`          | `string` | Wymagany. Określa protokół punktu końcowego. Możliwe wartości to `http` lub `tcp`. Jeśli `tcp` określono potwierdzenia odebranego jest wymagany dla sondy powiódł się. Jeśli `http` określono odpowiedź 200 OK z określonego identyfikatora URI jest wymagany dla sondy powiódł się.|
-| `path`              | `string` | Identyfikator URI używany do żądania stanu kondycji z maszyny Wirtualnej. `path`jest wymagany, jeśli `protocol` ma ustawioną wartość `http`. W przeciwnym razie jest niedozwolona.<br /><br /> Brak wartości domyślnej.|
+| `path`              | `string` | Identyfikator URI używany do żądania stanu kondycji z maszyny Wirtualnej. `path` jest wymagany, jeśli `protocol` ma ustawioną wartość `http`. W przeciwnym razie jest niedozwolona.<br /><br /> Brak wartości domyślnej.|
 | `port`              | `integer` | Opcjonalny. Port sondy przekazywania. Jest to opcjonalne dla dowolnego punktu końcowego, ponieważ ten sam port zostanie następnie użyte sondy. Można skonfigurować inny port dla ich sondowanie, jak również. Możliwe wartości należą do zakresu od 1 do 65535 włącznie.<br /><br /> Wartość domyślna jest ustawiana przez punkt końcowy.|
 | `intervalInSeconds` | `integer` | Opcjonalny. Interwał w sekundach częstotliwość do sondowania punktu końcowego na stan kondycji. Interwał jest zazwyczaj nieco poniżej połowy przydzielony limit czasu (w sekundach) umożliwiający dwóch sond pełne przed zmianą wystąpienia poza obrotu.<br /><br /> Wartość domyślna to 15, wartość minimalna wynosi 5.|
 | `timeoutInSeconds`  | `integer` | Opcjonalny. Limit czasu w sekundach, są stosowane do sondowania, w którym brak odpowiedzi spowoduje zatrzymanie dalej ruch z są dostarczane do punktu końcowego. Ta wartość umożliwia punkty końcowe podejmowane poza obrotu szybciej lub wolniej niż razy typowe używane na platformie Azure (które są ustawienia domyślne).<br /><br /> Wartość domyślna to 31, 11 wartość minimalna.|
