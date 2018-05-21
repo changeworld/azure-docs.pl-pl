@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf015f4857a22b755813d0be1af5a55a8b7b6535
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Chmury Microsoft bezpieczeństwa usług i sieci
 Usługi w chmurze firmy Microsoft świadczenia usług hiperskali i infrastruktury, funkcje klasy korporacyjnej oraz wiele opcji na potrzeby łączności hybrydowej. Klienci mogą wybrać dostępu do tych usług za pośrednictwem Internetu lub z usługi Azure ExpressRoute, który zapewnia łączność w sieci prywatnej. Platforma Microsoft Azure umożliwia klientom bezproblemowo rozszerzają infrastruktury do chmury i tworzenia wielu architektur. Ponadto stron trzecich można włączyć udoskonalone funkcje oferty usług zabezpieczeń oraz urządzenia wirtualnego. Ten dokument zawiera omówienie architektury problemów, które klientów należy wziąć pod uwagę podczas korzystania z usługi w chmurze firmy Microsoft dostępne za pośrednictwem usługi ExpressRoute i zabezpieczeń. Obejmuje ona również tworzenia bardziej bezpieczne usług w sieci wirtualnych platformy Azure.
@@ -515,9 +515,9 @@ Dodanie połączenia sieciowego w komunikacji równorzędnej ExpressRoute prywat
 * Dostęp do platformy Azure z usługą Azure Resource Manager:
 * Uzyskiwanie dostępu do platformy Azure przy użyciu programu PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * Dokumentacja sieci wirtualnych: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
-* Dokumentacja grupy zabezpieczeń sieci: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
-* Zdefiniowane przez użytkownika routingu dokumentacji: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
-* Azure bram wirtualnego: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
+* Dokumentacja grupy zabezpieczeń sieci: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/security-overview.md)
+* Dokumentacja tras zdefiniowanych przez użytkownika: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
+* Azure bramy wirtualnej: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
 * Sieci VPN typu lokacja lokacja: [https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * Dokumentacja usługi ExpressRoute (należy sprawdzić w sekcji "Wprowadzenie" i "How"): [https://docs.microsoft.com/azure/expressroute/](https://docs.microsoft.com/azure/expressroute/)
 

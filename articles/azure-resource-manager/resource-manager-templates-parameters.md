@@ -1,6 +1,6 @@
 ---
-title: "Sekcji parametr szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano w sekcji parametrów szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON."
+title: Sekcji parametr szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano w sekcji parametrów szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2018
+ms.date: 05/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 193e74d94017cf0ca8ec0600c7e5a3dc4b7a6dea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Sekcja parametrów szablonów usługi Azure Resource Manager
 W sekcji Parametry szablonu można określić wartości, które można wprowadzić podczas wdrażania zasobów. Wartości tych parametrów umożliwiają dostosowanie wdrożenie, podając wartości, które są dostosowane określonym środowisku (na przykład deweloperów, testowego i produkcyjnego). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
@@ -85,13 +85,13 @@ Poprzednim przykładzie pokazano tylko niektóre właściwości, które można u
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | Nazwa parametru |Yes |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
-| type |Yes |Typ wartości parametru. Dozwolonymi typami i wartości są **ciąg**, **secureString**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
+| type |Yes |Typ wartości parametru. Dozwolonymi typami i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
 | Wartość domyślna |Nie |Wartość domyślna parametru, jeśli wartość nie zostanie podana dla parametru. |
 | allowedValues |Nie |Tablica dozwolonych wartości tego parametru upewnić się, że podano wartość prawej strony. |
 | Wartość MinValue |Nie |Minimalna wartość parametrów typu int, ta wartość jest włącznie. |
 | MaxValue |Nie |Maksymalna wartość dla parametrów typu int, ta wartość jest włącznie. |
-| Element minLength |Nie |Minimalna długość ciągu, secureString i parametrów typu tablicy, ta wartość jest włącznie. |
-| maxLength |Nie |Maksymalna długość ciągu, secureString i parametrów typu tablicy, ta wartość jest włącznie. |
+| Element minLength |Nie |Minimalna długość ciągu, securestring i parametrów typu tablicy, ta wartość jest włącznie. |
+| Element maxLength |Nie |Maksymalna długość ciągu, securestring i parametrów typu tablicy, ta wartość jest włącznie. |
 | description |Nie |Opis parametru, który będzie wyświetlany użytkownikom za pośrednictwem portalu. |
 
 ## <a name="template-functions-with-parameters"></a>Funkcje szablonów z parametrami
@@ -225,7 +225,7 @@ Poniższe informacje mogą być przydatne podczas pracy z parametrami:
    }
    ```
 
-* Użyj **SecureString** dla wszystkich haseł i kluczy tajnych. W przypadku przekazania danych poufnych w obiekcie JSON, użyj **secureObject** typu. Nie można odczytać parametrów szablonu z typami secureString lub secureObject po wdrożeniu zasobów. 
+* Użyj **securestring** dla wszystkich haseł i kluczy tajnych. W przypadku przekazania danych poufnych w obiekcie JSON, użyj **secureObject** typu. Nie można odczytać parametrów szablonu z typami securestring lub secureObject po wdrożeniu zasobów. 
    
    ```json
    "parameters": {

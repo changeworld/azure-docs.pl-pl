@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 74830a5220a75408398af2224204f8195ab27cc6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja zasobów szablonów usługi Azure Resource Manager
 
@@ -96,7 +96,7 @@ Można zdefiniować zasoby o następującej strukturze:
 | sku | Nie | Niektóre zasoby Zezwalaj wartości, które definiują SKU do wdrożenia. Na przykład można określić typ nadmiarowości dla konta magazynu. |
 | rodzaj | Nie | Niektóre zasoby Zezwalaj wartość definiującą typ zasobu, które można wdrożyć. Na przykład można określić typ DB rozwiązania Cosmos do utworzenia. |
 | plan | Nie | Zezwalaj na wartości, które definiują planujesz jej wdrożenie niektórych zasobów. Na przykład można określić obrazu witryny marketplace dla maszyny wirtualnej. | 
-| — zasoby |Nie |Zasoby podrzędne, które zależą od zasobu został określony. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. Pełny typ zasobu podrzędnych obejmuje nadrzędny typ zasobu, takich jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest oznaczany. Jawnie zdefiniuj tej zależności. |
+| zasoby |Nie |Zasoby podrzędne, które zależą od zasobu został określony. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. Pełny typ zasobu podrzędnych obejmuje nadrzędny typ zasobu, takich jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest oznaczany. Jawnie zdefiniuj tej zależności. |
 
 ## <a name="resource-specific-values"></a>Wartości zasobów
 

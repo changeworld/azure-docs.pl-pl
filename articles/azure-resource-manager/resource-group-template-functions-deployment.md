@@ -1,31 +1,31 @@
 ---
-title: "Funkcje szablonów Menedżera zasobów Azure - wdrożenia | Dokumentacja firmy Microsoft"
-description: "Zawiera opis funkcji można użyć w szablonie usługi Azure Resource Manager można pobrać informacji o wdrożeniu."
+title: Funkcje szablonów Menedżera zasobów Azure - wdrożenia | Dokumentacja firmy Microsoft
+description: Zawiera opis funkcji można użyć w szablonie usługi Azure Resource Manager można pobrać informacji o wdrożeniu.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 17fe2bc467acc5542d021961a066940dbecf6120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla szablonów usługi Azure Resource Manager 
 
 Pobieranie wartości z części szablonu i wartości dotyczące wdrażania Menedżera zasobów zawiera następujące funkcje:
 
 * [wdrożenia](#deployment)
-* [Parametry](#parameters)
+* [parameters](#parameters)
 * [zmienne](#variables)
 
 Aby uzyskać wartości z zasobów, grupy zasobów lub subskrypcji, zobacz [funkcji zasobów](resource-group-template-functions-resource.md).
@@ -160,7 +160,7 @@ Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowany w 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Nazwa parametru |Tak |Ciąg |Nazwa parametru do zwrócenia. |
+| Nazwa parametru |Yes |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -245,10 +245,10 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | stringOutput | Ciąg | Opcja 1 |
-| intOutput | int | 1 |
+| intOutput | Int | 1 |
 | objectOutput | Obiekt | {"jeden": "", "2": "b"} |
 | arrayOutput | Tablica | [1, 2, 3] |
 | crossOutput | Ciąg | Opcja 1 |
@@ -276,7 +276,7 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowany w se
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| nazwa_zmiennej |Tak |Ciąg |Nazwa zmiennej do zwrócenia. |
+| nazwa_zmiennej |Yes |Ciąg |Nazwa zmiennej do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -348,7 +348,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | exampleOutput1 | Ciąg | myVariable |
 | exampleOutput2 | Tablica | [1, 2, 3, 4] |
@@ -367,7 +367,7 @@ Aby wdrożyć szablon ten przykład przy użyciu programu PowerShell, należy u�
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Opis części szablonu usługi Azure Resource Manager, zobacz [szablonów Authoring Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 * Do wykonywania iteracji określoną liczbę razy podczas tworzenia typu zasobu, zobacz [utworzyć wiele wystąpień zasobów usługi Azure Resource Manager](resource-group-create-multiple.md).

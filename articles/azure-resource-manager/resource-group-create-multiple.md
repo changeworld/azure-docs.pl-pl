@@ -1,24 +1,24 @@
 ---
-title: "Wdrażanie wielu wystąpień zasobów platformy Azure | Dokumentacja firmy Microsoft"
-description: "Użyj operacji kopiowania i tablic w szablonie usługi Azure Resource Manager w celu wykonania iteracji wiele razy podczas wdrażania zasobów."
+title: Wdrażanie wielu wystąpień zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj operacji kopiowania i tablic w szablonie usługi Azure Resource Manager w celu wykonania iteracji wiele razy podczas wdrażania zasobów.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 94d95810-a87b-460f-8e82-c69d462ac3ca
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8dfb664c7041d70f3ece812edb76df38a35e41f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ce442793a9917320b6b2b0a7014a20f885c3720c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie wielu wystąpień zasobów lub właściwości w szablonach usługi Azure Resource Manager
 W tym artykule przedstawiono warunkowo wdrażanie zasobu i porady dotyczące iteracji po do szablonu usługi Azure Resource Manager, aby utworzyć wiele wystąpień zasobu.
