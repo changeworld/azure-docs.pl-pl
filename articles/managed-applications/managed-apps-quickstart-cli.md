@@ -1,20 +1,20 @@
 ---
 title: Tworzenie aplikacji zarządzanej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
 description: Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji.
-services: azure-resource-manager
+services: managed-applications
 author: tfitzmac
 manager: timlt
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f84fdd421ec6857cd940108546a16eb47770c766
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Tworzenie i wdrażanie aplikacji zarządzanej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure
 

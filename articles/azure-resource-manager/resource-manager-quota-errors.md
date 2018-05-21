@@ -1,23 +1,23 @@
 ---
-title: "Błędy przydziału platformy Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób rozwiązania błędów qouta zasobów."
-services: azure-resource-manager,azure-portal
-documentationcenter: 
+title: Błędy przydziału platformy Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób rozwiązania błędów qouta zasobów.
+services: azure-resource-manager
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d2cc760bf516e8ee96629886120a1bb092932a82
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 6d9048ae531abedb89b70989ce1c962357c514cd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Rozwiązywanie błędów dla przydziałami zasobów
 
@@ -114,7 +114,7 @@ Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i plików pr
 
 4. W prawym górnym rogu wybierz **zwiększenia**.
 
-   ![Zwiększenia](./media/resource-manager-quota-errors/request-increase.png)
+   ![Zażądaj zwiększenia](./media/resource-manager-quota-errors/request-increase.png)
 
 5. Wypełnianie formularzy dla typu przydziału, którą należy zwiększyć.
 
