@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f5630c8cb9c0ca13210c62652f8d7f2e98f94438
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366651"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -111,7 +112,7 @@ Brama usług pulpitu zdalnego jest opartą na zasadach usługą serwera proxy RD
 * Skonfiguruj [zasady autoryzacji połączeń klientów](http://technet.microsoft.com/library/cc753324.aspx), aby umożliwić bramie usług pulpitu zdalnego sprawdzanie, czy maszyna kliencka ma prawidłową nazwę (jest przyłączona do domeny) i jest uprawniona do dostępu do witryny Azure Portal.
 * Aby zapewnić lepszą ochronę ruchu związanego z zarządzaniem przed podsłuchem i kradzieżą tokenów, używaj zabezpieczeń IPsec dla [Sieci VPN Azure](https://azure.microsoft.com/documentation/services/vpn-gateway/) albo rozważ możliwość utworzenia izolowanego łącza internetowego za pośrednictwem usługi [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 * Zapewnij uwierzytelnianie wieloskładnikowe (za pomocą usługi [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)) lub uwierzytelnianie przy użyciu kart inteligentnych dla administratorów logujących się przy użyciu bramy usług pulpitu zdalnego.
-* Skonfiguruj [ograniczenia źródłowych adresów IP](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) lub [sieciowe grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) na platformie Azure, aby zminimalizować liczbę punktów końcowych uprawnionych do zarządzania.
+* Skonfiguruj [ograniczenia źródłowych adresów IP](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) lub [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) na platformie Azure, aby zminimalizować liczbę punktów końcowych uprawnionych do zarządzania.
 
 ## <a name="security-guidelines"></a>Zalecenia dotyczące zabezpieczeń
 Ogólnie rzecz biorąc, ulepszanie zabezpieczeń stacji roboczych administratorów używanych do pracy z chmurą jest podobne do rozwiązań stosowanych w przypadku dowolnych lokalnych stacji roboczych (na przykład minimalizacja funkcjonalności i ograniczanie uprawnień). Niektóre unikatowe aspekty zarządzania chmurą są bardziej zbliżone do zdalnego zarządzania lub zarządzania poza pasmem w przedsiębiorstwach. Przykładem może być użycie i inspekcja poświadczeń, rozszerzone zabezpieczenia dostępu zdalnego oraz wykrywanie zagrożeń i podejmowanie działań zaradczych.
