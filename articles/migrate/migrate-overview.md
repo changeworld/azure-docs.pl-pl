@@ -4,14 +4,14 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 03/27/2018
+ms.date: 05/03/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 283a505f9e16b081e0eb2e51d935c9b12e8721cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 869d426bc76d725cead9bedc73800a20531bb9ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -21,15 +21,15 @@ Usługa Azure Migrate ocenia obciążenia lokalne pod kątem migracji na platfor
 
 Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 
-- **Ocena gotowości na platformę Azure**: czy maszyny lokalne mogą działać na platformie Azure. 
-- **Uzyskiwanie zaleceń dotyczących rozmiarów**: uzyskaj zalecenia dotyczące rozmiarów maszyn wirtualnych platformy Azure na podstawie historii wydajności lokalnych maszyn wirtualnych. 
+- **Ocena gotowości na platformę Azure**: czy maszyny lokalne mogą działać na platformie Azure.
+- **Uzyskiwanie zaleceń dotyczących rozmiarów**: uzyskaj zalecenia dotyczące rozmiarów maszyn wirtualnych platformy Azure na podstawie historii wydajności lokalnych maszyn wirtualnych.
 - **Szacowanie miesięcznych kosztów**: uzyskaj szacowane koszty uruchamiania maszyn lokalnych na platformie Azure.  
-- **Migrowanie z poczuciem pewności**: wizualizuj zależności maszyn lokalnych, aby tworzyć grupy maszyn, które będą oceniane i migrowane wspólnie. 
+- **Migrowanie z poczuciem pewności**: wizualizuj zależności maszyn lokalnych, aby tworzyć grupy maszyn, które będą oceniane i migrowane wspólnie.
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
 - Aktualnie można oceniać gotowość do migracji na maszyny wirtualne platformy Azure tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
-- Obsługa funkcji Hyper-V znajduje się w naszym harmonogramie działania. Na razie zaleca się planowanie migracji obciążeń funkcji Hyper-V przy użyciu narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc). 
+- Obsługa funkcji Hyper-V znajduje się w naszym harmonogramie działania. Na razie zaleca się planowanie migracji obciążeń funkcji Hyper-V przy użyciu narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc).
 - Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
 - Projekt usługi Azure Migrate można utworzyć tylko w regionie Zachodnio-środkowe stany USA lub Wschodnie stany USA. Nie ma to jednak wpływu na możliwość planowania migracji w innej docelowej lokalizacji platformy Azure. Lokalizacja projektu migracji służy tylko do przechowywania metadanych wykrytych w środowisku lokalnym.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
@@ -42,16 +42,17 @@ Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https:
 
 ## <a name="whats-in-an-assessment"></a>Co obejmuje ocena?
 
-Ocena pomaga określić, czy maszyny lokalne są odpowiednie dla platformy Azure, oraz uzyskać zalecenia dotyczące odpowiedniego rozmiaru i szacunkowy koszt działania maszyn wirtualnych na platformie Azure. Oceny można dostosować do własnych potrzeb, zmieniając właściwości oceny. Poniżej przedstawiono właściwości uwzględniane podczas tworzenia oceny. 
+Ocena pomaga określić, czy maszyny lokalne są odpowiednie dla platformy Azure, oraz uzyskać zalecenia dotyczące odpowiedniego rozmiaru i szacunkowy koszt działania maszyn wirtualnych na platformie Azure. Oceny można dostosować do własnych potrzeb, zmieniając właściwości oceny. Poniżej przedstawiono właściwości uwzględniane podczas tworzenia oceny.
 
 **Właściwość** | **Szczegóły**
 --- | ---
-**Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obsługuje obecnie 30 regionów, w tym: Australia Południowo-Wschodnia, Australia Wschodnia, Azja Południowo-Wschodnia, Azja Wschodnia, Brazylia Południowa, Chiny Północne, Chiny Wschodnie, Europa Północna, Europa Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Południowa, Korea Środkowa, Niemcy Północno-Wschodnie, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA, Zachodnie stany USA 2, Zachodnie Zjednoczone Królestwo i Zachodnio-środkowe stany USA. Domyślna lokalizacja docelowa to Zachodnie stany USA 2. 
-**Nadmiarowość magazynu** | Typ [nadmiarowości magazynu](https://docs.microsoft.com/azure/storage/common/storage-redundancy), który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. Ustawienie domyślne to Magazyn lokalnie nadmiarowy (LRS). Zwróć uwagę na to, że usługa Azure Migrate obsługuje tylko oceny oparte na dyskach zarządzanych, a dyski zarządzane obsługują tylko magazyn LRS, dlatego dla właściwości jest obecnie dostępna tylko opcja magazynu LRS. 
+**Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obsługuje obecnie 30 regionów, w tym: Australia Południowo-Wschodnia, Australia Wschodnia, Azja Południowo-Wschodnia, Azja Wschodnia, Brazylia Południowa, Chiny Północne, Chiny Wschodnie, Europa Północna, Europa Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Południowa, Korea Środkowa, Niemcy Północno-Wschodnie, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, US Gov Arizona, US Gov Teksas, US Gov Wirginia, Wschodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA, Zachodnie stany USA 2, Zachodnie Zjednoczone Królestwo i Zachodnio-środkowe stany USA. Domyślna lokalizacja docelowa to Zachodnie stany USA 2.
+**Nadmiarowość magazynu** | Typ [nadmiarowości magazynu](https://docs.microsoft.com/azure/storage/common/storage-redundancy), który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. Ustawienie domyślne to Magazyn lokalnie nadmiarowy (LRS). Zwróć uwagę na to, że usługa Azure Migrate obsługuje tylko oceny oparte na dyskach zarządzanych, a dyski zarządzane obsługują tylko magazyn LRS, dlatego dla właściwości jest obecnie dostępna tylko opcja magazynu LRS.
 **Kryterium rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Na potrzeby platformy Azure rozmiar można określić na podstawie *historii wydajności* lokalnych maszyn wirtualnych lub jako rozmiar *lokalnych* maszyn wirtualnych bez uwzględniania historii wydajności. Wartość domyślna to określanie rozmiaru na podstawie wydajności.
-**Plany cenowe** | W ramach obliczania kosztów funkcja oceny uwzględnia posiadanie pakietu Software Assurance i uprawnienie do [korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Uwzględniane są również [oferty platformy Azure](https://azure.microsoft.com/support/legal/offer-details/), jeśli są dostępne. Można też wskazać dowolne procentowe zniżki skojarzone z daną subskrypcją i stosowane dodatkowo do całej oferty. 
+**Plany cenowe** | W ramach obliczania kosztów funkcja oceny uwzględnia posiadanie pakietu Software Assurance i uprawnienie do [korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Uwzględniane są również [oferty platformy Azure](https://azure.microsoft.com/support/legal/offer-details/), jeśli są dostępne. Można też wskazać dowolne procentowe zniżki skojarzone z daną subskrypcją i stosowane dodatkowo do całej oferty.
 **Warstwa cenowa** | Możesz określić [warstwę cenową (Podstawowa/Standardowa)](../virtual-machines/windows/sizes-general.md) dla docelowych maszyn wirtualnych platformy Azure. Na przykład jeśli planujesz migrację środowiska produkcyjnego, rozważ warstwę Standardowa, która udostępnia maszyny wirtualne o małych opóźnieniach, lecz które mogą kosztować więcej. Z drugiej strony w przypadku środowiska deweloperskiego i testowego rozważ warstwę Podstawowa, która udostępnia maszyny wirtualnych o większych opóźnieniach, lecz przy niższych kosztach. Domyślnie jest używana warstwa [Standardowa](../virtual-machines/windows/sizes-general.md).
-**Historia wydajności** | Dotyczy tylko sytuacji, w których kryterium rozmiaru jest oparte na wydajności. Domyślnie usługa Azure Migrate ocenia wydajność maszyn lokalnych na podstawie historii wydajności obejmującej ostatni dzień, przy wartości percentylu równej 95%. Możesz zmodyfikować te wartości we właściwościach oceny. 
+**Historia wydajności** | Domyślnie usługa Azure Migrate ocenia wydajność maszyn lokalnych na podstawie historii wydajności obejmującej ostatni dzień, przy wartości percentylu równej 95%. Możesz zmodyfikować te wartości we właściwościach oceny.
+**Serie maszyn wirtualnych** | Określić możesz serie maszyn wirtualnych, które mają być brane pod uwagę podczas ustalania właściwego rozmiaru. Jeśli na przykład masz środowisko produkcyjne, którego nie zamierzasz migrować do maszyn wirtualnych serii A na platformie Azure, możesz wykluczyć serię A z listy serii, a ustalanie właściwego rozmiaru zostanie wykonane tylko przy użyciu wybranych serii.  
 **Współczynnik komfortu** | Podczas oceny usługa Azure Migrate uwzględnia bufor (współczynnik komfortu). Jest on stosowany do wszystkich danych użycia maszyn wirtualnych (procesora, pamięci, dysku i sieci). Współczynnik komfortu uwzględnia kwestie, takie jak okresowe użycie, krótka historia wydajności i prawdopodobne zwiększenie użycia w przyszłości.<br/><br/> Na przykład 10-rdzeniowa maszyna wirtualna o użyciu na poziomie 20% jest w normalnych warunkach równoważna 2-rdzeniowej maszynie wirtualnej. Jednak wynik zastosowania współczynnika komfortu o wartości 2 daje 4-rdzeniową maszynę wirtualną. Domyślne ustawienie komfortu to 1,3.
 
 
@@ -63,7 +64,7 @@ Ocena pomaga określić, czy maszyny lokalne są odpowiednie dla platformy Azure
 4.  Moduł zbierający gromadzi metadane maszyny wirtualnej przy użyciu poleceń cmdlet programu VMware PowerCLI. Odnajdywanie odbywa się bez użycia agenta ani instalowania żadnych narzędzi na hostach VMware lub maszynach wirtualnych. Zebrane metadane zawierają informacje o maszynach wirtualnych (rdzenie, pamięć, dyski, rozmiary dysków i karty sieciowe). Gromadzone są również dane dotyczące wydajności maszyn wirtualnych, w tym użycia procesora i pamięci, liczby operacji we/wy na sekundę na dysku, przepływności dysku (MB/s) i przepustowości sieci (MB/s).
 5.  Metadane te są wypychane do projektu usługi Azure Migrate. Można je wyświetlić w witrynie Azure Portal.
 6.  Na potrzeby oceny odnalezione maszyny wirtualne należy umieścić w grupach. Na przykład możesz pogrupować maszyny wirtualne, na których jest uruchamiana ta sama aplikacja. Na potrzeby bardziej precyzyjnego grupowania możesz użyć wizualizacji zależności, aby wyświetlić zależności określonej maszyny lub wszystkich maszyn w grupie i ulepszyć grupę.
-7.  Po utworzeniu grupy możesz utworzyć ocenę grupy. 
+7.  Po utworzeniu grupy możesz utworzyć ocenę grupy.
 8.  Utworzoną ocenę możesz wyświetlić w portalu lub pobrać w formacie programu Excel.
 
 
@@ -81,21 +82,21 @@ Poniższa tabela zawiera podsumowanie portów wymaganych do komunikacji usługi 
 |Lokalna maszyna wirtualna     | Obszar roboczy usługi Log Analytics          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |Agent MMA łączy się z usługą Log Analytics za pośrednictwem portu TCP 443. Ten port jest potrzebny tylko wtedy, gdy używasz funkcji wizualizacji zależności i instalujesz agenta MMA (Microsoft Monitoring Agent). |
 
 
-  
+
 ## <a name="what-happens-after-assessment"></a>Co należy zrobić po dokonaniu oceny?
 
 Po dokonaniu oceny maszyn lokalnych pod kątem migracji przy użyciu usługi Azure Migrate można przeprowadzić migrację za pomocą wybranego narzędzia:
 
 - **Azure Site Recovery**: migrację na platformę Azure można przeprowadzić za pomocą usługi Azure Site Recovery, wykonując następujące czynności:
   - Przygotuj zasoby platformy Azure, w tym subskrypcję platformy Azure, sieć wirtualną platformy Azure i konto magazynu.
-  - Przygotuj lokalne serwery VMware do migracji. Sprawdź wymagania oprogramowania VMware dotyczące obsługi usługi Site Recovery, przygotuj serwery VMware do odnajdywania i przygotuj instalację usługi mobilności dla usługi Site Recovery na maszynach wirtualnych, które chcesz migrować. 
+  - Przygotuj lokalne serwery VMware do migracji. Sprawdź wymagania oprogramowania VMware dotyczące obsługi usługi Site Recovery, przygotuj serwery VMware do odnajdywania i przygotuj instalację usługi mobilności dla usługi Site Recovery na maszynach wirtualnych, które chcesz migrować.
   - Skonfiguruj migrację. Skonfiguruj magazyn usługi Recovery Services, źródłowe i docelowe ustawienia migracji oraz zasady replikacji, a następnie włącz replikację. Aby sprawdzić, czy migracja maszyny wirtualnej na platformę Azure działa poprawnie, uruchom próbne odzyskiwanie po awarii.
-  - Uruchom tryb failover, aby przeprowadzić migrację maszyn lokalnych na platformę Azure. 
+  - Uruchom tryb failover, aby przeprowadzić migrację maszyn lokalnych na platformę Azure.
   - [Więcej informacji](../site-recovery/tutorial-migrate-on-premises-to-azure.md) zawiera samouczek dotyczący migracji przy użyciu usługi Site Recovery.
 
 - **Azure Database Migration**: aby przeprowadzić migrację maszyn lokalnych, na których jest uruchomiona baza danych, taka jak SQL Server, MySQL lub Oracle, na platformę Azure, możesz użyć usługi Azure Database Migration Service. [Dowiedz się więcej](https://azure.microsoft.com/campaigns/database-migration/).
 
 
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Następne kroki
 [Wykonaj czynności opisane w samouczku](tutorial-assessment-vmware.md) dotyczącym tworzenia oceny lokalnej maszyny wirtualnej VMware.

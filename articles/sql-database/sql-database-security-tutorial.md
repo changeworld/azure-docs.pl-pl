@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/01/2018
+ms.date: 04/24/2018
 ms.author: daredis
-ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpieczanie usługi Azure SQL Database
 
@@ -106,7 +106,7 @@ W celu zapewnienia bezpiecznego, szyfrowanego połączenia pomiędzy aplikacją 
 - żądać połączenia szyfrowanego; oraz
 - nie ufać certyfikatowi serwera. 
 
-W ten sposób nawiązuje się połączenie przy użyciu zabezpieczeń Transport Layer Security (TLS) i redukuje ryzyko ataków typu „man-in-the-middle” (człowiek pośrodku). Możesz uzyskać prawidłowo skonfigurowane parametry połączenia dla usługi SQL Database i obsługiwanych sterowników klienta z witryny Azure Portal, tak jak pokazano na poniższym zrzucie ekranu (w tym przypadku ADO.net).
+W ten sposób nawiązuje się połączenie przy użyciu zabezpieczeń Transport Layer Security (TLS) i redukuje ryzyko ataków typu „man-in-the-middle” (człowiek pośrodku). Możesz uzyskać prawidłowo skonfigurowane parametry połączenia dla usługi SQL Database i obsługiwanych sterowników klienta z witryny Azure Portal, tak jak pokazano na poniższym zrzucie ekranu (w tym przypadku ADO.net). Aby uzyskać informacje dotyczące zabezpieczeń TLS i łączności, zobacz [Zagadnienia dotyczące protokołu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
 1. Wybierz pozycję **Bazy danych SQL** z menu po lewej stronie, a następnie kliknij bazę danych na stronie **Bazy danych SQL**.
 

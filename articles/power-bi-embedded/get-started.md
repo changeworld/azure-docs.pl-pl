@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 692edc9a685ce7d1906f13f08c763909a2513b03
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Wprowadzenie do usługi Microsoft Power BI Embedded
 
@@ -48,7 +48,7 @@ Mamy przykłady, które pomogą Ci rozpocząć pracę. Aby zapoznać się z prze
 Utwórz pojemność usługi Power BI Embedded na platformie Microsoft Azure, aby przenieść swoją aplikację do środowiska produkcyjnego. Aby uzyskać informacje na temat sposobu tworzenia pojemności, zobacz [Create Power BI Embedded capacity in the Azure portal (Tworzenie pojemności usługi Power BI Embedded w witrynie Azure Portal)](create-capacity.md).
 
 > [!IMPORTANT]
-> Tokeny osadzania są przeznaczone tylko do testowania tworzonego oprogramowania, więc liczba tokenów osadzania, jakie może wygenerować główne konto usługi Power BI, jest ograniczona. Dla scenariuszy osadzania w środowisku produkcyjnym [należy kupić pojemność](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Po zakupie pojemności nie ma limitów generowania tokenów osadzania.
+> Tokeny osadzania są przeznaczone tylko do testowania tworzonego oprogramowania, więc liczba tokenów osadzania, jakie może wygenerować główne konto usługi Power BI, jest ograniczona. Dla scenariuszy osadzania w środowisku produkcyjnym [należy kupić pojemność](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Po zakupie pojemności nie ma limitów generowania tokenów osadzania. Zobacz [Get Available Features (Uzyskiwanie dostępnych funkcji)](https://msdn.microsoft.com/en-us/library/mt846473.aspx), aby sprawdzić aktualne użycie osadzania w procentach.
 
 Zarządzanie pojemnością w portalu administracyjnym usługi Power BI. Przypisz użytkownika przypisującego obszaru roboczego, aby uzyskać pomoc w zakresie obszarów roboczych aplikacji. Aby uzyskać więcej informacji, zobacz [Manage capacities within Power BI Premium and Power BI Embedded (Zarządzanie pojemnościami w usługach Power BI Premium i Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 
