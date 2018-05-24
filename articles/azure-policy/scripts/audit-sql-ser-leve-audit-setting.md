@@ -1,29 +1,29 @@
 ---
-title: "Azure zasad przykładowy kod json - ustawienie poziomu inspekcji programu SQL Server Audit | Dokumentacja firmy Microsoft"
-description: "Ta zasada próbki json inspekcji ustawienia inspekcji serwera SQL, jeśli te ustawienia są niezgodne z określonego ustawienia."
+title: Przykładowe zasady usługi Azure Policy w formacie JSON — Audit SQL Server level audit setting (Przeprowadź inspekcję ustawień inspekcji na poziomie programu SQL Server) | Microsoft Docs
+description: Te przykładowe zasady w formacie JSON sprawdzają, czy ustawienia inspekcji programu SQL Server nie są zgodne z określonym ustawieniem.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: e00e920bbb2b44d8e1e96423b5b40ca55867401f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: b7df0b20dd8118cac5f77366af1666d16fd03f0b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="audit-sql-server-level-audit-setting"></a>Inspekcja inspekcji na poziomie serwera SQL
+# <a name="audit-sql-server-level-audit-setting"></a>Przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server
 
-Te zasady inspekcji ustawienia inspekcji serwera SQL, jeśli te ustawienia są niezgodne z określonej wartości. Można określić wartość, która wskazuje, czy ustawienia inspekcji powinny być włączone lub wyłączone.
+Te zasady sprawdzają, czy ustawienia inspekcji programu SQL Server nie są zgodne z określonym ustawieniem. Należy określić wartość, która wskazuje, czy ustawienia inspekcji mają być włączone czy wyłączone.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Te zasady inspekcji ustawienia inspekcji serwera SQL, jeśli te ustawienia są n
 
 [!code-json[main](../../../policy-templates/samples/SQL/audit-sql-server-auditing/azurepolicy.json "Audit SQL Server Level Audit Setting")]
 
-Przy użyciu tego szablonu można wdrożyć [portalu Azure](#deploy-with-the-portal), z [PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -48,9 +48,9 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenia programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -66,9 +66,9 @@ az policy definition create --name 'audit-sql-server-auditing' --display-name 'A
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-sql-server-auditing"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenia wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dodatkowe przykłady szablonu zasad Azure są [szablony zasad Azure](../json-samples.md).
+- Dodatkowe przykłady szablonów usługi Azure Policy można znaleźć na stronie [Templates for Azure Policy (Szablony dla usługi Azure Policy)](../json-samples.md).

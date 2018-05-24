@@ -1,46 +1,60 @@
 ---
-title: "Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure AD z certyfikatami | Microsoft Docs"
-description: "Opis sposobu użycia interfejsu API raportowania usługi Azure AD przy użyciu poświadczeń certyfikatu w celu pobrania danych z katalogów bez interwencji użytkownika."
+title: Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure AD z certyfikatami | Microsoft Docs
+description: Opis sposobu użycia interfejsu API raportowania usługi Azure AD przy użyciu poświadczeń certyfikatu w celu pobrania danych z katalogów bez interwencji użytkownika.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ramical
 writer: v-lorisc
 manager: kannar
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/08/2017
+ms.date: 05/07/2018
 ms.author: ramical
-ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 54e661284c539b835089e858ba7b5e0016e89a83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure AD z certyfikatami
-Ten artykuł zawiera opis sposobu użycia interfejsu API raportowania usługi Azure AD przy użyciu poświadczeń certyfikatu w celu pobrania danych z katalogów bez interwencji użytkownika. 
+# <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure Active Directory z certyfikatami
 
-## <a name="use-the-azure-ad-reporting-api"></a>Zastosowanie interfejsu API raportowania usługi Azure AD 
-Interfejs API raportowania usługi Azure AD wymaga wykonania następujących kroków:
- *  Instalacja wymagań wstępnych
- *  Skonfigurowanie certyfikatu w aplikacji
- *  Pobranie tokenu dostępu
- *  Wykorzystanie tokenu dostępu do wywołania interfejsu API programu Graph
+[Interfejsy API raportowania usługi Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania.
+
+Jeśli chcesz uzyskać dostęp do interfejsu API raportowania usługi Azure AD bez interwencji użytkownika, możesz skonfigurować dostęp z użyciem certyfikatów
+
+W tym artykule:
+
+- Opisano kroki wymagane do uzyskiwania dostępu do interfejsu API raportowania usługi Azure AD przy użyciu certyfikatów.
+- Przyjęto założenie, że spełniono [wymagania wstępne dotyczące uzyskiwania dostępu do interfejsu API raportowania usługi Azure Active Directory](active-directory-reporting-api-prerequisites-azure-portal.md). 
+
+
+Aby uzyskiwać dostęp do interfejsu API raportowania przy użyciu certyfikatów, konieczne jest:
+
+1. Zainstalowanie wstępnie wymaganych składników
+2. Skonfigurowanie certyfikatu w aplikacji 
+3. Udzielenie uprawnień
+4. Pobranie tokenu dostępu
+
+
+
 
 Aby uzyskać informacje o kodzie źródłowym, zobacz [Leverage Report API Module](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils) (Wykorzystanie modułu interfejsu API raportowania). 
 
-### <a name="install-prerequisites"></a>Instalacja wymagań wstępnych
-Konieczne jest zainstalowanie programu Azure AD PowerShell V2 i modułu AzureADUtils.
+## <a name="install-prerequisites"></a>Instalacja wymagań wstępnych
+
+Konieczne jest zainstalowanie programu Azure AD PowerShell w wersji 2 i modułu AzureADUtils.
 
 1. Pobierz i zainstaluj program Azure AD Powershell V2, postępując zgodnie z instrukcjami w temacie [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md).
+
 2. Pobierz moduł Azure AD Utils z lokalizacji [AzureAD/azure-activedirectory-powershell](https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1). 
   Ten moduł zapewnia kilka poleceń cmdlet narzędzi, w tym:
-   * Najnowszą wersję bibliotek ADAL korzystających z narzędzia Nuget
-   * Tokeny dostępu użytkownika, kluczy aplikacji i certyfikatów korzystających z bibliotek ADAL
-   * Stronicowane wyniki obsługi interfejsu API programu Graph
+    - Najnowszą wersję bibliotek ADAL korzystających z narzędzia Nuget
+    - Tokeny dostępu użytkownika, kluczy aplikacji i certyfikatów korzystających z bibliotek ADAL
+    - Stronicowane wyniki obsługi interfejsu API programu Graph
 
 **Aby zainstalować moduł Azure AD Utils:**
 
@@ -52,14 +66,17 @@ Sesja powinna wyglądać podobnie do tego ekranu:
 
   ![Windows Powershell](./media/active-directory-report-api-with-certificates/windows-powershell.png)
 
-### <a name="set-the-certificate-in-your-app"></a>Skonfigurowanie certyfikatu w aplikacji
-1. Jeśli masz już aplikację, pobierz jej identyfikator obiektu z witryny Azure Portal. 
+## <a name="set-the-certificate-in-your-app"></a>Skonfigurowanie certyfikatu w aplikacji
 
-  ![Portal Azure](./media/active-directory-report-api-with-certificates/azure-portal.png)
+**Aby skonfigurować certyfikat w aplikacji:**
+
+1. [Pobierz identyfikator obiektu](active-directory-reporting-api-prerequisites-azure-portal.md#get-your-applications-client-id) aplikacji z witryny Azure Portal. 
+
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/azure-portal.png)
 
 2. Otwórz sesję programu PowerShell i nawiąż połączenie z usługą Azure AD za pomocą polecenia cmdlet Connect-AzureAD.
 
-  ![Portal Azure](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
 
 3. Użyj polecenia cmdlet New-AzureADApplicationCertificateCredential z modułu AzureADUtils, aby dodać do niego poświadczenie certyfikatu. 
 
@@ -68,28 +85,32 @@ Sesja powinna wyglądać podobnie do tego ekranu:
 >
 
 
-  ![Portal Azure](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
   
-### <a name="get-an-access-token"></a>Pobranie tokenu dostępu
+## <a name="get-an-access-token"></a>Pobranie tokenu dostępu
 
-Aby uzyskać token dostępu, użyj polecenia cmdlet Get-AzureADGraphAPIAccessTokenFromCert z modułu AzureADUtils. 
+Aby uzyskać token dostępu, użyj polecenia cmdlet **Get-AzureADGraphAPIAccessTokenFromCert** z modułu AzureADUtils. 
 
 >[!NOTE]
 >Należy użyć identyfikatora aplikacji zamiast identyfikatora obiektu użytego w ostatniej sekcji.
 >
 
- ![Portal Azure](./media/active-directory-report-api-with-certificates/application-id.png)
+ ![Azure Portal](./media/active-directory-report-api-with-certificates/application-id.png)
 
-### <a name="use-the-access-token-to-call-the-graph-api"></a>Wykorzystanie tokenu dostępu do wywołania interfejsu API programu Graph
+## <a name="use-the-access-token-to-call-the-graph-api"></a>Wykorzystanie tokenu dostępu do wywołania interfejsu API programu Graph
 
-Teraz można utworzyć skrypt. Poniżej zamieszczono przykład korzystający z polecenia Invoke-AzureADGraphAPIQuery z modułu AzureADUtils. To polecenie cmdlet obsługuje wyniki wielostronicowe, a następnie wysyła te wyniki do potoku programu PowerShell. 
+Teraz można utworzyć skrypt. Poniżej zamieszczono przykład korzystający z polecenia **Invoke-AzureADGraphAPIQuery** z modułu AzureADUtils. To polecenie cmdlet obsługuje wyniki wielostronicowe, a następnie wysyła te wyniki do potoku programu PowerShell. 
 
- ![Portal Azure](./media/active-directory-report-api-with-certificates/script-completed.png)
+ ![Azure Portal](./media/active-directory-report-api-with-certificates/script-completed.png)
 
 Teraz można przystąpić do eksportowania wyników do formatu CSV i zapisu w systemie SIEM. Skrypt można również opakować w zaplanowane zadanie, aby okresowo uzyskiwać dane usługi Azure AD od dzierżawcy bez konieczności przechowywania kluczy aplikacji w kodzie źródłowym. 
 
 ## <a name="next-steps"></a>Następne kroki
-[The fundamentals of Azure identity management](https://docs.microsoft.com/azure/active-directory/fundamentals-identity) (Podstawy zarządzania tożsamościami w usłudze Azure)<br>
+
+- [Pierwsze wrażenie dotyczące interfejsów API raportowania](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [Tworzenie własnego rozwiązania](active-directory-reporting-api-getting-started-azure-portal.md#customize)
+
 
 
 

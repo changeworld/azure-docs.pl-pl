@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: ec11a2d66530129fb61d97681e6882b887c8654c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Zestawy skalowania i dołączone dyski danych maszyn wirtualnych platformy Azure
 Aby umożliwić rozbudowanie dostępnego magazynu, [zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets/) platformy Azure obsługują wystąpienia maszyn wirtualnych przy użyciu dołączonych dysków z danymi. Dyski z danymi można dołączać do istniejącego zestawu skalowania lub podczas tworzenia takiego zestawu.
@@ -91,21 +91,12 @@ Aby automatycznie przygotować dyski danych w klastrze systemu Linux, dodaj nast
 ```
 
 
-## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Dodawanie wstępnie wypełnionych dysków danych do istniejącego zestawu skalowania 
-> Podczas dodawania dysków do istniejącego modelu zestawu skalowania dysk zawsze jest tworzony jako pusty — jest to celowe. Ten scenariusz obejmuje także nowe wystąpienia utworzone przez zestaw skalowania. To zachowanie jest spowodowane obecnością pustego dysku danych w definicji zestawu skalowania. Aby utworzyć wstępnie wypełnione dyski danych dla istniejącego modelu zestawu skalowania, możesz wybrać dowolną z następujących dwóch opcji:
-
-* Skopiowanie danych z maszyny wirtualnej wystąpienia 0 na dyski danych w innych maszynach wirtualnych przy użyciu skryptu niestandardowego.
-* Utworzenie obrazu zarządzanego z dyskiem systemu operacyjnego oraz dyskiem danych (z wymaganymi danymi) i utworzenie nowego zestawu skalowania przy użyciu tego obrazu. W ten sposób każda nowa utworzona maszyna wirtualna ma dysk danych podany w definicji zestawu skalowania. Ponieważ ta definicja odwołuje się do obrazu z dyskiem danych zawierającym dostosowane dane, te zmiany są uwzględniane na każdej maszynie wirtualnej w zestawie skalowania.
-
-> Sposób tworzenia obrazu niestandardowego można znaleźć tutaj: [Tworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](/azure/virtual-machines/windows/capture-image-resource/) 
-
-> Użytkownik musi przechwycić maszynę wirtualną wystąpienia 0 zawierającą wymagane dane, a następnie utworzyć definicję obrazu przy użyciu tego wirtualnego dysku twardego.
+## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Dodawanie wstępnie wypełnionych dysków danych do istniejącego zestawu skalowania
+Dyski danych określone w modelu zestawu skalowania zawsze są puste. Można jednak dołączyć istniejący dysk danych do określonej maszyny wirtualnej w zestawie skalowania. Ta funkcja jest dostępna w wersji zapoznawczej, a przykłady można znaleźć w serwisie [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk). Jeśli chcesz rozpropagować dane na wszystkie maszyny wirtualne w zestawie skalowania, możesz zduplikować dysk danych i dołączyć go do każdej maszyny wirtualnej w zestawie skalowania, utworzyć obraz niestandardowy zawierający dane i aprowizować zestaw skalowania przy użyciu tego obrazu niestandardowego lub użyć usługi Azure Files bądź podobnej oferty przechowywania danych.
 
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 Obsługa usługi Azure Managed Disks i dołączonych dysków danych w zestawach skalowania jest dostępna w wersji [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) interfejsu API Microsoft.Compute i w nowszych wersjach.
-
-We wstępnej implementacji obsługi dysków dołączonych dla zestawów skalowania nie można dołączać ani odłączać dysków danych w przypadku pojedynczych maszyn wirtualnych należących do zestawu skalowania.
 
 W witrynie Azure Portal obsługa dołączonych dysków danych w zestawach skalowania jest wstępnie ograniczona. W zależności od wymagań można zarządzać dyskami dołączonymi przy użyciu szablonów platformy Azure, interfejsu wiersza polecenia, programu PowerShell, zestawów SDK oraz interfejsu API REST.
 

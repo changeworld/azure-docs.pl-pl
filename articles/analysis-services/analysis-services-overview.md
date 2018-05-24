@@ -5,16 +5,16 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/12/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27b394a6b2d2f85afeb809fcad3b88564f3054e7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="azure-analysis-services-overview"></a>Omówienie usługi Azure Analysis Services
+# <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Usługi Azure Analysis Services udostępniają funkcje modelowania danych klasy korporacyjnej w chmurze. Jest to w pełni zarządzane rozwiązanie „platforma jako usługa” (PaaS), zintegrowane z usługami platformy danych Azure. 
@@ -57,7 +57,7 @@ Serwery usług Azure Analysis Services można tworzyć w następujących [region
 
 | Ameryki | Europa | Azja i Pacyfik |
 |----------|--------|--------------|
-|  Brazylia Południowa<br> Kanada Środkowa<br> Wschodnie stany USA 2<br> Środkowo-północne stany USA<br> Środkowo-południowe stany USA<br> Środkowo-zachodnie stany USA<br> Zachodnie stany USA | Europa Północna<br> Południowe Zjednoczone Królestwo<br> Europa Zachodnia |   Australia Południowo-Wschodnia<br> Japonia Wschodnia<br> Azja Południowo-Wschodnia<br> Indie Zachodnie  |
+|  Brazylia Południowa<br> Kanada Środkowa<br> Wschodnie stany USA<br> Wschodnie stany USA 2<br> Środkowo-północne stany USA<br> Środkowe stany USA<br> Środkowo-południowe stany USA<br> Środkowo-zachodnie stany USA<br> Zachodnie stany USA<br> Zachodnie stany USA 2 | Europa Północna<br> Południowe Zjednoczone Królestwo<br> Europa Zachodnia |   Australia Południowo-Wschodnia<br> Japonia Wschodnia<br> Azja Południowo-Wschodnia<br> Indie Zachodnie  |
 
 Przez cały czas dodawane są nowe regiony, więc ta lista może być niepełna. Lokalizację wybiera się przy tworzeniu serwera za pomocą witryny Azure Portal lub szablonów usługi Azure Resource Manager. Aby uzyskać najlepszą wydajność, wybierz lokalizację najbliższą względem Twojej największej bazy użytkowników. Zagwarantuj [wysoką dostępność](analysis-services-bcdr.md), wdrażając swoje modele na serwerach nadmiarowych w wielu regionach.
 
@@ -134,4 +134,5 @@ Masz sugestie lub propozycje nowych funkcji? Zostaw swoje komentarze w witrynie 
 Masz sugestie dotyczące dokumentacji? Możesz dodać komentarz przy użyciu funkcji Livefyre dostępnej w dolnej części każdego artykułu.
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy wiesz więcej na temat usług Azure Analysis Services, nadszedł czas na rozpoczęcie pracy. Dowiedz się, jak [utworzyć serwer](analysis-services-create-server.md) na platformie Azure. Gdy serwer będzie gotowy, przejdź [samouczek Adventure Works](tutorials/aas-adventure-works-tutorial.md), aby dowiedzieć się, jak utworzyć w pełni funkcjonalny model tabelaryczny i wdrożyć go na swoim serwerze.
+Dowiedz się, jak [utworzyć serwer](analysis-services-create-server.md) na platformie Azure.   
+Po utworzeniu serwera [dodaj przykładowy model](analysis-services-create-sample-model.md).   

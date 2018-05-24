@@ -1,27 +1,27 @@
 ---
-title: Samouczek dotyczący synonimów w wersji zapoznawczej w usłudze Azure Search | Microsoft Docs
-description: Dodaj funkcję synonimów (wersja zapoznawcza) do indeksu w usłudze Azure Search.
+title: Samouczek dotyczący synonimów w usłudze Azure Search | Microsoft Docs
+description: Dodaj funkcję synonimów do indeksu w usłudze Azure Search.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/31/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0f082397f832883b272a2ca38850a340b618adde
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a>Samouczek dotyczący synonimów (wersja zapoznawcza) języka C# dla usługi Azure Search
+# <a name="synonym-c-tutorial-for-azure-search"></a>Samouczek dotyczący synonimów języka C# dla usługi Azure Search
 
 Synonimy rozszerzają zapytanie, dopasowując wyrażenia uznane za semantycznie równoważne z wyrażeniem wejściowym. Przykładowo można sprawić, aby wyraz „samochód” pasował do dokumentów zawierających wyrażenia „auto” lub „pojazd”.
 
 W usłudze Azure Search synonimy są definiowane w *mapie synonimów* za pośrednictwem *reguł mapowania*, które kojarzą równoważne wyrażenia. Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący usługę dostępny dla dowolnych indeksów, a następnie określić, której z nich należy używać na poziomie pola. W czasie realizacji zapytania, poza wyszukiwaniem indeksu, usługa Azure Search wyszukuje mapę synonimów, jeśli mapa została określona dla pól używanych w zapytaniu.
 
 > [!NOTE]
-> Funkcja synonimów jest obecnie dostępna w wersji zapoznawczej i jest obsługiwana tylko w najnowszych wersjach zapoznawczych interfejsu API i zestawów SDK (wersja interfejsu API: 2016-09-01-Preview, wersja zestawu SDK: 4.x-preview). Obecnie witryna Azure Portal nie jest obsługiwana. Interfejsy API w wersji zapoznawczej nie są objęte umową SLA, a funkcje wersji zapoznawczej mogą ulec zmianie, dlatego nie zaleca się ich używania w aplikacjach produkcyjnych.
+> Funkcja synonimów jest obsługiwana w najnowszej wersji interfejsu API i zestawu SDK (wersja interfejsu API: 2017-11-11, wersja zestawu SDK: 5.0.0). Obecnie witryna Azure Portal nie jest obsługiwana. Jeśli obsługa funkcji synonimów w witrynie Azure Portal byłaby dla Ciebie przydatna, przekaż swoją opinię na platformie [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,7 +29,7 @@ Wymagania samouczka obejmują poniższe elementy:
 
 * [Program Visual Studio](https://www.visualstudio.com/downloads/)
 * [Usługa Azure Search](search-create-service-portal.md)
-* [Wersja zapoznawcza biblioteki Microsoft.Azure.Search .NET](https://aka.ms/search-sdk-preview)
+* [Biblioteka Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
 * [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Omówienie

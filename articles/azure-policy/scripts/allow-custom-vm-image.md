@@ -1,29 +1,29 @@
 ---
-title: "Azure json zasad przykładowe — Zezwalaj niestandardowego obrazu maszyny Wirtualnej z grupy zasobów | Dokumentacja firmy Microsoft"
-description: "Ta zasada próbki json wymaga, że niestandardowe obrazy pochodzą z grupy zasobów zatwierdzone."
+title: Przykładowe zasady usługi Azure Policy w formacie JSON — Allow custom VM image from a resource group (Zezwalaj na korzystanie z niestandardowego obrazu maszyny wirtualnej pochodzącego z grupy zasobów) | Microsoft Docs
+description: Te przykładowe zasady w formacie JSON wymagają, aby niestandardowe obrazy pochodziły z zatwierdzonej grupy zasobów.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 3da9a459f7e3008fc6a75473cc1a239d9cd5749b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: ca2d25828bc184a783dd065df3cc8200a3af6ee3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allow-custom-vm-image-from-a-resource-group"></a>Zezwalaj na niestandardowe obrazu maszyny Wirtualnej z grupy zasobów
+# <a name="allow-custom-vm-image-from-a-resource-group"></a>Zezwalanie na korzystanie z niestandardowego obrazu maszyny wirtualnej pochodzącego z grupy zasobów
 
-Ta zasada próbki json wymaga, że niestandardowe obrazy pochodzą z grupy zasobów zatwierdzone. Należy określić nazwę grupy zasobów zatwierdzone.
+Te przykładowe zasady w formacie JSON wymagają, aby niestandardowe obrazy pochodziły z zatwierdzonej grupy zasobów. Należy określić nazwę zatwierdzonej grupy zasobów.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,7 +32,7 @@ Ta zasada próbki json wymaga, że niestandardowe obrazy pochodzą z grupy zasob
 [!code-json[main](../../../policy-templates/samples/compute/custom-image-from-rg/azurepolicy.json "Allow custom VM image from a Resource Group")]
 
 
-Przy użyciu tego szablonu można wdrożyć [portalu Azure](#deploy-with-the-portal), z [PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -49,9 +49,9 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenia programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -67,9 +67,9 @@ az policy definition create --name 'custom-image-from-rg' --display-name 'Allow 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "custom-image-from-rg"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenia wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -77,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dodatkowe przykłady szablonów zasad usługi Azure można znaleźć w dokumentacji usługi Azure zasad
+Dodatkowe przykładowe szablony usługi Azure Policy można znaleźć w dokumentacji usługi Azure Policy

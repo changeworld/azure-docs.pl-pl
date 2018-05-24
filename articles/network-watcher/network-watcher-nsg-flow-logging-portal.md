@@ -1,113 +1,163 @@
 ---
-title: Zarządzanie dziennikami przepływu grupy zabezpieczeń sieci z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
-description: Ta strona opisano sposób zarządzania dziennikami przepływu sieciowej grupy zabezpieczeń w obserwatora sieciowego Azure
+title: Rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej — samouczek — Azure Portal | Microsoft Docs
+description: Dowiedz się, jak rejestrować przepływ ruchu sieciowego do i z maszyny wirtualnej przy użyciu możliwości dzienników przepływu sieciowej grupy zabezpieczeń usługi Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
+tags: azure-resource-manager
+Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 04/30/2018
 ms.author: jdial
-ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Zarządzanie dziennikami przepływu grupy zabezpieczeń sieci w portalu Azure
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
-> [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [Program PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [Interfejs wiersza polecenia 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
-> - [Interfejs wiersza polecenia 2.0](network-watcher-nsg-flow-logging-cli.md)
-> - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
+Sieciowa grupa zabezpieczeń umożliwia filtrowanie ruchu przychodzącego do i wychodzącego z maszyny wirtualnej. Możesz rejestrować ruch sieciowy, który przepływa przez sieciową grupę zabezpieczeń z możliwością rejestrowania dziennika przepływu sieciowej grupy zabezpieczeń usługi Network Watcher. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-Dzienniki przepływu grupy zabezpieczeń sieci są funkcją obserwatora sieciowego, który umożliwia wyświetlenie informacji o przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci. Te dzienniki przepływu są zapisywane w formacie JSON i zawierają istotne informacje, w tym: 
+> [!div class="checklist"]
+> * Tworzenie maszyny wirtualnej przy użyciu sieciowej grupy zabezpieczeń
+> * Włączanie usługi Network Watcher i rejestrowanie dostawcy Microsoft.Insights
+> * Włączanie dziennika przepływu ruchu dla sieciowej grupy zabezpieczeń przy użyciu możliwości dziennika przepływu sieciowej grupy zabezpieczeń usługi Network Watcher
+> * Pobieranie zarejestrowanych danych
+> * Wyświetlanie zarejestrowanych danych
 
-- Wychodzące i przychodzące przepływem na podstawie reguł.
-- Karta sieciowa, która dotyczy przepływu.
-- 5-elementowej informacje o przepływie (źródłowego i docelowego adresu IP, portu źródłowego i docelowego, protokół).
-- Informacja, czy dozwolony lub odrzucany ruchu.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
+## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Aby wykonać kroki opisane w tym artykule, trzeba już mieć następujące zasoby:
+1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+2. Wybierz pozycję **Compute**, a następnie wybierz pozycję **Windows Server 2016 Datacenter** lub **Maszyna wirtualna z systemem Ubuntu Server 17.10**.
+3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
 
-- Istniejące obserwatora sieciowego. Aby utworzyć obserwatora sieciowego, zobacz [utworzyć wystąpienia obserwatora sieciowego](network-watcher-create.md).
-- Istniejącej grupy zasobów z prawidłową maszyną wirtualną. Jeśli nie masz maszyny wirtualnej, zobacz Tworzenie [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) lub [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) maszyny wirtualnej.
+    |Ustawienie|Wartość|
+    |---|---|
+    |Name (Nazwa)|myVm|
+    |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
+    |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Subskrypcja| Wybierz subskrypcję.|
+    |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
 
-## <a name="register-insights-provider"></a>Zarejestruj dostawcę usługi Insights
+4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
+5. W obszarze **Ustawienia** zaakceptuj wszystkie wartości domyślne i wybierz przycisk **OK**.
+6. W obszarze **Utwórz** na stronie **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej. Wdrożenie maszyny wirtualnej potrwa kilka minut. Zanim przejdziesz do pozostałych kroków, poczekaj na zakończenie wdrażania maszyny wirtualnej.
 
-Przepływ rejestrowanie działało poprawnie **elemencie Microsoft.Insights** dostawcy musi być zarejestrowana. Aby zarejestrować dostawcę, należy wykonać następujące czynności: 
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie wykonuj pozostałych kroków do momentu zakończenia tworzenia maszyny wirtualnej. Gdy portal tworzy maszynę wirtualną, tworzy również sieciową grupę zabezpieczeń o nazwie **myVm-nsg** i kojarzy ją z interfejsem sieciowym maszyny wirtualnej.
 
-1. Przejdź do **subskrypcje**, a następnie wybierz subskrypcję, dla której chcesz włączyć dzienniki przepływu. 
-2. Na **subskrypcji** bloku, wybierz opcję **dostawców zasobów**. 
-3. Spójrz na listę dostawców i upewnij się, że **elemencie microsoft.insights** dostawca został zarejestrowany. Jeśli nie, następnie wybierz **zarejestrować**.
+## <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
-![Widok dostawców][providers]
+Jeśli masz już włączoną usługę Network Watcher w regionie Wschodnie stany USA, przejdź do sekcji [Rejestrowanie dostawcy usługi Insights](#register-insights-provider).
 
-## <a name="enable-flow-logs"></a>Włączanie dzienników przepływu
+1. W portalu wybierz pozycję **Wszystkie usługi**. W **polu filtru** wprowadź ciąg *Network Watcher*. Gdy w wynikach pojawi się nazwa **Network Watcher**, wybierz ją.
+2. Wybierz węzeł **Regiony**, aby go rozwinąć, a następnie wybierz symbol **...** z prawej strony pozycji **Wschodnie stany USA**, jak pokazano na poniższej ilustracji:
 
-Następujące kroki umożliwiają włączenie przepływu dzienniki w lokacji sieciowej grupy zabezpieczeń.
+    ![Włączanie usługi Network Watcher](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
 
-### <a name="step-1"></a>Krok 1
+3. Wybierz pozycję **Włącz usługę Network Watcher**.
 
-Przejdź do wystąpienia obserwatora sieciowego, a następnie wybierz **przepływ NSG rejestruje**.
+## <a name="register-insights-provider"></a>Rejestrowanie dostawcy usługi Insights
 
-![Przegląd dzienników przepływu][1]
+Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microsoft.Insights**. Aby zarejestrować dostawcę, wykonaj następujące kroki:
 
-### <a name="step-2"></a>Krok 2
+1. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu Filtr wpisz ciąg *Subskrypcje*. Gdy pozycja **Subskrypcje** pojawi się w wynikach wyszukiwania, wybierz ją.
+2. Z listy subskrypcji wybierz subskrypcję, dla której chcesz włączyć dostawcę.
+3. Wybierz pozycję **Dostawcy zasobów** w obszarze **USTAWIENIA**.
+4. Sprawdź, czy pozycja **STAN** dla dostawcy **microsoft.insights** ma wartość **Zarejestrowany**, jak pokazano na rysunku poniżej. Jeśli stan ma wartość **Niezarejestrowany**, wybierz pozycję **Zarejestruj** z prawej strony dostawcy.
 
-Wybierz grupy zabezpieczeń sieci z listy.
+    ![Rejestrowanie dostawcy](./media/network-watcher-nsg-flow-logging-portal/register-provider.png)
 
-![Przegląd dzienników przepływu][2]
+## <a name="enable-nsg-flow-log"></a>Włączanie dziennika przepływu sieciowej grupy zabezpieczeń
 
-### <a name="step-3"></a>Krok 3 
+1. Dane dziennika przepływu sieciowej grupy zabezpieczeń są zapisywane na koncie usługi Azure Storage. Aby utworzyć konto usługi Azure Storage, wybierz pozycję **+ Utwórz zasób** w lewym górnym rogu portalu.
+2. Wybierz pozycję **Storage**, a następnie wybierz pozycję **Konto usługi Storage — Blob, File, Table, Queue**.
+3. Wprowadź lub wybierz poniższe informacje, zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Utwórz**.
 
-Na **ustawień dzienników przepływu** bloku, Ustaw stan na **na**, a następnie skonfiguruj konto magazynu. Wybierz istniejące konto magazynu, który ma **wszystkich sieci** (ustawienie domyślne) wybrany w obszarze **zapory i sieci wirtualne**w obszarze **ustawienia** dla konta magazynu. Po wybraniu konta magazynu, wybierz **OK**, a następnie wybierz **zapisać**.
+    | Ustawienie        | Wartość                                                        |
+    | ---            | ---   |
+    | Name (Nazwa)           | Od 3 do 24 znaków, może zawierać tylko małe litery i cyfry i musi być unikatowa dla wszystkich kont usługi Azure Storage.                                                               |
+    | Lokalizacja       | Wybierz pozycję **Wschodnie stany USA**                                           |
+    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
 
-![Przegląd dzienników przepływu][3]
+    Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage.
+4. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
+5. W obszarze **DZIENNIKI** wybierz pozycję **Dzienniki przepływu sieciowej grupy zabezpieczeń**, jak pokazano na poniższej ilustracji:
 
-## <a name="download-flow-logs"></a>Pobierz dzienniki przepływu
+    ![Sieciowe grupy zabezpieczeń](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
-Przepływ dzienniki są zapisywane na koncie magazynu. Pobierz dzienniki przepływu, aby je wyświetlić.
+6. Z listy sieciowych grup zabezpieczeń wybierz grupę o nazwie **myVm-nsg**.
+7. W obszarze **Ustawienia dzienników przepływu** wybierz pozycję **Wł.**
+8. Wybierz konto usługi Storage utworzone w kroku 3.
+9. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
 
-### <a name="step-1"></a>Krok 1
+## <a name="download-flow-log"></a>Pobieranie dziennika przepływu
 
-Aby pobrać dzienniki przepływu, wybierz **dzienniki przepływu można pobrać z kont magazynu skonfigurowanych**. Ten krok przejście do widoku konto magazynu, na którym można wybrać dzienniki, które można pobrać.
+1. Z poziomu usługi Network Watcher w portalu wybierz pozycję **Dzienniki przepływów sieciowych grup zabezpieczeń** w obszarze **DZIENNIKI**.
+2. Wybierz pozycję **Możesz pobierać dzienniki przepływu ze skonfigurowanych kont usługi Storage**, jak pokazano na poniższej ilustracji:
 
-![Ustawienia dzienników przepływów][4]
+  ![Pobieranie dzienników przepływu](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
-### <a name="step-2"></a>Krok 2
+3. Wybierz konto usługi Storage skonfigurowane w kroku 2 sekcji [Włączanie dziennika przepływu sieciowej grupy zabezpieczeń](#enable-nsg-flow-log).
+4. Wybierz pozycję **Kontenery** w obszarze **BLOB SERVICE**, a następnie wybierz kontener **insights-logs-networksecuritygroupflowevent**, jak pokazano na poniższej ilustracji:
 
-Przejdź do konta magazynu poprawne. Następnie wybierz **kontenery** > **insights — dziennik networksecuritygroupflowevent**.
+    ![Wybieranie kontenera](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
+5. W hierarchii folderów przejdź do pliku PT1H.json, jak pokazano na poniższej ilustracji:
 
-![Ustawienia dzienników przepływów][5]
+    ![Plik dziennika](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
-### <a name="step-3"></a>Krok 3
+    Pliki dzienników są zapisywane w hierarchii folderów przy użyciu następującej konwencji nazw: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-Przejdź do lokalizacji pliku dziennika przepływu, zaznacz go, a następnie wybierz **Pobierz**.
+6. Wybierz symbol **...** z prawej strony pliku PT1H.json i wybierz pozycję **Pobierz**.
 
-![Ustawienia dzienników przepływów][6]
+## <a name="view-flow-log"></a>Wyświetlanie dziennika przepływu
 
-Informacje o strukturze dziennika, odwiedź stronę [Omówienie dziennika przepływu grupy zabezpieczeń sieci](network-watcher-nsg-flow-logging-overview.md).
+Poniższy kod JSON to przykład kodu widocznego w pliku PT1H.json dla każdego przepływu, w którym są rejestrowane dane:
 
-## <a name="next-steps"></a>Kolejne kroki
+```json
+{
+    "time": "2018-05-01T15:00:02.1713710Z",
+    "systemId": "<Id>",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/<Id>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/MYVM-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 1,
+        "flows": [{
+            "rule": "UserRule_default-allow-rdp",
+            "flows": [{
+                "mac": "000D3A170C69",
+                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
+            }]
+        }]
+    }
+}
+```
 
-Dowiedz się, jak [wizualizacji dzienników przepływu grupy NSG z usługą Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Wartość elementu **mac** w poprzednich danych wyjściowych to adres MAC interfejsu sieciowego, który został utworzony podczas tworzenia maszyny wirtualnej. Informacje rozdzielone przecinkami dotyczące elementu **flowTuples** są następujące:
 
-<!-- Image references -->
-[1]: ./media/network-watcher-nsg-flow-logging-portal/figure1.png
-[2]: ./media/network-watcher-nsg-flow-logging-portal/figure2.png
-[3]: ./media/network-watcher-nsg-flow-logging-portal/figure3.png
-[4]: ./media/network-watcher-nsg-flow-logging-portal/figure4.png
-[5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
-[6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
-[providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png
+| Przykładowe dane | Co reprezentują dane   | Wyjaśnienie                                                                              |
+| ---          | ---                    | ---                                                                                      |
+| 1525186745   | Znacznik czasu             | Znacznik czasu wystąpienia przepływu w formacie EPOCH systemu UNIX. W poprzednim przykładzie data zmienia się na 1 maja 2018 o 14:59:05 GMT.                                                                                    |
+| 192.168.1.4  | Źródłowy adres IP      | Źródłowy adres IP, z którego był zainicjowany przepływ.
+| 10.0.0.4     | Docelowy adres IP | Docelowy adres IP, do którego był skierowany przepływ. 10.0.0.4 to prywatny adres IP maszyny wirtualnej utworzonej w sekcji [Tworzenie maszyny wirtualnej](#create-a-vm).                                                                                 |
+| 55960        | Port źródłowy            | Port źródłowy, z którego pochodził przepływ.                                           |
+| 3389         | Port docelowy       | Port docelowy, do którego był skierowany przepływ. Ponieważ ruch był przeznaczony do portu 3389, reguła o nazwie **UserRule_default-allow-rdp** w pliku dziennika przetworzyła przepływ.                                                |
+| T            | Protokół               | Określa rodzaj protokołu przepływu: TCP (T) lub UDP (U).                                  |
+| I            | Kierunek              | Określa, czy ruch był przychodzący (I), czy wychodzący (O).                                     |
+| A            | Akcja                 | Określa, czy ruch był dozwolony (A), czy odrzucony (D).                                           |
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku przedstawiono sposób włączania rejestrowania przepływu sieciowej grupy zabezpieczeń dla danej grupy. Przedstawiono również sposób pobierania i wyświetlania danych rejestrowanych w pliku. Nieprzetworzone dane w pliku JSON mogą być trudne do zinterpretowania. W celu zwizualizowania danych można użyć [analizy ruchu](traffic-analytics.md) w usłudze Network Watcher, usługi Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) i innych narzędzi.
