@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/2/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: cec2ab862a34a8753601dfeef3081ae9e9ca9fd9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.openlocfilehash: 63e87c59a2e560b5a78708482c2ed89f5f8fb127
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257907"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Blockchain Workbench 
 
@@ -26,12 +27,14 @@ Interfejs API REST usługi Azure Blockchain Workbench umożliwia deweloperom i p
 * Wyświetlanie listy dostępnych akcji dla kontraktu
 * Wykonywanie akcji dla kontraktu
 
+Przykładowe aplikacje blockchain używane w scenariuszach, może być [pobrać z witryny GitHub](https://github.com/Azure-Samples/blockchain). 
+
 ## <a name="list-applications"></a>Wyświetlanie listy aplikacji
 
-Pierwszym zadaniem po zalogowaniu się klienta łańcucha bloków jest pobranie wszystkich aplikacji łańcucha bloków usługi Blockchain Workbench dla użytkownika. W tym scenariuszu użytkownik ma dostęp do dwóch aplikacji:
+Gdy użytkownik zalogował się do klienta blockchain, pierwszym zadaniem jest pobrać wszystkie aplikacje Blockchain Workbench dla użytkownika. W tym scenariuszu użytkownik ma dostęp do dwóch aplikacji:
 
-1.  Asset Transfer
-2.  Refrigerated Transportation
+1.  [Przeniesienie zasobów](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+2.  [Chłodniczych transportu](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 Użyj [interfejsu API pobierania aplikacji](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget):
 
@@ -40,7 +43,7 @@ GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-Odpowiedź zawiera listę wszystkich aplikacji łańcucha bloków, do których użytkownik ma dostęp w usłudze Blockchain Workbench. Administratorzy usługi Blockchain Workbench pobierają wszystkie aplikacje łańcucha bloków, natomiast inni administratorzy pobierają wszystkie łańcuchy bloków, dla których mają co najmniej jedną skojarzoną rolę aplikacji lub skojarzoną rolę wystąpienia kontraktu inteligentnego.
+Odpowiedź zawiera listę wszystkich aplikacji blockchain, do których użytkownik ma dostęp w Blockchain Workbench. Administratorzy usługi Blockchain Workbench pobierają wszystkie aplikacje łańcucha bloków, natomiast inni administratorzy pobierają wszystkie łańcuchy bloków, dla których mają co najmniej jedną skojarzoną rolę aplikacji lub skojarzoną rolę wystąpienia kontraktu inteligentnego.
 
 ``` http
 HTTP/1.1 200 OK
@@ -74,7 +77,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Wyświetlanie listy przepływów pracy dla aplikacji
 
-Gdy użytkownik wybierze odpowiednią aplikację łańcucha bloków, w tym przypadku Asset Transfer, klient łańcucha bloków pobierze wszystkie przepływy pracy określonej aplikacji łańcucha bloków. Użytkownicy mogą następnie wybrać odpowiedni przepływ pracy, zanim zostaną im wyświetlone wszystkie wystąpienia kontraktu inteligentnego dla przepływu pracy. Każda aplikacja łańcucha bloków ma co najmniej jeden przepływ pracy, a każdy przepływ pracy ma zero lub więcej wystąpień kontraktu inteligentnego. Podczas kompilowania aplikacji klienckich łańcucha bloków zalecane jest pominięcie przepływu środowiska użytkownika umożliwiającego użytkownikom wybranie odpowiedniego przepływu pracy, jeśli istnieje tylko jeden przepływ pracy dla aplikacji łańcucha bloków. W takim przypadku aplikacja Asset Transfer zawiera tylko jeden przepływ pracy, również o nazwie Asset Transfer.
+Gdy użytkownik wybierze blockchain dotyczy aplikacji, w tym przypadku **transferu zasobów**, klient blockchain pobiera wszystkie przepływy pracy blockchain określonych aplikacji. Użytkownicy mogą następnie wybrać odpowiedni przepływ pracy, zanim zostaną im wyświetlone wszystkie wystąpienia kontraktu inteligentnego dla przepływu pracy. Każda aplikacja łańcucha bloków ma co najmniej jeden przepływ pracy, a każdy przepływ pracy ma zero lub więcej wystąpień kontraktu inteligentnego. Podczas kompilowania aplikacji klienckich łańcucha bloków zalecane jest pominięcie przepływu środowiska użytkownika umożliwiającego użytkownikom wybranie odpowiedniego przepływu pracy, jeśli istnieje tylko jeden przepływ pracy dla aplikacji łańcucha bloków. W takim przypadku **transferu zasobów** ma tylko jeden przepływ pracy, nazywane również **transferu zasobów**.
 
 Użyj [interfejsu API pobierania przepływów pracy aplikacji](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget):
 
@@ -106,7 +109,7 @@ Content-type: application/json
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Wyświetlanie listy wystąpień kontraktu inteligentnego dla przepływu pracy
 
-Gdy użytkownik wybierze odpowiedni przepływ pracy, w tym przypadku Asset Transfer, klient łańcucha bloków pobierze wszystkie wystąpienia kontraktu inteligentnego dla określonego przepływu pracy. Te informacje służą do wyświetlania wszystkich wystąpień kontraktu inteligentnego dla przepływu pracy i umożliwiają użytkownikom dokładną analizę szczegółów dowolnego z wyświetlanych wystąpień kontraktu inteligentnego. W tym przykładzie zakładamy, ze użytkownik chce wejść w interakcję z jednym z wystąpień kontraktu inteligentnego, aby wykonać akcję.
+Gdy użytkownik wybierze odpowiednie przepływu pracy, tym przypadku **transferu zasobów**, klient blockchain pobierze wszystkie wystąpienia inteligentne kontraktu dla określonego przepływu pracy. Te informacje służą do wyświetlania wszystkich wystąpień kontraktu inteligentnego dla przepływu pracy i umożliwiają użytkownikom dokładną analizę szczegółów dowolnego z wyświetlanych wystąpień kontraktu inteligentnego. W tym przykładzie zakładamy, ze użytkownik chce wejść w interakcję z jednym z wystąpień kontraktu inteligentnego, aby wykonać akcję.
 
 Użyj [interfejsu API pobierania kontraktów](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractsget):
 
@@ -304,7 +307,7 @@ HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST usługi Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)

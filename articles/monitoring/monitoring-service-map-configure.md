@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 5fa5c6708f3b0b0319bd669be7f9c897f095b6e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: aa85f06355ad5afc8e67ff4bace3b0ed471dc703
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204196"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie mapy usługi na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlania serwerów jako traktować ich — jako połączonych systemy, które dostarczają usług krytycznych. Mapy usług zawiera połączeń między serwerami, procesów i portów w dowolnej architekturze połączenia TCP z konfiguracja nie jest wymagane, innego niż instalacji agenta.
 
 W tym artykule opisano konfigurowanie agentów mapy usługi i przechodzenia do szczegółów. Uzyskać przy użyciu mapy usługi, zobacz [używać rozwiązania mapy usługi na platformie Azure]( monitoring-service-map.md).
 
-## <a name="dependency-agent-downloads"></a>Zależności agenta pliki do pobrania
+## <a name="dependency-agent-downloads"></a>Pobieranie agenta Dependency Agent
 | Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
@@ -33,22 +34,22 @@ W tym artykule opisano konfigurowanie agentów mapy usługi i przechodzenia do s
 
 
 ## <a name="connected-sources"></a>Połączone źródła
-Mapa usług dane są pobierane z Microsoft Dependency Agent. Agent zależności zależy od agenta pakietu OMS dla jego połączenia z analizy dzienników. Oznacza to, że serwer musi mieć zainstalowany i skonfigurowany najpierw Agent pakietu OMS, a następnie może być zainstalowany Agent zależności. W poniższej tabeli opisano połączonych źródeł, które obsługuje rozwiązania mapy usługi.
+Mapa usług dane są pobierane z Microsoft Dependency Agent. Agent Dependency Agent zależy od agenta pakietu OMS w zakresie połączeń z usługą Log Analytics. Oznacza to, że serwer musi mieć zainstalowany i skonfigurowany najpierw Agent pakietu OMS, a następnie może być zainstalowany Agent zależności. W poniższej tabeli opisano połączonych źródeł, które obsługuje rozwiązania mapy usługi.
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Yes | Mapa usług analizuje i zbiera dane z komputerów z systemem Windows agenta. <br><br>Oprócz [Agent pakietu OMS](../log-analytics/log-analytics-windows-agent.md), agentów systemu Windows wymagają Microsoft Dependency Agent. Zobacz [obsługiwanych systemów operacyjnych](#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Mapa usług analizuje i zbiera dane z komputerów z systemem Linux agenta. <br><br>Oprócz [Agent pakietu OMS](../log-analytics/log-analytics-linux-agents.md), Microsoft Dependency Agent wymagają agentów systemu Linux. Zobacz [obsługiwanych systemów operacyjnych](#supported-operating-systems) pełną listę wersji systemu operacyjnego. |
-| Grupa zarządzania programu System Center Operations Manager | Yes | Mapa usług analizuje i zbiera dane z agentów systemu Windows i Linux w połączonych [grupy zarządzania programu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Połączenie bezpośrednie z komputera agenta programu System Center Operations Manager do analizy dzienników jest wymagana. Dane są przesyłane dalej z grupy zarządzania do obszaru roboczego analizy dzienników.|
+| Agenci dla systemu Windows | Yes | Mapa usług analizuje i zbiera dane z komputerów z systemem Windows agenta. <br><br>Oprócz [agenta pakietu OMS](../log-analytics/log-analytics-windows-agent.md), agenci systemu Windows wymagają agenta Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Mapa usług analizuje i zbiera dane z komputerów z systemem Linux agenta. <br><br>Oprócz [agenta pakietu OMS](../log-analytics/log-analytics-linux-agents.md), agenci systemu Linux wymagają agenta Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Grupa zarządzania programu System Center Operations Manager | Yes | Mapa usług analizuje i zbiera dane z agentów systemu Windows i Linux w połączonych [grupy zarządzania programu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. Dane są przesyłane dalej z grupy zarządzania do obszaru roboczego analizy dzienników.|
 | Konto magazynu Azure | Nie | Mapy usługi zbiera dane z komputerami agenta, więc nie ma żadnych danych z niego do zbierania z usługi Azure Storage. |
 
 Mapy usługi obsługuje tylko 64-bitowych platform.
 
-W systemie Windows, Microsoft Monitoring Agent (MMA) jest używany zarówno przez System Center Operations Manager i analizy dzienników do zbierania i wysyłania danych monitorowania. (Ten agent jest nazywane agenta programu System Center Operations Manager, Agent pakietu OMS, Agent analizy dziennika, MMA lub bezpośredniego agenta, w zależności od kontekstu.) System Center Operations Manager i analizy dzienników zawiera pole poza z różnych wersji MMA. Te wersje strony każdy raport do programu System Center Operations Manager do analizy dzienników lub obie.  
+W systemie Windows, Microsoft Monitoring Agent (MMA) jest używany zarówno przez System Center Operations Manager i analizy dzienników do zbierania i wysyłania danych monitorowania. (Ten agent jest nazywane agenta programu System Center Operations Manager, Agent pakietu OMS, Agent analizy dziennika, MMA lub bezpośredniego agenta, w zależności od kontekstu.) System Center Operations Manager i analizy dzienników zawiera pole poza z różnych wersji MMA. Każda z tych wersji może raportować do programu System Center Operations Manager, do usługi Log Analytics lub do obu miejsc.  
 
 W systemie Linux, Agent pakietu OMS gromadzi systemu Linux i wysyła dane do analizy dzienników monitorowania. Na serwerach z agentami bezpośredniego OMS lub na serwerach, które są dołączone do analizy dzienników za pośrednictwem grup zarządzania programu System Center Operations Manager, możesz użyć mapy usługi.  
 
-W tym artykule, firma Microsoft będzie odwoływać się do wszystkich agentów — czy Linux lub Windows, czy połączony z grupą zarządzania programu System Center Operations Manager lub bezpośrednio do analizy dzienników — jako "Agent pakietu OMS." Nazwa określonego wdrożenia agenta będą używane tylko wtedy, gdy jest wymagana dla kontekstu.
+W tym artykule, firma Microsoft będzie odwoływać się do wszystkich agentów — czy Linux lub Windows, czy połączony z grupą zarządzania programu System Center Operations Manager lub bezpośrednio do analizy dzienników — jako "Agent pakietu OMS." Konkretna nazwa wdrożenia agenta jest używana tylko wtedy, gdy jest wymagana dla kontekstu.
 
 Agent mapy usług nie przesyła wszystkie dane, a nie wymaga zmian zapory lub porty. Agent pakietu OMS z analizą dzienników przesyłania danych na mapie usługi zawsze, bezpośrednio lub za pośrednictwem bramy OMS.
 
@@ -62,45 +63,45 @@ Jeśli jesteś klientem programu System Center Operations Manager z grupą zarz�
 Jeśli używasz bezpośredniej Agent pakietu OMS, należy skonfigurować agenta pakietu OMS do połączenia analizy dzienników lub bramy OMS. Brama OMS można pobrać z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ### <a name="management-packs"></a>Pakiety administracyjne
-Po aktywowaniu usługi mapy w obszarze roboczym analizy dzienników pakietu administracyjnego 300 KB są wysyłane do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz programu System Center Operations Manager agentów w [podłączonej grupy zarządzania](../log-analytics/log-analytics-om-agents.md), mapy usługi pakietu administracyjnego wdrażania programu System Center Operations Manager. Jeżeli agenci są połączone bezpośrednio Log Analytics zapewnia pakietu administracyjnego.
+Po aktywowaniu usługi mapy w obszarze roboczym analizy dzienników pakietu administracyjnego 300 KB są wysyłane do wszystkich serwerów z systemem Windows w tym obszarze roboczym. Jeśli używasz programu System Center Operations Manager agentów w [podłączonej grupy zarządzania](../log-analytics/log-analytics-om-agents.md), mapy usługi pakietu administracyjnego wdrażania programu System Center Operations Manager. Jeżeli agenci są połączeni bezpośrednio, usługa Log Analytics zapewni pakiet administracyjny.
 
 Pakiet administracyjny nosi nazwę Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Jest ona zapisywana w %Programfiles%\Microsoft Packs\ State\Management usługi Agent\Agent\Health monitorowanie. Źródło danych, które korzysta z pakietu administracyjnego jest % Program files%\Microsoft monitorowanie Agent\Agent\Health usługi State\Resources\<AutoGeneratedID > \Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="installation"></a>Instalacja
 ### <a name="install-the-dependency-agent-on-microsoft-windows"></a>Zainstaluj agenta zależności w systemie Microsoft Windows
-Aby zainstalować lub odinstalować agenta wymagane są uprawnienia administratora.
+Aby zainstalować lub odinstalować agenta, wymagane są uprawnienia administratora.
 
-Dependency Agent jest zainstalowany na komputerach z systemem Windows za pośrednictwem InstallDependencyAgent Windows.exe. Po uruchomieniu tego pliku wykonywalnego bez żadnych opcji uruchamia kreatora, który można wykonać w celu zainstalowania interaktywnie.  
+Dependency Agent jest zainstalowany na komputerach z systemem Windows za pośrednictwem InstallDependencyAgent Windows.exe. Uruchomienie tego pliku wykonywalnego bez żadnych opcji powoduje uruchomienie kreatora, którego polecenia należy wykonywać w celu przeprowadzenia interaktywnej instalacji.  
 
 Aby zainstalować agenta zależności na każdym komputerze z systemem Windows, wykonaj następujące kroki:
 
 1.  Zainstaluj agenta pakietu OMS zgodnie z instrukcjami podanymi w [komputery Windows połączenia z usługą analizy dzienników na platformie Azure](../log-analytics/log-analytics-windows-agent.md).
 2.  Pobierz agenta systemu Windows i uruchom go za pomocą następującego polecenia: <br>`InstallDependencyAgent-Windows.exe`
 3.  Użyj kreatora, aby zainstalować agenta.
-4.  Jeśli Dependency Agent nie powiedzie się, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. Agentów systemu Windows katalog dziennika jest %Programfiles%\Microsoft Agent\logs zależności. 
+4.  Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. Agentów systemu Windows katalog dziennika jest %Programfiles%\Microsoft Agent\logs zależności. 
 
 #### <a name="windows-command-line"></a>Wiersz polecenia systemu Windows
-Opcje z poniższej tabeli służą do instalacji z wiersza polecenia. Aby wyświetlić listę flagi instalacji, należy uruchomić Instalatora przy użyciu /? Flaga w następujący sposób.
+Użyj opcji z poniższej tabeli, aby przeprowadzić instalację z poziomu wiersza polecenia. Aby wyświetlić listę flag instalacji, uruchom instalatora, używając flagi /? w następujący sposób.
 
     InstallDependencyAgent-Windows.exe /?
 
 | Flaga | Opis |
 |:--|:--|
 | /? | Pobierz listę opcji wiersza polecenia. |
-| /S | Wykonaj instalację dyskretną bez monitowania użytkownika. |
+| /S | Przeprowadź instalację cichą bez monitowania użytkownika. |
 
-Pliki agenta zależności systemu Windows są umieszczane w C:\Program Files\Microsoft Dependency Agent domyślnie.
+Pliki programu Windows Dependency Agent są domyślnie umieszczane w folderze C:\Program Files\Microsoft Dependency Agent.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Zainstaluj agenta zależności w systemie Linux
-Dostęp do konta root jest wymagane do zainstalowania i skonfigurowania agenta.
+### <a name="install-the-dependency-agent-on-linux"></a>Instalowanie agenta Dependency Agent w systemie Linux
+Aby zainstalować lub skonfigurować agenta, wymagany jest dostęp na poziomie administratora.
 
-Dependency Agent jest zainstalowany na komputery z systemem Linux za pomocą Linux64.bin InstallDependencyAgent, skrypt powłoki z samowyodrębniający plikiem binarnym. Możesz uruchomić plik przy użyciu sh lub Dodaj uprawnienia w samym pliku do wykonywania.
+Agent Dependency Agent jest instalowany na komputerach z systemem Linux za pomocą pliku InstallDependencyAgent-Linux64.bin, czyli skryptu powłoki z samowyodrębniającym plikiem binarnym. Możesz uruchomić plik przy użyciu sh lub Dodaj uprawnienia w samym pliku do wykonywania.
  
-Aby zainstalować agenta zależności na każdym komputerze z systemem Linux, wykonaj następujące kroki:
+Aby zainstalować agenta Dependency Agent na każdym komputerze z systemem Linux, wykonaj następujące kroki:
 
 1.  Zainstaluj agenta pakietu OMS zgodnie z instrukcjami podanymi w [zbierania danych i zarządzać nimi z komputerów z systemem Linux](https://technet.microsoft.com/library/mt622052.aspx).
 2.  Zainstaluj agenta systemu Linux zależności jako główny przy użyciu następującego polecenia:<br>`sh InstallDependencyAgent-Linux64.bin`
-3.  Jeśli Dependency Agent nie powiedzie się, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W agencie Linux katalog dziennika jest /var/opt/microsoft/dependency-agent/log.
+3.  Jeśli agent Dependency Agent się nie uruchomi, sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W agencie Linux katalog dziennika jest /var/opt/microsoft/dependency-agent/log.
 
 Aby wyświetlić listę flagi instalacji, uruchom instalację programu pomocy flagi w następujący sposób.
 
@@ -109,21 +110,21 @@ Aby wyświetlić listę flagi instalacji, uruchom instalację programu pomocy fl
 | Flaga | Opis |
 |:--|:--|
 | -help | Pobierz listę opcji wiersza polecenia. |
-| -s | Wykonaj instalację dyskretną bez monitowania użytkownika. |
-| — Sprawdź | Sprawdź uprawnienia i systemu operacyjnego, ale nie należy instalować agenta. |
+| -s | Przeprowadź instalację cichą bez monitowania użytkownika. |
+| — Sprawdź | Sprawdź uprawnienia i system operacyjny, ale nie instaluj agenta. |
 
-Pliki programu Agent zależności są umieszczane w następujących katalogów:
+Pliki agenta Dependency Agent są umieszczane w następujących katalogach:
 
 | Pliki | Lokalizacja |
 |:--|:--|
-| Podstawowe pliki | /opt/microsoft/dependency-agent |
-| Pliki dziennika | /var/OPT/Microsoft/Dependency-Agent/log |
-| Pliki konfiguracji | /etc/opt/microsoft/dependency-agent/config |
+| Pliki jądra | /opt/microsoft/dependency-agent |
+| Pliki dziennika | /var/opt/microsoft/dependency-agent/log |
+| Plik konfiguracji | /etc/opt/microsoft/dependency-agent/config |
 | Pliki wykonywalne usługi | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
-| Pliki binarne magazynu | /var/OPT/Microsoft/Dependency-Agent/Storage |
+| Pliki binarne magazynu | /var/opt/microsoft/dependency-agent/storage |
 
 ## <a name="installation-script-examples"></a>Przykłady skryptów instalacji
-Aby łatwo wdrożyć agenta zależności na wiele serwerów na raz, pomaga za pomocą skryptu. W poniższych przykładach skrypt umożliwia pobranie i zainstalowanie agenta zależności w systemu Windows lub Linux.
+Aby łatwo wdrożyć agenta Dependency Agent na wielu serwerach naraz, można użyć skryptu. Poniższe przykładowe skrypty pozwalają pobrać i zainstalować agenta zależności w systemu Windows lub Linux.
 
 ### <a name="powershell-script-for-windows"></a>Skrypt programu PowerShell dla systemu Windows
 ```PowerShell
@@ -188,7 +189,7 @@ ForEach-Object {
 
 
 ## <a name="desired-state-configuration"></a>Konfiguracja żądanego stanu
-Aby wdrożyć Dependency Agent za pomocą konfiguracji żądanego stanu, można użyć modułu xPSDesiredStateConfiguration i kodu podobne do poniższych:
+Aby wdrożyć agenta Dependency Agent za pośrednictwem usługi Desired State Configuration, możesz użyć modułu xPSDesiredStateConfiguration i fragmentu kodu podobnego do poniższego:
 ```
 configuration ServiceMap {
 
@@ -222,12 +223,12 @@ Node localhost
 ```
 
 ## <a name="uninstallation"></a>Dezinstalacja
-### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstaluj agenta zależności w systemie Windows
-Administrator może odinstalować zależności agenta dla systemu Windows za pomocą Panelu sterowania.
+### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalowywanie agenta Dependency Agent w systemie Windows
+Administrator może odinstalować agenta Dependency Agent w systemie Windows za pomocą Panelu sterowania.
 
-Administrator można również uruchomić %Programfiles%\Microsoft Agent\Uninstall.exe zależności można odinstalować agenta zależności.
+Administrator może również uruchomić plik %Programfiles%\Microsoft Dependency Agent\Uninstall.exe, aby odinstalować agenta Dependency Agent.
 
-### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstaluj agenta zależności w systemie Linux
+### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalowywanie agenta Dependency Agent w systemie Linux
 Zależności agenta można odinstalować z systemem Linux przy użyciu następującego polecenia.
 <br>RHEL, CentOs lub Oracle:
 ```
@@ -292,7 +293,7 @@ Mapa usługi jest obecnie dostępna w następujących regionach platformy Azure:
 
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
-Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla agenta zależności. Mapy usług nie obsługuje architektury 32-bitowego dla dowolnego systemu operacyjnego.
+Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla agenta Dependency Agent. Mapy usług nie obsługuje architektury 32-bitowego dla dowolnego systemu operacyjnego.
 
 ### <a name="windows-server"></a>Windows Server
 - Windows Server 2016
@@ -306,12 +307,12 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 - Windows 8
 - Windows 7
 
-### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux i Oracle Linux (z RHEL jądra)
-- Obsługiwane są tylko domyślnej i wersjach jądra systemu Linux SMP.
-- Zwalnia jądra niestandardowe, takie jak rozszerzenia adresu fizycznego i Xen, nie są obsługiwane dla dowolnego dystrybucji systemu Linux. Na przykład system z wersji ciąg "2.6.16.21-0.8-xen" nie jest obsługiwane.
-- Niestandardowe jądra, w tym ponownych kompilacji standardowe jądra, nie są obsługiwane.
-- CentOSPlus jądra nie jest obsługiwane.
-- Oracle podzielenie Enterprise jądra (UEK) zostało opisane w dalszej części tego artykułu.
+### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux i Oracle Linux (z jądrem RHEL)
+- Obsługiwane są tylko wersje domyślne i wersje SMP jądra systemu Linux.
+- Niestandardowe wydania jądra, takie jak PAE i Xen, nie są obsługiwane dla żadnej dystrybucji systemu Linux. Na przykład system z wersji ciąg "2.6.16.21-0.8-xen" nie jest obsługiwane.
+- Niestandardowe jądra, łącznie z ponownymi kompilacjami standardowych jąder, nie są obsługiwane.
+- Jądro CentOSPlus nie jest obsługiwane.
+- Jądro Oracle Unbreakable Enterprise Kernel (UEK) zostało opisane w dalszej części tego artykułu.
 
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -322,6 +323,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 | 7.2 | 3.10.0-327 |
 | 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 | Wersja systemu operacyjnego | Wersja jądra |
@@ -346,14 +348,14 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 | 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
 
 ### <a name="ubuntu-server"></a>Ubuntu Server
-- Niestandardowe jądra, w tym ponownych kompilacji standardowe jądra, nie są obsługiwane.
+- Niestandardowe jądra, łącznie z ponownymi kompilacjami standardowych jąder, nie są obsługiwane.
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Linux przedsiębiorstwa z jądra podzielenie Enterprise
+### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux z jądrem Unbreakable Enterprise Kernel
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 | Wersja systemu operacyjnego | Wersja jądra
 |:--|:--|
@@ -380,7 +382,7 @@ Poniższe sekcje zawierają listę obsługiwanych systemów operacyjnych dla age
 | 11 SP4 | 3.0.101-65 |
 
 
-## <a name="diagnostic-and-usage-data"></a>dane diagnostyczne i użycia
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
 Firma Microsoft automatycznie zbiera dane użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do udostępniania i ulepszania jakości, bezpieczeństwa i integralności usługi mapy usługi. Dane obejmują informacje o konfiguracji oprogramowania, takie jak wersja systemu operacyjnego i. Zawiera także adres IP, nazwę DNS i nazwę stacji roboczej zapewnić dokładne i skuteczne funkcje do rozwiązywania problemów. Nie gromadzimy nazwisk, adresów ani innych informacji kontaktowych.
 
 Aby uzyskać więcej informacji dotyczących zbierania i użycia danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
