@@ -1,27 +1,29 @@
 ---
-title: Tworzenie publicznego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure | Microsoft Docs
-description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
+title: 'Szybki start: tworzenie publicznego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure | Microsoft Docs'
+description: W tym samouczku przedstawiono sposób tworzenia publicznego modułu równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
-ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
+Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2017
+ms.date: 03/19/2018
 ms.author: kumud
-ms.openlocfilehash: f2ba819c2341b2e481c2cfa5d5231f4cd5b6295b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.custom: mvc
+ms.openlocfilehash: 263cb6e588c9714504a5bb5d9a064f5c4be73e9d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Tworzenie publicznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Szybki start: tworzenie publicznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia modułu równoważenia obciążenia Azure Load Balancer. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server i zrównoważysz obciążenie aplikacji internetowej między nimi.
 

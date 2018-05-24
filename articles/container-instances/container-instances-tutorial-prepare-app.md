@@ -3,17 +3,17 @@ title: Samouczek usługi Azure Container Instances — przygotowywanie aplikacji
 description: Samouczek usługi Azure Container Instances, część 1 z 3 — przygotowywanie aplikacji do wdrożenia w usłudze Azure Container Instances
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 134cc6ea84a5851755c757cbcf20130bf890575c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 79041123196559c5759789638228ea0dd21f2762
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>Samouczek: tworzenie kontenera do wdrożenia w usłudze Azure Container Instances
 

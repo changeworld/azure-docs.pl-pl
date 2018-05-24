@@ -1,6 +1,6 @@
 ---
-title: "Skonfiguruj punkty końcowe węzła w puli partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować lub wyłączyć dostępu do portów SSH lub RDP na węzłach obliczeniowych w puli partii zadań Azure."
+title: Skonfiguruj punkty końcowe węzła w puli partii zadań Azure | Dokumentacja firmy Microsoft
+description: Jak skonfigurować lub wyłączyć dostępu do portów SSH lub RDP na węzłach obliczeniowych w puli partii zadań Azure.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: danlep
-ms.openlocfilehash: fdc68744406c3e995a2764f93d4474b807337ff5
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurowanie lub wyłączanie dostępu zdalnego do wyliczenia węzłów w puli partii zadań Azure
 
@@ -23,7 +23,7 @@ W danym środowisku konieczne może być ograniczenia lub wyłączyć te ustawie
 ## <a name="about-the-pool-endpoint-configuration"></a>Konfiguracja punktu końcowego puli — informacje
 Konfiguracja punktu końcowego, który składa się z co najmniej jeden [pule adresów translatora adresów sieciowych](/rest/api/batchservice/pool/add#inboundnatpool) portów frontonu. (Nie należy mylić z puli partii węzłów obliczeniowych pulą translatora adresów Sieciowych). Skonfigurowaniu każda pula NAT na zastąpienie domyślnych ustawień połączenia w węzłach obliczeń puli. 
 
-Każdej konfiguracji puli NAT zawiera co najmniej jedną [sieci reguł zabezpieczeń grupy (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Każdej reguły NSG zezwala lub nie zezwala na przesyłanie konkretnego ruchu sieciowego do punktu końcowego. Można akceptować lub odrzucać cały ruch, ruch identyfikowane przez [znacznik domyślny](../virtual-network/virtual-networks-nsg.md#default-tags) (na przykład "Internet"), lub ruch z określonych adresów IP lub podsieci.
+Każdej konfiguracji puli NAT zawiera co najmniej jedną [sieci reguł zabezpieczeń grupy (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Każdej reguły NSG zezwala lub nie zezwala na przesyłanie konkretnego ruchu sieciowego do punktu końcowego. Można akceptować lub odrzucać cały ruch, ruch identyfikowane przez [usługi tag](../virtual-network/security-overview.md#service-tags) (na przykład "Internet"), lub ruch z określonych adresów IP lub podsieci.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 * Konfiguracja punktu końcowego pula jest częścią puli [konfiguracji sieci](/rest/api/batchservice/pool/add#NetworkConfiguration). Konfigurację sieci można opcjonalnie dołączyć ustawienia puli, aby dołączyć do [sieci wirtualnej platformy Azure](batch-virtual-network.md). Jeśli skonfigurowano puli w sieci wirtualnej można utworzyć reguły NSG, które używają ustawień adresu w sieci wirtualnej.
@@ -124,7 +124,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać więcej informacji dotyczących reguły NSG na platformie Azure, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md).
+- Aby uzyskać więcej informacji dotyczących reguły NSG na platformie Azure, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/security-overview.md).
 
 - Aby uzyskać szczegółowe informacje o partii, zobacz [Programowanie równoległe na dużą skalę obliczeniowe rozwiązań w partii](batch-api-basics.md).
 

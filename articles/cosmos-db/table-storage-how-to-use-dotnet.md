@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ff26ab122e920d6ca8dbf837a2229f8728a471ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9f8175742adc5c543b637ab69b3a9583f251da04
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -102,7 +102,7 @@ Pakiet NuGet służy do pobrania obu pakietów. Wykonaj następujące kroki:
 >
 
 ### <a name="determine-your-target-environment"></a>Określanie środowiska docelowego
-W przypadku uruchamiania przykładów w tym przewodniku istnieją dwie opcje środowiska:
+Są trzy opcje środowiska w przypadku uruchamiania przykładów w tym przewodniku:
 
 * Można uruchomić kod dla konta usługi Azure Storage w chmurze. 
 * Można uruchomić kod dla konta bazy danych Azure rozwiązania Cosmos w chmurze.

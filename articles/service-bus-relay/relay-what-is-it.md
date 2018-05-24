@@ -1,34 +1,36 @@
 ---
-title: "Co to jest usługa Azure Relay i dlaczego warto z niej korzystać — omówienie | Microsoft Docs"
-description: "Omówienie usługi Azure Relay"
+title: Co to jest usługa Azure Relay i dlaczego warto z niej korzystać — omówienie | Microsoft Docs
+description: Omówienie usługi Azure Relay
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
 ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d1b1c0661458669dc8f05a49037943320de2ecb3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2b179f8f5de9a0020ea6457c11bb6f48f3a51320
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
 
 Usługa Azure Relay ułatwia tworzenie hybrydowych aplikacji, umożliwiając bezpieczne uwidacznianie usług znajdujących się w korporacyjnym środowisku sieciowym w chmurze publicznej bez konieczności otwierania połączenia przez zaporę i bez wprowadzania niepożądanych zmian do infrastruktury sieci korporacyjnej. Usługa przekazywania obsługuje wiele różnych protokołów transportowych i standardów usług sieci Web.
 
-Usługa przekazywania obsługuje tradycyjne, jednokierunkowe żądania/odpowiedzi oraz ruch równorzędny. Obsługuje ona również dystrybucję zdarzeń w zakresie Internetu w celu umożliwienia scenariuszy publikacji/subskrypcji i komunikacji poprzez gniazdo dwukierunkowe dla zwiększonej wydajności point-to-point. 
+Usługa przekazywania obsługuje tradycyjne, jednokierunkowe żądania/odpowiedzi oraz ruch równorzędny. Obsługuje ona również dystrybucję zdarzeń w zakresie Internetu w celu umożliwienia scenariuszy publikacji/subskrypcji i komunikacji poprzez gniazdo dwukierunkowe dla zwiększonej wydajności point-to-point.
 
 We wzorcu transferu danych obsługiwanego przez przekaźnik usługa lokalna łączy się z usługą przekazywania za pomocą portu wychodzącego i tworzy gniazdo dwukierunkowe dla komunikacji powiązanej z konkretnym adresem spotkania. Klient następnie może komunikować się z lokalną usługą poprzez wysyłanie ruchu do usługi przekazywania kierującej komunikaty do adresu spotkania. Usługa przekazywania następnie „przekazuje” komunikaty do usługi lokalnej za pośrednictwem już istniejących gniazd dwukierunkowych dedykowanych dla każdego klienta. Klient nie potrzebuje bezpośredniego połączenia z usługą lokalną ani nie musi wiedzieć, gdzie usługa się znajduje. Usługa lokalna nie wymaga otwarcia w zaporze żadnych portów przychodzących.
 
-Kluczowymi elementami udostępnianych możliwości przez przekaźnik są dwukierunkowa, niebuforowana komunikacja w granicach sieci z ograniczaniem przepływności podobnym do protokołu TCP, odnajdywanie punktu końcowego, stan łączności i nałożone zabezpieczenia punktu końcowego. Możliwości przekazywania różnią się w zależności od technologii integracji na poziomie sieci, takiej jak sieć VPN. Jednak przekazywanie może należeć do zakresu punktu końcowego jednej aplikacji na jednym komputerze, przy czym technologia sieci VPN jest o wiele bardziej niepożądana, ponieważ opiera się na zmianie środowiska sieciowego.
+Kluczowymi elementami udostępnianych możliwości przez przekaźnik są dwukierunkowa, niebuforowana komunikacja w granicach sieci z ograniczaniem przepływności podobnym do protokołu TCP, odnajdywanie punktu końcowego, stan łączności i nałożone zabezpieczenia punktu końcowego.
+
+Możliwości przekazywania różnią się w zależności od technologii integracji na poziomie sieci, takiej jak sieć VPN. Jednak przekazywanie może należeć do zakresu punktu końcowego jednej aplikacji na jednym komputerze, przy czym technologia sieci VPN jest o wiele bardziej niepożądana, ponieważ opiera się na zmianie środowiska sieciowego.
 
 Usługa Azure Relay ma dwie funkcje:
 
@@ -48,7 +50,9 @@ Zarówno połączenia hybrydowe, jak i przekaźniki WCF umożliwiają bezpieczne
 
 ## <a name="hybrid-connections"></a>Połączenia hybrydowe
 
-Funkcja [połączeń hybrydowych usługi Azure Relay](relay-hybrid-connections-protocol.md) to bezpieczna, oparta na otwartym protokole ewolucja istniejących funkcji przekazywania, które mogą być zaimplementowane na dowolnej platformie i w dowolnym języku mającym podstawowe możliwości obsługi protokołu WebSocket i jawnie zawierającym interfejs WebSocket API w powszechnie używanych przeglądarkach internetowych. Połączenia hybrydowe są oparte na protokole HTTP i WebSocket.
+Funkcja połączeń hybrydowych usługi Azure Relay to bezpieczna, oparta na otwartym protokole ewolucja istniejących funkcji usługi Relay, która może zostać zaimplementowana na dowolnej platformie i w dowolnym języku. Połączenia hybrydowe mają możliwość przekazywania obiektów WebSocket, a także żądań i odpowiedzi HTTP(S). Te możliwości są zgodne z interfejsem API protokołu WebSocket w popularnych przeglądarkach internetowych. Połączenia hybrydowe są oparte na protokole HTTP i WebSocket.
+
+Protokół jest w pełni udokumentowany w [przewodniku protokołu połączeń hybrydowych](relay-hybrid-connections-protocol.md), co umożliwia korzystanie z funkcji Relay połączeń hybrydowych z praktycznie dowolną biblioteką obiektów WebSocket dla dowolnego języka i środowiska uruchomieniowego.
 
 ### <a name="service-history"></a>Historia usługi
 
@@ -70,6 +74,8 @@ Po nawiązaniu połączenia przekaźnika klienci mogą wymieniać komunikaty za 
 
 * [Często zadawane pytania dotyczące usługi Relay](relay-faq.md)
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
-* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
-* [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)
+* [Wprowadzenie do obiektów WebSocket platformy .NET](relay-hybrid-connections-dotnet-get-started.md)
+* [Wprowadzenie do żądań HTTP platformy .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+* [Wprowadzenie do obiektów WebSocket środowiska Node](relay-hybrid-connections-node-get-started.md)
+* [Wprowadzenie do żądań HTTP środowiska Node](relay-hybrid-connections-http-requests-node-get-started.md)
 

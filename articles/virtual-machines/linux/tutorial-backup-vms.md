@@ -1,6 +1,6 @@
 ---
-title: Tworzenie kopii zapasowych maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
-description: Ochroń swoje maszyny wirtualne z systemem Linux, tworząc ich kopie zapasowe przy użyciu usługi Azure Backup.
+title: Samouczek — tworzenie kopii zapasowych maszyn wirtualnych z systemem Linux w witrynie Azure Portal | Microsoft Docs
+description: W tym samouczku dowiesz się, jak za pomocą witryny Azure Portal chronić maszyny wirtualne z systemem Linux przy użyciu usługi Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,22 +16,20 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4bd532a570a978715ba61880047f3a7e49b446ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="back-up-linux--virtual-machines-in-azure"></a>Tworzenie kopii zapasowych maszyn wirtualnych z systemem Linux na platformie Azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Samouczek: tworzenie kopii zapasowych i przywracanie plików dla maszyn wirtualnych z systemem Linux na platformie Azure
 
-Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub tylko poszczególne pliki. W tym artykule opisano sposób przywracania pojedynczego pliku na maszynę wirtualną z systemem Linux i uruchomionym serwerem nginx. Jeśli nie masz jeszcze maszyny wirtualnej gotowej do użycia, możesz ją utworzyć, korzystając z [przewodnika Szybki start dla systemu Linux](quick-create-cli.md). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule opisano sposób przywracania pojedynczego pliku na maszynę wirtualną z systemem Linux i uruchomionym serwerem nginx. Jeśli nie masz jeszcze maszyny wirtualnej gotowej do użycia, możesz ją utworzyć, korzystając z [przewodnika Szybki start dla systemu Linux](quick-create-cli.md). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie kopii zapasowej maszyny wirtualnej
 > * Harmonogram codziennego wykonywania kopii zapasowej
 > * Przywracanie pliku z kopii zapasowej
-
-
 
 ## <a name="backup-overview"></a>Omówienie usługi Backup
 
@@ -43,7 +41,7 @@ Po ukończeniu przesyłania danych migawka jest usuwana, a utworzony zostaje pun
 
 
 ## <a name="create-a-backup"></a>Tworzenie kopii zapasowej
-Utwórz prostą, zaplanowaną, codzienną operację tworzenia kopii zapasowych w magazynie usługi Recovery Services. 
+Utwórz zaplanowaną, codzienną operację tworzenia kopii zapasowych w magazynie usługi Recovery Services:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. W menu po lewej stronie wybierz pozycję **Maszyny wirtualne**. 
@@ -54,7 +52,7 @@ Utwórz prostą, zaplanowaną, codzienną operację tworzenia kopii zapasowych w
 7. W bloku **Włącz kopię zapasową** kliknij pozycję **Włącz kopię zapasową**. Spowoduje to codzienne tworzenie kopii zapasowej na podstawie harmonogramu domyślnego.
 10. Aby utworzyć początkowy punkt odzyskiwania, w bloku **Kopia zapasowa** kliknij opcję **Utwórz kopię zapasową teraz**.
 11. W bloku **Utwórz kopię zapasową teraz** kliknij ikonę kalendarza, wybierz ostatni dzień okresu zachowywania tego punktu odzyskiwania przy użyciu kontrolki kalendarza, a następnie kliknij pozycję **Kopia zapasowa**.
-12. W bloku **Kopia zapasowa** dla maszyny wirtualnej zobaczysz liczbę ukończonych punktów odzyskiwania.
+12. W bloku **Kopia zapasowa** dla maszyny wirtualnej wyświetlana jest liczba ukończonych punktów odzyskiwania.
 
     ![Punkty odzyskiwania](./media/tutorial-backup-vms/backup-complete.png)
 
@@ -62,7 +60,7 @@ Tworzenie pierwszej kopii zapasowej zajmuje około 20 minut. Przejdź do następ
 
 ## <a name="restore-a-file"></a>Przywracanie pliku
 
-Jeżeli przypadkowo usuniesz plik lub wprowadzisz w nim zmiany, możesz użyć opcji odzyskiwania plików, aby odzyskać plik z magazynu kopii zapasowej. Odzyskiwanie plików używa skryptu uruchamianego na maszynie wirtualnej, aby zainstalować punkt odzyskiwania jako dysk lokalny. Dyski te pozostaną zainstalowane przez 12 godzin, więc możesz kopiować pliki z punktu odzyskiwania i przywracać je na maszynę wirtualną.  
+Jeżeli przypadkowo usuniesz plik lub wprowadzisz w nim zmiany, możesz użyć opcji odzyskiwania plików, aby odzyskać plik z magazynu kopii zapasowej. Odzyskiwanie plików używa skryptu uruchamianego na maszynie wirtualnej, aby zainstalować punkt odzyskiwania jako dysk lokalny. Dyski te pozostają zainstalowane przez 12 godzin, co umożliwia kopiowanie plików z punktu odzyskiwania i przywracanie ich na maszynę wirtualną.  
 
 W tym przykładzie przedstawiono sposób odzyskiwania domyślnej strony internetowej serwera nginx /var/www/html/index.nginx-debian.html. Publiczny adres IP maszyny wirtualnej w tym przykładzie to *13.69.75.209*. Możesz znaleźć adres IP maszyny wirtualnej w następujący sposób:
 

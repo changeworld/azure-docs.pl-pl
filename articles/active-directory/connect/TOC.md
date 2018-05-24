@@ -29,7 +29,11 @@
 ## [Zarządzanie programem Azure AD Connect](active-directory-aadconnect-whats-next.md)
 ### [Odnawianie certyfikatów dla usług O365 i Azure AD](active-directory-aadconnect-o365-certs.md)
 ### [Aktualizowanie certyfikatu SSL dla farmy usług Active Directory Federation Services (AD FS)](active-directory-aadconnectfed-ssl-update.md)
-### [Włączanie zapisywania zwrotnego urządzeń](active-directory-aadconnect-feature-device-writeback.md)
+
+### [Opcje urządzenia](active-directory-azure-ad-connect-device-options.md)
+#### [Włączanie zapisywania zwrotnego urządzeń](active-directory-aadconnect-feature-device-writeback.md)
+#### [Zadania po konfiguracji dołączenia do hybrydowej usługi Azure AD](active-directory-azure-ad-connect-hybrid-azure-ad-join-post-config-tasks.md)
+
 ### [Opcje logowania użytkowników](active-directory-aadconnect-user-signin.md)
 #### [Bezproblemowe logowanie jednokrotne](active-directory-aadconnect-sso.md)
 ##### [Szybki start](active-directory-aadconnect-sso-quick-start.md)

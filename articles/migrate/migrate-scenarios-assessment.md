@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Scenariusz 1. Ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
 Firma Contoso rozważa migrację na platformę Azure. W związku z tym chce uzyskać ocenę techniczną i finansową dotyczącą gotowości obciążeń lokalnych do migracji do chmury. W szczególności firma ta chce ocenić zgodność maszyn i baz danych pod kątem migracji oraz oszacować wydajność i koszty związane z hostowaniem zasobów na platformie Azure.
 
-Aby zrobić pierwszy krok i zapoznać się z nowymi technologiami, firma Contoso zamierza ocenić i zmigrować małą lokalną aplikację turystyczną. Jest to aplikacja dwuwarstwowa, obejmująca aplikację internetową uruchomioną na jednej maszynie wirtualnej oraz bazę danych programu SQL Server, hostowaną na drugiej maszynie wirtualnej. Aplikacja jest wdrożona w oprogramowaniu VMware, a środowisko jest zarządzane za pomocą programu vCenter Server. Ocena zostanie przeprowadzona przy użyciu programu Data Migration Assistant (DMA) i usługi Azure Migrate.
+Aby zrobić pierwszy krok i zapoznać się z nowymi technologiami, firma Contoso zamierza ocenić i zmigrować małą lokalną aplikację turystyczną. Jest to aplikacja dwuwarstwowa, obejmująca aplikację internetową uruchomioną na jednej maszynie wirtualnej oraz bazę danych programu SQL Server, hostowaną na drugiej maszynie wirtualnej. Aplikacja jest wdrożona w oprogramowaniu VMware, a środowisko jest zarządzane za pomocą programu vCenter Server. Ocena zostanie przeprowadzona przy użyciu programu Data Migration Assistant (DMA) i usługi Azure Migrate. Jeśli chcesz wypróbować ten scenariusz przy użyciu tej ilustracyjnej aplikacji turystycznej, możesz pobrać ją z serwisu [github](https://github.com/Microsoft/SmartHotel360).
 
 **Technologia** | **Opis** | **Koszty**
 --- | --- | ---
@@ -33,11 +33,11 @@ W tym scenariuszu pobierzemy i uruchomimy program DMA w celu oceny lokalnej bazy
 
 ## <a name="architecture"></a>Architektura
 
-W tym scenariuszu skonfigurujemy 
 
- ![architekturę do oceny migracji](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
+![architekturę do oceny migracji](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
 
 W tym scenariuszu:
+- Firma Contoso to fikcyjna nazwa reprezentująca typową organizację przedsiębiorstwa. Firma Contoso chce ocenić dwuwarstwową, lokalną aplikację turystyczną, a następnie przeprowadzić jej migrację.
 - Firma Contoso ma lokalne centrum danych (**contoso-datacenter**) i lokalny kontroler domeny (**contosodc1**).
 - Wewnętrzna aplikacja turystyczna jest podzielona na warstwy między dwie maszyny wirtualne — **WEBVM** i **SQLVM** — i znajduje się na hoście VMware ESXi **contosohost1.contoso.com**.
 - Środowisko VMware jest zarządzane przez program vCenter Server (**vcenter.contoso.com**) uruchomiony na maszynie wirtualnej.
@@ -489,7 +489,7 @@ W tym scenariuszu zostały wykonane następujące kroki:
 
 ## <a name="next-steps"></a>Następne kroki
 
-W następnym scenariuszu przeprowadzimy migrację lokalnych maszyn wirtualnych na platformę Azure, korzystając z metody „lift-and-shift”.
+W następnym scenariuszu przeprowadzimy migrację lokalnych maszyn wirtualnych i bazy danych na platformę Azure, korzystając z [metody migracji „lift-and-shift”](migrate-scenarios-lift-and-shift.md).
 
 
 

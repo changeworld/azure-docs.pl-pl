@@ -1,12 +1,12 @@
 ---
-title: Usługa Azure Security Center i maszyny wirtualne z systemem Linux na platformie Azure | Microsoft Docs
-description: Dowiedz się więcej na temat zabezpieczania maszyny wirtualnej z systemem Linux na platformie Azure za pomocą usługi Azure Security Center.
+title: Samouczek — korzystanie z usługi Azure Security Center dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: W tym samouczku przedstawiono funkcje usługi Azure Security Center ułatwiające ochronę i zabezpieczanie maszyn wirtualnych z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/07/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41fb802dd8f5dd7bec2c481f3719f304b0c8d0ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Monitorowanie zabezpieczeń maszyny wirtualnej przy użyciu usługi Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
 
 Usługa Azure Security Center ułatwia wgląd w rozwiązania z zakresu zabezpieczeń zasobów platformy Azure. Usługa Security Center oferuje zintegrowane monitorowanie zabezpieczeń. Potrafi wykrywać zagrożenia, które inaczej mogłyby ujść uwadze. W tym samouczku poznasz usługę Azure Security Center oraz następujące zagadnienia:
  
@@ -30,7 +30,7 @@ Usługa Azure Security Center ułatwia wgląd w rozwiązania z zakresu zabezpiec
 > * Konfigurowanie zbierania danych
 > * Konfigurowanie zasad zabezpieczeń
 > * Wyświetlanie problemów z kondycją konfiguracji i ich rozwiązywanie
-> * Przeglądanie wykrytych zagrożeń  
+> * Przeglądanie wykrytych zagrożeń
 
 ## <a name="security-center-overview"></a>Security Center — Przegląd
 

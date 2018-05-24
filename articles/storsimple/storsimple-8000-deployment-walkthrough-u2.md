@@ -1,24 +1,24 @@
 ---
-title: "Wdrażanie urządzenia StorSimple 8000 Series w witrynie Azure Portal | Microsoft Docs"
-description: "W tym artykule opisano kroki i najlepsze rozwiązania dotyczące wdrażania urządzenia StorSimple 8000 Series z aktualizacją Update 3 lub nowszą oraz usługi Menedżer urządzeń StorSimple."
+title: Wdrażanie urządzenia StorSimple 8000 Series w witrynie Azure Portal | Microsoft Docs
+description: W tym artykule opisano kroki i najlepsze rozwiązania dotyczące wdrażania urządzenia StorSimple 8000 Series z aktualizacją Update 3 lub nowszą oraz usługi Menedżer urządzeń StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Wdrażanie lokalnego urządzenia StorSimple (z aktualizacją Update 3 lub nowszą)
 
@@ -33,7 +33,7 @@ Informacje podane w tych samouczkach mają zastosowanie po zapoznaniu się ze ś
 Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia administratora. Przed rozpoczęciem warto przejrzeć listę kontrolną dotyczącą konfiguracji. Proces wdrażania i konfiguracji może potrwać pewien czas.
 
 > [!NOTE]
-> Informacje na temat wdrażania urządzenia StorSimple opublikowane w witrynie platformy Microsoft Azure w sieci Web dotyczą tylko urządzeń z serii StorSimple 8000. Aby uzyskać pełne informacje dotyczące urządzeń z serii 7000, przejdź do strony [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informacje dotyczące wdrażania urządzeń z serii 7000 można znaleźć w [przewodniku Szybki start do systemu StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
+> Informacje na temat wdrażania urządzenia StorSimple opublikowane w witrynie platformy Microsoft Azure w sieci Web dotyczą tylko urządzeń z serii StorSimple 8000. Aby uzyskać pełne informacje dotyczące urządzeń z serii 7000, przejdź do: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informacje dotyczące wdrażania urządzeń z serii 7000 można znaleźć w [przewodniku Szybki start do systemu StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
 
 
 ## <a name="deployment-steps"></a>Kroki wdrażania
@@ -195,6 +195,19 @@ Wykonaj poniższe kroki, aby pobrać kwalifikowaną nazwę iSCSI (IQN) hosta z s
 Wykonaj poniższe kroki w witrynie Azure Portal, aby na żądanie ręcznie utworzyć kopię zapasową pojedynczego woluminu w urządzeniu StorSimple.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
+
+## <a name="view-the-pinout-diagram-for-serial-cable-for-storsimple"></a>Wyświetlanie schematu połączeń kabla szeregowego dla urządzenia StorSimple
+Poniższy schemat połączeń może być używany na potrzeby kabla konsoli szeregowej urządzenia StorSimple.
+
+W tym miejscu łącznik żeński DB9 to P1, a łącznik 3,5 mm to P2.
+
+![Schemat połączeń 1 dla kabla konsoli szeregowej urządzenia StorSimple](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+
+Końcówka gniazda stereo jest traktowana jako PIN 3 RX, środek to PIN 2 TX, a podstawa to PIN 1 GND, jak pokazano na poniższym schemacie.
+
+![Schemat połączeń 2 dla kabla konsoli szeregowej urządzenia StorSimple](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 * [Configure a StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md) (Konfigurowanie urządzenia StorSimple w chmurze).

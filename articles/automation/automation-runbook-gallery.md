@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8fb0e2181c518db541504f0eea77ce9fde7edf8f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 61d267898bab5e5df394d4097eacb33ada809518
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów dla usługi Automatyzacja Azure
 Zamiast tworzenia własnych elementów runbook i modułów w automatyzacji Azure, można uzyskać dostępu do szerokiej gamy scenariuszy, które zostały już utworzone przez firmę Microsoft i społecznością.  Możesz użyć tych scenariuszy bez żadnych modyfikacji lub można ich używać jako punktu wyjścia i edytować je do swoich specyficznych wymagań.
@@ -60,7 +60,7 @@ Firma Microsoft zaleca dodanie elementów runbook do galerii elementu Runbook, k
   * Deweloperów i testowania środowisk
   * Odzyskiwanie po awarii
   * Monitorowanie
-  * Poprawianie
+  * Stosowanie poprawek
   * Inicjowanie obsługi
   * Korygowanie
   * Zarządzanie cyklem życia maszyny Wirtualnej
@@ -90,6 +90,9 @@ Moduły programu PowerShell zawierają polecenia cmdlet, których można używa�
 9. Na **zaimportować** kliknij przycisk **OK** zaimportować modułu. Podczas automatyzacji Azure importuje moduł do swojego konta, wyodrębnianie metadanych o module i polecenia cmdlet. Może to potrwać kilka minut, ponieważ każde działanie ma zostać wyodrębniony.
 10. Pojawi się początkowym powiadomieniu, czy moduł jest wdrażany i kolejne powiadomienie po zakończeniu.
 11. Po zaimportowaniu modułu widać działań dostępnych i użyciem zasobów w elementy runbook i konfiguracji żądanego stanu.
+
+> [!NOTE]
+> Moduły, które obsługują tylko podstawowe programu PowerShell nie są obsługiwane w automatyzacji Azure i nie mogą być importowane w portalu Azure lub wdrożyć bezpośrednio z galerii programu PowerShell.
 
 ## <a name="requesting-a-runbook-or-module"></a>Żądanie runbook lub modułu
 Możesz wysłać żądania do [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Jeśli konieczne pomocy zapisywania elementu runbook lub masz pytania dotyczące programu PowerShell, Zadaj pytanie na naszych [forum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).

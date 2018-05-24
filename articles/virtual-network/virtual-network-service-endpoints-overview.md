@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2018
+ms.date: 05/04/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: e91e27da5ef80236768d19c5870ac96f19f6b074
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -27,14 +27,12 @@ Punkty końcowe usługi sieci wirtualnej rozszerzają prywatną przestrzeń adre
 
 Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure:
 
-- **Azure Storage**: ogólnie dostępna. Wszystkie regiony w chmurze publicznej Azure i usłudze Azure Government.
-- **Azure SQL Database**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure. 
-- **Azure SQL Data Warehouse**: wersja zapoznawcza. Wszystkie regiony w chmurze publicznej Azure.
+- **Azure Storage**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure
+- **Azure SQL Database**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure
+- **Azure Cosmos DB**: ogólnie dostępna we wszystkich regionach chmury publicznej Azure 
+- **Azure SQL Data Warehouse**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej Azure
 
-Najbardziej aktualne powiadomienia dotyczące wersji zapoznawczej można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
-
->[!NOTE]
-> W okresie obowiązywania wersji zapoznawczej ta funkcja może nie oferować dostępności i niezawodności na tym samym poziomie, co funkcje w wersji ogólnodostępnej. Aby uzyskać więcej informacji, zobacz [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
@@ -50,7 +48,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 - Funkcja jest dostępna tylko dla sieci wirtualnych wdrożonych za pomocą modelu wdrażania przy użyciu usługi Azure Resource Manager.
 - Punkty końcowe są włączone w podsieciach skonfigurowanych w sieciach wirtualnych platformy Azure. Punktów końcowych nie można używać dla ruchu ze środowiska lokalnego do usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usług platformy Azure ze środowiska lokalnego](#securing-azure-services-to-virtual-networks)
-- Punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. Na potrzeby obsługi ruchu w magazynach GRS i RA-GRS dla usługi Azure Storage punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usługi Azure Storage na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Zabezpieczanie usług platformy Azure w sieciach wirtualnych
 
@@ -68,7 +66,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 - Punkty końcowe usługi są konfigurowane w podsieci sieci wirtualnej. Punkty końcowe współpracują z wystąpieniami obliczeniowymi dowolnego typu uruchomionymi w danej podsieci.
 - W podsieci można skonfigurować wiele punktów końcowych usługi dla wszystkich obsługiwanych usług platformy Azure (na przykład Azure Storage lub Azure SQL Database).
-- Sieci wirtualne muszą znajdować się w tym samym regionie, co zasób usługi platformy Azure. Jeśli korzystasz z magazynów GRS i RA-GRS w usłudze Azure Storage, konto podstawowe powinno znajdować się w tym samym regionie, co sieć wirtualna.
+- W przypadku usługi Azure SQL sieci wirtualne muszą znajdować się w tym samym regionie, co zasób usługi platformy Azure. Jeśli korzystasz z magazynów GRS i RA-GRS w usłudze Azure Storage, konto podstawowe powinno znajdować się w tym samym regionie, co sieć wirtualna. W przypadku wszystkich innych usług zasoby usługi platformy Azure mogą być chronione w sieciach wirtualnych w dowolnym regionie. 
 - Sieć wirtualna, w której konfigurowany jest punkt końcowy, może należeć do tej samej subskrypcji, co zasób usługi platformy Azure, lub innej. Aby uzyskać więcej informacji na temat uprawnień wymaganych do konfigurowania punktów końcowych i zabezpieczania usług platformy Azure, zobacz [Aprowizowanie](#Provisioning).
 - W przypadku obsługiwanych usług można zabezpieczyć nowe lub istniejące zasoby w sieciach wirtualnych za pomocą punktów końcowych usługi.
 
@@ -112,7 +110,7 @@ Sieci wirtualne i zasoby usług platformy Azure mogą należeć do tej samej lub
 
 ## <a name="pricing-and-limits"></a>Ceny i limity
 
-Za korzystanie z punktów końcowych usługi nie są naliczane dodatkowe opłaty. Obecnie stosowany jest bieżący model cen usług platformy Azure (Azure Storage, Azure SQL Database).
+Za korzystanie z punktów końcowych usługi nie są naliczane dodatkowe opłaty. Obecnie stosowany jest bieżący model cen usług platformy Azure (Azure Storage, Azure SQL Database itd.).
 
 Nie ma limitu całkowitej liczby punktów końcowych usługi w sieci wirtualnej.
 
@@ -124,5 +122,5 @@ W przypadku zasobów usług platformy Azure (np. konta usługi Azure Storage) us
 - Dowiedz się, jak [zabezpieczyć konto usługi Azure Storage w sieci wirtualnej](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Dowiedz się, jak [zabezpieczyć usługę Azure SQL Database w sieci wirtualnej](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Dowiedz się więcej o [integracji usług platformy Azure w sieciach wirtualnych](virtual-network-for-azure-services.md)
--  Szybki start: [szablon usługi Azure Resource Manager](https://azure.microsoft.com/en-us/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) do konfigurowania punktu końcowego usługi w podsieci sieci wirtualnej i zabezpieczenia konta usługi Azure Storage do tej podsieci.
+-  Szybki start: [szablon usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) do konfigurowania punktu końcowego usługi w podsieci sieci wirtualnej i zabezpieczenia konta usługi Azure Storage do tej podsieci.
 
