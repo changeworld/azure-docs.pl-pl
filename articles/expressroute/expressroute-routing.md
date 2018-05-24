@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 8bf1381ad089b9db41a3ef9f6fd3b9521a16da7e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -183,10 +183,11 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Japonia Wschodnia | 12076:51012 |
 | Japonia Zachodnia | 12076:51013 |
 | **Australia** | |
-| Australia Środkowa | 12076:51032 |
-| Australia Środkowa 2 | 12076:51033 |
 | Australia Wschodnia | 12076:51015 |
 | Australia Południowo-Wschodnia | 12076:51016 |
+| **Australia — instytucje rządowe** | |
+| Australia Środkowa | 12076:51032 |
+| Australia Środkowa 2 | 12076:51033 |
 | **Indie** | |
 | Indie Południowe | 12076:51019 |
 | Indie Zachodnie | 12076:51018 |

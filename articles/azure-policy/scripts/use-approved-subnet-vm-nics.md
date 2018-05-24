@@ -1,29 +1,29 @@
 ---
-title: "Azure przykładowego kodu json zasad - Użyj zatwierdzone podsieci maszyny Wirtualnej w interfejsach sieciowych | Dokumentacja firmy Microsoft"
-description: "Ta zasada próbki json wymaga, aby interfejsów sieciowych używać zatwierdzonych podsieci."
+title: Przykładowe zasady usługi Azure Policy w formacie JSON — Use approved subnet for VM network interfaces (Użyj zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej) | Microsoft Docs
+description: Ta przykładowa zasada w formacie JSON wymaga używania zatwierdzonej podsieci przez interfejsy sieciowe.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 2ea6e2f69001cf328f37625b116afea2e88b5734
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: 126a32402487ce742ba90b89e9f16fb77a125dba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="use-approved-subnet-for-vm-network-interfaces"></a>Użyj zatwierdzonych podsieci maszyny Wirtualnej w interfejsach sieciowych
+# <a name="use-approved-subnet-for-vm-network-interfaces"></a>Używanie zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej
 
-Ta zasada wymaga, aby interfejsów sieciowych używać zatwierdzonych podsieci. Należy określić identyfikator zatwierdzonych podsieci.
+Ta zasada wymaga używania zatwierdzonej podsieci przez interfejsy sieciowe. Należy określić identyfikator zatwierdzonej podsieci.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Ta zasada wymaga, aby interfejsów sieciowych używać zatwierdzonych podsieci. 
 
 [!code-json[main](../../../policy-templates/samples/Network/vm-creation-in-approved-subnet/azurepolicy.json "Use approved subnet for VM network interfaces")]
 
-Przy użyciu tego szablonu można wdrożyć [portalu Azure](#deploy-with-the-portal), z [PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -48,9 +48,9 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenia programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -66,9 +66,9 @@ az policy definition create --name 'vm-creation-in-approved-subnet' --display-na
 az policy assignment create --name <assignmentname> --scope <scope> --policy "vm-creation-in-approved-subnet"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenia wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dodatkowe przykłady szablonu zasad Azure są [szablony zasad Azure](../json-samples.md).
+- Dodatkowe przykłady szablonów usługi Azure Policy można znaleźć na stronie [Templates for Azure Policy (Szablony dla usługi Azure Policy)](../json-samples.md).

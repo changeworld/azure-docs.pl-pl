@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba14244a3f5786ebcd667aa090d0245ce45f741d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Wdrażanie usług Active Directory Federation Services na platformie Azure
 Usługi AD FS udostępniają uproszczone, zabezpieczone funkcje federacji tożsamości i logowania jednokrotnego (SSO) w sieci Web. Federacja z usługą Azure AD lub O365 umożliwia użytkownikom uwierzytelnianie się przy użyciu poświadczeń lokalnych i uzyskiwanie dostępu do wszystkich zasobów w chmurze. Tym samym ważne staje się zapewnienie infrastruktury usług AD FS o wysokiej dostępności, która gwarantuje dostęp zarówno do zasobów lokalnych, jak i przechowywanych w chmurze. Wdrożenie usług AD FS na platformie Azure może pomóc w osiągnięciu wymaganej wysokiej dostępności w prosty sposób.
@@ -38,11 +38,11 @@ Na powyższym diagramie przedstawiono zalecaną podstawową topologię umożliwi
 
 * **Kontrolery domeny (DC) / serwery usług AD FS**: jeśli liczba użytkowników nie przekracza 1000, można po prostu zainstalować rolę usług AD FS na kontrolerach domeny. Jeśli liczba użytkowników przekracza 1000 lub konieczne jest wyeliminowanie wszelkich wpływów na wydajność kontrolerów domeny, usługi AD FS należy wdrożyć na oddzielnych serwerach.
 * **Serwer proxy aplikacji sieci Web (WAP)** — konieczne jest wdrożenie serwerów proxy aplikacji sieci Web w celu umożliwienia użytkownikom korzystania z usług AD FS również spoza sieci firmowej.
-* **Sieć obwodowa**: serwery proxy aplikacji sieci Web zostaną umieszczone w sieci obwodowej. Komunikacja między siecią obwodową i podsiecią wewnętrzną jest możliwa TYLKO przez port TCP 443.
+* **Strefa DMZ**: serwery proxy aplikacji sieci Web zostaną umieszczone w strefie DMZ. Komunikacja między strefą DMZ i podsiecią wewnętrzną jest możliwa TYLKO przez port TCP 443.
 * **Moduły równoważenia obciążenia**: aby zapewnić wysoką dostępność usług AD FS i serwerów proxy aplikacji sieci Web, zaleca się użycie wewnętrznego modułu równoważenia obciążenia dla serwerów usług AD FS oraz usługi Azure Load Balancer dla serwerów proxy aplikacji sieci Web.
 * **Zestawy dostępności**: aby zapewnić nadmiarowość wdrożenia usług AD FS, zaleca się umieszczenie co najmniej dwóch maszyn wirtualnych w zestawie dostępności w celu uzyskania podobnych obciążeń. Taka konfiguracja zapewnia dostępność co najmniej jednej maszyny wirtualnej podczas planowanych i nieplanowanych zdarzeń związanych z konserwacją.
 * **Konta magazynu**: zaleca się korzystanie z dwóch kont magazynu. Korzystanie z jednego konta magazynu może prowadzić do utworzenia pojedynczego punktu awarii. Jeśli konto magazynu przestanie funkcjonować (w mało prawdopodobnym scenariuszu), wdrożenie stanie się niedostępne. Użycie dwóch kont magazynu pozwala powiązać każde konto z linią awarii.
-* **Separacja sieci**: serwery proxy aplikacji sieci Web powinny zostać wdrożone w oddzielnej sieci obwodowej. Sieć wirtualną można podzielić na dwie odizolowane podsieci, a następnie wdrożyć w nich serwery proxy aplikacji sieci Web. Dla każdej podsieci można po prostu skonfigurować ustawienia sieciowej grupy zabezpieczeń, zezwalając tylko na wymaganą komunikację między tymi podsieciami. Więcej szczegółów podano w poniższych scenariuszach wdrażania.
+* **Separacja sieci**: serwery proxy aplikacji sieci Web powinny zostać wdrożone w oddzielnej sieci DMZ. Sieć wirtualną można podzielić na dwie odizolowane podsieci, a następnie wdrożyć w nich serwery proxy aplikacji sieci Web. Dla każdej podsieci można po prostu skonfigurować ustawienia sieciowej grupy zabezpieczeń, zezwalając tylko na wymaganą komunikację między tymi podsieciami. Więcej szczegółów podano w poniższych scenariuszach wdrażania.
 
 ## <a name="steps-to-deploy-ad-fs-in-azure"></a>Kroki umożliwiające wdrożenie usług AD FS na platformie Azure
 Kroki zawarte w tej sekcji służą jako przewodnik umożliwiający wdrożenie opisanej poniżej infrastruktury usług AD FS na platformie Azure.
@@ -55,7 +55,7 @@ Zgodnie z powyższymi informacjami można utworzyć dwie podsieci w jednej sieci
 ![Tworzenie sieci wirtualnej](./media/active-directory-aadconnect-azure-adfs/deploynetwork1.png)
 
 W witrynie Azure Portal wybierz sieć wirtualną. W bardzo prosty sposób możesz wdrożyć sieć wirtualną z jedną podsiecią. Podsieć wewnętrzna jest również zdefiniowana i gotowa do dodania maszyn wirtualnych.
-Następnym krokiem jest dodanie podsieci obwodowej. Aby utworzyć podsieć obwodową, wystarczy wykonać następujące czynności:
+Następnym krokiem jest dodanie podsieci DMZ. Aby utworzyć podsieć DMZ, wystarczy wykonać następujące czynności:
 
 * Wybierz nowo utworzoną sieć.
 * W obszarze właściwości wybierz pozycję Podsieć.
@@ -69,7 +69,7 @@ Następnym krokiem jest dodanie podsieci obwodowej. Aby utworzyć podsieć obwod
 **1.2. Tworzenie sieciowych grup zabezpieczeń**
 
 Sieciowa grupa zabezpieczeń (NSG, Network security group) zawiera listę reguł listy kontroli dostępu (ACL), które blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
-Na potrzeby tego przewodnika zostaną utworzone dwie sieciowe grupy zabezpieczeń: dla sieci wewnętrznej i podsieci obwodowej. Zostaną one odpowiednio oznaczone: NSG_INT i NSG_DMZ.
+Na potrzeby tego przewodnika zostaną utworzone dwie sieciowe grupy zabezpieczeń: dla sieci wewnętrznej i podsieci DMZ. Zostaną one odpowiednio oznaczone: NSG_INT i NSG_DMZ.
 
 ![Tworzenie sieciowej grupy zabezpieczeń](./media/active-directory-aadconnect-azure-adfs/creatensg1.png)
 
@@ -77,7 +77,7 @@ Utworzona sieciowa grupa zabezpieczeń nie zawiera żadnych reguł ruchu przycho
 
 ![Inicjowanie sieciowej grupy zabezpieczeń](./media/active-directory-aadconnect-azure-adfs/nsgint1.png)
 
-Po utworzeniu sieciowych grup zabezpieczeń skojarz grupę NSG_INT z podsiecią INT, a grupę NSG_DMZ z podsiecią obwodową. Poniżej znajduje się przykładowy zrzut ekranu:
+Po utworzeniu sieciowych grup zabezpieczeń skojarz grupę NSG_INT z podsiecią INT, a grupę NSG_DMZ z podsiecią DMZ. Poniżej znajduje się przykładowy zrzut ekranu:
 
 ![Konfigurowanie sieciowej grupy zabezpieczeń](./media/active-directory-aadconnect-azure-adfs/nsgconfigure1.png)
 
@@ -214,7 +214,7 @@ Aby zapewnić komunikację między serwerami proxy aplikacji sieci Web a serwera
 
 **7.2. Instalowanie roli serwera proxy aplikacji sieci Web**
 
-Gdy serwery proxy aplikacji sieci Web mają zapewniony dostęp do serwerów usług AD FS znajdujących się za wewnętrznym modułem równoważenia obciążenia, można zainstalować serwery proxy aplikacji sieci Web. Serwery proxy aplikacji sieci Web nie są przyłączane do domeny. Zainstaluj role serwera proxy aplikacji sieci Web na dwóch serwerach proxy aplikacji sieci Web, wybierając rolę dostępu zdalnego. Menedżer serwera poprowadzi Cię przez proces instalacji serwera proxy aplikacji sieci Web.
+Gdy serwery proxy aplikacji sieci Web mają zapewniony dostęp do serwerów usług AD FS znajdujących się za wewnętrznym modułem równoważenia obciążenia, można zainstalować serwery proxy aplikacji sieci Web. Serwery proxy aplikacji internetowej nie muszą być przyłączone do domeny. Zainstaluj role serwera proxy aplikacji sieci Web na dwóch serwerach proxy aplikacji sieci Web, wybierając rolę dostępu zdalnego. Menedżer serwera poprowadzi Cię przez proces instalacji serwera proxy aplikacji sieci Web.
 Aby uzyskać więcej informacji na temat wdrażania serwera proxy aplikacji sieci Web, zapoznaj się z artykułem [Instalowanie i konfigurowanie usługi Serwer proxy aplikacji sieci Web](https://technet.microsoft.com/library/dn383662.aspx).
 
 ### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Wdrażanie modułu równoważenia obciążenia połączonego z Internetem (publicznego)
@@ -269,7 +269,7 @@ Wdrożenie poniższych reguł (w przedstawionej kolejności) stanowi podstawę s
 
 | Reguła | Opis | Ruch |
 |:--- |:--- |:---:|
-| AllowHTTPSFromDMZ |Zezwala na połączenia HTTPS nawiązywane z podsieci obwodowej |Przychodzący |
+| AllowHTTPSFromDMZ |Zezwala na połączenia HTTPS nawiązywane z podsieci DMZ |Przychodzący |
 | DenyInternetOutbound |Zablokowany dostęp do Internetu |Wychodzący |
 
 ![Reguły dostępu WEWN. (ruch przychodzący)](./media/active-directory-aadconnect-azure-adfs/nsg_int.png)
@@ -279,11 +279,11 @@ Wdrożenie poniższych reguł (w przedstawionej kolejności) stanowi podstawę s
 [comment]: <> (![INT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
 -->
 
-**9.2. Zabezpieczanie podsieci sieci obwodowej**
+**9.2. Zabezpieczanie podsieci DMZ**
 
 | Reguła | Opis | Ruch |
 |:--- |:--- |:---:|
-| AllowHTTPSFromInternet |Zezwala na połączenia HTTPS z podsiecią obwodową nawiązywane z Internetu |Przychodzący |
+| AllowHTTPSFromInternet |Zezwala na połączenia HTTPS z podsiecią DMZ nawiązywane z Internetu |Przychodzący |
 | DenyInternetOutbound |Blokuje wszystkie połączenia oprócz połączeń wychodzących HTTPS z Internetem |Wychodzący |
 
 ![Reguły dostępu ZEWN. (ruch przychodzący)](./media/active-directory-aadconnect-azure-adfs/nsg_dmz.png)
@@ -329,14 +329,14 @@ Podczas wdrażania tego szablonu możesz użyć istniejącej sieci wirtualnej lu
 | VirtualNetworkAddressRange |Zakres adresów nowej sieci wirtualnej. Parametr obowiązkowy w przypadku tworzenia nowej sieci wirtualnej. |
 | InternalSubnetName |Nazwa podsieci wewnętrznej. Parametr obowiązkowy dla obydwu opcji użycia sieci wirtualnej (nowa lub istniejąca). |
 | InternalSubnetAddressRange |Zakres adresów podsieci wewnętrznej, która zawiera kontrolery domeny i serwery usługi AD FS. Parametr obowiązkowy w przypadku tworzenia nowej sieci wirtualnej. |
-| DMZSubnetAddressRange |Zakres adresów podsieci obwodowej, która zawiera serwery proxy aplikacji systemu Windows. Parametr obowiązkowy w przypadku tworzenia nowej sieci wirtualnej. |
+| DMZSubnetAddressRange |Zakres adresów podsieci DMZ, która zawiera serwery proxy aplikacji systemu Windows. Parametr obowiązkowy w przypadku tworzenia nowej sieci wirtualnej. |
 | DMZSubnetName |Nazwa wewnętrznej podsieci. Parametr obowiązkowy dla obydwu opcji użycia sieci wirtualnej (nowa lub istniejąca). |
 | ADDC01NICIPAddress |Wewnętrzny adres IP pierwszego kontrolera domeny. Ten adres IP zostanie statycznie przypisany do kontrolera domeny i musi być prawidłowym adresem IP w obrębie podsieci wewnętrznej. |
 | ADDC02NICIPAddress |Wewnętrzny adres IP drugiego kontrolera domeny. Ten adres IP zostanie statycznie przypisany do kontrolera domeny i musi być prawidłowym adresem IP w obrębie podsieci wewnętrznej. |
 | ADFS01NICIPAddress |Wewnętrzny adres IP pierwszego serwera usług ADFS. Ten adres IP zostanie statycznie przypisany do serwera usług ADFS i musi być prawidłowym adresem IP w obrębie podsieci wewnętrznej. |
 | ADFS02NICIPAddress |Wewnętrzny adres IP drugiego serwera usług ADFS. Ten adres IP zostanie statycznie przypisany do serwera usług ADFS i musi być prawidłowym adresem IP w obrębie podsieci wewnętrznej. |
-| WAP01NICIPAddress |Wewnętrzny adres IP pierwszego serwera proxy aplikacji sieci Web. Ten adres IP zostanie statycznie przypisany do serwera proxy aplikacji sieci Web i musi być prawidłowym adresem IP w obrębie podsieci obwodowej. |
-| WAP02NICIPAddress |Wewnętrzny adres IP drugiego serwera proxy aplikacji sieci Web. Ten adres IP zostanie statycznie przypisany do serwera proxy aplikacji sieci Web i musi być prawidłowym adresem IP w obrębie podsieci obwodowej. |
+| WAP01NICIPAddress |Wewnętrzny adres IP pierwszego serwera proxy aplikacji sieci Web. Ten adres IP zostanie statycznie przypisany do serwera proxy aplikacji sieci Web i musi być prawidłowym adresem IP w obrębie podsieci DMZ. |
+| WAP02NICIPAddress |Wewnętrzny adres IP drugiego serwera proxy aplikacji sieci Web. Ten adres IP zostanie statycznie przypisany do serwera proxy aplikacji sieci Web i musi być prawidłowym adresem IP w obrębie podsieci DMZ. |
 | ADFSLoadBalancerPrivateIPAddress |Wewnętrzny adres IP modułu równoważenia obciążenia usług ADFS. Ten adres IP zostanie statycznie przypisany do modułu równoważenia obciążenia i musi być prawidłowym adresem IP w obrębie podsieci wewnętrznej. |
 | ADDCVMNamePrefix |Prefiks nazwy maszyny wirtualnej dla kontrolerów domeny. |
 | ADFSVMNamePrefix |Prefiks nazwy maszyny wirtualnej dla serwerów usług ADFS. |

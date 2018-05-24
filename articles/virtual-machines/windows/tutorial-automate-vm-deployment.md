@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie maszyny wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak przy użyciu rozszerzenia niestandardowego skryptu zautomatyzować instalację aplikacji na maszynach wirtualnych z systemem Windows na platformie Azure
+title: Samouczek — instalowanie aplikacji na maszynie wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą rozszerzenia niestandardowego skryptu uruchamiać skrypty i wdrażać aplikacje na maszynach wirtualnych z systemem Windows na platformie Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6afb5757e11108eec856d821d92afed9681a2668
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51a66d524e72968d95f3415b890567015165063a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Jak dostosować maszynę wirtualną z systemem Windows na platformie Azure
+# <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Samouczek — wdrażanie aplikacji na maszynie wirtualnej z systemem Windows na platformie Azure za pomocą rozszerzenia niestandardowego skryptu
+
 Aby w szybki i spójny sposób skonfigurować maszyny wirtualne, stosuje się na ogół jakąś formę automatyzacji. Typowym rozwiązaniem w przypadku dostosowywania maszyn wirtualnych z systemem Windows jest użycie [rozszerzenia niestandardowego skryptu dla systemu Windows](extensions-customscript.md). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -32,7 +33,7 @@ Aby w szybki i spójny sposób skonfigurować maszyny wirtualne, stosuje się na
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli chcesz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 5.3 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 
 ## <a name="custom-script-extension-overview"></a>Rozszerzenie niestandardowego skryptu — omówienie

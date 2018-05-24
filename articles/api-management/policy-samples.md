@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie interfejsami API Azure — Przykłady zasad | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o zasadach dostępne do użycia w usłudze Azure API Management."
+title: Przykłady zasad usługi Azure API Management | Microsoft Docs
+description: Dowiedz się więcej o zasadach dostępnych do użycia w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,31 +14,31 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e951eb47290a2d1b6f892f1ccf923f6ce0c1899c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: MT
+ms.openlocfilehash: 3f1d9a96888732e6221722102a687e09f37333c0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="api-management-policy-samples"></a>Zarządzanie interfejsami API Przykłady zasad
+# <a name="api-management-policy-samples"></a>Przykłady zasad usługi API Management
 
-[Zasady](api-management-howto-policies.md) są zaawansowanych możliwości system, który umożliwia wydawcy, aby zmienić zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Poniższa tabela zawiera łącza do przykładów i zawiera krótki opis każdej próbki.
+[Zasady](api-management-howto-policies.md) są zaawansowaną możliwością systemu, która pozwala wydawcy zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Poniższa tabela zawiera linki do przykładów i krótki opis każdego przykładu.
 
 |||
 |---|---|
 |**Zasady ruchu przychodzącego**||
-|[Dodaj nagłówek przekazane, aby umożliwić zaplecza interfejsu API, aby utworzyć odpowiednie adresy URL](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) |Pokazuje, jak dodać nagłówek przekazane w żądania przychodzącego, aby umożliwić zaplecza interfejsu API, aby utworzyć odpowiednie adresy URL.|
-|[Dodaj nagłówek zawierający identyfikator korelacji](./policies/add-correlation-id.md?toc=api-management/toc.json) |Pokazuje, jak dodać nagłówek zawierający identyfikator korelacji żądania przychodzącego.|
-|[Dodawanie funkcji do usługi zaplecza i buforowania odpowiedzi](./policies/cache-response.md?toc=api-management/toc.json) |Przedstawiono sposób dodawania funkcji do usługi zaplecza. Na przykład zaakceptuj nazwę miejsca zamiast współrzędne geograficzne w prognozie pogody interfejsu API.|
-|[Autoryzacja dostępu na podstawie oświadczeń JWT](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json) |Przedstawia sposób autoryzowania dostępu do określonej metody HTTP na interfejs API na podstawie oświadczeń JWT.|
-|[Autoryzacja dostępu za pomocą tokenu Google OAuth](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json) |Przedstawia sposób autoryzowania dostępu do punktów końcowych przy użyciu usługi Google jako dostawcy tokenu OAuth.|
-|[Generowanie sygnatura dostępu współdzielonego i przekazanie żądania do usługi Azure storage](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |Pokazuje sposób generowania [sygnatura dostępu współdzielonego](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) przy użyciu wyrażeń i przekazuje żądanie do magazynu Azure z identyfikatora uri ponownego zapisywania zasad. |
-|[Uzyskaj token dostępu OAuth2 z usługi AAD i przesyła je do wewnętrznej bazy danych](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json) |Udostępnia oraz przykład użycia protokołu OAuth2 autoryzacji między bramą a wewnętrznej bazie danych. Widoczny jest sposób uzyskać token dostępu z usługi AAD i przesyła je do wewnętrznej bazy danych.|
-|[CSRF X pobrania tokenu z bramą SAP przy użyciu zasad żądań wysłania](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json) |Przedstawia sposób wykonania X CSRF wzorzec używany przez wiele interfejsów API. W tym przykładzie jest specyficzne dla programu SAP bramy. |
-|[Trasy żądania na podstawie rozmiaru jego treści](./policies/route-requests-based-on-size.md?toc=api-management/toc.json) |Pokazuje, jak można przekierować żądania na podstawie rozmiaru ich jednostki.|
-|[Wyślij informacje o kontekście żądania do usługi zaplecza](./policies/send-request-context-info-to-backend-service.md?toc=api-management/toc.json) |Przedstawia sposób wysłania pewne informacje dotyczące kontekstu do wewnętrznej bazy danych usługi rejestrowania lub przetwarzania.|
-|[Ustaw czas buforowania odpowiedzi](./policies/set-cache-duration.md?toc=api-management/toc.json) |Pokazuje, jak ustawić czas buforowania odpowiedzi przy użyciu wartości parametru maxAge wysyłane przez zaplecze nagłówka Cache-Control.|
+|[Dodawanie nagłówka Forwarded w celu umożliwienia interfejsowi API zaplecza tworzenia odpowiednich adresów URL](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) |Przedstawia sposób dodawania nagłówka Forwarded do żądania przychodzącego w celu umożliwienia interfejsowi API zaplecza tworzenia odpowiednich adresów URL.|
+|[Dodawanie nagłówka zawierającego identyfikator korelacji](./policies/add-correlation-id.md?toc=api-management/toc.json) |Przedstawia sposób dodawania nagłówka zawierającego identyfikator korelacji do żądania przychodzącego.|
+|[Dodawanie możliwości do usługi zaplecza i buforowanie odpowiedzi](./policies/cache-response.md?toc=api-management/toc.json) |Pokazuje sposób dodawania możliwości do usługi zaplecza. Na przykład akceptowania nazwy miejsca zamiast współrzędnych geograficznych w interfejsie API prognozy pogody.|
+|[Autoryzacja dostępu na podstawie oświadczeń JWT](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json) |Pokazuje sposób autoryzowania dostępu do konkretnych metod HTTP w interfejsie API opartym na oświadczeniach JWT.|
+|[Autoryzacja dostępu za pomocą tokenu OAuth usługi Google](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json) |Pokazuje sposób autoryzowania dostępu do punktów końcowych przy użyciu usługi Google jako dostawcy tokenów OAuth.|
+|[Generowanie sygnatury dostępu współdzielonego i przekazywanie żądania do usługi Azure Storage](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |Pokazuje sposób generowania [sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) przy użyciu wyrażeń i przekazywania żądania do usługi Azure Storage za pomocą zasad ponownego zapisywania identyfikatorów URI. |
+|[Uzyskiwanie tokenu dostępu OAuth2 z usługi AAD i przekazywanie go do zaplecza](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json) |Udostępnia przykład użycia protokołu OAuth2 do autoryzacji między bramą i zapleczem. Pokazuje sposób uzyskiwania tokenu dostępu z usługi AAD i przekazywania go do zaplecza.|
+|[Uzyskiwanie tokenu X-CSRF z bramy SAP przy użyciu zasad żądania wysłania](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json) |Pokazuje sposób implementowania wzorca X-CSRF używanego przez wiele interfejsów API. Ten przykład jest specyficzny dla bramy SAP. |
+|[Kierowanie żądania na podstawie rozmiaru jego treści](./policies/route-requests-based-on-size.md?toc=api-management/toc.json) |Przedstawia kierowanie żądań na podstawie rozmiaru ich treści.|
+|[Wysyłanie informacji o kontekście żądania do usługi zaplecza](./policies/send-request-context-info-to-backend-service.md?toc=api-management/toc.json) |Pokazuje sposób wysyłania pewnych informacji dotyczących kontekstu do usługi zaplecza na potrzeby rejestrowania lub przetwarzania.|
+|[Ustawianie czasu trwania pamięci podręcznej odpowiedzi](./policies/set-cache-duration.md?toc=api-management/toc.json) |Pokazuje sposób ustawiania czasu trwania pamięci podręcznej odpowiedzi za pomocą wartości maxAge nagłówka Cache-Control wysyłanego przez zaplecze.|
 |**Zasady ruchu wychodzącego**||
-|[Filtrowanie zawartości odpowiedzi](./policies/filter-response-content.md?toc=api-management/toc.json) | Pokazuje, jak filtrować elementy danych z ładunku odpowiedzi oparte na produktu skojarzonego z żądaniem.|
-|**Zasady na błąd**||
-|[Rejestruj błędy w Stackify](./policies/log-errors-to-stackify.md?toc=api-management/toc.json) |Przedstawiono sposób dodawania zasady rejestrowania błędów wysłać błędy do Stackify do rejestrowania.|
+|[Filtrowanie zawartości odpowiedzi](./policies/filter-response-content.md?toc=api-management/toc.json) | Przedstawia sposób filtrowania elementów danych w ładunku odpowiedzi na podstawie produktu skojarzonego z żądaniem.|
+|**Zasady dla wystąpienia błędu**||
+|[Rejestrowanie błędów w usłudze Stackify](./policies/log-errors-to-stackify.md?toc=api-management/toc.json) |Pokazuje sposób dodawania zasad rejestrowania błędów w celu wysyłania błędów do usługi Stackify na potrzeby rejestrowania.|

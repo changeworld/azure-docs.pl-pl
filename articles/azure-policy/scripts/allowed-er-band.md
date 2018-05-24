@@ -1,29 +1,29 @@
 ---
-title: "Azure zasad przykładowy kod json - dozwolone przepustowości Express Route | Dokumentacja firmy Microsoft"
-description: "Ta zasada próbki json wymaga, aby trasy express używać określony zbiór przepustowości."
+title: Przykładowe zasady usługi Azure Policy w formacie JSON — Allowed Express Route bandwidth (Dozwolona przepustowość usługi Express Route) | Microsoft Docs
+description: Ta przykładowa zasada w formacie JSON wymaga, aby usługa Express Route używała określonego zestawu przepustowości.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 985c7ae3a79a59e6fe20720fd8a2fe86a4f36905
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: 541fc3db7dfc326178eb74e1d2b8d8fc82bbfbe6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allowed-express-route-bandwidth"></a>Dozwolone przepustowości Express Route
+# <a name="allowed-express-route-bandwidth"></a>Dozwolona przepustowość usługi Express Route
 
-Ta zasada wymaga, aby trasy express używać określonego przepustowości. Należy określić tablicę jednostki magazynowe, które można określić dla Express Route.
+Ta zasada wymaga, aby usługa Express Route używała określonego zestawu przepustowości. Należy podać tablicę jednostek SKU, które można określać dla usługi Express Route.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Ta zasada wymaga, aby trasy express używać określonego przepustowości. Nale�
 
 [!code-json[main](../../../policy-templates/samples/Network/express-route-bandwidthInMbps/azurepolicy.json "Allowed Express Route bandwidth")]
 
-Przy użyciu tego szablonu można wdrożyć [portalu Azure](#deploy-with-the-portal), z [PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -48,9 +48,9 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenia programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -66,9 +66,9 @@ az policy definition create --name 'express-route-bandwidthInMbps' --display-nam
 az policy assignment create --name <assignmentname> --scope <scope> --policy "express-route-bandwidthInMbps"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenia wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dodatkowe przykłady szablonu zasad Azure są [szablony zasad Azure](../json-samples.md).
+- Dodatkowe przykłady szablonów usługi Azure Policy można znaleźć na stronie [Templates for Azure Policy (Szablony dla usługi Azure Policy)](../json-samples.md).

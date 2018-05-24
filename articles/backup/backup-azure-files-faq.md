@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: fb455fe6f1b481ad2dc855d147860cb2c7898779
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c0261b4f89647a8db3b7bf452a8827d40fdc1911
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -23,7 +23,7 @@ Aby szybko przeskanować sekcje znajdujące się w tym artykule, użyj linków z
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Konfigurowanie zadania tworzenia kopii zapasowej dla usługi Azure Files
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Dlaczego nie widzę niektórych kont magazynu, które chcę chronić, zawierających prawidłowe udziały plików platformy Azure? <br/>
-W wersji zapoznawczej kopie zapasowe udziałów plików platformy Azure nie obsługują wszystkich typów kont magazynu. Lista obsługiwanych kont magazynu znajduje się [tutaj](troubleshoot-azure-files.md#preview-boundaries).
+W wersji zapoznawczej kopie zapasowe udziałów plików platformy Azure nie obsługują wszystkich typów kont magazynu. Lista obsługiwanych kont magazynu znajduje się [tutaj](troubleshoot-azure-files.md#preview-boundaries). Być może konto magazynu, którego szukasz, jest już chronione lub zarejestrowane w innym magazynie. [Wyrejestruj się](troubleshoot-azure-files.md#configuring-backup) z magazynu, aby uwidocznić konto magazynu w innych magazynach w celu zapewnienia ochrony.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Gdy próbuję skonfigurować kopię zapasową, nie widzę niektórych udziałów plików platformy Azure na koncie magazynu. Dlaczego? <br/>
 Sprawdź, czy udział pliku platformy Azure nie jest już chroniony w tym samym magazynie usługi Recovery Services lub nie został ostatnio usunięty.
@@ -52,6 +52,7 @@ Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w we
 - Japonia Zachodnia (JPW)
 -   Indie Środkowe (INC) 
 - Indie Południowe (INS)
+- Korea Środkowa (KRC)
 - Korea Południowa (KRS)
 -   Północno-środkowe stany USA (NCUS) 
 -   Europa Północna (NE) 

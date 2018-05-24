@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 40fa33aad8bf5ac042f9d80493b97a914fe770bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0718365153390f525b22ef07559a822c777c2ff4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Szybki start: skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse za pomocą programu PowerShell
 
@@ -55,19 +55,19 @@ Znajdź nazwę bazy danych, nazwę serwera oraz grupę zasobów magazynu danych,
 Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu danych.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Kliknij opcję **Bazy danych SQL** po lewej stronie witryny Azure Portal.
-3. Wybierz opcję **mySampleDataWarehouse** ze strony **Bazy danych SQL**. Spowoduje to otworzenie magazynu danych.
+2. Kliknij pozycję **Magazyny danych SQL** po lewej stronie witryny Azure Portal.
+3. Wybierz pozycję **mySampleDataWarehouse** ze strony **Magazyny danych SQL**. Spowoduje to otworzenie magazynu danych.
 
     ![Nazwa serwera i grupa zasobów](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
 4. Zanotuj nazwę magazynu danych, która będzie używana jako nazwa bazy danych. Pamiętaj, że magazyn danych jest jednym z typów bazy danych. Ponadto zanotuj nazwę serwera i grupy zasobów. Będziesz używać tych nazw w poleceniach wstrzymywania i wznawiania.
-5. Jeśli serwer to foo.database.windows.net, użyj tylko pierwszej części nazwy serwera w poleceniach cmdlet programu PowerShell. Na poprzedniej ilustracji pełną nazwą serwera jest newserver-20171113.database.windows.net. W poleceniach cmdlet programu PowerShell używamy ciągu **newserver-20171113** jako nazwy serwera.
+5. Jeśli serwer to foo.database.windows.net, użyj tylko pierwszej części nazwy serwera w poleceniach cmdlet programu PowerShell. Na poprzedniej ilustracji pełną nazwą serwera jest newserver-20171113.database.windows.net. W poleceniach cmdlet programu PowerShell używamy ciągu **newserver-20180430** jako nazwy serwera.
 
 ## <a name="scale-compute"></a>Skalowanie zasobów obliczeniowych
 
 W usłudze SQL Data Warehouse można zwiększyć lub zmniejszyć ilość zasobów obliczeniowych przez odpowiednie dostosowanie jednostek magazynu danych. Postępując według czynności opisanych w artykule [Tworzenie i łączenie — portal](create-data-warehouse-portal.md) utworzono bazę danych **mySampleDataWarehouse** z 400 jednostkami DWU. Poniższe kroki umożliwiają dostosowanie liczby jednostek DWU dla bazy danych **mySampleDataWarehouse**.
 
-Aby zmienić liczbę jednostek magazynu danych, użyj polecenia cmdlet [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) programu PowerShell. Poniższy przykład ustawia jednostki magazynu danych na DW300 dla bazy danych **mySampleDataWarehouse**, która jest hostowana w grupie zasobów **myResourceGroup** na serwerze **mynewserver-20171113**.
+Aby zmienić liczbę jednostek magazynu danych, użyj polecenia cmdlet [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) programu PowerShell. Poniższy przykład ustawia jednostki magazynu danych na DW300 dla bazy danych **mySampleDataWarehouse**, która jest hostowana w grupie zasobów **myResourceGroup** na serwerze **mynewserver-20180430**.
 
 ```Powershell
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
@@ -75,7 +75,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySam
 
 ## <a name="check-data-warehouse-state"></a>Sprawdzanie stanu magazynu danych
 
-Aby wyświetlić bieżący stan magazynu danych, użyj polecenia cmdlet [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) programu PowerShell. Polecenie spowoduje pobranie stanu bazy danych **mySampleDataWarehouse** w grupie zasobów **myResourceGroup** na serwerze **mynewserver-20171113.database.windows.net**.
+Aby wyświetlić bieżący stan magazynu danych, użyj polecenia cmdlet [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) programu PowerShell. Polecenie spowoduje pobranie stanu bazy danych **mySampleDataWarehouse** w grupie zasobów **myResourceGroup** na serwerze **mynewserver-20180430.database.windows.net**.
 
 ```powershell
 $database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse

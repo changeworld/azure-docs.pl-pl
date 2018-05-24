@@ -1,27 +1,23 @@
 ---
 title: Integracja katalogu między usługami Azure Multi-Factor Authentication i Active Directory
-description: To jest strona usługi Azure Multi-Factor Authentication, na której opisano integrację serwera tej usługi z usługą Active Directory, w wyniku której możliwa jest synchronizacja katalogów.
+description: Opis sposobu integracji serwera Azure Multi-Factor Authentication z usługą Active Directory, w wyniku której możliwa jest synchronizacja katalogów.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/16/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 595359c9d50bceada3674336d4ef3fc8d5d6f416
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3f6f1f351a4870e68f2a5d6562c5c4a8f0031bdd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
+
 Sekcja Integracja katalogu serwera usługi Azure MFA umożliwia przeprowadzenie integracji z usługą Active Directory lub innym katalogiem LDAP. Pozwala ona skonfigurować atrybuty w celu ich dostosowania do schematu katalogu oraz ustawić automatyczną synchronizację użytkowników.
 
 ## <a name="settings"></a>Ustawienia

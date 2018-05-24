@@ -1,11 +1,11 @@
 ---
-title: "Utwórz zadania dla Import/Eksport Azure Eksport | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć zadanie eksportu dla usługi Import/Eksport Microsoft Azure."
+title: Utwórz zadania dla Import/Eksport Azure Eksport | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć zadanie eksportu dla usługi Import/Eksport Microsoft Azure.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 613d480b-a8ef-4b28-8f54-54174d59b3f4
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 70f74b685f4d5b902b6f6780f7c1de4d357164b8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Tworzenie zadania eksportu dla usługi Import/Eksport Azure
 Tworzenie zadania eksportu przy użyciu interfejsu API REST usługi Import/Eksport Microsoft Azure obejmuje następujące kroki:
@@ -53,7 +53,7 @@ Tworzenie zadania eksportu przy użyciu interfejsu API REST usługi Import/Ekspo
  Aby uzyskać więcej informacji na temat określania obiektów blob, aby wyeksportować zobacz [zawiesić zadanie](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji.
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
-Przed utworzeniem zadania eksportu, należy uzyskać wysyłanie nazwy lokalizacji i adres wywołując [pobrać lokalizacji](https://portal.azure.com) lub [lokalizacje listy](/rest/api/storageimportexport/listlocations) operacji. `List Locations`Zwraca listę lokalizacje i ich adres wysyłkowy. Możesz wybrać lokalizację z listy zwróconych i wysłać dyskach twardych na ten adres. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
+Przed utworzeniem zadania eksportu, należy uzyskać wysyłanie nazwy lokalizacji i adres wywołując [pobrać lokalizacji](https://portal.azure.com) lub [lokalizacje listy](/rest/api/storageimportexport/listlocations) operacji. `List Locations` Zwraca listę lokalizacje i ich adres wysyłkowy. Możesz wybrać lokalizację z listy zwróconych i wysłać dyskach twardych na ten adres. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
 
 Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 
@@ -92,6 +92,8 @@ Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 ## <a name="receiving-the-package"></a>Odbieranie pakietu
  Po przetworzeniu zadania eksportu dysków będą zwracane z zaszyfrowanych danych. Można pobrać klucza funkcji BitLocker dla wszystkich dysków przez wywołanie metody [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_Get) operacji. Następnie można odblokować dysku przy użyciu klucza. Plik manifestu dysku na każdym dysku, zawiera listę plików na dysku, a także oryginalny adres obiektu blob dla każdego pliku.
 
-## <a name="next-steps"></a>Następne kroki
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Przy użyciu interfejsu API REST usługi Import/Eksport](storage-import-export-using-the-rest-api.md)

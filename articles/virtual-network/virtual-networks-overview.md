@@ -17,15 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 3/23/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 072a4a483cb39a6f2827b6d5973ec544fd58d09c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>Co to jest usługa Azure Virtual Network?
 
-Usługa Azure Virtual Network umożliwia wielu typom zasobów platformy Azure, np. maszynom wirtualnym Azure, bezpieczne komunikowanie się ze sobą, z Internetem oraz sieciami lokalnymi. Usługa Azure Virtual Network oferuje następujące kluczowe funkcje: 
+Usługa Azure Virtual Network umożliwia wielu typom zasobów platformy Azure, np. maszynom wirtualnym Azure, bezpieczne komunikowanie się ze sobą, z Internetem oraz sieciami lokalnymi. Usługa Azure Virtual Network oferuje następujące kluczowe funkcje:
 
 ## <a name="isolation-and-segmentation"></a>Izolacja i segmentacja
 
@@ -42,7 +42,7 @@ Wszystkie zasoby w sieci wirtualnej mogą domyślnie komunikować się z Interne
 
 Zasoby platformy Azure komunikują się bezpiecznie ze sobą nawzajem, korzystając z jednego z następujących sposobów:
 
-- **Za pośrednictwem sieci wirtualnej**: możesz wdrożyć maszyny wirtualne i kilka innych typów zasobów platformy Azure w sieci wirtualnej, np. środowiskach Azure App Service Environment oraz zestawach usługi Azure Virtual Machine Scale Sets. Aby wyświetlić kompletną listę zasobów platformy Azure, które można wdrożyć w sieci wirtualnej, zobacz [Integracja sieci wirtualnej z usługą](virtual-network-for-azure-services.md). 
+- **Za pośrednictwem sieci wirtualnej**: możesz wdrożyć maszyny wirtualne i kilka innych typów zasobów platformy Azure w sieci wirtualnej, np. środowiskach Azure App Service Environment, usłudze Azure Kubernetes Service (AKS) oraz zestawach usługi Azure Virtual Machine Scale Sets. Aby wyświetlić kompletną listę zasobów platformy Azure, które można wdrożyć w sieci wirtualnej, zobacz [Integracja sieci wirtualnej z usługą](virtual-network-for-azure-services.md). 
 - **Za pośrednictwem punktu końcowego usługi sieci wirtualnej**: możesz rozszerzyć prywatną przestrzeń adresową oraz tożsamość sieci wirtualnej na zasoby usług Azure, takie jak konta usługi Azure Storage i bazy danych Azure SQL Database, korzystając z połączenia bezpośredniego. Punkty końcowe usługi umożliwiają zabezpieczanie krytycznych zasobów usługi platformy Azure tylko do sieci wirtualnej. Aby dowiedzieć się więcej, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md).
  
 ## <a name="communicate-with-on-premises-resources"></a>Komunikacja z zasobami lokalnymi

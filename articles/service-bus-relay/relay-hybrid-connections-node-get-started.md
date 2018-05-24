@@ -1,30 +1,30 @@
 ---
-title: "Wprowadzenie do połączeń hybrydowych usługi Azure Relay w języku Node | Microsoft Docs"
-description: "Napisz aplikację konsolową w środowisku Node.js do obsługi połączeń hybrydowych usługi Azure Relay."
+title: Wprowadzenie do obiektów WebSocket połączeń hybrydowych usługi Azure Relay w języku Node | Microsoft Docs
+description: Napisz aplikację konsolową w środowisku Node.js do obsługi obiektów WebSocket połączeń hybrydowych usługi Azure Relay
 services: service-bus-relay
 documentationcenter: node
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Wprowadzenie do połączeń hybrydowych usługi Relay
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Wprowadzenie do obiektów WebSocket połączeń hybrydowych usługi Relay w języku Node
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Ten samouczek zawiera wprowadzenie do [połączeń hybrydowych usługi Azure Relay](relay-what-is-it.md#hybrid-connections). Pokazano w nim, jak w środowisku Node.js utworzyć aplikację kliencką, która wysyła komunikaty do odpowiadającej jej aplikacji odbiornika. 
+Ten samouczek zawiera wprowadzenie do funkcji obiektów WebSocket [połączeń hybrydowych usługi Azure Relay](relay-what-is-it.md#hybrid-connections). Pokazano w nim, jak w środowisku Node.js utworzyć aplikację kliencką, która wysyła komunikaty obiektów WebSocket do odpowiadającej jej aplikacji odbiornika.
 
 ## <a name="what-will-be-accomplished"></a>Co zostanie osiągnięte?
 

@@ -1,11 +1,11 @@
 ---
-title: "Dodaj zaporę nowej generacji w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure ** dodać następnej generacji zapory ** i ** traffice o trasy za pośrednictwem zapory nowej generacji tylko **."
+title: Dodaj zaporę nowej generacji w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure **dodać zaporę nowej generacji** i **traffice o trasy za pośrednictwem zapory nowej generacji tylko**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodaj zaporę nowej generacji w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure może zaleca dodanie zaporę nowej generacji (NGFW) od partnera firmy Microsoft w celu zwiększenia z ochrony zabezpieczeń. Ten dokument przeprowadzi Cię przez przykładowy jak to zrobić.
@@ -42,18 +42,18 @@ Centrum zabezpieczeń Azure może zaleca dodanie zaporę nowej generacji (NGFW) 
 6. **Tworzenia maszyny wirtualnej** zostanie otwarty blok. Tutaj można wprowadzić informacje wymagane do pokrętła maszyny wirtualnej (VM), który uruchamia zapory nowej generacji. Postępuj zgodnie z instrukcjami i podaj wymagane informacje zapory nowej generacji. Wybierz OK, aby zastosować.
    ![Utwórz maszynę wirtualną, aby uruchomić NGFW][6]
 
-## <a name="route-traffic-through-ngfw-only"></a>Kieruj ruch tylko przez zaporę nowej generacji
+## <a name="route-traffic-through-ngfw-only"></a>Kierowanie ruchu sieciowego tylko za pośrednictwem zapory następnej generacji
 Wróć do **zalecenia** bloku. Wygenerowano nowy wpis po dodaniu NGFW za pośrednictwem Centrum zabezpieczeń o nazwie **kierowania ruchu za pośrednictwem zapory nowej generacji**. To zalecenie jest tworzony tylko w przypadku zainstalowania programu NGFW za pośrednictwem Centrum zabezpieczeń. Jeśli masz punkty końcowe skierowane do Internetu, Centrum zabezpieczeń zaleca, aby skonfigurować reguł sieciowej grupy zabezpieczeń, który wymusza ruch przychodzący do maszyny Wirtualnej za pośrednictwem sieci NGFW.
 
 1. W **bloku zalecenia**, wybierz pozycję **kierowania ruchu za pośrednictwem zapory nowej generacji**.
    ![Kierowanie ruchu sieciowego tylko za pośrednictwem zapory następnej generacji][7]
 2. Spowoduje to otwarcie bloku **kierowania ruchu za pośrednictwem zapory nowej generacji**, który zawiera listę maszyn wirtualnych, które może kierować ruchem do. Wybierz maszynę Wirtualną z listy.
    ![Wybierz maszynę Wirtualną][8]
-3. Zostanie otwarty blok dla wybranej maszyny Wirtualnej, wyświetlanie powiązanych reguł ruchu przychodzącego. Opis zawiera więcej informacji na temat wykonać następujące czynności. Wybierz **edytowanie reguły ruchu przychodzącego** kontynuować edytowanie reguły ruchu przychodzącego. Oczekuje się, że **źródła** nie jest ustawiony na **żadnych** dla punktów końcowych internetowy połączone z zapory nowej generacji. Aby dowiedzieć się więcej o właściwościach reguły ruchu przychodzącego, zobacz [reguły NSG](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+3. Zostanie otwarty blok dla wybranej maszyny Wirtualnej, wyświetlanie powiązanych reguł ruchu przychodzącego. Opis zawiera więcej informacji na temat wykonać następujące czynności. Wybierz **edytowanie reguły ruchu przychodzącego** kontynuować edytowanie reguły ruchu przychodzącego. Oczekuje się, że **źródła** nie jest ustawiony na **żadnych** dla punktów końcowych internetowy połączone z zapory nowej generacji. Aby dowiedzieć się więcej o właściwościach reguły ruchu przychodzącego, zobacz [reguły zabezpieczeń](../virtual-network/security-overview.md#security-rules).
    ![Konfigurowanie reguł, aby ograniczyć dostęp do][9]
    ![edycji reguły dla ruchu przychodzącego][10]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 Ten dokument pokazano sposób wykonania zalecenia Centrum zabezpieczeń "Dodaj zaporę nowej generacji". Aby dowiedzieć się więcej na temat NGFWs i rozwiązaniem partnerskim Check Point, zobacz następujące tematy:
 
 * [Zapora nowej generacji](https://en.wikipedia.org/wiki/Next-Generation_Firewall)

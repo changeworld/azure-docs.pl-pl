@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 20c5635c0ce00c9fccfec84c477d60c77c55e2fb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 223fa9bc4a19264cc1dcba9830726b30b0f7446c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Sieci wirtualnych platformy Azure (sieci wirtualne) umożliwiają umieszczać zasobów platformy Azure w kontroli dostępu do sieci routeable z systemem innym niż internet. Te sieci następnie mogą być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o sieciach wirtualnych platformy Azure Uruchom z informacjami w tym miejscu: [omówienie sieci wirtualnych Azure](../virtual-network/virtual-networks-overview.md).
@@ -189,4 +189,4 @@ Biorąc pod uwagę obliczania powyżej minimalny rozmiar podsieci, w którym mo�
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/virtual-networks-nsg.md
+[Network Security Group]: ../virtual-network/security-overview.md

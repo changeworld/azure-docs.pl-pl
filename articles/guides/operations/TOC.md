@@ -91,7 +91,7 @@
 ### [Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Tworzenie sieci wirtualnej przy użyciu programu Azure PowerShell](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Tworzenie sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Samouczki dotyczące sieci wirtualnych
 #### [Równoważenie obciążenia maszyn wirtualnych](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Łączenie komputera z siecią wirtualną](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

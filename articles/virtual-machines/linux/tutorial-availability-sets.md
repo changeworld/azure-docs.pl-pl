@@ -1,6 +1,6 @@
 ---
-title: Samouczek dotyczący zestawów dostępności dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
-description: Uzyskaj informacje na temat zestawów dostępności dla maszyn wirtualnych z systemem Linux na platformie Azure.
+title: Samouczek — wysoka dostępność dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 wdrażać maszyny wirtualne o wysokiej dostępności w zestawach dostępności
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
@@ -16,14 +16,13 @@ ms.topic: tutorial
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d317ec8136ad7a36381239593c3a53c40f897845
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dc6fba89571515d0d2d7ed3ecc35c3065405056b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-use-availability-sets"></a>Jak używać zestawów dostępności
-
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli-20"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure 2.0
 
 W tym samouczku dowiesz się, jak zwiększyć dostępność i niezawodność rozwiązań korzystających z maszyn wirtualnych na platformie Azure przy użyciu funkcji zestawów dostępności. Zestawy dostępności zapewniają rozproszenie maszyn wirtualnych wdrożonych na platformie Azure pomiędzy wieloma izolowanymi klastrami sprzętowymi. Dzięki temu ewentualne awarie sprzętowe lub błędy oprogramowania na platformie Azure będą miały wpływ tylko na część maszyn wirtualnych, a całe rozwiązanie nadal będzie dostępne i funkcjonalne.
 
@@ -34,10 +33,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie maszyny wirtualnej w zestawie dostępności
 > * Sprawdzanie dostępnych rozmiarów maszyn wirtualnych
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="availability-set-overview"></a>Zestaw dostępności — omówienie
 
@@ -50,16 +48,13 @@ Zestawy dostępności umożliwiają wdrażanie niezawodnych rozwiązań z użyci
 
 ## <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
 
-Aby utworzyć zestaw dostępności, użyj polecenia [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create). W tym przykładzie ustawimy zarówno liczbę domen aktualizacji, jak i domen błędów na *2* dla zestawu dostępności o nazwie *myAvailabilitySet* w grupie zasobów *myResourceGroupAvailability*.
+Aby utworzyć zestaw dostępności, użyj polecenia [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create). W tym przykładzie liczbę domen aktualizacji i domen błędów ustawiono na *2* dla zestawu dostępności o nazwie *myAvailabilitySet* w grupie zasobów *myResourceGroupAvailability*.
 
-Utwórz grupę zasobów.
+Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create), a następnie utwórz zestaw dostępności:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
-```
 
-
-```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupAvailability \
     --name myAvailabilitySet \
@@ -67,44 +62,44 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-Zestawy dostępności pozwalają izolować zasoby w domenach błędów i aktualizować domeny. **Domeny błędów** reprezentują izolowaną kolekcję zasobów serwer + sieć + magazyn. W poprzednim przykładzie wskazaliśmy, że chcemy, aby nasz zestaw dostępności był rozproszony w co najmniej dwóch domenach błędów, gdy są wdrażane nasze maszyny wirtualne. Wskazaliśmy również, że chcemy, aby nasz zestaw dostępności był rozproszony w dwóch **domenach aktualizacji**.  Dwie domeny aktualizacji zapewniają, że w przypadku, gdy platforma Azure przeprowadza aktualizacje oprogramowania, zasoby naszych maszyn wirtualnych są izolowane, zapobiegając jednoczesnej aktualizacji całego oprogramowania działającego poniżej naszej maszyny wirtualnej.
+Zestawy dostępności pozwalają izolować zasoby w domenach błędów i aktualizować domeny. **Domeny błędów** reprezentują izolowaną kolekcję zasobów serwer + sieć + magazyn. W poprzednim przykładzie zestaw dostępności jest rozpraszany w co najmniej dwóch domenach błędów, gdy są wdrażane maszyny wirtualne. Zestaw dostępności jest również rozpraszany w dwóch **domenach aktualizacji**. Dwie domeny aktualizacji zapewniają, że w przypadku, gdy platforma Azure przeprowadza aktualizacje oprogramowania, zasoby maszyn wirtualnych są izolowane, zapobiegając jednoczesnej aktualizacji całego oprogramowania działającego na maszynie wirtualnej.
 
 
 ## <a name="create-vms-inside-an-availability-set"></a>Tworzenie maszyn wirtualnych w zestawie dostępności
 
-Aby zapewnić właściwe rozproszenie maszyn wirtualnych na sprzęcie, należy utworzyć je w ramach zestawu dostępności. Nie można dodać istniejącej, wcześniej utworzonej maszyny wirtualnej do zestawu dostępności. 
+Aby zapewnić właściwe rozproszenie maszyn wirtualnych na sprzęcie, należy utworzyć je w ramach zestawu dostępności. Do zestawu dostępności nie można dodać istniejącej maszyny wirtualnej po jej utworzeniu.
 
-Podczas tworzenia maszyny wirtualnej przy użyciu polecenia [az vm create](/cli/azure/vm#az_vm_create) określasz zestaw dostępności za pomocą parametru `--availability-set`, aby określić nazwę zestawu dostępności.
+Podczas tworzenia maszyny wirtualnej za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create) określ nazwę zestawu dostępności przy użyciu parametru `--availability-set`.
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in `seq 1 2`; do
    az vm create \
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
      --size Standard_DS1_v2  \
-     --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+     --image UbuntuLTS \
      --admin-username azureuser \
      --generate-ssh-keys \
      --no-wait
-done 
+done
 ```
 
-Mamy teraz dwie maszyny wirtualne w naszym nowo utworzonym zestawie dostępności. Ponieważ są one w tym samym zestawie dostępności, platforma Azure zapewnia, że maszyny wirtualne i ich zasoby (w tym dyski z danymi) są rozmieszczone na izolowanym sprzęcie fizycznym. Takie rozmieszczenie zapewnia znacznie wyższą dostępność naszego ogólnego rozwiązania maszyny wirtualnej.
+W zestawie dostępności istnieją teraz dwie maszyny wirtualne. Ponieważ są one w tym samym zestawie dostępności, platforma Azure zapewnia, że maszyny wirtualne i ich zasoby (w tym dyski z danymi) są rozmieszczone na izolowanym sprzęcie fizycznym. Takie rozmieszczenie zapewnia znacznie wyższą dostępność ogólnego rozwiązania maszyny wirtualnej.
 
-Możesz wyświetlić zestaw dostępności w portalu, przechodząc do pozycji Grupy zasobów > myResourceGroupAvailability > myAvailabilitySet, aby zobaczyć, w jaki sposób maszyny wirtualne są rozmieszczone w dwóch domenach aktualizacji i błędów.
+Rozmieszczenie zestawu dostępności można wyświetlić w portalu, wybierając pozycję Grupy zasobów > myResourceGroupAvailability > myAvailabilitySet. Maszyny wirtualne są rozproszone w dwóch domenach błędów i aktualizacji, jak pokazano na poniższym przykładzie:
 
 ![Zestaw dostępności w portalu](./media/tutorial-availability-sets/fd-ud.png)
 
-## <a name="check-for-available-vm-sizes"></a>Sprawdzanie dostępnych rozmiarów maszyn wirtualnych 
+## <a name="check-for-available-vm-sizes"></a>Sprawdzanie dostępnych rozmiarów maszyn wirtualnych
 
-Możesz później dodać więcej maszyn wirtualnych do zestawu dostępności, ale potrzebujesz do tego informacji o rozmiarach maszyn wirtualnych udostępnianych przez sprzęt.  Użyj polecenia [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes), aby wyświetlić listę wszystkich rozmiarów dostępnych w klastrze sprzętowym zestawu dostępności.
+Dodatkowe maszyny wirtualne można dodać do zestawu dostępności później, o ile rozmiary maszyn wirtualnych są dostępne na sprzęcie. Użyj polecenia [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes), aby wyświetlić listę wszystkich rozmiarów dostępnych w klastrze sprzętowym zestawu dostępności:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm availability-set list-sizes \
      --resource-group myResourceGroupAvailability \
      --name myAvailabilitySet \
-     --output table  
+     --output table
 ```
 
 ## <a name="next-steps"></a>Następne kroki
@@ -120,4 +115,3 @@ Przejdź do następnego samouczka, aby poznać zestawy skalowania maszyn wirtual
 
 > [!div class="nextstepaction"]
 > [Tworzenie zestawu skalowania maszyn wirtualnych](tutorial-create-vmss.md)
-

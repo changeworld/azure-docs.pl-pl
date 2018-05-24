@@ -1,29 +1,29 @@
 ---
-title: "Azure zasad przykładowy kod json - dozwolone typy zasobów | Dokumentacja firmy Microsoft"
-description: "Ta zasada próbki json zapewnia tylko typy zasobów zatwierdzonych są wdrażane."
+title: Przykładowe zasady usługi Azure Policy w formacie JSON — Allowed resource types (Dozwolone typy zasobów) | Microsoft Docs
+description: Ta przykładowa zasada w formacie JSON zapewnia wdrażanie tylko zatwierdzonych typów zasobów.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 2c34114d6b8fa10a2f0781e1819c64eedd9288d0
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: 90c846a056707048a93f3c6cf23e0d9645d5fe8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allowed-resource-types"></a>Typy zasobów dozwolonych
+# <a name="allowed-resource-types"></a>Dozwolone typy zasobów
 
-Ta zasada zapewnia tylko typy zasobów zatwierdzonych są wdrażane. Należy określić tablicę typów zasobów, które są dozwolone.
+Ta zasada zapewnia wdrażanie tylko zatwierdzonych typów zasobów. Należy określić tablicę typów zasobów, które są dozwolone.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Ta zasada zapewnia tylko typy zasobów zatwierdzonych są wdrażane. Należy okr
 
 [!code-json[main](../../../policy-templates/samples/built-in-policy/allowed-resourcetypes/azurepolicy.json "Allowed resource types")]
 
-Przy użyciu tego szablonu można wdrożyć [portalu Azure](#deploy-with-the-portal), z [PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -48,9 +48,9 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenia programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -66,9 +66,9 @@ az policy definition create --name 'allowed-resourcetypes' --display-name 'Allow
 az policy assignment create --name <assignmentname> --scope <scope> --policy "allowed-resourcetypes"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenia wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dodatkowe przykłady szablonu zasad Azure są [szablony zasad Azure](../json-samples.md).
+- Dodatkowe przykłady szablonów usługi Azure Policy można znaleźć na stronie [Templates for Azure Policy (Szablony dla usługi Azure Policy)](../json-samples.md).

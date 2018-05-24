@@ -13,11 +13,11 @@ ms.topic: get-started-article
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: edd3bbb5d47753890328ae86b15dc938dfcf7eb7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 78954e2dd00e425d2dfdd81d2c3e386f199f4f8f
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
 
@@ -35,6 +35,10 @@ Ten samouczek obejmuje następujące procedury:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
+Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/ingest-prepare-and-transform-using-azure-databricks-and-data-factory/player]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
   - **Obszar roboczy usługi Azure Databricks**. [Utwórz obszar roboczy usługi Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) lub użyj istniejącego. Najpierw utworzysz notes Python w obszarze roboczym usługi Azure Databricks. Następnie wykonasz notes i przekażesz do niego parametry przy użyciu usługi Azure Data Factory.
@@ -49,7 +53,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 3.  W okienku **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**.
 
-    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli zostanie wyświetlony poniższy błąd, zmień nazwę fabryki danych. (Na przykład użyj nazwy **\<twojanazwa\>ADFTutorialDataFactory**). Artykuł [Usługa Data Factory — reguły nazewnictwa](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
+    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli zostanie wyświetlony poniższy błąd, zmień nazwę fabryki danych. (Na przykład użyj nazwy **\<twojanazwa\>ADFTutorialDataFactory**). Artykuł [Usługa Data Factory — reguły nazewnictwa](https://docs.microsoft.com/azure/data-factory/naming-rules) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
 
     ![Udostępnianie nazwy nowej fabryki danych](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image2.png)
 
@@ -61,7 +65,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     
     - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
 
-    W niektórych krokach w tym samouczku szybkiego startu zakłada się, że nazwa grupy zasobów to **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
+    W niektórych krokach w tym samouczku szybkiego startu zakłada się, że nazwa grupy zasobów to **ADFTutorialResourceGroup**. Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (Używanie grup zasobów do zarządzania zasobami platformy Azure).
 
 1.  W obszarze **Wersja** wybierz pozycję **V2 (wersja zapoznawcza)**.
 

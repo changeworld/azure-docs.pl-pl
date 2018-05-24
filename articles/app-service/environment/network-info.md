@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla środowiska usługi aplikacji #
 
@@ -47,7 +47,7 @@ Jeśli masz ASE ILB, adres IP ILB jest punkt końcowy dla protokołu HTTP/S, FTP
 
 Porty dostępu normalne aplikacji są:
 
-| Użycie | Od | Do |
+| Użycie | Z | Do |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Konfigurowane przez użytkownika |  80, 443 |
 |  FTP/FTPS    | Konfigurowane przez użytkownika |  21, 990, 10001-10020 |
@@ -66,9 +66,9 @@ Nie można zmienić rozmiar podsieci, używany do obsługi ASE, po wdrożeniu AS
 
 ASE zależność dostępu ruchu przychodzącego jest:
 
-| Użycie | Od | Do |
+| Użycie | Z | Do |
 |-----|------|----|
-| Zarządzanie | Adresy zarządzania usługi aplikacji | ASE subnet: 454, 455 |
+| Zarządzanie | Adresy zarządzania usługi aplikacji | Podsieci ASE: 454, 455 |
 |  Wewnętrznej komunikacji ASE | Podsieci ASE: wszystkie porty | Podsieci ASE: wszystkie porty
 |  Zezwalaj na usługi równoważenia obciążenia Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci ASE: wszystkie porty
 |  Aplikacji przypisanych adresów IP | Adresy przypisywane aplikacji | Podsieci ASE: wszystkie porty
@@ -83,11 +83,11 @@ Jeśli używasz aplikacji przypisanych adresów IP, należy zezwolić na ruch z 
 
 Dla ruchu wychodzącego dostępu ASE zależy od wielu systemami zewnętrznymi. Te zależności systemu są zdefiniowane z nazwami DNS i nie mapowania ustalony zbiór adresów IP. W związku z tym ASE wymaga wychodzący dostęp do wszystkich zewnętrznych adresów IP z podsieci ASE różnych portów. ASE charakteryzuje się następującymi zależnościami wychodzących:
 
-| Użycie | Od | Do |
+| Użycie | Z | Do |
 |-----|------|----|
 | Azure Storage | Podsieci ASE | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 jest potrzebna tylko dla ASEv1.) |
 | Azure SQL Database | Podsieci ASE | Database.Windows.NET: 1433, 11000 11999, 14000 14999 (Aby uzyskać więcej informacji, zobacz [użycia portu bazy danych SQL V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
-| Azure management | Podsieci ASE | management.core.windows.net, management.azure.com: 443 
+| Zarządzania platformy Azure | Podsieci ASE | management.core.windows.net, management.azure.com: 443 
 | Weryfikacja certyfikatu SSL |  Podsieci ASE            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
 | Usługa Azure Active Directory        | Podsieci ASE            |  Internet: 443
 | Zarządzanie usługami aplikacji        | Podsieci ASE            |  Internet: 443
@@ -224,7 +224,7 @@ Kiedy punkty końcowe usługi są włączone w podsieci z wystąpieniem usługi 
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md

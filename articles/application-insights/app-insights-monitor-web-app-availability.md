@@ -3,7 +3,7 @@ title: Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 description: Konfigurowanie testów sieci Web w usłudze Application Insights. Otrzymywanie alertów, kiedy witryna sieci Web staje się niedostępna lub wolno odpowiada.
 services: application-insights
 documentationcenter: ''
-author: SoubhagyaDash
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2018
 ms.author: sdash ; mbullwin
-ms.openlocfilehash: d8d6c6a242f63ad891a8134657273ff73dfcde18
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji sieci Web lub witryny sieci Web na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -273,7 +273,7 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
 
     Błąd „Naruszenie protokołu (...) Po CR musi występować LF” oznacza problem związany z serwerem (lub zależnościami). Występuje w przypadku ustawienia nieprawidłowo sformułowanych nagłówków w odpowiedzi. Przyczyną mogą być moduły równoważenia obciążenia lub sieci dostarczania zawartości. Mówiąc bardziej szczegółowo, w niektórych nagłówkach koniec wiersza może nie być sygnalizowany znakiem CRLF, co narusza specyfikację protokołu HTTP i prowadzi do niepowodzenia walidacji na poziomie żądania internetowego .NET. Sprawdź odpowiedź, aby znaleźć nagłówki, które mogą powodować naruszenie.
     
-    Uwaga: błąd adresu URL może nie występować w przeglądarkach mających bardziej swobodne reguły walidacji nagłówków HTTP. Szczegółowe wyjaśnienie tego problemu znajdziesz w następującym wpisie w blogu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+    Uwaga: błąd adresu URL może nie występować w przeglądarkach mających bardziej swobodne reguły walidacji nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 * *Witryna wygląda prawidłowo, ale występują niepowodzenia testów*
 
     * Sprawdź wszystkie obrazy, skrypty, arkusze stylów i inne pliki ładowane przez stronę. Jeśli pobranie dowolnego z nich nie powiedzie się, test zostanie zgłoszony jako nieudany — nawet wtedy, gdy główna strona HTML ładuje się poprawnie. Aby test ignorował takie błędy zasobów, wystarczy usunąć zaznaczenie pola „Analizuj zależne żądania” w konfiguracji testu. 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4b3a7425f383e1fa8145bac016aa2881d806c545
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 0be54c47965c6a27c3506fd37a7bf67e4b2b7924
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="application-insights-overview-dashboard-preview"></a>Pulpit nawigacyjny aplikacji — omówienie Insights (wersja zapoznawcza)
 
@@ -56,6 +56,9 @@ Jeśli jest to pierwszy raz podczas uzyskiwania dostępu do pulpitu nawigacyjneg
 ![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
 Podczas mogą zachować widok domyślny, jeśli chcesz tak, można również dodać, a następnie usuń z pulpitu nawigacyjnego, aby jak najlepiej zgodnie z potrzebami zespołu.
+
+> [!NOTE]
+> Wszyscy użytkownicy z dostępem do zasobu usługi Application Insights udostępnianie tego samego środowiska pulpitu nawigacyjnego aplikacji. Zmiany wprowadzone przez jeden użytkownik zmodyfikuje widoku dla wszystkich użytkowników.
 
 Aby wrócić do obsługi omówienie po prostu wybierz:
 

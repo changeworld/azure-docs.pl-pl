@@ -1,109 +1,109 @@
 ---
-title: Aktywacja subskrypcji platformy Azure i kont | Dokumentacja firmy Microsoft
-description: Włącz dostęp za pomocą interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont i rozwiązać typowe problemy z konta.
+title: Aktywowanie subskrypcji i kont platformy Azure | Microsoft Docs
+description: Umożliwianie dostępu za pomocą interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont oraz rozwiązywanie typowych problemów dotyczących kont.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/01/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: quickstart
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktywacja subskrypcji platformy Azure i kont za pomocą usługi Azure Management koszt
+# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą usługi Azure Cost Management
 
-Dodanie lub uaktualnienie poświadczeń usługi Azure Resource Manager umożliwia Azure koszt zarządzania odnaleźć wszystkie konta i subskrypcji w ramach dzierżawy usługi Azure. Jeśli masz także włączona na maszynach wirtualnych rozszerzenia diagnostyki Azure, Azure kosztów zarządzania mogą zbierać metryki rozszerzonej, takie jak procesor CPU i pamięci. W tym artykule opisano sposób włączania dostępu przy użyciu interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont. Zawiera również opis rozwiązywania typowych problemów z konta.
+Dodawanie lub uaktualnianie poświadczeń usługi Azure Resource Manager umożliwia usłudze Azure Cost Management odnajdowanie wszystkich kont i subskrypcji w ramach dzierżawy platformy Azure. Jeśli na swoich maszynach wirtualnych masz również włączone rozszerzenie Diagnostyka Azure, usługa Azure Cost Management może zbierać metryki rozszerzone, takie jak procesor i pamięć. W tym artykule opisano sposób włączania dostępu przy użyciu interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont. Zawiera on również opis rozwiązywania typowych problemów dotyczących kont.
 
-Azure kosztów zarządzania nie może uzyskać dostępu większość danych subskrypcji platformy Azure, gdy subskrypcja jest _nieaktywowani_. Należy zmodyfikować _nieaktywowani_ kont, dzięki czemu Azure kosztów zarządzania mogą uzyskiwać do nich dostęp.
+Usługa Azure Cost Management nie może uzyskiwać dostępu do większości danych subskrypcji platformy Azure, gdy subskrypcja jest _nieaktywowana_. Aby usługa Azure Cost Management mogła uzyskiwać dostęp do kont _nieaktywowanych_, należy je edytować.
 
-## <a name="required-azure-permissions"></a>Wymagane uprawnienia Azure
+## <a name="required-azure-permissions"></a>Wymagane uprawnienia platformy Azure
 
-Określone uprawnienia są wymagane do wykonania procedur w tym artykule. Użytkownik lub administrator dzierżawy musi mieć oba następujące uprawnienia:
+Do wykonania procedur opisanych w tym artykule potrzebne są określone uprawnienia. Użytkownik lub administrator dzierżawy musi mieć obydwa poniższe uprawnienia:
 
-- Uprawnienia do rejestrowania aplikacji CloudynCollector z dzierżawy usługi Azure AD.
-- Możliwość przypisywanie aplikacji do roli w Twojej subskrypcji platformy Azure.
+- Uprawnienia do rejestrowania aplikacji CloudynCollector w dzierżawie usługi Azure AD.
+- Możliwość przypisywania aplikacji do roli w swoich subskrypcjach platformy Azure.
 
-W Twojej subskrypcji platformy Azure, musi mieć swoje konta `Microsoft.Authorization/*/Write` dostępu przypisany CloudynCollector aplikacji. Ta akcja jest przyznawane za pośrednictwem [właściciela](../role-based-access-control/built-in-roles.md#owner) roli lub [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) roli.
+W subskrypcjach platformy Azure konta muszą mieć dostęp `Microsoft.Authorization/*/Write`, aby przypisywanie aplikacji CloudynCollector było możliwe. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator).
 
-Jeśli Twoje konto jest przypisany **współautora** roli, nie masz odpowiednich uprawnień, aby przypisać tę aplikację. Błąd podczas próby przypisać aplikację CloudynCollector do subskrypcji platformy Azure.
+Jeśli konto ma przypisaną rolę **Współautor**, nie masz odpowiednich uprawnień do przypisywania tej aplikacji. W przypadku podjęcia próby przypisania aplikacji CloudynCollector do subskrypcji platformy Azure zostanie wyświetlony komunikat o błędzie.
 
-### <a name="check-azure-active-directory-permissions"></a>Sprawdź uprawnienia usługi Azure Active Directory
+### <a name="check-azure-active-directory-permissions"></a>Sprawdzanie uprawnień usługi Azure Active Directory
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. W portalu Azure wybierz **usługi Azure Active Directory**.
-3. W usłudze Azure Active Directory, zaznacz **ustawienia użytkownika**.
-4. Sprawdź **rejestracji aplikacji** opcji.
-    - Jeśli wartość jest ustawiona na **tak**, a następnie użytkownicy niebędący administratorami można zarejestrować aplikacji usługi AD. To ustawienie oznacza, że każdy użytkownik w dzierżawie usługi Azure AD można zarejestrować aplikacji. Możesz przejść do Azure wymagane uprawnienia do subskrypcji.  
-    ![Rejestracji aplikacji](./media/activate-subs-accounts/app-register.png)
-    - Jeśli **rejestracji aplikacji** ustawiono opcję **nr**, następnie tylko użytkownicy administracyjni dzierżawcy można zarejestrować aplikacji usługi Azure Active Directory. Administrator dzierżawy musi zarejestrować aplikację CloudynCollector.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
+3. W usłudze Azure Active Directory wybierz pozycję **Ustawienia użytkownika**.
+4. Sprawdź opcję **Rejestracje aplikacji**.
+    - W przypadku ustawienia wartości na **Tak** użytkownicy inni niż administratorzy mogą rejestrować aplikacje usługi AD. To ustawienie oznacza, że każdy użytkownik w dzierżawie usługi Azure AD może zarejestrować aplikację. Możesz przejść do obszaru wymaganych uprawnień subskrypcji platformy Azure.  
+    ![Rejestracje aplikacji](./media/activate-subs-accounts/app-register.png)
+    - W przypadku ustawienia opcji **Rejestracje aplikacji** na **Nie** tylko użytkownicy administracyjni dzierżawy mogą rejestrować aplikacje usługi Azure Active Directory. Administrator dzierżawy musi zarejestrować aplikację CloudynCollector.
 
 
-## <a name="add-an-account-or-update-a-subscription"></a>Dodaj konto lub zaktualizować subskrypcji
+## <a name="add-an-account-or-update-a-subscription"></a>Dodawanie konta lub aktualizowanie subskrypcji
 
-Po dodaniu aktualizacji konta subskrypcji, można przyznać dostęp do usługi Azure kosztów zarządzania do danych Azure.
+W przypadku dodawania konta lub aktualizowania subskrypcji przyznajesz usłudze Azure Cost Management dostęp do danych platformy Azure.
 
-### <a name="add-a-new-account-subscription"></a>Dodaj nowe konto (subskrypcji)
+### <a name="add-a-new-account-subscription"></a>Dodawanie nowego konta (subskrypcji)
 
-1. W portalu Azure kosztów zarządzania kliknij koło zębate symbol w prawym górnym i wybierz **kont chmury**.
-2. Kliknij przycisk **Dodaj nowe konto** i **Dodaj nowe konto** zostanie wyświetlone okno. Wprowadź wymagane informacje.  
-    ![Dodaj nowe pole konta](./media/activate-subs-accounts//add-new-account.png)
+1. W portalu usługi Azure Cost Management kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Konta w chmurze**.
+2. Kliknij pozycję **Dodaj nowe konto**. Zostanie wyświetlone okno **Dodawanie nowego konta**. Wprowadź wymagane informacje.  
+    ![Okno Dodawanie nowego konta](./media/activate-subs-accounts//add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualizowanie subskrypcji
 
-1. Jeśli chcesz zaktualizować _nieaktywowani_ subskrypcji, która już istnieje w Azure koszt zarządzania, w przystawce Zarządzanie kontami kliknij symbol ołówka edycji z prawej strony nadrzędnej _identyfikator GUID dzierżawy_. Subskrypcje są zgrupowane w dzierżawy nadrzędnej, więc należy unikać indywidualnie aktywowania subskrypcji.
-    ![Ponowne odnajdywanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
-2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz Identyfikatora dzierżawy, wykonaj następujące kroki, aby ją znaleźć:
-    1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-    2. W portalu Azure wybierz **usługi Azure Active Directory**.
+1. Jeśli chcesz zaktualizować _nieaktywowaną_ subskrypcję, która już istnieje w usłudze Azure Cost Management w rozwiązaniu do zarządzania kontami, kliknij symbol ołówka (edycja) z prawej strony nadrzędnego _identyfikatora GUID dzierżawy_. Subskrypcje są grupowane w ramach dzierżawy nadrzędnej, należy więc unikać ich indywidualnego aktywowania.
+    ![Ponowne odnajdowanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
+2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz identyfikatora dzierżawy, wykonaj następujące czynności, aby go znaleźć:
+    1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+    2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
     3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
-    4. Skopiuj katalog Identyfikatora GUID. Ta wartość jest Twoim identyfikatorem dzierżawy.
-    Aby uzyskać więcej informacji, zobacz [uzyskanie Identyfikatora dzierżawy](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-3. W razie potrzeby wybierz szybkość identyfikatora Jeśli nie znasz Identyfikatora szybkość, wykonaj następujące kroki, aby ją znaleźć.
-    1. W prawym górnym rogu portalu Azure, kliknij przycisk informacje o użytkowniku, a następnie kliknij przycisk **wyświetlić mojego rachunku**.
-    2. W obszarze **konta rozliczeniowego**, kliknij przycisk **subskrypcje**.
-    3. W obszarze **Moje subskrypcje**, wybierz subskrypcję.
-    4. Częstotliwość identyfikator jest wyświetlany w obszarze **identyfikator oferty**. Skopiuj identyfikator oferty dla subskrypcji.
-4. Dodaj nowe konto (lub edytować subskrypcję) kliknij pozycję **zapisać** (lub **dalej**). Użytkownik jest przekierowywany do portalu Azure.
-5. Zaloguj się do portalu. Kliknij przycisk **Akceptuj** do autoryzacji moduł zbierający Azure kosztów zarządzania dostęp do konta platformy Azure.
+    4. Skopiuj identyfikator GUID katalogu. Ta wartość jest Twoim identyfikatorem dzierżawy.
+    Aby uzyskać więcej informacji, zobacz [Get tenant ID (Pobieranie identyfikatora dzierżawy)](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+3. W razie potrzeby wybierz identyfikator stawki. Jeśli nie znasz identyfikatora stawki, wykonaj następujące czynności, aby go znaleźć:
+    1. W prawym górnym rogu witryny Azure Portal kliknij informacje o użytkowniku, a następnie kliknij pozycję **Wyświetl mój rachunek**.
+    2. W obszarze **Konto rozliczeniowe** kliknij pozycję **Subskrypcje**.
+    3. W obszarze **Moje subskrypcje** wybierz subskrypcję.
+    4. Identyfikator stawki jest wyświetlany w obszarze **identyfikatora oferty**. Skopiuj identyfikator oferty dla subskrypcji.
+4. W oknie Dodawanie nowego konta (lub Edytowanie subskrypcji) kliknij pozycję **Zapisz** (lub **Dalej**). Nastąpi przekierowywanie do witryny Azure Portal.
+5. Zaloguj się do portalu. Kliknij pozycję **Akceptuj**, aby autoryzować moduł zbierający usługi Azure Cost Management do uzyskiwania dostępu do konta platformy Azure.
 
-    W przypadku przekierowany do strony zarządzania Azure kosztów zarządzania kontami i Twojej subskrypcji został zaktualizowany o **active** stan konta. Powinna zostać wyświetlona zielony znacznik wyboru w kolumnie Menedżera zasobów.
+    Nastąpi przekierowanie do strony zarządzania kontami usługi Azure Cost Management, a subskrypcja zostanie zaktualizowana przy użyciu stanu konta **Aktywne**. W kolumnie Resource Manager powinien pojawić się symbol zielonego znacznika wyboru.
 
-    Jeśli nie widzisz symbolu zielonym znacznikiem wyboru dla co najmniej jednego z subskrypcji, oznacza to, nie masz uprawnień do tworzenia aplikacji czytnika (CloudynCollector) dla subskrypcji. Użytkownik z uprawnieniami wyższej subskrypcji musi Powtórz ten proces.
+    Jeśli nie widzisz symbolu zielonego znacznika wyboru dla co najmniej jednej z subskrypcji, oznacza to, że nie masz uprawnień do tworzenia aplikacji czytnika (CloudynCollector) dla subskrypcji. Użytkownik z wyższymi uprawnieniami subskrypcji musi powtórzyć ten proces.
 
-Obejrzyj [łączenie usługi Azure Resource Manager z usługą Azure Management koszt](https://youtu.be/oCIwvfBB6kk) wideo, który przeprowadzi Cię przez proces.
+Obejrzyj film [Connecting to Azure Resource Manager with Azure Cost Management (Łączenie z usługą Azure Resource Manager przy użyciu usługi Azure Cost Management)](https://youtu.be/oCIwvfBB6kk), który przeprowadzi Cię przez proces.
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
-## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Typowych problemów konfiguracji pośrednie enterprise
+## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Rozwiązywanie typowych problemów z pośrednią konfiguracją przedsiębiorstwa
 
-Przy pierwszym użyciu portalu Azure koszt zarządzania, jeśli jesteś użytkownikiem umowy Enterprise Agreement lub Cloud Solution Provider (CSP) można napotkać następujące komunikaty:
+Przy pierwszym użyciu portalu usługi Azure Cost Management możesz zobaczyć poniższe komunikaty, jeśli jesteś użytkownikiem z umową Enterprise Agreement lub dostawcą rozwiązań w chmurze (CSP, Cloud Solution Provider):
 
-- *Określony klucz interfejsu API nie jest kluczem najwyższego poziomu rejestrowania* wyświetlane w **ustawić zapasowej Azure kosztów zarządzania** kreatora.
-- *Bezpośrednia rejestracja — nie* wyświetlane w portalu umowy Enterprise Agreement.
-- *Nie użycia znaleziono danych w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutora, aby upewnić się, znaczników zostały włączone dla konta platformy Azure* wyświetlane w portalu zarządzania Azure kosztów.
+- Komunikat *Wybrany klucz interfejsu API nie jest kluczem rejestracji najwyższego poziomu rejestrowania* wyświetlany w kreatorze **Konfigurowanie usługi Azure Cost Management**.
+- Komunikat *Bezpośrednia rejestracja — nie* wyświetlany w portalu umowy Enterprise Agreement.
+- *Nie znaleziono danych użycia z ostatnich 30 dni. Skontaktuj się z dystrybutorem, aby upewnić się, że dla konta platformy Azure włączono znaczniki* wyświetlany w portalu usługi Azure Cost Management.
 
-Poprzednie komunikaty wskazują zakupiono Azure Enterprise Agreement u odsprzedawcy lub dostawcy usług Kryptograficznych. Ze sprzedawcą lub dostawcy usług Kryptograficznych, trzeba włączyć _znacznika_ dla konta platformy Azure, dzięki czemu można wyświetlać dane w Azure kosztów zarządzania.
+Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Odsprzedawca lub dostawca rozwiązań w chmurze musi włączyć _znaczniki_ dla konta platformy Azure, aby można było wyświetlać dane w usłudze Azure Cost Management.
 
-Oto jak rozwiązać problemy:
+Oto sposoby rozwiązywania tych problemów:
 
-1. Należy włączyć odsprzedawcą _znacznika_ dla Twojego konta. Aby uzyskać instrukcje, zobacz [pośrednie przewodnik dołączania klienta](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Możesz wygenerować klucz Azure Enterprise Agreement do użycia z usługą Azure Management kosztów. Aby uzyskać instrukcje, zobacz [zarejestrować Azure Enterprise Agreement i widok danych kosztów](https://docs.microsoft.com/en-us/azure/cost-management/quick-register-ea).
+1. Odsprzedawca musi włączyć _znaczniki_ dla Twojego konta. Aby uzyskać instrukcje, zapoznaj się z dokumentem [Indirect Customer Onboarding Guide (Przewodnik dołączania klienta pośredniego)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+2. Wygenerujesz klucz umowy Azure Enterprise Agreement do użycia w usłudze Azure Cost Management. Aby uzyskać instrukcje, zobacz [Register an Azure Enterprise Agreement and view cost data (Rejestrowanie umowy Azure Enterprise Agreement i wyświetlanie danych kosztów)](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Tylko administrator usługi Azure można włączyć zarządzanie kosztów. Uprawnienia administratora współpracującego są niewystarczające.
+Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające.
 
-Przed wygenerowaniem klucz interfejsu API umowy Enterprise Azure Konfigurowanie Azure koszt zarządzania, należy włączyć interfejsu API rozliczenia Azure zgodnie z instrukcjami na:
+Przed wygenerowaniem klucza interfejsu API umowy Azure Enterprise Agreement w celu skonfigurowania usługi Azure Cost Management musisz włączyć interfejs API rozliczeń platformy Azure, wykonując następujące instrukcje:
 
-- [Omówienie API raportowania dla przedsiębiorstw](../billing/billing-enterprise-api.md)
-- [Microsoft Azure enterprise portal interfejsu API raportowania](https://ea.azure.com/helpdocs/reportingAPI) w obszarze **Włączanie dostępu do interfejsu API danych**
+- [Overview of Reporting APIs for Enterprise customers (Omówienie interfejsów API raportowania dla klientów korporacyjnych)](../billing/billing-enterprise-api.md)
+- [Interfejs API raportowania w witrynie Microsoft Azure dla przedsiębiorstw](https://ea.azure.com/helpdocs/reportingAPI) w obszarze **Włączanie dostępu danych do interfejsu API**
 
-Może należy również podać Administratorzy działu, właściciele konta i uprawnienia administratorów przedsiębiorstwa _wyświetlić opłat_ przy użyciu interfejsu API rozliczeń.
+Być może trzeba będzie również nadać administratorom działów, właścicielom kont i administratorom przedsiębiorstwa uprawnienia do _wyświetlania opłat_ przy użyciu interfejsu API rozliczeń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Jeśli nie zostało już ukończone pierwszy samouczek koszt zarządzania, przeczytaj je na [Przejrzyj użycia i koszty](tutorial-review-usage.md).
+- Jeśli zadania z pierwszego samouczka dotyczącego usługi Cost Management nie zostały jeszcze wykonane, zapoznaj się z nim w temacie [Review usage and costs (Przeglądanie użycia i kosztów)](tutorial-review-usage.md).

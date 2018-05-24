@@ -1,29 +1,29 @@
 ---
-title: "Azure json zasad przykładowe — wymusza tagu i jej wartość na temat grup zasobów | Dokumentacja firmy Microsoft"
-description: "Ta zasada próbki json wymaga tagu i wartość dla grupy zasobów."
+title: Przykładowe zasady usługi Azure Policy w formacie JSON — Enforce tag and its value on resource groups (Wymuś tag i jego wartość na grupach zasobów) | Microsoft Docs
+description: Ta przykładowa zasada w formacie JSON wymaga użycia tagu i wartości na grupie zasobów.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 634cfea503b796a026bad1245e234c928baf0463
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: 39f07ff2b24f0fcc7e0bb418319dd83c8f2b2c89
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="enforce-tag-and-its-value-on-resource-groups"></a>Wymuszanie tagu i jej wartość na temat grup zasobów
+# <a name="enforce-tag-and-its-value-on-resource-groups"></a>Wymuszanie tagu i jego wartości na grupach zasobów
 
-Te zasady wymagają tagu i wartość dla grupy zasobów. Należy określić nazwa wymaganego tagu i wartość.
+Ta zasada wymaga użycia tagu i wartości na grupie zasobów. Należy określić wymaganą nazwę i wartość tagu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Te zasady wymagają tagu i wartość dla grupy zasobów. Należy określić nazw
 
 [!code-json[main](../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.json "Enforce tag and its value on resource groups")]
 
-Przy użyciu tego szablonu można wdrożyć [portalu Azure](#deploy-with-the-portal), z [PowerShell](#deploy-with-powershell) lub [interfejsu wiersza polecenia Azure](#deploy-with-azure-cli).
+Ten szablon można wdrożyć przy użyciu [witryny Azure Portal](#deploy-with-the-portal) lub [programu PowerShell](#deploy-with-powershell) albo [interfejsu wiersza polecenia platformy Azure](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Wdrażanie przy użyciu portalu
 
@@ -48,9 +48,9 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Wyczyść wdrożenia programu PowerShell
+### <a name="clean-up-powershell-deployment"></a>Czyszczenie po wdrożeniu przy użyciu PowerShell
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -66,9 +66,9 @@ az policy definition create --name 'enforce-resourceGroup-tags' --display-name '
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-resourceGroup-tags"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Wyczyść wdrożenia wiersza polecenia platformy Azure
+### <a name="clean-up-azure-cli-deployment"></a>Czyszczenie wdrożenia przeprowadzonego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Uruchom następujące polecenie, aby usunąć grupę zasobów, maszyny Wirtualnej i wszystkie powiązane zasoby.
+Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dodatkowe przykłady szablonu zasad Azure są [szablony zasad Azure](../json-samples.md).
+- Dodatkowe przykłady szablonów usługi Azure Policy można znaleźć na stronie [Templates for Azure Policy (Szablony dla usługi Azure Policy)](../json-samples.md).
