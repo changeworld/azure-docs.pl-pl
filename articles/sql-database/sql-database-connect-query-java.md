@@ -15,6 +15,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363676"
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Korzystanie z języka Java do wykonywania zapytań w bazie danych Azure SQL
 
