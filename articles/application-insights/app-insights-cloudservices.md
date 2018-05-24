@@ -1,8 +1,8 @@
 ---
-title: "Usługa Application Insights dla usług Azure Cloud Services | Microsoft Docs"
-description: "Skutecznie monitoruj role sieci Web i procesu roboczego za pomocą usługi Application Insights"
+title: Usługa Application Insights dla usług Azure Cloud Services | Microsoft Docs
+description: Skutecznie monitoruj role sieci Web i procesu roboczego za pomocą usługi Application Insights
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 keywords: WAD2AI, diagnostyka platformy Azure
 author: mrbullwinkle
 manager: carmonm
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Usługa Application Insights dla usług Azure Cloud Services
 [Aplikacje usługi Microsoft Azure Cloud](https://azure.microsoft.com/services/cloud-services/) mogą być monitorowane przez usługę [Application Insights][start] w celu sprawdzania ich dostępności, wydajności, błędów i użycia. W tym celu dane z zestawów SDK usługi Application Insights są łączone z danymi z usługi [Azure Diagnotics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) pochodzącymi z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -223,7 +223,7 @@ Aby uzyskać ogólny obraz systemu, można przenieść kluczowe wykresy monitoro
 
 Jeśli system używa innych usług platformy Azure, takich jak Stream Analytics, należy również uwzględnić wykresy ich monitorowania. 
 
-Jeśli masz klienta aplikacji mobilnej, wstaw kod do wysyłania niestandardowych zdarzeń dla kluczowych operacji użytkownika i utwórz [mostek platformy HockeyApp](app-insights-hockeyapp-bridge-app.md). Utwórz zapytania w pozycji [Analiza](app-insights-analytics.md), aby wyświetlić liczby zdarzeń i przypiąć je do pulpitu nawigacyjnego.
+Jeśli masz klienta aplikacji mobilnej, użyj pakietu [App Center](app-insights-mobile-center-quickstart.md). Utwórz zapytania w pozycji [Analiza](app-insights-analytics.md), aby wyświetlić liczby zdarzeń i przypiąć je do pulpitu nawigacyjnego.
 
 ## <a name="example"></a>Przykład
 [Przykład](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) monitoruje usługę mającą rolę sieci Web i dwie role procesów roboczych.

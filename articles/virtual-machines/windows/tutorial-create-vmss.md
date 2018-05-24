@@ -1,32 +1,32 @@
 ---
-title: Utwórz zestawy skalowania maszyny wirtualnej dla systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Tworzenie i wdrażanie aplikacji wysokiej dostępności na maszynach wirtualnych z systemem Windows przy użyciu zestawu skali maszyny wirtualnej
+title: Samouczek — tworzenie zestawów skalowania maszyn wirtualnych dla systemu Windows na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą programu Azure PowerShell utworzyć i wdrożyć aplikację o wysokiej dostępności na maszynach wirtualnych z systemem Windows przy użyciu zestawu skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: ''
-tags: ''
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: ''
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dd573a90e49197d59e6228359f57fcd4cc3f69e2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 49754fd4409b1fbc6b15577d37e216290582ef2b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>Tworzenie zestawu skalowania maszyny wirtualnej i wdrażanie wysokiej dostępności aplikacji w systemie Windows
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Windows za pomocą programu Azure PowerShell
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania można skalować ręcznie lub można zdefiniować reguły skalowania automatycznego na podstawie użycia zasobów, takich jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. W tym samouczku wdrażany jest zestaw skalowania maszyn wirtualnych na platformie Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Umożliwia zdefiniowanie witryny usług IIS można skalować niestandardowe rozszerzenie skryptu
+> * Definiowanie witryny usług IIS do skalowania za pomocą rozszerzenia niestandardowego skryptu
 > * Tworzenie modułu równoważenia obciążenia dla zestawu skalowania
 > * Tworzenie zestawu skalowania maszyn wirtualnych
 > * Zwiększanie lub zmniejszanie liczby wystąpień w zestawie skalowania
@@ -34,13 +34,13 @@ Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych,
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli wybierzesz do zainstalowania i używania programu PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.6 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 
 ## <a name="scale-set-overview"></a>Omówienie zestawów skalowania
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania są dystrybuowane w ramach domen aktualizacji i usterek logiki w co najmniej jednej *grupie umieszczania*. Są to grupy podobnie skonfigurowanych maszyn wirtualnych — podobne do [zestawów dostępności](tutorial-availability-sets.md).
 
-Maszyny wirtualne są tworzone zgodnie z potrzebami w zestawie skalowania. W celu kontrolowania tego, jak i kiedy maszyny wirtualne są dodawane lub usuwane z zestawu skalowania, definiuje się reguły skalowania automatycznego. Te reguły może wyzwolić na podstawie metryk, takich jak obciążenie procesora CPU, pamięć lub ruchu sieciowego.
+Maszyny wirtualne są tworzone zgodnie z potrzebami w zestawie skalowania. W celu kontrolowania tego, jak i kiedy maszyny wirtualne są dodawane lub usuwane z zestawu skalowania, definiuje się reguły skalowania automatycznego. Reguły te mogą być wyzwalane na podstawie metryk takich jak obciążenie procesora CPU, użycie pamięci lub ruch sieciowy.
 
 Zestawy skalowania obsługują maksymalnie 1000 maszyn wirtualnych, gdy jest używany obraz platformy Azure. W przypadku obciążeń ze znaczącymi wymaganiami dotyczącymi dostosowywania instalacji lub maszyn wirtualnych warto rozważyć [utworzenie niestandardowego obrazu maszyny wirtualnej](tutorial-custom-images.md). Przy użyciu obrazu niestandardowego można utworzyć maksymalnie 300 maszyn wirtualnych w zestawie skalowania.
 
@@ -97,7 +97,7 @@ Update-AzureRmVmss `
 
 
 ## <a name="test-your-scale-set"></a>Testowanie zestawu skalowania
-Aby wyświetlić na skalę w akcji, Uzyskaj publicznego adresu IP z usługi równoważenia obciążenia z [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Poniższy przykład uzyskuje adres IP dla *myPublicIP* utworzona w ramach zestawu skali:
+Aby zobaczyć, jak działa zestaw skalowania, uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). W poniższym przykładzie pokazano uzyskiwanie adresu IP dla modułu *myPublicIP* utworzonego w ramach zestawu skalowania:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress `
@@ -105,7 +105,7 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIPAddress" | select IpAddress
 ```
 
-Wprowadź publiczny adres IP w przeglądarce internetowej. Wyświetlana jest aplikacja sieci web, w tym nazwa hosta maszyny wirtualnej, ruch do dystrybucji modułu równoważenia obciążenia:
+Wprowadź publiczny adres IP w przeglądarce internetowej. Zostanie wyświetlona aplikacja internetowa wraz z nazwą hosta maszyny wirtualnej, do której moduł równoważenia obciążenia kieruje ruch:
 
 ![Uruchamianie witryny usług IIS](./media/tutorial-create-vmss/running-iis-site.png)
 
@@ -113,7 +113,7 @@ Aby zobaczyć zestaw skalowania w działaniu, możesz wymusić odświeżenie prz
 
 
 ## <a name="management-tasks"></a>Zadania zarządzania
-W całym cyklu życia zestawu skalowania konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Program Azure PowerShell umożliwia szybkie do wykonywania tych zadań. Poniżej przedstawiono kilka typowych zadań.
+W całym cyklu życia zestawu skalowania konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Program Azure PowerShell umożliwia szybkie wykonywanie tych zadań. Poniżej przedstawiono kilka typowych zadań.
 
 ### <a name="view-vms-in-a-scale-set"></a>Wyświetlanie maszyn wirtualnych w zestawie skalowania
 Aby wyświetlić listę wystąpień maszyn wirtualnych w zestawie skalowania, użyj polecenia [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) w następujący sposób:
@@ -139,7 +139,7 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>Zwiększanie lub zmniejszanie liczby wystąpień maszyn wirtualnych
-Aby wyświetlić liczbę wystąpień aktualnie zainstalowana w zestawie skalowania, użyj [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) i wykonywać zapytania na *sku.capacity*:
+Aby wyświetlić bieżącą liczbę wystąpień w zestawie skalowania, użyj polecenia [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) i wykonaj zapytanie o wartość *sku.capacity*:
 
 ```azurepowershell-interactive
 Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -147,7 +147,7 @@ Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
     Select -ExpandProperty Sku
 ```
 
-Możesz ręcznie zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w skali ustawiony za pomocą [AzureRmVmss aktualizacji](/powershell/module/azurerm.compute/update-azurermvmss). W poniższym przykładzie liczba maszyn wirtualnych w zestawie skalowania jest ustawiana na *3*:
+Następnie możesz ręcznie zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w zestawie skalowania za pomocą polecenia [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). W poniższym przykładzie liczba maszyn wirtualnych w zestawie skalowania jest ustawiana na *3*:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -162,11 +162,11 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
 
-Jeśli ustawiona przyjmuje kilka minut, aby zaktualizować określoną liczbę wystąpień w skali sieci.
+Zaktualizowanie określonej liczby wystąpień w zestawie skalowania potrwa kilka minut.
 
 
 ### <a name="configure-autoscale-rules"></a>Konfigurowanie skalowania automatycznego
-Zamiast ręcznie skalowanie liczby wystąpień w skali sieci, należy zdefiniować regułę automatycznego skalowania. Te reguły monitorują wystąpienia w zestawie skalowania i odpowiednio reagują na podstawie zdefiniowanych metryk i progów. W poniższym przykładzie skala liczby wystąpień jest zwiększana o jedno, gdy średnie obciążenie procesora przekracza 60% w okresie 5 minut. Jeśli w okresie 5-minutowy średnie obciążenie procesora CPU spadnie poniżej 30%, wystąpienia są skalowane w przez jedno wystąpienie:
+Zamiast ręcznie skalować liczbę wystąpień w zestawie skalowania zdefiniuj reguły automatycznego skalowania. Te reguły monitorują wystąpienia w zestawie skalowania i odpowiednio reagują na podstawie zdefiniowanych metryk i progów. W poniższym przykładzie skala liczby wystąpień jest zwiększana o jedno, gdy średnie obciążenie procesora przekracza 60% w okresie 5 minut. Jeśli w okresie 5 minut średnie obciążenie procesora CPU spadnie poniżej 30%, liczba wystąpień zostanie przeskalowana w pionie o jedno wystąpienie:
 
 ```azurepowershell-interactive
 # Define your scale set information
@@ -222,11 +222,11 @@ Add-AzureRmAutoscaleSetting `
 Aby uzyskać więcej informacji dotyczących projektowania na temat korzystania ze skalowania automatycznego, zobacz [najlepsze rozwiązania w zakresie skalowania automatycznego](/azure/architecture/best-practices/auto-scaling).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku tworzony jest zestaw skalowania maszyn wirtualnych. W tym samouczku omówiono:
 
 > [!div class="checklist"]
-> * Umożliwia zdefiniowanie witryny usług IIS można skalować niestandardowe rozszerzenie skryptu
+> * Definiowanie witryny usług IIS do skalowania za pomocą rozszerzenia niestandardowego skryptu
 > * Tworzenie modułu równoważenia obciążenia dla zestawu skalowania
 > * Tworzenie zestawu skalowania maszyn wirtualnych
 > * Zwiększanie lub zmniejszanie liczby wystąpień w zestawie skalowania

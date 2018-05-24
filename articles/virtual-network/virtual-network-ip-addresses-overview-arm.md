@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: d50333888592d2d3e13c40c07a7e58f8676df075
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -53,11 +53,15 @@ Publiczne adresy IP są tworzone przy użyciu adresu IPv4 lub IPv6. Publiczne ad
 
 Publiczne adresy IP są tworzone przy użyciu jednej z następujących jednostek SKU:
 
+>[!IMPORTANT]
+> Dla zasobów modułu równoważenia obciążenia i publicznego adresu IP należy użyć zgodnych jednostek SKU. Nie można mieć kombinacji podstawowych i standardowych zasobów SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.  W nowych projektach należy rozważyć użycie standardowych zasobów SKU.  Zapoznaj się z tematem [Usługa Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), aby uzyskać szczegółowe informacje.
+
 #### <a name="basic"></a>Podstawowa
 
 Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są publicznymi adresami IP opartymi na podstawowej jednostce SKU. Od momentu wprowadzenia jednostki SKU masz opcję określania, którą jednostką SKU ma być publiczny adres IP. Podstawowe adresy SKU:
 
 - Są przypisywane przy użyciu metody alokacji statycznej lub dynamicznej.
+- Są domyślnie otwarte.  Użycie sieciowych grup zabezpieczeń do ograniczania ruchu przychodzącego lub wychodzącego jest zalecane, ale opcjonalne.
 - Są przypisywane do zasobów platformy Azure, do których można przypisać publiczny adres IP, takich jak interfejsy sieciowe, bramy VPN Gateway, bramy Application Gateway i moduły równoważenia obciążenia dostępne z Internetu.
 - Mogą być przypisywane do określonej strefy.
 - Nie są strefowo nadmiarowe. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -67,17 +71,18 @@ Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są pu
 Standardowe publiczne adresy IP jednostek SKU:
 
 - Są przypisywane tylko przy użyciu metody alokacji statycznej.
-- Są przypisywane do interfejsów sieciowych lub standardowych modułów równoważenia obciążenia dostępnych z Internetu. Aby uzyskać więcej informacji na temat jednostek SKU usługi Azure Load Balancer, zobacz [Azure load balancer standard SKU (Usługa Azure Load Balancer — standardowa jednostka SKU)](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Są domyślnie strefowo nadmiarowe. Mogą być tworzone strefowo i być gwarantowane w określonej strefie dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Domyślnie są zabezpieczone i zamknięte dla przychodzącego ruchu sieciowego. Dozwolony przychodzący ruch sieciowy należy jawnie umieścić na liście dozwolonych z użyciem [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups).
+- Są przypisywane do interfejsów sieciowych lub publicznych standardowych modułów równoważenia obciążenia. Aby uzyskać więcej informacji na temat standardowych modułów równoważenia obciążenia platformy Azure, zobacz [Azure standard load balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie standardowego modułu równoważenia obciążenia).
+- Są domyślnie strefowo nadmiarowe. Mogą być tworzone strefowo i być gwarantowane w określonej strefie dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Po przypisaniu standardowego publicznego adresu IP jednostki SKU do interfejsu sieciowego maszyny wirtualnej musisz jawnie zezwolić na ruch do miejsca przeznaczenia przy użyciu [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups). Próba komunikacji z zasobem będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia sieciowej grupy zabezpieczeń, a następnie jawnego zezwolenia na żądany ruch.
+> Próba komunikacji ze standardowym zasobem SKU będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups), a następnie jawnego zezwolenia na żądany ruch przychodzący.
 
 ### <a name="allocation-method"></a>Metoda alokacji
 
-Istnieją dwie metody, w których adres IP jest przydzielany do publicznego zasobu adresu IP — *dynamiczna* i *statyczna*. Domyślną metodą alokacji jest metoda *dynamiczna*, w której adres IP **nie** jest przydzielany w czasie jego tworzenia. Zamiast tego publiczny adres IP jest przydzielany, gdy uruchamiasz (lub tworzysz) skojarzony zasób (np. maszynę wirtualną lub moduł równoważenia obciążenia). Adres IP jest zwalniany, gdy zatrzymasz (lub usuniesz) zasób. Na przykład po zwolnieniu z zasobu A adres IP można przypisać do innego zasobu. Jeśli adres IP zostanie przypisany do innego zasobu po zatrzymaniu zasobu A, po ponownym uruchomieniu zasobu A zostanie przypisany inny adres IP.
+Zarówno podstawowe, jak i standardowe publiczne adresy IP jednostek SKU obsługują *statyczną* metodę alokacji.  Adres IP jest przypisywany do zasobu w czasie jego tworzenia, a zwalniany po usunięciu zasobu.
 
-Aby zapewnić, żeby adres IP skojarzonego zasobu pozostawał taki sam, należy ustawić metodę alokacji jawnie jako *statyczną*. Statyczny adres IP jest przypisywany natychmiast. Adres jest zwalniany tylko wtedy, gdy usuniesz zasób lub zmienisz jego metodę alokacji na *dynamiczną*.
+Podstawowe publiczne adresy IP jednostek SKU obsługują również *dynamiczną* metodę alokacji, która jest metodą domyślną, jeśli metoda alokacji nie zostanie określona.  Wybranie *dynamicznej* metody alokacji dla podstawowego zasobu publicznego adresu IP oznacza, że adres IP **nie** jest przydzielany w czasie tworzenia zasobu.  Publiczny adres IP jest przydzielany podczas kojarzenia publicznego adresu IP z maszyną wirtualną lub podczas umieszczania pierwszego wystąpienia maszyny wirtualnej w puli zaplecza podstawowego modułu równoważenia obciążenia.   Adres IP jest zwalniany, gdy zatrzymasz (lub usuniesz) zasób.  Na przykład po zwolnieniu z zasobu A adres IP można przypisać do innego zasobu. Jeśli adres IP zostanie przypisany do innego zasobu po zatrzymaniu zasobu A, po ponownym uruchomieniu zasobu A zostanie przypisany inny adres IP. Jeśli zmienisz metodę alokacji zasobu podstawowego publicznego adresu IP ze *statycznej* na *dynamiczną*, adres zostanie zwolniony. Aby zapewnić, żeby adres IP skojarzonego zasobu pozostawał taki sam, należy ustawić metodę alokacji jawnie jako *statyczną*. Statyczny adres IP jest przypisywany natychmiast.
 
 > [!NOTE]
 > Nawet gdy ustawisz metodę alokacji jako *statyczną*, nie możesz określić rzeczywistego adresu IP przypisanego do publicznego zasobu adresu IP. Platforma Azure przypisuje adres IP z puli adresów IP dostępnych w lokalizacji platformy Azure, w której zasób jest tworzony.
@@ -111,11 +116,11 @@ Publiczny adres IP utworzony przy użyciu dowolnej jednostki [SKU](#SKU) możesz
 
 ### <a name="vpn-gateways"></a>Bramy sieci VPN
 
-Usługa [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) służy do łączenia sieci wirtualnej platformy Azure z innymi sieciami wirtualnymi platformy Azure lub siecią lokalną. Publiczny adres IP jest przypisywany do bramy VPN Gateway w celu umożliwienia komunikacji z siecią zdalną. Do bramy sieci VPN możesz przypisać tylko *dynamiczny* publiczny adres IP.
+Usługa [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) służy do łączenia sieci wirtualnej platformy Azure z innymi sieciami wirtualnymi platformy Azure lub siecią lokalną. Publiczny adres IP jest przypisywany do bramy VPN Gateway w celu umożliwienia komunikacji z siecią zdalną. Do bramy sieci VPN możesz przypisać tylko *dynamiczny* podstawowy publiczny adres IP.
 
 ### <a name="application-gateways"></a>Bramy aplikacji
 
-Publiczny adres IP możesz skojarzyć z usługą [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure, przypisując go do konfiguracji **frontonu** bramy. Ten publiczny adres IP służy jako adres VIP o zrównoważonym obciążeniu. Do konfiguracji frontonu bramy aplikacji możesz przypisać tylko *dynamiczny* publiczny adres IP.
+Publiczny adres IP możesz skojarzyć z usługą [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) platformy Azure, przypisując go do konfiguracji **frontonu** bramy. Ten publiczny adres IP służy jako adres VIP o zrównoważonym obciążeniu. Do konfiguracji frontonu bramy aplikacji możesz przypisać tylko *dynamiczny* podstawowy publiczny adres IP.
 
 ### <a name="at-a-glance"></a>W skrócie
 W poniższej tabeli przedstawiono określone właściwości, za pomocą których publiczny adres IP można skojarzyć z zasobem najwyższego poziomu, oraz ewentualne metody alokacji (dynamicznej lub statycznej), których można użyć.

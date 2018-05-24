@@ -4,7 +4,7 @@ description: Konfigurowanie sieci VPN typu lokacja-lokacja.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,17 +13,17 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: anzaman
-ms.openlocfilehash: da506165dd7c2ca29f977af1452d11189d2fdd2f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 62381c08892017512dcf2bd5d9c7f8690bedfb6c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>Tworzenie usługi VPN Gateway i dodawanie połączenia lokacja-lokacja za pomocą programu PowerShell
 
-Ten skrypt tworzy usługę VPN Gateway opartą na trasach i dodaje konfigurację typu punkt-lokacja przy użyciu uwierzytelniania nazwy użytkownika/hasła usługi RADIUS
+Ten skrypt tworzy bramę sieci VPN opartą na trasie i dodaje konfigurację typu lokacja-lokacja. Aby utworzyć połączenie, należy również skonfigurować urządzenie sieci VPN. Aby uzyskać więcej informacji, zobacz [Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja](../vpn-gateway-about-vpn-devices.md).
 
 
 ```azurepowershell-interactive

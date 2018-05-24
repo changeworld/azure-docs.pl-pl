@@ -1,13 +1,13 @@
 ---
-title: Dostosowanie maszyn wirtualnych z systemem Linux podczas pierwszego rozruchu na platformie Azure | Microsoft Docs
-description: "Dowiedz się, jak używać pakietu cloud-init oraz usługi Key Vault w celu dostosowywania maszyn wirtualnych z systemem Linux podczas ich pierwszego rozruchu na platformie Azure"
+title: Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux za pomocą pakietu cloud-init na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą pakietu cloud-init oraz usługi Key Vault dostosować maszyny wirtualne z systemem Linux podczas ich pierwszego rozruchu na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 79d87b5d332597f2c0faf3c585eee49aba3e03bc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e3c1c0552b379ff99f27053d8f0ca8a76766a016
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Dostosowywanie maszyny wirtualnej z systemem Linux podczas pierwszego rozruchu
+# <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
+
 W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z maszyną wirtualną oraz ręcznego instalowania NGINX. Aby w szybki i spójny sposób utworzyć maszyny wirtualne, stosuje się na ogół jakąś formę automatyzacji. Typową metodą dostosowywania maszyny wirtualnej podczas pierwszego rozruchu jest użycie pakietu [cloud-init](https://cloudinit.readthedocs.io). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -32,12 +33,9 @@ W poprzednim samouczku przedstawiono sposób nawiązywania połączenia SSH z ma
 > * Używanie usługi Key Vault do bezpiecznego przechowywania certyfikatów
 > * Automatyzacja bezpiecznych wdrożeń NGINX przy użyciu pakietu cloud-init
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).  
-
-
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="cloud-init-overview"></a>Omówienie pakietu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) to powszechnie używana metoda dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego rozruchu. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest uruchamiany w trakcie początkowego rozruchu, więc do zastosowania konfiguracji nie są wymagane żadne dodatkowe kroki ani agenci.

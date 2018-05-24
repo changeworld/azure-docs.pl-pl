@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 172780512dd179d91300459987ad0ba683727859
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Ściągawka dotycząca usługi Azure SQL Data Warehouse
 Ta ściągawka zawiera przydatne porady i wskazówki dotyczące kompilowania rozwiązań usługi Azure SQL Data Warehouse. Przed rozpoczęciem pracy zapoznaj się ze szczegółowymi informacjami na temat poszczególnych kroków w artykule [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns (Wzorce i antywzorce obciążeń usługi Azure SQL Data Warehouse)](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns). Opisano w nim elementy wchodzące i niewchodzące w skład usługi SQL Data Warehouse.
@@ -34,16 +34,16 @@ Wcześniejsza znajomość typów operacji pomaga zoptymalizować projekt tabel.
 
 ## <a name="data-migration"></a>Migracja danych
 
-Najpierw załaduj dane do usługi [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) lub magazynu Azure Blob Storage. Następnie użyj programu PolyBase, aby załadować dane do magazynu SQL Data Warehouse w tabeli tymczasowej. Użyj następującej konfiguracji:
+Najpierw załaduj dane do usługi [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) lub magazynu Azure Blob Storage. Następnie użyj programu PolyBase, aby załadować dane do magazynu SQL Data Warehouse w tabeli tymczasowej. Użyj następującej konfiguracji:
 
 | Projekt | Zalecenie |
 |:--- |:--- |
 | Dystrybucja | Działanie okrężne |
 | Indeksowanie | Sterta |
-| Partycjonowanie | None |
+| Partycjonowanie | Brak |
 | Klasa zasobów | largerc lub xlargerc |
 
-Dowiedz się więcej o [migracji danych], [ładowaniu danych] i [proces wyodrębniania, przekształcania i ładowania (ELT)](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
+Dowiedz się więcej o [migracji danych], [ładowaniu danych] i [proces wyodrębniania, przekształcania i ładowania (ELT)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
 
 ## <a name="distributed-or-replicated-tables"></a>Tabele rozproszone lub replikowane
 
@@ -78,7 +78,7 @@ Indeksowanie ułatwia szybkie odczytywanie tabel. W zależności od potrzeb moż
 **Porady:**
 * Oprócz indeksu klastrowanego można do kolumny intensywnie używanej do filtrowania dodać indeks nieklastrowany. 
 * Zachowaj ostrożność przy zarządzaniu pamięcią tabeli przy użyciu indeksu CCI. Gdy ładujesz dane, chcesz, aby użytkownik (lub zapytanie) korzystał z zalet dużej klasy zasobów. Pamiętaj, aby unikać przycinania i tworzenia wielu małych skompresowanych grup wierszy.
-* Optymalizacja pod kątem obliczeń świetnie współdziała z indeksem CCI.
+* W przypadku drugiej generacji tabele indeksu CCI są buforowane lokalnie w węzłach obliczeniowych w celu zmaksymalizowania wydajności.
 * W przypadku interfejsu CCI przyczyną niskiej wydajności może być słaba kompresja grup wierszy. W takim przypadku ponownie skompiluj lub zorganizuj indeks CCI. Chcesz, aby każda skompresowana grupa wierszy zawierała co najmniej 100 000 wierszy. Idealna liczba to 1 mln wierszy w grupie.
 * Na podstawie rozmiaru i częstotliwości ładowania przyrostowego chcesz zautomatyzować reorganizację lub ponowną kompilację indeksów. Gruntowne porządki będą zawsze pomocne.
 * Jeśli chcesz przyciąć grupę wierszy, podejdź do tego strategicznie. Jak duże są otwarte grupy wierszy? Ile danych planujesz załadować w ciągu nadchodzących dni?
@@ -111,7 +111,7 @@ Usługa SQL Data Warehouse korzysta z grup zasobów w celu przydzielania pamięc
 
 Jeśli zauważysz, że wykonywanie zapytań trwa zbyt długo, sprawdź, czy użytkownicy nie stosują uruchamiania w dużych klasach zasobów. Duże klasy zasobów używają wielu miejsc współbieżności. Może to powodować powstanie kolejki innych zasobów.
 
-Na koniec dzięki użyciu warstwy Zoptymalizowana pod kątem obliczeń każda klasa zasobów otrzymuje 2,5 raza więcej pamięci niż w warstwie zoptymalizowanej w sposób elastyczny.
+Ponadto dzięki użyciu drugiej generacji usługi SQL Data Warehouse każda klasa zasobu otrzymuje 2,5 raza więcej pamięci niż w przypadku pierwszej generacji.
 
 Dowiedz się więcej, jak pracować z [klasami zasobów i współbieżnością].
 

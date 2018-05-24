@@ -1,5 +1,5 @@
 ---
-title: Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS | Microsoft Docs
+title: 'Samouczek: projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS | Microsoft Docs'
 description: Dowiedz się, jak zaprojektować pierwszą bazę danych Azure SQL Database za pomocą programu SQL Server Management Studio (SSMS).
 services: sql-database
 author: CarlRabeler
@@ -7,28 +7,30 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ba14208e971d712184052e7470757ce48ac26879
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="design-your-first-azure-sql-database-using-ssms"></a>Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Samouczek: projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS
 
 Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i programu [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) wykonać następujące czynności: 
 
 > [!div class="checklist"]
-> * Tworzenie bazy danych w witrynie Azure Portal
-> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Tworzenie bazy danych w witrynie Azure Portal*
+> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
 > * Nawiązywanie połączenia z bazą danych za pomocą programu SSMS
 > * Tworzenie tabel za pomocą programu SSMS
 > * Ładowanie zbiorcze danych za pomocą narzędzia BCP
 > * Tworzenie zapytań dotyczących tych danych za pomocą programu SSMS
-> * Przywracanie bazy danych do [wcześniejszego punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) za pomocą witryny Azure Portal
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+
+   >[!NOTE]
+   > Na potrzeby tego samouczka użyto [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale możesz też wybrać [model zakupu w oparciu o rdzenie wirtualne (w wersji zapoznawczej)](sql-database-service-tiers-vcore.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,13 +44,13 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 
-Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](sql-database-service-tiers.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym bazy danych Azure SQL Database](sql-database-features.md). 
+Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](sql-database-service-tiers-dtu.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym bazy danych Azure SQL Database](sql-database-features.md). 
 
 Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL. 
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 
-2. Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Nowy** w obszarze **SQL Database** wybierz pozycję **Utwórz**.
+2. Na stronie **Nowy** wybierz pozycję **Bazy danych** w sekcji Azure Marketplace, a następnie kliknij pozycję **Baza danych SQL** w sekcji **Polecane**.
 
    ![tworzenie pustej bazy danych](./media/sql-database-design-first-database/create-empty-database.png)
 
@@ -74,7 +76,7 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 
 5. Kliknij pozycję **Wybierz**.
 
-6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Przejrzyj opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usługi. 
+6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Przejrzyj opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usługi. Na potrzeby tego samouczka użyto [modelu zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale możesz też wybrać [model zakupu w oparciu o rdzenie wirtualne (w wersji zapoznawczej)](sql-database-service-tiers-vcore.md). 
 
 7. Na potrzeby tego samouczka wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **100 jednostek DTU (S3)** i **400** GB miejsca do magazynowania.
 
@@ -83,10 +85,9 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 8. Zaakceptuj warunki wersji zapoznawczej, aby użyć opcji **dodatkowego magazynu**. 
 
    > [!IMPORTANT]
-   > \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
-   >
-   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Środkowe stany USA, Francja Środkowa, Niemcy Środkowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Wschodnie stany USA 2, Zachodnie stany USA, Administracja USA — Wirginia i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   > 
+   > -  Rozmiary magazynu większe niż uwzględniona ilość miejsca do magazynowania są dostępne w wersji zapoznawczej i za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >-  W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Środkowe stany USA, Francja Środkowa, Niemcy Środkowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Wschodnie stany USA 2, Zachodnie stany USA, US Gov Wirginia i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
 
 9. Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania kliknij przycisk **Zastosuj**.  
 
@@ -108,7 +109,7 @@ Usługa SQL Database tworzy zaporę na poziomie serwera, która uniemożliwia ze
 
 1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych **mySampleDatabase** na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver-20170824.database.windows.net**) i opcje dalszej konfiguracji. 
 
-2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i jego bazami danych w kolejnych przewodnikach Szybki start. 
+2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i jego bazami danych w kolejnych samouczkach i przewodnikach Szybki start. 
 
    ![nazwa serwera](./media/sql-database-get-started-portal/server-name.png) 
 
@@ -147,7 +148,7 @@ Nawiąż połączenie z serwerem Azure SQL Database za pomocą programu [SQL Ser
 
    | Ustawienie       | Sugerowana wartość | Opis | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana. |
+   | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa może mieć taką formę: **mynewserver20170824.database.windows.net**. |
    | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
    | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
@@ -297,26 +298,6 @@ Wykonaj następujące zapytania, aby pobrać informacje z tabel bazy danych. Zob
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>Przywracanie bazy danych do określonego punktu w czasie
-
-Załóżmy, że tabela została przypadkowo usunięta. W takiej sytuacji niełatwo jest odzyskać dane. Usługa Azure SQL Database umożliwia powrót do dowolnego punktu w czasie w ciągu maksymalnie 35 ostatnich dni i przywrócenie tego punktu w czasie do nowej bazy danych. Korzystając z tej bazy danych, można odzyskać usunięte dane. Poniższa procedura opisuje przywrócenie przykładowej bazy danych do punktu przed dodaniem tabel.
-
-1. Na stronie Twojej bazy danych w usłudze SQL Database kliknij pozycję **Przywróć** na pasku narzędzi. Zostanie otwarta strona **Przywracanie**.
-
-   ![Przywracanie](./media/sql-database-design-first-database/restore.png)
-
-2. Wypełnij formularz **Przywracanie** wymaganymi informacjami:
-    * Nazwa bazy danych: podaj nazwę bazy danych 
-    * Punkt w czasie: wybierz kartę **Punkt w czasie** na formularzu Przywracanie 
-    * Punkt przywracania: wybierz godzinę przed zmianą bazy danych
-    * Serwer docelowy: nie można zmienić tej wartości podczas przywracania bazy danych 
-    * Elastyczna pula baz danych: wybierz pozycję **Brak**  
-    * Warstwa cenowa: wybierz pozycję **20 DTU** i **40 GB** pamięci masowej.
-
-   ![Punkt przywracania](./media/sql-database-design-first-database/restore-point.png)
-
-3. Kliknij przycisk **OK**, aby przywrócić bazę danych do [punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) przed dodaniem tabel. Przywrócenie bazy danych do innego punktu w czasie spowoduje utworzenie duplikatu bazy danych na tym samym serwerze, co oryginalna baza danych, w określonym przez Ciebie punkcie w czasie, o ile zawiera się on w okresie przechowywania dla Twojej [warstwy usług](sql-database-service-tiers.md).
-
 ## <a name="next-steps"></a>Następne kroki 
 W tym samouczku przedstawiono podstawowe zadania dotyczące bazy danych, takie jak tworzenie bazy danych i tabel, ładowanie danych i tworzenie zapytań oraz przywracanie bazy danych do wcześniejszego punktu w czasie. W tym samouczku omówiono:
 > [!div class="checklist"]
@@ -326,7 +307,6 @@ W tym samouczku przedstawiono podstawowe zadania dotyczące bazy danych, takie j
 > * Tworzenie tabel
 > * Zbiorcze ładowanie danych
 > * Tworzenie zapytań dotyczących danych
-> * Przywracanie bazy danych do wcześniejszego punktu w czasie przy użyciu funkcji [przywracanie do punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) usługi SQL Database
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak projektować bazy danych przy użyciu programu Visual Studio i języka C#.
 

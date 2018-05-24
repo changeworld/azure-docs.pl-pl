@@ -1,6 +1,6 @@
 ---
-title: "Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows"
-description: "Analizowanie użycia i wydajności klasycznej aplikacji systemu Windows za pomocą usług HockeyApp i Application Insights."
+title: Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
+description: Analizowanie użycia i wydajności klasycznej aplikacji systemu Windows za pomocą usługi Application Insights.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -11,25 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/26/2016
+ms.date: 04/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b91996c12a27847befcacf6daf14457a0e066aa
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5b325fd4326f2594a7386c65dea17a3da19abde8
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 
-
-Usługi [Azure Application Insights](app-insights-overview.md) i [HockeyApp](https://hockeyapp.net) umożliwiają monitorowanie wdrożonej aplikacji pod kątem użycia i wydajności.
-
-> [!IMPORTANT]
-> Zalecamy użycie usługi [HockeyApp](https://hockeyapp.net) do dystrybucji i monitorowania aplikacji klasycznych i urządzenia. Za pomocą usługi HockeyApp można zarządzać dystrybucją, testowaniem na żywo i opiniami użytkowników oraz monitorować raporty użycia i awarii. Możesz również [eksportować telemetrię i tworzyć zapytania do niej za pomocą funkcji analizy](app-insights-hockeyapp-bridge-app.md).
-> 
-> Chociaż telemetria może być wysyłana do usługi Application Insights z klasycznej aplikacji, jest to głównie przydatne podczas debugowania i do celów doświadczalnych.
-> 
-> 
+Chociaż telemetria może być wysyłana do usługi Application Insights z klasycznej aplikacji, jest to głównie przydatne podczas debugowania i do celów doświadczalnych.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-windows-application"></a>Aby wysłać dane telemetryczne do usługi Application Insights z aplikacji systemu Windows
 1. W witrynie [Azure Portal](https://portal.azure.com) [utwórz zasób usługi Application Insights](app-insights-create-new-resource.md). Jako typ aplikacji wybierz ASP.NET.

@@ -1,13 +1,13 @@
 ---
-title: "Tworzenie zestawów skalowania maszyn wirtualnych dla systemu Linux na platformie Azure | Microsoft Docs"
-description: "Tworzenie i wdrażanie aplikacji o wysokiej dostępności na maszynach wirtualnych z systemem Linux przy użyciu zestawu skalowania maszyn wirtualnych"
+title: Samouczek — tworzenie zestawu skalowania maszyn wirtualnych dla systemu Linux na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 utworzyć i wdrożyć aplikację o wysokiej dostępności na maszynach wirtualnych z systemem Linux przy użyciu zestawu skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: azure-resource-manager
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -15,13 +15,15 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 263983017e08dcc9a8e614c159ef5afaaf1d924e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.custom: mvc
+ms.openlocfilehash: 741cabd37a5a508257f0307dfec25b5bb2d25153
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Linux
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli-20"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Windows za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania można skalować ręcznie lub można zdefiniować reguły skalowania automatycznego na podstawie użycia zasobów, takich jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. W tym samouczku wdrażany jest zestaw skalowania maszyn wirtualnych na platformie Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
@@ -32,10 +34,9 @@ Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych,
 > * Wyświetlanie informacji o połączeniach dla wystąpień zestawu skalowania
 > * Korzystanie z dysków danych w zestawie skalowania
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.22 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="scale-set-overview"></a>Omówienie zestawów skalowania
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania są dystrybuowane w ramach domen aktualizacji i usterek logiki w co najmniej jednej *grupie umieszczania*. Są to grupy podobnie skonfigurowanych maszyn wirtualnych — podobne do [zestawów dostępności](tutorial-availability-sets.md).

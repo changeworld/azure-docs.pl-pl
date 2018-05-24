@@ -1,6 +1,6 @@
 ---
-title: Jak równoważyć obciążenie maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak utworzyć bezpieczną aplikację o wysokiej dostępności przy użyciu trzech maszyn wirtualnych z systemem Windows i modułu równoważenia obciążenia platformy Azure
+title: Samouczek — równoważenie obciążenia maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą programu Azure PowerShell utworzyć moduł równoważenia obciążenia dla bezpiecznej aplikacji o wysokiej dostępności na 3 maszynach wirtualnych z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0ac48844932c77ea4d597da6cb18a820a34e0f39
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35de71f3cc7d865cf2235a21bebf1cfcd7f1850d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Jak równoważyć obciążenie maszyn wirtualnych z systemem Windows na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności
+# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych z systemem Windows na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności za pomocą programu Azure PowerShell
 Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żądań przychodzących pomiędzy wiele maszyn wirtualnych. W tym samouczku poznasz poszczególne składniki modułu równoważenia obciążenia platformy Azure, które dystrybuują ruch i zapewniają wysoką dostępność. Omawiane kwestie:
 
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żąda�
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli chcesz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 5.3 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 
 ## <a name="azure-load-balancer-overview"></a>Omówienie modułu równoważenia obciążenia platformy Azure

@@ -3,7 +3,7 @@ title: Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center | M
 description: Poznaj sposób integracji usługi Azure Security Center z partnerami w celu poprawy ogólnego stanu zabezpieczeń zasobów platformy Azure.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2018
-ms.author: yurid
-ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 05/04/2018
+ms.author: terrylan
+ms.openlocfilehash: ac1e49400f32194ada319f23b5233cc81de02a02
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -32,7 +32,7 @@ Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpie
 
 Obecnie zintegrowane rozwiązania zabezpieczeń obejmują:
 
-- Ochrona punktów końcowych ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec, Windows Defender i System Center Endpoint Protection — SCEP)
+- Ochrona punktów końcowych ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec, McAfee, Windows Defender i System Center Endpoint Protection — SCEP)
 - Zapora aplikacji sieci Web ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets) i [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
 - Zapora nowej generacji ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2) i [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html))
 - Ocena luk w zabezpieczeniach ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
@@ -44,8 +44,8 @@ Obsługa integracji ochrony punktów końcowych może się różnić w zależno�
 | Windows Defender (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem)                  | Windows Server 2016                   | Nie, wbudowana w system operacyjny           | Yes                       |
 | System Center Endpoint Protection (oprogramowanie firmy Microsoft chroniące przed złośliwym kodem) | Windows Server 2012 R2, 2012, 2008 R2 | Za pomocą rozszerzenia                | Yes                       |
 | Trend Micro — wszystkie wersje         | Rodzina systemów Windows Server                 | Za pomocą rozszerzenia                | Yes                       |
-| Symantec — w wersji co najmniej 12.1.1100                     | Rodzina systemów Windows Server                 | Nie                           | Yes                        |
-| MacAfee                           | Rodzina systemów Windows Server                 | Nie                           | Nie                        |
+| Symantec — w wersji co najmniej 12.1.1100              | Rodzina systemów Windows Server                 | Nie                           | Yes                       |
+| McAfee — w wersji co najmniej 10                       | Rodzina systemów Windows Server                 | Nie                           | Yes                       |
 | Kaspersky                         | Rodzina systemów Windows Server                 | Nie                           | Nie                        |
 | Sophos                            | Rodzina systemów Windows Server                 | Nie                           | Nie                        |
 
@@ -86,7 +86,7 @@ Aby dowiedzieć się więcej, zobacz [Managing connected partner solutions (Zarz
 Usługa Security Center automatycznie odnajduje rozwiązania w zakresie zabezpieczeń działające na platformie Azure, ale niepołączone z usługą Security Center, i wyświetla rozwiązania w sekcji **Rozwiązania odnalezione**. Obejmuje to rozwiązania platformy Azure, takie jak [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), jak również rozwiązania partnerskie.
 
 > [!NOTE]
-> Funkcja rozwiązań odnalezionych jest dostępna w warstwie Standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+> Funkcja odnalezionych rozwiązań wymaga usługi Security Center w warstwie Standardowa na poziomie subskrypcji. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych zabezpieczeń.
 >
 >
 

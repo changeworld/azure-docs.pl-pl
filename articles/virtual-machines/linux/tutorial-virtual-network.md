@@ -1,6 +1,6 @@
 ---
-title: Sieci wirtualne platformy Azure i maszyny wirtualne z systemem Linux | Microsoft Docs
-description: Samouczek — Zarządzanie sieciami wirtualnymi platformy Azure i maszynami wirtualnymi z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
+title: Samouczek — tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi na maszynach wirtualnych z systemem Linux | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak tworzyć sieci wirtualne platformy Azure i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure 2.0 na maszynach wirtualnych z systemem Linux
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4fc6779472a0c680c53d7f25e6fe412ab386fc32
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 306d33dd5b5910e990caf80dae4c37fee020f7a1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Zarządzanie sieciami wirtualnymi platformy Azure i maszynami wirtualnymi z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli-20"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure 2.0 na maszynach wirtualnych z systemem Linux
 
 Maszyny wirtualne platformy Azure korzystają z sieci platformy Azure do wewnętrznej i zewnętrznej komunikacji sieciowej. Ten samouczek przedstawia proces wdrażania dwóch maszyn wirtualnych i konfigurowania dla nich sieci platformy Azure. W przykładach w tym samouczku założono, że maszyny wirtualne hostują aplikację internetową z zapleczem bazy danych, jednak wdrożenie aplikacji nie jest omówione w samouczku. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,7 +33,15 @@ Maszyny wirtualne platformy Azure korzystają z sieci platformy Azure do wewnęt
 > * Zabezpieczanie ruchu sieciowego
 > * Tworzenie maszyny wirtualnej zaplecza
 
-Podczas pracy z tym samouczkiem zostaną utworzone następujące zasoby:
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+
+## <a name="vm-networking-overview"></a>Omówienie sieci maszyn wirtualnych
+
+Sieci wirtualne platformy Azure umożliwiają nawiązywanie bezpiecznych połączeń sieciowych pomiędzy maszynami wirtualnymi, Internetem i innymi usługami platformy Azure, na przykład Azure SQL Database. Sieci wirtualne są podzielone na logiczne segmenty nazywane podsieciami. Podsieci są używane do sterowania przepływem sieciowym oraz pełnią funkcję granicy zabezpieczeń. Wdrażana maszyna wirtualna zwykle zawiera wirtualny interfejs sieciowy dołączony do podsieci.
+
+Po ukończeniu samouczka zostaną utworzone następujące zasoby sieci wirtualnej:
 
 ![Sieć wirtualna z dwiema podsieciami](./media/tutorial-virtual-network/networktutorial.png)
 
@@ -46,15 +54,6 @@ Podczas pracy z tym samouczkiem zostaną utworzone następujące zasoby:
 - *myBackendSubnet* — podsieć skojarzona z grupą *myBackendNSG* i używana przez zasoby zaplecza.
 - *myBackendNic* — interfejs sieciowy używany przez maszynę wirtualną *myBackendVM* do komunikacji z maszyną *myFrontendVM*.
 - *myBackendVM* — maszyna wirtualna, która korzysta z portów 22 i 3306 do komunikacji z maszyną*myFrontendVM*.
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
-
-## <a name="vm-networking-overview"></a>Omówienie sieci maszyn wirtualnych
-
-Sieci wirtualne platformy Azure umożliwiają nawiązywanie bezpiecznych połączeń sieciowych pomiędzy maszynami wirtualnymi, Internetem i innymi usługami platformy Azure, na przykład Azure SQL Database. Sieci wirtualne są podzielone na logiczne segmenty nazywane podsieciami. Podsieci są używane do sterowania przepływem sieciowym oraz pełnią funkcję granicy zabezpieczeń. Wdrażana maszyna wirtualna zwykle zawiera wirtualny interfejs sieciowy dołączony do podsieci.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 

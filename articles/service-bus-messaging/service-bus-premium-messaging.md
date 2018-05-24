@@ -1,30 +1,30 @@
 ---
-title: "Omówienie warstw cenowych Premium i Standardowa komunikatów usługi Azure Service Bus | Microsoft Docs"
-description: "Warstwy Premium i Standardowa komunikatów usługi Service Bus"
+title: Omówienie warstw cenowych Premium i Standardowa komunikatów usługi Azure Service Bus | Microsoft Docs
+description: Warstwy Premium i Standardowa komunikatów usługi Service Bus
 services: service-bus-messaging
 documentationcenter: .net
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/10/2017
+ms.date: 04/30/2018
 ms.author: sethm
-ms.openlocfilehash: 613bb074063e436cdbd54fe5aee9c49109a2d8f2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1b2c9b3a0b7565e7de40d4dc0e623a62313b79db
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Warstwy Premium i Standardowa komunikatów usługi Service Bus
 
 Komunikaty usługi Service Bus, w tym jednostki, takie jak kolejki i tematy, stanowią połączenie możliwości obsługi komunikatów dla przedsiębiorstw oraz zaawansowanej semantyki publikowania/subskrybowania w skali chmury. Obsługa komunikatów usługi Service Bus pełni rolę szkieletu komunikacyjnego dla wielu zaawansowanych rozwiązań w chmurze.
 
-Warstwa *Premium* komunikatów usługi Service Bus stanowi odpowiedź na częste żądania klientów dotyczące skali, wydajności i dostępności dla aplikacji o krytycznym znaczeniu. Mimo że zestawy funkcji są niemal identyczne, te dwie warstwy komunikatów usługi Service Bus są przeznaczone do różnych zastosowań.
+Warstwa *Premium* komunikatów usługi Service Bus stanowi odpowiedź na częste żądania klientów dotyczące skali, wydajności i dostępności dla aplikacji o krytycznym znaczeniu. Warstwa Premium jest zalecana do użytku w scenariuszach produkcyjnych. Mimo że zestawy funkcji są niemal identyczne, te dwie warstwy komunikatów usługi Service Bus są przeznaczone do różnych zastosowań.
 
 W poniższej tabeli wyróżniono pewne ogólne różnice.
 
@@ -46,11 +46,7 @@ W poniższych sekcjach omówiono niektóre różnice między komunikatami w wars
 
 ### <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
 
-Partycjonowane kolejki i tematy są obsługiwane przez komunikaty w warstwie Premium; w rzeczywistości te jednostki są zawsze partycjonowane (i nie można ich wyłączyć). Jednak partycjonowane kolejki i tematy w warstwie Premium nie działają tak samo jak w przypadku komunikatów usługi Service Bus w warstwie Standardowa. Komunikaty w warstwie Premium nie używają bazy danych SQL jako magazynu danych i nie występuje już potencjalne konkurowanie o zasoby typowe dla platformy współdzielonej. W związku z tym partycjonowanie nie jest konieczne, aby zwiększyć wydajność. Ponadto liczba partycji została zmieniona z szesnastu partycji w przypadku komunikatów w warstwie Standardowa do dwóch partycji w warstwie Premium. Istnienie dwóch partycji gwarantuje dostępność i jest to bardziej odpowiednia liczba dla środowiska uruchomieniowego w warstwie Premium. 
-
-W przypadku obsługi komunikatów Premium określenie rozmiaru jednostki przy użyciu atrybutu [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) spowoduje równomierne rozdzielenie rozmiaru na dwie partycje, w przeciwieństwie do [standardowych partycjonowanych jednostek](service-bus-partitioning.md#standard), w przypadku których łączny rozmiar jest 16 razy większy od określonego. 
-
-Aby uzyskać więcej informacji na temat partycjonowania, zobacz [Partitioned queues and topics](service-bus-partitioning.md) (Partycjonowane kolejki i tematy).
+Partycjonowane kolejki i tematy nie są obsługiwane w przypadku komunikatów w warstwie Premium. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [Partitioned queues and topics](service-bus-partitioning.md) (Partycjonowane kolejki i tematy).
 
 ### <a name="express-entities"></a>Jednostki ekspresowe
 
@@ -64,7 +60,7 @@ Rozpoczęcie pracy z obsługą komunikatów Premium jest proste, a proces jest p
 
 ![create-premium-namespace][create-premium-namespace]
 
-Możesz również tworzyć [przestrzenie nazw Premium za pomocą szablonów usługi Azure Resource Manager](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/).
+Możesz również tworzyć [przestrzenie nazw Premium za pomocą szablonów usługi Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/).
 
 ## <a name="next-steps"></a>Następne kroki
 

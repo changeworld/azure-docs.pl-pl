@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i aktualizowanie maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak monitorować diagnostykę rozruchu i metryki wydajności, a także jak zarządzać aktualizacjami pakietów na maszynie wirtualnej z systemem Linux na platformie Azure
+title: Samouczek — monitorowanie i aktualizowanie maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: W tym samouczku dowiesz się, jak monitorować diagnostykę rozruchu i metryki wydajności, a także jak zarządzać aktualizacjami pakietów na maszynie wirtualnej z systemem Linux
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d5fb239ffd6a957cbb088bf4843819e2c886cee8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0dc403d92855902daef09c91a5dd022beb23fd71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Jak monitorować i aktualizować maszynę wirtualną z systemem Linux na platformie Azure
+# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Samouczek: monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 
 Aby upewnić się, że maszyny wirtualne na platformie Azure działają prawidłowo, możesz sprawdzić diagnostykę rozruchu i metryki wydajności oraz zarządzać aktualizacjami pakietów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -39,7 +39,7 @@ Aby upewnić się, że maszyny wirtualne na platformie Azure działają prawidł
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-vm"></a>Tworzenie maszyny wirtualnej
 

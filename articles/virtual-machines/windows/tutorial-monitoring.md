@@ -1,6 +1,6 @@
 ---
-title: Azure monitorowanie i aktualizowanie maszyn wirtualnych systemu Windows i | Dokumentacja firmy Microsoft
-description: Samouczek — monitorowania i aktualizowania maszyny wirtualnej systemu Windows przy użyciu programu Azure PowerShell
+title: Samouczek — monitorowanie i aktualizowanie maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+description: W tym samouczku dowiesz się, jak monitorować diagnostykę rozruchu i metryki wydajności, a także jak zarządzać aktualizacjami pakietów na maszynie wirtualnej z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -10,65 +10,83 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: 9181d79e6eb0443a4607824cfde95068b509a917
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorowanie i aktualizowanie maszyny wirtualnej systemu Windows przy użyciu programu Azure PowerShell
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Samouczek: monitorowanie i aktualizowanie maszyny wirtualnej z systemem Windows na platformie Azure
 
-Azure monitorowanie używa agentów do zbierania danych rozruchu i wydajności z maszyn wirtualnych platformy Azure, przechowywania tych danych w magazynie Azure i stał się dostępny za pośrednictwem portalu, moduł Azure PowerShell i interfejsu wiersza polecenia Azure. Zarządzanie aktualizacjami umożliwia zarządzanie aktualizacje i poprawki dla maszyn wirtualnych systemu Windows Azure.
+Monitorowanie na platformie Azure używa agentów do zbierania danych rozruchu i wydajności z maszyn wirtualnych platformy Azure, przechowywania tych danych w magazynie platformy Azure i udostępniania ich za pośrednictwem portalu, modułu Azure PowerShell i interfejsu wiersza polecenia platformy Azure. Rozwiązanie Update Management pozwala zarządzać aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure z systemem Windows.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Włącz diagnostykę rozruchu na maszynie Wirtualnej
+> * Włączanie diagnostyki rozruchu na maszynie wirtualnej
 > * Wyświetlanie diagnostyki rozruchu
-> * Wyświetlaj metryki hosta maszyny Wirtualnej
-> * Zainstaluj rozszerzenie diagnostyki
+> * Wyświetlanie metryki hosta maszyny wirtualnej
+> * Instalacja rozszerzenia diagnostyki
 > * Wyświetlanie metryki maszyny wirtualnej
-> * Utwórz alert
+> * Tworzenie alertu
 > * Zarządzanie aktualizacjami systemu Windows
-> * Monitor zmiany i magazynu
+> * Monitorowanie zmian i spisu
 > * Konfigurowanie zaawansowanego monitorowania
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 3.6 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna. W razie potrzeby [ten przykładowy skrypt](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) pomoże Ci go utworzyć. Podczas pracy z samouczkiem, Zastąp grupy zasobów, nazwę maszyny Wirtualnej i lokalizację w razie potrzeby.
+## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
+
+Aby w tym samouczku móc skonfigurować monitorowanie i zarządzanie aktualizacjami na platformie Azure, konieczne jest posiadanie maszyny wirtualnej z systemem Windows na platformie Azure. Najpierw ustaw nazwę użytkownika i hasło administratora maszyny wirtualnej przy użyciu polecenia [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+
+```azurepowershell-interactive
+$cred = Get-Credential
+```
+
+Następnie utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM* w lokalizacji *EastUS*. Grupa zasobów *myResourceGroupMonitorMonitor* i pomocnicze zasoby sieciowe zostaną utworzone, jeśli jeszcze nie istnieją:
+
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroupMonitor" `
+    -Name "myVM" `
+    -Location "East US" `
+    -Credential $cred
+```
+
+Utworzenie maszyny wirtualnej i zasobów może potrwać kilka minut.
 
 ## <a name="view-boot-diagnostics"></a>Wyświetlanie diagnostyki rozruchu
 
-Jak rozruchu maszyn wirtualnych systemu Windows, agenta diagnostyki rozruchu przechwytuje danych wyjściowych ekranu, który może służyć do rozwiązywania problemów z celem. Ta funkcja jest domyślnie włączona. Zrzuty ekranu przechwyconych są przechowywane w koncie magazynu platformy Azure, której tworzona jest również domyślnie.
+Podczas rozruchu maszyn wirtualnych z systemem Windows agent diagnostyki rozruchu przechwytuje dane wyjściowe z ekranu, których można używać do rozwiązywania problemów. Ta funkcja jest domyślnie włączona. Przechwycone zrzuty ekranu są przechowywane w koncie magazynu platformy Azure, które również jest tworzone domyślnie.
 
-Można uzyskać danych diagnostycznych rozruchu z [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata) polecenia. W poniższym przykładzie diagnostyki rozruchu są pobierane z katalogiem głównym * c:\* dysku.
+Dane diagnostyczne rozruchu można pobrać za pomocą polecenia [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata). W poniższym przykładzie dane diagnostyki rozruchu są pobierane do katalogu głównego na dysku *c:\*.
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup -Name myVM -Windows -LocalPath "c:\"
+Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
 ## <a name="view-host-metrics"></a>Wyświetlanie metryki hosta
 
-Maszyny Wirtualnej systemu Windows ma dedykowanego hosta maszyny Wirtualnej na platformie Azure, która współdziała ona z. Metryki są automatycznie pobierane dla hosta i mogą być wyświetlane w portalu Azure.
+Maszyna wirtualna z systemem Windows ma na platformie Azure dedykowaną maszynę wirtualną hosta, z którą wchodzi w interakcję. Metryki są automatycznie zbierane dla hosta. Można je wyświetlić w witrynie Azure Portal.
 
-1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroup**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
-2. Kliknij przycisk **metryki** w bloku maszyny Wirtualnej, a następnie wybierz jedno z hosta metryki w obszarze **dostępne metryki** aby zobaczyć, jak działa hosta maszyny Wirtualnej.
+1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroupMonitor**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
+2. Aby zobaczyć, jak działa maszyna wirtualna hosta, kliknij pozycję **Metryki** w bloku maszyny wirtualnej, a następnie wybierz dowolną metrykę Host w obszarze **Dostępne metryki**.
 
     ![Wyświetlanie metryki hosta](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
 ## <a name="install-diagnostics-extension"></a>Instalacja rozszerzenia diagnostyki
 
-Metryki podstawowych hostów są dostępne, ale bardziej szczegółowe i metryki specyficzne dla maszyny Wirtualnej, można, należy zainstalować rozszerzenie diagnostycznych platformy Azure na maszynie Wirtualnej. Rozszerzenie diagnostyki platformy Azure umożliwia pobieranie dodatkowych danych dotyczących monitorowania i diagnostyki z maszyny wirtualnej. Możesz wyświetlić te metryki wydajności i utworzyć alerty w oparciu o wydajność maszyny wirtualnej. Rozszerzenie diagnostyki jest instalowane za pośrednictwem witryny Azure Portal w następujący sposób:
+Dostępne są podstawowe metryki hosta, ale wyświetlenie bardziej szczegółowych metryk właściwych dla danej maszyny wirtualnej wymaga zainstalowania rozszerzenia diagnostyki platformy Azure na maszynie wirtualnej. Rozszerzenie diagnostyki platformy Azure umożliwia pobieranie dodatkowych danych dotyczących monitorowania i diagnostyki z maszyny wirtualnej. Możesz wyświetlić te metryki wydajności i utworzyć alerty w oparciu o wydajność maszyny wirtualnej. Rozszerzenie diagnostyki jest instalowane za pośrednictwem witryny Azure Portal w następujący sposób:
 
-1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroup**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
+1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroupMonitor**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
 2. Kliknij pozycję **Ustawienia diagnozy**. Lista pokazuje, że *Diagnostyka rozruchu* została już włączona w poprzedniej sekcji. Kliknij pole wyboru pozycji *Metryki podstawowe*.
-3. Kliknij przycisk **Włącz monitorowanie na poziomie gościa** przycisku.
+3. Kliknij przycisk **Włącz monitorowanie na poziomie gościa**.
 
     ![Wyświetlanie metryki diagnostyki](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
@@ -76,7 +94,7 @@ Metryki podstawowych hostów są dostępne, ale bardziej szczegółowe i metryki
 
 Możesz wyświetlić metryki maszyny wirtualnej w ten sam sposób co metryki maszyny wirtualnej hosta:
 
-1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroup**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
+1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroupMonitor**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
 2. Aby zobaczyć, jak działa maszyna wirtualna, kliknij pozycję **Metryki** w bloku maszyny wirtualnej, a następnie wybierz dowolną metrykę diagnostyki w pozycji **Dostępne metryki**.
 
     ![Wyświetlanie metryki maszyny wirtualnej](./media/tutorial-monitoring/monitor-vm-metrics.png)
@@ -87,7 +105,7 @@ Możesz utworzyć alerty w oparciu o konkretne metryki wydajności. Przykładowo
 
 Poniższy przykład tworzy alert dotyczący średniego użycia procesora.
 
-1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroup**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
+1. W witrynie Azure Portal kliknij pozycję **Grupy zasobów**, wybierz grupę **myResourceGroupMonitor**, a następnie wybierz maszynę wirtualną **myVM** na liście zasobów.
 2. Kliknij pozycję **Reguły alertów** w bloku maszyny wirtualnej, a następnie kliknij pozycję **Dodaj alert metryki** w górnej części bloku alertów.
 3. Podaj **nazwę** alertu, np. *myAlertRule*
 4. Aby wyzwolić alert, gdy procent użycia procesora przekracza 1,0 przez pięć minut, pozostaw wybrane wszystkie inne wartości domyślne.
@@ -96,14 +114,14 @@ Poniższy przykład tworzy alert dotyczący średniego użycia procesora.
 
 ## <a name="manage-windows-updates"></a>Zarządzanie aktualizacjami systemu Windows
 
-Zarządzanie aktualizacjami umożliwia zarządzanie aktualizacje i poprawki dla maszyn wirtualnych systemu Windows Azure.
+Rozwiązanie Update Management pozwala zarządzać aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure z systemem Windows.
 Bezpośrednio z poziomu maszyny wirtualnej możesz szybko ocenić stan dostępnych aktualizacji, zaplanować instalację wymaganych aktualizacji i przejrzeć wyniki wdrażania, aby sprawdzić, czy aktualizacje zostały zastosowane pomyślnie do maszyny wirtualnej.
 
 Aby uzyskać informacje o cenach, zobacz [cennik usługi Automation dla rozwiązania Update Management](https://azure.microsoft.com/pricing/details/automation/)
 
 ### <a name="enable-update-management"></a>Włączanie rozwiązania Update Management
 
-Włącz zarządzanie aktualizacji dla maszyny Wirtualnej:
+Włącz rozwiązanie Update Management dla maszyny wirtualnej:
 
 1. Po lewej stronie ekranu wybierz pozycję **Maszyny wirtualne**.
 2. Z listy wybierz maszynę wirtualną.
@@ -135,7 +153,7 @@ Włączanie rozwiązania może potrwać do 15 minut. W tym czasie nie należy za
 
 ### <a name="view-update-assessment"></a>Wyświetlanie oceny aktualizacji
 
-Po włączeniu rozwiązania **Update Management** zostanie wyświetlony ekran **Update Management**. Po zakończeniu oceny aktualizacji, wyświetlić listę brakujących aktualizacji na **brakujących aktualizacji** kartę.
+Po włączeniu rozwiązania **Update Management** zostanie wyświetlony ekran **Update Management**. Po zakończeniu oceny aktualizacji możesz zobaczyć listę brakujących aktualizacji na karcie **Brakujące aktualizacje**.
 
  ![Wyświetlanie stanu aktualizacji](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
@@ -167,7 +185,7 @@ Po ukończeniu konfigurowania harmonogramu kliknij przycisk **Utwórz**, aby wr�
 Tabela **Zaplanowane** zawiera utworzony harmonogram wdrożenia.
 
 > [!WARNING]
-> Aktualizacje, które wymagają ponownego uruchomienia systemu maszyna wirtualna zostanie ponownie uruchomiony.
+> W przypadku aktualizacji wymagających ponownego uruchomienia systemu maszyna wirtualna zostanie ponownie uruchomiona automatycznie.
 
 ### <a name="view-results-of-an-update-deployment"></a>Wyświetlanie wyników wdrażania aktualizacji
 
@@ -191,94 +209,94 @@ Kliknij kafelek **Dane wyjściowe**, aby wyświetlić strumień zadań elementu 
 
 Kliknij pozycję **Błędy**, aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem.
 
-## <a name="monitor-changes-and-inventory"></a>Monitor zmiany i magazynu
+## <a name="monitor-changes-and-inventory"></a>Monitorowanie zmian i spisu
 
 Możesz zbierać i wyświetlać spis oprogramowania, plików, demonów systemu Linux, usług systemu Windows i kluczy rejestru systemu Windows znajdujących się na Twoich komputerach. Śledzenie konfiguracji maszyn ułatwia identyfikowanie problemów operacyjnych w środowisku oraz lepsze rozumienie stanu maszyn.
 
-### <a name="enable-change-and-inventory-management"></a>Zarządzanie zmianami enable i magazynu
+### <a name="enable-change-and-inventory-management"></a>Włączanie zarządzania zmianami i spisem
 
-Zarządzanie zmianami enable i magazynu dla maszyny Wirtualnej:
+Aby włączyć zarządzanie zmianami i spisem na maszynie wirtualnej:
 
 1. Po lewej stronie ekranu wybierz pozycję **Maszyny wirtualne**.
 2. Z listy wybierz maszynę wirtualną.
-3. Na ekranie maszyny Wirtualnej w **operacji** kliknij **spisu** lub **śledzenia zmian**. **Włączyć śledzenie zmian i spisu** ekranu zostanie otwarta.
+3. Na ekranie maszyny wirtualnej w sekcji **Operacje** kliknij pozycję **Spis** lub **Śledzenie zmian**. Zostanie otwarty ekran **Włączanie śledzenia zmian i spisu**.
 
-Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij pozycję **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji. Eventhough rozwiązania są oddzielone w menu, są tego samego rozwiązania. Włączenie co umożliwia zarówno dla maszyny Wirtualnej.
+Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij pozycję **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji. Nawet jeśli te rozwiązania są oddzielone w menu, jest to jedno rozwiązanie. Włączenie jednego z nich oznacza włączenie obydwu na maszynie wirtualnej.
 
-![Włącz zmiany i monitorowania magazynu](./media/tutorial-monitoring/manage-inventory-enable.png)
+![Włączanie śledzenia zmian i spisu](./media/tutorial-monitoring/manage-inventory-enable.png)
 
-Po włączeniu rozwiązania może zająć pewien czas spisu zbierany jest na maszynie Wirtualnej przed wyświetleniem danych.
+Po włączeniu rozwiązania zebranie danych spisu na maszynie wirtualnej przed ich wyświetleniem może potrwać pewien czas.
 
-### <a name="track-changes"></a>Śledź zmiany
+### <a name="track-changes"></a>Śledzenie zmian
 
-Na Twojej maszyny Wirtualnej wybierz **śledzenia zmian** w obszarze **operacji**. Kliknij przycisk **edytowanie ustawień**, **śledzenia zmian** zostanie wyświetlona strona. Wybierz typ ustawienie chcesz śledzić, a następnie kliknij przycisk **+ Dodaj** do konfigurowania ustawień. Są dostępne opcje dla systemu Windows:
+Na maszynie wirtualnej wybierz pozycję **Śledzenie zmian** w obszarze **OPERACJE**. Kliknij pozycję **Edytuj ustawienia**. Zostanie wyświetlona strona **Śledzenie zmian**. Wybierz typ ustawienia do śledzenia, a następnie kliknij pozycję **+ Dodaj** w celu skonfigurowania ustawień. W przypadku systemu Windows dostępne są następujące opcje:
 
 * Rejestr systemu Windows
 * Pliki systemu Windows
 
-Aby uzyskać szczegółowe informacje na temat śledzenia zmian, zobacz [Rozwiązywanie problemów z zmiany na maszynie Wirtualnej](../../automation/automation-tutorial-troubleshoot-changes.md)
+Aby uzyskać szczegółowe informacje na temat rozwiązania Change Tracking, zobacz [Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej](../../automation/automation-tutorial-troubleshoot-changes.md)
 
-### <a name="view-inventory"></a>Widok spisu
+### <a name="view-inventory"></a>Wyświetlanie spisu
 
-Na Twojej maszyny Wirtualnej wybierz **spisu** w obszarze **operacji**. Na karcie **Oprogramowanie** znajduje się lista tabelowa oprogramowania, które zostało odnalezione. Szczegółowe informacje wysokiego poziomu dotyczące każdego rekordu oprogramowania są wyświetlane w tabeli. Te informacje obejmują nazwę oprogramowania, wersja, wydawca, czas ostatniego odświeżenia.
+Na maszynie wirtualnej wybierz pozycję **Spis** w obszarze **OPERACJE**. Na karcie **Oprogramowanie** znajduje się lista tabelowa oprogramowania, które zostało odnalezione. Szczegółowe informacje wysokiego poziomu dotyczące każdego rekordu oprogramowania są wyświetlane w tabeli. Obejmują one nazwę, wersję, wydawcę i czas ostatniego odświeżenia oprogramowania.
 
-![Widok spisu](./media/tutorial-monitoring/inventory-view-results.png)
+![Wyświetlanie spisu](./media/tutorial-monitoring/inventory-view-results.png)
 
-### <a name="monitor-activity-logs-and-changes"></a>Monitoruj Dzienniki aktywności i zmiany
+### <a name="monitor-activity-logs-and-changes"></a>Monitorowanie dzienników aktywności i zmian
 
 Ze strony **Śledzenie zmian** na swojej maszynie wirtualnej wybierz pozycję **Zarządzanie połączeniem dziennika aktywności**. To zadanie powoduje otwarcie strony **Dziennik aktywności platformy Azure**. Wybierz pozycję **Połącz**, aby połączyć śledzenie zmian z dziennikiem aktywności platformy Azure dla Twojej maszyny wirtualnej.
 
 Po włączeniu tego ustawienia przejdź do strony **Omówienie** dla maszyny wirtualnej i wybierz pozycję **Zatrzymaj**, aby zatrzymać swoją maszynę wirtualną. Po wyświetleniu monitu wybierz pozycję **Tak**, aby zatrzymać maszynę wirtualną. Po cofnięciu jej przydziału wybierz pozycję **Start**, aby ponownie uruchomić maszynę wirtualną.
 
-Zatrzymanie i uruchomienie maszyny wirtualnej rejestruje zdarzenie w jego dzienniku aktywności. Przejdź z powrotem do strony **Śledzenie zmian**. Wybierz kartę **Zdarzenia** u dołu strony. Po chwili zdarzenia są wyświetlane na wykresie i w tabeli. Aby wyświetlić szczegółowe informacje o zdarzeniu można wybrać każdego zdarzenia.
+Zatrzymanie i uruchomienie maszyny wirtualnej rejestruje zdarzenie w jego dzienniku aktywności. Przejdź z powrotem do strony **Śledzenie zmian**. Wybierz kartę **Zdarzenia** u dołu strony. Po chwili zdarzenia są wyświetlane na wykresie i w tabeli. Każde zdarzenie można wybrać, aby wyświetlić szczegółowe informacje o zdarzeniu.
 
-![Przeglądanie zmian w dzienniku aktywności](./media/tutorial-monitoring/manage-activitylog-view-results.png)
+![Wyświetlanie zmian w dzienniku aktywności](./media/tutorial-monitoring/manage-activitylog-view-results.png)
 
 Wykres pokazuje zmiany, które wystąpiły w czasie. Po dodaniu połączenia dziennika aktywności wykres liniowy u góry wyświetla zdarzenia dziennika aktywności platformy Azure. Każdy wiersz wykresów słupkowych reprezentuje innego typu zmiany umożliwiające śledzenie. Do tych typów należą demony systemu Linux, pliki, klucze rejestru systemu Windows, oprogramowanie i usługi systemu Windows. Karta zmiany przedstawia szczegółowe informacje dla zmian pokazanych w wizualizacji w kolejności malejącej według czasu, kiedy wystąpiła zmiana (najnowsze na początku).
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
-Możliwość bardziej zaawansowane monitorowanie maszyny wirtualnej przy użyciu rozwiązań, takich jak zarządzanie aktualizacjami i zmianami i spisu dostarczonych przez [usługi Automatyzacja Azure](../../automation/automation-intro.md).
+Aby przeprowadzać bardziej zaawansowane monitorowanie maszyny wirtualnej, można korzystać z rozwiązań oferowanych przez usługę [Azure Automation](../../automation/automation-intro.md), takich jak Update Management i Change and Inventory.
 
-Jeśli masz dostęp do obszaru roboczego analizy dzienników klucz obszaru roboczego i identyfikator obszaru roboczego można znaleźć na, wybierając **Zaawansowane ustawienia** w obszarze **ustawienia**. Użyj [AzureRmVMExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmextension) polecenie, aby dodać rozszerzenie jako Microsoft Monitoring agent maszyny Wirtualnej. Zaktualizuj wartości zmiennej w poniżej przykładowy w celu uwzględnienia możesz klucz obszaru roboczego analizy dzienników i identyfikator obszaru roboczego
+Jeśli masz dostęp do obszaru roboczego usługi Log Analytics, możesz znaleźć klucz i identyfikator obszaru roboczego, wybierając pozycję **Ustawienia zaawansowane** w obszarze **USTAWIENIA**. Użyj polecenia [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension), aby dodać rozszerzenie Microsoft Monitoring Agent do maszyny wirtualnej. Zaktualizuj wartości zmiennych w poniższym przykładzie, aby odzwierciedlały Twój klucz i identyfikator obszaru roboczego usługi Log Analytics.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
 $key = "<Replace with your primary key>"
 
-Set-AzureRmVMExtension -ResourceGroupName myResourceGroup `
+Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
-  -VMName myVM `
+  -VMName "myVM" `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
   -ExtensionType "MicrosoftMonitoringAgent" `
   -TypeHandlerVersion 1.0 `
   -Settings @{"workspaceId" = $workspaceId} `
   -ProtectedSettings @{"workspaceKey" = $key} `
-  -Location eastus
+  -Location "East US"
 ```
 
-Po upływie kilku minut powinien zostać wyświetlony nowej maszyny Wirtualnej w obszarze roboczym Anaytics dziennika.
+Po kilku minutach nowa maszyna wirtualna powinna pojawić się w obszarze roboczym usługi Log Analytics.
 
 ![Blok OMS](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku został skonfigurowany i przejrzeć maszyn wirtualnych w Centrum zabezpieczeń Azure. W tym samouczku omówiono:
+W tym samouczku skonfigurowano i przejrzano maszyny wirtualne w usłudze Azure Security Center. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie sieci wirtualnej
-> * Tworzenie grupy zasobów i maszyny Wirtualnej
+> * Tworzenie grupy zasobów i maszyny wirtualnej
 > * Włączanie diagnostyki rozruchu na maszynie wirtualnej
 > * Wyświetlanie diagnostyki rozruchu
 > * Wyświetlanie metryki hosta
-> * Zainstaluj rozszerzenie diagnostyki
+> * Instalacja rozszerzenia diagnostyki
 > * Wyświetlanie metryki maszyny wirtualnej
-> * Utwórz alert
+> * Tworzenie alertu
 > * Zarządzanie aktualizacjami systemu Windows
-> * Monitor zmiany i magazynu
+> * Monitorowanie zmian i spisu
 > * Konfigurowanie zaawansowanego monitorowania
 
-Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure.
+Przejdź do następnego samouczka, aby dowiedzieć się więcej na temat usługi Azure Security Center.
 
 > [!div class="nextstepaction"]
 > [Zarządzanie zabezpieczeniami maszyn wirtualnych](./tutorial-azure-security.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/02/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ebad9304c38333173cec66c6b5574a9b45b17cd1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -67,14 +67,21 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50058|W podanych poświadczeniach nie znaleziono informacji o tożsamości użytkownika, w dzierżawie nie znaleziono użytkownika albo wysłano żądanie logowania dyskretnego, ale żaden użytkownik nie jest zalogowany lub usługa nie mogła uwierzytelnić użytkownika.|
 |50072|Użytkownik musi zarejestrować się na potrzeby uwierzytelniania dwuskładnikowego (interaktywnie)|
 |50074|Użytkownik nie przeszedł żądania uwierzytelniania MFA.|
+|50076|Użytkownik nie przeszedł żądania uwierzytelniania MFA (nieinteraktywnie)|
 |50079|Użytkownik musi zarejestrować się na potrzeby uwierzytelniania dwuskładnikowego.|
 |50089|Weryfikacja tokenu przepływu nie powiodła się z powodu jego wygaśnięcia.|
 |50097|Urządzenie nie jest uwierzytelnione.|
 |50105|Zalogowany użytkownik nie jest przypisany do roli dla tej aplikacji.|
+|50125|Logowanie zostało przerwane z powodu wpisu dotyczącego resetowania lub rejestracji hasła|
 |50126|Nieprawidłowa nazwa lub hasło użytkownika albo nieprawidłowa nazwa lub hasło użytkownika lokalnego.|
+|50127|Użytkownik musi zainstalować aplikację brokera, aby uzyskać dostęp do tej zawartości.|
+|50129|Urządzenie nie jest dołączone w miejscu pracy — dołączanie w miejscu pracy jest wymagane do zarejestrowania urządzenia.|
 |50131|Kod używany w przypadku różnych błędów dostępu warunkowego, takich jak zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
 |50133|Sesja jest nieprawidłowa z powodu wygaśnięcia lub niedawnej zmiany hasła.|
+|50140|Użytkownik został poproszony o wyrażenie zgody na pozostanie zalogowanym na urządzeniu|
 |50144|Ważność hasła użytkownika usługi Active Directory wygasła.|
+|53000|Zasady dostępu warunkowego wymagają zgodnego urządzenia, ale urządzenie nie jest zgodne.|
+|53003|Dostęp został zablokowany ze względu na zasady dostępu warunkowego.|
 |65001|Aplikacja X nie ma uprawnienia dostępu do aplikacji Y lub uprawnienie zostało odwołany. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij do administratora dzierżawy żądanie autoryzacji dotyczące działania w imieniu aplikacji Y dla zasobu Z.|
 |65005|Lista dostępu do wymaganych zasobów aplikacji nie zawiera aplikacji możliwych do wykrycia przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów lub usługa programu Graph zwróciła nieprawidłowe żądanie lub nie można odnaleźć zasobu.|
 |70001|Nie można odnaleźć aplikacji o nazwie X w dzierżawie o nazwie Y. Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub żaden użytkownik w dzierżawie nie wyraził odpowiedniej zgody. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy.|
@@ -98,8 +105,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |81013|Nie można znaleźć obiektu użytkownika w oparciu o informacje z biletu Kerberos użytkownika.|
 |90014|Kod używany w różnych przypadkach, jeśli poświadczenia nie zawierają oczekiwanego pola.|
 |90093|Program Graph zwrócił niedozwolony kod błędu dla żądania.|
-
-
+|90094|Wymagana jest zgoda administratora.|
 ## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji można znaleźć w temacie [Wprowadzenie do raportów dotyczących logowań w portalu Azure Active Directory](active-directory-reporting-activity-sign-ins.md).

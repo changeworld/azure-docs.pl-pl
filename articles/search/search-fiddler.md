@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 6108e0061c4a8de3000de7f7a07cca313803e80d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Odkrywaj interfejsy API REST usługi Azure Search przy użyciu narzędzia Fiddler lub Postman
 
@@ -48,14 +48,14 @@ Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla ka
 
 Każde narzędzie utrzymuje informacje o nagłówku żądania dla tej sesji, co oznacza, że musisz tylko raz wprowadzić adres URL punktu końcowego, wersję interfejsu api, klucz api-key i typ zawartości.
 
-Pełny adres URL powinien wyglądać podobnie do poniższego przykładu, ale musisz zapewnić prawidłowy zamiennik dla **`my-app`** nazwy symbolu zastępczego: `https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01`
+Pełny adres URL powinien wyglądać podobnie do poniższego przykładu, ale musisz zapewnić prawidłowy zamiennik dla **`my-app`** nazwy symbolu zastępczego: `https://my-app.search.windows.net/indexes/hotels?api-version=2017-11-11`
 
 Kompozycja adresu URL usługi obejmuje następujące elementy:
 
 + Prefiks protokołu HTTPS.
 + Adres URL usługi uzyskany z portalu.
 + Zasób, operację tworzącą obiekt w Twojej usłudze. W tym kroku jest to indeks o nazwie hotels.
-+ Parametr api-version, czyli wymagany ciąg małych liter określony jako „?api-version=2016-09-01” dla bieżącej wersji. [Wersje interfejsu API](search-api-versions.md) są regularnie aktualizowane. Uwzględnienie parametru api-version w każdym żądaniu daje pełną kontrolę nad tym, która z nich jest używana.  
++ Parametr api-version, czyli wymagany ciąg małych liter określony jako „?api-version=2017-11-11” dla bieżącej wersji. [Wersje interfejsu API](search-api-versions.md) są regularnie aktualizowane. Uwzględnienie parametru api-version w każdym żądaniu daje pełną kontrolę nad tym, która z nich jest używana.  
 
 Kompozycja nagłówka żądania zawiera dwa elementy, typ zawartości i klucz api-key, opisane w poprzedniej sekcji:
 
@@ -124,7 +124,7 @@ Skopiuj definicję indeksu do treści żądania, podobnie jak na poniższym zrzu
 Tworzenie indeksu i wypełnianie indeksu to oddzielne kroki. W usłudze Azure Search indeks zawiera wszystkich dane umożliwiające wyszukiwanie, które zostały udostępnione jako dokumenty JSON. Aby zapoznać się z interfejsem API dla tej operacji, zobacz [Add, update, or delete documents (REST) (Dodawanie, aktualizowanie lub usuwanie dokumentów (REST))](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 + Dla tego kroku zmień zlecenie na **POST**.
-+ Zmień punkt końcowy, aby uwzględnić `/docs/index`. Pełny adres URL powinien wyglądać jak `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01`
++ Zmień punkt końcowy, aby uwzględnić `/docs/index`. Pełny adres URL powinien wyglądać jak `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
 + Zachowaj nagłówki żądania w takim stanie, w jakim są. 
 
 Obszar Request Body (Treść żądania) zawiera cztery dokumenty, które mają zostać dodane do indeksu hotels.
@@ -213,7 +213,7 @@ Zmień zlecenie na **POST**. Zmień adres URL, aby uwzględnić `/docs/index`. S
 Teraz, gdy indeks i dokumenty są załadowane, możesz wykonywać zapytania względem nich. Aby uzyskać więcej informacji dotyczących tego interfejsu API, zobacz [Search Documents (REST) (Wyszukiwanie dokumentów (REST))](https://docs.microsoft.com/rest/api/searchservice/search-documents)  
 
 + Dla tego kroku zmień zlecenie na **GET**.
-+ Zmień punkt końcowy, aby uwzględnić parametry zapytania wraz z ciągami wyszukiwania. Adres URL zapytania może wyglądać jak `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2016-09-01`
++ Zmień punkt końcowy, aby uwzględnić parametry zapytania wraz z ciągami wyszukiwania. Adres URL zapytania może wyglądać jak `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + Zachowywanie nagłówków żądania w takim stanie, w jakim są
 
 To zapytanie wyszukuje termin „motel” i zwraca liczbę dokumentów w wynikach wyszukiwania. Żądanie i odpowiedź, po kliknięciu przycisku **Wyślij**, powinny wyglądać podobnie jak na poniższym zrzucie ekranu dla narzędzia Postman. Kod stanu powinien być równy 200.
@@ -222,18 +222,18 @@ To zapytanie wyszukuje termin „motel” i zwraca liczbę dokumentów w wynikac
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Porady dotyczące uruchamiania naszych przykładowych zapytań w narzędziu Fiddler
 
-Poniższe przykładowe zapytanie można znaleźć w artykule [Search Index operation (Azure Search API) (Operacje wyszukiwania indeksu (interfejs API usługi Azure Search))](http://msdn.microsoft.com/library/dn798927.aspx). Wiele przykładowych zapytań w tym artykule zawiera spacje, które nie są dozwolone w narzędziu Fiddler. Przed wklejeniem ciągu zapytania oraz podjęciem próby jego wykonania w narzędziu Fiddler zastąp każdą spację znakiem +.
+Poniższe przykładowe zapytanie można znaleźć w artykule [Search Index operation (Azure Search API) (Operacje wyszukiwania indeksu (interfejs API usługi Azure Search))](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Wiele przykładowych zapytań w tym artykule zawiera spacje, które nie są dozwolone w narzędziu Fiddler. Przed wklejeniem ciągu zapytania oraz podjęciem próby jego wykonania w narzędziu Fiddler zastąp każdą spację znakiem +.
 
 **Przed zastąpieniem spacji (w zapytaniu lastRenovationDate desc):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
 **Po zastąpieniu spacji znakiem + (w zapytaniu lastRenovationDate+desc):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
 ## <a name="query-index-properties"></a>Właściwości indeksu zapytania
-Zapytania możesz także wykonywać względem informacji o systemie, aby uzyskać informacje o liczbie dokumentów i użyciu przestrzeni dyskowej: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01`
+Zapytania możesz także wykonywać względem informacji o systemie, aby uzyskać informacje o liczbie dokumentów i użyciu przestrzeni dyskowej: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 W narzędziu Postman Twoje żądanie powinno wyglądać podobnie do poniższego, zaś odpowiedź zawiera liczbę dokumentów i użyte miejsce w bajtach.
 

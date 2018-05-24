@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -179,7 +179,7 @@ Zasoby usługi Azure Storage są dostępne za pomocą dowolnego języka, który 
 * [Interfejs API REST usług Storage](https://docs.microsoft.com/rest/api/storageservices/)
 * [Biblioteka klienta usługi Storage dla platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Biblioteka klienta usługi Storage dla języka Java w systemie Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [Biblioteka klienta usługi Storage dla oprogramowania Node.js](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [Biblioteka klienta usługi Storage dla oprogramowania Node.js](https://docs.microsoft.com/javascript/api/azure-storage)
 * [Biblioteka klienta usługi Storage dla języka Python](https://github.com/Azure/azure-storage-python)
 * [Biblioteka klienta usługi Storage dla języka PHP](https://github.com/Azure/azure-storage-php)
 * [Biblioteka klienta usługi Storage dla języka Ruby](https://github.com/Azure/azure-storage-ruby)

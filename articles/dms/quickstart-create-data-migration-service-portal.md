@@ -1,21 +1,21 @@
 ---
-title: "Tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal | Microsoft Docs"
-description: "Używanie witryny Azure Portal do tworzenia wystąpienia usługi Azure Database Migration Service"
+title: Tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal | Microsoft Docs
+description: Używanie witryny Azure Portal do tworzenia wystąpienia usługi Azure Database Migration Service
 services: database-migration
 author: edmacauley
 ms.author: edmaca
 manager: craigg
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/13/2017
-ms.openlocfilehash: 9dea80b0a6848bd69541aa9f7e0a0fe111fa0a28
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.date: 05/01/2018
+ms.openlocfilehash: 7669ee678f4049c938c6e249c26997d993fd7c6a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Tworzenie wystąpienia usługi Azure Database Migration Service przy użyciu witryny Azure Portal
 W tym przewodniku Szybki start utworzysz wystąpienie usługi Azure Database Migration Service przy użyciu witryny Azure Portal.  Po utworzeniu usługi możesz jej użyć do migracji danych z lokalnego programu SQL Server do bazy danych Azure SQL.
@@ -39,9 +39,9 @@ Przed utworzeniem pierwszego wystąpienia usługi Database Migration Service zar
 ![Rejestrowanie dostawcy zasobów](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-an-instance-of-the-service"></a>Tworzenie wystąpienia usługi
-1. Kliknij pozycję **+ Utwórz zasób**, aby utworzyć wystąpienie usługi Azure Database Migration Service, która jest obecnie w wersji zapoznawczej.
+1. Kliknij pozycję **+ Utwórz zasób**, aby utworzyć wystąpienie usługi Azure Database Migration Service.
 
-2. Wyszukaj w witrynie Marketplace hasło „migration”, wybierz pozycję **Azure Database Migration Service**, a następnie na ekranie **Azure Database Migration Service (wersja zapoznawcza)** kliknij pozycję **Utwórz**.
+2. Wyszukaj w witrynie Marketplace hasło „migration”, wybierz pozycję **Azure Database Migration Service**, a następnie na ekranie **Azure Database Migration Service** kliknij pozycję **Utwórz**.
 
 3. Na ekranie **Database Migration Service**: 
 

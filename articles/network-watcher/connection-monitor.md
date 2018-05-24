@@ -1,72 +1,167 @@
 ---
-title: Monitorowanie połączenia sieciowe z obserwatora sieciowego Azure - Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować łączność sieciową z obserwatora sieciowego Azure przy użyciu portalu Azure.
+title: Monitorowanie komunikacji sieciowej — samouczek — Azure Portal | Microsoft Docs
+description: Dowiedz się, jak monitorować komunikację sieciową między dwiema maszynami wirtualnymi za pomocą możliwości monitorowania połączenia usługi Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+tags: azure-resource-manager
+Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/16/2018
+ms.date: 04/27/2018
 ms.author: jdial
-ms.openlocfilehash: 242da9a3ce52d9c7d801215cde7b72b7f8fe9a91
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: mvc
+ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Połączenia sieciowe monitora obserwatora sieciowego Azure przy użyciu portalu Azure
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
-Dowiedz się, jak monitorować łączność sieciową między maszyn wirtualnych Azure (VM) i adres IP przy użyciu monitora połączenia. Monitor połączenia zapewnia monitorowanie między źródłowego i docelowego adresu IP i portu. Monitor połączenia umożliwia realizację scenariuszy, takich jak monitorowanie łączności z maszyny Wirtualnej w sieci wirtualnej maszyny Wirtualnej działa program SQL server w tej samej lub innej sieci wirtualnej, za pośrednictwem portu 1433. Monitor połączenia udostępnia połączenia czas oczekiwania, jako metrykę Azure Monitor rejestrowane co 60 sekund. On również umożliwia topologii przeskoku przeskoku i identyfikuje problemy konfiguracji wpływające na połączenie.
+Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak inna maszyna wirtualna, może być krytyczna dla działania organizacji. Czasami są wprowadzane zmiany konfiguracji, co może powodować przerwy w komunikacji. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-## <a name="prerequisites"></a>Wymagania wstępne
+> [!div class="checklist"]
+> * Tworzenie dwóch maszyn wirtualnych
+> * Monitorowanie komunikacji między maszynami wirtualnymi za pomocą możliwości monitorowania połączenia usługi Network Watcher
+> * Diagnozowanie problemu z komunikacją między dwiema maszynami wirtualnymi i poznanie sposobu jego rozwiązywania
 
-Przed wykonaniem kroków w tym artykule, musi spełniać następujące wymagania wstępne:
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Wystąpienia obserwatora sieciowego w regionie, który chcesz monitorować połączenia. Jeśli nie masz jeszcze jeden, możesz utworzyć jedną, wykonując kroki opisane w [utworzenia wystąpienia obserwatora sieciowego Azure](network-watcher-create.md).
-* Maszyny Wirtualnej, aby monitorować z. Aby dowiedzieć się, jak utworzyć Maszynę wirtualną, zobacz Tworzenie [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) maszyny Wirtualnej.
-* Ma `AzureNetworkWatcherExtension` zainstalowana na maszynie wirtualnej, który chcesz monitorować połączenia z. Aby zainstalować rozszerzenie na maszynie wirtualnej systemu Windows, zobacz [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i zainstalować rozszerzenie Zobacz maszyny Wirtualnej systemu Linux [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane na docelowy punkt końcowy, który chcesz monitorować.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-Zaloguj się w [Portalu Azure](http://portal.azure.com).
+## <a name="create-vms"></a>Tworzenie maszyn wirtualnych
 
-## <a name="create-a-connection-monitor"></a>Utwórz monitor połączenia
+Utwórz dwie maszyny wirtualne.
 
-Poniższych kroków spowoduje włączenie monitorowania połączenia w docelowej lokalizacji maszyny Wirtualnej przez porty 80 i 1433:
+### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-1. Po lewej stronie portalu, wybierz **wszystkie usługi**.
-2. Zacznij pisać *obserwatora sieciowego* w **filtru** pole. Gdy **obserwatora sieciowego** pojawia się w wynikach wyszukiwania, wybierz go.
-3. W obszarze **monitorowanie**, wybierz pozycję **monitor połączenia**.
+1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+2. Wybierz pozycję **Compute**, a następnie wybierz system operacyjny. W tym samouczku jest używany system **Windows Server 2016 Datacenter**.
+3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
+
+    |Ustawienie|Wartość|
+    |---|---|
+    |Name (Nazwa)|myVm1|
+    |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
+    |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Subskrypcja| Wybierz subskrypcję.|
+    |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
+
+4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
+5. W obszarze **Ustawienia** wybierz pozycję **Rozszerzenia**. Wybierz polecenie **Dodaj rozszerzenie** i wybierz pozycję **Network Watcher Agent for Windows**, jak pokazano na poniższej ilustracji:
+
+    ![Rozszerzenie agenta usługi Network Watcher](./media/connection-monitor/nw-agent-extension.png)
+
+6. W obszarze **Network Watcher Agent for Windows** wybierz polecenie **Utwórz**, w obszarze **Instalowanie rozszerzenia** wybierz przycisk **OK**, a następnie w obszarze **Rozszerzenia** wybierz pozycję **OK**.
+7. Zaakceptuj wartości domyślne pozostałych **ustawień**, a następnie wybierz przycisk **OK**.
+8. W obszarze **Utwórz** na stronie **Podsumowanie** wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej.
+
+### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
+
+Wykonaj ponownie kroki z sekcji [Tworzenie pierwszej maszyny wirtualnej](#create-the-first-vm) z następującymi zmianami:
+
+|Krok|Ustawienie|Wartość|
+|---|---|---|
+| 1 | Wybierz pozycję **Maszyna wirtualna z systemem Ubuntu Server 17.10** |                                                                         |
+| 3 | Name (Nazwa)                              | myVm2                                                                   |
+| 3 | Typ uwierzytelniania               | Wklej klucz publiczny SSH lub wybierz opcję **Hasło** i wprowadź hasło. |
+| 3 | Grupa zasobów                    | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.                 |
+| 6 | Rozszerzenia                        | **Network Agent for Linux**                                             |
+
+Wdrożenie maszyny wirtualnej potrwa kilka minut. Zanim przejdziesz do pozostałych kroków, poczekaj na zakończenie wdrażania maszyny wirtualnej.
+
+## <a name="create-a-connection-monitor"></a>Tworzenie monitora połączeń
+
+Utwórz monitor połączeń na potrzeby monitorowania komunikacji na porcie TCP 22 z maszyny *myVm1* do *myVm2*.
+
+1. Po lewej stronie portalu wybierz pozycję **Wszystkie usługi**.
+2. Zacznij pisać *network watcher* w polu **Filtr**. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
+3. W obszarze **MONITOROWANIE** wybierz pozycję **Monitor połączeń**.
 4. Wybierz pozycję **+ Dodaj**.
-5. Wprowadź lub wybierz informacje dotyczące połączenia, chcesz monitorować, a następnie wybierz **Dodaj**. W tym przykładzie przedstawiono na rysunku poniżej połączenie monitorowane jest z *MultiTierApp0* maszyny Wirtualnej, aby *Database0* maszyny Wirtualnej za pośrednictwem portu 80:
+5. Wprowadź lub wybierz informacje dotyczące połączenia, które chcesz monitorować, a następnie wybierz pozycję **Dodaj**. W przykładzie przedstawiono na poniższej ilustracji jest monitorowane połączenie z maszyny wirtualnej *myVm1* do maszyny *myVm2* na porcie 22:
 
-    ![Dodawanie połączenia monitora](./media/connection-monitor/add-connection-monitor.png)
+    | Ustawienie                  | Wartość               |
+    | ---------                | ---------           |
+    | Name (Nazwa)                     | myVm1-myVm2(22)     |
+    | Element źródłowy                   |                     |
+    | Maszyna wirtualna          | myVm1               |
+    | Element docelowy              |                     |
+    | Wybierz maszynę wirtualną |                     |
+    | Maszyna wirtualna          | myVm2               |
+    | Port                     | 22                  |
 
-    Rozpoczyna monitorowanie. Monitor połączenia sondy co 60 sekund.
-6. Wykonaj krok 5 ponownie, określając takie same źródłowych i docelowych maszyn wirtualnych i następujące wartości:
-    
-    |Ustawienie  |Wartość          |
-    |---------|---------      |
-    |Name (Nazwa)     | AppToDB(1433) |
-    |Port     | 1433          |
+    ![Dodawanie monitora połączeń](./media/connection-monitor/add-connection-monitor.png)
 
-## <a name="view-connection-monitoring"></a>Monitorowanie połączenia widoku
+## <a name="view-a-connection-monitor"></a>Wyświetlanie monitora połączeń
 
-1. Wykonać kroki od 1 do 3 w [utworzyć monitor połączenia](#create-a-connection-monitor) Aby wyświetlić połączenia monitorowania.
-2. Na poniższej ilustracji przedstawiono szczegóły *AppToDB(80)* połączenia. **Stan** jest dostępny. **Widoku wykresu** pokazuje **Średni czas obiegu** i **sondy nie powiodła się %**. Wykres przeskoku przeskoku informacje i pokazuje, że problemów wpływają na uzyskiwanie docelowego.
+1. Wykonaj kroki od 1 do 3 w sekcji [Tworzenie monitora połączeń](#create-a-connection-monitor), aby wyświetlić monitorowanie połączenia. Zostanie wyświetlona lista istniejących monitorów połączeń, jak pokazano na poniższej ilustracji:
 
-    ![Widok wykresu](./media/connection-monitor/view-graph.png)
+    ![Monitory połączeń](./media/connection-monitor/connection-monitors.png)
 
-3. Wyświetlanie *AppToDB(1433)* połączenia pokazano na poniższej ilustracji widać, że dla tego samego źródłowego i docelowego maszyn wirtualnych, stan jest nieosiągalny za pośrednictwem portu 1433. **Widoku siatki** w tym scenariuszu zawiera informacje przeskoku przeskoku i wpływu na uzyskiwanie problem. W takim przypadku reguły NSG blokuje cały ruch na porcie 1433 na drugi przeskok.
+2. Wybierz monitor o nazwie **myVm1-myVm2(22)** w sposób pokazany na ilustracji powyżej, aby wyświetlić szczegóły monitora. Widać to na poniższej ilustracji:
 
-    ![Widok siatki](./media/connection-monitor/view-grid.png)
+    ![Szczegóły monitora](./media/connection-monitor/vm-monitor.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+    Zanotuj następujące informacje:
 
-- Informacje o sposobie przechwytywania pakietów z alertami maszyny Wirtualnej przez automatyzację [tworzenie przechwytywania pakietów wyzwolony alert](network-watcher-alert-triggered-packet-capture.md).
-- Ustalić, czy niektóre ruch jest dozwolony w lub z maszyny Wirtualnej za pomocą [Sprawdź przepływ IP](diagnose-vm-network-traffic-filtering-problem.md).
+    | Element                     | Wartość                      | Szczegóły                                                     |
+    | ---------                | ---------                  |--------                                                     |
+    | Stan                   | Osiągalne                  | Informuje o tym, czy punkt końcowy jest osiągalny.|
+    | ŚREDNI CZAS RUNDY          | Umożliwia poznanie czasu rundy podczas nawiązania połączenia (w milisekundach). Monitor połączeń sonduje połączenie co 60 sekund, dzięki czemu można monitorować czas opóźnienia.                                         |
+    | Przeskoki                     | Monitor połączeń informuje o przeskokach między dwoma punktami końcowymi. W tym przykładzie połączenie istnieje między dwiema maszynami wirtualnymi w tej samej sieci wirtualnej, dlatego jest tylko jeden przeskok do adresu IP 10.0.0.5. Dodatkowe przeskoki pojawią się, jeśli jakikolwiek istniejący system lub trasy niestandardowe kierują ruch między maszynami wirtualnymi za pośrednictwem na przykład bramy sieci VPN lub sieciowego urządzenia wirtualnego.                                                                                                                         |
+    | STAN                   | Zielone znaczniki wyboru przy poszczególnych punktach końcowych informują o dobrej kondycji każdego punktu końcowego.    ||
+
+## <a name="view-a-problem"></a>Wyświetlanie problemu
+
+Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między maszynami wirtualnymi w tej samej sieci wirtualnej. Może się zdarzyć, że Ty lub inna osoba w Twojej organizacji przesłoni domyślne reguły platformy Azure, co może doprowadzić do niepowodzenia komunikacji. Wykonaj poniższe kroki, aby utworzyć problem z komunikacją i ponownie wyświetlić monitor połączeń:
+
+1. W polu wyszukiwania w górnej części portalu prowadź ciąg *myResourceGroup*. Gdy grupa zasobów **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
+2. Wybierz sieciową grupę zabezpieczeń o nazwie **myVm2-nsg**.
+3. Wybierz **Reguły zabezpieczeń dla ruchu przychodzącego**, a następnie wybierz przycisk **Dodaj**, jak pokazano na poniższej ilustracji:
+
+    ![Reguły zabezpieczeń dla ruchu przychodzącego](./media/connection-monitor/inbound-security-rules.png)
+
+4. Domyślna reguła, która umożliwia komunikację między wszystkimi maszynami wirtualnymi w sieci wirtualnej, nosi nazwę **AllowVnetInBound**. Utwórz regułę o wyższym priorytecie (mniejsza liczba) niż reguła **AllowVnetInBound**, która odmówi komunikacji przychodzącej na porcie 22. Wybierz lub wprowadź poniższe informacje, zaakceptuj pozostałe wartości domyślne, a następnie wybierz pozycję **Dodaj**:
+
+    | Ustawienie                 | Wartość          |
+    | ---                     | ---            |
+    | Zakresy portów docelowych | 22             |
+    | Akcja                  | Zablokuj           |
+    | Priorytet                | 100            |
+    | Name (Nazwa)                    | DenySshInbound |
+
+5. Ponieważ monitor połączeń sonduje co 60 sekund, zaczekaj kilka minut, po lewej stronie portalu wybierz kolejno pozycje **Network Watcher** i **Monitor połączeń**, a następnie ponownie wybierz monitor  **myVm1-myVm2(22)**. Teraz wyniki są inne, jak pokazano na poniższej ilustracji:
+
+    ![Błąd w szczegółach monitora](./media/connection-monitor/vm-monitor-fault .png)
+
+    Widać, że w kolumnie Stan znajduje się ikona czerwonego wykrzyknika dla interfejsu sieciowego **myvm2529**.
+
+6. Aby dowiedzieć się, jaka jest przyczyna zmiany stanu, wybierz adres 10.0.0.5 widoczny na poprzedniej ilustracji. Monitor połączeń informuje o następującej przyczynie komunikacji: *Zablokowano ruch zgodnie z następującą regułą grupy zabezpieczeń sieci: UserRule_DenySshInbound*.
+
+    Dzięki monitorowi połączeń możesz dowiedzieć się, że ktoś zaimplementował regułę zabezpieczeń podobną do tej, którą utworzono w kroku 4, i że ona powoduje problem z komunikacją. Następnie możesz zmienić, przesłonić lub usunąć tę regułę, aby przywrócić komunikację między maszynami wirtualnymi.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już potrzebne, usuń je:
+
+1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
+2. Wybierz pozycję **Usuń grupę zasobów**.
+3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku przedstawiono sposób monitorowania połączenia między dwiema maszynami wirtualnymi. Reguła sieciowej grupy zabezpieczeń uniemożliwiała komunikację z maszyną wirtualną. Aby uzyskać informacje o wszystkich różnych odpowiedziach, które może zwrócić monitor połączeń, zobacz [typy odpowiedzi](network-watcher-connectivity-overview.md#response). Można również monitorować połączenie między maszyną wirtualną, w pełni kwalifikowaną nazwą domeny, identyfikatorem URI lub adresem IP.
+
+W pewnym momencie może się okazać, że zasoby w sieci wirtualnej nie mogą się komunikować z zasobami w innych sieciach połączonych za pośrednictwem bramy sieci wirtualnej platformy Azure. Przejdź do następnego samouczka, aby dowiedzieć się, jak zdiagnozować problem z bramą sieci wirtualnej.
+
+> [!div class="nextstepaction"]
+> [Diagnozowanie problemów z komunikacją między sieciami](diagnose-communication-problem-between-networks.md)

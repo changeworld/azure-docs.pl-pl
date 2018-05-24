@@ -2,18 +2,18 @@
 title: Opcje konta usługi Azure Storage | Microsoft Docs
 description: Opis opcji korzystania z usługi Azure Storage.
 services: storage
-author: jirwin
+author: hux
 manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 01/17/2018
-ms.author: jirwin
-ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 05/02/2018
+ms.author: hux
+ms.openlocfilehash: 69da15b98e6c519a3a8352cc7ca7212286cb4e52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-storage-account-options"></a>Opcje konta usługi Azure Storage
 
@@ -32,7 +32,7 @@ Poszczególne typy kont zostały dokładniej opisane w poniższej sekcji:
 
 Konta ogólnego przeznaczenia w wersji 2 (GPv2, General-purpose v2) to konta magazynu, które obsługują wszystkie najnowsze funkcje obiektów blob, plików, kolejek i tabel. Konta GPv2 obsługują wszystkie interfejsy API i funkcje obsługiwane na kontach GPv1 i kontach usługi Blob Storage. Zapewniają również taką samą trwałość, dostępność, skalowalność i wydajność, jak pozostałe typy kont. Cennik kont GPv2 został zaprojektowany tak, aby zapewniać najniższe ceny za gigabajt oraz konkurencyjne w branży ceny transakcji.
 
-Poziom konta GPv1 można podnieść na wersję GPv2, korzystając z programu PowerShell lub interfejsu wiersza polecenia platformy Azure. 
+Poziom konta GPv1 można podnieść na wersję GPv2, korzystając z witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure. 
 
 W przypadku blokowych obiektów blob na koncie magazynu GPv2 można wybrać warstwę magazynowania Gorąca lub Chłodna na poziomie konta. Na podstawie wzorców dostępu można też wybrać warstwę Gorąca, Chłodna lub Archiwum na poziomie obiektu blob. Przechowuj dane, do których uzyskujesz dostęp często, niezbyt często i rzadko, odpowiednio w warstwach magazynowania Gorąca, Chłodna i Archiwum, aby zoptymalizować koszty. 
 
@@ -72,8 +72,6 @@ Konta ogólnego przeznaczenia w wersji 1 (GPv1) to najstarszy typ konta magazynu
 ### <a name="blob-storage-accounts"></a>Konta usługi Blob Storage
 
 Konta usługi Blob Storage obsługują te same funkcje blokowych obiektów blob co konta GPv2, są jednak ograniczone tylko do obsługi blokowych obiektów blob. Cennik jest w znacznej mierze podobny do cennika kont ogólnego przeznaczenia w wersji 2. Klienci powinni zapoznać się z różnicami w cenach kont usługi Blob Storage i GPv2, a następnie rozważyć podniesienie poziomu do konta GPv2. Tego podniesienia poziomu nie można cofnąć.
-
-Możliwość podniesienia poziomu konta usługi Blob Storage do konta GPv2 będzie dostępna wkrótce.
 
 > [!NOTE]
 > Konta Magazynu obiektów blob obsługują tylko blokowe obiekty blob i uzupełnialne obiekty blob — stronicowe obiekty blob nie są obsługiwane.
@@ -115,9 +113,10 @@ Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob o
 
 W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny Azure Portal:
 
-* Tworzenie konta magazynu GPv2.
-* Konwertowanie konta GPv1 lub konta usługi Blob Storage na konto magazynu GPv2.
-* Ustawianie warstwy obiektu blob i konta na koncie magazynu GPv2.
+* [Jak utworzyć konto magazynu GPv2.](#create-a-gpv2-storage-account-using-the-azure-portal)
+* [Jak skonwertować konto GPv1 lub konto usługi Blob Storage na konto magazynu GPv2.](#convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal)
+* [Jak ustawić konto na koncie magazynu GPv2.](#change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal)
+* [Jak ustawić warstwę obiektu blob w usłudze Blob Storage lub na koncie magazynu GPv2.](#change-the-storage-tier-of-a-blob-using-the-azure-portal)
 
 W poniższych przykładach nie można ustawić warstwy dostępu na Archiwum, ponieważ to ustawienie dotyczy całego konta magazynu. Warstwę archiwalną można ustawić tylko dla określonego obiektu blob.
 
@@ -141,7 +140,7 @@ W poniższych przykładach nie można ustawić warstwy dostępu na Archiwum, pon
 
 6. Wybierz opcję replikacji dla konta magazynu: **LRS**, **ZRS**, **GRS** lub **RA-GRS**. Wartość domyślna to **RA-GRS**.
 
-    LRS = magazyn lokalnie nadmiarowy; ZRS = magazyn strefowo nadmiarowy; GRS = magazyn geograficznie nadmiarowy (dwa regiony); RA-GRS to magazyn geograficznie nadmiarowy z dostępem do odczytu (dwa regiony z dostępem do odczytu do drugiego).
+    LRS = magazyn lokalnie nadmiarowy; ZRS = magazyn strefowo nadmiarowy; GRS = magazyn geograficznie nadmiarowy (dwa regiony); RA-GRS = magazyn geograficznie nadmiarowy z dostępem do odczytu (dwa regiony z dostępem do odczytu do drugiego).
 
     Aby uzyskać więcej szczegółów na temat opcji replikacji usługi Azure Storage, zobacz [Replikacja usługi Azure Storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -155,7 +154,7 @@ W poniższych przykładach nie można ustawić warstwy dostępu na Archiwum, pon
 
 11. Kliknij pozycję **Utwórz**, aby utworzyć konto magazynu.
 
-### <a name="convert-a-gpv1-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Konwertowanie konta GPv1 na konto magazynu GPv2 w witrynie Azure Portal
+### <a name="convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Konwertowanie konta GPv1 lub usługi Blob Storage na konto magazynu GPv2 w witrynie Azure Portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -315,7 +314,7 @@ Obniżanie wersji z konta GPv2 nie jest obsługiwane, dlatego należy wziąć po
 
 **Czy mogę uaktualnić istniejące konto magazynu do konta GPv2?**
 
-Tak. Konta GPv1 można łatwo uaktualnić do kont GPv2 za pomocą portalu, programu PowerShell lub interfejsu wiersza polecenia. Poziom kont usługi Blob Storage można podnieść do kont GPv2 za pomocą programu PowerShell lub interfejsu wiersza polecenia. Możliwość podniesienia poziomu kont usługi Blob Storage do kont GPv2 w portalu będzie dostępna wkrótce.
+Tak. Konta GPv1 lub konta usługi Blob Storage można łatwo uaktualnić do kont GPv2 za pomocą portalu, programu PowerShell lub interfejsu wiersza polecenia. 
 
 Obniżanie wersji z konta GPv2 nie jest obsługiwane, dlatego należy wziąć pod uwagę wszystkie implikacje cenowe przed uaktualnieniem swoich kont do wersji GPv2.
 
@@ -329,7 +328,7 @@ Tak, zmiana warstwy magazynowania konta jest możliwa przez ustawienie atrybutu 
 
 **Jak często mogę zmieniać warstwę magazynowania na moim koncie usługi Blob Storage?**
 
-Nie wymuszamy limitu częstotliwości zmiany warstwy magazynowania, ale należy pamiętać, że zmiana warstwy magazynowania z chłodnej na gorącą spowoduje naliczenie znaczących opłat. Nie zaleca się częstych zmian warstwy magazynowania.
+Nie wymuszamy limitu częstotliwości zmiany warstwy magazynowania, ale należy pamiętać, że zmiana warstwy magazynowania z chłodnej na gorącą może spowodować naliczenie znaczących opłat. Nie zaleca się częstych zmian warstwy magazynowania.
 
 **Czy obiekty blob w chłodnej warstwie magazynowania działają inaczej niż obiekty blob w gorącej warstwie magazynowania?**
 

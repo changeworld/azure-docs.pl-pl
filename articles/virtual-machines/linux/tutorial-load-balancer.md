@@ -1,6 +1,6 @@
 ---
-title: Jak równoważyć obciążenie maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak utworzyć bezpieczną aplikację o wysokiej dostępności przy użyciu trzech maszyn wirtualnych z systemem Linux i modułu równoważenia obciążenia platformy Azure
+title: Samouczek — równoważenie obciążenia maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure 2.0 utworzyć moduł równoważenia obciążenia dla bezpiecznej aplikacji o wysokiej dostępności na 3 maszynach wirtualnych z systemem Linux
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: baae0ee72056d2f7437a865b11f738ef0a2e6934
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Jak równoważyć obciążenie maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności
+# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli-20"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+
 Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żądań przychodzących pomiędzy wiele maszyn wirtualnych. W tym samouczku poznasz poszczególne składniki modułu równoważenia obciążenia platformy Azure, które dystrybuują ruch i zapewniają wysoką dostępność. Omawiane kwestie:
 
 > [!div class="checklist"]
@@ -34,10 +35,9 @@ Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żąda�
 > * Wyświetlanie działającego modułu równoważenia obciążenia
 > * Dodawanie i usuwanie maszyn wirtualnych w module równoważenia obciążenia
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Omówienie modułu równoważenia obciążenia platformy Azure
 Moduł równoważenia obciążenia platformy Azure jest modułem w warstwie 4 (TCP, UDP), który zapewnia wysoką dostępność, rozkładając ruch przychodzący na maszyny wirtualne w dobrej kondycji. Sonda kondycji modułu równoważenia obciążenia monitoruje określony port na każdej maszynie wirtualnej i dystrybuuje ruch tylko do działającej maszyny wirtualnej.

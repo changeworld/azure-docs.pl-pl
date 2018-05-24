@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: Samouczek — tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
+title: Samouczek — tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak tworzyć maszyny wirtualne z systemem Linux i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure 2.0
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a3826db21d2e4ed447e1ef8d4016ff1dbbf75b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4e8be3af81ce74b033b2a15ceaf857540c1d9a6e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>Samouczek — tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure 2.0
 
 Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne środowiska obliczeniowe. W tym samouczku opisano podstawowe elementy wdrożenia maszyny wirtualnej platformy Azure, takie jak wybieranie rozmiaru i obrazu maszyny wirtualnej oraz wdrażanie maszyny wirtualnej. Omawiane kwestie:
 
@@ -33,10 +33,9 @@ Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne 
 > * Zmienianie rozmiaru maszyny wirtualnej
 > * Wyświetlanie stanu maszyny wirtualnej i jego omówienie
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
@@ -85,7 +84,7 @@ Tworzenie maszyny wirtualnej może potrwać kilka minut. Po utworzeniu maszyny w
 Możesz teraz nawiązać połączenie z maszyną wirtualną przy użyciu protokołu SSH w usłudze Azure Cloud Shell lub z poziomu komputera lokalnego. Zastąp przykładowy adres IP adresem `publicIpAddress` zanotowanym w poprzednim kroku.
 
 ```bash
-ssh 52.174.34.95
+ssh azureuser@52.174.34.95
 ```
 
 Po zalogowaniu się do maszyny wirtualnej możesz zainstalować i skonfigurować aplikacje. Gdy skończysz, zamknij sesję SSH jak zwykle:

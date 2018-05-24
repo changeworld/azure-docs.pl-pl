@@ -1,36 +1,36 @@
 ---
-title: Centrum zabezpieczeń Azure i systemu Windows maszyny wirtualne na platformie Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat zabezpieczeń dla maszyny wirtualnej systemu Windows Azure z Centrum zabezpieczeń Azure.
+title: Samouczek — korzystanie z usługi Azure Security Center na potrzeby maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+description: W tym samouczku przedstawiono funkcje usługi Azure Security Center ułatwiające ochronę i zabezpieczanie maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b573208107b07b47b471d9c5247b362ef144099e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Monitorowanie zabezpieczeń maszyny wirtualnej przy użyciu usługi Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
 
 Usługa Azure Security Center ułatwia wgląd w rozwiązania z zakresu zabezpieczeń zasobów platformy Azure. Usługa Security Center oferuje zintegrowane monitorowanie zabezpieczeń. Potrafi wykrywać zagrożenia, które inaczej mogłyby ujść uwadze. W tym samouczku poznasz usługę Azure Security Center oraz następujące zagadnienia:
- 
+
 > [!div class="checklist"]
 > * Konfigurowanie zbierania danych
 > * Konfigurowanie zasad zabezpieczeń
 > * Wyświetlanie problemów z kondycją konfiguracji i ich rozwiązywanie
-> * Przeglądanie wykrytych zagrożeń  
+> * Przeglądanie wykrytych zagrożeń
 
 ## <a name="security-center-overview"></a>Security Center — Przegląd
 
@@ -135,7 +135,7 @@ Wybierz alert, aby wyświetlić informacje. Można na przykład zobaczyć opis z
 
 ![Atak przez protokół RDP](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku skonfigurowano usługę Azure Security Center, a następnie sprawdzono maszyny wirtualne w usłudze Security Center. W tym samouczku omówiono:
 
 > [!div class="checklist"]
@@ -144,7 +144,7 @@ W tym samouczku skonfigurowano usługę Azure Security Center, a następnie spra
 > * Wyświetlanie problemów z kondycją konfiguracji i ich rozwiązywanie
 > * Przeglądanie wykrytych zagrożeń
 
-Przejdź do następnego samouczkiem, aby dowiedzieć się, jak utworzyć potok CI/CD z Visual Studio Team Services i maszyny Wirtualnej systemu Windows usług IIS.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć potok ciągłej integracji i ciągłego wdrażania za pomocą usługi Visual Studio Team Services oraz maszyny wirtualnej z systemem Windows i z uruchomionymi usługami IIS.
 
 > [!div class="nextstepaction"]
-> [Visual Studio Team Services CI/CD potoku](./tutorial-vsts-iis-cicd.md)
+> [Potok ciągłej integracji i ciągłego wdrażania usługi Visual Studio Team Services](./tutorial-vsts-iis-cicd.md)
