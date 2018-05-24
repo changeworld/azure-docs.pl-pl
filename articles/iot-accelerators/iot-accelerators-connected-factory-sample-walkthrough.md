@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 68ed75a9ef2faee408e65c0991182b7d95bb17a8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2144747fdaa0c596397cc93d8509ca006b67c592
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303508"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366209"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Przewodnik po akceleratorze rozwiązania połączonej fabryki
 
 [Akcelerator rozwiązania][lnk-preconfigured-solutions] połączonej fabryki to implementacja kompleksowego rozwiązania przemysłowego, które:
 
-* Łączy się zarówno z symulowanymi urządzeniami przemysłowymi, na których działają serwery OPC UA na liniach produkcyjnych symulowanej fabryki, jak i z rzeczywistymi urządzeniami serwerów OPC UA. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
+* Łączy się zarówno z symulowanymi urządzeniami przemysłowymi, na których działają serwery OPC UA na liniach produkcyjnych symulowanej fabryki, jak i z rzeczywistymi urządzeniami serwerów OPC UA. Aby uzyskać więcej informacji na temat OPC UA, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-accelerators-faq-cf.md).
 * Pokazuje operacyjne kluczowe wskaźniki wydajności oraz ogólną wydajność sprzętu dla tych urządzeń i linii produkcyjnych.
 * Demonstruje, jak aplikacja w chmurze może zostać użyta na potrzeby interakcji z systemami serwerów OPC UA.
 * Umożliwia połączenie własnych urządzeń serwerów OPC UA.
@@ -41,7 +41,7 @@ Ten artykuł przeprowadzi Cię przez niektóre kluczowe elementy rozwiązania po
 * Planowanie sposobu dostosowywania rozwiązania, aby spełniało Twoje wymagania.
 * Projektowanie własnego rozwiązania IoT korzystającego z usług Azure.
 
-Aby uzyskać więcej informacji, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-suite-faq-cf.md).
+Aby uzyskać więcej informacji, zobacz [Connected Factory FAQ (Połączona fabryka — często zadawane pytania)](iot-accelerators-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Architektura logiczna
 
@@ -127,7 +127,7 @@ Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zint
 
 ## <a name="telemetry-data-flow"></a>Przepływ danych telemetrycznych
 
-![Przepływ danych telemetrycznych](media/iot-suite-connected-factory-walkthrough/telemetry_dataflow.png)
+![Przepływ danych telemetrycznych](./media/iot-accelerators-connected-factory-sample-walkthrough/telemetry_dataflow.png)
 
 ### <a name="flow-steps"></a>Kroki przepływu
 
@@ -179,7 +179,7 @@ Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zint
 
 ## <a name="browsing-data-flow"></a>Przeglądanie przepływu danych
 
-![Przeglądanie przepływu danych](media/iot-suite-connected-factory-walkthrough/browsing_dataflow.png)
+![Przeglądanie przepływu danych](./media/iot-accelerators-connected-factory-sample-walkthrough/browsing_dataflow.png)
 
 ### <a name="flow-steps"></a>Kroki przepływu
 
@@ -233,15 +233,15 @@ Aplikacja internetowa wdrożona w ramach akceleratora rozwiązania obejmuje zint
 Możesz kontynuować poznawanie akceleratorów rozwiązań IoT, czytając następujące artykuły:
 
 * [Uprawnienia w witrynie azureiotsuite.com][lnk-permissions]
-* [Deploy a gateway on Windows or Linux for the Connected Factory solution accelerator (Wdrażanie bramy w systemie Windows lub Linux na potrzeby akceleratora rozwiązania połączonej fabryki)](iot-suite-connected-factory-gateway-deployment.md)
+* [Deploy a gateway on Windows or Linux for the Connected Factory solution accelerator (Wdrażanie bramy w systemie Windows lub Linux na potrzeby akceleratora rozwiązania połączonej fabryki)](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC Publisher reference implementation (Implementacja referencyjna wydawcy OPC)](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
-[connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
+[connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]:../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
-[lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+[lnk-preconfigured-solutions]:iot-accelerators-what-are-solution-accelerators.md
+[lnk-customize]: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
-[lnk-permissions]: iot-suite-v1-permissions.md
+[lnk-permissions]: ../iot-suite/iot-suite-v1-permissions.md

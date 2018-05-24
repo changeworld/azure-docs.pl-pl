@@ -1,12 +1,12 @@
 ---
-title: "Wstępnie skonfigurowane rozwiązania Azure IoT | Microsoft Docs"
-description: "Opis wstępnie skonfigurowanych rozwiązań Azure IoT, w tym informacje dotyczące ich architektury oraz linki prowadzące do dodatkowych zasobów."
-services: 
+title: Wstępnie skonfigurowane rozwiązania Azure IoT | Microsoft Docs
+description: Opis wstępnie skonfigurowanych rozwiązań Azure IoT, w tym informacje dotyczące ich architektury oraz linki prowadzące do dodatkowych zasobów.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 76df013e8e5868fcc9f5d95aa523a6a56dea7163
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d860c768a73737e6c8c52a8652d6b43434a3a07d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361992"
 ---
-# <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Co to są wstępnie skonfigurowane rozwiązania Pakietu IoT Azure?
+# <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Co to są wstępnie skonfigurowane rozwiązania pakietu Azure IoT Suite?
 
-Wstępnie skonfigurowane rozwiązania Pakietu IoT Azure to implementacje typowych wzorców rozwiązań IoT, które można wdrożyć na platformie Azure przy użyciu posiadanej subskrypcji. Wstępnie skonfigurowanych rozwiązań można używać w następujący sposób:
+Wstępnie skonfigurowane rozwiązania pakietu Azure IoT Suite to implementacje typowych wzorców rozwiązań IoT, które można wdrożyć na platformie Azure przy użyciu posiadanej subskrypcji. Wstępnie skonfigurowanych rozwiązań można używać w następujący sposób:
 
 * Jako punktu wyjściowego dla własnych rozwiązań IoT.
 * Jako platformy umożliwiającej zapoznanie się z typowymi wzorcami projektowania i tworzenia rozwiązań IoT.
@@ -33,15 +34,15 @@ Każde wstępnie skonfigurowane rozwiązanie stanowi kompletną implementację, 
 Możliwe jest pobranie pełnego kodu źródłowego w celu dostosowania i rozbudowania danego rozwiązania pod kątem własnych wymagań dotyczących urządzeń IoT.
 
 > [!NOTE]
-> Aby wdrożyć wstępnie skonfigurowane rozwiązanie, odwiedź witrynę [Pakiet IoT Azure firmy Microsoft][lnk-azureiotsuite]. Więcej informacji dotyczących wdrażania i uruchamiania przykładowego rozwiązania można znaleźć w artykule [Wprowadzenie do wstępnie skonfigurowanych rozwiązań IoT][lnk-getstarted-preconfigured].
+> Aby wdrożyć wstępnie skonfigurowane rozwiązanie, odwiedź witrynę [Microsoft Azure IoT Suite][lnk-azureiotsuite]. Więcej informacji dotyczących wdrażania i uruchamiania przykładowego rozwiązania można znaleźć w artykule [Wprowadzenie do wstępnie skonfigurowanych rozwiązań IoT][lnk-getstarted-preconfigured].
 
 W poniższej tabeli przedstawiono odwzorowanie rozwiązań na określone funkcje IoT:
 
 | Rozwiązanie | Wprowadzanie danych | Tożsamość urządzenia | Zarządzanie urządzeniami | Sterowanie i kontrola | Reguły i akcje | Analiza predykcyjna |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Zdalne monitorowanie][lnk-getstarted-preconfigured] |Tak |Tak |Tak |Tak |Tak |- |
-| [Konserwacja zapobiegawcza][lnk-predictive-maintenance] |Tak |Tak |- |Tak |Tak |Tak |
-| [Połączona fabryka][lnk-getstarted-factory] |Tak |Tak |Tak |Tak |Tak |- |
+| [Zdalne monitorowanie][lnk-getstarted-preconfigured] |Yes |Yes |Yes |Yes |Yes |- |
+| [Konserwacja zapobiegawcza][lnk-predictive-maintenance] |Yes |Yes |- |Yes |Yes |Yes |
+| [Połączona fabryka][lnk-getstarted-factory] |Yes |Yes |Yes |Yes |Yes |- |
 
 * *Wprowadzanie danych*: transfer danych do chmury na dużą skalę.
 * *Tożsamość urządzenia*: zarządzanie unikatowymi tożsamościami urządzeń i sterowanie dostępem urządzeń do rozwiązania.
@@ -174,4 +175,4 @@ Teraz, kiedy już wiesz, czym jest wstępnie skonfigurowane rozwiązanie, możes
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+[lnk-getstarted-factory]:../iot-accelerators/iot-accelerators-connected-factory-overview.md

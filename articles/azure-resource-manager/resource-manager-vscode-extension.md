@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358663"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Tworzenie szablonów usługi Azure Resource Manager przy użyciu rozszerzenia programu Visual Studio Code
 W tym artykule przedstawiono korzyści płynące z zainstalowania i używania rozszerzenia Narzędzia usługi Azure Resource Manager w programie Visual Studio Code. Można tworzyć szablony usługi Resource Manager w programie VS Code bez korzystania z rozszerzenia, ale rozszerzenie udostępnia opcje autouzupełniania, które upraszczają proces tworzenia szablonu. Sugerują one funkcje szablonu, parametry i zmienne, które są dostępne w szablonie.

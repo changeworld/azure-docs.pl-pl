@@ -1,9 +1,9 @@
 ---
-title: "Przykładowy skrypt interfejsu wiersza polecenia — tworzenie bazy danych Azure SQL Database | Microsoft Docs"
-description: "Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia utworzenie bazy danych SQL."
+title: Przykładowy skrypt interfejsu wiersza polecenia — tworzenie bazy danych Azure SQL Database | Microsoft Docs
+description: Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia utworzenie bazy danych SQL.
 services: sql-database
 documentationcenter: sql-database
-author: janeng
+author: CarlRabeler
 manager: janeng
 editor: carlrab
 ms.service: sql-database
@@ -12,13 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 03/01/2018
-ms.author: janeng
-ms.openlocfilehash: bb80421b360f43df82ea4a9b2dff5ccc1efdb4a9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: carlrab
+ms.date: 05/17/2018
+ms.openlocfilehash: bca779e55d14a6ff3cb6da0984de93123cf23903
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365733"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Tworzenie jednej bazy danych Azure SQL Database i konfigurowanie reguły zapory przy użyciu interfejsu wiersza polecenia
 

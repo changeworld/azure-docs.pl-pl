@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360108"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 Program Visual Studio i zestaw [Azure SDK](https://azure.microsoft.com/downloads/) umożliwiają utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host sieci Web, witrynę sieci Web i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Można również zdefiniować maszynę wirtualną, usługę Virtual Network i konto usługi Storage, a następnie wdrożyć tę infrastrukturę wraz ze skryptem wykonywanym na maszynie wirtualnej. Projekt wdrożenia **grupy zasobów platformy Azure** umożliwia wdrożenie wszystkich niezbędnych zasobów w ramach pojedynczej i powtarzalnej operacji. Aby uzyskać więcej informacji dotyczących wdrażania zasobów i zarządzania nimi, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).

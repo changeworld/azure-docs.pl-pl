@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364611"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Samouczek: dodawanie punktu końcowego HTTPS do usługi frontonu internetowego interfejsu API platformy ASP.NET Core
 Ten samouczek jest trzecią częścią serii.  Dowiesz się, jak włączyć protokół HTTPS w usłudze platformy ASP.NET Core działającej w usłudze Service Fabric. Po zakończeniu będziesz mieć aplikację do głosowania z usługą internetową frontonu ASP.NET Core z włączonym protokołem HTTPS nasłuchującą na porcie 443. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania w sekcji [Tworzenie aplikacji platformy .NET w usłudze Service Fabric](service-fabric-tutorial-deploy-app-to-party-cluster.md), możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ukończonej aplikacji.
@@ -49,7 +50,7 @@ Przed rozpoczęciem tego samouczka:
 - [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Uzyskaj certyfikat lub utwórz certyfikat programistyczny z podpisem własnym
-, potrzebny jest certyfikat cyfrowy.  W przypadku aplikacji produkcyjnych należy używać certyfikatu z [urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority). Dla celów projektowania i testowania możesz utworzyć i używać certyfikatu z podpisem własnym. Zestaw SDK usługi Service Fabric zawiera skrypt *CertSetup.ps1*, który tworzy certyfikat z podpisem własnym, a następnie importuje go do magazynu certyfikatów `Cert:\LocalMachine\My`. Otwórz wiersz polecenia jako administrator i uruchom następujące polecenie, aby utworzyć certyfikat z podmiotem „CN = localhost”:
+W przypadku aplikacji produkcyjnych należy używać certyfikatu z [urzędu certyfikacji](https://wikipedia.org/wiki/Certificate_authority). Dla celów projektowania i testowania możesz utworzyć i używać certyfikatu z podpisem własnym. Zestaw SDK usługi Service Fabric zawiera skrypt *CertSetup.ps1*, który tworzy certyfikat z podpisem własnym, a następnie importuje go do magazynu certyfikatów `Cert:\LocalMachine\My`. Otwórz wiersz polecenia jako administrator i uruchom następujące polecenie, aby utworzyć certyfikat z podmiotem „CN = localhost”:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost

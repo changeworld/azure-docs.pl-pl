@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ce4522673bac56f73944413d102b7cb36cf93f30
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361842"
 ---
 # <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>Samouczek: uzyskiwanie dostępu do laboratorium niestandardowego w usłudze Azure DevTest Labs
 W tym samouczku używasz laboratorium niestandardowego, które zostało utworzone w temacie [Samouczek: tworzenie laboratorium niestandardowego](tutorial-create-custom-lab.md).
