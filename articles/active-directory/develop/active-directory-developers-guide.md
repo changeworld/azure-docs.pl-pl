@@ -16,11 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f0f577e2ff18645cfa93763f2345ef4230907e09
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257553"
 ---
 # <a name="azure-active-directory-for-developers"></a>Usługa Azure Active Directory dla deweloperów
 
@@ -55,7 +56,6 @@ Te przewodniki prowadzą użytkownika przez niektóre z najczęściej wykonywany
 |[Rejestracja aplikacji](active-directory-integrating-applications.md)           | Jak zarejestrować aplikację w usłudze Azure AD. |
 |[Aplikacje wielodostępne](active-directory-devhowto-multi-tenant-overview.md)    | Jak zalogować dowolne konto służbowe Microsoft. |
 |[Protokoły OAuth i OpenID Connect](active-directory-protocols-openid-connect-code.md)| Jak logować użytkowników i wywoływać interfejsy API sieci Web za pomocą protokołów uwierzytelniania firmy Microsoft. |
-|[Dodatkowe przewodniki](active-directory-developers-guide-index.md#guides)        |  Lista dostępnych przewodników dotyczących usługi Azure AD. |
 |  |  |
 
 ## <a name="reference-topics"></a>Tematy informacyjne
@@ -66,7 +66,6 @@ Następujące artykuły zawierają szczegółowe informacje o interfejsach API, 
 | [Biblioteki uwierzytelniania (ADAL)](active-directory-authentication-libraries.md)   | Omówienie bibliotek i zestawów SDK dostarczanych przez usługę Azure AD. |
 | [Przykłady kodu](active-directory-code-samples.md)                                  | Lista wszystkich przykładów kodu usługi Azure AD. |
 | [Słownik](active-directory-dev-glossary.md)                                      | Terminologia i definicje słów używanych w tej dokumentacji. |
-| [Dodatkowe tematy informacyjne](active-directory-developers-guide-index.md#reference)| Lista dostępnych tematów informacyjnych usługi Azure AD. |
 |  |  |
 
 

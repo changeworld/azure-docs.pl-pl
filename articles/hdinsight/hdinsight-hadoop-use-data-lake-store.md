@@ -1,9 +1,9 @@
 ---
-title: "Używanie usługi Data Lake Store z platformą Hadoop w usłudze Azure HDInsight | Microsoft Docs"
-description: "Dowiedz się, jak wykonywać zapytania o dane z usługi Azure Data Lake Store i zapisywać wyniki analiz."
+title: Używanie usługi Data Lake Store z platformą Hadoop w usłudze Azure HDInsight | Microsoft Docs
+description: Dowiedz się, jak wykonywać zapytania o dane z usługi Azure Data Lake Store i zapisywać wyniki analiz.
 keywords: blob storage,hdfs,structured data,unstructured data, data lake store
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -14,13 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/20/2017
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: e14de80dc1fdf82c57f2a38d4ae2719ec83e01ed
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 0d0fb9bad8c6120100ae3ee766aea7620dd6105f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34201761"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Data Lake Store w połączeniu z klastrami usługi Azure HDInsight
 

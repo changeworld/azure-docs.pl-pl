@@ -2,18 +2,19 @@
 title: Tworzenie zasad i zarządzanie nimi za pomocą usługi Azure Policy w celu wymuszania zgodności organizacyjnej
 description: Usługa Azure Policy umożliwia wymuszanie standardów, zachowanie zgodności z przepisami, spełnianie wymagań inspekcji, kontrolowanie kosztów, zapewnianie spójności wydajności i zabezpieczeń oraz narzucanie zasad projektowania dla całego przedsiębiorstwa.
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 2e04e08d22890246e2b68a55d79e82864201ef9d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+manager: carmonm
+ms.openlocfilehash: 1d13c5c0099b8e4c9ed83221edf6a2ee92fc3c8e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194873"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
@@ -31,16 +32,16 @@ Przejrzyj artykuły Szybki start, aby dowiedzieć się, jak przypisać zasady w 
 
 Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy jest przypisanie definicji zasad. Definicja zasad określa, w jakim przypadku zasady zostaną wymuszone oraz jaki efekt przyniosą. W tym przykładzie przypiszesz wbudowaną definicję zasad o nazwie *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0) w celu wymuszenia warunku określającego, że wszystkie bazy danych programu SQL Server muszą być w wersji 12.0, aby były zgodne.
 
-1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
    ![Wyszukiwanie zasad](media/create-manage-policy/search-policy.png)
 
-2. Wybierz pozycję **Przypisania** w lewej części strony Azure Policy. Przypisanie to zasady, które zostały przypisane do określonego zakresu.
+2. Wybierz pozycję **Przypisania** w lewej części strony usługi Azure Policy. Przypisanie to zasady, które zostały przypisane do określonego zakresu.
 3. Wybierz pozycję **Przypisz zasady** w górnej części strony **Zasady — Przypisania**.
 
    ![Przypisywanie definicji zasad](media/create-manage-policy/select-assign-policy.png)
 
-4. Na stronie **Wybór zasad** wybierz pozycję **Zakres**, klikając wielokropek i wybierając subskrypcję (wymagane) i grupę zasobów (opcjonalnie). Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad.  Następnie kliknij przycisk **Wybierz** w dolnej części strony **Zakres**.
+4. Na stronie **Przypisywanie zasad** wybierz pozycję **Zakres**, klikając wielokropek i wybierając subskrypcję (wymagane) i grupę zasobów (opcjonalnie). Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad.  Następnie kliknij przycisk **Wybierz** w dolnej części strony **Zakres**.
 
    W tym przykładzie użyto **subskrypcji Contoso**. Twoja subskrypcja będzie inna.
 
@@ -52,7 +53,7 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
    ![Lokalizowanie zasad](media/create-manage-policy/select-available-definition.png)
 
-8. W polu **Nazwa przypisania** jest automatycznie wpisywana nazwa wybranej zasady, ale można ją zmienić. Na potrzeby tego przykładu pozostaw nazwę *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0). Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
+8. Pole **Nazwa przypisania** jest automatycznie wypełniane przy użyciu nazwy wybranych zasad, ale można ją zmienić. Na potrzeby tego przykładu pozostaw nazwę *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0). Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
 
 9. Kliknij przycisk **Przypisz**.
 

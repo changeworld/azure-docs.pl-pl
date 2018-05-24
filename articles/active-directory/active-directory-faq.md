@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: e12487c519a927b18574310b7af04a1811befd38
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 285961279a35d2770f05eb66b961f64e6781d9df
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34336555"
 ---
 # <a name="azure-active-directory-faq"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -175,7 +176,7 @@ Aby uzyskać więcej informacji, zobacz:
 * Bezpośrednie logowanie do aplikacji federacyjnych
 * Linki bezpośrednie do federacyjnych, opartych na hasłach lub istniejących aplikacjach
 
-Aby uzyskać więcej informacji, zobacz [Wdrażanie zintegrowanych aplikacji usługi Azure AD dla użytkowników](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+Aby uzyskać więcej informacji, zobacz [Wdrażanie zintegrowanych aplikacji usługi Azure AD dla użytkowników](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
 
 - - -
 **Pytanie: jakie są różne sposoby włączania uwierzytelniania i logowania jednokrotnego do aplikacji przez usługę Azure AD?**
@@ -186,7 +187,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 * [Scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md)
 * [Protokoły uwierzytelniania usługi Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Jak działa logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
+* [Jak działa logowanie jednokrotne z usługą Azure Active Directory?](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
 
 - - -
 **Pytanie: czy mogę dodać aplikacje uruchamiane lokalnie?**
