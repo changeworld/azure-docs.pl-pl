@@ -12,13 +12,16 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e24091b017a1c6c82cfe8d12873223b98c165c63
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bc144fb1d7db9251871e7e181b012417a32de7e6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868113"
 ---
 # <a name="what-is-azure-signalr-service"></a>Co to jest Azure SignalR Service
+
+Usługa Microsoft Azure SignalR Service jest obecnie dostępna w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure SignalR Service jest usługą platformy Azure bazującą na bibliotece [ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction). ASP.NET Core SignalR jest [biblioteką typu open source](https://github.com/aspnet/signalr), która upraszcza proces dodawania do aplikacji możliwości działania w czasie rzeczywistym w Internecie za pośrednictwem protokołu HTTP. Ta możliwość działania w czasie rzeczywistym umożliwia serwerowi internetowemu wypychanie aktualizacji zawartości do połączonych klientów. W związku z tym klienci otrzymują aktualizacje bez konieczności sondowania serwera czy przesyłania nowych żądań HTTP o aktualizacje.
 
@@ -37,7 +40,7 @@ Wewnętrznie biblioteka SignalR stanowi abstrakcję szeregu technik służących
 
 ## <a name="developing-signalr-apps"></a>Tworzenie aplikacji SignalR
 
-Obecnie dostępne są dwie wersje biblioteki SignalR, których można używać z aplikacjami internetowymi: SignalR for ASP.NET i ASP.NET Core SignalR, która jest najnowszą wersją. Usługa Azure SignalR Service, nazywana również *SignalR Service*, jest usługą zarządzaną przez platformę Azure, zbudowaną na podstawie biblioteki ASP.NET Core SignalR. 
+Obecnie dostępne są dwie wersje biblioteki SignalR, których można używać z aplikacjami internetowymi: SignalR for ASP.NET i ASP.NET Core SignalR, która jest najnowszą wersją. Usługa Azure SignalR Service jest usługą zarządzaną przez platformę Azure, zbudowaną na podstawie biblioteki ASP.NET Core SignalR. 
 
 ASP.NET Core SignalR to ponownie napisana poprzednia wersja tej biblioteki. W związku z tym biblioteka ASP.NET Core SignalR nie jest zgodna z wcześniejszą wersją biblioteki SignalR. Interfejsy API i działanie różnią się. Zestaw ASP.NET Core SignalR SDK jest zgodny ze specyfikacją .NET Standard, więc nadal można z niego korzystać na platformie .NET Framework. Należy jednak używać nowych interfejsów API zamiast starych. Jeśli używasz biblioteki SignalR i chcesz przejść na bibliotekę ASP.NET Core SignalR lub usługę Azure SignalR Service, musisz zmodyfikować swój kod tak, aby uwzględnić różnice w interfejsach API.
 
