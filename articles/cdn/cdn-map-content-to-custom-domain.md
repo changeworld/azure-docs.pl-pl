@@ -4,21 +4,22 @@ description: W tym samouczku będziesz mapować zawartość punktu końcowego us
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/06/2018
+ms.date: 05/15/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f57cfe19fd2eee0952a20fabcaa0d73ca96894ef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d20dca9a1248cfb2915ebbc456fba80aadcf81f5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196508"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN
 W tym samouczku przedstawiono sposób dodawania domeny niestandardowej do punktu końcowego usługi Azure Content Delivery Network (CDN). W przypadku dostarczania zawartości przy użyciu punktu końcowego usługi CDN domena niestandardowa jest niezbędna, jeśli chcesz, aby nazwa Twojej domeny była widoczna w adresie URL usługi CDN. Widoczna nazwa domeny może być wygodna dla klientów i przydatna dla celów związanych ze znakowaniem. 
@@ -112,19 +113,28 @@ Po zarejestrowaniu domeny niestandardowej można dodać ją do punktu końcowego
     
 2. Na stronie **Profil CDN** wybierz punkt końcowy usługi CDN do skojarzenia z domeną niestandardową.
 
-    Zostanie otwarta strona **Punkt końcowy**.
+   Zostanie otwarta strona **Punkt końcowy**.
     
 3. Wybierz pozycję **Domena niestandardowa**. 
 
    ![Przycisk domeny niestandardowej usługi CDN](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
 
-4. W obszarze **Niestandardowa nazwa hosta** wprowadź domenę niestandardową, w tym domenę podrzędną. Na przykład: www.contoso.com lub cdn.contoso.com. Nie używaj nazwy domeny podrzędnej cdnverify.
+   Zostanie otwarta strona **Dodawanie domeny niestandardowej**.
+
+4. W obszarze **Nazwa hosta punktu końcowego** wstępnie wypełniono nazwę hosta punktu końcowego używanego jako domena docelowa rekordu CNAME. Ta nazwa pochodzi z adresu URL punktu końcowego usługi CDN: *&lt;nazwa hosta punktu końcowego&gt;*.azureedge.net. Nie można zmienić tej nazwy.
+
+5. W obszarze **Niestandardowa nazwa hosta** wprowadź domenę niestandardową (razem z poddomeną), która ma być używana jako domena źródłowa rekordu CNAME. Na przykład: www.contoso.com lub cdn.contoso.com. Nie używaj nazwy domeny podrzędnej cdnverify.
 
    ![Okno dialogowe domeny niestandardowej usługi CDN](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-5. Wybierz pozycję **Dodaj**.
+6. Wybierz pozycję **Dodaj**.
 
-   Platforma Azure sprawdzi, czy dla wprowadzonej nazwy domeny niestandardowej istnieje rekord CNAME. Jeśli rekord CNAME jest poprawny, domena niestandardowa jest weryfikowana. Może upłynąć pewien czas, zanim rekord CNAME zostanie rozpropagowany do serwerów nazw. Jeśli domena nie zostanie zweryfikowana natychmiast, sprawdź, czy rekord CNAME jest poprawny, a następnie zaczekaj kilka minut i spróbuj ponownie. W przypadku punktów końcowych typu **Azure CDN from Verizon** wypełnienie wszystkich węzłów brzegowych usługi CDN ustawieniami domeny niestandardowej może potrwać do 90 minut.  
+   Platforma Azure sprawdzi, czy dla wprowadzonej nazwy domeny niestandardowej istnieje rekord CNAME. Jeśli rekord CNAME jest poprawny, domena niestandardowa zostanie zweryfikowana. 
+
+   Propagacja ustawień nowej domeny niestandardowej do wszystkich węzłów brzegowych usługi CDN może zająć trochę czasu: 
+    - W przypadku profili usługi **Azure CDN Standard from Microsoft** propagacja zwykle trwa do 10 minut. 
+    - W przypadku profili usługi **Azure CDN Standard from Akamai** propagacja zwykle trwa mniej niż jedną minutę. 
+    - W przypadku profili usługi **Azure CDN Standard from Verizon** oraz usługi **Azure CDN Premium from Verizon** propagacja zwykle trwa do 90 minut.   
 
 
 ## <a name="verify-the-custom-domain"></a>Weryfikowanie domeny niestandardowej
@@ -133,7 +143,7 @@ Po zakończeniu rejestracji domeny niestandardowej sprawdź, czy odwołuje się 
  
 1. Upewnij się, że masz publiczną zawartość buforowaną w punkcie końcowym. Jeśli na przykład punkt końcowy usługi CDN został skojarzony z kontem magazynu, usługa Azure CDN będzie buforować zawartość w kontenerze publicznym. Aby przetestować domenę niestandardową, sprawdź, czy kontener został ustawiony tak, aby zezwalać na publiczny dostęp, i czy zawiera co najmniej jeden plik.
 
-2. W przeglądarce przejdź do adresu pliku przy użyciu domeny niestandardowej. Jeśli na przykład domena niestandardowa to cdn.contoso.com, adres URL buforowanego pliku powinien być podobny do następującego: http:\//cdn.contoso.com/my-public-container/my-file.jpg.
+2. W przeglądarce przejdź do adresu pliku przy użyciu domeny niestandardowej. Jeśli na przykład domena niestandardowa to cdn.contoso.com, adres URL buforowanego pliku powinien być podobny do następującego: http:\//cdn.contoso.com/my-public-container/my-file.jpg. Sprawdź, czy wynik jest to taki sam, kiedy bezpośrednio uzyskujesz dostęp do punktu końcowego usługi CDN, korzystając z adresu *&lt;nazwa hosta punktu końcowego&gt;*.azureedge.net.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Mapowanie trwałej domeny niestandardowej
