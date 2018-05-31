@@ -10,9 +10,10 @@ ms.date: 03/21/2018
 ms.author: mihauss
 ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
 ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057863"
 ---
 # <a name="soft-delete-for-azure-storage-blobs-preview"></a>Usuwania nietrwałego dla obiektów blob magazynu Azure (wersja zapoznawcza)
 
@@ -63,13 +64,13 @@ Podczas **usunąć obiektu Blob** jest wywoływana w migawce tej migawki jest oz
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Gdy **migawki obiektu Blob** jest wywoływana, B0 staje się migawkę i B1 jest w stanie aktywnym obiektu blob. Po usunięciu migawki B0 jest oznaczony jako nietrwałego usunięte.*
+*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Gdy **migawki obiektu Blob** jest wywoływana, B0 staje się migawkę i B1 jest w stanie aktywnym obiektu blob. Po usunięciu migawki B0 jest oznaczony jako nietrwałego usunięte.\*
 
 Gdy **usunąć obiektu Blob** zostanie wywołany dla obiekt blob podstawowej (żadnego obiektu blob to znaczy nie migawkę), tego obiektu blob jest oznaczony jako słabe usunięte. Zgodny z poprzednim zachowanie wywoływania **usunąć obiektu Blob** dla obiektu blob, dysponującej migawkami active zwraca błąd. Wywoływanie **usunąć obiektu Blob** dla obiektu blob z migawkami usunięto miękkiej nie zwraca błąd. Możesz nadal usunąć obiektu blob i wszystkie jego migawek w jednej operacji po włączeniu usuwania nietrwałego. W ten sposób oznacza podstawowego obiektu blob i usunąć migawki jako nietrwałego.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **usunąć obiektu Blob** wywołanie do usuwania B2 i wszystkie skojarzone migawki. Aktywne obiektów blob, B2 i wszystkie skojarzone migawki są oznaczone jako nietrwałego usunięte.*
+*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **usunąć obiektu Blob** wywołanie do usuwania B2 i wszystkie skojarzone migawki. Aktywne obiektów blob, B2 i wszystkie skojarzone migawki są oznaczone jako nietrwałego usunięte.\*
 
 > [!NOTE]
 > Słabe usunięto obiekt blob jest zastąpiony, jest generowany automatycznie nietrwałego migawka usuniętego obiektu blob stanu przed operacji zapisu. Nowy obiekt blob dziedziczy warstwy zastąpione obiektu blob.
@@ -102,7 +103,7 @@ Można przywrócić obiektu blob do określonych nietrwałego migawki usunięto 
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **Blob cofanie usuwania** jest wywoływana dla obiektu blob B, a tym samym przywracanie podstawowego obiektu blob, B1 i wszystkie skojarzone migawki, w tym miejscu po prostu B0 jako aktywne. W drugim kroku B0 jest kopiowana za pośrednictwem podstawowego obiektu blob. Ta operacja kopiowania generuje nietrwałego Usunięto migawkę B1.*
+*Elastyczne usunięte dane jest szary, zablokowaniu niebieski aktywnych danych. Więcej ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **Blob cofanie usuwania** jest wywoływana dla obiektu blob B, a tym samym przywracanie podstawowego obiektu blob, B1 i wszystkie skojarzone migawki, w tym miejscu po prostu B0 jako aktywne. W drugim kroku B0 jest kopiowana za pośrednictwem podstawowego obiektu blob. Ta operacja kopiowania generuje nietrwałego Usunięto migawkę B1.\*
 
 Aby wyświetlić nietrwałego usuniętych obiektów blob i migawki obiektu blob, możesz dołączyć usunięte dane w **listę obiektów blob**. Można wybrać, aby wyświetlić tylko nietrwałego usunięto podstawowej obiektów blob lub obejmują również migawki nietrwałego usuniętego obiektu blob. Dla wszystkich danych usuniętych miękkie możesz wyświetlić czas usunięcia danych oraz liczbę dni, zanim dane zostaną trwale wygasł.
 
