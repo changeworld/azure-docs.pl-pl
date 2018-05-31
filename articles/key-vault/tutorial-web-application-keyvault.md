@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie aplikacji sieci web platformy Azure można odczytać klucza tajnego z magazynu kluczy | Dokumentacja firmy Microsoft
-description: Samouczek konfigurowania aplikacji ASP.Net core odczytu klucza tajnego z magazynu kluczy
+title: Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault — samouczek | Microsoft Docs
+description: Samouczek konfigurowania aplikacji platformy ASP.Net Core w celu odczytu wpisu tajnego z usługi Key Vault
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -8,26 +8,27 @@ manager: mbaldwin
 ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: MT
+ms.openlocfilehash: 146ea04081a4adebe4a6e9249bb1fe34ba76e3a4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305178"
 ---
-# <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Samouczek: Konfigurowanie aplikacji sieci web platformy Azure można odczytać klucza tajnego z magazynu kluczy
+# <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Samouczek: konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault
 
-W tym samouczku przejdź przez czynności niezbędnych do pobrania odczytać informacji z usługi Key vault za pomocą tożsamości zarządzanych usług aplikacji sieci web platformy Azure. Omawiane kwestie:
+W tym samouczku wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure w celu odczytu informacji z usługi Key Vault za pomocą tożsamości usługi zarządzanej. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Tworzenie magazynu kluczy.
-> * Przechowywanie klucza tajnego w magazynie kluczy.
-> * Tworzenie aplikacji sieci Web platformy Azure.
-> * Włącz zarządzane tożsamości usługi
-> * Przydziel uprawnienia wymagane dla aplikacji, które można odczytać danych z magazynu kluczy.
+> * Tworzenie usługi Key Vault.
+> * Przechowywanie wpisu tajnego w usłudze Key Vault.
+> * Tworzenie aplikacji internetowej platformy Azure.
+> * Włączanie tożsamości usługi zarządzanej
+> * Przyznaj wymagane uprawnienia, aby umożliwić aplikacji odczyt danych z usługi Key Vault.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -35,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
-Aby zalogować się przy użyciu interfejsu wiersza polecenia platformy Azure, możesz wpisać:
+Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia, możesz wpisać:
 
 ```azurecli
 az login
@@ -48,71 +49,69 @@ Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli
-az group create --name ContosoResourceGroup --location eastus
+# To list locations: az account list-locations --output table
+az group create --name "ContosoResourceGroup" --location "East US"
 ```
 
-Właśnie utworzoną grupę zasobów jest używane w tym samouczku.
+Właśnie utworzona grupa zasobów jest używana w tym samouczku.
 
 ## <a name="create-an-azure-key-vault"></a>Tworzenie usługi Azure Key Vault
 
-Następnie należy utworzyć magazyn kluczy w grupie zasobów, utworzony w poprzednim kroku. Należy podać niektóre informacje:
+Następnie utworzysz usługę Key Vault w grupie zasobów utworzonej w poprzednim kroku. Chociaż w tym samouczku wartość „ContosoKeyVault” jest używana jako nazwa usługi Key Vault, musisz użyć unikatowej nazwy. Podaj następujące informacje:
 
->[!NOTE]
-> Mimo że "ContosoKeyVault" jest używana jako nazwa dla naszej usługi Key Vault w tym samouczku, należy użyć unikatowe nazwy.
-
-* Nazwa magazynu **ContosoKeyVault**.
+* Nazwa magazynu: **ContosoKeyVault**.
 * Nazwa grupy zasobów: **ContosoResourceGroup**.
 * Lokalizacja: **Wschodnie stany USA**.
 
 ```azurecli
-az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East US"
 ```
 
-Dane wyjściowe tego polecenia są wyświetlane właściwości nowo utworzonego magazynu kluczy. Zanotuj dwie poniższe właściwości:
+Dane wyjściowe tego polecenia pokazują właściwości nowo utworzonej usługi Key Vault. Zanotuj dwie poniższe właściwości:
 
-* **Nazwa magazynu**: w tym przykładzie jest to **ContosoKeyVault**. Możesz użyć nazwy magazyn kluczy dla wszystkich poleceń usługi Key Vault.
-* **Identyfikator URI magazynu**: W tym przykładzie jest to https://<YourKeyVaultName>.vault.azure.net/. Aplikacje korzystające z magazynu za pomocą jego interfejsu API REST muszą używać tego identyfikatora URI.
+* **Nazwa magazynu**: w tym przykładzie jest to **ContosoKeyVault**. Nazwy swojej usługi Key Vault będziesz używać we wszystkich poleceniach usługi Key Vault.
+* **Identyfikator URI magazynu**: w tym przykładzie jest to https://<YourKeyVaultName>.vault.azure.net/. Aplikacje korzystające z magazynu za pomocą jego interfejsu API REST muszą używać tego identyfikatora URI.
 
 >[!IMPORTANT]
-> Jeśli błąd parametru "vault_name" musi być zgodna z następującego wzorca: "^ [-zA-Z0 - 9-]{3,24}$" param name wartość nie jest unikatowy lub nie jest zgodny ze ciąg składający się z znaków alfanumerycznych od 3 do 24 długo.
+> Jeśli wystąpi błąd Parametr „vault_name” musi być zgodny z następującym wzorcem: „^[a-zA-Z0-9-]{3,24}$”, wartość parametru -name nie jest unikatowa lub nie jest ciągiem składającym się ze znaków alfanumerycznych, o długości od 3 do 24 znaków.
 
 Twoje konto platformy Azure jest teraz jedynym kontem z uprawnieniami do wykonywania jakichkolwiek operacji na tym nowym magazynie.
 
-## <a name="add-a-secret-to-key-vault"></a>Dodawanie klucza tajnego do magazynu kluczy
+## <a name="add-a-secret-to-key-vault"></a>Dodawanie wpisu tajnego do usługi Key Vault
 
-Dodajemy klucz tajny, aby zilustrować, jak to działa. Można przechowywać, parametry połączenia SQL lub inne informacje, które należy zachować bezpieczny, ale być dostępne dla aplikacji. W tym samouczku zostanie wywołana hasło **AppSecret** i zapisze wartość **MySecret** w nim.
+Dodajemy wpis tajny, aby zilustrować, jak to działa. Możesz zapisywać parametry połączenia SQL lub inne informacje, które muszą być przechowywane bezpiecznie, ale jednocześnie być dostępne dla aplikacji. W tym samouczku hasło będzie miało nazwę **AppSecret** i będzie w nim przechowywana wartość **MySecret**.
 
-Wpisz poniższe polecenia, można utworzyć klucza tajnego w magazynie kluczy o nazwie **AppSecret** który będzie przechowywać wartość **MySecret**:
+Wpisz poniższe polecenia, aby utworzyć wpis tajny w usłudze Key Vault o nazwie **AppSecret**, w którym będzie przechowywana wartość **MySecret**:
 
 ```azurecli
-az keyvault secret set --vault-name '<YourKeyVaultName>' --name 'AppSecret' --value 'MySecret'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "AppSecret" --value "MySecret"
 ```
 
 Aby wyświetlić wartość zawartą we wpisie tajnym jako zwykły tekst:
 
 ```azurecli
-az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
+az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 ```
 
-To polecenie przedstawia tajnych informacji, łącznie z identyfikatora URI. Po wykonaniu tych czynności powinien mieć identyfikatora URI do klucza tajnego w magazynie kluczy Azure. Zanotuj te informacje. Będzie potrzebny w kolejnym kroku.
+To polecenie wyświetla informacje o wpisie tajnym, w tym identyfikator URI. Po wykonaniu tych kroków będziesz mieć identyfikator URI wpisu tajnego w usłudze Azure Key Vault. Zanotuj te informacje. Będą one potrzebne w kolejnym kroku.
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
 
-W tej sekcji Tworzenie aplikacji platformy ASP.NET MVC i wdrożyć go na platformie Azure jako aplikacji sieci Web. Aby uzyskać więcej informacji dotyczących aplikacji sieci Web platformy Azure, zobacz [Omówienie aplikacji sieci Web](../app-service/app-service-web-overview.md).
+W tej sekcji utworzysz aplikację platformy ASP.NET MVC i wdrożysz ją na platformie Azure jako aplikację internetową. Aby uzyskać więcej informacji o usłudze Azure Web Apps, zobacz [Przegląd usługi Web Apps](../app-service/app-service-web-overview.md).
 
 1. W programie Visual Studio utwórz nowy projekt, wybierając pozycję **Plik > Nowy > Projekt**. 
 
 2. W oknie dialogowym **Nowy projekt** wybierz pozycję **Visual C# > Sieć Web > Aplikacja sieci Web platformy ASP.NET Core**.
 
-3. Nazwa aplikacji **WebKeyVault**, a następnie wybierz **OK**.
+3. Nadaj aplikacji nazwę **WebKeyVault**, a następnie wybierz przycisk **OK**.
    >[!IMPORTANT]
-   > Nazwę aplikacji WebKeyVault, skopiuj i Wklej kod będzie odpowiada przestrzeni nazw. Jeśli nazwę lokacji, inaczej należy zmodyfikować kod odpowiadać nazwie witryny.
+   > Musisz nadać aplikacji nazwę WebKeyVault, aby kopiowany i wklejany kod był zgodny z przestrzenią nazw. Jeśli witryna została nazwana inaczej, należy zmodyfikować kod, aby był zgodny z nazwą witryny.
 
     ![Okno dialogowe Nowy projekt ASP.NET](media/tutorial-web-application-keyvault/aspnet-dialog.png)
 
-4. Na platformie Azure można wdrożyć dowolny typ aplikacji internetowej ASP.NET Core. W tym samouczku, wybierz **aplikacji sieci Web** szablonu i upewnij się, że ma ustawioną wartość uwierzytelnianie **bez uwierzytelniania**.
+4. Na platformie Azure można wdrożyć dowolny typ aplikacji internetowej ASP.NET Core. W tym przewodniku wybierz szablon **Aplikacja internetowa** i upewnij się, że uwierzytelnianie jest ustawione na wartość **Bez uwierzytelniania**.
 
-    ![ASPNET okno dialogowe nie uwierzytelniania](media/tutorial-web-application-keyvault/aspnet-noauth.png)
+    ![ASPNET — okno dialogowe bez uwierzytelniania](media/tutorial-web-application-keyvault/aspnet-noauth.png)
 
 5. Kliknij przycisk **OK**.
 
@@ -120,19 +119,19 @@ W tej sekcji Tworzenie aplikacji platformy ASP.NET MVC i wdrożyć go na platfor
 
 7. Z menu wybierz pozycję **Debuguj > Uruchom bez debugowania**, aby lokalnie uruchomić aplikację internetową.
 
-## <a name="modify-the-web-app"></a>Modyfikowanie aplikacji sieci web
+## <a name="modify-the-web-app"></a>Modyfikowanie aplikacji internetowej
 
-Istnieją dwa pakiety NuGet, których aplikacji sieci web musi mieć zainstalowany. Aby zainstalować je wykonaj następujące czynności:
+Istnieją dwa pakiety NuGet, które Twoja aplikacja internetowa musi mieć zainstalowane. Aby je zainstalować, wykonaj poniższe kroki:
 
-1. W rozwiązaniu explorer kliknij prawym przyciskiem myszy nazwę witryny sieci Web.
-2. Wybierz **pakiety zarządzania pakietami NuGet rozwiązania...**
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nazwę witryny internetowej.
+2. Wybierz polecenie **Zarządzaj pakietami NuGet rozwiązania...**
 3. Zaznacz pole wyboru obok pola wyszukiwania. **Uwzględnij wersję wstępną**
-4. Wyszukaj dwa pakiety NuGet wymienionych poniżej i zaakceptować dla nich mają zostać dodane do rozwiązania:
+4. Wyszukaj dwa pakiety NuGet wymienione poniżej i zaakceptuj dodanie ich do Twojego rozwiązania:
 
-    * [Microsoft.Azure.Services.AppAuthentication (wersja zapoznawcza)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) — można łatwo pobrać tokeny dostępu dla usługi do usługi Azure Service scenariusze uwierzytelniania. 
-    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) — zawiera metody interakcji z magazynu kluczy.
+    * [Microsoft.Azure.Services.AppAuthentication (wersja zapoznawcza)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) — ułatwia pobieranie tokenów dostępu w przypadku scenariuszy uwierzytelniania „usługa do usługi platformy Azure”. 
+    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) — zawiera metody interakcji z usługą Key Vault.
 
-5. Użyj Eksploratora rozwiązań, aby otworzyć `Program.cs` i Zastąp zawartość pliku Program.cs następującym kodem. SUBSTITUTE ```<YourKeyVaultName>``` o nazwie magazynu kluczy:
+5. Za pomocą Eksploratora rozwiązań otwórz plik `Program.cs` i zastąp jego zawartość następującym kodem. Zastąp zmienną ```<YourKeyVaultName>``` nazwą swojej usługi Key Vault:
 
     ```csharp
     
@@ -176,7 +175,7 @@ Istnieją dwa pakiety NuGet, których aplikacji sieci web musi mieć zainstalowa
         }
     ```
 
-6. Użyj Eksploratora rozwiązań, aby przejść do **stron** sekcji i Otwórz `About.cshtml`. Zastąp zawartość **About.cshtml.cs** przy użyciu poniższego kodu:
+6. Za pomocą Eksploratora rozwiązań przejdź do sekcji **Strony** i otwórz plik `About.cshtml`. Zastąp zawartość pliku **About.cshtml.cs** poniższym kodem:
 
     ```csharp
     
@@ -204,56 +203,56 @@ Istnieją dwa pakiety NuGet, których aplikacji sieci web musi mieć zainstalowa
     
     ```
 
-7. W menu głównym wybierz **debugowania** > **uruchomić bez debugowania**. Gdy pojawi się przeglądarkę, przejdź do **o** strony. Wartość AppSecret jest wyświetlany.
+7. W menu głównym wybierz pozycję **Debuguj** > **Uruchom bez debugowania**. Gdy pojawi się przeglądarka, przejdź do strony **Informacje**. Wyświetlana jest wartość wpisu AppSecret.
 
 >[!IMPORTANT]
-> Jeśli otrzymasz 502.5 błąd HTTP - komunikat o błędzie procesu Sprawdź nazwę magazynu kluczy określona w `Program.cs`
+> Jeśli wystąpi komunikat o błędzie HTTP 502.5 — błąd procesu, sprawdź nazwę usługi Key Vault określoną w pliku `Program.cs`
 
-## <a name="publish-the-web-application-to-azure"></a>Publikowanie aplikacji sieci web na platformie Azure
+## <a name="publish-the-web-application-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 
-1. Powyżej Edytor wybierz **WebKeyVault**.
-2. Wybierz **publikowania**.
-3. Wybierz **publikowania** ponownie.
-4. Wybierz **utworzyć**.
+1. Powyżej edytora wybierz pozycję **WebKeyVault**.
+2. Wybierz pozycję **Publikowanie**, a następnie **Uruchom**.
+3. Utwórz nową usługę **App Service** i wybierz pozycję **Opublikuj**.
+4. Wybierz pozycję **Utwórz**.
 
 >[!IMPORTANT]
-> Zostanie otwarte okno przeglądarki i zostanie wyświetlony 502.5 - komunikat błędu procesu. Taki stan jest oczekiwany. Należy przyznać prawa tożsamości aplikacji na odczyt kluczy tajnych z magazynu kluczy.
+> Zostanie otwarte okno przeglądarki i wyświetlony komunikat 502.5 — błąd procesu. Jest to oczekiwane. Należy przyznać tożsamości aplikacji prawo odczytu wpisów tajnych z usługi Key Vault.
 
-## <a name="enable-managed-service-identity"></a>Włącz tożsamość usługi zarządzanej
+## <a name="enable-managed-service-identity"></a>Włączanie tożsamości usługi zarządzanej
 
-Usługa Azure Key Vault zapewnia bezpieczne przechowywanie poświadczeń i innych kluczy i kluczy tajnych, ale kodu musi zostać uwierzytelniona Key Vault w celu ich pobrania. Tożsamość usługi zarządzanej (MSI) powoduje, że rozwiązania tego problemu prostszy, zapewniając usług Azure automatycznie zarządzane tożsamości w usłudze Azure Active Directory (Azure AD). Ta tożsamość służy do uwierzytelniania do dowolnej usługi obsługującej uwierzytelniania usługi Azure AD, w tym usługi Key Vault bez żadnych poświadczeń w kodzie.
+Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
 
-1. Wróć do interfejsu wiersza polecenia platformy Azure
-2. Uruchom polecenie Przypisz tożsamości w celu utworzenia tożsamości dla tej aplikacji:
+1. Powrót do interfejsu wiersza polecenia platformy Azure
+2. Uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:
 
 ```azurecli
-az webapp assign-identity --name WebKeyVault --resource-group ContosoResourcegroup
+az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResourcegroup"
 ```
 
 >[!NOTE]
->Jest to równoważne przechodzi do portalu i przełączania **tożsamość usługi zarządzanej** do **na** we właściwościach aplikacji sieci web.
+>To polecenie odpowiada przejściu do portalu i przełączeniu ustawienia **Tożsamość usługi zarządzanej** na wartość **Włączone** we właściwościach aplikacji internetowej.
 
-## <a name="grant-rights-to-the-application-identity"></a>Udziel uprawnień do tożsamości aplikacji
+## <a name="grant-rights-to-the-application-identity"></a>Przyznawanie uprawnień tożsamości aplikacji
 
-Przy użyciu portalu Azure, przejdź do zasad dostępu do magazynu kluczy i udzielić sobie dostępu do funkcji zarządzania klucza tajnego w magazynie kluczy. Umożliwi to uruchamianie aplikacji na komputerze deweloperskim lokalnego.
+Przy użyciu witryny Azure Portal przejdź do zasad dostępu usługi Key Vault i przyznaj sobie dostęp do zarządzania wpisem tajnym w usłudze Key Vault. Umożliwi to uruchamianie aplikacji na lokalnym komputerze deweloperskim.
 
-1. Wyszukaj magazyn kluczy w **Wyszukaj zasoby** okno dialogowe w portalu Azure.
-2. Wybierz **zasady dostępu**.
-3. Wybierz **Dodaj nowy**w **tajny uprawnienia** sekcji wybierz **uzyskać** i **listy**.
-4. Wybierz **wybierz główny**i Dodaj tożsamość aplikacji. Będzie mieć taką samą nazwę co aplikacja.
-5. Wybierz **Ok**
+1. Wyszukaj swoją usługę Key Vault w oknie dialogowym **Wyszukiwanie zasobów** w witrynie Azure Portal.
+2. Wybierz pozycję **Zasady dostępu**.
+3. Wybierz pozycję **Dodaj nowe** i w sekcji **Uprawnienia wpisu tajnego** wybierz opcje **Pobierz** i **Lista**.
+4. Wybierz pozycję **Wybierz podmiot zabezpieczeń**, a następnie dodaj tożsamość aplikacji. Będzie mieć ona taką samą nazwę jak aplikacja.
+5. Wybierz pozycję **OK**.
 
-Teraz konto Azure i tożsamość aplikacji ma uprawnienia do odczytu informacji z magazynu kluczy. Po odświeżeniu strony powinna zostać wyświetlona strona docelowa witryny. W przypadku wybrania **o**. Zostanie wyświetlony wartości przechowywane w magazynie kluczy.
+Teraz Twoje konto na platformie Azure oraz tożsamość aplikacji mają uprawnienia do odczytu informacji z usługi Key Vault. Po odświeżeniu strony powinna zostać wyświetlona strona docelowa witryny. Jeśli wybierzesz pozycję **Informacje**, zobaczysz wartości przechowywane w usłudze Key Vault.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć grupę zasobów i wszystkie jego zasoby, używać **usunięcie grupy az** polecenia.
+Aby usunąć grupę zasobów i wszystkie jej zasoby, użyj polecenia **az group delete**.
 
   ```azurecli
-  az group delete -n ContosoResourceGroup
+  az group delete -n "ContosoResourceGroup"
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przewodnik dewelopera usługi Azure Key Vault](key-vault-developers-guide.md)
