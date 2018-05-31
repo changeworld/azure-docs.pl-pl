@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: f6813d98782d31dc780da21f78aafbbfdfc5e688
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3046e944726bf049b7a6771d626fea357a5abf30
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305205"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Konfigurowanie środowiska projektowego w systemie Mac OS X
 > [!div class="op_single_selector"]
@@ -123,6 +124,11 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
     docker rm -f sftestcluster
     ```
 
+### <a name="known-limitations"></a>Znane ograniczenia 
+ 
+ Poniżej przedstawiono znane ograniczenia dotyczące klastrów lokalnych działających w kontenerze na komputerach Mac: 
+ 
+ * Usługa DNS nie działa i nie jest obsługiwana: [problem #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric (sfctl) na komputerze Mac
 

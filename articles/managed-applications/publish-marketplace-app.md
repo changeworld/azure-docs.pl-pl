@@ -1,180 +1,181 @@
 ---
-title: Azure zarządzanych aplikacji w witrynie Marketplace | Dokumentacja firmy Microsoft
-description: W tym artykule opisano Azure zarządzane aplikacje, które są dostępne na rynku.
-services: azure-resource-manager
+title: Aplikacje zarządzane platformy Azure w witrynie Marketplace | Microsoft Docs
+description: W tym artykule opisano aplikacje zarządzane platformy Azure dostępne w witrynie Marketplace.
+services: managed-applications
 author: tfitzmac
 manager: timlt
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 39797bb4fe2b0576cd5696d7111826dcf807ff5c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304535"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Azure zarządzanych aplikacji w witrynie Marketplace
+# <a name="azure-managed-applications-in-the-marketplace"></a>Aplikacje zarządzane platformy Azure w witrynie Marketplace
 
-Dostawców można używać platformy Azure zarządzanych aplikacji w celu zaoferowania ich rozwiązania dla wszystkich klientów w portalu Azure Marketplace. Dostawców mogą obejmować usługi zarządzane przez dostawców (MSPs), niezależnym dostawcom oprogramowania (ISV) i integratorów systemów. platforma (SIs). Zarządzane aplikacje zmniejszyć konserwacji i obsługi obciążenia dla klientów. Dostawców sprzedać infrastruktury i oprogramowaniem za pośrednictwem portalu marketplace. One dołączyć usług oraz obsługi do zarządzanych aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie aplikacji zarządzanych](overview.md).
+Dostawcy mogą używać aplikacji zarządzanych platformy Azure w celu oferowania swoich rozwiązań wszystkim klientom witryny Azure Marketplace. Tymi dostawcami mogą być dostawcy usług zarządzanych (MSP, managed service provider), niezależni dostawcy oprogramowania (ISV, independent software vendor) oraz integratorzy systemów (SI, system integrator). Dzięki aplikacjom zarządzanym klienci mogą zmniejszyć narzut związany z konserwacją i serwisowaniem. Dostawcy sprzedają infrastrukturę i oprogramowanie za pośrednictwem witryny Marketplace. Do aplikacji zarządzanych mogą dołączyć usługi i operacyjną pomoc techniczną. Aby uzyskać więcej informacji, zobacz [Omówienie aplikacji zarządzanych](overview.md).
 
-W tym artykule opisano sposób publikowania aplikacji w portalu Marketplace i były szeroko dostępne dla klientów.
+W tym artykule wyjaśniono, jak opublikować aplikację w witrynie Marketplace, aby była szeroko dostępna dla klientów.
 
 ## <a name="prerequisites-for-publishing-a-managed-application"></a>Wymagania wstępne dotyczące publikowania aplikacji zarządzanej
 
-Aby ukończyć ten artykuł, trzeba już mieć plik zip definicji zarządzanej aplikacji. Aby uzyskać więcej informacji, zobacz [Utwórz aplikację usługi wykazu](publish-service-catalog-app.md).
+Aby wykonać czynności opisane w tym artykule, trzeba mieć przygotowany plik zip definicji aplikacji zarządzanej. Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md).
 
-Istnieją ponadto kilka biznesowe wymagania wstępne. Oto one:
+Ponadto istnieje kilka biznesowych wymagań wstępnych. Oto one:
 
-* Firmy lub zależnemu musi znajdować się w danym kraju, w którym sprzedaży są obsługiwane przez witryny marketplace.
-* W taki sposób, który jest zgodny z rozliczeń modeli obsługiwanych przez witryny marketplace muszą mieć licencję na produkt.
-* Udostępnić pomocy technicznej dla klientów w sposób uzasadnione ekonomicznie. Obsługa można wolny, płatnej, lub za pośrednictwem społeczności obsługuje.
-* Licencji oprogramowania oraz wszelkie zależności oprogramowania innych firm.
-* Podaj zawartość, która spełnia kryteria dla Twojej oferty był wyświetlany w witrynie Marketplace oraz w portalu Azure.
-* Akceptuję postanowienia Umowy o Azure Marketplace udział zasad i wydawcy.
-* Zobowiązuje się do przestrzegania warunków użytkowania, zasady zachowania poufności informacji firmy Microsoft i certyfikowane umowę programu Microsoft Azure.
+* Siedziba firmy (lub firmy od niej zależnej) musi znajdować się w kraju, w którym jest obsługiwana sprzedaż w witrynie Marketplace.
+* Produkt musi być licencjonowany w sposób, który jest zgodny z modelami rozliczeń obsługiwanymi przez witrynę Marketplace.
+* Klienci muszą mieć dostęp do pomocy technicznej zorganizowanej w sposób rozsądny z komercyjnego punktu widzenia. Może być ona bezpłatna, płatna lub może działać na zasadzie wsparcia społeczności.
+* Oprogramowanie dostawcy i wszelkie oprogramowanie podmiotów zależnych musi być licencjonowane.
+* Należy dostarczyć zawartość spełniającą kryteria dla danej oferty, która zostanie umieszczona w witrynie Marketplace i w witrynie Azure Portal.
+* Należy zaakceptować warunki opisane w dokumentach Zasady udziału w witrynie Azure Marketplace oraz Umowa wydawcy.
+* Należy wyrazić zgodę na przestrzeganie Warunków użytkowania, Zasad zachowania poufności informacji firmy Microsoft i Umowy programu certyfikatu platformy Microsoft Azure.
 
-## <a name="become-a-publisher"></a>Stają się wydawca
+## <a name="become-a-publisher"></a>Jak zostać wydawcą
 
-Aby stać się wydawcy w portalu Azure Marketplace, należy:
+Aby zostać wydawcą w witrynie Azure Marketplace, należy wykonać następujące czynności:
 
-1. Tworzenie Identyfikatora Microsoft - Tworzenie konta Microsoft przy użyciu adresu e-mail, który należy do domeny firmy, ale nie do jednej osoby. Ten adres e-mail jest używany zarówno dla Microsoft Developer Center, jak i w chmurze Portal dla partnerów. Aby uzyskać więcej informacji, zobacz [Azure Marketplace wydawca przewodnika](https://aka.ms/sellerguide).
-1. Przedstawia [Azure Marketplace wyznaczenie formularza](https://aka.ms/ampnomination) — **rozwiązania, które mają zostać opublikowane?**, wybierz pozycję **zarządzanej aplikacji**. Po przesłaniu formularza zespół organizujący dołączanie Marketplace monitoruje aplikację i weryfikuje żądanie. Proces zatwierdzania może potrwać jednej do trzech dni. Po zatwierdzeniu Twoje wyznaczenie otrzymasz kod promocyjny odstąpienie opłata rejestracji dla Centrum deweloperów. Jeśli chcesz **nie** Wypełnij formularz wyznaczenie Marketplace, zostanie wyświetlona prośba o opłata rejestracji $99.
-1. Zarejestruj w [Centrum deweloperów](http://dev.windows.com/registration?accountprogram=azure) -Microsoft sprawdza, czy Twoja organizacja jest prawidłowy firmy z Identyfikatorem prawidłowe podatku dla kraju, w którym jest on zarejestrowany. Proces zatwierdzania może zająć 5 – 10 dni. W celu uniknięcia opłat rejestracji, użyj kod promocyjny, otrzymany w wiadomości e-mail z nazwy procesu. Aby uzyskać więcej informacji, zobacz [Azure Marketplace wydawca przewodnika](https://aka.ms/sellerguide).
-1. Zaloguj się do [portalu dla partnerów chmury](https://cloudpartner.azure.com) — w profilu wydawcy skojarzyć konto Centrum deweloperów z profilem wydawcy Marketplace. Aby uzyskać więcej informacji, zobacz [Azure Marketplace wydawca przewodnika](https://aka.ms/sellerguide).
+1. Utwórz identyfikator Microsoft — Utwórz konto Microsoft przy użyciu adresu e-mail, który należy do domeny firmy, ale nie do jednej osoby. Ten adres e-mail będzie używany zarówno w Centrum deweloperów firmy Microsoft, jak i w portalu Cloud Partner. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
+1. Prześlij [Formularz nominacji witryny Azure Marketplace](https://aka.ms/ampnomination) — W polu **Rozwiązanie, które chcesz opublikować** wybierz pozycję **Aplikacja zarządzana**. Po przesłaniu formularza zespół ds. dołączania do witryny Marketplace zapozna się z aplikacją i zweryfikuje Twoje żądanie. Proces zatwierdzania może potrwać od jednego do trzech dni. Po zatwierdzeniu nominacji otrzymasz kod promocyjny umożliwiający anulowanie opłaty rejestracyjnej w Centrum deweloperów. Jeśli **nie** wypełnisz formularza nominacji witryny Marketplace, zostanie Ci naliczona opłata rejestracyjna w wysokości 99 USD.
+1. Zarejestruj się w [Centrum deweloperów](http://dev.windows.com/registration?accountprogram=azure) — Firma Microsoft sprawdzi, czy Twoja organizacja jest podmiotem legalnym i posiada identyfikator podatkowy w kraju, w którym jest zarejestrowana. Proces zatwierdzania może potrwać od 5 do 10 dni. Aby uniknąć opłaty rejestracyjnej, użyj kodu promocyjnego otrzymanego w wiadomości e-mail dotyczącej procesu nominacji. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
+1. Zaloguj się w [portalu Cloud Partner](https://cloudpartner.azure.com) — W profilu wydawcy skojarz swoje konto Centrum deweloperów z profilem wydawcy witryny Marketplace. Aby uzyskać więcej informacji, zobacz [Azure Marketplace — przewodnik dla wydawcy](https://aka.ms/sellerguide).
 
-## <a name="create-a-new-azure-application-offer"></a>Tworzenie nowej oferty aplikacji Azure
+## <a name="create-a-new-azure-application-offer"></a>Tworzenie nowej oferty aplikacji platformy Azure
 
-Po utworzeniu konta portalu partnerów, możesz utworzyć ofertę zarządzanej aplikacji.
+Po utworzeniu konta w portalu dla partnerów możesz utworzyć ofertę aplikacji zarządzanej.
 
 ### <a name="set-up-an-offer"></a>Konfigurowanie oferty
 
-Oferta dla aplikacji zarządzanej odpowiada klasie produktu oferty od wydawcy. Jeśli nowy typ aplikacji, które mają być dostępne na rynku, można go skonfigurować jako nowej oferty. Oferta jest kolekcją jednostki SKU. Co oferta zostanie wyświetlony jako własny element w witrynie marketplace.
+Oferta aplikacji zarządzanej odpowiada klasie produktu oferowanego przez wydawcę. Jeśli w witrynie Marketplace chcesz udostępnić nowy typ aplikacji, możesz skonfigurować tę ofertę jako nową. Oferta jest kolekcją jednostek SKU. Każda oferta jest wyświetlana w witrynie Marketplace jako osobna jednostka.
 
-1. Zaloguj się do [portalu dla partnerów chmury](https://cloudpartner.azure.com/).
+1. Zaloguj się do [portalu Cloud Partner](https://cloudpartner.azure.com/).
 
-1. W okienku nawigacji po lewej stronie wybierz **+ nowe oferty** > **aplikacji Azure**.
+1. W okienku nawigacji po lewej stronie wybierz pozycję **+ Nowa oferta** > **Aplikacje platformy Azure**.
 
-1. W **edytor** widoku, zobacz wymagane formularzy. Każdy formularz jest opisane w dalszej części tego artykułu.
+1. W widoku **Edytor** zobaczysz wymagane formularze. Każdy formularz został opisany w dalszej części tego artykułu.
 
-## <a name="offer-settings-form"></a>Formularz Ustawienia oferty
+## <a name="offer-settings-form"></a>Formularz ustawień oferty
 
-Pola **oferują ustawienia** są:
+Pola w formularzu **Ustawienia oferty** są następujące:
 
-* **Identyfikator oferty**: ten unikatowy identyfikator identyfikuje oferta w profilu wydawcy. Ten identyfikator jest widoczny w adresach URL produktu, szablony usługi Resource Manager i raporty rozliczeń. Go mogą się składać tylko małe znaki alfanumeryczne i łączniki (-). Identyfikator nie może kończyć się łącznikiem. Jego ograniczone do maksymalnie 50 znaków. Po ofertę odbywa się na żywo, to pole jest zablokowane.
-* **Identyfikator wydawcy**: Użyj tej listy rozwijanej, aby wybrać profil wydawcy, którą chcesz opublikować tej oferty, w obszarze. Po ofertę odbywa się na żywo, to pole jest zablokowane.
-* **Nazwa**: Ta nazwa wyświetlana dla danej oferty pojawia się w witrynie Marketplace oraz w portalu. Może mieć maksymalnie 50 znaków. Obejmują rozpoznawalną nazwę markę produktu. Nie zawierają nazwę swojej firmy, chyba że jest sposób jest ona sprzedawane. Ta oferta jest marketingu na własne witryny sieci Web, upewnij się, że nazwa jest dokładnie sposobu jej wyświetlania w witrynie sieci Web.
+* **Identyfikator oferty**: Ten unikatowy identyfikator określa ofertę w obrębie profilu wydawcy. Jest on widoczny w adresach URL produktu, szablonach usługi Resource Manager i raportach rozliczeń. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się łącznikiem. Może zawierać maksymalnie 50 znaków. Po aktywowaniu oferty to pole jest zablokowane.
+* **Identyfikator wydawcy**: Przy użyciu tej listy rozwijanej wybierz profil wydawcy, w ramach którego chcesz opublikować daną ofertę. Po aktywowaniu oferty to pole jest zablokowane.
+* **Nazwa**: Ta nazwa wyświetlana oferty jest widoczna w witrynie Marketplace oraz w portalu. Może zawierać maksymalnie 50 znaków. Warto umieścić tu rozpoznawalną nazwę marki produktu. Nie umieszczaj tu nazwy swojej firmy, chyba że produkt jest pod taką nazwą oferowany. Jeśli ta sama oferta znajduje się także w Twojej witrynie internetowej, upewnij się, że nazwa jest identyczna z nazwą wyświetlaną w Twojej witrynie.
 
-Po zakończeniu wybierz **zapisać** Aby zapisać postęp.
+Po zakończeniu wybierz pozycję **Zapisz**, aby zapisać postęp.
 
-## <a name="skus-form"></a>Formularz jednostki SKU
+## <a name="skus-form"></a>Formularz jednostek SKU
 
-Następnym krokiem jest można dodać jednostki SKU dla danej oferty.
+Następnym krokiem jest dodanie jednostek SKU dla oferty.
 
-Jednostka SKU jest najmniejszej jednostki oferowane oferty. SKU w tej samej klasie produktu (Oferta) umożliwia rozróżnianie między:
+Jednostka SKU to najmniejsza możliwa do kupienia jednostka oferty. Przy użyciu jednostki SKU w obrębie tej samej klasy produktu (oferty) można rozróżnić:
 
-* Różne funkcje, które są obsługiwane
-* Określa, czy zarządzane lub niezarządzane oferty
-* Modele rozliczeń, które są obsługiwane
+* różne obsługiwane funkcje;
+* czy oferta jest zarządzana, czy niezarządzana;
+* obsługiwane modele rozliczeń.
 
-Jednostka SKU jest wyświetlany w obszarze oferta nadrzędnego w witrynie marketplace. Wygląda na to jako własny element oferowane w portalu Azure.
+Jednostka SKU jest widoczna poniżej oferty nadrzędnej w witrynie Marketplace. Jest ona wyświetlana jako oddzielny, możliwy do kupienia element w witrynie Azure Portal.
 
-1. Wybierz **jednostki SKU** > **nowe jednostki SKU**.
+1. Wybierz pozycję **Jednostki SKU** > **Nowa jednostka SKU**.
 
-1. Wprowadź **identyfikator jednostki SKU**. Identyfikator jednostki SKU to unikatowy identyfikator dla jednostki SKU oferta. Ten identyfikator jest widoczny w adresach URL produktu, szablony usługi Resource Manager i raporty rozliczeń. Go mogą się składać tylko małe znaki alfanumeryczne i łączniki (-). Identyfikator nie może kończyć się kreską i ograniczone do maksymalnie 50 znaków. Po ofertę odbywa się na żywo, to pole jest zablokowane. Może mieć wiele jednostek SKU oferta. Należy jednostki SKU dla każdego obrazu, który chcesz opublikować.
+1. Wprowadź wartość w polu **Identyfikator jednostki SKU**. Identyfikator jednostki SKU to unikatowy identyfikator dla danej jednostki SKU w obrębie oferty. Jest on widoczny w adresach URL produktu, szablonach usługi Resource Manager i raportach rozliczeń. Może składać się tylko z małych znaków alfanumerycznych i łączników (-). Identyfikator nie może kończyć się łącznikiem i może zawierać maksymalnie 50 znaków. Po aktywowaniu oferty to pole jest zablokowane. W obrębie oferty możesz mieć wiele jednostek SKU. Każdy obraz, który planujesz opublikować, musi mieć własną jednostkę SKU.
 
-1. Wypełnianie **szczegóły jednostki SKU** sekcji w następującej postaci:
-
-   Wypełnij następujące pola:
-
-   * **Tytuł**: Podaj tytuł tej jednostki SKU. Ten tytuł pojawi się w galerii dla tego elementu.
-   * **Podsumowanie**: Podaj krótkie podsumowanie dla tej wersji produktu. Ten tekst jest wyświetlany pod tytułem.
-   * **Opis elementu**: Podaj szczegółowy opis jednostki SKU.
-   * **Typ jednostki SKU**: dozwolone wartości *zarządzanej aplikacji* i *szablony rozwiązań*. W tym przypadku wybierz *zarządzanej aplikacji*.
-   * **Dostępność Kraj/Region**: Wybierz kraje, w którym znajduje się aplikacja zarządzana.
-   * **Cennik**: przewidzieć cenę zarządzania aplikacji. Wybierz dostępny krajów przed ustawieniem cenę.
-
-1. Dodaj nowy pakiet. Wypełnianie **informacje szczegółowe dotyczące pakietu** sekcji w następującej postaci:
+1. Wypełnij sekcję **Szczegóły jednostki SKU** w następującym formularzu:
 
    Wypełnij następujące pola:
 
-   * **Bieżąca wersja**: wprowadź wersję pakietu przekazywania. Powinna być w formacie `{number}.{number}.{number}{number}`.
-   * **Wybierz plik pakietu**: ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu ZIP. Jeden plik jest szablonu usługi Resource Manager, który definiuje zasoby w celu wdrożenia dla aplikacji zarządzanej. Drugi plik definiuje [interfejsu użytkownika](create-uidefinition-overview.md) dla konsumentów wdrażanie zarządzanych aplikacji za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podać wartości parametrów.
-   * **PrincipalId**: Ta właściwość jest identyfikator usługi Azure Active Directory (Azure AD) użytkownika, grupy użytkowników lub aplikacji, który został udzielony dostęp do zasobów w subskrypcji klienta. Definicja roli Opisuje uprawnienia.
-   * **Definicja roli**: Ta właściwość jest lista wszystkich kontroli dostępu opartej na rolach (RBAC) role wbudowane dostarczane przez usługę Azure AD. Możesz wybrać rolę, która jest najbardziej odpowiednia na potrzeby zarządzania zasobami w imieniu klienta.
+   * **Tytuł**: Podaj tytuł dla tej jednostki SKU. Ten tytuł będzie widoczny w galerii dla tego elementu.
+   * **Podsumowanie**: Wprowadź krótkie podsumowanie dla tej jednostki SKU. Ten tekst jest wyświetlany pod tytułem.
+   * **Opis**: Wprowadź szczegółowy opis jednostki SKU.
+   * **Typ jednostki SKU**: Dozwolone wartości to *Aplikacja zarządzana* i *Szablony rozwiązań*. W tym przypadku wybierz pozycję *Aplikacja zarządzana*.
+   * **Dostępność w krajach/regionach**: Wybierz kraje, w których dana aplikacja zarządzana jest dostępna.
+   * **Cennik**: Podaj cenę za zarządzanie aplikacją. Przed ustawieniem ceny wybierz dostępne kraje.
 
-Można dodać wiele zezwolenia. Zaleca się utworzenie grupy użytkowników usługi AD i określić jej identyfikator w **PrincipalId**. W ten sposób można dodać więcej użytkowników do grupy użytkowników, bez konieczności aktualizacji jednostki SKU.
+1. Dodaj nowy pakiet. Wypełnij sekcję **Szczegóły pakietu** w następującym formularzu:
 
-Aby uzyskać więcej informacji o RBAC, zobacz [wprowadzenie RBAC w portalu Azure](../role-based-access-control/overview.md).
+   Wypełnij następujące pola:
 
-## <a name="marketplace-form"></a>Formularz Marketplace
+   * **Bieżąca wersja**: Wprowadź wersję przekazywanego pakietu. Powinna ona mieć format `{number}.{number}.{number}{number}`.
+   * **Wybierz plik pakietu**: Ten pakiet zawiera dwa wymagane pliki skompresowane do pakietu zip. Jeden plik to szablon usługi Resource Manager określający zasoby, które trzeba wdrożyć dla danej aplikacji zarządzanej. Drugi plik definiuje [interfejs użytkownika](create-uidefinition-overview.md) dla klientów wdrażających tę aplikację zarządzaną za pośrednictwem portalu. W interfejsie użytkownika należy określić elementy, które umożliwiają klientom podanie wartości parametrów.
+   * **PrincipalId**: Ta właściwość jest identyfikatorem usługi Azure Active Directory (Azure AD) użytkownika, grupy użytkowników lub aplikacji, której udzielono uprawnień dostępu do zasobów w subskrypcji klienta. Uprawnienia są opisywane za pomocą definicji roli.
+   * **Definicja roli**: Ta właściwość jest listą wszystkich wbudowanych kontroli dostępu na podstawie ról (RBAC, Role-Based Access Control) zapewnianych przez usługę Azure AD. Możesz wybrać rolę, która najbardziej nadaje się do zarządzania zasobami w imieniu klienta.
 
-Formularz Marketplace wprowadza się pola, które są widoczne na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i na [portalu Azure](https://portal.azure.com/).
+Możesz dodać wiele autoryzacji. Zalecamy utworzenie grupy użytkowników usługi AD i określenie jej identyfikatora w polu **PrincipalId**. Dzięki temu będzie można dodawać kolejnych użytkowników do grupy użytkowników bez konieczności aktualizowania jednostki SKU.
 
-### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji w wersji zapoznawczej
+Aby uzyskać więcej informacji o kontroli dostępu na podstawie ról, zobacz [Wprowadzenie do kontroli dostępu na podstawie ról w witrynie Azure Portal](../role-based-access-control/overview.md).
 
-Wprowadź listę identyfikatorów, które mogą uzyskać dostęp do oferty po opublikowaniu subskrypcji platformy Azure. Te subskrypcje wymienione biały można użyć do testowania przeglądanego oferty, przed wprowadzeniem go na żywo. Można kompilować białą listę maksymalnie 100 subskrypcji w portalu dla partnerów.
+## <a name="marketplace-form"></a>Formularz witryny Marketplace
 
-### <a name="suggested-categories"></a>Kategorii sugerowanych
+Formularz witryny Marketplace zawiera pola, które są widoczne w witrynach [Azure Marketplace](https://azuremarketplace.microsoft.com) i [Azure Portal](https://portal.azure.com/).
 
-Wybierz kategorie do pięciu z Twoją ofertę może być najlepiej skojarzony z listy. Te kategorie są używane do mapowania kategorie produktów, które są dostępne w Twojej oferty [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [portalu Azure](https://portal.azure.com/).
+### <a name="preview-subscription-ids"></a>Identyfikatory subskrypcji wersji zapoznawczej
+
+Wprowadź listę identyfikatorów subskrypcji platformy Azure, które mogą uzyskać dostęp do oferty po jej opublikowaniu. Przy użyciu tych dozwolonych subskrypcji można przetestować ofertę w wersji zapoznawczej zanim zostanie aktywowana. Biała lista może składać się z maksymalnie 100 subskrypcji w portalu dla partnerów.
+
+### <a name="suggested-categories"></a>Sugerowane kategorie
+
+Wybierz z listy maksymalnie pięć kategorii, z którymi można powiązać Twoją ofertę. Te kategorie są używane w celu mapowania oferty na kategorie produktów, które są dostępne w witrynach [Azure Marketplace](https://azuremarketplace.microsoft.com) i [Azure Portal](https://portal.azure.com/).
 
 #### <a name="azure-marketplace"></a>Azure Marketplace
 
-Podsumowanie aplikacji zarządzanej wyświetla następujące pola:
+W podsumowaniu aplikacji zarządzanej są wyświetlane następujące pola:
 
-![Podsumowanie witryny Marketplace](./media/publish-marketplace-app/publishvm10.png)
+![Podsumowanie w witrynie Marketplace](./media/publish-marketplace-app/publishvm10.png)
 
-**Omówienie** karcie dla aplikacji zarządzanej wyświetla następujące pola:
+Na karcie **Omówienie** aplikacji zarządzanej są wyświetlane następujące pola:
 
 ![Omówienie portalu Marketplace](./media/publish-marketplace-app/publishvm11.png)
 
-**Planów + cennik** karcie dla aplikacji zarządzanej wyświetla następujące pola:
+Na karcie **Plany i cennik** aplikacji zarządzanej są wyświetlane następujące pola:
 
-![Plany Marketplace](./media/publish-marketplace-app/publishvm15.png)
+![Plany w witrynie Marketplace](./media/publish-marketplace-app/publishvm15.png)
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Podsumowanie aplikacji zarządzanej wyświetla następujące pola:
+W podsumowaniu aplikacji zarządzanej są wyświetlane następujące pola:
 
-![Portal podsumowania](./media/publish-marketplace-app/publishvm12.png)
+![Podsumowanie w witrynie Portal](./media/publish-marketplace-app/publishvm12.png)
 
-Omówienie aplikacji zarządzanej wyświetla następujące pola:
+W omówieniu aplikacji zarządzanej są wyświetlane następujące pola:
 
-![Przegląd portalu](./media/publish-marketplace-app/publishvm13.png)
+![Omówienie w witrynie Portal](./media/publish-marketplace-app/publishvm13.png)
 
-#### <a name="logo-guidelines"></a>Wytycznych dotyczących logo
+#### <a name="logo-guidelines"></a>Wytyczne dotyczące logo
 
-Skorzystaj z następujących wskazówek dla dowolnego logo, które można przekazać w portalu dla partnerów chmury:
+Skorzystaj z poniższych wskazówek w przypadku każdego logo, które przekazujesz do portalu Cloud Partner:
 
-*   Projekt platformy Azure ma paletę kolorów proste. Ogranicz liczbę podstawowy i pomocniczy kolorów w logo.
-*   Kolorów motywu portalu są białe i czarne. Nie używaj kolorów te jako kolor tła dla logo. Użyj kolor, który sprawia, że logo jest widoczne w portalu. Zaleca się proste kolorów podstawowych. *Jeśli używasz przezroczyste tło, upewnij się, logo i tekst są białe, czarne lub niebieski.*
-*   Nie używaj gradientu tła na logo.
-*   Nie należy umieszczać na logo, nawet Twoja firma lub marką tekstu. Wygląd i działanie logo powinny być płaski i uniknąć gradienty.
-*   Upewnij się, że nie jest rozciągana logo.
+*   Projekt platformy Azure ma prostą paletę kolorów. Ogranicz liczbę podstawowych i pomocniczych kolorów w logo.
+*   Kolory motywu portalu to biały i czarny. Nie używaj tych kolorów jako kolorów tła swojego logo. Użyj koloru, który sprawi, że logo będzie się wyróżniać w portalu. Zalecamy proste kolory podstawowe. *Jeśli używasz przezroczystego tła, upewnij się, że logo i tekst nie są białe, czarne ani niebieskie.*
+*   Nie używaj w logo tła gradientowego.
+*   Nie umieszczaj tekstu w logo, nawet nazwy firmy ani marki. Logo powinno być proste i bez gradientów.
+*   Upewnij się, że logo nie jest rozciągnięte.
 
-#### <a name="hero-logo"></a>Logo bohater
+#### <a name="hero-logo"></a>Logo Duży obraz
 
-Logo bohater jest opcjonalna. Wydawcy można zrezygnować z przekazać logo bohater. Po przekazaniu ikona bohater nie można usunąć. W tym czasie partnera musi postępuj zgodnie z wytycznymi Marketplace, bohater ikon.
+Logo Duży obraz jest opcjonalne. Wydawca może zrezygnować z przekazywania logo Duży obraz. Gdy ikona Duży obraz zostanie przekazana, nie będzie można jej usunąć. Partner musi postępować zgodnie z wytycznymi witryny Marketplace dotyczącymi ikon Duży obraz.
 
-Skorzystaj z następujących wskazówek bohater ikony logo:
+Skorzystaj z poniższych wskazówek dla ikony logo Duży obraz:
 
-*   Nazwa wyświetlana wydawca, tytuł planu i długie Podsumowanie oferty są wyświetlane w biały. W związku z tym nie należy używać jasny kolor tła ikon bohater. Czarne, białe lub przezroczyste tło nie jest dozwolona dla bohater ikon.
-*   Po oferty jest wyświetlana, elementy wewnątrz logo bohater są osadzone programowo. Osadzone elementy obejmują nazwę wyświetlaną wydawca, tytuł planu, długie Podsumowanie oferty i **Utwórz** przycisku. W rezultacie nie wprowadź tekst, podczas projektowania logo bohater. Pozostaw puste miejsce po prawej stronie, ponieważ tekst stanowi programowo, w tym miejscu. Puste miejsce na tekst powinien być 415 x 100 pikseli po prawej stronie. Jest on przesunięcia 370 pikseli z lewej strony.
+*   Nazwa wyświetlana wydawcy, tytuł planu i długie podsumowanie oferty są wyświetlane w kolorze białym. Z tego względu nie należy używać jasnego koloru tła ikony Duży obraz. Czarne, białe lub przezroczyste tło nie jest dozwolone w przypadku ikon Duży obraz.
+*   Po umieszczeniu oferty na liście elementy wewnątrz logo Duży obraz są osadzane programowo. Osadzone elementy obejmują nazwę wyświetlaną wydawcy, tytuł planu, długie podsumowanie oferty i przycisk **Utwórz**. Z tego powodu podczas projektowania logo Duży obraz nie należy wprowadzać żadnego tekstu. Pozostaw puste miejsce po prawej stronie, ponieważ tekst jest dołączany programowo w tym miejscu. Puste miejsce na tekst powinno mieć rozmiar 415 x 100 pikseli i znajdować się po prawej stronie. Jest ono przesunięte o 370 pikseli od lewej strony.
 
-    ![Przykład logo bohater](./media/publish-marketplace-app/publishvm14.png)
+    ![Przykład logo Duży obraz](./media/publish-marketplace-app/publishvm14.png)
 
-## <a name="support-form"></a>Obsługa formularza
+## <a name="support-form"></a>Formularz pomocy technicznej
 
-Wypełnianie **obsługuje** formularza z obsługą kontaktuje się z Twojej firmy. Te informacje mogą inżynierii, kontaktów i kontaktów pomocy technicznej klienta.
+Formularz **Pomoc techniczna** wypełnij za pomocą kontaktów pomocy technicznej Twojej firmy. Te informacje mogą obejmować kontakt z inżynierami lub kontakt z obsługą klienta.
 
 ## <a name="publish-an-offer"></a>Publikowanie oferty
 
-Po wypełnieniu wszystkie sekcje wybierz **publikowania** można uruchomić procesu, który udostępnia klientom ofertę.
+Po wypełnieniu wszystkich sekcji wybierz pozycję **Opublikuj**, aby rozpocząć proces udostępniania Twojej oferty klientom.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Zobacz artykuł [Omówienie aplikacji zarządzanych](overview.md) zawierający wprowadzenie do aplikacji zarządzanych.
-* Aby dowiedzieć się, jak publikowanie aplikacji zarządzanych katalogu usług, zobacz [Utwórz i publikowanie aplikacji katalogu usług zarządzanych](publish-service-catalog-app.md).
+* Aby dowiedzieć się, jak opublikować aplikację zarządzaną w katalogu usług, zobacz [Tworzenie i publikowanie aplikacji zarządzanej katalogu usług](publish-service-catalog-app.md).

@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212793"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure do replikacji maszyn lokalnych
 
@@ -47,7 +48,7 @@ Aby można było wykonać te zadania, do konta musi być przypisana wbudowana ro
 Obrazy replikowanych maszyn są przechowywane w usłudze Azure Storage. Maszyny wirtualne Azure są tworzone na podstawie magazynu w momencie przejścia w tryb failover ze środowiska lokalnego do platformy Azure.
 
 1. W menu witryny [Azure Portal](https://portal.azure.com) wybierz pozycję **Nowy** > **Storage** > **Konto usługi Storage**.
-2. W obszarze **Tworzenie konta magazynu** wprowadź nazwę konta. Na potrzeby tego samouczka użyj nazwy **contosovmsacct1910171607**. Nazwa musi mieć od 3 do 24 znaków długości, zawierać wyłącznie cyfry i małe litery oraz musi być unikatowa w obrębie platformy Azure.
+2. W obszarze **Tworzenie konta magazynu** wprowadź nazwę konta. Na potrzeby tych samouczków należy użyć nazwy **contosovmsacct1910171607**. Wybrana nazwa musi mieć od 3 do 24 znaków długości, zawierać wyłącznie cyfry i małe litery oraz musi być unikatowa w obrębie platformy Azure.
 3. W obszarze **Model wdrażania** wybierz opcję **Resource Manager**.
 4. W obszarze **Rodzaj konta** wybierz opcję **Ogólnego przeznaczenia**. W obszarze **Wydajność** wybierz opcję **Standardowa**. Nie wybieraj magazynu obiektów blob.
 5. W obszarze **Replikacja** wybierz domyślny **Magazyn geograficznie nadmiarowy z dostępem do odczytu** jako opcję nadmiarowości magazynu.
@@ -62,7 +63,7 @@ Obrazy replikowanych maszyn są przechowywane w usłudze Azure Storage. Maszyny 
 ## <a name="create-a-vault"></a>Tworzenie magazynu
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Monitorowanie i zarządzanie** > **Backup i Site Recovery**.
-2. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tego samouczka użyj nazwy **ContosoVMVault**.
+2. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Na potrzeby tej serii samouczków należy użyć nazwy **ContosoVMVault**.
 3. W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów o nazwie **contosoRG**.
 4. W obszarze **Lokalizacja** wprowadź region platformy Azure **Europa Zachodnia**, który jest używany w tym zestawie samouczków.
 5. Aby szybko uzyskać dostęp do magazynu z poziomu pulpitu nawigacyjnego, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
