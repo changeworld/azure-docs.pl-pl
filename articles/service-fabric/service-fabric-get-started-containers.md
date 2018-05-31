@@ -12,13 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/18/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366532"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
@@ -198,6 +199,8 @@ Konteneryzowana usługa wymaga punktu końcowego dla celów komunikacyjnych. Dod
 ```
 
 Definiując punkt końcowy, usługa Service Fabric publikuje punkt końcowy w usłudze Naming. Inne usługi działające w klastrze mogą rozpoznać ten kontener. Komunikację między kontenerami można również realizować za pomocą [odwrotnego serwera proxy](service-fabric-reverseproxy.md). Aby zrealizować komunikację, należy podać port nasłuchujący HTTP odwrotnego serwera proxy i nazwę usług, z którymi chcesz się komunikować, jako zmienne środowiskowe.
+
+Usługa nasłuchuje na określonym porcie (w tym przykładzie 8081). Gdy aplikacja jest wdrażana w klastrze na platformie Azure, klaster i aplikacja są uruchamiane za modułem równoważenia obciążenia platformy Azure. Port aplikacji musi być otwarty w module równoważenia obciążenia platformy Azure, tak aby ruch przychodzący mógł przechodzić do usługi.  Możesz otworzyć ten port w module równoważenia obciążenia platformy Azure za pomocą [skryptu programu PowerShell](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) lub [witryny Azure Portal](https://portal.azure.com).
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurowanie i ustawianie zmiennych środowiskowych
 Zmienne środowiskowe można określić dla każdego pakietu kodu w manifeście usługi. Ta funkcja jest dostępna dla wszystkich usług niezależnie od tego, czy są one wdrażane jako kontenery, procesy, czy pliki wykonywalne gościa. Wartości zmiennych środowiskowych można przesłonić w manifeście aplikacji lub podać je podczas wdrażania jako parametry aplikacji.

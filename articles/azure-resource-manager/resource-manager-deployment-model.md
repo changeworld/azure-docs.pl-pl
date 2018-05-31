@@ -1,6 +1,6 @@
 ---
-title: Wdrożenie usługi Resource Manager i Model Klasyczny | Dokumentacja firmy Microsoft
-description: W tym artykule opisano różnice między modelu wdrażania usługi Resource Manager i model klasyczny (lub zarządzania usługami) modelu wdrażania.
+title: Wdrażanie przy użyciu usługi Resource Manager i wdrażanie klasyczne | Microsoft Docs
+description: W tym artykule opisano różnice między modelem wdrażania przy użyciu usługi Resource Manager a modelem klasycznym (lub przy użyciu zarządzania usługami).
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,54 +8,55 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359744"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Usługa Azure Resource Manager, a wdrożenie klasyczne: zrozumienie modele wdrażania i stan zasobów
-W tym artykule informacje o usłudze Azure Resource Manager i klasycznych modeli wdrażania. Resource Manager i klasycznych modeli wdrażania reprezentować dwie różne sposoby wdrażania i zarządzania nimi rozwiązań platformy Azure. Pracować z nimi za pomocą dwóch różnych zestawów interfejsu API i wdrożonych zasobów może zawierać istotnych różnic. Dwa modele nie są zgodne ze sobą. W tym artykule opisano różnic.
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Wdrożenie przy użyciu usługi Azure Resource Manager a wdrożenie klasyczne: omówienie modeli wdrażania i stanu zasobów
+Ten artykuł zawiera informacje o modelu wdrażania przy użyciu usługi Resource Manager i modelu klasycznym. Model wdrażania przy użyciu usługi Resource Manager i model klasyczny to dwa różne sposoby wdrażania rozwiązań platformy Azure i zarządzania nimi. Stosuje się je za pośrednictwem dwóch różnych zestawów interfejsów API, a wdrożone zasoby mogą zawierać znaczące różnice. Te dwa modele nie są ze sobą zgodne. W tym artykule opisano te różnice.
 
-Aby uprościć wdrażanie i zarządzanie zasobami, firma Microsoft zaleca używanie Menedżera zasobów dla wszystkich nowych zasobów. Jeśli to możliwe firma Microsoft zaleca, należy ponownie wdrożyć istniejących zasobów za pomocą Menedżera zasobów.
+Aby uprościć wdrażanie i zarządzanie zasobami, firma Microsoft zaleca używanie usługi Resource Manager dla wszystkich nowych zasobów. Firma Microsoft zaleca ponowne wdrożenie istniejących zasobów przy użyciu usługi Resource Manager, jeśli to możliwe.
 
-Jeśli dopiero zaczynasz do Menedżera zasobów, można przejrzeć zdefiniowane w terminologii [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
+Jeśli dopiero zaczynasz korzystanie z usługi Resource Manager, zapoznaj się najpierw z terminologią określoną w [omówieniu usługi Azure Resource Manager](resource-group-overview.md).
 
-## <a name="history-of-the-deployment-models"></a>Historia modele wdrażania
-Dostarczana przez platformę Azure pierwotnie tylko klasycznym modelu wdrażania. W tym modelu każdy zasób istniał niezależnie; nie było możliwości wykonania do grupowania powiązanych zasobów. Zamiast tego trzeba było ręcznie śledzić zasoby, które składają się rozwiązania lub aplikacji i pamiętaj, aby zarządzać nimi w skoordynowany sposób podejście. Aby wdrożyć rozwiązanie, trzeba było utworzyć każdego zasobu indywidualnie za pośrednictwem portalu lub utworzyć skrypt wdrożone wszystkie zasoby w odpowiedniej kolejności. Aby usunąć rozwiązania, trzeba było indywidualnie usunąć wszystkie zasoby. Nie można zastosować i zaktualizuj zasady kontroli dostępu dla powiązanych zasobów. Na koniec, nie możesz zastosować tagów do zasobów się z postanowieniami, które ułatwiają monitorowanie zasobów i Zarządzanie rozliczeniami.
+## <a name="history-of-the-deployment-models"></a>Historia modeli wdrażania
+Pierwotnie na platformie Azure dostępny był tylko klasyczny model wdrażania. W tym modelu każdy zasób istniał niezależnie; nie było możliwości grupowania powiązanych zasobów. Zamiast tego trzeba było ręcznie śledzić, z których zasobów składa się dane rozwiązanie lub aplikacja, i pamiętać o zarządzaniu nimi w sposób skoordynowany. Aby wdrożyć rozwiązanie, trzeba było utworzyć każdy zasób oddzielnie za pośrednictwem portalu lub utworzyć skrypt, który wdrażał wszystkie zasoby w odpowiedniej kolejności. Aby usunąć rozwiązanie, trzeba było usunąć każdy zasób osobno. Nie można było łatwo stosować ani aktualizować zasad kontroli dostępu dla powiązanych zasobów. Nie można było też stosować tagów do zasobów w celu oznaczenia ich terminami ułatwiającymi monitorowanie zasobów i zarządzanie rozliczeniami.
 
-W 2014 r. Azure wprowadzono Menedżera zasobów dodane pojęcie grupę zasobów. Grupa zasobów to kontener dla zasobów, które mają wspólne cyklu życia. Model wdrażania usługi Resource Manager zapewnia kilka korzyści:
+W 2014 roku na platformie Azure dodano usługę Resource Manager, która wprowadziła pojęcie grupy zasobów. Grupa zasobów to kontener dla zasobów mających wspólny cykl życia. Model wdrażania przy użyciu usługi Resource Manager zapewnia kilka korzyści:
 
-* Można wdrożyć, zarządzanie i monitorowanie wszystkich usług do rozwiązania jako grupy, zamiast obsługi tych usług indywidualnie.
-* Można wielokrotnie wdrażania rozwiązania przez cały cykl życia i mieć pewność, zasoby są wdrażane w spójnym stanie.
-* Możliwość stosowania kontroli dostępu do wszystkich zasobów w grupie zasobów, a te zasady są stosowane automatycznie, gdy nowe zasoby są dodawane do grupy zasobów.
+* Możliwość grupowego wdrożenia i monitorowania wszystkich usług w ramach rozwiązania oraz zarządzania nimi (zamiast obsługiwania usług pojedynczo).
+* Możliwość wielokrotnego wdrażania rozwiązania w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu.
+* Możliwość stosowania kontroli dostępu do wszystkich zasobów w grupie zasobów. Te zasady są automatycznie stosowane podczas dodawania nowych zasobów do grupy.
 * Możliwość dodawania tagów do zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
-* JavaScript Object Notation (JSON) służy do definiowania infrastruktury dla rozwiązania. Plik JSON jest nazywany szablonem usługi Resource Manager.
+* Możliwość definiowania infrastruktury rozwiązania za pomocą formatu JavaScript Object Notation (JSON). Plik JSON jest nazywany szablonem usługi Resource Manager.
 * Możliwość definiowania zależności między zasobami, aby wdrażać je w odpowiedniej kolejności.
 
-Podczas dodawania usługi Resource Manager wszystkie zasoby wstecznie zostały dodane do domyślnej grupy zasobów. Jeśli utworzysz zasobów za pośrednictwem klasycznego wdrożenia teraz zasobu jest tworzony automatycznie w domyślnej grupie zasobów dla tej usługi, nawet jeśli nie określono tej grupy zasobów wdrożenia. Jednak tylko istniejących w grupie zasobów nie oznacza, że zasób został przekonwertowany na modelu Resource Manager.
+W momencie dodania usługi Resource Manager wszystkie zasoby zostały wstecznie dodane do domyślnych grup zasobów. Jeśli utworzysz teraz zasób przy użyciu klasycznego modelu wdrażania, zasób ten zostanie automatycznie utworzony w domyślnej grupie zasobów dla danej usługi, mimo iż podczas wdrażania nie określono grupy zasobów. Jednak sam fakt istnienia w grupie zasobów nie oznacza, że zasób został przekonwertowany na model usługi Resource Manager.
 
-## <a name="understand-support-for-the-models"></a>Informacje pomocy technicznej dla modeli
-Istnieją trzy scenariusze pod uwagę:
+## <a name="understand-support-for-the-models"></a>Omówienie obsługi modeli
+Istnieją trzy scenariusze:
 
-1. Usługi w chmurze nie obsługuje modelu wdrażania usługi Resource Manager.
-2. Maszyny wirtualne, konta magazynu i sieci wirtualne obsługują Resource Manager i klasycznych modeli wdrażania.
-3. Innymi usługami Azure obsługuje Menedżera zasobów.
+1. Usługi Cloud Services nie obsługują modelu wdrażania przy użyciu usługi Resource Manager.
+2. Maszyny wirtualne, konta magazynu i sieci wirtualne obsługują zarówno model wdrażania przy użyciu usługi Resource Manager, jak i model klasyczny.
+3. Wszystkie pozostałe usługi platformy Azure obsługują usługę Resource Manager.
 
-Maszyny wirtualne, konta magazynu i sieci wirtualnych Jeśli zasób został utworzony za pośrednictwem klasycznego wdrożenia, nadal należy wykonywać na nich operacje za pośrednictwem klasycznego operacji. Jeśli maszyny wirtualne, konta magazynu lub sieci wirtualnej został utworzony przez wdrożenie usługi Resource Manager, można nadal przy użyciu usługi Resource Manager operacji. Ta różnica można uzyskać mylące po subskrypcja zawiera różnych zasobów został utworzony za pomocą usługi Resource Manager oraz wdrażania klasycznego. Ta kombinacja zasobów można utworzyć nieoczekiwane wyniki, ponieważ zasoby nie obsługują tej samej operacji.
+Jeśli w przypadku maszyn wirtualnych, kont magazynu i sieci wirtualnych zasób został utworzony przy użyciu modelu klasycznego, należy nadal go używać za pośrednictwem operacji klasycznych. Jeśli maszynę wirtualną, konto magazynu lub sieć wirtualną utworzono przy użyciu wdrożenia usługi Resource Manager, należy kontynuować korzystanie z operacji usługi Resource Manager. To zróżnicowanie może sprawiać trudności, gdy subskrypcja zawiera zarówno zasoby utworzone za pomocą wdrożenia usługi Resource Manager, jak i wdrożenia klasycznego. Taka kombinacja zasobów może dawać nieoczekiwane wyniki, ponieważ zasoby nie obsługują tych samych operacji.
 
-W niektórych przypadkach polecenia Menedżera zasobów mogą pobierać informacje o zasobie, została utworzona za pośrednictwem klasycznego wdrożenia, lub można wykonywać zadań administracyjnych, takich jak przeniesienie zasobów klasycznych do innej grupy zasobów. Jednak w tych przypadkach nie należy nadawać wrażenie, aby typ obsługiwał operacje Menedżera zasobów. Na przykład załóżmy, że masz grupy zasobów, która zawiera maszynę wirtualną, który został utworzony przy użyciu wdrażania klasycznego. Jeśli uruchomisz następujące polecenia programu PowerShell Menedżera zasobów:
+W niektórych przypadkach polecenie usługi Resource Manager może pobrać informacje o zasobie utworzonym przy użyciu wdrożenia klasycznego lub może wykonać zadanie administracyjne takie jak przeniesieni zasobu klasycznego do innej grupy zasobów. Jednak nie powinno to sugerować, że dany typ obsługuje operacje usługi Resource Manager. Na przykład załóżmy, że masz grupę zasobów, która zawiera maszynę wirtualną utworzoną przy użyciu wdrażania klasycznego. Jeśli uruchomisz następujące polecenie programu PowerShell usługi Resource Manager:
 
 ```powershell
 Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
-Zwraca maszyny wirtualnej:
+Zwróci ono maszynę wirtualną:
 
 ```powershell
 Name              : ExampleClassicVM
@@ -67,87 +68,87 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Jednak polecenia cmdlet usługi Resource Manager **Get AzureRmVM** zwraca tylko maszyn wirtualnych wdrożonych przez Menedżera zasobów. Polecenie nie zwraca została utworzona za pośrednictwem klasycznego wdrożenia maszyny wirtualnej.
+Jednak polecenie cmdlet usługi Resource Manager **Get AzureRmVM** zwraca tylko maszyny wirtualne wdrożone przy użyciu usługi Resource Manager. Poniższe polecenie nie zwraca maszyny wirtualnej utworzonej przy użyciu wdrożenia klasycznego.
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName ExampleGroup
 ```
 
-Tylko zasoby utworzone za pomocą Menedżera zasobów pomocy technicznej tagów. Nie można zastosować tagów do zasobów klasycznych.
+Tylko zasoby utworzone przy użyciu usługi Resource Manager obsługują tagi. Nie można zastosować tagów do zasobów klasycznych.
 
-## <a name="changes-for-compute-network-and-storage"></a>Zmiany dla zasobów obliczeniowych, sieci i magazynu
-Poniższy diagram przedstawia zasobów obliczeniowych, sieci i magazynu wdrożone za pomocą Menedżera zasobów.
+## <a name="changes-for-compute-network-and-storage"></a>Zmiany dotyczące zasobów obliczeniowych, sieciowych i magazynu
+Poniższy diagram przedstawia zasoby obliczeniowe, sieciowe i magazynu wdrożone przy użyciu usługi Resource Manager.
 
-![Menedżer zasobów — architektura](./media/resource-manager-deployment-model/arm_arch3.png)
+![Architektura usługi Resource Manager](./media/resource-manager-deployment-model/arm_arch3.png)
 
-Należy uwzględnić następujące relacje między zasobami:
+Pamiętaj o następujących relacjach między zasobami:
 
-* Istnieje wszystkie zasoby w grupie zasobów.
-* Maszyny wirtualnej jest zależny od konta magazynu określonych zdefiniowany w dostawcy zasobów magazynu do przechowywania jego dysków w magazynie obiektów blob (wymagane).
-* Maszyny wirtualnej odwołuje się do określonej karty Sieciowej zdefiniowany w dostawcy zasobów sieciowych (wymagane) i dostępności ustawić się zdefiniowanych dostawcy zasobów obliczeniowych (opcjonalnie).
-* Karta sieciowa odwołuje się do maszyny wirtualnej przypisany adres IP (wymagane), podsieć sieci wirtualnej dla maszyny wirtualnej (wymagane) i do grupy zabezpieczeń sieci (opcjonalnie).
-* Podsieć sieci wirtualnej odwołuje się do grupy zabezpieczeń sieci (opcjonalnie).
-* Wystąpienie usługi równoważenia obciążenia odwołuje się do puli adresów IP, które obejmują karty Sieciowej maszyny wirtualnej (opcjonalnie) i adres usługi równoważenia obciążenia publicznych lub prywatnych IP (opcjonalnie) odwołuje się do wewnętrznej bazy danych.
+* Wszystkie zasoby istnieją w ramach grupy zasobów.
+* Maszyna wirtualna jest zależna od określonego konta magazynu zdefiniowanego w dostawcy zasobów magazynu na potrzeby przechowywania dysków w magazynie obiektów blob (wymagane).
+* Maszyna wirtualna odwołuje się do określonej karty sieciowej zdefiniowanej w dostawcy zasobów sieciowych (wymagane) i zestawu dostępności zdefiniowanego w dostawcy zasobów obliczeniowych (opcjonalne).
+* Karta sieciowa odwołuje się do przypisanego adresu IP maszyny wirtualnej (wymagane), podsieci sieci wirtualnej maszyny wirtualnej (wymagane) i do sieciowej grupy zabezpieczeń (opcjonalne).
+* Podsieć sieci wirtualnej odwołuje się do sieciowej grupy zabezpieczeń sieci (opcjonalne).
+* Wystąpienie modułu równoważenia obciążenia odwołuje się do puli zaplecza adresów IP, które obejmują kartę sieciową maszyny wirtualnej (opcjonalne), oraz do publicznego lub prywatnego adresu IP modułu równoważenia obciążenia (opcjonalne).
 
-Poniżej przedstawiono składniki oraz ich relacji klasycznego wdrożenia:
+Poniżej przedstawiono składniki oraz ich relacje dla wdrożenia klasycznego:
 
-![Architektura klasycznego](./media/resource-manager-deployment-model/arm_arch1.png)
+![architektura klasyczna](./media/resource-manager-deployment-model/arm_arch1.png)
 
-Klasycznym rozwiązanie do obsługi maszyny wirtualnej zawiera:
+Klasyczne rozwiązanie dla hostowania maszyny wirtualnej obejmuje następujące elementy:
 
-* Usługi w chmurze wymagana, który działa jako kontener dla hostingu maszyn wirtualnych (obliczeniowe). Maszyny wirtualne są automatycznie udostępniane z karty interfejsu sieciowego (NIC) i adres IP przypisany przez platformę Azure. Ponadto usługa w chmurze zawiera wystąpienia usługi równoważenia obciążenia zewnętrznych, publiczny adres IP i domyślne punkty końcowe zezwalająca na ruch protokołu Secure Shell (SSH) dla maszyn wirtualnych z systemem Linux i zdalnego pulpitu i zdalnej programu PowerShell ruch maszyn wirtualnych z systemem Windows.
-* Konto magazynu wymagane są przechowywane pliki VHD dla maszyny wirtualnej, w tym system operacyjny, dyski tymczasowego i dodatkowych danych (magazyn).
-* Opcjonalne sieci wirtualnej, który działa jako dodatkowy kontener, można utworzyć podsieci struktury i wyznaczyć podsieci, na którym znajduje się maszyna wirtualna (sieć).
+* Wymagana usługa w chmurze, która działa jako kontener do hostowania maszyn wirtualnych (obliczenia). Maszyny wirtualne są automatycznie udostępniane z kartą sieciową i adresem IP przypisanym przez platformę Azure. Ponadto usługa w chmurze zawiera wystąpienie zewnętrznego modułu równoważenia obciążenia, publiczny adres IP oraz domyślne punkty końcowe umożliwiające korzystanie z ruchu pulpitu zdalnego i ruchu zdalnego programu PowerShell dla maszyn wirtualnych opartych na systemie Windows oraz z ruchu protokołu Secure Shell (SSH) dla maszyn wirtualnych opartych na systemie Linux.
+* Wymagane konto magazynu przechowujące wirtualne dyski twarde maszyny wirtualnej, w tym system operacyjny oraz tymczasowe i dodatkowe dyski danych (magazyn).
+* Opcjonalna sieć wirtualna działająca jako dodatkowy kontener, w którym można utworzyć podzieloną na podsieci infrastrukturę i wyznaczyć podsieć, na której znajduje się maszyna wirtualna (sieć).
 
-W poniższej tabeli opisano zmiany w interakcje dostawców zasobów obliczeniowych, sieci i magazynu:
+W poniższej tabeli opisano zmiany dotyczące interakcji dostawców zasobów obliczeniowych, sieciowych i magazynu:
 
 | Element | Wdrożenie klasyczne | Resource Manager |
 | --- | --- | --- |
 | Usługa w chmurze dla maszyn wirtualnych |Usługa w chmurze stanowiła kontener do przechowywania maszyn wirtualnych wymagających dostępności na platformie oraz równoważenia obciążenia. |Usługa w chmurze nie jest już obiektem wymaganym do utworzenia maszyny wirtualnej przy użyciu nowego modelu. |
-| Sieci wirtualne |Sieć wirtualna jest opcjonalne dla maszyny wirtualnej. Jeśli uwzględniona, sieci wirtualnej nie można wdrożyć za pomocą Menedżera zasobów. |Maszyna wirtualna wymaga sieci wirtualnej, która została wdrożona za pomocą Menedżera zasobów. |
-| Konta magazynu |Maszyna wirtualna wymaga konta magazynu przechowującym wirtualne dyski twarde dla systemu operacyjnego, dane tymczasowe i dodatkowych dysków. |Maszyna wirtualna wymaga konta magazynu do przechowywania jego dysków w magazynie obiektów blob. |
+| Sieci wirtualne |Sieć wirtualna jest opcjonalna dla maszyny wirtualnej. Jeśli sieć wirtualna zostanie uwzględniona, nie będzie można jej wdrożyć przy użyciu usługi Resource Manager. |Maszyna wirtualna wymaga sieci wirtualnej, która została wdrożona przy użyciu usługi Resource Manager. |
+| Konta magazynu |Maszyna wirtualna wymaga konta magazynu przechowującego wirtualne dyski twarde systemu operacyjnego oraz tymczasowe i dodatkowe dyski danych. |Maszyna wirtualna wymaga konta magazynu do przechowywania dysków w magazynie obiektów blob. |
 | Zestawy dostępności |Dostępność dla platformy była wskazywana przez skonfigurowanie na maszynach wirtualnych takiego samego parametru „AvailabilitySetName”. Maksymalna liczba domen błędów wynosiła 2. |Zestaw dostępności to zasób udostępniany przez dostawcę Microsoft.Compute. Maszyny wirtualne wymagające wysokiej dostępności muszą należeć do zestawu dostępności. Maksymalna liczba domen błędów wynosi obecnie 3. |
 | Grupy koligacji |Grupy koligacji były wymagane do tworzenia sieci wirtualnych. Przestały być wymagane wraz z wprowadzeniem regionalnych sieci wirtualnych. |Dla uproszczenia pojęcie grup koligacji nie jest stosowane w interfejsach API udostępnianych za pośrednictwem usługi Azure Resource Manager. |
-| Równoważenie obciążenia |Utworzenie usługi w chmurze zapewnia niejawny moduł równoważenie obciążenia dla wdrożonych maszyn wirtualnych. |Usługa Load Balancer stanowi zasób udostępniany przez dostawcę Microsoft.Network. Podstawowy interfejs sieciowy maszyn wirtualnych wymagający równoważenia obciążenia powinien odwoływać się do modułu równoważenia obciążenia. Moduły równoważenia obciążenia mogą być wewnętrzne lub zewnętrzne. Wystąpienie usługi równoważenia obciążenia odwołuje się do puli adresów IP, które obejmują karty Sieciowej maszyny wirtualnej (opcjonalnie) i adres usługi równoważenia obciążenia publicznych lub prywatnych IP (opcjonalnie) odwołuje się do wewnętrznej bazy danych. |
-| Wirtualny adres IP |Usługi w chmurze pobiera domyślny adres VIP (wirtualny adres IP), gdy maszyna wirtualna zostanie dodany do usługi w chmurze. Wirtualny adres IP to adres skojarzony z niejawnym modułem równoważenia obciążenia. |Publiczny adres IP stanowi zasób udostępniany przez dostawcę Microsoft.Network. Publiczny adres IP może być statyczny (zastrzeżony) lub dynamiczny. Dynamiczne publiczne adresy IP można przypisać do modułu równoważenia obciążenia. Publiczne adresy IP mogą być chronione przy użyciu grup zabezpieczeń. |
-| Zastrzeżony adres IP |Istnieje możliwość zastrzeżenia adresu IP na platformie Azure i skojarzenia go z usługą w chmurze w celu zapewnienia jego umocowania. |Publiczny adres IP można tworzyć w trybie statycznym, oferuje same możliwości, co zastrzeżony adres IP. |
-| Publiczny adres IP (PIP) dla maszyny wirtualnej |Publiczne adresy IP można także skojarzone z maszyną wirtualną bezpośrednio. |Publiczny adres IP stanowi zasób udostępniany przez dostawcę Microsoft.Network. Publiczny adres IP może być statyczny (zastrzeżony) lub dynamiczny. |
+| Równoważenie obciążenia |Utworzenie usługi w chmurze zapewnia niejawny moduł równoważenie obciążenia dla wdrożonych maszyn wirtualnych. |Usługa Load Balancer stanowi zasób udostępniany przez dostawcę Microsoft.Network. Podstawowy interfejs sieciowy maszyn wirtualnych wymagający równoważenia obciążenia powinien odwoływać się do modułu równoważenia obciążenia. Moduły równoważenia obciążenia mogą być wewnętrzne lub zewnętrzne. Wystąpienie modułu równoważenia obciążenia odwołuje się do puli zaplecza adresów IP, które obejmują kartę sieciową maszyny wirtualnej (opcjonalne), oraz do publicznego lub prywatnego adresu IP modułu równoważenia obciążenia (opcjonalne). |
+| Wirtualny adres IP |Po dodaniu maszyny wirtualnej do usługi w chmurze usługom w chmurze zostaje przypisany domyślny adres VIP (wirtualny adres IP). Wirtualny adres IP to adres skojarzony z niejawnym modułem równoważenia obciążenia. |Publiczny adres IP stanowi zasób udostępniany przez dostawcę Microsoft.Network. Publiczny adres IP może być statyczny (zastrzeżony) lub dynamiczny. Dynamiczne publiczne adresy IP można przypisać do modułu równoważenia obciążenia. Publiczne adresy IP mogą być chronione przy użyciu grup zabezpieczeń. |
+| Zastrzeżony adres IP |Istnieje możliwość zastrzeżenia adresu IP na platformie Azure i skojarzenia go z usługą w chmurze w celu zapewnienia jego umocowania. |Publiczny adres IP, który można utworzyć w trybie statycznym, zapewnia te same możliwości, co zastrzeżony adres IP. |
+| Publiczny adres IP (PIP) dla maszyny wirtualnej |Publiczne adresy IP można również skojarzyć bezpośrednio z maszyną wirtualną. |Publiczny adres IP stanowi zasób udostępniany przez dostawcę Microsoft.Network. Publiczny adres IP może być statyczny (zastrzeżony) lub dynamiczny. |
 | Punkty końcowe |Wejściowe punkty końcowe wymagały skonfigurowania na maszynie wirtualnej w celu uzyskania otwartej łączności z określonymi portami. Jednym z często używanych trybów łączenia się z maszynami wirtualnymi jest ustawienie wejściowych punktów końcowych. |Można skonfigurować reguły ruchu przychodzącego translatora adresów sieciowych w usługach Load Balancer w celu uzyskania tej samej możliwości włączania punktów końcowych dla określonych portów na potrzeby połączeń z maszynami wirtualnymi. |
-| Nazwa DNS |Usługa w chmurze otrzymuje niejawną, globalnie unikatową nazwę DNS. Na przykład: `mycoffeeshop.cloudapp.net`. |Nazwy DNS są opcjonalnymi parametrami, które można określić w zasobie publicznego adresu IP. Nazwa FQDN to w następującym formacie - `<domainlabel>.<region>.cloudapp.azure.com`. |
-| Interfejsy sieciowe |Podstawowy i pomocniczy interfejs sieciowy oraz ich właściwości zostały zdefiniowane jako konfiguracja sieci maszyny wirtualnej. |Interfejs sieciowy stanowi zasób udostępniany przez dostawcę Microsoft.Network. Cykl życia interfejsu sieciowego nie jest powiązany z maszyną wirtualną. Odwołuje się maszyny wirtualnej przypisany adres IP (wymagane), podsieć sieci wirtualnej dla maszyny wirtualnej (wymagane) i do grupy zabezpieczeń sieci (opcjonalnie). |
+| Nazwa DNS |Usługa w chmurze otrzymuje niejawną, globalnie unikatową nazwę DNS. Na przykład: `mycoffeeshop.cloudapp.net`. |Nazwy DNS są opcjonalnymi parametrami, które można określić w zasobie publicznego adresu IP. W pełni kwalifikowana nazwa domeny (FQDN) ma następujący format: `<domainlabel>.<region>.cloudapp.azure.com`. |
+| Interfejsy sieciowe |Podstawowy i pomocniczy interfejs sieciowy oraz ich właściwości zostały zdefiniowane jako konfiguracja sieci maszyny wirtualnej. |Interfejs sieciowy stanowi zasób udostępniany przez dostawcę Microsoft.Network. Cykl życia interfejsu sieciowego nie jest powiązany z maszyną wirtualną. Odwołuje się on do przypisanego adresu IP maszyny wirtualnej (wymagane), podsieci sieci wirtualnej maszyny wirtualnej (wymagane) i do sieciowej grupy zabezpieczeń (opcjonalne). |
 
-Aby dowiedzieć się więcej o nawiązywaniu połączeń sieci wirtualne od różne modele wdrażania, zobacz [połączyć sieci wirtualnych z różne modele wdrażania w portalu](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
+Aby dowiedzieć się więcej o łączeniu sieci wirtualnych z różnych modeli wdrażania, zobacz [Łączenie sieci wirtualnych z różnych modeli wdrażania w portalu](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
-## <a name="migrate-from-classic-to-resource-manager"></a>Migracja z klasycznego do Menedżera zasobów
-Jeśli wszystko jest gotowe do migracji zasobów z wdrażania klasycznego do wdrożenia usługi Resource Manager, zobacz:
+## <a name="migrate-from-classic-to-resource-manager"></a>Migrowanie z wersji klasycznej do usługi Resource Manager
+Jeśli wszystko jest gotowe do migracji zasobów z wdrożenia klasycznego do wdrożenia usługi Resource Manager, zobacz:
 
-1. [Techniczne szczegółowe informacje na temat obsługiwanych platform migracji ze środowiska klasycznego do usługi Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
-2. [Platformy obsługiwane migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-3. [Migracja zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager przy użyciu programu Azure PowerShell](../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [Migracja zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure](../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+1. [Rozbudowana technicznie migracja z obsługą platformy od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+2. [Obsługiwana przez platformę migracja zasobów rozwiązania IaaS z wdrożenia klasycznego do usługi Azure Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+3. [Migrowanie zasobów rozwiązania IaaS z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager przy użyciu programu Azure PowerShell](../virtual-machines/windows/migration-classic-resource-manager-ps.md)
+4. [Migrowanie zasobów rozwiązania IaaS z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager przy użyciu interfejsu wiersza polecenia](../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-**Można utworzyć maszynę wirtualną za pomocą Menedżera zasobów dotyczące wdrażania w sieci wirtualnej utworzonej przy użyciu klasycznego wdrożenia?**
+**Czy mogę utworzyć maszynę wirtualną, używając usługi Resource Manger do przeprowadzenia wdrożenia w sieci wirtualnej utworzonej przy użyciu wdrożenia klasycznego?**
 
-Ta konfiguracja nie jest obsługiwana. Menedżer zasobów nie można użyć do wdrożenia maszyny wirtualnej w sieci wirtualnej, który został utworzony przy użyciu klasycznego wdrożenia.
+Ta konfiguracja nie jest obsługiwana. Nie można za pomocą usługi Resource Manager wdrożyć maszyny wirtualnej w sieci wirtualnej utworzonej przy użyciu wdrożenia klasycznego.
 
-**Można utworzyć maszynę wirtualną z obrazu użytkownika, który został utworzony przy użyciu klasycznego modelu wdrażania przy użyciu usługi Resource Manager?**
+**Czy mogę utworzyć maszynę wirtualną za pomocą usługi Resource Manager na podstawie obrazu użytkownika, który został utworzony przy użyciu klasycznego modelu wdrażania?**
 
-Ta konfiguracja nie jest obsługiwana. Można jednak skopiować pliki VHD z konta magazynu, który został utworzony przy użyciu klasycznego modelu wdrażania i dodaj je do nowego konta utworzone za pomocą Menedżera zasobów.
+Ta konfiguracja nie jest obsługiwana. Możesz jednak skopiować pliki wirtualnego dysku twardego z konta magazynu utworzonego przy użyciu klasycznego modelu wdrażania i dodać je do nowego konta utworzonego przy użyciu usługi Resource Manager.
 
-**Jaki jest wpływ na przydziały obowiązujące dla mojej subskrypcji?**
+**Jak wpłynie to na limity przydziału dla mojej subskrypcji?**
 
-Przydziały dla maszyn wirtualnych, sieci wirtualnych i kont magazynu utworzonych za pomocą Menedżera zasobów Azure są niezależne od innych przydziałów. Każda subskrypcja otrzymuje przydziały na tworzenie zasobów przy użyciu nowych interfejsów API. Więcej informacji o dodatkowych przydziałach można znaleźć [tutaj](../azure-subscription-service-limits.md).
+Limity przydziału dla maszyn wirtualnych, sieci wirtualnych i kont magazynu utworzonych przy użyciu usługi Azure Resource Manager są niezależne od innych limitów przydziału. Każda subskrypcja otrzymuje limity przydziału na tworzenie zasobów przy użyciu nowych interfejsów API. Więcej informacji o dodatkowych przydziałach można znaleźć [tutaj](../azure-subscription-service-limits.md).
 
-**Można nadal używać moich zautomatyzowanych skryptów do inicjowania obsługi maszyn wirtualnych, sieci wirtualnych i kont magazynu za pośrednictwem interfejsów API usługi Resource Manager?**
+**Czy mogę nadal używać moich zautomatyzowanych skryptów do aprowizowania maszyn wirtualnych, sieci wirtualnych i kont magazynu przy użyciu interfejsów API usługi Resource Manager?**
 
-Do automatyzacji oraz skrypty, które zostały utworzone nadal działa w przypadku istniejących maszyn wirtualnych, sieci wirtualne utworzone w trybie zarządzania usługami Azure. Jednak skrypty musi zostać zaktualizowany w celu zastosowania nowego schematu tworzenia tych samych zasobów w trybie Menedżera zasobów.
+Wszelkie utworzone elementy do automatyzacji oraz skrypty będą nadal działać w przypadku istniejących maszyn wirtualnych i sieci wirtualnych utworzonych w trybie usługi Azure Service Management. Skrypty należy jednak zaktualizować w celu zastosowania nowego schematu tworzenia tych samych zasobów w trybie usługi Resource Manager.
 
 **Gdzie znajdę przykłady szablonów usługi Azure Resource Manager?**
 
-Kompleksowy zestaw szablonów startowych można znaleźć w [szablonów Szybki Start usługi Azure Resource Manager](https://azure.microsoft.com/documentation/templates/).
+Kompleksowy zestaw szablonów startowych można znaleźć na stronie [Szablony szybkiego startu usługi Azure Resource Manager](https://azure.microsoft.com/documentation/templates/).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Aby zapoznać się z tworzenia szablonu, który definiuje maszyny wirtualnej, konta magazynu i sieci wirtualnej, zobacz [Przewodnik po szablonie usługi Resource Manager](resource-manager-template-walkthrough.md).
-* Aby wyświetlić polecenia do wdrożenia szablonu, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
+## <a name="next-steps"></a>Następne kroki
+* Aby zapoznać się z tworzeniem szablonu definiującego maszynę wirtualną, konto magazynu i sieć wirtualną, zobacz [Przewodnik po szablonie usługi Resource Manager](resource-manager-template-walkthrough.md).
+* Aby wyświetlić polecenia dotyczące wdrażania szablonu, zobacz [Wdrażanie aplikacji za pomocą szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
 

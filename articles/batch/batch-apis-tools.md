@@ -1,18 +1,19 @@
 ---
-title: "Interfejsy API i narzędzia dla deweloperów usługi Azure Batch | Microsoft Docs"
-description: "Informacje na temat narzędzi i interfejsów API przeznaczonych do tworzenia rozwiązań korzystających z usługi Azure Batch."
+title: Interfejsy API i narzędzia dla deweloperów usługi Azure Batch | Microsoft Docs
+description: Informacje na temat narzędzi i interfejsów API przeznaczonych do tworzenia rozwiązań korzystających z usługi Azure Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: get-started-article
-ms.date: 02/26/2018
+ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0d3720d33de2237b0d8cce2ae56bcc7ccf6acc43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a47c7355e8dfea97f7dee6787da87444a7642c3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359326"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Omówienie narzędzi i interfejsów API usługi Batch
 
@@ -26,11 +27,10 @@ Można skutecznie przetwarzać duże obciążenia na potrzeby swojej organizacji
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>Konta platformy Azure na potrzeby programowania w usłudze Batch
-Podczas opracowywania rozwiązań usługi Batch potrzebne są następujące konta na platformie Microsoft Azure.
+Podczas opracowywania rozwiązań usługi Batch potrzebne są następujące konta w ramach subskrypcji platformy Azure:
 
-* **Konto i subskrypcja platformy Azure** — jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów programu Visual Studio][msdn_benefits] lub utworzyć [bezpłatne konto platformy Azure][free_account]. Podczas tworzenia konta zostanie utworzona domyślna subskrypcja.
-* **Konto usługi Batch** — zasoby usługi Batch, w tym pule, węzły obliczeniowe, zadania i podzadania są skojarzone z kontem usługi Azure Batch. Gdy aplikacja wykonuje żądanie względem usługi Batch, usługa ta uwierzytelnia żądanie przy użyciu nazwy konta usługi Batch, adresu URL konta oraz klucza dostępu albo tokenu usługi Azure Active Directory. [Konto usługi Batch możesz utworzyć](batch-account-create-portal.md) w witrynie Azure Portal lub programowo.
-* **Konto usługi Storage** — Usługa Batch obejmuje wbudowaną obsługę pracy z plikami w usłudze [Azure Storage][azure_storage]. Usługa Azure Blob Storage jest używana prawie w każdym scenariuszu usługi Batch — do przemieszczania programów uruchamianych przez podzadania oraz danych, które one przetwarzają, oraz do przechowywania danych wyjściowych, które generują. Aby utworzyć konto usługi Storage, zobacz temat [Informacje o kontach magazynu Azure](../storage/common/storage-create-storage-account.md)
+* **Konto usługi Batch** — zasoby usługi Batch, w tym pule, węzły obliczeniowe, zadania i podzadania są skojarzone z [kontem usługi Azure Batch](batch-api-basics.md#account). Gdy aplikacja wykonuje żądanie względem usługi Batch, usługa ta uwierzytelnia żądanie przy użyciu nazwy konta usługi Batch, adresu URL konta oraz klucza dostępu albo tokenu usługi Azure Active Directory. [Konto usługi Batch możesz utworzyć](batch-account-create-portal.md) w witrynie Azure Portal lub programowo.
+* **Konto usługi Storage** — Usługa Batch obejmuje wbudowaną obsługę pracy z plikami w usłudze [Azure Storage][azure_storage]. Usługa Azure Blob Storage jest używana prawie w każdym scenariuszu usługi Batch — do przemieszczania programów uruchamianych przez podzadania oraz danych, które one przetwarzają, oraz do przechowywania danych wyjściowych, które generują. Opis opcji konta magazynu w usłudze Batch można znaleźć w temacie [Omówienie funkcji usługi Batch](batch-api-basics.md#azure-storage-account).
 
 ## <a name="batch-service-apis"></a>Interfejsy API usługi Batch
 
