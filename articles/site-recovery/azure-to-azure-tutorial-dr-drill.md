@@ -1,21 +1,22 @@
 ---
-title: "Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery (wersja zapoznawcza)"
-description: "Dowiedz się, jak uruchomić próbne odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery."
+title: Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery
+description: Dowiedz się, jak uruchomić próbne odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/07/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 66ad4f782917d41a0fd1fbbe5ce50de0dda4589e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fb1c41e6fe254fbcbee8cb91a177777ed4e37fbb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208978"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure (wersja zapoznawcza)
+# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Uruchamianie próbnego odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii (BCDR, business continuity and disaster recovery) przez zapewnienie niezawodnego działania aplikacji biznesowych i ich dostępności podczas planowanych lub nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii komputerów lokalnych i maszyn wirtualnych platformy Azure (maszyn wirtualnych) i organizuje to odzyskiwanie. Obejmuje to replikację, tryb failover i odzyskiwanie.
 
@@ -24,6 +25,8 @@ W tym samouczku przedstawiono sposób uruchamiania próbnego odzyskiwania po awa
 > [!div class="checklist"]
 > * Sprawdzanie wymagań wstępnych
 > * Uruchamianie testu trybu failover dla pojedynczej maszyny wirtualnej
+
+Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

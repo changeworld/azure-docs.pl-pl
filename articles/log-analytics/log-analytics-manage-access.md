@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie obszarami roboczymi w usłudze Azure Log Analytics | Microsoft Docs
-description: Możesz zarządzać obszarami roboczymi w usłudze Azure Log Analytics przy użyciu różnych zadań administracyjnych dotyczących użytkowników, kont, obszarów roboczych i kont platformy Azure.
+title: Zarządzanie obszarami roboczymi w usłudze Azure Log Analytics i portalu pakietu OMS | Microsoft Docs
+description: Możesz zarządzać obszarami roboczymi w usłudze Azure Log Analytics i portalu pakietu OMS przy użyciu różnych zadań administracyjnych dotyczących użytkowników, kont, obszarów roboczych i kont platformy Azure.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2017
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271674"
 ---
 # <a name="manage-workspaces"></a>Zarządzanie obszarami roboczymi
 
@@ -34,7 +35,7 @@ Aby utworzyć obszar roboczy, trzeba:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Określanie wymaganej liczby obszarów roboczych
 Obszar roboczy jest zasobem platformy Azure w postaci kontenera, w którym dane są zbierane, agregowane, analizowane i przedstawiane w witrynie Azure Portal.
 
-Możesz mieć wiele obszarów roboczych na subskrypcję platformy Azure i dostęp do więcej niż jednego obszaru roboczego. Wcześniej można było tylko analizować dane z bieżącego obszaru roboczego, co ograniczało możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji. Teraz możesz [wysyłać zapytania w wielu obszarach roboczych](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search), co zapewnia wgląd w dane obejmujący cały system. W tej sekcji opisano sytuacje, w których pomocne może być utworzenie więcej niż jednego obszaru roboczego.
+Możesz mieć wiele obszarów roboczych na subskrypcję platformy Azure i dostęp do więcej niż jednego obszaru roboczego, aby łatwo wykonywać zapytania obejmujące różne obszary. W tej sekcji opisano sytuacje, w których pomocne może być utworzenie więcej niż jednego obszaru roboczego.
 
 Obecnie obszar roboczy oferuje następujące możliwości:
 
@@ -51,21 +52,21 @@ Na podstawie powyższych właściwości można wskazać następujące sytuacje, 
 * Jesteś dostawcą usługi zarządzanej i chcesz, aby dane usługi Log Analytics dla klientów, którymi zarządzasz, były odizolowane od danych innych klientów.
 * Zarządzasz wieloma klientami i chcesz, aby dla poszczególnych klientów, działów i grup biznesowych były widoczne ich własne dane, ale nie dane innych klientów, działów czy grup biznesowych.
 
-Kiedy zbierasz dane przy użyciu agenta, możesz [skonfigurować każdego agenta w celu raportowania do co najmniej jednego obszaru roboczego](log-analytics-windows-agent.md).
+Jeśli zbierasz dane przy użyciu agentów systemu Windows, możesz [skonfigurować każdego agenta w celu raportowania do co najmniej jednego obszaru roboczego](log-analytics-windows-agents.md).
 
-Jeśli używasz programu System Center Operations Manager, jedna grupa zarządzania programu Operations Manager może być połączona tylko z jednym obszarem roboczym. Jednak program Microsoft Monitoring Agent na komputerze można skonfigurować w celu raportowania w programie Operations Manager i innym obszarze roboczym usługi Log Analytics.  
+Jeśli używasz programu System Center Operations Manager, jedna grupa zarządzania programu Operations Manager może być połączona tylko z jednym obszarem roboczym. Możesz zainstalować program Microsoft Monitoring Agent na komputerach zarządzanych przez program Operations Manager oraz skonfigurować agenta w celu raportowania do programu Operations Manager i innego obszaru roboczego usługi Log Analytics.
 
 ### <a name="workspace-information"></a>Informacje o obszarze roboczym
 
-Szczegółowe informacje o obszarze roboczym można wyświetlić w witrynie Azure Portal. 
+Szczegółowe informacje o obszarze roboczym można wyświetlić w witrynie Azure Portal. Szczegółowe informacje można również wyświetlić w portalu pakietu OMS.
 
 #### <a name="view-workspace-information-in-the-azure-portal"></a>Wyświetlanie informacji o obszarze roboczym w witrynie Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij opcję **Wszystkie usługi**.  Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij pozycję **Log Analytics**.  
-    ![Zrzut ekranu przedstawiający lewe menu platformy Azure](./media/log-analytics-manage-access/hub.png)  
-3. Wybierz obszar roboczy na stronie subskrypcji usługi Log Analytics.
-4. Strona obszaru roboczego zawiera szczegółowe dane dotyczące obszaru roboczego i linki do dodatkowych informacji.  
+1. Jeśli nie zostało to jeszcze zrobione, zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu subskrypcji platformy Azure.
+2. W menu **Centrum** kliknij pozycję **Więcej usług** i na liście zasobów wpisz ciąg **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij pozycję **Log Analytics**.  
+    ![Centrum platformy Azure](./media/log-analytics-manage-access/hub.png)  
+3. Wybierz obszar roboczy w bloku subskrypcji usługi Log Analytics.
+4. Blok obszaru roboczego zawiera szczegółowe dane dotyczące obszaru roboczego i linki do dodatkowych informacji.  
     ![szczegóły obszaru roboczego](./media/log-analytics-manage-access/workspace-details.png)  
 
 
@@ -77,7 +78,7 @@ Domyślnie konto Microsoft lub konto organizacyjne używane do utworzenia obszar
 Istnieją dwa modele uprawnień, które kontrolują dostęp do obszaru roboczego usługi Log Analytics:
 
 1. Starsze role użytkownika usługi Log Analytics
-2. [Dostęp oparty na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)
+2. [Dostęp oparty na rolach na platformie Azure](../active-directory/role-based-access-control-configure.md)
 
 Poniższa tabela zawiera podsumowanie dostępu, który można ustawić za pomocą każdego modelu uprawnień:
 
@@ -104,7 +105,7 @@ Następujące działania również wymagają uprawnień platformy Azure:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Zarządzanie dostępem do usługi Log Analytics przy użyciu uprawnień platformy Azure
-Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
+Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../active-directory/role-based-access-control-configure.md).
 
 Platforma Azure ma dwie wbudowane role użytkownika w usłudze Log Analytics:
 - Czytelnik usługi Log Analytics
@@ -156,13 +157,13 @@ Za pomocą następujących ról możesz udzielić użytkownikom dostępu w róż
 - Grupa zasobów — dostęp do wszystkich obszarów roboczych w grupie zasobów
 - Zasób — dostęp tylko do określonego obszaru roboczego
 
-Za pomocą [ról niestandardowych](../role-based-access-control/custom-roles.md) możesz utworzyć role z określonymi, wymaganymi uprawnieniami.
+Za pomocą [ról niestandardowych](../active-directory/role-based-access-control-custom-roles.md) możesz utworzyć role z określonymi, wymaganymi uprawnieniami.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Role użytkownika platformy Azure oraz role użytkownika portalu usługi Log Analytics
-Jeśli masz co najmniej uprawnienie platformy Azure do odczytu w obszarze roboczym usługi Log Analytics, możesz otworzyć portal pakietu OMS, klikając zadanie **Portal OMS** podczas przeglądania obszaru roboczego usługi Log Analytics.
+Jeśli masz co najmniej uprawnienie do odczytu platformy Azure w obszarze roboczym usługi Log Analytics, możesz otworzyć portal usługi Log Analytics, klikając zadanie **Portal OMS** podczas przeglądania obszaru roboczego usługi Log Analytics.
 
-Podczas otwierania portalu pakietu OMS przełączasz się do użycia starszych ról użytkownika usługi Log Analytics. Jeśli nie masz przypisania roli w portalu usługi Log Analytics, usługa [sprawdza uprawnienia platformy Azure w obszarze roboczym](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
-Przypisanie roli w portalu pakietu OMS jest określane w następujący sposób:
+Podczas otwierania portalu usługi Log Analytics przełączasz się do użycia starszych ról użytkownika usługi Log Analytics. Jeśli nie masz przypisania roli w portalu usługi Log Analytics, usługa [sprawdza uprawnienia platformy Azure w obszarze roboczym](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
+Przypisanie roli w portalu usługi Log Analytics jest określane w następujący sposób:
 
 | Warunki                                                   | Przypisana rola użytkownika usługi Log Analytics | Uwagi |
 |--------------------------------------------------------------|----------------------------------|-------|
@@ -174,7 +175,7 @@ Przypisanie roli w portalu pakietu OMS jest określane w następujący sposób:
 | Zarządzane subskrypcje dostawcy rozwiązań w chmurze (CSP) <br> Konto, na którym się zalogowano, należy do usługi Azure Active Directory połączonej z obszarem roboczym | Administrator | Przeważnie klient dostawcy CSP |
 | Zarządzane subskrypcje dostawcy rozwiązań w chmurze (CSP) <br> Konto, na którym się zalogowano, nie należy do usługi Azure Active Directory połączonej z obszarem roboczym | Współautor | Przeważnie dostawca CSP |
 
-<sup>1</sup> Zapoznaj się z częścią [Azure permissions](../role-based-access-control/custom-roles.md) (Uprawnienia platformy Azure), aby uzyskać więcej informacji na temat definicji ról. Podczas oceny ról akcja `*` nie jest odpowiednikiem `Microsoft.OperationalInsights/workspaces/*`.
+<sup>1</sup> Zapoznaj się z częścią [Azure permissions](../active-directory/role-based-access-control-custom-roles.md) (Uprawnienia platformy Azure), aby uzyskać więcej informacji na temat definicji ról. Podczas oceny ról akcja `*` nie jest odpowiednikiem `Microsoft.OperationalInsights/workspaces/*`.
 
 Należy pamiętać o kilku kwestiach związanych z witryną Azure Portal:
 
@@ -246,7 +247,7 @@ Poniżej przedstawiono procedurę usuwania użytkownika z obszaru roboczego. Usu
 4. Wybierz grupę z listy wyników, a następnie kliknij przycisk **Dodaj**.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Łączenie istniejącego obszaru roboczego z subskrypcją platformy Azure
-Wszystkie obszary robocze utworzone po 26 września 2016 roku muszą być w czasie tworzenia połączone z subskrypcją platformy Azure. Obszary robocze utworzone wcześniej muszą zostać połączone z subskrypcją po zalogowaniu. Jeśli utworzysz obszar roboczy z poziomu witryny Azure Portal lub połączysz obszar roboczy z subskrypcją platformy Azure, usługa Azure Active Directory zostanie połączona jako konto organizacyjne.
+Wszystkie obszary robocze utworzone po 26 września 2016 roku muszą być w czasie tworzenia połączone z subskrypcją platformy Azure. Obszary robocze utworzone wcześniej muszą zostać połączone z obszarem roboczym po zalogowaniu. Jeśli utworzysz obszar roboczy z poziomu witryny Azure Portal lub połączysz obszar roboczy z subskrypcją platformy Azure, usługa Azure Active Directory zostanie połączona jako konto organizacyjne.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>Aby połączyć obszar roboczy z subskrypcją platformy Azure w portalu pakietu OMS
 
@@ -280,6 +281,76 @@ Wszystkie obszary robocze utworzone po 26 września 2016 roku muszą być w czas
 >
 >
 
+## <a name="upgrade-a-workspace-to-a-paid-plan"></a>Uaktualnianie obszaru roboczego do płatnego planu
+Dostępne są trzy typy planów obszarów roboczych dla pakietu OMS: **Bezpłatny**, **Autonomiczny** i **OMS**.  Jeśli używany jest plan *Bezpłatny*, do usługi Log Analytics można wysłać dziennie maksymalnie 500 MB danych.  Aby po przekroczeniu tego limitu móc nadal zbierać dane, musisz zmienić obszar roboczy na plan płatny. Typ planu można zmienić w dowolnym momencie.  Aby uzyskać więcej informacji o cenach pakietu OMS, zobacz [szczegółowe informacje o cenach](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing).
+
+### <a name="using-entitlements-from-an-oms-subscription"></a>Używanie uprawnień z subskrypcji pakietu OMS
+Aby używać uprawnień wynikających z zakupu pakietu OMS E1, OMS E2 OMS lub dodatku pakietu OMS dla programu System Center, wybierz plan *OMS* dla usługi Log Analytics pakietu OMS.
+
+Po zakupie subskrypcji pakietu OMS uprawnienia zostaną dodane do umowy Enterprise Agreement. Z tych uprawnień mogą korzystać dowolne subskrypcje platformy Azure utworzone w ramach tej umowy. Wszystkie obszary robocze w ramach tych subskrypcji korzystają z uprawnień pakietu OMS.
+
+Aby upewnić się, że uprawnienia subskrypcji pakietu OMS są uwzględniane w danych użycia obszaru roboczego, wykonaj następujące czynności:
+
+1. Połącz obszar roboczy z subskrypcją platformy Azure w ramach umowy Enterprise Agreement, która obejmuje subskrypcję pakietu OMS
+2. Wybierz plan *OMS* dla obszaru roboczego
+
+> [!NOTE]
+> Jeśli obszar roboczy został utworzony przed 26 września 2016 r., a plan taryfowy usługi Log Analytics to *Premium*, ten obszar roboczy używa uprawnień z dodatku pakietu OMS dla programu System Center. Uprawnień można także użyć, zmieniając warstwę cenową pakietu *OMS*.
+>
+>
+
+Uprawnienia subskrypcji pakietu OMS nie są widoczne w witrynie Azure Portal lub w portalu pakietu OMS. Uprawnienia i użycie są natomiast widoczne w witrynie Enterprise Portal.  
+
+Jeśli chcesz zmienić subskrypcję platformy Azure, z którą jest połączony obszar roboczy, możesz użyć polecenia cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) programu Azure PowerShell.
+
+### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>Korzystanie z zobowiązania platformy Azure w ramach umowy Enterprise Agreement
+Jeśli nie masz subskrypcji pakietu OMS, zapłacisz osobno za każdy składnik tego pakietu, a dane użycia będą widoczne na rachunku dotyczącym platformy Azure.
+
+Jeśli istnieje zobowiązanie pieniężne platformy Azure dotyczące rejestracji przedsiębiorstwa, z którą są połączone subskrypcje platformy Azure, użycie usługi Log Analytics spowoduje automatyczne obciążenie pozostałego zobowiązania pieniężnego.
+
+Jeśli chcesz zmienić subskrypcję platformy Azure, z którą jest połączony obszar roboczy, możesz użyć polecenia cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) programu Azure PowerShell.  
+
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Zmienianie obszaru roboczego na płatną warstwę cenową w witrynie Azure Portal
+1. Zaloguj się do [Azure Portal](http://portal.azure.com).
+2. Wyszukaj pozycję **Log Analytics** i wybierz ją.
+3. Zostanie wyświetlona lista istniejących obszarów roboczych. Wybierz obszar roboczy.  
+4. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Warstwa cenowa**.  
+5. W obszarze **Warstwa cenowa** kliknij warstwę cenową, a następnie kliknij przycisk **Wybierz**.  
+    ![wybieranie planu](./media/log-analytics-manage-access/manage-access-change-plan03.png)
+6. Gdy odświeżysz widok w witrynie Azure Portal, zostanie wyświetlony zaktualizowany obszar **Warstwa cenowa** dla wybranej warstwy.  
+    ![zaktualizowany plan](./media/log-analytics-manage-access/manage-access-change-plan04.png)
+
+> [!NOTE]
+> Jeśli obszar roboczy jest połączony z kontem usługi Automation, przed wybraniem warstwy cenowej *Autonomiczna (za GB)* musisz usunąć wszystkie rozwiązania **Automation and Control** i odłączyć konto usługi Automation. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Rozwiązania**, aby wyświetlić i usunąć rozwiązania. Aby odłączyć konto usługi Automation, kliknij nazwę konta usługi Automation w bloku **Warstwa cenowa**.
+>
+>
+
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>Zmienianie obszaru roboczego na płatną warstwę cenową w portalu pakietu OMS
+
+Aby zmienić warstwę cenową za pomocą portalu pakietu OMS, musisz mieć subskrypcję platformy Azure.
+
+1. W portalu pakietu OMS kliknij kafelek **Ustawienia**.
+2. Kliknij kartę **Konta**, a następnie kliknij kartę **Subskrypcja i plan taryfowy platformy Azure**.
+3. Kliknij warstwę cenową, której chcesz użyć.
+4. Kliknij pozycję **Zapisz**.  
+   ![subskrypcja i plany taryfowe](./media/log-analytics-manage-access/subscription-tab.png)
+
+Nowy plan taryfowy jest wyświetlany na wstążce portalu pakietu OMS w górnej części strony sieci Web.
+
+![Wstążka pakietu OMS](./media/log-analytics-manage-access/data-plan-changed.png)
+
+
+## <a name="change-how-long-log-analytics-stores-data"></a>Zmiana czasu przechowywania danych przez usługę Log Analytics
+
+W warstwie cenowej Bezpłatna usługa Log Analytics udostępnia dane z ostatnich siedmiu dni.
+W warstwie cenowej Standardowa usługa Log Analytics udostępnia dane z ostatnich 30 dni.
+W warstwie cenowej Premium usługa Log Analytics udostępnia dane z ostatnich 365 dni.
+W warstwach cenowych Autonomiczna i OMS usługa Log Analytics domyślnie udostępnia dane z ostatnich 31 dni.
+
+Korzystając z warstw cenowych Autonomiczna i OMS, możesz przechowywać dane z maksymalnie 2 lat (730 dni). Za dane przechowywane dłużej niż domyślne 31 dni jest naliczana opłata za przechowywanie danych. Aby uzyskać więcej informacji na temat cen, zobacz [opłaty za użycie nadwyżkowe](https://azure.microsoft.com/pricing/details/log-analytics/).
+
+Aby zmienić czas przechowywania danych, zobacz [Manage cost by controlling data volume and retention in Log Analytics (Zarządzanie kosztami przez kontrolowanie ilości danych i czasu ich przechowywania w usłudze Log Analytics)](log-analytics-manage-cost-storage.md).
+
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>Zmienianie organizacji usługi Azure Active Directory dla obszaru roboczego
 
 Organizację usługi Azure Active Directory obszaru roboczego można zmienić. Zmiana organizacji usługi Azure Active Directory umożliwia dodawanie użytkowników i grup z tego katalogu do obszaru roboczego.
@@ -292,6 +363,14 @@ Organizację usługi Azure Active Directory obszaru roboczego można zmienić. Z
 3. Wprowadź informacje o tożsamości administratora domeny usługi Azure Active Directory. Następnie zostanie wyświetlone potwierdzenie z informacją o tym, że obszar roboczy jest połączony z domeną usługi Azure Active Directory.  
     ![potwierdzenie dotyczące połączonego obszaru roboczego](./media/log-analytics-manage-access/manage-access-add-adorg02.png)
 
+
+## <a name="delete-a-log-analytics-workspace"></a>Usuwanie obszaru roboczego usługi Log Analytics
+Gdy usuniesz obszar roboczy usługi Log Analytics, wszystkie powiązane z nim dane zostaną usunięte z usługi Log Analytics w ciągu 30 dni.
+
+Jeśli jesteś administratorem i z tym obszarem roboczym jest skojarzonych wielu użytkowników, skojarzenie między tymi użytkownikami i obszarem roboczym zostanie przerwane. Jeśli użytkownicy są skojarzeni z innymi obszarami roboczymi, mogą nadal z nich korzystać w usłudze Log Analytics. Jeśli jednak nie są oni skojarzeni z innymi obszarami roboczymi, muszą utworzyć obszar roboczy, aby korzystać z usługi. Aby usunąć obszar roboczy, zobacz [Usuwanie obszaru roboczego usługi Azure Log Analytics](log-analytics-manage-del-workspace.md).
+
 ## <a name="next-steps"></a>Następne kroki
-* Aby dowiedzieć się, jak analizować dane zbierane przez rozwiązania i wysyłane z komputerów, zobacz [Objaśnienie użycia danych](log-analytics-usage.md).
-* [Dodaj rozwiązania zarządzania usługi Log Analytics z witryny Azure Marketplace](log-analytics-add-solutions.md), aby dodać funkcje i zebrać dane.
+* Aby zbierać dane z komputerów w centrum danych lub z innego środowiska chmury, zobacz [Collect data from computers in your environment with Log Analytics (Zbieranie danych z komputerów w używanym środowisku za pomocą usługi Log Analytics)](log-analytics-concept-hybrid.md).
+* Aby skonfigurować zbieranie danych z maszyn wirtualnych platformy Azure, zobacz [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
+* [Dodaj rozwiązania Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md), aby dodać funkcje i zebrać dane.
+
