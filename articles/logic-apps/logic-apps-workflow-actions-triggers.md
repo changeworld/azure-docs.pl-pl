@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886786"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Wyzwalacze i akcje dla definicji przepływu pracy w aplikacjach logiki platformy Azure
 
@@ -1394,7 +1395,7 @@ Oto kilka przykładów, które pokazują, jak można użyć wyrażenia w warunka
 | `"expression": "@greater(actions('action1').output.value, parameters('threshold'))"` | Obsługuje funkcje porównania. Na przykład akcja działa tylko wtedy, gdy dane wyjściowe action1 jest większa niż wartość progowa. | 
 | `"expression": "@or(greater(actions('action1').output.value, parameters('threshold')), less(actions('action1').output.value, 100))"` | Obsługuje funkcje logiki tworzenia zagnieżdżonych wyrażeń logicznych. W tym przykładzie akcji jest uruchamiane przy dane wyjściowe action1 więcej niż próg lub w 100. | 
 | `"expression": "@equals(length(actions('action1').outputs.errors), 0))"` | Aby sprawdzić, czy tablica zawiera wszystkie elementy, możesz użyć funkcji tablicy. W tym przykładzie akcji jest uruchamiana po błędy tablica jest pusta. | 
-| `"expression": "parameters('hasSpecialAction')"` | To wyrażenie powoduje błąd i nie jest prawidłowy warunek. Warunki należy użyć "@" symbolu. | 
+| `"expression": "parameters('hasSpecialAction')"` | To wyrażenie powoduje błąd i nie jest prawidłowy warunek. Warunki należy użyć "\@" symbolu. | 
 ||| 
 
 ## <a name="switch-action"></a>Akcja przełącznika
