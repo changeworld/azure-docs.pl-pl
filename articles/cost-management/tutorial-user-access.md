@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c1be4d649bf4b69a9f749003b5c66142006b78e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301611"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -27,7 +28,8 @@ Zarejestrowanie konta lub umowy dotyczącej platformy Azure spowodowało utworze
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
-> * Tworzenie jednostek
+> * Tworzenie jednostek i zarządzanie nimi
+
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -56,11 +58,11 @@ Zazwyczaj użytkownicy, którzy potrzebują dostępu do danych rozwiązania Cost
 
 Aby obejrzeć film wideo z samouczkiem dotyczącym dodawania użytkowników, zobacz [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Dodawanie użytkowników do usługi Azure Cost Management).
 
-## <a name="create-entities"></a>Tworzenie jednostek
+## <a name="create-and-manage-entities"></a>Tworzenie jednostek i zarządzanie nimi
 
-W przypadku definiowania hierarchii jednostek kosztów najlepszym rozwiązaniem jest zidentyfikowanie struktury organizacji.
+W przypadku definiowania hierarchii jednostek kosztów najlepszym rozwiązaniem jest zidentyfikowanie struktury organizacji. Jednostki umożliwiają dzielenie wydatków na poszczególne konta lub subskrypcje. Jednostki kosztów tworzy się w celu utworzenia grup logicznych na potrzeby zarządzania wydatkami i śledzenia ich. Podczas tworzenia drzewa zastanów się, jak musisz lub chcesz wyświetlać swoje koszty posegregowane według jednostek biznesowych, centrów kosztów, środowisk i działów sprzedaży. Drzewo jednostek w rozwiązaniu Cloudyn jest elastyczne z powodu dziedziczenia jednostek.
 
-Podczas tworzenia drzewa zastanów się, jak musisz lub chcesz wyświetlać swoje koszty posegregowane według jednostek biznesowych, centrów kosztów, środowisk i działów sprzedaży. Drzewo jednostek w rozwiązaniu Cloudyn jest elastyczne z powodu dziedziczenia jednostek. Poszczególne subskrypcje dla kont w chmurze są połączone z określonymi jednostkami. Dlatego jednostki są wielodostępne. Dostęp poszczególnych użytkowników można przypisywać do tylko do ich segmentu firmy przy użyciu jednostek. Dzięki temu dane są izolowane, nawet w dużych częściach firm, takich jak przedstawicielstwa. Izolacja danych wspomaga także ład.  
+Poszczególne subskrypcje dla kont w chmurze są połączone z określonymi jednostkami. Jednostkę można skojarzyć z kontem dostawcy usług w chmurze lub subskrypcją. Dlatego jednostki są wielodostępne. Dostęp poszczególnych użytkowników można przypisywać do tylko do ich segmentu firmy przy użyciu jednostek. Dzięki temu dane są izolowane, nawet w dużych częściach firm, takich jak przedstawicielstwa. Izolacja danych wspomaga także ład.  
 
 Po zarejestrowaniu konta lub umowy związanej z platformą Azure na platformie Cloudyn dane zasobów platformy Azure, w tym dane użycia, wydajności, rozliczeń i tagów, z subskrypcji zostały skopiowane do konta platformy Cloudyn. Drzewo jednostek trzeba jednak utworzyć ręcznie. W przypadku pominięcia rejestracji usługi Azure Resource Manager tylko dane rozliczeń i pewne raporty zasobów są dostępne w portalu Cloudyn.
 
@@ -74,6 +76,23 @@ Obok pozycji **Jednostki** kliknij pozycję **Dodaj jednostkę**. Wprowadź info
 
 Gdy wszystko będzie gotowe, **zapisz** jednostkę.
 
+### <a name="entity-access-levels"></a>Poziomy dostępu jednostki
+
+Poziomy dostępu jednostki w połączeniu z dostępem użytkownika umożliwiają zdefiniowanie typu akcji dostępnych w portalu Cloudyn.
+
+- **Przedsiębiorstwo** — umożliwia tworzenie podrzędnych jednostek kosztów i zarządzanie nimi.
+- **Przedsiębiorstwo i alokacja kosztów** — umożliwia tworzenie podrzędnych jednostek kosztów, w tym alokacji kosztów dla kont skonsolidowanych, i zarządzanie nimi.
+- **Przedsiębiorstwo, koszty oparte na alokacji kosztów elementu nadrzędnego** — umożliwia tworzenie podrzędnych jednostek kosztów i zarządzanie nimi. Koszty dla konta są oparte na modelu alokacji kosztów elementu nadrzędnego.
+- **Tylko niestandardowe pulpity nawigacyjne** — użytkownik może wyświetlić tylko wstępnie zdefiniowane niestandardowe pulpity nawigacyjne.
+- **Tylko pulpity nawigacyjne** — użytkownik może wyświetlić tylko pulpity nawigacyjne.
+
+### <a name="create-a-cost-entity-hierarchy"></a>Tworzenie hierarchii jednostek kosztów
+
+Aby utworzyć hierarchię jednostek kosztów, musisz mieć konto na poziomie Przedsiębiorstwo lub Przedsiębiorstwo i alokacja kosztów.
+
+W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Cloud Accounts (Konta w chmurze)**. Drzewo **Entities (Jednostki)** zostanie wyświetlone w okienku po lewej stronie. W razie potrzeby rozwiń drzewo jednostek, aby wyświetlić jednostkę, która ma zostać skojarzona z kontem.  Twoje konta dostawcy usług w chmurze są wyświetlane na kartach w okienku po prawej stronie. Wybierz kartę, kliknij i przeciągnij konto lub subskrypcję do jednostki, a następnie upuść przeciągany element. Pole **Przeniesienie** informuje, że konto zostało przeniesione pomyślnie. Kliknij przycisk **OK**.
+
+Istnieje także możliwość skojarzenia wielu kont z jednostką. Wybierz konta, a następnie kliknij polecenie **Przenieś**. W polu Przenieś konta wybierz jednostkę, do której ma zostać przeniesione konto, a następnie kliknij polecenie **Zapisz**. Pole Przenieś konta żąda potwierdzenia przeniesienia kont. Kliknij pozycję **Tak**, a następnie kliknij pozycję **OK**.
 
 Aby obejrzeć film wideo z samouczkiem dotyczącym tworzenia hierarchii jednostek kosztów, zobacz [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Tworzenie hierarchii jednostek kosztów w usłudze Azure Cost Management).
 
@@ -86,7 +105,8 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Tworzenie użytkownika z prawami dostępu administratora
 > * Tworzenie użytkownika z prawami dostępu użytkownika
-> * Tworzenie jednostek
+> * Tworzenie jednostek i zarządzanie nimi
+
 
 Jeśli dostęp do interfejsu API usługi Azure Resource Manager nie został jeszcze włączony dla Twoich kont, przejdź do następującego artykułu.
 
