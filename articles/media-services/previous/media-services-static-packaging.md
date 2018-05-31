@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790559"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Przy użyciu usługi Azure Media Pakowarka wykonywać zadania pakowania statyczne
 > [!NOTE]
@@ -707,7 +708,7 @@ Jeśli chcesz zaszyfrować Twojej HLS z AES-128, masz do wyboru przy użyciu sta
 > [!NOTE]
 > Aby można było przekonwertować zawartości HLS, musi najpierw convert/kodowania zawartości do Smooth Streaming.
 > Ponadto dla protokołu HLS uzyskać zaszyfrowany z użyciem standardu AES upewnij się, że ustawienie następujących właściwości w pliku MediaPackager_SmoothToHLS.xml: Ustaw właściwość Szyfruj na wartość true, ustaw wartość klucza i wartość keyuri, aby wskazywały serwer authentication\authorization.
-> Usługa Media Services utworzyć plik klucza i umieścić go w kontenerze zasobów. Należy skopiować plik /asset-containerguid/*.key z serwerem (lub Utwórz własny plik klucza), a następnie usuń plik *.key z kontenera zasobów.
+> Usługa Media Services utworzyć plik klucza i umieścić go w kontenerze zasobów. Należy skopiować plik /asset-containerguid/\*.key z serwerem (lub Utwórz własny plik klucza), a następnie usuń plik \*.key z kontenera zasobów.
 > 
 > 
 

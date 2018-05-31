@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2018
+ms.date: 05/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d8ef36e001aaf417b84efaf99a992fd64f01b6f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366345"
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Scenariusz 1. Ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
@@ -22,9 +23,9 @@ Aby zrobić pierwszy krok i zapoznać się z nowymi technologiami, firma Contoso
 
 **Technologia** | **Opis** | **Koszty**
 --- | --- | ---
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Program DMA wykrywa problemy ze zgodnością, które mogą mieć wpływ na funkcjonalność bazy danych na platformie Azure. Ponadto ocenia on równoważność funkcji między obiektem źródłowym i obiektem docelowym programu SQL Server oraz udostępnia zalecenia mające na celu zwiększenie wydajności i niezawodności w środowisku docelowym. | Narzędzie to można pobrać bezpłatnie. 
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Program DMA wykrywa problemy ze zgodnością, które mogą mieć wpływ na funkcjonalność bazy danych na platformie Azure. Ponadto ocenia on równoważność funkcji między obiektem źródłowym i obiektem docelowym programu SQL Server oraz udostępnia zalecenia mające na celu zwiększenie wydajności i niezawodności w środowisku docelowym. | Narzędzie to można pobrać bezpłatnie.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Usługa ta ułatwia ocenę maszyn lokalnych pod kątem migracji na platformę Azure. Ocenia ona kwalifikowanie się maszyn do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn uruchamianych na platformie Azure. Aktualnie usługa Azure Migrate może ocenić gotowość lokalnych maszyn wirtualnych VMware do migracji na platformę Azure. | Obecnie (kwiecień 2018 r) z usługi tej można korzystać bezpłatnie.
-[Mapa usługi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Usługa Azure Migrate przedstawia zależności między maszynami, które chcesz migrować, za pomocą rozwiązania Service Map, |  które jest częścią usługi Azure Log Analytics. Obecnie można go używać bezpłatnie przez 180 dni. 
+[Mapa usługi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Usługa Azure Migrate przedstawia zależności między maszynami, które chcesz migrować, za pomocą rozwiązania Service Map, |  które jest częścią usługi Azure Log Analytics. Obecnie można go używać bezpłatnie przez 180 dni.
 
 W tym scenariuszu pobierzemy i uruchomimy program DMA w celu oceny lokalnej bazy danych programu SQL Server dla aplikacji turystycznej. Za pomocą usługi Azure Migrate z mapowaniem zależności ocenimy maszyny wirtualne aplikacji przed ich zmigrowaniem na platformę Azure.
 
@@ -50,7 +51,7 @@ W tym scenariuszu:
 Oto, czego potrzebujesz, aby wdrożyć ten scenariusz:
 
 - Lokalny program vCenter Server w wersji 5.5, 6.0 lub 6.5.
-- Konto tylko do odczytu w programie vCenter Server lub uprawnienia do utworzenia takiego konta. 
+- Konto tylko do odczytu w programie vCenter Server lub uprawnienia do utworzenia takiego konta.
 - Uprawnienia do utworzenia maszyny wirtualnej w programie vCenter Server przy użyciu szablonu .OVA.
 - Co najmniej jeden host ESXi w wersji 5.0 lub nowszy.
 - Co najmniej dwie lokalne maszyny wirtualne VMware, w tym jedna z uruchomioną bazą danych programu SQL Server.
@@ -106,15 +107,15 @@ Uruchom ocenę, aby przeanalizować źródłowe wystąpienie programu SQL Server
       Aktualnie program DMA nie obsługuje oceny migracji na wystąpienie zarządzane SQL. Aby obejść ten problem, używamy programu SQL Server na maszynie wirtualnej platformy Azure jako tymczasowego obiektu docelowego dla oceny.
 
 1.  W obszarze **Select Target Version** (Wybieranie wersji obiektu docelowego) wskaż docelową wersję programu SQL Server, który chcesz uruchomić na platformie Azure, i określ zakres odnajdywania w ocenie:
-    - Opcja **Compatibility Issues** (Problemy ze zgodnością) informuje o zmianach, które mogą uniemożliwić migrację lub które wymagają drobnych korekt przed migracją. Informuje ona również, które z obecnie używanych funkcji zostały wycofane. Problemy są uporządkowane według poziomu zgodności. 
-    - Opcja **New features' recommendation** (Zalecenia dotyczące nowych funkcji) informuje o nowych funkcjach docelowej platformy programu SQL Server, które można wykorzystać w bazie danych po zakończeniu migracji. Są one uporządkowane według wydajności, zabezpieczeń i magazynu. 
+    - Opcja **Compatibility Issues** (Problemy ze zgodnością) informuje o zmianach, które mogą uniemożliwić migrację lub które wymagają drobnych korekt przed migracją. Informuje ona również, które z obecnie używanych funkcji zostały wycofane. Problemy są uporządkowane według poziomu zgodności.
+    - Opcja **New features' recommendation** (Zalecenia dotyczące nowych funkcji) informuje o nowych funkcjach docelowej platformy programu SQL Server, które można wykorzystać w bazie danych po zakończeniu migracji. Są one uporządkowane według wydajności, zabezpieczeń i magazynu.
 
     ![Wybieranie obiektu docelowego](./media/migrate-scenarios-assessment/dma-assessment-2.png)
 
 2. W obszarze **Connect to a server** (Łączenie z serwerem), określ nazwę maszyny z uruchomionym wystąpieniem programu SQL Server, typ uwierzytelniania i szczegóły połączenia. Następnie kliknij przycisk **Connect** (Połącz).
 
     ![Wybieranie obiektu docelowego](./media/migrate-scenarios-assessment/dma-assessment-3.png)
-    
+
 3. W obszarze **Add source** (Dodawanie źródła) wybierz bazę danych, którą chcesz ocenić, a następnie kliknij przycisk **Add** (Dodaj).
 4. Zostanie utworzona ocena o podanej nazwie.
 
@@ -126,7 +127,7 @@ Uruchom ocenę, aby przeanalizować źródłowe wystąpienie programu SQL Server
 
 ### <a name="analyze-the-database-assessment"></a>Analizowanie oceny bazy danych
 
-Gdy wyniki staną się dostępne, od razu pojawią się w programie Assistant. 
+Gdy wyniki staną się dostępne, od razu pojawią się w programie Assistant.
 
 1. W raporcie **problemów ze zgodnością** sprawdź, czy w bazie danych występują problemy na poszczególnych poziomach zgodności, oraz dowiedz się, jak je rozwiązać. Poziomy zgodności są mapowane na wersje programu SQL Server w następujący sposób:
     - 100: SQL Server 2008/Azure SQL Database
@@ -141,7 +142,7 @@ Gdy wyniki staną się dostępne, od razu pojawią się w programie Assistant.
 
     ![Zalecenia dotyczące funkcji](./media/migrate-scenarios-assessment/dma-assessment-6.png)
 
-3. Po rozwiązaniu problemów kliknij pozycję **Restart Assessment** (Uruchom ponownie ocenę), aby ponownie uruchomić ocenę. 
+3. Po rozwiązaniu problemów kliknij pozycję **Restart Assessment** (Uruchom ponownie ocenę), aby ponownie uruchomić ocenę.
 4. Kliknij pozycję **Export report** (Eksportuj raport), aby wyeksportować raport w formacie JSON lub CSV.
 
 Jeśli uruchamiasz ocenę w większej skali:
@@ -182,8 +183,8 @@ Przed rozpoczęciem wdrażania określ poziom 3 w ustawieniach statystyk program
     - W przypadku magazynu usługa Azure Migrate zaleca standardowy dysk na platformie Azure, o takim samym rozmiarze co dysk lokalny.
     - W przypadku sieci zaleca się utworzenie karty sieciowej na platformie Azure dla każdej lokalnej karty sieciowej.
     - W przypadku obliczeń usługa Azure Migrate uwzględnia liczbę rdzeni oraz rozmiar pamięci i zaleca utworzenie maszyny wirtualnej platformy Azure o takiej samej konfiguracji. Jeśli występuje wiele kwalifikujących się rozmiarów maszyn wirtualnych platformy Azure, zalecany jest rozmiar, który generuje najniższy koszt.
-   
-    
+
+
 [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing) o rozmiarach na poziomie 3.
 
 Ustaw poziom w następujący sposób:
@@ -215,7 +216,7 @@ Utwórz projekt usługi Azure Migrate, a następnie pobierz i skonfiguruj maszyn
     ![Azure Migrate](./media/migrate-scenarios-assessment/project-1.png)
 
 
-    
+
 
 ### <a name="download-the-collector-appliance"></a>Pobieranie urządzenia modułu zbierającego
 
@@ -225,7 +226,7 @@ Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zb
 2. W obszarze **Odnajdź maszyny** kliknij pozycję **Pobierz**, aby pobrać plik OVA.
 3. W obszarze **Skopiuj poświadczenia projektu** skopiuj identyfikator projektu i klucz. Będą potrzebne do skonfigurowania modułu zbierającego.
 
-    ![Pobieranie pliku OVA](./media/migrate-scenarios-assessment/download-ova.png) 
+    ![Pobieranie pliku OVA](./media/migrate-scenarios-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>Weryfikowanie urządzenia modułu zbierającego
 
@@ -235,14 +236,14 @@ Przed wdrożeniem pliku OVA sprawdź, czy jest on bezpieczny.
 2. Uruchom następujące polecenie, aby wygenerować skrót pliku OVA:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom (wersja 1.0.9.7)
-    
+3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom (wersja 1.0.9.8)
+
     **Algorytm** | **Wartość skrótu**
     --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
 
 ### <a name="create-the-collector-appliance"></a>Tworzenie urządzenia modułu zbierającego
 
@@ -250,14 +251,14 @@ Zaimportuj pobrany plik na serwer vCenter.
 
 1. W konsoli klienta vSphere kliknij pozycję **File** (Plik)  >  **Deploy OVF Template** (Wdróż szablon OVF).
 
-    ![Wdrażanie pliku OVF](./media/migrate-scenarios-assessment/vcenter-wizard.png) 
+    ![Wdrażanie pliku OVF](./media/migrate-scenarios-assessment/vcenter-wizard.png)
 
 2. W kreatorze wdrażania szablonu OVF na stronie **Source** (Źródło) określ lokalizację pliku OVA i kliknij pozycję **Next** (Dalej).
 3. W obszarze **OVF Template Details** (Szczegóły szablonu OVF) kliknij pozycję **Next** (Dalej). W obszarze **End User License Agreement** (Umowa licencyjna użytkownika oprogramowania) kliknij przycisk **Accept** (Akceptuj), aby zaakceptować umowę, a następnie kliknij przycisk **Next** (Dalej).
 4. W obszarze **Name and Location** (Nazwa i lokalizacja) wprowadź przyjazną nazwę maszyny wirtualnej modułu zbierającego oraz wskaż lokalizację magazynu, w którym będzie hostowana maszyna wirtualna, a następnie kliknij przycisk **Next** (Dalej). Wskaż host lub klaster, na którym będzie działać urządzenie modułu zbierającego.
 5. W obszarze **Storage** (Magazyn) określ miejsce przechowywania plików urządzenia, a następnie kliknij przycisk **Next** (Dalej).
 6. W obszarze **Disk Format** (Format dysku) określ sposób aprowizacji magazynu.
-7. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieć musi mieć połączenie z Internetem w celu wysyłania metadanych do platformy Azure. 
+7. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieć musi mieć połączenie z Internetem w celu wysyłania metadanych do platformy Azure.
 8. W obszarze **Ready to Complete** (Gotowe do ukończenia) przejrzyj ustawienia, zaznacz opcję **Power on after deployment** (Włącz po wdrożeniu), a następnie kliknij przycisk **Zakończ**.
 
 Po utworzeniu urządzenia pojawi się komunikat potwierdzający pomyślne zakończenie operacji.
@@ -270,22 +271,22 @@ Aktualnie moduł zbierający obsługuje wyłącznie opcję „Angielski (Stany Z
 2. Określ preferencje dotyczące języka, strefy czasowej i hasła dla urządzenia.
 3. Na pulpicie kliknij skrót **Run collector** (Uruchom moduł zbierający).
 
-    ![Skrót do modułu zbierającego](./media/migrate-scenarios-assessment/collector-shortcut.png) 
-    
+    ![Skrót do modułu zbierającego](./media/migrate-scenarios-assessment/collector-shortcut.png)
+
 4. W usłudze Azure Migrate Collector otwórz obszar **Set up prerequisites** (Skonfiguruj elementy wymagane wstępnie).
     - Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
-    - Moduł zbierający sprawdza, czy maszyna wirtualna ma dostęp do Internetu, czy jest zsynchronizowany czas oraz czy jest uruchomiona usługa modułu zbierającego (instalowana domyślnie na maszynie wirtualnej). Ponadto moduł zbierający instaluje interfejs wiersza polecenia PowerCLI VMWare. 
-    
+    - Moduł zbierający sprawdza, czy maszyna wirtualna ma dostęp do Internetu, czy jest zsynchronizowany czas oraz czy jest uruchomiona usługa modułu zbierającego (instalowana domyślnie na maszynie wirtualnej). Ponadto moduł zbierający instaluje interfejs wiersza polecenia PowerCLI VMWare.
+
     > [!NOTE]
     > Zakłada się, że maszyna wirtualna ma bezpośredni dostęp do Internetu, bez serwera proxy.
 
     ![Weryfikowanie wymagań wstępnych](./media/migrate-scenarios-assessment/collector-verify-prereqs.png)
-    
+
 
 5. W obszarze **Specify vCenter Server details** (Określ szczegóły serwera vCenter) wykonaj następujące czynności:
     - Określ nazwę FQDN lub adres IP serwera vCenter.
     - W polach **User name** (Nazwa użytkownika) i **Password** (Hasło) wprowadź poświadczenia konta tylko do odczytu, którego moduł zbierający ma użyć do odnalezienia maszyn wirtualnych na serwerze vCenter.
-    - W obszarze **Select scope** (Zakres wybierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych. 
+    - W obszarze **Select scope** (Zakres wybierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych.
 
     ![Nawiązywanie połączenia z serwerem vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 
@@ -296,7 +297,7 @@ Aktualnie moduł zbierający obsługuje wyłącznie opcję „Angielski (Stany Z
 7. Na stronie **View collection progress** (Wyświetlanie postępu zbierania) możesz monitorować proces odnajdowania i sprawdzić, czy metadane zbierane z maszyn wirtualnych odpowiadają wymaganemu zakresowi. Moduł zbierający informuje o szacowanym czasie odnajdowania.
 
     ![Zbieranie w toku](./media/migrate-scenarios-assessment/collector-collection-process.png)
-   
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
@@ -309,7 +310,7 @@ Po zakończeniu zbierania sprawdź, czy maszyny wirtualne są widoczne w portalu
     ![Odnalezione maszyny](./media/migrate-scenarios-assessment/discovery-complete.png)
 
 3. Zwróć uwagę na to, że maszyny nie mają zainstalowanych agentów usługi Azure Migrate. Należy ich zainstalować, aby wyświetlić zależności.
-    
+
     ![Odnalezione maszyny](./media/migrate-scenarios-assessment/machines-no-agent.png)
 
 
@@ -322,7 +323,7 @@ Aby wyświetlić zależności między maszynami wirtualnymi, które chcemy oceni
 
 Jeśli przed zmodyfikowaniem maszyny wirtualnej chcesz utworzyć jej kopię, utwórz migawkę przed zainstalowaniem agentów.
 
-![Migawka maszyny](./media/migrate-scenarios-assessment/snapshot-vm.png) 
+![Migawka maszyny](./media/migrate-scenarios-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>Pobieranie i instalowanie agentów maszyny wirtualnej
@@ -331,7 +332,7 @@ Jeśli przed zmodyfikowaniem maszyny wirtualnej chcesz utworzyć jej kopię, utw
 2.  Na stronie **Odnajdywanie maszyn** dla każdej maszyny wirtualnej pobierz i zainstaluj agenta Microsoft Monitoring Agent (MMA) i agenta zależności.
 3.  Skopiuj identyfikator i klucz obszaru roboczego. Będą one potrzebne po zainstalowaniu programu MMA.
 
-    ![Pobieranie agenta](./media/migrate-scenarios-assessment/download-agents.png) 
+    ![Pobieranie agenta](./media/migrate-scenarios-assessment/download-agents.png)
 
 
 
@@ -339,12 +340,12 @@ Jeśli przed zmodyfikowaniem maszyny wirtualnej chcesz utworzyć jej kopię, utw
 
 1. Kliknij dwukrotnie pobranego agenta.
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**. Na stronie **Postanowienia licencyjne** kliknij przycisk **Zgadzam się**, aby zaakceptować warunki licencji.
-3. W obszarze **Folder docelowy** pozostaw domyślny folder instalacji i kliknij przycisk **Dalej**. 
-4. W obszarze **Opcje instalacji agenta** wybierz pozycję **Połącz agenta z usługą Azure Log Analytics** > **Dalej**. 
+3. W obszarze **Folder docelowy** pozostaw domyślny folder instalacji i kliknij przycisk **Dalej**.
+4. W obszarze **Opcje instalacji agenta** wybierz pozycję **Połącz agenta z usługą Azure Log Analytics** > **Dalej**.
 
-    ![Instalacja programu MMA](./media/migrate-scenarios-assessment/mma-install.png) 
+    ![Instalacja programu MMA](./media/migrate-scenarios-assessment/mma-install.png)
 5. W obszarze **Azure Log Analytics** wklej identyfikator i klucz obszaru roboczego skopiowane z portalu. Kliknij przycisk **Dalej**.
-    ![Instalacja programu MMA](./media/migrate-scenarios-assessment/mma-install2.png) 
+    ![Instalacja programu MMA](./media/migrate-scenarios-assessment/mma-install2.png)
 
 6. W obszarze **Gotowe do instalacji** zainstaluj program MMA.
 
@@ -356,10 +357,10 @@ Jeśli przed zmodyfikowaniem maszyny wirtualnej chcesz utworzyć jej kopię, utw
 2.  Na stronie **Postanowienia licencyjne** kliknij przycisk **Zgadzam się**, aby zaakceptować warunki licencji.
 3.  W obszarze **Instalowanie** poczekaj na ukończenie instalacji. Następnie kliknij przycisk **Next** (Dalej).
 
-    ![Agent zależności](./media/migrate-scenarios-assessment/dependency-agent.png) 
+    ![Agent zależności](./media/migrate-scenarios-assessment/dependency-agent.png)
 
 
-       
+
 ## <a name="step-7-run-and-analyze-the-vm-assessment"></a>Krok 7. Uruchamianie i analizowanie oceny maszyny wirtualnej
 
 Sprawdź zależności maszyny, a następnie utwórz grupę. Uruchom ocenę.
@@ -368,7 +369,7 @@ Sprawdź zależności maszyny, a następnie utwórz grupę. Uruchom ocenę.
 
 1.  Na stronie **Maszyny** kliknij pozycję **Wyświetl zależności** dla maszyn wirtualnych, które chcesz przeanalizować.
 
-    ![Wyświetlanie zależności maszyn](./media/migrate-scenarios-assessment/view-machine-dependencies.png) 
+    ![Wyświetlanie zależności maszyn](./media/migrate-scenarios-assessment/view-machine-dependencies.png)
 
 2. W przypadku maszyny SQLVM mapa zależności zawiera następujące informacje:
 
@@ -376,8 +377,8 @@ Sprawdź zależności maszyny, a następnie utwórz grupę. Uruchom ocenę.
     - Połączenia przychodzące TCP (klienta) do wszystkich zależnych maszyn i połączenia wychodzące TCP (serwera) z wszystkich zależnych maszyn.
     - Maszyny zależne z zainstalowanymi agentami usługi Azure Migrate są wyświetlane jako osobne pola
     - W przypadku maszyn bez zainstalowanych agentów są wyświetlane informacje o porcie i adresie IP.
-    
- 3. Aby wyświetlić dodatkowe informacje o maszynie z zainstalowanym agentem (WEBVM), takie jak nazwa FQDN, system operacyjny i adres MAC, kliknij pole maszyny. 
+
+ 3. Aby wyświetlić dodatkowe informacje o maszynie z zainstalowanym agentem (WEBVM), takie jak nazwa FQDN, system operacyjny i adres MAC, kliknij pole maszyny.
 
     ![Wyświetlanie zależności grupowych](./media/migrate-scenarios-assessment/sqlvm-dependencies.png)
 
@@ -385,7 +386,7 @@ Sprawdź zależności maszyny, a następnie utwórz grupę. Uruchom ocenę.
 5. Kliknij przycisk **Utwórz grupę** i podaj nazwę (smarthotelapp).
 
 > [!NOTE]
-    > Aby wyświetlić bardziej szczegółowe zależności, możesz rozszerzyć zakres czasu. Możesz wybrać przedział lub datę początkową i datę końcową. 
+    > Aby wyświetlić bardziej szczegółowe zależności, możesz rozszerzyć zakres czasu. Możesz wybrać przedział lub datę początkową i datę końcową.
 
 
 ### <a name="run-an-assessment"></a>Uruchamianie oceny
@@ -409,7 +410,7 @@ Ten samouczek korzysta z domyślnych ustawień oceny, ale możesz je dostosować
     **Ustawienie** | **Szczegóły** | **Domyślne**
     --- | --- | ---
     **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację. | Brak wartości domyślnej.
-    **Nadmiarowość magazynu** | Typ nadmiarowości magazynu, który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. | Wartość domyślna to [Magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md). Usługa Azure Migrate obsługuje tylko oceny oparte na dyskach zarządzanych, a dyski zarządzane obsługują tylko magazyn LRS, dlatego obecnie dostępna jest tylko opcja magazynu LRS. 
+    **Nadmiarowość magazynu** | Typ nadmiarowości magazynu, który będzie używany przez maszyny wirtualne platformy Azure po zakończeniu migracji. | Wartość domyślna to [Magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md). Usługa Azure Migrate obsługuje tylko oceny oparte na dyskach zarządzanych, a dyski zarządzane obsługują tylko magazyn LRS, dlatego obecnie dostępna jest tylko opcja magazynu LRS.
     **Kryterium rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Rozmiar maszyn wirtualnych możesz ustalać *na podstawie wydajności* lub rozmiaru *maszyn lokalnych* bez uwzględniania historii wydajności. | Opcja domyślna to określanie rozmiaru na podstawie wydajności.
     **Historia wydajności** | Przedział czasu uwzględniany podczas oceny wydajności maszyn wirtualnych. Ta właściwość ma zastosowanie tylko w przypadku *ustalania rozmiaru na podstawie wydajności*. | Wartość domyślna to jeden dzień.
     **Użycie percentyla** | Wartość percentyla próbki wydajności uwzględniana w celu prawidłowego określenia rozmiaru. Ta właściwość ma zastosowanie tylko w przypadku *ustalania rozmiaru na podstawie wydajności*.  | Domyślnie jest to 95. percentyl.
@@ -425,7 +426,7 @@ Ten samouczek korzysta z domyślnych ustawień oceny, ale możesz je dostosować
 
 ### <a name="analyze-the-vm-assessment"></a>Analizowanie oceny maszyny wirtualnej
 
-Ocena usługi Azure Migrate zawiera informacje dotyczące zgodności lokalnych maszyn wirtualnych z platformą Azure, sugerowanych rozmiarów maszyn wirtualnych platformy Azure oraz szacowanych miesięcznych kosztów platformy Azure. 
+Ocena usługi Azure Migrate zawiera informacje dotyczące zgodności lokalnych maszyn wirtualnych z platformą Azure, sugerowanych rozmiarów maszyn wirtualnych platformy Azure oraz szacowanych miesięcznych kosztów platformy Azure.
 
 ![Raport z oceny](./media/migrate-scenarios-assessment/assessment-overview.png)
 
@@ -470,12 +471,12 @@ Raport z oceny zawiera podsumowane informacje w tabeli. Do wyświetlenia treści
 
 #### <a name="review-monthly-cost-estimates"></a>Przegląd szacowanego kosztu miesięcznego
 
-Ten widok przedstawia łączne koszty zasobów obliczeniowych i magazynowych w przypadku korzystania z maszyn wirtualnych na platformie Azure oraz szczegóły dla poszczególnych maszyn. 
+Ten widok przedstawia łączne koszty zasobów obliczeniowych i magazynowych w przypadku korzystania z maszyn wirtualnych na platformie Azure oraz szczegóły dla poszczególnych maszyn.
 
-![Ocena gotowości](./media/migrate-scenarios-assessment/azure-costs.png) 
+![Ocena gotowości](./media/migrate-scenarios-assessment/azure-costs.png)
 
 - Koszty są szacowane na podstawie zalecanego rozmiaru maszyny.
-- Szacowany miesięczny koszt zasobów obliczeniowych i magazynowych jest agregowany dla wszystkich maszyn wirtualnych w grupie. 
+- Szacowany miesięczny koszt zasobów obliczeniowych i magazynowych jest agregowany dla wszystkich maszyn wirtualnych w grupie.
 
 
 ## <a name="conclusion"></a>Podsumowanie
@@ -490,6 +491,3 @@ W tym scenariuszu zostały wykonane następujące kroki:
 ## <a name="next-steps"></a>Następne kroki
 
 W następnym scenariuszu przeprowadzimy migrację lokalnych maszyn wirtualnych i bazy danych na platformę Azure, korzystając z [metody migracji „lift-and-shift”](migrate-scenarios-lift-and-shift.md).
-
-
-
