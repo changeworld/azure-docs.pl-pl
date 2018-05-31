@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771977"
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Utwórz rekordy DNS dla aplikacji sieci web w domenę niestandardową
 
@@ -53,7 +54,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>Krok 2
 
-Dodaj wartość IPv4 do wcześniej utworzonego zestawu rekordów "@" przy użyciu zmiennej $rs przypisana. Wartość IPv4 przypisana będzie adres IP dla aplikacji sieci web.
+Dodaj wartość IPv4 do wcześniej utworzonego zestawu rekordów "\@\" przy użyciu zmiennej $rs przypisana. Wartość IPv4 przypisana będzie adres IP dla aplikacji sieci web.
 
 Aby znaleźć adres IP dla aplikacji sieci web, postępuj zgodnie z instrukcjami [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
