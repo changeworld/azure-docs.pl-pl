@@ -19,15 +19,16 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30185207"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Wdrażanie usługi sieci Web Azure Machine Learning
 Usługa Azure Machine Learning umożliwia tworzenia, testowania i wdrażania rozwiązań z zakresu analiz predykcyjnych.
 
 Z wysokiego poziomu punktu widzenia można to zrobić w trzy kroki:
 
-* **[Tworzenie eksperymentu uczenia]**  -Azure Machine Learning Studio to środowisko visual programowanie zespołowe używanej do nauczenia i przetestowania modelu analizy predykcyjnej przy użyciu danych szkoleniowych, wprowadzona.
+* **[Tworzenie eksperymentu szkolenia]**  -Azure Machine Learning Studio to środowisko visual programowanie zespołowe używanej do nauczenia i przetestowania modelu analizy predykcyjnej przy użyciu danych szkoleniowych, wprowadzona.
 * **[Przekonwertuj go eksperyment predykcyjny]**  — po modelu po zapoznaniu z istniejącymi danymi i możesz go użyć do oceniać nowe dane, Przygotuj i usprawnić eksperymentu dla prognoz.
-* **[Go wdrożyć jako usługę sieci web]**  — można wdrożyć predykcyjnej eksperymentu jako [nowe] lub [klasycznego] usługi sieci web platformy Azure. Użytkownicy mogą wysyłać dane do modelu i odbierać do modelu prognozy.
+* **[Go wdrożyć jako usługę sieci web]**  — można wdrożyć predykcyjnej eksperymentu jako [Nowy] lub [Classic] usługi sieci web platformy Azure. Użytkownicy mogą wysyłać dane do modelu i odbierać do modelu prognozy.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -61,7 +62,7 @@ Eksperyment predykcyjny można wdrożyć jako nową usługę sieci web lub usłu
 ### <a name="deploy-the-predictive-experiment-as-a-new-web-service"></a>Wdróż eksperyment predykcyjny jako nową usługę sieci web
 Teraz, eksperyment predykcyjny został przygotowany, można go wdrożyć jako nową usługę sieci web platformy Azure. Przy użyciu usługi sieci web, użytkownicy mogą wysyłać dane do modelu i model, którą będzie zwracać jej prognoz.
 
-Aby wdrożyć predykcyjnej eksperymentu, kliknij przycisk **Uruchom** w dolnej części obszaru roboczego eksperymentu. Po skończeniu pracy eksperymentu kliknij **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [nowy]**.  Zostanie otwarta strona wdrożenia portalu Usługa sieci Web usługi Machine Learning.
+Aby wdrożyć predykcyjnej eksperymentu, kliknij przycisk **Uruchom** w dolnej części obszaru roboczego eksperymentu. NewPo skończeniu pracy eksperymentu kliknij **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [nowy]**.  Zostanie otwarta strona wdrożenia portalu Usługa sieci Web usługi Machine Learning.
 
 > [!NOTE] 
 > Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia do subskrypcji, do którego należy wdrożyć usługę sieci web. Aby uzyskać więcej informacji, zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md). 
@@ -182,11 +183,11 @@ Ponieważ wdrożeniu tego eksperymentu przed, zostanie wyświetlona prośba, je�
 Jedną z opcji aktualizowania usługi sieci web jest ponownie ucz modelu programowo. Aby uzyskać więcej informacji, zobacz temat [Retrain Machine Learning models programmatically](retrain-models-programmatically.md) (Ponowne trenowanie modeli uczenia maszynowego programowo).
 
 <!-- internal links -->
-[Tworzenie eksperymentu uczenia]: #create-a-training-experiment
+[Tworzenie eksperymentu szkolenia]: #create-a-training-experiment
 [Przekonwertuj go eksperyment predykcyjny]: #convert-the-training-experiment-to-a-predictive-experiment
 [Go wdrożyć jako usługę sieci web]: #deploy-it-as-a-web-service
-[nowe]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[klasycznego]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Nowy]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Classic]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service
