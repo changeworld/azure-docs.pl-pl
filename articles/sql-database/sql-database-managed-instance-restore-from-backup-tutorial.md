@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426206"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -56,7 +57,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/#create/Microsof
    |**Rodzaj konta**|Blob Storage||
    |**Wydajność**|Standardowa lub Premium|Dyski magnetyczne lub dyski SSD|
    |**Replikacja**|Magazyn lokalnie nadmiarowy||
-   |**Warstwa dostępu (domyślna)|Chłodna lub gorąca||
+   |\*\*Warstwa dostępu (domyślna)|Chłodna lub gorąca||
    |**Wymagany bezpieczny transfer**|Disabled (Wyłączony)||
    |**Subskrypcja**|Twoja subskrypcja|Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions).|
    |**Grupa zasobów**|Grupa zasobów, która została utworzona wcześniej|| 
