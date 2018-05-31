@@ -1,24 +1,21 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal | Microsoft Docs
-description: 'Poznaj sposoby tworzenia konta usługi Data Lake Analytics przy użyciu witryny Azure Portal, tworzenia zadania usługi Data Lake Analytics przy użyciu języka U-SQL oraz przesyłania zadania. '
+title: Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal
+description: Poznaj sposoby tworzenia konta usługi Data Lake Analytics przy użyciu witryny Azure Portal, tworzenia zadania usługi Data Lake Analytics przy użyciu języka U-SQL oraz przesyłania zadania.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
+ms.author: saveenr
 manager: kfile
-editor: cgronlun
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
-ms.author: saveenr
-ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358289"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu witryny Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -64,11 +61,11 @@ OUTPUT @a
 
 ## <a name="submit-a-u-sql-job"></a>Przesyłanie zadania U-SQL
 
-1. Na koncie usługi Data Lake Analytics kliknij pozycję **Nowe zadanie**.
-2. Wklej tekst skryptu U-SQL przedstawiony powyżej. 
-3. Kliknij przycisk **Prześlij zadanie**.   
-4. Zaczekaj, aż stan zadania zmieni się na **Powodzenie**.
-5. Kliknij kartę **Dane wyjściowe**, a następnie kliknij pozycję `data.csv`. 
+1. Na koncie usługi Data Lake Analytics wybierz pozycję **Nowe zadanie**.
+2. Wklej tekst powyższego skryptu U-SQL. Wprowadź nazwę zadania. 
+3. Wybierz przycisk **Prześlij**, aby uruchomić zadanie.   
+4. Monitoruj **Stan** zadania i zaczekaj, aż zmieni się na **Powodzenie**.
+5. Wybierz kartę **Dane**, a następnie kartę **Dane wyjściowe**. Wybierz plik wyjściowy o nazwie `data.csv` i przejrzyj dane wyjściowe.
 
 ## <a name="see-also"></a>Zobacz też
 
