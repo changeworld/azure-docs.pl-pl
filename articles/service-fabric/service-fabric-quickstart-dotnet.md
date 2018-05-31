@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207210"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Szybki start: tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -109,11 +110,12 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
     - Na koniec zwróć odpowiedź z usługi zaplecza do klienta **(3)**.
 
 4. Naciśnij klawisz **F5**, aby kontynuować
+    - Jeśli przeglądarka wyświetli monit, przyznaj grupie ServiceFabricAllowedUsers uprawnienia do odczytu i wykonywania dla trybu debugowania.
     - Jesteś teraz w punkcie przerwania w usłudze zaplecza.
     
     ![Dodawanie usługi zaplecza Vote](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    - W pierwszym wierszu metody**(1)** element `StateManager` pobiera lub dodaje niezawodny słownik o nazwie `counts`.
+    - W pierwszym wierszu metody **(1)** element `StateManager` pobiera lub dodaje niezawodny słownik o nazwie `counts`.
     - Wszystkie interakcje z wartościami w niezawodnym słowniku wymagają transakcji — ta instrukcja using **(2)** tworzy tę transakcję.
     - W transakcji zaktualizuj wartość odpowiedniego klucza dla opcji głosowania i zatwierdź operację **(3)**. Po powrocie z metody zatwierdzania dane są aktualizowane w słowniku i replikowane do innych węzłów w klastrze. Dane są bezpiecznie przechowywane w klastrze, a usługa zaplecza może zostać przełączona w tryb failover do innych węzłów, które nadal mają dostępne dane.
 5. Naciśnij klawisz **F5**, aby kontynuować
@@ -175,13 +177,15 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze bezpośrednio z pro
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalowanie aplikacji i usług w klastrze
 Usługi Service Fabric można łatwo skalować w klastrze w celu dostosowania do zmiany obciążenia w usługach. Skalowanie usługi odbywa się przez zmienianie liczby wystąpień uruchomionych w klastrze. Istnieje wiele sposobów skalowania usług. Można użyć skryptów lub poleceń programu PowerShell lub interfejsu wiersza polecenia usługi Service Fabric (sfctl). W tym przykładzie używane jest narzędzie Service Fabric Explorer.
 
-Narzędzie Service Fabric Explorer działa we wszystkich klastrach usługi Service Fabric i można uzyskać do niego dostęp z przeglądarki, przechodząc do portu HTTP zarządzania klastrami (19080), na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+Narzędzie Service Fabric Explorer działa we wszystkich klastrach usługi Service Fabric i można uzyskać do niego dostęp z przeglądarki, przechodząc do portu HTTP zarządzania klastrami (19080), na przykład `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 
-W przeglądarce może pojawić się ostrzeżenie informujące, że lokalizacja nie jest zaufana. Dzieje się tak, ponieważ certyfikat ma podpis własny. Można zignorować to ostrzeżenie i kontynuować. Po wyświetleniu monitu w przeglądarce wybierz zainstalowany certyfikat do połączenia. 
+W przeglądarce może pojawić się ostrzeżenie informujące, że lokalizacja nie jest zaufana. Dzieje się tak, ponieważ certyfikat ma podpis własny. Można zignorować to ostrzeżenie i kontynuować.
+1. Po wyświetleniu monitu w przeglądarce wybierz zainstalowany certyfikat do połączenia. Wybrany z listy certyfikat klastra testowego musi być zgodny z klastrem testowym, do którego próbujesz uzyskać dostęp. Na przykład win243uja6w62r.westus.cloudapp.azure.com.
+2. Jeśli przeglądarka wyświetli monit, przyznaj dostęp do klucza prywatnego CryptoAPI na czas tej sesji.
 
 Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
 
-1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 2. W widoku drzewa rozwiń węzeł **Aplikacje**->**VotingType**->**fabric:/Voting**. Kliknij wielokropek (trzy kropki) obok węzła **fabric:/Voting/VotingWeb** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)

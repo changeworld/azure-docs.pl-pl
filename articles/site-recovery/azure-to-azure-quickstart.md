@@ -1,27 +1,30 @@
 ---
-title: Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure (wersja zapoznawcza)
+title: Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure
 description: W tym przewodniku Szybki start podano kroki wymagane do zreplikowania maszyny wirtualnej platformy Azure z jednego regionu platformy Azure w innym regionie.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 04/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a317d54b56f72373d99af35b806cb231c2ef962e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208842"
 ---
-# <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure (wersja zapoznawcza)
+# <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replikowanie maszyny wirtualnej platformy Azure w innym regionie platformy Azure
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) stanowi część strategii związanej z ciągłością biznesową i odzyskiwaniem po awarii przez zapewnienie niezawodnego działania aplikacji biznesowych podczas planowanych i nieplanowanych przestojów. Usługa Site Recovery zarządza odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure, a także organizuje to odzyskiwanie. Obejmuje to replikację, przechodzenie w tryb failover i odzyskiwanie.
 
-W tym samouczku Szybki start opisano sposób replikowania maszyny wirtualnej platformy Azure w innym regionie platformy Azure.
+W tym samouczku Szybki start opisano sposób replikowania maszyny wirtualnej platformy Azure w innym regionie platformy Azure. Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -31,7 +34,7 @@ Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 1. W witrynie Azure Portal kliknij pozycję **Maszyny wirtualne** i wybierz tę, którą chcesz zreplikować.
 
-2. W obszarze **Ustawienia** kliknij pozycję **Odzyskiwanie po awarii (wersja zapoznawcza)**.
+2. W obszarze **Ustawienia** kliknij pozycję **Odzyskiwanie po awarii**.
 3. W obszarze **Konfigurowanie odzyskiwania po awarii** > **Region docelowy** wybierz region docelowy, w którym maszyna będzie replikowana.
 4. W przypadku tego przewodnika Szybki Start należy zaakceptować ustawienia domyślne.
 5. Kliknij pozycję **Włącz replikację**. Spowoduje to uruchomienie zadania włączającego replikację dla maszyny wirtualnej.
@@ -59,7 +62,7 @@ Replikowanie maszyny wirtualnej w regionie podstawowym jest zatrzymywane w przyp
 Aby zatrzymać replikację:
 
 1. Wybierz maszynę wirtualną.
-2. W obszarze **Odzyskiwanie po awarii (wersja zapoznawcza)** kliknij pozycję **Więcej**.
+2. W obszarze **Odzyskiwanie po awarii** kliknij pozycję **Więcej**.
 3. Kliknij pozycję **Wyłącz replikację**.
 
    ![Wyłączanie replikacji](media/azure-to-azure-quickstart/disable2-replication.png)
