@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/24/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0460d595bc70ec09d492221485749ece32ec07df
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209712"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrowanie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -102,7 +103,7 @@ Nowy magazyn zostanie dodany do sekcji **Pulpit nawigacyjny** w obszarze **Wszys
 ## <a name="select-the-source"></a>Wybieranie źródła
 
 1. W obszarze magazynów usługi Recovery Services kliknij kolejno pozycje **ConsotoVMVault** > **+ Replikuj**.
-2. W obszarze **Źródło** wybierz pozycję **Azure — WERSJA ZAPOZNAWCZA**.
+2. W obszarze **Źródło** wybierz pozycję **Azure**.
 3. W obszarze **Lokalizacja źródłowa** wybierz źródłowy region świadczenia usługi Azure, w którym są uruchomione maszyny wirtualne.
 4. Wybierz model wdrażania usługi Resource Manager. Następnie wybierz pozycję **Źródłowa grupa zasobów**.
 5. Kliknij pozycję **OK**, aby zapisać ustawienia.
@@ -115,7 +116,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 
 1. W witrynie Azure Portal kliknij pozycję **Maszyny wirtualne**.
 2. Wybierz maszynę wirtualną, którą chcesz migrować. Następnie kliknij przycisk **OK**.
-3. W obszarze **Ustawienia** kliknij pozycję **Odzyskiwanie po awarii (wersja zapoznawcza)**.
+3. W obszarze **Ustawienia** kliknij pozycję **Odzyskiwanie po awarii**.
 4. W obszarze **Konfigurowanie odzyskiwania po awarii** > **Region docelowy** wybierz region docelowy, w którym maszyna będzie replikowana.
 5. Dla celów tego samouczka zaakceptuj inne ustawienia domyślne.
 6. Kliknij pozycję **Włącz replikację**. Spowoduje to uruchomienie zadania włączającego replikację dla maszyny wirtualnej.
