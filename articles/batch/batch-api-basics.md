@@ -15,11 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3423103de774faaf9e7884626a9a1a102e351b68
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: add8e184db102d48275bd8d3faa42def63918c19
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360493"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
@@ -82,7 +83,7 @@ Usługa Batch obsługuje następujące [opcje konta](../storage/common/storage-a
 
 * Konta ogólnego przeznaczenia, wersja 2 (GPv2) 
 * Konta ogólnego przeznaczenia, wersja 1 (GPv1)
-* Konta usługi Blob Storage
+* Konta magazynu obiektów blob (aktualnie obsługiwane w przypadku pul w konfiguracji maszyny wirtualnej)
 
 Konto magazynu można skojarzyć z kontem usługi Batch podczas tworzenia konta usługi Batch lub później. Wybierając konto magazynu, należy wziąć pod uwagę wymagania dotyczące kosztów i wydajności. Na przykład opcje konta magazynu GPv2 i Blob Storage obsługują większe [limity wydajności i skalowalności](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) w porównaniu z wersją GPv1. (Aby poprosić o zwiększenie limitu magazynu, skontaktuj się z działem pomocy technicznej platformy Azure). Te opcje konta mogą poprawić wydajność rozwiązań usługi Batch, które zawierają dużą liczbę równoległych zadań podrzędnych odczytywanych z lub zapisywanych do konta magazynu.
 

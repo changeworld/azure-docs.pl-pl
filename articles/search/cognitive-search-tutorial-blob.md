@@ -9,11 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 023e55724124afb9c97d01540c6319a775681c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366753"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Samouczek: wywoływanie interfejsów API wyszukiwania poznawczego (wersja zapoznawcza)
 
@@ -23,7 +24,7 @@ W tym samouczku interfejs API REST jest wywoływany w celu wykonania następują
 
 > [!div class="checklist"]
 > * Utworzenie potoku indeksowania, który wzbogaca dane źródłowe w drodze do indeksu
-> * Użycie wbudowanych umiejętności rozpoznawania jednostek, wykrywania języka, manipulacji tekstem i wyodrębniania fraz kluczowych na przykładowym zestawie danych
+> * Użycie na przykładowych danych wbudowanych umiejętności: rozpoznawania jednostek, wykrywania języka, manipulacji tekstem i wyodrębniania fraz kluczowych
 > * Poznanie sposobu łączenia umiejętności w łańcuch przez mapowanie danych wejściowych na dane wyjściowe w zestawie umiejętności
 > * Wykonywanie żądań i przeglądanie wyników
 > * Resetowanie indeksu i indeksatorów w celu kontynuowania opracowywania
@@ -84,7 +85,7 @@ Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą
   Parametry połączenia powinny być adresem URL podobnym do następującego przykładu:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=y1NIlE9wFVBIabcd562GzZl+JO9TEGdqOerqfbT78C8zrn28Te8DsWlxvKKnjh67P/HM5k80zt4shOt9vqlbg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
       ```
 
 Istnieją inne sposoby określania parametrów połączenia, takie jak podanie sygnatury dostępu współdzielonego. Aby dowiedzieć się więcej na temat poświadczeń źródła danych, zobacz [Indeksowanie w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).

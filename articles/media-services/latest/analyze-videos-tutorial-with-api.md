@@ -12,11 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 54c49645722b6545d8ae872151b9b82674d44523
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362298"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Samouczek: analizowanie wideo za pomocą usługi Azure Media Services 
 
@@ -66,7 +67,7 @@ Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platfor
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Tworzenie zasobu wyjściowego na potrzeby przechowywania wyników zadania 
 
-Zasób wyjściowy przechowuje wynik zadania. Projekt definiuje funkcję **DownloadResults**, która pobiera wyniki z zasobu wyjściowego do folderu wyjściowego, umożliwiając zapoznanie się z nimi.
+[Zasób](https://docs.microsoft.com/rest/api/media/assets) wyjściowy przechowuje wynik zadania. Projekt definiuje funkcję **DownloadResults**, która pobiera wyniki z zasobu wyjściowego do folderu wyjściowego, umożliwiając zapoznanie się z nimi.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
@@ -76,7 +77,7 @@ W przypadku kodowania lub przetwarzania zawartości w usłudze Media Services ty
 
 #### <a name="transform"></a>Przekształcanie
 
-Podczas tworzenia nowego wystąpienia obiektu **Transform** należy określić, jakie dane wyjściowe ma ono tworzyć. Wymagany parametr to obiekt **TransformOutput**, jak pokazano w powyższym kodzie. Każdy obiekt **TransformOutput** zawiera element **Preset**. Element **Preset** zawiera szczegółowe instrukcje operacji przetwarzania wideo i/lub dźwięku używanych do wygenerowania docelowego obiektu **TransformOutput**. W tym przykładzie jest używane ustawienie wstępne **VideoAnalyzerPreset**, a do jego konstruktora jest przekazywany język („en-US”). To ustawienie wstępne umożliwia przeprowadzenie wielu analiz dźwięku i wideo tworzących plik wideo. Istnieje możliwość użycia ustawienia wstępnego **AudioAnalyzerPreset**, jeśli jest potrzebne przeprowadzenie wielu analiz dźwięku w pliku wideo. 
+Podczas tworzenia nowego wystąpienia obiektu [Transform](https://docs.microsoft.com/rest/api/media/transforms) należy określić, jakie dane wyjściowe ma ono tworzyć. Wymagany parametr to obiekt **TransformOutput**, jak pokazano w powyższym kodzie. Każdy obiekt **TransformOutput** zawiera element **Preset**. Element **Preset** zawiera szczegółowe instrukcje operacji przetwarzania wideo i/lub dźwięku używanych do wygenerowania docelowego obiektu **TransformOutput**. W tym przykładzie jest używane ustawienie wstępne **VideoAnalyzerPreset**, a do jego konstruktora jest przekazywany język („en-US”). To ustawienie wstępne umożliwia przeprowadzenie wielu analiz dźwięku i wideo tworzących plik wideo. Istnieje możliwość użycia ustawienia wstępnego **AudioAnalyzerPreset**, jeśli jest potrzebne przeprowadzenie wielu analiz dźwięku w pliku wideo. 
 
 Podczas tworzenia obiektu **Transform** należy najpierw sprawdzić, czy taki obiekt już istnieje, używając metody **Get**, tak jak przedstawiono w poniższym kodzie.  W przypadku usługi Media Services 3 metody **Get** wywołane dla obiektów zwracają **wartość null**, jeśli obiekt nie istnieje (sprawdzana jest nazwa bez uwzględniania wielkości liter).
 
@@ -84,7 +85,7 @@ Podczas tworzenia obiektu **Transform** należy najpierw sprawdzić, czy taki ob
 
 #### <a name="job"></a>Zadanie
 
-Jak wspomniano powyżej, obiekt **Transform** jest przepisem, a obiekt **Job** to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych. Istnieje możliwość określenia lokalizacji pliku wideo za pomocą adresów URL protokołu HTTPS, adresów URL sygnatury dostępu współdzielonego lub zasobów znajdujących się na koncie usługi Media Service. 
+Jak wspomniano powyżej, obiekt [Transform](https://docs.microsoft.com/rest/api/media/transforms) jest przepisem, a obiekt [Job](https://docs.microsoft.com/en-us/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych. Istnieje możliwość określenia lokalizacji pliku wideo za pomocą adresów URL protokołu HTTPS, adresów URL sygnatury dostępu współdzielonego lub zasobów znajdujących się na koncie usługi Media Service. 
 
 W tym przykładzie dane wejściowe zadania to lokalny film wideo.  
 
@@ -92,7 +93,7 @@ W tym przykładzie dane wejściowe zadania to lokalny film wideo.
 
 ### <a name="wait-for-the-job-to-complete"></a>Oczekiwanie na zakończenie zadania
 
-Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Są dostępne różne opcje powiadamiania o ukończeniu zadania. Najprostsza opcja (przedstawiona tutaj) to użycie sondowania. 
+Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Są dostępne różne opcje powiadamiania o ukończeniu [zadania](https://docs.microsoft.com/en-us/rest/api/media/jobs). Najprostsza opcja (przedstawiona tutaj) to użycie sondowania. 
 
 Sondowanie nie jest najlepszym rozwiązaniem w przypadku zastosowań produkcyjnych ze względu na możliwe opóźnienia. Jeśli sondowanie będzie nadużywane w ramach konta, może zostać ograniczone. Deweloperzy zamiast niego powinni używać usługi Event Grid.
 
@@ -104,7 +105,7 @@ Usługę Event Grid zaprojektowano pod kątem wysokiej dostępności, stałego p
 
 ### <a name="download-the-result-of-the-job"></a>Pobieranie wyniku zadania
 
-Następująca funkcja umożliwia pobranie wyników z zasobu wyjściowego do folderu „wyjściowego”, co umożliwia zapoznanie się z wynikami zadania. 
+Następująca funkcja umożliwia pobranie wyników z [zasobu](https://docs.microsoft.com/rest/api/media/assets) wyjściowego do folderu „wyjściowego”, co umożliwia zapoznanie się z wynikami zadania. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
