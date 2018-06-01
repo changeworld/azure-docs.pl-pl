@@ -9,22 +9,18 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: ea05cd34e5ba3f55b2f5400f1252f729401c5d6a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203873"
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure Portal
-> [!div class="op_single_selector"]
-> * [Omówienie](search-what-is-an-index.md)
-> * [Portal](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
 
 Użyj wbudowanego projektanta indeksów w witrynie Azure Portal, aby utworzyć [indeks wyszukiwania](search-what-is-an-index.md) lub jego prototyp w celu uruchomienia w usłudze Azure Search. 
+
+Alternatywnie możesz utworzyć indeks, korzystając z interfejsów API [REST](search-create-index-rest-api.md) lub platformy [.NET](search-create-index-dotnet.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
