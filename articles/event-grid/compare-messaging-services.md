@@ -1,97 +1,98 @@
 ---
-title: "Wiadomości Porównanie usług Azure"
-description: "Porównanie usługi Azure Event siatki, centra zdarzeń i usługi Service Bus. Zaleca się usługi, która do użycia na potrzeby różnych scenariuszy."
+title: Porównanie usług obsługi komunikatów platformy Azure
+description: Porównanie usług Azure Event Grid, Event Hubs i Service Bus. Zalecenia dotyczące tego, której usługi używać w różnych scenariuszach.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: overview
 ms.date: 03/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 30bbe7442cac96a1dcf6959cac2abedd61454a29
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
-ms.translationtype: MT
+ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303559"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>Wybór między usługami Azure, których dostarczania komunikatów
+# <a name="choose-between-azure-services-that-deliver-messages"></a>Wybieranie między usługami platformy Azure dostarczającymi komunikaty
 
-System Azure oferuje trzy usługi wspomagające z dostarczania komunikaty o zdarzeniach w całym rozwiązaniu. Te usługi są:
+Platforma Azure oferuje 3 usługi, które pomagają dostarczać komunikaty o zdarzeniach w obrębie rozwiązania. Te usługi to:
 
-* [Zdarzenie siatki](/azure/event-grid/)
+* [Event Grid](/azure/event-grid/)
 * [Event Hubs](/azure/event-hubs/)
 * [Service Bus](/azure/service-bus-messaging/)
 
-Mimo że mają pewnych podobieństw każdej usługi jest przeznaczony dla konkretnego scenariuszy. W tym artykule opisano różnice między tymi usługami i pomaga zrozumieć co do wyboru dla aplikacji. W wielu przypadkach obsługi uzupełniają i mogą być używane razem.
+Mimo iż pod niektórymi względami są one do siebie podobne, każdą z tych usług zaprojektowano z myślą o konkretnych scenariuszach. W tym artykule opisano różnice między tymi usługami w celu ułatwienia wyboru odpowiedniej usługi dla aplikacji. W wielu przypadkach usługi obsługi komunikatów uzupełniają się wzajemnie i można ich używać razem.
 
-## <a name="event-vs-message-services"></a>Zdarzenia, a usługi wiadomości
+## <a name="event-vs-message-services"></a>Zdarzenia a usługi obsługi komunikatów
 
-Jest to ważna różnica zauważyć między usług dostarczających zdarzenia i usług, które dostarczenia komunikatu.
+Należy pamiętać o istotnej różnicy między usługami dostarczającymi zdarzenie a usługami dostarczającymi komunikat.
 
 ### <a name="event"></a>Wydarzenie
 
-Zdarzenie jest lekki powiadomienie z informacją o warunku lub zmiany stanu. Wydawca zdarzeń ma nie oczekiwania dotyczące sposobu obsługi zdarzenia. Konsument zdarzenia decyduje o tym, co należy zrobić powiadomienia. Zdarzenia mogą być odrębne jednostki lub częścią serii.
+Zdarzenie to lekkie powiadomienie z informacją o zmianie stanu lub warunku. Wydawca zdarzenia nie ma żadnych oczekiwań dotyczących sposobu obsługi zdarzenia. Odbiorca zdarzenia decyduje o tym, co zrobić z powiadomieniem. Zdarzenia mogą być odrębnymi jednostkami lub częścią serii.
 
-Zdarzenia odrębny raport zmiana stanu i można wykonać akcję. Do wykonania następnego kroku, użytkownik musi znać tylko że coś się stało. Dane zdarzenia zawiera informacje o co się stało, ale nie ma danych, który wywołał zdarzenie. Na przykład zdarzenia powiadamia użytkowników czy plik został utworzony. Może on zawierać ogólne informacje o pliku, ale nie zawiera w samym pliku. Zdarzenia odrębny idealnie nadają się do niekorzystającą rozwiązania, które musi przebiegać proces skalowania.
+Zdarzenia odrębne zgłaszają zmianę stanu i umożliwiają wykonanie akcji. Aby wykonać kolejny krok, odbiorca musi tylko wiedzieć, że coś się wydarzyło. Dane zdarzenia zawierają informacje o tym, co się stało, ale nie zawierają danych, które wyzwoliły zdarzenie. Na przykład zdarzenie powiadamia odbiorców, że utworzono plik. Może ono zawierać ogólne informacje o pliku, ale nie zawiera samego pliku. Zdarzenia odrębne doskonale sprawdzają się w rozwiązaniach bez serwera wymagających skalowania.
 
-Zdarzenia serii raport warunek i są załadowanych. Zdarzenia są uporządkowane czasu i powiązanych. Konsument musi Sekwencyjna serie zdarzeń do analizowania, co się stało.
+Zdarzenia w serii zgłaszają warunek i nadają się do analizy. Zdarzenia są uporządkowane według czasu i powiązane. Odbiorca potrzebuje sekwencyjnej serii zdarzeń, aby móc przeanalizować, co się zdarzyło.
 
 ### <a name="message"></a>Komunikat
 
-Komunikat jest nieprzetworzone dane utworzone przez usługę mają być używane lub przechowywane w innym miejscu. Komunikat zawiera dane, która wyzwoliła potok wiadomości. Wydawca wiadomości ma oczekiwanie temat klienta obsługi wiadomości. Kontrakt istnieje między partnerami. Na przykład wydawcy wysyła wiadomość z danych pierwotnych i oczekuje konsumenta, aby utworzyć plik z tych danych i wysyłać odpowiedzi, gdy praca jest wykonywana.
+Komunikat to nieprzetworzone dane utworzone przez usługę, które mają zostać użyte lub przechowane w innej lokalizacji. Komunikat zawiera dane, które spowodowały wyzwolenie potoku komunikatów. Wydawca komunikatu ma oczekiwanie dotyczące sposobu obsługi komunikatu przez odbiorcę. Pomiędzy obiema stronami obowiązuje kontrakt. Na przykład wydawca wysyła komunikat z nieprzetworzonymi danymi i oczekuje, że odbiorca utworzy plik na podstawie tych danych i wyśle odpowiedź po zakończeniu pracy.
 
 ## <a name="comparison-of-services"></a>Porównanie usług
 
 | Usługa | Przeznaczenie | Typ | Kiedy stosować |
 | ------- | ------- | ---- | ----------- |
-| Event Grid | Reaktywne programowania | Rozkład zdarzeń (odrębny) | Reagowanie na zmiany stanu |
-| Event Hubs | Dane big data potoku | Zdarzenie przesyłania strumieniowego (seria) | Dane telemetryczne i przesyłanie strumieniowe danych rozproszonych |
-| Service Bus | Enterprise wysokiej wartości do obsługi komunikatów | Komunikat | Kolejność przetwarzania i transakcji finansowych |
+| Event Grid | Programowanie reaktywne | Dystrybucja zdarzeń (odrębne) | Reagowanie na zmiany stanu |
+| Event Hubs | Potok danych big data | Przesyłanie strumieniowe zdarzeń (serie) | Przesyłanie strumieniowe rozproszonych danych i telemetrii |
+| Service Bus | Obsługa komunikatów o wysokiej wartości w przedsiębiorstwie | Komunikat | Przetwarzanie zamówień i transakcje finansowe |
 
 ### <a name="event-grid"></a>Event Grid
 
-Siatka zdarzeń jest płyty montażowej obsługi zdarzeń, która umożliwia programowanie sterowane zdarzeniami, reaktywne. Używa publikowanie-subskrypcji modelu. Wydawcy zdarzeń emisji, ale ma nie oczekuje o tym, które zdarzenia są obsługiwane. Subskrybenci zdecyduj, zdarzenia, które chcą, aby obsłużyć.
+Usługa Event Grid to płyta montażowa obsługi zdarzeń umożliwiająca sterowane zdarzeniami programowanie reaktywne. Używa modelu publikuj-subskrybuj. Wydawcy emitują zdarzenia, ale nie mają żadnych oczekiwań dotyczących tego, które zdarzenia zostaną obsłużone. Subskrybenci decydują, które zdarzenia chcą obsłużyć.
 
-Siatka zdarzeń jest ściśle zintegrowana z usługami Azure i może być zintegrowana z usługami innych firm. Go upraszcza użycia zdarzeń i obniża koszty, eliminując konieczność stałej sondowania. Zdarzenie siatki wydajne i niezawodne trasy zdarzenia z platformy Azure i zasobów innych niż Azure. Przekazuje zdarzenia do punktów końcowych w zarejestrowany subskrybenta. Komunikat zdarzenia zawiera informacje potrzebne do reagowania na zmiany w usługach i aplikacjach. Siatka zdarzeń nie jest potoku danych i nie dostarcza rzeczywistego obiektu, który został zaktualizowany.
+Usługa Event Grid jest ściśle zintegrowana z usługami platformy Azure i można ją zintegrować z usługami innych firm. Upraszcza ona używanie zdarzeń i obniża koszty przez wyeliminowanie potrzeby ciągłego sondowania. Usługa Event Grid skutecznie i niezawodnie kieruje zdarzenia z platformy Azure i zasobów spoza platformy Azure. Dystrybuuje zdarzenia do punktów końcowych zarejestrowanych subskrybentów. Komunikat zdarzenia zawiera informacje potrzebne do zareagowania na zmiany w usługach i aplikacjach. Usługa Event Grid nie jest potokiem danych i nie dostarcza rzeczywistego obiektu, który został zaktualizowany.
 
-Ma następującą charakterystykę:
+Ma następujące cechy:
 
-* dynamicznie skalowalności
-* Niski koszt
-* Niekorzystającą
+* dynamiczna skalowalność
+* niski koszt
+* praca bezserwerowa
 
 ### <a name="event-hubs"></a>Event Hubs
 
-Usługa Azure Event Hubs jest potoku danych big data. Ułatwia on przechwytywania, przechowywania i powtarzania danych strumienia danych telemetrycznych i zdarzeń. Dane mogą pochodzić z wielu źródeł współbieżnych. Centra zdarzeń umożliwia telemetrii i zdarzeń danych będą dostępne w różnych usługach infrastruktury i analiza strumienia przetwarzania. Jest ona dostępna jako strumienie danych lub partie powiązane zdarzenia. Ta usługa udostępnia jedno rozwiązanie, która umożliwia pobieranie danych szybkiego przetwarzania w czasie rzeczywistym, a także powtarzane powtarzania przechowywanych danych pierwotnych. Go przechwycić dane przesyłane strumieniowo do pliku do przetwarzania i analizy.
+Usługa Azure Event Hubs to potok danych big data. Ułatwia przechwytywanie, przechowywanie i ponowne odtwarzanie danych telemetrycznych i danych strumienia zdarzeń. Dane mogą pochodzić z wielu równoczesnych źródeł. Usługa Event Hubs umożliwia udostępnianie danych telemetrycznych i danych zdarzeń różnym infrastrukturom przetwarzania strumieni oraz usługom analizy. Jest dostępna jako strumienie danych albo partie powiązanych zdarzeń. Ta usługa zapewnia pojedyncze rozwiązanie umożliwiające szybkie pobieranie danych na potrzeby przetwarzania w czasie rzeczywistym oraz powtarzane ponowne odtwarzanie przechowywanych nieprzetworzonych danych. Może przechwycić dane przesyłane strumieniowo do pliku na potrzeby przetwarzania i analizy.
 
-Ma następującą charakterystykę:
+Ma następujące cechy:
 
-* małe opóźnienia
-* Umożliwia odbieranie i przetwarzania miliony zdarzeń na sekundę
+* małe opóźnienie
+* możliwość odbieranie i przetwarzania milionów zdarzeń na sekundę
 
 ### <a name="service-bus"></a>Service Bus
 
-Usługa Service Bus jest przeznaczony dla tradycyjnych przedsiębiorstw. Te aplikacje przedsiębiorstwa wymagają transakcji, porządkowanie, wykrywania duplikatów i natychmiastowe spójności. Usługi Service Bus umożliwia aplikacjom native chmurze zapewnia niezawodne stanu zarządzania przejścia dla procesów biznesowych. Podczas obsługi komunikatów wysokiej wartości, które nie mogą być utracone ani zduplikowany, należy użyć usługi Azure Service Bus. Usługi Service Bus również ułatwia wysokiej bezpiecznej komunikacji między hybrydowych rozwiązań w chmurze i mogą łączyć z istniejącymi systemami lokalnymi do rozwiązań w chmurze.
+Usługa Service Bus jest przeznaczona dla tradycyjnych aplikacji dla przedsiębiorstw. Te aplikacje dla przedsiębiorstw wymagają obsługi transakcji, zamawiania, wykrywania duplikatów oraz natychmiastowej spójności. Usługa Service Bus umożliwia aplikacjom natywnym dla chmury zapewnianie niezawodnego zarządzania zmianami stanu dla procesów biznesowych. Usługi Azure Service Bus należy użyć w przypadku obsługi komunikatów o wysokiej wartości, które nie mogą być utracone ani zduplikowane. Usługa Service Bus ułatwia także bardzo bezpieczną komunikację między hybrydowymi rozwiązaniami w chmurze oraz może połączyć istniejące systemy lokalne z rozwiązaniami w chmurze.
 
-Usługa Service Bus jest obsługiwane przez brokera obsługi komunikatów systemu. Przechowuje komunikaty w "brokerze" (na przykład kolejki), aż strona odbierająca jest gotowa do odbierania wiadomości.
+Usługa Service Bus jest systemem komunikatów obsługiwanych przez brokera. W niezawodny sposób przechowuje komunikaty w „brokerze” (np. w kolejce) do momentu, w którym strona odbierająca będzie gotowa do odebrania komunikatów.
 
-Ma następującą charakterystykę:
+Ma następujące cechy:
 
-* dostawy niezawodnej komunikatów asynchronicznych (enterprise wiadomości jako usługa), który wymaga sondowania
-* Zaawansowane funkcje obsługi wiadomości, takie jak FIFO, przetwarzania wsadowego sesjach transakcji, obsługa utraconych komunikatów, danych czasowych formantu, routing i filtrowanie i wykrywania duplikatów
+* niezawodne asynchroniczne dostarczanie komunikatów (komunikaty w przedsiębiorstwie jako usługa) wymagające sondowania
+* zaawansowane funkcje obsługi wiadomości, takie jak FIFO, tworzenie partii / sesje, transakcje, obsługa utraconych komunikatów, kontrola czasowa, routing i filtrowanie oraz wykrywanie duplikatów
 
-## <a name="use-the-services-together"></a>Jednocześnie korzystać z usług
+## <a name="use-the-services-together"></a>Jednoczesne używanie usług
 
-W niektórych przypadkach należy korzystać z usług obok siebie do pełnienia ról distinct. Na przykład witryn handlu elektronicznego, można użyć usługi Service Bus przetworzyć zamówienie, centra zdarzeń do przechwytywania danych telemetrycznych lokacji i siatki zdarzeń w celu reagowania na zdarzenia, takie jak element został wysłany.
+W niektórych przypadkach usług można używać obok siebie w celu spełniania unikatowych ról. Na przykład witryna handlu elektronicznego może przetwarzać zamówienia za pomocą usługi Service Bus, przechwytywać dane telemetryczne za pomocą usługi Event Hubs i odpowiadać na zdarzenia takie jak wysłanie produktu za pomocą usługi Event Grid.
 
-W innych przypadkach to je połączyć ze sobą w celu utworzenia potoku zdarzeń i danych. Siatka zdarzeń służy do reagowania na zdarzenia w innych usługach. Na przykład do migracji danych do magazynu danych za pomocą siatki zdarzeń z usługą Event Hubs, zobacz [strumienia danych big data do magazynu danych](event-grid-event-hubs-integration.md). Na poniższej ilustracji przedstawiono przepływ pracy do strumieniowego przesyłania danych.
+W innych przypadkach można je połączyć ze sobą w celu utworzenia potoku zdarzeń i danych. Usługa Event Grid służy wtedy do reagowania na zdarzenia w innych usługach. Aby zapoznać się z przykładem migrowania danych do magazynu danych za pomocą usług Event Grid i Event Hubs, zobacz [Przesyłanie strumieniowe danych big data do magazynu danych](event-grid-event-hubs-integration.md). Na poniższej ilustracji przedstawiono przepływ pracy przesyłania strumieniowego danych.
 
-![Strumień danych — omówienie](./media/compare-messaging-services/overview.png)
+![Omówienie przesyłania strumieniowego danych](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat wiadomości usług Azure, zobacz we wpisie blogu [zdarzeń, punktów danych i wiadomości — Wybieranie prawo Azure usługa obsługi komunikatów dla danych](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
-* Aby obejrzeć wprowadzenie do siatki zdarzeń, zobacz [o siatki zdarzeń](overview.md).
-* Aby rozpocząć pracę z siatki zdarzeń, zobacz [tworzenie i tras niestandardowych zdarzeń siatki zdarzeń Azure](custom-event-quickstart.md).
-* Aby rozpocząć pracę z usługą Event Hubs, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą portalu Azure](../event-hubs/event-hubs-create.md).
-* Aby rozpocząć pracę z usługą Service Bus, zobacz [tworzenie przestrzeni nazw usługi Service Bus przy użyciu portalu Azure](../service-bus-messaging/service-bus-create-namespace-portal.md).
+* Aby uzyskać więcej informacji na temat usług obsługi komunikatów platformy Azure, zobacz wpis w blogu [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/) (Zdarzenia, punkty danych i komunikaty — wybieranie odpowiedniej usługi obsługi komunikatów platformy Azure dla Twoich danych).
+* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
+* Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+* Aby rozpocząć pracę z usługą Event Hubs, zobacz [Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń za pomocą witryny Azure Portal](../event-hubs/event-hubs-create.md).
+* Aby rozpocząć pracę z usługą Service Bus, zobacz [Tworzenie przestrzeni nazw usługi Service Bus za pomocą witryny Azure Portal](../service-bus-messaging/service-bus-create-namespace-portal.md).

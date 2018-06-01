@@ -1,75 +1,76 @@
 ---
-title: Omówienie usługi Azure zarządzane aplikacje | Dokumentacja firmy Microsoft
-description: Zawiera opis pojęć dla platformy Azure zarządzanych aplikacji
+title: Omówienie usługi Azure Managed Applications | Microsoft Docs
+description: Opis pojęć związanych z usługą Azure Managed Applications
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305001"
 ---
-# <a name="azure-managed-applications-overview"></a>Omówienie aplikacji zarządzanych platformy Azure
+# <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
-Zarządzane aplikacje platformy Azure umożliwiają oferują rozwiązaniach w chmurze, które są łatwe w konsumentach napisanych wdrażania i obsługi. Wdrażanie infrastruktury i trwającej obsługi. Aby udostępnić zarządzanej aplikacji dla wszystkich klientów, należy opublikować w portalu Azure marketplace. Aby było to możliwe tylko do użytkowników w organizacji, należy opublikować do katalogu wewnętrznego. 
+Usługa Azure Managed Applications pozwala tworzyć rozwiązania w chmurze, które klienci mogą łatwo wdrożyć i obsługiwać. Wdrożenie infrastruktury i zapewnienie bieżącej obsługi należy do Ciebie. Aby udostępnić aplikację zarządzaną wszystkim klientom, opublikuj ją w witrynie Azure Marketplace. Aby udostępnić aplikację tylko użytkownikom w Twojej organizacji, opublikuj ją w katalogu wewnętrznym. 
 
-Zarządzanej aplikacji jest podobny do szablon rozwiązania w witrynie Marketplace, z jedną różnicą klucza. W aplikacji zarządzanej zasoby obsługi administracyjnej do grupy zasobów, które są zarządzane przez wydawcy aplikacji. Grupa zasobów jest obecny w subskrypcji klienta, ale tożsamości w dzierżawie wydawcy ma dostęp do grupy zasobów. Jako wydawca należy określić koszt pracownikiem pomocy technicznej rozwiązania.
+Aplikacja zarządzana jest podobna do szablonu rozwiązania w witrynie Marketplace. Najważniejsza różnica między nimi polega na tym, że w aplikacji zarządzanej zasoby są aprowizowane w grupie zasobów zarządzanej przez wydawcę aplikacji. Grupa zasobów znajduje się w subskrypcji klienta, ale tożsamość w dzierżawie wydawcy ma dostęp do tej grupy zasobów. Wydawca określa koszt bieżącej obsługi rozwiązania.
 
-## <a name="advantages-of-managed-applications"></a>Korzyści wynikające z zarządzanych aplikacji
+## <a name="advantages-of-managed-applications"></a>Zalety związane z używaniem aplikacji zarządzanych
 
-Zarządzane aplikacje zmniejszyć bariery z klientami przy użyciu rozwiązań. Nie ma potrzeby doświadczenia w infrastrukturze chmury, aby użyć rozwiązania. Konsumenci mają ograniczony dostęp do kluczowych zasobów. Ich nie trzeba martwić popełnienia błędu podczas zarządzania nią. 
+Aplikacje zarządzane ułatwiają użytkownikom korzystanie z Twoich rozwiązań. Nie muszą oni dysponować wiedzą na temat infrastruktury w chmurze i mają ograniczony dostęp do kluczowych zasobów. Użytkownicy nie mają problemów wynikających z błędnego zarządzania aplikacją. 
 
-Zarządzane aplikacje umożliwiają ustanowić stałe relacje z przez użytkowników. Zdefiniuj warunki dla zarządzania aplikacji, a wszystkie opłaty są obsługiwane za pośrednictwem rozliczenia Azure.
+Aplikacje zarządzane pozwalają nawiązać trwałe relacje z klientami. Ty określasz warunki zarządzania aplikacją, a wszystkie opłaty są obsługiwane za pośrednictwem rozliczeń platformy Azure.
 
-Mimo że klienci wdrażać te aplikacje zarządzane w swoich subskrypcji, nie ma do obsługi, aktualizacji lub ich obsługi. Aby zapewnić, że wszyscy klienci używają wersji zatwierdzonych. Klienci nie mają do opracowywania wiedzy domeny specyficzne dla aplikacji do zarządzania tymi aplikacjami. Klienci automatycznie pobierać aktualizacje aplikacji bez konieczności martwić się o Rozwiązywanie problemów i diagnozowanie problemów z aplikacjami. 
+Klienci wdrażają aplikacje zarządzane w swoich subskrypcjach, ale nie muszą ich konserwować, aktualizować ani obsługiwać. Można zagwarantować, że wszyscy klienci używają zatwierdzonych wersji. Klienci nie zarządzają aplikacjami, więc nie wymaga się od nich znajomości domeny specyficznej dla aplikacji. Automatycznie otrzymują oni aktualizacje aplikacji i nie muszą rozwiązywać problemów ani diagnozować usterek związanych z aplikacjami. 
 
-Dla zespołów IT zarządzanych aplikacji umożliwiają oferowanie wstępnie zatwierdzonych rozwiązań dla użytkowników w organizacji. Upewnij się, że tych rozwiązań jest zgodne ze standardami w organizacji.
+Aplikacje zarządzane umożliwiają zespołom IT udostępnianie wstępnie zatwierdzonych rozwiązań użytkownikom w organizacji. Twoje zadanie polega na zapewnieniu, że te rozwiązania są zgodne ze standardami używanymi w organizacji.
 
-## <a name="types-of-managed-applications"></a>Typy zarządzane aplikacje
+## <a name="types-of-managed-applications"></a>Typy aplikacji zarządzanych
 
-Możesz opublikować aplikacji zarządzanej zewnętrznie lub wewnętrznie.
+Aplikację zarządzaną można opublikować zewnętrznie lub wewnętrznie.
 
-![Publikowanie wewnętrznie i zewnętrznie](./media/overview/manage_app_options.png)
+![Publikowanie wewnętrzne i zewnętrzne](./media/overview/manage_app_options.png)
 
-### <a name="service-catalog"></a>Katalog usług
+### <a name="service-catalog"></a>Wykaz usług
 
-Katalog usług jest wewnętrzny wykazu zatwierdzonych rozwiązań dla użytkowników w organizacji. Możesz używać katalogu w celu zapewnienia zgodności z niektórych standardów organizacji podczas ich zapewnienie rozwiązań dla organizacji. Pracownicy korzystają z katalogu można łatwo wykryć bogaty zestaw aplikacji, które są zalecane i zatwierdzone przez ich działów IT. Zostanie wyświetlona zarządzanych aplikacji, które udostępnić innym osobom w organizacji.
+Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych dla użytkowników w organizacji. Umożliwia on zapewnienie zgodności dostarczanych rozwiązań ze standardami obowiązującymi w organizacji. Wykaz usług pozwala pracownikom łatwo odnajdywać odpowiednie narzędzia w obszernym zestawie aplikacji, zalecanych i zatwierdzonych przez działy IT. Mogą oni korzystać z aplikacji zarządzanych udostępnionych przez inne osoby.
 
-Aby dowiedzieć się, jak publikowanie aplikacji zarządzanych katalogu usług, zobacz [tworzenie aplikacji katalogu usługi](publish-service-catalog-app.md).
+Aby dowiedzieć się, jak opublikować aplikację zarządzaną w wykazie usług, zobacz [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md).
 
 ### <a name="marketplace"></a>Portal Marketplace
 
-Dostawców chcą naliczać opłaty za swoje usługi można udostępnić zarządzanych aplikacji za pośrednictwem portalu Azure marketplace. Dostawcy publikuje aplikacji, jest dostępny dla użytkowników spoza organizacji. Z tego podejścia, dostawców usług zarządzanych (MSPs) niezależnym dostawcom oprogramowania (ISV) i system integratory (SIs) może oferować ich rozwiązania wszystkich klientów platformy Azure.
+Dostawcy, którzy oferują płatne usługi, mogą udostępniać aplikacje zarządzane w witrynie Azure Marketplace. Opublikowana aplikacja jest dostępna dla użytkowników spoza organizacji. Dzięki temu dostawcy usług zarządzanych (MSP), niezależni dostawcy oprogramowania (ISV) oraz integratorzy systemów (SI) mogą oferować swoje rozwiązania wszystkim klientom platformy Azure.
 
-Informacje o publikowaniu zarządzanej aplikacji do witryny Marketplace, zobacz [tworzenie aplikacji marketplace](publish-marketplace-app.md).
+Aby uzyskać informacje dotyczące publikowania aplikacji zarządzanych w witrynie Marketplace, zobacz [Tworzenie aplikacji w witrynie Marketplace](publish-marketplace-app.md).
 
-## <a name="resource-groups-for-managed-applications"></a>Grupy zasobów zarządzanych aplikacji
+## <a name="resource-groups-for-managed-applications"></a>Grupy zasobów aplikacji zarządzanych
 
-Zazwyczaj zasobów zarządzanych aplikacji znajdują się w dwie grupy zasobów. Użytkownik zarządza jedna grupa zasobów oraz wydawcy zarządza grupie zasobów. Podczas definiowania zarządzanej aplikacji, wydawca Określa poziomy dostępu. Na poniższej ilustracji przedstawiono scenariusz, w którym wydawcy żądań rolę właściciela grupy zasobów zarządzanych. Wydawcy umieścić blokady tylko do odczytu w tej grupie zasobów dla konsumentów. Tożsamości wydawcy, które mają prawo dostępu do grupy zasobów zarządzanych są wykluczone blokady.
+Zasoby aplikacji zarządzanej zazwyczaj znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Na poniższej ilustracji przedstawiono scenariusz, w którym wydawca żąda roli właściciela zarządzanej grupy zasobów. Na tę grupę zasobów wydawca nakłada blokadę tylko do odczytu. Tożsamości wydawcy, które mają dostęp do zarządzanej grupy zasobów, są wykluczone z blokady.
 
 ![Dostęp do grupy zasobów](./media/overview/access.png)
 
 ### <a name="application-resource-group"></a>Grupa zasobów aplikacji
 
-Ta grupa zasobów zawiera wystąpienie zarządzanych aplikacji. Ta grupa zasobów może zawierać tylko jeden zasób. Typ zasobu w zarządzanej aplikacji jest **Microsoft.Solutions/applications**.
+Ta grupa zasobów zawiera wystąpienie aplikacji zarządzanej. Może ona zawierać tylko jeden zasób. Typ zasobu aplikacji zarządzanej to **Microsoft.Solutions/applications**.
 
-Klient ma pełny dostęp do grupy zasobów i używa go do zarządzania cyklem życia aplikacji zarządzanych.
+Klient, który ma pełny dostęp do grupy zasobów, zarządza cyklem życia aplikacji zarządzanej.
 
 ### <a name="managed-resource-group"></a>Zarządzana grupa zasobów
 
-Ta grupa zasobów zawiera zasoby, które są wymagane przez aplikację. Na przykład ta grupa zasobów zawiera maszyny wirtualne, konta magazynu i sieci wirtualne dla rozwiązania. Konsument ma ograniczony dostęp do tej grupy zasobów, ponieważ konsumenta nie zarządza poszczególnych zasobów zarządzanych aplikacji. Rola określona w definicji aplikacji zarządzanych odpowiada wydawcy dostęp do tej grupy zasobów. Na przykład wydawcy może zażądać roli właściciela lub współautora dla tej grupy zasobów.
+Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów.
 
-Gdy użytkownik usunie aplikacja zarządzana, grupa zasobów zarządzanych również zostanie usunięta.
+Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej grupy zasobów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby obejrzeć wprowadzenie do definiowania i wdrażania aplikacji zarządzanych, zobacz [tworzenie i wdrażanie platformy Azure zarządzanych aplikacji przy użyciu wiersza polecenia platformy Azure](managed-apps-quickstart-cli.md)
-* Informacje dotyczące publikowania aplikacji wewnętrznych, zobacz [Utwórz aplikację usługi wykazu](publish-service-catalog-app.md).
-* Uzyskać informacji dotyczących publikowania aplikacji zarządzanych do witryny marketplace, zobacz [tworzenie aplikacji marketplace](publish-marketplace-app.md).
+* Wprowadzenie do definiowania i wdrażania aplikacji zarządzanej można znaleźć w temacie [Tworzenie i wdrażanie aplikacji zarządzanej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](managed-apps-quickstart-cli.md).
+* Aby dowiedzieć się, jak opublikować aplikację wewnętrzną, zobacz [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md).
+* Aby uzyskać informacje dotyczące publikowania aplikacji zarządzanych w witrynie Marketplace, zobacz [Tworzenie aplikacji w witrynie Marketplace](publish-marketplace-app.md).
