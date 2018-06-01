@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886813"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicji przepływu pracy aplikacji logiki ze schematem język definicji przepływu pracy
 
@@ -153,8 +154,8 @@ Poniższe przykłady pokazują, jak są analizowane wyrażeń:
 |------------|--------| 
 | "Sophia Owen" | Zwraca następujące znaki: "Sophia Owen" |
 | "array [1]" | Zwraca następujące znaki: "array [1]" |
-| "@@" | Zwraca te znaki jako ciąg o jeden znak: "@" |   
-| " @" | Zwraca jako ciąg znaków dwóch następujących znaków: "@" |
+| "\@\@" | Zwraca te znaki jako ciąg o jeden znak: " \@" |   
+| " \@" | Zwraca jako ciąg znaków dwóch następujących znaków: " \@" |
 |||
 
 Te przykłady Załóżmy, że zdefiniujesz "myBirthMonth" równa się "Stycznia" i "myAge" równa liczbie 42:  
