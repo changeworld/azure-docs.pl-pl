@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2018
+ms.date: 05/17/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd057704197eb4bf66eff33d3c83a2ca9d5712d1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 78d3399aab8e3c3b1d98946cb3ac6ffab353d95c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257717"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -36,10 +37,10 @@ Architektura raportowania w usłudze Azure Active Directory obejmuje następują
 
 Ten temat zawiera przegląd działań dotyczących logowania.
 
-## <a name="pre-requisite"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
-* Użytkownicy w roli administratora zabezpieczeń lub czytelnika zabezpieczeń
+* Użytkownicy w roli administratora zabezpieczeń, czytelnika zabezpieczeń lub czytelnika raportów
 * Administratorzy globalni
 * Dowolny użytkownik (inny niż administrator) może uzyskać dostęp do danych na temat własnych logowań 
 
@@ -47,7 +48,7 @@ Ten temat zawiera przegląd działań dotyczących logowania.
 * Dzierżawca musi mieć skojarzoną licencję usługi Azure AD w wersji Premium, aby wyświetlić pełny raport o wszystkich operacjach logowania
 
 
-## <a name="signs-in-activities"></a>Działania związane z logowaniem
+## <a name="sign-in-activities"></a>Działania związane z logowaniem
 
 Dzięki informacjom zawartym w raporcie logowania użytkownika można uzyskać odpowiedzi na pytania, takie jak:
 
@@ -61,14 +62,16 @@ Pierwszym punktem wejścia do wszystkich danych dotyczących logowania jest pozy
 ![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/61.png "Działania związane z logowaniem")
 
 
-Dziennik inspekcji zawiera domyślny widok listy, który pokazuje:
+Domyślny widok listy dziennika logowań pokazuje następujące dane:
 
-- powiązanego użytkownika;
-- aplikację, do której zalogował się użytkownik;
-- stan logowania;
-- czas logowania.
+- Data logowania
+- Powiązany użytkownik
+- Aplikacja, do której zalogował się użytkownik
+- Stan logowania
+- Stan wykrywania ryzyka
+- Stan wymagania dotyczącego uwierzytelniania wieloskładnikowego (MFA) 
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/41.png "Działania związane z logowaniem")
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/01.png "Działania związane z logowaniem")
 
 Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzędzi.
 
@@ -76,58 +79,94 @@ Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzęd
 
 Dzięki temu możesz wyświetlić dodatkowe pola lub usunąć pola, które są już wyświetlane.
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/42.png "Działania związane z logowaniem")
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/02.png "Działania związane z logowaniem")
 
-Klikając pozycję w widoku listy, możesz uzyskać wszystkie szczegóły na jej temat.
+Klikając pozycję w widoku listy, możesz wyświetlić jej wszystkie dostępne szczegóły w widoku poziomym.
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/43.png "Działania związane z logowaniem")
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/03.png "Działania związane z logowaniem")
 
 
-## <a name="filtering-sign-in-activities"></a>Filtrowanie działań związanych z logowaniem
+## <a name="filter-sign-in-activities"></a>Filtrowanie działań związanych z logowaniem
 
-Aby zawęzić zgłaszane dane do odpowiedniego poziomu, możesz odfiltrować dane logowania przy użyciu następujących pól:
+Aby zawęzić zgłaszane dane do odpowiedniego poziomu, możesz przefiltrować dane logowania przy użyciu następujących pól domyślnych:
 
-- Przedział czasu
 - Użytkownik
 - Aplikacja
-- Klient
 - Stan logowania
+- Stan wykrywania ryzyka
+- Date
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/44.png "Działania związane z logowaniem")
+
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/04.png "Działania związane z logowaniem")
+
+Filtr **Użytkownik** umożliwia określenie nazwy lub głównej nazwy wybranego użytkownika (nazwy UPN). 
+
+Filtr **Aplikacja** umożliwia określenie nazwy wybranej aplikacji.  
+
+Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
+
+- Wszyscy 
+- Powodzenie
+- Niepowodzenie
+
+Filtr **Wykryto ryzyko** umożliwia wybranie jednej z następujących wartości:
+
+- Wszyscy
+- Yes
+- Nie 
 
 
-Filtr **Przedział czasu** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
+Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
 Możliwe wartości:
 
 - 1 miesiąc
 - 7 dni
 - 24 godziny
-- Niestandardowy
+- Niestandardowy zakres czasu
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 
-Filtr **Użytkownik** umożliwia określenie nazwy lub głównej nazwy użytkownika (UPN, user principal name) dla żądanego użytkownika.
+Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie dodane do listy filtrów. Na przykład dodanie pola **Aplikacja kliencka** do listy powoduje udostępnienie kolejnej opcji filtru, która umożliwia ustawienie następujących filtrów:
 
-Filtr **Aplikacja** umożliwia określenie nazwy żądanej aplikacji.
+- Przeglądarka      
+- Exchange ActiveSync (obsługiwane)               
+- Exchange ActiveSync (nieobsługiwane)
+- Inni klienci               
+    - IMAP
+    - MAPI
+    - Starsi klienci pakietu Office
+    - POP
+    - SMTP
 
-Filtr **Klient** umożliwia określenie informacji dotyczących żądanego urządzenia.
 
-Filtr **Stan logowania** umożliwia wybranie jednego z następujących filtrów:
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/12.png "Działania związane z logowaniem")
 
-- Wszyscy
-- Powodzenie
-- Niepowodzenie
+
+> [!TIP] 
+> Oprócz filtrów domyślnych polami filtra będą wszelkie nowe pola dodane przez Ciebie do widoku logowań.
+
+
+## <a name="download-sign-in-activities"></a>Pobieranie działań związanych z logowaniem
+
+Jeśli chcesz pracować z danymi dotyczącymi działań związanych z logowaniem poza witryną Azure Portal, możesz je pobrać. Oprócz przycisku pobierania w witrynie Azure Portal jest też dostępna opcja generowania skryptu umożliwiającego pobieranie danych.  
+
+![Pobierz](./media/active-directory-reporting-activity-sign-ins/71.png "Pobierz")
+
+Kliknięcie przycisku **Pobierz** spowoduje utworzenie pliku CSV zawierającego 5000 najnowszych rekordów. Jeśli potrzebujesz bardziej elastycznych opcji, możesz użyć rozwiązania do tworzenia skryptu. Kliknięcie przycisku **Skrypt** spowoduje utworzenie skryptu uwzględniającego wszystkie ustawione filtry. Liczba rekordów, które możesz pobrać, jest ograniczona przez kwestie techniczne oraz przez [reguły przechowywania raportów w usłudze Azure Active Directory](active-directory-reporting-retention.md).  
+
 
 
 ## <a name="sign-in-activities-shortcuts"></a>Skróty działań związanych z logowaniem
 
 Poza usługą Azure Active Directory witryna Azure Portal zapewnia dwa dodatkowe punkty wejścia do danych dotyczących działań związanych z logowaniem:
 
-- Użytkownicy i grupy
+- Omówienie ochrony zabezpieczeń tożsamości
+- Użytkownicy
+- Grupy
 - Aplikacje dla przedsiębiorstw
 
 
-### <a name="users-and-groups-sign-ins-activities"></a>Działania związane z logowaniem użytkowników i grup
+### <a name="users-sign-ins-activities"></a>Działania logowania użytkowników
 
 Dzięki informacjom zawartym w raporcie logowania użytkownika można uzyskać odpowiedzi na pytania, takie jak:
 
@@ -137,29 +176,39 @@ Dzięki informacjom zawartym w raporcie logowania użytkownika można uzyskać o
 
 
 
-Punktem wyjścia do tych danych jest wykres logowania użytkownika znajdujący się w sekcji **Przegląd** w obszarze **Użytkownicy i grupy**.
+Punktem wyjścia dla tych danych jest wykres logowania użytkowników znajdujący się na stronie omówienia **ochrony zabezpieczeń tożsamości**. Wykres logowania użytkownika przedstawia tygodniowe agregacje logowań dla wszystkich użytkowników w danym okresie czasu. Domyślny okres to 30 dni.
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/45.png "Działania związane z logowaniem")
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/06.png "Działania związane z logowaniem")
 
-Wykres logowania użytkownika przedstawia tygodniowe agregacje logowań dla wszystkich użytkowników w danym okresie czasu. Domyślny okres to 30 dni.
+Po kliknięciu dnia na wykresie logowań zostanie wyświetlony przegląd działań logowania dla tego dnia.
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/46.png "Działania związane z logowaniem")
 
-Po kliknięciu dnia na wykresie logowania zostanie wyświetlona szczegółowa lista działań związanych z logowaniem dla tego dnia.
-
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/41.png "Działania związane z logowaniem")
-
-Każdy wiersz na liście działań związanych z logowaniem zapewnia szczegółowe informacje o wybranym logowaniu, takie jak:
+Każdy wiersz na liście działań logowania określa następujące informacje:
 
 * Kto się zalogował?
-* Jaka była nazwa główna użytkownika?
 * Do której aplikacji się logowano?
-* Jaki jest adres IP komputera, z którego się logowano?
-* Jaki był stan logowania?
+* Jaki jest stan logowania?
+* Jaki jest stan uwierzytelniania wieloskładnikowego dla logowania?
 
-Opcja **Logowania** umożliwia pełny przegląd logowań wszystkich użytkowników.
+Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat operacji logowania:
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/51.png "Działania związane z logowaniem")
+- Identyfikator użytkownika
+- Użytkownik
+- Nazwa użytkownika
+- Identyfikator aplikacji
+- Aplikacja
+- Klient
+- Lokalizacja
+- Adres IP
+- Date
+- Wymagane uwierzytelnianie wieloskładnikowe
+- Stan logowania
+
+ 
+Na stronie **Użytkownicy** znajduje się pełny przegląd wszystkich logowań użytkowników dostępny po kliknięciu pozycji **Logowania** w sekcji **Działanie**.
+
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/08.png "Działania związane z logowaniem")
+
 
 
 
@@ -171,9 +220,9 @@ Dzięki widokowi skoncentrowanemu na aplikacji w ramach danych logowania można 
 * Jakie są 3 najczęściej używane aplikacje w organizacji?
 * Ostatnio została wdrożona aplikacja. W jaki sposób działa?
 
-Punktem wyjścia do tych danych są 3 najczęściej używane aplikacje w organizacji uwzględnione w raporcie z ostatnich 30 dni znajdującym się w sekcji **Przegląd** w obszarze **Aplikacje dla przedsiębiorstw**.
+Punktem wyjścia dla tych danych są *3 najczęściej używane aplikacje w organizacji uwzględnione w raporcie z ostatnich 30 dni* znajdującym się w sekcji **Przegląd** na stronie **Aplikacje dla przedsiębiorstw**.
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/64.png "Działania związane z logowaniem")
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/10.png "Działania związane z logowaniem")
 
 Wykres użycia aplikacji przedstawia tygodniowe agregacje logowań 3 najczęściej używanych aplikacji w danym czasie. Domyślny okres to 30 dni.
 
@@ -187,15 +236,15 @@ Jeśli chcesz, możesz ustawić fokus na konkretnej aplikacji.
 Po kliknięciu dnia na wykresie użycia aplikacji zostanie wyświetlona szczegółowa lista działań związanych z logowaniem.
 
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/48.png "Działania związane z logowaniem")
 
 
 Opcja **Logowania** umożliwia pełny przegląd zdarzeń logowania do aplikacji.
 
-![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/49.png "Działania związane z logowaniem")
+![Działania związane z logowaniem](./media/active-directory-reporting-activity-sign-ins/11.png "Działania związane z logowaniem")
 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 Jeśli chcesz dowiedzieć się więcej na temat kodów błędów działań związanych z logowaniem, zobacz [Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory](active-directory-reporting-activity-sign-ins-errors.md).
+

@@ -6,14 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 173e31e3b1f855d488f7f8baf6659b1521ea7aa5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2a96655c26e2df2534f420239b56ef0c3959319a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212878"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -35,7 +36,7 @@ Przed rozpoczęciem warto [zapoznać się z architekturą](vmware-azure-architec
 
 ## <a name="select-a-replication-goal"></a>Wybieranie celu replikacji
 
-1. W obszarze **Magazyny usługi Recovery Services** wybierz nazwę magazynu: **ContosoVMVault**.
+1. W obszarze **Magazyny usługi Recovery Services** wybierz nazwę magazynu. W tym scenariuszu jest używany magazyn **ContosoVMVault**.
 2. W obszarze **Wprowadzenie** wybierz pozycję Site Recovery. Następnie wybierz pozycję **Przygotowywanie infrastruktury**.
 3. W obszarze **Cel ochrony** > **Gdzie znajdują się maszyny** wybierz pozycję **Lokalne**.
 4. W obszarze **Gdzie chcesz zreplikować maszyny** wybierz pozycję **Na platformę Azure**.
@@ -139,7 +140,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 1. Otwórz witrynę [Azure Portal](https://portal.azure.com) i wybierz pozycję **Wszystkie zasoby**.
 2. Wybierz magazyn usługi Recovery Service o nazwie **ContosoVMVault**.
 3. Aby utworzyć zasady replikacji, wybierz pozycję **Infrastruktura usługi Site Recovery** > **Zasady replikacji** > **+Zasady replikacji**.
-4. W obszarze **Tworzenie zasad replikacji** wprowadź wartość **VMwareRepPolicy** jako nazwę zasad replikacji.
+4. W obszarze **Tworzenie zasad replikacji** wprowadź nazwę zasad. W tym scenariuszu są używane zasady **VMwareRepPolicy**.
 5. W polu **Wartość progowa celu punktu odzyskiwania** użyj domyślnej wartości 60 minut. Ta wartość określa częstość tworzenia punktów odzyskiwania. Przekroczenie tego limitu przez replikację ciągłą spowoduje wygenerowanie alertu.
 6. W obszarze **Przechowywanie punktu odzyskiwania**, umożliwiającym określenie, jak długie będzie okno przechowywania każdego punktu odzyskiwania, użyj domyślnej wartości 24 godzin. W tym samouczku użyj wartości 72 godziny. Replikowane maszyny wirtualne można odzyskać do dowolnego punktu w tym oknie.
 7. W obszarze **Częstotliwość wykonywania migawek na poziomie aplikacji**, umożliwiającym określenie, jak często tworzone są migawki, użyj domyślnej wartości 60 minut. Wybierz pozycję **OK**, aby utworzyć zasady.
