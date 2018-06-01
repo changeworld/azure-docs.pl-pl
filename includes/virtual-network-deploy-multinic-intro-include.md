@@ -1,2 +1,0 @@
-Można tworzyć maszyn wirtualnych (VM) na platformie Azure i dołączyć wiele interfejsów sieciowych (NIC) do wszystkich maszyn wirtualnych. Wiele kart sieciowych są wymagane w przypadku wielu sieci wirtualnych urządzeń, takich jak dostarczania aplikacji i rozwiązań Optymalizacja sieci WAN. Wiele kart sieciowych udostępniają więcej sieci ruch zarządzania funkcje, w tym izolacji ruchu między frontonu karty Sieciowej i wewnętrznych kart NIC lub ruch związany z zarządzaniem płaszczyzny rozdzielenie ruchu płaszczyzna danych.
-

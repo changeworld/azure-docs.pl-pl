@@ -1,5 +1,0 @@
-> [!IMPORTANT]
-> Funkcja strefy DNS prywatnego Azure jest obecnie zarządzany Podgląd i wymaga zarejestrowania się w celu uzyskania modułu programu Powershell/pakiet SDK w wersji zapoznawczej. Zalogowania się do tej wersji zapoznawczej, poczty e-mail [ AzureDNS-PrivateZone@microsoft.com ](mailto:AzureDNS-PrivateZone@microsoft.com) z Szczegóły subskrypcji. Przykłady w tym artykule założono, że jest już zarejestrowany w wersji zapoznawczej i uzyskaniu modułu programu Powershell/pakiet SDK w wersji zapoznawczej. Przy użyciu bieżącego modułu Powershell publiczny nie działa w przypadku tej funkcji podglądu.
-
-Ta wersja zapoznawcza jest dostarczany bez umowy dotyczącej poziomu usług i nie powinna być używana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-

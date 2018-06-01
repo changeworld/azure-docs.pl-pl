@@ -1,2 +1,0 @@
->[!TIP] 
-> Interfejs API Azure rozwiązania Cosmos bazy danych usługi DocumentDB lub języka SQL (DocumentDB) interfejsu API ma teraz nazwę interfejsu API Azure rozwiązania Cosmos bazy danych SQL. Nie trzeba zmienić żadnych czynności, aby kontynuować uruchamianie aplikacji skompilowanej za pomocą interfejsu API usługi DocumentDB. Funkcjonalność jest taka sama.

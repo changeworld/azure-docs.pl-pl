@@ -1,2 +1,0 @@
-Po należy utworzyć co najmniej jedną grupę zabezpieczeń sieci (NSG), możesz muszą mógł pobrać informacji na temat grup NSG, dodawania i usuwania reguł, edytować istniejące zasady, skojarzyć lub usunąć skojarzenie grupy NSG oraz usuwanie grup NSG. W tym artykule dowiesz się, jak wykonać każdego z tych zadań. Aby można było zarządzać grup NSG, musisz znać jest [jak działają grupy NSG](../articles/virtual-network/virtual-networks-nsg.md). 
-

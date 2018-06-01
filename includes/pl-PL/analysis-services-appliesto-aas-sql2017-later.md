@@ -1,1 +1,0 @@
-**MA ZASTOSOWANIE DO:**![tak](media/analysis-services-appliesto/yes.png)usług Azure Analysis Services![tak](media/analysis-services-appliesto/yes.png)usług SQL Server Analysis Services (począwszy od 2017 r)
