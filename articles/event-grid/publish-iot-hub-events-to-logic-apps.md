@@ -1,70 +1,71 @@
 ---
-title: Użyj Centrum IoT zdarzenia wyzwalacza Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Za pomocą usługi routingu zdarzeń siatki zdarzeń platformy Azure, Utwórz zautomatyzowanych procesów do wykonywania akcji aplikacje logiki platformy Azure na podstawie zdarzeń Centrum IoT.
+title: Wyzwalanie usługi Azure Logic Apps przy użyciu zdarzeń usługi IoT Hub | Microsoft Docs
+description: Za pomocą routingu zdarzeń usługi Azure Event Grid możesz tworzyć zautomatyzowane procesy służące do wykonywania akcji usługi Azure Logic Apps opartych na zdarzeniach usługi IoT Hub.
 services: iot-hub
 documentationcenter: ''
 author: kgremban
 manager: timlt
 editor: ''
 ms.service: iot-hub
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: aab674f16fcc3fd4869f24f72f66878a8751d892
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301488"
 ---
-# <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Wysyłanie powiadomień e-mail o zdarzeniach Centrum IoT Azure za pomocą aplikacji logiki
+# <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Wysyłanie powiadomień e-mail o zdarzeniach usługi Azure IoT Hub przy użyciu usługi Logic Apps
 
-Azure siatki zdarzeń umożliwia reagowania na zdarzenia w Centrum IoT przez wyzwalają akcje w aplikacjach biznesowych podrzędne.
+Usługa Azure Event Grid pozwala reagować na zdarzenia usługi IoT Hub dzięki akcjom wyzwalanym w podrzędnych aplikacjach biznesowych.
 
-Ten artykuł przeprowadzi Cię przez konfigurację próbki, która korzysta z Centrum IoT i siatki zdarzeń. Na koniec należy Azure logiki aplikacji zdefiniowano Wyślij wiadomość e-mail z powiadomieniem za każdym razem, gdy urządzenie dodane do Centrum IoT. 
+W tym artykule przedstawiono przykładową konfigurację, w której zastosowano usługi IoT Hub i Event Grid. Wykonanie tych instrukcji pozwoli Ci skonfigurować aplikację logiki platformy Azure umożliwiającą wysyłanie wiadomości e-mail z powiadomieniem za każdym razem, gdy do usługi IoT Hub zostanie dodane urządzenie. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto e-mail z każdego dostawcy poczty e-mail, który jest obsługiwany przez usługi Azure Logic Apps, takich jak program Outlook pakietu Office 365, Outlook.com lub Gmail. To konto e-mail służy do wysyłania powiadomień o zdarzeniach. Aby uzyskać pełną listę obsługiwanych łączników aplikacji logiki, zobacz [łączniki — omówienie](https://docs.microsoft.com/connectors/)
-* Aktywne konto platformy Azure. Jeśli nie masz, możesz [utworzyć bezpłatne konto](http://azure.microsoft.com/pricing/free-trial/).
-* Centrum Iot na platformie Azure. Jeśli nie utworzono jedną jeszcze, zobacz [Rozpoczynanie pracy z Centrum IoT](../iot-hub/iot-hub-csharp-csharp-getstarted.md) przewodnik. 
+* Konto e-mail od dostawcy obsługiwanego przez usługę Azure Logic Apps, na przykład Office 365 Outlook, Outlook.com lub Gmail. To konto e-mail służy do wysyłania powiadomień o zdarzeniach. Aby uzyskać pełną listę łączników obsługiwanych przez usługę Logic Apps, zobacz [Omówienie łączników](https://docs.microsoft.com/connectors/).
+* Aktywne konto platformy Azure. Jeśli go nie masz, możesz [utworzyć bezpłatne konto](http://azure.microsoft.com/pricing/free-trial/).
+* Centrum IoT na platformie Azure. Jeśli jeszcze go nie masz, zobacz przewodnik [Wprowadzenie do usługi IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md). 
 
 ## <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
 
-Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz siatki zdarzeń, który monitoruje grupy zasobów dla maszyny wirtualnej. 
+Najpierw należy utworzyć aplikację logiki i dodać wyzwalacz usługi Event Grid, który monitoruje grupę zasobów dla maszyny wirtualnej. 
 
-### <a name="create-a-logic-app-resource"></a>Utwórz zasób aplikacji logiki
+### <a name="create-a-logic-app-resource"></a>Tworzenie zasobu aplikacji logiki
 
 
-1. W [portalu Azure](https://portal.azure.com), wybierz pozycję **nowy** > **integracji przedsiębiorstwa** > **aplikacji logiki**.
+1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Nowy** > **Integracja w przedsiębiorstwie** > **Aplikacja logiki**.
 
    ![Tworzenie aplikacji logiki](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
-2. Nadaj nazwę, która jest unikatowa w ramach subskrypcji aplikację logiki, a następnie wybierz subskrypcji, grupy zasobów i lokalizacji jako centrum IoT. 
-3. Jeśli wszystko jest gotowe, wybierz **Przypnij do pulpitu nawigacyjnego**i wybierz polecenie **Utwórz**.
+2. Nadaj aplikacji logiki nazwę unikatową w ramach subskrypcji, a następnie wybierz tę samą subskrypcję, grupę zasobów i lokalizację, które są skojarzone z centrum IoT. 
+3. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie pozycję **Utwórz**.
 
    Teraz został utworzony zasób platformy Azure dla Twojej aplikacji logiki. Po wdrożeniu Twojej aplikacji logiki na platformie Azure projektant aplikacji usługi Logic Apps pokaże szablony dla typowych wzorców, więc możesz szybciej rozpocząć pracę.
 
    > [!NOTE] 
-   > Po wybraniu **Przypnij do pulpitu nawigacyjnego**, aplikację logiki automatycznie otwiera w Projektancie aplikacji logiki. W przeciwnym razie ręcznie znaleźć i otworzyć aplikację logiki.
+   > Jeśli wybierzesz pozycję **Przypnij do pulpitu nawigacyjnego**, Twoja aplikacja logiki automatycznie zostanie otwarta w projektancie aplikacji usługi Logic Apps. W przeciwnym razie możesz ręcznie znaleźć i otworzyć swoją aplikację logiki.
 
-4. W Projektancie aplikacji logiki w obszarze **szablony**, wybierz **pustą aplikację logiki** , dzięki czemu można utworzyć aplikację logiki od początku.
+4. W projektancie aplikacji usługi Logic Apps w obszarze **Szablony** wybierz pozycję **Pusta aplikacja logiki**, aby rozpocząć tworzenie aplikacji logiki od podstaw.
 
-## <a name="select-a-trigger"></a>Wybierz wyzwalacz
+## <a name="select-a-trigger"></a>Wybieranie wyzwalacza
 
-Wyzwalacz jest konkretnego zdarzenia, który uruchamia aplikację logiki. W tym samouczku wyzwalaczy, które powoduje rozpoczęcie przepływu pracy odbiera żądanie za pośrednictwem protokołu HTTP.  
+Wyzwalacz to konkretne zdarzenie, które uruchamia aplikację logiki. W tym samouczku wyzwalacz, który uruchamia przepływ pracy, odbiera żądanie za pośrednictwem protokołu HTTP.  
 
-1. W łączniki i wyzwalaczy pasek wyszukiwania wpisz **HTTP**.
-2. Wybierz **żądania - zostanie odebrane żądanie HTTP podczas** jako wyzwalacz. 
+1. Na pasku wyszukiwania łączników i wyzwalaczy wpisz ciąg **HTTP**.
+2. Wybierz pozycję **Żądanie — Po odebraniu żądania HTTP** jako wyzwalacz. 
 
-   ![Wybierz wyzwalacz żądania HTTP](./media/publish-iot-hub-events-to-logic-apps/http-request-trigger.png)
+   ![Wybieranie wyzwalacza żądania HTTP](./media/publish-iot-hub-events-to-logic-apps/http-request-trigger.png)
 
-3. Wybierz **ładunku próbki używany do generowania schematu**. 
+3. Wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**. 
 
-   ![Wybierz wyzwalacz żądania HTTP](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
+   ![Wybieranie wyzwalacza żądania HTTP](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-4. Wklej poniższy przykładowy kod JSON w polu tekstowym, a następnie wybierz **gotowe**:
+4. Wklej poniższy przykładowy kod JSON w polu tekstowym, a następnie wybierz pozycję **Gotowe**:
 
    ```json
    [{
@@ -112,120 +113,120 @@ Wyzwalacz jest konkretnego zdarzenia, który uruchamia aplikację logiki. W tym 
      "metadataVersion": "1"
    }]
    ```
-5. Otrzymasz wyskakujące powiadomienie, które jest wyświetlany komunikat **Pamiętaj, aby uwzględnić nagłówka Content-Type ustawioną application/json w żądaniu.** Można bezpiecznie zignorować ten uwag i przejść do następnej sekcji. 
+5. Może pojawić się wyskakujące powiadomienie **Pamiętaj, aby w żądaniu uwzględnić nagłówek Content-Type ustawiony na wartość application/json**. Można zignorować ten komunikat i przejść do następnej sekcji. 
 
 
 ### <a name="create-an-action"></a>Tworzenie akcji
 
-Akcje są wszystkie kroki, które są wykonywane po wyzwalacz uruchamia przepływ pracy aplikacji logiki. W tym samouczku akcja jest aby wysłać wiadomość e-mail z powiadomieniem przez dostawcę poczty e-mail. 
+Akcje to kroki, które są wykonywane, gdy wyzwalacz uruchomi przepływ pracy aplikacji logiki. W tym samouczku akcja polega na wysłaniu powiadomienia e-mail pochodzącego od dostawcy poczty e-mail. 
 
-1. Wybierz **nowy krok** następnie **Dodaj akcję**. 
+1. Wybierz pozycję **Nowy krok**, a następnie pozycję **Dodaj akcję**. 
 
    ![Nowy krok, Dodaj akcję](./media/publish-iot-hub-events-to-logic-apps/new-step.png)
 
-2. Wyszukaj **E-mail**. 
-3. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. W tym samouczku używana **Office 365 Outlook**. Te kroki dla innych dostawców poczty e-mail są podobne. 
+2. Wyszukaj nazwę **E-mail**. 
+3. W oparciu o Twojego dostawcę poczty e-mail znajdź i wybierz zgodny łącznik. W tym samouczku jest używana usługa **Office 365 Outlook**. Kroki dla innych dostawców poczty e-mail są podobne. 
 
-   ![Wybierz łącznik dostawcy poczty e-mail](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
+   ![Wybieranie łącznika dostawcy poczty e-mail](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
 
-4. Wybierz **wysłać wiadomość e-mail** akcji. 
-5. W przypadku wyświetlenia monitu zaloguj się do swojego konta poczty e-mail. 
-6. Utwórz szablon e-mail. 
-   * **Aby**: Wprowadź adres e-mail, aby odbierać powiadomienia e-mail. W tym samouczku Użyj konta e-mail, do której będziesz mieć dostęp do testowania. 
-   * **Temat** i **treści**: zapisywanie tekstu dla adresu e-mail. Wybierz właściwości JSON z narzędzia Selektor do zawierać zawartość dynamiczną, na podstawie danych zdarzenia.  
+4. Wybierz akcję **Wyślij wiadomość e-mail**. 
+5. W razie potrzeby zaloguj się do swojego konta e-mail. 
+6. Utwórz szablon wiadomości e-mail. 
+   * **Do**: wpisz adres e-mail, na który mają być wysyłane wiadomości e-mail z powiadomieniami. Na potrzeby tego samouczka użyj konta e-mail, które nadaje się do celów testowych. 
+   * **Temat** i **Treść**: wpisz tekst wiadomości e-mail. Za pomocą narzędzia do wybierania wybierz właściwości JSON w celu dołączenia zawartości dynamicznej opartej na danych zdarzenia.  
 
-   Szablon wiadomości e-mail może wyglądać następująco:
+   Przykładowy szablon wiadomości e-mail może wyglądać następująco:
 
-   ![Wypełnij informacje pocztą e-mail.](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
+   ![Wpisywanie informacji dotyczących wiadomości e-mail.](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
 7. Zapisz aplikację logiki. 
 
-### <a name="copy-the-http-url"></a>Skopiuj adres URL protokołu HTTP
+### <a name="copy-the-http-url"></a>Kopiowanie adresu URL HTTP
 
-Zanim opuścisz projektanta aplikacji logiki, skopiuj adres URL, nasłuchiwania aplikacje logiki wyzwalacza. Ten adres URL są używane do konfigurowania zdarzeń siatki. 
+Przed zamknięciem projektanta aplikacji usługi Logic Apps skopiuj adres URL, za pomocą którego aplikacja logiki odbiera wyzwalacz. Ten adres URL zostanie użyty do skonfigurowania usługi Event Grid. 
 
-1. Rozwiń węzeł **zostanie odebrane żądanie HTTP podczas** okno konfiguracji wyzwalacza, klikając go. 
-2. Skopiuj wartość **adresu URL HTTP POST** wybierając przycisk Kopiuj obok niej. 
+1. Kliknij pole konfiguracji wyzwalacza **Po odebraniu żądania HTTP**, aby je rozwinąć. 
+2. Skopiuj wartość pola **Adres URL żądania HTTP POST**, wybierając przycisk widoczny obok tego pola. 
 
-   ![Skopiuj adres URL protokołu HTTP POST](./media/publish-iot-hub-events-to-logic-apps/copy-url.png)
+   ![Kopiowanie adresu URL żądania HTTP POST](./media/publish-iot-hub-events-to-logic-apps/copy-url.png)
 
-3. Zapisz ten adres URL, dzięki czemu mogą odwoływać się do niego w następnej sekcji. 
+3. Zapisz ten adres URL — zostanie użyty w następnej sekcji. 
 
-## <a name="publish-an-event-from-iot-hub"></a>Publikowanie zdarzenia z Centrum IoT
+## <a name="publish-an-event-from-iot-hub"></a>Publikowanie zdarzenia z usługi IoT Hub
 
-W tej sekcji skonfigurujesz Centrum IoT do publikowania zdarzeń w miarę ich występowania. 
+W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na bieżąco. 
 
-1. W portalu Azure przejdź do Centrum IoT. 
-2. Wybierz **zdarzenia**.
+1. W witrynie Azure Portal przejdź do centrum IoT Hub. 
+2. Wybierz pozycję **Zdarzenia**.
 
-   ![Otwórz szczegóły zdarzeń siatki](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
+   ![Wyświetlanie szczegółów usługi Event Grid](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
-3. Wybierz **subskrypcji zdarzeń**. 
+3. Wybierz pozycję **Subskrypcja zdarzeń**. 
 
-   ![Utwórz nową subskrypcję zdarzeń](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
+   ![Tworzenie nowej subskrypcji zdarzeń](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
-4. Tworzenie subskrypcji zdarzeń z następującymi wartościami: 
-   * **Nazwa**: Podaj opisową nazwę.
-   * **Subskrypcja dla wszystkich typów zdarzeń**: Usuń zaznaczenie pola wyboru.
-   * **Typy zdarzeń**: Wybierz **DeviceCreated**.
-   * **Typ subskrybenta**: Wybierz **haku Web**.
-   * **Punkt końcowy subskrybenta**: Wklej adres URL, które zostały skopiowane z aplikacji logiki. 
+4. Utwórz subskrypcję zdarzeń, korzystając z następujących wartości: 
+   * **Nazwa**: podaj opisową nazwę.
+   * **Subskrybuj wszystkie typy zdarzeń**: usuń zaznaczenie pola wyboru.
+   * **Typy zdarzeń**: wybierz opcję **Utworzono urządzenie**.
+   * **Typ subskrybenta**: wybierz opcję **Web Hook**.
+   * **Punkt końcowy subskrybenta**: wklej adres URL skopiowany w aplikacji logiki. 
 
-   Możesz zapisać tutaj subskrypcji zdarzeń i otrzymywać powiadomienia dla wszystkich urządzeń, która jest tworzona w Centrum IoT. W tym samouczku jednak Użyjmy opcjonalne pola do filtrowania dla konkretnych urządzeń: 
+   Możesz teraz zapisać subskrypcję zdarzeń, aby otrzymywać powiadomienia o wszystkich urządzeniach tworzonych w centrum IoT Hub. Jednak w tym samouczku użyjemy opcjonalnych filtrów, aby odfiltrować konkretne urządzenia: 
 
-   * **Prefiks filtru**: wprowadź `devices/Building1_` do filtrowania dla zdarzeń urządzenia z tworzeniem 1.
-   * **Filtr sufiks**: wprowadź `_Temperature` filtrowania dla urządzenia zdarzenia związane z temperatury.
+   * **Filtr prefiksu**: wprowadź wartość `devices/Building1_`, aby odfiltrować zdarzenia urządzeń w budynku 1.
+   * **Filtr sufiksu**: wprowadź wartość `_Temperature`, aby odfiltrować zdarzenia urządzeń związane z temperaturą.
 
-   Gdy wszystko będzie gotowe, formularz powinien wyglądać jak w następującym przykładzie: 
+   Gdy wszystko będzie gotowe, formularz powinien wyglądać tak: 
 
-   ![Przykładowe zdarzenie subskrypcji formularza](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+   ![Przykładowy formularz subskrypcji zdarzeń](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. Wybierz **Utwórz** można zapisać subskrypcji zdarzeń.
+5. Wybierz pozycję **Utwórz**, aby zapisać subskrypcję zdarzeń.
 
 ## <a name="create-a-new-device"></a>Tworzenie nowego urządzenia
 
-Przetestuj aplikację logiki, tworząc nowe urządzenie do wyzwolenia zdarzenia powiadomień e-mail. 
+Aby przetestować aplikację logiki, utwórz nowe urządzenie w celu wyzwolenia wiadomości e-mail z powiadomieniem o zdarzeniu. 
 
-1. Wybierz z Centrum IoT, **urządzenia IoT**. 
+1. W centrum IoT Hub wybierz pozycję **Urządzenia IoT**. 
 2. Wybierz pozycję **Dodaj**.
-3. Aby uzyskać **identyfikator urządzenia**, wprowadź `Building1_Floor1_Room1_Temperature`.
+3. W polu **Identyfikator urządzenia** wpisz ciąg `Building1_Floor1_Room1_Temperature`.
 4. Wybierz pozycję **Zapisz**. 
-5. Można dodać wiele urządzeń z innego urządzenia identyfikatorów do testowania filtrów subskrypcji zdarzeń. Wypróbuj te przykłady: 
+5. Aby przetestować filtry subskrypcji zdarzeń, możesz dodać wiele urządzeń z różnymi identyfikatorami. Wypróbuj te przykłady: 
    * Building1_Floor1_Room1_Light
    * Building1_Floor2_Room2_Temperature
    * Building2_Floor1_Room1_Temperature
    * Building2_Floor1_Room1_Light
 
-Po dodaniu kilka urządzeń do Centrum IoT, Sprawdź pocztę e-mail, aby zobaczyć, które z nich wyzwalane aplikacji logiki. 
+Po dodaniu kilku urządzeń do centrum IoT Hub sprawdź pocztę e-mail, aby zobaczyć, które z nich wyzwoliły działanie aplikacji logiki. 
 
 ## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 
-Zamiast korzystać z portalu Azure, można wykonać kroki Centrum IoT przy użyciu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz strony wiersza polecenia platformy Azure dla [tworzenia subskrypcji zdarzeń](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) i [tworzenia urządzenia IoT](https://docs.microsoft.com/cli/azure/iot/device)
+Nie musisz korzystać z witryny Azure Portal — kroki w centrum IoT Hub możesz wykonać przy użyciu interfejsu wiersza polecenia platformy Azure. Więcej informacji zawierają strony z opisem interfejsu wiersza polecenia platformy Azure, które dotyczą [tworzenia subskrypcji zdarzeń](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) i [tworzenia urządzenia IoT](https://docs.microsoft.com/cli/azure/iot/device).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym samouczku użyte zasoby, które naliczenie opłat w ramach subskrypcji platformy Azure. Gdy wszystko będzie gotowe wypróbować samouczek i testowania wyniki, wyłączyć lub usunąć zasoby, które chcesz zachować. 
+Użycie zasobów w tym samouczku powoduje naliczanie opłat w ramach Twojej subskrypcji platformy Azure. Gdy zakończysz testy w ramach tego samouczka, wyłącz lub usuń zasoby, które nie są potrzebne. 
 
-Jeśli nie chcesz stracić pracy na aplikację logiki, należy ją wyłączyć, zamiast usuwania. 
+Jeśli nie chcesz utracić efektów pracy z aplikacją logiki, nie usuwaj jej, tylko wyłącz. 
 
 1. Przejdź do aplikacji logiki.
-2. Na **omówienie** wybierz bloku **usunąć** lub **wyłączyć**. 
+2. W bloku **Przegląd** wybierz pozycję **Usuń** lub **Wyłącz**. 
 
-Każda subskrypcja może mieć jeden bezpłatne Centrum IoT. Jeśli bezpłatne Centrum zostało utworzone w tym samouczku, nie należy ją usunąć, aby uniknąć naliczania opłat.
+Każda subskrypcja może zawierać jedno centrum IoT Hub, z którego korzystanie jest bezpłatne. Jeśli w samouczku utworzono bezpłatne centrum, nie musisz go usuwać, ponieważ nie generuje ono kosztów.
 
-1. Przejdź do Centrum IoT. 
-2. Na **omówienie** wybierz bloku **usunąć**. 
+1. Przejdź do centrum IoT Hub. 
+2. W bloku **Przegląd** wybierz pozycję **Usuń**. 
 
-Nawet jeśli zachowasz Centrum IoT może chcesz usunąć utworzoną subskrypcję zdarzeń. 
+Być może zdecydujesz się zachować centrum IoT Hub, ale usunąć utworzoną subskrypcję zdarzeń. 
 
-1. W Centrum IoT, wybierz **siatki zdarzeń**.
-2. Wybierz subskrypcję zdarzeń, który chcesz usunąć. 
+1. W centrum IoT Hub wybierz pozycję **Event Grid**.
+2. Wybierz subskrypcję zdarzeń, którą chcesz usunąć. 
 3. Wybierz pozycję **Usuń**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [reaguje na zdarzenia Centrum IoT przy użyciu siatki zdarzeń do akcje wyzwalacza](../iot-hub/iot-hub-event-grid.md).
+Dowiedz się więcej — zobacz [Reacting to IoT Hub events by using Event Grid to trigger actions (Reagowanie na zdarzenia usługi IoT Hub przez wyzwalanie akcji za pomocą usługi Event Grid)](../iot-hub/iot-hub-event-grid.md).
 
-Dowiedz się więcej o tym, co można zrobić za pomocą [siatki zdarzeń](overview.md).
+Dowiedz się, co jeszcze możesz robić przy użyciu usługi [Event Grid](overview.md).
 
 
