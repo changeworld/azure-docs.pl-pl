@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942139"
 ---
 # <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności 
 
@@ -46,7 +47,7 @@ Wykonaj następujące kroki wymagań wstępnych, aby ręcznie zainstalować usł
 | Nazwa szablonu pliku Instalatora| System operacyjny |
 |---|--|
 |Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 z dodatkiem SP1 (64-bitowe) </br> Windows Server 2012 (64-bitowe) </br> Windows Server 2012 R2 (64-bitowe) </br> Windows Server 2016 (64-bitowe) |
-|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6,9 (tylko wersja 64-bitowa) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6,9 (tylko wersja 64-bitowa) |
+|Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6,9 (tylko wersja 64-bitowa) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6,9 (tylko wersja 64-bitowa) |
 |Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (tylko wersja 64-bitowa) </br> CentOS 7.0, 7.1, 7.2, 7.3 (tylko wersja 64-bitowa) |
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 z dodatkiem SP3 (tylko wersja 64-bitowa)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 z dodatkiem SP4 (tylko wersja 64-bitowa)|
