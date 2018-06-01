@@ -12,14 +12,15 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e84580c4023be87ebfc1988c631af0b76e213987
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193955"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Wprowadzenie do usługi Azure Maps
-Usługa Azure Maps to portfel usług geoprzestrzennych obejmujący interfejsy API usług dla map, wyszukiwania, wyznaczania tras, ruchu drogowego oraz stref czasowych. Portfel usług zgodnych z interfejsem Azure OneAPI umożliwia używanie znanych narzędzi do szybkiego tworzenia i skalowania rozwiązań, które będą integrować informacje o lokalizacji w rozwiązaniach platformy Azure. Usługa Azure Maps udostępnia deweloperom ze wszystkich branż zaawansowane funkcje geoprzestrzenne wraz z aktualnymi danymi map niezbędnymi do zapewniania kontekstu geograficznego aplikacjom internetowym i mobilnym. Usługa Azure Maps to zestaw interfejsów API REST wyposażony w internetową kontrolkę JavaScript. Dzięki niej programowanie jest łatwe i elastyczne, a rezultaty można przenosić na różne platformy. 
+Usługa Azure Maps to portfel usług geoprzestrzennych obejmujący interfejsy API usług dla map, wyszukiwania, wyznaczania tras, ruchu drogowego oraz stref czasowych. Portfel usług umożliwia używanie znanych narzędzi do szybkiego tworzenia i skalowania rozwiązań, które będą integrować informacje o lokalizacji w rozwiązaniach platformy Azure. Usługa Azure Maps udostępnia deweloperom ze wszystkich branż zaawansowane funkcje geoprzestrzenne wraz z aktualnymi danymi map niezbędnymi do zapewniania kontekstu geograficznego aplikacjom internetowym i mobilnym. Usługa Azure Maps to zestaw interfejsów API REST wyposażony w internetową kontrolkę JavaScript. Dzięki niej programowanie jest łatwe i elastyczne, a rezultaty można przenosić na różne platformy. 
 
 Następujące wideo stanowi wprowadzenie do usługi Azure Maps:
 
@@ -87,7 +88,7 @@ Celem firmy Microsoft jest zapewnienie wyboru dla społeczności deweloperów po
 | Scenariusz | Użyj usługi Azure Maps, gdy… | Użyj usługi Mapy Bing, gdy… |
 | ------------- | ------------- | ------------- |
 | Środowisko deweloperskie | Tworzenie w innych usługach platformy Azure lub koordynacja z nimi | Używanie chmury innej firmy lub innego środowiska deweloperskiego |
-| Etap programowania  | Ponieważ usługa Azure Maps znajduje się obecnie w publicznej wersji zapoznawczej, jest zoptymalizowana pod kątem testowania na wczesnym etapie i opracowywania weryfikacji koncepcji | Na potrzeby środowiska produkcyjnego wymagana jest umowa SLA klasy korporacyjnej |
+| Etap programowania  | Usługa Azure Maps jest zoptymalizowana pod kątem testowania na wczesnym etapie i opracowywania weryfikacji koncepcji | Na potrzeby środowiska produkcyjnego wymagana jest umowa SLA klasy korporacyjnej |
 | Opcje cennika | Wystarczające są wstępne opcje cenowe na potrzeby dewelopera | Wymagany jest dostosowany cennik klasy korporacyjnej |
 | Środowisko przypadków użycia | Wymagane jest użycie w pojeździe | Użycie w pojeździe nie jest wymagane |
 | Pokrycie geograficznie | Indie, Chiny, Japonia i Korea Południowa — niewymagane | Indie, Chiny, Japonia i Korea Południowa — wymagane |
