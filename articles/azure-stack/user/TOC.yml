@@ -55,6 +55,8 @@
               href: azure-stack-manage-vm-disks.md
             - name: Ochrona maszyn wirtualnych
               href: azure-stack-manage-vm-protect.md
+            - name: Zagadnienia dotyczące maszyny Wirtualnej programu SQL Server
+              href: azure-stack-sql-server-vm-considerations.md
         - name: Magazyn
           items:
             - name: Przegląd
@@ -104,7 +106,7 @@
         - name: Konfigurowanie środowiska deweloperskiego
           items:
             - name: Instalowanie programu Azure Stack PowerShell
-              href: azure-stack-powershell-install.md
+              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
             - name: Pobieranie narzędzi
               href: azure-stack-powershell-download.md
             - name: Konfigurowanie programu PowerShell — użytkownik
