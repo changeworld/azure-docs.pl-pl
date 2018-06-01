@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304464"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -37,6 +38,8 @@ Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żąda�
 > * Wyświetlanie działającego modułu równoważenia obciążenia
 
 Aby uzyskać więcej informacji na temat obsługi stref dostępności przy użyciu usługi Load Balancer w warstwie Standardowa, zobacz [Standard Load Balancer and Availability Zones (Usługa Load Balancer w warstwie Standardowa i strefy dostępności)](load-balancer-standard-availability-zones.md).
+
+Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza polecenia platformy Azure](load-balancer-standard-public-zone-redundant-cli.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -141,18 +144,21 @@ Utwórz maszyny wirtualne w różnych strefach regionu (strefie 1, strefie 2 i s
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myVM1** znajdującą się w grupie zasobów *myResourceGroupLBAZ*.
 2. Na stronie **Przegląd** kliknij pozycję **Połącz** dla protokołu RDP z maszyną wirtualną.
 3. Zaloguj się do maszyny wirtualnej przy użyciu nazwy użytkownika *azureuser*.
-4. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Menedżer serwera**.
-5. Na stronie Szybki start Menedżera serwera kliknij pozycję **Dodaj role i funkcje**.
-
-   ![Dodawanie do puli adresów zaplecza ](./media/load-balancer-standard-public-availability-zones-portal/servermanager.png)    
-
-1. W **kreatorze dodawania ról i funkcji** użyj następujących wartości:
-    - Na stronie **Wybieranie typu instalacji** kliknij pozycję **Instalacja oparta na rolach lub funkcjach**.
-    - Na stronie **Wybieranie serwera docelowego** kliknij pozycję **myVM1**.
-    - Na stronie **Wybieranie roli serwera** kliknij pozycję **Serwer internetowy (IIS)**.
-    - Postępuj zgodnie z instrukcjami, aby ukończyć pozostałą część kreatora.
-2. Zamknij sesję protokołu RDP dla maszyny wirtualnej — *myVM1*.
-3. Powtórz kroki od 1 do 7, aby zainstalować usługi IIS na maszynach wirtualnych *myVM2* i *myVM3*.
+4. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows**>**Windows PowerShell**.
+5. W oknie programu PowerShell uruchom poniższe polecenia, aby zainstalować serwer usług IIS, usunąć domyślny plik iisstart.htm i dodać nowy plik iisstart.htm, który wyświetla nazwę maszyny wirtualnej:
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
+   ```
+6. Zamknij sesję protokołu RDP na maszynie wirtualnej *myVM1*.
+7. Powtórz kroki od 1 do 6, aby zainstalować usługi IIS i zaktualizowany plik iisstart.htm na maszynach *myVM2* i *myVM3*.
 
 ## <a name="create-load-balancer-resources"></a>Tworzenie zasobów modułu równoważenia obciążenia
 
@@ -215,7 +221,7 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
 
 2. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki. W przeglądarce jest wyświetlana domyślna strona internetowego serwera usług IIS.
 
-      ![Internetowy serwer usług IIS](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+      ![Internetowy serwer usług IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między maszynami wirtualnymi rozproszonymi w strefie, możesz wymusić odświeżenie w przeglądarce internetowej.
 

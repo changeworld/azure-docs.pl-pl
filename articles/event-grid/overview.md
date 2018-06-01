@@ -1,28 +1,29 @@
 ---
-title: Omówienie usługi Azure Event siatki
-description: Opisuje Azure zdarzeń siatki i jego pojęcia.
+title: Omówienie usługi Azure Event Grid
+description: Opis usługi Azure Event Grid i pojęć z nią związanych.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: overview
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303981"
 ---
-# <a name="an-introduction-to-azure-event-grid"></a>Wprowadzenie do usługi Azure Event siatki
+# <a name="an-introduction-to-azure-event-grid"></a>Wprowadzenie do usługi Azure Event Grid
 
-Azure siatki zdarzeń umożliwia łatwe tworzenie aplikacji za pomocą architektury oparty na zdarzeniach. Należy wybrać zasobów platformy Azure, które chcesz subskrybować i przypisz program obsługi zdarzeń lub wysłać zdarzenia do punktu końcowego elementu WebHook. Siatka zdarzeń ma wbudowaną obsługę zdarzenia pochodzące z usług Azure, takich jak magazynu obiektów blob i grup zasobów. Siatka zdarzeń ma również obsługę niestandardowych aplikacji i innych zdarzeń, przy użyciu niestandardowych tematów i niestandardowych elementów webhook. 
+Usługa Azure Event Grid umożliwia łatwe tworzenie aplikacji za pomocą architektur opartych na zdarzeniach. Wystarczy, że wybierzesz zasób platformy Azure, który chcesz zasubskrybować, i wskażesz procedurę obsługi zdarzeń lub punkt końcowy elementu WebHook, do którego ma zostać wysłane zdarzenie. Usługa Event Grid obsługuje zdarzenia pochodzące z usług platformy Azure, takich jak obiekty blob magazynu i grupy zasobów. Usługa Event Grid korzysta również z niestandardowych tematów i elementów webhook, aby zapewnić obsługę aplikacji i zdarzeń generowanych przez produkty innych firm. 
 
-Filtry służy do kierowania określonych zdarzeń do różnych punktów końcowych, multiemisji do wielu punktów końcowych i upewnij się, że niezawodnie dostarczania zdarzeń. Siatki zdarzeń również ma wbudowaną obsługą dla firm i niestandardowych zdarzeń.
+Filtry pozwalają kierować określone zdarzenia do różnych punktów końcowych i korzystać z multiemisji do wielu punktów końcowych, a także zapewniają niezawodne dostarczanie zdarzeń. Usługa Event Grid zapewnia również wbudowaną obsługę zdarzeń niestandardowych i zdarzeń generowanych przez produkty innych firm.
 
-Siatka zdarzeń obsługuje obecnie następujących regionach:
+Aktualnie usługa Event Grid obsługuje następujące regiony:
 
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
 * Azja Wschodnia
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
@@ -37,29 +38,29 @@ Siatka zdarzeń obsługuje obecnie następujących regionach:
 *   Zachodnie stany USA
 *   Zachodnie stany USA 2
 
-Ten artykuł zawiera omówienie Azure zdarzeń siatki. Jeśli chcesz rozpocząć pracę z siatki zdarzeń, zobacz [tworzenie i tras niestandardowych zdarzeń siatki zdarzeń Azure](custom-event-quickstart.md). Na poniższej ilustracji przedstawiono, jak siatki zdarzeń łączy źródeł i programy obsługi, ale nie zapewnia kompleksowe opcje są obsługiwane.
+Ten artykuł zawiera omówienie usługi Azure Event Grid. Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md). Poniżej przedstawiono połączenie źródeł i procedur obsługi w usłudze Event Grid. Ilustracja nie zawiera pełnej listy obsługiwanych opcji.
 
-![Model funkcjonalności siatki zdarzeń](./media/overview/functional-model.png)
+![Model funkcjonalny usługi Event Grid](./media/overview/functional-model.png)
 
 ## <a name="event-sources"></a>Źródła zdarzeń
 
-Obecnie następujących usług platformy Azure obsługuje wysyłanie zdarzeń do siatki zdarzeń:
+Aktualnie wysyłanie zdarzeń do usługi Event Grid jest obsługiwane w przypadku następujących usług platformy Azure:
 
 * Subskrypcje platformy Azure (operacje zarządzania)
-* Niestandardowe — tematy
+* Tematy niestandardowe
 * Event Hubs
 * Usługa IoT Hub
 * Media Services
 * Grupy zasobów (operacje zarządzania)
 * Service Bus
-* Obiektu Blob magazynu
-* Magazynu ogólnego przeznaczenia v2 (GPv2)
+* Storage Blob
+* Magazyn ogólnego przeznaczenia w wersji 2 (GPv2)
 
-Łącza do artykułów, które pokazują, jak używać każdego źródła zdarzeń, zobacz [źródła zdarzeń w siatce zdarzeń Azure](event-sources.md).
+Linki do artykułów, w których omówiono, jak używać poszczególnych źródeł zdarzeń, można znaleźć w temacie [Event sources in Azure Event Grid (Źródła zdarzeń w usłudze Azure Event Grid)](event-sources.md).
 
-## <a name="event-handlers"></a>Uchwyty zdarzeń
+## <a name="event-handlers"></a>Procedury obsługi zdarzeń
 
-Obecnie następujących usług platformy Azure obsługuje Obsługa zdarzeń z siatki zdarzeń: 
+Aktualnie obsługa zdarzeń pochodzących z usługi Event Grid jest zapewniona w przypadku następujących usług platformy Azure: 
 
 * Azure Automation
 * Azure Functions
@@ -70,72 +71,72 @@ Obecnie następujących usług platformy Azure obsługuje Obsługa zdarzeń z si
 * Queue Storage
 * Elementy webhook
 
-Podczas korzystania z usługi Azure Functions jako program obsługi, należy użyć wyzwalacza zdarzenia siatki ogólnego HTTP Wyzwalacze INSTEAD OF. Usługa Event Grid automatycznie weryfikuje wyzwalacze funkcji usługi Event Grid. W przypadku ogólnych wyzwalaczy HTTP trzeba zaimplementować [odpowiedź weryfikacji](security-authentication.md#webhook-event-delivery).
+W przypadku używania usługi Azure Functions jako procedury obsługi należy korzystać z wyzwalaczy usługi Event Grid, a nie ogólnych wyzwalaczy HTTP. Usługa Event Grid automatycznie weryfikuje wyzwalacze funkcji usługi Event Grid. W przypadku ogólnych wyzwalaczy HTTP trzeba zaimplementować [odpowiedź weryfikacji](security-authentication.md#webhook-event-delivery).
 
-Łącza do artykułów, które pokazują, jak używać każdy program obsługi zdarzeń, zobacz [programów obsługi zdarzeń w siatce zdarzeń Azure](event-handlers.md).
+Linki do artykułów, w których omówiono, jak używać poszczególnych procedur obsługi zdarzeń, można znaleźć w temacie [Event handlers in Azure Event Grid (Procedury obsługi zdarzeń w usłudze Azure Event Grid)](event-handlers.md).
 
 ## <a name="concepts"></a>Pojęcia
 
-Istnieje pięć pojęcia w siatce zdarzeń platformy Azure, które umożliwiają zacząć:
+Oto pięć pojęć związanych z usługą Azure Event Grid, które ułatwiają rozpoczęcie pracy:
 
-* **Zdarzenia** -co się stało.
-* **Wydawcy źródeł zdarzeń** — gdy zdarzenia miały miejsce.
-* **Tematy** — gdy wydawców wysyłać zdarzenia.
-* **Subskrypcja zdarzeń** — punktu końcowego lub wbudowany mechanizm zdarzenia trasy, czasami do wielu obsług. Subskrypcje są również używane przez obsługę inteligentnie filtrować zdarzenia przychodzące.
-* **Programy obsługi zdarzeń** -aplikacji lub usługi reagowanie na zdarzenia.
+* **Zdarzenia** — co miało miejsce.
+* **Źródła/wydawcy zdarzeń** — gdzie wystąpiło zdarzenie.
+* **Tematy** — punkt końcowy, do którego wydawcy wysyłają zdarzenia.
+* **Subskrypcje zdarzeń** — punkt końcowy lub wbudowany mechanizm przekierowywania zdarzeń, czasami do wielu procedur obsługi. Subskrypcje są również używane przez procedury obsługi w celu inteligentnego filtrowania zdarzeń przychodzących.
+* **Procedura obsługi zdarzeń** — aplikacja lub usługa reagująca na zdarzenie.
 
-Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [pojęcia w siatce zdarzeń Azure](concepts.md).
+Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Concepts in Azure Event Grid (Pojęcia używane w usłudze Azure Event Grid)](concepts.md).
 
 ## <a name="capabilities"></a>Możliwości
 
-Oto niektóre z kluczowych funkcji usługi Azure siatki zdarzeń:
+Oto główne funkcje usługi Azure Event Grid:
 
-* **Prostota** -wskaż i kliknij do osiągnięcia zdarzenia z zasobu platformy Azure do obsługi zdarzeń lub punktu końcowego.
-* **Zaawansowane filtrowanie** -filtr na zdarzenie typu lub zdarzenia publikowania ścieżka do zapewnienia obsługi zdarzeń odbierać istotne zdarzenia.
-* **Rozdysponowywania** -subskrypcji wiele punktów końcowych do tego samego zdarzenia wysłać kopie zdarzenia miejscach, w razie potrzeby.
-* **Niezawodność** — korzystanie z 24-godzinnym ponownie za pomocą wykładniczego wycofywania w celu zapewnienia zdarzenia są dostarczane.
-* **Płatności na zdarzenie** — płać tylko dla kwoty Użyj siatki zdarzeń.
-* **Wysokiej przepływności** — Tworzenie dużych obciążeń w siatce zdarzeń z obsługą miliony zdarzeń na sekundę.
-* **Wbudowane zdarzenia** — Uzyskaj i szybko uruchomić zdefiniowany zasób wbudowanych zdarzenia.
-* **Niestandardowe zdarzenia** -Użyj siatki zdarzeń trasy, filtr i niezawodnie dostarczyć zdarzeń niestandardowych w aplikacji.
+* **Prostota** — wystarczy wskazać element i go kliknąć, aby skierować zdarzenia z zasobu platformy Azure do dowolnej procedury obsługi zdarzeń lub punktu końcowego.
+* **Zaawansowane filtrowanie** — filtrowanie zdarzeń według typu lub ścieżki publikowania gwarantuje, że do procedur obsługi trafiają tylko istotne zdarzenia.
+* **Wielokierunkowość** — jedno zdarzenie może być subskrybowane przez wiele punktów końcowych, co pozwala wysyłać kopie zdarzenia do wszystkich potrzebnych miejsc.
+* **Niezawodność** — 24-godzinne ponawianie z wykładniczym wycofywaniem gwarantuje dostarczanie zdarzeń.
+* **Płatność za zdarzenia** — płacisz tylko za rzeczywiste użycie usługi Event Grid.
+* **Wysoka przepływność** — usługa Event Grid jest przeznaczona do obsługi dużych obciążeń i milionów zdarzeń na sekundę.
+* **Wbudowane zdarzenia** — wbudowane zdarzenia definiowane przez zasoby pozwalają szybko rozpocząć pracę.
+* **Niestandardowe zdarzenia** — usługa Event Grid pozwala kierować i filtrować zdarzenia oraz niezawodnie dostarczać zdarzenia niestandardowe w aplikacji.
 
-Porównanie siatki zdarzenia, usługi Event Hubs i Service Bus, zobacz [wybór między usługami Azure, których dostarczania komunikatów](compare-messaging-services.md).
+Porównanie usług Event Grid, Event Hubs i Service Bus można znaleźć w temacie [Choose between Azure services that deliver messages (Wybieranie usługi platformy Azure służącej do dostarczania komunikatów)](compare-messaging-services.md).
 
-## <a name="what-can-i-do-with-event-grid"></a>Co można zrobić siatki zdarzenia?
+## <a name="what-can-i-do-with-event-grid"></a>Do czego można wykorzystać usługę Event Grid?
 
-Siatki zdarzeń Azure oferuje kilka możliwości, które znacząco poprawić niekorzystającą, ops automatyzacji i pracy integracji: 
+Usługa Azure Event Grid udostępnia kilka możliwości, które znacząco usprawniają pracę bezserwerową, automatyzację operacji oraz integrację: 
 
 ### <a name="serverless-application-architectures"></a>Architektury aplikacji bez użycia serwera
 
-![Aplikację niekorzystającą](./media/overview/serverless_web_app.png)
+![Aplikacja bezserwerowa](./media/overview/serverless_web_app.png)
 
-Usługa Event Grid łączy źródła danych i programy obsługi zdarzeń. Przykładowo możesz użyć usługi Event Grid, aby natychmiast wyzwalać funkcję bezserwerową i uruchamiać analizę obrazu za każdym razem, gdy do kontenera magazynu obiektów blob zostanie dodane nowe zdjęcie. 
+Usługa Event Grid łączy źródła danych i procedury obsługi zdarzeń. Przykładowo możesz użyć usługi Event Grid, aby natychmiast wyzwalać funkcję bezserwerową i uruchamiać analizę obrazu za każdym razem, gdy do kontenera magazynu obiektów blob zostanie dodane nowe zdjęcie. 
 
-### <a name="ops-automation"></a>Automatyzacja OPS
+### <a name="ops-automation"></a>Automatyzacja operacji
 
 ![Automatyzacja operacji](./media/overview/Ops_automation.png)
 
-Usługa Event Grid umożliwia przyspieszenie automatyzacji i uproszczenie wymuszania zasad. Przykładowo usługa Event Grid może powiadamiać usługę Azure Automation, gdy maszyna wirtualna zostanie utworzona lub usługa SQL Database zostanie rozszerzona. Te zdarzenia mogą być wykorzystane do automatycznego sprawdzania, czy konfiguracje usługi są zgodne, umieszczania metadanych w narzędziach do obsługi operacji, tagowania maszyn wirtualnych lub zachowywania elementów roboczych.
+Usługa Event Grid umożliwia przyspieszenie automatyzacji i uproszczenie wymuszania zasad. Przykładowo usługa Event Grid może powiadamiać usługę Azure Automation o utworzeniu maszyny wirtualnej lub rozszerzeniu usługi SQL Database. Te zdarzenia mogą zostać wykorzystane do automatycznego sprawdzania, czy konfiguracje usługi są zgodne, umieszczania metadanych w narzędziach do obsługi operacji, tagowania maszyn wirtualnych lub zachowywania elementów roboczych.
 
 ### <a name="application-integration"></a>Integracja aplikacji
 
 ![Integracja aplikacji](./media/overview/app_integration.png)
 
-Usługa Event Grid łączy aplikację z innymi usługami. Na przykład utworzyć niestandardowy temat wysyłać dane zdarzeń aplikacji siatki zdarzeń i wykorzystać jej wiarygodnych dostarczania zaawansowane routingu i bezpośrednia Integracja z platformą Azure. Ewentualnie możesz użyć usługi Event Grid oraz usługi Logic Apps, aby przetwarzać dane w dowolnym miejscu, bez pisania kodu. 
+Usługa Event Grid łączy aplikację z innymi usługami. Przykładowo możesz utworzyć temat niestandardowy, aby wysłać dane zdarzeń aplikacji do usługi Event Grid i wykorzystać niezawodne dostarczanie, zaawansowany routing i bezpośrednią integrację z platformą Azure. Ewentualnie możesz użyć usług Event Grid i Logic Apps do przetwarzania danych w dowolnym miejscu, bez pisania kodu. 
 
-## <a name="how-much-does-event-grid-cost"></a>Ile kosztuje siatki zdarzeń
+## <a name="how-much-does-event-grid-cost"></a>Ile kosztuje korzystanie z usługi Event Grid?
 
-Azure siatki zdarzeń używa modelu cenowego płatności na zdarzenie, więc płacisz tylko za można użyć. Pierwsze 100 000 operacji miesięcznie są wolne. Operacje są definiowane jako zdarzeń wejściowych, zaawansowane dopasowania, próba dostarczania i zarządzania wywołania. Aby uzyskać więcej informacji, zobacz [cennikiem](https://azure.microsoft.com/pricing/details/event-grid/).
+Usługa Azure Event Grid korzysta z modelu płatności za zdarzenia, w którym płaci się wyłącznie za użyte zasoby. Pierwsze 100 000 operacji w danym miesiącu jest bezpłatnych. Operacje obejmują transfer zdarzeń przychodzących, zaawansowane dopasowania, próby dostarczenia i wywołania zarządzania. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/event-grid/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Trasy zdarzenia obiektu Blob magazynu](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
-  Odpowiadanie na zdarzenia magazynu obiektów blob przy użyciu siatki zdarzeń.
-* [Tworzenie i subskrybowanie zdarzeń niestandardowych](custom-event-quickstart.md)  
-  Przejście bezpośrednio w i rozpocząć wysyłanie zdarzeń niestandardowych do dowolnego punktu końcowego za pomocą Szybki Start Azure zdarzeń siatki.
-* [Przy użyciu logiki aplikacji jako program obsługi zdarzeń](monitor-virtual-machine-changes-event-grid-logic-app.md)  
-  Samouczek dotyczący tworzenia aplikacji za pomocą aplikacji logiki do reagowania na zdarzenia wypychana siatki zdarzeń.
+* [Route Storage Blob events (Kierowanie zdarzeń usługi Storage Blob)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+  Informacje na temat odpowiadania na zdarzenia usługi Storage Blob za pomocą usługi Event Grid.
+* [Create and subscribe to custom events (Tworzenie i subskrybowanie zdarzeń niestandardowych)](custom-event-quickstart.md)  
+  Ten przewodnik Szybki start po usłudze Azure Event Grid pozwoli Ci szybko zacząć wysyłać własne zdarzenia do dowolnego punktu końcowego.
+* [Using Logic Apps as an Event Handler (Używanie usługi Logic Apps jako procedury obsługi zdarzeń)](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+  Samouczek dotyczący tworzenia aplikacji korzystającej z usługi Logic Apps w celu umożliwienia reagowania na zdarzenia wypychane przez usługę Event Grid.
 * [Przesyłanie strumieniowe danych Big Data do magazynu danych](event-grid-event-hubs-integration.md)  
-  Samouczek, który używa usługi Azure Functions do strumienia danych z usługi Event Hubs SQL Data Warehouse.
-* [Dokumentacja interfejsu API REST siatki zdarzeń](/rest/api/eventgrid)  
-  Zawiera więcej informacji technicznych dotyczących siatki zdarzeń platformy Azure i odwołanie do zarządzania subskrypcjami zdarzeń routingu i filtrowania.
+  Samouczek przedstawiający użycie usługi Azure Functions do strumieniowego przesyłania danych z usługi Event Hubs do usługi SQL Data Warehouse.
+* [Event Grid REST API reference (Dokumentacja interfejsu API REST usługi Event Grid)](/rest/api/eventgrid)  
+  Zawiera informacje techniczne dotyczące usługi Azure Event Grid oraz dokumentację dotyczącą zarządzania subskrypcjami zdarzeń, routingiem i filtrowaniem.
