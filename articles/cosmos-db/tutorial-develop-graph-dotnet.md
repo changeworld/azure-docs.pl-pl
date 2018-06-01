@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: a442b6c3c8e2b8a781ee54f41a2e0db5b44b7395
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1843e37d9baf1ab264db96109eb5ffd0704e35b7
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271293"
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu API programu Graph na platformie .NET
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
@@ -168,13 +169,13 @@ foreach (KeyValuePair<string, string> gremlinQuery in gremlinQueries)
 
 ## <a name="add-vertices-and-edges"></a>Dodawanie wierzchołków i krawędzi
 
-Przyjrzyjmy się bliżej instrukcjom języka Gremlin wyświetlanym w poprzedniej sekcji. Najpierw dodajemy kilka wierzchołków przy użyciu metody `addV` języka Gremlin. Na przykład poniższy fragment kodu służy do tworzenia wierzchołka „Thomas Andersen” typu „Person” z właściwościami na potrzeby imienia, nazwiska i wieku.
+Przyjrzyjmy się bliżej instrukcjom języka Gremlin wyświetlanym w poprzedniej sekcji. Najpierw dodajemy kilka wierzchołków przy użyciu metody `addV` języka Gremlin. Na przykład poniższy fragment kodu służy do utworzenia wierzchołka „Thomas Andersen” typu „Person” z właściwościami na potrzeby imienia, nazwiska i wieku.
 
 ```cs
 // Create a vertex
 IDocumentQuery<Vertex> createVertexQuery = client.CreateGremlinQuery<Vertex>(
     graphCollection, 
-    "g.addV('person').property('firstName', 'Thomas')");
+    "g.addV('person').property('firstName', 'Thomas').property('age', 44)");
 
 while (createVertexQuery.HasMoreResults)
 {
