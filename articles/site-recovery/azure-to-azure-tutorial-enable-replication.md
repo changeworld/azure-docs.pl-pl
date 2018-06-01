@@ -1,23 +1,24 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery (wersja zapoznawcza)
+title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w innym regionie świadczenia usługi Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211671"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure (wersja zapoznawcza)
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
-Usługa [Azure Site Recovery](site-recovery-overview.md) wspiera strategię odzyskiwania po awarii przez organizowanie replikacji, trybu failover i powrotu po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure oraz zarządzanie nimi.
+Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do realizacji strategii odzyskiwania po awarii przez zarządzanie replikacją, przełączaniem do trybu failover i powrotem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure oraz koordynowanie tych procesów.
 
 W tym samouczku przedstawiono sposób konfigurowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym świadczenia usługi Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -27,6 +28,7 @@ W tym samouczku przedstawiono sposób konfigurowania odzyskiwania po awarii dla 
 > * Konfigurowanie wychodzącego dostępu dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
 
+Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej.
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
@@ -109,7 +111,7 @@ Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](.
 ### <a name="select-the-source"></a>Wybieranie źródła
 
 1. W obszarze magazynów usługi Recovery Services kliknij nazwę magazynu, a następnie kliknij pozycję **+ Replikuj**.
-2. W obszarze **Źródło** wybierz pozycję **Azure — WERSJA ZAPOZNAWCZA**.
+2. W obszarze **Źródło** wybierz pozycję **Azure**.
 3. W obszarze **Lokalizacja źródłowa** wybierz źródłowy region świadczenia usługi Azure, w którym są uruchomione maszyny wirtualne.
 4. Wybierz **model wdrażania maszyn wirtualnych platformy Azure**: **usługę Resource Manager** lub **model klasyczny**.
 5. Wybierz **źródłową grupę zasobów** dla maszyn wirtualnych usługi Resource Manager lub **usługę w chmurze** dla klasycznych maszyn wirtualnych.
