@@ -15,11 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 87e548dcca655436c00b84b440b72e01ad575338
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 926f256de0974112c1571fe4d1d48b6e7f530362
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211800"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -123,7 +124,7 @@ Brama sieci lokalnej może wymieniać trasy z bramą sieci wirtualnej platformy 
 
 W przypadku, gdy wymieniasz trasy z platformą Azure przy użyciu protokołu BGP, oddzielna trasa jest dodawana do tabeli tras wszystkich podsieci w sieci wirtualnej dla każdego anonsowanego prefiksu. Trasa jest dodawana z *bramą sieci wirtualnej* wymienioną jako element źródłowy i typ następnego przeskoku. 
 
-Propagację trasy protokołu BGP można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes) z typem następnego przeskoku sieci VPN. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](manage-route-table.md#create-a-route-table).
+Propagację trasy protokołu BGP można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes), których typ następnego przeskoku to „sieć VPN”. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak platforma Azure wybiera trasę
 

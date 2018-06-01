@@ -1,23 +1,24 @@
 ---
-title: "Przełączanie w tryb failover i powrót po awarii maszyn wirtualnych platformy Azure replikowanych do dodatkowego regionu świadczenia usługi Azure za pomocą usługi Azure Site Recovery (wersja zapoznawcza)"
-description: "Dowiedz się, jak przełączyć maszyny wirtualne platformy Azure replikowane do dodatkowego regionu świadczenia usługi Azure w tryb failover i przywrócić je po awarii za pomocą usługi Azure Site Recovery"
+title: Przełączanie w tryb failover i przywracanie po awarii maszyn wirtualnych platformy Azure replikowanych do dodatkowego regionu świadczenia usługi Azure za pomocą usługi Azure Site Recovery
+description: Dowiedz się, jak przełączyć maszyny wirtualne platformy Azure replikowane do dodatkowego regionu świadczenia usługi Azure w tryb failover i przywrócić je po awarii za pomocą usługi Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a27142f9110fd26daa8ea0ebd151a67769e6568
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209277"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Przełączanie maszyn wirtualnych platformy Azure w tryb failover i powrót po awarii między regionami świadczenia usługi Azure (wersja zapoznawcza)
+# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Przełączanie maszyn wirtualnych platformy Azure w tryb failover i przywracanie po awarii między regionami świadczenia usługi Azure
 
-Usługa [Azure Site Recovery](site-recovery-overview.md) wspiera strategię odzyskiwania po awarii przez organizowanie replikacji, trybu failover i powrotu po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure oraz zarządzanie nimi.
+Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do realizacji strategii odzyskiwania po awarii przez zarządzanie replikacją, przełączaniem do trybu failover i powrotem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure oraz koordynowanie tych procesów.
 
 W tym samouczku opisano sposób przełączania w tryb failover jednej maszyny wirtualnej platformy Azure do pomocniczego regionu świadczenia usługi Azure. Po przełączeniu w tryb failover możesz przywrócić ją po awarii do regionu podstawowego, kiedy stanie się dostępny. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -26,6 +27,8 @@ W tym samouczku opisano sposób przełączania w tryb failover jednej maszyny wi
 > * Ponowne włączanie ochrony pomocniczej maszyny wirtualnej platformy Azure w celu replikowania jej do regionu podstawowego
 > * Powrót po awarii pomocniczej maszyny wirtualnej
 > * Ponowne włączanie ochrony podstawowej maszyny wirtualnej w regionie pomocniczym
+
+Replikacja z platformy Azure na platformę Azure jest obecnie w wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 86b20e0f317a14db415feff68b17aa99e1e42cb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258443"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -52,9 +53,15 @@ Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usł
 
 Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md)
 
-## <a name="option-1-default-enable-the-https-feature-with-a-cdn-managed-certificate"></a>Opcja 1 (domyślnie): włączanie funkcji HTTPS przy użyciu certyfikatu zarządzanego sieci CDN  
+---
 
-Po wybraniu tej opcji niestandardową funkcję HTTPS można włączyć za pomocą kilku kliknięć. Usługa Azure CDN w pełni obsługuje zadania zarządzania certyfikatami, takie jak nabywanie i odnawianie. Po włączeniu funkcji proces rozpocznie się automatycznie. Jeśli domena niestandardowa jest już zmapowana na punkt końcowy CDN, żadne dalsze działania nie są wymagane. Usługa Azure CDN przetworzy kroki i wykona żądanie automatycznie. Jeśli jednak domena niestandardowa jest zmapowana w innej lokalizacji, należy użyć widomości e-mail, aby zweryfikować własność domeny.
+## <a name="ssl-certificates"></a>Certyfikaty SSL
+Aby włączyć funkcję HTTPS w celu bezpiecznego dostarczania zawartości w domenie niestandardowej usługi Azure CDN, należy użyć certyfikatu SSL. Możesz użyć certyfikatu zarządzanego przez usługę Azure CDN lub własnego certyfikatu.
+
+
+# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[Opcja 1 (domyślna): włączanie funkcji HTTPS przy użyciu certyfikatu zarządzanego przez usługę Azure CDN](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
+
+W przypadku korzystania z certyfikatu zarządzanego przez usługę Azure CDN można włączyć funkcję HTTPS za pomocą kilku kliknięć. Usługa Azure CDN w pełni obsługuje zadania zarządzania certyfikatami, takie jak nabywanie i odnawianie. Po włączeniu funkcji proces rozpocznie się automatycznie. Jeśli domena niestandardowa jest już zmapowana na punkt końcowy CDN, żadne dalsze działania nie są wymagane. Usługa Azure CDN przetworzy kroki i wykona żądanie automatycznie. Jeśli jednak domena niestandardowa jest zmapowana w innej lokalizacji, należy użyć widomości e-mail, aby zweryfikować własność domeny.
 
 Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące kroki:
 
@@ -81,22 +88,21 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 6. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
 
 
-## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>Opcja 2: włączanie funkcji HTTPS przy użyciu własnego certyfikatu 
+# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[Opcja 2: włączanie funkcji HTTPS przy użyciu własnego certyfikatu](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
-> Ta funkcja jest dostępna tylko w ramach profilów **usługi Azure CDN w warstwie Standardowa od firmy Microsoft**. 
+> Ta opcja jest dostępna tylko w ramach profilów **usługi Azure CDN w warstwie Standardowa od firmy Microsoft**. 
 >
  
+Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Ten bezpieczny mechanizm, używany w usłudze Azure CDN do pobrania certyfikatu, wymaga wykonania kilku dodatkowych czynności.
 
-W usłudze Azure CDN można użyć własnego certyfikatu w celu dostarczania zawartości za pośrednictwem protokołu HTTPS. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault. Usługa Azure Key Vault pozwala klientom bezpiecznie przechowywać swoje certyfikaty. Usługa Azure CDN wykorzystuje ten bezpieczny mechanizm do pobierania certyfikatu. Użycie własnego certyfikatu wymaga wykonania kilku dodatkowych kroków.
-
-### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>Krok 1: przygotowanie certyfikatu i konta usługi Azure Key Vault
+### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Przygotowywanie certyfikatu i konta usługi Azure Key Vault
  
 1. Usługa Azure Key Vault: musisz mieć konto usługi Azure Key Vault uruchomione w ramach tej samej subskrypcji co profil usługi Azure CDN i punkty końcowe CDN, dla których chcesz włączyć niestandardowy protokół HTTPS. Utwórz konto usługi Azure Key Vault, jeśli go nie masz.
  
 2. Certyfikaty usługi Azure Key Vault: jeśli masz już certyfikat, możesz przekazać go bezpośrednio na konto usługi Azure Key Vault lub utworzyć nowy certyfikat bezpośrednio za pomocą usługi Azure Key Vault za pośrednictwem jednego z partnerskich urzędów certyfikacji, z którymi zintegrowana jest usługa Azure Key Vault. 
 
-### <a name="step-2-register-azure-cdn"></a>Krok 2: rejestrowanie usługi Azure CDN
+### <a name="register-azure-cdn"></a>Rejestrowanie usługi Azure CDN
 
 Rejestrowanie usługi Azure CDN jako aplikacji w usłudze Azure Active Directory za pomocą programu PowerShell.
 
@@ -109,7 +115,7 @@ Rejestrowanie usługi Azure CDN jako aplikacji w usłudze Azure Active Directory
     ![Rejestrowanie usługi Azure CDN za pomocą programu PowerShell](./media/cdn-custom-ssl/cdn-register-powershell.png)
               
 
-### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>Krok 3: udzielanie usłudze Azure CDN dostępu do magazynu kluczy
+### <a name="grant-azure-cdn-access-to-your-key-vault"></a>Udzielanie usłudze Azure CDN dostępu do magazynu kluczy
  
 Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych) na koncie usługi Azure Key Vault.
 
@@ -127,7 +133,7 @@ Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych)
 
     Usługa Azure CDN ma teraz dostęp do tego magazynu kluczy i certyfikatów (kluczy tajnych), które są przechowywane w tym magazynie kluczy.
  
-### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>Krok 4: wybranie certyfikatu do wdrożenia dla usługi Azure CDN
+### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>Wybieranie certyfikatu do wdrożenia dla usługi Azure CDN
  
 1. Wróć do portalu usługi Azure CDN, a następnie wybierz profil i punkt końcowy CDN, dla którego chcesz włączyć niestandardowy protokół HTTPS. 
 
@@ -150,6 +156,7 @@ Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych)
   
 6. Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation).
 
+---
 
 ## <a name="validate-the-domain"></a>Weryfikowanie domeny
 
