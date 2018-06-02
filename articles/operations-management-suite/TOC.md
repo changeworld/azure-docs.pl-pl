@@ -23,13 +23,12 @@
 ### [Omówienie usługi Site Recovery](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Bezpieczeństwo
-### [Monitorowanie zasobów](oms-security-monitoring-resources.md)
-### [Odpowiadanie na alerty zabezpieczeń](oms-security-responding-alerts.md)
-### [Ocena linii bazowej](oms-security-baseline.md)
-### [Ocena złośliwego oprogramowania](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Ocena aktualizacji systemu](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Łączenie produktów zabezpieczeń](oms-security-connect-products.md)
-### [Ocena internetowej linii bazowej](oms-security-web-baseline-assessment.md)
+### [Monitorowanie zasobów](../security-center/security-center-monitoring.md)
+### [Odpowiadanie na alerty zabezpieczeń](../security-center/security-center-managing-and-responding-alerts.md)
+### [Ocena linii bazowej](../security-center/security-center-customize-os-security-config.md)
+### [Ocena złośliwego oprogramowania](../security-center/security-center-install-endpoint-protection.md)
+### [Łączenie produktów zabezpieczeń](../security-center/quick-security-solutions.md)
+### [Ocena internetowej linii bazowej](../security-center/security-center-customize-os-security-config.md)
 
 ## Korzystanie z rozwiązań
 ### [Rozwiązania do zarządzania](../monitoring/monitoring-solutions.md)

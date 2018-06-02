@@ -63,8 +63,6 @@
           href: dsc-template.md
     - name: Ochrona przed złośliwym kodem IaaS dla systemu Windows
       href: iaas-antimalware-windows.md
-    - name: Usługa Key Vault
-      href: key-vault-windows.md
     - name: Migawka maszyny wirtualnej
       items:
         - name: Linux
