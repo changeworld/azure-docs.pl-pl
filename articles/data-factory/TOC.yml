@@ -1,5 +1,7 @@
 - name: Dokumentacja usługi Data Factory V2
   href: index.yml
+- name: Przełączanie się do wersji 1 dokumentacji
+  href: v1/data-factory-introduction.md
 - name: Omówienie
   items:
     - name: Wprowadzenie do usługi Data Factory
@@ -374,6 +376,8 @@
       items:
         - name: Dołączanie środowiska Azure SSIS Integration Runtime do sieci wirtualnej
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Włączanie uwierzytelniania usługi Azure AD dla środowiska Azure-SSIS Integration Runtime
+          href: enable-aad-authentication-azure-ssis-ir.md
         - name: Konfigurowanie wysokiej wydajności dla środowiska Azure-SSIS Integration Runtime
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Aprowizowanie wersji Enterprise Edition dla środowiska Azure SSIS Integration Runtime
@@ -382,7 +386,7 @@
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Wdrażanie licencjonowanych składników dla środowiska Azure SSIS Integration Runtime
           href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: Uruchamianie pakietów SSIS za pomocą działania SSIS
+        - name: Uruchamiania pakietów SSIS za pomocą działania wykonywania pakietów SSIS
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Uruchamianie pakietów SSIS za pomocą działania procedury składowanej
           href: how-to-invoke-ssis-package-stored-procedure-activity.md

@@ -6,6 +6,10 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: Ściągawka
       href: cheat-sheet.md
+- name: Informacje o wersji
+  items:
+    - name: Maj 2018 r.
+      href: release-notes-may-2018.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

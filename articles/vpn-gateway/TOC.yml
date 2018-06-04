@@ -30,7 +30,7 @@
       href: vpn-gateway-highlyavailable.md
     - name: Połączenia typu punkt-lokacja — informacje
       href: point-to-site-about.md
-    - name: Routing typu punkt-lokacja — informacje
+    - name: Routing sieci VPN typu punkt-lokacja — informacje
       href: vpn-gateway-about-point-to-site-routing.md
 - name: Przewodniki z instrukcjami
   items:

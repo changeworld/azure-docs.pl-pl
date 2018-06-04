@@ -22,7 +22,9 @@
 #### [Python](data-lake-analytics-manage-use-python-sdk.md)
 #### [Java](data-lake-analytics-manage-use-java-sdk.md)
 #### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [Dodawanie użytkowników](data-lake-analytics-add-users.md)
 ### [Zasady](data-lake-analytics-policies.md)
+### [Bezpieczne foldery zadań](data-lake-analytics-secure.md)
 ### [Uzyskiwanie dostępu do dzienników diagnostycznych](data-lake-analytics-diagnostic-logs.md)
 ### [Adjust quota limits (Dostosowywanie limitów przydziału)](data-lake-analytics-quota-limits.md)
 
@@ -38,6 +40,10 @@
 #### [Rozszerzenia kognitywne](data-lake-analytics-u-sql-cognitive.md)
 #### [Podręcznik programowania](data-lake-analytics-u-sql-programmability-guide.md)
 
+### Zestaw U-SQL SDK
+#### [Lokalne uruchamianie i debugowanie](data-lake-analytics-data-lake-tools-local-run.md)
+#### [Uruchamianie i testowanie](data-lake-analytics-u-sql-sdk.md) 
+
 ### Visual Studio
 #### [Instalowanie](data-lake-analytics-data-lake-tools-install.md)
 #### [Przeglądanie i wyświetlanie zadań](data-lake-analytics-data-lake-tools-view-jobs.md)
@@ -46,6 +52,7 @@
 #### [Szczegóły wykonywania wierzchołków](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 #### [Eksportowanie bazy danych U-SQL](data-lake-analytics-data-lake-tools-export-database.md)
 #### [Analizowanie dzienników witryn sieci Web](data-lake-analytics-analyze-weblogs.md)
+#### [Usuwanie niesymetryczności danych](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 #### [Monitorowanie zadań i rozwiązywanie problemów](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ### Visual Studio Code
@@ -64,7 +71,7 @@
 # Zasoby
 ## [Blog usługi Azure Data Lake](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [Prześlij opinię na platformie UserVoice](https://feedback.azure.com/forums/327234-data-lake)
+## [Żądanie zmian](https://feedback.azure.com/forums/327234-data-lake)
 ## [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Cennik](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)

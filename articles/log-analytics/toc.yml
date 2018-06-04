@@ -137,24 +137,20 @@
           href: log-analytics-powerbi.md
     - name: Tworzenie alertów
       items:
-        - name: Informacje o alertach
-          href: log-analytics-alerts.md
-        - name: Akcje alertów
-          href: log-analytics-alerts-actions.md
-        - name: Tworzenie reguł alertów
-          items:
-            - name: Portal pakietu OMS
-              href: log-analytics-alerts-creating.md
-            - name: Interfejs API REST
-              href: log-analytics-api-alerts.md
-            - name: Szablon usługi Resource Manager
-              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
-        - name: Przykład akcji elementu webhook
-          href: log-analytics-alerts-webhooks.md
-        - name: Rozwiązanie usługi Alert Management
-          href: log-analytics-solution-alert-management.md
+        - name: Opis dziennika alertów
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+        - name: Tworzenie dziennika alertów
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+        - name: Akcje elementu webhook dla dziennika alertów
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+        - name: Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+        - name: Kopiowanie alertów z usługi Log Analytics do alertów platformy Azure
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
     - name: Zarządzanie
       items:
+        - name: Obsługa danych osobowych
+          href: log-analytics-personal-data-mgmt.md
         - name: Agent zarządzania
           href: log-analytics-agent-manage.md
         - name: Zarządzanie kosztami obszaru roboczego
@@ -218,8 +214,6 @@
               href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
             - name: Logic Apps — niestandardowy schemat śledzenia B2B
               href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Ocena oprogramowania chroniącego przed złośliwym kodem
-          href: log-analytics-malware.md
         - name: Analiza sieci
           href: log-analytics-azure-networking-analytics.md
         - name: Monitor wydajności sieci
@@ -239,7 +233,7 @@
         - name: Sprawdzanie kondycji oprogramowania SCOM
           href: log-analytics-scom-assessment.md
         - name: Inspekcja zabezpieczeń
-          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../security-center/security-center-intro.md
         - name: Usługa Service Fabric używana z programem Azure PowerShell
           href: log-analytics-service-fabric.md
           items:
