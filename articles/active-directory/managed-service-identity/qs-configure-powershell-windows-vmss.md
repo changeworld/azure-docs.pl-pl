@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 97c5e2dde3faeaad13317597bef4f70455d22102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 42fabb9a2ad05dbd6a449f3f9e6a729917750165
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700012"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Skonfiguruj VMSS zarządzane usługi tożsamości (MSI) przy użyciu programu PowerShell
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/10/2018
 
 Tożsamość usługi zarządzanej zapewnia usług platformy Azure przy użyciu tożsamości automatycznie zarządzane w usłudze Azure Active Directory. Ta tożsamość służy do uwierzytelniania do dowolnej usługi obsługującej uwierzytelniania usługi Azure AD, bez konieczności poświadczeń w kodzie. 
 
-W tym artykule Dowiedz się jak wykonać następujące operacje zarządzane tożsamości usługi na Azure maszyny wirtualnej skali Ustaw (VMSS), za pomocą programu PowerShell:
+W tym artykule Dowiedz się jak wykonywać operacje zarządzania tożsamości usługi na maszynie wirtualnej skali Ustaw (VMSS), za pomocą programu PowerShell:
 - Włączanie i wyłączanie tożsamość na VMSS Azure przypisanego przez system
 - Dodawanie i usuwanie użytkownika przypisanego tożsamość na VMSS Azure
 
@@ -107,7 +108,7 @@ W tej sekcji możesz dowiedzieć się, jak dodać i usunąć użytkownika przypi
 
 ### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Przypisać użytkownicy przypisani tożsamości podczas tworzenia VMSS Azure
 
-Tworzenie nowego VMSS z użytkownikiem przypisane tożsamości nie jest obecnie obsługiwane za pośrednictwem programu PowerShell. Jak dodać tożsamość użytkownika z przypisanym do istniejących VMSS, zobacz następną sekcję. Sprawdzanie dostępności aktualizacji.
+Tworzenie nowego VMSS z przypisane tożsamości użytkownika nie jest obecnie obsługiwany za pośrednictwem programu PowerShell. Jak dodać tożsamość użytkownika z przypisanym do istniejących VMSS, zobacz następną sekcję. Sprawdzanie dostępności aktualizacji.
 
 ### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Przypisz tożsamości użytkownika do istniejącego VMSS Azure
 
@@ -121,8 +122,7 @@ Aby przypisać użytkownika do istniejącego VMSS Azure przypisuje tożsamości:
 
 2. Najpierw pobrać właściwości maszyny Wirtualnej za pomocą `Get-AzureRmVM` polecenia cmdlet. Następnie można przypisać tożsamość użytkownika z przypisanym do Azure VMSS, użyj `-IdentityType` i `-IdentityID` Włącz [AzureRmVM aktualizacji](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet. Zastąp `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` z własne wartości.
 
-   > [!IMPORTANT]
-   > Tworzenie tożsamości użytkowników przypisanych obsługuje tylko alfanumeryczne i łączniki (0-9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków do przypisania do maszyny Wirtualnej/VMSS działała poprawnie. Sprawdzanie dostępności aktualizacji. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
    ```powershell

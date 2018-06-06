@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fd6817e63eea622294bbf766b66beb8bc49bc30c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726061"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Utwórz i Zarządzaj grupami akcji w portalu Azure
 ## <a name="overview"></a>Przegląd ##
-W tym artykule przedstawiono sposób tworzenia i obsługi grup działań w portalu Azure.
+Grupy akcji jest kolekcją preferencje powiadamiania zdefiniowanych przez użytkownika. Azure alerty monitora i kondycja usługi są skonfigurowane do używania grupy określonej akcji, po wyzwoleniu alertu. Różne alerty mogą używać tej samej grupie akcji lub grupy różnych akcji w zależności od wymagań użytkownika.
 
-Można skonfigurować listę akcji przy użyciu grup działań. Każdy alert, zdefiniowane przez użytkownika, zapewnienie, że te same akcje podejmowane są zawsze, gdy alert jest wyzwalany następnie można te grupy.
+W tym artykule przedstawiono sposób tworzenia i obsługi grup działań w portalu Azure.
 
 Każda akcja składa się z następującymi właściwościami:
 
@@ -44,7 +45,7 @@ Aby uzyskać informacje na temat sposobu konfigurowania grup akcji za pomocą sz
 3. Wybierz **Dodaj grupę akcji**, a następnie wypełnij pola.
 
     ![Polecenie "Dodaj grupę akcji"](./media/monitoring-action-groups/add-action-group.png)
-4. Wprowadź nazwę w **nazwy grupy akcji** i wprowadzić nazwę w **krótką nazwę** pole. Krótka nazwa jest używana zamiast akcji Pełna nazwa grupy, podczas powiadomienia są wysyłane przy użyciu tej grupy.
+4. Wprowadź nazwę w **nazwy grupy akcji** i wprowadzić nazwę w **krótką nazwę** pole. Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
       ![Okno dialogowe Dodawanie grupy akcji"](./media/monitoring-action-groups/action-group-define.png)
 
@@ -69,7 +70,14 @@ Aby uzyskać informacje na temat sposobu konfigurowania grup akcji za pomocą sz
 <dd>W tym momencie działania aplikacji Azure obsługuje tylko ServiceHealth alertów. Inne czasu alertu zostanie zignorowany. Zobacz [skonfigurować alerty, gdy powiadomienie usługi kondycji jest przesyłana](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
 
 <dt>Adres e-mail</dt>
-<dd>Może mieć maksymalnie 50 pocztą e-mail akcje w grupy akcji</dd>
+<dd>Następujące adresy e-mail będą wysyłane wiadomości e-mail. Upewnij się, że filtrowanie wiadomości e-mail został prawidłowo skonfigurowany
+
+    - azure-noreply@microsoft.com
+    - azureemail-noreply@microsoft.com
+    - alerts-noreply@mail.windowsazure.com
+    
+</dd>
+<dd>Może mieć maksymalnie 1000 akcje poczty e-mail w grupy akcji</dd>
 <dd>Zobacz [szybkość Ograniczanie informacji](./monitoring-alerts-rate-limiting.md) artykułu</dd>
 
 <dt>ZARZĄDZANIE USŁUGAMI IT —</dt>

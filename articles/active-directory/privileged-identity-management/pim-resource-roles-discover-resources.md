@@ -3,7 +3,7 @@ title: Odnajdywanie i zarządzania zasobami Azure przy użyciu Privileged Identi
 description: Opisuje sposób ochrony zasobów platformy Azure przy użyciu usługi PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
-ms.author: billmath
-ms.openlocfilehash: 51a10ea164e8bd7650ad2823281d9ed6a4c91915
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: rolyon
+ms.openlocfilehash: af3aa7426515e8180fd41a4594b87f12645722e1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699550"
 ---
 # <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Odnajdywanie i zarządzania zasobami Azure przy użyciu Privileged Identity Management
 
@@ -27,7 +28,7 @@ Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć 
 > [!NOTE]
 > Można jedynie wyszukać i wybrać zasoby subskrypcji można zarządzać za pomocą usługi PIM. Podczas zarządzania subskrypcją w PIM można również zarządzać zasoby podrzędne w subskrypcji.
 
-## <a name="discover-resources"></a>Odnajdywanie zasobów
+## <a name="discover-resources"></a>Odnajdź zasoby
 
 W portalu Azure, przejdź do **Privileged Identity Management** okienka. W menu po lewej stronie w **ZARZĄDZAJ** zaznacz **zasobów Azure**.
 

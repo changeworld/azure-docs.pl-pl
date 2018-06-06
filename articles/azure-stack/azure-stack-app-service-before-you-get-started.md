@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ae21a7cc5c38fefd40a2676e15308b027c6f95d5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796737"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługi aplikacji Azure stosu
 
@@ -330,7 +331,7 @@ Wykonaj następujące kroki:
 | AdminArmEndpoint | Wymagane | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
 | TenantARMEndpoint | Wymagane | Null | Punkt końcowy usługi Azure Resource Manager dzierżawy. Przykładem jest management.local.azurestack.external. |
 | AzureStackAdminCredential | Wymagane | Null | Poświadczenie administratora usługi Azure AD. |
-| CertificateFilePath | Wymagane | Null | Ścieżka do pliku certyfikatu tożsamości aplikacji, wcześniej wygenerowany. |
+| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** wcześniej wygenerowany plik certyfikatu tożsamości aplikacji. |
 | CertificatePassword | Wymagane | Null | Hasło chroni klucz prywatny certyfikatu. |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Tworzenie aplikacji usług federacyjnych Active Directory
@@ -364,7 +365,7 @@ Wykonaj następujące kroki:
 | AdminArmEndpoint | Wymagane | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
 | PrivilegedEndpoint | Wymagane | Null | Punkt końcowy uprzywilejowanych. Przykładem jest AzS ERCS01. |
 | CloudAdminCredential | Wymagane | Null | Poświadczenia konta domeny dla administratorów chmury Azure stosu. Przykładem jest Azurestack\CloudAdmin. |
-| CertificateFilePath | Wymagane | Null | Ścieżka do pliku PFX certyfikatu tożsamości aplikacji. |
+| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do pliku PFX certyfikatu tożsamości aplikacji. |
 | CertificatePassword | Wymagane | Null | Hasło chroni klucz prywatny certyfikatu. |
 
 ## <a name="next-steps"></a>Kolejne kroki

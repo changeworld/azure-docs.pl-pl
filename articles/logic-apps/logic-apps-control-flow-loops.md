@@ -1,29 +1,25 @@
 ---
-title: Pętle — tablice procesu lub powtórzeń działania — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Przetwarzanie tablic o "for each" pętli lub powtórzeń działania do momentu spełnienia określonych warunków w aplikacjach logiki
+title: Dodawanie pętli, które Powtórz akcje lub przetworzyć tablice - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie pętli, które powtórzyć działania przepływu pracy lub procesu tablic w aplikacjach logiki platformy Azure
 services: logic-apps
-keywords: dla każdej pętli
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 26db63ed7706bdff9eb5c037a906fbc252b83a9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725959"
 ---
-# <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Pętle: Przetworzyć tablice lub Powtórz akcje, dopóki spełniony jest warunek
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Tworzenie pętli, które powtórzyć działania przepływu pracy lub procesu tablic w aplikacjach logiki platformy Azure
 
-Aby przejść przez tablice w aplikacji logiki, można użyć [pętli "Foreach"](#foreach-loop) lub [sekwencyjnych pętli "Foreach"](#sequential-foreach-loop). Cykle w pętli "Foreach" standardowe równolegle, podczas cykli w pętli "Foreach" sekwencyjnych pojedynczo. Maksymalna liczba elementów tablicy, które pętle "Foreach" można przetwarzać w aplikacji logiki pojedynczego uruchomienia, zobacz [limity i konfiguracji](../logic-apps/logic-apps-limits-and-config.md). 
+Aby wykonać iterację tablic w aplikacji logiki, można użyć [pętli "Foreach"](#foreach-loop) lub [sekwencyjnych pętli "Foreach"](#sequential-foreach-loop). Iteracje dla standardowych pętli "Foreach" równolegle, podczas uruchamiania iteracji dla pętli "Foreach" sekwencyjnych, pojedynczo. Maksymalna liczba elementów tablicy, które pętle "Foreach" można przetwarzać w aplikacji logiki pojedynczego uruchomienia, zobacz [limity i konfiguracji](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP] 
 > Jeśli masz wyzwalacz, który odbiera tablicy i chcesz uruchomić przepływ pracy dla każdego elementu tablicy, możesz *debatch* tablicy z [ **SplitOn** wyzwolenia właściwości](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
@@ -202,7 +198,7 @@ Na przykład o 8:00 każdego dnia, ta aplikacja logiki zwiększa zmiennej dopók
 
    ![Increment "Limit" przez użytkownika 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-9. W obszarze, ale poza pętli Dodaj akcję, która wysyła wiadomość e-mail. W przypadku wyświetlenia monitu zaloguj się do swojego konta poczty e-mail.
+9. W obszarze, ale poza pętli Dodaj akcję, która wysyła wiadomość e-mail. W razie potrzeby zaloguj się do swojego konta e-mail.
 
    ![Dodaj akcję, która wysyła wiadomość e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 

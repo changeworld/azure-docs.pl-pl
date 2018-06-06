@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
 ms.author: alleonar
-ms.openlocfilehash: 35e84a22eabce0b7361c2227317baab62421c301
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ff8c038ac5fa42668227a0531fa77bd853dd2b2
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757523"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera usługi Azure Key Vault
 
@@ -52,11 +53,11 @@ Zasoby w powyższym wideo:
 
 ## <a name="creating-and-managing-key-vaults"></a>Tworzenie i zarządzanie nimi magazynów kluczy
 
-Usługa Azure Key Vault zapewnia bezpieczne przechowywanie poświadczeń i innych kluczy i kluczy tajnych, ale kodu musi zostać uwierzytelniona Key Vault w celu ich pobrania. Tożsamość usługi zarządzanej (MSI) powoduje, że rozwiązania tego problemu prostszy, zapewniając usług Azure automatycznie zarządzane tożsamości w usłudze Azure Active Directory (Azure AD). Ta tożsamość służy do uwierzytelniania do dowolnej usługi obsługującej uwierzytelniania usługi Azure AD, w tym usługi Key Vault bez żadnych poświadczeń w kodzie. 
+Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Tożsamość usługi zarządzanej (MSI) ułatwia rozwiązywanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie. 
 
 Aby uzyskać więcej informacji dotyczących MSI, zobacz [zarządzane usługi tożsamości (MSI) dla zasobów Azure](https://docs.microsoft.com/azure/active-directory/msi-overview).
 
-Aby uzyskać więcej informacji na temat pracy z usługi AAD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](/active-directory/develop/active-directory-integrating-applications).
+Aby uzyskać więcej informacji na temat pracy z usługi AAD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 Przed rozpoczęciem pracy z kluczy i kluczy tajnych certyfikaty w magazynie kluczy, możesz utworzyć i zarządzać magazynu kluczy za pomocą interfejsu wiersza polecenia programu PowerShell, szablony Menedżera zasobów albo REST, zgodnie z opisem w następujących artykułach:
 

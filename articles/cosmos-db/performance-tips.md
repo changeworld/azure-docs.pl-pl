@@ -5,20 +5,17 @@ keywords: jak poprawić wydajność bazy danych
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fa68711158bea203d4fe1605966363dd2786a038
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715024"
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)
@@ -40,27 +37,28 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Jak klient nawiąże połączenie bazy danych Azure rozwiązania Cosmos ma istotny wpływ na wydajność, szczególnie pod względem obserwowanych opóźnienia po stronie klienta. Dostępne są dwa ustawienia konfiguracji klucza dla konfiguracji klienta zasady połączenia — połączenie *tryb* i [połączenia *protokołu*](#connection-protocol).  Są dwa tryby dostępne:
 
-   1. Tryb bramy (ustawienie domyślne)
+   * Tryb bramy (ustawienie domyślne)
       
-      Tryb bramy jest obsługiwana na wszystkich platformach zestawu SDK i jest skonfigurowana domyślna. Jeśli aplikacja działa w sieci firmowej z ograniczeń zapory strict, najlepszym rozwiązaniem jest w trybie bramy ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Jednak z zależnościami wydajności jest tryb bramy obejmuje przeskoku dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do bazy danych Azure rozwiązania Cosmos. W związku z tym w trybie bezpośrednim oferuje lepszą wydajność ze względu na mniejszą liczbę przeskoków sieciowych.
+     Tryb bramy jest obsługiwana na wszystkich platformach zestawu SDK i jest skonfigurowana domyślna. Jeśli aplikacja działa w sieci firmowej z ograniczeń zapory strict, najlepszym rozwiązaniem jest w trybie bramy ponieważ używa standardowego portu HTTPS i jeden punkt końcowy. Jednak z zależnościami wydajności jest tryb bramy obejmuje przeskoku dodatkowe sieci, za każdym razem, gdy danych jest odczytywanych lub zapisywanych do bazy danych Azure rozwiązania Cosmos. W związku z tym w trybie bezpośrednim oferuje lepszą wydajność ze względu na mniejszą liczbę przeskoków sieciowych.
 
-   2. W trybie bezpośrednim
+   * W trybie bezpośrednim
 
-     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Obecnie bezpośrednio jest obsługiwany w .NET 2.0 standardowe tylko platformy systemu Windows.
-      
-<a id="use-tcp"></a>
-2. **Zasady połączeń: używanie protokołu TCP**
+     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Obecnie bezpośrednio jest obsługiwany w .NET 2.0 standardowe tylko platformy systemu Windows. Podczas korzystania z trybu bezpośredniego, istnieją dwie opcje protokołu:
 
-    Podczas korzystania z trybu bezpośredniego, istnieją dwie opcje protokołu:
+    * TCP
+    * HTTPS
 
-   * TCP
-   * HTTPS
+    W trybie bramy bazy danych rozwiązania Cosmos Azure korzysta z portu 443 i portów 10250, 10255 i 10256 używa interfejsu API bazy danych MongoDB. 10250 port mapy do domyślnego wystąpienia bazy danych Mongodb bez — replikacja geograficzna, a następnie mapować porty 10255/10256 do wystąpienia bazy danych Mongodb z funkcją replikacji geograficznej. Korzystając z protokołu TCP w trybie bezpośredniego, oprócz portów bramy, należy się upewnić port zakresie 10000 i 20000 jest otwarty, ponieważ korzysta z bazy danych Azure rozwiązania Cosmos dynamiczne porty TCP. Jeśli te porty nie są otwarte, a próba użycia protokołu TCP, komunikat o błędzie 503 Usługa niedostępna. W poniższej tabeli przedstawiono dostępne tryby łączności dla różnych interfejsów API i użytkownik portów usługi dla każdego interfejsu API:
 
-     Azure DB rozwiązania Cosmos oferuje proste i Otwórz model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto zapewnia ona wydajne protokołu TCP, który jest również RESTful jego model komunikacji i jest dostępna za pośrednictwem klienta .NET SDK. Bezpośrednie TCP i HTTPS używają protokołu SSL dla początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
+    |Tryb połączenia  |Obsługiwanych protokołów  |Obsługiwanych zestawów SDK  |Port interfejsu API/usługi  |
+    |---------|---------|---------|---------|
+    |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo (10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |Bezpośrednie    |    HTTPS     |  Zestaw SDK platformy .net i Java    |    SQL(443)   |
+    |Bezpośrednie    |     TCP    |  Zestaw SDK platformy .net    | Porty w zakresie 20 10 000 000 |
 
-     Korzystając z protokołu TCP w trybie bramy, TCP Port 443 jest port bazy danych Azure rozwiązania Cosmos i 10255 jest port interfejsu API bazy danych MongoDB. Korzystając z protokołu TCP w trybie bezpośredniego, oprócz portów bramy, należy się upewnić port zakresie 10000 i 20000 jest otwarty, ponieważ korzysta z bazy danych Azure rozwiązania Cosmos dynamiczne porty TCP. Jeśli te porty nie są otwarte, a próba użycia protokołu TCP, komunikat o błędzie 503 Usługa niedostępna.
+    Azure DB rozwiązania Cosmos oferuje proste i Otwórz model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto zapewnia ona wydajne protokołu TCP, który jest również RESTful jego model komunikacji i jest dostępna za pośrednictwem klienta .NET SDK. Bezpośrednie TCP i HTTPS używają protokołu SSL dla początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
 
-     Tryb łączności skonfigurowano podczas konstruowania obiektu DocumentClient z parametrem ConnectionPolicy. Jeśli używany jest tryb Direct, protokół można również ustawić w parametrze ConnectionPolicy.
+    Tryb łączności skonfigurowano podczas konstruowania obiektu DocumentClient z parametrem ConnectionPolicy. Jeśli używany jest tryb Direct, protokół można również ustawić w parametrze ConnectionPolicy.
 
     ```csharp
     var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -77,19 +75,19 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     ![Ilustracja zasady połączenia bazy danych Azure rozwiązania Cosmos](./media/performance-tips/connection-policy.png)
 
-3. **Wywołanie OpenAsync, aby uniknąć opóźnienia uruchomienia na pierwsze żądanie**
+2. **Wywołanie OpenAsync, aby uniknąć opóźnienia uruchomienia na pierwsze żądanie**
 
     Domyślnie to pierwsze żądanie ma większego opóźnienia, ponieważ ma ona można pobrać tabeli routingu adresów. Aby uniknąć tego opóźnienia uruchomienia na pierwsze żądanie, należy wywołać OpenAsync() raz podczas inicjowania w następujący sposób.
 
         await client.OpenAsync();
    <a id="same-region"></a>
-4. **Klienci, w tym samym regionie Azure wydajności w ten sposób rozmieszczać**
+3. **Klienci, w tym samym regionie Azure wydajności w ten sposób rozmieszczać**
 
     Jeśli to możliwe, należy umieścić wszystkie aplikacje wywoływanie bazy danych Azure rozwiązania Cosmos w tym samym regionie co baza danych bazy danych Azure rozwiązania Cosmos. Przybliżony porównanie wywołań do bazy danych Azure rozwiązania Cosmos w ramach tego samego regionu ukończona w ciągu 1 i 2 ms, ale opóźnienie między zachód i wschodniego USA > 50 ms. Tego opóźnienia prawdopodobnie zależy od trasę przez żądanie przesyłanych z klienta do granicy centrum danych Azure do innego żądania. Najniższym opóźnieniu możliwe jest to osiągane przez zapewnienie, że aplikacja wywołująca znajduje się w tym samym regionie Azure jako punkt końcowy elastycznie bazy danych Azure rozwiązania Cosmos. Aby uzyskać listę dostępnych regionów, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/#services).
 
     ![Ilustracja zasady połączenia bazy danych Azure rozwiązania Cosmos](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
-5. **Zwiększenie liczby wątków/zadań**
+4. **Zwiększenie liczby wątków/zadań**
 
     Ponieważ wywołania do bazy danych Azure rozwiązania Cosmos są wykonywane za pośrednictwem sieci, może być konieczne różnią się stopień równoległości żądania, dzięki czemu aplikacja kliencka zużywa bardzo mało czasu oczekiwania między żądaniami. Na przykład, jeśli używasz. W sieci [Biblioteka zadań równoległych](https://msdn.microsoft.com//library/dd460717.aspx), Utwórz kolejności 100s zadań odczytu lub zapisu do bazy danych Azure rozwiązania Cosmos.
 

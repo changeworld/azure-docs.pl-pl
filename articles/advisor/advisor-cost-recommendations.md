@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ade6ef996c00c0c06d5b8e44815520e6e4ab7e9f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735871"
 ---
 # <a name="advisor-cost-recommendations"></a>Zalecenia doradcy w zakresie koszt
 
@@ -33,6 +34,11 @@ Jeśli chcesz mieć bardziej agresywną na określenie niedostatecznie maszyn wi
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Obniżenie kosztów przez wyeliminowanie nieudostępniany obwody usługi ExpressRoute
 Klasyfikator identyfikuje obwody usługi ExpressRoute, które zostały w widoku stanu dostawcy *nieudostępniane* więcej niż jeden miesiąc i zaleca usunięcie obwodu, jeśli nie planuje udostępnić obwodu łączność Dostawca.
+
+## <a name="buy-virtual-machine-reserved-instances-to-save-money-over-pay-as-you-go-costs"></a>Kup wystąpienia zarezerwowane maszyny wirtualnej, aby zaoszczędzić pieniądze w porównaniu z kosztami płatności zgodnie z rzeczywistym użyciem
+Klasyfikator będzie Przejrzyj użycie maszyny wirtualnej w ciągu ostatnich 30 dni, aby ustalić, jeśli można zapisać pieniędzy po zakupie wystąpień zastrzeżone. Klasyfikator opisano regiony i rozmiary, gdzie potencjalnie masz większości oszczędności i wyświetli szacowany oszczędności zakupów wystąpień zastrzeżone. 
+
+Zarezerwowane wystąpień wstępnie kupić podstawowej kosztów maszyn wirtualnych. Zniżki zostanie automatycznie zastosowana do nowej lub istniejącej maszyny wirtualne, które mają ten sam rozmiar i regionu jako swoich wystąpień zastrzeżone. [Dowiedz się więcej o zastrzeżonych wystąpień maszyn wirtualnych Azure.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp zalecenia koszt klasyfikatora Azure
 

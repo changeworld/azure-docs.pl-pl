@@ -1,13 +1,14 @@
 ---
-title: "Resetowanie w usłudze Azure Active Directory hasła | Dokumentacja firmy Microsoft"
-description: "Administrator zainicjował resetowania hasła dla użytkownika w usłudze Azure Active Directory"
+title: Resetowanie w usłudze Azure Active Directory hasła | Dokumentacja firmy Microsoft
+description: Administrator zainicjował resetowania hasła dla użytkownika w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
+ms.component: fundamentals
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.date: 11/01/2017
 ms.author: joflore
 ms.reviewer: sahenry
 ms.custom: it-pro
-ms.openlocfilehash: 6d01dff567e49b602e98f717dace4dc75abecb4c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: faeb66c9d0638b13c4716062b768a9c6742edcd1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714157"
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Resetowanie hasła dla użytkownika w usłudze Azure Active Directory
 
@@ -41,8 +43,8 @@ Administratorzy może być konieczne zresetowanie hasła użytkownika w przypadk
    > [!NOTE]
    > To hasło tymczasowe nie ma czasu wygaśnięcia będzie obowiązywać do momentu logowania i są następnie muszą go zmienić. 
 
-## <a name="next-steps"></a>Następne kroki
-* [Dodaj użytkownika](active-directory-users-create-azure-portal.md)
+## <a name="next-steps"></a>Kolejne kroki
+* [Dodawanie użytkownika](active-directory-users-create-azure-portal.md)
 * [Przypisywanie ról administratora do użytkownika](active-directory-users-assign-role-azure-portal.md)
 * [Zarządzanie profilami użytkowników](active-directory-users-profile-azure-portal.md)
 * [Usunięcie użytkownika w usłudze Azure AD](active-directory-users-delete-user-azure-portal.md)

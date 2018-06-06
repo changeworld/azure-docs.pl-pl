@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af0007daf6cb8a2e17e1806f47587e5958b15bd2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716078"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Wydajność monitorowania za pomocą analizy dzienników
 
@@ -73,19 +74,27 @@ Można pobrać i zmodyfikować tego szablonu można wdrożyć klaster, który na
 
 Teraz, gdy agent pakietu OMS head dodano na do portalu usługi Analiza dzienników, wybierz liczniki wydajności, które chcesz zebrać. 
 
-1. W portalu Azure przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfOMSWorkspace\>**  i przejdź do strony Przegląd. U góry kliknij łącze, aby przejść do portalu OMS.
+1. W portalu Azure przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. Po nawiązaniu połączenia w portalu, zobaczysz Kafelki w formie wykresu dla każdego z rozwiązań włączone, w tym dla sieci szkieletowej usług. Kliknij tutaj, aby przejść do rozwiązania analizy sieci szkieletowej usług. 
+2. Kliknij przycisk **obszarem roboczym pakietu OMS**.
 
-3. Zostanie wyświetlone kilka Kafelki wykresami kanałem operacyjne i niezawodne usługi zdarzenia. Po prawej stronie kliknij ikonę narzędzi, aby przejść do strony ustawień.
+3. Kliknij przycisk **Zaawansowane ustawienia**.
 
-    ![Ustawienia OMS](media/service-fabric-diagnostics-oms-agent/oms-solutions-settings.png)
+4. Kliknij przycisk **danych**, następnie kliknij przycisk **systemu Windows lub Linux liczniki wydajności**. Znajduje się lista domyślne liczniki, które można włączyć i interwał dla kolekcji można ustawić także. Można również dodać [dodatkowe liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md) do zbierania. W tym odwołuje się do prawidłowego formatu [artykułu](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
 
-4. Na stronie Ustawienia kliknij danych, a następnie wybierz pozycję Windows lub Linux liczników wydajności. Istnieją listę domyślne te, które można włączyć i interwał dla kolekcji można ustawić także. Można również dodać [dodatkowe liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md) do zbierania. W tym odwołuje się do prawidłowego formatu [artykułu](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+5. Kliknij przycisk **zapisać**, następnie kliknij przycisk **OK**.
 
-Po liczniki sieci są skonfigurowane, head z powrotem do strony rozwiązań i pojawi się wkrótce przepływu danych w i wyświetlane na wykresach w obszarze **metryki węzła**. Możesz także zbadać na dane licznika wydajności, podobnie jak zdarzenia i filtr węzłów, nazwa licznika wydajności i wartości przy użyciu języka zapytań Kusto. 
+6. Zamknij bloku ustawienia zaawansowane.
 
-![Kwerendy licznika wydajności OMS](media/service-fabric-diagnostics-oms-agent/oms-perf-counter-query.png)
+7. Pod pozycją Ogólne, kliknij przycisk **omówienie**.
+
+8. Zobaczysz Kafelki w formie wykresu dla każdego z rozwiązań włączone, w tym dla sieci szkieletowej usług. Kliknij przycisk **sieci szkieletowej usług** wykres tak, aby kontynuować do rozwiązania analizy sieci szkieletowej usług.
+
+9. Zobaczysz kilka Kafelki wykresami kanałem operacyjne i niezawodne usługi zdarzenia. Graficzna reprezentacja dane przepływające w wybranych liczników będą wyświetlane w obszarze węzła metryki. 
+
+10. Kliknij na wykresie Metryka kontenera, aby wyświetlić dodatkowe szczegóły. Możesz także zbadać na dane licznika wydajności, podobnie jak zdarzenia i filtr węzłów, nazwa licznika wydajności i wartości przy użyciu języka zapytań Kusto.
+
+![Kwerendy licznika wydajności OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

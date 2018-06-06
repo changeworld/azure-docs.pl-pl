@@ -11,13 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: ppacent
+ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801419"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Akcje węzła jednostki skali w stosie Azure
 
@@ -41,11 +43,11 @@ Aby wyświetlić stan jednostki skali:
  
 W tym miejscu można wyświetlić następujące informacje:
 
-- Nazwa regionu
+- Nazwa regionu. Nazwa regionu jest przywoływana za pomocą **-lokalizacji** w module środowiska PowerShell.
 - Typ systemu
 - Całkowita liczba rdzeni logicznych
 - Całkowity rozmiar pamięci
-- Lista poszczególne węzły i ich stan; Uruchomiony lub zatrzymany.
+- Lista poszczególne węzły i ich stan; albo **systemem** lub **zatrzymana**.
 
 ![Kafelek jednostki skali przedstawiający stan uruchomione dla każdego węzła](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
@@ -87,7 +89,7 @@ Ta akcja jest zwykle używana, gdy węzeł jest w stanie zawieszone i nie odpowi
 Aby uruchomić wyłączy akcji za pomocą programu PowerShell:
 
 ````PowerShell
-  Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```` 
 
 W rzadkich przypadkach wyłączy akcji nie działa należy użyć interfejsu sieci web BMC.
@@ -102,7 +104,7 @@ W rzadkich przypadkach wyłączy akcji nie działa należy użyć interfejsu sie
 Aby uruchomić zasilania akcji za pomocą programu PowerShell:
 
 ````PowerShell
-  Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ````
 
 W rzadkich przypadkach włączenie akcji nie działa należy użyć interfejsu sieci web BMC.
@@ -113,13 +115,13 @@ W rzadkich przypadkach włączenie akcji nie działa należy użyć interfejsu s
 
 Ta akcja jest zwykle używany podczas wymiany pole części, takie jak zastąpienie całego węzła.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Upewnij się, opróżniania węzła tylko podczas okna zaplanowanej konserwacji, gdzie zostały zgłoszone użytkowników. W niektórych warunkach aktywnych obciążeń może wystąpić przerwy.
 
 Aby uruchomić akcję opróżniania za pomocą programu PowerShell:
 
   ````PowerShell
-  Disable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="resume"></a>Resume
@@ -129,7 +131,7 @@ Aby uruchomić akcję opróżniania za pomocą programu PowerShell:
 Aby uruchomić wznowienie akcji za pomocą programu PowerShell:
 
   ````PowerShell
-  Enable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="repair"></a>Napraw
@@ -139,7 +141,7 @@ Aby uruchomić wznowienie akcji za pomocą programu PowerShell:
 - Zastąpienie pełne węzła (lub nie nowych dysków danych)
 - Po awarii składników sprzętowych i zastąpienia (jeśli jest to zalecane w dokumentacji pola jednostkę (FRU) replaceable unit).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > W dokumentacji dostawcy sprzętu OEM FRU dla kolejnych kroków, gdy trzeba wymienić węzła lub składników sprzętowych. Dokumentacja FRU określi, czy musisz uruchomić akcję naprawy po zastąpieniu składnik sprzętowy.  
 
 Po uruchomieniu akcji naprawy, należy określić adres IP kontrolera BMC. 
@@ -147,7 +149,9 @@ Po uruchomieniu akcji naprawy, należy określić adres IP kontrolera BMC.
 Do uruchomienia akcji naprawy przy użyciu programu PowerShell:
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Region <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
   ````
 
+## <a name="next-steps"></a>Kolejne kroki
 
+Aby dowiedzieć się więcej o module administrator sieci szkieletowej stosu Azure, zobacz [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0).

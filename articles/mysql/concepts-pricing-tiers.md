@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: e12010f225b5f8db247d1b751615cbedd413dfb3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 05/18/2018
+ms.openlocfilehash: 0778492e6ff63bc80e9fc9d2c252f19d4ff78529
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757489"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Bazy danych platformy Azure dla programu MySQL warstw cenowych
 
@@ -23,7 +24,7 @@ Można utworzyć bazy danych Azure MySQL serwera w jednym z trzech różnych war
 |:---|:----------|:--------------------|:---------------------|
 | Generowanie obliczeniowe | Gen 4, 5 Gen | Gen 4, 5 Gen | 5. generacja |
 | Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Ilość pamięci na vCore | Punkt odniesienia | 2 x Basic | 2 x ogólnego przeznaczenia |
+| Ilość pamięci na vCore | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowych bazy danych | 7-35 dni | 7-35 dni | 7-35 dni |
@@ -38,7 +39,7 @@ Wybierz warstwę cenową, skorzystaj z poniższej tabeli jako punktu wyjścia.
 
 Po utworzeniu serwera liczba vCores można zmienić w górę lub w dół (w ramach tej samej warstwie cenowej) w ciągu kilku sekund. Ponadto można niezależnie dostosować ilość pamięci masowej w górę i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić warstwy cenowej lub typ magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz [zasoby są skalowane](#scale-resources) sekcji.
 
-## <a name="compute-generations-vcores-and-memory"></a>Generacje obliczeń, vCores i pamięci
+## <a name="compute-generations-and-vcores"></a>Generacje obliczeń i vCores
 
 Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logicznego podstawowej sprzętu. Obecnie są dostępne dwie generacje obliczeń Gen 4 i Gen 5. Gen 4 procesory logiczne są oparte na Intel E5-2673 v3 procesorów 2,4 GHz (Haswell). Gen 5 procesorów logicznych są oparte na Intel E5-2673 v4 procesorów 2.3 GHz (Broadwell). Gen 4 i Gen 5 są dostępne w następujących regionach ("X" oznacza dostępna). 
 
@@ -62,14 +63,12 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Azja Południowo-Wschodnia | X | X |
 | Australia Wschodnia |  | X |
 | Australia Południowo-Wschodnia |  | X |
-| Indie Środkowe | X |  |
-| Indie Zachodnie | X |  |
+| Indie Środkowe | X | X |
+| Indie Zachodnie | X | X |
 | Indie Południowe |  | X |
 | Japonia Wschodnia | X | X |
 | Japonia Zachodnia | X | X |
 | Korea Południowa |  | X |
-
-W zależności od warstwy cenowej każdego vCore jest udostępniane z określoną ilością pamięci. Gdy zwiększyć lub zmniejszyć liczbę vCores serwera, ilość pamięci zwiększa lub zmniejsza proporcjonalnie. Warstwa ogólnego przeznaczenia zapewnia podwójne ilość pamięci na vCore w porównaniu do warstwy podstawowa. Warstwa zoptymalizowanych pod kątem pamięci miejsce double ilość pamięci w porównaniu do warstwy ogólnego przeznaczenia.
 
 ## <a name="storage"></a>Magazyn
 

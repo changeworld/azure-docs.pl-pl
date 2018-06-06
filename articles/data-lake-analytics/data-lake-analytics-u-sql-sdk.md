@@ -1,28 +1,24 @@
 ---
-title: Uruchamiania lokalnego skryptu U-SQL skali i testowania przy użyciu zestawu SDK usługi Azure Data Lake U-SQL | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać zestawu SDK usługi Azure Data Lake U-SQL do zadań skali U-SQL lokalnego uruchamiania i testu z wiersza polecenia i interfejsów programowania na na lokalnej stacji roboczej.
+title: Uruchamianie i testowanie zadań U-SQL lokalnie przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
+description: Dowiedz się, jak uruchamianie i testowanie zadań U-SQL lokalnie przy użyciu wiersza polecenia i interfejsów w sieci lokalnej stacji roboczej programowania.
 services: data-lake-analytics
-documentationcenter: ''
-author: ''
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/01/2017
+author: yanacai
 ms.author: yanacai
-ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737075"
 ---
-# <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Uruchamiania lokalnego skryptu U-SQL skali i testowania przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Uruchamianie i testowanie U-SQL przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
 
-Podczas tworzenia skryptu U-SQL, jest często do uruchomienia i skrypt testu U-SQL lokalnie przed przesłać do chmury. Azure Data Lake umożliwia pakietu Nuget o nazwie zestawu SDK usługi Azure Data Lake U-SQL, w tym scenariuszu, za pomocą którego można łatwo skalować uruchamiania lokalnego skryptu U-SQL i testowania. Istnieje również możliwość zintegrowania ten test U-SQL przy użyciu systemu CI (ciągłej integracji) do automatyzowania kompilowania i testowania.
+Podczas tworzenia skryptu U-SQL, jest często do uruchomienia i skrypt testu U-SQL lokalnie przed przesłać do chmury. Usługi Azure Data Lake umożliwia pakietu Nuget o nazwie zestawu SDK usługi Azure Data Lake U-SQL dla tego scenariusza, za pomocą którego można łatwo skalować uruchamianie skryptu U-SQL i testowania. Istnieje również możliwość zintegrowania ten test U-SQL przy użyciu systemu CI (ciągłej integracji) do automatyzowania kompilowania i testowania.
 
 Jeśli potrzebne informacje jak ręcznie lokalnymi Uruchom i debugowania skryptu U-SQL z narzędzi z graficznym interfejsem użytkownika, możesz użyć usługi Azure Data Lake Tools dla programu Visual Studio, w tym. Dowiedz się więcej o [tutaj](data-lake-analytics-data-lake-tools-local-run.md).
 
@@ -148,7 +144,7 @@ Poniżej przedstawiono opcjonalne argumenty **Uruchom**:
 |-CppSDK| |CppSDK katalogu|
 |-DataRoot| Zmienna środowiskowa DataRoot|DataRoot dla lokalnego uruchomienia domyślną do zmiennej środowiskowej "LOCALRUN_DATAROOT"|
 |-MessageOut| |Komunikaty w konsoli w pliku zrzutu|
-|-Parallel|1|Uruchom planu z określonym równoległości|
+|-Równoległe|1|Uruchom planu z określonym równoległości|
 |— Odwołania| |Lista ścieżek do zestawów odwołań dodatkowe lub pliki danych w kodzie, oddzielone ";"|
 |-UdoRedirect|False|Generowanie konfiguracji przekierowania zestawu Udo|
 |-UseDatabase|master|Bazy danych do użycia na potrzeby kodu tymczasowej zestawu rejestracji|
@@ -212,12 +208,12 @@ Kompiluj skrypt U-SQL i Ustaw katalog roboczy, odwołanie do zestawu i bazy dany
 
 Poniżej przedstawiono opcjonalne argumenty **wykonania**:
 
-|Argument|Opis|
-|--------|-----------|
-|-DataRoot [wartość domyślna "]|Główny danych wykonywania metadanych. Domyślnie **LOCALRUN_DATAROOT** zmiennej środowiskowej.|
-|-MessageOut [wartość domyślna "]|Zrzut wiadomości na konsoli do pliku.|
-|-Równoległe [domyślna wartość '1']|Wskaźnik wykonanie kroków wygenerowanego lokalnego uruchomienia równoległości określony poziom.|
-|-Verbose [domyślna wartość 'False']|Wskaźnik do wyświetlenia szczegółowych danych wyjściowych ze środowiska uruchomieniowego.|
+|Argument|Wartość domyślna|Opis|
+|--------|-------------|-----------|
+|-DataRoot | '' |Główny danych wykonywania metadanych. Domyślnie **LOCALRUN_DATAROOT** zmiennej środowiskowej.|
+|-MessageOut | '' |Zrzut wiadomości na konsoli do pliku.|
+|-Równoległe | "1" |Wskaźnik wykonanie kroków wygenerowanego lokalnego uruchomienia równoległości określony poziom.|
+|-Verbose | "Fałsz" |Wskaźnik do wyświetlenia szczegółowych danych wyjściowych ze środowiska uruchomieniowego.|
 
 Oto przykład użycia:
 
@@ -351,8 +347,8 @@ publiczny LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |CurrentDir|ciąg|Bieżący katalog|
 |DataRoot|ciąg|Ścieżka katalogu głównego danych|
 |DebuggerMailPath|ciąg|Ścieżka do mailslot debugera|
-|GenerateUdoRedirect|bool|Jeśli chcemy, aby generować przekierowywania zastąpienie konfiguracji ładowania zestawu|
-|HasCodeBehind|bool|Jeśli skrypt ma kodzie|
+|GenerateUdoRedirect|wartość logiczna|Jeśli chcemy, aby generować przekierowywania zastąpienie konfiguracji ładowania zestawu|
+|HasCodeBehind|wartość logiczna|Jeśli skrypt ma kodzie|
 |InputDir|ciąg|Katalog dla danych wejściowych|
 |MessagePath|ciąg|Ścieżka pliku zrzutu wiadomości|
 |OutputDir|ciąg|Katalog danych wyjściowych|
@@ -361,7 +357,7 @@ publiczny LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |ResultPath|ciąg|Ścieżka pliku zrzutu wyników|
 |RuntimeDir|ciąg|Katalogu środowiska uruchomieniowego|
 |ScriptPath|ciąg|Gdzie można znaleźć skryptu|
-|Skrócona|bool|Skrócona kompilacji lub nie|
+|Skrócona|wartość logiczna|Skrócona kompilacji lub nie|
 |TempDir|ciąg|Katalog tymczasowy|
 |UseDataBase|ciąg|Określ bazę danych do użycia na potrzeby kodzie rejestracji tymczasowego zestawu głównego domyślnie|
 |WorkDir|ciąg|Preferowany katalog roboczy|
@@ -369,7 +365,7 @@ publiczny LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 **— Metoda**
 
-|Metoda|Opis|Powrót|Parametr|
+|Metoda|Opis|Zwraca|Parametr|
 |------|-----------|------|---------|
 |publiczny bool DoCompile()|Kompiluj skrypt U-SQL|Wartość true w przypadku powodzenia| |
 |publiczny bool DoExec()|Skompilowany wynik wykonywania|Wartość true w przypadku powodzenia| |

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725146"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Tworzenie Visual w fabryce danych Azure
 Fabryka danych Azure użytkownika interfejsu środowisko (UX) pozwala wizualnie tworzyć i wdrażać zasobów dla fabrykę danych bez konieczności pisania kodu. Można przeciągnij działania kanwy potoku, wykonaj uruchomień testów, wielokrotnie powtarzane, debugowanie i wdrażanie i monitorowanie sekwencji potoku. Istnieją dwa podejścia do wykonywania visual tworzenia przy użyciu środowiska użytkownika:
@@ -46,8 +47,8 @@ Tworzenie Visual z integracji programu VSTS Git obsługuje kontroli źródła i 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurowanie repozytorium Git programu VSTS z fabryką danych Azure
 Repozytorium GIT programu VSTS z fabryką danych można skonfigurować za pomocą dwóch metod.
 
-<a name="method1"></a>
-#### <a name="configuration-method-1-lets-get-started-page"></a>Metoda konfiguracji 1: Załóż strony wprowadzenie
+#### <a name="method1"></a> Metoda konfiguracji 1: Załóż strony wprowadzenie
+
 W fabryce danych Azure, przejdź do **Rozpocznijmy** strony. Wybierz **skonfigurować repozytorium kodu**:
 
 ![Konfigurowanie programu VSTS repozytorium kodu](media/author-visually/configure-repo.png)
@@ -62,7 +63,7 @@ W okienku wyświetlana następujący kod programu VSTS ustawienia repozytorium:
 |:--- |:--- |:--- |
 | **Typ repozytorium** | Typ repozytorium kodu usługi VSTS.<br/>**Uwaga**: GitHub nie jest obecnie obsługiwany. | Visual Studio Team Services Git |
 | **Azure Active Directory** | Nazwa dzierżawy usługi Azure AD. | <your tenant name> |
-| **Visual Studio Team Services Account** | Nazwa konta usługi VSTS. Możesz znaleźć nazwę konta usługi VSTS na `https://{account name}.visualstudio.com`. Możesz [Zaloguj się do konta usługi VSTS](https://www.visualstudio.com/team-services/git/) dostępu do profilu programu Visual Studio i zobacz, projektów i repozytoriów. | \<Nazwa konta > |
+| **Visual Studio Team Services konta** | Nazwa konta usługi VSTS. Możesz znaleźć nazwę konta usługi VSTS na `https://{account name}.visualstudio.com`. Możesz [Zaloguj się do konta usługi VSTS](https://www.visualstudio.com/team-services/git/) dostępu do profilu programu Visual Studio i zobacz, projektów i repozytoriów. | \<Nazwa konta > |
 | **ProjectName** | VSTS nazwę projektu. Można znaleźć programu VSTS nazwę projektu w `https://{account name}.visualstudio.com/{project name}`. | \<Nazwa projektu programu VSTS > |
 | **RepositoryName** | Nazwę repozytorium kodu usługi VSTS. Projekty programu VSTS zawierają repozytoriów narzędzia Git, aby zarządzać kodu źródłowego w miarę rozwoju projektu. Możesz utworzyć nowe repozytorium lub użyj istniejącego repozytorium, który jest już w projekcie. | \<nazwę repozytorium kodu programu VSTS > |
 | **Współpraca z gałęzi** | Gałąź współpracy VSTS używany do publikowania. Domyślnie jest `master`. Zmiany, w przypadku, gdy chcesz opublikować zasobów z innej gałęzi. | \<Nazwa gałęzi współpracy > |
@@ -75,6 +76,14 @@ W UX fabryki danych Azure **tworzenia obszaru roboczego**, zlokalizuj fabryką d
 Zostanie wyświetlone okienko konfiguracji. Aby uzyskać więcej informacji o ustawieniach konfiguracji, opis znajduje się w <a href="#method1">metody konfiguracji 1</a>.
 
 ![Skonfiguruj ustawienia repozytorium kodu do tworzenia środowiska użytkownika](media/author-visually/configure-repo-2.png)
+
+#### <a name="switch-to-a-different-git-repo"></a>Przełącz się do innego repozytorium Git
+
+Aby przełączyć się do innego repozytorium Git, Znajdź ikonę w prawym górnym rogu strony Przegląd fabryki danych, jak pokazano na poniższym zrzucie ekranu. Jeśli nie widzisz ikonę, wyczyść pamięć podręczną przeglądarki lokalnego. Wybierz ikonę, aby usunąć skojarzenie z bieżącym repozytorium.
+
+Po usunięciu skojarzenia z bieżącym repozytorium, można skonfigurować ustawienia Git, aby użyć innego repozytorium. Następnie można zaimportować istniejące zasoby fabryki danych do nowego repozytorium.
+
+![Usuń skojarzenie z bieżącym repozytorium Git.](media/author-visually/remove-repo.png)
 
 ### <a name="use-version-control"></a>Korzystanie z kontroli wersji
 Systemów kontroli wersji (znanej także jako _kontroli źródła_) zezwala deweloperzy współpracować nad kodu i śledzenia zmian wprowadzonych w kodzie podstawowej. Kontrola źródła jest niezbędne narzędzia dla deweloperów wielu projektów.

@@ -9,155 +9,30 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a4067db9955b804f126e889fa73641f69fef56ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700234"
 ---
-# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Rozwiązywanie problemów i wdrożenia kontenera w wystąpień kontenera platformy Azure
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w wystąpień kontenera platformy Azure
 
-W tym artykule przedstawiono sposób rozwiązywania problemów w przypadku wdrażania kontenerów do wystąpień kontenera platformy Azure. Omówiono także niektóre typowe problemy, które możesz napotkać.
+W tym artykule przedstawiono sposób rozwiązywania typowych problemów z zarządzania lub wdrażanie kontenerów do wystąpień kontenera platformy Azure.
 
-## <a name="view-logs-and-stream-output"></a>Wyświetl dzienniki i strumieni wyjściowych
+## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
-Jeśli masz błędna kontenera, Rozpocznij od przeglądanie jego dzienników z [az kontenera dzienniki][az-container-logs]i przesyłania strumieniowego jego wyjście standardowe i błąd standardowy z [dołączyć kontenera az] [az-container-attach].
+Podczas definiowania określoną specyfikację kontenera, niektóre parametry wymagają przestrzegania ograniczeń dotyczących nazw. Poniżej znajdują się tabelę z określonych wymagań dotyczących kontenera właściwości grupy.
+Aby uzyskać więcej informacji dotyczących konwencji nazewnictwa platformy Azure, zobacz [konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) w Centrum architektura platformy Azure.
 
-### <a name="view-logs"></a>Wyświetlanie dzienników
-
-Aby wyświetlić dzienniki w kodzie aplikacji w kontenerze, można użyć [dzienniki kontenera az] [ az-container-logs] polecenia.
-
-Poniżej przedstawiono dane wyjściowe dziennika przykład opartego na zadaniach kontenera w [uruchamianie zadania konteneryzowanych w ACI](container-instances-restart-policy.md)po o przekazywani on nieprawidłowy adres URL do przetworzenia:
-
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
-Traceback (most recent call last):
-  File "wordcount.py", line 11, in <module>
-    urllib.request.urlretrieve (sys.argv[1], "foo.txt")
-  File "/usr/local/lib/python3.6/urllib/request.py", line 248, in urlretrieve
-    with contextlib.closing(urlopen(url, data)) as fp:
-  File "/usr/local/lib/python3.6/urllib/request.py", line 223, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 532, in open
-    response = meth(req, response)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 642, in http_response
-    'http', request, response, code, msg, hdrs)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 570, in error
-    return self._call_chain(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 504, in _call_chain
-    result = func(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 650, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 404: Not Found
-```
-
-### <a name="attach-output-streams"></a>Dołączanie strumieni wyjściowych
-
-[Dołączyć kontenera az] [ az-container-attach] polecenie dostarcza informacje diagnostyczne podczas uruchamiania kontenera. Po rozpoczęciu kontenera, strumieni STDOUT i STDERR do konsoli lokalnej.
-
-Na przykład poniżej przedstawiono dane wyjściowe z kontenera opartego na zadaniach w [uruchamianie zadania konteneryzowanych w ACI](container-instances-restart-policy.md)po o podać prawidłowy adres URL pliku tekstowego duży do przetworzenia:
-
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
-Container 'mycontainer' is in state 'Unknown'...
-Container 'mycontainer' is in state 'Waiting'...
-Container 'mycontainer' is in state 'Running'...
-(count: 1) (last timestamp: 2018-03-09 23:21:33+00:00) pulling image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Successfully pulled image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Created container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Started container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-
-Start streaming logs:
-[('the', 22979),
- ('I', 20003),
- ('and', 18373),
- ('to', 15651),
- ('of', 15558),
- ('a', 12500),
- ('you', 11818),
- ('my', 10651),
- ('in', 9707),
- ('is', 8195)]
-```
-
-## <a name="get-diagnostic-events"></a>Zdarzenia diagnostyczne
-
-Kontener użytkownika nie może pomyślnie wdrożone, należy przejrzeć informacje diagnostyczne dostarczone przez dostawcę zasobów wystąpień kontenera platformy Azure. Aby wyświetlić zdarzenia z kontenera, uruchom [Pokaż kontenera az] [ az-container-show] polecenia:
-
-```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
-```
-
-Dane wyjściowe zawiera właściwości core z kontenera, wraz ze zdarzeń wdrożenia (w tym miejscu pokazywane obcięty):
-
-```JSON
-{
-  "containers": [
-    {
-      "command": null,
-      "environmentVariables": [],
-      "image": "microsoft/aci-helloworld",
-      ...
-        "events": [
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:49+00:00",
-            "lastTimestamp": "2017-12-21T22:50:49+00:00",
-            "message": "pulling image \"microsoft/aci-helloworld\"",
-            "name": "Pulling",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Successfully pulled image \"microsoft/aci-helloworld\"",
-            "name": "Pulled",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Created container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Created",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Started container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Started",
-            "type": "Normal"
-          }
-        ],
-        "previousState": null,
-        "restartCount": 0
-      },
-      "name": "mycontainer",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": null
-        }
-      ],
-      ...
-    }
-  ],
-  ...
-}
-```
-
-## <a name="common-deployment-issues"></a>Typowe problemy z wdrażaniem
-
-W poniższych sekcjach opisano typowe problemy tego konta dla większości błędy wdrożenia kontenera:
-
-* [Nieobsługiwana wersja obrazu](#image-version-not-supported)
-* [Nie można ściągania obrazu](#unable-to-pull-image)
-* [Kontener stale kończy działanie i uruchamia ponownie](#container-continually-exits-and-restarts)
-* [Kontener zajmuje dużo czasu do uruchomienia](#container-takes-a-long-time-to-start)
-* [Błąd "Nie jest dostępna dla zasobu"](#resource-not-available-error)
+| Zakres | Długość | Wielkość liter | Prawidłowe znaki | Sugerowane wzorca | Przykład |
+| --- | --- | --- | --- | --- | --- | --- |
+| Nazwa kontenera grupy | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łączniki dowolnym z wyjątkiem pierwszy i ostatni znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łączniki dowolnym z wyjątkiem pierwszy i ostatni znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Porty kontenera | Od 1 do 65535 |Liczba całkowita |Liczba całkowita od 1 do 65535 |`<port-number>` |`443` |
+| Etykieta nazwy DNS | 5 – 63. |Bez uwzględniania wielkości liter |Alfanumeryczne i łączniki dowolnym z wyjątkiem pierwszy i ostatni znak |`<name>` |`frontend-site1` |
+| Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i dowolnego miejsca za pomocą chracter "_", z wyjątkiem pierwszy i ostatni znak |`<name>` |`MY_VARIABLE` |
+| Nazwa woluminu | 5 – 63. |Bez uwzględniania wielkości liter |Małe litery, cyfry i łączniki w dowolnym miejscu poza pierwszym lub ostatnim znakiem. Nie może zawierać dwóch łączników pod rząd. |`<name>` |`batch-output-volume` |
 
 ## <a name="image-version-not-supported"></a>Nieobsługiwana wersja obrazu
 
@@ -252,7 +127,7 @@ Są dwa podstawowe czynników, które przyczyniają się do czasu uruchomienia k
 * [Rozmiar obrazu](#image-size)
 * [Lokalizacja obrazu](#image-location)
 
-Obrazy systemu Windows mają [uwagi dodatkowe](#use-recent-windows-images).
+Obrazy systemu Windows mają [uwagi dodatkowe](#cached-windows-images).
 
 ### <a name="image-size"></a>Rozmiar obrazu
 
@@ -272,7 +147,7 @@ Klucz do przechowywania małych rozmiary obrazów jest zapewnienie, że ostatecz
 
 Innym sposobem zmniejszenia wpływu ściągania obrazu w chwili uruchomienia z kontenera jest do obsługi obrazów kontenera w [rejestru kontenera Azure](/azure/container-registry/) w tym samym regionie, w którym mają zostać wdrożone wystąpień kontenera. Skraca lokalizacji sieciowej, która obraz kontenera musi podróży, znacznie skrócić czas pobierania.
 
-### <a name="use-recent-windows-images"></a>Użyj ostatnich obrazów systemu Windows
+### <a name="cached-windows-images"></a>Pamięci podręcznej obrazów systemu Windows
 
 Azure wystąpień kontenera używa mechanizm buforowania, aby ułatwić czas uruchamiania kontenera szybkości dla obrazów oparte na niektórych obrazów systemu Windows.
 
@@ -280,6 +155,10 @@ Aby upewnić się o najszybszym czasie uruchomienia kontenera systemu Windows, u
 
 * [Windows Server 2016] [ docker-hub-windows-core] (tylko LTS)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+
+### <a name="windows-containers-slow-network-readiness"></a>Gotowość powolnej sieci kontenery systemu Windows
+
+Kontenery systemu Windows może pociągnąć za sobą łączności ruchu przychodzącego lub wychodzącego do 5 sekund po utworzeniu początkowego. Po początkowej konfiguracji należy wznowić odpowiednio kontenera sieci.
 
 ## <a name="resource-not-available-error"></a>Zasób nie jest dostępny błąd
 
@@ -294,12 +173,13 @@ Ten błąd wskazuje, czy ze względu na duże obciążenie w regionie, w którym
 * Wdrażanie w innym regionie Azure
 * Wdrażanie w późniejszym czasie
 
+## <a name="next-steps"></a>Kolejne kroki
+Dowiedz się, jak [pobrać dzienniki dla kontenera & zdarzenia](container-instances-get-logs.md) debugować kontenerów.
+
 <!-- LINKS - External -->
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-logs]: /cli/azure/container#az_container_logs
 [az-container-show]: /cli/azure/container#az_container_show

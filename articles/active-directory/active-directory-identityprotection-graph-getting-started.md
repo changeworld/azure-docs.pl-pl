@@ -1,13 +1,14 @@
 ---
-title: "Program Microsoft Graph dla usługi Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać zapytanie Microsoft Graph listę zdarzeń o podwyższonym ryzyku i skojarzonych informacji z usługi Azure Active Directory."
+title: Program Microsoft Graph dla usługi Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykonać zapytanie Microsoft Graph listę zdarzeń o podwyższonym ryzyku i skojarzonych informacji z usługi Azure Active Directory.
 services: active-directory
-keywords: "ochronę tożsamości usługi Azure active directory, zdarzenie ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń, Microsoft Graph"
-documentationcenter: 
+keywords: ochronę tożsamości usługi Azure active directory, zdarzenie ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń, Microsoft Graph
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.date: 12/08/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: df0d89fc93f1b9c19d669c29306398a8b25ee425
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c6c59285fbb2c81e5e20d28171abfe806bd51122
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713205"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Wprowadzenie do usługi Azure Active Directory Identity Protection oraz Microsoft Graph
 Program Microsoft Graph jest Microsoft unified punkt końcowy interfejsu API i stroną główną [Azure Active Directory Identity Protection](active-directory-identityprotection.md) interfejsów API. Pierwszy interfejsu API, **identityRiskEvents**, pozwala na zapytanie Microsoft Graph listę [ryzyka zdarzenia](active-directory-identityprotection-risk-events-types.md) i skojarzonych informacji. W tym artykule pobiera pracę podczas badania tego interfejsu API. Szczegółowe wprowadzenie, pełną dokumentację i dostęp do Eksploratora wykresu, zobacz [witryny Microsoft Graph](https://graph.microsoft.io/).
@@ -74,7 +76,7 @@ Przed rozpoczęciem pracy należy:
    
     b. Jako **typu**, wybierz pozycję **aplikacji sieci Web i / lub interfejs API sieci Web**.
    
-    d. W **adres URL logowania** pole tekstowe, typ `http://localhost`.
+    c. W **adres URL logowania** pole tekstowe, typ `http://localhost`.
 
     d. Kliknij przycisk **Utwórz**.
 
@@ -133,7 +135,7 @@ Przed rozpoczęciem pracy należy:
     
     b. Jako **czas trwania**, wybierz pozycję **w 1 roku**.
 
-    d. Kliknij pozycję **Zapisz**.
+    c. Kliknij pozycję **Zapisz**.
    
     d. Skopiuj wartość tego klucza, a następnie wklej go w bezpiecznym miejscu.   
    
@@ -171,7 +173,7 @@ Aby wywołać interfejs API, należy utworzyć nagłówek z następującym param
 
 Podczas uwierzytelniania, można znaleźć typu token i token dostępu w tokenie zwrócony.
 
-Wyślij ten nagłówek jako żądania do następującego adresu URL interfejsu API:`https://graph.microsoft.com/beta/identityRiskEvents`
+Wyślij ten nagłówek jako żądania do następującego adresu URL interfejsu API: `https://graph.microsoft.com/beta/identityRiskEvents`
 
 Odpowiedź, w przypadku powodzenia jest zbierania zdarzeń o podwyższonym ryzyku tożsamości i skojarzone dane w formacie OData JSON, który może być analizowana i obsługiwane zgodnie z własnymi potrzebami.
 
@@ -207,7 +209,7 @@ Wystarczy dodać Identyfikatora klienta, klucz tajny i domena dzierżawy.
     } 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Gratulacje, wystarczy wprowadzić Twoje pierwsze wywołanie do programu Microsoft Graph!  
 Teraz można zbadać zdarzenia o podwyższonym ryzyku tożsamości i korzystanie z danych, jednak użytkownik mieści się w temacie.

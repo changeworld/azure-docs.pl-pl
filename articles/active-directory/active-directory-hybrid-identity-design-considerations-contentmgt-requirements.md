@@ -1,27 +1,29 @@
 ---
-title: "Tożsamość hybrydowym — wymagania dotyczące zarządzania zawartością Azure | Dokumentacja firmy Microsoft"
-description: "Zapewnia wgląd w sposób określenie wymagań w zakresie zarządzania zawartością firmy. Zazwyczaj gdy użytkownik ma swój własny urządzenia on może być również wiele poświadczeń, które będą naprzemiennych zgodnie z aplikacji, której używa. Należy do odróżnienia zawartość została utworzona przy użyciu poświadczeń osobistego od komputerów utworzone przy użyciu poświadczeń firmowych. Rozwiązania tożsamości powinny mieć możliwość interakcji z chmurą services, aby umożliwić nie zakłóca pracy użytkownika końcowego podczas zapewnienia prywatności i zwiększenia ochrony przed wyciekiem danych."
-documentationcenter: 
+title: Tożsamość hybrydowym — wymagania dotyczące zarządzania zawartością Azure | Dokumentacja firmy Microsoft
+description: Zapewnia wgląd w sposób określenie wymagań w zakresie zarządzania zawartością firmy. Zwykle, gdy użytkownik ma swoje własne urządzenia, może również mieć wiele poświadczeń, które będą naprzemiennych zgodnie z aplikacji, które korzystają z. Należy do odróżnienia zawartość została utworzona przy użyciu poświadczeń osobistego od komputerów utworzone przy użyciu poświadczeń firmowych. Rozwiązania tożsamości powinny mieć możliwość interakcji z chmurą services, aby umożliwić nie zakłóca pracy użytkownika końcowego podczas zapewnienia ich zachowania poufności i zwiększenia ochrony przed wyciekiem danych.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dd1ef776-db4d-4ab8-9761-2adaa5a4f004
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 71e33ec82c3db6fb7efa52dd12315e309658aab9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: b414a1e93d5a0f4be5be82011482b492fd9ce378
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34800797"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Określenie wymagań dotyczących zarządzania zawartością dla rozwiązania z tożsamością hybrydową
-Zapoznanie się z wymaganiami zarządzania zawartością w firmie może bezpośrednio wpływa na na decyzję dotyczącą rozwiązania hybrydowe tożsamości do użycia. Rosnąca liczba wiele urządzeń i możliwość przynoszą własne urządzenia użytkowników ([BYOD](https://aka.ms/byodcg)), firmy muszą chronić własnych danych, ale jego również należy zachowane prywatność użytkowników. Zazwyczaj gdy użytkownik ma swój własny urządzenia on może być również wiele poświadczeń, które będą naprzemiennych zgodnie z aplikacji, której używa. Należy do odróżnienia zawartość została utworzona przy użyciu poświadczeń osobistego od komputerów utworzone przy użyciu poświadczeń firmowych. Rozwiązania tożsamości powinny mieć możliwość interakcji z chmurą services, aby umożliwić nie zakłóca pracy użytkownika końcowego podczas zapewnienia prywatności i zwiększenia ochrony przed wyciekiem danych. 
+Zapoznanie się z wymaganiami zarządzania zawartością w firmie może bezpośrednio wpływa na na decyzję dotyczącą rozwiązania hybrydowe tożsamości do użycia. Rosnąca liczba wiele urządzeń i możliwość przynoszą własne urządzenia użytkowników ([BYOD](https://aka.ms/byodcg)), firmy muszą chronić własnych danych, ale jego również należy zachowane prywatność użytkowników. Zwykle, gdy użytkownik ma swoje własne urządzenia, może również mieć wiele poświadczeń, które będą naprzemiennych zgodnie z aplikacji, które korzystają z. Należy do odróżnienia zawartość została utworzona przy użyciu poświadczeń osobistego od komputerów utworzone przy użyciu poświadczeń firmowych. Rozwiązania tożsamości powinny mieć możliwość interakcji z chmurą services, aby umożliwić nie zakłóca pracy użytkownika końcowego podczas zapewnienia ich zachowania poufności i zwiększenia ochrony przed wyciekiem danych. 
 
 Rozwiązania tożsamości będą wykorzystywane przez inną kontrolę techniczną w celu zapewnienia zarządzania zawartością, jak pokazano na poniższej ilustracji:
 
@@ -43,7 +45,7 @@ Ogólnie rzecz biorąc wymagania dotyczące zarządzania zawartością będzie k
 Podczas planowania rozwiązania z tożsamością hybrydową upewnij się, że zgodnie z wymaganiami organizacji są odpowiedzieć na następujące pytania:
 
 * Czy firma dysponuje kontroli zabezpieczeń w celu wymuszenia prywatność danych
-  * Jeśli tak, będzie tych opcji zabezpieczeń można zintegrować z rozwiązania z tożsamością hybrydową, które zamierzasz wdrożyć usługę?
+  * Jeśli tak, będzie kontrolami zabezpieczeń można zintegrować z rozwiązania z tożsamością hybrydową, które zamierzasz wdrożyć usługę?
 * Czy firma korzysta klasyfikacji danych?
   * Jeśli tak, jest możliwość integracji z rozwiązania z tożsamością hybrydową, które zamierzasz wdrożyć usługę bieżące rozwiązanie?
 * Czy firma ma obecnie wszystkie rozwiązania do wycieku danych? 

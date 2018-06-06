@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: 60b447148c5cef24c061274a84620a8221efc430
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d9ed4134cfb8047d5d6839979cd89ba37ff0c3f8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701356"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Tworzenie klastra sieci szkieletowej usług za pomocą usługi Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -31,13 +32,13 @@ Ten przewodnik krok po kroku przeprowadzi Cię przez proces konfigurowania bezpi
 
 Przewodnik obejmuje następujące procedury:
 
-* Kluczowe założenia, które należy znać wyłączone przed wdrożeniem klastra sieci szkieletowej usług.
-* Tworzenie klastra na platformie Azure przy użyciu modułów Menedżera zasobów sieci szkieletowej usług.
+* Kluczowe założenia, które należy zwrócić uwagę przed wdrożeniem klastra sieci szkieletowej usług.
+* Tworzenie klastra na platformie Azure za pomocą Menedżera zasobów sieci szkieletowej usług modułów.
 * Konfigurowanie usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników wykonywanie operacji zarządzania w klastrze.
 * Do tworzenia szablonu niestandardowego usługi Azure Resource Manager dla klastra i ich wdrażania.
 
 ## <a name="key-concepts-to-be-aware-of"></a>Kluczowe założenia wiedzieć
-Na platformie Azure Service fabric ma który x509 użycia certyfikatu do zabezpieczenia klastra i jego punktów końcowych. W usłudze Service Fabric używa się certyfikatów, aby zapewniać uwierzytelnianie i szyfrowanie w celu zabezpieczania różnych aspektów klastra i jego aplikacji. Dla klienta dostępu/wykonywanie operacji zarządzania w klastrze, w tym wdrażanie, uaktualnianie i usuwanie aplikacji, usług i danych, które zawierają można używać certyfikatów lub poświadczeń usługi Azure Active Directory. Korzystanie z usługi Azure Active Directory jest zdecydowanie zaleca, ponieważ jest jedynym sposobem, aby uniemożliwić Udostępnianie certyfikatów na klientach.  Aby uzyskać więcej informacji dotyczących używania certyfikatów w sieci szkieletowej usług, zobacz [scenariusze zabezpieczeń klastra sieci szkieletowej usług][service-fabric-cluster-security].
+Na platformie Azure Service Fabric ma który x509 użycia certyfikatu do zabezpieczenia klastra i jego punktów końcowych. W usłudze Service Fabric używa się certyfikatów, aby zapewniać uwierzytelnianie i szyfrowanie w celu zabezpieczania różnych aspektów klastra i jego aplikacji. Dla klienta dostępu/wykonywanie operacji zarządzania w klastrze, w tym wdrażanie, uaktualnianie i usuwanie aplikacji, usług i danych, które zawierają można używać certyfikatów lub poświadczeń usługi Azure Active Directory. Korzystanie z usługi Azure Active Directory jest zdecydowanie zaleca, ponieważ jest jedynym sposobem, aby uniemożliwić Udostępnianie certyfikatów na klientach.  Aby uzyskać więcej informacji dotyczących używania certyfikatów w sieci szkieletowej usług, zobacz [scenariusze zabezpieczeń klastra sieci szkieletowej usług][service-fabric-cluster-security].
 
 Sieć szkieletowa usług używa certyfikatów X.509 do zabezpieczania klastra oraz udostępnia funkcje zabezpieczeń aplikacji. Możesz użyć [Key Vault] [ key-vault-get-started] Aby zarządzać certyfikatami dla klastrów sieci szkieletowej usług platformy Azure. 
 
@@ -75,30 +76,29 @@ Dla administratora lub użytkownika operacje klienta można określić dowolną 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
-Pojęcie tworzenia bezpiecznych klastrów jest taki sam, czy są one Linux lub klastry z systemem Windows. W tym przewodniku opisano połączone użycie programu azure powershell lub azure CLI do tworzenia nowych klastrów. Wymagania wstępne są albo 
+Pojęcie tworzenia bezpiecznych klastrów jest taki sam, czy są one Linux lub klastry z systemem Windows. W tym przewodniku opisano połączone użycie programu Azure PowerShell lub interfejsu wiersza polecenia Azure, do tworzenia nowych klastrów. Wymagania wstępne są:
 
 -  [Program Azure PowerShell 4.1 i powyżej] [ azure-powershell] lub [Azure CLI 2.0 lub nowszej][azure-CLI].
--  szczegółowe informacje można znaleźć na fabic modułów usługi tutaj — [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric) i [az rz modułu interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+-  szczegółowe informacje można znaleźć na modułach sieci szkieletowej usług w tym miejscu - [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric) i [az rz modułu interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 
 ## <a name="use-service-fabric-rm-module-to-deploy-a-cluster"></a>Umożliwia wdrażanie klastra usługi sieć szkieletowa RM modułu
 
-W tym dokumencie możemy użyć programu powershell Menedżera zasobów sieci szkieletowej usług i moduł interfejsu wiersza polecenia do wdrożenia klastra, programu powershell lub interfejsu wiersza polecenia polecenie modułu umożliwia wielu scenariuszy. Daj nam przejść przez każdego z nich. Pobranie scenariusza można uznać najlepsze spełni wymagania organizacji. 
+W tym dokumencie użyjemy programu powershell Menedżera zasobów sieci szkieletowej usług i moduł interfejsu wiersza polecenia do wdrożenia klastra, programu PowerShell lub interfejsu wiersza polecenia polecenie modułu umożliwia wielu scenariuszy. Daj nam przejść przez każdego z nich. Pobranie scenariusza można uznać najlepsze spełni wymagania organizacji. 
 
-- Tworzenie nowego klastra — przy użyciu systemu wygenerowanego certyfikatu z podpisem własnym
-    - Użyć szablonu domyślnego klastra
-    - Użyj szablonu, który już istnieje
-- Tworzenie nowego klastra — używa certyfikatu, masz już
-    - Użyć szablonu domyślnego klastra
-    - Użyj szablonu, który już istnieje
+- Tworzenie nowego klastra 
+    - przy użyciu systemu wygenerować certyfikatu z podpisem własnym
+    - używa certyfikatu, masz już
+
+Można użyć szablonu domyślnego klastra lub szablon, który już istnieje
 
 ### <a name="create-new-cluster----using-a-system-generated-self-signed-certificate"></a>Utwórz nowy klaster — przy użyciu systemu wygenerowanego certyfikatu z podpisem własnym
 
-Użyj następującego polecenia do tworzenia klastra, określ, czy masz system generowania certyfikatu z podpisem własnym i użyć go do zabezpieczania klastra. To polecenie ustawia klastra głównego certyfikatu, który jest używany do zabezpieczenia klastra i skonfigurować dostęp administratora do wykonywania operacji zarządzania przy użyciu tego certyfikatu.
+Aby utworzyć klaster, użyj następującego polecenia, jeśli chcesz, aby wygenerować certyfikat z podpisem własnym i użyć go do zabezpieczania klastra systemu. To polecenie ustawia klastra głównego certyfikatu, który jest używany do zabezpieczenia klastra i skonfigurować dostęp administratora do wykonywania operacji zarządzania przy użyciu tego certyfikatu.
 
-### <a name="login-in-to-azure"></a>Zaloguj się w na platformie Azure.
+### <a name="login-to-azure"></a>Logowanie do platformy Azure
 
-```Powershell
+```PowerShell
 Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <guid>
 ```
@@ -107,15 +107,15 @@ Set-AzureRmContext -SubscriptionId <guid>
 azure login
 az account set --subscription $subscriptionId
 ```
-#### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module-to-set-up-the-cluster"></a>Użyj domyślnego 5 szablonu nodetype 1 węzła, który jest dostarczany w module do skonfigurowania klastra
+#### <a name="use-the-default-5-node-1-node-type-template-that-ships-in-the-module-to-set-up-the-cluster"></a>Użyj domyślnego 5 1 węzła węzeł typu szablonu, który jest dostarczany w module do skonfigurowania klastra
 
 Użyj następującego polecenia, aby utworzyć klaster szybkie, określając parametry minimalnego
 
-Szablon używany jest dostępna na [przykłady szablonu sieci szkieletowej usług azure: szablonu systemu windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [Ubuntu szablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+Szablon, który jest używany jest dostępna na [przykłady szablonu usługi Azure Service Fabric: szablonu systemu windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [Ubuntu szablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-Polecenia poniżej działa w przypadku tworzenia klastrów systemu Windows i Linux, wystarczy określić odpowiednio systemu operacyjnego. Programu PowerShell / polecenia interfejsu wiersza polecenia również certyfikat w określonym CertificateOutputFolder jednak upewnij się, że dane wyjściowe certyfikatu folder już utworzony. Polecenie przyjmuje inne parametry, takie jak SKU maszyna wirtualna również.
+Polecenia poniżej działa w przypadku tworzenia klastrów systemu Windows i Linux, wystarczy określić odpowiednio systemu operacyjnego. Polecenia programu PowerShell/CLI dane wyjściowe certyfikatu w określonym CertificateOutputFolder; jednak upewnić się, że folder certyfikat już utworzone. Polecenie przyjmuje inne parametry, takie jak SKU maszyna wirtualna również.
 
-```Powershell
+```PowerShell
 $resourceGroupLocation="westus"
 $resourceGroupName="mycluster"
 $vaultName="myvault"
@@ -151,9 +151,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 #### <a name="use-the-custom-template-that-you-already-have"></a>Użyj szablonu niestandardowego, który już istnieje 
 
-Jeśli musisz utworzyć szablon niestandardowy zgodnie z potrzebami, zalecane jest uruchomienie z jednego z szablonów, które są dostępne na [przykłady szablonu sieci szkieletowej usług azure](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Wykonaj wskazówki i objaśnienia do [Dostosuj szablon klastra] [ customize-your-cluster-template] poniższej sekcji.
+Jeśli musisz utworzyć szablon niestandardowy zgodnie z potrzebami, zalecane jest uruchomienie z jednego z szablonów, które są dostępne na [przykłady szablonu usługi Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Wykonaj wskazówki i objaśnienia do [Dostosuj szablon klastra] [ customize-your-cluster-template] poniższej sekcji.
 
-Jeśli już masz szablonu niestandardowego, a następnie upewnij się, że podwójne zaznaczenie, wszystkie trzy certyfikat powiązany to następujące nazwy parametrów w szablonie i pliku parametrów i wartości mają wartość null w następujący sposób.
+Jeśli już masz szablonu niestandardowego, a następnie upewnij się, że o podwójnej precyzji Sprawdź, czy wszystkie trzy certyfikatu się, że następujące nazwy parametrów w szablonie i pliku parametrów i wartości mają wartość null w następujący sposób.
 
 ```Json
    "certificateThumbprint": {
@@ -199,15 +199,15 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 
-### <a name="create-new-cluster---using-the-certificate-you-bought-from-a-ca-or-you-already-have"></a>Utwórz nowy klaster — przy użyciu certyfikatu zakupiono od urzędu certyfikacji lub już istnieje.
+### <a name="create-new-cluster---using-the-certificate-you-bought-from-a-ca-or-you-already-have"></a>Utwórz nowy klaster — przy użyciu certyfikatu zakupiono od urzędu certyfikacji lub już istnieje
 
 Jeśli masz certyfikat, który ma być używany do zabezpieczania klastra za pomocą, użyj następującego polecenia do utworzenia klastra.
 
 Jeśli jest to podpisem certyfikatu urzędu certyfikacji, który spowoduje utworzenie za pomocą do innych celów, jak również, następnie zaleca Podaj grupę zasobów różne specjalnie dla magazynu kluczy. Firma Microsoft zaleca umieścić magazynu kluczy w jego własnej grupy zasobów. Ta akcja umożliwia usunięcie grupy zasobów obliczeniowych i przestrzeni dyskowej, wraz z grupy zasobów zawierającej klaster sieci szkieletowej usług, bez utraty z kluczy i kluczy tajnych. **Grupy zasobów, która zawiera magazynu kluczy _musi znajdować się w tym samym regionie_ co klaster, który go używa.**
 
 
-#### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module"></a>Użyj domyślnego 5 szablonu nodetype 1 węzła, który jest dostarczany w module
-Szablon, który jest używany jest dostępna na [przykładów dla platformy azure: szablon windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [Ubuntu szablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+#### <a name="use-the-default-5-node-1-node-type-template-that-ships-in-the-module"></a>Użyj domyślnego 5 1 węzła węzeł typu szablonu, który jest dostarczany w module
+Szablon, który jest używany jest dostępna na [przykładów dla platformy Azure: szablon Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [Ubuntu szablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 ```PowerShell
 $resourceGroupLocation="westus"
@@ -241,9 +241,9 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 #### <a name="use-the-custom-template-that-you-have"></a>Użyj szablonu niestandardowego, czy masz 
-Jeśli musisz utworzyć szablon niestandardowy zgodnie z potrzebami, zalecane jest uruchomienie z jednego z szablonów, które są dostępne na [przykłady szablonu sieci szkieletowej usług azure](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Wykonaj wskazówki i objaśnienia do [Dostosuj szablon klastra] [ customize-your-cluster-template] poniższej sekcji.
+Jeśli musisz utworzyć szablon niestandardowy zgodnie z potrzebami, zalecane jest uruchomienie z jednego z szablonów, które są dostępne na [przykłady szablonu usługi Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Wykonaj wskazówki i objaśnienia do [Dostosuj szablon klastra] [ customize-your-cluster-template] poniższej sekcji.
 
-Jeśli już masz szablonu niestandardowego, a następnie upewnij się, że podwójne zaznaczenie, wszystkie trzy certyfikat powiązany to następujące nazwy parametrów w szablonie i pliku parametrów i wartości mają wartość null w następujący sposób.
+Jeśli już masz szablonu niestandardowego, a następnie upewnij się, że o podwójnej precyzji Sprawdź, czy wszystkie trzy certyfikatu się, że następujące nazwy parametrów w szablonie i pliku parametrów i wartości mają wartość null w następujący sposób.
 
 ```Json
    "certificateThumbprint": {
@@ -333,7 +333,7 @@ Aby uprościć niektóre etapy konfigurowania usługi Azure AD z klastrem usług
 3. Wyodrębnij plik ZIP.
 4. Uruchom `SetupApplications.ps1`i podaj TenantId ClusterName i WebApplicationReplyUrl jako parametry. Na przykład:
 
-```powershell
+```PowerShell
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
@@ -363,7 +363,7 @@ Skrypt drukuje JSON wymagane przez szablon Menedżera zasobów Azure, podczas tw
 <a id="customize-arm-template" ></a>
 
 ## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Utwórz szablon Menedżera zasobów klastra sieci szkieletowej usług
-W tej sekcji jest dla użytkowników, którzy chcą niestandardowy tworzenia szablonu usługi Resource Manager klastra sieci szkieletowej usług. Po utworzeniu szablonu, nadal można wrócić do poprzedniej strony i użyj programu powershell lub moduły interfejsu wiersza polecenia, aby wdrożyć ją. 
+W tej sekcji jest dla użytkowników, którzy chcą niestandardowych do tworzenia szablon Menedżera zasobów klastra sieci szkieletowej usług. Po utworzeniu szablonu, nadal można wrócić do poprzedniej strony i użyj moduły programu PowerShell lub interfejsu wiersza polecenia, aby wdrożyć. 
 
 Menedżer zasobów przykładowe szablony są dostępne w [przykładów dla platformy Azure w serwisie GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Te szablony może służyć jako punkt początkowy dla szablonu klastra.
 
@@ -371,7 +371,7 @@ Menedżer zasobów przykładowe szablony są dostępne w [przykładów dla platf
 W tym przewodniku używa [5 węzłów klastra bezpiecznego] [ service-fabric-secure-cluster-5-node-1-nodetype] przykładowy szablon i parametrów szablonu. Pobierz `azuredeploy.json` i `azuredeploy.parameters.json` do komputera, a następnie otwórz oba pliki w edytorze tekstu.
 
 ### <a name="add-certificates"></a>Dodaj certyfikaty
-Dodaj certyfikaty do szablonu usługi Resource Manager klastra odbywa się za pomocą odwołań do magazynu kluczy, która zawiera klucze certyfikatu. Dodaj te parametry magazyn kluczy i wartości w pliku parametrów szablonu usługi Resource Manager (azuredeploy.parameters.json). 
+Dodaj certyfikaty do szablon Menedżera zasobów klastra odbywa się za pomocą odwołań do magazynu kluczy, która zawiera klucze certyfikatu. Dodaj te parametry magazyn kluczy i wartości w pliku parametrów szablonu usługi Resource Manager (azuredeploy.parameters.json). 
 
 #### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Dodaj wszystkie certyfikaty do osProfile zestaw skali maszyny wirtualnej
 Każdy certyfikat, który jest zainstalowany w klastrze muszą być skonfigurowane w sekcji osProfile zasób zestawu skali (Microsoft.Compute/virtualMachineScaleSets). Ta akcja powoduje, że dostawca zasobów, aby zainstalować certyfikat na maszynach wirtualnych. Ta instalacja obejmuje zarówno certyfikat klastra, jak i wszelkich certyfikatów zabezpieczeń aplikacji, które będą używane dla aplikacji:
@@ -499,14 +499,13 @@ Konfiguracja usługi Azure AD należy dodać do szablonu usługi Resource Manage
 }
 ```
 
-### <a name="populate-the-parameter-file-with-the-values"></a>Wypełnij pliku parametrów z wartościami.
-Na koniec użyj wartości danych wyjściowych z magazynu kluczy i poleceń programu PowerShell usługi Azure AD do wypełnienia pliku parametrów:
+### <a name="populate-the-parameter-file-with-the-values"></a>Wypełnij pliku parametrów z wartościami
+Na koniec należy użyć wartości danych wyjściowych z magazynu kluczy i poleceń programu PowerShell usługi Azure AD do wypełnienia pliku parametrów.
 
-Jeśli planujesz używać sieci szkieletowej usług Azure, moduły programu RM PowerShell, możesz nie ma potrzeby wypełnić informacji o certyfikacie klastra, jeśli ma system do generowania samoobsługowego podpisany certyfikat zabezpieczeń klastra możesz po prostu zachowywać je jako wartość null. 
+Jeśli planujesz używać usługi Azure modułów programu PowerShell Menedżera zasobów sieci szkieletowej, nie należy wypełnić informacji o certyfikacie klastra. Jeśli chcesz, aby system do generowania samoobsługowego podpisany certyfikatu zabezpieczeń klastra, pamiętaj jako wartość null. 
 
 > [!NOTE]
 > Dla modułów RM na odebranie i wypełnić wartości tych parametrów pusta nazwy parametrów znacznie pasują poniższe nazwy
->
 
 ```json
 "clusterCertificateThumbprint": {
@@ -523,9 +522,9 @@ Jeśli planujesz używać sieci szkieletowej usług Azure, moduły programu RM P
 },
 ```
 
-Jeśli używasz aplikacji certyfikaty lub korzystają z istniejącego klastra, które zostały przekazane do magazynu kluczy, należy pobrać tych informacji i wypełnić je 
+Jeśli są używane certyfikaty aplikacji lub korzystają z istniejącego klastra, które zostały przekazane do magazynu kluczy, należy pobrać tych informacji i wypełnić je.
 
-Moduły protokołu RM nie mają możliwość wygenerowania konfiguracji usługi Azure AD. Dlatego jeśli planujesz używać usługi Azure AD dla dostępu klientów, należy umieścić w nim.
+Moduły protokołu RM nie mają możliwość wygenerowania konfiguracji usługi Azure AD, więc jeśli planujesz używać usługi Azure AD dla dostępu klientów, należy umieścić w nim.
 
 ```json
 {
@@ -582,9 +581,19 @@ Na poniższym diagramie przedstawiono, w którym magazyn kluczy i konfiguracji u
 
 ![Menedżer zasobów zależności mapy][cluster-security-arm-dependency-map]
 
+
+## <a name="encrypting-the-disks-attached-to-your-windows-cluster-nodevirtual-machine-instances"></a>Szyfrowanie dysków dołączonych do systemu windows wystąpienia maszyny/wirtualnego węzła klastra
+
+Szyfrowanie dysków (dysku systemu operacyjnego i inne zarządzane dysków) dołączonych do węzłów, możemy korzystać z szyfrowania dysków Azure. Szyfrowanie dysków Azure to nowa funkcja, która ułatwia [szyfrowania dysków maszyny wirtualnej systemu Windows](service-fabric-enable-azure-disk-encryption-windows.md). Szyfrowanie dysków Azure korzysta ze standardu branżowego [funkcji BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkcji systemu Windows w celu zapewnienia szyfrowania woluminów systemu operacyjnego. Rozwiązanie jest zintegrowany z [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzanie nimi klucze szyfrowania dysku i kluczy tajnych w magazynie kluczy subskrypcji. Rozwiązanie zapewnia również, że wszystkie dane na dyskach maszyny wirtualnej są szyfrowane, gdy w magazynie Azure. 
+
+## <a name="encrypting-the-disks-attached-to-your-linux-cluster-nodevirtual-machine-instances"></a>Szyfrowanie dysków dołączonych do swoich węzła/wirtualny wystąpień maszyny Linux klastra
+
+Szyfrowanie dysków (dysk danych i inne zarządzane dysków) dołączonych do węzłów, możemy korzystać z szyfrowania dysków Azure. Szyfrowanie dysków Azure to nowa funkcja, która ułatwia [szyfrowania dysków maszyny wirtualnej systemu Linux](service-fabric-enable-azure-disk-encryption-linux.md). Szyfrowanie dysków Azure korzysta ze standardu branżowego [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcji systemu Linux w celu zapewnienia szyfrowania woluminów na dyskach danych. Rozwiązanie jest zintegrowany z [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzanie nimi klucze szyfrowania dysku i kluczy tajnych w magazynie kluczy subskrypcji. Rozwiązanie zapewnia również, że wszystkie dane na dyskach maszyny wirtualnej są szyfrowane, gdy w magazynie Azure. 
+
+
 ## <a name="create-the-cluster-using-azure-resource-template"></a>Tworzenie klastra przy użyciu szablonu zasobów platformy Azure 
 
-Teraz można wdrożyć klaster przy użyciu kroków opisanych wcześniej w dokumencie lub jeśli wartości w pliku parametrów wypełnione, następnie teraz można przystąpić do tworzenia klastra przy użyciu [wdrażania szablonu zasobów platformy Azure] [ resource-group-template-deploy] bezpośrednio.
+Teraz można wdrożyć klaster przy użyciu kroków opisanych wcześniej w dokumencie lub jeśli w pliku parametrów wypełnione wartości, następnie teraz można przystąpić do tworzenia klastra przy użyciu [wdrażania szablonu zasobów platformy Azure] [ resource-group-template-deploy] bezpośrednio.
 
 ```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
@@ -620,7 +629,7 @@ Po utworzeniu aplikacji do reprezentowania klastra przypisać użytkowników do 
 
 
 ## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Rozwiązywanie problemów z pomocy w procesie konfigurowania usługi Azure Active Directory
-Konfigurowanie usługi Azure AD i przy jego użyciu, może być wyzwaniem, dlatego poniżej przedstawiono wskazówki na co można zrobić, aby debugować ten problem.
+Konfigurowanie usługi Azure AD i przy jego użyciu może być wyzwaniem, więc poniżej przedstawiono wskazówki na co można zrobić, aby debugować ten problem.
 
 ### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer wyświetla monit o wybranie certyfikatu
 #### <a name="problem"></a>Problem

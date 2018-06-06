@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2f616c5908d8583764425b62acd1650283d0695
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701721"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych dostępne zadania usługi analiza strumienia Azure. Dane wyjściowe umożliwiają przechowywanie i Zapisz wyniki zadania usługi analiza strumienia. Za pomocą danych wyjściowych, można wykonać dalszego analiz biznesowych i danych magazynu danych. 
@@ -27,6 +28,8 @@ Niektóre dane wyjściowe typy obsługi [partycjonowania](#partitioning), i [out
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Strumienia Analytics obsługuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store to repozytorium w hiperskali obsługujące całe przedsiębiorstwo na potrzeby obciążeń analizy dużych ilości danych (big data). Data Lake Store można przechowywać dane dowolnego rozmiar, typ i wprowadzanie szybkość analiz operacyjnych i poznawczych. Analiza strumienia musi mieć uprawnienie dostępu do usługi Data Lake Store.
+
+Dane wyjściowe analiza strumienia Azure Data Lake Store jest obecnie niedostępna w chińskiej wersji platformy Azure (21Vianet) i regiony platformy Azure w Niemczech (T-systemy międzynarodowy).
 
 ### <a name="authorize-an-azure-data-lake-store-account"></a>Autoryzuj konto usługi Azure Data Lake Store
 
@@ -44,7 +47,7 @@ Strumienia Analytics obsługuje [Azure Data Lake Store](https://azure.microsoft.
 | --- | --- |
 | Alias danych wyjściowych | Przyjazna nazwa używane w zapytaniach w celu przekierowania wyników zapytania do tej usługi Data Lake Store. | 
 | Nazwa konta | Nazwa konta usługi Data Lake Storage, gdzie wysyłania danych wyjściowych. Jest wyświetlana z listy rozwijanej, kont usługi Data Lake Store, które są dostępne w Twojej subskrypcji. |
-| Wzorzec prefiksu ścieżki | Ścieżka do pliku używany do zapisywania plików w ramach określonego konta magazynu usługi Data Lake. Można określić co najmniej jedno wystąpienie elementu {date} i {time} zmiennych.</br><ul><li>Przykład 1: folder1/dzienniki / {date} / {time}</li><li>Przykład 2: folder1/dzienniki / {date}</li></ul>Jeśli wzorzec ścieżki plików nie zawiera końcowe "/", ostatni wzorca w ścieżce pliku jest traktowany jako prefiksu nazwy pliku. </br></br>W takiej sytuacji są tworzone nowe pliki:<ul><li>Zmiany w schemacie danych wyjściowych</li><li>Zewnętrznym lub wewnętrznym ponownego uruchomienia zadania.</li></ul> |
+| Wzorzec prefiksu ścieżki | Ścieżka do pliku używany do zapisywania plików w ramach określonego konta magazynu usługi Data Lake. Można określić co najmniej jedno wystąpienie elementu {date} i {time} zmiennych.</br><ul><li>Przykład 1: folder1/dzienniki / {date} / {time}</li><li>Przykład 2: folder1/dzienniki / {date}</li></ul><br>Sygnatura czasowa struktury folderów utworzone następuje UTC, a nie czas lokalny.</br><br>Jeśli wzorzec ścieżki plików nie zawiera końcowe "/", ostatni wzorca w ścieżce pliku jest traktowany jako prefiksu nazwy pliku. </br></br>W takiej sytuacji są tworzone nowe pliki:<ul><li>Zmiany w schemacie danych wyjściowych</li><li>Zewnętrznym lub wewnętrznym ponownego uruchomienia zadania.</li></ul> |
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiks, można wybrać format daty, w którym pliki są organizowane. Przykład: RRRR/MM/dd. |
 |Format godziny | Opcjonalny. Jeśli czas nie jest używany w ścieżce prefiks, określ format czasu, w którym pliki są organizowane. Obecnie jedyna obsługiwana wartość to HH. |
 | Format serializacji zdarzeń | Format serializacji w danych wyjściowych. JSON, CSV i Avro są obsługiwane.| 
@@ -67,7 +70,7 @@ Odnowić autoryzacji, **zatrzymać** zadania > Przejdź do usługi Data Lake Sto
 | Alias danych wyjściowych |Przyjazna nazwa używane w zapytaniach do kierowania wyników zapytania do tej bazy danych. |
 | Database (Baza danych) | Nazwa bazy danych, w którym wysyłania danych wyjściowych. |
 | Nazwa serwera | Nazwa serwera bazy danych SQL. |
-| Nazwa użytkownika | Nazwa użytkownika, który ma dostęp do zapisu baza danych. |
+| Nazwa użytkownika | Nazwa użytkownika, który ma dostęp do zapisu w bazie danych. |
 | Hasło | Hasło, aby połączyć databas.e |
 | Tabela | Nazwa tabeli, w którym dane wyjściowe są zapisywane. Nazwa tabeli jest rozróżniana wielkość liter i schemat tabeli powinien być w pełni zgodny liczba pól i ich typy generowane przez dane wyjściowe zadania. |
 
@@ -86,7 +89,7 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenia wyjści
 | Konto magazynu | Nazwa konta magazynu, w którym wysyłania danych wyjściowych. |
 | Klucz konta magazynu | Klucz tajny, skojarzone z kontem magazynu. |
 | Kontener magazynu | Kontenery umożliwiają logiczne grupowanie dla obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Przekazywanie obiektu blob do usługi Blob, należy określić kontener dla tego obiektu blob. |
-| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do zapisywania obiektów blob w określonym kontenerze. </br></br> We wzorcu ścieżka można użyć co najmniej jedno wystąpienie zmiennych czasu Data określenie częstotliwości, które obiekty BLOB są zapisywane: </br> {date} {time} </br> </br>Jeśli użytkownik jest zarejestrowany w usłudze [Podgląd](https://aka.ms/ASAPreview), można również określić jedną nazwę niestandardowego {pola} z danych zdarzeń do obiektów blob partycji, której nazwa pola alfanumeryczną i może zawierać spacje, łączniki i podkreślenia. Ograniczenia dotyczące pól niestandardowych są następujące: <ul><li>Przypadek niedostatecznej (nie różnic między kolumny "ID" i kolumnie "id")</li><li>Zagnieżdżone pola nie są dozwolone (zamiast tego użyć aliasu w zapytaniu zadania do pola "spłaszczenia")</li><li>Nie można użyć wyrażenia jako nazwa pola</li></ul>Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3 (wersja zapoznawcza): Klaster1 / {client_id} / {date} / {time}</li><li>Przykład 4 (wersja zapoznawcza): Klaster1 / {myField} gdzie zapytanie jest: Wybierz data.myField jako myField z danych wejściowych;</li></ul><BR> Następującej konwencji nazewnictwa plików są następujące: </br> {Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension </br></br> Przykład danych wyjściowych plików: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| Wzorzec ścieżki | Opcjonalny. Wzorzec ścieżki pliku używany do zapisywania obiektów blob w określonym kontenerze. </br></br> We wzorcu ścieżka można użyć co najmniej jedno wystąpienie zmiennych czasu Data określenie częstotliwości, które obiekty BLOB są zapisywane: </br> {date} {time} </br> </br>Jeśli użytkownik jest zarejestrowany w usłudze [Podgląd](https://aka.ms/ASAPreview), można również określić jedną nazwę niestandardowego {pola} z danych zdarzeń do obiektów blob partycji, której nazwa pola alfanumeryczną i może zawierać spacje, łączniki i podkreślenia. Ograniczenia dotyczące pól niestandardowych są następujące: <ul><li>Przypadek niedostatecznej (nie można odróżnić kolumny "ID" i kolumnie "id")</li><li>Zagnieżdżone pola nie są dozwolone (zamiast tego użyć aliasu w zapytaniu zadania do pola "spłaszczenia")</li><li>Nie można użyć wyrażenia jako nazwa pola</li></ul>Przykłady: <ul><li>Przykład 1: Klaster1/dzienniki / {date} / {time}</li><li>Przykład 2: Klaster1/dzienniki / {date}</li><li>Przykład 3 (wersja zapoznawcza): Klaster1 / {client_id} / {date} / {time}</li><li>Przykład 4 (wersja zapoznawcza): Klaster1 / {myField} gdzie zapytanie jest: Wybierz data.myField jako myField z danych wejściowych;</li></ul><br>Sygnatura czasowa struktury folderów utworzone następuje UTC, a nie czas lokalny.</br><BR> Następującej konwencji nazewnictwa plików są następujące: </br> {Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension </br></br> Przykład danych wyjściowych plików: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Format daty | Opcjonalny. Jeśli token daty jest używany w ścieżce prefiks, można wybrać format daty, w którym pliki są organizowane. Przykład: RRRR/MM/dd. |
 | Format godziny | Opcjonalny. Jeśli czas nie jest używany w ścieżce prefiks, określ format czasu, w którym pliki są organizowane. Obecnie jedyna obsługiwana wartość to HH. |
 | Format serializacji zdarzeń | Format serializacji w danych wyjściowych.  JSON, CSV i Avro są obsługiwane.
@@ -103,7 +106,7 @@ Korzystając z magazynu obiektów blob jako dane wyjściowe, nowy plik jest twor
 * Jeśli plik lub kontenera konta magazynu jest usunięty przez użytkownika.  
 * Jeśli dane wyjściowe po raz partycjonowanego wzorca prefiks ścieżki, nowy obiekt blob jest używany podczas kwerenda przechodzi do następnej godziny.
 * Jeśli dane wyjściowe jest podzielona na partycje według pola niestandardowe, nowy obiekt blob jest tworzony na klucz partycji, jeśli nie istnieje.
-*   Jeśli pole niestandardowe, których liczebność klucza partycji przekracza 8000 partycjonowanego dane wyjściowe, można utworzyć nowego obiektu blob na klucz partycji.
+* Jeśli pole niestandardowe, których liczebność klucza partycji przekracza 8000 partycjonowanego dane wyjściowe, można utworzyć nowego obiektu blob na klucz partycji.
 
 ## <a name="event-hub"></a>Centrum zdarzeń
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) usługa jest wysoce skalowalna publikowania / subskrypcji systemem zbierania zdarzeń. Może on zbierać miliony zdarzeń na sekundę. Jeden korzystanie z Centrum zdarzeń jako dane wyjściowe jest, gdy dane wejściowe zadania przesyłania strumieniowego innego staje się dane wyjściowe zadania usługi analiza strumienia.
@@ -125,6 +128,8 @@ Istnieje kilka parametrów, które są potrzebne do skonfigurowania strumieni da
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) może służyć jako dane wyjściowe zadania usługi analiza strumienia do zapewnienia środowisko sformatowanego wizualizacja wyników analizy. Ta możliwość może służyć do operacyjnej pulpity nawigacyjne, Generowanie raportu i metryki na zgłoszenie.
+
+Wyjście usługi Power BI z usługi Stream Analytics nie jest obecnie dostępne w chińskiej wersji platformy Azure (21Vianet) i regiony platformy Azure w Niemczech (T-systemy międzynarodowy).
 
 ### <a name="authorize-a-power-bi-account"></a>Autoryzuj konto usługi Power BI
 1. Po wybraniu usługi Power BI jako dane wyjściowe w portalu Azure zostanie wyświetlony monit, do autoryzacji istniejącego użytkownika Power BI lub utworzyć nowe konto usługi Power BI.  
@@ -247,6 +252,8 @@ Liczba partycji jest [na podstawie SKU magistrali usługi i rozmiar](../service-
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/documentdb/) jest globalnie rozproszone i wiele modeli bazy danych usługi zagwarantowanie oferty nieograniczona elastycznego skalowania wokół globu, zaawansowane zapytania i automatycznego indeksowania za pośrednictwem modeli danych pochodzącego od dowolnego schematu, małe opóźnienia i branży kompleksowe umów SLA. Aby dowiedzieć się więcej o opcjach kolekcji DB rozwiązania Cosmos Stream Analytics, zapoznaj się [analiza strumienia rozwiązania Cosmos DB jako dane wyjściowe](stream-analytics-documentdb-output.md) artykułu.
 
+Azure DB rozwiązania Cosmos dane wyjściowe Stream Analytics jest obecnie niedostępna w chińskiej wersji platformy Azure (21Vianet) i regiony platformy Azure w Niemczech (T-systemy międzynarodowy).
+
 > [!Note]
 > W tej chwili Azure Stream Analytics obsługuje tylko połączenia za pomocą CosmosDB **interfejsu API SQL**.
 > Innych interfejsów API Azure rozwiązania Cosmos bazy danych nie są jeszcze obsługiwane. Jeśli punkt Azure Stream Analytics do kont Azure DB rozwiązania Cosmos tworzone za pomocą innych interfejsów API, dane mogą nie być poprawnie przechowywane. 
@@ -266,6 +273,8 @@ W poniższej tabeli opisano właściwości do utworzenia bazy danych Azure rozwi
 
 ## <a name="azure-functions"></a>Azure Functions
 Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchamianie kodu na żądanie bez konieczności jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Umożliwia ona implementowania kodu wyzwalane przez zdarzenia występujące w Azure lub usług innych firm.  Tę możliwość usługi Azure Functions odpowiedzieć wyzwalaczy ułatwia fizycznych dane wyjściowe do usługi Azure Stream Analytics. Ta karta danych wyjściowych umożliwia użytkownikom Stream Analytics nawiązać połączenia z usługi Azure Functions, a następnie uruchom skrypt lub fragmentu kodu w odpowiedzi na szereg zdarzeń.
+
+Azure dane wyjściowe funkcji Stream Analytics jest obecnie niedostępna w chińskiej wersji platformy Azure (21Vianet) i regiony platformy Azure w Niemczech (T-systemy międzynarodowy).
 
 Usługa Azure Stream Analytics wywołuje usługi Azure Functions za pośrednictwem protokołu HTTP wyzwalaczy. Nowa karta danych wyjściowych funkcji Azure jest dostępna w programie można skonfigurować następujące właściwości:
 

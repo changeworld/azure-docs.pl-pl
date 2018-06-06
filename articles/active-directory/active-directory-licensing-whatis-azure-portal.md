@@ -8,22 +8,23 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.workload: identity
-ms.date: 03/29/2018
+ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 81d2916709f4d9e88faebc198940ad905705125a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6fe473d606df4ea0c37c2e6b2b1c9146056d0106
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713477"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Na podstawie grupy podstawy licencjonowania w usłudze Azure Active Directory
 
-Za pomocą płatnej usługi w chmurze, takich jak usługi Office 365, Enterprise Mobility + zabezpieczeń usługi Dynamics CRM i inne podobne produkty firmy Microsoft wymaga licencji. Te licencje są przypisane do poszczególnych użytkowników, którzy potrzebują dostępu do tych usług. Zarządzanie licencjami, administratorów, użyj jednej z portali zarządzania (Office lub Azure) i poleceń cmdlet programu PowerShell. Azure Active Directory (Azure AD) jest podstawowej infrastruktury, która obsługuje zarządzanie tożsamościami dla wszystkich usług chmurowych firmy Microsoft. Usługi Azure AD są przechowywane informacje o stanach przypisania licencji dla użytkowników.
+Microsoft płatnej usługi w chmurze, takich jak usługi Office 365, Enterprise Mobility + Security Dynamics 365 i innych podobnych produktów, wymagają licencji. Te licencje są przypisane do poszczególnych użytkowników, którzy potrzebują dostępu do tych usług. Zarządzanie licencjami, administratorów, użyj jednej z portali zarządzania (Office lub Azure) i poleceń cmdlet programu PowerShell. Azure Active Directory (Azure AD) jest podstawowej infrastruktury, która obsługuje zarządzanie tożsamościami dla wszystkich usług chmurowych firmy Microsoft. Usługi Azure AD są przechowywane informacje o stanach przypisania licencji dla użytkowników.
 
 Do tej pory licencje może zostać przypisana tylko na poziomie indywidualnego użytkownika, co może utrudnić zarządzania na dużą skalę. Na przykład aby dodać lub usunąć licencje użytkownika na podstawie organizacyjnego zmian, takich jak użytkownicy przyłączenie się lub opuszczenie organizacji lub działu, administrator często musi być zapisana złożonych skrypt programu PowerShell. Ten skrypt wykonuje poszczególnych wywołań do usługi w chmurze.
 
@@ -40,7 +41,7 @@ Oto główne funkcje na podstawie grupy licencji:
 
 - Po przypisaniu licencji produktu do grupy, administrator może wyłączyć jeden lub więcej planów usług w ramach produktu. Zazwyczaj jest to realizowane przy organizacji nie jest jeszcze gotowy do uruchomienia przy użyciu usługi zawarta w produkcie. Na przykład administrator może przypisać usługi Office 365 do działu, ale tymczasowe wyłączenie usługi Yammer.
 
-- Obsługiwane są wszystkie usług chmurowych firmy Microsoft, które wymagają licencji na poziomie użytkownika. Obejmuje to wszystkie produkty, pakietu Enterprise Mobility + Security i Dynamics CRM usługi Office 365.
+- Obsługiwane są wszystkie usług chmurowych firmy Microsoft, które wymagają licencji na poziomie użytkownika. W tym wszystkie produkty, pakietu Enterprise Mobility + Security i Dynamics 365 usługi Office 365.
 
 - Na podstawie grupy licencji jest obecnie dostępny tylko za pośrednictwem [portalu Azure](https://portal.azure.com). Przede wszystkim użyj innych portali zarządzania dla użytkowników i grupy zarządzania, takich jak portalu usługi Office 365, możesz to zrobić. Jednak należy używać portalu Azure do zarządzania licencjami na poziomie grupy.
 
@@ -54,7 +55,7 @@ Oto główne funkcje na podstawie grupy licencji:
 
 ## <a name="your-feedback-is-welcome"></a>Twoja opinia jest Zapraszamy!
 
-Jeśli masz żądania opinii lub funkcji, można udostępniać je z nami za pomocą [tym forum](https://feedback.azure.com/forums/169401-azure-active-directory/category/317677-group-based-licensing).
+Jeśli masz żądania opinii lub funkcji, można udostępniać je z nami za pomocą [forum usługi Azure AD administratora](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

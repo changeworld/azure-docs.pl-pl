@@ -3,22 +3,19 @@ title: Azure DB rozwiązania Cosmos indeksowania zasad | Dokumentacja firmy Micr
 description: Dowiedz się, jak indeksowania działa w usłudze Azure DB rozwiązania Cosmos. Dowiedz się, jak skonfigurować i zmienić zasady indeksowania dla automatycznego indeksowania i zwiększyć wydajność.
 keywords: Indeksowanie działania, automatycznego indeksowania, indeksowania bazy danych
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 277ddd5777ff8edf5195e79885929e3a8c758d7c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3abae65ccc430c791e289a4767d057cf010b974b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700336"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak dane indeksu bazy danych rozwiązania Cosmos Azure?
 
@@ -79,9 +76,9 @@ Azure DB rozwiązania Cosmos obsługuje trzy tryby indeksowania, które można s
 
 Spójne indeksowania obsługuje zapytania spójne kosztem możliwe zmniejszenie przepływność zapisu. Obniżenie to funkcja unikatowy ścieżek, które muszą zostać pomyślnie zindeksowane i "poziom zgodności". Spójne tryb indeksowania jest przeznaczona dla obciążeń "write szybkiego zapytań od razu".
 
-**Opóźnieniem**: indeks jest aktualizowany asynchronicznie, gdy kolekcji usługi Azure DB rozwiązania Cosmos jest spoczynku, oznacza to, gdy przepływności kolekcji nie jest w pełni wykorzystane do obsługi żądań użytkownika. Opóźnieniem tryb indeksowania może być odpowiedni w przypadku obciążeń "pozyskiwania teraz zapytanie później", które wymagają wprowadzanie dokumentu. Należy pamiętać, że można uzyskać niespójne wyników, ponieważ dane są pozyskanych i indeksowane powoli. Oznacza to, że Twoje zapytania COUNT lub określonej kwerendy, wyniki mogą być zgodne lub repeatable w danym momencie. 
+**Opóźnieniem**: indeks jest aktualizowany asynchronicznie, gdy kolekcji usługi Azure DB rozwiązania Cosmos jest spoczynku, oznacza to, gdy przepływności kolekcji nie jest w pełni wykorzystane do obsługi żądań użytkownika.  Należy pamiętać, że można uzyskać niespójne wyników, ponieważ dane są pozyskanych i indeksowane powoli. Oznacza to, że Twoje liczby zapytań lub wyników określonego zapytania mogą nie być zgodne lub repeatable na podany czas. 
 
-Indeks jest zazwyczaj w trybie wyrównującej pozyskiwane danych. Z opóźnieniem indeksowania czas wygaśnięcia (TTL) zmienia wynik w indeksie jest porzucona i utworzona ponownie. Dzięki temu wyniki zapytania i liczba niespójne w danym okresie czasu. W związku z tym większość kont Azure DB rozwiązania Cosmos używać spójne trybu indeksowania.
+Indeks jest zazwyczaj w trybie wyrównującej pozyskiwane danych. Z opóźnieniem indeksowania czas wygaśnięcia (TTL) zmienia wynik w indeksie jest porzucona i utworzona ponownie. Dzięki temu wyniki zapytania i liczba niespójne w danym okresie czasu. Większość kont Azure DB rozwiązania Cosmos używać spójne trybu indeksowania.
 
 **Brak**: kolekcja, która ma wartość None tryb indeksu nie ma indeksu skojarzonych z nim. Jest ona powszechnie stosowana w przypadku bazy danych Azure rozwiązania Cosmos jest używana jako magazyn kluczy i wartości i dokumenty są dostępne tylko dla ich właściwość Identyfikatora. 
 

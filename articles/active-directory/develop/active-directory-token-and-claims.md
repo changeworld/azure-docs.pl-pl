@@ -17,11 +17,12 @@ ms.date: 05/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801868"
 ---
 # <a name="azure-ad-token-reference"></a>Odwołania do usługi Azure AD tokenu
 Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających do przetworzenia każdy przepływ uwierzytelniania. Ten dokument zawiera opis format właściwości zabezpieczeń i zawartości każdego typu tokenu. 
@@ -55,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | Token JWT oświadczeń | Name (Nazwa) | Opis |
 | --- | --- | --- |
 | `aud` |Grupy odbiorców |Zamierzonym odbiorcą tokenu. Aplikacja, która odbiera token należy sprawdzić, czy wartość odbiorców jest poprawny i odrzucić wszystkie tokeny przeznaczona dla różnych użytkowników. <br><br> **Przykładowa wartość SAML**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Przykładowa wartość JWT**: <br> `"aud":"https://contoso.com"` |
-| `appidacr` |Application Authentication Context Class Reference |Wskazuje, jak klient został uwierzytelniony. Dla publicznych klienta wartość wynosi 0. Jeśli identyfikator klienta i klucz tajny klienta są używane, wartość to 1. <br><br> **Przykładowa wartość JWT**: <br> `"appidacr": "0"` |
+| `appidacr` |Application Authentication Context Class Reference |Wskazuje, jak klient został uwierzytelniony. Dla publicznych klienta wartość wynosi 0. Jeśli identyfikator klienta i klucz tajny klienta są używane, wartość to 1. Jeśli certyfikat klienta był używany do uwierzytelniania, wartość jest równa 2. <br><br> **Przykładowa wartość JWT**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference |Wskazuje, jak został uwierzytelniony podmiot, w przeciwieństwie do klienta z oświadczeń Application Authentication Context Class Reference. Wartość "0" oznacza, że uwierzytelnianie użytkownika końcowego nie spełnia wymagań z normą ISO/IEC 29115. <br><br> **Przykładowa wartość JWT**: <br> `"acr": "0"` |
 | Błyskawiczne uwierzytelniania |Rejestruje datę i godzinę po przeprowadzeniu uwierzytelnienia. <br><br> **Przykładowa wartość SAML**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |Metoda uwierzytelniania |Określa, jak został uwierzytelniony podmiot tokenu. <br><br> **Przykładowa wartość SAML**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Przykładowa wartość JWT**: `“amr”: ["pwd"]` |
@@ -152,21 +153,31 @@ Pełną listę operacji sprawdzania poprawności oświadczenia aplikacji należy
 ## <a name="token-revocation"></a>Token odwołania
 
 Odśwież tokeny można unieważnione lub odwołać w dowolnym momencie z różnych przyczyn. Te można podzielić na dwie główne kategorie: przekroczeń limitu czasu i odwołania. 
-* Token limitów czasu
-  * MaxInactiveTime: Jeśli nie został użyty w czasie ustawieniem MaxInactiveTime token odświeżania, Token odświeżania nie będzie już prawidłowy. 
-  * MaxSessionAge: Jeśli MaxAgeSessionMultiFactor lub MaxAgeSessionSingleFactor zostały ustawione na inną niż domyślne (do odwołane), następnie ponowne uwierzytelnianie będzie wymagane po upływie tego czasu w MaxAgeSession *. 
-  * Przykłady:
-    * Dzierżawca ma MaxInactiveTime 5 dni, użytkownik przeszedł na urlopie na tydzień i dlatego usługi AAD nie otrzymała nowego żądania tokenu od użytkownika w ciągu 7 dni. Następnym razem, użytkownik żąda nowy token znajdą ich odświeżyć Token został odwołany, a ich musi ponownie wprowadzić swoje poświadczenia. 
-    * Poufnej aplikacji ma MaxAgeSessionSingleFactor 1 dzień. Jeśli użytkownik loguje się w poniedziałek i wtorek (po upływie 25 godzin), muszą zostać ponownie uwierzytelniony. 
-* Odwołania
-  * Dobrowolny zmiany hasła: Jeśli użytkownik zmieni swoje hasło, może mają ponownego uwierzytelnienia w niektórych aplikacjach, w zależności od sposobu token został osiągnięty. Zobacz uwagi poniżej, aby wyjątki. 
-  * Niedobrowolnego zmiany hasła: Jeśli administrator wymusza na użytkowniku, aby zmienić swoje hasło lub Ponadto resetuje go, następnie tokeny użytkownika są unieważniona jeśli zostały osiągnięte, przy użyciu hasła. Zobacz uwagi poniżej, aby wyjątki. 
-  * Naruszenie zabezpieczeń: W przypadku naruszenia zabezpieczeń (np. z lokalnym magazynem hasła jest naruszony) Administrator można odwołać wszystkie obecnie wystawione tokeny odświeżania. Spowoduje to wymuszenie ponownego uwierzytelnienia wszystkim użytkownikom. 
+
+**Token limitów czasu**
+
+* MaxInactiveTime: Jeśli nie został użyty w czasie ustawieniem MaxInactiveTime token odświeżania, Token odświeżania nie będzie już prawidłowy. 
+* MaxSessionAge: Jeśli MaxAgeSessionMultiFactor lub MaxAgeSessionSingleFactor zostały ustawione na inną niż domyślne (do odwołane), następnie ponowne uwierzytelnianie będzie wymagane po upływie tego czasu w MaxAgeSession *. 
+* Przykłady:
+  * Dzierżawca ma MaxInactiveTime 5 dni, użytkownik przeszedł na urlopie na tydzień i dlatego usługi AAD nie otrzymała nowego żądania tokenu od użytkownika w ciągu 7 dni. Następnym razem, użytkownik żąda nowy token znajdą ich odświeżyć Token został odwołany, a ich musi ponownie wprowadzić swoje poświadczenia. 
+  * Poufnej aplikacji ma MaxAgeSessionSingleFactor 1 dzień. Jeśli użytkownik loguje się w poniedziałek i wtorek (po upływie 25 godzin), muszą zostać ponownie uwierzytelniony. 
+
+**Odwołania**
+
+|   | Plik cookie oparte na hasłach | Token oparte na hasłach | Plików cookie opartego na inne niż hasła | Inne niż hasła na podstawie tokenu | Token klienta poufne| 
+|---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
+|Hasło wygasło| Pozostaje aktywne|Pozostaje aktywne|Pozostaje aktywne|Pozostaje aktywne|Pozostaje aktywne|
+|Hasło zostało zmienione przez użytkownika| Odwołano | Odwołano | Pozostaje aktywne|Pozostaje aktywne|Pozostaje aktywne|
+|Użytkownik wykona SSPR|Odwołano | Odwołano | Pozostaje aktywne|Pozostaje aktywne|Pozostaje aktywne|
+|Administrator resetuje hasło|Odwołano | Odwołano | Pozostaje aktywne|Pozostaje aktywne|Pozostaje aktywne|
+|Użytkownik odwołuje tokenów odświeżania [za pomocą programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odwołano | Odwołano |Odwołano | Odwołano |Odwołano | Odwołano |
+|Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pomocą programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odwołano | Odwołano |Odwołano | Odwołano |Odwołano | Odwołano |
+|[Jednokrotnego limit](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code#single-sign-out) w sieci web | Odwołano | Pozostaje aktywne |Odwołano | Pozostaje aktywne |Pozostaje aktywne |Pozostaje aktywne |
 
 > [!NOTE]
->Jeśli hasło z systemem innym niż metoda uwierzytelniania używana (Windows Hello, aplikacji uwierzytelniającej, biometrycznych, takich jak twarzy na obrazie lub linii papilarnych) do osiągnięcia token, zmiana hasła nie spowoduje wymuszenie ponownego uwierzytelnienia użytkownika (ale zostanie wymuszone ich aplikacji uwierzytelniania Aby ponownie uwierzytelnić). Jest to spowodowane uwierzytelniania wybranych danych wejściowych (a krój, np.) nie został zmieniony i w związku z tym można ponownie ponownego uwierzytelnienia.
+> Nazwy logowania "Non-password na podstawie" jest jednym których użytkownik nie wpisz hasło go.  Na przykład przy użyciu Twojej krojów z usługi Windows Hello, klucz FIDO lub numeru PIN. 
 >
-> Poufne klientów nie dotyczy odwołań zmiany hasła. Poufne klienta z tokenem odświeżania wydane przed zmianę hasła będzie nadal abl do Użyj tokenu odświeżania, aby uzyskać więcej tokenów. 
+> Istnieje znany problem z tokenów systemu Windows głównej odświeżania.  Jeśli PRT jest uzyskiwany za pomocą hasła, a następnie użytkownik loguje się przy użyciu Hello, nie ma to wpływu inicjowanie PRT i będzie można odwołać, jeśli użytkownik zmieni swoje hasło. 
 
 ## <a name="sample-tokens"></a>Tokeny próbki
 

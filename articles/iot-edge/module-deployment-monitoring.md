@@ -1,19 +1,19 @@
 ---
 title: Wdrażanie modułów Azure IoT Edge | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat sposobu modułów uzyskać wdrażania na urządzenia brzegowe
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 880a17b6029dafec9ed41e3a32802dc42b872e77
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725330"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Zrozumienie wdrożeń IoT Edge dla urządzeń z jednego lub na dużą skalę - preview
 
@@ -25,7 +25,7 @@ Urządzenia brzegowe IoT Azure wykonaj [cykl życia urządzenia] [ lnk-lifecycle
 
 Azure IoT krawędź udostępnia dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach krawędzi IoT: jeden dla rozwoju i szybkie iteracji na jednym urządzeniu (który został użyty w samouczkach Azure IoT krawędzi), a drugi do zarządzania dużą floty urządzeń IoT krawędzi. Obie metody są dostępne, w portalu Azure i programowo.
 
-Ten artykuł skupia się na konfiguracji i monitorowania etapów floty urządzeń, nazywane zbiorczo wdrożeń IoT krawędzi. Ogólne kroki wdrożenia są następujące:   
+Ten artykuł skupia się na konfiguracji i monitorowania etapów floty urządzeń, nazywane zbiorczo krawędzi IoT wdrożeń automatycznych. Ogólne kroki wdrożenia są następujące:   
 
 1. Operator definiuje wdrożenia, które opisano zestaw modułów, a także urządzeń docelowych. Dla każdego wdrożenia ma manifest wdrażania, która odzwierciedla te informacje. 
 1. Usługa Centrum IoT komunikuje się z wszystkie objęte nimi urządzenia ich konfiguracji z żądaną modułów. 
@@ -36,7 +36,7 @@ Ten artykuł przeprowadzi Cię przez poszczególne składniki zaangażowane w Ko
 
 ## <a name="deployment"></a>Wdrożenie
 
-Wdrożenie przypisuje krawędzi IoT obrazów modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia brzegowe IoT. Działa on przez skonfigurowanie manifest rozmieszczenia krawędzi IoT Aby dołączyć listę modułów z odpowiednie parametry inicjacji. Wdrożenia można przypisać do jednego urządzenia (zazwyczaj na podstawie identyfikatora urządzenia) lub do grupy urządzeń (w oparciu tagów). Po urządzenia IoT odbiera manifest wdrażania, pobiera i instaluje obrazy kontener modułu z repozytoriami odpowiedniego kontenera i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzeń docelowych są poprawnie skonfigurowane.   
+Automatyczne wdrożenie krawędzi IoT przypisuje krawędzi IoT obrazów modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia brzegowe IoT. Działa on przez skonfigurowanie manifest rozmieszczenia krawędzi IoT Aby dołączyć listę modułów z odpowiednie parametry inicjacji. Wdrożenia można przypisać do jednego urządzenia (zazwyczaj na podstawie identyfikatora urządzenia) lub do grupy urządzeń (w oparciu tagów). Po urządzenia IoT odbiera manifest wdrażania, pobiera i instaluje obrazy kontener modułu z repozytoriami odpowiedniego kontenera i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzeń docelowych są poprawnie skonfigurowane.   
 
 Urządzenia muszą być udostępniane jako urządzenia IoT brzegowe można skonfigurować z wdrożeniem. Poniżej są wymagania wstępne i nie są uwzględnione we wdrożeniu:
 * Podstawowy system operacyjny

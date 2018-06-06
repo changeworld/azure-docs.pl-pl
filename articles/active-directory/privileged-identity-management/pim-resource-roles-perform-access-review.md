@@ -3,7 +3,7 @@ title: Wykonaj przegląd dostępu w Privileged Identity Management zasobów plat
 description: Tym dokumencie opisano jak przeprowadzić przegląd dostępu w PIM dla zasobów platformy Azure, zgodnie z roli zasobów.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 editor: mwahl
 ms.service: active-directory
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 47d981ce8034d725fe2b119392334a156852698d
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 43245907a16019ac5396c41db036c3160359270f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699611"
 ---
 # <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Wykonaj przegląd dostępu w PIM, zgodnie z roli zasobów
 Privileged Identity zarządzania (PIM) dla zasobów platformy Azure upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 

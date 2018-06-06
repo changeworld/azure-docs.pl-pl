@@ -1,11 +1,11 @@
 ---
-title: "Wdrażanie synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć Azure plik synchronizacji od początku do końca."
+title: Wdrażanie synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć Azure plik synchronizacji od początku do końca.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: d5864b8df85a5b3cec086d4cb2edc6d288f1639a
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: a450d3c00627a9b20ff2fe31c4dba49b33352ec1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738385"
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Wdrażanie synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -56,13 +57,16 @@ Dla każdego serwera, który ma być używany z synchronizacji plików Azure, w 
     4. W **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer** okno dialogowe, wybierz opcję **poza** dla **Administratorzy** i **użytkowników**:  
         ![Wybrana konfiguracja zwiększonych zabezpieczeń programu Internet Explorer pop okna z "Off"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-2. Upewnij się, że uruchamiasz co najmniej 5.1 programu PowerShell.\* (Wartość domyślna w systemie Windows Server 2016 jest 5.1 programu PowerShell). Aby sprawdzić, czy korzystasz z programu PowerShell w wersji 5.1. \* sprawdzając wartość **PSVersion** właściwość **$PSVersionTable** obiektu:
+2. Jeśli używasz systemu Windows Server 2012 R2, upewnij się, że uruchamiasz co najmniej 5.1 programu PowerShell. \*. Można bezpiecznie pominąć sprawdzanie w systemie Windows Server 2016 jako 5.1 programu PowerShell jest domyślna wersja out-of-box. W systemie Windows Server 2012 R2 można sprawdzić, czy korzystasz z programu PowerShell w wersji 5.1. \* sprawdzając wartość **PSVersion** właściwość **$PSVersionTable** obiektu:
 
     ```PowerShell
     $PSVersionTable.PSVersion
     ```
 
     Jeśli wartość PSVersion jest mniejsza niż 5.1. \*, jak będzie w przypadku większości instalacji systemu Windows Server 2012 R2, można łatwo przeprowadzić uaktualnienie przez pobranie i zainstalowanie [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616). Odpowiedniego pakietu do pobrania i zainstalowania systemu Windows Server 2012 R2 jest **Win8.1AndW2K12R2 KB\*\*\*\*\*\*\*-x64.msu**.
+
+    > [!Note]  
+    > Synchronizacja programu Azure pliku nie obsługuje jeszcze 6 programu PowerShell w systemie Windows Server 2012 R2 lub Windows Server 2016.
 
 3. [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Zalecamy używanie najnowszej wersji modułów programu Azure PowerShell.
 
@@ -92,6 +96,9 @@ Po zalogowaniu, zostanie wyświetlony monit o następujące informacje:
 
 Po wybraniu odpowiednie informacje, wybierz **zarejestrować** do ukończenia rejestracji serwera. W ramach procesu rejestracji zostanie wyświetlony monit o dodatkowe logowania.
 
+> [!Note]  
+> Serwer można zarejestrować tylko z jedną usługę synchronizacji magazynu naraz.
+
 ## <a name="create-a-sync-group"></a>Tworzenie grupy synchronizacji
 Grupy synchronizacji definiuje topologia synchronizacji dla grupy plików. Punkty końcowe w ramach grupy synchronizacji są zsynchronizowane ze sobą. Grupy synchronizacji musi zawierać co najmniej jedna chmura punktu końcowego, który reprezentuje udział plików na platformę Azure, i jeden serwer punktu końcowego, który reprezentuje ścieżkę, w systemie Windows Server. Aby utworzyć grupę synchronizacji w [portalu Azure](https://portal.azure.com/), przejdź do usługi synchronizacji magazynu, a następnie wybierz **+ grupy synchronizacji**:
 
@@ -102,7 +109,7 @@ W okienku zostanie otwarty wprowadź następujące informacje, aby utworzyć gru
 - **Nazwa grupy synchronizacji**: Nazwa grupy synchronizacji ma zostać utworzony. Ta nazwa musi być unikatowa w ramach usługi synchronizacji magazynu, ale może być dowolną nazwę logiczną dla Ciebie.
 - **Subskrypcja**: subskrypcji, w której wdrożono usługę synchronizacji magazynu w [wdrożyć usługę synchronizacji magazynu](#deploy-the-storage-sync-service).
 - **Konto magazynu**: w przypadku wybrania **wybierz konto magazynu**, innego okienka pojawia się, w którym można wybrać konto magazynu, który ma udziału plików na platformę Azure, do którego mają być synchronizowane z.
-- **Udział plików Azure**: Nazwa udziału plików na platformę Azure, z którym mają być synchronizowane.
+- **Udział plików na platformę Azure**: Nazwa udziału plików na platformę Azure, z którym mają być synchronizowane.
 
 Aby dodać punktu końcowego serwera, przejdź do grupy nowo utworzonych sync, a następnie wybierz **dodać punkt końcowy serwera**.
 

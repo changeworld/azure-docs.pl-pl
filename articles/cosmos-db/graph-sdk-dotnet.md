@@ -2,22 +2,20 @@
 title: Zestaw .NET SDK usługi Azure interfejs API Graph CosmosDB & zasobów | Dokumentacja firmy Microsoft
 description: Dowiedz się wszystkiego o Azure CosmosDB interfejsu API programu Graph w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji.
 services: cosmos-db
-documentationcenter: .net
 author: luisbosquez
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-graph
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 10/17/2017
 ms.author: lbosq
-ms.openlocfilehash: 41608e76216f63ccf3165cc3959787c661d71fa0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c5975809b0f196fe88a11504549b046e910fc93c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795928"
 ---
 # <a name="azure-cosmos-db-graph-net-api-download-and-release-notes"></a>Azure rozwiązania Cosmos interfejs API .NET wykresu DB: Pobierz i informacje o wersji
 
@@ -55,14 +53,14 @@ Zaleca się za pomocą sterownika Gremlin open source dla platformy .NET, Gremli
   *  Traversal przeskoków z filtrami powinna zostać wyświetlona temu, na przykład: `g.V('1').outE().has('name', 'marko').inV()`.
 * Dodaje optymalizacji dla traversals z `limit()` kroku.
 
-#### <a name="breaking-changes"></a>Fundamentalne zmiany
+#### <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 * Usunięto obsługę .NET Framework 4.5.1
 
 * Nowy analizator składni wyrównana z `gremlin-groovy` gramatyki. W związku z tym niektóre wyrażenia, które działały wcześniej są niejednoznaczne dla nowego analizatora. Jeden przypadek Uwaga:
   * `in` i `as` są zastrzeżone słowa kluczowe w `gremlin-groovy`, więc te kroki musi być kwalifikowana za `.in()` lub `.as()` w celu uniknięcia błędów składni. Na przykład: `g.V().repeat(in()).times(2)`  ->  _zgłasza błąd składni_  
  `g.V().repeat(__.in()).times(2)` -> _zakończy się powodzeniem_
 
-### <a name="a-name024-preview024-preview"></a><a name="0.2.4-preview"/>0.2.4-preview
+### <a name="a-name024-preview024-preview"></a><a name="0.2.4-preview"/>0.2.4-Preview
 
 ### <a name="a-name022-preview022-preview"></a><a name="0.2.2-preview"/>0.2.2-Preview
 
@@ -87,10 +85,10 @@ Każde żądanie do bazy danych rozwiązania Cosmos Azure przy użyciu wycofane 
 | [0.3.1-Preview](#0.3.1-preview) |17 października 2017 r. |--- |
 | [0.3.0-Preview](#0.3.0-preview) |2 października 2017 r. |--- |
 | [0.2.4-preview](#0.2.4-preview) |4 sierpnia 2017 r. |--- |
-| [0.2.2-preview](#0.2.2-preview) |23 czerwca 2017 r. |--- |
-| [0.2.1-preview](#0.2.2-preview) |8 czerwca 2017 r. |--- |
-| [0.2.0-preview](#0.2.2-preview) |10 maja 2017 |--- |
-| [0.1.0-preview](#0.1.0-preview) |8 maja 2017 r. |--- |
+| [0.2.2-Preview](#0.2.2-preview) |23 czerwca 2017 r. |--- |
+| [0.2.1-Preview](#0.2.2-preview) |8 czerwca 2017 r. |--- |
+| [0.2.0-Preview](#0.2.2-preview) |10 maja 2017 |--- |
+| [0.1.0-Preview](#0.1.0-preview) |8 maja 2017 r. |--- |
 
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat interfejsu API Graph usługi Azure rozwiązania Cosmos bazy danych, zobacz [wprowadzenie do bazy danych Azure rozwiązania Cosmos: interfejs API programu Graph](graph-introduction.md). 

@@ -1,6 +1,6 @@
 ---
-title: "Za pomocą usługi Azure CLI 1.0 z usługą Azure Storage | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) 1.0, z usługą Azure Storage, aby utworzyć i zarządzać kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure. Azure CLI jest narzędziem do wielu platform"
+title: Za pomocą usługi Azure CLI 1.0 z usługą Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) 1.0, z usługą Azure Storage, aby utworzyć i zarządzać kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure. Azure CLI jest narzędziem do wielu platform
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737473"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Za pomocą usługi Azure CLI 1.0 z usługą Azure Storage
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wiersza polecenia platformy Azure oferuje zestaw typu open source, obsługujący wiele platform polecenia dotyczące pracy z platformą Azure. Zapewnia wiele funkcji w [portalu Azure](https://portal.azure.com) danych oraz jak sformatowanego dostęp do funkcji.
 
@@ -97,7 +98,7 @@ Po uruchomieniu skryptu, ma lokalne miejsce docelowe folder, który zawiera plik
 ### <a name="connect-to-your-azure-subscription"></a>Nawiązywanie połączenia z subskrypcją platformy Azure
 Większość poleceń magazyn będzie działać bez subskrypcji platformy Azure, ale zalecamy nawiązywanie połączenia z subskrypcją z wiersza polecenia platformy Azure. Aby skonfigurować wiersza polecenia platformy Azure do pracy z subskrypcją, postępuj zgodnie z instrukcjami [połączenie z subskrypcją platformy Azure z wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
 
-### <a name="create-a-new-storage-account"></a>Utwórz nowe konto magazynu
+### <a name="create-a-new-storage-account"></a>Tworzenie nowego konta magazynu
 Aby korzystać z magazynu Azure, konieczne będzie konto magazynu. Po skonfigurowaniu komputera do nawiązania połączenia subskrypcji, można utworzyć nowe konto magazynu Azure.
 
 ```azurecli
@@ -185,7 +186,7 @@ azure storage blob delete mycontainer myBlockBlob2
 Usługa pliki Azure oferuje współużytkowany magazyn dla aplikacji używających standardowego protokołu SMB. Maszyny wirtualne Microsoft Azure i usługi w chmurze, a także aplikacje lokalne mogą udostępniać dane za pośrednictwem zainstalowanych udziałów. Możesz zarządzać udziałami plików i danych plików za pomocą wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na pliki Azure, zobacz [wprowadzenie do usługi pliki Azure](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Tworzenie udziału plików
-Udział plików Azure jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi, należy utworzyć w udziale plików. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików do osiągnięcia limitu pojemności konta magazynu. Poniższy przykład tworzy udział plików o nazwie **moj_udzial**.
+Udział plików na platformę Azure jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi, należy utworzyć w udziale plików. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików do osiągnięcia limitu pojemności konta magazynu. Poniższy przykład tworzy udział plików o nazwie **moj_udzial**.
 
 ```azurecli
 azure storage share create myshare

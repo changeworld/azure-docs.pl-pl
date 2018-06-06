@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3841222d08b23f43f69e77fa43c469793b70ce63
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801385"
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trwałe woluminy z dysku systemu Azure
 
@@ -37,11 +38,14 @@ default (default)   kubernetes.io/azure-disk   1h
 managed-premium     kubernetes.io/azure-disk   1h
 ```
 
+> [!NOTE]
+> Trwały wolumin oświadczenia są określone w GiB, ale zarządzane Azure dyski są rozliczane według jednostki SKU dla określonego rozmiaru. Te jednostki SKU w zakresie od 32GiB S4 lub P4 dysków do 4TiB S50 lub P50 dysków. Ponadto, przepływności i wydajności IOPS Premium zarządzane dysku zależy od obu SKU i rozmiar wystąpienia w węzłach klastra AKS. Zobacz [cen i wydajności dysków zarządzanych][managed-disk-pricing-performance].
+
 ## <a name="create-persistent-volume-claim"></a>Tworzenie oświadczeń trwały wolumin
 
 Oświadczenie trwały wolumin (PVC) służy do automatycznie obsługiwać magazyn oparty na klasę magazynu. W takim przypadku PVC umożliwia jednej z klas wstępnie utworzone magazynu tworzenie Azure standard lub premium dysków zarządzanych.
 
-Utwórz plik o nazwie `azure-premimum.yaml`i skopiuj następujące manifestu.
+Utwórz plik o nazwie `azure-premium.yaml`i skopiuj następujące manifestu.
 
 Zwróć uwagę, że `managed-premium` magazynu jest określona w adnotacji i oświadczenia żąda dysku `5GB` rozmiaru w `ReadWriteOnce` dostępu.
 
@@ -63,7 +67,7 @@ spec:
 Tworzenie oświadczenia trwały wolumin o [zastosować kubectl] [ kubectl-apply] polecenia.
 
 ```azurecli-interactive
-kubectl apply -f azure-premimum.yaml
+kubectl apply -f azure-premium.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>Przy użyciu trwały wolumin
@@ -103,16 +107,17 @@ Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` k
 Dowiedz się więcej o Kubernetes woluminy trwałe przy użyciu dysku systemu Azure.
 
 > [!div class="nextstepaction"]
-> [Dodatek plug-in Kubernetes dla dysku systemu Azure][kubernetes-disk]
+> [Dodatek plug-in Kubernetes dla dysku systemu Azure][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
+[azure-disk-volume]: azure-disk-volume.md 
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md

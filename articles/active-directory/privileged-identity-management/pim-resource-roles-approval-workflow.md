@@ -3,7 +3,7 @@ title: Przepływ pracy zatwierdzania role zasobów platformy Azure Privileged Id
 description: Zawiera opis procesu przepływu pracy zatwierdzania zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7781c858a5c0e4db8593df0cf77b868b6fd23622
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 481e4a020f7143c070fabf183e8376f3862c7470
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699509"
 ---
 # <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Przepływ pracy zatwierdzania role zasobów platformy Azure Privileged Identity Management
 

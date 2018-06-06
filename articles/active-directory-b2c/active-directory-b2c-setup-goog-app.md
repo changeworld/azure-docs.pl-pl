@@ -1,21 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Google + konfiguracji | Dokumentacja firmy Microsoft'
+title: Google + konfiguracji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Podaj rejestracji i logowania klientom korzystającym z konta Google + w aplikacjach, które są zabezpieczone przez usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: db3044754e0c1316b49eda0600d41e3009c1ba16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 5377e4b56bca09a1785d14bfe4c32de01e6db7d3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711369"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Usługa Azure Active Directory B2C: Umożliwiają rejestracji i logowania użytkowników z konta Google +
 ## <a name="create-a-google-application"></a>Tworzenie aplikacji Google +

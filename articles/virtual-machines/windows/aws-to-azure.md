@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b7e794cb08647dde6fe59b6d4b06a9cbfab06e1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726537"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Przenieś Maszynę wirtualną systemu Windows z Amazon Web Services (AWS) na platformie Azure przy użyciu programu PowerShell
 
 Jeśli dokonujesz oceny maszyn wirtualnych platformy Azure do obsługi obciążeń, można wyeksportować istniejącego wystąpienia maszyny Wirtualnej systemu Windows EC2 Amazon Web Services (AWS). następnie przekazywanie wirtualnego dysku twardego (VHD) na platformie Azure. Po przekazaniu plików wirtualnego dysku twardego można utworzyć nowej maszyny Wirtualnej na platformie Azure z dysku VHD. 
 
-W tym temacie omówiono przeniesienie jednej maszyny Wirtualnej z usług AWS na platformie Azure. Jeśli chcesz przenieść maszyny wirtualne z usług AWS Azure na dużą skalę, zobacz [Migrowanie maszyn wirtualnych w Amazon Web Services (AWS) na platformie Azure za pomocą usługi Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+W tym artykule omówiono przeniesienie jednej maszyny Wirtualnej z usług AWS na platformie Azure. Jeśli chcesz przenieść maszyny wirtualne z usług AWS Azure na dużą skalę, zobacz [Migrowanie maszyn wirtualnych w Amazon Web Services (AWS) na platformie Azure za pomocą usługi Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
 ## <a name="prepare-the-vm"></a>Przygotowywanie maszyny wirtualnej 
  
@@ -45,7 +46,7 @@ Możesz przekazać zarówno ogólnych i specjalnych wirtualne dyski twarde na pl
 
 ## <a name="export-and-download-the-vhd"></a>Eksportowanie i Pobierz wirtualnego dysku twardego 
 
-Wyeksportuj wystąpienia EC2 do dysku VHD w zasobniku Amazon S3. Wykonaj kroki opisane w temacie dokumentacji Amazon [eksportowanie wystąpienia jako maszyny Wirtualnej przy użyciu maszyny Wirtualnej importu/eksportu](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) i uruchom [tworzenie — wystąpienie export zadania](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) polecenie, aby wyeksportować do pliku VHD EC2 wystąpienia. 
+Wyeksportuj wystąpienia EC2 do dysku VHD w zasobniku Amazon S3. Wykonaj kroki opisane w artykule dokumentacji Amazon [eksportowanie wystąpienia jako maszyny Wirtualnej przy użyciu maszyny Wirtualnej importu/eksportu](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) i uruchom [tworzenie — wystąpienie export zadania](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) polecenie, aby wyeksportować do pliku VHD EC2 wystąpienia. 
 
 Wyeksportowany plik wirtualnego dysku twardego jest zapisany w zasobniku Amazon S3, które określisz. Podstawowa składnia eksportowanie wirtualny dysk twardy jest poniżej, po prostu zastąpić tekst zastępczy w <brackets> z informacjami.
 

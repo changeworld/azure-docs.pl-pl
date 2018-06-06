@@ -1,13 +1,14 @@
 ---
-title: "Konfigurowanie usługi Azure Active Directory urządzeniach przyłączonych do | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować urządzenia przyłączone do usługi Azure Active Directory."
+title: Konfigurowanie usługi Azure Active Directory urządzeniach przyłączonych do | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować urządzenia przyłączone do usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ac6c9224925e5bfd3cb056c6c8d9cf2a96b0eb2b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 2aeaacbc48c8b49b967241522daf90e8fb228073
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713616"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Urządzeniach przyłączonych do konfigurowania usługi Azure Active Directory
 
@@ -45,14 +47,14 @@ Aby przyłączyć urządzenie z systemem Windows 10, usługi rejestracji urządz
 
 - Jeśli jesteś użytkownikiem zarządzanych systemu Windows umożliwia przejście do pulpitu za pośrednictwem automatycznego logowania.
 
-- W przypadku użytkowników federacyjnych należy Zaloguj się przy użyciu poświadczeń.
+- W przypadku użytkowników federacyjnych, musisz zalogować się przy użyciu poświadczeń.
 
 
 ## <a name="joining-a-device"></a>Dołączenie urządzenia
 
-Ta sekcja zawiera czynności, aby dołączyć urządzenie z systemem Windows 10 do usługi Azure AD. Jeśli pomyślnie dołączono urządzenia do usługi Azure AD Twojego **dostępu do służbowych** okna dialogowego wskazuje to z **połączony \<usługi Azure AD\>**  wpis.
+Ta sekcja zawiera czynności, aby dołączyć urządzenie z systemem Windows 10 do usługi Azure AD. Pomyślnie dołączono urządzenia jest wyświetlany jako **połączony \<usługi Azure AD\>**.
 
-![Połączony](./media/device-management-azuread-joined-devices-setup/13.png)
+![Połączono](./media/device-management-azuread-joined-devices-setup/13.png)
 
 
 **Aby dołączyć urządzenie z systemem Windows 10:**
@@ -103,16 +105,16 @@ Ta sekcja zawiera czynności, aby dołączyć urządzenie z systemem Windows 10 
 
 Aby sprawdzić, czy urządzenie jest dołączane do usługi Azure AD, możesz przejrzeć **dostępu służbowego** okna dialogowego na urządzeniu.
 
-![Połączony](./media/device-management-azuread-joined-devices-setup/13.png)
+![Połączono](./media/device-management-azuread-joined-devices-setup/13.png)
 
-Możesz też uruchomić następujące polecenie:`dsregcmd /status`  
+Możesz też uruchomić następujące polecenie: `dsregcmd /status`  
 Na urządzeniu pomyślnie dołączono **AzureAdJoined** jest **tak**.
 
-![Połączony](./media/device-management-azuread-joined-devices-setup/14.png)
+![Połączono](./media/device-management-azuread-joined-devices-setup/14.png)
 
 Można również przejrzeć ustawienia urządzenia w portalu usługi Azure AD.
 
-![Połączony](./media/device-management-azuread-joined-devices-setup/15.png)
+![Połączono](./media/device-management-azuread-joined-devices-setup/15.png)
 
 Aby uzyskać więcej informacji, zobacz [znaleźć urządzenia](device-management-azure-portal.md#locate-devices).
 

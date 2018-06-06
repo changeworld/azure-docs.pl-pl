@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 06/04/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6e663fe275fc195cb611e1032adc147bf4e99b1d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 94062c69a1de32d061b97bbaae0d7028b0424feb
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757676"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -41,7 +42,7 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być administratorem globalnym.
   
-* **Administrator usługi Dynamics 365**: użytkownicy z tą rolą mają uprawnienia globalne w ramach programu Microsoft CRM Online, gdy usługa jest obecne, a także możliwość Zarządzanie biletami pomocy technicznej i monitoruje kondycję usługi. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **Administrator Dynamics 365**: użytkownicy z tą rolą mają uprawnienia globalne w ramach programu Microsoft Dynamics 365, gdy usługa jest obecne, a także możliwość Zarządzanie biletami pomocy technicznej i monitoruje kondycję usługi. Więcej informacji na [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Administratorzy urządzenia**: użytkownicy z tą rolą stają się Administratorzy komputera lokalnego na wszystkich urządzeniach z systemem Windows 10, które dołączyły do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory.
 
@@ -67,6 +68,8 @@ Dostępne są następujące role administratora:
 * **Administrator usługi Intune**: użytkownicy z tą rolą uprawnień globalnych w ramach programu Microsoft Intune Online, gdy usługa jest obecny. Ponadto ta rola zawiera zdolność do zarządzania użytkownikami i urządzeniami, aby skojarzyć zasady, oraz tworzenie grup i zarządzanie nimi.
 
 * **Skrzynki pocztowej administratora**: Ta rola jest używana tylko w ramach usługi Exchange Online obsługa poczty e-mail dla urządzeń Blackberry KRAWĘDZI. Jeśli Twoja organizacja nie korzysta z poczty e-mail usługi Exchange Online urządzeń Blackberry KRAWĘDZI, nie należy używać tej roli.
+
+* **Czytnik Centrum wiadomości**: użytkowników w tej roli można monitorować powiadomienia i aktualizacje advisory kondycji w [Centrum Office 365 wiadomości](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) organizacji na skonfigurowanych usług, takich jak Exchange, Intune i Microsoft Zespoły. Czytniki Centrum wiadomości otrzymywać cotygodniowe roztwór e-mail wpisów, aktualizacji i może współużytkować wpisów Centrum wiadomości w usłudze Office 365. W usłudze Azure AD użytkownicy przypisani do tej roli będzie mieć tylko dostęp tylko do odczytu w usług Azure AD, takich jak użytkownicy i grupy. 
 
 * **Warstwa obsługi 1 partnera**: nie używaj. Ta rola jest przestarzała i zostanie usunięte z usługi Azure AD w przyszłości. Ta rola jest przeznaczony dla niewielkiej liczby partnerów odsprzedaż firmy Microsoft i nie jest przeznaczona do użytku ogólnego.
 
@@ -119,9 +122,9 @@ Dostępne są następujące role administratora:
 ### <a name="global-administrator"></a>Administrator globalny
 | Możliwość | Nie można wykonać |
 | --- | --- |
-|<p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p><p>Resetowanie haseł użytkowników</p><p>Resetowanie haseł innych administratorów</p> <p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Włącz lub Wyłącz uwierzytelnianie wieloskładnikowe</p><p>Wyświetlanie dzienników inspekcji</p> |ND |
+|<p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p><p>Resetowanie haseł użytkowników</p><p>Resetowanie haseł innym administratorom</p> <p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Włącz lub Wyłącz uwierzytelnianie wieloskładnikowe</p><p>Wyświetlanie dzienników inspekcji</p> |ND |
 
-### <a name="password-administrator--helpdesk-administrator"></a>Administrator haseł / administrator pomocy technicznej
+### <a name="password-administrator--helpdesk-administrator"></a>Administrator haseł / Administrator pomocy technicznej
 | Możliwość | Nie można wykonać |
 | --- | --- |
 | <p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Zmienianie haseł dla użytkowników i innych administratorów pomocy technicznej</p>|<p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p><p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Wyświetlanie raportów</p>|
@@ -155,20 +158,20 @@ Widok usługi Azure AD logowania raporty i dzienniki inspekcji<br>Wyświetlanie 
 | --- | --- |
 | <p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p> |<p>Resetowanie haseł użytkowników</p><p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p><p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Wyświetlanie dzienników inspekcji</p> |
 
-### <a name="user-account-administrator"></a>Administrator konta użytkownika
+### <a name="user-account-administrator"></a>Administrator kont użytkowników
 | Możliwość | Nie można wykonać |
 | --- | --- |
 | <p>Wyświetlanie informacji o firmy i użytkownika</p><p>Zarządzanie biletami pomocy technicznej pakietu Office</p><p>Zmienianie haseł dla użytkowników, administratorów pomocy technicznej i innych administratorów konta użytkownika</p><p>Tworzenie i zarządzanie widokami użytkownika</p><p>Tworzenie, edycję, usuwanie użytkowników i grup i zarządzanie licencjami użytkowników z ograniczeniami. Użytkownik nie można usuwać administratorów globalnych ani tworzyć innych administratorów.</p> |<p>Wykonywanie operacji rozliczeń i zakupów dla produktów pakietu Office</p><p>Zarządzanie domenami</p><p>Zarządzanie informacjami o firmy</p><p>Delegowanie ról administracyjnych do innych użytkowników</p><p>Używanie synchronizacji katalogów</p><p>Włącz lub Wyłącz uwierzytelnianie wieloskładnikowe</p><p>Wyświetlanie dzienników inspekcji</p> |
 
-### <a name="to-add-a-colleague-as-a-global-administrator"></a>Aby dodać współpracownika jako administrator globalny
+### <a name="to-add-a-user-as-a-global-administrator"></a>Aby dodać użytkownika jako administrator globalny
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu dzierżawcy.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure Active Directory](https://aad.portal.azure.com) przy użyciu konta administratora globalnego dla katalogu dzierżawcy.
 
    ![Otwieranie Centrum administracyjnego usługi azure AD](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
 2. Wybierz **użytkowników i grup &gt; wszyscy użytkownicy**
 
-3. Znajdź użytkownika, które chcesz wyznaczyć jako administrator globalny i otwórz blok dla tego użytkownika.
+3. Znajdź użytkownika, które chcesz wyznaczyć jako Administrator globalny i otwórz blok dla tego użytkownika.
 
 4. W bloku użytkownika, wybierz **roli katalogu**.
  

@@ -7,17 +7,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 5d8bb9769cbaa10a62fd2cf923235049429b7018
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b9655a168bc55572eee224125028fcac76a32331
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714769"
 ---
 # <a name="sign-up-for-azure-as-an-organization"></a>Tworzenie konta na platformie Azure jako organizacja
 Niedawna można tylko utworzysz nową subskrypcję Microsoft Azure przy użyciu konta Microsoft (Windows Live ID). Azure obsługuje teraz przy użyciu jednej z następujących dwóch metod konta, aby utworzyć konto:

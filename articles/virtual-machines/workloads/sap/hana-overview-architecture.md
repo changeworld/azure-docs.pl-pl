@@ -4,21 +4,22 @@ description: Omówienie architektury wdrażanie SAP HANA na platformie Azure (wy
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/02/2018
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763786"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Architektura na platformie Azure i SAP HANA (duże wystąpień) — omówienie
 
@@ -67,8 +68,8 @@ Kilka wspólnych definicji są powszechnie używane w zakresie architektury i te
    Użytkownicy domeny w domenie lokalnej można dostępu do serwerów i uruchamiania usług na tych maszynach wirtualnych (takie jak usługi systemu DBMS). Komunikację i rozpoznawania nazw między maszynami wirtualnymi wdrożona lokalnie i wdrożone Azure maszyn wirtualnych jest możliwe. Ten scenariusz jest typowy sposób, w której wdrożono zasobów SAP. Aby uzyskać więcej informacji, zobacz [planowania i projektowania dla bramy sieci VPN Azure](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [tworzenie sieci wirtualnej za pomocą połączenia lokacja lokacja za pomocą portalu Azure](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Dzierżawy**: klient wdrożone w sygnatura wystąpienia dużych HANA pobiera izolowane do *dzierżawy.* Dzierżawa jest izolowana w sieci, magazynu i warstwy obliczeniowej od pozostałych dzierżawców. Jednostki magazynu i zasobów obliczeniowych, przypisane do różnych dzierżaw nie widać siebie lub komunikują się ze sobą na poziomie wystąpienia dużych HANA sygnatury. Klient może wybrać wdrożenia w różnych dzierżawców. Nawet wówczas nie występuje komunikacja między dzierżawcami na poziomie wystąpienia dużych HANA sygnatury.
 - **Jednostka SKU kategorii**: dla HANA dużych wystąpienia, dostępnych w następujących dwóch kategorii jednostki SKU:
-    - **Typ klasy I**: S72, S72m S144, S144m, S192 i S192m
-    - **Typ klasy II**: S384, S384m S384xm, S576m, S768m i S960m
+    - **Typ klasy I**: S72, S72m S144, S144m, S192, S192m i S192xm
+    - **Typ klasy II**: S384, S384m S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m
 
 
 Szereg dodatkowe zasoby są dostępne na temat wdrażania SAP obciążenia w chmurze. Jeśli planujesz wykonanie wdrożenia SAP HANA na platformie Azure, należy być doświadczenia w pracy z i korzystają z zasad IaaS platformy Azure i wdrożenia SAP obciążeń na platformie Azure IaaS. Przed kontynuowaniem, zobacz [rozwiązań Użyj SAP na maszynach wirtualnych Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać więcej informacji. 
@@ -135,19 +136,22 @@ Począwszy od 2017 lipca SAP HANA na platformie Azure (wystąpienia duże) są d
 
 | Rozwiązania SAP | Procesor CPU | Memory (Pamięć) | Magazyn | Dostępność |
 | --- | --- | --- | --- | --- |
-| Zoptymalizowana pod kątem OLAP: programu SAP BW BW/4HANA<br /> lub SAP HANA dla ogólnych obciążeń OLAP | SAP HANA na Azure S72<br /> — 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 rdzeni Procesora i 72 wątków CPU |  768 GB |  3 TB | Dostępna |
+| Zoptymalizowana pod kątem OLAP: programu SAP BW BW/4HANA<br /> lub SAP HANA dla ogólnych obciążeń OLAP | SAP HANA na Azure S72<br /> — 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 rdzeni Procesora i 72 wątków CPU |  768 GB |  3 TB | Dostępne |
 | --- | SAP HANA na Azure S144<br /> – 4 procesor Intel Xeon® x E7 8890 v3<br /> 72 rdzeni Procesora i 144 wątków CPU |  1,5 TB |  6 TB | Nieoferowane już |
-| --- | SAP HANA na Azure S192<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU |  2.0 TB |  8 TB | Dostępna |
-| --- | SAP HANA na Azure S384<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  4.0 TB |  16 TB | Dostępna |
-| Zoptymalizowana pod kątem OLTP: SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> ogólny OLTP | SAP HANA na Azure S72m<br /> — 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 rdzeni Procesora i 72 wątków CPU |  1,5 TB |  6 TB | Dostępna |
+| --- | SAP HANA na Azure S192<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU |  2.0 TB |  8 TB | Dostępne |
+| --- | SAP HANA na Azure S384<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  4.0 TB |  16 TB | Dostępne |
+| Zoptymalizowana pod kątem OLTP: SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> ogólny OLTP | SAP HANA na Azure S72m<br /> — 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 rdzeni Procesora i 72 wątków CPU |  1,5 TB |  6 TB | Dostępne |
 |---| SAP HANA na Azure S144m<br /> – 4 procesor Intel Xeon® x E7 8890 v3<br /> 72 rdzeni Procesora i 144 wątków CPU |  3.0 TB |  12 TB | Nieoferowane już |
-|---| SAP HANA na Azure S192m<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU  |  4.0 TB |  16 TB | Dostępna |
-|---| SAP HANA na Azure S384m<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  6.0 TB |  18 TB | Dostępna |
-|---| SAP HANA na Azure S384xm<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  8.0 TB |  22 TB |  Dostępna |
-|---| SAP HANA na Azure S576m<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  12.0 TB |  28 TB | Dostępna |
-|---| SAP HANA na Azure S768m<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  16.0 TB |  36 TB | Dostępna |
-|---| SAP HANA na Azure S960m<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 rdzeni Procesora i 960 wątków CPU |  20.0 TB |  46 TB | Dostępna |
-
+|---| SAP HANA na Azure S192m<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU  |  4.0 TB |  16 TB | Dostępne |
+|---| SAP HANA na Azure S384m<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  6.0 TB |  18 TB | Dostępne |
+|---| SAP HANA na Azure S384xm<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  8.0 TB |  22 TB |  Dostępne |
+|---| SAP HANA na Azure S576m<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  12.0 TB |  28 TB | Dostępne |
+|---| SAP HANA na Azure S768m<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  16.0 TB |  36 TB | Dostępne |
+|---| SAP HANA na Azure S960m<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 rdzeni Procesora i 960 wątków CPU |  20.0 TB |  46 TB | Dostępne |
+| Zoptymalizowana pod kątem OLTP **TDIv5**: SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> ogólny OLTP | SAP HANA na Azure S192xm<br /> – 4 procesor Intel Xeon® x E7 8890 v4<br /> 96 rdzeni Procesora i 192 wątków CPU |  6.0 TB |  16 TB | Dostępne |
+|---| SAP HANA na Azure S384xxm<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 rdzeni Procesora i 384 wątków CPU |  12.0 TB |  28 TB | Dostępne |
+|---| SAP HANA na Azure S576xm<br /> – 12 procesor Intel Xeon® x E7 8890 v4<br /> 288 rdzeni Procesora i 576 wątków CPU |  18,0 TB |  41 TB | Dostępne |
+|---| SAP HANA na Azure S768xm<br /> – 16 procesor Intel Xeon® x E7 8890 v4<br /> 384 rdzeni Procesora i 768 wątków CPU |  24.0 TB |  56 TB | Dostępne |
 - Rdzenie procesora CPU = suma nie-Procesora rdzeni hiperwątkowych sumy procesorów jednostki serwera.
 - Wątków procesora CPU = Suma wątków obliczeniowe udostępniane przez hiperwątkowych rdzeni procesora CPU sumy procesorów jednostki serwera. Wszystkie jednostki są domyślnie skonfigurowane, aby używać technologii Hyper-Threading.
 
@@ -156,8 +160,8 @@ Konkretne konfiguracje wybrane są zależne od obciążenia, zasobów procesora 
 
 Podstawowa dla wszystkich ofert sprzętu są certyfikowane SAP HANA TDI. Dwóch różnych klas sprzętu dzielą jednostki SKU do:
 
-- S72, S72m S144, S144m, S192 i S192m, które są określane jako "Typ klasy I" z jednostki SKU.
-- S384, S384m S384xm, S576m, S768m i S960m, które są określane jako "Typ klasy II" z jednostki SKU.
+- S72, S72m S144, S144m, S192, S192m i S192xm, które są określane jako "Typ klasy I" z jednostki SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm i S960m, które są określane jako "Typ klasy II" z jednostki SKU.
 
 Pełną sygnatury wystąpienia dużych HANA wyłącznie nie jest przydzielona dla jednego odbiorcy&#39;Użyj s. Ten fakt dotyczy stojakami zasoby obliczeniowe i magazynujące, które są połączone za pośrednictwem sieci szkieletowej również wdrożona na platformie Azure. Wystąpienie dużych HANA infrastruktury, takich jak Azure, wdraża różnych klientów &quot;dzierżawców&quot; które są odizolowane od siebie w następujących trzech poziomach:
 
@@ -337,17 +341,21 @@ Duże HANA wystąpienie typu klasy I zawiera cztery razy wielkość pamięci jak
 
 Zobacz poniższą tabelę pod względem Alokacja magazynu. W tabeli wymieniono nierównej pojemności dla różnych woluminach wyposażone w różnych jednostkach HANA dużych wystąpienia.
 
-| HANA dużych wystąpienia jednostki SKU | Hana/danych | Hana/dziennika | Hana/udostępnionych | Hana / / kopii zapasowej dziennika |
+| HANA dużych wystąpienia jednostki SKU | Hana/danych | Hana/dziennika | Hana/udostępnionych | Hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4,608 GB | 1024 GB | 1,536 GB | 1024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
+| S192xm |  12 000 GB |  2050 GB |  2050 GB |  OD 2.040 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12 000 GB | 2050 GB | 2050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2050 GB | 2050 GB | 2,040 GB |
+| S384xxm |  20,000 GB | 3,100 GB | 2050 GB | 3,100 GB |
 | S576m | 20,000 GB | 3,100 GB | 2050 GB | 3,100 GB |
+| S576xm | 31,744 GB | 4096 GB | 2048 GB | 4096 GB |
 | S768m | UŻYWANE 28 000 GB | 3,100 GB | 2050 GB | 3,100 GB |
+| S768xm | 40,960 GB | 6,144 GB | 4096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2050 GB | 4,100 GB |
 
 

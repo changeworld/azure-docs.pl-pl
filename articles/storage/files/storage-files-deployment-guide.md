@@ -1,24 +1,25 @@
 ---
-title: "Wdrażanie usługi pliki Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć usługi pliki Azure od początku do końca."
+title: Wdrażanie usługi pliki Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć usługi pliki Azure od początku do końca.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 193a403a64cea31a2e4cea21a5838be71af8dd53
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737354"
 ---
 # <a name="how-to-deploy-azure-files"></a>Jak wdrożyć usługę Pliki Azure
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne przy użyciu standardowego protokołu SMB. W tym artykule opisano, jak praktycznie wdrażania plików Azure w ramach danej organizacji.
@@ -29,23 +30,23 @@ Zdecydowanie zaleca się odczytu [planowania wdrożenia usługi pliki Azure](sto
 W tym artykule przyjęto założenie, że już zostały wykonane następujące kroki:
 
 - Utworzone konto magazynu platformy Azure za pomocą odpowiednie opcje odporności i szyfrowania, w regionie, w której wymagasz. Zobacz [Utwórz konto magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) dla wskazówki krok po kroku dotyczące tworzenia konta magazynu.
-- Utworzyć udział plików Azure z żądaną limitu na koncie magazynu. Zobacz [utworzyć udział plików](storage-how-to-create-file-share.md) dla wskazówki krok po kroku dotyczące sposobu tworzenia udziału plików.
+- Utworzyć udział plików na platformę Azure z żądaną limitu na koncie magazynu. Zobacz [utworzyć udział plików](storage-how-to-create-file-share.md) dla wskazówki krok po kroku dotyczące sposobu tworzenia udziału plików.
 
 ## <a name="transfer-data-into-azure-files"></a>Transfer danych do usługi pliki Azure
-Możesz przeprowadzić migrację istniejących udziałów plików, takich jak te przechowywane lokalnie, do nowego udziału plików platformy Azure. W tej sekcji opisano sposób przenoszenia danych do pliku Azure udziału za pośrednictwem kilku popularnych metod szczegółowe z [przewodnik planowania](storage-files-planning.md#data-transfer-method)
+Możesz przeprowadzić migrację istniejących udziałów plików, takich jak te przechowywane lokalnie, do nowego udziału plików na platformę Azure. W tej sekcji opisano sposób przenoszenia danych do udziału plików na platformę Azure za pośrednictwem kilku popularnych metod szczegółowe z [przewodnik planowania](storage-files-planning.md#data-transfer-method)
 
 ### <a name="azure-file-sync-preview"></a>Synchronizacja plików na platformę Azure (wersja zapoznawcza)
-Synchronizacji plików platformy Azure (wersja zapoznawcza) umożliwia scentralizowane udziałów plików w organizacji w plikach Azure bez zwiększanie elastyczność, wydajności i zgodności serwera plików lokalnych. Jest to realizowane poprzez przekształcanie systemów Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
+Synchronizacji plików platformy Azure (wersja zapoznawcza) umożliwia scentralizowane udziałów plików w organizacji w plikach Azure bez zwiększanie elastyczność, wydajności i zgodności serwera plików lokalnych. Robi to poprzez przekształcanie systemach Windows Servers przeznaczonych do szybkiego pamięci podręcznej udziału plików na platformę Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
-Azure synchronizacji plików może służyć do migracji danych do udziału plików platformy Azure, nawet jeśli mechanizmu synchronizacji nie jest potrzebne do długoterminowego użycia. Więcej informacji na temat sposobu synchronizacji plików Azure umożliwia przesyłanie danych do udziału plików platformy Azure można znaleźć w [planowania wdrożenia synchronizacji plików Azure](storage-sync-files-planning.md) i [Wdrażanie synchronizacji plików Azure](storage-sync-files-deployment-guide.md).
+Azure synchronizacji plików może służyć do migracji danych do udziału plików na platformę Azure, nawet jeśli mechanizmu synchronizacji nie jest potrzebne do długoterminowego użycia. Więcej informacji na temat sposobu synchronizacji plików Azure umożliwia przesyłanie danych do udziału plików na platformę Azure można znaleźć w [planowania wdrożenia synchronizacji plików Azure](storage-sync-files-planning.md) i [Wdrażanie synchronizacji plików Azure](storage-sync-files-deployment-guide.md).
 
 ### <a name="azure-importexport"></a>Usługa Azure Import/Export
-Usługa Import/Eksport Azure umożliwia bezpieczne transfer dużych ilości danych do udziału plików platformy Azure przez wysyłanie dyski twarde do centrum danych Azure. Zobacz [przesyłanie danych do magazynu Azure za pomocą usługi Import/Eksport Microsoft Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) dla bardziej szczegółowe omówienie usługi.
+Usługa Import/Eksport Azure umożliwia bezpieczne transfer dużych ilości danych do udziału plików na platformę Azure poprzez wysyłanie dysków twardych do centrum danych Azure. Zobacz [przesyłanie danych do magazynu Azure za pomocą usługi Import/Eksport Microsoft Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) dla bardziej szczegółowe omówienie usługi.
 
 > [!Note]  
-> Usługa Import/Eksport Azure nie obsługuje eksportu pliki z udziału plików Azure w tej chwili.
+> Usługa Import/Eksport Azure nie obsługuje eksportu pliki z udziału plików na platformę Azure w tej chwili.
 
-Poniższe kroki będą importowane dane z lokalnej lokalizacji do udziału plików platformy Azure.
+Poniższe kroki będą importowane dane z lokalnej lokalizacji do udziału plików na platformę Azure.
 
 1. Uzyskaj wymaganej liczby dysków twardych na pocztę na platformie Azure. Dyski twarde mogą być o dowolnym rozmiarze dysku, ale musi być albo 2,5-calowe lub 3,5" dysków SSD i HDD obsługujące standard SATA II lub SATA III. 
 
@@ -62,7 +63,7 @@ Poniższe kroki będą importowane dane z lokalnej lokalizacji do udziału plik�
 
         ![Zrzut ekranu kreatora nowy wolumin prosty na zarządzanie dyskami programu MMC](media/storage-files-deployment-guide/transferdata-importexport-2.png)
 
-4. Utwórz plik CSV zestawu danych. Plik CSV zestawu danych jest mapowanie między ścieżka do danych w sieci lokalnej i odpowiednie udziału plików platformy Azure, które dane powinien zostać skopiowany do. Na przykład następujący plik CSV dataset mapuje lokalnego udziału plików ("F:\shares\scratch") do udziału plików platformy Azure ("MyAzureFileShare"):
+4. Utwórz plik CSV zestawu danych. Plik CSV zestawu danych jest mapowanie między ścieżka do danych w sieci lokalnej i udział plików Azure odpowiednie dane powinien zostać skopiowany do. Na przykład następujący plik CSV dataset mapuje lokalnego udziału plików ("F:\shares\scratch") do udziału plików na platformę Azure ("MyAzureFileShare"):
     
     ```
     BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -91,18 +92,18 @@ Poniższe kroki będą importowane dane z lokalnej lokalizacji do udziału plik�
     > [!Warning]  
     > Po zakończeniu przygotowywania dysków nie należy modyfikować dane na dyski twarde lub pliku dziennika.
 
-7. [Utwórz zadanie importu](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-an-export-job).
+7. [Utwórz zadanie importu](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>Robocopy
 ROBOCOPY jest narzędziem dobrze znanych kopiowania jest dostarczana z systemem Windows i Windows Server. ROBOCOPY może służyć do przesyłania danych do usługi pliki Azure instalowanie udziału plików lokalnie, a następnie używając lokalizacji zainstalowanego jako miejsce docelowe polecenia Robocopy. Używanie Robocopy jest bardzo proste:
 
-1. [Instalowanie udziału plików Azure](storage-how-to-use-files-windows.md). Aby uzyskać optymalną wydajność firma Microsoft zaleca instalowanie udziału plików platformy Azure lokalnie na serwerze, który zawiera dane. W niektórych przypadkach, np. gdy serwer plików, który pełni dane urządzenie NAS to może nie być możliwe. W takim przypadku jest doskonale dopuszczalne, aby zainstalować udział plików Azure na komputerze. W tym przykładzie `net use` jest używany w wierszu polecenia, aby zainstalować udział plików:
+1. [Instalowanie udziału plików Azure](storage-how-to-use-files-windows.md). Aby uzyskać optymalną wydajność firma Microsoft zaleca instalowanie udziału plików na platformę Azure lokalnie na serwerze, który zawiera dane. W niektórych przypadkach, np. gdy serwer plików, który pełni dane urządzenie NAS to może nie być możliwe. W takim przypadku jest doskonale dopuszczalne, aby zainstalować udział plików na platformę Azure na komputerze. W tym przykładzie `net use` jest używany w wierszu polecenia, aby zainstalować udział plików:
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. Użyj `robocopy` w wierszu polecenia, aby przenieść dane do udziału plików platformy Azure:
+2. Użyj `robocopy` do przenoszenia danych do udziału plików na platformę Azure, w wierszu polecenia:
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -114,7 +115,7 @@ ROBOCOPY jest narzędziem dobrze znanych kopiowania jest dostarczana z systemem 
 Narzędzie AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z magazynu obiektów Blob platformy Azure, a także pliki Azure przy użyciu prostych poleceń z optymalną wydajnością. Używanie narzędzia AzCopy jest prosty:
 
 1. Pobierz [najnowszą wersję programu AzCopy w systemie Windows](http://aka.ms/downloadazcopy) lub [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
-2. Użyj `azcopy` w wierszu polecenia, aby przenieść dane do udziału plików platformy Azure. W systemie Windows ma następującą składnię: 
+2. Użyj `azcopy` w wierszu polecenia, aby przenieść dane do udziału plików na platformę Azure. W systemie Windows ma następującą składnię: 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S
@@ -132,7 +133,7 @@ Narzędzie AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania dan
 Aby zastąpić lokalnymi udziału plików, warto wstępnie zainstalować na komputerach, które będą używane w akcji. Można to zrobić automatycznie na liście urządzeń.
 
 > [!Note]  
-> Instalowanie udziału plików Azure wymaga jako hasło przy użyciu klucza konta magazynu, w związku z tym tylko zaleca się instalowanie w środowiskach zaufanych. 
+> Instalowanie udziału plików na platformę Azure wymaga jako hasło przy użyciu klucza konta magazynu, w związku z tym tylko zaleca się instalowanie w środowiskach zaufanych. 
 
 ### <a name="windows"></a>Windows
 PowerShell można uruchomić polecenie instalacji na wielu komputerach. W poniższym przykładzie `$computers` ręcznie zostanie wypełnione, ale można wygenerować listę komputerów, aby automatycznie zainstalować. Na przykład można wypełnić tej zmiennej z wyników z usługi Active Directory.

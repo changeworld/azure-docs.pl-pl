@@ -1,29 +1,25 @@
 ---
-title: "Równoległe gałęzie - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Utwórz lub przyłącz równoległych gałęziach w aplikacjach logiki"
+title: Utwórz lub przyłącz równoległych gałęziach - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Jak utworzyć lub połączyć równoległych gałęziach dla przepływów pracy w aplikacjach logiki platformy Azure
 services: logic-apps
-keywords: "gałęzie, przetwarzanie równoległe"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 9a836b707a576b9a938f43397ef35c00aeb476bf
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 40af32b1618ee495cff82ed0a588ad620b759e96
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725551"
 ---
-# <a name="create-or-join-parallel-branches-in-your-logic-app"></a>Utwórz lub przyłącz równoległych gałęziach w aplikacji logiki
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Utwórz lub przyłącz równoległych gałęziach dla przepływu pracy akcji w aplikacjach logiki platformy Azure
 
-Domyślnie akcje w aplikacji logiki są wykonywane sekwencyjnie. Aby wykonać akcje niezależne, w tym samym czasie, można utworzyć [równoległych gałęziach](#parallel-branches), a następnie [join gałęzi](#join-branches) dalszej części z przepływu. 
+Domyślnie czynności użytkownika w przepływach pracy aplikacji logiki są wykonywane sekwencyjnie. Aby wykonać akcje niezależne, w tym samym czasie, można utworzyć [równoległych gałęziach](#parallel-branches), a następnie [join gałęzi](#join-branches) dalszej części z przepływu. 
 
 > [!TIP] 
 > Jeśli masz wyzwalacz, który odbiera tablicy i chcesz uruchomić przepływ pracy dla każdego elementu tablicy, możesz *debatch* tablicy z [ **SplitOn** wyzwolenia właściwości](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
@@ -36,7 +32,7 @@ Domyślnie akcje w aplikacji logiki są wykonywane sekwencyjnie. Aby wykonać ak
 
 <a name="parallel-branches"></a>
 
-## <a name="add-a-parallel-branch"></a>Dodaj gałąź równoległych
+## <a name="add-a-parallel-branch"></a>Dodaj gałąź równoległą
 
 Wykonanie kroków niezależne, w tym samym czasie, możesz dodać równoległych gałęziach obok istniejących kroku. 
 

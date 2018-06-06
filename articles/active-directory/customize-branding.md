@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
-ms.date: 01/19/2018
+ms.date: 05/23/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5573399b33da64df8b9bbf78a9583572cf148d7b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713851"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Szybki Start: Dodawanie znakowania firmowego do stron logowania w usłudze Azure AD
 Aby uniknąć nieporozumień, wiele firm chce zastosować spójny wygląd i zachowanie we wszystkich witrynach sieci Web i usługach, którymi zarządzają. Azure Active Directory (Azure AD) zapewnia tę funkcję, umożliwiając dostosowanie wyglądu strony logowania z logo firmy i niestandardowych schematów kolorów. Strona logowania zostanie wyświetlony po zalogowaniu się do aplikacji opartych na sieci web takich jak Office 365 korzystających z usługi Azure AD jako dostawcy tożsamości. Użytkownik interakcji z tej strony, aby wprowadzić swoje poświadczenia.
@@ -83,24 +84,24 @@ Azure AD logowania zapewnia użytkownika, którego opcja pozostaje zalogowany po
 ## <a name="add-company-branding-to-your-directory"></a>Dodawanie znakowania firmowego do katalogu
 
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym dla dzierżawy.
-2. Wybierz **użytkowników i grup** > **firmy znakowania** > **Edytuj**.
+2. Wybierz **usługi Azure Active Directory** > **firmy znakowania** > **Edytuj**.
   
   ![Otwieranie znakowania niestandardowych](./media/customize-branding/navigation-to-branding.png)
 3. Zmodyfikuj elementy, które chcesz dostosować. Wszystkie elementy są opcjonalne.
   
   ![Edytuj niestandardowe znakowanie](./media/customize-branding/edit-branding.png)
-5. Gdy wszystko będzie gotowe, wybierz **zapisać**.
+4. Gdy wszystko będzie gotowe, wybierz **zapisać**.
 
 Może potrwać do godziny wszelkie zmiany wprowadzone do strony logowania znakowania na.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Dodaj specyficzne dla języka znakowanie firmowe do katalogu
 
 1. Zaloguj się w [centrum administracyjnym usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz **użytkowników i grup** > **firmy znakowania** > **nowy język**.
+2. Wybierz **usługi Azure Active Directory** > **firmy znakowania** > **nowy język**.
   
   ![Dodawanie znakowania elementy specyficzne dla języka](./media/customize-branding/add-language.png)
-5. Zmodyfikuj elementy, które chcesz dostosować. Wszystkie elementy są opcjonalne.
-6. Gdy wszystko będzie gotowe, wybierz **zapisać**.
+3. Zmodyfikuj elementy, które chcesz dostosować. Wszystkie elementy są opcjonalne.
+4. Gdy wszystko będzie gotowe, wybierz **zapisać**.
 
 Może potrwać do godziny wszelkie zmiany wprowadzone do strony logowania znakowania na.
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f7603d56a56e45771fa170c05ec62a0725ba367a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715826"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -56,7 +57,7 @@ Analiza ruchu jest dostępna w wersji zapoznawczej. Funkcje w wersji zapoznawcze
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="enable-network-watcher"></a>Włącz obserwatora sieciowego 
+### <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher 
 
 Analiza ruchu, musisz mieć istniejących obserwatora sieciowego lub [włączyć obserwatora sieciowego](network-watcher-create.md) w poszczególnych regionach, czy masz grup NSG, które mają być analizowane ruch związany. Analiza ruchu mogą być włączone dla grupy NSG hostowanej w żadnym z [obsługiwane regiony](#supported-regions).
 
@@ -70,7 +71,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
 
 ### <a name="select-a-network-security-group"></a>Wybierz grupy zabezpieczeń sieci 
 
-Przed włączeniem rejestrowania przepływu NSG, musi mieć grupę zabezpieczeń sieci do logowania przepływów. Jeśli nie masz sieciowej grupy zabezpieczeń, zobacz [Utwórz grupę zabezpieczeń sieci](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) go utworzyć.
+Przed włączeniem rejestrowania przepływu NSG, musi mieć grupę zabezpieczeń sieci do logowania przepływów. Jeśli nie masz sieciowej grupy zabezpieczeń, zobacz [Utwórz grupę zabezpieczeń sieci](../virtual-network/manage-network-security-group.md#create-a-network-security-group) go utworzyć.
 
 Po lewej stronie portalu Azure, wybierz **Monitor**, następnie **obserwatora sieciowego**, a następnie wybierz **dzienniki przepływu NSG**. Wybierz grupy zabezpieczeń sieci, który chcesz włączyć dziennik przepływu NSG, jak pokazano na poniższej ilustracji:
 

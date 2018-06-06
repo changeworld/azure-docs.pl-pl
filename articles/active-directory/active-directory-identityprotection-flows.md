@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 424ea1eca637653c5e7cfed9dc4b970d5afd91ad
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713412"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Logowanie, korzystając z usługi Azure AD Identity Protection
 Za pomocą usługi Azure Active Directory Identity Protection można:
@@ -27,9 +29,9 @@ Za pomocą usługi Azure Active Directory Identity Protection można:
 * Wymagaj rejestracji w usłudze Multi-Factor authentication użytkowników
 * Obsługa ryzykowne logowania i użytkowników z naruszonymi zabezpieczeniami
 
-Odpowiedź systemu te problemy ma wpływ na środowisko logowania użytkownika, ponieważ tylko bezpośrednio logowanie przez podanie nazwy użytkownika i hasło nie będzie możliwe już. Aby bezpiecznie uzyskać użytkownika są wymagane dodatkowe kroki do firm.
+Odpowiedź systemu te problemy ma wpływ na środowisko logowania użytkownika, ponieważ bezpośrednio logowanie przez podanie nazwy użytkownika i hasło nie będzie możliwe już. Aby bezpiecznie uzyskać użytkownika są wymagane dodatkowe kroki do firm.
 
-Ten temat zawiera omówienie środowiska użytkownika logowania dla wszystkich przypadków, które mogą wystąpić.
+W tym artykule przedstawiono omówienie środowiska użytkownika logowania dla wszystkich przypadków, które mogą wystąpić.
 
 **Multi-Factor Authentication**
 
@@ -64,14 +66,14 @@ Administratorzy mogą ustawić zasady, które wymaga od użytkowników skonfigur
     ![Korygowanie](./media/active-directory-identityprotection-flows/142.png "korygowania")
 
 ## <a name="risky-sign-in-recovery"></a>Ryzykowne odzyskiwania logowania
-Jeśli administrator skonfigurował zasady logowania ryzyka, narażeni użytkownicy są powiadamiani o próby logowania. 
+Jeśli administrator skonfigurował zasady logowania ryzyka, narażeni użytkownicy są powiadamiani, kiedy próbują zalogować. 
 
 **Ryzykowne przepływu logowania ma dwa kroki:** 
 
 1. Użytkownik jest informowany nietypowe zachowanie wykryto o ich logowania, takich jak logowanie nastąpiło z nowej lokalizacji, urządzenia lub aplikacji. 
    
     ![Korygowanie](./media/active-directory-identityprotection-flows/120.png "korygowania")
-2. Użytkownik musi potwierdzić swoją tożsamość przy użyciu testu zabezpieczeń rozwiązywania. Jeśli użytkownik jest zarejestrowany w usłudze Multi-Factor authentication muszą wyrównana kod zabezpieczeń w celu jego numeru telefonu. Ponieważ jest to tylko ryzykowne logowania i zagrożone konto użytkownika nie będziesz mieć możliwość zmiany hasła w tym przepływie. 
+2. Użytkownik musi potwierdzić swoją tożsamość przy użyciu testu zabezpieczeń rozwiązywania. Jeśli użytkownik jest zarejestrowany w usłudze Multi-Factor authentication, które muszą zostać zaokrąglona rzeczy przed wyjazdem kodu zabezpieczeń do numeru telefonu. Ponieważ jest to po prostu ryzykowne logowania i zagrożone konto, użytkownik nie będziesz mieć możliwość zmiany hasła w tym przepływie. 
    
     ![Korygowanie](./media/active-directory-identityprotection-flows/121.png "korygowania")
 
@@ -81,14 +83,14 @@ Administratorzy mogą wybrać także ustawić zasady logowania ryzyka, aby uniem
 ![Korygowanie](./media/active-directory-identityprotection-flows/200.png "korygowania")
 
 ## <a name="compromised-account-recovery"></a>Zagrożone konto odzyskiwania
-Gdy skonfigurowano zasady zabezpieczeń użytkownika ryzyka, użytkowników, którzy spełniają użytkownika ryzyka poziom określonym w zasadach (i w związku z tym są uznawane za naruszenia zabezpieczeń) musi przejść przepływu odzyskiwania naruszenia użytkownika przed ich można logowania. 
+Gdy skonfigurowano zasady zabezpieczeń użytkownika ryzyka, użytkowników, którzy spełniają użytkownika ryzyka poziom określonym w zasadach (i w związku z tym są uznawane za naruszenia zabezpieczeń) musi przejść przepływu odzyskiwania naruszenia użytkownika, aby móc zalogować się. 
 
 **Przepływ odzyskiwania naruszenia użytkownik ma trzy kroki:**
 
 1. Użytkownik jest informowany, że ich bezpieczeństwo konta jest zablokowana z powodu podejrzanej aktywności lub ujawnione poświadczenia.
    
     ![Korygowanie](./media/active-directory-identityprotection-flows/101.png "korygowania")
-2. Użytkownik musi potwierdzić swoją tożsamość przy użyciu testu zabezpieczeń rozwiązywania. Jeśli użytkownik jest zarejestrowany w usłudze Multi-Factor authentication będą oni mogli samodzielnie odzyskiwać złamaniu. Należy wyrównana kod zabezpieczeń w celu jego numeru telefonu. 
+2. Użytkownik musi potwierdzić swoją tożsamość przy użyciu testu zabezpieczeń rozwiązywania. Jeśli użytkownik jest zarejestrowany w usłudze Multi-Factor authentication będą oni mogli samodzielnie odzyskiwać złamaniu. Muszą round rzeczy przed wyjazdem kodu zabezpieczeń do numeru telefonu. 
    
    ![Korygowanie](./media/active-directory-identityprotection-flows/110.png "korygowania")
 3. Ponadto użytkownik będzie zmuszony do zmiany hasła, ponieważ ktoś inny ma dostęp do swojego konta. 

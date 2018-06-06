@@ -4,7 +4,7 @@ description: Synchronizacja programu Azure pliku lokalnego konfiguracji sieci
 services: storage
 documentationcenter: ''
 author: fauhse
-manager: klaasl
+manager: aungoo
 editor: tamram
 ms.assetid: ''
 ms.service: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 979897e3cb703b36a46e96848a9176d6d4c6cc6a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738534"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Synchronizacja programu Azure pliku nawiązuje połączenie z serwerami lokalnymi do usługi pliki Azure, włączenie synchronizacji obejmujący wiele lokacji i w chmurze, Obsługa poziomów funkcji. W efekcie lokalnego serwera musi połączone z Internetem. Administrator IT musi określić ścieżkę najlepsze na serwerze, aby uzyskać dostęp do usług w chmurze Azure.
@@ -64,7 +65,7 @@ W poniższej tabeli opisano domen wymagana dla komunikacji:
 | **Azure Resource Manager** | https://management.azure.com | Każde wywołanie użytkownika (np. programu PowerShell) przechodzi przez ten adres URL, w tym wywołanie rejestracji serwera początkowego. |
 | **Azure Active Directory** | https://login.windows.net | Wywołania usługi Azure Resource Manager muszą być wprowadzane przez uwierzytelnionego użytkownika. Zakończyła się powodzeniem, ten adres URL jest używany do uwierzytelniania użytkowników. |
 | **Azure Active Directory** | https://graph.windows.net/ | W ramach wdrażania synchronizacja programu Azure pliku nazwy głównej usługi w subskrypcji usługi Azure Active Directory zostanie utworzona. Ten adres URL jest używany w tym. Tego podmiotu zabezpieczeń jest używany do delegowania minimalny zestaw praw do usługi Azure synchronizacji plików. Użytkownik wykonywania początkowej konfiguracji synchronizacji plików Azure musi być uwierzytelniony użytkownik z uprawnieniami właściciela subskrypcji. |
-| **Azure Storage** | &ast;.core.windows.net | Gdy serwer pobierze plik, następnie serwer wykonuje tego więcej przenoszenia danych wydajnie po rozmowie bezpośrednio z udziału plików Azure w ramach konta magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, która zezwala na dostęp do udziału pliku docelowego. |
+| **Azure Storage** | &ast;.core.windows.net | Gdy serwer pobierze plik, następnie serwer wykonuje tego przepływu danych wydajniej w przypadku bezpośrednio do udziału plików na platformę Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, która zezwala na dostęp do udziału pliku docelowego. |
 | **Synchronizacja plików na platformę Azure** | &ast;.one.microsoft.com | Po zarejestrowaniu serwera początkowego serwer odbiera regionalnych adres URL dla wystąpienia usługi synchronizacji plików Azure w tym regionie. Serwer może komunikować się bezpośrednio i efektywnie z wystąpieniem obsługi jego synchronizacji za pomocą adresu URL. |
 
 > [!Important]

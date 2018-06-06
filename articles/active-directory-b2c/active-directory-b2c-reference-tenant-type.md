@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Siedziby dostępności & dane regionu | Dokumentacja firmy Microsoft'
-description: Temat dotyczący typów dzierżaw usługi Azure Active Directory B2C
+title: Region dostępności & dane siedzibę w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Temat typów dzierżaw usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: davidmu
-ms.openlocfilehash: b982a6b6e0068370ef7b5cb30ea689829e90d494
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: add7c49d8efaec0fddf057c454b4f01aec5df1ce
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709601"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Siedziby dostępności & dane regionu
 Dostępność w danym regionie i siedziby danych są dwa bardzo różnych zagadnienia dotyczące inaczej usługi Azure AD B2C od pozostałej części Azure. W tym artykule wyjaśniono różnice między tych dwóch pojęć, a następnie porównaj sposobów ich zastosowania do platformy Azure i usługi Azure AD B2C.

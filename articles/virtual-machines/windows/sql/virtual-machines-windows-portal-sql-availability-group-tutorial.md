@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716724"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności w maszynie Wirtualnej platformy Azure ręcznie
 
@@ -57,7 +58,7 @@ Przed rozpoczęciem tego samouczka należy [ukończyć wymagania wstępne dotycz
 <a name="CreateCluster"></a>
 ## Tworzenie klastra
 
-Po ukończeniu wymagania wstępne, pierwszym krokiem jest tworzenie klastra trybu Failover serwera systemu Windows, która zawiera dwa serwery SQL i serwer monitora.  
+Po ukończeniu wymagania wstępne, pierwszym krokiem jest tworzenie klastra trybu Failover serwera systemu Windows, która zawiera dwa serwery SQL i serwer monitora.
 
 1. RDP do pierwszego serwera SQL przy użyciu konta domeny, które jest kontem administratora na serwerach SQL i serwer monitora.
 
@@ -85,7 +86,8 @@ Po ukończeniu wymagania wstępne, pierwszym krokiem jest tworzenie klastra tryb
 
    ![Właściwości klastra](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Wybierz **statyczny adres IP** i określ dostępny adres, z którym serwer SQL działa w polu tekstowym adres podsieci. Następnie kliknij przycisk **OK**.
+3. Wybierz **statyczny adres IP** i określ adres z zakresu automatycznego adresowania prywatnego adresu IP (APIPA): 169.254.0.1 do 169.254.255.254 w polu tekstowym adres. W tym przykładzie można użyć dowolnego adresu w tym zakresie. Na przykład: `169.254.0.1`. Następnie kliknij przycisk **OK**.
+
 4. W **zasoby podstawowe klastra** sekcji, kliknij prawym przyciskiem myszy nazwę klastra i kliknij przycisk **przejdź do trybu Online**. Następnie zaczekaj, aż oba zasoby są w trybie online. Gdy nazwa zasobu klastra do trybu online, aktualizuje serwera kontrolera domeny przy użyciu nowego konta komputera usługi AD. Umożliwia to konto AD później uruchomić usługę grupie dostępności w klastrze.
 
 ### <a name="addNode"></a>Dodaj do klastra programu SQL Server
@@ -419,7 +421,7 @@ Aby skonfigurować usługę równoważenia obciążenia, musisz utworzyć puli w
    | **Zmienny adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
 
    > [!WARNING]
-   > Bezpośredni zwrot serwera jest ustawiana podczas tworzenia. Nie można zmienić.
+   > Bezpośredni zwrot serwera jest ustawiana podczas tworzenia. Nie można zmienić tej nazwy.
 
 1. Kliknij przycisk **OK** można ustawić reguły równoważenia obciążenia.
 

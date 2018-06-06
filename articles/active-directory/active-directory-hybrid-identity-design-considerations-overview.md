@@ -1,29 +1,31 @@
 ---
-title: "Azure Active Directory hybrydowego zagadnienia dotyczące projektowania tożsamości - Przegląd | Dokumentacja firmy Microsoft"
-description: "Omówienie i Mapa zawartości z przewodnika po zagadnieniach dotyczących projektowania tożsamości hybrydowej"
-documentationcenter: 
+title: Azure Active Directory hybrydowego zagadnienia dotyczące projektowania tożsamości - Przegląd | Dokumentacja firmy Microsoft
+description: Omówienie i Mapa zawartości z przewodnika po zagadnieniach dotyczących projektowania tożsamości hybrydowej
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 94e67c5ea0028419e9bf74420e2bb46709b3df01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e81908e3fd77b8fde706b27c3bed305ad0436677
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801640"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Zagadnienia dotyczące projektowania tożsamości hybrydowej usługi Azure Active Directory
 Konsumenckie urządzeń są proliferating world firmy i oprogramowania jako usługa (SaaS) aplikacji działających w chmurze są łatwe do przyjęcia. W związku z tym zachowaniu kontroli nad dostęp do aplikacji użytkowników wewnętrznych platformach centrów danych i w chmurze może być trudne.  
 
-Firmy Microsoft tożsamościach span lokalnych i chmurze możliwości tworzenia tożsamością jednego użytkownika do uwierzytelniania i autoryzacji do wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to tożsamość hybrydowa. Brak różnorodności rozwiązań i opcji konfiguracji dla tożsamość hybrydowa korzystania z rozwiązań firmy Microsoft, a w niektórych przypadkach może być trudne do ustalenia, która kombinacja będzie najlepiej odpowiadać potrzebom organizacji. 
+Firmy Microsoft tożsamościach span lokalnych i chmurze możliwości tworzenia tożsamością jednego użytkownika do uwierzytelniania i autoryzacji do wszystkich zasobów, niezależnie od lokalizacji. To pojęcie jest określany jako tożsamość hybrydowa. Brak różnorodności rozwiązań i opcji konfiguracji dla tożsamość hybrydowa korzystania z rozwiązań firmy Microsoft, a w niektórych przypadkach może być trudne do ustalenia, która kombinacja będzie najlepiej odpowiadać potrzebom organizacji. 
 
 Przewodnik dla zagadnień projektowych ten hybrydowego tożsamości ułatwią zrozumienie sposobu projektowania rozwiązania z tożsamością hybrydową który najlepiej odpowiada biznesowe i technologiczne organizacji.  Ten przewodnik zawiera szczegóły serii kroków i zadań, które możesz wykonać, aby ułatwić projektowanie rozwiązania z tożsamością hybrydową spełniającego specyficzne wymagania danej organizacji. W ramach zadań i kroków przewodnik przedstawia odpowiednich technologii i funkcji opcji dostępnych dla organizacji, które spełniają funkcjonalności i jakości usługi (np. dostępność, skalowalność, wydajność, możliwości zarządzania i bezpieczeństwo) poziom wymagania. 
 
@@ -34,7 +36,7 @@ W szczególności celów przewodnik zagadnienia dotyczące projektowania tożsam
 * Jakie hybrydowego tożsamości technologii i konfiguracji są dostępne opcje ułatwiające spełnienie moich wymagań? Co to są kompromis między tymi opcjami, dzięki czemu można wybrać opcję najlepiej firmową?
 
 ## <a name="who-is-this-guide-intended-for"></a>Kogo jest przeznaczony ten przewodnik?
- CIO, CITO, architektów tożsamości główny, architektów przedsiębiorstwa i architekci systemów informatycznych odpowiedzialni za projektowanie rozwiązania z tożsamością hybrydową dla średnich i dużych organizacji.
+ CIO, CITO główny tożsamości architektów, architektów przedsiębiorstwa i architekci systemów informatycznych odpowiedzialni za projektowanie rozwiązania z tożsamością hybrydową dla średnich i dużych organizacji.
 
 ## <a name="how-can-this-guide-help-you"></a>Jak może być pomocny ten przewodnik?
 Zrozumienie sposobu projektowania rozwiązania z tożsamością hybrydową, który jest w stanie zintegrować system zarządzania tożsamościami w chmurze wraz z bieżącym rozwiązaniem tożsamości lokalnych, można użyć w tym przewodniku. 
@@ -43,11 +45,11 @@ Na poniższym rysunku przedstawiono przykład hybrydowego tożsamości, która u
 
 ![](./media/hybrid-id-design-considerations/hybridID-example.png)
 
-Powyższej ilustracji jest przykładem rozwiązania z tożsamością hybrydową, który polega na wykorzystaniu usług w chmurze do integracji z funkcjami lokalnymi w celu zapewnienia jednego środowiska w procesie uwierzytelniania użytkownika końcowego i ułatwia zarządzanie tymi IT zasoby. Chociaż może to być bardzo typowy scenariusz, może być inna niż przykładzie pokazano na rysunku 1 z powodu różnych wymogów jest projektowania tożsamości hybrydowej każdej organizacji. 
+Powyższej ilustracji jest przykładem rozwiązania z tożsamością hybrydową, który polega na wykorzystaniu usług w chmurze do integracji z funkcjami lokalnymi w celu zapewnienia jednego środowiska do procesu uwierzytelniania użytkowników końcowych i ułatwia zarządzanie tymi IT zasoby. Chociaż w tym przykładzie może być typowy scenariusz, może być inna niż przykładzie pokazano na rysunku 1 z powodu różnych wymogów jest projektowania tożsamości hybrydowej każdej organizacji. 
 
 Ten przewodnik zawiera serię kroków i zadań, które można wykonać w celu zaprojektowania rozwiązania z tożsamością hybrydową spełniającego specyficzne wymagania danej organizacji. Poniższe kroki i zadania przewodnik przedstawia informacje o odpowiednich technologiach i opcjach funkcji dostępnych w celu spełnienia funkcjonalne i dotyczące poziomu jakości usług dla Twojej organizacji.
 
-**Założenia**: użytkownik ma pewne doświadczenie z systemu Windows Server, usług domenowych w usłudze Active Directory i Azure Active Directory. W tym dokumencie przyjęto założenie, że użytkownik chce się dowiedzieć, jak te rozwiązania mogą spełnić potrzeby biznesowe samodzielnie lub w rozwiązaniu zintegrowanym.
+**Założenia**: użytkownik ma pewne doświadczenie z systemu Windows Server, usług domenowych w usłudze Active Directory i Azure Active Directory. W tym dokumencie zakłada się, że użytkownik chce się dowiedzieć, jak te rozwiązania mogą spełnić potrzeby biznesowe samodzielnie lub w rozwiązaniu zintegrowanym.
 
 ## <a name="design-considerations-overview"></a>Omówienie zagadnień dotyczących projektowania
 Ten dokument zawiera zestaw kroków i zadań, które można wykonać w celu zaprojektowania rozwiązania z tożsamością hybrydową, która najlepiej odpowiada wymaganiom. Kroki są prezentowane w uporządkowanej kolejności. Zagadnienia dotyczące projektowania, które użytkownik pozna w kolejnych krokach może wymagać zmiany decyzji podjętych we wcześniejszych krokach, jednak z powodu podjęcia sprzecznych decyzji projektowych. Staramy alert potencjalnymi konfliktami projektowymi dokumentu. 

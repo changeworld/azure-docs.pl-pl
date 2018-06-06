@@ -1,14 +1,15 @@
 ---
-title: "Migracja z klasycznego zasadę, która wymaga usługi Multi-Factor authentication w portalu Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule pokazano, jak przeprowadzić migrację klasycznego zasadę, która wymaga usługi Multi-Factor authentication w portalu Azure."
+title: Migracja z klasycznego zasadę, która wymaga usługi Multi-Factor authentication w portalu Azure | Dokumentacja firmy Microsoft
+description: W tym artykule pokazano, jak przeprowadzić migrację klasycznego zasadę, która wymaga usługi Multi-Factor authentication w portalu Azure.
 services: active-directory
-keywords: "dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego"
-documentationcenter: 
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 77484dc3773736ea15c39ede5f9d49b6b694d960
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723691"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migracja z klasycznego zasadę, która wymaga usługi Multi-Factor authentication w portalu Azure 
 
@@ -28,7 +30,7 @@ W tym artykule przedstawiono sposób migracji klasycznego zasadę, która wymaga
 
 
  
-## <a name="overview"></a>Omówienie 
+## <a name="overview"></a>Przegląd 
 
 Scenariusz, w tym artykule przedstawiono sposób migracji klasycznego zasadę, która wymaga **uwierzytelnianie wieloskładnikowe** dla aplikacji w chmurze. 
 
@@ -144,7 +146,7 @@ Aby wyłączyć klasycznego zasad, kliknij przycisk **wyłączyć** w **szczegó
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji o migracji klasycznego zasad, zobacz [migracji klasycznego zasad w portalu Azure](active-directory-conditional-access-migration.md).
 

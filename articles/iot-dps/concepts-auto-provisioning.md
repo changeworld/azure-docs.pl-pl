@@ -1,22 +1,19 @@
 ---
 title: Centrum IoT urządzenia inicjowania obsługi usługi — pojęcia automatycznego inicjowania obsługi administracyjnej
 description: Ten artykuł zawiera omówienie pojęć dotyczących fazy urządzenia automatycznego inicjowania obsługi, za pomocą usługi udostępniania urządzenia IoT, Centrum IoT i zestawów SDK klienta.
-services: iot-dps
-keywords: ''
 author: BryanLa
 ms.author: bryanla
-ms.date: 03/27/2018
+ms.date: 06/01/2018
 ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ac8b6116eebb400c12d50de010b93bded268ff
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736410"
 ---
 # <a name="auto-provisioning-concepts"></a>Pojęcia automatycznego inicjowania obsługi administracyjnej
 
@@ -33,7 +30,7 @@ Azure IoT automatycznego inicjowania obsługi może być dzielony na trzech etap
 
 2. **Rejestracja urządzeń** — proces uświadamiania wystąpienia usługi inicjowania obsługi urządzeń urządzeń, które będzie podejmować próby zarejestrowania w przyszłości. [Rejestracja](concepts-service.md#enrollment) odbywa się przez skonfigurowanie informacji o tożsamości urządzenia w usłudze inicjowania obsługi administracyjnej jako "poszczególnych rejestrowanie" pojedynczej lub "rejestrowanie grupy" dla wielu urządzeń. Tożsamość na podstawie [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) urządzenia jest przeznaczony do użycia, które umożliwia usłudze inicjowania obsługi administracyjnej potwierdzają autentyczności urządzenia podczas rejestracji:
 
-   - **Moduł TPM**: skonfigurowany jako "Rejestrowanie poszczególnych", tożsamości urządzenia opiera się na identyfikator rejestracji modułu TPM i klucz publiczny poręczenia. Biorąc pod uwagę, że moduł TPM jest [specyfikacji]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)), usługa oczekuje tylko poświadczanie według specyfikacji, niezależnie od implementacji modułu TPM (sprzętowego lub programowego). Zobacz [Inicjowanie obsługi administracyjnej urządzeń: zaświadczanie o tożsamości z modułem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) szczegółowe informacje dotyczące zaświadczania opartych na modułach TPM. 
+   - **Moduł TPM**: skonfigurowany jako "Rejestrowanie poszczególnych", tożsamości urządzenia opiera się na identyfikator rejestracji modułu TPM i klucz publiczny poręczenia. Biorąc pod uwagę, że moduł TPM jest [specyfikacji](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), usługa oczekuje tylko poświadczanie według specyfikacji, niezależnie od implementacji modułu TPM (sprzętowego lub programowego). Zobacz [Inicjowanie obsługi administracyjnej urządzeń: zaświadczanie o tożsamości z modułem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) szczegółowe informacje dotyczące zaświadczania opartych na modułach TPM. 
 
    - **X509**: skonfigurowany jako "Rejestrowanie poszczególnych" lub "rejestrowanie grupy", tożsamości urządzenia jest oparta na cyfrowe certyfikatu X.509, który zostanie przekazany do rejestracji jako plik PEM lub cer.
 
@@ -62,7 +59,7 @@ Szereg poradniki Szybki Start znajdują się w spis treści z lewej strony, w ce
 
 Poniższy diagram przedstawia role i sekwencjonowania operacje podczas urządzenia automatycznego inicjowania obsługi:
 <br><br>
-![Automatyczne inicjowanie obsługi administracyjnej sekwencji dla urządzenia](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png) 
+[![Automatyczne inicjowanie obsługi administracyjnej sekwencji dla urządzenia](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > Opcjonalnie producenta można również wykonać operację "Rejestrowanie urządzenia tożsamości" przy użyciu interfejsów API usługi inicjowania obsługi urządzeń (zamiast za pomocą operatora). Szczegółowe omówienie tej sekwencji i inne, zobacz [Zero touch rejestracji urządzenia Azure IoT wideo](https://myignite.microsoft.com/sessions/55087) (rozpoczyna się od znacznika 41:00)

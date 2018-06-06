@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA.
+title: 'Samouczek: Integracji Azure Active Directory z logowania jednokrotnego SAML JIRA przez firmę Microsoft | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i logowania jednokrotnego SAML JIRA przez firmę Microsoft.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 0b4c036db0e486b6be66e246399c6e133e0a6461
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 99d50e67ea7194444a4cbff1e48d370ab7f4f370
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698700"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-microsoft-azure-active-directory-single-sign-on-for-jira"></a>Samouczek: Integracji Azure Active Directory z usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA
+# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Samouczek: Integracji Azure Active Directory z logowania jednokrotnego SAML JIRA przez firmę Microsoft
 
-Z tego samouczka dowiesz się sposobu integracji usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się sposobu integracji z usługą Azure Active Directory (Azure AD) logowania jednokrotnego SAML JIRA przez firmę Microsoft.
 
-Integrowanie usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA z usługą Azure AD zapewnia następujące korzyści:
+Integracja z usługą Azure AD logowania jednokrotnego SAML JIRA przez firmę Microsoft zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+- Można kontrolować w usłudze Azure AD, który ma dostęp do logowania jednokrotnego SAML JIRA przez firmę Microsoft.
+- Umożliwia użytkownikom automatycznie pobrać zalogowane do logowania jednokrotnego SAML JIRA przez firmę Microsoft (logowanie jednokrotne) z konta usługi Azure AD.
 - Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
 
 Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](manage-apps/what-is-single-sign-on.md).
@@ -38,10 +39,10 @@ Korzystać z serwera Atlassian JIRA konta Microsoft Azure Active Directory, aby 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z programem Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z logowania jednokrotnego SAML JIRA przez firmę Microsoft, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- JIRA Core i 6.0 oprogramowania do 7.2.0 lub JIRA usługi technicznej 3.0 3.2 powinien zainstalowany i skonfigurowany na Windows 64-bitowej wersji
+- JIRA Core i 6.0 oprogramowania do 7.8 lub JIRA usługi technicznej 3.0 3.2 powinien zainstalowany i skonfigurowany na Windows 64-bitowej wersji
 - Serwer JIRA jest obsługujące protokół HTTPS
 - Należy pamiętać, że obsługiwane wersje dla wtyczki JIRA są wymienione w poniższej sekcji.
 - JIRA serwer jest dostępny w Internecie, szczególnie do strony logowania usługi AD platformy Azure do uwierzytelniania i powinien otrzymywać token z usługi Azure AD
@@ -59,20 +60,21 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 ## <a name="supported-versions-of-jira"></a>Obsługiwane wersje JIRA
 
-*   Podstawowe JIRA i oprogramowania: 6.0 do 7.2.0
+*   Podstawowe JIRA i oprogramowania: 6.0-7.8
 *   Działu JIRA 3.0 do 3.2
 *   JIRA obsługuje również 5.2. Aby uzyskać więcej informacji, kliknij przycisk [Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA 5.2](./active-directory-saas-jira52microsoft-tutorial.md)
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
 
-1. Dodawanie usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA z galerii
+1. Dodawanie logowania jednokrotnego SAML JIRA przez firmę Microsoft z galerii
 2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-microsoft-azure-active-directory-single-sign-on-for-jira-from-the-gallery"></a>Dodawanie usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA z galerii
-Aby skonfigurować integrację usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA do usługi Azure AD, należy dodać Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-jira-saml-sso-by-microsoft-from-the-gallery"></a>Dodawanie logowania jednokrotnego SAML JIRA przez firmę Microsoft z galerii
+Aby skonfigurować integrację logowania jednokrotnego SAML JIRA przez firmę Microsoft do usługi Azure AD, należy dodać logowania jednokrotnego SAML JIRA przez firmę Microsoft z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA z galerii, wykonaj następujące czynności:**
+**Aby dodać logowania jednokrotnego SAML JIRA przez firmę Microsoft z galerii, wykonaj następujące czynności:**
 
 1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
 
@@ -81,36 +83,36 @@ Aby skonfigurować integrację usługi Microsoft Azure Active Directory rejestra
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Blok aplikacje przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA**, wybierz pozycję **Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA** z panelu wyników kliknięcie **Dodaj**  przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **logowania jednokrotnego SAML JIRA przez firmę Microsoft**, wybierz pozycję **logowania jednokrotnego SAML JIRA przez firmę Microsoft** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA na liście wyników](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_addfromgallery.png)
+    ![Logowania jednokrotnego SAML JIRA przez firmę Microsoft na liście wyników](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z logowania jednokrotnego SAML JIRA przez firmę Microsoft, w oparciu o nazwie "Britta Simona" użytkownika testowego.
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA musi się.
+Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w logowania jednokrotnego SAML JIRA przez firmę Microsoft jest dla użytkownika, w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w logowania jednokrotnego SAML JIRA przez firmę Microsoft.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z logowania jednokrotnego SAML JIRA przez firmę Microsoft, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla użytkownika testowego JIRA](#create-a-microsoft-azure-active-directory-single-sign-on-for-jira-test-user)**  — mają odpowiednika Simona Britta w Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA połączonego z usługi Azure AD reprezentację użytkownika.
+3. **[Utwórz logowania jednokrotnego SAML JIRA przez użytkownika testowego Microsoft](#create-a-jira-saml-sso-by-microsoft-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta logowania jednokrotnego SAML JIRA przez firmy Microsoft, który jest połączony z usługi Azure AD reprezentację użytkownika.
 4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
 5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i konfigurowania rejestracji jednokrotnej w sieci Microsoft Azure Active Directory logowanie jednokrotne dla aplikacji JIRA.
+W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i konfigurowanie rejestracji jednokrotnej w sieci logowania jednokrotnego SAML JIRA przez aplikację Microsoft.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA, wykonaj następujące czynności:**
+**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z logowania jednokrotnego SAML JIRA przez firmę Microsoft, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W portalu Azure na **logowania jednokrotnego SAML JIRA przez firmę Microsoft** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
@@ -118,9 +120,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Okno dialogowe rejestracji jednokrotnej](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_samlbase.png)
 
-3. Na **Microsoft Azure Active Directory rejestracji jednokrotnej dla domeny JIRA i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na **logowania jednokrotnego SAML JIRA Domain firmy Microsoft i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Microsoft Azure Active Directory rejestracji jednokrotnej JIRA domeny i adres URL pojedynczego logowania jednokrotnego informacji](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_url.png)
+    ![Logowania jednokrotnego SAML JIRA przez Microsoft Domain i adresów URL jednym logowania jednokrotnego informacji](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_url.png)
 
     a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<domain:port>/plugins/servlet/saml/auth`
 
@@ -132,9 +134,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Port jest opcjonalny w przypadku, gdy jest nazwane adres URL. Te wartości są odbierane podczas konfigurowania Jira dodatek, który znajduje się w dalszej części tego samouczka.
 
 4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
-    
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-msaadssojira-tutorial/tutorial_metadataurl.png)
-     
+
 5. Kliknij przycisk **zapisać** przycisku.
 
     ![Konfigurowanie rejestracji jednokrotnej](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_general_400.png)
@@ -142,7 +144,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 6. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do Twojego wystąpienia JIRA.
 
 7. Umieść kursor na koło zębate, a następnie kliknij przycisk **dodatki**.
-    
+
     ![Konfigurowanie rejestracji jednokrotnej](.\media\active-directory-saas-msaadssojira-tutorial\addon1.png)
 
 8. Pobierz dodatek z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56506). Ręcznie przekazać wtyczki, używając Microsoft **przekazać dodatek** menu. Pobieranie wtyczki nie jest objęta [Umowa serwisowa usługi Microsoft](https://www.microsoft.com/en-us/servicesagreement/).
@@ -162,7 +164,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. W **adres URL metadanych** pole tekstowe, Wklej **adres Url metadanych Federacji aplikacji** wartość, która została skopiowana z portalu Azure i kliknij przycisk **rozwiązać** przycisku. Adres URL metadanych IdP odczytuje i wypełnienie wszystkich pól informacji.
 
-    b. Kopiuj **identyfikator, adres URL odpowiedzi i zaloguj się na adres URL** wartości i wklej je w **identyfikator, adres URL odpowiedzi i zaloguj się na adres URL** odpowiednio do pól tekstowych **Microsoft Azure Active Directory rejestracji jednokrotnej JIRA domeny i adresów URL** sekcji z portalu Azure.
+    b. Kopiuj **identyfikator, adres URL odpowiedzi i zaloguj się na adres URL** wartości i wklej je w **identyfikator, adres URL odpowiedzi i zaloguj się na adres URL** odpowiednio do pól tekstowych **logowania jednokrotnego SAML JIRA Domain firmy Microsoft i adresy URL** sekcji z portalu Azure.
 
     c. W **nazwa przycisku logowania** wpisz nazwę przycisku przez organizację nowych użytkowników na ekranie logowania.
 
@@ -174,7 +176,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     e. W przypadku wybrania **identyfikator użytkownika jest w elemencie atrybutu** opcji, a następnie w **nazwa atrybutu** pole tekstowe wpisz nazwę atrybutu, gdy oczekiwano identyfikatora użytkownika.
 
     f. Jeśli korzystasz z domeny federacyjnej (na przykład usług AD FS itp.) z usługą Azure AD, należy kliknąć opcję **Włączanie odnajdowania obszaru macierzystego** opcji i skonfigurować **nazwy domeny**.
-    
+
     g. W **nazwy domeny** wpisz nazwę domeny, w tym miejscu w przypadku logowania za pomocą usług AD FS.
 
     h. Sprawdź **włączyć pojedynczego Wyloguj** chcesz wylogować się z usługi Azure AD, gdy użytkownik zaloguje z JIRA.
@@ -215,10 +217,10 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
-### <a name="create-a-microsoft-azure-active-directory-single-sign-on-for-jira-test-user"></a>Tworzenie usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla użytkownika testowego JIRA
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do serwera lokalnego JIRA, muszą mieć przydzielone do usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA. Dla usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA Inicjowanie obsługi to zadanie ręczne.
+### <a name="create-a-jira-saml-sso-by-microsoft-test-user"></a>Utwórz logowania jednokrotnego SAML JIRA przez użytkownika testowego firmy Microsoft
+
+Aby włączyć użytkowników usługi Azure AD zalogować się do serwera lokalnego JIRA, ich muszą mieć przydzielone do logowania jednokrotnego SAML JIRA przez firmę Microsoft. W przypadku logowania jednokrotnego SAML JIRA przez firmę Microsoft inicjowania obsługi administracyjnej jest zadanie ręczne.
 
 **Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
 
@@ -226,11 +228,11 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do serwera lokaln
 
 2. Umieść kursor na koło zębate, a następnie kliknij przycisk **Zarządzanie użytkownikami**.
 
-    ![Dodawanie pracownika](.\media\active-directory-saas-msaadssojira-tutorial\user1.png) 
+    ![Dodawanie pracownika](.\media\active-directory-saas-msaadssojira-tutorial\user1.png)
 
 3. Nastąpi przekierowanie do strony dostępu administratora, aby wprowadzić **hasło** i kliknij przycisk **Potwierdź** przycisku.
 
-    ![Dodawanie pracownika](.\media\active-directory-saas-msaadssojira-tutorial\user2.png) 
+    ![Dodawanie pracownika](.\media\active-directory-saas-msaadssojira-tutorial\user2.png)
 
 4. W obszarze **Zarządzanie użytkownikami** sekcji, kliknij pozycję **Utwórz użytkownika**.
 
@@ -252,19 +254,19 @@ Aby włączyć użytkowników usługi Azure AD zalogować się do serwera lokaln
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA.
+W tej sekcji musisz włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do logowania jednokrotnego SAML JIRA przez firmę Microsoft.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA, wykonaj następujące czynności:**
+**Aby przypisać Simona Britta do logowania jednokrotnego SAML JIRA przez firmę Microsoft, wykonaj następujące czynności:**
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji zaznacz **Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA**.
+2. Na liście aplikacji zaznacz **logowania jednokrotnego SAML JIRA przez firmę Microsoft**.
 
-    ![Microsoft Azure Active Directory rejestracji jednokrotnej dla łącza JIRA na liście aplikacji](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_app.png)  
+    ![Logowania jednokrotnego SAML JIRA przez łącze do firmy Microsoft na liście aplikacji](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
@@ -279,13 +281,13 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
-Po kliknięciu Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA kafelka w panelu dostępu, możesz powinien pobrać automatycznie zalogowane do programu Microsoft Azure Active Directory logowania jednokrotnego dla aplikacji JIRA.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu logowania jednokrotnego SAML JIRA przez Kafelek firmy Microsoft w panelu dostępu należy powinien pobrać automatycznie zalogowane do użytkownika logowania jednokrotnego SAML JIRA przez aplikację Microsoft.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

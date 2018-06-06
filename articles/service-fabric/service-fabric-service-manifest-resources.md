@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: ce2bc8cc8d9b149b16aee9c5e601d9872621e277
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f486ce5c058286289873d87767f02bf92f91459e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701446"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Określanie zasobów w manifeście usługi
 ## <a name="overview"></a>Przegląd
@@ -105,7 +106,10 @@ Protokół HTTPS zapewnia uwierzytelnianie na serwerze i służy także do szyfr
 > [!NOTE]
 > Nie można zmienić protokołu usługi podczas uaktualniania aplikacji. Jeśli zostanie on zmieniony podczas uaktualniania, jest istotne zmiany.
 > 
-> 
+
+> [!WARNING] 
+> Przy użyciu protokołu HTTPS, nie należy używać tego samego portu i certyfikatu dla usługi różnych wystąpień (niezależnie od aplikacji) wdrożone na tym samym węźle. Uaktualnianie dwóch różnych usług za pomocą tego samego portu w innej aplikacji wystąpień spowoduje niepowodzenia uaktualnienia. Aby uzyskać więcej informacji, zobacz [uaktualniania wielu aplikacji za pomocą punktów końcowych HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+>
 
 Oto przykład ApplicationManifest które należy ustawić dla protokołu HTTPS. Należy podać odcisk palca dla certyfikatu. EndpointRef jest odwołaniem do EndpointResource w ServiceManifest, dla którego ustawieniu protokołu HTTPS. Można dodać więcej niż jeden EndpointCertificate.  
 
@@ -154,11 +158,11 @@ W przypadku klastrów systemu Linux **MY** wartości domyślne w folderze przech
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Zastępowanie punktów końcowych w pliku ServiceManifest.xml
 
-W ApplicationManifest Dodaj sekcję ResourceOverrides, co będzie równorzędny ConfigOverrides sekcji. W tej sekcji można określić zastąpienia dla sekcji punktów końcowych w sekcji zasobów określona w manifeście usługi. Przesłanianie punktów końcowych jest obsługiwane w środowisku uruchomieniowym 5.7.217/SDK 2.7.217 i wyższych.
+W ApplicationManifest Dodaj sekcji ResourceOverrides, która będzie równorzędny ConfigOverrides sekcji. W tej sekcji można określić zastąpienia dla sekcji punktów końcowych w sekcji zasobów określona w manifeście usługi. Przesłanianie punktów końcowych jest obsługiwane w środowisku uruchomieniowym 5.7.217/SDK 2.7.217 i wyższych.
 
 Aby zastąpić punktu końcowego w ServiceManifest przy użyciu ApplicationParameters Zmień ApplicationManifest następujący:
 
-W sekcji ServiceManifestImport dodania nowej sekcji "ResourceOverrides"
+W sekcji ServiceManifestImport dodania nowej sekcji "ResourceOverrides".
 
 ```xml
 <ServiceManifestImport>
@@ -188,13 +192,13 @@ W parametrach dodać poniżej:
   </Parameters>
 ```
 
-Podczas wdrażania aplikacji teraz można przekazać te wartości jako ApplicationParameters na przykład:
+Podczas wdrażania aplikacji można przekazać te wartości jako ApplicationParameters.  Na przykład:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Uwaga: Jeśli wartości umożliwiają ApplicationParameters jest pusty możemy wróć do określonych w ServiceManifest odpowiedniego EndPointName wartość domyślna.
+Uwaga: Jeśli wartości umożliwiają ApplicationParameters jest pusta, możemy wróć do określonych w ServiceManifest odpowiedniego EndPointName wartość domyślna.
 
 Na przykład:
 

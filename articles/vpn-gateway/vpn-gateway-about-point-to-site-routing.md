@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: d25709fb4abb1b8a35596c3dc246f7419a99419b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702180"
 ---
-# <a name="about-point-to-site-vpn-routing"></a>Routing w sieci VPN typu punkt-lokacja — informacje
+# <a name="about-point-to-site-vpn-routing"></a>Routing sieci VPN typu punkt-lokacja — informacje
 
 Ten artykuł pomaga w zrozumieniu zachowania routingu sieci VPN Azure punkt-lokacja. Zachowanie routingu P2S sieci VPN jest zależna od klienta systemu operacyjnego, protokół używany do połączenia sieci VPN i jak sieci wirtualnych (sieci wirtualne) są połączone ze sobą.
 
@@ -228,7 +229,7 @@ Wszyscy klienci mają dostęp tylko VNet1.
 
 ## <a name="multivnets2sbranchbgp"></a>Wiele sieci wirtualnych nawiązano połączenie przy użyciu S2S i biura oddziału (BGP)
 
-W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja zostanie VNet1. VNet1 jest podłączony do VNet2 przy użyciu połączenia sieci VPN typu lokacja-lokacja. VNet2 jest podłączony do VNet3 przy użyciu połączenia sieci VPN typu lokacja-lokacja. Nie jest równorzędna bezpośredniego ani tunelu VPN lokacja-lokacja między sieciami VNet1 i VNet3. VNet3 jest podłączona do biura oddziału (Site1) przy użyciu połączenia sieci VPN typu lokacja-lokacja. Wszystkie połączenia sieci VPN nie działają protokołu BGP. Wszystkie połączenia sieci VPN działają protokołu BGP.
+W tym przykładzie połączenie bramy sieci VPN typu punkt-lokacja zostanie VNet1. VNet1 jest podłączony do VNet2 przy użyciu połączenia sieci VPN typu lokacja-lokacja. VNet2 jest podłączony do VNet3 przy użyciu połączenia sieci VPN typu lokacja-lokacja. Nie jest równorzędna bezpośredniego ani tunelu VPN lokacja-lokacja między sieciami VNet1 i VNet3. VNet3 jest podłączona do biura oddziału (Site1) przy użyciu połączenia sieci VPN typu lokacja-lokacja. Wszystkie połączenia sieci VPN działają protokołu BGP.
 
 Klientów przy użyciu systemu Windows można uzyskać dostępu do sieci wirtualnych i lokacje, które są połączone za pomocą połączenia sieci VPN typu lokacja-lokacja, ale trasy do VNet2, VNet3 i Site1 należy dodać ręcznie do klienta. Klienci z systemem innym niż Windows można uzyskać dostępu do sieci wirtualnych i lokacji, które są połączone za pomocą połączenia sieci VPN typu lokacja-lokacja bez ręcznej interwencji. Dostęp jest przechodnie i klienci mogą uzyskiwać dostęp do zasobów wszystkich połączonych sieci wirtualnych i witryn (lokalnego).
 

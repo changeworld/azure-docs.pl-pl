@@ -1,29 +1,25 @@
 ---
-title: "Przełącz instrukcje — uruchamianie kroków na podstawie wartości określonych - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Uruchom inne czynności na podstawie wartości z obiektów, wyrażenia lub tokenów w aplikacji logiki"
+title: Dodaj instrukcje przełącznika do przepływów pracy - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Jak utworzyć instrukcji switch, kontrolujących takie akcje przepływu pracy na podstawie wartości określonych w aplikacjach logiki platformy Azure
 services: logic-apps
-keywords: "Switch — instrukcja"
-author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: e1f515189be8a5659af0f6c29b3fac0550abc9f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 2ffac49d14e05ff252d6cd0e90fc23d77ac0caff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726078"
 ---
-# <a name="switch-statements-run-different-steps-based-on-specific-values-in-logic-apps"></a>Przełącz instrukcje: Uruchom inne czynności na podstawie wartości określonych w aplikacjach logiki
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Tworzenie przełącznika instrukcji, które wykonanie akcji przepływu pracy na podstawie wartości określonych w aplikacjach logiki platformy Azure
 
-Aby wykonać inne czynności na podstawie wartości obiektu, wyrażenie lub token, użyj *przełącznika* instrukcji. Ta struktura ocenia obiektu, wyrażenie lub token, wybierze w przypadku dopasowuje wynik i działa tylko w takim przypadku kroki. Po uruchomieniu instrukcji switch tylko jeden przypadek powinien być zgodny z wynikiem.
+Aby uruchomić określone czynności na podstawie wartości obiektów, wyrażenia lub tokenów, należy dodać *przełącznika* instrukcji. Ta struktura ocenia obiektu, wyrażenie lub token, wybierze przypadek, który odpowiada wynik i uruchamia określone czynności tylko dla tego przypadku. Po uruchomieniu instrukcji switch tylko jeden przypadek powinien być zgodny z wynikiem.
 
 Na przykład załóżmy, że chcesz aplikację logiki, która ma inne czynności na podstawie opcji wybranej w wiadomości e-mail. W tym przykładzie aplikacji logiki sprawdza witryny sieci Web źródło danych RSS dla nowej zawartości. Po wyświetleniu nowego elementu w źródła danych RSS, aplikację logiki wysyła wiadomości e-mail do osoby zatwierdzającej. W oparciu o czy osoba zatwierdzająca wybiera "Zatwierdź" lub "Odrzuć", aplikacji logiki wykonać różne czynności.
 

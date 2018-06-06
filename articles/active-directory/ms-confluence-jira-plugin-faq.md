@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: eb7576c48d3836eec8051d849cefe4c5ec6658c9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699210"
 ---
-# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Często zadawane pytania dotyczące usługi Azure Active Directory SSO wtyczki 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Często zadawane pytania dotyczące usługi Azure Active Directory SSO wtyczki
+
+Można znaleźć poniżej — często zadawane pytania, jeśli masz wszystkie zapytania dotyczące to wtyczki.
 
 ## <a name="what-does-the-plug-in-do"></a>Jaki jest wtyczki?
 
@@ -38,13 +41,13 @@ Nie. Wtyczka obsługuje tylko lokalne wersje Jira i zlewiska.
 
 Wtyczka obsługuje następujące wersje:
 
-* Podstawowe Jira i oprogramowania: 6.0 do 7.2.2 
-* Jira działu: 3.2 do 3.0 
+* Podstawowe Jira i oprogramowania: 6.0-7.8
+* Jira działu: 3.2 do 3.0
 * Zlewiska: 5.10 do 5.0
 
 ## <a name="is-the-plug-in-free-or-paid"></a>Wtyczka jest bezpłatne lub płatną?
 
-Jest to bezpłatny dodatek. Można go zainstalować z witryny Atlassian Marketplace.
+Jest to bezpłatny dodatek.
 
 ## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Należy ponownie uruchomić Jira lub zlewiska po zainstalować dodatek typu plug-in?
 
@@ -52,7 +55,7 @@ Ponowne uruchomienie nie jest wymagane. Można uruchomić bezpośrednio za pomoc
 
 ## <a name="how-do-i-get-support-for-the-plug-in"></a>Jak uzyskać pomoc techniczną dla wtyczki?
 
-Dotrzeć do [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zespół reaguje w 24-48 godzin. 
+Może dotrzeć do [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) żadnych obsługi wymagane dla tego dodatku plug-in. Zespół reaguje w 24-48 godzin.
 
 Może też wiązać biletu pomocy technicznej w firmie Microsoft za pośrednictwem kanału portalu Azure.
 

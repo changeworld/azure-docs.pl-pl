@@ -8,16 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: a9bf9748de5f390f95b8b672e0cf77afa5c49581
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 41f69a1dd4cbd4c0f6be0764efdbf0fb61ac3cb7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724432"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Domyślne uprawnienia użytkowników w usłudze Azure Active Directory
 
@@ -35,11 +36,11 @@ Domyślne uprawnienia dla gości są restrykcyjne domyślnie. Goście można dod
 **Obszar** | **Uprawnienia użytkownika elementu członkowskiego** | **Uprawnienia użytkownika gościa**
 ------------ | --------- | ----------
 Użytkowników i kontaktów | Odczyt wszystkich właściwości publicznej użytkowników i kontaktów<br>Zaproś Goście<br>Zmień własne hasło<br>Zarządzanie własnym telefon komórkowy<br>Zarządzanie własne zdjęcie<br>Unieważnienie tokenów odświeżania własnych | Odczyt własnych właściwości<br>Nazwa wyświetlana odczytu, poczty e-mail, nazwy logowania, zdjęć, główna nazwa użytkownika i właściwości użytkownika typ innych użytkowników i kontaktów<br>Zmień własne hasło
-Grupy   | Utwórz grupy zabezpieczeń<br>Tworzenie grup usługi Office 365<br>Odczyt wszystkich właściwości grup<br>Odczytu członkostwa w grupach ukryty<br>Ukryte członkostwa w grupach usługi Office 365 dla grupy dołączonego do odczytu<br>Zarządzanie właściwości, własność i członkostwa w grupach należące do firmy<br>Dodaj gości na grupy należące do firmy<br>Zarządzanie ustawieniami członkostwo dynamiczne<br>Usuwanie należących do grup<br>Przywróć należących do grup usługi Office 365 | Odczyt wszystkich właściwości grup<br>Odczytu członkostwa w grupach ukryty<br>Odczyt ukryte członkostwa w grupach usługi Office 365 dla połączonych grup<br>Zarządzanie grupami należące do firmy<br>Dodaj gości na grupy należące do firmy (jeśli jest to dozwolone)<br>Usuwanie należących do grup<br>Przywróć należących do grup usługi Office 365           
+Grupy | Utwórz grupy zabezpieczeń<br>Tworzenie grup usługi Office 365<br>Odczyt wszystkich właściwości grup<br>Odczytu członkostwa w grupach ukryty<br>Ukryte członkostwa w grupach usługi Office 365 dla grupy dołączonego do odczytu<br>Zarządzanie właściwości, własność i członkostwa w grupach należące do firmy<br>Dodaj gości na grupy należące do firmy<br>Zarządzanie ustawieniami członkostwo dynamiczne<br>Usuwanie należących do grup<br>Przywróć należących do grup usługi Office 365 | Odczyt wszystkich właściwości grup<br>Odczytu członkostwa w grupach ukryty<br>Odczyt ukryte członkostwa w grupach usługi Office 365 dla połączonych grup<br>Zarządzanie grupami należące do firmy<br>Dodaj gości na grupy należące do firmy (jeśli jest to dozwolone)<br>Usuwanie należących do grup<br>Przywróć należących do grup usługi Office 365 
 Aplikacje | Zarejestruj (Utwórz) nowej aplikacji<br>Właściwości odczytu zarejestrowane i aplikacje przedsiębiorstwa<br>Zarządzanie właściwości aplikacji, przydziały i poświadczeń dla aplikacje należące do firmy<br>Tworzenie lub usuwanie hasło aplikacji dla użytkownika<br>Usuwanie należących do aplikacji.<br>Przywracanie należące do aplikacji | Właściwości odczytu zarejestrowane i aplikacje przedsiębiorstwa<br>Zarządzanie właściwości aplikacji, przydziały i poświadczeń dla aplikacje należące do firmy<br>Usuwanie należących do aplikacji.<br>Przywracanie należące do aplikacji
 Urządzenia | Odczyt wszystkich właściwości urządzenia<br>Zarządzanie właściwościami wszystkie urządzenia należące do firmy<br> | Brak uprawnień<br>Usuwanie urządzenia należące do firmy<br>
 Katalog | Wszystkie informacje firmy do odczytu<br>Wszystkich domen do odczytu<br>Przeczytaj wszystkie partnera kontraktów | Nazwa wyświetlana do odczytu i zweryfikować domeny
-Role i zakresy | Odczyt wszystkich ról administracyjnych i członkostwa<br>Odczyt wszystkich właściwości i członkostwa jednostek administracyjnych | Brak uprawnień              
+Role i zakresy | Odczyt wszystkich ról administracyjnych i członkostwa<br>Odczyt wszystkich właściwości i członkostwa jednostek administracyjnych | Brak uprawnień 
 Subskrypcje | Przeczytaj wszystkie subskrypcje<br>Włącz członka planu usługi | Brak uprawnień
 Zasady | Odczyt wszystkich właściwości zasady<br>Wszystkie właściwości należące do firmy zasad zarządzania | Brak uprawnień
 

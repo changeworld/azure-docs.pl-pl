@@ -8,18 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 6384f63139eb64522409c5922e187afd878ebb09
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714140"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
 
@@ -30,9 +32,9 @@ W świecie pierwszy mobile, najpierw chmury Azure Active Directory (Azure AD) um
 
 Za pomocą urządzeń użytkownicy są uzyskiwania dostępu do zasobów firmowych. Aby chronić z zasobami firmy jako IT administrator, chcesz mają kontrolę nad tymi urządzeniami. Dzięki temu można upewnij się, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy zabezpieczeń i zgodności. 
 
-Zarządzanie urządzeniami jest również podstawą [dostępu warunkowego opartego na urządzeniu](active-directory-conditional-access-policy-connected-applications.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zapewnić, że dostęp do zasobów w środowisku jest możliwe tylko z zaufanych urządzeń.   
+Zarządzanie urządzeniami jest również podstawą [dostępu warunkowego opartego na urządzeniu](active-directory-conditional-access-policy-connected-applications.md). Przy użyciu dostępu warunkowego opartego na urządzeniach można zapewnić, że dostęp do zasobów w środowisku jest możliwe tylko z zarządzanych urządzeń.   
 
-W tym temacie wyjaśniono, jak działa zarządzanie urządzeniami w usłudze Azure Active Directory.
+W tym artykule opisano, jak działa zarządzanie urządzeniami w usłudze Azure Active Directory.
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Pobieranie urządzeń pod kontrolą programu Azure AD
 
@@ -122,7 +124,7 @@ Należy używać urządzeń hybrydowego przyłączonych do usługi Azure AD, je�
 
 - Masz aplikacji Win32 wdrożonych na tych urządzeniach, które używają protokołu NTLM / Kerberos.
 
-- Wymagaj zasad grupy lub SCCM / DCM do zarządzania urządzeniami.
+- Wymagane jest zasad grupy do zarządzania urządzeniami.
 
 - Chcesz nadal używać do konfigurowania urządzeń pracowników rozwiązań do obsługi obrazów.
 

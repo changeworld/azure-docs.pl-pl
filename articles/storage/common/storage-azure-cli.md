@@ -14,11 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737372"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Za pomocą usługi Azure CLI 2.0 z usługą Azure Storage
 
@@ -320,7 +321,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 Usługa pliki Azure oferuje współużytkowany magazyn dla aplikacji używających protokołu bloku komunikatów serwera (SMB). Maszyny wirtualne Microsoft Azure i usługi w chmurze, a także aplikacje lokalne mogą udostępniać dane za pośrednictwem zainstalowanych udziałów. Możesz zarządzać udziałami plików i danych plików za pomocą wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na pliki Azure, zobacz [wprowadzenie do usługi pliki Azure](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Tworzenie udziału plików
-Udział plików Azure jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi, należy utworzyć w udziale plików. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików do osiągnięcia limitu pojemności konta magazynu. Poniższy przykład tworzy udział plików o nazwie **moj_udzial**.
+Udział plików na platformę Azure jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi, należy utworzyć w udziale plików. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików do osiągnięcia limitu pojemności konta magazynu. Poniższy przykład tworzy udział plików o nazwie **moj_udzial**.
 
 ```azurecli
 az storage share create --name myshare
@@ -394,7 +395,7 @@ Przykładowe dane wyjściowe
 }
 ```
 
-### <a name="list-share-snapshots"></a>Lista udziału migawki
+### <a name="list-share-snapshots"></a>Wyświetlanie listy migawek udziałów
 
 Możesz podać migawek udział w udziale określonym za pomocą `az storage share list --include-snapshots`
 
@@ -438,7 +439,7 @@ az storage share list --include-snapshots
 ]
 ```
 
-### <a name="browse-share-snapshots"></a>Przeglądaj migawki udziału
+### <a name="browse-share-snapshots"></a>Przeglądanie migawek udziałów
 Może również przeglądania do migawki, aby wyświetlić jego zawartości przy użyciu akcji `az storage file list`. Trzeba określić nazwę udziału `--share-name <snare name>` i znacznik czasu `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive

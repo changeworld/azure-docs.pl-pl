@@ -1,13 +1,14 @@
 ---
-title: "Azure zasady usługi Active Directory dostępu warunkowego urządzeń dla usług Office 365 | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu obsługi administracyjnej zasady dostępu warunkowego urządzeń, aby sprawić, że zasoby firmy więcej bezpieczeństwo, zachowując zgodność użytkownika i dostęp do usług."
+title: Azure zasady usługi Active Directory dostępu warunkowego urządzeń dla usług Office 365 | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu obsługi administracyjnej zasady dostępu warunkowego urządzeń, aby sprawić, że zasoby firmy więcej bezpieczeństwo, zachowując zgodność użytkownika i dostęp do usług.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8664c0bb-bba1-4012-b321-e9c8363080a0
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2b586aee9559b62d4cc8b21ab88ab193e61e7c14
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cc385edb6bf0b850eb97f0f6a233dd5081acbb3e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723962"
 ---
 # <a name="active-directory-conditional-access-device-policies-for-office-365-services"></a>Active Directory dostępu warunkowego zasady urządzeń dla usług Office 365
 
@@ -43,6 +45,6 @@ Usługi rejestracji urządzeń usługi Azure AD musi być używany do rejestrowa
 
 Jeśli użytkownicy lokalnych są o należy uwierzytelnieni, Active Directory Federation Services (AD FS) (w wersji 1.0 lub nowszym) jest wymagana. Uwierzytelnianie wieloskładnikowe dla dołączania nie powiedzie się, gdy dostawca tożsamości nie jest zdolny do usługi Multi-Factor Authentication. Na przykład nie można użyć uwierzytelniania wieloskładnikowego z usługami AD FS 2.0. Upewnij się, że lokalnej usługi AD FS współpracuje z usługi Multi-Factor authentication, a metoda prawidłowy uwierzytelnianie wieloskładnikowe jest na miejscu przed włączeniem uwierzytelniania wieloskładnikowego dla usługi rejestracji urządzeń usługi Azure AD. Na przykład usługi AD FS w systemie Windows Server 2012 R2 ma funkcje usługi Multi-Factor authentication. Należy również ustawić metodę dodatkowe prawidłowy uwierzytelniania (uwierzytelnianie wieloskładnikowe) na serwerze usług AD FS przed włączeniem uwierzytelniania wieloskładnikowego dla usługi rejestracji urządzeń usługi Azure AD. Aby uzyskać więcej informacji na temat metod obsługiwanych uwierzytelnianie wieloskładnikowe w usługach AD FS, zobacz [Konfigurowanie dodatkowych metod uwierzytelniania usług AD FS](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 *   Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [dostępu warunkowego w usłudze Azure Active Directory — często zadawane pytania](active-directory-conditional-faqs.md).

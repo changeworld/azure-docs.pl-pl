@@ -1,29 +1,25 @@
 ---
-title: "Warunkowe instrukcje - uruchamianie kroków na podstawie warunku - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Wykonanie kroków w aplikacji logiki tylko, po spełnieniu warunku. Utwórz drzewa decyzyjne, które uruchamiania przepływów pracy na podstawie określonych warunków."
+title: Dodaj instrukcje warunkowe do przepływów pracy - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie warunków kontrolujących takie akcje w przepływach pracy w aplikacjach logiki platformy Azure
 services: logic-apps
-keywords: warunkowe instrukcje, drzew decyzyjnych
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 486c1053f42ed3becc2c4b60accc993db7f24baa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 5629c743434a0fe53f35da29343945951bbc5dd7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725734"
 ---
-# <a name="conditional-statements-run-steps-based-on-a-condition-in-logic-apps"></a>Warunkowe instrukcje: wykonanie kroków na podstawie warunku w aplikacjach logiki
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Utwórz warunkowe instrukcje sterujące przepływu pracy akcji w aplikacjach logiki platformy Azure
 
-Aby wykonać kroki tylko po przekazywanie określony warunek, należy użyć *instrukcji warunkowej*. Ta struktura porównuje dane w przepływie pracy przed określone wartości lub pól. Można zdefiniować wykonania różnych kroków do czy danych spełnia warunek. Można zagnieżdżać warunków wewnątrz siebie nawzajem.
+Aby uruchomić określone czynności w aplikacji logiki tylko po przekazywanie określony warunek, dodać *instrukcji warunkowej*. Ta struktura porównuje dane w przepływie pracy przed określone wartości lub pól. Następnie można określić różne akcje, które są uruchamiane na podstawie na czy danych spełnia warunek. Można zagnieżdżać warunków wewnątrz siebie nawzajem.
 
 Na przykład załóżmy, że masz aplikację logiki, która wysyła zbyt dużo żądań wiadomości e-mail, gdy nowe elementy wyświetlane na kanału informacyjnego RSS witryny sieci Web. Możesz dodać instrukcji warunkowej do wysyłania wiadomości e-mail, tylko wtedy, gdy nowy element zawiera określony ciąg znaków. 
 
@@ -65,7 +61,7 @@ Na przykład załóżmy, że masz aplikację logiki, która wysyła zbyt dużo �
 
    Oto pełny warunek:
 
-   ![Pełny warunek](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![Gotowy warunek](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
 
    > [!TIP]
    > Aby utworzyć warunek bardziej zaawansowanych lub za pomocą wyrażeń, wybierz **edytowanie w trybie zaawansowanym**. Można użyć wyrażenia zdefiniowane przez [język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).

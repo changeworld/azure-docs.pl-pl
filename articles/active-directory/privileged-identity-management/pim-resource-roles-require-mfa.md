@@ -1,9 +1,9 @@
 ---
-title: Privileged Identity Management zasobów Azure - MFA | Dokumentacja firmy Microsoft
+title: Wymusić uwierzytelnianie wieloskładnikowe Azure w zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
 description: Ten dokument zawiera opis sposobu włączyć uwierzytelnianie wieloskładnikowe dla zasobów usługi PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 editor: mwahl
 ms.service: active-directory
@@ -12,48 +12,49 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8d1c05e7f61ed76c47613bfab7bb8afd9b66cbe7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3084ba4f606823f3896f266f64a24c8fe4be1309
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699839"
 ---
-# <a name="privileged-identity-management---resource-roles---mfa"></a>Privileged Identity Management - role zasobów - MFA
+# <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Wymusić uwierzytelnianie wieloskładnikowe Azure w zasobów platformy Azure przy użyciu Privileged Identity Management
 
-PIM ról zasobów platformy Azure umożliwia zasobów Administratorzy i Administratorzy tożsamości chronić krytyczne infrastruktury platformy Azure z wiązaniem czasu członkostwa i dostępu just in time. Ponadto PIM zapewnia wymuszanie opcjonalne Azure Multi-Factor Authentication (MFA) dla dwóch różnych scenariuszy.
+Uprzywilejowane tożsamości zarządzania (PIM) dla ról zasobów platformy Azure umożliwia zasobów Administratorzy i Administratorzy tożsamości chronić krytyczne infrastruktury platformy Azure z wiązaniem czasu członkostwa i dostępu just in time. Ponadto PIM zapewnia opcjonalne wymuszania uwierzytelnianie wieloskładnikowe Azure dla dwóch różnych scenariuszy.
 
-## <a name="require-mfa-to-activate"></a>Wymagane uwierzytelnianie MFA do aktywacji
+## <a name="require-multi-factor-authentication-to-activate"></a>Wymagaj uwierzytelniania wieloskładnikowego aktywować
 
-Administratorzy zasobów mogą wymagać kwalifikujących się członkami roli kończą się pomyślnie usługi Azure MFA aktywować. Ten proces zapewnia, że jest aktywacja żądania użytkownika, który mówią, że są one z pewnością uzasadnione. Wymuszanie tej opcji chroni kluczowych zasobów w sytuacjach, gdy konto użytkownika zostało naruszone. 
+Administratorzy zasobów mogą wymagać kwalifikujących się członkami roli można uruchomić usługi Azure Multi-Factor Authentication, aby aktywować. Ten proces zapewnia, że użytkownik, który żąda jest aktywacji, który mówią, że są one z pewnością uzasadnione. Wymuszania tej opcji chroni kluczowych zasobów w sytuacjach, gdy konto użytkownika może zostały naruszone. 
 
-Aby wymusić to wymaganie, zaznacz zasób z listy zarządzanych zasobów. Z [pulpitu nawigacyjnego przeglądu](pim-resource-roles-overview-dashboards.md), wybierz rolę z listy ról w prawym dolnym rogu ekranu.
+Aby wymusić to wymaganie, zaznacz zasób z listy zarządzanych zasobów. Z [pulpitu nawigacyjnego przeglądu](pim-resource-roles-overview-dashboards.md), wybierz rolę z listy ról w prawej dolnej części ekranu.
 
-Ponadto można uzyskać ustawień roli z albo "role" lub "Ustawienia roli" karty w menu nawigacji po lewej stronie.
+Ponadto można pobrać ustawień ról z albo **ról** lub **ustawienia roli** karty w okienku po lewej stronie.
 
 >[!Note]
->Jeśli są wygaszone opcje dostępne w menu nawigacji po lewej stronie, aby zobaczyć transparent w górnej części strony, który stanowi "Masz odpowiednie role, które można aktywować" nie są aktywne administratora, a musi [aktywować](pim-resource-roles-activate-your-roles.md) przed kontynuowaniem.
+>Jeśli widzisz Baner w górnej części strony, który stanowi "Masz odpowiednie role, które można aktywować" Opcje w okienku po lewej stronie są wygaszone, nie jesteś użytkownikiem z prawami administratora. Oznacza to, należy najpierw [aktywować](pim-resource-roles-activate-your-roles.md) przed kontynuowaniem.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_manage_a_role_v2.png)
+!["Role" i "Ustawienia roli" karty ](media/azure-pim-resource-rbac/aadpim_rbac_manage_a_role_v2.png)
 
-Jeśli wyświetlanie członkostwo roli, wybierz "Ustawienia roli" na pasku w górnej części ekranu, aby otworzyć "szczegóły ustawień roli".
+Zaznacz, aby wyświetlić członkostwa roli **ustawienia roli** na pasku w górnej części ekranu, aby otworzyć **szczegóły ustawień roli**.
 
-Kliknij przycisk **Edytuj** u góry, aby zmodyfikować ustawienia roli.
+Aby zmodyfikować ustawienia ról, wybierz opcję **Edytuj** na górze.
 
-W sekcji obszarze **Aktywuj**, kliknij pole wyboru, aby **wymagają uwierzytelniania wieloskładnikowego, aby aktywować**, następnie kliknij przycisk Zapisz.
+W sekcji obszarze **Aktywuj**, zaznacz pole wyboru, aby **wymagają uwierzytelniania wieloskładnikowego na aktywacji**. Następnie wybierz pozycję **Zapisz**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa.png)
+![Wymagaj usługi Multi-Factor Authentication przy uaktywnianiu](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa.png)
 
-## <a name="require-mfa-on-assignment"></a>Uwierzytelniania MFA można wymagać przydziału
+## <a name="require-multi-factor-authentication-on-assignment"></a>Wymagaj uwierzytelniania wieloskładnikowego na przypisanie
 
-W niektórych przypadkach administrator zasobów może wykonać przypisania członka do roli na krótki czas trwania (jeden dzień na przykład) i musi przypisanej członków do żądania aktywacji. W tym scenariuszu PIM nie może wymusić uwierzytelnianie MFA, gdy element członkowski używa przypisania roli, ponieważ są one już aktywny w roli w czasie, które są przypisane.
+W niektórych przypadkach administrator zasobów może być przypisanie członka do roli na krótki czas trwania (jeden dzień, na przykład). W takim przypadku nie muszą przypisanej członków do żądania aktywacji. W tym scenariuszu PIM nie może wymusić uwierzytelnianie wieloskładnikowe, gdy element członkowski używa przypisania roli, ponieważ są one już aktywny w roli w czasie, które są przypisane.
 
-Aby zapewnić, że administrator zasobów spełniających przydziału jest kto mówią, że są one, można wymusić uwierzytelnianie MFA na przypisanie.
+Do zapewnienia, że administrator zasobów spełniających przypisania kto mówią, że są one, można wymusić uwierzytelnianie wieloskładnikowe na przypisanie.
 
-Z tej samej roli ustawienie ekran szczegółów zaznacz pole "Wymagaj uwierzytelniania wieloskładnikowego na przypisanie".
+Z tej samej roli ustawienie ekran szczegółów zaznacz pole w celu **wymagają uwierzytelniania wieloskładnikowego na bezpośrednie przypisywanie**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa_on_assignment.png)
+![Wymagaj uwierzytelniania wieloskładnikowego na bezpośrednie przypisywanie](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa_on_assignment.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

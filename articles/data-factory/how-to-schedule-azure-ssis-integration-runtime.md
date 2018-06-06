@@ -10,17 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 05/18/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: douglasl
-ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8eeed91da3942d00bbab17a2dffc4b4e888a6f70
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725112"
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Jak można zaplanować uruchamianie i zatrzymywanie środowiska uruchomieniowego integracji Azure SSIS 
-Uruchomiona środowiska uruchomieniowego integracji SSIS Azure (SQL Server Integration Services) (IR) ma opłat skojarzonych z nim. W związku z tym który chcesz uruchomić IR tylko wtedy, gdy jest to wymagane do uruchamiania pakietów SSIS na platformie Azure i zatrzymaj ją, gdy nie będzie potrzebny. Można użyć interfejsu użytkownika z fabryki danych lub Azure PowerShell do [ręcznie uruchomić lub zatrzymać IR SSIS Azure](manage-azure-ssis-integration-runtime.md)). W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu usługi Automatyzacja Azure i fabryki danych Azure. Poniżej przedstawiono ogólne kroki opisane w tym artykule:
+W tym artykule opisano sposób tworzenia harmonogramu uruchamiania i zatrzymywania Azure SSIS integrację środowiska uruchomieniowego (IR) przy użyciu usługi Automatyzacja Azure i fabryki danych Azure. Uruchomiona środowiska uruchomieniowego integracji SSIS Azure (SQL Server Integration Services) (IR) ma opłat skojarzonych z nim. W związku z tym który chcesz uruchomić IR tylko wtedy, gdy jest to wymagane do uruchamiania pakietów SSIS na platformie Azure i zatrzymaj ją, gdy nie będzie potrzebny. Można użyć interfejsu użytkownika z fabryki danych lub Azure PowerShell do [ręcznie uruchomić lub zatrzymać IR SSIS Azure](manage-azure-ssis-integration-runtime.md)).
+
+Na przykład można utworzyć działania sieci Web z elementów webhook do elementu runbook usługi Automatyzacja Azure w programie PowerShell i łańcucha działanie wykonanie pakietu usług SSIS między nimi. Działania w sieci Web można uruchomić i zatrzymać Twojej IR Azure SSIS, tylko w czasie przed i po uruchomieniu pakietu. Aby uzyskać więcej informacji na temat działania wykonanie pakietu usług SSIS zobacz [uruchamiania pakietów SSIS za pomocą działania SSIS w fabryce danych Azure](how-to-invoke-ssis-package-ssis-activity.md).
+
+## <a name="overview-of-the-steps"></a>Omówienie kroków procesu
+
+Poniżej przedstawiono ogólne kroki opisane w tym artykule:
 
 1. **Tworzenie i testowanie elementu runbook usługi Automatyzacja Azure.** W tym kroku tworzenia elementu runbook programu PowerShell ze skryptem, który uruchomienia lub zatrzymania podczerwieni Azure SSIS. Następnie testu elementu runbook w scenariuszach zarówno uruchamianie i ZATRZYMYWANIE i upewnij się, że IR uruchomienia lub zatrzymania. 
 2. **Utwórz dwa harmonogramy dla elementu runbook.** Pierwszy harmonogramu można skonfigurować elementu runbook z START jako wykonać operację. Drugi harmonogramu należy skonfigurować element runbook z ZATRZYMANA jako operacji. Dla obu harmonogramy należy określić okresach, w którym element runbook jest uruchomiony. Na przykład można zaplanować pierwsza z nich do uruchomienia na 8 AM codziennie i drugi na 23: 00 codziennie. Pierwszy element runbook działa, uruchamia podczerwieni Azure SSIS. Po uruchomieniu drugiego elementu runbook przestaje podczerwieni Azure SSIS. 
@@ -73,11 +80,11 @@ Jeśli nie masz konta usługi Automatyzacja Azure, utwórz je zgodnie z instrukc
 
     ![Sprawdź wymagane moduły](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  Przejdź do galerii programu PowerShell dla [modułu AzureRM.DataFactoryV2 0.5.2](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2), wybierz pozycję **Wdróż automatyzacji Azure**, wybierz konto automatyzacji, a następnie wybierz **OK**. Przejdź wstecz, aby wyświetlić **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie poczekaj na wyświetlenie **stan** z **AzureRM.DataFactoryV2 0.5.2**  zmiana modułu **dostępne**.
+2.  Przejdź do galerii programu PowerShell dla [modułu AzureRM.DataFactoryV2](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/), wybierz pozycję **Wdróż automatyzacji Azure**, wybierz konto automatyzacji, a następnie wybierz **OK**. Przejdź wstecz, aby wyświetlić **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie poczekaj na wyświetlenie **stan** z **AzureRM.DataFactoryV2** zmiana modułu **dostępne**.
 
     ![Sprawdź modułu fabryki danych](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  Przejdź do galerii programu PowerShell dla [modułu AzureRM.Profile 4.5.0](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0), kliknij **Wdróż automatyzacji Azure**, wybierz konto automatyzacji, a następnie wybierz **OK**. Przejdź wstecz, aby wyświetlić **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie poczekaj na wyświetlenie **stan** z **AzureRM.Profile 4.5.0** zmiana modułu **dostępne**.
+3.  Przejdź do galerii programu PowerShell dla [modułu AzureRM.Profile](https://www.powershellgallery.com/packages/AzureRM.profile/), kliknij **Wdróż automatyzacji Azure**, wybierz konto automatyzacji, a następnie wybierz **OK**. Przejdź wstecz, aby wyświetlić **modułów** w **UDOSTĘPNIONE zasoby** sekcji w menu po lewej stronie, a następnie poczekaj na wyświetlenie **stan** z **AzureRM.Profile**zmiana modułu **dostępne**.
 
     ![Sprawdź modułu profilu](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
@@ -239,7 +246,7 @@ Po utworzeniu i przetestować potoku utworzyć wyzwalacza harmonogram i skojarzy
  
    Nazwa fabryki danych platformy Azure musi być **globalnie unikatowa**. Jeśli wystąpi poniższy błąd, zmień nazwę fabryki danych (np. twojanazwaMyAzureSsisDataFactory) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules (Usługa Data Factory — reguły nazewnictwa)](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+       `Data factory name �MyAzureSsisDataFactory� is not available`
 3. Wybierz **subskrypcję** Azure, w której chcesz utworzyć fabrykę danych. 
 4. Dla opcji **Grupa zasobów** wykonaj jedną z następujących czynności:
      
@@ -381,6 +388,9 @@ Teraz, gdy proces działa jako oczekiwano, można utworzyć wyzwalacza do urucho
     ![Uruchomienia wyzwalacza](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
+Zobacz następującym wpisie w blogu:
+-   [Modernizacji i rozszerzanie przepływy pracy ETL/ELT z działaniami SSIS w potokach ADF](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+
 Zobacz następujące artykuły wchodzące w skład usług SSIS: 
 
 - [Deploy, run, and monitor an SSIS package on Azure (Wdrażanie, uruchamianie i monitorowanie pakietu usług SSIS na platformie Azure)](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   

@@ -1,21 +1,21 @@
 ---
-title: Zabezpieczanie interfejsu API sieci Web — ASP.NET — usługa Azure Active Directory B2C | Microsoft Docs
+title: Secure web API platformy ASP.NET w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Jak utworzyć interfejs API sieci Web programu .NET przy użyciu usługi Azure Active Directory B2C zabezpieczonej przy użyciu tokenów dostępu protokołu OAuth 2.0 na potrzeby uwierzytelniania.
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/14/2018
 ms.author: davidmu
-ms.openlocfilehash: c64ca3546c5c2d21b00b379c297c9265b264cb9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8eb4045338476254fa9687a367d45b3646aeb9c1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712372"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: tworzenie interfejsu API sieci Web platformy .NET
 

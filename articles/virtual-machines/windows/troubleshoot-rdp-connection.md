@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c1444901fa46a62761d6b94ccb8e7ea3ff3d057f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701891"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Rozwiązywanie problemów z połączeniami pulpitu zdalnego do maszyny wirtualnej platformy Azure
 Połączenia protokołu RDP (Remote Desktop) do systemu Windows Azure maszyny wirtualnej (VM) może zakończyć się niepowodzeniem z różnych powodów, pozostawiając użytkownik mógł uzyskać dostępu do maszyny Wirtualnej. Problem może być usługą pulpitu zdalnego na Maszynie wirtualnej, połączenie sieciowe lub klienta pulpitu zdalnego na komputerze hosta. W tym artykule przedstawiono niektóre z najczęściej metod, aby rozwiązać problemy z połączeniami RDP. 
@@ -65,7 +66,7 @@ Każdy krok rozwiązywania problemów a następnie spróbuj ponownie nawiązać 
     Wybierz maszyny Wirtualnej w portalu Azure. Przewiń w dół okienko ustawienia, aby **pomocy technicznej i rozwiązywania problemów** sekcji w dolnej części listy. Kliknij przycisk **resetowania hasła** przycisku. Ustaw **tryb** do **Resetowanie tylko konfiguracji** , a następnie kliknij przycisk **aktualizacji** przycisk:
    
     ![Zresetowanie konfiguracji RDP w portalu Azure](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Zasady grupy zabezpieczeń sieci Sprawdź**. Użyj funkcji [weryfikacji przepływu adresu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) w celu potwierdzenia, że reguła w sieciowej grupie zabezpieczeń blokuje ruch do lub z maszyny wirtualnej. Można również przejrzeć efektywnym elementem systemu zabezpieczeń zasady grupy w celu zapewnienia ruchu przychodzącego "Zezwalaj" NSG reguły istnieje i jest priorytety dla portu protokołu RDP (ustawienie domyślne 3389). Aby uzyskać więcej informacji, zobacz [przepływu ruchu przy użyciu skuteczne reguły zabezpieczeń rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+2. **Zasady grupy zabezpieczeń sieci Sprawdź**. Użyj funkcji [weryfikacji przepływu adresu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) w celu potwierdzenia, że reguła w sieciowej grupie zabezpieczeń blokuje ruch do lub z maszyny wirtualnej. Można również przejrzeć efektywnym elementem systemu zabezpieczeń zasady grupy w celu zapewnienia ruchu przychodzącego "Zezwalaj" NSG reguły istnieje i jest priorytety dla portu protokołu RDP (ustawienie domyślne 3389). Aby uzyskać więcej informacji, zobacz [przepływu ruchu przy użyciu skuteczne reguły zabezpieczeń rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 3. **Przejrzyj diagnostyki rozruchu maszyny Wirtualnej**. Ten krok rozwiązywania problemów przegląda dzienniki konsoli maszyny Wirtualnej, aby określić, czy maszyna wirtualna jest zgłoszenie problemu. Nie wszystkie maszyny wirtualne mają diagnostyki rozruchu włączone, więc ten krok rozwiązywania problemów może być opcjonalny.
    
@@ -95,7 +96,7 @@ Każdy krok rozwiązywania problemów a następnie spróbuj ponownie nawiązać 
    
     Po zakończeniu tej operacji, tymczasowych dysku dane zostaną utracone, a zaktualizowane dynamicznych adresów IP, które są skojarzone z maszyną Wirtualną.
 
-9. **Sprawdź routing**. Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+9. **Sprawdź routing**. Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/diagnose-network-routing-problem.md).
 
 10. Upewnij się, że wszelkie zapory lokalnymi lub zapora na komputerze, zezwala na ruch wychodzący TCP 3389 na platformie Azure.
 
@@ -184,7 +185,7 @@ Każdy krok rozwiązywania problemów a następnie spróbuj ponownie nawiązać 
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **Sprawdź routing**. Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+6. **Sprawdź routing**. Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/diagnose-network-routing-problem.md).
 
 7. Upewnij się, że wszelkie zapory lokalnymi lub zapora na komputerze, zezwala na ruch wychodzący TCP 3389 na platformie Azure.
 

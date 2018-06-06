@@ -8,22 +8,24 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 05/07/2018
+ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 8c9f772c9d3908e450961239797f6ce2bd4982e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801119"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Uruchamianie aplikacji kontenera w partii zadań Azure
 
-Partia zadań Azure umożliwia uruchamiania i skalowania dużej liczby partii przetwarzania zadania na platformie Azure. Do tej pory partii zadań zostało uruchomione bezpośrednio na maszynach wirtualnych (VM) w puli partii, ale teraz należy skonfigurować pulę partii, uruchamianie zadań w kontenerach Docker. W tym artykule przedstawiono tworzenie puli węzłów obliczeniowych, które obsługują uruchomione zadania kontenera przy użyciu zestawu .NET SDK usługi partia zadań i uruchamiania zadań kontenera w puli.
+Partia zadań Azure umożliwia uruchamiania i skalowania dużej liczby partii przetwarzania zadania na platformie Azure. Partii zadań można uruchamiać bezpośrednio na maszyny wirtualne (węzłów) w puli partii, ale można również skonfigurować pulę partii do uruchamiania zadań w kontenerach zgodnego Docker na węzłach. W tym artykule przedstawiono sposób tworzenia puli węzłów obliczeniowych, które obsługują uruchomione zadania kontenera, a następnie uruchom zadania kontenera w puli. 
 
-Używanie kontenerów zapewnia prosty sposób do uruchamiania zadań wsadowych bez konieczności zarządzania środowiska i zależności do uruchamiania aplikacji. Kontenery wdrażania aplikacji jako lekkie, przenośny samowystarczalne jednostki, które można uruchomić w różnych środowiskach. Na przykład użytkownik może kompilacji lokalnie kontener testu, a następnie Przekaż obraz kontenera w rejestrze w Azure lub gdziekolwiek indziej. Model wdrożenia kontenera zapewnia środowisko uruchomieniowe aplikacji jest zawsze poprawnie zainstalowany i skonfigurowany, niezależnie od tego, gdzie hostowania aplikacji. Na podstawie kontenera zadania w partii można również korzystać z funkcji zadań niebędących kontenerami, w tym pakiety aplikacji i zarządzanie plikami zasobów i plików wyjściowych. 
+Należy zapoznać się z kontenera koncepcji i sposobu tworzenia puli partii i zadania. Przykłady kodu za pomocą partiami platformy .NET i zestawy SDK Python. Tworzenie puli partii włączone kontenera i uruchamiania zadań kontenera, można użyć innych zestawów SDK partii i narzędzi, w tym portalu Azure.
 
-W tym artykule założono znajomość pojęcia kontenera Docker i tworzenie puli partii i zadania przy użyciu zestawu .NET SDK. Fragmenty kodu są przeznaczone do użycia w aplikacji klienckiej, podobnie jak [próbki DotNetTutorial](batch-dotnet-get-started.md), i podano przykłady kodu będzie potrzebny do obsługi aplikacji kontenera w partii.
+## <a name="why-use-containers"></a>Dlaczego warto używać kontenery?
 
+Używanie kontenerów zapewnia prosty sposób do uruchamiania zadań wsadowych bez konieczności zarządzania środowiska i zależności do uruchamiania aplikacji. Kontenery wdrażania aplikacji jako lekkie, przenośny samowystarczalne jednostki, które można uruchomić w kilku różnych środowiskach. Na przykład użytkownik może kompilacji lokalnie kontener testu, a następnie Przekaż obraz kontenera w rejestrze w Azure lub gdziekolwiek indziej. Model wdrożenia kontenera zapewnia, że środowisko uruchomieniowe aplikacji jest zawsze poprawnie zainstalowana i skonfigurowana wszędzie tam, gdzie hostowania aplikacji. Na podstawie kontenera zadania w partii można również korzystać z funkcji zadań niebędących kontenerami, w tym pakiety aplikacji i zarządzanie plikami zasobów i plików wyjściowych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -36,107 +38,133 @@ W tym artykule założono znajomość pojęcia kontenera Docker i tworzenie puli
 
 * **Konta**: W Twojej subskrypcji platformy Azure, musisz utworzyć konto usługi partia zadań i opcjonalnie konta usługi Azure Storage.
 
-* **Obsługiwane obrazu maszyny Wirtualnej**: kontenery są obsługiwane tylko w pulach utworzone za pomocą konfiguracji maszyny wirtualnej z obrazów szczegółowo opisane w poniższej sekcji, "obsługiwane obrazy maszyny wirtualnej". Jeśli podasz niestandardowego obrazu, aplikacja musi korzystać z usługi Azure Active Directory [uwierzytelniania (Azure AD)](batch-aad-auth.md) aby można było uruchamiać obciążenia na podstawie kontenera. 
+* **Obsługiwane obrazu maszyny Wirtualnej**: kontenery są obsługiwane tylko w pulach utworzone za pomocą konfiguracji maszyny wirtualnej z obrazów szczegółowo opisane w poniższej sekcji, "obsługiwane obrazy maszyny wirtualnej". Jeśli podasz niestandardowego obrazu, zobacz zagadnień opisane w poniższej sekcji i wymagań dotyczących [umożliwiają utworzenie puli maszyn wirtualnych zarządzanych niestandardowego obrazu](batch-custom-images.md). 
 
-
-## <a name="supported-virtual-machine-images"></a>Obrazy obsługiwanych maszyn wirtualnych
-
-Należy użyć obsługiwanych systemu Windows lub obrazu systemu Linux, aby utworzyć pulę wirtualna obliczeniowe węzłów dla obciążeń kontenera.
-
-### <a name="windows-images"></a>Obrazy systemu Windows
-
-W przypadku obciążeń kontenera systemu Windows partii obecnie obsługuje niestandardowych obrazów utworzonych z maszyn wirtualnych z systemem Windows Docker lub za pomocą Centrum danych systemu Windows Server 2016 kontenery obrazu z portalu Azure Marketplace. Ten obraz jest kompatybilny z `batch.node.windows amd64` agenta węzła identyfikator jednostki SKU. Typ kontenera obsługiwane jest obecnie ograniczona do Docker.
-
-### <a name="linux-images"></a>Obrazy systemu Linux
-
-W przypadku obciążeń kontenera Linux partii aktualnie obsługuje tylko niestandardowych obrazów, które utworzono z maszyn wirtualnych pracujących Docker na następujących dystrybucje systemu Linux: Ubuntu 16.04 LTS i CentOS 7.3. Jeśli użytkownik chce dostarczyć własny obraz niestandardowy Linux, zobacz instrukcje w [umożliwiają utworzenie puli maszyn wirtualnych zarządzanych niestandardowego obrazu](batch-custom-images.md).
-
-Obsługa Docker można zainstalować [Docker Community Edition (CE)](https://www.docker.com/community-edition) lub [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
-
-Jeśli chcesz móc korzystać z wydajności procesora GPU Azure NC lub maszyn wirtualnych z wirtualizacją sieci, należy zainstalować NVIDIA sterowniki do obrazu. Ponadto należy zainstalować i uruchomić narzędzie aparat Docker dla jednostki GPU NVIDIA, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker).
-
-Dostęp do sieci Azure RDMA, użyj rozmiarów maszyn wirtualnych z funkcją RDMA, jak A8 i A9, H16r, H16mr lub NC24r. Niezbędne sterowniki RDMA są zainstalowane w CentOS 7.3 HPC i Ubuntu 16.04 LTS obrazów z portalu Azure Marketplace. Dodatkowej konfiguracji mogą być wymagane do uruchamiania obciążeń MPI. Zobacz [użycia z funkcją RDMA lub włączone GPU wystąpień w puli partii](batch-pool-compute-intensive-sizes.md).
-
-
-## <a name="limitations"></a>Ograniczenia
+### <a name="limitations"></a>Ograniczenia
 
 * Wsadowe obsługuje funkcję RDMA tylko kontenery z systemem Linux pule.
 
+## <a name="supported-virtual-machine-images"></a>Obrazy obsługiwanych maszyn wirtualnych
 
-## <a name="authenticate-using-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory
+Użyj jednej z następujących obsługiwane systemu Windows lub Linux obrazów, aby utworzyć pulę maszyny wirtualnej obliczeniowe węzłów dla obciążeń kontenera. Aby uzyskać więcej informacji o obrazach Marketplace, które są zgodne z partii, zobacz [listy obrazów maszyny wirtualnej](batch-linux-nodes.md#list-of-virtual-machine-images). 
 
-Jeśli używasz niestandardowego obrazu maszyny Wirtualnej można utworzyć puli partii, aplikacja kliencka musi uwierzytelnić przy użyciu zintegrowanego uwierzytelniania usługi Azure AD (uwierzytelniania klucza współużytkowanego nie działa). Przed uruchomieniem aplikacji, upewnij się, że możesz zarejestrować w usłudze Azure AD do ustalenia tożsamości dla niego i określanie jego uprawnień do innych aplikacji.
+### <a name="windows-images"></a>Obrazy systemu Windows
 
-Ponadto użycie niestandardowego obrazu maszyny Wirtualnej, należy przyznać IAM kontroli dostępu do aplikacji można uzyskać dostępu do obrazu maszyny Wirtualnej. W portalu Azure kliknij **wszystkie zasoby**, wybierz obraz kontenera i z **(IAM) kontroli dostępu** sekcji strony obrazu, kliknij przycisk **Dodaj**. W **dodać uprawnienia** określ **roli**w **przypisany dostęp**, wybierz pozycję **użytkownika usługi Azure AD, grupy lub aplikacji**, a następnie w  **Wybierz** wprowadź nazwę aplikacji.
+W przypadku obciążeń kontenera systemu Windows partii obecnie obsługuje **systemu Windows Server 2016 Datacenter z kontenerami** obrazu w portalu Azure Marketplace. W systemie Windows, obsługiwane są tylko obrazy kontenera Docker.
 
-W aplikacji należy przekazać tokenu uwierzytelniania usługi Azure AD podczas tworzenia klienta przetwarzania wsadowego. Jeśli tworzysz przy użyciu zestawu SDK .NET usługi partia zadań, użyj [BatchClient.Open](/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_), zgodnie z opisem w [rozwiązań usług uwierzytelniania partii z usługą Active Directory](batch-aad-auth.md).
+Można również utworzyć niestandardowe obrazy z maszyn wirtualnych z systemem Windows Docker.
 
+### <a name="linux-images"></a>Obrazy systemu Linux
 
-## <a name="reference-a-vm-image-for-pool-creation"></a>Odwołanie do obrazu maszyny Wirtualnej do utworzenia puli
+W przypadku obciążeń kontenera Linux partii obecnie obsługuje następujące obrazy Linux opublikowanych przez partia zadań Microsoft Azure w portalu Azure Marketplace:
 
-W kodzie aplikacji Podaj odwołanie do obrazu maszyny Wirtualnej do użycia podczas tworzenia węzłów obliczeniowych w puli. Można to zrobić, tworząc [elementu ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) obiektu. Można określić obrazu do użycia w jednym z następujących sposobów:
+* **CentOS dla pul kontenera partii zadań Azure**
 
-* Jeśli używasz niestandardowego obrazu, podaj identyfikator zasobu usługi Azure Resource Manager dla obrazu maszyny wirtualnej. Identyfikator obrazu ma format ścieżki, jak pokazano w poniższym przykładzie:
+* **CentOS (ze sterownikami RDMA) dla pul kontenera partii zadań Azure**
 
-  ```csharp
-  // Provide a reference to a custom image using an image ID
-  ImageReference imageReference = new ImageReference("/subscriptions/<subscription-ID>/resourceGroups/<resource-group>/providers/Microsoft.Compute/images/<imageName>");
-  ```
+* **Ubuntu Server dla pul kontenera partii zadań Azure**
 
-    Aby uzyskać ten identyfikator obrazu z portalu Azure, otwórz **wszystkie zasoby**, wybierz obraz niestandardowy i z **omówienie** sekcji strony obraz należy skopiować ścieżkę w **identyfikator zasobu**.
+* **Ubuntu Server (ze sterownikami RDMA) dla pul kontenera partii zadań Azure**
 
-* Jeśli używasz [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) obraz, podaj grupę parametry opisujące obrazu: wydawcy, typu oferty, jednostki SKU i wersji obrazu na liście [listy obrazów maszyny wirtualnej](batch-linux-nodes.md#list-of-virtual-machine-images):
+Te obrazy są obsługiwane tylko do użytku w pulach partii zadań Azure. Ich funkcji:
 
-  ```csharp
-  // Provide a reference to an Azure Marketplace image for
-  // "Windows Server 2016 Datacenter with Containers"
-  ImageReference imageReference = new ImageReference(
-    publisher: "MicrosoftWindowsServer",
-    offer: "WindowsServer",
-    sku: "2016-Datacenter-with-Containers",
-    version: "latest");
-  ```
+* Wstępnie zainstalowane [Moby](https://github.com/moby/moby) kontener środowiska uruchomieniowego 
+
+* Wstępnie zainstalowane NVIDIA wersji sterowników procesora GPU, aby usprawnić wdrażanie na maszynach wirtualnych Azure N-series
+
+* Obrazy z lub bez wstępnie zainstalowane sterowniki RDMA; te sterowniki zezwala węzłom puli na dostęp do sieci Azure RDMA po wdrożeniu na rozmiarów maszyn wirtualnych z funkcją RDMA  
+
+Można również utworzyć niestandardowe obrazy z maszyn wirtualnych uruchomionych Docker na jedną dystrybucje systemu Linux, które nie są zgodne z partii. Jeśli użytkownik chce dostarczyć własny obraz niestandardowy Linux, zobacz instrukcje w [umożliwiają utworzenie puli maszyn wirtualnych zarządzanych niestandardowego obrazu](batch-custom-images.md).
+
+Obsługa Docker na obraz niestandardowy, można zainstalować [Docker Community Edition (CE)](https://www.docker.com/community-edition) lub [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
+
+Dodatkowe zagadnienia dotyczące korzystania z niestandardowego obrazu systemu Linux:
+
+* Aby móc korzystać z wydajności procesora GPU rozmiary serii N Azure przy użyciu obrazu niestandardowego, należy wstępnie zainstalować sterowniki NVIDIA. Ponadto należy zainstalować narzędzia aparat Docker dla jednostki GPU NVIDIA, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker).
+
+* Dostęp do sieci Azure RDMA, należy użyć rozmiaru maszyny Wirtualnej z funkcją RDMA. Niezbędne sterowniki RDMA są zainstalowane w CentOS HPC i Ubuntu obrazów obsługiwane przez partię. Dodatkowej konfiguracji mogą być wymagane do uruchamiania obciążeń MPI. Zobacz [użycia z funkcją RDMA lub włączone GPU wystąpień w puli partii](batch-pool-compute-intensive-sizes.md).
 
 
 ## <a name="container-configuration-for-batch-pool"></a>Kontener konfiguracji puli partii
 
-Aby włączyć puli partii do uruchamiania obciążeń kontenera, należy określić [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) ustawienia z puli [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) obiektu.
+Aby włączyć puli partii do uruchamiania obciążeń kontenera, należy określić [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) ustawienia z puli [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) obiektu. (Ten artykuł zawiera linki do dokumentacji interfejsu API platformy .NET usługi partia zadań. Odpowiednie ustawienia znajdują się w [Python partii](/python/api/azure.batch) interfejsu API.)
 
-Można utworzyć pulę włączone kontenera lub bez obrazów prefetched kontenera, jak pokazano w poniższych przykładach. Proces ściągania (lub pobieranie z wyprzedzeniem) umożliwia wstępne ładowanie kontener obrazów z Centrum Docker lub innego rejestru kontenera w Internecie. Zaletą odczyt z wyprzedzeniem kontener obrazów jest, czy po pierwszym uruchomieniu zadania uruchamiania ich nie musisz czekać do pobierania obrazu kontenera. Konfigurację kontenera pobiera kontener obrazów do maszyn wirtualnych, po utworzeniu puli. Zadania, które są uruchamiane w puli można odwołać listy obrazów kontenera i kontener uruchamianie opcje.
+Można utworzyć pulę włączone kontenera lub bez obrazów prefetched kontenera, jak pokazano w poniższych przykładach. Proces ściągania (lub pobieranie z wyprzedzeniem) umożliwia wstępne ładowanie kontener obrazów z Centrum Docker lub innego rejestru kontenera w Internecie. Aby uzyskać najlepszą wydajność, należy użyć [rejestru kontenera platformy Azure](../container-registry/container-registry-intro.md) w tym samym regionie co konto usługi partia zadań.
 
+Zaletą odczyt z wyprzedzeniem kontener obrazów jest, czy po pierwszym uruchomieniu zadania uruchamiania ich nie musisz czekać do pobierania obrazu kontenera. Konfigurację kontenera pobiera kontener obrazów do maszyn wirtualnych, po utworzeniu puli. Zadania, które są uruchamiane w puli można odwołać listy obrazów kontenera i kontener uruchamianie opcje.
 
 
 ### <a name="pool-without-prefetched-container-images"></a>Pula bez kontenera prefetched obrazów
 
-Do skonfigurowania puli komputerów z obsługą kontenera bez kontenera prefetched obrazów, zdefiniuj `ContainerConfiguration` i `VirtualMachineConfiguration` obiektów, jak pokazano w poniższym przykładzie. To, jak i w poniższych przykładach założono korzystasz z niestandardowego obrazu Ubuntu 16.04 LTS z aparatem platformy Docker zainstalowane.
+Do skonfigurowania puli komputerów z obsługą kontenera bez kontenera prefetched obrazów, zdefiniuj `ContainerConfiguration` i `VirtualMachineConfiguration` obiektów, jak pokazano w poniższym przykładzie Python. W tym przykładzie używane Ubuntu Server partii zadań Azure kontenera pule obrazu z witryny Marketplace.
 
-```csharp
-// Specify container configuration. This is required even though there are no prefetched images.
-ContainerConfiguration containerConfig = new ContainerConfiguration();
 
-// VM configuration
-VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
-    imageReference: imageReference,
-    containerConfiguration: containerConfig,
-    nodeAgentSkuId: "batch.node.ubuntu 16.04");
+```python
+image_ref_to_use = batch.models.ImageReference(
+        publisher='microsoft-azure-batch',
+        offer='ubuntu-server-container',
+        sku='16-04-lts',
+        version='latest')
 
-// Create pool
-CloudPool pool = batchClient.PoolOperations.CreatePool(
-    poolId: poolId,
-    targetDedicatedComputeNodes: 4,
-    virtualMachineSize: "Standard_NC6",
-    virtualMachineConfiguration: virtualMachineConfiguration);
+"""
+Specify container configuration. This is required even though there are no prefetched images.
+"""
 
-// Commit pool creation
-pool.Commit();
+container_conf = batch.models.ContainerConfiguration()
+
+new_pool = batch.models.PoolAddParameter(
+        id=pool_id,
+        virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
+            image_reference=image_ref_to_use,
+            container_configuration=container_conf,
+            node_agent_sku_id='batch.node.ubuntu 16.04'),
+        vm_size='STANDARD_D1_V2',
+        target_dedicated_nodes=1)
+...
 ```
 
 
 ### <a name="prefetch-images-for-container-configuration"></a>Pobrana z wyprzedzeniem obrazy dla kontenera konfiguracji
 
-Aby pobrana z wyprzedzeniem kontener obrazów w puli, Dodaj listy obrazów kontenera (`containerImageNames`) do `ContainerConfiguration`i nadaj nazwę listy obrazów. W poniższym przykładzie założono są przy użyciu niestandardowego obrazu Ubuntu 16.04 LTS i pobrana z wyprzedzeniem obraz TensorFlow z [Centrum Docker](https://hub.docker.com). Ten przykład zawiera rozpoczęcia zadania w hoście maszyny Wirtualnej w węzłach puli. Należy zainstalować na serwerze plików, które są dostępne z kontenerów, może uruchomić zadania uruchamiania na przykład na hoście.
+Aby pobrana z wyprzedzeniem kontener obrazów w puli, Dodaj listy obrazów kontenera (`container_image_names`, w języku Python) do `ContainerConfiguration`. 
+
+W poniższym przykładzie Python podstawowe pokazano, jak pobrana z wyprzedzeniem standardowy obraz kontenera Ubuntu z [Centrum Docker](https://hub.docker.com).
+
+```python
+image_ref_to_use = batch.models.ImageReference(
+    publisher='microsoft-azure-batch',
+    offer='ubuntu-server-container',
+    sku='16-04-lts',
+    version='latest')
+
+"""
+Specify container configuration, fetching the official Ubuntu container image from Docker Hub. 
+"""
+
+container_conf = batch.models.ContainerConfiguration(container_image_names=['ubuntu'])
+
+new_pool = batch.models.PoolAddParameter(
+    id=pool_id,
+    virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
+        image_reference=image_ref_to_use,
+        container_configuration=container_conf,
+        node_agent_sku_id='batch.node.ubuntu 16.04'),
+    vm_size='STANDARD_D1_V2',
+    target_dedicated_nodes=1)
+...
+```
+
+
+W poniższym przykładzie przykład C# założono, że ma zostać pobrana z wyprzedzeniem obraz TensorFlow z [Centrum Docker](https://hub.docker.com). Ten przykład zawiera rozpoczęcia zadania w hoście maszyny Wirtualnej w węzłach puli. Należy zainstalować na serwerze plików, które są dostępne z kontenerów, może uruchomić zadania uruchamiania na przykład na hoście.
 
 ```csharp
+
+ImageReference imageReference = new ImageReference(
+    publisher: "microsoft-azure-batch",
+    offer: "ubuntu-server-container",
+    sku: "16-04-lts",
+    version: "latest");
+
 // Specify container configuration, prefetching Docker images
 ContainerConfiguration containerConfig = new ContainerConfiguration(
     containerImageNames: new List<string> { "tensorflow/tensorflow:latest-gpu" } );
@@ -156,15 +184,13 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 4,
     virtualMachineSize: "Standard_NC6",
     virtualMachineConfiguration: virtualMachineConfiguration, startTaskContainer);
-
-// Commit pool creation
-pool.Commit();
+...
 ```
 
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Wyprzedzeniem obrazów z rejestru Kontener prywatny
 
-Możesz można również pobrana z wyprzedzeniem kontener obrazów uwierzytelniając się serwerze rejestru Kontener prywatny. W poniższym przykładzie `ContainerConfiguration` i `VirtualMachineConfiguration` obiektów użyć niestandardowego obrazu Ubuntu 16.04 LTS i pobrana z wyprzedzeniem prywatnej obrazu TensorFlow z rejestru prywatnej kontenera platformy Azure.
+Możesz można również pobrana z wyprzedzeniem kontener obrazów uwierzytelniając się serwerze rejestru Kontener prywatny. W poniższym przykładzie `ContainerConfiguration` i `VirtualMachineConfiguration` obiektów pobrana z wyprzedzeniem prywatnej obrazu TensorFlow z rejestru prywatnej kontenera platformy Azure. Odwołanie do obrazu jest taki sam, jak w poprzednim przykładzie.
 
 ```csharp
 // Specify a container registry
@@ -191,9 +217,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 4,
     virtualMachineSize: "Standard_NC6",
     virtualMachineConfiguration: virtualMachineConfiguration);
-
-// Commit pool creation
-pool.Commit();
+...
 ```
 
 
@@ -207,7 +231,22 @@ Po uruchomieniu zadania na obrazy kontenera [zadań chmury](/dotnet/api/microsof
 
 Po skonfigurowaniu kontenera, wszystkie katalogi rekursywnie poniżej `AZ_BATCH_NODE_ROOT_DIR` (root partii zadań Azure katalogi w węźle) są mapowane do kontenera, wszystkie środowiska zadań zmienne są mapowane do kontenera i wiersz polecenia zadania reguły są wykonywane w kontenerze.
 
-Przykładowy kod w [pobrana z wyprzedzeniem obrazy dla kontenera konfiguracji](#prefetch-images-for-container-configuration) pokazano, jak określić konfigurację kontenera zadania uruchamiania. Poniższy przykład kodu pokazuje, jak określić konfigurację kontenera zadania chmury:
+Poniższy fragment kodu języka Python zawiera podstawowe wiersza polecenia uruchomione w kontenerze Ubuntu pobierane z Centrum Docker. Dodatkowe argumenty są opcje kontener uruchamianie `docker create` zadanie jest uruchamiane polecenie. W tym miejscu `--rm` opcja umożliwia usunięcie kontenera po zakończeniu zadania.
+
+```python
+task_id = 'sampletask'
+task_container_settings = batch.models.TaskContainerSettings(
+    image_name='ubuntu', 
+    container_run_options='--rm')
+task = batch.models.TaskAddParameter(
+    id=task_id,
+    command_line='echo hello',
+    container_settings=task_container_settings
+)
+
+```
+
+W poniższym przykładzie C# przedstawiono ustawienia kontenera podstawowe zadania chmury:
 
 ```csharp
 // Simple container task command
@@ -233,3 +272,5 @@ CloudTask containerTask = new CloudTask (
 * Aby uzyskać więcej informacji o instalowaniu i używaniu Docker CE na systemie Linux, zobacz [Docker](https://docs.docker.com/engine/installation/) dokumentacji.
 
 * Aby uzyskać więcej informacji na temat używania niestandardowych obrazów, zobacz [umożliwiają utworzenie puli maszyn wirtualnych zarządzanych niestandardowego obrazu ](batch-custom-images.md).
+
+* Dowiedz się więcej o [projektu Moby](https://mobyproject.org/), struktura umożliwiająca tworzenie systemów opartych na procesorze kontenera.

@@ -3,7 +3,7 @@ title: Wykonywanie przeglądu dostępu do zasobów platformy Azure za pomocą Pr
 description: W tym artykule opisano sposób wykonania przeglądu dostępu do zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ae64d9ebbca80f6c21b8c7f352022a0878518e65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1dd5eb4a2a0a4edd15e5299754028570806db09b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699458"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Wykonywanie przeglądu dostępu do zasobów platformy Azure za pomocą Privileged Identity Management
 Ról uprzywilejowanych Administratorzy mogą sprawdzić uprzywilejowanego dostępu po [przeglądu zabezpieczeń została uruchomiona](pim-resource-roles-start-access-review.md). Privileged Identity zarządzania (PIM) dla zasobów platformy Azure automatycznie wysyła wiadomość e-mail, które monituje użytkowników, aby przejrzeć jego uprawnienia dostępu. Jeśli użytkownik nie odbiera wiadomości e-mail, możesz wysłać je zgodnie z instrukcjami [jak przeprowadzić przegląd zabezpieczeń](pim-resource-roles-perform-access-review.md).

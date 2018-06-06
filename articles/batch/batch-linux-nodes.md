@@ -12,14 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
-ms.date: 05/22/2017
+ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9aa896bfc4c860c87757f9379fc44cc5ee8d18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: abb822483253fc5fce0e76afc2628806fe4485d8
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801766"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zapewnij węzły obliczeniowe systemu Linux w puli partii
 
@@ -38,7 +39,7 @@ Po utworzeniu puli węzłów obliczeniowych w partii, masz dwie opcje, które mo
 **Konfiguracja maszyny wirtualnej** zawiera obrazy zarówno systemu Windows, jak i Linux dla węzły obliczeniowe. Rozmiary węzła obliczeń dostępne są wymienione w [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) i [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (system Windows). Podczas tworzenia puli, która zawiera węzły w konfiguracji maszyny wirtualnej, należy określić rozmiar węzłów, odwołanie do obrazu maszyny wirtualnej i agenta węzła partii jednostka SKU można zainstalować na węzłach.
 
 ### <a name="virtual-machine-image-reference"></a>Odwołanie do obrazu maszyny wirtualnej
-Używane przez usługę partii [zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zapewnienie węzły obliczeniowe systemu Linux. Można określić obrazu z [portalu Azure Marketplace][vm_marketplace], lub podaj niestandardowego obrazu, które zostały przygotowane. Aby uzyskać szczegółowe informacje o obrazach niestandardowych, zobacz [Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md#pool).
+Używane przez usługę partii [zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zapewnienie węzłów obliczeniowych w konfiguracji maszyny wirtualnej. Można określić obrazu z [portalu Azure Marketplace][vm_marketplace], lub podaj niestandardowego obrazu, które zostały przygotowane. Aby uzyskać szczegółowe informacje o niestandardowych obrazów, zobacz [tworzenie puli za pomocą niestandardowego obrazu](batch-custom-images.md).
 
 Po skonfigurowaniu odwołanie do obrazu maszyny wirtualnej, należy określić właściwości obrazu maszyny wirtualnej. Po utworzeniu odwołanie do obrazu maszyny wirtualnej, wymagane są następujące właściwości:
 
@@ -145,7 +146,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Utwórz pulę Linux: partiami platformy .NET
-Poniższy fragment kodu przedstawia przykład sposobu użycia [partiami platformy .NET] [ nuget_batch_net] biblioteki klienta, aby utworzyć pulę Ubuntu Server węzłów obliczeniowych. Można znaleźć [dokumentacji partiami platformy .NET] [ api_net] w witrynie MSDN.
+Poniższy fragment kodu przedstawia przykład sposobu użycia [partiami platformy .NET] [ nuget_batch_net] biblioteki klienta, aby utworzyć pulę Ubuntu Server węzłów obliczeniowych. Można znaleźć [dokumentacji partiami platformy .NET] [ api_net] w witrynie docs.microsoft.com.
 
 Poniższy kod używa fragment [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metoda, aby wybrać z listy aktualnie obsługiwane Marketplace obrazu i węzła agenta SKU kombinacje. Ta technika jest pożądane, ponieważ lista obsługiwanej kombinacji może ulec zmianie od czasu do czasu. Najczęściej są dodawane obsługiwanej kombinacji.
 
@@ -206,7 +207,7 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>Lista obrazów maszyny wirtualnej
-W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są zgodne z dostępnych agentów węzła partii datę ostatniej aktualizacji w tym artykule. Należy pamiętać, że ta lista nie jest ostatecznym, ponieważ obrazów i agentów węzła może dodać lub usunąć w dowolnej chwili. Firma Microsoft zaleca, aby partii aplikacje i usługi zawsze używać [list_node_agent_skus] [ py_list_skus] (Python) i [ListNodeAgentSkus] [ net_list_skus] (partii .NET), aby ustalić i wybierz z aktualnie dostępne jednostki SKU.
+W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są zgodne z dostępnych agentów węzła partii datę ostatniej aktualizacji w tym artykule. Należy pamiętać, że ta lista nie jest ostatecznym, ponieważ obrazów i agentów węzła może dodać lub usunąć w dowolnej chwili. Firma Microsoft zaleca, aby partii aplikacje i usługi zawsze używać [list_node_agent_skus] [ py_list_skus] (Python) lub [ListNodeAgentSkus] [ net_list_skus] () Partii .NET) do określenia, a następnie wybierz z aktualnie dostępne jednostki SKU.
 
 > [!WARNING]
 > Poniższa lista może zmienić w dowolnym momencie. Zawsze używaj **agent węzła listy SKU** metod w interfejsach API partii do listy kompatybilnej maszynie wirtualnej i agenta węzła jednostki SKU podczas wykonywania zadań wsadowych.
@@ -215,26 +216,33 @@ W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są
 
 | **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agent węzła identyfikator jednostki SKU** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
+| partia | Renderowanie centos73 | Renderowanie | najnowsza | Batch.node.centos 7 |
+| partia | Renderowanie windows2016 | Renderowanie | najnowsza | Batch.node.Windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | najnowsza | batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | najnowsza | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 16.04.0-LTS | najnowsza | batch.node.ubuntu 16.04 |
-| Credativ | Debian | 8 | najnowsza | batch.node.debian 8 |
-| OpenLogic | CentOS | 7.0 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS | 7.1 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS | 7.2 | najnowsza | Batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.0 | najnowsza | Batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.2 | najnowsza | Batch.node.centos 7 |
-| SUSE | openSUSE | 13.2 | najnowsza | batch.node.opensuse 13.2 |
-| SUSE | openSUSE-Leap | 42.1 | najnowsza | batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | najnowsza | batch.node.opensuse 42.1 |
-| SUSE | SLES-HPC | 12-SP1 | najnowsza | batch.node.opensuse 42.1 |
+| Credativ | Debian | 9 | najnowsza | Batch.node.debian 9 |
+| Credativ | Debian | 8 | najnowsza | Batch.node.debian 8 |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | najnowsza | Batch.node.centos 7 |
 | microsoft-ads | Standard danych nauki vm | Standard danych nauki vm | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | najnowsza | Batch.node.Windows amd64 |
+| Microsoft partii zadań azure | kontener centos | 7-4 | najnowsza | Batch.node.centos 7 |
+| Microsoft partii zadań azure | centos kontenera rdma | 7-4 | najnowsza | Batch.node.centos 7 |
+| Microsoft partii zadań azure | ubuntu server kontenera | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
+| Microsoft partii zadań azure | ubuntu-server kontenera rdma | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
 | MicrosoftWindowsServer | WindowsServer | Centrum danych 2016 | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | Smalldisk-2016-centrum danych | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016 centrum danych z kontenerów | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | Smalldisk-2012-centrum danych | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | Z dodatkiem SP1 smalldisk, 2008 R2 w- | najnowsza | Batch.node.Windows amd64 |
+| OpenLogic | CentOS | 7.4 | najnowsza | Batch.node.centos 7 |
+| OpenLogic | CentOS HPC | 7.4 | najnowsza | Batch.node.centos 7 |
+| OpenLogic | CentOS HPC | 7.3 | najnowsza | Batch.node.centos 7 |
+| OpenLogic | CentOS HPC | 7.1 | najnowsza | Batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7.4 | najnowsza | Batch.node.centos 7 |
+| SUSE | SLES-HPC | Z DODATKIEM SP2 12 | najnowsza | batch.node.opensuse 42.1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Podłącz do węzłów systemu Linux przy użyciu protokołu SSH
 Podczas tworzenia lub podczas rozwiązywania problemów może być konieczne logować się do węzłów w puli. W przeciwieństwie do węzłów obliczeniowych systemu Windows nie można użyć protokołu RDP (Remote Desktop) nawiązywania połączenia z węzłami systemu Linux. Zamiast tego usługa partia zadań umożliwia SSH dostępu w każdym węźle dla połączenia zdalnego.

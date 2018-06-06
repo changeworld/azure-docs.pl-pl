@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 968636848b9cba9c0976aa366952e56838623cc4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698819"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect użytkownika opcje logowania
 Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logowania się do zasobów w chmurze, jak i dla lokalnego przy użyciu takich samych haseł. W tym artykule opisano podstawowe pojęcia dla każdego modelu tożsamości pomaga wybrać tożsamości, która ma być używany dla logowania do usługi Azure AD.
@@ -47,6 +49,8 @@ Upewnij się, że hasła nie są przechowywane w chmurze.||x*|x|
 Włącz lokalnymi rozwiązaniami usługi Multi-Factor authentication.|||x|
 
 * Za pomocą uproszczonego agenta.
+
+Aby uzyskać szczegółowe informacje o wyborze metody uwierzytelniania, zobacz [wybierz metodę uwierzytelniania prawo do rozwiązania tożsamości hybrydowej usługi Azure Active Directory](../../security/azure-ad-choose-authn.md)
 
 ### <a name="password-hash-synchronization"></a>Synchronizacja skrótów haseł
 Synchronizacja skrótów haseł skrótów haseł użytkowników są synchronizowane z lokalnej usługi Active Directory do usługi Azure AD. Hasła są zmieniane lub zresetować lokalnymi, nowych skrótów haseł są synchronizowane z usługą Azure AD natychmiast, aby użytkownicy zawsze można używać tego samego hasła dla zasobów w chmurze i zasobów lokalnych. Hasła nigdy nie są wysyłane do usługi Azure AD lub przechowywane w usłudze Azure AD w postaci zwykłego tekstu. Aby umożliwić własnym resetowania haseł w usłudze Azure AD służy synchronizacji skrótu hasła oraz zapisywania zwrotnego haseł.
@@ -184,6 +188,6 @@ Na **logowania użytkownika** wybierz żądany logowania użytkownika.
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).
 - Dowiedz się więcej o [zagadnienia dotyczące projektowania usługi Azure AD Connect](active-directory-aadconnect-design-concepts.md).

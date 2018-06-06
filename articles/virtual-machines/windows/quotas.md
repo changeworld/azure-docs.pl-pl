@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 50f28fcb2d7945949134d89f6bcc4238cf625bd1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dffc76151e0739bf56091d987bf21d02b5bfb1e2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716547"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Przydziały vCPU maszyny wirtualnej
 
-Przydziały vCPU dla maszyn wirtualnych i zestawy skalowania maszyny wirtualnej są rozmieszczone w dwóch warstw dla każdej subskrypcji, w każdym regionie. Pierwsza warstwa jest całkowita regionalnych Vcpu, a druga warstwa jest różnych maszyny Wirtualnej rozmiar rodziny rdzeni takich jak Vcpu standardowe rodziny D. Zawsze, gdy jest nowej maszyny Wirtualnej wdrożone Vcpu nowo wdrożonej maszyny Wirtualnej nie może przekraczać przydziału vCPU dla określonej rodziny rozmiar maszyny Wirtualnej lub przydziału całkowita vCPU regionalnych. W przypadku przekroczenia jednej z tych przydziałów wdrożenia maszyny Wirtualnej nie jest dozwolone. Istnieje również limit przydziału dla ogólnej liczby maszyn wirtualnych w tym regionie. Szczegółowe informacje o każdej z tych przydziałów są widoczne w **użycia + przydziały** sekcji **subskrypcji** strony [portalu Azure](https://portal.azure.com), lub można zbadać wartości przy użyciu Środowiska PowerShell.
+Przydziały vCPU dla maszyn wirtualnych i zestawy skalowania maszyny wirtualnej są rozmieszczone w dwóch warstw dla każdej subskrypcji, w każdym regionie. Pierwsza warstwa jest całkowita regionalnych Vcpu, a druga warstwa jest różnych wirtualna rozmiar rodziny rdzeni takich jak Vcpu D-series. Zawsze, gdy nowa maszyna wirtualna jest wdrożona Vcpu dla maszyny Wirtualnej nie może przekraczać limit przydziału vCPU rodziny rozmiar maszyny Wirtualnej lub przydziału całkowita regionalnych vCPU. W przypadku przekroczenia jednej z tych przydziałów wdrożenia maszyny Wirtualnej będzie niemożliwe. Istnieje również limit przydziału dla ogólnej liczby maszyn wirtualnych w tym regionie. Szczegółowe informacje o każdej z tych przydziałów są widoczne w **użycia + przydziały** sekcji **subskrypcji** strony [portalu Azure](https://portal.azure.com), lub można zbadać wartości przy użyciu Środowiska PowerShell.
 
  
 ## <a name="check-usage"></a>Sprawdź użycie
@@ -74,7 +75,6 @@ Standard NCv3 Family vCPUs                   0     0 Count
 Standard LSv2 Family vCPUs                   0     0 Count
 Standard Storage Managed Disks               2 10000 Count
 Premium Storage Managed Disks                1 10000 Count
-
 ```
 
 

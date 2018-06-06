@@ -1,29 +1,25 @@
 ---
-title: Uruchom kroki na podstawie pogrupowane stanu akcji - Azure Logic Apps | Dokumentacja firmy Microsoft
-description: "Akcje związane z grupy w zakresach i wykonywania czynności na podstawie stanu grupy"
+title: Dodaj zakresy, których wykonanie akcji na podstawie stanu grupy - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Jak utworzyć zakresy, których wykonanie akcji przepływu pracy na podstawie grupy stanu akcji w aplikacjach logiki platformy Azure
 services: logic-apps
-keywords: "gałęzie, przetwarzanie równoległe"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 052af45962f442e96ca28f05ffaa1b9814b2588b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: c6f6b54e17d12ff21d50748810699e78e3a14757
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726384"
 ---
-# <a name="scopes-run-steps-based-on-group-status-in-logic-apps"></a>Zakresy: Wykonanie kroków na podstawie stanu grupy w aplikacjach logiki
+# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Utwórz zakresy, których wykonanie akcji przepływu pracy na podstawie stanu grupy w usłudze Azure Logic Apps
 
-Wykonanie kroków tylko po innej grupy działań powodzenie lub niepowodzenie, umieść tej grupy wewnątrz *zakres*. Ta struktura jest przydatne, gdy chcesz Organizuj akcje jako grupę logiczną, oceny stanu tej grupy i akcje, które są oparte na stanie zakresu. Po wszystkie akcje w zakresie zakończą działanie, zakres również pobiera własny stan. Na przykład zakresów można użyć podczas implementowania [wyjątku i obsługa błędów](../logic-apps/logic-apps-exception-handling.md#scopes). 
+Do uruchamiania działań, tylko po innej grupy działań powodzenie lub niepowodzenie, grupy te akcje wewnątrz *zakres*. Ta struktura jest przydatne, gdy chcesz Organizuj akcje jako grupę logiczną, oceny stanu tej grupy i akcje, które są oparte na stanie zakresu. Po wszystkie akcje w zakresie zakończą działanie, zakres również pobiera własny stan. Na przykład zakresów można użyć podczas implementowania [wyjątku i obsługa błędów](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
 Aby sprawdzić stan zakresu, można użyć takich samych kryteriów, które można określić logiki aplikacji uruchom stanu, takie jak "Powodzenie", "Nie powiodło się", "Odwołania" i tak dalej. Domyślnie gdy zakres wszystkie akcje powiedzie się, stan zakresu jest on oznaczony "Powodzenie". Ale jeśli żadnych czynności w zakresie nie powiedzie się lub jest anulowany, stan zakresu jest oznaczony jako "Nieudane". Dla ograniczenia na podstawie zakresów, zobacz [limity i konfiguracji](../logic-apps/logic-apps-limits-and-config.md). 
 
@@ -90,7 +86,7 @@ Można zapisać aplikację logiki w dowolnym momencie, dlatego często Zapisz sw
       | **Jednostka odległości** | <*według_preferencji*> | Wprowadź jednostkę odległość do obliczenia z trasy. W tym przykładzie użyto tej wartości: "Mil" | 
       | **Tryb podróży** | Jazda samochodem | Tryb podróży z trasy. W tym przykładzie użyto wartości "Prowadzenie" | 
       | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko tryb przesyłania. | 
-      | **Przesyłania typu Date — typ** | None | Dotyczy tylko tryb przesyłania. | 
+      | **Przesyłania typu Date — typ** | Brak | Dotyczy tylko tryb przesyłania. | 
       ||||  
 
 4. Dodaj warunek do Sprawdź, czy bieżący czas podróży z ruchem przekroczy określony czas. Na przykład wykonaj kroki opisane w tym obrazu:
@@ -153,7 +149,7 @@ Można zapisać aplikację logiki w dowolnym momencie, dlatego często Zapisz sw
 
 Następnie Dodaj zakres, aby mogli grupy określonych akcji i oceny ich stanu.
 
-## <a name="add-a-scope"></a>Dodawanie zakresu
+## <a name="add-a-scope"></a>Dodaj zakres
 
 1. Jeśli nie jest jeszcze, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
 
@@ -162,7 +158,7 @@ Następnie Dodaj zakres, aby mogli grupy określonych akcji i oceny ich stanu.
    * Aby dodać zakres między krokami istniejących w przepływie pracy aplikacji logiki, wskaźnika na strzałkę której chcesz dodać do zakresu. 
    Wybierz **znak plus** (**+**) > **Dodawanie zakresu**.
 
-     ![Dodawanie zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
+     ![Dodaj zakres](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
      Jeśli chcesz dodać zakres na końcu przepływu pracy, w dolnej części aplikacji logiki, wybierz **+ nowy krok** > **... Więcej** > **Dodawanie zakresu**.
 

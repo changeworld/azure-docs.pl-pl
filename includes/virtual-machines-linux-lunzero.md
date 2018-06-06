@@ -1,21 +1,21 @@
-When adding data disks to a Linux VM, you may encounter errors if a disk does not exist at LUN 0. If you are adding a disk manually using the `azure vm disk attach-new` command and you specify a LUN (`--lun`) rather than allowing the Azure platform to determine the appropriate LUN, take care that a disk already exists / will exist at LUN 0. 
+Podczas dodawania dysków z danymi do maszyny Wirtualnej systemu Linux, mogą wystąpić błędy, jeśli dysk nie istnieje w jednostce LUN 0. Jeśli dodajesz dysk ręcznie przy użyciu `azure vm disk attach-new` polecenia i podaj jednostkę LUN (`--lun`) zamiast stosowanie platformy Azure określić odpowiednie jednostki LUN, należy zadbać, że dysku już istnieje / będzie istniał w momencie LUN 0. 
 
-Consider the following example showing a snippet of the output from `lsscsi`:
+Rozważmy następujący przykład przedstawiający fragment danych wyjściowych z `lsscsi`:
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-The two data disks exist at LUN 0 and LUN 1 (the first column in the `lsscsi` output details `[host:channel:target:lun]`). Both disks should be accessbile from within the VM. If you had manually specified the first disk to be added at LUN 1 and the second disk at LUN 2, you may not see the disks correctly from within your VM.
+Dyski danych dwa istnieje w jednostce LUN 0 i 1 jednostki LUN (pierwszej kolumny `lsscsi` szczegóły danych wyjściowych `[host:channel:target:lun]`). Obydwa dyski powinny być accessbile z poziomu maszyny Wirtualnej. Jeśli ma ręcznie określić pierwszy dysk do dodania w jednostce LUN 1 i drugiego dysku w jednostce LUN, 2, nie widać dysków poprawnie z wewnątrz maszyny Wirtualnej.
 
 > [!NOTE]
-> The Azure `host` value is 5 in these examples, but this may vary depending on the type of storage you select.
+> Azure `host` wartość to 5 w tym przykładzie, ale to może się różnić w zależności od typu magazynu należy wybrać.
 > 
 > 
 
-This disk behavior is not an Azure problem, but the way in which the Linux kernel follows the SCSI specifications. When the Linux kernel scans the SCSI bus for attached devices, a device must be found at LUN 0 in order for the system to continue scanning for additional devices. As such:
+To zachowanie dysku nie jest problem Azure, ale w taki sposób, w którym jądra systemu Linux jest zgodny ze specyfikacją SCSI. Gdy jądra systemu Linux skanuje magistrali SCSI urządzenia podłączone, urządzenie musi zostać znaleziony o numerze LUN 0 Aby systemu kontynuując skanowanie w poszukiwaniu dodatkowych urządzeń. Sposób:
 
-* Review the output of `lsscsi` after adding a data disk to verify that you have a disk at LUN 0.
-* If your disk does not show up correctly within your VM, verify a disk exists at LUN 0.
+* Przejrzyj dane wyjściowe `lsscsi` po dodaniu dysku danych, aby sprawdzić, czy dysk pod numerem LUN 0.
+* Jeśli dysk nie jest wyświetlany prawidłowo w ramach maszyny Wirtualnej, sprawdź, czy istnieje dysku o numerze LUN 0.
 

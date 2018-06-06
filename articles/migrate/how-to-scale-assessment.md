@@ -4,17 +4,18 @@ description: Opisuje sposób oceny dużej liczby komputerów lokalnych za pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/04/2018
 ms.author: raynew
-ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 89c9cfd4bdc1c483764983c886ba9f96cc75c69e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736834"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
-W tym artykule opisano sposób oceny dużej liczby lokalnych maszyn wirtualnych (VM) przy użyciu [migracji Azure](migrate-overview.md). Azure migracji ocenia maszyny, aby sprawdzić, czy są one odpowiednie dla migracji na platformie Azure. Usługa zawiera kosztów i zmiany rozmiaru uzyskać szacunkowe wartości do uruchamiania na komputerach w systemie Azure.
+Azure migracji ma limit 1500 maszyn według projektu, w tym artykule opisano sposób oceny dużej liczby lokalnych maszyn wirtualnych (VM) przy użyciu [migracji Azure](migrate-overview.md).   
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,7 +24,9 @@ W tym artykule opisano sposób oceny dużej liczby lokalnych maszyn wirtualnych 
 - **Uprawnienia**: W programie vCenter Server, musisz mieć uprawnienia do tworzenia maszyny Wirtualnej przez zaimportowanie pliku w formacie komórek jajowych.
 - **Ustawienia statystyki**: ustawienia statystyki dla serwera vCenter powinien być ustawiony na poziomie 3, przed rozpoczęciem wdrażania. Jeśli poziom jest niższy niż 3, oceny będą działać, ale nie można zebrać danych wydajności magazynu i sieci. Zalecenia dotyczące rozmiaru w takim przypadku będzie opierać się na dane wydajności dotyczące Procesora i pamięci, a dane konfiguracji kart dysku i sieci.
 
-## <a name="plan-azure-migrate-projects"></a>Planowanie migracji Azure projektów
+## <a name="plan-your-migration-projects-and-discoveries"></a>Planowanie migracji projektów i odnajdywania
+
+Jeden moduł zbierający migracji Azure obsługuje odnajdywania z vCenter wielu serwerów (jeden po drugim), a także odnajdywania do wielu projektów migracji (jeden po drugim). Moduł zbierający działa w fire i zapomnij modelu, po zakończeniu odnajdywania można użyć tego samego modułu zbierającego do zbierania danych z innego serwera vCenter lub wysłanie ich do różnych migrację.
 
 Zaplanuj odnajdywania i oceny na podstawie limitów następujące:
 
@@ -33,25 +36,35 @@ Zaplanuj odnajdywania i oceny na podstawie limitów następujące:
 | Odnajdowanie  | 1,500             |
 | Ocena | 1,500             |
 
-<!--
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
-- If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
-- If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
-- If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
-    - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
-      -->
-
-## <a name="plan-multiple-discoveries"></a>Planowanie wielu odnajdywania
-
-Można użyć tego samego modułu zbierającego migracji Azure celu odkrycia wiele do jednego lub więcej projektów. Należy pamiętać, te zagadnienia dotyczące planowania:
+Należy pamiętać, te zagadnienia dotyczące planowania:
 
 - Po wykonaniu odnajdywania przy użyciu modułu zbierającego Azure migracji można ustawić zakresu odnajdowania do folderu na serwerze vCenter, datacenter, klastra lub hosta.
 - Aby zrobić więcej niż jedne operacje odnajdywania, sprawdź, czy serwer, który ma zostać przeprowadzone odnajdywanie maszyn wirtualnych znajdują się w foldery, centrów danych, klastrów i hostów, które obsługują ograniczenie 1500 maszyny vCenter.
 - Firma Microsoft zaleca do celów oceny maszyn z zależnościami, w tym samym projekcie i oceny. W programie vCenter Server upewnij się, że zależnych maszyny są w tym samym folderze, datacenter lub klastra na potrzeby oceny.
 
+W zależności od scenariusza można podzielić odnajdywania sieci, jak opisano poniżej:
 
-## <a name="create-a-project"></a>Tworzenie projektu
+### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>VCenter wiele serwerów z mniej niż 1500 maszyny wirtualne
+
+Jeśli masz vCenter wielu serwerów w środowisku, a liczba maszyn wirtualnych jest mniejsza niż 1500, jeden moduł zbierający i projektu migracji można użyć do odnajdywania wszystkich maszyn wirtualnych na wszystkich serwerach vCenter. Ponieważ moduł zbierający odnajduje jeden serwer vCenter w czasie, można uruchomić tego samego modułu zbierającego przed wszystkie serwery vCenter, jeden po drugim i wskaż modułu zbierającego w tym samym projekcie migracji. Po zakończeniu operacji odnajdywania może następnie utworzyć ocen dla maszyn.
+
+### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>VCenter wiele serwerów z ponad 1500 maszyny wirtualne
+
+Jeśli masz wiele serwery vCenter z mniej niż 1500 maszyn wirtualnych dla serwera vCenter, ale ponad 1500 maszyn wirtualnych we wszystkich służy vCenter, należy utworzyć wiele projektów migracji (jeden projekt migracji może zawierać tylko 1500 maszyn wirtualnych). Można to osiągnąć, tworząc projekt migracji na serwer vCenter i dzielenia odnajdywania. Jeden moduł zbierający służy do odnajdywania każdego serwera vCenter (jeden po drugim). Jeśli chcesz odnajdywania można uruchomić w tym samym czasie, mogą także wdrażać wiele urządzeń oraz równolegle odnajdywania.
+
+### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Ponad 1500 maszyny w jednym programie vCenter Server
+
+Jeśli masz ponad 1500 maszyny wirtualne w jednym programie vCenter Server, należy podzielić odnajdywania na wielu projektów migracji. Aby podzielić odnajdywania, można wykorzystać pole zakresu w urządzeniu i określić hostów, klastra, folder lub centrum danych, które chcesz odnajdywać. Na przykład, jeśli występują dwa foldery w programie vCenter Server, z 1000 maszyn wirtualnych (Folder1), a druga z 800 maszyn wirtualnych (Folder2), można użyć jeden moduł zbierający i wykonania dwóch odnajdywania. W przypadku pierwszego odnajdywania można określić Folder1 jako zakres i wskaż na nim pierwszy projekt migracji, po zakończeniu pierwszego odnajdywania można użyć tego samego modułu zbierającego, zmień jej zakres Folder2 i migracji szczegółami projektu do drugiego migrację i czy drugi odnajdywania.
+
+### <a name="multi-tenant-environment"></a>Środowiska z wieloma dzierżawami
+
+Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i nie chcesz odnajdywać maszyn wirtualnych z jednego dzierżawcy w subskrypcji innej dzierżawy, można użyć pola zakresu w urządzeniu modułu zbierającego do określania zakresu odnajdywania. Dzierżawcy udostępniania hostów, Utwórz poświadczeniami, które mają dostęp tylko do odczytu, aby tylko maszyny wirtualne należące do określonej dzierżawy, a następnie użyć tych poświadczeń w urządzeniu moduł zbierający i określ zakres jako hosta w celu odnajdywania. Alternatywnie można także utworzyć foldery w programie vCenter Server (Załóżmy, że folder1 dla tenant1 folder2 dla tenant2), w obszarze udostępnionego hosta przenoszenia maszyn wirtualnych dla tenant1 do folder1 i tenant2 do folder2 i odpowiednio określić zakres odnajdywania w moduł zbierający określając odpowiedni folder.
+
+## <a name="discover-on-premises-environment"></a>Odnajdywanie w środowisku lokalnym
+
+Po zakończeniu planu można następnie uruchom odnajdywanie maszyn wirtualnych lokalnie:
+
+### <a name="create-a-project"></a>Tworzenie projektu
 
 Tworzenie projektu migracji Azure zgodnie z wymaganiami:
 
@@ -61,11 +74,11 @@ Tworzenie projektu migracji Azure zgodnie z wymaganiami:
 4. Utwórz nową grupę zasobów.
 5. Określ lokalizację, w której chcesz utworzyć projekt, a następnie wybierz **Utwórz**. Należy pamiętać, że nadal można ocenić maszyn wirtualnych na inną lokalizację docelową. Lokalizacja określona dla projektu jest używany do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych.
 
-## <a name="set-up-the-collector-appliance"></a>Konfigurowanie urządzenia modułu zbierającego
+### <a name="set-up-the-collector-appliance"></a>Konfigurowanie urządzenia modułu zbierającego
 
 Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zbierającym. Tej maszyny Wirtualnej umożliwia odnalezienie lokalnych maszyn wirtualnych VMware, a następnie wysyła metadane dotyczące ich do usługi Azure migracji. Aby skonfigurować urządzenia modułu zbierającego, Pobierz plik komórek jajowych i zaimportować go do lokalnego wystąpienia serwera vCenter.
 
-### <a name="download-the-collector-appliance"></a>Pobieranie urządzenia modułu zbierającego
+#### <a name="download-the-collector-appliance"></a>Pobieranie urządzenia modułu zbierającego
 
 Jeśli masz wiele projektów, należy pobrać urządzenia modułu zbierającego tylko raz do serwera vCenter. Po pobraniu i konfigurowanie urządzenia zostanie uruchomiony dla każdego projektu, a następnie określ projektu Unikatowy identyfikator i klucz.
 
@@ -74,7 +87,7 @@ Jeśli masz wiele projektów, należy pobrać urządzenia modułu zbierającego 
 3. W **skopiuj poświadczenia projektu**, skopiować identyfikator i klucz dla projektu. Będą potrzebne do skonfigurowania modułu zbierającego.
 
 
-### <a name="verify-the-collector-appliance"></a>Weryfikowanie urządzenia modułu zbierającego
+#### <a name="verify-the-collector-appliance"></a>Weryfikowanie urządzenia modułu zbierającego
 
 Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do wdrażania:
 
@@ -88,7 +101,7 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
 
 3. Upewnij się, czy wygenerowane skrótu zgodna następujące ustawienia.
 
-    Dla wersji komórek jajowych 1.0.9.8
+    OVA w wersji 1.0.9.8
 
     **Algorytm** | **Wartość skrótu**
     --- | ---
@@ -120,7 +133,7 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-## <a name="create-the-collector-vm"></a>Tworzenie maszyny wirtualnej modułu zbierającego
+### <a name="create-the-collector-vm"></a>Tworzenie maszyny wirtualnej modułu zbierającego
 
 Pobrany plik należy zaimportować do programu vCenter Server:
 
@@ -136,7 +149,7 @@ Pobrany plik należy zaimportować do programu vCenter Server:
 7. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieci wymaga łączności z Internetem można wysłać metadanych na platformie Azure.
 8. Przejrzyj i Potwierdź ustawienia, a następnie wybierz **Zakończ**.
 
-## <a name="identify-the-id-and-key-for-each-project"></a>Określ identyfikator i klucz dla każdego projektu
+### <a name="identify-the-id-and-key-for-each-project"></a>Określ identyfikator i klucz dla każdego projektu
 
 Jeśli masz wiele projektów, pamiętaj zidentyfikować identyfikator i klucz dla każdej z nich. Należy klucza podczas uruchamiania modułu zbierającego, aby odnaleźć maszyn wirtualnych.
 
@@ -144,7 +157,7 @@ Jeśli masz wiele projektów, pamiętaj zidentyfikować identyfikator i klucz dl
 2. W **skopiuj poświadczenia projektu**, skopiować identyfikator i klucz dla projektu.
     ![Skopiuj poświadczenia projektu](./media/how-to-scale-assessment/copy-project-credentials.png)
 
-## <a name="set-the-vcenter-statistics-level"></a>Ustaw poziom statystyki vCenter
+### <a name="set-the-vcenter-statistics-level"></a>Ustaw poziom statystyki vCenter
 Poniżej znajduje się lista liczników wydajności, które zostały zebrane podczas odnajdywania. Te liczniki są domyślnie dostępne na różnych poziomach w programie vCenter Server.
 
 Zalecane ustawienie najwyższego poziomu wspólnych (3) dla poziomu statystyk, tak aby wszystkie liczniki są poprawnie zbierane. Jeśli masz vCenter ustawiony na niższym poziomie tylko kilka liczniki mogą być zbierane całkowicie z resztą równa 0. Ocena następnie mogą być wyświetlane niekompletne dane.
@@ -165,7 +178,7 @@ W poniższej tabeli wymieniono także wyniki oceny, które zostaną zmienione, j
 > [!WARNING]
 > Jeśli właśnie ustawione na wyższy poziom statystyki potrwa na dzień do generowania liczników wydajności. Tak firma Microsoft zaleca uruchomienia odnajdywania po jednym dniu.
 
-## <a name="run-the-collector-to-discover-vms"></a>Uruchamianie modułu zbierającego w celu odnalezienia maszyn wirtualnych
+### <a name="run-the-collector-to-discover-vms"></a>Uruchamianie modułu zbierającego w celu odnalezienia maszyn wirtualnych
 
 Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbierający do odnajdywanie maszyn wirtualnych w zakresie wymaganych. Uruchom odnajdywanie jeden po drugim. Równoczesne operacje odnajdywania nie są obsługiwane, a poszczególne zadania odnajdywania musi mieć inny zakres.
 
@@ -182,7 +195,7 @@ Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbi
 
     Moduł zbierający sprawdzi, czy usługa modułu zbierającego jest uruchomiona. Jest ona instalowana domyślnie na maszynie wirtualnej modułu zbierającego.
 
-    c. Pobierz i zainstaluj VMware PowerCLI.
+    c. Pobierz i zainstaluj program VMware PowerCLI.
 
 5.  W obszarze **Specify vCenter Server details** (Określ szczegóły serwera vCenter) wykonaj następujące czynności:
     - Określ nazwę (FQDN) lub adres IP serwera vCenter.
@@ -193,7 +206,7 @@ Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbi
 7.  W **wyświetlić postęp kolekcji**, monitorować proces odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
 
 
-### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
+#### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
 Czas odnajdowania zależy od liczby odnajdowanych maszyn wirtualnych. Zazwyczaj 100 maszyn wirtualnych, odnajdywanie zakończy się wokół godzinę po zakończeniu modułu zbierającego.
 

@@ -1,21 +1,21 @@
 ---
-title: Token, sesji i pojedynczego logowania jednokrotnego konfiguracji — usługi Azure AD B2C | Dokumentacja firmy Microsoft
-description: Token, sesji i Konfiguracja pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
+title: Token, sesji i Konfiguracja pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Token sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 925313b6f2a00826f2ec8086457315c60f70b007
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: 0ee39f4b6f80d13cc0f71c77ae87b2a4ee74e390
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710638"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Usługa Azure Active Directory B2C: Tokenu sesji i konfiguracji rejestracji jednokrotnej
 

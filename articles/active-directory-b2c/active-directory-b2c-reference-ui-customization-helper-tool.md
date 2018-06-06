@@ -1,21 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Narzędzie Pomocnik dostosowania strony interfejsu użytkownika | Dokumentacja firmy Microsoft'
-description: Narzędzie Pomocnik, używany do przedstawiania funkcji dostosowywania interfejsu użytkownika strony w usłudze Azure Active Directory B2C
+title: Narzędzie Pomocnik dostosowania strony interfejsu użytkownika w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Narzędzie Pomocnik, używany do przedstawiania funkcji dostosowywania interfejsu użytkownika strony w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: d57b8d43b2302a18b9df89eacc8ffd20d1742075
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711998"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Usługa Azure Active Directory B2C: Pomocnika narzędzie służące do prezentacja funkcji dostosowywania interfejsu użytkownika strony
 W tym artykule jest dodatek do [główny artykuł dostosowania interfejsu użytkownika](active-directory-b2c-reference-ui-customization.md) w usłudze Azure Active Directory (Azure AD) B2C. W poniższych krokach opisano sposób wykonywania przy użyciu zawartość HTML i CSS przykładową, która przygotowaliśmy dostosowywanie funkcji interfejsu użytkownika strony.

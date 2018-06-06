@@ -7,22 +7,36 @@ author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
+ms.reviewer: genemi
 ms.author: billgib
-ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 39be48019979ceb1337cbd3008c8cf071d403310
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737684"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS bazy danych dzierżawców wzorców
 
 Podczas projektowania wielodostępnych aplikacji SaaS, musisz wybrać dokładnie model dzierżawy, który najlepiej odpowiada potrzebom aplikacji.  Model dzierżawy określa odwzorowania każdego dzierżawcy danych do magazynu.  Wybór modelu dzierżawy ma wpływ na projekt aplikacji i zarządzania.  Przełączenie do innego modelu później czasami jest kosztowna.
 
-Omówienie modeli alternatywnych dzierżawy jest zgodna.
+W tym artykule opisano modeli alternatywnych dzierżawy.
 
-## <a name="a-how-to-choose-the-appropriate-tenancy-model"></a>A. Jak wybrać odpowiednią dzierżawy model
+## <a name="a-saas-concepts-and-terminology"></a>A. Pojęcia SaaS i terminologia
+
+Oprogramowanie jako usługa (SaaS), firma nie sprzedaje *licencji* oprogramowania. Zamiast tego każdy klient sprawia, że wynajmować płatności w firmie, co każdy klient *dzierżawy* firmy.
+
+W zamian za płatności dzierżawę, każdy z dzierżawców uzyskuje dostęp do składniki aplikacji SaaS, a jego danych przechowywanych w systemie SaaS.
+
+Termin *modelu dzierżawy* odwołuje się do organizowania przechowywanych danych dzierżawców:
+
+- *Dzierżawy jednym:* &nbsp; każda baza danych przechowuje dane z tylko jednego dzierżawcy.
+- *Wielodostępność:* &nbsp; każda baza danych przechowuje dane z wieloma dzierżawcami oddzielne (za pomocą mechanizmów, aby chronić prywatność danych).
+- Dostępne są również modele hybrydowe dzierżawy.
+
+## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak wybrać odpowiednią dzierżawy model
 
 Ogólnie rzecz biorąc model dzierżawy nie ma wpływu na działanie aplikacji, ale prawdopodobnie ją ma wpływ na inne aspekty ogólnego rozwiązania.  Poniższe kryteria są używane do oceny każdego modeli:
 
@@ -50,7 +64,7 @@ Ogólnie rzecz biorąc model dzierżawy nie ma wpływu na działanie aplikacji, 
 
 Omówienie dzierżawy koncentruje się na *danych* warstwy.  Jednak należy wziąć pod uwagę chwilę *aplikacji* warstwy.  Warstwa aplikacji jest traktowany jako wbudowanymi jednostki.  Dzieląc aplikację na wiele małych składniki wybór modelu dzierżawy mogą ulec zmianie.  Niektóre składniki można traktować inaczej niż inne dotyczące zarówno dzierżawy i technologii magazynowania lub użyć platformy.
 
-## <a name="b-standalone-single-tenant-app-with-single-tenant-database"></a>B. Autonomiczny pojedynczej dzierżawy aplikacji za pomocą pojedynczej dzierżawy bazy danych
+## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Autonomiczny pojedynczej dzierżawy aplikacji za pomocą pojedynczej dzierżawy bazy danych
 
 #### <a name="application-level-isolation"></a>Poziom izolacji aplikacji
 
@@ -66,7 +80,7 @@ Każda baza danych dzierżawy jest wdrażany jako autonomiczna baza danych.  Ten
 
 Dostawcy mają dostęp do wszystkich baz danych wszystkich aplikacji wystąpień autonomicznych, nawet jeśli wystąpienia aplikacji są instalowane w ramach dzierżawy różnych subskrypcji.  Uzyskuje się dostęp za pośrednictwem połączeń z serwerem SQL.  Dostęp do tego wystąpienia między można włączyć dostawcy zapewnić scentralizowane zarządzanie schematami i między bazami danych zapytania do celów raportowania lub analizy.  W razie potrzeby tego rodzaju scentralizowane zarządzanie wykaz należy wdrożyć mapowanego dzierżawy identyfikatorów URI bazy danych.  Baza danych SQL Azure udostępnia biblioteki dzielenia na fragmenty, która jest używana razem z bazą danych SQL w celu dostarczenia wykaz.  Formalnie nosi nazwę biblioteki dzielenia na fragmenty [elastycznej bazy danych klienta biblioteki][docu-elastic-db-client-library-536r].
 
-## <a name="c-multi-tenant-app-with-database-per-tenant"></a>C. Wielodostępne aplikacji z bazy danych dla dzierżawcy
+## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Wielodostępne aplikacji z bazy danych dla dzierżawcy
 
 Ten wzorzec dalej używa aplikacji wielodostępnych z wielu baz danych, wszystkie trwa pojedynczej dzierżawy baz danych.  Nowa baza danych jest przeznaczona dla każdej nowej dzierżawy.  Skalowania warstwy aplikacji *się* w pionie, dodając więcej zasobów w każdym węźle.  Aplikacja jest pokazany *limit* poziomo, dodając więcej węzłów.  Skalowanie jest oparta na obciążenie i zależy od liczby lub skali pojedynczych baz danych.
 
@@ -105,7 +119,7 @@ Operacje zarządzania mogą być uwzględnione w skryptach i oferowane przez [de
 
 Na przykład można zautomatyzować odzyskiwanie pojedynczej dzierżawy do wcześniejszego punktu w czasie.  Odzyskiwanie tylko musi przywrócić jedną bazę danych pojedynczej dzierżawy przechowujący dzierżawcy.  To przywracanie nie ma wpływu na innych dzierżawców, który potwierdza, czy operacje zarządzania na poziomie szczegółowym precyzyjne każdego pojedynczego dzierżawcy.
 
-## <a name="d-multi-tenant-app-with-multi-tenant-databases"></a>D. Wielodostępne aplikacji z bazami danych z wieloma dzierżawcami
+## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. Wielodostępne aplikacji z bazami danych z wieloma dzierżawcami
 
 Inny wzorzec dostępne jest przechowywać wiele dzierżaw w bazie danych wielodostępnej.  Wystąpienie aplikacji może mieć dowolną liczbę baz danych z wieloma dzierżawcami.  Schemat bazy danych z wieloma dzierżawcami musi mieć co najmniej jedną kolumnę Identyfikator dzierżawy, tak aby można selektywnie pobrać danych z żadnych danej dzierżawy.  Ponadto schematu może wymagać kilku tabel lub kolumn, które są używane przez tylko podzestaw dzierżaw.  Jednak dane statyczne kodu i odwołania są przechowywane tylko raz i jest współużytkowana przez wszystkie dzierżaw.
 
@@ -121,13 +135,13 @@ Ogólnie rzecz biorąc baz danych z wieloma dzierżawcami ma najniższą na — 
 
 Dwie odmiany model bazy danych z wieloma dzierżawcami omówiono poniżej, z podzielonej modelu wielodostępnym trwa elastyczność i skalowalność.
 
-## <a name="e-multi-tenant-app-with-a-single-multi-tenant-database"></a>E. Wielodostępne aplikacji za pomocą pojedynczej bazy danych z wieloma dzierżawcami
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Wielodostępne aplikacji za pomocą pojedynczej bazy danych z wieloma dzierżawcami
 
 Najprostsza wzorca bazy danych z wieloma dzierżawcami używa jednej autonomicznej bazy danych do przechowywania danych dla wszystkich dzierżawców.  Po dodaniu więcej dzierżaw, bazy danych jest skalowanie więcej zasobów magazynu i zasobów obliczeniowych.  Tej skali zapasowej może być są wystarczające, mimo że zawsze jest limit ultimate skali.  Jednak long przed osiągnięciem tego limitu bazy danych staje się niewygodna do zarządzania.
 
 Operacje zarządzania, które są koncentruje się na poszczególnych dzierżawców są bardziej złożone wdrożenie w wielu dzierżawców bazy danych.  I na dużą skalę te operacje mogą stać się zbyt wolne.  Przykładem jest w momencie przywracania danych dla tylko jednego dzierżawcy.
 
-## <a name="f-multi-tenant-app-with-sharded-multi-tenant-databases"></a>F. Wielodostępne aplikacji za pomocą podzielonej wielodostępnych baz danych
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Wielodostępne aplikacji za pomocą podzielonej wielodostępnych baz danych
 
 Większość aplikacji SaaS uzyskać dostęp do danych tylko jeden dzierżawy naraz.  Ten wzorzec dostępu umożliwia danych dzierżawy być rozproszone na wielu baz danych lub fragmentów, w którym wszystkie dane dla każdego dzierżawcy znajduje się w jednym niezależnego fragmentu.  W połączeniu z wzorca bazy danych z wieloma dzierżawcami, podzielonej modelu pozwala niemal nieograniczonego skali.
 
@@ -151,7 +165,7 @@ W zależności od użytego podejścia dzielenia na fragmenty dodatkowe ogranicze
 
 Podzielonej wielodostępnych baz danych można umieścić w puli elastycznej.  Ogólnie rzecz biorąc mających wiele pojedynczej dzierżawy baz danych w puli jest koszt wydajne jako zawierający wiele dzierżaw w kilku wielodostępnych baz danych.  Wielodostępne baz danych są korzystne w przypadku, gdy dużej liczby dzierżawców stosunkowo nieaktywne.
 
-## <a name="g-hybrid-sharded-multi-tenant-database-model"></a>G. Hybrydowe podzielonej wielodostępne bazy danych modelu
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Hybrydowe podzielonej wielodostępne bazy danych modelu
 
 W modelu hybrydowych wszystkie bazy danych ma identyfikator dzierżawy w ich schematu.  Bazy danych znajdują się wszystkie można przechowywać więcej niż jednej dzierżawy i baz danych może być podzielony na niezależne fragmenty.  Tak, aby w tym sensie schematu, wszystkie bazy danych z wieloma dzierżawcami.  Jeszcze w praktyce niektóre z tych baz danych zawierają tylko jednego dzierżawcy.  Niezależnie od tego ilość dzierżaw przechowywane w określonej bazie danych nie ma wpływu na schemat bazy danych.
 
@@ -165,11 +179,11 @@ Modelu hybrydowych możliwości, gdy istnieją duże różnice między zapotrzeb
 
 W tym modelu hybrydowego pojedynczej dzierżawy baz danych w przypadku dzierżaw subskrybenta można umieścić w pulach zasobów w celu zredukowania kosztów bazy danych dla każdego dzierżawcy.  To również odbywa się w modelu bazy danych dla dzierżawy.
 
-## <a name="h-tenancy-models-compared"></a>H. Modele dzierżawy porównaniu
+## <a name="i-tenancy-models-compared"></a>I. Modele dzierżawy porównaniu
 
 W poniższej tabeli przedstawiono różnice między modelami główny dzierżawy.
 
-| Miary | Aplikacja autonomiczna | Bazy danych dla dzierżawcy | Podzielonej wieloma dzierżawcami |
+| Miara | Aplikacja autonomiczna | Bazy danych dla dzierżawcy | Podzielonej wieloma dzierżawcami |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Skalowanie | Medium<br />1 100s | Bardzo wysokie<br />1 100,000s | Nieograniczona liczba<br />1 1,000,000s |
 | Izolacji dzierżawców | Bardzo wysokie | Wysoka | Niski; z wyjątkiem dowolnej dzierżawy pojedyncze (która jest tylko do bazy danych MT). |

@@ -9,11 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4d28a9a840b25ea415021da149ab145836cbed28
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802514"
 ---
 # <a name="install-a-linux-master-target-server"></a>Zainstaluj serwer główny cel systemu Linux
 Po przejścia w tryb failover maszyn wirtualnych na platformie Azure, możesz w trybie wstecz maszyn wirtualnych do lokacji lokalnej. Aby wykonaj powrót po awarii, musisz Włącz ponownie ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. W przypadku tego procesu należy lokalny główny serwer docelowy do odbierania ruchu. 
@@ -242,7 +243,7 @@ Wykonaj następujące kroki, aby utworzyć dysk przechowywania:
 
 2. Użyj **wielościeżkowe -ll** polecenie, aby dowiedzieć się wielościeżkowe identyfikator dysku przechowywania: **wielościeżkowe — wszystko**
 
-    ![Identyfikator wielościeżkowych](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![Identyfikator wielościeżkowych](./media/vmware-azure-install-linux-master-target/image27.png)
 
 3. Sformatuj dysk, a następnie utworzyć systemu plików na nowym dysku: **mkfs.ext4 /dev/mapowania/< identyfikator wielościeżkowe dysku przechowywania >**.
     

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: f4fe93078246bc25eb41a7f8e685d75f8dcb6b7c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bec02b3f3bde9f9cfab615d75cc6f05976ce981a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726224"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Tworzenie sieci wirtualnej równorzędna — różne modele wdrażania, tej samej subskrypcji
 
@@ -89,7 +90,7 @@ Można użyć [portalu Azure](#portal), Azure [interfejsu wiersza polecenia](#cl
     azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
 
-5. Utwórz grupę zasobów i sieć wirtualną (Resource Manager). Można użyć interfejsu wiersza polecenia 1.0 lub 2.0 ([zainstalować](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)). W tym samouczku 2.0 interfejsu wiersza polecenia jest używany do tworzenia sieci wirtualnej (Resource Manager), ponieważ 2.0 musi być używany do tworzenia, komunikację równorzędną. Wykonaj następujące bash interfejsu wiersza polecenia skrypt z komputera lokalnego z poziomu interfejsu wiersza polecenia 2.0.4 lub nowszej. Opcje uruchamiania bash CLI skrypty w kliencie systemu Windows, temacie [działający w systemie Windows Azure CLI](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Można również uruchomić skrypt za pomocą powłoki chmury Azure. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **wypróbuj** przycisk w skrypcie, który następujące, które wywołuje powłoka chmury, która rejestruje możesz zalogować się do konta platformy Azure z. Aby wykonać skrypt, kliknij przycisk **kopiowania** przycisk i Wklej zawartość w chmurze powłoki, naciśnij klawisz `Enter`.
+5. Utwórz grupę zasobów i sieć wirtualną (Resource Manager). Można użyć interfejsu wiersza polecenia 1.0 lub 2.0 ([zainstalować](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)). W tym samouczku 2.0 interfejsu wiersza polecenia jest używany do tworzenia sieci wirtualnej (Resource Manager), ponieważ 2.0 musi być używany do tworzenia, komunikację równorzędną. Wykonaj następujące bash interfejsu wiersza polecenia skrypt z komputera lokalnego z poziomu interfejsu wiersza polecenia 2.0.4 lub nowszej. Opcje uruchamiania bash CLI skrypty w kliencie systemu Windows, temacie [zainstalować w systemie Windows Azure CLI](/cli/azure/install-azure-cli-windows). Można również uruchomić skrypt za pomocą powłoki chmury Azure. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **wypróbuj** przycisk w skrypcie, który następujące, które wywołuje powłoka chmury, która rejestruje możesz zalogować się do konta platformy Azure z. Aby wykonać skrypt, kliknij przycisk **kopiowania** przycisk i Wklej zawartość w chmurze powłoki, naciśnij klawisz `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash

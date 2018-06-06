@@ -1,20 +1,21 @@
 ---
-title: Śledzenia zachowania użytkownika za pomocą zdarzeń w usłudze Application Insights z usługi Azure AD B2C | Dokumentacja firmy Microsoft
+title: Śledzenia zachowania użytkownika za pomocą zdarzeń w usłudze Application Insights z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Przewodnik krok po kroku, aby włączyć dzienniki zdarzeń w usłudze Application Insights z usługi Azure AD B2C podróże użytkownika za pomocą zasad niestandardowych (wersja zapoznawcza)
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
-ms.openlocfilehash: db9ba62cb6ef0d2627dbeb07cb8165a4ac7ae490
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709968"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Śledzenia zachowania użytkownika w usłudze Azure AD B2C podróże przy użyciu usługi Application Insights
 
@@ -256,7 +257,7 @@ Referenced using: {Culture:One of the property names below}
 | NazwaJęzyka | Dwa list ISO kod języka | pl |
 | RegionName | Dwa list kod ISO dla regionu | USA |
 | RFC5646 | Kod języka RFC5646 | pl-PL |
-| LCID   | Identyfikator LCID kod języka | 1045 |
+| LCID   | Identyfikator LCID kod języka | 21 |
 
 ### <a name="policy-specific-claims"></a>Zasady dotyczące oświadczeń
 

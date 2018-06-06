@@ -1,27 +1,27 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Opis zasady niestandardowe pakietu starter | Dokumentacja firmy Microsoft'
-description: Temat dotyczący zasad niestandardowych usługi Azure Active Directory B2C
+title: Opis zasad niestandardowych modułu uruchamiającego pakietu w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Temat w zasadach niestandardowych usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: eb78e4c2f2e27d59d7925ac9eaffd1cef0924463
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711583"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Opis zasad niestandardowych początkowego pakietu Azure AD B2C niestandardowych zasad
 
 Ta sekcja zawiera listę wszystkich elementów podstawowych zasad B2C_1A_base, który jest dostarczany z **pakiet początkowy** i która jest wykorzystywana do tworzenia własnych zasad za pomocą dziedziczenia obiektu *B2C_1A_base_extensions zasad* .
 
-Tak on bardziej szczegółowo skupia się na typy oświadczeń już zdefiniowane, przekształcenia oświadczeń, definicje zawartości, dostawców oświadczeń z ich profile technicznych i podróże użytkownika core.
+Tak bardziej szczegółowo koncentruje się on na typy oświadczeń już zdefiniowane, przekształcenia oświadczeń, definicje zawartości, dostawców oświadczeń z ich profile technicznych i podróże użytkownika core.
 
 > [!IMPORTANT]
 > Microsoft nie udziela żadnych gwarancji, wprost względem z informacji podanych poniżej lub. Zmiany mogą być wprowadzane w dowolnym momencie przed upływem terminu GA w czasie GA lub po.
@@ -81,7 +81,7 @@ Następujące oświadczenia są wymagane do przekazania na specjalne parametry (
 | Typ oświadczenia | Opis |
 |-------------|-------------|
 | *nux* | Specjalne parametr przekazany do uwierzytelniania konta lokalnego do login.microsoftonline.com |
-| *nca* | Specjalne parametr przekazany do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *Asystent łączności sieciowej* | Specjalne parametr przekazany do uwierzytelniania konta lokalnego do login.microsoftonline.com |
 | *wiersz* | Specjalne parametr przekazany do uwierzytelniania konta lokalnego do login.microsoftonline.com |
 | *mkt* | Specjalne parametr przekazany do uwierzytelniania konta lokalnego do login.microsoftonline.com |
 | *lc* | Specjalne parametr przekazany do uwierzytelniania konta lokalnego do login.microsoftonline.com |
@@ -193,7 +193,7 @@ W tej sekcji przedstawiono techniczne profile już zadeklarowana dla dostawcy o�
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
 
-### <a name="technical-profiles-for-trustframework-policy-engine-technicalprofiles"></a>Profile techniczne dla TechnicalProfiles aparatu zasad Trustframework
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Profile techniczne dla aparatu zasad framework zaufania
 
 Obecnie brak techniczne profilów są definiowane dla **TechnicalProfiles aparatu zasad Trustframework** dostawcy oświadczeń.
 

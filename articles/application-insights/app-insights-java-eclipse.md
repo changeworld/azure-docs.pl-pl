@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795564"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Wprowadzenie do usługi Application Insights z językiem Java w środowisku Eclipse
 Zestaw SDK usługi Application Insights wysyła dane telemetryczne z aplikacji sieci web w języku Java, dzięki czemu można analizować użycia i wydajności. Wtyczki dla usługi Application Insights Eclipse automatycznie instaluje zestaw SDK w projekcie, tak aby uzyskać poza telemetrii pola, a także interfejs API, który służy do zapisywania telemetria niestandardowa.   
@@ -32,6 +33,8 @@ Będą potrzebne:
 * Subskrypcja platformy [Microsoft Azure](https://azure.microsoft.com/).
 * [Zaćmienie-IDE for Java EE Developers](http://www.eclipse.org/downloads/), indygo lub nowszej.
 * System Windows 7 lub nowszym lub Windows Server 2008 lub nowszy
+
+Jeśli wolisz, spróbuj Spring framework [Konfigurowanie inicjatora rozruchu Spring aplikacji przewodnik usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>Zainstaluj zestaw SDK w środowisku Eclipse (jeden raz)
 Wystarczy wykonać to jeden raz dla poszczególnych komputerów. Ta czynność powoduje zainstalowanie zestawu narzędzi, które można następnie dodać zestawu SDK do każdego dynamiczny projekt sieci Web.

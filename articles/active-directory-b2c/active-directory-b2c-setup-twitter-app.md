@@ -1,21 +1,21 @@
 ---
-title: Konfiguracja usługi Twitter dla usługi Azure AD B2C | Dokumentacja firmy Microsoft
+title: Konfiguracja usługi Twitter dla usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Podaj rejestracji i logowania do klientów z kontami usługi Twitter w aplikacjach, które są zabezpieczone przez usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 4/17/2018
 ms.author: davidmu
-ms.openlocfilehash: 40e4c5549414765dabc6f37c5ffb5aea519ae673
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 68b9e9edbacda08bc98b6b7af5d944d3df9edca1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709584"
 ---
 # <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Umożliwiają rejestracji i logowania użytkowników z kontami usługi Twitter, za pomocą usługi Azure AD B2C
 
@@ -27,8 +27,10 @@ Aby użyć usługi Twitter jako dostawca tożsamości w usłudze Azure Active Di
 3. W formularzu, należy podać wartość parametru **nazwa**, **opis**, i **witryny sieci Web**.
 4. Aby uzyskać **wywołania zwrotnego adresu URL**, wprowadź `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`. Upewnij się zastąpić **{dzierżawa}** nazwą Twojej dzierżawy (na przykład contosob2c.onmicrosoft.com).
 5. Pole wyboru, aby zaakceptować **umowy Developer** i kliknij przycisk **tworzenie aplikacji Twitter**.
-6. Po utworzeniu aplikacji, kliknij przycisk **kluczy i tokenów dostępu**.
-7. Skopiuj wartość **konsumenta** i **klucz tajny klienta**. Należy obie z nich, aby skonfigurować funkcję dostawcy tożsamości w dzierżawie usługi Twitter.
+6. Po utworzeniu aplikacji, wybierz z listy, a następnie wybierz **ustawienia** kartę.
+7. Wyczyść **włączyć blokowania wywołania zwrotnego** , a następnie kliknij przycisk **zaktualizować ustawienia**.
+8. Wybierz **kluczy i tokenów dostępu** kartę.
+9. Skopiuj wartość **konsumenta** i **klucz tajny klienta**. Należy obie z nich, aby skonfigurować funkcję dostawcy tożsamości w dzierżawie usługi Twitter.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Skonfiguruj funkcję dostawcy tożsamości w dzierżawie usługi Twitter
 1. Zaloguj się do [portalu Azure](https://portal.azure.com/) jako Administrator globalny dzierżawy usługi Azure AD B2C. 

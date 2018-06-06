@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/13/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801936"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Zagadnienia dotyczące projektowania
-Celem tego tematu jest do opisywania obszarów, które muszą być uważane za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten temat jest nowości w niektórych obszarach i tych pojęć krótko opisano w innych tematach również.
+Celem niniejszego dokumentu jest do opisywania obszarów, które muszą być uważane za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest nowości w niektórych obszarach i tych pojęć krótko opisano w innych dokumentów.
 
 ## <a name="sourceanchor"></a>sourceAnchor
 Atrybut sourceAnchor jest zdefiniowany jako *atrybutu niezmienialny w okresie istnienia obiektu*. Identyfikuje obiekt jako tego samego obiektu lokalnej i w usłudze Azure AD. Ten atrybut jest również nazywany **nazwę immutableId** i obie nazwy są używane wymienne.
 
-Niezmienne, word, który jest "nie można zmienić", ważne jest, aby w tym temacie. Ponieważ wartość tego atrybutu nie można zmienić po ustawieniu, należy wybrać projekt, który obsługuje danego scenariusza.
+Niezmienne, word, który jest "nie można zmienić", ważne jest, aby ten dokument. Ponieważ wartość tego atrybutu nie można zmienić po ustawieniu, należy wybrać projekt, który obsługuje danego scenariusza.
 
 Ten atrybut jest używany w następujących scenariuszach:
 
@@ -40,12 +42,12 @@ W tym temacie wspomniana sourceAnchor tylko w odniesieniu do użytkowników. Te 
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>Wybranie atrybutu sourceAnchor dobra
 Wartość atrybutu, należy wykonać następujące reguły:
 
-* Zawierać mniej niż 60 znaków
+* Mniej niż 60 znaków
   * Kodowania i liczone jak znaki 3 znaki nie są a-z, A-Z i 0-9
 * Zawiera znaki specjalne: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * Musi być globalnie unikatowa
 * Musi być ciągiem, liczbą całkowitą lub danych binarnych
-* Nie powinna być oparta na nazwę użytkownika, te zmiany
+* Nie powinna być oparta na nazwę użytkownika, ponieważ te można zmienić
 * Nie powinny być uwzględniana wielkość liter i uniknąć wartości, które mogą różnić się wielkością liter
 * Powinien być przypisany podczas tworzenia obiektu
 
@@ -165,7 +167,7 @@ Jeśli używasz usługi Azure AD Connect do zarządzania lokalnymi wdrożenia us
 
 Jeśli zarządzasz usług AD FS poza Azure AD Connect lub serwery federacyjne innych firm jest używany do uwierzytelniania, należy ręcznie zaktualizować reguły oświadczeń nazwę ImmutableID oświadczenia były spójne z wartościami sourceAnchor wyeksportowane do usługi Azure AD, zgodnie z opisem w sekcji artykule [reguł oświadczeń Modyfikuj AD FS](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Po zakończeniu instalacji, Kreator zwraca następujące ostrzeżenie:
 
-![Konfiguracja federacyjnego innych firm](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
+![Konfiguracja federacyjne innych firm](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Dodawanie nowych katalogów do istniejącego wdrożenia
 Załóżmy, że wdrożono Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu mSDS-ConsistencyGuid w katalogu. Jeśli ten atrybut został skonfigurowany w co najmniej jednego obiektu w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, należy skontaktować się z obsługą informacji dotyczących Pomiń błąd.
@@ -193,7 +195,7 @@ Niektóre organizacje mają nierutowalny domen, takich jak contoso.local lub pro
 
 Odczyt [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory-domains-add-azure-portal.md) uzyskać więcej informacji dotyczących dodawania i weryfikowania domeny.
 
-Wykrywa Azure AD Connect, jeśli są uruchomione w środowisku domeny bez obsługi routingu i będzie odpowiednio ostrzegać z wyprzedzeniem korzystanie z ustawień ekspresowych. Jeśli pracujesz w domenie bez obsługi routingu, następnie prawdopodobnie nazwy UPN użytkowników zbyt ma sufiksy bez obsługi routingu. Na przykład, jeśli używane do uruchamiania contoso.local, Azure AD Connect sugeruje można użyć ustawienia niestandardowe, a nie przy użyciu ustawień ekspresowych. Za pomocą ustawień niestandardowych, będą mogli określać atrybut, które mają być używane jako nazwy UPN do logowania do platformy Azure po zsynchronizowaniu użytkowników do usługi Azure AD.
+Wykrywa Azure AD Connect, jeśli są uruchomione w środowisku domeny bez obsługi routingu i będzie odpowiednio ostrzegać z wyprzedzeniem korzystanie z ustawień ekspresowych. Jeśli pracujesz w domenie bez obsługi routingu, następnie prawdopodobnie nazwy UPN użytkowników, zbyt ma sufiksy bez obsługi routingu. Na przykład, jeśli używane do uruchamiania contoso.local, Azure AD Connect sugeruje można użyć ustawienia niestandardowe, a nie przy użyciu ustawień ekspresowych. Za pomocą ustawień niestandardowych, będą mogli określać atrybut, które mają być używane jako nazwy UPN do logowania do platformy Azure po zsynchronizowaniu użytkowników do usługi Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).

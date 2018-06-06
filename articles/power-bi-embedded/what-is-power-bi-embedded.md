@@ -12,15 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/04/2018
+ms.date: 05/31/2018
 ms.author: maghan
-ms.openlocfilehash: 1bc641e210a5bd965c5cdbf41efe853e9b297132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8d68a950438a332cdf8ddd8d4f13a316c87aa0a5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715925"
 ---
-# <a name="about-power-bi-embedded"></a>O usłudze Power BI Embedded
+# <a name="what-is-power-bi-embedded"></a>Co to jest usługa Power BI Embedded?
 
 Power BI Embedded ma na celu uproszczenie wykorzystania możliwości usługi Power BI niezależnym dostawcom oprogramowania i deweloperów. Usługa Power BI Embedded upraszcza możliwości usługi Power BI pomaga szybko dodać wspaniałych elementy wizualne, raporty i pulpity nawigacyjne do aplikacji. Podobnie jak aplikacje oparte na Microsoft Azure korzystania z usług takich jak Machine Learning i IoT. Przez włączenie Eksploracja danych łatwe do nawigacji w swoich aplikacjach, niezależnym dostawcom oprogramowania pozwalają użytkownikom dokonanie szybki i świadomych decyzji w kontekście.
 
@@ -30,7 +31,7 @@ Power BI Embedded ma na celu uproszczenie wykorzystania możliwości usługi Pow
 
 Z Power BI Embedded niezależnym dostawcom oprogramowania i deweloperom dodano elastyczność w sposób ich osadzić analizy w swoich aplikacjach z użyciem interfejsów API usługi Power BI. Niezależni dostawcy oprogramowania i deweloperzy mogą wykorzystać zminimalizowane programistycznych do osiągnięcia krótszy czas wprowadzenia na rynek i wyróżnić się przez infusing aparat analizy światowej klasy firmy Microsoft w swoich aplikacji. Jednakowo, deweloperzy mogą poświęcić czas koncentrujących się na swoje rozwiązanie do spełnienia wymagań klienta, zamiast Tworzenie funkcji visual analytics. Ponadto usługa Power BI Embedded umożliwia pracę w środowiskach znanych programowanie — Visual Studio i Azure — już używać.
 
-Masz istniejącą aplikację z osadzoną zawartość usługi Power BI przy użyciu — wersja Premium Power BI? Jeśli jesteś niezależnego dostawcy oprogramowania lub deweloperem dostarczania aplikacji lub organizacji korzystającej z nich jest wymagana żadna akcja. Możesz i klientów, mogą używać tych aplikacji z produktu bez przeszkód. Jeśli masz istniejącą aplikację Power BI obszaru roboczego kolekcje w oparciu i planuje się wykorzystać konwergentnej powierzchni interfejsu API i nowe SKU Azure opartej na pojemność, odwiedź stronę dokumentacji, aby uzyskać wskazówki dotyczące migracji.
+Masz istniejącą aplikację z osadzoną zawartość usługi Power BI przy użyciu — wersja Premium Power BI? Jeśli jesteś niezależnego dostawcy oprogramowania lub deweloperem dostarczania aplikacji lub organizacji korzystającej z nich jest wymagana żadna akcja. Klientom mogą używać tych aplikacji z produktu bez przeszkód. Jeśli masz istniejącą aplikację Power BI obszaru roboczego kolekcje w oparciu i planuje się wykorzystać konwergentnej powierzchni interfejsu API i nowe SKU Azure opartej na pojemność, odwiedź stronę dokumentacji, aby uzyskać wskazówki dotyczące migracji.
 
 ## <a name="comparing-power-bi-embedded-with-power-bi-premium"></a>Porównanie usługi Power BI Embedded z Power BI — wersja Premium
 
@@ -38,7 +39,7 @@ Usługa Power BI Embedded jest przeznaczony dla deweloperów, którzy tworzą ap
 
 ## <a name="easy-to-use-tools"></a>Łatwe w użyciu narzędzia
 
-Usługa Power BI Embedded pozwala skupić się na najlepiej wykonaj: tworzenie atrakcyjnych aplikacji. Można zarządzać i opracowanie przed przy użyciu narzędzia i umiejętności, które mają już Power BI Embedded.
+Usługa Power BI Embedded pozwala skupić się na najlepiej wykonaj: tworzenie atrakcyjnych aplikacji. Można zarządzać i opracowywania przy użyciu narzędzia i umiejętności, które mają już Power BI Embedded.
 
 * [**Azure Portal**](https://portal.azure.com/): aplikacja sieci Web do zarządzania wszystkimi usługami platformy Azure
 * [**Visual Studio Code**](https://code.visualstudio.com/docs): bezpłatne, możesz pobrać typu open source, edytora kodu dla systemu Windows, system macOS i Linux, który obsługuje rozszerzenia

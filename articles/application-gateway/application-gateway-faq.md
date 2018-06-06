@@ -7,13 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/29/2018
+ms.date: 5/21/2018
 ms.author: victorh
-ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699907"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -82,6 +83,11 @@ Nie, bramy aplikacji nie obsługuje statyczne publiczne adresy IP, ale obsługuj
 **Q. Brama aplikacji w obsługuje wiele publicznych adresów IP w bramie?**
 
 Dotyczy tylko jeden publiczny adres IP bramy aplikacji.
+
+**Q. Jak duże utworzyć mojej podsieci bramy aplikacji?**
+
+Brama aplikacji w zużywa jednego prywatnego adresu IP dla każdego wystąpienia, a także innego prywatnego adresu IP, jeśli skonfigurowano konfiguracji IP frontonu prywatnych. Ponadto Azure rezerwuje pierwsze cztery i ostatni adres IP w każdej podsieci do użytku wewnętrznego.
+Na przykład, jeśli ustawiono brama aplikacji w trzech przypadkach i adres IP nie prywatnego serwera sieci Web, następnie /29 podsieci rozmiar lub nowszej jest wymagana. W takim przypadku aplikacji brama używa trzech adresów IP. Jeśli masz trzy wystąpienia i adres IP dla konfiguracji IP frontonu prywatne, następnie /28 podsieci rozmiar lub nowszego jest wymagany, ponieważ cztery adresy IP są wymagane.
 
 **Q. Brama aplikacji w obsługuje x przekazywane dla nagłówków?**
 
@@ -183,6 +189,21 @@ Nie istnieje bez przestojów, wystąpienia są rozproszone na uaktualnienia dome
 
 Tak. Można skonfigurować połączenia opróżnianie zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Pozwoli to istniejących połączeń kontynuować do wysłania do ich poprzedniego miejsca docelowego, dopóki to połączenie jest zamykane albo można skonfigurować limit czasu wygaśnięcia. Należy pamiętać, opróżnianie oczekuje tylko dla bieżącego połączenia locie do ukończenia tego połączenia. Brama aplikacji nie są znane stanu sesji aplikacji.
 
+**Q. Co to są rozmiary bramy aplikacji?**
+
+Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
+
+Można utworzyć maksymalnie 50 bram aplikacji na subskrypcję, a każda brama aplikacji może mieć maksymalnie 10 wystąpień. Każda brama aplikacji może składać się z 20 odbiorników HTTP. Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla każdego wystąpienia bramy aplikacji z włączonym obciążeniem SSL:
+
+| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Large |
+| --- | --- | --- | --- |
+| 6KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
+| 100KB |35 Mb/s |100 Mb/s |200 Mb/s |
+
+> [!NOTE]
+> Są to przybliżone wartości przepływności bramy aplikacji. Rzeczywista przepływność zależy od różnorodnych szczegółów środowiska, takich jak średni rozmiar strony, lokalizacja wystąpień zaplecza i czas przetwarzania potrzebny do obsługi strony. Aby uzyskać dokładne wartości wydajności, należy przeprowadzić własne testy. Te wartości są podane tylko jako wskazówki na potrzeby planowania pojemności.
 
 **Q. Czy mogę zmienić rozmiar wystąpienia z nośnika dużych bez zakłóceń**
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 087a0f12f765b55c2e2976abd93d791409ff6d44
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 27c6671c170f4c03c63270772651051830d8e4ec
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757625"
 ---
 # <a name="testability-actions"></a>Testowania czynności
 Aby symulować zawodnych infrastruktury, sieć szkieletowa usług Azure udostępnia Tobie, deweloperze, ze sposobów, aby symulować różne błędy rzeczywistych i przejścia stanu. Są one widoczne jako testowania czynności. Akcje są niskiego poziomu interfejsów API, które powodują iniekcji określonych błędów, przejście stanu lub sprawdzania poprawności. Łącząc te akcje można zapisywać scenariusze kompleksowego testowania dla usług.
@@ -41,8 +42,8 @@ Podczas wywołania różnych błędów bezpieczne i nieprawidłowego lepszą jak
 | CleanTestState |Usuwa wszystkie stanu testu z klastra w przypadku zły wyłączania sterownika testu. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nie dotyczy |
 | InvokeDataLoss |Powoduje utratę danych na partycji usługi. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Bezpieczne |
 | InvokeQuorumLoss |Umieszcza partycji danej usługi stanowej, w wyniku utraty kworum. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Bezpieczne |
-| Przenoszenie podstawowej |Przenosi określony repliką podstawową usługi stanowej określony węzeł klastra. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Bezpieczne |
-| Przenieś pomocniczej |Przenosi bieżący pomocniczej replice usługi stanowej na inny węzeł klastra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Bezpieczne |
+| MovePrimary |Przenosi określony repliką podstawową usługi stanowej określony węzeł klastra. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Bezpieczne |
+| MoveSecondary |Przenosi bieżący pomocniczej replice usługi stanowej na inny węzeł klastra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Bezpieczne |
 | RemoveReplica |Symuluje awarii repliki poprzez usunięcie repliki z klastra. To spowoduje zamknięcie repliki i przenieść ją do roli "None", usunięcie wszystkich jego stanu z klastra. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Bezpieczne |
 | RestartDeployedCodePackage |Symuluje awarii procesu pakietu kodu przez ponowne uruchomienie pakiet kodu wdrożonych na węzłach w klastrze. Przerywa ten proces pakietu kodu, który zostanie uruchomiony ponownie wszystkie użytkownika repliki usługi hostowanej w tym procesie. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Nieprawidłowego |
 | RestartNode |Symuluje awarii węzła klastra sieci szkieletowej usług przez ponowne uruchomienie węzła. |RestartNodeAsync |Restart-ServiceFabricNode |Nieprawidłowego |

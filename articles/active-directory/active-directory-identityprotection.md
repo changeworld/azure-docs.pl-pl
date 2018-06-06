@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713188"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
@@ -206,7 +208,7 @@ Omówienie powiązane funkcje użytkownika Zobacz:
 
 - Na **Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **logowania zasad ryzyka**.
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1014.png "zasady ridk użytkownika")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1014.png "zasad ryzyka użytkownika")
 
 
 
@@ -306,25 +308,25 @@ Określone okno zapewnia dwie różne metody, aby zresetować hasło:
 ### <a name="user-risk-security-policy"></a>Zasady zabezpieczeń użytkownika ryzyka
 Zasady zabezpieczeń użytkownika ryzyko jest zasady dostępu warunkowego, które ocenia poziom ryzyka dla określonego użytkownika, a następnie stosuje akcje korygowania i środki zaradcze, na podstawie wstępnie zdefiniowane warunki i zasady.
 
-![Zasady użytkownika ridk](./media/active-directory-identityprotection/1009.png "zasady ridk użytkownika")
+![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1009.png "zasad ryzyka użytkownika")
 
 Azure AD Identity Protection pomaga w zarządzaniu łagodzenia i korygowania oflagowane ryzyka, umożliwiając użytkownikom:
 
 * Ustaw użytkowników i grup, których dotyczy zasada:
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1010.png "zasady ridk użytkownika")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1010.png "zasad ryzyka użytkownika")
 * Należy ustawić użytkownika ryzyka poziomu próg (niski, średni lub wysoki) wyzwalania zasad:
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1011.png "zasady ridk użytkownika")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1011.png "zasad ryzyka użytkownika")
 * Ustaw formanty mają być egzekwowane, gdy wyzwala zasad:
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1012.png "zasady ridk użytkownika")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1012.png "zasad ryzyka użytkownika")
 * Przełącz stan tej zasady:
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/403.png "rejestracji usługi MFA")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/403.png "rejestracji usługi MFA")
 * Przegląd i ocena wpływu zmiany przed uaktywnieniem go:
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1013.png "zasady ridk użytkownika")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1013.png "zasad ryzyka użytkownika")
 
 Wybieranie **wysokiej** próg zmniejsza liczbę razy zasadę wyzwoleniu oraz zminimalizować wpływ na użytkowników.
 Jednak nie obejmuje **małej** i **średni** użytkowników oznaczona flagą ryzyko związane z zasad, które mogą nie zapewnić tożsamości lub urządzenia, który zostały wcześniej podejrzanych lub znane naruszenia.
@@ -347,7 +349,7 @@ Omówienie powiązane funkcje użytkownika Zobacz:
 
 - Na **Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **zasad ryzyka użytkownika**.
 
-    ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1009.png "zasady ridk użytkownika")
+    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1009.png "zasad ryzyka użytkownika")
 
 ### <a name="mitigating-user-risk-events"></a>Zmniejszenia zdarzenia o podwyższonym ryzyku użytkownika
 Administratorzy mogą skonfigurować zasady zabezpieczeń ryzyka użytkownika, aby uniemożliwić użytkownikom na logowanie się w zależności od poziomu zagrożenia.
@@ -366,7 +368,7 @@ Firma Microsoft zaleca wymagane uwierzytelnianie wieloskładnikowe platformy Azu
 * Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe
 * Odgrywa kluczową rolę w przygotowywanie organizacji do ochrony i odzyskiwania z dokonywania konta
 
-![Zasady użytkownika ridk](./media/active-directory-identityprotection/1019.png "zasady ridk użytkownika")
+![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1019.png "zasad ryzyka użytkownika")
 
 Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe Azure?](authentication/multi-factor-authentication.md)
 

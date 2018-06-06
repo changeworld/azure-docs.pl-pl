@@ -1,34 +1,36 @@
 ---
-title: "Usługi Azure Active Directory Domain Services: Synchronizacja w domenach zarządzanych | Dokumentacja firmy Microsoft"
-description: "Zrozumienie synchronizacji w domenie zarządzanej usług domenowych Azure Active Directory"
+title: 'Usługi Azure Active Directory Domain Services: Synchronizacja w domenach zarządzanych | Dokumentacja firmy Microsoft'
+description: Zrozumienie synchronizacji w domenie zarządzanej usług domenowych Azure Active Directory
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 5c324ea5e268d97134202eff6e96764bedc6ca75
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2449c8178f726eacad089debeae6cf1db56cc67a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698445"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizacja w domenie zarządzanej usług domenowych Azure AD
 Na poniższym diagramie przedstawiono, jak działa synchronizacji w w usługach domenowych Azure AD w domenach zarządzanych.
 
-![Topologia synchronizacji w usługach domenowych Azure AD](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![Synchronizacja w usługach domenowych Azure AD](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
 ## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>Synchronizacja z katalogu lokalnego do dzierżawy usługi Azure AD
 Synchronizacja programu Azure AD Connect umożliwia synchronizowanie kont użytkowników, członkostw i skróty poświadczeń do dzierżawy usługi Azure AD. Atrybuty użytkownika konta, takie jak nazwa UPN i lokalnymi identyfikatora SID (identyfikator zabezpieczeń) są synchronizowane. Jeśli korzystasz z usług domenowych Azure AD, do dzierżawy usługi Azure AD synchronizowane są również skrótów starszych poświadczeń wymaganych do uwierzytelniania NTLM i Kerberos.
 
-Jeśli skonfigurujesz zapisu są synchronizowane lokalnej usługi Active Directory zmiany zachodzące w katalogu usługi Azure AD. Na przykład w przypadku zmiany hasła przy użyciu funkcji zmiany hasła samoobsługi usługi Azure AD, zmiany hasła jest aktualizowany w lokalnej domeny usługi AD.
+Jeśli skonfigurujesz zapisu są synchronizowane lokalnej usługi Active Directory zmiany zachodzące w katalogu usługi Azure AD. Na przykład, jeśli zmienisz hasło przy użyciu usługi Azure AD hasła samoobsługowego zarządzania zmiany hasła jest aktualizowany w lokalnej domeny usługi AD.
 
 > [!NOTE]
 > Zawsze używać najnowszej wersji programu Azure AD Connect, aby upewnić się, że poprawki dla wszystkich znanych błędów.
@@ -36,21 +38,21 @@ Jeśli skonfigurujesz zapisu są synchronizowane lokalnej usługi Active Directo
 >
 
 ## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Synchronizacja z dzierżawy usługi Azure AD do domeny zarządzanej
-Konta użytkowników, członkostwa w grupach i skrótów poświadczeń są synchronizowane z dzierżawy usługi Azure AD do domeny zarządzanej usług domenowych Azure AD. Ten proces synchronizacji odbywa się automatycznie. Nie ma potrzeby konfigurowania, monitorowania lub zarządzania tym procesem synchronizacji. Po zakończeniu jednorazowe wstępna synchronizacja katalogu zwykle trwa około 20 minut, aby zmiany wprowadzone w usłudze Azure AD zostaną odzwierciedlone w domeny zarządzanej. Ten interwał synchronizacji ma zastosowanie do zmiany hasła lub zmiany atrybutów wprowadzone w usłudze Azure AD.
+Konta użytkowników, członkostwa w grupach i skrótów poświadczeń są synchronizowane z dzierżawy usługi Azure AD do domeny zarządzanej usług domenowych Azure AD. Ten proces synchronizacji odbywa się automatycznie. Nie ma potrzeby konfigurowania, monitorowania lub zarządzania tym procesem synchronizacji. Początkowa synchronizacja może zająć od kilku godzin do kilku dni zależnie od liczby obiektów w katalogu usługi Azure AD. Po ukończeniu synchronizacji początkowej, trwa około 20-30 minut zmian wprowadzonych w usłudze Azure AD do zaktualizowania w domeny zarządzanej. Ten interwał synchronizacji ma zastosowanie do zmiany hasła lub zmiany atrybutów wprowadzone w usłudze Azure AD.
 
 Proces synchronizacji jest również jednorazowe-way/jednokierunkowe charakter. Domeny zarządzanej jest przede wszystkim tylko do odczytu z wyjątkiem wszystkich niestandardowych jednostkach organizacyjnych, należy utworzyć. W związku z tym nie można wprowadzić zmian atrybutów użytkowników, hasła użytkownika lub członkostwa w grupach w ramach domeny zarządzanej. W związku z tym jest nie odwrotnej synchronizacja zmian z domeny zarządzanej do dzierżawy usługi Azure AD.
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Synchronizacja w środowisku wielu lasów lokalnych
 Organizacje często mają dość złożone lokalnymi infrastruktury tożsamości, składające się z wielu lasów kont. Azure AD Connect obsługuje synchronizacji użytkowników, grup i skrótów poświadczeń w środowisku wielu lasów w dzierżawie usługi Azure AD.
 
-Z kolei dzierżawy usługi Azure AD jest znacznie prostsza i płaskiej przestrzeni nazw. Aby umożliwić użytkownikom niezawodny dostęp do aplikacji zabezpieczonej przez usługi Azure AD, należy rozwiązać konflikty UPN między kontami użytkowników w różnych lasach. Twoje posiada domeny zarządzanej usług domenowych Azure AD Zamknij podobieństwa do dzierżawy usługi Azure AD. W związku z tym Zobacz płaska struktura jednostek organizacyjnych w domenie zarządzanej. Wszyscy użytkownicy i grupy są przechowywane w kontenerze "AADDC użytkownicy", niezależnie od tego, czy lokalnej domenie lub lesie, w którym zostały zsynchronizowane w. Skonfigurowane hierarchiczna jednostki Organizacyjnej struktury lokalnymi. Jednak domeny zarządzanej nadal ma prosty płaska struktura jednostki Organizacyjnej.
+Z kolei dzierżawy usługi Azure AD jest znacznie prostsza i płaskiej przestrzeni nazw. Aby umożliwić użytkownikom niezawodny dostęp do aplikacji zabezpieczonej przez usługi Azure AD, należy rozwiązać konflikty UPN między kontami użytkowników w różnych lasach. Twoje posiada domeny zarządzanej usług domenowych Azure AD Zamknij podobieństwa do dzierżawy usługi Azure AD. Zobaczysz płaska struktura jednostek organizacyjnych w domenie zarządzanej. Wszystkie konta użytkowników i grup są przechowywane w kontenerze "AADDC użytkownicy", niezależnie od synchronizowanych z lokalnej różnych domen i lasów. Skonfigurowane hierarchiczna jednostki Organizacyjnej struktury lokalnymi. Domeny zarządzanej nadal ma prosty płaska struktura jednostki Organizacyjnej.
 
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>Wykluczenia — co nie jest zsynchronizowany do domeny zarządzanej
 Następujące obiektów i atrybutów nie są zsynchronizowane z dzierżawą usługi Azure AD lub do domeny zarządzanej:
 
 * **Wykluczone atrybutów:** można wykluczyć określone atrybuty synchronizowanie do dzierżawy usługi Azure AD z domeny lokalnej za pomocą usługi Azure AD Connect. Te atrybuty wykluczone nie są dostępne w Twojej domeny zarządzanej.
 * **Zasady grupy:** skonfigurowane w domenie lokalnych zasad grupy nie są synchronizowane z domeny zarządzanej.
-* **Udział SYSVOL:** podobnie zawartość udziału SYSVOL w domenie lokalnej nie są synchronizowane z domeny zarządzanej.
+* **Udział Sysvol:** podobnie zawartość udziału Sysvol w domenie lokalnej nie są synchronizowane z domeny zarządzanej.
 * **Obiekty komputerów:** obiektów komputera dla komputerów do domeny lokalnej nie są zsynchronizowane z domeny zarządzanej. Te komputery nie mieć relację zaufania z domeną zarządzanych i należeć do Twojej domeny lokalnej. Domeny zarządzanej możesz znaleźć obiektów komputerów wyłącznie dla komputerów, które możesz mieć jawnie przyłączonych do domeny zarządzanej.
 * **Atrybuty SidHistory dla użytkowników i grup:** głównego użytkownika i identyfikatory SID z domeny lokalnej grupy podstawowej są synchronizowane z domeny zarządzanej. Jednak istniejące atrybuty SidHistory dla użytkowników i grup nie są synchronizowane z lokalnej domeny do domeny zarządzanej.
 * **Struktury jednostek (OU) w organizacji:** jednostek organizacyjnych zdefiniowanych w domenie lokalnej nie Synchronizuj do domeny zarządzanej. Istnieją dwa wbudowane jednostek organizacyjnych w domenie zarządzanej. Domyślnie domeny zarządzanej ma prosty struktury jednostek organizacyjnych. Można jednak wybrać opcję [Tworzenie niestandardowej jednostki Organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md).
@@ -76,15 +78,15 @@ W poniższej tabeli przedstawiono sposób określonych atrybutów użytkownika o
 
 | Atrybut użytkownika w dzierżawie usługi Azure AD | Atrybut użytkownika w domenie zarządzanej |
 |:--- |:--- |
-| AccountEnabled |kontroli konta użytkownika (ustawia lub czyści ACCOUNT_DISABLED-bitowy) |
+| accountEnabled |kontroli konta użytkownika (ustawia lub czyści ACCOUNT_DISABLED-bitowy) |
 | city |l |
 | Kraju |co |
-| Dział |Dział |
-| Nazwa wyświetlana |Nazwa wyświetlana |
+| dział |dział |
+| displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
-| Imię |Imię |
-| Stanowisko |Tytuł |
-| Poczty |Poczty |
+| givenName |givenName |
+| Stanowisko |tytuł |
+| poczta |poczta |
 | mailNickname |atrybut msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (czasami może się generowane automatycznie) |
 | Telefon komórkowy |Telefon komórkowy |
@@ -92,7 +94,7 @@ W poniższej tabeli przedstawiono sposób określonych atrybutów użytkownika o
 | onPremiseSecurityIdentifier |historii SID |
 | passwordPolicies |kontroli konta użytkownika (ustawia lub czyści DONT_EXPIRE_PASSWORD-bitowy) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| KodPocztowy |KodPocztowy |
+| postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
 | state |St |
 | Adres |Adres |
@@ -105,13 +107,22 @@ W poniższej tabeli przedstawiono sposób określonych atrybutów grupy obiektó
 
 | Grupa atrybutów w dzierżawie usługi Azure AD | Atrybut grupy w domenie zarządzanej |
 |:--- |:--- |
-| Nazwa wyświetlana |Nazwa wyświetlana |
-| Nazwa wyświetlana |SAMAccountName (czasami może się generowane automatycznie) |
-| Poczty |Poczty |
+| displayName |displayName |
+| displayName |SAMAccountName (czasami może się generowane automatycznie) |
+| poczta |poczta |
 | mailNickname |atrybut msDS-AzureADMailNickname |
 | Identyfikator obiektu |atrybut msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |historii SID |
-| Securityenabled musi |GroupType |
+| securityEnabled |GroupType |
+
+## <a name="password-hash-synchronization-and-security-considerations"></a>Zagadnienia synchronizacji i zabezpieczeń skrótu hasła
+Po włączeniu usług domenowych Azure AD, katalog usługi Azure AD generuje i przechowuje wartości skrótów haseł w formatach zgodne NTLM i Kerberos. 
+
+W przypadku istniejących kont użytkowników chmury ponieważ usługi Azure AD nigdy nie przechowuje swoich haseł w postaci zwykłego tekstu, te wartości skrótu nie można wygenerować automatycznie. Firma Microsoft wymaga [chmury użytkownikom resetowanie/zmienianie haseł](active-directory-ds-getting-started-password-sync.md) w kolejności ich skrótów haseł wygenerowany i przechowywane w usłudze Azure AD. Dla dowolnego konta użytkownika chmurze utworzone w usłudze Azure AD po włączeniu usług domenowych Azure AD skrótów haseł były generowane i przechowywane w formatach zgodne NTLM i Kerberos. 
+
+Dla konta użytkowników są synchronizowane z lokalnej usłudze AD za pomocą usługi Azure AD Sync Connect, musisz [Konfigurowanie usługi Azure AD Connect do synchronizowania skrótów haseł w formatach NTLM i Kerberos zgodny](active-directory-ds-getting-started-password-sync-synced-tenant.md).
+
+Skrótów haseł zgodne NTLM i Kerberos zawsze są przechowywane w sposób zaszyfrowane w usłudze Azure AD. Te skróty są szyfrowane w taki sposób, że tylko usługi domenowe Azure AD ma dostęp do kluczy odszyfrowywania. Nie ma innych usług lub składników w usłudze Azure AD ma dostęp do kluczy odszyfrowywania. Klucze szyfrowania są unikatowe dla usługi Azure AD dzierżawy. Usługi domenowe Azure AD synchronizacji skrótów haseł na kontrolerach domeny dla domeny zarządzanej. Te skróty haseł są przechowywane i zabezpieczane na te kontrolery domeny podobny do sposobu przechowywania haseł i zabezpieczone na kontrolerach domeny systemu Windows Server AD. Dyski dla tych kontrolerów domeny zarządzanej są szyfrowane, gdy.
 
 ## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>Obiekty, które nie są zsynchronizowane z dzierżawą usługi Azure AD z domeny zarządzanej
 Zgodnie z opisem w poprzedniej sekcji tego artykułu, nie istnieje żadne synchronizacji z domeny zarządzanej do dzierżawy usługi Azure AD. Można wybrać opcję [Tworzenie niestandardowej jednostki organizacyjnej (OU)](active-directory-ds-admin-guide-create-ou.md) w domenie zarządzanej. Ponadto można utworzyć jednostek organizacyjnych, użytkownicy, grupy lub konta usług w ramach tych niestandardowych jednostek organizacyjnych. Brak obiektów utworzonych w ramach jednostkami organizacyjnymi niestandardowe są synchronizowane z powrotem dzierżawy usługi Azure AD. Te obiekty są dostępne do użycia tylko w obrębie domeny zarządzanej. W związku z tym te obiekty nie są widoczne, przy użyciu poleceń cmdlet programu PowerShell usługi Azure AD, Azure AD Graph API lub interfejs użytkownika zarządzania usługi Azure AD.

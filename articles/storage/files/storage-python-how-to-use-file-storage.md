@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie plików platformy Azure z Python | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrażać aplikacje Python i usług, które korzystają z plików Azure do przechowywania plików danych."
+title: Tworzenie plików platformy Azure z Python | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrażać aplikacje Python i usług, które korzystają z plików Azure do przechowywania plików danych.
 services: storage
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738265"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Tworzenie plików platformy Azure z języka Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -27,13 +28,13 @@ ms.lasthandoff: 12/08/2017
 
 W tym samouczku przedstawiono podstawy do tworzenia aplikacji lub usługi, które korzystają z plików Azure do przechowywania danych plików za pomocą języka Python. W tym samouczku utworzymy prostej aplikacji konsolowej ją i pokazują, jak wykonywać podstawowe działania z języka Python i plików platformy Azure:
 
-* Tworzenie udziałów plików Azure
+* Tworzenie udziałów plików na platformę Azure
 * Tworzenie katalogów
-* Wyliczanie plików i katalogów w udziale plików Azure
+* Wyliczanie plików i katalogów w udziale plików na platformę Azure
 * Przekazywanie, pobieranie i usuwanie pliku
 
 > [!Note]  
-> Ponieważ pliki Azure mogą uzyskiwać dostęp za pośrednictwem protokołu SMB, istnieje możliwość zapisu proste aplikacje, które uzyskują dostęp do udziału plików platformy Azure przy użyciu standardowych operacji We/Wy Python klasy i funkcje. W tym artykule opisano sposób pisania aplikacji, które używają usługi Azure SDK Python magazynu, która używa [interfejsu API REST plików Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) do komunikowania się do usługi pliki Azure.
+> Ponieważ pliki Azure mogą uzyskiwać dostęp za pośrednictwem protokołu SMB, istnieje możliwość zapisu proste aplikacje, które uzyskują dostęp do udziału plików na platformę Azure przy użyciu standardowych klasy we/wy Python i funkcje. W tym artykule opisano sposób pisania aplikacji, które używają usługi Azure SDK Python magazynu, która używa [interfejsu API REST plików Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) do komunikowania się do usługi pliki Azure.
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Pobierz i zainstaluj magazynu Azure SDK dla języka Python
 
@@ -83,7 +84,7 @@ Możesz również dzielić magazynu przez umieszczenie plików wewnątrz podkata
 file_service.create_directory('myshare', 'sampledir')
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików Azure
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Wyliczanie plików i katalogów w udziale plików na platformę Azure
 Aby wyświetlić listę plików i katalogów w udziale, użyj **listy\_katalogów\_i\_pliki** metody. Ta metoda zwraca generator. Poniższy kod wyjścia **nazwa** z poszczególnych plików i katalogów w udziale, do konsoli.
 
 ```python
@@ -93,11 +94,11 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>Przekazywanie pliku 
-Plik Azure udział zawiera co najmniej, katalog główny, w którym mogą znajdować się pliki. W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
+Udział plików na platformę Azure zawiera co najmniej, katalog główny, w którym mogą znajdować się pliki. W tej sekcji dowiesz się, jak można przekazać pliku z magazynu lokalnego do katalogu głównego udziału.
 
 Aby utworzyć plik i przekazywanie danych, użyj `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` lub `create_file_from_text` metody. Są one wysokiego poziomu metodach podziału niezbędne, gdy rozmiar danych przekroczy 64 MB.
 
-`create_file_from_path`wysyła zawartość pliku z określonej ścieżki i `create_file_from_stream` przekazuje zawartość z otwartego pliku/strumienia. `create_file_from_bytes`przekazuje tablicę bajtów, i `create_file_from_text` przekazuje wartość określony tekst przy użyciu określonego kodowania (wartość domyślna to UTF-8).
+`create_file_from_path` wysyła zawartość pliku z określonej ścieżki i `create_file_from_stream` przekazuje zawartość z otwartego pliku/strumienia. `create_file_from_bytes` przekazuje tablicę bajtów, i `create_file_from_text` przekazuje wartość określony tekst przy użyciu określonego kodowania (wartość domyślna to UTF-8).
 
 Poniższy przykład przekazuje zawartość **sunset.png** pliku do **mój_plik** pliku.
 
@@ -178,7 +179,7 @@ Nie można usunąć udziału, który zawiera migawki, chyba że najpierw zostan�
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz już sposobu modyfikowania plików Azure z języka Python, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
 * [Centrum deweloperów języka Python](/develop/python/)

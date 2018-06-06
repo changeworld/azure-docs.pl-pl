@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: a2225409e4cb50d91c09207ee70b76df12925192
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 57455c5abf8c566f3935ece73d0b7470863936f8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699153"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Samouczek: Użyj użytkownika przypisane zarządzane usługi tożsamości (MSI) na maszynie Wirtualnej systemu Windows, można uzyskać dostępu do usługi Azure Resource Manager
 
@@ -79,8 +80,7 @@ New-AzureRmVm `
 
 Użytkownik, któremu przypisano tożsamości jest tworzony jako autonomiczny zasobów platformy Azure. Przy użyciu [AzureRmUserAssignedIdentity nowy](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity), platforma Azure tworzy tożsamość w dzierżawie usługi Azure AD, który można przypisać do co najmniej jedno wystąpienie usługi Azure.
 
-> [!IMPORTANT]
-> Tworzenie tożsamości użytkowników przypisanych obsługuje tylko alfanumeryczne i łączniki (0-9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków do przypisania do maszyny Wirtualnej/VMSS działała poprawnie. Sprawdzanie dostępności aktualizacji. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
@@ -171,4 +171,7 @@ Odpowiedź zawiera określone informacje grupy zasobów, podobnie do poniższego
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](overview.md).
+W tym samouczku przedstawiono sposób tworzenia użytkownika przypisanego tożsamości i dołącz je do maszyny wirtualnej platformy Azure na dostęp do interfejsu API Azure Resource Manager.  Aby dowiedzieć się więcej o usłudze Azure Resource Manager, zobacz:
+
+> [!div class="nextstepaction"]
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

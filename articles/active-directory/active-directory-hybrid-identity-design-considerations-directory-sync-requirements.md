@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 475b35c767fcc9c42b828dd2219a14890e05f779
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d6749960806e858909f42c6ecccd445ba8d5ec00
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801565"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Określenie wymagań synchronizacji katalogu
 Synchronizacja jest udostępnianie tożsamości w chmurze na podstawie ich tożsamości lokalnych użytkowników. Czy zsynchronizowane konta będzie używany do uwierzytelniania lub uwierzytelnianie federacyjne, użytkownicy będą nadal musi być tożsamości w chmurze.  Ta tożsamość należy utrzymanie i okresowo aktualizowane.  Aktualizacje mogą mieć wiele form, od zmian tytuł do zmiany hasła.  

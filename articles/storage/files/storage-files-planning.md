@@ -1,21 +1,22 @@
 ---
-title: "Planowanie wdrożenia usługi pliki Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia usługi pliki Azure."
+title: Planowanie wdrożenia usługi pliki Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdrożenia usługi pliki Azure.
 services: storage
 author: wmgries
-manager: jeconnoc
+manager: aungoo
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: wgries
-ms.openlocfilehash: 017dd79e2d15fdd98ea020c686857d282bad244e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86c577c23c97939a31551734dab9d45837011ffa
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737398"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
-[Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne przy użyciu standardowego protokołu SMB. Ponieważ pliki Azure jest pełna, jego wdrożeniem w środowisku produkcyjnym scenariuszach jest znacznie prostsze niż wdrażania i zarządzania nimi serwera plików lub urządzenie NAS. W tym artykule opisano tematy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w ramach danej organizacji.
+[Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne przy użyciu standardowego protokołu SMB. Ponieważ pliki Azure jest pełna, jego wdrożeniem w środowisku produkcyjnym scenariuszach jest znacznie prostsze niż wdrażania i zarządzania nimi serwera plików lub urządzenie NAS. W tym artykule opisano tematy wziąć pod uwagę podczas wdrażania na udział plików na platformę Azure do użytku produkcyjnego w ramach danej organizacji.
 
 ## <a name="management-concepts"></a>Pojęcia dotyczące zarządzania
  Na poniższym diagramie przedstawiono konstrukcje zarządzania plików Azure:
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/09/2018
 
 * **Plik**: plik w udziale. Plik może mieć maksymalnie 1 TiB rozmiar.
 
-* **Format adresu URL**: dla żądań kierowanych do udziału plików platformy Azure z protokołem REST pliku, plików mają następujący format adresu URL:
+* **Format adresu URL**: dla żądań kierowanych do udziału plików na platformę Azure z protokołem REST pliku, plików mają następujący format adresu URL:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/directories>/<file>
@@ -39,15 +40,15 @@ ms.lasthandoff: 03/09/2018
 ## <a name="data-access-method"></a>Metoda dostępu do danych
 Azure pliki ofert dwóch metod, której można oddzielnie lub w połączeniu ze sobą, aby uzyskać dostęp do danych dostępu do danych wbudowanych i wygodny:
 
-1. **Bezpośredni dostęp do chmury**: udziału dowolnego pliku Azure może być instalowany przez [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), i/lub [Linux](storage-how-to-use-files-linux.md) z branży standardowego bloku komunikatów serwera (SMB) Protokół lub za pośrednictwem interfejsu API REST pliku. Z protokołem SMB Odczyt i zapis do plików w udziale są dokonywane bezpośrednio na udział plików na platformie Azure. Aby zainstalować przez maszynę Wirtualną na platformie Azure, klient protokołu SMB w systemie operacyjnym musi obsługiwać co najmniej SMB 2.1. Do zainstalowania lokalnie, takie jak na stacji roboczej użytkownika, klient protokołu SMB, obsługiwane przez stacji roboczej musi obsługiwać co najmniej SMB 3.0 (przy użyciu szyfrowania). Oprócz protokołu SMB nowych aplikacji lub usług może bezpośrednio dostęp do udziału plików za pośrednictwem interfejsu REST pliku, która zapewnia interfejs programowania aplikacji łatwego i skalowalnego do rozwoju oprogramowania.
+1. **Bezpośredni dostęp do chmury**: Any Azure udział plików może być instalowany przez [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), i/lub [Linux](storage-how-to-use-files-linux.md) z branży standardowego bloku komunikatów serwera (SMB) Protokół lub za pośrednictwem interfejsu API REST pliku. Z protokołem SMB Odczyt i zapis do plików w udziale są dokonywane bezpośrednio na udział plików na platformie Azure. Aby zainstalować przez maszynę Wirtualną na platformie Azure, klient protokołu SMB w systemie operacyjnym musi obsługiwać co najmniej SMB 2.1. Do zainstalowania lokalnie, takie jak na stacji roboczej użytkownika, klient protokołu SMB, obsługiwane przez stacji roboczej musi obsługiwać co najmniej SMB 3.0 (przy użyciu szyfrowania). Oprócz protokołu SMB nowych aplikacji lub usług może bezpośrednio dostęp do udziału plików za pośrednictwem interfejsu REST pliku, która zapewnia interfejs programowania aplikacji łatwego i skalowalnego do rozwoju oprogramowania.
 2. **Synchronizacja programu Azure pliku** (wersja zapoznawcza): Azure synchronizacji plików, udziały mogą być replikowane do serwerów z systemem Windows lokalnego lub na platformie Azure. Użytkownicy będą dostęp do udziału plików, za pośrednictwem systemu Windows Server, takich jak za pośrednictwem protokołu SMB lub NFS w udziale. Jest to przydatne w scenariuszach, w których danych można uzyskać dostępu do i zmodyfikować daleko od centrum danych Azure, takich jak w przypadku oddziału firmy. Dane mogą być replikowane między wiele systemu Windows Server punktów końcowych, takich jak między wielu oddziałów. Na koniec danych może należeć do warstwy do usługi pliki Azure, tak, aby wszystkie dane są nadal dostępne za pośrednictwem serwera, ale serwer nie ma pełną kopię danych. Zamiast dane są bezproblemowo wywoływane po otwarciu przez użytkownika.
 
 W poniższej tabeli przedstawiono, jak użytkowników i aplikacji dostęp do udziału plików platformy Azure:
 
 | | Dostęp bezpośredni chmury | Usługa Azure File Sync |
 |------------------------|------------|-----------------|
-| Jakie protokoły musisz użyć? | Usługa pliki Azure obsługuje protokół SMB 2.1, SMB 3.0 i interfejsu API REST plików. | Dostęp do udziału plików Azure za pomocą dowolnego protokołu obsługiwanych w systemie Windows Server (protokół SMB, systemu plików NFS, FTPS itp.) |  
-| Gdy używasz Twoje obciążenie? | **Na platformie Azure**: plików Azure oferuje bezpośredni dostęp do danych. | **Lokalnej z wolną sieć**: klientów systemu Windows, Linux i macOS można zainstalować lokalnie lokalnego udziału plików systemu Windows jako szybkiego pamięci podręcznej udziału plików platformy Azure. |
+| Jakie protokoły musisz użyć? | Usługa pliki Azure obsługuje protokół SMB 2.1, SMB 3.0 i interfejsu API REST plików. | Dostęp do udziału plików platformy Azure za pomocą dowolnego protokołu obsługiwanych w systemie Windows Server (protokół SMB, systemu plików NFS, FTPS itp.) |  
+| Gdy używasz Twoje obciążenie? | **Na platformie Azure**: plików Azure oferuje bezpośredni dostęp do danych. | **Lokalnej z wolną sieć**: klientów systemu Windows, Linux i macOS można zainstalować lokalnie lokalnego udziału plików systemu Windows jako szybkiego pamięci podręcznej udziału plików na platformę Azure. |
 | Jaki poziom kontroli dostępu potrzebujesz? | Poziom udziału i plików. | Poziom udziału plików i użytkowników. |
 
 ## <a name="data-security"></a>Bezpieczeństwo danych
@@ -80,15 +81,15 @@ Usługa pliki Azure obsługuje trzy opcje nadmiarowości danych: Magazyn lokalni
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu danych
-Obecnie maksymalny rozmiar udziału plików platformy Azure jest TiB 5, w tym udziale migawki. Ze względu na to aktualne ograniczenie wdrażając udział plików Azure należy wziąć pod uwagę wzrost oczekiwane dane. Należy pamiętać, że konto usługi Azure Storage można przechowywać wiele udziałów w sumie 500 TiB przechowywane we wszystkich udziałów.
+Obecnie maksymalny rozmiar udziału plików na platformę Azure jest TiB 5, w tym udziale migawki. Ze względu na to aktualne ograniczenie wdrażając udziału plików na platformę Azure należy wziąć pod uwagę wzrost oczekiwane dane. Należy pamiętać, że konto usługi Azure Storage można przechowywać wiele udziałów w sumie 500 TiB przechowywane we wszystkich udziałów.
 
-Istnieje możliwość synchronizacji wiele udziałów plików Azure z jednym serwerem plików systemu Windows z synchronizacji plików Azure. Dzięki temu można zapewnić, że udziały plików starszych, bardzo dużych wiążące lokalnymi mogą być wprowadzane do synchronizacji usługi Azure pliku. Zobacz [planowania wdrożenia synchronizacji plików Azure](storage-files-planning.md) Aby uzyskać więcej informacji.
+Istnieje możliwość synchronizacji wielu plików na platformę Azure udostępnia do jednego serwera plików systemu Windows za pomocą synchronizacji plików Azure. Dzięki temu można zapewnić, że udziały plików starszych, bardzo dużych wiążące lokalnymi mogą być wprowadzane do synchronizacji usługi Azure pliku. Zobacz [planowania wdrożenia synchronizacji plików Azure](storage-files-planning.md) Aby uzyskać więcej informacji.
 
 ## <a name="data-transfer-method"></a>Transfer danych — metoda
 Istnieje wiele opcji łatwy do zbiorczego transferu danych z istniejącego pliku udostępnić, takie jak udział pliku lokalnego do usługi pliki Azure. Kilka najpowszechniejsze są (niepełna lista):
 
-* **Synchronizacja programu Azure pliku**: W ramach pierwszej synchronizacji między udziału plików platformy Azure ("punktu końcowego w chmurze") i nazw katalogu systemu Windows ("punkt końcowy serwera"), synchronizacji plików Azure zostaną zreplikowane wszystkie dane z istniejącego udziału plików do usługi pliki Azure.
-* **[Import/Eksport Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Usługa Import/Eksport Azure umożliwia bezpieczne transfer dużych ilości danych do udziału plików platformy Azure poprzez wysyłanie dysków twardych do centrum danych Azure. 
+* **Synchronizacja programu Azure pliku**: W ramach pierwszej synchronizacji między udział plików na platformę Azure ("punktu końcowego w chmurze") i nazw katalogu systemu Windows ("punkt końcowy serwera"), synchronizacji plików Azure zostaną zreplikowane wszystkie dane z istniejącego udziału plików do usługi pliki Azure.
+* **[Import/Eksport Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Usługa Import/Eksport Azure umożliwia bezpieczne transfer dużych ilości danych do udziału plików na platformę Azure poprzez wysyłanie dysków twardych do centrum danych Azure. 
 * **[ROBOCOPY](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy jest narzędziem dobrze znanych kopiowania jest dostarczana z systemem Windows i Windows Server. ROBOCOPY może służyć do przesyłania danych do usługi pliki Azure instalowanie udziału plików lokalnie, a następnie używając lokalizacji zainstalowanego jako miejsce docelowe polecenia Robocopy.
 * **[Narzędzie AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: narzędzie AzCopy to narzędzie wiersza polecenia przeznaczone do kopiowania danych z magazynu obiektów Blob platformy Azure, a także pliki Azure przy użyciu prostych poleceń z optymalną wydajnością. Narzędzie AzCopy jest dostępna dla systemów Windows i Linux.
 

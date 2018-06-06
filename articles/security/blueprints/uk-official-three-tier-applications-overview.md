@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abacea02ee40cf899b58ab1fe4ac454784ff7d18
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757199"
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web oficjalnego UK trójwarstwowej
 
@@ -148,7 +149,7 @@ Magazyn
 
 **Bramą internetową i publiczny adres IP**: bramą internetową udostępnia usługi aplikacji użytkownikom za pośrednictwem Internetu. Dostęp do tych usług ruchu jest zabezpieczone przy użyciu [brama aplikacji w](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) oferty warstwy 7 routingu i możliwości z ochroną zaporą (WAF) aplikacji sieci web równoważenia obciążenia.
 
-**Zarządzanie sieciami wirtualnymi**: to [sieci wirtualnej](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) zawiera zasoby, które implementuje zarządzania i monitorowania możliwości dla obciążeń działających w środowisku produkcyjnym sieci wirtualnej.
+**Zarządzanie sieciami wirtualnymi**: to [sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) zawiera zasoby, które implementuje zarządzania i monitorowania możliwości dla obciążeń działających w środowisku produkcyjnym sieci wirtualnej.
 
 **Jumpbox**: nazywane również [hosta bastionu](https://en.wikipedia.org/wiki/Bastion_host), która jest bezpiecznej maszyny Wirtualnej w sieci, w której administratorzy mogą używać do nawiązania połączenia maszyn wirtualnych w środowisku produkcyjnym sieci wirtualnej. Rampa zawiera sieciową grupę zabezpieczeń, która zezwala na zdalny ruch z publicznych adresów IP znajdujących się na liście bezpiecznych adresów. Aby zezwolić na zdalny pulpitu ruch (RDP), źródło ruchu musi być zdefiniowana w grupie NSG. Zarządzanie zasobami produkcji jest za pomocą protokołu RDP przy użyciu zabezpieczonych Jumpbox maszyny Wirtualnej.
 

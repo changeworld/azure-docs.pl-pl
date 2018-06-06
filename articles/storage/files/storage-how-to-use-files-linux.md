@@ -1,27 +1,28 @@
 ---
-title: "Usługa pliki Azure za pomocą systemu Linux | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zainstalować udział plików na platformę Azure przy użyciu protokołu SMB w systemie Linux."
+title: Usługa pliki Azure za pomocą systemu Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować udział plików na platformę Azure przy użyciu protokołu SMB w systemie Linux.
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: 6edc37ce-698f-4d50-8fc1-591ad456175d
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: cca0d315a815faca5db07099b8e8e451ef55fad5
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 667f385e4f157a5e1b9fcaf47b25619eafa8e9e3
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738248"
 ---
 # <a name="use-azure-files-with-linux"></a>Użyj plików platformy Azure z systemem Linux
-[Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można zainstalować w dystrybucje systemu Linux przy użyciu [CIFS jądra klienta](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwie metody, aby zainstalować udział plików na platformę Azure: na żądanie z `mount` polecenia i na rozruchu, tworząc wpis w `/etc/fstab`.
+[Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można zainstalować w dystrybucje systemu Linux przy użyciu [klienta SMB z jądra](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwie metody, aby zainstalować udział plików na platformę Azure: na żądanie z `mount` polecenia i na rozruchu, tworząc wpis w `/etc/fstab`.
 
 > [!NOTE]  
 > Aby zainstalować udział plików na platformę Azure poza region platformy Azure, który jest obsługiwany w, takich jak lokalnie lub w innym regionie Azure, system operacyjny musi obsługiwać funkcje szyfrowania protokołu SMB 3.0.
@@ -42,21 +43,21 @@ ms.lasthandoff: 01/19/2018
 
     Na **Ubuntu** i **na podstawie Debian** dystrybucji, użyj `apt-get` Menedżera pakietów:
 
-    ```
+    ```bash
     sudo apt-get update
     sudo apt-get install cifs-utils
     ```
 
     Na **RHEL** i **CentOS**, użyj `yum` Menedżera pakietów:
 
-    ```
-    sudo yum install samba-client samba-common cifs-utils
+    ```bash
+    sudo yum install cifs-utils
     ```
 
     Na **openSUSE**, użyj `zypper` Menedżera pakietów:
 
-    ```
-    sudo zypper install samba*
+    ```bash
+    sudo zypper install cifs-utils
     ```
 
     W innych dystrybucji przy użyciu Menedżera odpowiedniego pakietu lub [Kompiluj ze źródła](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
@@ -72,7 +73,7 @@ ms.lasthandoff: 01/19/2018
     
     Jeśli dystrybucji systemu Linux nie ma na liście, można sprawdzić, aby wyświetlić wersję jądra systemu Linux przy użyciu następującego polecenia:
 
-    ```
+    ```bash
     uname -r
     ```
 
@@ -84,37 +85,56 @@ ms.lasthandoff: 01/19/2018
 
 * **Upewnij się, jest otwarty port 445**: SMB komunikuje się za pośrednictwem portu TCP 445 — Sprawdź, czy Zapora nie blokuje TCP, porty 445 z komputera klienta.
 
-## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Instalowanie plików na platformę Azure udziału na żądanie z`mount`
+## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Instalowanie plików na platformę Azure udziału na żądanie z `mount`
 1. **[Zainstaluj pakiet cifs witryny dla dystrybucji systemu Linux](#install-cifs-utils)**.
 
 2. **Utwórz folder na potrzeby punktu instalacji**: folder punkt instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typowe Konwencji, aby je utworzyć w obszarze `/mnt` folderu. Na przykład:
 
-    ```
+    ```bash
     mkdir /mnt/MyAzureFileShare
     ```
 
 3. **Aby zainstalować udział plików na platformę Azure za pomocą polecenia instalacji**: Pamiętaj, aby zastąpić `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>`, i `<mount-point>` odpowiednie informacje dla danego środowiska. W przypadku dystrybucji systemu Linux obsługuje protokół SMB 3.0 przy użyciu szyfrowania (zobacz [wymagania dotyczące klienta SMB zrozumieć](#smb-client-reqs) Aby uzyskać więcej informacji), użyj `3.0` dla `<smb-version>`. Dystrybucje systemu Linux, które nie obsługują protokołu SMB 3.0 z szyfrowaniem, można użyć `2.1` dla `<smb-version>`. Należy pamiętać, że udział plików na platformę Azure może być instalowany tylko poza region platformy Azure (łącznie z lokalnymi lub w innym regionie Azure) z protokołem SMB 3.0. 
 
-    ```
+    ```bash
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
 > Po zakończeniu korzystania z udziału plików na platformę Azure, możesz użyć `sudo umount <mount-point>` odinstalował udziału.
 
-## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Utwórz punkt trwałej z udziału plików na platformę Azure`/etc/fstab`
+## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Utwórz punkt trwałej z udziału plików na platformę Azure `/etc/fstab`
 1. **[Zainstaluj pakiet cifs witryny dla dystrybucji systemu Linux](#install-cifs-utils)**.
 
 2. **Utwórz folder na potrzeby punktu instalacji**: folder punkt instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typowe Konwencji, aby je utworzyć w obszarze `/mnt` folderu. Wszędzie tam, gdzie można utworzyć, należy zwrócić uwagę na bezwzględną ścieżkę do folderu. Na przykład następujące polecenie tworzy nowy folder na `/mnt` (ścieżka jest ścieżką bezwzględną).
 
-    ```
+    ```bash
     sudo mkdir /mnt/MyAzureFileShare
     ```
 
-3. **Użyj następującego polecenia, aby dołączyć następujący wiersz do `/etc/fstab`** : Pamiętaj, aby zastąpić `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>`, i `<mount-point>` odpowiednie informacje dla użytkownika środowisko. W przypadku dystrybucji systemu Linux obsługuje protokół SMB 3.0 przy użyciu szyfrowania (zobacz [wymagania dotyczące klienta SMB zrozumieć](#smb-client-reqs) Aby uzyskać więcej informacji), użyj `3.0` dla `<smb-version>`. Dystrybucje systemu Linux, które nie obsługują protokołu SMB 3.0 z szyfrowaniem, można użyć `2.1` dla `<smb-version>`. Należy pamiętać, że udział plików na platformę Azure może być instalowany tylko poza region platformy Azure (łącznie z lokalnymi lub w innym regionie Azure) z protokołem SMB 3.0. 
+3. **Utwórz plik poświadczeń do przechowywania nazwy użytkownika (nazwy konta magazynu) i hasło (klucz konta magazynu) dla udziału plików.** Pamiętaj, aby zastąpić `<storage-account-name>` i `<storage-account-key>` odpowiednie informacje dla danego środowiska. 
 
+    ```bash
+    if [ -d "/etc/smbcredentials" ]; then
+        sudo mkdir /etc/smbcredentials
+    fi
+
+    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
+        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
+        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    fi
     ```
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+4. **Zmień uprawnienia do pliku poświadczeń, aby tylko głównego mogą odczytywać lub modyfikować pliku haseł.** Ponieważ klucz konta magazynu jest zasadniczo hasło administratora nadtypem dla konta magazynu, ustawienie uprawnień dla pliku, który w taki sposób, że tylko główny mogą uzyskiwać dostęp do ważne jest, aby niższe uprawnienia użytkowników nie może pobrać klucz konta magazynu.   
+
+    ```bash
+    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    ```
+
+5. **Użyj następującego polecenia, aby dołączyć następujący wiersz do `/etc/fstab`** : Pamiętaj, aby zastąpić `<storage-account-name>`, `<share-name>`, `<smb-version>`, i `<mount-point>` odpowiednie informacje dla danego środowiska. W przypadku dystrybucji systemu Linux obsługuje protokół SMB 3.0 przy użyciu szyfrowania (zobacz [wymagania dotyczące klienta SMB zrozumieć](#smb-client-reqs) Aby uzyskać więcej informacji), użyj `3.0` dla `<smb-version>`. Dystrybucje systemu Linux, które nie obsługują protokołu SMB 3.0 z szyfrowaniem, można użyć `2.1` dla `<smb-version>`. Należy pamiętać, że udział plików na platformę Azure może być instalowany tylko poza region platformy Azure (łącznie z lokalnymi lub w innym regionie Azure) z protokołem SMB 3.0. 
+
+    ```bash
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-key>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  
@@ -128,6 +148,6 @@ Pliki Azure dla grupy Użytkownicy systemu Linux udostępnia forum można udost�
 ## <a name="next-steps"></a>Kolejne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files.
 * [Wprowadzenie do platformy Azure pliki](storage-files-introduction.md)
-* [Planowanie wdrożenia usługi pliki Azure](storage-files-planning.md)
+* [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 * [Często zadawane pytania](../storage-files-faq.md)
 * [Rozwiązywanie problemów](storage-troubleshoot-linux-file-connection-problems.md)

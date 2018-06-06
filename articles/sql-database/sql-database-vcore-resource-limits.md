@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 05/15/2018
+ms.topic: conceptual
+ms.date: 05/31/2018
 ms.author: carlrab
-ms.openlocfilehash: d225af55a705d56a94bb0e8dcfcc938b64f3633a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 324f9f35de37c717d57e46413cd881dce785f4fd
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737667"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Azure SQL Database vCore na podstawie zakupu limity modelu (wersja zapoznawcza)
 
@@ -49,11 +50,11 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48| GP_Gen5_80|
+|Poziom wydajności|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Generowanie H/W|5|5|5|5|5|5|5|
-|Rdzenie wirtualne|2|4|8|16|24|32|48|80|
-|Pamięć (GB)|11|22|44|88|132|176|264|440|
+|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
+|Pamięć (GB)|11|22|44|88|132|176|220|440|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|ND|
 |Typ magazynu|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|
@@ -62,7 +63,7 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 |Maksymalny rozmiar dziennika|307|307|461|614|1229|1229|1229|1229|
 |Bazy danych TempDB size(DB)|64|128|256|384|384|384|384|384|
 |Docelowy IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
-|Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|2400|3200|4800|8000|
+|Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|1|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
@@ -89,28 +90,28 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 |Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Liczba replik|3|3|3|3|3|3|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|Poziom wydajności|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H/W|5|5|5|5|5|5|5|5|
-|Rdzenie wirtualne|2|4|8|16|24|32|48|80|
-|Pamięć (GB)|11|22|44|88|132|176|264|440|
+|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
+|Pamięć (GB)|11|22|44|88|132|176|220|440|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Magazyn OLTP w pamięci (GB)|1.571|3,142|6.284|15.768|25.252|37.936|68.104|131.64|
+|Magazyn OLTP w pamięci (GB)|1.571|3,142|6.284|15.768|25.252|37.936|52.22|131.64|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
 |Maksymalny rozmiar dziennika|307|307|307|307|614|1229|1229|1229|
 |Bazy danych TempDB size(DB)|64|128|256|384|384|384|384|384|
-|Docelowy IOPS (64 KB)|5000|10 000|20000|40000|60000|80000|120000|200000
-|Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|2400|3200|4800|8000|
+|Docelowy IOPS (64 KB)|5000|10 000|20000|40000|60000|80000|100000|200000
+|Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
-|Liczba replik|1|1|1|1|1|1|1|1|
+|Liczba replik|3|3|3|3|3|3|3|3|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|ND|
 |Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
@@ -174,11 +175,11 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48|GP_Gen5_80|
+|Poziom wydajności|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H/W|5|5|5|5|5|5|5|5|
-|Rdzenie wirtualne|2|4|8|16|24|32|48|80|
-|Pamięć (GB)|11|22|44|88|132|176|264|440|
+|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
+|Pamięć (GB)|11|22|44|88|132|176|220|440|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|ND|
 |Typ magazynu|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|Magazyn w warstwie Premium (zdalnego)|
@@ -187,10 +188,10 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 |Bazy danych TempDB size(DB)|64|128|256|384|384|384|384|384|
 |Docelowy IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|ms 5-7 (Zapisz)<br>5 – 10 ms (odczyt)|
-|Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|210|420|840|1680|2520|3360|5040|8400
+|Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|210|420|840|1680|2520|3360|4200|8400
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba gęstość puli|100|200|500|500|500|500|500|500|
-|Kliknij przycisk puli elastycznej min/max zatrzymuje|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Kliknij przycisk puli elastycznej min/max zatrzymuje|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Liczba replik|1|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|ND|
@@ -217,30 +218,32 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba gęstość puli|ND|50|100|100|100|100|
 |Kliknij przycisk puli elastycznej min/max zatrzymuje|ND|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Liczba replik|3|3|3|3|3|3|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|Poziom wydajności|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H/W|5|5|5|5|5|5|5|5|
-|Rdzenie wirtualne|2|4|8|16|24|32|48|80|
-|Pamięć (GB)|11|22|44|88|132|176|264|440|
+|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
+|Pamięć (GB)|11|22|44|88|132|176|220|440|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Magazyn OLTP w pamięci (GB)|1.571|3,142|6.284|15.768|25.252|37.936|68.104|131.64|
+|Magazyn OLTP w pamięci (GB)|1.571|3,142|6.284|15.768|25.252|37.936|52.22|131.64|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |We/Wy, czas oczekiwania (w przybliżeniu)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|ms 1 i 2 (Zapisz)<br>ms 1 i 2 (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
 |Maksymalny rozmiar dziennika|307|307|307|307|614|1229|1229|1229|
 |Bazy danych TempDB size(DB)|64|128|256|384|384|384|384|384|
-|Docelowy IOPS (64 KB)|5000|10 000|20000|40000|60000|80000|120000|200000
+|Docelowy IOPS (64 KB)|5000|10 000|20000|40000|60000|80000|100000|200000
 |Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)|210|420|840|1680|2520|3360|5040|8400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba gęstość puli|ND|50|100|100|100|100|100|100|
-|Kliknij przycisk puli elastycznej min/max zatrzymuje|ND|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
-|Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Kliknij przycisk puli elastycznej min/max zatrzymuje|ND|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Liczba replik|3|3|3|3|3|3|3|3|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględnione magazynu kopii zapasowej|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|Rozmiar bazy danych X 1|
 |||

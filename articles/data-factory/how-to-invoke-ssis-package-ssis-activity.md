@@ -1,6 +1,6 @@
 ---
-title: Uruchom pakiet SSIS za pomocą działania SSIS w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) z potoku fabryki danych Azure za pomocą działania SSIS.
+title: Uruchom pakiet SSIS przy użyciu wykonania działania pakietu SSIS w fabryce danych Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) z potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,20 +9,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 04/17/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 6c8bbe7ef7f74638b978cdad5b59a89fd81d12a5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fed4e10fcaaa5282c37b175f355b94522c3b2b46
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700489"
 ---
-# <a name="run-an-ssis-package-using-the-ssis-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS za pomocą działania SSIS w fabryce danych Azure
-W tym artykule opisano sposób uruchamiania pakietów SSIS z potoku fabryki danych Azure za pomocą działania SSIS. 
+# <a name="run-an-ssis-package-using-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchom pakiet SSIS za pomocą działania wykonanie pakietu usług SSIS w fabryce danych Azure
+W tym artykule opisano sposób uruchamiania pakietów SSIS z potoku fabryki danych Azure za pomocą działania wykonanie pakietu usług SSIS. 
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Działanie usług SSIS nie jest dostępna w wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA). Alternatywne metody do uruchamiania pakietów SSIS wersji 1 usługi fabryka danych, zobacz [pakietów SSIS Uruchom za pomocą działania procedury składowanej w wersji 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
+> Ten artykuł dotyczy wersji 2 usługi Data Factory, która jest obecnie dostępna w wersji zapoznawczej. Działanie wykonanie pakietu usług SSIS nie jest dostępna w wersji 1 usługi fabryka danych, która jest ogólnie dostępna (GA). Alternatywne metody do uruchamiania pakietów SSIS wersji 1 usługi fabryka danych, zobacz [pakietów SSIS Uruchom za pomocą działania procedury składowanej w wersji 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +34,7 @@ Wskazówki w tym artykule używa bazy danych Azure SQL katalogiem usług SSIS. M
 Tworzenie środowiska uruchomieniowego integracji usług SSIS Azure, jeśli nie masz, wykonując instrukcje krok po kroku w [samouczek: pakiety wdrażania usług SSIS](tutorial-create-azure-ssis-runtime-portal.md).
 
 ## <a name="data-factory-ui-azure-portal"></a>Fabryka danych interfejsu użytkownika (Azure portal)
-W tej sekcji służy do utworzyć potok fabryki danych z działaniem SSIS uruchomioną pakietów SSIS interfejsu użytkownika z fabryki danych.
+W tej sekcji służy do utworzyć potok fabryki danych z uruchomionym pakietów SSIS działanie wykonanie pakietu usług SSIS interfejsu użytkownika z fabryki danych.
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 Pierwszym krokiem jest tworzenie fabryki danych przy użyciu portalu Azure. 
@@ -69,8 +70,8 @@ Pierwszym krokiem jest tworzenie fabryki danych przy użyciu portalu Azure.
     ![Strona główna fabryki danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kliknij kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić interfejs użytkownika usługi Azure Data Factory. 
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>Tworzenie potoku do działania SSIS
-W tym kroku używasz interfejsu użytkownika z fabryki danych do utworzenia potoku. Należy dodać działanie SSIS do potoku i skonfigurować je do uruchamiania pakietów SSIS. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Tworzenie potoku do działania wykonanie pakietu usług SSIS
+W tym kroku używasz interfejsu użytkownika z fabryki danych do utworzenia potoku. Należy dodać działanie wykonanie pakietu usług SSIS do potoku i skonfigurować je do uruchamiania pakietów SSIS. 
 
 1. W strony wprowadzenie, kliknij przycisk **tworzenie potoku**: 
 
@@ -79,17 +80,23 @@ W tym kroku używasz interfejsu użytkownika z fabryki danych do utworzenia poto
 
    ![Przeciągnij działanie SSIS powierzchnię projektanta](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-3. Na **ogólne** kartę właściwości działania SSIS, podaj nazwę i opis dla działania. Ustaw limit czasu opcjonalne, a następnie ponów wartości.
+3. Na **ogólne** kartę właściwości działania wykonanie pakietu usług SSIS, podaj nazwę i opis dla działania. Ustaw limit czasu opcjonalne, a następnie ponów wartości.
 
     ![Ustaw właściwości na karcie Ogólne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. Na **ustawienia** kartę właściwości SSIS działania, wybierz środowisko uruchomieniowe integracji usług SSIS Azure skojarzony z `SSISDB` bazy danych, gdy pakiet jest wdrażany. Podaj ścieżkę pakietu w `SSISDB` bazy danych w formacie `<folder name>/<project name>/<package name>.dtsx`. Opcjonalnie określ wykonywania 32-bitowe i poziom rejestrowania wstępnie zdefiniowanych lub niestandardowych i podaj ścieżkę środowiska w formacie `<folder name>/<environment name>`.
+4. Na **ustawienia** na karcie właściwości pakietu SSIS wykonania działania, wybierz środowiska uruchomieniowego integracji usług SSIS Azure skojarzony z `SSISDB` bazy danych, gdy pakiet jest wdrażany. Podaj ścieżkę pakietu w `SSISDB` bazy danych w formacie `<folder name>/<project name>/<package name>.dtsx`. Opcjonalnie określ wykonywania 32-bitowe i poziom rejestrowania wstępnie zdefiniowanych lub niestandardowych i podaj ścieżkę środowiska w formacie `<folder name>/<environment name>`.
 
     ![Ustaw właściwości na karcie Ustawienia](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
 5. Aby sprawdzić poprawność konfiguracji potoku, kliknij przycisk **weryfikacji** na pasku narzędzi. Aby zamknąć okno **Raport weryfikacji potoku**, kliknij pozycję **>>**.
 
 6. Publikowanie potoku fabryki danych, klikając **publikowania wszystkich** przycisku. 
+
+### <a name="optionally-parameterize-the-activity"></a>Opcjonalnie parametryzacja działania
+
+Opcjonalnie można przypisać wartości, wyrażenia lub funkcje, które mogą odwoływać się do fabryki danych zmienne systemowe, aby parametry projektu lub pakietu w formacie JSON na **zaawansowane** kartę. Na przykład można przypisać parametry potoku fabryki danych do projektu SSIS lub pakietu parametrów, jak pokazano na poniższym zrzucie ekranu:
+
+![Dodawanie parametrów do działania wykonanie pakietu usług SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>Uruchomić i monitorować potoku
 W tej sekcji wyzwalanie wykonywania potoku, a następnie monitorować go. 
@@ -99,15 +106,16 @@ W tej sekcji wyzwalanie wykonywania potoku, a następnie monitorować go.
     ![Wyzwól teraz](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
 2. W oknie **Uruchomienie potoku** wybierz pozycję **Zakończ**. 
+
 3. Przejdź do karty **Monitorowanie** po lewej stronie. Zostanie wyświetlony potoku uruchamiania i jego stan oraz innych informacji (na przykład czas uruchomienia Start). Aby odświeżyć widok, kliknij przycisk **Odśwież**.
 
     ![Uruchomienia potoków](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-3. Kliknij link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Użytkownik widzi tylko jedno działanie Uruchom jako potoku ma tylko jedno działanie (działanie SSIS).
+4. Kliknij link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Użytkownik widzi tylko jedno działanie Uruchom jako potoku ma tylko jedno działanie (działanie wykonanie pakietu usług SSIS).
 
     ![Uruchomienia działania](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-4. Można uruchomić następujące **zapytania** względem bazy danych SSISDB bazy danych na serwerze Azure SQL, aby sprawdzić, czy pakiet wykonywane. 
+5. Można uruchomić następujące **zapytania** względem bazy danych SSISDB bazy danych na serwerze Azure SQL, aby sprawdzić, czy pakiet wykonywane. 
 
     ```sql
     select * from catalog.executions
@@ -115,6 +123,9 @@ W tej sekcji wyzwalanie wykonywania potoku, a następnie monitorować go.
 
     ![Sprawdź wykonaniami pakietu](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
+6. Można również Pobierz identyfikator wykonywania SSISDB z danych wyjściowych wykonywania działania potoku i użyj identyfikator, aby sprawdzić bardziej szczegółowe dzienniki wykonywania i komunikaty o błędach w programie SSMS.
+
+    ![Pobierz identyfikator wykonania.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
 > [!NOTE]
 > Można również tworzyć wyzwalacz zaplanowane do potoku sieci, dzięki czemu potoku działa zgodnie z harmonogramem (co godzinę, codziennie, itp.). Na przykład zobacz [tworzenie fabryki danych - UI fabryki danych](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
@@ -300,6 +311,8 @@ while ($True) {
 }   
 ```
 
+Można również monitorować potoku przy użyciu portalu Azure. Aby uzyskać instrukcje, zobacz [monitorować potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+
 ### <a name="create-a-trigger"></a>Tworzenie wyzwalacza
 W poprzednim kroku uruchomiono potoku na żądanie. Można również utworzyć wyzwalacz harmonogramu uruchamiania potoku zgodnie z harmonogramem (co godzinę, codziennie, itp.).
 
@@ -369,4 +382,5 @@ W poprzednim kroku uruchomiono potoku na żądanie. Można również utworzyć w
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Można również monitorować potoku przy użyciu portalu Azure. Aby uzyskać instrukcje, zobacz [monitorować potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+Zobacz następującym wpisie w blogu:
+-   [Modernizacji i rozszerzanie przepływy pracy ETL/ELT z działaniami SSIS w potokach ADF](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)

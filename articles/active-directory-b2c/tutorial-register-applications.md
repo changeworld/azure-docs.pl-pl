@@ -2,20 +2,20 @@
 title: Samouczek - zarejestrować swoje aplikację w celu włączenia zapisywania się i zaloguj się przy użyciu Azure Active Directory B2C | Dokumenty Microsoft
 description: Azure umożliwia tworzenie dzierżawy Azure AD B2C i zarejestrowanie aplikacji z nim.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: patricka
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: davidmu
-ms.openlocfilehash: 81ab3288d7a365c2665b3b38ca220a3e7cb648c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: ebfe4a2d8c6a5b1d5334034e406131fac81f0c19
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713902"
 ---
 # <a name="tutorial-register-an-application-to-enable-sign-up-and-sign-in-using-azure-active-directory-b2c"></a>Samouczek: Rejestrowania aplikacji umożliwienie zapisywania się i zaloguj się przy użyciu Azure Active Directory B2C
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 065ac8b2e9cb48408c7922a1937e541521ccd8cf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 93ecd0264413e0eb719c9d33f0a0b756bcee6552
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726452"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
@@ -31,7 +32,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
 Konta, zaloguj się do lub z usługą Azure, musi być przypisany do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania na liście [uprawnień ](#permissions).
@@ -93,6 +94,8 @@ Podsieć może mieć zero lub jedną tabelę tras skojarzony. Tabela tras może 
 3. Wybierz **podsieci** w obszarze **ustawienia**.
 4. Wybierz podsieć, chcesz skojarzyć tabeli tras.
 5. Wybierz **tabeli tras**, wybierz tabelę routingu, które chcesz skojarzyć z podsiecią, a następnie wybierz **zapisać**.
+
+Jeśli w Twojej sieci wirtualnej jest podłączony do bramy sieci VPN platformy Azure, nie należy kojarzyć tabelę tras do [podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasy z docelowym 0.0.0.0/0. W ten sposób może spowodować nieprawidłowe działanie bramy. Aby uzyskać więcej informacji o używaniu 0.0.0.0/0 w trasy, zobacz [routingu ruchu sieciowego wirtualnej](virtual-networks-udr-overview.md#default-route).
 
 **Polecenia**
 
@@ -159,7 +162,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 - Azure CLI: [listy trasy tabeli tras sieciowych az](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
-## <a name="view-details-of-a-route"></a>Wyświetl szczegóły trasy
+## <a name="view-details-of-a-route"></a>Wyświetlanie szczegółów trasy
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *tabel tras* w polu wyszukiwania. Gdy **tabel tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras, który chcesz wyświetlić szczegółowe informacje o trasie dla.
@@ -216,7 +219,7 @@ Skuteczne trasy dla każdego interfejsu sieciowego dołączony do maszyny wirtua
 
 Można określić typ następnego przeskoku między maszyną wirtualną i adresu IP innego zasobów platformy Azure, zasób lokalną lub zasobów w Internecie. Określanie Azure routingu jest przydatne podczas rozwiązywania problemów z routingiem. Aby wykonać to zadanie, musi mieć istniejący obserwatora sieciowego. Jeśli nie masz istniejących obserwatora sieciowego, utwórz go, wykonując kroki opisane w [utworzyć wystąpienia obserwatora sieciowego](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *obserwatora sieciowego* w polu wyszukiwania. Gdy **obserwatora sieciowego** pojawia się w wynikach wyszukiwania, wybierz go.
+1. W polu wyszukiwania w górnej części portalu wprowadź *obserwatora sieciowego* w polu wyszukiwania. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 2. Wybierz **następnego przeskoku** w obszarze **narzędzia diagnostyczne sieci**.
 3. Wybierz użytkownika **subskrypcji** i **grupy zasobów** dla źródłowej maszyny wirtualnej chcesz zweryfikować routingu z.
 4. Wybierz **maszyny wirtualnej**, **interfejsu sieciowego** dołączony do maszyny wirtualnej i **źródłowy adres IP** przypisany do interfejsu sieciowego, który chcesz zweryfikować Routing z.

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0303f16de143247ac30a7dd4773b4da11f29c9d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736191"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Dodaj właścicieli i użytkowników w usłudze Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -60,25 +61,27 @@ W poniższej tabeli przedstawiono akcje, które mogą być wykonywane przez uży
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>Dodawanie właściciela lub użytkownika na poziomie laboratorium
-Właściciele i użytkowników można dodać na poziomie laboratorium za pośrednictwem portalu Azure. Dotyczy to również użytkowników zewnętrznych z prawidłowym [konta Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
+Właściciele i użytkowników można dodać na poziomie laboratorium za pośrednictwem portalu Azure. Użytkownik może być użytkownik zewnętrzny z prawidłowym [konta Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 Poniższe kroki ułatwiają dodawanie właściciela lub użytkowników do laboratorium w usłudze Azure DevTest Labs:
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkie usługi**, a następnie wybierz **DevTest Labs** z listy.
 3. Z listy labs wybierz żądany laboratorium.
-4. W bloku laboratorium, wybierz **konfiguracji**. 
-5. Na **konfiguracji** bloku, wybierz opcję **użytkowników**.
-6. Na **użytkowników** bloku, wybierz opcję **+ Dodaj**.
-   
+4. W bloku laboratorium, wybierz **konfiguracji i zasadach**. 
+5. Na **konfiguracji i zasadach** wybierz pozycję **(IAM) kontroli dostępu** z menu po lewej stronie. 
+6. Wybierz **Dodaj** na pasku narzędzi, aby dodać użytkownika do roli.
+
     ![Dodawanie użytkownika](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-7. Na **wybierz rolę** bloku, wybierz odpowiednią rolę. Sekcja [akcje, które mogą być wykonywane w każdej roli](#actions-that-can-be-performed-in-each-role) wymieniono różne akcje, które mogą być wykonywane przez użytkowników w roli właściciela, DevTest użytkownika i współautor.
-8. Na **dodawania użytkowników** bloku, wprowadź adres e-mail lub nazwa użytkownika mają zostać dodane w określonej roli. Jeśli nie można odnaleźć użytkownika, komunikat o błędzie opisano problem. Jeśli użytkownik zostanie znaleziony, ten użytkownik jest na liście i wybrane. 
-9. Wybierz **wybierz**.
-10. Wybierz **OK** zamknąć **Dodawanie dostępu** bloku.
+1. W **dodać uprawnienia** okna, wykonaj następujące czynności: 
+    1. Wybierz rolę (na przykład: DevTest Labs użytkownika). Sekcja [akcje, które mogą być wykonywane w każdej roli](#actions-that-can-be-performed-in-each-role) wymieniono różne akcje, które mogą być wykonywane przez użytkowników w roli właściciela, DevTest użytkownika i współautor.
+    2. Wybierz użytkownika, które mają zostać dodane do roli. 
+    3. Wybierz pozycję **Zapisz**. 
+
+        ![Dodaj użytkownika do roli](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Po powrocie do **użytkowników** bloku użytkownik został dodany.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Dodaj użytkownika zewnętrznego w laboratorium przy użyciu programu PowerShell
-Oprócz dodawania użytkowników w portalu Azure, można dodać użytkownika zewnętrznego do laboratorium za pomocą skryptu programu PowerShell. W poniższym przykładzie, po prostu zmodyfikuj wartości parametrów w obszarze **wartości w celu zmiany** komentarza.
+Oprócz dodawania użytkowników w portalu Azure, można dodać użytkownika zewnętrznego do laboratorium za pomocą skryptu programu PowerShell. W poniższym przykładzie zmodyfikuj wartości parametrów w obszarze **wartości w celu zmiany** komentarza.
 Możesz pobrać `subscriptionId`, `labResourceGroup`, i `labName` wartości z bloku laboratorium w portalu Azure.
 
 > [!NOTE]

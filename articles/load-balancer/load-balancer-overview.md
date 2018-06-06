@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 080a4e670b06544d84e3d34a0b04bdb91a95aff1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 04fa1f9a23a7c93426b45305302e3f77d16ab8c0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726265"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa równoważenia obciążenia Azure?
 
@@ -93,7 +94,7 @@ Moduł równoważenia obciążenia zapewnia następujące funkcje podstawowe dla
 
     - **Niestandardowe sondowaniem TCP**: sonda zależy od ustanawiania sesji TCP pomyślnie do portu zdefiniowanych sondowania. Tak długo, jak określony odbiornik na maszynie Wirtualnej istnieje, to sondowanie zakończy się pomyślnie. Połączenie zostało odrzucone, sondy kończy się niepowodzeniem. To sondowanie zastępuje domyślną sondę agenta gościa.
 
-    - **Sondowanie agenta gościa (na platforma jako usługa [PaaS] VMs tylko)**: usługi równoważenia obciążenia można również korzystać z agenta gościa w ramach maszyny Wirtualnej. Agent gościa wykrywa i wysyła odpowiedź HTTP 200 OK tylko wtedy, gdy wystąpienie jest w stanie gotowe. Jeśli agent nie odpowiada OK 200 protokołu HTTP, usługi równoważenia obciążenia oznacza wystąpienia jako odpowiadać i zatrzymuje wysyłania ruchu do tego wystąpienia. Moduł równoważenia obciążenia w dalszym ciągu próbują nawiązać połączenie z wystąpieniem. Jeśli agent gościa odpowie 200 protokołu HTTP, usługi równoważenia obciążenia wysyła ruch do tego wystąpienia ponownie. Sondy agenta gościa są ostateczność i nie jest zalecane podczas konfiguracje niestandardowe badania HTTP lub TCP są możliwe. 
+    - **Sondowanie agenta gościa**: usługi równoważenia obciążenia można również korzystać z agenta gościa w ramach maszyny Wirtualnej. Agent gościa wykrywa i wysyła odpowiedź HTTP 200 OK tylko wtedy, gdy wystąpienie jest w stanie gotowe. Jeśli agent nie odpowiada OK 200 protokołu HTTP, usługi równoważenia obciążenia oznacza wystąpienia jako odpowiadać i zatrzymuje wysyłania ruchu do tego wystąpienia. Moduł równoważenia obciążenia w dalszym ciągu próbują nawiązać połączenie z wystąpieniem. Jeśli agent gościa odpowie 200 protokołu HTTP, usługi równoważenia obciążenia wysyła ruch do tego wystąpienia ponownie. Sondy agenta gościa są _ostatni możliwości i nie jest zalecane_ kiedy są możliwe konfiguracje niestandardowe badania HTTP lub TCP. 
     
 * **Połączenia wychodzące (SNAT)**
 

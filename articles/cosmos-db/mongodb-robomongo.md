@@ -3,22 +3,20 @@ title: Użyj Robomongo dla rozwiązania Cosmos Azure DB | Dokumentacja firmy Mic
 description: 'Dowiedz się, jak korzystać z bazy danych Azure rozwiązania Cosmos Robomongo: interfejsu API dla konta bazy danych MongoDB'
 keywords: robomongo
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2017
-ms.author: anhoh
-ms.openlocfilehash: 7d318880b7b0078e4c03acb66885f4aed5534ba1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: b6d64d7d7b30d4175fb8c8bf6c98127465427d4e
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795034"
 ---
 # <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Użyj Robomongo z bazy danych Azure rozwiązania Cosmos: interfejsu API dla konta bazy danych MongoDB
 Do nawiązania połączenia bazy danych Azure rozwiązania Cosmos: interfejs API dla konta bazy danych MongoDB przy użyciu Robomongo, musi:

@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak lepszej wydajności sieci web, mobilnych i aplikacji interfejsu API w usłudze Azure App Service przez skalowanie do nowego PremiumV2 warstwy cenowej."
+title: Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak lepszej wydajności sieci web, mobilnych i aplikacji interfejsu API w usłudze Azure App Service przez skalowanie do nowego PremiumV2 warstwy cenowej.
 keywords: app service, azure app service, scale, scalable, app service plan, app service cost
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714565"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service
 
@@ -51,9 +52,9 @@ Warstwy cenowej aplikację usługi aplikacji jest zdefiniowany w [planu usługi 
 
 Podczas konfigurowania planu usługi aplikacji w <a href="https://portal.azure.com" target="_blank">portalu Azure</a>, wybierz pozycję **warstwa cenowa**. 
 
-Wybierz jedną z **PremiumV2** opcje i kliknij przycisk **wybierz**.
+Wybierz **produkcji**, a następnie wybierz pozycję **P1V2**, **P2V2**, lub **P3V2**, następnie kliknij przycisk **Zastosuj**.
 
-![](media/app-service-configure-premium-tier/pick-premium-tier.png)
+![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Jeśli nie widzisz **P1V2**, **P2V2**, i **P3V2** jako opcje albo **PremiumV2** nie jest dostępny w Twoim regionie wyboru, lub jesteś Konfigurowanie planu usługi aplikacji systemu Linux, które nie obsługuje **PremiumV2**.
@@ -70,7 +71,7 @@ W lewym obszarze nawigacji strony aplikacji usługi aplikacji, wybierz **skalowa
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Wybierz jedną z **PremiumV2** rozmiary, następnie kliknij przycisk **wybierz**.
+Wybierz **produkcji**, a następnie wybierz pozycję **P1V2**, **P2V2**, lub **P3V2**, następnie kliknij przycisk **Zastosuj**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 

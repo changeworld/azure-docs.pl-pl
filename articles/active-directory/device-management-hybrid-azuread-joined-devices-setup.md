@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,17 +16,18 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 728eb81d360af0d62d22cd6168b9e16edceefd56
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714395"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurowanie hybrydowego urządzeń przyłączonych do usługi Azure Active Directory
 
 Z zarządzania urządzeniami w usłudze Azure Active Directory (Azure AD) można zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji, zobacz [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](device-management-introduction.md).
 
-Jeśli masz w lokalnym środowisku Active Directory i chcesz przyłączyć urządzeń przyłączonych do domeny do usługi Azure AD, można to zrobić, konfigurując hybrydowe usługi Azure AD przyłączone do urządzenia. Temat zawiera powiązane kroki. 
+Jeśli masz w lokalnym środowisku Active Directory i chcesz przyłączyć urządzeń przyłączonych do domeny do usługi Azure AD, można to zrobić, konfigurując hybrydowe usługi Azure AD przyłączone do urządzenia. Ten artykuł zawiera kroki pokrewne. 
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -36,7 +38,7 @@ Jeśli używasz [narzędzie przygotowywania systemu (Sysprep)](https://docs.micr
 
 Wszystkie urządzenia przyłączone do domeny uruchomiony system Windows 10 Anniversary Update i Windows Server 2016 automatycznego rejestrowania z usługą Azure AD na ponowne uruchomienie urządzenia lub użytkownika logowania po zakończeniu kroków konfiguracji wymienione poniżej. **Jeśli to zachowanie automatyczne rejestru nie jest preferowana, lub jeśli wymagane jest kontrolowany przez wdrożenie**, wykonaj instrukcje podane w sekcji "Krok 4: kontroli i wdrażania" poniżej, aby selektywnie włączać lub wyłączać automatyczną wdrożenia przed następujące kroki konfiguracji.  
 
-Aby zwiększyć czytelność opisy, w tym temacie używa następujących termin: 
+Aby zwiększyć czytelność opisy, w tym artykule używany jest termin następujące: 
 
 - **Urządzenia z systemem Windows bieżącego** -określenie to odnosi się do urządzeń przyłączonych do domeny z systemem Windows 10 lub Windows Server 2016.
 - **Urządzenia z systemem Windows niższego poziomu** -określenie to odnosi się do wszystkich **obsługiwane** przyłączonych do domeny urządzenia z systemem Windows, które nie są uruchomione systemu Windows 10 ani Windows Server 2016.  
@@ -95,6 +97,7 @@ Jeśli Twoja organizacja planuje za pomocą logowania jednokrotnego bezproblemow
 
 - Ponadto należy włączyć następujące ustawienie w strefie intranetu użytkownika: "Zezwalaj na pasku stanu za pomocą skryptu aktualizacji".
 
+Jeśli Twoja organizacja korzysta z zarządzanego konfiguracji (z systemem innym niż federacyjnych) z lokalnej usługi AD i nie używa usług AD FS możliwości utworzenia federacji z usługą Azure AD, a następnie hybrydowej usługi Azure AD join w systemie Windows 10 zależy od obiektów komputerów w usłudze AD za sync'ed do usługi Azure AD. Upewnij się, że wszelkie jednostek organizacyjnych zawierających obiekty komputerów, które muszą być hybrydowe przyłączonych do usługi Azure AD są włączone dla synchronizacji w konfiguracji synchronizacji usługi Azure AD Connect.
 
 Jeśli Twoja organizacja wymaga dostępu do Internetu za pośrednictwem serwera proxy ruchu wychodzącego, musisz zaimplementować autowykrywania serwera Proxy sieci Web (WPAD) umożliwia komputerom z systemem Windows 10 można zarejestrować się w usłudze Azure AD.
 
@@ -186,6 +189,14 @@ W konfiguracji wielu lasów należy użyć następującego skryptu można utworz
 
     $deSCP.CommitChanges()
 
+W skrypcie powyżej
+
+- `$verifiedDomain = "contoso.com"` jest to symbol zastępczy, który należy zastąpić nazwy domeny zweryfikowane w usłudze Azure AD. Konieczne będzie właścicielem domeny, przed jego użyciem.
+
+Aby uzyskać więcej informacji o nazwach zweryfikowanej domeny, zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+Aby uzyskać listę domeny zweryfikowane firmy, można użyć [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) polecenia cmdlet. 
+
+![Get-AzureADDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
 ## <a name="step-2-setup-issuance-of-claims"></a>Krok 2: Skonfiguruj wystawiania oświadczeń
 
@@ -329,6 +340,7 @@ W powyższym oświadczeń
 
 
 Aby uzyskać więcej informacji o nazwach zweryfikowanej domeny, zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+
 Aby uzyskać listę domeny zweryfikowane firmy, można użyć [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) polecenia cmdlet. 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)

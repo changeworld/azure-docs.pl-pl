@@ -1,25 +1,27 @@
 ---
-title: "Tożsamość hybrydowym - strategii wdrażania cyklu życia Azure | Dokumentacja firmy Microsoft"
-description: "Umożliwia definiowanie zadań zarządzania tożsamości hybrydowej zgodnie z opcji dostępnych dla każdej fazy cyklu życia."
-documentationcenter: 
+title: Tożsamość hybrydowym - strategii wdrażania cyklu życia Azure | Dokumentacja firmy Microsoft
+description: Umożliwia definiowanie zadań zarządzania tożsamości hybrydowej zgodnie z opcji dostępnych dla każdej fazy cyklu życia.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801834"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Określić strategii wdrażania cyklu życia tożsamości hybrydowej
 W tym zadaniu będziesz definiować strategii zarządzania tożsamościami dla hybrydowych tożsamości rozwiązanie, aby spełniać wymagania biznesowe zdefiniowaną w [określić zadań zarządzania tożsamości hybrydowej](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -35,11 +37,11 @@ Kont w zaawansowanej przedsiębiorstw IT mają setki parametrów, które definiu
 
 | Faza zarządzania cyklem życia | Lokalnie | Chmura | Połączenie hybrydowe |
 | --- | --- | --- | --- |
-| Zarządzanie kontami i inicjowania obsługi |Za pomocą roli serwera usług domenowych Active Directory® (AD DS), możesz utworzyć skalowalne, bezpieczną i łatwą w obsłudze infrastrukturę do zarządzania użytkownikami i zasobami i zapewniają obsługę aplikacji obsługujących katalogi, takich jak Microsoft® Exchange Server. <br><br> [Można udostępniać grup w usługach AD DS za pomocą programu Identity manager](https://technet.microsoft.com/library/ff686261.aspx) <br>[Umożliwia obsługę użytkowników w usługach AD DS](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Administratorzy mogą używać kontroli dostępu do zarządzania dostępem użytkowników do zasobów udostępnionych ze względów bezpieczeństwa. W usłudze Active Directory, podawana jest kontrola dostępu na poziomie obiektu przez ustawienie różnych poziomów dostępu lub uprawnień do obiektów, takich jak Pełna kontrola, odczytu, zapisu lub Brak dostępu. Kontrola dostępu w usłudze Active Directory definiuje sposób różnych użytkowników za pomocą obiektów usługi Active Directory. Domyślnie uprawnienia do obiektów w usłudze Active Directory ustawiono najbezpieczniejsze ustawienie. |Należy utworzyć konta dla wszystkich użytkowników, którzy będą uzyskiwać dostęp do usługi w chmurze firmy Microsoft. Można również zmienić konta użytkowników lub usuwania ich, gdy nie są już potrzebne. Domyślnie użytkownicy nie mają uprawnień administratora, ale Opcjonalnie można przypisać. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami w usłudze Azure AD](active-directory-create-users.md). <br><br> W usłudze Azure Active Directory jednym z najważniejszych funkcji jest możliwość zarządzania dostępem do zasobów. Te zasoby mogą być częścią katalogu, tak jak w przypadku uprawnień do zarządzania obiektami za pomocą ról w katalogu lub zasobów, które są zewnętrzne względem katalogu, na przykład aplikacji SaaS, usług platformy Azure i witryn programu SharePoint lub zasobów lokalnych. <br><br> Dostęp do Centrum programu Azure Active Directory w rozwiązaniu do zarządzania jest grupą zabezpieczeń. Właściciel zasobu (lub administratora katalogu) można przypisać grupę w celu zapewnienia niektóre uprawnienia dostępu do zasobów, w których są właścicielami. Członkowie grupy zapewnia dostęp i właściciel zasobu można delegować prawa do listy członków grupy do innej osoby — takie jak Menedżer działu lub administratora pomocy technicznej do zarządzania<br> <br> Grupy zarządzanie w usłudze Azure AD temacie zamieszczono więcej informacji dotyczących zarządzanie dostępem za pośrednictwem grup. |Rozszerzenie w chmurze za pośrednictwem synchronizacji i federacji tożsamości usługi Active Directory |
+| Zarządzanie kontami i inicjowania obsługi |Za pomocą roli serwera usług domenowych Active Directory® (AD DS), możesz utworzyć skalowalne, bezpieczną i łatwą w obsłudze infrastrukturę do zarządzania użytkownikami i zasobami i zapewniają obsługę aplikacji obsługujących katalogi, takich jak Microsoft® Exchange Server. <br><br> [Można udostępniać grup w usługach AD DS za pomocą programu Identity manager](https://technet.microsoft.com/library/ff686261.aspx) <br>[ Umożliwia obsługę użytkowników w usługach AD DS](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Administratorzy mogą używać kontroli dostępu do zarządzania dostępem użytkowników do zasobów udostępnionych ze względów bezpieczeństwa. W usłudze Active Directory, podawana jest kontrola dostępu na poziomie obiektu przez ustawienie różnych poziomów dostępu lub uprawnień do obiektów, takich jak Pełna kontrola, odczytu, zapisu lub Brak dostępu. Kontrola dostępu w usłudze Active Directory definiuje sposób różnych użytkowników za pomocą obiektów usługi Active Directory. Domyślnie uprawnienia do obiektów w usłudze Active Directory ustawiono najbezpieczniejsze ustawienie. |Należy utworzyć konta dla wszystkich użytkowników, którzy będą uzyskiwać dostęp do usługi w chmurze firmy Microsoft. Można również zmienić konta użytkowników lub usuwania ich, gdy nie są już potrzebne. Domyślnie użytkownicy nie mają uprawnień administratora, ale Opcjonalnie można przypisać. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami w usłudze Azure AD](active-directory-create-users.md). <br><br> W usłudze Azure Active Directory jednym z najważniejszych funkcji jest możliwość zarządzania dostępem do zasobów. Te zasoby mogą być częścią katalogu, tak jak w przypadku uprawnień do zarządzania obiektami za pomocą ról w katalogu lub zasobów, które są zewnętrzne względem katalogu, na przykład aplikacji SaaS, usług platformy Azure i witryn programu SharePoint lub zasobów lokalnych. <br><br> Dostęp do Centrum programu Azure Active Directory w rozwiązaniu do zarządzania jest grupą zabezpieczeń. Właściciel zasobu (lub administratora katalogu) można przypisać grupę w celu zapewnienia niektóre uprawnienia dostępu do zasobów, w których są właścicielami. Członkowie grupy zapewnia dostęp i właściciel zasobu można delegować prawa do listy członków grupy do innej osoby — takie jak Menedżer działu lub administratora pomocy technicznej do zarządzania<br> <br> Zarządzanie grup w sekcji usługi Azure AD zamieszczono więcej informacji dotyczących zarządzania dostęp za pośrednictwem grup. |Rozszerzenie w chmurze za pośrednictwem synchronizacji i federacji tożsamości usługi Active Directory |
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 Dostępu opartej na rolach (RBAC) używa ról kontroli i inicjowania obsługi zasad do oceny, testowania i wymuszać procesy biznesowe, a zasady dotyczące przyznawania dostępu użytkownikom. Administratorzy klucza tworzyć zasady inicjowania obsługi i przypisywania użytkowników do ról i definiującą zestawów uprawnień do zasobów dla tych ról. RBAC rozszerza rozwiązanie do zarządzania tożsamością procesów opartych na oprogramowaniu i zmniejszyć ręczne interakcji z użytkownikiem w procesie inicjowania obsługi administracyjnej.
-Azure AD RBAC umożliwia firmie, aby ograniczyć ilość działań, które osoby mogą wykonywać, gdy ma on dostęp do portalu zarządzania Azure. Za pomocą RBAC kontrolować dostęp do portalu, Administratorzy IT urzędu certyfikacji delegować dostęp przy użyciu następujących metod zarządzania dostępu:
+Azure AD RBAC umożliwia firmie, aby ograniczyć liczbę operacji, które osoby mogą wykonywać, gdy ma on dostęp do portalu Azure. Za pomocą RBAC kontrolować dostęp do portalu, Administratorzy IT urzędu certyfikacji delegować dostęp przy użyciu następujących metod zarządzania dostępu:
 
 * **Przypisanie oparte na grupach roli**: może przypisać dostęp do grup usługi Azure AD, które można synchronizować z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, wprowadzone w narzędzi i procesów do zarządzania grupami organizacji. Umożliwia także funkcję delegowanej grupy zarządzania programu Azure AD Premium.
 * **Wykorzystywanie wbudowane role na platformie Azure**: można użyć trzech ról — właściciela, współautora i czytnika, aby upewnić się, że użytkownicy i grupy mają uprawnienia do wykonywania zadań, należy wykonać swoje zadania.
@@ -67,17 +69,18 @@ Po uruchomieniu organizacji do udostępniania zasobów między organizacjami wew
 > 
 > 
 
-(W oparciu o uprawnieniach) na podstawie licencji usługi Azure AD usług pracy przez aktywowania subskrypcji w dzierżawie usługi katalogowej/usługi Azure AD. Gdy subskrypcja jest aktywna możliwości usługi można zarządzane przez administratorów usługi katalogowej/i używane przez licencjonowanych użytkowników. Aby uzyskać więcej informacji zobacz temat jak Azure AD licencjonowania pracy?
-Integracja z innych dostawców 3
+(W oparciu o uprawnieniach) na podstawie licencji usługi Azure AD usług pracy przez aktywowania subskrypcji w dzierżawie usługi katalogowej/usługi Azure AD. Gdy subskrypcja jest aktywna możliwości usługi można zarządzane przez administratorów usługi katalogowej/i używane przez licencjonowanych użytkowników. 
 
-Usługa Azure Active Directory zapewnia jednokrotnego na i rozszerzone zabezpieczenia dostępu aplikacji do tysięcy aplikacji SaaS i lokalnej aplikacji sieci web. Aby uzyskać szczegółową listę galerii aplikacji usługi Azure Active Directory dla obsługiwanych aplikacji SaaS, zobacz listę zgodności federacyjnych usługi Azure Active Directory: dostawcy tożsamości innych firm, które mogą służyć do implementowania rejestracji jednokrotnej
+## <a name="integration-with-other-3rd-party-providers"></a>Integracja z innych dostawców 3
+
+Usługa Azure Active Directory zapewnia jednokrotnego na i rozszerzone zabezpieczenia dostępu aplikacji do tysięcy aplikacji SaaS i lokalnej aplikacji sieci web. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)
 
 ## <a name="define-synchronization-management"></a>Definiowanie zarządzania synchronizacji
 Zintegrowanie katalogów lokalnych z usługą Azure AD zwiększa produktywność użytkowników, zapewniając wspólną tożsamość na potrzeby dostępu do zasobów, zarówno lokalnych, jak i w chmurze. Dzięki tej integracji użytkownicy i organizacje uzyskują następujące korzyści:
 
 * Organizacje mogą umożliwiać użytkownikom wspólną tożsamość hybrydowa między lokalnymi lub usług w chmurze korzystania z usługi Active Directory systemu Windows Server, a następnie łącząc do usługi Azure Active Directory.
 * Administratorzy mogą udostępnić dostępu warunkowego na podstawie zasobów aplikacji, urządzenia i tożsamości użytkownika, lokalizacji sieciowej i uwierzytelniania wieloskładnikowego.
-* Użytkownicy mogą korzystać ich wspólną tożsamość za pomocą konta w usłudze Azure AD do usługi Office 365, Intune, aplikacje SaaS i aplikacje innych producentów.
+* Użytkownicy mogą korzystać z ich wspólną tożsamość za pomocą konta w usłudze Azure AD do usługi Office 365, Intune, aplikacji SaaS i aplikacje innych producentów.
 * Deweloperzy mogą tworzyć aplikacje, które wykorzystują wspólnego modelu tożsamości, integrowanie aplikacje lokalne usługi Active Directory lub Azure dla aplikacji działających w chmurze
 
 Poniższa ilustracja zawiera przykład ogólny widok procesu synchronizacji tożsamości.
@@ -90,7 +93,7 @@ Przejrzyj poniższej tabeli, aby porównać opcji synchronizacji:
 
 | Opcja zarządzania synchronizacji | Zalety | Wady |
 | --- | --- | --- |
-| Na podstawie synchronizacji (przy użyciu narzędzia DirSync lub AADConnect) |Użytkownicy i grupy synchronizowane z lokalnej i w chmurze <br>  **Zasady kontroli**: zasady konta można ustawić za pomocą usługi Active Directory, co daje możliwość zarządzania zasad haseł, stacji roboczej, ograniczenia, formanty blokady administrator, a więcej, bez konieczności wykonywania dodatkowych zadań w chmurze.  <br>  **Kontrola dostępu**: można ograniczyć dostęp do usługi w chmurze tak, aby usługi jest możliwy za pośrednictwem środowiska firmy za pośrednictwem serwerów online lub oba. <br>  Zmniejszona wywołań obsługi: Jeśli użytkownicy mają mniej haseł do zapamiętania, jest mniej prawdopodobne zapomnij je. <br>  Zabezpieczenia: Tożsamości użytkowników i informacje są chronione, ponieważ wszystkie serwery i usług używanych w rejestracji jednokrotnej, są zarządzane i kontrolowane lokalnymi. <br>  Obsługa silnego uwierzytelniania: można używać silnego uwierzytelniania (nazywanych również uwierzytelnianie dwuskładnikowe) z usługi w chmurze. Jednak użycie silnego uwierzytelniania, należy użyć rejestracji jednokrotnej. | |
+| Na podstawie synchronizacji (przy użyciu narzędzia DirSync lub AADConnect) |Użytkownicy i grupy synchronizowane z lokalnej i w chmurze <br>  **Zasady kontroli**: zasady konta można ustawić za pomocą usługi Active Directory, co daje możliwość zarządzania zasad haseł, stacji roboczej, ograniczenia, formanty blokady administrator, a więcej, bez konieczności wykonywania dodatkowych zadań w programie Chmura.  <br>  **Kontrola dostępu**: można ograniczyć dostęp do usługi w chmurze tak, aby usługi jest możliwy za pośrednictwem środowiska firmy za pośrednictwem serwerów online lub oba. <br>  Zmniejszona wywołań obsługi: Jeśli użytkownicy mają mniej haseł do zapamiętania, jest mniej prawdopodobne zapomnij je. <br>  Zabezpieczenia: Tożsamości użytkowników i informacje są chronione, ponieważ wszystkie serwery i usług używanych w rejestracji jednokrotnej, są zarządzane i kontrolowane lokalnymi. <br>  Obsługa silnego uwierzytelniania: można używać silnego uwierzytelniania (nazywanych również uwierzytelnianie dwuskładnikowe) z usługi w chmurze. Jednak użycie silnego uwierzytelniania, należy użyć rejestracji jednokrotnej. | |
 | Na podstawie federacyjnych (za pośrednictwem usług AD FS) |Korzystając z usługi tokenu zabezpieczającego (STS). Po skonfigurowaniu usługi tokenu Zabezpieczającego w celu zapewnienia dostępu rejestracji jednokrotnej z usługą w chmurze firmy Microsoft, zostanie utworzony federacyjnej relacji zaufania między z lokalnej usługi STS i domeny federacyjnej, określonych przez Ciebie w dzierżawie usługi Azure AD. <br> Umożliwia użytkownikom końcowym używać tego samego zestawu poświadczeń do uzyskania dostępu do wielu zasobów <br>Użytkownicy końcowi nie jest konieczne Obsługa wielu zestawów poświadczeń. Jeszcze, użytkownicy muszą podać swoje poświadczenia do każdej z nich uwzględnionych zasobów., scenariusze B2B i B2C, które są obsługiwane. |Wymaga specjalnych personelu do wdrażania i konserwacji lokalnych dedykowanych serwerów usług AD FS. Jeśli planujesz używać usług AD FS dla Twojej usługi STS istnieją ograniczenia dotyczące stosowania silnego uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usług AD FS 2.0 zaawansowane opcje](http://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]

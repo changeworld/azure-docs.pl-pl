@@ -1,13 +1,14 @@
 ---
-title: "Słownik ochrony tożsamości usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Słownik ochrony tożsamości usługi Azure Active Directory"
+title: Słownik ochrony tożsamości usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Słownik ochrony tożsamości usługi Azure Active Directory
 services: active-directory
-keywords: "ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń, słownik"
-documentationcenter: 
+keywords: ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń, słownik
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a9cc4a914091c91f4b2ae1c152644fe8e01747e8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713395"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Słownik ochrony tożsamości usługi Azure Active Directory
 ### <a name="at-risk-user"></a>Zagrożone (użytkownika)
@@ -32,7 +34,7 @@ Logowania z lokalizacji geograficznej, które nie są typowe dla określonego u�
 Moduł zabezpieczeń usługi Azure Active Directory, która udostępnia skonsolidowany wgląd w zdarzenia o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach wpływających na tożsamości organizacji.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
-Zasady zabezpieczenia dostępu do zasobów. Zasady dostępu warunkowego są przechowywane w usłudze Azure Active Directory i są oceniane przez usługę Azure AD przed udzieleniem im dostępu do zasobu.  Przykład reguły obejmują, ograniczanie dostępu na podstawie lokalizacji użytkownika metodę uwierzytelniania użytkownika lub kondycji urządzenia.
+Zasady zabezpieczenia dostępu do zasobów. Zasady dostępu warunkowego są przechowywane w usłudze Azure Active Directory i są oceniane przez usługę Azure AD przed udzieleniem im dostępu do zasobu.  Przykład reguły obejmują, ograniczanie dostępu na podstawie lokalizacji użytkownika, kondycja urządzenia lub metoda uwierzytelniania użytkownika.
 
 ### <a name="credentials"></a>Poświadczenia
 Informacje, która zawiera identyfikator i potwierdzenie identyfikatora, który jest używany do uzyskania dostępu do lokalnego i zasobów sieciowych. Przykładami poświadczeń są nazwy użytkownika i hasła, karty inteligentne i certyfikaty.
@@ -80,7 +82,7 @@ Część zasad zabezpieczeń, który opisuje okoliczności, które spowoduje wyw
 Działania w celu zapobieżenia szkody w organizacji za pomocą nadużycia tożsamości lub urządzenia podejrzanych lub znać naruszenia. Akcji związanych z zapobieganiem nie zabezpieczyć urządzenia lub tożsamości, a nie rozwiązuje poprzednie zdarzenia ryzyka.
 
 ### <a name="privileged-user"></a>Uprzywilejowane (użytkownika)
-Użytkownik, który w czasie zdarzenia ryzyka, ma uprawnienia administratora stałych lub tymczasowych do co najmniej jednego zasobu w usłudze Active Directory, takie jak Administrator globalny, Administrator rozliczeń, Administrator usługi, administrator użytkownika i hasło administratora. 
+Użytkownik, który w czasie zdarzenia ryzyka, ma uprawnienia administratora stałych lub tymczasowych do co najmniej jeden zasób w usłudze Active Directory, takie jak Administrator globalny, Administrator rozliczeń, Administrator usługi, administrator użytkownika i hasło administratora. 
 
 ### <a name="real-time"></a>Czas rzeczywisty
 Zobacz wykrywanie w czasie rzeczywistym.
@@ -127,19 +129,19 @@ Do uwierzytelniania tożsamości w usłudze Azure Active Directory.
 ### <a name="sign-in-n"></a>Logowania (n)
 Proces lub akcji uwierzytelniania tożsamości w usłudze Azure Active Directory i zdarzenia, który przechwytuje tej operacji.
 
-### <a name="sign-in-from-anonymous-ip-address"></a>Logowania z anonimowych adresów IP
+### <a name="sign-in-from-anonymous-ip-address"></a>Zaloguj się z anonimowego adresu IP
 Zdarzenie ryzyka wyzwalane po pomyślnym zalogowaniu z adresu IP, który został zidentyfikowany jako adres IP anonimowy serwer proxy.
 
-### <a name="sign-in-from-infected-device"></a>Logowania z zainfekowanych urządzeń
-Zdarzenie ryzyka, wyzwalane, gdy logowania pochodzi z adresu IP, w których jest używane przez jedną lub więcej urządzeń ze złamanymi zabezpieczeniami, które aktywnie próby komunikacji z serwerem botów.
+### <a name="sign-in-from-infected-device"></a>Zaloguj się z zainfekowanych urządzeń
+Zdarzenie ryzyka, wyzwalane, gdy logowania pochodzi z adresu IP, który jest znany, który będzie używany przez co najmniej jedno urządzenie ze złamanymi zabezpieczeniami, które aktywnie próby komunikacji z serwerem botów.
 
-### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Logowania z adresów IP związanych z podejrzanymi działaniami
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Zaloguj się z adresu IP z podejrzanymi działaniami
 Zdarzenie ryzyka wyzwalane po pomyślnym logowanie z adresu IP adresów z dużej liczby nieudanych prób logowania na wielu kontach użytkowników w krótkim przedziale czasu.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Logowania z nieznanych lokalizacji
-Zdarzenie ryzyka, wyzwalane, gdy użytkownik pomyślnie loguje się z nowej lokalizacji (adresu IP, szerokości geograficznej/długości i ASN).
+### <a name="sign-in-from-unfamiliar-location"></a>Zaloguj się z nieznanych lokalizacji
+Zdarzenie ryzyka, wyzwalane, gdy użytkownik pomyślnie loguje się z nowej lokalizacji (IP szerokości geograficznej/geograficzne i ASN).
 
-### <a name="sign-in-risk"></a>Ryzyko związane z logowaniem
+### <a name="sign-in-risk"></a>Ryzyko logowania
 Zobacz ryzyka poziom (logowanie)
 
 ### <a name="sign-in-risk-policy"></a>Zasady dotyczące ryzyka związanego z logowaniem
@@ -158,7 +160,7 @@ Zasady dostępu warunkowego, która uwzględnia przy logowaniu i stosuje środki
 Użytkownicy, którzy mają zdarzenia ryzyka, które są aktywne lub skorygowanych
 
 ### <a name="vulnerability"></a>Luka w zabezpieczeniach
-Konfiguracja lub warunku w usłudze Azure Active Directory, co sprawia, że katalog jest podatna na luki w zabezpieczeniach i zagrożeń.
+Konfiguracja lub warunku w usłudze Azure Active Directory, co czyni katalogu podatna na luki w zabezpieczeniach i zagrożeń.
 
 ## <a name="see-also"></a>Zobacz także
 * [Ochronę tożsamości usługi Azure Active Directory](active-directory-identityprotection.md)

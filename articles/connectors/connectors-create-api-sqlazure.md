@@ -1,31 +1,28 @@
 ---
 title: Łączenie z serwerem SQL lub bazą danych Azure SQL — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Utwórz połączenia programu SQL Server na lokalnych i w chmurze, baza danych SQL Azure z usługi Azure Logic Apps
-services: logic-apps
-documentationcenter: ''
+description: Dostęp i zarządzaniu baz danych lokalnie lub w chmurze automatyzując przepływy pracy z usługą Azure Logic Apps
 author: ecfan
 manager: cfowler
-editor: ''
-tags: connectors
-ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 05/15/2018
 ms.author: estfan
-ms.openlocfilehash: 4917f784c07919155e006711026899ce7712fecb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.date: 05/15/2018
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 73dadb85f3608f863a7fa0227d8e051fc77bb918
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756954"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Łączenie z serwerem SQL lub bazy danych Azure SQL z usługi Azure Logic Apps
 
-W tym artykule przedstawiono, jak można pobrać danych w bazie danych SQL z wewnątrz aplikacji logiki z łącznikiem programu SQL Server. W ten sposób można utworzyć aplikacji logiki, które automatyzują zadania i przepływów pracy związanych z zarządzaniem danych. Łącznik działa zarówno [programu SQL Server na lokalnych](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) i [bazy danych SQL Azure w chmurze](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
+W tym artykule przedstawiono, jak można pobrać danych w bazie danych SQL z wewnątrz aplikacji logiki z łącznikiem programu SQL Server. W ten sposób można zautomatyzować zadania, procesów i przepływy pracy, które zarządzanie przez tworzenie aplikacji logiki danych SQL i zasobów. Łącznik działa zarówno [programu SQL Server na lokalnych](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) i [bazy danych SQL Azure w chmurze](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
 
-Można tworzyć aplikacje logiki, uruchamiane po wyzwalane przez zdarzenia w bazie danych SQL lub w innych systemach, takich jak usługi Dynamics CRM Online. Aplikacje logiki można również uzyskać, insert, lub Usuń dane i również wykonać zapytania SQL lub procedur składowanych. Na przykład można utworzyć aplikację logiki, który automatycznie sprawdza, czy dla nowych rekordów w Dynamics CRM Online, dodaje elementy do bazy danych SQL dla nowych rekordów, a następnie wysyła wiadomości e-mail dla alertów.
+Można utworzyć aplikacji logiki, które można uruchamiać, gdy wyzwalane przez zdarzenia w bazie danych SQL lub w innych systemach, takich jak usługi Dynamics CRM Online. Aplikacje logiki można również pobrać, wstawianie i usuwanie danych oraz wykonywanie zapytań SQL i zapisanych procedur. Na przykład można utworzyć aplikację logiki, który automatycznie sprawdza, czy dla nowych rekordów w Dynamics CRM Online, dodaje elementy do bazy danych SQL dla nowych rekordów, a następnie wysyła wiadomości e-mail dla alertów.
 
 Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. Jeśli jesteś nowym użytkownikiem aplikacji logiki, przejrzyj [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/sql/" target="blank">odwołanie łącznika programu SQL Server</a>.
 

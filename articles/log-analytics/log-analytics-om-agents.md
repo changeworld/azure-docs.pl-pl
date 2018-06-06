@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: HT
+ms.openlocfilehash: 06bbcadeda2187a521daecde2b386c936e8217f0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763599"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager z usługą Log Analytics
 Aby obsługiwać istniejącą inwestycję w programie System Center Operations Manager i korzystać z rozszerzonych możliwości usługi Log Analytics, można zintegrować program Operations Manager z obszarem roboczym usługi Log Analytics.  Umożliwi to wykorzystanie szans sprzedaży usługi Log Analytics przy ciągłym korzystaniu z programu Operations Manager do wykonywania następujących czynności:
@@ -77,7 +78,9 @@ Wykonaj następujące czynności, aby skonfigurować grupę zarządzania program
 Jeśli grupa zarządzania programu Operations Manager rejestruje się po raz pierwszy w obszarze roboczym usługi Log Analytics, a serwery zarządzania muszą komunikować się z usługą za pośrednictwem serwera proxy lub serwera bramy OMS, opcja określania konfiguracji serwera proxy dla grupy zarządzania nie jest dostępna w konsoli zarządzania operacjami.  Ta opcja staje się dostępna dopiero po pomyślnym zarejestrowaniu grupy zarządzania w usłudze.  Aby skonfigurować integrację i wszystkie serwery zarządzania w grupie zarządzania, musisz zaktualizować konfigurację serwera proxy systemu za pomocą narzędzia Netsh w systemie, w którym działa konsola zarządzania operacjami.  
 
 1. Otwórz wiersz polecenia z podwyższonymi uprawnieniami.
-1. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
+   a. Przejdź do **Start** i typ **cmd**.
+   b. Kliknij prawym przyciskiem myszy **wiersza polecenia** i wybierz polecenie Uruchom jako administrator **.
+2. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
@@ -197,9 +200,9 @@ Usunięcie z grupy zarządzania pakietów administracyjnych dla włączonych roz
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-1. Otwórz menu **Ustawienia zaawansowane** obszaru roboczego usługi Log Analytics w witrynie Azure Portal.
-1. Wybierz pozycję **Połączone źródła**, a następnie **System Center**.
-1. Powinna być widoczna nazwa grupy zarządzania, którą chcesz usunąć z obszaru roboczego.  W kolumnie **Ostatnie dane** kliknij link **Usuń**.  
+7. W portalu pakietu OMS kliknij kafelek **Ustawienia**.
+8. Wybierz **połączone źródła**.
+9. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania, który chcesz usunąć z obszaru roboczego.  W kolumnie **Ostatnie dane** kliknij link **Usuń**.  
    
     > [!NOTE]
     > Link **Usuń** nie będzie dostępny po 14 dniach, jeśli nie zostanie wykryta żadna aktywność w połączonej grupie zarządzania.  
@@ -210,7 +213,7 @@ Usunięcie z grupy zarządzania pakietów administracyjnych dla włączonych roz
 Aby usunąć dwa łączniki — jeden o nazwie Microsoft.SystemCenter.Advisor.DataConnector, a drugi o nazwie Advisor Connector, zapisz poniższy skrypt programu PowerShell na swoim komputerze i wykonaj go, korzystając z poniższych przykładów:
 
 ```
-    .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
     .\OM2012_DeleteConnectors.ps1 “Microsoft.SytemCenter.Advisor.DataConnector” <ManagementServerName>
 ```
 
@@ -310,7 +313,7 @@ Jeśli w przyszłości zajdzie potrzeba ponownego połączenia grupy zarządzani
 * Na nośniku źródłowym w folderze `\ManagementPacks` dla programu System Center 2016 — Operations Manager lub nowszego.
 * W najnowszym pakiecie zbiorczym aktualizacji zastosowanym w grupie zarządzania.  Dla programu Operations Manager 2012 folderem źródłowym jest folder ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`, a dla wersji 2012 R2 jest to folder `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dodać funkcje i zebrać dane, zobacz [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Dodawanie rozwiązania Log Analytics z galerii rozwiązań).
 
 

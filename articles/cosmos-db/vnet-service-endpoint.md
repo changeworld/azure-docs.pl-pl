@@ -5,15 +5,16 @@ services: cosmos-db
 author: kanshiG
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: b07a159e69a11656555a8550b807cce0b2c9ef6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aab2446a21739beb029b103241431fb9998e1861
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735462"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta bazy danych rozwiązania Cosmos Azure przy użyciu punktu końcowego usługi Azure Virtual Network
 
@@ -48,7 +49,7 @@ Po skonfigurowaniu konta bazy danych Azure rozwiązania Cosmos punkt końcowy us
    ![Wybierz sieć wirtualną i podsieć](./media/vnet-service-endpoint/choose-subnet-and-vnet.png)
 
    > [!NOTE]
-   > Jeśli punkt końcowy usługi dla bazy danych Azure rozwiązania Cosmos wcześniej nie jest skonfigurowany dla wybranej sieci wirtualnych platformy Azure i podsieci, można skonfigurować w ramach tej operacji. Włączanie dostępu potrwa do 15 minut. 
+   > Jeśli punkt końcowy usługi dla bazy danych Azure rozwiązania Cosmos wcześniej nie jest skonfigurowany dla wybranej sieci wirtualnych platformy Azure i podsieci, można skonfigurować w ramach tej operacji. Włączanie dostępu potrwa do 15 minut. Jest bardzo ważne, aby wyłączyć zapory IP po zauważyć w dół zawartość zapory ACL renabling je później. 
 
    ![sieć wirtualna i podsieć został pomyślnie skonfigurowany](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -57,6 +58,9 @@ Teraz konto bazy danych Azure rozwiązania Cosmos tylko będzie zezwalać na ruc
 ### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla nowej sieci wirtualnej platformy Azure i podsieci
 
 1. Z **wszystkie zasoby** bloku Azure DB rozwiązania Cosmos konta można znaleźć chcesz zabezpieczyć.  
+
+> [!NOTE]
+> Jeśli masz istniejące zapory IP skonfigurowanych dla tego konta bazy danych rozwiązania Cosmos Azure należy pamiętać, konfigurację zapory, Usuń zapory IP, a następnie włącz punktu końcowego usługi. Po włączeniu punktu końcowego usługi bez disbling zapory ruchu z tego zakresu ip spowoduje utratę tożsamość wirtualnego adresu IP i zostanie usunięte z komunikatem o błędzie filtru IP. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, włączyć punkt końcowy usługi z podsieci i na koniec listy ACL podsieci z rozwiązania Cosmos bazy danych. Po skonfigurowaniu punktu końcowego usługi i Dodaj listę kontroli dostępu można ponownie włączyć zapory IP ponownie w razie potrzeby.
 
 2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, skopiuj informacje o zaporze IP skojarzonych z Twoim kontem platformy Azure DB rozwiązania Cosmos do użytku w przyszłości. IP zapory można ponownie włączyć po skonfigurowaniu punktu końcowego usługi.  
 
@@ -95,6 +99,10 @@ Aby upewnić się, masz dostęp do bazy danych Azure rozwiązania Cosmos metryki
 Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązania Cosmos przy użyciu programu Azure PowerShell, wykonaj następujące kroki:  
 
 1. Zainstaluj najnowszą [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [logowania](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Upewnij się, należy pamiętać, ustawienia zapory IP i całkowicie usunąć zapory IP przed włączeniem punkt końcowy usługi dla konta.
+
+
+> [!NOTE]
+> Jeśli masz istniejące zapory IP skonfigurowanych dla tego konta bazy danych rozwiązania Cosmos Azure należy pamiętać, konfigurację zapory, Usuń zapory IP, a następnie włącz punktu końcowego usługi. Po włączeniu punktu końcowego usługi bez disbling zapory ruchu z tego zakresu ip spowoduje utratę tożsamość wirtualnego adresu IP i zostanie usunięte z komunikatem o błędzie filtru IP. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, włączyć punkt końcowy usługi z podsieci i na koniec listy ACL podsieci z rozwiązania Cosmos bazy danych. Po skonfigurowaniu punktu końcowego usługi i Dodaj listę kontroli dostępu można ponownie włączyć zapory IP ponownie w razie potrzeby.
 
 2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, skopiuj informacje o zaporze IP skojarzonych z Twoim kontem platformy Azure DB rozwiązania Cosmos do użytku w przyszłości. Zapora IP będzie ponownie włączyć po skonfigurowaniu punktu końcowego usługi.  
 
@@ -219,9 +227,13 @@ Jest to wymagane, tylko kiedy zechcesz, konto bazy danych Azure rozwiązania Cos
 
 64 punktów końcowych usługi sieci wirtualnej są dozwolone dla konta bazy danych Azure rozwiązania Cosmos.
 
-### <a name="what-is-the-relationship-of-service-endpoint-with-respect-to-network-security-group-nsg-rules"></a>Co to jest relacja punktu końcowego usługi w odniesieniu do zasad grupy zabezpieczeń sieci (NSG)?  
+### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>Co to jest relacja między reguły punktu końcowego usługi i grupy zabezpieczeń sieci (NSG)?  
 
-Grupa NSG dla bazy danych Azure rozwiązania Cosmos reguła zezwala restric dostępu tylko do zakresu adresów IP DB rozwiązania Cosmos platformy Azure.
+Reguły NSG w usłudze Azure DB rozwiązania Cosmos pozwalają ograniczyć dostęp do określonego zakresu adresów IP DB rozwiązania Cosmos platformy Azure. Jeśli chcesz zezwolić na dostęp do wystąpienia bazy danych Azure rozwiązania Cosmos, który znajduje się w określonej [region](https://azure.microsoft.com/global-infrastructure/regions/), można określić region w następującym formacie: 
+
+    AzureCosmosDB.<region name>
+
+Aby dowiedzieć się więcej na temat NSG tagów, zobacz [tagi usługi sieci wirtualnej](../virtual-network/security-overview.md#service-tags) artykułu. 
   
 ### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>Co to jest relacja między IP zapory i możliwości punkt końcowy usługi sieci wirtualnej?  
 

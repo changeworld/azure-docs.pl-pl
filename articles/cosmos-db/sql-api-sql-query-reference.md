@@ -4,20 +4,18 @@ description: Dokumentacja referencyjna dla języka zapytań usługi Azure rozwi�
 services: cosmos-db
 author: LalithaMV
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798835"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Odwołania do składni rozwiązania Cosmos bazy danych SQL Azure
 
@@ -671,7 +669,7 @@ ORDER BY <sort_specification>
     |\<nonterminal >|Nonterminal, definiowane osobno.|  
     |\<nonterminal >:: =|Definicja składni nonterminal.|  
     |other_terminal|Terminali (token) opisano szczegółowo w wyrazy.|  
-    |identyfikator|Identyfikator. Umożliwia następujące znaki: a-z A-Z 0-9 _First znak nie może być cyfrą.|  
+    |Identyfikator|Identyfikator. Umożliwia następujące znaki: a-z A-Z 0-9 _First znak nie może być cyfrą.|  
     |"string"|Ciąg w cudzysłowie. Umożliwia dowolny prawidłowy ciąg. Zobacz opis literał.|  
     |'symbol'|Literał symbol, który jest częścią składni.|  
     |&#124;(pionowa kreska)|Alternatywy dla elementy składni. Można użyć tylko jednej z określonych elementów.|  

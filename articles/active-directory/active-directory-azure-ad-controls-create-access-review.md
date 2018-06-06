@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
-ms.author: billmath
-ms.openlocfilehash: 784a461421420af403a43f944d6f63aef3ccc152
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 00d8c7f9c4b335f107f436041b027b4df8845267
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698268"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Tworzenie przeglądu dostępu do członków grupy lub dostęp do aplikacji z usługą Azure AD
 
@@ -34,9 +35,9 @@ Przydziały dostępu nieodświeżone "", gdy użytkownicy mają dostęp, któryc
 
 5. Ustaw datę rozpoczęcia. Domyślnie Przegląd dostępu występuje raz, rozpoczyna się w tym samym czasie, w którym zostały utworzone, a kończy w ciągu miesiąca. Zmienisz rozpoczęcia i daty zakończenia dostępu Przejrzyj start w przyszłości i ostatnio jednak ma wiele dni.
 
-6. Aby cykliczny dostęp do przeglądu, zmiana częstotliwości z jeden raz w celu co tydzień, co miesiąc, co kwartał lub co rok i umożliwia zdefiniowanie liczby dni, każdego przeglądu serii cyklicznych będzie runbe Otwórz dla danych wejściowych recenzentów suwaka lub pola tekstowego. Na przykład tnie maksymalny czas trwania dla można ustawić dla przeglądu miesięcznych jest 27 dni, aby uniknąć nakładania się przeglądy. 
+6. Aby cykliczny dostęp do przeglądu, zmiana częstotliwości z jeden raz w celu co tydzień, co miesiąc, co kwartał lub co rok i użyj suwaka lub tekst pola, aby określić, ile dni każdego przeglądu serii cyklicznych będzie otwarte dla danych wejściowych recenzentów. Na przykład maksymalny czas trwania dla można ustawić dla miesięczne przeglądu jest 27 dni, aby uniknąć nakładania się recenzji. 
 
-7.  Cykl przeglądu dostępu może być zakończona na 3 sposoby: działa w sposób ciągły zacząć przeglądami nieograniczony czas lub do określonej daty lub po zdefiniowanej liczby wystąpień została ukończona. Użytkownik lub administrator globalny innej można zatrzymać serii po utworzeniu, zmieniając datę w obszarze Ustawienia, aby go kończy się w tym dniu.
+7.  Cykl przeglądu dostępu może być zakończona na 3 sposoby: działa w sposób ciągły zacząć przeglądami przez czas nieokreślony, aż do określonej daty lub po ukończeniu zdefiniowanej liczby wystąpień. Użytkownik lub administrator globalny innej można zatrzymać serii po utworzeniu, zmieniając datę w obszarze Ustawienia, aby go kończy się w tym dniu.
 
 8. Przeglądy dostępu może być członkami grupy lub użytkowników, którzy są przypisani do aplikacji. Dostęp można dodatkowo zakresu przeglądu do przejrzenia tylko użytkownicy gościa który są elementami członkowskimi (lub przypisane do aplikacji), zamiast przegląd wszystkich użytkowników, którzy są członkami lub mają dostęp do aplikacji.
 
@@ -46,11 +47,11 @@ Przydziały dostępu nieodświeżone "", gdy użytkownicy mają dostęp, któryc
 
 ### <a name="configuring-an-access-review-with-auto-apply"></a>Konfigurowanie Przegląd dostępu przy użyciu auto-apply
 
-1.  Rozwiń menu dla po zakończeniu ustawień, andsettings i Włącz automatyczne stosowanie wyniki do zasobu. 
+1.  Rozwiń menu dla po zakończeniu ustawienia i Włącz automatyczne stosowanie wyniki do zasobu. 
 
-2.  W przypadkach, gdy użytkownicy zostały nie przejrzane przez rewidenta w okresie przeglądu, może mieć Przegląd dostępu przybrać zalecenie systemu (jeśli jest włączona) odmawianie/zatwierdzanie nieprzerwanego dostępu użytkownika, lub pozostaw ich dostęp bez zmian lub usuń ich dostęp. To nie ma wpływu użytkowników, którzy zostały sprawdzone recenzentów ręcznie — Jeśli weryfikacja końcowego decyzji jest Odmów, dostęp użytkownika zostaną usunięte.
+2.  W przypadkach, gdy użytkownicy zostały nie przejrzane przez rewidenta w okresie przeglądu, może mieć Przegląd dostępu przybrać zalecenie systemu (jeśli jest włączona) odmawianie/zatwierdzanie nieprzerwanego dostępu użytkownika, pozostaw ich dostęp bez zmian lub usuń ich dostęp. To nie ma wpływu użytkowników, którzy zostały sprawdzone recenzentów ręcznie — Jeśli weryfikacja końcowego decyzji jest Odmów, dostęp użytkownika zostaną usunięte.
 
-3.  Aby włączyć opcję, aby wykonać zalecenia należy recenzentów nie odpowiada, Pokaż zalecenia w ustawieniach zaawansowanych musi być włączony.
+3.  Aby włączyć opcję podjęcie zalecenia dotyczące osób dokonujących przeglądu nie powinny odpowiadać, rozwiń Zaawansowane ustawienia i Włącz Pokaż zalecenia.
  
 4.  Na koniec kliknij **Start**.
 
@@ -74,5 +75,3 @@ Gdy Przegląd dostępu została uruchomiona, usługi Azure AD automatycznie wysy
 Jeśli jest to jednorazowa przeglądu, następnie po okresu przeglądu dostępu lub administrator zatrzymuje Przegląd dostępu, postępuj zgodnie z instrukcjami [zakończenia przeglądu dostępu](active-directory-azure-ad-controls-complete-access-review.md) aby zobaczyć i zastosować wyniki.  
 
 Jeśli jest to serii przeglądu, następnie przejdź do **Przejrzyj historię** na stronie serii dostępu do przeglądu wybierz przeglądu ukończone dostępu.  Przeglądy nadchodzących zostaną wyświetlone w obszarze **zaplanowane przeglądu**, gdzie można edytować wartość czasu i dodaniu lub usunięciu recenzentów recenzji poszczególnych.
-
-

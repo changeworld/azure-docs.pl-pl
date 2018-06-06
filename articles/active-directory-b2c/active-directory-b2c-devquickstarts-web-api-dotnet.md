@@ -1,21 +1,21 @@
 ---
-title: Wywołaj zabezpieczonym interfejs api sieci web ASP.NET Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Wywołaj zabezpieczonych ASP.NET web api w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Jak utworzyć aplikację sieci Web .NET i wywoływanie sieci web interfejsu api przy użyciu tokenów dostępu do usługi Azure Active Directory B2C i OAuth 2.0.
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 75ae88898d3d6b275ec462e865347056305fd666
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 39603cf103a8ff2656c76843aeae36b17936d13a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712406"
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Usługa Azure AD B2C: Wywołanie interfejsu API sieci web .NET z aplikacji sieci web .NET
 

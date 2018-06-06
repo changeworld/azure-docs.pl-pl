@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: e22ca4bd5b749e8752f800590938199e06abbd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 42f1bb247533fafbc6947e77cc1a1f07a482fd45
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700506"
 ---
 # <a name="develop-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Opracowywanie płatną lub licencjonowanych niestandardowych składników środowiska uruchomieniowego integracji usług SSIS Azure
 
@@ -37,7 +38,7 @@ Na poniższym diagramie przedstawiono typowej instalacji, aktywacji i powiązani
 ![Instalacja składników licencjonowane](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
 ## <a name="instructions"></a>Instrukcje
-1. Niezależni dostawcy oprogramowania mogą oferować ich licencjonowane składniki w różne jednostki magazynowe lub warstw (na przykład, jeden węzeł, maksymalnie 5 węzłów, maksymalnie 10 węzły i tak dalej). Niezależnego dostawcy oprogramowania zawiera odpowiedni klucz produktu, gdy klienci zakupu produktu. Niezależny dostawca oprogramowania można też podać kontener blob magazynu Azure, zawierający skrypt instalacyjny niezależnego dostawcy oprogramowania i skojarzone pliki. Klientów można skopiować te pliki do ich własnych kontenera magazynu oraz zmodyfikować je za pomocą własnych kluczy produktu (na przykład uruchamiając `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Klientów można następnie udostępnić lub ponownie skonfigurować IR Azure SSIS z identyfikatora URI połączenia SAS ich kontenera jako parametr. Aby uzyskać więcej informacji, zobacz [Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure](how-to-configure-azure-ssis-ir-custom-setup.md).
+1. Niezależni dostawcy oprogramowania mogą oferować ich licencjonowane składniki w różne jednostki magazynowe lub warstw (na przykład, jeden węzeł, maksymalnie 5 węzłów, maksymalnie 10 węzły i tak dalej). Niezależnego dostawcy oprogramowania zawiera odpowiedni klucz produktu, gdy klienci zakupu produktu. Niezależny dostawca oprogramowania można też podać kontener blob magazynu Azure, zawierający skrypt instalacyjny niezależnego dostawcy oprogramowania i skojarzone pliki. Klientów można skopiować te pliki do ich własnych kontenera magazynu oraz zmodyfikować je za pomocą własnych kluczy produktu (na przykład uruchamiając `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Klientów można następnie udostępnić lub ponownie skonfigurować IR Azure SSIS z identyfikatora URI połączenia SAS ich kontenera jako parametr. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 2. Gdy IR Azure SSIS jest udostępnione lub ponownie skonfigurować, niezależnego dostawcy oprogramowania, Instalator zostanie uruchomiony na każdym węźle, aby zapytanie dotyczące zmiennych środowiskowych systemu Windows, `SSIS_CLUSTERID` i `SSIS_CLUSTERNODECOUNT`. Następnie IR Azure SSIS przesyła jego identyfikator klastra i klucz produktu licencjonowanego produktu do serwera aktywacji niezależnego dostawcy oprogramowania do wygenerowania klucza aktywacji.
 
@@ -70,6 +71,9 @@ Na poniższym diagramie przedstawiono typowej instalacji, aktywacji i powiązani
                                                                                                                                
     }
     ```
+## <a name="isv-partners"></a>Partnerzy niezależnego dostawcy oprogramowania
+
+Można znaleźć listy partnerów niezależnego dostawcy oprogramowania, które zostały dostosowane swoich składników i rozszerzenia do IR Azure SSIS na końcu ten wpis w blogu - [Enterprise Edition, ustawienia niestandardowe i 3 rozszerzalności firm dla SSIS w ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

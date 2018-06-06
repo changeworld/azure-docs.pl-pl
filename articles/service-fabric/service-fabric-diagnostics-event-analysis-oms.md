@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: b51f7dc43f390152b2b0be223541e381bbddd3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1552fbe66f7bad219d8aea8a3f208b0fe69cdf2b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716061"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji z analizy dzienników
 
@@ -36,17 +37,15 @@ Po odebraniu danych przez analizy dzienników, platforma Azure ma kilka *rozwią
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Dostęp do rozwiązania analizy sieci szkieletowej usług
 
-1. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz zasób **ServiceFabric\<nameOfOMSWorkspace\>**  i przejdź do strony Przegląd.
+1. W portalu Azure przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług.
 
-2. Na stronie przeglądu kliknij łącze u góry, aby przejść do portalu OMS
+2. Wybierz zasób **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-    ![Łącze do portalu OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
+2. Podsumowując zobaczysz Kafelki w formie wykresu dla każdego z rozwiązań włączone, w tym dla sieci szkieletowej usług. Kliknij przycisk **sieci szkieletowej usług** graph (pierwszy obraz poniżej) w dalszym ciągu rozwiązania analizy sieci szkieletowej usług (drugi obraz poniżej).
 
-3. Jesteś teraz w portalu OMS i można wyświetlić rozwiązania, które aktywowano. Kliknij na wykresie zatytułowany sieci szkieletowej usług (pierwszy obraz poniżej) do pobrania podjąć w celu rozwiązania sieci szkieletowej usług (drugi obraz poniżej)
+    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
-
-    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
+    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej usług. Jest to widok miniatur, co się dzieje w klastrze. Jeśli włączono diagnostyki po utworzeniu klastra można przejrzeć zdarzenia dla 
 
@@ -57,9 +56,9 @@ Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej u
 >[!NOTE]
 >Oprócz operacyjne kanału bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowania konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
 
-### <a name="view-operational-events-including-actions-on-nodes"></a>Wyświetl zdarzenia operacyjne łącznie z czynności w węzłach
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Wyświetl zdarzenia sieci szkieletowej usług łącznie z czynności w węzłach
 
-1. Na stronie usługi sieć szkieletowa Analytics w portalu OMS kliknij na wykresie dla kanału działa
+1. Na stronie usługi sieć szkieletowa Analytics kliknij na wykresie dla **zdarzenia sieci szkieletowej usług**.
 
     ![Kanał operacyjne rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
 
@@ -78,7 +77,7 @@ Umożliwia wysyłanie zapytań o wiele więcej pól, takich jak określonych wę
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Usługa widoku sieci szkieletowej usług niezawodnych i aktora zdarzenia
 
-1. Na stronie usługi sieć szkieletowa Analytics w portalu OMS kliknij wykres dla niezawodne usługi
+1. Na stronie usługi sieć szkieletowa Analytics kliknij wykresu dla **niezawodne usługi**.
 
     ![Niezawodne usługi rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
 

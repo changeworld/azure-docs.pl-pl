@@ -3,22 +3,20 @@ title: Metryki kwerendy SQL dla interfejsu API Azure rozwiązania Cosmos bazy da
 description: Więcej informacji na temat sposobu Instrumentacja i debugowania wydajność kwerend SQL żądań bazy danych Azure rozwiązania Cosmos.
 keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: b2fa8e8f-7291-45a3-9bd1-7284ed9077f8
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 00e50c3b2f4dc50e43aac03b162bc637f0821656
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ed0008f4b574691387d6e0ee0300b5f05f1ec1b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798699"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Dostrajanie wydajności kwerend z bazy danych Azure rozwiązania Cosmos
 
@@ -159,7 +157,7 @@ Po przesłaniu zapytania więcej niż 200 na sekundę żądań przychodzących l
 Aby dowiedzieć się więcej na temat jednostek żądania, zobacz [jednostek żądania](request-units.md).
 
 ### <a name="partitioning-and-partition-keys"></a>Partycjonowanie i kluczy partycji
-Bazy danych rozwiązania Cosmos platformy Azure zwykle zapytania wykonywanie w następującej kolejności z najszybszym/najbardziej efektywne do wolniejszej/mniej skuteczne. 
+W usłudze Azure Cosmos DB zapytania są przeważnie wykonywane w kolejności od najszybszego/nabardziej efektywnego do wolniejszego/mniej efektywnego. 
 
 * Pobierz klucz jednej partycji i klucz
 * Zapytanie z klauzuli filtru dla klucza jednej partycji
@@ -174,7 +172,7 @@ Aby dowiedzieć się więcej na temat partycjonowania i kluczy partycji, zobacz 
 Zobacz [porady dotyczące wydajności](performance-tips.md) i [testowania wydajności](performance-testing.md) instrukcje uzyskać najlepszą wydajność klienta z bazy danych Azure rozwiązania Cosmos. W tym przy użyciu najnowszych zestawów SDK, konfigurowanie konfiguracje specyficzne dla platformy, takich jak domyślną liczbę połączeń, częstotliwość operacji wyrzucania elementów bezużytecznych i opcji łączności lekkie, takich jak bezpośrednio/TCP. 
 
 
-#### <a name="max-item-count"></a>Liczba maksymalna liczba elementów.
+#### <a name="max-item-count"></a>Maksymalna liczba elementów
 Dla zapytań, wartość `MaxItemCount` może mieć znaczący wpływ na czas kwerendy end-to-end. Zwraca większa niż liczba elementów w każdej obiegu do serwera `MaxItemCount` (domyślnie: 100 elementów). To ustawienie wyższej wartości (wartość -1 jest maksymalną i zalecane) poprawia ogólną czasu trwania kwerendy poprzez ograniczenie liczby rund między serwerem a klientem, szczególnie w przypadku zapytań dotyczących dużych zestawów wyników.
 
 ```cs
@@ -223,7 +221,7 @@ Sekcję metryki wykonywania zapytania wyjaśniono, jak pobrać czas wykonywania 
 Zobacz [Konfigurowanie zasady indeksowania](indexing-policies.md) indeksowania ścieżki, rodzajów i tryby i ich wpływ na wykonanie kwerendy. Domyślnie zasady indeksowania używa skrótu indeksowania dla ciągów, które obowiązuje dla zapytań o równość, ale nie dla zakresu zapytania/order przez zapytania. Jeśli potrzebujesz kwerendy zakresu dla ciągów, zaleca się określenie zakresu typu indeksu dla wszystkich ciągów. 
 
 ## <a name="query-execution-metrics"></a>Metryki wykonywania kwerendy
-Szczegółowe metryki na wykonanie kwerendy można uzyskać przez przekazywanie opcjonalny `x-ms-documentdb-populatequerymetrics` nagłówka (`FeedOptions.PopulateQueryMetrics` zestawu .NET SDK). Wartość zwracana w `x-ms-documentdb-query-metrics` ma następujące pary klucz wartość przeznaczone do zaawansowanego rozwiązywania problemów z wykonywania zapytania. 
+Szczegółowe metryki na wykonanie kwerendy można uzyskać przez przekazywanie opcjonalny `x-ms-documentdb-populatequerymetrics` nagłówka (`FeedOptions.PopulateQueryMetrics` zestawu .NET SDK). Wartość zwrócona w `x-ms-documentdb-query-metrics` ma następujące pary klucz-wartość przeznaczone do zaawansowanego rozwiązywania problemów dotyczących wykonywania zapytania. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(

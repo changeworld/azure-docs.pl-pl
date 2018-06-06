@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5940be8c13a85e256055d6bd6362c9cd93323ee4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5341df808e65dda9ed68c5cda633d6d8e19d9fc9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723110"
 ---
 Utworzenie maszyny wirtualnej (VM) platformy Azure wymaga utworzenia [sieci wirtualnej](../articles/virtual-network/virtual-networks-overview.md) (VNet) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób dostępu do maszyn wirtualnych w sieci wirtualnej. Ważne jest [zaplanowanie tworzenia zasobów](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) i dokładne zapoznanie się z [limitami zasobów sieciowych](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -170,4 +171,4 @@ Dostępne są także samouczki dotyczące maszyn wirtualnych równoważenia obci
 
 - Dowiedz się, jak skonfigurować [trasy zdefiniowane przez użytkownika i przekazywanie adresów IP](../articles/virtual-network/virtual-networks-udr-overview.md). 
 - Dowiedz się, jak skonfigurować [połączenia między sieciami wirtualnymi](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
-- Dowiedz się, jak [rozwiązywać problemy z trasami](../articles/virtual-network/virtual-network-routes-troubleshoot-portal.md).
+- Dowiedz się, jak [rozwiązywać problemy z trasami](../articles/virtual-network/diagnose-network-routing-problem.md).

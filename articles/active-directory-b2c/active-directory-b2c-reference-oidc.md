@@ -1,21 +1,21 @@
 ---
-title: Sieci Web logowania z OpenID Connect - usługi Azure AD B2C | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji sieci web przy użyciu usługi Azure Active Directory implementacji protokołu uwierzytelniania OpenID Connect
+title: Sieci Web logowania z OpenID Connect w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Tworzenie aplikacji sieci web przy użyciu usługi Azure Active Directory implementacji protokołu uwierzytelniania OpenID Connect.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e787ea36ab5099705f151504385dd5dc97029e37
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ad4de055e4f951beb441af90c37ada11ad0abfb0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711294"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Usługa Azure Active Directory B2C: Sieci Web logowania z OpenID Connect
 OpenID Connect to protokół uwierzytelniania, rozszerzający OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników w aplikacji sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) wdrażania protokołu OpenID Connect, można zewnętrzny rejestrację, logowanie i wykonywania innych zarządzania tożsamościami w aplikacji sieci web do usługi Azure Active Directory (Azure AD). Ten przewodnik przedstawia, jak to zrobić w sposób niezależny od języka. Przedstawiono sposób wysyłania i odbierania wiadomości HTTP bez przy użyciu dowolnej z naszych bibliotekach open source.
@@ -78,7 +78,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id |Wymagane |Identyfikator aplikacji, która [portalu Azure](https://portal.azure.com/) przypisany do aplikacji. |
 | response_type |Wymagane |Typ odpowiedzi muszą zawierać token Identyfikatora dla OpenID Connect. Jeśli aplikacja sieci web musi również tokenów do wywoływania interfejsu API sieci web, możesz użyć `code+id_token`, jak firma Microsoft zostało wykonane w tym miejscu. |
 | redirect_uri |Zalecane |`redirect_uri` Parametr aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania. Musi dokładnie odpowiadać jeden z `redirect_uri` parametrów, które zarejestrowano w portalu, z wyjątkiem tego, że musi być zakodowane w adresie URL. |
-| Zakres |Wymagane |Rozdzieloną spacjami listę zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, oba uprawnienia, które są żądane. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie tokeny Identyfikatora, (powszechnym na tym w dalszej części tego artykułu). `offline_access` Zakres jest opcjonalne dla aplikacji sieci web. Wskazuje, że aplikacja, należy *token odświeżania* długotrwałe dostępu do zasobów. |
+| scope |Wymagane |Rozdzieloną spacjami listę zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, oba uprawnienia, które są żądane. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie tokeny Identyfikatora, (powszechnym na tym w dalszej części tego artykułu). `offline_access` Zakres jest opcjonalne dla aplikacji sieci web. Wskazuje, że aplikacja, należy *token odświeżania* długotrwałe dostępu do zasobów. |
 | response_mode |Zalecane |Metody, które mają być używane do wysyłania wynikowy kod autoryzacji z powrotem do aplikacji. Może być albo `query`, `form_post`, lub `fragment`.  `form_post` Najlepiej zalecany jest tryb odpowiedzi. |
 | state |Zalecane |Wartość zawarte w żądaniu, który jest także zwracany w odpowiedzi tokenu. Można go ciąg ma zawartość. Losowo generowany unikatową wartość jest zwykle używany zapobiegania fałszerstwie żądania międzywitrynowego. Stan służy także do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takich jak strony, które były na. |
 | Identyfikator jednorazowy |Wymagane |Wartość zawarte w żądaniu (wygenerowany przez aplikację), która zostanie uwzględniona w jego identyfikator tokenu jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby ograniczyć ataków powtórzeń tokenów. Wartość jest zazwyczaj losowego unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
@@ -101,7 +101,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | Parametr | Opis |
 | --- | --- |
 | żądaniu |Token ID żądanej aplikacji. Token identyfikator służy do weryfikacji tożsamości użytkownika i rozpocząć sesję użytkownika. Więcej informacji na temat identyfikator tokeny i ich zawartość znajdują się w [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md). |
-| kod |Kod autoryzacji żądanej aplikacji, jeśli używasz `response_type=code+id_token`. Aplikację można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kody autoryzacji są bardzo krótkim okresie. Zazwyczaj wygasną po około 10 minut. |
+| Kod |Kod autoryzacji żądanej aplikacji, jeśli używasz `response_type=code+id_token`. Aplikację można użyć kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kody autoryzacji są bardzo krótkim okresie. Zazwyczaj wygasną po około 10 minut. |
 | state |Jeśli `state` parametru jest zawarte w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikację należy sprawdzić, czy `state` wartości żądań i odpowiedzi są identyczne. |
 
 Odpowiedzi na błędy mogą być również wysyłane do `redirect_uri` parametru, dzięki czemu aplikacja może je odpowiednią obsługę:
@@ -172,8 +172,8 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | p |Wymagane |Zasady, które zostało użyte do uzyskania kod autoryzacji. Nie można użyć różnych zasad w tym żądaniu. Należy pamiętać, Dodaj ten parametr ciągu zapytania nie `POST` treści. |
 | client_id |Wymagane |Identyfikator aplikacji, która [portalu Azure](https://portal.azure.com/) przypisany do aplikacji. |
 | Typ grant_type |Wymagane |Typ grant, który musi być `authorization_code` dla przepływu kodu autoryzacji. |
-| Zakres |Zalecane |Rozdzieloną spacjami listę zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, oba uprawnienia, które są żądane. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie parametrów w żądaniu. Może służyć do uzyskania tokenów do własnych aplikacji zaplecza interfejsu API sieci web, która jest reprezentowana przez ten sam identyfikator aplikacji, co klient. `offline_access` Zakresu wskazuje, że aplikacji będą potrzebne token odświeżania długotrwałe dostępu do zasobów. |
-| kod |Wymagane |Uzyskanego w pierwszego etap przepływu kodu autoryzacji. |
+| scope |Zalecane |Rozdzieloną spacjami listę zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, oba uprawnienia, które są żądane. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie parametrów w żądaniu. Może służyć do uzyskania tokenów do własnych aplikacji zaplecza interfejsu API sieci web, która jest reprezentowana przez ten sam identyfikator aplikacji, co klient. `offline_access` Zakresu wskazuje, że aplikacji będą potrzebne token odświeżania długotrwałe dostępu do zasobów. |
+| Kod |Wymagane |Uzyskanego w pierwszego etap przepływu kodu autoryzacji. |
 | redirect_uri |Wymagane |`redirect_uri` Parametr aplikacji, w którym odebrano kod autoryzacji. |
 | client_secret |Wymagane |Klucz tajny aplikacji, która wygenerowała w [portalu Azure](https://portal.azure.com/). Ten klucz tajny aplikacji jest ważny artefaktu. Użytkownik powinien Zapisz w bezpiecznej lokalizacji na serwerze. Należy również Obróć ten klucz tajny klienta w regularnych odstępach czasu. |
 
@@ -194,7 +194,7 @@ Odpowiedź oznaczająca Powodzenie tokenu wygląda następująco:
 | not_before |Czas, w którym token jest uznawany za ważny w czasie epoki. |
 | token_type |Wartość typu tokenu. Jedynym typem, który obsługuje usługę Azure AD jest `Bearer`. |
 | access_token |Podpisany token JWT żądana. |
-| Zakres |Zakresy, dla których token jest prawidłowy. Mogą być one używane do buforowania tokeny na potrzeby późniejszego użycia. |
+| scope |Zakresy, dla których token jest prawidłowy. Mogą być one używane do buforowania tokeny na potrzeby późniejszego użycia. |
 | expires_in |Długość czasu, przez który token dostępu jest nieprawidłowy (w sekundach). |
 | refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać ten token, aby uzyskać dodatkowe tokeny, po wygaśnięciu tokenu bieżącego. Odśwież tokeny są to długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej informacji, zapoznaj się [odwołania do tokenu usługi B2C](active-directory-b2c-reference-tokens.md). Uwaga musi użycie zakresu `offline_access` autoryzacji i żądania tokenów w celu odbierania token odświeżania. |
 
@@ -237,7 +237,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | p |Wymagane |Zasady, które zostało użyte do uzyskania oryginalnego token odświeżania. Nie można użyć różnych zasad w tym żądaniu. Należy pamiętać, Dodaj ten parametr, ciąg zapytania, a nie do treść wpisu. |
 | client_id |Wymagane |Identyfikator aplikacji, która [portalu Azure](https://portal.azure.com/) przypisany do aplikacji. |
 | Typ grant_type |Wymagane |Typ grant, który musi być token odświeżania dla tego etap przepływu kodu autoryzacji. |
-| Zakres |Zalecane |Rozdzieloną spacjami listę zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, oba uprawnienia, które są żądane. `openid` Uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie tokenów identyfikator wskazuje zakres. Może służyć do uzyskania tokenów do własnych aplikacji zaplecza interfejsu API sieci web, która jest reprezentowana przez ten sam identyfikator aplikacji, co klient. `offline_access` Zakresu wskazuje, że aplikacji będą potrzebne token odświeżania długotrwałe dostępu do zasobów. |
+| scope |Zalecane |Rozdzieloną spacjami listę zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, oba uprawnienia, które są żądane. `openid` Uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie tokenów identyfikator wskazuje zakres. Może służyć do uzyskania tokenów do własnych aplikacji zaplecza interfejsu API sieci web, która jest reprezentowana przez ten sam identyfikator aplikacji, co klient. `offline_access` Zakresu wskazuje, że aplikacji będą potrzebne token odświeżania długotrwałe dostępu do zasobów. |
 | redirect_uri |Zalecane |`redirect_uri` Parametr aplikacji, w którym odebrano kod autoryzacji. |
 | refresh_token |Wymagane |Oryginalny token odświeżania uzyskanego w drugi etap przepływu. Uwaga musi użycie zakresu `offline_access` autoryzacji i żądania tokenów w celu odbierania token odświeżania. |
 | client_secret |Wymagane |Klucz tajny aplikacji, która wygenerowała w [portalu Azure](https://portal.azure.com/). Ten klucz tajny aplikacji jest ważny artefaktu. Użytkownik powinien Zapisz w bezpiecznej lokalizacji na serwerze. Należy również Obróć ten klucz tajny klienta w regularnych odstępach czasu. |
@@ -259,7 +259,7 @@ Odpowiedź oznaczająca Powodzenie tokenu wygląda następująco:
 | not_before |Czas, w którym token jest uznawany za ważny w czasie epoki. |
 | token_type |Wartość typu tokenu. Jedynym typem, który obsługuje usługę Azure AD jest `Bearer`. |
 | access_token |Podpisany token JWT żądana. |
-| Zakres |Zakres, który token jest prawidłowy, która może służyć do buforowania tokeny na potrzeby późniejszego użycia. |
+| scope |Zakres, który token jest prawidłowy, która może służyć do buforowania tokeny na potrzeby późniejszego użycia. |
 | expires_in |Długość czasu, przez który token dostępu jest nieprawidłowy (w sekundach). |
 | refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać ten token, aby uzyskać dodatkowe tokeny, po wygaśnięciu tokenu bieżącego.  Odśwież tokeny są to długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej szczegółów, zobacz [odwołania do tokenu usługi B2C](active-directory-b2c-reference-tokens.md). |
 

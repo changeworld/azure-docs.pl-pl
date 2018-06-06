@@ -4,24 +4,25 @@ description: Dowiedz się, jak rejestrowanie i wyrejestrowywanie systemu Windows
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 9367b2bdb1bb77725356d2be41d5e44d900cb927
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738296"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Zarządzanie serwerami zarejestrowanych za pomocą synchronizacji plików Azure (wersja zapoznawcza)
-Usługa Azure File Sync (wersja zapoznawcza) umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Jest to realizowane poprzez przekształcanie systemów Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
+Usługa Azure File Sync (wersja zapoznawcza) umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcanie systemach Windows Servers przeznaczonych do szybkiego pamięci podręcznej udziału plików na platformę Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
 Artykule przedstawiono sposób rejestrowania i zarządzanie serwerem za pomocą usługi synchronizacji magazynu. Zobacz [Wdrażanie synchronizacji plików Azure (wersja zapoznawcza)](storage-sync-files-deployment-guide.md) informacji na temat wdrażania synchronizacji plików Azure end-to-end.
 
@@ -113,14 +114,15 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Wyrejestruj serwer z magazynu usługi synchronizacji
 Istnieje kilka czynności, które są wymagane do wyrejestrowania serwera z usługą synchronizacji magazynu. Spójrzmy how prawidłowo wyrejestrować serwera.
 
-#### <a name="optional-recall-all-tiered-data"></a>(Opcjonalnie) Odwołaj wszystkie dane warstwowych
-Po włączeniu dla serwera punktu końcowego w chmurze będzie warstw *warstwy* plików do sieci udziały plików platformy Azure. Dzięki temu lokalnymi udziały plików do działania jako pamięci podręcznej, zamiast pełną kopię zestawu danych, aby wydajnie korzystać z miejsca na serwerze plików. Jednak jeśli punktu końcowego serwera zostanie usunięty z plikami warstwowych nadal lokalnie na serwerze, pliki staną się można niedostępne. W związku z tym dalsze dostęp do pliku, najpierw odwołać wszystkie pliki warstwowy z plików Azure przed kontynuowaniem wyrejestrowania. 
+> [!Warning]  
+> Nie należy próbować Rozwiązywanie problemów z synchronizacji, chmury, dodając funkcje warstw lub dowolnego aspektu synchronizacji plików Azure wyrejestrowywania i rejestrowanie serwera lub usunięcie i ponowne utworzenie punktów końcowych serwera, chyba że jawnie zalecił pracownikiem firmy Microsoft. Wyrejestrowywanie serwera i usuwanie punktów końcowych serwera jest operacją destrukcyjnego i warstwowego pliki w woluminach z punktami końcowymi serwera zostanie nie "ponownie połączony" do lokalizacji w udziale plików na platformę Azure po zarejestrowanego serwera i serwera punkty końcowe utworzone ponownie, czego skutkiem będzie błędy synchronizacji. Należy również zauważyć, warstwowych pliki, które znajdują się poza nazw punktu końcowego serwera mogą być trwale utracone. Pliki warstwowych może znajdować się w ramach serwera punktów końcowych, Obsługa poziomów w chmurze nawet wtedy, gdy nigdy nie został włączony.
 
-Można to zrobić za pomocą polecenia cmdlet programu PowerShell w sposób przedstawiony poniżej:
+#### <a name="optional-recall-all-tiered-data"></a>(Opcjonalnie) Odwołaj wszystkie dane warstwowych
+Jeśli chcesz pliki, które są aktualnie warstwowej być dostępne po usunięciu synchronizacji plików Azure (tj. jest to produkcji, nie testu, środowisko) odwołania wszystkich plików na każdym woluminie zawierającym punkty końcowe serwera. Wyłącz chmury, dodając funkcje warstw dla wszystkich punktów końcowych serwera, a następnie uruchom następujące polecenie cmdlet programu PowerShell:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  

@@ -1,22 +1,23 @@
 ---
-title: "Sprawdzaj dostęp za pomocą usługi Azure AD dostęp przeglądami | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i sprawdzaj dostęp przy użyciu przeglądami dostępu do usługi Azure Active Directory."
+title: Sprawdzaj dostęp za pomocą usługi Azure AD dostęp przeglądami | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i sprawdzaj dostęp przy użyciu przeglądami dostępu do usługi Azure Active Directory.
 services: active-directory
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: billmath
-ms.openlocfilehash: 98658a2b9fdd0ede98b3f6c10a19af527a8677cc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 3688dbc595d7980fee780cac55cb615911b93316
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698054"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>Przejrzyj dostępu z usługą Azure AD dostęp do przeglądu
 
@@ -40,7 +41,7 @@ Dla każdego wiersza na liście można zdecydować, czy do zatwierdzenia lub odm
 
 Osoba dokonująca przeglądu może wymagać, aby podać uzasadnienie zatwierdzanie nieprzerwanego dostępu lub członkostwa w grupie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Użytkownikowi odmówiono dostępu nie są natychmiast usuwane. Można usunąć, po zakończeniu działania przeglądu, lub kiedy administrator przestaje przeglądu. Jeśli chcesz zmienić odpowiedź, a użytkownik wcześniej odmowy zatwierdzenia lub odmowy zatwierdzone wcześniej użytkownika, zaznacz wiersz, zresetuj odpowiedzi, a następnie wybierz nową odpowiedź. Aby wykonać ten krok, dopiero po zakończeniu Przegląd dostępu.
 

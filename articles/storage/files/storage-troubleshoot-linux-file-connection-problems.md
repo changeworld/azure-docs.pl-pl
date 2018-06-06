@@ -3,9 +3,9 @@ title: Rozwiązywanie problemów plików Azure w systemie Linux | Dokumentacja f
 description: Rozwiązywanie problemów plików Azure w systemie Linux
 services: storage
 documentationcenter: ''
-author: genlin
-manager: willchen
-editor: na
+author: wmgries
+manager: aungoo
+editor: tamram
 tags: storage
 ms.service: storage
 ms.workload: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: wgries
+ms.openlocfilehash: 4a80b868529b18875100d8205fd8c3a664b6b9e2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738368"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów plików Azure w systemie Linux
 
@@ -86,7 +87,7 @@ Niektóre dystrybucje systemu Linux nie jest jeszcze obsługiwany funkcji szyfro
 
 ### <a name="solution"></a>Rozwiązanie
 
-Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików platformy Azure z lokalnej lub w innym regionie Azure. Podczas publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. Jeśli klienta SMB systemu Linux nie obsługuje szyfrowania, Azure instalacji plików przy użyciu protokołu SMB 2.1 z maszyny Wirtualnej systemu Linux platformy Azure, który znajduje się w tym samym centrum danych, co konto magazynu plików.
+Funkcja szyfrowania protokołu SMB 3.0 dla systemu Linux została wprowadzona w 4.11 jądra. Ta funkcja umożliwia instalowanie udziału plików na platformę Azure z lokalnej lub w innym regionie Azure. Podczas publikowania ta funkcja została backported Ubuntu 17.04 i Ubuntu 16.10. Jeśli klienta SMB systemu Linux nie obsługuje szyfrowania, Azure instalacji plików przy użyciu protokołu SMB 2.1 z maszyny Wirtualnej systemu Linux platformy Azure, który znajduje się w tym samym centrum danych, co konto magazynu plików.
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Niska wydajność w udziale plików na platformę Azure zainstalowane na maszynie Wirtualnej systemu Linux
@@ -129,7 +130,7 @@ Użyj użytkownika konta magazynu do kopiowania plików:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Nie można połączyć lub instalowanie udziału plików platformy Azure
+## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Nie można połączyć lub instalowanie udziału plików na platformę Azure
 
 ### <a name="cause"></a>Przyczyna
 

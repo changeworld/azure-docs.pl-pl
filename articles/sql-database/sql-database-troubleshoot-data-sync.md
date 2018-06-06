@@ -3,17 +3,18 @@ title: Rozwiązywanie problemów z synchronizacji danych Azure SQL (wersja zapoz
 description: Sposoby rozwiązywania typowych problemów z synchronizacją danych SQL Azure (wersja zapoznawcza).
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757540"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Rozwiązywanie problemów z synchronizacją danych SQL (wersja zapoznawcza)
 
@@ -224,7 +225,7 @@ Zaktualizuj hasło agenta, aby bieżące hasło serwera:
 4. Na **synchronizacji danych SQL (wersja zapoznawcza) Agent Podgląd właściwości**, wybierz pozycję **Zaloguj** kartę.
 5. W **hasło** wprowadź hasło.
 6. W **Potwierdź hasło** należy ponownie wprowadzić hasło.
-7. Wybierz **Zastosuj**, a następnie wybierz **OK**.
+7. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
 8. W **usług** okna, kliknij prawym przyciskiem myszy **Agent synchronizacji danych SQL (wersja zapoznawcza) w wersji zapoznawczej** usługi, a następnie kliknij przycisk **Start**.
 9. Zamknij **usług** okna.
 
@@ -240,9 +241,8 @@ Przed kontynuowaniem sprawdź następujące warunki:
 
 -   Usługa synchronizacji danych SQL (wersja zapoznawcza) systemu Windows jest uruchomiona.  
 -   Konto usługi dla usługi systemu Windows w wersji zapoznawczej synchronizacji danych SQL (wersja zapoznawcza) ma dostęp do sieci.    
--   Agent klienta można skontaktować się z usługą lokalizatora. Sprawdź, czy następujący klucz rejestru ma wartość https://locator.sync.azure.com/LocatorServiceApi.svc:  
-    -   Na x86 komputera: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   Na x64 komputera: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   Wychodzące port 1433 jest otwarty w regule zapory lokalnej.
+-   Lokalny adres ip jest dodawany do serwera lub reguły zapory bazy danych dla bazy danych usługi synchronizacji metadanych.
 
 #### <a name="cause"></a>Przyczyna
 
@@ -384,7 +384,7 @@ Przyznanie dziennika na — jako — usługa poświadczeń dla konta użytkownik
 1. Przejdź do **Start** > **Panel sterowania** > **narzędzia administracyjne** > **zasady zabezpieczeń lokalnych**  >  **Zasad lokalnych** > **praw użytkownika zarządzania**.
 2. Wybierz **Zaloguj jako usługa**.
 3. W **właściwości** okno dialogowe Dodaj konto użytkownika.
-4. Wybierz **Zastosuj**, a następnie wybierz **OK**.
+4. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
 5. Zamknij wszystkie okna.
 
 ### <a name="a-database-has-an-out-of-date-status"></a>Bazy danych ma stan "Przestarzałe"
@@ -444,7 +444,7 @@ Aby uzyskać więcej informacji na temat synchronizacji danych SQL (wersja zapoz
 -   [Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-best-practices-data-sync.md)  
 -   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z analizy dzienników](sql-database-sync-monitor-oms.md)  
 -   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL (wersja zapoznawcza):  
-    -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)  
+    -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL (wersja zapoznawcza)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 

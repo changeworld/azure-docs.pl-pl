@@ -9,15 +9,17 @@ ms.author: jeffgilb
 ms.date: 07/05/2017
 ms.topic: article
 ms.prod: ''
-ms.service: azure
+ms.service: active-directory
+ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 552c777b9ae8b33bc624436aeecc8ef9e097cf3c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713793"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Podstawowe informacje na temat zarządzania tożsamość platformy Azure
 
@@ -30,17 +32,17 @@ Azure AD Premium jest oparta na chmurze tożsamościami i dostępem rozwiązanie
 Obejrzyj ten krótki film, aby szybko zapoznać zarządzania tożsamościami w usłudze Azure AD i ochrony:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Microsoft nie tylko udostępnia tożsamości, która przyjmuje wszędzie, ale także zestaw narzędzi umożliwiających zautomatyzowanie, zabezpieczania oraz zarządzania nimi IT w organizacji. Nawet po pojawienie przetwarzania w chmurze jest nadal żądanie zarządzanie i sterowanie IT zadań, takich jak pomoc techniczna wywołania do resetowania hasła użytkownika, Zarządzanie grupami użytkowników i żądań aplikacji. Komplikując dalsze czynności, pracownicy są teraz dostarczają swoich urządzeń osobistych do pracy i przy użyciu aplikacji SaaS łatwo dostępne. Dzięki temu zachowując kontrolę nad ich aplikacji firmowych centrów danych i chmurze publicznej platformy istotne wyzwanie.
+Microsoft nie tylko udostępnia tożsamości, która przyjmuje wszędzie, ale także zestaw narzędzi umożliwiających zautomatyzowanie, zabezpieczania oraz zarządzania nimi IT w organizacji. Nawet po pojawienie przetwarzania w chmurze jest nadal żądanie zarządzanie i sterowanie IT zadań, takich jak pomoc techniczna wywołania do resetowania hasła użytkownika, Zarządzanie grupami użytkowników i żądań aplikacji. Komplikując dalsze czynności, pracowników są teraz przynoszą do pracy ich urządzeń osobistych i za pomocą łatwo dostępne SaaS aplikacji, co sprawia, że Obsługa kontroli w aplikacjach firmowych centrów danych i chmurze publicznej platformy istotne wyzwanie.
 
 [!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>Połączenie lokalnej usługi Active Directory z usługą Azure AD i Office 365
-Organizacji, które zostały wprowadzone dużych inwestycji w lokalnej usłudze Active Directory można rozszerzyć tych inwestycji do chmury dzięki zintegrowaniu ich katalogów lokalnych z usługą Azure AD do [hybrydowe Zarządzanie tożsamościami](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Dzięki temu użytkownicy bardziej wydajnej pracy, zapewniając wspólną tożsamość do uzyskiwania dostępu do zasobów, niezależnie od lokalizacji. Użytkowników i organizacji można następnie użyć funkcji logowania jednokrotnego na rejestracji jednokrotnej (SSO) dostęp do obu zasobów lokalnych i usług, takich jak Office 365 w chmurze.
+Organizacji, które zostały wprowadzone dużych inwestycji w lokalnej usłudze Active Directory można rozszerzyć tych inwestycji do chmury dzięki zintegrowaniu ich katalogów lokalnych z usługą Azure AD do [hybrydowe Zarządzanie tożsamościami](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Dzięki temu użytkownicy bardziej wydajnej pracy, zapewniając wspólną tożsamość do uzyskiwania dostępu do zasobów, niezależnie od lokalizacji. Użytkownicy i organizacje mogą korzystać rejestracji jednokrotnej (SSO) dostęp do obu zasobów lokalnych i usług, takich jak Office 365 w chmurze.
 
 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) jest jedynym narzędziem koniecznych do uzyskania przeprowadzić integrację. Azure AD Connect zapewnia możliwości dla różnych potrzeb synchronizacji tożsamości i zastępuje starsze wersje narzędzi do integracji tożsamości, takie jak DirSync i Azure AD Sync. Z programem Azure AD Connect za pośrednictwem włączono zarządzanie tożsamościami i synchronizacji między lokalnymi i usługą Azure AD:
 
 - Synchronizacja — ten składnik odpowiada za tworzenie użytkowników, grup i innych obiektów. Odpowiada także za zapewnienie zgodności informacji o tożsamości lokalnych użytkowników i grup z informacjami w chmurze. Zapisywanie zwrotne haseł można włączyć w taki sposób, aby zachować synchronizację katalogów lokalnych podczas aktualizacji hasła w usłudze Azure AD.
-- Usługi AD FS - Federacja znajduje się funkcja opcjonalna udostępniane przez usługi Azure AD Connect, które można skonfigurować środowisko hybrydowe przy użyciu lokalnej infrastruktury usług AD FS. Federacyjna może służyć przez organizacje mogą obsługiwać złożone wdrożenia, takich jak logowanie jednokrotne, wymuszanie AD zasad logowania, a karta inteligentna lub innej usługi MFA.
+- Usługi AD FS - Federacja znajduje się funkcja opcjonalna udostępniane przez usługi Azure AD Connect, które można skonfigurować środowisko hybrydowe przy użyciu lokalnej infrastruktury usług AD FS. Organizacje mogą obsługiwać złożone wdrożenia, takie jak karty inteligentnej lub uwierzytelnianie MFA innych firm mogą posłużyć federacji.
 - Monitorowanie kondycji — [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) można zapewnia zaawansowane monitorowanie i centralnej lokalizacji w portalu Azure, aby wyświetlić tego działania.
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>Zwiększyć wydajność i zmniejszyć koszty pomocy technicznej z samoobsługi i jednego znaku w ramach

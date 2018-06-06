@@ -1,24 +1,26 @@
 ---
-title: "Azure AD Connect: Jeśli już masz usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano sposób użycia Connect, jeśli masz istniejącą dzierżawę usługi Azure AD."
+title: 'Azure AD Connect: Jeśli już masz usługi Azure AD | Dokumentacja firmy Microsoft'
+description: W tym temacie opisano sposób użycia Connect, jeśli masz istniejącą dzierżawę usługi Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa264487c68ea5403300d9b5b9978934a639a2a4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 726d8998d24a630808186eea417f236fdbfb565e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725211"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Jeśli masz dzierżawę istniejących
 Większość tematy dotyczące sposobu korzystania z usługi Azure AD Connect zakłada rozpoczynać nowe usługi Azure AD dzierżawy i czy ma żadnych użytkowników lub istnieją inne obiekty. Ale jeśli została uruchomiona z dzierżawy usługi Azure AD wypełnić go użytkowników i innych obiektów, a teraz chcesz użyć połączenia, a następnie w tym temacie jest dla Ciebie.
@@ -56,7 +58,7 @@ Grupy obsługujące pocztę i kontakty możesz można soft-match proxyAddresses 
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Tworzenie nowej lokalnej usługi Active Directory na podstawie danych w usłudze Azure AD
 Niektórzy klienci rozpoczynać się tylko na chmurze rozwiązanie z usługą Azure AD i nie mają lokalnego AD. Później, do którego chce używać zasobów lokalnych i chcesz utworzyć lokalną AD opartych na danych usługi Azure AD. Azure AD Connect nie może pomóc w tym scenariuszu. Nie tworzy użytkowników lokalnych i nie ma możliwość ustawiono hasło lokalne takie same jak Azure AD.
 
-Jeśli tylko przyczyny, dlaczego zamierzasz dodać lokalnej usłudze AD służy do obsługi obiektów LOB (aplikacji biznesowych z), a następnie może warto użyć [usługi domenowe Azure AD](../../active-directory-domain-services/index.md) zamiast tego.
+Jeśli tylko przyczyny, dlaczego zamierzasz dodać lokalnej usłudze AD służy do obsługi obiektów LOB (aplikacji biznesowych z), a następnie może warto użyć [usługi domenowe Azure AD](../../active-directory-domain-services/index.yml) zamiast tego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).

@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796429"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure stos obsługi zasad
 W tym artykule opisano zasady obsługi w stosie Azure zintegrowanych systemów i co należy zrobić, aby zapewnić systemu do stanu umożliwiającego. 
@@ -37,10 +38,9 @@ Istnieją dwa typy pakietów aktualizacji dla zintegrowanych systemów:
 Microsoft oczekuje wersji pakietów aktualizacji oprogramowania w okresach miesięcznych. Jednak jest możliwe wersje aktualizacji wielokrotny lub nie w ciągu miesiąca. Dostawcy sprzętu OEM ich aktualizacje na zgodnie z potrzebami. 
 
 Znajdź dokumentacji na temat planowania aktualizacji i zarządzanie nimi i sposobu określania bieżącej wersji w [Zarządzaj aktualizuje omówienie](azure-stack-updates.md). Aby uzyskać informacje dotyczące określonej aktualizacji łącznie ze sposobem go pobrać, zobacz informacje o wersji dla tej aktualizacji: 
+- [Azure aktualizacji 1805 stosu](azure-stack-update-1805.md)
+- [Azure aktualizacji 1804 stosu](azure-stack-update-1804.md)
 - [Azure aktualizacji 1803 stosu](azure-stack-update-1803.md)
-- [Azure aktualizacji 1802 stosu](azure-stack-update-1802.md)
-- [Azure aktualizacji 1712 stosu](azure-stack-update-1712.md)
-
 
 
 ## <a name="hotfixes"></a>Poprawki

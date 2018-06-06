@@ -1,11 +1,11 @@
 ---
-title: "Tożsamość hybrydowym - wymagań dotyczących odpowiedzi na zdarzenia Azure | Dokumentacja firmy Microsoft"
-description: "Określić możliwości monitorowania i raportowania dla rozwiązania z tożsamością hybrydową, które mogą zostać wykorzystane przez IT, aby podjąć działania w celu identyfikacji i ograniczyć potencjalne zagrożenia"
-documentationcenter: 
+title: Tożsamość hybrydowym - wymagań dotyczących odpowiedzi na zdarzenia Azure | Dokumentacja firmy Microsoft
+description: Określić możliwości monitorowania i raportowania dla rozwiązania z tożsamością hybrydową, które mogą zostać wykorzystane przez IT, aby podjąć działania w celu identyfikacji i ograniczyć potencjalne zagrożenia
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 1521c3c7353d206df8a95b2cce1f3358c22fc438
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 09dfa0bd01a7de95ba6ce3093ddf589595116aa6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801062"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Określenie wymagań dotyczących odpowiedzi na zdarzenia dla rozwiązania z tożsamością hybrydową
 Duża lub średnich firmach najprawdopodobniej będzie mieć [odpowiedzi na zdarzenia zabezpieczeń](https://technet.microsoft.com/library/cc700825.aspx) mające na celu pomoc IT podjąć odpowiednie działania na poziom zdarzenia. System zarządzania tożsamościami jest składnikiem ważne w procesie odpowiedzi na zdarzenia, ponieważ mogą zostać użyte ułatwiające identyfikowanie, kto wykonał określonej akcji w odniesieniu do obiektu docelowego. Rozwiązania z tożsamością hybrydową musi mieć możliwość zapewnienia możliwości monitorowania i raportowania, które mogą zostać wykorzystane przez IT, aby podjąć działania w celu identyfikacji i ograniczyć potencjalne zagrożenia. W planie odpowiedzi na typowe zdarzenia mają następujące fazy jako część planu:
@@ -61,7 +63,7 @@ Podczas fazy zmniejszenie ryzyka i kontroli uszkodzenia ważne jest szybkie zmni
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Definiowanie strategii ochrony danych](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>Zobacz też

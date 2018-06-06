@@ -4,15 +4,16 @@ description: W tym artykule przedstawiono sposób programowe tworzenie i zarząd
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 5405566b5254c553eac584acc1653449b51ddffc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a83402316854b23fe85bff813dc9f5665bccd1fb
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794814"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlać dane zgodności
 
@@ -112,15 +113,19 @@ Poniższa procedura umożliwia utworzenie definicji zasad.
   }
   ```
 
-2. Utwórz definicję zasad przy użyciu następujące wywołanie:
+2. Tworzenie definicji zasad przy użyciu jednej z następujących połączeń:
 
   ```
-  armclient PUT "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+  # For defining a policy in a subscription
+  armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+
+  # For defining a policy in a management group
+  armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
   ```
 
-  Zamień z poprzednim &lt;subscriptionId&gt; z Identyfikatorem subskrypcji zamierzone.
+  Zastąp poprzedzających {subscriptionId} o identyfikatorze subskrypcji lub {managementGroupId} o identyfikatorze Twojej [grupy zarządzania](../azure-resource-manager/management-groups-overview.md).
 
-Aby uzyskać więcej informacji o strukturze zapytania, zobacz [definicje zasad — Tworzenie lub aktualizacja](/rest/api/resources/policydefinitions/createorupdate).
+  Aby uzyskać więcej informacji o strukturze zapytania, zobacz [definicje zasad — Tworzenie lub aktualizacja](/rest/api/resources/policydefinitions/createorupdate) i [definicje zasad — Tworzenie lub aktualizacja w grupie zarządzania](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 Poniższa procedura umożliwia utworzenie przypisania zasad i przypisanie definicji zasad na poziomie grupy zasobów.
 
@@ -199,99 +204,6 @@ Identyfikator definicji zasad dla definicji zasad, które utworzono powinien wyg
 
 Aby uzyskać więcej informacji dotyczących sposobu zarządzania zasad zasobów z wiersza polecenia platformy Azure, zobacz [zasad zasobów Azure CLI](/cli/azure/policy?view=azure-cli-latest).
 
-## <a name="identify-non-compliant-resources"></a>Identyfikowanie niezgodnych zasobów
-
-W przypisaniu zasobu nie jest zgodny, jeśli nie będzie zgodna z zasadami lub inicjatywy reguły. W poniższej tabeli przedstawiono, jak inne zasady działają efekty oceny warunku dla Wynikowy stan zgodności:
-
-| Stan zasobu | Efekt | Ocena zasad | Stan zgodności |
-| --- | --- | --- | --- |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niezgodne |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Zgodne |
-| Nowa | Audit, AuditIfNotExist\* | True | Niezgodne |
-| Nowa | Audit, AuditIfNotExist\* | False | Zgodne |
-
-\* Efekty dołączania, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF, być prawdziwe. Efekty również wymagać warunku istnienia na wartość FALSE, aby być niezgodne. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
-
-Aby lepiej zrozumieć, jak zasoby są oznaczone jako niezgodna, Użyjmy przykład przypisanie zasady utworzone powyżej.
-
-Załóżmy na przykład, ma grupa zasobów — ContsoRG, z niektórych kont magazynu (wyróżnionych kolorem czerwonym), które są dostępne do sieci publicznych.
-
-![Konta magazynu uwidaczniany w sieciach publicznych](media/policy-insights/resource-group01.png)
-
-W tym przykładzie należy zachować ostrożność przy zagrożenia bezpieczeństwa. Teraz, po utworzeniu przypisania zasad jest obliczane dla wszystkich kont magazynu w grupie zasobów ContosoRG. Inspekcja on trzy konta magazynu niezgodnych, w związku z tym zmienianie ich stany do **niezgodnych.**
-
-![Przeprowadzono inspekcję kont magazynu niezgodnych](media/policy-insights/resource-group03.png)
-
-Poniższa procedura umożliwia zidentyfikowanie zasoby w grupie zasobów, które nie są zgodne z przypisania zasad. W tym przykładzie zasoby są kont magazynu w grupie zasobów ContosoRG.
-
-1. Pobierz identyfikator przypisania zasad, uruchamiając następujące polecenia:
-
-  ```azurepowershell-interactive
-  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks' }
-  $policyAssignment.PolicyAssignmentId
-  ```
-
-  Aby uzyskać więcej informacji na temat uzyskiwania Identyfikatora przypisanie zasad, zobacz [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment).
-
-2. Uruchom następujące polecenie, aby mieć identyfikatory zasobu niezgodne zasoby skopiowane do pliku JSON:
-
-  ```
-  armclient POST "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
-  ```
-
-3. Wyniki powinny być podobne do następujących:
-
-  ```json
-  {
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-      "@odata.count": 3,
-      "value": [{
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount1Id>"
-          },
-          {
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount2Id>"
-          },
-          {
-              "@odata.id": null,
-              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-              "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount3ID>"
-          }
-      ]
-  }
-  ```
-
-Wyniki są równoważne co zwykle zobaczysz kategorii **niezgodne zasoby** w [widok portalu Azure](assign-policy-definition.md#identify-non-compliant-resources).
-
-Obecnie niezgodnych zasobów są tylko określone przy użyciu portalu Azure i żądań HTTP. Aby uzyskać więcej informacji o zapytaniach dotyczących stanów zasad, zobacz [stan zasad](/rest/api/policy-insights/policystates) artykule informacyjnym na temat interfejsu API.
-
-## <a name="view-policy-events"></a>Wyświetl zdarzenia dotyczące zasad
-
-Wynik oceny zasad jest generowany, gdy zasób jest tworzony lub aktualizowany. Wyniki są nazywane _zdarzenia dotyczące zasad_. Uruchom następującą kwerendę, aby wyświetlić wszystkie zdarzenia dotyczące zasad skojarzonych z przypisania zasad.
-
-```
-armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2017-12-12-preview"
-```
-
-Wyniki powinny wyglądać podobnie do następujących:
-
-```json
-{
-    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default",
-    "@odata.count": 1,
-    "value": [{
-        "@odata.id": null,
-        "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity",
-        "NumAuditEvents": 3
-    }]
-}
-```
-
-Takie jak Państwa zasad można wyświetlić tylko zdarzenia dotyczące zasad żądań HTTP. Aby uzyskać więcej informacji o zapytaniach dotyczących zdarzenia dotyczące zasad, zobacz [zdarzenia dotyczące zasad](/rest/api/policy-insights/policyevents) artykule.
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 Przejrzyj następujące artykuły, aby uzyskać więcej informacji na temat poleceń i zapytań w tym artykule.
@@ -300,3 +212,4 @@ Przejrzyj następujące artykuły, aby uzyskać więcej informacji na temat pole
 - [Moduły programu PowerShell Menedżera zasobów Azure](/powershell/module/azurerm.resources/#policies)
 - [Azure CLI zasady poleceń](/cli/azure/policy?view=azure-cli-latest)
 - [Dostawca zasobów Insights zasad dokumentacji interfejsu API REST](/rest/api/policy-insights)
+- [Organizowanie zasobów z grupami zarządzania Azure](../azure-resource-manager/management-groups-overview.md)

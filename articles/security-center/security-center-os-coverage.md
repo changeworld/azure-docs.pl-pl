@@ -1,11 +1,11 @@
 ---
-title: "Obsługiwane platformy w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera listę systemów Windows i Linux operatings obsługiwane w Centrum zabezpieczeń Azure."
+title: Obsługiwane platformy w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera listę systemów Windows i Linux operatings obsługiwane w Centrum zabezpieczeń Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 86e8c1c8f0d8654c86b851e3ae7296476f38b94e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756905"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Obsługiwane platformy w Centrum zabezpieczeń Azure
 Monitorowanie stanu zabezpieczeń i zalecenia są dostępne dla maszyn wirtualnych (VM), utworzone za pomocą zarówno classic i modeli wdrażania usługi Resource Manager i komputery.
@@ -41,7 +42,7 @@ Obsługiwane systemy operacyjne Windows:
 ## <a name="supported-platforms-for-linux-computers-and-vms"></a>Obsługiwane platformy dla komputerów z systemem Linux i maszyny wirtualne
 Obsługiwane systemy operacyjne Linux:
 
-* Ubuntu versions 12.04, 14.04, 16.04, 16.10
+* Wersje Ubuntu 12.04, 14.04, 16.04, 16.10
 * Debian wersji 7, 8
 * CentOS w wersji 6. \*, 7.*
 * Red Hat Enterprise Linux (RHEL) w wersji 6. \*, 7.*
@@ -59,6 +60,6 @@ Maszyn wirtualnych uruchomionych w usłudze chmury są również obsługiwane. T
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Przewodnik planowania Centrum zabezpieczeń Azure i obsługi](security-center-planning-and-operations-guide.md) — informacje o sposobie planowania i projektowania przyjęcie Centrum zabezpieczeń Azure
-- [Alerty zabezpieczeń według typu w Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) — Dowiedz się więcej na temat analizy behawioralnej maszyny wirtualnej i awarii zrzutu pamięci analizy w Centrum zabezpieczeń
+- [Alerty zabezpieczeń według typu w Centrum zabezpieczeń Azure](security-center-alerts-type.md#virtual-machine-behavioral-analysis) — Dowiedz się więcej na temat analizy behawioralnej maszyny wirtualnej i awarii zrzutu pamięci analizy w Centrum zabezpieczeń
 - [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi
 - [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń platformy Azure i zgodności
