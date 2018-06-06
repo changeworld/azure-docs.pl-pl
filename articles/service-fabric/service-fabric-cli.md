@@ -6,13 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 05/23/2018
 ms.author: bikang
-ms.openlocfilehash: 7b62631bd386a2feaa675b0ebd234768bec2f5e1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763361"
 ---
 # <a name="azure-service-fabric-cli"></a>Interfejs wiersza polecenia usługi Azure Service Fabric
 
@@ -24,7 +25,7 @@ Interfejs wiersza polecenia usługi Azure Service Fabric jest narzędziem wiersz
 
 Przed instalacją upewnij się, że w środowisku zainstalowano zarówno język Python, jak i narzędzie pip. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją Szybki start dotyczącą narzędzia pip](https://pip.pypa.io/en/latest/quickstart/) i oficjalną [dokumentacją dotyczącą instalowania języka Python](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Interfejs wiersza polecenia obsługuje język Python w wersji 2.7, 3.5 i 3,6. Zalecana wersja to Python 3.6, ponieważ wkrótce zakończy się okres świadczenia pomocy technicznej dla języka Python 2.7.
+Interfejsu wiersza polecenia obsługuje Python w wersji 2.7, 3.5 i 3,6. Zalecana wersja to Python 3.6, ponieważ wkrótce zakończy się okres świadczenia pomocy technicznej dla języka Python 2.7.
 
 ### <a name="service-fabric-target-runtime"></a>Docelowe środowisko uruchomieniowe usługi Service Fabric
 
@@ -32,7 +33,8 @@ Interfejs wiersza polecenia usługi Service Fabric jest przeznaczony do obsługi
 
 | Wersja interfejsu wiersza polecenia   | Obsługiwana wersja środowiska uruchomieniowego |
 |---------------|---------------------------|
-| Najnowsza (~=4)  | Najnowsza (~=6.1)            |
+| Najnowsze (~ = 5)  | Najnowsze (~ = 6.2)            |
+| 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
@@ -69,7 +71,7 @@ python --version
 pip --version
 ```
 
-Następnie uruchom następujące polecenie, aby zainstalować interfejs wiersza polecenia usługi Service Fabric:
+Następnie uruchom następujące polecenie, aby zainstalować usługi Azure Service Fabric interfejsu wiersza polecenia (sfctl) i przeglądać strona pomocy interfejsu wiersza polecenia:
 
 ```bat
 pip install sfctl
@@ -120,7 +122,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-Na potrzeby testowania instalacji można odwołać się do kroków wymienionych w sekcji **Podsystem Ubuntu i Windows dla systemu Linux**
+Do testowania instalacji, może się odwoływać do czynności wymienionych w **podsystem Ubuntu i systemu Windows dla systemu Linux** sekcji
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -231,13 +233,13 @@ Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją dotyczącą prot
 
 Niektóre operacje mogą generować następujący komunikat:
 
-`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+`Failed to establish a new connection`
 
 Sprawdź, czy punkt końcowy określonego klastra jest dostępny i przeprowadza nasłuchiwanie. Sprawdź również, czy interfejs użytkownika programu Service Fabric Explorer jest dostępny na tym hoście i porcie. Aby zaktualizować punkt końcowy, użyj polecenia `sfctl cluster select`.
 
 ### <a name="detailed-logs"></a>Szczegółowe dzienniki
 
-Szczegółowe dzienniki często bywają przydatne w przypadku debugowania lub zgłaszania problemu. Globalna flaga `--debug` zwiększa szczegółowość plików dzienników.
+Szczegółowe dzienniki często bywają przydatne w przypadku debugowania lub zgłaszania problemu. `--debug` Flagi zwiększa poziom szczegółowości danych wyjściowych.
 
 ### <a name="command-help-and-syntax"></a>Polecenia — pomoc i składnia
 

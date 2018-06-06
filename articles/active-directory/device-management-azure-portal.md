@@ -8,25 +8,27 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714004"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Zarządzanie urządzeniami przy użyciu portalu Azure
 
 
 Z zarządzania urządzeniami w usłudze Azure Active Directory (Azure AD) można zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy zabezpieczeń i zgodności. 
 
-W tym temacie:
+W tym artykule:
 
 - Przyjęto założenie, że czytelnik zna [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](device-management-introduction.md)
 
@@ -40,11 +42,11 @@ Azure portal udostępnia centralne miejsce do zarządzania urządzeniami. Możes
 
 2. Lewy pasek nawigacyjny, wybierz polecenie **usługi Active Directory**.
 
-    ![Konfiguruj ustawienia urządzeń](./media/device-management-azure-portal/01.png)
+    ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/01.png)
 
 3. W **Zarządzaj** kliknij **urządzeń**.
 
-    ![Konfiguruj ustawienia urządzeń](./media/device-management-azure-portal/11.png)
+    ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/11.png)
  
 **Urządzeń** umożliwia:
 
@@ -57,11 +59,11 @@ Azure portal udostępnia centralne miejsce do zarządzania urządzeniami. Możes
 - Przejrzyj zarządzania urządzeniami, związane z dziennika inspekcji  
   
 
-## <a name="configure-device-settings"></a>Konfiguruj ustawienia urządzeń
+## <a name="configure-device-settings"></a>Konfiguruj ustawienia urządzenia
 
 Do zarządzania urządzeniami przy użyciu portalu Azure, urządzenia muszą być albo [zarejestrowana lub przyłączony](device-management-introduction.md#getting-devices-under-the-control-of-azure-ad) do usługi Azure AD. Jako administrator Aby precyzyjnie zdefiniować proces rejestracji i dołączenie urządzeń przez skonfigurowanie ustawień urządzenia. 
 
-![Konfiguruj ustawienia urządzeń](./media/device-management-azure-portal/22.png)
+![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/22.png)
 
 Strona ustawień urządzenia można skonfigurować:
 
@@ -185,10 +187,17 @@ Identyfikator urządzenia służy do sprawdzenia szczegóły identyfikator urzą
 
 ### <a name="view-or-copy-bitlocker-keys"></a>Wyświetl lub skopiować klucze funkcji BitLocker
 
-Jeśli jesteś administratorem, możesz wyświetlić i skopiuj klucze funkcji BitLocker, aby ułatwić użytkownikom na odzyskiwanie ich zaszyfrowanego dysku. Klucze te są dostępne tylko dla urządzeń z systemem Windows, które są szyfrowane i ich kluczy przechowywanych w usłudze Azure AD. Możesz skopiować te klucze podczas uzyskiwania dostępu do szczegółów urządzenia.
+Można wyświetlać i kopiowanie kluczy funkcji BitLocker, aby ułatwić użytkownikom na odzyskiwanie ich zaszyfrowanego dysku. Klucze te są dostępne tylko dla urządzeń z systemem Windows, które są szyfrowane i ich kluczy przechowywanych w usłudze Azure AD. Możesz skopiować te klucze podczas uzyskiwania dostępu do szczegółów urządzenia.
  
 ![Wyświetl klucze funkcji BitLocker](./media/device-management-azure-portal/36.png)
 
+Aby wyświetlić lub skopiować klucze funkcji BitLocker, należy być właściciela urządzenia lub użytkownika, który ma co najmniej jedną z następujących ról przypisane:
+
+- Administratorzy globalni
+- Administratorzy pomoc techniczna
+- Administratorzy zabezpieczeń
+- Czytniki zabezpieczeń
+- Administratorzy usługi Intune
 
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji

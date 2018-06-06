@@ -1,21 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: LinkedIn konfiguracji | Dokumentacja firmy Microsoft'
-description: Podaj rejestracji i logowania klientom korzystającym z kontami LinkedIn w aplikacjach, które są zabezpieczone przez usługi Azure Active Directory B2C
+title: LinkedIn konfiguracji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Umożliwiają tworzenie kont i logowania użytkowników z kontami LinkedIn w aplikacjach, które są zabezpieczone przez usługi Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 6db3832031a1bb960ee40c0e4fb8c3d0591a976c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711702"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C: Umożliwiają tworzenie kont i logowania użytkowników z kontami LinkedIn
 ## <a name="create-a-linkedin-application"></a>Tworzenie aplikacji LinkedIn
@@ -35,7 +35,7 @@ Aby użyć LinkedIn jako dostawca tożsamości w usłudze Azure Active Directory
    > **Klucz tajny klienta** jest ważne poświadczenie zabezpieczeń.
    > 
    > 
-6. Wprowadź `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **autoryzacji adresów URL przekierowań** pola (w obszarze **OAuth 2.0**). Zastąp **{dzierżawa}** nazwą Twojej dzierżawy (np. contoso.onmicrosoft.com). Kliknij przycisk **Dodaj**, a następnie kliknij przycisk **aktualizacji**. **{Dzierżawa}** wartość jest rozróżniana wielkość liter.
+6. Wprowadź `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **autoryzacji adresów URL przekierowań** pola (w obszarze **OAuth 2.0**). Zastąp **{dzierżawa}** nazwą Twojej dzierżawy (np. contoso.onmicrosoft.com). Kliknij przycisk **Dodaj**, a następnie kliknij przycisk **aktualizacji**. **{Dzierżawa}** wartość powinna być małe litery.
    
     ![LinkedIn — ustawienia aplikacji](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 

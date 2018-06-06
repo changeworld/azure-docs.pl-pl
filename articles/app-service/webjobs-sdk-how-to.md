@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3adf725f76f744fd1d321668fe892b9703de25de
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 18b47014e6fe3e489f783f675a3498c58981b99f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725534"
 ---
 # <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu SDK zadań Webjob dla przetwarzania w tle sterowane zdarzeniami
 
@@ -322,7 +323,7 @@ Aby uzyskać więcej informacji, zobacz [powiązania w czasie wykonywania](../az
 
 Informacje na temat poszczególnych typów powiązania jest dostępny w dokumentacji usługi Azure Functions. Na przykład za pomocą magazynu kolejek, znajdziesz następujące informacje w każdym artykule powiązania:
 
-* [Pakiety](../azure-functions/functions-bindings-storage-queue.md#packages) — co pakiet do zainstalowania w celu uwzględnienia obsługi powiązania w projekcie zestaw SDK zadań Webjob.
+* [Pakiety](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x) — co pakiet do zainstalowania w celu uwzględnienia obsługi powiązania w projekcie zestaw SDK zadań Webjob.
 * [Przykłady](../azure-functions/functions-bindings-storage-queue.md#trigger---example) — przykład biblioteki klas C# ma zastosowanie do zestawu SDK WebJobs; Pomiń tylko `FunctionName` atrybutu.
 * [Atrybuty](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes) — atrybuty do użycia na potrzeby typ powiązania.
 * [Konfiguracja](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration) -objaśnienia właściwości atrybutów i parametrami konstruktora.
@@ -390,6 +391,26 @@ Niektóre wyzwalacze ma wbudowaną obsługę zarządzania współbieżności:
 * **FileTrigger** — skonfiguruj `FileProcessor.MaxDegreeOfParallelism` do 1.
 
 Te ustawienia służy do sprawdzenia, czy funkcja działa jako pojedynczą w pojedynczym wystąpieniu. W celu zapewnienia tylko jedno wystąpienie funkcji jest uruchomiony, gdy aplikacja sieci web może obsłużyć się wiele wystąpień, zastosuj blokady odbiornika z poziomu pojedynczego wystąpienia w funkcji (`[Singleton(Mode = SingletonMode.Listener)]`). Odbiornik blokad są uzyskiwane przy uruchamianiu JobHost. Jeśli wszystkie trzy wystąpienia skalowalnych w poziomie można uruchomić w tym samym czasie, tylko jedno wystąpienie uzyskuje blokadę i rozpoczyna się tylko jeden odbiornik.
+
+### <a name="scope-values"></a>Wartości zakresu
+
+Można określić **zakres wyrażenie i wartości** na pojedyncze, który zapewni będą serializowane wykonaniami wszystkich funkcji w tym zakresie. Implementowanie bardziej szczegółowego blokowania w ten sposób można zezwolić na pewien stopień równoległości dla funkcji, podczas serializowania innych wywołań zgodnie z wymaganiami. Na przykład w poniższym przykładzie wyrażenia zakres wiąże `Region` wartość komunikatu przychodzącego. Jeśli kolejka zawiera 3 wiadomości w regionach "Wschód", "Wschód" i "Zachód" odpowiednio wiadomości, które mają region "Wschód" zostanie wykonane szeregowe podczas wiadomości z regionu "Zachód" będą wykonywane równolegle z tymi.
+
+```csharp
+[Singleton("{Region}")]
+public static async Task ProcessWorkItem([QueueTrigger("workitems")] WorkItem workItem)
+{
+     // Process the work item
+}
+
+public class WorkItem
+{
+     public int ID { get; set; }
+     public string Region { get; set; }
+     public int Category { get; set; }
+     public string Description { get; set; }
+}
+```
 
 ### <a name="singletonscopehost"></a>SingletonScope.Host
 

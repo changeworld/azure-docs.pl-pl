@@ -5,20 +5,17 @@ keywords: Zmiana źródła danych
 services: cosmos-db
 author: rafats
 manager: kfile
-documentationcenter: ''
-ms.assetid: 2d7798db-857f-431a-b10f-3ccbc7d93b50
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f0a646591811e7c965ad7de5201913a43cae54fc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715177"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca z zmiany źródła pomocy technicznej w usłudze Azure DB rozwiązania Cosmos
 
@@ -93,7 +90,7 @@ Jeśli używasz usługi Azure Functions Najprostszym sposobem, aby połączyć s
 Wyzwalacze mogą być tworzone w portalu Azure Functions w portalu Azure DB rozwiązania Cosmos lub programowo. Aby uzyskać więcej informacji, zobacz [bazy danych Azure rozwiązania Cosmos: pliki bazy danych obliczeniowych, przy użyciu usługi Azure Functions](serverless-computing-database.md).
 
 <a id="rest-apis"></a>
-## <a name="using-the-sdk"></a>Przy użyciu zestawu SDK
+## <a name="using-the-sdk"></a>Używanie zestawu SDK
 
 [SQL SDK](sql-api-sdk-dotnet.md) dla bazy danych rozwiązania Cosmos Azure udostępnia wszystkie uprawnienia do odczytu i zarządzanie nimi zmiany źródła danych. Jednak z dużą zasilania pochodzi zbyt wiele zadań. Jeśli chcesz zarządzać punktami kontrolnymi, postępowania w przypadku numerów sekwencji dokumentów i mają kontrolę nad kluczy partycji przy użyciu zestawu SDK może być odpowiednie podejście.
 
@@ -167,7 +164,7 @@ W tej sekcji przedstawiono sposób użycia zestawu SDK SQL do pracy z zmiany źr
 
 Jeśli masz wiele czytników, możesz użyć **ChangeFeedOptions** rozłożenie obciążenia odczytu w różnych wątkach lub różnych klientów.
 
-To wszystko, te kilku wierszy kodu można rozpocząć odczytywanie źródła zmiany. Kompletny kod używany w tym artykule można uzyskać [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
+To wszystko, te kilku wierszy kodu można rozpocząć odczytywanie źródła zmiany. Kompletny kod używany w tym artykule można uzyskać [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
 
 W kodzie w kroku 4 powyżej **ResponseContinuation** w ciągu ostatnich wiersz ma ostatni numer sekwencji logiczne (LSN) dokumentu, który będzie używany przy następnym odczytu nowych dokumentów po ten numer sekwencji. Za pomocą **StartTime** z **ChangeFeedOption** poszerzyć Twojej sieci, można pobrać dokumentów. Tak, jeśli Twoje **ResponseContinuation** ma wartość null, ale Twoje **StartTime** Przechodzi wstecz w czasie, a następnie pobierze wszystkie dokumenty, które zmianie od czasu **StartTime**. Jednak jeśli Twoje **ResponseContinuation** ma wartość, a następnie system będzie można wszystkie dokumenty od tego numeru LSN.
 
@@ -194,7 +191,7 @@ Należy pamiętać, że jeśli dwie niekorzystającą funtions Azure monitorowan
 Istnieją cztery główne składniki wdrażania procesora źródła danych zmian: monitorowanych kolekcję, Kolekcja dzierżawy hosta procesora i konsumentów. 
 
 > [!WARNING]
-> Tworzenie kolekcji ma wpływ na cenę, ponieważ rezerwujesz przepływność aplikacji na potrzeby komunikowania się z usługą Azure Cosmos DB. Aby uzyskać więcej informacji, odwiedź stronę [stronie dotyczącej cen](https://azure.microsoft.com/pricing/details/cosmos-db/)
+> Tworzenie kolekcji ma wpływ na cenę, ponieważ rezerwujesz przepływność aplikacji na potrzeby komunikowania się z usługą Azure Cosmos DB. Aby uzyskać więcej informacji, odwiedź naszą [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/)
 > 
 > 
 
@@ -279,7 +276,7 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 }
 ```
 
-To wszystko. Po wykonaniu tych kroków kilka dokumentów rozpocznie się do **DocumentFeedObserver ProcessChangesAsync** metody.
+To wszystko. Po wykonaniu tych kroków kilka dokumentów rozpocznie się do **DocumentFeedObserver ProcessChangesAsync** metody. Znajdź powyżej kod w [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

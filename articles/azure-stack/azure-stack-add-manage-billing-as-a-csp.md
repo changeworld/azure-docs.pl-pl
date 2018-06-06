@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie użycie i rozliczenia Azure stosu jako dostawcy usług w chmurze | Dokumentacja firmy Microsoft"
-description: "Przejdź przez zarejestrowanie stosu Azure jako dostawcy usług w chmurze i dodawania klientów."
+title: Zarządzanie użycie i rozliczenia Azure stosu jako dostawcy usług w chmurze | Dokumentacja firmy Microsoft
+description: Przejdź przez zarejestrowanie stosu Azure jako dostawcy usług w chmurze i dodawania klientów.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 23e3a675e6a464c92d26df220c8126c970f590a0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 21a52af4943004789b0a9bdbe4695ab1a603c046
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796703"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Zarządzanie użycie i rozliczenia Azure stosu jako dostawcy usług w chmurze 
 
@@ -84,4 +85,4 @@ Ponieważ subskrypcji dzierżawcy subskrypcje dostawcy usług Kryptograficznych,
 ## <a name="next-steps"></a>Kolejne kroki
 
  - Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [programu Cloud Solution Provider](https://partnercenter.microsoft.com/en-us/partner/programs).
- - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](/azure-stack-billing-and-chargeback.md).
+ - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](azure-stack-billing-and-chargeback.md).

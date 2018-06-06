@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,11 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714116"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowe usługi Azure Active Directory przyłączone do urządzeń niskiego poziomu 
 
@@ -49,11 +51,11 @@ Ten artykuł zawiera z rozwiązywaniem problemów wskazówki dotyczące rozwiąz
 
 **Co należy wiedzieć:** 
 
-- Maksymalna liczba urządzeń dla każdego użytkownika jest perspektywy skoncentrowanej na urządzeniach. Na przykład jeśli *jdoe* i *jharnett* logowania na urządzeniu, oddzielne rejestracji (DeviceID) jest tworzony dla każdego z nich w **użytkownika** kartę informacje.  
+- Maksymalna liczba urządzeń dla każdego użytkownika jest perspektywy skoncentrowanej na urządzeniach. Na przykład jeśli *jdoe* i *jharnett* Zaloguj się na urządzeniu, oddzielne rejestracji (DeviceID) jest tworzony dla każdego z nich w **użytkownika** kartę informacje.  
 
 - Początkowe rejestracyjny / przyłączenia urządzeń jest skonfigurowany do wykonania próba logowania lub blokowanie / odblokowanie. Mogą wystąpić opóźnienia 5-minutowy wyzwalane przez zadania harmonogramu zadań. 
 
-- Ponowna instalacja systemu operacyjnego lub ręcznej rejestracji ponownie utworzyć nowej rejestracji w usłudze Azure AD, co powoduje wiele wpisów w karcie informacje użytkownika w portalu Azure. 
+- Ponowna instalacja systemu operacyjnego lub ręcznego ponowna rejestracja może tworzyć nowej rejestracji w usłudze Azure AD, co powoduje wiele wpisów w karcie informacje użytkownika w portalu Azure. 
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Pobierz stan rejestracji 
 
@@ -88,7 +90,7 @@ Jeśli sprzężenie hybrydowe usługi Azure AD nie powiodło się, okno dialogow
     
     - Zalogowany użytkownik nie jest użytkownikiem domeny (na przykład użytkownik lokalny). Hybrydowe usługi Azure AD join na niższym poziomie urządzeń jest obsługiwane tylko dla użytkowników domeny.
     
-    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. Może to być spowodowane wyświetlania problemy z połączeniem sieciowym wyjściowego powiązanej Azure URL AD (Sprawdź wymagania wstępne). Przyczyną mogą być również uwierzytelnianie wieloskładnikowe (MFA) jest włączona/skonfigurowanego dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze federacyjnym (kroki konfiguracji wyboru). Inną możliwością jest stronę odnajdowania (obszaru macierzystego HRD) tego obszaru macierzystego oczekuje do interakcji z użytkownikiem, który zapobiega **autoworkplace.exe** w trybie dyskretnym uzyskiwania tokenu.
+    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. Może to być spowodowane wyświetlania problemy z połączeniem sieciowym wyjściowego powiązania z adresami URL, Azure AD. Możliwe również, czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona/skonfigurowanego dla użytkownika i WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze federacyjnym. Inną możliwością jest stronę odnajdowania (obszaru macierzystego HRD) tego obszaru macierzystego oczekuje do interakcji z użytkownikiem, który zapobiega **autoworkplace.exe** w trybie dyskretnym uzyskiwania tokenu.
     
     - Twoja organizacja korzysta z usługi Azure AD bezproblemowe logowanie jednokrotne, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są spełnione przez urządzenia IE ustawienia sieci intranet, a **Zezwalaj na pasku stanu za pomocą skryptu aktualizacji** nie jest włączone dla strefy intranetowej.
 
@@ -104,7 +106,7 @@ Można również znaleźć informacje o stanie w dzienniku zdarzeń: **aplikacji
   
 **Najczęstszymi przyczynami sprzężenia nie powiodło się hybrydowej usługi Azure AD są:** 
 
-- Komputer nie jest podłączony do sieci wewnętrznej organizacji ani sieci VPN z połączeniem z lokalnymi kontroler domeny usługi AD.
+- Komputer nie jest podłączony do sieci wewnętrznej organizacji lub sieci VPN z połączeniem z lokalnymi kontroler domeny usługi AD.
 
 - Użytkownik jest zalogowany na komputerze przy użyciu konta komputera lokalnego. 
 

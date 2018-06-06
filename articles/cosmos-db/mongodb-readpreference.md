@@ -2,23 +2,21 @@
 title: Przy użyciu preferencji odczytu bazy danych MongoDB w usłudze Azure rozwiązania Cosmos bazy danych MongoDB interfejsu API | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak korzystać z interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB preferencji odczytu bazy danych MongoDB
 services: cosmos-db
-documentationcenter: ''
 author: vidhoonv
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: ''
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: ''
-ms.topic: article
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: viviswan
-ms.openlocfilehash: cc9f22bc5e7b54ed03fbf83b58dda0aff0114737
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f8c8d068a188052b5e8b66ccb4486a0fc75e2af9
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796669"
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Odczytuje sposobu dystrybucji globalnie Preferencje odczytu z interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB 
 

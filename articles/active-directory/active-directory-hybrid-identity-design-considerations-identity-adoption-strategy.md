@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4b1fefafb34dcbfdced5c978aa235e56cb7fa513
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801800"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla hybrydowych rozwiązań tożsamości do spełnienia wymagań biznesowych, które zostały omówione w:
@@ -32,7 +34,7 @@ To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej 
 Musi mieć pierwszych adresów zadań określania biznesowe organizacji.  Może to być bardzo szeroki i zakres pełzanie może wystąpić, jeśli nie są dokładne.  Na początku należy zachować prostotę, ale należy pamiętać o planowania projektu, który będzie pomieścić a ułatwienia zmian w przyszłości.  Niezależnie od tego, czy jest prostego projektu lub jeden bardzo złożonych, Azure Active Directory jest platformy pakietu Microsoft Identity, która obsługuje usługi Office 365, Microsoft Online Services i chmura aplikacjom obsługującym.
 
 ## <a name="define-an-integration-strategy"></a>Definiowanie strategii integracji
-Firma Microsoft udostępnia trzy scenariusze integracji głównego tożsamości w chmurze, tożsamości synchronizowane i tożsamości federacyjnych.  Należy zaplanować na przyjmowanie jedną z następujących strategii integracji.  Strategia wybrane może różnić się i mogą obejmować decyzji w wybranie jednej, jakiego rodzaju środowisko użytkownika, aby określić, czy masz niektórych z istniejącej infrastruktury już na miejscu i co to jest najbardziej ekonomiczne.  
+Firma Microsoft udostępnia trzy scenariusze integracji głównego tożsamości w chmurze, tożsamości synchronizowane i tożsamości federacyjnych.  Należy zaplanować na przyjmowanie jedną z następujących strategii integracji.  Strategii wybrane może różnić się i mogą obejmować decyzji w wybranie jednej, jakiego rodzaju środowisko użytkownika, aby określić, czy masz istniejącej infrastruktury, co to jest najbardziej ekonomiczne.  
 
 ![](./media/hybrid-id-design-considerations/integration-scenarios.png)
 
@@ -51,7 +53,7 @@ Poniższa tabela pomoże w określeniu zalety i wady każdego z następujących 
 
 | Strategia | Zalety | Wady |
 | --- | --- | --- |
-| **Tożsamości w chmurze** |Łatwiejsze zarządzanie dla małych organizacji. <br> Nie można zainstalować dodatkowy sprzęt na — lokalnym — bez potrzeby<br>Łatwe wyłączenie, gdy użytkownik opuści firmę |Użytkownicy będą musieli zarejestrować się w przypadku uzyskiwania dostępu do obciążeń w chmurze <br> Hasła może lub nie może być taka sama dla tożsamości w chmurze i lokalnie |
+| **Tożsamości w chmurze** |Łatwiejsze zarządzanie dla małych organizacji. <br> Brak elementów do instalacji lokalnej. Żaden dodatkowy sprzęt potrzebne<br>Łatwe wyłączenie, gdy użytkownik opuści firmę |Użytkownicy będą musieli zarejestrować się w przypadku uzyskiwania dostępu do obciążeń w chmurze <br> Hasła może lub nie może być taka sama dla tożsamości w chmurze i lokalnie |
 | **Zsynchronizowane** |Lokalnego hasła uwierzytelnia lokalnie i w chmurze katalogów <br>Łatwiejsze zarządzanie mały, średni lub dużych organizacjach <br>Użytkownicy mogą mieć rejestracji jednokrotnej (SSO) dla niektórych zasobów <br> Metoda Microsoft preferowany do synchronizacji <br> Łatwiejsze zarządzanie |Niektórzy klienci mogą być chce Zsynchronizuj swoje katalogi z chmurą powodu polecenie określonej firmy |
 | **Federacyjna** |Użytkownicy mogą mieć rejestracji jednokrotnej (SSO) <br>Jeśli użytkownik zostanie zakończony lub pozostawia, konto można natychmiast wyłączone i dostępu odwołane,<br> Obsługuje zaawansowane scenariusze, które nie mogą być realizowane za pomocą synchronizacji |Większej liczby kroków do instalowania i konfigurowania <br> Wyższy konserwacji <br> Może wymagać dodatkowego sprzętu infrastruktury usługi STS <br> Może wymagać dodatkowego sprzętu do zainstalowania serwera federacyjnego. Dodatkowe oprogramowanie jest wymagany, jeśli jest używany przez usługi AD FS <br> Wymagaj szeroką gamę Instalatora dla logowania jednokrotnego <br> Krytyczne punktu awarii, jeśli serwer federacyjny działa, użytkownicy nie będą mogli się uwierzytelnić w |
 
@@ -75,7 +77,7 @@ Strategia, którego używasz wyznaczają środowisko logowania użytkownika.  Po
 | Przeglądarki sieci Web |Uwierzytelnianie oparte na formularzach |Uwierzytelnianie oparte na formularzach |
 | Outlook i Skype dla firm (Lync), Skydrive Pro subskrypcji pakietu Office |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
 | Exchange ActiveSync |Monit o podanie poświadczeń |Logowanie jednokrotne Lync, monitowanie o poświadczenia dla programu Exchange |
-| Aplikacje mobilne |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
+| Aplikacji mobilnych |Monit o podanie poświadczeń |Monit o podanie poświadczeń |
 
 Jeśli już wiesz zadanie 1, że będzie innych dostawców tożsamości lub są jej użyć do zapewnienia federacji z usługą Azure AD, należy należy pamiętać o następujących obsługiwane możliwości:
 
@@ -119,7 +121,7 @@ Podczas definiowania strategii synchronizacji, należy określić topologię, kt
 
 Scenariusza obejmującego wiele lasów
 
-Jeśli to wielkość liter, a następnie topologii kilku-forest-pojedynczej usługi Azure AD należy rozważyć, gdy spełnione są następujące elementy:
+Jeśli to jest wielkość liter, a następnie jednym obejmującego wiele lasów należy topologii usługi Azure AD, jeśli spełnione są następujące elementy:
 
 * Użytkownicy mają tylko 1 tożsamości we wszystkich lasach — jednoznacznego identyfikowania użytkowników poniższej sekcji opisano to bardziej szczegółowo.
 * Użytkownik jest uwierzytelniany w lesie, w którym znajduje się tożsamości
@@ -149,7 +151,7 @@ Jest to możliwe i obsługiwanych nawiązać lokalne wystąpienie usługi Active
 
 **Scenariusz filtrowania pojedynczego lasu**
 
-W tym celu następujące muszą być spełnione:
+Aby to zrobić, należy spełnienia następujących warunków:
 
 * Serwery synchronizacji usługi Azure AD Connect musi być skonfigurowana do filtrowania, każdy z nich ma wykluczają się wzajemnie zestaw obiektów.  To zrobić, na przykład przez zakresu każdego serwera do określonej domeny lub jednostki Organizacyjnej.
 * Domeny DNS mogą być rejestrowane tylko w jednym katalogu usługi Azure AD więc nazwy UPN użytkowników w lokalnej AD należy użyć oddzielnych obszarów nazw

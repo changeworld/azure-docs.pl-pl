@@ -2,23 +2,21 @@
 title: Indeksowanie w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB | Microsoft Docs
 description: Zawiera omówienie możliwości indeksowania w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
 author: orestis-ms
 manager: kfile
 editor: ''
-ms.assetid: daacbabf-1bb5-497f-92db-079910703047
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: javascript
-ms.topic: quickstart
+ms.component: cosmosdb-mongo
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: 6cb267096e04d4957b166e539a4fc58aa25e04cb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: HT
+ms.openlocfilehash: d0c74bd2ba7a4a77a16d481ddb3b76f90a923254
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798291"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indeksowanie w interfejsie API bazy danych MongoDB w usłudze Azure Cosmos DB
 
@@ -100,6 +98,6 @@ Poprzednie polecenie spowoduje usunięcie dowolnych dokumentów w kolekcji ```db
 
 Obecnie tworzenie indeksów unikatowych jest możliwe tylko wtedy, gdy kolekcja nie zawiera dokumentów. Popularne narzędzia migracji bazy danych MongoDB podejmują próby tworzenia indeksów unikatowych po zaimportowaniu danych. Aby obejść ten problem, zaleca się, aby użytkownicy ręcznie tworzyli odpowiednie kolekcje i indeksy unikatowe, zamiast pozwalać na to narzędziom do migracji (w przypadku narzędzia ```mongorestore``` to zachowanie jest osiągane poprzez użycie flagi --noIndexRestore w wierszu polecenia).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Jak usługa Azure Cosmos DB indeksuje dane?](../cosmos-db/indexing-policies.md)
 * [Automatyczne wygasanie danych w kolekcjach usługi Azure Cosmos DB przy użyciu czasu wygaśnięcia](../cosmos-db/time-to-live.md)

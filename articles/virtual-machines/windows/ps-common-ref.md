@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/17/2017
+ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 313a313764f8ba14c9661429d1f6a8463778c934
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ff861c21250a042191651ab4a4cffbf3928e4f26
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738568"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Typowe polecenia programu PowerShell do tworzenia i zarządzania maszynami wirtualnymi Azure
 
@@ -33,7 +34,16 @@ Tych zmiennych mogą być przydatne dla Ciebie, jeśli działa więcej niż jedn
 - $myResourceGroup — Nazwa grupy zasobów, która zawiera maszynę wirtualną.
 - $myVM - Nazwa maszyny wirtualnej.
 
-## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-vm---simplified"></a>Utwórz maszynę Wirtualną — uproszczony
+
+| Zadanie | Polecenie |
+| ---- | ------- |
+| Tworzenie prostego maszyny Wirtualnej | [Nowy AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) -Name $myVM <BR></BR><BR></BR> Nowe AzureRMVM ma zestaw *uproszczony* parametrów jest wymagany w przypadku jednej nazwy. Wartość-nazwa będzie używana jako nazwa dla wszystkie zasoby wymagane do utworzenia nowej maszyny Wirtualnej. Można określić więcej, ale jest to wszystko, co jest wymagane.|
+| Tworzenie maszyny wirtualnej na podstawie obrazu niestandardowego | Nowe AzureRmVm - ResourceGroupName $myResourceGroup-Name Nazwa_obrazu $myVM "myImage"-lokalizacji $location  <BR></BR><BR></BR>Musisz już utworzono własne [zarządzanego obrazu](capture-image-resource.md). Możliwe użycie obrazu, aby wiele identycznych maszyn wirtualnych. |
+
+
+
+## <a name="create-a-vm-configuration"></a>Utwórz konfigurację maszyny Wirtualnej
 
 | Zadanie | Polecenie |
 | ---- | ------- |
@@ -41,10 +51,8 @@ Tych zmiennych mogą być przydatne dla Ciebie, jeśli działa więcej niż jedn
 | Dodaj ustawienia konfiguracji |$vm = [AzureRmVMOperatingSystem zestaw](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) - VM $vm-Windows - ComputerName $myVM-poświadczeń $cred - ProvisionVMAgent - EnableAutoUpdate<BR></BR><BR></BR>Ustawienia systemu operacyjnego, w tym [poświadczenia](https://technet.microsoft.com/library/hh849815.aspx) zostaną dodane do utworzonego wcześniej przy użyciu AzureRmVMConfig nowy obiekt konfiguracji. |
 | Dodawanie interfejsu sieciowego |$vm = [AzureRmVMNetworkInterface Dodaj](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/Add-AzureRmVMNetworkInterface) - VM $vm-$identyfikator karty sieciowej. Identyfikator<BR></BR><BR></BR>Maszyna wirtualna musi mieć [interfejsu sieciowego](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) komunikowanie się w sieci wirtualnej. Można również użyć [Get AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) można pobrać obiektu interfejsu sieciowego. |
 | Określ obraz platformy |$vm = [AzureRmVMSourceImage zestaw](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage) - VM $vm - PublisherName "publisher_name"-oferty "publisher_offer" - jednostki SKU "product_sku"-"najnowszej" wersji<BR></BR><BR></BR>[Informacji zawartych w obrazie](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) jest dodawana do utworzonego wcześniej przy użyciu AzureRmVMConfig nowy obiekt konfiguracji. Obiekt zwrócony z tego polecenia jest używana tylko w przypadku ustawienia dysku systemu operacyjnego, aby używać obrazu platformy. |
-| Ustaw dysk systemu operacyjnego używać obrazu platformy |$vm = [AzureRmVMOSDisk zestaw](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk) - VM $vm-Name "myOSDisk" - VhdUri "http://mystore1.blob.core.windows.net/vhds/myOSDisk.vhd" - CreateOption FromImage<BR></BR><BR></BR>Nazwa dysku systemu operacyjnego i jego lokalizacji w [magazynu](../../storage/common/storage-powershell-guide-full.md) zostanie dodany do obiekt konfiguracji, która została wcześniej utworzona. |
-| Ustaw dysku systemu operacyjnego, aby używać uogólniony obraz |$vm = set AzureRmVMOSDisk - VM $vm — nazwa "myOSDisk" - SourceImageUri "https://mystore1.blob.core.windows.net/system/Microsoft.Compute/Images/myimages/myprefix-osDisk.{guid}.vhd"- VhdUri"https://mystore1.blob.core.windows.net/vhds/disk_name.vhd" - CreateOption FromImage — systemu Windows<BR></BR><BR></BR>Nazwa dysku systemu operacyjnego, Lokalizacja obrazu źródłowego i lokalizacji na dysku w [magazynu](../../storage/common/storage-powershell-guide-full.md) zostanie dodany do obiekt konfiguracji. |
-| Ustaw dysk systemu operacyjnego używać specjalnych obrazu |$vm = set AzureRmVMOSDisk - VM $vm-Name "myOSDisk" - VhdUri "http://mystore1.blob.core.windows.net/vhds/" - CreateOption Attach - systemu Windows |
 | Tworzenie maszyny wirtualnej |[Nowy AzureRmVM]() - ResourceGroupName $myResourceGroup-lokalizacji $location - VM $vm<BR></BR><BR></BR>Wszystkie zasoby są tworzone w [grupy zasobów](../../azure-resource-manager/powershell-azure-resource-manager.md). Przed uruchomieniem tego polecenia, uruchom nowy AzureRmVMConfig, AzureRmVMOperatingSystem zestaw AzureRmVMSourceImage zestawu, Dodaj AzureRmVMNetworkInterface i AzureRmVMOSDisk zestawu. |
+| Aktualizacja maszyny Wirtualnej |[Update-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Pobierz bieżącą konfigurację maszyny Wirtualnej przy użyciu Get AzureRmVM, Zmień ustawienia konfiguracji w obiektu maszyny Wirtualnej, a następnie uruchom to polecenie. |
 
 ## <a name="get-information-about-vms"></a>Pobierz informacje o maszynach wirtualnych
 
@@ -61,13 +69,7 @@ Tych zmiennych mogą być przydatne dla Ciebie, jeśli działa więcej niż jedn
 | Zatrzymywanie maszyny wirtualnej |[Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/stop-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM |
 | Uruchom ponownie uruchomionej maszyny Wirtualnej |[Restart-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/restart-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM |
 | Usuwanie maszyny wirtualnej |[Remove-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM |
-| Generalize maszyny Wirtualnej |[Set-AzureRmVm](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvm) -ResourceGroupName $myResourceGroup -Name $myVM -Generalized<BR></BR><BR></BR>Uruchom to polecenie przed uruchomieniem AzureRmVMImage Zapisz. |
-| Przechwytywanie maszyny wirtualnej |[Save-AzureRmVMImage](https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvmimage) -ResourceGroupName $myResourceGroup -VMName $myVM -DestinationContainerName "myImageContainer" -VHDNamePrefix "myImagePrefix" -Path "C:\filepath\filename.json"<BR></BR><BR></BR>Maszyna wirtualna musi być [przygotowany, zamknij i uogólniony](prepare-for-upload-vhd-image.md) ma być używany do utworzenia obrazu. Przed uruchomieniem tego polecenia, uruchom zestaw AzureRmVm. |
-| Aktualizacja maszyny Wirtualnej |[Update-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvm) -ResourceGroupName $myResourceGroup -VM $vm<BR></BR><BR></BR>Pobierz bieżącą konfigurację maszyny Wirtualnej przy użyciu Get AzureRmVM, Zmień ustawienia konfiguracji w obiektu maszyny Wirtualnej, a następnie uruchom to polecenie. |
-| Dodawanie dysku danych do maszyny wirtualnej |[Dodaj AzureRmVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk) - VM $vm — nazwy "myDataDisk" - VhdUri "https://mystore1.blob.core.windows.net/vhds/myDataDisk.vhd" - LUN # — buforowanie ReadWrite - DiskSizeinGB # - CreateOption pusta<BR></BR><BR></BR>Get-AzureRmVM umożliwia, Pobierz obiekt VM. Określ liczbę jednostek LUN i rozmiaru dysku. Uruchom AzureRmVM aktualizację można zastosować zmian konfiguracyjnych do maszyny Wirtualnej. Dysk, który możesz dodać nie jest zainicjowany. |
-| Usuwanie dysku danych z maszyny wirtualnej |[Remove-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvmdatadisk) -VM $vm -Name "myDataDisk"<BR></BR><BR></BR>Get-AzureRmVM umożliwia, Pobierz obiekt VM. Uruchom AzureRmVM aktualizację można zastosować zmian konfiguracyjnych do maszyny Wirtualnej. |
-| Dodaj rozszerzenie do maszyny Wirtualnej |[AzureRmVMExtension zestawu](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension) - ResourceGroupName $myResourceGroup — lokalizacji $location - VMName $myVM-Name "extensionName" — wydawcy "publisherName" — typu "extensionType" - TypeHandlerVersion "#. #" — Ustawienia $Settings - ProtectedSettings $ProtectedSettings<BR></BR><BR></BR>Uruchom to polecenie z odpowiednią [informacje o konfiguracji](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions) rozszerzenia, które chcesz zainstalować. |
-| Usuwanie rozszerzenia maszyny wirtualnej |[Usuń AzureRmVMExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvmextension) - ResourceGroupName $myResourceGroup-Name "extensionName" - VMName $myVM |
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Podstawowe czynności wykonywane w celu utworzenia maszyny wirtualnej w [Utwórz maszynę Wirtualną z systemem Windows przy użyciu usługi Resource Manager i programu PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

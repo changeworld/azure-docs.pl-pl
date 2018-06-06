@@ -3,18 +3,19 @@ title: Punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL D
 description: Oznacz podsieci jako punkt końcowy usługi sieci wirtualnej. Następnie punktu końcowego, co sieć wirtualna reguł do listy ACL bazy danych SQL Azure. Bazy danych SQL można następnie akceptuje komunikację z wszystkich maszyn wirtualnych i inne węzły w podsieci.
 services: sql-database
 ms.service: sql-database
-author: MightyPen
+author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d708d55c64306636910a85b5b490e25ecc794bd6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802599"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Użyj punktów końcowych usługi sieci wirtualnej i reguł bazy danych SQL Azure
 
@@ -186,7 +187,7 @@ Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. 
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Dodawanie reguły zapory w sieci Wirtualnej do serwera bez włączania na sieć Wirtualną punktów końcowych usługi
 
-Dawno temu, zanim ta funkcja została udoskonalona i były wymagane punkty końcowe można włączyć sieci wirtualnej usługi na przed regułę sieci wirtualnej na żywo można zaimplementować w zaporze. Punkty końcowe powiązane w jednej podsieci sieci wirtualnej do bazy danych SQL Azure. Jednak obecnie w począwszy od stycznia 2018, ustawiając mogą omijać to wymaganie **IgnoreMissingServiceEndpoint** flagi.
+Dawno temu zanim ta funkcja została ulepszona, zostały wymagany do włączenia punktów końcowych usługi sieci wirtualnej, zanim regułę sieci wirtualnej na żywo można zaimplementować w zaporze. Punkty końcowe powiązane w jednej podsieci sieci wirtualnej do bazy danych SQL Azure. Jednak obecnie w począwszy od stycznia 2018, ustawiając mogą omijać to wymaganie **IgnoreMissingServiceEndpoint** flagi.
 
 Tylko ustawienie reguły zapory nie pomaga zabezpieczyć serwer. Należy również włączyć punktów końcowych usługi sieci wirtualnej dla zabezpieczeń zaczęły obowiązywać. Po włączeniu punktów końcowych usługi w podsieci sieci wirtualnej napotyka przestoju dopiero po zakończeniu jego przejścia z wył. Jest to szczególnie istotne w kontekście dużych sieci wirtualnych. Można użyć **IgnoreMissingServiceEndpoint** flagę w celu ograniczenie lub wyeliminowanie przestojów podczas przejścia.
 
@@ -318,7 +319,7 @@ Funkcja reguły sieci wirtualnej dla bazy danych SQL Azure stały się dostępne
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
-[expressroute-indexmd-744v]: ../expressroute/index.md
+[expressroute-indexmd-744v]: ../expressroute/index.yml
 
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 

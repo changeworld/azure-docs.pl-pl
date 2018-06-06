@@ -9,18 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2018
+ms.date: 05/26/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: ddfa3d70e2ce901a59476c5c0784d35999731ed6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724364"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Dostęp warunkowy w usłudze Azure Active Directory
 
@@ -81,32 +83,8 @@ Przy użyciu dostępu warunkowego dla usługi Azure AD, można kontrolować spos
 
 Stosując podejście na podstawie zasad ochrony dostępu do aplikacji w chmurze jest, że można uruchomić przygotowanie wymagań zasad dla danego środowiska przy użyciu struktury opisane w tym artykule, nie martwiąc się o implementacji technicznej. 
 
-## <a name="what-you-need-to-know"></a>Co należy wiedzieć
 
-### <a name="general-requirements-for-using-conditional-access"></a>Ogólne wymagania dotyczące korzystania z dostępu warunkowego
-
-Dostęp warunkowy do usługi Azure AD umożliwia chronić aplikacje w chmurze, jeśli próba uwierzytelnienia pochodzi z:
-
-- Przeglądarki sieci web
-
-- Aplikacji klienta, który używa nowoczesnego uwierzytelniania
-
-- Exchange ActiveSync
-
-Aby uzyskać więcej informacji, zobacz [aplikacjach klienckich](active-directory-conditional-access-conditions.md#client-apps).
-
-Niektóre [aplikacji w chmurze](active-directory-conditional-access-conditions.md#cloud-apps) również obsługiwać protokoły uwierzytelniania starszej wersji. Dotyczy to na przykład do usługi SharePoint Online i Exchange Online. Gdy aplikacja kliencka umożliwia dostęp do aplikacji w chmurze protokołem uwierzytelniania starszej wersji, usługi Azure AD nie można wymusić zasady dostępu warunkowego na ta próba dostępu. Aby zapobiec pomijanie wymuszania zasad aplikacji klienta, należy sprawdzić, czy jest możliwe tylko włączenie nowoczesnego uwierzytelniania w aplikacjach w chmurze dotyczy.
-
-Przykłady aplikacji dostępu warunkowego nie ma zastosowania do klienta są:
-
-- Office 2010 lub starszy
-
-- Pakiet Office 2013, gdy nowoczesnego uwierzytelniania nie jest włączone.
-
-Aby uzyskać więcej informacji, zobacz [skonfigurować usługi SharePoint Online i Exchange Online dla usługi Azure Active Directory dostępu warunkowego](active-directory-conditional-access-no-modern-authentication.md).
-
-
-### <a name="license-requirements-for-using-conditional-access"></a>Wymagania licencyjne dotyczące korzystania z dostępu warunkowego
+## <a name="license-requirements-for-using-conditional-access"></a>Wymagania licencyjne dotyczące korzystania z dostępu warunkowego
 
 Przy użyciu dostępu warunkowego wymaga licencji usługi Azure AD Premium. Aby znaleźć prawa licencyjne do wymagań, zobacz [porównanie funkcji ogólnie dostępna bezpłatna, Basic i Premium Edition](https://azure.microsoft.com/pricing/details/active-directory/).
 

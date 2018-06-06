@@ -1,28 +1,24 @@
 ---
-title: "Kopia zapasowa Azure: Odzyskiwanie plików i folderów z kopii zapasowej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Odzyskiwanie plików z punktu odzyskiwania maszyny wirtualnej platformy Azure"
+title: 'Kopia zapasowa Azure: Odzyskiwanie plików i folderów z kopii zapasowej maszyny Wirtualnej Azure'
+description: Odzyskiwanie plików z punktu odzyskiwania maszyny wirtualnej platformy Azure
 services: backup
-documentationcenter: dev-center-name
 author: pvrk
 manager: shivamg
-keywords: "odzyskiwanie na poziomie elementu; odzyskiwanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure. Przywróć pliki z maszyny Wirtualnej Azure"
-ms.assetid: f1c067a2-4826-4da4-b97a-c5fd6c189a77
+keywords: odzyskiwanie na poziomie elementu; odzyskiwanie plików z kopii zapasowej maszyny Wirtualnej platformy Azure. Przywróć pliki z maszyny Wirtualnej Azure
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: pullabhk;markgal
-ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: pullabhk
+ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737022"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
-Kopia zapasowa Azure udostępnia możliwość przywracania [maszyn wirtualnych platformy Azure (maszyny wirtualne) oraz dyski](./backup-azure-arm-restore-vms.md) z kopii zapasowych maszyny Wirtualnej platformy Azure, nazywane również przywrócić punkty. W tym artykule opisano sposób odzyskiwanie plików i folderów z kopii zapasowej maszyny Wirtualnej platformy Azure. Przywracanie plików i folderów jest dostępna tylko dla maszyn wirtualnych platformy Azure wdrażane za pomocą modelu usługi Resource Manager i chronione w magazynie usług odzyskiwania.
+Kopia zapasowa Azure udostępnia możliwość przywracania [maszyn wirtualnych platformy Azure (maszyny wirtualne) oraz dyski](./backup-azure-arm-restore-vms.md) z kopii zapasowych maszyny Wirtualnej platformy Azure, znanej także jako punkty odzyskiwania. W tym artykule opisano sposób odzyskiwanie plików i folderów z kopii zapasowej maszyny Wirtualnej platformy Azure. Przywracanie plików i folderów jest dostępna tylko dla maszyn wirtualnych platformy Azure wdrażane za pomocą modelu usługi Resource Manager i chronione w magazynie usług odzyskiwania.
 
 > [!Note]
 > Ta funkcja jest dostępna dla maszyn wirtualnych platformy Azure wdrażane za pomocą modelu usługi Resource Manager i chronione w magazynie usług odzyskiwania.
@@ -31,7 +27,7 @@ Kopia zapasowa Azure udostępnia możliwość przywracania [maszyn wirtualnych p
 
 ## <a name="mount-the-volume-and-copy-files"></a>Zainstaluj woluminu i kopiować pliki
 
-Aby przywrócić pliki lub foldery z punktu przywracania, przejdź do maszyny wirtualnej, a następnie wybierz punkt przywracania. 
+Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wirtualnej, a następnie wybierz pozycję żądanego punktu odzyskiwania. 
 
 1. Zaloguj się do [portalu Azure](http://portal.Azure.com) i w menu po lewej stronie kliknij **maszyn wirtualnych**. Wybierz maszynę wirtualną, aby otworzyć pulpit nawigacyjny tej maszyny wirtualnej z listy maszyn wirtualnych. 
 
@@ -197,7 +193,7 @@ Skrypt wymaga również Python i bash składników do wykonywania i bezpieczne �
 | --------------- | ---- |
 | Bash | 4 i nowsze |
 | python | 2.6.6 i powyżej.  |
-| TLS | 1.2 powinny być obsługiwane.  |
+| Protokół TLS | 1.2 powinny być obsługiwane.  |
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

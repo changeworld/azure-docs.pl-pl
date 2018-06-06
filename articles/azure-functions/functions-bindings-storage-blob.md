@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85cdce312e141bee9da3b633c45dc770e503abfe
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724802"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -34,13 +35,17 @@ W tym artykule opisano sposób pracy z usługi Azure Functions powiązania magaz
 > [!NOTE]
 > Użyj wyzwalacza zdarzenia siatki zamiast wyzwalacza magazynu obiektów Blob dla kont magazynu tylko do obiektów blob, wysokiej skali lub w celu uniknięcia zimnego opóźnień. Aby uzyskać więcej informacji, zobacz [wyzwalacza](#trigger) sekcji. 
 
-## <a name="packages"></a>Pakiety
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania magazynu obiektów Blob są udostępniane w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) repozytorium GitHub.
+Powiązania magazynu obiektów Blob są udostępniane w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+
+Powiązania magazynu obiektów Blob są udostępniane w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) repozytorium GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -262,6 +267,8 @@ W języku C# i skryptu C# można użyć następujących typów parametru obiektu
 * `CloudAppendBlob`<sup>1</sup>
 
 <sup>1</sup> wymaga powiązania "inout" `direction` w *function.json* lub `FileAccess.ReadWrite` w bibliotece klas C#.
+
+Jeśli spróbujesz powiązać z jednego z typów zestawu SDK usługi Magazyn i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 Powiązanie z `string`, `Byte[]`, lub POCO zaleca się tylko wtedy, jeśli rozmiar obiektu blob jest mały, jako blob całej zawartości są ładowane do pamięci. Ogólnie rzecz biorąc, zaleca się używania `Stream` lub `CloudBlockBlob` typu. Aby uzyskać więcej informacji, zobacz [użycia pamięci i współbieżność](#trigger---concurrency-and-memory-usage) dalszej części tego artykułu.
 
@@ -563,6 +570,8 @@ W języku C# i skryptu C# można użyć następujących typów parametru dla pow
 
 <sup>1</sup> wymaga powiązania "inout" `direction` w *function.json* lub `FileAccess.ReadWrite` w bibliotece klas C#.
 
+Jeśli spróbujesz powiązać z jednego z typów zestawu SDK usługi Magazyn i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
+
 Powiązanie z `string` lub `Byte[]` jest zalecane tylko jeśli rozmiar obiektu blob jest mały, ponieważ zawartość obiektu blob całego są ładowane do pamięci. Ogólnie rzecz biorąc, zaleca się używania `Stream` lub `CloudBlockBlob` typu. Aby uzyskać więcej informacji, zobacz [użycia pamięci i współbieżność](#trigger---concurrency-and-memory-usage) we wcześniejszej części tego artykułu.
 
 W języku JavaScript, uzyskiwać dostęp za pomocą danych obiektów blob `context.bindings.<name from function.json>`.
@@ -776,6 +785,8 @@ W języku C# i skryptu C# można powiązać z następujących typów do zapisywa
 <sup>1</sup> wymaga "powiązania w" `direction` w *function.json* lub `FileAccess.Read` w bibliotece klas C#. Można jednak użyć obiektu kontenera, który udostępnia środowisko uruchomieniowe do zapisu operacji, takich jak przekazywanie obiekty BLOB do kontenera.
 
 <sup>2</sup> wymaga powiązania "inout" `direction` w *function.json* lub `FileAccess.ReadWrite` w bibliotece klas C#.
+
+Jeśli spróbujesz powiązać z jednego z typów zestawu SDK usługi Magazyn i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 W funkcji asynchronicznych, użyj wartości zwracanej lub `IAsyncCollector` zamiast `out` parametru.
 

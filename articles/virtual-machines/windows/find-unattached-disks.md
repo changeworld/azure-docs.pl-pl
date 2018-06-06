@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: a8d2e017ee0b368c2d509ab4bf47ea566ee52a3b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 17262978c9600b75a1ddf945cf170fea6ac4f8ce
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756936"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie odłączyć dysku systemu Azure zarządzane i niezarządzane
 Po usunięciu maszyny wirtualnej (VM) na platformie Azure, domyślnie nie są usuwane wszystkie dyski, które są dołączone do maszyny Wirtualnej. Ta funkcja pomaga zapobiec utracie danych z powodu usunięcia przypadkowe maszyn wirtualnych. Po usunięciu maszyny Wirtualnej będzie kontynuował opłacać odłączyć dysków. W tym artykule przedstawiono, jak znaleźć i Usuń wszystkie dyski odłączyć i zredukowanie niepotrzebnych kosztów. 
@@ -82,7 +83,7 @@ Niezarządzane dyski znajdują się pliki VHD, które są przechowywane jako [st
    
 # Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
 # Set deleteUnattachedVHDs=0 if you want to see the Uri of the unattached VHDs
-$deleteUnattachedVHDs=1
+$deleteUnattachedVHDs=0
 
 $storageAccounts = Get-AzureRmStorageAccount
 

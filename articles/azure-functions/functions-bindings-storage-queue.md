@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: a1ca2b821678b48f65fe6ec6e58fa65cd8e4304f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 71adccabc0778e2765c574f3714aab0ed0179deb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724473"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure kolejki magazynu powiązania dla usługi Azure Functions
 
@@ -28,13 +29,17 @@ W tym artykule opisano sposób pracy z usługi Azure Functions powiązania magaz
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakiety
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania kolejki magazynu jest dostępny w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) repozytorium GitHub.
+Powiązania kolejki magazynu jest dostępny w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+
+Powiązania kolejki magazynu jest dostępny w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue) repozytorium GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -240,6 +245,8 @@ W języku C# i skryptu C#, dostęp do danych komunikatów za pomocą parametru m
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
+
+Jeśli spróbujesz powiązać `CloudQueueMessage` i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 W języku JavaScript, użyj `context.bindings.<name>` do ładunku elementu kolejki. Jeśli ładunek JSON, jest deserializacji do obiektu.
 
@@ -474,6 +481,8 @@ W języku C# i skryptu C#, należy zapisać pojedynczy komunikat z kolejki przy 
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
+
+Jeśli spróbujesz powiązać `CloudQueueMessage` i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 W języku C# i skryptu C# zapisu wielu komunikatów z kolejki przy użyciu jednej z następujących typów: 
 

@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af65ffc088c2beadf415b72ec284ef77f3e4f6d4
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757261"
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizacji 1802 stosu
 
@@ -36,7 +37,7 @@ Numer kompilacji aktualizacji 1802 stosu Azure jest **20180302.1**.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem    
 > [!IMPORTANT]    
-> Nie należy próbować tworzyć maszyn wirtualnych podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzania aktualizacjami w omówieniu stosu Azure](/azure-stack-updates#plan-for-updates).
+> Nie należy próbować tworzyć maszyn wirtualnych podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzania aktualizacjami w omówieniu stosu Azure](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
@@ -107,6 +108,9 @@ Ta aktualizacja obejmuje następujące ulepszenia i poprawki dla stosu Azure.
 Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji **20180302.1**
 
 #### <a name="portal"></a>Portal
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  Obejście: Aby rozwiązać ten problem, po zainstalowaniu tej aktualizacji, należy użyć krok 3 z [wyzwalacza automatyzacji do skonfigurowania zaufania dostawcy oświadczeń w stosie Azure](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) procedury, aby zresetować właściciela subskrypcji dostawcy domyślnego.   
+
 - Możliwość [aby otworzyć nowe żądanie pomocy technicznej z listy rozwijanej](azure-stack-manage-portals.md#quick-access-to-help-and-support) z wewnątrz administrator portalu nie jest dostępna. Zamiast tego użyj następującego łącza:     
     - Azure stosu Użyj zintegrowanych systemów https://aka.ms/newsupportrequest.
 
@@ -137,7 +141,22 @@ Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji *
 
 
 #### <a name="health-and-monitoring"></a>Monitorowania kondycji i
-Nie są znane problemy po zaktualizowaniu do 1802.
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+  Alert #1:
+   - Nazwa: Rolę infrastruktury złej kondycji
+   - Ważność: ostrzeżenie
+   - SKŁADNIKÓW: Kontroler kondycji
+   - Opis: Kontroler kondycji pulsu skanera jest niedostępny. Może to dotyczyć raportów o kondycji i metryki.  
+
+  Alert #2.
+   - Nazwa: Rolę infrastruktury złej kondycji
+   - Ważność: ostrzeżenie
+   - SKŁADNIKÓW: Kontroler kondycji
+   - Opis: Kontroler kondycji skanera błędu jest niedostępny. Może to dotyczyć raportów o kondycji i metryki.
+
+  Obydwa alerty można bezpiecznie zignorować. Będą one Zamknij automatycznie wraz z upływem czasu.  
+
 
 #### <a name="marketplace"></a>Portal Marketplace
 - Użytkowników może uzyskać administracyjnej elementy, takie jak plany i oferty i przeglądać pełnego portalu marketplace bez subskrypcji. Te elementy są niefunkcjonalne dla użytkowników.
@@ -155,7 +174,7 @@ Nie są znane problemy po zaktualizowaniu do 1802.
 
 - Po utworzeniu zestawem dostępności w portalu, przechodząc do **nowy** > **obliczeniowe** > **zestawu dostępności**, można tworzyć tylko z domeny błędów i Aktualizacja domeny 1 zestawu dostępności. Jako obejście, podczas tworzenia nowej maszyny wirtualnej, Utwórz dostępności przy użyciu programu PowerShell, interfejsu wiersza polecenia, lub z poziomu portalu.
 
-- Po utworzeniu maszyny wirtualnej w portalu Azure stosu użytkownika portalu zawiera nieprawidłową liczbę dysków z danymi, które można załączyć do serii DS maszyny Wirtualnej. Serii DS maszyny wirtualne mogą obsługiwać jako wiele dysków z danymi jako konfiguracji platformy Azure.
+- Po utworzeniu maszyny wirtualnej w portalu Azure stosu użytkownika portalu zawiera nieprawidłową liczbę dysków z danymi, które można załączyć do serii D maszyny Wirtualnej. Wszystkie obsługiwane D serii maszyn wirtualnych może obsłużyć jako wiele dysków z danymi jako konfiguracji platformy Azure.
 
 - Gdy nie można utworzyć obrazu maszyny Wirtualnej, elementu nie powiodło się, że nie można usunąć mogą być dodane do bloku obliczeń obrazów maszyny Wirtualnej.
 
@@ -277,6 +296,8 @@ Nie są znane problemy po zaktualizowaniu do 1802.
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>Pobieranie narzędzia Azure stosu z usługi GitHub
 - Korzystając z *webrequest wywołania* polecenia cmdlet programu PowerShell, aby pobrać stosu Azure narzędzi z serwisu Github, komunikat o błędzie:     

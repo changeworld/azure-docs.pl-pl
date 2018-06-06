@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: faf526082a9a38d5d98443ff2b74eac4eef1ca08
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a0e05543734ae0604149d18564ae1bc1eff1892b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714633"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurowanie maszyny wirtualnej zestawu skalowania zarządzane usługi tożsamości (MSI) przy użyciu wiersza polecenia platformy Azure
 
@@ -119,8 +120,7 @@ W tej sekcji przedstawiono tworzenie VMSS i przypisanie przypisane do VMSS tożs
 
 2. Utwórz użytkownika przypisane przy użyciu tożsamości [utworzenia tożsamości az](/cli/azure/identity#az-identity-create).  `-g` Parametr określa grupę zasobów, w której utworzono użytkownika z przypisanym tożsamości i `-n` parametr określa jego nazwę. Pamiętaj zastąpić `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` wartości parametrów z własne wartości:
 
-    > [!IMPORTANT]
-    > Tworzenie tożsamości użytkowników przypisanych obsługuje tylko alfanumeryczne i łączniki (0-9 lub a-z lub A-Z lub -) znaków. Ponadto nazwa powinna być ograniczona do 24 znaków do przypisania do maszyny Wirtualnej/VMSS działała poprawnie. Sprawdzanie dostępności aktualizacji. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania i znane problemy](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
     ```azurecli-interactive
@@ -176,10 +176,10 @@ Odpowiedź zawiera szczegóły dotyczące tożsamości użytkownika z przypisany
    }
    ```
 
-2. Przypisz tożsamości użytkownika przypisanego do przy użyciu VMSS [przypisać tożsamość vmss az](/cli/azure/vmss/identity#az_vm_assign_identity). Pamiętaj zastąpić `<RESOURCE GROUP>` i `<VM NAME>` wartości parametrów z własne wartości. `<USER ASSIGNED IDENTITY ID>` Będzie zasobów tożsamość użytkownika z przypisanym `id` właściwości, utworzonym w poprzednim kroku:
+2. Przypisz tożsamości użytkownika przypisanego do przy użyciu VMSS [przypisać tożsamość vmss az](/cli/azure/vmss/identity#az_vm_assign_identity). Pamiętaj zastąpić `<RESOURCE GROUP>` i `<VMSS NAME>` wartości parametrów z własne wartości. `<USER ASSIGNED IDENTITY ID>` Będzie zasobów tożsamość użytkownika z przypisanym `id` właściwości, utworzonym w poprzednim kroku:
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Usuń użytkownika przypisanego tożsamości z VMSS Azure
@@ -187,15 +187,15 @@ Odpowiedź zawiera szczegóły dotyczące tożsamości użytkownika z przypisany
 > [!NOTE]
 >  Usuwanie wszystkich tożsamości przypisane przez użytkownika z zestawu skalowania maszyn wirtualnych obecnie nie jest obsługiwane, chyba że masz przypisane tożsamości systemu. 
 
-Jeśli Twoje VMSS ma wiele tożsamości przypisane przez użytkownika, możesz usunąć wszystkie z wyjątkiem ostatniego go przy użyciu [usunąć tożsamości vmss az](/cli/azure/vmss/identity#az-vmss-identity-remove). Pamiętaj zastąpić `<RESOURCE GROUP>` i `<VM NAME>` wartości parametrów z własne wartości. `<MSI NAME>` Jest tożsamość użytkownika z przypisanym właściwości name, który można znaleźć w sekcji tożsamości maszynę Wirtualną przy użyciu przez `az vm show`:
+Jeśli Twoje VMSS ma wiele tożsamości przypisane przez użytkownika, możesz usunąć wszystkie z wyjątkiem ostatniego go przy użyciu [usunąć tożsamości vmss az](/cli/azure/vmss/identity#az-vmss-identity-remove). Pamiętaj zastąpić `<RESOURCE GROUP>` i `<VMSS NAME>` wartości parametrów z własne wartości. `<MSI NAME>` Jest tożsamość użytkownika z przypisanym właściwości name, który można znaleźć w sekcji tożsamości maszynę Wirtualną przy użyciu przez `az vm show`:
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
+az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
 ```
 Twoje VMSS ma przypisany systemu i przypisać tożsamości użytkownika, po usunięciu wszystkich użytkowników przypisanych tożsamości przełączając na system tylko przypisane. Użyj następującego polecenia: 
 
 ```azurecli-interactive
-az vmss update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null
+az vmss update -n <VMSS NAME> -g <RESOURCE GROUP> --set identity.type='SystemAssigned' identity.identityIds=null
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

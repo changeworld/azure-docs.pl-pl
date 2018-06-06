@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/02/2018
+ms.openlocfilehash: 9d9b9b5eda110ad7fa66bb99501936dda5d45e52
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737049"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrowanie bazy danych MySQL bazą danych Azure dla programu MySQL przy użyciu zrzutu i przywracania
 W tym artykule opisano dwa podstawowe sposoby kopie zapasowe i przywracanie baz danych w bazie danych Azure dla programu MySQL
@@ -51,6 +52,7 @@ Aby zoptymalizować wydajność, należy wykonać powiadomienia o te zagadnienia
 -   Użyj podzielonych tabel, gdy jest to konieczne.
 -   Ładowanie danych równolegle. Należy unikać zbyt dużo równoległości, które mogłyby spowodować osiągnęła limit zasobów i monitorowanie zasobów przy użyciu metryk, które są dostępne w portalu Azure. 
 -   Użyj `defer-table-indexes` opcji w mysqlpump podczas zrzucanie baz danych, dzięki temu tworzenie indeksów odbywa się po załadowaniu danych tabel.
+-   Skopiuj pliki kopii zapasowej do obiektów blob Azure/magazynu i przeprowadzenia operacji przywracania z tego miejsca, która powinna być znacznie szybciej niż wykonaniem operacji przywracania w Internecie.
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Utworzenie pliku kopii zapasowej z poziomu wiersza polecenia przy użyciu mysqldump
 Aby utworzyć kopię zapasową istniejącej bazy danych MySQL na serwerze lokalnym lokalnego lub na maszynie wirtualnej, uruchom następujące polecenie: 
@@ -74,7 +76,6 @@ Aby wybrać określonych tabel w bazie danych, aby utworzyć kopię zapasową, l
 ```bash
 $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 ```
-
 Aby utworzyć kopię zapasową więcej niż jednej bazy danych na raz, użyj bazy danych przełącznika i listy nazw baz danych, rozdzielając je spacjami. 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
@@ -108,21 +109,22 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 
 ## <a name="export-using-phpmyadmin"></a>Eksportowanie przy użyciu PHPMyAdmin
 Aby wyeksportować, można użyć typowych phpMyAdmin narzędzia, które mogą już zainstalowano lokalnie w danym środowisku. Aby wyeksportować za pomocą PHPMyAdmin bazy danych MySQL:
-- Otwórz phpMyAdmin.
-- Wybierz bazę danych. Kliknij nazwę bazy danych na liście z lewej strony. 
-- Kliknij przycisk **wyeksportować** łącza. Aby wyświetlić zrzut bazy danych zostanie wyświetlona strona nowe.
-- W obszarze eksportu kliknij **Zaznacz wszystko** łącze, aby można było wybrać tabele w bazie danych. 
-- W obszarze Opcje SQL kliknij odpowiednie opcje. 
-- Kliknij przycisk **zapisać jako plik** opcja i odpowiedniej kompresji, a następnie kliknij przycisk **Przejdź** przycisku. Okno dialogowe powinna pojawić się monit o Zapisz plik lokalnie.
+1. Otwórz phpMyAdmin.
+2. Wybierz bazę danych. Kliknij nazwę bazy danych na liście z lewej strony. 
+3. Kliknij przycisk **wyeksportować** łącza. Aby wyświetlić zrzut bazy danych zostanie wyświetlona strona nowe.
+4. W obszarze eksportu kliknij **Zaznacz wszystko** łącze, aby można było wybrać tabele w bazie danych. 
+5. W obszarze Opcje SQL kliknij odpowiednie opcje. 
+6. Kliknij przycisk **zapisać jako plik** opcja i odpowiedniej kompresji, a następnie kliknij przycisk **Przejdź** przycisku. Okno dialogowe powinna pojawić się monit o Zapisz plik lokalnie.
 
 ## <a name="import-using-phpmyadmin"></a>Import za pomocą PHPMyAdmin
 Importowanie bazy danych jest podobny do eksportowania. Wykonaj następujące czynności:
-- Otwórz phpMyAdmin. 
-- Na stronie Instalatora phpMyAdmin kliknij **Dodaj** można dodać bazy danych Azure, aby serwer MySQL. Podaj informacje dotyczące połączenia i informacji o logowaniu.
-- Utwórz bazę danych o odpowiedniej nazwie i zaznacz go po lewej stronie ekranu. Aby zmodyfikować istniejącą bazę danych, kliknij nazwę bazy danych, zaznacz pola wyboru obok nazwy tabel i wybierz **porzucić** usunąć istniejące tabele. 
-- Kliknij przycisk **SQL** łącze do wyświetlania strony, gdzie można wpisać w poleceniach SQL, lub Przekaż plik programu SQL. 
-- Użyj **Przeglądaj** przycisk, aby znaleźć plik bazy danych. 
-- Kliknij przycisk **Przejdź** przycisk, aby wyeksportować kopii zapasowej, wykonaj polecenia SQL i ponownie utworzyć bazę danych.
+1. Otwórz phpMyAdmin. 
+2. Na stronie Instalatora phpMyAdmin kliknij **Dodaj** można dodać bazy danych Azure, aby serwer MySQL. Podaj informacje dotyczące połączenia i informacji o logowaniu.
+3. Utwórz bazę danych o odpowiedniej nazwie i zaznacz go po lewej stronie ekranu. Aby zmodyfikować istniejącą bazę danych, kliknij nazwę bazy danych, zaznacz pola wyboru obok nazwy tabel i wybierz **porzucić** usunąć istniejące tabele. 
+4. Kliknij przycisk **SQL** łącze do wyświetlania strony, gdzie można wpisać w poleceniach SQL, lub Przekaż plik programu SQL. 
+5. Użyj **Przeglądaj** przycisk, aby znaleźć plik bazy danych. 
+6. Kliknij przycisk **Przejdź** przycisk, aby wyeksportować kopii zapasowej, wykonaj polecenia SQL i ponownie utworzyć bazę danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Łączenie aplikacji bazy danych platformy Azure dla programu MySQL](./howto-connection-string.md)
+- [Łączenie aplikacji bazy danych platformy Azure dla programu MySQL](./howto-connection-string.md).
+- Aby uzyskać więcej informacji na temat migracji baz danych do bazy danych Azure dla programu MySQL, zobacz [Przewodnik po migracji bazy danych](http://aka.ms/datamigration).

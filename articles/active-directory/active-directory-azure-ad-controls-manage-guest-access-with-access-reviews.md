@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: a96e856b55f118b74c7cb43ead925e10e4b74f1c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 4a61bb418083bafe9e00a76147ab9bfdcdb0b0ce
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713511"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzaj dostępem gościa za pomocą usługi Azure AD dostęp do przeglądu
 
@@ -34,10 +35,7 @@ Możesz również można łatwo upewnij się, że goście mają odpowiedni dost�
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 
-Przeglądy dostępu są oferowane wraz z usługą Azure AD w wersji Premium P2, która jest udostępniana z pakietem Microsoft Enterprise Mobility + Security E5. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](active-directory-editions.md). Każdy użytkownik, który współdziała z tej funkcji, w tym do tworzenia przeglądu, wypełnij przeglądu i Potwierdź ich dostęp wymaga licencji. 
-
-Przeglądy dostępu są oferowane wraz z usługą Azure AD w wersji Premium P2, która jest udostępniana z pakietem Microsoft Enterprise Mobility + Security E5. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](active-directory-whatis.md). Użytkownicy, który chcą korzystać z tej funkcji w celu tworzenia lub stosowania przeglądu albo uzyskania dostępu do przeglądu, muszą mieć licencję.
-
+Przeglądy dostępu są oferowane wraz z usługą Azure AD w wersji Premium P2, która jest udostępniana z pakietem Microsoft Enterprise Mobility + Security E5. Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](active-directory-editions.md). Użytkownicy, którzy chcą korzystać z tej funkcji, w tym tworzyć lub wypełniać przeglądy albo potwierdzać swój dostęp, muszą mieć licencję. 
 
 Jeśli planujesz poproś gości, aby przejrzeć swoje własne dostępu, przeczytaj informacje o licencji użytkownika gościa. Aby uzyskać więcej informacji, zobacz [licencjonowania współpracy B2B usługi Azure AD](active-directory-b2b-licensing.md).
 

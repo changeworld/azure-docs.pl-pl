@@ -2,22 +2,20 @@
 title: 'Azure rozwiązania Cosmos bazy danych: Interfejs API programu .NET zmiany źródła procesora, zestawu SDK & zasobów | Dokumentacja firmy Microsoft'
 description: Dowiedz się wszystkiego o interfejsie API procesora źródła danych zmian i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami zmiany źródła procesora zestawu SDK .NET.
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
 manager: kfile
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: reference
+ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a2770b9349dac8caa8e0611d77522ab56ca1bf07
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798899"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Procesor kanału informacyjnego zmiany .NET SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -44,6 +42,10 @@ ms.lasthandoff: 05/08/2018
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="stable-builds"></a>Stabilna kompilacji
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* Dodano więcej rejestrowania.
+* Stała przeciek DocumentClient podczas wywoływania metody oszacowania pracy oczekujących wiele razy.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * Poprawki oszacowania pracy oczekujących.
@@ -107,6 +109,7 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 
 | Wersja | Data wydania | Dacie wycofania |
 | --- | --- | --- |
+| [1.3.3](#1.3.3) |08 mogą 2018 |--- |
 | [1.3.2](#1.3.2) |18 kwietnia 2018 |--- |
 | [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
 | [1.2.0](#1.2.0) |31 października 2017 r. |--- |

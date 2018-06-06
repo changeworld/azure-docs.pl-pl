@@ -1,6 +1,6 @@
 ---
-title: Jak rozszerzyć (Kopiuj) alerty z portalu OMS na platformie Azure | Dokumentacja firmy Microsoft
-description: Narzędzia i interfejs API za pomocą którego rozszerzeniu alerty z usługą OMS do alertów Azure może odbywać się przez klientów dobrowolnie.
+title: Jak rozszerzyć alerty z Analytcs dziennika na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano narzędzia i interfejs API za pomocą którego można rozszerzyć alerty z Analiza dzienników Azure alerty.
 author: msvijayn
 manager: kmadnani1
 editor: ''
@@ -11,65 +11,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 06/04/2018
 ms.author: vinagara
-ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 0dce6e6772b4efea90df2e095ac0041641d99061
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763531"
 ---
-# <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Jak rozszerzyć alerty (Kopiuj) z pakietu OMS na platformie Azure
-Począwszy od **14 maja 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
+# <a name="how-to-extend-alerts-from-log-analytics-into-azure-alerts"></a>Jak rozszerzyć alerty z analizy dzienników do alertów Azure
+Alerty w analizy dzienników jest zastępowany Dzięki alertom w usłudze Azure i w ramach tego przejścia, alerty, które skonfigurowano w analizy dzienników zostanie rozszerzony na platformie Azure.  Jeśli nie chcesz czekać na ich automatycznie przeniesione do platformy Azure, możesz zainicjować proces po jednej z opcji:
+
+1. Ręcznie w portalu OMS 
+2. Programowo przy użyciu interfejsu API AlertsVersion  
 
 > [!NOTE]
-> Uruchamianie 14 maja 2018 - Microsoft rozpocznie się proces automatycznie rozszerzanie alerty na platformie Azure. Nie wszystkie obszary robocze i alertów zostanie rozszerzony w tym dniu; Zamiast tego Microsoft rozpocznie rozszerzyć alerty automatycznie w transzach w przyszłych tygodni. Dlatego alerty w portalu OMS zostanie nie auto rozszerzania na platformie Azure natychmiast na 14 maja 2018 a użytkownika można nadal ręcznie rozszerzenie alerty za pomocą opcji szczegóły poniżej.
+> Firma Microsoft automatycznie rozszerzy alerty utworzone w Analiza dzienników Azure alertów, uruchamianie na **14 maja 2018** etapami aż do zakończenia. Od tego dnia Microsoft rozpocznie się do planowania migracji alerty na platformie Azure, a podczas to przejście alertami można zarządzać z portalu OMS i portalu Azure. Ten proces jest bezpieczna i nie interruptive.  
 
-Klienci chcą Przenieś alerty z usługą OMS na platformie Azure, to zrobić za pomocą jednej z opcji podane.
+## <a name="option-1---initiate-from-the-oms-portal"></a>Opcja 1 — inicjowanie z portalu OMS
+W poniższych krokach opisano, jak rozszerzyć alerty w obszarze roboczym z portalu OMS.  
 
-## <a name="option-1---using-oms-portal"></a>Opcja 1 — za pomocą portalu OMS
-Aby zainicjować dobrowolnie rozszerzanie alerty z portalu OMS na platformie Azure, wykonaj kroki wymienione poniżej.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+2. W okienku subskrypcje analizy dzienników, wybierz obszar roboczy, a następnie wybierz **portalu OMS** kafelka.<br><br> ![Przycisk Wyszukiwanie w dziennikach](./media/monitor-alerts-extend/azure-portal-01.png)<br><br> 
+3. Po nastąpi przekierowanie do portalu OMS, kliknij Kafelek ustawienia po prawej stronie górnej części strony.<br><br> ![Portalu OMS opcji ustawień](./media/monitor-alerts-extend/oms-portal-settings-option.png)<br><br> 
+4. Z **ustawienia** wybierz pozycję **alerty**.  
+5. Kliknij przycisk **Rozszerz na platformie Azure**.<br><br> ![Strony portalu ustawienia alertu OMS z opcją Rozszerz](./media/monitor-alerts-extend/ExtendInto.png)
+6. Kreator jest wyświetlone w okienku pierwszy trzy kroki udostępnienie omówienia procesu.  Kliknij przycisk **dalej** aby kontynuować.<br><br> ![Rozszerzyć alertów z usługi Analiza dzienników Azure — krok 1](./media/monitor-alerts-extend/ExtendStep1.png)  
+7. W drugim kroku przedstawiono podsumowanie proponowanych zmian listę odpowiednich [grupy akcji](monitoring-action-groups.md) alertów. Jeśli podobne akcje są widoczne w więcej niż jeden alert, usługa zaproponuje do skojarzenia z wszystkich z nich grupy jednej akcji.  Grupa działań proponowana, postępuj zgodnie z konwencją nazewnictwa: *WorkspaceName_AG_ #Number*. Aby kontynuować, kliknij przycisk **dalej**.<br><br> ![rozszerzyć alertów z usługi Analiza dzienników Azure — krok 2](./media/monitor-alerts-extend/ExtendStep2.png)  
+8. W ostatnim kroku kreatora, kliknij przycisk **Zakończ** i upewnij się, gdy zostanie wyświetlony monit, aby zainicjować proces.  Opcjonalnie można określić adresy e-mail, co użytkownik jest powiadamiany o zakończeniu procesu i wszystkie alerty została pomyślnie przeniesiona do alertów Azure.<br><br> ![Rozszerzyć alertów z usługi Analiza dzienników Azure — krok 3](./media/monitor-alerts-extend/ExtendStep3.png)
 
-1. Na stronie Przegląd portalu OMS przejdź do ustawień, a następnie sekcja alerty. Kliknij przycisk z etykietą "Rozszerzyć do platformy Azure", jako wyróżniane na poniższej ilustracji.
-
-    ![Strony portalu ustawienia alertu OMS z opcją Rozszerz](./media/monitor-alerts-extend/ExtendInto.png)
-
-2. Po kliknięciu przycisku kroku 3 kreatora zostanie wyświetlona, z pierwszym krokiem udostępnia szczegółowe informacje o procesie. Kliknij przycisk Dalej, aby kontynuować.
-
-    ![Rozszerzanie alerty z portalu OMS na platformie Azure — krok 1](./media/monitor-alerts-extend/ExtendStep1.png)
-
-3. W drugim kroku system wyświetli podsumowanie proponowanej zmiany przez listę odpowiednich [grupy akcji](monitoring-action-groups.md), alertów w portalu OMS. Jeśli podobne akcje są widoczne w więcej niż jeden alert — system zaproponuje do skojarzenia z wszystkich z nich grupy jednej akcji.  Grupa działań proponowana, postępuj zgodnie z konwencją nazewnictwa: *WorkspaceName_AG_ #Number*. Aby kontynuować, kliknij przycisk Dalej.
-Przykład ekranu poniżej.
-
-    ![Rozszerzanie alerty z portalu OMS na platformie Azure — krok 2](./media/monitor-alerts-extend/ExtendStep2.png)
+Po zakończeniu działania kreatora, zwróć uwagę na **ustawienia alertu** strona, która opcję, aby rozszerzyć alerty do platformy Azure zostanie usunięta.  W tle alerty zostaną przeniesione na platformie Azure, a to może zająć trochę czasu.  Podczas operacji nie można wprowadzać zmiany do alertów w portalu OMS.  Bieżący stan będą wyświetlane z banerze w górnej części portalu, a jeśli wcześniej podany adres e-mail otrzymasz wiadomość e-mail po pomyślnym zakończeniu procesu.  
 
 
-4. W ostatnim kroku kreatora możesz poprosić portalu OMS można zaplanować rozszerzanie wszystkie alerty na platformie Azure — tworzenie nowych grup akcji i kojarzenie ich z alertami, jak pokazano wcześniej ekranu. Aby kontynuować wybierz kliknij przycisk Zakończ i upewnij się, w wierszu polecenia, aby zainicjować proces. Opcjonalnie klientów można też podać adresy e-mail, które chciałby portalu OMS o wysłanie raportu na zakończenie przetwarzania.
-
-    ![Rozszerzanie alerty z portalu OMS na platformie Azure — krok 3](./media/monitor-alerts-extend/ExtendStep3.png)
-
-5. Po zakończeniu pracy Kreatora kontroli powróci do strony Ustawienia alertu, a opcja "Rozszerzyć do platformy Azure" zostanie usunięta. W tle portalu OMS zaplanowane alerty w analizy dzienników na platformie Azure; to może zająć trochę czasu i po rozpoczęciu operacji krótki okres alertów w portalu OMS nie będą dostępne do modyfikacji. Bieżący stan zostanie wyświetlony za pośrednictwem transparent i jeśli adresów e-mail miejsce pod warunkiem podczas wykonywania kroku 4, następnie zostaną one informację, gdy proces w tle pomyślnie rozszerza wszystkie alerty na platformie Azure. 
-
-6. Alerty będą nadal wyświetlane w portalu OMS, nawet po ich pomyślnie pobrać rozszerzony na platformie Azure.
-
-    ![Po rozszerzeniu alerty w portalu OMS na platformie Azure](./media/monitor-alerts-extend/PostExtendList.png)
+Alerty nadal wyświetlane w portalu OMS, nawet po zostały przeniesione do platformy Azure.<br><br> ![Po przeniesieniu alertów w Analiza dzienników Azure](./media/monitor-alerts-extend/PostExtendList.png)
 
 
-## <a name="option-2---using-api"></a>Opcja 2 — przy użyciu interfejsu API
-Dla klientów, którzy programowe sterowanie lub zautomatyzować proces rozszerzania alerty w portalu OMS na platformie Azure; Firma Microsoft oferuje nowe AlertsVersion interfejsu API w ramach analizy dzienników.
+## <a name="option-2---using-the-alertsversion-api"></a>Opcja 2 — przy użyciu AlertsVersion interfejsu API
+Interfejs API AlertsVersion analizy dziennika umożliwia rozszerzanie alerty z analizy dzienników do alertów Azure za pomocą dowolnego klienta, który można wywołać interfejsu API REST. Są dostępne przy użyciu programu PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia open source, które upraszcza wywoływanie interfejsu API Azure Resource Manager. Korzystanie z ARMClient i programu PowerShell jest jedną z wielu opcji, aby uzyskać dostępu do interfejsu API.  Korzystanie z interfejsu API będzie zapisuje wyniki w formacie JSON.  
 
-Interfejs API AlertsVersion analizy dziennika jest RESTful i jest dostępny za pośrednictwem interfejsu REST API usługi Azure Resource Manager. W tym dokumencie można znaleźć przykłady którym dostęp do interfejsu API z wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia open source, które upraszcza wywoływanie interfejsu API Azure Resource Manager. Korzystanie z ARMClient i programu PowerShell jest jedną z wielu opcji, aby uzyskać dostępu do interfejsu API. Interfejs API dane wyjściowe obejmują wyniki w formacie JSON programowane stosowanie użycia wyników na wiele sposobów.
-
-Używając GET interfejsu API, co można uzyskać w wyniku podsumowanie proponowanej zmiany jako lista odpowiednie [grupy akcji](monitoring-action-groups.md) alertów w portalu OMS w formacie JSON formatowania. Jeśli podobne akcje są widoczne w więcej niż jeden alert — zaproponuje systemu do utworzenia skojarzyć z nimi wszystkimi grupy jednej akcji.  Grupa działań proponowana, postępuj zgodnie z konwencją nazewnictwa: *WorkspaceName_AG_ #Number*.
+Aby korzystać z interfejsu API, należy najpierw utworzyć żądania GET, który przetwarza i zwraca podsumowanie proponowanych zmian przed przystąpieniem do faktycznie rozszerzany także na platformie Azure przy użyciu żądania POST. Lista wyników alertami i listę proponowanych [grupy akcji](monitoring-action-groups.md) w formacie JSON.  Jeśli podobne akcje są widoczne w więcej niż jeden alert, usługa zaproponuje kojarzenie wszystkich z nich z grupą jednej akcji.  Grupy akcji proponowane postępuj zgodnie z konwencją nazewnictwa: *WorkspaceName_AG_ #Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-> [!NOTE]
-> Uzyskiwanie alertów w portalu OMS pobierania rozszerzonych na platformie Azure nie spowoduje wywołanie interfejsu API. Tylko zapewni odpowiedzi podsumowania proponowanych zmian. Aby upewnić się, te zmiany należy zrobić, aby rozszerzyć alerty na platformie Azure, POST Wywołaj należy do interfejsu API.
-
-W przypadku powodzenia wraz z odpowiedź 200 OK GET wywołanie interfejsu API, listę JSON alerty wraz z grupy proponowanych akcji można dostarczyć. Przykładowa odpowiedź poniżej:
+Jeśli żądanie GET zakończy się pomyślnie, wraz z listy alertów i grup proponowanego działania w formacie JSON dane zwracany jest kod stanu HTTP 200. Poniżej przedstawiono przykład odpowiedzi:
 
 ```json
 {
@@ -126,7 +113,7 @@ W przypadku powodzenia wraz z odpowiedź 200 OK GET wywołanie interfejsu API, l
 }
 
 ```
-W przypadku nie ma żadnych alertów w obszarze roboczym określony, wraz z odpowiedź 200 OK dla operacji GET JSON mogą być następujące:
+Jeśli określony obszar roboczy nie ma żadnych reguł alertów zdefiniowane, wraz ze stanem HTTP 200 OK kod operacji GET dane JSON zwraca:
 
 ```json
 {
@@ -135,14 +122,15 @@ W przypadku nie ma żadnych alertów w obszarze roboczym określony, wraz z odpo
 }
 ```
 
-Jeśli wszystkie alerty w obszarze roboczym określonego zostały rozszerzone na platformie Azure — odpowiedzi na wywołanie GET należy:
+Jeśli wszystkie reguły alertu w obszarze roboczym określonego zostały rozszerzone na platformie Azure — odpowiedzi na żądanie GET jest:
+
 ```json
 {
     "version": 2
 }
 ```
 
-Aby rozpocząć planowanie rozszerzania alerty w portalu OMS na platformie Azure, zainicjować POST do interfejsu API. Wykonanie tego polecenia/call potwierdza użytkownika zamiaru jak również akceptacji alerty w portalu OMS rozszerzony do platformy Azure i wprowadzić zmiany, jak wskazano w odpowiedzi GET wywołanie interfejsu API. Użytkownik może opcjonalnie możesz podać listę adresów e-mail, do których OMS portalu będzie poczty raportów, pomyślnie zakończenie procesu zaplanowane tła rozszerzania alerty w portalu OMS na platformie Azure.
+Aby zainicjować migrację alerty na platformie Azure, inicjują odpowiedź POST. Odpowiedź POST potwierdza z celem, a także akceptacji mają alerty z analizy dzienników dla Auzre alertów.  Działanie zostało zaplanowane i alerty są przetwarzane wskazane oparte na wynikach podczas wcześniej wykonywanej odpowiedzi GET.  Opcjonalnie można udostępnić listę adresów e-mail, do których Log Analytics będzie poczty raportu po pomyślnym zakończeniu tła zaplanowanego procesu migracji alerty.  Jest to wykonywane przy użyciu następującego żądania:
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -150,17 +138,17 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> Wynik rozszerzanie OMS portal alerty na platformie Azure, mogą się różnić od podsumowanie udostępniane przez GET - na koncie zmiany wykonane w systemie. Po zaplanowane, alerty w portalu OMS będzie tymczasowo niedostępna do edycji/modyfikacji - podczas można tworzyć nowe alerty. 
+> Powoduje Migrowanie alerty do alertów Azure mogą różnić w zależności od podsumowanie podał odpowiedź GET.  Jeśli zaplanowane, alerty w analizy dzienników będzie tymczasowo niedostępna do edycji/modyfikacji w portalu OMS.  Można jednak tworzyć nowe alerty. 
 
-Jeśli WPIS zakończy się pomyślnie, zwraca odpowiedź 200 OK wraz z programem:
+Jeśli żądanie POST zakończy się pomyślnie, zwraca stan HTTP 200 OK wraz z następującą odpowiedź:
+
 ```json
 {
     "version": 2
 }
 ```
-Wskazującą, czy alerty zostały rozszerzone na platformie Azure, jak wskazano w wersji 2. Ta wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone na platformie Azure i nie ma wpływu wykorzystania z [interfejsu API Search analizy dziennika](../log-analytics/log-analytics-api-alerts.md). Po alerty zostały rozszerzone pomyślnie na platformie Azure, wszystkie e-mail adresy podane podczas GET będą wysyłane raport zawierający szczegółowe informacje o zmianach gotowe.
 
-I na koniec, jeśli wszystkie alerty w obszarze roboczym określonego już zaplanowane na platformie Azure — odpowiedź POST będzie 403 Zabroniony. Aby wyświetlić wszelkie komunikaty o błędach lub określić, czy rozszerzenie procesu jest zablokowana, użytkownik może robić GET i wywołanie komunikat, jeśli dowolne zostanie zwrócony oraz podsumowanie.
+Odpowiedź wskazuje, że alerty zostały pomyślnie rozszerzone do alertów Azure. Właściwość wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone na platformie Azure i nie są powiązane do [interfejsu API Search analizy dziennika](../log-analytics/log-analytics-api-alerts.md). Po alerty zostały rozszerzone pomyślnie na platformie Azure, każdej wiadomości e-mail, adresów, pod warunkiem przy użyciu metody POST żądania są wysyłane raport zawierający szczegółowe informacje o zmianach wykonywane.  Jeśli zaplanowano wszystkie alerty w obszarze roboczym określonego już być rozszerzony, odpowiedź na żądanie POST jest 403 stan kod znaczenie, które nie zostało zabronione. Aby wyświetlić wszelkie komunikaty o błędach lub zrozumieć, jeśli proces jest zablokowana, można przesłać żądania GET i komunikat o błędzie, jeśli istnieje, zostanie zwrócony oraz podsumowanie informacji.
 
 ```json
 {
@@ -223,18 +211,252 @@ I na koniec, jeśli wszystkie alerty w obszarze roboczym określonego już zapla
 
 ```
 
+
+## <a name="option-3---using-custom-powershell-script"></a>Opcja 3 - przy użyciu niestandardowego skryptu PowerShell
+ Po 14 maja 2018 — jeśli Microsoft nie pomyślnie rozszerzony alerty z portalu OMS Azure; następnie do **5 lipca 2018** — użytkownik może ręcznie wykonaj te same czynności za pomocą [opcja 1 — za pomocą interfejsu GUI](#option-1---initiate-from-the-oms-portal) lub [opcja 2 — za pośrednictwem interfejsu API](#option-2---using-the-alertsversion-api).
+
+Po **5 lipca 2018** — wszystkie alerty z portalu OMS zostanie rozszerzony na platformie Azure. Użytkownicy, którzy nie wykonać [kroki niezbędne korygowania sugerowane](#troubleshooting), zostaną skojarzone ich alertów uruchomiona bez wyzwalania, akcji lub powiadomień z powodu braku [grupy akcji](monitoring-action-groups.md). 
+
+Aby ręcznie utworzyć [grupy akcji](monitoring-action-groups.md) dla alertów w analizy dzienników, użytkownicy mogą używać Poniższy przykładowy skrypt.
+```PowerShell
+########## Input Parameters Begin ###########
+
+
+$subscriptionId = ""
+$resourceGroup = ""
+$workspaceName = "" 
+
+
+########## Input Parameters End ###########
+
+armclient login
+
+try
+{
+    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
+    $workspaceId = $workspace.properties.customerId
+    $resourceLocation = $workspace.location
+}
+catch
+{
+    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
+    exit
+}
+
+# Get Extend Summary of the Alerts
+"`nGetting Extend Summary of Alerts for the workspace...`n"
+try
+{
+
+    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
+
+    "Extend preview summary"
+    "=========================`n"
+
+    $value
+
+    $result = $value | ConvertFrom-Json
+}
+catch
+{
+
+    $ErrorMessage = $_.Exception.Message
+    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
+    exit 
+}
+
+if ($result.version -eq 2)
+{
+    "`nThe alerts in this workspace have already been extended to Azure."
+    exit
+}
+
+$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
+
+if ($in.ToLower() -ne "y")
+{
+    exit
+} 
+
+
+# Check for resource provider registration
+try
+{
+    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
+    if ($val.registrationState -eq "NotRegistered")
+    {
+        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
+    }
+}
+catch
+{
+    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
+    exit
+}
+
+$actionGroupsMap = @{}
+try
+{
+    "`nCreating new action groups for alerts extension...`n"
+    foreach ($actionGroup in $result.migrationSummary.actionGroups)
+    {
+        $actionGroupName = $actionGroup.actionGroupName
+        $actions = $actionGroup.actions
+        if ($actionGroupsMap.ContainsKey($actionGroupName))
+        {
+            continue
+        } 
+        
+        # Create action group payload
+        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
+        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
+        $emailReceivers = New-Object Object[] $actions.emailIds.Count
+        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
+        
+        $count = 0
+        foreach ($email in $actions.emailIds)
+        {
+            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
+            $count++
+        }
+
+        $count = 0
+        foreach ($webhook in $actions.webhookActions)
+        {
+            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
+            $count++
+        }
+
+        $itsmAction = $actions.itsmAction
+        if ($itsmAction.connectionId -ne $null)
+        {
+            $val = @{
+            "name" = "ITSM"
+            "workspaceId" = "$subscriptionId|$workspaceId"
+            "connectionId" = "$($itsmAction.connectionId)"
+            "ticketConfiguration" = $itsmAction.templateInfo
+            "region" = "$resourceLocation"
+            }
+            $properties["itsmReceivers"] = @($val)  
+        }
+
+        $properties["emailReceivers"] = @($emailReceivers)
+        $properties["webhookReceivers"] = @($webhookReceivers)
+        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
+
+    
+        # ARM call to create action group
+        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
+
+        "Created Action Group with name $actionGroupName" 
+        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
+        $index++
+    }
+
+    "`nSuccessfully created all action groups!!"
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message
+
+    #Delete all action groups in case of failure
+    "`nDeleting newly created action groups if any as some error happened..."
+    
+    foreach ($actionGroup in $actionGroupsMap.Keys)
+    {
+        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+    }
+
+    "`nError: $ErrorMessage"
+    "`nExiting..."
+    exit
+}
+
+# Update all alerts configuration to the new version
+"`nExtending OMS alerts to Azure...`n"
+
+try
+{
+    $index = 1
+    foreach ($alert in $result.migrationSummary.alerts)
+    {
+        $uri = $alert.alertId + "?api-version=2015-03-20"
+        $config = armclient get $uri | ConvertFrom-Json
+        $aznsNotification = @{
+            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
+        }
+        if ($alert.customWebhookPayload)
+        {
+            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
+        }
+        if ($alert.customEmailSubject)
+        {
+            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
+        }      
+
+        # Update alert version
+        $config.properties.Version = 2
+
+        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
+        $payload = $config | ConvertTo-Json -Depth 4
+        $response = $payload | armclient put $uri
+    
+        "Extended alert with name $($alert.alertName)"
+        $index++
+    }
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message   
+    if ($index -eq 1)
+    {
+        "`nDeleting all newly created action groups as no alerts got extended..."
+        foreach ($actionGroup in $actionGroupsMap.Keys)
+        {
+            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+        }
+        "`nDeleted all action groups."  
+    }
+    
+    "`nError: $ErrorMessage"
+    "`nPlease resolve the issue and try extending again!!"
+    "`nExiting..."
+    exit
+}
+
+"`nSuccessfully extended all OMS alerts to Azure!!" 
+
+# Update version of workspace to indicate extension
+"`nUpdating alert version information in OMS workspace..." 
+
+$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
+
+"`nExtension complete!!"
+```
+
+
+**Przy użyciu niestandardowego skryptu PowerShell** 
+- Wstępnie wymagane jest instalacja [ARMclient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia open source, które upraszcza wywoływanie interfejsu API Azure Resource Manager
+- Użytkownik uruchamiający wspomnianej skryptu musi mieć rolę współautora lub właściciela w subskrypcji platformy Azure
+- Parametry skryptu są następujące:
+    - $subscriptionId: identyfikator subskrypcji platformy Azure skojarzone z obszarem roboczym pakietu OMS/LA
+    - $resourceGroup: grupy zasobów platformy Azure gdzie znajduje się obszar roboczy OMS/LA
+    - $workspaceName: Nazwa obszaru roboczego OMS/LA
+
+**Dane wyjściowe skryptu programu PowerShell niestandardowego** skrypt jest pełne i dane wyjściowe obejmują czynności podczas wykonywania. 
+- Wyświetli podsumowanie, która zawiera informacje o istniejących OMS/LA alerty w obszarze roboczym i grup Azure akcji, który ma zostać utworzony dla akcji skojarzonych z nimi. 
+- Przejdź dalej z rozszerzeniem lub zamknąć po obejrzeniu Podsumowanie użytkownika pojawi się monit.
+- Monity użytkownika do korzystania z rozszerzeniem, zostaną utworzone nowe grupy Azure akcji, a wszystkie istniejące alerty zostaną skojarzone z nimi. 
+- Skrypt zakończy pracę w celu, wyświetlając komunikat "ukończyć rozszerzenia!." W przypadku niepowodzenia pośredniego pojawi się kolejne błędy.
+
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów 
 Podczas rozszerzania alerty z usługą OMS na platformie Azure, może być okazjonalne problem, który uniemożliwia tworzenie niezbędne system [grupy akcji](monitoring-action-groups.md). W takich przypadkach komunikat o błędzie będzie wyświetlana w portalu OMS za pośrednictwem Baner w sekcji alertów i wywołanie GET gotowe do interfejsu API.
 
-Poniżej przedstawiono procedurę korygowania dla każdego błędu:
-1. **Błąd: Subskrypcji nie jest zarejestrowany do korzystania z przestrzeni nazw "w elemencie microsoft.insights"**: ![strony portalu ustawienia alertu OMS komunikat o błędzie rejestracji](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+> [!WARNING]
+> Jeśli użytkownik nie przyjmuje czynności korygujące precribed poniżej przed **5 lipca 2018** —, a następnie alerty zostaną uruchomione na platformie Azure, ale bez wyzwalania, akcji ani powiadomień. Aby otrzymywać powiadomienia dla alertów, użytkowników należy ręcznie edytować i dodać [grupy akcji](monitoring-action-groups.md) lub użyj [niestandardowego skryptu PowerShell](#option-3---using-custom-powershell-script) podanego powyżej.
 
-    a. Nie zarejestrowano subskrypcję skojarzoną z obszarem roboczym pakietu OMS — Aby używać funkcji monitorowania Azure (elemencie microsoft.insights); ze względu na których nie można rozszerzyć alerty do monitora Azure & alerty OMS.
-    
-    b. Aby rozwiązać, należy zarejestrować używany w elemencie microsoft.insights (Azure monitor & alerty) w ramach subskrypcji przy użyciu programu Powershell, interfejsu wiersza polecenia Azure lub portalu Azure. Aby dowiedzieć się więcej, Wyświetl artykuł na [naprawianie błędów w rejestracji dostawcy zasobów](../azure-resource-manager/resource-manager-register-provider-errors.md)
-    
-    c. Po rozpoznaniu zgodnie z harmonogramem kroki przedstawione w artykule, OMS rozszerzenie alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie; bez konieczności żadnej akcji ani inicjowania.
-2. **Błąd: Zakres blokady jest obecna na poziomie grupy zasobów subskrypcji dla operacji zapisu**: ![strony portalu ustawienia alertu OMS komunikat o błędzie ScopeLock](./media/monitor-alerts-extend/ErrorScopeLock.png)
+Poniżej przedstawiono procedurę korygowania dla każdego błędu:
+1. **Błąd: Zakres blokady jest obecna na poziomie grupy zasobów subskrypcji dla operacji zapisu**: ![strony portalu ustawienia alertu OMS komunikat o błędzie ScopeLock](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
     a. Gdy zakres blokady jest włączona, ograniczanie żadnych nowych zmian w subskrypcji lub grupy zasobów zawierającej obszaru roboczego analizy dzienników (OMS); system nie może rozszerzyć alerty (Kopiuj) na platformie Azure i tworzenie grup niezbędnych działań.
     
@@ -242,7 +464,7 @@ Poniżej przedstawiono procedurę korygowania dla każdego błędu:
     
     c. Po rozpoznaniu zgodnie z harmonogramem kroki przedstawione w artykule, OMS rozszerzenie alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie; bez konieczności żadnej akcji ani inicjowania.
 
-3. **Błąd: Zasady są obecne na poziomie grupy zasobów subskrypcji**: ![strony portalu ustawienia alertu OMS komunikat o błędzie zasad](./media/monitor-alerts-extend/ErrorPolicy.png)
+2. **Błąd: Zasady są obecne na poziomie grupy zasobów subskrypcji**: ![strony portalu ustawienia alertu OMS komunikat o błędzie zasad](./media/monitor-alerts-extend/ErrorPolicy.png)
 
     a. Gdy [zasad usługi Azure](../azure-policy/azure-policy-introduction.md) jest stosowana, ograniczanie wszystkich nowych zasobów w subskrypcji lub grupy zasobów zawierającej obszaru roboczego analizy dzienników (OMS); system nie może rozszerzyć alerty (Kopiuj) na platformie Azure i tworzenie grup niezbędnych działań.
     

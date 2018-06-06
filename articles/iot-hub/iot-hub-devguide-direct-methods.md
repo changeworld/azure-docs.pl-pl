@@ -1,25 +1,19 @@
 ---
 title: Zrozumienie metod bezpośredniego Centrum IoT Azure | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — użyj bezpośredniego metody do wywołania kodu na urządzeniach z usługi aplikacji.
-services: iot-hub
-documentationcenter: .net
 author: nberdy
-manager: timlt
-editor: ''
-ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
+manager: briz
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/29/2018
+services: iot-hub
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: nberdy
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a35c88ac053b43d4a95b5bef92f3ebfb03567e2b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736681"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Informacje o funkcji i wywołanie metody bezpośrednio z Centrum IoT
 Centrum IoT daje możliwość wywołania metod bezpośrednio na urządzeniach z chmury. Bezpośrednie metody reprezentują żądanie odpowiedź interakcji z urządzeniem podobna do wywołania HTTP w tym ich powodzenie lub niepowodzenie natychmiast (po limitu określonego przez użytkownika). Ta metoda jest przydatne w scenariuszach, w którym kursu natychmiastowego działania różni się w zależności od tego, czy urządzenie zostało mogą odpowiadać.
@@ -85,6 +79,11 @@ Aplikacja zaplecza odbiera odpowiedź, która obejmuje:
     ```
 
     Zarówno `status` i `body` udostępnianym przez urządzenie i używane do odpowiedzi z kodem stanu własnych urządzeń i/lub opis.
+
+### <a name="method-invocation-for-iot-edge-modules"></a>Wywołanie metody dla modułów krawędzi IoT
+Wywoływanie metody bezpośrednio za pomocą modułu identyfikator jest obsługiwany w języku C# w wersji preview SDK (dostępne [tutaj](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
+
+W tym celu należy użyć `ServiceClient.InvokeDeviceMethodAsync()` — metoda i przekaż `deviceId` i `moduleId` jako parametry.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Dojście metody bezpośrednio na urządzeniu
 ### <a name="mqtt"></a>MQTT

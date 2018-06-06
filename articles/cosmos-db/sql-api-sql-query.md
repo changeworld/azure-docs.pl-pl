@@ -3,23 +3,21 @@ title: Zapytania SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja fi
 description: Dowiedz się więcej o składni SQL, pojęcia bazy danych i zapytania SQL dla bazy danych Azure rozwiązania Cosmos. SQL może być używany jako język kwerendy JSON w usłudze Azure DB rozwiązania Cosmos.
 keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące
 services: cosmos-db
-documentationcenter: ''
 author: LalithaMV
 manager: kfile
 editor: monicar
-ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798325"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Zapytania SQL dla bazy danych Azure rozwiązania Cosmos
 
@@ -305,7 +303,7 @@ Następujące operatory binarne są obecnie obsługiwane i mogą być używane w
 <td>AND, OR, NOT</td>
 </tr>
 <tr>
-<td>Porównanie</td>    
+<td>porównanie</td>    
 <td>=, !=, &lt;, &gt;, &lt;=, &gt;=, <></td>
 </tr>
 <tr>
@@ -380,136 +378,136 @@ W poniższej tabeli przedstawiono wynik porównania równości w interfejsie API
             <strong>Niezdefiniowana<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Wartość null<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Wartość logiczna<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Numer<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Ciąg<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Obiekt<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
       </tr>
       <tr>
          <td valign="top">
             <strong>Tablica<strong>
          </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
-Niezdefiniowane </td>
+Nie zdefiniowano </td>
          <td valign="top">
             <strong>OK</strong>
          </td>
@@ -545,23 +543,23 @@ Główną różnicą między przy użyciu BETWEEN interfejsu API SQL i ANSI SQL 
 ### <a name="logical-and-or-and-not-operators"></a>Logiczne (AND, OR i NOT) operatory
 Operatory logiczne działają na wartości logiczne. W poniższych tabelach przedstawiono tabel logicznych prawdy dla tych operatorów.
 
-| LUB | True | False | Niezdefiniowane |
+| LUB | True | False | Nie zdefiniowano |
 | --- | --- | --- | --- |
 | True |True |True |True |
-| False |True |False |Niezdefiniowane |
-| Niezdefiniowane |True |Niezdefiniowane |Niezdefiniowane |
+| False |True |False |Nie zdefiniowano |
+| Nie zdefiniowano |True |Nie zdefiniowano |Nie zdefiniowano |
 
-| I | True | False | Niezdefiniowane |
+| I | True | False | Nie zdefiniowano |
 | --- | --- | --- | --- |
-| True |True |False |Niezdefiniowane |
+| True |True |False |Nie zdefiniowano |
 | False |False |False |False |
-| Niezdefiniowane |Niezdefiniowane |False |Niezdefiniowane |
+| Nie zdefiniowano |Nie zdefiniowano |False |Nie zdefiniowano |
 
 | NIE |  |
 | --- | --- |
 | True |False |
 | False |True |
-| Niezdefiniowane |Niezdefiniowane |
+| Nie zdefiniowano |Nie zdefiniowano |
 
 ### <a name="in-keyword"></a>IN — słowo kluczowe
 IN — słowo kluczowe może służyć do sprawdzenia, czy określona wartość odpowiada wartości na liście. Na przykład ta kwerenda zwraca wszystkie dokumenty rodziny których identyfikator jest "WakefieldFamily" lub "AndersenFamily". 

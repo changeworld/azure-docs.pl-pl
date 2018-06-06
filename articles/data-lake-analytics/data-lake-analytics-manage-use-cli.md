@@ -1,25 +1,22 @@
 ---
-title: Zarządzanie Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie zarządzania kont usługi Data Lake Analytics, źródła danych, zadaniami i użytkownikami przy użyciu wiersza polecenia platformy Azure
+title: Zarządzanie Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure
+description: W tym artykule opisano sposób użycia interfejsu wiersza polecenia Azure do zarządzania zadania usługi Data Lake Analytics, źródła danych i użytkowników.
 services: data-lake-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: Kfile
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: sngun
-ms.openlocfilehash: 9504e1fcbb0128f538cb6e959cf7586f24827836
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86fa41db2d21beac08015d067b79ce1375cd3ddf
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736093"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>Zarządzanie Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
+# <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Zarządzanie Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
@@ -214,24 +211,6 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
-
-
-## <a name="use-azure-resource-manager-groups"></a>Użyj grup usługi Azure Resource Manager
-Aplikacje składają się zazwyczaj z wielu składników, na przykład aplikacji sieci Web, bazy danych, serwera bazy danych, magazynu i usług firm zewnętrznych. Usługa Azure Resource Manager umożliwia pracę z zasobami w aplikacji w grupie, określany jako grupa zasobów platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby aplikacji w jednej, skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Można również uprościć rozliczenia w organizacji, wyświetlając zestawienia kosztów całej grupy. Aby uzyskać więcej informacji, zobacz temat [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). 
-
-Usługa Data Lake Analytics może obejmować następujące składniki:
-
-* Usługa Azure Data Lake Analytics konta
-* Wymagane domyślne konto usługi Azure Data Lake Storage
-* Dodatkowe usługi Azure Data Lake kont magazynu
-* Dodatkowe konta usługi Azure Storage
-
-Możesz utworzyć te składniki w jednej grupy Resource Manager, aby ułatwić zarządzanie.
-
-![Usługa Azure Data Lake Analytics konta i magazynu](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
-
-Konto usługi Data Lake Analytics i kont magazynu zależnego muszą znajdować się w tym samym centrum danych Azure.
-Jednak grupy Resource Manager może znajdować się w centrum danych.  
 
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

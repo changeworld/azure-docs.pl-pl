@@ -1,28 +1,29 @@
 ---
-title: "Testowanie i debugowanie zadań U-SQL przy użyciu zestawu SDK usługi Azure Data Lake U-SQL i lokalne uruchamianie | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Azure Data Lake Tools dla programu Visual Studio i zestaw SDK usługi Azure Data Lake U-SQL umożliwia testowanie i debugowanie zadań U-SQL w sieci lokalnej stacji roboczej."
+title: Uruchom skrypty U-SQL lokalnie przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
+description: W tym artykule opisano sposób użycia narzędzia Azure Data Lake Tools dla programu Visual Studio do testowania i debugowania zadań U-SQL w sieci lokalnej stacji roboczej.
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/15/2016
+author: mumian
 ms.author: yanacai
-ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
+ms.topic: conceptual
+ms.date: 11/15/2016
+ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736007"
 ---
-# <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>Testowanie i debugowanie zadań U-SQL przy użyciu lokalnego uruchamiania i zestawu SDK usługi Azure Data Lake U-SQL
+# <a name="runing-u-sql-scripts-locally"></a>Uruchamianych skryptów U-SQL lokalnie
 
-Przy użyciu narzędzi Azure Data Lake Tools for Visual Studio i zestawu SDK U-SQL usługi Azure Data Lake można uruchamiać zadania U-SQL na stacji roboczej, podobnie jak w usłudze Azure Data Lake. Te dwie funkcje uruchamiania lokalnego pozwalają zaoszczędzić czas poświęcony na testowanie i debugowanie zadań U-SQL.
+Zamiast uruchamiania skryptu U-SQL na platformie Azure, możesz uruchomić U-SQL na własne pole. Jest to "uruchamiania lokalnego" lub "lokalne wykonanie". 
+
+Lokalnego uruchamiania skryptu U-SQL jest tym dostępną w tych narzędzi:
+* Usługi Azure Data Lake Tools dla programu Visual Studio
+* Zestaw SDK usługi Azure Data Lake U-SQL
 
 ## <a name="understand-the-data-root-folder-and-the-file-path"></a>Folder główny danych i ścieżka pliku
 
@@ -37,9 +38,9 @@ W skryptów U-SQL, można użyć zarówno ścieżki względnej, jak i lokalną �
 
 |Ścieżka względna|Ścieżki bezwzględne|
 |-------------|-------------|
-|/ABC/DEF/Input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|ABC/DEF/Input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/ABC/DEF/Input.csv |D:\abc\def\input.csv|
+|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
+|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
+|D:/abc/def/input.csv |D:\abc\def\input.csv|
 
 ## <a name="use-local-run-from-visual-studio"></a>Użyj lokalnego uruchomienia z programu Visual Studio
 
@@ -104,7 +105,7 @@ Poza uruchamianiem skryptów U-SQL lokalnie, używając programu Visual Studio, 
 Dowiedz się więcej o [zestawu SDK usługi Azure Data Lake U-SQL](data-lake-analytics-u-sql-sdk.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby wyświetlić bardziej złożonego zapytania, zobacz [analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Aby wyświetlić szczegóły zadania, zobacz [użyj przeglądarki zadania i widok zadań dla zadania usługi Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).

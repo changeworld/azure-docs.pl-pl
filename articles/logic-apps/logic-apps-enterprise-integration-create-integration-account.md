@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 97cdc809a00078ee86a40fd4567ab2d3357ed3bd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726435"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Tworzenie i zarządzanie kontami integracji rozwiązań B2B w usłudze logic apps
 
@@ -57,11 +58,11 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
    | Subskrypcja | Yes | <*Nazwa w przypadku subskrypcji platformy Azure*> | Nazwa subskrypcji platformy Azure do użycia | 
    | Grupa zasobów | Yes | Test — integracja — konta-zarządcy zasobów | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używane do organizowania powiązane zasoby. Na przykład utworzyć nową grupę zasobów o określonej nazwie. | 
    | Warstwa cenowa | Yes | Bezpłatna | Warstwa cenowa, którego chcesz używać. Na przykład wybierz **wolne**, ale uzyskać więcej informacji, zobacz [limity Logic Apps i konfiguracji](../logic-apps/logic-apps-limits-and-config.md) i [cennik Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Lokalizacja | Yes | Zachodnie stany USA | Region miejsce przechowywania informacji o koncie integracji. Wybierz tej samej lokalizacji co aplikacja logiki lub tworzenie aplikacji logiki w tej samej lokalizacji co konto integracji. Na przykład | 
+   | Lokalizacja | Yes | Zachodnie stany USA | Region miejsce przechowywania informacji o koncie integracji. Wybierz tej samej lokalizacji co aplikacja logiki lub tworzenie aplikacji logiki w tej samej lokalizacji co konto integracji. | 
    | Log Analytics | Nie | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
    ||||| 
 
-4. Jeśli wszystko jest gotowe, wybierz **Przypnij do pulpitu nawigacyjnego**i wybierz polecenie **Utwórz**.
+4. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie pozycję **Utwórz**.
 
    Po Azure wdraża konta integracji w wybranej lokalizacji, która zazwyczaj kończy się w ciągu jednej minuty, Azure otwiera konta integracji.
 

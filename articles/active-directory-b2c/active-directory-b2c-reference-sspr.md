@@ -1,21 +1,21 @@
 ---
-title: Samoobsługowego resetowania hasła | Dokumentacja firmy Microsoft
+title: Własnym resetowania haseł w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Pokazuje, jak skonfigurować samoobsługowego resetowania hasła dla klientów w usłudze Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: davidmu
-ms.openlocfilehash: 5b75455ad604b594a5f85fea8299d35a7d02c848
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: ea8b23618b382f557340643afd62e56932bbfb2d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712100"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Konfigurowanie samoobsługowego resetowania hasła dla klientów
 Dzięki funkcji resetowania hasła samoobsługi klientów, którzy utworzyli konto dla kont lokalnych można zresetować hasła na ich własnych. To znacznie ograniczyć obciążenie działu pomocy technicznej, zwłaszcza, jeśli aplikacja ma miliony klientów przy użyciu go na bieżąco. Obecnie korzystanie ze zweryfikowanym adresem e-mail jest metoda tylko obsługiwane odzyskiwania.

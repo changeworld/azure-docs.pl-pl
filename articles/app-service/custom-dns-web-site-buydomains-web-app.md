@@ -1,11 +1,11 @@
 ---
-title: Kup niestandardowej nazwy domeny dla aplikacji sieci Web Azure
-description: "Dowiedz się, jak kupić niestandardowej nazwy domeny z aplikacji sieci web w usłudze Azure App Service."
+title: Kupowanie niestandardowej nazwy domeny dla usługi Azure Web Apps
+description: Dowiedz się, jak kupić niestandardowej nazwy domeny z aplikacji sieci web w usłudze Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714888"
 ---
-# <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kup niestandardowej nazwy domeny dla aplikacji sieci Web Azure
+# <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure Web Apps
 
 Domeny aplikacji usługi (wersja zapoznawcza) są domeny najwyższego poziomu, które są zarządzane bezpośrednio na platformie Azure. One ułatwiają zarządzanie domenami niestandardowymi dla [Azure Web Apps](app-service-web-overview.md). Ten samouczek pokazuje, jak kupić domenę usługi aplikacji i przypisywać nazwy DNS do aplikacji sieci Web Azure.
 
@@ -57,17 +58,17 @@ W lewym obszarze nawigacji na stronie aplikacji przewiń do sekcji **Ustawienia*
 
 ![Menu skalowania w górę](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Bieżąca warstwa aplikacji jest wyróżniona niebieskim obramowaniem. Upewnij się, że aplikacja nie znajduje się w warstwie **Bezpłatna**. Niestandardowe nazwy DNS nie są obsługiwane w warstwie **Bezpłatna**. 
+Bieżąca warstwa aplikacji jest wyróżniona niebieskim obramowaniem. Upewnij się, że aplikacja nie znajduje się w **F1** warstwy. Niestandardowe DNS nie jest obsługiwany w **F1** warstwy. 
 
 ![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Jeśli plan usługi aplikacji nie jest **wolne**, Zamknij **wybierz warstwę cenową** strony i przejść [kupić domeny](#buy-the-domain).
+Jeśli plan usługi aplikacji nie znajduje się w **F1** warstwy Zamknij **skalowanie w górę** strony i przejść [kupić domeny](#buy-the-domain).
 
 ### <a name="scale-up-the-app-service-plan"></a>Skalowanie w górę planu usługi App Service
 
-Wybierz jedną z płatnych warstw (**Współdzielona**, **Podstawowa**, **Standardowa** lub **Premium**). 
+Wybierz jedno z systemem innym niż bez warstw (**D1**, **B1**, **B2**, **B3**, lub dowolnej warstwy w **produkcji** Kategoria). Aby uzyskać dodatkowe opcje, kliknij **wyświetlić dodatkowe opcje**.
 
-Kliknij pozycję **Wybierz**.
+Kliknij przycisk **Zastosuj**.
 
 ![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

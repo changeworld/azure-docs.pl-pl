@@ -2,28 +2,26 @@
 title: Wykonywanie operacji interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
 description: Jak wykonać operacje interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu PowerShell
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
+author: SnehaGunda
+manager: kfile
 editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: sngun
+ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798648"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Wykonywanie operacji interfejsu API Azure rozwiązania Cosmos DB tabeli przy użyciu programu Azure PowerShell 
 
 >[!NOTE]
->Interfejsu API Azure rozwiązania Cosmos DB tabeli zawiera funkcje premium magazynu tabel gotowe dystrybucji globalnych, odczyty małe opóźnienia i zapisy, automatycznego indeksowania dodatkowej i dedykowanych przepływności. W większości przypadków poleceń programu PowerShell w pracach tego artykułu dla magazynu zarówno interfejsu API Azure rozwiązania Cosmos DB tabeli i tabel Azure, ale w tym artykule jest specyficzne dla interfejsu API Azure rozwiązania Cosmos bazy danych tabeli. Jeśli korzystasz z magazynem tabel Azure, zobacz [operacje magazynu tabel Azure wykonywać przy użyciu programu Azure PowerShell](table-storage-how-to-use-powershell.md).
+>Interfejsu API Azure rozwiązania Cosmos DB tabeli zawiera funkcje premium magazynu tabel gotowe dystrybucji globalnych, odczyty małe opóźnienia i zapisy, automatycznego indeksowania dodatkowej i dedykowanych przepływności. W większości przypadków poleceń programu PowerShell w pracach tego artykułu dla magazynu zarówno interfejsu API Azure rozwiązania Cosmos DB tabeli i tabel Azure, ale w tym artykule jest specyficzne dla interfejsu API Azure rozwiązania Cosmos bazy danych tabeli. Jeśli korzystasz z magazynem tabel Azure, zobacz [operacje magazynu tabel Azure wykonywać przy użyciu programu Azure PowerShell](../storage/tables/table-storage-how-to-use-powershell.md).
 >
 
 Tabela bazy danych Azure rozwiązania Cosmos interfejs API umożliwia przechowywanie i zapytań dotyczących dużych zestawów strukturalnych danych nierelacyjnych. Główne składniki usługi są tabele, jednostki i właściwości. Tabela jest kolekcji jednostek. Jednostka jest zbiór właściwości. Każdy obiekt może mieć maksymalnie 252 właściwości, które są wszystkie pary nazwa wartość. W tym artykule przyjęto założenie, że znasz już pojęcia interfejsu API Azure rozwiązania Cosmos bazy danych tabeli. Aby uzyskać szczegółowe informacje, zobacz [wprowadzenie do interfejsu API Azure rozwiązania Cosmos DB tabeli](table-introduction.md) i [tworzenia aplikacji platformy .NET przy użyciu interfejsu API tabeli](create-table-dotnet.md).

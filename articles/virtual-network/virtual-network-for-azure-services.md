@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eeb5fd765a6cad10be5706162566605feaa8af4c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802565"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integracji sieci wirtualnej do usług platformy Azure
 
@@ -66,11 +67,7 @@ Można wdrożyć [usługi równoważenia obciążenia Azure wewnętrznego](../lo
 
 ## <a name="service-endpoints-for-azure-services"></a>Punkty końcowe usługi dla usług Azure
 
-Nie można wdrożyć niektórych usług platformy Azure w sieciach wirtualnych. Jeśli wybierzesz, włączając punkt końcowy usługi sieci wirtualnej, można ograniczyć dostęp do niektórych zasobów usługi do podsieci tylko określonych sieci wirtualnej. Dowiedz się więcej o [punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md).
-
-Obecnie punkty końcowe usługi są obsługiwane dla następujących usług: 
-- **Usługa Azure Storage**: [kont zabezpieczanie magazynu Azure do sieci wirtualnych](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- **Baza danych SQL Azure**: [Zabezpieczanie bazy danych SQL Azure do sieci wirtualnej](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Nie można wdrożyć niektórych usług platformy Azure w sieciach wirtualnych. Jeśli wybierzesz, włączając punkt końcowy usługi sieci wirtualnej, można ograniczyć dostęp do niektórych zasobów usługi do podsieci tylko określonych sieci wirtualnej. Dowiedz się więcej o [punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md)i usług, które można włączyć dla punktów końcowych.
 
 ## <a name="virtual-network-integration-across-multiple-azure-services"></a>Integracji sieci wirtualnej w wielu usługach Azure
 

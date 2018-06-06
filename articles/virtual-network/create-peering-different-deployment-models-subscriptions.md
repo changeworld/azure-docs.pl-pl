@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcc733308f4c0441545dc0d03cca2ca1112812ac
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 045b433fdea2cfb97f3002fbe692ea8e4988fbb4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726418"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Tworzenie sieci wirtualnej równorzędna — różne modele wdrażania i subskrypcji
 
@@ -106,7 +107,7 @@ W tym samouczku korzysta z różnych kont dla każdej subskrypcji. Jeśli używa
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. Pozostałe kroki należy wykonać przy użyciu bash skorupach z wiersza polecenia platformy Azure 2.0.4 lub nowszym [zainstalowane](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), lub za pomocą powłoki chmury Azure. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **wypróbuj** przycisku w skryptach poniżej, która otwiera powłokę chmury, w którym zaloguje się do konta platformy Azure. Opcje uruchamiania bash skrypty interfejsu wiersza polecenia na komputerze klienckim z systemem Windows, temacie [działający w systemie Windows Azure CLI](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+5. Pozostałe kroki należy wykonać przy użyciu bash skorupach z wiersza polecenia platformy Azure 2.0.4 lub nowszym [zainstalowane](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), lub za pomocą powłoki chmury Azure. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **wypróbuj** przycisku w skryptach poniżej, która otwiera powłokę chmury, w którym zaloguje się do konta platformy Azure. Opcje uruchamiania bash skrypty interfejsu wiersza polecenia na komputerze klienckim z systemem Windows, temacie [zainstalować w systemie Windows Azure CLI](/cli/azure/install-azure-cli-windows). 
 6. Skopiuj poniższy skrypt do edytora tekstu, na komputerze. Zastąp `<SubscriptionB-Id>` z identyfikatorem subskrypcji Jeśli nie znasz identyfikator subskrypcji, wprowadź `az account show` polecenia. Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji Skopiuj skrypt zmodyfikowane, wklej go w sesji środowiska 2.0 interfejsu wiersza polecenia i naciśnij klawisz `Enter`. 
 
     ```azurecli-interactive

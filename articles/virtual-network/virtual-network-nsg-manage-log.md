@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie działań, zdarzenia i liczniki dla grup NSG | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak włączyć operacyjne rejestrowanie dla grup NSG, zdarzenia i liczniki"
+title: Zdarzenie grupy zabezpieczeń sieci i regułę licznika dzienników diagnostycznych platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć dzienników zdarzeń i regułę licznika diagnostycznych dla grupy zabezpieczeń sieci platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 2e699078-043f-48bd-8aa8-b011a32d98ca
 ms.service: virtual-network
@@ -13,81 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2017
+ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 6beb9ae1b64e27df0a4eefefd592c7850efc7d2d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c3f4a64c9e11d17899987bbe818506f61c415e3f
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757063"
 ---
-# <a name="log-analytics-for-network-security-groups-nsgs"></a>Usługa Log Analytics dla sieciowych grup zabezpieczeń
+# <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
 
-Grupy NSG można włączyć następujące kategorie dzienników diagnostycznych:
+Grupa zabezpieczeń sieci (NSG) zawiera reguły, które akceptować lub odrzucać ruch do podsieć sieci wirtualnej i/lub interfejs sieciowy. Po włączeniu diagnostyczne dla grupy NSG można rejestrować kategorii następujących informacji:
 
-* **Zdarzenie:** zawiera wpisy, dla których NSG reguły są stosowane do maszyn wirtualnych i wystąpień ról na podstawie adresu MAC. Stan zasady te są gromadzone co 60 sekund.
+* **Zdarzenie:** są rejestrowane wpisy, dla których NSG reguły są stosowane do maszyn wirtualnych, na podstawie adresu MAC. Stan zasady te są gromadzone co 60 sekund.
 * **Licznik reguł:** reguł zawiera wpisy dla ile razy każda grupa NSG jest stosowana do odmowy lub zezwolić na ruch.
 
-> [!NOTE]
-> Dzienniki diagnostyczne są dostępne tylko dla grup NSG wdrożone za pośrednictwem modelu wdrażania usługi Azure Resource Manager. Nie można włączyć rejestrowania diagnostycznego w celu grup NSG wdrożone za pośrednictwem klasycznego modelu wdrażania. W celu lepszego zrozumienia dwóch modeli, odwołanie [modele wdrażania Azure opis](../resource-manager-deployment-model.md) artykułu.
+Dzienniki diagnostyczne są dostępne tylko dla grup NSG wdrożone za pośrednictwem modelu wdrażania usługi Azure Resource Manager. Nie można włączyć rejestrowania diagnostycznego w celu grup NSG wdrożone za pośrednictwem klasycznego modelu wdrażania. Aby lepiej zrozumieć dwa modele, zobacz [modele wdrażania Azure opis](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Rejestrowanie aktywności (wcześniej znane jako inspekcji lub operacyjne dzienniki) jest domyślnie włączone dla grup NSG, został utworzony za pomocą obu modelu wdrożenia usługi Azure. Aby ustalić, jakie operacje zostały zakończone na grup NSG w dzienniku aktywności, Wyszukaj wpisy zawierające następujących zasobów: 
+Diagnostyczne dla jest włączone rejestrowanie oddzielnie *każdego* NSG, które mają być zbierane dane diagnostyczne. Jeśli interesuje Cię operacyjne, albo działania, rejestruje w dzienniku, zobacz Azure [rejestrowanie aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-- Microsoft.ClassicNetwork/networkSecurityGroups 
-- Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
-- Microsoft.Network/networkSecurityGroups
-- Microsoft.Network/networkSecurityGroups/securityRules 
+## <a name="enable-logging"></a>Włącz rejestrowanie
 
-Odczyt [Omówienie dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) artykuł, aby dowiedzieć się więcej o Dzienniki aktywności. 
-
-## <a name="enable-diagnostic-logging"></a>Włączanie rejestrowania diagnostycznego
-
-Należy włączyć rejestrowanie diagnostyczne *każdego* NSG, które mają być zbierane dane. [Omówienie programu Azure dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) wyjaśniono wysyłania dzienników diagnostycznych. Jeśli nie masz istniejącej grupy NSG, wykonaj kroki [Utwórz grupę zabezpieczeń sieci](virtual-networks-create-nsg-arm-pportal.md) artykuł, aby go utworzyć. Można włączyć NSG diagnostycznych rejestrowanie przy użyciu dowolnej z następujących metod:
+Można użyć [Azure Portal](#azure-portal), lub [PowerShell](#powershell), aby włączyć rejestrowanie diagnostyczne.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Aby włączyć rejestrowanie, zaloguj się za pomocą portalu [portal](https://portal.azure.com). Kliknij przycisk **wszystkie usługi**, wpisz *sieciowej grupy zabezpieczeń*. Wybierz grupy NSG, aby włączyć rejestrowanie. Postępuj zgodnie z instrukcjami dla zasobów obliczeniowych z systemem innym niż w [Włączanie dzienników diagnostycznych w portalu](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) artykułu. Wybierz **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter**, lub oba rodzaje dzienników.
+1. Zaloguj się do [portal](https://portal.azure.com).
+2. Wybierz **wszystkie usługi**, wpisz *sieciowej grupy zabezpieczeń*. Gdy **sieciowej grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
+3. Wybierz grupy NSG, aby włączyć rejestrowanie.
+4. W obszarze **monitorowanie**, wybierz pozycję **dzienników diagnostycznych**, a następnie wybierz **Włącz diagnostykę**, jak pokazano na poniższej ilustracji:
+ 
+    ![Włączanie diagnostyki](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
+
+5. W obszarze **ustawień diagnostycznych**, wprowadź, lub wybierz następujące informacje, a następnie wybierz **zapisać**:
+
+    | Ustawienie                                                                                     | Wartość                                                          |
+    | ---------                                                                                   |---------                                                       |
+    | Name (Nazwa)                                                                                        | Nazwa wybrane.  Na przykład: *myNsgDiagnostics*      |
+    | **Archiwum na konto magazynu**, **strumienia do Centrum zdarzeń**, i **wysyłać do analizy dzienników** | Można wybrać dowolną liczbę miejsc docelowych, wybierz polecenie. Aby dowiedzieć się więcej na temat, zobacz [dziennika miejsc docelowych](#log-destinations).                                                                                                                                           |
+    | DZIENNIK                                                                                         | Wybierz jedną lub obie te kategorie dziennika. Aby dowiedzieć się więcej o danych zarejestrowane dla każdej kategorii, zobacz [dziennika kategorii](#log-categories).                                                                                                                                             |
+6. Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [widoku i analizować dzienniki](#view-and-analyze-logs).
 
 ### <a name="powershell"></a>PowerShell
 
-Aby włączyć rejestrowanie za pomocą programu PowerShell, postępuj zgodnie z instrukcjami [Włączanie dzienników diagnostycznych za pomocą programu PowerShell](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) artykułu. Oceny przed wprowadzeniem polecenia z tego artykułu następujące informacje:
+Możesz uruchamiać polecenia, które należy wykonać w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Powłoka chmury Azure jest bezpłatne powłoki interakcyjne. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* modułu programu PowerShell, wersja 6.1.1 lub nowszym. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, należy uruchomić `Login-AzureRmAccount` do zalogowania się do platformy Azure przy użyciu konta, które ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions)].
 
-- Można określić wartość dla `-ResourceId` parametru zastępując następujące [tekst], odpowiednio, następnie wpisując polecenie `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]`. Identyfikator dane wyjściowe polecenia wygląda podobnie do */subscriptions/ [Nazwa subskrypcji Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG]*.
-- Jeśli chcesz zbierać dane z kategorii dziennika Dodaj `-Categories [category]` na końcu polecenia w artykule, w którym kategorii jest *NetworkSecurityGroupEvent* lub *NetworkSecurityGroupRuleCounter*. Jeśli nie używasz `-Categories` parametru, zbierania danych jest włączona dla dziennika kategorii.
+Aby włączyć rejestrowanie diagnostyczne, należy identyfikator istniejącej grupy NSG. Jeśli nie masz istniejącej grupy NSG można utworzyć jedną z [AzureRmNetworkSecurityGroup nowy](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup).
 
-### <a name="azure-command-line-interface-cli"></a>Azure interfejsu wiersza polecenia (CLI)
+Pobierz sieciową grupę zabezpieczeń, który chcesz włączyć diagnostyczne dla z [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup). Na przykład, aby pobrać grupy NSG o nazwie *myNsg* znajdujące się w grupie zasobów o nazwie *myResourceGroup*, wprowadź następujące polecenie:
 
-Aby korzystać z interfejsu wiersza polecenia, aby włączyć rejestrowanie, postępuj zgodnie z instrukcjami [Włączanie dzienników diagnostycznych za pomocą interfejsu wiersza polecenia](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) artykułu. Oceny przed wprowadzeniem polecenia z tego artykułu następujące informacje:
+```azurepowershell-interactive
+$Nsg=Get-AzureRmNetworkSecurityGroup `
+  -Name myNsg `
+  -ResourceGroupName myResourceGroup
+```
 
-- Można określić wartość dla `-ResourceId` parametru zastępując następujące [tekst], odpowiednio, następnie wpisując polecenie `azure network nsg show [resource-group-name] [nsg-name]`. Identyfikator dane wyjściowe polecenia wygląda podobnie do */subscriptions/ [Nazwa subskrypcji Id]/resourceGroups/[resource-group]/providers/Microsoft.Network/networkSecurityGroups/[NSG]*.
-- Jeśli chcesz zbierać dane z kategorii dziennika Dodaj `-Categories [category]` na końcu polecenia w artykule, w którym kategorii jest *NetworkSecurityGroupEvent* lub *NetworkSecurityGroupRuleCounter*. Jeśli nie używasz `-Categories` parametru, zbierania danych jest włączona dla dziennika kategorii.
+Trzy typy docelowego może zapisać dzienników diagnostycznych. Aby uzyskać więcej informacji, zobacz [dziennika miejsc docelowych](#log-destinations). W tym artykule dzienniki są wysyłane do *analizy dzienników* docelowym, na przykład. Pobrać istniejący obszar roboczy analizy dzienników z [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace). Na przykład, aby pobrać istniejący obszar roboczy o nazwie *myLaWorkspace* w grupie zasobów o nazwie *LaWorkspaces*, wprowadź następujące polecenie:
 
-## <a name="logged-data"></a>Zarejestrowane dane
+```azurepowershell-interactive
+$Oms=Get-AzureRmOperationalInsightsWorkspace `
+  -ResourceGroupName LaWorkspaces `
+  -Name myLaWorkspace
+```
 
-Dane w formacie JSON jest przeznaczony dla obu dzienników. Określone dane, które są przeznaczone dla każdego typu dziennika znajduje się w następujących sekcjach:
+Jeśli nie masz istniejący obszar roboczy, możesz utworzyć jedną z [AzureRmOperationalInsightsWorkspace nowy](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace).
 
-### <a name="event-log"></a>Dziennik zdarzeń
-Ten dziennik zawiera informacje o NSG, które zasady są stosowane do maszyn wirtualnych i wystąpień roli usługi, na podstawie adresu MAC w chmurze. Rejestrowane są następujące dane przykładowe dla każdego zdarzenia:
+Istnieją dwie kategorie rejestrowania można włączyć dzienniki. Aby uzyskać więcej informacji, zobacz [dziennika kategorii](#log-categories). Włączanie rejestrowania diagnostyki dla grupy NSG z [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting). Poniższy przykład w dziennikach zarówno zdarzeń i licznik kategorii danych do obszaru roboczego grupy NSG, przy użyciu identyfikatorów NSG oraz obszaru roboczego, który można pobrać wcześniej:
+
+```azurepowershell-interactive
+Set-AzureRmDiagnosticSetting `
+  -ResourceId $Nsg.Id `
+  -WorkspaceId $Oms.ResourceId `
+  -Enabled $true
+```
+
+Jeśli chcesz rejestrować dane jedną kategorię lub innych, a nie obie, Dodaj `-Categories` możliwość poprzedniego polecenia, a następnie *NetworkSecurityGroupEvent* lub *NetworkSecurityGroupRuleCounter*. Jeśli chcesz zalogować się do innej [docelowego](#log-destinations) niż obszar roboczy analizy dzienników użycia odpowiednie parametry dla platformy Azure [konta magazynu](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Centrum zdarzeń](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [widoku i analizować dzienniki](#view-and-analyze-logs).
+
+## <a name="log-destinations"></a>Dziennik miejsc docelowych
+
+Dane diagnostyczne można:
+- [Zapisywane na koncie usługi Magazyn Azure](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), dla inspekcji inspekcji lub ręcznie. Można określić czas przechowywania (w dniach) przy użyciu ustawień diagnostycznych zasobu.
+- [Przesyłane strumieniowo do Centrum zdarzeń](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dla wprowadzanie przez usługi innej firmy lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
+- [Zapisane Analiza dzienników Azure](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
+
+## <a name="log-categories"></a>Kategorie dzienników
+
+Dane w formacie JSON jest przeznaczony dla następujących kategorii dziennika:
+
+### <a name="event"></a>Wydarzenie
+
+Dziennik zdarzeń zawiera informacje o tym, które reguły NSG są stosowane do maszyn wirtualnych, na podstawie adresu MAC. Rejestrowane są następujące dane przykładowe dla każdego zdarzenia:
 
 ```json
 {
     "time": "[DATE-TIME]",
-    "systemId": "007d0441-5d6b-41f6-8bfd-930db640ec03",
+    "systemId": "[ID]",
     "category": "NetworkSecurityGroupEvent",
     "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION-ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
     "operationName": "NetworkSecurityGroupEvents",
     "properties": {
-        "vnetResourceGuid":"{5E8AEC16-C728-441F-B0CA-B791E1DBC2F4}",
+        "vnetResourceGuid":"[ID]",
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"UserRule_default-allow-rdp",
+        "ruleName":"[SECURITY RULE NAME]",
         "direction":"In",
         "priority":1000,
         "type":"allow",
         "conditions":{
             "protocols":"6",
-            "destinationPortRange":"3389-3389",
+            "destinationPortRange":"[PORT RANGE]",
             "sourcePortRange":"0-65535",
             "sourceIP":"0.0.0.0/0",
             "destinationIP":"0.0.0.0/0"
@@ -96,23 +134,23 @@ Ten dziennik zawiera informacje o NSG, które zasady są stosowane do maszyn wir
 }
 ```
 
-### <a name="rule-counter-log"></a>Zasada dziennika liczników
+### <a name="rule-counter"></a>Licznik reguł
 
-Ten dziennik zawiera informacje o poszczególnych regułach stosowane do zasobów. Następujące przykładowe dane jest rejestrowane za każdym razem, których dotyczy reguła:
+Dziennik licznika reguła zawiera informacje o poszczególnych regułach stosowane do zasobów. Następujące przykładowe dane jest rejestrowane za każdym razem, których dotyczy reguła:
 
 ```json
 {
     "time": "[DATE-TIME]",
-    "systemId": "007d0441-5d6b-41f6-8bfd-930db640ec03",
+    "systemId": "[ID]",
     "category": "NetworkSecurityGroupRuleCounter",
-    "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]TESTRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
+    "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
     "operationName": "NetworkSecurityGroupCounters",
     "properties": {
-        "vnetResourceGuid":"{5E8AEC16-C728-441F-B0CA-791E1DBC2F4}",
+        "vnetResourceGuid":"[ID]",
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"UserRule_default-allow-rdp",
+        "ruleName":"[SECURITY RULE NAME]",
         "direction":"In",
         "type":"allow",
         "matchedConnections":125
@@ -120,6 +158,23 @@ Ten dziennik zawiera informacje o poszczególnych regułach stosowane do zasobó
 }
 ```
 
+> [!NOTE]
+> Źródłowy adres IP do komunikacji nie jest zalogowany. Można włączyć [rejestrowania przepływu NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md) dla grupy NSG, która rejestruje wszystkie informacje o liczniku reguły, a także źródłowy adres IP, który zainicjował komunikacji. Dane dziennika przepływu sieciowej grupy zabezpieczeń są zapisywane na koncie usługi Azure Storage. Można analizować dane z [ruchu analytics](../network-watcher/traffic-analytics.md) możliwości obserwatora sieciowego Azure.
+
 ## <a name="view-and-analyze-logs"></a>Wyświetlanie i analizowanie dzienników
 
-Aby dowiedzieć się, jak wyświetlać dane dziennika aktywności, przeczytaj [Omówienie dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) artykułu. Aby dowiedzieć się jak wyświetlać dane dziennika diagnostycznego, przeczytaj [Omówienie programu Azure dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) artykułu. Po wysłaniu danych diagnostycznych do analizy dzienników można użyć [analytics sieciowej grupy zabezpieczeń usługi Azure](../log-analytics/log-analytics-azure-networking-analytics.md) rozszerzone szczegółowe informacje o rozwiązania do zarządzania (wersja zapoznawcza). 
+Aby dowiedzieć się, jak wyświetlać dane dzienników diagnostycznych, zobacz [dzienników diagnostycznych platformy Azure — omówienie](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wysłania danych diagnostycznych:
+- **Zaloguj się Analytics**: można użyć [analytics grupy zabezpieczeń sieci](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
+) rozwiązania, rozszerzoną szczegółowe informacje o. Rozwiązanie zawiera wizualizacje dla reguły NSG, które lub odmawiają ruchu na adres MAC interfejsu sieciowego na maszynie wirtualnej.
+- **Konto usługi Azure Storage**: dane są zapisywane do pliku PT1H.json. Można znaleźć:
+    - Dziennik zdarzeń w następującej ścieżce: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+    - Zasada dziennika liczników w następującej ścieżce: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Dowiedz się więcej o [rejestrowanie aktywności](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), wcześniej znana jako inspekcji lub operacyjne dzienniki. Rejestrowanie aktywności jest domyślnie włączone dla grupy NSG został utworzony za pomocą obu modelu wdrożenia usługi Azure. Aby ustalić, jakie operacje zostały zakończone na grup NSG w dzienniku aktywności, Wyszukaj wpisy zawierające następujących zasobów:
+    - Microsoft.ClassicNetwork/networkSecurityGroups
+    - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+    - Microsoft.Network/networkSecurityGroups
+    - Microsoft.Network/networkSecurityGroups/securityRules
+- Aby dowiedzieć się, jak rejestrować informacje diagnostyczne, aby uwzględnić źródłowy adres IP dla każdego przepływu zobacz [rejestrowania przepływu NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

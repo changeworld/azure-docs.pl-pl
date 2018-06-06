@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 9228b1e80c8c46780a24d33e13fcedbd8da63ac3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7e0fb3cee8d4ec72e1ec44f7444264fabb1dd202
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724734"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -33,17 +34,17 @@ Jeśli wolisz, można użyć wyzwalacza HTTP do obsługi zdarzeń siatki zdarze�
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakiety
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Wyzwalacz zdarzenia siatki znajduje się w [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) pakietu NuGet. Kod źródłowy dla pakietu jest w [eventgrid rozszerzenie, azure funkcji w-](https://github.com/Azure/azure-functions-eventgrid-extension) repozytorium GitHub.
-
-<!--
-If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
--->
+Wyzwalacz zdarzenia siatki znajduje się w [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) pakietu NuGet, wersja 1.x. Kod źródłowy dla pakietu jest w [eventgrid rozszerzenie, azure funkcji w-](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+
+Wyzwalacz zdarzenia siatki znajduje się w [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu jest w [eventgrid rozszerzenie, azure funkcji w-](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) repozytorium GitHub.
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>Przykład
 
@@ -57,12 +58,12 @@ Na przykład wyzwalacza HTTP, zobacz [sposób użycia wyzwalacza HTTP](#use-an-h
 
 ### <a name="c-example"></a>Przykład C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) który wiąże `JObject`:
+W poniższym przykładzie pokazano funkcje 1.x [C# funkcja](functions-dotnet-class-library.md) który wiąże `JObject`:
 
 ```cs
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -79,30 +80,26 @@ namespace Company.Function
 }
 ```
 
-<!--
-The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+W poniższym przykładzie pokazano funkcje 2.x [C# funkcja](functions-dotnet-class-library.md) który wiąże `EventGridEvent`:
 
 ```cs
+using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
 
 namespace Company.Function
 {
     public static class EventGridTriggerCSharp
     {
         [FunctionName("EventGridTest")]
-            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        public static void EventGridTest([EventGridTrigger]EventGridEvent eventGridEvent, TraceWriter log)
         {
-            log.Info("C# Event Grid function processed a request.");
-            log.Info($"Subject: {eventGridEvent.Subject}");
-            log.Info($"Time: {eventGridEvent.EventTime}");
-            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+            log.Info(eventGridEvent.Data.ToString());
         }
     }
 }
 ```
--->
 
 Aby uzyskać więcej informacji, zobacz [pakiety](#packages), [atrybuty](#attributes), [konfiguracji](#configuration), i [użycia](#usage).
 
@@ -125,7 +122,7 @@ W tym miejscu jest powiązanie danych *function.json* pliku:
 }
 ```
 
-Oto C# kodu skryptu, który jest powiązany z `JObject`:
+Oto kod skryptu 1.x C# funkcji, która jest powiązana z `JObject`:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -139,26 +136,17 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-<!--
-Here's C# script code that binds to `EventGridEvent`:
+Oto kod skryptu 2.x C# funkcji, która jest powiązana z `EventGridEvent`:
 
 ```csharp
-#r "Newtonsoft.Json"
-#r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
 #r "Microsoft.Azure.EventGrid"
-
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-Using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    log.Info(eventGridEvent.Data.ToString());
 }
 ```
--->
 
 Aby uzyskać więcej informacji, zobacz [pakiety](#packages), [atrybuty](#attributes), [konfiguracji](#configuration), i [użycia](#usage).
 
@@ -221,11 +209,17 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 ## <a name="usage"></a>Sposób użycia
 
-C# i F # funkcji można użyć następujących typów parametru wyzwalacza siatki zdarzeń:
+Dla funkcji języka C# i F # na platformie Azure funkcji 1.x, możesz użyć następujących typów parametru wyzwalacza siatki zdarzeń:
 
 * `JObject`
 * `string`
-* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`-Definiuje właściwości pól, które są wspólne dla wszystkich typów zdarzeń. **Ten typ jest przestarzałe**, ale jego wymiany nie jest publikowana w NuGet jeszcze.
+
+Dla języka C# i F # funkcji usługi Azure Functions 2.x, masz również możliwość użycia następującego typu parametru dla wyzwalacza siatki zdarzeń:
+
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent`-Definiuje właściwości pól, które są wspólne dla wszystkich typów zdarzeń.
+
+> [!NOTE]
+> W funkcji v1 próba powiązania `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`, kompilator zostanie wyświetlony komunikat "przestarzałe" i zaleca się użyć `Microsoft.Azure.EventGrid.Models.EventGridEvent` zamiast tego. Odwoływać się do użycia nowszego typu, [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet pakietu i pełnej kwalifikacji `EventGridEvent` nazwę typu na podstawie prefiksu z `Microsoft.Azure.EventGrid.Models`. Aby uzyskać informacje o sposobie odwołania się do pakietów NuGet w funkcji skryptu C#, zobacz [pakietów za pomocą NuGet](functions-reference-csharp.md#using-nuget-packages)
 
 Dla funkcji JavaScript, parametr o nazwie *function.json* `name` właściwość zawiera odwołanie do obiektu zdarzenia.
 

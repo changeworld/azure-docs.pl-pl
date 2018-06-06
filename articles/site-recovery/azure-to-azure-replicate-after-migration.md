@@ -5,18 +5,17 @@ services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 05/31/2018
 ms.author: ponatara
-ms.openlocfilehash: f64d61134f61476bcdd803f92019830b7cecf867
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c42a997560ee40eb0a587b81a6f191f372e0dd26
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716010"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych Azure po zakończeniu migracji na platformie Azure 
 
->[!NOTE]
-> Odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery jest obecnie w przeglądzie.
 
 Użyj w tym artykule, po wprowadzeniu [zmigrowane maszyny lokalnymi maszynami wirtualnymi Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu [usługi Site Recovery](site-recovery-overview.md) usługi. Ten artykuł pomaga przygotować maszyn wirtualnych platformy Azure do konfigurowania odzyskiwania po awarii do dodatkowej regionu Azure, przy użyciu usługi Site Recovery.
 

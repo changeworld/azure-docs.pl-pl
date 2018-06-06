@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 8726badde2214a0904336f5bc73310114bcf9e91
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 06/01/2018
+ms.openlocfilehash: 5250b10c2d9645e25c5b6f6f0f34daa50608e51b
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736648"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migracji PostgreSQL bazy danych przy użyciu eksportowania i importowania
 Można użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych programu PostgreSQL do pliku skryptu i [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) do importowania danych do docelowej bazy danych z tego pliku.
@@ -47,4 +48,5 @@ psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --us
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby przeprowadzić migrację bazy danych programu PostgreSQL przy użyciu zrzutu i przywracania, zobacz [migracji za pomocą zrzutu i przywracania bazy danych PostgreSQL](howto-migrate-using-dump-and-restore.md)
+- Aby przeprowadzić migrację bazy danych programu PostgreSQL przy użyciu zrzutu i przywracania, zobacz [migracji za pomocą zrzutu i przywracania bazy danych PostgreSQL](howto-migrate-using-dump-and-restore.md).
+- Aby uzyskać więcej informacji na temat migracji baz danych do bazy danych Azure PostgreSQL, zobacz [Przewodnik po migracji bazy danych](http://aka.ms/datamigration). 

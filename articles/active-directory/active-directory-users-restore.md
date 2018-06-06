@@ -8,25 +8,25 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 8dbb546954f8eee0bf997b3d2f4f92d67c0b7869
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e743bdd5fd7e302e4c7c5d229bb14753776df079
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723534"
 ---
 # <a name="restore-a-deleted-user-in-azure-active-directory"></a>Przywracanie usuniętych użytkowników w usłudze Azure Active Directory
 
 Ten artykuł zawiera instrukcje, aby przywrócić lub trwałe usunięcie wcześniej usuniętych użytkowników. Po usunięciu użytkownika w usłudze Azure Active Directory (Azure AD), usunięto użytkownika są przechowywane przez 30 dni od daty usunięcia. W tym czasie można przywrócić użytkownika i jego właściwości. 
 
-> [!wARNING]
+> [!WARNING]
 > Po jego trwałe skasowanie, nie można przywrócić użytkownika.
-
 
 ## <a name="how-to-restore-a-recently-deleted-user"></a>Jak przywrócić ostatnio usunięto użytkownika
 Użytkownik niedawno zostanie usunięty, zostaną zachowane wszystkie informacje w katalogu. Jeśli użytkownik zostanie przywrócona, również zostanie przywrócona tych informacji.
@@ -44,7 +44,7 @@ Użytkownik niedawno zostanie usunięty, zostaną zachowane wszystkie informacje
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 Następujące uprawnienia są wystarczające przywrócić użytkownika.
 
-Rola  | Uprawnienia 
+Rola | Uprawnienia 
 --------- | ---------
 Administrator firmy<p>Pomoc techniczna dla partnerów (warstwa 1)<p>Pomoc techniczna dla partnerów (warstwa 2)<p>Administrator kont użytkowników | Można przywrócić usunięci użytkownicy 
 Administrator firmy<p>Pomoc techniczna dla partnerów (warstwa 1)<p>Pomoc techniczna dla partnerów (warstwa 2)<p>Administrator kont użytkowników | Trwale usunąć użytkowników

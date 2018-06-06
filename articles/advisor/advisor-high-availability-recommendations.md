@@ -1,12 +1,12 @@
 ---
-title: "Zalecenia usługi Advisor wysokiej dostępności Azure | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi Azure doradcy zwiększenia wysokiej dostępności Azure wdrożeń."
+title: Zalecenia usługi Advisor wysokiej dostępności Azure | Dokumentacja firmy Microsoft
+description: Za pomocą usługi Azure doradcy zwiększenia wysokiej dostępności Azure wdrożeń.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: e1cd7948e1969cd4ddb926e428c09b559190a805
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736555"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Zalecenia doradcy w zakresie wysokiej dostępności
 
@@ -49,13 +50,16 @@ Jeśli dyski nie wymagają wysokiej IOPS, można ograniczyć koszty, przechowuj�
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Ochrona danych maszyny wirtualnej przed przypadkowym usunięciem
 Konfigurowanie kopii zapasowej maszyny wirtualnej zapewnia dostępność danych biznesowych o znaczeniu krytycznym i zapewnia ochronę przed przypadkowym usunięciem lub uszkodzenia.  Klasyfikator identyfikuje maszyny wirtualne, których kopia zapasowa nie jest włączona i zaleca się włączenie kopii zapasowej. 
 
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Upewnij się, że masz dostęp do ekspertów chmury Azure, w razie konieczności
+Podczas uruchamiania obciążeń biznesowych o znaczeniu krytycznym, należy mieć dostęp do pomocy technicznej, gdy jest wymagane. Klasyfikator identyfikuje potencjalne subskrypcje krytycznym znaczeniu, które nie mają pomocy technicznej zawarte w ich plan pomocy technicznej i zaleca się uaktualniania do opcji z obsługą techniczną.
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak uzyskać dostęp wysokiej dostępności zalecenia usługi Advisor
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
 
 2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **wysokiej dostępności** kartę.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji dotyczących zalecenia doradcy w zakresie zobacz:
 * [Wprowadzenie do usługi Advisor Azure](advisor-overview.md)

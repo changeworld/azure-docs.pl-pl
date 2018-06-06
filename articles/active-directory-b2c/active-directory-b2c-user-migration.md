@@ -1,21 +1,21 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Podejścia migracji użytkownika'
+title: Zbliża się do migracji użytkowników w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Omówiono w nim podstawowe i zaawansowane pojęcia dotyczące migracji użytkownika przy użyciu interfejsu API programu Graph i opcjonalnie za pomocą niestandardowych zasad usługi Azure AD B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 47f813839a5495591356e5ecd461902fa8745c65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 7c78cb13f9028b2be527794751d5f8ced9bff171
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711345"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Usługi Azure Active Directory B2C: Migracja użytkowników
 Podczas migracji dostawcy tożsamości do usługi Azure Active Directory B2C (Azure AD B2C), może być również konieczne migracji konta użytkownika. W tym artykule opisano sposób migracji istniejących kont użytkowników z dowolnego dostawcy tożsamości do usługi Azure AD B2C. Artykuł nie ma mieć charakter opisowy, ale raczej opisuje kilka scenariuszy. Deweloper jest odpowiedzialny za przydatności każdego z podejść.
@@ -145,8 +145,8 @@ Aby edytować plik JSON, otwórz `AADB2C.UserMigration.sln` rozwiązania Visual 
 ![Plik danych użytkownika](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Jak widać, plik zawiera listę jednostkami użytkownika. Każdy obiekt użytkownika ma następujące właściwości:
-* e-mail
-* Nazwa wyświetlana
+* wyślij wiadomość e-mail
+* displayName
 * Imię
 * Nazwisko
 * hasło (może być pusta)

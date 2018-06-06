@@ -1,21 +1,21 @@
 ---
-title: Application Insights, aby rozwiązać zasady niestandardowe — usługi Azure AD B2C | Dokumentacja firmy Microsoft
-description: sposób instalacji usługi Application Insights do śledzenia realizacji zasad niestandardowych
+title: Application Insights, aby Rozwiązywanie problemów dotyczących zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: sposób instalacji usługi Application Insights do śledzenia realizacji zasady niestandardowe.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 3e27976b02ee75083b07ca2e4f0c06e19502d1f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ef39ea51fb7d12e27ce689d01517c520ab6d8684
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710604"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Zbierania dzienników
 

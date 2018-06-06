@@ -1,6 +1,6 @@
 ---
-title: "Integracja dzienników Azure — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "W tym artykule odpowiedzi na pytania dotyczące integracji dziennika Azure."
+title: Integracja dzienników Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+description: W tym artykule odpowiedzi na pytania dotyczące integracji dziennika Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,25 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 02/16/2018
-ms.author: TomSh
+ms.date: 05/25/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9f270daec40d4b395588c491a7ff88ef6ca45649
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802446"
 ---
 # <a name="azure-log-integration-faq"></a>Integracja dzienników Azure — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczące integracji dziennika Azure.
 
->[!IMPORTANT]
->Preferowaną metodą integrowanie dzienników Azure jest za pomocą łącznika Azure Monitor dostawcą SIEM i wykonując te [instrukcje](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcą SIEM nie łącznika do monitorowania Azure, można korzystać z usługi Azure dziennika integracji jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwana przez integrację dziennika Azure) do czasu udostępnienia łącznika programu.
-
 Integracja dziennika Azure to usługa systemu operacyjnego Windows używanej do integracji nowych dzienników z zasobów platformy Azure w sieci lokalnej zabezpieczeń informacji i zdarzenia (SIEM) systemów zarządzania. Integracja ta zapewnia jednolity pulpit nawigacyjny dla wszystkich zasobów, lokalnie lub w chmurze. Możesz agregować, skorelowania, analizowanie i alertów zdarzeń zabezpieczeń skojarzonych z aplikacjami.
 
+Preferowaną metodą integrowanie dzienników Azure jest za pomocą łącznika Azure Monitor dostawcą SIEM i wykonując te [instrukcje](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcą SIEM nie łącznika do monitorowania Azure, można korzystać z usługi Azure dziennika integracji jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwana przez integrację dziennika Azure) do czasu udostępnienia łącznika programu.
+
 ## <a name="is-the-azure-log-integration-software-free"></a>Zwolnieniu oprogramowania integracji dziennika Azure?
+
 Tak. Brak bezpłatne oprogramowanie Integration dziennika Azure.
 
 ## <a name="where-is-azure-log-integration-available"></a>Gdzie jest integracja dziennika Azure?
@@ -38,6 +39,7 @@ Tak. Brak bezpłatne oprogramowanie Integration dziennika Azure.
 Jest obecnie dostępna w Azure handlowych i Azure dla instytucji rządowych i nie jest dostępny w Chinach lub Niemczech.
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Jak można wyświetlić kont magazynu, z których integracji dziennika Azure jest ściąganie dzienniki maszyny Wirtualnej platformy Azure?
+
 Uruchom polecenie **listy źródeł AzLog**.
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Jak sprawdzić, subskrypcji, w której są dzienniki Azure dziennika integracji z?
@@ -51,6 +53,7 @@ Dzienniki inspekcji w usłudze Azure Active Directory zawierają identyfikator d
 Dzienniki diagnostyczne, które są odczytywane z Centrum zdarzeń nie ma identyfikator subskrypcji jako część nazwy. Zamiast tego zawierają przyjazną nazwę określony jako część tworzenie źródło zdarzenia koncentratora. 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>Jak można zaktualizować konfiguracji serwera proxy?
+
 Jeśli ustawienie serwera proxy nie zezwalają na dostęp do magazynu Azure bezpośrednio, otwórz **AZLOG. WYWOŁANIE PLIKU EXE. CONFIG** w pliku **c:\Program Files\Microsoft Azure dziennika integracji**. Aktualizowanie pliku, aby uwzględnić **defaultProxy —** sekcji o adresie serwera proxy w swojej organizacji. Po ukończeniu aktualizacji, Zatrzymaj i uruchom usługę za pomocą poleceń **net stop AzLog** i **net start AzLog**.
 
     <?xml version="1.0" encoding="utf-8"?>
@@ -61,7 +64,7 @@ Jeśli ustawienie serwera proxy nie zezwalają na dostęp do magazynu Azure bezp
         </connectionManagement>
         <defaultProxy>
           <proxy usesystemdefault="true"
-          proxyaddress=http://127.0.0.1:8888
+          proxyaddress="http://127.0.0.1:8888"
           bypassonlocal="true" />
         </defaultProxy>
       </system.net>
@@ -70,6 +73,7 @@ Jeśli ustawienie serwera proxy nie zezwalają na dostęp do magazynu Azure bezp
       </system.diagnostics>   
 
 ## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Jak wyświetlić informacje dotyczące subskrypcji w zdarzeń systemu Windows
+
 Dołącz identyfikator subskrypcji do przyjaznej nazwy podczas dodawania źródła:
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
@@ -79,6 +83,7 @@ Zdarzenie XML ma następujące metadane, identyfikator subskrypcji w tym:
 
 ## <a name="error-messages"></a>Komunikaty o błędach
 ### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>Po uruchomieniu polecenia ```AzLog createazureid```, dlaczego uzyskać następujący błąd?
+
 Błąd:
 
   *Nie można utworzyć aplikację AAD - dzierżawy 72f988bf-86f1-41af-91ab-2d7cd011db37-Przyczyna = "Zabronione" - komunikat = "Wystarczających uprawnień do ukończenia tej operacji."*
@@ -86,6 +91,7 @@ Błąd:
 **Azlog createazureid** polecenie podejmuje próbę utworzenia nazwy głównej usługi w wszystkich dzierżaw usługi Azure AD dla subskrypcji, w których Azure logowania ma dostęp. Jeśli logowanie w usłudze Azure jest tylko użytkownik-Gość w tej dzierżawie usługi Azure AD, polecenie kończy się niepowodzeniem "Wystarczających uprawnień do ukończenia tej operacji." Poproś administratora dzierżawy. Aby dodać konto użytkownika w dzierżawie.
 
 ### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>Po uruchomieniu polecenia **azlog autoryzować**, dlaczego uzyskać następujący błąd?
+
 Błąd:
 
   *Ostrzeżenie tworzenia przypisania roli - AuthorizationFailed: klient janedo@microsoft.com"z obiektem id"fe9e03e4-4dad-4328-910f-fd24a9660bd2"nie ma autoryzacji do wykonania akcji"Microsoft.Authorization/roleAssignments/write"w zakresie" / Subskrypcje / 70d 95299-d689-4c 97-b971-0d8ff0000000 ".*
@@ -93,15 +99,18 @@ Błąd:
 **Autoryzować azlog** polecenia przypisuje rolę czytelnika do nazwy głównej usługi Azure AD (utworzone za pomocą **azlog createazureid**) do podanego subskrypcji. Jeśli logowanie w usłudze Azure nie jest administratora współpracującego lub właściciela subskrypcji, nie jest on z komunikatem o błędzie "Autoryzacja nie powiodła się.". Azure opartej na rolach kontroli dostępu (RBAC) administratora współpracującego lub właściciela wymaganego do ukończenia tej akcji.
 
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Gdzie można znaleźć definicji właściwości w dzienniku inspekcji?
+
 Zobacz:
 
 * [Operacje inspekcji z usługi Azure Resource Manager](../azure-resource-manager/resource-group-audit.md)
 * [Wyświetl listę zdarzeń zarządzania w ramach subskrypcji w interfejsie API REST Azure monitora](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Gdzie znaleźć szczegółowe informacje o alertach Centrum zabezpieczeń Azure
+
 Zobacz [reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](../security-center/security-center-managing-and-responding-alerts.md).
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Jak zmodyfikować, jakie informacje są zbierane z diagnostyki maszyny Wirtualnej?
+
 Aby uzyskać szczegółowe informacje dotyczące sposobu uzyskania, modyfikowania i ustawiania konfiguracji diagnostyki Azure zobacz [Użyj programu PowerShell, aby włączyć na maszynie wirtualnej z systemem Windows Azure Diagnostics](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Poniższy przykład pobiera konfigurację diagnostyki Azure:

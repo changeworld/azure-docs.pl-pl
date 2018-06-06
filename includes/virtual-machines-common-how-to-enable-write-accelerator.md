@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c6fdd51bd522b08b33e6cac852ef313475682550
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723147"
 ---
 # <a name="write-accelerator"></a>Zapis klawiszy skrótów
 Zapisu akceleratora jest wyłącznie możliwości dysku dla serii M maszynach wirtualnych (VM na magazyn Azure dysków zarządzanych w warstwie Premium). Jako nazwa stany, cel funkcji jest ulepszenie opóźnień operacji We/Wy zapisu w usłudze Azure Premium Storage. Zapisu akceleratora doskonale nadaje gdzie aktualizacji plików dziennika są wymagane do utrwalenia na dysku w dużej wydajności sposób dla nowoczesnych baz danych.
@@ -20,7 +21,7 @@ Zapisu akceleratora jest wyłącznie możliwości dysku dla serii M maszynach wi
 Zapisu akceleratora jest ogólnie dostępna dla maszyn wirtualnych M serii w chmurze publicznej.
 
 ## <a name="planning-for-using-write-accelerator"></a>Planowanie za pomocą zapisu klawiszy skrótów
-Zapisu akceleratora ma być używane jako woluminy, które zawierają dziennika transakcji lub wykonaj ponownie dzienniki systemu DBMS. Nie zaleca się na użytek zapisu akceleratora woluminach danych DBMS jako funkcja została zoptymalizowana do można użyć w odniesieniu do dysków dziennika.
+Zapisu akceleratora powinna być używana do woluminów, które zawierają dziennika transakcji lub wykonaj ponownie dzienniki systemu DBMS. Nie zaleca się na użytek zapisu akceleratora woluminach danych DBMS jako funkcja została zoptymalizowana do można użyć w odniesieniu do dysków dziennika.
 
 Zapis akceleratora działa tylko w połączeniu z [dyskach zarządzanych Azure](https://azure.microsoft.com/services/managed-disks/). 
 
@@ -35,14 +36,14 @@ Zapis akceleratora działa tylko w połączeniu z [dyskach zarządzanych Azure](
 > [!IMPORTANT]
 > Włączanie zapisu akceleratora dla dysku systemu operacyjnego maszyny wirtualnej spowoduje ponowny rozruch maszyny Wirtualnej. 
 
-Włączanie akceleratora zapisu dla dysków systemu operacyjnego nie powinno być konieczne dla programu SAP związane z konfiguracji maszyny Wirtualnej
+Włączanie akceleratora zapisu dla dysków systemu operacyjnego, nie powinno być konieczne w przypadku konfiguracji związanych z SAP maszyny Wirtualnej
 
 ### <a name="restrictions-when-using-write-accelerator"></a>Ograniczenia, używając zapisu klawiszy skrótów
 Używając skrótów zapisu dla dysków Azure/VHD, zastosuj następujące ograniczenia:
 
-- Buforowanie dysku Premium musi być ustawiona na "None" lub "Tylko do odczytu". Wszystkie tryby buforowania nie są obsługiwane.
+- Buforowanie dysku Premium musi mieć wartość "None" lub "Tylko do odczytu". Wszystkie tryby buforowania nie są obsługiwane.
 - Migawki na dysku zapisu włączone klawiszy skrótów nie jest jeszcze obsługiwany. To ograniczenie blokuje możliwość usługi Kopia zapasowa Azure wykonywania spójna migawka aplikacji wszystkich dysków maszyny wirtualnej.
-- Tylko mniejszych we/wy (< = 32KiB) trwa przyspieszonego ścieżki. Obciążenia pracą sytuacji, w którym danych otrzymuje zbiorczego załadowany lub w przypadku gdy buforów dziennika transakcji z innego systemu DBMS są wypełnione w większym stopniu przed pobierania utrwalone w magazynie, istnieje prawdopodobieństwo są zapisywane w operacji We/Wy dysku nie podejmuje przyspieszonego ścieżki.
+- Tylko mniejszych we/wy (< = 32 KiB) trwa przyspieszonego ścieżki. Obciążenia pracą sytuacji, w którym danych otrzymuje zbiorczego załadowany lub w przypadku gdy buforów dziennika transakcji z innego systemu DBMS są wypełnione w większym stopniu przed pobierania utrwalone w magazynie, istnieje prawdopodobieństwo są zapisywane w operacji We/Wy dysku nie podejmuje przyspieszonego ścieżki.
 
 Istnieją ograniczenia Azure Premium magazynu wirtualnych dysków twardych na maszynie Wirtualnej, która może być obsługiwana przez zapisu akceleratora. Bieżące ograniczenia są:
 
@@ -52,6 +53,12 @@ Istnieją ograniczenia Azure Premium magazynu wirtualnych dysków twardych na ma
 | M128s | 16 | 8000 |
 | M64ms | 8 | 4000 |
 | M64s | 8 | 4000 | 
+| M32ms | 4 | 2000 | 
+| M32s | 4 | 2000 | 
+| M16ms | 2 | 1000 | 
+| M16s | 2 | 1000 | 
+| M8ms | 1 | 500 | 
+| M8s | 1 | 500 | 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Włączanie akceleratora zapisu na konkretnym dysku
 Kilka kolejnych sekcjach opisano, jak napisać akceleratora można włączyć na wirtualnych dyskach twardych Azure Premium magazynu.
@@ -63,29 +70,29 @@ Następujące wymagania wstępne dotyczą użycie akceleratora zapisu w tym mome
 - Dyski, które chcesz zastosować Azure akceleratora do zapisu względem muszą być [dyskach zarządzanych Azure](https://azure.microsoft.com/services/managed-disks/) na magazyn w warstwie Premium.
 - Należy korzystać z serii M maszyny Wirtualnej
 
-### <a name="enabling-through-power-shell"></a>Włączanie za pomocą powłoki Power Shell
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Włączanie akceleratora zapisu Azure przy użyciu programu Azure PowerShell
 Modułu powłoki Power Shell Azure z wersji 5.5.0 obejmują zmiany do odpowiednich poleceń cmdlet, aby włączyć lub wyłączyć zapisu akceleratora dla określonych dysków Azure Premium Storage.
 Aby włączyć lub wdrożyć dysków obsługiwanych przez akceleratora zapisu, następujące polecenia powłoki Power Shell otrzymano zmiany i rozszerzony do akceptuje parametru do zapisania akceleratora.
 
 Nowy parametr przełącznika "WriteAccelerator" zostały dodane do następujących poleceń cmdlet: 
 
-- Set-AzureRmVMOsDisk
-- Add-AzureRmVMDataDisk
-- Set-AzureRmVMDataDisk
-- Add-AzureRmVmssDataDisk
+- [Zestaw AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 Nie dają parametr ustawia tę właściwość na wartość false i wdroży dysków, które nie obsługują przez zapisu akceleratora.
 
 Nowy parametr przełącznika "OsDiskWriteAccelerator" został dodany do następujących poleceń cmdlet: 
 
-- Set-AzureRmVmssStorageProfile
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
-Nie dają paramenter ustawia tę właściwość na wartość false i będzie dostarczać dysków, które nie korzystać z akceleratora zapisu.
+Nie dają parametr ustawia tę właściwość na wartość false i będzie dostarczać dysków, które nie korzystać z akceleratora zapisu.
 
 Nowy logiczna (z systemem innym niż null) parametr opcjonalny, "OsDiskWriteAccelerator" zostały dodane do następujących poleceń cmdlet: 
 
-- Update-AzureRmVM
-- Update-AzureRmVmss
+- [AzureRmVM aktualizacji](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 Określ $true lub $false do kontrolowania Obsługa akceleratora zapisu Azure z dysków.
 
@@ -158,26 +165,27 @@ Należy dostosować nazwy maszyny Wirtualnej, dysku i grupy zasobów. Skrypt pow
 > [!Note]
 > Wykonywanie skryptu powyżej będzie odłączyć określonego dysku, Włącz zapisu akceleratora dla dysku i ponownie podłączyć dysk
 
-### <a name="enabling-through-azure-portal"></a>Włączanie za pośrednictwem portalu Azure
+### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>Włączanie akceleratora zapisu Azure przy użyciu portalu Azure
 
-Można włączyć zapisu akceleratora za pośrednictwem portalu, w którym określić ustawienia pamięci podręcznej dysku: 
+Zapis akceleratora można włączyć w portalu, w którym określić ustawienia pamięci podręcznej dysku: 
 
 ![Zapis akceleratora w portalu Azure](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-through-azure-cli"></a>Włączanie za pośrednictwem interfejsu wiersza polecenia platformy Azure
+## <a name="enabling-through-azure-cli"></a>Włączanie za pośrednictwem interfejsu wiersza polecenia platformy Azure
 Można użyć [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) aby umożliwić zapis akceleratora. 
 
-Zapis akceleratora, Włącz istniejącego dysku, użyj polecenia poniżej, podstawiając własne diskName VMName i grupa zasobów: 
+Akceleratora zapisu, Włącz istniejącego dysku, użyj [aktualizację maszyny wirtualnej az](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), można używać poniższych przykładach, jeśli zastępuje diskName VMName i ResourceGroup własne:
+ 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 1=true
+az vm update -g group1 -n vm1 -write-accelerator 1=true
 ```
-Na podłączenie dysku z akceleratora zapisu należy włączyć Użyj poniżej polecenie z własnymi wartościami:
+Na podłączenie dysku z akceleratora zapisu należy włączyć użyj [dołączyć dysku maszyny wirtualnej az](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), może skorzystaj z następującego przykładu, jeśli można użyć własnych wartości:
 ```
-az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
 ```
-Aby wyłączyć akceleratora zapisu, należy ustawić właściwość na wartość false: 
+Aby wyłączyć akceleratora zapisu, należy użyć [aktualizację maszyny wirtualnej az](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), ustawienie wartości false dla właściwości: 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
 ```
 
 ### <a name="enabling-through-rest-apis"></a>Włączanie za pośrednictwem interfejsów API Rest

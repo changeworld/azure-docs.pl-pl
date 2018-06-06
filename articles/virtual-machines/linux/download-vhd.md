@@ -13,19 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 93f165d08813506f9c4d4c0fbb885ddc958e8391
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1c6751d980a7bb28e58a3aa00514411959f515d7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725870"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobierz dysku VHD systemu Linux na platformie Azure
 
 W tym artykule opisano sposób pobierania [Linux wirtualnego dysku twardego (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pliku z platformy Azure przy użyciu wiersza polecenia platformy Azure i portalu Azure. 
-
-Maszynach wirtualnych (VM) platformy Azure używana [dysków](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne Azure są co najmniej dwa dyski — dysk systemu operacyjnego Windows i dysku tymczasowym. Dysk systemu operacyjnego został początkowo utworzony z obrazu, a zarówno dysku systemu operacyjnego i obrazu są przechowywane na koncie magazynu Azure wirtualne dyski twarde. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które są także przechowywane jako wirtualne dyski twarde.
 
 Jeśli jeszcze tego nie zrobiono, zainstaluj [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
 

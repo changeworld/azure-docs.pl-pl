@@ -1,31 +1,25 @@
 ---
-title: "Użyj widoku wykonania wierzchołka w narzędzi Data Lake Tools dla programu Visual Studio | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć widoku wykonania wierzchołka do zadania usługi Data Lake Analytics egzaminu."
+title: Użyj widoku wykonania wierzchołka w narzędzi Data Lake Tools dla programu Visual Studio
+description: W tym artykule opisano sposób użycia widoku wykonania wierzchołka do zadania usługi Data Lake Analytics egzaminu.
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/13/2016
+author: mumian
 ms.author: jgao
-ms.openlocfilehash: b788e7bc8ded86ebd49cc0be73e5b4e1bcbeaba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
+ms.topic: conceptual
+ms.date: 10/13/2016
+ms.openlocfilehash: af15bb9fd1131f598dc87f13c4af481b63d023e3
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735445"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Użyj widoku wykonania wierzchołka w narzędzi Data Lake Tools dla programu Visual Studio
 Dowiedz się, jak użyć widoku wykonania wierzchołka do zadania usługi Data Lake Analytics egzaminu.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Należy podstawową wiedzę na temat tworzenia skryptu U-SQL przy użyciu narzędzi Data Lake Tools dla programu Visual Studio.  Zobacz [samouczek: tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools dla programu Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
 
 ## <a name="open-the-vertex-execution-view"></a>Otwieranie widoku wykonania wierzchołka
 Otwórz zadania skryptu U-SQL w narzędzi Data Lake Tools dla programu Visual Studio. Kliknij przycisk **widoku wykonania wierzchołka** w lewym dolnym rogu. Może pojawić się prośba można najpierw załadować profile i może potrwać pewien czas w zależności od połączenia sieciowego.
@@ -57,7 +51,7 @@ Dolne okienko center zawiera informacje dotyczące każdego wierzchołka:
 * Utworzona wersja czasu.
 * Utwórz początkowy czas i proces w kolejce czas i proces początkowy czas i proces Complete przetworzyć czasu: podczas uruchamiania procesu wierzchołków tworzenia; podczas uruchamiania procesu wierzchołków do kolejki; podczas uruchamiania procesu niektórych wierzchołka; Po wykonaniu pewnych wierzchołka.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby rejestrować informacje diagnostyczne, zobacz [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics)
 * Aby uzyskać informacje na temat bardziej złożonego zapytania, zobacz temat [Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Aby wyświetlić szczegóły zadania, zobacz [użyj przeglądarki zadania i widok zadań dla zadania usługi Azure Data lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md)

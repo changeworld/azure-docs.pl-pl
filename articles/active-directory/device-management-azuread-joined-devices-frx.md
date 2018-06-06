@@ -1,13 +1,14 @@
 ---
-title: "Dołącz nowe urządzenie z systemem Windows 10 z usługą Azure AD przy pierwszym uruchomieniu | Dokumentacja firmy Microsoft"
-description: "Temat, który objaśnia, jak użytkownicy mogli skonfigurować Azure AD Join podczas pierwszego uruchomienia komputera."
+title: Dołącz nowe urządzenie z systemem Windows 10 z usługą Azure AD przy pierwszym uruchomieniu | Dokumentacja firmy Microsoft
+description: Temat, który objaśnia, jak użytkownicy mogli skonfigurować Azure AD Join podczas pierwszego uruchomienia komputera.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0e71df2333dee9c4eb9935d3397d343be246be65
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0341c5b65816cf1c54fe3f2f7781dde46bf084ad
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757396"
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Dołącz nowe urządzenie z systemem Windows 10 z usługą Azure AD przy pierwszym uruchomieniu
 
@@ -37,6 +39,8 @@ W oknach *out-of-box experience*, przyłączania do domeny usługi Active Direct
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Aby przyłączyć urządzenie z systemem Windows 10, usługi rejestracji urządzeń muszą być skonfigurowane do włączenia rejestracji urządzeń. Oprócz mając uprawnienia do przyłączania urządzeń w Twojej dzierżawie usługi Azure AD, musi mieć mniej urządzeń zarejestrowanych niż skonfigurowana wartość maksymalna. Aby uzyskać więcej informacji, zobacz [skonfigurować ustawienia urządzenia](device-management-azure-portal.md#configure-device-settings).
+
+Ponadto jeśli dzierżawy jest Sfederowane, dostawcy tożsamości musi obsługiwać WS-Fed i WS-Trust punktu końcowego nazwy użytkownika i hasła. Może to być w wersji 1.3 lub 2005. Ta obsługa protokołu jest wymagany do dołączenie urządzenia do usługi Azure AD i zaloguj się do urządzenia za pomocą hasła.
 
 ## <a name="joining-a-device"></a>Dołączenie urządzenia
 

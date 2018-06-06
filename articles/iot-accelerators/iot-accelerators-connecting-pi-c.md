@@ -1,31 +1,25 @@
 ---
 title: Zapewnij Pi malina do monitorowania zdalnego za pomocą C - Azure | Dokumentacja firmy Microsoft
 description: Opisano sposób podłączania urządzeń Pi malina do akcelerator rozwiązań monitorowania zdalnego przy użyciu aplikacji napisanych w C.
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: 9de7616ec7174f6c55888a659e9a12bca1e07f94
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735498"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Podłącz urządzenie Pi malina do zdalnego akcelerator rozwiązań monitorowania (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Podłącz urządzenie Pi malina do monitorowania zdalnego akcelerator rozwiązań (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ten samouczek pokazuje, jak nawiązać zdalnego akcelerator rozwiązań monitorowania urządzenia fizycznego. Podobnie jak w przypadku najbardziej osadzonych aplikacji na urządzeniach ograniczone, kodu klienta dla aplikacji urządzeń malina Pi jest napisany w C. W tym samouczku tworzenia aplikacji na Pi malina systemem Raspbian systemu operacyjnego.
+W tym samouczku przedstawiono sposób nawiązywania akcelerator rozwiązań monitorowania zdalnego urządzenia fizycznego. Podobnie jak w przypadku najbardziej osadzonych aplikacji na urządzeniach ograniczone, kodu klienta dla aplikacji urządzeń malina Pi jest napisany w C. W tym samouczku tworzenia aplikacji na Pi malina systemem Raspbian systemu operacyjnego.
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
@@ -62,7 +56,6 @@ Poniższe kroki pokazują, jak przygotować Twojej Pi malina do tworzenia aplika
 1. Aby dodać biblioteki i narzędzia deweloperskie wymagane do Twojej Pi malina, użyj następującego polecenia:
 
     ```sh
-    sudo apt-get purge libssl-dev
     sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
     ```
 
@@ -71,9 +64,9 @@ Poniższe kroki pokazują, jak przygotować Twojej Pi malina do tworzenia aplika
     ```sh
     cd ~
     git clone --recursive https://github.com/azure/azure-iot-sdk-c.git
-    cd azure-iot-sdk-c/build_all/linux
-    ./build.sh --no-make
-    cd ../../cmake/iotsdk_linux
+    mkdir cmake
+    cd cmake
+    cmake ..
     make
     sudo make install
     ```

@@ -1,12 +1,12 @@
 ---
-title: "Ciągłe wdrażanie dla usługi Azure Functions | Dokumentacja firmy Microsoft"
-description: "Publikowanie funkcji platformy Azure przy użyciu urządzenia ciągłego wdrażania usługi Azure App Service."
+title: Ciągłe wdrażanie dla usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Publikowanie funkcji platformy Azure przy użyciu urządzenia ciągłego wdrażania usługi Azure App Service.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 35a0b0faa61cf4b42ba1d8696c85f5724ff73f23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735707"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
 Środowisko Azure Functions ułatwia wdrażanie aplikacji funkcji przy użyciu ciągłej integracji usługi aplikacji. Funkcje integruje się z BitBucket, Dropbox, GitHub i Visual Studio Team Services (VSTS). Dzięki temu przepływu pracy gdzie kod funkcji aktualizacji przy użyciu jednej z tych wdrażanie wyzwalaczy zintegrowanych usług Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, Rozpocznij od [Azure Functions — omówienie](functions-overview.md).
@@ -41,6 +42,8 @@ Wdrożenia są konfigurowane na poszczególnych funkcji aplikacji. Po włączeni
 W źródle wdrożenia przed skonfigurowaniem ciągłe wdrażanie musi mieć źródło wdrożenia skonfigurowane i kodu funkcji. We wdrożeniu aplikacji daną funkcję każdej funkcji znajduje się w podkatalogu o nazwie, gdzie nazwa katalogu jest nazwa funkcji.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
+
+Aby można było wdrożyć z programu VSTS, możesz połączyć konta usługi VSTS z subskrypcją platformy Azure. Aby uzyskać więcej informacji, zobacz [Konfigurowanie rozliczeń dla swojego konta usługi VSTS](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Konfigurowanie ciągłego wdrażania
 Użyj tej procedury, aby skonfigurować ciągłego wdrażania dla istniejącej aplikacji funkcji. Te kroki prezentują integracji z repozytorium GitHub, ale podobne kroki zastosować Visual Studio Team Services lub innych usługach wdrożenia.
@@ -148,7 +151,7 @@ Przed pobraniem plików z aplikacji funkcji za pomocą protokołu FTP lub lokaln
 
 [GitHub]: https://github.com/
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)

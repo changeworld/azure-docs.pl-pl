@@ -5,22 +5,23 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737813"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Pliki Azure — często zadawane pytania (FAQ)
-[Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (znanej także jako Common Internet File System, lub CIFS). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
+[Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji usługi pliki Azure, łącznie z użyciem synchronizacji plików Azure przy użyciu plików Azure. Jeśli nie widzisz odpowiedź na swoje pytanie, użytkownik może skontaktuj się z nami za pośrednictwem następujących kanałów (w kolejności rosnące):
 
@@ -188,6 +189,14 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 * <a id="afs-os-support"></a>
 **Windows Server 2008 R2, Linux lub urządzenie magazynu dołączone do sieci (NAS) można używać synchronizacji plików Azure?**  
     Obecnie synchronizacji plików Azure obsługuje tylko systemu Windows Server 2016 i Windows Server 2012 R2. W tej chwili nie mamy żadnych innych planów, które firma Microsoft może udostępniać, ale jest otwarty, aby obsługa dodatkowych platform na życzenie klientów. Daj nam znać w [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files) platform mamy do obsługi.
+
+* <a id="afs-tiered-files-out-of-endpoint"></a>
+**Dlaczego czy istnieją pliki warstwowych poza nazw punktu końcowego serwera?**  
+    Przed synchronizacji plików Azure agenta w wersji 3 synchronizacja plików Azure zablokowana przenoszenia plików warstwowych poza serwera punktu końcowego, ale w tym samym woluminie jako punkt końcowy serwera. Operacje kopiowania, przenosi-warstwowej plików oraz z warstwy do innych woluminów nie miała wpływu. Przyczyna tego zachowania był niejawne założeniu, że Eksplorator plików i innych interfejsów API systemu Windows ma który przenieść operacje na tym samym woluminie (prawie) są instanenous zmiany nazwy operacji. Oznacza to przenosi spowoduje, że Eksploratora plików lub inne metody move (na przykład wiersz polecenia lub środowiska PowerShell) są wyświetlane jako odpowiadać podczas synchronizacji plików Azure odwoływania danych z chmury. Począwszy od [wersja agenta synchronizacji plików Azure 3.0.12.0](storage-files-release-notes.md#agent-version-30120), synchronizacji plików Azure umożliwia przenoszenie pliku warstwowych poza serwera punktu końcowego. Firma Microsoft uniknąć negatywnego wpływu wcześniej wymienionymi stosowanie warstwowych plik istnieje jako plik warstwowych poza serwera punktu końcowego, a następnie odwołująca plik w tle. Oznacza to, że przenosi na tym samym woluminie są instaneous i możemy wykonywać wszystkie zadania odwołać pliku na dysku, po zakończeniu przenoszenia. 
+
+* <a id="afs-do-not-delete-server-endpoint"></a>
+**Mam problem z synchronizacji plików Azure na serwerze (synchronizacja chmury warstw itp). Należy I Usuń i Utwórz ponownie punkt końcowy Mój serwer?**  
+    [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="security-authentication-and-access-control"></a>Zabezpieczenia, uwierzytelniania i kontroli dostępu
 * <a id="ad-support"></a>

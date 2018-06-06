@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczeń platformy Azure i plan zgodności — aplikacji sieci Web dla FedRAMP
-description: Zabezpieczeń platformy Azure i plan zgodności — aplikacji sieci Web dla FedRAMP
+title: Zabezpieczeń platformy Azure i plan zgodności — aplikacji sieci Web IaaS dla FedRAMP
+description: Zabezpieczeń platformy Azure i plan zgodności — aplikacji sieci Web IaaS dla FedRAMP
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: b7a81db6a1caf11ac4a85a5202c5ed943225e849
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 27346d8e2133ea61056817fb48050a4e5c8c3c97
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726486"
 ---
-# <a name="azure-security-and-compliance-blueprint-web-application-for-fedramp"></a>Zabezpieczeń platformy Azure i plan zgodności: aplikacja dla FedRAMP sieci Web
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpieczeń platformy Azure i plan zgodności: aplikacja sieci Web IaaS dla FedRAMP
 
 ## <a name="overview"></a>Przegląd
 
@@ -149,8 +150,8 @@ Następujące technologie zapewniają tożsamość możliwości zarządzania w �
 
 OMS zapewnia szczegółowe rejestrowanie działania systemu i użytkownika, a także kondycji systemu. OMS [analizy dzienników](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) rozwiązanie zbiera i analizuje dane generowane przez zasobami na platformie Azure i lokalnego środowiska.
 
-- **Dzienniki aktywności:**[Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacji wykonywanych na zasobów w ramach subskrypcji.   Dzienniki aktywności mogą ułatwić określenie inicjatora operacji czasu wystąpienie i stan.
-- **Dzienniki diagnostyczne:**[dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdego zasobu.   Dzienniki te obejmują dzienniki systemu zdarzeń systemu Windows, dzienniki usługi Azure storage, dzienników inspekcji usługi Key Vault i dzienniki bramy aplikacji dostępu i zapory.
+- **Dzienniki aktywności:**[Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacji wykonywanych na zasobów w ramach subskrypcji. Dzienniki aktywności mogą ułatwić określenie inicjatora operacji czasu wystąpienie i stan.
+- **Dzienniki diagnostyczne:**[dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdego zasobu. Dzienniki te obejmują dzienniki systemu zdarzeń systemu Windows, dzienniki usługi Azure storage, dzienników inspekcji usługi Key Vault i dzienniki bramy aplikacji dostępu i zapory.
 - **Archiwizowanie dziennika:** zapisu wszystkich dzienników diagnostycznych na konto magazynu Azure scentralizowane i zaszyfrowanego dla archiwizacji. Przechowywania jest konfigurowanych przez użytkownika, się do 730 dni, aby spełnić wymagania organizacji dotyczące przechowywania. Te dzienniki nawiązać Analiza dzienników Azure do przetwarzania, przechowywania i raportowania pulpitu nawigacyjnego.
 
 Ponadto następujące rozwiązania OMS są instalowane w ramach tej architektury. Należy pamiętać, że odpowiedzialność klienta do konfigurowania tych rozwiązań, aby były wyrównane z formantami zabezpieczeń FedRAMP:

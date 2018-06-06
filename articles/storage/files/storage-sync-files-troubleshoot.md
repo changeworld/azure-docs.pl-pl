@@ -4,21 +4,21 @@ description: Rozwiązywania typowych problemów z synchronizacją plików Azure.
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea05c29bb40b595ad32304df55a79a9cf82acc18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738442"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Rozwiązywanie problemów z synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -29,6 +29,9 @@ W tym artykule zaprojektowano w celu ułatwienia rozwiązywania oraz usuwania pr
 2. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure pliki UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. pomocą techniczną firmy Microsoft. Aby utworzyć nowe żądanie pomocy technicznej, w portalu Azure na **pomocy** wybierz opcję **Pomoc i obsługa techniczna** przycisk, a następnie wybierz **nowy obsługuje żądania**.
+
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mam problem z synchronizacji plików Azure na serwerze (synchronizacja chmury warstw itp). Należy I Usuń i Utwórz ponownie punkt końcowy Mój serwer?
+[!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="storage-sync-service-object-management"></a>Magazyn usługi synchronizacji obiektu zarządzania
 Jeśli to zrobisz przeniesienie zasobów z jedną subskrypcję do innej subskrypcji zasobów synchronizacji (usługa synchronizacji magazynu) plików zostanie zablokowane przenoszony. 
@@ -154,7 +157,7 @@ Jeśli synchronizacja nie powiedzie się na serwerze:
     2. Sprawdź, czy usługa synchronizacji Azure pliku jest uruchomiona na serwerze. Aby to zrobić, otwórz przystawkę MMC usług i sprawdź, czy jest uruchomiona usługa agenta synchronizacji magazynu (FileSyncSvc).
 
 <a id="replica-not-ready"></a>**Synchronizacja nie powiedzie się, z powodu następującego błędu: "0x80c8300f — replika nie jest gotowa do wykonania żądanej operacji"**  
-Ten problem powinien po utworzeniu punktu końcowego w chmurze i użyj udziału plików na platformę Azure, która zawiera dane. Zadanie wykrywania zmian, które skanuje w poszukiwaniu zmian w udziale plików Azure jest zaplanowane do uruchamiania raz na 24 godziny.  Czas wymagany do ukończenia jest zależna od rozmiaru przestrzeni nazw w udziale plików Azure.  Ten błąd powinien już wyświetlane po wykonaniu tych czynności.
+Ten problem powinien po utworzeniu punktu końcowego w chmurze i użyj udziału plików na platformę Azure, która zawiera dane. Zadanie wykrywania zmian, które skanuje w poszukiwaniu zmian w udziale plików na platformę Azure jest zaplanowane do uruchamiania raz na 24 godziny.  Czas wymagany do ukończenia jest zależna od rozmiaru udziału plików na platformę Azure w przestrzeni nazw.  Ten błąd powinien już wyświetlane po wykonaniu tych czynności.
 
 
     > [!NOTE]

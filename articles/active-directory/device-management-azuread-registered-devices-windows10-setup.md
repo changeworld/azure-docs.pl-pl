@@ -1,13 +1,14 @@
 ---
-title: "Konfigurowanie usługi Azure Active Directory zarejestrowanych urządzeń | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować usługi Azure Active Directory zarejestrowane urządzenia."
+title: Konfigurowanie usługi Azure Active Directory zarejestrowanych urządzeń | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować usługi Azure Active Directory zarejestrowane urządzenia.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,22 +16,23 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2560e51d61506389e84288bf983b0ebcb5776ff2
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 541f37bb11c604567b356716db282d0e4e2f629b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713528"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Konfigurowanie usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10
 
 Z zarządzania urządzeniami w usłudze Azure Active Directory (Azure AD) można zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają standardy zabezpieczeń i zgodności. Aby uzyskać więcej informacji, zobacz [wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](device-management-introduction.md).
 
-Jeśli chcesz włączyć **urządzenia (PRZYNIEŚ własne)** scenariusz, można to zrobić przez skonfigurowanie usługi Azure AD zarejestrowanych urządzeń. W usłudze Azure AD możesz skonfigurować urządzenia usługi Azure AD w zarejestrowany dla systemu Windows 10, iOS, Android i macOS. W tym temacie przedstawiono kroki pokrewne dla urządzeń z systemem Windows 10. 
+Jeśli chcesz włączyć **urządzenia (PRZYNIEŚ własne)** scenariusz, można to zrobić przez skonfigurowanie usługi Azure AD zarejestrowanych urządzeń. W usłudze Azure AD możesz skonfigurować urządzenia usługi Azure AD w zarejestrowany dla systemu Windows 10, iOS, Android i macOS. Ten artykuł zawiera kroki pokrewne dla urządzeń z systemem Windows 10. 
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby zarejestrować urządzenia z systemem Windows 10, usługi rejestracji urządzeń muszą być skonfigurowane do włączenia rejestracji urządzeń. Oprócz mając uprawnienia do rejestrowania urządzeń w Twojej dzierżawie usługi Azure AD, musi mieć mniej urządzeń zarejestrowanych niż skonfigurowana wartość maksymalna. Aby uzyskać więcej informacji, zobacz [skonfigurować ustawienia urządzenia](device-management-azure-portal.md#configure-device-settings).
+Aby zarejestrować urządzenia z systemem Windows 10, usługi rejestracji urządzeń muszą być skonfigurowane do włączenia rejestracji urządzeń. Ponadto musi mieć mniej urządzeń zarejestrowanych niż skonfigurowana wartość maksymalna. Aby uzyskać więcej informacji, zobacz [skonfigurować ustawienia urządzenia](device-management-azure-portal.md#configure-device-settings).
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 
@@ -49,7 +51,7 @@ Podczas rejestrowania urządzenia, należy mieć następujące na uwadze:
 
 ## <a name="registering-a-device"></a>Rejestrowanie urządzenia
 
-Ta sekcja zawiera proste kroki, aby zarejestrować urządzenie z systemem Windows 10 do usługi Azure AD. Jeśli pomyślnie zostały zarejestrowane urządzenia z usługą Azure AD Twojego **dostępu służbowego** okna dialogowego wskazuje to z **pracy konto służbowe** wpisu.
+Ta sekcja zawiera proste kroki, aby zarejestrować urządzenie z systemem Windows 10 do usługi Azure AD. Pomyślnie zarejestrowano urządzenia zostaną wyświetlone z **pracy konto służbowe** wpisu.
 
 ![Zarejestruj subskrypcję](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
@@ -74,7 +76,7 @@ Ta sekcja zawiera proste kroki, aby zarejestrować urządzenie z systemem Window
     ![Połączenie](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
 
 
-5. Na **Konfigurowanie konta służbowego** okna dialogowego, wprowadź nazwę konta (np.: someone@example.com), a następnie kliknij przycisk **dalej**.
+5. Na **Konfigurowanie konta służbowego** okna dialogowego, wprowadź nazwę konta (na przykład someone@example.com), a następnie kliknij przycisk **dalej**.
 
     ![Połączenie](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
 
@@ -94,7 +96,7 @@ Aby sprawdzić, czy urządzenie jest dołączane do usługi Azure AD, możesz pr
 
 ![Zarejestruj subskrypcję](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
-Alternatywnie można również przejrzeć ustawienia urządzenia w portalu usługi Azure AD.
+Alternatywnie możesz przejrzeć ustawienia urządzenia w portalu usługi Azure AD.
 
 ![Zarejestruj subskrypcję](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
 

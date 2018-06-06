@@ -5,19 +5,20 @@ services: cosmos-db
 author: rimman
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cc66b2f506d81a7ba10b26c3b24287472e890682
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724911"
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Wielu wzorzec w obsłudze globalnych z bazy danych Azure rozwiązania Cosmos 
  
-Opracowywanie globalnie rozproszone aplikacji odpowiadających z opóźnieniami lokalnych podczas utrzymywania spójne widoki danych na całym świecie jest trudne problem. Klienci Użyj globalnie rozproszone baz danych, ponieważ należy poprawić opóźnienia dostępu do danych, osiągnąć wysoką dostępność i zapewnia gwarantowane odzyskiwaniem (4) do wymagań biznesowych. Wiele wzorca w usłudze Azure DB rozwiązania Cosmos zapewnia wysoką dostępność (99,999%), jednocyfrowej milisekundy opóźnienia, aby zapisywać danych i skalowalność z obsługą rozwiązania wbudowanej kompleksowy i elastyczny. Te funkcje znacząco upraszcza projektowanie aplikacji rozproszonych globalnie. Dla aplikacji rozproszonych globalnie Obsługa wielu wzorców jest niezwykle istotne. 
+Opracowywanie globalnie rozproszone aplikacji odpowiadających z opóźnieniami lokalnych podczas utrzymywania spójne widoki danych na całym świecie jest trudne problem. Klienci Użyj globalnie rozproszone baz danych, ponieważ do poprawy opóźnienia dostępu do danych, uzyskania danych o wysokiej dostępności, upewnij się, odzyskiwania po awarii gwarantowane i do ich wymagań biznesowych. Wiele wzorca w usłudze Azure DB rozwiązania Cosmos zapewnia wysoką dostępność (99,999%), jednocyfrowej milisekundy opóźnienia, aby zapisywać danych i skalowalność z obsługą rozwiązania wbudowanej kompleksowy i elastyczny. Te funkcje znacząco upraszcza projektowanie aplikacji rozproszonych globalnie. Dla aplikacji rozproszonych globalnie Obsługa wielu wzorców jest niezwykle istotne. 
 
 ![Architektura wieloma serwerami głównymi](./media/multi-region-writers/multi-master-architecture.png)
 

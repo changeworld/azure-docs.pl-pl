@@ -1,4 +1,4 @@
-# [Dokumentacja usługi Azure AD Domain Services](index.md)
+# [Dokumentacja usługi Azure AD Domain Services](index.yml)
 
 # Omówienie
 ## [Co to są usługi Azure AD Domain Services?](active-directory-ds-overview.md)

@@ -1,26 +1,22 @@
 ---
-title: "Usługa Azure Service Bus — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Service Bus."
+title: Usługa Azure Service Bus — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
+description: Odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Service Bus.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: cc75786d-3448-4f79-9fec-eef56c0027ba
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: ba34938883ee342936b5c7a4568dae5e02684bb2
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802269"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
+
 W tym artykule omówiono niektóre często zadawane pytania dotyczące usługi Microsoft Azure Service Bus. Możesz również odwiedzić [często zadawane pytania dotyczące obsługi Azure](http://go.microsoft.com/fwlink/?LinkID=185083) ogólne informacje Azure cennik i pomocy technicznej.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Ogólne pytania dotyczące usługi Azure Service Bus
@@ -37,9 +33,11 @@ A [kolejki usługi Service Bus](service-bus-queues-topics-subscriptions.md) to j
 Tematu może zostać zwizualizowany jako kolejka i korzystając z wieloma subskrypcjami, staje się bardziej rozbudowane modelu obsługi komunikatów; zasadniczo narzędzie komunikacji jeden do wielu. Ten model publikowania/subskrypcji (lub *pub/sub*) umożliwia aplikacji, która wysyła komunikat do tematu z wieloma subskrypcjami, aby ten komunikat odebrany przez wiele aplikacji.
 
 ### <a name="what-is-a-partitioned-entity"></a>Co to jest partycjonowane jednostki?
-Konwencjonalne kolejka lub temat są obsługiwane przez brokera pojedynczej wiadomości i przechowywane w jeden Magazyn obsługi komunikatów. A [partycjonowanej kolejka lub temat](service-bus-partitioning.md) jest obsługiwany przez wiele brokerzy wiadomości i przechowywane w wiele magazynów obsługi komunikatów. Oznacza to, że ogólną przepustowość partycjonowanej kolejka lub temat nie jest już ograniczone przez wydajność brokera komunikatów pojedynczego lub magazynie obsługi komunikatów. Ponadto tymczasowego awaria magazynie obsługi komunikatów nie renderować partycjonowanej kolejka lub temat niedostępny.
+Konwencjonalne kolejka lub temat są obsługiwane przez brokera pojedynczej wiadomości i przechowywane w jeden Magazyn obsługi komunikatów. Obsługiwane tylko w Basic i Standard obsługi komunikatów warstw, [partycjonowanej kolejka lub temat](service-bus-partitioning.md) jest obsługiwany przez wiele brokerzy wiadomości i przechowywane w wiele magazynów obsługi komunikatów. Ta funkcja oznacza, że ogólną przepustowość partycjonowanej kolejka lub temat nie jest już ograniczone przez wydajność brokera komunikatów pojedynczego lub magazynie obsługi komunikatów. Ponadto tymczasowego awaria magazynie obsługi komunikatów nie renderować partycjonowanej kolejka lub temat niedostępny.
 
-Należy pamiętać, że kolejność nie jest zapewniona przy użyciu partycjonowane jednostki. W przypadku, gdy partycja jest niedostępny, można nadal wysyłać i odbierać komunikaty z innych partycji.
+Kolejność nie jest zapewnione przy użyciu partycjonowane jednostki. W przypadku, gdy partycja jest niedostępny, można nadal wysyłać i odbierać komunikaty z innych partycji.
+
+ Partycjonowane jednostki są już obsługiwane w [warstwy Premium](service-bus-premium-messaging.md). 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Jakie są najlepsze rozwiązania Azure Service Bus?
@@ -74,9 +72,9 @@ Nie, magistrali usług nie nalicza dla magazynu. Istnieje jednak limit przydzia�
 Listę limity usługi Service Bus i przydziały, zobacz [Omówienie zasobów usługi Service Bus][Quotas overview].
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Usługa Service Bus ma wszelkie przydziały użycia?
-Domyślnie wszystkie chmury usługi Microsoft ustawia agregacji miesięczne przydział użycia, która jest obliczana dla wszystkich subskrypcji klienta. Ponieważ rozumiemy, że może być konieczne więcej niż te limity, możesz skontaktować się obsługi klienta w dowolnym momencie, aby firma Microsoft jest zrozumienie potrzeb i odpowiednio dostosować te limity. Dla usługi Service Bus przydział użycia agregacji jest 5 mld wiadomości miesięcznie.
+Domyślnie wszystkie chmury usługi Microsoft ustawia agregacji miesięczne przydział użycia, która jest obliczana dla wszystkich subskrypcji klienta. Jeśli potrzebujesz więcej niż te limity, w dowolnym momencie, zrozumienie potrzeb i odpowiednio dostosować te limity można się z obsługą klienta. Dla usługi Service Bus przydział użycia agregacji jest 5 mld wiadomości miesięcznie.
 
-Gdy firma Microsoft zastrzega sobie prawo do wyłączenia konta klienta, która przekroczyła przydziały jego użycia w danym miesiącu, możemy udostępniają powiadomienia e-mail i wiele próby nawiązania kontaktu klienta przed podjęciem działania. Klienci przekraczających te przydziały nadal są odpowiedzialne za opłat, które przekraczają przydziałów.
+Firma Microsoft zastrzega sobie prawo do wyłączenia konta klienta, która przekroczyła przydziały jego użycia w danym miesiącu, mają być wysyłane powiadomienia e-mail i wiele prób do kontaktowania się z klientem, przed podjęciem działania. Klienci przekraczających te przydziały nadal są odpowiedzialne za opłat, które przekraczają przydziałów.
 
 Podobnie jak w przypadku innych usług Azure Service Bus wymusza zestaw określonych przydziały w celu zapewnienia odpowiedniego wykorzystania zasobów. Można znaleźć więcej szczegółów na temat tych przydziałów w [Omówienie zasobów usługi Service Bus][Quotas overview].
 

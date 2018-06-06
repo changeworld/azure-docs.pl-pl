@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: adhurwit
-ms.openlocfilehash: de8276b22377db37075c6793d0710bb18625446c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3a191c3ee7eea641aab81008a6da801b609fb4c5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802106"
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Użyj usługi Azure Key Vault z aplikacji sieci Web
 
@@ -44,7 +45,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 Aplikacja sieci web, które będą uzyskiwać dostęp do magazynu kluczy jest ten, który jest zarejestrowany w usłudze Azure Active Directory i ma dostęp do Twojego magazynu kluczy. Jeśli nie jest to możliwe, przejdź wstecz, aby zarejestrować aplikację w Samouczek wprowadzający i powtórz kroki opisane na liście.
 
-Ten samouczek jest przeznaczony dla deweloperów sieci web, które podstawy tworzenia aplikacji sieci web na platformie Azure. Aby uzyskać więcej informacji dotyczących aplikacji sieci Web platformy Azure, zobacz [Omówienie aplikacji sieci Web](../app-service/app-service-web-overview.md).
+Ten samouczek jest przeznaczony dla deweloperów sieci web, które podstawy tworzenia aplikacji sieci web na platformie Azure. Aby uzyskać więcej informacji o usłudze Azure Web Apps, zobacz [Przegląd usługi Web Apps](../app-service/app-service-web-overview.md).
 
 ## <a id="packages"></a>Dodawanie pakietów NuGet
 
@@ -260,7 +261,7 @@ Zamiast bezpośrednio przekazywania certyfikatu do usługi sieci Web aplikacji, 
 
 ## <a id="next"></a>Następne kroki
 
-Odwołania dotyczące programowania, zobacz [Azure Key Vault klienta interfejsu API odwołanie w C#](https://msdn.microsoft.com/library/azure/dn903628.aspx).
+Odwołania dotyczące programowania, zobacz [Azure Key Vault klienta interfejsu API odwołanie w C#](https://msdn.microsoft.com/en-us/library/azure/mt430941.aspx).
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png

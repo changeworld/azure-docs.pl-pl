@@ -12,19 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ec5947bc68ba95a7b1e1588c444f4b28a7435f1c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801547"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po zakończeniu instalacji ASDK zadania konfiguracji
-Po [instalowanie ASDK](asdk-install.md), istnieje kilka zalecanych konfiguracji po instalacji można zmienić. 
 
-## <a name="install-azure-stack-powershell"></a>Instalowanie programu Azure Stack PowerShell 
+Po [instalowanie Azure stosu Development Kit (ASDK)](asdk-install.md), trzeba będzie wprowadzić zmiany niektórych zalecaną konfiguracją po instalacji.
+
+## <a name="install-azure-stack-powershell"></a>Instalowanie programu Azure Stack PowerShell
+
 Azure stosu zgodne Azure moduły programu PowerShell są wymagane do pracy z stosu Azure.
 
 Polecenia programu PowerShell dla usługi Azure stosu są instalowane za pośrednictwem galerii programu PowerShell. Aby zarejestrować repozytorium PSGallery, otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
@@ -35,9 +38,9 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
- Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga profilu wersji interfejsu API 2017-03-09-profil, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. 
- 
- Można zainstalować najnowsze modułu Azure PowerShell stosu lub bez łączności z Internetem na komputerze-hoście ASDK:
+Profile w wersji interfejsu API umożliwia Określ stosu Azure zgodne AzureRM modułów.  Profile w wersji interfejsu API umożliwiają zarządzanie różnice wersji platformy Azure i stosu Azure. Profil wersji interfejsu API to zbiór modułów programu AzureRM PowerShell z określonych wersji interfejsu API. **AzureRM.Bootstrapper** moduł, który jest dostępny za pośrednictwem galerii programu PowerShell zawiera polecenia cmdlet programu PowerShell, które są wymagane do pracy z profilami wersji interfejsu API.
+
+Można zainstalować najnowsze modułu Azure PowerShell stosu lub bez łączności z Internetem na komputerze-hoście ASDK:
 
 > [!IMPORTANT]
 > Przed zainstalowaniem wersji wymagane, upewnij się, że możesz [odinstaluj wszelkie istniejące modułów programu Azure PowerShell](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
@@ -45,7 +48,7 @@ Set-PSRepository `
 - **W przypadku połączenia internetowego** z ASDK komputera hosta. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na projektowanie instalacji zestawu:
 
   ``` PowerShell
-  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
+  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
   Install-Module `
     -Name AzureRm.BootStrapper
 
@@ -53,10 +56,11 @@ Set-PSRepository `
   Use-AzureRmProfile `
     -Profile 2017-03-09-profile -Force
 
-  Install-Module `
-    -Name AzureStack `
-    -RequiredVersion 1.2.11
+  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.
+  Install-Module -Name AzureStack -RequiredVersion 1.3.0 
+
   ```
+
   Jeśli instalacja się powiodła, AzureRM i AzureStack moduły są wyświetlane w danych wyjściowych.
 
 - **Bez połączenia z Internetem** z ASDK komputera hosta. W przypadku odłączonych należy najpierw pobrać moduły programu PowerShell na komputerze, na którym ma połączenie z Internetem przy użyciu następujących poleceń programu PowerShell:
@@ -78,11 +82,13 @@ Set-PSRepository `
     -Name AzureStack `
     -Path $Path `
     -Force `
-    -RequiredVersion 1.2.11
+  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.  
+    -RequiredVersion 1.3.0
   ```
+
   Następnie skopiuj pakiety pobrane na komputer ASDK i zarejestrować lokalizację jako repozytorium domyślne i zainstalować moduły AzureRM i AzureStack z tego repozytorium:
 
-    ```PowerShell
+    ```PowerShell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
     $RepoName = "MyNuGetSource"
 
@@ -99,6 +105,7 @@ Set-PSRepository `
     ```
 
 ## <a name="download-the-azure-stack-tools"></a>Pobieranie narzędzia Azure stosu
+
 [Narzędzia AzureStack](https://github.com/Azure/AzureStack-Tools) to repozytorium GitHub obsługującego moduły programu PowerShell do zarządzania i wdrażanie zasobów Azure stosu. Aby uzyskać te narzędzia, Klonuj repozytorium GitHub lub folder AzureStack narzędzia pobierania za pomocą następującego skryptu:
 
   ```PowerShell
@@ -123,7 +130,7 @@ Set-PSRepository `
 ## <a name="validate-the-asdk-installation"></a>Sprawdź poprawność instalacji ASDK
 Aby upewnić się, że wdrożenie ASDK zakończyła się pomyślnie, można użyć polecenia cmdlet Test-AzureStack wykonaj następujące czynności:
 
-1. Zaloguj się jako AzureStack\CloudAdmin na komputerze-hoście ASDK.
+1. Zaloguj się jako AzureStack\AzureStackAdmin na komputerze-hoście ASDK.
 2. Otwórz program PowerShell jako administrator (nie PowerShell ISE).
 3. Uruchom: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
 4. Uruchom: `Test-AzureStack`

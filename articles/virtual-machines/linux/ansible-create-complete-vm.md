@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d3514b57b5dc3541dd0a3c0f584fd689749ada7c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716462"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Utwórz pełną środowiska maszyny wirtualnej systemu Linux na platformie Azure z Ansible
 Ansible umożliwia automatyzację wdrożenia i konfiguracji zasobów w danym środowisku. Ansible służy do zarządzania maszyn wirtualnych (VM) na platformie Azure, takie same jak w przypadku innych zasobów. W tym artykule przedstawiono sposób tworzenia kompletne środowisko systemu Linux i pomocnicze zasoby z Ansible. Możesz też dowiedzieć się, jak [Tworzenie podstawowej maszyny Wirtualnej z Ansible](ansible-create-vm.md).
@@ -37,6 +38,8 @@ Do zarządzania zasobami Azure z Ansible, potrzebne są następujące elementy:
 
 
 ## <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
+Załóżmy Spójrz na każdej części podręcznika dotyczącego Ansible i tworzenie pojedynczych zasobów platformy Azure. Dla pełnej podręcznikowym, zobacz [tej sekcji tego artykułu](#complete-ansible-playbook).
+
 Następujące części podręcznika dotyczącego Ansible tworzy sieć wirtualną o nazwie *myVnet* w *10.0.0.0/16* przestrzeni adresów:
 
 ```yaml
@@ -115,14 +118,14 @@ Ostatnim krokiem jest tworzenie maszyny Wirtualnej i korzystać z zasobów utwor
     vm_size: Standard_DS1_v2
     admin_username: azureuser
     ssh_password_enabled: false
-    ssh_public_keys: 
+    ssh_public_keys:
       - path: /home/azureuser/.ssh/authorized_keys
         key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
     network_interfaces: myNIC
     image:
       offer: CentOS
       publisher: OpenLogic
-      sku: '7.3'
+      sku: '7.5'
       version: latest
 ```
 
@@ -176,18 +179,18 @@ Zebranie tych sekcji, Utwórz podręcznikowym Ansible o nazwie *azure_create_com
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       ssh_password_enabled: false
-      ssh_public_keys: 
+      ssh_public_keys:
         - path: /home/azureuser/.ssh/authorized_keys
           key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
       network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 
-Ansible musi mieć grupę zasobów do wszystkich zasobów do wdrożenia. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/vm#az_vm_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Ansible musi mieć grupę zasobów do wszystkich zasobów do wdrożenia. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

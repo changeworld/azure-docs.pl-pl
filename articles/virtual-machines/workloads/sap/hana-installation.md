@@ -4,28 +4,29 @@ description: Jak zainstalować SAP HANA na SAP HANA na platformie Azure (wystąp
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763457"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować SAP HANA (duże wystąpień) w systemie Azure
 
 Poniżej przedstawiono niektóre ważne definicje należy wiedzieć przed przeczytaniem tego przewodnika. W [omówienie SAP HANA (duże wystąpień) i architektury na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wprowadzono dwóch różnych klas jednostek HANA dużych wystąpienie:
 
-- S72, S72m S144, S144m, S192 i S192m, który nazywamy "Typ klasy I" z jednostki SKU.
-- S384, S384m S384xm, S576m, S768m i S960m, który nazywamy "klasy typu II' SKU.
+- S72, S72m S144, S144m, S192, S192m i S192xm, który nazywamy "Typ klasy I" z jednostki SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m, który nazywamy "klasy typu II' SKU.
 
 Specyfikator klasy będzie można całej dokumentacji wystąpienia dużych HANA ostatecznie odwoływać się do różnych funkcji i wymagań oparte na jednostki SKU HANA dużych wystąpienia.
 

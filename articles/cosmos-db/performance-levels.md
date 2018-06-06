@@ -4,21 +4,18 @@ description: Więcej informacji na temat S1, S2 i S3 poziomy wydajności dostęp
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 7dc21c71-47e2-4e06-aa21-e84af52866f4
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/29/2017
+ms.topic: conceptual
+ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e565f4ee4d25afb29627e6beca99fd2998cd6396
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d1bb7551e6dfb6c42853ab95096f17f5285c69c1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796652"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Wycofanie poziomy wydajności S1, S2 i S3
 
@@ -26,16 +23,15 @@ ms.lasthandoff: 04/06/2018
 > Poziomy wydajności S1, S2 i S3 omówione w tym artykule jest wycofana i nie będą już dostępne dla nowego konta bazy danych Azure rozwiązania Cosmos.
 >
 
-Ten artykuł zawiera omówienie poziomów wydajności S1, S2 i S3 i opisano, jak kolekcje, korzystających z tych poziomów wydajności będą migrowane do kolekcje z jedną partycją w 2017. Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na następujące pytania:
+Ten artykuł zawiera omówienie poziomów wydajności S1, S2 i S3 i opisano, jak kolekcje, korzystających z tych poziomów wydajności mogą być migrowane do jednej kolekcji partycjonowanych. Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na następujące pytania:
 
-- [Dlaczego są wydajności S1, S2 i S3 poziomy wycofana?](#why-retired)
+- [Dlaczego są poziomy wydajności S1, S2 i S3 są wycofana?](#why-retired)
 - [Jak kolekcje z jedną partycją i kolekcji partycjonowanych porównania S1, S2, poziomy wydajności S3?](#compare)
 - [Co należy zrobić w celu zapewnienia nieprzerwanego dostępu do danych?](#uninterrupted-access)
 - [Jak mojej kolekcji ulegnie zmianie po migracji](#collection-change)
 - [Jak Moje rozliczeń ulegnie zmianie po używam I migracji do kolekcje z jedną partycją?](#billing-change)
 - [Co zrobić, jeśli potrzebna jest więcej niż 10 GB przestrzeni dyskowej?](#more-storage-needed)
 - [Czy mogę zmienić między S1, S2 i S3 poziomy wydajności przed planowanej migracji?](#change-before)
-- [Jak wiedzą, gdy został zmigrowany mojej kolekcji?](#when-migrated)
 - [Jak przeprowadzić migrację z S1, S2, S3 poziomów wydajności na kolekcje z jedną partycją samodzielnie?](#migrate-diy)
 - [Jak m wpływ mam EA klienta?](#ea-customer)
 
@@ -54,7 +50,7 @@ W poniższej tabeli porównano opcje przepływność i Magazyn, które muszą by
 |   |Kolekcja podzielonym na partycje|Kolekcja jednej partycji|S1|S2|S3|
 |---|---|---|---|---|---|
 |Maksymalna przepustowość|Nieograniczona liczba|10 K RU/s|250 RU/s|1 K RU/s|2.5 K RU/s|
-|Przepustowość minimalna|2.5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2.5 K RU/s|
+|Przepływność minimalna|2.5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2.5 K RU/s|
 |Maksymalna przestrzeń magazynowa|Nieograniczona liczba|10 GB|10 GB|10 GB|10 GB|
 |Cena (co miesiąc)|Przepływność: $6 / 100 RU/s<br><br>Magazyn: 0,25 USD/GB|Przepływność: $6 / 100 RU/s<br><br>Magazyn: 0,25 USD/GB|$25 USD|$50 USD|$100 USD|
 
@@ -64,25 +60,23 @@ Czy klient EA? Jeśli tak, zobacz [am I wpływ mam EA klienta?](#ea-customer)
 
 ## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Co należy zrobić w celu zapewnienia nieprzerwanego dostępu do danych?
 
-Nothing, DB rozwiązania Cosmos obsługuje migrację dla Ciebie. Jeśli masz kolekcję S1, S2 lub S3 bieżącej kolekcji zostaną zmigrowane do kolekcji jednej partycji w 2017 r. 
+Jeśli masz kolekcję S1, S2 lub S3, należy zmigrować kolekcji do kolekcji jednej partycji programowo [przy użyciu zestawu .NET SDK](#migrate-diy). 
 
 <a name="collection-change"></a>
 
 ## <a name="how-will-my-collection-change-after-the-migration"></a>Jak mojej kolekcji ulegnie zmianie po migracji
 
-Jeśli masz kolekcji S1 zostaną poddane migracji do kolekcji jednej partycji o 400 RU/s przepustowości. 400 RU/s jest najniższa przepływność dostępne kolekcje z jedną partycją. Jednak koszt 400 RU/s w kolekcji jedną partycją wynosi około takie same jak zostały płatności z kolekcji S1 i 250 RU/s –, więc nie płatność za bardzo 150 RU/s dostępne.
+Jeśli masz S1 kolekcji można migrować je do kolekcji jednej partycji o 400 RU/s przepustowości. 400 RU/s jest najniższa przepływność dostępne kolekcje z jedną partycją. Jednak koszt 400 RU/s w kolekcji jedną partycją wynosi około takie same jak zostały płatności z kolekcji S1 i 250 RU/s –, więc nie płatność za bardzo 150 RU/s dostępne.
 
-Jeśli masz kolekcji S2 zostaną poddane migracji do kolekcji jednej partycji z 1 K RU/s. Zostanie wyświetlone żadne zmiany do poziomu przepływności.
+Jeśli masz S2 kolekcji można migrować je do Kolekcja jednej partycji o 1 K RU/s. Zostanie wyświetlone żadne zmiany do poziomu przepływności.
 
-Jeśli masz kolekcji S3 zostaną poddane migracji do kolekcji jednej partycji z 2,5 K RU/s. Zostanie wyświetlone żadne zmiany do poziomu przepływności.
+Jeśli masz kolekcji S3, można migrować je do kolekcji jednej partycji z 2,5 K RU/s. Zostanie wyświetlone żadne zmiany do poziomu przepływności.
 
-W każdym z tych przypadków po przeprowadzeniu migracji kolekcji, można dostosować poziom przepływności lub go skalować w górę i w dół w celu zapewnienia małych opóźnieniach dostępu użytkowników. Aby zmienić poziom przepływności po migracji ma kolekcji, po prostu otwórz konto DB rozwiązania Cosmos w portalu Azure, kliknij skali, wybierz kolekcję, a następnie Dostosuj poziom przepływności, jak pokazano na poniższym zrzucie ekranu:
-
-![Jak skalować przepływność w portalu Azure](./media/performance-levels/portal-scale-throughput.png)
+W każdym z tych przypadków po przeprowadzeniu migracji kolekcji, można dostosować poziom przepływności lub go skalować w górę i w dół w celu zapewnienia małych opóźnieniach dostępu użytkowników. 
 
 <a name="billing-change"></a>
 
-## <a name="how-will-my-billing-change-after-im-migrated-to-the-single-partition-collections"></a>Jak Moje rozliczeń ulegnie zmianie po używam I migracji do kolekcje z jedną partycją?
+## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Jak Moje rozliczeń ulegnie zmianie po migracji I Aby kolekcje z jedną partycją?
 
 Wykonując zawiera 10 kolekcji S1, 1 GB pamięci masowej dla każdego regionu nam wschodnie i migracji kolekcjach S1 10 do 10 kolekcje z jedną partycją na 400 RU/s (minimalny poziom). Jeśli zachowasz 10 kolekcje z jedną partycją pełny miesiąc, rachunku będzie wyglądać następująco:
 
@@ -92,55 +86,23 @@ Wykonując zawiera 10 kolekcji S1, 1 GB pamięci masowej dla każdego regionu na
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Co zrobić, jeśli potrzebna jest więcej niż 10 GB przestrzeni dyskowej?
 
-Czy masz kolekcję o poziomie wydajności S1, S2 lub S3 lub mieć Kolekcja jednej partycji, które mają 10 GB dostępnego miejsca, służy narzędzie do migracji danych DB rozwiązania Cosmos do migracji danych do kolekcji partycjonowanych z niemal nieograniczonego magazynu. Aby uzyskać informacje o zaletach kolekcję partycjonowaną, zobacz [dzielenia na partycje i skalowania w usłudze Azure DB rozwiązania Cosmos](sql-api-partition-data.md). 
+Określa, czy masz Kolekcja o poziomie wydajności S1, S2 lub S3 lub mieć Kolekcja jednej partycji, które mają 10 GB miejsca do magazynowania dostępne, można użyć narzędzia migracji danych DB rozwiązania Cosmos Azure do migracji danych do kolekcji partycjonowanych z niemal nieograniczony magazyn. Aby uzyskać informacje o zaletach kolekcję partycjonowaną, zobacz [dzielenia na partycje i skalowania w usłudze Azure DB rozwiązania Cosmos](sql-api-partition-data.md). 
 
 <a name="change-before"></a>
 
 ## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Czy mogę zmienić między S1, S2 i S3 poziomy wydajności przed planowanej migracji?
 
-Istniejące konta tylko z wydajnością S1, S2 i S3 będzie można zmienić i zmieniać warstwy poziomu wydajności za pośrednictwem portalu lub programowo. W przypadku zmiany z S1, S3 lub S3 do kolekcji jednej partycji nie może zwracać na poziomie wydajności S1, S2 lub S3.
-
-<a name="when-migrated"></a>
-
-## <a name="how-will-i-know-when-my-collection-has-migrated"></a>Jak wiedzą, gdy został zmigrowany mojej kolekcji?
-
-Migracja wystąpią na pod 2017 r. Jeśli masz kolekcję wykorzystującą S1 poziomy wydajności S2 lub S3, zespół DB rozwiązania Cosmos skontaktuje się z Tobą za pośrednictwem poczty e-mail przed dokonaniem migracji. Po zakończeniu migracji portalu Azure zostaną wyświetlone kolekcji używany cen warstwy standardowa.
-
-![Jak potwierdzić kolekcji został zmigrowany do warstwy cenowej standardowa.](./media/performance-levels/portal-standard-pricing-applied.png)
+Istniejące konta tylko z S1, S2 i S3 wydajności można zmienić i programowo zmienić warstwy poziomu wydajności [przy użyciu zestawu .NET SDK](#migrate-diy). W przypadku zmiany z S1, S3 lub S3 do kolekcji jednej partycji nie może zwracać na poziomie wydajności S1, S2 lub S3.
 
 <a name="migrate-diy"></a>
 
 ## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Jak przeprowadzić migrację z S1, S2, S3 poziomów wydajności na kolekcje z jedną partycją samodzielnie?
 
-Można przeprowadzić migrację z poziomów wydajności S1, S2 i S3 do kolekcje z jedną partycją przy użyciu portalu Azure lub programowo. Można to zrobić na własną przed planowanej migracji, aby korzystać z przepustowości elastyczne opcje dostępne z kolekcje z jedną partycją lub będziemy migrować kolekcji dla Ciebie w 2017 r.
+Można migrować z poziomów wydajności S1, S2 i S3 do kolekcje z jedną partycją programowo [przy użyciu zestawu .NET SDK](#migrate-diy). Można to zrobić na własną przed planowanej migracji, aby korzystać z przepustowości elastyczne opcje dostępne z kolekcje z jedną partycją.
 
-**Aby przeprowadzić migrację do kolekcje z jedną partycją przy użyciu portalu Azure**
+### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>Migrowanie do kolekcje z jedną partycją przy użyciu zestawu .NET SDK
 
-1. W [ **portalu Azure**](https://portal.azure.com), kliknij przycisk **bazy danych Azure rozwiązania Cosmos**, następnie wybierz konto bazy danych rozwiązania Cosmos do zmodyfikowania. 
- 
-    Jeśli **bazy danych Azure rozwiązania Cosmos** jest nie na pasku przechodzenia kliknij >, przewiń do **baz danych**, wybierz pozycję **bazy danych Azure rozwiązania Cosmos**, a następnie wybierz konto.  
-
-2. W menu zasobów w obszarze **kontenery**, kliknij przycisk **skali**, wybierz kolekcję, aby zmodyfikować z listy rozwijanej, a następnie kliknij przycisk **warstwy cenowej**. Konta przy użyciu wstępnie zdefiniowanych przepływności mają warstwy cenowej S1, S2 lub S3.  W **wybierz warstwę cenową** kliknij przycisk **standardowe** Zmień przepływności zdefiniowane przez użytkownika, a następnie kliknij przycisk **wybierz** można zapisać zmiany.
-
-    ![Zrzut ekranu przedstawiający miejsce zmienić wartość przepływności strony ustawień](./media/performance-levels/change-performance-set-thoughput.png)
-
-3. W **skali** strony, **warstwy cenowej** jest zmieniana na **standardowe** i **przepływności (RU/s)** domyślnie wyświetlane jest okno wartość 400. Ustaw przepustowość w przedziale od 400 do 10 000 [jednostek żądania](request-units.md)/second (RU/s). **Szacowana kwota rachunku miesięczne** w dolnej części strony Aktualizacje automatyczne oszacować miesięczny koszt. 
-
-    >[!IMPORTANT] 
-    > Po zapisaniu zmian i przenieść warstwa cenowa standardowa, nie można wycofać na poziomie wydajności S1, S2 lub S3.
-
-4. Kliknij przycisk **zapisać** Aby zapisać zmiany.
-
-    Jeśli okaże się, że potrzebujesz więcej przepływności (większe niż 10 000 RU/s) lub więcej pamięci masowej (większe niż 10 GB) można utworzyć kolekcję partycjonowaną. Aby przeprowadzić migrację kolekcji jednej partycji do kolekcji podzielone na partycje, zobacz [migracji z jednej partycji do kolekcji partycjonowanych](sql-api-partition-data.md#migrating-from-single-partition).
-
-    > [!NOTE]
-    > Zmiana na standardowe S1, S2 lub S3 może zająć do dwóch minut.
-    > 
-    > 
-
-**Aby przeprowadzić migrację do kolekcje z jedną partycją przy użyciu zestawu .NET SDK**
-
-Inną opcją w przypadku zmiany poziomów wydajności z kolekcji jest za pomocą zestawów SDK z bazy danych Azure rozwiązania Cosmos. W tej sekcji opisano tylko zmiana wydajności kolekcji poziomu przy użyciu [interfejs API .NET SQL](sql-api-sdk-dotnet.md), ale proces jest podobny do naszych innych zestawów SDK.
+W tej sekcji opisano tylko zmiana wydajności kolekcji poziomu przy użyciu [interfejs API .NET SQL](sql-api-sdk-dotnet.md), ale proces jest podobny do naszych innych zestawów SDK.
 
 Oto fragment kodu dla zmiana przepływność kolekcji do 5000 jednostek żądań na sekundę:
     

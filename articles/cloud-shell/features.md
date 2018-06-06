@@ -1,12 +1,12 @@
 ---
-title: "Bash w funkcji powłoki chmury Azure | Dokumentacja firmy Microsoft"
-description: "Omówienie funkcji Bash w powłoce chmury Azure"
+title: Bash w funkcji powłoki chmury Azure | Dokumentacja firmy Microsoft
+description: Omówienie funkcji Bash w powłoce chmury Azure
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 24f656555b9390bb57b9ca511b86c926e27ebdb6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3e71f2307ab68b2bc4694c7782f7a0f0d43b159b
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757046"
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Funkcje i narzędzia do Bash w powłoce chmury Azure
 
@@ -48,9 +49,9 @@ Pliki poza `$Home` i stan maszyny nie są zachowywane między sesjami.
 
 [Dowiedz się więcej o plikach utrwalanie w Bash w powłoce chmury.](persisting-shell-storage.md)
 
-### <a name="deep-integration-with-open-source-tooling"></a>Ścisła integracja z narzędziami open source
+### <a name="integration-with-open-source-tooling"></a>Integracja z narzędziami open source
 
-Bash w chmurze powłoki obejmuje wstępnie skonfigurowane uwierzytelnianie open source narzędzi, takich jak Terraform i Ansible. Wypróbuj ją z wskazówki przykład.
+Bash w chmurze powłoki obejmuje wstępnie skonfigurowane uwierzytelnianie open source narzędzi, takich jak Terraform, Ansible i Chef InSpec. Wypróbuj ją z wskazówki przykład.
 
 ## <a name="tools"></a>Narzędzia
 
@@ -61,9 +62,9 @@ Bash w chmurze powłoki obejmuje wstępnie skonfigurowane uwierzytelnianie open 
 |Edytory tekstów           |vim<br> nano<br> emacs:       |
 |Kontrola źródła         |git                    |
 |Narzędzi do kompilacji            |Wprowadź<br> maven<br> npm<br> PIP         |
-|Kontenery             |[Interfejs wiersza polecenia docker](https://github.com/docker/cli)/[Docker maszyny](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [INTERFEJS WIERSZA POLECENIA DC/OS](https://github.com/dcos/dcos-cli)         |
-|Bazy danych              |Klienta MySQL<br> PostgreSql client<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Inne                  |iPython klienta<br> [Chmura Foundry interfejsu wiersza polecenia](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)| 
+|Containers             |[Interfejs wiersza polecenia docker](https://github.com/docker/cli)/[Docker maszyny](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [INTERFEJS WIERSZA POLECENIA DC/OS](https://github.com/dcos/dcos-cli)         |
+|Bazy danych              |Klienta MySQL<br> PostgreSql klienta<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Inne                  |iPython klienta<br> [Chmura Foundry interfejsu wiersza polecenia](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)| 
 
 ## <a name="language-support"></a>Obsługa języków
 
@@ -73,7 +74,7 @@ Bash w chmurze powłoki obejmuje wstępnie skonfigurowane uwierzytelnianie open 
 |Przejdź         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.0.1](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.0.2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 i 3.5 (ustawienie domyślne)|
 
 ## <a name="next-steps"></a>Kolejne kroki

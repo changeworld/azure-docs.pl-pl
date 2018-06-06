@@ -1,8 +1,8 @@
 ---
-title: "Skalowanie w górę aplikacji na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skalować aplikację w usłudze Azure App Service, aby dodać pojemności i funkcje."
+title: Skalowanie w górę aplikacji na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skalować aplikację w usłudze Azure App Service, aby dodać pojemności i funkcje.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c07105a34f6778fcd62f6f1bc1d3930f6a8bf173
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714939"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Skalowanie w górę aplikacji na platformie Azure
 
@@ -50,7 +51,7 @@ Aby uzyskać informacje o cenach i funkcje poszczególnych planów usługi aplik
 2. Na stronie aplikacji z usługi aplikacji, kliknij przycisk **wszystkie ustawienia**, a następnie kliknij przycisk **Skaluj w górę**.
    
     ![Przejdź do skalować aplikację platformy Azure.][ChooseWHP]
-3. Wybierz warstwę, a następnie kliknij przycisk **wybierz**.
+3. Wybierz warstwę, a następnie kliknij przycisk **Zastosuj**.
    
     **Powiadomienia** kartę będzie flash zielona **Powodzenie** po zakończeniu operacji.
 

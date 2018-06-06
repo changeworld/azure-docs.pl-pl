@@ -8,43 +8,35 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 7d05d3aa94fffb13a96fc9074d55d8fa67cadb04
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763123"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące bazy danych platformy Azure dla programu MySQL
 W poniższych sekcjach opisano pojemności, magazynu aparat obsługę, uprawnień, obsługi instrukcji manipulacji danych oraz limity funkcjonalności usługi bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
 
-## <a name="service-tier-maximums"></a>Maksymalne wartości warstwy usługi
-Bazy danych platformy Azure dla programu MySQL ma wiele warstw do wyboru podczas tworzenia serwera. Aby uzyskać więcej informacji, zobacz [bazy danych Azure dla programu MySQL warstw cenowych](concepts-pricing-tiers.md).  
+## <a name="maximum-connections"></a>Maksymalna liczba połączeń
+Maksymalna liczba połączeń na warstwa cenowa i vCores są następujące: 
 
-Istnieje maksymalna liczba połączeń, obliczeniowe jednostek i magazynu w poszczególnych warstwach usług w następujący sposób: 
+|**Warstwa cenowa**|**vCore(s)**| **Maksymalna liczba połączeń**|
+|---|---|---|
+|Podstawowa| 1| 50|
+|Podstawowa| 2| 100|
+|Ogólne zastosowanie| 2| 300|
+|Ogólne zastosowanie| 4| 625|
+|Ogólne zastosowanie| 8| 1250|
+|Ogólne zastosowanie| 16| 2500|
+|Ogólne zastosowanie| 32| 5000|
+|Pamięć| 2| 600|
+|Pamięć| 4| 1250|
+|Pamięć| 8| 2500|
+|Pamięć| 16| 5000|
 
-|**Warstwa cenowa**| **Generowanie obliczeniowe**|**vCore(s)**| **Maksymalna liczba połączeń**|
-|---|---|---|---|
-|Podstawowa| 4. generacja| 1| 50|
-|Podstawowa| 4. generacja| 2| 100|
-|Podstawowa| 5. generacja| 1| 50|
-|Podstawowa| 5. generacja| 2| 100|
-|Ogólne zastosowanie| 4. generacja| 2| 300|
-|Ogólne zastosowanie| 4. generacja| 4| 625|
-|Ogólne zastosowanie| 4. generacja| 8| 1250|
-|Ogólne zastosowanie| 4. generacja| 16| 2500|
-|Ogólne zastosowanie| 4. generacja| 32| 5000|
-|Ogólne zastosowanie| 5. generacja| 2| 300|
-|Ogólne zastosowanie| 5. generacja| 4| 625|
-|Ogólne zastosowanie| 5. generacja| 8| 1250|
-|Ogólne zastosowanie| 5. generacja| 16| 2500|
-|Ogólne zastosowanie| 5. generacja| 32| 5000|
-|Pamięć| 5. generacja| 2| 600|
-|Pamięć| 5. generacja| 4| 1250|
-|Pamięć| 5. generacja| 8| 2500|
-|Pamięć| 5. generacja| 16| 5000|
-
-Po osiągnięciu zbyt wiele połączeń, może zostać wyświetlony następujący błąd:
+Gdy połączenia przekracza limit, może zostać wyświetlony następujący błąd:
 > Błąd 1040 (08004): Zbyt wiele połączeń
 
 ## <a name="storage-engine-support"></a>Obsługa aparatu magazynu
@@ -85,8 +77,6 @@ Po osiągnięciu zbyt wiele połączeń, może zostać wyświetlony następując
 ### <a name="point-in-time-restore"></a>Przywracanie do punktu w czasie
 - Przywracanie do warstwy z innej usługi i/lub jednostki obliczeniowe i rozmiaru magazynu nie jest dozwolone.
 - Przywracanie usuniętych serwera nie jest obsługiwane.
-
-## <a name="functional-limitations"></a>Ograniczenia funkcjonalności
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
 - Dynamicznie przenoszenie serwerów wstępnie utworzone w subskrypcji i grupy zasobów nie jest obecnie obsługiwane.

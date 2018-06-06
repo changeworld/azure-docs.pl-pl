@@ -7,14 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801657"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyki stosu Azure
 
@@ -140,7 +141,7 @@ if($s)
 
 - Jeśli **FromDate** i **ToDate** parametry nie są określone, dzienniki są domyślnie zbierane przez ostatnie cztery godziny.
 - Można użyć **TimeOutInMinutes** parametr, aby ustawić limit czasu zbierania dzienników. Domyślnie jest ustawiona na 150 (2,5 godzin).
-
+- W wersji 1805 i nowszych zbierania dzienników plik zrzutu jest domyślnie wyłączona. Aby go włączyć, należy użyć **IncludeDumpFile** przełącznik parametru. 
 - Obecnie można używać **FilterByRole** parametru do kolekcji filtrów dziennika przez następujące role:
 
    |   |   |   |
@@ -150,7 +151,7 @@ if($s)
    | ACSFabric              | Domena                           | NonPrivilegedAppGateway    |
    | ACSFrontEnd            | ECE                              | DOSTAWCA NRP                        |
    | ACSMetrics             | ExternalDNS                      | Producent OEM                        |
-   | ACSMigrationService    | Sieć szkieletowa                           | ŚRODOWISKO PXE                        |
+   | ACSMigrationService    | Fabric                           | ŚRODOWISKO PXE                        |
    | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
    | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
    | ACSTableMaster         | FRP                              | SLB                        |   
@@ -184,7 +185,7 @@ Aby dowiedzieć się więcej na temat skryptów środowiska PowerShell ERCS_Azur
 * Polecenie wymaga pewnego czasu do uruchomienia w oparciu o role, które są zbierane w dziennikach. Czynników także czas trwania zbierania dzienników i liczby węzłów w środowisku Azure stosu.
 * Jak rejestrować uruchamia kolekcji, sprawdź nowy folder utworzony w **OutputSharePath** określony w poleceniu parametru.
 * Każda rola ma jej dzienników wewnątrz zip poszczególnych plików. W zależności od rozmiaru zebranych dzienniki rola może być jej dzienników podzielony na wiele plików zip. Dla roli Jeśli chcesz, aby rozpakować w celu pojedynczy folder plików dziennika, użycie narzędzia, które można rozpakować zbiorczo (na przykład 7zip). Zaznacz wszystkie pliki zip dla roli, a następnie wybierz **wyodrębnić tutaj**. To unzips wszystkich plików dziennika dla tej roli w jednym folderze scalone.
-* Plik o nazwie **Get AzureStackLog_Output.log** również jest tworzony w folderze, który zawiera pliki dziennika zip. Ten plik znajduje się w dzienniku danych wyjściowych polecenia, które mogą służyć do rozwiązywania problemów podczas zbierania dzienników.
+* Plik o nazwie **Get AzureStackLog_Output.log** również jest tworzony w folderze, który zawiera pliki dziennika zip. Ten plik znajduje się w dzienniku danych wyjściowych polecenia, które mogą służyć do rozwiązywania problemów podczas zbierania dzienników. Czasami plik dziennika zawiera `PS>TerminatingError` wpisów, które można bezpiecznie zignorować, chyba że brakuje plików dziennika w oczekiwanym po dziennika uruchamia kolekcji.
 * Do sprawdzania, czy określony błąd, dzienniki mogą być wymagane z więcej niż jednego składnika.
     -   W dziennikach zdarzeń dla wszystkich maszyn wirtualnych infrastruktury i systemu są gromadzone w *VirtualMachines* roli.
     -   System i dzienniki zdarzeń, dla wszystkich hostów są gromadzone w *BareMetal* roli.

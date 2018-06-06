@@ -2,41 +2,42 @@
 title: Usługa Azure Stream Analytics na krawędzi IoT (wersja zapoznawcza)
 description: Tworzenie zadań krawędzi w Azure Stream Analytics i wdrażać je dla urządzenia uruchomiona Azure IoT krawędzi.
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: mamccrea
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 9a9608825cf041007c000729becb34e9a3063f92
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ce0420dde5bf232fe8067a3b14814f14380602e
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802531"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Usługa Azure Stream Analytics na krawędzi IoT (wersja zapoznawcza)
 
 > [!IMPORTANT]
-> Ta funkcja jest dostępna w wersji zapoznawczej. Nie zaleca się użycie w środowisku produkcyjnym.
+> Ta funkcja jest w wersji zapoznawczej i nie jest zalecane używanie w środowisku produkcyjnym.
  
-Azure Stream Analytics (ASA) na krawędzi IoT umożliwia deweloperom wdrażanie niemal czasie rzeczywistym bliżej analitycznych analizy urządzenia IoT, tak aby ich odblokowania pełną wartość dane generowane przez urządzenie. Przeznaczone dla małych opóźnieniach, odporności, efektywne wykorzystanie przepustowości i zgodności, przedsiębiorstwa mogą teraz wdrażać logiki kontroli bliski operacji przemysłowych oraz uzupełnienia analizy danych Big Data w chmurze.  
-Usługa Azure Stream Analytics na krawędzi IoT jest uruchamiany w ramach [Azure IoT krawędzi](https://azure.microsoft.com/campaigns/iot-edge/) framework. Gdy zadanie jest tworzony w ASA, deploym zadania i zarządzać nimi ASA przy użyciu Centrum IoT.
-Ta funkcja jest dostępna w wersji zapoznawczej, jeśli masz pytania lub opinie możesz użyć [badanie](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) do kontaktowania się z zespołu produktu. 
+Azure Stream Analytics (ASA) na krawędzi IoT umożliwia deweloperom wdrażanie niemal czasie rzeczywistym bliżej analitycznych analizy urządzenia IoT, tak aby ich odblokowania pełną wartość dane generowane przez urządzenie. Usługa Azure Stream Analytics jest przeznaczona dla małych opóźnieniach, odporności, efektywne wykorzystanie przepustowości i zgodności. Przedsiębiorstwa teraz można wdrożyć logikę kontroli bliski operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
+
+Usługa Azure Stream Analytics na krawędzi IoT jest uruchamiany w ramach [Azure IoT krawędzi](https://azure.microsoft.com/campaigns/iot-edge/) framework. Po utworzeniu zadania w ASA, można wdrażać i zarządzać nimi ASA zadań przy użyciu Centrum IoT. Ta funkcja jest dostępna w wersji zapoznawczej. Jeśli masz pytania lub opinie, możesz użyć [badanie](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) do kontaktowania się z zespołu produktu. 
 
 ## <a name="scenarios"></a>Scenariusze
 ![Diagram ogólny](media/stream-analytics-edge/ASAedge_highlevel.png)
 
 * **Polecenie małe opóźnienia i kontroli**: na przykład produkcyjnym bezpieczeństwa systemów musi odpowiadać na danych operacyjnych z bardzo niskim opóźnieniem. Z ASA na krawędzi IoT można przeanalizować czujnik dane prawie w czasie rzeczywistym i wydania poleceń podczas wykrywania anomalii, aby zatrzymać maszynę lub wyzwoliły alertów.
 *   **Ograniczona łączność z chmurą**: misji ważnych systemów, takich jak urządzenia zdalnego wyszukiwania, połączonych zbiorników lub platformy przechodzenia na wyższy poziom, należy do analizowania i reagowania na danych, nawet wtedy, gdy łączność chmury jest przerywana. ASA logika przesyłania strumieniowego działa niezależnie od łączność sieciową i są dostępne, co możesz wysłać do chmury dla dalszego przetwarzania lub magazynu.
-* **Ograniczona przepustowość**: ilość danych utworzone przez aparaty jet lub połączonych samochodów może być taki duży, że dane muszą być filtrowane lub wstępnie przetworzyć przed jej wysłaniem do chmury. Przy użyciu ASA, możesz filtrować i agregowanie danych, które muszą być wysyłane do chmury.
+* **Ograniczona przepustowość**: ilość danych utworzone przez aparaty jet lub połączonych samochodów może być taki duży, że dane muszą być filtrowane lub wstępnie przetworzyć przed jej wysłaniem do chmury. Przy użyciu ASA, możesz filtrować i agregowanie danych, który ma być wysyłane do chmury.
 * **Zgodność**: zgodność z przepisami może wymagać określonych danych lokalnie anonimowe lub agregowana przed wysłaniem do chmury.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Krawędzi zadania usługi analiza strumienia Azure
 ### <a name="what-is-an-edge-job"></a>Co to jest zadanie "krawędzi"?
 
 Uruchamianie zadań krawędzi ASA modułów w [środowiska uruchomieniowego Azure IoT krawędzi](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works). Składają się z dwóch części:
-1.  Części chmury, która jest odpowiedzialna za definicji zadania: użytkownicy definiować dane wejściowe, dane wyjściowe, zapytań i innych ustawień (zdarzenia poza kolejnością itp.) w chmurze.
+1.  Części chmury, która jest odpowiedzialna za definicji zadania: użytkownicy definiować danych wejściowych, wyjściowych zapytania i innych ustawień (zdarzenia poza kolejnością itp.) w chmurze.
 2.  ASA na krawędzi IoT moduł, który działa lokalnie. Zawiera aparat złożonych przetwarzania zdarzeń ASA i odbiera definicji zadania z chmury. 
 
 ASA używa Centrum IoT, aby przeprowadzić wdrożenie zadania krawędzi urządzenia. Więcej informacji na temat [krawędzi IoT wdrożenia są widoczne w tym miejscu](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -48,16 +49,21 @@ ASA używa Centrum IoT, aby przeprowadzić wdrożenie zadania krawędzi urządze
 Ogólne kroki opisane w poniższej tabeli. W poniższych sekcjach podano więcej szczegółów.
 |      |Krok   | Miejsce     | Uwagi   |
 | ---   | ---   | ---       |  ---      |
-| 1   | **Utwórz zadanie krawędzi ASA**   | Azure Portal      |  Utwórz nowe zadanie, wybierz opcję **krawędzi** jako **środowisko macierzyste**. <br> Te zadania są tworzone zarządzane z chmury, a następnie uruchom na urządzenia IoT krawędzi.     |
-| 2   | **Tworzenie kontenera magazynu**   | Azure Portal       | Kontenery magazynu są używane do zapisać definicję zadania, w którym są one dostępne przez urządzenia IoT. <br>  Można ponownie użyć dowolnego istniejącego kontenera magazynu.     |
-| 3   | **Konfigurowanie środowiska krawędzi IoT na Twoje urządzenia**   | Urządzenia      | Instrukcje dotyczące [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) lub [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
+| 1   | **Tworzenie kontenera magazynu**   | Azure Portal       | Kontenery magazynu są używane do zapisać definicję zadania, w którym są one dostępne przez urządzenia IoT. <br>  Można ponownie użyć dowolnego istniejącego kontenera magazynu.     |
+| 2   | **Utwórz zadanie krawędzi ASA**   | Azure Portal      |  Utwórz nowe zadanie, wybierz opcję **krawędzi** jako **środowisko macierzyste**. <br> Te zadania są tworzone zarządzane z chmury, a następnie uruchom na urządzenia IoT krawędzi.     |
+| 3   | **Konfiguracji środowiska krawędzi IoT na Twoje urządzenia**   | Urządzenia      | Instrukcje dotyczące [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) lub [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
 | 4   | **Wdrażanie ASA na Twoje urządzenia IoT krawędzi**   | Azure Portal      |  ASA definicji zadania są eksportowane do kontenera magazynu utworzony wcześniej.       |
 Możesz wykonać [tego samouczka krok po kroku](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) do wdrożenia Twoja pierwsza Praca ASA na krawędzi IoT. Poniższe wideo należy pomaga w zrozumieniu procesu Uruchom zadanie usługi Stream Analytics urządzenia IoT:  
 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
 
-
+#### <a name="create-a-storage-container"></a>Tworzenie kontenera magazynu
+Kontener magazynu jest wymagana w celu eksportowania zapytań ASA skompilowany i konfiguracji zadań. Służy do konfigurowania obrazów ASA Docker z określonego zapytania. 
+1. Postępuj zgodnie z [tych instrukcji](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) można utworzyć konta magazynu z portalu Azure. Można zachować wszystkie domyślne opcje do tego konta za pomocą ASA.
+2. W nowo utworzone konto magazynu należy utworzyć kontener magazynu obiektów blob:
+    1. Polecenie **obiekty BLOB**, następnie **+ kontener**. 
+    2. Wprowadź nazwę i zachować kontenera jako **prywatnej**.
 
 #### <a name="create-an-asa-edge-job"></a>Utwórz zadanie krawędzi ASA
 > [!Note]
@@ -71,17 +77,11 @@ Możesz wykonać [tego samouczka krok po kroku](https://docs.microsoft.com/azure
     2. Definiowanie danych referencyjnych (opcjonalnie).
     3. **Zdefiniuj strumieni wyjściowych**. Zdefiniuj jeden lub kilka strumieni danych wyjściowych dla zadania. 
     4. **Zdefiniuj zapytanie o**. Zdefiniuj kwerendę ASA w chmurze za pomocą wbudowanego edytora. Kompilator automatycznie sprawdza, czy składnia włączone ASA Edge. Można przetestować zapytanie to przekazywania przykładowych danych. 
-4. Ustawienia opcjonalne
+4. Ustaw informacje o kontenerze magazynu **ustawienia IoT Edge** menu.
+5. Ustawienia opcjonalne
     1. **Kolejność zdarzeń**. Poza kolejnością zasadę można skonfigurować w portalu. Dokumentacja jest dostępna [tutaj](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
     2. **Ustawienia regionalne**. Określanie formatu internalization.
 
-
-#### <a name="create-a-storage-container"></a>Tworzenie kontenera magazynu
-Kontener magazynu jest wymagana w celu eksportowania zapytań ASA skompilowany i konfiguracji zadań. Służy do konfigurowania obrazów ASA Docker z określonego zapytania. 
-1. Postępuj zgodnie z [tych instrukcji](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) można utworzyć konta magazynu z portalu Azure. Można zachować wszystkie domyślne opcje do tego konta za pomocą ASA.
-2. W nowo utworzone konto magazynu należy utworzyć kontener magazynu obiektów blob:
-    1. Kliknij pozycję "Blob", następnie "+ kontener". 
-    2. Wprowadź nazwę i zachować kontenera jako "Private"
 
 
 > [!Note]
@@ -91,23 +91,23 @@ Kontener magazynu jest wymagana w celu eksportowania zapytań ASA skompilowany i
 #### <a name="set-up-your-iot-edge-environment-on-your-devices"></a>Konfigurowanie środowiska krawędzi IoT na Twoje urządzenia
 Krawędź zadań można wdrożyć na urządzeniach z systemem Azure IoT krawędzi.
 W tym celu należy wykonać następujące kroki:
-- Tworzenie Centrum Iot;
-- Instalowanie środowiska uruchomieniowego Docker i krawędzi IoT na urządzeniach krawędzi;
-- Ustawić urządzenia jako "Urządzenia IoT krawędzi" w Centrum IoT.
+- Tworzenie Centrum Iot.
+- Na urządzeniach krawędzi, należy zainstalować środowisko uruchomieniowe Docker i krawędzi IoT.
+- Skonfiguruj urządzenia jako **urządzenia IoT brzegowe** w Centrum IoT.
 
 Te kroki opisano w dokumentacji krawędzi IoT [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) lub [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).  
 
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Wdrażanie ASA Twojego urządzenia IoT krawędzi
 ##### <a name="add-asa-to-your-deployment"></a>Dodaj ASA do wdrożenia
-- W portalu Azure Otwórz Centrum IoT, przejdź do Eksploratora krawędzi IoT i otwarcie bloku z urządzenia.
-- Wybierz **ustawić modułów**, a następnie wybierz pozycję **Import Azure usługi IoT krawędzi Module**.
-- Wybierz subskrypcję i zadania krawędzi ASA, utworzony. Następnie wybierz swoje konto magazynu. Kliknij przycisk Zapisz.
+- W portalu Azure Otwórz Centrum IoT, przejdź do **krawędzi IoT** i kliknij na urządzeniu ma być docelowa dla tego wdrożenia.
+- Wybierz **ustawić modułów**, a następnie wybierz pozycję **+ Dodaj** i wybierz polecenie **Azure Stream Analytics modułu**.
+- Wybierz subskrypcję i zadania krawędzi ASA, utworzony. Kliknij przycisk Zapisz.
 ![Dodaj moduł ASA we wdrożeniu](media/stream-analytics-edge/set_module.png)
 
 
 > [!Note]
-> W tym kroku ASA żąda dostępu do kontenera wybranego magazynu, a następnie tworzy folder o nazwie "EdgeJobs". Dla każdego wdrożenia nowego podfolderu jest tworzony w folderze "EdgeJobs".
+> W tym kroku ASA tworzy folder o nazwie "EdgeJobs" w kontenerze magazynu (jeśli go jeszcze nie istnieje). Dla każdego wdrożenia nowego podfolderu jest tworzony w folderze "EdgeJobs".
 > Aby można było wdrożyć swoją pracę na urządzeniach krawędzi, ASA tworzy sygnatury dostępu współdzielonego (SAS) dla pliku definicji zadania. Klucz sygnatury dostępu Współdzielonego bezpiecznie są przesyłane do urządzenia IoT krawędzi przy użyciu podwójnego urządzenia. Po upływie tego klucza jest trzech lat od dnia jej tworzenia.
 
 
@@ -140,7 +140,7 @@ W tym przykładzie zdefiniowano następujących tras:
 
 ## <a name="technical-information"></a>Informacje techniczne
 ### <a name="current-limitations-for-edge-jobs-compared-to-cloud-jobs"></a>Bieżących ograniczeń dotyczących zadań krawędzi w porównaniu do zadań chmury
-Celem jest parzystość platformy krawędzi zadań i zadań w chmurze. Większość funkcji naszych język zapytań SQL są już obsługiwane.
+Celem jest parzystość platformy krawędzi zadań i zadań w chmurze. Większość funkcji języka zapytań SQL są już obsługiwane.
 Jednak następujące funkcje nie są jeszcze obsługiwane krawędzi zadań:
 * Funkcje zdefiniowane przez użytkownika (UDF) i agregacje zdefiniowane przez użytkownika (UDA).
 * Funkcje uczenia Maszynowego Azure.
@@ -161,11 +161,11 @@ Jednak następujące funkcje nie są jeszcze obsługiwane krawędzi zadań:
 
 
 ### <a name="runtime-and-hardware-requirements"></a>Wymagania dotyczące sprzętu i środowiska wykonawczego
-Aby można było uruchomić ASA na krawędzi IoT, potrzebujesz urządzeń, które można uruchomić [Azure IoT krawędzi](https://azure.microsoft.com/campaigns/iot-edge/). 
+Aby uruchomić ASA na krawędzi IoT, potrzebujesz urządzeń, które można uruchomić [Azure IoT krawędzi](https://azure.microsoft.com/campaigns/iot-edge/). 
 
-ASA i Azure IoT krawędzi użyj **Docker** kontenerów, przenośne rozwiązanie, uruchamianego na wielu hosta systemu operacyjnego (Windows, Linux).
+ASA i Azure IoT krawędzi użyj **Docker** kontenery zapewnienie przenośnych rozwiązania działającego w wielu systemach operacyjnych hosta (z systemem Windows, Linux).
 
-ASA na krawędzi IoT jest udostępniany jako obrazów systemu Windows i Linux działające w zarówno x86 64 lub architektury ARM. 
+ASA na krawędzi IoT jest udostępniany jako obrazów systemu Windows i Linux w systemie zarówno x86 64 albo architektury usługi Azure Resource Manager. 
 
 
 ### <a name="input-and-output"></a>Dane wejściowe i wyjściowe
@@ -176,12 +176,14 @@ Dla wejścia i wyjścia są obsługiwane formaty CSV i JSON.
 
 Dla każdego wejściowe i strumień wyjściowy, możesz utworzyć w zadania ASA, odpowiedniego punktu końcowego jest tworzony w module wdrożone. Te punkty końcowe można w przypadku tras, wdrożenia.
 
+W obecnych, jedynym obsługiwanym strumienia danych wejściowych i strumienia wyjściowego typy Centrum krawędzi. Odwołanie do danych wejściowych obsługuje odwoływać się do typu pliku. Inne dane wyjściowe można połączyć się przy użyciu zadania chmury poniżej. Na przykład zadanie usługi Stream Analytics hostowanej w programie Edge wysyła dane wyjściowe do koncentratora krawędzi, który można następnie Wyślij dane wyjściowe do Centrum IoT. Można użyć drugiego zadania usługi analiza strumienia Azure hostowane w chmurze przy użyciu danych wejściowych z Centrum IoT i dane wyjściowe do usługi Power BI lub inny typ danych wyjściowych.
+
 
 
 ##### <a name="reference-data"></a>Dane referencyjne
-Dane referencyjne (znanej także jako tabela odnośnika) jest ograniczone zestawu danych, który jest statyczny lub spowalniając zmianę charakteru. Służy do wyszukiwania lub mieć związek z strumienia danych. Aby użyć danych odwołanie do zadania usługi analiza strumienia Azure, zwykle użyje [dołączenia danych odwołania](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Aby uzyskać więcej informacji, zobacz [ASA dokumentację dotyczącą danych referencyjnych](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
+Dane referencyjne (znanej także jako tabela odnośnika) jest ograniczone zestawu danych, który jest statyczny lub powolne, zmiana charakter. Służy do wyszukiwania lub mieć związek z strumienia danych. Aby użyć danych odwołanie do zadania usługi analiza strumienia Azure, zwykle użyje [dołączenia danych odwołania](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Aby uzyskać więcej informacji, zobacz [ASA dokumentację dotyczącą danych referencyjnych](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
 
-Aby użyć danych referencyjnych dla ASA na krawędzi Iot, należy wykonać następujące kroki: 
+Aby użyć danych referencyjnych ASA na krawędzi Iot, wykonaj następujące kroki: 
 1. Utwórz nowe dane wejściowe dla zadania
 2. Wybierz **danych referencyjnych** jako **typ źródła**.
 3. Ustaw ścieżkę pliku. Ścieżka do pliku powinna być **bezwzględną** ścieżki pliku na urządzeniu ![odwołania Tworzenie danych](media/stream-analytics-edge/ReferenceData.png)

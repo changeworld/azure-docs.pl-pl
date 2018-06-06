@@ -1,20 +1,21 @@
 ---
-title: Często zadawane pytania — Azure Active Directory B2C
-description: Często zadawane pytania dotyczące usługi Azure Active Directory B2C
+title: Często zadawane pytania dotyczące usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: B2C
+ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710736"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Sprawdzanie wstecz do aktualizacji.
@@ -118,7 +119,7 @@ Wykonaj następujące kroki, aby usunąć dzierżawy usługi Azure AD B2C:
 4. Wybierz każdego użytkownika z kolei (wykluczyć użytkownika administratora subskrypcji, który jest obecnie zalogowany jako). Kliknij przycisk **usunąć** w dolnej części strony i kliknij przycisk **tak** po wyświetleniu monitu.
 5. Kliknij przycisk **rejestracji aplikacji**.
 6. Wybierz aplikację o nazwie **b2c rozszerzeń aplikacji**. Kliknij przycisk **usunąć** i kliknij przycisk **tak** po wyświetleniu monitu.
-7. Wybierz **omówienie**.
+7. Wybierz pozycję **Przegląd**.
 8. Kliknij przycisk **Usuń katalog**. Aby ukończyć proces, postępuj zgodnie z instrukcjami na ekranie.
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Czy można uzyskać usługi Azure AD B2C jako część pakietu Enterprise Mobility Suite?

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/08/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0b9a79919a63056bbc17e44ef0da3697001d227f
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802360"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Magazyn kolejek i kolejek usługi Service Bus - porównywane i odróżniające
 W tym artykule analizuje różnice i podobieństwa między tymi dwoma typami kolejek oferowanych przez system Microsoft Azure obecnie: magazyn kolejek i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
@@ -47,7 +48,6 @@ Jako rozwiązanie architektów/deweloperów **należy rozważyć użycie kolejek
 
 * Rozwiązanie musi mieć możliwość odbierania wiadomości bez konieczności sondowania kolejki. Z usługą Service Bus, można to osiągnąć przy użyciu sondowania long przy użyciu protokołów opartych na protokole TCP, które obsługuje usługi Service Bus operacji odbioru.
 * Rozwiązanie wymaga kolejki zapewnienie gwarantowane pierwszy — w pierwszej — ruch wychodzący dostarczania uporządkowanego (FIFO).
-* Ma symetrycznego środowisko na platformie Azure i w systemie Windows Server (Chmura prywatna). Aby uzyskać więcej informacji, zobacz [Usługa Service Bus dla systemu Windows Server](https://msdn.microsoft.com/library/dn282144.aspx).
 * Rozwiązanie musi mieć możliwość obsługi automatycznego wykrywania duplikatów.
 * Ma aplikacji do przetwarzania komunikatów jako równoległych strumieni długotrwałe (komunikaty są skojarzone z stream przy użyciu [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) właściwości komunikatu). W tym modelu każdy węzeł w aplikacja odbierająca komunikaty konkuruje dla strumieni, w przeciwieństwie do komunikatów. Gdy strumień jest odbierającą węzła, węzeł można sprawdzić stan stan strumienia aplikacji przy użyciu transakcji.
 * Rozwiązanie wymaga zachowanie transakcyjnego i niepodzielność przy wysyłaniu lub odbieraniu wiele komunikatów z kolejki.
@@ -138,7 +138,7 @@ Ta sekcja porównuje magazynu kolejek i kolejek usługi Service Bus z punktu wid
 
 ### <a name="additional-information"></a>Dodatkowe informacje
 * Magistrala usług wymusza limity rozmiaru kolejki. Maksymalny rozmiar kolejki jest określany podczas tworzenia kolejki i może mieć wartość z zakresu od 1 do 80 GB. Po osiągnięciu wartości rozmiar kolejki ustawionej tworzenia kolejki dodatkowych komunikatów przychodzących zostanie odrzucone i wyjątek zostanie odebrana przez kod wywołujący. Aby uzyskać więcej informacji na temat przydziały w usłudze Service Bus, zobacz [przydziały magistrali usługi](service-bus-quotas.md).
-* W [warstwy standardowa](service-bus-premium-messaging.md), można utworzyć kolejki usługi Service Bus w rozmiarze 1, 2, 3, 4 lub 5 GB (wartość domyślna to 1 GB). W warstwie Premium można utworzyć kolejki maksymalnie 80 GB. W standardzie warstwy z partycjonowania włączone (jest to wartość domyślna), usługi Service Bus tworzy 16 partycji dla każdego Gigabajta określisz. Tak, można utworzyć kolejkę o rozmiarze 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 * 16) = 80 GB. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal]. W warstwie Premium tylko 2 partycjach są tworzone dla kolejki.
+* Partycjonowanie nie jest obsługiwany w [warstwy Premium](service-bus-premium-messaging.md). W warstwie standardowa można utworzyć kolejki usługi Service Bus w rozmiarze 1, 2, 3, 4 lub 5 GB (wartość domyślna to 1 GB). W standardzie warstwy z partycjonowania włączone (jest to wartość domyślna), usługi Service Bus tworzy 16 partycji dla każdego Gigabajta określisz. Tak, można utworzyć kolejkę o rozmiarze 5 GB, z 16 partycji maksymalny rozmiar kolejki staje się (5 * 16) = 80 GB. Maksymalny rozmiar kolejki podzielonym na partycje lub temat widzą analizując jego wpis [portalu Azure][Azure portal].
 * W przypadku magazynu kolejek, jeśli treść wiadomości nie jest bezpieczną XML, następnie musi być **Base64** zakodowany. Jeśli użytkownik **Base64**-kodowania wiadomości, ładunku użytkownika może być maksymalnie 48 KB, zamiast 64 KB.
 * W przypadku kolejek usługi Service Bus, każdy komunikat przechowywane w kolejce składa się z dwóch części: Nagłówek i treść. Całkowity rozmiar wiadomości nie może przekraczać maksymalny rozmiar wiadomości obsługiwane przez warstwę usług.
 * Gdy klienci komunikują się z kolejek usługi Service Bus za pośrednictwem protokołu TCP, maksymalną liczbę równoczesnych połączeń do pojedynczej kolejki usługi Service Bus jest ograniczona do 100. Ta liczba jest udostępniana między nadawcami a odbiornikami. Po osiągnięciu tego limitu przydziału, kolejne żądania dotyczące dodatkowych połączeń zostaną odrzucone i wyjątek zostanie odebrana przez kod wywołujący. Ten limit jest nie nakłada na klientów łączących się z kolejek przy użyciu opartego na interfejsie REST API.

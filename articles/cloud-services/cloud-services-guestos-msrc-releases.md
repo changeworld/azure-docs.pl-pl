@@ -12,16 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2018
+ms.date: 6/1/2018
 ms.author: raiye
-ms.openlocfilehash: ea7c01075d9f65ed262681c216f5770d19466507
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aaf91f8394ac4fd4fa6372c6c0f17ff92178589e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737541"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa Azure
 Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpowiedzi Center (MSRC) stosowany do systemu operacyjnego gościa Azure. Wyszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczą systemu operacyjnego gościa w przypadku korzystania. Aktualizacje zawsze przeniesieniu dla konkretnej [rodziny] [ family-explain] zostały wprowadzone w.
+
+## <a name="may-guest-os"></a>Może gościa systemu operacyjnego
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18 05 | [4103721], [4103727], [4103723] |Zabezpieczenia systemu Windows 10 |5.19 |8 maja 2018 |
+| ReL 18 05 | [4103712] |Tylko zabezpieczenia systemu Windows |2.74 |8 maja 2018 |
+| ReL 18 05 | [4103726] |Tylko zabezpieczenia systemu Windows |3.61 |8 maja 2018 |
+| ReL 18 05 | [4103715] |Tylko zabezpieczenia systemu Windows |4.54 |8 maja 2018 |
+| ReL 18 05 | [4095514], [4095519] |.NET 3.5, zabezpieczeń 4.x |2.74 |8 maja 2018 |
+| ReL 18 05 | [4095512], [4095518], [4096235] |.NET 3.5, 4.x, 4.5 zabezpieczeń x |3.61 |8 maja 2018 |
+| ReL 18 05 | [4095515], [4095517], [4096236] |.NET 3.5, 4.x, 4.5 zabezpieczeń x |4.74|8 maja 2018 |
+| ReL 18 05 | [4054856] |Zabezpieczenia programu .NET 4,7 x |5.19 |8 maja 2018 |
+| ReL 18 05 | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |8 maja 2018 |
+| ReL 18 05 | [4103729] |Flash |3.61, 4.74, 5.19 |8 maja 2018 |
+| ND | [4093118] |Zbiorcze informacje z systemem innym niż zabezpieczeniach kwietnia |2,73 |10 kwietnia 2018 r. |
+| ND | [4093123] |Zbiorcze informacje z systemem innym niż zabezpieczeniach kwietnia |3.61 |10 kwietnia 2018 r. |
+| ND | [4093114] |Zbiorcze informacje z systemem innym niż zabezpieczeniach kwietnia |4.74 |10 kwietnia 2018 r. |
+| ND | [4093137] |Kwietnia "SSU" |5.19 |10 kwietnia 2018 r. |
+| ND | [4093753] |Aktualizacja strefy czasowej |2.74, 3.61, 4.74 |10 kwietnia 2018 r. |
+
 
 ## <a name="april-guest-os"></a>System operacyjny gościa kwietnia
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -162,7 +183,7 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ReL 17-06 | [4019472] |Ulepszenia jakości systemu operacyjnego 2016 WS |5.8 |9 maja 2017 r. |
 | ReL 17-06 | [4022722] |Tylko zabezpieczenia systemu Windows |2.63 |13 czerwca 2017 r. |
 | ReL 17-06 | [4022717] |Tylko zabezpieczenia systemu Windows |4.43 |13 czerwca 2017 r. |
-| ReL 17-06 | [4022718] |Tylko zabezpieczenia systemu Windows |3.50 |13 czerwca 2017 r. |
+| ReL 17-06 | [4022718] |Tylko zabezpieczenia systemu Windows |3,50 |13 czerwca 2017 r. |
 | ReL 17-06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13 czerwca 2017 r. |
 | ReL 17-06 | [4022719], [4022724], [4022726] |Pakiety zbiorcze miesięczne systemu Windows |2.63, 3.50, 4.43 |13 czerwca 2017 r. |
 | ReL 17-06 | [4022730] |Aktualizacja zabezpieczeń dla programu Adobe Flash Player |3.50, 4.43, 5.8 |13 czerwca 2017 r. |
@@ -173,11 +194,11 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ND | [4014508] |Może zbiorczy-security .NET |2.63 |9 maja 2017 r. |
 | ND | [4014511] |Może zbiorczy-security .NET |2.63 |9 maja 2017 r. |
 | ND | [4014514] |Może zbiorczy-security .NET |2.63 |9 maja 2017 r. |
-| ND | [4019216] |Zbiorcze informacje z systemem innym niż zabezpieczeń może |3.50 |9 maja 2017 r. |
-| ND | [4014503] |Może zbiorczy-security .NET |3.50 |9 maja 2017 r. |
-| ND | [4014506] |Może zbiorczy-security .NET |3.50 |9 maja 2017 r. |
-| ND | [4014509] |Może zbiorczy-security .NET |3.50 |9 maja 2017 r. |
-| ND | [4014513] |Może zbiorczy-security .NET |3.50 |9 maja 2017 r. |
+| ND | [4019216] |Zbiorcze informacje z systemem innym niż zabezpieczeń może |3,50 |9 maja 2017 r. |
+| ND | [4014503] |Może zbiorczy-security .NET |3,50 |9 maja 2017 r. |
+| ND | [4014506] |Może zbiorczy-security .NET |3,50 |9 maja 2017 r. |
+| ND | [4014509] |Może zbiorczy-security .NET |3,50 |9 maja 2017 r. |
+| ND | [4014513] |Może zbiorczy-security .NET |3,50 |9 maja 2017 r. |
 | ND | [4019215] |Zbiorcze informacje z systemem innym niż zabezpieczeń może |4.43 |9 maja 2017 r. |
 | ND | [4014505] |Może zbiorczy-security .NET |4.43 |9 maja 2017 r. |
 | ND | [4014507] |Może zbiorczy-security .NET |4.43 |9 maja 2017 r. |
@@ -628,6 +649,28 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ND |[2999802] |Zamiast wierszy przerywana linia ciągła są podane w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
 | ND |[2896881] |Długi czas logowania, jeśli używasz polecenia AddPrinterConnection VBScript mapować drukarki dla użytkowników podczas procesu logowania w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
 
+[4103721]: http://support.microsoft.com/kb/4103721
+[4103727]: http://support.microsoft.com/kb/4103727 
+[4103723]: http://support.microsoft.com/kb/4103723
+[4103712]: http://support.microsoft.com/kb/4103712
+[4103726]: http://support.microsoft.com/kb/4103726
+[4103715]: http://support.microsoft.com/kb/4103715
+[4095514]: http://support.microsoft.com/kb/4095514
+[4095519]: http://support.microsoft.com/kb/4095519
+[4095512]: http://support.microsoft.com/kb/4095512
+[4095518]: http://support.microsoft.com/kb/4095518
+[4096235]: http://support.microsoft.com/kb/4096235
+[4095515]: http://support.microsoft.com/kb/4095515
+[4095517]: http://support.microsoft.com/kb/4095517
+[4096236]: http://support.microsoft.com/kb/4096236
+[4054856]: http://support.microsoft.com/kb/4054856
+[4103768]: http://support.microsoft.com/kb/4103768
+[4103729]: http://support.microsoft.com/kb/4103729
+[4093118]: http://support.microsoft.com/kb/4093118
+[4093123]: http://support.microsoft.com/kb/4093123
+[4093114]: http://support.microsoft.com/kb/4093114
+[4093137]: http://support.microsoft.com/kb/4093137
+[4093753]: http://support.microsoft.com/kb/4093753
 
 [4093119]: http://support.microsoft.com/kb/4093119
 [4093108]: http://support.microsoft.com/kb/4093108 

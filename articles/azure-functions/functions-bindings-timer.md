@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: a8844ea44bf604944c5980b0d41ab5d01a30b876
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4da1ed4e9424950c39f3eb255ead2b39094597fd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725449"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -29,13 +30,17 @@ W tym artykule opisano sposób pracy z wyzwalaczy czasomierza w usługi Azure Fu
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakiety
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
+Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+
+Wyzwalacz czasomierza znajduje się w [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu jest w [azure-zadań webjob sdk rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) repozytorium GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Przykład
 
@@ -214,6 +219,8 @@ Każde pole może mieć jeden z następujących typów wartości:
 |Zestaw wartości (`,` operator)|<nobr>"5,8,10 **** *"</nobr>|hh:mm:05, hh:mm:08 i hh:mm:10, gdzie hh: mm to co minutę co godzinę (3 razy minuty)|
 |Wartość interwału (`/` operator)|<nobr>"0 * / 5 *** *"</nobr>|hh:05:00, hh:10:00, hh:15:00 i tak dalej za pośrednictwem hh:55:00 gdzie hh wynosi godzinę (12 razy godziny)|
 
+Aby określić miesięcy lub dni skróty trzyliterowy można użyć zamiast wartości liczbowych. Na przykład użyć stycznia stycznia lub Sun niedzielę.
+
 ### <a name="cron-examples"></a>Przykłady usługi CRON
 
 Oto kilka przykładów CRON wyrażeń, które można użyć wyzwalacza czasomierza w funkcji platformy Azure.
@@ -272,7 +279,7 @@ Jeśli konto magazynu możesz udostępnić wielu aplikacjom funkcji, upewnij si�
 
 ## <a name="retry-behavior"></a>Sposób ponawiania próby
 
-W odróżnieniu od wyzwalacza kolejki wyzwalacza czasomierza nie ponownie po funkcji nie powiedzie się. W przypadku awarii funkcji go is't o nazwie ponownie do czasu zgodnie z harmonogramem.
+W odróżnieniu od wyzwalacza kolejki wyzwalacza czasomierza nie ponownie po funkcji nie powiedzie się. W przypadku awarii funkcja nie jest wywoływana ponownie do czasu zgodnie z harmonogramem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

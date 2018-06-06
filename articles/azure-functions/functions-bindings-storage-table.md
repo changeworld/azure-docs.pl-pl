@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1c8cee149e99786b58e4584e5e7b508b1040389d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 51b9f7bfd25da7dfd4ae9038f8dab70e9232b944
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724585"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure tabeli powiązania magazynu dla usługi Azure Functions
 
@@ -27,13 +28,17 @@ W tym artykule opisano sposób pracy z magazynu tabel Azure powiązania usługi 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakiety
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania magazynu tabeli znajdują się w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) repozytorium GitHub.
+Powiązania magazynu tabeli znajdują się w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 2.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+
+Powiązania magazynu tabeli znajdują się w [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Table) repozytorium GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -104,6 +109,9 @@ public class TableStorage
     }
 }
 ```
+
+  > [!NOTE]
+  > `IQueryable` nie jest obsługiwany w [środowisko uruchomieniowe Functions v2](functions-versions.md). Alternatywą jest [użyć parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) odczytać tabeli za pomocą zestawu SDK usługi Magazyn Azure. Jeśli spróbujesz powiązać `CloudTable` i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 ### <a name="input---c-script-example-1"></a>Dane wejściowe - C# przykładowy skrypt 1
 
@@ -382,8 +390,8 @@ Powiązania wejściowego magazyn tabel obsługuje następujące scenariusze:
 
   Dostęp do danych tabeli za pomocą parametru metody `IQueryable<T> <paramName>`. W języku C# skryptu `paramName` jest wartością określoną w `name` właściwość *function.json*. `T` musi być typu, który implementuje `ITableEntity` pochodną `TableEntity`. Można użyć `IQueryable` metody do dowolnego filtrowanie wymagane. `partitionKey`, `rowKey`, `filter`, I `take` właściwości nie są używane w tym scenariuszu.  
 
-> [!NOTE]
-> `IQueryable` nie jest obsługiwany w [środowisko uruchomieniowe Functions v2](functions-versions.md). Alternatywą jest [użyć parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) odczytać tabeli za pomocą zestawu SDK usługi Magazyn Azure.
+  > [!NOTE]
+  > `IQueryable` nie jest obsługiwany w [środowisko uruchomieniowe Functions v2](functions-versions.md). Alternatywą jest [użyć parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) odczytać tabeli za pomocą zestawu SDK usługi Magazyn Azure. Jeśli spróbujesz powiązać `CloudTable` i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 * **Co najmniej jeden wiersz w języku JavaScript do odczytu**
 
@@ -640,7 +648,7 @@ Magazyn tabel danych wyjściowych powiązanie obsługuje następujące scenarius
 
   W języku C# i skryptu C#, dostęp do jednostki tabeli danych wyjściowych przy użyciu parametru metody `ICollector<T> paramName` lub `IAsyncCollector<T> paramName`. W języku C# skryptu `paramName` jest wartością określoną w `name` właściwość *function.json*. `T` Określa schemat jednostek, które chcesz dodać. Zazwyczaj `T` pochodzi z `TableEntity` lub implementuje `ITableEntity`, ale nie ma. Klucz partycji i wiersza wartości w klucza *function.json* lub `Table` konstruktora atrybutów nie są używane w tym scenariuszu.
 
-  Alternatywą jest użycie `CloudTable paramName` parametru metody, aby zapisać go do tabeli przy użyciu zestawu SDK usługi Magazyn Azure.
+  Alternatywą jest użycie `CloudTable paramName` parametru metody, aby zapisać go do tabeli przy użyciu zestawu SDK usługi Magazyn Azure. Jeśli spróbujesz powiązać `CloudTable` i komunikat o błędzie, upewnij się, że odwołanie do [poprawną wersję zestawu SDK usługi Magazyn](#azure-storage-sdk-version-in-functions-1x).
 
 * **Zapisanie co najmniej jeden wiersz w języku JavaScript**
 

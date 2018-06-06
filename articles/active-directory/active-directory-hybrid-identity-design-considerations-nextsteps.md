@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory hybrydowego tożsamości projektowania zagadnienia — następne kroki | Dokumentacja firmy Microsoft"
-description: "Streszczenie i następne kroki po przeczytaniu Przewodnik po zagadnieniach dotyczących projektowania tożsamości hybrydowej"
-documentationcenter: 
+title: Azure Active Directory hybrydowego tożsamości projektowania zagadnienia — następne kroki | Dokumentacja firmy Microsoft
+description: Streszczenie i następne kroki po przeczytaniu Przewodnik po zagadnieniach dotyczących projektowania tożsamości hybrydowej
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 02d48768-ea9e-4bfe-ae54-b54c4bd0a789
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29c045af81134847321d9ef69943f0154e9ee5a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e63df0832431ddc1502ab7b07c60c8d4abf59ac4
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801494"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hybrydowego tożsamości projektu dalej zagadnienia dotyczące czynności
 Teraz, gdy przeprowadzisz zdefiniowaniu wymagań i sprawdzeniu wszystkich opcji rozwiązania do zarządzania urządzeniami przenośnymi, możesz wykonać kolejne kroki w celu wdrożenia infrastruktury pomocniczej odpowiedniej dla Ciebie i Twojej organizacji.
@@ -46,6 +48,6 @@ Często monitorowanie następujących zasobów zapewni dostęp do najnowszych wi
 * [Blog programu Microsoft System Center Configuration Manager](http://blogs.technet.com/b/configurationmgr/)
 * [Blog zespołu programu Microsoft System Center Configuration Manager](http://blogs.technet.com/b/configmgrteam/)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 [Omówienie zagadnień dotyczących projektowania](active-directory-hybrid-identity-design-considerations-overview.md)
 

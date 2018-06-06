@@ -10,14 +10,15 @@ ms.date: 11/14/2017
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: fc6cc88cabab1bc56b0a04ce8778823647c5b2bf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bf7647d8489a102175c4e9de799793e6550495e7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714412"
 ---
 # <a name="get-started-with-azure-ad"></a>Rozpoczynanie pracy z usługą Azure AD
 Zarządzanie tożsamościami nowoczesnych wymaga skalowalnych, spójne reliablity w celu zapewnienia dostępności aplikacji i usług tylko do uwierzytelnionych użytkowników. Do obsługi potrzeb zarządzania tożsamościami użytkowników, dział IT musi odpowiednio, sposób, aby zapewnić dostęp do oprogramowania zatwierdzone, public jako aplikacje usługi (SaaS), sposób hosta wewnętrzne aplikacje biznesowe, a nawet sposobów zwiększenia lokalnych tworzenia aplikacji i użycia. Wszystkie te wymagania dotyczące punktu na potrzeby rozwiązania do zarządzania tożsamościami w chmurze.      

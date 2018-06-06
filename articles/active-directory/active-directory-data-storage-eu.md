@@ -7,17 +7,19 @@ author: eross-msft
 manager: mtillman
 ms.author: lizross
 ms.service: active-directory
+ms.component: fundamentals
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.custom: it-pro
-ms.openlocfilehash: 19dc163dbb6dd296a417f5c313a36c7f7c9e50d7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2ae60c620db4fb3d88554ad5653729c7c1325e97
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713494"
 ---
 # <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Gdzie Microsoft Azure Active Directory (Azure AD) przechowywania danych tożsamości dla klientów
 Usługi Azure AD pomaga zarządzać tożsamościami użytkowników i utworzyć zasady dostępu oparte na analizy, które zabezpieczanie zasobów w organizacji. Tożsamość dane są przechowywane w lokalizacji, która ma oparte na adresie organizacji podane podczas subskrybowania usługi. Na przykład jeśli masz subskrypcję usługi Office 365 ani Azure. Aby uzyskać szczegółowe informacje dotyczące przechowywania danych tożsamości, można użyć [danych znajdujących się w przypadku?](https://www.microsoft.com/en-us/trustcenter/privacy/where-your-data-is-located) sekcji Center Trust firmy Microsoft.

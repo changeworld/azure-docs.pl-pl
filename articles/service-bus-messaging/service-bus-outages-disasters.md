@@ -1,24 +1,19 @@
 ---
-title: "Izolacji aplikacji usługi Azure Service Bus przed awariami i awarii | Dokumentacja firmy Microsoft"
-description: "Technik w celu ochrony aplikacji przed potencjalnych awarii usługi Service Bus."
+title: Izolacji aplikacji usługi Azure Service Bus przed awariami i awarii | Dokumentacja firmy Microsoft
+description: Technik w celu ochrony aplikacji przed potencjalnych awarii usługi Service Bus.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802310"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolacji aplikacji przed awariami usługi Service Bus i awarii
 
@@ -34,7 +29,9 @@ Usługa Service Bus używa wiele magazynów obsługi komunikatów do przechowywa
 Wszystkie jednostki obsługi komunikatów usługi Service Bus (kolejek, tematów, przekaźników) znajdują się w przestrzeni nazw usługi, które jest powiązane z centrum danych. Usługa Service Bus obsługuje teraz [ *odzyskiwania po awarii geograficznie* i *— replikacja geograficzna* ](service-bus-geo-dr.md) na poziomie przestrzeni nazw.
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Ochrona kolejek i tematów z błędami magazynu do obsługi komunikatów
-Niepartycjonowany kolejka lub temat jest przypisany do jednego magazynu obsługi komunikatów. Ten magazyn obsługi komunikatów jest niedostępny, wszystkie operacje dla tej kolejki lub temat zakończy się niepowodzeniem. Kolejki podzielonym na partycje, z drugiej strony, składa się z wielu fragmentów. Każdy fragment są przechowywane w różnych magazynie obsługi komunikatów. Po wysłaniu wiadomości do kolejki podzielonym na partycje lub tematu usługi Service Bus przypisuje wiadomości na jeden z fragmentów. Jeśli odpowiedni magazyn obsługi komunikatów jest niedostępny, usługi Service Bus zapisuje komunikat różnych fragment, jeśli to możliwe. Aby uzyskać więcej informacji na temat partycjonowane jednostki, zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
+Niepartycjonowany kolejka lub temat jest przypisany do jednego magazynu obsługi komunikatów. Ten magazyn obsługi komunikatów jest niedostępny, wszystkie operacje dla tej kolejki lub temat zakończy się niepowodzeniem. Kolejki podzielonym na partycje, z drugiej strony, składa się z wielu fragmentów. Każdy fragment są przechowywane w różnych magazynie obsługi komunikatów. Po wysłaniu wiadomości do kolejki podzielonym na partycje lub tematu usługi Service Bus przypisuje wiadomości na jeden z fragmentów. Jeśli odpowiedni magazyn obsługi komunikatów jest niedostępny, usługi Service Bus zapisuje komunikat różnych fragment, jeśli to możliwe. Partycjonowane jednostki są już obsługiwane w [warstwy Premium](service-bus-premium-messaging.md). 
+
+Aby uzyskać więcej informacji na temat partycjonowane jednostki, zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>Ochrona przed przestojami centrum danych lub awarii
 Aby zezwolić na przejściu w tryb failover między dwoma centrami danych, można utworzyć przestrzeni nazw usługi Service Bus w każde centrum danych. Na przykład nazw usługi Service Bus **contosoPrimary.servicebus.windows.net** może znajdować się w regionie Stanów Zjednoczonych północ/centralnego i **contosoSecondary.servicebus.windows.net**może znajdować się w regionie nam Południowa/centralnego. Jeśli jednostki do obsługi komunikatów usługi Service Bus musi pozostać dostępna obecności awarii centrum danych, możesz utworzyć jednostkę w obu tych przestrzeni nazw.
@@ -86,7 +83,7 @@ Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz następują
 
 * [Azure awarii usługi Service Bus Geo](service-bus-geo-dr.md)
 * [Ciągłość prowadzenia działalności biznesowej bazy danych Azure SQL][Azure SQL Database Business Continuity]
-* [Projektowanie aplikacji odporne na platformie Azure][Azure resiliency technical guidance]
+* [Projektowanie aplikacji odpornych na błędy dla platformy Azure][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

@@ -2,24 +2,22 @@
 title: 'Azure DB rozwiązania Cosmos: SQL interfejsu API środowiska Node.js SDK & zasobów | Dokumentacja firmy Microsoft'
 description: Dowiedz się wszystkiego o interfejsu API środowiska Node.js SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji zestawu SDK platformy Azure rozwiązania Cosmos DB Node.js.
 services: cosmos-db
-documentationcenter: nodejs
 author: rnagpal
 manager: kfile
 editor: cgronlun
-ms.assetid: 9d5621fa-0e11-4619-a28b-a19d872bcf37
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: nodejs
-ms.topic: article
+ms.topic: reference
 ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 271b090468dee306dc0bf2567aeff08eb0526642
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 94d60325fa53668628ddefa68e8ce313c4fa75c6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797849"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Node.js SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
