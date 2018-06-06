@@ -9,10 +9,11 @@ ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33835852"
 ---
 W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami powiadomień szablonu z aplikacji konsoli .NET. 
 
@@ -25,7 +26,7 @@ W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami pow
         Install-Package Microsoft.Azure.NotificationHubs
    
 3. Kliknij przycisk **Wprowadź**.  
-    Ta akcja spowoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [pakietu NuGet Microsoft.Azure.Notification Hubs].
+    Ta akcja spowoduje dodanie odwołania do zestawu SDK usługi Azure Notification Hubs z użyciem [Pakiet NuGet Microsoft.Azure.Notification Hubs].
 
 4. Otwórz plik Program.cs i dodaj następującą instrukcję `using`:
    
@@ -79,4 +80,4 @@ W tej sekcji wyślesz najważniejsze wiadomości w formie oznaczonych tagami pow
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[pakietu NuGet Microsoft.Azure.Notification Hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Pakiet NuGet Microsoft.Azure.Notification Hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
