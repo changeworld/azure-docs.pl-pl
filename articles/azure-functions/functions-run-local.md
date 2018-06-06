@@ -14,15 +14,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 523ef25fe0d3227d526acbdee2c7cf2660fc4f25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1dd5d0f11a063d013142948c7c87a98aefe02749
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725228"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kod testu Azure funkcji i lokalnie
 
-Gdy [portalu Azure] zapewnia pełny zestaw narzędzi do tworzenia i testowania usługi Azure Functions, wielu deweloperów preferowane środowisko rozwoju lokalnego. Środowisko Azure Functions ułatwia opracowanie i przetestowanie funkcji na komputerze lokalnym przy użyciu edytora kodu ulubionych i narzędzia deweloperskie lokalnego. Funkcji mogą wyzwalać zdarzeń na platformie Azure, a Twoje C# i funkcji JavaScript można debugować na komputerze lokalnym. 
+Gdy [Azure Portal] zapewnia pełny zestaw narzędzi do tworzenia i testowania usługi Azure Functions, wielu deweloperów preferowane środowisko rozwoju lokalnego. Środowisko Azure Functions ułatwia opracowanie i przetestowanie funkcji na komputerze lokalnym przy użyciu edytora kodu ulubionych i narzędzia deweloperskie lokalnego. Funkcji mogą wyzwalać zdarzeń na platformie Azure, a Twoje C# i funkcji JavaScript można debugować na komputerze lokalnym. 
 
 Jeśli program Visual Studio C# dewelopera usługi Azure Functions także są [integruje się z programem Visual Studio 2017](functions-develop-vs.md).
 
@@ -31,7 +32,7 @@ Jeśli program Visual Studio C# dewelopera usługi Azure Functions także są [i
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 
-[Azure funkcje podstawowe narzędzia] jest lokalna wersja środowiska uruchomieniowego usługi Azure Functions, który można uruchomić na komputerze deweloperskim lokalnego. Nie jest emulatorem ani symulatorem. Jest tym samym środowisko uruchomieniowe, które uprawnienia działa na platformie Azure. Istnieją dwie wersje narzędzi podstawowych funkcji platformy Azure:
+[Środowisko Azure Functions podstawowe narzędzia] jest lokalna wersja środowiska uruchomieniowego usługi Azure Functions, który można uruchomić na komputerze deweloperskim lokalnego. Nie jest emulatorem ani symulatorem. Jest tym samym środowisko uruchomieniowe, które uprawnienia działa na platformie Azure. Istnieją dwie wersje narzędzi podstawowych funkcji platformy Azure:
 
 + [Wersja 1.x](#v1): obsługuje wersja 1.x środowiska uruchomieniowego. Ta wersja jest obsługiwana tylko na komputerach z systemem Windows i jest instalowany z [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm).
 + [Wersja 2.x](#v2): obsługuje wersję 2.x środowiska uruchomieniowego. Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów specyficzne dla platformy pakietu lub programu npm dla instalacji. 
@@ -95,14 +96,14 @@ Następujące kroki użyj [APT](https://wiki.debian.org/Apt) zainstalować podst
   sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   ```
 
-2.  Konfigurowanie pakietu źródła danych, zastępując `<version>` w poniższym poleceniu o nazwie odpowiednią wersję z tabeli:
+2.  Sprawdź, czy serwer Ubuntu działa jeden z odpowiedniej wersji z poniższej tabeli. Aby dodać stanie źródła, uruchom polecenie:
 
   ```bash
-  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
   sudo apt-get update
   ```
 
-  | Dystrybucja systemu Linux | `<version>` |
+  | Dystrybucja systemu Linux | Wersja |
   | --------------- | ----------- |
   | Ubuntu 17.10    | `artful`    |
   | Ubuntu 17.04    | `zesty`     |
@@ -151,7 +152,7 @@ Aby utworzyć projekt bez lokalnego repozytorium Git, użyj `--no-source-control
 
 ## <a name="register-extensions"></a>Rejestrowanie rozszerzeń
 
-W wersji 2.x środowiska uruchomieniowego usługi Azure Functions, należy jawnie zarejestrować [powiązanie rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) używaną w funkcji aplikacji. 
+W wersji 2.x środowiska uruchomieniowego usługi Azure Functions, należy jawnie zarejestrować używanych w aplikacji funkcję rozszerzeń powiązanie (typ powiązania).
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
@@ -275,7 +276,7 @@ Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
-### <a name="debug-in-vs-code-or-visual-studio"></a>Debugowanie w kodzie VS lub Visual Studio
+### <a name="vs-debug"></a>Debugowanie w kodzie VS lub Visual Studio
 
 Aby dołączyć debuger, należy przekazać `--debug` argumentu. Aby debugować funkcji JavaScript, użyj programu Visual Studio Code. C# funkcji należy użyć programu Visual Studio.
 
@@ -388,7 +389,7 @@ Można użyć następujących opcji:
 
 To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. Błąd występuje, gdy `<FunctionAppName>` nie istnieje w subskrypcji. Informacje na temat tworzenia aplikacji funkcji z wiersza polecenia lub okno terminalu przy użyciu wiersza polecenia platformy Azure, zobacz [tworzenia aplikacji funkcji wykonywania niekorzystającą](./scripts/functions-cli-create-serverless.md).
 
-`publish` Polecenia przekazuje zawartość katalogu projektu funkcji. Po usunięciu plików lokalnie, `publish` nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzie Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [portalu Azure].  
+`publish` Polecenia przekazuje zawartość katalogu projektu funkcji. Po usunięciu plików lokalnie, `publish` nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzie Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [Azure Portal].  
 
 >[!IMPORTANT]  
 > Podczas tworzenia aplikacji funkcji na platformie Azure, używa wersji 1.x funkcji środowiska uruchomieniowego domyślnie. Aby funkcja aplikacji używana wersja 2.x środowiska uruchomieniowego, Dodaj ustawienie aplikacji `FUNCTIONS_EXTENSION_VERSION=beta`.  
@@ -406,6 +407,6 @@ W pliku żądanie usterki lub funkcji [Otwórz problem GitHub](https://github.co
 
 <!-- LINKS -->
 
-[Azure funkcje podstawowe narzędzia]: https://www.npmjs.com/package/azure-functions-core-tools
-[portalu Azure]: https://portal.azure.com 
+[Środowisko Azure Functions podstawowe narzędzia]: https://www.npmjs.com/package/azure-functions-core-tools
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
