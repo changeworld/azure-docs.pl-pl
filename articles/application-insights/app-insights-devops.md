@@ -1,8 +1,8 @@
 ---
-title: "Wydajności aplikacji sieci Web monitorowania - Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Jak zastosowań usługi Application Insights w cyklu opracowywania oprogramowania"
+title: Wydajności aplikacji sieci Web monitorowania - Azure Application Insights | Dokumentacja firmy Microsoft
+description: Jak zastosowań usługi Application Insights w cyklu opracowywania oprogramowania
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 24e249bb515c509f2fba1f943ac5e23a1ea9965e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808482"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji sieci Web i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
@@ -104,7 +105,7 @@ W obu przypadkach alert nie tylko informuje objawy zostanie odnaleziony, ale ró
 
 Samtec klienta powiedzieć: "podczas ostatnie funkcji cutover znaleziono-skalowania bazy danych naciśnięcie limit zasobów i powoduje przekroczeń limitu czasu. Alerty o wykryciu aktywnego dostarczone dosłownie anonsowanej możemy zostały klasyfikowane problem, bardzo blisko czasu rzeczywistego. Ten alert w połączeniu z platformą Azure alerty pomogły niemal natychmiast rozwiązać problem. Łączny czas przestojów spowodowanych < 10 minut."
 
-## <a name="live-metrics-stream"></a>Metryki strumień na żywo
+## <a name="live-metrics-stream"></a>Live Metrics Stream
 Można w trosce środowisko wdrażania ostatniej kompilacji. Jeśli występują problemy, chcesz od razu wiedzieć o je tak, aby można Wycofaj w razie potrzeby. Strumień na żywo metryk umożliwia kluczowych metryk z opóźnieniem około jednej sekundy.
 
 ![Metryki na żywo](./media/app-insights-devops/040.png)
@@ -168,7 +169,7 @@ Gdy zostanie zgłoszony alert, usługi Application Insights może automatycznie 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Wprowadzenie do korzystania z usługi Application Insights jest bardzo proste. Główne dostępne opcje to:
 
 * Instrumentacja aplikacji sieci web już uruchomiona. Dzięki temu wszystkie dane telemetryczne wbudowanych wydajności. Nie jest dostępny do [Java](app-insights-java-live.md) i [serwery IIS](app-insights-monitor-performance-live-website-now.md), a także do [aplikacje sieci web Azure](app-insights-azure.md).

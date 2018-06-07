@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1557567170654506c0010fafea7b035a2535aaeb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 5db7d57045acea3ded82e880169ebf02f4151ec5
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643733"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824731"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Tabela wsparcia dla VMware i replikacja serwerów fizycznych do platformy Azure
 
@@ -205,7 +205,7 @@ Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure musi spe
 
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-System operacyjny gościa | Sprawdź [obsługiwanych systemów operacyjnych](#replicated machines). | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
+System operacyjny gościa | Sprawdź [obsługiwanych systemów operacyjnych](#replicated-machines). | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Architektura systemu operacyjnego gościa | 64-bitowych. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Rozmiar dysku systemu operacyjnego | Do 2048 GB. | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.
 Liczba dysków systemu operacyjnego | 1 | Sprawdzenie nie powiedzie się, jeśli jest nieobsługiwany.  

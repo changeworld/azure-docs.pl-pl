@@ -1,6 +1,6 @@
 ---
-title: "Adnotacje dla usługi Application Insights o wersji | Dokumentacja firmy Microsoft"
-description: "Dodaj wdrożenie lub kompilacji znaczników w wykresach Eksploratora metryk w usłudze Application Insights."
+title: Adnotacje dla usługi Application Insights o wersji | Dokumentacja firmy Microsoft
+description: Dodaj wdrożenie lub kompilacji znaczników w wykresach Eksploratora metryk w usłudze Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
 ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807802"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresach metryki w usłudze Application Insights
 Adnotacje w [Eksploratora metryk](app-insights-metrics-explorer.md) wdrożonym nowej kompilacji lub innego istotnego zdarzenia na wykresach. Ułatwiają one Zobacz, czy zmiany będzie miało wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [systemu kompilacji programu Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez flagi [tworzenie je z programu PowerShell](#create-annotations-from-powershell).
@@ -102,7 +103,7 @@ Można również utworzyć adnotacje z żaden proces, który chcesz (bez użycia
 
 Jest łatwy w celu zmodyfikowania skryptu, na przykład do tworzenia adnotacji w ciągu ostatnich.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie elementów roboczych](app-insights-diagnostic-search.md#create-work-item)
 * [Automatyzacja przy użyciu programu PowerShell](app-insights-powershell.md)

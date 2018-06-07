@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 4/20/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 8c8037fe3936485082299250e603b2f3ea3859b9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 12138ac5a173f66d8b6b0041de9f31f4ac326485
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34822959"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Kopia zapasowa i odzyskiwanie danych dla stosu Azure w usłudze Kopia zapasowa infrastruktury
 
@@ -53,7 +54,7 @@ Usług zawiera następujące funkcje.
 - **Poświadczenia**  
   Wymagane konto użytkownika domeny i poświadczenia, na przykład może użyć poświadczeń administratora platformy Azure stosu.
 - **Klucz szyfrowania**  
-  Pliki kopii zapasowej są szyfrowane za pomocą tego klucza. Upewnij się, że przechowywanie tego klucza w bezpiecznej lokalizacji. Po ustawić ten klucz po raz pierwszy lub Obróć klucz w przyszłości, nie można wyświetlić tego klucza z tego interfejsu. Więcej instrukcji do wygenerowania klucza wstępnego, wykonaj skrypty w [włączenia kopii zapasowej Azure stosu przy użyciu programu PowerShell](http://azure-stack-backup-enable-backup-powershell.md).
+  Pliki kopii zapasowej są szyfrowane za pomocą tego klucza. Upewnij się, że przechowywanie tego klucza w bezpiecznej lokalizacji. Po ustawić ten klucz po raz pierwszy lub Obróć klucz w przyszłości, nie można wyświetlić tego klucza z tego interfejsu. Więcej instrukcji do wygenerowania klucza wstępnego, wykonaj skrypty w [włączenia kopii zapasowej Azure stosu przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

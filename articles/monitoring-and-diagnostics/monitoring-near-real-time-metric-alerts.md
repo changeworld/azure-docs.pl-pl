@@ -1,5 +1,5 @@
 ---
-title: Nowsze metryki alerty w monitorze Azure obsługiwane zasobów | Dokumentacja firmy Microsoft
+title: Obsługiwane zasobów dla nowszej alertów metryki Azure Monitor | Dokumentacja firmy Microsoft
 description: Odwołanie do pomocy technicznej, metryki i dzienniki dla nowszej platformy Azure w pobliżu metryki alertów w czasie rzeczywistym.
 author: snehithm
 manager: kmadnani1
@@ -15,24 +15,15 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e09cc1a91daf2e6a043d73ef1f41aa265334dec2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809832"
 ---
-# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Nowsze metryki alerty dla usług Azure w portalu Azure
-Azure Monitor obsługuje teraz metryki nowy typ alertu. Alerty nowszej różnią się od [klasycznego alerty metryki](insights-alerts-portal.md) na kilka sposobów:
-
-- **Ulepszone opóźnienia**: alerty metryki nowszej można uruchomić nawet co minutę. Starsze metryki alerty są zawsze uruchamiane z częstotliwością wynoszącą 5 minut. Alerty dziennika jeszcze dłużej niż minutę opóźnienia z powodu czasu jest potrzebnych do pozyskiwania dzienniki. 
-- **Obsługa metryki wielowymiarowej**: można alertów na metryki wymiarów, dzięki czemu można monitorować tylko segmentu interesujące metryki. 
-- **Większa kontrola nad metryki warunków**: można zdefiniować bardziej rozbudowane reguły alertów. Alerty nowszej obsługuje monitorowanie maksymalnej, minimalnej, średni i całkowitej wartości metryki. 
-- **Połączone monitorowanie wielu metryki**: można monitorować wiele metryk (obecnie do dwóch metryk) przy użyciu jednej reguły. Alert zostanie wywołany, jeśli oba wskaźniki naruszenia ich odpowiednich progów w określonym przedziale czasu. 
-- **Lepsze systemu powiadomień**: Użyj wszystkie alerty nowszej [grupy akcji](monitoring-action-groups.md), które są nazywane grup powiadomień oraz akcje, które mogą być ponownie używane w wielu alertów. Klasycznym alerty metryki i starszych alerty analizy dzienników nie należy używać grup akcji. 
-- **Metryki z dzienników** (ograniczone publicznej wersji zapoznawczej): dziennika danych, przechodząc do analizy dzienników można teraz można wyodrębnić i przekonwertowane na metryki Azure Monitor i następnie alerty o podobnie jak inne metryki. 
-
-Aby dowiedzieć się, jak utworzyć nowszej alert metryki w portalu Azure, zobacz [Tworzenie reguły alertu w portalu Azure](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal). Alert po utworzeniu, można zarządzać za pomocą procedury opisanej w [Zarządzanie alertami w portalu Azure](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
-
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Obsługiwane metody metryki i tworzenia nowych alertów metryki
+Azure obsługuje teraz Monitor [nowy typ alertu metryki](monitoring-overview-unified-alerts.md) mającego istotne korzyści w starszej [klasycznego alerty metryki](insights-alerts-portal.md). Obsługuje alerty starsze [obszerne listy metryki](monitoring-supported-metrics.md). Nowsza alerty obsługuje podzbiór (rosnącym) tego dłuższej listy. W tym artykule wymieniono tego podzbioru. 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portalu, programu PowerShell, interfejsu wiersza polecenia, REST obsługuje
 Obecnie można tworzyć nowszej metryki alerty tylko w portalu Azure [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) lub [szablonów Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania alertów nowszej przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI 2.0) będzie dostępna wkrótce.

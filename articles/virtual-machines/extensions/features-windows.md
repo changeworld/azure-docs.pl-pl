@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88852fe7843e24fde50749e2f994bcfeb596305d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e9e147e2cbe5ff42562d6fcfab62460df48f3d65
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809730"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia maszyn wirtualnych i funkcje systemu Windows
 
@@ -67,7 +68,7 @@ Pakiety rozszerzeń są pobierane z repozytorium rozszerzenia usługi Azure Stor
 > [!IMPORTANT]
 > Zablokowanie dostępu do *168.63.129.1* za pomocą zapory gościa, następnie rozszerzeń kończą się niepowodzeniem niezależnie od powyższego.
 
-Aby pobrać pakiety rozszerzeń i raportowania stanu można tylko agentów. Na przykład, jeśli instalacja rozszerzenia musi pobrać skrypt z serwisu GitHub (niestandardowego skryptu) lub wymagany jest dostęp do usługi Azure Storage (kopia zapasowa Azure), następnie dodatkowe zapory i sieci zabezpieczeń grupy porty muszą być otwarte. Różne rozszerzenia mają różne wymagania, ponieważ są one aplikacji we własnym imieniu. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi NSG Azure dla [magazynu](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Aby pobrać pakiety rozszerzeń i raportowania stanu można tylko agentów. Na przykład, jeśli instalacja rozszerzenia musi pobrać skrypt z serwisu GitHub (niestandardowego skryptu) lub wymagany jest dostęp do usługi Azure Storage (kopia zapasowa Azure), następnie dodatkowe zapory i sieci zabezpieczeń grupy porty muszą być otwarte. Różne rozszerzenia mają różne wymagania, ponieważ są one aplikacji we własnym imieniu. Dla rozszerzeń, które wymagają dostępu do usługi Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi NSG Azure dla [magazynu](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 Agent gościa z systemem Windows nie ma obsługi można przekierować żądania ruchu agenta za pomocą serwera proxy.
 
@@ -134,7 +135,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzureRmVMExtension` Polecenia można uruchomić wszystkie rozszerzenia maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [odwołania zestawu AzureRmVMExtension](https://msdn.microsoft.com/en-us/library/mt603745.aspx).
+`Set-AzureRmVMExtension` Polecenia można uruchomić wszystkie rozszerzenia maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [odwołania zestawu AzureRmVMExtension](https://msdn.microsoft.com/library/mt603745.aspx).
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -419,7 +420,7 @@ Można również usunąć rozszerzenie w portalu Azure w następujący sposób:
 | Niestandardowe rozszerzenie skryptu dla systemu Windows |Uruchom skrypty przed maszyny wirtualnej platformy Azure |[Niestandardowe rozszerzenie skryptu dla systemu Windows](custom-script-windows.md) |
 | Rozszerzenia konfiguracji DSC dla systemu Windows |Rozszerzenia DSC (konfiguracji żądanego stanu) programu PowerShell |[Rozszerzenia konfiguracji DSC dla systemu Windows](dsc-overview.md) |
 | Rozszerzenie Diagnostyki Azure |Zarządzanie Diagnostyka Azure |[Rozszerzenie diagnostyki platformy Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Rozszerzenia dostępu do maszyny Wirtualnej platformy Azure |Zarządzaj użytkownikami i poświadczenia |[Rozszerzenia dostępu do maszyny Wirtualnej dla systemu Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Rozszerzenia dostępu do maszyny Wirtualnej platformy Azure |Zarządzaj użytkownikami i poświadczenia |[Rozszerzenia dostępu do maszyny Wirtualnej dla systemu Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

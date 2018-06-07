@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: danis
-ms.openlocfilehash: 34c16b686a50994862bef14cefec1a4799a343c4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 80f9ecd40c5b9504a6554b95bf374046d8253933
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809781"
 ---
 # <a name="custom-script-extension-for-windows"></a>Niestandardowe rozszerzenie skryptu dla systemu Windows
 
@@ -44,7 +45,7 @@ Można użyć rozszerzenia do użycia poświadczeń magazynu obiektów Blob plat
 
 
 ### <a name="internet-connectivity"></a>Połączenie z Internetem
-Jeśli potrzebujesz można pobrać skryptu zewnętrznie, takich jak usługi GitHub lub usługi Azure Storage, następnie dodatkowe zapory i sieci grupa zabezpieczeń porty muszą być otwarte. Na przykład jeśli skrypt znajduje się w usłudze Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi NSG Azure dla [magazynu](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Jeśli potrzebujesz można pobrać skryptu zewnętrznie, takich jak usługi GitHub lub usługi Azure Storage, następnie dodatkowe zapory i sieci grupa zabezpieczeń porty muszą być otwarte. Na przykład jeśli skrypt znajduje się w usłudze Azure Storage, można zezwolić na dostęp przy użyciu tagów usługi NSG Azure dla [magazynu](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 Jeśli skrypt znajduje się na serwerze lokalnym, a następnie nadal potrzebujesz dodatkowych zapory i sieci zabezpieczeń grupy porty muszą być otwarte.
 

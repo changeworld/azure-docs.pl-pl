@@ -1,11 +1,11 @@
 ---
-title: "Szyfrowanie dysków na Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Jak zaszyfrować dysków wirtualnych w maszyny Wirtualnej systemu Linux, aby zwiększyć bezpieczeństwo, za pomocą 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Szyfrowanie dysków na Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak zaszyfrować dysków wirtualnych w maszyny Wirtualnej systemu Linux, aby zwiększyć bezpieczeństwo, za pomocą 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
 ms.service: virtual-machines-linux
@@ -15,14 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: b87d187eadff98ba84aa6478c2d233f2ec1c203c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c35cd220eab26300404a039467e1a0b35592f23d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824782"
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Jak zaszyfrować dyski wirtualne na maszynie Wirtualnej systemu Linux
 Rozszerzone maszyny wirtualnej (VM) zabezpieczeń i zgodności mogą być szyfrowane dyski wirtualne i samej maszyny Wirtualnej. Maszyny wirtualne są szyfrowane za pomocą kluczy kryptograficznych, które są już zabezpieczone w usłudze Azure Key Vault. Kontrolowanie tych kluczy kryptograficznych i przeprowadzić inspekcję ich używania. Ten artykuł zawiera szczegóły dotyczące sposobu szyfrowania dysków wirtualnych na Maszynę wirtualną systemu Linux przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+> [!NOTE]
+> Upewnij się, że sterownik vfat włączone w Twojej maszyny Wirtualnej systemu Linux. Pewne zabezpieczenia rozwiązań, takich jak poproś wyłączyć sterownik vfat testów porównawczych konfiguracji (ci). Sterownik ten jest wymagane szyfrowanie działało, po zakończeniu procesu.
 
 ## <a name="quick-commands"></a>Szybkie polecenia
 Jeśli chcesz szybko wykonać zadanie, następujące szczegóły sekcji bazie polecenia do szyfrowania dysków wirtualnych w maszynie Wirtualnej. Bardziej szczegółowe informacje i kontekst dla każdego kroku można znaleźć pozostałej części dokumentu, [uruchamiania tutaj](#overview-of-disk-encryption).
@@ -144,8 +148,9 @@ Obsługiwane scenariusze i wymagania dotyczące szyfrowania dysków:
 
 * Następujący serwer z systemem Linux jednostki SKU - Ubuntu, CentOS, SUSE i SUSE Linux Enterprise Server (SLES) i Red Hat Enterprise Linux.
 * Wszystkie zasoby (na przykład usługi Key Vault, konta magazynu i maszyny Wirtualnej) muszą być w tym samym regionie Azure i subskrypcji.
-* Standard A, D, DS, G, GS, etc., series VMs.
+* Standardowa A, D, DS, G, GS, itp., serii maszyn wirtualnych.
 * Aktualizowanie kluczy kryptograficznych w już zaszyfrowany maszyny Wirtualnej systemu Linux.
+* Sterownik VFAT jest włączony na maszynie wirtualnej systemu Linux.
 
 Szyfrowanie dysku nie jest obecnie obsługiwane w następujących scenariuszach:
 

@@ -9,15 +9,16 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 6d107b9264a80c7b280ffed9a50b7bb0ffe354be
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809264"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz metodę uwierzytelniania prawo do rozwiązania tożsamości hybrydowej usługi Azure Active Directory 
 
-W tym artykule rozpoczyna się szereg artykuły, które pomagają organizacjom implementacji kompletnego rozwiązania tożsamości hybrydowej usługi Azure Active Directory (Azure AD). To rozwiązanie zostało opisane jako platforma hybrydowego tożsamości cyfrowych transformacji. Obejmuje on wyników biznesowych i cele organizacji można skupić się na do implementowania rozwiązania z tożsamością hybrydową niezawodne i bezpieczne. 
+W tym artykule rozpoczyna się szereg artykuły, które pomagają organizacjom implementacji kompletnego rozwiązania tożsamości hybrydowej usługi Azure Active Directory (Azure AD). To rozwiązanie zostało przedstawione jako [hybrydowego tożsamości cyfrowych przekształcania Framework](https://aka.ms/aadframework). Obejmuje on wyników biznesowych i cele organizacji można skupić się na do implementowania rozwiązania z tożsamością hybrydową niezawodne i bezpieczne. 
 
 Pierwszy wyników biznesowych platformy wskazuje wymagań organizacji w celu zabezpieczenia procesu uwierzytelniania, gdy użytkownicy uzyskują dostęp do aplikacji w chmurze. Pierwszy celem biznesowych w wyniku zabezpieczonych firm uwierzytelniania jest użytkownikom zalogować się do aplikacji w chmurze przy użyciu ich lokalnych użytkowników i hasła. Ten proces logowania się i jak użytkownicy są uwierzytelniani, umożliwiają wszystko w chmurze.
 
@@ -166,7 +167,7 @@ Poniższych diagramach omówiono składniki wysokiego poziomu architektury wymag
 |Jakie są opcje uwierzytelnianie wieloskładnikowe?|[Usługa Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Usługa Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Usługa Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)<br><br>[Serwer systemu Azure MFA](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA innych firm](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
 |Jakie stanu konta użytkowników są obsługiwane?|Wyłączone konta<br>(maksymalnie 30 minut)|Wyłączone konta<br><br>Konto zablokowane<br><br>Hasło wygasło<br><br>Godziny korzystania z logowania|Wyłączone konta<br><br>Konto zablokowane<br><br>Hasło wygasło<br><br>Godziny korzystania z logowania|
 |Jakie są opcje dostępu warunkowego?|[Azure AD dostęp warunkowy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD dostęp warunkowy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD dostęp warunkowy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Reguły oświadczeń usług AD FS](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Blokuje starszych protokołów obsługiwane?|Nie|Nie|[Tak](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Blokuje starszych protokołów obsługiwane?|[Tak](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Tak](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Tak](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Można dostosować logo, obrazu i opis na stronach logowania?|[Tak, za pomocą usługi Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Tak, za pomocą usługi Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Tak](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |Jakie zaawansowane scenariusze są obsługiwane?|[Blokady inteligentnej hasła](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-secure-passwords)<br><br>[Ujawnione poświadczenia raportów](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-risk-events)|[Blokady inteligentnej hasła](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|System wielooddziałowości uwierzytelniania małych opóźnieniach<br><br>[Blokowanie ekstranetu w usługach AD FS](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integracja z systemów tożsamości innych firm](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

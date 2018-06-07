@@ -1,8 +1,8 @@
 ---
-title: "Automatyzowanie procesów Azure Application Insights z Flow firmy Microsoft"
-description: "Dowiedz się, jak można użyć Microsoft Flow można szybko zautomatyzować powtarzalnych procesów za pomocą łącznika usługi Application Insights."
+title: Automatyzowanie procesów Azure Application Insights z Flow firmy Microsoft
+description: Dowiedz się, jak można użyć Microsoft Flow można szybko zautomatyzować powtarzalnych procesów za pomocą łącznika usługi Application Insights.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -13,10 +13,11 @@ ms.topic: article
 ms.date: 06/25/2017
 ms.author: mbullwin
 ms.openlocfilehash: a1d2787626ed8fa71e3e4e9921ffb8a4680014cb
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807785"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy Azure Application Insights z łącznikiem Flow firmy Microsoft
 
@@ -122,7 +123,7 @@ Po uruchomieniu przepływu określone na liście e-mail adresatów otrzymywać w
 ![Przykładowej wiadomości e-mail](./media/app-insights-automate-with-flow/flow9.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o tworzeniu [zapytania analityczne](app-insights-analytics-using.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).

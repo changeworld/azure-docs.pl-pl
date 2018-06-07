@@ -1,24 +1,21 @@
 ---
-title: "Aplikacja wielowarstwowa platformy .NET używająca usługi Azure Service Bus | Microsoft Docs"
-description: "Samouczek platformy .NET umożliwia utworzenie na platformie Azure aplikacji wielowarstwowej, która używa kolejek usługi Service Bus do komunikacji między warstwami."
+title: Aplikacja wielowarstwowa platformy .NET używająca usługi Azure Service Bus | Microsoft Docs
+description: Samouczek platformy .NET umożliwia utworzenie na platformie Azure aplikacji wielowarstwowej, która używa kolejek usługi Service Bus do komunikacji między warstwami.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
 ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809458"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Aplikacja wielowarstwowa platformy .NET używająca kolejek usługi Azure Service Bus
 
@@ -58,25 +55,19 @@ Ten mechanizm komunikacji ma kilka zalet w stosunku do komunikatów bezpośredni
 
 W poniższych sekcjach omówiono kod, który implementuje tę architekturę.
 
-## <a name="set-up-the-development-environment"></a>Konfigurowanie środowiska deweloperskiego
-Przed rozpoczęciem tworzenia aplikacji dla platformy Azure pobierz potrzebne narzędzia i skonfiguruj swoje środowisko deweloperskie.
-
-1. Zainstaluj zestaw Azure SDK dla platformy .NET ze [strony pobierania](https://azure.microsoft.com/downloads/) zestawów SDK.
-2. W kolumnie **.NET** kliknij używaną wersję programu [Visual Studio](http://www.visualstudio.com). Czynności opisane w tym samouczku są wykonywane w programie Visual Studio 2015, ale można w ich przypadku korzystać z programu Visual Studio 2017.
-3. Gdy zostanie wyświetlony monit o uruchomienie lub zapisanie instalatora, kliknij przycisk **Uruchom**.
-4. W **Instalatorze platformy sieci Web** kliknij przycisk **Zainstaluj** i kontynuuj instalację.
-5. Po zakończeniu instalacji będziesz mieć do dyspozycji wszystkie narzędzia niezbędne do tworzenia aplikacji. Zestaw SDK zawiera narzędzia, które pozwalają w łatwy sposób tworzyć aplikacje dla platformy Azure w programie Visual Studio.
-
 ## <a name="create-a-namespace"></a>Tworzenie przestrzeni nazw
-Następnym krokiem jest utworzenie *przestrzeni nazw* i uzyskanie dla niej [klucza sygnatury dostępu współdzielonego](service-bus-sas.md). Przestrzeń nazw wyznacza granice każdej aplikacji uwidacznianej za pośrednictwem usługi Service Bus. Klucz sygnatury dostępu współdzielonego jest generowany przez system po utworzeniu przestrzeni nazw. Kombinacja nazwy przestrzeni nazw i klucza sygnatury dostępu współdzielonego dostarcza poświadczenia dla usługi Service Bus w celu uwierzytelnienia dostępu do aplikacji.
+
+Pierwszym krokiem jest utworzenie *przestrzeni nazw*i uzyskać [dostępu sygnatury dostępu Współdzielonego](service-bus-sas.md) klucza dla tego obszaru nazw. Przestrzeń nazw wyznacza granice każdej aplikacji uwidacznianej za pośrednictwem usługi Service Bus. Klucz sygnatury dostępu współdzielonego jest generowany przez system po utworzeniu przestrzeni nazw. Kombinacja nazwy przestrzeni nazw i klucza sygnatury dostępu współdzielonego dostarcza poświadczenia dla usługi Service Bus w celu uwierzytelnienia dostępu do aplikacji.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Tworzenie roli sieci Web
+
 W tej sekcji omówione zostanie tworzenie frontonu aplikacji. Najpierw tworzy się strony, które będą wyświetlane w aplikacji.
 Następnie dodaje się kod, który przesyła elementy do kolejki usługi Service Bus i wyświetla informacje o stanie kolejki.
 
 ### <a name="create-the-project"></a>Tworzenie projektu
+
 1. Używając uprawnień administratora, uruchom program Visual Studio: kliknij prawym przyciskiem myszy ikonę programu **Visual Studio**, a następnie kliknij polecenie **Uruchom jako administrator**. Emulator obliczeń platformy Azure, który zostanie omówiony w dalszej części tego artykułu, wymaga uruchomienia programu Visual Studio z uprawnieniami administratora.
    
    W menu **Plik** programu Visual Studio kliknij pozycję **Nowy**, a następnie kliknij pozycję **Projekt**.

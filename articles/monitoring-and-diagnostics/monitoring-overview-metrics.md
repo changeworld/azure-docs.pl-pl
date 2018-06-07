@@ -12,28 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 06/05/2018
 ms.author: ancav
-ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ceabefa47b7627b8a9f952d487f78a96e338838d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824748"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Omówienie metryk w Microsoft Azure
 W tym artykule opisano metryki są platformie Microsoft Azure, ich zalety oraz sposób rozpocząć korzystanie z nich.  
 
 ## <a name="what-are-metrics"></a>Co to są metryk?
 Azure Monitor umożliwia korzystanie z telemetrię, aby uzyskać wgląd w wydajności i kondycji obciążeń na platformie Azure. Typ najważniejszych danych telemetrycznych platformy Azure jest metryki (nazywanych również liczniki wydajności) emitowane przez zasoby najbardziej platformy Azure. Azure Monitor udostępnia kilka sposobów konfigurowania i korzystać z tych metryk do monitorowania i rozwiązywania problemów.
-
-## <a name="what-can-you-do-with-metrics"></a>Co należy zrobić z metryk
-Metryki są cenne źródła danych telemetrycznych i umożliwiają wykonywanie następujących zadań:
-
-* **Śledzenie wyników** zasobu (np. maszyna wirtualna, witryny sieci Web lub logiki aplikacji) kreślenia jego metryki na wykresie portalu i przypinanie wykres do pulpitu nawigacyjnego.
-* **Otrzymuj powiadomienia o problemie** który wpływa na wydajność zasobu, gdy metryki przecina pewnej wartości progowej.
-* **Konfigurowanie automatycznych akcji**, takich jak skalowanie automatyczne zasobu lub wyzwalania elementu runbook, gdy metryki przecina pewnej wartości progowej.
-* **Wykonywać zaawansowane analizy** lub zgłaszanie trendów wydajności lub użycia zasobu.
-* **Archiwum** historii wydajności lub kondycji zasobu **zgodności lub inspekcji** celów.
 
 ## <a name="what-are-the-characteristics-of-metrics"></a>Co to są właściwości metryk?
 Metryki mają następującą charakterystykę:
@@ -43,19 +35,17 @@ Metryki mają następującą charakterystykę:
 * Dostęp można uzyskać **93 dni historii** dla każdego metryki. Można szybko przyjrzeć się ostatnie i miesięczne trendów wydajności lub kondycji zasobu.
 * Niektóre metryki mogą mieć atrybuty pary nazwa wartość o nazwie **wymiary**. Umożliwiają one dodatkowo podzielić i eksplorowania metrykę w sposób bardziej zrozumiałej.
 
-Możesz również:
+## <a name="what-can-you-do-with-metrics"></a>Co należy zrobić z metryk
+Metryki umożliwiają wykonywanie następujących zadań:
 
-* Skonfiguruj metrykę **alert regułę, która wyśle powiadomienie, lub przyjmuje automatycznego akcji** po Metryka przekracza wartość progową, która została zdefiniowana. Skalowania automatycznego jest specjalnych działań automatycznych, który pozwala na skalowanie zasobu do spełnienia żądań przychodzących lub obciążenia na witrynie sieci Web lub zasobów obliczeniowych. Można skonfigurować regułę Ustawienia skalowania automatycznego skalowania przychodzący lub wychodzący w oparciu metryki przekroczenia wartości progowej.
 
-* **Trasy** wszystkie metryki usługi Application Insights lub analizy dzienników, umożliwia błyskawiczne analytics, wyszukiwanie i niestandardowe alerty dla danych metryk z Twoich zasobów. Można również strumienia metryk do Centrum zdarzeń, dzięki któremu można kierować je do usługi Azure Stream Analytics lub niestandardowych aplikacji do analizy w czasie niemal rzeczywistym. Możesz skonfigurować Centrum zdarzeń przesyłania strumieniowego przy użyciu ustawień diagnostycznych.
-
-* **Archiwum metryk do magazynu** dłużej okresu przechowywania lub używać ich na potrzeby raportowania w trybie offline. Twoje metryki może kierować do magazynu obiektów Blob platformy Azure, podczas konfigurowania ustawień diagnostycznych dla zasobu.
-
-* Łatwo odnaleźć, dostęp, i **wyświetlić wszystkie metryki** za pośrednictwem portalu Azure, wybierz zasób i wykreślenia metryki na wykresie.
-
-* **Korzystać z** metryki przy użyciu nowych interfejsów API REST Monitor Azure.
-
-* **Zapytanie** metryki przy użyciu poleceń cmdlet programu PowerShell lub interfejsu API REST i Platform.
+- Skonfiguruj metrykę **alert regułę, która wyśle powiadomienie, lub przyjmuje automatycznego akcji** po Metryka przekracza wartość progową, która została zdefiniowana. Akcje są kontrolowane przez [grupy akcji](monitoring-action-groups.md). Przykładowe działania obejmują poczty e-mail, phone i powiadomień programu SMS, wywołanie elementu webhook uruchamiania elementu runbook i inne. **Funkcja automatycznego skalowania** jest akcję do automatycznego specjalną, która umożliwia skalowanie użytkownik jest zasobem w górę i w dół do obsługi obciążenia jeszcze utrzymywanie kosztów niższe podczas nie pod obciążeniem. Można skonfigurować regułę Ustawienia skalowania automatycznego skalowania przychodzący lub wychodzący w oparciu metryki przekroczenia wartości progowej.
+- **Trasy** wszystkie metryki do *usługi Application Insights* lub *analizy dzienników* umożliwia błyskawiczne analytics, wyszukiwanie i niestandardowe alerty dla danych metryk z Twoich zasobów. Można również strumienia metryk do *Centrum zdarzeń*, dzięki któremu można następnie kierowania ich do usługi Azure Stream Analytics lub niestandardowych aplikacji do analizy w czasie niemal rzeczywistym. Możesz skonfigurować Centrum zdarzeń przesyłania strumieniowego przy użyciu ustawień diagnostycznych.
+- **Archiwum** historii wydajności lub kondycji zasobu zgodności, inspekcji i raportowania w trybie offline.  Twoje metryki może kierować do magazynu obiektów Blob platformy Azure, podczas konfigurowania ustawień diagnostycznych dla zasobu.
+- Użyj **portalu Azure** do odnajdywania, dostęp i wyświetlać wszystkie metryki, po wybraniu zasobu i wykreślenia metryki na wykresie. Można śledzić wydajność zasobu (np. maszyna wirtualna, witryny sieci Web lub aplikacji logiki) przez przypinanie wykres do pulpitu nawigacyjnego.  
+- **Wykonywać zaawansowane analizy** lub zgłaszanie trendów wydajności lub użycia zasobu.
+- **Zapytanie** metryki przy użyciu poleceń cmdlet programu PowerShell lub interfejsu API REST i Platform.
+- **Korzystać z** metryki przy użyciu nowych interfejsów API REST Monitor Azure.
 
   ![Routing metryk w Monitorze systemu Azure](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
@@ -107,9 +97,9 @@ Można przejść do **ustawień diagnostycznych** bloku w obszarze **Monitor** i
 Ustawienie to można skonfigurować za pomocą szablonów usługi Resource Manager [PowerShell](insights-powershell-samples.md), [interfejsu wiersza polecenia Azure](insights-cli-samples.md), lub [interfejsów API REST](https://msdn.microsoft.com/library/dn931943.aspx).
 
 > [!NOTE]
-> Wysyłanie metryki wielowymiarowej za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+> Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych, które Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
 >
 

@@ -14,18 +14,19 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
 ms.author: sethm
-ms.openlocfilehash: 430135113f4b26db6690feb6bc6ddcc0700c6d11
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e3267b54fa0c8593e0f9366c009656f36e4094ef
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807819"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą C
 
 ## <a name="introduction"></a>Wprowadzenie
 Event Hubs to wysoce skalowalny system przyjmowania może obsługiwać miliony zdarzeń na sekundę, włączanie aplikacji do przetwarzania i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Po zebraniu danych do Centrum zdarzeń, można przekształcić i przechowywanie danych przy użyciu dowolnego dostawcy analiz w czasie rzeczywistym lub magazynu klastra.
 
-Aby uzyskać więcej informacji, zobacz [Przegląd usługi Event Hubs](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview).
+Aby uzyskać więcej informacji, zobacz [Przegląd usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview).
 
 Ten przewodnik opisuje sposób wysyłania zdarzeń do Centrum zdarzeń za pomocą aplikacji konsoli w C. Aby uzyskać informacje dotyczące odbierania zdarzeń, kliknij odpowiedni język odbierania w tabeli po lewej stronie zawartości.
 

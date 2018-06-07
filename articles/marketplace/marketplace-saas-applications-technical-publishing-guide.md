@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: pabutler
-ms.openlocfilehash: 48b0b4177dad6262105bf30be2b8714f6ea1228f
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809475"
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>Podręcznik techniczny publikowania aplikacji SaaS
 
@@ -50,7 +51,7 @@ W obu sklepy Azure dostępnych aplikacji SaaS w poniższej tabeli opisano bież�
 | **Usługa Power BI / Dynamics** | Yes | Tak (integracji z usługą Azure AD) |  
 | **Aplikacji SaaS**| Yes | Tak (integracji z usługą Azure AD) |     
 
-Aby uzyskać więcej informacji na temat sklepy Marketplace oraz opis poszczególnych opcji publikowania, zobacz [Marketplace wydawca przewodnika](https://aka.ms/sellerguide) i [opcje publikowania](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
+Aby uzyskać więcej informacji na temat sklepy Marketplace oraz opis poszczególnych opcji publikowania, zobacz [Marketplace wydawca przewodnika](https://aka.ms/sellerguide) i [opcje publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
 
 ## <a name="business-requirements"></a>Wymagania biznesowe
 W modelu SaaS oferują wymagania biznesowe można wykonać równolegle z wymaganiami technicznymi. Większość wymagań biznesowych i informacje są zbierane podczas tworzenia oferty SaaS w portalu dla partnerów chmury. Wymagania biznesowe są następujące: 
@@ -61,7 +62,7 @@ W modelu SaaS oferują wymagania biznesowe można wykonać równolegle z wymagan
 * Trwa konfigurowanie zasady zachowania poufności informacji i warunki użytkowania
 * Definiowanie kontaktów pomocy technicznej  
 
-Aby uzyskać więcej informacji, możesz można znaleźć w temacie [wymagania wstępne dotyczące publikowania witryny marketplace](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
+Aby uzyskać więcej informacji, możesz można znaleźć w temacie [wymagania wstępne dotyczące publikowania witryny marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
 
 ## <a name="technical-requirements"></a>Wymagania techniczne
 
@@ -71,11 +72,11 @@ Aby rozpocząć, firma Microsoft zaleca mających subskrypcję przeznaczonego do
 
 Najlepsze dokumentacji usługi Azure Active Directory, przykłady i wskazówki znajdują się w następujących lokalizacjach: 
 
-* [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+* [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-* [Integracja z usługą Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+* [Integracja z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-* [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+* [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 * [Mapa usługi Azure - bezpieczeństwo i tożsamość](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -124,7 +125,7 @@ W poniższej tabeli opisano poszczególne kroki publikowania główne:
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Aby włączyć prób przy użyciu usługi Azure Active Directory  
 
-Microsoft uwierzytelnia wszyscy użytkownicy portalu Marketplace z usługą Azure AD, dlatego uwierzytelniony użytkownik kliknie za pośrednictwem listy Twojej wersji próbnej w witrynie Marketplace i jest przekierowywany do środowiska wersji próbnej, można udostępnić użytkownika bezpośrednio do korzystania z wersji próbnej, bez konieczności Dodatkowe logowania kroku. Token, który odbiera aplikacji z usługi Azure AD podczas uwierzytelniania zawiera użytkownika cenne informacje, które umożliwia tworzenie konta użytkownika w aplikacji, dzięki któremu można zautomatyzować proces inicjowania obsługi administracyjnej oraz zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji o tokenie, zobacz [tokeny próbki](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft uwierzytelnia wszyscy użytkownicy portalu Marketplace z usługą Azure AD, dlatego uwierzytelniony użytkownik kliknie za pośrednictwem listy Twojej wersji próbnej w witrynie Marketplace i jest przekierowywany do środowiska wersji próbnej, można udostępnić użytkownika bezpośrednio do korzystania z wersji próbnej, bez konieczności Dodatkowe logowania kroku. Token, który odbiera aplikacji z usługi Azure AD podczas uwierzytelniania zawiera użytkownika cenne informacje, które umożliwia tworzenie konta użytkownika w aplikacji, dzięki któremu można zautomatyzować proces inicjowania obsługi administracyjnej oraz zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji o tokenie, zobacz [tokeny próbki](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Używanie programu Azure AD do włączenia uwierzytelniania kliknij 1 do aplikacji lub wersji próbnej wykonuje następujące czynności:  
 * Usprawnia wrażenia z witryny Marketplace do wersji próbnej.  
@@ -140,15 +141,15 @@ Można certyfikować integracją usługi Azure AD w na kilka różnych sposobów
 
 Jeśli już obsługują usługi Azure AD, wykonaj następujące czynności:
 1.  Zarejestrować aplikację w portalu Azure
-2.  Włącz funkcję obsługi wielu dzierżawców w usłudze Azure AD, aby uzyskać środowisko wersji próbnej jednego kliknięcia. Bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).  
+2.  Włącz funkcję obsługi wielu dzierżawców w usłudze Azure AD, aby uzyskać środowisko wersji próbnej jednego kliknięcia. Bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
 Jeśli jesteś nowym użytkownikiem usługi Azure AD federacyjnej usługi logowania jednokrotnego, wykonaj następujące czynności: 
 1.  Zarejestrować aplikację w portalu Azure
-2.  Opracowywanie logowania jednokrotnego przy użyciu usługi Azure AD [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) lub [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Włącz obsługę wielu dzierżawców funkcji w usłudze AAD, aby uzyskać środowisko wersji próbnej jednego kliknięcia bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
+2.  Opracowywanie logowania jednokrotnego przy użyciu usługi Azure AD [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) lub [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
+3.  Włącz obsługę wielu dzierżawców funkcji w usłudze AAD, aby uzyskać środowisko wersji próbnej jednego kliknięcia bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
 
 **Dla pojedynczej dzierżawy aplikacji należy użyć dowolnego z następujących opcji:**  
-* Dodawanie użytkowników do katalogu jako goście przy użyciu [B2B usługi Azure](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+* Dodawanie użytkowników do katalogu jako goście przy użyciu [B2B usługi Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 * Ręcznie Zapewnij prób dla klientów przy użyciu "Skontaktuj się z Me"
 * Tworzenie dla klienta "Test dysk"
 * Tworzenie wielodostępnych przykładową aplikację pokaz logowania jednokrotnego

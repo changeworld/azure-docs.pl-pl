@@ -1,8 +1,8 @@
 ---
-title: "Kontrolowanie ruchu z usługi Azure Traffic Manager w usłudze Azure App Service"
-description: "Ten artykuł zawiera informacje podsumowania dla usługi Azure Traffic Manager w odniesieniu do usługi Azure App Service."
+title: Kontrolowanie ruchu z usługi Azure Traffic Manager w usłudze Azure App Service
+description: Ten artykuł zawiera informacje podsumowania dla usługi Azure Traffic Manager w odniesieniu do usługi Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: efb732e9be62313eb199cb2cfbb1fa4d2cde0282
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824044"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrolowanie ruchu z usługi Azure Traffic Manager w usłudze Azure App Service
 > [!NOTE]
@@ -30,13 +31,13 @@ ms.lasthandoff: 11/29/2017
 ## <a name="introduction"></a>Wprowadzenie
 Usługi Azure Traffic Manager można użyć do kontrolowania sposobu żądania od klientów sieci web są dystrybuowane do aplikacji w usłudze Azure App Service. Gdy punkty końcowe usługi aplikacji są dodawane do profilu Menedżera ruchu Azure, Azure Traffic Manager przechowuje informacje o stanu aplikacji Aplikacja usługi (uruchomionej, zatrzymanej lub został usunięty), dzięki czemu można zdecydować, które z tych punktów końcowych powinny odbierać dane.
 
-## <a name="routing-methods"></a>metody routingu
+## <a name="routing-methods"></a>Metody routingu
 Usługi Azure Traffic Manager korzysta z czterech różnych metod routingu. Te metody są opisane na poniższej liście odnoszą się do usługi Azure App Service.
 
-* **[Priorytet](#priority):** przy użyciu aplikacji głównej dla całego ruchu, a następnie podaj kopii zapasowych w przypadku podstawowej lub tworzenia kopii zapasowej aplikacji są niedostępne.
-* **[Ważone](#weighted):** rozpowszechniają ruchu zestawu aplikacji, równomiernie lub według wagi, które należy zdefiniować.
-* **[Wydajność](#performance):** Jeśli masz aplikacje w różnych lokalizacjach geograficznych przy użyciu tej aplikacji "najbliższy" pod względem najniższe opóźnienia sieci.
-* **[Geograficzne](#geographic):** bezpośredniego użytkowników do określonych aplikacji na podstawie których lokalizacji geograficznej ich zapytanie DNS pochodzi z. 
+* **[Priorytet](../traffic-manager/traffic-manager-routing-methods.md#priority):** przy użyciu aplikacji głównej dla całego ruchu, a następnie podaj kopii zapasowych w przypadku podstawowej lub tworzenia kopii zapasowej aplikacji są niedostępne.
+* **[Ważone](../traffic-manager/traffic-manager-routing-methods.md#weighted):** rozpowszechniają ruchu zestawu aplikacji, równomiernie lub według wagi, które należy zdefiniować.
+* **[Wydajność](../traffic-manager/traffic-manager-routing-methods.md#performance):** Jeśli masz aplikacje w różnych lokalizacjach geograficznych przy użyciu tej aplikacji "najbliższy" pod względem najniższe opóźnienia sieci.
+* **[Geograficzne](../traffic-manager/traffic-manager-routing-methods.md#geographic):** bezpośredniego użytkowników do określonych aplikacji na podstawie których lokalizacji geograficznej ich zapytanie DNS pochodzi z. 
 
 Aby uzyskać więcej informacji, zobacz [metody routingu ruchu Menedżera](../traffic-manager/traffic-manager-routing-methods.md).
 

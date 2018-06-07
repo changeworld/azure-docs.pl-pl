@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 71a49b3d1ce22906a534a71f745685981b93f594
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801902"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824172"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania z tożsamością hybrydową
 W tym zadaniu będziesz definiować hybrydowego tożsamości rozwiązanie, aby spełniać wymagania biznesowe zdefiniowaną w strategii ochrony danych:
@@ -117,22 +117,21 @@ Po uwierzytelnieniu użytkownika przy użyciu usługi Azure AD, należy oszacowa
 
 Każdy interakcji na diagramie pokazano na rysunku x reprezentuje jeden scenariusz kontroli dostępu może być objętych przez usługę Azure AD. Poniżej są opis poszczególnych scenariuszy:
 
-1. Dostęp warunkowy do aplikacji, które są hostowane lokalnie: można używać zarejestrowanych urządzeń z zasadami dostępu dla aplikacji, które są skonfigurowane do korzystania z usług AD FS w systemie Windows Server 2012 R2. Aby uzyskać więcej informacji na temat konfigurowania lokalnego dostępu warunkowego, zobacz [Setting up On-premises Conditional Access using Azure Active Directory Device Registration](active-directory-conditional-access-azure-portal.md) (Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Rejestracja urządzeń w usłudze Azure Active Directory).
+  1. Dostęp warunkowy do aplikacji, które są hostowane lokalnie: można używać zarejestrowanych urządzeń z zasadami dostępu dla aplikacji, które są skonfigurowane do korzystania z usług AD FS w systemie Windows Server 2012 R2. Aby uzyskać więcej informacji na temat konfigurowania lokalnego dostępu warunkowego, zobacz [Setting up On-premises Conditional Access using Azure Active Directory Device Registration](active-directory-conditional-access-azure-portal.md) (Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Rejestracja urządzeń w usłudze Azure Active Directory).
 
-2. Kontrola dostępu do portalu Azure: Azure umożliwia również kontrolować dostęp do portalu przy użyciu kontroli dostępu opartej na rolach (RBAC)). Ta metoda umożliwia firmie, aby ograniczyć liczbę operacji, które osoby mogą wykonywać w portalu Azure. Za pomocą RBAC kontrolować dostęp do portalu, Administratorzy IT mogą delegować dostęp przy użyciu następujących metod zarządzania dostępu:
+  2. Kontrola dostępu do portalu Azure: Azure umożliwia również kontrolować dostęp do portalu przy użyciu kontroli dostępu opartej na rolach (RBAC)). Ta metoda umożliwia firmie, aby ograniczyć liczbę operacji, które osoby mogą wykonywać w portalu Azure. Za pomocą RBAC kontrolować dostęp do portalu, Administratorzy IT mogą delegować dostęp przy użyciu następujących metod zarządzania dostępu:
 
-    * Przypisanie oparte na grupach roli: może przypisać dostęp do grup usługi Azure AD, które można synchronizować z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, wprowadzone w narzędzi i procesów do zarządzania grupami organizacji. Umożliwia także funkcję delegowanej grupy zarządzania programu Azure AD Premium.
-    * Użyć wbudowanych ról na platformie Azure: można użyć trzech ról — właściciela, współautora i czytnika, aby upewnić się, że użytkownicy i grupy mają uprawnienia do wykonywania zadań, należy wykonać swoje zadania.
-    * Szczegółowe dostęp do zasobów: można przypisać role do użytkowników i grup dla określonej subskrypcji, grupy zasobów lub pojedynczych zasobów platformy Azure, takich jak witryny sieci Web lub bazy danych. W ten sposób można upewnij się, że użytkownicy mają dostęp do wszystkich zasobów, które są im potrzebne i Brak dostępu do zasobów, które nie muszą zarządzać.
+   - Przypisanie oparte na grupach roli: może przypisać dostęp do grup usługi Azure AD, które można synchronizować z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, wprowadzone w narzędzi i procesów do zarządzania grupami organizacji. Umożliwia także funkcję delegowanej grupy zarządzania programu Azure AD Premium.
+   - Użyć wbudowanych ról na platformie Azure: można użyć trzech ról — właściciela, współautora i czytnika, aby upewnić się, że użytkownicy i grupy mają uprawnienia do wykonywania zadań, należy wykonać swoje zadania.
+   -  Szczegółowe dostęp do zasobów: można przypisać role do użytkowników i grup dla określonej subskrypcji, grupy zasobów lub pojedynczych zasobów platformy Azure, takich jak witryny sieci Web lub bazy danych. W ten sposób można upewnij się, że użytkownicy mają dostęp do wszystkich zasobów, które są im potrzebne i Brak dostępu do zasobów, które nie muszą zarządzać.
 
-> [!NOTE]
-> Tworzenia aplikacji, aby dostosować kontroli dostępu dla nich istnieje również możliwość ról aplikacji w usłudze Azure AD na potrzeby autoryzacji. Przejrzyj to [przykład aplikacji sieci Web-RoleClaims-DotNet](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) na temat tworzenia aplikacji w taki sposób, aby móc używać tej funkcji.
->
->
+   > [!NOTE]
+   > Tworzenia aplikacji, aby dostosować kontroli dostępu dla nich istnieje również możliwość ról aplikacji w usłudze Azure AD na potrzeby autoryzacji. Przejrzyj to [przykład aplikacji sieci Web-RoleClaims-DotNet](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) na temat tworzenia aplikacji w taki sposób, aby móc używać tej funkcji.
 
-3. Dostęp warunkowy dla aplikacji usługi Office 365 w usłudze Microsoft Intune: Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach na dostęp do usług. Aby uzyskać więcej informacji, zobacz artykuł [Conditional Access Device Policies for Office 365 services](active-directory-conditional-access-device-policies.md) (Zasady dostępu warunkowego urządzeń dla usług Office 365).
 
-4. Dostęp warunkowy dla aplikacji Saas: [ta funkcja](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) umożliwia konfigurowanie reguł dostępu do poszczególnych aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników nie znajduje się w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można stosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymaganie uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji w sieci.
+  3. Dostęp warunkowy dla aplikacji usługi Office 365 w usłudze Microsoft Intune: Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach na dostęp do usług. Aby uzyskać więcej informacji, zobacz artykuł [Conditional Access Device Policies for Office 365 services](active-directory-conditional-access-device-policies.md) (Zasady dostępu warunkowego urządzeń dla usług Office 365).
+
+  4. Dostęp warunkowy dla aplikacji Saas: [ta funkcja](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) umożliwia konfigurowanie reguł dostępu do poszczególnych aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników nie znajduje się w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można stosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymaganie uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji w sieci.
 
 Ponieważ opcje kontroli dostępu używa wielowarstwowych podejście, porównanie te opcje nie są stosowane dla tego zadania. Upewnij się, że są wykorzystuje wszystkie opcje dostępne dla każdego scenariusza, który należy kontrolować dostęp do zasobów.
 

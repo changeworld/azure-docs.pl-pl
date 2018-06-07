@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bde8e68eeb63e76a0dde40a09eededde8a545a83
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30763f88a7d78678411abd7fe7cc6375e00cb6f6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595091"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824272"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 Kreator instalacji Azure AD Connect oferuje dwa różne ścieżki:
@@ -187,9 +187,9 @@ Konto ma również przyznane uprawnienia do plików, kluczy rejestru i inne obie
 ### <a name="azure-ad-service-account"></a>Konto usługi Azure AD
 Konto w usłudze Azure AD jest tworzone do użycia usługi synchronizacji. To konto może zostać zidentyfikowane na podstawie nazwy wyświetlanej.
 
-![Konto usługi AD](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
+![Konto usługi AD](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount2.png)
 
-Nazwa serwera, którego konto jest używane w można zidentyfikować w drugiej części nazwy użytkownika. Na rysunku nazwa serwera jest FABRIKAMCON. Jeśli masz przemieszczania serwerów, każdy serwer ma własnego konta.
+Nazwa serwera, którego konto jest używane w można zidentyfikować w drugiej części nazwy użytkownika. Na rysunku nazwa serwera jest DC1. Jeśli masz przemieszczania serwerów, każdy serwer ma własnego konta.
 
 Konto usługi jest tworzone długo złożone hasło, które nie wygasa. Ma przyznane uprawnienia roli specjalne **konta synchronizacji katalogu** która ma tylko uprawnienia do wykonywania zadań synchronizacji katalogu. Nie można udzielić tej roli wbudowanych specjalne poza Kreatora programu Azure AD Connect. Azure portal zawiera tego konta z rolą **użytkownika**.
 

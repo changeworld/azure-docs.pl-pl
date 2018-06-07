@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 41a62c0c77b177179907d8e4a7631af889cd8bd6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798818"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824591"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik projektowania tabeli magazynu systemu Azure: Projektowanie skalowalności i wydajności tabele
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -523,7 +523,7 @@ Włączyć spójności po pewnym czasie działania przez granice partycji lub gr
 #### <a name="context-and-problem"></a>Kontekst i problem
 EGTs włączać atomic transakcji między wiele jednostek, które mają ten sam klucz partycji. Względu na wydajność i skalowalność, można zdecydować o przechowywania obiektów, które mają wymagań spójności w osobnych partycji lub w systemie magazynu oddzielne: w takiej sytuacji nie można użyć EGTs, aby zachować spójność. Na przykład może być wymagane, aby zachować spójność ostateczna:  
 
-* Jednostki przechowywana w dwóch różnych partycji w tej samej tabeli w różnych tabel w w różnych kont magazynu.  
+* Jednostek przechowywanych w dwóch różnych partycji w tej samej tabeli, różnych tabel lub różnych kont magazynu.  
 * Jednostki przechowywana w usłudze tabel i obiektu blob przechowywane w usłudze obiektów Blob.  
 * Jednostka przechowywane w usłudze tabel i plik w systemie plików.  
 * Jednostki magazynu w usłudze tabel jeszcze indeksowany przy użyciu usługi Azure Search.  
@@ -718,7 +718,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 Pobrać *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość sortujące odwrotnej daty i czasu kolejności.  
 
 #### <a name="context-and-problem"></a>Kontekst i problem
-Typowym wymaganiem jest można pobrać ostatnio utworzonych jednostki, na przykład 10 najnowszych wydatków oświadczenia złożone przez pracownika. Obsługa wysyła zapytanie do tabeli **$top** operacji do zwrócenia pierwszego zapytania *n* jednostek z zestawu: Brak operacji równoważne zapytania do zwrócenia n ostatnich jednostki w zestawie.  
+Typowym wymaganiem jest aby można było pobrać ostatnio utworzonych jednostki, na przykład 10 najnowszych wydatków oświadczenia złożone przez pracownika. Obsługa wysyła zapytanie do tabeli **$top** operacji do zwrócenia pierwszego zapytania *n* jednostek z zestawu: Brak operacji równoważne zapytania do zwrócenia n ostatnich jednostki w zestawie.  
 
 #### <a name="solution"></a>Rozwiązanie
 Przechowywanie jednostek przy użyciu **RowKey** czy naturalnie sortowania w kolejności odwrotnej daty/godziny przy użyciu tak ostatni wpis jest zawsze pierwsza z nich w tabeli.  
@@ -1059,7 +1059,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 #### <a name="server-side-projection"></a>Projekcja po stronie serwera
-Pojedynczy element można mieć maksymalnie 255 właściwości i mieć rozmiar maksymalnie 1 MB. Gdy zapytanie tabeli i pobrać jednostek, mogą nie być potrzebne wszystkie właściwości i można uniknąć transferu danych niepotrzebnie (w celu zmniejszenia opóźnienia i kosztów). Projekcja po stronie serwera umożliwia transfer tylko właściwości, które należy. Poniższy przykład jest pobiera tylko **E-mail** właściwości (wraz z **PartitionKey**, **RowKey**, **sygnatury czasowej**, i **ETag**) z jednostek wybrane przez zapytanie.  
+Pojedynczy element można mieć maksymalnie 255 właściwości i mieć rozmiar maksymalnie 1 MB. Gdy zapytanie tabeli i pobrać jednostek, mogą nie być potrzebne wszystkie właściwości i można uniknąć transferu danych niepotrzebnie (w celu zmniejszenia opóźnienia i kosztów). Projekcja po stronie serwera umożliwia transfer tylko właściwości, które należy. Poniższy przykład pobiera tylko **E-mail** właściwości (wraz z **PartitionKey**, **RowKey**, **sygnatury czasowej**i **ETag**) z jednostek wybrane przez zapytanie.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(

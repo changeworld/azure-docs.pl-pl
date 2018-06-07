@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5a9bde85e894f2f4283348771dc5cacc7a08f23
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824659"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach usługi Azure Resource Manager
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Zdefiniuj kolejność wdrażania zasobów w szablonach Menedżera zasobów Azure
 Dla danego zasobu może być inne zasoby, które muszą istnieć przed wdrożeniem zasobu. Na przykład serwer SQL musi istnieć przed podjęciem próby wdrożenia bazy danych SQL. Ta relacja należy zdefiniować oznaczając jednego zasobu jako zależny od innego zasobu. Definiowanie zależności z **dependsOn** elementu, lub za pomocą **odwołania** funkcji. 
 
-Menedżer zasobów ocenia zależności między zasobami i wdraża je w porządku zależnych. Jeśli zasoby nie są zależne od siebie, Menedżer zasobów wdraża je równolegle. Wystarczy Definiowanie zależności dla zasobów, które zostały wdrożone w tym samym szablonie. 
+Menedżer zasobów ocenia zależności między zasobami i wdraża je w porządku zależnych. Gdy zasoby nie są zależne od siebie, Menedżer zasobów wdraża je równolegle. Wystarczy Definiowanie zależności dla zasobów, które zostały wdrożone w tym samym szablonie. 
 
 ## <a name="dependson"></a>dependsOn
 W szablonie dependsOn element umożliwia zdefiniowanie jednego zasobu jako zależną na jeden lub więcej zasobów. Wartość może być rozdzielana przecinkami lista nazw zasobów. 
@@ -59,10 +60,10 @@ Podczas definiowania zależności, mogą obejmować przestrzeń nazw dostawcy za
 ]
 ``` 
 
-Gdy może żądać na potrzeby mapowania relacje między zasobami dependsOn, ważne jest zrozumienie, dlaczego podczas jej wykonywania. Na przykład do dokumentów, jak zasoby są połączone ze sobą, dependsOn nie jest to prawy rozwiązanie. Nie można wykonać zapytania, które zasoby zostały zdefiniowane w elemencie dependsOn po wdrożeniu. Za pomocą dependsOn, możesz potencjalnie wpływ czas wdrażania, ponieważ Menedżer zasobów nie wdraża równoległych dwa zasoby, które mają zależności. Relacje między zasobami dokumentu, zamiast tego użyć [łączenia zasobów](/rest/api/resources/resourcelinks).
+Gdy może żądać na potrzeby mapowania relacje między zasobami dependsOn, ważne jest zrozumienie, dlaczego podczas jej wykonywania. Na przykład do dokumentów, jak zasoby są połączone ze sobą, dependsOn nie jest podejście. Nie można wykonać zapytania, które zasoby zostały zdefiniowane w elemencie dependsOn po wdrożeniu. Za pomocą dependsOn, możesz potencjalnie wpływ czas wdrażania, ponieważ Menedżer zasobów nie wdrożyć w równoległych dwa zasoby, które mają zależności. Relacje między zasobami dokumentu, zamiast tego użyć [łączenia zasobów](/rest/api/resources/resourcelinks).
 
 ## <a name="child-resources"></a>Zasoby podrzędne
-Właściwość zasobów pozwala określ zasoby podrzędne, które odnoszą się do zasobu został określony. Zasoby podrzędne może być tylko zdefiniowanych głębokości pięciu poziomów. Należy pamiętać nie utworzono niejawne zależności między zasobu podrzędnego i zasobu nadrzędnego. Jeśli potrzebujesz zasobu podrzędnego do wdrożenia po zasobu nadrzędnego musi jawnie określać tej zależności z właściwością dependsOn. 
+Właściwość zasobów pozwala określ zasoby podrzędne, które odnoszą się do zasobu został określony. Zasoby podrzędne może być tylko zdefiniowanych głębokości pięciu poziomów. Należy pamiętać, że niejawne zależności nie jest tworzone między zasobu podrzędnego i zasobu nadrzędnego. Jeśli potrzebujesz zasobu podrzędnego do wdrożenia po zasobu nadrzędnego musi jawnie określać tej zależności z właściwością dependsOn. 
 
 Każdy zasób nadrzędnego akceptuje tylko niektóre typy zasobów jako zasoby podrzędne. Typy zasobów akceptowane są określone w [schematu szablonu](https://github.com/Azure/azure-resource-manager-schemas) zasobu nadrzędnego. Nazwa typu zasobu podrzędnego zawiera nazwę typu zasobu nadrzędnego, takich jak **Microsoft.Web/sites/config** i **Microsoft.Web/sites/extensions** są oba zasoby podrzędne o **Microsoft.Web/sites**.
 
@@ -106,11 +107,19 @@ W poniższym przykładzie pokazano, SQL server i bazy danych SQL. Zwróć uwagę
 ]
 ```
 
-## <a name="reference-function"></a>Odwołanie do funkcji
-[Odwołania funkcja](resource-group-template-functions-resource.md#reference) umożliwia wyrażenie ma być wartość z innych pary nazw i wartości JSON lub zasobów środowiska uruchomieniowego. Wyrażenia odwołania niejawnie deklaruje, że jeden zasób jest zależny od innego. Ogólny format to:
+## <a name="reference-and-list-functions"></a>Funkcje dokumentacja i listy
+[Odwołania funkcja](resource-group-template-functions-resource.md#reference) umożliwia wyrażenie ma być wartość z innych pary nazw i wartości JSON lub zasobów środowiska uruchomieniowego. [Listy * funkcje](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) zwracane wartości dla zasobu z listy operacji.  Odwołanie i listy wyrażeń niejawnie zadeklarować, że jeden zasób jest zależny od innego, po wdrożeniu w tym samym szablonie żądanego zasobu i określone na podstawie swojej nazwy (nie identyfikator zasobu). Jeśli identyfikator zasobu jest przekazywane do odwołania lub listę funkcji, nie jest tworzona niejawne odwołanie.
+
+Jest ogólny format odwołanie funkcji:
 
 ```json
 reference('resourceName').propertyPath
+```
+
+Funkcja listKeys formatu jest:
+
+```json
+listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
 W poniższym przykładzie punktu końcowego usługi CDN jawnie zależy od profilu CDN i niejawnie zależy od aplikacji sieci web.
@@ -140,12 +149,12 @@ Podczas podejmowania decyzji o zależności, które można ustawić, skorzystaj 
 
 * Jak to możliwe, należy ustawić jako kilka zależności.
 * Ustaw zasobu podrzędnego jako zależy od jego zasobu nadrzędnego.
-* Użyj **odwołania** funkcji, aby ustawić niejawne zależności między zasobami, które należy udostępnić właściwości. Nie dodawaj jawne zależności (**dependsOn**) podczas niejawnego zależności został już zdefiniowany. Takie podejście zmniejsza ryzyko niepotrzebnych zależności. 
+* Użyj **odwołania** funkcji i podaj nazwę zasobu, aby ustawić niejawne zależności między zasobami, które należy udostępnić właściwości. Nie dodawaj jawne zależności (**dependsOn**) Jeśli zdefiniowano niejawne zależności. Takie podejście zmniejsza ryzyko niepotrzebnych zależności. 
 * Ustaw zależność zasobu nie może być **utworzony** bez funkcji z innego zasobu. Nie należy ustawiać zależność, jeśli zasoby komunikować się tylko po wdrożeniu.
-* Let zależności cascade bez jawnie ich ustawienia. Na przykład na komputerze wirtualnym zależy od interfejsu sieci wirtualnej, a interfejs sieci wirtualnej jest zależny od sieci wirtualnej i publiczne adresy IP. W związku z tym maszyny wirtualnej jest wdrożone po wszystkich trzech zasoby, ale nie ustawiaj jawnie maszynę wirtualną jako zależne od wszystkich trzech zasobów. Takie podejście wyjaśnia, kolejność zależności i ułatwia później zmienić szablonu.
+* Let zależności cascade bez jawnie ich ustawienia. Na przykład na komputerze wirtualnym zależy od interfejsu sieci wirtualnej, a interfejs sieci wirtualnej jest zależny od sieci wirtualnej i publiczne adresy IP. W związku z tym maszyny wirtualnej jest wdrożone zasoby po wszystkich trzech, ale nie jest jawnie ustawiana maszynę wirtualną jako zależne od wszystkich trzech zasobów. Takie podejście wyjaśnia, kolejność zależności i ułatwia później zmienić szablonu.
 * Jeśli wartość można określić przed wdrożeniem, spróbuj wdrażanie zasobu bez zależności. Na przykład jeśli wartość konfiguracji wymaga innego zasobu, może być konieczne nie zależności. W tych wskazówkach nie zawsze działa, ponieważ niektóre zasoby sprawdzenia istnienia innego zasobu. Jeśli wystąpi błąd, należy dodać zależności. 
 
-Menedżer zasobów identyfikuje zależności cykliczne podczas walidacji szablonu. Jeśli zostanie wyświetlony komunikat o błędzie informujący, że istnieje zależność cykliczną, ocenić szablonu czy wszelkie zależności nie są wymagane i mogą zostać usunięte. Jeśli usuwanie zależności nie działa, można uniknąć zależności cykliczne przez przeniesienie niektórych operacji rozmieszczania w zasoby podrzędne, które są wdrażane po zasoby, które mają zależność cykliczną. Załóżmy na przykład wdrażasz dwóch maszyn wirtualnych, ale należy ustawić na każdej z nich, która odwołuje się do innych właściwości. Można je wdrożyć w następującej kolejności:
+Menedżer zasobów identyfikuje zależności cykliczne podczas walidacji szablonu. Jeśli zostanie wyświetlony komunikat o błędzie informujący, że istnieje zależność cykliczną, ocenić szablonu czy wszelkie zależności nie są potrzebne i mogą zostać usunięte. Jeśli usuwanie zależności nie działa, można uniknąć zależności cykliczne przez przeniesienie niektórych operacji rozmieszczania w zasoby podrzędne, które są wdrażane po zasoby, które mają zależność cykliczną. Na przykład wdrażasz dwóch maszyn wirtualnych, ale należy ustawić na każdej z nich, która odwołuje się do innych właściwości. Można je wdrożyć w następującej kolejności:
 
 1. vm1
 2. vm2

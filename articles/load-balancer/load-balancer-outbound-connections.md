@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2e6b8dd5e0ec0ae73fff4a25ad79045e3414e9cc
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825003"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączeń wychodzących na platformie Azure
 
@@ -140,7 +141,7 @@ Taką samą liczbę portów SNAT są odpowiednio wstępnie przydzielonych dla pr
 >[!IMPORTANT]
 >Standardowe SNAT SKU programowania na protokół transportu IP ani pochodzi z reguły równoważenia obciążenia.  Jeśli tylko istnieje reguła równoważenia obciążenia TCP, SNAT jest dostępna tylko dla protokołu TCP. Jeśli masz tylko TCP reguły równoważenia obciążenia i wymagają SNAT wychodzący protokołu UDP dla, należy utworzyć regułę z tego samego serwera sieci Web do tej samej puli wewnętrznej bazy danych z równoważeniem obciążenia UDP.  To spowoduje wyzwolenie SNAT programowania dla protokołu UDP.  Sonda reguły lub kondycji pracy nie jest wymagane.  Podstawowy SKU SNAT zawsze programów SNAT zarówno protokołu transportowego IP, niezależnie od protokołu transportu określone w regułę równoważenia obciążenia.
 
-Azure preallocates SNAT portów z konfiguracją protokołu IP karty sieciowej z każdej maszyny Wirtualnej. Po dodaniu konfiguracji IP do puli, porty SNAT są wstępnie przydzielonych dla tej konfiguracji IP na podstawie rozmiaru puli wewnętrznej bazy danych. Po utworzeniu przepływów wychodzących [PAT](#pat) dynamicznie zużywa (w granicach przydzielonych wstępnie) i zwalnia te porty, po zamknięciu przepływ lub [limitów czasu bezczynności](#ideltimeout) stanie.
+Azure preallocates SNAT portów z konfiguracją protokołu IP karty sieciowej z każdej maszyny Wirtualnej. Po dodaniu konfiguracji IP do puli, porty SNAT są wstępnie przydzielonych dla tej konfiguracji IP na podstawie rozmiaru puli wewnętrznej bazy danych. Po utworzeniu przepływów wychodzących [PAT](#pat) dynamicznie zużywa (w granicach przydzielonych wstępnie) i zwalnia te porty, po zamknięciu przepływ lub [limitów czasu bezczynności](#idletimeout) stanie.
 
 W poniższej tabeli przedstawiono preallocations portu SNAT warstw rozmiary puli wewnętrznej bazy danych:
 

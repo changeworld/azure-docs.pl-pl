@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83204132a7494dc766420520eeaf2362c98d878f
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 43cfb16e9471736c0f112ef879faaf01badebc4f
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801817"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824952"
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -56,7 +56,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko zaktualizować ocen         |
-|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |Windows PowerShell 4.0 lub nowszy jest wymagany ([Pobierz WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Windows PowerShell w wersji 5.1 ([Pobierz 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) jest zalecane w przypadku bardziej niezawodne.         |
+|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |.NET framework 4.5 lub nowszy jest wymagany ([Pobierz .NET Framework](/dotnet/framework/install/guide-for-developers)).</br> Windows PowerShell 4.0 lub nowszy jest wymagany ([Pobierz WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Windows PowerShell w wersji 5.1 ([Pobierz 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) jest zalecane w przypadku bardziej niezawodne.         |
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |

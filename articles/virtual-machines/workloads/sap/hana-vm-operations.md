@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 959a483d293caa45180c946e92ac824fc56db084
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 61369fbf864db28ee0a9415bbb87dca2a185ed43
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809679"
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA w podręczniku obsługi platformy Azure
 Ten dokument zawiera wskazówki dotyczące systemów SAP HANA, które zostały wdrożone na Azure macierzysty maszynach wirtualnych (VM). Ten dokument nie ma zastąpić dokumentacji SAP standardowe zawiera następującą zawartość:
@@ -105,7 +106,6 @@ W poniższej tabeli przedstawiono konfigurację typach maszyn wirtualnych, któr
 > W scenariuszach produkcji, sprawdź, czy określonego typu maszyny Wirtualnej jest obsługiwana dla SAP HANA przez SAP w [SAP dokumentacji IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
 
-
 | JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z MASZYNA WIRTUALNA WE/WY<br /> Przepływność | / hana/danych i dziennika/hana /<br /> paski LVM lub MDADM | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
@@ -113,6 +113,9 @@ W poniższej tabeli przedstawiono konfigurację typach maszyn wirtualnych, któr
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
 | M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
 | M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
@@ -139,6 +142,9 @@ Jeśli chcesz korzystać z [maszyny wirtualnej platformy Azure z jednym umowy SL
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
 | E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
 | GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
+| M32ts | 192 giB | 500 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
 | M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
 | M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
@@ -163,6 +169,9 @@ Zalecane konfiguracje następującą postać:
 
 | JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z MASZYNA WIRTUALNA WE/WY<br /> Przepływność | / hana/danych | / hana/dziennika | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
+| M32ts | 192 giB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
 | M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
 | M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
@@ -176,6 +185,7 @@ Istnieją ograniczenia Azure Premium magazynu wirtualne dyski twarde dla maszyny
 
 - 16 dysków VHD dla M128xx maszyny Wirtualnej
 - 8 dysków VHD dla M64xx maszyny Wirtualnej
+- 4 wirtualne dyski twarde dla M32xx maszyny Wirtualnej
 
 Bardziej szczegółowe instrukcje dotyczące włączania akceleratora zapisu Azure można znaleźć w artykule [zapisu akceleratora](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 

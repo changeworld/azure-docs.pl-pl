@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: ryanwi
-ms.openlocfilehash: b2b3562f65e7e861b7e4dff7b7c26d58081ff29e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8b6bc791700e6811f5681ee70329e4d2ac05991
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824615"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Wyświetl dzienniki dla usługi kontenera sieci szkieletowej usług
 Azure Service Fabric jest orchestrator kontenera i obsługuje zarówno [kontenery systemu Linux i Windows](service-fabric-containers-overview.md).  W tym artykule opisano sposób wyświetlania dzienników kontenera uruchomioną usługę kontenera lub martwy kontenera, aby zdiagnozować i rozwiązać problemy.
@@ -34,6 +35,14 @@ W widoku drzewa, Znajdź pakiet kodu na *_lnxvm_0* węzła rozwijając **węzł�
 
 ## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>Uzyskiwanie dostępu do dzienników martwy lub awaria kontenera
 Począwszy od v6.2 możesz można również pobrać dzienniki dla kontenera martwy lub awaria przy użyciu [interfejsów API REST](/rest/api/servicefabric/sfclient-index) lub [usługi sieci szkieletowej interfejsu wiersza polecenia (SFCTL)](service-fabric-cli.md) poleceń.
+
+### <a name="set-container-retention-policy"></a>Ustawianie zasad przechowywania kontenerów
+Aby ułatwić diagnozowanie błędów uruchamiania kontenerów, usługa Service Fabric (w wersji 6.1 lub nowszej) obsługuje przechowywanie kontenerów, w przypadku których działanie zostało przerwane lub uruchamianie nie powiodło się. Te zasady można ustawić w pliku **ApplicationManifest.xml**, jak pokazano w poniższym fragmencie kodu:
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+ ```
+
+Ustawienie **ContainersRetentionCount** określa liczbę kontenerów do przechowywania w przypadku wystąpienia w nich błędu. Jeśli zostanie określona wartość ujemna, będą przechowywane wszystkie kontenery z błędami. Gdy **ContainersRetentionCount** atrybut nie jest określony, Brak kontenerów zostaną zachowane. Atrybut **ContainersRetentionCount** obsługuje też parametry aplikacji, dzięki czemu użytkownicy mogą określać różne wartości dla klastrów testowych i produkcyjnych. W przypadku używania tej funkcji można zastosować ograniczenia rozmieszczania, tak aby obiektem docelowym usługi kontenera był określony węzeł, co zapobiega przenoszeniu usługi kontenera do innych węzłów. Wszelkie kontenery przechowywane przy użyciu tej funkcji należy usunąć ręcznie.
 
 ### <a name="rest"></a>REST
 Użyj [Pobierz dzienniki wdrożone na węzeł kontenera](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) operację, aby pobrać dzienniki dla kontenera awaria. Określ nazwę węzła, który kontenera była uruchomiona na, nazwa aplikacji, nazwa manifestu usługi i nazwy pakietu kodu.  Określ `&Previous=true`. Odpowiedź będzie zawierać dzienniki kontenera martwy kontenera wystąpienia pakiet kodu.

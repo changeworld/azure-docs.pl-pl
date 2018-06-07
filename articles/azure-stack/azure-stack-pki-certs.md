@@ -3,7 +3,7 @@ title: Azure wymagania dotyczące certyfikatów infrastruktury kluczy publicznyc
 description: W tym artykule opisano wymagania dotyczące wdrażania certyfikatu PKI stosu Azure stosu Azure zintegrowanych systemów.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
-ms.author: jeffgilb
+ms.date: 06/06/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823853"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure stosu infrastruktury klucza publicznego certyfikatu
 
@@ -59,7 +60,7 @@ W tabeli w tej sekcji opisano certyfikatów PKI publiczny punkt końcowy stosu A
 
 Certyfikaty z odpowiedniej nazwy DNS dla każdego punktu końcowego infrastruktury publicznych stosu Azure są wymagane. Nazwa DNS każdego punktu końcowego jest wyrażona w formacie:  *&lt;prefiks >.&lt; region >. &lt;fqdn >*. 
 
-Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, regionu i nazwy domen zewnętrznych, które wybrano systemu Azure stosu. Na przykład jeśli nazwa regionu *Redmond* i nazwa domeny zewnętrznej *contoso.com*, nazwy DNS musi format *&lt;prefiks >. redmond.contoso.com*.  *&lt;Prefiks >* wartości są ustalonym przez firmę Microsoft do opisywania zabezpieczone przez certyfikatu punktu końcowego. Ponadto  *&lt;prefiks >* wartości infrastruktury zewnętrznych punktów końcowych, które są zależne od usługi Azure stosu, który korzysta z określonego punktu końcowego. 
+Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, regionu i nazwy domen zewnętrznych, które wybrano systemu Azure stosu. Na przykład jeśli nazwa regionu *Redmond* i nazwa domeny zewnętrznej *contoso.com*, nazwy DNS musi format *&lt;prefiks >. redmond.contoso.com*. *&lt;Prefiks >* wartości są ustalonym przez firmę Microsoft do opisywania zabezpieczone przez certyfikatu punktu końcowego. Ponadto  *&lt;prefiks >* wartości infrastruktury zewnętrznych punktów końcowych, które są zależne od usługi Azure stosu, który korzysta z określonego punktu końcowego. 
 
 > [!note]  
 > Certyfikaty mogą być dostarczane jako jeden symbol wieloznaczny certyfikat obejmujące wszystkie przestrzenie nazw w polu podmiotu i alternatywnej nazwy podmiotu (SAN) kopiowane do wszystkich katalogów lub poszczególne certyfikaty dla każdego punktu końcowego skopiowany do odpowiedniego katalogu. Należy pamiętać, że obie te opcje wymagają użycia certyfikatów z symbolami wieloznacznymi takie jak dla punktów końcowych **acs** i magazyn kluczy, w którym są one wymagane. 

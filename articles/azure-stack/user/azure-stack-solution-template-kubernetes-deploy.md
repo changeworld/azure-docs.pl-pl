@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 7cf865f0ce75d8308d6d42306e8e05852f763cae
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 43c0b7c87f9ee1cd33da3d617747c11dc120e51a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823626"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Wdrażanie klastra Kubernetes stos Azure
 
@@ -31,7 +32,7 @@ Następujący artykuł wygląda na przy użyciu szablonu usługi Azure Resource 
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes i kontenerów
 
-Kubernetes usługi kontenera platformy Azure (ACS) można zainstalować na stosie Azure. [Kubernetes](https://kubernetes.io) to system typu open source do automatyzacji wdrażania, skalowania i zarządzania aplikacji w kontenerach. A [kontenera](https://www.docker.com/what-container) znajduje się w obrazie, podobne do maszyny Wirtualnej. W przeciwieństwie do maszyny Wirtualnej, jest tylko obraz kontenera obejmuje zasoby do uruchomienia aplikacji, takich jak kod środowiska uruchomieniowego do wykonania kodu, określonych bibliotek i ustawień.
+Można zainstalować przy użyciu szablonów usługi Azure Resource Manager wygenerowany przez aparat usługi kontenera platformy Azure (ACS) na stosie Azure Kubernetes. [Kubernetes](https://kubernetes.io) to system typu open source do automatyzacji wdrażania, skalowania i zarządzania aplikacji w kontenerach. A [kontenera](https://www.docker.com/what-container) znajduje się w obrazie, podobne do maszyny Wirtualnej. W przeciwieństwie do maszyny Wirtualnej obrazu kontenera tylko obejmuje zasoby do uruchomienia aplikacji, takich jak kod środowiska uruchomieniowego do wykonania kodu, określonych bibliotek i ustawień.
 
 Możesz użyć Kubernetes do:
 
@@ -53,21 +54,23 @@ Aby rozpocząć, upewnij się, masz odpowiednie uprawnienia i czy stosu Azure je
 
 3. Sprawdź, czy masz ważną subskrypcję w portalu dzierżawcy usługi Azure stosu i czy masz wystarczającą ilość publicznego adresu IP adresy można dodać nowej aplikacji.
 
+    Nie można wdrożyć klaster stos Azure **administratora** subskrypcji. Należy użyć subskrypcji użytkownika **. 
+
 ## <a name="create-a-service-principal-in-azure-ad"></a>Tworzenie nazwy głównej usługi w usłudze Azure AD
 
-1. Zaloguj się do globalnej [portalu Azure](http://www.poartal.azure.com).
-2. Sprawdź, czy zalogowano się za pomocą dzierżawy usługi Azure AD, skojarzone z stosu Azure.
+1. Zaloguj się do globalnej [portalu Azure](http://portal.azure.com).
+2. Sprawdź, czy użytkownik jest zalogowany przy użyciu dzierżawy usługi Azure AD skojarzonej z wystąpieniem usługi Azure stosu.
 3. Tworzenie aplikacji usługi Azure AD.
 
     a. Wybierz **usługi Azure Active Directory** > **+ rejestracji aplikacji** > **nowej rejestracji aplikacji**.
 
     b. Wprowadź **nazwa** aplikacji.
 
-    c. Wybierz **aplikacji sieci Web / interfejs API**
+    c. Wybierz **aplikacji sieci Web / interfejs API**.
 
     d. Wprowadź `http://localhost` dla **adres URL logowania**.
 
-    c. Kliknij przycisk **Utwórz**
+    c. Kliknij przycisk **Utwórz**.
 
 4. Zwróć uwagę na **identyfikator aplikacji**. Konieczne będzie identyfikator podczas tworzenia klastra. Identyfikator jest określany jako **identyfikator klienta nazwy głównej usługi**.
 
@@ -77,7 +80,7 @@ Aby rozpocząć, upewnij się, masz odpowiednie uprawnienia i czy stosu Azure je
 
     b. Wybierz **nigdy nie wygasa** dla **Expires**.
 
-    c. Wybierz pozycję **Zapisz**. Upewnij się, należy pamiętać, ciąg klucza. Konieczne będzie ciągu kluczy podczas tworzenia klastra. Klucz jest odwołania jako **klucz tajny klienta nazwy głównej usługi**.
+    c. Wybierz pozycję **Zapisz**. Upewnij się, należy pamiętać, ciąg klucza. Konieczne będzie ciągu kluczy podczas tworzenia klastra. Klucz jest określany jako **klucz tajny klienta nazwy głównej usługi**.
 
 
 
@@ -103,52 +106,52 @@ Nadaj głównych dostępu do usługi do subskrypcji, w którym podmiot zabezpiec
 
 1. Otwórz [portal Azure stosu](https://portal.local.azurestack.external).
 
-2. Wybierz **+ nowy** > **obliczeniowe** > **klastra Kubernetes**.
+2. Wybierz **+ nowy** > **obliczeniowe** > **klastra Kubernetes**. Kliknij przycisk **Utwórz**.
 
-    ![Wdrażanie szablonu rozwiązań](../media/azure-stack-solution-template-kubernetes-cluster-add/azure-stack-kubernetes-cluster-solution-template.png)
+    ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-3. Wybierz **parametry** w wdrożyć szablon rozwiązania.
+3. Wybierz **podstawy** w tworzenie Kubernetes klastra.
 
-    ![Wdrażanie szablonu rozwiązań](../media/azure-stack-solution-template-kubernetes-cluster-add/azure-stack-kubernetes-cluster-solution-template-parameters.png)
+    ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
-2. Wprowadź **nazwa użytkownika administratora systemu Linux**. Nazwa użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
+2. Wprowadź **nazwa użytkownika administratora maszyny Wirtualnej systemu Linux**. Nazwa użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
 
 3. Wprowadź **klucz publiczny SSH** używane na potrzeby autoryzacji do wszystkich maszyn z systemem Linux utworzone jako część klastra Kubernetes i Menedżer DVM.
 
-4. Wprowadź **dzierżawy punktu końcowego**. To jest punkt końcowy usługi Azure Resource Manager nawiązać Utwórz grupę zasobów klastra Kubernetes. Należy uzyskać z operatorem stosu Azure zintegrowany system punktu końcowego. Dla usługi Azure stosu Development Kit (ASDK), można użyć `https://management.local.azurestack.external`.
-
-5. Wprowadź **Identyfikatorem dzierżawy** dla dzierżawy. Jeśli potrzebujesz pomocy w znajdowaniu tej wartości, zobacz [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
-
-6. Wprowadź **prefiks DNS głównego profilu** jest unikatowa w regionie. Musi to być region unikatową nazwę, taką jak `k8s-12345`. Spróbuj wybrać go grupą zasobów nazwy jako najlepsze praktyki.
+4. Wprowadź **prefiks DNS profilu wzorca** jest unikatowa w regionie. Musi to być region unikatową nazwę, taką jak `k8s-12345`. Spróbuj wybrać go grupą zasobów nazwy jako najlepsze praktyki.
 
     > [!Note]  
     > Dla każdego klastra użyj prefiks DNS nowych i unikatowych głównego profilu.
 
-7. Wprowadź liczbę agentów w klastrze. Ta wartość jest określana jako **liczba profilu puli agentów**. Można mieć od 1 do 32
+5. Wprowadź **liczba profilu puli agentów**. Liczba zawiera liczby agentów w klastrze. Może być z zakresu od 1 do 4.
 
-8. Wprowadź **usługi identyfikator podmiotu zabezpieczeń aplikacji** jest używany przez dostawcę chmury Kubernetes Azure.
+6. Wprowadź **ClientId nazwy głównej usługi** jest używany przez dostawcę chmury Kubernetes Azure.
 
-9. Wprowadź **klucz tajny klienta główna usługi** utworzonego podczas tworzenia aplikacji głównej usługi.
+7. Wprowadź **klucz tajny klienta nazwy głównej usługi** utworzonego podczas tworzenia aplikacji głównej usługi.
 
-10. Wprowadź **wersja dostawcy chmury Kubernetes Azure**. To jest wersja dla dostawcy usługi Kubernetes Azure. Azure stosu zwalnia niestandardowej kompilacji Kubernetes dla każdej wersji Azure stosu.
+8. Wprowadź **wersja dostawcy chmury Kubernetes Azure**. To jest wersja dla dostawcy usługi Kubernetes Azure. Azure stosu zwalnia niestandardowej kompilacji Kubernetes dla każdej wersji Azure stosu.
 
-12. Kliknij przycisk **OK**.
+9. Wybierz użytkownika **subskrypcji** identyfikatora.
 
-### <a name="specify-the-solution-values"></a>Określ wartości rozwiązania
+10. Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów. Nazwa zasobu musi być alfanumeryczny i małe litery.
 
-1. Wybierz **subskrypcji**.
+11. Wybierz **lokalizacji** grupy zasobów. Jest to region, wybranym dla instalacji programu Azure stosu.
 
-2. Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów. Nazwa zasobu musi być alfanumeryczny i małe litery.
+### <a name="specify-the-azure-stack-settings"></a>Określ ustawienia stosu Azure
 
-3. Wprowadź lokalizację grupy zasobów, takich jak **lokalnego**.
+1. Wybierz **ustawienia sygnatury Azure stosu**.
 
-4. Wybierz **utworzyć.**
+    ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
+
+2. Wprowadź **dzierżawy punktu końcowego Arm**. To jest punkt końcowy usługi Azure Resource Manager nawiązać Utwórz grupę zasobów klastra Kubernetes. Należy uzyskać z operatorem stosu Azure zintegrowany system punktu końcowego. Dla usługi Azure stosu Development Kit (ASDK), można użyć `https://management.local.azurestack.external`.
+
+3. Wprowadź **identyfikator dzierżawcy** dla dzierżawy. Jeśli potrzebujesz pomocy w znajdowaniu tej wartości, zobacz [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
 
 ## <a name="connect-to-your-cluster"></a>Połączyć się z klastrem
 
-Teraz można przystąpić do nawiązania połączenia z klastrem. Konieczne będzie **kubectl**, Kubernetes klient wiersza polecenia. Można znaleźć instrukcje dotyczące nawiązywania połączenia z klastra i zarządzania nim w dokumentacji usługi kontenera platformy Azure.   
+Teraz można przystąpić do nawiązania połączenia z klastrem. Wzorzec znajduje się w grupie zasobów klastra i nosi nazwę `k8s-master-<sequence-of-numbers>`. Podłącz do wzorca za pomocą klienta SSH. We wzorcu, można użyć **kubectl**, Kubernetes klient wiersza polecenia do zarządzania klastrem. Aby uzyskać instrukcje, zobacz [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
 
-Aby uzyskać instrukcje, zobacz [Połącz z klastrem](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough#connect-to-the-cluster).
+Można również znaleźć **Helm** Menedżera pakietów jest przydatne w przypadku instalowania i wdrażania aplikacji do klastra. Aby uzyskać instrukcje dotyczące instalowania i używania Helm z klastrem, zobacz [helm.sh](https://helm.sh/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,4 +1,21 @@
-<a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję.
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: networking
+author: jimdial
+ms.service: networking
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: f4071f2555607b6035352a2aec38c986941c41a9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826535"
+---
+<a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -18,7 +35,7 @@
 | Listy kontroli dostępu do punktu końcowego (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Limity dotyczące sieci — Azure Resource Manager
-Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję.
+Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlać z bieżącego wykorzystania zasobów względem swoje limity subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |

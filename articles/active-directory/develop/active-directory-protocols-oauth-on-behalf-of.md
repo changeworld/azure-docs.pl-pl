@@ -13,18 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 06/06/2017
 ms.author: celested
-ms.reviewer: nacanuma
+ms.reviewer: hirsin; nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f7566bc696d07ad3a8003b3493a382f494c4599
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2bb0d10fee04c4ee48344695769fa7768b0f3a85
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823870"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Usługi w celu wywołania usługi za pomocą delegowanego tożsamość użytkownika w imieniu — z przepływu
-OAuth On-Behalf-Of 2.0, którego przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/składnika web API, który z kolei musi wywołać inny usługi/interfejs API sieci web. Będzie propagację uprawnień za pomocą łańcucha żądań i tożsamości użytkowników delegowanego. Dla usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi podrzędne należy go secure token dostępu z usługi Azure Active Directory (Azure AD), w imieniu użytkownika.
+OAuth 2.0 On-Behalf-Of (OBO) przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/składnika web API, który z kolei musi wywołać inny usługi/interfejs API sieci web. Będzie propagację uprawnień za pomocą łańcucha żądań i tożsamości użytkowników delegowanego. Dla usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi podrzędne należy go secure token dostępu z usługi Azure Active Directory (Azure AD), w imieniu użytkownika.
+
+> [!IMPORTANT]
+> Publiczny klientów, którzy używają [OAuth 2.0 niejawne Przyznaj](active-directory-dev-understanding-oauth2-implicit-grant.md) nie można użyć przepływu OBO. Ci klienci musi przejść pomyślnie ich tokenu dostępu do warstwy środkowej poufne klienta w celu wykonania OBO przepływów. Aby uzyskać więcej informacji o tym, które klienci mogli wykonywać wywołania OBO, zobacz [ograniczenia klienta](#client-limitations).
 
 ## <a name="on-behalf-of-flow-diagram"></a>W imieniu — z diagram przepływu
 Załóżmy, że użytkownik został uwierzytelniony w aplikacji przy użyciu [kodu autoryzacji protokołu OAuth 2.0 przyznać przepływu](active-directory-protocols-oauth-code.md). W tym momencie aplikacja ma token dostępu (token A) z oświadczeń użytkowników i zgody na dostęp do sieci web warstwy środkowej interfejsu API (interfejs API A). Teraz A interfejsu API musi wprowadzić żądania uwierzytelnionego podrzędne sieci web interfejsu API (interfejs API B).
@@ -197,6 +201,8 @@ GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
+## <a name="client-limitations"></a>Ograniczenia klienta
+Publiczny klientów z adresami URL odpowiedzi symboli wieloznacznych nie można użyć `id_token` OBO przepływów. Jednak klientowi poufne nadal można zrealizować tokeny dostępu zakupione w ramach przepływu niejawne Przyznaj nawet w przypadku publicznych klient ma zarejestrowany identyfikator URI przekierowania symboli wieloznacznych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat protokołu OAuth 2.0 i innym sposobem wykonania uwierzytelniania usług przy użyciu poświadczeń klienta.

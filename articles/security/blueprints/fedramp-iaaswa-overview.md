@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 27346d8e2133ea61056817fb48050a4e5c8c3c97
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6a2a72f46c4d5faacb7d5871f4c917a5cd578e96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726486"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809169"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpieczeń platformy Azure i plan zgodności: aplikacja sieci Web IaaS dla FedRAMP
 
@@ -106,12 +106,12 @@ Architektura chroni dane przechowywane przy użyciu kilku środków szyfrowania.
 **SQL Server**: SQL Server jest skonfigurowany do używania [funkcji przezroczystego szyfrowania danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption), który wykonuje w czasie rzeczywistym szyfrowania i odszyfrowywania danych i plików dziennika do ochrony informacji w stanie spoczynku. Funkcji TDE zawiera gwarantują, że przechowywanych danych nie zostało poddane nieautoryzowanego dostępu.
 
 Klienci mogą również skonfigurować następujące środki bezpieczeństwa serwera SQL:
--   [AD uwierzytelniania i autoryzacji](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
--   [Inspekcja bazy danych SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania konta magazynu platformy Azure.
--   [Reguły zapory](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure) uniemożliwić wszystkie dostęp do serwerów baz danych, dopóki nie zostały przyznane odpowiednie uprawnienia. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
--   [Wykrywanie zagrożeń SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i odpowiedzi na potencjalne zagrożenia w miarę ich występowania, podając alertów zabezpieczeń bazy danych podejrzanych działań, potencjalnych luk w zabezpieczeniach, ataki i nietypowych bazy danych programu access wzorce.
--   [Zawsze zaszyfrowane kolumny](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault) upewnij się, że poufne dane nigdy nie pojawia się jako zwykły tekst wewnątrz system bazy danych. Po włączeniu szyfrowania danych, tylko aplikacje klienckie lub serwery aplikacji dostęp do kluczy można uzyskać dostępu do danych w postaci zwykłego tekstu.
--   [Baza danych SQL dane dynamiczne maskowanie](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dynamic-data-masking-get-started) może odbywać się po wdraża architektura referencyjna struktury. Klienci muszą dostosować dane dynamiczne maskowanie ustawienia, aby stosować się do schematu bazy danych.
+-   [AD uwierzytelniania i autoryzacji](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umożliwia zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
+-   [Inspekcja bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania konta magazynu platformy Azure.
+-   [Reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) uniemożliwić wszystkie dostęp do serwerów baz danych, dopóki nie zostały przyznane odpowiednie uprawnienia. Zapora udziela dostępu do bazy danych na podstawie źródłowego adresu IP każdego żądania.
+-   [Wykrywanie zagrożeń SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) umożliwia wykrywanie i odpowiedzi na potencjalne zagrożenia w miarę ich występowania, podając alertów zabezpieczeń bazy danych podejrzanych działań, potencjalnych luk w zabezpieczeniach, ataki i nietypowych bazy danych programu access wzorce.
+-   [Zawsze zaszyfrowane kolumny](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) upewnij się, że poufne dane nigdy nie pojawia się jako zwykły tekst wewnątrz system bazy danych. Po włączeniu szyfrowania danych, tylko aplikacje klienckie lub serwery aplikacji dostęp do kluczy można uzyskać dostępu do danych w postaci zwykłego tekstu.
+-   [Baza danych SQL dane dynamiczne maskowanie](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) może odbywać się po wdraża architektura referencyjna struktury. Klienci muszą dostosować dane dynamiczne maskowanie ustawienia, aby stosować się do schematu bazy danych.
 
 **Szyfrowanie dysków Azure**: szyfrowania dysków Azure umożliwia szyfrowane dyski maszyn wirtualnych IaaS systemu Windows. [Szyfrowanie dysków Azure](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) korzysta z funkcji BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów systemu operacyjnego i dysków z danymi. Rozwiązanie jest zintegrowany z usługą Azure Key Vault, aby kontrolować i zarządzać kluczami szyfrowania dysków.
 
@@ -144,7 +144,7 @@ Następujące technologie zapewniają tożsamość możliwości zarządzania w �
 
 **Magazyn usług odzyskiwania**: [magazyn usług odzyskiwania](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) przechowuje dane kopii zapasowej i chroni wszystkie konfiguracje maszyn wirtualnych Azure w ramach tej architektury. W magazynie usług odzyskiwania klientów można przywrócić pliki i foldery z maszyn wirtualnych IaaS bez przywracania całą maszynę Wirtualną, umożliwiające szybsze przywracania.
 
-**Chmury monitora**: [monitora chmury](https://docs.microsoft.com/en-us/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) typ monitora kworum klastra trybu Failover w systemie Windows Server 2016 wykorzystującego Azure jako punktu rozstrzygnięcia. Monitor chmury, takich jak inne monitora kworum, pobiera głos i mogą uczestniczyć w obliczeniach kworum, ale używa standardowych publicznie dostępny magazyn obiektów Blob Azure. Eliminuje koszty obsługi dodatkowych maszyn wirtualnych hostowanych w chmurze publicznej.
+**Chmury monitora**: [monitora chmury](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) typ monitora kworum klastra trybu Failover w systemie Windows Server 2016 wykorzystującego Azure jako punktu rozstrzygnięcia. Monitor chmury, takich jak inne monitora kworum, pobiera głos i mogą uczestniczyć w obliczeniach kworum, ale używa standardowych publicznie dostępny magazyn obiektów Blob Azure. Eliminuje koszty obsługi dodatkowych maszyn wirtualnych hostowanych w chmurze publicznej.
 
 ### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
 
@@ -166,7 +166,7 @@ Ponadto następujące rozwiązania OMS są instalowane w ramach tej architektury
 -   [Śledzenie zmian](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): śledzenie zmian rozwiązania pozwala łatwo zidentyfikować zmiany w środowisku.
 
 **Azure Monitor**
-[Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenie wydajności, obsługi zabezpieczeń oraz trendów umożliwia organizacjom inspekcji, tworzyć alerty i archiwizowanie danych, w tym śledzenia wywołań interfejsu API w przypadku klientów zasobów platformy Azure.
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) ułatwia użytkownikom śledzenie wydajności, obsługi zabezpieczeń oraz trendów umożliwia organizacjom inspekcji, tworzyć alerty i archiwizowanie danych, w tym śledzenia wywołań interfejsu API w przypadku klientów zasobów platformy Azure.
 
 ## <a name="threat-model"></a>Modelu zagrożeń
 Diagram przepływu danych dla tej architektury dokumentacja jest dostępna dla [Pobierz](https://aka.ms/fedrampWAdfd) lub znajduje się poniżej. Ten model może ułatwić klientom punkty potencjalne ryzyko w infrastrukturze systemu, podczas wprowadzania zmian.
@@ -198,11 +198,11 @@ To Azure zabezpieczeń i zgodności plan automatyzacji składa się z pliki konf
 ### <a name="vpn-and-expressroute"></a>Sieć VPN i ExpressRoute
 Bezpieczny tunel sieci VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musi być skonfigurowana do bezpiecznego nawiązać połączenie z zasoby wdrożone w ramach tej architektury odwołanie IaaS aplikacji sieci Web. Konfigurując odpowiednie sieci VPN lub usługi ExpressRoute, klientów można dodać warstwę ochrony danych podczas przesyłania.
 
-Implementując bezpieczny tunel sieci VPN platformy Azure, można utworzyć wirtualnego prywatnej połączenie między siecią lokalną i sieci wirtualnej platformy Azure. To połączenie odbywa się przez Internet i pozwala bezpiecznie "tunnel" informacji wewnątrz zaszyfrowanych łącza między siecią a Azure klienta. Sieci VPN typu lokacja-lokacja jest bezpieczne, dojrzała technologia, która jest wdrażany w przedsiębiorstwach wszystkich rozmiarów dekad. [Trybu tunelowania IPsec](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w przypadku tej opcji jako mechanizm szyfrowania.
+Implementując bezpieczny tunel sieci VPN platformy Azure, można utworzyć wirtualnego prywatnej połączenie między siecią lokalną i sieci wirtualnej platformy Azure. To połączenie odbywa się przez Internet i pozwala bezpiecznie "tunnel" informacji wewnątrz zaszyfrowanych łącza między siecią a Azure klienta. Sieci VPN typu lokacja-lokacja jest bezpieczne, dojrzała technologia, która jest wdrażany w przedsiębiorstwach wszystkich rozmiarów dekad. [Trybu tunelowania IPsec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w przypadku tej opcji jako mechanizm szyfrowania.
 
 Ponieważ ruchu w tunelu VPN przechodzą przez Internet, korzystając z sieci VPN lokacja lokacja, firma Microsoft oferuje opcji inny, jeszcze bardziej bezpieczne połączenia. Usługa Azure ExpressRoute jest dedykowanych sieci WAN łącza między Azure i lokalizacji lokalnej lub dostawcy usług hosta programu Exchange. Jako połączeń ExpressRoute nie przechodzą w Internecie, te połączenia oferują więcej niezawodności, szybkości szybsze niższe opóźnienia i lepsze zabezpieczenia niż typowe połączenia za pośrednictwem Internetu. Ponadto jest bezpośrednie połączenie klienta telekomunikacyjnych dostawcy, dlatego dane nie są przesyłane w Internecie i w związku z tym nie jest uwidaczniana do niego.
 
-Najlepsze rozwiązania dotyczące wdrażania sieci hybrydowe bezpiecznego, która rozszerza sieci lokalnej na platformie Azure są [dostępne](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+Najlepsze rozwiązania dotyczące wdrażania sieci hybrydowe bezpiecznego, która rozszerza sieci lokalnej na platformie Azure są [dostępne](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
 
 ## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: af0007daf6cb8a2e17e1806f47587e5958b15bd2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 74a738f85a969e3c3451dc326de9b4284c0984c8
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716078"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809577"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Wydajność monitorowania za pomocą analizy dzienników
 
@@ -94,7 +94,7 @@ Teraz, gdy agent pakietu OMS head dodano na do portalu usługi Analiza dziennik�
 
 10. Kliknij na wykresie Metryka kontenera, aby wyświetlić dodatkowe szczegóły. Możesz także zbadać na dane licznika wydajności, podobnie jak zdarzenia i filtr węzłów, nazwa licznika wydajności i wartości przy użyciu języka zapytań Kusto.
 
-![Kwerendy licznika wydajności OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.png)
+![Kwerendy licznika wydajności OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

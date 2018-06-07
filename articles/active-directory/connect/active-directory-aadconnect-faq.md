@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dbe6f5f6f3aa128b3180c1b7aecb17853aa6a0aa
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4cef685d71a64f8a6681a3449e4fe0b67899c67c
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801402"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808608"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Często zadawane pytania dotyczące usługi Azure Active Directory Connect
 
@@ -28,7 +28,7 @@ ms.locfileid: "34801402"
 Ten scenariusz jest obsługiwany z kompilacji od lutego 2016 r.
 
 **Pytanie: czy istnieje sposób, aby zainstalować program Azure AD Connect nienadzorowanej?**  
-Możliwe jest tylko zainstalować program Azure AD Connect przy użyciu Kreatora instalacji. Instalacja nienadzorowana i dyskretnej nie jest obsługiwana.
+Możliwe jest tylko zainstalować program Azure AD Connect przy użyciu Kreatora instalacji. Instalacja nienadzorowana i dyskretnej nie są obsługiwane.
 
 **Pytanie: czy masz lasu, gdy nie można skontaktować się z jednej domeny. Jak zainstalować usługi Azure AD Connect?**  
 Ten scenariusz jest obsługiwany z kompilacji od lutego 2016 r.
@@ -41,7 +41,17 @@ Tak. Po zainstalowaniu agenta, można ukończyć procesu rejestracji, za pomocą
 **Pytanie: czy programu AADConnect obsługuje synchronizowane z obiema domenami do na usługi Azure AD?**</br>
 Tak, ten scenariusz jest obsługiwany. Zapoznaj się [wielu domen](active-directory-aadconnect-multiple-domains.md)
  
-**Pytanie: czy masz wiele łączników dla tej samej domeny usługi Active Directory w usłudze Azure AD connect?**</br> Nie, wiele łączników dla tej samej domeny usługi AD nie jest obsługiwane. 
+**Pytanie: czy masz wiele łączników dla tej samej domeny usługi Active Directory w usłudze Azure AD connect?**</br> Nie, wiele łączników dla tej samej domeny usługi AD nie są obsługiwane. 
+
+**Pytanie: czy można przenieść bazę danych usługi Azure AD Connect z lokalnej bazy danych na zdalnym serwerze SQL?**</br> Tak, poniższe kroki zawierają ogólne wytyczne dotyczące jak to zrobić.  Obecnie pracujemy nad bardziej szczegółowe dokumentu, która będzie dostępna wkrótce.
+
+
+   1. Kopia zapasowa bazy danych "ADSync" LocalDB Najprostszym sposobem, aby to zrobić polega na użyciu programu SQL Server Management Studio zainstalowany na tym samym komputerze co usługa Azure AD Connect. Połączyć się z "(localdb)\.\ADSync" — następnie utwórz kopię zapasową bazy danych ADSync
+   2. Przywróć bazę danych "ADSync" do Twojego wystąpienia zdalnego SQL
+   3. Azure AD Connect z istniejącej instalacji [zdalnej bazy danych SQL](active-directory-aadconnect-existing-database.md) łącze przedstawiono czynności wymagane podczas migracji przy użyciu lokalnej bazy danych SQL. W przypadku migracji do korzystania ze zdalną bazą danych SQL w kroku 5 tego procesu zostanie również należy wprowadzić istniejącego konta usługi synchronizacji usługi Windows będzie uruchamiana jako. To konto usługi aparatu synchronizacji jest opisane tutaj:</br></br>
+   **Użyj istniejącego konta usługi**— domyślnie Azure AD Connect używa konta usług wirtualnych dla usługi synchronizacji do użycia. Jeśli zdalnego programu SQL Server lub serwer proxy, który wymaga uwierzytelniania, należy użyć konta usługi zarządzanego lub użyć konta usługi w domenie i znać hasło. W takich przypadkach wprowadź konto do użycia. Upewnij się, że użytkownik wykonujący instalację jest administratorem systemu na serwerze SQL, aby można było utworzyć identyfikator logowania dla konta usługi. Zobacz temat [Azure AD Connect accounts and permissions (Konta i uprawnienia w programie Azure AD Connect)](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account).</br></br> Od ostatniej kompilacji aprowizowanie bazy danych może wykonać poza pasmem administrator usługi SQL, a jej instalację może następnie przeprowadzić administrator programu Azure AD Connect z uprawnieniami właściciela bazy danych. Aby uzyskać więcej informacji, zobacz temat [Install Azure AD Connect using SQL delegated administrator permissions (Instalowanie programu Azure AD Connect za pomocą delegowanych uprawnień administratora usługi SQL)](active-directory-aadconnect-sql-delegation.md).
+
+Aby zapewnić proste zaleca się, że użytkownik instalujący Azure AD Connect jest Skojarzenie w programie SQL. (Jednak o najnowszych wersjach można teraz używać delegowanego administratora SQL, zgodnie z opisem [tutaj](active-directory-aadconnect-sql-delegation.md).
 
 ## <a name="network"></a>Sieć
 **Pytanie: czy mam zapory, urządzenia sieciowego lub czegoś innego, która ogranicza maksymalny czas połączenia pozostają otwarte w sieci. Jak długo Moje próg limitu czasu po stronie klienta należy przy użyciu usługi Azure AD Connect?**  

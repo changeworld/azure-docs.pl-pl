@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 6/1/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 160055e4fdc6a5dfa401eaa3dc44427d13af22a8
-ms.sourcegitcommit: 0a7c9629dea6f5eb52cc45a1e31112def210dfc2
+ms.openlocfilehash: f48cbdb41f8ad7a3bad4546fa5cb77cf66780bed
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34730900"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808506"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Wykonaj kopię zapasową bazy danych programu SQL Server na platformie Azure
 
@@ -47,6 +47,34 @@ Następujące elementy są znane ograniczenia dla publicznej wersji zapoznawczej
 - [Kopia zapasowa grup dostępności rozproszonej ma ograniczenia](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017).
 - Wystąpienia klastra trybu Failover (FCI) SQL nie są obsługiwane.
 - Użyj portalu Azure, aby skonfigurować Azure Backup w celu ochrony baz danych programu SQL Server. Obsługa programu Azure PowerShell, interfejsu wiersza polecenia i interfejsów API REST nie jest obecnie dostępna.
+
+## <a name="supported-azure-geos"></a>Obsługiwane platformy Azure obszarach geograficznych.
+
+- Australia Południowo-Wschodnia (ASE) 
+- Brazylia Południowa (BRS)
+- Kanada Środkowa (CNC)
+- Kanada Wschodnia (CE)
+- Środkowe stany USA (CUS)
+- Azja Wschodnia (EA)
+- Australia Wschodnia (AE) 
+- Wschodnie stany USA (EUS)
+- Wschodnie stany USA 2 (EUS2)
+- Japonia Wschodnia (JPE)
+- Japonia Zachodnia (JPW)
+- Indie Środkowe (INC) 
+- Indie Południowe (INS)
+- Korea Środkowa (KRC)
+- Korea Południowa (KRS)
+- Północno-środkowe stany USA (NCUS) 
+- Europa Północna (NE) 
+- Południowo-środkowe stany USA (SCUS) 
+- Azja Południowo-Wschodnia (SEA)
+- Południowe Zjednoczone Królestwo (UKS) 
+- Zachodnie Zjednoczone Królestwo (UKW) 
+- Europa Zachodnia (WE) 
+- Zachodnie stany USA (WUS)
+- Zachodnio-środkowe stany USA (WCUS)
+- Zachodnie stany USA 2 (WUS 2) 
 
 ## <a name="supported-operating-systems-and-versions-of-sql-server"></a>Obsługiwane systemy operacyjne i wersje programu SQL server
 

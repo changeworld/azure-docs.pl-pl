@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824714"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Ochrona przed atakami DDoS Azure: Najlepsze rozwiązania i referencyjne architektury
 
@@ -291,18 +292,9 @@ W ramach tej architektury ruch kierowany do klastra usługi HDInsight z Internet
 
 Aby uzyskać więcej informacji o architekturze wzorcowej, zobacz [rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) dokumentacji.
 
-### <a name="azure-api-management"></a>Usługa Azure API Management
-
-Informacje o architekturze wzorcowej pomaga w ochronie publiczny punkt końcowy z [Azure API Management](../api-management/api-management-key-concepts.md) publikowania interfejsów API dla klientów znajdujących się poza organizacją zasobów. Zarządzanie interfejsami API należy wdrożyć w zewnętrznej sieci wirtualnej, aby włączyć ochronę przed atakami DDoS.
-
-![Diagram architektury odwołanie do interfejsu API zarządzania](media/azure-ddos-best-practices/image15.png)
-
-Po skonfigurowaniu zewnętrzną sieć wirtualną API Management portal bramy i deweloperów są dostępne z publicznego Internetu za pośrednictwem publiczny moduł równoważenia obciążenia. W ramach tej architektury standardowe ochrony przed atakami DDoS jest włączona na zewnętrzną sieć wirtualną do interfejsu API zarządzania. Ruch jest kierowany z Internetu do publicznego adresu IP interfejsu API zarządzania, które jest chronione przed atakami sieciowymi w warstwie 3 i 4. Aby chronić przed atakami warstwy 7 HTTP/HTTPS, można skonfigurować bramę aplikacji w trybie zapory aplikacji sieci Web.
-
-Lista dodatkowych usług, które są wdrażane w sieci wirtualnej i mogą być skonfigurowane dla ochrony przed atakami DDoS — Standard, zobacz [w tym artykule](../virtual-network/virtual-network-for-azure-services.md). Ochrona przed atakami DDoS — standardowa obsługuje tylko zasoby usługi Azure Resource Manager. 
 
 > [!NOTE]
-> Wprowadzony wdrożenia środowiska usługi aplikacji dla rozwiązania PowerApps w sieci wirtualnej z publicznym adresem IP nie jest obsługiwany natywnie. Aby uzyskać szczegółowe informacje o ochronie środowiska usługi aplikacji Zobacz w tej sekcji.
+> Azure środowiska usługi aplikacji w przypadku rozwiązania PowerApps lub interfejsu API zarządzania w sieci wirtualnej z publicznego adresu IP są oba nieobsługiwane natywnie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

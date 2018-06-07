@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: 99e429a2f82d1a9b8d9a87fb3eb4102183c19fe8
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 4a49c3db52e3cce37101836f7233ba8e3f5380c1
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826579"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regiony i dostępność maszyn wirtualnych na platformie Azure
 Platforma Azure działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
@@ -102,7 +103,7 @@ Domena błędów to logiczne grupowanie odpowiednich elementów sprzętu, które
 Domena aktualizacji to logiczne grupowanie odpowiednich elementów sprzętu, które mogą być w tym samym czasie poddawane konserwacji lub ponownie uruchamiane. Podczas tworzenia maszyn wirtualnych w zestawie dostępności platforma Azure automatycznie rozdziela maszyny wirtualne między domeny aktualizacji. To podejście zapewnia, że zawsze działa co najmniej jedno wystąpienie aplikacji, gdy platforma Azure jest poddawana okresowej konserwacji. Podczas planowanej konserwacji domeny aktualizacji mogą nie być ponownie uruchamiane kolejno, ale w danym momencie tylko jedna domena aktualizacji jest uruchamiana ponownie.
 
 ### <a name="managed-disk-fault-domains"></a>Zarządzane domenach awarii dysku
-Maszyny wirtualne korzystające z usługi [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) są przydzielane do domen błędów dysków zarządzanych w przypadku korzystania z zarządzanego zestawu dostępności. Dzięki takiemu dopasowaniu wszystkie dyski zarządzane dołączone do maszyny wirtualnej działają w tej samej domenie błędów dysku zarządzanego. W zarządzanym zestawie dostępności można tworzyć tylko maszyny wirtualne z użyciem dysków zarządzanych. Liczba domen błędów dysku zarządzanego zależy od regionu — dwie lub trzy domeny błędów dysku zarządzanego na region. Możesz przeczytać dodatkowe informacje dotyczące tych zarządzanych domen błędów dysku dla [maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) lub [maszyn wirtualnych systemu Windows](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
+Maszyny wirtualne korzystające z usługi [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) są przydzielane do domen błędów dysków zarządzanych w przypadku korzystania z zarządzanego zestawu dostępności. Dzięki takiemu dopasowaniu wszystkie dyski zarządzane dołączone do maszyny wirtualnej działają w tej samej domenie błędów dysku zarządzanego. W zarządzanym zestawie dostępności można tworzyć tylko maszyny wirtualne z użyciem dysków zarządzanych. Liczba domen błędów dysku zarządzanego zależy od regionu — dwie lub trzy domeny błędów dysku zarządzanego na region. Możesz przeczytać dodatkowe informacje dotyczące tych zarządzanych domen błędów dysku dla [maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) lub [maszyn wirtualnych systemu Windows](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
 
 ## <a name="availability-zones"></a>Strefy dostępności
 

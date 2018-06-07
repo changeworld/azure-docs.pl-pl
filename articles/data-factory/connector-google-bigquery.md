@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 3492f73b4e376bfd6cc069a97e935442da99dcfb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d63cb26acdc0a8b6c8435167b1043428de9f0729
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807622"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopiowanie danych z Google BigQuery przy użyciu fabryki danych Azure
 
@@ -45,10 +46,10 @@ Następujące właściwości są obsługiwane przez Google BigQuery połączonej
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną **GoogleBigQuery**. | Yes |
-| Projekt | Identyfikator projektu BigQuery domyślne zapytanie.  | Yes |
+| projekt | Identyfikator projektu BigQuery domyślne zapytanie.  | Yes |
 | additionalProjects | Rozdzielana przecinkami lista identyfikatorów projektów publicznych BigQuery projekty do dostępu.  | Nie |
 | requestGoogleDriveScope | Określa, czy żądania dostępu do dysku Google. Zezwalanie na dostęp dysk Google umożliwia obsługę tabel federacyjnych łączące dane BigQuery z danymi w usłudze dysk Google. Wartość domyślna to **false**.  | Nie |
-| authenticationType | Mechanizm uwierzytelniania OAuth 2.0, używany do uwierzytelniania. ServiceAuthentication może być używany tylko Self-hosted integracji w czasie wykonywania. <br/>Dozwolone wartości to **UserAuthentication** i **ServiceAuthentication**. Odpowiednio można znaleźć w sekcjach poniżej tej tabeli na więcej właściwości i przykłady JSON dla tych typów uwierzytelniania. | Yes |
+| Typ authenticationType | Mechanizm uwierzytelniania OAuth 2.0, używany do uwierzytelniania. ServiceAuthentication może być używany tylko Self-hosted integracji w czasie wykonywania. <br/>Dozwolone wartości to **UserAuthentication** i **ServiceAuthentication**. Odpowiednio można znaleźć w sekcjach poniżej tej tabeli na więcej właściwości i przykłady JSON dla tych typów uwierzytelniania. | Yes |
 
 ### <a name="using-user-authentication"></a>Uwierzytelnianie użytkownika
 
@@ -58,7 +59,7 @@ Ustaw dla właściwości "authenticationType" **UserAuthentication**, a następn
 |:--- |:--- |:--- |
 | clientId | Identyfikator aplikacji, używane do generowania tokenu odświeżania. | Nie |
 | clientSecret | Klucz tajny aplikacji używane do generowania tokenu odświeżania. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| refreshToken | Token odświeżania uzyskane z używany do autoryzacji dostępu do BigQuery Google. Dowiedz się, jak można uzyskać z [tokenów dostępu do uzyskania OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens). Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| refreshToken | Token odświeżania uzyskane z używany do autoryzacji dostępu do BigQuery Google. Dowiedz się, jak można uzyskać z [tokenów dostępu do uzyskania OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) i [ten blog społeczności](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 
 **Przykład:**
 
@@ -92,7 +93,7 @@ Ustaw dla właściwości "authenticationType" **ServiceAuthentication**, a nast�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| e-mail | Identyfikator konta usługi poczty e-mail używany do ServiceAuthentication. Może służyć tylko na Self-hosted integracji w czasie wykonywania.  | Nie |
+| wyślij wiadomość e-mail | Identyfikator konta usługi poczty e-mail używany do ServiceAuthentication. Może służyć tylko na Self-hosted integracji w czasie wykonywania.  | Nie |
 | keyFilePath | Pełna ścieżka do pliku klucza .p12, który jest używany do uwierzytelniania adres e-mail konta usługi. | Nie |
 | trustedCertPath | Pełna ścieżka pliku PEM, który zawiera zaufane certyfikaty urzędu certyfikacji służącego do weryfikowania serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tej właściwości można ustawić tylko wtedy, gdy na środowiska uruchomieniowego integracji Self-hosted za pomocą protokołu SSL. Wartość domyślna to plik cacerts.pem zainstalowane ze środowiskiem uruchomieniowym integracji.  | Nie |
 | useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z pliku PEM określony. Wartość domyślna to **false**.  | Nie |

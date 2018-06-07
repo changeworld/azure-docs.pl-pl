@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 700569684888428032997dd81c10023c6fd5a7d8
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823309"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig połączenie pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -76,7 +77,7 @@ Włączenie pulpitu zdalnego dla klastra usługi HDInsight, a następnie nawiąz
     <tr>
     <td>WYNIK = kolejności częstotliwości przez liczbę desc;</td><td>Porządkuje poziomy dziennika według liczby (malejąco) i są przechowywane w wyniku</td>
     </tr>
-    </table>
+</table>
 6. Można także zapisać wyniki przekształcania za pomocą `STORE` instrukcji. Na przykład następujące polecenie zapisuje `RESULT` do **/example/data/pigout** katalogu w domyślnego kontenera magazynu dla klastra:
 
         STORE RESULT into 'wasb:///example/data/pigout'

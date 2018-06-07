@@ -8,11 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 89d0f11ccfb9a359ca3e43bc1a370e0fb7514574
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 3f55abf9be382a040d7b5d4111ec689929b36918
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823473"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Odbieranie zdarzeń w punkcie końcowym HTTP
 
@@ -36,7 +37,7 @@ Kliknij łącze "Wyświetl pliki" w funkcji Azure (prawe okienko większości w 
   "frameworks": {
     "net46":{
       "dependencies": {
-        "Microsoft.Azure.EventGrid": "1.1.0-preview"
+        "Microsoft.Azure.EventGrid": "1.3.0"
       }
     }
    }
@@ -49,9 +50,9 @@ Kliknij łącze "Wyświetl pliki" w funkcji Azure (prawe okienko większości w 
 
 Pierwszą rzeczą, którą chcesz wykonać jest obsługa `Microsoft.EventGrid.SubscriptionValidationEvent` zdarzenia. Za każdym razem, gdy ktoś subskrybuje zdarzenia siatki zdarzeń wysyła zdarzenie sprawdzania poprawności do punktu końcowego z `validationCode` w ładunku danych. Punkt końcowy jest wymagany do echo tej w treści odpowiedzi na [okazać się punkt końcowy jest prawidłowy i należące do Ciebie](security-authentication.md#webhook-event-delivery). Jeśli używasz [wyzwalacz siatki zdarzeń](../azure-functions/functions-bindings-event-grid.md) zamiast elementu WebHook wyzwoleniu funkcja weryfikacji punktu końcowego jest już obsługiwane. Jeśli używasz usługi interfejsu API innych firm (takich jak [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie można programowo wyświetlać kodu walidacji. Dla tych usług można ręcznie zweryfikować subskrypcji przy użyciu sprawdzania poprawności adresu URL, który są wysyłane w przypadku sprawdzania poprawności subskrypcji. Skopiuj ten adres URL w `validationUrl` właściwości i wysyłania GET żądania przy użyciu klienta REST lub przeglądarki sieci web.
 
-Weryfikowanie ręczne jest w wersji zapoznawczej. Aby go użyć, należy zainstalować [rozszerzenia siatki zdarzeń](/cli/azure/azure-cli-extensions-list) dla [AZ CLI 2.0](/cli/azure/install-azure-cli). Możesz zainstalować ją z `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, czy używasz `api-version=2018-05-01-preview`.
+Weryfikowanie ręczne jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, że używasz wersji `api-version=2018-05-01-preview`.
 
-Aby programowo wyświetlić kodu walidacji, należy użyć poniższego kodu:
+Aby programowo wyświetlić kodu walidacji, należy użyć poniższego kodu (możesz również znaleźć powiązane przykłady w https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer):
 
 ```csharp
 using System.Net;
@@ -59,16 +60,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Azure.EventGrid.Models;
-
-class SubscriptionValidationEventData
-{
-    public string ValidationCode { get; set; }
-}
-
-class SubscriptionValidationResponseData
-{
-    public string ValidationResponse { get; set; }
-}
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -90,7 +81,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
             var eventData = dataObject.ToObject<SubscriptionValidationEventData>();
             log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
             // Do any additional validation (as required) and then return back the below response
-            var responseData = new SubscriptionValidationResponseData();
+            var responseData = new SubscriptionValidationResponse();
             responseData.ValidationResponse = eventData.ValidationCode;
             return req.CreateResponse(HttpStatusCode.OK, responseData);
         }
@@ -157,16 +148,6 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Azure.EventGrid.Models;
 
-class SubscriptionValidationEventData
-{
-    public string ValidationCode { get; set; }
-}
-
-class SubscriptionValidationResponseData
-{
-    public string ValidationResponse { get; set; }
-}
-
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"C# HTTP trigger function begun");
@@ -188,7 +169,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
             log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
 
             // Do any additional validation (as required) and then return back the below response
-            var responseData = new SubscriptionValidationResponseData();
+            var responseData = new SubscriptionValidationResponse();
             responseData.ValidationResponse = eventData.ValidationCode;
             return req.CreateResponse(HttpStatusCode.OK, responseData);
         }
@@ -283,16 +264,6 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Azure.EventGrid.Models;
 
-class SubscriptionValidationEventData
-{
-    public string ValidationCode { get; set; }
-}
-
-class SubscriptionValidationResponseData
-{
-    public string ValidationResponse { get; set; }
-}
-
 class ContosoItemReceivedEventData
 {
     public string id { get; set; }
@@ -321,7 +292,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
             var eventData = dataObject.ToObject<SubscriptionValidationEventData>();
             log.Info($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
             // Do any additional validation (as required) and then return back the below response
-            var responseData = new SubscriptionValidationResponseData();
+            var responseData = new SubscriptionValidationResponse();
             responseData.ValidationResponse = eventData.ValidationCode;
             return req.CreateResponse(HttpStatusCode.OK, responseData);
         }

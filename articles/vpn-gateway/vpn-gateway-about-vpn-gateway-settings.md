@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9ecd8dc40e168c2fd37e3d58ee588a0d9626a04a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824850"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Ustawienia konfiguracji bramy sieci VPN — informacje
 
@@ -137,6 +138,10 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 ## <a name="gwsub"></a>Podsieć bramy
 
 Przed utworzeniem bramy sieci VPN, należy utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP, których bramy sieci wirtualnej maszyn wirtualnych i usług. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane do podsieci bramy i skonfigurowane wymagane ustawienia bramy sieci VPN. Do podsieci bramy nigdy nie należy wdrożyć cokolwiek innego (na przykład kolejnych maszyn wirtualnych). Podsieć bramy musi być o nazwie "GatewaySubnet" działała poprawnie. Nazw podsieci bramy "GatewaySubnet" umożliwia wiedzieli, że jest to podsieci w celu wdrożenia bramy sieci wirtualnej maszyn wirtualnych i usług Azure.
+
+>[!NOTE]
+>[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
+>
 
 Podczas tworzenia podsieci bramy należy określić liczbę zawartych w niej adresów IP. Adresy IP w podsieci bramy są przydzielone do usługi bramy i maszyny wirtualne bramy. Niektóre konfiguracje wymagają większej liczby adresów IP niż inne. Przyjrzyj się instrukcje dotyczące konfiguracji, który chcesz utworzyć i sprawdź, czy podsieci bramy, w której chcesz utworzyć spełnia te wymagania. Można ponadto upewnij się, że podsieć bramy zawiera za mało adresów IP w celu uwzględnienia możliwych przyszłych dodatkowe konfiguracje. Podczas tworzenia podsieci bramy jak /29, zaleca się utworzenie podsieć bramy /28 i większych (/ 28, /27, /26 itp.). W ten sposób dodania funkcji w przyszłości, nie trzeba usunąć bramy, a następnie usuń i Utwórz ponownie podsieć bramy, aby umożliwić więcej adresów IP.
 

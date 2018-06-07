@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/22/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ba4c9d9cd5f8a43be0f97053c02798e3b84a5f7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f1271a6afba91cf75820f2e4b973b7cd42782449
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824340"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -95,7 +96,7 @@ Aby określić, jakie typy zasobów operacja listy, masz następujące opcje:
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Określ zasób, używając [funkcja resourceId](#resourceid), lub format `{providerNamespace}/{resourceType}/{resourceName}`.
+Określ zasób, używając nazwy zasobu lub [funkcja resourceId](#resourceid). Korzystając z tej funkcji w tym samym szablonie, który wdraża zasobu dołączonego przez odwołanie, użyj nazwy zasobu.
 
 ### <a name="example"></a>Przykład
 
@@ -257,7 +258,7 @@ Każdy typ zasobu zwraca inne właściwości dla funkcji odwołania. Funkcja nie
 
 Funkcja odwołanie pochodzi wartość ze stanu środowiska uruchomieniowego i nie można użyć w sekcji zmiennych. Może służyć w sekcji danych wyjściowych szablonu lub [połączonego szablonu](resource-group-linked-templates.md#link-or-nest-a-template). Nie można użyć w sekcji danych wyjściowych [szablon zagnieżdżony](resource-group-linked-templates.md#link-or-nest-a-template). Aby zwrócić wartości dla wdrożonych zasobów w szablonie zagnieżdżonych, przekonwertować szablon zagnieżdżony połączonego szablonu. 
 
-Za pomocą funkcji odwołania, niejawnie deklarowaniu czy jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest udostępniony w ramach tego samego szablonu. Nie trzeba również użyć dependsOn właściwości. Funkcja nie jest oceniany, aż do zakończenia wdrażania żądanego zasobu.
+Za pomocą funkcji odwołania, niejawnie deklarowaniu czy jeden zasób jest zależny od innego zasobu, jeśli przywoływany zasób jest udostępniony w ramach tego samego szablonu i odwoływać się do zasobu na podstawie swojej nazwy (nie identyfikator zasobu). Nie trzeba również użyć dependsOn właściwości. Funkcja nie jest oceniany, aż do zakończenia wdrażania żądanego zasobu.
 
 Aby wyświetlić nazwy właściwości i wartości dla typu zasobu, należy utworzyć szablon, który zwraca obiekt, w sekcji danych wyjściowych. Jeśli masz istniejący zasób tego typu do szablonu zwraca obiekt bez wdrażania żadnych nowych zasobów. 
 

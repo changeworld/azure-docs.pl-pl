@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: d81b6fc89c90b769650505e845d6d6c6cd70049f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616930"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824935"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia bazy danych środowiskach obsługiwanych przez usługi fabryka danych Azure
 W tym artykule opisano różne środowiska obliczeniowe, w których można użyć do procesu lub przekształcenia danych. Podano również szczegółowe informacje o różnych konfiguracjach (na żądanie i użycie własnego) obsługiwane przez fabrykę danych podczas konfigurowania usług połączonych łączenia tych obliczeniowe środowisk do fabryki danych Azure.
@@ -38,8 +38,6 @@ W tym typie konfiguracji środowiska komputerowego pełni zarządza usługi fabr
 
 > [!NOTE]
 > Konfiguracja na żądanie jest obecnie obsługiwane tylko w przypadku klastrów usługi HDInsight Azure.
->
-> 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight na żądanie połączonej usługi
 Usługi fabryka danych Azure, można automatycznie utworzyć klaster usługi HDInsight na żądanie do przetwarzania danych. Klaster jest tworzony w tym samym regionie co skojarzone z klastrem konta magazynu (właściwość linkedServiceName w formacie JSON). Konta magazynu musi być kontem magazynu ogólnego przeznaczenia Azure standard. 
@@ -49,11 +47,14 @@ Należy pamiętać, że **ważne** punktów o HDInsight na żądanie połączone
 * W ramach Twojej subskrypcji platformy Azure jest tworzenie klastra usługi HDInsight na żądanie. Jest widoczna klastra w portalu Azure, gdy klaster jest uruchomiony i działa. 
 * Dzienniki dla zadań, które są uruchamiane w klastrze usługi HDInsight na żądanie są kopiowane do konta magazynu skojarzone z klastrem usługi HDInsight. ClusterUserName, clusterPassword, clusterSshUserName, clusterSshPassword określone w definicji połączonej usługi są używane do logowania do klastra na potrzeby dogłębne Rozwiązywanie problemów podczas cyklu życia klastra. 
 * Naliczane są opłaty tylko do czasu, gdy klaster usługi HDInsight jest uruchomiony i uruchomionych zadań.
+* Nie można użyć akcji skryptu w usłudze Azure HDInsight na żądanie połączony. Jeśli musisz zainstalować inne zależności, na przykład wziąć pod uwagę przy użyciu usługi Automatyzacja Azure, aby uruchomić skrypt programu PowerShell, który wykonuje następujące czynności:  
+  a. Tworzenie klastra usługi HDInsight.  
+  b. Uruchom akcję skryptu, na przykład zainstalować innych zależności.  
+  c. Uruchom potoku fabryki danych.  
+  d. Usuwanie klastra.  
 
 > [!IMPORTANT]
 > Zwykle trwa **20 minut** lub więcej, aby udostępnić klaster Azure HDInsight na żądanie.
->
-> 
 
 ### <a name="example"></a>Przykład
 Następujące JSON definiuje opartych na systemie Linux usługi HDInsight połączony na żądanie. Usługi fabryka danych automatycznie tworzy **opartych na systemie Linux** klastra usługi HDInsight można przetworzyć wymagane działania. 

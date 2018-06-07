@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: b2e2e7dcc26bece79ae0423d55b08416065d599e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ad2faabbab74ba343328b6fe30e09c87520e7019
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809798"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza)
 > [!div class="op_single_selector"]
@@ -119,11 +120,11 @@ Pierwszym krokiem jest tworzenie zasad tworzenia kopii zapasowej opisujące harm
 
 W magazynie kopii zapasowej należy użyć usługi Azure Storage, konto utworzone powyżej. W tym przykładzie przyjęto założenie konta usługi Magazyn Azure o nazwie `sfbackupstore`. Kontener `backup-container` jest skonfigurowany do przechowywania kopii zapasowych, kontener o tej nazwie jest tworzony, jeśli jeszcze nie istnieje, podczas tworzenia kopii zapasowej przekazywania. Wypełnij `ConnectionString` z prawidłowe parametry połączenia dla konta magazynu Azure.
 
-Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST do tworzenia nowych zasad.
+Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST do tworzenia nowych zasad. Zastąp `account-name` z nazwę konta magazynu i `account-key` kluczem konta magazynu.
 
 ```powershell
 $StorageInfo = @{
-    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=sfbackupstore;AccountKey=64S+3ykBgOuKhd2DK1qHJJtDml3NtRzgaZUa+8iwwBAH4EzuGt95JmOm7mp/HOe8V3l645iv5l8oBfnhhc7dJA==;EndpointSuffix=core.windows.net'
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
     ContainerName = 'backup-container'
     StorageKind = 'AzureBlobStore'
 }

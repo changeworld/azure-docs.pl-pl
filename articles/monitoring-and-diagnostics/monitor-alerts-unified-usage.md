@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: fdb3ebe3820191a642c4503851b04dd5fc5e6048
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bb532f5e249947534ba44a41edfadac22ef9e217
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824918"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Utwórz, Wyświetl, alerty i zarządzaj nimi za pomocą monitora Azure  
 
@@ -39,7 +40,7 @@ Alert używany jest termin **alerty dziennika** do opisywania alerty, gdy sygna�
 
 Szczegółowe dalej jest przewodnik krok po kroku przy użyciu usługi Azure alerty.
 
-## <a name="create-an-alert-rule-with-the-azure-portal"></a>Tworzenie reguły alertu z portalu Azure
+## <a name="create-an-alert-rule-with-the-azure-portal"></a>Tworzenie reguły alertu przy użyciu portalu Azure
 1. W [portal](https://portal.azure.com/), wybierz pozycję **Monitor** i w sekcji monitorowanie — wybierz **alerty**.  
     ![Monitorowanie](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
 
@@ -50,7 +51,7 @@ Szczegółowe dalej jest przewodnik krok po kroku przy użyciu usługi Azure ale
 
     ![Utwórz regułę](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  Zdefiniuj warunek alertu za pomocą **zasobów wybierz** link i określanie docelowej, wybierając zasobu. Filtr, wybierając *subskrypcji* , *typu zasobu* , a na koniec wybranie wymagane *zasobów*.
+4.  Zdefiniuj warunek alertu za pomocą **zasobów wybierz** link i określanie docelowej, wybierając zasobu. Filtr, wybierając * subskrypcji, * typ zasobu, a na koniec wybierając wymagane *zasobów*.
 
     >[!NOTE]
 
@@ -67,7 +68,7 @@ Szczegółowe dalej jest przewodnik krok po kroku przy użyciu usługi Azure ale
 
     > Alerty dziennika aktywności są również obsługiwane, ale są w wersji zapoznawczej. [Dowiedz się więcej](monitoring-activity-log-alerts-new-experience.md).
 
-5. *Alerty metryki* : Upewnij się, **typu zasobu** wybrano typu sygnału jako **Metryka**, następnie raz właściwe **zasobów** jest wybierany kliknij  *Gotowe* przycisk, aby powrócić do tworzenia alertu. Następnie użyj **Dodaj kryteria** przycisk, aby wybrać określonego sygnału z listy opcji sygnału, ich monitorowania usługi i typu na liście — które są dostępne dla zasobu wybranymi wcześniej.
+5. * Metryki alerty: Upewnij się, **typu zasobu** wybrano typu sygnału jako **Metryka**, następnie raz właściwe **zasobów** jest wybierany kliknij *gotowe*przycisk, aby powrócić do tworzenia alertu. Następnie użyj **Dodaj kryteria** przycisk, aby wybrać określonego sygnału z listy opcji sygnału, ich monitorowania usługi i typu na liście — które są dostępne dla zasobu wybranymi wcześniej.
 
     ![Wybierz zasób](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -83,9 +84,9 @@ Szczegółowe dalej jest przewodnik krok po kroku przy użyciu usługi Azure ale
 
     a. Wybierz czas trwania z **Pokaż historię** listy rozwijanej, aby wizualizować inny okres czasu. Możesz wybrać wymiarów dla obsługiwanych metryki odfiltrować szeregów czasowych; Wybieranie wymiarów jest opcjonalna i o pięć wymiary mogą być używane. 
 
-    b. **Alert logiki** można wybierać z podanymi opcjami *warunku*, *agregacji* i *próg*. Jako wersja zapoznawcza logiki pod warunkiem warunek jest wyświetlany w wizualizacji wraz z historii sygnału sygnalizującego, kiedy alert będzie uruchomiony w przeszłości. 
+    b. **Alert logiki** można wybierać z podanymi opcjami *warunku*, * agregacji, i *próg*. Jako wersja zapoznawcza logiki pod warunkiem warunek jest wyświetlany w wizualizacji wraz z historii sygnału sygnalizującego, kiedy alert będzie uruchomiony w przeszłości. 
 
-    c. Aby określić czas trwania, wybrana opcja **okres** oraz jak często alert powinno być ono uruchomione po wybraniu **częstotliwość**.
+    c. Aby określić czas trwania, wybierz **okres** oraz jak często alert powinno być ono uruchomione po wybraniu **częstotliwość**.
 
     ![Konfiguruj logikę sygnału metryki wielowymiarowej](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
@@ -125,14 +126,20 @@ Aby uzyskać **alerty dziennika** alerty mogą być oparte na:
 
         ![Pomijanie alertów dla dziennika alertów](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
 
+        > [!TIP]
+        > Określ pomijanie alertów wartość większą niż częstotliwość alert, aby upewnić się, że powiadomienia zostały zatrzymane bez nakładania się
+
 12. Krok trzeci i końcowych, Określ ile **grupy akcji** musi być wywołany przez regułę alertu, po spełnieniu warunku alertu. Można wybrać żadnych istniejącej grupy akcji z alertem lub Utwórz nową grupę akcji. Zgodnie z wybrane grupy akcji, gdy alert jest wyzwalacza Azure zostanie: wysyłanie email(s), Wyślij SMS(s), wywołaj Webhook(s), skorygować za pomocą elementów Runbook platformy Azure, wypychania do zarządzanie usługami IT — tool, itp. Dowiedz się więcej o [grupy akcji](monitoring-action-groups.md).
 
     Aby uzyskać **alerty dziennika** kilka dodatkowych funkcji jest dostępna w celu zastąpienia domyślnych akcji:
 
-    - **Powiadomienia e-mail**: zastępuje *temat wiadomości e-mail* w wiadomości e-mail wysyłane za pośrednictwem grupy działań; Jeśli istnieje co najmniej jednego działania poczty e-mail w grupie tych akcji. Nie można zmodyfikować treść wiadomości e-mail i to pole jest **nie** adresu e-mail.
-    - **Uwzględnij niestandardowy ładunek Json**: przesłania elementu webhook JSON używane przez akcję grup, jeśli istnieje co najmniej jeden element webhook akcji w grupie tych akcji. Użytkownik może zdefiniuj format JSON do użycia dla wszystkich elementów webhook skonfigurowane w skojarzonych grup akcji; Aby uzyskać więcej informacji na webhook formatów, zobacz [akcji elementu webhook dla alertów dziennika](monitor-alerts-unified-log-webhook.md). Opcja Webhook testu został dostarczony do Sprawdź format i przetwarzania przez miejsce docelowe za pomocą przykładowej JSON i opcja etykietę przeznaczone tylko dla **testowania** celów.
+    - **Powiadomienia e-mail**: zastępuje *temat wiadomości e-mail* w wiadomości e-mail wysyłane za pośrednictwem grupy działań; Jeśli istnieje co najmniej jednej akcji poczty e-mail w grupie tych akcji. Nie można zmodyfikować treść wiadomości e-mail i to pole jest **nie** adresu e-mail.
+    - **Uwzględnij niestandardowy ładunek Json**: przesłania elementu webhook JSON używane przez akcję grup, jeśli istnieje co najmniej jednej akcji elementu webhook w grupie tych akcji. Użytkownik może określić format JSON do użycia dla wszystkich elementów webhook skonfigurowane w skojarzonych grup akcji; Aby uzyskać więcej informacji na webhook formatów, zobacz [akcji elementu webhook dla alertów dziennika](monitor-alerts-unified-log-webhook.md). Opcja Webhook testu został dostarczony do Sprawdź format i przetwarzania przez miejsce docelowe za pomocą przykładowej JSON i ta opcja jako etykietą przeznaczone tylko dla **testowania** celów.
 
         ![Akcja zastąpienia dla dziennika alertów](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+
+        > [!NOTE]
+        > Dla **Webhook testu** do pracy, należy również powinna obsługiwać punktu końcowego [Cross Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) i użytkownika umożliwia mu problemów "Brak nagłówka Access-Control-Allow-Origin" CORS serwera proxy
 
 13. Jeśli wszystkie pola są prawidłowe i zielony znacznik **Utwórz regułę alertu** kliknięcie przycisku i alert jest tworzony w monitorze Azure - alerty. Wszystkie alerty można wyświetlić alertów pulpitu nawigacyjnego.
 

@@ -13,15 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2aa1c33f138619283a8785aaf3772465df6c9aee
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8ee71a5c37357e0a92f794d7b808948f4e5b4ff0
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823932"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>V2.0 usługi Azure Active Directory i przepływu OAuth 2.0 On-Behalf-Of
 OAuth On-Behalf-Of 2.0, którego przepływ służy przypadek użycia, w którym aplikacja wywołuje usługi/składnika web API, który z kolei musi wywołać inny usługi/interfejs API sieci web. Będzie propagację uprawnień za pomocą łańcucha żądań i tożsamości użytkowników delegowanego. Dla usługi warstwy środkowej na wysyłanie żądań uwierzytelnionych usługi podrzędne należy go secure token dostępu z usługi Azure Active Directory (Azure AD), w imieniu użytkownika.
@@ -29,13 +30,13 @@ OAuth On-Behalf-Of 2.0, którego przepływ służy przypadek użycia, w którym 
 > [!NOTE]
 > Punktu końcowego v2.0 nie obsługuje wszystkich scenariuszy Azure Active Directory i funkcji. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj o [ograniczenia v2.0](active-directory-v2-limitations.md).
 >
->
+
+
+> [!IMPORTANT]
+> [Niejawne Przyznaj](active-directory-v2-protocols-implicit.md) nie może być używany dla przepływu On-imieniu-Of - źródła musi przejść pomyślnie ich tokenu dostępu (przepływu niejawnego) do warstwy środkowej poufne klienta w celu wykonania OBO przepływów.  Zobacz [ograniczenia](#client-limitations) więcej szczegółów, na których klientów można wykonywać w imieniu — z wywołania.  
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 Załóżmy, że użytkownik został uwierzytelniony w aplikacji przy użyciu [kodu autoryzacji protokołu OAuth 2.0 przyznać przepływu](active-directory-v2-protocols-oauth-code.md). W tym momencie aplikacja ma token dostępu *do interfejsu API* (token: A) z oświadczeń użytkowników i zgody na dostęp do warstwy środkowej sieci web interfejsu API (interfejs API A). Teraz A interfejsu API musi wprowadzić żądania uwierzytelnionego podrzędne sieci web interfejsu API (interfejs API B).
-
-> [!IMPORTANT]
-> Tokeny nabyte za pomocą [niejawne Przyznaj](active-directory-v2-protocols-implicit.md) nie może służyć do przepływu w imieniu-z. Klient w przepływach implcit nie jest uwierzytelniony (za pośrednictwem np. klucz tajny klienta) i w związku z tym nie powinien być dozwolony do ładowania początkowego do innego, prawdopodobnie bardziej wydajne tokenu.
 
 Czynności, które wykonują stanowią przepływu w imieniu-z i zostały wyjaśnione przy użyciu poniższym diagramie.
 
@@ -178,6 +179,9 @@ GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
+
+## <a name="client-limitations"></a>Ograniczenia klienta
+Jeśli klient używa przepływu niejawnego w celu uzyskania żądaniu, a klient ma również symbole wieloznaczne w adresie URL odpowiedzi, żądaniu nie może służyć do przepływu OBO.  Jednak nabyte za pośrednictwem przepływu niejawne Przyznaj tokenów dostępu można nadal można zrealizować przez klienta poufne, nawet wtedy, gdy inicjujący klient ma zarejestrowany adres URL odpowiedzi symboli wieloznacznych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat protokołu OAuth 2.0 i innym sposobem wykonania uwierzytelniania usług przy użyciu poświadczeń klienta.

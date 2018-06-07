@@ -11,17 +11,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/08/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: f5da2a74b3a399c60c518f386ccf2e60a617aeda
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 494526ae2084053f23bb3a096ac7d089c47a731a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823439"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Rozwiązywanie błędów nie została znaleziona dla zasobów platformy Azure
 
-W tym artykule opisano błędy, które mogą wystąpić, gdy nie można odnaleźć zasobu podczas wdrażania.
+W tym artykule opisano błędy mogą pojawić się, gdy nie można odnaleźć zasobu podczas wdrażania.
 
 ## <a name="symptom"></a>Objaw
 
@@ -32,7 +33,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Jeśli próba użycia [odwołania](resource-group-template-functions-resource.md#reference) lub [listKeys](resource-group-template-functions-resource.md#listkeys) funkcje z zasobów, których nie można rozpoznać, zostanie wyświetlony następujący błąd:
+Jeśli używasz [odwołania](resource-group-template-functions-resource.md#reference) lub [listKeys](resource-group-template-functions-resource.md#listkeys) funkcje z zasobów, których nie można rozpoznać, zostanie wyświetlony następujący błąd:
 
 ```
 Code=ResourceNotFound;
@@ -59,9 +60,9 @@ Jeśli próbujesz wdrożyć brakującego zasobu w szablonie, sprawdź, czy konie
 }
 ```
 
-Jednak aby uniknąć ustawienie zależności, które nie są wymagane. Gdy niepotrzebne zależności, można przedłużyć czas wdrażania, zapobiegając zasoby, które nie są wzajemnie zależne od wdrażany równolegle. Ponadto można utworzyć zależności cykliczne, które blokuje wdrożenie. [Odwołania](resource-group-template-functions-resource.md#reference) funkcja tworzy zależność niejawnych na zasobu dołączonego przez odwołanie, po wdrożeniu tego zasobu w tym samym szablonie. W związku z tym może mieć zależności więcej niż określa zależności **dependsOn** właściwości. [ResourceId](resource-group-template-functions-resource.md#resourceid) funkcji nie utworzyć niejawnego zależności lub Sprawdzanie, czy zasób istnieje.
+Jednak aby uniknąć ustawienie zależności, które nie są wymagane. Gdy niepotrzebne zależności, można przedłużyć czas wdrażania, zapobiegając zasoby, które nie są wzajemnie zależne od wdrażany równolegle. Ponadto można utworzyć zależności cykliczne, które blokuje wdrożenie. [Odwołania](resource-group-template-functions-resource.md#reference) funkcji i [listy *](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) funkcje tworzy zależność niejawne w żądanego zasobu, podczas tego zasobu jest wdrożona w tym samym szablonie i odwołuje się do niego swojej nazwy (nie identyfikator zasobu ). W związku z tym może mieć zależności więcej niż określa zależności **dependsOn** właściwości. [ResourceId](resource-group-template-functions-resource.md#resourceid) funkcji nie utworzyć niejawnego zależności lub Sprawdzanie, czy zasób istnieje. [Odwołania](resource-group-template-functions-resource.md#reference) funkcji i [listy *](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) funkcji nie twórz niejawne zależności, gdy zasób jest określany przez jego identyfikator zasobu. Aby utworzyć zależność niejawne, przekaż nazwę zasobu, które zostało wdrożone w tym samym szablonie.
 
-W przypadku wystąpienia problemów zależności, musisz uzyskać wgląd w kolejności wdrażania zasobów. Aby wyświetlić kolejność operacji wdrażania:
+Po wyświetleniu zależności problemów, należy uzyskać wgląd w kolejności wdrażania zasobów. Aby wyświetlić kolejność operacji wdrażania:
 
 1. Wybierz historii wdrożenia dla grupy zasobów.
 
@@ -92,7 +93,7 @@ Gdy zasób istnieje w innej grupie zasobów niż podczas wdrażania, użyj [funk
 
 ## <a name="solution-3---check-reference-function"></a>Rozwiązanie 3 - wyboru odwołanie funkcji
 
-Wyszukaj wyrażenie, które zawiera [odwołania](resource-group-template-functions-resource.md#reference) funkcji. Wartości podane różnić w zależności od tego, czy zasób jest w szablonie, grupy zasobów i subskrypcji. Sprawdź, że udostępniasz wartości wymaganego parametru dla danego scenariusza. Jeśli zasób znajduje się w innej grupie zasobów, podaj identyfikator zasobu pełna. Na przykład aby odwołać się do konta magazynu w innej grupie zasobów, należy użyć:
+Wyszukaj wyrażenie, które zawiera [odwołania](resource-group-template-functions-resource.md#reference) funkcji. Wartości podane różnić w zależności od tego, czy zasób jest w szablonie, grupy zasobów i subskrypcji. Sprawdź, czy jest podanie wartości wymaganego parametru dla danego scenariusza. Jeśli zasób znajduje się w innej grupie zasobów, podaj identyfikator zasobu pełna. Na przykład aby odwołać się do konta magazynu w innej grupie zasobów, należy użyć:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 29abd62b0602686c912f022ec8870dcb6f1b39eb
-ms.sourcegitcommit: 0a7c9629dea6f5eb52cc45a1e31112def210dfc2
+ms.openlocfilehash: 4b90d1b9b2ee64722d3c92bcbd8fa205c9b59ebd
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34730887"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809611"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Tworzenie i przywracanie kopii zapasowych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji na temat konfigurowania automatycznego tworzenia
 - **SQL Server 2016/2017**: [automatycznego tworzenia kopii zapasowej w wersji 2 maszyn wirtualnych platformy Azure ](virtual-machines-windows-sql-automated-backup-v2.md)
 - **Program SQL Server 2014**: [automatycznego tworzenia kopii zapasowej dla maszyn wirtualnych programu SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Kopia zapasowa Azure dla maszyn wirtualnych SQL
+## <a id="azbackup"></a> Kopia zapasowa Azure dla maszyn wirtualnych SQL (publicznej wersji zapoznawczej)
 
 [Kopia zapasowa Azure](/azure/backup/) zapewnia możliwości tworzenia kopii zapasowej klasy Enterprise programu SQL Server uruchomionego na maszynach wirtualnych Azure. Wszystkie kopie zapasowe są przechowywane i zarządzane w magazynie usług odzyskiwania. Istnieje kilka korzyści, które rozwiązanie to zapewnia, szczególnie dla przedsiębiorstw:
 
@@ -128,7 +128,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły, zależnie od wer
 
 Poniższa tabela zawiera podsumowanie możliwości poszczególnych opcji tworzenia kopii zapasowej i przywracania dla maszyn wirtualnych programu SQL Server na platformie Azure.
 
-|| **Automatyczne kopie zapasowe** | **Kopia zapasowa Azure dla maszyn wirtualnych SQL** | **Ręczne kopii zapasowej** |
+|| **Automatyczne kopie zapasowe** | **Kopia zapasowa Azure dla bazy danych SQL** | **Ręczne kopii zapasowej** |
 |---|---|---|---|
 | Wymaga dodatkowych usług Azure |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Skonfiguruj zasady tworzenia kopii zapasowych w portalu Azure | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
@@ -139,11 +139,13 @@ Poniższa tabela zawiera podsumowanie możliwości poszczególnych opcji tworzen
 | Zasady przechowywania kopii zapasowych krótkoterminowych (dni) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Długoterminowe zasad przechowywania kopii zapasowych (miesięcy, lat) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Wbudowana obsługa programu SQL Server AlwaysOn |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Alerty e-mail skonsolidowanych błędów |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Kontrola dostępu oparta na rolach |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Wykonywanie kopii zapasowej na magazyn usług odzyskiwania |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Wykonywanie kopii zapasowej na konta magazynu Azure | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Wykonywanie kopii zapasowej na konta magazynu Azure | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(Automatyczna) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(Automatyczna) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(nabywca zarządzane) |
+| Zarządzanie plikami przechowywania i kopii zapasowej | | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |  |
 | Wykonywanie kopii zapasowej na dołączonych dysków na maszynie Wirtualnej |   |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Centralna dostosowania raportów kopii zapasowej |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Alerty e-mail skonsolidowanych błędów |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Dostosuj ustawienia monitorowania, w oparciu o OMS |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Monitorowanie zadań tworzenia kopii zapasowej za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Przywracanie bazy danych za pomocą skryptów programu SSMS lub języka Transact-SQL | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Yes](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 
 ## <a name="next-steps"></a>Kolejne kroki

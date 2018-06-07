@@ -1,11 +1,11 @@
 ---
-title: "Raportowanie infrastruktury dla dostawcy usług w chmurze Azure stosu użycia | Dokumentacja firmy Microsoft"
-description: "Azure Stack zapewnia infrastrukturę potrzebną do śledzenia użycia, ponieważ występuje i przekazuje je do platformy Azure."
+title: Raportowanie infrastruktury dla dostawcy usług w chmurze Azure stosu użycia | Dokumentacja firmy Microsoft
+description: Azure Stack zapewnia infrastrukturę potrzebną do śledzenia użycia, ponieważ występuje i przekazuje je do platformy Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 4ac808e0e85b1daeb54a3f2fd7bec0a7c10aa13e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fe2a6444e605f388df68803b89643420b19fb54
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823490"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Użycie raportowanie infrastruktury dla dostawcy usług w chmurze
 
@@ -65,4 +66,4 @@ Poniższe terminy i pojęcia są używane do użycia i rozliczeń w stosie Azure
 ## <a name="next-steps"></a>Kolejne kroki
 
  - Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [programu Cloud Solution Provider](https://partnercenter.microsoft.com/en-us/partner/programs).
- - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](/azure-stack-billing-and-chargeback.md).
+ - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](azure-stack-billing-and-chargeback.md).

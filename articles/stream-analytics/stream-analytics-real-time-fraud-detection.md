@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 1ebbdb22698ec1eab76b6b6b504fe27a6f0b28bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824765"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczynanie pracy przy użyciu usługi Azure Stream Analytics: wykrywanie oszustw w czasie rzeczywistym
 
@@ -35,7 +36,7 @@ Firmy telekomunikacyjnych ma duże ilości danych na połączenia przychodzące.
 
 W tym samouczku będzie symulować rozmowy telefonicznej danych przy użyciu aplikacji klienta, która generuje próbki rozmowy telefonicznej metadanych. Niektóre rekordy, które tworzy aplikację wyglądać fałszywych wywołania. 
 
-Przed rozpoczęciem upewnij się, że należy dysponować następującymi elementami:
+Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 * Konto platformy Azure.
 * Zdarzenie wywołania generator aplikacji. Możesz uzyskać dostęp do tej pobierając [pliku TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z Microsoft Download Center. Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz wyświetlić źródła kodu i uruchamianie aplikacji w debugerze, można pobrać kodu źródłowego aplikacji z [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
@@ -69,15 +70,15 @@ W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a
 
     ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Nazwa nowego Centrum zdarzeń `sa-eh-frauddetection-demo`. Można użyć innej nazwy. Jeśli to zrobisz, zanotuj, ponieważ później potrzebne. Nie musisz teraz Ustaw inne opcje dla Centrum zdarzeń.
+6. Nazwa nowego Centrum zdarzeń `sa-eh-frauddetection-demo`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj, ponieważ później potrzebne. Nie musisz teraz Ustaw inne opcje dla Centrum zdarzeń.
 
     ![Blok do tworzenia nowego Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
     
  
 7. Kliknij przycisk **Utwórz**.
-### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Zezwalaj na dostęp do Centrum zdarzeń i pobrać ciągu połączenia
+### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udzielanie dostępu do centrum zdarzeń i pobieranie parametrów połączenia
 
-Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mieć zasadę, która umożliwia uzyskanie odpowiedniego dostępu. Zasady dostępu generuje ciąg połączenia, który zawiera informacje o autoryzacji.
+Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mieć zasadę, która umożliwia uzyskanie odpowiedniego dostępu. Zasady dostępu generują parametry połączenia, które zawierają informacje o autoryzacji.
 
 1.  W okienku przestrzeni nazw zdarzeń kliknij **usługi Event Hubs** , a następnie kliknij nazwę nowego Centrum zdarzeń.
 
@@ -98,7 +99,7 @@ Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mie
     
     ![Kopiowanie klucza podstawowego połączenia ciągu z zasad dostępu](./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png)
  
-7.  Wklej parametry połączenia w edytorze tekstu. Należy tego ciągu połączenia dla następnej sekcji, po wprowadzeniu niektóre zmiany mała do niego.
+7.  Wklej parametry połączenia do edytora tekstu. Należy tego ciągu połączenia dla następnej sekcji, po wprowadzeniu niektóre zmiany mała do niego.
 
     Parametry połączenia wygląda następująco:
 
@@ -131,26 +132,26 @@ Przed rozpoczęciem TelcoGenerator aplikacji, możesz ją skonfigurować tak, ab
 1.  Otwórz okno polecenia i przejdź do folderu, gdzie jest rozpakowanej aplikacji TelcoGenerator.
 2.  Wprowadź następujące polecenie:
 
-        telcodatagen.exe 1000 .2 2
+        telcodatagen.exe 1000 0.2 2
 
     Dostępne są następujące parametry: 
 
     * Liczba CDR na godzinę. 
-    * Prawdopodobieństwo oszustwa karta SIM: Jak często jako procent wszystkich wywołań, że aplikacja powinny symulować fałszywych wywołania. Wartość.2 oznacza, że który około 20% rekordów wywołania będzie wyglądać fałszywe.
+    * Prawdopodobieństwo oszustwa karta SIM: Jak często jako procent wszystkich wywołań, że aplikacja powinny symulować fałszywych wywołania. Wartość 0,2 oznacza, że który około 20% rekordów wywołania będzie wyglądać fałszywe.
     * Czas trwania w godzinach. Liczba godzin, które powinny być uruchamiane w aplikacji. Można również zatrzymać aplikację dowolnej chwili, naciskając klawisze Ctrl + C w wierszu polecenia.
 
-    Po kilku sekundach uruchomieniu aplikacji wyświetlanie rekordy połączeń telefonicznych na ekranie, jak wysyła je do Centrum zdarzeń.
+    Po kilku sekundach aplikacja rozpocznie wyświetlanie rekordów połączeń telefonicznych na ekranie w miarę wysyłania ich do centrum zdarzeń.
 
 Niektóre pola klucza, które będą używane w tej aplikacji wykrywanie oszustw w czasie rzeczywistym, są następujące:
 
-|**rekord**|**Definicja**|
+|**Rekord**|**Definicja**|
 |----------|--------------|
-|`CallrecTime`|Godzina rozpoczęcia znacznik czasu wywołania. |
-|`SwitchNum`|Przełącznik telefonów używane do połączenia. W tym przykładzie przełączniki są ciągów reprezentujących kraj pochodzenia (USA, Chinach, UK, Niemcy lub Australii). |
-|`CallingNum`|Numer telefonu obiektu wywołującego. |
-|`CallingIMSI`|Tożsamość subskrybenta przenośnych międzynarodowe (firmy IMSI). Jest to unikatowy identyfikator obiektu wywołującego. |
-|`CalledNum`|Numer telefonu adresata wywołania. |
-|`CalledIMSI`|Subskrybent międzynarodowy przenośnych tożsamość (firmy IMSI). Jest to unikatowy identyfikator odbiorcy wywołania. |
+|`CallrecTime`|Znacznik czasu godziny rozpoczęcia połączenia. |
+|`SwitchNum`|Centrala telefoniczna używana do wykonania połączenia. W tym przykładzie centrale są ciągami reprezentującymi kraj pochodzenia (USA, Chiny, Zjednoczone Królestwo, Niemcy lub Australia). |
+|`CallingNum`|Numer telefonu dzwoniącego. |
+|`CallingIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator obiektu wywołującego. |
+|`CalledNum`|Numer telefonu odbiorcy połączenia. |
+|`CalledIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator odbiorcy wywołania. |
 
 
 ## <a name="create-a-stream-analytics-job-to-manage-streaming-data"></a>Utwórz zadanie usługi Stream Analytics do zarządzania danymi przesyłania strumieniowego
@@ -171,7 +172,7 @@ Teraz, gdy masz strumienia zdarzeń wywołania można skonfigurować zadania us�
 
     Zadanie jest tworzony i portalu Wyświetla szczegóły zadania. Nic nie jest jeszcze uruchomiona, ale — należy skonfigurować zadania, aby można było go uruchomić.
 
-### <a name="configure-job-input"></a>Skonfiguruj zadania w danych wejściowych
+### <a name="configure-job-input"></a>Konfigurowanie danych wejściowych zadania
 
 1. Na pulpicie nawigacyjnym lub **wszystkie zasoby** , Znajdź i wybierz `sa_frauddetection_job_demo` zadania usługi analiza strumienia. 
 2. W **topologii zadania** sekcji okienka zadania Stream Analytics kliknij **dane wejściowe** pole.
@@ -221,7 +222,7 @@ Aplikacja TelcoGenerator wysyła wywołania rekordów do Centrum zdarzeń i zada
 
     Azure przykłady 3 minut, przez które danych ze strumienia wejściowego i powiadamia użytkownika, gdy będzie gotowy przykładowych danych. (Trwa to krótki czas). 
 
-Przykładowe dane są tymczasowo przechowywane i jest dostępny, gdy masz okna kwerendy. Jeśli zamkniesz okno kwerendy przykładowe dane są usuwane, a następnie musisz utworzyć nowy zestaw przykładowych danych. 
+Przykładowe dane są przechowywane tymczasowo i są dostępne, kiedy okno zapytania jest otwarte. Jeśli zamkniesz okno zapytania, przykładowe dane zostaną usunięte i konieczne będzie utworzenie nowego zestawu przykładowych danych. 
 
 Alternatywnie, można uzyskać pliku JSON, który zawiera przykładowe dane w nim [z usługi GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json), a następnie przekaż ten plik JSON ma być używana jako dane przykładowe dla `CallStream` wejściowego. 
 
@@ -289,7 +290,7 @@ Dla tej transformacji sekwencja danych czasowych systemu Windows, które nie nak
  
 ### <a name="detect-sim-fraud-using-a-self-join"></a>Wykrywanie oszustw SIM przy użyciu samosprzężenie
 
-Na przykład firma Microsoft należy rozważyć użycie fałszywych jako wywołania, które pochodzą z tego samego użytkownika, ale w różnych lokalizacjach w ciągu 5 sekund od siebie. Na przykład tego samego użytkownika nie legalnie wywoływania z USA i klientów w Australii w tym samym czasie. 
+Na przykład firma Microsoft należy rozważyć użycie fałszywych jako wywołania, które pochodzą z tego samego użytkownika, ale w różnych lokalizacjach w ciągu 5 sekund od siebie. Na przykład ten sam użytkownik nie może rzeczywiście wykonywać w tym samym czasie połączeń ze Stanów Zjednoczonych i Australii. 
 
 Aby sprawdzić, czy te przypadki, umożliwia samosprzężenia potrzebne dane przesyłane strumieniowo przyłączyć się do samego siebie na podstawie strumienia `CallRecTime` wartość. Następnie można wyszukać wywołania rekordy, w których `CallingIMSI` wartość (liczba źródłowego) jest taka sama, ale `SwitchNum` wartość (kraj pochodzenia) nie jest taka sama.
 

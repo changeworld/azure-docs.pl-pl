@@ -1,18 +1,19 @@
 ---
 title: Zarządzanie urządzeniami w aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
 description: Jako operatora informacje o sposobie zarządzania urządzeniami w aplikacji Azure IoT centralnej.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 75472d701160e7cfd331d01efcdc1a19ae20fb2d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807479"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w aplikacji Azure IoT centralnej
 
@@ -53,7 +54,7 @@ Aby dodać urządzenie do aplikacji Azure IoT centralnej:
 Do nawiązania połączenia z aplikacji Azure IoT centralnej dużej liczby urządzeń oferty zbiorcze importowania urządzeń przy użyciu pliku CSV. 
 
 Wymagania dotyczące pliku CSV:
-1. Plik CSV powinien mieć tylko jedną kolumnę zawierającą identyfikatory urządzeń.
+1. Plik CSV powinien mieć tylko jedną kolumnę, który zawiera identyfikatory urządzeń.
 
 1. Plik nie powinien mieć żadnych nagłówka.
 
@@ -76,8 +77,33 @@ Do zbiorczego rejestrowania urządzeń w aplikacji:
 
     [![Powodzenie importowania zbiorczego](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-Jeśli urządzenie zaimportować operacja kończy się niepowodzeniem, będzie błąd wyświetlana na siatce urządzenia. Plik dziennika Przechwytywanie wszystkich błędów jest generowana i mogą być pobierane przez kliknięcie przycisku komunikat o błędzie.
+Jeśli urządzenie zaimportować operacja kończy się niepowodzeniem, zostanie wyświetlony komunikat o błędzie na siatce urządzenia. Plik dziennika Przechwytywanie wszystkich błędów jest generowana i mogą być pobierane przez kliknięcie przycisku komunikat o błędzie.
 
+## <a name="export-devices"></a>Eksportuj urządzeń
+
+Aby udostępnić urządzeniom na łączenie z centralnego IoT, konieczne będzie parametry połączenia urządzenia, które jest generowany przez centralne IoT. Funkcja eksportu można pobrać parametry połączenia i inne właściwości urządzeń zbiorczo z poziomu aplikacji. Eksport tworzy plik CSV z tożsamości urządzenia, nazwę urządzenia i podstawowe parametry połączenia dla wybranych urządzeń.
+
+Do zbiorczego eksportu urządzenia z poziomu aplikacji:
+1. Wybierz **Explorer** w menu nawigacji po lewej stronie.
+
+1. Jeden lewego panelu, wybierz szablon urządzenia, dla którego chcesz wyeksportować urządzenia.
+
+1. Wybierz urządzenia, które chcesz wyeksportować, a następnie kliknij przycisk **wyeksportować** akcji.
+
+    [![Eksportuj](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. Proces eksportowania zostanie uruchomiona, można śledzić stan w górnej części siatki. 
+
+1. Po zakończeniu eksportu, wraz z linkiem zostanie wyświetlony komunikat Powodzenie pobierania wygenerowanego pliku.
+
+1. Polecenie **komunikat z potwierdzeniem** można pobrać pliku do folderu lokalnego na dysku.
+
+    [![Powodzenie eksportu](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. Wyeksportowany plik CSV ma następujące informacje:
+    1. Name (Nazwa)
+    1. Identyfikator urządzenia
+    1. Parametry połączenia podstawowej
 
 
 ## <a name="delete-a-device"></a>Usuwanie urządzenia

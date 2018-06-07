@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808098"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Przenoszenie danych z MySQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +43,7 @@ Nawet wtedy, gdy baza danych programu MySQL znajduje się na maszynie wirtualnej
 > Zobacz [rozwiązywania problemów bramy](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) porady dotyczące rozwiązywania problemów z bramy/połączenia problemy związane z.
 
 ## <a name="supported-versions-and-installation"></a>Obsługiwane wersje i instalacji
-Dla bramy zarządzania danymi do łączenia z bazą danych MySQL, musisz zainstalować [MySQL Connector/Net systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (wersja 6.6.5 lub nowszego) na tym samym systemie co brama zarządzania danymi. Ten sterownik 32-bitowych jest zgodny z brama zarządzania danymi w 64-bitowym. MySQL w wersji 5.1 i nowszych jest obsługiwany.
+Dla bramy zarządzania danymi do łączenia z bazą danych MySQL, musisz zainstalować [MySQL Connector/Net systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (wersja między 6.6.5 i 6.10.7) na tym samym systemie co brama zarządzania danymi. Ten sterownik 32-bitowych jest zgodny z brama zarządzania danymi w 64-bitowym. MySQL w wersji 5.1 i nowszych jest obsługiwany.
 
 > [!TIP]
 > Jeśli zostanie osiągnięty błąd "Uwierzytelnianie nie powiodło się, ponieważ strona zdalna zamknęła strumień transportu.", należy wziąć pod uwagę, aby uaktualnić MySQL Connector/Net do nowszej wersji.
@@ -72,7 +73,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi MySQL połączone elementy
 | serwer |Nazwa serwera MySQL. |Yes |
 | baza danych |Nazwa bazy danych MySQL. |Yes |
 | Schemat |Nazwa schematu w bazie danych. |Nie |
-| authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
+| Typ authenticationType |Typ uwierzytelniania używany do łączenia z bazą danych MySQL. Możliwe wartości to: `Basic`. |Yes |
 | nazwa użytkownika |Określ nazwę użytkownika do połączenia z bazą danych MySQL. |Yes |
 | hasło |Określ hasło dla określonego konta użytkownika. |Yes |
 | gatewayName |Nazwa bramy, która powinna być używana przez usługi fabryka danych nawiązać połączenia z lokalną bazą danych MySQL. |Yes |
@@ -305,34 +306,34 @@ Podczas przenoszenia danych na MySQL, następujące mapowania są używane do ty
 | bigint |Int64 |
 | bitowe |Decimal |
 | obiekt blob |Byte[] |
-| bool |Wartość logiczna |
+| wartość logiczna |Wartość logiczna |
 | char |Ciąg |
 | data |Data/godzina |
 | datetime |Data/godzina |
 | Decimal |Decimal |
-| podwójnej precyzji |Podwójnej precyzji |
-| O podwójnej precyzji |Podwójnej precyzji |
+| podwójnej precyzji |O podwójnej precyzji |
+| double |O podwójnej precyzji |
 | wyliczenia |Ciąg |
-| Float |Kawaler/panna |
+| liczba zmiennoprzecinkowa |Pojedyncze |
 | int unsigned |Int64 |
 | int |Int32 |
 | Liczba całkowita bez znaku |Int64 |
-| integer |Int32 |
+| liczba całkowita |Int32 |
 | długie varbinary |Byte[] |
 | varchar długa |Ciąg |
 | longblob |Byte[] |
-| longtext |Ciąg |
+| LONGTEXT |Ciąg |
 | mediumblob |Byte[] |
 | mediumint bez znaku |Int64 |
 | mediumint |Int32 |
 | mediumtext |Ciąg |
 | numeryczne |Decimal |
-| rzeczywiste |Podwójnej precyzji |
+| rzeczywiste |O podwójnej precyzji |
 | zestaw |Ciąg |
 | smallint bez znaku |Int32 |
 | smallint |Int16 |
-| Tekst |Ciąg |
-| time |TimeSpan |
+| tekst |Ciąg |
+| time |Zakres czasu |
 | sygnatura czasowa |Data/godzina |
 | tinyblob |Byte[] |
 | tinyint bez znaku |Int16 |

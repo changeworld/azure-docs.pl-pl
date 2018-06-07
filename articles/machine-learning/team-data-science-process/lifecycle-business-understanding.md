@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: b406a0cd3e5176649b33d6ad8f41facb7043952d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c851a9a5c20c3f658e8681a4178ebe67294fd773
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808081"
 ---
 # <a name="business-understanding"></a>Poznawanie firmy
 
@@ -80,7 +81,7 @@ Na przykład znaleźć, że istniejące systemy należy zbierać i rejestrować 
 Poniżej przedstawiono elementy dostarczane na tym etapie:
 
    * [Dokument karty](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardowy szablon znajduje się w definicji struktury TDSP projektu. Dokument karty jest życia. Należy zaktualizować szablon w projekcie wprowadzeniu nowych odnajdywania i zmiany wymagań biznesowych. Należy przejść na ten dokument, dodając więcej szczegółów, w czasie wykonywania w procesie odnajdowania. Zachowaj klienta i inni uczestnicy projektu w wprowadzania zmian i dokładniej informują powody zmiany do nich.  
-   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** sekcji **definicje danych** raport, który znajduje się w projekcie TDSP **raport danych** folder zawiera dane źródeł. Ta sekcja określa oryginał i miejsce docelowe lokalizacje nieprzetworzone dane. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty w celu przenoszenia danych do środowiska analitycznych.  
+   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** sekcji **definicje danych** raport, który znajduje się w projekcie TDSP **raport danych** folder zawiera dane źródeł. Ta sekcja określa oryginał i miejsce docelowe lokalizacje nieprzetworzone dane. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty w celu przenoszenia danych do środowiska analitycznych.  
    * [Słowniki danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): ten dokument zawiera opis danych, które są udostępniane przez klienta. Opisy te zawierają informacje o schematu (typy danych i informacji na temat reguł sprawdzania poprawności, jeśli istnieje) i diagramy jednostki relacji, jeśli jest dostępna.
 
 ## <a name="next-steps"></a>Kolejne kroki

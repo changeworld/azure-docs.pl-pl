@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
-ms.openlocfilehash: d7dea9a3d9eabdc9e4cdf21e6e584b745d22a54e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808727"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z programu MySQL przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +41,7 @@ W szczególności ten łącznik MySQL obsługuje MySQL **w wersji 5.1 i powyżej
 Aby użyć tego łącznika MySQL, musisz:
 
 - Konfigurowanie środowiska uruchomieniowego integracji Self-hosted. Zobacz [środowiska uruchomieniowego integracji Self-hosted](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
-- Zainstaluj [MySQL Connector/Net systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) wersji 6.6.5 lub nowszej na komputerze środowiska uruchomieniowego integracji. Ten sterownik 32-bitowych jest zgodna z 64-bitowym IR.
+- Zainstaluj [MySQL Connector/Net systemu Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) wersji między 6.6.5 i 6.10.7 na komputerze środowiska uruchomieniowego integracji. Ten sterownik 32-bitowych jest zgodna z 64-bitowym IR.
 
 > [!TIP]
 > Jeśli zostanie osiągnięty błąd "Uwierzytelnianie nie powiodło się, ponieważ strona zdalna zamknęła strumień transportu.", należy wziąć pod uwagę, aby uaktualnić MySQL Connector/Net do nowszej wersji.
